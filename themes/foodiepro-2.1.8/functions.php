@@ -644,16 +644,15 @@ add_filter( 'genesis_search_title_text', 'custom_search_title_text' );
 //* Hook category widget areas before post content and after archive title
 function add_archive_widgeted_area() {
   if ( is_archive() || is_search() ) {
-  	$url = $_SERVER["REQUEST_URI"];
-		$WPURP_search = strpos($url, 'wpurp-search');
-		if ($WPURP_search==false)
+//  	$url = $_SERVER["REQUEST_URI"];
+//		$WPURP_search = strpos($url, 'wpurp-search');
+//		if (!$WPURP_search) 
   		genesis_widget_area( 'archives-top', array(
         'before' => '<div class="archives-top widget-area">',
         'after'  => '</div>',
   		));
   }     
 }
-//*add_action( 'genesis_before_loop', 'add_archive_widgeted_area', 999 );
 add_action( 'genesis_before_loop', 'add_archive_widgeted_area');
 
 

@@ -36,6 +36,12 @@ array( 'description' => __( 'Displays a dropdown list allowing to sort posts', '
 // Creating widget front-end
 public function widget( $args, $instance ) {
 	global $wp;
+	
+	$url = $_SERVER["REQUEST_URI"];
+	$WPURP_search = strpos($url, 'wpurp-search');
+	if ($WPURP_search)
+		return '';
+	
 	$title = apply_filters( 'widget_title', $instance['title'] );
 	// before and after widget arguments are defined by themes
 	echo $args['before_widget'];

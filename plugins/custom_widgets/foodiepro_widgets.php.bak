@@ -61,10 +61,10 @@ public function widget( $args, $instance ) {
 	echo '<option class="level-0" value="' . $search_prefix . 'orderby=date&order=DESC">'. __('Newest first', 'foodiepro') . '</option>';
 	//echo '<option disabled>───────────</option>';
 	//echo '<option class="level-0 last" value="meta_value_num&order=DESC&meta_key=recipe_user_ratings_rating">'. __('Rating', 'foodiepro') . '</option>';
-	if ( !is_category() )
-		echo '<option class="level-0 last" value="' . $search_prefix . 'orderby=rating">'. __('Rating', 'foodiepro') . '</option>';
-	else
+	if ( is_category() )
 		echo '<option class="level-0 last" value="' . $search_prefix . 'orderby=comment_count&order=DESC">'. __('Comment count', 'foodiepro') . '</option>';
+	else
+		echo '<option class="level-0 last" value="' . $search_prefix . 'orderby=rating">'. __('Rating', 'foodiepro') . '</option>';
 	echo '</select>'; 
 	echo '</div>';?>
 

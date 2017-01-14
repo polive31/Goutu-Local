@@ -11,24 +11,26 @@ Author URI: http://goutu.org
 // Block direct requests
 if ( !defined('ABSPATH') )
 	die('-1');
-	
-	
-/*** Make sure BuddyPress is loaded ********************************/
-if ( class_exists( 'WPUR' ) ) {
-	add_action( 'plugins_loaded', 'wpur_widgets_load' );
-} else {
-	add_action( 'admin_notices', 'wpur_widgets_install_notice' );
-}
 
-function wpur_widgets_load() {
-	require( dirname( __FILE__ ) . '/WPUR_custom_recipe_list.php' );
-	require( dirname( __FILE__ ) . '/WPUR_custom_nutrition_label.php' );
-}
+	
+add_action( 'plugins_loaded' , 'load_wpur_widgets_plugin' );
 
-function wpur_widgets_install_notice() {
-	echo '<div id="message" class="error fade"><p style="line-height: 150%">';
-	_e('<strong>WPUR Widgets Plugin</strong></a> requires the WP Ultimate Recipe plugin to work. Please <a href="plugins.php">activate/install WPUR or deactivate this plugin </a>.');
-	echo '</p></div>';
+function load_wpur_widgets_plugin() {
+	
+	if ( class_exists( 'WPUltimateRecipe' ) ) {
+		require( dirname( __FILE__ ) . '/WPUR_custom_recipe_list.php' );
+		require( dirname( __FILE__ ) . '/WPUR_custom_nutrition_label.php' );
+	} 
+	else {
+		add_action( 'admin_notices', 'wpur_widgets_install_notice' );
+	}
+
+	function wpur_widgets_install_notice() {
+		echo '<div id="message" class="error fade"><p style="line-height: 150%">';
+		_e('<strong>WPUR Widgets Plugin</strong></a> requires the WP Ultimate Recipe plugin to work. Please <a href="plugins.php">activate/install WPUR or deactivate this plugin </a>.');
+		echo '</p></div>';
+	}	
+	
 }
 
 ?>

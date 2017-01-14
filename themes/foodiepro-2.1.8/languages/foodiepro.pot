@@ -1,0 +1,2864 @@
+# Copyright (C) 2016 Shay Bocks
+# This file is distributed under the GPL-2.0+.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Foodie Pro Theme 2.1.7\n"
+"Report-Msgid-Bugs-To: http://shaybocks.com/\n"
+"POT-Creation-Date: 2017-01-07 12:23+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Shay Bocks (http://shaybocks.com)\n"
+"Language-Team: Shay Bocks (http://shaybocks.com)\n"
+"X-Generator: Poedit 1.8.11\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c\n"
+"X-Textdomain-Support: yes\n"
+"Language: en_US\n"
+"X-Poedit-SearchPath-0: plugins/custom_widgets\n"
+"X-Poedit-SearchPath-1: themes/foodiepro-2.1.8\n"
+"X-Poedit-SearchPath-2: plugins/custom_shortcodes\n"
+"X-Poedit-SearchPathExcluded-0: themes/foodiepro-2.1.8/buddypress/activity\n"
+"X-Poedit-SearchPathExcluded-1: themes/foodiepro-2.1.8/buddypress/assets\n"
+"X-Poedit-SearchPathExcluded-2: themes/foodiepro-2.1.8/buddypress/blogs\n"
+"X-Poedit-SearchPathExcluded-3: themes/foodiepro-2.1.8/buddypress/forums\n"
+
+#: plugins/custom_shortcodes/bp-custom-shortcodes.php:36
+msgid "Friendship Requests"
+msgstr ""
+
+#: plugins/custom_shortcodes/bp-custom-shortcodes.php:42
+msgid "Notifications"
+msgstr ""
+
+#: plugins/custom_shortcodes/bp-custom-shortcodes.php:48
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:28
+msgid "My Profile"
+msgstr ""
+
+#: plugins/custom_shortcodes/custom-nav-shortcodes.php:27
+msgid "Select..."
+msgstr ""
+
+#: plugins/custom_shortcodes/misc-shortcodes.php:38
+msgid "Share this post"
+msgstr ""
+
+#: plugins/custom_shortcodes/misc-shortcodes.php:39
+msgid "Share this recipe"
+msgstr ""
+
+#: plugins/custom_shortcodes/misc-shortcodes.php:68
+msgid "Courses"
+msgstr ""
+
+#: plugins/custom_shortcodes/misc-shortcodes.php:73
+msgid "Seasons"
+msgstr ""
+
+#: plugins/custom_shortcodes/misc-shortcodes.php:78
+msgid "Occasions"
+msgstr ""
+
+#: plugins/custom_shortcodes/misc-shortcodes.php:83
+msgid "Diets"
+msgstr ""
+
+#: plugins/custom_shortcodes/misc-shortcodes.php:90
+msgid "France"
+msgstr ""
+
+#: plugins/custom_shortcodes/misc-shortcodes.php:94
+msgid "World"
+msgstr ""
+
+#: plugins/custom_shortcodes/misc-shortcodes.php:98
+msgid "All blogs"
+msgstr ""
+
+#: plugins/custom_shortcodes/misc-shortcodes.php:104
+msgid "Previous page"
+msgstr ""
+
+#: plugins/custom_shortcodes/misc-shortcodes.php:221
+msgid "Add a picture"
+msgstr ""
+
+#: plugins/custom_widgets/bp_widgets.php:36
+msgid "(Buddypress) My Friends"
+msgstr ""
+
+#: plugins/custom_widgets/bp_widgets.php:37
+msgid "Displays a chosen number of my friends"
+msgstr ""
+
+#: plugins/custom_widgets/bp_widgets.php:92
+#: plugins/custom_widgets/bp_widgets.php:203
+#: plugins/custom_widgets/bp_widgets.php:312
+#: plugins/custom_widgets/foodiepro_widgets.php:100
+msgid "New title"
+msgstr ""
+
+#: plugins/custom_widgets/bp_widgets.php:96
+#: plugins/custom_widgets/bp_widgets.php:212
+#: plugins/custom_widgets/bp_widgets.php:316
+#: plugins/custom_widgets/bp_widgets.php:515
+#: plugins/custom_widgets/foodiepro_widgets.php:105
+#: plugins/custom_widgets/nutrition_label_widget.php:63
+#: plugins/custom_widgets/wpur_widgets.php:108
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:106
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:74
+msgid "Title:"
+msgstr ""
+
+#: plugins/custom_widgets/bp_widgets.php:142
+msgid "(Buddypress) Custom latest registered members"
+msgstr ""
+
+#: plugins/custom_widgets/bp_widgets.php:143
+msgid "Displays latest registered members"
+msgstr ""
+
+#: plugins/custom_widgets/bp_widgets.php:218
+msgid "Number of users to show"
+msgstr ""
+
+#: plugins/custom_widgets/bp_widgets.php:265
+msgid "(Buddypress) Welcome"
+msgstr ""
+
+#: plugins/custom_widgets/bp_widgets.php:266
+msgid "Displays gravatar and name of current loggued-in user"
+msgstr ""
+
+#: plugins/custom_widgets/bp_widgets.php:370
+msgctxt "Title of the login widget"
+msgid "(BuddyPress) Custom Log In"
+msgstr ""
+
+#: plugins/custom_widgets/bp_widgets.php:372
+msgid ""
+"Show a Log In form to logged-out visitors, and a Log Out link to those who are "
+"logged in, with full resolution avatar."
+msgstr ""
+
+#: plugins/custom_widgets/bp_widgets.php:423
+msgid "Log Out"
+msgstr ""
+
+#: plugins/custom_widgets/bp_widgets.php:447
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:76
+msgid "Username"
+msgstr ""
+
+#: plugins/custom_widgets/bp_widgets.php:450
+msgid "Password"
+msgstr ""
+
+#: plugins/custom_widgets/bp_widgets.php:453
+msgid "Remember Me"
+msgstr ""
+
+#: plugins/custom_widgets/bp_widgets.php:459
+msgid "Register"
+msgstr ""
+
+#: plugins/custom_widgets/foodiepro_widgets.php:29
+msgid "Dropdown Posts Sort Widget"
+msgstr ""
+
+#: plugins/custom_widgets/foodiepro_widgets.php:32
+msgid "Displays a dropdown list allowing to sort posts"
+msgstr ""
+
+#: plugins/custom_widgets/foodiepro_widgets.php:44
+msgid "Sort recipes"
+msgstr ""
+
+#: plugins/custom_widgets/foodiepro_widgets.php:46
+msgid "Sort posts"
+msgstr ""
+
+#: plugins/custom_widgets/foodiepro_widgets.php:56
+msgid "Select sort order..."
+msgstr ""
+
+#: plugins/custom_widgets/foodiepro_widgets.php:57
+msgid "Title : ascending"
+msgstr ""
+
+#: plugins/custom_widgets/foodiepro_widgets.php:58
+msgid "Title : descending"
+msgstr ""
+
+#: plugins/custom_widgets/foodiepro_widgets.php:61
+msgid "Newest first"
+msgstr ""
+
+#: plugins/custom_widgets/foodiepro_widgets.php:65
+msgid "Comment count"
+msgstr ""
+
+#: plugins/custom_widgets/foodiepro_widgets.php:67
+msgid "Rating"
+msgstr ""
+
+#: plugins/custom_widgets/nutrition_label_widget.php:17
+msgid "WPURP Custom Nutrition Label"
+msgstr ""
+
+#: plugins/custom_widgets/nutrition_label_widget.php:19
+msgid "Display the Nutrition Label of a recipe, if it is available."
+msgstr ""
+
+#: plugins/custom_widgets/nutrition_label_widget.php:54
+msgid "Nutrition Label"
+msgstr ""
+
+#: plugins/custom_widgets/nutrition_label_widget.php:67
+msgid "Recipe"
+msgstr ""
+
+#: plugins/custom_widgets/nutrition_label_widget.php:69
+msgid "Recipe shown on recipe page"
+msgstr ""
+
+#: plugins/custom_widgets/nutrition_label_widget.php:79
+msgid "Serving Size"
+msgstr ""
+
+#: plugins/custom_widgets/wpur_widgets.php:27
+msgid "WPURP Custom Recipe List"
+msgstr ""
+
+#: plugins/custom_widgets/wpur_widgets.php:29
+msgid "Customized WPURP recipes display widget"
+msgstr ""
+
+#: plugins/custom_widgets/wpur_widgets.php:89
+msgid "Our Recipes"
+msgstr ""
+
+#: plugins/custom_widgets/wpur_widgets.php:98
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:382
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:40
+msgid "Date"
+msgstr ""
+
+#: plugins/custom_widgets/wpur_widgets.php:99
+msgid "Recipe Title"
+msgstr ""
+
+#: plugins/custom_widgets/wpur_widgets.php:100
+msgid "Recipe Rating"
+msgstr ""
+
+#: plugins/custom_widgets/wpur_widgets.php:103
+msgid "ascending"
+msgstr ""
+
+#: plugins/custom_widgets/wpur_widgets.php:104
+msgid "descending"
+msgstr ""
+
+#: plugins/custom_widgets/wpur_widgets.php:112
+msgid "Restrict to taxonomies (ID) :"
+msgstr ""
+
+#: plugins/custom_widgets/wpur_widgets.php:116
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:380
+msgid "Order By"
+msgstr ""
+
+#: plugins/custom_widgets/wpur_widgets.php:127
+msgid "Order"
+msgstr ""
+
+#: plugins/custom_widgets/wpur_widgets.php:138
+msgid "Number of recipes to show"
+msgstr ""
+
+#: plugins/custom_widgets/wpur_widgets.php:143
+msgid "Show Images"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/backups/functions_foodie.php:184
+#: themes/foodiepro-2.1.8/functions.php:838
+msgid "Read More"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/backups/functions_foodie.php:197
+msgid "Comments"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/backups/functions_foodie.php:213
+msgid "Copyright"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/backups/functions_foodie.php:214
+msgid "by"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/backups/functions_foodie.php:216
+msgid "Built on the "
+msgstr ""
+
+#: themes/foodiepro-2.1.8/backups/functions_foodie.php:217
+msgid "Powered by "
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:66
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:39
+msgid "Group Name (required)"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:71
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:42
+msgid "Group Description (required)"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:101
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:100
+msgid "Privacy Options"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:105
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:104
+msgid "This is a public group"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:108
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:107
+msgid "Any site member can join this group."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:109
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:118
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:108
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:116
+msgid "This group will be listed in the groups directory and in search results."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:110
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:109
+msgid "Group content and activity will be visible to any site member."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:114
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:112
+msgid "This is a private group"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:117
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:115
+msgid "Only users who request membership and are accepted can join the group."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:119
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:128
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:117
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:125
+msgid "Group content and activity will only be visible to members of the group."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:123
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:120
+msgid "This is a hidden group"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:126
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:123
+msgid "Only users who are invited can join the group."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:127
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:124
+msgid "This group will not be listed in the groups directory or search results."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:133
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:132
+msgid "Group Invitations"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:135
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:134
+msgid "Which members of this group are allowed to invite others?"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:139
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:138
+msgid "All group members"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:141
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:140
+msgid "Group admins and mods only"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:143
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:142
+msgid "Group admins only"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:149
+msgid "Group Forums"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:153
+msgid "Should this group have a forum?"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:156
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:91
+msgid "Enable discussion forum"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:160
+#, php-format
+msgid ""
+"<strong>Attention Site Admin:</strong> Group forums require the <a href=\"%s"
+"\">correct setup and configuration</a> of a bbPress installation."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:200
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:167
+msgid ""
+"Upload an image to use as a profile photo for this group. The image will be "
+"shown on the main group page, and in search results."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:205
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:172
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/change-avatar.php:36
+msgid "Select an image"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:212
+msgid ""
+"To skip the group profile photo upload process, hit the \"Next Step\" button."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:227
+msgid "Crop Group Profile Photo"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:273
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:237
+msgid "The Cover Image will be used to customize the header of your group."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:319
+msgid "Select people to invite from your friends list."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:337
+#: themes/foodiepro-2.1.8/buddypress/groups/single/invites-loop.php:74
+msgid "Remove Invite"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:354
+msgid ""
+"Once you have built up friend connections you will be able to invite others to "
+"your group."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/groups-loop.php:62
+#: themes/foodiepro-2.1.8/buddypress/groups/single/cover-image-header.php:62
+#: themes/foodiepro-2.1.8/buddypress/groups/single/group-header.php:71
+#, php-format
+msgid "active %s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/groups-loop.php:131
+msgid "There were no groups found."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/index.php:49
+#, php-format
+msgid "All Groups %s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/index.php:52
+#, php-format
+msgid "My Groups %s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/index.php:80
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:50
+#: themes/foodiepro-2.1.8/buddypress/members/index.php:83
+#: themes/foodiepro-2.1.8/buddypress/members/single/blogs.php:18
+#: themes/foodiepro-2.1.8/buddypress/members/single/forums.php:17
+#: themes/foodiepro-2.1.8/buddypress/members/single/friends.php:19
+#: themes/foodiepro-2.1.8/buddypress/members/single/groups.php:19
+msgid "Order By:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/index.php:83
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:52
+#: themes/foodiepro-2.1.8/buddypress/members/index.php:85
+#: themes/foodiepro-2.1.8/buddypress/members/single/blogs.php:20
+#: themes/foodiepro-2.1.8/buddypress/members/single/forums.php:19
+#: themes/foodiepro-2.1.8/buddypress/members/single/friends.php:21
+#: themes/foodiepro-2.1.8/buddypress/members/single/groups.php:21
+msgid "Last Active"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/index.php:84
+#: themes/foodiepro-2.1.8/buddypress/members/single/groups.php:22
+msgid "Most Members"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/index.php:85
+#: themes/foodiepro-2.1.8/buddypress/members/single/groups.php:23
+msgid "Newly Created"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/index.php:86
+#: themes/foodiepro-2.1.8/buddypress/members/index.php:89
+#: themes/foodiepro-2.1.8/buddypress/members/single/blogs.php:22
+#: themes/foodiepro-2.1.8/buddypress/members/single/friends.php:23
+#: themes/foodiepro-2.1.8/buddypress/members/single/groups.php:24
+msgid "Alphabetical"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/activity.php:12
+msgid "RSS"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/activity.php:24
+#: themes/foodiepro-2.1.8/buddypress/members/single/activity.php:17
+msgid "Show:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/activity.php:26
+#: themes/foodiepro-2.1.8/buddypress/members/single/activity.php:19
+msgid "&mdash; Everything &mdash;"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:56
+msgid "Notify group members of these changes via email"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:181
+msgid ""
+"If you'd like to remove the existing group profile photo but not upload a new "
+"one, please use the delete group profile photo button."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:183
+msgid "Delete Group Profile Photo"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:201
+msgid "Crop Profile Photo"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:226
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/change-cover-image.php:11
+msgid "Change Cover Image"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:265
+msgid "Administrators"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:273
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:300
+#, php-format
+msgid "Profile picture of %s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:278
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:305
+msgid "Demote to Member"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:293
+msgid "Moderators"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:304
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:360
+msgid "Promote to Admin"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:319
+msgid "Members"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:348
+msgid "(banned)"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:354
+msgid "Remove Ban"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:358
+msgid "Kick &amp; Ban"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:359
+msgid "Promote to Mod"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:364
+msgid "Remove from group"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:401
+msgid "This group has no members."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:472
+msgid ""
+"WARNING: Deleting this group will completely remove ALL content associated "
+"with it. There is no way back, please be careful with this option."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:475
+msgid "I understand the consequences of deleting this group."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/cover-image-header.php:73
+#: themes/foodiepro-2.1.8/buddypress/groups/single/group-header.php:22
+msgid "Group Admins"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/cover-image-header.php:93
+#: themes/foodiepro-2.1.8/buddypress/groups/single/group-header.php:42
+msgid "Group Mods"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:30
+msgid "New Topic"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:38
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:29
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/topic.php:30
+msgid "Forum Directory"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:53
+#: themes/foodiepro-2.1.8/buddypress/members/single/forums.php:20
+msgid "Most Posts"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:54
+#: themes/foodiepro-2.1.8/buddypress/members/single/forums.php:21
+msgid "Unreplied"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:100
+msgid "You will auto join this group when you start a new topic."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:104
+msgid "Post a New Topic:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:109
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:77
+msgid "Content:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:112
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:80
+msgid "Tags (comma separated):"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:23
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/topic.php:191
+msgid "Reply"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:38
+msgid "Edit:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:113
+msgid "Edit text"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:139
+msgid "This topic does not exist."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/topic.php:22
+msgid "New Reply"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/topic.php:45
+msgid "Topic tags:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/topic.php:108
+#, php-format
+msgid "%1$s said %2$s:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/topic.php:160
+msgid "There are no posts for this topic."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/topic.php:175
+msgid "You will auto join this group when you reply to this topic."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/topic.php:187
+msgid "Add a reply:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/topic.php:214
+msgid "This topic is closed, replies are no longer accepted."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/invites-loop.php:110
+msgid "Select friends to invite."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/members.php:131
+msgid "No members were found."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/request-membership.php:17
+#, php-format
+msgid "You are requesting to become a member of the group '%s'."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/request-membership.php:20
+msgid "Comments (optional)"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/requests-loop.php:57
+#: themes/foodiepro-2.1.8/buddypress/members/single/friends/requests.php:57
+#: themes/foodiepro-2.1.8/buddypress/members/single/groups/invites.php:45
+msgid "Accept"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/requests-loop.php:59
+#: themes/foodiepro-2.1.8/buddypress/members/single/friends/requests.php:58
+#: themes/foodiepro-2.1.8/buddypress/members/single/groups/invites.php:46
+msgid "Reject"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/requests-loop.php:95
+msgid "There are no pending membership requests."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/send-invites.php:43
+msgid "Group invitations can only be extended to friends."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/send-invites.php:44
+msgid ""
+"Once you've made some friendships, you'll be able to invite those members to "
+"this group."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/send-invites.php:52
+msgid "All of your friends already belong to this group."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/activate.php:41
+msgid ""
+"Thanks for confirming your email address!<br>Your account is now pending "
+"administrator approval.<br>Once approved, details will be sent to you in a "
+"separate email."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/activate.php:48
+msgid "Please provide a valid activation key."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/activate.php:52
+msgid "Activation Key:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/index.php:53
+#, php-format
+msgid "All Members %s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/index.php:56
+#, php-format
+msgid "My Friends %s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/index.php:86
+#: themes/foodiepro-2.1.8/buddypress/members/single/friends.php:22
+msgid "Newest Registered"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/members-loop.php:142
+msgid "Sorry, no members were found."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:40
+msgid "User registration is currently not allowed."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:59
+msgid ""
+"Registering for this site is easy. Just fill in the fields below, and we'll "
+"get a new account set up for you in no time."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:74
+msgid "Account Details"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:76
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:87
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:98
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:110
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:272
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:288
+msgid "(required)"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:87
+msgid "Email Address"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:98
+msgid "Choose a Password"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:109
+msgid ""
+"Hint: The password should be at least seven characters long. To make it "
+"stronger, use upper and lower case letters, numbers and symbols like ! ? $ % ^ "
+"& )."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:110
+msgid "Confirm Password"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:156
+msgid "Profile Details"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:180
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:201
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/edit.php:59
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/edit.php:79
+#, php-format
+msgid "This field can be seen by: %s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:189
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/edit.php:68
+msgid "Who can see this field?"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:194
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/edit.php:73
+msgid "Close"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:266
+msgid "Blog Details"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:268
+msgid "Yes, I'd like to create a new site"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:272
+msgid "Blog URL"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:288
+msgid "Site Title"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:299
+msgid ""
+"I would like my site to appear in search engines, and in public listings "
+"around this network."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:309
+msgid "Yes"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:310
+msgid "No"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:378
+msgid "Registration completed"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:379
+msgid ""
+"You have successfully completed the registration!<br>In order to create your "
+"account, please activate it via the email we have just sent to your address."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:381
+msgid ""
+"You have successfully created your account! Please log in using the username "
+"and password you have just created."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/blogs.php:21
+msgid "Newest"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/friends/requests.php:102
+msgid "You have no pending friendship requests."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/groups/invites.php:66
+msgid "You have no outstanding group invites."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:21
+msgid "Send To (Username or Friend's Name)"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:30
+msgid "This is a notice to all users."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:33
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:59
+msgid "Subject"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:36
+msgid "Message"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:56
+#: themes/foodiepro-2.1.8/buddypress/members/single/notifications/notifications-loop.php:17
+msgid "Select all"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:58
+msgid "From"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:76
+msgid "Star"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:80
+#: themes/foodiepro-2.1.8/buddypress/members/single/notifications/notifications-loop.php:21
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_simple.php:53
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:229
+msgid "Actions"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:92
+msgid "Select this message"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:99
+msgid "From:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:106
+msgid "To:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:137
+msgid "Read"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:139
+msgid "Unread"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:142
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/single.php:44
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:101
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:95
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:132
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:113
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:147
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:254
+msgid "Delete"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:189
+msgid "Sorry, no messages were found."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/notices-loop.php:63
+msgid "Sent:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/notices-loop.php:95
+msgid "Sorry, no notices were found."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/single.php:30
+msgid "You are alone in this conversation."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/single.php:34
+#, php-format
+msgid "Conversation between %s recipients."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/single.php:38
+#, php-format
+msgid "Conversation between %s and you."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/single.php:101
+msgid "Send a Reply"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/single.php:124
+msgid "Reply to Message"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/notifications/feedback-no-notifications.php:16
+msgid "You have no unread notifications."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/notifications/feedback-no-notifications.php:20
+msgid "This member has no unread notifications."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/notifications/feedback-no-notifications.php:28
+msgid "You have no notifications."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/notifications/feedback-no-notifications.php:32
+msgid "This member has no notifications."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/notifications/notifications-loop.php:19
+msgid "Notification"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/notifications/notifications-loop.php:20
+msgid "Date Received"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/notifications/notifications-loop.php:33
+msgid "Select this notification"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/change-avatar.php:11
+msgid "Change Profile Photo"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/change-avatar.php:24
+msgid ""
+"Your profile photo will be used on your profile and throughout the site. If "
+"there is a <a href=\"http://gravatar.com\">Gravatar</a> associated with your "
+"account email we will use that, or you can upload an image from your computer."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/change-avatar.php:31
+msgid ""
+"Click below to select a JPG, GIF or PNG format photo from your computer and "
+"then click 'Upload Image' to proceed."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/change-avatar.php:44
+msgid ""
+"If you'd like to delete your current profile photo but not upload a new one, "
+"please use the delete profile photo button."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/change-avatar.php:45
+msgid "Delete My Profile Photo"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/change-avatar.php:52
+msgid "Crop Your New Profile Photo"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/change-avatar.php:84
+msgid ""
+"Your profile photo will be used on your profile and throughout the site. To "
+"change your profile photo, please create an account with <a href=\"http://"
+"gravatar.com\">Gravatar</a> using the same email address as you used to "
+"register with this site."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/change-cover-image.php:22
+msgid "Your Cover Image will be used to customize the header of your profile."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/edit.php:26
+#, php-format
+msgid "Editing '%s' Profile Group"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/edit.php:63
+msgid "Change"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:28
+#, php-format
+msgid "%s's Profile"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:35
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:42
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:42
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/booking-fields.php:12
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:62
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:43
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:54
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:24
+msgid "Name"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:44
+msgid "About Me"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:53
+msgid "Website"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:62
+msgid "Jabber"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:71
+msgid "AOL Messenger"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:80
+msgid "Yahoo Messenger"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/settings/capabilities.php:25
+msgid "This user is a spammer."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/settings/delete-account.php:16
+msgid ""
+"Deleting your account will delete all of the content you have created. It will "
+"be completely irrecoverable."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/settings/delete-account.php:20
+msgid ""
+"Deleting this account will delete all of the content it has created. It will "
+"be completely irrecoverable."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/settings/delete-account.php:39
+msgid "I understand the consequences."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/settings/general.php:16
+msgid ""
+"Current Password <span>(required to update email or change current password)</"
+"span>"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/settings/general.php:17
+msgid "Lost your password?"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/settings/general.php:21
+msgid "Account Email"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/settings/general.php:24
+msgid "Change Password <span>(leave blank for no change)</span>"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/settings/general.php:25
+msgid "New Password"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/settings/general.php:29
+#: themes/foodiepro-2.1.8/buddypress/members/single/settings/general.php:31
+msgid "Repeat New Password"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/settings/notifications.php:13
+msgid "Send an email notice when:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/settings/profile.php:28
+msgid "Visibility"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:258
+msgid "Goûtu.org - Cuisiner, Découvrir, Partager"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:289
+msgid "<strong>ERROR</strong>: User pending "
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:289
+msgid "approval"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:617
+#: themes/foodiepro-2.1.8/functions.php:642
+msgctxt "vowel"
+msgid "All recipes from "
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:619
+#: themes/foodiepro-2.1.8/functions.php:644
+msgctxt "consonant"
+msgid "All recipes from "
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:631
+msgctxt "vowel"
+msgid "All recipes containing "
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:633
+msgctxt "consonant"
+msgid "All recipes containing "
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:687
+msgid "Detailed Search Results"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:689
+msgid "Search Results for:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:798
+msgid "More posts in this category"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:900
+msgid "All rights reserved"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:900
+msgid "Contact us"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:900
+msgid "Legal notice"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:900
+msgid "Goûtu charter"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:900
+msgid "Personal data"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:900
+msgid "Terms of use"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/admin/functions.php:61
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:333
+msgid "Install Required Plugins"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/admin/functions.php:62
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:334
+msgid "Install Plugins"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/admin/functions.php:63
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:335
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/admin/functions.php:64
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:336
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/admin/functions.php:75
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:397
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/admin/functions.php:76
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:399
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:3029
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/admin/functions.php:77
+#, php-format
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/admin/functions.php:160
+#, php-format
+msgid ""
+"The normal editor is disabled because you're using a widgeted page template. "
+"You need to <a href=\"%s\">use widgets</a> to edit this page."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:56
+msgid "Colors"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:57
+msgid "You can customize your theme colors by changing any of the options below."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:82
+msgid "Typography"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:83
+msgid ""
+"You can customize your fonts here. For best results, we recommend using no "
+"more than two unique font families."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:93
+msgid " Family"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:109
+msgid " Weight"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:126
+msgid " Size"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:142
+msgid " Style"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:153
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:343
+msgid "Full Width"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:154
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:344
+msgid "One Half"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:155
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:345
+msgid "One Third"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:156
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:346
+msgid "One Fourth"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:157
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:347
+msgid "One Sixth"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:162
+msgid "Archive Grid Display:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:172
+msgid "Display The Title?"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:181
+msgid "Display The Entry Info?"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:190
+msgid "Display The Content?"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:199
+msgid "Display The Entry Meta?"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:207
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:413
+msgid "After Title"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:208
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:412
+msgid "Before Title"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:209
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:414
+msgid "After Content"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:214
+msgid "Featured Image Placement:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:239
+msgid "Main Background Color"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:245
+msgid "Container Background Color"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:251
+msgid "Accent Background Color"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:257
+msgid "Action Background Color"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:263
+msgid "Site Title Color"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:269
+msgid "Menu Background Color"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:275
+msgid "Menu Link Color"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:281
+msgid "Menu Link Hover Color"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:287
+msgid "Text Color"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:293
+msgid "Border Color"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:299
+msgid "Title Color"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:305
+msgid "Secondary Text Color"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:311
+msgid "Accent Text Color"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:317
+msgid "Action Text Color"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:323
+msgid "Link Color"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:329
+msgid "Link Hover Color"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:335
+msgid "Button Color"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:341
+msgid "Button Hover Color"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:347
+msgid "Button Text Color"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:353
+msgid "Button Hover Text Color"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:375
+msgid "Body Font"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:383
+msgid "Accent Font"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:391
+msgid "Heading Font"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:398
+msgid "Return to the dashboard"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:400
+msgid "The following plugin was activated successfully:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:401
+#, php-format
+msgid "No action taken. Plugin %1$s was already active."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:402
+#, php-format
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this theme. Please "
+"update the plugin."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:403
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:404
+msgid "Dismiss this notice"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:405
+msgid "Please contact the administrator of this site for help."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:1881
+#, php-format
+msgctxt "%s = version number"
+msgid "TGMPA v%s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2167
+msgid "Required"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2170
+msgid "Recommended"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2186
+msgid "WordPress Repository"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2189
+msgid "External Source"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2192
+msgid "Pre-Packaged"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2209
+msgid "Not Installed"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2213
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2215
+msgid "Active"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2221
+msgid "Required Update not Available"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2224
+msgid "Requires Update"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2227
+msgid "Update recommended"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2235
+#, php-format
+msgctxt "%1$s = install status, %2$s = update status"
+msgid "%1$s, %2$s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2371
+msgctxt "as in: \"version nr unknown\""
+msgid "unknown"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2379
+msgid "Installed version:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2387
+msgid "Minimum required version:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2399
+msgid "Available version:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2422
+#, php-format
+msgid ""
+"No plugins to install, update or activate. <a href=\"%1$s\">Return to the "
+"Dashboard</a>"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2436
+msgid "Plugin"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2437
+msgid "Source"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2438
+msgid "Type"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2442
+msgid "Version"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2443
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:42
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_simple.php:33
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:44
+msgid "Status"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2491
+#, php-format
+msgctxt "%2$s = plugin name in screen reader markup"
+msgid "Install %2$s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2495
+#, php-format
+msgctxt "%2$s = plugin name in screen reader markup"
+msgid "Update %2$s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2500
+#, php-format
+msgctxt "%2$s = plugin name in screen reader markup"
+msgid "Activate %2$s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2603
+msgid "Install"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2609
+msgid "Update"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2612
+msgid "Activate"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2643
+msgid "No plugins were selected to be installed. No action taken."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2645
+msgid "No plugins were selected to be updated. No action taken."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2681
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2683
+msgid "No plugins are available to be updated at this time."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:3028
+msgid "Plugin activation failed."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:3362
+#, php-format
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:3364
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:3365
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:3369
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:3370
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:3371
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:3372
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:3375
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:3377
+msgid "All installations have been completed."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:3378
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/customizer-library/extensions/fonts.php:18
+msgid "Standard Fonts"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/customizer-library/extensions/fonts.php:20
+msgid "Google Fonts"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/customizer-library/extensions/fonts.php:125
+msgid "All"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/customizer-library/extensions/fonts.php:126
+msgid "Cyrillic"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/customizer-library/extensions/fonts.php:127
+msgid "Cyrillic Extended"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/customizer-library/extensions/fonts.php:128
+msgid "Devanagari"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/customizer-library/extensions/fonts.php:129
+msgid "Greek"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/customizer-library/extensions/fonts.php:130
+msgid "Greek Extended"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/customizer-library/extensions/fonts.php:131
+msgid "Khmer"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/customizer-library/extensions/fonts.php:132
+msgid "Latin"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/customizer-library/extensions/fonts.php:133
+msgid "Latin Extended"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/customizer-library/extensions/fonts.php:134
+msgid "Vietnamese"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/customizer-library/extensions/fonts.php:194
+msgctxt "font style"
+msgid "Serif"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/customizer-library/extensions/fonts.php:198
+msgctxt "font style"
+msgid "Sans Serif"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/customizer-library/extensions/fonts.php:202
+msgctxt "font style"
+msgid "Monospaced"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:58
+msgid "Before Header"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:59
+msgid "This is the section before the header."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:63
+msgid "Home Top"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:64
+msgid "This is the home top section."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:68
+msgid "Home Middle"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:69
+msgid "This is the home middle section."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:73
+msgid "Home Bottom"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:74
+msgid "This is the home bottom section."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:78
+msgid "Post Bottom"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:79
+msgid "This is the after entry section."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:83
+msgid "Recipes Top"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:84
+msgid "This is the recipes top section."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:88
+msgid "Recipes Bottom"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:89
+msgid "This is the recipes bottom section."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:94
+msgid "Blogs Top"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:95
+msgid "This is the blogs top section."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:99
+msgid "Blogs Bottom"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:100
+msgid "This is the blogs bottom section."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:104
+msgid "Social sidebar"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:105
+msgid "This is the sidebar for social pages."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:110
+msgid "Social Bottom"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:111
+msgid "This is the widget section of buddypress pages."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:116
+msgid "Archives Top"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:117
+msgid "This is the top widget section of archived pages."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:54
+msgid "By"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:57
+msgid "[Read More...]"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:59
+msgid "More Posts from this Category"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:64
+msgid "Displays featured posts with thumbnails"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:71
+msgid "Foodie Pro - Featured Posts"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:183
+msgid "(no title)"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:334
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:383
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_simple.php:29
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:31
+msgid "Title"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:341
+msgid "Grid Columns"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:356
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:107
+msgid "Category"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:363
+msgid "All Categories"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:370
+msgid "Number of Posts to Show"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:375
+msgid "Number of Posts to Offset"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:384
+msgid "Parent"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:385
+msgid "ID"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:386
+msgid "Comment Count"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:387
+msgid "Random"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:392
+msgid "Sort Order"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:394
+msgid "Descending (3, 2, 1)"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:395
+msgid "Ascending (1, 2, 3)"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:401
+msgid "Exclude Previously Displayed Posts?"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:409
+msgid "Show Image"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:411
+msgid "Don't Show an Image"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:419
+msgid "Image Size"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:432
+msgid "Image Alignment"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:434
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:498
+msgid "None"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:435
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:499
+msgid "Left"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:436
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:500
+msgid "Right"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:437
+msgid "Center"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:447
+msgid "Show Post Title"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:452
+msgid "Show Post Info"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:457
+msgid "Content Type"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:459
+msgid "Show Content"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:460
+msgid "Show Excerpt"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:461
+msgid "Show Content Limit"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:462
+msgid "No Content"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:465
+msgid "Limit content to"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:467
+msgid "characters"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:472
+msgid "More Text (if applicable)"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:482
+msgid "Show Author Gravatar"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:486
+msgid "Gravatar Size"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:488
+msgid "Small (45px)"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:489
+msgid "Medium (65px)"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:490
+msgid "Large (85px)"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:491
+msgid "Extra Large (125px)"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:496
+msgid "Gravatar Alignment"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:510
+msgid "Show Category Archive Link"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:514
+msgid "Link Text"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:29
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:30
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/profile.php:22
+msgid "No Events"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:43
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:44
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location-editor.php:65
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location-editor.php:67
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:64
+msgid "Location"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:44
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:45
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:65
+msgid "Date and time"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:92
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:86
+msgid "Bookings"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:93
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:87
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:44
+msgid "Booked"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:95
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:89
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:23
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:107
+msgid "Pending"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:105
+#, php-format
+msgid "Duplicate %s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:105
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event-editor.php:12
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event-editor.php:109
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event-editor.php:111
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:39
+msgid "Event"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:127
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:126
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:141
+msgid ""
+"WARNING! You will delete ALL recurrences of this event, including booking "
+"history associated with any event in this recurrence. To keep booking "
+"information, go to the relevant single event and save it to detach it from "
+"this recurrence series."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:131
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:130
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:145
+msgid "Edit Recurring Events"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:100
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:118
+msgid "Duplicate this event"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/profile.php:7
+msgid "My Events"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/profile.php:24
+msgid "Add Event"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/profile.php:31
+msgid "Events I'm Attending"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/profile.php:44
+msgid "Not attending any events yet."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/emails/bookingsummary.php:13
+#: themes/foodiepro-2.1.8/plugins/events-manager/emails/bookingtickets.php:7
+msgid "Quantity"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/emails/bookingsummary.php:15
+#: themes/foodiepro-2.1.8/plugins/events-manager/emails/bookingtickets.php:9
+msgid "Price"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/emails/bookingsummary.php:25
+msgid "Sub Total"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/emails/bookingsummary.php:29
+msgid "Discounts Before Taxes"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/emails/bookingsummary.php:38
+msgid "Taxes"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/emails/bookingsummary.php:43
+msgid "Discounts (After Taxes)"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/emails/bookingsummary.php:51
+msgid "Total Price"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/booking-fields.php:16
+msgid "Phone"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/booking-fields.php:20
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:25
+msgid "E-mail"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/booking-fields.php:26
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:28
+msgid "Comment"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/ticket-single.php:37
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/tickets-list.php:45
+msgid "N/A"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event-editor.php:12
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location-editor.php:11
+#, php-format
+msgid "You do not have the rights to manage this %s."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event-editor.php:109
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location-editor.php:65
+#, php-format
+msgid "Submit %s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event-editor.php:111
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location-editor.php:67
+#, php-format
+msgid "Update %s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/attributes.php:43
+#, php-format
+msgid ""
+"You don't have any custom attributes defined in any of your Events Manager "
+"template settings. Please add them the <a href='%s'>settings page</a>"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/attributes.php:50
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location/attributes.php:50
+msgid "Deprecated Attributes"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/attributes.php:51
+msgid ""
+"If you see any attributes under here, that means they're not used in Events "
+"Manager formats. To add them, you need to add the custom attribute again to a "
+"formatting option in the settings page. To remove any of these deprecated "
+"attributes, give it a blank value and save."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/attributes.php:83
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location/attributes.php:83
+msgid ""
+"In order to use attributes, you must define some in your templates, otherwise "
+"they'll never show. Go to Events > Settings > General to add attribute "
+"placeholders."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/booking-stats.php:12
+msgid "Available Spaces"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/booking-stats.php:13
+msgid "Confirmed Spaces"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/booking-stats.php:14
+msgid "Pending Spaces"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/booking-stats.php:20
+msgid "No responses yet!"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/booking-stats.php:27
+msgid "manage bookings"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/booking-stats.php:28
+msgid "printable view"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/booking-stats.php:30
+msgid "export csv"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:50
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:51
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:69
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:70
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:145
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:146
+#, php-format
+msgctxt "before or after"
+msgid "%s the event starts"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:50
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:69
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:145
+msgid "Before"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:51
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:70
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:146
+msgid "After"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:86
+msgid "Everyone"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:92
+msgid "Restrict to"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:7
+msgid "Enable registration for this event"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:84
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:89
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:143
+msgid "day(s)"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:148
+msgid "at"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/categories-public.php:13
+msgid "Category:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/featured-image-public.php:13
+msgid "No image uploaded for this event yet"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/featured-image-public.php:16
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location/featured-image-public.php:16
+msgid "Upload/change picture"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/featured-image-public.php:19
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location/featured-image-public.php:19
+msgid "Delete Image?"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/group.php:22
+msgid "Not a Group Event"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/group.php:40
+msgid ""
+"Select a group you admin to attach this event to it. Note that all other "
+"admins of that group can modify the booking."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/group.php:43
+msgid ""
+"As a site admin, you see all group events, users will only be able to choose "
+"groups they are admins of."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/group.php:47
+msgid "No groups defined yet."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/location.php:9
+msgid "This event does not have a physical location."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/location.php:32
+msgid "Location:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/location.php:35
+msgid "No Location"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/location.php:65
+msgid "Location Name:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/location.php:70
+msgid ""
+"Create a location or start typing to search a previously created location."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/location.php:71
+msgid "You cannot edit saved locations here."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/location.php:71
+msgid "Reset this form to create a location or search again."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/location.php:75
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location/where.php:11
+msgid "Address:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/location.php:81
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location/where.php:17
+msgid "City/Town:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/location.php:87
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location/where.php:23
+msgid "State/County:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/location.php:93
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location/where.php:29
+msgid "Postcode:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/location.php:99
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location/where.php:35
+msgid "Region:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/location.php:105
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location/where.php:42
+msgid "Country:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/location.php:108
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location/where.php:45
+msgid "none selected"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:10
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:32
+msgid "This event repeats"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:13
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:35
+msgid "Daily"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:13
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:35
+msgid "Weekly"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:13
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:35
+msgid "Monthly"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:13
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:35
+msgid "Yearly"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:17
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:39
+msgid "every"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:19
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:41
+msgid "day"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:20
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:42
+msgid "days"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:21
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:43
+msgid "week on"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:22
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:44
+msgid "weeks on"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:23
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:45
+msgid "month on the"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:24
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:46
+msgid "months on the"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:25
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:47
+msgid "year"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:26
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:48
+msgid "years"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:36
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:59
+msgid "first"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:36
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:59
+msgid "second"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:36
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:59
+msgid "third"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:36
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:59
+msgid "fourth"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:36
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:59
+msgid "last"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:43
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:66
+msgid "of each month"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:48
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:13
+msgid "Recurrences span from "
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:51
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:58
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:17
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:18
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:26
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when.php:11
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when.php:18
+msgid "to"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:56
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:23
+msgid "Events start from"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:60
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:28
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when.php:20
+msgid "All day"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:63
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:69
+#, php-format
+msgid "Each event spans %s day(s)"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:65
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:71
+msgid ""
+"For a recurring event, a one day event will be created on each recurring date "
+"within this date range."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:11
+msgid "This is a recurring event."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:14
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when.php:8
+msgid "From "
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:24
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when.php:16
+msgid "Event starts at"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when.php:23
+msgid ""
+"This event spans every day between the beginning and end date, with start/end "
+"times applying to each day."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location-editor.php:11
+msgid "location"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location/attributes.php:43
+#, php-format
+msgid ""
+"You don't have any custom attributes defined in any of your Locations Manager "
+"template settings. Please add them the <a href='%s'>settings page</a>"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location/attributes.php:51
+msgid ""
+"If you see any attributes under here, that means they're not used in Locations "
+"Manager formats. To add them, you need to add the custom attribute again to a "
+"formatting option in the settings page. To remove any of these deprecated "
+"attributes, give it a blank value and save."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location/featured-image-public.php:13
+msgid "No image uploaded for this location yet"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location/where.php:6
+msgid ""
+"If you're using the Google Maps, the more detail you provide, the more "
+"accurate Google can be at finding your location. If your address isn't being "
+"found, please <a href='http://maps.google.com'>try it on maps.google.com</a> "
+"by adding all the fields below separated by commas."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/map-container.php:3
+msgid "Location not found"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/placeholders/locationmap.php:21
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/map-global.php:13
+msgid "Loading Map...."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/placeholders/locationmap.php:35
+msgid "Map Unavailable"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:14
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:4
+msgid "Add New"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:21
+msgid "Upcoming"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:26
+msgid "Draft"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:28
+msgid "Past Events"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:31
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:36
+msgid "Search Events"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:10
+#, php-format
+msgid "My %s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:10
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:13
+msgid "Locations"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:13
+#, php-format
+msgid "All %s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:21
+msgid "Bulk Actions"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:23
+msgid "Delete selected"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:26
+msgid "Apply"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:44
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:55
+msgid "Address"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:45
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:56
+msgid "State"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:46
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:57
+msgid "Country"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:13
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:18
+#, php-format
+msgid "Bookings for %s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:21
+msgid "Bookings data"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:26
+msgid "Phone number"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:27
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:41
+msgid "Spaces"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:49
+msgid "Available"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:69
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:259
+msgid "Cancel"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:85
+msgid "You do not have any bookings."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:96
+#, php-format
+msgid "Please <a href=\"%s\">Log In</a> to view your bookings."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_list_detail.php:18
+msgid "Future"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_list_detail.php:29
+msgid "ago"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_list_detail.php:35
+msgid "Create New"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_list_detail.php:105
+msgid "Author"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_list_detail.php:116
+#, php-format
+msgctxt "%s = human-readable time difference"
+msgid "Il y a %s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_list_detail.php:177
+msgid "&laquo;"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_list_detail.php:178
+msgid "&raquo;"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_list_detail.php:194
+msgid "Number of posts already created by you: "
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_list_detail.php:203
+msgid "Sorry, you do not have any posts (yet)"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_simple.php:30
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:32
+msgid "Enter title here"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_simple.php:59
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:70
+msgid "Content"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:120
+msgid "Tags"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:125
+msgid "Enter tag here"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:157
+msgid "Featured image"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:166
+msgid "Select featured image"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:169
+msgid "Not updated until post is saved"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:179
+msgid "Excerpt"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:195
+msgid "Post Moderation"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:198
+msgid "Email author with moderation comments ?"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:202
+msgid "Previous comments"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:234
+msgid "Save"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:244
+msgid "Publish"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:249
+msgid "Save & Preview"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:269
+msgid "Post type"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/yarpp-template-thumbnail.php:12
+msgid "Related Recipes"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/yarpp-template-thumbnail.php:14
+msgid "Related Posts"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/yarpp-template-thumbnail.php:37
+msgid "No related posts."
+msgstr ""

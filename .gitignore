@@ -45,3 +45,32 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+
+# =========================
+# Custom directories for Goûtu.org
+# =========================
+
+/*
+
+!themes/
+!mu-plugins/
+!plugins/
+!languages/
+
+themes/*
+!themes/foodiepro-2.1.8/
+
+themes/foodiepro-2.1.8/backups/*
+themes/foodiepro-2.1.8/images/Backup/*
+
+plugins/*
+!plugins/custom_shortcodes/
+!plugins/custom_widgets/
+#!plugins/frontier-post/
+#plugins/frontier-post/*
+#!plugins/frontier-post/language/*FR.*
+#!plugins/wp-ultimate-recipe-premium/
+
+languages/*
+#!/languages/plugins/

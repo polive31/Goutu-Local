@@ -1,0 +1,65 @@
+/* GLOBAL */
+
+
+
+
+
+/* =================================================================*/
+/* =                  SIDEBAR SECTION                             =*/
+/* =================================================================*/
+
+
+
+h2.entry-title, .wpupg-post-title, .sidebar .widget-wrap li a, .sidebar .widget-wrap li h3 a, .sidebar .widget-wrap a {
+  font-size: 16px;
+}
+
+.featured-content h2.entry-title a {
+  font-size: 16px;
+  text-decoration: none;
+}
+
+
+
+
+
+
+/*.sidebar-primary .widgettitle {
+  margin: 20px 0 15px;
+  /*font-weight: 500;
+  /*font-size: 16px;
+}*/
+
+/*#search-6 .widgettitle {
+  margin: 0 0 15px;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+/* =================================================================*/
+/* =                  MAIN CONTENT SECTION                         =*/
+/* =================================================================*/
+
+
+
+
+/*.home-top .widget_text .widgettitle {
+  font-size: 30px;
+}*/
+
+/* HOME TOP */
+
+
+
+
+
+

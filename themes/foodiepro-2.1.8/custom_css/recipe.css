@@ -1,0 +1,249 @@
+/* ============================================================ */
+/* =                       BUTTONS                            = */
+/* ============================================================ */
+
+/* Menus
+--------------------------------------------- */
+
+.user-menus-buttons-container {
+	float:none;
+}
+
+.user-menus-buttons-container button {
+	margin-top : 20px;
+	margin-bottom : 50px;
+	margin-right:0px;
+	margin-left:10px;
+	float:right;
+}
+
+.user-menus-buttons-container button:first-child {
+	float:left;
+	margin-left:0px;
+}
+
+.user-menus-select {
+	margin-top:40px;
+}
+
+
+/* ============================================================ */
+/* =                RECIPE DISPLAY               	
+/* ============================================================ */
+
+/* Favorite recipe */
+i.fa.fa-heart {
+    color: #b10404!important;
+}
+
+.wpurp-rows.ingredients {
+  width:40%;
+}
+
+.wpurp-recipe-ingredient-name,
+.wpurp-recipe-ingredient-notes {
+	display:inline;
+}
+
+.wpurp-recipe-ingredient-notes:before,
+.wpurp-recipe-ingredient-name:before {
+	content:" ";
+}
+
+span.wpurp-code.picture-footer {
+	margin-top:10px;
+	margin-bottom:20px;
+	width:100%;
+  background-color:#ddc3a3!important;
+  color:#555!important;
+  font-size: 11px !important;
+}
+
+span.wpurp-code.picture-footer:hover {
+  color:#000!important;
+}
+
+/* Picture gallery 
+----------------------------------------------*/
+#joined-pics .add-picture-button button,
+#joined-pics .gallery-item {
+	margin-right:5px!important;
+}
+
+#joined-pics .add-picture-button button {
+	text-transform:uppercase;
+  text-align:center;
+  width:75px;
+  height:75px;
+  font-size:12px!important;
+	color:#787878!important;
+	float:left!important;
+	background:#ddc3a3!important;
+}
+
+#joined-pics .add-picture-button button:hover {
+	color:#000!important;
+}
+
+#joined-pics .add-picture-button button:before {
+	/* content:"\f067"; Plus */
+	content:"+"; /* Plus */
+  font-size: 14px!important;
+	display:block;
+}
+
+/* ============================================================ */
+/* =                NUTRITIONAL INFORMATION WIDGET               	
+/* ============================================================ */
+
+.wpurp-nutrition-label {
+	max-width:initial;
+	border-width:0px;
+  color: #787878;
+  background-color: #ffedd0;
+  margin:0 10px;
+  padding:0 5px;
+}
+
+.nutrition-title,
+.nutrition-recipe {
+	display:none;
+}
+
+.wpurp-nutrition-label .nutrition-serving {
+  font-size: 13px;
+  line-height:19px;
+}
+
+.wpurp-nutrition-label .nutrition-line {
+	background-color:#ffedd0;
+	height:15px;
+}
+
+/* ============================================================ */
+/* =                      RECIPES  ENTRY                      	
+/* ============================================================ */
+
+.recipe-general-form-rating 
+/*#s2id_recipe-post_tag*/ {
+	display:none;
+}
+
+#wpurp_user_submission_form h4 {
+	border-bottom:1px solid #AAA;
+}
+
+input#recipe_prep_time, 
+input#recipe_cook_time, 
+input#recipe_passive_time, 
+input#recipe_servings,
+table#recipe-ingredients input.ingredients_amount {
+	width : 80px;
+}
+
+input#recipe_prep_time_text, 
+input#recipe_cook_time_text, 
+input#recipe_passive_time_text,
+input#recipe_servings_type {
+	width : 250px;
+}
+
+
+.recipe-form-notes {
+	margin-top : 20px;
+	text-decoration : none;
+	font-weight : normal;
+	font-size : 12px;
+}
+
+
+
+
+/* Ingredients & Instructions
+--------------------------------------------- */
+
+table#recipe-ingredients {
+	margin-bottom : 20px;
+}
+
+.ingredients_notes {
+	height:100px;
+}
+
+/* Prevent issue when previsualising the recipe */
+#wpurp_user_submission_form {
+	float: left;
+}
+
+#wpurp_user_submission_form textarea {
+	font-size: 14px;
+	color: black;
+}
+
+#wpurp_user_submission_form input#preview, 
+#wpurp_user_submission_form input#submit  {
+	font-size: 14px;
+	margin-top: 40px;
+}
+
+/* Countdown timer
+--------------------------------------------- */
+#wpurp-timer-container {
+    background-color: #8e8585;
+}
+
+
+/* Recipe notes
+--------------------------------------------- */
+
+#wp-recipe_notes-editor-container {
+	border-left : 1px solid #DDD;
+	border-right : 1px solid #DDD;
+	border-top : 1px solid #DDD;
+	border-bottom : 1px solid #DDD;
+}
+
+table#recipe-instructions textarea, 
+textarea#recipe_description {
+	font-size : 14px;
+}
+
+a.em-button {
+	display:block;
+	float:left;
+	clear:both;
+}
+
+form#posts-filter {
+	display:block;
+	clear:both;
+	float:left;
+	margin-top:20px;
+}
+
+
+
+/* =================================================================*/
+/* =             RESPONSIVE BEHAVIOUR                              
+/* =================================================================*/
+
+@media only screen and (max-width: 1139px) {
+}
+
+@media only screen and (max-width: 1023px) {
+}
+
+@media only screen and (max-width: 980px) {
+}
+
+@media only screen and (max-width: 420px) {
+
+	.wpurp-rows.ingredients {
+		width: 100%;
+	}
+	
+	li.wpurp-recipe-instruction {
+    float: left;
+}
+	
+}

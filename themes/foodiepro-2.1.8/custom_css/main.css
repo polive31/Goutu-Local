@@ -1,0 +1,105 @@
+/* =================================================================*/
+/* =                        GLOBAL                                 =*/
+/* =================================================================*/
+
+
+/* AVATAR SHAPE */
+
+
+
+
+/* =================================================================*/
+/* =         POSTS & ARCHIVES                                       =*/
+/* =================================================================*/
+
+/* ARCHIVE PAGES */
+
+
+
+/* =================================================================*/
+/* =                                               EVENT MANAGER                                            =*/
+/* =================================================================*/
+
+
+.css-event-form input, input#event-name {
+	height:30px;
+}
+
+/* EVENT FORM TIME & DATE ENTRY */
+input.em-date-input-loc {
+	width : 100px;
+}
+
+span#event-date-explanation {
+	display:none!important;
+}
+
+div.time-picker li {
+	height:20px;
+}
+
+/* EVENT FORM LOCATION ENTRY */
+#em-location-data table.em-location-data {
+	width:auto;
+	padding-right:20px;
+}
+
+#em-location-data table.em-location-data th {
+	text-align:left;
+	max-width:200px;
+	padding-right:20px;
+}
+
+#em-location-data table.em-location-data td {
+	width:auto;
+}
+
+#em-location-data table.em-location-data td i {
+	float:right;
+}
+
+.em-location-data-state,
+.em-location-data-region,
+.em-location-data-country,
+.em-location-data-nolocation {
+	display:none;
+}
+
+#em-location-data .em-location-map-container {
+	height:auto;
+}
+
+#event-form .event-extra-details select {
+	height:120px;
+	width:170px;
+}
+
+input#event-image,
+input#event-name {
+	width:350px;
+}
+
+input#event-image {
+	height:40px;
+}
+
+
+/* LOCATION */
+
+li#my-locations-personal-li {
+	display:none;
+}
+
+.alignleft.actions {
+	display:none;
+}
+
+.tablenav {
+	float:left;
+}
+
+table.widefat {
+	float:left;
+	clear:both;
+}
+

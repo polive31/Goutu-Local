@@ -1,0 +1,75 @@
+/* =================================================================*/
+/* =                                               HEADER general                                                                     =*/
+/* =================================================================*/
+
+
+/* =================================================================*/
+/* =                                               HEADER  with B&W logo                                                         =*/
+/* =================================================================*/
+
+
+/* Needed whenever the header size isn't the foodie pro default 800x340) */
+/* .header-image .site-header {
+    background-size: 400px 205px !important;
+}*/
+
+
+/* =================================================================*/
+/* =                                               HEADER with background picture                                           =*/
+/* =================================================================*/
+
+/*
+.foodie-pro .site-header {
+	padding-top : 0px;
+    background-position: left center !important;
+}
+	/*position:relative;*/
+
+	/*
+.foodie-pro .site-header {
+	background-repeat: no-repeat no-repeat !important;
+	background-image:linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)),url(http://goutu.org/wp-content/uploads/2016/08/goutu_download-1024x563.jpg) !important;
+}
+	/*background-size: cover;*/
+	/*height:340px;*/
+    /*-webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+    /*filter: grayscale(100%);*/
+
+/*	
+.foodie-pro .site-header:before, .site-header:before {
+	filter:blur(5px);
+	-webkit-filter:blur(5px);
+}
+
+.foodie-pro .site-header:after, .site-header:after {
+}
+
+.site-title a, .title-area {
+}*/
+
+
+/*
+.header-image .title-area {
+	margin:auto;
+	/*	margin-left : 20px;*/
+/*	z-index : 999; /* Must not be masked by left side of main nav */
+/*}*/
+
+/*.foodie-pro .site-header .wrap {
+	position:relative;
+}*/
+
+/* HEADER RIGHT */
+
+/*
+.header-image .site-header .widget-area  {
+	padding-top:0px;
+}	
+
+.site-header .widget-area {
+	/*width:auto!important;*/
+	/*	width:100%;
+	position:absolute;
+	right:0;
+	top:0;*/
+}

@@ -1,0 +1,24 @@
+/* Login Page : Autumn color style
+---------------------------------------------------------------------------------------------------- */
+
+body.login {
+  background-color:#e0cab7;
+  /*background-image: url('home-bg.jpg');*/
+  /*background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;*/
+}
+
+.login form {
+	background-color:#DDC3A3;
+}
+
+.login h1 a {
+  background-image: url('login-logo.png');
+  background-repeat:no-repeat;
+  background-size:contain;
+  width:150px;
+  height:150px;
+  border-radius : 50%; 
+  box-shadow : 5px 5px 5px #444;
+}

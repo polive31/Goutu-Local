@@ -1,0 +1,10 @@
+<?php
+function wpurp_minimal_mode( $minimal_mode, $url ) {
+   //if( $url == '/' ) return true; // Homepage
+
+    preg_match( "/^\/page-vide/i", $url, $matches );
+    if( count( $matches ) > 0 ) return true; // Any URL starting with /gestion-utilisateurs
+
+    return false;
+}
+add_filter( 'wpurp_minimal_mode', 'wpurp_minimal_mode', 10, 2 );

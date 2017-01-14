@@ -24,7 +24,7 @@ function list_terms_taxonomy( $atts ) {
 		'dropdown' => 'false',
 		'taxonomy' => 'category',
 		'label' => '',
-		'select_msg' => __( 'Select...' ),
+		'select_msg' => __( 'Select...', 'foodiepro' ),
 		'all_msg' => '',
 		'depth' => 1,
 		'child_of' => 0,

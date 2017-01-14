@@ -30,20 +30,6 @@ if ( !defined('ABSPATH') )
 //
 //add_shortcode('language', 'display_language_switcher'); 
 
-/* Related posts conditional title
---------------------------------------------- */
-	
-function display_related_posts_title() {
-
-	if ( is_singular( 'recipe' ) ) 
-		$output=__('Related recipes','foodiepro');
-	else
-		$output=__('Related posts','foodiepro');
-	
-	return $output;
-}
-
-add_shortcode('related-posts', 'display_related_posts_title'); 
 
 /* Share Title Output
 --------------------------------------------- */

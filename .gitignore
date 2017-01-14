@@ -65,6 +65,7 @@ themes/foodiepro-2.1.8/backups/*
 themes/foodiepro-2.1.8/images/Backup/*
 
 plugins/*
+!plugins/bp-custom.php
 !plugins/custom_shortcodes/
 !plugins/custom_widgets/
 #!plugins/frontier-post/

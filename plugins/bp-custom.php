@@ -1,0 +1,193 @@
+<?php
+/**
+ * BuddyPress - bp-custom.php in /plugins folder
+ *
+ * From: Pascal Olive
+ */
+
+
+/* Change BuddyPress default Members landing tab. */
+define('BP_DEFAULT_COMPONENT', 'profile' );
+
+/* Change default thumbnail size */
+define ( 'BP_AVATAR_THUMB_WIDTH', 65 );
+define ( 'BP_AVATAR_THUMB_HEIGHT', 65 );
+//define ( 'BP_AVATAR_FULL_WIDTH', 150 );
+//define ( 'BP_AVATAR_FULL_HEIGHT', 150 );
+//define ( 'BP_AVATAR_ORIGINAL_MAX_WIDTH', 640 );
+//define ( 'BP_AVATAR_ORIGINAL_MAX_FILESIZE', $max_in_kb );
+
+/* Change default avatar picture */
+define ( 'BP_AVATAR_DEFAULT', 'https://goutu.org/wp-content/themes/foodiepro-2.1.8/images/cook_avatar.png' );
+define ( 'BP_AVATAR_DEFAULT_THUMB', 'https://goutu.org/wp-content/themes/foodiepro-2.1.8/images/cook_avatar_thumb.png' );
+
+
+/* =================================================================*/
+/* =             CUSTOM ACTIVATION MAIL => FONCTIONNE PAS !!!
+/* =================================================================*/
+//
+//
+//function set_content_type( $content_type ) {
+//    return 'text/html';
+//}
+//
+///* Set back plain text format to prevent any conflict with WP mails which require it */
+//function default_mail_format() {
+//	remove_filter( 'wp_mail_content_type', 'set_content_type' );
+//}
+////add_action( 'bp_core_sent_user_validation_email', 'default_mail_format' );
+//
+///* Customize registration mail subject */
+//function custom_buddypress_activation_subject( $subject, $user_id ) {
+//	$user = get_userdata( $user_id );
+//	$text = 'essai3' . ' – Activate your ' . get_bloginfo( 'name' ) . ' account';
+//	return $text;
+//}
+//add_filter( 'bp_core_signup_send_validation_email_subject', 'custom_buddypress_activation_subject', 10, 2 );
+//
+///* Customize registration mail message */
+//add_filter('bp_core_signup_send_validation_email_message', 'add_username_to_activation_email',10,3);
+//
+//function add_username_to_activation_email($msg, $user_id, $activation_url) {
+//    // $username = $_POST['signup_username'];
+//    $userinfo = get_userdata($user_id);
+//    $username = $userinfo->user_login;
+//    $msg .= sprintf( __("After successful activation, you can log in using your username (%1\$s) along with password you choose during registration process.", 'textdomain'), $username);
+//    $msg .= 'ESSAI 3';
+//    return $msg;
+//}
+
+/* =================================================================*/
+/* =              COVER IMAGE SETTINGS
+/* =================================================================*/
+
+// Define cover image size
+function your_theme_xprofile_cover_image( $settings = array() ) {
+    $settings['width']  = 1140;
+    $settings['height'] = 350;
+    $settings['default_cover'] = 'https://goutu.org/wp-content/themes/foodiepro-2.1.8/images/cover_default.jpg';
+ 
+    return $settings;
+}
+add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'your_theme_xprofile_cover_image', 10, 1 );
+
+
+/**
+ * Your theme callback function
+ *
+ * <a class="bp-suggestions-mention" href="https://buddypress.org/members/see/" rel="nofollow">@see</a> bp_legacy_theme_cover_image() to discover the one used by BP Legacy
+ */
+function your_theme_cover_image_callback( $params = array() ) {
+    if ( empty( $params ) ) {
+        return;
+    }
+ 
+    return '
+        /* Cover image */
+        #buddypress #header-cover-image {
+            height: ' . $params["height"] . 'px;
+            background-image: url(' . $params['cover_image'] . ');
+        }
+        
+        /* Avatar */
+        #buddypress #item-header-cover-image #item-header-avatar {
+				    margin-top:' . ($params["height"]-intval(BP_AVATAR_FULL_HEIGHT+10)/2) . 'px;
+				    float: left;
+				    overflow: visible;
+				    width: auto;
+				}
+				
+        /* Name & meta */
+				#buddypress div#item-header #item-header-cover-image #item-header-content {
+				    clear: both;
+				    float: left;
+				    margin-left:' . (BP_AVATAR_FULL_WIDTH+20) . 'px;
+				    margin-top:-' . (BP_AVATAR_FULL_HEIGHT-10) . 'px;
+				    width: auto;
+				}
+    ';
+}
+
+// Override default css stylesheet
+function your_theme_cover_image_css( $settings = array() ) {
+    /**
+     * If you are using a child theme, use bp-child-css
+     * as the theme handel
+     */
+    $theme_handle = 'bp-child-css';
+    $settings['theme_handle'] = $theme_handle;
+ 
+    /**
+     * Then you'll probably also need to use your own callback function
+     * <a class="bp-suggestions-mention" href="https://buddypress.org/members/see/" rel="nofollow">@see</a> the previous snippet
+     */
+     $settings['callback'] = 'your_theme_cover_image_callback';
+ 
+    return $settings;
+}
+add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'your_theme_cover_image_css', 10, 1 );
+add_filter( 'bp_before_groups_cover_image_settings_parse_args', 'your_theme_cover_image_css', 10, 1 );
+
+ 
+/* =================================================================*/
+/* =              OTHER SETTINGS
+/* =================================================================*/
+
+/* Removing the links automatically created in a member’s profile */
+function remove_xprofile_links() {
+    remove_filter( 'bp_get_the_profile_field_value', 'xprofile_filter_link_profile_data', 9, 2 );
+}
+//add_action( 'bp_init', 'remove_xprofile_links' );
+
+
+
+/* Defining custom slugs */
+// change 'discuss' to whatever you want
+//define( 'BP_FORUMS_SLUG', 'discuss' );
+
+
+ 
+/* =================================================================*/
+/* =     BP-DEPENDANT AVATAR MGT FUNCTIONS  
+/* =================================================================*/
+
+
+//* Prevents Gravatar to be fetched from internet
+add_filter('bp_core_fetch_avatar_no_grav', '__return_true');
+
+
+//* Add gravatar or picture before entry title
+function bg_entry_image() {
+	if ( is_singular( 'recipe' ) | is_singular( 'post' ) ) /*&& ( function_exists('bp_is_active') ) */{ /* Post or Custom Post */
+		$id = get_the_author_meta( 'ID' );
+		$pseudo = bp_core_get_username( $id );
+		$url = bp_core_get_user_domain( $id );
+		$args = array( 
+	    'item_id' => $id, 
+	    'type' => 'thumb',
+	    'title' => $pseudo 
+		); 
+		echo '<div class="entry-avatar">';
+		echo '<a href="' . $url . '">';
+		echo bp_core_fetch_avatar( $args );
+		echo '</a>';
+		echo '</div>';
+	}
+
+	elseif ( is_page() ) {
+		$key_val = get_post_meta( get_the_ID(), 'entry_header_image', true );
+		if ( ! empty( $key_val ) ) {
+			echo '<div class="entry-header-image">';
+			echo '<img src="' . site_url( NULL, 'https' ) . '/wp-content/themes/foodiepro-2.1.8/images/' . $key_val . '">';	
+			echo '</div>';	
+		}
+	}
+}
+
+add_action( 'genesis_entry_header', 'bg_entry_image', 7 );
+
+
+
+
+/* File end */
+?>

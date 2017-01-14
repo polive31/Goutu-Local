@@ -308,40 +308,6 @@ add_filter('wp_authenticate_user', 'block_new_users',10,1);
 //}
 //add_action('admin_head', 'custom_admin_css');
 
-/* Add private/draft/future/pending pages to parent dropdown. */
-function wps_dropdown_pages_args_add_parents( $dropdown_args, $post = NULL ) {
-    $dropdown_args['post_status'] = array( 'publish', 'draft', 'pending', 'future', 'private', );
-    return $dropdown_args;
-}
-add_filter( 'page_attributes_dropdown_pages_args', 'wps_dropdown_pages_args_add_parents' );
-add_filter( 'quick_edit_dropdown_pages_args', 'wps_dropdown_pages_args_add_parents' );
-
-/* Add featured image to posts lists in backend */
-// Add the posts and pages columns filter. They can both use the same function.
-function add_post_admin_thumbnail_column($columns){
-	$columns['admin-post-thumb'] = __('Featured Image');
-	$columns['admin-post-ID'] = 'ID';
-	return $columns;
-}
-add_filter('manage_posts_columns', 'add_post_admin_thumbnail_column', 2);
-add_filter('manage_pages_columns', 'add_post_admin_thumbnail_column', 2);
-//add_filter('manage_recipe_posts_columns', 'add_post_admin_thumbnail_column', 2);
- 
-// Let's manage Post and Page Admin Panel Columns
-function show_post_thumbnail_column($columns, $post_id){
-	switch($columns) {
-		case 'admin-post-thumb':
-			echo the_post_thumbnail( 'mini-thumbnail' );
-			break;
-		case 'admin-post-ID':
-			echo $post_id;
-			break;
-	}
-}
-add_action('manage_posts_custom_column', 'show_post_thumbnail_column', 5, 2);
-add_action('manage_pages_custom_column', 'show_post_thumbnail_column', 5, 2);
-//add_action('manage_recipe_posts_custom_column', 'show_post_thumbnail_column', 5, 2);
-
 
 /* =================================================================*/
 /* =              STYLING     

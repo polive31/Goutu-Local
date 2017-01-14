@@ -841,39 +841,6 @@ remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
 /* =================================================================*/
 
 
-//* Prevents Gravatar to be fetched from internet
-add_filter('bp_core_fetch_avatar_no_grav', '__return_true');
-
-
-//* Add gravatar or picture before entry title
-function bg_entry_image() {
-	if ( is_singular( 'recipe' ) | is_singular( 'post' ) ) /*&& ( function_exists('bp_is_active') ) */{ /* Post or Custom Post */
-		$id = get_the_author_meta( 'ID' );
-		$pseudo = bp_core_get_username( $id );
-		$url = bp_core_get_user_domain( $id );
-		$args = array( 
-	    'item_id' => $id, 
-	    'type' => 'thumb',
-	    'title' => $pseudo 
-		); 
-		echo '<div class="entry-avatar">';
-		echo '<a href="' . $url . '">';
-		echo bp_core_fetch_avatar( $args );
-		echo '</a>';
-		echo '</div>';
-	}
-
-	elseif ( is_page() ) {
-		$key_val = get_post_meta( get_the_ID(), 'entry_header_image', true );
-		if ( ! empty( $key_val ) ) {
-			echo '<div class="entry-header-image">';
-			echo '<img src="' . site_url( NULL, 'https' ) . '/wp-content/themes/foodiepro-2.1.8/images/' . $key_val . '">';	
-			echo '</div>';	
-		}
-	}
-}
-
-add_action( 'genesis_entry_header', 'bg_entry_image', 7 );
 
 
 /* =================================================================*/

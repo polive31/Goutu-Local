@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Buddypress Widgets
+Plugin Name: Buddypress Custom Widgets
 Plugin URI: http://goutu.org
 Description: Provides additional social widgets based on Buddypress  
 Author: Pascal Olive 
@@ -22,8 +22,7 @@ if ( class_exists( 'BuddyPress' ) ) {
 }
 
 function bp_custom_widgets_load() {
-	//require( dirname( __FILE__ ) . '/bp-custom-shortcodes-files.php' );
-	require( dirname( __FILE__ ) . '\\' . basename(__FILE__ , ".php") . '_files.php' );
+	require( dirname( __FILE__ ) . '/bp_custom_widgets.php' );
 }
 
 function bp_custom_widgets_install_notice() {

@@ -1,8 +1,8 @@
 <?php
 /*
-YARPP Template: Thumbnails
-Description: Requires a theme which supports post thumbnails
-Author: mitcho (Michael Yoshitaka Erlewine)
+YARPP Template: Goutu
+Description: Customizable column count
+Author: Pascal O.
 */ ?>
 
 <?php

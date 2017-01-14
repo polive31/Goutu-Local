@@ -298,17 +298,16 @@ add_filter('wp_authenticate_user', 'block_new_users',10,1);
 /* =              ADMIN
 /* =================================================================*/
 
-/**
- * Add private/draft/future/pending pages to parent dropdown.
- */
- 
-add_filter( 'page_attributes_dropdown_pages_args', 'wps_dropdown_pages_args_add_parents' );
-add_filter( 'quick_edit_dropdown_pages_args', 'wps_dropdown_pages_args_add_parents' );
+/* Prevent Marshare icon issue with Oz' admin menu plugin */
+//function custom_admin_css() {
+//  echo '<style>
+//    #ozhmenu img.wp-menu-image {
+//    	width: 25px;
+//    } 
+//  </style>';
+//}
+//add_action('admin_head', 'custom_admin_css');
 
-function wps_dropdown_pages_args_add_parents( $dropdown_args, $post = NULL ) {
-    $dropdown_args['post_status'] = array( 'publish', 'draft', 'pending', 'future', 'private', );
-    return $dropdown_args;
-}
 
 /* =================================================================*/
 /* =              STYLING     
@@ -337,18 +336,6 @@ function add_post_category($classes){
 		}
 return $classes; */
 
-
-
-
-add_action('admin_head', 'custom_admin_css');
-
-function custom_admin_css() {
-  echo '<style>
-    #ozhmenu img.wp-menu-image {
-    	width: 25px;
-    } 
-  </style>';
-}
 
 
 /* Chargement des feuilles de style custom et polices */

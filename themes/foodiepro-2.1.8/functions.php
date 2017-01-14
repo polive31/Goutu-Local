@@ -501,6 +501,7 @@ function wprpe_orderby_rating( $args ) {
 }
 add_filter( 'rpwe_default_query_arguments', 'wprpe_orderby_rating' );
 
+
 /*function add_recipe_rating($args) {
 	$rating = output_recipe_rating( get_the_ID());
 	$output = 'Enter your text here';

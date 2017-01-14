@@ -22,7 +22,7 @@ if ( class_exists( 'BuddyPress' ) ) {
 }
 
 function bp_custom_shortcodes_load() {
-	require( dirname( __FILE__ ) . '/bp-custom-shortcodes.php' );
+	require( dirname( __FILE__ ) . '/bp_custom_Shortcodes.php' );
 }
 
 function bp_custom_shortcodes_install_notice() {

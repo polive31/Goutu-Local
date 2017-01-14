@@ -22,7 +22,7 @@ if ( class_exists( 'BuddyPress' ) ) {
 }
 
 function bp_custom_widgets_load() {
-	require( dirname( __FILE__ ) . '/bp_custom_widgets.php' );
+	require( dirname( __FILE__ ) . '/BP_custom_widgets.php' );
 }
 
 function bp_custom_widgets_install_notice() {

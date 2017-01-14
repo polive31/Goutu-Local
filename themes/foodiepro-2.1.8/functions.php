@@ -491,23 +491,6 @@ function output_recipe_rating( $recipe_id ) {
   );
 }
 
-/* Modify WP Recent Posts extended output, depending on the css ID field value */
-function wprpe_add_post_info($args) {
-		$disp_avatar = substr($args['cssID'],0,1);
-		$disp_rating = substr($args['cssID'],1,1);
-		if ( $disp_avatar == '1') {
-			$output = '<a class="auth-avatar" href="' . bp_core_get_user_domain( get_the_author_meta( 'ID' )) . '" title="' . bp_core_get_username(get_the_author_meta( 'ID' )) . '">';
-			$output .= get_avatar( get_the_author_meta( 'ID' ), '45');
-			$output .= '</a>';
-		}
-		if ( $disp_rating == '1') {
-			$rating = output_recipe_rating( get_the_ID());
-			$output .= '<div class="rating" id="stars-' . $rating['stars'] . '"></div>';
-		}
-		//$output = print_r($args, true);
-	return $output;
-}
-add_filter('rpwe_after_thumbnail', 'wprpe_add_post_info', 10, 1);
 
 
 /* Modify WP Recent Posts ordering, depending on the orderby field value */
@@ -517,31 +500,6 @@ function wprpe_orderby_rating( $args ) {
     return $args;
 }
 add_filter( 'rpwe_default_query_arguments', 'wprpe_orderby_rating' );
-
-//
-///* Display current member posts and more link  */
-//function wprpe_author_more_link( $args ) {
-//		//print_r($args);
-//		//if ( $args['author']=='bp_member' ) {
-//    	$args['after'] = '
-//    		<p class="more-from-category"> 
-//				<a href="/author/' . do_shortcode( '[bp_displayed]' ) . '">Toutes les recettes de' . do_shortcode( '[bp_displayed type="name"]' ) . '→</a>
-//				</p><br>
-//    	';
-//		//}
-//    return $args;
-//}
-////add_filter( 'rpwe_default_args', 'wprpe_author_more_link' );
-
-
-function wprpe_query_displayed_user_posts( $args ) {
-		if ( $args['author']=='bp_member' )  {
-    	$args['author'] = bp_displayed_user_id();
-		}
-    return $args;
-}
-add_filter( 'rpwe_default_query_arguments', 'wprpe_query_displayed_user_posts' );
-
 
 /*function add_recipe_rating($args) {
 	$rating = output_recipe_rating( get_the_ID());
@@ -840,7 +798,7 @@ remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
 /* =          AVATARS
 /* =================================================================*/
 
-
+// Moved to plugins/bp-custom.php
 
 
 /* =================================================================*/

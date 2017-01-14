@@ -1,12 +1,5 @@
 <?php
-/*
-Plugin Name: WPUR custom Widgets
-Plugin URI: http://goutu.org
-Description: Provides additional recipe widgets based on WP Ultimate Recipe  
-Author: Pascal Olive 
-Version: 1.0
-Author URI: http://goutu.org
-*/
+
 
 // Block direct requests
 if ( !defined('ABSPATH') )

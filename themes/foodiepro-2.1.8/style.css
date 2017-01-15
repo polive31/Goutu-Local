@@ -1540,9 +1540,15 @@ form[role="search"] {
 	padding:10px;
 }
 
+/* Slider widget
+--------------------------------------------- */
+.content .widget_easingslider_widget {
+    margin-bottom: 30px;
+}
+
+
 /* Detailed search widget 
 --------------------------------------------- */
-
 .widget_wpurp_recipe_search_widget input[type="submit"] {
 	margin-top:10px;
 }
@@ -1550,7 +1556,6 @@ form[role="search"] {
 
 /* Posts Grid (RPWE) & Popular posts grid
 --------------------------------------------- */
-
 .rpwe-block {
   float:left;
   width:100%;

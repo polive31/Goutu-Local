@@ -399,36 +399,6 @@ function display_all_meta() {
 //add_action( 'genesis_entry_header', 'display_all_meta', 10 );
 
 
-/* Batch update user_ratings_ratings custom field */
-//function batch_update_meta() {
-//	if (is_page(9645)) {
-//		
-//		echo '<div class="clearfix">';
-//		echo "Batch Update Meta script started..." . "\n";
-//		
-//    $post_type = 'recipe';
-//    $key = 'recipe_user_ratings_rating';
-//    $value = 0;
-//    
-//    $post_type_object = get_post_type_object($post_type);
-//    $label = $post_type_object->label;
-//    echo  "Updating all " . $label . "\n";
-//    $posts = get_posts(array('post_type'=> $post_type, 'post_status'=> 'publish', 'suppress_filters' => false, 'posts_per_page'=>-1));
-//
-//    foreach ($posts as $post) {
-//      $meta_value = get_post_meta($post->ID, $key, True);
-//      if (empty($meta_value)){
-//      //$meta_value2 = media_process($meta_value1, $post->ID); //Returns a string after it finishes process.
-//      update_post_meta($post->ID, $key, $value);
-//      echo $post->post_title." UPDATED" . "\n"; //Prints updated after ran.
-//      }
-//    }
-//    echo '/div';
-//  }
-//}
-//add_action( 'genesis_after_content', 'batch_update_meta' );
-
-
 /* Add ratings default value on recipe save */ 
 function wpurp_add_default_rating( $id, $post ) {
  if ( $post->post_type == 'recipe' && !wp_is_post_revision($post->ID) )
@@ -540,9 +510,6 @@ remove_action( 'genesis_before_loop', 'genesis_do_author_title_description', 15 
 //Removes Title and Description on Blog Template Page
 remove_action( 'genesis_before_loop', 'genesis_do_blog_template_heading' );
 
-//Removes Title and Description on Search Page
-//remove_action( 'genesis_before_loop', 'genesis_do_search_title' );
-//add_action( 'genesis_before_loop', 'genesis_do_search_title' );
 
 
 /* Display customized title and description before the widget area
@@ -609,23 +576,11 @@ function custom_archive_headline() {
 	}
 	
 }
-add_action( 'genesis_before_content', 'custom_archive_headline' );
+//add_action( 'genesis_before_content', 'custom_archive_headline' );
 
 
 /* Display customized title and description before the widget area
  ------------------------------------------------------------*/
-
-function custom_search_terms() {
-	if ( is_search() ) {
-		echo '<div class="search-description archive-description">';
-	  echo '<h1 class="archive-title">';
-		echo single_term_title('', false);
-		echo '</h1>';
-		echo '</div>';
-	}
-}
-add_action( 'genesis_before_content', 'custom_search_terms' );
-
 
 function custom_search_title_text() {	
 	$url = $_SERVER["REQUEST_URI"];
@@ -644,9 +599,6 @@ add_filter( 'genesis_search_title_text', 'custom_search_title_text' );
 //* Hook category widget areas before post content and after archive title
 function add_archive_widgeted_area() {
   if ( is_archive() || is_search() ) {
-  	$url = $_SERVER["REQUEST_URI"];
-		$WPURP_search = strpos($url, 'wpurp-search');
-		if (!$WPURP_search) 
   		genesis_widget_area( 'archives-top', array(
         'before' => '<div class="archives-top widget-area">',
         'after'  => '</div>',

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-01-07 12:23+0000\n"
-"PO-Revision-Date: 2017-01-07 12:34+0000\n"
+"POT-Creation-Date: 2017-01-17 01:34+0100\n"
+"PO-Revision-Date: 2017-01-17 01:35+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -14,22 +14,61 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: plugins/custom_shortcodes/bp-custom-shortcodes.php:36
+#: plugins/custom_shortcodes/BP_custom_shortcodes.php:28
 msgid "Friendship Requests"
 msgstr "Demandes d'amitié"
 
-#: plugins/custom_shortcodes/bp-custom-shortcodes.php:42
+#: plugins/custom_shortcodes/BP_custom_shortcodes.php:34
 msgid "Notifications"
 msgstr "Notifications"
 
-#: plugins/custom_shortcodes/bp-custom-shortcodes.php:48
+#: plugins/custom_shortcodes/BP_custom_shortcodes.php:40
 #: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:28
 msgid "My Profile"
 msgstr "Mon Profil"
 
+#: plugins/custom_shortcodes/BP_custom_shortcodes_loader.php:31
+msgid ""
+"<strong>BP Custom Shortcodes</strong></a> requires the BuddyPress plugin to "
+"work. Please <a href=\"https://buddypress.org/download\">install BuddyPress</"
+"a> first, or <a href=\"plugins.php\">deactivate BP Custom Shortcodes</a>."
+msgstr ""
+
 #: plugins/custom_shortcodes/custom-nav-shortcodes.php:27
 msgid "Select..."
 msgstr "Choisir..."
+
+#: plugins/custom_shortcodes/custom-nav-shortcodes.php:153
+msgid "Courses"
+msgstr "De l'apéritif au dessert"
+
+#: plugins/custom_shortcodes/custom-nav-shortcodes.php:158
+msgid "Seasons"
+msgstr "Cuisine de saisons"
+
+#: plugins/custom_shortcodes/custom-nav-shortcodes.php:163
+msgid "Occasions"
+msgstr "En toutes occasions"
+
+#: plugins/custom_shortcodes/custom-nav-shortcodes.php:168
+msgid "Diets"
+msgstr "Régimes et diététique"
+
+#: plugins/custom_shortcodes/custom-nav-shortcodes.php:175
+msgid "France"
+msgstr "Cuisines de régions"
+
+#: plugins/custom_shortcodes/custom-nav-shortcodes.php:179
+msgid "World"
+msgstr "Cuisines du monde"
+
+#: plugins/custom_shortcodes/custom-nav-shortcodes.php:183
+msgid "All blogs"
+msgstr "Tous les blogs"
+
+#: plugins/custom_shortcodes/custom-nav-shortcodes.php:189
+msgid "Previous page"
+msgstr "Page précédente"
 
 #: plugins/custom_shortcodes/misc-shortcodes.php:38
 msgid "Share this post"
@@ -39,119 +78,180 @@ msgstr "Partager cet article"
 msgid "Share this recipe"
 msgstr "Partager cette recette"
 
-#: plugins/custom_shortcodes/misc-shortcodes.php:68
-msgid "Courses"
-msgstr "De l'apéritif au dessert"
-
-#: plugins/custom_shortcodes/misc-shortcodes.php:73
-msgid "Seasons"
-msgstr "Cuisine de saisons"
-
-#: plugins/custom_shortcodes/misc-shortcodes.php:78
-msgid "Occasions"
-msgstr "En toutes occasions"
-
-#: plugins/custom_shortcodes/misc-shortcodes.php:83
-msgid "Diets"
-msgstr "Régimes et diététique"
-
-#: plugins/custom_shortcodes/misc-shortcodes.php:90
-msgid "France"
-msgstr "Cuisines de régions"
-
-#: plugins/custom_shortcodes/misc-shortcodes.php:94
-msgid "World"
-msgstr "Cuisines du monde"
-
-#: plugins/custom_shortcodes/misc-shortcodes.php:98
-msgid "All blogs"
-msgstr "Tous les blogs"
-
-#: plugins/custom_shortcodes/misc-shortcodes.php:104
-msgid "Previous page"
-msgstr "Page précédente"
-
-#: plugins/custom_shortcodes/misc-shortcodes.php:221
+#: plugins/custom_shortcodes/misc-shortcodes.php:154
 msgid "Add a picture"
 msgstr "Ajoutez votre photo"
 
-#: plugins/custom_widgets/bp_widgets.php:36
+#: plugins/custom_widgets/BP_custom_widgets.php:28
 msgid "(Buddypress) My Friends"
 msgstr ""
 
-#: plugins/custom_widgets/bp_widgets.php:37
+#: plugins/custom_widgets/BP_custom_widgets.php:29
 msgid "Displays a chosen number of my friends"
 msgstr ""
 
-#: plugins/custom_widgets/bp_widgets.php:92
-#: plugins/custom_widgets/bp_widgets.php:203
-#: plugins/custom_widgets/bp_widgets.php:312
-#: plugins/custom_widgets/foodiepro_widgets.php:100
+#: plugins/custom_widgets/BP_custom_widgets.php:84
+#: plugins/custom_widgets/BP_custom_widgets.php:195
+#: plugins/custom_widgets/BP_custom_widgets.php:304
+#: plugins/custom_widgets/foodiepro_widgets.php:106
 msgid "New title"
 msgstr ""
 
-#: plugins/custom_widgets/bp_widgets.php:96
-#: plugins/custom_widgets/bp_widgets.php:212
-#: plugins/custom_widgets/bp_widgets.php:316
-#: plugins/custom_widgets/bp_widgets.php:515
-#: plugins/custom_widgets/foodiepro_widgets.php:105
-#: plugins/custom_widgets/nutrition_label_widget.php:63
-#: plugins/custom_widgets/wpur_widgets.php:108
+#: plugins/custom_widgets/BP_custom_widgets.php:88
+#: plugins/custom_widgets/BP_custom_widgets.php:204
+#: plugins/custom_widgets/BP_custom_widgets.php:308
+#: plugins/custom_widgets/BP_custom_widgets.php:507
+#: plugins/custom_widgets/WPUR_custom_nutrition_label.php:56
+#: plugins/custom_widgets/WPUR_custom_recipe_list.php:101
+#: plugins/custom_widgets/foodiepro_widgets.php:111
 #: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:106
 #: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:74
 msgid "Title:"
 msgstr ""
 
-#: plugins/custom_widgets/bp_widgets.php:142
+#: plugins/custom_widgets/BP_custom_widgets.php:134
 msgid "(Buddypress) Custom latest registered members"
 msgstr ""
 
-#: plugins/custom_widgets/bp_widgets.php:143
+#: plugins/custom_widgets/BP_custom_widgets.php:135
 msgid "Displays latest registered members"
 msgstr ""
 
-#: plugins/custom_widgets/bp_widgets.php:218
+#: plugins/custom_widgets/BP_custom_widgets.php:210
 msgid "Number of users to show"
 msgstr ""
 
-#: plugins/custom_widgets/bp_widgets.php:265
+#: plugins/custom_widgets/BP_custom_widgets.php:257
 msgid "(Buddypress) Welcome"
 msgstr ""
 
-#: plugins/custom_widgets/bp_widgets.php:266
+#: plugins/custom_widgets/BP_custom_widgets.php:258
 msgid "Displays gravatar and name of current loggued-in user"
 msgstr ""
 
-#: plugins/custom_widgets/bp_widgets.php:370
+#: plugins/custom_widgets/BP_custom_widgets.php:362
 msgctxt "Title of the login widget"
 msgid "(BuddyPress) Custom Log In"
 msgstr ""
 
-#: plugins/custom_widgets/bp_widgets.php:372
+#: plugins/custom_widgets/BP_custom_widgets.php:364
 msgid ""
 "Show a Log In form to logged-out visitors, and a Log Out link to those who "
 "are logged in, with full resolution avatar."
 msgstr ""
 
-#: plugins/custom_widgets/bp_widgets.php:423
+#: plugins/custom_widgets/BP_custom_widgets.php:415
 msgid "Log Out"
 msgstr "Déconnexion"
 
-#: plugins/custom_widgets/bp_widgets.php:447
+#: plugins/custom_widgets/BP_custom_widgets.php:439
 #: themes/foodiepro-2.1.8/buddypress/members/register.php:76
 msgid "Username"
 msgstr ""
 
-#: plugins/custom_widgets/bp_widgets.php:450
+#: plugins/custom_widgets/BP_custom_widgets.php:442
 msgid "Password"
 msgstr ""
 
-#: plugins/custom_widgets/bp_widgets.php:453
+#: plugins/custom_widgets/BP_custom_widgets.php:445
 msgid "Remember Me"
 msgstr ""
 
-#: plugins/custom_widgets/bp_widgets.php:459
+#: plugins/custom_widgets/BP_custom_widgets.php:451
 msgid "Register"
+msgstr ""
+
+#: plugins/custom_widgets/BP_custom_widgets_loader.php:30
+msgid ""
+"<strong>BP Custom Widgets</strong></a> requires the BuddyPress plugin to "
+"work. Please <a href=\"https://buddypress.org/download\">install BuddyPress</"
+"a> first, or <a href=\"plugins.php\">deactivate BP Custom Widgets</a>."
+msgstr ""
+
+#: plugins/custom_widgets/WPUR_custom_nutrition_label.php:10
+msgid "WPURP Custom Nutrition Label"
+msgstr ""
+
+#: plugins/custom_widgets/WPUR_custom_nutrition_label.php:12
+msgid "Display the Nutrition Label of a recipe, if it is available."
+msgstr ""
+
+#: plugins/custom_widgets/WPUR_custom_nutrition_label.php:47
+msgid "Nutrition Label"
+msgstr ""
+
+#: plugins/custom_widgets/WPUR_custom_nutrition_label.php:60
+msgid "Recipe"
+msgstr ""
+
+#: plugins/custom_widgets/WPUR_custom_nutrition_label.php:62
+msgid "Recipe shown on recipe page"
+msgstr ""
+
+#: plugins/custom_widgets/WPUR_custom_nutrition_label.php:72
+msgid "Serving Size"
+msgstr ""
+
+#: plugins/custom_widgets/WPUR_custom_recipe_list.php:20
+msgid "WPURP Custom Recipe List"
+msgstr ""
+
+#: plugins/custom_widgets/WPUR_custom_recipe_list.php:22
+msgid "Customized WPURP recipes display widget"
+msgstr ""
+
+#: plugins/custom_widgets/WPUR_custom_recipe_list.php:82
+msgid "Our Recipes"
+msgstr ""
+
+#: plugins/custom_widgets/WPUR_custom_recipe_list.php:91
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:382
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:40
+msgid "Date"
+msgstr ""
+
+#: plugins/custom_widgets/WPUR_custom_recipe_list.php:92
+msgid "Recipe Title"
+msgstr ""
+
+#: plugins/custom_widgets/WPUR_custom_recipe_list.php:93
+msgid "Recipe Rating"
+msgstr ""
+
+#: plugins/custom_widgets/WPUR_custom_recipe_list.php:96
+msgid "ascending"
+msgstr ""
+
+#: plugins/custom_widgets/WPUR_custom_recipe_list.php:97
+msgid "descending"
+msgstr ""
+
+#: plugins/custom_widgets/WPUR_custom_recipe_list.php:105
+msgid "Restrict to taxonomies (ID) :"
+msgstr ""
+
+#: plugins/custom_widgets/WPUR_custom_recipe_list.php:109
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:380
+msgid "Order By"
+msgstr ""
+
+#: plugins/custom_widgets/WPUR_custom_recipe_list.php:120
+msgid "Order"
+msgstr ""
+
+#: plugins/custom_widgets/WPUR_custom_recipe_list.php:131
+msgid "Number of recipes to show"
+msgstr ""
+
+#: plugins/custom_widgets/WPUR_custom_recipe_list.php:136
+msgid "Show Images"
+msgstr ""
+
+#: plugins/custom_widgets/WPUR_widgets_loader.php:30
+msgid ""
+"<strong>WPUR Widgets Plugin</strong></a> requires the WP Ultimate Recipe "
+"plugin to work. Please <a href=\"plugins.php\">activate/install WPUR or "
+"deactivate this plugin </a>."
 msgstr ""
 
 #: plugins/custom_widgets/foodiepro_widgets.php:29
@@ -162,119 +262,40 @@ msgstr ""
 msgid "Displays a dropdown list allowing to sort posts"
 msgstr ""
 
-#: plugins/custom_widgets/foodiepro_widgets.php:44
+#: plugins/custom_widgets/foodiepro_widgets.php:50
 msgid "Sort recipes"
 msgstr "Classer les recettes"
 
-#: plugins/custom_widgets/foodiepro_widgets.php:46
+#: plugins/custom_widgets/foodiepro_widgets.php:52
 msgid "Sort posts"
 msgstr "Classer les articles"
 
-#: plugins/custom_widgets/foodiepro_widgets.php:56
+#: plugins/custom_widgets/foodiepro_widgets.php:62
 msgid "Select sort order..."
 msgstr "Trier par..."
 
-#: plugins/custom_widgets/foodiepro_widgets.php:57
+#: plugins/custom_widgets/foodiepro_widgets.php:63
 msgid "Title : ascending"
 msgstr "Titre : de A à Z"
 
-#: plugins/custom_widgets/foodiepro_widgets.php:58
+#: plugins/custom_widgets/foodiepro_widgets.php:64
 msgid "Title : descending"
 msgstr "Titre : de Z à A"
 
-#: plugins/custom_widgets/foodiepro_widgets.php:61
+#: plugins/custom_widgets/foodiepro_widgets.php:67
 msgid "Newest first"
 msgstr "Date de publication"
 
-#: plugins/custom_widgets/foodiepro_widgets.php:65
+#: plugins/custom_widgets/foodiepro_widgets.php:71
 msgid "Comment count"
 msgstr "Commentaires"
 
-#: plugins/custom_widgets/foodiepro_widgets.php:67
+#: plugins/custom_widgets/foodiepro_widgets.php:73
 msgid "Rating"
 msgstr "Appréciation"
 
-#: plugins/custom_widgets/nutrition_label_widget.php:17
-msgid "WPURP Custom Nutrition Label"
-msgstr ""
-
-#: plugins/custom_widgets/nutrition_label_widget.php:19
-msgid "Display the Nutrition Label of a recipe, if it is available."
-msgstr ""
-
-#: plugins/custom_widgets/nutrition_label_widget.php:54
-msgid "Nutrition Label"
-msgstr ""
-
-#: plugins/custom_widgets/nutrition_label_widget.php:67
-msgid "Recipe"
-msgstr ""
-
-#: plugins/custom_widgets/nutrition_label_widget.php:69
-msgid "Recipe shown on recipe page"
-msgstr ""
-
-#: plugins/custom_widgets/nutrition_label_widget.php:79
-msgid "Serving Size"
-msgstr ""
-
-#: plugins/custom_widgets/wpur_widgets.php:27
-msgid "WPURP Custom Recipe List"
-msgstr ""
-
-#: plugins/custom_widgets/wpur_widgets.php:29
-msgid "Customized WPURP recipes display widget"
-msgstr ""
-
-#: plugins/custom_widgets/wpur_widgets.php:89
-msgid "Our Recipes"
-msgstr ""
-
-#: plugins/custom_widgets/wpur_widgets.php:98
-#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:382
-#: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:40
-msgid "Date"
-msgstr ""
-
-#: plugins/custom_widgets/wpur_widgets.php:99
-msgid "Recipe Title"
-msgstr ""
-
-#: plugins/custom_widgets/wpur_widgets.php:100
-msgid "Recipe Rating"
-msgstr ""
-
-#: plugins/custom_widgets/wpur_widgets.php:103
-msgid "ascending"
-msgstr ""
-
-#: plugins/custom_widgets/wpur_widgets.php:104
-msgid "descending"
-msgstr ""
-
-#: plugins/custom_widgets/wpur_widgets.php:112
-msgid "Restrict to taxonomies (ID) :"
-msgstr ""
-
-#: plugins/custom_widgets/wpur_widgets.php:116
-#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:380
-msgid "Order By"
-msgstr ""
-
-#: plugins/custom_widgets/wpur_widgets.php:127
-msgid "Order"
-msgstr ""
-
-#: plugins/custom_widgets/wpur_widgets.php:138
-msgid "Number of recipes to show"
-msgstr ""
-
-#: plugins/custom_widgets/wpur_widgets.php:143
-msgid "Show Images"
-msgstr ""
-
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:184
-#: themes/foodiepro-2.1.8/functions.php:838
+#: themes/foodiepro-2.1.8/functions.php:700
 msgid "Read More"
 msgstr ""
 
@@ -1192,7 +1213,19 @@ msgstr ""
 msgid "Visibility"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:258
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:45
+msgid "Serves"
+msgstr "Portions"
+
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:47
+msgid "Preparation"
+msgstr "Préparation"
+
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:49
+msgid "Cooking"
+msgstr "Cuisson"
+
+#: themes/foodiepro-2.1.8/functions.php:257
 msgid "Goûtu.org - Cuisiner, Découvrir, Partager"
 msgstr ""
 
@@ -1204,61 +1237,62 @@ msgstr "<strong> ERREUR</strong>: Utilisateur en attente d'"
 msgid "approval"
 msgstr "approbation"
 
-#: themes/foodiepro-2.1.8/functions.php:617
-#: themes/foodiepro-2.1.8/functions.php:642
+#: themes/foodiepro-2.1.8/functions.php:501
+#: themes/foodiepro-2.1.8/functions.php:526
 msgctxt "vowel"
 msgid "All recipes from "
 msgstr "Toutes les recettes d'"
 
-#: themes/foodiepro-2.1.8/functions.php:619
-#: themes/foodiepro-2.1.8/functions.php:644
+#: themes/foodiepro-2.1.8/functions.php:503
+#: themes/foodiepro-2.1.8/functions.php:528
 msgctxt "consonant"
 msgid "All recipes from "
 msgstr "Toutes les recettes de "
 
-#: themes/foodiepro-2.1.8/functions.php:631
+#: themes/foodiepro-2.1.8/functions.php:515
 msgctxt "vowel"
 msgid "All recipes containing "
 msgstr "Toutes les recettes à base d'"
 
-#: themes/foodiepro-2.1.8/functions.php:633
+#: themes/foodiepro-2.1.8/functions.php:517
 msgctxt "consonant"
 msgid "All recipes containing "
 msgstr "Toutes les recettes à base de "
 
-#: themes/foodiepro-2.1.8/functions.php:687
+#: themes/foodiepro-2.1.8/functions.php:559
 msgid "Detailed Search Results"
 msgstr "Résultats de recherche détaillée"
 
-#: themes/foodiepro-2.1.8/functions.php:689
+#: themes/foodiepro-2.1.8/functions.php:561
+#: themes/foodiepro-2.1.8/search.php:24
 msgid "Search Results for:"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:798
+#: themes/foodiepro-2.1.8/functions.php:660
 msgid "More posts in this category"
 msgstr "Autres articles dans cette catégorie"
 
-#: themes/foodiepro-2.1.8/functions.php:900
+#: themes/foodiepro-2.1.8/functions.php:732
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
-#: themes/foodiepro-2.1.8/functions.php:900
+#: themes/foodiepro-2.1.8/functions.php:732
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:900
+#: themes/foodiepro-2.1.8/functions.php:732
 msgid "Legal notice"
 msgstr "Mentions légales"
 
-#: themes/foodiepro-2.1.8/functions.php:900
+#: themes/foodiepro-2.1.8/functions.php:732
 msgid "Goûtu charter"
 msgstr "Charte Goûtu"
 
-#: themes/foodiepro-2.1.8/functions.php:900
+#: themes/foodiepro-2.1.8/functions.php:732
 msgid "Personal data"
 msgstr "Données personnelles"
 
-#: themes/foodiepro-2.1.8/functions.php:900
+#: themes/foodiepro-2.1.8/functions.php:732
 msgid "Terms of use"
 msgstr "Conditions d'utilisation"
 
@@ -2849,17 +2883,16 @@ msgstr ""
 msgid "Post type"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/yarpp-template-thumbnail.php:12
+#: themes/foodiepro-2.1.8/yarpp-template-goutu.php:29
 msgid "Related Recipes"
 msgstr "Ces recettes pourraient également vous intéresser..."
 
-#: themes/foodiepro-2.1.8/yarpp-template-thumbnail.php:14
+#: themes/foodiepro-2.1.8/yarpp-template-goutu.php:31
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
 
-#: themes/foodiepro-2.1.8/yarpp-template-thumbnail.php:37
-msgid "No related posts."
-msgstr "Pas d'articles similaires."
+#~ msgid "No related posts."
+#~ msgstr "Pas d'articles similaires."
 
 #~ msgid "Related recipes"
 #~ msgstr "Ces autres recettes pourraient vous intéresser..."

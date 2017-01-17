@@ -11,11 +11,11 @@ body {
 }
 
 .site-title a {
-	background:url("../images/header_goutu_autumn_h75.png") no-repeat center;
+	background:url("../../images/header_goutu_autumn_h75.png") no-repeat center;
 }
 
 .home-page .site-title a {
-	background:url("../images/header_goutu_autumn_450_190.png") no-repeat center;
+	background:url("../../images/header_goutu_autumn_450_190.png") no-repeat center;
 }
 
 h1.entry-title,
@@ -107,10 +107,6 @@ i.fa.fa-star-o,
 .widget.themes ul li.current-menu-item,
 .archive-pagination li.active {
 	background-color:#fff6e7;
-}
-
-.wpurp-recipe-ingredients {
-	background-color :#f1b46c;
 }
 
 .archive-pagination li {

@@ -310,7 +310,7 @@ function custom_load_custom_style_sheet() {
 	else 
 		wp_enqueue_style( 'color-theme-white', get_stylesheet_directory_uri() . '/assets/css/color-theme-white.css', array(), CHILD_THEME_VERSION );		
 	wp_enqueue_style( 'custom-recipe', get_stylesheet_directory_uri() . '/assets/css/custom-recipe.css', array(), CHILD_THEME_VERSION );
-	wp_enqueue_style( 'font-awesome', get_stylesheet_directory_uri() . '/assets/fonts/font-awesome/css/font-awesome.min.css', array(), CHILD_THEME_VERSION );
+	//wp_enqueue_style( 'font-awesome', get_stylesheet_directory_uri() . '/assets/fonts/font-awesome/css/font-awesome.min.css', array(), CHILD_THEME_VERSION );
 	//wp_enqueue_style( 'google-font-ruge', '//fonts.googleapis.com/css?family=Ruge+Boogie:400', array(), CHILD_THEME_VERSION );
 	//wp_enqueue_style( 'google-font-crafty-girls', '//fonts.googleapis.com/css?family=Crafty+Girls', array(), CHILD_THEME_VERSION );
 	//wp_enqueue_style( 'google-font-sacramento', '//fonts.googleapis.com/css?family=Sacramento', array(), CHILD_THEME_VERSION );

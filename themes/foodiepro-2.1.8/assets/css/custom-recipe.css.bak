@@ -1,6 +1,9 @@
 /* Custom Recipe Template 
 -------------------------------------------*/
 
+
+/* Headline */
+
 .recipe-top {
 	width:100%;
 	float:left;
@@ -18,22 +21,29 @@
 	font-family: Open Sans, sans-serif;
 	font-size:14px;
 	color:#1a1a1a;
-	font-weight:300;
+	font-weight:normal;
 }
 
 .recipe-buttons {
 	float: right;
 }
 
+/* Image */
+
 .image-container {
 	width:60%;
 	float:left;
 	margin:10px;
-	object-fit:contain;
+	padding:0px;
+}
+
+.recipe-img {
+	
 }
 
 .image-container img {
 	width:100%;
+	float:left;
 	object-fit:contain;
 }
 	
@@ -43,7 +53,9 @@
 }
 
 .label-container {
-	margin-bottom:5px;
+	margin-bottom:6px;
+	clear: both;
+	float:left;
 }
 
 .recipe-label {
@@ -63,7 +75,6 @@
 	padding-top: 4px;
 }
 	
-	
 .recipe-label#servings:before {
 	content:"\f0f5";
 }
@@ -80,6 +91,10 @@
 	content:"\f252";
 }
 
+.recipe-label#wait:before {
+	content:"\f04c";
+}
+
 .adjust-recipe-servings {
 	width:40px;
 	padding:2px;
@@ -90,18 +105,17 @@
 	font-size:16px;
 }
 
+/* Ingredients */
 
 .ingredients-container {
 	float:left;
 	border:1px dashed #000;
 	width:40%;
-	margin:0 20px 0px 0;
+	margin:0 30px 0px 0;
 	padding:10px;
 	background-color :#f1b46c;
 	text-decoration:none;
 }
-
-
 
 ul.wpurp-recipe-ingredients {
     margin-bottom: 0;
@@ -111,9 +125,16 @@ li.wpurp-recipe-ingredient a {
     text-decoration: none;
 }
 
+/* Instructions */
+
+ol.wpurp-recipe-instructions {
+    list-style-position: inside;
+}
+
 li.wpurp-recipe-instruction {
     margin-bottom: 10px;
 }
+
 
 
 /* Picture gallery 

@@ -11,11 +11,11 @@ body {
 }
 
 .site-title a {
-	background:url("../images/header_goutu_autumn_h75.png") no-repeat center;
+	background:url("../../images/header_goutu_autumn_h75.png") no-repeat center;
 }
 
 .home-page .site-title a {
-	background:url("../images/header_goutu_autumn_450_190.png") no-repeat center;
+	background:url("../../images/header_goutu_autumn_450_190.png") no-repeat center;
 }
 
 h1.entry-title,
@@ -141,7 +141,7 @@ a.entry-image-link:hover img {
 
 	.site-title a,
 	.home .site-title a {
-		background:url("../images/header_goutu_autumn_360_150.png") no-repeat center;
+		background:url("../../images/header_goutu_autumn_360_150.png") no-repeat center;
 	}
 
 }
@@ -153,7 +153,7 @@ a.entry-image-link:hover img {
  
 	.site-title a,
 	.home .site-title a {
-		background:url("../images/header_goutu_autumn_720_300.png") no-repeat center;
+		background:url("../../images/header_goutu_autumn_720_300.png") no-repeat center;
 		background-size:contain;
 	}
 

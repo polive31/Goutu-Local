@@ -64,7 +64,7 @@ function foodie_pro_theme_setup() {
 
 	//* Add new featured image sizes.
 	add_image_size( 'horizontal-thumbnail', 680, 450, true );
-	add_image_size( 'flexslider', 680, 400, true );
+	//add_image_size( 'flexslider', 680, 400, true );
 	add_image_size( 'vertical-thumbnail', 680, 900, true );
 	add_image_size( 'square-thumbnail', 320, 320, true );
 	add_image_size( 'medium-thumbnail', 450, 450, true );

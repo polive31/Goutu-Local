@@ -93,9 +93,9 @@ i.fa.fa-star-o,
 .widget.themes ul li,
 .widget.back ul li,
 .single .widget.themes ul li {
-	/*background-color:#ead7bb;*/
+	background-color:#ead7bb;
 	/*background-color:#f5dcb5;*/
-	background-color:#ffedd0;
+	/*background-color:#ffedd0;*/
 }
 
 .single .widget.themes ul li:hover,
@@ -107,10 +107,6 @@ i.fa.fa-star-o,
 .widget.themes ul li.current-menu-item,
 .archive-pagination li.active {
 	background-color:#fff6e7;
-}
-
-.wpurp-recipe-ingredients {
-	background-color :#f1b46c;
 }
 
 .archive-pagination li {

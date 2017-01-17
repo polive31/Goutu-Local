@@ -1,0 +1,147 @@
+/* Custom Recipe Template 
+-------------------------------------------*/
+
+.recipe-top {
+	width:100%;
+	float:left;
+	clear:both;
+	border-bottom:1px dotted #333;	
+	margin-bottom:20px;
+}
+
+.recipe-container {
+	display:inline;		
+	float:left;
+	clear:both;
+	width:100%;
+	margin-bottom:20px;
+	font-family: Open Sans, sans-serif;
+	font-size:14px;
+	color:#1a1a1a;
+	font-weight:300;
+}
+
+.recipe-buttons {
+	float: right;
+}
+
+.image-container {
+	width:60%;
+	float:left;
+	margin:10px;
+	object-fit:contain;
+}
+
+.image-container img {
+	width:100%;
+	object-fit:contain;
+}
+	
+.info-container {
+	float:left;
+	padding-left:10px;
+}
+
+.label-container {
+	margin-bottom:5px;
+}
+
+.recipe-label {
+	float:left;
+	width:120px;
+	font-weight:bold;
+}
+
+.recipe-label:before {
+	font-family: FontAwesome;
+	font-style: normal;
+	width:20px;
+	float:left;
+}
+
+.recipe-label#servings {
+	padding-top: 4px;
+}
+	
+	
+.recipe-label#servings:before {
+	content:"\f0f5";
+}
+
+.recipe-label#tags:before {
+	content:"\f02b";
+}
+
+.recipe-label#prep:before {
+	content:"\f256";
+}
+
+.recipe-label#cook:before {
+	content:"\f252";
+}
+
+.adjust-recipe-servings {
+	width:40px;
+	padding:2px;
+	background:white;
+	border:1px solid #bbbbbb;
+	border-radius:0;
+	line-height:20px;
+	font-size:16px;
+}
+
+
+.ingredients-container {
+	float:left;
+	border:1px dashed #000;
+	width:40%;
+	margin:0 20px 0px 0;
+	padding:10px;
+	background-color :#f1b46c;
+	text-decoration:none;
+}
+
+
+
+ul.wpurp-recipe-ingredients {
+    margin-bottom: 0;
+}
+
+li.wpurp-recipe-ingredient a {
+    text-decoration: none;
+}
+
+li.wpurp-recipe-instruction {
+    margin-bottom: 10px;
+}
+
+
+/* Picture gallery 
+----------------------------------------------*/
+#joined-pics .add-picture-button button,
+#joined-pics .gallery-item {
+	margin-right:5px!important;
+}
+
+#joined-pics .add-picture-button button {
+	text-transform:uppercase;
+  text-align:center;
+  width:75px;
+  height:75px;
+  font-size:12px;
+	color:#787878;
+	float:left;
+	background:#ddc3a3;
+}
+
+#joined-pics .add-picture-button button:hover {
+	color:#000!important;
+}
+
+#joined-pics .add-picture-button button:before {
+	/* content:"\f067"; Plus */
+	content:"+"; /* Plus */
+  font-size: 14px!important;
+	display:block;
+}
+

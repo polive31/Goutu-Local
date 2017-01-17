@@ -184,7 +184,6 @@ function foodie_pro_includes() {
 }
 
 
-
 /* =================================================================*/
 /* =                       LOAD GENESIS                                                                         =*/
 /* =================================================================*/
@@ -298,55 +297,21 @@ add_filter('wp_authenticate_user', 'block_new_users',10,1);
 /* =              ADMIN
 /* =================================================================*/
 
-/* Prevent Marshare icon issue with Oz' admin menu plugin */
-//function custom_admin_css() {
-//  echo '<style>
-//    #ozhmenu img.wp-menu-image {
-//    	width: 25px;
-//    } 
-//  </style>';
-//}
-//add_action('admin_head', 'custom_admin_css');
-
 
 /* =================================================================*/
 /* =              STYLING     
 /* =================================================================*/
 
-/* adds new body class for home page
-add_filter('body_class', 'add_homepage_class');
-function add_homepage_class($classes){
-	global $post;
-
-	if(is_home()) {
-		$classes[] = 'homepagetoto';
-	}
-
-return $classes;*/
-
-/* adds new body class for post category
-add_filter('body_class', 'add_post_category');
-function add_post_category($classes){
-	global $post;
-
-	if(is_single()) {
-		$category = get_the_category($post->ID);
-		$slug = $category[0]->slug;
-		$classes[] = 'post-category-' . $slug;
-		}
-return $classes; */
-
-
-
 /* Chargement des feuilles de style custom et polices */
 add_action( 'wp_enqueue_scripts', 'custom_load_custom_style_sheet' );
 function custom_load_custom_style_sheet() {
 	if ( CHILD_COLOR_THEME=='autumn')
-		wp_enqueue_style( 'color-theme-autumn', get_stylesheet_directory_uri() . '/custom_css/color-theme-autumn.css', array(), PARENT_THEME_VERSION );
+		wp_enqueue_style( 'color-theme-autumn', get_stylesheet_directory_uri() . '/assets/css/color-theme-autumn.css', array(), CHILD_THEME_VERSION );
 	else 
-		wp_enqueue_style( 'color-theme-white', get_stylesheet_directory_uri() . '/custom_css/color-theme-white.css', array(), PARENT_THEME_VERSION );		
-	wp_enqueue_style( 'custom-recipe', get_stylesheet_directory_uri() . '/custom_css/recipe.css', array(), PARENT_THEME_VERSION );
-	wp_enqueue_style( 'google-font-ruge', '//fonts.googleapis.com/css?family=Ruge+Boogie:400', array(), CHILD_THEME_VERSION );
+		wp_enqueue_style( 'color-theme-white', get_stylesheet_directory_uri() . '/assets/css/color-theme-white.css', array(), CHILD_THEME_VERSION );		
+	wp_enqueue_style( 'custom-recipe', get_stylesheet_directory_uri() . '/assets/css/custom-recipe.css', array(), CHILD_THEME_VERSION );
+	wp_enqueue_style( 'font-awesome', get_stylesheet_directory_uri() . '/assets/fonts/font-awesome/css/font-awesome.min.css', array(), CHILD_THEME_VERSION );
+	//wp_enqueue_style( 'google-font-ruge', '//fonts.googleapis.com/css?family=Ruge+Boogie:400', array(), CHILD_THEME_VERSION );
 	//wp_enqueue_style( 'google-font-crafty-girls', '//fonts.googleapis.com/css?family=Crafty+Girls', array(), CHILD_THEME_VERSION );
 	//wp_enqueue_style( 'google-font-sacramento', '//fonts.googleapis.com/css?family=Sacramento', array(), CHILD_THEME_VERSION );
 	wp_enqueue_style( 'google-font-delius-swash-caps', '//fonts.googleapis.com/css?family=Delius+Swash+Caps', array(), CHILD_THEME_VERSION );
@@ -405,6 +370,10 @@ function wpurp_add_default_rating( $id, $post ) {
     update_post_meta($post->ID, 'recipe_user_ratings_rating', '0');
 }
 add_action( 'save_post', 'wpurp_add_default_rating', 10, 2 );
+
+
+/* Custom recipe template */
+require_once( 'custom-recipe-template.php'); 
 
 /* =================================================================*/
 /* =                      WIDGETS

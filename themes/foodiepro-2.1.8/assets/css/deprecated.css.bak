@@ -48,6 +48,33 @@
 
 
 
+/* =================================================================*/
+/* =              STYLING     
+/* =================================================================*/
+
+/* adds new body class for home page */
+add_filter('body_class', 'add_homepage_class');
+function add_homepage_class($classes){
+	global $post;
+
+	if(is_home()) {
+		$classes[] = 'homepagetoto';
+	}
+
+return $classes;*/
+
+/* adds new body class for post category */
+add_filter('body_class', 'add_post_category');
+function add_post_category($classes){
+	global $post;
+
+	if(is_single()) {
+		$category = get_the_category($post->ID);
+		$slug = $category[0]->slug;
+		$classes[] = 'post-category-' . $slug;
+		}
+return $classes; */
+
 
 
 
@@ -845,4 +872,110 @@ Site Navigation
 		padding-left: 40px;
 	}
 	
+}
+
+
+
+/* Genesis Responsive Slider
+--------------------------------------------- */
+
+.flexslider .slides a img {
+    margin-bottom:0px;
+}
+
+.foodie-pro #genesis-responsive-slider {
+	border:0;
+	margin:0 auto;
+	padding:0;
+	position:relative;
+}
+
+.foodie-pro .slide-excerpt {
+	background:transparent;
+	margin:0 0 25%;
+	opacity:1;
+	width:100%;
+}
+
+.foodie-pro .slide-excerpt-border {
+	border:0;
+	display:inline;
+	float:left;
+	margin:0;
+	padding:0;
+	width:100%;
+}
+
+.foodie-pro .slide-excerpt-border h2 {
+	margin:0;
+	text-align:center;
+	width:100%;
+}
+
+.foodie-pro #genesis-responsive-slider h2 a {
+	background:#333;
+	color:#fff;
+	font-size:16px;
+	letter-spacing:1px;
+	margin:0;
+	overflow:visible;
+	padding:10px;
+	text-align:center;
+	text-decoration:none;
+	width:100%;
+}
+
+.foodie-pro .flex-direction-nav li a {
+	background:none;
+	top:40%;
+	font-size:14px;
+}
+
+.foodie-pro .flex-direction-nav li .prev,
+.foodie-pro .flex-direction-nav li .prev:hover {
+	background-position:0 0;
+	left:-25px;
+}
+
+.foodie-pro .flex-direction-nav li .next,
+.foodie-pro .flex-direction-nav li .next:hover {
+	background-position:-52px 0;
+	right:-25px;
+}
+
+.foodie-pro .flex-direction-nav li .prev:hover,
+.foodie-pro .flex-direction-nav li .next:hover {
+	opacity:0.9;
+}
+
+.flex-control-nav li a,
+.foodie-pro .flex-control-nav li a {
+	background:none;
+	text-indent:0;
+	z-index:999;
+	color:#FFF;
+	font-family:"FontAwesome";
+	font-size:0px;
+}
+
+.foodie-pro .flex-control-nav li a:before {
+	content:"\f1db";
+	font-size:10px;
+	color:#000;
+}
+
+.foodie-pro .flex-control-nav li a.active:before {
+	content:"\f111";
+}
+
+.foodie-pro .flex-control-nav li a:hover:before {
+	content:"\f111";
+	color:#AAA;
+} */
+
+.flexslider .slides a img {
+  /*max-width:680px;
+	height:250px;
+	height:auto;
+	overflow:hidden;*/
 }

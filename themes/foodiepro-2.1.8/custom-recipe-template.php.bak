@@ -1,5 +1,7 @@
 <?php
 
+add_filter( 'wpurp_output_recipe', 'wpurp_custom_template', 10, 2 );
+
 function wpurp_custom_template( $content, $recipe )
 {
 	ob_start();
@@ -120,13 +122,12 @@ function wpurp_custom_template( $content, $recipe )
 	return $output;
 }
 
-add_filter( 'wpurp_output_recipe', 'wpurp_custom_template', 10, 2 );
-
-
 
 function custom_ingredients_list( $recipe, $args ) {
     $out = '';
     $previous_group = '';
+    $vocals = array('a','e','i','o','u');
+    
     foreach( $recipe->ingredients() as $ingredient ) {
 
         if( WPUltimateRecipe::option( 'ignore_ingredient_ids', '' ) != '1' && isset( $ingredient['ingredient_id'] ) ) {
@@ -137,7 +138,7 @@ function custom_ingredients_list( $recipe, $args ) {
         }
 
         if( isset($ingredient['group'] ) && $ingredient['group'] != $previous_group ) {
-            $out .= '<li class="group">' . $ingredient['group'] . '</li>';
+            $out .= '<li class="ingredient-group">' . $ingredient['group'] . '</li>';
             $previous_group = $ingredient['group'];
         }
 
@@ -157,6 +158,16 @@ function custom_ingredients_list( $recipe, $args ) {
         $plural_data = $plural ? ' data-singular="' . esc_attr( $ingredient['ingredient'] ) . '" data-plural="' . esc_attr( $plural ) . '"' : '';
 
         $out .= ' <span class="wpurp-recipe-ingredient-name recipe-ingredient-name"' . $plural_data . '>';
+
+				$ingredient_name = strtolower( esc_attr( $ingredient['ingredient'] ) );
+				$first = $ingredient_name[0];
+				
+				if ( $ingredient['unit'] ) {
+					if ( in_array($first, $vocals) )
+						$out .= _x("d'",'vowel','foodiepro');
+					else 
+						$out .= _x("de ",'consonant','foodiepro');					
+				}
 
         $ingredient_links = WPUltimateRecipe::option('recipe_ingredient_links', 'archive_custom');
 

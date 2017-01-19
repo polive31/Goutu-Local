@@ -190,6 +190,7 @@ add_action( 'genesis_entry_header', 'bg_entry_image', 7 );
 function wprpe_add_post_info($args) {
 		$disp_avatar = substr($args['cssID'],0,1);
 		$disp_rating = substr($args['cssID'],1,1);
+		$output='';
 		if ( $disp_avatar == '1') {
 			$output = '<a class="auth-avatar" href="' . bp_core_get_user_domain( get_the_author_meta( 'ID' )) . '" title="' . bp_core_get_username(get_the_author_meta( 'ID' )) . '">';
 			$output .= get_avatar( get_the_author_meta( 'ID' ), '45');

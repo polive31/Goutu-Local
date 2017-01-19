@@ -24,8 +24,29 @@
 	font-weight:normal;
 }
 
-.recipe-buttons {
+.recipe-buttons a {
 	float: right;
+	margin: 0 10px;
+}
+
+.recipe-tooltip {
+	font-size:20px;
+	color:#666;
+}
+
+.recipe-tooltip-content {
+	display: none;
+	background-color: white;
+	border: 1px solid #333;
+	padding: 5px;
+	z-index: 999;
+	-moz-box-shadow: 2px 2px 11px #666;
+	-webkit-box-shadow: 2px 2px 11px #666;
+	text-align: left;
+	color: #222;
+	font-size: 14px;
+	line-height: 16px;
+font-weight: normal;
 }
 
 /* Image */
@@ -54,9 +75,16 @@
 }
 
 .label-container {
-	margin-bottom:6px;
+	margin-bottom:12px;
 	clear: both;
 	float:left;
+}
+
+.rating-details {
+	float:left;
+	clear:both;
+	font-size:13px;
+	color:#666;
 }
 
 .recipe-label {
@@ -112,15 +140,16 @@
 	float:left;
 	border:1px dashed #000;
 	width:40%;
-	margin:0 30px 0px 0;
+	margin:0 30px 10px 0;
 	padding:10px;
 	background-color :#f1b46c;
 	text-decoration:none;
 }
 
-li.ingredient-group {
+li.ingredient-group,
+.recipe-instruction-group {
   font-weight: bold;
-  display: initial;
+  display: block;
   margin-top: 10px;
 }
 
@@ -140,6 +169,12 @@ ol.wpurp-recipe-instructions {
 
 li.wpurp-recipe-instruction {
     margin-bottom: 10px;
+}
+
+.wpurp-recipe-instruction a {
+	display:block;
+	float:left;
+	clear:right;
 }
 
 
@@ -173,3 +208,13 @@ li.wpurp-recipe-instruction {
 	display:block;
 }
 
+/* MEDIA QUERIES 
+---------------------------------------------------*/
+
+@media only screen and (max-width:420px) {
+	
+.image-container,
+.ingredients-container {
+	width:100%;
+	margin-bottom:20px;
+}

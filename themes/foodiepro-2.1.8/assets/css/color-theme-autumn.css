@@ -82,12 +82,17 @@ input, select, textarea,
 
 i.fa.fa-star,
 .rating:before {
-	color:#ff6c00!important;
+	color:#ff6c00;
 }
 
 i.fa.fa-star-o,
 .rating:after {
-	color:#9c9c9c!important;
+	color:#9c9c9c;
+}
+
+.single-recipe i.fa.fa-star-o,
+.single-recipe .rating:after {
+	color:#666;
 }
 
 .widget.themes ul li,

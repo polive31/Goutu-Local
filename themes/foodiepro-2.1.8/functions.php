@@ -80,21 +80,11 @@ function foodie_pro_theme_setup() {
 		)
 	);
 
-	/** Move Primary Nav Menu Above Header */
-	//remove_action( 'genesis_after_header', 'genesis_do_nav' );
-	//add_action( 'genesis_before_header', 'genesis_do_nav' );
-
-	/** Add primary Nav Menu to Header Right */
-	//add_action( 'genesis_header_right', 'genesis_do_nav' );
-
 	/* Disables Genesis responsive menu toggle */
 	remove_action( 'wp_enqueue_scripts', 'genesis_sample_enqueue_menu_scripts_styles' );
 
 	//* Add support for custom background.
 	add_theme_support( 'custom-background' );
-
-	//* Unregister header right sidebar.
-	//unregister_sidebar( 'header-right' );
 
 	//* Add support for custom header.
 	add_theme_support( 'genesis-custom-header', array(
@@ -201,7 +191,7 @@ define('GENESIS_LANGUAGES_URL', STYLESHEETPATH.'/languages/genesis');
 require_once( get_template_directory() . '/lib/init.php' );
 
 
-//add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_js' );
+add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_js' );
 /**
  * Load all required JavaScript for the Foodie theme.
  *
@@ -248,6 +238,8 @@ function my_custom_login() {
 }
 add_action('login_head', 'my_custom_login');
 
+
+/* Sets login page logo & url */
 function my_login_logo_url() {
 	return get_bloginfo( 'url' );
 }
@@ -259,12 +251,14 @@ function my_login_logo_url_title() {
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 
+
 /* Disable admin bar for all users except admin */
 function remove_admin_bar() {
 	if (!current_user_can('administrator') && !is_admin())
   	show_admin_bar(false); 
 }
 add_action('after_setup_theme', 'remove_admin_bar');
+
 
 /* Disable dashboard for non admin */
 function blockusers_init() {
@@ -275,12 +269,14 @@ function blockusers_init() {
 }
 add_action( 'init', 'blockusers_init' );
 
+
 /* Redirect towards homepage on logout */
 function go_home() {
   wp_redirect( home_url() );
   exit;
 }
 add_action('wp_logout','go_home');
+
 
 /* Prevent new users (not yet approved) to log in */
 function block_new_users ($user) {
@@ -332,13 +328,6 @@ add_action('get_footer','yarpp_dequeue_footer_styles');
 /* =================================================================*/
 /* =              LAYOUT      
 /* =================================================================*/
-
-//remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
-//add_action( 'genesis_before_content', 'genesis_do_breadcrumbs' );
-
-// Move title (breaks avatar appending in "Avatars" section)
-//remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
-//add_action( 'genesis_before_loop', 'genesis_do_post_title', 10 );
 
 // Move pagination on all archive pages
 remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );

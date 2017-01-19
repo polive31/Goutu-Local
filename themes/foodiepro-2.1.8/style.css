@@ -1136,6 +1136,10 @@ Common Classes
   text-align:center;
 }
 
+.single-recipe .rating {
+  font-size:24px;
+}
+
 .rating#stars-0:after {
 	content:"\f006\f006\f006\f006\f006";
 }

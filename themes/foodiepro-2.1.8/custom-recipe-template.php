@@ -16,9 +16,32 @@ function wpurp_custom_template( $content, $recipe )
 			?>	
 			
 			<div class="recipe-buttons">
+				
 				<?php
-					$print_button = new WPURP_Template_Recipe_Print_Button();
-					echo $print_button->output( $recipe );
+				//Recipe Print Button
+        $tooltip_text = WPUltimateRecipe::option( 'print_tooltip_text', __('Print Recipe', 'wp-ultimate-recipe') );
+				?>
+				
+				<a class="recipe-tooltip" href="<?php echo $recipe->link_print(); ?>" target="_blank">
+					<i class="fa fa-print"></i>
+				</a>
+				
+				<?php if( $tooltip_text ) { ?>
+				<div class="recipe-tooltip-content">
+					<?php echo $tooltip_text; ?>
+				</div>
+				<?php } ?>
+				
+				<?php
+				// Add To Shopping List Button
+					$html = new WPURP_Template_Recipe_Add_To_Shopping_List();
+					echo $html->output( $recipe );
+				?>
+				
+				<?php
+				// Add To Favorites Button
+					$html = new WPURP_Template_Recipe_Favorite();
+					echo $html->output( $recipe );
 				?>
 			</div>
 			
@@ -42,9 +65,17 @@ function wpurp_custom_template( $content, $recipe )
 					//$star_rating = new WPURP_Template_Recipe_Stars();
 					//echo $star_rating->output( $recipe );
 					
-					$rating = output_recipe_rating( get_the_ID());
-					echo '<div class="label-container"><div class="recipe-label rating" title="Votes &#013;Voters" id="stars-' . $rating['stars'] . '"></div></div>';
-				?>
+					$rating = output_recipe_rating( get_the_ID()); ?>
+					<div class="label-container">
+						<div class="rating" id="stars-<?php echo $rating['stars'];?>"></div>
+						<?php 
+						if ( $rating['votes']!=0 ) {
+							echo '<div class="rating-details">' . $rating['votes'] . ' ' . __('votes','foodiepro') . ' | ' . __('Evaluate this recipe','foodiepro') . '</div>';
+						}
+						else {
+							echo '<div class="rating-details">' . __('Be the first to evaluate this recipe !','foodiepro') . '</div>';
+						}?>
+					</div>
 				
 				<?php
 					// Servings
@@ -96,10 +127,18 @@ function wpurp_custom_template( $content, $recipe )
 			</div>
 
 			<?php
-				$instructions_list = new WPURP_Template_Recipe_Instructions();
-				echo $instructions_list->output( $recipe );
+					echo custom_instructions_list($recipe,'');
+//				$instructions_list = new WPURP_Template_Recipe_Instructions();
+//				echo $instructions_list->output( $recipe );
 			?>
 		
+		</div>
+		
+		<div class="recipe-container">
+			<?php
+			// Related Posts
+			rp4wp_children();
+			?>
 		</div>
 		
 		<div class="recipe-container">
@@ -127,6 +166,7 @@ function custom_ingredients_list( $recipe, $args ) {
     $out = '';
     $previous_group = '';
     $vocals = array('a','e','i','o','u');
+    $exceptions = array('huile');
     
     foreach( $recipe->ingredients() as $ingredient ) {
 
@@ -159,14 +199,14 @@ function custom_ingredients_list( $recipe, $args ) {
 
         $out .= ' <span class="wpurp-recipe-ingredient-name recipe-ingredient-name"' . $plural_data . '>';
 
-				$ingredient_name = strtolower( esc_attr( $ingredient['ingredient'] ) );
+				$ingredient_name = remove_accents( $ingredient['ingredient'] );
 				$first = $ingredient_name[0];
 				
 				if ( $ingredient['unit']!='' ) {
-					if ( in_array($first, $vocals) )
-						$out .= _x("d'",'vowel','foodiepro');
+					if ( in_array($first, $vocals) || in_array($ingredient_name, $exceptions) )
+						$out .= _x(' ','vowel','foodiepro');
 					else 
-						$out .= _x("de ",'consonant','foodiepro');					
+						$out .= _x(' ','consonant','foodiepro');					
 				}
 
         $ingredient_links = WPUltimateRecipe::option('recipe_ingredient_links', 'archive_custom');
@@ -193,7 +233,7 @@ function custom_ingredients_list( $recipe, $args ) {
             }
         }
 
-        $out .= $plural && $ingredient['amount_normalized'] != 1 ? $plural : $ingredient['ingredient'];
+        $out .= $plural && ($ingredient['unit']!='' || $ingredient['amount_normalized'] > 1) ? $plural : $ingredient['ingredient'];
         $out .= $closing_tag;
         $out .= '</span>';
 
@@ -207,5 +247,55 @@ function custom_ingredients_list( $recipe, $args ) {
 
     return $out;
 		}
+		
+function custom_instructions_list( $recipe, $args )
+    {
+        $out = '';
+        $previous_group = '';
+        $instructions = $recipe->instructions();
+        
+        $out .= '<ol class="wpurp-recipe-instruction-container">';
+        for( $i = 0; $i < count($instructions); $i++ ) {
+            $instruction = $instructions[$i];
+
+  					if( $instruction['group'] != $previous_group ) {
+                $out .= '</ol>';
+                $out .= '<div class="wpurp-recipe-instruction-group recipe-instruction-group">' . $instruction['group'] . '</div>';
+                $out .= '<ol class="">';
+                $previous_group = $instruction['group'];
+            }
+
+
+            $style = !isset( $instructions[$i+1] ) || $instruction['group'] != $instructions[$i+1]['group'] ? array('li','li-last') : 'li';
+
+            $meta = WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ) != 'json' && $args['template_type'] == 'recipe' && $args['desktop'] ? ' itemprop="recipeInstructions"' : '';
+
+            $out .= '<li class="wpurp-recipe-instruction">';
+            $out .= '<div' . $meta . '>'.$instruction['description'].'</div>';
+
+            if( $instruction['image'] != '' ) {
+                $thumb = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
+                $thumb_url = $thumb['0'];
+
+                $full_img = wp_get_attachment_image_src( $instruction['image'], 'full' );
+                $full_img_url = $full_img['0'];
+
+                $title_tag = WPUltimateRecipe::option( 'recipe_instruction_images_title', 'attachment' ) == 'attachment' ? esc_attr( get_the_title( $instruction['image'] ) ) : esc_attr( $instruction['description'] );
+                $alt_tag = WPUltimateRecipe::option( 'recipe_instruction_images_alt', 'attachment' ) == 'attachment' ? esc_attr( get_post_meta( $instruction['image'], '_wp_attachment_image_alt', true ) ) : esc_attr( $instruction['description'] );
+
+                if( WPUltimateRecipe::option( 'recipe_images_clickable', '0' ) == 1 ) {
+                    $out .= '<a href="' . $full_img_url . '" rel="lightbox" title="' . $title_tag . '">';
+                    $out .= '<img src="' . $thumb_url . '" alt="' . $alt_tag . '" title="' . $title_tag . '"' . '/>';
+                    $out .= '</a>';
+                } else {
+                    $out .= '<img src="' . $thumb_url . '" alt="' . $alt_tag . '" title="' . $title_tag . '"' . '/>';
+                }
+            }
+
+            $out .= '</li>';
+        }
+
+        return $out;
+    }
     
 ?>

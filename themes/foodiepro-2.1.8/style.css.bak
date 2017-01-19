@@ -1136,6 +1136,10 @@ Common Classes
   text-align:center;
 }
 
+.rating {
+  font-size:24px;
+}
+
 .rating#stars-0:after {
 	content:"\f006\f006\f006\f006\f006";
 }
@@ -1556,7 +1560,6 @@ form[role="search"] {
 
 /* Posts Grid (RPWE) & Popular posts grid
 --------------------------------------------- */
-
 .rpwe-block {
   float:left;
   width:100%;

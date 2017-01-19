@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-01-17 01:34+0100\n"
-"PO-Revision-Date: 2017-01-17 01:35+0100\n"
+"POT-Creation-Date: 2017-01-18 19:50+0100\n"
+"PO-Revision-Date: 2017-01-18 19:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -1213,17 +1213,35 @@ msgstr ""
 msgid "Visibility"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/custom-recipe-template.php:45
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:53
 msgid "Serves"
 msgstr "Portions"
 
-#: themes/foodiepro-2.1.8/custom-recipe-template.php:47
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:60
 msgid "Preparation"
 msgstr "Préparation"
 
-#: themes/foodiepro-2.1.8/custom-recipe-template.php:49
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:67
 msgid "Cooking"
 msgstr "Cuisson"
+
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:73
+msgid "Wait"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:109
+msgid "Notes"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:167
+msgctxt "vowel"
+msgid " "
+msgstr "d'"
+
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:169
+msgctxt "consonant"
+msgid " "
+msgstr "de "
 
 #: themes/foodiepro-2.1.8/functions.php:257
 msgid "Goûtu.org - Cuisiner, Découvrir, Partager"

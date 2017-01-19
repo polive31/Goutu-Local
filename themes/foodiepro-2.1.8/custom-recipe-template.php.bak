@@ -5,6 +5,9 @@ add_filter( 'wpurp_output_recipe', 'wpurp_custom_template', 10, 2 );
 function wpurp_custom_template( $content, $recipe )
 {
 	ob_start();
+	
+	$post_ID = get_the_ID();
+
 	?>
 
 	<div class="recipe">
@@ -65,7 +68,7 @@ function wpurp_custom_template( $content, $recipe )
 					//$star_rating = new WPURP_Template_Recipe_Stars();
 					//echo $star_rating->output( $recipe );
 					
-					$rating = output_recipe_rating( get_the_ID()); ?>
+					$rating = output_recipe_rating( $post_ID ); ?>
 					<div class="label-container">
 						<div class="rating" id="stars-<?php echo $rating['stars'];?>"></div>
 						<?php 
@@ -78,11 +81,25 @@ function wpurp_custom_template( $content, $recipe )
 					</div>
 				
 				<?php
+					// Origin
+				  $test = get_the_term_list( $post_ID, 'cuisine', '', '', '' ); 
+					if ($test!='') {
+						$html = '<div class="label-container"><div id="tag" class="recipe-label">' . __('Origin','foodiepro') . '</div>' . $test . '</div>';
+						echo $html;
+					}		
+					
+					// Difficulty
+				  $test = get_the_term_list( $post_ID, 'difficult', '', '', '' ); 
+					if ($test!='') {
+						$html = '<div class="label-container"><div id="tag" class="recipe-label">' . __('Difficulty','foodiepro') . '</div>' . $test . '</div>';
+						echo $html;
+					}			
+				
 					// Servings
 					$test = $recipe->servings_normalized();
 					if ($test!='') {
-						$servings = '<div class="label-container"><div id="servings" class="recipe-label">' . __('Serves','foodiepro') . '</div><input type="number" min="1" class="adjust-recipe-servings" data-original="' . $recipe->servings_normalized() . '" data-start-servings="' . $recipe->servings_normalized() . '" value="' . $recipe->servings_normalized() . '"/> ' . $recipe->servings_type() . '</div>';
-						echo $servings;
+						$html = '<div class="label-container"><div id="servings" class="recipe-label">' . __('Serves','foodiepro') . '</div><input type="number" min="1" class="adjust-recipe-servings" data-original="' . $recipe->servings_normalized() . '" data-start-servings="' . $recipe->servings_normalized() . '" value="' . $recipe->servings_normalized() . '"/> ' . $recipe->servings_type() . '</div>';
+						echo $html;
 					}
 					
 					// Prep time
@@ -271,7 +288,7 @@ function custom_instructions_list( $recipe, $args )
             $meta = WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ) != 'json' && $args['template_type'] == 'recipe' && $args['desktop'] ? ' itemprop="recipeInstructions"' : '';
 
             $out .= '<li class="wpurp-recipe-instruction">';
-            $out .= '<span' . $meta . '>'.$instruction['description'].'</span>';
+            $out .= '<div' . $meta . '>'.$instruction['description'].'</div>';
 
             if( $instruction['image'] != '' ) {
                 $thumb = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );

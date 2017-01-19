@@ -83,6 +83,7 @@ font-weight: normal;
 .rating-details {
 	float:left;
 	clear:both;
+	width:200px;
 	font-size:13px;
 	color:#666;
 }
@@ -108,7 +109,7 @@ font-weight: normal;
 	content:"\f0f5";
 }
 
-.recipe-label#tags:before {
+.recipe-label#tag:before {
 	content:"\f02b";
 }
 

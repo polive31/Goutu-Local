@@ -83,6 +83,7 @@ font-weight: normal;
 .rating-details {
 	float:left;
 	clear:both;
+	width:190px;
 	font-size:13px;
 	color:#666;
 }
@@ -108,7 +109,7 @@ font-weight: normal;
 	content:"\f0f5";
 }
 
-.recipe-label#tags:before {
+.recipe-label#tag:before {
 	content:"\f02b";
 }
 
@@ -169,12 +170,6 @@ ol.wpurp-recipe-instructions {
 
 li.wpurp-recipe-instruction {
     margin-bottom: 10px;
-}
-
-.wpurp-recipe-instruction a {
-	display:block;
-	float:left;
-	clear:right;
 }
 
 

@@ -111,7 +111,7 @@
 	width:200px;*/
 	font-size:13px;
 	color:#666;
-	padding:10px 10px 0 0;
+	padding:10px 0 0 10px;
 }
 
 .recipe-label {

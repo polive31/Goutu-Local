@@ -238,6 +238,7 @@ function my_custom_login() {
 }
 add_action('login_head', 'my_custom_login');
 
+
 /* Sets login page logo & url */
 function my_login_logo_url() {
 	return get_bloginfo( 'url' );
@@ -338,6 +339,15 @@ add_action( 'genesis_after_content', 'genesis_posts_nav' );
 /* =================================================================*/
 
 /*add_filter( 'wpurp_user_submissions_current_user_edit_item', 'add_empty_msg')*/
+
+/* Remove comment form in recipes */
+function remove_recipe_comments_form() {
+	if ( is_singular( 'recipe' )) {
+		remove_action( 'genesis_comment_form', 'genesis_do_comment_form' );
+	}
+}
+add_action( 'genesis_comment_form', 'remove_recipe_comments_form', 0 );
+
 
 /* DEBUG Add all meta info before recipe */
 function display_all_meta() {
@@ -468,9 +478,9 @@ remove_action( 'genesis_before_loop', 'genesis_do_author_title_description', 15 
 remove_action( 'genesis_before_loop', 'genesis_do_blog_template_heading' );
 
 
-
 /* Display customized title and description before the widget area
  ------------------------------------------------------------*/
+
 
 function custom_archive_headline() {
 	
@@ -478,63 +488,72 @@ function custom_archive_headline() {
 			
 		$vocals = array('a','e','i','o','u');
 		
-		echo '<div class="archive-description taxonomy-archive-description taxonomy-description">';
-	  echo '<h1 class="archive-title">';
+	  $head_style=array('begin'=>'<h1 class="archive-title">','end'=>'</h1>');
+		$intro_style=array('begin'=>'<div class="archive-description taxonomy-archive-description taxonomy-description">','end'=>'</div>');
 		
 	  if ( is_author() ) {
 	  	$name = get_queried_object()->user_login;
 	  	$first = strtolower( $name[0] );
 	  	
 			if ( in_array($first, $vocals) )
-			  echo _x('All recipes from ','vowel','foodiepro') . $name;
+			  echo $head_style['begin'] . _x('All recipes from ','vowel','foodiepro') . $name . $head_style['end'];
 			else 
-			  echo _x('All recipes from ','consonant','foodiepro') . $name;
+			  echo $head_style['begin'] . _x('All recipes from ','consonant','foodiepro') . $name . $head_style['end'];
 	  }
 		
 		elseif ( is_tax() ) {
 			$first = get_queried_object()->slug[0];
-		  $headline = get_term_meta( get_queried_object()->term_id, 'headline', true );
+			$term_id = get_queried_object()->term_id;
+		  $headline = get_term_meta( $term_id, 'headline', true );
+		  $intro_text = get_term_meta( $term_id, 'intro_text', true );
 
 	    if( is_tax('ingredient') ) {
 		    	if ( !empty($headline) )
-					  echo $headline;
+					  echo $head_style['begin'] . $headline . $head_style['end'];
 					else {
 			    	if ( in_array($first, $vocals) )
-			        echo single_term_title(_x('All recipes containing ','vowel','foodiepro'), false);
+			        echo $head_style['begin'] . single_term_title(_x('All recipes containing ','vowel','foodiepro'), false) . $head_style['end'];
 			      else 
-			        echo single_term_title(_x('All recipes containing ','consonant','foodiepro'), false);				
+			        echo $head_style['begin'] . single_term_title(_x('All recipes containing ','consonant','foodiepro'), false) . $head_style['end'];				
 					}
 			}
 
 			elseif( is_tax('cuisine') ) {
 					if ( !empty($headline) )
-						echo $headline;
+						echo $head_style['begin'] . $headline;
 				  else {
 						if ( in_array($first, $vocals) )
-			        echo single_term_title(_x('All recipes from ','vowel','foodiepro'), false);
+			        echo $head_style['begin'] . single_term_title(_x('All recipes from ','vowel','foodiepro'), false) . $head_style['end'];
 			      else 
-			        echo single_term_title(_x('All recipes from ','consonant','foodiepro'), false);			  	
+			        echo $head_style['begin'] . single_term_title(_x('All recipes from ','consonant','foodiepro'), false) . $head_style['end'];			  	
 				  }
 			}
 								
+			elseif( is_tax('difficult') ) {
+					if ( !empty($headline) )
+						echo $head_style['begin'] . $headline . $head_style['end'];
+					if ( !empty($intro_text) )
+						echo $intro_style['begin'] . $intro_text . $intro_style['end'];
+			}
+
 			else {
 				if ( !empty($headline) )
-					echo $headline;		
-				else echo single_term_title('', false);
+					echo $head_style['begin'] . $headline . $head_style['end'];		
+				else 
+					echo $head_style['begin'] . single_term_title('', false) . $head_style['end'];
 			}
 			
 		}
 		
-		else echo single_term_title('', false);
-		
-		echo '</h1>';
-		echo '</div>';
+		else 
+			echo $head_style['begin'] . single_term_title('', false) . $head_style['end'];
 
 	}
 	
 }
 add_action( 'genesis_before_content', 'custom_archive_headline' );
 
+add_filter( 'genesis_term_intro_text_output', 'wpautop' );
 
 /* Display customized title and description before the widget area
  ------------------------------------------------------------*/
@@ -695,8 +714,21 @@ function sp_genesis_title_comments() {
 	return $title;
 }
 
+/* Modify comments form
+--------------------------------------------------------------*/
+function custom_genesis_comment_form_args($args) {
+	$args = array (
+	'title_reply' => __( '', 'genesis' ), //default=’Speak Your Mind’; WordPress deafult: __( 'Leave a Reply’ )
+	'label_submit' => __( 'Submit Comment', 'genesis' ), //default=’Post Comment’
+	'title_reply_to' => __( 'Reply Title', 'genesis' ), //Default: __( 'Leave a Reply to %s’ )
+	'cancel_reply_link' => __( 'Cancel', 'genesis' ) //Default: __( ‘Cancel reply’ )
+	);
+	return $args;
+}
+add_filter('genesis_comment_form_args', 'custom_genesis_comment_form_args');
+
 //* Use specific foodiepro comments form
-add_filter( 'genesis_comment_form_args', 'foodie_pro_comment_form_args' );
+//add_filter( 'genesis_comment_form_args', 'foodie_pro_comment_form_args' );
 
 
 //* Remove the post meta function

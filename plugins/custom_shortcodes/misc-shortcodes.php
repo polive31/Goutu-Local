@@ -30,6 +30,22 @@ if ( !defined('ABSPATH') )
 //
 //add_shortcode('language', 'display_language_switcher'); 
 
+/* Add Comment Form 
+-----------------------------------------------*/
+function add_comment_form_shortcode() {
+//		$comments_args = array( 
+//			'title_reply' => __( '', 'genesis' ), 
+//      'comment_field'=>'<p class="comment-form-comment"></p>', 
+//		);
+		$comment_args='';
+    ob_start();
+    comment_form($comment_args);
+    $cform = ob_get_contents();
+    ob_end_clean();
+    return $cform;
+ }
+add_shortcode( 'add-comment-form', 'add_comment_form_shortcode' );
+
 
 /* Share Title Output
 --------------------------------------------- */

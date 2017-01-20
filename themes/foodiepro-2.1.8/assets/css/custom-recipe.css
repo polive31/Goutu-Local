@@ -2,14 +2,14 @@
 -------------------------------------------*/
 
 
-/* Headline */
 
 .recipe-top {
 	width:100%;
 	float:left;
 	clear:both;
 	border-bottom:1px dotted #333;	
-	margin-bottom:20px;
+	margin:20px 0;
+	padding:10px 0;
 }
 
 .recipe-container {
@@ -24,17 +24,41 @@
 	font-weight:normal;
 }
 
+/* Top Buttons */
+
+.single-recipe .fa {
+	display:block;
+	float:left;
+}
+
 .recipe-buttons a {
 	float: right;
 	margin: 0 10px;
 }
 
-.recipe-tooltip {
-	font-size:20px;
+.recipe-function {
+	font-size:25px;
 	color:#666;
 }
 
-.recipe-tooltip-content {
+
+.button-tooltip {
+	font-size:14px;
+	color:#666;
+	text-decoration:none;	
+	float:left;
+	margin-left:10px;
+}
+
+.tooltip-alt {
+	display:none;
+}
+
+.tooltip-shown {
+	display:initial;
+}
+
+/*.recipe-tooltip-content {
 	display: none;
 	background-color: white;
 	border: 1px solid #333;
@@ -46,8 +70,8 @@
 	color: #222;
 	font-size: 14px;
 	line-height: 16px;
-font-weight: normal;
-}
+	font-weight: normal;
+}*/
 
 /* Image */
 
@@ -72,6 +96,7 @@ font-weight: normal;
 .info-container {
 	float:left;
 	padding-left:10px;
+	max-width:40%;
 }
 
 .label-container {
@@ -82,10 +107,11 @@ font-weight: normal;
 
 .rating-details {
 	float:left;
-	clear:both;
-	width:200px;
+	/*clear:both;
+	width:200px;*/
 	font-size:13px;
 	color:#666;
+	padding:10px 0 0 10px;
 }
 
 .recipe-label {

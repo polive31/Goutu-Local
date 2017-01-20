@@ -11,41 +11,48 @@ function wpurp_custom_template( $content, $recipe )
 	?>
 
 	<div class="recipe">
-		
-		<div class="recipe-top">
 			
+		<div class="recipe-container">
 			<?php
 			echo $recipe->description();;
 			?>	
+		</div>
 			
-			<div class="recipe-buttons">
+		<div class="recipe-top">
+				<div class="recipe-buttons">
 				
+				<!-- Recipe Print Button -->
 				<?php
-				//Recipe Print Button
-        $tooltip_text = WPUltimateRecipe::option( 'print_tooltip_text', __('Print Recipe', 'wp-ultimate-recipe') );
+        $tooltip_text = __('Print', 'foodiepro');
 				?>
-				
-				<a class="recipe-tooltip" href="<?php echo $recipe->link_print(); ?>" target="_blank">
-					<i class="fa fa-print"></i>
+				<a class="recipe-function" href="<?php echo $recipe->link_print(); ?>" target="_blank">
+					<i class="fa fa-print"></i><div class="button-tooltip"><?php echo $tooltip_text; ?></div>
 				</a>
 				
-				<?php if( $tooltip_text ) { ?>
-				<div class="recipe-tooltip-content">
-					<?php echo $tooltip_text; ?>
-				</div>
-				<?php } ?>
-				
+				<!-- Recipe Add to Cart Button -->
 				<?php
-				// Add To Shopping List Button
-					$html = new WPURP_Template_Recipe_Add_To_Shopping_List();
-					echo $html->output( $recipe );
+					echo custom_addtocart_button($recipe);     
 				?>
 				
+				<!-- Add To Favorites Button -->
 				<?php
-				// Add To Favorites Button
-					$html = new WPURP_Template_Recipe_Favorite();
-					echo $html->output( $recipe );
+					echo custom_favorite_button($recipe);
 				?>
+				
+				<!-- Recipe Share Button -->
+				<a class="recipe-function" id="recipe-share">
+					<i class="fa fa-share-alt"></i>
+					<div class="button-tooltip"><?php echo __('Share','foodiepro'); ?></div>
+				</a>
+									
+													
+				<!-- Recipe Rate Button -->
+				<a class="recipe-function" id="recipe-review">
+					<i class="fa fa-pencil-square-o"></i>
+					<div class="button-tooltip"><?php echo __('Rate','foodiepro'); ?></div>
+				</a>
+							
+													
 			</div>
 			
 		</div>
@@ -65,19 +72,19 @@ function wpurp_custom_template( $content, $recipe )
 		
 			<div class="info-container">
 				<?php
-					//$star_rating = new WPURP_Template_Recipe_Stars();
-					//echo $star_rating->output( $recipe );
-					
+					// Rating
 					$rating = output_recipe_rating( $post_ID ); ?>
 					<div class="label-container">
 						<div class="rating" id="stars-<?php echo $rating['stars'];?>"></div>
 						<?php 
 						if ( $rating['votes']!=0 ) {
-							echo '<div class="rating-details">' . $rating['votes'] . ' ' . __('votes','foodiepro') . ' | ' . __('Evaluate this recipe','foodiepro') . '</div>';
+							$rating_plural=$rating['votes']==1?__('review','foodiepro'):__('reviews','foodiepro'); 
+							echo '<div class="rating-details">(' . $rating['votes'] . ' ' . $rating_plural . ')</div>'; //. ' | ' . __('Rate this recipe','foodiepro') . 
 						}
-						else {
-							echo '<div class="rating-details">' . __('Be the first to evaluate this recipe !','foodiepro') . '</div>';
-						}?>
+						//else {
+							//echo '<div class="rating-details">' . __('Be the first to rate this recipe !','foodiepro') . '</div>';
+						//}
+						?>
 					</div>
 				
 				<?php
@@ -91,7 +98,7 @@ function wpurp_custom_template( $content, $recipe )
 					// Difficulty
 				  $test = get_the_term_list( $post_ID, 'difficult', '', '', '' ); 
 					if ($test!='') {
-						$html = '<div class="label-container"><div id="tag" class="recipe-label">' . __('Difficulty','foodiepro') . '</div>' . $test . '</div>';
+						$html = '<div class="label-container"><div id="tag" class="recipe-label">' . __('Level','foodiepro') . '</div>' . $test . '</div>';
 						echo $html;
 					}			
 				
@@ -313,6 +320,84 @@ function custom_instructions_list( $recipe, $args )
         }
 
         return $out;
+    }
+    
+function custom_addtocart_button( $recipe)
+    {
+        $icon = '<i class="fa fa-shopping-cart"></i>';
+
+        $classes = array();
+
+        $shopping_list_recipes = array();
+        if( isset( $_COOKIE['WPURP_Shopping_List_Recipes_v2'] ) ) {
+            $shopping_list_recipes = explode( ';', stripslashes( $_COOKIE['WPURP_Shopping_List_Recipes_v2'] ) );
+        }
+
+        $in_shopping_list = in_array( $recipe->ID(), $shopping_list_recipes );
+
+        if( $in_shopping_list ) $classes[] = 'in-shopping-list';
+
+        $tooltip_text = __('Add to Shopping List', 'foodiepro');
+        $tooltip_alt_text = __('Remove from Shopping List', 'foodiepro');
+        if( $tooltip_text && $tooltip_alt_text ) $classes[] = 'recipe-function';
+
+        if( $in_shopping_list ) {
+            $tooltip_text_backup = $tooltip_text;
+            $tooltip_text = $tooltip_alt_text;
+            $tooltip_alt_text = $tooltip_text_backup;
+        }
+
+        ob_start();
+				?>
+				<a href="#" class="recipe-function" data-recipe-id="<?php echo $recipe->ID(); ?>">
+				<?php echo $icon; ?>
+				<?php if( $tooltip_text && $tooltip_alt_text ) { ?>
+				    <div class="button-tooltip">
+				        <div class="tooltip-shown"><?php echo $tooltip_text; ?></div>
+				        <div class="tooltip-alt"><?php echo $tooltip_alt_text; ?></div>
+				    </div>
+				<?php } ?>
+				</a>
+				<?php
+        $output .= ob_get_contents();
+        ob_end_clean();
+
+        return $output;
+    }
+    
+function custom_favorite_button( $recipe )
+    {
+        if( !is_user_logged_in() ) return '';
+
+        $current_icon = WPURP_Favorite_Recipes::is_favorite_recipe( $recipe->ID() ) ? 'fa-heart-o' : 'fa-heart';
+
+        $icon = '<i class="fa ' . esc_attr( $current_icon ) . '" data-icon="fa-heart" data-icon-alt="fa-heart-o"></i>';
+
+        $tooltip_text = __('Add to Favorites', 'foodiepro');
+        $tooltip_alt_text = __('Remove from Favorites', 'foodiepro');
+        if( $tooltip_text && $tooltip_alt_text ) $classes = array( 'recipe-function' );
+
+        if( WPURP_Favorite_Recipes::is_favorite_recipe( $recipe->ID() ) ) {
+            $tooltip_text_backup = $tooltip_text;
+            $tooltip_text = $tooltip_alt_text;
+            $tooltip_alt_text = $tooltip_text_backup;
+        }
+
+        ob_start();
+				?>
+				<a href="#" class="recipe-function" data-recipe-id="<?php echo $recipe->ID(); ?>"><?php echo $icon; ?>
+				<?php if( $tooltip_text && $tooltip_alt_text ) { ?>
+				    <div class="button-tooltip">
+				        <div class="tooltip-shown"><?php echo $tooltip_text; ?></div>
+				        <div class="tooltip-alt"><?php echo $tooltip_alt_text; ?></div>
+				    </div>
+				<?php } ?>
+				</a>			
+				<?php
+        $output .= ob_get_contents();
+        ob_end_clean();
+
+        return $output;
     }
     
 ?>

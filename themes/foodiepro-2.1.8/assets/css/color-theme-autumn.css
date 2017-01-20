@@ -96,11 +96,12 @@ i.fa.fa-star-o,
 }
 
 .widget.themes ul li,
-.widget.back ul li,
 .single .widget.themes ul li {
-	background-color:#ead7bb;
-	/*background-color:#f5dcb5;*/
-	/*background-color:#ffedd0;*/
+	background-color:#ffedd0;
+}
+
+.widget.back ul li {
+	background-color:#ffedd0;
 }
 
 .single .widget.themes ul li:hover,

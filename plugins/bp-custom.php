@@ -58,6 +58,24 @@ define ( 'BP_AVATAR_DEFAULT_THUMB', 'https://goutu.org/wp-content/themes/foodiep
 //}
 
 /* =================================================================*/
+/* =              PLUGIN INIT
+/* =================================================================*/
+
+/* Enqueue Buddypress scripts in the footer rather than the header 
+--------------------------------------------------------------------*/
+function enqueue_bp_core_scripts($scripts) {
+	if (is_admin())
+		return '';
+
+	print "<pre>";
+	print_r($scripts);
+	print "</pre>";
+	return '';
+}
+//add_filter( 'bp_core_register_common_scripts', 'enqueue_bp_core_scripts', 15, 1 );
+
+
+/* =================================================================*/
 /* =              COVER IMAGE SETTINGS
 /* =================================================================*/
 

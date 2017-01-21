@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-01-19 09:29+0100\n"
-"PO-Revision-Date: 2017-01-19 09:30+0100\n"
+"POT-Creation-Date: 2017-01-20 09:31+0100\n"
+"PO-Revision-Date: 2017-01-20 09:33+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -70,15 +70,15 @@ msgstr "Tous les blogs"
 msgid "Previous page"
 msgstr "Page précédente"
 
-#: plugins/custom_shortcodes/misc-shortcodes.php:38
+#: plugins/custom_shortcodes/misc-shortcodes.php:54
 msgid "Share this post"
 msgstr "Partager cet article"
 
-#: plugins/custom_shortcodes/misc-shortcodes.php:39
+#: plugins/custom_shortcodes/misc-shortcodes.php:55
 msgid "Share this recipe"
 msgstr "Partager cette recette"
 
-#: plugins/custom_shortcodes/misc-shortcodes.php:154
+#: plugins/custom_shortcodes/misc-shortcodes.php:170
 msgid "Add a picture"
 msgstr "Ajoutez votre photo"
 
@@ -295,7 +295,7 @@ msgid "Rating"
 msgstr "Appréciation"
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:184
-#: themes/foodiepro-2.1.8/functions.php:689
+#: themes/foodiepro-2.1.8/functions.php:707
 msgid "Read More"
 msgstr ""
 
@@ -1213,59 +1213,79 @@ msgstr ""
 msgid "Visibility"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/custom-recipe-template.php:25
-msgid "Print Recipe"
-msgstr ""
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:26
+msgid "Print"
+msgstr "Imprimer"
 
-#: themes/foodiepro-2.1.8/custom-recipe-template.php:76
-msgid "votes"
-msgstr ""
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:45
+msgid "Share"
+msgstr "Partager"
 
-#: themes/foodiepro-2.1.8/custom-recipe-template.php:76
-msgid "Evaluate this recipe"
-msgstr "Evaluez cette recette"
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:52
+msgid "Rate"
+msgstr "Evaluer"
 
-#: themes/foodiepro-2.1.8/custom-recipe-template.php:79
-msgid "Be the first to evaluate this recipe !"
-msgstr "Soyez le premier à évaluer cette recette !"
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:81
+msgid "review"
+msgstr "avis"
 
-#: themes/foodiepro-2.1.8/custom-recipe-template.php:87
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:81
+msgid "reviews"
+msgstr "avis"
+
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:94
 msgid "Origin"
 msgstr "Origine"
 
-#: themes/foodiepro-2.1.8/custom-recipe-template.php:94
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:101
 msgid "Level"
 msgstr "Niveau"
 
-#: themes/foodiepro-2.1.8/custom-recipe-template.php:101
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:108
 msgid "Serves"
 msgstr "Portions"
 
-#: themes/foodiepro-2.1.8/custom-recipe-template.php:108
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:115
 msgid "Preparation"
 msgstr "Préparation"
 
-#: themes/foodiepro-2.1.8/custom-recipe-template.php:115
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:122
 msgid "Cooking"
 msgstr "Cuisson"
 
-#: themes/foodiepro-2.1.8/custom-recipe-template.php:121
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:128
 msgid "Wait"
-msgstr ""
+msgstr "Attente"
 
-#: themes/foodiepro-2.1.8/custom-recipe-template.php:165
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:172
 msgid "Notes"
-msgstr ""
+msgstr "Notes"
 
-#: themes/foodiepro-2.1.8/custom-recipe-template.php:224
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:231
 msgctxt "vowel"
 msgid " "
 msgstr "d'"
 
-#: themes/foodiepro-2.1.8/custom-recipe-template.php:226
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:233
 msgctxt "consonant"
 msgid " "
 msgstr "de "
+
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:342
+msgid "Add to Shopping List"
+msgstr "Ajouter aux courses"
+
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:343
+msgid "Remove from Shopping List"
+msgstr "Retirer des courses"
+
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:378
+msgid "Add to Favorites"
+msgstr "Ajouter aux favoris"
+
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:379
+msgid "Remove from Favorites"
+msgstr "Retirer des favoris"
 
 #: themes/foodiepro-2.1.8/functions.php:249
 msgid "Goûtu.org - Cuisiner, Découvrir, Partager"
@@ -1279,62 +1299,62 @@ msgstr "<strong> ERREUR</strong>: Utilisateur en attente d'"
 msgid "approval"
 msgstr "approbation"
 
-#: themes/foodiepro-2.1.8/functions.php:490
-#: themes/foodiepro-2.1.8/functions.php:515
+#: themes/foodiepro-2.1.8/functions.php:499
+#: themes/foodiepro-2.1.8/functions.php:526
 msgctxt "vowel"
 msgid "All recipes from "
 msgstr "Toutes les recettes d'"
 
-#: themes/foodiepro-2.1.8/functions.php:492
-#: themes/foodiepro-2.1.8/functions.php:517
+#: themes/foodiepro-2.1.8/functions.php:501
+#: themes/foodiepro-2.1.8/functions.php:528
 msgctxt "consonant"
 msgid "All recipes from "
 msgstr "Toutes les recettes de "
 
-#: themes/foodiepro-2.1.8/functions.php:504
+#: themes/foodiepro-2.1.8/functions.php:515
 msgctxt "vowel"
 msgid "All recipes containing "
 msgstr "Toutes les recettes à base d'"
 
-#: themes/foodiepro-2.1.8/functions.php:506
+#: themes/foodiepro-2.1.8/functions.php:517
 msgctxt "consonant"
 msgid "All recipes containing "
 msgstr "Toutes les recettes à base de "
 
-#: themes/foodiepro-2.1.8/functions.php:548
+#: themes/foodiepro-2.1.8/functions.php:566
 msgid "Detailed Search Results"
 msgstr "Résultats de recherche détaillée"
 
-#: themes/foodiepro-2.1.8/functions.php:550
+#: themes/foodiepro-2.1.8/functions.php:568
 #: themes/foodiepro-2.1.8/search.php:24
 msgid "Search Results for:"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:649
+#: themes/foodiepro-2.1.8/functions.php:667
 msgid "More posts in this category"
 msgstr "Autres articles dans cette catégorie"
 
-#: themes/foodiepro-2.1.8/functions.php:721
+#: themes/foodiepro-2.1.8/functions.php:752
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
-#: themes/foodiepro-2.1.8/functions.php:721
+#: themes/foodiepro-2.1.8/functions.php:752
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:721
+#: themes/foodiepro-2.1.8/functions.php:752
 msgid "Legal notice"
 msgstr "Mentions légales"
 
-#: themes/foodiepro-2.1.8/functions.php:721
+#: themes/foodiepro-2.1.8/functions.php:752
 msgid "Goûtu charter"
 msgstr "Charte Goûtu"
 
-#: themes/foodiepro-2.1.8/functions.php:721
+#: themes/foodiepro-2.1.8/functions.php:752
 msgid "Personal data"
 msgstr "Données personnelles"
 
-#: themes/foodiepro-2.1.8/functions.php:721
+#: themes/foodiepro-2.1.8/functions.php:752
 msgid "Terms of use"
 msgstr "Conditions d'utilisation"
 
@@ -2932,6 +2952,12 @@ msgstr "Ces recettes pourraient également vous intéresser..."
 #: themes/foodiepro-2.1.8/yarpp-template-goutu.php:31
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
+
+#~ msgid "Evaluate this recipe"
+#~ msgstr "Evaluez cette recette"
+
+#~ msgid "Be the first to evaluate this recipe !"
+#~ msgstr "Soyez le premier à évaluer cette recette !"
 
 #~ msgid "No related posts."
 #~ msgstr "Pas d'articles similaires."

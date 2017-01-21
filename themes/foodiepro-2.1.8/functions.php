@@ -210,6 +210,7 @@ function foodie_pro_enqueue_js() {
 	);
 }
 
+
 /**
  * Add the theme name class to the body element.
  *
@@ -223,6 +224,50 @@ function foodie_pro_add_body_class( $classes ) {
 	$classes[] = 'foodie-pro';
 	return $classes;
 }
+
+
+/* =================================================================*/
+/* =              SCRIPTS ENQUEUE
+/* =================================================================*/
+
+/* Enqueue default WP jQuery in the footer rather than the header 
+--------------------------------------------------------------------*/
+function move_jquery_into_footer( $wp_scripts ) {
+    if( is_admin() ) {
+        return;
+    }
+    $wp_scripts->add_data( 'jquery', 'group', 1 );
+    $wp_scripts->add_data( 'jquery-core', 'group', 1 );
+    $wp_scripts->add_data( 'jquery-migrate', 'group', 1 );
+}
+//add_action( 'wp_default_scripts', 'move_jquery_into_footer' );
+
+
+/* Control WPURP JS scripts loading */
+function enqueue_wpurp_js($js_enqueue) {
+	
+	$js_enqueue[] = array(
+    'name' => 'custom_wpurp_js_script',
+    'file' =>  get_stylesheet_directory_uri() . '/assets/js/wpurp_custom.js',
+    'direct' => true,
+    'public' => true,
+    'deps' => array(
+        'jquery',
+  		),
+    'type' => 'js',
+    'priority' => 10,
+    'url' =>  get_stylesheet_directory_uri() . '/assets/js/wpurp_custom.js',
+    'dir' =>  get_stylesheet_directory_uri() . '/assets/js/wpurp_custom.js',
+  	);
+  	
+//	print "<pre>";
+//	print_r($js_enqueue);
+//	print "</pre>";
+  
+	return $js_enqueue;
+}
+add_filter ( 'wpurp_assets_js', 'enqueue_wpurp_js', 15, 1 );
+
 
 
 /* =================================================================*/
@@ -339,6 +384,8 @@ add_action( 'genesis_after_content', 'genesis_posts_nav' );
 /* =================================================================*/
 
 /*add_filter( 'wpurp_user_submissions_current_user_edit_item', 'add_empty_msg')*/
+
+
 
 /* Remove comment form in recipes */
 function remove_recipe_comments_form() {

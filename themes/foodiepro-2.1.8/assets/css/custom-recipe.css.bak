@@ -122,7 +122,7 @@
 
 .recipe-label:before {
 	font-family: FontAwesome;
-	font-style: normal;
+	font-weight: normal;
 	width:20px;
 	float:left;
 }
@@ -182,6 +182,11 @@ li.ingredient-group,
 
 ul.wpurp-recipe-ingredients {
     margin-bottom: 0;
+}
+
+li.wpurp-recipe-ingredient {
+    list-style-position: inside;
+    padding-left:10px;
 }
 
 li.wpurp-recipe-ingredient a {

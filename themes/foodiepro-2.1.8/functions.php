@@ -275,22 +275,8 @@ function enqueue_wpurp_js($js_enqueue) {
                     'permalinks' => get_option('permalink_structure'),
                 ),
             ),
-    	      /*array(
-                'url' => WPUltimateRecipe::get()->coreUrl . '/js/adjustable_servings.js',
-                'public' => true,
-                'deps' => array(
-                    'jquery',
-                    'fraction',
-                		'print_button',
-                ),
-                'data' => array(
-                    'name' => 'wpurp_servings',
-                    'precision' => 2,
-                    'decimal_character' => ',',
-                ),
-            ),*/
     	      array(
-                'url' => get_stylesheet_directory_uri() . '/assets/js/wpurp_custom.js',
+                'url' => WPUltimateRecipe::get()->coreUrl . '/js/adjustable_servings.js',
                 'public' => true,
                 'deps' => array(
                     'jquery',

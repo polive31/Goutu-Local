@@ -51,9 +51,13 @@ add_shortcode( 'add-comment-form', 'add_comment_form_shortcode' );
 --------------------------------------------- */
 	
 function display_share_title() {
-	if (is_singular('post')) $msg=__('Share this post','foodiepro');
-	elseif (is_singular('recipe')) $msg=__('Share this recipe','foodiepro');
-	$html = '<h3 class="share-title">' . $msg . '</h3>';
+	if (is_singular()) {
+		if (is_singular('recipe')) 
+			$msg=__('Share this recipe','foodiepro');
+		else
+			$msg=__('Share this post','foodiepro');
+		$html = '<h3 class="share-title">' . $msg . '</h3>';
+	}
 	return $html;
 }
 

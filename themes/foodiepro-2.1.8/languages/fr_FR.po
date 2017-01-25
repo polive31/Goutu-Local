@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2017-01-20 09:31+0100\n"
-"PO-Revision-Date: 2017-01-20 09:33+0100\n"
+"PO-Revision-Date: 2017-01-25 22:46+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -1273,19 +1273,19 @@ msgstr "de "
 
 #: themes/foodiepro-2.1.8/custom-recipe-template.php:342
 msgid "Add to Shopping List"
-msgstr "Ajouter aux courses"
+msgstr "Courses"
 
 #: themes/foodiepro-2.1.8/custom-recipe-template.php:343
 msgid "Remove from Shopping List"
-msgstr "Retirer des courses"
+msgstr "Courses"
 
 #: themes/foodiepro-2.1.8/custom-recipe-template.php:378
 msgid "Add to Favorites"
-msgstr "Ajouter aux favoris"
+msgstr "Favoris"
 
 #: themes/foodiepro-2.1.8/custom-recipe-template.php:379
 msgid "Remove from Favorites"
-msgstr "Retirer des favoris"
+msgstr "Favorite"
 
 #: themes/foodiepro-2.1.8/functions.php:249
 msgid "Goûtu.org - Cuisiner, Découvrir, Partager"

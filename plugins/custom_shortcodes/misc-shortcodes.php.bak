@@ -44,7 +44,7 @@ function add_comment_form_shortcode() {
     ob_end_clean();
     return $cform;
  }
-//add_shortcode( 'add-comment-form', 'add_comment_form_shortcode' );
+add_shortcode( 'add-comment-form', 'add_comment_form_shortcode' );
 
 
 /* Share Title Output

@@ -64,16 +64,35 @@ define ( 'BP_AVATAR_DEFAULT_THUMB', 'https://goutu.org/wp-content/themes/foodiep
 /* Enqueue Buddypress scripts in the footer rather than the header 
 --------------------------------------------------------------------*/
 function enqueue_bp_core_scripts($scripts) {
-	if (is_admin())
-		return '';
+	if (is_admin()) return $scripts;
+		
+  foreach ( $scripts as $id => $script ) { 
+      if (!$script['footer']) 
+      	$scripts[$id]['footer']=TRUE; 
+  } 
 
-	print "<pre>";
-	print_r($scripts);
-	print "</pre>";
-	return '';
+//	print "<pre>";
+//	print_r($scripts);
+//	print "</pre>";
+	
+	return $scripts;
 }
 //add_filter( 'bp_core_register_common_scripts', 'enqueue_bp_core_scripts', 15, 1 );
 
+/* Buddypress Friends Widget */
+function enqueue_bp_js() {
+	if (is_admin()) return;
+	
+	$min='min';
+	
+	wp_deregister_script('bp-legacy-js');
+  wp_enqueue_script( 'bp-legacy-js', buddypress()->plugin_url . "bp-templates/bp-legacy/js/buddypress{min}.js", array( 'bp-confirm', 'bp-jquery-cookie', 'bp-jquery-query', 'bp-jquery-scroll-to', 'bp-widget-members', 'jquery' ), bp_get_version(), true );
+
+	wp_deregister_script('bp_core_widget_friends-js');
+  wp_enqueue_script( 'bp_core_widget_friends-js', buddypress()->plugin_url . "bp-friends/js/widget-friends{min}.js", array( 'jquery' ), bp_get_version(), true );
+
+}
+//add_action( 'wp_enqueue_scripts', 'enqueue_bp_js' );
 
 /* =================================================================*/
 /* =              COVER IMAGE SETTINGS

@@ -24,7 +24,8 @@ function list_terms_taxonomy( $atts ) {
 		'dropdown' => 'false',
 		'taxonomy' => 'category',
 		'label' => '',
-		'select_msg' => __( 'Select...', 'foodiepro' ),
+		//'select_msg' => __( 'Select...', 'foodiepro' ),
+		'select_msg' => 'TOTOOOOOOO',
 		'all_msg' => '',
 		'depth' => 1,
 		'child_of' => 0,
@@ -83,25 +84,31 @@ function list_terms_taxonomy( $atts ) {
 		$tax_meta = get_taxonomy( $taxonomy );
 		if ($tax_meta != false) 
 			$tax_slug = $tax_meta->rewrite['slug'];
+			
+		ob_start();
+		?>
 		
-		$html .= "<script type='text/javascript'>\n";
-		$html .= '/* <![CDATA[ */' . "\n";
-		$html .= '(function() {' . "\n";
-		$html .= ' var '. $dropdown_id . '_dropdown = document.getElementById( "' . esc_js( $dropdown_id ) . '" );' . "\n";
-		$html .= ' function on' . $dropdown_id . 'Change() {' . "\n";
-		//$html .= 'alert("On Change detected");';
-		$html .= '  var choice = '. $dropdown_id . '_dropdown.options[ '. $dropdown_id . '_dropdown.selectedIndex ].value;' . "\n";
-		$html .= '	if ( choice !="none" ) {' . "\n";
-		$html .= '		  location.href = "' . home_url() . '/' . $tax_slug . '/" + choice;' . "\n";
-		$html .= '	}' . "\n";
-		$html .= '	if ( choice =="0" ) {' . "\n";
-		$html .= '		  location.href = "' . $all_url . '";' . "\n";
-		$html .= '	}' . "\n";
-		$html .= ' }' . "\n";
-		$html .= '	'. $dropdown_id . '_dropdown.onchange = on' . $dropdown_id . 'Change;' . "\n";
-		$html .= '})();' . "\n";
-		$html .= '/* ]]> */' . "\n";
-		$html .= '</script>' . "\n";
+		<script type='text/javascript'>
+		/* <![CDATA[ */
+		(function() {
+		 var <?php echo $dropdown_id;?>_dropdown = document.getElementById( "<?php echo esc_js( $dropdown_id );?>" );
+		 function on_<?php echo $dropdown_id;?>_Change() {
+		  var choice = <?php echo $dropdown_id;?>_dropdown.options[ <?php echo $dropdown_id;?>_dropdown.selectedIndex ].value;
+			if ( choice !="none" ) {
+				  location.href = "<?php echo home_url() . '/' . $tax_slug . '/';?>" + choice;
+			}
+			if ( choice =="0" ) {
+				  location.href = "<?php echo $all_url;?>";
+			}
+		 }
+			<?php echo $dropdown_id;?>_dropdown.onchange = on_<?php echo $dropdown_id;?>_Change;
+		})();
+		/* ]]> */
+		</script>
+		
+		<?php
+		$html .= ob_get_contents();
+    ob_end_clean();
 
 	}
 	
@@ -125,7 +132,75 @@ function list_terms_taxonomy( $atts ) {
 }
 
 // Add a shortcode that executes our function
-add_shortcode('ct_terms', 'list_terms_taxonomy');
+add_shortcode('ct-terms', 'list_terms_taxonomy');
+
+
+/* =================================================================*/
+/* =                    INDEX LINKS GENERATION   
+/* =================================================================*/
+
+function add_index_link($atts) {
+	 //Inside the function we extract parameter of our shortcode
+	extract( shortcode_atts( array(
+		'back' => 'false',
+	), $atts ) );
+	
+
+	if ($back!='true'):
+		
+		$obj = get_queried_object();
+		$tax_id = $obj -> taxonomy;
+		$parent = $obj -> parent;
+		$current = $obj -> term_id;
+
+		switch ($tax_id) {
+	    case 'course':
+				$url = "/recettes/plats";
+				//$msg = "De l'apéritif au dessert";
+				$msg = __('Courses', 'foodiepro');
+				break;
+	    case 'season':
+				$url = "/recettes/saisons";
+				//$msg = "Cuisine de saisons";
+				$msg = __('Seasons', 'foodiepro');
+				break;
+	    case 'occasion':
+				$url = "/recettes/occasions";
+				//$msg = "En toutes occasions";
+				$msg = __('Occasions', 'foodiepro');
+				break;
+	    case 'diet':
+				$url = "/recettes/regimes";
+				//$msg = "Régimes et diététique";
+				$msg = __('Diets', 'foodiepro');
+				break;
+	    case 'cuisine':
+	    	$url="Parent" . $parent;
+	    	if ($parent == 9996 || $current == 9996) {
+	    		$url = "/recettes/regions";
+					//$msg = "Cuisines de régions";
+					$msg = __('France', 'foodiepro');}
+	    	else {
+	    		$url = "/recettes/monde";
+					//$msg = "Cuisines du monde";
+					$msg = __('World', 'foodiepro');}
+	    	break;
+	    case 'category':
+				$url = "/blogs";
+				$msg = __('All blogs', 'foodiepro');
+				break;	
+		}
+		
+	else:
+			$url .= 'javascript:history.back()';
+			$msg = __('Previous page','foodiepro');
+	endif;
+	
+	$output = '<ul class="menu"> <li> <a class="back-link" href="' . $url . '">' . $msg . '</a> </li> </menu>';
+	return $output;
+}
+add_shortcode('index-link', 'add_index_link'); 
+
 
 
 ?>

@@ -83,25 +83,31 @@ function list_terms_taxonomy( $atts ) {
 		$tax_meta = get_taxonomy( $taxonomy );
 		if ($tax_meta != false) 
 			$tax_slug = $tax_meta->rewrite['slug'];
+			
+		ob_start();
+		?>
 		
-		$html .= "<script type='text/javascript'>\n";
-		$html .= '/* <![CDATA[ */' . "\n";
-		$html .= '(function() {' . "\n";
-		$html .= ' var '. $dropdown_id . '_dropdown = document.getElementById( "' . esc_js( $dropdown_id ) . '" );' . "\n";
-		$html .= ' function on' . $dropdown_id . 'Change() {' . "\n";
-		//$html .= 'alert("On Change detected");';
-		$html .= '  var choice = '. $dropdown_id . '_dropdown.options[ '. $dropdown_id . '_dropdown.selectedIndex ].value;' . "\n";
-		$html .= '	if ( choice !="none" ) {' . "\n";
-		$html .= '		  location.href = "' . home_url() . '/' . $tax_slug . '/" + choice;' . "\n";
-		$html .= '	}' . "\n";
-		$html .= '	if ( choice =="0" ) {' . "\n";
-		$html .= '		  location.href = "' . $all_url . '";' . "\n";
-		$html .= '	}' . "\n";
-		$html .= ' }' . "\n";
-		$html .= '	'. $dropdown_id . '_dropdown.onchange = on' . $dropdown_id . 'Change;' . "\n";
-		$html .= '})();' . "\n";
-		$html .= '/* ]]> */' . "\n";
-		$html .= '</script>' . "\n";
+		<script type='text/javascript'>
+		/* <![CDATA[ */
+		(function() {
+		 var <?php echo $dropdown_id;?>_dropdown = document.getElementById( "<?php echo esc_js( $dropdown_id );?>" );
+		 function on_<?php echo $dropdown_id;?>_Change() {
+		  var choice = <?php echo $dropdown_id;?>_dropdown.options[ <?php echo $dropdown_id;?>_dropdown.selectedIndex ].value;
+			if ( choice !="none" ) {
+				  location.href = "<?php echo home_url() . '/' . $tax_slug . '/';?>" + choice;
+			}
+			if ( choice =="0" ) {
+				  location.href = "<?php echo $all_url;?>";
+			}
+		 }
+			<?php echo $dropdown_id;?>_dropdown.onchange = on_<?php echo $dropdown_id;?>_Change;
+		})();
+		/* ]]> */
+		</script>
+		
+		<?php
+		$html .= ob_get_contents();
+    ob_end_clean();
 
 	}
 	
@@ -125,7 +131,7 @@ function list_terms_taxonomy( $atts ) {
 }
 
 // Add a shortcode that executes our function
-add_shortcode('ct_terms', 'list_terms_taxonomy');
+add_shortcode('ct-terms', 'list_terms_taxonomy');
 
 
 /* =================================================================*/

@@ -1,6 +1,7 @@
 <?php
 
 add_filter( 'wpurp_output_recipe', 'wpurp_custom_template', 10, 2 );
+wp_enqueue_style( 'custom-recipe', get_stylesheet_directory_uri() . '/assets/css/custom-recipe.css', array(), CHILD_THEME_VERSION );
 
 function wpurp_custom_template( $content, $recipe )
 {
@@ -10,11 +11,12 @@ function wpurp_custom_template( $content, $recipe )
 
 	?>
 
-	<div class="recipe">
-			
+	<div class="recipe wpurp-container">
+	<!-- Class .wpurp-container important for adjustable servings javascript -->	
+
 		<div class="recipe-container">
 			<?php
-			echo $recipe->description();;
+			echo $recipe->description();
 			?>	
 		</div>
 			
@@ -25,7 +27,7 @@ function wpurp_custom_template( $content, $recipe )
 				<?php
         $tooltip_text = __('Print', 'foodiepro');
 				?>
-				<a class="recipe-function" href="<?php echo $recipe->link_print(); ?>" target="_blank">
+				<a class="recipe-function wpurp-recipe-print-button" href="<?php echo $recipe->link_print(); ?>" target="_blank">
 					<i class="fa fa-print"></i><div class="button-tooltip"><?php echo $tooltip_text; ?></div>
 				</a>
 				
@@ -137,31 +139,22 @@ function wpurp_custom_template( $content, $recipe )
 		
 		<div class="recipe-container">
 			
-			<div class="ingredients-container">
+			<div class="ingredients-container"> 
 				<?php
-				// Method "with Template"
-					//$ingredient_list = new WPURP_Template_Recipe_Ingredients();
-					//echo $ingredient_list->output( $recipe );
-					
-					
 				// Method "with custom function"
 					echo custom_ingredients_list($recipe,'');
-					
 				?>
 			</div>
 
 			<?php
 					echo custom_instructions_list($recipe,'');
-//				$instructions_list = new WPURP_Template_Recipe_Instructions();
-//				echo $instructions_list->output( $recipe );
 			?>
-		
 		</div>
 		
 		<div class="recipe-container">
 			<?php
 			// Related Posts
-			rp4wp_children();
+			//rp4wp_children();
 			?>
 		</div>
 		
@@ -185,13 +178,13 @@ function wpurp_custom_template( $content, $recipe )
 	return $output;
 }
 
-
 function custom_ingredients_list( $recipe, $args ) {
     $out = '';
     $previous_group = '';
     $vocals = array('a','e','i','o','u');
     $exceptions = array('huile');
     
+    $out .= '<ul class="wpurp-recipe-ingredients">';
     foreach( $recipe->ingredients() as $ingredient ) {
 
         if( WPUltimateRecipe::option( 'ignore_ingredient_ids', '' ) != '1' && isset( $ingredient['ingredient_id'] ) ) {
@@ -201,9 +194,11 @@ function custom_ingredients_list( $recipe, $args ) {
             }
         }
 
-        if( isset($ingredient['group'] ) && $ingredient['group'] != $previous_group ) {
+        if( $ingredient['group'] != $previous_group ) { //removed isset($ingredient['group'] ) && 
+            $out .= '</ul>';
             $out .= '<li class="ingredient-group">' . $ingredient['group'] . '</li>';
             $previous_group = $ingredient['group'];
+            $out .= '<ul class="wpurp-recipe-ingredients">';
         }
 
         $fraction = WPUltimateRecipe::option('recipe_adjustable_servings_fractions', '0') == '1' ? true : false;
@@ -268,6 +263,7 @@ function custom_ingredients_list( $recipe, $args ) {
 
         $out .= '</li>';
     }
+    $out .= '</ul>';
 
     return $out;
 		}
@@ -361,7 +357,7 @@ function custom_addtocart_button( $recipe)
 				<?php } ?>
 				</a>
 				<?php
-        $output .= ob_get_contents();
+        $output = ob_get_contents();
         ob_end_clean();
 
         return $output;
@@ -396,7 +392,7 @@ function custom_favorite_button( $recipe )
 				<?php } ?>
 				</a>			
 				<?php
-        $output .= ob_get_contents();
+        $output = ob_get_contents();
         ob_end_clean();
 
         return $output;

@@ -1,8 +1,6 @@
 /* Custom Recipe Template 
 -------------------------------------------*/
 
-
-
 .recipe-top {
 	width:100%;
 	float:left;
@@ -48,6 +46,8 @@
 	text-decoration:none;	
 	float:left;
 	margin-left:10px;
+	font-variant: small-caps;
+  font-weight: 500;
 }
 
 .tooltip-alt {
@@ -76,9 +76,9 @@
 /* Image */
 
 .image-container {
-	width:60%;
+	min-width:300px;
+	max-width:60%;
 	float:left;
-	margin:10px;
 	padding:0px;
 }
 
@@ -89,8 +89,10 @@
 
 .image-container img {
 	width:100%;
+	max-height:350px;
 	float:left;
 	object-fit:contain;
+	object-position: 0 0;
 }
 	
 .info-container {
@@ -168,7 +170,7 @@
 	border:1px dashed #000;
 	width:40%;
 	margin:0 30px 10px 0;
-	padding:10px;
+	padding:10px 0 0 10px;
 	background-color :#f1b46c;
 	text-decoration:none;
 }
@@ -177,20 +179,17 @@ li.ingredient-group,
 .recipe-instruction-group {
   font-weight: bold;
   display: block;
-  margin-top: 10px;
 }
 
 ul.wpurp-recipe-ingredients {
-    margin-bottom: 0;
+  margin: 0 0 10px 7px;
 }
 
 li.wpurp-recipe-ingredient {
-    list-style-position: inside;
-    padding-left:0px;
 }
 
 li.wpurp-recipe-ingredient a {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 /* Instructions */

@@ -289,6 +289,20 @@ function enqueue_wpurp_js($js_enqueue) {
                     'decimal_character' => ',',
                 ),
             ),
+    	      array(
+                'url' => WPUltimateRecipePremium::get()->premiumUrl . '/addons/favorite-recipes/js/favorite-recipes.js',
+               	'premium' => true,
+                'public' => true,
+                'setting' => array( 'favorite_recipes_enabled', '1' ),
+                'deps' => array(
+                    'jquery',
+                ),
+                'data' => array(
+                    'name' => 'wpurp_favorite_recipe',
+                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
+                    'nonce' => wp_create_nonce( 'wpurp_favorite_recipe' ),
+                )
+            ),
     );
 
 //	print "<pre>";
@@ -449,7 +463,7 @@ add_action( 'save_post', 'wpurp_add_default_rating', 10, 2 );
 
 /* Custom recipe template */
 require_once( 'custom-recipe-template.php'); 
-require_once( 'custom-recipe-print-template.php'); 
+//require_once( 'custom-recipe-print-template.php'); 
 
 /* =================================================================*/
 /* =                      WIDGETS

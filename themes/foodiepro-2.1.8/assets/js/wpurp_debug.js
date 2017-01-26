@@ -1,106 +1,45 @@
-var wpurp_adjustable_servings = {};
+jQuery(document).ready(function(){
+    jQuery(document).on('click', '.wpurp-recipe-favorite', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
 
-wpurp_adjustable_servings.updateAmounts = function(amounts, servings_original, servings_new)
-{
-    amounts.each(function() {
-        var amount = parseFloat(jQuery(this).data('normalized'));
-        var fraction = jQuery(this).data('fraction');
+        var button = jQuery(this);
+        var icon = button.find('i');
 
-        if(servings_original == servings_new)
-        {
-            jQuery(this).text(jQuery(this).data('original'));
-        }
-        else
-        {
-            if(!isFinite(amount)) {
-                jQuery(this).addClass('recipe-ingredient-nan');
+        var recipeId = button.data('recipe-id');
+
+        var data = {
+            action: 'favorite_recipe',
+            security: wpurp_favorite_recipe.nonce,
+            recipe_id: recipeId
+        };
+
+        jQuery.post(wpurp_favorite_recipe.ajaxurl, data, function(html) {
+            var icon1 = icon.data('icon');
+            var icon2 = icon.data('icon-alt');
+
+            if(icon.hasClass(icon1)) {
+                icon.removeClass(icon1);
+                icon.addClass(icon2);
             } else {
-                var new_amount = servings_new * amount/servings_original;
-                var new_amount_text = wpurp_adjustable_servings.toFixed(new_amount, fraction);
-                jQuery(this).text(new_amount_text);
+                icon.removeClass(icon2);
+                icon.addClass(icon1);
             }
-        }
-    });
-}
 
-wpurp_adjustable_servings.toFixed = function(amount, fraction)
-{
-    if(fraction) {
-        var fractioned_amount = Fraction(amount.toString()).snap();
-        if(fractioned_amount.denominator < 100) {
-            return fractioned_amount;
-        }
-    }
+            if(button.next().hasClass('recipe-tooltip-content')) {
+                var tooltip = button.next().find('.tooltip-shown').first();
+                var tooltip_alt = button.next().find('.tooltip-alt').first();
 
-    if(amount == '' || amount == 0) {
-        return '';
-    }
-    // reformat to fixed
-    var precision = parseInt(wpurp_servings.precision);
-    var formatted = amount.toFixed(precision);
+                var tooltip_text = tooltip.html();
+                var tooltip_alt_text = tooltip_alt.html();
 
-    // increase the precision if reformated to 0.00, failsafe for endless loop
-    while(parseFloat(formatted) == 0) {
-        precision++;
-        formatted = amount.toFixed(precision);
-
-        if(precision > 10) {
-            return '';
-        }
-    }
-
-    // ends with .00, remove
-    if(precision > 0) {
-        var zeroes = Array(precision+1).join('0');
-        formatted = formatted.replace(new RegExp('\.' + zeroes + '$'),'');
-    }
-
-    // Change decimal character
-    if(typeof wpurp_servings !== 'undefined') {
-        formatted = formatted.replace('.', wpurp_servings.decimal_character);
-    }
-
-    return formatted;
-}
-
-
-jQuery(document).ready(function() {
-
-    jQuery(document).on('keyup change', '.adjust-recipe-servings', function(e) {
-				console.log('Adjust Recipe Servings change !');
-        var servings_input = jQuery(this);
-
-        var amounts = servings_input.parents('.wpurp-container').find('.wpurp-recipe-ingredient-quantity');
-        console.log(amounts);
-        var servings_original = parseFloat(servings_input.data('original'));
-        var servings_new = servings_input.val();
-
-        if(isNaN(servings_new) || servings_new <= 0){
-            servings_new = 1;
-        }
-
-        wpurp_adjustable_servings.updateAmounts(amounts, servings_original, servings_new);
-
-        RecipePrintButton.update(servings_input.parents('.wpurp-container'));
-    });
-
-    jQuery(document).on('blur', '.adjust-recipe-servings', function(e) {
-        var servings_input = jQuery(this);
-
-        var servings_new = servings_input.val();
-
-        if(isNaN(servings_new) || servings_new <= 0){
-            servings_new = 1;
-        }
-
-        servings_input.parents('.wpurp-container').find('.adjust-recipe-servings').each(function() {
-            jQuery(this).val(servings_new);
+                tooltip.html(tooltip_alt_text);
+                tooltip_alt.html(tooltip_text);
+            }
         });
-
-        RecipePrintButton.update(servings_input.parents('.wpurp-container'));
     });
 });
 
 jQuery(document).ready(function() {
-	console.log('Mon premier message Javascript !!!!');
+	console.log('WPURP_DEBUG.JS CHARGé !!!!');
 });

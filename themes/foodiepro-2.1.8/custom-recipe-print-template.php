@@ -1,7 +1,6 @@
 <?php
 
 add_filter( 'wpurp_output_recipe_print', 'wpurp_custom_print_template', 10, 2 );
-wp_enqueue_style( 'custom-recipe-print', get_stylesheet_directory_uri() . '/assets/css/custom-recipe-print.css', array(), CHILD_THEME_VERSION );
 
 function wpurp_custom_print_template( $content, $recipe )
 {

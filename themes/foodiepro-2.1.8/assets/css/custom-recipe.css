@@ -30,13 +30,17 @@
 }
 
 .recipe-buttons a {
-	float: right;
-	margin: 0 10px;
 }
 
 .recipe-function {
+	float: right;
 	font-size:25px;
 	color:#666;
+	margin: 0 10px;
+}
+
+.recipe-buttons a:active {
+	color:blue;
 }
 
 
@@ -72,6 +76,14 @@
 	line-height: 16px;
 	font-weight: normal;
 }*/
+
+
+/* Buttons */
+
+
+i.fa.fa-heart {
+    color: #b10404!important;
+}
 
 /* Image */
 

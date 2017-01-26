@@ -39,6 +39,10 @@
 	color:#666;
 }
 
+.recipe-buttons a:active {
+	color:blue;
+}
+
 
 .button-tooltip {
 	font-size:14px;
@@ -73,11 +77,19 @@
 	font-weight: normal;
 }*/
 
+
+/* Buttons */
+
+
+i.fa.fa-heart {
+    color: #b10404!important;
+}
+
 /* Image */
 
 .image-container {
 	min-width:300px;
-	max-width:400px;
+	max-width:60%;
 	float:left;
 	padding:0px;
 }

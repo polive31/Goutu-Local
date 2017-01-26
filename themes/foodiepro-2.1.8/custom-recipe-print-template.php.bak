@@ -34,19 +34,6 @@ function wpurp_custom_print_template( $content, $recipe )
 					</div>
 				
 				<?php
-					// Origin
-				  $test = get_the_term_list( $post_ID, 'cuisine', '', '', '' ); 
-					if ($test!='') {
-						$html = '<div class="label-container"><div id="tag" class="recipe-label">' . __('Origin','foodiepro') . '</div>' . $test . '</div>';
-						echo $html;
-					}		
-					
-					// Difficulty
-				  $test = get_the_term_list( $post_ID, 'difficult', '', '', '' ); 
-					if ($test!='') {
-						$html = '<div class="label-container"><div id="tag" class="recipe-label">' . __('Level','foodiepro') . '</div>' . $test . '</div>';
-						echo $html;
-					}			
 				
 					// Servings
 					$test = $recipe->servings_normalized();

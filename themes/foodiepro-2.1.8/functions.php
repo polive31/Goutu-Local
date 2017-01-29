@@ -241,15 +241,9 @@ function move_jquery_into_footer( $wp_scripts ) {
 //add_action( 'wp_default_scripts', 'move_jquery_into_footer' );
 
 
-/* Control WPURP JS scripts loading */
-function custom_print_css_stylesheet($js_enqueue) {
-	$js_enqueue[6]['data']['custom_print_css'] = file_get_contents(get_stylesheet_directory_uri() . '/assets/css/custom-recipe-print.css');
-	return $js_enqueue;
-}
-//add_filter ( 'wpurp_assets_js', 'custom_print_css_stylesheet', 15, 1 );
-
 function enqueue_wpurp_js($js_enqueue) {
-
+		if ( !is_singular('recipe')) return $js_enqueue;
+	
     $js_enqueue=array(
             array(
                 'name' => 'fraction',
@@ -257,6 +251,13 @@ function enqueue_wpurp_js($js_enqueue) {
                 'public' => true,
                 'admin' => true,
             ),
+            /*array(
+                'url' => WPUltimateRecipe::get()->coreUrl . '/vendor/jquery.tools.min.js',
+                'public' => true,
+                'deps' => array(
+                    'jquery',
+                ),
+            ),*/
             array(
                 'name' => 'print_button',
                 'url' => WPUltimateRecipe::get()->coreUrl . '/js/print_button.js',
@@ -285,11 +286,11 @@ function enqueue_wpurp_js($js_enqueue) {
                 ),
                 'data' => array(
                     'name' => 'wpurp_servings',
-                    'precision' => 2,
+                    'precision' => 1,
                     'decimal_character' => ',',
                 ),
             ),
-    	      array(
+						/*array(
                 'url' => WPUltimateRecipePremium::get()->premiumUrl . '/addons/favorite-recipes/js/favorite-recipes.js',
                	'premium' => true,
                 'public' => true,
@@ -303,15 +304,55 @@ function enqueue_wpurp_js($js_enqueue) {
                     'nonce' => wp_create_nonce( 'wpurp_favorite_recipe' ),
                 )
             ),
-    );
-
+						array(
+                'url' => WPUltimateRecipePremium::get()->premiumUrl . '/js/add-to-shopping-list.js',
+                'premium' => true,
+                'public' => true,
+                'deps' => array(
+                    'jquery',
+                ),
+                'data' => array(
+                    'name' => 'wpurp_add_to_shopping_list',
+                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
+                    'nonce' => wp_create_nonce( 'wpurp_add_to_shopping_list' ),
+                )
+            ),*/	  
+						array(
+                'url' => get_stylesheet_directory_uri() . '/assets/js/custom_favorite_recipe.js',
+               	'premium' => true,
+                'public' => true,
+                'setting' => array( 'favorite_recipes_enabled', '1' ),
+                'deps' => array(
+                    'jquery',
+                ),
+                'data' => array(
+                    'name' => 'wpurp_favorite_recipe',
+                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
+                    'nonce' => wp_create_nonce( 'wpurp_favorite_recipe' ),
+                )
+            ),	  
+            array(
+                'url' => get_stylesheet_directory_uri() . '/assets/js/custom_shopping_list.js',
+                'premium' => true,
+                'public' => true,
+                'deps' => array(
+                    'jquery',
+                ),
+                'data' => array(
+                    'name' => 'wpurp_add_to_shopping_list',
+                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
+                    'nonce' => wp_create_nonce( 'wpurp_add_to_shopping_list' ),
+                )
+            ),
+    );	
+	  
 //	print "<pre>";
 //	print_r($js_enqueue);
 //	print "</pre>";
-  
 	return $js_enqueue;
 }
 add_filter ( 'wpurp_assets_js', 'enqueue_wpurp_js', 15, 1 );
+
 
 //remove_action ( 'wp_enqueue_scripts', 'WPURP_Assets::enqueue');
 //wp_deregister_script('wpurp_script_minified');
@@ -324,9 +365,9 @@ add_filter ( 'wpurp_assets_js', 'enqueue_wpurp_js', 15, 1 );
 /* Sets login page color theme */
 function my_custom_login() {
 	if ( CHILD_COLOR_THEME=='autumn')
-		echo '<link rel="stylesheet" type="text/css" href="' . get_bloginfo('stylesheet_directory') . '/login/custom-login-styles-autumn.css" />';
+		echo '<link rel="stylesheet" type="text/css" href="' . get_stylesheet_directory_uri() . '/login/custom-login-styles-autumn.css" />';
 	else 
-		echo '<link rel="stylesheet" type="text/css" href="' . get_bloginfo('stylesheet_directory') . '/login/custom-login-styles-white.css" />';
+		echo '<link rel="stylesheet" type="text/css" href="' . get_stylesheet_directory_uri() . '/login/custom-login-styles-white.css" />';
 }
 add_action('login_head', 'my_custom_login');
 
@@ -391,7 +432,6 @@ add_filter('wp_authenticate_user', 'block_new_users',10,1);
 /* =================================================================*/
 
 /* Chargement des feuilles de style custom et polices */
-add_action( 'wp_enqueue_scripts', 'custom_load_custom_style_sheet' );
 function custom_load_custom_style_sheet() {
 	if ( CHILD_COLOR_THEME=='autumn')
 		wp_enqueue_style( 'color-theme-autumn', get_stylesheet_directory_uri() . '/assets/css/color-theme-autumn.css', array(), CHILD_THEME_VERSION );
@@ -405,6 +445,25 @@ function custom_load_custom_style_sheet() {
 	wp_enqueue_style( 'google-font-delius', '//fonts.googleapis.com/css?family=Delius', array(), CHILD_THEME_VERSION );
 	wp_enqueue_style( 'google-font-lobstertwo', '//fonts.googleapis.com/css?family=Lobster+Two', array(), CHILD_THEME_VERSION );
 }
+add_action( 'wp_enqueue_scripts', 'custom_load_custom_style_sheet' );
+
+
+/* Chargement des feuilles de style WPURP */
+function enqueue_wpurp_css($js_enqueue) {
+	if ( !is_singular('recipe')) return $js_enqueue;
+  $js_enqueue=array(
+					array(
+              'url' => WPUltimateRecipe::get()->coreUrl . '/css/admin.css',
+              'admin' => true,
+          ),
+					array(
+              'url' => get_stylesheet_directory_uri() . '/assets/css/custom-recipe.css',
+              'public' => true,
+          ),
+	);
+	return $js_enqueue;
+}
+add_filter ( 'wpurp_assets_css', 'enqueue_wpurp_css', 15, 1 );
 
 /* Suppression de la feuille de style de la gallerie Wordpress */
 add_filter( 'use_default_gallery_style', '__return_false' );
@@ -749,34 +808,6 @@ function title_format($content) {
 }
 add_filter('private_title_format', 'title_format');
 add_filter('protected_title_format', 'title_format');
-
-//* Add post navigation 
-add_action( 'genesis_after_entry_content', 'add_prev_next_post_nav', 1 );
-
-function add_prev_next_post_nav() {
-	if ( !is_singular( 'post' ) ) //add your CPT name to the array
-		return;
-	echo '<h3>' . __('More posts in this category','foodiepro') . '</h3>';
-	genesis_markup( array(
-		'html5'   => '<div %s>',
-		'xhtml'   => '<div class="navigation">',
-		'context' => 'adjacent-entry-pagination',
-	) );
-		echo '<div class="post-nav prev-post alignleft">';
-			//previous_post_link();
-			$prevPost = get_previous_post();
-			$prevLnk = get_the_post_thumbnail( $prevPost->ID, 'mini-thumbnail',  array( 'class' => 'alignleft' )  );
-			previous_post_link( '%link',  $prevLnk . '<div class="post-nav-title alignleft">← %title</div>', true );
-		echo '</div>';
-		echo '<div class="post-nav next-post alignright">';
-			//next_post_link();
-			$nextPost = get_next_post();
-			$nextLnk = get_the_post_thumbnail( $nextPost->ID, 'mini-thumbnail',  array( 'class' => 'alignright' )  );
-			//$nextLnk = $nextLnk . $nextPost->post_title;
-			next_post_link( '%link', $nextLnk . '<div class="post-nav-title alignright">%title →</div>', true );
-		echo '</div>';
-	echo '</div>';
-}
 
 
 //* Add readmore links

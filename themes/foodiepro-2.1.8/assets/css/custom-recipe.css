@@ -24,27 +24,53 @@
 
 /* Top Buttons */
 
-.single-recipe .fa {
-	display:block;
-	float:left;
-}
-
-.recipe-buttons a {
-}
-
-.recipe-function {
+.recipe-button {
 	float: right;
 	font-size:25px;
 	color:#666;
 	margin: 0 10px;
 }
 
-.recipe-buttons a:active {
-	color:blue;
+.recipe-button a:before {
+	display:block;
+	float:left;
+	font-family:FontAwesome;
+	font-size:inherit;
+	line-height: 24px;
 }
 
+a.recipe-share-button:before {
+	content:"\f1e0"; /* fa-alt-share */
+}
 
-.button-tooltip {
+a.recipe-review-button:before {
+	content:"\f044"; /* fa-pencil-square-o */
+}
+
+a.wpurp-recipe-print:before {
+	content:"\f02f"; /* fa-print */
+}
+
+a.wpurp-recipe-favorite:before {
+	content:"\f08a"; /* fa-heart-o */
+}
+
+a.wpurp-recipe-favorite.is-favorite:before {
+	content:"\f004"; /* fa-heart */
+  color: #af4a2b;
+}
+
+a.wpurp-recipe-add-to-shopping-list:before {
+	content:"\f07a"; /* fa-cart */
+}
+
+a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
+	/*content:"\f07a"; /* fa-cart */ 
+  color: #af4a2b;
+}
+	
+	
+.button-caption {
 	font-size:14px;
 	color:#666;
 	text-decoration:none;	
@@ -54,13 +80,15 @@
   font-weight: 500;
 }
 
-.tooltip-alt {
+.tooltip-alt,
+.recipe-tooltip-content {
 	display:none;
 }
 
-.tooltip-shown {
+
+/*.tooltip-shown {
 	display:initial;
-}
+}*/
 
 /*.recipe-tooltip-content {
 	display: none;
@@ -77,13 +105,6 @@
 	font-weight: normal;
 }*/
 
-
-/* Buttons */
-
-
-i.fa.fa-heart {
-    color: #b10404!important;
-}
 
 /* Image */
 
@@ -109,7 +130,7 @@ i.fa.fa-heart {
 	
 .info-container {
 	float:left;
-	padding-left:10px;
+	padding-left:30px;
 	max-width:40%;
 }
 
@@ -235,13 +256,13 @@ li.wpurp-recipe-instruction {
 }
 
 #joined-pics .add-picture-button button:hover {
-	color:#000!important;
+	color:#000;
 }
 
 #joined-pics .add-picture-button button:before {
 	/* content:"\f067"; Plus */
 	content:"+"; /* Plus */
-  font-size: 14px!important;
+  font-size: 14px;
 	display:block;
 }
 

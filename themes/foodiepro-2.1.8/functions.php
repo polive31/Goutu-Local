@@ -450,17 +450,27 @@ add_action( 'wp_enqueue_scripts', 'custom_load_custom_style_sheet' );
 
 /* Chargement des feuilles de style WPURP */
 function enqueue_wpurp_css($js_enqueue) {
-	if ( !is_singular('recipe')) return $js_enqueue;
-  $js_enqueue=array(
-					array(
-              'url' => WPUltimateRecipe::get()->coreUrl . '/css/admin.css',
-              'admin' => true,
-          ),
-					array(
-              'url' => get_stylesheet_directory_uri() . '/assets/css/custom-recipe.css',
-              'public' => true,
-          ),
-	);
+	if ( is_singular('recipe') ) {
+	  $js_enqueue=array(
+						array(
+	              'url' => WPUltimateRecipe::get()->coreUrl . '/css/admin.css',
+	              'admin' => true,
+	          ),
+						array(
+	              'url' => get_stylesheet_directory_uri() . '/assets/css/custom-recipe.css',
+	              'public' => true,
+	          ),
+		);
+	}
+	elseif ( is_page( 8428 ) ) {
+	//elseif ( is_singular('menu') ) {
+	  $js_enqueue=array(
+						array(
+	              'url' => get_stylesheet_directory_uri() . '/assets/css/custom-menu.css',
+	              'public' => true,
+	          ),
+		);		
+	}
 	return $js_enqueue;
 }
 add_filter ( 'wpurp_assets_css', 'enqueue_wpurp_css', 15, 1 );
@@ -490,13 +500,6 @@ add_action( 'genesis_after_content', 'genesis_posts_nav' );
 
 /*add_filter( 'wpurp_user_submissions_current_user_edit_item', 'add_empty_msg')*/
 
-/* Remove comment form in recipes */
-function remove_recipe_comments_form() {
-	if ( is_singular( 'recipe' )) {
-		remove_action( 'genesis_comment_form', 'genesis_do_comment_form' );
-	}
-}
-add_action( 'genesis_comment_form', 'remove_recipe_comments_form', 0 );
 
 
 /* DEBUG Add all meta info before recipe */
@@ -523,6 +526,15 @@ add_action( 'save_post', 'wpurp_add_default_rating', 10, 2 );
 /* Custom recipe template */
 require_once( 'custom-recipe-template.php'); 
 //require_once( 'custom-recipe-print-template.php'); 
+
+
+/* Custom menu template */
+function wpurp_custom_menu_template( $form, $menu ) {
+	return '';
+}
+add_filter( 'wpurp_user_menus_form', 'wpurp_custom_menu_template', 10, 2 );
+
+//require_once( 'custom-menu-template.php'); 
 
 /* =================================================================*/
 /* =                      WIDGETS
@@ -821,7 +833,20 @@ function add_share_icons() {
 	if ( is_singular( 'post' ) )
 		echo do_shortcode('[mashshare]');
 }
-add_action( 'genesis_entry_footer', 'add_share_icons' , 10 ); /* Original genesis_after_entry_content */
+//add_action( 'genesis_entry_footer', 'add_share_icons' , 10 ); /* Original genesis_after_entry_content */
+
+
+/* =================================================================*/
+/* =          COMMENTS
+/* =================================================================*/
+
+/* Remove comment form from recipes */
+function remove_recipe_comments_form() {
+	if ( is_singular( 'recipe' )) {
+		remove_action( 'genesis_comment_form', 'genesis_do_comment_form' );
+	}
+}
+add_action( 'genesis_comment_form', 'remove_recipe_comments_form', 0 );
 
 
 /**

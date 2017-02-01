@@ -5,7 +5,7 @@
 
 jQuery(document).ready(function() {
 
-    jQuery(document).on('click', '.wpurp-recipe-add-to-shopping-list', function(e) {
+    jQuery(document).on('click', '.wpurp-recipe-add-to-shopping-list.logged-in', function(e) {
         e.preventDefault();
         e.stopPropagation();
 

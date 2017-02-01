@@ -18,7 +18,7 @@ add_action( 'widgets_init', function(){
 });	
 
 // Creating the widget 
-class dropdown_posts_sort_widget extends WP_Widget {
+class Dropdown_Posts_Sort_Widget extends WP_Widget {
 
 function __construct() {
 parent::__construct(
@@ -50,6 +50,8 @@ public function widget( $args, $instance ) {
 		echo $args['before_title'] . __('Sort recipes', 'foodiepro') . $args['after_title'];
 	elseif ( is_archive() ) 
 		echo $args['before_title'] . __('Sort posts', 'foodiepro') . $args['after_title'];
+	elseif ( is_search() ) 
+		echo $args['before_title'] . __('Sort results', 'foodiepro') . $args['after_title'];
 	// Start of widget code
 	else {
 		$search_term = get_search_query();

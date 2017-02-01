@@ -18,7 +18,7 @@ add_action( 'widgets_init', function(){
 });	
 
 // Creating the widget 
-class dropdown_posts_sort_widget extends WP_Widget {
+class Dropdown_Posts_Sort_Widget extends WP_Widget {
 
 function __construct() {
 parent::__construct(
@@ -46,10 +46,13 @@ public function widget( $args, $instance ) {
 	// before and after widget arguments are defined by themes
 	echo $args['before_widget'];
 	//if ( ! empty( $title ) )
+	echo 'TOTO !!!!';
 	if ( is_tax() )
 		echo $args['before_title'] . __('Sort recipes', 'foodiepro') . $args['after_title'];
 	elseif ( is_archive() ) 
 		echo $args['before_title'] . __('Sort posts', 'foodiepro') . $args['after_title'];
+	elseif ( is_search() ) 
+		echo $args['before_title'] . __('Sort results', 'foodiepro') . $args['after_title'];
 	// Start of widget code
 	else {
 		$search_term = get_search_query();
@@ -109,10 +112,10 @@ public function form( $instance ) {
 		$title = __( 'New title', 'foodiepro' );
 // Widget admin form
 ?>
-<p>
-<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
-<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
-</p>
+	<p>
+	<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+	<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+	</p>
 <?php 
 }
 	

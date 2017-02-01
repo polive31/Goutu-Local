@@ -39,7 +39,6 @@
 	line-height: 24px;
 }
 
-
 a.recipe-share-button:before {
 	content:"\f1e0"; /* fa-alt-share */
 }
@@ -176,7 +175,8 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 }
 
 .recipe-label#prep:before {
-	content:"\f256";
+	content:"\f252";
+	/*content:"\f256";*/
 }
 
 .recipe-label#cook:before {
@@ -184,7 +184,8 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 }
 
 .recipe-label#wait:before {
-	content:"\f04c";
+	content:"\f252";
+	/*content:"\f04c";*/
 }
 
 .adjust-recipe-servings {

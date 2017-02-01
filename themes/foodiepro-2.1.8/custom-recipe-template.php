@@ -1,8 +1,8 @@
 <?php
 
-add_filter( 'wpurp_output_recipe', 'wpurp_custom_template', 10, 2 );
+add_filter( 'wpurp_output_recipe', 'wpurp_custom_recipe_template', 10, 2 );
 
-function wpurp_custom_template( $content, $recipe )
+function wpurp_custom_recipe_template( $content, $recipe )
 {
 	ob_start();
 	
@@ -272,92 +272,90 @@ function custom_ingredients_list( $recipe, $args ) {
     $out .= '</ul>';
 
     return $out;
-		}
+}
 		
-function custom_instructions_list( $recipe, $args )
-    {
-        $out = '';
-        $previous_group = '';
-        $instructions = $recipe->instructions();
-        
-        $out .= '<ol class="wpurp-recipe-instruction-container">';
-        for( $i = 0; $i < count($instructions); $i++ ) {
-            $instruction = $instructions[$i];
+function custom_instructions_list( $recipe, $args ) {
+    $out = '';
+    $previous_group = '';
+    $instructions = $recipe->instructions();
+    
+    $out .= '<ol class="wpurp-recipe-instruction-container">';
+    for( $i = 0; $i < count($instructions); $i++ ) {
+        $instruction = $instructions[$i];
 
-  					if( $instruction['group'] != $previous_group ) {
-                $out .= '</ol>';
-                $out .= '<div class="wpurp-recipe-instruction-group recipe-instruction-group">' . $instruction['group'] . '</div>';
-                $out .= '<ol class="">';
-                $previous_group = $instruction['group'];
-            }
-
-
-            $style = !isset( $instructions[$i+1] ) || $instruction['group'] != $instructions[$i+1]['group'] ? array('li','li-last') : 'li';
-
-            $meta = WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ) != 'json' && $args['template_type'] == 'recipe' && $args['desktop'] ? ' itemprop="recipeInstructions"' : '';
-
-            $out .= '<li class="wpurp-recipe-instruction">';
-            $out .= '<div' . $meta . '>'.$instruction['description'].'</div>';
-
-            if( $instruction['image'] != '' ) {
-                $thumb = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
-                $thumb_url = $thumb['0'];
-
-                $full_img = wp_get_attachment_image_src( $instruction['image'], 'full' );
-                $full_img_url = $full_img['0'];
-
-                $title_tag = WPUltimateRecipe::option( 'recipe_instruction_images_title', 'attachment' ) == 'attachment' ? esc_attr( get_the_title( $instruction['image'] ) ) : esc_attr( $instruction['description'] );
-                $alt_tag = WPUltimateRecipe::option( 'recipe_instruction_images_alt', 'attachment' ) == 'attachment' ? esc_attr( get_post_meta( $instruction['image'], '_wp_attachment_image_alt', true ) ) : esc_attr( $instruction['description'] );
-
-                if( WPUltimateRecipe::option( 'recipe_images_clickable', '0' ) == 1 ) {
-                    $out .= '<a href="' . $full_img_url . '" rel="lightbox" title="' . $title_tag . '">';
-                    $out .= '<img src="' . $thumb_url . '" alt="' . $alt_tag . '" title="' . $title_tag . '"' . '/>';
-                    $out .= '</a>';
-                } else {
-                    $out .= '<img src="' . $thumb_url . '" alt="' . $alt_tag . '" title="' . $title_tag . '"' . '/>';
-                }
-            }
-
-            $out .= '</li>';
+				if( $instruction['group'] != $previous_group ) {
+            $out .= '</ol>';
+            $out .= '<div class="wpurp-recipe-instruction-group recipe-instruction-group">' . $instruction['group'] . '</div>';
+            $out .= '<ol class="">';
+            $previous_group = $instruction['group'];
         }
 
-        return $out;
-    }
 
-function custom_favorite_button( $recipe )
-    {
-        if( !is_user_logged_in() ) return '';
+        $style = !isset( $instructions[$i+1] ) || $instruction['group'] != $instructions[$i+1]['group'] ? array('li','li-last') : 'li';
 
-        $current_icon = WPURP_Favorite_Recipes::is_favorite_recipe( $recipe->ID() ) ? 'fa-heart-o' : 'fa-heart';
+        $meta = WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ) != 'json' && $args['template_type'] == 'recipe' && $args['desktop'] ? ' itemprop="recipeInstructions"' : '';
 
-        $icon = '<i class="fa ' . esc_attr( $current_icon ) . '" data-icon="fa-heart-o" data-icon-alt="fa-heart"></i>';
+        $out .= '<li class="wpurp-recipe-instruction">';
+        $out .= '<div' . $meta . '>'.$instruction['description'].'</div>';
 
-        $tooltip_text = __('Add to Favorites', 'foodiepro');
-        $tooltip_alt_text = __('Remove from Favorites', 'foodiepro');
-        if( $tooltip_text && $tooltip_alt_text ) $classes = array( 'recipe-button' );
+        if( $instruction['image'] != '' ) {
+            $thumb = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
+            $thumb_url = $thumb['0'];
 
-        if( WPURP_Favorite_Recipes::is_favorite_recipe( $recipe->ID() ) ) {
-            $tooltip_text_backup = $tooltip_text;
-            $tooltip_text = $tooltip_alt_text;
-            $tooltip_alt_text = $tooltip_text_backup;
+            $full_img = wp_get_attachment_image_src( $instruction['image'], 'full' );
+            $full_img_url = $full_img['0'];
+
+            $title_tag = WPUltimateRecipe::option( 'recipe_instruction_images_title', 'attachment' ) == 'attachment' ? esc_attr( get_the_title( $instruction['image'] ) ) : esc_attr( $instruction['description'] );
+            $alt_tag = WPUltimateRecipe::option( 'recipe_instruction_images_alt', 'attachment' ) == 'attachment' ? esc_attr( get_post_meta( $instruction['image'], '_wp_attachment_image_alt', true ) ) : esc_attr( $instruction['description'] );
+
+            if( WPUltimateRecipe::option( 'recipe_images_clickable', '0' ) == 1 ) {
+                $out .= '<a href="' . $full_img_url . '" rel="lightbox" title="' . $title_tag . '">';
+                $out .= '<img src="' . $thumb_url . '" alt="' . $alt_tag . '" title="' . $title_tag . '"' . '/>';
+                $out .= '</a>';
+            } else {
+                $out .= '<img src="' . $thumb_url . '" alt="' . $alt_tag . '" title="' . $title_tag . '"' . '/>';
+            }
         }
 
-        ob_start();
-				?>
-				<a href="#" class="recipe-button wpurp-recipe-favorite" data-recipe-id="<?php echo $recipe->ID(); ?>"><?php echo $icon; ?>
-				<?php if( $tooltip_text && $tooltip_alt_text ) { ?>
-				    <div class="button-caption">
-				        <div class="tooltip-shown"><?php echo $tooltip_text; ?></div>
-				        <div class="tooltip-alt"><?php echo $tooltip_alt_text; ?></div>
-				    </div>
-				<?php } ?>
-				</a>			
-				<?php
-        $output = ob_get_contents();
-        ob_end_clean();
-
-        return $output;
+        $out .= '</li>';
     }
+
+    return $out;
+}
+
+function custom_favorite_button( $recipe ) {
+    if( !is_user_logged_in() ) return '';
+
+    $current_icon = WPURP_Favorite_Recipes::is_favorite_recipe( $recipe->ID() ) ? 'fa-heart-o' : 'fa-heart';
+
+    $icon = '<i class="fa ' . esc_attr( $current_icon ) . '" data-icon="fa-heart-o" data-icon-alt="fa-heart"></i>';
+
+    $tooltip_text = __('Add to Favorites', 'foodiepro');
+    $tooltip_alt_text = __('Remove from Favorites', 'foodiepro');
+    if( $tooltip_text && $tooltip_alt_text ) $classes = array( 'recipe-button' );
+
+    if( WPURP_Favorite_Recipes::is_favorite_recipe( $recipe->ID() ) ) {
+        $tooltip_text_backup = $tooltip_text;
+        $tooltip_text = $tooltip_alt_text;
+        $tooltip_alt_text = $tooltip_text_backup;
+    }
+
+    ob_start();
+		?>
+		<a href="#" class="recipe-button wpurp-recipe-favorite" data-recipe-id="<?php echo $recipe->ID(); ?>"><?php echo $icon; ?>
+		<?php if( $tooltip_text && $tooltip_alt_text ) { ?>
+		    <div class="button-caption">
+		        <div class="tooltip-shown"><?php echo $tooltip_text; ?></div>
+		        <div class="tooltip-alt"><?php echo $tooltip_alt_text; ?></div>
+		    </div>
+		<?php } ?>
+		</a>			
+		<?php
+    $output = ob_get_contents();
+    ob_end_clean();
+
+    return $output;
+}
   
 
 class WPURP_Custom_Recipe_Add_To_Shopping_List extends WPURP_Template_Block {
@@ -372,12 +370,14 @@ class WPURP_Custom_Recipe_Add_To_Shopping_List extends WPURP_Template_Block {
         if( !$this->output_block( $recipe, $args ) ) return '';
         
         $link_id='';
+	      $classes = array();
+        
         if( !is_user_logged_in() ) {
         	$link_id='join_us';
         } 
 
 				else {
-	        $classes = array();
+					$classes[] = 'logged-in';
 	        $shopping_list_recipes = array();
 	        if( isset( $_COOKIE['WPURP_Shopping_List_Recipes_v2'] ) ) {
 	            $shopping_list_recipes = explode( ';', stripslashes( $_COOKIE['WPURP_Shopping_List_Recipes_v2'] ) );
@@ -434,13 +434,14 @@ class WPURP_Custom_Recipe_Favorite extends WPURP_Template_Block {
         
         $link_id='';
         
+        $classes = array();
         if( !is_user_logged_in() ) {
         	//$icon = '<i class="fa ' . esc_attr( $this->icon ) . '"></i>';
         	$link_id='join_us';
         } 
 
 				else {
-        	$classes = array();
+					$classes[] = 'logged-in';
 	        if (WPURP_Favorite_Recipes::is_favorite_recipe( $recipe->ID() ) ) $classes[] = 'is-favorite';  
 	        //$icon = '<i class="fa ' . esc_attr( $current_icon ) . '" data-icon="' . esc_attr( $this->icon ) . '" data-icon-alt="' . esc_attr( $this->iconAlt ) . '"></i>';
 

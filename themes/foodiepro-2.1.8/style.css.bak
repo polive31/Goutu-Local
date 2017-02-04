@@ -510,9 +510,7 @@ span.bp_counter,
 	font-family:dashicons;
 }
 
-.mega-menu-toggle a[class^='fa']:before,
-.rating:before,
-.rating:after {
+.mega-menu-toggle a[class^='fa']:before {
 	font-family:FontAwesome;
 }
 
@@ -1122,62 +1120,6 @@ Common Classes
 
 .back-link:after {
 	content:" \2192";
-}
-
-
-/* Star rating
---------------------------------------------- */
-
-.rating {
-	float:left;
-  display:inline-block;
-  color:transparent;
-  font-size:18px;
-  text-align:center;
-}
-
-.rating {
-  font-size:24px;
-}
-
-.rating#stars-0:after {
-	content:"\f006\f006\f006\f006\f006";
-}
-
-.rating#stars-1:before {
-  content:"\f005";
-}
-
-.rating#stars-1:after {
-  content:"\f006\f006\f006\f006";
-}
-  
-.rating#stars-2:before {
-  content:"\f005\f005";
-}
-
-.rating#stars-2:after {
-  content:"\f006\f006\f006";
-}
-  
-.rating#stars-3:before {  
-  content:"\f005\f005\f005";
-}
-
-.rating#stars-3:after {  
-  content:"\f006\f006";
-}
-  
-.rating#stars-4:before {
-  content:"\f005\f005\f005\f005";
-}
-
-.rating#stars-4:after {
-  content:"\f006";
-}
-  
-.rating#stars-5:before {
-  content:"\f005\f005\f005\f005\f005";
 }
 
 
@@ -2765,24 +2707,37 @@ After Entry
 
 /* Comments
 --------------------------------------------- */
-
-.comment-respond {
-	float:left;
-	width:100%;
-	margin-top: 20px;
-}
-
 .comment-reply,
-.entry-comments {
+.entry-comments,
+.reply {
+	float:left;
+	clear:both;
+	width:100%;
 	font-size:14px;
 	letter-spacing:0.5px;
 	padding:0px 0;
 }
 
-.comment-reply,
-.entry-comments,
-.ping-list {
-	margin: 20px 0px;
+.comment-respond {
+	margin-top: 20px;
+}
+
+.comment-list li,
+.ping-list li {
+	list-style-type:none;
+	margin-top:22px;
+	padding: 20px 10px;
+}
+
+.comment-list li li {
+	margin-left: 30px;
+}
+
+li.comment {
+	border-top: 1px dotted #999;
+	float: left;
+  clear: both;
+  width:100%;
 }
 
 time.comment-time a {
@@ -2791,6 +2746,19 @@ time.comment-time a {
 
 .comment-meta {
 	margin-top:0px;
+	float:left;
+}
+
+.comment-edit{
+	margin-top:0px;
+	float:right;
+}
+
+.comment-content,
+.comment-edit {
+	margin-top:0px;
+	float:left;
+	clear:both;
 }
 
 .entry-comments h3,
@@ -2824,21 +2792,6 @@ time.comment-time a {
 .comment-reply label {
 	display:block;
 	margin-right:12px;
-}
-
-.comment-list li,
-.ping-list li {
-	list-style-type:none;
-	margin-top:22px;
-	padding: 20px 10px;
-}
-
-.comment-list li li {
-	margin-left: 30px;
-}
-
-li.comment {
-	border-top: 1px dotted #999;
 }
 
 .comment .avatar {

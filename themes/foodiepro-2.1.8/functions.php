@@ -242,7 +242,8 @@ function move_jquery_into_footer( $wp_scripts ) {
 
 
 function enqueue_wpurp_js($js_enqueue) {
-		if ( !is_singular('recipe')) return $js_enqueue;
+		if ( is_singular('post') ) return '';
+		elseif ( !is_singular('recipe') ) return $js_enqueue;
 	
     $js_enqueue=array(
             array(
@@ -643,8 +644,6 @@ remove_action( 'genesis_before_loop', 'genesis_do_blog_template_heading' );
 
 /* Display customized title and description before the widget area
  ------------------------------------------------------------*/
-
-
 function custom_archive_headline() {
 	
 	if ( is_archive() ) {
@@ -837,8 +836,6 @@ add_filter( 'the_content_more_link', 'foodie_pro_read_more_link' );
 function foodie_pro_read_more_link() {
 	return '...</p><p><a class="more-link" href="' . get_permalink() . '">' . __( 'Read More', 'foodiepro' ) . ' &raquo;</a></p>';
 }
-
-
 
 
 //* Add social share icons

@@ -4,6 +4,10 @@ File name : custom-ratings.css
 Description: Ratings via stars in comments
 */
 
+
+/* Star rating input
+--------------------------------------------- */
+
 .rating-wrapper {
 		overflow: hidden;
 		display: inline-block;
@@ -36,3 +40,64 @@ Description: Ratings via stars in comments
 		background: url('../images/rating-star.png') -16px 0;
 		}
 
+/* Star rating output
+--------------------------------------------- */
+
+.comment-rating,
+.rating {
+	float:left;
+  display:inline-block;
+  font-size:18px;
+  text-align:center;
+  clear:left;
+}
+
+.rating:before,
+.rating:after {
+	font-family:FontAwesome;
+	float:left;
+}
+
+.single-recipe .rating {
+  font-size:24px;
+}
+
+.rating#stars-0:after {
+	content:"\f006\f006\f006\f006\f006";
+}
+
+.rating#stars-1:before {
+  content:"\f005";
+}
+
+.rating#stars-1:after {
+  content:"\f006\f006\f006\f006";
+}
+  
+.rating#stars-2:before {
+  content:"\f005\f005";
+}
+
+.rating#stars-2:after {
+  content:"\f006\f006\f006";
+}
+  
+.rating#stars-3:before {  
+  content:"\f005\f005\f005";
+}
+
+.rating#stars-3:after {  
+  content:"\f006\f006";
+}
+  
+.rating#stars-4:before {
+  content:"\f005\f005\f005\f005";
+}
+
+.rating#stars-4:after {
+  content:"\f006";
+}
+  
+.rating#stars-5:before {
+  content:"\f005\f005\f005\f005\f005";
+}

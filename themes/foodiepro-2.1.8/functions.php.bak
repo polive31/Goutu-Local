@@ -242,7 +242,8 @@ function move_jquery_into_footer( $wp_scripts ) {
 
 
 function enqueue_wpurp_js($js_enqueue) {
-		if ( !is_singular('recipe')) return $js_enqueue;
+		if ( is_singular('post') ) return '';
+		elseif ( !is_singular('recipe') ) return $js_enqueue;
 	
     $js_enqueue=array(
             array(
@@ -839,8 +840,6 @@ function foodie_pro_read_more_link() {
 }
 
 
-
-
 //* Add social share icons
 function add_share_icons() {
 	if ( is_singular( 'post' ) )
@@ -856,7 +855,7 @@ function add_share_icons() {
 /* Remove comment form from recipes 
 -------------------------------------------------------*/
 function remove_recipe_comments_form() {
-	if ( is_singular( 'recipe' )) {
+	if ( is_singular( 'recipe' ) || is_singular( 'post' ) ) {
 		remove_action( 'genesis_comment_form', 'genesis_do_comment_form' );
 	}
 }

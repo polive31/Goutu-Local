@@ -814,6 +814,10 @@ add_action( 'pre_get_posts', 'archive_change_sort_order');
 /* =                      POSTS
 /* =================================================================*/
 
+
+//* Remove the post meta display
+remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
+
 /* Remove mention from private & protected titles */
 function title_format($content) {
 	return '%s';
@@ -828,6 +832,15 @@ add_filter( 'get_the_content_more_link', 'foodie_pro_read_more_link' );
 add_filter( 'the_content_more_link', 'foodie_pro_read_more_link' );
 
 
+/* Modify the Genesis read more link
+-------------------------------------------------------*/
+function foodie_pro_read_more_link() {
+	return '...</p><p><a class="more-link" href="' . get_permalink() . '">' . __( 'Read More', 'foodiepro' ) . ' &raquo;</a></p>';
+}
+
+
+
+
 //* Add social share icons
 function add_share_icons() {
 	if ( is_singular( 'post' ) )
@@ -840,47 +853,25 @@ function add_share_icons() {
 /* =          COMMENTS
 /* =================================================================*/
 
-/* Remove comment form from recipes */
+/* Remove comment form from recipes 
+-------------------------------------------------------*/
 function remove_recipe_comments_form() {
-	if ( is_singular( 'recipe' )) {
+	if ( is_singular( 'recipe' ) || is_singular( 'post' ) ) {
 		remove_action( 'genesis_comment_form', 'genesis_do_comment_form' );
 	}
 }
 add_action( 'genesis_comment_form', 'remove_recipe_comments_form', 0 );
 
 
-/**
- * Modify the Genesis read more link */
-function foodie_pro_read_more_link() {
-	return '...</p><p><a class="more-link" href="' . get_permalink() . '">' . __( 'Read More', 'foodiepro' ) . ' &raquo;</a></p>';
-}
-
-//* Modify comments title text in comments
-add_filter( 'genesis_title_comments', 'sp_genesis_title_comments' );
+/* Modify comments title text in comments 
+-------------------------------------------------------*/
+//add_filter( 'genesis_title_comments', 'sp_genesis_title_comments' );
 function sp_genesis_title_comments() {
 	$title = '<h3>Commentaires</h3>';
 	return $title;
 }
 
-/* Modify comments form
---------------------------------------------------------------*/
-//function custom_genesis_comment_form_args($args) {
-//	$args = array (
-//	'title_reply' => __( '', 'genesis' ), //default=’Speak Your Mind’; WordPress deafult: __( 'Leave a Reply’ )
-//	'label_submit' => __( 'Submit Comment', 'genesis' ), //default=’Post Comment’
-//	'title_reply_to' => __( 'Reply Title', 'genesis' ), //Default: __( 'Leave a Reply to %s’ )
-//	'cancel_reply_link' => __( 'Cancel', 'genesis' ) //Default: __( ‘Cancel reply’ )
-//	);
-//	return $args;
-//}
-//add_filter('genesis_comment_form_args', 'custom_genesis_comment_form_args');
 
-//* Use specific foodiepro comments form
-//add_filter( 'genesis_comment_form_args', 'foodie_pro_comment_form_args' );
-
-
-//* Remove the post meta function
-remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
 
 
 /* =================================================================*/

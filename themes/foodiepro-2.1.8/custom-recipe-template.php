@@ -81,9 +81,15 @@ function wpurp_custom_recipe_template( $content, $recipe )
 			<div class="info-container">
 				<?php
 					// Rating
-					$rating = output_recipe_rating( $post_ID ); ?>
+					//$rating = get_post_meta( get_the_id(), 'recipe_user_ratings_rating' );
+					//print_r($rating);
+					$rating = get_rating_stats( get_post_meta( get_the_id(), 'recipe_user_ratings' ) );
+					//print_r($rating);
+					$stars = floor( $rating['rating'] );
+					?>
+
 					<div class="label-container">
-						<div class="rating" id="stars-<?php echo $rating['stars'];?>"></div>
+						<div class="rating" id="stars-<?php echo $stars;?>"></div>
 						<?php 
 						if ( $rating['votes']!=0 ) {
 							$rating_plural=$rating['votes']==1?__('review','foodiepro'):__('reviews','foodiepro'); 

@@ -28,17 +28,17 @@ Description: Ratings via stars in comments
 .rating-wrapper:hover .rating-star:hover,
 .rating-wrapper:hover .rating-star:hover ~ .rating-star,
 .rating-input:checked ~ .rating-star {
-	        background-position: 0 0;
-		}
+    background-position: 0 0;
+}
 
 .rating-star,
 .rating-wrapper:hover .rating-star {
 		float: right;
 		display: block;
-		width: 16px;
-		height: 16px;
-		background: url('../images/rating-star.png') -16px 0;
-		}
+		width: 20px;
+		height: 20px;
+		background: url('../images/rating-star.png') -20px 0/40px 20px no-repeat;
+}
 
 /* Star rating output
 --------------------------------------------- */
@@ -58,9 +58,6 @@ Description: Ratings via stars in comments
 	float:left;
 }
 
-.single-recipe .rating {
-  font-size:24px;
-}
 
 .rating#stars-0:after {
 	content:"\f006\f006\f006\f006\f006";

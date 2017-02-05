@@ -1,0 +1,90 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: custom-star-rating\n"
+"POT-Creation-Date: 2017-02-05 12:06+0100\n"
+"PO-Revision-Date: 2017-02-05 13:41+0100\n"
+"Last-Translator: \n"
+"Language-Team: goutu.org <psc.olv@gmail.com>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-KeywordsList: __;_e;_x;esc_attr_e\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: custom-ratings.php:80
+msgid "Send"
+msgstr "Envoyer"
+
+#: custom-ratings.php:83
+msgid "Reply Title"
+msgstr ""
+
+#: custom-ratings.php:84
+msgid "Cancel"
+msgstr "Annuler"
+
+#: helpers/functions.php:15
+msgid "Delicious"
+msgstr "Succulent"
+
+#: helpers/functions.php:17
+msgid "Very good"
+msgstr "Très bon"
+
+#: helpers/functions.php:19
+msgid "Rather good"
+msgstr "Assez bon"
+
+#: helpers/functions.php:21
+msgid "Not so good"
+msgstr "Pas très bon"
+
+#: helpers/functions.php:23
+msgid "Really not good"
+msgstr "Vraiment pas bon"
+
+#: helpers/functions.php:25
+msgid "Not rated"
+msgstr "Pas encore évalué"
+
+#: templates/comment-form.php:31
+msgid "Comment"
+msgstr "Commentaire"
+
+#: templates/comments-list.php:21
+#, php-format
+msgid "<cite class=\"fn\">%s</cite> <span class=\"says\">says:</span>"
+msgstr "<cite class=\"fn\">%s</cite> <span class=\"dit\">says:</span>"
+
+#: templates/comments-list.php:25
+msgid "Your comment is awaiting moderation."
+msgstr "Votre commentaire est en attente de modération."
+
+#: templates/comments-list.php:31
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "Le %1$s à %2$s"
+
+#: templates/comments-list.php:36
+msgid "(Edit)"
+msgstr ""
+
+#~ msgid "delicious"
+#~ msgstr "délicieux"
+
+#~ msgid "very good"
+#~ msgstr "très bon"
+
+#~ msgid "rather good"
+#~ msgstr "plutôt bon"
+
+#~ msgid "not so good"
+#~ msgstr "pas très bon"
+
+#~ msgid "really not good"
+#~ msgstr "vraiment pas bon"

@@ -516,14 +516,6 @@ function display_all_meta() {
 //add_action( 'genesis_entry_header', 'display_all_meta', 10 );
 
 
-/* Add ratings default value on recipe save */ 
-function wpurp_add_default_rating( $id, $post ) {
- if ( $post->post_type == 'recipe' && !wp_is_post_revision($post->ID) )
-    update_post_meta($post->ID, 'recipe_user_ratings_rating', '0');
-}
-add_action( 'save_post', 'wpurp_add_default_rating', 10, 2 );
-
-
 /* Custom recipe template */
 require_once( 'custom-recipe-template.php'); 
 //require_once( 'custom-recipe-print-template.php'); 
@@ -556,42 +548,6 @@ function execute_php($html){
      return $html;
 }
 add_filter('widget_text','execute_php',100);
-
-
-// User rating calculation from votes
-function output_recipe_rating( $recipe_id ) {
-  $user_ratings = get_post_meta( $recipe_id, 'recipe_user_ratings' );
-
-  $votes = count( $user_ratings );
-  $total = 0;
-  $rating = 0;
-  $stars = 0;
-  $half_star = false;
-
-  foreach( $user_ratings as $user_rating )
-  	{$total += $user_rating['rating'];}
-
-  if( $votes !== 0 ) {
-      $rating = $total / $votes; // TODO Just an average for now, implement some more functions later
-      $stars = floor( $rating );
-      if( $rating - $stars >= 0.5 ) {
-          $half_star = true;}
-      $rating = round( $rating, 2 );
-  }
-/*
-  // Save numeric value of rating to allow sort by
-  if( $rating != get_post_meta( $recipe_id, 'recipe_user_ratings_rating', true ) ) {
-      update_post_meta( $recipe_id, 'recipe_user_ratings_rating', $rating );
-  }*/
-
-  return array(
-      'votes' => $votes,
-      'rating' => $rating,
-      'stars' => $stars,
-      'half_star' => $half_star,
-  );
-}
-
 
 
 /* Modify WP Recent Posts ordering, depending on the orderby field value */
@@ -749,7 +705,7 @@ add_action( 'genesis_before_loop', 'add_archive_widgeted_area');
 //* Customize the entry meta in the entry header (requires HTML5 theme support)
 /*function archive_meta_filter($post_info) {
 	$post_info = '[post_date] by [post_author_posts_link] [post_comments]';
-	return $post_info;
+	return $post_
 }*/
 //add_filter( 'genesis_post_info', 'archive_meta_filter' );
 

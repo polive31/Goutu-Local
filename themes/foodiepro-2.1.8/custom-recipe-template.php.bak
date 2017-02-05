@@ -81,9 +81,15 @@ function wpurp_custom_recipe_template( $content, $recipe )
 			<div class="info-container">
 				<?php
 					// Rating
-					$rating = output_recipe_rating( $post_ID ); ?>
+					$rating = get_post_meta( get_the_id(), 'recipe_user_ratings_rating' );
+					print_r($rating);
+					$rating = get_rating_stats( get_post_meta( get_the_id(), 'recipe_user_ratings' ) );
+					print_r($rating);
+					$stars = floor( $rating['rating'] );
+					?>
+
 					<div class="label-container">
-						<div class="rating" id="stars-<?php echo $rating['stars'];?>"></div>
+						<div class="rating" id="stars-<?php echo $stars;?>"></div>
 						<?php 
 						if ( $rating['votes']!=0 ) {
 							$rating_plural=$rating['votes']==1?__('review','foodiepro'):__('reviews','foodiepro'); 
@@ -323,40 +329,39 @@ function custom_instructions_list( $recipe, $args ) {
     return $out;
 }
 
-function custom_favorite_button( $recipe )
-    {
-        if( !is_user_logged_in() ) return '';
+function custom_favorite_button( $recipe ) {
+    if( !is_user_logged_in() ) return '';
 
-        $current_icon = WPURP_Favorite_Recipes::is_favorite_recipe( $recipe->ID() ) ? 'fa-heart-o' : 'fa-heart';
+    $current_icon = WPURP_Favorite_Recipes::is_favorite_recipe( $recipe->ID() ) ? 'fa-heart-o' : 'fa-heart';
 
-        $icon = '<i class="fa ' . esc_attr( $current_icon ) . '" data-icon="fa-heart-o" data-icon-alt="fa-heart"></i>';
+    $icon = '<i class="fa ' . esc_attr( $current_icon ) . '" data-icon="fa-heart-o" data-icon-alt="fa-heart"></i>';
 
-        $tooltip_text = __('Add to Favorites', 'foodiepro');
-        $tooltip_alt_text = __('Remove from Favorites', 'foodiepro');
-        if( $tooltip_text && $tooltip_alt_text ) $classes = array( 'recipe-button' );
+    $tooltip_text = __('Add to Favorites', 'foodiepro');
+    $tooltip_alt_text = __('Remove from Favorites', 'foodiepro');
+    if( $tooltip_text && $tooltip_alt_text ) $classes = array( 'recipe-button' );
 
-        if( WPURP_Favorite_Recipes::is_favorite_recipe( $recipe->ID() ) ) {
-            $tooltip_text_backup = $tooltip_text;
-            $tooltip_text = $tooltip_alt_text;
-            $tooltip_alt_text = $tooltip_text_backup;
-        }
-
-        ob_start();
-				?>
-				<a href="#" class="recipe-button wpurp-recipe-favorite" data-recipe-id="<?php echo $recipe->ID(); ?>"><?php echo $icon; ?>
-				<?php if( $tooltip_text && $tooltip_alt_text ) { ?>
-				    <div class="button-caption">
-				        <div class="tooltip-shown"><?php echo $tooltip_text; ?></div>
-				        <div class="tooltip-alt"><?php echo $tooltip_alt_text; ?></div>
-				    </div>
-				<?php } ?>
-				</a>			
-				<?php
-        $output = ob_get_contents();
-        ob_end_clean();
-
-        return $output;
+    if( WPURP_Favorite_Recipes::is_favorite_recipe( $recipe->ID() ) ) {
+        $tooltip_text_backup = $tooltip_text;
+        $tooltip_text = $tooltip_alt_text;
+        $tooltip_alt_text = $tooltip_text_backup;
     }
+
+    ob_start();
+		?>
+		<a href="#" class="recipe-button wpurp-recipe-favorite" data-recipe-id="<?php echo $recipe->ID(); ?>"><?php echo $icon; ?>
+		<?php if( $tooltip_text && $tooltip_alt_text ) { ?>
+		    <div class="button-caption">
+		        <div class="tooltip-shown"><?php echo $tooltip_text; ?></div>
+		        <div class="tooltip-alt"><?php echo $tooltip_alt_text; ?></div>
+		    </div>
+		<?php } ?>
+		</a>			
+		<?php
+    $output = ob_get_contents();
+    ob_end_clean();
+
+    return $output;
+}
   
 
 class WPURP_Custom_Recipe_Add_To_Shopping_List extends WPURP_Template_Block {

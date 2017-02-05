@@ -26,6 +26,7 @@ define( 'PLUGIN_PATH', plugins_url( '', __FILE__ ) );
 require 'helpers/functions.php';
 require 'templates/comments-list.php';
 require 'templates/comment-form.php';
+require 'shortcodes/shortcodes.php';
 
 
 /* Chargement des feuilles de style custom et polices */
@@ -59,19 +60,22 @@ function comment_ratings_php($comment_id) {
 	add_comment_meta($comment_id, 'rating', $rating_val);
 
 	// Update post meta with new rating table & rating stats
-	$user_ratings = get_post_meta( get_the_id(), 'recipe_user_ratings' );
-	
+	$post_id = get_the_id();
 	$user_ip = get_user_ip();
+	
+	$user_ratings = get_post_meta( $post_id, 'recipe_user_ratings' );
 	$nb_users = count( $user_ratings ) + 1;
-	$user_ratings[] = array(
+
+	$new_user_rating = array(
 		'user' => $nb_users,
 		'ip'=>$user_ip,
 		'rating'=> $new_rating_val,
 	);
-	update_post_meta($post_id, 'recipe_user_ratings', $user_ratings);
 	
-	$user_ratings_rating = get_rating_stats( $user_ratings )['rating'];
-	update_post_meta($post_id, 'recipe_user_ratings_rating', $user_ratings_rating);
+	add_post_meta($post_id, 'recipe_user_ratings', $new_user_rating);
+	$user_ratings[]=$new_user_rating;
+	$user_ratings_stats = get_rating_stats( $user_ratings );
+	update_post_meta($post_id, 'recipe_user_rating_stats', $user_ratings_stats);
 }
 
 
@@ -79,11 +83,11 @@ function comment_ratings_php($comment_id) {
 -------------------------------------------------------------*/ 
 add_action( 'save_post', 'wpurp_add_default_rating', 10, 2 );
 function wpurp_add_default_rating( $id, $post ) {
- if ( $post->post_type == 'recipe' && !wp_is_post_revision($post->ID) )
-    update_post_meta($post->ID, 'recipe_user_ratings_rating', '0');
+ 	if ( $post->post_type == 'recipe' && !wp_is_post_revision($post->ID) ) {
+	 	$table = array('votes' => '0', 'rating'=>'0', 'stars'=>'0', 'half-star'=>false);
+		update_post_meta($post->ID, 'recipe_user_rating_stats', $table);
+ 	}
 }
-
-
 
 
 //*************************************************************************

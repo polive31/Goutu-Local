@@ -2,8 +2,7 @@
 
 add_filter( 'wpurp_output_recipe', 'wpurp_custom_recipe_template', 10, 2 );
 
-function wpurp_custom_recipe_template( $content, $recipe )
-{
+function wpurp_custom_recipe_template( $content, $recipe ) {
 	ob_start();
 	
 	$post_ID = get_the_ID();
@@ -79,27 +78,10 @@ function wpurp_custom_recipe_template( $content, $recipe )
 			</div>
 		
 			<div class="info-container">
-				<?php
-					// Rating
-					//$rating = get_post_meta( get_the_id(), 'recipe_user_ratings_rating' );
-					//print_r($rating);
-					$rating = get_rating_stats( get_post_meta( get_the_id(), 'recipe_user_ratings' ) );
-					//print_r($rating);
-					$stars = floor( $rating['rating'] );
-					?>
-
-					<div class="label-container">
-						<div class="rating" id="stars-<?php echo $stars;?>"></div>
-						<?php 
-						if ( $rating['votes']!=0 ) {
-							$rating_plural=$rating['votes']==1?__('review','foodiepro'):__('reviews','foodiepro'); 
-							echo '<div class="rating-details">(' . $rating['votes'] . ' ' . $rating_plural . ')</div>'; //. ' | ' . __('Rate this recipe','foodiepro') . 
-						}
-						//else {
-							//echo '<div class="rating-details">' . __('Be the first to rate this recipe !','foodiepro') . '</div>';
-						//}
-						?>
-					</div>
+				
+				<div class="label-container">
+				<?php echo do_shortcode('[display-star-rating]');?>
+				</div>
 				
 				<?php
 					// Origin

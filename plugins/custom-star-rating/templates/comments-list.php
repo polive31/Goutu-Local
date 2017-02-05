@@ -33,13 +33,13 @@ function custom_star_rating_comment($comment, $args, $depth) {
 	            	<!- Debug 
 	            	<?php print_r( get_comment_meta( $comment->comment_ID ) ); ?>
 	            	<?php echo 'POST META' . "\n"; ?>
+	            	<!-- Debug 
 	            	<?php echo '<pre>'; ?>
 	            	<?php print_r( get_post_meta( get_the_id() ) ); ?>           	
-	            	<!-- Debug 
 	            	<?php print_r( get_post_meta( get_the_id() )['recipe_user_ratings'] ); ?>
 	            	<?php print_r( get_post_meta( get_the_id() )['recipe_user_ratings_rating'] ); ?>
-	            	-->
 	            <?php echo '</pre>'; ?>
+	            	-->
 	            </div>
 	            
 	            <div class="comment-edit">

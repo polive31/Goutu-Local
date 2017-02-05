@@ -40,7 +40,7 @@ function add_user_rating( $user_ratings, $new_rating_val) {
 }
 
 
-/* Calculate average user rating
+/* Calculate rating stats
 -------------------------------------------------------------*/
 function get_rating_stats( $user_ratings) {
   $votes = count( $user_ratings );
@@ -54,7 +54,7 @@ function get_rating_stats( $user_ratings) {
 
   if( $votes !== 0 ) {
       $avg_rating = $total / $votes; // TODO Just an average for now, implement some more functions later
-      $stars = floor( $rating );
+      $stars = floor( $avg_rating );
       if( $avg_rating - $stars >= 0.5 ) {
           $half_star = true;}
       $avg_rating = round( $avg_rating, 2 );

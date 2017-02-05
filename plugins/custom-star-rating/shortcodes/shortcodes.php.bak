@@ -54,10 +54,10 @@ function display_star_rating_shortcode() {
 		//echo '<div class="rating-details">' . __('Be the first to rate this recipe !','foodiepro') . '</div>';
 	//}
 
-  $html = ob_get_contents();
+  $output = ob_get_contents();
   ob_end_clean();
 
-	return $html;
+	return $output;
 }
 
 ?>

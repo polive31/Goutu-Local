@@ -764,6 +764,39 @@ add_action( 'pre_get_posts', 'archive_change_sort_order');
 //add_action( 'pre_get_posts', 'archive_sort_by_rating');
 
 
+/* =================================================================*/
+/* =                      DEBUG
+/* =================================================================*/
+
+//add_action( 'genesis_before_content', 'display_debug_info' );
+function display_debug_info() {
+	if (is_single()) {
+
+		$post_id = get_the_id();
+		echo '<pre>';
+		
+		$user_ratings = get_post_meta( $post_id, 'recipe_user_ratings' );
+		echo 'Recipe user ratings original : ';
+		print_r($user_ratings);
+		$new_user_rating = array(
+			'user' => 69,
+			'ip'=>'toto',
+			'rating'=> 456,
+		);
+		add_post_meta( $post_id, 'recipe_user_ratings', $new_user_rating );
+		$user_ratings_update = get_post_meta( $post_id, 'recipe_user_ratings' );
+		echo 'Recipe user ratings after update : ';
+		print_r($user_ratings_update);
+		
+//		delete_post_meta( $post_id, 'recipe_user_ratings' );
+//		$user_ratings_update = get_post_meta( $post_id, 'recipe_user_ratings' );
+//		echo 'Recipe user ratings after deletion : ';
+//		print_r($user_ratings_update);
+
+		echo '</pre>';			
+	}
+}
+
 
 /* =================================================================*/
 /* =                      POSTS
@@ -814,16 +847,6 @@ function remove_recipe_comments_form() {
 	}
 }
 add_action( 'genesis_comment_form', 'remove_recipe_comments_form', 0 );
-
-
-/* Modify comments title text in comments 
--------------------------------------------------------*/
-//add_filter( 'genesis_title_comments', 'sp_genesis_title_comments' );
-function sp_genesis_title_comments() {
-	$title = '<h3>Commentaires</h3>';
-	return $title;
-}
-
 
 
 

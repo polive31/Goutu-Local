@@ -10,19 +10,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 /* Rating caption
 ------------------------------------------------------------*/
 function rating_caption($val) {
+	//$val = intval($rating_val);
 	switch ($val) {
-		case 5:
-			return __('Delicious','custom-star-rating');
-		case 4:
-			return __('Very good','custom-star-rating');
-		case 3:
-			return __('Rather good','custom-star-rating');
-		case 2:
-			return __('Not so good','custom-star-rating');
-		case 1:
-			return __('Really not good','custom-star-rating');
-		case 0:
+		case "0":
 			return __('Not rated','custom-star-rating');
+		case $val <= "1":
+			return __('Really not good','custom-star-rating');
+		case $val <= "2":
+			return __('Not so good','custom-star-rating');
+		case $val <= "3":
+			return __('Rather good','custom-star-rating');
+		case $val <= "4":
+			return __('Very good','custom-star-rating');
+		case $val <= "5":
+			return __('Delicious','custom-star-rating');
 	}
 }
 
@@ -64,7 +65,7 @@ function get_rating_stats( $user_ratings) {
       'votes' => $votes,
       'rating' => $avg_rating,
       'stars' => $stars,
-      'half_star' => $half_star,
+      'half' => $half_star,
   );
 }
 

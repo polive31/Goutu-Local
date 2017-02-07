@@ -840,10 +840,13 @@ function add_share_icons() {
 /* =          COMMENTS
 /* =================================================================*/
 
+// Remove the genesis_default_list_comments function
+remove_action( 'genesis_list_comments', 'genesis_default_list_comments' );
+
 /* Remove comment form from recipes 
 -------------------------------------------------------*/
 function remove_recipe_comments_form() {
-	if ( is_singular( 'recipe' ) || is_singular( 'post' ) ) {
+	if ( is_singular( 'recipe' ) ) {
 		remove_action( 'genesis_comment_form', 'genesis_do_comment_form' );
 	}
 }

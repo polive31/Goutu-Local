@@ -776,18 +776,18 @@ function display_debug_info() {
 
 		$post_id = get_the_id();
 		//echo '<pre>';
-		PC::debug( 'In foodiepro functions.php' );
+		//PC:debug( 'In foodiepro functions.php' );
 		
 //		$output = get_post_meta( $post_id , '' , false);
 //		echo 'All post meta : ';
 //		print_r($output);
-//		PC::debug(array('get_post_meta( $post_id ) : '=> $output) );
+//		//PC:debug(array('get_post_meta( $post_id ) : '=> $output) );
 		
 		$output = get_post_meta( $post_id, 'user_ratings' );
-		PC::debug(array('user_ratings : '=> $output) );
+		//PC:debug(array('user_ratings : '=> $output) );
 
 		$output = get_post_meta( $post_id, 'user_rating_stats' );
-		PC::debug(array('user_rating_stats : '=> $output) );
+		//PC:debug(array('user_rating_stats : '=> $output) );
 		
 //		delete_post_meta( $post_id, 'recipe_user_ratings' );
 //		$user_ratings_update = get_post_meta( $post_id, 'recipe_user_ratings' );
@@ -839,6 +839,9 @@ function add_share_icons() {
 /* =================================================================*/
 /* =          COMMENTS
 /* =================================================================*/
+
+// Remove the genesis_default_list_comments function
+remove_action( 'genesis_list_comments', 'genesis_default_list_comments' );
 
 /* Remove comment form from recipes 
 -------------------------------------------------------*/

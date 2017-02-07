@@ -22,6 +22,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 //*************************************************************************
 
 //if ( is_single() ) {
+
+
+const RATING_CRITERIA = array( 
+		'result'=>'Result',
+		'clarity'=>'Clarity',
+		);
+		
+const RATED_POST_TYPES = array('recipe');
+
+
 if ( true ) {
 
 	define( 'PLUGIN_PATH', plugins_url( '', __FILE__ ) );
@@ -58,27 +68,25 @@ add_action('comment_post','update_comment_post_meta_php',10,3);
 
 function update_comment_post_meta_php($comment_id, $comment_approved,$comment) {
 	
-	//PC::debug('In comment post !');
-	//PC::debug($comment);
+	////PC:debug('In comment post !');
 	$post_id = $comment['comment_post_ID'];
-	//PC::debug(array('Post ID :'=>$post_id));
+	////PC:debug(array('Post ID :'=>$post_id));
 
 	// Retrieve new rating
-	$rating = $_POST['rating'];
-	reset($rating);
-	$rating_val=key($rating);
+	$rating = $_POST[ 'rating_' . '1' ];
+	//PC:debug(array('$_POST[rating_' . NB_RATINGS . '] :'=>$rating));
 	
 	// Update comment meta with new rating
-	add_comment_meta($comment_id, 'rating', $rating_val);
+	add_comment_meta($comment_id, 'rating', $rating);
 
 	// Update post meta with new rating table & rating stats
 	//PC::magic_tag($post_id);
 	
 	$user_ip = get_user_ip();
-	PC::debug(array('User IP :'=>$user_ip));
+	//PC:debug(array('User IP :'=>$user_ip));
 	
 	$user_ratings = get_post_meta( $post_id, 'user_ratings' );
-	PC::debug(array('User Ratings Table :'=>$user_ratings));
+	//PC:debug(array('User Ratings Table :'=>$user_ratings));
 
 	if ( !empty($user_ratings) )
 		$new_user_id = count( $user_ratings ) + 1;
@@ -89,16 +97,14 @@ function update_comment_post_meta_php($comment_id, $comment_approved,$comment) {
 	$new_user_rating = array(
 		'user' => $new_user_id,
 		'ip'=>$user_ip,
-		'rating'=> $rating_val,
+		'rating'=> $rating,
 	);
-	PC::debug(array('New User Rating :'=>$new_user_rating ) );
+	//PC:debug(array('New User Rating :'=>$new_user_rating ) );
 	add_post_meta($post_id, 'user_ratings', $new_user_rating);
 	
 	$user_ratings[]=$new_user_rating;
-	PC::debug(array('User Ratings table :'=>$user_ratings ) );
-	
 	$stats = get_rating_stats( $user_ratings );
-	PC::debug(array('Stats :'=>$stats) );
+	//PC:debug(array('Stats :'=>$stats) );
 	
 	update_post_meta($post_id, 'user_rating_stats', $stats);
 }
@@ -109,7 +115,7 @@ function update_comment_post_meta_php($comment_id, $comment_approved,$comment) {
 add_action( 'save_post', 'wpurp_add_default_rating', 10, 2 );
 function wpurp_add_default_rating( $id, $post ) {
  	if ( ! wp_is_post_revision($post->ID) ) {
- 		PC::debug('Default rating add');
+ 		//PC:debug('Default rating add');
  		
  		$init_table = array(
 			'votes'=>'0',							
@@ -127,13 +133,11 @@ function wpurp_add_default_rating( $id, $post ) {
 //**               COMMENTS LIST
 //*************************************************************************
 
-// Remove the genesis_default_list_comments function
-remove_action( 'genesis_list_comments', 'genesis_default_list_comments' );
-
 // Add our own and specify our custom callback
 add_action( 'genesis_list_comments', 'custom_star_rating_list_comments' );
 function custom_star_rating_list_comments() {
-	if ( is_singular('recipe') ) {
+
+	if ( is_singular( RATED_POST_TYPES ) ) {
 		$args = array(
 		    'type'          => 'comment',
 		    'avatar_size'   => 54,

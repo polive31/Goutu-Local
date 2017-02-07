@@ -10,19 +10,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 /* Rating caption
 ------------------------------------------------------------*/
 function rating_caption($val) {
+	//$val = intval($rating_val);
 	switch ($val) {
-		case 5:
-			return __('Delicious','custom-star-rating');
-		case 4:
-			return __('Very good','custom-star-rating');
-		case 3:
-			return __('Rather good','custom-star-rating');
-		case 2:
-			return __('Not so good','custom-star-rating');
-		case 1:
-			return __('Really not good','custom-star-rating');
-		case 0:
+		case "0":
 			return __('Not rated','custom-star-rating');
+		case $val <= "1":
+			return __('Really not good','custom-star-rating');
+		case $val <= "2":
+			return __('Not so good','custom-star-rating');
+		case $val <= "3":
+			return __('Rather good','custom-star-rating');
+		case $val <= "4":
+			return __('Very good','custom-star-rating');
+		case $val <= "5":
+			return __('Delicious','custom-star-rating');
 	}
 }
 
@@ -47,7 +48,7 @@ function get_rating_stats( $user_ratings) {
   $total = 0;
   $avg_rating = 0;
   $stars = 0;
-  $half_star = false;
+  $half_star = 'false';
 
   foreach( $user_ratings as $user_rating )
   	{$total += $user_rating['rating'];}
@@ -56,7 +57,7 @@ function get_rating_stats( $user_ratings) {
       $avg_rating = $total / $votes; // TODO Just an average for now, implement some more functions later
       $stars = floor( $avg_rating );
       if( $avg_rating - $stars >= 0.5 ) {
-          $half_star = true;}
+          $half_star = 'true';}
       $avg_rating = round( $avg_rating, 2 );
   }
   
@@ -64,7 +65,7 @@ function get_rating_stats( $user_ratings) {
       'votes' => $votes,
       'rating' => $avg_rating,
       'stars' => $stars,
-      'half-star' => $half_star,
+      'half' => $half_star,
   );
 }
 

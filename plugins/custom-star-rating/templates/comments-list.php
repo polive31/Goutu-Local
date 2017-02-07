@@ -45,13 +45,7 @@ function custom_star_rating_comment($comment, $args, $depth) {
 	 						</div>
 	        	</div>
  						
-            <?php
-            $rating = get_comment_meta($comment->comment_ID, 'rating');
-            $rating=$rating[0];
-            //echo "Rating = " . $rating;?>
-            
-            <div class="comment-rating rating" id="stars-<?php echo $rating;?>" title="<?php echo rating_caption($rating);?>">
-            </div>
+            <?php echo do_shortcode('[display-star-rating container="comment"]');?>         
 
  						<div class="comment-content">
             <?php comment_text() ?>

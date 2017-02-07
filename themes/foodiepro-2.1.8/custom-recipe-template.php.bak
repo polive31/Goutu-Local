@@ -3,6 +3,7 @@
 add_filter( 'wpurp_output_recipe', 'wpurp_custom_recipe_template', 10, 2 );
 
 function wpurp_custom_recipe_template( $content, $recipe ) {
+
 	ob_start();
 	
 	$post_ID = get_the_ID();
@@ -391,12 +392,7 @@ class WPURP_Custom_Recipe_Add_To_Shopping_List extends WPURP_Template_Block {
         ob_start();
 ?>
 <a href="#"<?php echo $this->style(); ?> id="<?php echo $link_id;?>" data-recipe-id="<?php echo $recipe->ID(); ?>"></a>
-<?php if( $tooltip_text && $tooltip_alt_text ) { ?>
-    <div class="recipe-tooltip-content">
-        <div class="tooltip-shown"><?php echo $tooltip_text; ?></div>
-        <div class="tooltip-alt"><?php echo $tooltip_alt_text; ?></div>
-    </div>
-<?php } ?>
+
 <?php
         $output .= ob_get_contents();
         ob_end_clean();

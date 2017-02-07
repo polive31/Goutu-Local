@@ -6,14 +6,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-/* Custom Comment Form with PHP
+/* Custom Comment Form with PHP (called from shortcodes.php)
 ------------------------------------------------------------ */
 function output_comment_form_html_php() {
 	
 	ob_start();?>
 	
 	<p class="rating-wrapper" id="star-rating-form">
-	<!-- <input type="hidden" name="postID" value="<?php echo $post_id;?>"> -->
 	<input type="radio" class="rating-input" id="rating-input-1-5" name="rating[5]" value="5"/>
 	<label for="rating-input-1-5" class="rating-star" title="<?php echo rating_caption(5);?>"></label>
 	<input type="radio" class="rating-input" id="rating-input-1-4" name="rating[4]" value="4"/>

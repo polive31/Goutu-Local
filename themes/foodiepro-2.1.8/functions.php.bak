@@ -171,6 +171,8 @@ function foodie_pro_includes() {
 
 	// Load everything in the admin root directory.
 	require_once $includes_dir . 'admin/functions.php';
+	
+
 }
 
 
@@ -243,7 +245,7 @@ function move_jquery_into_footer( $wp_scripts ) {
 
 function enqueue_wpurp_js($js_enqueue) {
 		if ( is_singular('post') ) return '';
-		elseif ( !is_singular('recipe') ) return $js_enqueue;
+		elseif ( !is_singular('recipe') || ( is_singular('recipe') && is_admin() ) ) return $js_enqueue;
 	
     $js_enqueue=array(
             array(
@@ -773,27 +775,26 @@ function display_debug_info() {
 	if (is_single()) {
 
 		$post_id = get_the_id();
-		echo '<pre>';
+		//echo '<pre>';
+		PC::debug( 'In foodiepro functions.php' );
 		
-		$user_ratings = get_post_meta( $post_id, 'recipe_user_ratings' );
-		echo 'Recipe user ratings original : ';
-		print_r($user_ratings);
-		$new_user_rating = array(
-			'user' => 69,
-			'ip'=>'toto',
-			'rating'=> 456,
-		);
-		add_post_meta( $post_id, 'recipe_user_ratings', $new_user_rating );
-		$user_ratings_update = get_post_meta( $post_id, 'recipe_user_ratings' );
-		echo 'Recipe user ratings after update : ';
-		print_r($user_ratings_update);
+//		$output = get_post_meta( $post_id , '' , false);
+//		echo 'All post meta : ';
+//		print_r($output);
+//		PC::debug(array('get_post_meta( $post_id ) : '=> $output) );
+		
+		$output = get_post_meta( $post_id, 'user_ratings' );
+		PC::debug(array('user_ratings : '=> $output) );
+
+		$output = get_post_meta( $post_id, 'user_rating_stats' );
+		PC::debug(array('user_rating_stats : '=> $output) );
 		
 //		delete_post_meta( $post_id, 'recipe_user_ratings' );
 //		$user_ratings_update = get_post_meta( $post_id, 'recipe_user_ratings' );
 //		echo 'Recipe user ratings after deletion : ';
 //		print_r($user_ratings_update);
 
-		echo '</pre>';			
+		//echo '</pre>';			
 	}
 }
 

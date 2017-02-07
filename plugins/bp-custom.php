@@ -234,7 +234,7 @@ function wprpe_add_post_info($args) {
 			$output .= '</a>';
 		}
 		if ( $disp_rating == '1') {
-			$rating = output_recipe_rating( get_the_ID());
+			$rating = do_shortcode('[display-star-rating]');
 			$output .= '<div class="rating" id="stars-' . $rating['stars'] . '"></div>';
 		}
 		//$output = print_r($args, true);

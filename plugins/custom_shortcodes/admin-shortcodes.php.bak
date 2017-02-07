@@ -16,25 +16,52 @@ if ( !defined('ABSPATH') )
 
 	
 /* =================================================================*/
+/* =               TEST SHORTCODE
+/* =================================================================*/
+
+add_shortcode('test-shortcode', 'test_shortcode');
+
+function test_shortcode() {
+	echo 'TEST SHORTCODE';
+}
+	
+	
+/* =================================================================*/
 /* =               BATCH UPDATE USER RATINGS
 /* =================================================================*/
 
+add_shortcode('batch-update-meta', 'batch_update_meta');
 
 /* Batch update user_ratings_ratings custom field */
-function batch_update_meta() {
+function batch_update_meta($atts) {
 	
 	$a = shortcode_atts( array(
 		'post-type' => 'recipe',
-		'key' => 'recipe_user_ratings_rating', // id, pseudo, name
+		'key' => 'recipe_user_ratings_rating',
+		'array' => 'false',
+		'value' => '0' 
 	), $atts );
+	
+	echo 'BATCH UPDATE META SHORTCODE';
 	
 	$key = $a['key'];
   $post_type = $a['post-type'];
+	$array = $a['array'];
+	$value = $a['value'];
+	PC::debug( array('$key : '=>$key ) );
+	PC::debug( array('$post-type : '=>$post_type ) );
+	PC::debug( array('$array : '=>$array) );
+	
+	if ( $array == 'true' )
+		$value = extractKeyValuePairs( $value );
+	else
+		$value = $a['value'];
+	
+	PC::debug( array('$value after explode : '=>$value) );
 		
 	echo '<div class="clearfix">';
 	echo "Batch Update Meta script started..." . "\n";
-	
-  $value = 0;
+  
   
   $post_type_object = get_post_type_object($post_type);
   $label = $post_type_object->label;
@@ -53,7 +80,16 @@ function batch_update_meta() {
 
 }
 
-add_shortcode('batch-update-meta', 'batch_update_meta');
 
+function extractKeyValuePairs($string, $delimiter = ' ') {
+    $params = explode($delimiter, $string);
+
+    $pairs = [];
+    for ($i = 0; $i < count($params); $i++) {
+        $pairs[$params[$i]] = $params[++$i];
+    }
+
+    return $pairs;
+}
 
 ?>

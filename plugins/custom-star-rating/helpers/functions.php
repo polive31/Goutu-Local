@@ -64,7 +64,7 @@ function get_rating_stats( $user_ratings) {
       'votes' => $votes,
       'rating' => $avg_rating,
       'stars' => $stars,
-      'half_star' => $half_star,
+      'half-star' => $half_star,
   );
 }
 

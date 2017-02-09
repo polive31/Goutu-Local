@@ -115,20 +115,19 @@ add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'your_theme_xp
  * <a class="bp-suggestions-mention" href="https://buddypress.org/members/see/" rel="nofollow">@see</a> bp_legacy_theme_cover_image() to discover the one used by BP Legacy
  */
 function your_theme_cover_image_callback( $params = array() ) {
-    if ( empty( $params ) ) {
-        return;
-    }
+    if ( empty( $params ) ) return;
  
-    return '
+    ob_start();?>
+    
         /* Cover image */
         #buddypress #header-cover-image {
-            height: ' . $params["height"] . 'px;
-            background-image: url(' . $params['cover_image'] . ');
+            height: <?php echo $params['height'];?>px;
+            background-image: url(<?php echo $params['cover_image'];?>);
         }
         
         /* Avatar */
         #buddypress #item-header-cover-image #item-header-avatar {
-				    margin-top:' . ($params["height"]-intval(BP_AVATAR_FULL_HEIGHT+10)/2) . 'px;
+				    margin-top:<?php echo ($params['height']-intval(BP_AVATAR_FULL_HEIGHT+10)/2);?>px;
 				    float: left;
 				    overflow: visible;
 				    width: auto;
@@ -138,11 +137,18 @@ function your_theme_cover_image_callback( $params = array() ) {
 				#buddypress div#item-header #item-header-cover-image #item-header-content {
 				    clear: both;
 				    float: left;
-				    margin-left:' . (BP_AVATAR_FULL_WIDTH+20) . 'px;
-				    margin-top:-' . (BP_AVATAR_FULL_HEIGHT-10) . 'px;
+				    margin-left:<?php echo BP_AVATAR_FULL_WIDTH+20;?>px;
+				    margin-top:-<?php echo BP_AVATAR_FULL_HEIGHT-10;?>px;
 				    width: auto;
-				}
-    ';
+				} 
+	
+	<?php
+				
+	$css = ob_get_contents();
+	echo $css;
+	ob_end_clean();
+	
+	return $css;
 }
 
 // Override default css stylesheet
@@ -194,6 +200,8 @@ add_filter('bp_core_fetch_avatar_no_grav', '__return_true');
 
 
 //* Add gravatar or picture before entry title
+add_action( 'genesis_entry_header', 'bg_entry_image', 7 );
+
 function bg_entry_image() {
 	if ( is_singular( 'recipe' ) | is_singular( 'post' ) ) /*&& ( function_exists('bp_is_active') ) */{ /* Post or Custom Post */
 		$id = get_the_author_meta( 'ID' );
@@ -221,27 +229,23 @@ function bg_entry_image() {
 	}
 }
 
-add_action( 'genesis_entry_header', 'bg_entry_image', 7 );
 
 /* Modify WP Recent Posts extended output, depending on the css ID field value */
-function wprpe_add_post_info($args) {
+add_filter('rpwe_after_thumbnail', 'wprpe_add_gravatar', 20, 2);
+function wprpe_add_gravatar($output, $args) {
+		//PC::debug( array('WPRPE Output add gravatar'=>$output) );
 		$disp_avatar = substr($args['cssID'],0,1);
-		$disp_rating = substr($args['cssID'],1,1);
-		$output='';
 		if ( $disp_avatar == '1') {
-			$output = '<a class="auth-avatar" href="' . bp_core_get_user_domain( get_the_author_meta( 'ID' )) . '" title="' . bp_core_get_username(get_the_author_meta( 'ID' )) . '">';
+			$output .= '<a class="auth-avatar" href="' . bp_core_get_user_domain( get_the_author_meta( 'ID' )) . '" title="' . bp_core_get_username(get_the_author_meta( 'ID' )) . '">';
 			$output .= get_avatar( get_the_author_meta( 'ID' ), '45');
 			$output .= '</a>';
-		}
-		if ( $disp_rating == '1') {
-			$rating = do_shortcode('[display-star-rating]');
-			$output .= '<div class="rating" id="stars-' . $rating['stars'] . '"></div>';
 		}
 		//$output = print_r($args, true);
 	return $output;
 }
-add_filter('rpwe_after_thumbnail', 'wprpe_add_post_info', 10, 1);
 
+/* TODO Add Comment here */
+add_filter( 'rpwe_default_query_arguments', 'wprpe_query_displayed_user_posts' );
 
 function wprpe_query_displayed_user_posts( $args ) {
 		if ( $args['author']=='bp_member' )  {
@@ -249,7 +253,6 @@ function wprpe_query_displayed_user_posts( $args ) {
 		}
     return $args;
 }
-add_filter( 'rpwe_default_query_arguments', 'wprpe_query_displayed_user_posts' );
 
 //
 ///* Display current member posts and more link  */

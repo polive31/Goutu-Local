@@ -37,52 +37,65 @@ function display_comment_form_with_rating() {
 add_shortcode( 'display-star-rating', 'display_star_rating_shortcode' );
 function display_star_rating_shortcode($atts) {
 	$a = shortcode_atts( array(
-		'container' => 'post',
+		'source' => 'post', //comment
+		'type' => 'stars', //full
 	), $atts );
 
 	//PC:debug('In display-star-rating shortcode');
+	$full_display=!($a['type']=='stars');
 	
-	if ( $a['container']=='comment' ) {
+	if ( $a['source']=='comment' ) {
 		$id = get_comment_ID();
-		//PC:debug( array('get comment ID'=>$id,) );
-		$rating = get_comment_meta($id, 'rating', true);
-		//PC:debug( array('rating from comment'=>$rating,) );
+		//PC::debug( array('get comment ID'=>$id,) );
+		$rating = get_comment_meta($id, 'user_rating', true);
+		//PC::debug( array('rating from comment'=>$rating,) );
 		$stars = $rating;
-		$half = 'false';
-		$votes = 0;
+		$half = false;
 	}
 	
 	else { // Rating in post meta
 		$id = get_the_id();
-		$stats = get_post_meta( $id , 'user_rating_stats', true );
-		//PC:debug(array('Stats from get post : '=>$stats));
-	
-		$votes = $stats['votes'];
-		$rating = $stats['rating'];
-		$stars = $stats['stars'];
-		$half = $stats['half'];
+		if ($full_display) {
+			$ratings = get_post_meta( $id , 'user_ratings', true );
+			$stats = get_rating_stats( $ratings );
+			$rating = $stats['rating'];
+			$votes = $stats['votes'];
+		}
+		else {
+			$rating = get_post_meta( $id , 'user_rating', true );
+		}	
+		//PC::debug(array('$rating from shortcode : '=>$rating));
+		$stars = floor($rating);
+		$half = ($rating-$stars) >= 0.5;
 	}
 
 	//PC:debug(array('votes : '=>$votes,'rating : '=>$rating,'stars : '=>$stars,'half : '=>$half,));	
 
-	ob_start();
-	?>
+	$html = '<span class="rating" title="' . $rating . ' : ' . rating_caption($rating) . '">';
+	$html .= output_stars($stars, $half);
+	$html .= '</span>';
 
-<div class="rating" id="stars-<?php echo $stars;?>" title="<?php echo $rating . ' : ' . rating_caption($rating);?>" ></div>
-<?php 
-if ( $votes!=0 ) {
-	$rating_plural=$votes==1?__('review','foodiepro'):__('reviews','foodiepro'); 
-	echo '<div class="rating-details">(' . $votes . ' ' . $rating_plural . ')</div>'; //. ' | ' . __('Rate this recipe','foodiepro') . 
-}
-	//else {
-		//echo '<div class="rating-details">' . __('Be the first to rate this recipe !','foodiepro') . '</div>';
-	//}
-
-	$html = ob_get_contents();
-	ob_end_clean();
+	if ( $full_display ) {
+		$rating_plural=$votes==1?__('review','foodiepro'):__('reviews','foodiepro'); 
+		$html .= '<span class="rating-details">(' . $votes . ' ' . $rating_plural . ')</span>'; //. ' | ' . __('Rate this recipe','foodiepro') . 
+	}
+		//else {
+			//echo '<div class="rating-details">' . __('Be the first to rate this recipe !','foodiepro') . '</div>';
+		//}
 
 	return $html;
 }
 
+function output_stars($stars, $half) {
+	$html = '';
+	for ($i = 1; $i <= $stars; $i++) {
+		$half = $half&&($i==$stars)?'-half':'';
+		$html .= '<i class="fa fa-star' . $half . '"></i>';
+	}
+	for ($i = $stars+1; $i <= 5; $i++) {
+		$html .= '<i class="fa fa-star-o"></i>';
+	}
+	return $html;
+}
 
 ?>

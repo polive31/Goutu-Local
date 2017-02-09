@@ -73,11 +73,11 @@ function update_comment_post_meta_php($comment_id, $comment_approved,$comment) {
 	////PC:debug(array('Post ID :'=>$post_id));
 
 	// Retrieve new rating
-	$rating = $_POST[ 'rating_' . '1' ];
+	$rating = $_POST[ 'rating-' . '1' ];
 	//PC:debug(array('$_POST[rating_' . NB_RATINGS . '] :'=>$rating));
 	
 	// Update comment meta with new rating
-	add_comment_meta($comment_id, 'rating', $rating);
+	add_comment_meta($comment_id, 'user_rating', $rating);
 
 	// Update post meta with new rating table & rating stats
 	//PC::magic_tag($post_id);
@@ -106,7 +106,7 @@ function update_comment_post_meta_php($comment_id, $comment_approved,$comment) {
 	$stats = get_rating_stats( $user_ratings );
 	//PC:debug(array('Stats :'=>$stats) );
 	
-	update_post_meta($post_id, 'user_rating_stats', $stats);
+	update_post_meta($post_id, 'user_rating', $stats['rating']);
 }
 
 
@@ -116,15 +116,7 @@ add_action( 'save_post', 'wpurp_add_default_rating', 10, 2 );
 function wpurp_add_default_rating( $id, $post ) {
  	if ( ! wp_is_post_revision($post->ID) ) {
  		//PC:debug('Default rating add');
- 		
- 		$init_table = array(
-			'votes'=>'0',							
-			'rating'=>'0',							
-			'stars'=>'0',
-			'half'=>false,
-		);
- 		
-		update_post_meta($post->ID, 'user_rating_stats', $init_table);
+		update_post_meta($post->ID, 'user_rating', '0');
  	}
 }
 

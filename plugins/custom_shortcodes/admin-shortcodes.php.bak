@@ -34,30 +34,41 @@ add_shortcode('batch-update-meta', 'batch_update_meta');
 
 /* Batch update user_ratings_ratings custom field */
 function batch_update_meta($atts) {
-	
 	$a = shortcode_atts( array(
 		'post-type' => 'recipe',
-		'key' => 'user_rating_stats',
-		'array' => 'true',
-		'value' => 'stars 0 votes 0 rating 0 half-star false',
-		'erase' => 'false',
+		'key' => 'user_rating',
+		'value' => '0',//can be scalar or array of space-separated $key/$value pairs
+		'cmd' => 'add',//replace, delete
 	), $atts );
 	
-	echo "BATCH UPDATE META SHORTCODE" . "\n";
+	static $script_id; // allows several shortcodes on the same page
+	++$script_id;
+	
+	echo "<h3>BATCH UPDATE META SHORTCODE</h3>";
 	
 	$key = $a['key'];
+	echo sprintf("<b>Key</b> = %s",$key);
+	echo "<br>";
+
   $post_type = $a['post-type'];
-	$array = $a['array'];
+	echo sprintf("<b>Post type</b> = %s",$post_type);
+	echo "<br>";
+
 	$value = $a['value'];
-	$erase = $a['erase'];
-	$msg=($erase=='true')?'WARNING:Existing values will be erased !':'';
+	echo sprintf("<b>Value</b> = %s",$value);
+	echo "<br>";
+
+	$cmd = $a['cmd'];
+	
+	$style='';
+	if ($cmd=='delete') $style='background-color:red';
+	if ($cmd=='update') $style='background-color:brown';
+	
 	ob_start();?>
 	
 	<div id = "center">
 	<form action="." method="post">
-	<p>Batch update meta in <?php echo $post_type;?></p>
-	<p><?php echo ($erase=='true')?'WARNING:Existing values will be erased !':'';?></p>
-	<input type="submit" name="Submit" value="Launch">
+	<input style="<?php echo $style;?>" type="submit" name="Submit_<?php echo $script_id?>" value="<?php echo $cmd;?>">
 	</form>
 	</div>
 	
@@ -67,35 +78,41 @@ function batch_update_meta($atts) {
 	
 	echo $form;
 	
-	if (isset($_POST['Submit'])) {
+	if (isset($_POST['Submit_' . $script_id])) {
 			
-			echo "BATCH UPDATE META SHORTCODE" . "\n";
-			
-			if ( $array == 'true' )
+			if ( is_array($value) )
 				$value = extractKeyValuePairs( $value );
 			else
 				$value = $a['value'];
 			
-			PC::debug( array('$value after explode : '=>$value) );
+			//PC:debug( array('$value after explode : '=>$value) );
 				
-			echo '<div class="clearfix">';
-			echo "Batch Update Meta script started..." . "\n";
-
+			echo "<p>Batch Update Meta script started...</p>";
 		  
 		  $post_type_object = get_post_type_object($post_type);
 		  $label = $post_type_object->label;
-		  echo  "Updating all " . $label . "\n";
+		  echo  sprintf("Updating all %s<br>", $label);
+
 		  $posts = get_posts(array('post_type'=> $post_type, 'post_status'=> 'publish', 'suppress_filters' => false, 'posts_per_page'=>-1));
 
 		  foreach ($posts as $post) {
 		    $meta_value = get_post_meta($post->ID, $key, True);
-		    if (empty($meta_value) || ($erase=='true') ){
-		    //$meta_value2 = media_process($meta_value1, $post->ID); //Returns a string after it finishes process.
-		    update_post_meta($post->ID, $key, $value);
-		    echo $post->post_title." UPDATED \n"; //Prints updated after ran.
+		    switch ($cmd) {
+		    	case 'add':
+		    		if ( empty($meta_value) ) add_post_meta($post->ID, $key, $value);
+		    		echo sprintf("%s=%s added to %s",$key,$value,$post->post_title) . "<br>"; //Prints updated after ran.
+		    		break;
+		    	case 'replace':
+		    		update_post_meta($post->ID, $key, $value);
+		    		echo sprintf("%s updated to %s in %s",$key,$value,$post->post_title) . "<br>"; //Prints updated after ran.
+		    		break;
+		    	case 'delete':
+		    		if ( ! empty($meta_value) ) delete_post_meta($post->ID, $key);
+		    		echo sprintf("%s key deleted in %s",$key,$post->post_title) . "<br>"; //Prints updated after ran.
+		    		break;
 		    }
+		    //$meta_value2 = media_process($meta_value1, $post->ID); //Returns a string after it finishes process.
 		  }
-		  echo '/div';
 	}
 	
 }

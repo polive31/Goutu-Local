@@ -540,6 +540,7 @@ add_filter( 'widget_text', 'shortcode_unautop');
 add_filter('widget_text', 'do_shortcode');
 
 // Enable PHP in widgets
+add_filter('widget_text','execute_php',100);
 function execute_php($html){
      if(strpos($html,"<"."?php")!==false){
           ob_start();
@@ -549,16 +550,26 @@ function execute_php($html){
      }
      return $html;
 }
-add_filter('widget_text','execute_php',100);
+
+// Add user rating to WPRPE widget
+add_filter('rpwe_after_thumbnail', 'wprpe_add_rating', 10, 2);
+function wprpe_add_rating($output, $args ) {
+		$disp_rating = substr($args['cssID'],1,1);
+		//PC::debug( array('WPRPE Output add rating'=>$output) );
+		if ( $disp_rating == '1') {
+			$output .= do_shortcode('[display-star-rating]');
+		}
+	return $output;
+}
 
 
 /* Modify WP Recent Posts ordering, depending on the orderby field value */
+add_filter( 'rpwe_default_query_arguments', 'wprpe_orderby_rating' );
 function wprpe_orderby_rating( $args ) {
 		if ( $args['orderby'] == 'meta_value_num')
     	$args['meta_key'] = 'recipe_user_ratings_rating';
     return $args;
 }
-add_filter( 'rpwe_default_query_arguments', 'wprpe_orderby_rating' );
 
 
 /*function add_recipe_rating($args) {
@@ -571,18 +582,6 @@ add_filter('rpwe_excerpt', 'add_recipe_rating', 10, 1);*/
 /* =================================================================*/
 /* =                      ARCHIVES
 /* =================================================================*/
-
-// Apply Full Width Content layout to Archives.
-function set_full_layout() {
-//	if ( ! ( is_archive() ) ) {
-//	if ( !( is_tax()) ) {
-	if ( !( is_search()) ) {
-		return;
-	}
-	// Force full width content
-	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
-}
-//add_action( 'get_header', 'set_full_layout' );
 
 //Removes Title and Description on CPT Archive
 remove_action( 'genesis_before_loop', 'genesis_do_cpt_archive_title_description' );
@@ -600,8 +599,11 @@ remove_action( 'genesis_before_loop', 'genesis_do_author_title_description', 15 
 remove_action( 'genesis_before_loop', 'genesis_do_blog_template_heading' );
 
 
-/* Display customized title and description before the widget area
+/* Archives : customized page title and description 
  ------------------------------------------------------------*/
+add_action( 'genesis_before_content', 'custom_archive_headline' );
+add_filter( 'genesis_term_intro_text_output', 'wpautop' );
+
 function custom_archive_headline() {
 	
 	if ( is_archive() ) {
@@ -669,15 +671,12 @@ function custom_archive_headline() {
 			echo $head_style['begin'] . single_term_title('', false) . $head_style['end'];
 
 	}
-	
 }
-add_action( 'genesis_before_content', 'custom_archive_headline' );
 
-add_filter( 'genesis_term_intro_text_output', 'wpautop' );
 
-/* Display customized title and description before the widget area
+/* WPURP Detailed search : customized page title and description 
  ------------------------------------------------------------*/
-
+add_filter( 'genesis_search_title_text', 'custom_search_title_text' );
 function custom_search_title_text() {	
 	$url = $_SERVER["REQUEST_URI"];
 	$WPURP_search = strpos($url, 'wpurp-search');
@@ -689,10 +688,11 @@ function custom_search_title_text() {
 
   return $html;
 }
-add_filter( 'genesis_search_title_text', 'custom_search_title_text' );
 
 
-//* Hook category widget areas before post content and after archive title
+/* Hook category widget areas before post content and after archive title
+-----------------------------------------------------------------------------*/
+add_action( 'genesis_before_loop', 'add_archive_widgeted_area');
 function add_archive_widgeted_area() {
   if ( is_archive() || is_search() ) {
   		genesis_widget_area( 'archives-top', array(
@@ -701,38 +701,22 @@ function add_archive_widgeted_area() {
   		));
   }     
 }
-add_action( 'genesis_before_loop', 'add_archive_widgeted_area');
 
 
-//* Customize the entry meta in the entry header (requires HTML5 theme support)
-/*function archive_meta_filter($post_info) {
-	$post_info = '[post_date] by [post_author_posts_link] [post_comments]';
-	return $post_
-}*/
-//add_filter( 'genesis_post_info', 'archive_meta_filter' );
-
-
-//* Customize the post title in the archive pages
+/* Customize entry title in the archive pages
+-----------------------------------------------------------------------------*/
 function archive_title($title) {
 	if ( is_tax() || is_search() ) :
-//	if ( is_post_type_archive( 'recipe' ) ) :
-		//$rating = output_recipe_rating( get_the_ID());
-		//$title .= '<div class="rating" id="stars-' . $rating['stars'] . '"></div>';
-		$saved_rating = get_post_meta( get_the_ID(), 'recipe_user_ratings_rating' );
-		if (empty($saved_rating)) $saved_rating=array(0 =>'0');
-		$title .= '<div class="rating" id="stars-' . $saved_rating[0] . '"></div>';
-		//$title .= '<div>' . print_r($saved_rating, true) . '</div>';
+//		$saved_rating = get_post_meta( get_the_ID(), 'recipe_user_ratings_rating' );
+//		if (empty($saved_rating)) $saved_rating=array(0 =>'0');
+//		$title .= '<div class="rating" id="stars-' . $saved_rating[0] . '"></div>';
+			$title .= do_shortcode('[display-star-rating]');
 	endif;
 
 	if ( is_tax('cuisine', array('france', 'europe', 'asie', 'afrique', 'amerique-nord', 'amerique-sud') ) ) :
 		$origin = wp_get_post_terms( get_the_ID(), 'cuisine', array("fields" => "names"));
 		$title .= '<div class="origin">' . $origin[0] . '</div>';
-		//$title .= get_query_var( 'taxonomy' );  => ex : "cuisine"
-		//$title .= get_query_var( 'term' ); => ex : "europe"
 	endif;
-
-	//$title .= '<div>' . print_r( get_user_meta( get_the_author_meta( 'ID' ) ), true) . '</div>';
-	//$title .= '<div>' . print_r( get_post_meta( get_the_ID() ), true) . '</div>';
 
 	return $title;
 }
@@ -742,12 +726,13 @@ add_filter( 'genesis_post_title_output', 'archive_title', 15 );
 //* Change the archive post orderby and sort order from slug
 function archive_change_sort_order($query){
     // Select any archive. For custom post type use: is_post_type_archive( $post_type )
-    //if (is_archive() || is_search() ): => ne pas utiliser car résultats de recherche non releants
+    //if (is_archive() || is_search() ): => ne pas utiliser car résultats de recherche non relevants
     if (is_archive() ):
        $orderby= get_query_var('orderby','title');
        if ($orderby=='rating'):
        	$orderby = 'meta_value_num';
-       	$meta_key = 'recipe_user_ratings_rating';
+       	//$meta_key = "user_rating_stats['rating']";
+       	$meta_key = "user_rating_stats";
        	$order = 'DESC';
        else:
        	$meta_key='';
@@ -775,19 +760,16 @@ function display_debug_info() {
 	if (is_single()) {
 
 		$post_id = get_the_id();
-		//echo '<pre>';
-		PC::debug( 'In foodiepro functions.php' );
-		
-//		$output = get_post_meta( $post_id , '' , false);
-//		echo 'All post meta : ';
-//		print_r($output);
-//		PC::debug(array('get_post_meta( $post_id ) : '=> $output) );
-		
-		$output = get_post_meta( $post_id, 'user_ratings' );
-		PC::debug(array('user_ratings : '=> $output) );
 
-		$output = get_post_meta( $post_id, 'user_rating_stats' );
-		PC::debug(array('user_rating_stats : '=> $output) );
+		PC::debug( 'In foodiepro functions.php' );		
+		$output = get_post_meta( $post_id , '' , false);
+		PC::debug(array('get_post_meta( $post_id ) : '=> $output) );
+		
+		//$output = get_post_meta( $post_id, 'user_ratings' );
+		//PC:debug(array('user_ratings : '=> $output) );
+
+		//$output = get_post_meta( $post_id, 'user_rating_stats' );
+		//PC:debug(array('user_rating_stats : '=> $output) );
 		
 //		delete_post_meta( $post_id, 'recipe_user_ratings' );
 //		$user_ratings_update = get_post_meta( $post_id, 'recipe_user_ratings' );
@@ -802,7 +784,6 @@ function display_debug_info() {
 /* =================================================================*/
 /* =                      POSTS
 /* =================================================================*/
-
 
 //* Remove the post meta display
 remove_action( 'genesis_entry_footer', 'genesis_post_meta' );

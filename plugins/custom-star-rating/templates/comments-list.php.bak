@@ -45,9 +45,7 @@ function custom_star_rating_comment($comment, $args, $depth) {
 	 						</div>
 	        	</div>
  						
-            <?php
-
-						echo do_shortcode('[display-star-rating container="comment"]');           
+            <?php echo do_shortcode('[display-star-rating container="comment"]');?>         
 
  						<div class="comment-content">
             <?php comment_text() ?>

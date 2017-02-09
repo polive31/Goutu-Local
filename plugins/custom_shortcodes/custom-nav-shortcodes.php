@@ -200,6 +200,24 @@ function add_index_link($atts) {
 }
 add_shortcode('index-link', 'add_index_link'); 
 
+/* =================================================================*/
+/* =                    PERMALINK SHORTCODE     
+/* =================================================================*/
+
+function add_permalink_shortcode($atts) {
+	extract(shortcode_atts(array(
+		'id' => 1,
+		'text' => ""  // default value if none supplied
+    ), $atts));
+    
+    if ($text) {
+        $url = get_permalink($id);
+        return "<a href='$url'>$text</a>";
+    } else {
+	   return get_permalink($id);
+	}
+}
+add_shortcode('permalink', 'add_permalink_shortcode');
 
 
 ?>

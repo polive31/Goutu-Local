@@ -69,6 +69,7 @@ plugins/*
 !plugins/custom_shortcodes/
 !plugins/custom_widgets/
 !plugins/custom-star-rating/
+!plugins/recent-posts-widget-extended/
 #!plugins/frontier-post/
 #plugins/frontier-post/*
 #!plugins/frontier-post/language/*FR.*

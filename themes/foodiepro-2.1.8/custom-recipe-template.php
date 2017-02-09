@@ -81,7 +81,7 @@ function wpurp_custom_recipe_template( $content, $recipe ) {
 			<div class="info-container">
 				
 				<div class="label-container">
-				<?php echo do_shortcode('[display-star-rating]');?>
+				<?php echo do_shortcode('[display-star-rating type="full"]');?>
 				</div>
 				
 				<?php

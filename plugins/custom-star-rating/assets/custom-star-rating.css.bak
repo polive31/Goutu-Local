@@ -8,19 +8,36 @@ Description: Ratings via stars in comments
 /* Star rating input
 --------------------------------------------- */
 
+td.rating-title {
+	float:left;
+	clear:left;
+	padding:10px 0 10px;
+	width:150px;
+}
+
+
+.form-submit {
+	display:block;
+	float:left;
+	clear:left;
+}
+
 .rating-wrapper {
+		padding:10px;
+		float:left;
+		clear:right;
 		overflow: hidden;
 		display: inline-block;
-		}
+}
 
 .rating-input {
 		display:none;
-		}
+}
 
 .rating-star:hover,
 .rating-star:hover ~ .rating-star {
 		background-position: 0 0;
-		}
+}
 
 .rating-wrapper:hover .rating-star:hover,
 .rating-wrapper:hover .rating-star:hover ~ .rating-star,
@@ -41,12 +58,13 @@ Description: Ratings via stars in comments
 /* Star rating output
 --------------------------------------------- */
 
-.comment-rating,
 .rating {
   font-size:18px;
-  text-align:center;
 }
 
+.comment-rating .rating {
+  font-size:16px;
+}
 
 .rating-details {
 	font-size:13px;

@@ -24,13 +24,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 //if ( is_single() ) {
 
 
-const RATING_CRITERIA = array( 
-		'result'=>'Result',
-		'clarity'=>'Clarity',
-		);
+const RATING = array( 
+		'id'=>'rating',
+		'title'=>'Overall rating',
+		'question'=>'How much did you like this dish ?',
+);
+
+const CLARITY = array( 
+		'id'=>'clarity',
+		'title'=>'Clarity',
+		'question'=>'How clear was the recipe ?',
+);
 		
 const RATED_POST_TYPES = array('recipe');
-
 
 if ( true ) {
 
@@ -40,7 +46,10 @@ if ( true ) {
 	require 'templates/comments-list.php';
 	require 'templates/comment-form.php';
 	require 'shortcodes/shortcodes.php';
-
+	
+	global $RatingCritera;
+	$RatingCritera = array( RATING, CLARITY);
+  
 
 	/* Chargement des feuilles de style custom et polices */
 	function load_custom_rating_style_sheet() {
@@ -77,7 +86,7 @@ function update_comment_post_meta_php($comment_id, $comment_approved,$comment) {
 	//PC:debug(array('$_POST[rating_' . NB_RATINGS . '] :'=>$rating));
 	
 	// Update comment meta with new rating
-	add_comment_meta($comment_id, 'user-rating', $rating);
+	add_comment_meta($comment_id, 'user_rating', $rating);
 
 	// Update post meta with new rating table & rating stats
 	//PC::magic_tag($post_id);

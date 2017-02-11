@@ -24,13 +24,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 //if ( is_single() ) {
 
 
-const RATING_CRITERIA = array( 
-		'result'=>'Result',
-		'clarity'=>'Clarity',
-		);
+const RATING = array( 
+		'id'=>'rating',
+		'title'=>'Overall rating',
+		'question'=>'How did you like this dish ?',
+);
+
+const CLARITY = array( 
+		'id'=>'clarity',
+		'title'=>'Clarity',
+		'question'=>'How clear was the recipe ?',
+);
 		
 const RATED_POST_TYPES = array('recipe');
-
 
 if ( true ) {
 
@@ -40,7 +46,10 @@ if ( true ) {
 	require 'templates/comments-list.php';
 	require 'templates/comment-form.php';
 	require 'shortcodes/shortcodes.php';
-
+	
+	global $RatingCritera;
+	$RatingCritera = array( RATING, CLARITY);
+  
 
 	/* Chargement des feuilles de style custom et polices */
 	function load_custom_rating_style_sheet() {

@@ -1893,21 +1893,13 @@ Custom Page Templates
 /* Popup Maker
 --------------------------------------------- */
 
-.pum-theme-9961 .pum-container, 
-.pum-theme-9499 .pum-container, 
-.pum-theme-default-theme .pum-container {
+.pum-container {
 	background-position-x:10px!important;
 	background-position-y:10px!important;
 }
 
-.pum-theme-9961 .pum-title,
-.pum-theme-9499 .pum-title {
-	margin:20px 0px 30px 130px;	
-}
-
-.pum-theme-9961 .pum-content.popmake-content,
-.pum-theme-9499 .pum-content.popmake-content {
-	margin-top:50px;
+.pum-title {
+	margin:20px 0px 50px 110px;	
 }
 
 .pum-content.popmake-content li {
@@ -2708,6 +2700,7 @@ After Entry
 /* Comments
 --------------------------------------------- */
 .comment-reply,
+.comment-rating,
 .entry-comments,
 .reply {
 	float:left;
@@ -2754,8 +2747,7 @@ time.comment-time a {
 	float:right;
 }
 
-.comment-content,
-.comment-edit {
+.comment-content {
 	margin-top:0px;
 	float:left;
 	clear:both;

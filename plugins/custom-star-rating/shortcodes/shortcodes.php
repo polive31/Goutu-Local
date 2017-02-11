@@ -11,9 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 add_shortcode( 'comment-rating-form', 'display_comment_form_with_rating' );
 function display_comment_form_with_rating() {
 	$args = array (
-		//'title_reply' => __( '', '' ), //Default: __( 'Leave a Reply’ )
+		'title_reply' => __( '', '' ), //Default: __( 'Leave a Reply’ )
 		'label_submit' => __( 'Send', 'custom-star-rating' ), //default=’Post Comment’
-		'comment_field' => output_comment_form_html_php('1'), 
+		'comment_field' => output_evaluation_form_html_php(), 
 		'logged_in_as' => '', //Default: __( 'Leave a Reply to %s’ )
 		'title_reply_to' => __( 'Reply Title', 'custom-star-rating' ), //Default: __( 'Leave a Reply to %s’ )
 		'cancel_reply_link' => __( 'Cancel', 'custom-star-rating' ) //Default: __( ‘Cancel reply’ )
@@ -33,7 +33,6 @@ function display_comment_form_with_rating() {
 
 /* Output post rating shortcode 
 ---------------------------------------------*/
-
 add_shortcode( 'display-star-rating', 'display_star_rating_shortcode' );
 function display_star_rating_shortcode($atts) {
 	$a = shortcode_atts( array(
@@ -41,14 +40,16 @@ function display_star_rating_shortcode($atts) {
 		'type' => 'stars', //full
 	), $atts );
 
-	//PC:debug('In display-star-rating shortcode');
+	//PC::debug('In display-star-rating shortcode');
 	$full_display=!($a['type']=='stars');
+	$comment_rating = ( $a['source'] == 'comment');
 	
-	if ( $a['source']=='comment' ) {
+	if ( $comment_rating ) {
 		$id = get_comment_ID();
 		//PC::debug( array('get comment ID'=>$id,) );
 		$rating = get_comment_meta($id, 'user_rating', true);
 		//PC::debug( array('rating from comment'=>$rating,) );
+		$rating = $rating==''?'0':$rating;
 		$stars = $rating;
 		$half = false;
 	}
@@ -71,9 +72,11 @@ function display_star_rating_shortcode($atts) {
 
 	//PC:debug(array('votes : '=>$votes,'rating : '=>$rating,'stars : '=>$stars,'half : '=>$half,));	
 
-	$html = '<span class="rating" title="' . $rating . ' : ' . rating_caption($rating) . '">';
-	$html .= output_stars($stars, $half);
-	$html .= '</span>';
+	if ( ! ( $comment_rating && empty( $rating ) ) ) {
+		$html = '<span class="rating" title="' . $rating . ' : ' . rating_caption($rating) . '">';
+		$html .= output_stars($stars, $half);
+		$html .= '</span>';
+	}
 
 	if ( $full_display ) {
 		$rating_plural=$votes==1?__('review','foodiepro'):__('reviews','foodiepro'); 

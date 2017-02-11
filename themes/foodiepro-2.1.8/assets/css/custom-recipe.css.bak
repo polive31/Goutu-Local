@@ -57,7 +57,8 @@ a.wpurp-recipe-favorite:before {
 
 a.wpurp-recipe-favorite.is-favorite:before {
 	content:"\f004"; /* fa-heart */
-  color: #af4a2b;
+  /*color: #af4a2b;*/
+  color: #b94f02;
 }
 
 a.wpurp-recipe-add-to-shopping-list:before {
@@ -148,14 +149,6 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
   font-size:24px;
 }
 
-.rating-details {
-	float:left;
-	/*clear:both;
-	width:200px;*/
-	font-size:13px;
-	color:#666;
-	padding:10px 0 0 10px;
-}
 
 .recipe-label {
 	float:left;

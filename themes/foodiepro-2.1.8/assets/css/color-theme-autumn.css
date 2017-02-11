@@ -81,18 +81,14 @@ input, select, textarea,
 }
 
 i.fa.fa-star,
+i.fa.fa-star-half-o,
 .rating:before {
 	color:#ff6c00;
 }
 
 i.fa.fa-star-o,
 .rating:after {
-	color:#9c9c9c;
-}
-
-.single-recipe i.fa.fa-star-o,
-.single-recipe .rating:after {
-	color:#666;
+	color:#aaa;
 }
 
 .widget.themes ul li,

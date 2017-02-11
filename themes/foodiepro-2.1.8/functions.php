@@ -557,7 +557,7 @@ function wprpe_add_rating($output, $args ) {
 		$disp_rating = substr($args['cssID'],1,1);
 		//PC::debug( array('WPRPE Output add rating'=>$output) );
 		if ( $disp_rating == '1') {
-			$output .= do_shortcode('[display-star-rating]');
+			$output .= '<div class="rpwe-title">' . do_shortcode('[display-star-rating]') . '</div>';
 		}
 	return $output;
 }

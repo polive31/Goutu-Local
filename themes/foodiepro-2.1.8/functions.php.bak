@@ -557,7 +557,7 @@ function wprpe_add_rating($output, $args ) {
 		$disp_rating = substr($args['cssID'],1,1);
 		//PC::debug( array('WPRPE Output add rating'=>$output) );
 		if ( $disp_rating == '1') {
-			$output .= do_shortcode('[display-star-rating]');
+			$output .= '<div>' . do_shortcode('[display-star-rating]') . '</div>';
 		}
 	return $output;
 }
@@ -762,7 +762,7 @@ function display_debug_info() {
 		$post_id = get_the_id();
 
 		PC::debug( 'In foodiepro functions.php' );		
-		$output = get_post_meta( $post_id , '' , false);
+		$output = get_post_meta( $post_id , '' , true);
 		PC::debug(array('get_post_meta( $post_id ) : '=> $output) );
 		
 		//$output = get_post_meta( $post_id, 'user_ratings' );

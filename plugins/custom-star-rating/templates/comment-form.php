@@ -14,7 +14,6 @@ function output_evaluation_form_html_php() {
 	
 	<table class="ratings-table">
 	<tr>
-	<!-- <td><?php echo $RatingCritera[1]['question'];?></td> -->
 	<td class="rating-title"><?php echo __('How did you like this dish ?','custom-star-rating');?></td>
 	<td align="left"><?php echo output_rating_form( '1' );?></td>
 	</tr>
@@ -26,18 +25,18 @@ function output_evaluation_form_html_php() {
 	
 	<div class="comment-reply">
 	<label for="comment"><?php echo _x( 'Comment', 'noun' );?></label>
-	<textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
+	<textarea id="comment" name="comment" cols="40" rows="8" aria-required="true"></textarea>
 	</div>
 
 <?php
-	$rating_form .= ob_get_contents();
+	$rating_form = ob_get_contents();
 	ob_end_clean();
 	
 	return $rating_form;
 
 }
 
-function output_rating_form($id, $title) {
+function output_rating_form( $id ) {
 	
 	$html= '<div class="rating-wrapper" id="star-rating-form">';
 	$html.='<input type="radio" class="rating-input" id="rating-input-' . $id . '-5" name="rating-' . $id . '" value="5"/>';

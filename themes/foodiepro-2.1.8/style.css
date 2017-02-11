@@ -1507,6 +1507,11 @@ form[role="search"] {
   width:100%;
 }
 
+.rpwe-title {
+	margin-left:auto;
+	margin-right:auto;
+}
+
 .rpwe-block ul,
 .rpwe-ul {
 	list-style:none;
@@ -2706,10 +2711,14 @@ After Entry
 	float:left;
 	clear:both;
 	width:100%;
-	font-size:14px;
 	letter-spacing:0.5px;
 	padding:0px 0;
 	margin-top: 10px;
+}
+
+.comment-reply textarea {
+	color:#333;
+	font-size:16px;
 }
 
 .comment-respond {

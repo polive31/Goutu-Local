@@ -40,7 +40,7 @@ function display_star_rating_shortcode($atts) {
 		'type' => 'stars', //full
 	), $atts );
 
-	//PC::debug('In display-star-rating shortcode');
+	PC::debug('In display-star-rating shortcode');
 	$full_display=!($a['type']=='stars');
 	$comment_rating = ( $a['source'] == 'comment');
 	
@@ -57,7 +57,8 @@ function display_star_rating_shortcode($atts) {
 	else { // Rating in post meta
 		$id = get_the_id();
 		if ($full_display) {
-			$ratings = get_post_meta( $id , 'user_ratings', true );
+			$ratings = get_post_meta( $id , 'user_ratings' );
+			PC::debug(array('$ratings: '=>$ratings));
 			$stats = get_rating_stats( $ratings );
 			$rating = $stats['rating'];
 			$votes = $stats['votes'];
@@ -68,17 +69,18 @@ function display_star_rating_shortcode($atts) {
 		//PC::debug(array('$rating from shortcode : '=>$rating));
 		$stars = floor($rating);
 		$half = ($rating-$stars) >= 0.5;
+		PC::debug(array('$half : '=>$half));
 	}
 
 	//PC:debug(array('votes : '=>$votes,'rating : '=>$rating,'stars : '=>$stars,'half : '=>$half,));	
 
-	if ( ! ( $comment_rating && empty( $rating ) ) ) {
+	if ( ! ( $comment_rating && $rating='0' ) ) {
 		$html = '<span class="rating" title="' . $rating . ' : ' . rating_caption($rating) . '">';
 		$html .= output_stars($stars, $half);
 		$html .= '</span>';
 	}
 
-	if ( $full_display ) {
+	if ( $full_display && $votes!='0') {
 		$rating_plural=$votes==1?__('review','foodiepro'):__('reviews','foodiepro'); 
 		$html .= '<span class="rating-details">(' . $votes . ' ' . $rating_plural . ')</span>'; //. ' | ' . __('Rate this recipe','foodiepro') . 
 	}
@@ -92,11 +94,15 @@ function display_star_rating_shortcode($atts) {
 function output_stars($stars, $half) {
 	$html = '';
 	for ($i = 1; $i <= $stars; $i++) {
-		$half = $half&&($i==$stars)?'-half':'';
-		$html .= '<i class="fa fa-star' . $half . '"></i>';
+		$html .= '<i class="fa fa-star"></i>';
 	}
 	for ($i = $stars+1; $i <= 5; $i++) {
-		$html .= '<i class="fa fa-star-o"></i>';
+		if ( ($i == ($stars+1) ) && $half ) {
+			$html .= '<i class="fa fa-star-half-o"></i>';
+		}
+		else {
+			$html .= '<i class="fa fa-star-o"></i>';
+		}
 	}
 	return $html;
 }

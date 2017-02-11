@@ -47,9 +47,7 @@ if ( true ) {
 	require 'templates/comment-form.php';
 	require 'shortcodes/shortcodes.php';
 	
-	global $RatingCritera;
 	$RatingCritera = array( RATING, CLARITY);
-  
 
 	/* Chargement des feuilles de style custom et polices */
 	function load_custom_rating_style_sheet() {
@@ -75,40 +73,33 @@ if ( true ) {
 ------------------------------------------------------------ */
 add_action('comment_post','update_comment_post_meta_php',10,3);
 
-function update_comment_post_meta_php($comment_id, $comment_approved,$comment) {
+function update_comment_post_meta_php($comment_id,$comment_approved,$comment) {
 	
-	////PC:debug('In comment post !');
+	PC::debug('In comment post !');
 	$post_id = $comment['comment_post_ID'];
-	////PC:debug(array('Post ID :'=>$post_id));
 
-	// Retrieve new rating
 	$rating = $_POST[ 'rating-' . '1' ];
-	//PC:debug(array('$_POST[rating_' . NB_RATINGS . '] :'=>$rating));
-	
-	// Update comment meta with new rating
-	add_comment_meta($comment_id, 'user_rating', $rating);
+	PC::debug(array('Rating :'=>$rating));
 
+	add_comment_meta($comment_id, 'user_rating', $rating);
 	// Update post meta with new rating table & rating stats
-	//PC::magic_tag($post_id);
-	
-	$user_ip = get_user_ip();
-	//PC:debug(array('User IP :'=>$user_ip));
-	
 	$user_ratings = get_post_meta( $post_id, 'user_ratings' );
-	//PC:debug(array('User Ratings Table :'=>$user_ratings));
+	PC::debug(array('User Ratings Table :'=>$user_ratings));
 
 	if ( !empty($user_ratings) )
 		$new_user_id = count( $user_ratings ) + 1;
 	else {
 		$new_user_id = 1;
 	}
+	$user_ip = get_user_ip();
+	PC::debug(array('User IP :'=>$user_ip));
 
 	$new_user_rating = array(
-		'user' => $new_user_id,
-		'ip'=>$user_ip,
-		'rating'=> $rating,
+		'user' 	=>$new_user_id,
+		'ip'		=>$user_ip,
+		'rating'=>$rating,
 	);
-	//PC:debug(array('New User Rating :'=>$new_user_rating ) );
+	//PC::debug(array('New User Rating :'=>$new_user_rating ) );
 	add_post_meta($post_id, 'user_ratings', $new_user_rating);
 	
 	$user_ratings[]=$new_user_rating;

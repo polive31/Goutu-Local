@@ -44,20 +44,25 @@ function add_user_rating( $user_ratings, $new_rating_val) {
 /* Calculate rating stats
 -------------------------------------------------------------*/
 function get_rating_stats( $user_ratings) {
-  $votes = count( $user_ratings );
-  $total = 0;
-  $avg_rating = 0;
-
 	if ( ! empty($user_ratings) ) {
+  	$votes = count( $user_ratings );
+  	$total = 0;
+  	$avg_rating = 0;
+
   	foreach( $user_ratings as $user_rating ) {
   		$total += $user_rating['rating'];
   	}
+  
+	  if( $votes !== 0 ) {
+	    $avg_rating = $total / $votes; // TODO Just an average for now, implement some more functions later
+	    $avg_rating = round( $avg_rating, 1 );
+	  }  	
+	}
+	else {
+		$votes='0';
+		$avg_rating='0';
 	}
 
-  if( $votes !== 0 ) {
-    $avg_rating = $total / $votes; // TODO Just an average for now, implement some more functions later
-    $avg_rating = round( $avg_rating, 2 );
-  }
   
   return array(
       'votes' => $votes,

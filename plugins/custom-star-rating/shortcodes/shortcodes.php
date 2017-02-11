@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 add_shortcode( 'comment-rating-form', 'display_comment_form_with_rating' );
 function display_comment_form_with_rating() {
 	$args = array (
-		'title_reply' => __( '', '' ), //Default: __( 'Leave a Reply’ )
+		'title_reply' => '', //Default: __( 'Leave a Reply’ )
 		'label_submit' => __( 'Send', 'custom-star-rating' ), //default=’Post Comment’
 		'comment_field' => output_evaluation_form_html_php(), 
 		'logged_in_as' => '', //Default: __( 'Leave a Reply to %s’ )

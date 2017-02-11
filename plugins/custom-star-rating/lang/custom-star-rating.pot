@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: custom-star-rating\n"
-"POT-Creation-Date: 2017-02-05 13:43+0100\n"
+"POT-Creation-Date: 2017-02-11 10:30+0100\n"
 "PO-Revision-Date: 2017-02-05 11:34+0100\n"
 "Last-Translator: \n"
 "Language-Team: goutu.org <psc.olv@gmail.com>\n"
@@ -17,43 +17,59 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: custom-ratings.php:94
-msgid "Send"
-msgstr ""
-
-#: custom-ratings.php:97
-msgid "Reply Title"
-msgstr ""
-
-#: custom-ratings.php:98
-msgid "Cancel"
-msgstr ""
-
-#: helpers/functions.php:15
-msgid "Delicious"
-msgstr ""
-
-#: helpers/functions.php:17
-msgid "Very good"
-msgstr ""
-
-#: helpers/functions.php:19
-msgid "Rather good"
-msgstr ""
-
-#: helpers/functions.php:21
-msgid "Not so good"
-msgstr ""
-
-#: helpers/functions.php:23
-msgid "Really not good"
-msgstr ""
-
-#: helpers/functions.php:25
+#: helpers/functions.php:16
 msgid "Not rated"
 msgstr ""
 
-#: templates/comment-form.php:29
+#: helpers/functions.php:18
+msgid "Really not good"
+msgstr ""
+
+#: helpers/functions.php:20
+msgid "Not so good"
+msgstr ""
+
+#: helpers/functions.php:22
+msgid "Rather good"
+msgstr ""
+
+#: helpers/functions.php:24
+msgid "Very good"
+msgstr ""
+
+#: helpers/functions.php:26
+msgid "Delicious"
+msgstr ""
+
+#: shortcodes/shortcodes.php:15
+msgid "Send"
+msgstr ""
+
+#: shortcodes/shortcodes.php:18
+msgid "Reply Title"
+msgstr ""
+
+#: shortcodes/shortcodes.php:19
+msgid "Cancel"
+msgstr ""
+
+#: shortcodes/shortcodes.php:82
+msgid "review"
+msgstr ""
+
+#: shortcodes/shortcodes.php:82
+msgid "reviews"
+msgstr ""
+
+#: templates/comment-form.php:18
+msgid "How did you like this dish ?"
+msgstr ""
+
+#: templates/comment-form.php:22
+msgid "How clear was the recipe ?"
+msgstr ""
+
+#: templates/comment-form.php:28
 msgid "Comment"
 msgstr ""
 
@@ -71,6 +87,6 @@ msgstr ""
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: templates/comments-list.php:36
+#: templates/comments-list.php:44
 msgid "(Edit)"
 msgstr ""

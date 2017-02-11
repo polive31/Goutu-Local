@@ -214,13 +214,14 @@ function custom_ingredients_list( $recipe, $args ) {
         $out .= ' <span class="wpurp-recipe-ingredient-name recipe-ingredient-name"' . $plural_data . '>';
 
 				$ingredient_name = remove_accents( $ingredient['ingredient'] );
-				$first = $ingredient_name[0];
+				$first_letter = $ingredient_name[0];
+				$first_word = strtolower( explode(' ', trim($ingredient_name))[0] );
 				
 				if ( $ingredient['unit']!='' ) {
-					if ( in_array($first, $vocals) || in_array($ingredient_name, $exceptions) )
-						$out .= _x(' ','vowel','foodiepro');
+					if ( in_array($first_letter, $vocals) || in_array( $first_word, $exceptions) )
+						$out .= _x('of ','vowel','foodiepro');
 					else 
-						$out .= _x(' ','consonant','foodiepro');					
+						$out .= _x('of ','consonant','foodiepro');					
 				}
 
         $ingredient_links = WPUltimateRecipe::option('recipe_ingredient_links', 'archive_custom');

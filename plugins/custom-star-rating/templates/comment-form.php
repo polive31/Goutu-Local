@@ -15,11 +15,11 @@ function output_evaluation_form_html_php() {
 	<table class="ratings-table">
 	<tr>
 	<!-- <td><?php echo $RatingCritera[1]['question'];?></td> -->
-	<td class="rating-title"><?php echo __('How did you like this dish ?');?></td>
+	<td class="rating-title"><?php echo __('How did you like this dish ?','custom-star-rating');?></td>
 	<td align="left"><?php echo output_rating_form( '1' );?></td>
 	</tr>
 	<tr>
-	<td class="rating-title"><?php echo __('How clear was the recipe ?');?></td>
+	<td class="rating-title"><?php echo __('How clear was the recipe ?','custom-star-rating');?></td>
 	<td align="left"><?php echo output_rating_form( '2' );?></td>
 	</tr>
 	</table>

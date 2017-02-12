@@ -859,7 +859,8 @@ add_filter( 'comment_form_defaults', 'change_comment_form_defaults' );
 function change_comment_form_defaults( $defaults ) {
   $defaults['logged_in_as'] = '';
   $defaults['id_form'] = 'respond';
-  $defaults['title_reply'] = __('Your answer here','foodiepro');
+  $defaults['title_reply_to'] = __('Your answer here','foodiepro');
+  $defaults['comment_field'] = '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>';
   return $defaults;
 }
 

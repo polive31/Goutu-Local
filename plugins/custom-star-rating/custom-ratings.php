@@ -125,7 +125,7 @@ function wpurp_add_default_rating( $id, $post ) {
 //**               COMMENTS LIST
 //*************************************************************************
 
-// Add our own and specify our custom callback
+// Add our own custom list and specify our custom callback
 add_action( 'genesis_list_comments', 'custom_star_rating_list_comments' );
 function custom_star_rating_list_comments() {
 
@@ -139,6 +139,13 @@ function custom_star_rating_list_comments() {
 	}
 	wp_list_comments( $args );
 }
+
+/* Change the comment reply link to display our own comment form */
+function remove_nofollow($link, $args, $comment, $post){
+  return str_replace("rel='nofollow'", "", $link);
+}
+
+add_filter('comment_reply_link', 'remove_nofollow', 420, 4);
 
 
 ?>

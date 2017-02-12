@@ -825,29 +825,40 @@ function add_share_icons() {
 -------------------------------------------------------*/
 remove_action( 'genesis_list_comments', 'genesis_default_list_comments' );
 
-/* Remove comment form from recipes 
+/* Remove comment form unless it's a comment reply page
 -------------------------------------------------------*/
+add_action( 'genesis_comment_form', 'remove_recipe_comments_form', 0 );
 function remove_recipe_comments_form() {
 	if ( is_singular( 'recipe' ) ) {
-		remove_action( 'genesis_comment_form', 'genesis_do_comment_form' );
+		$url = $_SERVER["REQUEST_URI"];
+		$is_comment_reply = strpos($url, 'replytocom');
+		if ( ! $is_comment_reply )
+			remove_action( 'genesis_comment_form', 'genesis_do_comment_form' );
 	}
 }
-add_action( 'genesis_comment_form', 'remove_recipe_comments_form', 0 );
 
+/* Customize comment section title 
+------------------------------------------------------*/
 add_filter('genesis_title_comments', 'custom_comment_text');
 function custom_comment_text() {
 	$title = __('Comments','genesis');
 	return ('<h3>' . $title . '</h3>');
 }
 
-/* Customize comment section title 
+/* Disable url input box in comment form unlogged users
 ------------------------------------------------------*/
-add_filter('comment_form_default_fields','disable_comment_url');
-function disable_comment_url($fields) { 
-    unset($fields['url']);
-    return $fields;
+add_filter('comment_form_default_fields','customize_comment_form');
+function customize_comment_form($fields) { 
+  unset($fields['url']);
+  return $fields;
 }
 
+/* Disable logged in / logged out link
+------------------------------------------------------*/
+add_filter( 'comment_reply_link', 'disable_comment_login_link' );
+function disable_comment_login_link() { 
+	return '';
+}
 
 /* =================================================================*/
 /* =          AVATARS

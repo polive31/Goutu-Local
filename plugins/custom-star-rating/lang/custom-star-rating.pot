@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: custom-star-rating\n"
-"POT-Creation-Date: 2017-02-12 12:28+0100\n"
+"POT-Creation-Date: 2017-02-12 15:27+0100\n"
 "PO-Revision-Date: 2017-02-05 11:34+0100\n"
 "Last-Translator: \n"
 "Language-Team: goutu.org <psc.olv@gmail.com>\n"
@@ -53,11 +53,11 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: shortcodes/shortcodes.php:84
+#: shortcodes/shortcodes.php:86
 msgid "review"
 msgstr ""
 
-#: shortcodes/shortcodes.php:84
+#: shortcodes/shortcodes.php:86
 msgid "reviews"
 msgstr ""
 
@@ -73,20 +73,25 @@ msgstr ""
 msgid "Comment"
 msgstr ""
 
-#: templates/comments-list.php:23
+#: templates/comments-list.php:27
 #, php-format
 msgid "%s says:"
 msgstr ""
 
-#: templates/comments-list.php:27
-msgid "Your comment is awaiting moderation."
+#: templates/comments-list.php:29
+#, php-format
+msgid "%s responds:"
 msgstr ""
 
 #: templates/comments-list.php:33
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: templates/comments-list.php:39
 #, php-format
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: templates/comments-list.php:52
+#: templates/comments-list.php:58
 msgid "(Edit)"
 msgstr ""

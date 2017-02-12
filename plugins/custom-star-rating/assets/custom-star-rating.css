@@ -69,3 +69,12 @@ td.rating-title {
 	color:#666;
 	padding:10px 0 0 10px;
 }
+
+i.fa.fa-star,
+i.fa.fa-star-half-o {
+	color:#ffa700;
+}
+
+i.fa.fa-star-o {
+	color:#aaa;
+}

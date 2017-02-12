@@ -13,6 +13,8 @@ function custom_star_rating_comment($comment, $args, $depth) {
     $GLOBALS['comment'] = $comment; ?>
     <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
     	
+		<div class="comment-item">
+   	
       <?php do_action( 'genesis_before_comment' ); ?>
       
     	<div class="comment-intro">
@@ -20,7 +22,11 @@ function custom_star_rating_comment($comment, $args, $depth) {
           	<div class="comment-avatar">
               <?php echo get_avatar($comment,$size='48'); ?>
           	</div>
-              <?php printf(__('%s says:', 'foodiepro'), get_comment_author_link()) ?>
+              <?php 
+              if ( $depth=='1' )
+              	printf(__('%s says:', 'custom-star-rating'), get_comment_author_link());
+              else 
+              	printf(__('%s says:', 'custom-star-rating'), get_comment_author_link()); ?>
           </div>
 
           <?php if ($comment->comment_approved == '0') : ?>
@@ -54,10 +60,15 @@ function custom_star_rating_comment($comment, $args, $depth) {
 			
   		<?php do_action( 'genesis_after_comment' );?>
   		
-    </li>
+    </div>
+    <!-- Pas </li> pour commentaires imbriqués -->
     
 <?php
 }
 
 
 ?>
+
+
+
+

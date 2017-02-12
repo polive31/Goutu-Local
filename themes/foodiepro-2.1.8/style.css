@@ -147,6 +147,7 @@ a {
 a:active,
 a:hover {
 	outline:0;
+	text-decoration:underline;
 }
 
 
@@ -2339,7 +2340,8 @@ nav.nav-primary .wrap {
 	font-size:12px;
 	border-radius:10px;
 	border-width:2px;
-	border-color:#9c9b9b;
+	border-color:##ddc3a3;
+	/*border-color:#9c9b9b;*/
 }
 
 
@@ -2736,14 +2738,28 @@ After Entry
 	width:100%;
 	letter-spacing:0.5px;
 	padding:0px 0;
-	margin-top: 10px;
+	margin: 10px 0 10px 0;
+}
+
+.comment-item {
 }
 
 .comment-reply {
 	float:left;
 	margin-top:10px;
 	clear:both;
-	width:100%!important;
+}
+
+h3#reply-title {
+	text-transform:none;
+}
+
+h3#reply-title small {
+    float: right;
+}
+
+h3#reply-title a {
+	text-decoration:none;
 }
 
 .comment-reply textarea,
@@ -2757,6 +2773,11 @@ input#url {
 .comment-intro {
   min-width: 300px;
   float: left;
+  font-style: italic;
+}
+
+.comment-author a {
+  font-weight: bold;
 }
 
 .comment-rating {
@@ -2769,6 +2790,7 @@ input#url {
 
 .comment-list li,
 .ping-list li {
+	border-top: 1px dotted #999;	
 	list-style-type:none;
 	margin-top:22px;
 	padding: 20px 10px;
@@ -2779,11 +2801,13 @@ input#url {
 }
 
 li.comment {
-	border-top: 1px dotted #999;
 	float: left;
   clear: both;
-  width:100%;
   background-color:#ddc3a3;
+}
+
+li.comment.depth-1 {
+  width:100%;
 }
 
 li.comment a {

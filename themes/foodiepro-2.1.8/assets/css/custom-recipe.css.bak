@@ -57,8 +57,9 @@ a.wpurp-recipe-favorite:before {
 
 a.wpurp-recipe-favorite.is-favorite:before {
 	content:"\f004"; /* fa-heart */
-  /*color: #af4a2b;*/
-  color: #b94f02;
+  /*color: #af4a2b;
+  color: #b94f02;*/
+  color: #c544a3;
 }
 
 a.wpurp-recipe-add-to-shopping-list:before {
@@ -67,7 +68,10 @@ a.wpurp-recipe-add-to-shopping-list:before {
 
 a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 	/*content:"\f07a"; /* fa-cart */ 
-  color: #af4a2b;
+  /*color: #af4a2b;
+  color: #b94f02;
+  color: #c544a3;*/
+  color: #a9947c;
 }
 	
 	

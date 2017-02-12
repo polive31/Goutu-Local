@@ -64,6 +64,7 @@ html body .wpurp-container .add-picture-link {
 
 /* Text area specific formatting */
 input[type="text"],
+input[type="email"],
 input[type="password"],
 optgroup,
 textarea,
@@ -78,17 +79,6 @@ select {
 input, select, textarea,
 .widget.back ul li {
 	border:1px solid #aaa;
-}
-
-i.fa.fa-star,
-i.fa.fa-star-half-o,
-.rating:before {
-	color:#ff6c00;
-}
-
-i.fa.fa-star-o,
-.rating:after {
-	color:#aaa;
 }
 
 .widget.themes ul li,

@@ -47,8 +47,8 @@ td.rating-title {
 .rating-wrapper:hover .rating-star {
 		float: right;
 		display: block;
-		width: 20px;
-		height: 20px;
+		width: 24px;
+		height: 24px;
 		background: url('../images/rating-star.png') -24px 0/48px 24px no-repeat;
 }
 
@@ -68,4 +68,15 @@ td.rating-title {
 	font-size:13px;
 	color:#666;
 	padding:10px 0 0 10px;
+}
+
+i.fa.fa-star,
+i.fa.fa-star-half-o,
+.rating:before {
+	color:#ffa700;
+}
+
+i.fa.fa-star-o,
+.rating:after {
+	color:#aaa;
 }

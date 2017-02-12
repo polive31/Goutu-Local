@@ -855,9 +855,12 @@ function customize_comment_form($fields) {
 
 /* Disable logged in / logged out link
 ------------------------------------------------------*/
-add_filter( 'comment_reply_link', 'disable_comment_login_link' );
-function disable_comment_login_link() { 
-	return '';
+add_filter( 'comment_form_defaults', 'change_comment_form_defaults' );
+function change_comment_form_defaults( $defaults ) {
+  $defaults['logged_in_as'] = '';
+  $defaults['id_form'] = 'respond';
+  $defaults['title_reply'] = __('Votre réponse ici','foodiepro');
+  return $defaults;
 }
 
 /* =================================================================*/

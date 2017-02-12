@@ -2754,6 +2754,10 @@ h3#reply-title {
 	text-transform:none;
 }
 
+h3#reply-title small {
+    float: right;
+}
+
 h3#reply-title a {
 	text-decoration:none;
 }

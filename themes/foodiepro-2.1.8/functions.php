@@ -858,6 +858,8 @@ function customize_comment_form($fields) {
 add_filter( 'comment_form_defaults', 'change_comment_form_defaults' );
 function change_comment_form_defaults( $defaults ) {
   $defaults['logged_in_as'] = '';
+  $defaults['id_form'] = 'respond';
+  $defaults['title_reply'] = __('Your answer here','foodiepro');
   return $defaults;
 }
 

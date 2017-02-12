@@ -78,35 +78,39 @@ function update_comment_post_meta_php($comment_id,$comment_approved,$comment) {
 	PC::debug('In comment post !');
 	$post_id = $comment['comment_post_ID'];
 
-	$rating = $_POST[ 'rating-' . '1' ];
-	PC::debug(array('Rating :'=>$rating));
+	if ( isset( $_POST[ 'rating-' . '1' ] ) ) {
+		
+		$rating = $_POST[ 'rating-' . '1' ];
+		PC::debug(array('Rating :'=>$rating));
+		
+		add_comment_meta($comment_id, 'user_rating', $rating);
+		// Update post meta with new rating table & rating stats
+		$user_ratings = get_post_meta( $post_id, 'user_ratings' );
+		PC::debug(array('User Ratings Table :'=>$user_ratings));
 
-	add_comment_meta($comment_id, 'user_rating', $rating);
-	// Update post meta with new rating table & rating stats
-	$user_ratings = get_post_meta( $post_id, 'user_ratings' );
-	PC::debug(array('User Ratings Table :'=>$user_ratings));
+		if ( !empty($user_ratings) )
+			$new_user_id = count( $user_ratings ) + 1;
+		else {
+			$new_user_id = 1;
+		}
+		$user_ip = get_user_ip();
+		PC::debug(array('User IP :'=>$user_ip));
 
-	if ( !empty($user_ratings) )
-		$new_user_id = count( $user_ratings ) + 1;
-	else {
-		$new_user_id = 1;
+		$new_user_rating = array(
+			'user' 	=>$new_user_id,
+			'ip'		=>$user_ip,
+			'rating'=>$rating,
+		);
+		//PC::debug(array('New User Rating :'=>$new_user_rating ) );
+		add_post_meta($post_id, 'user_ratings', $new_user_rating);
+		
+		$user_ratings[]=$new_user_rating;
+		$stats = get_rating_stats( $user_ratings );
+		//PC:debug(array('Stats :'=>$stats) );
+		
+		update_post_meta($post_id, 'user_rating', $stats['rating']);
+
 	}
-	$user_ip = get_user_ip();
-	PC::debug(array('User IP :'=>$user_ip));
-
-	$new_user_rating = array(
-		'user' 	=>$new_user_id,
-		'ip'		=>$user_ip,
-		'rating'=>$rating,
-	);
-	//PC::debug(array('New User Rating :'=>$new_user_rating ) );
-	add_post_meta($post_id, 'user_ratings', $new_user_rating);
-	
-	$user_ratings[]=$new_user_rating;
-	$stats = get_rating_stats( $user_ratings );
-	//PC:debug(array('Stats :'=>$stats) );
-	
-	update_post_meta($post_id, 'user_rating', $stats['rating']);
 }
 
 

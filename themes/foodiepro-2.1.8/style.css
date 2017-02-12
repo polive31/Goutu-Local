@@ -2786,6 +2786,8 @@ input#url {
 
 .comment-respond {
 	margin-top: 20px;
+  float: left;
+  width: 100%;
 }
 
 .comment-list li,

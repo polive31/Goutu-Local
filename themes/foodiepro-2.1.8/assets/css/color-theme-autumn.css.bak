@@ -91,11 +91,6 @@ i.fa.fa-star-o,
 	color:#aaa;
 }
 
-.single-recipe i.fa.fa-star-o,
-.single-recipe .rating:after {
-	color:#666;
-}
-
 .widget.themes ul li,
 .single .widget.themes ul li {
 	background-color:#ffedd0;

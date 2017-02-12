@@ -64,6 +64,7 @@ html body .wpurp-container .add-picture-link {
 
 /* Text area specific formatting */
 input[type="text"],
+input[type="email"],
 input[type="password"],
 optgroup,
 textarea,

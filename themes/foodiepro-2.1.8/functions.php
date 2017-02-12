@@ -821,7 +821,8 @@ function add_share_icons() {
 /* =          COMMENTS
 /* =================================================================*/
 
-// Remove the genesis_default_list_comments function
+/* Remove the genesis_default_list_comments function
+-------------------------------------------------------*/
 remove_action( 'genesis_list_comments', 'genesis_default_list_comments' );
 
 /* Remove comment form from recipes 
@@ -833,6 +834,19 @@ function remove_recipe_comments_form() {
 }
 add_action( 'genesis_comment_form', 'remove_recipe_comments_form', 0 );
 
+add_filter('genesis_title_comments', 'custom_comment_text');
+function custom_comment_text() {
+	$title = __('Comments','genesis');
+	return ('<h3>' . $title . '</h3>');
+}
+
+/* Customize comment section title 
+------------------------------------------------------*/
+add_filter('comment_form_default_fields','disable_comment_url');
+function disable_comment_url($fields) { 
+  unset($fields['url']);
+  return $fields;
+}
 
 
 /* =================================================================*/

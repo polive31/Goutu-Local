@@ -39,6 +39,8 @@ function display_star_rating_shortcode($atts) {
 		'source' => 'post', //comment
 		'type' => 'stars', //full
 	), $atts );
+	
+	$html='';
 
 	PC::debug('In display-star-rating shortcode');
 	$full_display=!($a['type']=='stars');
@@ -74,7 +76,7 @@ function display_star_rating_shortcode($atts) {
 
 	//PC:debug(array('votes : '=>$votes,'rating : '=>$rating,'stars : '=>$stars,'half : '=>$half,));	
 
-	if ( ! ( $comment_rating && $rating='0' ) ) {
+	if ( ! ( $comment_rating && $rating=='0' ) ) {
 		$html = '<span class="rating" title="' . $rating . ' : ' . rating_caption($rating) . '">';
 		$html .= output_stars($stars, $half);
 		$html .= '</span>';
@@ -91,20 +93,5 @@ function display_star_rating_shortcode($atts) {
 	return $html;
 }
 
-function output_stars($stars, $half) {
-	$html = '';
-	for ($i = 1; $i <= $stars; $i++) {
-		$html .= '<i class="fa fa-star"></i>';
-	}
-	for ($i = $stars+1; $i <= 5; $i++) {
-		if ( ($i == ($stars+1) ) && $half ) {
-			$html .= '<i class="fa fa-star-half"></i>';
-		}
-		else {
-			$html .= '<i class="fa fa-star-o"></i>';
-		}
-	}
-	return $html;
-}
 
 ?>

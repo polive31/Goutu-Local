@@ -253,26 +253,29 @@ textarea,
 a.button,
 a.black-button, 
 ul.wpuf-form li .wpuf-fields a.file-selector, 
-.comment-reply a,
+a.comment-reply-link,
 .frontier-list-item-content#frontier-post-actions a {
 	border-radius:3px;  /* P.O. custom */
-	font-size:12px; /* P.O. custom */
+	font-size:11px; /* P.O. custom */
 	margin:2px;  /* P.O. Origine 0 */
 	text-decoration:none;
 	background-image:none;
 	padding:5px;
+	font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;
 }
 
-
-/* Text area specific formatting */
+/* Text area and selec specific formatting */
 input[type="text"],
 input[type="password"],
+input[type="search"],
 optgroup,
 select,
 textarea
 /*ul.wpuf-form li .wpuf-fields a.file-selector, */
  {
 	color:inherit; /* P.O. Origin  inherit */
+	width:100%;
+	padding:10px;
 	text-decoration:none;
 }
 
@@ -284,7 +287,7 @@ input[type="submit"],
 a.button, 
 a.black-button,
 h2 a.button,
-.comment-reply a,
+a.comment-reply-link,
 ul.wpuf-form li .wpuf-fields a.file-selector, 
 .frontier-list-item-content#frontier-post-actions a,
 #buddypress a.button {
@@ -292,6 +295,7 @@ ul.wpuf-form li .wpuf-fields a.file-selector,
 	text-transform:uppercase;
 	background-color:#000;
 	border-width:0;
+	text-decoration:none;
 }
 
 a.black-button {
@@ -308,7 +312,7 @@ input[type="checkbox"], input[type="radio"] {
 .button:hover,
 a.button:hover, 
 a.black-button:hover, 
-.comment-reply a:hover,
+a.comment-reply-link:hover,
 ul.wpuf-form li .wpuf-fields a.file-selector:hover, 
 ul.wpuf-form .wpuf-submit input[type="submit"]:hover, 
 .frontier-list-item-content#frontier-post-actions a:hover,
@@ -321,7 +325,10 @@ a#instructions-add-group:hover */{
 	background-color:rgb(68,68,68);
 	color:#FFF;
 	background-image:none;
+	text-decoration:none;
 }
+
+/* Button attribute specific formatting */
 
 button {
 	overflow:visible;
@@ -399,6 +406,83 @@ optgroup {
 	font-weight:bold;
 }
 
+/* Italic font style for search boxes */
+select,
+input[type="search"] {
+	font-style:italic;
+	font-size:11px;
+}
+
+/* Forms (redundant)
+--------------------------------------------- 
+
+input,
+select,
+textarea {
+	-moz-box-shadow:0 0 0 #fff;
+	-webkit-box-shadow: 0 0 0 #fff;
+	border:1px solid #aaa;
+	box-shadow:0 0 0 #fff;
+	color:#999;
+	letter-spacing:.5px;
+}
+
+input:focus,
+textarea:focus {
+	outline:none;
+}
+
+::-moz-placeholder {
+	color:#000;
+}
+
+::-webkit-input-placeholder {
+	color:#000;
+}
+
+.button,
+.button-secondary,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	background:#010101;
+	border:none;
+	box-shadow:none;
+	color:#fff;
+	cursor:pointer;
+	font-weight:400;
+	font-style:normal;
+	letter-spacing:0.5px;
+	padding:5px 12px;
+	text-transform:uppercase;
+	width:auto;
+}
+
+.button:hover,
+button:hover,
+input:hover[type="button"],
+input:hover[type="reset"],
+input:hover[type="submit"] {
+	background:#444;
+}
+
+.button-secondary {
+	background:#f5f5f5;
+	color:#010101;
+}
+
+.button-secondary:hover {
+	background:#010101;
+	color:#fff;
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button {
+	display:none;
+}
+
+*/
 
 /* Tables
 --------------------------------------------- */
@@ -479,13 +563,7 @@ Defaults
 /* Fonts
 --------------------------------------------- */
 
-body,
-.button,
-.button-secondary,
-button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"] {
+body {
 	font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;
 }
 
@@ -735,80 +813,6 @@ img {
 .gallery img:hover {
 	border:1px solid #999;
 }
-
-/* Forms
---------------------------------------------- */
-
-input,
-select,
-textarea {
-	-moz-box-shadow:0 0 0 #fff;
-	-webkit-box-shadow: 0 0 0 #fff;
-	border:1px solid #aaa;
-	box-shadow:0 0 0 #fff;
-	color:#999;
-	font-size:11px;
-	font-style:italic;
-	letter-spacing:.5px;
-	padding:10px;
-	width:100%;
-}
-
-input:focus,
-textarea:focus {
-	outline:none;
-}
-
-::-moz-placeholder {
-	color:#000;
-}
-
-::-webkit-input-placeholder {
-	color:#000;
-}
-
-.button,
-.button-secondary,
-button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-	background:#010101;
-	border:none;
-	box-shadow:none;
-	color:#fff;
-	cursor:pointer;
-	font-weight:400;
-	font-style:normal;
-	letter-spacing:0.5px;
-	padding:5px 12px;
-	text-transform:uppercase;
-	width:auto;
-}
-
-.button:hover,
-button:hover,
-input:hover[type="button"],
-input:hover[type="reset"],
-input:hover[type="submit"] {
-	background:#444;
-}
-
-.button-secondary {
-	background:#f5f5f5;
-	color:#010101;
-}
-
-.button-secondary:hover {
-	background:#010101;
-	color:#fff;
-}
-
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button {
-	display:none;
-}
-
 
 /*
 Structure and Layout
@@ -1904,7 +1908,10 @@ Custom Page Templates
 }
 
 .pum-title {
-	margin:20px 0px 50px 110px;	
+	font-family:"PT Sans Narrow","Helvetica Neue",sans-serif!important;
+	/*margin:20px 0px 50px 110px;*/
+	text-transform:uppercase!important;	
+	font-size:26px!important;	
 }
 
 .pum-content.popmake-content li {
@@ -1916,6 +1923,24 @@ Custom Page Templates
 .pum-content.popmake-content ul {
 	margin-bottom:20px;
 }
+
+/* Recipe eval popup */
+#popmake-10197 .pum-title {
+	margin:20px 0px 50px 120px;	
+	text-align: left;
+}
+
+
+/* Social share popup */
+#popmake-10195 {
+	max-width: 750px;
+}
+
+#popmake-10195 .mashsb_above_buttons,
+#popmake-10195 .mashsb_below_buttons {
+	display:none
+}
+
 /* Home Page
 --------------------------------------------- */
 
@@ -2704,8 +2729,6 @@ After Entry
 
 /* Comments
 --------------------------------------------- */
-.comment-reply,
-.comment-rating,
 .entry-comments,
 .reply {
 	float:left;
@@ -2716,9 +2739,28 @@ After Entry
 	margin-top: 10px;
 }
 
-.comment-reply textarea {
+.comment-reply {
+	float:left;
+	margin-top:10px;
+	clear:both;
+	width:100%!important;
+}
+
+.comment-reply textarea,
+input#author,
+input#email,
+input#url {
 	color:#333;
 	font-size:16px;
+}
+
+.comment-intro {
+  min-width: 300px;
+  float: left;
+}
+
+.comment-rating {
+	float:right;
 }
 
 .comment-respond {
@@ -2741,10 +2783,11 @@ li.comment {
 	float: left;
   clear: both;
   width:100%;
+  background-color:#ddc3a3;
 }
 
-time.comment-time a {
-	font-size:10px;
+li.comment a {
+	text-decoration:none;
 }
 
 .comment-meta {
@@ -2761,33 +2804,19 @@ time.comment-time a {
 	margin-top:0px;
 	float:left;
 	clear:both;
+  width: 100%;
+  padding: 0 0 0 5px;
+  color:#000;
+  /*background-color: #ffedd0;*/
 }
 
-.entry-comments h3,
-.comment-reply h3 {
-	color:#333;
-	font-size:16px;
-	letter-spacing:1.5px;
-	text-transform:uppercase;
-}
-
-.entry-comments a,
-.comment-reply a {
-	text-decoration:none;
-}
-
-.entry-comments a:hover,
-.comment-reply a:hover {
-	text-decoration:underline;
-}
 
 .entry-comments .comment-author {
 	margin:0;
 }
 
 .comment-reply input[type="email"],
-.comment-reply input[type="text"],
-.comment-reply input[type="url"] {
+.comment-reply input[type="text"] {
 	width:50%
 }
 
@@ -2800,9 +2829,6 @@ time.comment-time a {
 	margin:0 16px 22px 0;
 }
 
-.bypostauthor {
-}
-
 .form-allowed-tags {
 	background:#f5f5f5;
 	font-size:12px;
@@ -2811,24 +2837,12 @@ time.comment-time a {
 
 .comment-meta a {
 	color:#333;
+	font-size: 11px;
 }
 
-/*.comment-reply a {
-	background:#f5f5f5;
-	color:#333;
-	font-family:Helvetica, Arial, sans-serif;
-	font-size:11px;
-	letter-spacing:1px;
-	padding:2px 5px;
-	text-transform:uppercase;
-}
 
-.comment-reply a:hover {
-	background:#ccc;
-}*/
 
-/*
-Sidebars
+/* Sidebars
 ---------------------------------------------------------------------------------------------------- */
 
 .sidebar p:last-child,

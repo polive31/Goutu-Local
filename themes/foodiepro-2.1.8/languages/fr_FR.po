@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-02-11 10:18+0100\n"
-"PO-Revision-Date: 2017-02-11 10:19+0100\n"
+"POT-Creation-Date: 2017-02-12 12:25+0100\n"
+"PO-Revision-Date: 2017-02-12 12:26+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -316,6 +316,7 @@ msgid "Read More"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:197
+#: themes/foodiepro-2.1.8/functions.php:839
 msgid "Comments"
 msgstr ""
 
@@ -1271,7 +1272,7 @@ msgid "Add to Shopping List"
 msgstr "Courses"
 
 #: themes/foodiepro-2.1.8/custom-recipe-template.php:47
-#: themes/foodiepro-2.1.8/custom-recipe-template.php:322
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:325
 msgid "Add to Favorites"
 msgstr "Favoris"
 
@@ -1291,17 +1292,17 @@ msgstr "Origine"
 msgid "Level"
 msgstr "Niveau"
 
-#: themes/foodiepro-2.1.8/custom-recipe-template.php:221
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:224
 msgctxt "vowel"
 msgid "of "
 msgstr "d'"
 
-#: themes/foodiepro-2.1.8/custom-recipe-template.php:223
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:226
 msgctxt "consonant"
 msgid "of "
 msgstr "de "
 
-#: themes/foodiepro-2.1.8/custom-recipe-template.php:323
+#: themes/foodiepro-2.1.8/custom-recipe-template.php:326
 msgid "Remove from Favorites"
 msgstr "Favorite"
 
@@ -1352,27 +1353,27 @@ msgstr "Résultats de recherche détaillée"
 msgid "Search Results for:"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:852
+#: themes/foodiepro-2.1.8/functions.php:866
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
-#: themes/foodiepro-2.1.8/functions.php:852
+#: themes/foodiepro-2.1.8/functions.php:866
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:852
+#: themes/foodiepro-2.1.8/functions.php:866
 msgid "Legal notice"
 msgstr "Mentions légales"
 
-#: themes/foodiepro-2.1.8/functions.php:852
+#: themes/foodiepro-2.1.8/functions.php:866
 msgid "Goûtu charter"
 msgstr "Charte Goûtu"
 
-#: themes/foodiepro-2.1.8/functions.php:852
+#: themes/foodiepro-2.1.8/functions.php:866
 msgid "Personal data"
 msgstr "Données personnelles"
 
-#: themes/foodiepro-2.1.8/functions.php:852
+#: themes/foodiepro-2.1.8/functions.php:866
 msgid "Terms of use"
 msgstr "Conditions d'utilisation"
 

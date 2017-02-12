@@ -55,7 +55,7 @@ function get_rating_stats( $user_ratings) {
   
 	  if( $votes !== 0 ) {
 	    $avg_rating = $total / $votes; // TODO Just an average for now, implement some more functions later
-	    $avg_rating = round( $avg_rating, 2 );
+	    $avg_rating = round( $avg_rating, 1 );
 	  }  	
 	}
 	else {

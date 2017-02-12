@@ -88,5 +88,25 @@ function get_user_ip() {
 }
 
 
+/* Output stars
+-------------------------------------------------------------*/
+
+function output_stars($stars, $half) {
+	$html = '';
+	for ($i = 1; $i <= $stars; $i++) {
+		$html .= '<i class="fa fa-star"></i>';
+	}
+	for ($i = $stars+1; $i <= 5; $i++) {
+		if ( ($i == ($stars+1) ) && $half ) {
+			$html .= '<i class="fa fa-star-half-o"></i>';
+		}
+		else {
+			$html .= '<i class="fa fa-star-o"></i>';
+		}
+	}
+	return $html;
+}
+
+
 
 ?>

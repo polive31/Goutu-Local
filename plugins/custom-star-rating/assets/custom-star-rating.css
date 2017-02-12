@@ -9,7 +9,7 @@ Description: Ratings via stars in comments
 --------------------------------------------- */
 
 td.rating-title {
-	font-size:14px;
+	font-size:16px;
 	padding:10px 0 10px;
 }
 
@@ -47,9 +47,9 @@ td.rating-title {
 .rating-wrapper:hover .rating-star {
 		float: right;
 		display: block;
-		width: 20px;
-		height: 20px;
-		background: url('../images/rating-star.png') -20px 0/40px 20px no-repeat;
+		width: 24px;
+		height: 24px;
+		background: url('../images/rating-star.png') -24px 0/48px 24px no-repeat;
 }
 
 

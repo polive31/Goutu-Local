@@ -196,7 +196,7 @@ function custom_ingredients_list( $recipe, $args ) {
             $out .= '<ul class="wpurp-recipe-ingredients">';
         }
 
-        $fraction = WPUltimateRecipe::option('recipe_adjustable_servings_fractions', '0') == '1' ? true : false;
+        $fraction = false;
         $fraction = strpos($ingredient['amount'], '/') === false ? $fraction : true;
 
         $meta = WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ) != 'json' && $args['template_type'] == 'recipe' && $args['desktop'] ? ' itemprop="recipeIngredient"' : '';
@@ -209,6 +209,8 @@ function custom_ingredients_list( $recipe, $args ) {
 
         $plural = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'plural' );
         $plural = is_array( $plural ) ? false : $plural;
+        //PC::debug( array('Plural array'=>$plural) );
+        
         $plural_data = $plural ? ' data-singular="' . esc_attr( $ingredient['ingredient'] ) . '" data-plural="' . esc_attr( $plural ) . '"' : '';
 
         $out .= ' <span class="wpurp-recipe-ingredient-name recipe-ingredient-name"' . $plural_data . '>';

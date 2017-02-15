@@ -1910,7 +1910,7 @@ Custom Page Templates
 
 .pum-title {
 	font-family:"PT Sans Narrow","Helvetica Neue",sans-serif!important;
-	/*margin:20px 0px 50px 110px;*/
+	margin:20px 0px 50px 110px;
 	text-transform:uppercase!important;	
 	font-size:26px!important;	
 }
@@ -2786,6 +2786,8 @@ input#url {
 
 .comment-respond {
 	margin-top: 20px;
+  float: left;
+  width: 100%;
 }
 
 .comment-list li,

@@ -72,7 +72,8 @@ td.rating-title {
 
 i.fa.fa-star,
 i.fa.fa-star-half-o {
-	color:#ffa700;
+	/*color:#ffa700;*/
+	color:#ff8f00;
 }
 
 i.fa.fa-star-o {

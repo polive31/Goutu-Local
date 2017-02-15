@@ -71,12 +71,10 @@ td.rating-title {
 }
 
 i.fa.fa-star,
-i.fa.fa-star-half-o,
-.rating:before {
+i.fa.fa-star-half-o {
 	color:#ffa700;
 }
 
-i.fa.fa-star-o,
-.rating:after {
+i.fa.fa-star-o {
 	color:#aaa;
 }

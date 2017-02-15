@@ -27,7 +27,7 @@ function test_shortcode() {
 	
 	
 /* =================================================================*/
-/* =               BATCH UPDATE USER RATINGS
+/* =               BATCH UPDATE POST META
 /* =================================================================*/
 
 add_shortcode('batch-update-meta', 'batch_update_meta');
@@ -36,7 +36,7 @@ add_shortcode('batch-update-meta', 'batch_update_meta');
 function batch_update_meta($atts) {
 	$a = shortcode_atts( array(
 		'post-type' => 'recipe',
-		'post-id' => '0',
+		'include' => '',
 		'key' => 'user_rating',
 		'new-key' => '',
 		'value' => '0',//can be scalar or array of space-separated $key/$value pairs
@@ -60,16 +60,9 @@ function batch_update_meta($atts) {
 	echo sprintf("<b>Post type</b> = %s",$post_type);
 	echo "<br>";
 
-	if ( is_array( $a['post-id'] ) ) {
-		$post_id = explode($a['post-id'], ' ');
-		echo "<b>Limited to posts </b> = " . print_r( $post_id );
-		echo "<br>";
-	}
-	else {
-		$post_id = $a['post-id'];
-		echo sprintf("<b>Limited to posts </b> = %s",$post_id);
-		echo "<br>";
-	}
+	$include = $a['include'];
+	echo sprintf("<b>Limited to posts</b> = %s",$include);
+	echo "<br>";
 
 	$value = $a['value'];
 	echo sprintf("<b>Value</b> = %s",$value);
@@ -109,12 +102,11 @@ function batch_update_meta($atts) {
 		  
 		  $post_type_object = get_post_type_object($post_type);
 		  $label = $post_type_object->label;
-		  //echo  sprintf("Updating all %s<br>", $label);
 
-		  $posts = get_posts(array('post_type'=> $post_type, 'post_status'=> 'publish', 'suppress_filters' => false, 'posts_per_page'=>-1));
+		  $posts = get_posts(array('include'=>$include, 'post_type'=> $post_type, 'post_status'=> 'publish', 'suppress_filters' => false, 'posts_per_page'=>-1));
 
 		  foreach ($posts as $post) {
-		  	if ( ! in_array($post->ID, $post_id) ) continue;
+
 		    $meta_value = get_post_meta($post->ID, $key, True);
 		    switch ($cmd) {
 		    	case 'add':
@@ -148,20 +140,6 @@ function batch_update_meta($atts) {
 	
 }
 
-function confirmChoice() {
-	echo __("Are you sure you want to do this?  Type 'yes' to continue: ");
-	$handle = fopen ("php://stdin","r");
-	$line = fgets($handle);
-	if (trim($line) != __('yes')) {
-	    echo "ABORTING!\n";
-	    return false;
-	}
-	fclose($handle);
-	echo "\n"; 
-	echo __('Thank you, continuing...') . "\n";
-	return true;
-}
-
 function extractKeyValuePairs($string, $delimiter = ' ') {
     $params = explode($delimiter, $string);
     $pairs = [];
@@ -172,4 +150,91 @@ function extractKeyValuePairs($string, $delimiter = ' ') {
     return $pairs;
 }
 
+/* =================================================================*/
+/* =               BATCH DELETE COMMENTS
+/* =================================================================*/
+
+add_shortcode('batch-delete-comments', 'batch_delete_comments');
+
+/* Batch update user_ratings_ratings custom field */
+function batch_delete_comments($atts) {
+	$a = shortcode_atts( array(
+		'post-type' => 'recipe',
+		'include' => '', // Post ids list, separated by commas
+	), $atts );
+	
+	static $script_id; // allows several shortcodes on the same page
+	++$script_id;
+	
+	echo "<h3>BATCH DELETE COMMENTS SHORTCODE#" . $script_id . "</h3>";
+	
+  $post_type = $a['post-type'];
+	echo sprintf("<b>Post type</b> = %s",$post_type);
+	echo "<br>";
+
+	$include = $a['include'];
+	echo sprintf("<b>Limited to posts</b> = %s",$include);
+	echo "<br>";
+	
+	$cmd='delete';
+	$style='background-color:red';
+	
+	ob_start();?>
+	
+	<div id = "center">
+	<form action="." method="post">
+	<input style="<?php echo $style;?>" class="button-<?php echo $script_id;?>" type="submit" name="Submit_<?php echo $script_id?>" value="<?php echo $cmd;?>">
+	</form>
+	</div>
+	<br>
+	
+	<script>
+		
+	$(document).ready(function(){
+    $('.button').click(function(){
+      var clickBtnValue = $(this).val();
+      var ajaxurl = 'ajax.php',
+      data =  {'action': clickBtnValue};
+      $.post(ajaxurl, data, function (response) {
+          // Response div goes here.
+          alert("action performed successfully");
+      });
+    });
+	});
+
+	</script>
+	
+	<?php
+	$form=ob_get_contents();
+	ob_end_clean();
+	
+	echo $form;
+	
+	if (isset($_POST['Submit_' . $script_id])) {
+							
+			echo "<p>Batch Delete Comments script started...</p>";
+		  
+		  $post_type_object = get_post_type_object($post_type);
+		  $label = $post_type_object->label;
+
+			if ( ! empty($include) || ( $include == 'all') ) {
+			 	$posts = get_posts(array('include'=>$include, 'post_type'=> $post_type, 'post_status'=> 'publish', 'suppress_filters' => false, 'posts_per_page'=>-1));
+			  foreach ($posts as $post) {
+					$comments = get_comments( array('post_id'=>$post->ID ) );
+					echo sprintf(__('Post %s contains %d comments'), $post->post_title, count($comments) );
+					echo "<br>";
+					
+					
+				}
+				
+		  }
+			else 
+				echo "Please provide post IDs or 'all' for deletion to take place";
+
+	}
+	
+}
+
 ?>
+
+

@@ -235,10 +235,10 @@ function foodie_pro_add_body_class( $classes ) {
 /* Enqueue default WP jQuery in the footer rather than the header 
 --------------------------------------------------------------------*/
 function move_jquery_into_footer( $wp_scripts ) {
-    if( is_admin()) return;
-    $wp_scripts->add_data( 'jquery', 'group', 1 );
-    $wp_scripts->add_data( 'jquery-core', 'group', 1 );
-    $wp_scripts->add_data( 'jquery-migrate', 'group', 1 );
+    if( is_admin() ) return;
+    $wp_scripts->add_data( 'jquery', 'group', true );
+    $wp_scripts->add_data( 'jquery-core', 'group', true );
+    $wp_scripts->add_data( 'jquery-migrate', 'group', true );
 }
 //add_action( 'wp_default_scripts', 'move_jquery_into_footer' );
 

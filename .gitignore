@@ -66,6 +66,7 @@ themes/foodiepro-2.1.8/images/Backup/*
 
 plugins/*
 !plugins/bp-custom.php
+!plugins/batch-update-posts/
 !plugins/custom_shortcodes/
 !plugins/custom_widgets/
 !plugins/custom-star-rating/

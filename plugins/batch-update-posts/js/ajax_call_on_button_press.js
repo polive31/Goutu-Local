@@ -8,28 +8,28 @@ jQuery(document).ready(function(){
   	
 		console.log('Lancement du script = '  + 'script' + ScriptName + ScriptInst);
 		
+  	// Récupération des données de WPLocalize propres au shortcode sélectionné
 		var WPLocalizeVar = window['script' + ScriptName + ScriptInst];
-		var ShortcodeArgs = WPLocalizeVar.data;
+		var ShortcodeArgs = jQuery.parseJSON( WPLocalizeVar.data );
 		var AjaxURL = WPLocalizeVar.url;
 		
-		console.log('Arguments du shortcode = '  + ShortcodeArgs);
+		console.log('Arguments du shortcode = %0',ShortcodeArgs);
 		console.log('URL de la page = '  + AjaxURL);
-		
-		jQuery.ajax({
-		    type    : 'POST',
-		    url     : AjaxURL,
-		    //data    : ShortcodeArgs,
-		    data    : {test: "toto"},
-		    success : function(response) {
-		        alert('Ajax call successful');
-		        alert(response);
-		        console.log(response);
-		    }  
-//		    error		: function(exception) {
-//		    		alert('Exception:'+exception);
-//		    }  
+
+		jQuery.post(
+		 AjaxURL,
+		 {
+		 	action : ScriptName,
+			args : ShortcodeArgs,
+			dataType: "text",
+		 },
+		function( response ) {
+		 		console.log( 'Ajax call successfull');
+		 		console.log('#resp' + ScriptName + ScriptInst);
+		 		console.log( response );
+		 		jQuery('#resp' + ScriptName + ScriptInst).html( response );
 		});
-  
+		
   });
 });
 

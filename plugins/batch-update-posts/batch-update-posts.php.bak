@@ -15,13 +15,22 @@ if ( !defined('ABSPATH') )
 	die('-1');
 
 
+require 'functions/delete_comments_ajax.php';
+require 'functions/update_posts_meta_ajax.php';
+
+add_action( 'wp_enqueue_scripts', 'bupm_init_scripts' );
 function bupm_init_scripts() {
 	//wp_enqueue_script( 'jquery' );
 	//wp_register_script( 'ajax_call_meta_update', plugins_url( 'js/ajax_call_on_button_press.js', __FILE__ ) , array( 'jquery' ), '1.0', true );
 	//wp_register_script( 'ajax_call_comment_delete', plugins_url( 'js/ajax_call_on_button_press.js', __FILE__ ) , array( 'jquery' ), '1.0', true );
 	wp_register_script( 'ajax_call_batch_update', plugins_url( 'js/ajax_call_on_button_press.js', __FILE__ ) , array( 'jquery' ), '1.0', true );
 }
-add_action( 'wp_enqueue_scripts', 'bupm_init_scripts' );
+
+add_action("wp_ajax_CommentDelete", "ajax_batch_delete_comments");
+add_action("wp_ajax_nopriv_CommentDelete", "ajax_batch_delete_comments");
+
+add_action("wp_ajax_MetaUpdate", "ajax_batch_update_meta");
+add_action("wp_ajax_nopriv_MetaUpdate", "ajax_batch_update_meta");
 
 /* =================================================================*/
 /* =               BATCH UPDATE POST META
@@ -49,7 +58,7 @@ function batch_update_meta($atts) {
 		
 	// Localize and enqueue the script with new data
 	$jsargs = array(
-		'url' => plugins_url( '/functions/update_posts_meta_ajax.php', __FILE__ ),
+		'url' => admin_url( 'admin-ajax.php' ),
 		'data' => $ajson,
 	);
 	wp_enqueue_script( 'ajax_call_batch_update' );	
@@ -65,6 +74,7 @@ function batch_update_meta($atts) {
 	<div id = "center">
 	<input style="<?php echo $style;?>" type="submit" id="button" data-name="MetaUpdate" data-instance="<?php echo $script_id;?>" name="Submit_<?php echo $script_id;?>" value="<?php echo $cmd;?>">
 	</div>
+	<div id="respCommentDelete<?php echo $script_id;?>"></div>
 	<br>
 
 	<?php
@@ -101,7 +111,7 @@ function batch_delete_comments($atts) {
 
 	// Localize the script with new data
 	$jsargs = array(
-		'url' => plugins_url( 'functions/delete_comments_ajax.php', ,
+		'url' => plugins_url( 'functions/delete_comments_ajax.php', __FILE__ ),
 		'data' => $ajson,
 	);
 	
@@ -117,6 +127,7 @@ function batch_delete_comments($atts) {
 	<div id = "center">
 	<input style="<?php echo $style;?>" type="submit" id="button" data-name="CommentDelete" data-instance="<?php echo $script_id;?>" name="Submit_<?php echo $script_id;?>" value="<?php echo $cmd;?>">
 	</div>
+	<div id="respCommentDelete<?php echo $script_id;?>"></div>
 	<br>
 
 	<?php

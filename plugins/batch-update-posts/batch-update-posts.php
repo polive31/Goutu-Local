@@ -17,8 +17,9 @@ if ( !defined('ABSPATH') )
 
 function bupm_init_scripts() {
 	//wp_enqueue_script( 'jquery' );
-	wp_register_script( 'ajax_call_meta_update', plugins_url( '/js/ajax_call_on_button_press.js', __FILE__ ) , array( 'jquery' ), '1.0', true );
-	wp_register_script( 'ajax_call_comment_delete', plugins_url( '/js/ajax_call_on_button_press.js', __FILE__ ) , array( 'jquery' ), '1.0', true );
+	//wp_register_script( 'ajax_call_meta_update', plugins_url( 'js/ajax_call_on_button_press.js', __FILE__ ) , array( 'jquery' ), '1.0', true );
+	//wp_register_script( 'ajax_call_comment_delete', plugins_url( 'js/ajax_call_on_button_press.js', __FILE__ ) , array( 'jquery' ), '1.0', true );
+	wp_register_script( 'ajax_call_batch_update', plugins_url( 'js/ajax_call_on_button_press.js', __FILE__ ) , array( 'jquery' ), '1.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'bupm_init_scripts' );
 
@@ -48,11 +49,11 @@ function batch_update_meta($atts) {
 		
 	// Localize and enqueue the script with new data
 	$jsargs = array(
-		'url' => '../functions/update_posts_meta_ajax.php',
+		'url' => plugins_url( '/functions/update_posts_meta_ajax.php', __FILE__ ),
 		'data' => $ajson,
 	);
-	wp_enqueue_script( 'ajax_call_meta_update' );	
-	wp_localize_script( 'ajax_call_meta_update', 'scriptMetaUpdate' . $script_id , $jsargs );
+	wp_enqueue_script( 'ajax_call_batch_update' );	
+	wp_localize_script( 'ajax_call_batch_update', 'scriptMetaUpdate' . $script_id , $jsargs );
 	
 	$style='';
 	$cmd=$a['cmd'];
@@ -100,12 +101,12 @@ function batch_delete_comments($atts) {
 
 	// Localize the script with new data
 	$jsargs = array(
-		'url' => '../functions/delete_comments_ajax.php',
+		'url' => plugins_url( 'functions/delete_comments_ajax.php', __FILE__ ),
 		'data' => $ajson,
 	);
 	
-	wp_enqueue_script( 'ajax_call_comment_delete' );	
-	wp_localize_script( 'ajax_call_comment_delete', 'scriptCommentDelete' . $script_id, $jsargs );
+	wp_enqueue_script( 'ajax_call_batch_update' );	
+	wp_localize_script( 'ajax_call_batch_update', 'scriptCommentDelete' . $script_id, $jsargs );
 
 	
 	$cmd='delete';

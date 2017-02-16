@@ -17,12 +17,17 @@ jQuery(document).ready(function(){
 		
 		jQuery.ajax({
 		    type    : 'POST',
-		    url     : script.url,
-		    data    : script.jsondata,
+		    url     : AjaxURL,
+		    //data    : ShortcodeArgs,
+		    data    : {test: "toto"},
 		    success : function(response) {
-		        alert('Success !!!');
-		        //alert(response);
-		    }    
+		        alert('Ajax call successful');
+		        alert(response);
+		        console.log(response);
+		    }  
+//		    error		: function(exception) {
+//		    		alert('Exception:'+exception);
+//		    }  
 		});
   
   });

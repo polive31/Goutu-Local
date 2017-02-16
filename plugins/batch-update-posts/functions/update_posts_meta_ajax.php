@@ -62,8 +62,8 @@ else
 	
 echo "<p>Batch Update Meta script started...</p>";
 
-$post_type_object = get_post_type_object($post_type);
-$label = $post_type_object->label;
+//$post_type_object = get_post_type_object($post_type);
+//$label = $post_type_object->label;
 
 $posts = get_posts(array('include'=>$include, 'post_type'=> $post_type, 'post_status'=> 'publish', 'suppress_filters' => false, 'posts_per_page'=>-1));
 

@@ -10,19 +10,24 @@ jQuery(document).ready(function(){
 		
 		var WPLocalizeVar = window['script' + ScriptName + ScriptInst];
 		var ShortcodeArgs = WPLocalizeVar.data;
-		var ShortcodeArgs = WPLocalizeVar.url;
+		var AjaxURL = WPLocalizeVar.url;
 		
 		console.log('Arguments du shortcode = '  + ShortcodeArgs);
 		console.log('URL de la page = '  + AjaxURL);
 		
 		jQuery.ajax({
 		    type    : 'POST',
-		    url     : script.url,
-		    data    : script.jsondata,
+		    url     : AjaxURL,
+		    //data    : ShortcodeArgs,
+		    data    : {test: lbtest},
 		    success : function(response) {
-		        alert('Success !!!');
-		        //alert(response);
-		    }    
+		        alert('Ajax call successful');
+		        alert(response);
+		        console.log(response);
+		    }  
+//		    error		: function(exception) {
+//		    		alert('Exception:'+exception);
+//		    }  
 		});
   
   });

@@ -15,6 +15,8 @@ jQuery(document).ready(function(){
 		
 		console.log('Arguments du shortcode = %0',ShortcodeArgs);
 		console.log('URL de la page = '  + AjaxURL);
+		
+		jQuery('div#resp' + ScriptName + ScriptInst).html( 'Ajax call launched...' );
 
 		jQuery.post(
 		 AjaxURL,
@@ -24,10 +26,10 @@ jQuery(document).ready(function(){
 			dataType: "text",
 		 },
 		function( response ) {
-		 		alert( 'Ajax call successfull');
-		 		alert('#resp' + ScriptName + ScriptInst);
-		 		alert( response );
-		 		jQuery('#resp' + ScriptName + ScriptInst).html( response );
+		 		//console.log( 'Ajax call successfull');
+		 		//console.log('div#resp' + ScriptName + ScriptInst);
+		 		//console.log( response );
+		 		jQuery('div#resp' + ScriptName + ScriptInst).html( response );
 		});
 		
   });

@@ -26,11 +26,7 @@ function ajax_batch_manage_meta() {
 	$value = get_ajax_arg('value');
 	$cmd = get_ajax_arg('cmd');
 	
-	$nonce_check = check_ajax_referer( 'ManageMeta' . $cmd, false, false );
-	if ( ! $nonce_check ) {
-		echo 'Security check failed, script stopped';
-		exit;
-	}
+	if ( !(is_secure('ManageMeta' . $cmd) ) ) exit;
 			
 	if ( is_array($value) )
 		$value = extractKeyValuePairs( $value );

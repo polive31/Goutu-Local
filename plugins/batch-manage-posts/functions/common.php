@@ -43,7 +43,6 @@ function extractKeyValuePairs($string, $delimiter = ' ') {
 
 /* Transforms a list of consecutive values into $key=>$value pairs
 ---------------------------------------------------------*/
-
 function create_ajax_arg_array($a, $script_name, $script_id) {
 	
 	foreach ( $a as $key=>$value ) {
@@ -55,8 +54,8 @@ function create_ajax_arg_array($a, $script_name, $script_id) {
 		
 	$ajson = json_encode($a);
 	$nonce = wp_create_nonce( $script_name . $a['cmd'] );
-	echo "Nonce = " . $nonce;
-	echo "<br>";
+	//echo "Nonce = " . $nonce;
+	//echo "<br>";
 			
 	// Localize and enqueue the script with new data
 	$jsargs = array(
@@ -69,5 +68,17 @@ function create_ajax_arg_array($a, $script_name, $script_id) {
 
 }
 
+/* Security check on AJAX referred page
+---------------------------------------------------------*/
+function is_secure($nonceurl) {
+	$result = true;
+	$nonce_check = check_ajax_referer( $nonceurl, false, false );
+	if ( ! ( $nonce_check && is_user_logged_in() && current_user_can('edit_others_posts') ) ) {
+		echo 'Security check failed, script stopped';
+		$result=false;
+		exit;
+	}
+	return $result;
+}
 
 ?>

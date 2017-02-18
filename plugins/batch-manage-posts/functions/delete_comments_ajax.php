@@ -22,11 +22,7 @@ function ajax_batch_delete_comments() {
 	$include=	get_ajax_arg('include');
 	$cmd=	get_ajax_arg('cmd');
 	
-	$nonce_check = check_ajax_referer( 'DeleteComment' . $cmd, false, false );
-	if ( ! $nonce_check ) {
-		echo 'Security check failed, script stopped';
-		exit;
-	}		
+	if ( !(is_secure('DeleteComment' . $cmd) ) ) exit;
 
 	$deleted_count='0';
 

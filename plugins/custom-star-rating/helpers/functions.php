@@ -71,10 +71,10 @@ function get_rating_stats( $user_ratings) {
 }
 
 
-/* Get the user ip
+/* Get the user ip (from WPURP)
 -------------------------------------------------------------*/
 // Source: http://stackoverflow.com/questions/6717926/function-to-get-user-ip-address
-function get_user_ip() {
+function wpurp_get_user_ip() {
   foreach( array( 'HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR' ) as $key ) {
     if( array_key_exists( $key, $_SERVER ) === true ) {
       foreach( array_map( 'trim', explode( ',', $_SERVER[$key] ) ) as $ip ) {
@@ -85,6 +85,22 @@ function get_user_ip() {
     }
   }
   return 'unknown';
+}
+
+
+/* Get the user ip (from WP Beginner)
+-------------------------------------------------------------*/
+function get_user_ip() {
+if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
+//check ip from share internet
+$ip = $_SERVER['HTTP_CLIENT_IP'];
+} elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+//to check ip is pass from proxy
+$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+} else {
+$ip = $_SERVER['REMOTE_ADDR'];
+}
+return apply_filters( 'wpb_get_ip', $ip );
 }
 
 

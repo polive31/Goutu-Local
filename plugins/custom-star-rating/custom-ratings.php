@@ -78,39 +78,55 @@ function update_comment_post_meta_php($comment_id,$comment_approved,$comment) {
 	PC::debug('In comment post !');
 	$post_id = $comment['comment_post_ID'];
 
-	if ( isset( $_POST[ 'rating-' . '1' ] ) ) {
-		
-		$rating = $_POST[ 'rating-' . '1' ];
-		PC::debug(array('Rating :'=>$rating));
-		
-		add_comment_meta($comment_id, 'user_rating', $rating);
-		// Update post meta with new rating table & rating stats
-		$user_ratings = get_post_meta( $post_id, 'user_ratings' );
-		PC::debug(array('User Ratings Table :'=>$user_ratings));
+	if ( ! isset( $_POST[ 'rating-' . '1' ] ) ) return '';
+	$rating = $_POST[ 'rating-' . '1' ];
+	PC::debug(array('Rating :'=>$rating));
+	
+	/* COMMENT META UPDATE
+	------------------------------------------------------*/
+	add_comment_meta($comment_id, 'user_rating', $rating);
 
-		if ( !empty($user_ratings) )
-			$new_user_id = count( $user_ratings ) + 1;
-		else {
-			$new_user_id = 1;
-		}
-		$user_ip = get_user_ip();
-		PC::debug(array('User IP :'=>$user_ip));
+	/* POST META UPDATE
+	------------------------------------------------------*/
+	$user_ratings = get_post_meta( $post_id, 'user_ratings' );
+	PC::debug(array('User Ratings Table :'=>$user_ratings));
 
-		$new_user_rating = array(
-			'user' 	=>$new_user_id,
-			'ip'		=>$user_ip,
-			'rating'=>$rating,
-		);
-		//PC::debug(array('New User Rating :'=>$new_user_rating ) );
-		add_post_meta($post_id, 'user_ratings', $new_user_rating);
-		
-		$user_ratings[]=$new_user_rating;
-		$stats = get_rating_stats( $user_ratings );
-		//PC:debug(array('Stats :'=>$stats) );
-		
-		update_post_meta($post_id, 'user_rating', $stats['rating']);
-
+	if ( is_user_logged_in() )
+		$user_id = get_current_user_id();
+	else {
+		$user_id = 0;
 	}
+	$user_ip = get_user_ip();
+	PC::debug(array('User IP :'=>$user_ip));
+	
+	/* Search and delete previous rating from same user */
+	foreach ( $user_ratings as $rating_id => $user_rating ) {
+			
+		PC::debug(array('Rating #'=>$rating_id));
+		PC::debug(array('Content'=>$user_rating));
+		
+		if ( ( $user_id!=0 && $user_rating['user']==$user_id ) || ( $user_id==0 && $user_rating['ip']==$user_ip ) )  {
+			PC::debug(array('Previous rating from same user !!!'=>$rating_id));
+			delete_post_meta($post_id, 'user_ratings', $user_rating);
+		} 
+		
+	}
+
+	/* Update post meta for ratings table */
+	$user_rating = array(
+		'user' 	=>$user_id,
+		'ip'		=>$user_ip,
+		'rating'=>$rating,
+	);
+	//PC::debug(array('New User Rating :'=>$new_user_rating ) );
+	add_post_meta($post_id, 'user_ratings', $user_rating);
+	
+	/* Update post meta for average rating */
+	$user_ratings[]=$user_rating;
+	$stats = get_rating_stats( $user_ratings );
+	//PC:debug(array('Stats :'=>$stats) );
+	update_post_meta($post_id, 'user_rating', $stats['rating']);
+	
 }
 
 

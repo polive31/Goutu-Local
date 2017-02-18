@@ -236,9 +236,9 @@ function foodie_pro_add_body_class( $classes ) {
 --------------------------------------------------------------------*/
 function move_jquery_into_footer( $wp_scripts ) {
     if( is_admin() ) return;
-    $wp_scripts->add_data( 'jquery', 'group', 1 );
-    $wp_scripts->add_data( 'jquery-core', 'group', 1 );
-    $wp_scripts->add_data( 'jquery-migrate', 'group', 1 );
+    $wp_scripts->add_data( 'jquery', 'group', true );
+    $wp_scripts->add_data( 'jquery-core', 'group', true );
+    $wp_scripts->add_data( 'jquery-migrate', 'group', true );
 }
 //add_action( 'wp_default_scripts', 'move_jquery_into_footer' );
 
@@ -879,6 +879,7 @@ function change_comment_form_defaults( $defaults ) {
 //* Change the credits text
 function sp_footer_creds_filter( $creds ) {
 	$creds = '[footer_copyright before="' . __('All rights reserved','foodiepro') . ' " first="2015"] &middot; <a href="http://goutu.org">Goutu.org</a> &middot; <a href="http://goutu.org/contact">' . __('Contact us', 'foodiepro') . '</a> &middot; ' . __('Legal notice', 'foodiepro') . ' &middot; ' . __('Goûtu charter','foodiepro') . ' &middot; ' . __('Personal data','foodiepro') . ' &middot; ' . __('Terms of use','foodiepro') . ' &middot; [footer_loginout]';
+		$creds .= '<a href="http://www.beyondsecurity.com/vulnerability-scanner-verification/goutu.org"><img src="https://seal.beyondsecurity.com/verification-images/goutu.org/vulnerability-scanner-2.gif" alt="Website Security Test" border="0" /></a>';
 	return $creds;
 }
 

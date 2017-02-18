@@ -18,18 +18,9 @@ function ajax_batch_delete_comments() {
 	
 	echo '<p>In Batch Delete Comments function...</p>';
 		
-	if ( isset($_POST['args']['post-type']) ) {
-		$post_type = $_POST['args']['post-type'];
-		echo sprintf("<b>Post type</b> = %s",$post_type);
-		echo "<br>";
-	}
+	$post_type=	get_ajax_arg('post-type');
+	$include=	get_ajax_arg('include');
 		
-	if ( isset($_POST['args']['include']) ) {
-		$include = $_POST['args']['include'];
-		echo sprintf("<b>Limit to Posts</b> = %s",$include);
-		echo "<br>";
-	}
-	
 
 //	$response = array('msg'=>'Dans Batch Delete Comments script',
 //										'post-type'=>$post_type,

@@ -23,6 +23,8 @@ function ajax_batch_delete_comments() {
 		echo sprintf("<b>Post type</b> = %s",$post_type);
 		echo "<br>";
 	}
+	$post_type=	get_ajax_arg('post-type');
+	$include=	get_ajax_arg('include');
 		
 	if ( isset($_POST['args']['include']) ) {
 		$include = $_POST['args']['include'];
@@ -48,7 +50,6 @@ function ajax_batch_delete_comments() {
 			echo "<br>";
 			if ( ! empty( $comments ) ) {
 				foreach ($comments as $comment) {
-					echo $comment->comment_ID;
 					$deleted = wp_delete_comment( $comment->comment_ID );
 					if ( $deleted ) {
 						++$deleted_count;

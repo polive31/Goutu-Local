@@ -22,7 +22,7 @@ jQuery(document).ready(function(){
 		console.log('Nonce = '  + AjaxNonce);
 		
 		if (ShortcodeArgs['cmd'] == 'delete') {
-			deletionOK = confirm(__'This action will delete posts content !');
+			deletionOK = confirm('This action will delete posts content !');
 			if ( ! deletionOK ) return;
 		}
 		

@@ -17,16 +17,16 @@ if ( !defined('ABSPATH') )
 function ajax_batch_delete_comments() {
 	
 	echo '<p>In Batch Delete Comments function...</p>';
-		
+	
 	$post_type=	get_ajax_arg('post-type');
 	$include=	get_ajax_arg('include');
-		
-
-//	$response = array('msg'=>'Dans Batch Delete Comments script',
-//										'post-type'=>$post_type,
-//										'include'=>$include,
-//										);
-//	echo json_encode( $response );
+	$cmd=	get_ajax_arg('cmd');
+	
+	$nonce_check = check_ajax_referer( 'DeleteComment' . $cmd, false, false );
+	if ( ! $nonce_check ) {
+		echo 'Security check failed, script stopped';
+		exit;
+	}		
 
 	$deleted_count='0';
 

@@ -154,6 +154,11 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
   font-size:24px;
 }
 
+.single-recipe i.fa.fa-star,
+.single-recipe i.fa.fa-star-half-o {
+	/*color:#e4aa3d;*/
+}
+
 
 .recipe-label {
 	float:left;
@@ -271,6 +276,7 @@ li.wpurp-recipe-instruction {
   font-size: 14px;
 	display:block;
 }
+
 
 /* MEDIA QUERIES 
 ---------------------------------------------------*/

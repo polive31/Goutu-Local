@@ -107,7 +107,7 @@ function update_comment_post_meta_php($comment_id,$comment_approved,$comment) {
 		
 		if ( ( $user_id!=0 && $user_rating['user']==$user_id ) || ( $user_id==0 && $user_rating['ip']==$user_ip ) )  {
 			PC::debug(array('Previous rating from same user !!!'=>$rating_id));
-			delete_post_meta($post_id, 'user_ratings', $rating_id);
+			delete_post_meta($post_id, 'user_ratings', $user_rating);
 		} 
 		
 	}
@@ -145,27 +145,13 @@ function wpurp_add_default_rating( $id, $post ) {
 //**               COMMENTS LIST
 //*************************************************************************
 
-// Add our own custom list and specify our custom callback
-add_action( 'genesis_list_comments', 'custom_star_rating_list_comments' );
-function custom_star_rating_list_comments() {
-
-	if ( is_singular( RATED_POST_TYPES ) ) {
-		$args = array(
-		    'type'          => 'comment',
-		    'avatar_size'   => 54,
-		    'callback'      => 'custom_star_rating_comment',
-		);
-		$args = apply_filters( 'genesis_comment_list_args', $args );		
-	}
-	wp_list_comments( $args );
-}
 
 /* Change the comment reply link to display our own comment form */
+//add_filter('comment_reply_link', 'remove_nofollow', 420, 4);
 function remove_nofollow($link, $args, $comment, $post){
   return str_replace("rel='nofollow'", "", $link);
 }
 
-add_filter('comment_reply_link', 'remove_nofollow', 420, 4);
 
 
 ?>

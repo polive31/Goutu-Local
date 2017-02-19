@@ -62,7 +62,6 @@ function get_rating_stats( $user_ratings) {
 		$votes='0';
 		$avg_rating='0';
 	}
-
   
   return array(
       'votes' => $votes,

@@ -1931,12 +1931,28 @@ Custom Page Templates
 	text-align: left;
 }
 
-
 /* Social share popup */
 #popmake-10195 {
-	max-width: 750px;
+	max-width: 500px;
 }
 
+#popmake-10195 .mashsb-buttons {
+/*	max-width: 500px;*/
+}
+
+#popmake-10195 .mash-small span {
+	display: block;
+	line-height: 30px;
+}
+
+#popmake-10195 .mashsb-box .mashsb-buttons a.mash-small {
+	box-shadow: 9px 6px 8px 0px grey;
+	margin:10px;
+	height:40px;
+	width: 150px;
+}
+
+#popmake-10195 .mashsb-count,
 #popmake-10195 .mashsb_above_buttons,
 #popmake-10195 .mashsb_below_buttons {
 	display:none
@@ -2866,6 +2882,15 @@ li.comment a {
 	font-size: 11px;
 }
 
+/* Comments in Popup */
+
+.pum-container .comment-respond {
+	margin-top:0;
+}
+
+.pum-container h3#reply-title {
+	display:none;
+}
 
 
 /* Sidebars

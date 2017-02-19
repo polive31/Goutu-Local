@@ -172,7 +172,6 @@ function foodie_pro_includes() {
 	// Load everything in the admin root directory.
 	require_once $includes_dir . 'admin/functions.php';
 	
-
 }
 
 
@@ -226,6 +225,16 @@ function foodie_pro_add_body_class( $classes ) {
 	$classes[] = 'foodie-pro';
 	return $classes;
 }
+
+/* =================================================================*/
+/* =              LOAD CUSTOM TEMPLATES
+/* =================================================================*/
+
+$templates_dir = trailingslashit( get_stylesheet_directory() ) . 'templates/';
+
+// Load custom templates
+require_once $templates_dir . 'custom-recipe-template.php';
+require_once $templates_dir . 'comments-list.php';
 
 
 /* =================================================================*/
@@ -465,7 +474,7 @@ function enqueue_wpurp_css($js_enqueue) {
 	          ),
 		);
 	}
-	elseif ( is_page( 8428 ) ) {
+	elseif ( is_page( 8428 ) ) { // Menu page
 	//elseif ( is_singular('menu') ) {
 	  $js_enqueue=array(
 						array(
@@ -517,10 +526,8 @@ function display_all_meta() {
 }
 //add_action( 'genesis_entry_header', 'display_all_meta', 10 );
 
-
 /* Custom recipe template */
-require_once( 'custom-recipe-template.php'); 
-//require_once( 'custom-recipe-print-template.php'); 
+add_filter( 'wpurp_output_recipe', 'wpurp_custom_recipe_template', 10, 2 );
 
 
 /* Custom menu template */
@@ -822,8 +829,25 @@ function add_share_icons() {
 /* =================================================================*/
 
 /* Remove the genesis_default_list_comments function
+/* Replace comment list with one including ratings
+(doesn't work directly in the plugin, therefore put in functions
 -------------------------------------------------------*/
 remove_action( 'genesis_list_comments', 'genesis_default_list_comments' );
+add_action( 'genesis_list_comments', 'custom_star_rating_list_comments' );
+
+function custom_star_rating_list_comments() {
+	if ( is_singular( RATED_POST_TYPES ) ) {
+		$args = array(
+		    'type'          => 'comment',
+		    'avatar_size'   => 50,
+		    'callback'      => 'custom_star_rating_comment',
+		    //'per_page' 			=> '2',
+		);
+		$args = apply_filters( 'genesis_comment_list_args', $args );		
+	}
+	wp_list_comments( $args );
+}
+
 
 /* Remove comment form unless it's a comment reply page
 -------------------------------------------------------*/
@@ -844,6 +868,22 @@ function custom_comment_text() {
 	$title = __('Comments','genesis');
 	return ('<h3>' . $title . '</h3>');
 }
+
+
+/* Customize navigation links 
+------------------------------------------------------*/
+add_filter('genesis_prev_comments_link_text', 'custom_comments_prev_link_text');
+function custom_comments_prev_link_text() {
+	$text = __('Previous comments','foodiepro');
+	return $text;
+}
+
+add_filter('genesis_next_comments_link_text', 'custom_comments_next_link_text');
+function custom_comments_next_link_text() {
+	$text = __('Next comments','foodiepro');
+	return $text;
+}
+
 
 /* Disable url input box in comment form unlogged users
 ------------------------------------------------------*/

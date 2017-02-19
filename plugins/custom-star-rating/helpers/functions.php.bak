@@ -90,7 +90,7 @@ function wpurp_get_user_ip() {
 
 /* Get the user ip (from WP Beginner)
 -------------------------------------------------------------*/
-function get_the_user_ip() {
+function get_user_ip() {
 if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
 //check ip from share internet
 $ip = $_SERVER['HTTP_CLIENT_IP'];

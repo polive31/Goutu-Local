@@ -43,7 +43,6 @@ if ( true ) {
 	define( 'PLUGIN_PATH', plugins_url( '', __FILE__ ) );
 
 	require 'helpers/functions.php';
-	require 'templates/comments-list.php';
 	require 'templates/comment-form.php';
 	require 'shortcodes/shortcodes.php';
 	
@@ -145,27 +144,13 @@ function wpurp_add_default_rating( $id, $post ) {
 //**               COMMENTS LIST
 //*************************************************************************
 
-// Add our own custom list and specify our custom callback
-add_action( 'genesis_list_comments', 'custom_star_rating_list_comments' );
-function custom_star_rating_list_comments() {
-
-	if ( is_singular( RATED_POST_TYPES ) ) {
-		$args = array(
-		    'type'          => 'comment',
-		    'avatar_size'   => 54,
-		    'callback'      => 'custom_star_rating_comment',
-		);
-		$args = apply_filters( 'genesis_comment_list_args', $args );		
-	}
-	wp_list_comments( $args );
-}
 
 /* Change the comment reply link to display our own comment form */
+//add_filter('comment_reply_link', 'remove_nofollow', 420, 4);
 function remove_nofollow($link, $args, $comment, $post){
   return str_replace("rel='nofollow'", "", $link);
 }
 
-add_filter('comment_reply_link', 'remove_nofollow', 420, 4);
 
 
 ?>

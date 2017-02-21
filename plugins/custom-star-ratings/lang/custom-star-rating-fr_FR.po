@@ -1,0 +1,114 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: custom-star-rating\n"
+"POT-Creation-Date: 2017-02-12 15:27+0100\n"
+"PO-Revision-Date: 2017-02-12 15:27+0100\n"
+"Last-Translator: \n"
+"Language-Team: goutu.org <psc.olv@gmail.com>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-KeywordsList: __;_e;_x;esc_attr_e\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: helpers/functions.php:16
+msgid "Not rated"
+msgstr "Pas encore évalué"
+
+#: helpers/functions.php:18
+msgid "Really not good"
+msgstr "Vraiment pas bon"
+
+#: helpers/functions.php:20
+msgid "Not so good"
+msgstr "Pas très bon"
+
+#: helpers/functions.php:22
+msgid "Rather good"
+msgstr "Assez bon"
+
+#: helpers/functions.php:24
+msgid "Very good"
+msgstr "Très bon"
+
+#: helpers/functions.php:26
+msgid "Delicious"
+msgstr "Succulent"
+
+#: shortcodes/shortcodes.php:15
+msgid "Send"
+msgstr "Envoyer"
+
+#: shortcodes/shortcodes.php:18
+msgid "Reply Title"
+msgstr ""
+
+#: shortcodes/shortcodes.php:19
+msgid "Cancel"
+msgstr "Annuler"
+
+#: shortcodes/shortcodes.php:86
+msgid "review"
+msgstr "évaluation"
+
+#: shortcodes/shortcodes.php:86
+msgid "reviews"
+msgstr "évaluations"
+
+#: templates/comment-form.php:17
+msgid "How did you like this dish ?"
+msgstr "Appréciation du plat"
+
+#: templates/comment-form.php:21
+msgid "How clear was the recipe ?"
+msgstr "Clarté de la recette"
+
+#: templates/comment-form.php:27
+msgid "Comment"
+msgstr "Commentaire"
+
+#: templates/comments-list.php:27
+#, php-format
+msgid "%s says:"
+msgstr "De la part de %s"
+
+#: templates/comments-list.php:29
+#, php-format
+msgid "%s responds:"
+msgstr "Réponse de %s"
+
+#: templates/comments-list.php:33
+msgid "Your comment is awaiting moderation."
+msgstr "Votre commentaire est en attente de modération."
+
+#: templates/comments-list.php:39
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "Le %1$s à %2$s"
+
+#: templates/comments-list.php:58
+msgid "(Edit)"
+msgstr ""
+
+#~ msgid "<cite class=\"fn\">%s</cite> <span class=\"says\">says:</span>"
+#~ msgstr "<cite class=\"fn\">%s</cite> <span class=\"dit\">says:</span>"
+
+#~ msgid "delicious"
+#~ msgstr "délicieux"
+
+#~ msgid "very good"
+#~ msgstr "très bon"
+
+#~ msgid "rather good"
+#~ msgstr "plutôt bon"
+
+#~ msgid "not so good"
+#~ msgstr "pas très bon"
+
+#~ msgid "really not good"
+#~ msgstr "vraiment pas bon"

@@ -1,0 +1,81 @@
+/*
+Plugin Name: Custom Ratings
+File name : custom-ratings.css
+Description: Ratings via stars in comments
+*/
+
+
+/* Star rating input
+--------------------------------------------- */
+
+td.rating-title {
+	font-size:16px;
+	padding:10px 0 10px;
+}
+
+
+.form-submit {
+	display:block;
+	float:left;
+	clear:left;
+}
+
+.rating-wrapper {
+		padding:10px;
+		float:left;
+		clear:right;
+		overflow: hidden;
+		display: inline-block;
+}
+
+.rating-input {
+		display:none;
+}
+
+.rating-star:hover,
+.rating-star:hover ~ .rating-star {
+		background-position: 0 0;
+}
+
+.rating-wrapper:hover .rating-star:hover,
+.rating-wrapper:hover .rating-star:hover ~ .rating-star,
+.rating-input:checked ~ .rating-star {
+    background-position: 0 0;
+}
+
+.rating-star,
+.rating-wrapper:hover .rating-star {
+		float: right;
+		display: block;
+		width: 24px;
+		height: 24px;
+		background: url('../images/rating-star.png') -24px 0/48px 24px no-repeat;
+}
+
+
+/* Star rating output
+--------------------------------------------- */
+
+.rating {
+  font-size:18px;
+}
+
+.comment-rating .rating {
+  font-size:16px;
+}
+
+.rating-details {
+	font-size:13px;
+	color:#666;
+	padding:10px 0 0 10px;
+}
+
+i.fa.fa-star,
+i.fa.fa-star-half-o {
+	/*color:#ffa700;*/
+	color:#ff8f00;
+}
+
+i.fa.fa-star-o {
+	color:#aaa;
+}

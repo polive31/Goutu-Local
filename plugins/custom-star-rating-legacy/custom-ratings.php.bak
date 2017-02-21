@@ -43,7 +43,6 @@ if ( true ) {
 	define( 'PLUGIN_PATH', plugins_url( '', __FILE__ ) );
 
 	require 'helpers/functions.php';
-	require 'templates/comments-list.php';
 	require 'templates/comment-form.php';
 	require 'shortcodes/shortcodes.php';
 	
@@ -112,7 +111,7 @@ function update_comment_post_meta_php($comment_id,$comment_approved,$comment) {
 		
 	}
 
-	/* Update post meta for ratings table */
+	/* Update ratings table in post meta*/
 	$user_rating = array(
 		'user' 	=>$user_id,
 		'ip'		=>$user_ip,

@@ -28,19 +28,6 @@ function rating_caption($val) {
 }
 
 
-/* Add new user rating */
-function add_user_rating( $user_ratings, $new_rating_val) {
-	$user_ip = get_user_ip();
-	$nb_users = count( $user_ratings ) + 1;
-	$user_ratings[] = array(
-		'user' => $nb_users,
-		'ip'=>$user_ip,
-		'rating'=> $new_rating_val,
-	);
-	return '';
-}
-
-
 /* Calculate rating stats
 -------------------------------------------------------------*/
 function get_rating_stats( $user_ratings) {
@@ -62,7 +49,6 @@ function get_rating_stats( $user_ratings) {
 		$votes='0';
 		$avg_rating='0';
 	}
-
   
   return array(
       'votes' => $votes,
@@ -91,16 +77,20 @@ function wpurp_get_user_ip() {
 /* Get the user ip (from WP Beginner)
 -------------------------------------------------------------*/
 function get_user_ip() {
-if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
-//check ip from share internet
-$ip = $_SERVER['HTTP_CLIENT_IP'];
-} elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
-//to check ip is pass from proxy
-$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-} else {
-$ip = $_SERVER['REMOTE_ADDR'];
-}
-return apply_filters( 'wpb_get_ip', $ip );
+	if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
+		//check ip from share internet
+		$ip = $_SERVER['HTTP_CLIENT_IP'];
+	} 
+	elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+		//to check ip is pass from proxy
+		$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+	} 
+	else {
+		$ip = $_SERVER['REMOTE_ADDR'];
+	}
+	
+	return apply_filters( 'wpb_get_ip', $ip );
+
 }
 
 

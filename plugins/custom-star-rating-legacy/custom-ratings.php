@@ -1,13 +1,13 @@
 <?php
 /*
-Plugin Name: Custom Star Rating
+Plugin Name: Custom Star Rating Legacy
 Plugin URI: http://goutu.org/custom-star-rating
 Description: Ratings via stars in comments
 Version: 1.0
 Author: Pascal Olive
 Author URI: http://goutu.org
 License: GPL
-Text Domain: custom-star-rating
+Text Domain: custom-star-rating-legacy
 Domain Path: ./lang
 */
 
@@ -111,7 +111,7 @@ function update_comment_post_meta_php($comment_id,$comment_approved,$comment) {
 		
 	}
 
-	/* Update post meta for ratings table */
+	/* Update ratings table in post meta*/
 	$user_rating = array(
 		'user' 	=>$user_id,
 		'ip'		=>$user_ip,

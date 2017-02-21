@@ -28,19 +28,6 @@ function rating_caption($val) {
 }
 
 
-/* Add new user rating */
-function add_user_rating( $user_ratings, $new_rating_val) {
-	$user_ip = get_user_ip();
-	$nb_users = count( $user_ratings ) + 1;
-	$user_ratings[] = array(
-		'user' => $nb_users,
-		'ip'=>$user_ip,
-		'rating'=> $new_rating_val,
-	);
-	return '';
-}
-
-
 /* Calculate rating stats
 -------------------------------------------------------------*/
 function get_rating_stats( $user_ratings) {

@@ -771,7 +771,7 @@ function display_debug_info() {
 		PC::debug( 'In foodiepro functions.php' );		
 		$output = get_post_meta( $post_id , '' , true);
 		PC::debug(array('get_post_meta( $post_id ) : '=> $output) );
-		
+
 		//$output = get_post_meta( $post_id, 'user_ratings' );
 		//PC:debug(array('user_ratings : '=> $output) );
 

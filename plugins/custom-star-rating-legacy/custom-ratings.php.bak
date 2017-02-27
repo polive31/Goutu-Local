@@ -1,13 +1,13 @@
 <?php
 /*
-Plugin Name: Custom Star Rating
-Plugin URI: http://goutu.org/custom-star-rating
+Plugin Name: Custom Star Rating Legacy
+Plugin URI: http://goutu.org/custom-star-rating-legacy
 Description: Ratings via stars in comments
 Version: 1.0
 Author: Pascal Olive
 Author URI: http://goutu.org
 License: GPL
-Text Domain: custom-star-rating
+Text Domain: custom-star-rating-legacy
 Domain Path: ./lang
 */
 
@@ -24,16 +24,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 //if ( is_single() ) {
 
 
-const RATING = array( 
+const RATING_CATEGORIES = array( 
+	array (
 		'id'=>'rating',
+		'weight' => 2,
 		'title'=>'Overall rating',
 		'question'=>'How did you like this dish ?',
-);
-
-const CLARITY = array( 
+	),
+	array( 
 		'id'=>'clarity',
+		'weight' => 1,
 		'title'=>'Clarity',
 		'question'=>'How clear was the recipe ?',
+	);	
 );
 		
 const RATED_POST_TYPES = array('recipe');
@@ -77,8 +80,10 @@ function update_comment_post_meta_php($comment_id,$comment_approved,$comment) {
 	PC::debug('In comment post !');
 	$post_id = $comment['comment_post_ID'];
 
-	if ( ! isset( $_POST[ 'rating-' . '1' ] ) ) return '';
-	$rating = $_POST[ 'rating-' . '1' ];
+	foreach (RATING_CATEGORIES as $id => $rating_cat) {
+		if ( ! isset( $_POST[ 'rating-' . $id ] ) ) 
+			$rating[$id] = $_POST[ 'rating-' . $id ];
+	}
 	PC::debug(array('Rating :'=>$rating));
 	
 	/* COMMENT META UPDATE

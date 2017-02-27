@@ -8,19 +8,33 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /* Custom Comment Form with PHP (called from shortcodes.php)
 ------------------------------------------------------------ */
-function output_evaluation_form_html_php() {
-
+public function output_evaluation_form_html_php() {
+	
 	ob_start();?>
 	
 	<table class="ratings-table">
+		
+	<?php
+	foreach ($this->ratingCats as $id->$rating_cat) {?>
+	
 	<tr>
+	<td class="rating-title"><?php echo __($rating_cat['question'],'custom-star-rating');?></td>
+	<td align="left"><?php echo $this -> output_rating_form( $id );?></td>
+	</tr>
+	
+	<?php
+	}?>	
+
+	<!-- <tr>
 	<td class="rating-title"><?php echo __('How did you like this dish ?','custom-star-rating');?></td>
 	<td align="left"><?php echo output_rating_form( '1' );?></td>
 	</tr>
+	
 	<tr>
 	<td class="rating-title"><?php echo __('How clear was the recipe ?','custom-star-rating');?></td>
 	<td align="left"><?php echo output_rating_form( '2' );?></td>
-	</tr>
+	</tr> -->
+	
 	</table>
 	
 	<div class="comment-reply">
@@ -36,7 +50,7 @@ function output_evaluation_form_html_php() {
 
 }
 
-function output_rating_form( $id ) {
+public function output_rating_form( $id ) {
 	
 	$html= '<div class="rating-wrapper" id="star-rating-form">';
 	$html.='<input type="radio" class="rating-input" id="rating-input-' . $id . '-5" name="rating-' . $id . '" value="5"/>';

@@ -230,14 +230,11 @@ function foodie_pro_add_body_class( $classes ) {
 /* =              LOAD CUSTOM TEMPLATES
 /* =================================================================*/
 
+$templates_dir = trailingslashit( get_stylesheet_directory() ) . 'templates/';
 
-//add_action( 'genesis_setup', 'load_custom_templates', 5 );
-//function load_custom_templates() {
-	$templates_dir = trailingslashit( get_stylesheet_directory() ) . 'templates/';
-	// Load custom templates
-	require_once $templates_dir . 'custom-recipe-template.php';
-	require_once $templates_dir . 'comments-list.php';
-//}
+// Load custom templates
+require_once $templates_dir . 'custom-recipe-template.php';
+require_once $templates_dir . 'comments-list.php';
 
 
 /* =================================================================*/
@@ -775,6 +772,7 @@ function display_debug_info() {
 		$output = get_post_meta( $post_id , '' , true);
 		PC::debug(array('get_post_meta( $post_id ) : '=> $output) );
 		
+		PC::debug(array('RATING CATEGORIES : '=> $CSR->get_cats() ) );
 		//$output = get_post_meta( $post_id, 'user_ratings' );
 		//PC:debug(array('user_ratings : '=> $output) );
 

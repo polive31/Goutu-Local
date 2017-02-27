@@ -5,11 +5,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+class CustomStarRatingsShortcodes extends CustomStarRatings {
+	
+	public __construct() {
+		require '../templates/comment-form.php';
+		add_shortcode( 'comment-rating-form', array($this,'display_comment_form_with_rating') );
+		add_shortcode( 'display-star-rating', array($this,'display_star_rating_shortcode') );
+	}
 
 /* Comment form with rating input shortcode
 -----------------------------------------------*/
-add_shortcode( 'comment-rating-form', 'display_comment_form_with_rating' );
-function display_comment_form_with_rating() {
+public function display_comment_form_with_rating() {
 	$args = array (
 		'title_reply' => '', //Default: __( 'Leave a Reply’ )
 		'label_submit' => __( 'Send', 'custom-star-rating' ), //default=’Post Comment’
@@ -33,8 +39,7 @@ function display_comment_form_with_rating() {
 
 /* Output post rating shortcode 
 ---------------------------------------------*/
-add_shortcode( 'display-star-rating', 'display_star_rating_shortcode' );
-function display_star_rating_shortcode($atts) {
+public function display_star_rating_shortcode($atts) {
 	$a = shortcode_atts( array(
 		'source' => 'post', //comment
 		'type' => 'stars', //full
@@ -77,7 +82,7 @@ function display_star_rating_shortcode($atts) {
 	//PC:debug(array('votes : '=>$votes,'rating : '=>$rating,'stars : '=>$stars,'half : '=>$half,));	
 
 	if ( ! ( $comment_rating && $rating=='0' ) ) {
-		$html = '<span class="rating" title="' . $rating . ' : ' . rating_caption($rating) . '">';
+		$html .= '<span class="rating" title="' . $rating . ' : ' . rating_caption($rating) . '">';
 		$html .= output_stars($stars, $half);
 		$html .= '</span>';
 	}
@@ -94,4 +99,18 @@ function display_star_rating_shortcode($atts) {
 }
 
 
+
+}
+
+
 ?>
+
+
+
+
+
+
+
+
+
+

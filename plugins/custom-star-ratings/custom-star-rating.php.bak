@@ -41,7 +41,7 @@ function star_ratings_load_class( $class, $create_object = FALSE ) {
 
     echo $base;
     
-		$file = str_replace( '_' , '-' , strtolower( $class ) ) . 'php';    
+		$file = str_replace( '_' , '-' , strtolower( $class ) ) . '.php';    
     //! class_exists( $class ) && require "$base/$file.php";
     ! class_exists( $class ) && require "includes/" . $file;
     return $create_object ? new $class : TRUE;

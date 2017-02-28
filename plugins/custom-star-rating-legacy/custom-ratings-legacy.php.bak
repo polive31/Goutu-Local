@@ -36,7 +36,7 @@ require 'includes/CustomStarRatings.php';
 require 'includes/CustomStarRatingsPostsComments.php';
 require 'includes/CustomStarRatingsShortcodes.php';
 
-//$CSR = new CustomStarRatings();
+$CSR = new CustomStarRatings();
 $CSRPC = new CustomStarRatingsPostsComments();
 $CSRS = new CustomStarRatingsShortcodes();
 	

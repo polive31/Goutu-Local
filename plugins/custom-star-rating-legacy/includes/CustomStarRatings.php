@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class CustomStarRatings {
 	
-	public $ratingCats;
+	const RATED_POST_TYPES = array('recipe');
 
 	const RATING_CATEGORIES = array( 
 		array (
@@ -24,12 +24,14 @@ class CustomStarRatings {
 		),
 	);
 	
+	public $ratingCats;
+	public $ratedPostsTypes;
+
 	public function __construct() {
 		$this->ratingCats = self::RATING_CATEGORIES;
+		$this->ratedPostsTypes = self::RATED_POST_TYPES;
 		add_action( 'genesis_before_content', array($this,'CSR_display_debug_info') );
-	
 	}
-	
 	
 		/* Output debug information 
 		--------------------------------------------------------------*/	

@@ -21,15 +21,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 //**               INITIALIZATION
 //*************************************************************************
 
-//if ( is_single() ) {
-
-
-const RATED_POST_TYPES = array('recipe');
-
-//*************************************************************************
-//**               INITIALIZATION
-//*************************************************************************
-
 define( 'PLUGIN_PATH', plugins_url( '', __FILE__ ) );
 
 require 'includes/CustomStarRatings.php';

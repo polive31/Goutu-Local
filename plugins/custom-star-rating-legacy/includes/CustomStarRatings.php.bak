@@ -7,7 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class CustomStarRatings {
 	
-	public $ratingCats = array( 
+	const RATED_POST_TYPES = array('recipe');
+
+	const RATING_CATEGORIES = array( 
 		array (
 			'id'=>'rating',
 			'weight' => 2,
@@ -22,24 +24,13 @@ class CustomStarRatings {
 		),
 	);
 	
+	public $ratingCats;
+	public $ratedPostsTypes;
+
 	public function __construct() {
-		//$this->ratingCats = self::RATING_CATEGORIES;
-	
-		$this->ratingCats = array( 
-		array (
-			'id'=>'rating',
-			'weight' => 2,
-			'title'=>'Overall rating',
-			'question'=>'How did you like this dish ?',
-		),
-		array( 
-			'id'=>'clarity',
-			'weight' => 1,
-			'title'=>'Clarity',
-			'question'=>'How clear was the recipe ?',
-		),
-	);
-	add_action( 'genesis_before_content', array($this,'CSR_display_debug_info') );
+		$this->ratingCats = self::RATING_CATEGORIES;
+		$this->ratedPostsTypes = self::RATED_POST_TYPES;
+		add_action( 'genesis_before_content', array($this,'CSR_display_debug_info') );
 	
 	}
 	

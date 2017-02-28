@@ -36,9 +36,9 @@ require 'includes/CustomStarRatings.php';
 require 'includes/CustomStarRatingsPostsComments.php';
 require 'includes/CustomStarRatingsShortcodes.php';
 
-$CSR = new CustomStarRatings();
+//$CSR = new CustomStarRatings();
 $CSRPC = new CustomStarRatingsPostsComments();
-//$CSRS = new CustomStarRatingsShortcodes();
+$CSRS = new CustomStarRatingsShortcodes();
 	
 /* Chargement des feuilles de style custom et polices */
 function load_custom_rating_style_sheet() {

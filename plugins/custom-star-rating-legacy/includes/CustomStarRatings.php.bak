@@ -7,9 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class CustomStarRatings {
 	
-	protected $ratingCats;
-
-	const RATING_CATEGORIES = array( 
+	public $ratingCats = array( 
 		array (
 			'id'=>'rating',
 			'weight' => 2,
@@ -41,11 +39,24 @@ class CustomStarRatings {
 			'question'=>'How clear was the recipe ?',
 		),
 	);
+	add_action( 'genesis_before_content', array($this,'CSR_display_debug_info') );
 	
 	}
 	
+	
+		/* Output debug information 
+		--------------------------------------------------------------*/	
+	public function CSR_display_debug_info() {
+		//if ( is_single() ) {	
+			//echo '<pre>' . print_r( $this->get_cats(), false ) . '</pre>';	
+			PC::debug(array('In Custom Rating Main Class !' ) );
+			PC::debug(array('ratingCats : '=> $this->ratingCats ) );
+			PC::debug(array('get_cats() : '=> $this->get_cats('') ) );
+		//}
+	}	
+	
 	public function get_cats( $id ) {
-		if ( ! isset( $id ) ) return $this->ratingCats;
+		if ( empty( $id ) ) return $this->ratingCats;
 		if ( isset($this->ratingCats[$id]) ) return $this->ratingCats[$id];
 		return false;
 	}

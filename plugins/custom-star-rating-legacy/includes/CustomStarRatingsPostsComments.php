@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CustomStarRatingsPostsComments extends CustomStarRatings {
 	
 	public function __construct() {
+		parent::__construct();
 		add_action( 'genesis_before_content', array($this,'display_debug_info') );
 		add_action( 'comment_post',array($this,'update_comment_post_meta_php',10,3) );
 		add_action( 'save_post', array($this,'wpurp_add_default_rating', 10, 2 ) );

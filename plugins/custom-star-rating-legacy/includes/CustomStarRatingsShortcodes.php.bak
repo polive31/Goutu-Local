@@ -8,6 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CustomStarRatingsShortcodes extends CustomStarRatings {
 	
 	public function __construct() {
+		parent::__construct();
 		add_shortcode( 'comment-rating-form', array($this,'display_comment_form_with_rating') );
 		add_shortcode( 'display-star-rating', array($this,'display_star_rating_shortcode') );
 	}
@@ -107,25 +108,15 @@ public function output_evaluation_form_html_php() {
 	<table class="ratings-table">
 		
 	<?php
-	foreach ($this->ratingCats as $id->$rating_cat) {?>
+	foreach ($this->ratingCats as $id => $cat) {?>
 	
 	<tr>
-	<td class="rating-title"><?php echo __($rating_cat['question'],'custom-star-rating');?></td>
+	<td class="rating-title"><?php echo __($cat['question'],'custom-star-rating');?></td>
 	<td align="left"><?php echo $this -> output_rating_form( $id );?></td>
 	</tr>
 	
 	<?php
 	}?>	
-
-	<!-- <tr>
-	<td class="rating-title"><?php echo __('How did you like this dish ?','custom-star-rating');?></td>
-	<td align="left"><?php echo output_rating_form( '1' );?></td>
-	</tr>
-	
-	<tr>
-	<td class="rating-title"><?php echo __('How clear was the recipe ?','custom-star-rating');?></td>
-	<td align="left"><?php echo output_rating_form( '2' );?></td>
-	</tr> -->
 	
 	</table>
 	

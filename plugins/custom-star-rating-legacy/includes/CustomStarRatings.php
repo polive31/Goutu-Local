@@ -25,27 +25,25 @@ class CustomStarRatings {
 	);
 	
 	public function __construct() {
-		//$this->ratingCats = self::RATING_CATEGORIES;
-	
-		$this->ratingCats = array( 
-		array (
-			'id'=>'rating',
-			'weight' => 2,
-			'title'=>'Overall rating',
-			'question'=>'How did you like this dish ?',
-		),
-		array( 
-			'id'=>'clarity',
-			'weight' => 1,
-			'title'=>'Clarity',
-			'question'=>'How clear was the recipe ?',
-		),
-	);
+		$this->ratingCats = self::RATING_CATEGORIES;
+		add_action( 'genesis_before_content', array($this,'CSR_display_debug_info') );
 	
 	}
 	
+	
+		/* Output debug information 
+		--------------------------------------------------------------*/	
+	public function CSR_display_debug_info() {
+		//if ( is_single() ) {	
+			//echo '<pre>' . print_r( $this->get_cats(), false ) . '</pre>';	
+			PC::debug(array('In Custom Rating Main Class !' ) );
+			PC::debug(array('ratingCats : '=> $this->ratingCats ) );
+			PC::debug(array('get_cats() : '=> $this->get_cats('') ) );
+		//}
+	}	
+	
 	public function get_cats( $id ) {
-		if ( ! isset( $id ) ) return $this->ratingCats;
+		if ( empty( $id ) ) return $this->ratingCats;
 		if ( isset($this->ratingCats[$id]) ) return $this->ratingCats[$id];
 		return false;
 	}

@@ -20,7 +20,7 @@ class CustomStarRatingsPostsComments extends CustomStarRatings {
 		//if ( is_single() ) {	
 			//echo '<pre>' . print_r( $this->get_cats(), false ) . '</pre>';	
 			PC::debug(array('In Custom Rating Post Comments !' ) );
-			PC::debug(array('get_cats() : '=> $this->get_cats() ) );
+			PC::debug(array('get_cats() : '=> $this->get_cats('') ) );
 			PC::debug(array('ratingCats : '=> $this->ratingCats ) );
 		//}
 	}

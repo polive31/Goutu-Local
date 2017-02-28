@@ -69,7 +69,6 @@ a.wpurp-recipe-add-to-shopping-list:before {
 }
 
 a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
-	color:rgba(255, 255, 255, 0.1);
 	/*content:"\f07a"; /* fa-cart */ 
   /*color: #af4a2b;
   color: #b94f02;
@@ -236,6 +235,11 @@ li.wpurp-recipe-ingredient {
 
 li.wpurp-recipe-ingredient a {
 	text-decoration: none;
+	color:#1a1a1a;
+}
+
+span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
+	color:#555555;
 }
 
 /* Instructions */

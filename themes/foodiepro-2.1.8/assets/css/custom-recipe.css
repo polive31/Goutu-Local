@@ -235,6 +235,15 @@ li.wpurp-recipe-ingredient {
 
 li.wpurp-recipe-ingredient a {
 	text-decoration: none;
+	color:#1a1a1a;
+}
+
+li.wpurp-recipe-ingredient a:hover {
+	text-decoration: underline;
+}
+	
+span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
+	color:#555555;
 }
 
 /* Instructions */

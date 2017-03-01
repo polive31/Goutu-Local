@@ -1,7 +1,5 @@
 <?php
 
-add_filter( 'wpurp_output_recipe', 'wpurp_custom_recipe_template', 10, 2 );
-
 function wpurp_custom_recipe_template( $content, $recipe ) {
 
 	ob_start();

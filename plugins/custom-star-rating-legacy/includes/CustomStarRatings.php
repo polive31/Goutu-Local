@@ -51,48 +51,47 @@ class CustomStarRatings {
 	}
 
 
-/* Rating caption
-------------------------------------------------------------*/
-public function rating_caption($val) {
-	//$val = intval($rating_val);
-	switch ($val) {
-		case "0":
-			return __('Not rated','custom-star-rating');
-		case $val <= "1":
-			return __('Really not good','custom-star-rating');
-		case $val <= "2":
-			return __('Not so good','custom-star-rating');
-		case $val <= "3":
-			return __('Rather good','custom-star-rating');
-		case $val <= "4":
-			return __('Very good','custom-star-rating');
-		case $val <= "5":
-			return __('Delicious','custom-star-rating');
+	/* Rating caption
+	------------------------------------------------------------*/
+	public function rating_caption($val) {
+		//$val = intval($rating_val);
+		switch ($val) {
+			case "0":
+				return __('Not rated','custom-star-rating');
+			case $val <= "1":
+				return __('Really not good','custom-star-rating');
+			case $val <= "2":
+				return __('Not so good','custom-star-rating');
+			case $val <= "3":
+				return __('Rather good','custom-star-rating');
+			case $val <= "4":
+				return __('Very good','custom-star-rating');
+			case $val <= "5":
+				return __('Delicious','custom-star-rating');
+		}
 	}
-}
 
 
 /* Calculate rating stats
 -------------------------------------------------------------*/
 public function get_rating_stats( $user_ratings) {
+	
 	if ( ! empty($user_ratings) ) {
-  	$votes = count( $user_ratings );
-  	$total = 0;
-  	$avg_rating = 0;
 
-  	foreach( $user_ratings as $user_rating ) {
-  		$total += $user_rating['rating'];
+		foreach ( $this->RatingCats as $id=>$cat)
+			$cat_ratings = $user_ratings[$cat['name']];
+  		$total = array_sum($cat_ratings);
+  		$votes = array_sum( array_filter( $cat_ratings ) );
+		  if( $votes !== 0 ) {
+		    $avg_rating = $total / $votes; // TODO Just an average for now, implement some more functions later
+		    $avg_rating = round( $avg_rating, 1 );
+		  }
+		  else {
+				$votes='0';
+				$avg_rating='0';
+			}
+		    	
   	}
-  
-	  if( $votes !== 0 ) {
-	    $avg_rating = $total / $votes; // TODO Just an average for now, implement some more functions later
-	    $avg_rating = round( $avg_rating, 1 );
-	  }  	
-	}
-	else {
-		$votes='0';
-		$avg_rating='0';
-	}
   
   return array(
       'votes' => $votes,

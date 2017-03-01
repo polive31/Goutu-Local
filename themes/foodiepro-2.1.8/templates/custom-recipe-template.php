@@ -175,7 +175,7 @@ function custom_ingredients_list( $recipe, $args ) {
     $out = '';
     $previous_group = '';
     $vocals = array('a','e','i','o','u');
-    $exceptions = array('huile');
+    $exceptions = array('huile','herbes');
     
     $out .= '<ul class="wpurp-recipe-ingredients">';
     foreach( $recipe->ingredients() as $ingredient ) {

@@ -74,31 +74,23 @@ class CustomStarRatings {
 
 /* Calculate rating stats
 -------------------------------------------------------------*/
-public function get_rating_stats( $user_ratings) {
-	
+public function get_rating_stats( $user_ratings ) {
+	$votes='';
+	$avg_rating='';	
 	if ( ! empty($user_ratings) ) {
+		$total = array_sum( $user_ratings );
+		$votes = count( array_filter( $user_ratings ) );
 
-		foreach ( $this->RatingCats as $id=>$cat)
-			$cat_ratings = $user_ratings[$cat['name']];
-  		$total = array_sum($cat_ratings);
-  		$votes = array_sum( array_filter( $cat_ratings ) );
-		  if( $votes !== 0 ) {
-		    $avg_rating = $total / $votes; // TODO Just an average for now, implement some more functions later
-		    $avg_rating = round( $avg_rating, 1 );
-		  }
-		  else {
-				$votes='0';
-				$avg_rating='0';
-			}
-		    	
-  	}
-  
+	  if( $votes !== 0 ) {
+	    $avg_rating = $total / $votes; // TODO Just an average for now, implement some more functions later
+	    $avg_rating = round( $avg_rating, 1 );
+	  } 	
+  }
   return array(
-      'votes' => $votes,
-      'rating' => $avg_rating,
+	  'votes' => $votes,
+	  'rating' => $avg_rating,
   );
 }
-
 
 
 /* Get the user ip (from WP Beginner)

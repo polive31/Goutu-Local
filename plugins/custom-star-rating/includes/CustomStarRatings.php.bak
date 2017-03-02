@@ -28,14 +28,23 @@ class CustomStarRatings {
 	public $ratedPostsTypes;
 
 	public function __construct() {
-		$this->ratingCats = self::RATING_CATEGORIES;
+		
+		foreach (self::RATING_CATEGORIES as $id=>$cat) {
+			$this->ratingCats[$id] = array(
+				'id' => $cat['id'],
+				'weight' => $cat['weight'],
+				'title' => __( $cat['title'] , 'custom-star-rating' ),
+				'question' => __( $cat['question'] , 'custom-star-rating' ),
+			);
+		}
+		//$this->ratingCats = self::RATING_CATEGORIES;
 		$this->ratedPostsTypes = self::RATED_POST_TYPES;
-		add_action( 'genesis_before_content', array($this,'CSR_display_debug_info') );
+		add_action( 'genesis_before_content', array($this,'display_debug_info') );
 	}
 	
 		/* Output debug information 
 		--------------------------------------------------------------*/	
-	public function CSR_display_debug_info() {
+	public function display_debug_info() {
 		//if ( is_single() ) {	
 			//echo '<pre>' . print_r( $this->get_cats(), false ) . '</pre>';	
 			PC::debug(array('In Custom Rating Main Class !' ) );

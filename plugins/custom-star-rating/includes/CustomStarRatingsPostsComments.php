@@ -57,8 +57,8 @@ class CustomStarRatingsPostsComments extends CustomStarRatings {
 			if ( isset( $_POST[ 'rating-' . $id ] ) )  {
 				$rating_form_value = $_POST[ 'rating-' . $id ];
 				//otherwise let the cell empty, important for stats function
-				add_comment_meta($comment_id, 'user_rating_' . $cat['name'], $rating_form_value );
-				$new_rating[ $cat['name'] ] = $rating_form_value;	
+				add_comment_meta($comment_id, 'user_rating_' . $cat['id'], $rating_form_value );
+				$new_rating[ $cat['id'] ] = $rating_form_value;	
 			}
 		}
 		PC::debug(array('Rating :'=>$rating));
@@ -116,8 +116,8 @@ class CustomStarRatingsPostsComments extends CustomStarRatings {
 						'votes' => number of votes
 						)
 			------------------------------------------------------------*/										
-			$stats = $this->get_rating_stats( $user_ratings[ $cat['name'] ] );
-			update_post_meta( $post_id, 'user_rating_' . $cat['name'], $stats['rating'] );
+			$stats = $this->get_rating_stats( $user_ratings[ $cat['id'] ] );
+			update_post_meta( $post_id, 'user_rating_' . $cat['id'], $stats['rating'] );
 			$global_rating += $stats['rating']*$cat['weight'];	
 			$global_count += $cat['weight'];	
 		}

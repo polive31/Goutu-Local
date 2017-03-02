@@ -1,13 +1,13 @@
 <?php
 /*
-Plugin Name: Custom Star Rating Legacy
-Plugin URI: http://goutu.org/custom-star-rating-legacy
+Plugin Name: Custom Star Ratings
+Plugin URI: http://goutu.org/custom-star-rating
 Description: Ratings via stars in comments
 Version: 1.0
 Author: Pascal Olive
 Author URI: http://goutu.org
 License: GPL
-Text Domain: custom-star-rating-legacy
+Text Domain: custom-star-rating
 Domain Path: ./lang
 */
 

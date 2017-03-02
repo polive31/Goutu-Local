@@ -34,7 +34,7 @@ class CustomStarRatingsPostsComments extends CustomStarRatings {
 		
 		$new_rating = $this->update_comment_meta( $comment_id );
 		$post_id = $comment['comment_post_ID'];									
-		$user_ratings = $this->update_post_meta_user_ratings( $post_id, $new_rating)
+		$user_ratings = $this->update_post_meta_user_ratings( $post_id, $new_rating);
 		$this->update_post_meta_user_rating( $post_id, $user_ratings );
 
 	}
@@ -57,8 +57,8 @@ class CustomStarRatingsPostsComments extends CustomStarRatings {
 			if ( isset( $_POST[ 'rating-' . $id ] ) )  {
 				$rating_form_value = $_POST[ 'rating-' . $id ];
 				//otherwise let the cell empty, important for stats function
-				add_comment_meta($comment_id, 'user_rating_' . $cat['name'], $rating_form_value );
-				$new_rating[ $cat['name'] ] = $rating_form_value;	
+				add_comment_meta($comment_id, 'user_rating_' . $cat['id'], $rating_form_value );
+				$new_rating[ $cat['id'] ] = $rating_form_value;	
 			}
 		}
 		PC::debug(array('Rating :'=>$rating));

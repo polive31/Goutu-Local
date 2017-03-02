@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name: Custom Star Ratings
-Plugin URI: http://goutu.org/custom-star-ratings
+Plugin Name: Custom Star Ratings Back
+Plugin URI: http://goutu.org/custom-star-ratings-back
 Description: Ratings via stars in comments
 Version: 1.0
 Author: Pascal Olive
@@ -39,6 +39,7 @@ function star_ratings_load_class( $class, $create_object = FALSE ) {
     static $base = FALSE;
     ! $base && $base = plugins_url( 'includes', __FILE__ );
 
+    echo 'Bienvenue dans le nouveau custom star rating pluging CLASS-BASED';
     echo $base;
     
 		$file = str_replace( '_' , '-' , strtolower( $class ) ) . '.php';    

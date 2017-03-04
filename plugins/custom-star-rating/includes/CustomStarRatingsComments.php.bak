@@ -6,6 +6,33 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+class CustomStarRatingsCommentsList extends CustomStarRatings {
+	
+	public function __construct() {
+		parent::__construct();
+		remove_action( 'genesis_list_comments', 'genesis_default_list_comments' );
+		add_action( 'genesis_list_comments', 'custom_star_rating_list_comments' );
+	}
+	
+	
+		/* Remove the genesis_default_list_comments function
+	/* Replace comment list with one including ratings
+	(doesn't work directly in the plugin, therefore put in functions
+	-------------------------------------------------------*/
+
+	function custom_star_rating_list_comments() {
+		if ( is_singular( self::RATED_POST_TYPES ) ) {
+			$args = array(
+			    'type'          => 'comment',
+			    'avatar_size'   => 50,
+			    'callback'      => 'custom_star_rating_comment',
+			    //'per_page' 			=> '2',
+			);
+			$args = apply_filters( 'genesis_comment_list_args', $args );		
+		}
+		wp_list_comments( $args );
+	}
+
 
 
 /* Custom Comment Template */

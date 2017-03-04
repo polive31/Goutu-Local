@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /* Custom Comment Form with PHP (called from shortcodes.php)
 ------------------------------------------------------------ */
-public function output_evaluation_form_html_php() {
+public function output_evaluation_form_html() {
 	
 	ob_start();?>
 	
@@ -25,16 +25,6 @@ public function output_evaluation_form_html_php() {
 	<?php
 	}?>	
 
-	<!-- <tr>
-	<td class="rating-title"><?php echo __('How did you like this dish ?','custom-star-rating');?></td>
-	<td align="left"><?php echo output_rating_form( '1' );?></td>
-	</tr>
-	
-	<tr>
-	<td class="rating-title"><?php echo __('How clear was the recipe ?','custom-star-rating');?></td>
-	<td align="left"><?php echo output_rating_form( '2' );?></td>
-	</tr> -->
-	
 	</table>
 	
 	<div class="comment-reply">

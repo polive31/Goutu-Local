@@ -6,13 +6,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-class CustomStarRatingsPostsComments extends CustomStarRatings {
+class CustomStarRatingsMetaUpdate extends CustomStarRatings {
 	
 	public function __construct() {
 		parent::__construct();
 		add_action( 'genesis_before_content', array($this,'display_debug_info') );
 		add_action( 'comment_post',array($this,'update_comment_post_meta',10,3) );
-		add_action( 'save_post', array($this,'csr_add_default_rating', 10, 2 ) );
+		add_action( 'save_post', array($this,'add_default_rating', 10, 2 ) );
 	}
 	
 		/* Output debug information 
@@ -39,16 +39,18 @@ class CustomStarRatingsPostsComments extends CustomStarRatings {
 
 	}
 
-		/* Add ratings default value on post save 
-		-------------------------------------------------------------*/ 
-
-	public function csr_add_default_rating( $id, $post ) {
+	/* Add ratings default value on post save 
+	-------------------------------------------------------------*/ 
+	public function add_default_rating( $id, $post ) {
 	 	if ( ! wp_is_post_revision($post->ID) ) {
 	 		//PC:debug('Default rating add');
 			$this->update_post_meta($post->ID, 'user_rating', '0');
 	 	}
 	}
-	
+
+
+	/* Update comment meta
+	-------------------------------------------------------------*/ 	
 	public function update_comment_meta( $comment_id ) {
 		
 		$new_rating = '';
@@ -67,6 +69,9 @@ class CustomStarRatingsPostsComments extends CustomStarRatings {
 	
 	}
 	
+	
+	/* Update "user_ratings" post meta
+	-------------------------------------------------------------*/ 
 	public function update_post_meta_user_ratings( $post_id, $new_rating ) {
 		/* User Ratings table structure
 		------------------------------------------------------------										
@@ -105,7 +110,8 @@ class CustomStarRatingsPostsComments extends CustomStarRatings {
 		return $user_ratings;
 	}
 	
-	
+	/* Update "user_rating" post meta for each rating category
+	-------------------------------------------------------------*/ 	
 	public function update_post_meta_user_rating( $post_id, $user_ratings ) {
 		
 		$global_rating=0;
@@ -123,5 +129,6 @@ class CustomStarRatingsPostsComments extends CustomStarRatings {
 		}
 		update_post_meta( $post_id, 'user_rating_global', $global_rating/$global_count );		
 	}
+
 
 }

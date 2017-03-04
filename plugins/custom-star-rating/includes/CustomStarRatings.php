@@ -7,25 +7,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class CustomStarRatings {
 	
-	const RATED_POST_TYPES = array('recipe');
-
-	const RATING_CATEGORIES = array( 
+	const RATED_POST_TYPES = array( 'recipe' );
+	
+	public $ratedPostTypes;
+	const RATING_CATEGORIES  = array( 
 		array (
 			'id'=>'rating',
 			'weight' => 2,
-			'title'=>'Overall rating',
-			'question'=>'How did you like this dish ?',
+			'title'=> 'Dish',
+			'question'=> 'How did you like this dish ?',
 		),
 		array( 
 			'id'=>'clarity',
 			'weight' => 1,
-			'title'=>'Clarity',
-			'question'=>'How clear was the recipe ?',
+			'title'=> 'Clarity',
+			'question'=> 'How clear was the recipe ?',
 		),
 	);
-	
-	public $ratingCats;
-	public $ratedPostsTypes;
 
 	public function __construct() {
 		
@@ -37,20 +35,16 @@ class CustomStarRatings {
 				'question' => __( $cat['question'], 'custom-star-rating' ),
 			);
 		}
-		//$this->ratingCats = self::RATING_CATEGORIES;
-		$this->ratedPostsTypes = self::RATED_POST_TYPES;
-		add_action( 'genesis_before_content', array($this,'display_debug_info') );
+		$this->ratedPostTypes = self::RATED_POST_TYPES;
 	}
 	
 		/* Output debug information 
 		--------------------------------------------------------------*/	
 	public function display_debug_info() {
-		//if ( is_single() ) {	
-			//echo '<pre>' . print_r( $this->get_cats(), false ) . '</pre>';	
-			PC::debug(array('In Custom Rating Main Class !' ) );
-			PC::debug(array('ratingCats : '=> $this->ratingCats ) );
-			PC::debug(array('get_cats() : '=> $this->get_cats('') ) );
-		//}
+		PC::debug(array('In Custom Rating Main Class !' ) );
+		PC::debug(array('Rated types: '=> $this->ratedPostTypes ) );
+		PC::debug(array('ratingCats : '=> $this->ratingCats ) );
+		PC::debug(array('get_cats() : '=> $this->get_cats('') ) );
 	}	
 	
 	public function get_cats( $id ) {

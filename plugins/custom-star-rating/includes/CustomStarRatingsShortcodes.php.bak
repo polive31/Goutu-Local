@@ -19,7 +19,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatings {
 		$args = array (
 			'title_reply' => '', //Default: __( 'Leave a Reply’ )
 			'label_submit' => __( 'Send', 'custom-star-rating' ), //default=’Post Comment’
-			'comment_field' => $this->output_evaluation_form_html_php(), 
+			'comment_field' => $this->output_evaluation_form(), 
 			'logged_in_as' => '', //Default: __( 'Leave a Reply to %s’ )
 			'title_reply_to' => __( 'Reply Title', 'custom-star-rating' ), //Default: __( 'Leave a Reply to %s’ )
 			'cancel_reply_link' => __( 'Cancel', 'custom-star-rating' ), //Default: __( ‘Cancel reply’ )
@@ -44,65 +44,83 @@ class CustomStarRatingsShortcodes extends CustomStarRatings {
 		$a = shortcode_atts( array(
 			'source' => 'post', //comment
 			'type' => 'stars', //full
+			'rating_cats' => 'all',  //Default: "id1 id2..."
 		), $atts );
-		
-		$html='';
 
 		PC::debug('In display-star-rating shortcode');
 		$full_display=!($a['type']=='stars');
 		$comment_rating = ( $a['source'] == 'comment');
 		
 		if ( $comment_rating ) {
-			$id = get_comment_ID();
+			$comment_id = get_comment_ID();
 			//PC::debug( array('get comment ID'=>$id,) );
-			$rating = get_comment_meta($id, 'user_rating', true);
-			//PC::debug( array('rating from comment'=>$rating,) );
-			$rating = $rating==''?'0':$rating;
-			$stars = $rating;
-			$half = false;
+			foreach ($this->ratingCats as $id=>$cat) {
+				$rating[$id] = get_comment_meta($comment_id, 'user_rating_' . $cat['id'], true);
+				//PC::debug( array('rating from comment'=>$rating,) );
+			}
 		}
 		
 		else { // Rating in post meta
-			$id = get_the_id();
-			if ($full_display) {
-				$ratings = get_post_meta( $id , 'user_ratings' );
+			$post_id = get_the_id();
+			if ($full_display) { // displays number of votes
+				$ratings = get_post_meta( $post_id , 'user_ratings' );
 				PC::debug(array('$ratings: '=>$ratings));
-				$stats = $this->get_rating_stats( $ratings );
-				$rating = $stats['rating'];
-				$votes = $stats['votes'];
+				foreach ($this->ratingCats as $id=>$cat) {
+					$stats = $this->get_rating_stats( $ratings[ $cat['id'] ] );
+					$rating[$id] = $stats['rating'];
+					$votes[$id] = $stats['votes'];
+				}	
 			}
-			else {
-				$rating = get_post_meta( $id , 'user_rating', true );
+			else { // displays only stars
+				foreach ($this->ratingCats as $id=>$cat) {
+					$rating[$id] = get_post_meta( $post_id , 'user_rating_' . $cat['id'], true );
+				}
 			}	
-			//PC::debug(array('$rating from shortcode : '=>$rating));
-			$stars = floor($rating);
-			$half = ($rating-$stars) >= 0.5;
-			PC::debug(array('$half : '=>$half));
 		}
 
+		ob_start();
+	
 		//PC:debug(array('votes : '=>$votes,'rating : '=>$rating,'stars : '=>$stars,'half : '=>$half,));	
-
-		if ( ! ( $comment_rating && $rating=='0' ) ) {
-			$html .= '<span class="rating" title="' . $rating . ' : ' . $this->rating_caption($rating) . '">';
-			$html .= $this->output_stars($stars, $half);
-			$html .= '</span>';
-		}
-
-		if ( $full_display && $votes!='0') {
-			$rating_plural=$votes==1?__('review','foodiepro'):__('reviews','foodiepro'); 
-			$html .= '<span class="rating-details">(' . $votes . ' ' . $rating_plural . ')</span>'; //. ' | ' . __('Rate this recipe','foodiepro') . 
-		}
+		?>
+		<table class="ratings-table">
+		<?php
+		foreach ($this->ratingCats as $id=>$cat) {
+			$stars = floor($rating[$id]);
+			$half = ($rating[$id]-$stars) >= 0.5;?>
+			<tr>
+			<?php
+			if ( ! ( $comment_rating && empty( $rating[$id] ) ) ) { // Don't show empty ratings in comments 
+				?> 
+				<td class="rating-category"><?php echo $cat['title']?></td>
+				<td class="rating" title="<?php echo $rating[$id]?> : <?php echo $this->rating_caption($rating[$id])?>">
+				<?php echo $this->output_stars($stars, $half)?>
+				</td>
+			<?php
+			}
+			if ( $full_display && isset( $votes[$id] ) ) {
+				$rating_plural=$votes[$id]==1?__('review','foodiepro'):__('reviews','foodiepro'); ?>
+				<td class="rating-details">(<?php echo $votes[$id] . ' ' . $rating_plural ?>)</td> 
+			<?php 
+			}?>
+			</tr>
+			<?php	
+		}?>
+		</table>
+		<?php 
 			//else {
 				//echo '<div class="rating-details">' . __('Be the first to rate this recipe !','foodiepro') . '</div>';
 			//}
+
+		$html = ob_get_contents();
+	  ob_end_clean();	
 
 		return $html;
 	}
 
 
-	/* Custom Comment Form with PHP (called from shortcodes.php)
+	/* Custom Comment Form 
 	------------------------------------------------------------ */
-	public function output_evaluation_form_html_php() {
+	public function output_evaluation_form() {
 		
 		ob_start();?>
 		

@@ -24,12 +24,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'PLUGIN_PATH', plugins_url( '', __FILE__ ) );
 
 require 'includes/CustomStarRatings.php';
-require 'includes/CustomStarRatingsPostsComments.php';
+require 'includes/CustomStarRatingsMetaUpdate.php';
 require 'includes/CustomStarRatingsShortcodes.php';
+require 'includes/CustomStarRatingsCommentsList.php';
 
-$CSR = new CustomStarRatings();
-$CSRPC = new CustomStarRatingsPostsComments();
-$CSRS = new CustomStarRatingsShortcodes();
+new CustomStarRatings();
+new CustomStarRatingsMetaUpdate();
+new CustomStarRatingsShortcodes();
+new CustomStarRatingsCommentsList();
 	
 /* Chargement des feuilles de style custom et polices */
 function load_custom_rating_style_sheet() {
@@ -44,25 +46,6 @@ function custom_star_rating_load_textdomain() {
 }
 add_action('plugins_loaded', 'custom_star_rating_load_textdomain');
 
-
-
-//*************************************************************************
-//**               FUNCTIONS
-//*************************************************************************
-
-
-
-
-//*************************************************************************
-//**               COMMENTS LIST
-//*************************************************************************
-
-
-/* Change the comment reply link to display our own comment form */
-//add_filter('comment_reply_link', 'remove_nofollow', 420, 4);
-function remove_nofollow($link, $args, $comment, $post){
-  return str_replace("rel='nofollow'", "", $link);
-}
 
 
 

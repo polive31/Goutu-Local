@@ -234,7 +234,7 @@ $templates_dir = trailingslashit( get_stylesheet_directory() ) . 'templates/';
 
 // Load custom templates
 require_once $templates_dir . 'custom-recipe-template.php';
-require_once $templates_dir . 'comments-list.php';
+//require_once $templates_dir . 'comments-list.php';
 
 
 /* =================================================================*/
@@ -824,29 +824,6 @@ function add_share_icons() {
 //add_action( 'genesis_entry_footer', 'add_share_icons' , 10 ); /* Original genesis_after_entry_content */
 
 
-/* =================================================================*/
-/* =          COMMENTS
-/* =================================================================*/
-
-/* Remove the genesis_default_list_comments function
-/* Replace comment list with one including ratings
-(doesn't work directly in the plugin, therefore put in functions
--------------------------------------------------------*/
-remove_action( 'genesis_list_comments', 'genesis_default_list_comments' );
-add_action( 'genesis_list_comments', 'custom_star_rating_list_comments' );
-
-function custom_star_rating_list_comments() {
-	if ( is_singular( RATED_POST_TYPES ) ) {
-		$args = array(
-		    'type'          => 'comment',
-		    'avatar_size'   => 50,
-		    'callback'      => 'custom_star_rating_comment',
-		    //'per_page' 			=> '2',
-		);
-		$args = apply_filters( 'genesis_comment_list_args', $args );		
-	}
-	wp_list_comments( $args );
-}
 
 
 /* Remove comment form unless it's a comment reply page

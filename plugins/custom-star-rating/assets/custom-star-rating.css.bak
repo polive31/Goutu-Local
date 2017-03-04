@@ -60,6 +60,10 @@ td.rating-title {
   font-size:18px;
 }
 
+.rating-label {
+  font-size:18px;
+}
+
 .comment-rating .rating {
   font-size:16px;
 }
@@ -72,7 +76,8 @@ td.rating-title {
 
 i.fa.fa-star,
 i.fa.fa-star-half-o {
-	color:#ffa700;
+	/*color:#ffa700;*/
+	color:#ff8f00;
 }
 
 i.fa.fa-star-o {

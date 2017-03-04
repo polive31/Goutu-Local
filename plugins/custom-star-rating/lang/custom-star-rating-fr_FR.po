@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: custom-star-rating\n"
-"POT-Creation-Date: 2017-03-04 02:30+0100\n"
-"PO-Revision-Date: 2017-03-04 02:30+0100\n"
+"POT-Creation-Date: 2017-03-04 14:15+0100\n"
+"PO-Revision-Date: 2017-03-04 14:15+0100\n"
 "Last-Translator: \n"
 "Language-Team: goutu.org <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -12,31 +12,31 @@ msgstr ""
 "X-Generator: Poedit 1.8.12\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Poedit-KeywordsList: __;_e;_x;esc_attr_e\n"
+"X-Poedit-KeywordsList: __;_e;_x;esc_attr_e;_n:1,2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: includes/CustomStarRatings.php:63
+#: includes/CustomStarRatings.php:69
 msgid "Not rated"
 msgstr "Pas encore évalué"
 
-#: includes/CustomStarRatings.php:65
+#: includes/CustomStarRatings.php:71
 msgid "Really not good"
 msgstr "Vraiment pas bon"
 
-#: includes/CustomStarRatings.php:67
+#: includes/CustomStarRatings.php:73
 msgid "Not so good"
 msgstr "Pas très bon"
 
-#: includes/CustomStarRatings.php:69
+#: includes/CustomStarRatings.php:75
 msgid "Rather good"
 msgstr "Assez bon"
 
-#: includes/CustomStarRatings.php:71
+#: includes/CustomStarRatings.php:77
 msgid "Very good"
 msgstr "Très bon"
 
-#: includes/CustomStarRatings.php:73
+#: includes/CustomStarRatings.php:79
 msgid "Delicious"
 msgstr "Succulent"
 
@@ -75,23 +75,36 @@ msgstr ""
 msgid "Cancel"
 msgstr "Annuler"
 
-#: includes/CustomStarRatingsShortcodes.php:104
+#: includes/CustomStarRatingsShortcodes.php:109
+#, fuzzy
+#| msgid "review"
 msgid "review"
-msgstr "évaluation"
+msgid_plural "reviews"
+msgstr[0] "avis"
+msgstr[1] "avis"
 
-#: includes/CustomStarRatingsShortcodes.php:104
-msgid "reviews"
-msgstr "évaluations"
-
-#: includes/CustomStarRatingsShortcodes.php:146
+#: includes/CustomStarRatingsShortcodes.php:151
 msgid "Comment"
 msgstr "Commentaire"
 
-#~ msgid "How did you like this dish ?"
-#~ msgstr "Appréciation du plat"
+#: lang/custom-star-rating-lexicon.php:8
+msgid "Clarity"
+msgstr "Clarté"
 
-#~ msgid "How clear was the recipe ?"
-#~ msgstr "Clarté de la recette"
+#: lang/custom-star-rating-lexicon.php:9
+msgid "Dish"
+msgstr "Plat"
+
+#: lang/custom-star-rating-lexicon.php:10
+msgid "How did you like this dish ?"
+msgstr "Appréciation du plat"
+
+#: lang/custom-star-rating-lexicon.php:11
+msgid "How clear was the recipe ?"
+msgstr "Clarté de la recette"
+
+#~ msgid "reviews"
+#~ msgstr "évaluations"
 
 #~ msgid "<cite class=\"fn\">%s</cite> <span class=\"says\">says:</span>"
 #~ msgstr "<cite class=\"fn\">%s</cite> <span class=\"dit\">says:</span>"

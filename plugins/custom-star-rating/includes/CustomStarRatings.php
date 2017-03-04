@@ -27,14 +27,16 @@ class CustomStarRatings {
 
 	public function __construct() {
 		
-		foreach (self::RATING_CATEGORIES as $id=>$cat) {
-			$this->ratingCats[$id] = array(
-				'id' => $cat['id'],
-				'weight' => $cat['weight'],
-				'title' => __( $cat['title'], 'custom-star-rating' ),
-				'question' => __( $cat['question'], 'custom-star-rating' ),
-			);
-		}
+//		foreach (self::RATING_CATEGORIES as $id=>$cat) {
+//			$this->ratingCats[$id] = array(
+//				'id' => $cat['id'],
+//				'weight' => $cat['weight'],
+//				'title' => __( $cat['title'], 'custom-star-rating' ),
+//				'question' => __( $cat['question'], 'custom-star-rating' ),
+//			);
+//		}
+		
+		$this->ratingCats = self::RATING_CATEGORIES;
 		$this->ratedPostTypes = self::RATED_POST_TYPES;
 
 		//add_action( 'genesis_before_content', array($this,'display_debug_info') );
@@ -82,7 +84,7 @@ class CustomStarRatings {
 	/* Calculate rating stats
 	-------------------------------------------------------------*/
 	public function get_rating_stats( $cat_ratings ) {
-		/* cat_ratings = list of user ratings for one category */
+		/* cat_ratings is the list of user ratings for one category */
 		$this->dbg('In Get Rating Stats function','');
 		$this->dbg('User Ratings array : ',$cat_ratings);
 		$votes='';

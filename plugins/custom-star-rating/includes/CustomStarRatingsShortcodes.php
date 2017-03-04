@@ -66,9 +66,11 @@ class CustomStarRatingsShortcodes extends CustomStarRatings {
 				$ratings = get_post_meta( $post_id , 'user_ratings' );
 				PC::debug(array('$ratings: '=>$ratings));
 				foreach ($this->ratingCats as $id=>$cat) {
-					$stats = $this->get_rating_stats( $ratings[ $cat['id'] ] );
-					$rating[$id] = $stats['rating'];
-					$votes[$id] = $stats['votes'];
+					if (isset ( $ratings[ $cat['id'] ] ) ) {
+						$stats = $this->get_rating_stats( $ratings[ $cat['id'] ] );
+						$rating[$id] = $stats['rating'];
+						$votes[$id] = $stats['votes'];
+					}
 				}	
 			}
 			else { // displays only stars
@@ -78,18 +80,19 @@ class CustomStarRatingsShortcodes extends CustomStarRatings {
 			}	
 		}
 
+
 		ob_start();
 	
-		//PC:debug(array('votes : '=>$votes,'rating : '=>$rating,'stars : '=>$stars,'half : '=>$half,));	
 		?>
 		<table class="ratings-table">
 		<?php
 		foreach ($this->ratingCats as $id=>$cat) {
+			$rating[$id]=empty($rating[$id])?0:$rating[$id];
 			$stars = floor($rating[$id]);
 			$half = ($rating[$id]-$stars) >= 0.5;?>
 			<tr>
 			<?php
-			if ( ! ( $comment_rating && empty( $rating[$id] ) ) ) { // Don't show empty ratings in comments 
+			if ( ! ( $comment_rating && $rating[$id]==0 ) ) { // Don't show empty ratings in comments 	
 				?> 
 				<td class="rating-category"><?php echo $cat['title']?></td>
 				<td class="rating" title="<?php echo $rating[$id]?> : <?php echo $this->rating_caption($rating[$id])?>">

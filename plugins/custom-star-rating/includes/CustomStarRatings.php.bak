@@ -14,7 +14,7 @@ class CustomStarRatings {
 		array (
 			'id'=>'rating',
 			'weight' => 2,
-			'title'=> 'Overall rating',
+			'title'=> 'Dish',
 			'question'=> 'How did you like this dish ?',
 		),
 		array( 
@@ -71,6 +71,7 @@ class CustomStarRatings {
 				return __('Very good','custom-star-rating');
 			case $val <= "5":
 				return __('Delicious','custom-star-rating');
+			return __('Not rated','custom-star-rating');
 		}
 	}
 

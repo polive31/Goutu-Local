@@ -36,24 +36,28 @@ class CustomStarRatings {
 			);
 		}
 		$this->ratedPostTypes = self::RATED_POST_TYPES;
+
+		//add_action( 'genesis_before_content', array($this,'display_debug_info') );
 	}
 	
-		/* Output debug information 
-		--------------------------------------------------------------*/	
+	/* Output debug information 
+	--------------------------------------------------------------*/	
+	protected function dbg( $msg, $var ) {
+			if ( class_exists('PC') ) {
+				PC::debug(array( $msg => $var ) );
+			}
+	}
+
+
+	/* Dump main variables
+	--------------------------------------------------------------*/	
 	public function display_debug_info() {
-		PC::debug(array('In Custom Rating Main Class !' ) );
-		PC::debug(array('Rated types: '=> $this->ratedPostTypes ) );
-		PC::debug(array('ratingCats : '=> $this->ratingCats ) );
-		PC::debug(array('get_cats() : '=> $this->get_cats('') ) );
+		$this->dbg('In Custom Rating Main Class !', '' );
+		$this->dbg('Rated types: ', $this->ratedPostTypes );
+		$this->dbg('ratingCats : ', $this->ratingCats );
 	}	
 	
-	public function get_cats( $id ) {
-		if ( empty( $id ) ) return $this->ratingCats;
-		if ( isset($this->ratingCats[$id]) ) return $this->ratingCats[$id];
-		return false;
-	}
-
-
+	
 	/* Rating caption
 	------------------------------------------------------------*/
 	public function rating_caption($val) {
@@ -75,64 +79,48 @@ class CustomStarRatings {
 	}
 
 
-/* Calculate rating stats
--------------------------------------------------------------*/
-public function get_rating_stats( $user_ratings ) {
-	$votes='';
-	$avg_rating='';	
-	if ( ! empty($user_ratings) ) {
-		$total = array_sum( $user_ratings );
-		$votes = count( array_filter( $user_ratings ) );
+	/* Calculate rating stats
+	-------------------------------------------------------------*/
+	public function get_rating_stats( $cat_ratings ) {
+		/* cat_ratings = list of user ratings for one category */
+		$this->dbg('In Get Rating Stats function','');
+		$this->dbg('User Ratings array : ',$cat_ratings);
+		$votes='';
+		$avg_rating='';	
+		if ( ! empty($cat_ratings) ) {
+			$total = array_sum( $cat_ratings );
+			$votes = count( array_filter( $cat_ratings ) );
 
-	  if( $votes !== 0 ) {
-	    $avg_rating = $total / $votes; // TODO Just an average for now, implement some more functions later
-	    $avg_rating = round( $avg_rating, 1 );
-	  } 	
-  }
-  return array(
-	  'votes' => $votes,
-	  'rating' => $avg_rating,
-  );
-}
-
-
-/* Get the user ip (from WP Beginner)
--------------------------------------------------------------*/
-public function get_user_ip() {
-	if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
-		//check ip from share internet
-		$ip = $_SERVER['HTTP_CLIENT_IP'];
-	} 
-	elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
-		//to check ip is pass from proxy
-		$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-	} 
-	else {
-		$ip = $_SERVER['REMOTE_ADDR'];
+		  if( $votes !== 0 ) {
+		    $avg_rating = $total / $votes; // TODO Just an average for now, implement some more functions later
+		    $avg_rating = round( $avg_rating, 1 );
+		  } 	
+	  }
+	  return array(
+		  'votes' => $votes,
+		  'rating' => $avg_rating,
+	  );
 	}
-	
-	return apply_filters( 'wpb_get_ip', $ip );
-
-}
 
 
-/* Output stars
--------------------------------------------------------------*/
-public function output_stars($stars, $half) {
-	$html = '';
-	for ($i = 1; $i <= $stars; $i++) {
-		$html .= '<i class="fa fa-star"></i>';
-	}
-	for ($i = $stars+1; $i <= 5; $i++) {
-		if ( ($i == ($stars+1) ) && $half ) {
-			$html .= '<i class="fa fa-star-half-o"></i>';
+
+	/* Output stars
+	-------------------------------------------------------------*/
+	public function output_stars($stars, $half) {
+		$html = '';
+		for ($i = 1; $i <= $stars; $i++) {
+			$html .= '<i class="fa fa-star"></i>';
 		}
-		else {
-			$html .= '<i class="fa fa-star-o"></i>';
+		for ($i = $stars+1; $i <= 5; $i++) {
+			if ( ($i == ($stars+1) ) && $half ) {
+				$html .= '<i class="fa fa-star-half-o"></i>';
+			}
+			else {
+				$html .= '<i class="fa fa-star-o"></i>';
+			}
 		}
+		return $html;
 	}
-	return $html;
-}
 
 
 

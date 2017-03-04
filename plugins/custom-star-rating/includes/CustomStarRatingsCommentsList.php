@@ -16,8 +16,8 @@ class CustomStarRatingsCommentsList extends CustomStarRatings {
 	/* Output debug information 
 	--------------------------------------------------------------*/	
 	public function display_debug_info() {
-		PC::debug(array('In Custom Rating Comments List child class !' ) );
-		PC::debug(array('Rated types: '=> $this->ratedPostTypes ) );
+		$this->dbg('In Custom Rating Comments List child class !','' );
+		$this->dbg('Rated types: ', $this->ratedPostTypes );
 	}	
 	
 	

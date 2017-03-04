@@ -25,8 +25,7 @@ class CustomStarRatingsCommentsList extends CustomStarRatings {
 		 Replace comment list with one including ratings
 	-------------------------------------------------------*/
 	public function custom_genesis_list_comments() {
-		//if ( is_singular( $this->ratedPostTypes ) ) {
-		if ( is_singular() ) {
+		if ( is_singular( $this->ratedPostTypes ) ) {
 			remove_action( 'genesis_list_comments', 'genesis_default_list_comments' );
 			add_action( 'genesis_list_comments', array($this,'custom_star_rating_list_comments') );
 		}

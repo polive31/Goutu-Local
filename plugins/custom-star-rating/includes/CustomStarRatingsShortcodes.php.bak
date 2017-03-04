@@ -47,27 +47,31 @@ class CustomStarRatingsShortcodes extends CustomStarRatings {
 			'rating_cats' => 'all',  //Default: "id1 id2..."
 		), $atts );
 
-		PC::debug('In display-star-rating shortcode');
+		
 		$full_display=!($a['type']=='stars');
 		$comment_rating = ( $a['source'] == 'comment');
 		
 		if ( $comment_rating ) {
+			$this->dbg('In COMMENT display-star-rating shortcode','');
 			$comment_id = get_comment_ID();
-			//PC::debug( array('get comment ID'=>$id,) );
 			foreach ($this->ratingCats as $id=>$cat) {
 				$rating[$id] = get_comment_meta($comment_id, 'user_rating_' . $cat['id'], true);
-				//PC::debug( array('rating from comment'=>$rating,) );
 			}
 		}
 		
 		else { // Rating in post meta
+			$this->dbg('In POST display-star-rating shortcode','');
 			$post_id = get_the_id();
 			if ($full_display) { // displays number of votes
 				$ratings = get_post_meta( $post_id , 'user_ratings' );
-				PC::debug(array('$ratings: '=>$ratings));
+				$this->dbg('In POST display-star-rating shortcode','');
+				//$this->dbg('$ratings: ',$ratings);
 				foreach ($this->ratingCats as $id=>$cat) {
-					if (isset ( $ratings[ $cat['id'] ] ) ) {
-						$stats = $this->get_rating_stats( $ratings[ $cat['id'] ] );
+					$cat_ratings = array_column($ratings, $ratings[ $cat['id'] ]);
+					if (isset ( $cat_ratings) ) {
+						$stats = $this->get_rating_stats( $cat_ratings );
+						$this->dbg(' Stats for this category : ', $stats );	
+						
 						$rating[$id] = $stats['rating'];
 						$votes[$id] = $stats['votes'];
 					}
@@ -92,8 +96,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatings {
 			$half = ($rating[$id]-$stars) >= 0.5;?>
 			<tr>
 			<?php
-			if ( ! ( $comment_rating && $rating[$id]==0 ) ) { // Don't show empty ratings in comments 
-				PC::debug( array('votes : '=>$votes,'rating $ID: '=>$rating[$id]) );	
+			if ( ! ( $comment_rating && $rating[$id]==0 ) ) { // Don't show empty ratings in comments 	
 				?> 
 				<td class="rating-category"><?php echo $cat['title']?></td>
 				<td class="rating" title="<?php echo $rating[$id]?> : <?php echo $this->rating_caption($rating[$id])?>">

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: custom-star-rating\n"
-"POT-Creation-Date: 2017-03-02 07:45+0100\n"
-"PO-Revision-Date: 2017-03-02 07:45+0100\n"
+"POT-Creation-Date: 2017-03-04 02:30+0100\n"
+"PO-Revision-Date: 2017-03-04 02:30+0100\n"
 "Last-Translator: \n"
 "Language-Team: goutu.org <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -16,29 +16,52 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: includes/CustomStarRatings.php:69 includes/functions.php:16
+#: includes/CustomStarRatings.php:63
 msgid "Not rated"
 msgstr "Pas encore évalué"
 
-#: includes/CustomStarRatings.php:71 includes/functions.php:18
+#: includes/CustomStarRatings.php:65
 msgid "Really not good"
 msgstr "Vraiment pas bon"
 
-#: includes/CustomStarRatings.php:73 includes/functions.php:20
+#: includes/CustomStarRatings.php:67
 msgid "Not so good"
 msgstr "Pas très bon"
 
-#: includes/CustomStarRatings.php:75 includes/functions.php:22
+#: includes/CustomStarRatings.php:69
 msgid "Rather good"
 msgstr "Assez bon"
 
-#: includes/CustomStarRatings.php:77 includes/functions.php:24
+#: includes/CustomStarRatings.php:71
 msgid "Very good"
 msgstr "Très bon"
 
-#: includes/CustomStarRatings.php:79 includes/functions.php:26
+#: includes/CustomStarRatings.php:73
 msgid "Delicious"
 msgstr "Succulent"
+
+#: includes/CustomStarRatingsCommentsList.php:65
+#, php-format
+msgid "%s says:"
+msgstr "De la part de %s"
+
+#: includes/CustomStarRatingsCommentsList.php:67
+#, php-format
+msgid "%s responds:"
+msgstr "Réponse de %s"
+
+#: includes/CustomStarRatingsCommentsList.php:71
+msgid "Your comment is awaiting moderation."
+msgstr "Votre commentaire est en attente de modération."
+
+#: includes/CustomStarRatingsCommentsList.php:77
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "Le %1$s à %2$s"
+
+#: includes/CustomStarRatingsCommentsList.php:96
+msgid "(Edit)"
+msgstr ""
 
 #: includes/CustomStarRatingsShortcodes.php:21
 msgid "Send"
@@ -52,37 +75,23 @@ msgstr ""
 msgid "Cancel"
 msgstr "Annuler"
 
-#: includes/CustomStarRatingsShortcodes.php:91
+#: includes/CustomStarRatingsShortcodes.php:104
 msgid "review"
 msgstr "évaluation"
 
-#: includes/CustomStarRatingsShortcodes.php:91
+#: includes/CustomStarRatingsShortcodes.php:104
 msgid "reviews"
 msgstr "évaluations"
 
-#: includes/CustomStarRatingsShortcodes.php:124 templates/comment-form.php:41
+#: includes/CustomStarRatingsShortcodes.php:146
 msgid "Comment"
 msgstr "Commentaire"
 
-#: templates/comment-form.php:29
-msgid "How did you like this dish ?"
-msgstr "Appréciation du plat"
+#~ msgid "How did you like this dish ?"
+#~ msgstr "Appréciation du plat"
 
-#: templates/comment-form.php:34
-msgid "How clear was the recipe ?"
-msgstr "Clarté de la recette"
-
-#~ msgid "%s says:"
-#~ msgstr "De la part de %s"
-
-#~ msgid "%s responds:"
-#~ msgstr "Réponse de %s"
-
-#~ msgid "Your comment is awaiting moderation."
-#~ msgstr "Votre commentaire est en attente de modération."
-
-#~ msgid "%1$s at %2$s"
-#~ msgstr "Le %1$s à %2$s"
+#~ msgid "How clear was the recipe ?"
+#~ msgstr "Clarté de la recette"
 
 #~ msgid "<cite class=\"fn\">%s</cite> <span class=\"says\">says:</span>"
 #~ msgstr "<cite class=\"fn\">%s</cite> <span class=\"dit\">says:</span>"

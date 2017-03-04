@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: custom-star-rating\n"
-"POT-Creation-Date: 2017-03-02 07:46+0100\n"
+"POT-Creation-Date: 2017-03-04 02:29+0100\n"
 "PO-Revision-Date: 2017-02-05 11:34+0100\n"
 "Last-Translator: \n"
 "Language-Team: goutu.org <psc.olv@gmail.com>\n"
@@ -17,28 +17,51 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: includes/CustomStarRatings.php:69 includes/functions.php:16
+#: includes/CustomStarRatings.php:63
 msgid "Not rated"
 msgstr ""
 
-#: includes/CustomStarRatings.php:71 includes/functions.php:18
+#: includes/CustomStarRatings.php:65
 msgid "Really not good"
 msgstr ""
 
-#: includes/CustomStarRatings.php:73 includes/functions.php:20
+#: includes/CustomStarRatings.php:67
 msgid "Not so good"
 msgstr ""
 
-#: includes/CustomStarRatings.php:75 includes/functions.php:22
+#: includes/CustomStarRatings.php:69
 msgid "Rather good"
 msgstr ""
 
-#: includes/CustomStarRatings.php:77 includes/functions.php:24
+#: includes/CustomStarRatings.php:71
 msgid "Very good"
 msgstr ""
 
-#: includes/CustomStarRatings.php:79 includes/functions.php:26
+#: includes/CustomStarRatings.php:73
 msgid "Delicious"
+msgstr ""
+
+#: includes/CustomStarRatingsCommentsList.php:65
+#, php-format
+msgid "%s says:"
+msgstr ""
+
+#: includes/CustomStarRatingsCommentsList.php:67
+#, php-format
+msgid "%s responds:"
+msgstr ""
+
+#: includes/CustomStarRatingsCommentsList.php:71
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: includes/CustomStarRatingsCommentsList.php:77
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: includes/CustomStarRatingsCommentsList.php:96
+msgid "(Edit)"
 msgstr ""
 
 #: includes/CustomStarRatingsShortcodes.php:21
@@ -53,22 +76,14 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: includes/CustomStarRatingsShortcodes.php:91
+#: includes/CustomStarRatingsShortcodes.php:104
 msgid "review"
 msgstr ""
 
-#: includes/CustomStarRatingsShortcodes.php:91
+#: includes/CustomStarRatingsShortcodes.php:104
 msgid "reviews"
 msgstr ""
 
-#: includes/CustomStarRatingsShortcodes.php:124 templates/comment-form.php:41
+#: includes/CustomStarRatingsShortcodes.php:146
 msgid "Comment"
-msgstr ""
-
-#: templates/comment-form.php:29
-msgid "How did you like this dish ?"
-msgstr ""
-
-#: templates/comment-form.php:34
-msgid "How clear was the recipe ?"
 msgstr ""

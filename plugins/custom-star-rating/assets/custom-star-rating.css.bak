@@ -5,6 +5,12 @@ Description: Ratings via stars in comments
 */
 
 
+
+.ratings-table tr {
+	line-height: 30px;
+}
+
+
 /* Star rating input
 --------------------------------------------- */
 
@@ -58,6 +64,11 @@ td.rating-title {
 
 .rating {
   font-size:18px;
+}
+
+td.rating-category {
+	padding:0 10px 0 0;
+	font-style:italic;
 }
 
 .rating-label {

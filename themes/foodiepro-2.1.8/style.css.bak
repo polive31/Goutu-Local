@@ -1943,6 +1943,7 @@ Custom Page Templates
 #popmake-10195 .mash-small span {
 	display: block;
 	line-height: 30px;
+	text-align: center;
 }
 
 #popmake-10195 .mashsb-box .mashsb-buttons a.mash-small {

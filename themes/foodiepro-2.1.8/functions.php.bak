@@ -371,20 +371,6 @@ add_filter ( 'wpurp_assets_js', 'enqueue_wpurp_js', 15, 1 );
 /* =              GOOGLE TAG MANAGER 															 =*/
 /* =================================================================*/
 
-/* Enqueue GTM script in the header (TODO fonctionne pas)
---------------------------------------------------------------------*/
-//add_action( 'wp_enqueue_scripts', 'enqueue_gtm_container_js' );
-function enqueue_gtm_container_js() {
-	$js_uri = get_stylesheet_directory_uri() . '/assets/js/';
-	wp_enqueue_script(
-		'gtm-container-script',
-		$js_uri . 'google-tag-manager.js',
-		'',
-		CHILD_THEME_VERSION,
-		false
-	);
-}
-
 /* Add html with genesis actions
 --------------------------------------------------------------------*/
 add_action('wp_head','add_gtm_container_head');

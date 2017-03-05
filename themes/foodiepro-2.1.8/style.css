@@ -2758,7 +2758,8 @@ After Entry
 	margin: 10px 0 10px 0;
 }
 
-.comment-item {
+.comment td.rating {
+    font-size: 16px;
 }
 
 .comment-reply {

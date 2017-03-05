@@ -10,9 +10,8 @@ function wpurp_custom_recipe_template( $content, $recipe ) {
 		echo json_ld_meta_output($recipe,'');
 	?>
 
-	<div class="recipe wpurp-container">
 	<!-- Class .wpurp-container important for adjustable servings javascript -->	
-
+	<div class="recipe wpurp-container" id="wpurp-container-recipe-<?php echo $recipe->ID(); ?>" data-id="<?php echo $recipe->ID(); ?>" data-permalink="<?php echo $recipe->link(); ?>" data-servings-original="<?php echo $recipe->servings_normalized(); ?>">
 		<!-- Recipe description -->
 		<div class="recipe-container">
 			<?php
@@ -182,11 +181,8 @@ function json_ld_meta_output( $recipe, $args ) {
 	
 	$WPURP_Custom_Metadata = new WPURP_Custom_Metadata;
 	$metadata = in_array( WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ), array( 'json', 'json-inline' ) ) ? $WPURP_Custom_Metadata->get_metadata( $recipe ) : '';
-	$meta = WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ) != 'json' ? ' itemscope itemtype="http://schema.org/Recipe"' : '';
 
 	ob_start();?>
-
-	<div<?php echo $meta; ?> id="wpurp-container-recipe-<?php echo $recipe->ID(); ?>" data-id="<?php echo $recipe->ID(); ?>" data-permalink="<?php echo $recipe->link(); ?>" data-image="<?php echo $image_url; ?>" data-servings-original="<?php echo $recipe->servings_normalized(); ?>">
 
 	<?php
 	echo $metadata;

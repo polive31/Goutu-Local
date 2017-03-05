@@ -791,29 +791,6 @@ img {
 	width:auto;
 }
 
-/* Gallery
---------------------------------------------- */
-
-.gallery {
-	overflow:hidden;
-}
-
-.gallery-item {
-	float:left;
-	/*margin:0 0 28px!important;*/
-	margin-right:10px!important;
-	text-align:center;
-}
-
-.gallery img {
-	border:1px solid #ddd;
-	height:auto;
-	padding:4px;
-}
-
-.gallery img:hover {
-	border:1px solid #999;
-}
 
 /*
 Structure and Layout
@@ -1820,6 +1797,14 @@ ul.cnss-social-icon {
 
 .after-entry  .enews-widget {
 	min-height:250px;
+}
+
+
+.before-header {
+  position: fixed;
+  width: 100%;
+  background: red;
+  z-index: 99999;
 }
 
 .before-header .enews-widget .widgettitle,

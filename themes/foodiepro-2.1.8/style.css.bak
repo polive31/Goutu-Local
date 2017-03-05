@@ -1822,6 +1822,14 @@ ul.cnss-social-icon {
 	min-height:250px;
 }
 
+
+.before-header {
+  position: fixed;
+  width: 100%;
+  background: red;
+  z-index: 99999;
+}
+
 .before-header .enews-widget .widgettitle,
 .before-header .enews-widget p {
 	display:inline;
@@ -2758,7 +2766,8 @@ After Entry
 	margin: 10px 0 10px 0;
 }
 
-.comment-item {
+.comment td.rating {
+    font-size: 16px;
 }
 
 .comment-reply {

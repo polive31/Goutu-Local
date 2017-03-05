@@ -226,14 +226,6 @@ function foodie_pro_add_body_class( $classes ) {
 	return $classes;
 }
 
-/* =================================================================*/
-/* =              LOAD CUSTOM TEMPLATES
-/* =================================================================*/
-
-$templates_dir = trailingslashit( get_stylesheet_directory() ) . 'templates/';
-
-// Load custom templates
-require_once $templates_dir . 'custom-recipe-template.php';
 
 /* =================================================================*/
 /* =              CUSTOM SCRIPTS ENQUEUE
@@ -249,152 +241,7 @@ function move_jquery_into_footer( $wp_scripts ) {
 }
 //add_action( 'wp_default_scripts', 'move_jquery_into_footer' );
 
-function enqueue_wpurp_js($js_enqueue) {
-		if ( is_singular('post') ) return '';
-		elseif ( !is_singular('recipe') || ( is_singular('recipe') && is_admin() ) ) return $js_enqueue;
-	
-    $js_enqueue=array(
-            array(
-                'name' => 'fraction',
-                'url' => WPUltimateRecipe::get()->coreUrl . '/vendor/fraction-js/index.js',
-                'public' => true,
-                'admin' => true,
-            ),
-            /*array(
-                'url' => WPUltimateRecipe::get()->coreUrl . '/vendor/jquery.tools.min.js',
-                'public' => true,
-                'deps' => array(
-                    'jquery',
-                ),
-            ),*/
-            array(
-                'name' => 'print_button',
-                'url' => WPUltimateRecipe::get()->coreUrl . '/js/print_button.js',
-                'public' => true,
-                'deps' => array(
-                    'jquery',
-                ),
-                'data' => array(
-                    'name' => 'wpurp_print',
-                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
-                    'nonce' => wp_create_nonce( 'wpurp_print' ),
-                    'custom_print_css_url' => get_stylesheet_directory_uri() . '/assets/css/custom-recipe-print.css',
-                    'coreUrl' => WPUltimateRecipe::get()->coreUrl,
-                    'premiumUrl' => WPUltimateRecipe::is_premium_active() ? WPUltimateRecipePremium::get()->premiumUrl : false,
-                    'title' => __('Print this Recipe','foodiepro'),
-                    'permalinks' => get_option('permalink_structure'),
-                ),
-            ),
-    	      array(
-                'url' => WPUltimateRecipe::get()->coreUrl . '/js/adjustable_servings.js',
-                'public' => true,
-                'deps' => array(
-                    'jquery',
-                    'fraction',
-                		'print_button',
-                ),
-                'data' => array(
-                    'name' => 'wpurp_servings',
-                    'precision' => 1,
-                    'decimal_character' => ',',
-                ),
-            ),
-						/*array(
-                'url' => WPUltimateRecipePremium::get()->premiumUrl . '/addons/favorite-recipes/js/favorite-recipes.js',
-               	'premium' => true,
-                'public' => true,
-                'setting' => array( 'favorite_recipes_enabled', '1' ),
-                'deps' => array(
-                    'jquery',
-                ),
-                'data' => array(
-                    'name' => 'wpurp_favorite_recipe',
-                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
-                    'nonce' => wp_create_nonce( 'wpurp_favorite_recipe' ),
-                )
-            ),
-						array(
-                'url' => WPUltimateRecipePremium::get()->premiumUrl . '/js/add-to-shopping-list.js',
-                'premium' => true,
-                'public' => true,
-                'deps' => array(
-                    'jquery',
-                ),
-                'data' => array(
-                    'name' => 'wpurp_add_to_shopping_list',
-                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
-                    'nonce' => wp_create_nonce( 'wpurp_add_to_shopping_list' ),
-                )
-            ),*/	  
-						array(
-                'url' => get_stylesheet_directory_uri() . '/assets/js/custom_favorite_recipe.js',
-               	'premium' => true,
-                'public' => true,
-                'setting' => array( 'favorite_recipes_enabled', '1' ),
-                'deps' => array(
-                    'jquery',
-                ),
-                'data' => array(
-                    'name' => 'wpurp_favorite_recipe',
-                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
-                    'nonce' => wp_create_nonce( 'wpurp_favorite_recipe' ),
-                )
-            ),	  
-            array(
-                'url' => get_stylesheet_directory_uri() . '/assets/js/custom_shopping_list.js',
-                'premium' => true,
-                'public' => true,
-                'deps' => array(
-                    'jquery',
-                ),
-                'data' => array(
-                    'name' => 'wpurp_add_to_shopping_list',
-                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
-                    'nonce' => wp_create_nonce( 'wpurp_add_to_shopping_list' ),
-                )
-            ),
-    );	
-	  
-//	print "<pre>";
-//	print_r($js_enqueue);
-//	print "</pre>";
-	return $js_enqueue;
-}
-add_filter ( 'wpurp_assets_js', 'enqueue_wpurp_js', 15, 1 );
 
-
-//remove_action ( 'wp_enqueue_scripts', 'WPURP_Assets::enqueue');
-//wp_deregister_script('wpurp_script_minified');
-//wp_enqueue_script( 'wpurp_custom_script', get_stylesheet_directory_uri() . '/assets/js/wpurp_custom.js', array('jquery'), WPURP_VERSION, true );
-
-/* =================================================================*/
-/* =              GOOGLE TAG MANAGER 															 =*/
-/* =================================================================*/
-
-/* Add html with genesis actions
---------------------------------------------------------------------*/
-//add_action('wp_head','add_gtm_container_head');
-function add_gtm_container_head() {
-	?>
-	<!-- Google Tag Manager -->
-	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-5P2DT2H');</script>
-	<!-- End Google Tag Manager -->
-	<?php
-}
-
-//add_action( 'genesis_before', 'add_gtm_container_body' );
-function add_gtm_container_body() {
-	?>
-	<!-- Google Tag Manager (noscript) -->
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5P2DT2H"
-	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-	<!-- End Google Tag Manager (noscript) -->
-	<?php
-}
 
 /* =================================================================*/
 /* =              CUSTOM LOGIN                                     =*/
@@ -486,36 +333,6 @@ function custom_load_custom_style_sheet() {
 add_action( 'wp_enqueue_scripts', 'custom_load_custom_style_sheet' );
 
 
-/* Chargement des feuilles de style WPURP */
-function enqueue_wpurp_css($js_enqueue) {
-	if ( is_singular('recipe') ) {
-	  $js_enqueue=array(
-						array(
-	              'url' => WPUltimateRecipe::get()->coreUrl . '/css/admin.css',
-	              'admin' => true,
-	          ),
-						array(
-	              'url' => get_stylesheet_directory_uri() . '/assets/css/custom-recipe.css',
-	              'public' => true,
-	          ),
-		);
-	}
-	elseif ( is_page( 8428 ) ) { // Menu page
-	//elseif ( is_singular('menu') ) {
-	  $js_enqueue=array(
-						array(
-	              'url' => get_stylesheet_directory_uri() . '/assets/css/custom-menu.css',
-	              'public' => true,
-	          ),
-		);		
-	}
-	return $js_enqueue;
-}
-add_filter ( 'wpurp_assets_css', 'enqueue_wpurp_css', 15, 1 );
-
-/* Suppression de la feuille de style de la gallerie Wordpress */
-add_filter( 'use_default_gallery_style', '__return_false' );
-
 /* Suppression de la feuille de style YARPP */
 function yarpp_dequeue_footer_styles() {
   wp_dequeue_style('yarppRelatedCss');
@@ -536,33 +353,6 @@ add_action( 'genesis_after_content', 'genesis_posts_nav' );
 /* =                 RECIPES
 /* =================================================================*/
 
-/*add_filter( 'wpurp_user_submissions_current_user_edit_item', 'add_empty_msg')*/
-
-
-
-/* DEBUG Add all meta info before recipe */
-function display_all_meta() {
-	if ( is_singular( 'recipe' )) {
-		echo '<div class="post_meta">';
-		echo print_r(get_post_meta( get_the_ID() ), true );
-		//$nutritional_info = get_post_meta( get_the_ID(), 'recipe_nutritional', True);
-		//echo print_r( $nutritional_info , true );
-		echo '</div>';
-	}
-}
-//add_action( 'genesis_entry_header', 'display_all_meta', 10 );
-
-/* Custom recipe template */
-add_filter( 'wpurp_output_recipe', 'wpurp_custom_recipe_template', 10, 2 );
-
-
-/* Custom menu template */
-function wpurp_custom_menu_template( $form, $menu ) {
-	return '';
-}
-add_filter( 'wpurp_user_menus_form', 'wpurp_custom_menu_template', 10, 2 );
-
-//require_once( 'custom-menu-template.php'); 
 
 /* =================================================================*/
 /* =                      WIDGETS

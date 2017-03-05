@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: custom-star-rating\n"
-"POT-Creation-Date: 2017-03-04 16:45+0100\n"
-"PO-Revision-Date: 2017-03-04 16:45+0100\n"
+"POT-Creation-Date: 2017-03-04 16:27+0100\n"
+"PO-Revision-Date: 2017-03-04 16:28+0100\n"
 "Last-Translator: \n"
 "Language-Team: goutu.org <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -16,43 +16,43 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: includes/CustomStarRatings.php:23
+#: includes/CustomStarRatings.php:17
 msgid "Dish"
 msgstr "Plat"
 
-#: includes/CustomStarRatings.php:24
+#: includes/CustomStarRatings.php:18
 msgid "How did you like this dish ?"
 msgstr "Appréciation du plat"
 
-#: includes/CustomStarRatings.php:29
+#: includes/CustomStarRatings.php:23
 msgid "Clarity"
 msgstr "Clarté"
 
-#: includes/CustomStarRatings.php:30
+#: includes/CustomStarRatings.php:24
 msgid "How clear was the recipe ?"
 msgstr "Clarté de la recette"
 
-#: includes/CustomStarRatings.php:61
+#: includes/CustomStarRatings.php:59
 msgid "Not rated"
 msgstr "Pas encore évalué"
 
-#: includes/CustomStarRatings.php:63
+#: includes/CustomStarRatings.php:61
 msgid "Really not good"
 msgstr "Vraiment pas bon"
 
-#: includes/CustomStarRatings.php:65
+#: includes/CustomStarRatings.php:63
 msgid "Not so good"
 msgstr "Pas très bon"
 
-#: includes/CustomStarRatings.php:67
+#: includes/CustomStarRatings.php:65
 msgid "Rather good"
 msgstr "Assez bon"
 
-#: includes/CustomStarRatings.php:69
+#: includes/CustomStarRatings.php:67
 msgid "Very good"
 msgstr "Très bon"
 
-#: includes/CustomStarRatings.php:71
+#: includes/CustomStarRatings.php:69
 msgid "Delicious"
 msgstr "Succulent"
 
@@ -92,22 +92,16 @@ msgid "Cancel"
 msgstr "Annuler"
 
 #: includes/CustomStarRatingsShortcodes.php:109
-#, php-format
-msgid "%s review"
-msgid_plural "%s reviews"
-msgstr[0] "%s avis"
-msgstr[1] "%s avis"
+#, fuzzy
+#| msgid "review"
+msgid "review"
+msgid_plural "reviews"
+msgstr[0] "avis"
+msgstr[1] "avis"
 
 #: includes/CustomStarRatingsShortcodes.php:151
 msgid "Comment"
 msgstr "Commentaire"
-
-#, fuzzy
-#~| msgid "review"
-#~ msgid "review"
-#~ msgid_plural "reviews"
-#~ msgstr[0] "avis"
-#~ msgstr[1] "avis"
 
 #~ msgid "reviews"
 #~ msgstr "évaluations"

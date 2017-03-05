@@ -9,34 +9,28 @@ class CustomStarRatings {
 	
 	const RATED_POST_TYPES = array( 'recipe' );
 	
-	public $ratedPostTypes;
-	const RATING_CATEGORIES  = array( 
-		array (
-			'id'=>'rating',
-			'weight' => 2,
-			'title'=> 'Dish',
-			'question'=> 'How did you like this dish ?',
-		),
-		array( 
-			'id'=>'clarity',
-			'weight' => 1,
-			'title'=> 'Clarity',
-			'question'=> 'How clear was the recipe ?',
-		),
-	);
+	protected $ratedPostTypes;
+	protected $ratingCats;
 
 	public function __construct() {
 		
-		foreach (self::RATING_CATEGORIES as $id=>$cat) {
-			$this->ratingCats[$id] = array(
-				'id' => $cat['id'],
-				'weight' => $cat['weight'],
-				'title' => __( $cat['title'], 'custom-star-rating' ),
-				'question' => __( $cat['question'], 'custom-star-rating' ),
-			);
-		}
-		$this->ratingCats = self::RATING_CATEGORIES;
+		//$this->$ratedPostTypes = array( 'recipe' );
+		$this->$ratedPostTypes = self::RATED_POST_TYPES;
 		$this->ratedPostTypes = self::RATED_POST_TYPES;
+		$this->$ratingCats = array( 
+			array (
+				'id'=>'rating',
+				'weight' => 2,
+				'title'=> __('Dish','custom-star-rating'),
+				'question'=> __('How did you like this dish ?'),
+			),
+			array( 
+				'id'=>'clarity',
+				'weight' => 1,
+				'title'=> __('Clarity','custom-star-rating'),
+				'question'=> __('How clear was the recipe ?','custom-star-rating'),
+			),
+		);
 
 		//add_action( 'genesis_before_content', array($this,'display_debug_info') );
 	}

@@ -106,8 +106,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatings {
 			<?php
 			}
 			if ( $full_display && !empty( $votes[$id] ) ) {
-				$rating_plural=_n('review','reviews',$votes[$id],'custom-star-rating'); ?>
-				$rating_plural=__('review','custom-star-rating'); 
+				$rating_plural=sprintf(_n('%s review','%s reviews',$votes[$id],'custom-star-rating'), $votes[$id]); ?>
 				<td class="rating-details">(<?php echo $votes[$id] . ' ' . $rating_plural ?>)</td> 
 			<?php 
 			}?>

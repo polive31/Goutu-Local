@@ -234,8 +234,6 @@ $templates_dir = trailingslashit( get_stylesheet_directory() ) . 'templates/';
 
 // Load custom templates
 require_once $templates_dir . 'custom-recipe-template.php';
-//require_once $templates_dir . 'comments-list.php';
-
 
 /* =================================================================*/
 /* =              CUSTOM SCRIPTS ENQUEUE
@@ -250,7 +248,6 @@ function move_jquery_into_footer( $wp_scripts ) {
     $wp_scripts->add_data( 'jquery-migrate', 'group', true );
 }
 //add_action( 'wp_default_scripts', 'move_jquery_into_footer' );
-
 
 function enqueue_wpurp_js($js_enqueue) {
 		if ( is_singular('post') ) return '';
@@ -369,6 +366,35 @@ add_filter ( 'wpurp_assets_js', 'enqueue_wpurp_js', 15, 1 );
 //remove_action ( 'wp_enqueue_scripts', 'WPURP_Assets::enqueue');
 //wp_deregister_script('wpurp_script_minified');
 //wp_enqueue_script( 'wpurp_custom_script', get_stylesheet_directory_uri() . '/assets/js/wpurp_custom.js', array('jquery'), WPURP_VERSION, true );
+
+/* =================================================================*/
+/* =              GOOGLE TAG MANAGER 															 =*/
+/* =================================================================*/
+
+/* Add html with genesis actions
+--------------------------------------------------------------------*/
+add_action('wp_head','add_gtm_container_head');
+function add_gtm_container_head() {
+	?>
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-5P2DT2H');</script>
+	<!-- End Google Tag Manager -->
+	<?php
+}
+
+add_action( 'genesis_before', 'add_gtm_container_body' );
+function add_gtm_container_body() {
+	?>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5P2DT2H"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+	<?php
+}
 
 /* =================================================================*/
 /* =              CUSTOM LOGIN                                     =*/

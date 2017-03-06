@@ -55,15 +55,15 @@ class WPURP_Custom_Recipe_Template extends WPURP_Custom_Custom_Templates {
 					<!-- Recipe Share Button -->
 					<div class="recipe-button">
 						<a class="recipe-share-button" id="recipe-share">
-						</a>
 						<div class="button-caption"><?php echo __('Share','foodiepro'); ?></div>
+						</a>
 					</div>				
 												
 					<!-- Recipe Rate Button -->
 					<div class="recipe-button">
 						<a class="recipe-review-button" id="recipe-review">
-						</a>
 						<div class="button-caption"><?php echo __('Rate','foodiepro'); ?></div>
+						</a>
 					</div>			
 														
 				</div>

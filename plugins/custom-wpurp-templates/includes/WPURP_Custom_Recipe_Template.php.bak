@@ -48,8 +48,7 @@ class WPURP_Custom_Recipe_Template extends WPURP_Custom_Custom_Templates {
 					<!-- Add To Favorites Button -->
 					<div class="recipe-button">
 					<?php
-						//$favorite_recipe = new WPURP_Custom_Recipe_Favorite();
-						$favorite_recipe = new WPURP_Template_Recipe_Favorite();
+						$favorite_recipe = new WPURP_Custom_Recipe_Favorite();
 						echo $favorite_recipe->output( $recipe );?>
 					</div>				
 					

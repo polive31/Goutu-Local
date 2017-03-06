@@ -48,7 +48,7 @@ jQuery(document).ready(function() {
             };
 
             jQuery.post(wpurp_add_to_shopping_list.ajaxurl, data, function(html) {
-							console.log('Add to Favorites AJAX call completed');
+							console.log('Add to Shopping List AJAX call completed');
             });
             
         }    

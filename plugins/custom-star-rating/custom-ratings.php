@@ -22,12 +22,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 //*************************************************************************
 
 require 'includes/CustomStarRatings.php';
-require 'includes/CustomStarRatingsMetaUpdate.php';
+require 'includes/CustomStarRatingsMeta.php';
 require 'includes/CustomStarRatingsShortcodes.php';
 require 'includes/CustomStarRatingsCommentsList.php';
 
 new CustomStarRatings();
-new CustomStarRatingsMetaUpdate();
+new CustomStarRatingsMeta();
 new CustomStarRatingsShortcodes();
 new CustomStarRatingsCommentsList();
 	

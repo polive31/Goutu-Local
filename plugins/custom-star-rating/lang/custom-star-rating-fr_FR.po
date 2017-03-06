@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: custom-star-rating\n"
-"POT-Creation-Date: 2017-03-04 16:45+0100\n"
-"PO-Revision-Date: 2017-03-04 16:45+0100\n"
+"POT-Creation-Date: 2017-03-06 20:02+0100\n"
+"PO-Revision-Date: 2017-03-06 20:05+0100\n"
 "Last-Translator: \n"
 "Language-Team: goutu.org <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -24,37 +24,57 @@ msgstr "Plat"
 msgid "How did you like this dish ?"
 msgstr "Appréciation du plat"
 
-#: includes/CustomStarRatings.php:29
-msgid "Clarity"
-msgstr "Clarté"
-
-#: includes/CustomStarRatings.php:30
-msgid "How clear was the recipe ?"
-msgstr "Clarté de la recette"
-
-#: includes/CustomStarRatings.php:61
-msgid "Not rated"
-msgstr "Pas encore évalué"
-
-#: includes/CustomStarRatings.php:63
+#: includes/CustomStarRatings.php:26
 msgid "Really not good"
 msgstr "Vraiment pas bon"
 
-#: includes/CustomStarRatings.php:65
+#: includes/CustomStarRatings.php:27
 msgid "Not so good"
 msgstr "Pas très bon"
 
-#: includes/CustomStarRatings.php:67
+#: includes/CustomStarRatings.php:28
 msgid "Rather good"
 msgstr "Assez bon"
 
-#: includes/CustomStarRatings.php:69
+#: includes/CustomStarRatings.php:29
 msgid "Very good"
 msgstr "Très bon"
 
-#: includes/CustomStarRatings.php:71
+#: includes/CustomStarRatings.php:30
 msgid "Delicious"
-msgstr "Succulent"
+msgstr "Délicieux !"
+
+#: includes/CustomStarRatings.php:36
+msgid "Clarity"
+msgstr "Clarté"
+
+#: includes/CustomStarRatings.php:37
+msgid "How clear was the recipe ?"
+msgstr "Clarté de la recette"
+
+#: includes/CustomStarRatings.php:39
+msgid "Confusing"
+msgstr "Confus"
+
+#: includes/CustomStarRatings.php:40
+msgid "Not so clear"
+msgstr "Pas très clair"
+
+#: includes/CustomStarRatings.php:41
+msgid "Rather clear"
+msgstr "Assez clair"
+
+#: includes/CustomStarRatings.php:42
+msgid "Very clear"
+msgstr "Très clair"
+
+#: includes/CustomStarRatings.php:43
+msgid "Crystal clear even for kitchen dummies"
+msgstr "Parfaitement clair même pour les débutants !"
+
+#: includes/CustomStarRatings.php:73
+msgid "Not rated"
+msgstr "Pas encore évalué"
 
 #: includes/CustomStarRatingsCommentsList.php:65
 #, php-format
@@ -79,26 +99,26 @@ msgstr "Le %1$s à %2$s"
 msgid "(Edit)"
 msgstr ""
 
-#: includes/CustomStarRatingsShortcodes.php:21
+#: includes/CustomStarRatingsShortcodes.php:43
 msgid "Send"
 msgstr "Envoyer"
 
-#: includes/CustomStarRatingsShortcodes.php:24
+#: includes/CustomStarRatingsShortcodes.php:46
 msgid "Reply Title"
 msgstr ""
 
-#: includes/CustomStarRatingsShortcodes.php:25
+#: includes/CustomStarRatingsShortcodes.php:47
 msgid "Cancel"
 msgstr "Annuler"
 
-#: includes/CustomStarRatingsShortcodes.php:109
+#: includes/CustomStarRatingsShortcodes.php:131
 #, php-format
 msgid "%s review"
 msgid_plural "%s reviews"
 msgstr[0] "%s avis"
 msgstr[1] "%s avis"
 
-#: includes/CustomStarRatingsShortcodes.php:151
+#: includes/CustomStarRatingsShortcodes.php:173
 msgid "Comment"
 msgstr "Commentaire"
 

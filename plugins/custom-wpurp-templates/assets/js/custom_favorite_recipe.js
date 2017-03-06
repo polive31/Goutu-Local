@@ -11,7 +11,19 @@ jQuery(document).ready(function(){
         var button = jQuery(this);
         
 				console.log('ADD TO FAVORITES CLICK !!!!');
-
+				var buttonTitle = button.prop('title');
+				var buttonTitleAlt = button.data('title-alt');
+				button.prop('title', buttonTitleAlt);
+				button.data('title-alt', buttonTitle);
+				if(button.hasClass('is-favorite')) {
+					// Activate shopping list button
+					button.removeClass('is-favorite');
+				}
+				else {
+					button.addClass('is-favorite');
+				}
+		        
+				// Prep ajax call
         var recipeId = button.data('recipe-id');
 				//console.log('Recipe ID :'+recipeId);
 
@@ -23,17 +35,7 @@ jQuery(document).ready(function(){
 
         jQuery.post(wpurp_favorite_recipe.ajaxurl, data, function(html) {
 					console.log('Add to Favorites AJAX call completed');
-            var buttonTitle = button.prop('title');
-            var buttonTitleAlt = button.data('title-alt');
-            button.prop('title', buttonTitleAlt);
-            button.data('title-alt', buttonTitle);
-		        if(button.hasClass('is-favorite')) {
-		            // Activate shopping list button
-							button.removeClass('is-favorite');
-		          }
-		        else {
-		          button.addClass('is-favorite');
-		        }
+
         });
     });
 });

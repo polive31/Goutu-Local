@@ -44,7 +44,4 @@ function custom_star_rating_load_textdomain() {
 add_action('plugins_loaded', 'custom_star_rating_load_textdomain');
 
 
-add_action( 'comment_post', 'dbg_update_comment_post_meta', 10, 3 );
-
-
 ?>

@@ -22,12 +22,26 @@ class CustomStarRatings {
 				'weight' => 2,
 				'title'=> __('Dish','custom-star-rating'),
 				'question'=> __('How did you like this dish ?'),
+				'caption' => array(
+								__('Really not good','custom-star-rating'),
+								__('Not so good','custom-star-rating'),
+								__('Rather good','custom-star-rating'),
+								__('Very good','custom-star-rating'),
+								__('Delicious','custom-star-rating'),
+				)	
 			),
 			array( 
 				'id'=>'clarity',
 				'weight' => 1,
 				'title'=> __('Clarity','custom-star-rating'),
 				'question'=> __('How clear was the recipe ?','custom-star-rating'),
+				'caption' => array(
+								__('Confusing','custom-star-rating'),
+								__('Not so clear','custom-star-rating'),
+								__('Rather clear','custom-star-rating'),
+								__('Very clear','custom-star-rating'),
+								__('Crystal clear even for kitchen dummies','custom-star-rating'),
+				)	
 			),
 		);
 
@@ -54,22 +68,14 @@ class CustomStarRatings {
 	
 	/* Rating caption
 	------------------------------------------------------------*/
-	public function rating_caption($val) {
+	public function rating_caption($val,$cat) {
 		//$val = intval($rating_val);
-		switch ($val) {
-			case "0":
-				return __('Not rated','custom-star-rating');
-			case $val <= "1":
-				return __('Really not good','custom-star-rating');
-			case $val <= "2":
-				return __('Not so good','custom-star-rating');
-			case $val <= "3":
-				return __('Rather good','custom-star-rating');
-			case $val <= "4":
-				return __('Very good','custom-star-rating');
-			case $val <= "5":
-				return __('Delicious','custom-star-rating');
+		if ($val==0) return __('Not rated','custom-star-rating');
+		$val=ceil($val)-1;
+		if ( isset( $this->ratingCats[$cat]['caption'] )) {
+			return __($this->ratingCats[$cat]['caption'][$val], 'custom-star-rating');
 		}
+		return '';
 	}
 
 

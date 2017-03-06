@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-class CustomStarRatingsMetaUpdate extends CustomStarRatings {
+class CustomStarRatingsMeta extends CustomStarRatings {
 	
 	public function __construct() {
 		parent::__construct();
@@ -157,6 +157,34 @@ class CustomStarRatingsMetaUpdate extends CustomStarRatings {
 			$ip = $_SERVER['REMOTE_ADDR'];
 		}
 		return apply_filters( 'wpb_get_ip', $ip );
+	}
+
+	
+	/* Get Comment Rating
+	------------------------------------------------------------*/
+	protected function get_comment_rating($comment_id,$cat_id) {
+		$rating = get_comment_meta($comment_id, 'user_rating_' . $cat_id, true);
+		return $rating;
+	}
+	
+	/* Get Post Rating
+	------------------------------------------------------------*/
+	protected function get_post_rating($post_id,$cat_id) {
+		$rating[$id] = get_post_meta( $post_id , 'user_rating_' . $cat_id, true );
+		return $rating;
+	}
+	
+	/* Get Post Rating & votes
+	------------------------------------------------------------*/
+	protected function get_post_stats($ratings,$cat_id) {
+		$cat_ratings = array_column($ratings, $cat['id']);
+		if (isset ( $cat_ratings) ) {
+			$stats = $this->get_rating_stats( $cat_ratings );
+			//$this->dbg(' Stats for this category : ', $stats );	
+			$rating[$id] = $stats['rating'];
+			$votes[$id] = $stats['votes'];
+		}
+		return $stats;
 	}
 
 }

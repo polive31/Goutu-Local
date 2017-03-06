@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class CustomStarRatingsShortcodes extends CustomStarRatings {
+class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 	
 	public function __construct() {
 		parent::__construct();
@@ -15,22 +15,25 @@ class CustomStarRatingsShortcodes extends CustomStarRatings {
 	}
 
 
-	/* Rating value in JSON+LD format shorcode 
+	/* Rating + Votes in string format shorcode 
 	-----------------------------------------------*/
 	public function display_json_ld_rating($atts) {
 		$a = shortcode_atts( array(
-			'category' => 'rating', //any rating category...
+			'category' => 'global', //any rating category...
 		), $atts );
 		
-		
 		$post_id = get_the_id();
-		$ratings = get_post_meta( $post_id , 'user_ratings' );	
-		
-		$ratings_cat = array_column($ratings, $a['category']);
-		if ( isset($ratings_cat) )
-			$stats = $this->get_rating_stats( $ratings_cat );
-
-		$stats = implode(' ', $stats);
+		$ratings = get_post_meta( $post_id , 'user_ratings' );
+			
+		$rating = get_post_meta( $post_id , 'user_ratings_' . $a['category'] );	
+		$votes = count ($ratings);
+			
+//		$ratings_cat = array_column($ratings, $a['category']);
+//		if ( isset($ratings_cat) )
+//			$stats = $this->get_rating_stats( $ratings_cat );
+		//$stats = implode(' ', $stats);
+	
+		$stats = $rating . ' ' . $votes;
 		return $stats;
     
 	}
@@ -60,75 +63,71 @@ class CustomStarRatingsShortcodes extends CustomStarRatings {
 	}
 
 
-	/* Output post rating shortcode 
+	/* Output star rating shortcode 
 	---------------------------------------------*/
 	public function display_star_rating_shortcode($atts) {
 		$a = shortcode_atts( array(
 			'source' => 'post', //comment
-			'type' => 'stars', //full
-			'rating_cats' => 'all',  //Default: "id1 id2..."
+			'type' => 'normal', //minimal = only stars, normal = category caption + stars, full = with votes
+			'cats' => 'all',  // "global rating clarity...", global not displayed unless mentioned
 		), $atts );
 
+		$display_cats = explode($a['cats']);
+		$this->dbg('Display cats for shortcode',$display_cats);
 		
-		$full_display=!($a['type']=='stars');
+		$display_type = $a['type'];
 		$comment_rating = ( $a['source'] == 'comment');
 		
 		if ( $comment_rating ) {
-			//$this->dbg('In COMMENT display-star-rating shortcode','');
 			$comment_id = get_comment_ID();
-			foreach ($this->ratingCats as $id=>$cat) {
-				$rating[$id] = get_comment_meta($comment_id, 'user_rating_' . $cat['id'], true);
-			}
 		}
-		
 		else { // Rating in post meta
-			//$this->dbg('In POST display-star-rating shortcode','');
 			$post_id = get_the_id();
-			if ($full_display) { // displays number of votes
+			if ($display_type == 'full') { // displays number of votes
 				$ratings = get_post_meta( $post_id , 'user_ratings' );
-				//$this->dbg('In POST display-star-rating shortcode','');
-				//$this->dbg('$ratings: ',$ratings);
-				foreach ($this->ratingCats as $id=>$cat) {
-					$cat_ratings = array_column($ratings, $cat['id']);
-					if (isset ( $cat_ratings) ) {
-						$stats = $this->get_rating_stats( $cat_ratings );
-						//$this->dbg(' Stats for this category : ', $stats );	
-						
-						$rating[$id] = $stats['rating'];
-						$votes[$id] = $stats['votes'];
-					}
-				}	
 			}
-			else { // displays only stars
-				foreach ($this->ratingCats as $id=>$cat) {
-					$rating[$id] = get_post_meta( $post_id , 'user_rating_' . $cat['id'], true );
-				}
-			}	
 		}
 
-
+	
 		ob_start();
 	
 		?>
 		<table class="ratings-table">
 		<?php
 		foreach ($this->ratingCats as $id=>$cat) {
-			$rating[$id]=empty($rating[$id])?0:$rating[$id];
-			$stars = floor($rating[$id]);
-			$half = ($rating[$id]-$stars) >= 0.5;
+			if ( $display_cats!='all' && !(in_array($cat['id'],$display_cats) ) ) continue;
+	
+			if ( $comment_rating ) {
+				$rating=$this->get_comment_rating($comment_id,$cat_id);
+			}
+			elseif ($display_type == 'full') { // displays number of votes
+				$stats=$this->get_post_stats($ratings,$cat_id);
+				$rating=$stats['rating'];
+				$votes=$stats['votes'];
+			}
+			else {
+				$ratings = $this->get_post_rating( $post_id , 'user_ratings' );
+			}
+
+			$rating=empty($rating)?0:$rating;
+			$stars = floor($rating);
+			$half = ($rating-$stars) >= 0.5;
 			?>
 			<tr>
 			<?php
-			if ( ! ( $comment_rating && $rating[$id]==0 ) ) { // Don't show empty ratings in comments 	
-				?> 
+			if ( ! ( $comment_rating && $rating==0 ) ) { // Don't show empty ratings in comments 	
+				if ( $display_type!='minimal' ) {
+				?>
 				<td class="rating-category"><?php echo __($cat['title'], 'custom-star-rating')?></td>
-				<td class="rating" title="<?php echo $rating[$id]?> : <?php echo $this->rating_caption($rating[$id])?>">
+				<?php
+				}?>
+				<td class="rating" title="<?php echo $rating[$id]?> : <?php echo $this->rating_caption($rating,$id)?>">
 				<?php echo $this->output_stars($stars, $half)?>
 				</td>
 			<?php
 			}
-			if ( $full_display && !empty( $votes[$id] ) ) {
-				$rating_plural=sprintf(_n('%s review','%s reviews',$votes[$id],'custom-star-rating'), $votes[$id]); ?>
+			if ( $display_type=='full' && !empty( $votes ) ) {
+				$rating_plural=sprintf(_n('%s review','%s reviews',$votes,'custom-star-rating'), $votes); ?>
 				<td class="rating-details">(<?php echo $rating_plural ?>)</td> 
 			<?php 
 			}?>
@@ -146,6 +145,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatings {
 
 		return $html;
 	}
+
 
 
 	/* Custom Comment Form 
@@ -186,15 +186,15 @@ class CustomStarRatingsShortcodes extends CustomStarRatings {
 		
 		$html= '<div class="rating-wrapper" id="star-rating-form">';
 		$html.='<input type="radio" class="rating-input" id="rating-input-' . $id . '-5" name="rating-' . $id . '" value="5"/>';
-		$html.='<label for="rating-input-' . $id . '-5" class="rating-star" title="' . $this->rating_caption(5) . '"></label>';
+		$html.='<label for="rating-input-' . $id . '-5" class="rating-star" title="' . $this->rating_caption(5, $id) . '"></label>';
 		$html.='<input type="radio" class="rating-input" id="rating-input-' . $id . '-4" name="rating-' . $id . '" value="4"/>';
-		$html.='<label for="rating-input-' . $id . '-4" class="rating-star" title="' . $this->rating_caption(4) . '"></label>';
+		$html.='<label for="rating-input-' . $id . '-4" class="rating-star" title="' . $this->rating_caption(4, $id) . '"></label>';
 		$html.='<input type="radio" class="rating-input" id="rating-input-' . $id . '-3" name="rating-' . $id . '" value="3"/>';
-		$html.='<label for="rating-input-' . $id . '-3" class="rating-star" title="' . $this->rating_caption(3) . '"></label>';
+		$html.='<label for="rating-input-' . $id . '-3" class="rating-star" title="' . $this->rating_caption(3, $id) . '"></label>';
 		$html.='<input type="radio" class="rating-input" id="rating-input-' . $id . '-2" name="rating-' . $id . '" value="2"/>';
-		$html.='<label for="rating-input-' . $id . '-2" class="rating-star" title="' . $this->rating_caption(2) . '"></label>';
+		$html.='<label for="rating-input-' . $id . '-2" class="rating-star" title="' . $this->rating_caption(2, $id) . '"></label>';
 		$html.='<input type="radio" class="rating-input" id="rating-input-' . $id . '-1" name="rating-' . $id . '" value="1"/>';
-		$html.='<label for="rating-input-' . $id . '-1" class="rating-star" title="' . $this->rating_caption(1) . '"></label>';
+		$html.='<label for="rating-input-' . $id . '-1" class="rating-star" title="' . $this->rating_caption(1, $id) . '"></label>';
 		$html.='</div>';
 	  
 	  return $html;

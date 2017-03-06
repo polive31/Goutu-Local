@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: custom-star-rating\n"
-"POT-Creation-Date: 2017-03-04 16:45+0100\n"
+"POT-Creation-Date: 2017-03-06 20:01+0100\n"
 "PO-Revision-Date: 2017-02-05 11:34+0100\n"
 "Last-Translator: \n"
 "Language-Team: goutu.org <psc.olv@gmail.com>\n"
@@ -25,36 +25,56 @@ msgstr ""
 msgid "How did you like this dish ?"
 msgstr ""
 
-#: includes/CustomStarRatings.php:29
-msgid "Clarity"
-msgstr ""
-
-#: includes/CustomStarRatings.php:30
-msgid "How clear was the recipe ?"
-msgstr ""
-
-#: includes/CustomStarRatings.php:61
-msgid "Not rated"
-msgstr ""
-
-#: includes/CustomStarRatings.php:63
+#: includes/CustomStarRatings.php:26
 msgid "Really not good"
 msgstr ""
 
-#: includes/CustomStarRatings.php:65
+#: includes/CustomStarRatings.php:27
 msgid "Not so good"
 msgstr ""
 
-#: includes/CustomStarRatings.php:67
+#: includes/CustomStarRatings.php:28
 msgid "Rather good"
 msgstr ""
 
-#: includes/CustomStarRatings.php:69
+#: includes/CustomStarRatings.php:29
 msgid "Very good"
 msgstr ""
 
-#: includes/CustomStarRatings.php:71
+#: includes/CustomStarRatings.php:30
 msgid "Delicious"
+msgstr ""
+
+#: includes/CustomStarRatings.php:36
+msgid "Clarity"
+msgstr ""
+
+#: includes/CustomStarRatings.php:37
+msgid "How clear was the recipe ?"
+msgstr ""
+
+#: includes/CustomStarRatings.php:39
+msgid "Confusing"
+msgstr ""
+
+#: includes/CustomStarRatings.php:40
+msgid "Not so clear"
+msgstr ""
+
+#: includes/CustomStarRatings.php:41
+msgid "Rather clear"
+msgstr ""
+
+#: includes/CustomStarRatings.php:42
+msgid "Very clear"
+msgstr ""
+
+#: includes/CustomStarRatings.php:43
+msgid "Crystal clear even for kitchen dummies"
+msgstr ""
+
+#: includes/CustomStarRatings.php:73
+msgid "Not rated"
 msgstr ""
 
 #: includes/CustomStarRatingsCommentsList.php:65
@@ -80,25 +100,25 @@ msgstr ""
 msgid "(Edit)"
 msgstr ""
 
-#: includes/CustomStarRatingsShortcodes.php:21
+#: includes/CustomStarRatingsShortcodes.php:43
 msgid "Send"
 msgstr ""
 
-#: includes/CustomStarRatingsShortcodes.php:24
+#: includes/CustomStarRatingsShortcodes.php:46
 msgid "Reply Title"
 msgstr ""
 
-#: includes/CustomStarRatingsShortcodes.php:25
+#: includes/CustomStarRatingsShortcodes.php:47
 msgid "Cancel"
 msgstr ""
 
-#: includes/CustomStarRatingsShortcodes.php:109
+#: includes/CustomStarRatingsShortcodes.php:131
 #, php-format
 msgid "%s review"
 msgid_plural "%s reviews"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/CustomStarRatingsShortcodes.php:151
+#: includes/CustomStarRatingsShortcodes.php:173
 msgid "Comment"
 msgstr ""

@@ -1,0 +1,201 @@
+var wpurp_adjustable_servings = {};
+
+wpurp_adjustable_servings.updateAmounts = function(amounts, servings_original, servings_new)
+{
+    amounts.each(function() {
+        var amount = parseFloat(jQuery(this).data('normalized'));
+        var fraction = jQuery(this).data('fraction');
+
+        if(servings_original == servings_new)
+        {
+            jQuery(this).text(jQuery(this).data('original'));
+        }
+        else
+        {
+            if(!isFinite(amount)) {
+                jQuery(this).addClass('recipe-ingredient-nan');
+            } else {
+                var new_amount = servings_new * amount/servings_original;
+                var new_amount_text = wpurp_adjustable_servings.toFixed(new_amount, fraction);
+                jQuery(this).text(new_amount_text);
+            }
+        }
+    });
+}
+
+wpurp_adjustable_servings.toFixed = function(amount, fraction)
+{
+    if(fraction) {
+        var fractioned_amount = Fraction(amount.toString()).snap();
+        if(fractioned_amount.denominator < 100) {
+            return fractioned_amount;
+        }
+    }
+
+    if(amount == '' || amount == 0) {
+        return '';
+    }
+    // reformat to fixed
+    var precision = parseInt(wpurp_servings.precision);
+    var formatted = amount.toFixed(precision);
+
+    // increase the precision if reformated to 0.00, failsafe for endless loop
+    while(parseFloat(formatted) == 0) {
+        precision++;
+        formatted = amount.toFixed(precision);
+
+        if(precision > 10) {
+            return '';
+        }
+    }
+
+    // ends with .00, remove
+    if(precision > 0) {
+        var zeroes = Array(precision+1).join('0');
+        formatted = formatted.replace(new RegExp('\.' + zeroes + '$'),'');
+    }
+
+    // Change decimal character
+    if(typeof wpurp_servings !== 'undefined') {
+        formatted = formatted.replace('.', wpurp_servings.decimal_character);
+    }
+
+    return formatted;
+}
+
+
+jQuery(document).ready(function() {
+
+    jQuery(document).on('keyup change', '.adjust-recipe-servings', function(e) {
+				console.log('Adjust Recipe Servings change !');
+        var servings_input = jQuery(this);
+
+        var amounts = servings_input.parents('.wpurp-container').find('.wpurp-recipe-ingredient-quantity');
+        console.log(amounts);
+        var servings_original = parseFloat(servings_input.data('original'));
+        var servings_new = servings_input.val();
+
+        if(isNaN(servings_new) || servings_new <= 0){
+            servings_new = 1;
+        }
+
+        wpurp_adjustable_servings.updateAmounts(amounts, servings_original, servings_new);
+
+        RecipePrintButton.update(servings_input.parents('.wpurp-container'));
+    });
+
+    jQuery(document).on('blur', '.adjust-recipe-servings', function(e) {
+        var servings_input = jQuery(this);
+
+        var servings_new = servings_input.val();
+
+        if(isNaN(servings_new) || servings_new <= 0){
+            servings_new = 1;
+        }
+
+        servings_input.parents('.wpurp-container').find('.adjust-recipe-servings').each(function() {
+            jQuery(this).val(servings_new);
+        });
+
+        RecipePrintButton.update(servings_input.parents('.wpurp-container'));
+    });
+});
+
+jQuery(document).ready(function() {
+	console.log('Mon premier message Javascript !!!!');
+});
+
+
+RecipePrintButton.update = function(recipe) {
+    recipe.find('.wpurp-recipe-print-button').each(function() {
+        var button = jQuery(this);
+
+        var link = button.data('original-link');
+
+        if(!link) {
+            link = button.attr('href');
+            button.data('original-link', link);
+        }
+
+        var separator = wpurp_print.permalinks ? '/' : '=';
+
+        if(link.slice(-1) != separator) {
+            link += separator;
+        }
+
+        var system = recipe.find('select.adjust-recipe-unit:visible option:selected').text();
+
+        if(system) {
+            var system_link = system.toLowerCase()
+                .replace(/ /g,'-')
+                .replace(/[-]+/g, '-')
+                .replace(/[^\w-]+/g,'');
+
+            link += system_link + '/';
+        }
+
+        // Check if there is a servings changer (both free and Premium)
+        var servings_input = recipe.find('input.adjust-recipe-servings:visible');
+        if(servings_input.length == 0) {
+            servings_input = recipe.find('input.advanced-adjust-recipe-servings:visible');
+        }
+
+        if(servings_input.length != 0) {
+            link += servings_input.val();
+        }
+
+        button.attr('href', link);
+    });
+};
+
+jQuery(document).ready(function() {
+
+    jQuery(document).on('click', '.wpurp-recipe-print-button', function(e) {
+        // RecipeId only present when using old way
+				console.log('Je suis dans Print !!!!');
+        var recipeId = jQuery(this).data('recipe-id');
+        if(recipeId) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            var recipe = jQuery(this).parents('.wpurp-container');
+
+            wpurp_print.servings_original = parseFloat(recipe.data('servings-original'));
+            wpurp_print.old_system = parseInt(recipe.data('system-original'));
+            wpurp_print.new_system = recipe.find('select.adjust-recipe-unit option:selected').val();
+
+            // Check if the page was in RTL
+            wpurp_print.rtl = jQuery('body').hasClass('rtl');
+
+            // Check if there is a servings changer (both free and Premium)
+            var servings_input = recipe.find('input.adjust-recipe-servings');
+            if(servings_input.length == 0) {
+                servings_input = recipe.find('input.advanced-adjust-recipe-servings');
+            }
+
+            // Take servings from serving changer if available or just use original
+            if(servings_input.length == 0) {
+                wpurp_print.servings_new = wpurp_print.servings_original;
+            } else {
+                wpurp_print.servings_new = parseFloat(servings_input.val());
+            }
+
+            // Get print template via AJAX
+            wpurp_print.template = '';
+
+            var data = {
+                action: 'get_recipe_template',
+                security: wpurp_print.nonce,
+                recipe_id: recipeId
+            };
+
+            jQuery.post(wpurp_print.ajaxurl, data, function(template) {
+                wpurp_print.template = template.output;
+                wpurp_print.fonts = template.fonts;
+            }, 'json');
+
+            // Open print version of recipe in blank page
+            window.open(wpurp_print.coreUrl + '/templates/print.php', '_blank');
+        }
+    });
+});

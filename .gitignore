@@ -70,7 +70,8 @@ plugins/*
 !plugins/custom_shortcodes/
 !plugins/custom_widgets/
 !plugins/custom-star-rating/
-!plugins/custom-star-ratings-back/
+!plugins/custom-gallery-shortcode/
+!plugins/custom-wpurp-templates/
 !plugins/recent-posts-widget-extended/
 #!plugins/frontier-post/
 #plugins/frontier-post/*

@@ -1,0 +1,103 @@
+jQuery(document).ready(function() {
+	console.log('WPURP_DEBUG.JS CHARGE !!!!');
+});
+
+
+jQuery(document).ready(function() {
+
+    jQuery(document).on('click', '.wpurp-recipe-add-to-shopping-list', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        var button = jQuery(this);
+				console.log('ADD TO SHOPPING LIST CLICK !!!!');
+
+        if(!button.hasClass('in-shopping-list')) {
+            // Activate shopping list button
+            button.addClass('in-shopping-list');
+            
+            var recipeId = button.data('recipe-id');
+            var recipe = button.parents('.wpurp-container');
+            var servings = 0;
+            // Check if there is a servings changer (both free and Premium)
+            var servings_input = recipe.find('input.adjust-recipe-servings');
+            
+            if(servings_input.length == 0) {
+                servings_input = recipe.find('input.advanced-adjust-recipe-servings');
+            }
+
+            // Take servings from serving changer if available
+            if(servings_input.length != 0) {
+                servings = parseInt(servings_input.val());
+            }
+
+            var data = {
+                action: 'add_to_shopping_list',
+                security: wpurp_add_to_shopping_list.nonce,
+                recipe_id: recipeId,
+                servings_wanted: servings
+            };
+            
+						console.log( 'Data : ' );
+						console.log( data );
+
+            jQuery.post(wpurp_add_to_shopping_list.ajaxurl, data, function(html) {
+
+								console.log('Class added !!!!');
+                
+                if(button.next().hasClass('recipe-tooltip-content')) {
+                    var tooltip = button.next().find('.tooltip-shown').first();
+                    var tooltip_alt = button.next().find('.tooltip-alt').first();
+
+                    var tooltip_text = tooltip.html();
+                    var tooltip_alt_text = tooltip_alt.html();
+
+                    tooltip.html(tooltip_alt_text);
+                    tooltip_alt.html(tooltip_text);
+                }
+            });
+        }
+    });
+});
+
+jQuery(document).ready(function(){
+    jQuery(document).on('click', '.wpurp-recipe-favorite', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        var button = jQuery(this);
+        var icon = button.find('i');
+
+        var recipeId = button.data('recipe-id');
+
+        var data = {
+            action: 'favorite_recipe',
+            security: wpurp_favorite_recipe.nonce,
+            recipe_id: recipeId
+        };
+
+        jQuery.post(wpurp_favorite_recipe.ajaxurl, data, function(html) {
+            var icon1 = icon.data('icon');
+            var icon2 = icon.data('icon-alt');
+
+            if(icon.hasClass(icon1)) {
+                icon.removeClass(icon1);
+                icon.addClass(icon2);
+            } else {
+                icon.removeClass(icon2);
+                icon.addClass(icon1);
+            }
+
+            /*if(button.next().hasClass('recipe-tooltip-content')) {
+                var tooltip = button.next().find('.tooltip-shown').first();
+                var tooltip_alt = button.next().find('.tooltip-alt').first();
+
+                var tooltip_text = tooltip.html();
+                var tooltip_alt_text = tooltip_alt.html();
+
+                tooltip.html(tooltip_alt_text);
+                tooltip_alt.html(tooltip_text);
+            }*/
+        });
+    });
+});

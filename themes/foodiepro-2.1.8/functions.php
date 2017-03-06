@@ -380,7 +380,7 @@ function wprpe_add_rating($output, $args ) {
 		$disp_rating = substr($args['cssID'],1,1);
 		//PC::debug( array('WPRPE Output add rating'=>$output) );
 		if ( $disp_rating == '1') {
-			$output .= '<div class="rpwe-title">' . do_shortcode('[display-star-rating]') . '</div>';
+			$output .= '<div class="rpwe-title">' . do_shortcode('[display-star-rating display="minimal" category="global"]') . '</div>';
 		}
 	return $output;
 }
@@ -530,10 +530,7 @@ function add_archive_widgeted_area() {
 -----------------------------------------------------------------------------*/
 function archive_title($title) {
 	if ( is_tax() || is_search() ) :
-//		$saved_rating = get_post_meta( get_the_ID(), 'recipe_user_ratings_rating' );
-//		if (empty($saved_rating)) $saved_rating=array(0 =>'0');
-//		$title .= '<div class="rating" id="stars-' . $saved_rating[0] . '"></div>';
-			$title .= do_shortcode('[display-star-rating]');
+			$title .= do_shortcode('[display-star-rating category="global" display="minimal"]');
 	endif;
 
 	if ( is_tax('cuisine', array('france', 'europe', 'asie', 'afrique', 'amerique-nord', 'amerique-sud') ) ) :

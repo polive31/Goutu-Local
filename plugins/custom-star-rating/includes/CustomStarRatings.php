@@ -26,7 +26,7 @@ class CustomStarRatings {
 								__('Really not good','custom-star-rating'),
 								__('Not so good','custom-star-rating'),
 								__('Rather good','custom-star-rating'),
-								__('Very good','custom-star-rating'),
+								__('Tasty','custom-star-rating'),
 								__('Delicious','custom-star-rating'),
 				)	
 			),
@@ -43,6 +43,19 @@ class CustomStarRatings {
 								__('Crystal clear even for kitchen dummies','custom-star-rating'),
 				)	
 			),
+		);
+		$this->ratingGlobal = array( 
+			array (
+				'id'=>'global',
+				'title'=> __('Overall','custom-star-rating'),
+				'caption' => array(
+								__('Disappointing recipe','custom-star-rating'),
+								__('Not so good','custom-star-rating'),
+								__('Rather good','custom-star-rating'),
+								__('Excellent recipe','custom-star-rating'),
+								__('Outstanding recipe','custom-star-rating'),
+				)	
+			)
 		);
 
 		//add_action( 'genesis_before_content', array($this,'display_debug_info') );

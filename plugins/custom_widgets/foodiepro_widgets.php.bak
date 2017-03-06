@@ -37,6 +37,7 @@ array( 'description' => __( 'Displays a dropdown list allowing to sort posts', '
 public function widget( $args, $instance ) {
 	global $wp;
 	
+	/* Do not display in the case of a WPURP dropdown search widget result */
 	$url = $_SERVER["REQUEST_URI"];
 	$WPURP_search = strpos($url, 'wpurp-search');
 	if ($WPURP_search)
@@ -46,7 +47,7 @@ public function widget( $args, $instance ) {
 	// before and after widget arguments are defined by themes
 	echo $args['before_widget'];
 	//if ( ! empty( $title ) )
-	echo 'TOTO !!!!';
+	$search_term='';
 	if ( is_tax() )
 		echo $args['before_title'] . __('Sort recipes', 'foodiepro') . $args['after_title'];
 	elseif ( is_archive() ) 
@@ -54,6 +55,7 @@ public function widget( $args, $instance ) {
 	elseif ( is_search() ) 
 		echo $args['before_title'] . __('Sort results', 'foodiepro') . $args['after_title'];
 	// Start of widget code
+	
 	else {
 		$search_term = get_search_query();
 		if ( empty( $search_term ) )

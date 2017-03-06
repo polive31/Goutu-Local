@@ -170,7 +170,7 @@ class CustomStarRatingsMeta extends CustomStarRatings {
 	/* Get Post Rating
 	------------------------------------------------------------*/
 	protected function get_post_rating($post_id,$cat_id) {
-		$rating[$id] = get_post_meta( $post_id , 'user_rating_' . $cat_id, true );
+		$rating = get_post_meta( $post_id , 'user_rating_' . $cat_id, true );
 		return $rating;
 	}
 	
@@ -178,11 +178,9 @@ class CustomStarRatingsMeta extends CustomStarRatings {
 	------------------------------------------------------------*/
 	protected function get_post_stats($ratings,$cat_id) {
 		$cat_ratings = array_column($ratings, $cat_id);
-		if (isset ( $cat_ratings) ) {
+		if (isset ( $cat_ratings ) ) {
 			$stats = $this->get_rating_stats( $cat_ratings );
 			//$this->dbg(' Stats for this category : ', $stats );	
-			$rating[$id] = $stats['rating'];
-			$votes[$id] = $stats['votes'];
 		}
 		return $stats;
 	}

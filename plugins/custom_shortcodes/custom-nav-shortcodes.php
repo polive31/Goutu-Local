@@ -35,6 +35,7 @@ function list_terms_taxonomy( $atts ) {
 
 
 // Extraction of taxonomy from current url
+	$all_url='#';
 	if ($taxonomy == 'url') {
 		$obj = get_queried_object();
 		$taxonomy = $obj -> taxonomy;
@@ -191,7 +192,7 @@ function add_index_link($atts) {
 		}
 		
 	else:
-			$url .= 'javascript:history.back()';
+			$url = 'javascript:history.back()';
 			$msg = __('Previous page','foodiepro');
 	endif;
 	

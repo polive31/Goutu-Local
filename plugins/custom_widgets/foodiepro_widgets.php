@@ -37,6 +37,7 @@ array( 'description' => __( 'Displays a dropdown list allowing to sort posts', '
 public function widget( $args, $instance ) {
 	global $wp;
 	
+	/* Do not display in the case of a WPURP dropdown search widget result */
 	$url = $_SERVER["REQUEST_URI"];
 	$WPURP_search = strpos($url, 'wpurp-search');
 	if ($WPURP_search)
@@ -46,6 +47,7 @@ public function widget( $args, $instance ) {
 	// before and after widget arguments are defined by themes
 	echo $args['before_widget'];
 	//if ( ! empty( $title ) )
+	$search_term='';
 	if ( is_tax() )
 		echo $args['before_title'] . __('Sort recipes', 'foodiepro') . $args['after_title'];
 	elseif ( is_archive() ) 
@@ -53,6 +55,7 @@ public function widget( $args, $instance ) {
 	elseif ( is_search() ) 
 		echo $args['before_title'] . __('Sort results', 'foodiepro') . $args['after_title'];
 	// Start of widget code
+	
 	else {
 		$search_term = get_search_query();
 		if ( empty( $search_term ) )
@@ -73,11 +76,11 @@ public function widget( $args, $instance ) {
 	<!-- <option class="level-0 last" value="meta_value_num&order=DESC&meta_key=recipe_user_ratings_rating">'. __('Rating', 'foodiepro') . '</option>-->
 	<?php
 	if ( is_category() ) {?>
-		<option class="level-0 last" value="<?php echo $search_prefix;?>orderby=comment_count&order=DESC"><?php echo __('Comment count', 'foodiepro');?></option>
+		<option class="level-0 last" value="<?php echo $search_term;?>orderby=comment_count&order=DESC"><?php echo __('Comment count', 'foodiepro');?></option>
 	<?php 
 	}
 	else {?>
-		<option class="level-0 last" value="<?php echo $search_prefix;?>orderby=rating"><?php echo __('Rating', 'foodiepro');?></option>'
+		<option class="level-0 last" value="<?php echo $search_term;?>orderby=rating"><?php echo __('Rating', 'foodiepro');?></option>'
 	<?php 
 	}?>
 	</select> 

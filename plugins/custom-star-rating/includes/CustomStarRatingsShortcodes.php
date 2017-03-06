@@ -23,10 +23,11 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		), $atts );
 		
 		$post_id = get_the_id();
+		
 		$ratings = get_post_meta( $post_id , 'user_ratings' );
-			
-		$rating = get_post_meta( $post_id , 'user_ratings_' . $a['category'] );	
 		$votes = count ($ratings);
+			
+		$rating = get_post_meta( $post_id , 'user_rating_' . $a['category'], true);	
 			
 //		$ratings_cat = array_column($ratings, $a['category']);
 //		if ( isset($ratings_cat) )
@@ -68,14 +69,26 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 	public function display_star_rating_shortcode($atts) {
 		$a = shortcode_atts( array(
 			'source' => 'post', //comment
-			'type' => 'normal', //minimal = only stars, normal = category caption + stars, full = with votes
-			'cats' => 'all',  // "global rating clarity...", global not displayed unless mentioned
+			'display' => 'normal', //minimal = only stars, normal = category caption + stars, full = with votes
+			'category' => 'all',  // "global rating clarity...", global not displayed unless mentioned
 		), $atts );
 
-		$display_cats = explode($a['cats']);
+
+		if ( $a['category']=='all' ) {
+			$display_cats=$this->ratingCats;	
+		}
+		elseif ( $a['category']=='global' ) {
+			$display_cats=$this->ratingGlobal;
+		}
+		else {
+			$shortcode_cats=explode(' ', $a['category']);
+			foreach ( $this->ratingCats as $id=>$cat ) {
+				if ( in_array($cat['id'],$shortcode_cats) ) $display_cats[]=$cat;
+			}
+		}
 		$this->dbg('Display cats for shortcode',$display_cats);
 		
-		$display_type = $a['type'];
+		$display_style = $a['display'];
 		$comment_rating = ( $a['source'] == 'comment');
 		
 		if ( $comment_rating ) {
@@ -83,7 +96,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		}
 		else { // Rating in post meta
 			$post_id = get_the_id();
-			if ($display_type == 'full') { // displays number of votes
+			if ($display_style == 'full') { // displays number of votes
 				$ratings = get_post_meta( $post_id , 'user_ratings' );
 			}
 		}
@@ -94,14 +107,13 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		?>
 		<table class="ratings-table">
 		<?php
-		foreach ($this->ratingCats as $id=>$cat) {
-			if ( $display_cats!='all' && !(in_array($cat['id'],$display_cats) ) ) continue;
+		foreach ($display_cats as $id=>$cat) {
 	
 			if ( $comment_rating ) {
-				$rating=$this->get_comment_rating($comment_id,$cat_id);
+				$rating=$this->get_comment_rating($comment_id,$cat['id']);
 			}
-			elseif ($display_type == 'full') { // displays number of votes
-				$stats=$this->get_post_stats($ratings,$cat_id);
+			elseif ($display_style == 'full') { // displays number of votes
+				$stats=$this->get_post_stats($ratings,$cat['id']);
 				$rating=$stats['rating'];
 				$votes=$stats['votes'];
 			}
@@ -116,17 +128,17 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 			<tr>
 			<?php
 			if ( ! ( $comment_rating && $rating==0 ) ) { // Don't show empty ratings in comments 	
-				if ( $display_type!='minimal' ) {
+				if ( $display_style!='minimal' ) {
 				?>
 				<td class="rating-category"><?php echo __($cat['title'], 'custom-star-rating')?></td>
 				<?php
 				}?>
-				<td class="rating" title="<?php echo $rating[$id]?> : <?php echo $this->rating_caption($rating,$id)?>">
+				<td class="rating" title="<?php echo $rating?> : <?php echo $this->rating_caption($rating,$id)?>">
 				<?php echo $this->output_stars($stars, $half)?>
 				</td>
 			<?php
 			}
-			if ( $display_type=='full' && !empty( $votes ) ) {
+			if ( $display_style=='full' && !empty( $votes ) ) {
 				$rating_plural=sprintf(_n('%s review','%s reviews',$votes,'custom-star-rating'), $votes); ?>
 				<td class="rating-details">(<?php echo $rating_plural ?>)</td> 
 			<?php 

@@ -35,6 +35,7 @@ function list_terms_taxonomy( $atts ) {
 
 
 // Extraction of taxonomy from current url
+	$all_url='#';
 	if ($taxonomy == 'url') {
 		$obj = get_queried_object();
 		$taxonomy = $obj -> taxonomy;
@@ -203,7 +204,6 @@ add_shortcode('index-link', 'add_index_link');
 /* =================================================================*/
 /* =                    PERMALINK SHORTCODE     
 /* =================================================================*/
-
 
 function add_permalink_shortcode($atts) {
 	extract(shortcode_atts(array(

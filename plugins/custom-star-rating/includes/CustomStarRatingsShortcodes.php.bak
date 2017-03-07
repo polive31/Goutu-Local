@@ -69,30 +69,28 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 	public function display_star_rating_shortcode($atts) {
 		$a = shortcode_atts( array(
 			'source' => 'post', //comment
-			'display' => 'normal', //minimal = only stars, normal = category caption + stars, full = with votes
-			'category' => 'all',  // "global rating clarity...", global not displayed unless mentioned
+			'display' => 'normal', //minimal = only stars, normal = caption + stars, full = with votes
+			'category' => 'all',  // "global", "rating", "clarity"...
 		), $atts );
 		
 		$display_style = $a['display'];
 		$comment_rating = ( $a['source'] == 'comment');
 		
-		//if (!$comment_rating) //$this->dbg('In POST rating display shortcode','');
-		//if ($comment_rating) //$this->dbg('In COMMENT rating display shortcode','');
+		if (!$comment_rating) $this->dbg('In POST rating display shortcode','');
+		if ($comment_rating) $this->dbg('In COMMENT rating display shortcode','');
 
-		// Determine table of categories to be displayed
-		if ( $a['category']=='all' ) {
-			$display_cats=$this->ratingCats;	
-		}
-		elseif ( $a['category']=='global' ) {
-			$display_cats=$this->ratingGlobal;
-		}
+		// Setup categories to be displayed
+		if ( $a['category']=='all' ) $display_cats=$this->ratingCats;	
+		elseif ( $a['category']=='global' ) $display_cats=$this->ratingGlobal;				
 		else {
-			$shortcode_cats=explode(' ', $a['category']);
-			foreach ( $this->ratingCats as $id=>$cat ) {
-				if ( in_array($cat['id'],$shortcode_cats) ) $display_cats[]=$cat;
+			$shortcode_cats = explode(' ', $a['category']);
+			foreach ($shortcode_cats as $key) {
+				$display_cats[$key]=$this->ratingCats[$key];	
 			}
 		}
+		$this->dbg('$display cats',$display_cats);
 		
+		// Setup ratings source
 		if ( $comment_rating ) {
 			$comment_id = get_comment_ID();
 		}
@@ -103,7 +101,6 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 			}
 		}
 
-	
 		ob_start();
 	
 		?>
@@ -111,17 +108,25 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		<?php
 		foreach ($display_cats as $id=>$cat) {
 	
+			$this->dbg('In display loop $cats',$cat);
+			$this->dbg('In display loop $id',$id);
 			if ( $comment_rating ) {
-				$rating=$this->get_comment_rating($comment_id,$cat['id']);
+				$rating=$this->get_comment_rating($comment_id,$id);
 			}
 			elseif ($display_style == 'full') { // displays number of votes
-				$stats=$this->get_post_stats($ratings,$cat['id']);
-				$rating=$stats['rating'];
-				$votes=$stats['votes'];
-				//$this->dbg('In html rating display loop',$stats);
+				if ( $id=='global' ) {
+					$rating = $this->get_post_rating( $post_id , 'global');
+					$votes = count($ratings);
+				}
+				else {
+					$stats=$this->get_post_stats($ratings,$id);
+					$rating=$stats['rating'];
+					$votes=$stats['votes'];
+				}
 			}
 			else {
-				$ratings = $this->get_post_rating( $post_id , 'user_ratings' );
+				$rating = $this->get_post_rating( $post_id , $id);
+				$this->dbg('In display loop $rating',$rating);
 			}
 
 			$rating=empty($rating)?0:$rating;
@@ -160,6 +165,46 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 
 		return $html;
 	}
+	
+	
+	/* Output stars
+	-------------------------------------------------------------*/
+	public function output_stars_simple($stars, $half) {
+		$html = '';
+		for ($i = 1; $i <= $stars; $i++) {
+			$html .= '<i class="fa fa-star"></i>';
+		}
+		for ($i = $stars+1; $i <= 5; $i++) {
+			if ( ($i == ($stars+1) ) && $half ) {
+				$html .= '<i class="fa fa-star-half-o"></i>';
+			}
+			else {
+				$html .= '<i class="fa fa-star-o"></i>';
+			}
+		}
+		return $html;
+	}
+	
+		/* Output stars stacked
+	-------------------------------------------------------------*/
+	public function output_stars($stars, $half) {
+		$html = '';
+		$html .= '<span class="fa-stack"><i class="fa fa-heart fa-stack-1x"></i><i class="fa fa-star-half-o fa-stack-1x"></i></span>';
+		for ($i = 1; $i <= $stars; $i++) {
+			$html .= '<span class="fa-stack"><i class="fa fa-star fa-stack-1"></i><i class="fa fa-star-o fa-stack-1"></i></span>';
+		}
+		for ($i = $stars+1; $i <= 5; $i++) {
+			if ( ($i == ($stars+1) ) && $half ) {
+				$html .= '<span class="fa-stack"><i class="fa fa-star-half-o fa-stack-1"></i><i class="fa fa-star-o fa-stack-1"></i></span>';
+			}
+			else {
+				$html .= '<span class="fa-stack"><i class="fa fa-star-o"></i></span>';
+			}
+		}
+		return $html;
+	}
+
+
 
 
 

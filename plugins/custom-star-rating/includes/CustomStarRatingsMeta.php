@@ -29,7 +29,7 @@ class CustomStarRatingsMeta extends CustomStarRatings {
 			
 			//$this->dbg('*** Post Type accepted for rating submission ***', '' );
 			
-			$new_rating = $this->update_comment_meta( $comment_id );
+			$new_rating = $this->get_ratings_update_comment_meta( $comment_id );
 			//$this->dbg('New rating', $new_rating );
 			
 			$user_ratings = $this->update_post_meta_user_ratings( $post_id, $new_rating);
@@ -48,7 +48,7 @@ class CustomStarRatingsMeta extends CustomStarRatings {
 	 	if ( ! wp_is_post_revision() && is_singular( $this->ratedPostTypes ) ) {
 	 		//PC:debug('Default rating add');
 			foreach ($this->ratingCats as $id=>$cat) {
-				$this->update_post_meta($post->ID, 'user_rating_' . $cat['id'], '0');
+				$this->update_post_meta($post->ID, 'user_rating_' . $id, '0');
 	 		}
 	 	}
 	}
@@ -56,15 +56,15 @@ class CustomStarRatingsMeta extends CustomStarRatings {
 
 	/* Update comment meta
 	-------------------------------------------------------------*/ 	
-	public function update_comment_meta( $comment_id ) {
+	public function get_ratings_update_comment_meta( $comment_id ) {
 		$new_rating = '';		
 		foreach ($this->ratingCats as $id=>$cat) {
 			if ( isset( $_POST[ 'rating-' . $id ] ) )  {
 				$rating_form_value = $_POST[ 'rating-' . $id ];
 				////$this->dbg('Extracted rating form value for category ' . $cat['id'] . ' : ', $rating_form_value);
 				//otherwise let the cell empty, important for stats function
-				add_comment_meta($comment_id, 'user_rating_' . $cat['id'], $rating_form_value );
-				$new_rating[ $cat['id'] ] = $rating_form_value;	
+				add_comment_meta($comment_id, 'user_rating_' . $id, $rating_form_value );
+				$new_rating[$id] = $rating_form_value;	
 			}
 		}
 		////$this->dbg('New Rating at end of update_comment_meta : ',$new_rating);
@@ -118,18 +118,14 @@ class CustomStarRatingsMeta extends CustomStarRatings {
 		//$this->dbg(' $user_ratings table ', $user_ratings);									
 		$global_rating=0;
 		$global_count=0;
-		foreach ($this->ratingCats as $id=>$cat) {
+		foreach ($this->ratingCats as $cat_id=>$cat) {
 			/* $stats = array( 
 						'rating' => average rating 
 						'votes' => number of votes
 						)
 			------------------------------------------------------------*/	
-			$cat_id = $cat['id'];
-			//$this->dbg(' In category loop, step : ', $cat_id);			
-			//$this->dbg(' User Ratings column for this category : ', array_column($user_ratings,$cat_id) );			
 			
 			$stats = $this->get_rating_stats( array_column($user_ratings,$cat_id) );
-			//$this->dbg(' Stats for this category : ', $stats );			
 			
 			update_post_meta( $post_id, 'user_rating_' . $cat_id, $stats['rating'] );
 			$global_rating += $stats['rating']*$cat['weight'];	

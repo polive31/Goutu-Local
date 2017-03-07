@@ -6,11 +6,6 @@ Description: Ratings via stars in comments
 
 
 
-.ratings-table tr {
-	line-height: 30px;
-}
-
-
 /* Star rating input
 --------------------------------------------- */
 
@@ -66,6 +61,14 @@ td.rating-title {
   font-size:18px;
 }
 
+span.fa-stack {
+	width: 23px;
+}
+
+.ratings-table tr {
+	line-height: 30px;
+}
+
 td.rating-category {
 	padding:0 10px 0 0;
 	font-style:italic;
@@ -79,6 +82,14 @@ td.rating-category {
   font-size:16px;
 }
 
+.comment td.rating {
+	font-size: 16px;
+}
+
+.comment span.fa-stack {
+	width: 16px;
+}
+
 .rating-details {
 	font-size:13px;
 	color:#666;
@@ -87,10 +98,10 @@ td.rating-category {
 
 i.fa.fa-star,
 i.fa.fa-star-half-o {
-	/*color:#ffa700;*/
 	color:#ff8f00;
 }
 
 i.fa.fa-star-o {
-	color:#aaa;
+	/*color:#aaa;*/
+	color:#d6a86d;
 }

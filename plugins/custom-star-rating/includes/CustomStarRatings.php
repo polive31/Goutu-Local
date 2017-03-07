@@ -17,8 +17,7 @@ class CustomStarRatings {
 		//$this->$ratedPostTypes = array( 'recipe' );
 		$this->ratedPostTypes = self::RATED_POST_TYPES;
 		$this->ratingCats = array( 
-			array (
-				'id'=>'rating',
+			'rating' => array (
 				'weight' => 2,
 				'title'=> __('Dish','custom-star-rating'),
 				'question'=> __('How did you like this dish ?'),
@@ -30,8 +29,7 @@ class CustomStarRatings {
 								__('Delicious','custom-star-rating'),
 				)	
 			),
-			array( 
-				'id'=>'clarity',
+			'clarity' => array(
 				'weight' => 1,
 				'title'=> __('Clarity','custom-star-rating'),
 				'question'=> __('How clear was the recipe ?','custom-star-rating'),
@@ -45,8 +43,7 @@ class CustomStarRatings {
 			),
 		);
 		$this->ratingGlobal = array( 
-			array (
-				'id'=>'global',
+			'global'=>array (
 				'title'=> __('Overall','custom-star-rating'),
 				'caption' => array(
 								__('Disappointing recipe','custom-star-rating'),
@@ -65,7 +62,7 @@ class CustomStarRatings {
 	--------------------------------------------------------------*/	
 	protected function dbg( $msg, $var ) {
 			if ( class_exists('PC') ) {
-				//PC::debug(array( $msg => $var ) );
+				PC::debug(array( $msg => $var ) );
 			}
 	}
 
@@ -115,25 +112,6 @@ class CustomStarRatings {
 	  );
 	}
 
-
-
-	/* Output stars
-	-------------------------------------------------------------*/
-	public function output_stars($stars, $half) {
-		$html = '';
-		for ($i = 1; $i <= $stars; $i++) {
-			$html .= '<i class="fa fa-star"></i>';
-		}
-		for ($i = $stars+1; $i <= 5; $i++) {
-			if ( ($i == ($stars+1) ) && $half ) {
-				$html .= '<i class="fa fa-star-half-o"></i>';
-			}
-			else {
-				$html .= '<i class="fa fa-star-o"></i>';
-			}
-		}
-		return $html;
-	}
 
 
 

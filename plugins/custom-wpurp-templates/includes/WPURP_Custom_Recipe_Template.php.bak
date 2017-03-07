@@ -87,7 +87,11 @@ class WPURP_Custom_Recipe_Template extends WPURP_Custom_Custom_Templates {
 				<div class="info-container">
 					
 					<div class="label-container">
-					<?php echo do_shortcode('[display-star-rating type="full"]');?>
+					<?php echo do_shortcode('[display-star-rating display="full"]');?>
+					<?php echo do_shortcode('[display-star-rating category="global" display="full"]');?>
+					<?php echo do_shortcode('[display-star-rating category="global" display="minimal"]');?>
+					<?php echo do_shortcode('[display-star-rating category="clarity rating"]');?>
+					<?php echo do_shortcode('[display-star-rating category="clarity rating" display="full"]');?>
 					</div>
 					
 					<?php

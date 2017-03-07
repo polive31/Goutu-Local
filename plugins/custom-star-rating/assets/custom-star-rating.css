@@ -98,11 +98,18 @@ td.rating-category {
 
 i.fa.fa-star,
 i.fa.fa-star-half-o {
-	color:#ff8f00;
+	/*color:#ff8f00;*/
+	color:#f5a241;
 }
 
 i.fa.fa-star-o {
 	/*color:#aaa;
-	color:#d6a86d;*/
+	color:#d6a86d;
 	color:#d67f33;
+	color:#cc9c73;*/
+	color:#d6b090;
+}
+
+.full i.fa.fa-star-o {
+	color:#f18b14;
 }

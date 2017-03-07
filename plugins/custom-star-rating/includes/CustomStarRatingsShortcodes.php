@@ -190,11 +190,11 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 	public function output_stars($stars, $half) {
 		$html = '';
 		for ($i = 1; $i <= $stars; $i++) {
-			$html .= '<span class="fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>';
+			$html .= '<span class="fa-stack full"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>';
 		}
 		for ($i = $stars+1; $i <= 5; $i++) {
 			if ( ($i == ($stars+1) ) && $half ) {
-				$html .= '<span class="fa-stack"><i class="fa fa-star-half-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>';
+				$html .= '<span class="fa-stack full"><i class="fa fa-star-half-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>';
 			}
 			else {
 				$html .= '<span class="fa-stack"><i class="fa fa-star-o"></i></span>';

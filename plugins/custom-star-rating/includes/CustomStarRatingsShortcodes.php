@@ -72,8 +72,14 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 			'display' => 'normal', //minimal = only stars, normal = category caption + stars, full = with votes
 			'category' => 'all',  // "global rating clarity...", global not displayed unless mentioned
 		), $atts );
+		
+		$display_style = $a['display'];
+		$comment_rating = ( $a['source'] == 'comment');
+		
+		//if (!$comment_rating) //$this->dbg('In POST rating display shortcode','');
+		//if ($comment_rating) //$this->dbg('In COMMENT rating display shortcode','');
 
-
+		// Determine table of categories to be displayed
 		if ( $a['category']=='all' ) {
 			$display_cats=$this->ratingCats;	
 		}
@@ -86,10 +92,6 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 				if ( in_array($cat['id'],$shortcode_cats) ) $display_cats[]=$cat;
 			}
 		}
-		$this->dbg('Display cats for shortcode',$display_cats);
-		
-		$display_style = $a['display'];
-		$comment_rating = ( $a['source'] == 'comment');
 		
 		if ( $comment_rating ) {
 			$comment_id = get_comment_ID();

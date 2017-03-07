@@ -59,7 +59,7 @@ class WPURP_Custom_Recipe_Add_To_Shopping_List extends WPURP_Template_Block {
 				}
         ob_start();?>
         
-				<a href="#"<?php echo $this->style(); ?> title="<?php echo $title;?>" id="<?php echo $link_id;?>" data-recipe-id="<?php echo $recipe->ID(); ?>" data-alt-title="<?php echo $title_alt; ?>">
+				<a href="#"<?php echo $this->style(); ?> title="<?php echo $title;?>" id="<?php echo $link_id;?>" data-recipe-id="<?php echo $recipe->ID(); ?>" data-title-alt="<?php echo $title_alt; ?>">
 				<div class="button-caption"><?php echo __('Add to Shopping List','foodiepro'); ?></div>
 				</a>
 				<?php

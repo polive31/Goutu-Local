@@ -87,7 +87,7 @@ class WPURP_Custom_Recipe_Template extends WPURP_Custom_Custom_Templates {
 				<div class="info-container">
 					
 					<div class="label-container">
-					<?php echo do_shortcode('[display-star-rating type="full"]');?>
+					<?php echo do_shortcode('[display-star-rating display="full"]');?>
 					</div>
 					
 					<?php
@@ -233,7 +233,7 @@ class WPURP_Custom_Recipe_Template extends WPURP_Custom_Custom_Templates {
 
 	        $plural = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'plural' );
 	        $plural = is_array( $plural ) ? false : $plural;
-	        //PC::debug( array('Plural array'=>$plural) );
+	        ////PC::debug( array('Plural array'=>$plural) );
 	        
 	        $plural_data = $plural ? ' data-singular="' . esc_attr( $ingredient['ingredient'] ) . '" data-plural="' . esc_attr( $plural ) . '"' : '';
 

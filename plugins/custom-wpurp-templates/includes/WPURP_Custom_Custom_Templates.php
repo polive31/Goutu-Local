@@ -34,20 +34,20 @@ class WPURP_Custom_Custom_Templates {
 	--------------------------------------------------------------*/	
 	public function dbg( $msg, $var ) {
 			if ( class_exists('PC') ) {
-				PC::debug(array( $msg => $var ) );
+				//PC::debug(array( $msg => $var ) );
 			}
 	}
 
 	public function display_debug_info() {
 				
-			$this->dbg('In WPURP Custom Custom Templates Class', '');
-			$this->dbg('Plugin path', self::$_PluginPath);
+			//$this->dbg('In WPURP Custom Custom Templates Class', '');
+			//$this->dbg('Plugin path', self::$_PluginPath);
 	}	
 	
 	public function enqueue_wpurp_css($js_enqueue) {
 				
-		$this->dbg('In Enqueue WPURP CSS', '');
-		$this->dbg('Plugin path', self::$_PluginPath);
+		//$this->dbg('In Enqueue WPURP CSS', '');
+		//$this->dbg('Plugin path', self::$_PluginPath);
 			
 		if ( is_singular('recipe') ) {
 		  $js_enqueue=array(

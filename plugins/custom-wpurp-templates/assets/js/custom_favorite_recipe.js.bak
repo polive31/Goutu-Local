@@ -23,8 +23,7 @@ jQuery(document).ready(function(){
 					button.addClass('is-favorite');
 				}
 		        
-		        // prep ajax call
-
+				// Prep ajax call
         var recipeId = button.data('recipe-id');
 				//console.log('Recipe ID :'+recipeId);
 

@@ -20,20 +20,20 @@ class CustomStarRatingsMeta extends CustomStarRatings {
 	/* Add field 'rate' to the comments meta on submission using PHP
 	------------------------------------------------------------ */
 	public function update_comment_post_meta($comment_id,$comment_approved,$comment) {
-		$this->dbg('*** In Update Comment Post Meta ***', '' );
+		//$this->dbg('*** In Update Comment Post Meta ***', '' );
 
 		$post_id = $comment['comment_post_ID'];									
 		$current_post_type = get_post_type( $post_id );
 
 		if (in_array( $current_post_type, $this->ratedPostTypes )) {
 			
-			$this->dbg('*** Post Type accepted for rating submission ***', '' );
+			//$this->dbg('*** Post Type accepted for rating submission ***', '' );
 			
 			$new_rating = $this->update_comment_meta( $comment_id );
-			$this->dbg('New rating', $new_rating );
+			//$this->dbg('New rating', $new_rating );
 			
 			$user_ratings = $this->update_post_meta_user_ratings( $post_id, $new_rating);
-			$this->dbg('Updated user ratings at end of update_post_meta function :',$user_ratings);
+			//$this->dbg('Updated user ratings at end of update_post_meta function :',$user_ratings);
 			
 			$this->update_post_meta_user_rating( $post_id, $user_ratings );
 		
@@ -61,13 +61,13 @@ class CustomStarRatingsMeta extends CustomStarRatings {
 		foreach ($this->ratingCats as $id=>$cat) {
 			if ( isset( $_POST[ 'rating-' . $id ] ) )  {
 				$rating_form_value = $_POST[ 'rating-' . $id ];
-				//$this->dbg('Extracted rating form value for category ' . $cat['id'] . ' : ', $rating_form_value);
+				////$this->dbg('Extracted rating form value for category ' . $cat['id'] . ' : ', $rating_form_value);
 				//otherwise let the cell empty, important for stats function
 				add_comment_meta($comment_id, 'user_rating_' . $cat['id'], $rating_form_value );
 				$new_rating[ $cat['id'] ] = $rating_form_value;	
 			}
 		}
-		//$this->dbg('New Rating at end of update_comment_meta : ',$new_rating);
+		////$this->dbg('New Rating at end of update_comment_meta : ',$new_rating);
 		return $new_rating;
 	}
 	
@@ -101,12 +101,12 @@ class CustomStarRatingsMeta extends CustomStarRatings {
 		/* Complete rating array with user IP & user ID */
 		$new_rating['user'] = $user_id;
 		$new_rating['ip'] = $user_ip;
-		$this->dbg('New User Rating :',$new_rating);
+		//$this->dbg('New User Rating :',$new_rating);
 		add_post_meta($post_id, 'user_ratings', $new_rating);
 		
 		$user_ratings[]=$new_rating;
 		
-		//$this->dbg('Updated user ratings at end of update_post_meta function :',$user_ratings);
+		////$this->dbg('Updated user ratings at end of update_post_meta function :',$user_ratings);
 		return $user_ratings;
 	}
 	
@@ -114,8 +114,8 @@ class CustomStarRatingsMeta extends CustomStarRatings {
 	-------------------------------------------------------------*/ 	
 	public function update_post_meta_user_rating( $post_id, $user_ratings ) {
 		
-		$this->dbg('In update post meta user rating', '');									
-		$this->dbg(' $user_ratings table ', $user_ratings);									
+		//$this->dbg('In update post meta user rating', '');									
+		//$this->dbg(' $user_ratings table ', $user_ratings);									
 		$global_rating=0;
 		$global_count=0;
 		foreach ($this->ratingCats as $id=>$cat) {
@@ -125,18 +125,18 @@ class CustomStarRatingsMeta extends CustomStarRatings {
 						)
 			------------------------------------------------------------*/	
 			$cat_id = $cat['id'];
-			$this->dbg(' In category loop, step : ', $cat_id);			
-			$this->dbg(' User Ratings column for this category : ', array_column($user_ratings,$cat_id) );			
+			//$this->dbg(' In category loop, step : ', $cat_id);			
+			//$this->dbg(' User Ratings column for this category : ', array_column($user_ratings,$cat_id) );			
 			
 			$stats = $this->get_rating_stats( array_column($user_ratings,$cat_id) );
-			$this->dbg(' Stats for this category : ', $stats );			
+			//$this->dbg(' Stats for this category : ', $stats );			
 			
 			update_post_meta( $post_id, 'user_rating_' . $cat_id, $stats['rating'] );
 			$global_rating += $stats['rating']*$cat['weight'];	
 			$global_count += $cat['weight'];	
 		}
-		$this->dbg(' Global rating : ', $global_rating );			
-		$this->dbg(' Global count : ', $global_count );			
+		//$this->dbg(' Global rating : ', $global_rating );			
+		//$this->dbg(' Global count : ', $global_count );			
 		update_post_meta( $post_id, 'user_rating_global', round( $global_rating/$global_count, 1) );		
 	}
 
@@ -180,7 +180,7 @@ class CustomStarRatingsMeta extends CustomStarRatings {
 		$cat_ratings = array_column($ratings, $cat_id);
 		if (isset ( $cat_ratings ) ) {
 			$stats = $this->get_rating_stats( $cat_ratings );
-			//$this->dbg(' Stats for this category : ', $stats );	
+			////$this->dbg(' Stats for this category : ', $stats );	
 		}
 		return $stats;
 	}

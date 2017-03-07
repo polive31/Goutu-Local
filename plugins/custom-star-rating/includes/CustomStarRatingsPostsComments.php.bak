@@ -22,9 +22,9 @@ class CustomStarRatingsPostsComments extends CustomStarRatings {
 	public function display_debug_info() {
 		//if ( is_single() ) {	
 			//echo '<pre>' . print_r( $this->get_cats(), false ) . '</pre>';	
-			PC::debug(array('In Custom Rating Post Comments !' ) );
-			PC::debug(array('get_cats() : '=> $this->get_cats('') ) );
-			PC::debug(array('ratingCats : '=> $this->ratingCats ) );
+			//PC::debug(array('In Custom Rating Post Comments !' ) );
+			//PC::debug(array('get_cats() : '=> $this->get_cats('') ) );
+			//PC::debug(array('ratingCats : '=> $this->ratingCats ) );
 		//}
 	}
 
@@ -32,7 +32,7 @@ class CustomStarRatingsPostsComments extends CustomStarRatings {
 	/* Add field 'rate' to the comments meta on submission using PHP
 	------------------------------------------------------------ */
 	public function update_comment_post_meta($comment_id,$comment_approved,$comment) {
-		PC::debug('In comment post !');
+		//PC::debug('In comment post !');
 		
 		$new_rating = $this->update_comment_meta( $comment_id );
 		$post_id = $comment['comment_post_ID'];									
@@ -62,7 +62,7 @@ class CustomStarRatingsPostsComments extends CustomStarRatings {
 				$new_rating[ $cat['id'] ] = $rating_form_value;	
 			}
 		}
-		PC::debug(array('Rating :'=>$rating));
+		//PC::debug(array('Rating :'=>$rating));
 	
 		return $new_rating;
 	
@@ -81,7 +81,7 @@ class CustomStarRatingsPostsComments extends CustomStarRatings {
 		------------------------------------------------------------*/	
 		
 		$user_ratings = get_post_meta( $post_id, 'user_ratings' );
-		PC::debug(array('User Ratings Table :'=>$user_ratings));
+		//PC::debug(array('User Ratings Table :'=>$user_ratings));
 
 		$user_id = ( is_user_logged_in() )?get_current_user_id():0;
 		$user_ip = $this->get_user_ip();
@@ -89,7 +89,7 @@ class CustomStarRatingsPostsComments extends CustomStarRatings {
 		/* Search and delete previous rating from same user */
 		foreach ( $user_ratings as $id => $user_rating ) {
 			if ( ( $user_id!=0 && $user_rating['user']==$user_id ) || ( $user_id==0 && $user_rating['ip']==$user_ip ) )  {
-				//PC::debug(array('Previous rating from same user '=>$id));
+				////PC::debug(array('Previous rating from same user '=>$id));
 				delete_post_meta($post_id, 'user_ratings', $user_rating);
 				unset( $user_ratings[$id] );
 			}
@@ -98,7 +98,7 @@ class CustomStarRatingsPostsComments extends CustomStarRatings {
 		/* Complete rating array with user IP & user ID */
 		$new_rating['user'] = $user_id;
 		$new_rating['ip'] = $user_ip;
-		PC::debug(array('New User Rating :'=>$new_rating ) );
+		//PC::debug(array('New User Rating :'=>$new_rating ) );
 		add_post_meta($post_id, 'user_ratings', $new_rating);
 		
 		$user_ratings[]=$new_rating;

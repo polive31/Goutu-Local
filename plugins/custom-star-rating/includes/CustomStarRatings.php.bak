@@ -65,7 +65,7 @@ class CustomStarRatings {
 	--------------------------------------------------------------*/	
 	protected function dbg( $msg, $var ) {
 			if ( class_exists('PC') ) {
-				PC::debug(array( $msg => $var ) );
+				//PC::debug(array( $msg => $var ) );
 			}
 	}
 
@@ -73,9 +73,9 @@ class CustomStarRatings {
 	/* Dump main variables
 	--------------------------------------------------------------*/	
 	public function display_debug_info() {
-		$this->dbg('In Custom Rating Main Class !', '' );
-		$this->dbg('Rated types: ', $this->ratedPostTypes );
-		$this->dbg('ratingCats : ', $this->ratingCats );
+		//$this->dbg('In Custom Rating Main Class !', '' );
+		//$this->dbg('Rated types: ', $this->ratedPostTypes );
+		//$this->dbg('ratingCats : ', $this->ratingCats );
 	}	
 	
 	
@@ -96,8 +96,8 @@ class CustomStarRatings {
 	-------------------------------------------------------------*/
 	public function get_rating_stats( $cat_ratings ) {
 		/* cat_ratings is the list of user ratings for one category */
-		$this->dbg('In Get Rating Stats function','');
-		$this->dbg('User Ratings array : ',$cat_ratings);
+		//$this->dbg('In Get Rating Stats function','');
+		//$this->dbg('User Ratings array : ',$cat_ratings);
 		$votes='';
 		$avg_rating='';	
 		if ( ! empty($cat_ratings) ) {

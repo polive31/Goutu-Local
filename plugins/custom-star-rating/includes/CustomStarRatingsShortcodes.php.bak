@@ -72,8 +72,14 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 			'display' => 'normal', //minimal = only stars, normal = category caption + stars, full = with votes
 			'category' => 'all',  // "global rating clarity...", global not displayed unless mentioned
 		), $atts );
+		
+		$display_style = $a['display'];
+		$comment_rating = ( $a['source'] == 'comment');
+		
+		//if (!$comment_rating) //$this->dbg('In POST rating display shortcode','');
+		//if ($comment_rating) //$this->dbg('In COMMENT rating display shortcode','');
 
-
+		// Determine table of categories to be displayed
 		if ( $a['category']=='all' ) {
 			$display_cats=$this->ratingCats;	
 		}
@@ -86,10 +92,6 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 				if ( in_array($cat['id'],$shortcode_cats) ) $display_cats[]=$cat;
 			}
 		}
-		$this->dbg('Display cats for shortcode',$display_cats);
-		
-		$display_style = $a['display'];
-		$comment_rating = ( $a['source'] == 'comment');
 		
 		if ( $comment_rating ) {
 			$comment_id = get_comment_ID();
@@ -112,10 +114,11 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 			if ( $comment_rating ) {
 				$rating=$this->get_comment_rating($comment_id,$cat['id']);
 			}
-			elseif ($display_type == 'full') { // displays number of votes
+			elseif ($display_style == 'full') { // displays number of votes
 				$stats=$this->get_post_stats($ratings,$cat['id']);
 				$rating=$stats['rating'];
 				$votes=$stats['votes'];
+				//$this->dbg('In html rating display loop',$stats);
 			}
 			else {
 				$ratings = $this->get_post_rating( $post_id , 'user_ratings' );

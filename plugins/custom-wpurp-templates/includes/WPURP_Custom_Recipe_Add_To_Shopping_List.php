@@ -22,7 +22,6 @@ class WPURP_Custom_Recipe_Add_To_Shopping_List extends WPURP_Template_Block {
         if( !is_user_logged_in() ) {
         	$link_id='join_us';
         } 
-
 				else {
 					$classes[] = 'logged-in';
 	        $shopping_list_recipes = array();

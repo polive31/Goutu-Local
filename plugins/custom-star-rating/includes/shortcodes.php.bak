@@ -47,15 +47,15 @@ public function display_star_rating_shortcode($atts) {
 	
 	$html='';
 
-	PC::debug('In display-star-rating shortcode');
+	//PC::debug('In display-star-rating shortcode');
 	$full_display=!($a['type']=='stars');
 	$comment_rating = ( $a['source'] == 'comment');
 	
 	if ( $comment_rating ) {
 		$id = get_comment_ID();
-		//PC::debug( array('get comment ID'=>$id,) );
+		////PC::debug( array('get comment ID'=>$id,) );
 		$rating = get_comment_meta($id, 'user_rating', true);
-		//PC::debug( array('rating from comment'=>$rating,) );
+		////PC::debug( array('rating from comment'=>$rating,) );
 		$rating = $rating==''?'0':$rating;
 		$stars = $rating;
 		$half = false;
@@ -65,7 +65,7 @@ public function display_star_rating_shortcode($atts) {
 		$id = get_the_id();
 		if ($full_display) {
 			$ratings = get_post_meta( $id , 'user_ratings' );
-			PC::debug(array('$ratings: '=>$ratings));
+			//PC::debug(array('$ratings: '=>$ratings));
 			$stats = get_rating_stats( $ratings );
 			$rating = $stats['rating'];
 			$votes = $stats['votes'];
@@ -73,10 +73,10 @@ public function display_star_rating_shortcode($atts) {
 		else {
 			$rating = get_post_meta( $id , 'user_rating', true );
 		}	
-		//PC::debug(array('$rating from shortcode : '=>$rating));
+		////PC::debug(array('$rating from shortcode : '=>$rating));
 		$stars = floor($rating);
 		$half = ($rating-$stars) >= 0.5;
-		PC::debug(array('$half : '=>$half));
+		//PC::debug(array('$half : '=>$half));
 	}
 
 	//PC:debug(array('votes : '=>$votes,'rating : '=>$rating,'stars : '=>$stars,'half : '=>$half,));	

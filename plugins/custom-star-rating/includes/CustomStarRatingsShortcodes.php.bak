@@ -88,7 +88,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 				$display_cats[$key]=$this->ratingCats[$key];	
 			}
 		}
-		$this->dbg('$display cats',$display_cats);
+		//$this->dbg('$display cats',$display_cats);
 		
 		// Setup ratings source
 		if ( $comment_rating ) {
@@ -108,8 +108,8 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		<?php
 		foreach ($display_cats as $id=>$cat) {
 	
-			$this->dbg('In display loop $cats',$cat);
-			$this->dbg('In display loop $id',$id);
+			//$this->dbg('In display loop $cats',$cat);
+			//$this->dbg('In display loop $id',$id);
 			if ( $comment_rating ) {
 				$rating=$this->get_comment_rating($comment_id,$id);
 			}
@@ -126,7 +126,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 			}
 			else {
 				$rating = $this->get_post_rating( $post_id , $id);
-				$this->dbg('In display loop $rating',$rating);
+				//$this->dbg('In display loop $rating',$rating);
 			}
 
 			$rating=empty($rating)?0:$rating;
@@ -194,7 +194,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		}
 		for ($i = $stars+1; $i <= 5; $i++) {
 			if ( ($i == ($stars+1) ) && $half ) {
-				$html .= '<span class="fa-stack"><i class="fa fa-star-half-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>';
+				$html .= '<span class="fa-stack full"><i class="fa fa-star-half-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>';
 			}
 			else {
 				$html .= '<span class="fa-stack"><i class="fa fa-star-o"></i></span>';

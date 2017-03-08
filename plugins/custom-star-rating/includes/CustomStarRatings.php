@@ -31,7 +31,7 @@ class CustomStarRatings {
 			),
 			'clarity' => array(
 				'weight' => 1,
-				'title'=> __('Clarity','custom-star-rating'),
+				'title'=> __('Recipe','custom-star-rating'),
 				'question'=> __('How clear was the recipe ?','custom-star-rating'),
 				'caption' => array(
 								__('Confusing','custom-star-rating'),

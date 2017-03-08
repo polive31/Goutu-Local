@@ -69,6 +69,14 @@ span.fa-stack {
 	line-height: 30px;
 }
 
+td.rating {
+	width:120px;
+}
+
+.comment td.rating {
+	width:50px;
+}
+
 td.rating-category {
 	padding:0 10px 0 0;
 	font-style:italic;
@@ -105,8 +113,9 @@ i.fa.fa-star-half-o {
 i.fa.fa-star-o {
 	/*color:#aaa;
 	color:#d6a86d;
-	color:#d67f33;*/
-	color:#cc9c73;
+	color:#d67f33;
+	color:#cc9c73;*/
+	color:#d6b090;
 }
 
 .full i.fa.fa-star-o {

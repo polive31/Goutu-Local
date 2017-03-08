@@ -69,6 +69,14 @@ span.fa-stack {
 	line-height: 30px;
 }
 
+td.rating {
+	width:120px;
+}
+
+.comment td.rating {
+	width:90px;
+}
+
 td.rating-category {
 	padding:0 10px 0 0;
 	font-style:italic;

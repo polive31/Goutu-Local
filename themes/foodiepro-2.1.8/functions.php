@@ -390,17 +390,10 @@ function wprpe_add_rating($output, $args ) {
 add_filter( 'rpwe_default_query_arguments', 'wprpe_orderby_rating' );
 function wprpe_orderby_rating( $args ) {
 		if ( $args['orderby'] == 'meta_value_num')
-    	$args['meta_key'] = 'recipe_user_ratings_rating';
+    	$args['meta_key'] = 'user_rating_global';
     return $args;
 }
 
-
-/*function add_recipe_rating($args) {
-	$rating = output_recipe_rating( get_the_ID());
-	$output = 'Enter your text here';
-	return $output;
-}
-add_filter('rpwe_excerpt', 'add_recipe_rating', 10, 1);*/
 
 /* =================================================================*/
 /* =                      ARCHIVES

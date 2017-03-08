@@ -2047,18 +2047,15 @@ Custom Page Templates
 }
 
 /* Recipes & Blogs Top section */
+/* Archive pages Top section */
 .recipes-top .widget, 
-.blogs-top .widget  {
+.blogs-top .widget,
+.archives-top .widget  {
 	float:left;
 	width:33.3%;
 	padding:0px 10px;
 }
 
-/* Archive pages Top section */
-.archives-top .widget  {
-	width:33.3%;
-	padding:0px 10px;
-}
 
 .archives-top .widget-wrap  {
 	width:100%;

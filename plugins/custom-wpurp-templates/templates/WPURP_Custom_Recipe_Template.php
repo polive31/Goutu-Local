@@ -33,7 +33,7 @@ class WPURP_Custom_Recipe_Template extends WPURP_Custom_Custom_Templates {
 					
 					<!-- Recipe Print Button -->
 					<div class="recipe-button">
-						<a class="wpurp-recipe-print recipe-print-button" href="<?php echo $recipe->link_print(); ?>" target="_blank">
+						<a class="wpurp-recipe-print recipe-print-button" title="<?php echo __('Print this recipe','foodiepro')?>" href="<?php echo $recipe->link_print(); ?>" target="_blank">
 						<div class="button-caption"><?php echo __('Print', 'foodiepro'); ?></div>
 						</a>
 					</div>
@@ -54,14 +54,14 @@ class WPURP_Custom_Recipe_Template extends WPURP_Custom_Custom_Templates {
 					
 					<!-- Recipe Share Button -->
 					<div class="recipe-button">
-						<a class="recipe-share-button" id="recipe-share">
+						<a class="recipe-share-button" title="<?php echo __('Share this recipe','foodiepro')?>" id="recipe-share">
 						<div class="button-caption"><?php echo __('Share','foodiepro'); ?></div>
 						</a>
 					</div>				
 												
 					<!-- Recipe Rate Button -->
 					<div class="recipe-button">
-						<a class="recipe-review-button" id="recipe-review">
+						<a class="recipe-review-button"  title="<?php echo __('Comment and rate this recipe','foodiepro')?>" id="recipe-review">
 						<div class="button-caption"><?php echo __('Rate','foodiepro'); ?></div>
 						</a>
 					</div>			

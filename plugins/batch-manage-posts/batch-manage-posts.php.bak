@@ -99,7 +99,8 @@ function batch_delete_comments($atts) {
 /* =================================================================*/
 /* =               BATCH MIGRATE RATINGS
 /* =================================================================*/
-
+add_action("wp_ajax_MigrateRatings", "ajax_migrate_ratings");
+add_action("wp_ajax_nopriv_MigrateRatings", "ajax_migrate_ratings");
 add_shortcode('batch-migrate-ratings', 'batch_migrate_ratings');
 
 /* Batch update user_ratings_ratings custom field */

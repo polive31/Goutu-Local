@@ -122,7 +122,7 @@ function batch_migrate_ratings($atts) {
 	wp_enqueue_script( 'ajax_call_batch_manage' );	
 	wp_localize_script( 'ajax_call_batch_manage', 'script' . $script_name . $script_id , $jsargs );
 	
-	echo batch_manage_form($script_id, $script_name, $a['cmd']);
+	echo batch_manage_form($script_id, $script_name, '');
 	
 }
 

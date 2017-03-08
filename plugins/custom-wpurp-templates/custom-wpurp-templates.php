@@ -25,7 +25,7 @@ function WPURP_custom_templates_init() {
 	require_once 'includes/WPURP_Custom_Recipe_Favorite.php';
 	require_once 'includes/WPURP_Custom_Recipe_Add_To_Shopping_List.php';
 	require_once 'includes/WPURP_Custom_Metadata.php';
-	require_once 'includes/WPURP_Custom_Recipe_Template.php';
+	require_once 'templates/WPURP_Custom_Recipe_Template.php';
 	require_once 'widgets/WPUR_custom_recipe_list.php';
 	require_once 'widgets/WPUR_custom_nutrition_label.php';
 

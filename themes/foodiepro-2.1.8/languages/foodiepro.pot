@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-03-08 21:18+0100\n"
+"POT-Creation-Date: 2017-03-08 23:41+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,14 +19,209 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;_x:1,2c\n"
 "X-Textdomain-Support: yes\n"
 "Language: en_US\n"
-"X-Poedit-SearchPath-0: plugins/custom_widgets\n"
-"X-Poedit-SearchPath-1: themes/foodiepro-2.1.8\n"
-"X-Poedit-SearchPath-2: plugins/custom_shortcodes\n"
-"X-Poedit-SearchPath-3: plugins/custom-wpurp-templates\n"
+"X-Poedit-SearchPath-0: themes/foodiepro-2.1.8\n"
+"X-Poedit-SearchPath-1: plugins/custom-wpurp-templates\n"
+"X-Poedit-SearchPath-2: plugins/custom-navigation-helpers\n"
+"X-Poedit-SearchPath-3: plugins/custom-social-helpers\n"
 "X-Poedit-SearchPathExcluded-0: themes/foodiepro-2.1.8/buddypress/activity\n"
 "X-Poedit-SearchPathExcluded-1: themes/foodiepro-2.1.8/buddypress/assets\n"
 "X-Poedit-SearchPathExcluded-2: themes/foodiepro-2.1.8/buddypress/blogs\n"
 "X-Poedit-SearchPathExcluded-3: themes/foodiepro-2.1.8/buddypress/forums\n"
+
+#: plugins/custom-navigation-helpers/shortcodes/index-link-shortcode.php:34
+msgid "Courses"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/shortcodes/index-link-shortcode.php:39
+msgid "Seasons"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/shortcodes/index-link-shortcode.php:44
+msgid "Occasions"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/shortcodes/index-link-shortcode.php:49
+msgid "Diets"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/shortcodes/index-link-shortcode.php:56
+msgid "France"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/shortcodes/index-link-shortcode.php:60
+msgid "World"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/shortcodes/index-link-shortcode.php:64
+msgid "All blogs"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/shortcodes/index-link-shortcode.php:70
+msgid "Previous page"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/shortcodes/misc-shortcodes.php:48
+#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:57
+msgid "Share this recipe"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/shortcodes/misc-shortcodes.php:50
+msgid "Share this post"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/shortcodes/taxonomies-list-shortcode.php:23
+msgid "Select..."
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:21
+msgid "Dropdown Posts Sort Widget"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:24
+msgid "Displays a dropdown list allowing to sort posts"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:45
+msgid "Sort recipes"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:47
+msgid "Sort posts"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:49
+msgid "Sort results"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:62
+msgid "Select sort order..."
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:63
+msgid "Title : ascending"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:64
+msgid "Title : descending"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:67
+msgid "Newest first"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:72
+msgid "Comment count"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:76
+msgid "Rating"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:107
+#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:84
+#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:195
+#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:304
+msgid "New title"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:111
+#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:88
+#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:204
+#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:308
+#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:507
+#: plugins/custom-wpurp-templates/widgets/WPUR_custom_nutrition_label.php:60
+#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:101
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:106
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:74
+msgid "Title:"
+msgstr ""
+
+#: plugins/custom-social-helpers/custom-social-loader.php:39
+msgid ""
+"<strong>BP Social Helpers</strong></a> requires the BuddyPress plugin to work. "
+"Please <a href=\"https://buddypress.org/download\">install BuddyPress</a> "
+"first, or <a href=\"plugins.php\">deactivate BP Custom Shortcodes</a>."
+msgstr ""
+
+#: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:29
+msgid "Friendship Requests"
+msgstr ""
+
+#: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:35
+msgid "Notifications"
+msgstr ""
+
+#: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:41
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:28
+msgid "My Profile"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:28
+msgid "(Buddypress) My Friends"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:29
+msgid "Displays a chosen number of my friends"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:134
+msgid "(Buddypress) Custom latest registered members"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:135
+msgid "Displays latest registered members"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:210
+msgid "Number of users to show"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:257
+msgid "(Buddypress) Welcome"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:258
+msgid "Displays gravatar and name of current loggued-in user"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:362
+msgctxt "Title of the login widget"
+msgid "(BuddyPress) Custom Log In"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:364
+msgid ""
+"Show a Log In form to logged-out visitors, and a Log Out link to those who are "
+"logged in, with full resolution avatar."
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:415
+msgid "Log Out"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:439
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:76
+msgid "Username"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:442
+msgid "Password"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:445
+msgid "Remember Me"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:451
+msgid "Register"
+msgstr ""
+
+#: plugins/custom-wpurp-templates/custom-wpurp-templates.php:43
+msgid ""
+"<strong>WPUR Custom Templates Plugin</strong></a> requires the WP Ultimate "
+"Recipe plugin to work. Please <a href=\"plugins.php\">activate/install WPUR or "
+"deactivate this plugin </a>."
+msgstr ""
 
 #: plugins/custom-wpurp-templates/includes/WPURP_Custom_Custom_Templates.php:115
 msgid "Print this Recipe"
@@ -56,57 +251,65 @@ msgstr ""
 msgid "Favorites"
 msgstr ""
 
-#: plugins/custom-wpurp-templates/includes/WPURP_Custom_Recipe_Template.php:37
+#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:36
+msgid "Print this recipe"
+msgstr ""
+
+#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:37
 msgid "Print"
 msgstr ""
 
-#: plugins/custom-wpurp-templates/includes/WPURP_Custom_Recipe_Template.php:58
+#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:58
 msgid "Share"
 msgstr ""
 
-#: plugins/custom-wpurp-templates/includes/WPURP_Custom_Recipe_Template.php:65
+#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:64
+msgid "Comment and rate this recipe"
+msgstr ""
+
+#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:65
 msgid "Rate"
 msgstr ""
 
-#: plugins/custom-wpurp-templates/includes/WPURP_Custom_Recipe_Template.php:97
+#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:97
 msgid "Origin"
 msgstr ""
 
-#: plugins/custom-wpurp-templates/includes/WPURP_Custom_Recipe_Template.php:104
+#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:104
 msgid "Level"
 msgstr ""
 
-#: plugins/custom-wpurp-templates/includes/WPURP_Custom_Recipe_Template.php:111
+#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:111
 #: plugins/custom-wpurp-templates/templates/custom-recipe-print-template.php:40
 msgid "Serves"
 msgstr ""
 
-#: plugins/custom-wpurp-templates/includes/WPURP_Custom_Recipe_Template.php:118
+#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:118
 #: plugins/custom-wpurp-templates/templates/custom-recipe-print-template.php:47
 msgid "Preparation"
 msgstr ""
 
-#: plugins/custom-wpurp-templates/includes/WPURP_Custom_Recipe_Template.php:125
+#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:125
 #: plugins/custom-wpurp-templates/templates/custom-recipe-print-template.php:54
 msgid "Cooking"
 msgstr ""
 
-#: plugins/custom-wpurp-templates/includes/WPURP_Custom_Recipe_Template.php:131
+#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:131
 #: plugins/custom-wpurp-templates/templates/custom-recipe-print-template.php:60
 msgid "Wait"
 msgstr ""
 
-#: plugins/custom-wpurp-templates/includes/WPURP_Custom_Recipe_Template.php:167
+#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:167
 #: plugins/custom-wpurp-templates/templates/custom-recipe-print-template.php:95
 msgid "Notes"
 msgstr ""
 
-#: plugins/custom-wpurp-templates/includes/WPURP_Custom_Recipe_Template.php:248
+#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:248
 msgctxt "vowel"
 msgid "of "
 msgstr ""
 
-#: plugins/custom-wpurp-templates/includes/WPURP_Custom_Recipe_Template.php:250
+#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:250
 msgctxt "consonant"
 msgid "of "
 msgstr ""
@@ -119,284 +322,83 @@ msgstr ""
 msgid "reviews"
 msgstr ""
 
-#: plugins/custom_shortcodes/BP_custom_shortcodes.php:28
-msgid "Friendship Requests"
-msgstr ""
-
-#: plugins/custom_shortcodes/BP_custom_shortcodes.php:34
-msgid "Notifications"
-msgstr ""
-
-#: plugins/custom_shortcodes/BP_custom_shortcodes.php:40
-#: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:28
-msgid "My Profile"
-msgstr ""
-
-#: plugins/custom_shortcodes/BP_custom_shortcodes_loader.php:31
-msgid ""
-"<strong>BP Custom Shortcodes</strong></a> requires the BuddyPress plugin to "
-"work. Please <a href=\"https://buddypress.org/download\">install BuddyPress</"
-"a> first, or <a href=\"plugins.php\">deactivate BP Custom Shortcodes</a>."
-msgstr ""
-
-#: plugins/custom_shortcodes/custom-nav-shortcodes.php:27
-msgid "Select..."
-msgstr ""
-
-#: plugins/custom_shortcodes/custom-nav-shortcodes.php:160
-msgid "Courses"
-msgstr ""
-
-#: plugins/custom_shortcodes/custom-nav-shortcodes.php:165
-msgid "Seasons"
-msgstr ""
-
-#: plugins/custom_shortcodes/custom-nav-shortcodes.php:170
-msgid "Occasions"
-msgstr ""
-
-#: plugins/custom_shortcodes/custom-nav-shortcodes.php:175
-msgid "Diets"
-msgstr ""
-
-#: plugins/custom_shortcodes/custom-nav-shortcodes.php:182
-msgid "France"
-msgstr ""
-
-#: plugins/custom_shortcodes/custom-nav-shortcodes.php:186
-msgid "World"
-msgstr ""
-
-#: plugins/custom_shortcodes/custom-nav-shortcodes.php:190
-msgid "All blogs"
-msgstr ""
-
-#: plugins/custom_shortcodes/custom-nav-shortcodes.php:196
-msgid "Previous page"
-msgstr ""
-
-#: plugins/custom_shortcodes/misc-shortcodes.php:56
-msgid "Share this recipe"
-msgstr ""
-
-#: plugins/custom_shortcodes/misc-shortcodes.php:58
-msgid "Share this post"
-msgstr ""
-
-#: plugins/custom_widgets/BP_custom_widgets.php:28
-msgid "(Buddypress) My Friends"
-msgstr ""
-
-#: plugins/custom_widgets/BP_custom_widgets.php:29
-msgid "Displays a chosen number of my friends"
-msgstr ""
-
-#: plugins/custom_widgets/BP_custom_widgets.php:84
-#: plugins/custom_widgets/BP_custom_widgets.php:195
-#: plugins/custom_widgets/BP_custom_widgets.php:304
-#: plugins/custom_widgets/foodiepro_widgets.php:114
-msgid "New title"
-msgstr ""
-
-#: plugins/custom_widgets/BP_custom_widgets.php:88
-#: plugins/custom_widgets/BP_custom_widgets.php:204
-#: plugins/custom_widgets/BP_custom_widgets.php:308
-#: plugins/custom_widgets/BP_custom_widgets.php:507
-#: plugins/custom_widgets/WPUR_custom_nutrition_label.php:56
-#: plugins/custom_widgets/WPUR_custom_recipe_list.php:101
-#: plugins/custom_widgets/foodiepro_widgets.php:118
-#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:106
-#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:74
-msgid "Title:"
-msgstr ""
-
-#: plugins/custom_widgets/BP_custom_widgets.php:134
-msgid "(Buddypress) Custom latest registered members"
-msgstr ""
-
-#: plugins/custom_widgets/BP_custom_widgets.php:135
-msgid "Displays latest registered members"
-msgstr ""
-
-#: plugins/custom_widgets/BP_custom_widgets.php:210
-msgid "Number of users to show"
-msgstr ""
-
-#: plugins/custom_widgets/BP_custom_widgets.php:257
-msgid "(Buddypress) Welcome"
-msgstr ""
-
-#: plugins/custom_widgets/BP_custom_widgets.php:258
-msgid "Displays gravatar and name of current loggued-in user"
-msgstr ""
-
-#: plugins/custom_widgets/BP_custom_widgets.php:362
-msgctxt "Title of the login widget"
-msgid "(BuddyPress) Custom Log In"
-msgstr ""
-
-#: plugins/custom_widgets/BP_custom_widgets.php:364
-msgid ""
-"Show a Log In form to logged-out visitors, and a Log Out link to those who are "
-"logged in, with full resolution avatar."
-msgstr ""
-
-#: plugins/custom_widgets/BP_custom_widgets.php:415
-msgid "Log Out"
-msgstr ""
-
-#: plugins/custom_widgets/BP_custom_widgets.php:439
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:76
-msgid "Username"
-msgstr ""
-
-#: plugins/custom_widgets/BP_custom_widgets.php:442
-msgid "Password"
-msgstr ""
-
-#: plugins/custom_widgets/BP_custom_widgets.php:445
-msgid "Remember Me"
-msgstr ""
-
-#: plugins/custom_widgets/BP_custom_widgets.php:451
-msgid "Register"
-msgstr ""
-
-#: plugins/custom_widgets/BP_custom_widgets_loader.php:30
-msgid ""
-"<strong>BP Custom Widgets</strong></a> requires the BuddyPress plugin to work. "
-"Please <a href=\"https://buddypress.org/download\">install BuddyPress</a> "
-"first, or <a href=\"plugins.php\">deactivate BP Custom Widgets</a>."
-msgstr ""
-
-#: plugins/custom_widgets/WPUR_custom_nutrition_label.php:10
+#: plugins/custom-wpurp-templates/widgets/WPUR_custom_nutrition_label.php:14
 msgid "WPURP Custom Nutrition Label"
 msgstr ""
 
-#: plugins/custom_widgets/WPUR_custom_nutrition_label.php:12
+#: plugins/custom-wpurp-templates/widgets/WPUR_custom_nutrition_label.php:16
 msgid "Display the Nutrition Label of a recipe, if it is available."
 msgstr ""
 
-#: plugins/custom_widgets/WPUR_custom_nutrition_label.php:47
+#: plugins/custom-wpurp-templates/widgets/WPUR_custom_nutrition_label.php:51
 msgid "Nutrition Label"
 msgstr ""
 
-#: plugins/custom_widgets/WPUR_custom_nutrition_label.php:60
+#: plugins/custom-wpurp-templates/widgets/WPUR_custom_nutrition_label.php:64
 msgid "Recipe"
 msgstr ""
 
-#: plugins/custom_widgets/WPUR_custom_nutrition_label.php:62
+#: plugins/custom-wpurp-templates/widgets/WPUR_custom_nutrition_label.php:66
 msgid "Recipe shown on recipe page"
 msgstr ""
 
-#: plugins/custom_widgets/WPUR_custom_nutrition_label.php:72
+#: plugins/custom-wpurp-templates/widgets/WPUR_custom_nutrition_label.php:76
 msgid "Serving Size"
 msgstr ""
 
-#: plugins/custom_widgets/WPUR_custom_recipe_list.php:20
+#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:20
 msgid "WPURP Custom Recipe List"
 msgstr ""
 
-#: plugins/custom_widgets/WPUR_custom_recipe_list.php:22
+#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:22
 msgid "Customized WPURP recipes display widget"
 msgstr ""
 
-#: plugins/custom_widgets/WPUR_custom_recipe_list.php:82
+#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:82
 msgid "Our Recipes"
 msgstr ""
 
-#: plugins/custom_widgets/WPUR_custom_recipe_list.php:91
+#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:91
 #: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:382
 #: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:40
 msgid "Date"
 msgstr ""
 
-#: plugins/custom_widgets/WPUR_custom_recipe_list.php:92
+#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:92
 msgid "Recipe Title"
 msgstr ""
 
-#: plugins/custom_widgets/WPUR_custom_recipe_list.php:93
+#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:93
 msgid "Recipe Rating"
 msgstr ""
 
-#: plugins/custom_widgets/WPUR_custom_recipe_list.php:96
+#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:96
 msgid "ascending"
 msgstr ""
 
-#: plugins/custom_widgets/WPUR_custom_recipe_list.php:97
+#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:97
 msgid "descending"
 msgstr ""
 
-#: plugins/custom_widgets/WPUR_custom_recipe_list.php:105
+#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:105
 msgid "Restrict to taxonomies (ID) :"
 msgstr ""
 
-#: plugins/custom_widgets/WPUR_custom_recipe_list.php:109
+#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:109
 #: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:380
 msgid "Order By"
 msgstr ""
 
-#: plugins/custom_widgets/WPUR_custom_recipe_list.php:120
+#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:120
 msgid "Order"
 msgstr ""
 
-#: plugins/custom_widgets/WPUR_custom_recipe_list.php:131
+#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:131
 msgid "Number of recipes to show"
 msgstr ""
 
-#: plugins/custom_widgets/WPUR_custom_recipe_list.php:136
+#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:136
 msgid "Show Images"
-msgstr ""
-
-#: plugins/custom_widgets/WPUR_widgets_loader.php:30
-msgid ""
-"<strong>WPUR Widgets Plugin</strong></a> requires the WP Ultimate Recipe "
-"plugin to work. Please <a href=\"plugins.php\">activate/install WPUR or "
-"deactivate this plugin </a>."
-msgstr ""
-
-#: plugins/custom_widgets/foodiepro_widgets.php:29
-msgid "Dropdown Posts Sort Widget"
-msgstr ""
-
-#: plugins/custom_widgets/foodiepro_widgets.php:32
-msgid "Displays a dropdown list allowing to sort posts"
-msgstr ""
-
-#: plugins/custom_widgets/foodiepro_widgets.php:52
-msgid "Sort recipes"
-msgstr ""
-
-#: plugins/custom_widgets/foodiepro_widgets.php:54
-msgid "Sort posts"
-msgstr ""
-
-#: plugins/custom_widgets/foodiepro_widgets.php:56
-msgid "Sort results"
-msgstr ""
-
-#: plugins/custom_widgets/foodiepro_widgets.php:69
-msgid "Select sort order..."
-msgstr ""
-
-#: plugins/custom_widgets/foodiepro_widgets.php:70
-msgid "Title : ascending"
-msgstr ""
-
-#: plugins/custom_widgets/foodiepro_widgets.php:71
-msgid "Title : descending"
-msgstr ""
-
-#: plugins/custom_widgets/foodiepro_widgets.php:74
-msgid "Newest first"
-msgstr ""
-
-#: plugins/custom_widgets/foodiepro_widgets.php:79
-msgid "Comment count"
-msgstr ""
-
-#: plugins/custom_widgets/foodiepro_widgets.php:83
-msgid "Rating"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:184

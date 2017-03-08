@@ -40,7 +40,7 @@ function WPURP_custom_templates_init() {
 
 	function wpur_custom_install_notice() {
 		echo '<div id="message" class="error fade"><p style="line-height: 150%">';
-		_e('<strong>WPUR Widgets Plugin</strong></a> requires the WP Ultimate Recipe plugin to work. Please <a href="plugins.php">activate/install WPUR or deactivate this plugin </a>.');
+		_e('<strong>WPUR Custom Templates Plugin</strong></a> requires the WP Ultimate Recipe plugin to work. Please <a href="plugins.php">activate/install WPUR or deactivate this plugin </a>.');
 		echo '</p></div>';
 	}	
 

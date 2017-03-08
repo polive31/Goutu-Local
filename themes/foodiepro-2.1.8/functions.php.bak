@@ -545,7 +545,6 @@ function archive_change_sort_order($query){
        $orderby= get_query_var('orderby','title');
        if ($orderby=='rating'):
        	$orderby = 'meta_value_num';
-       	//$meta_key = "user_rating_stats['rating']";
        	$meta_key = "user_rating_global";
        	$order = 'DESC';
        else:
@@ -559,7 +558,6 @@ function archive_change_sort_order($query){
     endif;
 };
 add_action( 'pre_get_posts', 'archive_change_sort_order');
-//add_action( 'pre_get_posts', 'archive_sort_by_rating');
 
 
 /* =================================================================*/

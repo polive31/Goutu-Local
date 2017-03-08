@@ -338,7 +338,7 @@ function yarpp_dequeue_footer_styles() {
   wp_dequeue_style('yarppRelatedCss');
   wp_dequeue_style('yarpp-thumbnails-yarpp-thumbnail');
 }
-//add_action('get_footer','yarpp_dequeue_footer_styles');
+add_action('get_footer','yarpp_dequeue_footer_styles');
 
 /* =================================================================*/
 /* =              LAYOUT      

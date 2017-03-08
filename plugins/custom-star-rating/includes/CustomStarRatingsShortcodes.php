@@ -197,7 +197,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 				$html .= '<span class="fa-stack full"><i class="fa fa-star-half-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>';
 			}
 			else {
-				$html .= '<span class="fa-stack"><i class="fa fa-star-o"></i></span>';
+				$html .= '<span class="fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>';
 			}
 		}
 		return $html;

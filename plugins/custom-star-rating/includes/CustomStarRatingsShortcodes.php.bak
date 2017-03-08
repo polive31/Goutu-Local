@@ -204,9 +204,6 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 	}
 
 
-
-
-
 	/* Custom Comment Form 
 	------------------------------------------------------------ */
 	public function output_evaluation_form() {

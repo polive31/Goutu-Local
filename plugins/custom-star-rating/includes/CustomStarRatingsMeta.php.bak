@@ -29,7 +29,7 @@ class CustomStarRatingsMeta extends CustomStarRatings {
 			
 			//$this->dbg('*** Post Type accepted for rating submission ***', '' );
 			
-			$new_rating = $this->update_comment_meta( $comment_id );
+			$new_rating = $this->get_ratings_update_comment_meta( $comment_id );
 			//$this->dbg('New rating', $new_rating );
 			
 			$user_ratings = $this->update_post_meta_user_ratings( $post_id, $new_rating);

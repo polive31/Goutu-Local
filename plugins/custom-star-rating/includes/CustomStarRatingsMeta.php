@@ -128,8 +128,8 @@ class CustomStarRatingsMeta extends CustomStarRatings {
 			$stats = $this->get_rating_stats( array_column($user_ratings,$cat_id) );
 			
 			update_post_meta( $post_id, 'user_rating_' . $cat_id, $stats['rating'] );
-			$global_rating += $stats['rating']*$cat['weight'];	
-			$global_count += $cat['weight'];	
+			$global_rating += $stats['rating']*$cat['weight']*$stats['votes'];	
+			$global_count += $cat['weight']*$stats['votes'];	
 		}
 		//$this->dbg(' Global rating : ', $global_rating );			
 		//$this->dbg(' Global count : ', $global_count );			

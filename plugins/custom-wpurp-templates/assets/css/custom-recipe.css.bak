@@ -56,22 +56,18 @@ a.wpurp-recipe-print:before {
 
 a.wpurp-recipe-favorite:before {
 	content:"\f08a"; /* fa-heart-o */
-	color:#888;
 }
 
 a.wpurp-recipe-favorite.is-favorite:before {
 	content:"\f004"; /* fa-heart */
-  color: #555555;
 }
 
 a.wpurp-recipe-add-to-shopping-list:before {
 	content:"\f07a"; /* fa-cart */ 
-	color:#888;
 }
 
 a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 	content:"\f218"; /* fa-cart-plus */
-  color: #555555;
 }
 	
 	
@@ -149,13 +145,13 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 	float:left;
 }
 
+
 .single-recipe .rating {
   font-size:24px;
 }
 
-.single-recipe i.fa.fa-star,
-.single-recipe i.fa.fa-star-half-o {
-	/*color:#e4aa3d;*/
+.single-recipe span.fa-stack {
+	width: 23px;
 }
 
 

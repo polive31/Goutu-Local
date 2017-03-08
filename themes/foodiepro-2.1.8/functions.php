@@ -390,6 +390,7 @@ function wprpe_add_rating($output, $args ) {
 add_filter( 'rpwe_default_query_arguments', 'wprpe_orderby_rating' );
 function wprpe_orderby_rating( $args ) {
 		if ( $args['orderby'] == 'meta_value_num')
+    	//$args['meta_key'] = 'user_rating_global';
     	$args['meta_key'] = 'user_rating_global';
     return $args;
 }
@@ -544,8 +545,7 @@ function archive_change_sort_order($query){
        $orderby= get_query_var('orderby','title');
        if ($orderby=='rating'):
        	$orderby = 'meta_value_num';
-       	//$meta_key = "user_rating_stats['rating']";
-       	$meta_key = "user_rating_stats";
+       	$meta_key = "user_rating_global";
        	$order = 'DESC';
        else:
        	$meta_key='';
@@ -555,13 +555,9 @@ function archive_change_sort_order($query){
        $query->set( 'orderby', $orderby );
        $query->set( 'meta_key', $meta_key );
        $query->set( 'order', $order );
-       //$query->set( 'orderby', array( 'meta_value_num' => 'DESC', 'title' => 'ASC' ) );
-       //$query->set( 'meta_key', 'recipe_user_ratings_rating' );
-       //$query->set( 'meta_type', 'NUMERIC' );
     endif;
 };
 add_action( 'pre_get_posts', 'archive_change_sort_order');
-//add_action( 'pre_get_posts', 'archive_sort_by_rating');
 
 
 /* =================================================================*/

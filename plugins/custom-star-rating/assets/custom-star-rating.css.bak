@@ -57,46 +57,37 @@ td.rating-title {
 /* Star rating output
 --------------------------------------------- */
 
-.rating {
-  font-size:18px;
-}
+/* Rating table formatting
+--------------------------------*/
 
-span.fa-stack {
-	width: 23px;
+table.ratings-table {
+	text-align: center;
 }
 
 .ratings-table tr {
 	line-height: 30px;
 }
 
+/* Rating column  */
+
 td.rating {
 	width:120px;
 }
-
 .comment td.rating {
-	width:50px;
+	width:90px;
 }
+
+/* Category column  */
 
 td.rating-category {
 	padding:0 10px 0 0;
 	font-style:italic;
 }
-
 .rating-label {
   font-size:18px;
 }
 
-.comment-rating .rating {
-  font-size:16px;
-}
-
-.comment td.rating {
-	font-size: 16px;
-}
-
-.comment span.fa-stack {
-	width: 16px;
-}
+/* Votes column */
 
 .rating-details {
 	font-size:13px;
@@ -104,12 +95,35 @@ td.rating-category {
 	padding:10px 0 0 10px;
 }
 
+
+/* Rating stars formatting 
+-----------------------------------------*/
+
+/* Rating star size */
+
+.rating {
+  font-size:18px;
+}
+.comment-rating .rating {
+  font-size:16px;
+}
+
+/* Stars spacing */
+span.fa-stack {
+	width: 18px;
+}
+
+.comment span.fa-stack {
+	width: 16px;
+}
+
+/* Icons colors */
+
 i.fa.fa-star,
 i.fa.fa-star-half-o {
 	/*color:#ff8f00;*/
 	color:#f5a241;
 }
-
 i.fa.fa-star-o {
 	/*color:#aaa;
 	color:#d6a86d;
@@ -117,7 +131,6 @@ i.fa.fa-star-o {
 	color:#cc9c73;*/
 	color:#d6b090;
 }
-
 .full i.fa.fa-star-o {
 	color:#f18b14;
 }

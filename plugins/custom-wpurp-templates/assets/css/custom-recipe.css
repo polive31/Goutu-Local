@@ -145,13 +145,13 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 	float:left;
 }
 
-.single-recipe .rating {
+
+.recipe-container .rating {
   font-size:24px;
 }
 
-.single-recipe i.fa.fa-star,
-.single-recipe i.fa.fa-star-half-o {
-	/*color:#e4aa3d;*/
+.recipe-container span.fa-stack {
+	width: 23px;
 }
 
 

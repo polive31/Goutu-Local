@@ -1,12 +1,4 @@
 <?php
-/*
-Plugin Name: Foodiepro Custom Widgets
-Plugin URI: http://goutu.org
-Description: Provides additional widgets for FoodiePro theme  
-Author: Pascal Olive 
-Version: 1.0
-Author URI: http://goutu.org
-*/
 
 // Block direct requests
 if ( !defined('ABSPATH') )
@@ -32,6 +24,7 @@ __('Dropdown Posts Sort Widget', 'foodiepro'), /*$widget_ops ???*/
 array( 'description' => __( 'Displays a dropdown list allowing to sort posts', 'foodiepro' ), ) 
 );
 }
+
 
 // Creating widget front-end
 public function widget( $args, $instance ) {
@@ -76,11 +69,11 @@ public function widget( $args, $instance ) {
 	<!-- <option class="level-0 last" value="meta_value_num&order=DESC&meta_key=recipe_user_ratings_rating">'. __('Rating', 'foodiepro') . '</option>-->
 	<?php
 	if ( is_category() ) {?>
-		<option class="level-0 last" value="<?php echo $search_prefix;?>orderby=comment_count&order=DESC"><?php echo __('Comment count', 'foodiepro');?></option>
+		<option class="level-0 last" value="<?php echo $search_term;?>orderby=comment_count&order=DESC"><?php echo __('Comment count', 'foodiepro');?></option>
 	<?php 
 	}
 	else {?>
-		<option class="level-0 last" value="<?php echo $search_prefix;?>orderby=rating"><?php echo __('Rating', 'foodiepro');?></option>'
+		<option class="level-0 last" value="<?php echo $search_term;?>orderby=rating"><?php echo __('Rating', 'foodiepro');?></option>'
 	<?php 
 	}?>
 	</select> 

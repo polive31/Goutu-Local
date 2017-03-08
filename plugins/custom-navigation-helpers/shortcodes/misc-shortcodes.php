@@ -1,21 +1,13 @@
 <?php
-/*
-Plugin Name: Misc Shortcodes
-Plugin URI: http://goutu.org
-Description: Provides misc shortcodes  
-Version: 1.0
-Author: Pascal Olive 
-Author URI: http://goutu.org
-License: GPL
-*/
 
 // Block direct requests
 if ( !defined('ABSPATH') )
 	die('-1');
 	
 
-/* Language switcher
+/* Polylang language switcher
 --------------------------------------------- */
+//add_shortcode('language', 'display_language_switcher'); 
 	
 //function display_language_switcher() {
 //	if( !function_exists('pll_the_languages')
@@ -28,7 +20,6 @@ if ( !defined('ABSPATH') )
 //	return $html;
 //}
 //
-//add_shortcode('language', 'display_language_switcher'); 
 
 /* Add Comment Form 
 -----------------------------------------------*/
@@ -45,6 +36,7 @@ function add_comment_form_shortcode() {
     return $cform;
  }
 add_shortcode( 'add-comment-form', 'add_comment_form_shortcode' );
+
 
 
 /* Share Title Output
@@ -65,4 +57,21 @@ add_shortcode('share-title', 'display_share_title');
 
 
 
-?>
+/* Output permalink of a given post id
+------------------------------------------------------*/
+
+add_shortcode('permalink', 'add_permalink_shortcode');
+
+function add_permalink_shortcode($atts) {
+	extract(shortcode_atts(array(
+		'id' => 1,
+		'text' => ""  // default value if none supplied
+    ), $atts));
+    
+    if ($text) {
+        $url = get_permalink($id);
+        return "<a href='$url'>$text</a>";
+    } else {
+	   return get_permalink($id);
+	}
+}

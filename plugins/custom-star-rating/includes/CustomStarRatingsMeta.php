@@ -50,6 +50,7 @@ class CustomStarRatingsMeta extends CustomStarRatings {
 			foreach ($this->ratingCats as $id=>$cat) {
 				$this->update_post_meta($post->ID, 'user_rating_' . $id, '0');
 	 		}
+			$this->update_post_meta($post->ID, 'user_rating_global', '0');
 	 	}
 	}
 

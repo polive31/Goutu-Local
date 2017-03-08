@@ -7,8 +7,9 @@ if ( !defined('ABSPATH') )
 
 	
 /* =================================================================*/
-/* =                   Display Menu Entry   
+/* =                   Display BP Menu Entry   
 /* =================================================================*/
+add_shortcode('menu-entry', 'display_menu_entry');
 
 function display_menu_entry($atts) {
 		$a = shortcode_atts( array(
@@ -54,7 +55,6 @@ function display_menu_entry($atts) {
 	
 } /* End funtion */
 	
-add_shortcode('menu-entry', 'display_menu_entry');
 	
 	
 /* =================================================================*/

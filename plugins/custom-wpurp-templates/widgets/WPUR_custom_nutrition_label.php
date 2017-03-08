@@ -1,12 +1,9 @@
 <?php
-/*
-Plugin Name: WPUR custom nutritional information
-Plugin URI: http://goutu.org
-Description: Custom version of nutritional information  
-Author: Pascal Olive 
-Version: 1.0
-Author URI: http://goutu.org
-*/
+
+// Block direct requests
+if ( !defined('ABSPATH') )
+	die('-1');
+	
 
 class WPURP_Custom_Nutrition_Label_Widget extends WP_Widget {
 

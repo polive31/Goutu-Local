@@ -68,8 +68,8 @@ plugins/*
 !plugins/bp-custom.php
 !plugins/batch-manage-posts/
 !plugins/custom-google-tag-manager/
-!plugins/custom_shortcodes/
-!plugins/custom_widgets/
+!plugins/custom-navigation-helpers/
+!plugins/custom-social-helpers/
 !plugins/custom-star-rating/
 !plugins/custom-gallery-shortcode/
 !plugins/custom-wpurp-templates/

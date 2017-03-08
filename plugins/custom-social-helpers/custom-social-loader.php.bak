@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: BP Custom Shortcodes
+Plugin Name: Custom Social Helpers
 Plugin URI: http://goutu.org/
-Description: Buddypress-related shortcodes for Goutu
+Description: Custom BP-related shortcodes & widgets for Goutu
 Version: 1.0
 Author: Pascal Olive
 Author URI: http://goutu.org
@@ -14,16 +14,24 @@ License: GPL
 if ( !defined('ABSPATH') )
 	die('-1');
 	
+	
+	
+/* Main
+------------------------------------------------------------*/
 
-/*** Make sure BuddyPress is loaded ********************************/
 if ( class_exists( 'BuddyPress' ) ) {
 	add_action( 'bp_include', 'bp_custom_shortcodes_load' );
 } else {
 	add_action( 'admin_notices', 'bp_custom_shortcodes_install_notice' );
 }
 
+
+
+/* Support functions 
+------------------------------------------------------------*/
 function bp_custom_shortcodes_load() {
-	require( dirname( __FILE__ ) . '/BP_custom_shortcodes.php' );
+	require_once 'widgets/BP-custom-widgets.php';
+	require_once 'shortcodes/BP-custom-shortcodes.php';
 }
 
 function bp_custom_shortcodes_install_notice() {
@@ -32,4 +40,3 @@ function bp_custom_shortcodes_install_notice() {
 	echo '</p></div>';
 }
 
-?>

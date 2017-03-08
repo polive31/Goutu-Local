@@ -1,28 +1,39 @@
 <?php
 /*
-Plugin Name: BP Custom Shortcodes
+Plugin Name: Custom Shortcodes
 Plugin URI: http://goutu.org/
-Description: Buddypress-related shortcodes for Goutu
+Description: Custom shortcodes for Goutu
 Version: 1.0
 Author: Pascal Olive
 Author URI: http://goutu.org
 License: GPL
 */
 
+
 // Block direct requests
 if ( !defined('ABSPATH') )
 	die('-1');
 	
+	
+	
+/* Main
+------------------------------------------------------------*/
 
-/*** Make sure BuddyPress is loaded ********************************/
 if ( class_exists( 'BuddyPress' ) ) {
 	add_action( 'bp_include', 'bp_custom_shortcodes_load' );
 } else {
 	add_action( 'admin_notices', 'bp_custom_shortcodes_install_notice' );
 }
 
+require( dirname( __FILE__ ) . '/includes/taxonomies-list-shortcode.php' );
+require( dirname( __FILE__ ) . '/includes/index-link-shortcode.php' );
+require( dirname( __FILE__ ) . '/includes/misc-shortcodes.php' );
+
+
+/* Support functions 
+------------------------------------------------------------*/
 function bp_custom_shortcodes_load() {
-	require( dirname( __FILE__ ) . '/BP_custom_shortcodes.php' );
+	require( dirname( __FILE__ ) . '/includes/BP-custom-shortcodes.php' );
 }
 
 function bp_custom_shortcodes_install_notice() {
@@ -31,4 +42,3 @@ function bp_custom_shortcodes_install_notice() {
 	echo '</p></div>';
 }
 
-?>

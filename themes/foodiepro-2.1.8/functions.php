@@ -64,7 +64,7 @@ function foodie_pro_theme_setup() {
 
 	//* Add new featured image sizes.
 	add_image_size( 'horizontal-thumbnail', 680, 450, true );
-	add_image_size( 'flexslider', 680, 400, true );
+	//add_image_size( 'flexslider', 680, 400, true );
 	add_image_size( 'vertical-thumbnail', 680, 900, true );
 	add_image_size( 'square-thumbnail', 320, 320, true );
 	add_image_size( 'medium-thumbnail', 450, 450, true );
@@ -80,21 +80,11 @@ function foodie_pro_theme_setup() {
 		)
 	);
 
-	/** Move Primary Nav Menu Above Header */
-	//remove_action( 'genesis_after_header', 'genesis_do_nav' );
-	//add_action( 'genesis_before_header', 'genesis_do_nav' );
-
-	/** Add primary Nav Menu to Header Right */
-	//add_action( 'genesis_header_right', 'genesis_do_nav' );
-
 	/* Disables Genesis responsive menu toggle */
 	remove_action( 'wp_enqueue_scripts', 'genesis_sample_enqueue_menu_scripts_styles' );
 
 	//* Add support for custom background.
 	add_theme_support( 'custom-background' );
-
-	//* Unregister header right sidebar.
-	//unregister_sidebar( 'header-right' );
 
 	//* Add support for custom header.
 	add_theme_support( 'genesis-custom-header', array(
@@ -181,8 +171,8 @@ function foodie_pro_includes() {
 
 	// Load everything in the admin root directory.
 	require_once $includes_dir . 'admin/functions.php';
+	
 }
-
 
 
 /* =================================================================*/
@@ -202,7 +192,7 @@ define('GENESIS_LANGUAGES_URL', STYLESHEETPATH.'/languages/genesis');
 require_once( get_template_directory() . '/lib/init.php' );
 
 
-//add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_js' );
+add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_js' );
 /**
  * Load all required JavaScript for the Foodie theme.
  *
@@ -221,6 +211,7 @@ function foodie_pro_enqueue_js() {
 	);
 }
 
+
 /**
  * Add the theme name class to the body element.
  *
@@ -237,18 +228,36 @@ function foodie_pro_add_body_class( $classes ) {
 
 
 /* =================================================================*/
+/* =              CUSTOM SCRIPTS ENQUEUE
+/* =================================================================*/
+
+/* Enqueue default WP jQuery in the footer rather than the header 
+--------------------------------------------------------------------*/
+function move_jquery_into_footer( $wp_scripts ) {
+    if( is_admin() ) return;
+    $wp_scripts->add_data( 'jquery', 'group', true );
+    $wp_scripts->add_data( 'jquery-core', 'group', true );
+    $wp_scripts->add_data( 'jquery-migrate', 'group', true );
+}
+//add_action( 'wp_default_scripts', 'move_jquery_into_footer' );
+
+
+
+/* =================================================================*/
 /* =              CUSTOM LOGIN                                     =*/
 /* =================================================================*/
 
 /* Sets login page color theme */
 function my_custom_login() {
 	if ( CHILD_COLOR_THEME=='autumn')
-		echo '<link rel="stylesheet" type="text/css" href="' . get_bloginfo('stylesheet_directory') . '/login/custom-login-styles-autumn.css" />';
+		echo '<link rel="stylesheet" type="text/css" href="' . get_stylesheet_directory_uri() . '/login/custom-login-styles-autumn.css" />';
 	else 
-		echo '<link rel="stylesheet" type="text/css" href="' . get_bloginfo('stylesheet_directory') . '/login/custom-login-styles-white.css" />';
+		echo '<link rel="stylesheet" type="text/css" href="' . get_stylesheet_directory_uri() . '/login/custom-login-styles-white.css" />';
 }
 add_action('login_head', 'my_custom_login');
 
+
+/* Sets login page logo & url */
 function my_login_logo_url() {
 	return get_bloginfo( 'url' );
 }
@@ -260,12 +269,14 @@ function my_login_logo_url_title() {
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 
+
 /* Disable admin bar for all users except admin */
 function remove_admin_bar() {
 	if (!current_user_can('administrator') && !is_admin())
   	show_admin_bar(false); 
 }
 add_action('after_setup_theme', 'remove_admin_bar');
+
 
 /* Disable dashboard for non admin */
 function blockusers_init() {
@@ -276,12 +287,14 @@ function blockusers_init() {
 }
 add_action( 'init', 'blockusers_init' );
 
+
 /* Redirect towards homepage on logout */
 function go_home() {
   wp_redirect( home_url() );
   exit;
 }
 add_action('wp_logout','go_home');
+
 
 /* Prevent new users (not yet approved) to log in */
 function block_new_users ($user) {
@@ -298,82 +311,38 @@ add_filter('wp_authenticate_user', 'block_new_users',10,1);
 /* =              ADMIN
 /* =================================================================*/
 
-/* Prevent Marshare icon issue with Oz' admin menu plugin */
-//function custom_admin_css() {
-//  echo '<style>
-//    #ozhmenu img.wp-menu-image {
-//    	width: 25px;
-//    } 
-//  </style>';
-//}
-//add_action('admin_head', 'custom_admin_css');
-
 
 /* =================================================================*/
 /* =              STYLING     
 /* =================================================================*/
 
-/* adds new body class for home page
-add_filter('body_class', 'add_homepage_class');
-function add_homepage_class($classes){
-	global $post;
-
-	if(is_home()) {
-		$classes[] = 'homepagetoto';
-	}
-
-return $classes;*/
-
-/* adds new body class for post category
-add_filter('body_class', 'add_post_category');
-function add_post_category($classes){
-	global $post;
-
-	if(is_single()) {
-		$category = get_the_category($post->ID);
-		$slug = $category[0]->slug;
-		$classes[] = 'post-category-' . $slug;
-		}
-return $classes; */
-
-
-
 /* Chargement des feuilles de style custom et polices */
-add_action( 'wp_enqueue_scripts', 'custom_load_custom_style_sheet' );
 function custom_load_custom_style_sheet() {
 	if ( CHILD_COLOR_THEME=='autumn')
-		wp_enqueue_style( 'color-theme-autumn', get_stylesheet_directory_uri() . '/custom_css/color-theme-autumn.css', array(), PARENT_THEME_VERSION );
+		wp_enqueue_style( 'color-theme-autumn', get_stylesheet_directory_uri() . '/assets/css/color-theme-autumn.css', array(), CHILD_THEME_VERSION );
 	else 
-		wp_enqueue_style( 'color-theme-white', get_stylesheet_directory_uri() . '/custom_css/color-theme-white.css', array(), PARENT_THEME_VERSION );		
-	wp_enqueue_style( 'custom-recipe', get_stylesheet_directory_uri() . '/custom_css/recipe.css', array(), PARENT_THEME_VERSION );
-	wp_enqueue_style( 'google-font-ruge', '//fonts.googleapis.com/css?family=Ruge+Boogie:400', array(), CHILD_THEME_VERSION );
+		wp_enqueue_style( 'color-theme-white', get_stylesheet_directory_uri() . '/assets/css/color-theme-white.css', array(), CHILD_THEME_VERSION );		
+	//wp_enqueue_style( 'font-awesome', get_stylesheet_directory_uri() . '/assets/fonts/font-awesome/css/font-awesome.min.css', array(), CHILD_THEME_VERSION );
+	//wp_enqueue_style( 'google-font-ruge', '//fonts.googleapis.com/css?family=Ruge+Boogie:400', array(), CHILD_THEME_VERSION );
 	//wp_enqueue_style( 'google-font-crafty-girls', '//fonts.googleapis.com/css?family=Crafty+Girls', array(), CHILD_THEME_VERSION );
 	//wp_enqueue_style( 'google-font-sacramento', '//fonts.googleapis.com/css?family=Sacramento', array(), CHILD_THEME_VERSION );
 	wp_enqueue_style( 'google-font-delius-swash-caps', '//fonts.googleapis.com/css?family=Delius+Swash+Caps', array(), CHILD_THEME_VERSION );
 	wp_enqueue_style( 'google-font-delius', '//fonts.googleapis.com/css?family=Delius', array(), CHILD_THEME_VERSION );
 	wp_enqueue_style( 'google-font-lobstertwo', '//fonts.googleapis.com/css?family=Lobster+Two', array(), CHILD_THEME_VERSION );
 }
+add_action( 'wp_enqueue_scripts', 'custom_load_custom_style_sheet' );
 
-/* Suppression de la feuille de style de la gallerie Wordpress */
-add_filter( 'use_default_gallery_style', '__return_false' );
 
 /* Suppression de la feuille de style YARPP */
 function yarpp_dequeue_footer_styles() {
   wp_dequeue_style('yarppRelatedCss');
   wp_dequeue_style('yarpp-thumbnails-yarpp-thumbnail');
 }
-add_action('get_footer','yarpp_dequeue_footer_styles');
+//add_action('get_footer','yarpp_dequeue_footer_styles');
 
 /* =================================================================*/
 /* =              LAYOUT      
 /* =================================================================*/
-
-//remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
-//add_action( 'genesis_before_content', 'genesis_do_breadcrumbs' );
-
-// Move title (breaks avatar appending in "Avatars" section)
-//remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
-//add_action( 'genesis_before_loop', 'genesis_do_post_title', 10 );
 
 // Move pagination on all archive pages
 remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
@@ -384,27 +353,6 @@ add_action( 'genesis_after_content', 'genesis_posts_nav' );
 /* =                 RECIPES
 /* =================================================================*/
 
-/*add_filter( 'wpurp_user_submissions_current_user_edit_item', 'add_empty_msg')*/
-
-/* DEBUG Add all meta info before recipe */
-function display_all_meta() {
-	if ( is_singular( 'recipe' )) {
-		echo '<div class="post_meta">';
-		echo print_r(get_post_meta( get_the_ID() ), true );
-		//$nutritional_info = get_post_meta( get_the_ID(), 'recipe_nutritional', True);
-		//echo print_r( $nutritional_info , true );
-		echo '</div>';
-	}
-}
-//add_action( 'genesis_entry_header', 'display_all_meta', 10 );
-
-
-/* Add ratings default value on recipe save */ 
-function wpurp_add_default_rating( $id, $post ) {
- if ( $post->post_type == 'recipe' && !wp_is_post_revision($post->ID) )
-    update_post_meta($post->ID, 'recipe_user_ratings_rating', '0');
-}
-add_action( 'save_post', 'wpurp_add_default_rating', 10, 2 );
 
 /* =================================================================*/
 /* =                      WIDGETS
@@ -415,6 +363,7 @@ add_filter( 'widget_text', 'shortcode_unautop');
 add_filter('widget_text', 'do_shortcode');
 
 // Enable PHP in widgets
+add_filter('widget_text','execute_php',100);
 function execute_php($html){
      if(strpos($html,"<"."?php")!==false){
           ob_start();
@@ -424,76 +373,32 @@ function execute_php($html){
      }
      return $html;
 }
-add_filter('widget_text','execute_php',100);
 
-
-// User rating calculation from votes
-function output_recipe_rating( $recipe_id ) {
-  $user_ratings = get_post_meta( $recipe_id, 'recipe_user_ratings' );
-
-  $votes = count( $user_ratings );
-  $total = 0;
-  $rating = 0;
-  $stars = 0;
-  $half_star = false;
-
-  foreach( $user_ratings as $user_rating )
-  	{$total += $user_rating['rating'];}
-
-  if( $votes !== 0 ) {
-      $rating = $total / $votes; // TODO Just an average for now, implement some more functions later
-      $stars = floor( $rating );
-      if( $rating - $stars >= 0.5 ) {
-          $half_star = true;}
-      $rating = round( $rating, 2 );
-  }
-/*
-  // Save numeric value of rating to allow sort by
-  if( $rating != get_post_meta( $recipe_id, 'recipe_user_ratings_rating', true ) ) {
-      update_post_meta( $recipe_id, 'recipe_user_ratings_rating', $rating );
-  }*/
-
-  return array(
-      'votes' => $votes,
-      'rating' => $rating,
-      'stars' => $stars,
-      'half_star' => $half_star,
-  );
+// Add user rating to WPRPE widget
+add_filter('rpwe_after_thumbnail', 'wprpe_add_rating', 10, 2);
+function wprpe_add_rating($output, $args ) {
+		$disp_rating = substr($args['cssID'],1,1);
+		//PC::debug( array('WPRPE Output add rating'=>$output) );
+		if ( $disp_rating == '1') {
+			$output .= '<div class="rpwe-title">' . do_shortcode('[display-star-rating display="minimal" category="global"]') . '</div>';
+		}
+	return $output;
 }
-
 
 
 /* Modify WP Recent Posts ordering, depending on the orderby field value */
+add_filter( 'rpwe_default_query_arguments', 'wprpe_orderby_rating' );
 function wprpe_orderby_rating( $args ) {
 		if ( $args['orderby'] == 'meta_value_num')
-    	$args['meta_key'] = 'recipe_user_ratings_rating';
+    	//$args['meta_key'] = 'user_rating_global';
+    	$args['meta_key'] = 'user_rating_global';
     return $args;
 }
-add_filter( 'rpwe_default_query_arguments', 'wprpe_orderby_rating' );
 
-
-/*function add_recipe_rating($args) {
-	$rating = output_recipe_rating( get_the_ID());
-	$output = 'Enter your text here';
-	return $output;
-}
-add_filter('rpwe_excerpt', 'add_recipe_rating', 10, 1);*/
 
 /* =================================================================*/
 /* =                      ARCHIVES
 /* =================================================================*/
-
-// Apply Full Width Content layout to Archives.
-function set_full_layout() {
-//	if ( ! ( is_archive() ) ) {
-//	if ( !( is_tax()) ) {
-	if ( !( is_search()) ) {
-		return;
-	}
-	// Force full width content
-	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
-}
-//add_action( 'get_header', 'set_full_layout' );
 
 //Removes Title and Description on CPT Archive
 remove_action( 'genesis_before_loop', 'genesis_do_cpt_archive_title_description' );
@@ -511,9 +416,10 @@ remove_action( 'genesis_before_loop', 'genesis_do_author_title_description', 15 
 remove_action( 'genesis_before_loop', 'genesis_do_blog_template_heading' );
 
 
-
-/* Display customized title and description before the widget area
+/* Archives : customized page title and description 
  ------------------------------------------------------------*/
+add_action( 'genesis_before_content', 'custom_archive_headline' );
+add_filter( 'genesis_term_intro_text_output', 'wpautop' );
 
 function custom_archive_headline() {
 	
@@ -521,67 +427,73 @@ function custom_archive_headline() {
 			
 		$vocals = array('a','e','i','o','u');
 		
-		echo '<div class="archive-description taxonomy-archive-description taxonomy-description">';
-	  echo '<h1 class="archive-title">';
+	  $head_style=array('begin'=>'<h1 class="archive-title">','end'=>'</h1>');
+		$intro_style=array('begin'=>'<div class="archive-description taxonomy-archive-description taxonomy-description">','end'=>'</div>');
 		
 	  if ( is_author() ) {
 	  	$name = get_queried_object()->user_login;
 	  	$first = strtolower( $name[0] );
 	  	
 			if ( in_array($first, $vocals) )
-			  echo _x('All recipes from ','vowel','foodiepro') . $name;
+			  echo $head_style['begin'] . _x('All recipes from ','vowel','foodiepro') . $name . $head_style['end'];
 			else 
-			  echo _x('All recipes from ','consonant','foodiepro') . $name;
+			  echo $head_style['begin'] . _x('All recipes from ','consonant','foodiepro') . $name . $head_style['end'];
 	  }
 		
 		elseif ( is_tax() ) {
 			$first = get_queried_object()->slug[0];
-		  $headline = get_term_meta( get_queried_object()->term_id, 'headline', true );
+			$term_id = get_queried_object()->term_id;
+		  $headline = get_term_meta( $term_id, 'headline', true );
+		  $intro_text = get_term_meta( $term_id, 'intro_text', true );
 
 	    if( is_tax('ingredient') ) {
 		    	if ( !empty($headline) )
-					  echo $headline;
+					  echo $head_style['begin'] . $headline . $head_style['end'];
 					else {
 			    	if ( in_array($first, $vocals) )
-			        echo single_term_title(_x('All recipes containing ','vowel','foodiepro'), false);
+			        echo $head_style['begin'] . single_term_title(_x('All recipes containing ','vowel','foodiepro'), false) . $head_style['end'];
 			      else 
-			        echo single_term_title(_x('All recipes containing ','consonant','foodiepro'), false);				
+			        echo $head_style['begin'] . single_term_title(_x('All recipes containing ','consonant','foodiepro'), false) . $head_style['end'];				
 					}
 			}
 
 			elseif( is_tax('cuisine') ) {
 					if ( !empty($headline) )
-						echo $headline;
+						echo $head_style['begin'] . $headline;
 				  else {
 						if ( in_array($first, $vocals) )
-			        echo single_term_title(_x('All recipes from ','vowel','foodiepro'), false);
+			        echo $head_style['begin'] . single_term_title(_x('All recipes from ','vowel','foodiepro'), false) . $head_style['end'];
 			      else 
-			        echo single_term_title(_x('All recipes from ','consonant','foodiepro'), false);			  	
+			        echo $head_style['begin'] . single_term_title(_x('All recipes from ','consonant','foodiepro'), false) . $head_style['end'];			  	
 				  }
 			}
 								
+			elseif( is_tax('difficult') ) {
+					if ( !empty($headline) )
+						echo $head_style['begin'] . $headline . $head_style['end'];
+					if ( !empty($intro_text) )
+						echo $intro_style['begin'] . $intro_text . $intro_style['end'];
+			}
+
 			else {
 				if ( !empty($headline) )
-					echo $headline;		
-				else echo single_term_title('', false);
+					echo $head_style['begin'] . $headline . $head_style['end'];		
+				else 
+					echo $head_style['begin'] . single_term_title('', false) . $head_style['end'];
 			}
 			
 		}
 		
-		else echo single_term_title('', false);
-		
-		echo '</h1>';
-		echo '</div>';
+		else 
+			echo $head_style['begin'] . single_term_title('', false) . $head_style['end'];
 
 	}
-	
 }
-add_action( 'genesis_before_content', 'custom_archive_headline' );
 
 
-/* Display customized title and description before the widget area
+/* WPURP Detailed search : customized page title and description 
  ------------------------------------------------------------*/
-
+add_filter( 'genesis_search_title_text', 'custom_search_title_text' );
 function custom_search_title_text() {	
 	$url = $_SERVER["REQUEST_URI"];
 	$WPURP_search = strpos($url, 'wpurp-search');
@@ -593,10 +505,11 @@ function custom_search_title_text() {
 
   return $html;
 }
-add_filter( 'genesis_search_title_text', 'custom_search_title_text' );
 
 
-//* Hook category widget areas before post content and after archive title
+/* Hook category widget areas before post content and after archive title
+-----------------------------------------------------------------------------*/
+add_action( 'genesis_before_loop', 'add_archive_widgeted_area');
 function add_archive_widgeted_area() {
   if ( is_archive() || is_search() ) {
   		genesis_widget_area( 'archives-top', array(
@@ -605,38 +518,19 @@ function add_archive_widgeted_area() {
   		));
   }     
 }
-add_action( 'genesis_before_loop', 'add_archive_widgeted_area');
 
 
-//* Customize the entry meta in the entry header (requires HTML5 theme support)
-/*function archive_meta_filter($post_info) {
-	$post_info = '[post_date] by [post_author_posts_link] [post_comments]';
-	return $post_info;
-}*/
-//add_filter( 'genesis_post_info', 'archive_meta_filter' );
-
-
-//* Customize the post title in the archive pages
+/* Customize entry title in the archive pages
+-----------------------------------------------------------------------------*/
 function archive_title($title) {
 	if ( is_tax() || is_search() ) :
-//	if ( is_post_type_archive( 'recipe' ) ) :
-		//$rating = output_recipe_rating( get_the_ID());
-		//$title .= '<div class="rating" id="stars-' . $rating['stars'] . '"></div>';
-		$saved_rating = get_post_meta( get_the_ID(), 'recipe_user_ratings_rating' );
-		if (empty($saved_rating)) $saved_rating=array(0 =>'0');
-		$title .= '<div class="rating" id="stars-' . $saved_rating[0] . '"></div>';
-		//$title .= '<div>' . print_r($saved_rating, true) . '</div>';
+			$title .= do_shortcode('[display-star-rating category="global" display="minimal"]');
 	endif;
 
 	if ( is_tax('cuisine', array('france', 'europe', 'asie', 'afrique', 'amerique-nord', 'amerique-sud') ) ) :
 		$origin = wp_get_post_terms( get_the_ID(), 'cuisine', array("fields" => "names"));
 		$title .= '<div class="origin">' . $origin[0] . '</div>';
-		//$title .= get_query_var( 'taxonomy' );  => ex : "cuisine"
-		//$title .= get_query_var( 'term' ); => ex : "europe"
 	endif;
-
-	//$title .= '<div>' . print_r( get_user_meta( get_the_author_meta( 'ID' ) ), true) . '</div>';
-	//$title .= '<div>' . print_r( get_post_meta( get_the_ID() ), true) . '</div>';
 
 	return $title;
 }
@@ -646,12 +540,12 @@ add_filter( 'genesis_post_title_output', 'archive_title', 15 );
 //* Change the archive post orderby and sort order from slug
 function archive_change_sort_order($query){
     // Select any archive. For custom post type use: is_post_type_archive( $post_type )
-    //if (is_archive() || is_search() ): => ne pas utiliser car résultats de recherche non releants
+    //if (is_archive() || is_search() ): => ne pas utiliser car résultats de recherche non relevants
     if (is_archive() ):
        $orderby= get_query_var('orderby','title');
        if ($orderby=='rating'):
        	$orderby = 'meta_value_num';
-       	$meta_key = 'recipe_user_ratings_rating';
+       	$meta_key = "user_rating_global";
        	$order = 'DESC';
        else:
        	$meta_key='';
@@ -661,19 +555,47 @@ function archive_change_sort_order($query){
        $query->set( 'orderby', $orderby );
        $query->set( 'meta_key', $meta_key );
        $query->set( 'order', $order );
-       //$query->set( 'orderby', array( 'meta_value_num' => 'DESC', 'title' => 'ASC' ) );
-       //$query->set( 'meta_key', 'recipe_user_ratings_rating' );
-       //$query->set( 'meta_type', 'NUMERIC' );
     endif;
 };
 add_action( 'pre_get_posts', 'archive_change_sort_order');
-//add_action( 'pre_get_posts', 'archive_sort_by_rating');
 
+
+/* =================================================================*/
+/* =                      DEBUG
+/* =================================================================*/
+
+add_action( 'genesis_before_content', 'display_debug_info' );
+function display_debug_info() {
+	if (is_single()) {
+
+		$post_id = get_the_id();
+
+		PC::debug( 'In foodiepro functions.php' );		
+		$output = get_post_meta( $post_id , '' , true);
+		PC::debug(array('get_post_meta( $post_id ) : '=> $output) );
+
+		//$output = get_post_meta( $post_id, 'user_ratings' );
+		//PC:debug(array('user_ratings : '=> $output) );
+
+		//$output = get_post_meta( $post_id, 'user_rating_stats' );
+		//PC:debug(array('user_rating_stats : '=> $output) );
+		
+//		delete_post_meta( $post_id, 'recipe_user_ratings' );
+//		$user_ratings_update = get_post_meta( $post_id, 'recipe_user_ratings' );
+//		echo 'Recipe user ratings after deletion : ';
+//		print_r($user_ratings_update);
+
+		//echo '</pre>';			
+	}
+}
 
 
 /* =================================================================*/
 /* =                      POSTS
 /* =================================================================*/
+
+//* Remove the post meta display
+remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
 
 /* Remove mention from private & protected titles */
 function title_format($content) {
@@ -682,34 +604,6 @@ function title_format($content) {
 add_filter('private_title_format', 'title_format');
 add_filter('protected_title_format', 'title_format');
 
-//* Add post navigation 
-add_action( 'genesis_after_entry_content', 'add_prev_next_post_nav', 1 );
-
-function add_prev_next_post_nav() {
-	if ( !is_singular( 'post' ) ) //add your CPT name to the array
-		return;
-	echo '<h3>' . __('More posts in this category','foodiepro') . '</h3>';
-	genesis_markup( array(
-		'html5'   => '<div %s>',
-		'xhtml'   => '<div class="navigation">',
-		'context' => 'adjacent-entry-pagination',
-	) );
-		echo '<div class="post-nav prev-post alignleft">';
-			//previous_post_link();
-			$prevPost = get_previous_post();
-			$prevLnk = get_the_post_thumbnail( $prevPost->ID, 'mini-thumbnail',  array( 'class' => 'alignleft' )  );
-			previous_post_link( '%link',  $prevLnk . '<div class="post-nav-title alignleft">← %title</div>', true );
-		echo '</div>';
-		echo '<div class="post-nav next-post alignright">';
-			//next_post_link();
-			$nextPost = get_next_post();
-			$nextLnk = get_the_post_thumbnail( $nextPost->ID, 'mini-thumbnail',  array( 'class' => 'alignright' )  );
-			//$nextLnk = $nextLnk . $nextPost->post_title;
-			next_post_link( '%link', $nextLnk . '<div class="post-nav-title alignright">%title →</div>', true );
-		echo '</div>';
-	echo '</div>';
-}
-
 
 //* Add readmore links
 add_filter( 'excerpt_more', 'foodie_pro_read_more_link' );
@@ -717,34 +611,77 @@ add_filter( 'get_the_content_more_link', 'foodie_pro_read_more_link' );
 add_filter( 'the_content_more_link', 'foodie_pro_read_more_link' );
 
 
+/* Modify the Genesis read more link
+-------------------------------------------------------*/
+function foodie_pro_read_more_link() {
+	return '...</p><p><a class="more-link" href="' . get_permalink() . '">' . __( 'Read More', 'foodiepro' ) . ' &raquo;</a></p>';
+}
+
+
 //* Add social share icons
 function add_share_icons() {
 	if ( is_singular( 'post' ) )
 		echo do_shortcode('[mashshare]');
 }
-add_action( 'genesis_entry_footer', 'add_share_icons' , 10 ); /* Original genesis_after_entry_content */
+//add_action( 'genesis_entry_footer', 'add_share_icons' , 10 ); /* Original genesis_after_entry_content */
 
 
-/**
- * Modify the Genesis read more link */
-function foodie_pro_read_more_link() {
-	return '...</p><p><a class="more-link" href="' . get_permalink() . '">' . __( 'Read More', 'foodiepro' ) . ' &raquo;</a></p>';
+
+
+/* Remove comment form unless it's a comment reply page
+-------------------------------------------------------*/
+add_action( 'genesis_comment_form', 'remove_recipe_comments_form', 0 );
+function remove_recipe_comments_form() {
+	if ( is_singular( 'recipe' ) ) {
+		$url = $_SERVER["REQUEST_URI"];
+		$is_comment_reply = strpos($url, 'replytocom');
+		if ( ! $is_comment_reply )
+			remove_action( 'genesis_comment_form', 'genesis_do_comment_form' );
+	}
 }
 
-//* Modify comments title text in comments
-add_filter( 'genesis_title_comments', 'sp_genesis_title_comments' );
-function sp_genesis_title_comments() {
-	$title = '<h3>Commentaires</h3>';
-	return $title;
+/* Customize comment section title 
+------------------------------------------------------*/
+add_filter('genesis_title_comments', 'custom_comment_text');
+function custom_comment_text() {
+	$title = __('Comments','genesis');
+	return ('<h3>' . $title . '</h3>');
 }
 
-//* Use specific foodiepro comments form
-add_filter( 'genesis_comment_form_args', 'foodie_pro_comment_form_args' );
+
+/* Customize navigation links 
+------------------------------------------------------*/
+add_filter('genesis_prev_comments_link_text', 'custom_comments_prev_link_text');
+function custom_comments_prev_link_text() {
+	$text = __('Previous comments','foodiepro');
+	return $text;
+}
+
+add_filter('genesis_next_comments_link_text', 'custom_comments_next_link_text');
+function custom_comments_next_link_text() {
+	$text = __('Next comments','foodiepro');
+	return $text;
+}
 
 
-//* Remove the post meta function
-remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
+/* Disable url input box in comment form unlogged users
+------------------------------------------------------*/
+add_filter('comment_form_default_fields','customize_comment_form');
+function customize_comment_form($fields) { 
+  unset($fields['url']);
+  return $fields;
+}
 
+/* Disable logged in / logged out link
+------------------------------------------------------*/
+add_filter( 'comment_form_defaults', 'change_comment_form_defaults' );
+function change_comment_form_defaults( $defaults ) {
+  $defaults['logged_in_as'] = '';
+  $defaults['id_form'] = 'respond';
+  $defaults['title_reply_to'] = __('Your answer here','foodiepro');
+  $defaults['comment_field'] = '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>';
+  return $defaults;
+}
 
 /* =================================================================*/
 /* =          AVATARS
@@ -761,6 +698,7 @@ remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
 //* Change the credits text
 function sp_footer_creds_filter( $creds ) {
 	$creds = '[footer_copyright before="' . __('All rights reserved','foodiepro') . ' " first="2015"] &middot; <a href="http://goutu.org">Goutu.org</a> &middot; <a href="http://goutu.org/contact">' . __('Contact us', 'foodiepro') . '</a> &middot; ' . __('Legal notice', 'foodiepro') . ' &middot; ' . __('Goûtu charter','foodiepro') . ' &middot; ' . __('Personal data','foodiepro') . ' &middot; ' . __('Terms of use','foodiepro') . ' &middot; [footer_loginout]';
+	//$creds .= '<a href="http://www.beyondsecurity.com/vulnerability-scanner-verification/goutu.org"><img src="https://seal.beyondsecurity.com/verification-images/goutu.org/vulnerability-scanner-2.gif" alt="Website Security Test" border="0" /></a>';
 	return $creds;
 }
 

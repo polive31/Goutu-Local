@@ -18,7 +18,7 @@ add_action( 'widgets_init', function(){
 });	
 
 // Creating the widget 
-class dropdown_posts_sort_widget extends WP_Widget {
+class Dropdown_Posts_Sort_Widget extends WP_Widget {
 
 function __construct() {
 parent::__construct(
@@ -37,6 +37,7 @@ array( 'description' => __( 'Displays a dropdown list allowing to sort posts', '
 public function widget( $args, $instance ) {
 	global $wp;
 	
+	/* Do not display in the case of a WPURP dropdown search widget result */
 	$url = $_SERVER["REQUEST_URI"];
 	$WPURP_search = strpos($url, 'wpurp-search');
 	if ($WPURP_search)
@@ -46,33 +47,44 @@ public function widget( $args, $instance ) {
 	// before and after widget arguments are defined by themes
 	echo $args['before_widget'];
 	//if ( ! empty( $title ) )
+	$search_term='';
 	if ( is_tax() )
 		echo $args['before_title'] . __('Sort recipes', 'foodiepro') . $args['after_title'];
-	else 
+	elseif ( is_archive() ) 
 		echo $args['before_title'] . __('Sort posts', 'foodiepro') . $args['after_title'];
+	elseif ( is_search() ) 
+		echo $args['before_title'] . __('Sort results', 'foodiepro') . $args['after_title'];
 	// Start of widget code
 	
-	$search_term = get_search_query();
-	if ( !empty( $search_term ))
-		$search_prefix = 's=' . $search_term . '&';
+	else {
+		$search_term = get_search_query();
+		if ( empty( $search_term ) )
+			$search_term = 's=' . $search_term . '&';
+	}
+	?>
 
-	echo '<div class="dropdown-select">';
-	echo '<label class="screen-reader-text" for="sort_dropdown">' . $title . '</label>';
-	echo '<select name="sort_dropdown" id="sort_dropdown" class="postform">';
-	echo '<option value="none" class="separator">' . __('Select sort order...', 'foodiepro') . '</option>';
-	echo '<option class="level-0" value="' . $search_prefix . 'orderby=title&order=ASC">'. __('Title : ascending', 'foodiepro') . '</option>';
-	echo '<option class="level-0" value="' . $search_prefix . 'orderby=title&order=DESC">'. __('Title : descending', 'foodiepro') . '</option>';
-	//echo '<option class="level-0" value="' . $search_prefix . 'orderby=author_name">'. __('Author', 'foodiepro') . '</option>';
-	//echo '<option class="level-0 separator" value="author&order=ASC">'. __('Author : descending', 'foodiepro') . '</option>';
-	echo '<option class="level-0" value="' . $search_prefix . 'orderby=date&order=DESC">'. __('Newest first', 'foodiepro') . '</option>';
-	//echo '<option disabled>───────────</option>';
-	//echo '<option class="level-0 last" value="meta_value_num&order=DESC&meta_key=recipe_user_ratings_rating">'. __('Rating', 'foodiepro') . '</option>';
-	if ( is_category() )
-		echo '<option class="level-0 last" value="' . $search_prefix . 'orderby=comment_count&order=DESC">'. __('Comment count', 'foodiepro') . '</option>';
-	else
-		echo '<option class="level-0 last" value="' . $search_prefix . 'orderby=rating">'. __('Rating', 'foodiepro') . '</option>';
-	echo '</select>'; 
-	echo '</div>';?>
+	<div class="dropdown-select">
+	<label class="screen-reader-text" for="sort_dropdown"><?php echo $title;?></label>
+	<select name="sort_dropdown" id="sort_dropdown" class="postform">
+	<option value="none" class="separator"><?php echo __('Select sort order...', 'foodiepro');?></option>
+	<option class="level-0" value="?<?php echo $search_term;?>orderby=title&order=ASC"><?php echo __('Title : ascending', 'foodiepro');?></option>
+	<option class="level-0" value="?<?php echo $search_term;?>orderby=title&order=DESC"><?php echo __('Title : descending', 'foodiepro');?></option>
+	<!-- <option class="level-0" value="' . $search_prefix . 'orderby=author_name">'. __('Author', 'foodiepro') . '</option> -->
+	<!-- <option class="level-0 separator" value="author&order=ASC">'. __('Author : descending', 'foodiepro') . '</option> -->
+	<option class="level-0" value="?<?php echo $search_term;?>orderby=date&order=DESC"><?php echo __('Newest first', 'foodiepro');?></option>
+	<!-- <option disabled>───────────</option>-->
+	<!-- <option class="level-0 last" value="meta_value_num&order=DESC&meta_key=recipe_user_ratings_rating">'. __('Rating', 'foodiepro') . '</option>-->
+	<?php
+	if ( is_category() ) {?>
+		<option class="level-0 last" value="<?php echo $search_term;?>orderby=comment_count&order=DESC"><?php echo __('Comment count', 'foodiepro');?></option>
+	<?php 
+	}
+	else {?>
+		<option class="level-0 last" value="<?php echo $search_term;?>orderby=rating"><?php echo __('Rating', 'foodiepro');?></option>'
+	<?php 
+	}?>
+	</select> 
+	</div>
 
 	<script type="text/javascript">
 		/* <![CDATA[ */
@@ -81,10 +93,7 @@ public function widget( $args, $instance ) {
 			function onDropDownChange() {
 				var choice = dropdown.options[dropdown.selectedIndex].value;
 				if ( choice != "none" ) {
-					/*location.href="<?php echo esc_url(add_query_arg(array('meta_key' => 'recipe_user_ratings_rating','orderby' => 'meta_value_num','order' => 'DESC'))); ?>";*/
 					location.href="<?php echo esc_url( home_url(add_query_arg(array(),$wp->request)) ); ?>?"+choice;
-					/*var query_url = "esc_url(add_query_arg(array(" + dropdown.options[dropdown.selectedIndex].value + ")));";
-					location.href="<?php echo "+ query_url +"?>;";*/
 				}
 			}
 			dropdown.onchange=onDropDownChange;
@@ -99,18 +108,16 @@ public function widget( $args, $instance ) {
 		
 // Widget Backend 
 public function form( $instance ) {
-if ( isset( $instance[ 'title' ] ) ) {
-$title = $instance[ 'title' ];
-}
-else {
-$title = __( 'New title', 'foodiepro' );
-}
+	if ( isset( $instance[ 'title' ] ) ) 
+		$title = $instance[ 'title' ];
+	else
+		$title = __( 'New title', 'foodiepro' );
 // Widget admin form
 ?>
-<p>
-<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
-<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
-</p>
+	<p>
+	<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+	<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+	</p>
 <?php 
 }
 	

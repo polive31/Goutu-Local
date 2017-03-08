@@ -1,0 +1,173 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: custom-star-rating\n"
+"POT-Creation-Date: 2017-03-08 08:01+0100\n"
+"PO-Revision-Date: 2017-03-08 08:13+0100\n"
+"Last-Translator: \n"
+"Language-Team: goutu.org <psc.olv@gmail.com>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.12\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-KeywordsList: __;_e;_x;esc_attr_e;_n:1,2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/CustomStarRatings.php:22
+msgid "Dish"
+msgstr "Plat"
+
+#: includes/CustomStarRatings.php:23
+msgid "How did you like this dish ?"
+msgstr "Appréciation du plat"
+
+#: includes/CustomStarRatings.php:25
+msgid "Really not good"
+msgstr "Vraiment pas bon"
+
+#: includes/CustomStarRatings.php:26 includes/CustomStarRatings.php:50
+msgid "Not so good"
+msgstr "Pas très bon"
+
+#: includes/CustomStarRatings.php:27 includes/CustomStarRatings.php:51
+msgid "Rather good"
+msgstr "Assez bon"
+
+#: includes/CustomStarRatings.php:28
+msgid "Tasty"
+msgstr "Goûteux"
+
+#: includes/CustomStarRatings.php:29
+msgid "Delicious"
+msgstr "Délicieux !"
+
+#: includes/CustomStarRatings.php:34
+msgid "Recipe"
+msgstr "Recette"
+
+#: includes/CustomStarRatings.php:35
+msgid "How clear was the recipe ?"
+msgstr "Clarté de la recette"
+
+#: includes/CustomStarRatings.php:37
+msgid "Confusing"
+msgstr "Confus"
+
+#: includes/CustomStarRatings.php:38
+msgid "Not so clear"
+msgstr "Pas très clair"
+
+#: includes/CustomStarRatings.php:39
+msgid "Rather clear"
+msgstr "Assez clair"
+
+#: includes/CustomStarRatings.php:40
+msgid "Very clear"
+msgstr "Très clair"
+
+#: includes/CustomStarRatings.php:41
+msgid "Crystal clear even for kitchen dummies"
+msgstr "Parfaitement clair même pour les débutants !"
+
+#: includes/CustomStarRatings.php:47
+msgid "Overall"
+msgstr "Global"
+
+#: includes/CustomStarRatings.php:49
+msgid "Disappointing recipe"
+msgstr "Décevant"
+
+#: includes/CustomStarRatings.php:52
+msgid "Excellent recipe"
+msgstr "Excellent"
+
+#: includes/CustomStarRatings.php:53
+msgid "Outstanding recipe"
+msgstr "Exceptionnel"
+
+#: includes/CustomStarRatings.php:83
+msgid "Not rated"
+msgstr "Pas encore évalué"
+
+#: includes/CustomStarRatingsCommentsList.php:65
+#, php-format
+msgid "%s says:"
+msgstr "De la part de %s"
+
+#: includes/CustomStarRatingsCommentsList.php:67
+#, php-format
+msgid "%s responds:"
+msgstr "Réponse de %s"
+
+#: includes/CustomStarRatingsCommentsList.php:71
+msgid "Your comment is awaiting moderation."
+msgstr "Votre commentaire est en attente de modération."
+
+#: includes/CustomStarRatingsCommentsList.php:77
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "Le %1$s à %2$s"
+
+#: includes/CustomStarRatingsCommentsList.php:96
+msgid "(Edit)"
+msgstr ""
+
+#: includes/CustomStarRatingsShortcodes.php:47
+msgid "Send"
+msgstr "Envoyer"
+
+#: includes/CustomStarRatingsShortcodes.php:50
+msgid "Reply Title"
+msgstr ""
+
+#: includes/CustomStarRatingsShortcodes.php:51
+msgid "Cancel"
+msgstr "Annuler"
+
+#: includes/CustomStarRatingsShortcodes.php:150
+#, php-format
+msgid "%s review"
+msgid_plural "%s reviews"
+msgstr[0] "%s avis"
+msgstr[1] "%s avis"
+
+#: includes/CustomStarRatingsShortcodes.php:232
+msgid "Comment"
+msgstr "Commentaire"
+
+#~ msgid "Very good"
+#~ msgstr "Très bon"
+
+#~ msgid "Clarity"
+#~ msgstr "Clarté"
+
+#, fuzzy
+#~| msgid "review"
+#~ msgid "review"
+#~ msgid_plural "reviews"
+#~ msgstr[0] "avis"
+#~ msgstr[1] "avis"
+
+#~ msgid "reviews"
+#~ msgstr "évaluations"
+
+#~ msgid "<cite class=\"fn\">%s</cite> <span class=\"says\">says:</span>"
+#~ msgstr "<cite class=\"fn\">%s</cite> <span class=\"dit\">says:</span>"
+
+#~ msgid "delicious"
+#~ msgstr "délicieux"
+
+#~ msgid "very good"
+#~ msgstr "très bon"
+
+#~ msgid "rather good"
+#~ msgstr "plutôt bon"
+
+#~ msgid "not so good"
+#~ msgstr "pas très bon"
+
+#~ msgid "really not good"
+#~ msgstr "vraiment pas bon"

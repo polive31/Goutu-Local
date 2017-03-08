@@ -1,0 +1,294 @@
+/* Custom Recipe Template 
+-------------------------------------------*/
+
+.recipe-top {
+	width:100%;
+	float:left;
+	clear:both;
+	border-bottom:1px dotted #333;	
+	margin:20px 0;
+	padding:10px 0;
+}
+
+.recipe-container {
+	display:inline;		
+	float:left;
+	clear:both;
+	width:100%;
+	margin-bottom:20px;
+	font-family: Open Sans, sans-serif;
+	font-size:14px;
+	color:#1a1a1a;
+	font-weight:normal;
+}
+
+/* Top Buttons */
+
+.recipe-button {
+	float: right;
+	font-size:25px;
+	margin: 0 10px;
+}
+
+.recipe-button a {
+	color:#555555;
+}
+
+.recipe-button a:before {
+	display:block;
+	float:left;
+	font-family:FontAwesome;
+	font-size:inherit;
+	line-height: 24px;
+}
+
+a.recipe-share-button:before {
+	content:"\f1e0"; /* fa-alt-share */
+}
+
+a.recipe-review-button:before {
+	content:"\f044"; /* fa-pencil-square-o */
+}
+
+a.wpurp-recipe-print:before {
+	content:"\f02f"; /* fa-print */
+}
+
+a.wpurp-recipe-favorite:before {
+	content:"\f08a"; /* fa-heart-o */
+}
+
+a.wpurp-recipe-favorite.is-favorite:before {
+	content:"\f004"; /* fa-heart */
+}
+
+a.wpurp-recipe-add-to-shopping-list:before {
+	content:"\f07a"; /* fa-cart */ 
+}
+
+a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
+	content:"\f218"; /* fa-cart-plus */
+}
+	
+	
+.button-caption {
+	font-size:14px;
+	color:#666;
+	text-decoration:none;	
+	float:left;
+	margin-left:10px;
+	font-variant: small-caps;
+  font-weight: 500;
+}
+
+.tooltip-alt,
+.recipe-tooltip-content {
+	display:none;
+}
+
+
+/*.tooltip-shown {
+	display:initial;
+}*/
+
+/*.recipe-tooltip-content {
+	display: none;
+	background-color: white;
+	border: 1px solid #333;
+	padding: 5px;
+	z-index: 999;
+	-moz-box-shadow: 2px 2px 11px #666;
+	-webkit-box-shadow: 2px 2px 11px #666;
+	text-align: left;
+	color: #222;
+	font-size: 14px;
+	line-height: 16px;
+	font-weight: normal;
+}*/
+
+
+/* Image */
+
+.image-container {
+	min-width:300px;
+	max-width:60%;
+	float:left;
+	padding:0px;
+}
+
+.recipe-img {
+	width:inherit;
+	float:left;
+}
+
+.image-container img {
+	width:100%;
+	max-height:350px;
+	float:left;
+	object-fit:contain;
+	object-position: 0 0;
+}
+
+
+/* Recipe info : rating, tags 
+-------------------------------------------------*/
+	
+.info-container {
+	float:left;
+	padding-left:30px;
+	max-width:40%;
+}
+
+.label-container {
+	margin-bottom:12px;
+	clear: both;
+	float:left;
+}
+
+
+.single-recipe .rating {
+  font-size:24px;
+}
+
+.single-recipe span.fa-stack {
+	width: 23px;
+}
+
+
+.recipe-label {
+	float:left;
+	width:120px;
+	font-weight:bold;
+}
+
+.recipe-label:before {
+	font-family: FontAwesome;
+	font-weight: normal;
+	width:20px;
+	float:left;
+}
+
+.recipe-label#servings {
+	padding-top: 4px;
+}
+	
+.recipe-label#servings:before {
+	content:"\f0f5";
+}
+
+.recipe-label#tag:before {
+	content:"\f02b";
+}
+
+.recipe-label#prep:before {
+	content:"\f256";
+}
+
+.recipe-label#cook:before {
+	content:"\f252";
+}
+
+.recipe-label#wait:before {
+	content:"\f04c";
+}
+
+.adjust-recipe-servings {
+	width:40px;
+	padding:2px;
+	background:white;
+	border:1px solid #bbbbbb;
+	border-radius:0;
+	line-height:20px;
+	font-size:16px;
+}
+
+/* Ingredients */
+
+.ingredients-container {
+	float:left;
+	border:1px dashed #000;
+	width:40%;
+	margin:0 30px 10px 0;
+	padding:10px 0 0 10px;
+	background-color :#f1b46c;
+	text-decoration:none;
+}
+
+li.ingredient-group,
+.recipe-instruction-group {
+  font-weight: bold;
+  display: block;
+}
+
+ul.wpurp-recipe-ingredients {
+  margin: 0 0 10px 7px;
+}
+
+li.wpurp-recipe-ingredient {
+}
+
+li.wpurp-recipe-ingredient a {
+	text-decoration: none;
+	color:#1a1a1a;
+}
+
+li.wpurp-recipe-ingredient a:hover {
+	text-decoration: underline;
+}
+	
+span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
+	color:#555555;
+}
+
+/* Instructions */
+
+ol.wpurp-recipe-instructions {
+    /*list-style-position: inside;*/
+}
+
+li.wpurp-recipe-instruction {
+    margin-bottom: 10px;
+}
+
+
+
+/* Picture gallery 
+----------------------------------------------*/
+#joined-pics .add-picture-button button,
+#joined-pics .gallery-item {
+	margin-right:5px!important;
+}
+
+#joined-pics .add-picture-button button {
+	text-transform:uppercase;
+  text-align:center;
+  width:75px;
+  height:75px;
+  font-size:12px;
+	color:#787878;
+	float:left;
+	background:#ddc3a3;
+}
+
+#joined-pics .add-picture-button button:hover {
+	color:#000;
+}
+
+#joined-pics .add-picture-button button:before {
+	/* content:"\f067"; Plus */
+	content:"+"; /* Plus */
+  font-size: 14px;
+	display:block;
+}
+
+
+/* MEDIA QUERIES 
+---------------------------------------------------*/
+
+@media only screen and (max-width:420px) {
+	
+.image-container,
+.ingredients-container {
+	width:100%;
+	margin-bottom:20px;
+}

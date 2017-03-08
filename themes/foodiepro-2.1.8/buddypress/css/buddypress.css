@@ -1762,110 +1762,6 @@ body.register #buddypress div.page ul {
 	list-style-type: none;
 }
 
-/*--------------------------------------------------------------
-4.0 - Media Queries
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-4.1 - Smartphones - landscape
---------------------------------------------------------------*/
-@media only screen and (max-width: 480px ){
-	#buddypress div.dir-search {
-		float: right;
-		margin-top: -50px;
-		text-align: right;
-	}
-	#buddypress div.dir-search input[type="text"] {
-		margin-bottom: 1em;
-		width: 50%;
-	}
-	a.bp-title-button {
-		margin-left: 10px;
-	}
-	#buddypress form.standard-form .main-column div.action{
-		position: relative;
-		margin-bottom:1em;
-	}
-	#buddypress form.standard-form .main-column ul#friend-list h4{
-		width:100%;
-	}
-}
-
-/*--------------------------------------------------------------
-4.2 - Smartphones - portrait
---------------------------------------------------------------*/
-@media only screen and (max-width: 320px) {
-	#buddypress div.dir-search {
-		clear: left;
-		float: left;
-		margin-top: 0;
-		text-align: left;
-	}
-	#buddypress li#groups-order-select {
-		clear: left;
-		float: left;
-	}
-	#buddypress ul.item-list li div.action {
-		clear: left;
-		float: left;
-		margin-top: 0;
-		margin-left: 70px;
-		position: relative;
-		top: 0;
-		right: 0;
-		text-align: left;
-	}
-	#buddypress ul.item-list li div.item-desc {
-		clear: left;
-		float: left;
-		margin: 10px 0 0;
-		width: auto;
-	}
-	#buddypress li div.item {
-		margin-left: 70px;
-		width: auto;
-	}
-	#buddypress ul.item-list li div.meta {
-		margin-top: 0;
-	}
-	#buddypress .item-desc p {
-		margin: 0 0 10px;
-	}
-	#buddypress div.pagination .pag-count {
-		margin-left: 0;
-	}
-}
-
-/*--------------------------------------------------------------
-4.2 - Smartphones - smaller screen sizes
---------------------------------------------------------------*/
-@media only screen and (max-width: 240px) {
-	#buddypress div.dir-search {
-		float: left;
-		margin: 0;
-	}
-	#buddypress div.dir-search input[type="text"] {
-		width: 50%;
-	}
-	#buddypress li#groups-order-select {
-		float: left;
-	}
-	#buddypress ul.item-list li img.avatar {
-		width: 30px;
-		height: auto;
-	}
-	#buddypress ul.item-list li div.action,
-	#buddypress li div.item{
-		margin-left: 45px;
-	}
-	h1 a.bp-title-button {
-		clear: left;
-		float: left;
-		margin: 10px 0 20px;
-	}
-}
-
-
-
 /* Buddypress Widgets
 --------------------------------------------- */
 
@@ -1934,6 +1830,129 @@ body.register #buddypress div.page ul {
 }
 
 	
+
+
+/*--------------------------------------------------------------
+4.0 - Media Queries
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+4.0.1 - Tablet
+--------------------------------------------------------------*/
+
+
+@media only screen and (max-width: 780px) {
+	
+	.bp-login-widget-user-links {
+	  margin : auto auto auto 50px;
+	}
+
+	.widget.buddypress .bp-login-widget-user-avatar {
+	  float: right;
+	  margin-left: auto;
+	}
+
+}
+
+/*--------------------------------------------------------------
+4.1 - Smartphones - landscape
+--------------------------------------------------------------*/
+@media only screen and (max-width: 480px ){
+	#buddypress div.dir-search {
+		float: right;
+		margin-top: -50px;
+		text-align: right;
+	}
+	#buddypress div.dir-search input[type="text"] {
+		margin-bottom: 1em;
+		width: 50%;
+	}
+	a.bp-title-button {
+		margin-left: 10px;
+	}
+	#buddypress form.standard-form .main-column div.action{
+		position: relative;
+		margin-bottom:1em;
+	}
+	#buddypress form.standard-form .main-column ul#friend-list h4{
+		width:100%;
+	}
+}
+
+/*--------------------------------------------------------------
+4.2 - Smartphones - portrait
+--------------------------------------------------------------*/
+@media only screen and (max-width: 320px) {
+	#buddypress div.dir-search {
+		clear: left;
+		float: left;
+		margin-top: 0;
+		text-align: left;
+	}
+	#buddypress li#groups-order-select {
+		clear: left;
+		float: left;
+	}
+	#buddypress ul.item-list li div.action {
+		clear: left;
+		float: left;
+		margin-top: 0;
+		margin-left: 70px;
+		position: relative;
+		top: 0;
+		right: 0;
+		text-align: left;
+	}
+	#buddypress ul.item-list li div.item-desc {
+		clear: left;
+		float: left;
+		margin: 10px 0 0;
+		width: auto;
+	}
+	#buddypress li div.item {
+		margin-left: 70px;
+		width: auto;
+	}
+	#buddypress ul.item-list li div.meta {
+		margin-top: 0;
+	}
+	#buddypress .item-desc p {
+		margin: 0 0 10px;
+	}
+	#buddypress div.pagination .pag-count {
+		margin-left: 0;
+	}
+
+/*--------------------------------------------------------------
+4.2 - Smartphones - smaller screen sizes
+--------------------------------------------------------------*/
+
+@media only screen and (max-width: 240px) {
+	#buddypress div.dir-search {
+		float: left;
+		margin: 0;
+	}
+	#buddypress div.dir-search input[type="text"] {
+		width: 50%;
+	}
+	#buddypress li#groups-order-select {
+		float: left;
+	}
+	#buddypress ul.item-list li img.avatar {
+		width: 30px;
+		height: auto;
+	}
+	#buddypress ul.item-list li div.action,
+	#buddypress li div.item{
+		margin-left: 45px;
+	}
+	h1 a.bp-title-button {
+		clear: left;
+		float: left;
+		margin: 10px 0 20px;
+	}
+}
+
 
 
 

@@ -159,6 +159,6 @@
 
 	$document.ready(function() {
 		$document.gamajoAccessibleMenu();
-		navInit();
+//		navInit();
 	});
 }( jQuery ) );

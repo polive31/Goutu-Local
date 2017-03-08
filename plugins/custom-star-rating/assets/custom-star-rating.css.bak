@@ -1,0 +1,136 @@
+/*
+Plugin Name: Custom Ratings
+File name : custom-ratings.css
+Description: Ratings via stars in comments
+*/
+
+
+
+/* Star rating input
+--------------------------------------------- */
+
+td.rating-title {
+	font-size:16px;
+	padding:10px 0 10px;
+}
+
+
+.form-submit {
+	display:block;
+	float:left;
+	clear:left;
+}
+
+.rating-wrapper {
+		padding:10px;
+		float:left;
+		clear:right;
+		overflow: hidden;
+		display: inline-block;
+}
+
+.rating-input {
+		display:none;
+}
+
+.rating-star:hover,
+.rating-star:hover ~ .rating-star {
+		background-position: 0 0;
+}
+
+.rating-wrapper:hover .rating-star:hover,
+.rating-wrapper:hover .rating-star:hover ~ .rating-star,
+.rating-input:checked ~ .rating-star {
+    background-position: 0 0;
+}
+
+.rating-star,
+.rating-wrapper:hover .rating-star {
+		float: right;
+		display: block;
+		width: 24px;
+		height: 24px;
+		background: url('../images/rating-star.png') -24px 0/48px 24px no-repeat;
+}
+
+
+/* Star rating output
+--------------------------------------------- */
+
+/* Rating table formatting
+--------------------------------*/
+
+table.ratings-table {
+	text-align: center;
+}
+
+.ratings-table tr {
+	line-height: 30px;
+}
+
+/* Rating column  */
+
+td.rating {
+	width:120px;
+}
+.comment td.rating {
+	width:90px;
+}
+
+/* Category column  */
+
+td.rating-category {
+	padding:0 10px 0 0;
+	font-style:italic;
+}
+.rating-label {
+  font-size:18px;
+}
+
+/* Votes column */
+
+.rating-details {
+	font-size:13px;
+	color:#666;
+	padding:10px 0 0 10px;
+}
+
+
+/* Rating stars formatting 
+-----------------------------------------*/
+
+/* Rating star size */
+
+.rating {
+  font-size:18px;
+}
+.comment-rating .rating {
+  font-size:16px;
+}
+
+/* Stars spacing */
+span.fa-stack {
+	width: 18px;
+}
+
+.comment span.fa-stack {
+	width: 16px;
+}
+
+/* Icons colors */
+
+i.fa.fa-star,
+i.fa.fa-star-half-o {
+	/*color:#ff8f00;*/
+	color:#f5a241;
+}
+i.fa.fa-star-o {
+	/*color:#aaa;
+	color:#d6a86d;
+	color:#d67f33;
+	color:#cc9c73;*/
+	color:#d6b090;
+}
+.full i.fa.fa-star-o {
+	color:#f18b14;
+}

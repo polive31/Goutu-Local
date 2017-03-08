@@ -1,0 +1,152 @@
+/* Color Theme : Autumn 
+--------------------------------------------------*/
+
+body {
+  background:#e0cab7;
+}
+
+.site-container {
+	/*background-color:#f5d7a9;*/
+	background-color:#ead0b1;
+}
+
+.site-title a {
+	background:url("../../images/header_goutu_autumn_h75.png") no-repeat center;
+}
+
+.home-page .site-title a {
+	background:url("../../images/header_goutu_autumn_450_190.png") no-repeat center;
+}
+
+h1.entry-title,
+.entry-title a,
+.sidebar .widgettitle a,
+.widgettitle  {
+	color:#000;
+}
+
+.img-menu a .menu-title span,
+a.more-link,
+.more-from-category a {
+	/*background-color:#e8a472;
+	background-color:#c5b197;
+	background-color:#d2b39c;*/
+	background-color:#e0cab7;
+}
+
+.img-menu:hover a .menu-title span,
+a.more-link:hover,
+.more-from-category a:hover {
+	/*background:#da5c00;
+  background:#923e00;
+  background:#e08800;*/
+  background:#63584b;
+	color:#fff;
+}
+
+.top5 .rpwe-block {
+	background-color:#ffedd0;
+}
+
+.footer-widgets,
+.recipes-top, 
+.blogs-top,
+.archives-top,
+.sidebar-primary .widget.themes,
+html body .wpurp-container .add-picture-link {
+	/*background-color:#eacea2;*/	
+	background-color:#ddc3a3!important; /* important needed because of WPURP override	*/
+}
+
+.home-bottom .widgettitle {
+	border-bottom:1px solid #d6bc95;
+}
+
+/* Text area specific formatting */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+optgroup,
+textarea,
+.search-form input {
+	background-color:#fff6e7;/* background-color important, pas background car conflit avec autre setting plus loin*/
+}
+
+select {
+    background-color:#ffedd0;
+}
+
+input, select, textarea,
+.widget.back ul li {
+	border:1px solid #aaa;
+}
+
+.widget.themes ul li,
+.single .widget.themes ul li {
+	background-color:#ffedd0;
+}
+
+.widget.back ul li {
+	background-color:#ffedd0;
+}
+
+.single .widget.themes ul li:hover,
+.widget.themes ul li:hover,
+.widget.back ul li:hover {
+	background-color:#fff6e7;
+}
+
+.widget.themes ul li.current-menu-item,
+.archive-pagination li.active {
+	background-color:#fff6e7;
+}
+
+.archive-pagination li {
+	border:1px solid #aaa;
+}
+
+.frontier-list-item {
+	border-color:#aaa;
+}
+
+/*.archive .entry-header a.entry-image-link img,
+.search .entry-header a.entry-image-link img,*/
+/*.content a.rpwe-img img,*/
+a.entry-image-link img {
+	/*border:1px solid #fff;*/
+	border:1px solid #ead0b1;
+}
+
+/*.content a.rpwe-img:hover img,*/
+a.entry-image-link:hover img {
+	border-color:#fff;
+}
+
+
+/* MEDIA QUERIES 
+--------------------------------------------*
+
+/* Smartphone */
+@media only screen 
+	and (max-width:870px) {
+  	
+
+	.site-title a,
+	.home .site-title a {
+		background:url("../../images/header_goutu_autumn_360_150.png") no-repeat center;
+	}
+
+}
+
+/* Retina smartphone */
+@media only screen 
+	and (max-width:870px)
+  and (-webkit-min-device-pixel-ratio:2) {
+ 
+	.site-title a,
+	.home .site-title a {
+		background:url("../../images/header_goutu_autumn_720_300.png") no-repeat center;
+		background-size:contain;
+	}
+
+}

@@ -1,0 +1,23 @@
+/* Gallery
+--------------------------------------------- */
+
+.gallery {
+	overflow:hidden;
+}
+
+.gallery-item {
+	float:left;
+	/*margin:0 0 28px!important;*/
+	margin-right:10px!important;
+	text-align:center;
+}
+
+.gallery img {
+	border:1px solid #ddd;
+	height:auto;
+	padding:4px;
+}
+
+.gallery img:hover {
+	border:1px solid #999;
+}

@@ -16,44 +16,225 @@ if ( !defined('ABSPATH') )
 
 	
 /* =================================================================*/
-/* =               BATCH UPDATE USER RATINGS
+/* =               TEST SHORTCODE
 /* =================================================================*/
 
+add_shortcode('test-shortcode', 'test_shortcode');
 
-/* Batch update user_ratings_ratings custom field */
-function batch_update_meta() {
-	
-	$a = shortcode_atts( array(
-		'post-type' => 'recipe',
-		'key' => 'recipe_user_ratings_rating', // id, pseudo, name
-	), $atts );
-	
-	$key = $a['key'];
-  $post_type = $a['post-type'];
-		
-	echo '<div class="clearfix">';
-	echo "Batch Update Meta script started..." . "\n";
-	
-  $value = 0;
-  
-  $post_type_object = get_post_type_object($post_type);
-  $label = $post_type_object->label;
-  echo  "Updating all " . $label . "\n";
-  $posts = get_posts(array('post_type'=> $post_type, 'post_status'=> 'publish', 'suppress_filters' => false, 'posts_per_page'=>-1));
-
-  foreach ($posts as $post) {
-    $meta_value = get_post_meta($post->ID, $key, True);
-    if (empty($meta_value)){
-    //$meta_value2 = media_process($meta_value1, $post->ID); //Returns a string after it finishes process.
-    update_post_meta($post->ID, $key, $value);
-    echo $post->post_title." UPDATED" . "\n"; //Prints updated after ran.
-    }
-  }
-  echo '/div';
-
+function test_shortcode() {
+	echo 'TEST SHORTCODE';
 }
+	
+	
+/* =================================================================*/
+/* =               BATCH UPDATE POST META
+/* =================================================================*/
 
 add_shortcode('batch-update-meta', 'batch_update_meta');
 
+/* Batch update user_ratings_ratings custom field */
+function batch_update_meta($atts) {
+	$a = shortcode_atts( array(
+		'post-type' => 'recipe',
+		'include' => '',
+		'key' => 'user_rating',
+		'new-key' => '',
+		'value' => '0',//can be scalar or array of space-separated $key/$value pairs
+		'cmd' => 'add',//replace, delete, rename
+	), $atts );
+	
+	static $script_id; // allows several shortcodes on the same page
+	++$script_id;
+	
+	echo "<h3>BATCH UPDATE META SHORTCODE</h3>";
+	
+	$key = $a['key'];
+	echo sprintf("<b>Key</b> = %s",$key);
+	echo "<br>";
+	
+	$new_key = $a['new-key'];
+	echo sprintf("<b>New key</b> = %s",$new_key);
+	echo "<br>";
+
+  $post_type = $a['post-type'];
+	echo sprintf("<b>Post type</b> = %s",$post_type);
+	echo "<br>";
+
+	$include = $a['include'];
+	echo sprintf("<b>Limited to posts</b> = %s",$include);
+	echo "<br>";
+
+	$value = $a['value'];
+	echo sprintf("<b>Value</b> = %s",$value);
+	echo "<br>";
+
+	$cmd = $a['cmd'];
+	
+	$style='';
+	if ($cmd=='delete') $style='background-color:red';
+	if ($cmd=='update') $style='background-color:brown';
+	
+	ob_start();?>
+	
+	<div id = "center">
+	<form action="." method="post">
+	<input style="<?php echo $style;?>" type="submit" name="Submit_<?php echo $script_id?>" value="<?php echo $cmd;?>">
+	</form>
+	</div>
+	<br>
+	
+	<?php
+	$form=ob_get_contents();
+	ob_end_clean();
+	
+	echo $form;
+	
+	if (isset($_POST['Submit_' . $script_id])) {
+			
+			if ( is_array($value) )
+				$value = extractKeyValuePairs( $value );
+			else
+				$value = $a['value'];
+			
+			//PC:debug( array('$value after explode : '=>$value) );
+				
+			echo "<p>Batch Update Meta script started...</p>";
+		  
+		  $post_type_object = get_post_type_object($post_type);
+		  $label = $post_type_object->label;
+
+		  $posts = get_posts(array('include'=>$include, 'post_type'=> $post_type, 'post_status'=> 'publish', 'suppress_filters' => false, 'posts_per_page'=>-1));
+
+		  foreach ($posts as $post) {
+
+		    $meta_value = get_post_meta($post->ID, $key, True);
+		    switch ($cmd) {
+		    	case 'add':
+		    		if ( empty($meta_value) ) add_post_meta($post->ID, $key, $value);
+		    		echo sprintf("%s=%s added to %s",$key,$value,$post->post_title) . "<br>"; //Prints updated after ran.
+		    		break;
+		    	case 'rename':
+		    		if ( ! empty($meta_value) ) {
+		    			update_post_meta($post->ID, $new_key, $meta_value);
+		    			delete_post_meta($post->ID, $key);
+		    			echo sprintf("%s renamed to %s in %s",$key,$new_key,$post->post_title) . "<br>"; //Prints updated after ran.
+		    		}
+		    		else {
+		    			update_post_meta($post->ID, $new_key, '0');
+		    			echo sprintf("Key %s not found in %s. Updated %s to '0'.",$key, $post->post_title, $newkey);
+		    		}
+						$new_value = get_post_meta($post->ID, $new_key, True);
+						PC::debug(array('Value for renamed key' => $new_value));
+		    		break;
+		    	case 'replace':
+		    		update_post_meta($post->ID, $key, $value);
+		    		echo sprintf("%s updated to %s in %s",$key,$value,$post->post_title) . "<br>"; //Prints updated after ran.
+		    		break;
+		    	case 'delete':
+		    		if ( ! empty($meta_value) ) delete_post_meta($post->ID, $key);
+		    		echo sprintf("%s key deleted in %s",$key,$post->post_title) . "<br>"; //Prints updated after ran.
+		    		break;
+		    }
+		  }
+	}
+	
+}
+
+function extractKeyValuePairs($string, $delimiter = ' ') {
+    $params = explode($delimiter, $string);
+    $pairs = [];
+    for ($i = 0; $i < count($params); $i++) {
+        $pairs[$params[$i]] = $params[++$i];
+    }
+
+    return $pairs;
+}
+
+/* =================================================================*/
+/* =               BATCH DELETE COMMENTS
+/* =================================================================*/
+
+add_shortcode('batch-delete-comments', 'batch_delete_comments');
+
+/* Batch update user_ratings_ratings custom field */
+function batch_delete_comments($atts) {
+	$a = shortcode_atts( array(
+		'post-type' => 'recipe',
+		'include' => '', // Post ids list, separated by commas
+	), $atts );
+	
+	static $script_id; // allows several shortcodes on the same page
+	++$script_id;
+	
+	echo "<h3>BATCH DELETE COMMENTS SHORTCODE#" . $script_id . "</h3>";
+	
+  $post_type = $a['post-type'];
+	echo sprintf("<b>Post type</b> = %s",$post_type);
+	echo "<br>";
+
+	$include = $a['include'];
+	echo sprintf("<b>Limited to posts</b> = %s",$include);
+	echo "<br>";
+	
+	$cmd='delete';
+	$style='background-color:red';
+	
+	ob_start();?>
+	
+	<div id = "center">
+	<form action="." method="post">
+	<input style="<?php echo $style;?>" class="button-<?php echo $script_id;?>" type="submit" name="Submit_<?php echo $script_id?>" value="<?php echo $cmd;?>">
+	</form>
+	</div>
+	<br>
+	
+	<script>
+		
+	$(document).ready(function(){
+    $('.button').click(function(){
+      var clickBtnValue = $(this).val();
+      var ajaxurl = 'ajax.php',
+      data =  {'action': clickBtnValue};
+      $.post(ajaxurl, data, function (response) {
+          // Response div goes here.
+          alert("action performed successfully");
+      });
+    });
+	});
+
+	</script>
+	
+	<?php
+	$form=ob_get_contents();
+	ob_end_clean();
+	
+	echo $form;
+	
+	if (isset($_POST['Submit_' . $script_id])) {
+							
+			echo "<p>Batch Delete Comments script started...</p>";
+		  
+		  $post_type_object = get_post_type_object($post_type);
+		  $label = $post_type_object->label;
+
+			if ( ! empty($include) || ( $include == 'all') ) {
+			 	$posts = get_posts(array('include'=>$include, 'post_type'=> $post_type, 'post_status'=> 'publish', 'suppress_filters' => false, 'posts_per_page'=>-1));
+			  foreach ($posts as $post) {
+					$comments = get_comments( array('post_id'=>$post->ID ) );
+					echo sprintf(__('Post %s contains %d comments'), $post->post_title, count($comments) );
+					echo "<br>";
+					
+					
+				}
+				
+		  }
+			else 
+				echo "Please provide post IDs or 'all' for deletion to take place";
+
+	}
+	
+}
 
 ?>
+
+

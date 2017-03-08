@@ -58,6 +58,43 @@ define ( 'BP_AVATAR_DEFAULT_THUMB', 'https://goutu.org/wp-content/themes/foodiep
 //}
 
 /* =================================================================*/
+/* =              PLUGIN INIT
+/* =================================================================*/
+
+/* Enqueue Buddypress scripts in the footer rather than the header 
+--------------------------------------------------------------------*/
+function enqueue_bp_core_scripts($scripts) {
+	if (is_admin()) return $scripts;
+		
+  foreach ( $scripts as $id => $script ) { 
+      if (!$script['footer']) 
+      	$scripts[$id]['footer']=TRUE; 
+  } 
+
+//	print "<pre>";
+//	print_r($scripts);
+//	print "</pre>";
+	
+	return $scripts;
+}
+//add_filter( 'bp_core_register_common_scripts', 'enqueue_bp_core_scripts', 15, 1 );
+
+/* Buddypress Friends Widget */
+function enqueue_bp_js() {
+	if (is_admin()) return;
+	
+	$min='min';
+	
+	wp_deregister_script('bp-legacy-js');
+  wp_enqueue_script( 'bp-legacy-js', buddypress()->plugin_url . "bp-templates/bp-legacy/js/buddypress{min}.js", array( 'bp-confirm', 'bp-jquery-cookie', 'bp-jquery-query', 'bp-jquery-scroll-to', 'bp-widget-members', 'jquery' ), bp_get_version(), true );
+
+	wp_deregister_script('bp_core_widget_friends-js');
+  wp_enqueue_script( 'bp_core_widget_friends-js', buddypress()->plugin_url . "bp-friends/js/widget-friends{min}.js", array( 'jquery' ), bp_get_version(), true );
+
+}
+//add_action( 'wp_enqueue_scripts', 'enqueue_bp_js' );
+
+/* =================================================================*/
 /* =              COVER IMAGE SETTINGS
 /* =================================================================*/
 
@@ -78,20 +115,19 @@ add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'your_theme_xp
  * <a class="bp-suggestions-mention" href="https://buddypress.org/members/see/" rel="nofollow">@see</a> bp_legacy_theme_cover_image() to discover the one used by BP Legacy
  */
 function your_theme_cover_image_callback( $params = array() ) {
-    if ( empty( $params ) ) {
-        return;
-    }
+    if ( empty( $params ) ) return;
  
-    return '
+    ob_start();?>
+    
         /* Cover image */
         #buddypress #header-cover-image {
-            height: ' . $params["height"] . 'px;
-            background-image: url(' . $params['cover_image'] . ');
+            height: <?php echo $params['height'];?>px;
+            background-image: url(<?php echo $params['cover_image'];?>);
         }
         
         /* Avatar */
         #buddypress #item-header-cover-image #item-header-avatar {
-				    margin-top:' . ($params["height"]-intval(BP_AVATAR_FULL_HEIGHT+10)/2) . 'px;
+				    margin-top:<?php echo ($params['height']-intval(BP_AVATAR_FULL_HEIGHT+10)/2);?>px;
 				    float: left;
 				    overflow: visible;
 				    width: auto;
@@ -101,11 +137,18 @@ function your_theme_cover_image_callback( $params = array() ) {
 				#buddypress div#item-header #item-header-cover-image #item-header-content {
 				    clear: both;
 				    float: left;
-				    margin-left:' . (BP_AVATAR_FULL_WIDTH+20) . 'px;
-				    margin-top:-' . (BP_AVATAR_FULL_HEIGHT-10) . 'px;
+				    margin-left:<?php echo BP_AVATAR_FULL_WIDTH+20;?>px;
+				    margin-top:-<?php echo BP_AVATAR_FULL_HEIGHT-10;?>px;
 				    width: auto;
-				}
-    ';
+				} 
+	
+	<?php
+				
+	$css = ob_get_contents();
+	echo $css;
+	ob_end_clean();
+	
+	return $css;
 }
 
 // Override default css stylesheet
@@ -157,6 +200,8 @@ add_filter('bp_core_fetch_avatar_no_grav', '__return_true');
 
 
 //* Add gravatar or picture before entry title
+add_action( 'genesis_entry_header', 'bg_entry_image', 7 );
+
 function bg_entry_image() {
 	if ( is_singular( 'recipe' ) | is_singular( 'post' ) ) /*&& ( function_exists('bp_is_active') ) */{ /* Post or Custom Post */
 		$id = get_the_author_meta( 'ID' );
@@ -184,26 +229,23 @@ function bg_entry_image() {
 	}
 }
 
-add_action( 'genesis_entry_header', 'bg_entry_image', 7 );
 
 /* Modify WP Recent Posts extended output, depending on the css ID field value */
-function wprpe_add_post_info($args) {
+add_filter('rpwe_after_thumbnail', 'wprpe_add_gravatar', 20, 2);
+function wprpe_add_gravatar($output, $args) {
+		//PC::debug( array('WPRPE Output add gravatar'=>$output) );
 		$disp_avatar = substr($args['cssID'],0,1);
-		$disp_rating = substr($args['cssID'],1,1);
 		if ( $disp_avatar == '1') {
-			$output = '<a class="auth-avatar" href="' . bp_core_get_user_domain( get_the_author_meta( 'ID' )) . '" title="' . bp_core_get_username(get_the_author_meta( 'ID' )) . '">';
+			$output .= '<a class="auth-avatar" href="' . bp_core_get_user_domain( get_the_author_meta( 'ID' )) . '" title="' . bp_core_get_username(get_the_author_meta( 'ID' )) . '">';
 			$output .= get_avatar( get_the_author_meta( 'ID' ), '45');
 			$output .= '</a>';
-		}
-		if ( $disp_rating == '1') {
-			$rating = output_recipe_rating( get_the_ID());
-			$output .= '<div class="rating" id="stars-' . $rating['stars'] . '"></div>';
 		}
 		//$output = print_r($args, true);
 	return $output;
 }
-add_filter('rpwe_after_thumbnail', 'wprpe_add_post_info', 10, 1);
 
+/* TODO Add Comment here */
+add_filter( 'rpwe_default_query_arguments', 'wprpe_query_displayed_user_posts' );
 
 function wprpe_query_displayed_user_posts( $args ) {
 		if ( $args['author']=='bp_member' )  {
@@ -211,7 +253,6 @@ function wprpe_query_displayed_user_posts( $args ) {
 		}
     return $args;
 }
-add_filter( 'rpwe_default_query_arguments', 'wprpe_query_displayed_user_posts' );
 
 //
 ///* Display current member posts and more link  */

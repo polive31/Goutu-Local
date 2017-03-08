@@ -82,7 +82,10 @@ class CustomStarRatings {
 		//$val = intval($rating_val);
 		if ($val==0) return __('Not rated','custom-star-rating');
 		$val=ceil($val)-1;
-		if ( isset( $this->ratingCats[$cat]['caption'] )) {
+		if ( $cat=='global' ) {
+			return __($this->ratingGlobal['global']['caption'][$val], 'custom-star-rating');
+		}
+		elseif ( isset( $this->ratingCats[$cat]['caption'] )) {
 			return __($this->ratingCats[$cat]['caption'][$val], 'custom-star-rating');
 		}
 		return '';

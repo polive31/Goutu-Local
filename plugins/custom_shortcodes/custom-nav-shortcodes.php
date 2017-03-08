@@ -9,17 +9,15 @@ Author URI: http://goutu.org
 License: GPL
 */
 
+// Add a shortcode that executes our function
+add_shortcode('ct-terms', 'list_terms_taxonomy');
 
 /* =================================================================*/
 /* =                    TAXONOMY LIST SHORTCODE     
 /* =================================================================*/
 
-// First we create a function
 function list_terms_taxonomy( $atts ) {
 	static $dropdown_cnt;
-	$html = '';
-
- //Inside the function we extract custom taxonomy parameter of our shortcode
 	extract( shortcode_atts( array(
 		'dropdown' => 'false',
 		'taxonomy' => 'category',
@@ -34,6 +32,7 @@ function list_terms_taxonomy( $atts ) {
 	), $atts ) );
 
 
+	$html = '';
 // Extraction of taxonomy from current url
 	$all_url='#';
 	if ($taxonomy == 'url') {
@@ -131,8 +130,7 @@ function list_terms_taxonomy( $atts ) {
  
 }
 
-// Add a shortcode that executes our function
-add_shortcode('ct-terms', 'list_terms_taxonomy');
+
 
 
 /* =================================================================*/

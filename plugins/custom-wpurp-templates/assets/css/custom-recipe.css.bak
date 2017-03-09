@@ -28,6 +28,7 @@
 	float: right;
 	font-size:25px;
 	margin: 0 10px;
+	padding: 5px 0;
 }
 
 .recipe-button a {
@@ -146,11 +147,11 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 }
 
 
-.single-recipe .rating {
+.recipe-container .rating {
   font-size:24px;
 }
 
-.single-recipe span.fa-stack {
+.recipe-container span.fa-stack {
 	width: 23px;
 }
 
@@ -288,6 +289,7 @@ li.wpurp-recipe-instruction {
 @media only screen and (max-width:420px) {
 	
 .image-container,
+.info-container,
 .ingredients-container {
 	width:100%;
 	margin-bottom:20px;

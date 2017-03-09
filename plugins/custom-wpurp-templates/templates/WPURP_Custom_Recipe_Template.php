@@ -98,6 +98,13 @@ class WPURP_Custom_Recipe_Template extends WPURP_Custom_Custom_Templates {
 							echo $html;
 						}		
 						
+						// Diet
+					  $test = get_the_term_list( $post_ID, 'diet', '', '', '' ); 
+						if ($test!='') {
+							$html = '<div class="label-container"><div id="tag" class="recipe-label">' . __('Diet','foodiepro') . '</div>' . $test . '</div>';
+							echo $html;
+						}	
+						
 						// Difficulty
 					  $test = get_the_term_list( $post_ID, 'difficult', '', '', '' ); 
 						if ($test!='') {

@@ -71,7 +71,7 @@ table.ratings-table {
 /* Rating column  */
 
 td.rating {
-	width:120px;
+	min-width:120px;
 }
 .comment td.rating {
 	width:90px;
@@ -94,6 +94,7 @@ td.rating-category {
 	font-size:13px;
 	color:#666;
 	padding:0 0 0 10px;
+	min-width: 60px;
 }
 
 

@@ -28,6 +28,7 @@
 	float: right;
 	font-size:25px;
 	margin: 0 10px;
+	padding: 5px 0;
 }
 
 .recipe-button a {
@@ -288,7 +289,9 @@ li.wpurp-recipe-instruction {
 @media only screen and (max-width:420px) {
 	
 .image-container,
+.info-container,
 .ingredients-container {
+	max-width:100%; /* this property is set for info-container in screen display*/
 	width:100%;
 	margin-bottom:20px;
 }

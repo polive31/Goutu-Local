@@ -61,7 +61,7 @@ class WPURP_Custom_Recipe_Template extends WPURP_Custom_Custom_Templates {
 												
 					<!-- Recipe Rate Button -->
 					<div class="recipe-button">
-						<a class="recipe-review-button"  title="<?php echo __('Rate this recipe','foodiepro')?>" id="recipe-review">
+						<a class="recipe-review-button"  title="<?php echo __('Comment and rate this recipe','foodiepro')?>" id="recipe-review">
 						<div class="button-caption"><?php echo __('Rate','foodiepro'); ?></div>
 						</a>
 					</div>			
@@ -97,6 +97,13 @@ class WPURP_Custom_Recipe_Template extends WPURP_Custom_Custom_Templates {
 							$html = '<div class="label-container"><div id="tag" class="recipe-label">' . __('Origin','foodiepro') . '</div>' . $test . '</div>';
 							echo $html;
 						}		
+						
+						// Diet
+					  $test = get_the_term_list( $post_ID, 'diet', '', '', '' ); 
+						if ($test!='') {
+							$html = '<div class="label-container"><div id="tag" class="recipe-label">' . __('Origin','foodiepro') . '</div>' . $test . '</div>';
+							echo $html;
+						}	
 						
 						// Difficulty
 					  $test = get_the_term_list( $post_ID, 'difficult', '', '', '' ); 

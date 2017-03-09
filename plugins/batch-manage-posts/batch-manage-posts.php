@@ -24,6 +24,7 @@ require 'helpers/form.php';
 require 'functions/common.php';
 require 'functions/delete_comments_ajax.php';
 require 'functions/manage_posts_meta_ajax.php';
+require 'functions/migrate_posts_ratings_ajax.php';
 
 add_action( 'wp_enqueue_scripts', 'bupm_init_scripts' );
 function bupm_init_scripts() {
@@ -109,20 +110,21 @@ function batch_migrate_ratings($atts) {
 		'post-type' => 'recipe',
 		'include' => '',
 	), $atts );
-	
+	$a['cmd']='migrate';
+		
 	static $script_id; // allows several shortcodes on the same page
 	++$script_id;
 	
 	$script_name = 'MigrateRatings';
 
-	echo "<h3>BATCH MANAGE META SHORTCODE#" . $script_id . "</h3>";
+	echo "<h3>BATCH MIGRATE RATINGS SHORTCODE#" . $script_id . "</h3>";
 	
 	$jsargs= create_ajax_arg_array($a, $script_name, $script_id);
 	
 	wp_enqueue_script( 'ajax_call_batch_manage' );	
 	wp_localize_script( 'ajax_call_batch_manage', 'script' . $script_name . $script_id , $jsargs );
 	
-	echo batch_manage_form($script_id, $script_name, '');
+	echo batch_manage_form($script_id, $script_name, $a['cmd']);
 	
 }
 

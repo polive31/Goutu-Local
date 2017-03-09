@@ -82,6 +82,7 @@ td.rating {
 td.rating-category {
 	padding:0 10px 0 0;
 	font-style:italic;
+	text-align: left;
 }
 .rating-label {
   font-size:18px;
@@ -92,7 +93,7 @@ td.rating-category {
 .rating-details {
 	font-size:13px;
 	color:#666;
-	padding:10px 0 0 10px;
+	padding:0 0 0 10px;
 }
 
 
@@ -109,12 +110,16 @@ td.rating-category {
 }
 
 /* Stars spacing */
-span.fa-stack {
-	width: 18px;
+.fa-stack {
+  width: 23px!important;
+  height: 23px!important;
+  line-height: 18px!important;
 }
 
-.comment span.fa-stack {
-	width: 16px;
+.comment .fa-stack {
+  height: 16px!important;
+	width: 16px!important;
+  line-height: 16px!important;
 }
 
 /* Icons colors */

@@ -187,7 +187,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 	
 		/* Output stars stacked
 	-------------------------------------------------------------*/
-	public function output_stars($stars, $half) {
+	public function output_stars_table($stars, $half) {
 		$html = '';
 		for ($i = 1; $i <= $stars; $i++) {
 			$html .= '<span class="fa-stack full"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>';
@@ -198,6 +198,24 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 			}
 			else {
 				$html .= '<span class="fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>';
+			}
+		}
+		return $html;
+	}
+	
+		/* Output stars div
+	-------------------------------------------------------------*/
+	public function output_stars($stars, $half) {
+		$html = '';
+		for ($i = 1; $i <= $stars; $i++) {
+			$html .= '<div class="fa-stack full"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></div>';
+		}
+		for ($i = $stars+1; $i <= 5; $i++) {
+			if ( ($i == ($stars+1) ) && $half ) {
+				$html .= '<div class="fa-stack full"><i class="fa fa-star-half-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></div>';
+			}
+			else {
+				$html .= '<div class="fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></div>';
 			}
 		}
 		return $html;

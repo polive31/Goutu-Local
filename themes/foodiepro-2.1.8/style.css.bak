@@ -1917,6 +1917,7 @@ Custom Page Templates
 }
 
 /* Social share popup */
+#popmake-10319,
 #popmake-10195 {
 	max-width: 500px;
 }
@@ -1925,12 +1926,14 @@ Custom Page Templates
 /*	max-width: 500px;*/
 }
 
+#popmake-10319 .mash-small span,
 #popmake-10195 .mash-small span {
 	display: block;
 	line-height: 30px;
 	text-align: center;
 }
 
+#popmake-10319 .mashsb-box .mashsb-buttons a.mash-small,
 #popmake-10195 .mashsb-box .mashsb-buttons a.mash-small {
 	box-shadow: 9px 6px 8px 0px grey;
 	margin:10px;
@@ -2056,9 +2059,6 @@ Custom Page Templates
 	padding:0px 10px;
 }
 
-	width:33.3%;
-	padding:0px 10px;
-}
 
 .archives-top .widget-wrap  {
 	width:100%;

@@ -21,10 +21,10 @@ class CustomStarRatings {
 				'title'=> __('Dish','custom-star-rating'),
 				'question'=> __('How did you like this dish ?'),
 				'caption' => array(
-								__('Really not good','custom-star-rating'),
-								__('Not so good','custom-star-rating'),
+								__('Disappointing','custom-star-rating'),
 								__('Rather good','custom-star-rating'),
-								__('Tasty','custom-star-rating'),
+								__('Good','custom-star-rating'),
+								__('Very good','custom-star-rating'),
 								__('Delicious','custom-star-rating'),
 				)	
 			),
@@ -47,10 +47,10 @@ class CustomStarRatings {
 				'title'=> __('Overall','custom-star-rating'),
 				'caption' => array(
 								__('Disappointing recipe','custom-star-rating'),
-								__('Not so good','custom-star-rating'),
-								__('Rather good','custom-star-rating'),
-								__('Excellent recipe','custom-star-rating'),
-								__('Outstanding recipe','custom-star-rating'),
+								__('Average recipe','custom-star-rating'),
+								__('Good recipe','custom-star-rating'),
+								__('Very good recipe','custom-star-rating'),
+								__('Fabulous recipe','custom-star-rating'),
 				)	
 			)
 		);

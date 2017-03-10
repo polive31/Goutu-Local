@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: custom-star-rating\n"
-"POT-Creation-Date: 2017-03-08 08:01+0100\n"
-"PO-Revision-Date: 2017-03-08 08:13+0100\n"
+"POT-Creation-Date: 2017-03-11 00:31+0100\n"
+"PO-Revision-Date: 2017-03-11 00:32+0100\n"
 "Last-Translator: \n"
 "Language-Team: goutu.org <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -16,59 +16,59 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: includes/CustomStarRatings.php:22
+#: includes/CustomStarRatings.php:21
 msgid "Dish"
 msgstr "Plat"
 
-#: includes/CustomStarRatings.php:23
+#: includes/CustomStarRatings.php:22
 msgid "How did you like this dish ?"
 msgstr "Appréciation du plat"
 
+#: includes/CustomStarRatings.php:24
+msgid "Disappointing"
+msgstr "Décevant"
+
 #: includes/CustomStarRatings.php:25
-msgid "Really not good"
-msgstr "Vraiment pas bon"
-
-#: includes/CustomStarRatings.php:26 includes/CustomStarRatings.php:50
-msgid "Not so good"
-msgstr "Pas très bon"
-
-#: includes/CustomStarRatings.php:27 includes/CustomStarRatings.php:51
 msgid "Rather good"
 msgstr "Assez bon"
 
-#: includes/CustomStarRatings.php:28
-msgid "Tasty"
-msgstr "Goûteux"
+#: includes/CustomStarRatings.php:26
+msgid "Good"
+msgstr "Bon"
 
-#: includes/CustomStarRatings.php:29
+#: includes/CustomStarRatings.php:27
+msgid "Very good"
+msgstr "Très bon"
+
+#: includes/CustomStarRatings.php:28
 msgid "Delicious"
 msgstr "Délicieux !"
 
-#: includes/CustomStarRatings.php:34
+#: includes/CustomStarRatings.php:33
 msgid "Recipe"
 msgstr "Recette"
 
-#: includes/CustomStarRatings.php:35
+#: includes/CustomStarRatings.php:34
 msgid "How clear was the recipe ?"
 msgstr "Clarté de la recette"
 
-#: includes/CustomStarRatings.php:37
+#: includes/CustomStarRatings.php:36
 msgid "Confusing"
 msgstr "Confus"
 
-#: includes/CustomStarRatings.php:38
+#: includes/CustomStarRatings.php:37
 msgid "Not so clear"
 msgstr "Pas très clair"
 
-#: includes/CustomStarRatings.php:39
+#: includes/CustomStarRatings.php:38
 msgid "Rather clear"
 msgstr "Assez clair"
 
-#: includes/CustomStarRatings.php:40
+#: includes/CustomStarRatings.php:39
 msgid "Very clear"
 msgstr "Très clair"
 
-#: includes/CustomStarRatings.php:41
+#: includes/CustomStarRatings.php:40
 msgid "Crystal clear even for kitchen dummies"
 msgstr "Parfaitement clair même pour les débutants !"
 
@@ -80,15 +80,23 @@ msgstr "Global"
 msgid "Disappointing recipe"
 msgstr "Décevant"
 
+#: includes/CustomStarRatings.php:50
+msgid "Average recipe"
+msgstr "Recette moyenne"
+
+#: includes/CustomStarRatings.php:51
+msgid "Good recipe"
+msgstr "Bonne recette"
+
 #: includes/CustomStarRatings.php:52
-msgid "Excellent recipe"
-msgstr "Excellent"
+msgid "Very good recipe"
+msgstr "Très bonne recette"
 
 #: includes/CustomStarRatings.php:53
-msgid "Outstanding recipe"
-msgstr "Exceptionnel"
+msgid "Fabulous recipe"
+msgstr "Recette fabuleuse !"
 
-#: includes/CustomStarRatings.php:83
+#: includes/CustomStarRatings.php:93
 msgid "Not rated"
 msgstr "Pas encore évalué"
 
@@ -134,12 +142,24 @@ msgid_plural "%s reviews"
 msgstr[0] "%s avis"
 msgstr[1] "%s avis"
 
-#: includes/CustomStarRatingsShortcodes.php:232
+#: includes/CustomStarRatingsShortcodes.php:247
 msgid "Comment"
 msgstr "Commentaire"
 
-#~ msgid "Very good"
-#~ msgstr "Très bon"
+#~ msgid "Really not good"
+#~ msgstr "Vraiment pas bon"
+
+#~ msgid "Not so good"
+#~ msgstr "Pas très bon"
+
+#~ msgid "Tasty"
+#~ msgstr "Goûteux"
+
+#~ msgid "Excellent recipe"
+#~ msgstr "Excellent"
+
+#~ msgid "Outstanding recipe"
+#~ msgstr "Exceptionnel"
 
 #~ msgid "Clarity"
 #~ msgstr "Clarté"

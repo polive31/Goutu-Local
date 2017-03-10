@@ -21,10 +21,10 @@ class CustomStarRatings {
 				'title'=> __('Dish','custom-star-rating'),
 				'question'=> __('How did you like this dish ?'),
 				'caption' => array(
-								__('Really not good','custom-star-rating'),
-								__('Not so good','custom-star-rating'),
+								__('Disappointing','custom-star-rating'),
 								__('Rather good','custom-star-rating'),
-								__('Tasty','custom-star-rating'),
+								__('Good','custom-star-rating'),
+								__('Very good','custom-star-rating'),
 								__('Delicious','custom-star-rating'),
 				)	
 			),
@@ -73,7 +73,7 @@ class CustomStarRatings {
 	--------------------------------------------------------------*/	
 	protected function display_debug_info() {
 		//$this->dbg('In Custom Rating Main Class !', '' );
-		//$this->dbg('Rated types: ', $this->ratedPostTypes );
+		//$this->dbg('Rated types: ', self::$ratedPostTypes );
 		//$this->dbg('ratingCats : ', self::$ratingCats );
 	}	
 	

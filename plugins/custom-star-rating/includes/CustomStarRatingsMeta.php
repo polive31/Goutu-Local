@@ -25,7 +25,7 @@ class CustomStarRatingsMeta extends CustomStarRatings {
 		$post_id = $comment['comment_post_ID'];									
 		$current_post_type = get_post_type( $post_id );
 
-		if (in_array( $current_post_type, $this->ratedPostTypes )) {
+		if (in_array( $current_post_type, self::$ratedPostTypes )) {
 			
 			//$this->dbg('*** Post Type accepted for rating submission ***', '' );
 			
@@ -45,9 +45,9 @@ class CustomStarRatingsMeta extends CustomStarRatings {
 	-------------------------------------------------------------*/ 
 	//public function add_default_rating( $id, $post ) {
 	public function add_default_rating() {
-	 	if ( ! wp_is_post_revision() && is_singular( $this->ratedPostTypes ) ) {
+	 	if ( ! wp_is_post_revision() && is_singular( self::$ratedPostTypes ) ) {
 	 		//PC:debug('Default rating add');
-			foreach ($this->ratingCats as $id=>$cat) {
+			foreach (self::$ratingCats as $id=>$cat) {
 				$this->update_post_meta($post->ID, 'user_rating_' . $id, '0');
 	 		}
 			$this->update_post_meta($post->ID, 'user_rating_global', '0');
@@ -59,7 +59,7 @@ class CustomStarRatingsMeta extends CustomStarRatings {
 	-------------------------------------------------------------*/ 	
 	public function get_ratings_update_comment_meta( $comment_id ) {
 		$new_rating = '';		
-		foreach ($this->ratingCats as $id=>$cat) {
+		foreach (self::$ratingCats as $id=>$cat) {
 			if ( isset( $_POST[ 'rating-' . $id ] ) )  {
 				$rating_form_value = $_POST[ 'rating-' . $id ];
 				////$this->dbg('Extracted rating form value for category ' . $cat['id'] . ' : ', $rating_form_value);
@@ -119,7 +119,7 @@ class CustomStarRatingsMeta extends CustomStarRatings {
 		//$this->dbg(' $user_ratings table ', $user_ratings);									
 		$global_rating=0;
 		$global_count=0;
-		foreach ($this->ratingCats as $cat_id=>$cat) {
+		foreach (self::$ratingCats as $cat_id=>$cat) {
 			/* $stats = array( 
 						'rating' => average rating 
 						'votes' => number of votes

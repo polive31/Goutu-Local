@@ -80,12 +80,12 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		if ($comment_rating) $this->dbg('In COMMENT rating display shortcode','');
 
 		// Setup categories to be displayed
-		if ( $a['category']=='all' ) $display_cats=$this->ratingCats;	
-		elseif ( $a['category']=='global' ) $display_cats=$this->ratingGlobal;				
+		if ( $a['category']=='all' ) $display_cats=self::$ratingCats;	
+		elseif ( $a['category']=='global' ) $display_cats=self::$ratingGlobal;				
 		else {
 			$shortcode_cats = explode(' ', $a['category']);
 			foreach ($shortcode_cats as $key) {
-				$display_cats[$key]=$this->ratingCats[$key];	
+				$display_cats[$key]=self::$ratingCats[$key];	
 			}
 		}
 		//$this->dbg('$display cats',$display_cats);
@@ -208,14 +208,14 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 	public function output_stars($stars, $half) {
 		$html = '';
 		for ($i = 1; $i <= $stars; $i++) {
-			$html .= '<span class="fa-stack full"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>';
+			$html .= '<div class="fa-stack full"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></div>';
 		}
 		for ($i = $stars+1; $i <= 5; $i++) {
 			if ( ($i == ($stars+1) ) && $half ) {
-				$html .= '<span class="fa-stack full"><i class="fa fa-star-half-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>';
+				$html .= '<div class="fa-stack full"><i class="fa fa-star-half-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></div>';
 			}
 			else {
-				$html .= '<span class="fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>';
+				$html .= '<div class="fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></div>';
 			}
 		}
 		return $html;
@@ -231,7 +231,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		<table class="ratings-table">
 			
 		<?php
-		foreach ($this->ratingCats as $id => $cat) {?>
+		foreach (self::$ratingCats as $id => $cat) {?>
 		
 		<tr>
 		<td class="rating-title"><?php echo __($cat['question'],'custom-star-rating');?></td>

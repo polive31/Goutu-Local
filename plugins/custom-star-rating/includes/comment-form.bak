@@ -15,7 +15,7 @@ public function output_evaluation_form_html() {
 	<table class="ratings-table">
 		
 	<?php
-	foreach ($this->ratingCats as $id->$rating_cat) {?>
+	foreach (self::$ratingCats as $id->$rating_cat) {?>
 	
 	<tr>
 	<td class="rating-title"><?php echo __($rating_cat['question'],'custom-star-rating');?></td>

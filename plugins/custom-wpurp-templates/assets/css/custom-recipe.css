@@ -290,8 +290,10 @@ li.wpurp-recipe-instruction {
 	
 .image-container,
 .info-container,
+.wpurp-recipe-instruction-container,
 .ingredients-container {
 	max-width:100%; /* this property is set for info-container in screen display*/
 	width:100%;
 	margin-bottom:20px;
+	float:left;
 }

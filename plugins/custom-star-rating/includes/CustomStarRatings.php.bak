@@ -7,16 +7,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class CustomStarRatings {
 	
-	const RATED_POST_TYPES = array( 'recipe' );
-	
-	protected $ratedPostTypes;
-	protected $ratingCats;
+	protected static $ratedPostTypes;
+	protected static $ratingCats;
+	protected static $ratingGlobal;
 
 	public function __construct() {
 		
-		//$this->$ratedPostTypes = array( 'recipe' );
-		$this->ratedPostTypes = self::RATED_POST_TYPES;
-		$this->ratingCats = array( 
+		self::$ratedPostTypes = array( 'recipe' );
+
+		self::$ratingCats = array( 
 			'rating' => array (
 				'weight' => 2,
 				'title'=> __('Dish','custom-star-rating'),
@@ -42,7 +41,8 @@ class CustomStarRatings {
 				)	
 			),
 		);
-		$this->ratingGlobal = array( 
+		//self::$ratingGlobal = array( 
+		self::$ratingGlobal = array( 
 			'global'=>array (
 				'title'=> __('Overall','custom-star-rating'),
 				'caption' => array(
@@ -55,6 +55,8 @@ class CustomStarRatings {
 			)
 		);
 
+		//self::$s_ratingCats = self::$ratingCats;
+		//self::$s_ratingGlobal = self::$ratingGlobal;
 		//add_action( 'genesis_before_content', array($this,'display_debug_info') );
 	}
 	
@@ -69,24 +71,32 @@ class CustomStarRatings {
 
 	/* Dump main variables
 	--------------------------------------------------------------*/	
-	public function display_debug_info() {
+	protected function display_debug_info() {
 		//$this->dbg('In Custom Rating Main Class !', '' );
 		//$this->dbg('Rated types: ', $this->ratedPostTypes );
-		//$this->dbg('ratingCats : ', $this->ratingCats );
+		//$this->dbg('ratingCats : ', self::$ratingCats );
 	}	
+	
+	
+	public static function getRatingCats( $global ) {
+		$global = isset( $global ) ? $global : false;
+		$cats = self::$ratingCats;
+		if ( $global ) $cats['global']=self::$ratingGlobal;
+		return $cats;
+	}
 	
 	
 	/* Rating caption
 	------------------------------------------------------------*/
-	public function rating_caption($val,$cat) {
+	protected function rating_caption($val,$cat) {
 		//$val = intval($rating_val);
 		if ($val==0) return __('Not rated','custom-star-rating');
 		$val=ceil($val)-1;
 		if ( $cat=='global' ) {
-			return __($this->ratingGlobal['caption'][$val], 'custom-star-rating');
+			return __(self::$ratingGlobal['global']['caption'][$val], 'custom-star-rating');
 		}
-		elseif ( isset( $this->ratingCats[$cat]['caption'] )) {
-			return __($this->ratingCats[$cat]['caption'][$val], 'custom-star-rating');
+		elseif ( isset( self::$ratingCats[$cat]['caption'] )) {
+			return __(self::$ratingCats[$cat]['caption'][$val], 'custom-star-rating');
 		}
 		return '';
 	}
@@ -94,7 +104,7 @@ class CustomStarRatings {
 
 	/* Calculate rating stats
 	-------------------------------------------------------------*/
-	public function get_rating_stats( $cat_ratings ) {
+	protected function get_rating_stats( $cat_ratings ) {
 		/* cat_ratings is the list of user ratings for one category */
 		//$this->dbg('In Get Rating Stats function','');
 		//$this->dbg('User Ratings array : ',$cat_ratings);

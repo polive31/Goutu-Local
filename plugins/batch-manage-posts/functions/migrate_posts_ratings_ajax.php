@@ -16,22 +16,24 @@ if ( !defined('ABSPATH') )
 
 function ajax_migrate_ratings() {
 	
-	PC::debug( array('In AJAX MIGRATE RATINGS'));
+	PC::debug( array('In AJAX MIGRATE RATINGS') );
 	echo "<p>Batch Migrate Ratings script started...</p>";
 	
 	$post_type = get_ajax_arg('post-type');
-	$include = get_ajax_arg('include',__('Limit to posts'));
+	$include = get_ajax_arg('include',__('Limit to posts','batch-manage-posts'));
 	
 	if ( !(is_secure('MigrateRatings' . 'migrate') ) ) exit;
 			
 
+	PC::debug( array('Nonce check PASSED') );
 	//PC:debug( array('$value after explode : '=>$value) );
 		
 
 	//$post_type_object = get_post_type_object($post_type);
 	//$label = $post_type_object->label;
 
-	$customRatings = new CustomStarRatings;
+	$cats = CustomStarRatings::getRatingCats( true );
+	PC::debug( array('$cats : '=> $cats) );
 
 	$include = ($include=='all')?'':$include;
 
@@ -40,16 +42,28 @@ function ajax_migrate_ratings() {
 	foreach ($posts as $post) {
 
 	  $user_ratings = get_post_meta($post->ID, 'recipe_user_ratings', false);
-	  
-	  $cats = $customRatings->ratingCats;
-	  $cats[] = 'global';
-	  
-	  foreach ( $cats as $id=>$cat) {
-	  	$cat_rating[$id]= get_post_meta($post->ID, 'user_rating_' . $id, True);
-	  }
+	  $user_rating = get_post_meta($post->ID, 'recipe_user_ratings_rating', true);
 
-		PC::debug( array('$cat_ratings : %0'=> $cat_ratings) );
+		//if ( !empty($user_rating) ) {
+			
+		echo sprintf("Post : %s",$post->post_title);
+		echo "<br>";
+		echo sprintf("recipe_user_ratings_rating : %s", $rating );
+		echo "<br>";
+		echo "----------------------------";
+		echo "<br>";
+
+		//}
+	  /*
+	  foreach ( $cats as $id=>$cat) {
+	  	$cat_rating[$id]= get_post_meta($post->ID, 'user_rating_' . $id, true);
+	  }
+		PC::debug( array('$cat_ratings : %0'=> $cat_rating) );
+	  */
+
+		PC::debug( array('$Post '=> $post) );
 		PC::debug( array('$recipe user ratings: %0'=> $user_ratings) );
+		PC::debug( array('$recipe user rating: %0'=> $user_rating) );
 	  
 	}
 }

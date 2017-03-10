@@ -8,7 +8,6 @@ jQuery(document).ready(function(){
   	var ScriptName = jQuery(this).data('name');
   	var ScriptInst = jQuery(this).data('instance');
   	
-		console.log('Lancement du script = '  + 'script' + ScriptName + ScriptInst);
 		
   	// Récupération des données de WPLocalize propres au shortcode sélectionné
 		var WPLocalizeVar = window['script' + ScriptName + ScriptInst];
@@ -16,6 +15,7 @@ jQuery(document).ready(function(){
 		var AjaxURL = WPLocalizeVar.url;
 		var AjaxNonce = WPLocalizeVar.nonce;
 		
+		console.log('Lancement du script = '  + 'script' + ScriptName + ScriptInst);
 		console.log('Arguments du script JS = %0', WPLocalizeVar);
 		console.log('Arguments du shortcode = %0', ShortcodeArgs);
 		console.log('URL de la page = ' + AjaxURL);

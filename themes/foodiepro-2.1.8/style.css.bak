@@ -2057,7 +2057,6 @@ Custom Page Templates
 .recipes-top .widget, 
 .blogs-top .widget,
 .archives-top .widget  {
-	float:left;
 	width:33.3%;
 	padding:0px 10px;
 }

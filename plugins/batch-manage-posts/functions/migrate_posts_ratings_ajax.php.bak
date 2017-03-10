@@ -32,8 +32,8 @@ function ajax_migrate_ratings() {
 	//$post_type_object = get_post_type_object($post_type);
 	//$label = $post_type_object->label;
 
-	$cats = CustomStarRatings::getRatingCats( true );
-	PC::debug( array('$cats : '=> $cats) );
+//	$cats = CustomStarRatings::getRatingCats( true );
+//	PC::debug( array('$cats : '=> $cats) );
 
 	$include = ($include=='all')?'':$include;
 
@@ -42,28 +42,58 @@ function ajax_migrate_ratings() {
 	foreach ($posts as $post) {
 
 	  $user_ratings = get_post_meta($post->ID, 'recipe_user_ratings', false);
-	  $user_rating = get_post_meta($post->ID, 'recipe_user_ratings_rating', true);
-
-		//if ( !empty($user_rating) ) {
+		//if ( empty($user_rating) && empty($user_ratings) ) continue;
+		if ( !empty($user_ratings) ) {
+			delete_post_meta($post->ID, 'user_ratings', '');
 			
-		echo sprintf("Post : %s",$post->post_title);
-		echo "<br>";
-		echo sprintf("recipe_user_ratings_rating : %s", $rating );
-		echo "<br>";
-		echo "----------------------------";
-		echo "<br>";
+			PC::debug( array('$Post title : '=> $post->post_title ) );
+			PC::debug( array('$user_ratings : '=> $user_ratings) );
+				
+			echo sprintf("Post : %s",$post->post_title);
+			echo "<br>";
+			print_r($user_ratings,false );
+			echo "<br>";
+			echo "----------------------------";
+			echo "<br>";
+			
+			$rating_global = 0;
+			
+			foreach ( $user_ratings as $user_rating ) {
+				$ip = $user_rating['ip'];
+				$user = $user_rating['user'];
+				$rating = $user_rating['rating'];
+				add_post_meta($post->ID, 'user_ratings', $user_rating);
+				PC::debug( array('$user_rating : '=> $user_rating) );
+				$rating_global += $rating;
+			}
+			
+			PC::debug( array('$rating_global : '=> $rating_global ) );
+			PC::debug( array('count : '=> count($user_ratings) ) );
+			$rating_global = $rating_global/count($user_ratings);
+			update_post_meta($post->ID, 'user_rating_global', $rating_global);
 
-		//}
-	  /*
-	  foreach ( $cats as $id=>$cat) {
-	  	$cat_rating[$id]= get_post_meta($post->ID, 'user_rating_' . $id, true);
-	  }
-		PC::debug( array('$cat_ratings : %0'=> $cat_rating) );
-	  */
+			echo sprintf("APRES MIGRATION : %s",$post->post_title);
+			echo "<br>";
+		  $user_ratings = get_post_meta($post->ID, 'user_ratings', false);
+			print_r($user_ratings,false );
+			echo "<br>";
+		  $user_rating = get_post_meta($post->ID, 'user_rating_rating', true);
+			echo sprintf("user_rating_rating : %s", $user_rating );
+			echo "<br>";
+		  $user_rating = get_post_meta($post->ID, 'user_rating_global', true);
+			echo sprintf("user_rating_global : %s", $user_rating );
+			echo "<br>";
+			echo "----------------------------";
+			echo "<br>";
+		
 
-		PC::debug( array('$Post '=> $post) );
-		PC::debug( array('$recipe user ratings: %0'=> $user_ratings) );
-		PC::debug( array('$recipe user rating: %0'=> $user_rating) );
+		}
+		
+		else {
+			add_post_meta($post->ID, 'user_rating_global', '0');
+
+		}
+		
 	  
 	}
 }

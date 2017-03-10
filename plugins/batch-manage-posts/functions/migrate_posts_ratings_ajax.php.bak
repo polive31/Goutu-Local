@@ -50,7 +50,7 @@ function ajax_migrate_ratings() {
 		echo "<br>";
 		echo sprintf("recipe_user_ratings_rating : %s", $rating );
 		echo "<br>";
-		echo "----------------------------"
+		echo "----------------------------";
 		echo "<br>";
 
 		//}

@@ -48,7 +48,7 @@ function ajax_migrate_ratings() {
 			
 		echo sprintf("Post : %s",$post->post_title);
 		echo "<br>";
-		echo sprintf("recipe_user_ratings_rating : %s", $rating );
+		echo sprintf("recipe_user_ratings_rating : %s", $user_rating );
 		echo "<br>";
 		echo "----------------------------";
 		echo "<br>";

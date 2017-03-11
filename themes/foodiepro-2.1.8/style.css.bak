@@ -1525,6 +1525,7 @@ form[role="search"] {
 
 .rpwe_widget .widget-wrap {
 	margin-bottom:10px;
+	padding:10px;
 }
 
 .recipes-bottom .rpwe_widget .widget-wrap,
@@ -2018,6 +2019,7 @@ Custom Page Templates
 	float:left;
 	margin-right:15px;
 	margin-bottom:20px;
+	width:100px;
 }
 
 .entry-content {

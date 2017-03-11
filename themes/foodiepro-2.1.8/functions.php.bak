@@ -233,13 +233,13 @@ function foodie_pro_add_body_class( $classes ) {
 
 /* Enqueue default WP jQuery in the footer rather than the header 
 --------------------------------------------------------------------*/
+//add_action( 'wp_default_scripts', 'move_jquery_into_footer' );
 function move_jquery_into_footer( $wp_scripts ) {
     if( is_admin() ) return;
     $wp_scripts->add_data( 'jquery', 'group', true );
     $wp_scripts->add_data( 'jquery-core', 'group', true );
     $wp_scripts->add_data( 'jquery-migrate', 'group', true );
 }
-//add_action( 'wp_default_scripts', 'move_jquery_into_footer' );
 
 add_action( 'wp_enqueue_scripts', 'conditionally_deregister_scripts', 100 );
 function conditionally_deregister_scripts() {
@@ -464,7 +464,7 @@ function custom_archive_headline() {
 
 			elseif( is_tax('cuisine') ) {
 					if ( !empty($headline) )
-						echo $head_style['begin'] . $headline;
+						echo $head_style['begin'] . $headline . $head_style['end'];
 				  else {
 						if ( in_array($first, $vocals) )
 			        echo $head_style['begin'] . single_term_title(_x('All recipes from ','vowel','foodiepro'), false) . $head_style['end'];

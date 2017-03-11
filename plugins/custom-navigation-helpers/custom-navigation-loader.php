@@ -18,6 +18,11 @@ if ( !defined('ABSPATH') )
 	
 /* Main
 ------------------------------------------------------------*/
+
+require_once 'includes/CustomArchive.php';
+require_once 'includes/CustomArchiveHeadline.php';
+$customArchiveHeadline = new CustomArchiveHeadline;
+
 require_once 'shortcodes/taxonomies-list-shortcode.php';
 require_once 'shortcodes/index-link-shortcode.php';
 require_once 'shortcodes/misc-shortcodes.php';

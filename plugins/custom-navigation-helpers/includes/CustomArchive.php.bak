@@ -1,0 +1,20 @@
+<?php
+
+/* CustomArchive class
+--------------------------------------------*/
+
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+
+class CustomArchive {
+	
+	protected static $vocals = array('a','e','i','o','u');
+	
+	public function __construct() {
+	}
+	
+}

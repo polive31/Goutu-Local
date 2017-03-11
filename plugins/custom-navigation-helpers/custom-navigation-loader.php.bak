@@ -18,10 +18,13 @@ if ( !defined('ABSPATH') )
 	
 /* Main
 ------------------------------------------------------------*/
+require_once 'includes/CustomArchive.php';
+require_once 'includes/CustomArchiveHeadline.php';
+
 require_once 'shortcodes/taxonomies-list-shortcode.php';
 require_once 'shortcodes/index-link-shortcode.php';
 require_once 'shortcodes/misc-shortcodes.php';
-require_once 'shortcodes/post-sort-dropdown-shortcode.php';
 
+require_once 'widgets/dropdown-posts-sort-widget.php';
 
 

@@ -241,7 +241,12 @@ function move_jquery_into_footer( $wp_scripts ) {
 }
 //add_action( 'wp_default_scripts', 'move_jquery_into_footer' );
 
-
+add_action( 'wp_enqueue_scripts', 'conditionally_deregister_scripts', 100 );
+function conditionally_deregister_scripts() {
+	if ( !is_front_page() ) {
+		wp_dequeue_script( 'easingslider' );
+	}
+}
 
 /* =================================================================*/
 /* =              CUSTOM LOGIN                                     =*/
@@ -539,23 +544,23 @@ add_filter( 'genesis_post_title_output', 'archive_title', 15 );
 
 //* Change the archive post orderby and sort order from slug
 function archive_change_sort_order($query){
-    // Select any archive. For custom post type use: is_post_type_archive( $post_type )
-    //if (is_archive() || is_search() ): => ne pas utiliser car résultats de recherche non relevants
-    if (is_archive() ):
-       $orderby= get_query_var('orderby','title');
-       if ($orderby=='rating'):
-       	$orderby = 'meta_value_num';
-       	$meta_key = "user_rating_global";
-       	$order = 'DESC';
-       else:
-       	$meta_key='';
-       	$order=get_query_var('order','ASC');
-       endif;
+  // Select any archive. For custom post type use: is_post_type_archive( $post_type )
+  //if (is_archive() || is_search() ): => ne pas utiliser car résultats de recherche non relevants
+  if (is_archive() ):
+     $orderby= get_query_var('orderby','title');
+     if ($orderby=='rating'):
+     	$orderby = 'meta_value_num';
+     	$meta_key = "user_rating_global";
+     	$order = 'DESC';
+     else:
+     	$meta_key='';
+     	$order=get_query_var('order','ASC');
+     endif;
 
-       $query->set( 'orderby', $orderby );
-       $query->set( 'meta_key', $meta_key );
-       $query->set( 'order', $order );
-    endif;
+     $query->set( 'orderby', $orderby );
+     $query->set( 'meta_key', $meta_key );
+     $query->set( 'order', $order );
+  endif;
 };
 add_action( 'pre_get_posts', 'archive_change_sort_order');
 

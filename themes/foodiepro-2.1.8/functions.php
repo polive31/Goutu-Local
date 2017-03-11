@@ -233,15 +233,20 @@ function foodie_pro_add_body_class( $classes ) {
 
 /* Enqueue default WP jQuery in the footer rather than the header 
 --------------------------------------------------------------------*/
+//add_action( 'wp_default_scripts', 'move_jquery_into_footer' );
 function move_jquery_into_footer( $wp_scripts ) {
     if( is_admin() ) return;
     $wp_scripts->add_data( 'jquery', 'group', true );
     $wp_scripts->add_data( 'jquery-core', 'group', true );
     $wp_scripts->add_data( 'jquery-migrate', 'group', true );
 }
-//add_action( 'wp_default_scripts', 'move_jquery_into_footer' );
 
-
+add_action( 'wp_enqueue_scripts', 'conditionally_deregister_scripts', 100 );
+function conditionally_deregister_scripts() {
+	if ( !is_front_page() ) {
+		wp_dequeue_script( 'easingslider' );
+	}
+}
 
 /* =================================================================*/
 /* =              CUSTOM LOGIN                                     =*/

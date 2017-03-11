@@ -1525,7 +1525,6 @@ form[role="search"] {
 
 .rpwe_widget .widget-wrap {
 	margin-bottom:10px;
-	padding:10px;
 }
 
 .recipes-bottom .rpwe_widget .widget-wrap,

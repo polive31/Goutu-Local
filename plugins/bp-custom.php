@@ -223,7 +223,8 @@ function bg_entry_image() {
 		$key_val = get_post_meta( get_the_ID(), 'entry_header_image', true );
 		if ( ! empty( $key_val ) ) {
 			echo '<div class="entry-header-image">';
-			echo '<img src="' . site_url( NULL, 'https' ) . '/wp-content/themes/foodiepro-2.1.8/images/' . $key_val . '">';	
+			//echo '<img src="' . site_url( NULL, 'https' ) . '/wp-content/themes/foodiepro-2.1.8/images/' . $key_val . '">';	
+			echo '<img src="/wp-content/themes/foodiepro-2.1.8/images/' . $key_val . '">';	
 			echo '</div>';	
 		}
 	}

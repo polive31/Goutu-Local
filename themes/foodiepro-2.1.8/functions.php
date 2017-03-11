@@ -365,13 +365,13 @@ add_filter('widget_text', 'do_shortcode');
 // Enable PHP in widgets
 add_filter('widget_text','execute_php',100);
 function execute_php($html){
-     if(strpos($html,"<"."?php")!==false){
-          ob_start();
-          eval("?".">".$html);
-          $html=ob_get_contents();
-          ob_end_clean();
-     }
-     return $html;
+	if(strpos($html,"<"."?php")!==false){
+	    ob_start();
+	    eval("?".">".$html);
+	    $html=ob_get_contents();
+	    ob_end_clean();
+	}
+	return $html;
 }
 
 // Add user rating to WPRPE widget
@@ -389,10 +389,10 @@ function wprpe_add_rating($output, $args ) {
 /* Modify WP Recent Posts ordering, depending on the orderby field value */
 add_filter( 'rpwe_default_query_arguments', 'wprpe_orderby_rating' );
 function wprpe_orderby_rating( $args ) {
-		if ( $args['orderby'] == 'meta_value_num')
-    	//$args['meta_key'] = 'user_rating_global';
-    	$args['meta_key'] = 'user_rating_global';
-    return $args;
+	if ( $args['orderby'] == 'meta_value_num')
+		//$args['meta_key'] = 'user_rating_global';
+		$args['meta_key'] = 'user_rating_global';
+	return $args;
 }
 
 
@@ -539,23 +539,23 @@ add_filter( 'genesis_post_title_output', 'archive_title', 15 );
 
 //* Change the archive post orderby and sort order from slug
 function archive_change_sort_order($query){
-    // Select any archive. For custom post type use: is_post_type_archive( $post_type )
-    //if (is_archive() || is_search() ): => ne pas utiliser car résultats de recherche non relevants
-    if (is_archive() ):
-       $orderby= get_query_var('orderby','title');
-       if ($orderby=='rating'):
-       	$orderby = 'meta_value_num';
-       	$meta_key = "user_rating_global";
-       	$order = 'DESC';
-       else:
-       	$meta_key='';
-       	$order=get_query_var('order','ASC');
-       endif;
+  // Select any archive. For custom post type use: is_post_type_archive( $post_type )
+  //if (is_archive() || is_search() ): => ne pas utiliser car résultats de recherche non relevants
+  if (is_archive() ):
+     $orderby= get_query_var('orderby','title');
+     if ($orderby=='rating'):
+     	$orderby = 'meta_value_num';
+     	$meta_key = "user_rating_global";
+     	$order = 'DESC';
+     else:
+     	$meta_key='';
+     	$order=get_query_var('order','ASC');
+     endif;
 
-       $query->set( 'orderby', $orderby );
-       $query->set( 'meta_key', $meta_key );
-       $query->set( 'order', $order );
-    endif;
+     $query->set( 'orderby', $orderby );
+     $query->set( 'meta_key', $meta_key );
+     $query->set( 'order', $order );
+  endif;
 };
 add_action( 'pre_get_posts', 'archive_change_sort_order');
 
@@ -624,8 +624,6 @@ function add_share_icons() {
 		echo do_shortcode('[mashshare]');
 }
 //add_action( 'genesis_entry_footer', 'add_share_icons' , 10 ); /* Original genesis_after_entry_content */
-
-
 
 
 /* Remove comment form unless it's a comment reply page

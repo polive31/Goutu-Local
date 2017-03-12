@@ -31,7 +31,6 @@ function WPURP_custom_templates_init() {
 
 		new Custom_Recipe_Templates();
 		new Custom_Recipe_Template();
-		new Custom_Recipe_Shortcodes();
 
 	}
 

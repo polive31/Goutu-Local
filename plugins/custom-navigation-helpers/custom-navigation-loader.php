@@ -21,12 +21,11 @@ if ( !defined('ABSPATH') )
 
 require_once 'includes/CustomArchive.php';
 require_once 'includes/CustomArchiveHeadline.php';
+require_once 'includes/CustomNavigationShortcodes.php';
 $customArchiveHeadline = new CustomArchiveHeadline;
-
-require_once 'shortcodes/taxonomies-list-shortcode.php';
-require_once 'shortcodes/index-link-shortcode.php';
-require_once 'shortcodes/misc-shortcodes.php';
+$customArchiveHeadline = new CustomNavigationShortcodes;
 
 require_once 'widgets/dropdown-posts-sort-widget.php';
+require_once 'widgets/taxonomy-dropdown-widget.php';
 
 

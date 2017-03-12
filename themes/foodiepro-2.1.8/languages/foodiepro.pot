@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-03-10 00:51+0100\n"
+"POT-Creation-Date: 2017-03-12 01:42+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,10 +20,10 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "Language: en_US\n"
 "X-Poedit-SearchPath-0: themes/foodiepro-2.1.8\n"
-"X-Poedit-SearchPath-1: plugins/custom-wpurp-templates\n"
-"X-Poedit-SearchPath-2: plugins/custom-navigation-helpers\n"
-"X-Poedit-SearchPath-3: plugins/custom-social-helpers\n"
-"X-Poedit-SearchPath-4: plugins/custom-gallery-shortcode\n"
+"X-Poedit-SearchPath-1: plugins/custom-navigation-helpers\n"
+"X-Poedit-SearchPath-2: plugins/custom-social-helpers\n"
+"X-Poedit-SearchPath-3: plugins/custom-gallery-shortcode\n"
+"X-Poedit-SearchPath-4: plugins/custom-recipe-templates\n"
 "X-Poedit-SearchPathExcluded-0: themes/foodiepro-2.1.8/buddypress/activity\n"
 "X-Poedit-SearchPathExcluded-1: themes/foodiepro-2.1.8/buddypress/assets\n"
 "X-Poedit-SearchPathExcluded-2: themes/foodiepro-2.1.8/buddypress/blogs\n"
@@ -33,48 +33,88 @@ msgstr ""
 msgid "Add a picture"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/shortcodes/index-link-shortcode.php:34
-msgid "Courses"
+#: plugins/custom-navigation-helpers/includes/CustomArchive.php:60
+msgctxt "vowel"
+msgid "Cuisine from "
 msgstr ""
 
-#: plugins/custom-navigation-helpers/shortcodes/index-link-shortcode.php:39
-msgid "Seasons"
+#: plugins/custom-navigation-helpers/includes/CustomArchive.php:62
+msgctxt "consonant"
+msgid "Cuisine from "
 msgstr ""
 
-#: plugins/custom-navigation-helpers/shortcodes/index-link-shortcode.php:44
-msgid "Occasions"
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:44
+msgid "Detailed Search Results"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/shortcodes/index-link-shortcode.php:49
-msgid "Diets"
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:46
+#: themes/foodiepro-2.1.8/search.php:24
+msgid "Search Results for:"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/shortcodes/index-link-shortcode.php:56
-msgid "France"
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:113
+msgctxt "vowel"
+msgid "All recipes from "
 msgstr ""
 
-#: plugins/custom-navigation-helpers/shortcodes/index-link-shortcode.php:60
-msgid "World"
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:114
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:128
+msgctxt "consonant"
+msgid "All recipes from "
 msgstr ""
 
-#: plugins/custom-navigation-helpers/shortcodes/index-link-shortcode.php:64
-msgid "All blogs"
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:115
+msgctxt "vowel"
+msgid "All recipes containing "
 msgstr ""
 
-#: plugins/custom-navigation-helpers/shortcodes/index-link-shortcode.php:70
-msgid "Previous page"
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:116
+msgctxt "consonant"
+msgid "All recipes containing "
 msgstr ""
 
-#: plugins/custom-navigation-helpers/shortcodes/misc-shortcodes.php:48
-#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:57
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:24
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:57
 msgid "Share this recipe"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/shortcodes/misc-shortcodes.php:50
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:26
 msgid "Share this post"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/shortcodes/taxonomies-list-shortcode.php:23
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:66
+msgid "Courses"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:71
+msgid "Seasons"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:76
+msgid "Occasions"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:81
+msgid "Diets"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:86
+msgid "France"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:94
+msgid "World"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:99
+msgid "All posts"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:105
+msgid "Previous page"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:123
 msgid "Select..."
 msgstr ""
 
@@ -123,6 +163,7 @@ msgid "Rating"
 msgstr ""
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:107
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:82
 #: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:84
 #: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:195
 #: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:304
@@ -130,15 +171,255 @@ msgid "New title"
 msgstr ""
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:111
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:86
+#: plugins/custom-recipe-templates/helpers/custom_nutrition_label.php:60
+#: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:101
 #: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:88
 #: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:204
 #: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:308
 #: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:507
-#: plugins/custom-wpurp-templates/widgets/WPUR_custom_nutrition_label.php:60
-#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:101
 #: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:106
 #: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:74
 msgid "Title:"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:21
+msgid "Taxonomy Navigation widget"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:24
+msgid "Displays a dropdown list allowing to navigate between taxonomy terms"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:45
+msgid "Other Courses"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:50
+msgid "Region"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:52
+msgid "Other Regions"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:54
+msgid "Other Countries"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:56
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:46
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:57
+msgid "Country"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:59
+msgid "Other Seasons"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:61
+msgid "Other Occasions"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:63
+msgid "Other Diets"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:65
+msgid "Other Levels"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:67
+msgid "Filter recipes"
+msgstr ""
+
+#: plugins/custom-recipe-templates/custom-recipe-templates.php:43
+msgid ""
+"<strong>WPUR Custom Templates Plugin</strong></a> requires the WP Ultimate "
+"Recipe plugin to work. Please <a href=\"plugins.php\">activate/install WPUR or "
+"deactivate this plugin </a>."
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/custom_nutrition_label.php:14
+msgid "WPURP Custom Nutrition Label"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/custom_nutrition_label.php:16
+msgid "Display the Nutrition Label of a recipe, if it is available."
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/custom_nutrition_label.php:51
+msgid "Nutrition Label"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/custom_nutrition_label.php:64
+msgid "Recipe"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/custom_nutrition_label.php:66
+msgid "Recipe shown on recipe page"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/custom_nutrition_label.php:76
+msgid "Serving Size"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:20
+msgid "WPURP Custom Recipe List"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:22
+msgid "Customized WPURP recipes display widget"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:82
+msgid "Our Recipes"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:91
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:382
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:40
+msgid "Date"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:92
+msgid "Recipe Title"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:93
+msgid "Recipe Rating"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:96
+msgid "ascending"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:97
+msgid "descending"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:105
+msgid "Restrict to taxonomies (ID) :"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:109
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:380
+msgid "Order By"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:120
+msgid "Order"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:131
+msgid "Number of recipes to show"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:136
+msgid "Show Images"
+msgstr ""
+
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Add_To_Shopping_List.php:34
+msgid "In my shopping list"
+msgstr ""
+
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Add_To_Shopping_List.php:35
+msgid "Add to my shopping list"
+msgstr ""
+
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Add_To_Shopping_List.php:62
+msgid "Add to Shopping List"
+msgstr ""
+
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:31
+msgid "In my favorites"
+msgstr ""
+
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:32
+msgid "Add to my favorites"
+msgstr ""
+
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:48
+msgid "Favorites"
+msgstr ""
+
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Templates.php:115
+msgid "Print this Recipe"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:36
+msgid "Print this recipe"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:37
+msgid "Print"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:58
+msgid "Share"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:64
+msgid "Comment and rate this recipe"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:65
+msgid "Rate"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:97
+msgid "Origin"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:104
+msgid "Diet"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:111
+msgid "Level"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:118
+#: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:40
+msgid "Serves"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:125
+#: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:47
+msgid "Preparation"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:132
+#: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:54
+msgid "Cooking"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:138
+#: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:60
+msgid "Wait"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:174
+#: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:95
+msgid "Notes"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:255
+msgctxt "vowel"
+msgid "of "
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:257
+msgctxt "consonant"
+msgid "of "
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:26
+msgid "review"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:26
+msgid "reviews"
 msgstr ""
 
 #: plugins/custom-social-helpers/custom-social-loader.php:39
@@ -221,202 +502,13 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: plugins/custom-wpurp-templates/custom-wpurp-templates.php:43
-msgid ""
-"<strong>WPUR Custom Templates Plugin</strong></a> requires the WP Ultimate "
-"Recipe plugin to work. Please <a href=\"plugins.php\">activate/install WPUR or "
-"deactivate this plugin </a>."
-msgstr ""
-
-#: plugins/custom-wpurp-templates/includes/WPURP_Custom_Custom_Templates.php:115
-msgid "Print this Recipe"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/includes/WPURP_Custom_Recipe_Add_To_Shopping_List.php:34
-msgid "In my shopping list"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/includes/WPURP_Custom_Recipe_Add_To_Shopping_List.php:35
-msgid "Add to my shopping list"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/includes/WPURP_Custom_Recipe_Add_To_Shopping_List.php:62
-msgid "Add to Shopping List"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/includes/WPURP_Custom_Recipe_Favorite.php:31
-msgid "In my favorites"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/includes/WPURP_Custom_Recipe_Favorite.php:32
-msgid "Add to my favorites"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/includes/WPURP_Custom_Recipe_Favorite.php:48
-msgid "Favorites"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:36
-msgid "Print this recipe"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:37
-msgid "Print"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:58
-msgid "Share"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:64
-msgid "Comment and rate this recipe"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:65
-msgid "Rate"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:97
-msgid "Origin"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:104
-msgid "Diet"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:111
-msgid "Level"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:118
-#: plugins/custom-wpurp-templates/templates/custom-recipe-print-template.php:40
-msgid "Serves"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:125
-#: plugins/custom-wpurp-templates/templates/custom-recipe-print-template.php:47
-msgid "Preparation"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:132
-#: plugins/custom-wpurp-templates/templates/custom-recipe-print-template.php:54
-msgid "Cooking"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:138
-#: plugins/custom-wpurp-templates/templates/custom-recipe-print-template.php:60
-msgid "Wait"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:174
-#: plugins/custom-wpurp-templates/templates/custom-recipe-print-template.php:95
-msgid "Notes"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:255
-msgctxt "vowel"
-msgid "of "
-msgstr ""
-
-#: plugins/custom-wpurp-templates/templates/WPURP_Custom_Recipe_Template.php:257
-msgctxt "consonant"
-msgid "of "
-msgstr ""
-
-#: plugins/custom-wpurp-templates/templates/custom-recipe-print-template.php:26
-msgid "review"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/templates/custom-recipe-print-template.php:26
-msgid "reviews"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/widgets/WPUR_custom_nutrition_label.php:14
-msgid "WPURP Custom Nutrition Label"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/widgets/WPUR_custom_nutrition_label.php:16
-msgid "Display the Nutrition Label of a recipe, if it is available."
-msgstr ""
-
-#: plugins/custom-wpurp-templates/widgets/WPUR_custom_nutrition_label.php:51
-msgid "Nutrition Label"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/widgets/WPUR_custom_nutrition_label.php:64
-msgid "Recipe"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/widgets/WPUR_custom_nutrition_label.php:66
-msgid "Recipe shown on recipe page"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/widgets/WPUR_custom_nutrition_label.php:76
-msgid "Serving Size"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:20
-msgid "WPURP Custom Recipe List"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:22
-msgid "Customized WPURP recipes display widget"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:82
-msgid "Our Recipes"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:91
-#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:382
-#: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:40
-msgid "Date"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:92
-msgid "Recipe Title"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:93
-msgid "Recipe Rating"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:96
-msgid "ascending"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:97
-msgid "descending"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:105
-msgid "Restrict to taxonomies (ID) :"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:109
-#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:380
-msgid "Order By"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:120
-msgid "Order"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:131
-msgid "Number of recipes to show"
-msgstr ""
-
-#: plugins/custom-wpurp-templates/widgets/WPUR_custom_recipe_list.php:136
-msgid "Show Images"
-msgstr ""
-
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:184
-#: themes/foodiepro-2.1.8/functions.php:617
+#: themes/foodiepro-2.1.8/functions.php:500
 msgid "Read More"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:197
-#: themes/foodiepro-2.1.8/functions.php:647
+#: themes/foodiepro-2.1.8/functions.php:528
 msgid "Comments"
 msgstr ""
 
@@ -1320,82 +1412,52 @@ msgstr ""
 msgid "Visibility"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:267
+#: themes/foodiepro-2.1.8/functions.php:278
 msgid "Goûtu.org - Cuisiner, Découvrir, Partager"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:303
+#: themes/foodiepro-2.1.8/functions.php:314
 msgid "<strong>ERROR</strong>: User pending "
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:303
+#: themes/foodiepro-2.1.8/functions.php:314
 msgid "approval"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:438
-#: themes/foodiepro-2.1.8/functions.php:465
-msgctxt "vowel"
-msgid "All recipes from "
-msgstr ""
-
-#: themes/foodiepro-2.1.8/functions.php:440
-#: themes/foodiepro-2.1.8/functions.php:467
-msgctxt "consonant"
-msgid "All recipes from "
-msgstr ""
-
-#: themes/foodiepro-2.1.8/functions.php:454
-msgctxt "vowel"
-msgid "All recipes containing "
-msgstr ""
-
-#: themes/foodiepro-2.1.8/functions.php:456
-msgctxt "consonant"
-msgid "All recipes containing "
-msgstr ""
-
-#: themes/foodiepro-2.1.8/functions.php:502
-msgid "Detailed Search Results"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/functions.php:504 themes/foodiepro-2.1.8/search.php:24
-msgid "Search Results for:"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/functions.php:656
+#: themes/foodiepro-2.1.8/functions.php:537
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:202
 msgid "Previous comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:662
+#: themes/foodiepro-2.1.8/functions.php:543
 msgid "Next comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:681
+#: themes/foodiepro-2.1.8/functions.php:562
 msgid "Your answer here"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:700
+#: themes/foodiepro-2.1.8/functions.php:581
 msgid "All rights reserved"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:700
+#: themes/foodiepro-2.1.8/functions.php:581
 msgid "Contact us"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:700
+#: themes/foodiepro-2.1.8/functions.php:581
 msgid "Legal notice"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:700
+#: themes/foodiepro-2.1.8/functions.php:581
 msgid "Goûtu charter"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:700
+#: themes/foodiepro-2.1.8/functions.php:581
 msgid "Personal data"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:700
+#: themes/foodiepro-2.1.8/functions.php:581
 msgid "Terms of use"
 msgstr ""
 
@@ -2841,11 +2903,6 @@ msgstr ""
 #: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:45
 #: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:56
 msgid "State"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:46
-#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:57
-msgid "Country"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:13

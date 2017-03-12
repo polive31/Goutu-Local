@@ -246,6 +246,12 @@ function conditionally_deregister_scripts() {
 	if ( !is_front_page() ) {
 		wp_dequeue_script( 'easingslider' );
 	}
+	if ( !is_singular() ) {
+		//PC::debug(array('Not in POST OR RECIPE'));
+		wp_dequeue_script( 'galleria' );
+		wp_dequeue_script( 'galleria-fs' );
+		wp_dequeue_script( 'galleria-fs-theme' );
+	}
 }
 
 /* =================================================================*/
@@ -405,23 +411,6 @@ function wprpe_orderby_rating( $args ) {
 /* =                      ARCHIVES
 /* =================================================================*/
 
-
-/* WPURP Detailed search : customized page title and description 
- ------------------------------------------------------------*/
-add_filter( 'genesis_search_title_text', 'custom_search_title_text' );
-function custom_search_title_text() {	
-	$url = $_SERVER["REQUEST_URI"];
-	$WPURP_search = strpos($url, 'wpurp-search');
-
-	if ($WPURP_search!==false)
-		$html = __('Detailed Search Results', 'foodiepro');
-	else 
-		$html = __('Search Results for:', 'genesis');
-
-  return $html;
-}
-
-
 /* Hook category widget areas before post content and after archive title
 -----------------------------------------------------------------------------*/
 add_action( 'genesis_before_loop', 'add_archive_widgeted_area');
@@ -452,27 +441,6 @@ function archive_title($title) {
 add_filter( 'genesis_post_title_output', 'archive_title', 15 );
 
 
-//* Change the archive post orderby and sort order from slug
-function archive_change_sort_order($query){
-  // Select any archive. For custom post type use: is_post_type_archive( $post_type )
-  //if (is_archive() || is_search() ): => ne pas utiliser car résultats de recherche non relevants
-  if (is_archive() ):
-     $orderby= get_query_var('orderby','title');
-     if ($orderby=='rating'):
-     	$orderby = 'meta_value_num';
-     	$meta_key = "user_rating_global";
-     	$order = 'DESC';
-     else:
-     	$meta_key='';
-     	$order=get_query_var('order','ASC');
-     endif;
-
-     $query->set( 'orderby', $orderby );
-     $query->set( 'meta_key', $meta_key );
-     $query->set( 'order', $order );
-  endif;
-};
-add_action( 'pre_get_posts', 'archive_change_sort_order');
 
 
 /* =================================================================*/

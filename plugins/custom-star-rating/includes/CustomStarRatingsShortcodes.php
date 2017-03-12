@@ -12,6 +12,24 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		add_shortcode( 'json-ld-rating', array($this,'display_json_ld_rating') );
 		add_shortcode( 'comment-rating-form', array($this,'display_comment_form_with_rating') );
 		add_shortcode( 'display-star-rating', array($this,'display_star_rating_shortcode') );
+		add_shortcode( 'add-comment-form', 'add_comment_form_shortcode' );
+	}
+
+
+
+	/* Add Comment Form 
+	-----------------------------------------------*/
+	function add_comment_form_shortcode() {
+	//		$comments_args = array( 
+	//			'title_reply' => __( '', 'genesis' ), 
+	//      'comment_field'=>'<p class="comment-form-comment"></p>', 
+	//		);
+			$comment_args='';
+	    ob_start();
+	    comment_form($comment_args);
+	    $cform = ob_get_contents();
+	    ob_end_clean();
+	    return $cform;
 	}
 
 
@@ -76,8 +94,8 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		$display_style = $a['display'];
 		$comment_rating = ( $a['source'] == 'comment');
 		
-		if (!$comment_rating) $this->dbg('In POST rating display shortcode','');
-		if ($comment_rating) $this->dbg('In COMMENT rating display shortcode','');
+		//if (!$comment_rating) $this->dbg('In POST rating display shortcode','');
+		//if ($comment_rating) $this->dbg('In COMMENT rating display shortcode','');
 
 		// Setup categories to be displayed
 		if ( $a['category']=='all' ) $display_cats=self::$ratingCats;	

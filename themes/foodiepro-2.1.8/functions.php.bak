@@ -246,6 +246,12 @@ function conditionally_deregister_scripts() {
 	if ( !is_front_page() ) {
 		wp_dequeue_script( 'easingslider' );
 	}
+	if ( !is_singular() ) {
+		PC::debug(array('Not in POST OR RECIPE'));
+		wp_dequeue_script( 'galleria' );
+		wp_dequeue_script( 'galleria-fs' );
+		wp_dequeue_script( 'galleria-fs-theme' );
+	}
 }
 
 /* =================================================================*/
@@ -405,113 +411,6 @@ function wprpe_orderby_rating( $args ) {
 /* =                      ARCHIVES
 /* =================================================================*/
 
-//Removes Title and Description on CPT Archive
-remove_action( 'genesis_before_loop', 'genesis_do_cpt_archive_title_description' );
-//Removes Title and Description on Blog Archive
-remove_action( 'genesis_before_loop', 'genesis_do_posts_page_heading' );
-//Removes Title and Description on Date Archive
-remove_action( 'genesis_before_loop', 'genesis_do_date_archive_title' );
-//Removes Title and Description on Archive, Taxonomy, Category, Tag
-remove_action( 'genesis_before_loop', 'genesis_do_taxonomy_title_description', 15 );
-//Removes Title and Description on Author Archive
-remove_action( 'genesis_before_loop', 'genesis_do_author_box_archive', 15 );
-//Removes Title and Description on Author Archive
-remove_action( 'genesis_before_loop', 'genesis_do_author_title_description', 15 );
-//Removes Title and Description on Blog Template Page
-remove_action( 'genesis_before_loop', 'genesis_do_blog_template_heading' );
-
-
-/* Archives : customized page title and description 
- ------------------------------------------------------------*/
-add_action( 'genesis_before_content', 'custom_archive_headline' );
-add_filter( 'genesis_term_intro_text_output', 'wpautop' );
-
-function custom_archive_headline() {
-	
-	if ( is_archive() ) {
-			
-		$vocals = array('a','e','i','o','u');
-		
-	  $head_style=array('begin'=>'<h1 class="archive-title">','end'=>'</h1>');
-		$intro_style=array('begin'=>'<div class="archive-description taxonomy-archive-description taxonomy-description">','end'=>'</div>');
-		
-	  if ( is_author() ) {
-	  	$name = get_queried_object()->user_login;
-	  	$first = strtolower( $name[0] );
-	  	
-			if ( in_array($first, $vocals) )
-			  echo $head_style['begin'] . _x('All recipes from ','vowel','foodiepro') . $name . $head_style['end'];
-			else 
-			  echo $head_style['begin'] . _x('All recipes from ','consonant','foodiepro') . $name . $head_style['end'];
-	  }
-		
-		elseif ( is_tax() ) {
-			$first = get_queried_object()->slug[0];
-			$term_id = get_queried_object()->term_id;
-		  $headline = get_term_meta( $term_id, 'headline', true );
-		  $intro_text = get_term_meta( $term_id, 'intro_text', true );
-
-	    if( is_tax('ingredient') ) {
-		    	if ( !empty($headline) )
-					  echo $head_style['begin'] . $headline . $head_style['end'];
-					else {
-			    	if ( in_array($first, $vocals) )
-			        echo $head_style['begin'] . single_term_title(_x('All recipes containing ','vowel','foodiepro'), false) . $head_style['end'];
-			      else 
-			        echo $head_style['begin'] . single_term_title(_x('All recipes containing ','consonant','foodiepro'), false) . $head_style['end'];				
-					}
-			}
-
-			elseif( is_tax('cuisine') ) {
-					if ( !empty($headline) )
-						echo $head_style['begin'] . $headline . $head_style['end'];
-				  else {
-						if ( in_array($first, $vocals) )
-			        echo $head_style['begin'] . single_term_title(_x('All recipes from ','vowel','foodiepro'), false) . $head_style['end'];
-			      else 
-			        echo $head_style['begin'] . single_term_title(_x('All recipes from ','consonant','foodiepro'), false) . $head_style['end'];			  	
-				  }
-			}
-								
-			elseif( is_tax('difficult') ) {
-					if ( !empty($headline) )
-						echo $head_style['begin'] . $headline . $head_style['end'];
-					if ( !empty($intro_text) )
-						echo $intro_style['begin'] . $intro_text . $intro_style['end'];
-			}
-
-			else {
-				if ( !empty($headline) )
-					echo $head_style['begin'] . $headline . $head_style['end'];		
-				else 
-					echo $head_style['begin'] . single_term_title('', false) . $head_style['end'];
-			}
-			
-		}
-		
-		else 
-			echo $head_style['begin'] . single_term_title('', false) . $head_style['end'];
-
-	}
-}
-
-
-/* WPURP Detailed search : customized page title and description 
- ------------------------------------------------------------*/
-add_filter( 'genesis_search_title_text', 'custom_search_title_text' );
-function custom_search_title_text() {	
-	$url = $_SERVER["REQUEST_URI"];
-	$WPURP_search = strpos($url, 'wpurp-search');
-
-	if ($WPURP_search!==false)
-		$html = __('Detailed Search Results', 'foodiepro');
-	else 
-		$html = __('Search Results for:', 'genesis');
-
-  return $html;
-}
-
-
 /* Hook category widget areas before post content and after archive title
 -----------------------------------------------------------------------------*/
 add_action( 'genesis_before_loop', 'add_archive_widgeted_area');
@@ -542,27 +441,6 @@ function archive_title($title) {
 add_filter( 'genesis_post_title_output', 'archive_title', 15 );
 
 
-//* Change the archive post orderby and sort order from slug
-function archive_change_sort_order($query){
-  // Select any archive. For custom post type use: is_post_type_archive( $post_type )
-  //if (is_archive() || is_search() ): => ne pas utiliser car résultats de recherche non relevants
-  if (is_archive() ):
-     $orderby= get_query_var('orderby','title');
-     if ($orderby=='rating'):
-     	$orderby = 'meta_value_num';
-     	$meta_key = "user_rating_global";
-     	$order = 'DESC';
-     else:
-     	$meta_key='';
-     	$order=get_query_var('order','ASC');
-     endif;
-
-     $query->set( 'orderby', $orderby );
-     $query->set( 'meta_key', $meta_key );
-     $query->set( 'order', $order );
-  endif;
-};
-add_action( 'pre_get_posts', 'archive_change_sort_order');
 
 
 /* =================================================================*/

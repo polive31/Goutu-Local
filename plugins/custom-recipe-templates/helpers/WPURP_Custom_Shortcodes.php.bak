@@ -1,0 +1,27 @@
+<?php 
+
+// Block direct requests
+if ( !defined('ABSPATH') )
+	die('-1');
+	
+class WPURP_Custom_Shortcodes extends WPURP_Custom_Custom_Templates {
+
+	public function __contruct() {
+		add_shortcode('share-title', 'display_share_title'); 
+	}
+
+	/* Share Title Output
+	--------------------------------------------- */		
+	public function display_share_title() {
+		if (is_singular()) {
+			if (is_singular('recipe')) 
+				$msg=__('Share this recipe','foodiepro');
+			else
+				$msg=__('Share this post','foodiepro');
+			$html = '<h3 class="share-title">' . $msg . '</h3>';
+		}
+		return $html;
+	}
+
+
+}

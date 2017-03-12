@@ -72,7 +72,7 @@ plugins/*
 !plugins/custom-social-helpers/
 !plugins/custom-star-rating/
 !plugins/custom-gallery-shortcode/
-!plugins/custom-wpurp-templates/
+!plugins/custom-recipe-templates/
 !plugins/recent-posts-widget-extended/
 #!plugins/frontier-post/
 #plugins/frontier-post/*

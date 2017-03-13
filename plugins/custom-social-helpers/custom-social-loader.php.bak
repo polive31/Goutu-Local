@@ -36,7 +36,7 @@ function bp_custom_shortcodes_load() {
 
 function bp_custom_shortcodes_install_notice() {
 	echo '<div id="message" class="error fade"><p style="line-height: 150%">';
-	_e('<strong>BP Custom Shortcodes</strong></a> requires the BuddyPress plugin to work. Please <a href="https://buddypress.org/download">install BuddyPress</a> first, or <a href="plugins.php">deactivate BP Custom Shortcodes</a>.');
+	_e('<strong>BP Social Helpers</strong></a> requires the BuddyPress plugin to work. Please <a href="https://buddypress.org/download">install BuddyPress</a> first, or <a href="plugins.php">deactivate BP Custom Shortcodes</a>.');
 	echo '</p></div>';
 }
 

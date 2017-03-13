@@ -1,3 +1,46 @@
+/* CSS TOOLTIP styling 
+------------------------------------------*/
+
+.tooltip-content {
+  font-size: 16px;
+  z-index: 10;
+  display: none;
+  padding: 14px 20px;
+  margin-top: -60px;
+  margin-left: -150px;
+  /* width: auto; */
+  line-height: 16px;
+	font-family: 'Oswald', sans-serif;
+}
+
+.tooltip:hover .tooltip-content,
+.tooltip-content:hover {
+  display:inline; 
+  position:absolute; 
+  color:#111;
+  border:1px solid #DCA; 
+  background:#fffAF0;
+}
+    
+.tooltip .callout {
+	z-index:20;
+	position:absolute;
+	border:0;
+}
+    
+.tooltip-above img.callout {
+  bottom: -12px;
+  left: 70px;
+}
+	
+/*CSS3 extras*/
+.tooltip-content {
+    border-radius:4px;
+    box-shadow: 5px 5px 8px #CCC;
+}
+
+
+
 /* Custom Recipe Template 
 -------------------------------------------*/
 
@@ -29,6 +72,8 @@
 	font-size:25px;
 	margin: 0 10px;
 	padding: 5px 0;
+	/*padding: 20px 0 5px 0;
+	height:50px;*/
 }
 
 .recipe-button a {
@@ -290,6 +335,7 @@ li.wpurp-recipe-instruction {
 	
 .image-container,
 .info-container,
+.wpurp-recipe-instruction-container,
 .ingredients-container {
 	max-width:100%; /* this property is set for info-container in screen display*/
 	width:100%;

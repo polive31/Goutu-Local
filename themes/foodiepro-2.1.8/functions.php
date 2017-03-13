@@ -341,6 +341,7 @@ function custom_load_custom_style_sheet() {
 	wp_enqueue_style( 'google-font-delius', '//fonts.googleapis.com/css?family=Delius', array(), CHILD_THEME_VERSION );
 	wp_enqueue_style( 'google-font-lobstertwo', '//fonts.googleapis.com/css?family=Lobster+Two', array(), CHILD_THEME_VERSION );
 }
+
 add_action( 'wp_enqueue_scripts', 'custom_load_custom_style_sheet' );
 
 

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-03-12 01:42+0100\n"
-"PO-Revision-Date: 2017-03-12 01:42+0100\n"
+"POT-Creation-Date: 2017-03-13 23:30+0100\n"
+"PO-Revision-Date: 2017-03-13 23:37+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -59,9 +59,9 @@ msgid "All recipes containing "
 msgstr "Toutes les recettes à base de "
 
 #: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:24
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:57
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:61
 msgid "Share this recipe"
-msgstr "Partager cette recette"
+msgstr "Partager sur les réseaux sociaux"
 
 #: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:26
 msgid "Share this post"
@@ -149,9 +149,9 @@ msgstr "Appréciation"
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:107
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:82
-#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:84
-#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:195
-#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:304
+#: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:89
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:84
+#: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:74
 msgid "New title"
 msgstr ""
 
@@ -159,10 +159,10 @@ msgstr ""
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:86
 #: plugins/custom-recipe-templates/helpers/custom_nutrition_label.php:60
 #: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:101
-#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:88
-#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:204
-#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:308
-#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:507
+#: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:180
+#: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:98
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:88
+#: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:78
 #: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:106
 #: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:74
 msgid "Title:"
@@ -218,7 +218,7 @@ msgstr "Autres niveaux"
 msgid "Filter recipes"
 msgstr "Filtrer les recettes"
 
-#: plugins/custom-recipe-templates/custom-recipe-templates.php:43
+#: plugins/custom-recipe-templates/custom-recipe-templates.php:44
 msgid ""
 "<strong>WPUR Custom Templates Plugin</strong></a> requires the WP Ultimate "
 "Recipe plugin to work. Please <a href=\"plugins.php\">activate/install WPUR "
@@ -304,97 +304,101 @@ msgstr ""
 msgid "Show Images"
 msgstr ""
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Add_To_Shopping_List.php:34
-msgid "In my shopping list"
-msgstr "Dans ma liste de courses"
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Add_To_Shopping_List.php:36
+#, php-format
+msgid "In my <a href=\"%s\">shopping list</a>"
+msgstr "Disponible dans ma <a href=\"%s\">liste de courses</a>"
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Add_To_Shopping_List.php:35
-msgid "Add to my shopping list"
-msgstr "Ajouter à ma liste de courses"
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Add_To_Shopping_List.php:37
+#, php-format
+msgid "Add to my <a href=\"%s\">shopping list</a>"
+msgstr "Ajouter à ma <a href=\"%s\">liste de courses</a>"
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Add_To_Shopping_List.php:62
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Add_To_Shopping_List.php:57
 msgid "Add to Shopping List"
 msgstr "Courses"
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:31
-msgid "In my favorites"
-msgstr "Dans mes favoris"
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:37
+#, php-format
+msgid "In my <a href=\"%s\">favorites</a>"
+msgstr "Disponible dans mon <a href=\"%s\">carnet de recettes</a>"
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:32
-msgid "Add to my favorites"
-msgstr "Ajouter à mon carnet de recettes"
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:38
+#, php-format
+msgid "Add to my <a href=\"%s\">favorites</a>"
+msgstr "Ajouter à mon <a href=\"%s\">carnet de recettes </a>"
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:48
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:59
 msgid "Favorites"
 msgstr "Favoris"
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Templates.php:115
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Templates.php:131
 msgid "Print this Recipe"
-msgstr "Imprimer cette recette"
-
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:36
-msgid "Print this recipe"
 msgstr "Imprimer cette recette"
 
 #: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:37
 msgid "Print"
 msgstr "Imprimer"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:58
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:39
+msgid "Print this recipe"
+msgstr "Imprimer cette recette"
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:59
 msgid "Share"
 msgstr "Partager"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:64
-msgid "Comment and rate this recipe"
-msgstr "Commenter et noter cette recette"
-
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:65
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:67
 msgid "Rate"
 msgstr "Evaluer"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:97
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:69
+msgid "Comment and rate this recipe"
+msgstr "Commenter et noter cette recette"
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:100
 msgid "Origin"
 msgstr "Origine"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:104
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:107
 msgid "Diet"
 msgstr "Régime"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:111
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:114
 msgid "Level"
 msgstr "Niveau"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:118
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:121
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:40
 msgid "Serves"
 msgstr "Portions"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:125
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:128
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:47
 msgid "Preparation"
 msgstr "Préparation"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:132
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:135
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:54
 msgid "Cooking"
 msgstr "Cuisson"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:138
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:141
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:60
 msgid "Wait"
 msgstr "Attente"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:174
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:177
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:95
 msgid "Notes"
 msgstr "Notes"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:255
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:258
 msgctxt "vowel"
 msgid "of "
 msgstr "d'"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:257
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:260
 msgctxt "consonant"
 msgid "of "
 msgstr "de "
@@ -407,7 +411,7 @@ msgstr "avis"
 msgid "reviews"
 msgstr "avis"
 
-#: plugins/custom-social-helpers/custom-social-loader.php:39
+#: plugins/custom-social-helpers/custom-social-loader.php:42
 msgid ""
 "<strong>BP Social Helpers</strong></a> requires the BuddyPress plugin to "
 "work. Please <a href=\"https://buddypress.org/download\">install BuddyPress</"
@@ -427,73 +431,73 @@ msgstr "Notifications"
 msgid "My Profile"
 msgstr "Mon Profil"
 
-#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:28
-msgid "(Buddypress) My Friends"
-msgstr ""
-
-#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:29
-msgid "Displays a chosen number of my friends"
-msgstr ""
-
-#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:134
-msgid "(Buddypress) Custom latest registered members"
-msgstr ""
-
-#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:135
-msgid "Displays latest registered members"
-msgstr ""
-
-#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:210
-msgid "Number of users to show"
-msgstr ""
-
-#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:257
-msgid "(Buddypress) Welcome"
-msgstr ""
-
-#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:258
-msgid "Displays gravatar and name of current loggued-in user"
-msgstr ""
-
-#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:362
+#: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:35
 msgctxt "Title of the login widget"
 msgid "(BuddyPress) Custom Log In"
 msgstr ""
 
-#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:364
+#: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:37
 msgid ""
 "Show a Log In form to logged-out visitors, and a Log Out link to those who "
 "are logged in, with full resolution avatar."
 msgstr ""
 
-#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:415
+#: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:88
 msgid "Log Out"
 msgstr "Déconnexion"
 
-#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:439
+#: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:112
 #: themes/foodiepro-2.1.8/buddypress/members/register.php:76
 msgid "Username"
 msgstr ""
 
-#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:442
+#: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:115
 msgid "Password"
 msgstr ""
 
-#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:445
+#: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:118
 msgid "Remember Me"
 msgstr ""
 
-#: plugins/custom-social-helpers/widgets/BP-custom-widgets.php:451
+#: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:124
 msgid "Register"
 msgstr ""
 
+#: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:28
+msgid "(Buddypress) Custom latest registered members"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:29
+msgid "Displays latest registered members"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:104
+msgid "Number of users to show"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:28
+msgid "(Buddypress) My Friends"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:29
+msgid "Displays a chosen number of my friends"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:27
+msgid "(Buddypress) Welcome"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:28
+msgid "Displays gravatar and name of current loggued-in user"
+msgstr ""
+
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:184
-#: themes/foodiepro-2.1.8/functions.php:500
+#: themes/foodiepro-2.1.8/functions.php:501
 msgid "Read More"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:197
-#: themes/foodiepro-2.1.8/functions.php:528
+#: themes/foodiepro-2.1.8/functions.php:529
 msgid "Comments"
 msgstr ""
 
@@ -1419,40 +1423,40 @@ msgstr "<strong> ERREUR</strong>: Utilisateur en attente d'"
 msgid "approval"
 msgstr "approbation"
 
-#: themes/foodiepro-2.1.8/functions.php:537
+#: themes/foodiepro-2.1.8/functions.php:538
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:202
 msgid "Previous comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:543
+#: themes/foodiepro-2.1.8/functions.php:544
 msgid "Next comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:562
+#: themes/foodiepro-2.1.8/functions.php:563
 msgid "Your answer here"
 msgstr "Entrez votre réponse ci-dessous"
 
-#: themes/foodiepro-2.1.8/functions.php:581
+#: themes/foodiepro-2.1.8/functions.php:582
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
-#: themes/foodiepro-2.1.8/functions.php:581
+#: themes/foodiepro-2.1.8/functions.php:582
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:581
+#: themes/foodiepro-2.1.8/functions.php:582
 msgid "Legal notice"
 msgstr "Mentions légales"
 
-#: themes/foodiepro-2.1.8/functions.php:581
+#: themes/foodiepro-2.1.8/functions.php:582
 msgid "Goûtu charter"
 msgstr "Charte Goûtu"
 
-#: themes/foodiepro-2.1.8/functions.php:581
+#: themes/foodiepro-2.1.8/functions.php:582
 msgid "Personal data"
 msgstr "Données personnelles"
 
-#: themes/foodiepro-2.1.8/functions.php:581
+#: themes/foodiepro-2.1.8/functions.php:582
 msgid "Terms of use"
 msgstr "Conditions d'utilisation"
 
@@ -3041,6 +3045,18 @@ msgstr "Ces recettes pourraient également vous intéresser..."
 #: themes/foodiepro-2.1.8/yarpp-template-goutu.php:31
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
+
+#~ msgid "In my shopping list"
+#~ msgstr "Dans ma liste de courses"
+
+#~ msgid "Add to my shopping list"
+#~ msgstr "Ajouter à ma liste de courses"
+
+#~ msgid "In my favorites"
+#~ msgstr "Dans mon carnet de recettes"
+
+#~ msgid "Add to my favorites"
+#~ msgstr "Ajouter à mon carnet de recettes"
 
 #~ msgid "Course"
 #~ msgstr "Plat"

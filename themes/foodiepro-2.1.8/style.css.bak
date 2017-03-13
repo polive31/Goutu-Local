@@ -1528,6 +1528,11 @@ form[role="search"] {
 	padding:10px;
 }
 
+
+.sidebar .rpwe_widget .widget-wrap {
+	padding:0px;
+}
+
 .recipes-bottom .rpwe_widget .widget-wrap,
 .blogs-bottom .rpwe_widget .widget-wrap
  {

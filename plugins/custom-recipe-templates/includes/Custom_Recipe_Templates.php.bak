@@ -70,10 +70,6 @@ class Custom_Recipe_Templates {
 		          ),
 							array(
 		              'url' => self::$_PluginPath . 'assets/css/tooltips.css',
-		              'public' => true,//fonts.googleapis.com/css?family=Oswald'
-		          ),
-							array(
-		              'url' => '//fonts.googleapis.com/css?family=Oswald',
 		              'public' => true,
 		          ),
 			);

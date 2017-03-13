@@ -47,11 +47,16 @@ class Custom_Recipe_Favorite extends WPURP_Template_Block {
         	$tooltip_alt=$tooltip_in;
 				}
 				
+				PC::debug(array('$tooltip'=>$tooltip));
+				PC::debug(array('$tooltip_alt'=>$tooltip_alt));
+				
         $tooltip='<div>' . $tooltip . '</div>';
+				PC::debug(array('$tooltip'=>$tooltip));
         $tooltip_alt='<div style="display:none">' . $tooltip_alt . '</div>';
+				PC::debug(array('$tooltip_alt'=>$tooltip_alt));
 				
         $output = $this->before_output();
-        
+				PC::debug(array('$this->link_id'=>$this->link_id));
         ob_start();
 ?>
 

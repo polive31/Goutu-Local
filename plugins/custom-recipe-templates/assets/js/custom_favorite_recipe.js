@@ -11,10 +11,13 @@ jQuery(document).ready(function(){
         var button = jQuery(this);
         
 				console.log('ADD TO FAVORITES CLICK !!!!');
+				
 				var buttonTitle = button.prop('title');
 				var buttonTitleAlt = button.data('title-alt');
 				button.prop('title', buttonTitleAlt);
 				button.data('title-alt', buttonTitle);
+				
+				
 				if(button.hasClass('is-favorite')) {
 					// Activate shopping list button
 					button.removeClass('is-favorite');

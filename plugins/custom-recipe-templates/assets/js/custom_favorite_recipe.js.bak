@@ -4,7 +4,7 @@
 //
 
 jQuery(document).ready(function(){
-    jQuery(document).on('click', '.wpurp-recipe-favorite', function(e) {
+    jQuery(document).on('click', '.wpurp-recipe-favorite.logged-in', function(e) {
         e.preventDefault();
         e.stopPropagation();
 

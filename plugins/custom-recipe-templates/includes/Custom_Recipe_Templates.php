@@ -207,12 +207,13 @@ class Custom_Recipe_Templates {
 	
 	
 	public static function output_tooltip($content,$position) {
-		
 		$path = self::$_PluginPath . 'assets/img/callout_'. $position . '.png';
-		
+	
 		$html ='<div class="tooltip-content">';
-		$html.='<img class="callout" data-no-lazy="1" src="' . $path . '">';
+		$html.= '<div class="wrap">';
 		$html.=$content;
+		$html.='<img class="callout" data-no-lazy="1" src="' . $path . '">';
+		$html.='</div>';
 		$html.='</div>';
 		
 		return $html;

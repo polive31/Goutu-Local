@@ -10,16 +10,14 @@ jQuery(document).ready(function() {
         e.stopPropagation();
 
         var button = jQuery(this);
-				//console.log('ADD TO SHOPPING LIST CLICK !!!!');
+				var tooltip=button.parent().find('div.toggle');
+				console.log('Tooltip',tooltip);
 
-        if(!button.hasClass('in-shopping-list')) {
-        //if(true) {
+        //if(!button.hasClass('in-shopping-list')) {
+        if(true) {
             // Placed here rather than ajax return such that the user sees the change immediately
             button.addClass('in-shopping-list');
-            var buttonTitle = button.prop('title');
-            var buttonTitleAlt = button.data('title-alt');
-            button.prop('title', buttonTitleAlt);
-            button.data('title-alt', buttonTitle);
+						tooltip.toggle();
 		            
 		        // Prepare AJAX call                
             var recipeId = button.data('recipe-id');

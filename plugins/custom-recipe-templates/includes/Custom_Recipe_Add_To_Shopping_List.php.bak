@@ -18,8 +18,6 @@ class Custom_Recipe_Add_To_Shopping_List extends WPURP_Template_Block {
         
         $link_id='';
 	      $classes = array();
-        $tooltip_in=sprintf(__('In my <a href="%s">shopping list</a>','foodiepro'),$menu_link);
-        $tooltip_add=sprintf(__('Add to my <a href="%s">shopping list</a>','foodiepro'),$menu_link);
         
         if( !is_user_logged_in() ) {
         	$link_id='join_us';
@@ -30,6 +28,8 @@ class Custom_Recipe_Add_To_Shopping_List extends WPURP_Template_Block {
 					$classes[] = 'logged-in';
 					$menu_link = '/mon-goutu/menus';
 				}
+        $tooltip_in=sprintf(__('In my <a href="%s">shopping list</a>','foodiepro'),$menu_link);
+        $tooltip_add=sprintf(__('Add to my <a href="%s">shopping list</a>','foodiepro'),$menu_link);
 					
         $shopping_list_recipes = array();
         if( isset( $_COOKIE['WPURP_Shopping_List_Recipes_v2'] ) ) {
@@ -50,8 +50,8 @@ class Custom_Recipe_Add_To_Shopping_List extends WPURP_Template_Block {
         $this->classes = $classes;
         $output = $this->before_output();
 			
-        $tooltip='<div>' . $tooltip . '</div>';
-        $tooltip_alt='<div style="display:none">' . $tooltip_alt . '</div>';
+        $tooltip='<div class="toggle">' . $tooltip . '</div>';
+        $tooltip_alt='<div class="toggle" style="display:none">' . $tooltip_alt . '</div>';
         
         ob_start();?>
         

@@ -70,6 +70,10 @@ class Custom_Recipe_Templates {
 		          ),
 							array(
 		              'url' => self::$_PluginPath . 'assets/css/tooltips.css',
+		              'public' => true,//fonts.googleapis.com/css?family=Oswald'
+		          ),
+							array(
+		              'url' => '//fonts.googleapis.com/css?family=Oswald',
 		              'public' => true,
 		          ),
 			);
@@ -203,12 +207,13 @@ class Custom_Recipe_Templates {
 	
 	
 	public static function output_tooltip($content,$position) {
-		
 		$path = self::$_PluginPath . 'assets/img/callout_'. $position . '.png';
-		
+	
 		$html ='<div class="tooltip-content">';
-		$html.='<img class="callout" data-no-lazy="1" src="' . $path . '">';
+		$html.= '<div class="wrap">';
 		$html.=$content;
+		$html.='</div>';
+		$html.='<img class="callout" data-no-lazy="1" src="' . $path . '">';
 		$html.='</div>';
 		
 		return $html;

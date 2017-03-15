@@ -1,46 +1,3 @@
-/* CSS TOOLTIP styling 
-------------------------------------------*/
-
-.tooltip-content {
-  font-size: 16px;
-  z-index: 10;
-  display: none;
-  padding: 14px 20px;
-  margin-top: -60px;
-  margin-left: -150px;
-  /* width: auto; */
-  line-height: 16px;
-	font-family: 'Oswald', sans-serif;
-}
-
-.tooltip:hover .tooltip-content,
-.tooltip-content:hover {
-  display:inline; 
-  position:absolute; 
-  color:#111;
-  border:1px solid #DCA; 
-  background:#fffAF0;
-}
-    
-.tooltip .callout {
-	z-index:20;
-	position:absolute;
-	border:0;
-}
-    
-.tooltip-above img.callout {
-  bottom: -12px;
-  left: 70px;
-}
-	
-/*CSS3 extras*/
-.tooltip-content {
-    border-radius:4px;
-    box-shadow: 5px 5px 8px #CCC;
-}
-
-
-
 /* Custom Recipe Template 
 -------------------------------------------*/
 
@@ -88,31 +45,31 @@
 	line-height: 24px;
 }
 
-a.recipe-share-button:before {
+.recipe-share-button:before {
 	content:"\f1e0"; /* fa-alt-share */
 }
 
-a.recipe-review-button:before {
+.recipe-review-button:before {
 	content:"\f044"; /* fa-pencil-square-o */
 }
 
-a.wpurp-recipe-print:before {
+.wpurp-recipe-print:before {
 	content:"\f02f"; /* fa-print */
 }
 
-a.wpurp-recipe-favorite:before {
+.wpurp-recipe-favorite:before {
 	content:"\f08a"; /* fa-heart-o */
 }
 
-a.wpurp-recipe-favorite.is-favorite:before {
+.wpurp-recipe-favorite.is-favorite:before {
 	content:"\f004"; /* fa-heart */
 }
 
-a.wpurp-recipe-add-to-shopping-list:before {
+.wpurp-recipe-add-to-shopping-list:before {
 	content:"\f07a"; /* fa-cart */ 
 }
 
-a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
+.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 	content:"\f218"; /* fa-cart-plus */
 }
 	

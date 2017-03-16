@@ -24,6 +24,7 @@ class Custom_Recipe_Templates {
 		/* Custom menu template */
 		//add_filter( 'wpurp_user_menus_form', 'wpurp_custom_menu_template', 10, 2 );
 
+
 		/* Misc */
 		//remove_action ( 'wp_enqueue_scripts', 'WPURP_Assets::enqueue');
 		//wp_deregister_script('wpurp_script_minified');
@@ -38,6 +39,7 @@ class Custom_Recipe_Templates {
 		wp_enqueue_style( 'tooltips-stylesheet', self::$_PluginPath . 'assets/css/tooltips.css', array(), CHILD_THEME_VERSION );
 	}
 
+	
 	
 	/* Output debug information 
 	--------------------------------------------------------------*/	
@@ -96,9 +98,10 @@ class Custom_Recipe_Templates {
 
 
 	public function enqueue_wpurp_js($js_enqueue) {
+		
 			if ( is_singular('post') ) return '';
+			
 			elseif ( !is_singular('recipe') || ( is_singular('recipe') && is_admin() ) ) return $js_enqueue;
-
 		
 	    $js_enqueue=array(
 	            array(
@@ -204,7 +207,7 @@ class Custom_Recipe_Templates {
 		  
 		return $js_enqueue;
 	}
-	
+
 	
 	public static function output_tooltip($content,$position) {
 		$path = self::$_PluginPath . 'assets/img/callout_'. $position . '.png';

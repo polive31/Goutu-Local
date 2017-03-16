@@ -26,12 +26,14 @@ function WPURP_custom_templates_init() {
 		require_once 'includes/Custom_Recipe_Add_To_Shopping_List.php';
 		require_once 'includes/Custom_Recipe_Metadata.php';
 		require_once 'templates/Custom_Recipe_Template.php';
+		require_once 'templates/Custom_Recipe_Submission_Template.php';
 		require_once 'templates/custom-recipe-print-template.php';
 		require_once 'helpers/custom_recipe_list.php';
 		require_once 'helpers/custom_nutrition_label.php';
 
 		new Custom_Recipe_Templates();
 		new Custom_Recipe_Template();
+		new Custom_Recipe_Submission_Template();
 
 	}
 

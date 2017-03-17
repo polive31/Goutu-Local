@@ -45,31 +45,31 @@
 	line-height: 24px;
 }
 
-.recipe-share-button:before {
+a.recipe-share-button:before {
 	content:"\f1e0"; /* fa-alt-share */
 }
 
-.recipe-review-button:before {
+a.recipe-review-button:before {
 	content:"\f044"; /* fa-pencil-square-o */
 }
 
-.wpurp-recipe-print:before {
+a.wpurp-recipe-print:before {
 	content:"\f02f"; /* fa-print */
 }
 
-.wpurp-recipe-favorite:before {
+a.wpurp-recipe-favorite:before {
 	content:"\f08a"; /* fa-heart-o */
 }
 
-.wpurp-recipe-favorite.is-favorite:before {
+a.wpurp-recipe-favorite.is-favorite:before {
 	content:"\f004"; /* fa-heart */
 }
 
-.wpurp-recipe-add-to-shopping-list:before {
+a.wpurp-recipe-add-to-shopping-list:before {
 	content:"\f07a"; /* fa-cart */ 
 }
 
-.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
+a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 	content:"\f218"; /* fa-cart-plus */
 }
 	

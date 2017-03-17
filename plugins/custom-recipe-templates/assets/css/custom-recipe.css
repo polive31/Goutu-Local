@@ -285,6 +285,13 @@ li.wpurp-recipe-instruction {
 }
 
 
+/* Countdown timer
+--------------------------------------------- */
+#wpurp-timer-container {
+    background-color: #8e8585;
+}
+
+
 /* MEDIA QUERIES 
 ---------------------------------------------------*/
 

@@ -18,9 +18,8 @@ define ( 'BP_AVATAR_THUMB_HEIGHT', 65 );
 //define ( 'BP_AVATAR_ORIGINAL_MAX_FILESIZE', $max_in_kb );
 
 /* Change default avatar picture */
-define ( 'BP_AVATAR_DEFAULT', 'https://goutu.org/wp-content/themes/foodiepro-2.1.8/images/cook_avatar.png' );
-define ( 'BP_AVATAR_DEFAULT_THUMB', 'https://goutu.org/wp-content/themes/foodiepro-2.1.8/images/cook_avatar_thumb.png' );
-
+define ( 'BP_AVATAR_DEFAULT', trailingslashit( get_stylesheet_directory_uri() ) . 'images/cook_avatar.png' );
+define ( 'BP_AVATAR_DEFAULT_THUMB', trailingslashit( get_stylesheet_directory_uri() ) . 'images/cook_avatar_thumb.png' );
 
 /* =================================================================*/
 /* =             CUSTOM ACTIVATION MAIL => FONCTIONNE PAS !!!
@@ -102,8 +101,7 @@ function enqueue_bp_js() {
 function your_theme_xprofile_cover_image( $settings = array() ) {
     $settings['width']  = 1140;
     $settings['height'] = 350;
-    $settings['default_cover'] = 'https://goutu.org/wp-content/themes/foodiepro-2.1.8/images/cover_default.jpg';
- 
+    $settings['default_cover'] = trailingslashit( get_stylesheet_directory_uri() ) . 'images/cover_default.jpg'; 
     return $settings;
 }
 add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'your_theme_xprofile_cover_image', 10, 1 );

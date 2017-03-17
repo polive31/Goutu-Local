@@ -199,20 +199,7 @@ ob_start();
 	                <textarea name="recipe_description" id="recipe_description" rows="4"><?php echo esc_html( $recipe->description() ); ?></textarea>
 	            </td>
 	        </tr>
-	        <tr class="recipe-general-form-rating">
-	            <td class="recipe-general-form-label"><label for="recipe_rating"><?php _e( 'Rating', 'wp-ultimate-recipe' ); ?></label></td>
-	            <td class="recipe-general-form-field">
-	                <select name="recipe_rating" id="recipe_rating">
-	                    <?php
-	                    for ( $i = 0; $i <= 5; $i ++ ) {
-	                    ?>
-	                    <option value="<?php echo $i; ?>" <?php echo selected( $i, $recipe->rating_author() ); ?>>
-	                        <?php echo $i == 1 ? $i .' '. __( 'star', 'wp-ultimate-recipe' ) : $i .' '. __( 'stars', 'wp-ultimate-recipe' ); ?>
-	                    </option>
-	                    <?php } ?>
-	                </select>
-	            </td>
-	        </tr>
+
 	        <tr class="recipe-general-form-servings">
 	            <td class="recipe-general-form-label"><label for="recipe_servings"><?php _e( 'Servings', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_servings', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
 	            <td class="recipe-general-form-field">
@@ -243,14 +230,7 @@ ob_start();
 	                <input type="text" name="recipe_passive_time_text" id="recipe_passive_time_text" value="<?php echo esc_attr( $recipe->passive_time_text() ); ?>" />
 	            </td>
 	        </tr>
-	    <?php if( !isset( $wpurp_user_submission ) ) { ?>
-	        <tr>
-	            <td class="recipe-general-form-label">&nbsp;</td>
-	            <td class="recipe-general-form-field recipe-form-notes">
-	                <?php _e( "Don't forget that you can tag your recipe with <strong>Courses</strong> and <strong>Cuisines</strong> by using the boxes on the right. Use the <strong>featured image</strong> if you want a photo of the finished dish.", 'wp-ultimate-recipe' ) ?>
-	            </td>
-	        </tr>
-	    <?php } ?>
+
 	    </table>
 	</div>
 

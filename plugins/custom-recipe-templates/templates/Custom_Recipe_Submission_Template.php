@@ -178,20 +178,6 @@ ob_start();
 	<div class="recipe-general-container">
 	    <h4><?php _e( 'General', 'wp-ultimate-recipe' ); ?></h4>
 	    <table class="recipe-general-form">
-	        
-	        <?php if( WPUltimateRecipe::option( 'recipe_alternate_image', '1' ) == '1' ) { ?>
-	        <tr class="recipe-general-form-alternate-image">
-	            <td class="recipe-general-form-label"><label for="recipe_alternate_image"><?php _e( 'Image', 'wp-ultimate-recipe' ); ?></label></td>
-	            <td class="recipe-general-form-field">
-	                <input type="hidden" name="recipe_alternate_image" id="recipe_alternate_image"  value="<?php echo $recipe->alternate_image(); ?>" />
-	                <input class="recipe_alternate_image_add button <?php if( $recipe->alternate_image() ) { echo ' wpurp-hide'; } ?>" rel="<?php echo $recipe->ID(); ?>" type="button" value="<?php _e( 'Add Alternate Image', 'wp-ultimate-recipe' ); ?>" />
-	                <input class="recipe_alternate_image_remove button<?php if( !$recipe->alternate_image() ) { echo ' wpurp-hide'; } ?>" type="button" value="<?php _e('Remove Alternate Image', 'wp-ultimate-recipe' ); ?>" />
-
-	                <br/><img src="<?php echo $recipe->alternate_image() ? $recipe->image_url( 'thumbnail' ) : WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png'; ?>" class="recipe_alternate_image" />
-	                <span class="recipe-general-form-notes"> <?php _e( '(leave blank to use featured image)', 'wp-ultimate-recipe' ); ?></span>
-	            </td>
-	        </tr>
-	        <?php } ?>
 	    
 	        <tr class="recipe-general-form-description">
 	            <td class="recipe-general-form-label"><label for="recipe_description"><?php _e('Description', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_description', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
@@ -230,14 +216,7 @@ ob_start();
 	                <input type="text" name="recipe_passive_time_text" id="recipe_passive_time_text" value="<?php echo esc_attr( $recipe->passive_time_text() ); ?>" />
 	            </td>
 	        </tr>
-	    <?php if( !isset( $wpurp_user_submission ) ) { ?>
-	        <tr>
-	            <td class="recipe-general-form-label">&nbsp;</td>
-	            <td class="recipe-general-form-field recipe-form-notes">
-	                <?php _e( "Don't forget that you can tag your recipe with <strong>Courses</strong> and <strong>Cuisines</strong> by using the boxes on the right. Use the <strong>featured image</strong> if you want a photo of the finished dish.", 'wp-ultimate-recipe' ) ?>
-	            </td>
-	        </tr>
-	    <?php } ?>
+
 	    </table>
 	</div>
 

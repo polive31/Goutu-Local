@@ -3,9 +3,13 @@
 
 class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	
+	
+	private $recipe_items;
+	
 	public function __construct() {
 		/* Custom submission form template */
 		add_filter( 'wpurp_user_submissions_form', array($this,'custom_submission_form_template'), 10, 2 );
+
 	}
 
 	public function custom_submission_form_template( $form, $recipe ) {
@@ -14,10 +18,11 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 		PC::debug( array('Is single'=>is_single() ) );
 		PC::debug( array('Is single(recipe)'=>is_single('recipe') ) );
 		//PC::debug( array('Get post action'=> get_current_screen() ) );
+		$required_fields = WPUltimateRecipe::option( 'user_submission_required_fields', array() );
+		$this->class_hydrate($recipe, $required_fields);
 		
 		ob_start();?>
 		
-		<?php $required_fields = WPUltimateRecipe::option( 'user_submission_required_fields', array() ); ?>
 		<div id="wpurp_user_submission_form" class="postbox">
 		    <form id="new_recipe" name="new_recipe" method="post" action="" enctype="multipart/form-data">
 		        <input type="hidden" name="recipe_id" value="<?php echo $recipe->ID(); ?>" />
@@ -131,7 +136,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
         </div>
 <?php
         $wpurp_user_submission = true;
-        echo $this->output_recipe_form();
+        echo $this->output_recipe_form( $recipe, $required_fields );
 ?>
 
         <p align="right">
@@ -155,16 +160,17 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	}
 
 
-private function output_recipe_form() {
+private function output_recipe_form( $recipe, $required_fields ) {
 	
 
-// Recipe should never be null. Construct just allows easy access to WPURP_Recipe functions in IDE.
-if( is_null( $recipe ) ) $recipe = new WPURP_Recipe(0);
-if( !isset( $required_fields ) ) $required_fields = array();
+	// Recipe should never be null. Construct just allows easy access to WPURP_Recipe functions in IDE.
+	if( is_null( $recipe ) ) $recipe = new WPURP_Recipe(0);
+	if( !isset( $required_fields ) ) $required_fields = array();
 
-ob_start();
 
-?>
+	ob_start();
+
+	?>
 
 
 	<script>
@@ -184,52 +190,13 @@ ob_start();
 	            <td class="recipe-general-form-field">
 	                <textarea name="recipe_description" id="recipe_description" rows="4"><?php echo esc_html( $recipe->description() ); ?></textarea>
 	            </td>
-	        </tr>
+	        </tr> <?php
+			    
+					foreach ($this->recipe_items as $key=>$item) {
+			    	$this->output_recipe_item($key,$item);
+					}			   
 
-			     <tr class="recipe-general-form-servings">
-			        <td class="recipe-general-form-label"><label for="recipe_servings"><?php _e( 'Servings', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_servings', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
-			        <td class="recipe-general-form-field">
-			            <input type="text" name="recipe_servings" id="recipe_servings" value="<?php echo esc_attr( $recipe->servings() ); ?>" />
-			            <input type="text" name="recipe_servings_type" id="recipe_servings_type" value="<?php echo esc_attr( $recipe->servings_type() ); ?>" />
-			            <span class="recipe-general-form-notes"> <?php _e( '(e.g. 2 people, 3 loafs, ...)', 'wp-ultimate-recipe' ); ?></span>
-			        </td>
-			    </tr> <?php
-			    
-			    $item = array(
-			    	'class' => 'servings',
-			    	'title' => _e( 'Servings', 'wp-ultimate-recipe' ),
-			    	'notes' => _e( '(e.g. 2 people, 3 loafs, ...)', 'wp-ultimate-recipe' ),
-			    	'required' => in_array( 'recipe_servings', $required_fields ),
-			    );
-			    $inputs = array( 
-			    	'servings' => $recipe->servings(),
-			    	'servings_type' => $recipe->servings_type(),
-			    ); 
-			    $this->output_recipe_item($item, $inputs);
-			    
 			    ?>
-	        <tr class="recipe-general-form-prep-time">
-	            <td class="recipe-general-form-label"><label for="recipe_prep_time"><?php _e( 'Prep Time', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_prep_time', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
-	            <td class="recipe-general-form-field">
-	                <input type="text" name="recipe_prep_time" id="recipe_prep_time" value="<?php echo esc_attr( $recipe->prep_time() ); ?>" />
-	                <input type="text" name="recipe_prep_time_text" id="recipe_prep_time_text" value="<?php echo esc_attr( $recipe->prep_time_text() ); ?>" />
-	                <span class="recipe-general-form-notes"> <?php _e( '(e.g. 20 minutes, 1-2 hours, ...)', 'wp-ultimate-recipe' ); ?></span>
-	            </td>
-	        </tr>
-	        <tr class="recipe-general-form-cook-time">
-	            <td class="recipe-general-form-label"><label for="recipe_cook_time"><?php _e( 'Cook Time', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_cook_time', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
-	            <td class="recipe-general-form-field">
-	                <input type="text" name="recipe_cook_time" id="recipe_cook_time" value="<?php echo esc_attr( $recipe->cook_time() ); ?>" />
-	                <input type="text" name="recipe_cook_time_text" id="recipe_cook_time_text" value="<?php echo esc_attr( $recipe->cook_time_text() ); ?>" />
-	            </td>
-	        </tr>
-	        <tr class="recipe-general-form-passive-time">
-	            <td class="recipe-general-form-label"><label for="recipe_passive_time"><?php _e( 'Passive Time', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_passive_time', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
-	            <td class="recipe-general-form-field">
-	                <input type="text" name="recipe_passive_time" id="recipe_passive_time" value="<?php echo esc_attr( $recipe->passive_time() ); ?>" />
-	                <input type="text" name="recipe_passive_time_text" id="recipe_passive_time_text" value="<?php echo esc_attr( $recipe->passive_time_text() ); ?>" />
-	            </td>
-	        </tr>
 
 	    </table>
 	</div>
@@ -549,28 +516,66 @@ ob_start();
 	}
 	
 	
-	public function output_recipe_information($item, $args) {
+	public function output_recipe_item($class, $args) {?>
 		
-		ob_start();?>	
-
-      <tr class="recipe-general-form-<?php echo $item['class']?>">
-        <td class="recipe-general-form-label"><label for="recipe_<?php echo $item['class']?>"><?php echo $item['title'] ?><?php if( $item['required'] ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
+      <tr class="recipe-general-form-<?php echo $class?>">
+        <td class="recipe-general-form-label"><label for="recipe_<?php echo $class?>"><?php echo $args['title'] ?><?php if( $args['required'] ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
         <td class="recipe-general-form-field"> <?php
-        	foreach ($args as $key=>$arg) {
-            echo '<input type="text" name="recipe_' . $key . '" id="recipe_' . $key . '" value="' . esc_attr( $arg ) . '" />';
+        	PC::debug(array('$args'=>$args));
+        	foreach ($args['inputs'] as $key=>$arg) {
+            echo '<input type="text" class="' . $arg[0] . '" name="recipe_' . $key . '" id="recipe_' . $key . '" value="' . esc_attr( $arg[1] ) . '" />';
         	}?>
-            <span class="recipe-general-form-notes"> <?php echo $item['notes'] ?></span>
+          <div class="recipe-general-form-notes"> <?php echo $args['notes'] ?></div>
         </td>
-    </tr>
+    	</tr>
+    	<tr class="spacer"><td>&nbsp;</td></tr>
     
 		<?php 
-		$html = ob_get_contents();
-	  ob_end_clean();
 
-	  return $html;        
-	        
 	}
-
+	
+	
+	private function class_hydrate($recipe, $required_fields) {
+		
+		$this->recipe_items = array(
+    	'servings' => array(
+	    	'title' => __( 'Servings', 'wp-ultimate-recipe' ),
+	    	'notes' => __( '(e.g. 2 people, 3 loafs, ...)', 'wp-ultimate-recipe' ),
+	    	'required' => in_array( 'recipe_servings', $required_fields ),
+		    'inputs' => array( 
+		    	'servings' => array( 'value', $recipe->servings() ),
+		    	'servings_type' => array ( 'unit', $recipe->servings_type() ),
+		    )
+    	),	
+			'prep-time' => array(
+	    	'title' => __( 'Prep Time', 'wp-ultimate-recipe' ),
+	    	'notes' => __( '(e.g. 20 minutes, 1-2 hours, ...)', 'wp-ultimate-recipe' ),
+	    	'required' => in_array( 'prep_time', $required_fields ),
+		    'inputs' => array( 
+		    	'prep_time' => array( 'value', $recipe->prep_time() ),
+		    	'prep_time_text' => array ( 'unit', $recipe->prep_time_text() ),
+		   	)
+		  ),
+    	'cook-time' => array(
+	    	'title' => __( 'Cook Time', 'wp-ultimate-recipe' ),
+	    	'notes' => __( '(e.g. 20 minutes, 1-2 hours, ...)', 'wp-ultimate-recipe' ),
+	    	'required' => false,
+	   		'inputs' => array( 
+		    	'prep_time' => array( 'value', $recipe->prep_time() ),
+		    	'prep_time_text' => array ( 'unit', $recipe->prep_time_text() ),
+		    )
+		  ),
+    	'passive-time' => array(
+	    	'title' => __( 'Passive Time', 'wp-ultimate-recipe' ),
+	    	'notes' => __( '(e.g. 20 minutes, 1-2 hours, ...)', 'wp-ultimate-recipe' ),
+	    	'required' => false,
+	   		'inputs' => array( 
+		    	'passive_time' => array( 'value', $recipe->prep_time() ),
+		    	'passive_time_text' => array ( 'unit', $recipe->prep_time_text() ),
+		    )
+		  ),
+    ); 		
+	}
 	
 }
     

@@ -12,7 +12,7 @@ class CustomStarRatingsMeta extends CustomStarRatings {
 		parent::__construct();
 		add_action( 'comment_post',array($this,'update_comment_post_meta'), 10, 3 );
 		//add_action( 'save_post', array($this, array('add_default_rating', 10, 2) ) );
-		add_action( 'save_post', array($this, 'add_default_rating' ) );
+		add_action( 'save_post', array($this, 'add_default_rating' ), 15, 0 );
 		//add_action( 'genesis_before_content', array($this,'display_debug_info') );
 	}
 

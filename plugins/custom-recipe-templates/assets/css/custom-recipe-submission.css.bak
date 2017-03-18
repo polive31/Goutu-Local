@@ -1,29 +1,43 @@
-#wpurp_user_submission_form input {
-  max-width: 100%; }
+table.recipe-general-form {
+	width:100%;
+}
 
-#wpurp_user_submission_form .select2-container {
-  min-width: 200px;
-  vertical-align: top !important;
-  margin: 0 5px 5px 0 !important;
-  letter-spacing: normal; }
-  #wpurp_user_submission_form .select2-container li.select2-search-field {
-    background: none !important; }
+td.recipe-general-form-label {
+    padding-right: 10px;
+}
 
-#wpurp_user_submission_form .ingredient-group-stub,
-#wpurp_user_submission_form .instruction-group-stub {
-  display: none; }
+tr.spacer {
+    line-height: 8px;
+}
 
-#wpurp_user_submission_form .instruction-group-label,
-#wpurp_user_submission_form .instruction-groups-disabled {
-  margin-left: 20px; }
+.recipe-general-form-field input,
+.recipe-general-form-notes {
+  float: left;
+  margin: 0;
+  padding: 10px;
+}
 
-#wpurp_user_submission_form .ingredients_name_list {
-  width: 100%; }
+.recipe-general-form-field input.value {
+	width: 100px;
+}
 
-#wpurp_user_submission_form #recipe-ingredients img,
-#wpurp_user_submission_form .instruction-group-delete img {
-  min-width: 16px !important;
-  min-height: 16px !important; }
+.recipe-general-form-field input.unit {
+	width: 200px;
+}
+
+/* Dropdown taxonomies/tags lists
+------------------------------------------------*/
+.select2-container {
+	margin:10px;
+}
+	
+
+.select2-search-field input {
+	width:200px;
+	min-width:200px;
+}
+
+
 
 @media only screen and (max-width: 768px) {
   #wpurp_user_submission_form table td {

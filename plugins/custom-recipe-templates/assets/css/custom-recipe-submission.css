@@ -1,3 +1,42 @@
+table.recipe-general-form {
+	width:100%;
+}
+
+td.recipe-general-form-label {
+    padding-right: 10px;
+}
+
+tr.spacer {
+    line-height: 8px;
+}
+
+.recipe-general-form-field input,
+.recipe-general-form-notes {
+  float: left;
+  margin: 0;
+  padding: 10px;
+}
+
+.recipe-general-form-field input.value {
+	width: 100px;
+}
+
+.recipe-general-form-field input.unit {
+	width: 200px;
+}
+
+/* Dropdown taxonomies/tags lists
+------------------------------------------------*/
+.select2-container {
+	margin:5px!important;
+}
+	
+
+.select2-search-field input {
+	width:200px;
+	min-width:200px;
+}
+
 
 
 @media only screen and (max-width: 768px) {

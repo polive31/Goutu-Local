@@ -1,100 +1,10 @@
 
-/* ============================================================ */
-/* =                      RECIPES  ENTRY                      	
-/* ============================================================ */
 
-.recipe-general-form-rating 
-/*#s2id_recipe-post_tag*/ {
-	display:none;
-}
-
-#wpurp_user_submission_form h4 {
-	border-bottom:1px solid #AAA;
-}
-
-input#recipe_prep_time, 
-input#recipe_cook_time, 
-input#recipe_passive_time, 
-input#recipe_servings,
-table#recipe-ingredients input.ingredients_amount {
-	width : 80px;
-}
-
-input#recipe_prep_time_text, 
-input#recipe_cook_time_text, 
-input#recipe_passive_time_text,
-input#recipe_servings_type {
-	width : 250px;
-}
-
-
-.recipe-form-notes {
-	margin-top : 20px;
-	text-decoration : none;
-	font-weight : normal;
-	font-size : 12px;
-}
-
-
-
-
-/* Ingredients & Instructions
---------------------------------------------- */
-
-table#recipe-ingredients {
-	margin-bottom : 20px;
-}
-
-.ingredients_notes {
-	height:100px;
-}
-
-/* Prevent issue when previsualising the recipe */
-#wpurp_user_submission_form {
-	float: left;
-}
-
-#wpurp_user_submission_form textarea {
-	font-size: 14px;
-	color: black;
-}
-
-#wpurp_user_submission_form input#preview, 
-#wpurp_user_submission_form input#submit  {
-	font-size: 14px;
-	margin-top: 40px;
-}
-
-
-
-
-/* Recipe notes
---------------------------------------------- */
-
-#wp-recipe_notes-editor-container {
-	border-left : 1px solid #DDD;
-	border-right : 1px solid #DDD;
-	border-top : 1px solid #DDD;
-	border-bottom : 1px solid #DDD;
-}
-
-table#recipe-instructions textarea, 
-textarea#recipe_description {
-	font-size : 14px;
-}
-
-a.em-button {
-	display:block;
-	float:left;
-	clear:both;
-}
-
-form#posts-filter {
-	display:block;
-	clear:both;
-	float:left;
-	margin-top:20px;
-}
+@media only screen and (max-width: 768px) {
+  #wpurp_user_submission_form table td {
+    padding: 0; }
+  .recipe-general-form-notes, #recipe-ingredients td, #recipe-instructions td {
+    display: block !important; } }
 
 
 

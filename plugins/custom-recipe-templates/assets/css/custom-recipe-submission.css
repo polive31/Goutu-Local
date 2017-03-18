@@ -25,6 +25,25 @@ tr.spacer {
 	width: 200px;
 }
 
+/* Ingredients
+------------------------------------------------*/
+
+tr.ingredient-group-stub {
+	display:none;
+}
+
+input.ingredients_amount {
+	width: 100px;
+}
+
+input.ingredients_unit {
+	width:150px;
+}
+
+input.ingredients_name {
+	width:200px;
+}
+
 /* Dropdown taxonomies/tags lists
 ------------------------------------------------*/
 .select2-container {

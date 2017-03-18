@@ -206,6 +206,8 @@ private function output_recipe_form( $recipe, $required_fields ) {
 	    <?php $ingredients = $recipe->ingredients(); ?>
 	    <table id="recipe-ingredients">
 	        <thead>
+	        	
+	        
 	        <tr class="ingredient-group ingredient-group-first">
 	            <td>&nbsp;</td>
 	            <td><strong><?php _e( 'Group', 'wp-ultimate-recipe' ); ?>:</strong></td>
@@ -222,6 +224,8 @@ private function output_recipe_form( $recipe, $required_fields ) {
 	            <td>&nbsp;</td>
 	            <td>&nbsp;</td>
 	        </tr>
+	        
+	        
 	        <tr class="ingredient-field-header">
 	            <td>&nbsp;</td>
 	            <td><?php _e( 'Quantity', 'wp-ultimate-recipe' ); ?></td>
@@ -230,7 +234,10 @@ private function output_recipe_form( $recipe, $required_fields ) {
 	            <td><?php _e( 'Notes', 'wp-ultimate-recipe' ); ?></td>
 	        </tr>
 	        </thead>
+	        
 	        <tbody>
+	        	
+	        
 	        <tr class="ingredient-group-stub">
 	            <td>&nbsp;</td>
 	            <td><strong><?php _e( 'Group', 'wp-ultimate-recipe' ); ?>:</strong></td>
@@ -238,6 +245,9 @@ private function output_recipe_form( $recipe, $required_fields ) {
 	            <td>&nbsp;</td>
 	            <td class="center-column"><span class="ingredient-group-delete"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16"></span></td>
 	        </tr>
+	        
+	        
+	        
 	        <?php
 	        $i = 0;
 	        if( $ingredients )
@@ -273,7 +283,8 @@ private function output_recipe_form( $recipe, $required_fields ) {
 	                    <td><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][unit]"       class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['unit'] ); ?>" /></td>
 	                    <td><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onfocus="autoSuggestTag('ingredients_<?php echo $i; ?>', 'ingredient');"  value="<?php echo esc_attr( $ingredient['ingredient'] ); ?>" /></td>
 	                    <td>
-	                        <input type="text"   name="recipe_ingredients[<?php echo $i; ?>][notes]"      class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['notes'] ); ?>" />
+	                        <!-- <input type="text"   name="recipe_ingredients[<?php echo $i; ?>][notes]"      class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['notes'] ); ?>" />-->
+	                        <textarea rows="1" name="recipe_ingredients[<?php echo $i; ?>][notes]"      class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['notes'] ); ?>" />
 	                        <input type="hidden" name="recipe_ingredients[<?php echo $i; ?>][group]"      class="ingredients_group" id="ingredient_group_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['group'] ); ?>" />
 	                    </td>
 	                    <td><span class="ingredients-delete"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16"></span></td>
@@ -311,7 +322,7 @@ private function output_recipe_form( $recipe, $required_fields ) {
 	                <?php } ?>
 	            </td>
 	            <td>
-	                <input type="text"   name="recipe_ingredients[<?php echo $i; ?>][notes]"      class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>"<?php if($i == 0) { echo 'placeholder="' . __( 'extra virgin', 'wp-ultimate-recipe' ) . '"'; } ?> />
+	                <textarea rows="1" name="recipe_ingredients[<?php echo $i; ?>][notes]"      class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" <?php if($i == 0) { echo 'value="' . __( 'extra virgin', 'wp-ultimate-recipe' ) . '"'; } ?> ></textarea>
 	                <input type="hidden" name="recipe_ingredients[<?php echo $i; ?>][group]"    class="ingredients_group" id="ingredient_group_<?php echo $i; ?>" value="" />
 	            </td>
 	            <td><span class="ingredients-delete"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16"></span></td>

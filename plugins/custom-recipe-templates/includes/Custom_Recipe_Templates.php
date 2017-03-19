@@ -55,13 +55,13 @@ class Custom_Recipe_Templates {
 			//$this->dbg('Plugin path', self::$_PluginPath);
 	}	
 	
-	public function enqueue_wpurp_css($js_enqueue) {
+	public function enqueue_wpurp_css($css_enqueue) {
 				
 		//$this->dbg('In Enqueue WPURP CSS', '');
 		//$this->dbg('Plugin path', self::$_PluginPath);
 			
 		if ( is_singular('recipe') ) {
-		  $js_enqueue=array(
+		  $css_enqueue=array(
 							array(
 		              'url' => WPUltimateRecipe::get()->coreUrl . '/css/admin.css',
 		              'admin' => true,
@@ -81,7 +81,7 @@ class Custom_Recipe_Templates {
 			);
 		}
 		elseif ( is_page( 'menus' ) ) { // Menu page
-		  $js_enqueue=array(
+		  $css_enqueue=array(
 							array(
 		              'url' => self::$_PluginPath . 'assets/css/custom-menu.css',
 		              'public' => true,
@@ -89,7 +89,7 @@ class Custom_Recipe_Templates {
 			);		
 		}
 		elseif ( is_page( 'nouvelle-recette', 'mes-recettes' ) ) { // Menu page
-		  $js_enqueue=array(
+		  $css_enqueue=array(
 				array(
             'url' => self::$_PluginPath . 'assets/css/custom-recipe-submission.css',
             'public' => true,
@@ -99,10 +99,11 @@ class Custom_Recipe_Templates {
             'public' => true,
         ),
 			);
-
-
 		}
-		return $js_enqueue;
+		else {
+			$css_enqueue='';
+		}
+		return $css_enqueue;
 	}
 
 

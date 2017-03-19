@@ -1,4 +1,13 @@
-table.recipe-general-form {
+/* Common attributes 
+---------------------------------------------------------*/
+.screen {display:initial}
+.mobile {display:none}
+
+
+/* Main
+---------------------------------------------------------*/
+
+.recipe-general-form {
 	width:100%;
 }
 
@@ -13,7 +22,7 @@ tr.spacer {
 .recipe-general-form-field input,
 .recipe-general-form-notes {
   float: left;
-  margin: 0;
+  margin: 0 2px;
   padding: 10px;
 }
 
@@ -28,19 +37,51 @@ tr.spacer {
 /* Ingredients
 ------------------------------------------------*/
 
-tr.ingredient-group-stub {
+.ui-sortable {
+	border: 1px dashed #555;
+	padding : 5px;
+}
+
+.ingredient-group-stub {
 	display:none;
 }
 
-input.ingredients_amount {
-	width: 100px;
+.ingredient-item {
+	float:left;
+	margin:2px;
 }
 
-input.ingredients_unit {
+#custom_recipe_submission_form .section,
+#custom_recipe_submission_form h4,
+.recipe-ingredients-form {
+	float:left;
+	clear:both;
+	width:100%;
+}
+
+.ingredient-item select,
+.ingredient-item input,
+.ingredient-item textarea {
+	width:100%;
+}
+
+.ingredient-item#controls {
+	width:25px;
+}
+
+.ingredient-item#name {
+	width:250px;
+}
+
+.ingredient-item#amount {
+	width:75px;
+}
+
+.ingredient-item#unit {
 	width:150px;
 }
 
-input.ingredients_name {
+.ingredient-item#notes {
 	width:200px;
 }
 
@@ -57,15 +98,6 @@ input.ingredients_name {
 }
 
 
-
-@media only screen and (max-width: 768px) {
-  #wpurp_user_submission_form table td {
-    padding: 0; }
-  .recipe-general-form-notes, #recipe-ingredients td, #recipe-instructions td {
-    display: block !important; } }
-
-
-
 /* =================================================================*/
 /* =             RESPONSIVE BEHAVIOUR                              
 /* =================================================================*/
@@ -79,14 +111,40 @@ input.ingredients_name {
 @media only screen and (max-width: 980px) {
 }
 
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 768px) {
 
-	.wpurp-rows.ingredients {
-		width: 100%;
+	.screen {display:none}
+	.mobile {display:initial}
+	
+	.ingredient-item {
+		float:left;
+		clear:both;
+		width:100%;
+		padding:2px;
 	}
 	
-	li.wpurp-recipe-instruction {
-    float: left;
-}
+	.ingredient-item .mobile {
+		float:left;
+		width:20%;
+	}
 	
+	.ingredient-item input,
+	.ingredient-item select,
+	.ingredient-item textarea {
+		float:left;
+		width:80%;
+		margin:0;
+	}
+	
+	.ingredient-item#controls,
+	.ingredient-item#name,
+	.ingredient-item#amount,
+	.ingredient-item#unit,
+	.ingredient-item#notes {
+		width:100%;
+	}
+	
+}
+
+@media only screen and (max-width: 420px) {
 }

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-03-13 23:30+0100\n"
+"POT-Creation-Date: 2017-03-19 21:11+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -233,7 +233,7 @@ msgstr ""
 msgid "Filter recipes"
 msgstr ""
 
-#: plugins/custom-recipe-templates/custom-recipe-templates.php:44
+#: plugins/custom-recipe-templates/custom-recipe-templates.php:46
 msgid ""
 "<strong>WPUR Custom Templates Plugin</strong></a> requires the WP Ultimate "
 "Recipe plugin to work. Please <a href=\"plugins.php\">activate/install WPUR or "
@@ -319,17 +319,17 @@ msgstr ""
 msgid "Show Images"
 msgstr ""
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Add_To_Shopping_List.php:36
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Add_To_Shopping_List.php:31
 #, php-format
 msgid "In my <a href=\"%s\">shopping list</a>"
 msgstr ""
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Add_To_Shopping_List.php:37
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Add_To_Shopping_List.php:32
 #, php-format
 msgid "Add to my <a href=\"%s\">shopping list</a>"
 msgstr ""
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Add_To_Shopping_List.php:57
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Add_To_Shopping_List.php:59
 msgid "Add to Shopping List"
 msgstr ""
 
@@ -347,8 +347,207 @@ msgstr ""
 msgid "Favorites"
 msgstr ""
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Templates.php:131
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Templates.php:148
 msgid "Print this Recipe"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:31
+msgid "Recipe title"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:40
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:157
+msgid "Featured image"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:49
+msgid "Add Featured Image"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:50
+msgid "Remove Featured Image"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:88
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:96
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:356
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:107
+msgid "Category"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:102
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:110
+msgid "Tag"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:144
+msgid "Preview"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:146
+msgid "Submit"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:182
+msgid "General"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:186
+msgid "Description"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:200
+msgid "Ingredients"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:207
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:233
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:267
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:283
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:303
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:483
+msgid "Group"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:209
+msgid "Main Ingredients"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:209
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:268
+msgid "(this label is not shown)"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:221
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:514
+msgid "Ingredient"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:221
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:514
+msgid "required"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:222
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:534
+#: themes/foodiepro-2.1.8/plugins/events-manager/emails/bookingsummary.php:13
+#: themes/foodiepro-2.1.8/plugins/events-manager/emails/bookingtickets.php:7
+msgid "Quantity"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:223
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:544
+msgid "Unit"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:224
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:554
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:177
+#: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:95
+msgid "Notes"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:247
+msgid "Add an ingredient"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:251
+msgid "Add an ingredient group"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:255
+msgid ""
+"<strong>Use the TAB key</strong> while adding ingredients, it will "
+"automatically create new fields. <strong>Don't worry about empty lines</"
+"strong>, these will be ignored."
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:260
+msgid "Instructions"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:268
+msgid "Main Instructions"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:334
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:366
+msgid "Instruction Step Image"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:345
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:374
+msgid "Add Image"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:346
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:375
+msgid "Remove Image"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:386
+msgid "Add an instruction"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:389
+msgid "Add an instruction group"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:392
+msgid ""
+"<strong>Use the TAB key</strong> while adding instructions, it will "
+"automatically create new fields. <strong>Don't worry about empty lines</"
+"strong>, these will be ignored."
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:397
+msgid "Recipe notes"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:420
+msgid "Custom Fields"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:524
+msgid "olive oil"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:548
+msgid "tbsp"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:558
+msgid "extra virgin"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:578
+msgid "Select an ingredient"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:599
+msgid "Servings"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:600
+msgid "(e.g. 2 people, 3 loafs, ...)"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:608
+msgid "Prep Time"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:609
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:618
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:627
+msgid "(e.g. 20 minutes, 1-2 hours, ...)"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:617
+msgid "Cook Time"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:626
+msgid "Passive Time"
 msgstr ""
 
 #: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:37
@@ -401,11 +600,6 @@ msgstr ""
 #: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:141
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:60
 msgid "Wait"
-msgstr ""
-
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:177
-#: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:95
-msgid "Notes"
 msgstr ""
 
 #: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:258
@@ -2129,11 +2323,6 @@ msgstr ""
 msgid "Grid Columns"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:356
-#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:107
-msgid "Category"
-msgstr ""
-
 #: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:363
 msgid "All Categories"
 msgstr ""
@@ -2375,11 +2564,6 @@ msgstr ""
 
 #: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/profile.php:44
 msgid "Not attending any events yet."
-msgstr ""
-
-#: themes/foodiepro-2.1.8/plugins/events-manager/emails/bookingsummary.php:13
-#: themes/foodiepro-2.1.8/plugins/events-manager/emails/bookingtickets.php:7
-msgid "Quantity"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/plugins/events-manager/emails/bookingsummary.php:15
@@ -3000,10 +3184,6 @@ msgstr ""
 
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:125
 msgid "Enter tag here"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:157
-msgid "Featured image"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:166

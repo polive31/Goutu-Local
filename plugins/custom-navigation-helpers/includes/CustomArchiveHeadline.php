@@ -30,6 +30,10 @@ class CustomArchiveHeadline extends CustomArchive {
 	 	------------------------------------------------------------*/
 		add_action( 'genesis_before_content', array($this,'custom_archive_headline' ));
 		add_filter( 'genesis_term_intro_text_output', 'wpautop' );	
+
+		/* Add widget area
+	 	------------------------------------------------------------*/
+		add_action( 'genesis_before_loop', array($this,'add_archive_widgeted_area' ));
 		
 		/* WPURP Detailed search : customized page title and description 
  		------------------------------------------------------------*/
@@ -47,6 +51,19 @@ class CustomArchiveHeadline extends CustomArchive {
 
 	  return $html;
 	}
+	
+	
+	/* Hook category widget areas before post content and after archive title
+	-----------------------------------------------------------------------------*/
+	public function add_archive_widgeted_area() {
+	  if ( is_archive() || is_search() ) {
+	  		genesis_widget_area( 'archives-top', array(
+	        'before' => '<div class="archives-top widget-area">',
+	        'after'  => '</div>',
+	  		));
+	  }     
+	}
+
 	
 	public function genesis_remove_default_archive_headline() {
 		
@@ -78,13 +95,13 @@ class CustomArchiveHeadline extends CustomArchive {
 		if ( is_archive() ) {
 				
 			$query = get_queried_object();	
+			$headline = get_term_meta( $query->term_id, 'headline', true );
 									
 		  if ( is_author() ) {
 		  	echo $this->get_archive_headline('author', $query->user_login, '');
 			}
 			
 			elseif ( is_tax() ) {
-			  $headline = get_term_meta( $query->term_id, 'headline', true );
 
 		    if ( is_tax('ingredient') )
 					echo $this->get_archive_headline('ingredient', $query->slug, $headline);
@@ -103,7 +120,7 @@ class CustomArchiveHeadline extends CustomArchive {
 					echo $this->get_archive_headline('', $query->slug, $headline);
 			}
 			
-			else 
+			else // ex : tags...
 				echo $this->get_archive_headline('', $query->slug, $headline);
 
 		}

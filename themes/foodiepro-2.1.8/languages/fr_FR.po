@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-03-19 21:11+0100\n"
-"PO-Revision-Date: 2017-03-20 00:30+0100\n"
+"POT-Creation-Date: 2017-03-21 23:49+0100\n"
+"PO-Revision-Date: 2017-03-21 23:50+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -28,32 +28,32 @@ msgctxt "consonant"
 msgid "Cuisine from "
 msgstr "Cuisine de "
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:44
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:48
 msgid "Detailed Search Results"
 msgstr "Résultats de recherche détaillée"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:46
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:50
 #: themes/foodiepro-2.1.8/search.php:24
 msgid "Search Results for:"
 msgstr "Résultats de recherche pour : "
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:113
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:130
 msgctxt "vowel"
 msgid "All recipes from "
 msgstr "Toutes les recettes d'"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:114
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:128
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:131
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:145
 msgctxt "consonant"
 msgid "All recipes from "
 msgstr "Toutes les recettes de "
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:115
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:132
 msgctxt "vowel"
 msgid "All recipes containing "
 msgstr "Toutes les recettes à base d'"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:116
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:133
 msgctxt "consonant"
 msgid "All recipes containing "
 msgstr "Toutes les recettes à base de "
@@ -67,39 +67,39 @@ msgstr "Partager sur les réseaux sociaux"
 msgid "Share this post"
 msgstr "Partager cet article"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:66
-msgid "Courses"
-msgstr "De l'apéritif au dessert"
-
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:71
-msgid "Seasons"
-msgstr "Cuisine de saisons"
-
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:76
-msgid "Occasions"
-msgstr "En toutes occasions"
-
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:81
-msgid "Diets"
-msgstr "Régimes et diététique"
-
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:86
-msgid "France"
-msgstr "Cuisines de régions"
-
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:94
-msgid "World"
-msgstr "Cuisines du monde"
-
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:99
-msgid "All posts"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:105
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:48
 msgid "Previous page"
 msgstr "Page précédente"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:123
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:72
+msgid "All posts"
+msgstr "Tous les articles"
+
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:77
+msgid "Courses"
+msgstr "De l'apéritif au dessert"
+
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:82
+msgid "Seasons"
+msgstr "Cuisine de saisons"
+
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:87
+msgid "Occasions"
+msgstr "En toutes occasions"
+
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:92
+msgid "Diets"
+msgstr "Régimes et diététique"
+
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:97
+msgid "France"
+msgstr "Cuisines de régions"
+
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:105
+msgid "World"
+msgstr "Cuisines du monde"
+
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:131
 msgid "Select..."
 msgstr "Choisir..."
 
@@ -148,7 +148,7 @@ msgid "Rating"
 msgstr "Appréciation"
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:107
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:82
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:84
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:89
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:84
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:74
@@ -156,7 +156,7 @@ msgid "New title"
 msgstr ""
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:111
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:86
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:88
 #: plugins/custom-recipe-templates/helpers/custom_nutrition_label.php:60
 #: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:101
 #: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:180
@@ -215,6 +215,10 @@ msgid "Other Levels"
 msgstr "Autres niveaux"
 
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:67
+msgid "All Tags"
+msgstr "Autres idées"
+
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:69
 msgid "Filter recipes"
 msgstr "Filtrer les recettes"
 
@@ -363,7 +367,7 @@ msgstr ""
 #: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:102
 #: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:110
 msgid "Tag"
-msgstr ""
+msgstr "Etiquette"
 
 #: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:144
 msgid "Preview"
@@ -373,74 +377,74 @@ msgstr ""
 msgid "Submit"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:182
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:181
 msgid "General"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:186
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:185
 msgid "Description"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:200
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:199
 msgid "Ingredients"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:207
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:233
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:267
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:283
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:303
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:483
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:206
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:232
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:265
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:281
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:301
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:481
 msgid "Group"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:209
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:208
 msgid "Main Ingredients"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:209
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:268
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:208
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:266
 msgid "(this label is not shown)"
 msgstr ""
 
 #: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:221
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:514
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:510
 msgid "Ingredient"
 msgstr ""
 
 #: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:221
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:514
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:510
 msgid "required"
 msgstr "*"
 
 #: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:222
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:534
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:528
 #: themes/foodiepro-2.1.8/plugins/events-manager/emails/bookingsummary.php:13
 #: themes/foodiepro-2.1.8/plugins/events-manager/emails/bookingtickets.php:7
 msgid "Quantity"
 msgstr "Quantité"
 
 #: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:223
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:544
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:538
 msgid "Unit"
 msgstr "Unité"
 
 #: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:224
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:554
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:548
 #: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:177
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:95
 msgid "Notes"
 msgstr "Notes"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:247
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:245
 msgid "Add an ingredient"
 msgstr "Ajoutez un ingrédient"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:251
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:249
 msgid "Add an ingredient group"
 msgstr "Ajoutez un groupe d'ingrédients"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:255
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:253
 msgid ""
 "<strong>Use the TAB key</strong> while adding ingredients, it will "
 "automatically create new fields. <strong>Don't worry about empty lines</"
@@ -449,38 +453,38 @@ msgstr ""
 "<strong>Utilisez la touche \"TAB\"</strong> afin d'ajouter facilement de "
 "nouveaux ingrédients. Les <strong>lignes vides<strong> seront ignorées."
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:260
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:258
 msgid "Instructions"
 msgstr "Instructions"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:268
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:266
 msgid "Main Instructions"
 msgstr "Instructions principales"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:334
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:366
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:332
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:364
 msgid "Instruction Step Image"
 msgstr "Image de l'étape"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:345
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:374
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:343
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:372
 msgid "Add Image"
 msgstr "Ajoutez une image"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:346
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:375
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:344
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:373
 msgid "Remove Image"
 msgstr "Supprimez l'image"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:386
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:384
 msgid "Add an instruction"
 msgstr "Ajoutez une instruction"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:389
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:387
 msgid "Add an instruction group"
 msgstr "Ajoutez un groupe d'instructions"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:392
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:390
 msgid ""
 "<strong>Use the TAB key</strong> while adding instructions, it will "
 "automatically create new fields. <strong>Don't worry about empty lines</"
@@ -489,53 +493,53 @@ msgstr ""
 "<strong>Utilisez la touche \"TAB\"</strong> afin d'ajouter facilement de "
 "nouvelles instructions. Les <strong>lignes vides<strong> seront ignorées."
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:397
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:395
 msgid "Recipe notes"
 msgstr "Notes sur la recette"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:420
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:418
 msgid "Custom Fields"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:524
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:520
 msgid "olive oil"
 msgstr "huile d'olive"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:548
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:542
 msgid "tbsp"
 msgstr "cuillère à soupe"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:558
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:552
 msgid "extra virgin"
 msgstr "extra-vierge"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:578
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:574
 msgid "Select an ingredient"
 msgstr "Sélectionnez un ingrédient"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:599
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:595
 msgid "Servings"
 msgstr "Portions"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:600
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:596
 msgid "(e.g. 2 people, 3 loafs, ...)"
 msgstr "(ex : 2 personnes, 30 biscuits, ...)"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:608
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:604
 msgid "Prep Time"
 msgstr "Préparation"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:609
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:618
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:627
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:605
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:614
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:623
 msgid "(e.g. 20 minutes, 1-2 hours, ...)"
 msgstr "(ex : 20 minutes, 1-2 heures, ...)"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:617
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:613
 msgid "Cook Time"
 msgstr "Cuisson"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:626
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Submission_Template.php:622
 msgid "Passive Time"
 msgstr "Attente"
 
@@ -690,12 +694,12 @@ msgid "Displays gravatar and name of current loggued-in user"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:184
-#: themes/foodiepro-2.1.8/functions.php:501
+#: themes/foodiepro-2.1.8/functions.php:489
 msgid "Read More"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:197
-#: themes/foodiepro-2.1.8/functions.php:529
+#: themes/foodiepro-2.1.8/functions.php:517
 msgid "Comments"
 msgstr ""
 
@@ -1621,40 +1625,40 @@ msgstr "<strong> ERREUR</strong>: Utilisateur en attente d'"
 msgid "approval"
 msgstr "approbation"
 
-#: themes/foodiepro-2.1.8/functions.php:538
+#: themes/foodiepro-2.1.8/functions.php:526
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:202
 msgid "Previous comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:544
+#: themes/foodiepro-2.1.8/functions.php:532
 msgid "Next comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:563
+#: themes/foodiepro-2.1.8/functions.php:551
 msgid "Your answer here"
 msgstr "Entrez votre réponse ci-dessous"
 
-#: themes/foodiepro-2.1.8/functions.php:582
+#: themes/foodiepro-2.1.8/functions.php:570
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
-#: themes/foodiepro-2.1.8/functions.php:582
+#: themes/foodiepro-2.1.8/functions.php:570
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:582
+#: themes/foodiepro-2.1.8/functions.php:570
 msgid "Legal notice"
 msgstr "Mentions légales"
 
-#: themes/foodiepro-2.1.8/functions.php:582
+#: themes/foodiepro-2.1.8/functions.php:570
 msgid "Goûtu charter"
 msgstr "Charte Goûtu"
 
-#: themes/foodiepro-2.1.8/functions.php:582
+#: themes/foodiepro-2.1.8/functions.php:570
 msgid "Personal data"
 msgstr "Données personnelles"
 
-#: themes/foodiepro-2.1.8/functions.php:582
+#: themes/foodiepro-2.1.8/functions.php:570
 msgid "Terms of use"
 msgstr "Conditions d'utilisation"
 

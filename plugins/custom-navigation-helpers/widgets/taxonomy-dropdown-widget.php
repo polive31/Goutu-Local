@@ -63,6 +63,8 @@ public function widget( $args, $instance ) {
 		echo $args['before_title'] . __('Other Diets', 'foodiepro') . $args['after_title'];
 	elseif ( is_tax('difficult') )
 		echo $args['before_title'] . __('Other Levels', 'foodiepro') . $args['after_title'];
+	elseif ( is_tag() )
+		echo $args['before_title'] . __('All Tags', 'foodiepro') . $args['after_title'];
 	else 
 		echo $args['before_title'] . __('Filter recipes', 'foodiepro') . $args['after_title'];
 

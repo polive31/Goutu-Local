@@ -328,7 +328,6 @@ add_filter('wp_authenticate_user', 'block_new_users',10,1);
 /* =================================================================*/
 
 /* Chargement des feuilles de style custom et polices */
-add_action( 'wp_enqueue_scripts', 'custom_load_custom_style_sheet' );
 function custom_load_custom_style_sheet() {
 	if ( CHILD_COLOR_THEME=='autumn')
 		wp_enqueue_style( 'color-theme-autumn', get_stylesheet_directory_uri() . '/assets/css/color-theme-autumn.css', array(), CHILD_THEME_VERSION );
@@ -343,6 +342,7 @@ function custom_load_custom_style_sheet() {
 	wp_enqueue_style( 'google-font-lobstertwo', '//fonts.googleapis.com/css?family=Lobster+Two', array(), CHILD_THEME_VERSION );
 }
 
+add_action( 'wp_enqueue_scripts', 'custom_load_custom_style_sheet' );
 
 
 /* Suppression de la feuille de style YARPP */

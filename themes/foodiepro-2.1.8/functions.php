@@ -412,18 +412,6 @@ function wprpe_orderby_rating( $args ) {
 /* =                      ARCHIVES
 /* =================================================================*/
 
-/* Hook category widget areas before post content and after archive title
------------------------------------------------------------------------------*/
-add_action( 'genesis_before_loop', 'add_archive_widgeted_area');
-function add_archive_widgeted_area() {
-  if ( is_archive() || is_search() ) {
-  		genesis_widget_area( 'archives-top', array(
-        'before' => '<div class="archives-top widget-area">',
-        'after'  => '</div>',
-  		));
-  }     
-}
-
 
 /* Customize entry title in the archive pages
 -----------------------------------------------------------------------------*/

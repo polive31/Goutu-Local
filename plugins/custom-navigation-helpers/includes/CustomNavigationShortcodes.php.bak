@@ -43,67 +43,75 @@ class CustomNavigationShortcodes extends CustomArchive {
 		
 		PC::debug(' In index-link shortcode');
 		
-
-		if ($back!='true'):
-			
-			$obj = get_queried_object();
-			$tax_id = $obj -> taxonomy;
-			$parent_id = $obj -> parent;
-			$parent = get_term_by('id', $parent_id,'cuisine');
-			//PC::debug(array('Parent id = ', $parent_id));
-			$parent_slug = ($parent)?$parent->slug:'';
-			$parent_name = ($parent)?$parent->name:'';
-			//PC::debug(array('Parent slug = ', $parent_slug));
-			//PC::debug(array('Parent name = ', $parent_name));
-			$current_slug = $obj -> slug;
-			//PC::debug(array('Current taxonomy = ', $tax_id));
-			//PC::debug(array('Current slug = ', $current_slug));
-
-			switch ($tax_id) {
-		    case 'course':
-					$url = "/recettes/plats";
-					//$msg = "De l'apéritif au dessert";
-					$msg = __('Courses', 'foodiepro');
-					break;
-		    case 'season':
-					$url = "/recettes/saisons";
-					//$msg = "Cuisine de saisons";
-					$msg = __('Seasons', 'foodiepro');
-					break;
-		    case 'occasion':
-					$url = "/recettes/occasions";
-					//$msg = "En toutes occasions";
-					$msg = __('Occasions', 'foodiepro');
-					break;
-		    case 'diet':
-					$url = "/recettes/regimes";
-					//$msg = "Régimes et diététique";
-					$msg = __('Diets', 'foodiepro');
-					break;
-		    case 'cuisine':
-		    	if ( $current_slug=='france' || $parent_slug='france' ) {
-		    		$url = "/recettes/regions";
-						$msg = __('France', 'foodiepro');
-					}
-		    	elseif (!empty($parent_slug)) {
-		    		$url = '/origine/' . $parent_slug;
-		    		$msg = $this->get_cuisine_caption($parent_name);
-		    	}
-		    	else {
-		    		$url = "/recettes/monde";
-						$msg = __('World', 'foodiepro');
-					}
-		    	break;
-		    case 'category':
-					$url = "/blogs";
-					$msg = __('All posts', 'foodiepro');
-					break;	
-			}
-			
-		else:
+			if (is_search() || is_tag()) {
 				$url = 'javascript:history.back()';
 				$msg = __('Previous page','foodiepro');
-		endif;
+			}
+			
+			elseif ( is_archive() ) {
+
+			//if ($back!='true'):
+				
+				$obj = get_queried_object();
+				PC::debug(array('get queried object'=>$obj)); 
+				$tax_id = $obj -> taxonomy;
+				$parent_id = $obj -> parent;
+				$parent = get_term_by('id', $parent_id,'cuisine');
+				//PC::debug(array('Parent id = ', $parent_id));
+				$parent_slug = ($parent)?$parent->slug:'';
+				$parent_name = ($parent)?$parent->name:'';
+				//PC::debug(array('Parent slug = ', $parent_slug));
+				//PC::debug(array('Parent name = ', $parent_name));
+				$current_slug = $obj -> slug;
+				//PC::debug(array('Current taxonomy = ', $tax_id));
+				//PC::debug(array('Current slug = ', $current_slug));
+
+					switch ($tax_id) {
+				    case 'category':
+							$url = "/blogs";
+							$msg = __('All posts', 'foodiepro');
+							break;	
+				    case 'course':
+							$url = "/recettes/plats";
+							//$msg = "De l'apéritif au dessert";
+							$msg = __('Courses', 'foodiepro');
+							break;
+				    case 'season':
+							$url = "/recettes/saisons";
+							//$msg = "Cuisine de saisons";
+							$msg = __('Seasons', 'foodiepro');
+							break;
+				    case 'occasion':
+							$url = "/recettes/occasions";
+							//$msg = "En toutes occasions";
+							$msg = __('Occasions', 'foodiepro');
+							break;
+				    case 'diet':
+							$url = "/recettes/regimes";
+							//$msg = "Régimes et diététique";
+							$msg = __('Diets', 'foodiepro');
+							break;
+				    case 'cuisine':
+				    	if ( $current_slug=='france' || $parent_slug=='france' ) {
+				    		$url = "/recettes/regions";
+								$msg = __('France', 'foodiepro');
+							}
+				    	elseif (!empty($parent_slug)) {
+				    		$url = '/origine/' . $parent_slug;
+				    		$msg = $this->get_cuisine_caption($parent_name);
+				    	}
+				    	else {
+				    		$url = "/recettes/monde";
+								$msg = __('World', 'foodiepro');
+							}
+				    	break;
+					}
+			
+			}
+//		else:
+//				$url = 'javascript:history.back()';
+//				$msg = __('Previous page','foodiepro');
+//		endif;
 		
 		$output = '<ul class="menu"> <li> <a class="back-link" href="' . $url . '">' . $msg . '</a> </li> </menu>';
 		return $output;

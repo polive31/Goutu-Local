@@ -101,7 +101,7 @@ class Custom_Recipe_Templates {
 			);
 		}
 		else {
-			$css_enqueue='';
+			$css_enqueue=array();
 		}
 		return $css_enqueue;
 	}
@@ -197,7 +197,7 @@ class Custom_Recipe_Templates {
 			}
 			
 			else {
-				$js_enqueue='';
+				$js_enqueue=array();
 			}
 		  
 		return $js_enqueue;

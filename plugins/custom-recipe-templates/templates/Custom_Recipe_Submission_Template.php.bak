@@ -34,8 +34,8 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 		        </div>	
 		
         <div class="recipe-image-container">
-<?php $has_image = $recipe->image_ID() > 0 ? true : false; ?>
-<?php if ( !current_user_can( 'upload_files' ) || WPUltimateRecipe::option( 'user_submission_use_media_manager', '1' ) != '1' ) { ?>
+				<?php $has_image = $recipe->image_ID() > 0 ? true : false; ?>
+				<?php if ( !current_user_can( 'upload_files' ) || WPUltimateRecipe::option( 'user_submission_use_media_manager', '1' ) != '1' ) { ?>
             <p>
                 <label for="recipe_thumbnail"><?php _e( 'Featured image', 'foodiepro' ); ?><?php if( in_array( 'recipe_thumbnail', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label><br />
                 <?php if( $has_image ) { ?>
@@ -43,7 +43,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
                 <?php } ?>
                 <input class="recipe_thumbnail_image button" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail" />
             </p>
-<?php } else { ?>
+				<?php } else { ?>
             <p>
                 <input name="recipe_thumbnail" class="recipe_thumbnail_image" type="hidden" value="<?php echo $recipe->image_ID(); ?>" />
                 <input class="recipe_thumbnail_add_image button button<?php if($has_image) { echo ' wpurp-hide'; } ?>" rel="<?php echo $recipe->ID(); ?>" type="button" value="<?php _e( 'Add Featured Image', 'foodiepro' ); ?>" />
@@ -51,94 +51,96 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
                 <?php if( in_array( 'recipe_thumbnail', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?>
                 <br /><img src="<?php echo $recipe->image_url( 'thumbnail' ); ?>" class="recipe_thumbnail" />
             </p>
-<?php } ?>
+				<?php } ?>
         </div>
-               <div class="recipe-tags-container">
-            <p class="taxonomy-select-boxes">
-<?php
-        $select_fields = array();
-        $multiselect = WPUltimateRecipe::option( 'recipe_tags_user_submissions_multiselect', '1' ) == '1' ? true : false;
+        
+        <div class="recipe-tags-container">
+        	<div class="taxonomy-select-boxes">
+							<?php
+			        $select_fields = array();
+			        $multiselect = WPUltimateRecipe::option( 'recipe_tags_user_submissions_multiselect', '1' ) == '1' ? true : false;
 
-        $taxonomies = WPUltimateRecipe::get()->tags();
-        unset( $taxonomies['ingredient'] );
+			        $taxonomies = WPUltimateRecipe::get()->tags();
+			        unset( $taxonomies['ingredient'] );
 
-        $args = array(
-            'echo' => 0,
-            'orderby' => 'NAME',
-            'hide_empty' => 0,
-            'hierarchical' => 1,
-        );
+			        $args = array(
+			            'echo' => 0,
+			            'orderby' => 'NAME',
+			            'hide_empty' => 0,
+			            'hierarchical' => 1,
+			        );
 
-        $hide_tags = WPUltimateRecipe::option( 'user_submission_hide_tags', array() );
+			        $hide_tags = WPUltimateRecipe::option( 'user_submission_hide_tags', array() );
 
-        foreach( $taxonomies as $taxonomy => $options ) {
-            if( !in_array( $taxonomy, $hide_tags ) ) {
-                $args['show_option_none'] = $multiselect ? '' : $options['labels']['singular_name'];
-                $args['taxonomy'] = $taxonomy;
-                $args['name'] = 'recipe-' . $taxonomy;
+			        foreach( $taxonomies as $taxonomy => $options ) {
+			            if( !in_array( $taxonomy, $hide_tags ) ) {
+			                $args['show_option_none'] = $multiselect ? '' : $options['labels']['singular_name'];
+			                $args['taxonomy'] = $taxonomy;
+			                $args['name'] = 'recipe-' . $taxonomy;
 
-                $select_fields[$taxonomy] = array(
-                    'label' => $options['labels']['singular_name'],
-                    'dropdown' => wp_dropdown_categories( $args ),
-                );
-            }
-        }
+			                $select_fields[$taxonomy] = array(
+			                    'label' => $options['labels']['singular_name'],
+			                    'dropdown' => wp_dropdown_categories( $args ),
+			                );
+			            }
+			        }
 
-        if( WPUltimateRecipe::option( 'recipe_tags_user_submissions_categories', '0' ) == '1' ) {
-            $args['show_option_none'] = $multiselect ? '' : __( 'Category', 'foodiepro' );
-            $args['taxonomy'] = 'category';
-            $args['name'] = 'recipe-category';
+			        if( WPUltimateRecipe::option( 'recipe_tags_user_submissions_categories', '0' ) == '1' ) {
+			            $args['show_option_none'] = $multiselect ? '' : __( 'Category', 'foodiepro' );
+			            $args['taxonomy'] = 'category';
+			            $args['name'] = 'recipe-category';
 
-            $exclude = WPUltimateRecipe::option( 'user_submission_hide_category_terms', array() );
-            $args['exclude'] = implode( ',', $exclude );
+			            $exclude = WPUltimateRecipe::option( 'user_submission_hide_category_terms', array() );
+			            $args['exclude'] = implode( ',', $exclude );
 
-            $select_fields['category'] = array(
-                'label' => __( 'Category', 'foodiepro' ),
-                'dropdown' => wp_dropdown_categories( $args ),
-            );
-        }
+			            $select_fields['category'] = array(
+			                'label' => __( 'Category', 'foodiepro' ),
+			                'dropdown' => wp_dropdown_categories( $args ),
+			            );
+			        }
 
-        if( WPUltimateRecipe::option( 'recipe_tags_user_submissions_tags', '0' ) == '1' ) {
-            $args['show_option_none'] = $multiselect ? '' : __( 'Tag', 'foodiepro' );
-            $args['taxonomy'] = 'post_tag';
-            $args['name'] = 'recipe-post_tag';
+			        if( WPUltimateRecipe::option( 'recipe_tags_user_submissions_tags', '0' ) == '1' ) {
+			            $args['show_option_none'] = $multiselect ? '' : __( 'Tag', 'foodiepro' );
+			            $args['taxonomy'] = 'post_tag';
+			            $args['name'] = 'recipe-post_tag';
 
-            $exclude = WPUltimateRecipe::option( 'user_submission_hide_tag_terms', array() );
-            $args['exclude'] = implode( ',', $exclude );
+			            $exclude = WPUltimateRecipe::option( 'user_submission_hide_tag_terms', array() );
+			            $args['exclude'] = implode( ',', $exclude );
 
-            $select_fields['post_tag'] = array(
-                'label' => __( 'Tag', 'foodiepro' ),
-                'dropdown' => wp_dropdown_categories( $args ),
-            );
-        }
+			            $select_fields['post_tag'] = array(
+			                'label' => __( 'Tag', 'foodiepro' ),
+			                'dropdown' => wp_dropdown_categories( $args ),
+			            );
+			        }
 
-        foreach( $select_fields as $taxonomy => $select_field ) {
+			        foreach( $select_fields as $taxonomy => $select_field ) {
 
-            // Multiselect
-            if( $multiselect ) {
-                preg_match( "/<select[^>]+>/i", $select_field['dropdown'], $select_field_match );
-                if( isset( $select_field_match[0] ) ) {
-                    $select_multiple = preg_replace( "/name='([^']+)/i", "$0[]' data-placeholder='".$select_field['label']."' multiple='multiple", $select_field_match[0] );
-                    $select_field['dropdown'] = str_ireplace( $select_field_match[0], $select_multiple, $select_field['dropdown'] );
-                }
-            }
+			            // Multiselect
+			            if( $multiselect ) {
+			                preg_match( "/<select[^>]+>/i", $select_field['dropdown'], $select_field_match );
+			                if( isset( $select_field_match[0] ) ) {
+			                    $select_multiple = preg_replace( "/name='([^']+)/i", "$0[]' data-placeholder='".$select_field['label']."' multiple='multiple", $select_field_match[0] );
+			                    $select_field['dropdown'] = str_ireplace( $select_field_match[0], $select_multiple, $select_field['dropdown'] );
+			                }
+			            }
 
-            // Selected terms
-            $terms = wp_get_post_terms( $recipe->ID(), $taxonomy, array( 'fields' => 'ids' ) );
-            foreach( $terms as $term_id ) {
-                $select_field['dropdown'] = str_replace( ' value="'. $term_id .'"', ' value="'. $term_id .'" selected="selected"', $select_field['dropdown'] );
-            }
+			            // Selected terms
+			            $terms = wp_get_post_terms( $recipe->ID(), $taxonomy, array( 'fields' => 'ids' ) );
+			            foreach( $terms as $term_id ) {
+			                $select_field['dropdown'] = str_replace( ' value="'. $term_id .'"', ' value="'. $term_id .'" selected="selected"', $select_field['dropdown'] );
+			            }
 
-            echo $select_field['dropdown'];
-        }
-?>
-            </p>
-        </div>
-<?php
+			            echo $select_field['dropdown'];
+			        }
+							?>
+          </div> <!-- taxonomy-select-boxes -->
+        </div> <!-- recipe-tags-container -->
+        
+				<?php
         $wpurp_user_submission = true;
         echo $this->output_recipe_form( $recipe, $required_fields );
-?>
-
+				?>
+				<div class="align-right submit-buttons">					
         <p align="right">
             <?php if( WPUltimateRecipe::option( 'user_submission_preview_button', '1') == '1' ) { ?>
             <input type="submit" value="<?php _e( 'Preview', 'foodiepro' ); ?>" id="preview" name="preview" />
@@ -147,10 +149,10 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
         </p>
         <input type="hidden" name="action" value="post" />
         <?php echo wp_nonce_field( 'recipe_submit', 'submitrecipe' ); ?>
+				</div> <!-- submit-buttons -->
+
     </form>
-</div>
-
-
+		</div> <!--  #custom_recipe_submission_form -->
 
 		<?php 
 		$html = ob_get_contents();
@@ -598,23 +600,25 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	
 	private function output_instruction($instruction, $index, $new) {
     ?>
-    <tr class="instruction">
-        <td class="sort-handle"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16"></td>
-        <td>
-            <textarea name="recipe_instructions[<?php echo $index; ?>][description]" rows="4" id="ingredient_description_<?php echo $index; ?>"><?php echo $instruction['description']; ?></textarea>
+    <div class="instruction">
+        <div class="sort-handle"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16"></td>
+        <div>
+            <textarea name="recipe_instructions[<?php echo $index; ?>][description]" rows="4" id="ingredient_description_<?php echo $index; ?>">
+            	<?php if (!$new) {echo $instruction['description'];} ?>
+            </textarea>
             <input type="hidden" name="recipe_instructions[<?php echo $index; ?>][group]"    class="instructions_group" id="instruction_group_<?php echo $index; ?>" value="<?php echo esc_attr( $instruction['group'] ); ?>" />
-        <?php if ( isset( $wpurp_user_submission ) && ( !current_user_can( 'upload_files' ) || WPUltimateRecipe::option( 'user_submission_use_media_manager', '1' ) != '1' ) ) { ?>
+        		<?php if ( isset( $wpurp_user_submission ) && ( !current_user_can( 'upload_files' ) || WPUltimateRecipe::option( 'user_submission_use_media_manager', '1' ) != '1' ) ) { ?>
             <?php _e( 'Instruction Step Image', 'wp-ultimate-recipe' ); ?>:<br/>
             <?php if( $has_image ) { ?>
             <img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
-            <input type="hidden" value="<?php echo $instruction['image']; ?>" name="recipe_instructions[<?php echo $i; ?>][image]" /><br/>
+            <input type="hidden" value="<?php echo $instruction['image']; ?>" name="recipe_instructions[<?php echo $index; ?>][image]" /><br/>
             <?php } ?>
-            <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail_<?php echo $i; ?>" />
+            <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail_<?php echo $index; ?>" />
         </td>
         <?php } else { ?>
         </td>
         <td>
-            <input name="recipe_instructions[<?php echo $i; ?>][image]" class="recipe_instructions_image" type="hidden" value="<?php echo $instruction['image']; ?>" />
+            <input name="recipe_instructions[<?php echo $index; ?>][image]" class="recipe_instructions_image" type="hidden" value="<?php echo $instruction['image']; ?>" />
             <input class="recipe_instructions_add_image button<?php if($has_image) { echo ' wpurp-hide'; } ?>" rel="<?php echo $recipe->ID(); ?>" type="button" value="<?php _e( 'Add Image', 'wp-ultimate-recipe' ) ?>" />
             <input class="recipe_instructions_remove_image button<?php if(!$has_image) { echo ' wpurp-hide'; } ?>" type="button" value="<?php _e( 'Remove Image', 'wp-ultimate-recipe' ) ?>" />
             <br /><img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />

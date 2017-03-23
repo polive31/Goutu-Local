@@ -310,7 +310,7 @@ add_action('wp_logout','go_home');
 /* Prevent new users (not yet approved) to log in */
 function block_new_users ($user) {
 		$role=$user->roles[0];
-    if ( $role=='pending' )
+    if ( empty($role) || $role=='pending' )
     	return new WP_Error( 'user_not_approved', __( '<strong>ERROR</strong>: User pending ', 'foodiepro') . '<a href="' . get_page_link(10066) . '"> ' . __('approval', 'foodiepro') . ' </a>');
 		else
 			return $user;

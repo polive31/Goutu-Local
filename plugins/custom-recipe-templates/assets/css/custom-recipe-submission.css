@@ -67,6 +67,19 @@ tr.spacer {
 
 .ingredient-item#controls {
 	width:25px;
+	padding-top:2px;
+}
+
+.sub-controls {
+	font-size:20px;
+}
+
+.sub-controls#move {
+	float:left;
+}
+
+.sub-controls#delete {
+	float:right;
 }
 
 .ingredient-item#name {

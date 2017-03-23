@@ -177,7 +177,7 @@ function display_toggle_icon($atts) {
 				if ( is_user_logged_in() )
 					$html = bp_core_get_userlink( $user_id );
 				else
-					$html ='<a class="dashicons-profile toggle-menu" href="' . get_page_link(7013) . '"></a>';
+					$html='<a class="dashicons-profile toggle-menu" href="' . get_page_link(7013) . '"></a>';
 			break;
 			
 			case "friends":
@@ -187,7 +187,7 @@ function display_toggle_icon($atts) {
 						$count=NULL;
 					else 
 						$count = '<span class="bp_counter" id="friendships">' . $count . '</span>';
-					$html = '<a class="fa-friendships toggle-menu" href="' . bp_core_get_user_domain( $user_id ) . 'friends/requests/">' . $count . '</a>';
+					$html='<a class="fa-friendships toggle-menu" href="' . bp_core_get_user_domain( $user_id ) . 'friends/requests/">' . $count . '</a>';
 					/* Variant : only display latest friendship requests */
 					//$html='<a class="fa-friendships toggle-menu" href="' . bp_core_get_user_domain( $user_id ) . '/friends/requests/?new">' . $count . '</a>';
 				}

@@ -88,17 +88,21 @@ class Custom_Recipe_Templates {
 		          ),
 			);		
 		}
-		elseif ( is_page( 'nouvelle-recette', 'mes-recettes' ) ) { // Menu page
-		  $css_enqueue=array(
-				array(
-            'url' => self::$_PluginPath . 'assets/css/custom-recipe-submission.css',
-            'public' => true,
-        ),
-				array(
-            'url' => WPUltimateRecipe::get()->coreUrl . '/vendor/select2/select2.css',
-            'public' => true,
-        ),
-			);
+		//elseif ( is_page('nouvelle-recette') || is_page( 'mes-recettes' ) ) { // Menu page
+		//elseif ( is_page( array('nouvelle-recette','mes-recettes' ) ) ) { // Menu page
+		elseif ( is_page( ['nouvelle-recette','mes-recettes'] ) ) { // Menu page
+				
+				PC::debug( 'In mes-recettes enqueue' );
+			  $css_enqueue=array(
+					array(
+	            'url' => self::$_PluginPath . 'assets/css/custom-recipe-submission.css',
+	            'public' => true,
+	        ),
+					array(
+	            'url' => WPUltimateRecipe::get()->coreUrl . '/vendor/select2/select2.css',
+	            'public' => true,
+	        ),
+				);
 		}
 		else {
 			$css_enqueue=array();
@@ -192,7 +196,8 @@ class Custom_Recipe_Templates {
 		            ),
 		    );	
 			}
-			elseif (is_page( 'nouvelle-recette', 'mes-recettes') ) {
+			elseif (is_page( ['nouvelle-recette', 'mes-recettes'] ) ) {
+				PC::debug( 'In mes-recettes js enqueue' );
 				$js_enqueue=$js_enqueue;
 			}
 			

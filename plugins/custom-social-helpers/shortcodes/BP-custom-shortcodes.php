@@ -170,6 +170,7 @@ function display_toggle_icon($atts) {
 				), $atts );
 	
 		$user_id = bp_loggedin_user_id(); 
+		$html='';
 		
 		switch ($a['item']) {
 			

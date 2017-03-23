@@ -67,6 +67,12 @@ tr.spacer {
 
 .ingredient-item#controls {
 	width:25px;
+	padding-top:2px;
+}
+
+.sub-controls {
+	font-size:20px;
+	float:left;
 }
 
 .ingredient-item#name {
@@ -128,7 +134,9 @@ tr.spacer {
 		width:20%;
 	}
 	
-	.ingredient-item input {
+	.ingredient-item input,
+	.ingredient-item select,
+	.ingredient-item textarea {
 		float:left;
 		width:80%;
 		margin:0;

@@ -15,8 +15,8 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	public function custom_submission_form_template( $form, $recipe ) {
 
 		$post_ID = get_the_ID();
-		PC::debug( array('Is single'=>is_single() ) );
-		PC::debug( array('Is single(recipe)'=>is_single('recipe') ) );
+		PC::debug( 'In Custom Submission Form Template' );
+		PC::debug( array('$recipe'=>$recipe ) );
 		//PC::debug( array('Get post action'=> get_current_screen() ) );
 		$required_fields = WPUltimateRecipe::option( 'user_submission_required_fields', array() );
 		$this->class_hydrate($recipe, $required_fields);
@@ -230,7 +230,6 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 		        </div> <!-- header -->
 		        
 		        <div class="ingredients-body">
-		        		        
 			        <div class="ingredient-group-stub">
 		            <div><strong><?php _e( 'Group', 'foodiepro' ); ?>:</strong></div>
 		            <div><input type="text" class="ingredient-group-label" /></div>
@@ -239,9 +238,10 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 			    
 			        <!-- Output existing ingredients (when editing existing recipe) -->
 			   			<?php $i = $this->output_existing_ingredients($ingredients); ?>
+			        <!-- Output single ingredient input -->
 			   			<?php $this->output_ingredient('', $i, true); ?>
-
 		        </div> <!-- body -->
+		        
 		    </div> <!-- recipe-ingredients-form -->
 		    
 		    <div class="section" id="add-item-box">
@@ -260,70 +260,55 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 		<div class="recipe-instructions-container">
 		    <h4><?php _e( 'Instructions', 'wp-ultimate-recipe' ); ?></h4>
 		    <?php $instructions = $recipe->instructions(); ?>
-		    <table id="recipe-instructions">
-		        <thead>
-		        <tr class="instruction-group instruction-group-first">
-		            <td colspan="2">
-		                <strong><?php _e( 'Group', 'wp-ultimate-recipe' ); ?>:</strong>
-		                <span class="instruction-groups-disabled"><?php echo __( 'Main Instructions', 'wp-ultimate-recipe' ) . ' ' . __( '(this label is not shown)', 'wp-ultimate-recipe' ); ?></span>
-		                <?php
-		                $previous_group = '';
-		                if( isset( $instructions[0] ) && isset( $instructions[0]['group'] ) ) {
-		                    $previous_group = $instructions[0]['group'];
-		                }
-		                ?>
-		                <span class="instruction-groups-enabled"><input type="text" class="instruction-group-label" value="<?php echo esc_attr( $previous_group ); ?>"/></span>
-		            </td>
-		        </tr>
-		        </thead>
-		        <tbody>
-		        <tr class="instruction-group-stub">
-		            <td colspan="2">
-		                <strong><?php _e( 'Group', 'wp-ultimate-recipe' ); ?>:</strong>
-		                <input type="text" class="instruction-group-label" />
-		            </td>
-		            <td class="center-column"><span class="instruction-group-delete"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16"></span></td>
-		        </tr>
-		    <?php
-		    $i = 0;
+		    
+		    <div class "table" id="recipe-instructions">
+		        <div class "head">
+			        <div class="instruction-group instruction-group-first">
+			            <div>
+			                <strong><?php _e( 'Group manuel', 'wp-ultimate-recipe' ); ?>:</strong>
+			                <span class="instruction-groups-disabled"><?php echo __( 'Main Instructions', 'wp-ultimate-recipe' ) . ' ' . __( '(this label is not shown)', 'wp-ultimate-recipe' ); ?></span>
+			                <?php
+			                $previous_group = '';
+			                if( isset( $instructions[0] ) && isset( $instructions[0]['group'] ) ) {
+			                    $previous_group = $instructions[0]['group'];
+			                }
+			                ?>
+			                <span class="instruction-groups-enabled"><input type="text" class="instruction-group-label" value="<?php echo esc_attr( $previous_group ); ?>"/></span>
+			            </div>
+			        </div> <!-- instruction-group instruction-group-first -->
+		        </div> <!-- head -->
+		        
+		        <div class="body">
+		        	
+			        <div class="instruction-group-stub">
+			            <div>
+			                <strong><?php _e( 'Group stub', 'wp-ultimate-recipe' ); ?>:</strong>
+			                <input type="text" class="instruction-group-label" />
+			            </div>
+									<?php $this->output_delete_button('instruction-group','');?>
+			        </div> <!-- instruction-group-stub -->
 
+					    <?php
+							$i = $this->output_existing_instructions($intructions);					
+							$this->output_instruction('',$i, true);
+							?>
+							  
+		        </div> <!-- body -->
+		        
+		    </div> <!-- table -->
 
-
-		    $image = WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
-		    ?>
-		            <tr class="instruction">
-		                <td class="sort-handle"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16"></td>
-		                <td>
-		                    <textarea name="recipe_instructions[<?php echo $i; ?>][description]" rows="4" id="ingredient_description_<?php echo $i; ?>"></textarea>
-		                    <input type="hidden" name="recipe_instructions[<?php echo $i; ?>][group]"    class="instructions_group" id="instruction_group_<?php echo $i; ?>" value="" />
-		                    <?php if ( isset( $wpurp_user_submission ) && ( !current_user_can( 'upload_files' ) || WPUltimateRecipe::option( 'user_submission_use_media_manager', '1' ) != '1' ) ) { ?>
-		                        <?php _e( 'Instruction Step Image', 'wp-ultimate-recipe' ); ?>:<br/>
-		                        <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail_<?php echo $i; ?>" />
-		                        </td>
-		                    <?php } else { ?>
-		                </td>
-		                <td>
-
-		                    <input name="recipe_instructions[<?php echo $i; ?>][image]" class="recipe_instructions_image" type="hidden" value="" />
-		                    <input class="recipe_instructions_add_image button" rel="<?php echo $recipe->ID(); ?>" type="button" value="<?php _e('Add Image', 'wp-ultimate-recipe' ) ?>" />
-		                    <input class="recipe_instructions_remove_image button wpurp-hide" type="button" value="<?php _e( 'Remove Image', 'wp-ultimate-recipe' ) ?>" />
-		                    <br /><img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
-		                    <?php } ?>
-		                </td>
-		                <td><span class="instructions-delete"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16"></span></td>
-		            </tr>
-		        </tbody>
-		    </table>
-
-		    <div id="ingredients-add-box">
+		    <div id="add-item-box">
 		        <a href="#" id="instructions-add"><?php _e( 'Add an instruction', 'wp-ultimate-recipe' ); ?></a>
 		    </div>
-		    <div id="ingredients-add-group-box">
+		    
+		    <div id="add-group-box">
 		        <a href="#" id="instructions-add-group"><?php _e( 'Add an instruction group', 'wp-ultimate-recipe' ); ?></a>
 		    </div>
+		    
 		    <div class="recipe-form-notes">
 		        <?php _e( "<strong>Use the TAB key</strong> while adding instructions, it will automatically create new fields. <strong>Don't worry about empty lines</strong>, these will be ignored.", 'wp-ultimate-recipe' ); ?>
 		    </div>
+		    
 		</div> <!-- recipe-instructions-container -->
 
 		    <h4><?php _e( 'Instructions', 'foodiepro' ); ?></h4>
@@ -448,20 +433,21 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 		                <div><span class="instructions-delete"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16"></span></div>
 		   	<div> <!-- instruction -->
 		            
-				<div class="recipe-notes-container">
-				    <h4><?php _e( 'Recipe notes', 'foodiepro' ) ?></h4>
-				    <?php
-				    $options = array(
-				        'textarea_rows' => 7
-				    );
+		<div class="recipe-notes-container">
+		    <h4><?php _e( 'Recipe notes', 'foodiepro' ) ?></h4>
+		    <?php
+		    $options = array(
+		        'textarea_rows' => 7
+		    );
 
-				    if( isset( $wpurp_user_submission ) ) {
-				        $options['media_buttons'] = false;
-				    }
+		    if( isset( $wpurp_user_submission ) ) {
+		        $options['media_buttons'] = false;
+		    }
 
-				    wp_editor( $recipe->notes(), 'recipe_notes',  $options );
-				    ?>
-				</div>
+		    wp_editor( $recipe->notes(), 'recipe_notes',  $options );
+		    ?>
+		</div> <!-- recipe-notes-container -->
+
 				
 		<?php
 		$custom_fields_addon = WPUltimateRecipe::addon( 'custom-fields' );
@@ -498,7 +484,8 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 
 	}
 	
-	public function output_recipe_item($class, $args) {?>
+	public function output_recipe_item($class, $args) {
+		?>
 		
       <tr class="recipe-general-form-<?php echo $class?>">
         <div class="recipe-general-form-label"><label for="recipe_<?php echo $class?>"><?php echo $args['title'] ?><?php if( $args['required'] ) echo '<span class="wpurp-required">*</span>'; ?></label></div>
@@ -518,47 +505,39 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	
 	private function output_existing_instructions($instructions) {
 			
-				$i=0;
-		    if( $instructions )
-		    {
-		        foreach( $instructions as $instruction ) {
-		            if( !isset( $instruction['group'] ) ) {
-		                $instruction['group'] = '';
-		            }
-
-		            if( $instruction['group'] != $previous_group )
-		            { ?>
-		                <tr class="instruction-group">
-		                    <td colspan="2">
-		                        <strong><?php _e( 'Group', 'wp-ultimate-recipe' ); ?>:</strong>
-		                        <input type="text" class="instruction-group-label" value="<?php echo esc_attr( $instruction['group'] ); ?>"/>
-		                    </td>
-		                    <td class="center-column"><span class="instruction-group-delete"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16"></span></td>
-		                </tr>
-		    <?php
-		                $previous_group = $instruction['group'];
-		            }
-
-		            if( !isset( $instruction['image'] ) ) {
-		                $instruction['image'] = '';
-		            }
-
-		            if( $instruction['image'] )
-		            {
-		                $image = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
-		                $image = $image[0];
-		                $has_image = true;
-		            }
-		            else
-		            {
-		                $image = WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
-		                $has_image = false;
-		            }
-								$this->output_instruction($instructions,$i,false);
-		            $i++;
-		        }
-
-		    }		
+		$i=0;
+		$previous_group = '';
+    if( $instructions ) {
+        foreach( $instructions as $instruction ) {    		
+						$previous_group = $this->output_group( 'instruction', $instruction, $previous_group );	
+						$this->output_instruction($instruction,$i,false);
+            $i++;
+        }
+    }		
+    
+		return $i;
+	}
+	
+	private function output_group($type, $item, $previous_group) {
+		// $type = instruction, ingredient
+		// $item = $instruction or $ingredient
+    if( !isset( $item['group'] ) ) {
+    	$item['group'] = '';
+    	$previous_group = '';
+    }
+    if( $item['group'] != $previous_group )
+    { 	?>
+        <div class="<?php echo $type?>-group">
+            <div>
+                <strong><?php _e( 'Group', 'wp-ultimate-recipe' ); ?>:</strong>
+                <input type="text" class="<?php echo $type ?>-group-label" value="<?php echo esc_attr( $instruction['group'] ); ?>"/>
+            </div>
+        		<?php $this->output_delete_button( $type . '-group',''); ?>
+        </div> <!-- instruction/ingredieny-group -->
+				<?php
+        $previous_group = $instruction['group'];
+    }
+    return $previous_group;
 	}
 	
 	private function output_existing_ingredients($ingredients) {
@@ -566,82 +545,79 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	  $i = 0;
 	  if( $ingredients ) {
       foreach( $ingredients as $ingredient ) {
-
-        if( WPUltimateRecipe::option( 'ignore_ingredient_ids', '' ) != '1' && isset( $ingredient['ingredient_id'] ) ) {
-            $term = get_term( $ingredient['ingredient_id'], 'ingredient' );
-            if ( $term !== null && !is_wp_error( $term ) ) {
-                $ingredient['ingredient'] = $term->name;
-            }
-        }
-
-        if( !isset( $ingredient['group'] ) ) {
-            $ingredient['group'] = '';
-        }
-
-        if( $ingredient['group'] != $previous_group ) { ?>
-            <div class="ingredient-group">
-                <div><strong><?php _e( 'Group', 'foodiepro' ); ?>:</strong></div>
-                <div colspan="2"><input type="text" class="ingredient-group-label" value="<?php echo esc_attr( $ingredient['group'] ); ?>" /></div>
-                <div class="center-column"><span class="ingredient-group-delete"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16"></span></div>
-            </div>
-            <?php
-            $previous_group = $ingredient['group'];
-        }
-        
+				$previous_group = $this->output_group('ingredient',$ingredient,$previous_group);
         $this->output_ingredient($ingredient, $i, false);
-
         $i++;
-        
       }
 		}
-		
 		return $i;
-		
 	}
 	
 	private function output_instruction($instruction, $index, $new) {
+		
+    if( !isset( $instruction['image'] ) ) {
+      $instruction['image'] = '';
+    }
+
+    if( $instruction['image'] )
+    {
+      $image = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
+      $image = $image[0];
+      $has_image = true;
+    }
+    else
+    {
+      $image = WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
+      $has_image = false;
+    }
+
     ?>
-    <div class="instruction">
-        <div class="sort-handle"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16"></td>
-        <div>
-            <textarea name="recipe_instructions[<?php echo $index; ?>][description]" rows="4" id="ingredient_description_<?php echo $index; ?>">
-            	<?php if (!$new) {echo $instruction['description'];} ?>
-            </textarea>
-            <input type="hidden" name="recipe_instructions[<?php echo $index; ?>][group]"    class="instructions_group" id="instruction_group_<?php echo $index; ?>" value="<?php echo esc_attr( $instruction['group'] ); ?>" />
-        		<?php if ( isset( $wpurp_user_submission ) && ( !current_user_can( 'upload_files' ) || WPUltimateRecipe::option( 'user_submission_use_media_manager', '1' ) != '1' ) ) { ?>
-            <?php _e( 'Instruction Step Image', 'wp-ultimate-recipe' ); ?>:<br/>
-            <?php if( $has_image ) { ?>
+    
+    <div class="section" id="instruction">
+    	
+    	<div class="instruction-item" id="controls">
+				<?php $this->output_move_button('instruction',''); ?>
+    	</div> <!-- instruction_item#controls -->
+    
+    	<div class="instruction-item" id="text">
+        <textarea name="recipe_instructions[<?php echo $index; ?>][description]" rows="4" id="ingredient_description_<?php echo $index; ?>">
+        	<?php if (!$new) {echo $instruction['description'];} ?>
+        </textarea>
+        <input type="hidden" name="recipe_instructions[<?php echo $index; ?>][group]"    class="instructions_group" id="instruction_group_<?php echo $index; ?>" value="<?php echo esc_attr( $instruction['group'] ); ?>" />
+    	</div> <!-- instruction_item#text -->
+    	
+    	<div class="instruction-item" id="image">
+    		<?php if ( isset( $wpurp_user_submission ) && ( !current_user_can( 'upload_files' ) || WPUltimateRecipe::option( 'user_submission_use_media_manager', '1' ) != '1' ) ) { ?>
+        	<?php _e( 'Instruction Step Image', 'wp-ultimate-recipe' ); ?>:<br/>
+          <?php if( !$new && $has_image ) { ?>
             <img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
             <input type="hidden" value="<?php echo $instruction['image']; ?>" name="recipe_instructions[<?php echo $index; ?>][image]" /><br/>
-            <?php } ?>
-            <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail_<?php echo $index; ?>" />
-        </td>
-        <?php } else { ?>
-        </td>
-        <td>
+          <?php } ?>
+        	<input class="recipe_instructions_image button" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail_<?php echo $index; ?>" />
+    		<?php } else {?>
             <input name="recipe_instructions[<?php echo $index; ?>][image]" class="recipe_instructions_image" type="hidden" value="<?php echo $instruction['image']; ?>" />
-            <input class="recipe_instructions_add_image button<?php if($has_image) { echo ' wpurp-hide'; } ?>" rel="<?php echo $recipe->ID(); ?>" type="button" value="<?php _e( 'Add Image', 'wp-ultimate-recipe' ) ?>" />
-            <input class="recipe_instructions_remove_image button<?php if(!$has_image) { echo ' wpurp-hide'; } ?>" type="button" value="<?php _e( 'Remove Image', 'wp-ultimate-recipe' ) ?>" />
+            <input class="recipe_instructions_add_image button<?php echo $has_image?' wpurp-hide':''?>" rel="<?php echo $recipe->ID(); ?>" type="button" value="<?php _e( 'Add Image', 'wp-ultimate-recipe' ) ?>" />
+            <input class="recipe_instructions_remove_image button<?php echo $has_image?' wpurp-hide':''?>" type="button" value="<?php _e( 'Remove Image', 'wp-ultimate-recipe' ) ?>" />
             <br /><img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
-            <?php } ?>
-        </td>
-        <td><span class="instructions-delete"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16"></span></td>
-    </tr>
-    <?php
+        <?php } ?>
+    	</div> <!-- instruction_item#image -->
+      	
+    	<div class="instruction-item" id="controls">
+      	<?php $this->output_delete_button('instruction','');?>
+    	</div> <!-- instruction_item#controls -->
+    	
+  	</div> <!-- section#instruction -->
+  <?php
 	}
 		
-	private function output_ingredient($ingredient, $index, $new) {?>
+	private function output_ingredient($ingredient, $index, $new) {
+		?>
 			
     <div class="section" id="ingredient">
   		
-  		<div class="ingredient-item" id="controls">
-  			<div class="sort-handle"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16"></div>
-  			<div class="mobile"><span class="ingredients-delete"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16"></span></div>
-  		</div> <!-- ingredient-item#controls -->
-  		
     	<div class="ingredient-item" id="name">
+  			<?php $this->output_move_button( 'ingredient', '' );?>
   			<div class="mobile"><?php _e( 'Ingredient', 'foodiepro' ); ?> <span class="wpurp-required">(<?php _e( 'required', 'foodiepro' ); ?>)</span></div>
-  			
   			<?php if( isset( $wpurp_user_submission ) && WPUltimateRecipe::option( 'user_submission_ingredient_list', '0' ) == '1' ) { 
   				output_ingredients_list($index);
   			}
@@ -687,19 +663,52 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
         ></textarea> <!-- IMPORTANT : always put </textarea> on the same line as the <textarea> tag otherwise placeholder won't appear -->
     	</div> <!-- ingredient-item#notes -->
       
-	    <input type="hidden" 
-	    	name="recipe_ingredients[<?php echo $index; ?>][group]" 
-	    	class="ingredients_group" id="ingredient_group_<?php echo $index; ?>"
-    		value="<?php if (! $new) {echo esc_attr( $ingredient['group'] ); } ?>" 
-	    />
+      <div class="ingredient-item">
+		    <input type="hidden" 
+		    	name="recipe_ingredients[<?php echo $index; ?>][group]" 
+		    	class="ingredients_group" id="ingredient_group_<?php echo $index; ?>"
+	    		value="<?php if (! $new) {echo esc_attr( $ingredient['group'] ); } ?>" 
+		    />
+    	</div> 
       
-      <div class="ingredient-item" id="controls">
-      	<div class="screen"><span class="ingredients-delete"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16"></span></div>
-      </div>
-	  
-	  </div> <!-- Ingredient -->
+			<div class="ingredient-item" id="controls">
+      	<?php $this->output_delete_button('ingredient', ''); ?>
+	  	</div> <!-- ingredient-item#controls -->
+	  	
+	  </div> <!-- Section#Ingredient -->
 	  
 	<?php
+	}
+	
+	private function output_delete_button($item, $display) {
+		// $item : instruction, instruction-group, ingredient, ingredient-group
+		// $display : screen, mobile, ''
+		
+		if ($item=='ingredient') $title= __('Delete ingredient','foodiepro');
+		elseif ($item=='instruction') $title= __('Delete instruction','foodiepro');
+		elseif ($item=='instruction-group') $title= __('Delete instruction group','foodiepro');
+		elseif ($item=='ingredient-group') $title= __('Delete ingredient group','foodiepro');
+		
+		?>
+		<div class="submit-item sub-controls <?php echo $display?>" id="delete" title="<?php echo $title?>">
+    	<span class="fa-stack <?php echo $item?>-delete"><i class="fa fa-trash-o"></i>
+    	</span>
+    </div>
+		<?php 
+	}
+	
+	private function output_move_button($item, $display) {
+	
+		if ($item=='ingredient') $title= __('Move ingredient','foodiepro');
+		elseif ($item=='instruction') $title= __('Move instruction','foodiepro');
+		
+		?>
+		<div class="sort-handle sub-controls <?php echo $display?>" id="move" title="<?php echo $title?>">
+			<span class="fa-stack"><i class="fa fa-sort-desc fa-stack-1x"></i><i class="fa fa-sort-asc fa-stack-1x"></i>
+			</span>	
+  	</div>
+  	<?php	
+  			
 	}
 	
 	private function output_ingredients_list($index) {?>

@@ -2,6 +2,9 @@
 ---------------------------------------------------------*/
 .screen {display:initial}
 .mobile {display:none}
+.headline {
+	width:100px;
+}
 
 
 /* Main
@@ -72,6 +75,7 @@ tr.spacer {
 
 .sub-controls {
 	font-size:20px;
+	width:25px;
 }
 
 .sub-controls#move {
@@ -135,17 +139,17 @@ tr.spacer {
 		width:100%;
 		padding:2px;
 	}
-	
+			
 	.ingredient-item .mobile {
 		float:left;
-		width:20%;
 	}
-	
+
 	.ingredient-item input,
 	.ingredient-item select,
 	.ingredient-item textarea {
 		float:left;
-		width:80%;
+		width:auto;
+		min-width:250px;
 		margin:0;
 	}
 	

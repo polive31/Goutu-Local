@@ -5,51 +5,54 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	
 	
 	private $recipe_items;
+	private $recipe;
 	
 	public function __construct() {
 		/* Custom submission form template */
 		add_filter( 'wpurp_user_submissions_form', array($this,'custom_submission_form_template'), 10, 2 );
-
+		$this->recipe = new WPURP_Recipe(0);
 	}
 
-	public function custom_submission_form_template( $form, $recipe ) {
+	public function custom_submission_form_template( $form, $current_recipe ) {
 
 		$post_ID = get_the_ID();
 		PC::debug( 'In Custom Submission Form Template' );
-		PC::debug( array('$recipe'=>$recipe ) );
 		//PC::debug( array('Get post action'=> get_current_screen() ) );
 		$required_fields = WPUltimateRecipe::option( 'user_submission_required_fields', array() );
-		$this->class_hydrate($recipe, $required_fields);
+		$this->recipe = $current_recipe;
+		PC::debug( array('$current_recipe'=>$current_recipe ) );
+		PC::debug( array('$this->recipe'=>$this->recipe ) );
+		$this->class_hydrate($required_fields);
 		
 		ob_start();?>
 		
 		<div id="custom_recipe_submission_form" class="postbox">
 		    <form id="new_recipe" name="new_recipe" method="post" action="" enctype="multipart/form-data">
-		        <input type="hidden" name="recipe_id" value="<?php echo $recipe->ID(); ?>" />
+		        <input type="hidden" name="recipe_id" value="<?php echo $this->recipe->ID(); ?>" />
 		        <div class="recipe-title-container">
 		            <p>
 		                <label for="recipe_title"><?php _e( 'Recipe title', 'foodiepro' ); ?><?php if( in_array( 'recipe_title_check', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label><br />
-		                <input type="text" id="recipe_title" value="<?php echo isset( $_POST['recipe_title'] ) ? $_POST['recipe_title'] : $recipe->title();  ?>" size="20" name="recipe_title" />
+		                <input type="text" id="recipe_title" value="<?php echo isset( $_POST['recipe_title'] ) ? $_POST['recipe_title'] : $this->recipe->title();  ?>" size="20" name="recipe_title" />
 		            </p>
 		        </div>	
 		
         <div class="recipe-image-container">
-				<?php $has_image = $recipe->image_ID() > 0 ? true : false; ?>
+				<?php $has_image = $this->recipe->image_ID() > 0 ? true : false; ?>
 				<?php if ( !current_user_can( 'upload_files' ) || WPUltimateRecipe::option( 'user_submission_use_media_manager', '1' ) != '1' ) { ?>
             <p>
                 <label for="recipe_thumbnail"><?php _e( 'Featured image', 'foodiepro' ); ?><?php if( in_array( 'recipe_thumbnail', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label><br />
                 <?php if( $has_image ) { ?>
-                <img src="<?php echo $recipe->image_url( 'thumbnail' ); ?>" class="recipe_thumbnail" /><br/>
+                <img src="<?php echo $this->recipe->image_url( 'thumbnail' ); ?>" class="recipe_thumbnail" /><br/>
                 <?php } ?>
                 <input class="recipe_thumbnail_image button" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail" />
             </p>
 				<?php } else { ?>
             <p>
-                <input name="recipe_thumbnail" class="recipe_thumbnail_image" type="hidden" value="<?php echo $recipe->image_ID(); ?>" />
-                <input class="recipe_thumbnail_add_image button button<?php if($has_image) { echo ' wpurp-hide'; } ?>" rel="<?php echo $recipe->ID(); ?>" type="button" value="<?php _e( 'Add Featured Image', 'foodiepro' ); ?>" />
+                <input name="recipe_thumbnail" class="recipe_thumbnail_image" type="hidden" value="<?php echo $this->recipe->image_ID(); ?>" />
+                <input class="recipe_thumbnail_add_image button button<?php if($has_image) { echo ' wpurp-hide'; } ?>" rel="<?php echo $this->recipe->ID(); ?>" type="button" value="<?php _e( 'Add Featured Image', 'foodiepro' ); ?>" />
                 <input class="recipe_thumbnail_remove_image button<?php if(!$has_image) { echo ' wpurp-hide'; } ?>" type="button" value="<?php _e('Remove Featured Image', 'foodiepro' ); ?>" />
                 <?php if( in_array( 'recipe_thumbnail', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?>
-                <br /><img src="<?php echo $recipe->image_url( 'thumbnail' ); ?>" class="recipe_thumbnail" />
+                <br /><img src="<?php echo $this->recipe->image_url( 'thumbnail' ); ?>" class="recipe_thumbnail" />
             </p>
 				<?php } ?>
         </div>
@@ -125,7 +128,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 			            }
 
 			            // Selected terms
-			            $terms = wp_get_post_terms( $recipe->ID(), $taxonomy, array( 'fields' => 'ids' ) );
+			            $terms = wp_get_post_terms( $this->recipe->ID(), $taxonomy, array( 'fields' => 'ids' ) );
 			            foreach( $terms as $term_id ) {
 			                $select_field['dropdown'] = str_replace( ' value="'. $term_id .'"', ' value="'. $term_id .'" selected="selected"', $select_field['dropdown'] );
 			            }
@@ -138,7 +141,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
         
 				<?php
         $wpurp_user_submission = true;
-        echo $this->output_recipe_form( $recipe, $required_fields );
+        echo $this->output_recipe_form( $required_fields );
 				?>
 				
 				<div class="align-right submit-buttons">					
@@ -162,10 +165,10 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	  return $html;
 	}
 
-	private function output_recipe_form( $recipe, $required_fields ) {
+	private function output_recipe_form( $required_fields ) {
 
 		// Recipe should never be null. Construct just allows easy access to WPURP_Recipe functions in IDE.
-		if( is_null( $recipe ) ) $recipe = new WPURP_Recipe(0);
+		if( is_null( $this->recipe ) ) $this->recipe = new WPURP_Recipe(0);
 		if( !isset( $required_fields ) ) $required_fields = array();
 
 		ob_start();
@@ -187,7 +190,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
         <tr class="recipe-general-form-description">
             <div class="recipe-general-form-label"><label for="recipe_description"><?php _e('Description', 'foodiepro' ); ?><?php if( in_array( 'recipe_description', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></div>
             <div class="recipe-general-form-field">
-                <textarea name="recipe_description" id="recipe_description" rows="4"><?php echo esc_html( $recipe->description() ); ?></textarea>
+                <textarea name="recipe_description" id="recipe_description" rows="4"><?php echo esc_html( $this->recipe->description() ); ?></textarea>
             </div>
         </tr> 
         
@@ -200,7 +203,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 
 		<div class="recipe-ingredients-container">
 		    <h4><?php _e( 'Ingredients', 'foodiepro' ); ?></h4>
-		    <?php $ingredients = $recipe->ingredients(); ?>
+		    <?php $ingredients = $this->recipe->ingredients(); ?>
 		    
 		    <div class="recipe-ingredients-form">
 		        <div class="header">
@@ -219,13 +222,6 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 			            </div>
 			        </div> <!-- ingredient-group ingredient-group-first -->
 			        
-			        <div class="screen ingredients-header">
-		            <div class="ingredient-item" id="controls"></div>
-		            <div class="ingredient-item" id="name"><?php _e( 'Ingredient', 'foodiepro' ); ?> <span class="wpurp-required">(<?php _e( 'required', 'foodiepro' ); ?>)</span></div>
-		            <div class="ingredient-item" id="amount"><?php _e( 'Quantity', 'foodiepro' ); ?></div>
-		            <div class="ingredient-item" id="unit"><?php _e( 'Unit', 'foodiepro' ); ?></div>
-		            <div class="ingredient-item" id="notes"><?php _e( 'Notes', 'foodiepro' ); ?></div>
-			        </div> <!-- ingredient-field-header -->
 			        
 		        </div> <!-- header -->
 		        
@@ -259,7 +255,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 
 		<div class="recipe-instructions-container">
 		    <h4><?php _e( 'Instructions', 'wp-ultimate-recipe' ); ?></h4>
-		    <?php $instructions = $recipe->instructions(); ?>
+		    <?php $instructions = $this->recipe->instructions(); ?>
 		    
 		    <div class "table" id="recipe-instructions">
 		        <div class "head">
@@ -312,7 +308,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 		</div> <!-- recipe-instructions-container -->
 
 		    <h4><?php _e( 'Instructions', 'foodiepro' ); ?></h4>
-		    <?php $instructions = $recipe->instructions(); ?>
+		    <?php $instructions = $this->recipe->instructions(); ?>
 		    <div class="recipe-instructions-form">
 		    	
 		        <div class="head">
@@ -396,7 +392,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 		                </div>
 		                <div>
 		                    <input name="recipe_instructions[<?php echo $i; ?>][image]" class="recipe_instructions_image" type="hidden" value="<?php echo $instruction['image']; ?>" />
-		                    <input class="recipe_instructions_add_image button<?php if($has_image) { echo ' wpurp-hide'; } ?>" rel="<?php echo $recipe->ID(); ?>" type="button" value="<?php _e( 'Add Image', 'foodiepro' ) ?>" />
+		                    <input class="recipe_instructions_add_image button<?php if($has_image) { echo ' wpurp-hide'; } ?>" rel="<?php echo $this->recipe->ID(); ?>" type="button" value="<?php _e( 'Add Image', 'foodiepro' ) ?>" />
 		                    <input class="recipe_instructions_remove_image button<?php if(!$has_image) { echo ' wpurp-hide'; } ?>" type="button" value="<?php _e( 'Remove Image', 'foodiepro' ) ?>" />
 		                    <br /><img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
 		                    <?php } ?>
@@ -425,7 +421,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 		                <div>
 
 		                    <input name="recipe_instructions[<?php echo $i; ?>][image]" class="recipe_instructions_image" type="hidden" value="" />
-		                    <input class="recipe_instructions_add_image button" rel="<?php echo $recipe->ID(); ?>" type="button" value="<?php _e('Add Image', 'foodiepro' ) ?>" />
+		                    <input class="recipe_instructions_add_image button" rel="<?php echo $this->recipe->ID(); ?>" type="button" value="<?php _e('Add Image', 'foodiepro' ) ?>" />
 		                    <input class="recipe_instructions_remove_image button wpurp-hide" type="button" value="<?php _e( 'Remove Image', 'foodiepro' ) ?>" />
 		                    <br /><img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
 		                    <?php } ?>
@@ -444,7 +440,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 		        $options['media_buttons'] = false;
 		    }
 
-		    wp_editor( $recipe->notes(), 'recipe_notes',  $options );
+		    wp_editor( $this->recipe->notes(), 'recipe_notes',  $options );
 		    ?>
 		</div> <!-- recipe-notes-container -->
 
@@ -467,7 +463,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 		            <tr>
 		                <div class="recipe-general-form-label"><label for="<?php echo $key; ?>"><?php echo $custom_field['name']; ?><?php if( in_array( $key, $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></div>
 		                <div class="recipe-general-form-field">
-		                    <textarea name="<?php echo $key; ?>" id="<?php echo $key; ?>" rows="1"><?php echo $recipe->custom_field( $key ); ?></textarea>
+		                    <textarea name="<?php echo $key; ?>" id="<?php echo $key; ?>" rows="1"><?php echo $this->recipe->custom_field( $key ); ?></textarea>
 		                </div>
 		            </tr>
 		        <?php } ?>
@@ -541,6 +537,17 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	}
 	
 	private function output_existing_ingredients($ingredients) {
+		
+		
+		?>
+		<div class="screen section" id="ingredients-header">
+		<div class="ingredient-item" id="controls"></div>
+		<div class="ingredient-item" id="name"><?php _e( 'Ingredient', 'foodiepro' ); ?> <span class="wpurp-required">(<?php _e( 'required', 'foodiepro' ); ?>)</span></div>
+		<div class="ingredient-item" id="amount"><?php _e( 'Quantity', 'foodiepro' ); ?></div>
+		<div class="ingredient-item" id="unit"><?php _e( 'Unit', 'foodiepro' ); ?></div>
+		<div class="ingredient-item" id="notes"><?php _e( 'Notes', 'foodiepro' ); ?></div>
+		</div> <!-- ingredient-field-header -->
+		<?php
 
 	  $i = 0;
 	  if( $ingredients ) {
@@ -596,7 +603,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
         	<input class="recipe_instructions_image button" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail_<?php echo $index; ?>" />
     		<?php } else {?>
             <input name="recipe_instructions[<?php echo $index; ?>][image]" class="recipe_instructions_image" type="hidden" value="<?php echo $instruction['image']; ?>" />
-            <input class="recipe_instructions_add_image button<?php echo $has_image?' wpurp-hide':''?>" rel="<?php echo $recipe->ID(); ?>" type="button" value="<?php _e( 'Add Image', 'wp-ultimate-recipe' ) ?>" />
+            <input class="recipe_instructions_add_image button<?php echo $has_image?' wpurp-hide':''?>" rel="<?php echo $this->recipe->ID(); ?>" type="button" value="<?php _e( 'Add Image', 'wp-ultimate-recipe' ) ?>" />
             <input class="recipe_instructions_remove_image button<?php echo $has_image?' wpurp-hide':''?>" type="button" value="<?php _e( 'Remove Image', 'wp-ultimate-recipe' ) ?>" />
             <br /><img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
         <?php } ?>
@@ -614,10 +621,10 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 		?>
 			
     <div class="section" id="ingredient">
-  		
+    	
     	<div class="ingredient-item" id="name">
-  			<?php $this->output_move_button( 'ingredient', '' );?>
-  			<div class="mobile"><?php _e( 'Ingredient', 'foodiepro' ); ?> <span class="wpurp-required">(<?php _e( 'required', 'foodiepro' ); ?>)</span></div>
+  			<?php $this->output_move_button( 'ingredient', 'mobile' );?>
+  			<div class="headline mobile"><?php _e( 'Ingredient', 'foodiepro' ); ?> <span class="wpurp-required">(<?php _e( 'required', 'foodiepro' ); ?>)</span></div>
   			<?php if( isset( $wpurp_user_submission ) && WPUltimateRecipe::option( 'user_submission_ingredient_list', '0' ) == '1' ) { 
   				output_ingredients_list($index);
   			}
@@ -634,7 +641,8 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
     	</div> <!-- ingredient-item#name -->
     	
     	<div class="ingredient-item" id="amount">
-    		<div class="mobile"><?php _e( 'Quantity', 'foodiepro' ); ?></div>
+  			<?php $this->output_move_button( '', 'mobile' );?>
+    		<div class="headline mobile"><?php _e( 'Quantity', 'foodiepro' ); ?></div>
     		<input type="text" 
     			name="recipe_ingredients[<?php echo $index; ?>][amount]" 
     			class="ingredients_amount" id="ingredients_amount_<?php echo $index; ?>" 
@@ -644,7 +652,8 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
     	</div> <!-- ingredient-item#amount -->
     
     	<div class="ingredient-item" id="unit">
-    		<div class="mobile"><?php _e( 'Unit', 'foodiepro' ); ?></div>
+  			<?php $this->output_move_button( '', 'mobile' );?>
+    		<div class="headline mobile"><?php _e( 'Unit', 'foodiepro' ); ?></div>
     		<input type="text"   
     			name="recipe_ingredients[<?php echo $index; ?>][unit]" 
     			class="ingredients_unit" id="ingredients_unit_<?php echo $index; ?>" 
@@ -654,7 +663,8 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
     	</div> <!-- ingredient-item#unit -->
 
       <div class="ingredient-item" id="notes">
-      	<div class="mobile"><?php _e( 'Notes', 'foodiepro' ); ?></div>
+  			<?php $this->output_move_button( '', 'mobile' );?>
+      	<div class="headline mobile"><?php _e( 'Notes', 'foodiepro' ); ?></div>
         <textarea rows="1" 
         	name="recipe_ingredients[<?php echo $index; ?>][notes]" 
         	class="notes ingredients_notes" id="ingredient_notes_<?php echo $index; ?>" 
@@ -704,8 +714,12 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 		
 		?>
 		<div class="sort-handle sub-controls <?php echo $display?>" id="move" title="<?php echo $title?>">
+			<?php if ($item!='') {?>
 			<span class="fa-stack"><i class="fa fa-sort-desc fa-stack-1x"></i><i class="fa fa-sort-asc fa-stack-1x"></i>
 			</span>	
+		<?php } else { ?>
+			<span>&nbsp;</span> 
+		<?php } ?>
   	</div>
   	<?php	
   			
@@ -730,7 +744,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	<?php 
 	}
 	
-	private function class_hydrate($recipe, $required_fields) {
+	private function class_hydrate($required_fields) {
 		
 		$this->recipe_items = array(
     	'servings' => array(
@@ -738,8 +752,8 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	    	'notes' => __( '(e.g. 2 people, 3 loafs, ...)', 'foodiepro' ),
 	    	'required' => in_array( 'recipe_servings', $required_fields ),
 		    'inputs' => array( 
-		    	'servings' => array( 'value', $recipe->servings() ),
-		    	'servings_type' => array ( 'unit', $recipe->servings_type() ),
+		    	'servings' => array( 'value', $this->recipe->servings() ),
+		    	'servings_type' => array ( 'unit', $this->recipe->servings_type() ),
 		    )
     	),	
 			'prep-time' => array(
@@ -747,8 +761,8 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	    	'notes' => __( '(e.g. 20 minutes, 1-2 hours, ...)', 'foodiepro' ),
 	    	'required' => in_array( 'prep_time', $required_fields ),
 		    'inputs' => array( 
-		    	'prep_time' => array( 'value', $recipe->prep_time() ),
-		    	'prep_time_text' => array ( 'unit', $recipe->prep_time_text() ),
+		    	'prep_time' => array( 'value', $this->recipe->prep_time() ),
+		    	'prep_time_text' => array ( 'unit', $this->recipe->prep_time_text() ),
 		   	)
 		  ),
     	'cook-time' => array(
@@ -756,8 +770,8 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	    	'notes' => __( '(e.g. 20 minutes, 1-2 hours, ...)', 'foodiepro' ),
 	    	'required' => false,
 	   		'inputs' => array( 
-		    	'prep_time' => array( 'value', $recipe->prep_time() ),
-		    	'prep_time_text' => array ( 'unit', $recipe->prep_time_text() ),
+		    	'prep_time' => array( 'value', $this->recipe->prep_time() ),
+		    	'prep_time_text' => array ( 'unit', $this->recipe->prep_time_text() ),
 		    )
 		  ),
     	'passive-time' => array(
@@ -765,8 +779,8 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	    	'notes' => __( '(e.g. 20 minutes, 1-2 hours, ...)', 'foodiepro' ),
 	    	'required' => false,
 	   		'inputs' => array( 
-		    	'passive_time' => array( 'value', $recipe->prep_time() ),
-		    	'passive_time_text' => array ( 'unit', $recipe->prep_time_text() ),
+		    	'passive_time' => array( 'value', $this->recipe->prep_time() ),
+		    	'passive_time_text' => array ( 'unit', $this->recipe->prep_time_text() ),
 		    )
 		  ),
     ); 		

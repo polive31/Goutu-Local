@@ -1,7 +1,13 @@
 /* Common attributes 
 ---------------------------------------------------------*/
 .screen {display:initial}
+
 .mobile {display:none}
+
+.ingredient-item .headline {
+	width:100px;
+	float:left;
+}
 
 
 /* Main
@@ -11,31 +17,38 @@
 	width:100%;
 }
 
-td.recipe-general-form-label {
-    padding-right: 10px;
+.general-item {
+  padding-right: 10px;
+  float:left;
 }
 
-tr.spacer {
-    line-height: 8px;
-}
 
-.recipe-general-form-field input,
+.general-item input,
 .recipe-general-form-notes {
   float: left;
   margin: 0 2px;
   padding: 10px;
 }
 
-.recipe-general-form-field input.value {
+.general-item input.value {
 	width: 100px;
 }
 
-.recipe-general-form-field input.unit {
+.general-item input.unit {
 	width: 200px;
 }
 
 /* Ingredients
 ------------------------------------------------*/
+
+.section#ingredient {
+    background: #ddc3a3;
+}
+
+.ingredient-container {
+	float:left;
+	width: 80%;
+}
 
 .ui-sortable {
 	border: 1px dashed #555;
@@ -62,7 +75,7 @@ tr.spacer {
 .ingredient-item select,
 .ingredient-item input,
 .ingredient-item textarea {
-	width:100%;
+	width:80%;
 }
 
 .ingredient-item#controls {
@@ -70,18 +83,31 @@ tr.spacer {
 	padding-top:2px;
 }
 
+
 .sub-controls {
 	font-size:20px;
 	width:25px;
+  height:100%;
 }
 
 .sub-controls#move {
 	float:left;
+	cursor: -webkit-grab;
+}
+
+.sub-controls#move:hover {
+	background:#c2ccd6;
 }
 
 .sub-controls#delete {
 	float:right;
 }
+
+.sub-controls#move:hover {
+	background:#c2ccd6;
+}
+
+
 
 .ingredient-item#name {
 	width:250px;
@@ -129,17 +155,7 @@ tr.spacer {
 
 	.screen {display:none}
 	.mobile {display:initial}
-	
-	.ingredient-item {
-		float:left;
-		clear:both;
-		width:100%;
-		padding:2px;
-	}
-			
-	.ingredient-item .mobile {
-		float:left;
-	}
+
 
 	.ingredient-item input,
 	.ingredient-item select,
@@ -150,12 +166,19 @@ tr.spacer {
 		margin:0;
 	}
 	
-	.ingredient-item#controls,
+	.ingredient-item#controls {
+    height: 160px;
+	}
+	
+	.sub-controls {
+	  padding-top:56px;
+	}
+	
 	.ingredient-item#name,
 	.ingredient-item#amount,
 	.ingredient-item#unit,
 	.ingredient-item#notes {
-		width:100%;
+		width:80%;
 	}
 	
 }

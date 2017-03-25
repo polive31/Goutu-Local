@@ -456,12 +456,12 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
   <?php
 	}
 		
-	private function output_ingredient($ingredient, $index, $type) {
+	private function output_ingredient($ingredient, $index, $display) {
 			
-		$head = ($type=='head');	
-		$new = ($type=='new');	
+		$head = ($display=='head');	
+		$new = ($display=='new');	
 		?>
-    <div class="form-<?php echo $head:'headline':'item'?>" id="ingredient">
+    <div class="form-<?php echo $head?'headline':'item'?>" id="ingredient">
     	
     	<div class="item-element" id="controls">
   			<?php $this->output_move_button( 'ingredient', $head?'head':'');?>
@@ -489,17 +489,19 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	    			
 	    	</div> <!-- ingredient-item#name -->
 	    	
-	    	<div class="item-element" id="amount">
-	    		<div class="headline <?php echo $head?'':'mobile'?>"><?php _e( 'Quantity', 'foodiepro' ); ?></div>
-  				<?php if (! $head) { ?>
-		    		<input type="text" 
-		    			name="recipe_ingredients[<?php echo $index; ?>][amount]" 
-		    			class="ingredients_amount" id="ingredients_amount_<?php echo $index;?>" 
-		      		<?php if ($index == 0 && $new ) { echo 'placeholder="1"'; } ?> 
-		    			<?php if (! $new) {echo 'value="' . esc_attr( $ingredient['amount'] ) . '"'; } ?> 
-		    		/>
-		    	<?php }?>
-	    	</div> <!-- ingredient-item#amount -->
+
+	    	
+	    	<?php
+	    	$this->output_item_element(
+	    		'ingredients', 
+	    		$ingredient, 
+	    		$index, 
+	    		'amount', 
+	    		__( 'Quantity', 'foodiepro' ),
+	    		'1',
+	    		$display
+	    		);
+	    	?>
 	    
 	    	<div class="item-element" id="unit">
 	    		<div class="headline <?php echo $head?'':'mobile'?>"><?php _e( 'Unit', 'foodiepro' ); ?></div>
@@ -602,6 +604,24 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 		    <?php } ?>
 		</select>		
 	<?php 
+	}
+	
+	private function output_item_element($item_name, $item, $index, $element_name, $title, $placeholder, $display) {
+		$head = ($display=='head');	
+		$new = ($display=='new');	
+		?>
+	  <div class="item-element" id="<?php echo $element_name;?>">
+  		<div class="headline <?php echo $head?'':'mobile'?>"><?php echo $title; ?></div>
+			<?php if (! $head) { ?>
+    		<input type="text" 
+    			name="recipe_<?php echo $item_name?>[<?php echo $index?>][<?php echo $element_name?>]" 
+    			class="<?php echo $item_name?>_<?php echo $element_name?>" id="<?php echo $item_name?>_<?php echo $element_name?>_<?php echo $index;?>" 
+      		<?php if ($index == 0 && $new ) { echo 'placeholder=' . $placehoder; } ?> 
+    			<?php if (! $new) {echo 'value="' . esc_attr( $item[$element_name] ) . '"'; } ?> 
+    		/>
+    	<?php }?>
+  	</div> <!-- item-element#<?php echo $element_name?> -->
+  <?php	
 	}
 	
 	private function class_hydrate($required_fields) {

@@ -197,6 +197,7 @@ class Custom_Recipe_Templates {
 		    );	
 			}
 			elseif (is_page( ['nouvelle-recette', 'mes-recettes'] ) ) {
+				PC::debug( 'In mes-recettes js enqueue' );
 				$js_enqueue=$js_enqueue;
 			}
 			

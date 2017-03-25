@@ -10,6 +10,7 @@ class Custom_Recipe_Favorite extends WPURP_Template_Block {
 
     private $class_id='wpurp-recipe-favorite';
     private $link_id;
+    private $link_target;
     private $editorField = 'favoriteRecipe';
 		private static $_PluginPath;	
 	
@@ -25,17 +26,19 @@ class Custom_Recipe_Favorite extends WPURP_Template_Block {
         if( !$this->output_block( $recipe, $args ) ) return '';
         
         if( !is_user_logged_in() ) {
+        	$this->link_target='/connexion';
         	$this->link_id='id="join_us"';
-        	$favorites_link = '/connexion';
+        	$tooltip_link='/connexion';
         } 
         else {
+        	$this->link_target='#';
         	$this->link_id='';
         	$this->class_id .= ' logged-in';
-        	$favorites_link = '/mon-goutu/recettes-favorites';
+        	$tooltip_link = '/mon-goutu/recettes-favorites';
         }
         
-        $tooltip_in = sprintf(__('In my <a href="%s">favorites</a>','foodiepro'),$favorites_link);
-				$tooltip_add = sprintf(__('Add to my <a href="%s">favorites</a>','foodiepro'),$favorites_link);
+        $tooltip_in = sprintf(__('In my <a href="%s">favorites</a>','foodiepro'),$tooltip_link);
+				$tooltip_add = sprintf(__('Add to my <a href="%s">favorites</a>','foodiepro'),$tooltip_link);
 				
         if( WPURP_Favorite_Recipes::is_favorite_recipe( $recipe->ID() ) ) {
         	$this->class_id .= ' is-favorite';
@@ -55,7 +58,7 @@ class Custom_Recipe_Favorite extends WPURP_Template_Block {
         ob_start();
 ?>
 
-				<a href="#" <?php echo $this->link_id;?> class="<?php echo $this->class_id; ?>" data-recipe-id="<?php echo $recipe->ID(); ?>">
+				<a href="<?php echo $this->link_target;?>" <?php echo $this->link_id;?> class="<?php echo $this->class_id; ?>" data-recipe-id="<?php echo $recipe->ID(); ?>">
 				<div class="button-caption"><?php echo __('Favorites','foodiepro'); ?></div>
 				</a>
 

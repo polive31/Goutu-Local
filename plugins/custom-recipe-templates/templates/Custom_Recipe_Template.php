@@ -90,7 +90,7 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 				<div class="info-container">
 					
 					<div class="label-container">
-					<?php echo do_shortcode('[display-star-rating display="full"]');?>
+						[display-star-rating display="full"]
 					</div>
 					
 					<?php

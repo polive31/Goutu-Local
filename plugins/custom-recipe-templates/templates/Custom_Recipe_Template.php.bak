@@ -55,16 +55,18 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 					
 					<!-- Recipe Share Button -->
 					<div class="recipe-button tooltip tooltip-above">
-						<a class="recipe-share-button" title="<?php echo __('Share this recipe','foodiepro')?>" id="recipe-share">
+						<a class="recipe-share-button"  id="recipe-share">
 						<div class="button-caption"><?php echo __('Share','foodiepro'); ?></div>
 						</a>
+						<?php echo Custom_Recipe_Templates::output_tooltip(__('Share this recipe','foodiepro'),'top');?>
 					</div>				
 												
 					<!-- Recipe Rate Button -->
 					<div class="recipe-button tooltip tooltip-above">
-						<a class="recipe-review-button"  title="<?php echo __('Comment and rate this recipe','foodiepro')?>" id="recipe-review">
+						<a class="recipe-review-button" id="recipe-review">
 						<div class="button-caption"><?php echo __('Rate','foodiepro'); ?></div>
 						</a>
+						<?php echo Custom_Recipe_Templates::output_tooltip(__('Comment and rate this recipe','foodiepro'),'top');?>
 					</div>			
 														
 				</div>

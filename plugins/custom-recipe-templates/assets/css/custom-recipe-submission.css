@@ -4,11 +4,64 @@
 
 .mobile {display:none}
 
-.ingredient-item .headline {
+.item-element .headline {
 	width:100px;
 	float:left;
 }
 
+/* Generic form styling
+------------------------------------------------*/
+
+#custom_recipe_submission_form .form-item,
+#custom_recipe_submission_form h4,
+.recipe-ingredients-form {
+	float:left;
+	clear:both;
+	width:100%;
+}
+
+.form-item {
+  background: #ddc3a3;
+  margin : 5px 0;
+}
+
+.form-headline {
+  margin : 5px 0;
+}
+
+.item-container {
+	float:left;
+	width: 80%;
+}
+
+.item-element {
+	float:left;
+	margin:2px 5px;
+}
+
+.item-element select,
+.item-element input,
+.item-element textarea {
+	width:100%;
+}
+
+/* Specific recipe submission formatting
+------------------------------------------------*/
+.item-element#name {
+	width:200px;
+}
+
+.item-element#amount {
+	width:75px;
+}
+
+.item-element#unit {
+	width:150px;
+}
+
+.item-element#notes {
+	width:250px;
+}
 
 /* Main
 ---------------------------------------------------------*/
@@ -43,17 +96,9 @@
 	width: 200px;
 }
 
-/* Ingredients
+/* Recipe submission formatting
 ------------------------------------------------*/
 
-.section#ingredient {
-    background: #ddc3a3;
-}
-
-.ingredient-container {
-	float:left;
-	width: 80%;
-}
 
 .ui-sortable {
 	border: 1px dashed #555;
@@ -64,24 +109,7 @@
 	display:none;
 }
 
-.ingredient-item {
-	float:left;
-	margin:2px;
-}
 
-#custom_recipe_submission_form .section,
-#custom_recipe_submission_form h4,
-.recipe-ingredients-form {
-	float:left;
-	clear:both;
-	width:100%;
-}
-
-.ingredient-item select,
-.ingredient-item input,
-.ingredient-item textarea {
-	width:80%;
-}
 
 .ingredient-item#controls {
 	width:25px;
@@ -114,21 +142,6 @@
 
 
 
-.ingredient-item#name {
-	width:250px;
-}
-
-.ingredient-item#amount {
-	width:75px;
-}
-
-.ingredient-item#unit {
-	width:150px;
-}
-
-.ingredient-item#notes {
-	width:200px;
-}
 
 /* Dropdown taxonomies/tags lists
 ------------------------------------------------*/

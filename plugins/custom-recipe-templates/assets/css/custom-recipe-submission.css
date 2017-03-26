@@ -58,7 +58,7 @@
 
 /* Specific recipe submission formatting
 ------------------------------------------------*/
-.item-element#name {
+.item-element#ingredient {
 	width:200px;
 }
 
@@ -149,19 +149,9 @@
 	cursor: -webkit-grab;
 }
 
-.sub-controls#move:hover {
-	background:#c2ccd6;
-}
-
 .sub-controls#delete {
 	float:right;
 }
-
-.sub-controls#move:hover {
-	background:#c2ccd6;
-}
-
-
 
 
 /* Dropdown taxonomies/tags lists

@@ -601,7 +601,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	        <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail_<?php echo $index; ?>" />
 	    	</div> <!-- item-element#image -->
       	
-    	</div> <!-- item-container#text -->
+    	</div> <!-- item-container#instruction -->
     	
     	<div class="item-container align-right" id="controls">
       	<?php $this->output_delete_button('instruction','');?>
@@ -626,30 +626,15 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
     	</div> <!-- ingredient-container#controls -->
     	
     	<div class="item-container">
-    	
-	    	<div class="item-element" id="name">
-	  			<div class="headline <?php echo $head?'':'mobile'?>"><?php _e( 'Ingredient', 'foodiepro' ); ?> <span class="wpurp-required">(<?php _e( 'required', 'foodiepro' ); ?>)</span></div>
-					<?php if (!$head) {?>
-		    			<input type="text" 
-		    				name="recipe_ingredients[<?php echo $index; ?>][ingredient]" 
-		    				class="ingredients_name" id="ingredients_<?php echo $index; ?>" 
-		    				onfocus="autoSuggestTag('ingredients_<?php echo $index; ?>', 'ingredient');" 
-		    				<?php if($index == 0 && $new) { echo 'placeholder="' . __( 'olive oil', 'foodiepro' ) . '"'; } ?> 
-		    				<?php if(! $new) {echo 'value="' . esc_attr( $ingredient['ingredient'] ) . '"'; } ?> 
-		    			/>
-	    		<?php } ?>
-	    			
-	    	</div> <!-- ingredient-item#name -->
 	    	
 	    	<?php
 
 	    	$args = array(
 	    		'item' => 'ingredients',
 	    		'key' => 'ingredient',
-	    		'element' => 'name',
 	    		'index' => $index,
 	    		'value' => isset($ingredient['ingredient'])?$ingredient['ingredient']:'',
-	    		'title' => __( 'Quantity', 'foodiepro' ),
+	    		'title' => __( 'Ingredient', 'foodiepro' ),
 	    		'on_focus' => "autoSuggestTag('ingredients_" . $index . "', 'ingredient');",
 	    		'placeholder' => __( 'olive oil', 'foodiepro' ),
 	    		'item_class' => '',
@@ -659,7 +644,6 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	    		'new' => $new,
 	    	);
 	    	$this->output_item_element($args);
-
 
 			
 	    	$args = array(

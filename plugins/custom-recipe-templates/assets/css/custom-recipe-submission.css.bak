@@ -58,7 +58,7 @@
 
 /* Specific recipe submission formatting
 ------------------------------------------------*/
-.item-element#name {
+.item-element#ingredient {
 	width:200px;
 }
 
@@ -83,7 +83,7 @@
 }
 
 .item-element#description {
-	width: 90%;
+	width: 80%;
 }
 
 

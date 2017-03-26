@@ -585,6 +585,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
     	</div> <!-- instruction_item#controls -->
     
     	<div class="item-container" id="instruction">
+    		
     		<div class="item-element" id="text">
 		      <textarea name="recipe_instructions[<?php echo $index; ?>][description]" rows="4" id="ingredient_description_<?php echo $index; ?>">
 		      	<?php if (!$new) {echo $instruction['description'];} ?>
@@ -601,7 +602,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	        <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail_<?php echo $index; ?>" />
 	    	</div> <!-- item-element#image -->
       	
-    	</div> <!-- item-container#text -->
+    	</div> <!-- item-container#instruction -->
     	
     	<div class="item-container align-right" id="controls">
       	<?php $this->output_delete_button('instruction','');?>
@@ -632,10 +633,9 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	    	$args = array(
 	    		'item' => 'ingredients',
 	    		'key' => 'ingredient',
-	    		'element' => 'name',
 	    		'index' => $index,
 	    		'value' => isset($ingredient['ingredient'])?$ingredient['ingredient']:'',
-	    		'title' => __( 'Quantity', 'foodiepro' ),
+	    		'title' => __( 'Ingredient', 'foodiepro' ),
 	    		'on_focus' => "autoSuggestTag('ingredients_" . $index . "', 'ingredient');",
 	    		'placeholder' => __( 'olive oil', 'foodiepro' ),
 	    		'item_class' => '',
@@ -645,7 +645,6 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	    		'new' => $new,
 	    	);
 	    	$this->output_item_element($args);
-
 
 			
 	    	$args = array(

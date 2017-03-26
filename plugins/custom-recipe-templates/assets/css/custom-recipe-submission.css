@@ -1,13 +1,19 @@
 /* Common attributes 
 ---------------------------------------------------------*/
-.screen {display:initial}
-
-.mobile {display:none}
-
-.item-element .headline {
-	width:100px;
-	float:left;
+.screen {
+	display:initial;
 }
+
+.mobile,
+.hidden {
+	display:none;
+}
+
+.item-container.align-right {
+    float: right;
+}
+
+
 
 /* Generic form styling
 ------------------------------------------------*/
@@ -31,12 +37,17 @@
 
 .item-container {
 	float:left;
-	width: 80%;
+	width: 85%;
 }
 
 .item-element {
 	float:left;
 	margin:2px 5px;
+}
+
+.item-element .headline {
+	width:100px;
+	float:left;
 }
 
 .item-element select,
@@ -63,6 +74,19 @@
 	width:250px;
 }
 
+.item-element#text {
+	width:70%;
+}
+
+.item-element#label {
+	width: 100px;
+}
+
+.item-element#description {
+	width: 80%;
+}
+
+
 /* Main
 ---------------------------------------------------------*/
 
@@ -76,9 +100,6 @@
 
 }
 
-.general-item#label {
-	width: 100px;
-}
 
 
 .general-item input,
@@ -111,7 +132,7 @@
 
 
 
-.ingredient-item#controls {
+.item-container#controls {
 	width:25px;
 	padding-top:2px;
 }
@@ -171,32 +192,22 @@
 
 @media only screen and (max-width: 768px) {
 
+/* Generic form styling */
 	.screen {display:none}
 	.mobile {display:initial}
 
 
-	.ingredient-item input,
-	.ingredient-item select,
-	.ingredient-item textarea {
+	.item-element {
 		float:left;
-		width:auto;
-		min-width:250px;
 		margin:0;
 	}
 	
-	.ingredient-item#controls {
-    height: 160px;
-	}
 	
-	.sub-controls {
+	/* Specific recipe form styling */
+	
+	.item-element#controls {
+		width:25px;
 	  padding-top:56px;
-	}
-	
-	.ingredient-item#name,
-	.ingredient-item#amount,
-	.ingredient-item#unit,
-	.ingredient-item#notes {
-		width:80%;
 	}
 	
 }

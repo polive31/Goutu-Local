@@ -165,6 +165,146 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	  return $html;
 	}
 
+
+	private function output_item_element($args) {
+			 /* $args = array(
+	    		'item' => 'ingredients',
+	    		'key' => 'amount',
+	    		'index' => $index,
+	    		'value' => $ingredient['amount'],
+	    		'title' => __( 'Quantity', 'foodiepro' ),
+	    		'placeholder' => '1',
+	    		'on_focus" => string,
+	    		'new' => true, false
+	    		'head' => true, false
+	    		'class' => stri,
+	    		'required' => false,
+	    		'textarea' => false,
+	    	) */
+			
+		?>
+	  <div class="item-element <?php echo $args['item_class']?>" id="<?php echo $args['key']?>">
+  		<div class="headline <?php echo $args['head']?'':'mobile' ?>">
+  			<?php echo $args['title'];  
+  			if ($args['required']) {?>
+  				<span class="wpurp-required">(<?php _e( 'required', 'foodiepro' ); ?>)</span>
+  			<?php }?>
+  		</div>
+			<?php if (! $args['head']) { 
+    		if ($args['textarea']) {?><textarea rows="1"<?php } else {?><input type="text" <?php } ?>
+    			name="recipe_<?php echo $args['item']?>[<?php echo $args['index']?>][<?php echo $args['key']?>]" 
+    			class="<?php echo $args['item']?>_<?php echo $args['key']?>" id="<?php echo $args['item']?>_<?php echo $args['key']?>_<?php echo $args['index'];?>" 
+      		<?php if (isset($args['on_focus'])) {echo ' onfocus="' . $args['on_focus'] . '"'; } ?>
+      		<?php if ($args['index'] == 0 && $args['new'] ) { echo 'placeholder="' . $args['placeholder'] . '"'; } ?> 
+    			<?php if (!$args['new']) {echo 'value="' . esc_attr( $args['value'] ) . '"'; }  
+    		if ($args['textarea']) {?>></textarea> <?php } else {?>/> <?php } ?>
+	      <!-- IMPORTANT : always put </textarea> on the same line as the <textarea> tag otherwise placeholder won't appear -->
+
+    	<?php }?>
+  	</div> <!-- item-element#<?php echo $args['key']?> -->
+  <?php	
+	}
+	
+	private function class_hydrate($required_fields) {
+		
+		$this->recipe_items = array(
+    	'servings' => array(
+	    	'title' => __( 'Servings', 'foodiepro' ),
+	    	'notes' => __( '(e.g. 2 people, 3 loafs, ...)', 'foodiepro' ),
+	    	'required' => in_array( 'recipe_servings', $required_fields ),
+		    'inputs' => array( 
+		    	'servings' => array( 'value', $this->recipe->servings() ),
+		    	'servings_type' => array ( 'unit', $this->recipe->servings_type() ),
+		    )
+    	),	
+			'prep-time' => array(
+	    	'title' => __( 'Prep Time', 'foodiepro' ),
+	    	'notes' => __( '(e.g. 20 minutes, 1-2 hours, ...)', 'foodiepro' ),
+	    	'required' => in_array( 'prep_time', $required_fields ),
+		    'inputs' => array( 
+		    	'prep_time' => array( 'value', $this->recipe->prep_time() ),
+		    	'prep_time_text' => array ( 'unit', $this->recipe->prep_time_text() ),
+		   	)
+		  ),
+    	'cook-time' => array(
+	    	'title' => __( 'Cook Time', 'foodiepro' ),
+	    	'notes' => __( '(e.g. 20 minutes, 1-2 hours, ...)', 'foodiepro' ),
+	    	'required' => false,
+	   		'inputs' => array( 
+		    	'prep_time' => array( 'value', $this->recipe->prep_time() ),
+		    	'prep_time_text' => array ( 'unit', $this->recipe->prep_time_text() ),
+		    )
+		  ),
+    	'passive-time' => array(
+	    	'title' => __( 'Passive Time', 'foodiepro' ),
+	    	'notes' => __( '(e.g. 20 minutes, 1-2 hours, ...)', 'foodiepro' ),
+	    	'required' => false,
+	   		'inputs' => array( 
+		    	'passive_time' => array( 'value', $this->recipe->prep_time() ),
+		    	'passive_time_text' => array ( 'unit', $this->recipe->prep_time_text() ),
+		    )
+		  ),
+    ); 		
+	}
+
+	private function output_delete_button($item, $display) {
+		// $item : instruction, instruction-group, ingredient, ingredient-group
+		// $display : screen, mobile, ''
+		
+		if ($item=='ingredient') $title= __('Delete ingredient','foodiepro');
+		elseif ($item=='instruction') $title= __('Delete instruction','foodiepro');
+		elseif ($item=='instruction-group') $title= __('Delete instruction group','foodiepro');
+		elseif ($item=='ingredient-group') $title= __('Delete ingredient group','foodiepro');
+		
+		?>
+		<div class="submit-item sub-controls <?php echo $display?>" id="delete" title="<?php echo $title?>">
+    	<span class="fa-stack <?php echo $item?>-delete"><i class="fa fa-trash-o"></i>
+    	</span>
+    </div>
+		<?php 
+	}
+	
+	
+	private function output_move_button($item, $display) {
+	
+		if ($item=='ingredient') $title= 'title="' . __('Move ingredient','foodiepro') . '"';
+		elseif ($item=='instruction') $title= 'title="' . __('Move instruction','foodiepro') . '"';
+		elseif ($display=='head') $title= '';
+		
+		?>
+		<div class="sort-handle sub-controls <?php echo $display?>" id="move" <?php echo $title?>>
+			<?php if ($item!='' && $display != 'head' ) {?>
+			<span class="fa-stack">
+			<i class="fa fa-sort-desc fa-stack-1x"></i><i class="fa fa-sort-asc fa-stack-1x"></i>
+			</span>	
+		<?php } else { ?>
+			<span>&nbsp;</span> 
+		<?php } ?>
+  	</div>
+  	<?php	
+  			
+	}
+	
+	private function output_ingredients_list($index) {?>
+ 		<select name="recipe_ingredients[<?php echo $index; ?>][ingredient]" id="ingredients_<?php echo $index; ?>">
+			<option value=""><?php _e( 'Select an ingredient', 'foodiepro' ); ?></option>
+        <?php
+        $args = array(
+            'orderby'       => 'name',
+            'order'         => 'ASC',
+            'hide_empty'    => false,
+        );
+        $ingredient_terms = get_terms( 'ingredient', $args );
+        foreach( $ingredient_terms as $term ) { ?>
+		    	<option value="<?php echo esc_attr( $term->name ); ?>">
+		    		<?php echo $term->name; ?>
+		    	</option>
+		    <?php } ?>
+		</select>		
+	<?php 
+	}
+		
+	
 	private function output_recipe_form( $required_fields ) {
 
 		// Recipe should never be null. Construct just allows easy access to WPURP_Recipe functions in IDE.
@@ -185,41 +325,39 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 		
 		<div class="recipe-general-container">
 	    <h4><?php _e( 'General', 'foodiepro' ); ?></h4>
-	    <table class="recipe-general-form">
+	    
+	    <div class="recipe-general-form">
 	  
         <div class="form-item" id="description">
-            <div class="general-item" id="label"><label for="recipe_description"><?php _e('Description', 'foodiepro' ); ?><?php if( in_array( 'recipe_description', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></div>
-            <div class="general-item" id="field">
+            <div class="item-element" id="label"><label for="recipe_description"><?php _e('Description', 'foodiepro' ); ?><?php if( in_array( 'recipe_description', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></div>
+            <div class="item-element" id="description">
                 <textarea name="recipe_description" id="recipe_description" rows="4"><?php echo esc_html( $this->recipe->description() ); ?></textarea>
             </div>
         </div> 
         
         <?php
 				foreach ($this->recipe_items as $key=>$item) {
-		    	$this->output_recipe_item($key,$item);
+		    	$this->output_recipe_info($key,$item);
 				}?>
-	    </table>
-		</div>
+	    </div>
+	    
+		</div> <!-- recipe-general-container -->
 
-		<div class="recipe-ingredients-container">
+		<div class="recipe-ingredients-container"> 
+	
+		<?php PC::debug('In recipe ingredients container'); ?>	
+			
 		    <h4><?php _e( 'Ingredients', 'foodiepro' ); ?></h4>
 		    <?php $ingredients = $this->recipe->ingredients(); ?>
+				<?php PC::debug( array('$ingredients' => $ingredients) ); ?>	
 		    
 		    <div class="recipe-ingredients-form">
-		        
-		        <div class="ingredients-body">
-			        <div class="ingredient-group-stub">
-		            <div><strong><?php _e( 'Group', 'foodiepro' ); ?>:</strong></div>
-		            <div><input type="text" class="ingredient-group-label" /></div>
-		            <div><span class="ingredient-group-delete"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16"></span></div>
-			        </div> <!-- ingredient-group-stub -->
-			    
+		    	
 			        <!-- Output existing ingredients (when editing existing recipe) -->
 			   			<?php $i = $this->output_existing_ingredients($ingredients); ?>
 			        <!-- Output single ingredient input -->
-			   			<?php $this->output_ingredient('', $i, 'new'); ?>
-		        </div> <!-- body -->
-		        
+			   			<?php $this->output_ingredient(array(), $i, 'new'); ?>
+			   			
 		    </div> <!-- recipe-ingredients-form -->
 		    
 		    <div class="form-item" id="add-item-box">
@@ -273,7 +411,6 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 		    </div>
 		    
 		</div> <!-- recipe-instructions-container -->
-
 		            
 		<div class="recipe-notes-container">
 		    <h4><?php _e( 'Recipe notes', 'foodiepro' ) ?></h4>
@@ -289,7 +426,6 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 		    wp_editor( $this->recipe->notes(), 'recipe_notes',  $options );
 		    ?>
 		</div> <!-- recipe-notes-container -->
-
 		
 		<!-- Custom Fields Section -->		
 		<?php
@@ -327,21 +463,33 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 
 	}
 	
-	public function output_recipe_item($class, $args) {
+	public function output_recipe_info($class, $args) {
 		?>
 		
       <div class="form-item" id="<?php echo $class?>">
       	
-        <div class="general-item" id="label"><label for="recipe_<?php echo $class?>"><?php echo $args['title'] ?><?php if( $args['required'] ) echo '<span class="wpurp-required">*</span>'; ?></label></div>
-        <div class="general-item" id="field"> <?php
+        <div class="item-container">
+        	<div class="item-element" id="label" for="recipe_<?php echo $class?>">
+        		<?php echo $args['title'] ?><?php if( $args['required'] ) echo '<span class="wpurp-required">*</span>'; ?>
+        	</div>
+        	<?php 
         	PC::debug(array('$args'=>$args));
-        	foreach ($args['inputs'] as $key=>$arg) {
-            echo '<input type="text" class="' . $arg[0] . '" name="recipe_' . $key . '" id="recipe_' . $key . '" value="' . esc_attr( $arg[1] ) . '" />';
-        	}?>
-          <div class="recipe-general-form-notes"> <?php echo $args['notes'] ?></div>
-        </div>
+        	foreach ($args['inputs'] as $key=>$arg) { ?>
+        		<div class="item-element" id="<?php echo $key ?>"> 
+	            <input 
+	            	type="text" 
+	            	class="<?php echo $arg[0]?>"
+	            	name="recipe_<?php echo $key?>"
+	            	id="recipe_<?php echo $key?>" 
+	            	value="<?php echo esc_attr( $arg[1] )?>" 
+	            />
+          	</div> <!-- item-element#<?php echo $key ?> -->
+        	<?php }?>
+          <div class="item-element" id="example"> <?php echo $args['notes'] ?></div>
         
-    	</div> <!-- section#$class -->
+        </div> <!-- item-container -->
+        
+    	</div> <!-- form-item#$class -->
    
 		<?php 
 
@@ -365,19 +513,30 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	private function output_group($type, $item, $index, $previous_group) {
 		// $type = instruction, ingredient
 		// $item = $instruction or $ingredient
+		?>
+
+			<div class="ingredient-group-stub">
+				<div><strong><?php _e( 'Group', 'foodiepro' ); ?>:</strong></div>
+				<div><input type="text" class="ingredient-group-label" /></div>
+				<div><span class="ingredient-group-delete"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16"></span></div>
+			</div> <!-- ingredient-group-stub -->
+    <?php
+    
     if( !isset( $item['group'] ) ) {
     	$item['group'] = '';
     	$previous_group = '';
     }
     if( $item['group'] != $previous_group )
     { 	?>
-        <div class="<?php echo $type?>-group <?php echo ($index==0)?$type . '-group-first':''?>">
+    	
+        <div class="form-item <?php echo $type?>-group <?php echo ($index==0)?$type . '-group-first':''?>">
             <div>
                 <strong><?php _e( 'Group', 'wp-ultimate-recipe' ); ?>:</strong>
                 <input type="text" class="<?php echo $type ?>-group-label" value="<?php echo esc_attr( $item['group'] ); ?>"/>
             </div>
         		<?php $this->output_delete_button( $type . '-group',''); ?>
         </div> <!-- instruction/ingredieny-group -->
+        
 				<?php
         $previous_group = $item['group'];
     }
@@ -386,7 +545,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	
 	private function output_existing_ingredients($ingredients) {
 		
-		$this->output_ingredient('', 0, 'head');		
+		$this->output_ingredient(array(), 0, 'head');		
 
 	  $i = 0;
 	  if( $ingredients ) {
@@ -421,36 +580,32 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
     
     <div class="form-item" id="instruction">
     	
-    	<div class="instruction-item" id="controls">
+    	<div class="item-container" id="controls">
 				<?php $this->output_move_button('instruction',''); ?>
     	</div> <!-- instruction_item#controls -->
     
-    	<div class="instruction-item" id="text">
-        <textarea name="recipe_instructions[<?php echo $index; ?>][description]" rows="4" id="ingredient_description_<?php echo $index; ?>">
-        	<?php if (!$new) {echo $instruction['description'];} ?>
-        </textarea>
-        <input type="hidden" name="recipe_instructions[<?php echo $index; ?>][group]"    class="instructions_group" id="instruction_group_<?php echo $index; ?>" value="<?php echo esc_attr( $instruction['group'] ); ?>" />
-    	</div> <!-- instruction_item#text -->
+    	<div class="item-container" id="instruction">
+    		<div class="item-element" id="text">
+		      <textarea name="recipe_instructions[<?php echo $index; ?>][description]" rows="4" id="ingredient_description_<?php echo $index; ?>">
+		      	<?php if (!$new) {echo $instruction['description'];} ?>
+		      </textarea>
+		      <input type="hidden" name="recipe_instructions[<?php echo $index; ?>][group]"    class="instructions_group" id="instruction_group_<?php echo $index; ?>" value="<?php echo esc_attr( $instruction['group'] ); ?>" />
+    		</div> <!-- item-element#text -->
     	
-    	<div class="instruction-item" id="image">
-    		<?php if ( isset( $wpurp_user_submission ) && ( !current_user_can( 'upload_files' ) || WPUltimateRecipe::option( 'user_submission_use_media_manager', '1' ) != '1' ) ) { ?>
-        	<?php _e( 'Instruction Step Image', 'wp-ultimate-recipe' ); ?>:<br/>
-          <?php if( !$new && $has_image ) { ?>
-            <img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
-            <input type="hidden" value="<?php echo $instruction['image']; ?>" name="recipe_instructions[<?php echo $index; ?>][image]" /><br/>
-          <?php } ?>
-        	<input class="recipe_instructions_image button" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail_<?php echo $index; ?>" />
-    		<?php } else {?>
-            <input name="recipe_instructions[<?php echo $index; ?>][image]" class="recipe_instructions_image" type="hidden" value="<?php echo $instruction['image']; ?>" />
-            <input class="recipe_instructions_add_image button<?php echo $has_image?' wpurp-hide':''?>" rel="<?php echo $this->recipe->ID(); ?>" type="button" value="<?php _e( 'Add Image', 'wp-ultimate-recipe' ) ?>" />
-            <input class="recipe_instructions_remove_image button<?php echo $has_image?' wpurp-hide':''?>" type="button" value="<?php _e( 'Remove Image', 'wp-ultimate-recipe' ) ?>" />
-            <br /><img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
-        <?php } ?>
-    	</div> <!-- instruction_item#image -->
+	    	<div class="item-element" id="image">
+	        <?php _e( 'Instruction Step Image', 'wp-ultimate-recipe' ); ?>:<br/>
+	        <?php if( !$new && $has_image ) { ?>
+	           <img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
+	           <input type="hidden" value="<?php echo $instruction['image']; ?>" name="recipe_instructions[<?php echo $index; ?>][image]" /><br/>
+	        <?php } ?>
+	        <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail_<?php echo $index; ?>" />
+	    	</div> <!-- item-element#image -->
       	
-    	<div class="instruction-item" id="controls">
+    	</div> <!-- item-container#text -->
+    	
+    	<div class="item-container align-right" id="controls">
       	<?php $this->output_delete_button('instruction','');?>
-    	</div> <!-- instruction_item#controls -->
+    	</div> <!-- item-container#controls -->
     	
   	</div> <!-- section#instruction -->
   <?php
@@ -460,10 +615,13 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 			
 		$head = ($display=='head');	
 		$new = ($display=='new');	
+		
+		PC::debug( array('ingredient' => $ingredient ) );		
+
 		?>
-    <div class="form-<?php echo $head?'headline':'item'?>" id="ingredient">
+    <div class="form-<?php echo $head?'headline':'item'?> <?php echo $head?'screen':''?>" id="ingredient">
     	
-    	<div class="item-element" id="controls">
+    	<div class="item-container" id="controls">
   			<?php $this->output_move_button( 'ingredient', $head?'head':'');?>
     	</div> <!-- ingredient-container#controls -->
     	
@@ -471,11 +629,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
     	
 	    	<div class="item-element" id="name">
 	  			<div class="headline <?php echo $head?'':'mobile'?>"><?php _e( 'Ingredient', 'foodiepro' ); ?> <span class="wpurp-required">(<?php _e( 'required', 'foodiepro' ); ?>)</span></div>
-					<?php if (!$head) {
-	  				if( isset( $wpurp_user_submission ) && WPUltimateRecipe::option( 'user_submission_ingredient_list', '0' ) == '1' ) { 
-	  					output_ingredients_list($index);
-	  				}
-						else {?>
+					<?php if (!$head) {?>
 		    			<input type="text" 
 		    				name="recipe_ingredients[<?php echo $index; ?>][ingredient]" 
 		    				class="ingredients_name" id="ingredients_<?php echo $index; ?>" 
@@ -483,41 +637,93 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 		    				<?php if($index == 0 && $new) { echo 'placeholder="' . __( 'olive oil', 'foodiepro' ) . '"'; } ?> 
 		    				<?php if(! $new) {echo 'value="' . esc_attr( $ingredient['ingredient'] ) . '"'; } ?> 
 		    			/>
-	    			<?php } 
-	    			
-	    		} ?>
+	    		<?php } ?>
 	    			
 	    	</div> <!-- ingredient-item#name -->
 	    	
+	    	<?php
+
+	    	$args = array(
+	    		'item' => 'ingredients',
+	    		'key' => 'ingredient',
+	    		'element' => 'name',
+	    		'index' => $index,
+	    		'value' => isset($ingredient['ingredient'])?$ingredient['ingredient']:'',
+	    		'title' => __( 'Quantity', 'foodiepro' ),
+	    		'on_focus' => "autoSuggestTag('ingredients_" . $index . "', 'ingredient');",
+	    		'placeholder' => __( 'olive oil', 'foodiepro' ),
+	    		'item_class' => '',
+	    		'required' => true,
+	    		'textarea' => false,
+	    		'head' => $head,
+	    		'new' => $new,
+	    	);
+	    	$this->output_item_element($args);
+
+
+			
+	    	$args = array(
+	    		'item' => 'ingredients',
+	    		'key' => 'amount',
+	    		'index' => $index,
+	    		'value' => isset($ingredient['amount'])?$ingredient['amount']:'',
+	    		'title' => __( 'Quantity', 'foodiepro' ),
+	    		'placeholder' => '1',
+	    		'item_class' => '',
+	    		'required' => false,
+	    		'textarea' => false,
+	    		'head' => $head,
+	    		'new' => $new,
+	    	);
+	    	$this->output_item_element($args);
 
 	    	
-	    	<?php
-	    	$this->output_item_element('ingredients', $ingredient, $index, 'amount', __( 'Quantity', 'foodiepro' ),'1',$display);
-	    	?>
+				$args = array(
+	    		'item' => 'ingredients',
+	    		'key' => 'unit',
+	    		'index' => $index,
+	    		'value' => isset($ingredient['unit'])?$ingredient['unit']:'',
+	    		'title' => __( 'Unit', 'foodiepro' ),
+	    		'placeholder' => __( 'tbsp', 'foodiepro' ),
+	    		'item_class' => '',
+	    		'required' => false,
+	    		'textarea' => false,
+	    		'head' => $head,
+	    		'new' => $new,
+	    	);
+	    	$this->output_item_element($args);
 	    
-	    	<div class="item-element" id="unit">
-	    		<div class="headline <?php echo $head?'':'mobile'?>"><?php _e( 'Unit', 'foodiepro' ); ?></div>
-  				<?php if (! $head) { ?>
-	    		<input type="text"   
-	    			name="recipe_ingredients[<?php echo $index; ?>][unit]" 
-	    			class="ingredients_unit" id="ingredients_unit_<?php echo $index; ?>" 
-	    			<?php if ($index == 0 && $new) { echo 'placeholder="' . __( 'tbsp', 'foodiepro' ) . '"'; } ?>
-	    			<?php if (! $new) {echo 'value="' . esc_attr( $ingredient['unit'] ) .'"'; } ?> 
-	    		/>
-		    	<?php }?>
-	    	</div> <!-- ingredient-item#unit -->
-
-	      <div class="item-element" id="notes">
-	      	<div class="headline <?php echo $head?'':'mobile'?>"><?php _e( 'Notes', 'foodiepro' ); ?></div>
-  				<?php if (! $head) { ?>
-	        <textarea rows="1" 
-	        	name="recipe_ingredients[<?php echo $index; ?>][notes]" 
-	        	class="notes ingredients_notes" id="ingredient_notes_<?php echo $index; ?>" 
-	        	<?php if ($index == 0 && $new) { echo 'placeholder="' . __( 'extra virgin', 'foodiepro' ) . '"'; } ?> 
-	        	<?php if (! $new) {echo 'value="' . esc_attr( $ingredient['notes'] ) . '"'; } ?> 
-	        ></textarea> <!-- IMPORTANT : always put </textarea> on the same line as the <textarea> tag otherwise placeholder won't appear -->
-		    	<?php }?>
-	    	</div> <!-- ingredient-item#notes -->
+				$args = array(
+	    		'item' => 'ingredients',
+	    		'key' => 'notes',
+	    		'index' => $index,
+	    		'value' => isset($ingredient['notes'])?$ingredient['notes']:'',
+	    		'title' => __( 'Notes', 'foodiepro' ),
+	    		'placeholder' => __( 'extra virgin', 'foodiepro' ),
+	    		'item_class' => '',
+	    		'required' => false,
+	    		'textarea' => true,
+	    		'head' => $head,
+	    		'new' => $new,
+	    	);
+	    	$this->output_item_element($args);
+	    	
+	    	if (!$head) {
+		    	$args = array(
+		    		'item' => 'ingredients',
+		    		'key' => 'group',
+		    		'index' => $index,
+		    		'value' => isset($ingredient['group'])?$ingredient['group']:'',
+		    		'title' => '',
+		    		'placeholder' => '',
+		    		'item_class' => 'hidden',
+		    		'required' => false,
+		    		'textarea' => false,
+		    		'head' => false,
+		    		'new' => $new,
+		    	);
+		    	$this->output_item_element($args);
+	    	}?>
 	      
 	      <div class="item-element">
   				<?php if (! $head) { ?>
@@ -531,7 +737,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
     	
     	</div> <!-- ingredient-container -->
       
-			<div class="item-element" id="controls">
+			<div class="item-container align-right" id="controls">
 				<?php if (! $head) { ?>
       	<?php $this->output_delete_button('ingredient', ''); ?>
 		    <?php }?>
@@ -542,121 +748,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	<?php
 	}
 	
-	private function output_delete_button($item, $display) {
-		// $item : instruction, instruction-group, ingredient, ingredient-group
-		// $display : screen, mobile, ''
-		
-		if ($item=='ingredient') $title= __('Delete ingredient','foodiepro');
-		elseif ($item=='instruction') $title= __('Delete instruction','foodiepro');
-		elseif ($item=='instruction-group') $title= __('Delete instruction group','foodiepro');
-		elseif ($item=='ingredient-group') $title= __('Delete ingredient group','foodiepro');
-		
-		?>
-		<div class="submit-item sub-controls <?php echo $display?>" id="delete" title="<?php echo $title?>">
-    	<span class="fa-stack <?php echo $item?>-delete"><i class="fa fa-trash-o"></i>
-    	</span>
-    </div>
-		<?php 
-	}
-	
-	private function output_move_button($item, $display) {
-	
-		if ($item=='ingredient') $title= 'title="' . __('Move ingredient','foodiepro') . '"';
-		elseif ($item=='instruction') $title= 'title="' . __('Move instruction','foodiepro') . '"';
-		elseif ($display=='head') $title= '';
-		
-		?>
-		<div class="sort-handle sub-controls <?php echo $display?>" id="move" <?php echo $title?>>
-			<?php if ($item!='' && $display != 'head' ) {?>
-			<span class="fa-stack">
-			<i class="fa fa-sort-desc fa-stack-1x"></i><i class="fa fa-sort-asc fa-stack-1x"></i>
-			</span>	
-		<?php } else { ?>
-			<span>&nbsp;</span> 
-		<?php } ?>
-  	</div>
-  	<?php	
-  			
-	}
-	
-	private function output_ingredients_list($index) {?>
- 		<select name="recipe_ingredients[<?php echo $index; ?>][ingredient]" id="ingredients_<?php echo $index; ?>">
-			<option value=""><?php _e( 'Select an ingredient', 'foodiepro' ); ?></option>
-        <?php
-        $args = array(
-            'orderby'       => 'name',
-            'order'         => 'ASC',
-            'hide_empty'    => false,
-        );
-        $ingredient_terms = get_terms( 'ingredient', $args );
-        foreach( $ingredient_terms as $term ) { ?>
-		    	<option value="<?php echo esc_attr( $term->name ); ?>">
-		    		<?php echo $term->name; ?>
-		    	</option>
-		    <?php } ?>
-		</select>		
-	<?php 
-	}
-	
-	private function output_item_element($item_name, $item, $index, $element_name, $title, $placeholder, $display) {
-		$head = ($display=='head');	
-		$new = ($display=='new');	
-		?>
-	  <div class="item-element" id="<?php echo $element_name;?>">
-  		<div class="headline <?php echo $head?'':'mobile'?>"><?php echo $title; ?></div>
-			<?php if (! $head) { ?>
-    		<input type="text" 
-    			name="recipe_<?php echo $item_name?>[<?php echo $index?>][<?php echo $element_name?>]" 
-    			class="<?php echo $item_name?>_<?php echo $element_name?>" id="<?php echo $item_name?>_<?php echo $element_name?>_<?php echo $index;?>" 
-      		<?php if ($index == 0 && $new ) { echo 'placeholder=' . $placehoder; } ?> 
-    			<?php if (! $new) {echo 'value="' . esc_attr( $item[$element_name] ) . '"'; } ?> 
-    		/>
-    	<?php }?>
-  	</div> <!-- item-element#<?php echo $element_name?> -->
-  <?php	
-	}
-	
-	private function class_hydrate($required_fields) {
-		
-		$this->recipe_items = array(
-    	'servings' => array(
-	    	'title' => __( 'Servings', 'foodiepro' ),
-	    	'notes' => __( '(e.g. 2 people, 3 loafs, ...)', 'foodiepro' ),
-	    	'required' => in_array( 'recipe_servings', $required_fields ),
-		    'inputs' => array( 
-		    	'servings' => array( 'value', $this->recipe->servings() ),
-		    	'servings_type' => array ( 'unit', $this->recipe->servings_type() ),
-		    )
-    	),	
-			'prep-time' => array(
-	    	'title' => __( 'Prep Time', 'foodiepro' ),
-	    	'notes' => __( '(e.g. 20 minutes, 1-2 hours, ...)', 'foodiepro' ),
-	    	'required' => in_array( 'prep_time', $required_fields ),
-		    'inputs' => array( 
-		    	'prep_time' => array( 'value', $this->recipe->prep_time() ),
-		    	'prep_time_text' => array ( 'unit', $this->recipe->prep_time_text() ),
-		   	)
-		  ),
-    	'cook-time' => array(
-	    	'title' => __( 'Cook Time', 'foodiepro' ),
-	    	'notes' => __( '(e.g. 20 minutes, 1-2 hours, ...)', 'foodiepro' ),
-	    	'required' => false,
-	   		'inputs' => array( 
-		    	'prep_time' => array( 'value', $this->recipe->prep_time() ),
-		    	'prep_time_text' => array ( 'unit', $this->recipe->prep_time_text() ),
-		    )
-		  ),
-    	'passive-time' => array(
-	    	'title' => __( 'Passive Time', 'foodiepro' ),
-	    	'notes' => __( '(e.g. 20 minutes, 1-2 hours, ...)', 'foodiepro' ),
-	    	'required' => false,
-	   		'inputs' => array( 
-		    	'passive_time' => array( 'value', $this->recipe->prep_time() ),
-		    	'passive_time_text' => array ( 'unit', $this->recipe->prep_time_text() ),
-		    )
-		  ),
-    ); 		
-	}
+
 	
 }
     

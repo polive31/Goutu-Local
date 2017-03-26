@@ -626,20 +626,6 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
     	</div> <!-- ingredient-container#controls -->
     	
     	<div class="item-container">
-    	
-	    	<div class="item-element" id="name">
-	  			<div class="headline <?php echo $head?'':'mobile'?>"><?php _e( 'Ingredient', 'foodiepro' ); ?> <span class="wpurp-required">(<?php _e( 'required', 'foodiepro' ); ?>)</span></div>
-					<?php if (!$head) {?>
-		    			<input type="text" 
-		    				name="recipe_ingredients[<?php echo $index; ?>][ingredient]" 
-		    				class="ingredients_name" id="ingredients_<?php echo $index; ?>" 
-		    				onfocus="autoSuggestTag('ingredients_<?php echo $index; ?>', 'ingredient');" 
-		    				<?php if($index == 0 && $new) { echo 'placeholder="' . __( 'olive oil', 'foodiepro' ) . '"'; } ?> 
-		    				<?php if(! $new) {echo 'value="' . esc_attr( $ingredient['ingredient'] ) . '"'; } ?> 
-		    			/>
-	    		<?php } ?>
-	    			
-	    	</div> <!-- ingredient-item#name -->
 	    	
 	    	<?php
 

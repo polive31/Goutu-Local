@@ -213,7 +213,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	    	'notes' => __( '(e.g. 2 people, 3 loafs, ...)', 'foodiepro' ),
 	    	'required' => in_array( 'recipe_servings', $required_fields ),
 		    'inputs' => array( 
-		    	'servings' => array( 'amount', $this->recipe->servings() ),
+		    	'servings' => array( 'value', $this->recipe->servings() ),
 		    	'servings_type' => array ( 'unit', $this->recipe->servings_type() ),
 		    )
     	),	
@@ -222,7 +222,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	    	'notes' => __( '(e.g. 20 minutes, 1-2 hours, ...)', 'foodiepro' ),
 	    	'required' => in_array( 'prep_time', $required_fields ),
 		    'inputs' => array( 
-		    	'prep_time' => array( 'amount', $this->recipe->prep_time() ),
+		    	'prep_time' => array( 'value', $this->recipe->prep_time() ),
 		    	'prep_time_text' => array ( 'unit', $this->recipe->prep_time_text() ),
 		   	)
 		  ),
@@ -231,7 +231,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	    	'notes' => __( '(e.g. 20 minutes, 1-2 hours, ...)', 'foodiepro' ),
 	    	'required' => false,
 	   		'inputs' => array( 
-		    	'prep_time' => array( 'amount', $this->recipe->prep_time() ),
+		    	'prep_time' => array( 'value', $this->recipe->prep_time() ),
 		    	'prep_time_text' => array ( 'unit', $this->recipe->prep_time_text() ),
 		    )
 		  ),
@@ -240,7 +240,7 @@ class Custom_Recipe_Submission_Template extends Custom_Recipe_Templates {
 	    	'notes' => __( '(e.g. 20 minutes, 1-2 hours, ...)', 'foodiepro' ),
 	    	'required' => false,
 	   		'inputs' => array( 
-		    	'passive_time' => array( 'amount', $this->recipe->prep_time() ),
+		    	'passive_time' => array( 'value', $this->recipe->prep_time() ),
 		    	'passive_time_text' => array ( 'unit', $this->recipe->prep_time_text() ),
 		    )
 		  ),

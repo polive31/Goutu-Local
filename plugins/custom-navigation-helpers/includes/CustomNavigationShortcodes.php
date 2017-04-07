@@ -61,28 +61,24 @@ class CustomNavigationShortcodes extends CustomArchive {
 
 			switch ($tax_id) {
 		    case 'course':
-					$url = "/recettes/plats";
-					//$msg = "De l'apéritif au dessert";
+					$url = "/accueil/recettes/plats";
 					$msg = __('Courses', 'foodiepro');
 					break;
 		    case 'season':
-					$url = "/recettes/saisons";
-					//$msg = "Cuisine de saisons";
+					$url = "/accueil/recettes/saisons";
 					$msg = __('Seasons', 'foodiepro');
 					break;
 		    case 'occasion':
-					$url = "/recettes/occasions";
-					//$msg = "En toutes occasions";
+					$url = "/accueil/recettes/occasions";
 					$msg = __('Occasions', 'foodiepro');
 					break;
 		    case 'diet':
-					$url = "/recettes/regimes";
-					//$msg = "Régimes et diététique";
+					$url = "/accueil/recettes/regimes";
 					$msg = __('Diets', 'foodiepro');
 					break;
 		    case 'cuisine':
 		    	if ( $current_slug=='france' || $parent_slug=='france' ) {
-		    		$url = "/recettes/regions";
+		    		$url = "/accueil/recettes/regions";
 						$msg = __('France', 'foodiepro');
 					}
 		    	elseif (!empty($parent_slug)) {
@@ -90,12 +86,12 @@ class CustomNavigationShortcodes extends CustomArchive {
 		    		$msg = $this->get_cuisine_caption($parent_name);
 		    	}
 		    	else {
-		    		$url = "/recettes/monde";
+		    		$url = "/accueil/recettes/monde";
 						$msg = __('World', 'foodiepro');
 					}
 		    	break;
 		    case 'category':
-					$url = "/blogs";
+					$url = "/accueil/articles";
 					$msg = __('All posts', 'foodiepro');
 					break;	
 			}

@@ -258,12 +258,12 @@ function conditionally_deregister_scripts() {
 }
 
 //Making jQuery Google API
-add_action('init', 'modify_jquery');
-function modify_jquery() {
+add_action('init', 'load_jquery_from_google');
+function load_jquery_from_google() {
 	if (!is_admin()) {
 		// comment out the next two lines to load the local copy of jQuery
 		wp_deregister_script('jquery');
-		wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js', false, '1.8.1');
+		wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js', false, '1.8.1');
 		wp_enqueue_script('jquery');
 	}
 }
@@ -297,8 +297,8 @@ function custom_load_custom_style_sheet() {
 /* Gestion des feuilles de style minifiées */
 add_filter( 'stylesheet_uri', 'use_minified_stylesheet', 10, 1 );
 function use_minified_stylesheet( $default_stylesheet_uri ) {
-	$stylesheet_path = CHILD_THEME_PATH . '/cache/style.min.css';
-	$stylesheet_uri = CHILD_THEME_URL . '/cache/style.min.css';
+	$stylesheet_path = CHILD_THEME_PATH . '/style.min.css';
+	$stylesheet_uri = CHILD_THEME_URL . '/style.min.css';
 	PC::debug(array('Stylesheet URI minified' => $stylesheet_path ));
 	if ( file_exists( $stylesheet_path ) ) {
 		PC::debug( 'File exists !!!' );
@@ -373,6 +373,7 @@ add_action('wp_logout','go_home');
 
 
 /* Prevent new users (not yet approved) to log in */
+add_filter('wp_authenticate_user', 'block_new_users',10,1);
 function block_new_users ($user) {
 		$role=$user->roles[0];
     if ( $role=='pending' )
@@ -380,7 +381,6 @@ function block_new_users ($user) {
 		else
 			return $user;
 }
-add_filter('wp_authenticate_user', 'block_new_users',10,1);
 
 
 

@@ -78,27 +78,27 @@ genesis_register_sidebar( array(
 	'name'			=> __( 'Post Bottom', 'foodiepro' ),
 	'description'	=> __( 'This is the after entry section.', 'foodiepro' ),
 ) );
-genesis_register_sidebar( array(
-	'id'			=> 'recipes-top',
-	'name'			=> __( 'Recipes Top', 'foodiepro' ),
-	'description'	=> __( 'This is the recipes top section.', 'foodiepro' ),
-) );
-genesis_register_sidebar( array(
-	'id'			=> 'recipes-bottom',
-	'name'			=> __( 'Recipes Bottom', 'foodiepro' ),
-	'description'	=> __( 'This is the recipes bottom section.', 'foodiepro' ),
-) );
-/* P.O. Added */
-genesis_register_sidebar( array(
-	'id'			=> 'blogs-top',
-	'name'			=> __( 'Blogs Top', 'foodiepro' ),
-	'description'	=> __( 'This is the blogs top section.', 'foodiepro' ),
-) );
-genesis_register_sidebar( array(
-	'id'			=> 'blogs-bottom',
-	'name'			=> __( 'Blogs Bottom', 'foodiepro' ),
-	'description'	=> __( 'This is the blogs bottom section.', 'foodiepro' ),
-) );
+//genesis_register_sidebar( array(
+//	'id'			=> 'recipes-top',
+//	'name'			=> __( 'Recipes Top', 'foodiepro' ),
+//	'description'	=> __( 'This is the recipes top section.', 'foodiepro' ),
+//) );
+//genesis_register_sidebar( array(
+//	'id'			=> 'recipes-bottom',
+//	'name'			=> __( 'Recipes Bottom', 'foodiepro' ),
+//	'description'	=> __( 'This is the recipes bottom section.', 'foodiepro' ),
+//) );
+///* P.O. Added */
+//genesis_register_sidebar( array(
+//	'id'			=> 'blogs-top',
+//	'name'			=> __( 'Blogs Top', 'foodiepro' ),
+//	'description'	=> __( 'This is the blogs top section.', 'foodiepro' ),
+//) );
+//genesis_register_sidebar( array(
+//	'id'			=> 'blogs-bottom',
+//	'name'			=> __( 'Blogs Bottom', 'foodiepro' ),
+//	'description'	=> __( 'This is the blogs bottom section.', 'foodiepro' ),
+//) );
 genesis_register_sidebar( array(
 	'id'			=> 'social-sidebar',
 	'name'			=> __( 'Social sidebar', 'foodiepro' ),

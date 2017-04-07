@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-//add_action( 'tgmpa_register', 'foodie_pro_register_required_plugins' );
+add_action( 'tgmpa_register', 'foodie_pro_register_required_plugins' );
 /**
  * Register the required plugins for this theme.
  *

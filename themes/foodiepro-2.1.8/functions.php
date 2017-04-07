@@ -17,9 +17,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'CHILD_THEME_NAME', 'Foodie Pro Theme' );
 define( 'CHILD_THEME_VERSION', '2.1.8' );
-define( 'CHILD_THEME_URL', 'http://shaybocks.com/foodie-pro/' );
 define( 'CHILD_THEME_DEVELOPER', 'Shay Bocks' );
-define( 'CHILD_COLOR_THEME', 'autumn' ); /* Other values white */
+define( 'CHILD_COLOR_THEME', 'autumn' ); 
+//define( 'CHILD_COLOR_THEME', 'white' ); 
+define( 'CHILD_THEME_URL', get_stylesheet_directory_uri() );
+define( 'CHILD_THEME_PATH', get_stylesheet_directory() );
+
 
 add_action( 'after_setup_theme', 'foodie_pro_load_textdomain' );
 /**
@@ -167,7 +170,7 @@ function foodie_pro_includes() {
 	}
 
 	// Load the TGM Plugin Activation class.
-	require_once $includes_dir . 'vendor/class-tgm-plugin-activation.php';
+	//require_once $includes_dir . 'vendor/class-tgm-plugin-activation.php';
 
 	// Load everything in the admin root directory.
 	require_once $includes_dir . 'admin/functions.php';
@@ -200,7 +203,7 @@ add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_js' );
  * @return  void
  */
 function foodie_pro_enqueue_js() {
-	$js_uri = get_stylesheet_directory_uri() . '/assets/js/';
+	$js_uri = CHILD_THEME_URL . '/assets/js/';
 	// Add general purpose scripts.
 	wp_enqueue_script(
 		'foodie-pro-general',
@@ -234,12 +237,12 @@ function foodie_pro_add_body_class( $classes ) {
 /* Enqueue default WP jQuery in the footer rather than the header 
 --------------------------------------------------------------------*/
 //add_action( 'wp_default_scripts', 'move_jquery_into_footer' );
-function move_jquery_into_footer( $wp_scripts ) {
-    if( is_admin() ) return;
-    $wp_scripts->add_data( 'jquery', 'group', true );
-    $wp_scripts->add_data( 'jquery-core', 'group', true );
-    $wp_scripts->add_data( 'jquery-migrate', 'group', true );
-}
+//function move_jquery_into_footer( $wp_scripts ) {
+//    if( is_admin() ) return;
+//    $wp_scripts->add_data( 'jquery', 'group', true );
+//    $wp_scripts->add_data( 'jquery-core', 'group', true );
+//    $wp_scripts->add_data( 'jquery-migrate', 'group', true );
+//}
 
 add_action( 'wp_enqueue_scripts', 'conditionally_deregister_scripts', 100 );
 function conditionally_deregister_scripts() {
@@ -254,6 +257,68 @@ function conditionally_deregister_scripts() {
 	}
 }
 
+//Making jQuery Google API
+add_action('init', 'modify_jquery');
+function modify_jquery() {
+	if (!is_admin()) {
+		// comment out the next two lines to load the local copy of jQuery
+		wp_deregister_script('jquery');
+		wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js', false, '1.8.1');
+		wp_enqueue_script('jquery');
+	}
+}
+
+
+/* =================================================================*/
+/* =              ADMIN
+/* =================================================================*/
+
+
+/* =================================================================*/
+/* =              STYLING     
+/* =================================================================*/
+
+/* Chargement des feuilles de style custom et polices */
+add_action( 'wp_enqueue_scripts', 'custom_load_custom_style_sheet' );
+function custom_load_custom_style_sheet() {
+	if ( CHILD_COLOR_THEME=='autumn')
+		wp_enqueue_style( 'color-theme-autumn', CHILD_THEME_URL . '/assets/css/color-theme-autumn.css', array(), CHILD_THEME_VERSION );
+	else 
+		wp_enqueue_style( 'color-theme-white', CHILD_THEME_URL . '/assets/css/color-theme-white.css', array(), CHILD_THEME_VERSION );		
+	//wp_enqueue_style( 'font-awesome', CHILD_THEME_URL . '/assets/fonts/font-awesome/css/font-awesome.min.css', array(), CHILD_THEME_VERSION );
+	//wp_enqueue_style( 'google-font-ruge', '//fonts.googleapis.com/css?family=Ruge+Boogie:400', array(), CHILD_THEME_VERSION );
+	//wp_enqueue_style( 'google-font-crafty-girls', '//fonts.googleapis.com/css?family=Crafty+Girls', array(), CHILD_THEME_VERSION );
+	//wp_enqueue_style( 'google-font-sacramento', '//fonts.googleapis.com/css?family=Sacramento', array(), CHILD_THEME_VERSION );
+	wp_enqueue_style( 'google-font-delius-swash-caps', '//fonts.googleapis.com/css?family=Delius+Swash+Caps', array(), CHILD_THEME_VERSION, true );
+	wp_enqueue_style( 'google-font-delius', '//fonts.googleapis.com/css?family=Delius', array(), CHILD_THEME_VERSION, true );
+	wp_enqueue_style( 'google-font-lobstertwo', '//fonts.googleapis.com/css?family=Lobster+Two', array(), CHILD_THEME_VERSION, true );
+}
+
+/* Gestion des feuilles de style minifiées */
+add_filter( 'stylesheet_uri', 'use_minified_stylesheet', 10, 1 );
+function use_minified_stylesheet( $default_stylesheet_uri ) {
+	$stylesheet_path = CHILD_THEME_PATH . '/cache/style.min.css';
+	$stylesheet_uri = CHILD_THEME_URL . '/cache/style.min.css';
+	PC::debug(array('Stylesheet URI minified' => $stylesheet_path ));
+	if ( file_exists( $stylesheet_path ) ) {
+		PC::debug( 'File exists !!!' );
+		return $stylesheet_uri;	
+	}
+	return $default_stylesheet_uri;	
+}
+
+
+/* Suppression de la feuille de style YARPP */
+function yarpp_dequeue_footer_styles() {
+  wp_dequeue_style('yarppRelatedCss');
+  wp_dequeue_style('yarpp-thumbnails-yarpp-thumbnail');
+}
+add_action('get_footer','yarpp_dequeue_footer_styles');
+
+
+
+
+
 /* =================================================================*/
 /* =              CUSTOM LOGIN                                     =*/
 /* =================================================================*/
@@ -261,7 +326,7 @@ function conditionally_deregister_scripts() {
 /* Sets login page color theme */
 function my_custom_login() {
 	if ( CHILD_COLOR_THEME=='autumn')
-		echo '<link rel="stylesheet" type="text/css" href="' . get_stylesheet_directory_uri() . '/login/custom-login-styles-autumn.css" />';
+		echo '<link rel="stylesheet" type="text/css" href="' . CHILD_THEME_URL . '/login/custom-login-styles-autumn.css" />';
 	else 
 		echo '<link rel="stylesheet" type="text/css" href="' . get_stylesheet_directory_uri() . '/login/custom-login-styles-white.css" />';
 }
@@ -318,39 +383,8 @@ function block_new_users ($user) {
 add_filter('wp_authenticate_user', 'block_new_users',10,1);
 
 
-/* =================================================================*/
-/* =              ADMIN
-/* =================================================================*/
 
 
-/* =================================================================*/
-/* =              STYLING     
-/* =================================================================*/
-
-/* Chargement des feuilles de style custom et polices */
-function custom_load_custom_style_sheet() {
-	if ( CHILD_COLOR_THEME=='autumn')
-		wp_enqueue_style( 'color-theme-autumn', get_stylesheet_directory_uri() . '/assets/css/color-theme-autumn.css', array(), CHILD_THEME_VERSION );
-	else 
-		wp_enqueue_style( 'color-theme-white', get_stylesheet_directory_uri() . '/assets/css/color-theme-white.css', array(), CHILD_THEME_VERSION );		
-	//wp_enqueue_style( 'font-awesome', get_stylesheet_directory_uri() . '/assets/fonts/font-awesome/css/font-awesome.min.css', array(), CHILD_THEME_VERSION );
-	//wp_enqueue_style( 'google-font-ruge', '//fonts.googleapis.com/css?family=Ruge+Boogie:400', array(), CHILD_THEME_VERSION );
-	//wp_enqueue_style( 'google-font-crafty-girls', '//fonts.googleapis.com/css?family=Crafty+Girls', array(), CHILD_THEME_VERSION );
-	//wp_enqueue_style( 'google-font-sacramento', '//fonts.googleapis.com/css?family=Sacramento', array(), CHILD_THEME_VERSION );
-	wp_enqueue_style( 'google-font-delius-swash-caps', '//fonts.googleapis.com/css?family=Delius+Swash+Caps', array(), CHILD_THEME_VERSION );
-	wp_enqueue_style( 'google-font-delius', '//fonts.googleapis.com/css?family=Delius', array(), CHILD_THEME_VERSION );
-	wp_enqueue_style( 'google-font-lobstertwo', '//fonts.googleapis.com/css?family=Lobster+Two', array(), CHILD_THEME_VERSION );
-}
-
-add_action( 'wp_enqueue_scripts', 'custom_load_custom_style_sheet' );
-
-
-/* Suppression de la feuille de style YARPP */
-function yarpp_dequeue_footer_styles() {
-  wp_dequeue_style('yarppRelatedCss');
-  wp_dequeue_style('yarpp-thumbnails-yarpp-thumbnail');
-}
-add_action('get_footer','yarpp_dequeue_footer_styles');
 
 /* =================================================================*/
 /* =              LAYOUT      

@@ -565,7 +565,8 @@ Defaults
 --------------------------------------------- */
 
 body {
-	font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;
+	/*font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;*/
+	font-family:'Oswald', Helvetica, Arial, sans-serif;
 }
 
 input,

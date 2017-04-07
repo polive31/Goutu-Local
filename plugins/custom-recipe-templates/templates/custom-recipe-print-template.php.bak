@@ -107,3 +107,5 @@ function wpurp_custom_print_template( $content, $recipe )
 
 	return $output;
 }
+    
+?>

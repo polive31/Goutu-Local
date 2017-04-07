@@ -351,5 +351,3 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 
 	
 }
-    
-?>

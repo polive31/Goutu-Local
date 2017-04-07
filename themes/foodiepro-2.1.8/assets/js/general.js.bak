@@ -32,36 +32,5 @@
 		return ( null === element.offsetParent );
 	}
 
-	function addNavToggles() {
-		$navs.before( '<div class="menu-toggle"><span></span></div>' );
-		$navs.find( '.sub-menu' ).before( '<div class="sub-menu-toggle"></div>' );
-	}
-
-	function showHideNav() {
-		$( '.menu-toggle, .sub-menu-toggle' ).on( 'click', function() {
-			var $that = $( this );
-			$that.toggleClass( 'active' );
-			$that.next( 'nav, .sub-menu' ).slideToggle( 'slow' );
-		});
-	}
-
-	function reflowNavs() {
-		if ( isHidden( $navs ) ) {
-			$navs.removeAttr( 'style' );
-			$( '.sub-menu-toggle, .menu-toggle' ).removeClass( 'active' );
-		}
-	}
-
-	function navInit() {
-		addNavToggles();
-		showHideNav();
-		debouncedResize(function() {
-			reflowNavs();
-		})();
-	}
-
-	$document.ready(function() {
-		$document.gamajoAccessibleMenu();
-//		navInit();
-	});
+);
 }( jQuery ) );

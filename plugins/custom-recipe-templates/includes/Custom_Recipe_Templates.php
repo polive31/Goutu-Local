@@ -96,112 +96,104 @@ class Custom_Recipe_Templates {
 
 
 	public function enqueue_wpurp_js($js_enqueue) {
-			if ( is_singular('post') ) return '';
-			elseif ( !is_singular('recipe') || ( is_singular('recipe') && is_admin() ) ) return $js_enqueue;
-
 		
-	    $js_enqueue=array(
-	            array(
-	                'name' => 'fraction',
-	                'url' => WPUltimateRecipe::get()->coreUrl . '/vendor/fraction-js/index.js',
-	                'public' => true,
-	                'admin' => true,
-	            ),
-	            /*array(
-	                'url' => WPUltimateRecipe::get()->coreUrl . '/vendor/jquery.tools.min.js',
-	                'public' => true,
-	                'deps' => array(
-	                    'jquery',
-	                ),
-	            ),*/
-	            array(
-	                'name' => 'print_button',
-	                'url' => WPUltimateRecipe::get()->coreUrl . '/js/print_button.js',
-	                'public' => true,
-	                'deps' => array(
-	                    'jquery',
-	                ),
-	                'data' => array(
-	                    'name' => 'wpurp_print',
-	                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
-	                    'nonce' => wp_create_nonce( 'wpurp_print' ),
-	                    'custom_print_css_url' => get_stylesheet_directory_uri() . '/assets/css/custom-recipe-print.css',
-	                    'coreUrl' => WPUltimateRecipe::get()->coreUrl,
-	                    'premiumUrl' => WPUltimateRecipe::is_premium_active() ? WPUltimateRecipePremium::get()->premiumUrl : false,
-	                    'title' => __('Print this Recipe','foodiepro'),
-	                    'permalinks' => get_option('permalink_structure'),
-	                ),
-	            ),
-	    	      array(
-	                'url' => WPUltimateRecipe::get()->coreUrl . '/js/adjustable_servings.js',
-	                'public' => true,
-	                'deps' => array(
-	                    'jquery',
-	                    'fraction',
-	                		'print_button',
-	                ),
-	                'data' => array(
-	                    'name' => 'wpurp_servings',
-	                    'precision' => 1,
-	                    'decimal_character' => ',',
-	                ),
-	            ),
-							/*array(
-	                'url' => WPUltimateRecipePremium::get()->premiumUrl . '/addons/favorite-recipes/js/favorite-recipes.js',
-	               	'premium' => true,
-	                'public' => true,
-	                'setting' => array( 'favorite_recipes_enabled', '1' ),
-	                'deps' => array(
-	                    'jquery',
-	                ),
-	                'data' => array(
-	                    'name' => 'wpurp_favorite_recipe',
-	                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
-	                    'nonce' => wp_create_nonce( 'wpurp_favorite_recipe' ),
-	                )
-	            ),
-							array(
-	                'url' => WPUltimateRecipePremium::get()->premiumUrl . '/js/add-to-shopping-list.js',
-	                'premium' => true,
-	                'public' => true,
-	                'deps' => array(
-	                    'jquery',
-	                ),
-	                'data' => array(
-	                    'name' => 'wpurp_add_to_shopping_list',
-	                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
-	                    'nonce' => wp_create_nonce( 'wpurp_add_to_shopping_list' ),
-	                )
-	            ),*/	  
-							array(
-	                'url' => self::$_PluginPath . 'assets/js/custom_favorite_recipe.js',
-	               	'premium' => true,
-	                'public' => true,
-	                'setting' => array( 'favorite_recipes_enabled', '1' ),
-	                'deps' => array(
-	                    'jquery',
-	                ),
-	                'data' => array(
-	                    'name' => 'wpurp_favorite_recipe',
-	                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
-	                    'nonce' => wp_create_nonce( 'wpurp_favorite_recipe' ),
-	                )
-	            ),	  
-	            array(
-	                'url' => self::$_PluginPath . 'assets/js/custom_shopping_list.js',
-	                'premium' => true,
-	                'public' => true,
-	                'deps' => array(
-	                    'jquery',
-	                ),
-	                'data' => array(
-	                    'name' => 'wpurp_add_to_shopping_list',
-	                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
-	                    'nonce' => wp_create_nonce( 'wpurp_add_to_shopping_list' ),
-	                )
-	            ),
-	    );	
-		  
+		
+			if ( is_singular('recipe') ) {
+				
+				$js_enqueue=array();		
+				$min_js=self::$_PluginPath . 'assets/js/custom-recipe-tools.min.js';
+				
+				if ( file_exists( $min_js ) ) {
+					$js_enqueue[] = array(
+            'name' => 'custom-recipe-tools-minified',
+            'url' => $min_js,
+            'public' => true,
+            'admin' => true,					
+					);
+				}
+				else {
+					
+		    $js_enqueue=array(
+		            array(
+		                'name' => 'fraction',
+		                'url' => WPUltimateRecipe::get()->coreUrl . '/vendor/fraction-js/index.js',
+		                'public' => true,
+		                'admin' => true,
+		            ),
+
+		            array(
+		                'name' => 'print_button',
+		                'url' => WPUltimateRecipe::get()->coreUrl . '/js/print_button.js',
+		                'public' => true,
+		                'deps' => array(
+		                    'jquery',
+		                ),
+		                'data' => array(
+		                    'name' => 'wpurp_print',
+		                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
+		                    'nonce' => wp_create_nonce( 'wpurp_print' ),
+		                    'custom_print_css_url' => get_stylesheet_directory_uri() . '/assets/css/custom-recipe-print.css',
+		                    'coreUrl' => WPUltimateRecipe::get()->coreUrl,
+		                    'premiumUrl' => WPUltimateRecipe::is_premium_active() ? WPUltimateRecipePremium::get()->premiumUrl : false,
+		                    'title' => __('Print this Recipe','foodiepro'),
+		                    'permalinks' => get_option('permalink_structure'),
+		                ),
+		            ),
+		    	      array(
+		                'url' => WPUltimateRecipe::get()->coreUrl . '/js/adjustable_servings.js',
+		                'public' => true,
+		                'deps' => array(
+		                    'jquery',
+		                    'fraction',
+		                		'print_button',
+		                ),
+		                'data' => array(
+		                    'name' => 'wpurp_servings',
+		                    'precision' => 1,
+		                    'decimal_character' => ',',
+		                ),
+		            ),
+								array(
+		                /*'url' => WPUltimateRecipePremium::get()->premiumUrl . '/addons/favorite-recipes/js/favorite-recipes.js',*/
+		                'url' => self::$_PluginPath . 'assets/js/custom_favorite_recipe.js',
+		               	'premium' => true,
+		                'public' => true,
+		                'setting' => array( 'favorite_recipes_enabled', '1' ),
+		                'deps' => array(
+		                    'jquery',
+		                ),
+		                'data' => array(
+		                    'name' => 'wpurp_favorite_recipe',
+		                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
+		                    'nonce' => wp_create_nonce( 'wpurp_favorite_recipe' ),
+		                )
+		            ),	  
+		            array(
+		                /*'url' => WPUltimateRecipePremium::get()->premiumUrl . '/js/add-to-shopping-list.js',*/
+		                'url' => self::$_PluginPath . 'assets/js/custom_shopping_list.js',
+		                'premium' => true,
+		                'public' => true,
+		                'deps' => array(
+		                    'jquery',
+		                ),
+		                'data' => array(
+		                    'name' => 'wpurp_add_to_shopping_list',
+		                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
+		                    'nonce' => wp_create_nonce( 'wpurp_add_to_shopping_list' ),
+		                )
+		            ),
+		    );	
+				}
+			}
+			
+			elseif ( is_page( ['nouvelle-recette', 'mes-recettes'] ) ) {
+			 $js_enqueue = js_enqueue;
+			}
+			
+			else {
+				$js_enqueue=array();
+			}
+			
 		return $js_enqueue;
 	}
 	

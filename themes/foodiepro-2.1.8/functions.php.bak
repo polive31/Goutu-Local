@@ -248,7 +248,7 @@ function foodie_pro_add_body_class( $classes ) {
 add_action( 'wp_enqueue_scripts', 'conditionally_deregister_scripts', 100 );
 function conditionally_deregister_scripts() {
 	
-	global $wp_scripts
+	global $wp_scripts;
 	PC::debug('In enqueue scripts');
 	foreach( $wp_scripts->queue as $handle ) {
      $obj = $wp_scripts->registered [$handle];

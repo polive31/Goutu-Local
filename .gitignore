@@ -67,6 +67,7 @@ themes/foodiepro-2.1.8/images/Backup/*
 plugins/*
 !plugins/bp-custom.php
 !plugins/batch-manage-posts/
+!plugins/custom-js-css-optimization/
 !plugins/custom-google-tag-manager/
 !plugins/custom-navigation-helpers/
 !plugins/custom-social-helpers/

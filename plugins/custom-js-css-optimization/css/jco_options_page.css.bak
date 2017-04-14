@@ -19,8 +19,7 @@ tr.enqueued_asset {
 }
 
 tr.enqueued_asset.modified {
-	color: #c54a00;
-  font-weight: bold;
+	color:blue;
 }
 
 /* TOGGLE SWITCH STYLING

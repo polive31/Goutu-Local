@@ -247,7 +247,7 @@ function foodie_pro_add_body_class( $classes ) {
 
 
 //Making jQuery Google API
-add_action('init', 'load_jquery_from_google');
+//add_action('init', 'load_jquery_from_google');
 function load_jquery_from_google() {
 	if (!is_admin()) {
 		// comment out the next two lines to load the local copy of jQuery

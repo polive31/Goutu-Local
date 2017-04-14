@@ -19,6 +19,7 @@ class CustomStarRatings {
 			'rating' => array (
 				'weight' => 2,
 				'title'=> __('Dish','custom-star-rating'),
+				'legend'=> __('Appreciation of the dish'),
 				'question'=> __('How did you like this dish ?'),
 				'caption' => array(
 								__('Disappointing','custom-star-rating'),
@@ -31,6 +32,7 @@ class CustomStarRatings {
 			'clarity' => array(
 				'weight' => 1,
 				'title'=> __('Recipe','custom-star-rating'),
+				'legend'=> __('Clarity of the recipe'),
 				'question'=> __('How clear was the recipe ?','custom-star-rating'),
 				'caption' => array(
 								__('Confusing','custom-star-rating'),

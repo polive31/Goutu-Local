@@ -94,8 +94,8 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		$display_style = $a['display'];
 		$comment_rating = ( $a['source'] == 'comment');
 		
-		if (!$comment_rating) $this->dbg('In POST rating display shortcode','');
-		if ($comment_rating) $this->dbg('In COMMENT rating display shortcode','');
+		//if (!$comment_rating) $this->dbg('In POST rating display shortcode','');
+		//if ($comment_rating) $this->dbg('In COMMENT rating display shortcode','');
 
 		// Setup categories to be displayed
 		if ( $a['category']=='all' ) $display_cats=self::$ratingCats;	
@@ -156,7 +156,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 			if ( ! ( $comment_rating && $rating==0 ) ) { // Don't show empty ratings in comments 	
 				if ( $display_style!='minimal' ) {
 				?>
-				<td class="rating-category"><?php echo __($cat['title'], 'custom-star-rating')?></td>
+				<td class="rating-category" title="<?php echo __($cat['caption'], 'custom-star-rating')?>"><?php echo __($cat['title'], 'custom-star-rating')?></td>
 				<?php
 				}?>
 				<td class="rating" title="<?php echo $rating?> : <?php echo $this->rating_caption($rating,$id)?>">

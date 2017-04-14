@@ -19,9 +19,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 //**               INITIALIZATION
 //*************************************************************************
 
-require_once 'includes/JS_CSS_Enqueue.php';
+require_once 'includes/JCO_Settings.php';
+require_once 'includes/JS_CSS_Optimize.php';
 
-new JS_CSS_Optimize();
+new JCO_Settings();
 
 
 

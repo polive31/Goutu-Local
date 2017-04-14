@@ -42,7 +42,7 @@ class JS_CSS_Optimize {
 	
 	public function render_msg() {
 		echo 'RENDER MSG SUCCESSFUL !';
-    echo '<p>' . esc_attr( $_GET['msg'] . '</p>';
+    echo '<p>' . esc_attr( $_GET['msg'] ) . '</p>';
 	}
 	
 	public function jco_settings_init() {

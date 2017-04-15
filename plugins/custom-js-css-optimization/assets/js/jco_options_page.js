@@ -1,17 +1,13 @@
 
 jQuery(document).ready(function(){
-	jQuery(document).on('change','.in_footer_input',function(){
+	jQuery(document).on('change','.setting-input',function(){
 		//alert("Script location modified");
 		var select = jQuery(this);
 		var table_cell=select.closest('td') ;                            
 		//var table_row=select.closest('tr') ;                            
   	var table_cell_class=table_cell.attr("class"); 
   	console.log('class : ', table_cell_class); 
-  	if ( table_cell_class *= "modified") {
-  		console.log('found modified class');
-  		table_cell.removeClass( "modified" );   
-  	} 
-		else {
+  	if ( table_cell_class != "modified") {
   		console.log('modified class not found'); 
   		table_cell.addClass( "modified" );   
 		} 		

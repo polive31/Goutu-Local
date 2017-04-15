@@ -1,6 +1,6 @@
 
 jQuery(document).ready(function(){
-	jQuery(document).on('change','.in_footer_input',function(){
+	jQuery(document).on('change','.setting-input',function(){
 		//alert("Script location modified");
 		var select = jQuery(this);
 		var table_cell=select.closest('td') ;                            

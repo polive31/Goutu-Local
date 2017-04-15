@@ -247,7 +247,7 @@ function foodie_pro_add_body_class( $classes ) {
 
 
 //Making jQuery Google API
-add_action('init', 'load_jquery_from_google');
+//add_action('init', 'load_jquery_from_google');
 function load_jquery_from_google() {
 	if (!is_admin()) {
 		// comment out the next two lines to load the local copy of jQuery
@@ -287,13 +287,17 @@ function custom_load_custom_style_sheet() {
 add_filter( 'stylesheet_uri', 'use_minified_stylesheet', 10, 1 );
 function use_minified_stylesheet( $default_stylesheet_uri ) {
 	$stylesheet_path = CHILD_THEME_PATH . '/style.min.css';
-	$stylesheet_uri = CHILD_THEME_URL . '/style.min.css';
-	PC::debug(array('Stylesheet URI minified' => $stylesheet_path ));
-	if ( file_exists( $stylesheet_path ) ) {
-		PC::debug( 'File exists !!!' );
+	$default_stylesheet_path = CHILD_THEME_PATH . '/style.css';
+	$stylesheet_uri =  wp_make_link_relative( CHILD_THEME_URL . '/style.min.css');
+	$default_stylesheet_uri =  wp_make_link_relative( $default_stylesheet_uri );
+	$min_mod_date = filemtime( $stylesheet_path );
+	$orig_mod_date = filemtime( $default_stylesheet_path );
+	if ( file_exists( $stylesheet_path ) && ($min_mod_date >= $orig_mod_date) ) {
+		PC::debug( 'Minified stylesheet exist and is valid' );
 		return $stylesheet_uri;	
 	}
 	return $default_stylesheet_uri;	
+	PC::debug( 'Minified stylesheet doesn t exist or too old' );
 }
 
 

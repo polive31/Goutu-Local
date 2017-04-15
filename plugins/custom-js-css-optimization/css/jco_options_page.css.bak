@@ -18,8 +18,10 @@ tr.enqueued_asset {
   border-bottom: 1px dotted #000;
 }
 
-tr.enqueued_asset.modified {
-	color:blue;
+td.modified input {
+td.modified select {
+	color: #c54a00;
+  font-weight: bold;
 }
 
 /* TOGGLE SWITCH STYLING

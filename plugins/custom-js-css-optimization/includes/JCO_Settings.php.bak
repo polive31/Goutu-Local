@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -7,29 +7,59 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 class JCO_Settings {
-	
+
 	protected $menu_slug = 'js_css_optimization';
 	protected $form_action = 'jco_update_settings';
 	protected $nonce = 'wp8756';
-	protected $urls_to_request; 
+	protected $urls_to_request;
 	protected $header_scripts;
 	protected $header_styles;
-	
+	protected $enqueued_assets; 
+//	$enqueued_assets format : 
+//	array(
+//			'pages' => array(
+//				'slug1',
+//				'slug2',
+//				...
+//			)
+//		'scripts' => array(
+//			'handle' => 'example',
+//			'filename' => 'wp_content/plugins/example/example.js',
+//			'in_footer' => 'false',
+//			'deps' => array(
+//					'handle1',
+//					'handle2',
+//					...
+//			),
+//			'mods'  => array(
+//				'min' => 'true',
+//				'in_footer' => 'true',
+//				'group' => array( 
+//					'name' => 'group1',
+//					'index' => '0',
+//				),
+//			),
+//		),
+//		'styles' => array(
+//			...
+//		)
+//	);
+
 	public function __construct() {
-		
+
 		// Admin options page
 		add_action( 'admin_menu', array($this, 'add_js_css_menu_option'));
 		add_action( 'admin_init', array($this, 'jco_settings_init') );
 		//add_action( 'admin_post_$this->action', array ( $this, 'jco_update_settings_cb' ) );
 		add_action( 'admin_post_' . $this->form_action, array ( $this, 'jco_update_settings_cb' ) );
-	
+
 		// load assets for this page
     add_action( 'admin_enqueue_scripts', array($this,'load_admin_assets') );
-		
+
 		$this->urls_to_request = array(
-			home_url(), 
-			$this->get_permalink_by_slug('bredele'), 
-			$this->get_permalink_by_slug('les-myrtilles'), 
+			home_url(),
+			$this->get_permalink_by_slug('bredele'),
+			$this->get_permalink_by_slug('les-myrtilles'),
 		);
 
 		if ( get_option( 'jco_enqueue_recording' ) == 'on' ) {
@@ -39,17 +69,23 @@ class JCO_Settings {
 		else {
 			remove_action( 'wp_head', array($this, 'record_header_assets') );
 			remove_action( 'wp_print_footer_scripts', array($this, 'record_footer_assets') );
-		}		
+		}
 		
+		// hydrate properties with options content
+		$this->enqueued_assets = get_option( 'jco_enqueued_assets' );
+		if (!isset($this->enqueued_assets['pages'])) $this->enqueued_assets['pages']=array();
+		if (!isset($this->enqueued_assets['scripts'])) $this->enqueued_assets['scripts']=array();
+		if (!isset($this->enqueued_assets['styles'])) $this->enqueued_assets['styles']=array();
+
 	}
 
 	public function load_admin_assets() {
 		PC::debug('In load_admin_styles');
 		PC::debug( plugins_url( '/css/jco_options_page.css', __FILE__ ) );
-		
+
   	wp_enqueue_style( 'jco_admin_css', plugins_url( '../css/jco_options_page.css', __FILE__ ) , false, '1.0.0' );
   	wp_enqueue_script( 'jco_admin_js', plugins_url( '../js/jco_options_page.js', __FILE__ ) , false, '1.0.0' );
-	}  
+	}
 
 	public function add_js_css_menu_option() {
 		$option_page_id = add_submenu_page(
@@ -60,16 +96,16 @@ class JCO_Settings {
       $this->menu_slug,
       array($this, 'output_options_page')
 	    );
-	    
+
 		add_action( "load-$option_page_id", array ( $this, 'load_option_page_cb' ) );
 	}
-	
-	
+
+
 	public function jco_settings_init() {
-	    // register settings
+	    // register options
 	    register_setting('enqueued_list_options', 'jco_enqueued_assets');
 	    register_setting('enqueued_list_options', 'jco_enqueue_recording');
-	 
+
 	    // register "general settings" section
 	    add_settings_section(
 	        'general_settings_section',
@@ -85,7 +121,7 @@ class JCO_Settings {
 	        array($this,'output_section_cb'),
 	        'js_css_optimization'
 	    );
-	 
+
 	    // register new fields in the general settings section
 	    add_settings_field(
 	        'jco_enqueue_recording',
@@ -95,32 +131,40 @@ class JCO_Settings {
 	        'general_settings_section'
 	    );
 
+	    // register new fields in the enqueued list section
+	    add_settings_field(
+	        'jco_recorded_pages',
+	        'Pages recorded',
+	        array($this,'output_pages_list'),
+	        'js_css_optimization',
+	        'enqueued_list_section'
+	    );
 
 	    // register new fields in the enqueued list section
 	    add_settings_field(
 	        'jco_enqueued_scripts',
 	        'Enqueued Scripts',
-	        array($this,'jco_scripts_output'),
+	        array($this,'output_scripts_list'),
 	        'js_css_optimization',
 	        'enqueued_list_section'
 	    );
-	    
+
 			add_settings_field(
 	        'jco_enqueued_styles',
 	        'Enqueued Styles',
-	        array($this,'jco_styles_output'),
+	        array($this,'output_styles_list'),
 	        'js_css_optimization',
 	        'enqueued_list_section'
 	    );
 	}
 
 	public function output_section_cb( $section ) {
-		PC::debug('In section callback');
+		//PC::debug('In section callback');
 	  ?>
 		<h1><? echo esc_html($section['title']); ?></h1>
 		<?php
 	}
-	
+
 	public function jco_recording_output() {
 		PC::debug( array('jco_enqueue_recording'=>get_option( 'jco_enqueue_recording' )) );
 		$record = ( get_option( 'jco_enqueue_recording' ) == 'on')?true:false;
@@ -132,60 +176,87 @@ class JCO_Settings {
 		</label>
 		<?php
 	}
-	
-	
-	public function jco_scripts_output() {
+
+	public function output_pages_list() {
+		foreach ($this->enqueued_assets['pages'] as $slug) {
+			echo '<p>' . $slug . '</p>';
+		}
+	}
+
+	public function output_scripts_list() {
 		$this->	output_items_list('scripts');
 	}
-	
-	public function jco_styles_output() {
+
+	public function output_styles_list() {
 		$this->	output_items_list('styles');
 	}
-	
+
 	public function output_items_list( $type) {
-	  // get the value of the setting we've registered with register_setting()
-    $setting = get_option( 'jco_enqueued_assets' );
-      
-    // output the field
-    if (! isset ($setting[$type]) ) return;?>
+
+    if (! isset ( $this->enqueued_assets[$type] ) ) return;
+		$assets = $this->enqueued_assets[$type];
+		?>
+		
     <table class="enqueued_assets">
     	<tr>
     		<th> Handler </th>
     		<th> Dependencies </th>
     		<th> File size </th>
     		<th> Location </th>
-    		<th> Modified </th>
     	</tr>
-    <?php	
-    foreach ($setting[$type] as $handle => $script ) {	
-    	$filename = $script['filename'];
-    	$deps = $script['deps'];
+    <?php
+    foreach ($assets as $handle => $asset ) {
+    	$filename = $asset['filename'];
+    	$deps = $asset['deps'];
 	    $path = parse_url($filename, PHP_URL_PATH);
 			//To get the dir, use: dirname($path)
 			$path = $_SERVER['DOCUMENT_ROOT'] . $path;
 	    $size = size_format( filesize($path) );
-	    $in_footer = $script['in_footer'];  	
-	    $location = ( $in_footer )?'footer':'header';  	
-	    $modified = isset($script['modified'])?$script['modified']:'false';  	
+	    $in_footer = $this->field_value( $asset, 'in_footer')=='true'?true:false;;
     	?>
-    	<tr class="enqueued_asset <?php echo $modified?'modified':'';?>" id="<?php echo $handle;?>">
+    	
+    	<tr class="enqueued-asset <?php echo $type;?>" id="<?php echo $handle;?>">
 	    	<td title="<?php echo $filename;?>"><?php echo $handle;?></td>
 	    	<td><?php foreach ($deps as $dep) {echo $dep . '<br>';}?></td>
 	    	<td title="<?php echo $path;?>"><?php echo $size;?></td>
-	    	<td>
-	    		<select class="in_footer_select" name="<?php echo $handle . '_in_footer';?>">
+	    	<td class="<?php echo $this->field_class( $asset, 'in_footer');?>">
+	    		<select class="in_footer_input" name="<?php echo $this->field_name( $type, $handle, 'in_footer');?>">
   					<option value="false" <?php echo (!$in_footer)?'selected':'';?>>header</option>
   					<option value="true" <?php echo ($in_footer)?'selected':'';?>>footer</option>
 					</select>
 				</td>
-				<td>
-					<input type="text" name="<?php echo $handle . '_modified';?>" value="<?php echo $modified;?>">
-				</td>	
     	</tr>
     	<?php
     }?>
     </table>
 		<?php
+	}
+	
+	private function field_class( $asset, $field ) {
+		$class = '';
+		if ( isset( $asset['mods'][ $field ] ) ) {
+			$class='modified';
+		}
+		return $class;
+	}
+	
+	private function field_name( $type, $handle, $field ) {
+		return  $type . '_' . $handle . '_in_footer';
+	}
+	
+	private function field_value( $asset, $field ) {
+		PC::debug('In Field Value for ' . $field);
+		PC::debug(array('Asset : ' => $asset));
+		if ( isset( $asset['mods'][ $field ] ) ) {
+			$value=$asset['mods'][ $field ];
+			PC::debug('Mod found !');
+		}
+		else {
+			PC::debug('Mod not found');
+			$value=$asset[ $field ];
+		}
+		PC::debug( array(' Field value of ' . $field . ' : ' => $value ));
+		return $value;
 	}
 
 	public function output_options_page() {
@@ -193,7 +264,7 @@ class JCO_Settings {
 	    if (!current_user_can('manage_options')) {
 	        return;
 	    }
-	    
+
 			$redirect = menu_page_url( $this->menu_slug, FALSE );?>
 
 	    <div class="wrap">
@@ -201,12 +272,12 @@ class JCO_Settings {
 	        <div class="body">
 	        </div>
 	        <form action="<?php echo admin_url( 'admin-post.php' ); ?>" method="post">
-	        		<?php 
+	        		<?php
 	            // output security fields for the registered setting "wporg_options"
 	            settings_fields('options');
 	            // output setting sections and their fields
 	            do_settings_sections('js_css_optimization');
-	            
+
 	            ?>
 	            <table class="button-table" col="2">
 	            <tr>
@@ -224,51 +295,45 @@ class JCO_Settings {
 	}
 
 
-/* FORM SUBMISSION 
+/* FORM SUBMISSION
 --------------------------------------------------------------*/
-	
+
 	public function jco_update_settings_cb() {
-		
+
 		// check user capabilities
     if (!current_user_can('manage_options'))
         return;
-		
+
     if ( ! wp_verify_nonce( $_POST[ $this->nonce ], $this->form_action ) )
         die( 'Invalid nonce.' . var_export( $_POST, true ) );
 		//PC::debug('In jco_update_settings_cb function');
 
 		if ( isset ( $_POST[ 'jco_refresh' ] ) ) {
 		   	PC::debug( 'In Form submission : REFRESH' );
-		    PC::debug(array('input value'=> $_POST[ 'jquery-core_modified' ]));
-		    $handle = 'jquery-core';
-		    PC::debug(array('input value'=> $_POST[ $handle . '_modified' ]));
-		    
 		    $msg = 'refresh';
 		}
 		elseif ( isset ( $_POST[ 'jco_reset' ] ) ) {
 		    update_option( 'jco_enqueued_assets', array() );
+		    $this->enqueued_assets = array();
 		    $msg = 'reset';
 		}
 		else {
 				PC::debug( 'In Form submission : SAVE' );
 				$recording = isset($_POST[ 'jco_recording_checkbox' ])?$_POST[ 'jco_recording_checkbox' ]:'off';
 				update_option( 'jco_enqueue_recording', $recording);
-				$assets = get_option('jco_enqueued_assets'); 
-				PC::debug( array('assets before submission'=> $assets) );
-				$types = array('scripts', 'styles');
-				foreach ( $types as $type ) {
-					PC::debug( array('Looping through type ' => $type ) );
-					foreach ( $assets[$type] as $handle=>$asset ) {
-						if ( isset($_POST[ $handle . '_modified' ] ) ) {
-							if ( $_POST[ $handle . '_modified' ] == 'true' ) {
-								$assets[$type][$handle]['in_footer']=$_POST[ $handle . '_in_footer' ];
-								$assets[$type][$handle]['modified']=$_POST[ $handle . '_modified' ];
-							}
-						}
+				
+				PC::debug( array('assets before submission'=> $this->enqueued_assets) );
+				foreach ( $this->enqueued_assets as $type=>$assets ) {
+					if ( ( $type != 'scripts' ) && ($type != 'styles') ) continue;
+					foreach ( $assets as $handle=>$asset ) {
+						PC::debug( array('Looping : type = ' => $type ) );
+						PC::debug( array('Looping : asset = ' => $asset ) );
+						PC::debug( array('Looping : handle = ' => $handle ) );
+						$this->update_field($type, $handle, 'in_footer');
 					}
 				}
-				PC::debug( array('assets after submission'=> $assets) );
-				update_option( 'jco_enqueued_assets', $assets);
+				PC::debug( array('assets after submission'=> $this->enqueued_assets) );
+				update_option( 'jco_enqueued_assets', $this->enqueued_assets);
 		    $msg = 'save';
 		}
 
@@ -278,14 +343,28 @@ class JCO_Settings {
 
 		wp_safe_redirect( $url );
 		exit;
-}
-    
-  public function load_option_page_cb() {
-		//PC::debug('In load_option_page_cb function');
-		if (isset ( $_GET['msg'] ) ) 
-			add_action( 'admin_notices', array ( $this, 'render_msg' ) );
 	}
 	
+	public function update_field( $type, $handle, $field ) {
+		$input = $this->field_name($type, $handle, $field);
+		if ( $_POST[ $input ] != $this->enqueued_assets[$type][$handle][$field] ) {
+			$this->enqueued_assets[$type][$handle]['mods'][$field] = $_POST[ $input ];
+			PC::debug( array('Asset field modified (mods) !' => $this->enqueued_assets[$type][$handle]) );
+		}
+		else {
+			if ( isset( $this->enqueued_assets[$type][$handle]['mods'][$field]) ) {
+				unset($this->enqueued_assets[$type][$handle]['mods'][$field]);
+				PC::debug( array('Mod Field removed !' => $this->enqueued_assets[$type][$handle] ) );
+			}
+		}
+	}
+
+  public function load_option_page_cb() {
+		//PC::debug('In load_option_page_cb function');
+		if (isset ( $_GET['msg'] ) )
+			add_action( 'admin_notices', array ( $this, 'render_msg' ) );
+	}
+
 	public function render_msg() {
 		?>
 		<div class="notice notice-success is-dismissible">
@@ -295,7 +374,7 @@ class JCO_Settings {
 	}
 
 
-/* ENQUEUED SCRIPTS & STYLES MONITORING 
+/* ENQUEUED SCRIPTS & STYLES MONITORING
 -------------------------------------------------------*/
 
 	public function auto_detect() {
@@ -315,35 +394,38 @@ class JCO_Settings {
 			wp_remote_get($request['url'], $request['args']);
 		}
 	}
-	
+
 	public function get_permalink_by_slug( $slug) {
     $permalink = null;
     $page = get_page_by_path( $slug );
     if( null != $page ) {
         $permalink = get_permalink( $page->ID );
-    } 
+    }
     return $permalink;
 	}
-		
+
 	public function record_header_assets() {
-		PC::debug('In save enqueued scripts !!!');
-		$this->record_enqueued_scripts( false ); 
+		//PC::debug('In save enqueued scripts !!!');
+		if (!in_array(get_permalink(), $this->enqueued_assets['pages']) ) {
+			$this->enqueued_assets['pages'][] = get_permalink();
+		}
+		$this->record_enqueued_scripts( false );
 	}
-	
+
 	public function record_footer_assets() {
 		$this->record_enqueued_scripts( true );
 	}
-	
+
 	public function record_enqueued_scripts( $in_footer ) {
 		PC::debug('In record enqueued scripts !!!');
 		global $wp_scripts;
-		
+
 		/* Select data source depending whether in header or footer */
 		if ($in_footer) {
 			//PC::debug('FOOTER record');
-			//PC::debug(array( '$header_scripts' => $this->header_scripts ));			
+			//PC::debug(array( '$header_scripts' => $this->header_scripts ));
 			$source=array_diff( $wp_scripts->done, $this->header_scripts );
-			//PC::debug(array('$source'=>$source));			
+			//PC::debug(array('$source'=>$source));
 		}
 		else {
 			$source=$wp_scripts->done;
@@ -352,26 +434,22 @@ class JCO_Settings {
 			//PC::debug(array('$source'=>$source));
 		}
 
-	  $assets = get_option('jco_enqueued_assets');
-	  $scripts = $assets['scripts'];
-	  PC::debug(array('scripts before update' => $scripts));
+	  PC::debug(array('assets before update' => $this->enqueued_assets));
 		
 		foreach( $source as $handle ) {
 	     $obj = $wp_scripts->registered [$handle];
-	  	 //PC::debug(array('handle' => $handle));
-			 //PC::debug( array('$obj'=>$obj) );
-	     $scripts[$handle]=array(
+	  	 PC::debug(array('handle' => $handle));
+			 PC::debug( array('$obj'=>$obj) );
+	     $this->enqueued_assets['scripts'][$handle]=array(
 	     	'filename' => $obj->src,
-	     	'in_footer' => $in_footer,
+	     	'in_footer' => var_export($in_footer, true), // convert boolean to string
 	     	'deps' => $obj->deps,
 	     );
 		}
-		
-		$assets['scripts'] = $scripts;
-		
-		update_option( 'jco_enqueued_assets', $assets, true );
-	  PC::debug(array('scripts after update' => $assets));
-	  	  
+
+		update_option( 'jco_enqueued_assets', $this->enqueued_assets, true );
+	  PC::debug(array('assets after update' => $this->enqueued_assets));
+
 	}
 
 

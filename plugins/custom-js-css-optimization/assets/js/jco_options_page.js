@@ -28,17 +28,22 @@ jQuery(document).ready(function(){
 
 // Toggle section visibility
 jQuery(document).ready(function(){
-	jQuery(document).on('click','label[for="jco-enqueued-scripts"]',function(e){
+	jQuery( 'th[scope="row"]' ).click(function(e){
 		e.preventDefault();
 		e.stopPropagation();
 		//alert("Script header clicked");
-		var select = jQuery(this).parents( "th" );
+		var select = jQuery(this);
+		//var section_content = select.siblings( "td" ).children( ".section-wrapper" );
 		var section_content = select.siblings( "td" );
-		console.log( 'section_label', select );
-		console.log( 'section_content', section_content );
-		//section_content.addClass( "hidden" );
-		section_content.toggle(200);
-		
+		//console.log( 'section_label', select );
+		//console.log( 'section_content', section_content );
+		if ( select.attr('class') != "arrow-up") {
+			select.addClass( "arrow-up" );
+		}
+		else {
+			select.removeClass( "arrow-up" );
+		}
+		section_content.slideToggle( 400, "swing" );
 		
 		
 //  	var modified = table_row.find('input.modified');

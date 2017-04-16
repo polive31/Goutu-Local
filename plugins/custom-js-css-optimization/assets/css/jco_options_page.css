@@ -12,12 +12,34 @@ table.enqueued_assets td {
 
 }
 
-label[for='jco-enqueued-scripts'],
-label[for='jco-enqueued-styles'] {
-    background: pink;
+.foldable th[scope="row"] {
+  display: block;
+  float: left;
+	border-bottom: 1px solid #AAA;
+  width: 100%;
 }
 
-tr.enqueued_asset {
+.foldable th[scope="row"]:after {
+	font-family:FontAwesome;
+	float:right;
+	content: "\f077"; /* fa-chevron-up */
+}
+
+.foldable th[scope="row"]:hover {
+	cursor:pointer;
+}
+
+
+.foldable th[scope="row"].arrow-up:after {
+	content: "\f078"; /* fa-chevron-down */
+}
+
+.foldable th[scope="row"] + td {
+  float: left;
+  display: block;
+}
+
+tr.enqueued_asset
   height:20px;
   border-top: 1px dotted #000;
   border-bottom: 1px dotted #000;

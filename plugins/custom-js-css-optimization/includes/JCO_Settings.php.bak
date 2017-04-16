@@ -143,6 +143,9 @@ class JCO_Settings {
 	        array($this,'output_pages_list'),
 	        'js_css_optimization',
 	        'enqueued_list_section'
+					array( 
+	        	'label_for' => 'jco-recorded-pages',
+	        	'class' => 'foldable' )
 	    );
 
 	    // register new fields in the enqueued list section
@@ -152,7 +155,9 @@ class JCO_Settings {
 	        array($this,'output_scripts_list'),
 	        'js_css_optimization',
 	        'enqueued_list_section',
-	        array( 'label_for' => 'jco-enqueued-scripts' )
+	        array( 
+	        	'label_for' => 'jco-enqueued-scripts',
+	        	'class' => 'foldable' )
 	    );
 
 			add_settings_field(
@@ -161,7 +166,9 @@ class JCO_Settings {
 	        array($this,'output_styles_list'),
 	        'js_css_optimization',
 	        'enqueued_list_section',
-	        array( 'label_for' => 'jco-enqueued-styles' )
+	        array(
+	        	'label_for' => 'jco-enqueued-styles',
+	        	'class' => 'foldable' )
 
 	    );
 	}
@@ -206,7 +213,7 @@ class JCO_Settings {
 		PC::debug( array( 'enqueued ' . $type . ' : '=>$assets ));
 		?>
 		
-    <table class="enqueued_assets">
+    <table>
     	<tr>
     		<th> Handler </th>
     		<th> Dependencies </th>
@@ -256,6 +263,7 @@ class JCO_Settings {
     	<?php
     }?>
     </table>
+
 		<?php
 	}
 	

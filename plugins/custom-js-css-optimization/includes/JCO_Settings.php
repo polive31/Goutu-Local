@@ -86,7 +86,7 @@ class JCO_Settings {
 		PC::debug( plugins_url( '/css/jco_options_page.css', __FILE__ ) );
 
   	wp_enqueue_style( 'jco_admin_css', plugins_url( '../assets/css/jco_options_page.css', __FILE__ ) , false, '1.0.0' );
-  	wp_enqueue_style( 'jco_admin_fa', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', false, '1.0.0' );
+  	//wp_enqueue_style( 'jco_admin_fa', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', false, '1.0.0' );
   	//wp_enqueue_style( 'jco_admin_fa', plugins_url( '../assets/fonts/font-awesome/css/font-awesome.min.css', __FILE__ ), array(), '4.7.0' );
   	//wp_enqueue_script( 'jco_admin_fa', 'https://use.fontawesome.com/96ebedc785.js', false, '1.0.0' );
   	wp_enqueue_script( 'jco_admin_js', plugins_url( '../assets/js/jco_options_page.js', __FILE__ ) , false, '1.0.0' );
@@ -234,7 +234,8 @@ class JCO_Settings {
 
 	    $location = $this->field_value( $asset, 'location');
 	    $minify = $this->field_value( $asset, 'minify');
-	    $asset_is_minified = $asset[ 'minify' ]?true:false; 
+	    $asset_is_minified = ( $asset[ 'minify' ] == 'yes')?true:false; 
+	    $already_minified_msg = __('This file is already minimized within its plugin', 'jco');
 	    
     	?>
     	
@@ -253,8 +254,8 @@ class JCO_Settings {
 				</td>
 				
 				<td class="<?php echo $this->field_class( $asset, 'minify');?>">
-	    		<select class="setting-input minify" name="<?php echo $this->field_name( $type, $handle, 'minify');?>">
-  					<option value="no" <?php echo ($minify=='no')?'selected':'';?> <?php echo ($asset_is_minified)?'disabled':'';?> >no</option>
+	    		<select class="setting-input minify" <?php echo ($asset_is_minified)?'disabled':'';?> <?php echo ($asset_is_minified)?'title="' . $already_minified_msg . '"' :'';?> name="<?php echo $this->field_name( $type, $handle, 'minify');?>">
+  					<option value="no" <?php echo ($minify=='no')?'selected':'';?>  >no</option>
   					<option value="yes" <?php echo ($minify=='yes')?'selected':'';?> >yes</option>
 					</select>
 				</td>
@@ -269,8 +270,12 @@ class JCO_Settings {
 	
 	private function output_size_notice( $path, $is_minified ) {
 		if ( ( filesize($path) > self::$SIZE_LARGE ) && (!$is_minified) ) {
-			echo 'LARGE !';
-			echo '<i class="icon-warning-sign" title="' . __('This file is large and not minized by its plugin : minification recommended', 'jco') . '"></i>';
+			$msg = __('This file is large and not minized by its plugin : minification recommended', 'jco');
+			?>
+			
+			<i class="icon-warning-sign" title="<?php echo $msg;?>"></i>
+			
+			<?php
 		}
 	}
 	
@@ -501,7 +506,7 @@ class JCO_Settings {
 				$obj = $asset['registered'][$handle];
 				PC::debug(array('handle' => $handle));
 				PC::debug( array('$obj'=>$obj) );
-				$this->enqueued_assets[$type][$handle]['filename']=$obj->src;
+				$this->enqueued_assets[$type][$handle]['filename']=wp_make_link_relative( $obj->src );
 				$this->enqueued_assets[$type][$handle]['location']=$in_footer?'footer':'header';
 				$this->enqueued_assets[$type][$handle]['deps']=$obj->deps;
 				$this->enqueued_assets[$type][$handle]['minify']=(strpos( $obj->src, '.min.' ) != false )?'yes':'no';

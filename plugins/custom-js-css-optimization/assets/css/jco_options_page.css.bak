@@ -1,6 +1,7 @@
 /* GENERAL ADMIN PAGE STYLING
 ----------------------------------------------------------*/
 
+
 table.enqueued_assets {
 	border-collapse: collapse;
 }
@@ -9,7 +10,6 @@ table.enqueued_assets td {
   line-height: 14px;
   font-size: 12px;
   padding: 5px 10px;
-
 }
 
 .foldable th[scope="row"] {
@@ -25,8 +25,6 @@ table.enqueued_assets td {
 	content: "\f077"; /* fa-chevron-up */
 }
 
-.foldable th[scope="row"]:hover:after,
-.foldable th[scope="row"]::hover,
 .foldable th[scope="row"]:hover {
 	cursor:pointer;
 }
@@ -41,17 +39,27 @@ table.enqueued_assets td {
   display: block;
 }
 
-tr.enqueued_asset
+tr.enqueued_asset {
   height:20px;
   border-top: 1px dotted #000;
   border-bottom: 1px dotted #000;
 }
+
 
 td.modified input,
 td.modified select {
 	color: #c54a00;
   font-weight: bold;
 }
+
+
+.icon-warning-sign:before {
+	font-style:normal;
+	color:red;	
+	font-family:FontAwesome;
+	content:"\f071"; /* icon-warning-sign */
+}
+
 
 /* TOGGLE SWITCH STYLING
 ----------------------------------------------------------*/

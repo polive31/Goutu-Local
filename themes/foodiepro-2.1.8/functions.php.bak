@@ -296,8 +296,8 @@ function use_minified_stylesheet( $default_stylesheet_uri ) {
 		PC::debug( 'Minified stylesheet exist and is valid' );
 		return $stylesheet_uri;	
 	}
-	return $default_stylesheet_uri;	
 	PC::debug( 'Minified stylesheet doesn t exist or too old' );
+	return $default_stylesheet_uri;	
 }
 
 

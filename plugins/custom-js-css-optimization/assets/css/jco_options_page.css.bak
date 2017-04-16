@@ -12,13 +12,21 @@ table.enqueued_assets td {
 
 }
 
+label[for='jco-enqueued-scripts'],
+label[for='jco-enqueued-styles'] {
+    background: pink;
+}
+
+    background: pink;
+}
+
 tr.enqueued_asset {
   height:20px;
   border-top: 1px dotted #000;
   border-bottom: 1px dotted #000;
 }
 
-td.modified input {
+td.modified input,
 td.modified select {
 	color: #c54a00;
   font-weight: bold;

@@ -151,7 +151,8 @@ class JCO_Settings {
 	        'Enqueued Scripts',
 	        array($this,'output_scripts_list'),
 	        'js_css_optimization',
-	        'enqueued_list_section'
+	        'enqueued_list_section',
+	        array( 'label_for' => 'jco-enqueued-scripts' )
 	    );
 
 			add_settings_field(
@@ -159,7 +160,9 @@ class JCO_Settings {
 	        'Enqueued Styles',
 	        array($this,'output_styles_list'),
 	        'js_css_optimization',
-	        'enqueued_list_section'
+	        'enqueued_list_section',
+	        array( 'label_for' => 'jco-enqueued-styles' )
+
 	    );
 	}
 
@@ -213,10 +216,8 @@ class JCO_Settings {
     	</tr>
     <?php
     foreach ($assets as $handle => $asset ) {
-			PC::debug(array('Asset in output_items_list : ' => $asset));
+			//PC::debug(array('Asset in output_items_list : ' => $asset));
     	$filename = $asset['filename'];
-    	$asset_is_minified = (strpos( $filename, '.min.' ) != false);
-    	$setting_is_minified = $asset['mods']['minify']=='yes';
 
     	$deps = $asset['deps'];
 	    $path = parse_url($filename, PHP_URL_PATH);
@@ -225,6 +226,9 @@ class JCO_Settings {
 	    $size = size_format( filesize($path) );
 
 	    $location = $this->field_value( $asset, 'location');
+	    $minify = $this->field_value( $asset, 'minify');
+	    $asset_is_minified = $asset[ 'minify' ]?true:false; 
+	    
     	?>
     	
     	<tr class="enqueued-asset <?php echo $type;?>" id="<?php echo $handle;?>">
@@ -243,8 +247,8 @@ class JCO_Settings {
 				
 				<td class="<?php echo $this->field_class( $asset, 'minify');?>">
 	    		<select class="setting-input minify" name="<?php echo $this->field_name( $type, $handle, 'minify');?>">
-  					<option value="no" <?php echo ($setting_is_minified)?'selected':'';?> <?php echo ($asset_is_minified)?'disabled':'';?> >no</option>
-  					<option value="yes" <?php echo ($setting_is_minified)?'selected':'';?> >yes</option>
+  					<option value="no" <?php echo ($minify=='no')?'selected':'';?> <?php echo ($asset_is_minified)?'disabled':'';?> >no</option>
+  					<option value="yes" <?php echo ($minify=='yes')?'selected':'';?> >yes</option>
 					</select>
 				</td>
     	
@@ -473,6 +477,7 @@ class JCO_Settings {
 
 	  PC::debug(array('assets before update' => $this->enqueued_assets));
 				
+				
 		PC::debug('Scripts recording');		
 		foreach( $scripts as $handle ) {
 			$obj = $wp_scripts->registered [$handle];
@@ -481,6 +486,8 @@ class JCO_Settings {
 			$this->enqueued_assets['scripts'][$handle]['filename']=$obj->src;
 			$this->enqueued_assets['scripts'][$handle]['location']=$in_footer?'footer':'header';
 			$this->enqueued_assets['scripts'][$handle]['deps']=$obj->deps;
+			$this->enqueued_assets['scripts'][$handle]['minify']=(strpos( $obj->src, '.min.' ))?'no':'yes';
+			PC::debug( array('$this->enqueued_assets[scripts][$handle]'=>$this->enqueued_assets['scripts'][$handle]) );
 		}
 		
 		PC::debug('Styles recording');		
@@ -491,10 +498,10 @@ class JCO_Settings {
 			$this->enqueued_assets['styles'][$handle]['filename']=$obj->src;
 			$this->enqueued_assets['styles'][$handle]['location']=$in_footer?'footer':'header';
 			$this->enqueued_assets['styles'][$handle]['deps']=$obj->deps;
+			$this->enqueued_assets['styles'][$handle]['minify']=(strpos( $obj->src, '.min.' ))?'no':'yes';
 		}
 		
 	  PC::debug(array('assets after update' => $this->enqueued_assets));
-
 		update_option( 'jco_enqueued_assets', $this->enqueued_assets, true );
 
 	}

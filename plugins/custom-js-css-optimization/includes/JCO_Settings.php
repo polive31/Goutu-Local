@@ -26,8 +26,10 @@ class JCO_Settings {
 //			)
 //		'scripts' => array(
 //			'handle' => 'example',
+//		  'enqueue_index' => 0, 1, 2...
 //			'filename' => 'wp_content/plugins/example/example.js',
 //			'location' => 'footer', 'header', 'disabled'
+//			'size' => 
 //			'deps' => array(
 //					'handle1',
 //					'handle2',
@@ -215,25 +217,21 @@ class JCO_Settings {
 		
     <table>
     	<tr>
-    		<th> Handler </th>
+    		<th> handle </th>
     		<th> Dependencies </th>
     		<th> File size </th>
     		<th> Location </th>
     		<th> Minify </th>
     	</tr>
     <?php
-    foreach ($assets as $handle => $asset ) {
+    foreach ($assets as $asset ) {
 			//PC::debug(array('Asset in output_items_list : ' => $asset));
+    	$handle = $asset['handle'];
     	$filename = $asset['filename'];
-
     	$deps = $asset['deps'];
-	    $path = parse_url($filename, PHP_URL_PATH);
-			//To get the dir, use: dirname($path)
-			$path = $_SERVER['DOCUMENT_ROOT'] . $path;
-	    $size = size_format( filesize($path) );
-
 	    $location = $this->field_value( $asset, 'location');
 	    $minify = $this->field_value( $asset, 'minify');
+	    $size = $this->field_value( $asset, 'size');
 	    $asset_is_minified = ( $asset[ 'minify' ] == 'yes')?true:false; 
 	    $already_minified_msg = __('This file is already minimized within its plugin', 'jco');
 	    
@@ -243,7 +241,7 @@ class JCO_Settings {
 	    	<td title="<?php echo $filename;?>"><?php echo $handle;?></td>
 	    	<td><?php foreach ($deps as $dep) {echo $dep . '<br>';}?></td>
 	    
-	    	<td title="<?php echo $path;?>"><?php echo $size;?><?php $this->output_size_notice( $path, $asset_is_minified || $setting_is_minified );?></td>
+	    	<td title="<?php echo $filename;?>"><?php echo size_format( $size );?><?php $this->output_size_notice( $size, $asset_is_minified || $setting_is_minified );?></td>
 	    	
 	    	<td class="<?php echo $this->field_class( $asset, 'location');?>">
 	    		<select class="setting-input location" name="<?php echo $this->field_name( $type, $handle, 'location');?>">
@@ -268,8 +266,8 @@ class JCO_Settings {
 		<?php
 	}
 	
-	private function output_size_notice( $path, $is_minified ) {
-		if ( ( filesize($path) > self::$SIZE_LARGE ) && (!$is_minified) ) {
+	private function output_size_notice( $size, $is_minified ) {
+		if ( ( $size > self::$SIZE_LARGE ) && (!$is_minified) ) {
 			$msg = __('This file is large and not minized by its plugin : minification recommended', 'jco');
 			?>
 			
@@ -372,7 +370,8 @@ class JCO_Settings {
 				PC::debug( array('assets before submission'=> $this->enqueued_assets) );
 				foreach ( $this->enqueued_assets as $type=>$assets ) {
 					if ( ( $type != 'scripts' ) && ($type != 'styles') ) continue;
-					foreach ( $assets as $handle=>$asset ) {
+					foreach ( $assets as $asset ) {
+						$handle = $asset['handle'];
 						PC::debug( array('Looping : type = ' => $type ) );
 						PC::debug( array('Looping : asset = ' => $asset ) );
 						PC::debug( array('Looping : handle = ' => $handle ) );
@@ -497,34 +496,36 @@ class JCO_Settings {
 			'styles'=>array(
 					'handles'=>$styles,
 					'registered'=> $wp_styles->registered),
-			);	
+			);
+				
+		PC::debug( array( '$assets' => $assets ) );		
 			
 		foreach( $assets as $type=>$asset ) {
 			PC::debug( $type . ' recording');		
 					
-			foreach( $asset['handles'] as $handle ) {
+			foreach( $asset['handles'] as $index => $handle ) {
 				$obj = $asset['registered'][$handle];
 				PC::debug(array('handle' => $handle));
 				PC::debug( array('$obj'=>$obj) );
-				$this->enqueued_assets[$type][$handle]['filename']=wp_make_link_relative( $obj->src );
-				$this->enqueued_assets[$type][$handle]['location']=$in_footer?'footer':'header';
-				$this->enqueued_assets[$type][$handle]['deps']=$obj->deps;
-				$this->enqueued_assets[$type][$handle]['minify']=(strpos( $obj->src, '.min.' ) != false )?'yes':'no';
-				PC::debug( array('enqueued asset'=>$this->enqueued_assets[$type][$handle]) );
-			}
+				$path = wp_make_link_relative( $obj->src );
+				$uri = $_SERVER['DOCUMENT_ROOT'] . $path;
+				
+				$this->enqueued_assets[$type][] = array(
+					'handle' => $handle,
+					'enqueue_index' => $index,
+					'filename' => $path,
+					'location' => $in_footer?'footer':'header',
+					'deps' => $obj->deps,
+					'minify' => (strpos( $obj->src, '.min.' ) != false )?'yes':'no',
+					'deps' => $obj->deps,
+					'size' => filesize( $uri ),
+				);
+
+				PC::debug( array( 'index' => $index ));
+				PC::debug( array('enqueued asset'=>$this->enqueued_assets[$type]) );
 			
+			}
 		}
-		
-//		PC::debug('Styles recording');		
-//		foreach( $styles as $handle ) {
-//			$obj = $wp_styles->registered [$handle];
-//			PC::debug(array('handle' => $handle));
-//			PC::debug( array('$obj'=>$obj) );
-//			$this->enqueued_assets['styles'][$handle]['filename']=$obj->src;
-//			$this->enqueued_assets['styles'][$handle]['location']=$in_footer?'footer':'header';
-//			$this->enqueued_assets['styles'][$handle]['deps']=$obj->deps;
-//			$this->enqueued_assets['styles'][$handle]['minify']=(strpos( $obj->src, '.min.' ) != false )?'yes':'no';
-//		}
 		
 	  PC::debug(array('assets after update' => $this->enqueued_assets));
 		update_option( 'jco_enqueued_assets', $this->enqueued_assets, true );

@@ -24,3 +24,31 @@ jQuery(document).ready(function(){
                
 	});
 });
+
+
+// Toggle section visibility
+jQuery(document).ready(function(){
+	jQuery(document).on('click','label[for="jco-enqueued-scripts"]',function(e){
+		e.preventDefault();
+		e.stopPropagation();
+		//alert("Script header clicked");
+		var select = jQuery(this).parents( "th" );
+		var section_content = select.siblings( "td" );
+		console.log( 'section_label', select );
+		console.log( 'section_content', section_content );
+		//section_content.addClass( "hidden" );
+		section_content.toggle(200);
+		
+		
+		
+//  	var modified = table_row.find('input.modified');
+//  	console.log('modified value before update : ', modified.val()); 
+// 		modified.val('true');
+//  	console.log('modified value after update : ', modified.val()); 
+  	
+  	//'name': $(this).children('input[name="paramName"]').val(),
+    //'value': $(this).children('input[name="paramPrice"]').val()         
+               
+	});
+});
+	

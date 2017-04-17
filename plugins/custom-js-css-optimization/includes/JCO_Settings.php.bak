@@ -207,13 +207,36 @@ class JCO_Settings {
 	public function output_styles_list() {
 		$this->	output_items_list('styles');
 	}
+	
+	public function get_sorted_list( $assets, $field, $sort_order, $sort_type ) {
+
+		$sort_column = array_column($assets, $field, 'handle' );		
+		PC::debug( array( 'sort column : '=>$sort_column ));
+
+		if ( $sort_order == SORT_ASC)
+			asort($sort_column, $sort_type );
+		else 
+			arsort($sort_column, $sort_type );
+		
+//		foreach ($sort_column as $key => $value) {
+//			echo '<p>' . $key . ' : ' . $value . '<p>';
+//		}
+		
+		return $sort_column;
+		
+	}
 
 	public function output_items_list( $type) {
 
     if (! isset ( $this->enqueued_assets[$type] ) ) return;
 		$assets = $this->enqueued_assets[$type];
-		PC::debug( array( 'enqueued ' . $type . ' : '=>$assets ));
+		//PC::debug( array( 'enqueued ' . $type . ' : '=>$assets ));
+		
+		$sorted_list = $this->get_sorted_list( $assets, 'priority', SORT_DESC, SORT_NUMERIC );
+		PC::debug( array( 'sorted list : '=>$sorted_list ));
+		
 		?>
+		
 		
     <table>
     	<tr>
@@ -224,9 +247,9 @@ class JCO_Settings {
     		<th> Minify </th>
     	</tr>
     <?php
-    foreach ($assets as $asset ) {
+    foreach ($sorted_list as $handle => $priority ) {
 			//PC::debug(array('Asset in output_items_list : ' => $asset));
-    	$handle = $asset['handle'];
+    	$asset = $assets[$handle];
     	$filename = $asset['filename'];
     	$deps = $asset['deps'];
 	    $location = $this->field_value( $asset, 'location');
@@ -290,17 +313,17 @@ class JCO_Settings {
 	}
 	
 	private function field_value( $asset, $field ) {
-		PC::debug('In Field Value for ' . $field);
-		PC::debug(array('Asset : ' => $asset));
+		//PC::debug('In Field Value for ' . $field);
+		//PC::debug(array('Asset : ' => $asset));
 		if ( isset( $asset['mods'][ $field ] ) ) {
 			$value=$asset['mods'][ $field ];
-			PC::debug('Mod found !');
+			//PC::debug('Mod found !');
 		}
 		else {
-			PC::debug('Mod not found');
+			//PC::debug('Mod not found');
 			$value=$asset[ $field ];
 		}
-		PC::debug( array(' Field value of ' . $field . ' : ' => $value ));
+		//PC::debug( array(' Field value of ' . $field . ' : ' => $value ));
 		return $value;
 	}
 
@@ -463,6 +486,7 @@ class JCO_Settings {
 
 	public function record_footer_assets() {
 		$this->record_enqueued_assets( true );
+		update_option( 'jco_enqueued_assets', $this->enqueued_assets, true );
 	}
 
 	public function record_enqueued_assets( $in_footer ) {
@@ -498,7 +522,7 @@ class JCO_Settings {
 					'registered'=> $wp_styles->registered),
 			);
 				
-		PC::debug( array( '$assets' => $assets );		
+		PC::debug( array( '$assets' => $assets ) );		
 			
 		foreach( $assets as $type=>$asset ) {
 			PC::debug( $type . ' recording');		
@@ -507,10 +531,23 @@ class JCO_Settings {
 				$obj = $asset['registered'][$handle];
 				PC::debug(array('handle' => $handle));
 				PC::debug( array('$obj'=>$obj) );
-				$path = wp_make_link_relative( $obj->src );
-				$uri = $_SERVER['DOCUMENT_ROOT'] . $path;
 				
-				$this->enqueued_assets[$type][] = array(
+				$path = strtok($obj->src, '?'); // remove any query parameters
+				
+				if ( strpos( $path, 'wp-' ) != false) {
+					$path = wp_make_link_relative( $path );
+					//PC::debug( array('$path'=>$path) );
+					$uri = $_SERVER['DOCUMENT_ROOT'] . $path;
+					//PC::debug( array('$uri'=>$uri) );
+					$size = filesize( $uri );
+					//PC::debug( array('$size'=>$size) );
+				}
+				else {
+					$path = $obj->src;
+					$size = 0;
+				}
+				
+				$tmp = array(
 					'handle' => $handle,
 					'enqueue_index' => $index,
 					'filename' => $path,
@@ -518,18 +555,31 @@ class JCO_Settings {
 					'deps' => $obj->deps,
 					'minify' => (strpos( $obj->src, '.min.' ) != false )?'yes':'no',
 					'deps' => $obj->deps,
-					'size' => filesize( $uri ),
+					'size' => $size,
 				);
-
-				PC::debug( array( 'index' => $index ));
-				PC::debug( array('enqueued asset'=>$this->enqueued_assets[$type]) );
+				$priority = $this->get_priority( $tmp );
+				$tmp['priority'] = $priority;
+				$this->enqueued_assets[$type][$handle] = $tmp;
+				
+				PC::debug( array('$enqueued asset after assignment'=>$this->enqueued_assets[$type]) );
 			
 			}
 		}
-		
 	  PC::debug(array('assets after update' => $this->enqueued_assets));
-		update_option( 'jco_enqueued_assets', $this->enqueued_assets, true );
-
+	}
+	
+	
+	private function get_priority( $asset ) {
+		$base = ( $asset['location'] == 'header' )?1000:0;
+		PC::debug(array('base after location'=>$score));
+		$base += ( ( $asset['minify'] == 'no' )?500:0 ) ; 	
+		PC::debug(array('base after minify'=>$score));
+		$base += ( $asset['size'] >= self::$SIZE_LARGE )?200:0; 	
+		$base += ( $asset['size'] <= self::$SIZE_SMALL )?100:0; 	
+		PC::debug(array('base after size'=>$base));
+		$score += $base + $asset['size']/100000*100; 	
+		PC::debug(array('score'=>$score));
+		return $score;
 	}
 
 

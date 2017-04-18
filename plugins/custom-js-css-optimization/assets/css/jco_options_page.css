@@ -55,6 +55,7 @@ td.modified select {
 
 
 .user-notification:before {
+	padding-left:5px;
 	font-style:normal;
 	font-family:FontAwesome;
 	content:"\f071"; /* icon-warning-sign */

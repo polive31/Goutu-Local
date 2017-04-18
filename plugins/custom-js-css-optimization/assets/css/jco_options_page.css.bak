@@ -55,16 +55,17 @@ td.modified select {
 
 
 .user-notification:before {
+	padding-left:10px;
 	font-style:normal;
 	font-family:FontAwesome;
 	content:"\f071"; /* icon-warning-sign */
 }
 
-#issue:before
+.user-notification#issue {
 	color:red;	
 }
 
-#warning:before
+.user-notification#warning {
 	color:orange;	
 }
 

@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class JCO_Settings {
 
 	protected static $SIZE_SMALL = 1000;
-	protected static $SIZE_LARGE = 10000;
+	protected static $SIZE_LARGE = 1000;
 	protected static $SIZE_MAX = 200000;
 	protected $menu_slug = 'js_css_optimization';
 	protected $form_action = 'jco_update_settings';
@@ -17,7 +17,8 @@ class JCO_Settings {
 	protected $urls_to_request;
 	protected $header_scripts;
 	protected $header_styles;
-	protected $enqueued_assets; 
+	protected $enqueued_assets;
+	protected $user_notification; 
 //	$enqueued_assets format : 
 //	array(
 //			'pages' => array(
@@ -234,6 +235,7 @@ class JCO_Settings {
 		//PC::debug( array( 'enqueued ' . $type . ' : '=>$assets ));
 		
 		$sorted_list = $this->get_sorted_list( $assets, 'priority', SORT_DESC, SORT_NUMERIC );
+		
 		PC::debug( array( 'sorted list : '=>$sorted_list ));
 		
 		?>
@@ -250,8 +252,8 @@ class JCO_Settings {
     	</tr>
     <?php
     foreach ($sorted_list as $handle => $priority ) {
-			//PC::debug(array('Asset in output_items_list : ' => $asset));
     	$asset = $assets[$handle];
+			PC::debug(array('Asset in output_items_list : ' => $asset));
     	$filename = $asset['filename'];
     	$deps = $asset['deps'];
 	    $location = $this->get_field_value( $asset, 'location');
@@ -263,11 +265,11 @@ class JCO_Settings {
     	?>
     	
     	<tr class="enqueued-asset <?php echo $type;?>" id="<?php echo $handle;?>">
-	    	<td title="<?php echo $filename;?>"><?php echo $handle;?></td>
+	    	<td title="<?php echo $filename;?>"><?php echo $handle;?><?php $this->output_user_notification( $asset );?></td>
 	    	<td><?php echo $priority;?></td>
 	    	<td><?php foreach ($deps as $dep) {echo $dep . '<br>';}?></td>
 	    
-	    	<td title="<?php echo $filename;?>"><?php echo size_format( $size );?><?php $this->output_size_notice( $asset );?></td>
+	    	<td title="<?php echo $filename;?>"><?php echo size_format( $size );?></td>
 	    	
 	    	<td class="<?php echo $this->get_field_class( $asset, 'location');?>">
 	    		<select class="setting-input location" name="<?php echo $this->get_field_name( $type, $handle, 'location');?>">
@@ -292,24 +294,52 @@ class JCO_Settings {
 		<?php
 	}
 	
-	private function output_size_notice( $asset ) {
+	private function output_user_notification( $asset ) {
 		
 		$size= $asset['size'];
 		PC::debug(array('size : '=>$size));
-		$is_minified = $this->get_field_value('minify') == 'yes';
+		$is_minified = $this->get_field_value( $asset, 'minify') == 'yes';
 		PC::debug(array('is_minified: '=>$is_minified));
+		$in_footer = ( $this->get_field_value( $asset, 'location') == 'footer');
 		
-		if ( ( $size > self::$SIZE_LARGE ) && (!$is_minified) ) {
-			$msg = __('This file is large and not minized by its plugin : minification recommended', 'jco');
-		?>
-			<i class="user-notification" id="issue" title="<?php echo $msg;?>"></i>
-		<?php					}
-		elseif ( ( $size < self::$SIZE_SMALL ) && (!isset( $asset['in_group']) ) ) {
-			$msg = __('This file is small and requires a specific http request : it is recommended to inline it, or to group it with other files', 'jco');
-		?>
-			<i class="user-notification" id="warning" title="<?php echo $msg;?>"></i>
-		<?php				
+		$this->reset_user_notification();
+		if (!$is_minified) {
+			if ( $size > self::$SIZE_LARGE ) {
+				$level = 'issue';
+				$msg = __('This file is large and not minified : minification highly recommended', 'jco');	
+				$this->enqueue_user_notification( $msg, $level);
+			}
+			elseif ( $size != 0 ) {
+				$level = 'warning';
+				$msg = __('This file is not minified : minification recommended', 'jco');	
+				$this->enqueue_user_notification( $msg, $level);
+			}
+		}
+
+		if ( ( $size > self::$SIZE_LARGE ) && ( !$in_footer ) ) {
+			$level = 'issue';
+			$msg = __('Large files loaded in the header will slow down page display : moving to footer or at least conditional enqueue recommended', 'jco');			
+			$this->enqueue_user_notification( $msg, $level);
 		}	
+		
+		if ( ( $size < self::$SIZE_SMALL ) && (!isset( $asset['in_group']) ) ) {
+			$level = 'warning';
+			$msg = __('This file is small and requires a specific http request : it is recommended to inline it, or to group it with other files', 'jco');			
+			$this->enqueue_user_notification( $msg, $level);
+		}	
+		
+		echo $this->user_notification;
+		
+	}
+	
+	private function reset_user_notification() {
+		$this->user_notification='';
+	}
+	
+	private function enqueue_user_notification( $msg, $level) {
+		if ($msg != '') {
+			$this->user_notification .= '<i class="user-notification" id="' . $level . '" title="' . $msg . '"></i>';
+		}		
 	}
 	
 	private function get_field_class( $asset, $field ) {
@@ -329,13 +359,13 @@ class JCO_Settings {
 		//PC::debug(array('Asset : ' => $asset));
 		if ( isset( $asset['mods'] ) && (isset( $asset['mods'][ $field ] ) ) ) {
 			$value=$asset['mods'][ $field ];
-			//PC::debug('Mod found !');
+			PC::debug('Mod found !');
 		}
 		else {
-			//PC::debug('Mod not found');
+			PC::debug('Mod not found');
 			$value=$asset[ $field ];
 		}
-		//PC::debug( array(' Field value of ' . $field . ' : ' => $value ));
+		PC::debug( array(' Field value of ' . $field . ' : ' => $value ));
 		return $value;
 	}
 
@@ -412,6 +442,7 @@ class JCO_Settings {
 						PC::debug( array('Looping : handle = ' => $handle ) );
 						$this->update_field($type, $handle, 'location');
 						$this->update_field($type, $handle, 'minify');
+						$this->enqueued_assets[$type][$handle]['priority']=$this->get_priority($this->enqueued_assets[$type][$handle]); 
 					}
 				}
 				PC::debug( array('assets after submission'=> $this->enqueued_assets) );
@@ -545,14 +576,15 @@ class JCO_Settings {
 				PC::debug( array('$obj'=>$obj) );
 				
 				$path = strtok($obj->src, '?'); // remove any query parameters
+				PC::debug( array('$path'=>$path) );
 				
 				if ( strpos( $path, 'wp-' ) != false) {
 					$path = wp_make_link_relative( $path );
-					//PC::debug( array('$path'=>$path) );
+					PC::debug( array('$path after relative'=>$path) );
 					$uri = $_SERVER['DOCUMENT_ROOT'] . $path;
-					//PC::debug( array('$uri'=>$uri) );
+					PC::debug( array('$uri'=>$uri) );
 					$size = filesize( $uri );
-					//PC::debug( array('$size'=>$size) );
+					PC::debug( array('$size'=>$size) );
 				}
 				else {
 					$path = $obj->src;
@@ -582,17 +614,34 @@ class JCO_Settings {
 	
 	
 	private function get_priority( $asset ) {
-		$base = ( $asset['location'] == 'header' )?1000:0;
-		PC::debug(array('base after location'=>$score));
-		$base += ( ( $asset['minify'] == 'no' )?500:0 ) ; 	
-		PC::debug(array('base after minify'=>$score));
-		$base += ( $asset['size'] >= self::$SIZE_LARGE )?200:0; 	
-		$base += ( $asset['size'] <= self::$SIZE_SMALL )?100:0; 	
-		PC::debug(array('base after size'=>$base));
-		$normalizer = ( $asset['size'] >= self::$SIZE_LARGE )?self::$SIZE_MAX:( $asset['size'] <= self::$SIZE_SMALL )?self::$SIZE_SMALL:self::$SIZE_LARGE;
-		PC::debug(array('normalizer'=>$normalizer));
-		$score += $base + $asset['size']/$normalizer*100; 	
-		PC::debug(array('score'=>$score));
+		
+		$location = $this->get_field_value( $asset, 'location');
+		$minify = $this->get_field_value( $asset, 'minify');
+		$size = $this->get_field_value( $asset, 'size');
+		
+		
+		$score = ( $location == 'header' )?1000:0;
+		//PC::debug(array('base after location'=>$score));
+		
+		$score += ( $size >= self::$SIZE_LARGE )?500:0; 	
+		
+		$score += ( ($minify == 'no') && ( $size != 0 ))?200:0;
+		//PC::debug(array('base after minify'=>$score));
+		
+		$score += ( $size <= self::$SIZE_SMALL )?100:0; 	
+		//PC::debug(array('base after size'=>$score));
+
+		if ( $size >= self::$SIZE_LARGE ) 
+			$normalizer = self::$SIZE_MAX;
+		elseif ( $size <= self::$SIZE_SMALL )
+			$normalizer = self::$SIZE_SMALL;
+		else 
+			$normalizer = self::$SIZE_LARGE;
+		//PC::debug(array('normalizer'=>$normalizer));
+
+		$score += $size/$normalizer*100; 	
+		//PC::debug(array('score'=>$score));
+
 		return $score;
 	}
 

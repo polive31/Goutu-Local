@@ -48,18 +48,25 @@ tr.enqueued_asset {
 
 td.modified input,
 td.modified select {
-	color: #c54a00;
+	/*color: #c54a00;*/
+	color: #2196F3;
   font-weight: bold;
 }
 
 
-.icon-warning-sign:before {
+.user-notification:before {
 	font-style:normal;
-	color:red;	
 	font-family:FontAwesome;
 	content:"\f071"; /* icon-warning-sign */
 }
 
+#issue:before
+	color:red;	
+}
+
+#warning:before
+	color:orange;	
+}
 
 /* TOGGLE SWITCH STYLING
 ----------------------------------------------------------*/

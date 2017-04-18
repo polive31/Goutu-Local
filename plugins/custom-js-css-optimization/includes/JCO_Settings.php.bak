@@ -8,8 +8,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class JCO_Settings {
 
-	protected static $SIZE_SMALL = 100;
+	protected static $SIZE_SMALL = 1000;
 	protected static $SIZE_LARGE = 10000;
+	protected static $SIZE_MAX = 200000;
 	protected $menu_slug = 'js_css_optimization';
 	protected $form_action = 'jco_update_settings';
 	protected $nonce = 'wp8756';
@@ -241,6 +242,7 @@ class JCO_Settings {
     <table>
     	<tr>
     		<th> handle </th>
+    		<th> priority </th>
     		<th> Dependencies </th>
     		<th> File size </th>
     		<th> Location </th>
@@ -252,9 +254,9 @@ class JCO_Settings {
     	$asset = $assets[$handle];
     	$filename = $asset['filename'];
     	$deps = $asset['deps'];
-	    $location = $this->field_value( $asset, 'location');
-	    $minify = $this->field_value( $asset, 'minify');
-	    $size = $this->field_value( $asset, 'size');
+	    $location = $this->get_field_value( $asset, 'location');
+	    $minify = $this->get_field_value( $asset, 'minify');
+	    $size = $this->get_field_value( $asset, 'size');
 	    $asset_is_minified = ( $asset[ 'minify' ] == 'yes')?true:false; 
 	    $already_minified_msg = __('This file is already minimized within its plugin', 'jco');
 	    
@@ -262,20 +264,21 @@ class JCO_Settings {
     	
     	<tr class="enqueued-asset <?php echo $type;?>" id="<?php echo $handle;?>">
 	    	<td title="<?php echo $filename;?>"><?php echo $handle;?></td>
+	    	<td><?php echo $priority;?></td>
 	    	<td><?php foreach ($deps as $dep) {echo $dep . '<br>';}?></td>
 	    
-	    	<td title="<?php echo $filename;?>"><?php echo size_format( $size );?><?php $this->output_size_notice( $size, $asset_is_minified || $setting_is_minified );?></td>
+	    	<td title="<?php echo $filename;?>"><?php echo size_format( $size );?><?php $this->output_size_notice( $asset );?></td>
 	    	
-	    	<td class="<?php echo $this->field_class( $asset, 'location');?>">
-	    		<select class="setting-input location" name="<?php echo $this->field_name( $type, $handle, 'location');?>">
+	    	<td class="<?php echo $this->get_field_class( $asset, 'location');?>">
+	    		<select class="setting-input location" name="<?php echo $this->get_field_name( $type, $handle, 'location');?>">
   					<option value="header" <?php echo ($location=='header')?'selected':'';?> >header</option>
   					<option value="footer" <?php echo ($location=='footer')?'selected':'';?> >footer</option>
   					<option value="disabled" <?php echo ($location=='disabled')?'selected':'';?>>disabled</option>
 					</select>
 				</td>
 				
-				<td class="<?php echo $this->field_class( $asset, 'minify');?>">
-	    		<select class="setting-input minify" <?php echo ($asset_is_minified)?'disabled':'';?> <?php echo ($asset_is_minified)?'title="' . $already_minified_msg . '"' :'';?> name="<?php echo $this->field_name( $type, $handle, 'minify');?>">
+				<td class="<?php echo $this->get_field_class( $asset, 'minify');?>">
+	    		<select class="setting-input minify" <?php echo ($asset_is_minified)?'disabled':'';?> <?php echo ($asset_is_minified)?'title="' . $already_minified_msg . '"' :'';?> name="<?php echo $this->get_field_name( $type, $handle, 'minify');?>">
   					<option value="no" <?php echo ($minify=='no')?'selected':'';?>  >no</option>
   					<option value="yes" <?php echo ($minify=='yes')?'selected':'';?> >yes</option>
 					</select>
@@ -289,18 +292,27 @@ class JCO_Settings {
 		<?php
 	}
 	
-	private function output_size_notice( $size, $is_minified ) {
+	private function output_size_notice( $asset ) {
+		
+		$size= $asset['size'];
+		PC::debug(array('size : '=>$size));
+		$is_minified = $this->get_field_value('minify');
+		PC::debug(array('is_minified: '=>$is_minified));
+		
 		if ( ( $size > self::$SIZE_LARGE ) && (!$is_minified) ) {
 			$msg = __('This file is large and not minized by its plugin : minification recommended', 'jco');
-			?>
-			
-			<i class="icon-warning-sign" title="<?php echo $msg;?>"></i>
-			
-			<?php
-		}
+		?>
+			<i class="user-notification" id="issue" title="<?php echo $msg;?>"></i>
+		<?php					}
+		elseif ( ( $size < self::$SIZE_SMALL ) && (!isset( $asset['in_group']) ) ) {
+			$msg = __('This file is small and requires a specific http request : it is recommended to inline it, or to group it with other files', 'jco');
+		?>
+			<i class="user-notification" id="warning" title="<?php echo $msg;?>"></i>
+		<?php				
+		}	
 	}
 	
-	private function field_class( $asset, $field ) {
+	private function get_field_class( $asset, $field ) {
 		$class = '';
 		if ( isset( $asset['mods'][ $field ] ) ) {
 			$class='modified';
@@ -308,14 +320,14 @@ class JCO_Settings {
 		return $class;
 	}
 	
-	private function field_name( $type, $handle, $field ) {
+	private function get_field_name( $type, $handle, $field ) {
 		return  $type . '_' . $handle . '_' . $field;
 	}
 	
-	private function field_value( $asset, $field ) {
+	private function get_field_value( $asset, $field ) {
 		//PC::debug('In Field Value for ' . $field);
 		//PC::debug(array('Asset : ' => $asset));
-		if ( isset( $asset['mods'][ $field ] ) ) {
+		if ( isset( $asset['mods'] ) && (isset( $asset['mods'][ $field ] ) ) ) {
 			$value=$asset['mods'][ $field ];
 			//PC::debug('Mod found !');
 		}
@@ -416,7 +428,7 @@ class JCO_Settings {
 	}
 	
 	public function update_field( $type, $handle, $field ) {
-		$input = $this->field_name($type, $handle, $field);
+		$input = $this->get_field_name($type, $handle, $field);
 		if ( $_POST[ $input ] != $this->enqueued_assets[$type][$handle][$field] ) {
 			$this->enqueued_assets[$type][$handle]['mods'][$field] = $_POST[ $input ];
 			PC::debug( array('Asset field modified (mods) !' => $this->enqueued_assets[$type][$handle]) );
@@ -577,7 +589,9 @@ class JCO_Settings {
 		$base += ( $asset['size'] >= self::$SIZE_LARGE )?200:0; 	
 		$base += ( $asset['size'] <= self::$SIZE_SMALL )?100:0; 	
 		PC::debug(array('base after size'=>$base));
-		$score += $base + $asset['size']/100000*100; 	
+		$normalizer = ( $asset['size'] >= self::$SIZE_LARGE )?self::$SIZE_MAX:( $asset['size'] <= self::$SIZE_SMALL )?self::$SIZE_SMALL:self::$SIZE_LARGE;
+		PC::debug(array('normalizer'=>$normalizer));
+		$score += $base + $asset['size']/$normalizer*100; 	
 		PC::debug(array('score'=>$score));
 		return $score;
 	}

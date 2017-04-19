@@ -32,7 +32,7 @@ class JCO_Settings {
 //			'filename' => 'wp_content/plugins/example/example.js',
 //			'location' => 'footer', 'header', 'disabled'
 //			'size' => 
-//			'deps' => array(
+//			'dependencies' => array(
 //					'handle1',
 //					'handle2',
 //					...
@@ -255,7 +255,7 @@ class JCO_Settings {
     	$asset = $assets[$handle];
 			PC::debug(array('Asset in output_items_list : ' => $asset));
     	$filename = $asset['filename'];
-    	$deps = $asset['deps'];
+    	$deps = $asset['dependencies'];
 	    $location = $this->get_field_value( $asset, 'location');
 	    $minify = $this->get_field_value( $asset, 'minify');
 	    $size = $this->get_field_value( $asset, 'size');
@@ -396,8 +396,8 @@ class JCO_Settings {
 								<input type="hidden" name="_wp_http_referer" value="<?php echo $redirect; ?>">
 
 	            	<td><?php submit_button( 'Save Settings', 'primary', 'jco_save', true, array('tabindex'=>'1') );?> </td>
-	            	<td><?php submit_button( 'Refresh enqueue list', 'secondary', 'jco_refresh', true, array('tabindex'=>'2') );?> </td>
-	            	<td><?php submit_button( 'Reset everything', 'delete', 'jco_reset', true, array('tabindex'=>'3') );?> </td>
+	            	<td><?php submit_button( 'Reset settings', 'secondary', 'jco_reset', true, array('tabindex'=>'2') );?> </td>
+	            	<td><?php submit_button( 'Delete everything', 'delete', 'jco_delete', true, array('tabindex'=>'3') );?> </td>
 	          	</tr>
 	        </form>
 	    </div>
@@ -418,14 +418,25 @@ class JCO_Settings {
         die( 'Invalid nonce.' . var_export( $_POST, true ) );
 		//PC::debug('In update_settings_cb function');
 
-		if ( isset ( $_POST[ 'jco_refresh' ] ) ) {
-		   	PC::debug( 'In Form submission : REFRESH' );
-		    $msg = 'refresh';
+		if ( isset ( $_POST[ 'jco_reset' ] ) ) {
+		   	PC::debug( 'In Form submission : RESET' );
+				PC::debug( array('assets before submission'=> $this->enqueued_assets) );
+				foreach ( $this->enqueued_assets as $type=>$assets ) {
+					if ( ( $type != 'scripts' ) && ($type != 'styles') ) continue;
+					foreach ( $assets as $handle=>$asset ) {
+						unset($this->enqueued_assets[$type][$handle]['mods']); 
+						$this->update_priority( $type, $handle ); 
+					}
+				}
+				PC::debug( array('assets after submission'=> $this->enqueued_assets) );
+				update_option( 'jco_enqueued_assets', $this->enqueued_assets);
+		    $msg = 'reset';
 		}
-		elseif ( isset ( $_POST[ 'jco_reset' ] ) ) {
+		elseif ( isset ( $_POST[ 'jco_delete' ] ) ) {
+		   	PC::debug( 'In Form submission : DELETE' );
 		    update_option( 'jco_enqueued_assets', array() );
 		    $this->enqueued_assets = array();
-		    $msg = 'reset';
+		    $msg = 'delete';
 		}
 		else {
 				PC::debug( 'In Form submission : SAVE' );
@@ -435,14 +446,13 @@ class JCO_Settings {
 				PC::debug( array('assets before submission'=> $this->enqueued_assets) );
 				foreach ( $this->enqueued_assets as $type=>$assets ) {
 					if ( ( $type != 'scripts' ) && ($type != 'styles') ) continue;
-					foreach ( $assets as $asset ) {
-						$handle = $asset['handle'];
+					foreach ( $assets as $handle=>$asset ) {
 						PC::debug( array('Looping : type = ' => $type ) );
 						PC::debug( array('Looping : asset = ' => $asset ) );
 						PC::debug( array('Looping : handle = ' => $handle ) );
 						$this->update_field($type, $handle, 'location');
 						$this->update_field($type, $handle, 'minify');
-						$this->enqueued_assets[$type][$handle]['priority']=$this->get_priority($asset); 
+						$this->update_priority( $type, $handle ); 
 					}
 				}
 				PC::debug( array('assets after submission'=> $this->enqueued_assets) );
@@ -591,19 +601,16 @@ class JCO_Settings {
 					$size = 0;
 				}
 				
-				$tmp = array(
+				$this->enqueued_assets[$type][$handle] = array(
 					'handle' => $handle,
 					'enqueue_index' => $index,
 					'filename' => $path,
 					'location' => $in_footer?'footer':'header',
-					'deps' => $obj->deps,
+					'dependencies' => $obj->deps,
 					'minify' => (strpos( $obj->src, '.min.' ) != false )?'yes':'no',
-					'deps' => $obj->deps,
 					'size' => $size,
 				);
-				$priority = $this->get_priority( $tmp );
-				$tmp['priority'] = $priority;
-				$this->enqueued_assets[$type][$handle] = $tmp;
+				$priority = $this->update_priority( $type, $handle );
 				
 				PC::debug( array('$enqueued asset after assignment'=>$this->enqueued_assets[$type]) );
 			
@@ -613,12 +620,16 @@ class JCO_Settings {
 	}
 	
 	
-	private function get_priority( $asset ) {
+	private function update_priority( $type, $handle ) {
+		
+		$asset = $this->enqueued_assets[$type][$handle];
 		
 		$location = $this->get_field_value( $asset, 'location');
+		
+		if $location != 'disabled' {
+			
 		$minify = $this->get_field_value( $asset, 'minify');
 		$size = $this->get_field_value( $asset, 'size');
-		
 		
 		$score = ( $location == 'header' )?1000:0;
 		//PC::debug(array('base after location'=>$score));
@@ -641,8 +652,11 @@ class JCO_Settings {
 
 		$score += $size/$normalizer*100; 	
 		//PC::debug(array('score'=>$score));
+		}
+		else 
+			$score = 0;
 
-		return $score;
+		$this->enqueued_assets[$type][$handle]['priority'] = $score;
 	}
 
 

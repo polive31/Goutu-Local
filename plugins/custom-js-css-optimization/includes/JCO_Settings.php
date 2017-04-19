@@ -146,7 +146,7 @@ class JCO_Settings {
 	        'Pages recorded',
 	        array($this,'output_pages_list'),
 	        'js_css_optimization',
-	        'enqueued_list_section',
+	        'general_settings_section',
 					array( 
 	        	'label_for' => 'jco-recorded-pages',
 	        	'class' => 'foldable' )

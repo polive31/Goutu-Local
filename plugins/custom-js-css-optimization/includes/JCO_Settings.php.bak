@@ -626,32 +626,31 @@ class JCO_Settings {
 		
 		$location = $this->get_field_value( $asset, 'location');
 		
-		if $location != 'disabled' {
+		if ( $location != 'disabled' ) {
+			$minify = $this->get_field_value( $asset, 'minify');
+			$size = $this->get_field_value( $asset, 'size');
 			
-		$minify = $this->get_field_value( $asset, 'minify');
-		$size = $this->get_field_value( $asset, 'size');
-		
-		$score = ( $location == 'header' )?1000:0;
-		//PC::debug(array('base after location'=>$score));
-		
-		$score += ( $size >= self::$SIZE_LARGE )?500:0; 	
-		
-		$score += ( ($minify == 'no') && ( $size != 0 ))?200:0;
-		//PC::debug(array('base after minify'=>$score));
-		
-		$score += ( $size <= self::$SIZE_SMALL )?100:0; 	
-		//PC::debug(array('base after size'=>$score));
+			$score = ( $location == 'header' )?1000:0;
+			//PC::debug(array('base after location'=>$score));
+			
+			$score += ( $size >= self::$SIZE_LARGE )?500:0; 	
+			
+			$score += ( ($minify == 'no') && ( $size != 0 ))?200:0;
+			//PC::debug(array('base after minify'=>$score));
+			
+			$score += ( $size <= self::$SIZE_SMALL )?100:0; 	
+			//PC::debug(array('base after size'=>$score));
 
-		if ( $size >= self::$SIZE_LARGE ) 
-			$normalizer = self::$SIZE_MAX;
-		elseif ( $size <= self::$SIZE_SMALL )
-			$normalizer = self::$SIZE_SMALL;
-		else 
-			$normalizer = self::$SIZE_LARGE;
-		//PC::debug(array('normalizer'=>$normalizer));
+			if ( $size >= self::$SIZE_LARGE ) 
+				$normalizer = self::$SIZE_MAX;
+			elseif ( $size <= self::$SIZE_SMALL )
+				$normalizer = self::$SIZE_SMALL;
+			else 
+				$normalizer = self::$SIZE_LARGE;
+			//PC::debug(array('normalizer'=>$normalizer));
 
-		$score += $size/$normalizer*100; 	
-		//PC::debug(array('score'=>$score));
+			$score += $size/$normalizer*100; 	
+			//PC::debug(array('score'=>$score));
 		}
 		else 
 			$score = 0;

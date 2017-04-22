@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once 'includes/JCO_Settings.php';
 require_once 'includes/JCO_Optimize.php';
 
-new JCO_Settings();
+new JCO_Optimize();
 
 
 

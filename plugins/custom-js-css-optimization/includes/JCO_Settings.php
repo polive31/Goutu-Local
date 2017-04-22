@@ -11,6 +11,7 @@ class JCO_Settings {
 	protected static $SIZE_SMALL = 1000;
 	protected static $SIZE_LARGE = 1000;
 	protected static $SIZE_MAX = 200000;
+	protected static $default_section = 'general_settings_section';
 	protected $menu_slug = 'js_css_optimization';
 	protected $form_action = 'jco_update_settings';
 	protected $nonce = 'wp8756';
@@ -18,7 +19,13 @@ class JCO_Settings {
 	protected $header_scripts;
 	protected $header_styles;
 	protected $enqueued_assets;
+	protected $displayed_assets;
 	protected $user_notification; 
+	protected $filter_args = array( 'location' => 'header' );
+	protected $sort_args = array( 
+														'field' => 'priority', 
+														'order' => SORT_DESC, 
+														'type' => SORT_NUMERIC);
 //	$enqueued_assets format : 
 //	array(
 //			'pages' => array(
@@ -62,11 +69,6 @@ class JCO_Settings {
 		// load assets for this page
     add_action( 'admin_enqueue_scripts', array($this,'load_admin_assets') );
 
-		$this->urls_to_request = array(
-			home_url(),
-			$this->get_permalink_by_slug('bredele'),
-			$this->get_permalink_by_slug('les-myrtilles'),
-		);
 
 		if ( get_option( 'jco_enqueue_recording' ) == 'on' ) {
 			add_action( 'wp_head', array($this, 'record_header_assets') );
@@ -76,12 +78,8 @@ class JCO_Settings {
 			remove_action( 'wp_head', array($this, 'record_header_assets') );
 			remove_action( 'wp_print_footer_scripts', array($this, 'record_footer_assets') );
 		}
-		
-		// hydrate properties with options content
-		$this->enqueued_assets = get_option( 'jco_enqueued_assets' );
-		if (!isset($this->enqueued_assets['pages'])) $this->enqueued_assets['pages']=array();
-		if (!isset($this->enqueued_assets['scripts'])) $this->enqueued_assets['scripts']=array();
-		if (!isset($this->enqueued_assets['styles'])) $this->enqueued_assets['styles']=array();
+
+		$this->hydrate();
 
 	}
 
@@ -94,6 +92,44 @@ class JCO_Settings {
   	//wp_enqueue_style( 'jco_admin_fa', plugins_url( '../assets/fonts/font-awesome/css/font-awesome.min.css', __FILE__ ), array(), '4.7.0' );
   	//wp_enqueue_script( 'jco_admin_fa', 'https://use.fontawesome.com/96ebedc785.js', false, '1.0.0' );
   	wp_enqueue_script( 'jco_admin_js', plugins_url( '../assets/js/jco_options_page.js', __FILE__ ) , false, '1.0.0' );
+	}
+	
+	
+	public function hydrate() {
+		
+		//pages to record
+		$this->urls_to_request = array(
+															home_url(),
+															$this->get_permalink_by_slug('bredele'),
+															$this->get_permalink_by_slug('les-myrtilles'),
+														);
+									
+		// hydrate properties with options content
+		$this->enqueued_assets = get_option( 'jco_enqueued_assets' );
+		if (!isset($this->enqueued_assets['pages'])) $this->enqueued_assets['pages']=array();
+		if (!isset($this->enqueued_assets['scripts'])) $this->enqueued_assets['scripts']=array();
+		if (!isset($this->enqueued_assets['styles'])) $this->enqueued_assets['styles']=array();
+		
+		// Preparation of data to be displayed
+    $types=array('scripts', 'styles');
+    $locations=array('header', 'footer', 'disabled');
+		foreach ($types as $type) {
+			if (! isset ( $this->enqueued_assets[$type] ) ) continue;
+			$assets = $this->enqueued_assets[$type];
+			foreach ($locations as $location) {
+				$this-> filter_args = array( 'location' => $location );
+				$filtered_assets = array_filter($assets, array($this, 'filter_assets') );	
+				$this-> displayed_assets[$type][$location]['assets']=$filtered_assets;
+				$this-> displayed_assets[$type][$location]['count']=count($filtered_assets);
+				$this-> displayed_assets[$type][$location]['size']=array_sum( array_column( $filtered_assets, 'size'));
+			}	
+		}
+		//PC::debug( array( '$this->displayed_assets: '=>$this->displayed_assets ));
+	
+	}
+	
+	public function filter_assets( $asset ) {
+		return ( $this->get_field_value( $asset, 'location' ) == $this->filter_args['location'] );
 	}
 
 	public function add_js_css_menu_option() {
@@ -114,21 +150,30 @@ class JCO_Settings {
 	    // register options
 	    register_setting('enqueued_list_options', 'jco_enqueued_assets');
 	    register_setting('enqueued_list_options', 'jco_enqueue_recording');
+	    register_setting('enqueued_list_options', 'jco_enqueue_stats');
 
 	    // register "general settings" section
 	    add_settings_section(
 	        'general_settings_section',
 	        'General Settings Section',
 	        array($this,'output_section_cb'),
-	        'js_css_optimization'
+	        'general_settings_section'
 	    );
 
-	    // register "enqueued list" section
+	    // register "enqueued scripts" section
 	    add_settings_section(
-	        'enqueued_list_section',
-	        'Enqueued Scripts & Styles Section',
+	        'enqueued_scripts_section',
+	        'Enqueued Scripts Section',
 	        array($this,'output_section_cb'),
-	        'js_css_optimization'
+	        'enqueued_scripts_section'
+	    );
+	    
+	    // register "enqueued styles" section
+	    add_settings_section(
+	        'enqueued_styles_section',
+	        'Enqueued Styles Section',
+	        array($this,'output_section_cb'),
+	        'enqueued_styles_section'
 	    );
 
 	    // register new fields in the general settings section
@@ -136,7 +181,7 @@ class JCO_Settings {
 	        'jco_enqueue_recording',
 	        'Activate enqueued scripts & styles recording',
 	        array($this,'jco_recording_output'),
-	        'js_css_optimization',
+	        'general_settings_section',
 	        'general_settings_section'
 	    );
 
@@ -145,43 +190,98 @@ class JCO_Settings {
 	        'jco_recorded_pages',
 	        'Pages recorded',
 	        array($this,'output_pages_list'),
-	        'js_css_optimization',
+	        'general_settings_section',
 	        'general_settings_section',
 					array( 
 	        	'label_for' => 'jco-recorded-pages',
 	        	'class' => 'foldable' )
 	    );
+	    
 
-	    // register new fields in the enqueued list section
+	    // register new fields in the enqueued Scripts section;
+	    $size = $this->displayed_assets['scripts']['header']['size'];
+	    $count = $this->displayed_assets['scripts']['header']['count'];
 	    add_settings_field(
-	        'jco_enqueued_scripts',
-	        'Enqueued Scripts',
-	        array($this,'output_scripts_list'),
-	        'js_css_optimization',
-	        'enqueued_list_section',
+	        'jco_header_enqueued_scripts',
+	        'Enqueued Header Scripts (' . $count . ' files, total size ' . size_format($size) . ')',
+	        array($this,'output_header_scripts_list'),
+	        'enqueued_scripts_section',
+	        'enqueued_scripts_section',
+	        array( 
+	        	'label_for' => 'jco-enqueued-scripts',
+	        	'class' => 'foldable' )
+	    );
+	    
+			$size = $this->displayed_assets['scripts']['footer']['size'];
+	    $count = $this->displayed_assets['scripts']['footer']['count'];
+			add_settings_field(
+	        'jco_footer_enqueued_scripts',
+	        'Enqueued Footer Scripts (' . $count . ' files, total size ' . size_format($size) . ')',
+	        array($this,'output_footer_scripts_list'),
+	        'enqueued_scripts_section',
+	        'enqueued_scripts_section',
 	        array( 
 	        	'label_for' => 'jco-enqueued-scripts',
 	        	'class' => 'foldable' )
 	    );
 
+	    $size = $this->displayed_assets['scripts']['disabled']['size'];
+	    $count = $this->displayed_assets['scripts']['disabled']['count'];	    
 			add_settings_field(
-	        'jco_enqueued_styles',
-	        'Enqueued Styles',
-	        array($this,'output_styles_list'),
-	        'js_css_optimization',
-	        'enqueued_list_section',
+	        'jco_disabled_scripts',
+	        'Disabled Scripts (' . $count . ' files, total size ' . size_format($size) . ')',
+	        array($this,'output_disabled_scripts_list'),
+	        'enqueued_scripts_section',
+	        'enqueued_scripts_section',
+	        array( 
+	        	'label_for' => 'jco-enqueued-scripts',
+	        	'class' => 'foldable' )
+	    );	    
+	    
+	    // register new fields in the enqueued Styles section
+	    $size = $this->displayed_assets['styles']['header']['size'];
+	    $count = $this->displayed_assets['styles']['header']['count'];
+			add_settings_field(
+	        'jco_header_enqueued_styles',
+	        'Enqueued Header Styles (' . $count . ' files, total size ' . size_format($size) . ')',
+	        array($this,'output_header_styles_list'),
+	        'enqueued_styles_section',
+	        'enqueued_styles_section',
 	        array(
 	        	'label_for' => 'jco-enqueued-styles',
 	        	'class' => 'foldable' )
-
 	    );
+	    
+	    $size = $this->displayed_assets['styles']['footer']['size'];
+	    $count = $this->displayed_assets['styles']['footer']['count'];
+			add_settings_field(
+	        'jco_footer_enqueued_styles',
+	        'Enqueued Footer Styles (' . $count . ' files, total size ' . size_format($size) . ')',
+	        array($this,'output_footer_styles_list'),
+	        'enqueued_styles_section',
+	        'enqueued_styles_section',
+	        array(
+	        	'label_for' => 'jco-enqueued-styles',
+	        	'class' => 'foldable' )
+	    );	    
+
+	    $size = $this->displayed_assets['styles']['disabled']['size'];
+	    $count = $this->displayed_assets['styles']['disabled']['count'];	    
+			add_settings_field(
+	        'jco_disabled_styles',
+	        'Disabled Styles (' . $count . ' files, total size ' . size_format($size) . ')',
+	        array($this,'output_disabled_styles_list'),
+	        'enqueued_styles_section',
+	        'enqueued_styles_section',
+	        array(
+	        	'label_for' => 'jco-enqueued-styles',
+	        	'class' => 'foldable' )
+	    );	    
 	}
 
 	public function output_section_cb( $section ) {
 		//PC::debug('In section callback');
-	  ?>
-		<h1><? echo esc_html($section['title']); ?></h1>
-		<?php
+
 	}
 
 	public function jco_recording_output() {
@@ -202,44 +302,62 @@ class JCO_Settings {
 		}
 	}
 
-	public function output_scripts_list() {
-		$this->	output_items_list('scripts');
-	}
-
-	public function output_styles_list() {
-		$this->	output_items_list('styles');
+	public function output_header_scripts_list() {
+		$this->	output_items_list( 'scripts', 'header' );
 	}
 	
-	public function get_sorted_list( $assets, $field, $sort_order, $sort_type ) {
+	public function output_footer_scripts_list() {
+		$this->	output_items_list('scripts', 'footer' );
+	}
+	
+	public function output_disabled_scripts_list() {
+		$this->	output_items_list('scripts', 'disabled' );
+	}
+	
+	public function output_header_styles_list() {
+		$this->	output_items_list('styles', 'header' );
+	}
+	
+	public function output_footer_styles_list() {
+		$this->	output_items_list('styles', 'footer' );
+	}
+	
+	public function output_disabled_styles_list() {
+		$this->	output_items_list('styles', 'disabled' );
+	}
+	
+		
+	public function get_sorted_list( $assets ) {
 
-		$sort_column = array_column($assets, $field, 'handle' );		
-		PC::debug( array( 'sort column : '=>$sort_column ));
+		$sort_field = $this->sort_args['field'];
+		$sort_order = $this->sort_args['order'];
+		$sort_type = $this->sort_args['type'];
+
+		$list = array_column($assets, $sort_field, 'handle' );		
+		//PC::debug( array( 'sorted list : '=>$list ));
 
 		if ( $sort_order == SORT_ASC)
-			asort($sort_column, $sort_type );
+			asort($list, $sort_type );
 		else 
-			arsort($sort_column, $sort_type );
+			arsort($list, $sort_type );
 		
 //		foreach ($sort_column as $key => $value) {
 //			echo '<p>' . $key . ' : ' . $value . '<p>';
 //		}
-		
-		return $sort_column;
+
+		return $list;
 		
 	}
 
-	public function output_items_list( $type) {
 
-    if (! isset ( $this->enqueued_assets[$type] ) ) return;
-		$assets = $this->enqueued_assets[$type];
-		//PC::debug( array( 'enqueued ' . $type . ' : '=>$assets ));
+	public function output_items_list( $type, $location ) {
 		
-		$sorted_list = $this->get_sorted_list( $assets, 'priority', SORT_DESC, SORT_NUMERIC );
-		
-		PC::debug( array( 'sorted list : '=>$sorted_list ));
+		$assets = $this->displayed_assets[$type][$location]['assets'];
+		PC::debug( array('$this->displayed_assets' => $assets));
+		$sorted_list = $this->get_sorted_list( $assets );
+		PC::debug( array('$sorted_list' => $sorted_list));
 		
 		?>
-		
 		
     <table>
     	<tr>
@@ -250,13 +368,14 @@ class JCO_Settings {
     		<th> Location </th>
     		<th> Minify </th>
     	</tr>
+    	
     <?php
     foreach ($sorted_list as $handle => $priority ) {
     	$asset = $assets[$handle];
-			PC::debug(array('Asset in output_items_list : ' => $asset));
+			//PC::debug(array('Asset in output_items_list : ' => $asset));
     	$filename = $asset['filename'];
     	$deps = $asset['dependencies'];
-	    $location = $this->get_field_value( $asset, 'location');
+    	$location = $this->get_field_value( $asset, 'location');
 	    $minify = $this->get_field_value( $asset, 'minify');
 	    $size = $this->get_field_value( $asset, 'size');
 	    $asset_is_minified = ( $asset[ 'minify' ] == 'yes')?true:false; 
@@ -297,9 +416,9 @@ class JCO_Settings {
 	private function output_user_notification( $asset ) {
 		
 		$size= $asset['size'];
-		PC::debug(array('size : '=>$size));
+		//PC::debug(array('size : '=>$size));
 		$is_minified = $this->get_field_value( $asset, 'minify') == 'yes';
-		PC::debug(array('is_minified: '=>$is_minified));
+		//PC::debug(array('is_minified: '=>$is_minified));
 		$in_footer = ( $this->get_field_value( $asset, 'location') == 'footer');
 		
 		$this->reset_user_notification();
@@ -342,7 +461,7 @@ class JCO_Settings {
 		}		
 	}
 	
-	private function get_field_class( $asset, $field ) {
+	protected function get_field_class( $asset, $field ) {
 		$class = '';
 		if ( isset( $asset['mods'][ $field ] ) ) {
 			$class='modified';
@@ -350,22 +469,22 @@ class JCO_Settings {
 		return $class;
 	}
 	
-	private function get_field_name( $type, $handle, $field ) {
+	protected function get_field_name( $type, $handle, $field ) {
 		return  $type . '_' . $handle . '_' . $field;
 	}
 	
-	private function get_field_value( $asset, $field ) {
+	protected function get_field_value( $asset, $field ) {
 		//PC::debug('In Field Value for ' . $field);
 		//PC::debug(array('Asset : ' => $asset));
 		if ( isset( $asset['mods'] ) && (isset( $asset['mods'][ $field ] ) ) ) {
 			$value=$asset['mods'][ $field ];
-			PC::debug('Mod found !');
+			//PC::debug('Mod found !');
 		}
 		else {
-			PC::debug('Mod not found');
+			//PC::debug('Mod not found');
 			$value=$asset[ $field ];
 		}
-		PC::debug( array(' Field value of ' . $field . ' : ' => $value ));
+		//PC::debug( array(' Field value of ' . $field . ' : ' => $value ));
 		return $value;
 	}
 
@@ -374,32 +493,46 @@ class JCO_Settings {
 	    if (!current_user_can('manage_options')) {
 	        return;
 	    }
-
-			$redirect = menu_page_url( $this->menu_slug, FALSE );?>
+		
+			$redirect = menu_page_url( $this->menu_slug, FALSE );
+			?>
 
 	    <div class="wrap">
 	        <h1><?= esc_html(get_admin_page_title()); ?></h1>
-	        <div class="body">
-	        </div>
-	        <form action="<?php echo admin_url( 'admin-post.php' ); ?>" method="post">
-	        		<?php
-	            // output security fields for the registered setting "wporg_options"
-	            settings_fields('options');
-	            // output setting sections and their fields
-	            do_settings_sections('js_css_optimization');
+	        
+						<h2 class="nav-tab-wrapper">
+						<a href="#" class="nav-tab">General Settings</a>
+						<a href="#" class="nav-tab">Scripts</a>
+						<a href="#" class="nav-tab">Styles</a>
+						</h2>
+	        
+		        <form action="<?php echo admin_url( 'admin-post.php' ); ?>" method="post">
+		        		<?php
 
-	            ?>
-	            <table class="button-table" col="2">
-	            <tr>
-								<input type="hidden" name="action" value="<?php echo $this->form_action; ?>">
-								<?php wp_nonce_field( $this->form_action, $this->nonce, FALSE ); ?>
-								<input type="hidden" name="_wp_http_referer" value="<?php echo $redirect; ?>">
+	        			
+	        			?><div class="tabs"><?php
+		            settings_fields('general_settings_section');
+		            do_settings_sections('general_settings_section');
+		            
+		            settings_fields('enqueued_scripts_section');
+		            do_settings_sections('enqueued_scripts_section');
+		            
+		            settings_fields('enqueued_styles_section');
+		            do_settings_sections('enqueued_styles_section');
+	        			?></div><?php
 
-	            	<td><?php submit_button( 'Save Settings', 'primary', 'jco_save', true, array('tabindex'=>'1') );?> </td>
-	            	<td><?php submit_button( 'Reset settings', 'secondary', 'jco_reset', true, array('tabindex'=>'2') );?> </td>
-	            	<td><?php submit_button( 'Delete everything', 'delete', 'jco_delete', true, array('tabindex'=>'3') );?> </td>
-	          	</tr>
-	        </form>
+		            ?>
+		            <table class="button-table" col="2">
+		            <tr>
+									<input type="hidden" name="action" value="<?php echo $this->form_action; ?>">
+									<?php wp_nonce_field( $this->form_action, $this->nonce, FALSE ); ?>
+									<input type="hidden" name="_wp_http_referer" value="<?php echo $redirect; ?>">
+
+		            	<td><?php submit_button( 'Save Settings', 'primary', 'jco_save', true, array('tabindex'=>'1') );?> </td>
+		            	<td><?php submit_button( 'Reset settings', 'secondary', 'jco_reset', true, array('tabindex'=>'2') );?> </td>
+		            	<td><?php submit_button( 'Delete everything', 'delete', 'jco_delete', true, array('tabindex'=>'3') );?> </td>
+		          	</tr>
+		        </form>
 	    </div>
 	    <?php
 	}
@@ -595,9 +728,11 @@ class JCO_Settings {
 					PC::debug( array('$uri'=>$uri) );
 					$size = filesize( $uri );
 					PC::debug( array('$size'=>$size) );
+					$version = $obj->ver;
 				}
 				else {
 					$path = $obj->src;
+					$version = $obj->ver;
 					$size = 0;
 				}
 				
@@ -609,6 +744,7 @@ class JCO_Settings {
 					'dependencies' => $obj->deps,
 					'minify' => (strpos( $obj->src, '.min.' ) != false )?'yes':'no',
 					'size' => $size,
+					'version' => $version,
 				);
 				$priority = $this->update_priority( $type, $handle );
 				

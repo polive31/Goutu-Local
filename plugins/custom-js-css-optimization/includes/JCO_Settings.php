@@ -12,7 +12,28 @@ class JCO_Settings {
 	protected static $SIZE_LARGE = 1000;
 	protected static $SIZE_MAX = 200000;
 	protected static $default_section = 'general_settings_section';
-	protected $menu_slug = 'js_css_optimization';
+	
+	protected $plugin_slug = 'wpssm';
+
+	protected $settings_pages = array(
+		'general' => array(
+				'slug'=>'general_settings_page',
+				'sections'=> array(
+						array('slug'=>'general_settings_section', 'title'=>'General Settings Section'),
+						array('slug'=>'general_info_section', 'title'=>'General Information'),
+				)),
+		'scripts' => array(
+				'slug'=>'enqueued_scripts_page',
+				'sections'=> array(
+						array('slug'=>'enqueued_scripts_section', 'title'=>'Enqueued Scripts Section'),
+				)),
+		'styles' => array(
+				'slug'=>'enqueued_styles_page',
+				'sections'=> array(
+						array('slug'=>'enqueued_styles_section', 'title'=>'Enqueued Styles Section'),
+				)),
+	);
+	
 	protected $form_action = 'jco_update_settings';
 	protected $nonce = 'wp8756';
 	protected $urls_to_request;
@@ -61,7 +82,7 @@ class JCO_Settings {
 	public function __construct() {
 
 		// Admin options page
-		add_action( 'admin_menu', array($this, 'add_js_css_menu_option'));
+		add_action( 'admin_menu', array($this, 'add_plugin_menu_option'));
 		add_action( 'admin_init', array($this, 'jco_settings_init') );
 		//add_action( 'admin_post_$this->action', array ( $this, 'update_settings_cb' ) );
 		add_action( 'admin_post_' . $this->form_action, array ( $this, 'update_settings_cb' ) );
@@ -104,7 +125,7 @@ class JCO_Settings {
 															$this->get_permalink_by_slug('les-myrtilles'),
 														);
 									
-		// hydrate properties with options content
+		// hydrate enqueued assets property with options content
 		$this->enqueued_assets = get_option( 'jco_enqueued_assets' );
 		if (!isset($this->enqueued_assets['pages'])) $this->enqueued_assets['pages']=array();
 		if (!isset($this->enqueued_assets['scripts'])) $this->enqueued_assets['scripts']=array();
@@ -131,72 +152,78 @@ class JCO_Settings {
 	public function filter_assets( $asset ) {
 		return ( $this->get_field_value( $asset, 'location' ) == $this->filter_args['location'] );
 	}
+	
+	function add_plugin_menu_page() { 
+    add_menu_page(
+        'WP Scripts & Styles Manager', // The title to be displayed on the corresponding page for this menu
+        'Scripts & Styles',                  // The text to be displayed for this actual menu item
+        'administrator',            // Which type of users can see this menu
+        'wpssm',                  // The unique ID - that is, the slug - for this menu item
+        'wpssm_menu_page_display',// The name of the function to call when rendering the menu for this page
+        ''
+    );
+	}
 
-	public function add_js_css_menu_option() {
+	public function add_plugin_menu_option() {
 		$option_page_id = add_submenu_page(
+      //'options-general.php',
       'tools.php',
-      'JS & CSS Optimization',
-      'JS & CSS Optimization',
+      'WP Scripts & Styles Manager',
+      'Scripts & Styles Manager',
       'manage_options',
-      $this->menu_slug,
+      $this->plugin_slug,
       array($this, 'output_options_page')
 	    );
 
 		add_action( "load-$option_page_id", array ( $this, 'load_option_page_cb' ) );
 	}
 
-
 	public function jco_settings_init() {
 	    // register options
-	    register_setting('enqueued_list_options', 'jco_enqueued_assets');
-	    register_setting('enqueued_list_options', 'jco_enqueue_recording');
-	    register_setting('enqueued_list_options', 'jco_enqueue_stats');
-
-	    // register "general settings" section
-	    add_settings_section(
-	        'general_settings_section',
-	        'General Settings Section',
-	        array($this,'output_section_cb'),
-	        'general_settings_section'
-	    );
-
-	    // register "enqueued scripts" section
-	    add_settings_section(
-	        'enqueued_scripts_section',
-	        'Enqueued Scripts Section',
-	        array($this,'output_section_cb'),
-	        'enqueued_scripts_section'
-	    );
+	    register_setting($this->settings_pages['general']['slug'], 'jco_enqueue_recording');
+	    register_setting($this->settings_pages['general']['slug'], 'jco_enqueue_stats');
 	    
-	    // register "enqueued styles" section
-	    add_settings_section(
-	        'enqueued_styles_section',
-	        'Enqueued Styles Section',
-	        array($this,'output_section_cb'),
-	        'enqueued_styles_section'
-	    );
+	    register_setting($this->settings_pages['scripts']['slug'], 'jco_header_enqueued_scripts');
+	    register_setting($this->settings_pages['scripts']['slug'], 'jco_footer_enqueued_scripts');
+	    register_setting($this->settings_pages['scripts']['slug'], 'jco_disabled_scripts');
+	    
+	    register_setting($this->settings_pages['styles']['slug'], 'jco_header_enqueued_styles');
+	    register_setting($this->settings_pages['styles']['slug'], 'jco_footer_enqueued_styles');
+	    register_setting($this->settings_pages['styles']['slug'], 'jco_disabled_styles');
+
+	    
+	    // register all sections
+	    foreach ($this->settings_pages as $page) {
+	    	foreach ($page['sections'] as $section) {
+					add_settings_section(
+		        $section['slug'],
+		        $section['title'],
+		        array($this,'output_section_cb'),
+		        $page['slug']
+		    	);	   
+	    	} 	
+	    }
 
 	    // register new fields in the general settings section
 	    add_settings_field(
 	        'jco_enqueue_recording',
 	        'Activate enqueued scripts & styles recording',
 	        array($this,'jco_recording_output'),
-	        'general_settings_section',
-	        'general_settings_section'
+	        $this->settings_pages['general']['slug'],
+	        $this->settings_pages['general']['sections'][0]['slug']
 	    );
 
 	    // register new fields in the enqueued list section
 	    add_settings_field(
 	        'jco_recorded_pages',
-	        'Pages recorded',
+	        'Recorded pages',
 	        array($this,'output_pages_list'),
-	        'general_settings_section',
-	        'general_settings_section',
+	        $this->settings_pages['general']['slug'],
+	        $this->settings_pages['general']['sections'][1]['slug'],
 					array( 
 	        	'label_for' => 'jco-recorded-pages',
 	        	'class' => 'foldable' )
 	    );
-	    
 
 	    // register new fields in the enqueued Scripts section;
 	    $size = $this->displayed_assets['scripts']['header']['size'];
@@ -205,8 +232,8 @@ class JCO_Settings {
 	        'jco_header_enqueued_scripts',
 	        'Enqueued Header Scripts (' . $count . ' files, total size ' . size_format($size) . ')',
 	        array($this,'output_header_scripts_list'),
-	        'enqueued_scripts_section',
-	        'enqueued_scripts_section',
+	        $this->settings_pages['scripts']['slug'],
+	        $this->settings_pages['scripts']['sections'][0]['slug'],
 	        array( 
 	        	'label_for' => 'jco-enqueued-scripts',
 	        	'class' => 'foldable' )
@@ -218,8 +245,8 @@ class JCO_Settings {
 	        'jco_footer_enqueued_scripts',
 	        'Enqueued Footer Scripts (' . $count . ' files, total size ' . size_format($size) . ')',
 	        array($this,'output_footer_scripts_list'),
-	        'enqueued_scripts_section',
-	        'enqueued_scripts_section',
+	        $this->settings_pages['scripts']['slug'],
+	        $this->settings_pages['scripts']['sections'][0]['slug'],
 	        array( 
 	        	'label_for' => 'jco-enqueued-scripts',
 	        	'class' => 'foldable' )
@@ -231,8 +258,8 @@ class JCO_Settings {
 	        'jco_disabled_scripts',
 	        'Disabled Scripts (' . $count . ' files, total size ' . size_format($size) . ')',
 	        array($this,'output_disabled_scripts_list'),
-	        'enqueued_scripts_section',
-	        'enqueued_scripts_section',
+	        $this->settings_pages['scripts']['slug'],
+	        $this->settings_pages['scripts']['sections'][0]['slug'],
 	        array( 
 	        	'label_for' => 'jco-enqueued-scripts',
 	        	'class' => 'foldable' )
@@ -245,8 +272,8 @@ class JCO_Settings {
 	        'jco_header_enqueued_styles',
 	        'Enqueued Header Styles (' . $count . ' files, total size ' . size_format($size) . ')',
 	        array($this,'output_header_styles_list'),
-	        'enqueued_styles_section',
-	        'enqueued_styles_section',
+	        $this->settings_pages['styles']['slug'],
+	        $this->settings_pages['styles']['sections'][0]['slug'],
 	        array(
 	        	'label_for' => 'jco-enqueued-styles',
 	        	'class' => 'foldable' )
@@ -258,8 +285,8 @@ class JCO_Settings {
 	        'jco_footer_enqueued_styles',
 	        'Enqueued Footer Styles (' . $count . ' files, total size ' . size_format($size) . ')',
 	        array($this,'output_footer_styles_list'),
-	        'enqueued_styles_section',
-	        'enqueued_styles_section',
+	        $this->settings_pages['styles']['slug'],
+	        $this->settings_pages['styles']['sections'][0]['slug'],
 	        array(
 	        	'label_for' => 'jco-enqueued-styles',
 	        	'class' => 'foldable' )
@@ -271,8 +298,8 @@ class JCO_Settings {
 	        'jco_disabled_styles',
 	        'Disabled Styles (' . $count . ' files, total size ' . size_format($size) . ')',
 	        array($this,'output_disabled_styles_list'),
-	        'enqueued_styles_section',
-	        'enqueued_styles_section',
+	        $this->settings_pages['styles']['slug'],
+	        $this->settings_pages['styles']['sections'][0]['slug'],
 	        array(
 	        	'label_for' => 'jco-enqueued-styles',
 	        	'class' => 'foldable' )
@@ -297,8 +324,8 @@ class JCO_Settings {
 	}
 
 	public function output_pages_list() {
-		foreach ($this->enqueued_assets['pages'] as $slug) {
-			echo '<p>' . $slug . '</p>';
+		foreach ($this->enqueued_assets['pages'] as $page) {
+			echo '<p>' . $page[0] . ' on ' . $page[1] . '</p>';
 		}
 	}
 
@@ -493,36 +520,28 @@ class JCO_Settings {
 	    if (!current_user_can('manage_options')) {
 	        return;
 	    }
-		
-			$redirect = menu_page_url( $this->menu_slug, FALSE );
+			
+			$active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'general';
+			$redirect = menu_page_url( $this->plugin_slug, FALSE );
 			?>
 
 	    <div class="wrap">
 	        <h1><?= esc_html(get_admin_page_title()); ?></h1>
 	        
 						<h2 class="nav-tab-wrapper">
-						<a href="#" class="nav-tab">General Settings</a>
-						<a href="#" class="nav-tab">Scripts</a>
-						<a href="#" class="nav-tab">Styles</a>
+						<a href="?page=<?php echo $this->plugin_slug;?>&tab=general" class="nav-tab <?php echo $active_tab == 'general' ? 'nav-tab-active' : ''; ?>">General Settings</a>
+						<a href="?page=<?php echo $this->plugin_slug;?>&tab=scripts" class="nav-tab <?php echo $active_tab == 'scripts' ? 'nav-tab-active' : ''; ?>">Scripts</a>
+						<a href="?page=<?php echo $this->plugin_slug;?>&tab=styles" class="nav-tab <?php echo $active_tab == 'styles' ? 'nav-tab-active' : ''; ?>">Styles</a>
 						</h2>
 	        
 		        <form action="<?php echo admin_url( 'admin-post.php' ); ?>" method="post">
-		        		<?php
-
-	        			
-	        			?><div class="tabs"><?php
-		            settings_fields('general_settings_section');
-		            do_settings_sections('general_settings_section');
-		            
-		            settings_fields('enqueued_scripts_section');
-		            do_settings_sections('enqueued_scripts_section');
-		            
-		            settings_fields('enqueued_styles_section');
-		            do_settings_sections('enqueued_styles_section');
-	        			?></div><?php
-
-		            ?>
-		            <table class="button-table" col="2">
+	        		<?php	
+							settings_fields($this->settings_pages[$active_tab]['slug']);
+							do_settings_sections($this->settings_pages[$active_tab]['slug']);
+	        		?>	
+	        
+	        		<!-- Output form buttons -->
+		          <table class="button-table" col="2">
 		            <tr>
 									<input type="hidden" name="action" value="<?php echo $this->form_action; ?>">
 									<?php wp_nonce_field( $this->form_action, $this->nonce, FALSE ); ?>
@@ -532,6 +551,7 @@ class JCO_Settings {
 		            	<td><?php submit_button( 'Reset settings', 'secondary', 'jco_reset', true, array('tabindex'=>'2') );?> </td>
 		            	<td><?php submit_button( 'Delete everything', 'delete', 'jco_delete', true, array('tabindex'=>'3') );?> </td>
 		          	</tr>
+		          </table>
 		        </form>
 	    </div>
 	    <?php
@@ -664,9 +684,7 @@ class JCO_Settings {
 
 	public function record_header_assets() {
 		//PC::debug('In save enqueued scripts !!!');
-		if (!in_array(get_permalink(), $this->enqueued_assets['pages']) ) {
-			$this->enqueued_assets['pages'][] = get_permalink();
-		}
+		$this->enqueued_assets['pages'][get_permalink()] = array(get_permalink(), current_time( 'mysql' ));
 		$this->record_enqueued_assets( false );
 	}
 

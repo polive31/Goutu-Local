@@ -1,22 +1,30 @@
 /* Field display
 ----------------------------------------------------------*/
 
-
-table.enqueued_assets {
+table.enqueued-assets {
 	border-collapse: collapse;
 }
 
-table.enqueued_assets td {
-  line-height: 14px;
-  font-size: 12px;
-  padding: 5px 10px;
+table.enqueued-assets tr {
 }
 
-th[scope="row"] {
+tr.enqueued-asset {
+	border-top: 1px dotted #999;
+}
+
+table.enqueued-assets th,
+table.enqueued-assets td {
+  font-size: 12px;
+  line-height: 14px;
+  padding: 5px 10px;
+	vertical-align: text-top;
+}
+
+/*th[scope="row"] {
   width: 100%;
   display: block;
   float: left;
-}
+}*/
 
 .foldable th[scope="row"] {
   display: block;

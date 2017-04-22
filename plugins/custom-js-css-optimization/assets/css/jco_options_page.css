@@ -1,15 +1,20 @@
 /* Field display
 ----------------------------------------------------------*/
 
-
-table.enqueued_assets {
+table.enqueued-assets {
 	border-collapse: collapse;
 }
 
-table.enqueued_assets td {
-  line-height: 14px;
+tr.enqueued-asset {
+	border-top: 1px dotted #999;
+}
+
+table.enqueued-assets th,
+table.enqueued-assets td {
   font-size: 12px;
+  line-height: 14px;
   padding: 5px 10px;
+	vertical-align: text-top;
 }
 
 /*th[scope="row"] {

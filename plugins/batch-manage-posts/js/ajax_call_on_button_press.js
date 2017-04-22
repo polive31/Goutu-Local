@@ -1,5 +1,3 @@
-/* <![CDATA[ */
-
 jQuery(document).ready(function(){
 	
 	//alert('JSCRIPT lancé !');
@@ -45,5 +43,3 @@ jQuery(document).ready(function(){
 		
   });
 });
-
-/* ]]> */	

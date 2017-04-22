@@ -90,7 +90,10 @@ class JCO_Settings {
 		// load assets for this page
     add_action( 'admin_enqueue_scripts', array($this,'load_admin_assets') );
 
-
+		// configure AJAX actions
+		add_action( 'wp_ajax_check_dependencies', array($this,'check_script_dependencies') );
+		
+		// manage frontend pages monitoring 
 		if ( get_option( 'jco_enqueue_recording' ) == 'on' ) {
 			add_action( 'wp_head', array($this, 'record_header_assets') );
 			add_action( 'wp_print_footer_scripts', array($this, 'record_footer_assets') );
@@ -99,9 +102,9 @@ class JCO_Settings {
 			remove_action( 'wp_head', array($this, 'record_header_assets') );
 			remove_action( 'wp_print_footer_scripts', array($this, 'record_footer_assets') );
 		}
-
+		
+		// Hydrate class properties
 		$this->hydrate();
-
 	}
 
 	public function load_admin_assets() {
@@ -109,15 +112,11 @@ class JCO_Settings {
 		PC::debug( plugins_url( '/css/jco_options_page.css', __FILE__ ) );
 
   	wp_enqueue_style( 'jco_admin_css', plugins_url( '../assets/css/jco_options_page.css', __FILE__ ) , false, '1.0.0' );
-  	//wp_enqueue_style( 'jco_admin_fa', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', false, '1.0.0' );
-  	//wp_enqueue_style( 'jco_admin_fa', plugins_url( '../assets/fonts/font-awesome/css/font-awesome.min.css', __FILE__ ), array(), '4.7.0' );
-  	//wp_enqueue_script( 'jco_admin_fa', 'https://use.fontawesome.com/96ebedc785.js', false, '1.0.0' );
   	wp_enqueue_script( 'jco_admin_js', plugins_url( '../assets/js/jco_options_page.js', __FILE__ ) , false, '1.0.0' );
+		wp_localize_script('jco_admin_js', 'AjaxUrl', admin_url( 'admin-ajax.php' ) );
 	}
 	
-	
 	public function hydrate() {
-		
 		//pages to record
 		$this->urls_to_request = array(
 															home_url(),
@@ -386,11 +385,12 @@ class JCO_Settings {
 		
 		?>
 		
-    <table>
+    <table class="enqueued-assets">
     	<tr>
     		<th> handle </th>
-    		<th> priority </th>
+    		<!-- <th> priority </th> -->
     		<th> Dependencies </th>
+    		<th> Dependents </th>
     		<th> File size </th>
     		<th> Location </th>
     		<th> Minify </th>
@@ -401,7 +401,8 @@ class JCO_Settings {
     	$asset = $assets[$handle];
 			//PC::debug(array('Asset in output_items_list : ' => $asset));
     	$filename = $asset['filename'];
-    	$deps = $asset['dependencies'];
+    	$dependencies = $asset['dependencies'];
+    	$dependents = $asset['dependents'];
     	$location = $this->get_field_value( $asset, 'location');
 	    $minify = $this->get_field_value( $asset, 'minify');
 	    $size = $this->get_field_value( $asset, 'size');
@@ -412,21 +413,24 @@ class JCO_Settings {
     	
     	<tr class="enqueued-asset <?php echo $type;?>" id="<?php echo $handle;?>">
 	    	<td title="<?php echo $filename;?>"><?php echo $handle;?><?php $this->output_user_notification( $asset );?></td>
-	    	<td><?php echo $priority;?></td>
-	    	<td><?php foreach ($deps as $dep) {echo $dep . '<br>';}?></td>
-	    
+	    	
+	    	<!--<td><?php echo $priority;?></td>-->
+	    	
+	    	<td><?php foreach ($dependencies as $dep) {echo $dep . '<br>';}?></td>
+	    	<td><?php foreach ($dependents as $dep) {echo $dep . '<br>';}?></td>
+	    	
 	    	<td title="<?php echo $filename;?>"><?php echo size_format( $size );?></td>
 	    	
-	    	<td class="<?php echo $this->get_field_class( $asset, 'location');?>">
-	    		<select class="setting-input location" name="<?php echo $this->get_field_name( $type, $handle, 'location');?>">
+	    	<td class="<?php echo $this->is_modified( $asset, 'location');?>">
+	    		<select id="<?php echo $handle;?>" class="setting-input location <?php echo $type;?>" name="<?php echo $this->get_field_name( $type, $handle, 'location');?>">
   					<option value="header" <?php echo ($location=='header')?'selected':'';?> >header</option>
   					<option value="footer" <?php echo ($location=='footer')?'selected':'';?> >footer</option>
   					<option value="disabled" <?php echo ($location=='disabled')?'selected':'';?>>disabled</option>
 					</select>
 				</td>
 				
-				<td class="<?php echo $this->get_field_class( $asset, 'minify');?>">
-	    		<select class="setting-input minify" <?php echo ($asset_is_minified)?'disabled':'';?> <?php echo ($asset_is_minified)?'title="' . $already_minified_msg . '"' :'';?> name="<?php echo $this->get_field_name( $type, $handle, 'minify');?>">
+				<td class="<?php echo $this->is_modified( $asset, 'minify');?>">
+	    		<select id="<?php echo $handle;?>" class="setting-input minify <?php echo $type;?>" <?php echo ($asset_is_minified)?'disabled':'';?> <?php echo ($asset_is_minified)?'title="' . $already_minified_msg . '"' :'';?> name="<?php echo $this->get_field_name( $type, $handle, 'minify');?>">
   					<option value="no" <?php echo ($minify=='no')?'selected':'';?>  >no</option>
   					<option value="yes" <?php echo ($minify=='yes')?'selected':'';?> >yes</option>
 					</select>
@@ -488,12 +492,10 @@ class JCO_Settings {
 		}		
 	}
 	
-	protected function get_field_class( $asset, $field ) {
-		$class = '';
+	protected function is_modified( $asset, $field ) {
 		if ( isset( $asset['mods'][ $field ] ) ) {
-			$class='modified';
+			return 'modified';
 		}
-		return $class;
 	}
 	
 	protected function get_field_name( $type, $handle, $field ) {
@@ -521,8 +523,9 @@ class JCO_Settings {
 	        return;
 	    }
 			
-			$active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'general';
-			$redirect = menu_page_url( $this->plugin_slug, FALSE );
+			$referer = menu_page_url( $this->plugin_slug, FALSE  );
+			$active_tab = isset( $_GET[ 'tab' ] ) ? esc_html($_GET[ 'tab' ]) : 'general';
+			
 			?>
 
 	    <div class="wrap">
@@ -536,25 +539,35 @@ class JCO_Settings {
 	        
 		        <form action="<?php echo admin_url( 'admin-post.php' ); ?>" method="post">
 	        		<?php	
+							$this->output_form_buttons($referer, $active_tab);
 							settings_fields($this->settings_pages[$active_tab]['slug']);
 							do_settings_sections($this->settings_pages[$active_tab]['slug']);
+							$this->output_form_buttons($referer, $active_tab);
 	        		?>	
 	        
-	        		<!-- Output form buttons -->
-		          <table class="button-table" col="2">
-		            <tr>
-									<input type="hidden" name="action" value="<?php echo $this->form_action; ?>">
-									<?php wp_nonce_field( $this->form_action, $this->nonce, FALSE ); ?>
-									<input type="hidden" name="_wp_http_referer" value="<?php echo $redirect; ?>">
-
-		            	<td><?php submit_button( 'Save Settings', 'primary', 'jco_save', true, array('tabindex'=>'1') );?> </td>
-		            	<td><?php submit_button( 'Reset settings', 'secondary', 'jco_reset', true, array('tabindex'=>'2') );?> </td>
-		            	<td><?php submit_button( 'Delete everything', 'delete', 'jco_delete', true, array('tabindex'=>'3') );?> </td>
-		          	</tr>
-		          </table>
-		        </form>
+		        </form>  
 	    </div>
 	    <?php
+	}
+	
+	protected function output_form_buttons($referer, $active_tab) { 
+		?>
+		<!-- Output form buttons -->
+	  <table class="button-table" col="2">
+	    <tr>
+				<input type="hidden" name="action" value="<?php echo $this->form_action; ?>">
+				<?php wp_nonce_field( $this->form_action, $this->nonce, FALSE ); ?>
+				<input type="hidden" name="_wpssm_http_referer" value="<?php echo $referer; ?>">
+				<input type="hidden" name="_wpssm_active_tab" value="<?php echo $active_tab; ?>">
+
+	    	<td><?php submit_button( 'Save ' . $active_tab . ' settings', 'primary', 'jco_save', true, array('tabindex'=>'1') );?> </td>
+	    	<?php if ($active_tab != 'general') { ?>
+	    	<td><?php submit_button( 'Reset ' . $active_tab . ' settings', 'secondary', 'jco_reset', true, array('tabindex'=>'2') );?> </td>
+	    	<?php } ?>
+	    	<td><?php submit_button( 'Delete everything', 'delete', 'jco_delete', true, array('tabindex'=>'3') );?> </td>
+	  	</tr>
+	  </table>
+	<?php 
 	}
 
 
@@ -570,53 +583,59 @@ class JCO_Settings {
     if ( ! wp_verify_nonce( $_POST[ $this->nonce ], $this->form_action ) )
         die( 'Invalid nonce.' . var_export( $_POST, true ) );
 		//PC::debug('In update_settings_cb function');
-
+		
+		if ( ! isset ( $_POST['_wpssm_http_referer'] ) )
+		    die( 'Missing valid referer' );
+		else
+			$url = $_POST['_wpssm_http_referer'];
+		
+		$type = isset($_POST[ '_wpssm_active_tab' ])?$_POST[ '_wpssm_active_tab' ]:'general';
+		$query_args=array();
+		$query_args['tab']=$type;
+		
 		if ( isset ( $_POST[ 'jco_reset' ] ) ) {
 		   	PC::debug( 'In Form submission : RESET' );
 				PC::debug( array('assets before submission'=> $this->enqueued_assets) );
-				foreach ( $this->enqueued_assets as $type=>$assets ) {
-					if ( ( $type != 'scripts' ) && ($type != 'styles') ) continue;
-					foreach ( $assets as $handle=>$asset ) {
-						unset($this->enqueued_assets[$type][$handle]['mods']); 
-						$this->update_priority( $type, $handle ); 
-					}
+				foreach ( $this->enqueued_assets[$type] as $handle=>$asset ) {
+					unset($this->enqueued_assets[$type][$handle]['mods']); 
+					$this->update_priority( $type, $handle ); 
 				}
 				PC::debug( array('assets after submission'=> $this->enqueued_assets) );
 				update_option( 'jco_enqueued_assets', $this->enqueued_assets);
-		    $msg = 'reset';
+		    $query_args['msg']='reset';
 		}
 		elseif ( isset ( $_POST[ 'jco_delete' ] ) ) {
 		   	PC::debug( 'In Form submission : DELETE' );
 		    update_option( 'jco_enqueued_assets', array() );
 		    $this->enqueued_assets = array();
-		    $msg = 'delete';
+		    $query_args['msg']='delete';
 		}
 		else {
-				PC::debug( 'In Form submission : SAVE' );
-				$recording = isset($_POST[ 'jco_recording_checkbox' ])?$_POST[ 'jco_recording_checkbox' ]:'off';
-				update_option( 'jco_enqueue_recording', $recording);
-				
-				PC::debug( array('assets before submission'=> $this->enqueued_assets) );
-				foreach ( $this->enqueued_assets as $type=>$assets ) {
-					if ( ( $type != 'scripts' ) && ($type != 'styles') ) continue;
-					foreach ( $assets as $handle=>$asset ) {
-						PC::debug( array('Looping : type = ' => $type ) );
-						PC::debug( array('Looping : asset = ' => $asset ) );
-						PC::debug( array('Looping : handle = ' => $handle ) );
+				//PC::debug( 'In Form submission : SAVE, tab ' . $type );
+				if ( $type=='general' ) {
+					$recording = isset($_POST[ 'jco_recording_checkbox' ])?$_POST[ 'jco_recording_checkbox' ]:'off';
+					update_option( 'jco_enqueue_recording', $recording);
+				}
+				else {
+					//PC::debug( array('assets before submission'=> $this->enqueued_assets) );
+					foreach ( $this->enqueued_assets[$type] as $handle=>$asset ) {
+						//PC::debug( array('Looping : asset = ' => $asset ) );
+						//PC::debug( array('Looping : handle = ' => $handle ) );
 						$this->update_field($type, $handle, 'location');
 						$this->update_field($type, $handle, 'minify');
 						$this->update_priority( $type, $handle ); 
 					}
+					//PC::debug( array('assets after submission'=> $this->enqueued_assets) );
+					update_option( 'jco_enqueued_assets', $this->enqueued_assets);
 				}
-				PC::debug( array('assets after submission'=> $this->enqueued_assets) );
-				update_option( 'jco_enqueued_assets', $this->enqueued_assets);
-		    $msg = 'save';
+		    $query_args['msg']='save';
 		}
+		
 
-		$url = add_query_arg( 'msg', $msg, urldecode( $_POST['_wp_http_referer'] ) );
-		if ( ! isset ( $_POST['_wp_http_referer'] ) )
-		    die( 'Missing target.' );
-
+		PC::debug(array('http referer'=>$url));
+		$url = add_query_arg( $query_args, $url) ;
+		PC::debug(array('url for redirection'=>$url ));
+					 
 		wp_safe_redirect( $url );
 		exit;
 	}
@@ -733,19 +752,12 @@ class JCO_Settings {
 					
 			foreach( $asset['handles'] as $index => $handle ) {
 				$obj = $asset['registered'][$handle];
-				PC::debug(array('handle' => $handle));
-				PC::debug( array('$obj'=>$obj) );
-				
 				$path = strtok($obj->src, '?'); // remove any query parameters
-				PC::debug( array('$path'=>$path) );
 				
 				if ( strpos( $path, 'wp-' ) != false) {
 					$path = wp_make_link_relative( $path );
-					PC::debug( array('$path after relative'=>$path) );
 					$uri = $_SERVER['DOCUMENT_ROOT'] . $path;
-					PC::debug( array('$uri'=>$uri) );
 					$size = filesize( $uri );
-					PC::debug( array('$size'=>$size) );
 					$version = $obj->ver;
 				}
 				else {
@@ -754,6 +766,7 @@ class JCO_Settings {
 					$size = 0;
 				}
 				
+				// Update current asset properties
 				$this->enqueued_assets[$type][$handle] = array(
 					'handle' => $handle,
 					'enqueue_index' => $index,
@@ -764,10 +777,13 @@ class JCO_Settings {
 					'size' => $size,
 					'version' => $version,
 				);
+				// Update current asset priority
 				$priority = $this->update_priority( $type, $handle );
-				
-				PC::debug( array('$enqueued asset after assignment'=>$this->enqueued_assets[$type]) );
-			
+				// Update all dependancies assets properties
+				foreach ($obj->deps as $dep_handle) {
+					PC::debug(array('dependencies loop : '=>$dep_handle));
+					$this->enqueued_assets[$type][$dep_handle]['dependents'][]=$handle;
+				}
 			}
 		}
 	  PC::debug(array('assets after update' => $this->enqueued_assets));
@@ -775,26 +791,19 @@ class JCO_Settings {
 	
 	
 	private function update_priority( $type, $handle ) {
-		
 		$asset = $this->enqueued_assets[$type][$handle];
-		
 		$location = $this->get_field_value( $asset, 'location');
 		
 		if ( $location != 'disabled' ) {
 			$minify = $this->get_field_value( $asset, 'minify');
 			$size = $this->get_field_value( $asset, 'size');
-			
 			$score = ( $location == 'header' )?1000:0;
 			//PC::debug(array('base after location'=>$score));
-			
 			$score += ( $size >= self::$SIZE_LARGE )?500:0; 	
-			
 			$score += ( ($minify == 'no') && ( $size != 0 ))?200:0;
 			//PC::debug(array('base after minify'=>$score));
-			
 			$score += ( $size <= self::$SIZE_SMALL )?100:0; 	
 			//PC::debug(array('base after size'=>$score));
-
 			if ( $size >= self::$SIZE_LARGE ) 
 				$normalizer = self::$SIZE_MAX;
 			elseif ( $size <= self::$SIZE_SMALL )
@@ -802,7 +811,6 @@ class JCO_Settings {
 			else 
 				$normalizer = self::$SIZE_LARGE;
 			//PC::debug(array('normalizer'=>$normalizer));
-
 			$score += $size/$normalizer*100; 	
 			//PC::debug(array('score'=>$score));
 		}
@@ -810,6 +818,13 @@ class JCO_Settings {
 			$score = 0;
 
 		$this->enqueued_assets[$type][$handle]['priority'] = $score;
+	}
+
+	/* AJAX FUNCTIONS
+	--------------------------------------------------------------*/
+	protected function check_script_dependencies() {
+		echo 'IN AJAX CHECK SCRIPT DEPENDENCIES';
+		die();
 	}
 
 

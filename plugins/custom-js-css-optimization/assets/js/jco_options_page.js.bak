@@ -1,26 +1,41 @@
 
 jQuery(document).ready(function(){
 	jQuery(document).on('change','.setting-input',function(){
-		alert("Script location modified");
+		//alert("Script location modified");
 		var select = jQuery(this);
 		var table_cell=select.closest('td') ;                            
 		//var table_row=select.closest('tr') ;                            
   	var table_cell_class=table_cell.attr("class"); 
-  	console.log('class : ', table_cell_class); 
+  	//console.log('class : ', table_cell_class); 
   	if ( table_cell_class != "modified") {
-  		console.log('modified class not found'); 
+  		//console.log('modified class not found'); 
   		table_cell.addClass( "modified" );   
 		} 		
-//  	}
-//  	else {
-//  	}
-//  	var modified = table_row.find('input.modified');
-//  	console.log('modified value before update : ', modified.val()); 
-// 		modified.val('true');
-//  	console.log('modified value after update : ', modified.val()); 
+		
+  	var assetHandle=select.attr("id"); 
+		var thisClass = select.attr("class");
+  	var locationChange = (thisClass.indexOf('location')>-1)  && (thisClass.indexOf('scripts')>-1) ; 
+  	console.log('assetHandle => ', assetHandle);
+  	console.log('locationChange => ', locationChange);
   	
-  	//'name': $(this).children('input[name="paramName"]').val(),
-    //'value': $(this).children('input[name="paramPrice"]').val()         
+		if (locationChange)	{
+
+			jQuery.post(
+			 ajaxurl,
+			 {
+			 	_ajax_nonce : AjaxNonce,
+			 	action : AjaxAction,
+				args : AjaxArgs,
+				dataType: "text",
+			 },
+			function( response ) {
+				//console.log( 'Ajax call successfull');
+				//console.log('div#resp' + ScriptName + ScriptInst);
+				//console.log( response );
+				jQuery('div#resp' + ScriptName + ScriptInst).html( response );
+			});
+					    
+		}
                
 	});
 });
@@ -57,3 +72,11 @@ jQuery(document).ready(function(){
 	});
 });
 	
+	
+/* Dependencies control when changing script location
+---------------------------------------------------------*/	
+jQuery(document).ready(function(){	
+  jQuery('input[type="submit"]').click(function(){
+	
+  });
+});

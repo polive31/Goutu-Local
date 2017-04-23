@@ -97,12 +97,12 @@ class WPSSM_Settings {
     add_action( 'admin_enqueue_scripts', array($this,'load_admin_assets') );
 
 		// configure AJAX actions
-		add_action( 'wp_ajax_check_dependencies', array($this,'check_script_dependencies_cb') );
+		add_action( 'wp_ajax_check-dependencies', array($this,'ajax_check_dependencies_cb') );
 		
 		// manage frontend pages monitoring 
-		echo '<pre>In WPSSM Construct</pre>';
+		//echo '<pre>In WPSSM Construct</pre>';
 		if ( self::$option_general_settings['record'] == 'on' ) {
-			echo '<pre>RECORD=ON</pre>';
+			//echo '<pre>RECORD=ON</pre>';
 			add_action( 'wp_head', array($this, 'record_header_assets_cb') );
 			add_action( 'wp_print_footer_scripts', array($this, 'record_footer_assets_cb') );
 		}
@@ -119,7 +119,10 @@ class WPSSM_Settings {
 
   	wp_enqueue_style( 'wpssm_admin_css', plugins_url( '../assets/css/wpssm_options_page.css', __FILE__ ) , false, '1.0.0' );
   	wp_enqueue_script( 'wpssm_admin_js', plugins_url( '../assets/js/wpssm_options_page.js', __FILE__ ) , false, '1.0.0' );
-		wp_localize_script('wpssm_admin_js', 'AjaxUrl', admin_url( 'admin-ajax.php' ) );
+		wp_localize_script('wpssm_admin_js', WPLocalizeVar, array(
+																					'url'=> admin_url( 'admin-ajax.php' ),
+																					'nonce'=> wp_create_nonce( 'check-script-dependencies' ),
+																					));
 	}
 	
 	public function hydrate() {
@@ -448,7 +451,7 @@ class WPSSM_Settings {
 	    	<td title="<?php echo $filename;?>"><?php echo size_format( $size );?></td>
 	    	
 	    	<td class="<?php echo $this->is_modified( $asset, 'location');?>">
-	    		<select id="<?php echo $handle;?>" class="setting-input location <?php echo $type;?>" name="<?php echo $this->get_field_name( $type, $handle, 'location');?>">
+	    		<select id="<?php echo $handle;?>" class="asset-setting location <?php echo $type;?>" name="<?php echo $this->get_field_name( $type, $handle, 'location');?>">
   					<option value="header" <?php echo ($location=='header')?'selected':'';?> >header</option>
   					<option value="footer" <?php echo ($location=='footer')?'selected':'';?> >footer</option>
   					<option value="disabled" <?php echo ($location=='disabled')?'selected':'';?>>disabled</option>
@@ -456,7 +459,7 @@ class WPSSM_Settings {
 				</td>
 				
 				<td class="<?php echo $this->is_modified( $asset, 'minify');?>">
-	    		<select id="<?php echo $handle;?>" class="setting-input minify <?php echo $type;?>" <?php echo ($asset_is_minified)?'disabled':'';?> <?php echo ($asset_is_minified)?'title="' . $already_minified_msg . '"' :'';?> name="<?php echo $this->get_field_name( $type, $handle, 'minify');?>">
+	    		<select id="<?php echo $handle;?>" class="asset-setting minify <?php echo $type;?>" <?php echo ($asset_is_minified)?'disabled':'';?> <?php echo ($asset_is_minified)?'title="' . $already_minified_msg . '"' :'';?> name="<?php echo $this->get_field_name( $type, $handle, 'minify');?>">
   					<option value="no" <?php echo ($minify=='no')?'selected':'';?>  >no</option>
   					<option value="yes" <?php echo ($minify=='yes')?'selected':'';?> >yes</option>
 					</select>
@@ -802,6 +805,7 @@ class WPSSM_Settings {
 					'filename' => $path,
 					'location' => $in_footer?'footer':'header',
 					'dependencies' => $obj->deps,
+					'dependents' => array(),
 					'minify' => (strpos( $obj->src, '.min.' ) != false )?'yes':'no',
 					'size' => $size,
 					'version' => $version,
@@ -850,8 +854,22 @@ class WPSSM_Settings {
 
 	/* AJAX FUNCTIONS
 	--------------------------------------------------------------*/
-	private function check_script_dependencies_cb() {
+	public function ajax_check_dependencies_cb() {
+		$nonce = $_POST['checkDepsNonce'];
+
+		// check to see if the submitted nonce matches with the
+		// generated nonce we created earlier
+		if ( ! wp_verify_nonce( $nonce, 'check-script-dependencies' ) )
+		die ( 'Invalid nonce.');
+
+		// ignore the request if the current user doesn't have
+		// sufficient permissions
+		//if ( current_user_can( 'edit_posts' ) ) {
+		// get the submitted parameters
+		$scriptHandle = isset($_POST['checkDepsArgs']['handle'])?$_POST['checkDepsArgs']['handle']:'Error !';
+
 		echo 'IN AJAX CHECK SCRIPT DEPENDENCIES';
+		echo '<pre>' . $scriptHandle . '</pre>';
 		die();
 	}
 

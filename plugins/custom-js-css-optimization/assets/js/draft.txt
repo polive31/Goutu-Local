@@ -1,0 +1,25 @@
+  	var assetHandle=select.attr("id"); 
+		var thisClass = select.attr("class");
+  	var locationChange = (thisClass.indexOf('location')>-1)  && (thisClass.indexOf('scripts')>-1) ; 
+  	var AjaxArgs = 'Toto c'est moi';
+  	console.log('assetHandle => ', assetHandle);
+  	console.log('locationChange => ', locationChange);
+  	
+		if (locationChange)	{
+
+			jQuery.post(
+			 AjaxUrl,
+			 {
+			 	_ajax_nonce : AjaxNonce,
+			 	action : AjaxAction,
+				args : AjaxArgs,
+				dataType: "text",
+			 },
+			function( response ) {
+				//console.log( 'Ajax call successfull');
+				//console.log('div#resp' + ScriptName + ScriptInst);
+				//console.log( response );
+				jQuery('div#resp' + ScriptName + ScriptInst).html( response );
+			});
+					    
+		}

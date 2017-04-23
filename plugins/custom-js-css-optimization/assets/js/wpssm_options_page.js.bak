@@ -20,7 +20,7 @@ jQuery(document).ready(function(){
   	
 		if (locationChange)	{
 	  	// Ajax call arguments
-			var assetHandle=select.attr("id"); 	
+			//var assetHandle=select.attr("id"); 	
 	  	var args = {handle:select.attr("id")};
 	  	console.log('assetHandle => ', assetHandle);
 	  

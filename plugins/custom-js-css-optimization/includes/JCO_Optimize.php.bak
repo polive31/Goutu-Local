@@ -6,10 +6,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-class JCO_Optimize extends JCO_Settings {
+class WPSSM_Optimize {
 	
 	public function __construct() {
-		parent::__construct();
 		add_action( 'wp_enqueue_scripts', array($this, 'conditionally_deregister_scripts'), PHP_INT_MAX );
 	}
 
@@ -21,7 +20,6 @@ class JCO_Optimize extends JCO_Settings {
 		foreach ($scripts as $handle => $script) {
 			if ( isset( $script['mods']['location'] ) ) {
 				$location = $script['mods']['location'];
-				$version = $script['version'];
 				wp_deregister_script( $handle );
 				if ($location != 'disabled' ) {
 					wp_register_script( $handle, 

@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name: Custom JS & CSS Optimization
-Plugin URI: http://goutu.org/custom-js-css-optimization
+Plugin Name: WP Scripts & Styles Manager
+Plugin URI: http://goutu.org/scripts-styles-manager
 Description: custom enqueue, minimize, and concatenate your css & js code
 Version: 1.0
 Author: Pascal Olive
@@ -19,10 +19,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 //**               INITIALIZATION
 //*************************************************************************
 
-require_once 'includes/JCO_Settings.php';
-require_once 'includes/JCO_Optimize.php';
+require_once 'includes/WPSSM_Settings.php';
+require_once 'includes/WPSSM_Optimize.php';
 
-new JCO_Optimize();
+new WPSSM_Settings();
+//new WPSSM_Optimize();
 
 
 

@@ -6,13 +6,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-class JCO_Optimize extends JCO_Settings {
+class WPSSM_Optimize {
 	
 	public function __construct() {
-		parent::__construct();
 		add_action( 'wp_enqueue_scripts', array($this, 'conditionally_deregister_scripts'), PHP_INT_MAX );
 	}
-
 
 	public function conditionally_deregister_scripts() {
 		

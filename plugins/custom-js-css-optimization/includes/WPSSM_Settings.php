@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-class wpssm_Settings {
+class WPSSM_Settings {
 
 	protected static $SIZE_SMALL = 1000;
 	protected static $SIZE_LARGE = 1000;
@@ -15,7 +15,7 @@ class wpssm_Settings {
 	
 	protected $plugin_slug = 'wpssm';
 
-	protected $settings_pages = array(
+	protected $config_settings_pages = array(
 		'general' => array(
 				'slug'=>'general_settings_page',
 				'sections'=> array(
@@ -40,7 +40,9 @@ class wpssm_Settings {
 	protected $header_scripts;
 	protected $header_styles;
 	
-	protected $enqueued_assets;
+	public static $option_general_settings = array('record'=>'off', 'optimize'=>'off');
+	protected $option_enqueued_assets;
+
 	protected $displayed_assets;
 	protected $user_notification; 
 	
@@ -82,7 +84,9 @@ class wpssm_Settings {
 //	);
 
 	public function __construct() {
-
+		// Hydrate option class properties
+		$this->hydrate();
+			
 		// Admin options page
 		add_action( 'admin_menu', array($this, 'add_plugin_menu_option'));
 		add_action( 'admin_init', array($this, 'init_settings_cb') );
@@ -96,17 +100,17 @@ class wpssm_Settings {
 		add_action( 'wp_ajax_check_dependencies', array($this,'check_script_dependencies_cb') );
 		
 		// manage frontend pages monitoring 
-		if ( get_option( 'wpssm_enqueue_recording' ) == 'on' ) {
-			add_action( 'wp_head', array($this, 'record_header_assets') );
-			add_action( 'wp_print_footer_scripts', array($this, 'record_footer_assets') );
+		//echo '<pre>In WPSSM Construct</pre>';
+		if ( self::$option_general_settings['record'] == 'on' ) {
+			//echo '<pre>RECORD=ON</pre>';
+			add_action( 'wp_head', array($this, 'record_header_assets_cb') );
+			add_action( 'wp_print_footer_scripts', array($this, 'record_footer_assets_cb') );
 		}
 		else {
-			remove_action( 'wp_head', array($this, 'record_header_assets') );
-			remove_action( 'wp_print_footer_scripts', array($this, 'record_footer_assets') );
+			remove_action( 'wp_head', array($this, 'record_header_assets_cb') );
+			remove_action( 'wp_print_footer_scripts', array($this, 'record_footer_assets_cb') );
 		}
 		
-		// Hydrate class properties
-		$this->hydrate();
 	}
 
 	public function load_admin_assets() {
@@ -126,18 +130,22 @@ class wpssm_Settings {
 															$this->get_permalink_by_slug('les-myrtilles'),
 														);
 									
+		// hydrate general settings property with options content
+		self::$option_general_settings = get_option( 'wpssm_general_settings' );
+
+
 		// hydrate enqueued assets property with options content
-		$this->enqueued_assets = get_option( 'wpssm_enqueued_assets' );
-		if (!isset($this->enqueued_assets['pages'])) $this->enqueued_assets['pages']=array();
-		if (!isset($this->enqueued_assets['scripts'])) $this->enqueued_assets['scripts']=array();
-		if (!isset($this->enqueued_assets['styles'])) $this->enqueued_assets['styles']=array();
+		$this->option_enqueued_assets = get_option( 'wpssm_enqueued_assets' );
+		if (!isset($this->option_enqueued_assets['pages'])) $this->option_enqueued_assets['pages']=array();
+		if (!isset($this->option_enqueued_assets['scripts'])) $this->option_enqueued_assets['scripts']=array();
+		if (!isset($this->option_enqueued_assets['styles'])) $this->option_enqueued_assets['styles']=array();
 		
 		// Preparation of data to be displayed
     $types=array('scripts', 'styles');
     $locations=array('header', 'footer', 'disabled');
 		foreach ($types as $type) {
-			if (! isset ( $this->enqueued_assets[$type] ) ) continue;
-			$assets = $this->enqueued_assets[$type];
+			if (! isset ( $this->option_enqueued_assets[$type] ) ) continue;
+			$assets = $this->option_enqueued_assets[$type];
 			foreach ($locations as $location) {
 				$this-> filter_args = array( 'location' => $location );
 				$filtered_assets = array_filter($assets, array($this, 'filter_assets') );	
@@ -182,21 +190,21 @@ class wpssm_Settings {
 	public function init_settings_cb() {
 		
 	    // register options
-	    register_setting($this->settings_pages['general']['slug'], 'wpssm_recording');
-	    register_setting($this->settings_pages['general']['slug'], 'wpssm_optimize');
-	    register_setting($this->settings_pages['general']['slug'], 'wpssm_enqueue_stats');
+	    register_setting($this->config_settings_pages['general']['slug'], 'wpssm_record');
+	    register_setting($this->config_settings_pages['general']['slug'], 'wpssm_optimize');
+	    register_setting($this->config_settings_pages['general']['slug'], 'wpssm_enqueue_stats');
 	    
-	    register_setting($this->settings_pages['scripts']['slug'], 'wpssm_header_enqueued_scripts');
-	    register_setting($this->settings_pages['scripts']['slug'], 'wpssm_footer_enqueued_scripts');
-	    register_setting($this->settings_pages['scripts']['slug'], 'wpssm_disabled_scripts');
+	    register_setting($this->config_settings_pages['scripts']['slug'], 'wpssm_header_enqueued_scripts');
+	    register_setting($this->config_settings_pages['scripts']['slug'], 'wpssm_footer_enqueued_scripts');
+	    register_setting($this->config_settings_pages['scripts']['slug'], 'wpssm_disabled_scripts');
 	    
-	    register_setting($this->settings_pages['styles']['slug'], 'wpssm_header_enqueued_styles');
-	    register_setting($this->settings_pages['styles']['slug'], 'wpssm_footer_enqueued_styles');
-	    register_setting($this->settings_pages['styles']['slug'], 'wpssm_disabled_styles');
+	    register_setting($this->config_settings_pages['styles']['slug'], 'wpssm_header_enqueued_styles');
+	    register_setting($this->config_settings_pages['styles']['slug'], 'wpssm_footer_enqueued_styles');
+	    register_setting($this->config_settings_pages['styles']['slug'], 'wpssm_disabled_styles');
 
 	    
 	    // register all sections
-	    foreach ($this->settings_pages as $page) {
+	    foreach ($this->config_settings_pages as $page) {
 	    	foreach ($page['sections'] as $section) {
 					add_settings_section(
 		        $section['slug'],
@@ -209,19 +217,19 @@ class wpssm_Settings {
 
 	    // register new fields in the general settings section
 	    add_settings_field(
-	        'wpssm_recording',
-	        'Activate enqueued scripts & styles recording in frontend',
+	        'wpssm_record',
+	        'Record enqueued scripts & styles in frontend',
 	        array($this,'output_recording_switch_cb'),
-	        $this->settings_pages['general']['slug'],
-	        $this->settings_pages['general']['sections'][0]['slug']
+	        $this->config_settings_pages['general']['slug'],
+	        $this->config_settings_pages['general']['sections'][0]['slug']
 	    );
 
 	    add_settings_field(
 	        'wpssm_optimize',
-	        'Activate Scripts & Styles optimization in frontend',
+	        'Optimize scripts & styles in frontend',
 	        array($this,'output_optimize_switch_cb'),
-	        $this->settings_pages['general']['slug'],
-	        $this->settings_pages['general']['sections'][0]['slug']
+	        $this->config_settings_pages['general']['slug'],
+	        $this->config_settings_pages['general']['sections'][0]['slug']
 	    );
 
 	    // register new fields in the enqueued list section
@@ -229,8 +237,8 @@ class wpssm_Settings {
 	        'wpssm_recorded_pages',
 	        'Recorded pages',
 	        array($this,'output_pages_list'),
-	        $this->settings_pages['general']['slug'],
-	        $this->settings_pages['general']['sections'][1]['slug'],
+	        $this->config_settings_pages['general']['slug'],
+	        $this->config_settings_pages['general']['sections'][1]['slug'],
 					array( 
 	        	'label_for' => 'jco-recorded-pages',
 	        	'class' => 'foldable' )
@@ -243,8 +251,8 @@ class wpssm_Settings {
 	        'wpssm_header_enqueued_scripts',
 	        'Enqueued Header Scripts (' . $count . ' files, total size ' . size_format($size) . ')',
 	        array($this,'output_header_scripts_list'),
-	        $this->settings_pages['scripts']['slug'],
-	        $this->settings_pages['scripts']['sections'][0]['slug'],
+	        $this->config_settings_pages['scripts']['slug'],
+	        $this->config_settings_pages['scripts']['sections'][0]['slug'],
 	        array( 
 	        	'label_for' => 'jco-enqueued-scripts',
 	        	'class' => 'foldable' )
@@ -256,8 +264,8 @@ class wpssm_Settings {
 	        'wpssm_footer_enqueued_scripts',
 	        'Enqueued Footer Scripts (' . $count . ' files, total size ' . size_format($size) . ')',
 	        array($this,'output_footer_scripts_list'),
-	        $this->settings_pages['scripts']['slug'],
-	        $this->settings_pages['scripts']['sections'][0]['slug'],
+	        $this->config_settings_pages['scripts']['slug'],
+	        $this->config_settings_pages['scripts']['sections'][0]['slug'],
 	        array( 
 	        	'label_for' => 'jco-enqueued-scripts',
 	        	'class' => 'foldable' )
@@ -269,8 +277,8 @@ class wpssm_Settings {
 	        'wpssm_disabled_scripts',
 	        'Disabled Scripts (' . $count . ' files, total size ' . size_format($size) . ')',
 	        array($this,'output_disabled_scripts_list'),
-	        $this->settings_pages['scripts']['slug'],
-	        $this->settings_pages['scripts']['sections'][0]['slug'],
+	        $this->config_settings_pages['scripts']['slug'],
+	        $this->config_settings_pages['scripts']['sections'][0]['slug'],
 	        array( 
 	        	'label_for' => 'jco-enqueued-scripts',
 	        	'class' => 'foldable' )
@@ -283,8 +291,8 @@ class wpssm_Settings {
 	        'wpssm_header_enqueued_styles',
 	        'Enqueued Header Styles (' . $count . ' files, total size ' . size_format($size) . ')',
 	        array($this,'output_header_styles_list'),
-	        $this->settings_pages['styles']['slug'],
-	        $this->settings_pages['styles']['sections'][0]['slug'],
+	        $this->config_settings_pages['styles']['slug'],
+	        $this->config_settings_pages['styles']['sections'][0]['slug'],
 	        array(
 	        	'label_for' => 'jco-enqueued-styles',
 	        	'class' => 'foldable' )
@@ -296,8 +304,8 @@ class wpssm_Settings {
 	        'wpssm_footer_enqueued_styles',
 	        'Enqueued Footer Styles (' . $count . ' files, total size ' . size_format($size) . ')',
 	        array($this,'output_footer_styles_list'),
-	        $this->settings_pages['styles']['slug'],
-	        $this->settings_pages['styles']['sections'][0]['slug'],
+	        $this->config_settings_pages['styles']['slug'],
+	        $this->config_settings_pages['styles']['sections'][0]['slug'],
 	        array(
 	        	'label_for' => 'jco-enqueued-styles',
 	        	'class' => 'foldable' )
@@ -309,41 +317,39 @@ class wpssm_Settings {
 	        'wpssm_disabled_styles',
 	        'Disabled Styles (' . $count . ' files, total size ' . size_format($size) . ')',
 	        array($this,'output_disabled_styles_list'),
-	        $this->settings_pages['styles']['slug'],
-	        $this->settings_pages['styles']['sections'][0]['slug'],
+	        $this->config_settings_pages['styles']['slug'],
+	        $this->config_settings_pages['styles']['sections'][0]['slug'],
 	        array(
 	        	'label_for' => 'jco-enqueued-styles',
 	        	'class' => 'foldable' )
 	    );	    
 	}
 
-	protected function output_section_cb( $section ) {
+	public function output_section_cb( $section ) {
 		//PC::debug('In section callback');
-
 	}
 
-	protected function output_recording_switch_cb() {
-		$this->output_toggle_switch_cb( 'wpssm_recording' );
+	public function output_recording_switch_cb() {
+		$this->output_toggle_switch( 'general_record', self::$option_general_settings['record']);
 	}	
 
-	protected function output_optimize_switch_cb() {
-		$this->output_toggle_switch_cb( 'wpssm_optimize' );
+	public function output_optimize_switch_cb() {
+		$this->output_toggle_switch( 'general_optimize', self::$option_general_settings['optimize']);
 	}		
 
-	protected function output_toggle_switch($option) {
-		PC::debug( array($option=>get_option( $option )) );
-		$switch = ( get_option( $option ) == 'on')?true:false;
-		$checked = $switch?'checked="checked"':'';
+	protected function output_toggle_switch( $input_name, $value ) {
+		PC::debug( array('in output toggle switch for ' . $input_name => $value) );
+		$checked = ( $value == 'on')?'checked="checked"':'';
 		?>
 		<label class="switch">
-  	<input type="checkbox" name="<?php echo $option;?>_checkbox" <?php echo $checked;?> value="on">
+  	<input type="checkbox" name="<?php echo $input_name;?>_checkbox" <?php echo $checked;?> value="on">
   	<div class="slider round"></div>
 		</label>
 		<?php
 	}
 
 	public function output_pages_list() {
-		foreach ($this->enqueued_assets['pages'] as $page) {
+		foreach ($this->option_enqueued_assets['pages'] as $page) {
 			echo '<p>' . $page[0] . ' on ' . $page[1] . '</p>';
 		}
 	}
@@ -560,8 +566,8 @@ class wpssm_Settings {
 		        <form action="<?php echo admin_url( 'admin-post.php' ); ?>" method="post">
 	        		<?php	
 							$this->output_form_buttons($referer, $active_tab);
-							settings_fields($this->settings_pages[$active_tab]['slug']);
-							do_settings_sections($this->settings_pages[$active_tab]['slug']);
+							settings_fields($this->config_settings_pages[$active_tab]['slug']);
+							do_settings_sections($this->config_settings_pages[$active_tab]['slug']);
 							$this->output_form_buttons($referer, $active_tab);
 	        		?>	
 	        
@@ -615,38 +621,40 @@ class wpssm_Settings {
 		
 		if ( isset ( $_POST[ 'wpssm_reset' ] ) ) {
 		   	PC::debug( 'In Form submission : RESET' );
-				PC::debug( array('assets before submission'=> $this->enqueued_assets) );
-				foreach ( $this->enqueued_assets[$type] as $handle=>$asset ) {
-					unset($this->enqueued_assets[$type][$handle]['mods']); 
+				PC::debug( array('assets before submission'=> $this->option_enqueued_assets) );
+				foreach ( $this->option_enqueued_assets[$type] as $handle=>$asset ) {
+					unset($this->option_enqueued_assets[$type][$handle]['mods']); 
 					$this->update_priority( $type, $handle ); 
 				}
-				PC::debug( array('assets after submission'=> $this->enqueued_assets) );
-				update_option( 'wpssm_enqueued_assets', $this->enqueued_assets);
+				PC::debug( array('assets after submission'=> $this->option_enqueued_assets) );
+				update_option( 'wpssm_enqueued_assets', $this->option_enqueued_assets);
 		    $query_args['msg']='reset';
 		}
 		elseif ( isset ( $_POST[ 'wpssm_delete' ] ) ) {
 		   	PC::debug( 'In Form submission : DELETE' );
 		    update_option( 'wpssm_enqueued_assets', array() );
-		    $this->enqueued_assets = array();
+		    $this->option_enqueued_assets = array();
 		    $query_args['msg']='delete';
 		}
 		else {
 				//PC::debug( 'In Form submission : SAVE, tab ' . $type );
 				if ( $type=='general' ) {
-					$recording = isset($_POST[ 'wpssm_recording_checkbox' ])?$_POST[ 'wpssm_recording_checkbox' ]:'off';
-					update_option( 'wpssm_enqueue_recording', $recording);
+					foreach (self::$option_general_settings as $setting=>$value) {
+						self::$option_general_settings[$setting]= isset($_POST[ 'general_' . $setting . '_checkbox' ])?$_POST[ 'general_' . $setting . '_checkbox' ]:'off';
+					}			
+					update_option( 'wpssm_general_settings', self::$option_general_settings );
 				}
 				else {
-					//PC::debug( array('assets before submission'=> $this->enqueued_assets) );
-					foreach ( $this->enqueued_assets[$type] as $handle=>$asset ) {
+					//PC::debug( array('assets before submission'=> $this->option_enqueued_assets) );
+					foreach ( $this->option_enqueued_assets[$type] as $handle=>$asset ) {
 						//PC::debug( array('Looping : asset = ' => $asset ) );
 						//PC::debug( array('Looping : handle = ' => $handle ) );
 						$this->update_field($type, $handle, 'location');
 						$this->update_field($type, $handle, 'minify');
 						$this->update_priority( $type, $handle ); 
 					}
-					//PC::debug( array('assets after submission'=> $this->enqueued_assets) );
-					update_option( 'wpssm_enqueued_assets', $this->enqueued_assets);
+					//PC::debug( array('assets after submission'=> $this->option_enqueued_assets) );
+					update_option( 'wpssm_enqueued_assets', $this->option_enqueued_assets);
 				}
 		    $query_args['msg']='save';
 		}
@@ -662,16 +670,16 @@ class wpssm_Settings {
 	
 	public function update_field( $type, $handle, $field ) {
 		$input = $this->get_field_name($type, $handle, $field);
-		if ( $_POST[ $input ] != $this->enqueued_assets[$type][$handle][$field] ) {
-			$this->enqueued_assets[$type][$handle]['mods'][$field] = $_POST[ $input ];
-			PC::debug( array('Asset field modified (mods) !' => $this->enqueued_assets[$type][$handle]) );
+		if ( $_POST[ $input ] != $this->option_enqueued_assets[$type][$handle][$field] ) {
+			$this->option_enqueued_assets[$type][$handle]['mods'][$field] = $_POST[ $input ];
+			PC::debug( array('Asset field modified (mods) !' => $this->option_enqueued_assets[$type][$handle]) );
 			PC::debug( array('$input' => $input ) );
 			PC::debug( array('POST content for this field' => $_POST[ $input ] ) );
 		}
 		else {
-			if ( isset( $this->enqueued_assets[$type][$handle]['mods'][$field]) ) {
-				unset($this->enqueued_assets[$type][$handle]['mods'][$field]);
-				PC::debug( array('Mod Field removed !' => $this->enqueued_assets[$type][$handle] ) );
+			if ( isset( $this->option_enqueued_assets[$type][$handle]['mods'][$field]) ) {
+				unset($this->option_enqueued_assets[$type][$handle]['mods'][$field]);
+				PC::debug( array('Mod Field removed !' => $this->option_enqueued_assets[$type][$handle] ) );
 			}
 		}
 	}
@@ -721,19 +729,20 @@ class wpssm_Settings {
     return $permalink;
 	}
 
-	public function record_header_assets() {
-		//PC::debug('In save enqueued scripts !!!');
-		$this->enqueued_assets['pages'][get_permalink()] = array(get_permalink(), current_time( 'mysql' ));
+	public function record_header_assets_cb() {
+		PC::debug('In record header assets cb');
+		$this->option_enqueued_assets['pages'][get_permalink()] = array(get_permalink(), current_time( 'mysql' ));
 		$this->record_enqueued_assets( false );
 	}
 
-	public function record_footer_assets() {
+	public function record_footer_assets_cb() {
+		PC::debug('In record footer assets cb');
 		$this->record_enqueued_assets( true );
-		update_option( 'wpssm_enqueued_assets', $this->enqueued_assets, true );
+		update_option( 'wpssm_enqueued_assets', $this->option_enqueued_assets, true );
 	}
 
-	public function record_enqueued_assets( $in_footer ) {
-		PC::debug('In record enqueued assets !!!');
+	protected function record_enqueued_assets( $in_footer ) {
+		PC::debug('In record enqueued assets');
 		global $wp_scripts;
 		global $wp_styles;
 
@@ -754,7 +763,7 @@ class wpssm_Settings {
 			//PC::debug(array('$source'=>$source));
 		}
 
-	  PC::debug(array('assets before update' => $this->enqueued_assets));
+	  //PC::debug(array('assets before update' => $this->option_enqueued_assets));
 				
 		$assets = array(
 			'scripts'=>array(
@@ -765,7 +774,7 @@ class wpssm_Settings {
 					'registered'=> $wp_styles->registered),
 			);
 				
-		PC::debug( array( '$assets' => $assets ) );		
+		//PC::debug( array( '$assets' => $assets ) );		
 			
 		foreach( $assets as $type=>$asset ) {
 			PC::debug( $type . ' recording');		
@@ -787,7 +796,7 @@ class wpssm_Settings {
 				}
 				
 				// Update current asset properties
-				$this->enqueued_assets[$type][$handle] = array(
+				$this->option_enqueued_assets[$type][$handle] = array(
 					'handle' => $handle,
 					'enqueue_index' => $index,
 					'filename' => $path,
@@ -801,17 +810,16 @@ class wpssm_Settings {
 				$priority = $this->update_priority( $type, $handle );
 				// Update all dependancies assets properties
 				foreach ($obj->deps as $dep_handle) {
-					PC::debug(array('dependencies loop : '=>$dep_handle));
-					$this->enqueued_assets[$type][$dep_handle]['dependents'][]=$handle;
+					//PC::debug(array('dependencies loop : '=>$dep_handle));
+					$this->option_enqueued_assets[$type][$dep_handle]['dependents'][]=$handle;
 				}
 			}
 		}
-	  PC::debug(array('assets after update' => $this->enqueued_assets));
+	  //PC::debug(array('assets after update' => $this->option_enqueued_assets));
 	}
 	
-	
-	private function update_priority( $type, $handle ) {
-		$asset = $this->enqueued_assets[$type][$handle];
+	protected function update_priority( $type, $handle ) {
+		$asset = $this->option_enqueued_assets[$type][$handle];
 		$location = $this->get_field_value( $asset, 'location');
 		
 		if ( $location != 'disabled' ) {
@@ -837,7 +845,7 @@ class wpssm_Settings {
 		else 
 			$score = 0;
 
-		$this->enqueued_assets[$type][$handle]['priority'] = $score;
+		$this->option_enqueued_assets[$type][$handle]['priority'] = $score;
 	}
 
 	/* AJAX FUNCTIONS

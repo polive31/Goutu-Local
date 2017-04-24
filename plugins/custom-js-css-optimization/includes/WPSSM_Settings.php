@@ -97,7 +97,7 @@ class WPSSM_Settings {
     add_action( 'admin_enqueue_scripts', array($this,'load_admin_assets') );
 
 		// configure AJAX actions
-		add_action( 'wp_ajax_check-dependencies', array($this,'ajax_check_dependencies_cb') );
+		//add_action( 'wp_ajax_my-action', array($this,'ajax_my_action_cb') );
 		
 		// manage frontend pages monitoring 
 		//echo '<pre>In WPSSM Construct</pre>';
@@ -441,24 +441,24 @@ class WPSSM_Settings {
     	?>
     	
     	<tr class="enqueued-asset <?php echo $type;?>" id="<?php echo $handle;?>">
-	    	<td title="<?php echo $filename;?>"><?php echo $handle;?><?php $this->output_user_notification( $asset );?></td>
+	    	<td class="handle" title="<?php echo $filename;?>"><?php echo $handle;?><?php $this->output_user_notification( $asset );?></td>
 	    	
 	    	<!--<td><?php echo $priority;?></td>-->
 	    	
-	    	<td><?php foreach ($dependencies as $dep) {echo $dep . '<br>';}?></td>
-	    	<td><?php foreach ($dependents as $dep) {echo $dep . '<br>';}?></td>
+	    	<td class="dependencies"><?php foreach ($dependencies as $dep) {echo $dep . '<br>';}?></td>
+	    	<td class="dependents"><?php foreach ($dependents as $dep) {echo $dep . '<br>';}?></td>
 	    	
-	    	<td title="<?php echo $filename;?>"><?php echo size_format( $size );?></td>
+	    	<td class="size" title="<?php echo $filename;?>"><?php echo size_format( $size );?></td>
 	    	
-	    	<td class="<?php echo $this->is_modified( $asset, 'location');?>">
-	    		<select id="<?php echo $handle;?>" class="asset-setting location <?php echo $type;?>" name="<?php echo $this->get_field_name( $type, $handle, 'location');?>">
+	    	<td class="location <?php echo $this->is_modified( $asset, 'location');?>">
+	    		<select data-dependents='<?php echo json_encode($dependents);?>' id="<?php echo $handle;?>" class="asset-setting location <?php echo $type;?>" name="<?php echo $this->get_field_name( $type, $handle, 'location');?>">
   					<option value="header" <?php echo ($location=='header')?'selected':'';?> >header</option>
   					<option value="footer" <?php echo ($location=='footer')?'selected':'';?> >footer</option>
   					<option value="disabled" <?php echo ($location=='disabled')?'selected':'';?>>disabled</option>
 					</select>
 				</td>
 				
-				<td class="<?php echo $this->is_modified( $asset, 'minify');?>">
+				<td class="minify <?php echo $this->is_modified( $asset, 'minify');?>">
 	    		<select id="<?php echo $handle;?>" class="asset-setting minify <?php echo $type;?>" <?php echo ($asset_is_minified)?'disabled':'';?> <?php echo ($asset_is_minified)?'title="' . $already_minified_msg . '"' :'';?> name="<?php echo $this->get_field_name( $type, $handle, 'minify');?>">
   					<option value="no" <?php echo ($minify=='no')?'selected':'';?>  >no</option>
   					<option value="yes" <?php echo ($minify=='yes')?'selected':'';?> >yes</option>

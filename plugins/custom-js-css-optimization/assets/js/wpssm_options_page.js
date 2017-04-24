@@ -32,16 +32,18 @@ jQuery(document).ready(function(){
   		var dependents = jQuery(this).data("dependents");                         
 			console.log("Script has following dependents : ", dependents);
 			
-			var depIssue=false;
+			var headerDepScripts='';
 			jQuery.each(dependents, function(key, value) {
     		console.log(key, value);
     		var depLocation = table_cell.closest('.enqueued-assets').find('.location select[id="' + value + '"]').val();
     		console.log(depLocation);
-    		if (depLocation != current) {depIssue=true};
+    		if (depLocation == 'header') {
+    			headerDepScripts=headerDepScripts + '\u2022 ' + value + '\n';
+    			};
 			});
-			console.log(depIssue);
-			if (depIssue) {
-				alert('It is not possible to move ' + handle + ' to the footer, since other header scripts depend on it. Those scripts need to be moved first.');
+			console.log(headerDepScripts);
+			if (headerDepScripts!='') {
+				alert('It is not possible to move ' + handle + ' to the footer, since other header scripts depend on it.\nThose scripts need to be moved first :\n'+headerDepScripts);
 				jQuery(this).val("header");
 				table_cell.removeClass( "modified" );
 			}

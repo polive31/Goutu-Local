@@ -23,37 +23,53 @@ jQuery(document).ready(function(){
     
     // Check script dependencies
 		var thisClass = jQuery(this).attr("class");
-  	var moveFooter = (current=='footer')  && (thisClass.indexOf('scripts')>-1) ;                          
-		if (moveFooter)	{
-			console.log('Move to footer !');
+  	var moveFooter = (current=='footer') && (thisClass.indexOf('scripts')>-1) ;                          
+  	var disable = (current=='disabled') && (thisClass.indexOf('scripts')>-1) ;                          
+
+		if (moveFooter || disable)	{
 			var handle=jQuery(this).attr("id"); 	
 			console.log("Location for script " + handle + " modified !");
-			console.log("JSON table ", jQuery(this).data("dependents"));
   		var dependents = jQuery(this).data("dependents");                         
 			console.log("Script has following dependents : ", dependents);
-			
-			var headerDepScripts='';
+			var depsList='';
+		}
+
+		if (moveFooter)	{
+			console.log('Move to footer !');
 			jQuery.each(dependents, function(key, value) {
     		console.log(key, value);
     		var depLocation = table_cell.closest('.enqueued-assets').find('.location select[id="' + value + '"]').val();
     		console.log(depLocation);
     		if (depLocation == 'header') {
-    			headerDepScripts=headerDepScripts + '\u2022 ' + value + '\n';
+    			depsList=depsList + '\u2022 ' + value + '\n';
     			};
 			});
-			console.log(headerDepScripts);
-			if (headerDepScripts!='') {
-				alert('It is not possible to move ' + handle + ' to the footer, since other header scripts depend on it.\nThose scripts need to be moved first :\n'+headerDepScripts);
+			console.log(depsList);
+			if (depsList!='') {
+				alert('It is not possible to move ' + handle + ' to the footer, since other header scripts depend on it.\nThose scripts need to be moved first :\n'+depsList);
 				jQuery(this).val("header");
 				table_cell.removeClass( "modified" );
 			}
-			
-			
-  	}
-		
+		}
+		else if (disable) {
+			console.log('Disable !');
+			jQuery.each(dependents, function(key, value) {
+    		console.log(key, value);
+    		var depLocation = table_cell.closest('.enqueued-assets').find('.location select[id="' + value + '"]').val();
+    		console.log(depLocation);
+    		if (depLocation != 'disable') {
+    			depsList=depsList + '\u2022 ' + value + '\n';
+    			};
+			});
+			console.log(depsList);
+			if (depsList!='') {
+				alert('It is not possible to disable ' + handle + ', since other active scripts depend on it.\nThose scripts need to be disabled first :\n'+depsList);
+				jQuery(this).val( prev );
+				table_cell.removeClass( "modified" );
+			}			
+		}
 		
 	});	
-
 	
 });
 

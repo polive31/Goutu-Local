@@ -46,7 +46,7 @@ jQuery(document).ready(function(){
 			});
 			console.log(depsList);
 			if (depsList!='') {
-				alert('It is not possible to move ' + handle + ' to the footer, since other header scripts depend on it.\nThose scripts need to be moved first :\n'+depsList);
+				alert('It is not possible to move ' + handle + ' to the footer, since other header scripts depend on it.\nThose scripts need to be moved or disabled first :\n'+depsList);
 				jQuery(this).val("header");
 				table_cell.removeClass( "modified" );
 			}

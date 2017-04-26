@@ -40,9 +40,10 @@ class WPSSM_Settings {
 	protected $header_scripts;
 	protected $header_styles;
 	
-	public static $option_general_settings = array('record'=>'off', 'optimize'=>'off');
-	protected $option_enqueued_assets;
-
+	public static $opt_general_settings = array('record'=>'off', 'optimize'=>'off');
+	protected $opt_enqueued_assets;
+	public static $opt_enqueue_mods;
+	
 	protected $displayed_assets;
 	protected $user_notification; 
 	
@@ -101,7 +102,7 @@ class WPSSM_Settings {
 		
 		// manage frontend pages monitoring 
 		//echo '<pre>In WPSSM Construct</pre>';
-		if ( self::$option_general_settings['record'] == 'on' ) {
+		if ( self::$opt_general_settings['record'] == 'on' ) {
 			//echo '<pre>RECORD=ON</pre>';
 			add_action( 'wp_head', array($this, 'record_header_assets_cb') );
 			add_action( 'wp_print_footer_scripts', array($this, 'record_footer_assets_cb') );
@@ -134,21 +135,25 @@ class WPSSM_Settings {
 														);
 									
 		// hydrate general settings property with options content
-		self::$option_general_settings = get_option( 'wpssm_general_settings' );
+		self::$opt_general_settings = get_option( 'wpssm_general_settings' );
 
 
 		// hydrate enqueued assets property with options content
-		$this->option_enqueued_assets = get_option( 'wpssm_enqueued_assets' );
-		if (!isset($this->option_enqueued_assets['pages'])) $this->option_enqueued_assets['pages']=array();
-		if (!isset($this->option_enqueued_assets['scripts'])) $this->option_enqueued_assets['scripts']=array();
-		if (!isset($this->option_enqueued_assets['styles'])) $this->option_enqueued_assets['styles']=array();
-		
+		$this->opt_enqueued_assets = get_option( 'wpssm_enqueued_assets' );
+		if (!isset($this->opt_enqueued_assets['pages'])) $this->opt_enqueued_assets['pages']=array();
+		if (!isset($this->opt_enqueued_assets['scripts'])) $this->opt_enqueued_assets['scripts']=array();
+		if (!isset($this->opt_enqueued_assets['styles'])) $this->opt_enqueued_assets['styles']=array();
+		self::$opt_enqueue_mods = get_option( 'wpssm_enqueue_mods' );
+		if (!isset(self::$opt_enqueue_mods['scripts'])) self::$opt_enqueue_mods['scripts']=array();
+		if (!isset(self::$opt_enqueue_mods['styles'])) self::$opt_enqueue_mods['styles']=array();
+		echo '<pre>Enqueue Mods after hydrate : ' . self::$opt_enqueue_mods . '</pre>';
+					
 		// Preparation of data to be displayed
     $types=array('scripts', 'styles');
     $locations=array('header', 'footer', 'disabled');
 		foreach ($types as $type) {
-			if (! isset ( $this->option_enqueued_assets[$type] ) ) continue;
-			$assets = $this->option_enqueued_assets[$type];
+			if (! isset ( $this->opt_enqueued_assets[$type] ) ) continue;
+			$assets = $this->opt_enqueued_assets[$type];
 			foreach ($locations as $location) {
 				$this-> filter_args = array( 'location' => $location );
 				$filtered_assets = array_filter($assets, array($this, 'filter_assets') );	
@@ -177,7 +182,7 @@ class WPSSM_Settings {
 	}
 
 	public function add_plugin_menu_option() {
-		$option_page_id = add_submenu_page(
+		$opt_page_id = add_submenu_page(
       //'options-general.php',
       'tools.php',
       'WP Scripts & Styles Manager',
@@ -187,7 +192,7 @@ class WPSSM_Settings {
       array($this, 'output_options_page')
 	    );
 
-		add_action( "load-$option_page_id", array ( $this, 'load_option_page_cb' ) );
+		add_action( "load-$opt_page_id", array ( $this, 'load_option_page_cb' ) );
 	}
 
 	public function init_settings_cb() {
@@ -333,11 +338,11 @@ class WPSSM_Settings {
 	}
 
 	public function output_recording_switch_cb() {
-		$this->output_toggle_switch( 'general_record', self::$option_general_settings['record']);
+		$this->output_toggle_switch( 'general_record', self::$opt_general_settings['record']);
 	}	
 
 	public function output_optimize_switch_cb() {
-		$this->output_toggle_switch( 'general_optimize', self::$option_general_settings['optimize']);
+		$this->output_toggle_switch( 'general_optimize', self::$opt_general_settings['optimize']);
 	}		
 
 	protected function output_toggle_switch( $input_name, $value ) {
@@ -352,7 +357,7 @@ class WPSSM_Settings {
 	}
 
 	public function output_pages_list() {
-		foreach ($this->option_enqueued_assets['pages'] as $page) {
+		foreach ($this->opt_enqueued_assets['pages'] as $page) {
 			echo '<p>' . $page[0] . ' on ' . $page[1] . '</p>';
 		}
 	}
@@ -418,8 +423,8 @@ class WPSSM_Settings {
     	<tr>
     		<th> handle </th>
     		<!-- <th> priority </th> -->
-    		<th> Dependencies </th>
-    		<th> Dependents </th>
+    		<!--<th> Dependencies </th>-->
+    		<th> Dependents </th> 
     		<th> File size </th>
     		<th> Location </th>
     		<th> Minify </th>
@@ -445,7 +450,7 @@ class WPSSM_Settings {
 	    	
 	    	<!--<td><?php echo $priority;?></td>-->
 	    	
-	    	<td class="dependencies"><?php foreach ($dependencies as $dep) {echo $dep . '<br>';}?></td>
+	    	<!-- <td class="dependencies"><?php foreach ($dependencies as $dep) {echo $dep . '<br>';}?></td> -->
 	    	<td class="dependents"><?php foreach ($dependents as $dep) {echo $dep . '<br>';}?></td>
 	    	
 	    	<td class="size" title="<?php echo $filename;?>"><?php echo size_format( $size );?></td>
@@ -624,40 +629,49 @@ class WPSSM_Settings {
 		
 		if ( isset ( $_POST[ 'wpssm_reset' ] ) ) {
 		   	PC::debug( 'In Form submission : RESET' );
-				PC::debug( array('assets before submission'=> $this->option_enqueued_assets) );
-				foreach ( $this->option_enqueued_assets[$type] as $handle=>$asset ) {
-					unset($this->option_enqueued_assets[$type][$handle]['mods']); 
+				PC::debug( array('assets before submission'=> $this->opt_enqueued_assets) );
+				foreach ( $this->opt_enqueued_assets[$type] as $handle=>$asset ) {
+					unset($this->opt_enqueued_assets[$type][$handle]['mods']); 
 					$this->update_priority( $type, $handle ); 
+					unset(self::$opt_enqueue_mods[$type][$handle]); 
 				}
-				PC::debug( array('assets after submission'=> $this->option_enqueued_assets) );
-				update_option( 'wpssm_enqueued_assets', $this->option_enqueued_assets);
+				PC::debug( array('assets after submission'=> $this->opt_enqueued_assets) );
+				update_option( 'wpssm_enqueued_assets', $this->opt_enqueued_assets);
+		    update_option( 'wpssm_enqueue_mods', self::$opt_enqueue_mods );
 		    $query_args['msg']='reset';
 		}
 		elseif ( isset ( $_POST[ 'wpssm_delete' ] ) ) {
 		   	PC::debug( 'In Form submission : DELETE' );
+		    $this->opt_enqueued_assets = array();
 		    update_option( 'wpssm_enqueued_assets', array() );
-		    $this->option_enqueued_assets = array();
+		    self::$opt_enqueue_mods = array();
+		    update_option( 'wpssm_enqueue_mods', array() );
 		    $query_args['msg']='delete';
 		}
 		else {
 				//PC::debug( 'In Form submission : SAVE, tab ' . $type );
 				if ( $type=='general' ) {
-					foreach (self::$option_general_settings as $setting=>$value) {
-						self::$option_general_settings[$setting]= isset($_POST[ 'general_' . $setting . '_checkbox' ])?$_POST[ 'general_' . $setting . '_checkbox' ]:'off';
+					foreach (self::$opt_general_settings as $setting=>$value) {
+						self::$opt_general_settings[$setting]= isset($_POST[ 'general_' . $setting . '_checkbox' ])?$_POST[ 'general_' . $setting . '_checkbox' ]:'off';
 					}			
-					update_option( 'wpssm_general_settings', self::$option_general_settings );
+					update_option( 'wpssm_general_settings', self::$opt_general_settings );
 				}
 				else {
-					//PC::debug( array('assets before submission'=> $this->option_enqueued_assets) );
-					foreach ( $this->option_enqueued_assets[$type] as $handle=>$asset ) {
+					//PC::debug( array('assets before submission'=> $this->opt_enqueued_assets) );
+					foreach ( $this->opt_enqueued_assets[$type] as $handle=>$asset ) {
 						//PC::debug( array('Looping : asset = ' => $asset ) );
 						//PC::debug( array('Looping : handle = ' => $handle ) );
 						$this->update_field($type, $handle, 'location');
 						$this->update_field($type, $handle, 'minify');
 						$this->update_priority( $type, $handle ); 
 					}
-					//PC::debug( array('assets after submission'=> $this->option_enqueued_assets) );
-					update_option( 'wpssm_enqueued_assets', $this->option_enqueued_assets);
+					//PC::debug( array('assets after submission'=> $this->opt_enqueued_assets) );
+					PC::debug(array('Enqueue Mods before update : '=>self::$opt_enqueue_mods));
+					self::$opt_enqueue_mods[$type ] = array_column($this->opt_enqueued_assets['scripts'], 'mods', 'handle');
+					PC::debug(array('Enqueue Mods after update : '=>self::$opt_enqueue_mods));
+					
+					update_option( 'wpssm_enqueued_assets', $this->opt_enqueued_assets);
+					update_option( 'wpssm_enqueue_mods', self::$opt_enqueue_mods);
 				}
 		    $query_args['msg']='save';
 		}
@@ -673,16 +687,16 @@ class WPSSM_Settings {
 	
 	public function update_field( $type, $handle, $field ) {
 		$input = $this->get_field_name($type, $handle, $field);
-		if ( $_POST[ $input ] != $this->option_enqueued_assets[$type][$handle][$field] ) {
-			$this->option_enqueued_assets[$type][$handle]['mods'][$field] = $_POST[ $input ];
-			PC::debug( array('Asset field modified (mods) !' => $this->option_enqueued_assets[$type][$handle]) );
+		if ( ( isset($_POST[ $input ] )) && ( $_POST[ $input ] != $this->opt_enqueued_assets[$type][$handle][$field]  ) ) {
+			$this->opt_enqueued_assets[$type][$handle]['mods'][$field] = $_POST[ $input ];
+			PC::debug( array('Asset field modified (mods) !' => $this->opt_enqueued_assets[$type][$handle]) );
 			PC::debug( array('$input' => $input ) );
 			PC::debug( array('POST content for this field' => $_POST[ $input ] ) );
 		}
 		else {
-			if ( isset( $this->option_enqueued_assets[$type][$handle]['mods'][$field]) ) {
-				unset($this->option_enqueued_assets[$type][$handle]['mods'][$field]);
-				PC::debug( array('Mod Field removed !' => $this->option_enqueued_assets[$type][$handle] ) );
+			if ( isset( $this->opt_enqueued_assets[$type][$handle]['mods'][$field]) ) {
+				unset($this->opt_enqueued_assets[$type][$handle]['mods'][$field]);
+				PC::debug( array('Mod Field removed !' => $this->opt_enqueued_assets[$type][$handle] ) );
 			}
 		}
 	}
@@ -734,14 +748,14 @@ class WPSSM_Settings {
 
 	public function record_header_assets_cb() {
 		PC::debug('In record header assets cb');
-		$this->option_enqueued_assets['pages'][get_permalink()] = array(get_permalink(), current_time( 'mysql' ));
+		$this->opt_enqueued_assets['pages'][get_permalink()] = array(get_permalink(), current_time( 'mysql' ));
 		$this->record_enqueued_assets( false );
 	}
 
 	public function record_footer_assets_cb() {
 		PC::debug('In record footer assets cb');
 		$this->record_enqueued_assets( true );
-		update_option( 'wpssm_enqueued_assets', $this->option_enqueued_assets, true );
+		update_option( 'wpssm_enqueued_assets', $this->opt_enqueued_assets, true );
 	}
 
 	protected function record_enqueued_assets( $in_footer ) {
@@ -766,7 +780,7 @@ class WPSSM_Settings {
 			//PC::debug(array('$source'=>$source));
 		}
 
-	  //PC::debug(array('assets before update' => $this->option_enqueued_assets));
+	  //PC::debug(array('assets before update' => $this->opt_enqueued_assets));
 				
 		$assets = array(
 			'scripts'=>array(
@@ -799,7 +813,7 @@ class WPSSM_Settings {
 				}
 				
 				// Update current asset properties
-				$this->option_enqueued_assets[$type][$handle] = array(
+				$this->opt_enqueued_assets[$type][$handle] = array(
 					'handle' => $handle,
 					'enqueue_index' => $index,
 					'filename' => $path,
@@ -815,15 +829,15 @@ class WPSSM_Settings {
 				// Update all dependancies assets properties
 				foreach ($obj->deps as $dep_handle) {
 					//PC::debug(array('dependencies loop : '=>$dep_handle));
-					$this->option_enqueued_assets[$type][$dep_handle]['dependents'][]=$handle;
+					$this->opt_enqueued_assets[$type][$dep_handle]['dependents'][]=$handle;
 				}
 			}
 		}
-	  //PC::debug(array('assets after update' => $this->option_enqueued_assets));
+	  //PC::debug(array('assets after update' => $this->opt_enqueued_assets));
 	}
 	
 	protected function update_priority( $type, $handle ) {
-		$asset = $this->option_enqueued_assets[$type][$handle];
+		$asset = $this->opt_enqueued_assets[$type][$handle];
 		$location = $this->get_field_value( $asset, 'location');
 		
 		if ( $location != 'disabled' ) {
@@ -849,7 +863,7 @@ class WPSSM_Settings {
 		else 
 			$score = 0;
 
-		$this->option_enqueued_assets[$type][$handle]['priority'] = $score;
+		$this->opt_enqueued_assets[$type][$handle]['priority'] = $score;
 	}
 
 	/* AJAX FUNCTIONS

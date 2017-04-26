@@ -24,7 +24,7 @@ jQuery(document).ready(function(){
     // Check script dependencies
 		var thisClass = jQuery(this).attr("class");
   	var moveFooter = (current=='footer') && (thisClass.indexOf('scripts')>-1) ;                          
-  	var disable = (current=='disable') && (thisClass.indexOf('scripts')>-1) ;                          
+  	var disable = (current=='disabled') && (thisClass.indexOf('scripts')>-1) ;                          
 
 		if (moveFooter || disable)	{
 			var handle=jQuery(this).attr("id"); 	

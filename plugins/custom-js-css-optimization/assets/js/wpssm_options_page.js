@@ -23,10 +23,8 @@ jQuery(document).ready(function(){
     
     // Check script dependencies
 		var thisClass = jQuery(this).attr("class");
-  	var moveFooter = (current=='footer') && (thisClass.indexOf('scripts')>-1) ;                          
-  	var disable = (current=='disabled') && (thisClass.indexOf('scripts')>-1) ;                          
 
-		if (moveFooter || disable)	{
+		if ( (current=='footer') || (current=='disabled') )	{
 			var handle=jQuery(this).attr("id"); 	
 			console.log("Location for script " + handle + " modified !");
   		var dependents = jQuery(this).data("dependents");                         
@@ -34,7 +32,7 @@ jQuery(document).ready(function(){
 			var depsList='';
 		}
 
-		if (moveFooter)	{
+		if (current=='footer')	{
 			console.log('Move to footer !');
 			jQuery.each(dependents, function(key, value) {
     		console.log(key, value);
@@ -46,12 +44,12 @@ jQuery(document).ready(function(){
 			});
 			console.log(depsList);
 			if (depsList!='') {
-				alert('It is not possible to move ' + handle + ' to the footer, since other header scripts depend on it.\nThose scripts need to be moved or disabled first :\n'+depsList);
+				alert('It is not possible to move ' + handle + ' to the footer, since other header assets depend on it.\nThose assets need to be moved or disabled first :\n'+depsList);
 				jQuery(this).val("header");
 				table_cell.removeClass( "modified" );
 			}
 		}
-		else if (disable) {
+		else if (current=='disabled') {
 			console.log('Disable !');
 			jQuery.each(dependents, function(key, value) {
     		console.log(key, value);
@@ -63,7 +61,7 @@ jQuery(document).ready(function(){
 			});
 			console.log(depsList);
 			if (depsList!='') {
-				alert('It is not possible to disable ' + handle + ', since other active scripts depend on it.\nThose scripts need to be disabled first :\n'+depsList);
+				alert('It is not possible to disable ' + handle + ', since other active assets depend on it.\nThose assets need to be disabled first :\n'+depsList);
 				jQuery(this).val( prev );
 				table_cell.removeClass( "modified" );
 			}			

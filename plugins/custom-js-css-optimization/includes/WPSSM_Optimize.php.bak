@@ -18,7 +18,7 @@ class WPSSM_Optimize {
 		if ( ($this->opt_general_settings['record']=='off') && ($this->opt_general_settings['optimize']=='on') ) {
 			//echo '<pre> OPTIMIZE ACTIVATED ! </pre>';
 			add_action( 'wp_enqueue_scripts', array($this, 'apply_scripts_mods_cb'), PHP_INT_MAX );
-			add_action( 'wp_enqueue_scripts', array($this, 'apply_styles_mods_cb'), PHP_INT_MAX );
+			add_action( 'wp_enqueue_styles', array($this, 'apply_styles_mods_cb'), PHP_INT_MAX );
 		}
 	}
 	

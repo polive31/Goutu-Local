@@ -293,18 +293,4 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		
 	}
 
-
 }
-
-
-?>
-
-
-
-
-
-
-
-
-
-

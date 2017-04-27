@@ -6,42 +6,38 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-class WPSSM_Optimize {
+class WPSSM_Optimize extends WPSSM_Settings {
 	
-	public $opt_general_settings;
-	public $opt_enqueued_assets;
+	public $stylemods;
+	public $scriptmods;
 	
 	public function __construct() {
-		$this->hydrate();
+		parent::__construct();
 	
 		//echo '<pre> <p>opt_general_settings in construct : </p><p>' . var_dump($this->opt_general_settings['record']) . '</p></pre>';
 		if ( ($this->opt_general_settings['record']=='off') && ($this->opt_general_settings['optimize']=='on') ) {
 			//echo '<pre> OPTIMIZE ACTIVATED ! </pre>';
 			add_action( 'wp_enqueue_scripts', array($this, 'apply_scripts_mods_cb'), PHP_INT_MAX );
-			add_action( 'wp_enqueue_styles', array($this, 'apply_styles_mods_cb'), PHP_INT_MAX );
+			add_action( 'wp_enqueue_scripts', array($this, 'apply_styles_mods_cb'), PHP_INT_MAX );
+			//add_action( 'wp_enqueue_scripts', array($this, 'debug_styles_enqueue_cb'), PHP_INT_MAX );
+			add_action( 'get_footer', array($this, 'enqueue_footer_styles_cb') );
 		}
-	}
+	}		
 	
-	public function hydrate() {
-		// hydrate general settings property with options content
-		$this->opt_general_settings = get_option( 'wpssm_general_settings' );
-		echo '<pre> opt_general_settings ' . var_dump($this->opt_general_settings) . '</pre>';
-
-		// hydrate enqueued assets property with options content
-		$this->opt_enqueued_assets = get_option( 'wpssm_enqueued_assets' );
-		if (!isset($this->opt_enqueued_assets['scripts'])) $this->opt_enqueued_assets['scripts']=array();
-		if (!isset($this->opt_enqueued_assets['styles'])) $this->opt_enqueued_assets['styles']=array();
-		//echo '<pre> opt_enqueued_assets ' . var_dump($this->opt_enqueued_assets) . '</pre>';
+	public function debug_styles_enqueue_cb() {
+		wp_deregister_style( 'custom-ratings' );
+		wp_register_style( 'custom-ratings', '/wp-content/plugins/custom-star-rating/assets/custom-star-rating.css', array(), false, true);
+		wp_enqueue_style('custom-ratings');
 	}
 
 	public function apply_scripts_mods_cb() {
-		echo '<pre> IN apply_scripts_mods_cb ! </pre>';
+		//echo '<pre> IN apply_scripts_mods_cb ! </pre>';
 		$scripts = $this->opt_enqueued_assets['scripts'];
 		//PC::debug(array('In apply_scripts_mods_cb : scripts '=>$scripts));
-		$mods = array_column($scripts, 'mods', 'handle');
+		$this->scriptmods = array_column($scripts, 'mods', 'handle');
 		//PC::debug(array('In apply_scripts_mods_cb : mods '=>$mods));
 		
-		foreach ($mods as $handle => $mod) {
+		foreach ($this->scriptmods as $handle => $mod) {
 			if ( isset( $mod['location'] ) ) {
 				$location = $mod['location'];
 				wp_deregister_script( $handle );
@@ -58,27 +54,44 @@ class WPSSM_Optimize {
 	}
 	
 	public function apply_styles_mods_cb() {
-		echo '<pre> IN apply_styles_mods_cb ! </pre>';
+		PC::debug('<pre> IN apply_styles_mods_cb ! </pre>');
 		$styles = $this->opt_enqueued_assets['styles'];
 		PC::debug(array('In apply_styles_mods_cb : styles '=>$styles));
-		$mods = array_column($styles, 'mods', 'handle');
-		PC::debug(array('In apply_styles_mods_cb : mods '=>$mods));
+		$this->stylemods = array_column($styles, 'mods', 'handle');
+		PC::debug(array('In apply_styles_mods_cb : mods '=>$this->stylemods));
 		
-		foreach ($mods as $handle => $mod) {
-			if ( isset( $mod['location'] ) ) {
+		foreach ($this->stylemods as $handle => $mod) {
+			if ( isset( $mod['location'] ) && ( $mod['location']=='footer') ) {
+				wp_dequeue_style( $handle );
+			}
+			
+			elseif (false) {
 				$location = $mod['location'];
 				wp_deregister_style( $handle );
-				if ($location != 'disabled' ) {
+				if ($location == 'header' ) {
 					wp_register_style( $handle, 
 						$styles[$handle]['filename'],
 						$styles[$handle]['dependencies'],
-						$styles[$handle]['version'],
-						($location=='footer')?true:false );				
+						$styles[$handle]['version'] );				
 					wp_enqueue_style( $handle );
 				}
 			}
 		}
 	}
+	
+	function enqueue_footer_styles_cb() {
+		$styles = $this->opt_enqueued_assets['styles'];
+		foreach ($this->stylemods as $handle => $mod) {
+			if ( isset( $mod['location'] ) && ( $mod['location']=='footer') ) {
+    		wp_enqueue_style( $handle, 
+													$styles[$handle]['filename'],
+													$styles[$handle]['dependencies'],
+													$styles[$handle]['version']
+													);	
+			}
+		}
+	}
+
 	
 	
 	

@@ -156,7 +156,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 			if ( ! ( $comment_rating && $rating==0 ) ) { // Don't show empty ratings in comments 	
 				if ( $display_style!='minimal' ) {
 				?>
-				<td class="rating-category" title="<?php echo __($cat['caption'], 'custom-star-rating')?>"><?php echo __($cat['title'], 'custom-star-rating')?></td>
+				<td class="rating-category" title="<?php echo __($cat['legend'], 'custom-star-rating')?>"><?php echo __($cat['title'], 'custom-star-rating')?></td>
 				<?php
 				}?>
 				<td class="rating" title="<?php echo $rating?> : <?php echo $this->rating_caption($rating,$id)?>">
@@ -293,11 +293,8 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		
 	}
 
-
 }
 
-
-?>
 
 
 

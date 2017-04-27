@@ -284,7 +284,7 @@ function custom_load_custom_style_sheet() {
 }
 
 /* Gestion des feuilles de style minifiées */
-add_filter( 'stylesheet_uri', 'use_minified_stylesheet', 10, 1 );
+//add_filter( 'stylesheet_uri', 'use_minified_stylesheet', 10, 1 );
 function use_minified_stylesheet( $default_stylesheet_uri ) {
 	$stylesheet_path = CHILD_THEME_PATH . '/style.min.css';
 	$default_stylesheet_path = CHILD_THEME_PATH . '/style.css';

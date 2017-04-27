@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once 'includes/WPSSM_Settings.php';
 require_once 'includes/WPSSM_Optimize.php';
 
-new WPSSM_Settings();
+//new WPSSM_Settings();
 new WPSSM_Optimize();
 
 

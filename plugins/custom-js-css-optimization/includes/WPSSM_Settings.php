@@ -34,6 +34,7 @@ class WPSSM_Settings {
 				)),
 	);
 	
+	
 	protected $form_action = 'wpssm_update_settings';
 	protected $nonce = 'wp8756';
 	protected $urls_to_request;
@@ -41,7 +42,7 @@ class WPSSM_Settings {
 	protected $header_styles;
 	
 	public $opt_general_settings = array('record'=>'off', 'optimize'=>'off');
-	public $opt_enqueued_assets;
+	public $opt_enqueued_assets = array( 'pages'=>array(), 'scripts'=>array(), 'styles'=>array());
 
 	protected $displayed_assets;
 	protected $user_notification; 
@@ -103,14 +104,18 @@ class WPSSM_Settings {
 														);
 									
 		// hydrate general settings property with options content
-		$this->opt_general_settings = get_option( 'wpssm_general_settings' );
+		$get_option = get_option( 'wpssm_general_settings' );
+		if ($get_option!=false)
+			$this->opt_general_settings=$get_option; 
 
 
 		// hydrate enqueued assets property with options content
-		$this->opt_enqueued_assets = get_option( 'wpssm_enqueued_assets' );
-		if (!isset($this->opt_enqueued_assets['pages'])) $this->opt_enqueued_assets['pages']=array();
-		if (!isset($this->opt_enqueued_assets['scripts'])) $this->opt_enqueued_assets['scripts']=array();
-		if (!isset($this->opt_enqueued_assets['styles'])) $this->opt_enqueued_assets['styles']=array();
+		$get_option = get_option( 'wpssm_enqueued_assets' );
+		if ($get_option!=false) {
+			if (!isset($this->opt_enqueued_assets['pages'])) $this->opt_enqueued_assets['pages']=array();
+			if (!isset($this->opt_enqueued_assets['scripts'])) $this->opt_enqueued_assets['scripts']=array();
+			if (!isset($this->opt_enqueued_assets['styles'])) $this->opt_enqueued_assets['styles']=array();
+		}
 		
 							
 		// Preparation of data to be displayed
@@ -605,13 +610,17 @@ class WPSSM_Settings {
 		elseif ( isset ( $_POST[ 'wpssm_delete' ] ) ) {
 		   	PC::debug( 'In Form submission : DELETE' );
 		    $this->opt_enqueued_assets = array();
+		    $this->opt_general_settings = array();
 		    update_option( 'wpssm_enqueued_assets', array() );
+		    update_option( 'wpssm_general_settings', array() );
 		    $query_args['msg']='delete';
 		}
 		else {
-				//PC::debug( 'In Form submission : SAVE, tab ' . $type );
+				PC::debug( 'In Form submission : SAVE, tab ' . $type );
 				if ( $type=='general' ) {
-					foreach ($this->opt_general_settings as $setting=>$value) {
+					PC::debug( array('general save $this->opt_general_settings' => $this->opt_general_settings) );
+					$settings=array('record','optimize');
+					foreach ($settings as $setting) {
 						$this->opt_general_settings[$setting]= isset($_POST[ 'general_' . $setting . '_checkbox' ])?$_POST[ 'general_' . $setting . '_checkbox' ]:'off';
 					}			
 					update_option( 'wpssm_general_settings', $this->opt_general_settings );

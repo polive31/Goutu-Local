@@ -34,6 +34,7 @@ class WPSSM_Settings {
 				)),
 	);
 	
+	
 	protected $form_action = 'wpssm_update_settings';
 	protected $nonce = 'wp8756';
 	protected $urls_to_request;
@@ -41,7 +42,7 @@ class WPSSM_Settings {
 	protected $header_styles;
 	
 	public $opt_general_settings = array('record'=>'off', 'optimize'=>'off');
-	public $opt_enqueued_assets;
+	public $opt_enqueued_assets = array( 'pages'=>array(), 'scripts'=>array(), 'styles'=>array()) ;;
 
 	protected $displayed_assets;
 	protected $user_notification; 
@@ -70,7 +71,7 @@ class WPSSM_Settings {
 		
 		// manage frontend pages monitoring 
 		//echo '<pre>In WPSSM Construct</pre>';
-		if ( self::$opt_general_settings['record'] == 'on' ) {
+		if ( $this->opt_general_settings['record'] == 'on' ) {
 			//echo '<pre>RECORD=ON</pre>';
 			add_action( 'wp_head', array($this, 'record_header_assets_cb') );
 			add_action( 'wp_print_footer_scripts', array($this, 'record_footer_assets_cb') );
@@ -103,14 +104,18 @@ class WPSSM_Settings {
 														);
 									
 		// hydrate general settings property with options content
-		self::$opt_general_settings = get_option( 'wpssm_general_settings' );
+		$get_option = get_option( 'wpssm_general_settings' );
+		if ($get_option!=false)
+			$this->opt_general_settings=$get_option; 
 
 
 		// hydrate enqueued assets property with options content
-		$this->opt_enqueued_assets = get_option( 'wpssm_enqueued_assets' );
-		if (!isset($this->opt_enqueued_assets['pages'])) $this->opt_enqueued_assets['pages']=array();
-		if (!isset($this->opt_enqueued_assets['scripts'])) $this->opt_enqueued_assets['scripts']=array();
-		if (!isset($this->opt_enqueued_assets['styles'])) $this->opt_enqueued_assets['styles']=array();
+		$get_option = get_option( 'wpssm_enqueued_assets' );
+		if ($get_option!=false) {
+			if (!isset($this->opt_enqueued_assets['pages'])) $this->opt_enqueued_assets['pages']=array();
+			if (!isset($this->opt_enqueued_assets['scripts'])) $this->opt_enqueued_assets['scripts']=array();
+			if (!isset($this->opt_enqueued_assets['styles'])) $this->opt_enqueued_assets['styles']=array();
+		}
 		
 							
 		// Preparation of data to be displayed
@@ -303,11 +308,11 @@ class WPSSM_Settings {
 	}
 
 	public function output_recording_switch_cb() {
-		$this->output_toggle_switch( 'general_record', self::$opt_general_settings['record']);
+		$this->output_toggle_switch( 'general_record', $this->opt_general_settings['record']);
 	}	
 
 	public function output_optimize_switch_cb() {
-		$this->output_toggle_switch( 'general_optimize', self::$opt_general_settings['optimize']);
+		$this->output_toggle_switch( 'general_optimize', $this->opt_general_settings['optimize']);
 	}		
 
 	protected function output_toggle_switch( $input_name, $value ) {
@@ -605,16 +610,20 @@ class WPSSM_Settings {
 		elseif ( isset ( $_POST[ 'wpssm_delete' ] ) ) {
 		   	PC::debug( 'In Form submission : DELETE' );
 		    $this->opt_enqueued_assets = array();
+		    $this->opt_general_settings = array();
 		    update_option( 'wpssm_enqueued_assets', array() );
+		    update_option( 'wpssm_general_settings', array() );
 		    $query_args['msg']='delete';
 		}
 		else {
-				//PC::debug( 'In Form submission : SAVE, tab ' . $type );
+				PC::debug( 'In Form submission : SAVE, tab ' . $type );
 				if ( $type=='general' ) {
-					foreach (self::$opt_general_settings as $setting=>$value) {
-						self::$opt_general_settings[$setting]= isset($_POST[ 'general_' . $setting . '_checkbox' ])?$_POST[ 'general_' . $setting . '_checkbox' ]:'off';
+					PC::debug( array('general save $this->opt_general_settings' => $this->opt_general_settings) );
+					$settings=array('record','optimize');
+					foreach ($settings as $setting) {
+						$this->opt_general_settings[$setting]= isset($_POST[ 'general_' . $setting . '_checkbox' ])?$_POST[ 'general_' . $setting . '_checkbox' ]:'off';
 					}			
-					update_option( 'wpssm_general_settings', self::$opt_general_settings );
+					update_option( 'wpssm_general_settings', $this->opt_general_settings );
 				}
 				else {
 					PC::debug( array('assets before submission'=> $this->opt_enqueued_assets) );

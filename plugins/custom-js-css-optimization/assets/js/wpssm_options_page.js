@@ -24,9 +24,11 @@ jQuery(document).ready(function(){
     // Check script dependencies
 		var thisClass = jQuery(this).attr("class");
 
-		if ( (current=='footer') || (current=='disabled') )	{
+		if ( (current=='footer') || (current=='header') || (current=='disabled') )	{
 			var handle=jQuery(this).attr("id"); 	
 			console.log("Location for script " + handle + " modified !");
+  		var dependencies = jQuery(this).data("dependencies");                         
+			console.log("Script has following dependencies : ", dependencies);
   		var dependents = jQuery(this).data("dependents");                         
 			console.log("Script has following dependents : ", dependents);
 			var depsList='';
@@ -46,7 +48,24 @@ jQuery(document).ready(function(){
 			if (depsList!='') {
 				alert('It is not possible to move ' + handle + ' to the footer, since other header assets depend on it.\nThose assets need to be moved or disabled first :\n'+depsList);
 				jQuery(this).val("header");
-				table_cell.removeClass( "modified" );
+				//table_cell.removeClass( "modified" );
+			}
+		}
+		if (current=='header')	{
+			console.log('Move to header!');
+			jQuery.each(dependencies, function(key, value) {
+    		console.log(key, value);
+    		var depLocation = table_cell.closest('.enqueued-assets').find('.location select[id="' + value + '"]').val();
+    		console.log(depLocation);
+    		if (depLocation == 'footer') {
+    			depsList=depsList + '\u2022 ' + value + '\n';
+    			};
+			});
+			console.log(depsList);
+			if (depsList!='') {
+				alert('It is not possible to move ' + handle + ' to the header, since it depends on other footer assets.\nThose assets need to be moved or disabled first :\n'+depsList);
+				jQuery(this).val("footer");
+				//table_cell.removeClass( "modified" );
 			}
 		}
 		else if (current=='disabled') {

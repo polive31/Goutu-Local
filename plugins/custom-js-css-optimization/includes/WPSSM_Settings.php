@@ -111,11 +111,8 @@ class WPSSM_Settings {
 
 		// hydrate enqueued assets property with options content
 		$get_option = get_option( 'wpssm_enqueued_assets' );
-		if ($get_option!=false) {
-			if (!isset($this->opt_enqueued_assets['pages'])) $this->opt_enqueued_assets['pages']=array();
-			if (!isset($this->opt_enqueued_assets['scripts'])) $this->opt_enqueued_assets['scripts']=array();
-			if (!isset($this->opt_enqueued_assets['styles'])) $this->opt_enqueued_assets['styles']=array();
-		}
+		if ($get_option!=false)
+			$this->opt_enqueued_assets = $get_option;
 		
 							
 		// Preparation of data to be displayed
@@ -380,7 +377,8 @@ class WPSSM_Settings {
 	}
 
 	public function output_items_list( $type, $location ) {
-		
+		//PC::debug('in output_items_list');
+		//PC::debug(array('this->enqueued_assets'=> $this->opt_enqueued_assets));
 		$assets = $this->displayed_assets[$type][$location]['assets'];
 		//PC::debug( array('$this->displayed_assets' => $assets));
 		$sorted_list = $this->get_sorted_list( $assets );
@@ -425,7 +423,7 @@ class WPSSM_Settings {
 	    	<td class="size" title="<?php echo $filename;?>"><?php echo size_format( $size );?></td>
 	    	
 	    	<td class="location <?php echo $this->is_modified( $asset, 'location');?>">
-	    		<select data-dependents='<?php echo json_encode($dependents);?>' id="<?php echo $handle;?>" class="asset-setting location <?php echo $type;?>" name="<?php echo $this->get_field_name( $type, $handle, 'location');?>">
+	    		<select data-dependencies='<?php echo json_encode($dependencies);?>' data-dependents='<?php echo json_encode($dependents);?>' id="<?php echo $handle;?>" class="asset-setting location <?php echo $type;?>" name="<?php echo $this->get_field_name( $type, $handle, 'location');?>">
   					<option value="header" <?php echo ($location=='header')?'selected':'';?> >header</option>
   					<option value="footer" <?php echo ($location=='footer')?'selected':'';?> >footer</option>
   					<option value="disabled" <?php echo ($location=='disabled')?'selected':'';?>>disabled</option>
@@ -755,7 +753,7 @@ class WPSSM_Settings {
 					'registered'=> $wp_styles->registered),
 			);
 				
-		//PC::debug( array( '$assets' => $assets ) );		
+		PC::debug( array( '$assets' => $assets ) );		
 			
 		foreach( $assets as $type=>$asset ) {
 			PC::debug( $type . ' recording');		
@@ -797,7 +795,7 @@ class WPSSM_Settings {
 				}
 			}
 		}
-	  //PC::debug(array('assets after update' => $this->opt_enqueued_assets));
+	  PC::debug(array('assets after update' => $this->opt_enqueued_assets));
 	}
 	
 	protected function update_priority( $type, $handle ) {

@@ -389,7 +389,7 @@ class WPSSM_Settings {
     <table class="enqueued-assets">
     	<tr>
     		<th> handle </th>
-    		<!-- <th> priority </th> -->
+    		<th> priority </th>
     		<!--<th> Dependencies </th>-->
     		<th> Dependents </th> 
     		<th> File size </th>
@@ -415,7 +415,7 @@ class WPSSM_Settings {
     	<tr class="enqueued-asset <?php echo $type;?>" id="<?php echo $handle;?>">
 	    	<td class="handle" title="<?php echo $filename;?>"><?php echo $handle;?><?php $this->output_user_notification( $asset );?></td>
 	    	
-	    	<!--<td><?php echo $priority;?></td>-->
+	    	<td><?php echo $priority;?></td>
 	    	
 	    	<!-- <td class="dependencies"><?php foreach ($dependencies as $dep) {echo $dep . '<br>';}?></td> -->
 	    	<td class="dependents"><?php foreach ($dependents as $dep) {echo $dep . '<br>';}?></td>

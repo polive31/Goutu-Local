@@ -19,23 +19,15 @@ class WPSSM_Optimize extends WPSSM_Settings {
 			//echo '<pre> OPTIMIZE ACTIVATED ! </pre>';
 			add_action( 'wp_enqueue_scripts', array($this, 'apply_scripts_mods_cb'), PHP_INT_MAX );
 			add_action( 'wp_enqueue_scripts', array($this, 'apply_styles_mods_cb'), PHP_INT_MAX );
-			//add_action( 'wp_enqueue_scripts', array($this, 'debug_styles_enqueue_cb'), PHP_INT_MAX );
 			add_action( 'get_footer', array($this, 'enqueue_footer_styles_cb') );
 		}
 	}		
-	
-	public function debug_styles_enqueue_cb() {
-		wp_deregister_style( 'custom-ratings' );
-		wp_register_style( 'custom-ratings', '/wp-content/plugins/custom-star-rating/assets/custom-star-rating.css', array(), false, true);
-		wp_enqueue_style('custom-ratings');
-	}
 
 	public function apply_scripts_mods_cb() {
-		//echo '<pre> IN apply_scripts_mods_cb ! </pre>';
 		$scripts = $this->opt_enqueued_assets['scripts'];
-		//PC::debug(array('In apply_scripts_mods_cb : scripts '=>$scripts));
+		PC::debug(array('In apply_scripts_mods_cb : scripts '=>$scripts));
 		$this->scriptmods = array_column($scripts, 'mods', 'handle');
-		//PC::debug(array('In apply_scripts_mods_cb : mods '=>$mods));
+		PC::debug(array('In apply_scripts_mods_cb : mods '=>$this->scriptmods));
 		
 		foreach ($this->scriptmods as $handle => $mod) {
 			if ( isset( $mod['location'] ) ) {
@@ -54,11 +46,10 @@ class WPSSM_Optimize extends WPSSM_Settings {
 	}
 	
 	public function apply_styles_mods_cb() {
-		//PC::debug('<pre> IN apply_styles_mods_cb ! </pre>');
 		$styles = $this->opt_enqueued_assets['styles'];
-		//PC::debug(array('In apply_styles_mods_cb : styles '=>$styles));
+		PC::debug(array('In apply_styles_mods_cb : styles '=>$styles));
 		$this->stylemods = array_column($styles, 'mods', 'handle');
-		//PC::debug(array('In apply_styles_mods_cb : mods '=>$this->stylemods));
+		PC::debug(array('In apply_styles_mods_cb : mods '=>$this->stylemods));
 		
 		foreach ($this->stylemods as $handle => $mod) {
 			if ( isset( $mod['location'] ) && ( $mod['location']=='footer') ) {

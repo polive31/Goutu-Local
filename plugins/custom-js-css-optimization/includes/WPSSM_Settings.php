@@ -84,8 +84,8 @@ class WPSSM_Settings {
 	}
 
 	public function load_admin_assets() {
-		PC::debug('In load_admin_styles');
-		PC::debug( plugins_url( '/css/wpssm_options_page.css', __FILE__ ) );
+		DBG::log('In load_admin_styles');
+		DBG::log( plugins_url( '/css/wpssm_options_page.css', __FILE__ ) );
 
   	wp_enqueue_style( 'wpssm_admin_css', plugins_url( '../assets/css/wpssm_options_page.css', __FILE__ ) , false, '1.0.0' );
   	wp_enqueue_script( 'wpssm_admin_js', plugins_url( '../assets/js/wpssm_options_page.js', __FILE__ ) , false, '1.0.0' );
@@ -129,7 +129,7 @@ class WPSSM_Settings {
 				$this-> displayed_assets[$type][$location]['size']=array_sum( array_column( $filtered_assets, 'size'));
 			}	
 		}
-		//PC::debug( array( '$this->displayed_assets: '=>$this->displayed_assets ));
+		//DBG::log( array( '$this->displayed_assets: '=>$this->displayed_assets ));
 	
 	}
 	
@@ -301,7 +301,7 @@ class WPSSM_Settings {
 	}
 
 	public function output_section_cb( $section ) {
-		//PC::debug('In section callback');
+		//DBG::log('In section callback');
 	}
 
 	public function output_recording_switch_cb() {
@@ -313,7 +313,7 @@ class WPSSM_Settings {
 	}		
 
 	protected function output_toggle_switch( $input_name, $value ) {
-		PC::debug( array('in output toggle switch for ' . $input_name => $value) );
+		DBG::log( 'in output toggle switch for ' . $input_name , $value);
 		$checked = ( $value == 'on')?'checked="checked"':'';
 		?>
 		<label class="switch">
@@ -361,7 +361,7 @@ class WPSSM_Settings {
 		$sort_type = $this->sort_args['type'];
 
 		$list = array_column($assets, $sort_field, 'handle' );		
-		//PC::debug( array( 'sorted list : '=>$list ));
+		//DBG::log( array( 'sorted list : '=>$list ));
 
 		if ( $sort_order == SORT_ASC)
 			asort($list, $sort_type );
@@ -377,12 +377,12 @@ class WPSSM_Settings {
 	}
 
 	public function output_items_list( $type, $location ) {
-		//PC::debug('in output_items_list');
-		//PC::debug(array('this->enqueued_assets'=> $this->opt_enqueued_assets));
+		DBG::log('in output_items_list');
+		DBG::log('this->enqueued_assets',$this->opt_enqueued_assets);
 		$assets = $this->displayed_assets[$type][$location]['assets'];
-		//PC::debug( array('$this->displayed_assets' => $assets));
+		//DBG::log( array('$this->displayed_assets' => $assets));
 		$sorted_list = $this->get_sorted_list( $assets );
-		//PC::debug( array('$sorted_list' => $sorted_list));
+		//DBG::log( array('$sorted_list' => $sorted_list));
 		
 		?>
 		
@@ -400,7 +400,7 @@ class WPSSM_Settings {
     <?php
     foreach ($sorted_list as $handle => $priority ) {
     	$asset = $assets[$handle];
-			//PC::debug(array('Asset in output_items_list : ' => $asset));
+			//DBG::log(array('Asset in output_items_list : ' => $asset));
     	$filename = $asset['filename'];
     	$dependencies = $asset['dependencies'];
     	$dependents = $asset['dependents'];
@@ -448,9 +448,9 @@ class WPSSM_Settings {
 	private function output_user_notification( $asset ) {
 		
 		$size= $asset['size'];
-		//PC::debug(array('size : '=>$size));
+		//DBG::log(array('size : '=>$size));
 		$is_minified = $this->get_field_value( $asset, 'minify') == 'yes';
-		//PC::debug(array('is_minified: '=>$is_minified));
+		//DBG::log(array('is_minified: '=>$is_minified));
 		$in_footer = ( $this->get_field_value( $asset, 'location') == 'footer');
 		
 		$this->reset_user_notification();
@@ -504,17 +504,17 @@ class WPSSM_Settings {
 	}
 	
 	protected function get_field_value( $asset, $field ) {
-		//PC::debug('In Field Value for ' . $field);
-		//PC::debug(array('Asset : ' => $asset));
+		//DBG::log('In Field Value for ' . $field);
+		//DBG::log(array('Asset : ' => $asset));
 		if ( isset( $asset['mods'] ) && (isset( $asset['mods'][ $field ] ) ) ) {
 			$value=$asset['mods'][ $field ];
-			//PC::debug('Mod found !');
+			//DBG::log('Mod found !');
 		}
 		else {
-			//PC::debug('Mod not found');
+			//DBG::log('Mod not found');
 			$value=$asset[ $field ];
 		}
-		//PC::debug( array(' Field value of ' . $field . ' : ' => $value ));
+		//DBG::log( array(' Field value of ' . $field . ' : ' => $value ));
 		return $value;
 	}
 
@@ -583,7 +583,7 @@ class WPSSM_Settings {
 
     if ( ! wp_verify_nonce( $_POST[ $this->nonce ], $this->form_action ) )
         die( 'Invalid nonce.' . var_export( $_POST, true ) );
-		//PC::debug('In update_settings_cb function');
+		//DBG::log('In update_settings_cb function');
 		
 		if ( ! isset ( $_POST['_wpssm_http_referer'] ) )
 		    die( 'Missing valid referer' );
@@ -595,18 +595,18 @@ class WPSSM_Settings {
 		$query_args['tab']=$type;
 		
 		if ( isset ( $_POST[ 'wpssm_reset' ] ) ) {
-		   	PC::debug( 'In Form submission : RESET' );
-				PC::debug( array('assets before submission'=> $this->opt_enqueued_assets) );
+		   	DBG::log( 'In Form submission : RESET' );
+				DBG::log( 'assets before submission' , $this->opt_enqueued_assets );
 				foreach ( $this->opt_enqueued_assets[$type] as $handle=>$asset ) {
 					unset($this->opt_enqueued_assets[$type][$handle]['mods']); 
 					$this->update_priority( $type, $handle ); 
 				}
-				PC::debug( array('assets after submission'=> $this->opt_enqueued_assets) );
+				DBG::log( 'assets after submission',$this->opt_enqueued_assets);
 				update_option( 'wpssm_enqueued_assets', $this->opt_enqueued_assets);
 		    $query_args['msg']='reset';
 		}
 		elseif ( isset ( $_POST[ 'wpssm_delete' ] ) ) {
-		   	PC::debug( 'In Form submission : DELETE' );
+		   	DBG::log( 'In Form submission : DELETE' );
 		    $this->opt_enqueued_assets = array();
 		    $this->opt_general_settings = array();
 		    update_option( 'wpssm_enqueued_assets', array() );
@@ -614,9 +614,9 @@ class WPSSM_Settings {
 		    $query_args['msg']='delete';
 		}
 		else {
-				PC::debug( 'In Form submission : SAVE, tab ' . $type );
+				DBG::log( 'In Form submission : SAVE, tab ' . $type );
 				if ( $type=='general' ) {
-					PC::debug( array('general save $this->opt_general_settings' => $this->opt_general_settings) );
+					DBG::log('general save $this->opt_general_settings' ,$this->opt_general_settings);
 					$settings=array('record','optimize');
 					foreach ($settings as $setting) {
 						$this->opt_general_settings[$setting]= isset($_POST[ 'general_' . $setting . '_checkbox' ])?$_POST[ 'general_' . $setting . '_checkbox' ]:'off';
@@ -624,24 +624,24 @@ class WPSSM_Settings {
 					update_option( 'wpssm_general_settings', $this->opt_general_settings );
 				}
 				else {
-					PC::debug( array('assets before submission'=> $this->opt_enqueued_assets) );
+					DBG::log( 'assets before submission',$this->opt_enqueued_assets );
 					foreach ( $this->opt_enqueued_assets[$type] as $handle=>$asset ) {
-						//PC::debug( array('Looping : asset = ' => $asset ) );
-						//PC::debug( array('Looping : handle = ' => $handle ) );
+						//DBG::log( array('Looping : asset = ' => $asset ) );
+						//DBG::log( array('Looping : handle = ' => $handle ) );
 						$this->update_field($type, $handle, 'location');
 						$this->update_field($type, $handle, 'minify');
 						$this->update_priority( $type, $handle ); 
 					}
-					PC::debug( array('assets after submission'=> $this->opt_enqueued_assets) );				
+					DBG::log( 'assets after submission',$this->opt_enqueued_assets);				
 					update_option( 'wpssm_enqueued_assets', $this->opt_enqueued_assets);
 				}
 		    $query_args['msg']='save';
 		}
 		
 
-		PC::debug(array('http referer'=>$url));
+		DBG::log('http referer',$url);
 		$url = add_query_arg( $query_args, $url) ;
-		PC::debug(array('url for redirection'=>$url ));
+		DBG::log('url for redirection',$url);
 					 
 		wp_safe_redirect( $url );
 		exit;
@@ -651,20 +651,20 @@ class WPSSM_Settings {
 		$input = $this->get_field_name($type, $handle, $field);
 		if ( ( isset($_POST[ $input ] )) && ( $_POST[ $input ] != $this->opt_enqueued_assets[$type][$handle][$field]  ) ) {
 			$this->opt_enqueued_assets[$type][$handle]['mods'][$field] = $_POST[ $input ];
-			PC::debug( array('Asset field modified (mods) !' => $this->opt_enqueued_assets[$type][$handle]) );
-			PC::debug( array('$input' => $input ) );
-			PC::debug( array('POST content for this field' => $_POST[ $input ] ) );
+			DBG::log( 'Asset field modified (mods) !' ,$this->opt_enqueued_assets[$type][$handle]);
+			DBG::log( '$input', $input );
+			DBG::log( 'POST content for this field',$_POST[ $input ] );
 		}
 		else {
 			if ( isset( $this->opt_enqueued_assets[$type][$handle]['mods'][$field]) ) {
 				unset($this->opt_enqueued_assets[$type][$handle]['mods'][$field]);
-				PC::debug( array('Mod Field removed !' => $this->opt_enqueued_assets[$type][$handle] ) );
+				DBG::log( 'Mod Field removed !' ,$this->opt_enqueued_assets[$type][$handle] );
 			}
 		}
 	}
 
   public function load_option_page_cb() {
-		//PC::debug('In load_option_page_cb function');
+		//DBG::log('In load_option_page_cb function');
 		if (isset ( $_GET['msg'] ) )
 			add_action( 'admin_notices', array ( $this, 'render_msg' ) );
 	}
@@ -683,7 +683,7 @@ class WPSSM_Settings {
 
 	public function auto_detect() {
 
-		PC::debug('In auto detect !!!');
+		DBG::log('In auto detect !!!');
 
 		foreach ($this->urls_to_request as $url) {
 			$request = array(
@@ -709,40 +709,40 @@ class WPSSM_Settings {
 	}
 
 	public function record_header_assets_cb() {
-		PC::debug('In record header assets cb');
+		DBG::log('In record header assets cb');
 		$this->opt_enqueued_assets['pages'][get_permalink()] = array(get_permalink(), current_time( 'mysql' ));
 		$this->record_enqueued_assets( false );
 	}
 
 	public function record_footer_assets_cb() {
-		PC::debug('In record footer assets cb');
+		DBG::log('In record footer assets cb');
 		$this->record_enqueued_assets( true );
 		update_option( 'wpssm_enqueued_assets', $this->opt_enqueued_assets, true );
 	}
 
 	protected function record_enqueued_assets( $in_footer ) {
-		PC::debug('In record enqueued assets');
+		DBG::log('In record enqueued assets');
 		global $wp_scripts;
 		global $wp_styles;
 
 		/* Select data source depending whether in header or footer */
 		if ($in_footer) {
-			//PC::debug('FOOTER record');
-			//PC::debug(array( '$header_scripts' => $this->header_scripts ));
+			//DBG::log('FOOTER record');
+			//DBG::log(array( '$header_scripts' => $this->header_scripts ));
 			$scripts=array_diff( $wp_scripts->done, $this->header_scripts );
 			$styles=array_diff( $wp_styles->done, $this->header_styles );
-			//PC::debug(array('$source'=>$source));
+			//DBG::log(array('$source'=>$source));
 		}
 		else {
 			$scripts=$wp_scripts->done;
 			$styles=$wp_styles->done;
 			$this->header_scripts = $scripts;
 			$this->header_styles = $styles;
-			//PC::debug('HEADER record');
-			//PC::debug(array('$source'=>$source));
+			//DBG::log('HEADER record');
+			//DBG::log(array('$source'=>$source));
 		}
 
-	  //PC::debug(array('assets before update' => $this->opt_enqueued_assets));
+	  //DBG::log(array('assets before update' => $this->opt_enqueued_assets));
 				
 		$assets = array(
 			'scripts'=>array(
@@ -753,10 +753,10 @@ class WPSSM_Settings {
 					'registered'=> $wp_styles->registered),
 			);
 				
-		PC::debug( array( '$assets' => $assets ) );		
+		DBG::log( array( '$assets' => $assets ) );		
 			
 		foreach( $assets as $type=>$asset ) {
-			PC::debug( $type . ' recording');		
+			DBG::log( $type . ' recording');		
 					
 			foreach( $asset['handles'] as $index => $handle ) {
 				$obj = $asset['registered'][$handle];
@@ -790,12 +790,12 @@ class WPSSM_Settings {
 				$priority = $this->update_priority( $type, $handle );
 				// Update all dependancies assets properties
 				foreach ($obj->deps as $dep_handle) {
-					//PC::debug(array('dependencies loop : '=>$dep_handle));
+					//DBG::log(array('dependencies loop : '=>$dep_handle));
 					$this->opt_enqueued_assets[$type][$dep_handle]['dependents'][]=$handle;
 				}
 			}
 		}
-	  PC::debug(array('assets after update' => $this->opt_enqueued_assets));
+	  DBG::log(array('assets after update' => $this->opt_enqueued_assets));
 	}
 	
 	protected function update_priority( $type, $handle ) {
@@ -806,21 +806,21 @@ class WPSSM_Settings {
 			$minify = $this->get_field_value( $asset, 'minify');
 			$size = $this->get_field_value( $asset, 'size');
 			$score = ( $location == 'header' )?1000:0;
-			//PC::debug(array('base after location'=>$score));
+			//DBG::log(array('base after location'=>$score));
 			$score += ( $size >= self::$SIZE_LARGE )?500:0; 	
 			$score += ( ($minify == 'no') && ( $size != 0 ))?200:0;
-			//PC::debug(array('base after minify'=>$score));
+			//DBG::log(array('base after minify'=>$score));
 			$score += ( $size <= self::$SIZE_SMALL )?100:0; 	
-			//PC::debug(array('base after size'=>$score));
+			//DBG::log(array('base after size'=>$score));
 			if ( $size >= self::$SIZE_LARGE ) 
 				$normalizer = self::$SIZE_MAX;
 			elseif ( $size <= self::$SIZE_SMALL )
 				$normalizer = self::$SIZE_SMALL;
 			else 
 				$normalizer = self::$SIZE_LARGE;
-			//PC::debug(array('normalizer'=>$normalizer));
+			//DBG::log(array('normalizer'=>$normalizer));
 			$score += $size/$normalizer*100; 	
-			//PC::debug(array('score'=>$score));
+			//DBG::log(array('score'=>$score));
 		}
 		else 
 			$score = 0;

@@ -26,7 +26,8 @@ class DBG {
 			else {
 				$var = json_encode($var);
 			}
-			echo('<script>console.log("' . $msg . ' ⯈ ", ' . $var . ');</script>');  
+			echo('<script>console.log("%cDEBUG%c ' . $msg . ' ⯈ ", "border-radius:4px;padding:2px 4px;background:blue;color:white", "color:blue");</script>');  
+			echo('<script>console.log(' . $var . ');</script>');  
 	}	
 
 	public static function log2($msg, $var=false) {

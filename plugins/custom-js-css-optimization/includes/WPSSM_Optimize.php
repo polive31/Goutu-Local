@@ -62,22 +62,16 @@ class WPSSM_Optimize extends WPSSM_Settings {
 		//DBG::log(array('In apply_styles_mods_cb : mods '=>$this->stylemods));
 		
 		foreach ($this->stylemods as $handle => $mod) {
-			if ( isset( $mod['location'] ) && ( $mod['location']=='footer') ) {
-				wp_dequeue_style( $handle );
-			}
-			
-			elseif (false) {
-				$location = $mod['location'];
-				wp_deregister_style( $handle );
-				if ($location == 'header' ) {
-					wp_register_style( $handle, 
-						$styles[$handle]['filename'],
-						$styles[$handle]['dependencies'],
-						$styles[$handle]['version'] );				
-					wp_enqueue_style( $handle );
+			if ( isset( $mod['location'] ) ) {
+				if ( $mod['location']=='footer') {
+					wp_dequeue_style( $handle );
+				}
+				elseif ($mod['location']=='disabled') {
+					wp_deregister_style( $handle );
 				}
 			}
-		}
+		}	
+	
 	}
 	
 	function enqueue_footer_styles_cb() {

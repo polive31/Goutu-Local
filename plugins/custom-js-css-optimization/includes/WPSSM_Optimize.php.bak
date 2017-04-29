@@ -25,18 +25,18 @@ class WPSSM_Optimize extends WPSSM_Settings {
 	}		
 	
 	public function debug_scripts_enqueue_cb() {
-		PC::debug('In debug_styles_enqueue_cb');
+		DBG::log('In debug_styles_enqueue_cb');
 		wp_deregister_script( 'jquery-core' );
 		wp_register_script( 'jquery-core', '/wp-includes/js/jquery/jquery.js', array(), false, true);
 		wp_enqueue_script('jquery-core');
 	}
 
 	public function apply_scripts_mods_cb() {
-		//PC::debug('In apply_scripts_mods_cb');
+		//DBG::log('In apply_scripts_mods_cb');
 		$scripts = $this->opt_enqueued_assets['scripts'];
-		PC::debug(array('In apply_scripts_mods_cb : scripts '=>$scripts));
+		DBG::log(array('In apply_scripts_mods_cb : scripts '=>$scripts));
 		$this->scriptmods = array_column($scripts, 'mods', 'handle');
-		PC::debug(array('In apply_scripts_mods_cb : mods '=>$this->scriptmods));
+		DBG::log(array('In apply_scripts_mods_cb : mods '=>$this->scriptmods));
 		
 		foreach ($this->scriptmods as $handle => $mod) {
 			if ( isset( $mod['location'] ) ) {
@@ -55,29 +55,23 @@ class WPSSM_Optimize extends WPSSM_Settings {
 	}
 	
 	public function apply_styles_mods_cb() {
-		//PC::debug('In apply_styles_mods_cb');
+		//DBG::log('In apply_styles_mods_cb');
 		$styles = $this->opt_enqueued_assets['styles'];
-		//PC::debug(array('In apply_styles_mods_cb : styles '=>$styles));
+		//DBG::log(array('In apply_styles_mods_cb : styles '=>$styles));
 		$this->stylemods = array_column($styles, 'mods', 'handle');
-		//PC::debug(array('In apply_styles_mods_cb : mods '=>$this->stylemods));
+		//DBG::log(array('In apply_styles_mods_cb : mods '=>$this->stylemods));
 		
 		foreach ($this->stylemods as $handle => $mod) {
-			if ( isset( $mod['location'] ) && ( $mod['location']=='footer') ) {
-				wp_dequeue_style( $handle );
-			}
-			
-			elseif (false) {
-				$location = $mod['location'];
-				wp_deregister_style( $handle );
-				if ($location == 'header' ) {
-					wp_register_style( $handle, 
-						$styles[$handle]['filename'],
-						$styles[$handle]['dependencies'],
-						$styles[$handle]['version'] );				
-					wp_enqueue_style( $handle );
+			if ( isset( $mod['location'] ) ) {
+				if ( $mod['location']=='footer') ) {
+					wp_dequeue_style( $handle );
+				}
+				elseif ($mod['location']=='disabled') {
+					wp_deregister_style( $handle );
 				}
 			}
-		}
+		}	
+	
 	}
 	
 	function enqueue_footer_styles_cb() {
@@ -104,7 +98,7 @@ class WPSSM_Optimize extends WPSSM_Settings {
 //		}
 //		
 //		if ( !is_single() ) {
-//			//PC::debug(array('Not in POST OR RECIPE'));
+//			//DBG::log(array('Not in POST OR RECIPE'));
 //			wp_dequeue_script( 'galleria' );
 //			wp_dequeue_script( 'galleria-fs' );
 //			wp_dequeue_script( 'galleria-fs-theme' );

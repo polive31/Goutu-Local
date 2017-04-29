@@ -1,7 +1,6 @@
-
 jQuery(document).ready(function(){
-	
-	
+
+
 	jQuery(document).on('focusin', '.asset-setting', function(){
     console.log("Saving value " + jQuery(this).val());
     jQuery(this).data('val', jQuery(this).val());

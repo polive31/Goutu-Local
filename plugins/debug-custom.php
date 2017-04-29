@@ -17,8 +17,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class DBG {
 		
 	private static $ON = true;
+	
+	public static function log($msg, $var=false ) { 
+			//$var = json_encode($var);
+			if ( !is_array($var) ) {
+				$var = '"' . $var . '"';
+			}
+			else {
+				$var = json_encode($var);
+			}
+			echo('<script>console.log("' . $msg . ' ⯈ ", ' . $var . ');</script>');  
+	}	
 
-	public static function log($msg, $var=false) {
+	public static function log2($msg, $var=false) {
 		if (!class_exists( 'PC' )) return;
 		if (!self::$ON) return;		
 		if ($var==false)

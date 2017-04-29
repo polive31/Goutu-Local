@@ -10,19 +10,41 @@ class WPSSM_Optimize extends WPSSM_Settings {
 	
 	public $stylemods;
 	public $scriptmods;
+	public $async;
 	
 	public function __construct() {
 		parent::__construct();
 	
 		//echo '<pre> <p>opt_general_settings in construct : </p><p>' . var_dump($this->opt_general_settings['record']) . '</p></pre>';
-		if ( ($this->opt_general_settings['record']=='off') && ($this->opt_general_settings['optimize']=='on') ) {
-			//echo '<pre> OPTIMIZE ACTIVATED ! </pre>';
+		if ( ($this->opt_general_settings['loadjs']=='on') ) {	
+			// load assets for this page
+	    add_action( 'wp_enqueue_scripts', array($this,'load_frontend_assets_cb') );
+	  }
+		if ( ($this->opt_general_settings['record']=='off') && ($this->opt_general_settings['optimize']=='on') ) {	
 			add_action( 'wp_enqueue_scripts', array($this, 'apply_scripts_mods_cb'), PHP_INT_MAX );
 			//add_action( 'wp_enqueue_scripts', array($this, 'debug_scripts_enqueue_cb'), PHP_INT_MAX );
 			add_action( 'wp_enqueue_scripts', array($this, 'apply_styles_mods_cb'), PHP_INT_MAX );
 			add_action( 'get_footer', array($this, 'enqueue_footer_styles_cb') );
+			add_filter( 'script_loader_tag', 'add_async_tag_cb', 10, 3 );
 		}
 	}		
+	
+	public function hydrate() {
+		$this->scriptmods = array_column($this->enqueued_assets['scripts'], 'mods', 'handle');
+		$this->stylemods = array_column($this->enqueued_assets['styles'], 'mods', 'handle');
+		//$this->async = array_column($this->scriptmods['location'], 'handle');		
+		
+		$this->async = 'TOTO';		
+		$this->async = array('TOTO', 'TATA');		
+		
+		DBG::log('in hydrate : $this->async after column', $this->async);
+		$this->async = array_filter($this->async, array($this, 'filter_async') );	
+		DBG::log('in hydrate : $this->async after filter', $this->async);
+	}
+	
+	public function filter_async($location) {
+		return ($location=='async');
+	}
 	
 	public function debug_scripts_enqueue_cb() {
 		DBG::log('In debug_styles_enqueue_cb');
@@ -30,12 +52,24 @@ class WPSSM_Optimize extends WPSSM_Settings {
 		wp_register_script( 'jquery-core', '/wp-includes/js/jquery/jquery.js', array(), false, true);
 		wp_enqueue_script('jquery-core');
 	}
+	
+	public function load_frontend_assets_cb() {
+		wp_enqueue_script( 'loadjs_js', plugins_url( '../assets/js/loadjs.min.js', __FILE__ ) , false, self::WPSSM_VERSION );
+	}
+	
+	function add_async_tag_cb( $tag, $handle, $src ) { 
+		if ( in_array( $handle, $this->async ) ) {
+		    return '<script src="' . $src . '" async type="text/javascript"></script>' . "\n";
+		}
+		DBG::log('in add_async_tag_cb : $tag = ', $tag);
+		return $tag;
+	} 
+	
 
 	public function apply_scripts_mods_cb() {
 		//DBG::log('In apply_scripts_mods_cb');
 		$scripts = $this->opt_enqueued_assets['scripts'];
 		DBG::log(array('In apply_scripts_mods_cb : scripts '=>$scripts));
-		$this->scriptmods = array_column($scripts, 'mods', 'handle');
 		DBG::log(array('In apply_scripts_mods_cb : mods '=>$this->scriptmods));
 		
 		foreach ($this->scriptmods as $handle => $mod) {
@@ -58,12 +92,11 @@ class WPSSM_Optimize extends WPSSM_Settings {
 		//DBG::log('In apply_styles_mods_cb');
 		$styles = $this->opt_enqueued_assets['styles'];
 		//DBG::log(array('In apply_styles_mods_cb : styles '=>$styles));
-		$this->stylemods = array_column($styles, 'mods', 'handle');
 		//DBG::log(array('In apply_styles_mods_cb : mods '=>$this->stylemods));
 		
 		foreach ($this->stylemods as $handle => $mod) {
 			if ( isset( $mod['location'] ) ) {
-				if ( $mod['location']=='footer') ) {
+				if ( $mod['location']=='footer') {
 					wp_dequeue_style( $handle );
 				}
 				elseif ($mod['location']=='disabled') {

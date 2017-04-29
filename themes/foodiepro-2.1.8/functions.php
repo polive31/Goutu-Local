@@ -483,7 +483,7 @@ function display_debug_info() {
 
 		DBG::log( 'In foodiepro functions.php' );		
 		$output = get_post_meta( $post_id , '' , true);
-		DBG::log(array('get_post_meta( $post_id ) : '=> $output) );
+		DBG::log( 'get_post_meta( $post_id ) : ',$output);
 
 		//$output = get_post_meta( $post_id, 'user_ratings' );
 		//PC:debug(array('user_ratings : '=> $output) );

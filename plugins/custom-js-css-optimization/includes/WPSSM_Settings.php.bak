@@ -8,10 +8,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class WPSSM_Settings {
 
-	protected static $SIZE_SMALL = 1000;
-	protected static $SIZE_LARGE = 1000;
-	protected static $SIZE_MAX = 200000;
-	protected static $default_section = 'general_settings_section';
+	const SIZE_SMALL = 1000;
+	const SIZE_LARGE = 1000;
+	const SIZE_MAX = 200000;
+	const WPSSM_VERSION = '1.1.0';
 	
 	protected $plugin_slug = 'wpssm';
 
@@ -41,7 +41,7 @@ class WPSSM_Settings {
 	protected $header_scripts;
 	protected $header_styles;
 	
-	public $opt_general_settings = array('record'=>'off', 'optimize'=>'off');
+	public $opt_general_settings = array('record'=>'off', 'optimize'=>'off', 'loadjs'=>'off');
 	public $opt_enqueued_assets = array( 'pages'=>array(), 'scripts'=>array(), 'styles'=>array());
 
 	protected $displayed_assets;
@@ -87,12 +87,13 @@ class WPSSM_Settings {
 		DBG::log('In load_admin_styles');
 		DBG::log( plugins_url( '/css/wpssm_options_page.css', __FILE__ ) );
 
-  	wp_enqueue_style( 'wpssm_admin_css', plugins_url( '../assets/css/wpssm_options_page.css', __FILE__ ) , false, '1.0.0' );
-  	wp_enqueue_script( 'wpssm_admin_js', plugins_url( '../assets/js/wpssm_options_page.js', __FILE__ ) , false, '1.0.0' );
-		wp_localize_script('wpssm_admin_js', 'WPLocalizeVar', array(
-																					'url'=> admin_url( 'admin-ajax.php' ),
-																					'nonce'=> wp_create_nonce( 'check-script-dependencies' ),
-																					));
+  	wp_enqueue_style( 'wpssm_admin_css', plugins_url( '../assets/css/wpssm_options_page.css', __FILE__ ) , false, self::WPSSM_VERSION );
+  	wp_enqueue_script( 'loadjs_js', plugins_url( '../assets/js/loadjs.min.js', __FILE__ ) , false, self::WPSSM_VERSION );
+  	wp_enqueue_script( 'wpssm_admin_js', plugins_url( '../assets/js/wpssm_options_page.js', __FILE__ ) , false, self::WPSSM_VERSION );
+//		wp_localize_script('wpssm_admin_js', 'WPLocalizeVar', array(
+//																					'url'=> admin_url( 'admin-ajax.php' ),
+//																					'nonce'=> wp_create_nonce( 'check-script-dependencies' ),
+//																					));
 	}
 	
 	public function hydrate() {
@@ -313,7 +314,7 @@ class WPSSM_Settings {
 	}		
 
 	protected function output_toggle_switch( $input_name, $value ) {
-		DBG::log( 'in output toggle switch for ' . $input_name , $value) );
+		DBG::log( 'in output toggle switch for ' . $input_name , $value);
 		$checked = ( $value == 'on')?'checked="checked"':'';
 		?>
 		<label class="switch">
@@ -455,7 +456,7 @@ class WPSSM_Settings {
 		
 		$this->reset_user_notification();
 		if (!$is_minified) {
-			if ( $size > self::$SIZE_LARGE ) {
+			if ( $size > self::SIZE_LARGE ) {
 				$level = 'issue';
 				$msg = __('This file is large and not minified : minification highly recommended', 'jco');	
 				$this->enqueue_user_notification( $msg, $level);
@@ -467,13 +468,13 @@ class WPSSM_Settings {
 			}
 		}
 
-		if ( ( $size > self::$SIZE_LARGE ) && ( !$in_footer ) ) {
+		if ( ( $size > self::SIZE_LARGE ) && ( !$in_footer ) ) {
 			$level = 'issue';
 			$msg = __('Large files loaded in the header will slow down page display : moving to footer or at least conditional enqueue recommended', 'jco');			
 			$this->enqueue_user_notification( $msg, $level);
 		}	
 		
-		if ( ( $size < self::$SIZE_SMALL ) && (!isset( $asset['in_group']) ) ) {
+		if ( ( $size < self::SIZE_SMALL ) && (!isset( $asset['in_group']) ) ) {
 			$level = 'warning';
 			$msg = __('This file is small and requires a specific http request : it is recommended to inline it, or to group it with other files', 'jco');			
 			$this->enqueue_user_notification( $msg, $level);
@@ -807,17 +808,17 @@ class WPSSM_Settings {
 			$size = $this->get_field_value( $asset, 'size');
 			$score = ( $location == 'header' )?1000:0;
 			//DBG::log(array('base after location'=>$score));
-			$score += ( $size >= self::$SIZE_LARGE )?500:0; 	
+			$score += ( $size >= self::SIZE_LARGE )?500:0; 	
 			$score += ( ($minify == 'no') && ( $size != 0 ))?200:0;
 			//DBG::log(array('base after minify'=>$score));
-			$score += ( $size <= self::$SIZE_SMALL )?100:0; 	
+			$score += ( $size <= self::SIZE_SMALL )?100:0; 	
 			//DBG::log(array('base after size'=>$score));
-			if ( $size >= self::$SIZE_LARGE ) 
-				$normalizer = self::$SIZE_MAX;
-			elseif ( $size <= self::$SIZE_SMALL )
-				$normalizer = self::$SIZE_SMALL;
+			if ( $size >= self::SIZE_LARGE ) 
+				$normalizer = self::SIZE_MAX;
+			elseif ( $size <= self::SIZE_SMALL )
+				$normalizer = self::SIZE_SMALL;
 			else 
-				$normalizer = self::$SIZE_LARGE;
+				$normalizer = self::SIZE_LARGE;
 			//DBG::log(array('normalizer'=>$normalizer));
 			$score += $size/$normalizer*100; 	
 			//DBG::log(array('score'=>$score));

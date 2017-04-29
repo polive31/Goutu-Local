@@ -293,10 +293,10 @@ function use_minified_stylesheet( $default_stylesheet_uri ) {
 //	$min_mod_date = filemtime( $stylesheet_path );
 //	$orig_mod_date = filemtime( $default_stylesheet_path );
 //	if ( file_exists( $stylesheet_path ) && ($min_mod_date >= $orig_mod_date) ) {
-//		PC::debug( 'Minified stylesheet exist and is valid' );
+//		DBG::log( 'Minified stylesheet exist and is valid' );
 //		return $stylesheet_uri;	
 //	}
-//	PC::debug( 'Minified stylesheet doesn t exist or too old' );
+//	DBG::log( 'Minified stylesheet doesn t exist or too old' );
 //	return $default_stylesheet_uri;	
 }
 
@@ -417,7 +417,7 @@ function execute_php($html){
 add_filter('rpwe_after_thumbnail', 'wprpe_add_rating', 10, 2);
 function wprpe_add_rating($output, $args ) {
 		$disp_rating = substr($args['cssID'],1,1);
-		//PC::debug( array('WPRPE Output add rating'=>$output) );
+		//DBG::log( array('WPRPE Output add rating'=>$output) );
 		if ( $disp_rating == '1') {
 			$output .= '<div class="rpwe-title">' . do_shortcode('[display-star-rating display="minimal" category="global"]') . '</div>';
 		}
@@ -481,9 +481,9 @@ function display_debug_info() {
 
 		$post_id = get_the_id();
 
-		PC::debug( 'In foodiepro functions.php' );		
+		DBG::log( 'In foodiepro functions.php' );		
 		$output = get_post_meta( $post_id , '' , true);
-		PC::debug(array('get_post_meta( $post_id ) : '=> $output) );
+		DBG::log(array('get_post_meta( $post_id ) : '=> $output) );
 
 		//$output = get_post_meta( $post_id, 'user_ratings' );
 		//PC:debug(array('user_ratings : '=> $output) );

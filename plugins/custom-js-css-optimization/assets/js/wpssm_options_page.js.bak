@@ -48,7 +48,7 @@ jQuery(document).ready(function(){
 			if (depsList!='') {
 				alert('It is not possible to move ' + handle + ' to the footer, since other header assets depend on it.\nThose assets need to be moved or disabled first :\n'+depsList);
 				jQuery(this).val("header");
-				table_cell.removeClass( "modified" );
+				//table_cell.removeClass( "modified" );
 			}
 		}
 		if (current=='header')	{
@@ -65,7 +65,7 @@ jQuery(document).ready(function(){
 			if (depsList!='') {
 				alert('It is not possible to move ' + handle + ' to the header, since it depends on other footer assets.\nThose assets need to be moved or disabled first :\n'+depsList);
 				jQuery(this).val("footer");
-				table_cell.removeClass( "modified" );
+				//table_cell.removeClass( "modified" );
 			}
 		}
 		else if (current=='disabled') {

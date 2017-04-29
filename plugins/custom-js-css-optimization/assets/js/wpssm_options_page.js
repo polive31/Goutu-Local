@@ -74,7 +74,7 @@ jQuery(document).ready(function(){
     		console.log(key, value);
     		var depLocation = table_cell.closest('.enqueued-assets').find('.location select[id="' + value + '"]').val();
     		console.log(depLocation);
-    		if (depLocation != 'disable') {
+    		if (depLocation != 'disabled') {
     			depsList=depsList + '\u2022 ' + value + '\n';
     			};
 			});

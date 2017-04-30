@@ -15,6 +15,7 @@ class WPSSM_Optimize extends WPSSM_Settings {
 	public function __construct() {
 		parent::__construct();
 	
+		$this->hydrate_optimize();
 		//echo '<pre> <p>opt_general_settings in construct : </p><p>' . var_dump($this->opt_general_settings['record']) . '</p></pre>';
 		if ( ($this->opt_general_settings['loadjs']=='on') ) {	
 			// load assets for this page

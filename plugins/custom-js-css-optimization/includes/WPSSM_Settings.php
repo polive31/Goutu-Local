@@ -16,22 +16,22 @@ class WPSSM_Settings {
 	protected $plugin_slug = 'wpssm';
 
 	protected $config_settings_pages = array(
-		'general' => array(
-				'slug'=>'general_settings_page',
-				'sections'=> array(
-						array('slug'=>'general_settings_section', 'title'=>'General Settings Section'),
-						array('slug'=>'general_info_section', 'title'=>'General Information'),
-				)),
-		'scripts' => array(
-				'slug'=>'enqueued_scripts_page',
-				'sections'=> array(
-						array('slug'=>'enqueued_scripts_section', 'title'=>'Enqueued Scripts Section'),
-				)),
-		'styles' => array(
-				'slug'=>'enqueued_styles_page',
-				'sections'=> array(
-						array('slug'=>'enqueued_styles_section', 'title'=>'Enqueued Styles Section'),
-				)),
+			'general' => array(
+					'slug'=>'general_settings_page',
+					'sections'=> array(
+							array('slug'=>'general_settings_section', 'title'=>'General Settings Section'),
+							array('slug'=>'general_info_section', 'title'=>'General Information'),
+					)),
+			'scripts' => array(
+					'slug'=>'enqueued_scripts_page',
+					'sections'=> array(
+							array('slug'=>'enqueued_scripts_section', 'title'=>'Enqueued Scripts Section'),
+					)),
+			'styles' => array(
+					'slug'=>'enqueued_styles_page',
+					'sections'=> array(
+							array('slug'=>'enqueued_styles_section', 'title'=>'Enqueued Styles Section'),
+					)),
 	);
 	
 	
@@ -44,7 +44,18 @@ class WPSSM_Settings {
 	public $opt_general_settings = array('record'=>'off', 'optimize'=>'off', 'loadjs'=>'off');
 	public $opt_enqueued_assets = array( 'pages'=>array(), 'scripts'=>array(), 'styles'=>array());
 
-	protected $displayed_assets;
+	protected $displayed_assets = array( 
+			'scripts' => array(
+						'header' => array(),
+						'footer' => array(),
+						'async' => array(),
+						'disabled' => array(),
+			),
+			'styles' => array(
+						'header' => array(),
+						'disabled' => array(),
+			)
+	);
 	protected $user_notification; 
 	
 	protected $filter_args = array( 'location' => 'header' );
@@ -108,28 +119,33 @@ class WPSSM_Settings {
 		$get_option = get_option( 'wpssm_general_settings' );
 		if ($get_option!=false)
 			$this->opt_general_settings=$get_option; 
-		DBG::log('In WPSSM_Settings hydrate : $this->opt_general_settings', $this->opt_general_settings);
+		//DBG::log('In WPSSM_Settings hydrate : $this->opt_general_settings', $this->opt_general_settings);
 
 		// hydrate enqueued assets property with options content
 		$get_option = get_option( 'wpssm_enqueued_assets' );
 		if ($get_option!=false)
 			$this->opt_enqueued_assets = $get_option;
+		DBG::log('In WPSSM_Settings hydrate $this->enqueud_assets: ', $this->opt_enqueued_assets);
 									
 		// Preparation of data to be displayed
-    $types=array('scripts', 'styles');
-    $locations=array('header', 'footer', 'disabled');
-		foreach ($types as $type) {
-			if (! isset ( $this->opt_enqueued_assets[$type] ) ) continue;
-			$assets = $this->opt_enqueued_assets[$type];
-			foreach ($locations as $location) {
+   	//$types=array('scripts', 'styles');
+    //$locations=array('header', 'footer', 'async', 'disabled');
+		DBG::log('In WPSSM_Settings $this->displayed_assets before hydrate : ', $this->displayed_assets);
+		foreach ($this->displayed_assets as $type=>$locations) {
+			DBG::log('Looping asset type : ', array($type => $locations));
+			$assets=$this->opt_enqueued_assets[$type];
+			//if (! isset ( $this->opt_enqueued_assets[$type] ) ) continue;
+			foreach ($locations as $location=>$placeholder) {
 				$this-> filter_args = array( 'location' => $location );
+				DBG::log('Looping asset location : ', array($location => $assets));
+				//$assets = $this->opt_enqueued_assets[$type];
 				$filtered_assets = array_filter($assets, array($this, 'filter_assets') );	
 				$this-> displayed_assets[$type][$location]['assets']=$filtered_assets;
 				$this-> displayed_assets[$type][$location]['count']=count($filtered_assets);
 				$this-> displayed_assets[$type][$location]['size']=array_sum( array_column( $filtered_assets, 'size'));
 			}	
 		}
-		//DBG::log( array( '$this->displayed_assets: '=>$this->displayed_assets ));
+		DBG::log('In WPSSM_Settings hydrate $this->displayed_assets: ', $this->displayed_assets);
 	
 	}
 	
@@ -171,6 +187,7 @@ class WPSSM_Settings {
 	    
 	    register_setting($this->config_settings_pages['scripts']['slug'], 'wpssm_header_enqueued_scripts');
 	    register_setting($this->config_settings_pages['scripts']['slug'], 'wpssm_footer_enqueued_scripts');
+	    register_setting($this->config_settings_pages['scripts']['slug'], 'wpssm_async_enqueued_scripts');
 	    register_setting($this->config_settings_pages['scripts']['slug'], 'wpssm_disabled_scripts');
 	    
 	    register_setting($this->config_settings_pages['styles']['slug'], 'wpssm_header_enqueued_styles');
@@ -215,7 +232,7 @@ class WPSSM_Settings {
 	        $this->config_settings_pages['general']['slug'],
 	        $this->config_settings_pages['general']['sections'][1]['slug'],
 					array( 
-	        	'label_for' => 'jco-recorded-pages',
+	        	'label_for' => 'wpssm-recorded-pages',
 	        	'class' => 'foldable' )
 	    );
 
@@ -229,7 +246,7 @@ class WPSSM_Settings {
 	        $this->config_settings_pages['scripts']['slug'],
 	        $this->config_settings_pages['scripts']['sections'][0]['slug'],
 	        array( 
-	        	'label_for' => 'jco-enqueued-scripts',
+	        	'label_for' => 'wpssm-enqueued-scripts',
 	        	'class' => 'foldable' )
 	    );
 	    
@@ -242,9 +259,22 @@ class WPSSM_Settings {
 	        $this->config_settings_pages['scripts']['slug'],
 	        $this->config_settings_pages['scripts']['sections'][0]['slug'],
 	        array( 
-	        	'label_for' => 'jco-enqueued-scripts',
+	        	'label_for' => 'wpssm-enqueued-scripts',
 	        	'class' => 'foldable' )
 	    );
+	    
+			$size = $this->displayed_assets['scripts']['footer']['size'];
+	    $count = $this->displayed_assets['scripts']['footer']['count'];
+			add_settings_field(
+	        'wpssm_async_enqueued_scripts',
+	        'Asynchronous loaded Scripts (' . $count . ' files, total size ' . size_format($size) . ')',
+	        array($this,'output_async_scripts_list'),
+	        $this->config_settings_pages['scripts']['slug'],
+	        $this->config_settings_pages['scripts']['sections'][0]['slug'],
+	        array( 
+	        	'label_for' => 'wpssm-enqueued-scripts',
+	        	'class' => 'foldable' )
+	    );	    
 
 	    $size = $this->displayed_assets['scripts']['disabled']['size'];
 	    $count = $this->displayed_assets['scripts']['disabled']['count'];	    
@@ -255,7 +285,7 @@ class WPSSM_Settings {
 	        $this->config_settings_pages['scripts']['slug'],
 	        $this->config_settings_pages['scripts']['sections'][0]['slug'],
 	        array( 
-	        	'label_for' => 'jco-enqueued-scripts',
+	        	'label_for' => 'wpssm-enqueued-scripts',
 	        	'class' => 'foldable' )
 	    );	    
 	    
@@ -269,7 +299,7 @@ class WPSSM_Settings {
 	        $this->config_settings_pages['styles']['slug'],
 	        $this->config_settings_pages['styles']['sections'][0]['slug'],
 	        array(
-	        	'label_for' => 'jco-enqueued-styles',
+	        	'label_for' => 'wpssm-enqueued-styles',
 	        	'class' => 'foldable' )
 	    );
 	    
@@ -282,7 +312,7 @@ class WPSSM_Settings {
 	        $this->config_settings_pages['styles']['slug'],
 	        $this->config_settings_pages['styles']['sections'][0]['slug'],
 	        array(
-	        	'label_for' => 'jco-enqueued-styles',
+	        	'label_for' => 'wpssm-enqueued-styles',
 	        	'class' => 'foldable' )
 	    );	    
 
@@ -295,7 +325,7 @@ class WPSSM_Settings {
 	        $this->config_settings_pages['styles']['slug'],
 	        $this->config_settings_pages['styles']['sections'][0]['slug'],
 	        array(
-	        	'label_for' => 'jco-enqueued-styles',
+	        	'label_for' => 'wpssm-enqueued-styles',
 	        	'class' => 'foldable' )
 	    );	    
 	}
@@ -335,6 +365,10 @@ class WPSSM_Settings {
 	
 	public function output_footer_scripts_list() {
 		$this->	output_items_list('scripts', 'footer' );
+	}
+	
+	public function output_async_scripts_list() {
+		$this->	output_items_list('scripts', 'async' );
 	}
 	
 	public function output_disabled_scripts_list() {
@@ -470,7 +504,7 @@ class WPSSM_Settings {
 
 		if ( ( $size > self::SIZE_LARGE ) && ( !$in_footer ) ) {
 			$level = 'issue';
-			$msg = __('Large files loaded in the header will slow down page display : moving to footer or at least conditional enqueue recommended', 'jco');			
+			$msg = __('Large files loaded in the header will slow down page display : make asynchronous, loading in footer or at least conditional enqueue recommended', 'jco');			
 			$this->enqueue_user_notification( $msg, $level);
 		}	
 		
@@ -617,7 +651,7 @@ class WPSSM_Settings {
 		else {
 				DBG::log( 'In Form submission : SAVE, tab ' . $type );
 				if ( $type=='general' ) {
-					DBG::log('general save $this->opt_general_settings' ,$this->opt_general_settings);
+					//DBG::log('general save $this->opt_general_settings' ,$this->opt_general_settings);
 					$settings=array('record','optimize');
 					foreach ($settings as $setting) {
 						$this->opt_general_settings[$setting]= isset($_POST[ 'general_' . $setting . '_checkbox' ])?$_POST[ 'general_' . $setting . '_checkbox' ]:'off';
@@ -638,7 +672,6 @@ class WPSSM_Settings {
 				}
 		    $query_args['msg']='save';
 		}
-		
 
 		DBG::log('http referer',$url);
 		$url = add_query_arg( $query_args, $url) ;

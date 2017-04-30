@@ -32,7 +32,7 @@ class WPSSM_Optimize extends WPSSM_Settings {
 	
 	public function hydrate_optimize() {
 		$scripts = $this->enqueued_assets['scripts'];
-		DBG::log('In WPSSM_Optimize hydrate : scripts', $scripts);
+		//DBG::log('In WPSSM_Optimize hydrate : scripts', $scripts);
 		$this->scriptmods = array_column($this->enqueued_assets['scripts'], 'mods', 'handle');
 		$this->stylemods = array_column($this->enqueued_assets['styles'], 'mods', 'handle');
 		

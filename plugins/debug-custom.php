@@ -19,15 +19,16 @@ class DBG {
 	private static $ON = true;
 	
 	public static function log($msg, $var=false ) { 
-		if (!self::$ON) return;		
+		if (!self::$ON) return;	
+		if ( defined( 'DOING_AJAX' ) || strstr($_SERVER['REQUEST_URI'], 'admin-post.php') ) return; // Prevents blocking of post submissions/ajax requests
 		if ( !is_array($var) ) {
 			$var = '"' . $var . '"';
 		}
 		else {
 			$var = json_encode($var);
 		}
-		echo('<script>console.log("%cDEBUG%c ' . $msg . '", "border-radius:4px;padding:2px 4px;background:blue;color:white", "color:blue");</script>');  
-		echo('<script>console.log(' . $var . ');</script>');  
+		echo('<script>console.log("%cDEBUG%c ' . $msg . '", "border-radius:4px;padding:2px 4px;background:blue;color:white", "color:blue");');  
+		echo('console.log(' . $var . ');</script>');  
 	}	
 
 	public static function log2($msg, $var=false) {

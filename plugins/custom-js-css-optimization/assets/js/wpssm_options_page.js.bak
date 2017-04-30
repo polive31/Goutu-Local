@@ -48,7 +48,7 @@ jQuery(document).ready(function(){
 			}
 			else if (current=='async') {
 				console.log('current == async');                     
-				alertMsg = 'It is not possible to load ' + handle + ' asynchronously, since other active assets depend on it.\nThose assets need to be disabled first :\n%depsList';
+				alertMsg = 'It is not possible to load ' + handle + ' asynchronously, since other assets depend on it.';
 				deps = jQuery(this).data("dependents");
 			}
 			checkDeps(jQuery(this), prev, current, deps, alertMsg);

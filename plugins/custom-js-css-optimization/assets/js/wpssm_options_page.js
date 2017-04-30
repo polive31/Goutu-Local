@@ -5,88 +5,94 @@ jQuery(document).ready(function(){
     console.log("Saving value " + jQuery(this).val());
     jQuery(this).data('val', jQuery(this).val());
 	}).on('change','.asset-setting', function(){
+    
     var prev = jQuery(this).data('val');
     var current = jQuery(this).val();
-    console.log("Prev value " + prev);
-    console.log("New value " + current);
+    //console.log("Prev value " + prev);
+    //console.log("New value " + current);
     
     
     // Add modified class as soon as a given field is changed
-		var table_cell=jQuery(this).closest('td') ;                            
-		var table_cell_class=table_cell.attr("class"); 
-		console.log('class : ', table_cell_class); 
-		if ( table_cell_class != "modified") {
-			//console.log('modified class not found'); 
-			table_cell.addClass( "modified" );   
-		} 	
+		var tableCell=jQuery(this).closest('td') ;                            
+		var tableCell_class=tableCell.attr("class"); 
+		console.log('class : ', tableCell_class); 
     
     // Check script dependencies
 		var thisClass = jQuery(this).attr("class");
+		tableCell.addClass( "modified" );   
 
-		if ( (current=='footer') || (current=='header') || (current=='disabled') )	{
+		if ( tableCell_class.indexOf("location") != -1 )	{
+			console.log('Location modified');
 			var handle=jQuery(this).attr("id"); 	
-			console.log("Location for script " + handle + " modified !");
-  		var dependencies = jQuery(this).data("dependencies");                         
-			console.log("Script has following dependencies : ", dependencies);
-  		var dependents = jQuery(this).data("dependents");                         
-			console.log("Script has following dependents : ", dependents);
-			var depsList='';
-		}
+			var dependents;
+			var dependencies;
+			var alertMsg;
+			//console.log("Location for script " + handle + " modified !");
+			//console.log("Script has following dependencies : ", dependencies);
+			//console.log("Script has following dependents : ", dependents);
 
-		if (current=='footer')	{
-			console.log('Move to footer !');
-			jQuery.each(dependents, function(key, value) {
+			if (current=='footer')	{  
+				console.log('current == footer');                     
+				alertMsg = 'It is not possible to move ' + handle + ' to the footer, since other header assets depend on it.\nThose assets need to be moved or disabled first :\n%depsList';
+				deps = jQuery(this).data("dependents");
+			}
+			else if (current=='header')	{                        
+				console.log('current == header');                     
+				alertMsg = 'It is not possible to move ' + handle + ' to the header, since it depends on other footer assets.\nThose assets need to be moved or disabled first :\n%depsList';
+				deps = jQuery(this).data("dependencies");
+			}
+			else if (current=='disabled') {
+				console.log('current == disabled');                     
+				alertMsg = 'It is not possible to disable ' + handle + ', since other active assets depend on it.\nThose assets need to be disabled first :\n%depsList';
+				deps = jQuery(this).data("dependents");
+			}
+			else if (current=='async') {
+				console.log('current == async');                     
+				alertMsg = 'It is not possible to load ' + handle + ' asynchronously, since other assets depend on it.';
+				deps = jQuery(this).data("dependents");
+			}
+			checkDeps(jQuery(this), prev, current, deps, alertMsg);
+			
+		} // end if location modified
+			
+		function checkDeps(obj, prevLoc, newLoc, deps, msg) {
+			var depsList='';
+			var tableCell=obj.closest('td') ; 
+			console.log('In checkDeps function, change to ', newLoc, 'deps are ', deps);	
+			
+			jQuery.each(deps, function(key, value) {
     		console.log(key, value);
-    		var depLocation = table_cell.closest('.enqueued-assets').find('.location select[id="' + value + '"]').val();
-    		console.log(depLocation);
-    		if (depLocation == 'header') {
+    		var depLocation = tableCell.closest('.enqueued-assets').find('.location select[id="' + value + '"]').val();
+    		console.log(depLocation);	
+				switch(newLoc) {
+					case "footer":
+						issue=(depLocation=="header");
+						break;
+					case "header":
+						issue=(depLocation=="footer");
+						break;
+					case "disabled":
+						issue=(depLocation!="disabled");
+						break;
+				}
+    		if (issue) {
     			depsList=depsList + '\u2022 ' + value + '\n';
-    			};
-			});
+    		};
+			}); // end dependencies loop
 			console.log(depsList);
+			
 			if (depsList!='') {
-				alert('It is not possible to move ' + handle + ' to the footer, since other header assets depend on it.\nThose assets need to be moved or disabled first :\n'+depsList);
-				jQuery(this).val("header");
-				//table_cell.removeClass( "modified" );
+				msg = msg.replace('%depsList', depsList);
+				alert(msg);
+				obj.val(prevLoc);
+				tableCell.removeClass( "modified" );
 			}
 		}
-		if (current=='header')	{
-			console.log('Move to header!');
-			jQuery.each(dependencies, function(key, value) {
-    		console.log(key, value);
-    		var depLocation = table_cell.closest('.enqueued-assets').find('.location select[id="' + value + '"]').val();
-    		console.log(depLocation);
-    		if (depLocation == 'footer') {
-    			depsList=depsList + '\u2022 ' + value + '\n';
-    			};
-			});
-			console.log(depsList);
-			if (depsList!='') {
-				alert('It is not possible to move ' + handle + ' to the header, since it depends on other footer assets.\nThose assets need to be moved or disabled first :\n'+depsList);
-				jQuery(this).val("footer");
-				//table_cell.removeClass( "modified" );
-			}
-		}
-		else if (current=='disabled') {
-			console.log('Disable !');
-			jQuery.each(dependents, function(key, value) {
-    		console.log(key, value);
-    		var depLocation = table_cell.closest('.enqueued-assets').find('.location select[id="' + value + '"]').val();
-    		console.log(depLocation);
-    		if (depLocation != 'disabled') {
-    			depsList=depsList + '\u2022 ' + value + '\n';
-    			};
-			});
-			console.log(depsList);
-			if (depsList!='') {
-				alert('It is not possible to disable ' + handle + ', since other active assets depend on it.\nThose assets need to be disabled first :\n'+depsList);
-				jQuery(this).val( prev );
-				table_cell.removeClass( "modified" );
-			}			
-		}
+			
 		
 	});	
 	
+
 });
 
 

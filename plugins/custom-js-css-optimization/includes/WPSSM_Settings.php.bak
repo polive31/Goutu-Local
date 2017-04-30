@@ -55,7 +55,7 @@ class WPSSM_Settings {
 
 	public function __construct() {
 		// Hydrate option class properties
-		$this->hydrate();
+		$this->hydrate_settings();
 			
 		// Admin options page
 		add_action( 'admin_menu', array($this, 'add_plugin_menu_option'));
@@ -84,38 +84,37 @@ class WPSSM_Settings {
 	}
 
 	public function load_admin_assets() {
-		DBG::log('In load_admin_styles');
-		DBG::log( plugins_url( '/css/wpssm_options_page.css', __FILE__ ) );
+		//DBG::log('In load_admin_styles');
+		//DBG::log( plugins_url( '/css/wpssm_options_page.css', __FILE__ ) );
 
   	wp_enqueue_style( 'wpssm_admin_css', plugins_url( '../assets/css/wpssm_options_page.css', __FILE__ ) , false, self::WPSSM_VERSION );
   	wp_enqueue_script( 'loadjs_js', plugins_url( '../assets/js/loadjs.min.js', __FILE__ ) , false, self::WPSSM_VERSION );
-  	wp_enqueue_script( 'wpssm_admin_js', plugins_url( '../assets/js/wpssm_options_page.js', __FILE__ ) , false, self::WPSSM_VERSION );
+  	wp_enqueue_script( 'wpssm_admin_js', plugins_url( '../assets/js/wpssm_options_page.js', __FILE__ ) , array('jquery'), self::WPSSM_VERSION );
 //		wp_localize_script('wpssm_admin_js', 'WPLocalizeVar', array(
 //																					'url'=> admin_url( 'admin-ajax.php' ),
 //																					'nonce'=> wp_create_nonce( 'check-script-dependencies' ),
 //																					));
 	}
 	
-	public function hydrate() {
+	public function hydrate_settings() {
 		//pages to record
-		$this->urls_to_request = array(
-															home_url(),
-															$this->get_permalink_by_slug('bredele'),
-															$this->get_permalink_by_slug('les-myrtilles'),
-														);
+//		$this->urls_to_request = array(
+//															home_url(),
+//															$this->get_permalink_by_slug('bredele'),
+//															$this->get_permalink_by_slug('les-myrtilles'),
+//														);
 									
 		// hydrate general settings property with options content
 		$get_option = get_option( 'wpssm_general_settings' );
 		if ($get_option!=false)
 			$this->opt_general_settings=$get_option; 
-
+		DBG::log('In WPSSM_Settings hydrate : $this->opt_general_settings', $this->opt_general_settings);
 
 		// hydrate enqueued assets property with options content
 		$get_option = get_option( 'wpssm_enqueued_assets' );
 		if ($get_option!=false)
 			$this->opt_enqueued_assets = $get_option;
-		
-							
+									
 		// Preparation of data to be displayed
     $types=array('scripts', 'styles');
     $locations=array('header', 'footer', 'disabled');
@@ -427,6 +426,7 @@ class WPSSM_Settings {
 	    		<select data-dependencies='<?php echo json_encode($dependencies);?>' data-dependents='<?php echo json_encode($dependents);?>' id="<?php echo $handle;?>" class="asset-setting location <?php echo $type;?>" name="<?php echo $this->get_field_name( $type, $handle, 'location');?>">
   					<option value="header" <?php echo ($location=='header')?'selected':'';?> >header</option>
   					<option value="footer" <?php echo ($location=='footer')?'selected':'';?> >footer</option>
+  					<option value="async" <?php echo ($location=='async')?'selected':'';?> >asynchronous</option>
   					<option value="disabled" <?php echo ($location=='disabled')?'selected':'';?>>disabled</option>
 					</select>
 				</td>

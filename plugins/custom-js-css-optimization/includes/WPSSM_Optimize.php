@@ -15,6 +15,7 @@ class WPSSM_Optimize extends WPSSM_Settings {
 	public function __construct() {
 		parent::__construct();
 	
+		$this->hydrate_optimize();
 		//echo '<pre> <p>opt_general_settings in construct : </p><p>' . var_dump($this->opt_general_settings['record']) . '</p></pre>';
 		if ( ($this->opt_general_settings['loadjs']=='on') ) {	
 			// load assets for this page
@@ -29,14 +30,16 @@ class WPSSM_Optimize extends WPSSM_Settings {
 		}
 	}		
 	
-	public function hydrate() {
+	public function hydrate_optimize() {
+		$scripts = $this->enqueued_assets['scripts'];
+		DBG::log('In WPSSM_Optimize hydrate : scripts', $scripts);
 		$this->scriptmods = array_column($this->enqueued_assets['scripts'], 'mods', 'handle');
 		$this->stylemods = array_column($this->enqueued_assets['styles'], 'mods', 'handle');
-		//$this->async = array_column($this->scriptmods['location'], 'handle');		
 		
-		DBG::log('in hydrate : $this->async after column', $this->async);
-		$this->async = array_filter($this->async, array($this, 'filter_async') );	
-		DBG::log('in hydrate : $this->async after filter', $this->async);
+		//$this->async = array_column($this->scriptmods['location'], 'handle');		
+		//DBG::log('in hydrate : $this->async after column', $this->async);
+		//$this->async = array_filter($this->async, array($this, 'filter_async') );	
+		//DBG::log('in hydrate : $this->async after filter', $this->async);
 	}
 	
 	public function filter_async($location) {
@@ -86,10 +89,10 @@ class WPSSM_Optimize extends WPSSM_Settings {
 	}
 	
 	public function apply_styles_mods_cb() {
-		//DBG::log('In apply_styles_mods_cb');
+		DBG::log('In apply_styles_mods_cb');
 		$styles = $this->opt_enqueued_assets['styles'];
-		//DBG::log(array('In apply_styles_mods_cb : styles '=>$styles));
-		//DBG::log(array('In apply_styles_mods_cb : mods '=>$this->stylemods));
+		DBG::log('In apply_styles_mods_cb : styles ',$styles);
+		DBG::log('In apply_styles_mods_cb : mods ',$this->stylemods);
 		
 		foreach ($this->stylemods as $handle => $mod) {
 			if ( isset( $mod['location'] ) ) {

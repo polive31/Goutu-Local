@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-class WPSSM_Settings {
+class WPSSM_Admin {
 
 	const SIZE_SMALL = 1000;
 	const SIZE_LARGE = 1000;
@@ -15,48 +15,38 @@ class WPSSM_Settings {
 	
 	protected $plugin_slug = 'wpssm';
 
-	protected $config_settings_pages = array(
-			'general' => array(
-					'slug'=>'general_settings_page',
-					'sections'=> array(
-							array('slug'=>'general_settings_section', 'title'=>'General Settings Section'),
-							array('slug'=>'general_info_section', 'title'=>'General Information'),
-					)),
-			'scripts' => array(
-					'slug'=>'enqueued_scripts_page',
-					'sections'=> array(
-							array('slug'=>'enqueued_scripts_section', 'title'=>'Enqueued Scripts Section'),
-					)),
-			'styles' => array(
-					'slug'=>'enqueued_styles_page',
-					'sections'=> array(
-							array('slug'=>'enqueued_styles_section', 'title'=>'Enqueued Styles Section'),
-					)),
-	);
+	protected $config_settings_pages; // Initialized in hydrate_settings
 	
+	protected $displayed_assets = array();
 	
 	protected $form_action = 'wpssm_update_settings';
 	protected $nonce = 'wp8756';
-	protected $urls_to_request;
+//	protected $urls_to_request= array(
+//																home_url(),
+//																$this->get_permalink_by_slug('bredele'),
+//																$this->get_permalink_by_slug('les-myrtilles'),
+//															);
 	protected $header_scripts;
 	protected $header_styles;
-	
-	public $opt_general_settings = array('record'=>'off', 'optimize'=>'off', 'loadjs'=>'off');
-	public $opt_enqueued_assets = array( 'pages'=>array(), 'scripts'=>array(), 'styles'=>array());
-
-	protected $displayed_assets = array( 
-			'scripts' => array(
-						'header' => array(),
-						'footer' => array(),
-						'async' => array(),
-						'disabled' => array(),
-			),
-			'styles' => array(
-						'header' => array(),
-						'disabled' => array(),
-			)
-	);
+	protected $active_tab;
 	protected $user_notification; 
+	
+	public $opt_general_settings = array('record'=>'off', 'optimize'=>'off', 'javasync'=>'off');
+	public $opt_enqueued_assets = array( 'pages'=>array(), 'scripts'=>array(), 'styles'=>array());
+	public $opt_mods = array(
+						'scripts'=>array(
+									'footer'=> array(),
+									'async'=>array(),
+									'group'=>array(),
+									'min'=>array(),
+									), 
+						'styles'=>array(
+									'footer'=> array(),
+									'async'=>array(),
+									'group'=>array(),
+									'min'=>array(),
+									), 						
+						);
 	
 	protected $filter_args = array( 'location' => 'header' );
 	protected $sort_args = array( 
@@ -65,25 +55,20 @@ class WPSSM_Settings {
 														'type' => SORT_NUMERIC);
 
 	public function __construct() {
-		// Hydrate option class properties
-		$this->hydrate_settings();
+		// Initialize attributes common to FrontEnd and Admin
+		$this->hydrate_common();
 			
 		// Admin options page
+		add_action( 'admin_init', array($this, 'admin_init_cb') );
 		add_action( 'admin_menu', array($this, 'add_plugin_menu_option'));
-		add_action( 'admin_init', array($this, 'init_settings_cb') );
-		//add_action( 'admin_post_$this->action', array ( $this, 'update_settings_cb' ) );
 		add_action( 'admin_post_' . $this->form_action, array ( $this, 'update_settings_cb' ) );
-
-		// load assets for this page
-    add_action( 'admin_enqueue_scripts', array($this,'load_admin_assets') );
+    add_action( 'admin_enqueue_scripts', array($this,'load_admin_assets_cb') );
 
 		// configure AJAX actions
 		//add_action( 'wp_ajax_my-action', array($this,'ajax_my_action_cb') );
 		
-		// manage frontend pages monitoring 
-		//echo '<pre>In WPSSM Construct</pre>';
+		// manage frontend pages recording 
 		if ( $this->opt_general_settings['record'] == 'on' ) {
-			//echo '<pre>RECORD=ON</pre>';
 			add_action( 'wp_head', array($this, 'record_header_assets_cb') );
 			add_action( 'wp_print_footer_scripts', array($this, 'record_footer_assets_cb') );
 		}
@@ -91,66 +76,176 @@ class WPSSM_Settings {
 			remove_action( 'wp_head', array($this, 'record_header_assets_cb') );
 			remove_action( 'wp_print_footer_scripts', array($this, 'record_footer_assets_cb') );
 		}
-		
 	}
 
-	public function load_admin_assets() {
-		//DBG::log('In load_admin_styles');
+	public function load_admin_assets_cb() {
+		DBG::log('In load_admin_assets_cb');
 		//DBG::log( plugins_url( '/css/wpssm_options_page.css', __FILE__ ) );
-
   	wp_enqueue_style( 'wpssm_admin_css', plugins_url( '../assets/css/wpssm_options_page.css', __FILE__ ) , false, self::WPSSM_VERSION );
-  	//wp_enqueue_script( 'loadjs_js', plugins_url( '../assets/js/loadjs.min.js', __FILE__ ) , false, self::WPSSM_VERSION );
   	wp_enqueue_script( 'wpssm_admin_js', plugins_url( '../assets/js/wpssm_options_page.js', __FILE__ ) , array('jquery'), self::WPSSM_VERSION );
-//		wp_localize_script('wpssm_admin_js', 'WPLocalizeVar', array(
-//																					'url'=> admin_url( 'admin-ajax.php' ),
-//																					'nonce'=> wp_create_nonce( 'check-script-dependencies' ),
-//																					));
 	}
 	
-	public function hydrate_settings() {
-		//pages to record
-//		$this->urls_to_request = array(
-//															home_url(),
-//															$this->get_permalink_by_slug('bredele'),
-//															$this->get_permalink_by_slug('les-myrtilles'),
-//														);
-									
+	public function hydrate_common() {
+		// Initialize all attributes common to admin & frontend
+		DBG::log('In hydrate common');								
 		// hydrate general settings property with options content
 		$get_option = get_option( 'wpssm_general_settings' );
-		if ($get_option!=false)
-			$this->opt_general_settings=$get_option; 
-		//DBG::log('In WPSSM_Settings hydrate : $this->opt_general_settings', $this->opt_general_settings);
+		if ($get_option!=false) {
+			foreach ($get_option as $key=>$value) {$this->opt_general_settings[$key]=$value;}
+		}
+		DBG::log('In WPSSM_Admin hydrate common : $this->opt_general_settings', $this->opt_general_settings);
 
 		// hydrate enqueued assets property with options content
 		$get_option = get_option( 'wpssm_enqueued_assets' );
-		if ($get_option!=false)
-			$this->opt_enqueued_assets = $get_option;
-		DBG::log('In WPSSM_Settings hydrate $this->enqueud_assets: ', $this->opt_enqueued_assets);
-									
-		// Preparation of data to be displayed
-   	//$types=array('scripts', 'styles');
-    //$locations=array('header', 'footer', 'async', 'disabled');
-		DBG::log('In WPSSM_Settings $this->displayed_assets before hydrate : ', $this->displayed_assets);
-		foreach ($this->displayed_assets as $type=>$locations) {
-			DBG::log('Looping asset type : ', array($type => $locations));
-			$assets=$this->opt_enqueued_assets[$type];
-			//if (! isset ( $this->opt_enqueued_assets[$type] ) ) continue;
-			foreach ($locations as $location=>$placeholder) {
-				$this-> filter_args = array( 'location' => $location );
-				DBG::log('Looping asset location : ', array($location => $assets));
-				//$assets = $this->opt_enqueued_assets[$type];
-				$filtered_assets = array_filter($assets, array($this, 'filter_assets') );	
-				$this-> displayed_assets[$type][$location]['assets']=$filtered_assets;
-				$this-> displayed_assets[$type][$location]['count']=count($filtered_assets);
-				$this-> displayed_assets[$type][$location]['size']=array_sum( array_column( $filtered_assets, 'size'));
-			}	
+		if ($get_option!=false) {
+			foreach ($get_option as $key=>$value) {$this->opt_enqueued_assets[$key]=$value;}
 		}
-		DBG::log('In WPSSM_Settings hydrate $this->displayed_assets: ', $this->displayed_assets);
-	
+		DBG::log('In WPSSM_Settings hydrate common $this->enqueud_assets: ', $this->opt_enqueued_assets);
+	}	
+
+	public function hydrate_admin() {	
+		// Initialize all attributes related to admin mode
+		$this->config_settings_pages = array(
+			'general' => array(
+					'slug'=>'general_settings_page',
+					'sections'=> array(
+							array(
+							'slug'=>'general_settings_section', 
+							'title'=>'General Settings Section',
+							'fields' => array(
+										'record' => array(
+													'slug' => 'wpssm_record',
+													'title' => 'Record enqueued scripts & styles in frontend',
+													'callback' => 'output_toggle_switch_recording_cb',
+													),
+										'optimize' => array(
+													'slug' => 'wpssm_optimize',
+													'title' => 'Optimize scripts & styles in frontend',
+													'callback' => 'output_toggle_switch_optimize_cb',
+													),	
+										'javasync' => array(
+													'slug' => 'wpssm_javasync',
+													'title' => 'Allow improved asynchronous loading of scripts via javascript',
+													'callback' => 'output_toggle_switch_javasync_cb',
+													),	
+										),
+							),							
+							array(
+							'slug'=>'general_info_section', 
+							'title'=>'General Information',
+							'fields' => array(
+										'pages' => array(
+													'slug' => 'wpssm_recorded_pages',
+													'title' => 'Recorded pages',
+													'label_for' => 'wpssm-recorded-pages',
+													'class' => 'foldable',
+													'callback' => 'output_pages_list',
+													),	
+										),
+							),
+					),
+			),	
+			'scripts' => array(
+					'slug'=>'enqueued_scripts_page',
+					'sections'=> array(
+								array(
+								'slug'=>'enqueued_scripts_section', 
+								'title'=>'Enqueued Scripts Section',
+								'fields' => array(
+											'header' => array(
+														'slug' => 'wpssm_header_enqueued_scripts',
+														'title' => 'Enqueued Header Scripts',
+														'stats' => '(%s files, total size %s)',
+														'label_for' => 'wpssm-enqueued-scripts',
+														'class' => 'foldable',
+														'callback' => 'output_header_scripts_list',
+														),
+											'footer' => array(
+														'slug' => 'wpssm_footer_enqueued_scripts',
+														'title' => 'Enqueued Footer Scripts',
+														'stats' => '(%s files, total size %s)',
+														'label_for' => 'wpssm-enqueued-scripts',
+														'class' => 'foldable',
+														'callback' => 'output_footer_scripts_list',
+														),
+											'async' => array(
+														'slug' => 'wpssm_async_enqueued_scripts',
+														'title' => 'Scripts loaded asynchronously',
+														'stats' => '(%s files, total size %s)',
+														'label_for' => 'wpssm-enqueued-scripts',
+														'class' => 'foldable',
+														'callback' => 'output_async_scripts_list',
+														),
+											'disabled' => array(
+														'slug' => 'wpssm_disabled_scripts',
+														'title' => 'Enqueued Disabed Scripts',
+														'stats' => '(%s files, total size %s)',
+														'label_for' => 'wpssm-enqueued-scripts',
+														'class' => 'foldable',
+														'callback' => 'output_disabled_scripts_list',
+														),											
+											)
+								)
+					),
+			),
+			'styles' => array(		
+					'slug'=>'enqueued_styles_page',
+					'sections'=> array(
+								array(
+								'slug'=>'enqueued_styles_section', 
+								'title'=>'Enqueued Styles Section',
+								'fields' => array(
+											'header' => array(
+														'slug' => 'wpssm_header_enqueued_styles',
+														'title' => 'Enqueued Header Styles',
+														'stats' => '(%s files, total size %s)',
+														'label_for' => 'wpssm-enqueued-styles',
+														'class' => 'foldable',
+														'callback' => 'output_header_styles_list',
+														),
+											'footer' => array(
+														'slug' => 'wpssm_footer_enqueued_styles',
+														'title' => 'Enqueued Footer Styles',
+														'stats' => '(%s files, total size %s)',
+														'label_for' => 'wpssm-enqueued-styles',
+														'class' => 'foldable',
+														'callback' => 'output_footer_styles_list',
+														),
+											'async' => array(
+														'slug' => 'wpssm_async_enqueued_styles',
+														'title' => 'Styles loaded asynchronously',
+														'stats' => '(%s files, total size %s)',
+														'label_for' => 'wpssm-enqueued-styles',
+														'class' => 'foldable',
+														'callback' => 'output_async_styles_list',
+														),
+											'disabled' => array(
+														'slug' => 'wpssm_disabled_styles',
+														'title' => 'Enqueued Header Styles',
+														'stats' => '(%s files, total size %s)',
+														'label_for' => 'wpssm-enqueued-styles',
+														'class' => 'foldable',
+														'callback' => 'output_disabled_styles_list',
+														),											
+											),
+								),
+					),
+			),
+		);
+		// Get active tab
+		$this->active_tab = isset( $_GET[ 'tab' ] ) ? esc_html($_GET[ 'tab' ]) : 'general';
+		// Prepare assets to disply
+		if ($this->active_tab != 'general') $this->prepare_displayed_assets($this->active_tab);
+		DBG::log('In hydrate admin, $this->displayed_assets', $this->displayed_assets);								
 	}
 	
 	public function filter_assets( $asset ) {
-		return ( $this->get_field_value( $asset, 'location' ) == $this->filter_args['location'] );
+		$match=true;
+		foreach ($this->filter_args as $field=>$value) {
+			//DBG::log('In filter assets filter args loop', array($field=>$value));
+			$match=($this->get_field_value($asset,$field)==$value)?$match:false;
+		}
+		return $match;
 	}
 	
 	function add_plugin_menu_page() { 
@@ -174,173 +269,65 @@ class WPSSM_Settings {
       $this->plugin_slug,
       array($this, 'output_options_page')
 	    );
-
 		add_action( "load-$opt_page_id", array ( $this, 'load_option_page_cb' ) );
 	}
 
-	public function init_settings_cb() {
-		
-	    // register options
-	    register_setting($this->config_settings_pages['general']['slug'], 'wpssm_record');
-	    register_setting($this->config_settings_pages['general']['slug'], 'wpssm_optimize');
-	    register_setting($this->config_settings_pages['general']['slug'], 'wpssm_enqueue_stats');
-	    
-	    register_setting($this->config_settings_pages['scripts']['slug'], 'wpssm_header_enqueued_scripts');
-	    register_setting($this->config_settings_pages['scripts']['slug'], 'wpssm_footer_enqueued_scripts');
-	    register_setting($this->config_settings_pages['scripts']['slug'], 'wpssm_async_enqueued_scripts');
-	    register_setting($this->config_settings_pages['scripts']['slug'], 'wpssm_disabled_scripts');
-	    
-	    register_setting($this->config_settings_pages['styles']['slug'], 'wpssm_header_enqueued_styles');
-	    register_setting($this->config_settings_pages['styles']['slug'], 'wpssm_footer_enqueued_styles');
-	    register_setting($this->config_settings_pages['styles']['slug'], 'wpssm_disabled_styles');
-
-	    
-	    // register all sections
-	    foreach ($this->config_settings_pages as $page) {
-	    	foreach ($page['sections'] as $section) {
-					add_settings_section(
-		        $section['slug'],
-		        $section['title'],
-		        array($this,'output_section_cb'),
-		        $page['slug']
-		    	);	   
-	    	} 	
-	    }
-
-	    // register new fields in the general settings section
-	    add_settings_field(
-	        'wpssm_record',
-	        'Record enqueued scripts & styles in frontend',
-	        array($this,'output_recording_switch_cb'),
-	        $this->config_settings_pages['general']['slug'],
-	        $this->config_settings_pages['general']['sections'][0]['slug']
-	    );
-
-	    add_settings_field(
-	        'wpssm_optimize',
-	        'Optimize scripts & styles in frontend',
-	        array($this,'output_optimize_switch_cb'),
-	        $this->config_settings_pages['general']['slug'],
-	        $this->config_settings_pages['general']['sections'][0]['slug']
-	    );
-
-	    // register new fields in the enqueued list section
-	    add_settings_field(
-	        'wpssm_recorded_pages',
-	        'Recorded pages',
-	        array($this,'output_pages_list'),
-	        $this->config_settings_pages['general']['slug'],
-	        $this->config_settings_pages['general']['sections'][1]['slug'],
-					array( 
-	        	'label_for' => 'wpssm-recorded-pages',
-	        	'class' => 'foldable' )
-	    );
-
-	    // register new fields in the enqueued Scripts section;
-	    $size = $this->displayed_assets['scripts']['header']['size'];
-	    $count = $this->displayed_assets['scripts']['header']['count'];
-	    add_settings_field(
-	        'wpssm_header_enqueued_scripts',
-	        'Enqueued Header Scripts (' . $count . ' files, total size ' . size_format($size) . ')',
-	        array($this,'output_header_scripts_list'),
-	        $this->config_settings_pages['scripts']['slug'],
-	        $this->config_settings_pages['scripts']['sections'][0]['slug'],
-	        array( 
-	        	'label_for' => 'wpssm-enqueued-scripts',
-	        	'class' => 'foldable' )
-	    );
-	    
-			$size = $this->displayed_assets['scripts']['footer']['size'];
-	    $count = $this->displayed_assets['scripts']['footer']['count'];
-			add_settings_field(
-	        'wpssm_footer_enqueued_scripts',
-	        'Enqueued Footer Scripts (' . $count . ' files, total size ' . size_format($size) . ')',
-	        array($this,'output_footer_scripts_list'),
-	        $this->config_settings_pages['scripts']['slug'],
-	        $this->config_settings_pages['scripts']['sections'][0]['slug'],
-	        array( 
-	        	'label_for' => 'wpssm-enqueued-scripts',
-	        	'class' => 'foldable' )
-	    );
-	    
-			$size = $this->displayed_assets['scripts']['footer']['size'];
-	    $count = $this->displayed_assets['scripts']['footer']['count'];
-			add_settings_field(
-	        'wpssm_async_enqueued_scripts',
-	        'Asynchronous loaded Scripts (' . $count . ' files, total size ' . size_format($size) . ')',
-	        array($this,'output_async_scripts_list'),
-	        $this->config_settings_pages['scripts']['slug'],
-	        $this->config_settings_pages['scripts']['sections'][0]['slug'],
-	        array( 
-	        	'label_for' => 'wpssm-enqueued-scripts',
-	        	'class' => 'foldable' )
-	    );	    
-
-	    $size = $this->displayed_assets['scripts']['disabled']['size'];
-	    $count = $this->displayed_assets['scripts']['disabled']['count'];	    
-			add_settings_field(
-	        'wpssm_disabled_scripts',
-	        'Disabled Scripts (' . $count . ' files, total size ' . size_format($size) . ')',
-	        array($this,'output_disabled_scripts_list'),
-	        $this->config_settings_pages['scripts']['slug'],
-	        $this->config_settings_pages['scripts']['sections'][0]['slug'],
-	        array( 
-	        	'label_for' => 'wpssm-enqueued-scripts',
-	        	'class' => 'foldable' )
-	    );	    
-	    
-	    // register new fields in the enqueued Styles section
-	    $size = $this->displayed_assets['styles']['header']['size'];
-	    $count = $this->displayed_assets['styles']['header']['count'];
-			add_settings_field(
-	        'wpssm_header_enqueued_styles',
-	        'Enqueued Header Styles (' . $count . ' files, total size ' . size_format($size) . ')',
-	        array($this,'output_header_styles_list'),
-	        $this->config_settings_pages['styles']['slug'],
-	        $this->config_settings_pages['styles']['sections'][0]['slug'],
-	        array(
-	        	'label_for' => 'wpssm-enqueued-styles',
-	        	'class' => 'foldable' )
-	    );
-	    
-	    $size = $this->displayed_assets['styles']['footer']['size'];
-	    $count = $this->displayed_assets['styles']['footer']['count'];
-			add_settings_field(
-	        'wpssm_footer_enqueued_styles',
-	        'Enqueued Footer Styles (' . $count . ' files, total size ' . size_format($size) . ')',
-	        array($this,'output_footer_styles_list'),
-	        $this->config_settings_pages['styles']['slug'],
-	        $this->config_settings_pages['styles']['sections'][0]['slug'],
-	        array(
-	        	'label_for' => 'wpssm-enqueued-styles',
-	        	'class' => 'foldable' )
-	    );	    
-
-	    $size = $this->displayed_assets['styles']['disabled']['size'];
-	    $count = $this->displayed_assets['styles']['disabled']['count'];	    
-			add_settings_field(
-	        'wpssm_disabled_styles',
-	        'Disabled Styles (' . $count . ' files, total size ' . size_format($size) . ')',
-	        array($this,'output_disabled_styles_list'),
-	        $this->config_settings_pages['styles']['slug'],
-	        $this->config_settings_pages['styles']['sections'][0]['slug'],
-	        array(
-	        	'label_for' => 'wpssm-enqueued-styles',
-	        	'class' => 'foldable' )
-	    );	    
+	public function admin_init_cb() {
+			// Hydrate option class properties
+			$this->hydrate_admin();
+			DBG::log('In admin init : $this->config_settings_pages', $this->config_settings_pages);
+			
+			$page = $this->config_settings_pages[$this->active_tab];
+			DBG::log('In admin init : $this->config_settings_pages[$this->active_tab]', $page);
+	    // register all settings, sections, and fields
+    	foreach ( $page['sections'] as $section ) {
+    		//DBG::log('register loop - sections', $section );
+				add_settings_section(
+	        $section['slug'],
+	        $section['title'],
+	        array($this,'output_section_cb'),
+	        $page['slug']
+	    	);	
+    		foreach ($section['fields'] as $handler => $field) {
+    			//DBG::log('register loop - fields', array($handler => $field));
+    			register_setting($section['slug'], $field['slug']);
+    			if (isset($field['stats'])) {
+    				$count=$this->displayed_assets[$this->active_tab][$handler]['count'];
+    				$size=$this->displayed_assets[$this->active_tab][$handler]['size'];
+    				$stats=sprintf($field['stats'],$count,size_format($size));
+    			} else $stats='';
+    			$info=(isset($field['stats']))?sprintf($field['stats'],$count,size_format($size)):'';
+    			$label=(isset($field['label_for']))?$field['label_for']:'';
+    			$class=(isset($field['class']))?$field['class']:'';
+			    add_settings_field(
+			        $field['slug'],
+			        $field['title'] . ' ' . $stats,
+			        array($this, $field['callback']),
+			        $page['slug'],
+			        $section['slug'],
+			        array( 
+			        	'label_for' => $label,
+			        	'class' => $class)
+				  );	    			
+		    }      
+	    } 	
 	}
 
 	public function output_section_cb( $section ) {
 		//DBG::log('In section callback');
 	}
 
-	public function output_recording_switch_cb() {
+	public function output_toggle_switch_recording_cb() {
 		$this->output_toggle_switch( 'general_record', $this->opt_general_settings['record']);
 	}	
 
-	public function output_optimize_switch_cb() {
+	public function output_toggle_switch_optimize_cb() {
 		$this->output_toggle_switch( 'general_optimize', $this->opt_general_settings['optimize']);
 	}		
+	
+	public function output_toggle_switch_javasync_cb() {
+		$this->output_toggle_switch( 'general_javasync', $this->opt_general_settings['javasync']);
+	}	
 
 	protected function output_toggle_switch( $input_name, $value ) {
 		DBG::log( 'in output toggle switch for ' . $input_name , $value);
@@ -411,8 +398,7 @@ class WPSSM_Settings {
 	}
 
 	public function output_items_list( $type, $location ) {
-		DBG::log('in output_items_list');
-		DBG::log('this->enqueued_assets',$this->opt_enqueued_assets);
+		//DBG::log('Output items list', $type . ' : ' . $location);
 		$assets = $this->displayed_assets[$type][$location]['assets'];
 		//DBG::log( array('$this->displayed_assets' => $assets));
 		$sorted_list = $this->get_sorted_list( $assets );
@@ -478,6 +464,25 @@ class WPSSM_Settings {
     </table>
 
 		<?php
+	}
+	
+	private function prepare_displayed_assets($type) {
+		// Preparation of data to be displayed
+   	//$types=array('scripts', 'styles');
+    //$locations=array('header', 'footer', 'async', 'disabled');
+		//DBG::log('In prepare_displayed_assets $this->displayed_assets before : ', $this->displayed_assets);
+		$assets=$this->opt_enqueued_assets[$type];
+		//if (! isset ( $this->opt_enqueued_assets[$type] ) ) continue;
+		foreach ($this->config_settings_pages[$type]['sections'][0]['fields'] as $location=>$placeholder) {
+			$this->filter_args = array( 'location' => $location );
+			//DBG::log('Looping asset location : ', array($location => $assets));
+			//$assets = $this->opt_enqueued_assets[$type];
+			$filtered_assets = array_filter($assets, array($this, 'filter_assets') );	
+			$this-> displayed_assets[$type][$location]['assets']=$filtered_assets;
+			$this-> displayed_assets[$type][$location]['count']=count($filtered_assets);
+			$this-> displayed_assets[$type][$location]['size']=array_sum( array_column( $filtered_assets, 'size'));
+		}	
+		//DBG::log('In WPSSM_Settings hydrate $this->displayed_assets: ', $this->displayed_assets);
 	}
 	
 	private function output_user_notification( $asset ) {
@@ -555,30 +560,25 @@ class WPSSM_Settings {
 
 	public function output_options_page() {
 	    // check user capabilities
-	    if (!current_user_can('manage_options')) {
-	        return;
-	    }
-			
+	    if (!current_user_can('manage_options')) return;			
 			$referer = menu_page_url( $this->plugin_slug, FALSE  );
-			$active_tab = isset( $_GET[ 'tab' ] ) ? esc_html($_GET[ 'tab' ]) : 'general';
-			
 			?>
 
 	    <div class="wrap">
 	        <h1><?= esc_html(get_admin_page_title()); ?></h1>
 	        
 						<h2 class="nav-tab-wrapper">
-						<a href="?page=<?php echo $this->plugin_slug;?>&tab=general" class="nav-tab <?php echo $active_tab == 'general' ? 'nav-tab-active' : ''; ?>">General Settings</a>
-						<a href="?page=<?php echo $this->plugin_slug;?>&tab=scripts" class="nav-tab <?php echo $active_tab == 'scripts' ? 'nav-tab-active' : ''; ?>">Scripts</a>
-						<a href="?page=<?php echo $this->plugin_slug;?>&tab=styles" class="nav-tab <?php echo $active_tab == 'styles' ? 'nav-tab-active' : ''; ?>">Styles</a>
+						<a href="?page=<?php echo $this->plugin_slug;?>&tab=general" class="nav-tab <?php echo $this->active_tab == 'general' ? 'nav-tab-active' : ''; ?>">General Settings</a>
+						<a href="?page=<?php echo $this->plugin_slug;?>&tab=scripts" class="nav-tab <?php echo $this->active_tab == 'scripts' ? 'nav-tab-active' : ''; ?>">Scripts</a>
+						<a href="?page=<?php echo $this->plugin_slug;?>&tab=styles" class="nav-tab <?php echo $this->active_tab == 'styles' ? 'nav-tab-active' : ''; ?>">Styles</a>
 						</h2>
 	        
 		        <form action="<?php echo admin_url( 'admin-post.php' ); ?>" method="post">
 	        		<?php	
-							$this->output_form_buttons($referer, $active_tab);
-							settings_fields($this->config_settings_pages[$active_tab]['slug']);
-							do_settings_sections($this->config_settings_pages[$active_tab]['slug']);
-							$this->output_form_buttons($referer, $active_tab);
+							$this->output_form_buttons($referer);
+							settings_fields($this->config_settings_pages[$this->active_tab]['slug']);
+							do_settings_sections($this->config_settings_pages[$this->active_tab]['slug']);
+							$this->output_form_buttons($referer);
 	        		?>	
 	        
 		        </form>  
@@ -586,7 +586,7 @@ class WPSSM_Settings {
 	    <?php
 	}
 	
-	protected function output_form_buttons($referer, $active_tab) { 
+	protected function output_form_buttons($referer) { 
 		?>
 		<!-- Output form buttons -->
 	  <table class="button-table" col="2">
@@ -594,11 +594,11 @@ class WPSSM_Settings {
 				<input type="hidden" name="action" value="<?php echo $this->form_action; ?>">
 				<?php wp_nonce_field( $this->form_action, $this->nonce, FALSE ); ?>
 				<input type="hidden" name="_wpssm_http_referer" value="<?php echo $referer; ?>">
-				<input type="hidden" name="_wpssm_active_tab" value="<?php echo $active_tab; ?>">
+				<input type="hidden" name="_wpssm_active_tab" value="<?php echo $this->active_tab; ?>">
 
-	    	<td><?php submit_button( 'Save ' . $active_tab . ' settings', 'primary', 'wpssm_save', true, array('tabindex'=>'1') );?> </td>
-	    	<?php if ($active_tab != 'general') { ?>
-	    	<td><?php submit_button( 'Reset ' . $active_tab . ' settings', 'secondary', 'wpssm_reset', true, array('tabindex'=>'2') );?> </td>
+	    	<td><?php submit_button( 'Save ' . $this->active_tab . ' settings', 'primary', 'wpssm_save', true, array('tabindex'=>'1') );?> </td>
+	    	<?php if ($this->active_tab != 'general') { ?>
+	    	<td><?php submit_button( 'Reset ' . $this->active_tab . ' settings', 'secondary', 'wpssm_reset', true, array('tabindex'=>'2') );?> </td>
 	    	<?php } ?>
 	    	<td><?php submit_button( 'Delete everything', 'delete', 'wpssm_delete', true, array('tabindex'=>'3') );?> </td>
 	  	</tr>
@@ -659,16 +659,21 @@ class WPSSM_Settings {
 					update_option( 'wpssm_general_settings', $this->opt_general_settings );
 				}
 				else {
+					$this->mods[$type]=array();	
 					DBG::log( 'assets before submission',$this->opt_enqueued_assets );
 					foreach ( $this->opt_enqueued_assets[$type] as $handle=>$asset ) {
 						//DBG::log( array('Looping : asset = ' => $asset ) );
 						//DBG::log( array('Looping : handle = ' => $handle ) );
-						$this->update_field($type, $handle, 'location');
-						$this->update_field($type, $handle, 'minify');
+						$result=$this->update_mod($type, $handle, 'location');
+						if ($result[0]) $this->mods[$type][$result[1]][]=$handle;
+						$result=$this->update_mod($type, $handle, 'minify');
+						if ($result[0]) $this->mods[$type]['minify'][]=$handle;
 						$this->update_priority( $type, $handle ); 
 					}
-					DBG::log( 'assets after submission',$this->opt_enqueued_assets);				
+					DBG::log( 'opt_enqueued_assets after submission',$this->opt_enqueued_assets);				
+					DBG::log( '$this->mods after submission',$this->mods);				
 					update_option( 'wpssm_enqueued_assets', $this->opt_enqueued_assets);
+					update_option( 'wpssm_mods', $this->mods);
 				}
 		    $query_args['msg']='save';
 		}
@@ -681,20 +686,23 @@ class WPSSM_Settings {
 		exit;
 	}
 	
-	public function update_field( $type, $handle, $field ) {
+	public function update_mod( $type, $handle, $field ) {
+		$is_mod=false;
+		$val='';
 		$input = $this->get_field_name($type, $handle, $field);
 		if ( ( isset($_POST[ $input ] )) && ( $_POST[ $input ] != $this->opt_enqueued_assets[$type][$handle][$field]  ) ) {
-			$this->opt_enqueued_assets[$type][$handle]['mods'][$field] = $_POST[ $input ];
 			DBG::log( 'Asset field modified (mods) !' ,$this->opt_enqueued_assets[$type][$handle]);
-			DBG::log( '$input', $input );
-			DBG::log( 'POST content for this field',$_POST[ $input ] );
+			//DBG::log( 'input name', $input );
+			//DBG::log( 'POST content for this field',$_POST[ $input ] );
+			$val = esc_html($_POST[ $input ]);
+			$this->opt_enqueued_assets[$type][$handle]['mods'][$field] = $val;
+			$is_mod=true;
 		}
-		else {
-			if ( isset( $this->opt_enqueued_assets[$type][$handle]['mods'][$field]) ) {
-				unset($this->opt_enqueued_assets[$type][$handle]['mods'][$field]);
-				DBG::log( 'Mod Field removed !' ,$this->opt_enqueued_assets[$type][$handle] );
-			}
+		elseif ( isset( $this->opt_enqueued_assets[$type][$handle]['mods'][$field]) ) {
+			unset($this->opt_enqueued_assets[$type][$handle]['mods'][$field]);
+			DBG::log( 'Mod Field removed !' ,$this->opt_enqueued_assets[$type][$handle] );
 		}
+		return array($is_mod, $val);
 	}
 
   public function load_option_page_cb() {

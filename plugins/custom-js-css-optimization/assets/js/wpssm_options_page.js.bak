@@ -15,12 +15,11 @@ jQuery(document).ready(function(){
     // Add modified class as soon as a given field is changed
 		var tableCell=jQuery(this).closest('td') ;                            
 		var tableCell_class=tableCell.attr("class"); 
-		console.log('class : ', tableCell_class); 
-    
-    // Check script dependencies
-		var thisClass = jQuery(this).attr("class");
+		console.log('modified class : ', tableCell_class); 
 		tableCell.addClass( "modified" );   
+    
 
+    // Check script dependencies
 		if ( tableCell_class.indexOf("location") != -1 )	{
 			console.log('Location modified');
 			var handle=jQuery(this).attr("id"); 	
@@ -48,7 +47,7 @@ jQuery(document).ready(function(){
 			}
 			else if (current=='async') {
 				console.log('current == async');                     
-				alertMsg = 'It is not possible to load ' + handle + ' asynchronously, since other assets depend on it.';
+				alertMsg = 'It is not possible to load ' + handle + ' asynchronously, since other assets depend on it.\nThose assets need to be made asynchronous first :\n%depsList';
 				deps = jQuery(this).data("dependents");
 			}
 			checkDeps(jQuery(this), prev, current, deps, alertMsg);

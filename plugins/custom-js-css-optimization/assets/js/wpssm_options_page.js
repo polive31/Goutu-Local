@@ -15,14 +15,13 @@ jQuery(document).ready(function(){
     // Add modified class as soon as a given field is changed
 		var tableCell=jQuery(this).closest('td') ;                            
 		var tableCell_class=tableCell.attr("class"); 
-		console.log('class : ', tableCell_class); 
-    
-    // Check script dependencies
-		var thisClass = jQuery(this).attr("class");
+		console.log('modified class : ', tableCell_class); 
 		tableCell.addClass( "modified" );   
+    
 
+    // Check script dependencies
 		if ( tableCell_class.indexOf("location") != -1 )	{
-			console.log('Location modified');
+			//console.log('Location modified');
 			var handle=jQuery(this).attr("id"); 	
 			var dependents;
 			var dependencies;

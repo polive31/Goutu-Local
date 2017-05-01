@@ -21,10 +21,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once 'includes/WPSSM_Settings.php';
 require_once 'includes/WPSSM_Optimize.php';
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'debug-custom.php';
+//require_once plugin_dir_path( dirname( __FILE__ ) ) . 'debug-custom.php';
 
-//new WPSSM_Settings();
-new WPSSM_Optimize();
+//new WPSSM_Admin();
+new WPSSM_FrontEnd();
+//new DBG();
 
 
 

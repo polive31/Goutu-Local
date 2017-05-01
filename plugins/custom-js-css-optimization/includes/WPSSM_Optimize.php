@@ -38,7 +38,7 @@ class WPSSM_FrontEnd extends WPSSM_Admin {
 			//add_action( 'wp_enqueue_scripts', array($this, 'debug_scripts_enqueue_cb'), PHP_INT_MAX );
 			add_action( 'wp_enqueue_scripts', array($this, 'apply_styles_mods_cb'), PHP_INT_MAX );
 			add_action( 'get_footer', array($this, 'enqueue_footer_styles_cb') );
-			add_filter( 'script_loader_tag', array($this, 'add_async_tag_cb'), 10, 3 );
+			add_filter( 'script_loader_tag', array($this, 'add_async_tag_cb'), PHP_INT_MAX, 3 );
 			if ( ($this->opt_general_settings['javasync']=='on') ) {	
 	    	add_action( 'wp_enqueue_scripts', array($this,'load_frontend_assets_cb') );
 	  	}
@@ -62,8 +62,8 @@ class WPSSM_FrontEnd extends WPSSM_Admin {
 	
 	public function add_async_tag_cb( $tag, $handle, $src ) { 
 		if ( !is_admin() && in_array( $handle, $this->mods['scripts']['async'] ) ) {
+				DBG::log('in add_async_tag_cb : async found for ' . $handle );
 		    $tag='<script src="' . $src . '" async type="text/javascript"></script>' . "\n";
-				DBG::log('in add_async_tag_cb : ASYNC added ! ');
 		}
 		return $tag;
 	} 
@@ -86,9 +86,9 @@ class WPSSM_FrontEnd extends WPSSM_Admin {
 			foreach ($this->mods['scripts']['footer'] as $handle) {
 				// continue in case a script was recorded but disappeared in between - plugin uninstalled for instance
 				if (!isset($scripts[$handle])) continue;
-				DBG::log('In footer enqueue loop, src for handle ' . $handle, $scripts[$handle]->src);
-				DBG::log('In footer enqueue loop, deps for handle ' . $handle, $scripts[$handle]->deps);
-				DBG::log('In footer enqueue loop, ver for handle ' . $handle, $scripts[$handle]->ver);
+//				DBG::log('In footer enqueue loop, src for handle ' . $handle, $scripts[$handle]->src);
+//				DBG::log('In footer enqueue loop, deps for handle ' . $handle, $scripts[$handle]->deps);
+//				DBG::log('In footer enqueue loop, ver for handle ' . $handle, $scripts[$handle]->ver);
 			
 				wp_deregister_script( $handle );
 				wp_register_script( $handle, 
@@ -104,13 +104,17 @@ class WPSSM_FrontEnd extends WPSSM_Admin {
 	public function apply_styles_mods_cb() {
 		DBG::log('In apply_styles_mods_cb');
 		DBG::log('In apply_styles_mods_cb : mods ',$this->mods['styles']);
+		global $wp_styles;
+		$styles = $wp_styles->registered;
 		if (isset($this->mods['styles']['disabled'])) {
 			foreach ($this->mods['styles']['disabled'] as $handle) {
+					if (!isset($styles[$handle])) continue;
 					wp_deregister_styles( $handle );
 			}	
 		}
 		if (isset($this->mods['styles']['footer'])) {
 			foreach ($this->mods['styles']['footer'] as $handle) {
+					if (!isset($styles[$handle])) continue;
 					wp_dequeue_style( $handle );
 			}	
 		}
@@ -122,6 +126,7 @@ class WPSSM_FrontEnd extends WPSSM_Admin {
 		$styles = $wp_styles->registered;
 		DBG::log('In enqueue_footer_styles_cb : styles ',$styles);
 		foreach ($this->mods['styles']['footer'] as $handle) {
+			if (!isset($styles[$handle])) continue;
   		wp_enqueue_style( $handle, 
 												$styles[$handle]->src,
 												$styles[$handle]->deps,

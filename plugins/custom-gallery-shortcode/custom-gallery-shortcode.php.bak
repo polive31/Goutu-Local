@@ -32,7 +32,7 @@ class Custom_Gallery_Shortcode {
 	
 	public function enqueue_styles() {
 		//PC::debug( array('CUSTOM GALLERY SHORTCODE'=> self::$_PluginPath ) );
-		wp_enqueue_style( 'custom-gallery-stylesheet', self::$_PluginPath . '/custom-gallery.css', array(), CHILD_THEME_VERSION );		
+		wp_enqueue_style( 'custom-gallery-stylesheet', self::$_PluginPath . 'custom-gallery.css', array(), CHILD_THEME_VERSION );		
 	}
 	
 

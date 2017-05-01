@@ -101,7 +101,7 @@ class WPSSM_Admin {
 		// hydrate mods table with options content
 		$get_option = get_option('wpssm_mods');	
 		if ($get_option!=false) {
-			$this->mods = get_option('wpssm_mods');	
+			$this->mods = $get_option;	
 		}
 	
 	}	

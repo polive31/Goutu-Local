@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Custom Gallery Shortcode
-Plugin URI: http://goutu.org
+Plugin URI: wwww.goutu.org
 Description: Provides customized gallery shortcode
 Version: 1.0
 Author: Pascal Olive 
-Author URI: http://goutu.org
+Author URI: www.goutu.org
 License: GPL
 */
 

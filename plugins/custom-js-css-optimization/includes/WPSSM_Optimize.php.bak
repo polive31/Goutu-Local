@@ -86,9 +86,9 @@ class WPSSM_FrontEnd extends WPSSM_Admin {
 			foreach ($this->mods['scripts']['footer'] as $handle) {
 				// continue in case a script was recorded but disappeared in between - plugin uninstalled for instance
 				if (!isset($scripts[$handle])) continue;
-				DBG::log('In footer enqueue loop, src for handle ' . $handle, $scripts[$handle]->src);
-				DBG::log('In footer enqueue loop, deps for handle ' . $handle, $scripts[$handle]->deps);
-				DBG::log('In footer enqueue loop, ver for handle ' . $handle, $scripts[$handle]->ver);
+//				DBG::log('In footer enqueue loop, src for handle ' . $handle, $scripts[$handle]->src);
+//				DBG::log('In footer enqueue loop, deps for handle ' . $handle, $scripts[$handle]->deps);
+//				DBG::log('In footer enqueue loop, ver for handle ' . $handle, $scripts[$handle]->ver);
 			
 				wp_deregister_script( $handle );
 				wp_register_script( $handle, 

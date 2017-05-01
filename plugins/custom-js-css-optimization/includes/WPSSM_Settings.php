@@ -32,7 +32,7 @@ class WPSSM_Admin {
 	protected $active_tab;
 	protected $user_notification; 
 	
-	public $opt_general_settings = array('record'=>'off', 'optimize'=>'off', 'javasync'=>'off');
+	public $opt_general_settings = array('record'=>'off', 'optimize'=>'off', 'javasync'=>'off', 'wpssm_version'=>self::WPSSM_VERSION);
 	public $opt_enqueued_assets = array( 'pages'=>array(), 'scripts'=>array(), 'styles'=>array());
 	public $opt_mods = array(
 						'scripts'=>array(

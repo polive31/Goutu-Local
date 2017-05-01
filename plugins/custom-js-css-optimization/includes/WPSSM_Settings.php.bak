@@ -13,7 +13,8 @@ class WPSSM_Admin {
 	const SIZE_MAX = 200000;
 	const WPSSM_VERSION = '1.1.0';
 	
-	protected $plugin_slug = 'wpssm';
+	const PLUGIN_SLUG = 'wpssm';
+	const PLUGIN_SUBMENU = 'tools.php';
 
 	protected $config_settings_pages; // Initialized in hydrate_settings
 	
@@ -38,13 +39,13 @@ class WPSSM_Admin {
 									'footer'=> array(),
 									'async'=>array(),
 									'group'=>array(),
-									'min'=>array(),
+									'minify'=>array(),
 									), 
 						'styles'=>array(
 									'footer'=> array(),
 									'async'=>array(),
 									'group'=>array(),
-									'min'=>array(),
+									'minify'=>array(),
 									), 						
 						);
 	
@@ -57,15 +58,12 @@ class WPSSM_Admin {
 	public function __construct() {
 		// Initialize attributes common to FrontEnd and Admin
 		$this->hydrate_common();
-			
+
 		// Admin options page
-		add_action( 'admin_init', array($this, 'admin_init_cb') );
-		add_action( 'admin_menu', array($this, 'add_plugin_menu_option'));
+		add_action( 'admin_menu', array($this, 'add_plugin_menu_option_cb') );
+		add_action( 'admin_menu', array($this, 'admin_init_cb') );
 		add_action( 'admin_post_' . $this->form_action, array ( $this, 'update_settings_cb' ) );
     add_action( 'admin_enqueue_scripts', array($this,'load_admin_assets_cb') );
-
-		// configure AJAX actions
-		//add_action( 'wp_ajax_my-action', array($this,'ajax_my_action_cb') );
 		
 		// manage frontend pages recording 
 		if ( $this->opt_general_settings['record'] == 'on' ) {
@@ -75,9 +73,9 @@ class WPSSM_Admin {
 		else {
 			remove_action( 'wp_head', array($this, 'record_header_assets_cb') );
 			remove_action( 'wp_print_footer_scripts', array($this, 'record_footer_assets_cb') );
-		}
+		}		
 	}
-
+	
 	public function load_admin_assets_cb() {
 		DBG::log('In load_admin_assets_cb');
 		//DBG::log( plugins_url( '/css/wpssm_options_page.css', __FILE__ ) );
@@ -87,8 +85,6 @@ class WPSSM_Admin {
 	
 	public function hydrate_common() {
 		// Initialize all attributes common to admin & frontend
-		DBG::log('In hydrate common');								
-		// hydrate general settings property with options content
 		$get_option = get_option( 'wpssm_general_settings' );
 		if ($get_option!=false) {
 			foreach ($get_option as $key=>$value) {$this->opt_general_settings[$key]=$value;}
@@ -101,6 +97,13 @@ class WPSSM_Admin {
 			foreach ($get_option as $key=>$value) {$this->opt_enqueued_assets[$key]=$value;}
 		}
 		DBG::log('In WPSSM_Settings hydrate common $this->enqueud_assets: ', $this->opt_enqueued_assets);
+	
+		// hydrate mods table with options content
+		$get_option = get_option('wpssm_mods');	
+		if ($get_option!=false) {
+			$this->mods = get_option('wpssm_mods');	
+		}
+	
 	}	
 
 	public function hydrate_admin() {	
@@ -154,7 +157,7 @@ class WPSSM_Admin {
 								'fields' => array(
 											'header' => array(
 														'slug' => 'wpssm_header_enqueued_scripts',
-														'title' => 'Enqueued Header Scripts',
+														'title' => 'Scripts loaded in Header',
 														'stats' => '(%s files, total size %s)',
 														'label_for' => 'wpssm-enqueued-scripts',
 														'class' => 'foldable',
@@ -162,7 +165,7 @@ class WPSSM_Admin {
 														),
 											'footer' => array(
 														'slug' => 'wpssm_footer_enqueued_scripts',
-														'title' => 'Enqueued Footer Scripts',
+														'title' => 'Scripts loaded in Footer',
 														'stats' => '(%s files, total size %s)',
 														'label_for' => 'wpssm-enqueued-scripts',
 														'class' => 'foldable',
@@ -170,7 +173,7 @@ class WPSSM_Admin {
 														),
 											'async' => array(
 														'slug' => 'wpssm_async_enqueued_scripts',
-														'title' => 'Scripts loaded asynchronously',
+														'title' => 'Scripts loaded Asynchronously',
 														'stats' => '(%s files, total size %s)',
 														'label_for' => 'wpssm-enqueued-scripts',
 														'class' => 'foldable',
@@ -178,7 +181,7 @@ class WPSSM_Admin {
 														),
 											'disabled' => array(
 														'slug' => 'wpssm_disabled_scripts',
-														'title' => 'Enqueued Disabed Scripts',
+														'title' => 'Disabed Scripts',
 														'stats' => '(%s files, total size %s)',
 														'label_for' => 'wpssm-enqueued-scripts',
 														'class' => 'foldable',
@@ -197,7 +200,7 @@ class WPSSM_Admin {
 								'fields' => array(
 											'header' => array(
 														'slug' => 'wpssm_header_enqueued_styles',
-														'title' => 'Enqueued Header Styles',
+														'title' => 'Styles loaded in Header',
 														'stats' => '(%s files, total size %s)',
 														'label_for' => 'wpssm-enqueued-styles',
 														'class' => 'foldable',
@@ -205,7 +208,7 @@ class WPSSM_Admin {
 														),
 											'footer' => array(
 														'slug' => 'wpssm_footer_enqueued_styles',
-														'title' => 'Enqueued Footer Styles',
+														'title' => 'Styles loaded in Footer',
 														'stats' => '(%s files, total size %s)',
 														'label_for' => 'wpssm-enqueued-styles',
 														'class' => 'foldable',
@@ -213,7 +216,7 @@ class WPSSM_Admin {
 														),
 											'async' => array(
 														'slug' => 'wpssm_async_enqueued_styles',
-														'title' => 'Styles loaded asynchronously',
+														'title' => 'Styles loaded Asynchronously',
 														'stats' => '(%s files, total size %s)',
 														'label_for' => 'wpssm-enqueued-styles',
 														'class' => 'foldable',
@@ -221,9 +224,9 @@ class WPSSM_Admin {
 														),
 											'disabled' => array(
 														'slug' => 'wpssm_disabled_styles',
-														'title' => 'Enqueued Header Styles',
+														'title' => 'Disabled Styles',
 														'stats' => '(%s files, total size %s)',
-														'label_for' => 'wpssm-enqueued-styles',
+														'label_for' => 'wpssm-disabled-styles',
 														'class' => 'foldable',
 														'callback' => 'output_disabled_styles_list',
 														),											
@@ -236,7 +239,7 @@ class WPSSM_Admin {
 		$this->active_tab = isset( $_GET[ 'tab' ] ) ? esc_html($_GET[ 'tab' ]) : 'general';
 		// Prepare assets to disply
 		if ($this->active_tab != 'general') $this->prepare_displayed_assets($this->active_tab);
-		DBG::log('In hydrate settings, $this->displayed_assets', $this->displayed_assets);								
+		DBG::log('In hydrate admin, $this->displayed_assets', $this->displayed_assets);								
 	}
 	
 	public function filter_assets( $asset ) {
@@ -259,14 +262,14 @@ class WPSSM_Admin {
     );
 	}
 
-	public function add_plugin_menu_option() {
+	public function add_plugin_menu_option_cb() {
 		$opt_page_id = add_submenu_page(
       //'options-general.php',
-      'tools.php',
+      self::PLUGIN_SUBMENU,
       'WP Scripts & Styles Manager',
       'Scripts & Styles Manager',
       'manage_options',
-      $this->plugin_slug,
+      self::PLUGIN_SLUG,
       array($this, 'output_options_page')
 	    );
 		add_action( "load-$opt_page_id", array ( $this, 'load_option_page_cb' ) );
@@ -561,16 +564,16 @@ class WPSSM_Admin {
 	public function output_options_page() {
 	    // check user capabilities
 	    if (!current_user_can('manage_options')) return;			
-			$referer = menu_page_url( $this->plugin_slug, FALSE  );
+			$referer = menu_page_url( self::PLUGIN_SLUG, FALSE  );
 			?>
 
 	    <div class="wrap">
 	        <h1><?= esc_html(get_admin_page_title()); ?></h1>
 	        
 						<h2 class="nav-tab-wrapper">
-						<a href="?page=<?php echo $this->plugin_slug;?>&tab=general" class="nav-tab <?php echo $this->active_tab == 'general' ? 'nav-tab-active' : ''; ?>">General Settings</a>
-						<a href="?page=<?php echo $this->plugin_slug;?>&tab=scripts" class="nav-tab <?php echo $this->active_tab == 'scripts' ? 'nav-tab-active' : ''; ?>">Scripts</a>
-						<a href="?page=<?php echo $this->plugin_slug;?>&tab=styles" class="nav-tab <?php echo $this->active_tab == 'styles' ? 'nav-tab-active' : ''; ?>">Styles</a>
+						<a href="?page=<?php echo self::PLUGIN_SLUG;?>&tab=general" class="nav-tab <?php echo $this->active_tab == 'general' ? 'nav-tab-active' : ''; ?>">General Settings</a>
+						<a href="?page=<?php echo self::PLUGIN_SLUG;?>&tab=scripts" class="nav-tab <?php echo $this->active_tab == 'scripts' ? 'nav-tab-active' : ''; ?>">Scripts</a>
+						<a href="?page=<?php echo self::PLUGIN_SLUG;?>&tab=styles" class="nav-tab <?php echo $this->active_tab == 'styles' ? 'nav-tab-active' : ''; ?>">Styles</a>
 						</h2>
 	        
 		        <form action="<?php echo admin_url( 'admin-post.php' ); ?>" method="post">
@@ -611,6 +614,8 @@ class WPSSM_Admin {
 --------------------------------------------------------------*/
 
 	public function update_settings_cb() {
+		
+		DBG::log('IN update_settings_cb !!!!!');
 
 		// check user capabilities
     if (!current_user_can('manage_options'))

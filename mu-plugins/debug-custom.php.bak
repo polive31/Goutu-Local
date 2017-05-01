@@ -45,7 +45,7 @@ class DBG {
 			if ( is_array($var) ) $var = json_encode($var);
 			self::$output='console.log("%cDEBUG%c ' . $msg . '", "border-radius:4px;padding:2px 4px;background:blue;color:white", "color:blue");';  
 			self::$output.='console.log(' . $var . ');';
-			$this->output_debug_buffer();
+			self::output_debug_buffer();
 		}
 	}
 	

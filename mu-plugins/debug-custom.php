@@ -15,7 +15,7 @@ new DBG();
 
 class DBG {
 		
-	const ON = true;
+	const ON = false;
 	const PHP_CONSOLE = false;
   private static $output = '';
 	

@@ -1,5 +1,7 @@
 jQuery(document).ready(function(){
 
+	console.log('wpssm-admin.js loaded !');
+	
 
 	jQuery(document).on('focusin', '.asset-setting', function(){
     console.log("Saving value " + jQuery(this).val());
@@ -21,7 +23,7 @@ jQuery(document).ready(function(){
 
     // Check script dependencies
 		if ( tableCell_class.indexOf("location") != -1 )	{
-			console.log('Location modified');
+			//console.log('Location modified');
 			var handle=jQuery(this).attr("id"); 	
 			var dependents;
 			var dependencies;

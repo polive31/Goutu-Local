@@ -69,6 +69,7 @@ plugins/*
 !plugins/debug-custom.php
 !plugins/batch-manage-posts/
 !plugins/custom-js-css-optimization/
+!plugins/wp-scripts-styles-manager/
 !plugins/custom-google-tag-manager/
 !plugins/custom-navigation-helpers/
 !plugins/custom-social-helpers/

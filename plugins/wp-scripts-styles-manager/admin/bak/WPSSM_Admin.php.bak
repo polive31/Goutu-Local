@@ -11,10 +11,6 @@ class WPSSM_Admin {
 	const SIZE_SMALL = 1000;
 	const SIZE_LARGE = 1000;
 	const SIZE_MAX = 200000;
-	const WPSSM_VERSION = '1.1.0';
-	
-	const PLUGIN_SLUG = 'wpssm';
-	const PLUGIN_SUBMENU = 'tools.php';
 
 	protected $config_settings_pages; // Initialized in hydrate_settings
 	
@@ -32,7 +28,7 @@ class WPSSM_Admin {
 	protected $active_tab;
 	protected $user_notification; 
 	
-	public $opt_general_settings = array('record'=>'off', 'optimize'=>'off', 'javasync'=>'off');
+	public $opt_general_settings = array('record'=>'off', 'optimize'=>'off', 'javasync'=>'off', 'wpssm_version'=>self::WPSSM_VERSION);
 	public $opt_enqueued_assets = array( 'pages'=>array(), 'scripts'=>array(), 'styles'=>array());
 	public $opt_mods = array(
 						'scripts'=>array(
@@ -79,30 +75,12 @@ class WPSSM_Admin {
 	public function load_admin_assets_cb() {
 		DBG::log('In load_admin_assets_cb');
 		//DBG::log( plugins_url( '/css/wpssm_options_page.css', __FILE__ ) );
-  	wp_enqueue_style( 'wpssm_admin_css', plugins_url( '../assets/css/wpssm_options_page.css', __FILE__ ) , false, self::WPSSM_VERSION );
-  	wp_enqueue_script( 'wpssm_admin_js', plugins_url( '../assets/js/wpssm_options_page.js', __FILE__ ) , array('jquery'), self::WPSSM_VERSION );
+  	wp_enqueue_style( 'wpssm_admin_css', plugins_url( '../admin/css/wpssm_options_page.css', __FILE__ ) , false, self::WPSSM_VERSION );
+  	wp_enqueue_script( 'wpssm_admin_js', plugins_url( '../admin/js/wpssm_options_page.js', __FILE__ ) , array('jquery'), self::WPSSM_VERSION );
 	}
 	
 	public function hydrate_common() {
-		// Initialize all attributes common to admin & frontend
-		$get_option = get_option( 'wpssm_general_settings' );
-		if ($get_option!=false) {
-			foreach ($get_option as $key=>$value) {$this->opt_general_settings[$key]=$value;}
-		}
-		DBG::log('In WPSSM_Admin hydrate common : $this->opt_general_settings', $this->opt_general_settings);
 
-		// hydrate enqueued assets property with options content
-		$get_option = get_option( 'wpssm_enqueued_assets' );
-		if ($get_option!=false) {
-			foreach ($get_option as $key=>$value) {$this->opt_enqueued_assets[$key]=$value;}
-		}
-		DBG::log('In WPSSM_Settings hydrate common $this->enqueud_assets: ', $this->opt_enqueued_assets);
-	
-		// hydrate mods table with options content
-		$get_option = get_option('wpssm_mods');	
-		if ($get_option!=false) {
-			$this->mods = $get_option;	
-		}
 	
 	}	
 

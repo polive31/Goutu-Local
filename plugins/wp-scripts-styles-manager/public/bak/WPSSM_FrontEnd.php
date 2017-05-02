@@ -57,7 +57,7 @@ class WPSSM_FrontEnd extends WPSSM_Admin {
 	}
 	
 	public function load_frontend_assets_cb() {
-		wp_enqueue_script( 'wpssm_loadjs', plugins_url( '../assets/js/loadjs.min.js', __FILE__ ) , false, self::WPSSM_VERSION );
+		wp_enqueue_script( 'wpssm_loadjs', plugins_url( '../public/js/loadjs.min.js', __FILE__ ) , false, self::WPSSM_VERSION );
 	}
 	
 	public function add_async_tag_cb( $tag, $handle, $src ) { 

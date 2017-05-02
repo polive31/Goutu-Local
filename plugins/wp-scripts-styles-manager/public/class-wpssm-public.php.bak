@@ -6,58 +6,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-class WPSSM_FrontEnd extends WPSSM_Admin {
+class WPSSM_Public {
 	
-	public $mods=array(
-		'scripts'=>array(
-					'async'=>array(),
-					'footer'=>array(),
-					'disabled'=>array(),
-					'minify'=>array(),
-					),
-		'styles'=>array(
-					'async'=>array(),
-					'disabled'=>array(),
-					'minify'=>array(),
-					),
-	);
-	
-	public function __construct() {
-		parent::__construct();
-		add_action( 'wp', array($this, 'setup_frontend_hooks') );
+	public function __construct( $plugin_name, $version ) {
+		$this->plugin_name = $plugin_name;
+		$this->version = $version;
 	}		
 	
-	public function setup_frontend_hooks() {
-		if (is_admin()) return;
-		DBG::log('In add_frontend_mods');
-
-		if ( ($this->opt_general_settings['record']=='off') && ($this->opt_general_settings['optimize']=='on') ) {	
-			$this->hydrate_optimize();
-			add_action( 'wp_enqueue_scripts', array($this, 'apply_scripts_mods_cb'), PHP_INT_MAX );
-			add_action( 'wp_enqueue_scripts', array($this, 'apply_scripts_mods_cb'), PHP_INT_MAX );
-			//add_action( 'wp_enqueue_scripts', array($this, 'debug_scripts_enqueue_cb'), PHP_INT_MAX );
-			add_action( 'wp_enqueue_scripts', array($this, 'apply_styles_mods_cb'), PHP_INT_MAX );
-			add_action( 'get_footer', array($this, 'enqueue_footer_styles_cb') );
-			add_filter( 'script_loader_tag', array($this, 'add_async_tag_cb'), PHP_INT_MAX, 3 );
-			if ( ($this->opt_general_settings['javasync']=='on') ) {	
-	    	add_action( 'wp_enqueue_scripts', array($this,'load_frontend_assets_cb') );
-	  	}
-		}
-	}
-	
-	public function hydrate_optimize() {
+	public function hydrate() {
 		DBG::log('In hydrate optimize - $this->mods',$this->mods);
 	}
 	
-	public function debug_scripts_enqueue_cb() {
-		DBG::log('In debug_styles_enqueue_cb');
-		wp_deregister_script( 'jquery-core' );
-		wp_register_script( 'jquery-core', '/wp-includes/js/jquery/jquery.js', array(), false, true);
-		wp_enqueue_script('jquery-core');
-	}
-	
-	public function load_frontend_assets_cb() {
-		wp_enqueue_script( 'wpssm_loadjs', plugins_url( '../vendor/js/loadjs.min.js', __FILE__ ) , false, self::WPSSM_VERSION );
+	public function enqueue_scripts() {
+		wp_enqueue_script( 'wpssm_loadjs', plugins_url( '../public/js/loadjs.min.js', __FILE__ ) , false, self::WPSSM_VERSION );
 	}
 	
 	public function add_async_tag_cb( $tag, $handle, $src ) { 

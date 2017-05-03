@@ -15,17 +15,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-//*************************************************************************
-//**               INITIALIZATION
-//*************************************************************************
-
-require_once 'includes/WPSSM_Settings.php';
-require_once 'includes/WPSSM_Optimize.php';
-//require_once plugin_dir_path( dirname( __FILE__ ) ) . 'debug-custom.php';
-
-//new WPSSM_Admin();
-new WPSSM_FrontEnd();
-//new DBG();
 
 require plugin_dir_path( __FILE__ ) . 'includes/class-wpssm.php';
 

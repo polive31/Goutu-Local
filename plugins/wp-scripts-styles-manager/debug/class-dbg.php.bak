@@ -11,11 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-new DBG();
 
-class DBG {
+class WPSSM_Debug {
 		
-	const ON = true;
+	const ON = false;
 	const PHP_CONSOLE = false;
   private static $output = '';
 	

@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-class DBG {
+class WPSSM_Debug {
 		
 	const ON = true;
 	const PHP_CONSOLE = false;

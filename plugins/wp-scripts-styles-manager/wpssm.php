@@ -3,7 +3,7 @@
 Plugin Name: WP Scripts & Styles Manager
 Plugin URI: http://goutu.org/wp-scripts-styles-manager
 Description: custom enqueue, minimize, and concatenate your css & js code
-Version: 1.0
+Version: 1.0.0
 Author: Pascal Olive
 Author URI: http://goutu.org
 License: GPL

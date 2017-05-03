@@ -6,15 +6,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-class WPSSM_Public {
+class WPSSM_Public extends WPSSM {
 	
-	public function __construct( $plugin_name, $version ) {
-		$this->plugin_name = $plugin_name;
-		$this->version = $version;
+	public function __construct( 	$plugin_name, 
+																$version,
+																$opt_mods ) {
+																	
+		$this->plugin_name = 					$plugin_name;
+		$this->version = 							$version;
+		$this->opt_mods = 						$opt_mods;
+
 	}		
 	
 	public function hydrate() {
-		DBG::log('In hydrate optimize - $this->mods',$this->mods);
+		WPSSM_Debug::log('In hydrate optimize - $this->mods',$this->mods);
 	}
 	
 	public function enqueue_scripts() {
@@ -23,18 +28,18 @@ class WPSSM_Public {
 	
 	public function add_async_tag_cb( $tag, $handle, $src ) { 
 		if ( !is_admin() && in_array( $handle, $this->mods['scripts']['async'] ) ) {
-				DBG::log('in add_async_tag_cb : async found for ' . $handle );
+				WPSSM_Debug::log('in add_async_tag_cb : async found for ' . $handle );
 		    $tag='<script src="' . $src . '" async type="text/javascript"></script>' . "\n";
 		}
 		return $tag;
 	} 
 	
 	public function apply_scripts_mods_cb() {
-		DBG::log('In apply_scripts_mods_cb');
+		WPSSM_Debug::log('In apply_scripts_mods_cb');
 		global $wp_scripts;
 		$scripts = $wp_scripts->registered;
-		DBG::log('In apply_scripts_mods_cb : registered scripts ',$scripts);
-		DBG::log('In apply_scripts_mods_cb : mods ', $this->mods['scripts']);
+		WPSSM_Debug::log('In apply_scripts_mods_cb : registered scripts ',$scripts);
+		WPSSM_Debug::log('In apply_scripts_mods_cb : mods ', $this->mods['scripts']);
 		
 		if (isset($this->mods['scripts']['disabled'])) {
 			foreach ($this->mods['scripts']['disabled'] as $handle) {
@@ -47,9 +52,9 @@ class WPSSM_Public {
 			foreach ($this->mods['scripts']['footer'] as $handle) {
 				// continue in case a script was recorded but disappeared in between - plugin uninstalled for instance
 				if (!isset($scripts[$handle])) continue;
-//				DBG::log('In footer enqueue loop, src for handle ' . $handle, $scripts[$handle]->src);
-//				DBG::log('In footer enqueue loop, deps for handle ' . $handle, $scripts[$handle]->deps);
-//				DBG::log('In footer enqueue loop, ver for handle ' . $handle, $scripts[$handle]->ver);
+//				WPSSM_Debug::log('In footer enqueue loop, src for handle ' . $handle, $scripts[$handle]->src);
+//				WPSSM_Debug::log('In footer enqueue loop, deps for handle ' . $handle, $scripts[$handle]->deps);
+//				WPSSM_Debug::log('In footer enqueue loop, ver for handle ' . $handle, $scripts[$handle]->ver);
 			
 				wp_deregister_script( $handle );
 				wp_register_script( $handle, 
@@ -63,8 +68,8 @@ class WPSSM_Public {
 	}	
 		
 	public function apply_styles_mods_cb() {
-		DBG::log('In apply_styles_mods_cb');
-		DBG::log('In apply_styles_mods_cb : mods ',$this->mods['styles']);
+		WPSSM_Debug::log('In apply_styles_mods_cb');
+		WPSSM_Debug::log('In apply_styles_mods_cb : mods ',$this->mods['styles']);
 		global $wp_styles;
 		$styles = $wp_styles->registered;
 		if (isset($this->mods['styles']['disabled'])) {
@@ -82,10 +87,10 @@ class WPSSM_Public {
 	}
 	
 	function enqueue_footer_styles_cb() {
-		DBG::log('In enqueue_footer_styles_cb');
+		WPSSM_Debug::log('In enqueue_footer_styles_cb');
 		global $wp_styles;
 		$styles = $wp_styles->registered;
-		DBG::log('In enqueue_footer_styles_cb : styles ',$styles);
+		WPSSM_Debug::log('In enqueue_footer_styles_cb : styles ',$styles);
 		foreach ($this->mods['styles']['footer'] as $handle) {
 			if (!isset($styles[$handle])) continue;
   		wp_enqueue_style( $handle, 
@@ -107,7 +112,7 @@ class WPSSM_Public {
 //		}
 //		
 //		if ( !is_single() ) {
-//			//DBG::log(array('Not in POST OR RECIPE'));
+//			//WPSSM_Debug::log(array('Not in POST OR RECIPE'));
 //			wp_dequeue_script( 'galleria' );
 //			wp_dequeue_script( 'galleria-fs' );
 //			wp_dequeue_script( 'galleria-fs-theme' );

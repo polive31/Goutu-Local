@@ -58,7 +58,7 @@ class WPSSM {
 		$this->define_debug_hooks();
 		$this->hydrate();
 		$this->define_admin_hooks();
-		add_action( 'wp', array($this, 'define_public_hooks') );
+		$this->define_public_hooks();
 	}
 
 	
@@ -104,6 +104,7 @@ class WPSSM {
 		}	
 
 		if ( (self::$opt_general_settings['record']=='off') && (self::$opt_general_settings['optimize']=='on') ) {	
+			WPSSM_Debug::log(' OPTIMIZE ACTIVE !!!');
 			$this->loader->add_action( 'wp_enqueue_scripts',							$plugin_public, 'apply_scripts_mods_cb', 	PHP_INT_MAX 		);
 			$this->loader->add_action( 'wp_enqueue_scripts', 							$plugin_public, 'apply_styles_mods_cb', 	PHP_INT_MAX 		);
 			$this->loader->add_action( 'get_footer', 											$plugin_public, 'enqueue_footer_styles_cb' 								);

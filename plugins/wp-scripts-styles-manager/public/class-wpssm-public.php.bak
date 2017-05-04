@@ -13,19 +13,7 @@ class WPSSM_Public extends WPSSM {
 	}		
 	
 	public function hydrate() {
-		// hydrate enqueued assets property with options content
-		$get_option = get_option( 'wpssm_enqueued_assets' );
-		if ($get_option!=false) {
-			foreach ($get_option as $key=>$value) {self::$opt_enqueued_assets[$key]=$value;}
-		}
-		WPSSM_Debug::log('In WPSSM hydrate $this->enqueud_assets: ', self::$opt_enqueued_assets);
-		// hydrate mods table with options content
-		$get_option = get_option('wpssm_mods');	
-		if ($get_option!=false) {
-			$this->mods = $get_option;	
-		}
-		WPSSM_Debug::log('In WPSSM hydrate $this->mods: ', $this->mods);
-		WPSSM_Debug::log('In hydrate optimize - self::$mods',self::$mods);
+		$this->update_opt( $this->opt_mods, 'wpssm_mods');
 	}
 	
 	public function enqueue_scripts() {

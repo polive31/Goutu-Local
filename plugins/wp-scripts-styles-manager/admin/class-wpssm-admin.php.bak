@@ -25,9 +25,14 @@ class WPSSM_Admin extends WPSSM {
 														'field' => 'priority', 
 														'order' => SORT_DESC, 
 														'type' => SORT_NUMERIC);
+														
+	protected $output;														
 
 
-	public function __construct() {														
+	public function __construct() {
+		require_once plugin_dir_path( __FILE__ ) . 'partials/output-admin-form.php' ;	
+		$sizes=array('small'=>self::SIZE_SMALL, 'large'=>self::SIZE_LARGE, 'max'=>self::SIZE_MAX);										
+		$this->output = new WPSSM_Output( $sizes );
 	}														
 														
 	public function enqueue_styles() {
@@ -198,7 +203,7 @@ class WPSSM_Admin extends WPSSM {
 	}
 
 	public function add_plugin_menu_option_cb() {
-		WPSSM_Debug::log('In add_plugin_menu_option_cb');								
+		//WPSSM_Debug::log('In add_plugin_menu_option_cb');								
 		$opt_page_id = add_submenu_page(
       $this->submenu,
       'WP Scripts & Styles Manager',
@@ -254,158 +259,23 @@ class WPSSM_Admin extends WPSSM {
 	
 	
 
-	public function output_section_cb( $section ) {
-		//WPSSM_Debug::log('In section callback');
-	}
-
-	public function output_toggle_switch_recording_cb() {
-		$this->output_toggle_switch( 'general_record', self::$opt_general_settings['record']);
-	}	
-
-	public function output_toggle_switch_optimize_cb() {
-		$this->output_toggle_switch( 'general_optimize', self::$opt_general_settings['optimize']);
-	}		
-	
-	public function output_toggle_switch_javasync_cb() {
-		$this->output_toggle_switch( 'general_javasync', self::$opt_general_settings['javasync']);
-	}	
-
-	protected function output_toggle_switch( $input_name, $value ) {
-		WPSSM_Debug::log( 'in output toggle switch for ' . $input_name , $value);
-		$checked = ( $value == 'on')?'checked="checked"':'';
-		?>
-		<label class="switch">
-  	<input type="checkbox" name="<?php echo $input_name;?>_checkbox" <?php echo $checked;?> value="on">
-  	<div class="slider round"></div>
-		</label>
-		<?php
-	}
-
-	public function output_pages_list() {
-		foreach ($this->opt_enqueued_assets['pages'] as $page) {
-			echo '<p>' . $page[0] . ' on ' . $page[1] . '</p>';
-		}
-	}
-
-	public function output_header_scripts_list() {
-		$this->	output_items_list( 'scripts', 'header' );
-	}
-	
-	public function output_footer_scripts_list() {
-		$this->	output_items_list('scripts', 'footer' );
-	}
-	
-	public function output_async_scripts_list() {
-		$this->	output_items_list('scripts', 'async' );
-	}
-	
-	public function output_disabled_scripts_list() {
-		$this->	output_items_list('scripts', 'disabled' );
-	}
-	
-	public function output_header_styles_list() {
-		$this->	output_items_list('styles', 'header' );
-	}
-	
-	public function output_footer_styles_list() {
-		$this->	output_items_list('styles', 'footer' );
-	}
-	
-	public function output_disabled_styles_list() {
-		$this->	output_items_list('styles', 'disabled' );
-	}
-	
 		
 	public function get_sorted_list( $assets ) {
-
 		$sort_field = $this->sort_args['field'];
 		$sort_order = $this->sort_args['order'];
 		$sort_type = $this->sort_args['type'];
-
 		$list = array_column($assets, $sort_field, 'handle' );		
 		//WPSSM_Debug::log( array( 'sorted list : '=>$list ));
-
 		if ( $sort_order == SORT_ASC)
 			asort($list, $sort_type );
 		else 
 			arsort($list, $sort_type );
-		
 //		foreach ($sort_column as $key => $value) {
 //			echo '<p>' . $key . ' : ' . $value . '<p>';
 //		}
-
 		return $list;
-		
 	}
 
-	public function output_items_list( $type, $location ) {
-		//WPSSM_Debug::log('Output items list', $type . ' : ' . $location);
-		$assets = $this->displayed_assets[$type][$location]['assets'];
-		//WPSSM_Debug::log( array('$this->displayed_assets' => $assets));
-		$sorted_list = $this->get_sorted_list( $assets );
-		//WPSSM_Debug::log( array('$sorted_list' => $sorted_list));
-		
-		?>
-		
-    <table class="enqueued-assets">
-    	<tr>
-    		<th> handle </th>
-    		<th> priority </th>
-    		<!--<th> Dependencies </th>-->
-    		<th> Dependents </th> 
-    		<th> File size </th>
-    		<th> Location </th>
-    		<th> Minify </th>
-    	</tr>
-    	
-    <?php
-    foreach ($sorted_list as $handle => $priority ) {
-    	$asset = $assets[$handle];
-			//WPSSM_Debug::log(array('Asset in output_items_list : ' => $asset));
-    	$filename = $asset['filename'];
-    	$dependencies = $asset['dependencies'];
-    	$dependents = $asset['dependents'];
-    	$location = $this->get_field_value( $asset, 'location');
-	    $minify = $this->get_field_value( $asset, 'minify');
-	    $size = $this->get_field_value( $asset, 'size');
-	    $asset_is_minified = ( $asset[ 'minify' ] == 'yes')?true:false; 
-	    $already_minified_msg = __('This file is already minimized within its plugin', 'jco');
-	    
-    	?>
-    	
-    	<tr class="enqueued-asset <?php echo $type;?>" id="<?php echo $handle;?>">
-	    	<td class="handle" title="<?php echo $filename;?>"><?php echo $handle;?><?php $this->output_user_notification( $asset );?></td>
-	    	
-	    	<td><?php echo $priority;?></td>
-	    	
-	    	<!-- <td class="dependencies"><?php foreach ($dependencies as $dep) {echo $dep . '<br>';}?></td> -->
-	    	<td class="dependents"><?php foreach ($dependents as $dep) {echo $dep . '<br>';}?></td>
-	    	
-	    	<td class="size" title="<?php echo $filename;?>"><?php echo size_format( $size );?></td>
-	    	
-	    	<td class="location <?php echo $this->is_modified( $asset, 'location');?>">
-	    		<select data-dependencies='<?php echo json_encode($dependencies);?>' data-dependents='<?php echo json_encode($dependents);?>' id="<?php echo $handle;?>" class="asset-setting location <?php echo $type;?>" name="<?php echo $this->get_field_name( $type, $handle, 'location');?>">
-  					<option value="header" <?php echo ($location=='header')?'selected':'';?> >header</option>
-  					<option value="footer" <?php echo ($location=='footer')?'selected':'';?> >footer</option>
-  					<option value="async" <?php echo ($location=='async')?'selected':'';?> >asynchronous</option>
-  					<option value="disabled" <?php echo ($location=='disabled')?'selected':'';?>>disabled</option>
-					</select>
-				</td>
-				
-				<td class="minify <?php echo $this->is_modified( $asset, 'minify');?>">
-	    		<select id="<?php echo $handle;?>" class="asset-setting minify <?php echo $type;?>" <?php echo ($asset_is_minified)?'disabled':'';?> <?php echo ($asset_is_minified)?'title="' . $already_minified_msg . '"' :'';?> name="<?php echo $this->get_field_name( $type, $handle, 'minify');?>">
-  					<option value="no" <?php echo ($minify=='no')?'selected':'';?>  >no</option>
-  					<option value="yes" <?php echo ($minify=='yes')?'selected':'';?> >yes</option>
-					</select>
-				</td>
-    	
-    	</tr>
-    	<?php
-    }?>
-    </table>
-
-		<?php
-	}
 	
 	private function prepare_displayed_assets($type) {
 		// Preparation of data to be displayed
@@ -426,53 +296,7 @@ class WPSSM_Admin extends WPSSM {
 		//WPSSM_Debug::log('In WPSSM_Settings hydrate $this->displayed_assets: ', $this->displayed_assets);
 	}
 	
-	private function output_user_notification( $asset ) {
-		
-		$size= $asset['size'];
-		//WPSSM_Debug::log(array('size : '=>$size));
-		$is_minified = $this->get_field_value( $asset, 'minify') == 'yes';
-		//WPSSM_Debug::log(array('is_minified: '=>$is_minified));
-		$in_footer = ( $this->get_field_value( $asset, 'location') == 'footer');
-		
-		$this->reset_user_notification();
-		if (!$is_minified) {
-			if ( $size > self::SIZE_LARGE ) {
-				$level = 'issue';
-				$msg = __('This file is large and not minified : minification highly recommended', 'jco');	
-				$this->enqueue_user_notification( $msg, $level);
-			}
-			elseif ( $size != 0 ) {
-				$level = 'warning';
-				$msg = __('This file is not minified : minification recommended', 'jco');	
-				$this->enqueue_user_notification( $msg, $level);
-			}
-		}
 
-		if ( ( $size > self::SIZE_LARGE ) && ( !$in_footer ) ) {
-			$level = 'issue';
-			$msg = __('Large files loaded in the header will slow down page display : make asynchronous, loading in footer or at least conditional enqueue recommended', 'jco');			
-			$this->enqueue_user_notification( $msg, $level);
-		}	
-		
-		if ( ( $size < self::SIZE_SMALL ) && (!isset( $asset['in_group']) ) ) {
-			$level = 'warning';
-			$msg = __('This file is small and requires a specific http request : it is recommended to inline it, or to group it with other files', 'jco');			
-			$this->enqueue_user_notification( $msg, $level);
-		}	
-		
-		echo $this->user_notification;
-		
-	}
-	
-	private function reset_user_notification() {
-		$this->user_notification='';
-	}
-	
-	private function enqueue_user_notification( $msg, $level) {
-		if ($msg != '') {
-			$this->user_notification .= '<i class="user-notification" id="' . $level . '" title="' . $msg . '"></i>';
-		}		
-	}
 	
 	protected function is_modified( $asset, $field ) {
 		if ( isset( $asset['mods'][ $field ] ) ) {
@@ -500,61 +324,6 @@ class WPSSM_Admin extends WPSSM {
 	}
 
 
-
-
-
-/* OPTIONS PAGE OUTPUT
---------------------------------------------------------------*/	
-	public function output_options_page() {
-	    // check user capabilities
-	    if (!current_user_can('manage_options')) return;			
-			$referer = menu_page_url( self::PLUGIN_NAME, FALSE  );
-			?>
-
-	    <div class="wrap">
-	        <h1><?= esc_html(get_admin_page_title()); ?></h1>
-	        
-						<h2 class="nav-tab-wrapper">
-						<a href="?page=<?php echo self::PLUGIN_NAME;?>&tab=general" class="nav-tab <?php echo $this->active_tab == 'general' ? 'nav-tab-active' : ''; ?>">General Settings</a>
-						<a href="?page=<?php echo self::PLUGIN_NAME;?>&tab=scripts" class="nav-tab <?php echo $this->active_tab == 'scripts' ? 'nav-tab-active' : ''; ?>">Scripts</a>
-						<a href="?page=<?php echo self::PLUGIN_NAME;?>&tab=styles" class="nav-tab <?php echo $this->active_tab == 'styles' ? 'nav-tab-active' : ''; ?>">Styles</a>
-						</h2>
-	        
-		        <form action="<?php echo admin_url( 'admin-post.php' ); ?>" method="post">
-	        		<?php	
-							$this->output_form_buttons($referer);
-							settings_fields($this->config_settings_pages[$this->active_tab]['slug']);
-							do_settings_sections($this->config_settings_pages[$this->active_tab]['slug']);
-							$this->output_form_buttons($referer);
-	        		?>	
-	        
-		        </form>  
-	    </div>
-	    <?php
-	}
-	
-	protected function output_form_buttons($referer) { 
-		?>
-		<!-- Output form buttons -->
-	  <table class="button-table" col="2">
-	    <tr>
-				<input type="hidden" name="action" value="<?php echo $this->form_action; ?>">
-				<?php wp_nonce_field( $this->form_action, $this->nonce, FALSE ); ?>
-				<input type="hidden" name="_wpssm_http_referer" value="<?php echo $referer; ?>">
-				<input type="hidden" name="_wpssm_active_tab" value="<?php echo $this->active_tab; ?>">
-
-	    	<td><?php submit_button( 'Save ' . $this->active_tab . ' settings', 'primary', 'wpssm_save', true, array('tabindex'=>'1') );?> </td>
-	    	<?php if ($this->active_tab != 'general') { ?>
-	    	<td><?php submit_button( 'Reset ' . $this->active_tab . ' settings', 'secondary', 'wpssm_reset', true, array('tabindex'=>'2') );?> </td>
-	    	<?php } ?>
-	    	<td><?php submit_button( 'Delete everything', 'delete', 'wpssm_delete', true, array('tabindex'=>'3') );?> </td>
-	  	</tr>
-	  </table>
-	<?php 
-	}
-	
-
-
 /* FORM SUBMISSION
 --------------------------------------------------------------*/
 
@@ -566,7 +335,7 @@ class WPSSM_Admin extends WPSSM {
     if (!current_user_can('manage_options'))
         return;
 
-    if ( ! wp_verify_nonce( $_POST[ $this->nonce ], $this->form_action ) )
+    if ( ! wp_verify_nonce( $_POST[ self::NONCE ], self::FORM_ACTION ) )
         die( 'Invalid nonce.' . var_export( $_POST, true ) );
 		//WPSSM_Debug::log('In update_settings_cb function');
 		
@@ -673,7 +442,7 @@ class WPSSM_Admin extends WPSSM {
 
 
 
-/* ENQUEUED SCRIPTS & STYLES MONITORING
+/* ENQUEUED SCRIPTS & STYLES RECORDING
 -------------------------------------------------------*/
 
 	public function auto_detect() {
@@ -823,44 +592,152 @@ class WPSSM_Admin extends WPSSM {
 		$this->opt_enqueued_assets[$type][$handle]['priority'] = $score;
 	}
 
-	/* AJAX FUNCTIONS
-	--------------------------------------------------------------*/
-	public function ajax_check_dependencies_cb() {
-		$nonce = $_POST['checkDepsNonce'];
 
-		// check to see if the submitted nonce matches with the
-		// generated nonce we created earlier
-		if ( ! wp_verify_nonce( $nonce, 'check-script-dependencies' ) )
-		die ( 'Invalid nonce.');
+/* OUTPUT FUNCTIONS
+--------------------------------------------------------------*/	
+	public function output_options_page() {
+	    // check user capabilities
+	    if (!current_user_can('manage_options')) return;			
+			$referer = menu_page_url( self::PLUGIN_NAME, FALSE  );
+			?>
 
-		// ignore the request if the current user doesn't have
-		// sufficient permissions
-		//if ( current_user_can( 'edit_posts' ) ) {
-		// get the submitted parameters
-		$scriptHandle = isset($_POST['checkDepsArgs']['handle'])?$_POST['checkDepsArgs']['handle']:'Error !';
+	    <div class="wrap">
+	        <h1><?= esc_html(get_admin_page_title()); ?></h1>
+	        
+						<h2 class="nav-tab-wrapper">
+						<a href="?page=<?php echo self::PLUGIN_NAME;?>&tab=general" class="nav-tab <?php echo $this->active_tab == 'general' ? 'nav-tab-active' : ''; ?>">General Settings</a>
+						<a href="?page=<?php echo self::PLUGIN_NAME;?>&tab=scripts" class="nav-tab <?php echo $this->active_tab == 'scripts' ? 'nav-tab-active' : ''; ?>">Scripts</a>
+						<a href="?page=<?php echo self::PLUGIN_NAME;?>&tab=styles" class="nav-tab <?php echo $this->active_tab == 'styles' ? 'nav-tab-active' : ''; ?>">Styles</a>
+						</h2>
+	        
+		        <form action="<?php echo admin_url( 'admin-post.php' ); ?>" method="post">
+	        		<?php	
+							$this->output_form_buttons($referer);
+							settings_fields($this->config_settings_pages[$this->active_tab]['slug']);
+							do_settings_sections($this->config_settings_pages[$this->active_tab]['slug']);
+							$this->output_form_buttons($referer);
+	        		?>	
+	        
+		        </form>  
+	    </div>
+	    <?php
+	}
+	
+	protected function output_form_buttons($referer) { 
+		?>
+		<!-- Output form buttons -->
+	  <table class="button-table" col="2">
+	    <tr>
+				<input type="hidden" name="action" value="<?php echo self::FORM_ACTION; ?>">
+				<?php wp_nonce_field( self::FORM_ACTION, self::NONCE, FALSE ); ?>
+				<input type="hidden" name="_wpssm_http_referer" value="<?php echo $referer; ?>">
+				<input type="hidden" name="_wpssm_active_tab" value="<?php echo $this->active_tab; ?>">
 
-		echo 'IN AJAX CHECK SCRIPT DEPENDENCIES';
-		echo '<pre>' . $scriptHandle . '</pre>';
-		die();
+	    	<td><?php submit_button( 'Save ' . $this->active_tab . ' settings', 'primary', 'wpssm_save', true, array('tabindex'=>'1') );?> </td>
+	    	<?php if ($this->active_tab != 'general') { ?>
+	    	<td><?php submit_button( 'Reset ' . $this->active_tab . ' settings', 'secondary', 'wpssm_reset', true, array('tabindex'=>'2') );?> </td>
+	    	<?php } ?>
+	    	<td><?php submit_button( 'Delete everything', 'delete', 'wpssm_delete', true, array('tabindex'=>'3') );?> </td>
+	  	</tr>
+	  </table>
+	<?php 
+	}
+	
+	
+/* SECTIONS
+--------------------------------------------------------------*/	
+
+	public function output_section_cb( $section ) {
+		//WPSSM_Debug::log('In section callback');
 	}
 
-	/* Extract arguments passed via Ajax call and echo value
-	---------------------------------------------------------*/
-	private function get_ajax_arg($name,$label='') {
-		$value='';
-		if ( isset($_POST['args'][$name]) ) {
-			$value = esc_html($_POST['args'][$name]);
-			$label = esc_html(( empty($label) )?ucfirst($name):$label);	
+
+
+/* TOGGLE SWITCH
+--------------------------------------------------------------*/	
+
+	public function output_toggle_switch_recording_cb() {
+		$this->output_toggle_switch( 'general_record', self::$opt_general_settings['record']);
+	}	
+
+	public function output_toggle_switch_optimize_cb() {
+		$this->output_toggle_switch( 'general_optimize', self::$opt_general_settings['optimize']);
+	}		
+	
+	public function output_toggle_switch_javasync_cb() {
+		$this->output_toggle_switch( 'general_javasync', self::$opt_general_settings['javasync']);
+	}	
+
+	protected function output_toggle_switch( $input_name, $value ) {
+		WPSSM_Debug::log( 'in output toggle switch for ' . $input_name , $value);
+		$checked = ( $value == 'on')?'checked="checked"':'';
+		?>
+		<label class="switch">
+  	<input type="checkbox" name="<?php echo $input_name;?>_checkbox" <?php echo $checked;?> value="on">
+  	<div class="slider round"></div>
+		</label>
+		<?php
+	}
+	
+	
+/* GENERAL SETTINGS PAGE
+--------------------------------------------------------------*/		
+
+	public function output_pages_list() {
+		foreach ($this->opt_enqueued_assets['pages'] as $page) {
+			echo '<p>' . $page[0] . ' on ' . $page[1] . '</p>';
 		}
-		else $value='-1';
-		echo sprintf("<b> %s </b> = %s",$label,$value);
-		echo "<br>";
-		return $value;
 	}
 
 
+/* SCRIPTS & STYLES PAGES
+--------------------------------------------------------------*/	
 
+	public function output_header_scripts_list() {
+		$this->	output_items_list( 'scripts', 'header' );
+	}
+	
+	public function output_footer_scripts_list() {
+		$this->	output_items_list('scripts', 'footer' );
+	}
+	
+	public function output_async_scripts_list() {
+		$this->	output_items_list('scripts', 'async' );
+	}
+	
+	public function output_disabled_scripts_list() {
+		$this->	output_items_list('scripts', 'disabled' );
+	}
+	
+	public function output_header_styles_list() {
+		$this->	output_items_list('styles', 'header' );
+	}
+	
+	public function output_footer_styles_list() {
+		$this->	output_items_list('styles', 'footer' );
+	}
+	
+	public function output_disabled_styles_list() {
+		$this->	output_items_list('styles', 'disabled' );
+	}
 
+	public function output_items_list( $type, $location ) {
+		//WPSSM_Debug::log('Output items list', $type . ' : ' . $location);
+		$assets = $this->displayed_assets[$type][$location]['assets'];
+		//WPSSM_Debug::log( array('$this->displayed_assets' => $assets));
+		$sorted_list = $this->get_sorted_list( $assets );
+		//WPSSM_Debug::log( array('$sorted_list' => $sorted_list));
+		
+		?><table class="enqueued-assets"><?php
+		$this->output->item_headline();
+    foreach ($sorted_list as $handle => $priority ) {
+    	$asset = $assets[$handle];
+			//WPSSM_Debug::log(array('Asset in output_items_list : ' => $asset));			
+			$this->output->item_content( $asset, $type, $handle );  
+    }
+    ?></table><?php
+	}
+	
 
 
 

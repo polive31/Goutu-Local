@@ -14,8 +14,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/* Plugin Management hooks
+---------------------------------------------------------*/
+function uninstall_wpss() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-uninstall.php';
+	WPSSM_Uninstall::uninstall();
+}
+
+register_deactivation_hook( __FILE__, 'uninstall_wpssm' );
 
 
+
+/* Plugin Management hooks
+---------------------------------------------------------*/
 require plugin_dir_path( __FILE__ ) . 'includes/class-wpssm.php';
 
 function run_wpssm() {

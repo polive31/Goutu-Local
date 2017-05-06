@@ -1,10 +1,11 @@
 <?php
 
-class WPSSM_Output {
+class WPSSM_Admin_Output extends WPSSM_Admin_Helpers {
  	
  	protected $size_small;
  	protected $size_large;
  	protected $size_max;
+ 	protected $user_notification;
  	
   public function __construct( $sizes ) {
   	
@@ -34,9 +35,12 @@ class WPSSM_Output {
     	$filename = $asset['filename'];
     	$dependencies = $asset['dependencies'];
     	$dependents = $asset['dependents'];
+    	$priority = $asset['priority'];
     	$location = $this->get_field_value( $asset, 'location');
 	    $minify = $this->get_field_value( $asset, 'minify');
 	    $size = $this->get_field_value( $asset, 'size');
+	    $name = $this->get_field_name()
+	    	
 	    $asset_is_minified = ( $asset[ 'minify' ] == 'yes')?true:false; 
 	    $already_minified_msg = __('This file is already minimized within its plugin', 'jco');
 	    
@@ -72,21 +76,6 @@ class WPSSM_Output {
 		<?php
 	}
 	
-
-	protected function get_field_value( $asset, $field ) {
-		//WPSSM_Debug::log('In Field Value for ' . $field);
-		//WPSSM_Debug::log(array('Asset : ' => $asset));
-		if ( isset( $asset['mods'] ) && (isset( $asset['mods'][ $field ] ) ) ) {
-			$value=$asset['mods'][ $field ];
-			//WPSSM_Debug::log('Mod found !');
-		}
-		else {
-			//WPSSM_Debug::log('Mod not found');
-			$value=$asset[ $field ];
-		}
-		//WPSSM_Debug::log( array(' Field value of ' . $field . ' : ' => $value ));
-		return $value;
-	}
 
 
 

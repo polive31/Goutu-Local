@@ -35,6 +35,7 @@ class WPSSM_Output {
     	$filename = $asset['filename'];
     	$dependencies = $asset['dependencies'];
     	$dependents = $asset['dependents'];
+    	$priority = $asset['priority'];
     	$location = $this->get_field_value( $asset, 'location');
 	    $minify = $this->get_field_value( $asset, 'minify');
 	    $size = $this->get_field_value( $asset, 'size');
@@ -87,6 +88,13 @@ class WPSSM_Output {
 		}
 		//WPSSM_Debug::log( array(' Field value of ' . $field . ' : ' => $value ));
 		return $value;
+	}
+	
+		
+	protected function is_modified( $asset, $field ) {
+		if ( isset( $asset['mods'][ $field ] ) ) {
+			return 'modified';
+		}
 	}
 
 

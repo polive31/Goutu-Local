@@ -25,14 +25,24 @@ class WPSSM_Admin extends WPSSM {
 														'field' => 'priority', 
 														'order' => SORT_DESC, 
 														'type' => SORT_NUMERIC);
-														
+	
+	/* Options local to admin side */
+	protected $opt_enqueued_assets = array( 
+									'pages'=>array(), 
+									'scripts'=>array(), 
+									'styles'=>array());	
+	
+	/* Objects */ 													
 	protected $output;														
+	protected $post;														
 
 
 	public function __construct() {
-		require_once plugin_dir_path( __FILE__ ) . 'partials/output-admin-form.php' ;	
+		require_once plugin_dir_path( __FILE__ ) . 'helpers/class-wpssm-admin-helpers.php' ;	
+		require_once plugin_dir_path( __FILE__ ) . 'helpers/class-wpssm-output.php' ;	
 		$sizes=array('small'=>self::SIZE_SMALL, 'large'=>self::SIZE_LARGE, 'max'=>self::SIZE_MAX);										
-		$this->output = new WPSSM_Output( $sizes );
+		$this->output = new WPSSM_Admin_Output( $sizes );
+		$this->post = new WPSSM_Admin_Post( $sizes );
 	}														
 														
 	public function enqueue_styles() {
@@ -43,16 +53,18 @@ class WPSSM_Admin extends WPSSM {
 //		WPSSM_Debug::log('In WPSSM_Admin enqueue styles : self::$opt_general_settings ', self::$opt_general_settings );
 //		WPSSM_Debug::log('In WPSSM_Admin enqueue styles : $this->opt_enqueued_assets', $this->opt_enqueued_assets );
 //		WPSSM_Debug::log('In WPSSM_Admin enqueue styles : $this->opt_mods', $this->opt_mods);
-		wp_enqueue_style( self::PLUGIN_NAME, plugin_dir_url( __FILE__ ) . 'css/wpssm-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( self::PLUGIN_NAME, plugin_dir_url( __FILE__ ) . 'css/wpssm-admin.css', array(), self::PLUGIN_VERSION, 'all' );
 	}
 
 	public function enqueue_scripts() {
 		//WPSSM_Debug::log('In WPSSM_Admin enqueue scripts');
-		wp_enqueue_script( self::PLUGIN_NAME, plugin_dir_url( __FILE__ ) . 'js/wpssm-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( self::PLUGIN_NAME, plugin_dir_url( __FILE__ ) . 'js/wpssm-admin.js', array( 'jquery' ), self::PLUGIN_VERSION, false );
 	}
 	
 	
 	public function hydrate() {	
+		WPSSM_Debug::log('In WPSSM_Admin hydrate');
+		if ( !is_admin() ) return;
 		// Retrieve plugin options 
 		$this->update_opt( $this->opt_enqueued_assets, 'wpssm_enqueued_assets');
 		$this->update_opt( $this->opt_mods, 'wpssm_mods');
@@ -205,7 +217,7 @@ class WPSSM_Admin extends WPSSM {
 	public function add_plugin_menu_option_cb() {
 		//WPSSM_Debug::log('In add_plugin_menu_option_cb');								
 		$opt_page_id = add_submenu_page(
-      $this->submenu,
+      self::PLUGIN_SUBMENU,
       'WP Scripts & Styles Manager',
       'Scripts & Styles Manager',
       'manage_options',
@@ -296,33 +308,6 @@ class WPSSM_Admin extends WPSSM {
 		//WPSSM_Debug::log('In WPSSM_Settings hydrate $this->displayed_assets: ', $this->displayed_assets);
 	}
 	
-
-	
-	protected function is_modified( $asset, $field ) {
-		if ( isset( $asset['mods'][ $field ] ) ) {
-			return 'modified';
-		}
-	}
-	
-	protected function get_field_name( $type, $handle, $field ) {
-		return  $type . '_' . $handle . '_' . $field;
-	}
-	
-	protected function get_field_value( $asset, $field ) {
-		//WPSSM_Debug::log('In Field Value for ' . $field);
-		//WPSSM_Debug::log(array('Asset : ' => $asset));
-		if ( isset( $asset['mods'] ) && (isset( $asset['mods'][ $field ] ) ) ) {
-			$value=$asset['mods'][ $field ];
-			//WPSSM_Debug::log('Mod found !');
-		}
-		else {
-			//WPSSM_Debug::log('Mod not found');
-			$value=$asset[ $field ];
-		}
-		//WPSSM_Debug::log( array(' Field value of ' . $field . ' : ' => $value ));
-		return $value;
-	}
-
 
 /* FORM SUBMISSION
 --------------------------------------------------------------*/
@@ -731,7 +716,7 @@ class WPSSM_Admin extends WPSSM {
 		?><table class="enqueued-assets"><?php
 		$this->output->item_headline();
     foreach ($sorted_list as $handle => $priority ) {
-			//WPSSM_Debug::log(array('Asset in output_items_list : ' => $assets[$handle]));			
+			WPSSM_Debug::log('Asset in output_items_list : ', $assets[$handle]);			
 			$this->output->item_content( $assets[$handle], $type, $handle );  
     }
     ?></table><?php

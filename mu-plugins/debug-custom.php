@@ -23,7 +23,7 @@ class DBG {
 		//add_action( 'admin_print_footer_scripts', array($this, 'output_debug_buffer') );
 	}
 	
-	public function output_debug_buffer() {
+	public static function output_debug_buffer() {
 		?>
 		<script id="DBGlog" type="text/javascript">
 			<?php echo self::$output;?>

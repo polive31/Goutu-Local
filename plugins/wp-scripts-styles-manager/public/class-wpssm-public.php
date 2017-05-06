@@ -9,11 +9,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 class WPSSM_Public extends WPSSM {
 	
 	public function __construct() {
-		$this->hydrate();
 	}		
 	
 	public function hydrate() {
+		if ( is_admin() ) return;
 		$this->update_opt( $this->opt_mods, 'wpssm_mods');
+		WPSSM_Debug::log('In WPSSM_Public hydrate' );
 	}
 	
 	public function enqueue_scripts() {

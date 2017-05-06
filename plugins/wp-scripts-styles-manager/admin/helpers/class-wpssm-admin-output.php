@@ -1,21 +1,32 @@
 <?php
 
-class WPSSM_Admin_Output extends WPSSM_Admin_Helpers {
+class WPSSM_Admin_Output {
  	
- 	protected $size_small;
- 	protected $size_large;
- 	protected $size_max;
- 	protected $user_notification;
+ 	private $size_small;
+ 	private $size_large;
+ 	private $size_max;
+ 	private $assets;
+ 	private $user_notification;
  	
-  public function __construct( $sizes ) {
-  	
+  public function __construct( $assets, $sizes ) {
+  	$this->assets = $assets;
   	$this->size_small=$sizes['small'];
   	$this->size_large=$sizes['large'];
   	$this->size_max=$sizes['max'];
-  	
   }
+  
+	public function items_list( $sorted_list, $type, $location ) {
+		?><table class="enqueued-assets"><?php
+		$this->_item_headline();
+    foreach ($sorted_list as $handle => $priority ) {
+			WPSSM_Debug::log('Asset in WPSSM_Output->items_list() : ', $this->assets[$handle]);			
+			$this->_item_content( $this->assets[$handle], $type, $location, $handle );  
+    }
+    ?></table><?php
+	}
+	
 
-	public function item_headline() {
+	private function _item_headline() {
 		?>
     	<tr>
     		<th> handle </th>
@@ -28,15 +39,14 @@ class WPSSM_Admin_Output extends WPSSM_Admin_Helpers {
     	</tr>	
 		<?php
 	}
-	
 
-	public function item_content( $asset, $type, $handle ) {
+	private function _item_content( $asset, $type, $location, $handle ) {
 		
     	$filename = $asset['filename'];
     	$dependencies = $asset['dependencies'];
     	$dependents = $asset['dependents'];
     	$priority = $asset['priority'];
-    	$location = $this->get_field_value( $asset, 'location');
+    	//$location = $this->get_field_value( $asset, 'location');
 	    $minify = $this->get_field_value( $asset, 'minify');
 	    $size = $this->get_field_value( $asset, 'size');
 	    $name = $this->get_field_name()
@@ -56,7 +66,7 @@ class WPSSM_Admin_Output extends WPSSM_Admin_Helpers {
 	    	
 	    	<td class="size" title="<?php echo $filename;?>"><?php echo size_format( $size );?></td>
 	    	
-	    	<td class="location <?php echo $this->is_modified( $asset, 'location');?>">
+	    	<td class="location <?php echo $this->_is_modified( $asset, 'location');?>">
 	    		<select data-dependencies='<?php echo json_encode($dependencies);?>' data-dependents='<?php echo json_encode($dependents);?>' id="<?php echo $handle;?>" class="asset-setting location <?php echo $type;?>" name="<?php echo $this->get_field_name( $type, $handle, 'location');?>">
   					<option value="header" <?php echo ($location=='header')?'selected':'';?> >header</option>
   					<option value="footer" <?php echo ($location=='footer')?'selected':'';?> >footer</option>
@@ -65,7 +75,7 @@ class WPSSM_Admin_Output extends WPSSM_Admin_Helpers {
 					</select>
 				</td>
 				
-				<td class="minify <?php echo $this->is_modified( $asset, 'minify');?>">
+				<td class="minify <?php echo $this->_is_modified( $asset, 'minify');?>">
 	    		<select id="<?php echo $handle;?>" class="asset-setting minify <?php echo $type;?>" <?php echo ($asset_is_minified)?'disabled':'';?> <?php echo ($asset_is_minified)?'title="' . $already_minified_msg . '"' :'';?> name="<?php echo $this->get_field_name( $type, $handle, 'minify');?>">
   					<option value="no" <?php echo ($minify=='no')?'selected':'';?>  >no</option>
   					<option value="yes" <?php echo ($minify=='yes')?'selected':'';?> >yes</option>
@@ -75,8 +85,13 @@ class WPSSM_Admin_Output extends WPSSM_Admin_Helpers {
     	</tr>
 		<?php
 	}
-	
 
+
+	private function _is_modified( $asset, $field ) {
+		if ( isset( $asset['mods'][ $field ] ) ) {
+			return 'modified';
+		}
+	}
 
 
 /* USER NOTIFICATIONS

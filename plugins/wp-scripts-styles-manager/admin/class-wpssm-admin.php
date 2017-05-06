@@ -20,29 +20,19 @@ class WPSSM_Admin extends WPSSM {
 	protected $header_styles;
 	protected $active_tab;
 	
-	protected $filter_args = array( 'location' => 'header' );
-	protected $sort_args = array( 
-														'field' => 'priority', 
-														'order' => SORT_DESC, 
-														'type' => SORT_NUMERIC);
-	
-	/* Options local to admin side */
-	protected $opt_enqueued_assets = array( 
-									'pages'=>array(), 
-									'scripts'=>array(), 
-									'styles'=>array());	
+
 	
 	/* Objects */ 													
+	protected $assets;														
 	protected $output;														
 	protected $post;														
 
 
 	public function __construct() {
-		require_once plugin_dir_path( __FILE__ ) . 'helpers/class-wpssm-admin-helpers.php' ;	
-		require_once plugin_dir_path( __FILE__ ) . 'helpers/class-wpssm-output.php' ;	
+		require_once plugin_dir_path( __FILE__ ) . 'helpers/class-wpssm-assets.php' ;	
+		require_once plugin_dir_path( __FILE__ ) . 'helpers/class-wpssm-admin-output.php' ;	
+		require_once plugin_dir_path( __FILE__ ) . 'helpers/class-wpssm-admin-post.php' ;	
 		$sizes=array('small'=>self::SIZE_SMALL, 'large'=>self::SIZE_LARGE, 'max'=>self::SIZE_MAX);										
-		$this->output = new WPSSM_Admin_Output( $sizes );
-		$this->post = new WPSSM_Admin_Post( $sizes );
 	}														
 														
 	public function enqueue_styles() {
@@ -62,13 +52,16 @@ class WPSSM_Admin extends WPSSM {
 	}
 	
 	
-	public function hydrate() {	
+	public function init_admin() {
+		/* Instantiates objects and hydrates them 
+		Instantiation not done in __construct() to avoid useless database accesses */	
+		$this->assets = new WPSSM_Assets();
+		$this->output = new WPSSM_Admin_Output( $this->displayed_assets, $sizes );
+		$this->post = new WPSSM_Admin_Post( $this->assets );
+		
 		WPSSM_Debug::log('In WPSSM_Admin hydrate');
 		if ( !is_admin() ) return;
-		// Retrieve plugin options 
-		$this->update_opt( $this->opt_enqueued_assets, 'wpssm_enqueued_assets');
-		$this->update_opt( $this->opt_mods, 'wpssm_mods');
-		
+
 		// Initialize all attributes related to admin page
 		$this->config_settings_pages = array(
 			'general' => array(
@@ -205,14 +198,20 @@ class WPSSM_Admin extends WPSSM {
 	}
 
 	
-	public function filter_assets( $asset ) {
-		$match=true;
-		foreach ($this->filter_args as $field=>$value) {
-			//WPSSM_Debug::log('In filter assets filter args loop', array($field=>$value));
-			$match=($this->get_field_value($asset,$field)==$value)?$match:false;
-		}
-		return $match;
+	private function prepare_displayed_assets($type) {
+		// Preparation of data to be displayed
+		WPSSM_Debug::log('In prepare_displayed_assets' );
+		foreach ($this->config_settings_pages[$type]['sections'][0]['fields'] as $location=>$placeholder) {		
+			$filtered = $this->assets->filter($type, array('location'=>$location) );
+			if ($filtered!=false) $this->displayed_assets[$location]=$filtered;
+		}	
+		//WPSSM_Debug::log('In WPSSM_Settings hydrate $this->displayed_assets: ', $this->displayed_assets);
 	}
+	
+
+
+/* OPTION PAGE SETTINGS INIT 
+----------------------------------------------------------*/
 
 	public function add_plugin_menu_option_cb() {
 		//WPSSM_Debug::log('In add_plugin_menu_option_cb');								
@@ -228,9 +227,7 @@ class WPSSM_Admin extends WPSSM {
 	}
 	
 
-	public function admin_init_cb() {
-			// Hydrate option class properties
-			$this->hydrate();
+	public function init_settings() {
 			WPSSM_Debug::log('In admin init : $this->config_settings_pages', $this->config_settings_pages);
 			
 			$page = $this->config_settings_pages[$this->active_tab];
@@ -271,42 +268,7 @@ class WPSSM_Admin extends WPSSM {
 	
 	
 
-		
-	public function get_sorted_list( $assets ) {
-		$sort_field = $this->sort_args['field'];
-		$sort_order = $this->sort_args['order'];
-		$sort_type = $this->sort_args['type'];
-		$list = array_column($assets, $sort_field, 'handle' );		
-		//WPSSM_Debug::log( array( 'sorted list : '=>$list ));
-		if ( $sort_order == SORT_ASC)
-			asort($list, $sort_type );
-		else 
-			arsort($list, $sort_type );
-//		foreach ($sort_column as $key => $value) {
-//			echo '<p>' . $key . ' : ' . $value . '<p>';
-//		}
-		return $list;
-	}
 
-	
-	private function prepare_displayed_assets($type) {
-		// Preparation of data to be displayed
-   	//$types=array('scripts', 'styles');
-    //$locations=array('header', 'footer', 'async', 'disabled');
-		//WPSSM_Debug::log('In prepare_displayed_assets $this->displayed_assets before : ', $this->displayed_assets);
-		$assets=$this->opt_enqueued_assets[$type];
-		//if (! isset ( $this->opt_enqueued_assets[$type] ) ) continue;
-		foreach ($this->config_settings_pages[$type]['sections'][0]['fields'] as $location=>$placeholder) {
-			$this->filter_args = array( 'location' => $location );
-			//WPSSM_Debug::log('Looping asset location : ', array($location => $assets));
-			//$assets = $this->opt_enqueued_assets[$type];
-			$filtered_assets = array_filter($assets, array($this, 'filter_assets') );	
-			$this-> displayed_assets[$type][$location]['assets']=$filtered_assets;
-			$this-> displayed_assets[$type][$location]['count']=count($filtered_assets);
-			$this-> displayed_assets[$type][$location]['size']=array_sum( array_column( $filtered_assets, 'size'));
-		}	
-		//WPSSM_Debug::log('In WPSSM_Settings hydrate $this->displayed_assets: ', $this->displayed_assets);
-	}
 	
 
 /* FORM SUBMISSION
@@ -338,18 +300,18 @@ class WPSSM_Admin extends WPSSM {
 				WPSSM_Debug::log( 'assets before submission' , $this->opt_enqueued_assets );
 				foreach ( $this->opt_enqueued_assets[$type] as $handle=>$asset ) {
 					unset($this->opt_enqueued_assets[$type][$handle]['mods']); 
-					$this->update_priority( $type, $handle ); 
+					$this->assets->update_priority( $type, $handle ); 
 				}
 				WPSSM_Debug::log( 'assets after submission',$this->opt_enqueued_assets);
-				update_option( 'wpssm_enqueued_assets', $this->opt_enqueued_assets);
+				hydrate_option( 'wpssm_enqueued_assets', $this->opt_enqueued_assets);
 		    $query_args['msg']='reset';
 		}
 		elseif ( isset ( $_POST[ 'wpssm_delete' ] ) ) {
 		   	WPSSM_Debug::log( 'In Form submission : DELETE' );
 		    $this->opt_enqueued_assets = array();
 		    self::$opt_general_settings = array();
-		    update_option( 'wpssm_enqueued_assets', array() );
-		    update_option( 'wpssm_general_settings', array() );
+		    hydrate_option( 'wpssm_enqueued_assets', array() );
+		    hydrate_option( 'wpssm_general_settings', array() );
 		    $query_args['msg']='delete';
 		}
 		else {
@@ -360,7 +322,7 @@ class WPSSM_Admin extends WPSSM {
 					foreach ($settings as $setting) {
 						self::$opt_general_settings[$setting]= isset($_POST[ 'general_' . $setting . '_checkbox' ])?$_POST[ 'general_' . $setting . '_checkbox' ]:'off';
 					}			
-					update_option( 'wpssm_general_settings', self::$opt_general_settings );
+					hydrate_option( 'wpssm_general_settings', self::$opt_general_settings );
 				}
 				else {
 					$this->mods[$type]=array();	
@@ -372,12 +334,12 @@ class WPSSM_Admin extends WPSSM {
 						if ($result[0]) $this->mods[$type][$result[1]][]=$handle;
 						$result=$this->update_mod($type, $handle, 'minify');
 						if ($result[0]) $this->mods[$type]['minify'][]=$handle;
-						$this->update_priority( $type, $handle ); 
+						$this->assets->update_priority( $type, $handle ); 
 					}
 					WPSSM_Debug::log( 'opt_enqueued_assets after submission',$this->opt_enqueued_assets);				
 					WPSSM_Debug::log( '$this->mods after submission',$this->mods);				
-					update_option( 'wpssm_enqueued_assets', $this->opt_enqueued_assets);
-					update_option( 'wpssm_mods', $this->mods);
+					hydrate_option( 'wpssm_enqueued_assets', $this->opt_enqueued_assets);
+					hydrate_option( 'wpssm_mods', $this->mods);
 				}
 		    $query_args['msg']='save';
 		}
@@ -457,125 +419,6 @@ class WPSSM_Admin extends WPSSM {
     return $permalink;
 	}
 
-	public function record_header_assets_cb() {
-		WPSSM_Debug::log('In record header assets cb');
-		$this->opt_enqueued_assets['pages'][get_permalink()] = array(get_permalink(), current_time( 'mysql' ));
-		$this->record_enqueued_assets( false );
-	}
-
-	public function record_footer_assets_cb() {
-		WPSSM_Debug::log('In record footer assets cb');
-		$this->record_enqueued_assets( true );
-		update_option( 'wpssm_enqueued_assets', $this->opt_enqueued_assets, true );
-	}
-
-	protected function record_enqueued_assets( $in_footer ) {
-		WPSSM_Debug::log('In record enqueued assets');
-		global $wp_scripts;
-		global $wp_styles;
-
-		/* Select data source depending whether in header or footer */
-		if ($in_footer) {
-			//WPSSM_Debug::log('FOOTER record');
-			//WPSSM_Debug::log(array( '$header_scripts' => $this->header_scripts ));
-			$scripts=array_diff( $wp_scripts->done, $this->header_scripts );
-			$styles=array_diff( $wp_styles->done, $this->header_styles );
-			//WPSSM_Debug::log(array('$source'=>$source));
-		}
-		else {
-			$scripts=$wp_scripts->done;
-			$styles=$wp_styles->done;
-			$this->header_scripts = $scripts;
-			$this->header_styles = $styles;
-			//WPSSM_Debug::log('HEADER record');
-			//WPSSM_Debug::log(array('$source'=>$source));
-		}
-
-	  //WPSSM_Debug::log(array('assets before update' => $this->opt_enqueued_assets));
-				
-		$assets = array(
-			'scripts'=>array(
-					'handles'=>$scripts,
-					'registered'=> $wp_scripts->registered),
-			'styles'=>array(
-					'handles'=>$styles,
-					'registered'=> $wp_styles->registered),
-			);
-				
-		WPSSM_Debug::log( array( '$assets' => $assets ) );		
-			
-		foreach( $assets as $type=>$asset ) {
-			WPSSM_Debug::log( $type . ' recording');		
-					
-			foreach( $asset['handles'] as $index => $handle ) {
-				$obj = $asset['registered'][$handle];
-				$path = strtok($obj->src, '?'); // remove any query parameters
-				
-				if ( strpos( $path, 'wp-' ) != false) {
-					$path = wp_make_link_relative( $path );
-					$uri = $_SERVER['DOCUMENT_ROOT'] . $path;
-					$size = filesize( $uri );
-					$version = $obj->ver;
-				}
-				else {
-					$path = $obj->src;
-					$version = $obj->ver;
-					$size = 0;
-				}
-				
-				// Update current asset properties
-				$this->opt_enqueued_assets[$type][$handle] = array(
-					'handle' => $handle,
-					'enqueue_index' => $index,
-					'filename' => $path,
-					'location' => $in_footer?'footer':'header',
-					'dependencies' => $obj->deps,
-					'dependents' => array(),
-					'minify' => (strpos( $obj->src, '.min.' ) != false )?'yes':'no',
-					'size' => $size,
-					'version' => $version,
-				);
-				// Update current asset priority
-				$priority = $this->update_priority( $type, $handle );
-				// Update all dependancies assets properties
-				foreach ($obj->deps as $dep_handle) {
-					//WPSSM_Debug::log(array('dependencies loop : '=>$dep_handle));
-					$this->opt_enqueued_assets[$type][$dep_handle]['dependents'][]=$handle;
-				}
-			}
-		}
-	  WPSSM_Debug::log(array('assets after update' => $this->opt_enqueued_assets));
-	}
-	
-	protected function update_priority( $type, $handle ) {
-		$asset = $this->opt_enqueued_assets[$type][$handle];
-		$location = $this->get_field_value( $asset, 'location');
-		
-		if ( $location != 'disabled' ) {
-			$minify = $this->get_field_value( $asset, 'minify');
-			$size = $this->get_field_value( $asset, 'size');
-			$score = ( $location == 'header' )?1000:0;
-			//WPSSM_Debug::log(array('base after location'=>$score));
-			$score += ( $size >= self::SIZE_LARGE )?500:0; 	
-			$score += ( ($minify == 'no') && ( $size != 0 ))?200:0;
-			//WPSSM_Debug::log(array('base after minify'=>$score));
-			$score += ( $size <= self::SIZE_SMALL )?100:0; 	
-			//WPSSM_Debug::log(array('base after size'=>$score));
-			if ( $size >= self::SIZE_LARGE ) 
-				$normalizer = self::SIZE_MAX;
-			elseif ( $size <= self::SIZE_SMALL )
-				$normalizer = self::SIZE_SMALL;
-			else 
-				$normalizer = self::SIZE_LARGE;
-			//WPSSM_Debug::log(array('normalizer'=>$normalizer));
-			$score += $size/$normalizer*100; 	
-			//WPSSM_Debug::log(array('score'=>$score));
-		}
-		else 
-			$score = 0;
-
-		$this->opt_enqueued_assets[$type][$handle]['priority'] = $score;
-	}
 
 
 /* OUTPUT FUNCTIONS
@@ -679,7 +522,13 @@ class WPSSM_Admin extends WPSSM {
 --------------------------------------------------------------*/	
 
 	public function output_header_scripts_list() {
-		$this->	output_items_list( 'scripts', 'header' );
+		//WPSSM_Debug::log('Output items list', $type . ' : ' . $location);
+		$assets = $this->displayed_assets['header']['assets'];
+		//WPSSM_Debug::log( array('$this->displayed_assets' => $assets));
+		$sorted_list = $this->sort( $assets );
+		//WPSSM_Debug::log( array('$sorted_list' => $sorted_list));		
+		
+		$this->output->items_list( $sorted_list );
 	}
 	
 	public function output_footer_scripts_list() {
@@ -706,22 +555,21 @@ class WPSSM_Admin extends WPSSM {
 		$this->	output_items_list('styles', 'disabled' );
 	}
 
-	public function output_items_list( $type, $location ) {
-		//WPSSM_Debug::log('Output items list', $type . ' : ' . $location);
-		$assets = $this->displayed_assets[$type][$location]['assets'];
-		//WPSSM_Debug::log( array('$this->displayed_assets' => $assets));
-		$sorted_list = $this->get_sorted_list( $assets );
-		//WPSSM_Debug::log( array('$sorted_list' => $sorted_list));
-		
-		?><table class="enqueued-assets"><?php
-		$this->output->item_headline();
-    foreach ($sorted_list as $handle => $priority ) {
-			WPSSM_Debug::log('Asset in output_items_list : ', $assets[$handle]);			
-			$this->output->item_content( $assets[$handle], $type, $handle );  
-    }
-    ?></table><?php
-	}
-	
+	public function sort( $assets ) {
+		$sort_field = $this->sort_args['field'];
+		$sort_order = $this->sort_args['order'];
+		$sort_type = $this->sort_args['type'];
+		$list = array_column($assets, $sort_field, 'handle' );		
+		//WPSSM_Debug::log( array( 'sorted list : '=>$list ));
+		if ( $sort_order == SORT_ASC)
+			asort($list, $sort_type );
+		else 
+			arsort($list, $sort_type );
+//		foreach ($sort_column as $key => $value) {
+//			echo '<p>' . $key . ' : ' . $value . '<p>';
+//		}
+		return $list;
+	}	
 
 
 

@@ -8,13 +8,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class WPSSM_Public extends WPSSM {
 	
+	private $assets;
+	
 	public function __construct() {
+		require_once plugin_dir_path( __FILE__ ) . 'helpers/class-wpssm-assets.php' ;	
 	}		
 	
 	public function hydrate() {
 		if ( is_admin() ) return;
-		$this->update_opt( $this->opt_mods, 'wpssm_mods');
+		$this->hydrate_opt( $this->opt_mods, 'wpssm_mods');
 		WPSSM_Debug::log('In WPSSM_Public hydrate' );
+	}
+	
+	public function init_recording() {
+		/* In case recording is activated, instantiates relevant classes */
+		$this->assets = new WPSSM_Assets();
 	}
 	
 	public function enqueue_scripts() {
@@ -97,8 +105,17 @@ class WPSSM_Public extends WPSSM {
 	}
 
 	
-	
-	
+/* RECORDING CALLBACKS 
+----------------------------------------------------*/
+	public function record_header_assets_cb() {
+		WPSSM_Debug::log('In record header assets cb');
+		$this->assets->record( false );
+	}
+
+	public function record_footer_assets_cb() {
+		WPSSM_Debug::log('In record footer assets cb');
+		$this->assets->record( true );
+	}
 	
 	
 		

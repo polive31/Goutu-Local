@@ -31,8 +31,12 @@ class WPSSM_Debug {
 		<?php
 		//PC::debug(array('In wp head output_buffer :'=>self::$output));
 	}
+	
+	public static function error($code, $msg, $file, $line) {
+		self::log($msg, false, $code);
+	}
 
-	public static function log($msg, $var=false ) {
+	public static function log($msg, $var=false, $type='DEBUG' ) {
 		if (!self::ON) return;	
 		if ( self::PHP_CONSOLE && class_exists( 'PC' )) {
 			if ($var==false) PC::debug($msg);
@@ -42,7 +46,8 @@ class WPSSM_Debug {
 			if ( defined( 'DOING_AJAX' ) || strstr($_SERVER['REQUEST_URI'], 'admin-post.php') ) return; //Prevents blocking of post submissions/ajax requests
 			if ( !is_array($var) ) $var = '"' . $var . '"';
 			if ( is_array($var) ) $var = json_encode($var);
-			self::$output='console.log("%cDEBUG%c ' . $msg . '", "border-radius:4px;padding:2px 4px;background:blue;color:white", "color:blue");';  
+			$style=( $type=='DEBUG' )?'blue':'red';
+			self::$output='console.log("%c' . $type . '%c ' . $msg . '", "border-radius:4px;padding:2px 4px;background:' . $style . ';color:white", "color:blue");';  
 			self::$output.='console.log(' . $var . ');';
 			self::output_debug_buffer();
 		}

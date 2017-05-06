@@ -6,8 +6,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-class WPSSM_Admin_Helpers {
+class WPSSM_Assets {
 
+
+	private $opt_enqueued_assets = array( 
+									'pages'=>array(), 
+									'scripts'=>array(), 
+									'styles'=>array());	
+
+
+
+
+	public function __construct() {
+		
+	}
 	
 	protected function get_field_name( $type, $handle, $field ) {
 		return  $type . '_' . $handle . '_' . $field;
@@ -27,7 +39,6 @@ class WPSSM_Admin_Helpers {
 		//WPSSM_Debug::log( array(' Field value of ' . $field . ' : ' => $value ));
 		return $value;
 	}
-
 
 	protected function get_field_value( $asset, $field ) {
 		//WPSSM_Debug::log('In Field Value for ' . $field);

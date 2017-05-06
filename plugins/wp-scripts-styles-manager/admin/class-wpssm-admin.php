@@ -19,6 +19,7 @@ class WPSSM_Admin extends WPSSM {
 	protected $header_scripts;
 	protected $header_styles;
 	protected $active_tab;
+	protected $sizes;
 	
 
 	
@@ -32,7 +33,7 @@ class WPSSM_Admin extends WPSSM {
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'includes/class-wpssm-assets.php' ;	
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-output.php' ;	
 		//require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-post.php' ;	
-		$sizes=array('small'=>self::SIZE_SMALL, 'large'=>self::SIZE_LARGE, 'max'=>self::SIZE_MAX);										
+		$this->sizes = array('small'=>self::SIZE_SMALL, 'large'=>self::SIZE_LARGE, 'max'=>self::SIZE_MAX);										
 	}														
 														
 	public function enqueue_styles() {
@@ -53,16 +54,18 @@ class WPSSM_Admin extends WPSSM {
 	
 	
 	public function init_admin() {
+		WPSSM_Debug::log( 'In WPSSM_Admin init_admin()' );								
 		/* Instantiates objects and hydrates them 
 		Instantiation not done in __construct() to avoid useless database accesses */	
 		$this->assets = new WPSSM_Assets();
-		$this->output = new WPSSM_Admin_Output( $this->displayed_assets, $sizes );
 		//$this->post = new WPSSM_Admin_Post( $this->assets );
 		
-		WPSSM_Debug::log('In WPSSM_Admin hydrate');
+		WPSSM_Debug::log('In WPSSM_Admin init_admin()');
 		if ( !is_admin() ) return;
 
-		// Initialize all attributes related to admin page
+		// Get active tab
+		$this->active_tab = isset( $_GET[ 'tab' ] ) ? esc_html($_GET[ 'tab' ]) : 'general';
+		// Initialize options settings for active tab
 		$this->config_settings_pages = array(
 			'general' => array(
 					'slug'=>'general_settings_page',
@@ -74,17 +77,17 @@ class WPSSM_Admin extends WPSSM {
 										'record' => array(
 													'slug' => 'wpssm_record',
 													'title' => 'Record enqueued scripts & styles in frontend',
-													'callback' => 'output_toggle_switch_recording_cb',
+													'callback' => array($this,'output_toggle_switch_recording_cb'),
 													),
 										'optimize' => array(
 													'slug' => 'wpssm_optimize',
 													'title' => 'Optimize scripts & styles in frontend',
-													'callback' => 'output_toggle_switch_optimize_cb',
+													'callback' => array($this,'output_toggle_switch_optimize_cb'),
 													),	
 										'javasync' => array(
 													'slug' => 'wpssm_javasync',
 													'title' => 'Allow improved asynchronous loading of scripts via javascript',
-													'callback' => 'output_toggle_switch_javasync_cb',
+													'callback' => array($this,'output_toggle_switch_javasync_cb'),
 													),	
 										),
 							),							
@@ -97,7 +100,7 @@ class WPSSM_Admin extends WPSSM {
 													'title' => 'Recorded pages',
 													'label_for' => 'wpssm-recorded-pages',
 													'class' => 'foldable',
-													'callback' => 'output_pages_list',
+													'callback' => array($this->output,'pages_list'),
 													),	
 										),
 							),
@@ -116,7 +119,7 @@ class WPSSM_Admin extends WPSSM {
 														'stats' => '(%s files, total size %s)',
 														'label_for' => 'wpssm-enqueued-scripts',
 														'class' => 'foldable',
-														'callback' => 'output_header_scripts_list',
+														'callback' => array($this,'output_header_items_list'),
 														),
 											'footer' => array(
 														'slug' => 'wpssm_footer_enqueued_scripts',
@@ -124,7 +127,7 @@ class WPSSM_Admin extends WPSSM {
 														'stats' => '(%s files, total size %s)',
 														'label_for' => 'wpssm-enqueued-scripts',
 														'class' => 'foldable',
-														'callback' => 'output_footer_scripts_list',
+														'callback' => array($this,'output_footer_items_list'),
 														),
 											'async' => array(
 														'slug' => 'wpssm_async_enqueued_scripts',
@@ -132,7 +135,7 @@ class WPSSM_Admin extends WPSSM {
 														'stats' => '(%s files, total size %s)',
 														'label_for' => 'wpssm-enqueued-scripts',
 														'class' => 'foldable',
-														'callback' => 'output_async_scripts_list',
+														'callback' => array($this,'output_async_items_list'),
 														),
 											'disabled' => array(
 														'slug' => 'wpssm_disabled_scripts',
@@ -140,7 +143,7 @@ class WPSSM_Admin extends WPSSM {
 														'stats' => '(%s files, total size %s)',
 														'label_for' => 'wpssm-enqueued-scripts',
 														'class' => 'foldable',
-														'callback' => 'output_disabled_scripts_list',
+														'callback' => array($this,'output_disabled_items_list'),
 														),											
 											)
 								)
@@ -159,7 +162,7 @@ class WPSSM_Admin extends WPSSM {
 														'stats' => '(%s files, total size %s)',
 														'label_for' => 'wpssm-enqueued-styles',
 														'class' => 'foldable',
-														'callback' => 'output_header_styles_list',
+														'callback' => array($this,'output_header_items_list'),
 														),
 											'footer' => array(
 														'slug' => 'wpssm_footer_enqueued_styles',
@@ -167,7 +170,7 @@ class WPSSM_Admin extends WPSSM {
 														'stats' => '(%s files, total size %s)',
 														'label_for' => 'wpssm-enqueued-styles',
 														'class' => 'foldable',
-														'callback' => 'output_footer_styles_list',
+														'callback' => array($this,'output_footer_items_list'),
 														),
 											'async' => array(
 														'slug' => 'wpssm_async_enqueued_styles',
@@ -175,7 +178,7 @@ class WPSSM_Admin extends WPSSM {
 														'stats' => '(%s files, total size %s)',
 														'label_for' => 'wpssm-enqueued-styles',
 														'class' => 'foldable',
-														'callback' => 'output_async_styles_list',
+														'callback' => array($this,'output_async_items_list'),
 														),
 											'disabled' => array(
 														'slug' => 'wpssm_disabled_styles',
@@ -183,29 +186,42 @@ class WPSSM_Admin extends WPSSM {
 														'stats' => '(%s files, total size %s)',
 														'label_for' => 'wpssm-disabled-styles',
 														'class' => 'foldable',
-														'callback' => 'output_disabled_styles_list',
+														'callback' => array($this,'output_disabled_items_list'),
 														),											
 											),
 								),
 					),
 			),
-		);
-		// Get active tab
-		$this->active_tab = isset( $_GET[ 'tab' ] ) ? esc_html($_GET[ 'tab' ]) : 'general';
-		// Prepare assets to disply
-		if ($this->active_tab != 'general') $this->prepare_displayed_assets($this->active_tab);
-		WPSSM_Debug::log('In hydrate admin, $this->displayed_assets', $this->displayed_assets);								
+		);		
+
+
+		WPSSM_Debug::log('In WPSSM_Admin init_admin(), $this->active_tab', $this->active_tab);	
+		// Prepare assets to display
+		$type=$this->active_tab;
+		$fields =  $this->config_settings_pages[$this->active_tab]['sections'][0]['fields'];
+		WPSSM_Debug::log('In WPSSM_Admin init_admin(), $fields', $fields );	
+		$this->prepare_displayed_assets( $type, $fields );
+		WPSSM_Debug::log('In WPSSM_Admin init_admin(), $this->displayed_assets', $this->displayed_assets);	
+		$this->output = new WPSSM_Admin_Output( $this->displayed_assets, $this->sizes );
+
+
+		$this->init_settings();						
 	}
 
 	
-	private function prepare_displayed_assets($type) {
+	private function prepare_displayed_assets($type, $fields) {
 		// Preparation of data to be displayed
-		WPSSM_Debug::log('In prepare_displayed_assets' );
-		foreach ($this->config_settings_pages[$type]['sections'][0]['fields'] as $location=>$placeholder) {		
-			$filtered = $this->assets->filter($type, array('location'=>$location) );
-			if ($filtered!=false) $this->displayed_assets[$location]=$filtered;
+		WPSSM_Debug::log('In prepare_displayed_assets for type', $type );
+		if ($type=='general') {
+			$this->displayed_assets = $this->assets->get('pages');
+		}
+		else {
+			foreach ($fields as $location=>$settings) {		
+				$disp = $this->assets->filter($type, array('location'=>$location) );
+				if ($disp!=false) $this->displayed_assets[$location]=$disp;
+			}
 		}	
-		//WPSSM_Debug::log('In WPSSM_Settings hydrate $this->displayed_assets: ', $this->displayed_assets);
+		WPSSM_Debug::log('In WPSSM_Admin prepare_displayed_assets() $this->displayed_assets: ', $this->displayed_assets);
 	}
 	
 
@@ -228,10 +244,10 @@ class WPSSM_Admin extends WPSSM {
 	
 
 	public function init_settings() {
-			WPSSM_Debug::log('In admin init : $this->config_settings_pages', $this->config_settings_pages);
+			WPSSM_Debug::log('In WPSSM_Admin init_settings : $this->config_settings_pages', $this->config_settings_pages);
 			
 			$page = $this->config_settings_pages[$this->active_tab];
-			WPSSM_Debug::log('In admin init : $this->config_settings_pages[$this->active_tab]', $page);
+			WPSSM_Debug::log('In WPSSM_Admin init_settings : $this->config_settings_pages[$this->active_tab]', $page);
 	    // register all settings, sections, and fields
     	foreach ( $page['sections'] as $section ) {
     		//WPSSM_Debug::log('register loop - sections', $section );
@@ -245,8 +261,8 @@ class WPSSM_Admin extends WPSSM {
     			//WPSSM_Debug::log('register loop - fields', array($handler => $field));
     			register_setting($section['slug'], $field['slug']);
     			if (isset($field['stats'])) {
-    				$count=$this->displayed_assets[$this->active_tab][$handler]['count'];
-    				$size=$this->displayed_assets[$this->active_tab][$handler]['size'];
+    				$count=$this->displayed_assets[$handler]['count'];
+    				$size=$this->displayed_assets[$handler]['size'];
     				$stats=sprintf($field['stats'],$count,size_format($size));
     			} else $stats='';
     			$info=(isset($field['stats']))?sprintf($field['stats'],$count,size_format($size)):'';
@@ -255,7 +271,7 @@ class WPSSM_Admin extends WPSSM {
 			    add_settings_field(
 			        $field['slug'],
 			        $field['title'] . ' ' . $stats,
-			        array($this, $field['callback']),
+			        $field['callback'],
 			        $page['slug'],
 			        $section['slug'],
 			        array( 
@@ -485,74 +501,47 @@ class WPSSM_Admin extends WPSSM {
 --------------------------------------------------------------*/	
 
 	public function output_toggle_switch_recording_cb() {
-		$this->output_toggle_switch( 'general_record', self::$opt_general_settings['record']);
+		$this->output->toggle_switch( 'general_record', self::$opt_general_settings['record']);
 	}	
 
 	public function output_toggle_switch_optimize_cb() {
-		$this->output_toggle_switch( 'general_optimize', self::$opt_general_settings['optimize']);
+		$this->output->toggle_switch( 'general_optimize', self::$opt_general_settings['optimize']);
 	}		
 	
 	public function output_toggle_switch_javasync_cb() {
-		$this->output_toggle_switch( 'general_javasync', self::$opt_general_settings['javasync']);
+		$this->output->toggle_switch( 'general_javasync', self::$opt_general_settings['javasync']);
 	}	
 
-	protected function output_toggle_switch( $input_name, $value ) {
-		WPSSM_Debug::log( 'in output toggle switch for ' . $input_name , $value);
-		$checked = ( $value == 'on')?'checked="checked"':'';
-		?>
-		<label class="switch">
-  	<input type="checkbox" name="<?php echo $input_name;?>_checkbox" <?php echo $checked;?> value="on">
-  	<div class="slider round"></div>
-		</label>
-		<?php
-	}
-	
 	
 /* GENERAL SETTINGS PAGE
 --------------------------------------------------------------*/		
 
-	public function output_pages_list() {
-		foreach ($this->opt_enqueued_assets['pages'] as $page) {
-			echo '<p>' . $page[0] . ' on ' . $page[1] . '</p>';
-		}
-	}
 
 
 /* SCRIPTS & STYLES PAGES
 --------------------------------------------------------------*/	
 
-	public function output_header_scripts_list() {
-		//WPSSM_Debug::log('Output items list', $type . ' : ' . $location);
+	public function output_header_items_list() {
 		$assets = $this->displayed_assets['header']['assets'];
-		//WPSSM_Debug::log( array('$this->displayed_assets' => $assets));
-		$sorted_list = $this->sort( $assets );
+		$this->output->items_list( $this->sort( $assets ) );
+		//WPSSM_Debug::log('Output items list', $type . ' : ' . $location);
 		//WPSSM_Debug::log( array('$sorted_list' => $sorted_list));		
-		
-		$this->output->items_list( $sorted_list );
+		//WPSSM_Debug::log( array('$this->displayed_assets' => $assets));
 	}
 	
-	public function output_footer_scripts_list() {
-		$this->	output_items_list('scripts', 'footer' );
+	public function output_footer_items_list() {
+		$assets = $this->displayed_assets['footer']['assets'];
+		$this->output->items_list( $this->sort( $assets ) );
 	}
 	
-	public function output_async_scripts_list() {
-		$this->	output_items_list('scripts', 'async' );
+	public function output_async_items_list() {
+		$assets = $this->displayed_assets['async']['assets'];
+		$this->output->items_list( $this->sort( $assets ) );
 	}
 	
-	public function output_disabled_scripts_list() {
-		$this->	output_items_list('scripts', 'disabled' );
-	}
-	
-	public function output_header_styles_list() {
-		$this->	output_items_list('styles', 'header' );
-	}
-	
-	public function output_footer_styles_list() {
-		$this->	output_items_list('styles', 'footer' );
-	}
-	
-	public function output_disabled_styles_list() {
-		$this->	output_items_list('styles', 'disabled' );
+	public function output_disabled_items_list() {
+		$assets = $this->displayed_assets['disabled']['assets'];
+		$this->output->items_list( $this->sort( $assets ) );
 	}
 
 	public function sort( $assets ) {

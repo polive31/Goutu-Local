@@ -15,26 +15,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 class WPSSM_Debug {
 		
 	const PHP_CONSOLE = false;
-  private static $output = '';
 	
 	public function __construct() {
-
-		//add_action( 'print_footer_scripts', array($this, 'output_debug_buffer') );
-		//add_action( 'admin_print_footer_scripts', array($this, 'output_debug_buffer') );
 		set_error_handler( 'WPSSM_Debug::error' );	
 	}
 	
-	public static function output_debug_buffer() {
+	public static function output_debug_buffer($output) {
 		ob_start();
 		?>
 		<script id="DBGlog" type="text/javascript">
-			<?php echo self::$output;?>
+			<?php echo $output;?>
 		</script>
 		<?php
 		//PC::debug(array('In wp head output_buffer :'=>self::$output));
-	}
-	
-	public static function init_dbg() {
 	}
 	
 	public static function error($code, $str, $file, $line) {
@@ -52,9 +45,9 @@ class WPSSM_Debug {
 			if ( !is_array($var) ) $var = '"' . $var . '"';
 			if ( is_array($var) ) $var = json_encode($var);
 			$style=( $type=='DEBUG' )?'blue':'red';
-			self::$output='console.log("%c' . $type . '%c ' . str_replace('\\', '\\\\', $msg) . '", "border-radius:4px;padding:2px 4px;background:' . $style . ';color:white", "color:' . $style . '");';  
-			self::$output.='console.log(' . $var . ');';
-			self::output_debug_buffer();
+			$output='console.log("%c' . $type . '%c ' . str_replace('\\', '\\\\', $msg) . '", "border-radius:4px;padding:2px 4px;background:' . $style . ';color:white", "color:' . $style . '");';  
+			$output.='console.log(' . $var . ');';
+			self::output_debug_buffer($output);
 		}
 	}
 	

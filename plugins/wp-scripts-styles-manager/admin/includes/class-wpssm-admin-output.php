@@ -10,11 +10,37 @@ class WPSSM_Admin_Output {
  	
   public function __construct( $assets, $sizes ) {
   	$this->assets = $assets;
+		WPSSM_Debug::log('In WPSSM_Output __construct(), $this->assets ', $this->assets);
   	$this->size_small=$sizes['small'];
   	$this->size_large=$sizes['large'];
   	$this->size_max=$sizes['max'];
   }
-  
+
+
+/* GENERAL SETTINGS PAGE
+--------------------------------------------------------------------*/
+	public function pages_list() {
+		WPSSM_Debug::log('In WPSSM_Output pages_list(), $this->assets ', $this->assets);
+		foreach ($this->assets as $page) {
+			echo '<p>' . $page[0] . ' on ' . $page[1] . '</p>';
+		}
+	}
+	
+
+	public function toggle_switch( $input_name, $value ) {
+		WPSSM_Debug::log( 'in output toggle switch for ' . $input_name , $value);
+		$checked = ( $value == 'on')?'checked="checked"':'';
+		?>
+		<label class="switch">
+  	<input type="checkbox" name="<?php echo $input_name;?>_checkbox" <?php echo $checked;?> value="on">
+  	<div class="slider round"></div>
+		</label>
+		<?php
+	}
+	
+
+/* SCRIPTS AND STYLES PAGES
+--------------------------------------------------------------------*/  
 	public function items_list( $sorted_list, $type, $location ) {
 		?><table class="enqueued-assets"><?php
 		$this->_item_headline();
@@ -47,9 +73,9 @@ class WPSSM_Admin_Output {
     	$dependents = $asset['dependents'];
     	$priority = $asset['priority'];
     	//$location = $this->get_field_value( $asset, 'location');
-	    $minify = $this->get_field_value( $asset, 'minify');
-	    $size = $this->get_field_value( $asset, 'size');
-	    $name = $this->get_field_name();
+	    $minify = $this->assets->get_field_value( $asset, 'minify');
+	    $size = $this->assets->get_field_value( $asset, 'size');
+	    $name = $this->assets->get_field_name();
 	    	
 	    $asset_is_minified = ( $asset[ 'minify' ] == 'yes')?true:false; 
 	    $already_minified_msg = __('This file is already minimized within its plugin', 'jco');

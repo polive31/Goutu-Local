@@ -59,13 +59,13 @@ class WPSSM_Assets extends WPSSM {
 	public function filter($type, $filter_args) {
 		WPSSM_Debug::log('In WPSSM_Assets filter() : ' . $type );
 		WPSSM_Debug::log('In WPSSM_Assets filter() args ' , $this->filter_args );
+		WPSSM_Debug::log('In WPSSM_Assets filter() return value ', $filtered_assets );
 		if (! isset( $this->opt_enqueued_assets[$type] ) ) return false;
 		if (! is_array( $filter_args ) ) return false;
 		$this->filter_args = $filter_args;
 		$filtered_assets['assets'] = array_filter($this->opt_enqueued_assets[$type], array($this, 'filter_cb') );	
 		$filtered_assets['count']=count($filtered_assets['assets']);
 		$filtered_assets['size']=array_sum( array_column( $filtered_assets['assets'],'size'));
-		WPSSM_Debug::log('In WPSSM_Assets filter() return value ', $filtered_assets );
 		return $filtered_assets;
 	}
 

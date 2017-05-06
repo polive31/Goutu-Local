@@ -52,7 +52,7 @@ class WPSSM_Debug {
 			if ( !is_array($var) ) $var = '"' . $var . '"';
 			if ( is_array($var) ) $var = json_encode($var);
 			$style=( $type=='DEBUG' )?'blue':'red';
-			self::$output='console.log("%c' . $type . '%c ' . $msg . '", "border-radius:4px;padding:2px 4px;background:' . $style . ';color:white", "color:' . $style . '");';  
+			self::$output='console.log("%c' . $type . '%c ' . str_replace('\\', '\\\\', $msg) . '", "border-radius:4px;padding:2px 4px;background:' . $style . ';color:white", "color:' . $style . '");';  
 			self::$output.='console.log(' . $var . ');';
 			self::output_debug_buffer();
 		}

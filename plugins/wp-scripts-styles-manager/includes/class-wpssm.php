@@ -65,14 +65,15 @@ class WPSSM {
 		if ( !self::PLUGIN_DBG ) return;
 		WPSSM_Debug::log('In define_debug_hooks');
 		$plugin_debug = new WPSSM_Debug();
-		set_error_handler( array(WPSSM_Debug, 'log') );
+		//$this->loader->add_action( 'wp', 																$plugin_debug, 'init_dbg' 																);
+		//set_error_handler( 'WPSSM_Debug::error' );	
 	}
 	
 	
 	private function _define_admin_hooks() {
 		WPSSM_Debug::log('In define_admin_hooks');														
 		$plugin_admin = new WPSSM_Admin();
-		$this->loader->add_action( 'admin_init', 												$plugin_admin, 'init_admin' 																	);
+		$this->loader->add_action( 'admin_init', 												$plugin_admin, 'init_admin' 															);
 		$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'init_settings' 														);
 		$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'add_plugin_menu_option_cb' 								);
 		$this->loader->add_action( 'admin_enqueue_scripts', 						$plugin_admin, 'enqueue_scripts' 													);

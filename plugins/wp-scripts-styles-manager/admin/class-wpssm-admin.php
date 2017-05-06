@@ -29,9 +29,9 @@ class WPSSM_Admin extends WPSSM {
 
 
 	public function __construct() {
-		require_once plugin_dir_path( __FILE__ ) . 'helpers/class-wpssm-assets.php' ;	
-		require_once plugin_dir_path( __FILE__ ) . 'helpers/class-wpssm-admin-output.php' ;	
-		require_once plugin_dir_path( __FILE__ ) . 'helpers/class-wpssm-admin-post.php' ;	
+		require_once plugin_dir_path( dirname(__FILE__) ) . 'includes/class-wpssm-assets.php' ;	
+		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-output.php' ;	
+		//require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-post.php' ;	
 		$sizes=array('small'=>self::SIZE_SMALL, 'large'=>self::SIZE_LARGE, 'max'=>self::SIZE_MAX);										
 	}														
 														
@@ -57,7 +57,7 @@ class WPSSM_Admin extends WPSSM {
 		Instantiation not done in __construct() to avoid useless database accesses */	
 		$this->assets = new WPSSM_Assets();
 		$this->output = new WPSSM_Admin_Output( $this->displayed_assets, $sizes );
-		$this->post = new WPSSM_Admin_Post( $this->assets );
+		//$this->post = new WPSSM_Admin_Post( $this->assets );
 		
 		WPSSM_Debug::log('In WPSSM_Admin hydrate');
 		if ( !is_admin() ) return;

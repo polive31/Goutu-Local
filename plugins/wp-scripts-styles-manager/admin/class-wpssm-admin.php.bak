@@ -8,20 +8,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class WPSSM_Admin extends WPSSM {
 
-	const SIZE_SMALL = 1000;
-	const SIZE_LARGE = 1000;
-	const SIZE_MAX = 200000;
+	const SMALL = 1000;
+	const LARGE = 1000;
+	const MAX = 200000;
 
 	protected $config_settings_pages; // Initialized in hydrate_settings
-	
-	protected $displayed_assets = array();
 
 	protected $header_scripts;
 	protected $header_styles;
 	protected $active_tab;
-	protected $sizes;
-	
-
 	
 	/* Objects */ 													
 	protected $assets;														
@@ -32,8 +27,7 @@ class WPSSM_Admin extends WPSSM {
 	public function __construct() {
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'includes/class-wpssm-assets.php' ;	
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-output.php' ;	
-		//require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-post.php' ;	
-		$this->sizes = array('small'=>self::SIZE_SMALL, 'large'=>self::SIZE_LARGE, 'max'=>self::SIZE_MAX);										
+		//require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-post.php' ;										
 	}														
 														
 	public function enqueue_styles() {
@@ -119,7 +113,7 @@ class WPSSM_Admin extends WPSSM {
 														'stats' => '(%s files, total size %s)',
 														'label_for' => 'wpssm-enqueued-scripts',
 														'class' => 'foldable',
-														'callback' => array($this,'output_header_items_list'),
+														'callback' => array($this->output, 'header_items_list'),
 														),
 											'footer' => array(
 														'slug' => 'wpssm_footer_enqueued_scripts',
@@ -127,7 +121,7 @@ class WPSSM_Admin extends WPSSM {
 														'stats' => '(%s files, total size %s)',
 														'label_for' => 'wpssm-enqueued-scripts',
 														'class' => 'foldable',
-														'callback' => array($this,'output_footer_items_list'),
+														'callback' => array($this->output, 'footer_items_list'),
 														),
 											'async' => array(
 														'slug' => 'wpssm_async_enqueued_scripts',
@@ -135,7 +129,7 @@ class WPSSM_Admin extends WPSSM {
 														'stats' => '(%s files, total size %s)',
 														'label_for' => 'wpssm-enqueued-scripts',
 														'class' => 'foldable',
-														'callback' => array($this,'output_async_items_list'),
+														'callback' => array($this->output, 'async_items_list'),
 														),
 											'disabled' => array(
 														'slug' => 'wpssm_disabled_scripts',
@@ -143,7 +137,7 @@ class WPSSM_Admin extends WPSSM {
 														'stats' => '(%s files, total size %s)',
 														'label_for' => 'wpssm-enqueued-scripts',
 														'class' => 'foldable',
-														'callback' => array($this,'output_disabled_items_list'),
+														'callback' => array($this->output, 'disabled_items_list'),
 														),											
 											)
 								)
@@ -162,7 +156,7 @@ class WPSSM_Admin extends WPSSM {
 														'stats' => '(%s files, total size %s)',
 														'label_for' => 'wpssm-enqueued-styles',
 														'class' => 'foldable',
-														'callback' => array($this,'output_header_items_list'),
+														'callback' => array($this->output, 'header_items_list'),
 														),
 											'footer' => array(
 														'slug' => 'wpssm_footer_enqueued_styles',
@@ -170,7 +164,7 @@ class WPSSM_Admin extends WPSSM {
 														'stats' => '(%s files, total size %s)',
 														'label_for' => 'wpssm-enqueued-styles',
 														'class' => 'foldable',
-														'callback' => array($this,'output_footer_items_list'),
+														'callback' => array($this->output, 'footer_items_list'),
 														),
 											'async' => array(
 														'slug' => 'wpssm_async_enqueued_styles',
@@ -178,7 +172,7 @@ class WPSSM_Admin extends WPSSM {
 														'stats' => '(%s files, total size %s)',
 														'label_for' => 'wpssm-enqueued-styles',
 														'class' => 'foldable',
-														'callback' => array($this,'output_async_items_list'),
+														'callback' => array($this->output, 'async_items_list'),
 														),
 											'disabled' => array(
 														'slug' => 'wpssm_disabled_styles',
@@ -186,7 +180,7 @@ class WPSSM_Admin extends WPSSM {
 														'stats' => '(%s files, total size %s)',
 														'label_for' => 'wpssm-disabled-styles',
 														'class' => 'foldable',
-														'callback' => array($this,'output_disabled_items_list'),
+														'callback' => array($this->output, 'disabled_items_list'),
 														),											
 											),
 								),
@@ -200,30 +194,20 @@ class WPSSM_Admin extends WPSSM {
 		$type=$this->active_tab;
 		$fields =  $this->config_settings_pages[$this->active_tab]['sections'][0]['fields'];
 		WPSSM_Debug::log('In WPSSM_Admin init_admin(), $fields', $fields );	
-		$this->prepare_displayed_assets( $type, $fields );
+
 		WPSSM_Debug::log('In WPSSM_Admin init_admin(), $this->displayed_assets', $this->displayed_assets);	
-		$this->output = new WPSSM_Admin_Output( $this->displayed_assets, $this->sizes );
+		$this->output = new WPSSM_Admin_Output( $this->assets, array( 'type'	=>	$type, 
+																																	'fields'=>	$fields, 
+																																	'small'	=>	self::$SMALL, 
+																																	'large'	=>	self::$LARGE, 
+																																	'max'		=>	self::$MAX ) );
 
 
 		$this->init_settings();						
 	}
 
 	
-	private function prepare_displayed_assets($type, $fields) {
-		// Preparation of data to be displayed
-		WPSSM_Debug::log('In prepare_displayed_assets for type', $type );
-		if ($type=='general') {
-			$this->displayed_assets = $this->assets->get('pages');
-		}
-		else {
-			foreach ($fields as $location=>$settings) {		
-				$disp = $this->assets->filter($type, array('location'=>$location) );
-				if ($disp!=false) $this->displayed_assets[$location]=$filtered;
-			}
-		}	
-		WPSSM_Debug::log('In WPSSM_Admin prepare_displayed_assets() $this->displayed_assets: ', $this->displayed_assets);
-	}
-	
+
 
 
 /* OPTION PAGE SETTINGS INIT 
@@ -521,44 +505,6 @@ class WPSSM_Admin extends WPSSM {
 /* SCRIPTS & STYLES PAGES
 --------------------------------------------------------------*/	
 
-	public function output_header_items_list() {
-		$assets = $this->displayed_assets['header']['assets'];
-		$this->output->items_list( $this->sort( $assets ) );
-		//WPSSM_Debug::log('Output items list', $type . ' : ' . $location);
-		//WPSSM_Debug::log( array('$sorted_list' => $sorted_list));		
-		//WPSSM_Debug::log( array('$this->displayed_assets' => $assets));
-	}
-	
-	public function output_footer_items_list() {
-		$assets = $this->displayed_assets['footer']['assets'];
-		$this->output->items_list( $this->sort( $assets ) );
-	}
-	
-	public function output_async_items_list() {
-		$assets = $this->displayed_assets['async']['assets'];
-		$this->output->items_list( $this->sort( $assets ) );
-	}
-	
-	public function output_disabled_items_list() {
-		$assets = $this->displayed_assets['disabled']['assets'];
-		$this->output->items_list( $this->sort( $assets ) );
-	}
-
-	public function sort( $assets ) {
-		$sort_field = $this->sort_args['field'];
-		$sort_order = $this->sort_args['order'];
-		$sort_type = $this->sort_args['type'];
-		$list = array_column($assets, $sort_field, 'handle' );		
-		//WPSSM_Debug::log( array( 'sorted list : '=>$list ));
-		if ( $sort_order == SORT_ASC)
-			asort($list, $sort_type );
-		else 
-			arsort($list, $sort_type );
-//		foreach ($sort_column as $key => $value) {
-//			echo '<p>' . $key . ' : ' . $value . '<p>';
-//		}
-		return $list;
-	}	
 
 
 

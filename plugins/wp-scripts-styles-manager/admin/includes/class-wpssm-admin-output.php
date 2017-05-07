@@ -2,19 +2,42 @@
 
 class WPSSM_Admin_Output {
  	
- 	private $size_small;
- 	private $size_large;
- 	private $size_max;
- 	private $assets;
- 	private $user_notification;
+ 	private $small;
+ 	private $large;
+ 	private $max;
+ 	private $type;
+ 	private $fields;
  	
-  public function __construct( $assets, $sizes ) {
+ 	private $displayed
+ 	private $asset_notice;
+ 	
+ 	/* Objects */
+ 	private $assets;
+  
+  public function __construct( $assets, $args ) {
   	$this->assets = $assets;
-		WPSSM_Debug::log('In WPSSM_Output __construct(), $this->assets ', $this->assets);
-  	$this->size_small=$sizes['small'];
-  	$this->size_large=$sizes['large'];
-  	$this->size_max=$sizes['max'];
+    foreach($args as $key => $value) {
+        $this->$key = $value;
+    }
+		$this->hydrate();
   }
+  
+  private function hydrate() {
+		// Preparation of data to be displayed
+		WPSSM_Debug::log('In prepare_displayed for type', $type );
+		if ($this->type=='general') {
+			$this->displayed = $this->assets->get('pages');
+		}
+		else {
+			foreach ($this->fields as $location=>$settings) {		
+				$disp = $this->assets->filter($type, array('location'=>$location) );
+				if ($disp!=false) $this->displayed[$location]=$disp;
+			}
+		}	
+		WPSSM_Debug::log('In WPSSM_Admin prepare_displayed() $this->displayed: ', $this->displayed);
+	}
+	
+  
 
 
 /* GENERAL SETTINGS PAGE
@@ -41,6 +64,48 @@ class WPSSM_Admin_Output {
 
 /* SCRIPTS AND STYLES PAGES
 --------------------------------------------------------------------*/  
+
+	public function header_items_list() {
+		$assets = $this->assets['header']['assets'];
+		$this->items_list( $this->sort( $assets ) );
+		//WPSSM_Debug::log('Output items list', $type . ' : ' . $location);
+		//WPSSM_Debug::log( array('$sorted_list' => $sorted_list));		
+		//WPSSM_Debug::log( array('$this->displayed' => $assets));
+	}
+	
+	public function footer_items_list() {
+		$assets = $this->assets['footer']['assets'];
+		$this->items_list( $this->sort( $assets ) );
+	}
+	
+	public function async_items_list() {
+		$assets = $this->displayed['async']['assets'];
+		$this->items_list( $this->sort( $assets ) );
+	}
+	
+	public function disabled_items_list() {
+		$assets = $this->displayed['disabled']['assets'];
+		$this->items_list( $this->sort( $assets ) );
+	}
+
+	public function sort( $assets ) {
+		$sort_field = $this->sort_args['field'];
+		$sort_order = $this->sort_args['order'];
+		$sort_type = $this->sort_args['type'];
+		$list = array_column($assets, $sort_field, 'handle' );		
+		//WPSSM_Debug::log( array( 'sorted list : '=>$list ));
+		if ( $sort_order == SORT_ASC)
+			asort($list, $sort_type );
+		else 
+			arsort($list, $sort_type );
+//		foreach ($sort_column as $key => $value) {
+//			echo '<p>' . $key . ' : ' . $value . '<p>';
+//		}
+		return $list;
+	}	
+
+
+
 	public function items_list( $sorted_list, $type, $location ) {
 		?><table class="enqueued-assets"><?php
 		$this->_item_headline();
@@ -83,7 +148,7 @@ class WPSSM_Admin_Output {
 	    
 		?>
 		   	<tr class="enqueued-asset <?php echo $type;?>" id="<?php echo $handle;?>">
-	    	<td class="handle" title="<?php echo $filename;?>"><?php echo $handle;?><?php $this->output_user_notification( $asset );?></td>
+	    	<td class="handle" title="<?php echo $filename;?>"><?php echo $handle;?><?php $this->output_asset_notice( $asset );?></td>
 	    	
 	    	<td><?php echo $priority;?></td>
 	    	
@@ -124,7 +189,7 @@ class WPSSM_Admin_Output {
 --------------------------------------------------------------*/		
 	
 	
-	private function output_user_notification( $asset ) {
+	private function output_asset_notice( $asset ) {
 		
 		$size= $asset['size'];
 		//WPSSM_Debug::log(array('size : '=>$size));
@@ -132,43 +197,43 @@ class WPSSM_Admin_Output {
 		//WPSSM_Debug::log(array('is_minified: '=>$is_minified));
 		$in_footer = ( $this->get_field_value( $asset, 'location') == 'footer');
 		
-		$this->reset_user_notification();
+		$this->reset_asset_notice();
 		if (!$is_minified) {
 			if ( $size > $this->size_large ) {
 				$level = 'issue';
 				$msg = __('This file is large and not minified : minification highly recommended', 'jco');	
-				$this->enqueue_user_notification( $msg, $level);
+				$this->enqueue_asset_notice( $msg, $level);
 			}
 			elseif ( $size != 0 ) {
 				$level = 'warning';
 				$msg = __('This file is not minified : minification recommended', 'jco');	
-				$this->enqueue_user_notification( $msg, $level);
+				$this->enqueue_asset_notice( $msg, $level);
 			}
 		}
 
 		if ( ( $size > $this->size_large ) && ( !$in_footer ) ) {
 			$level = 'issue';
 			$msg = __('Large files loaded in the header will slow down page display : make asynchronous, loading in footer or at least conditional enqueue recommended', 'jco');			
-			$this->enqueue_user_notification( $msg, $level);
+			$this->enqueue_asset_notice( $msg, $level);
 		}	
 		
 		if ( ( $size < $this->size_small ) && (!isset( $asset['in_group']) ) ) {
 			$level = 'warning';
 			$msg = __('This file is small and requires a specific http request : it is recommended to inline it, or to group it with other files', 'jco');			
-			$this->enqueue_user_notification( $msg, $level);
+			$this->enqueue_asset_notice( $msg, $level);
 		}	
-		echo $this->user_notification;
+		echo $this->asset_notice;
 		
 	}
 
 
-	private function reset_user_notification() {
-		$this->user_notification='';
+	private function reset_asset_notice() {
+		$this->asset_notice='';
 	}
 	
-	private function enqueue_user_notification( $msg, $level) {
+	private function enqueue_asset_notice( $msg, $level) {
 		if ($msg != '') {
-			$this->user_notification .= '<i class="user-notification" id="' . $level . '" title="' . $msg . '"></i>';
+			$this->asset_notice .= '<i class="user-notification" id="' . $level . '" title="' . $msg . '"></i>';
 		}		
 	}
 	

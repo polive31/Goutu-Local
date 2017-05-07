@@ -7,11 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 class WPSSM_Admin extends WPSSM {
-
-	const SMALL = 1000;
-	const LARGE = 1000;
-	const MAX = 200000;
-
+	
 	protected $config_settings_pages; // Initialized in hydrate_settings
 
 	protected $header_scripts;
@@ -26,6 +22,7 @@ class WPSSM_Admin extends WPSSM {
 
 	public function __construct() {
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'includes/class-wpssm-assets.php' ;	
+		require_once plugin_dir_path( dirname(__FILE__) ) . 'includes/class-wpssm-assets-display.php' ;	
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-output.php' ;	
 		//require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-post.php' ;										
 	}														
@@ -51,7 +48,7 @@ class WPSSM_Admin extends WPSSM {
 		WPSSM_Debug::log( 'In WPSSM_Admin init_admin()' );								
 		/* Instantiates objects and hydrates them 
 		Instantiation not done in __construct() to avoid useless database accesses */	
-		$this->assets = new WPSSM_Assets();
+		//$this->assets = new WPSSM_Assets();
 		//$this->post = new WPSSM_Admin_Post( $this->assets );
 		
 		WPSSM_Debug::log('In WPSSM_Admin init_admin()');
@@ -59,6 +56,14 @@ class WPSSM_Admin extends WPSSM {
 
 		// Get active tab
 		$this->active_tab = isset( $_GET[ 'tab' ] ) ? esc_html($_GET[ 'tab' ]) : 'general';
+		
+		$this->assets = new WPSSM_Assets_Display( $this->active_tab, 'location' );
+		$this->output = new WPSSM_Admin_Output( $this->assets, array(
+																														'plugin_name' => self::PLUGIN_NAME,
+																														'form_action' => self::FORM_ACTION,
+																														'nonce' => self::NONCE,
+																														) );
+		
 		// Initialize options settings for active tab
 		$this->config_settings_pages = array(
 			'general' => array(
@@ -188,25 +193,13 @@ class WPSSM_Admin extends WPSSM {
 			),
 		);		
 
-
 		WPSSM_Debug::log('In WPSSM_Admin init_admin(), $this->active_tab', $this->active_tab);	
 		// Prepare assets to display
-		$type=$this->active_tab;
-		$fields =  $this->config_settings_pages[$this->active_tab]['sections'][0]['fields'];
-		WPSSM_Debug::log('In WPSSM_Admin init_admin(), $fields', $fields );	
 
-		WPSSM_Debug::log('In WPSSM_Admin init_admin(), $this->displayed_assets', $this->displayed_assets);	
-		$this->output = new WPSSM_Admin_Output( $this->assets, array( 'type'	=>	$type, 
-																																	'fields'=>	$fields, 
-																																	'small'	=>	self::$SMALL, 
-																																	'large'	=>	self::$LARGE, 
-																																	'max'		=>	self::$MAX ) );
-
-
+		
 		$this->init_settings();						
 	}
 
-	
 
 
 
@@ -221,7 +214,7 @@ class WPSSM_Admin extends WPSSM {
       'Scripts & Styles Manager',
       'manage_options',
       self::PLUGIN_NAME,
-      array($this, 'output_options_page')
+      array($this, 'output_options_page' )
 	    );
 		add_action( "load-$opt_page_id", array ( $this, 'load_option_page_cb' ) );
 	}
@@ -234,28 +227,27 @@ class WPSSM_Admin extends WPSSM {
 			WPSSM_Debug::log('In WPSSM_Admin init_settings : $this->config_settings_pages[$this->active_tab]', $page);
 	    // register all settings, sections, and fields
     	foreach ( $page['sections'] as $section ) {
-    		//WPSSM_Debug::log('register loop - sections', $section );
+    		WPSSM_Debug::log('register loop - sections', $section );
 				add_settings_section(
 	        $section['slug'],
 	        $section['title'],
-	        array($this,'output_section_cb'),
+	        array($this->output,'section_headline'),
 	        $page['slug']
 	    	);	
-    		foreach ($section['fields'] as $handler => $field) {
-    			//WPSSM_Debug::log('register loop - fields', array($handler => $field));
-    			register_setting($section['slug'], $field['slug']);
-    			if (isset($field['stats'])) {
-    				$count=$this->displayed_assets[$handler]['count'];
-    				$size=$this->displayed_assets[$handler]['size'];
-    				$stats=sprintf($field['stats'],$count,size_format($size));
+    		foreach ($section['fields'] as $field => $settings) {
+    			WPSSM_Debug::log('register loop - fields', array($field => $settings));
+    			register_setting($section['slug'], $settings['slug']);
+    			if (isset($settings['stats'])) {
+    				$count=$this->assets->get_stat($field, 'count');
+    				$size=$this->assets->get_stat($field, 'size');
+    				$stats=sprintf($settings['stats'],$count,size_format($size));
     			} else $stats='';
-    			$info=(isset($field['stats']))?sprintf($field['stats'],$count,size_format($size)):'';
-    			$label=(isset($field['label_for']))?$field['label_for']:'';
-    			$class=(isset($field['class']))?$field['class']:'';
+    			$label=(isset($settings['label_for']))?$settings['label_for']:'';
+    			$class=(isset($settings['class']))?$settings['class']:'';
 			    add_settings_field(
-			        $field['slug'],
-			        $field['title'] . ' ' . $stats,
-			        $field['callback'],
+			        $settings['slug'],
+			        $settings['title'] . ' ' . $stats,
+			        $settings['callback'],
 			        $page['slug'],
 			        $section['slug'],
 			        array( 
@@ -266,9 +258,59 @@ class WPSSM_Admin extends WPSSM {
 	    } 	
 	}	
 	
+
+/* OPTIONS PAGE
+--------------------------------------------------------------*/	
+
+	public function output_options_page() {
+	    // check user capabilities
+	    if (!current_user_can('manage_options')) return;
+			$referer = menu_page_url( self::PLUGIN_NAME, FALSE  );
+			$page_slug = $this->config_settings_pages[$this->active_tab]['slug'];
+			?>
+
+	    <div class="wrap">
+	        <h1><?= esc_html(get_admin_page_title()); ?></h1>
+	        
+						<h2 class="nav-tab-wrapper">
+						<a href="?page=<?php echo self::PLUGIN_NAME;?>&tab=general" class="nav-tab <?php echo $this->active_tab == 'general' ? 'nav-tab-active' : ''; ?>">General Settings</a>
+						<a href="?page=<?php echo self::PLUGIN_NAME;?>&tab=scripts" class="nav-tab <?php echo $this->active_tab == 'scripts' ? 'nav-tab-active' : ''; ?>">Scripts</a>
+						<a href="?page=<?php echo self::PLUGIN_NAME;?>&tab=styles" class="nav-tab <?php echo $this->active_tab == 'styles' ? 'nav-tab-active' : ''; ?>">Styles</a>
+						</h2>
+	        
+		        <form action="<?php echo admin_url( 'admin-post.php' ); ?>" method="post">
+	        		<?php	
+							$this->output_form_buttons($referer);
+							settings_fields( $page_slug );
+							do_settings_sections( $page_slug );
+							$this->output_form_buttons($referer);
+	        		?>	
+	        
+		        </form>  
+	    </div>
+	    <?php
+	}
 	
+	protected function output_form_buttons($referer) { 
+		?>
+		<!-- Output form buttons -->
+	  <table class="button-table" col="2">
+	    <tr>
+				<input type="hidden" name="action" value="<?php echo self::FORM_ACTION; ?>">
+				<?php wp_nonce_field( self::FORM_ACTION, self::NONCE, FALSE ); ?>
+				<input type="hidden" name="_wpssm_http_referer" value="<?php echo $referer; ?>">
+				<input type="hidden" name="_wpssm_active_tab" value="<?php echo $this->active_tab; ?>">
 
-
+	    	<td><?php submit_button( 'Save ' . $this->active_tab . ' settings', 'primary', 'wpssm_save', true, array('tabindex'=>'1') );?> </td>
+	    	<?php if ($this->active_tab != 'general') { ?>
+	    	<td><?php submit_button( 'Reset ' . $this->active_tab . ' settings', 'secondary', 'wpssm_reset', true, array('tabindex'=>'2') );?> </td>
+	    	<?php } ?>
+	    	<td><?php submit_button( 'Delete everything', 'delete', 'wpssm_delete', true, array('tabindex'=>'3') );?> </td>
+	  	</tr>
+	  </table>
+	<?php 
+	}
+	
 	
 
 /* FORM SUBMISSION
@@ -420,64 +462,10 @@ class WPSSM_Admin extends WPSSM {
 	}
 
 
-
-/* OUTPUT FUNCTIONS
---------------------------------------------------------------*/	
-	public function output_options_page() {
-	    // check user capabilities
-	    if (!current_user_can('manage_options')) return;			
-			$referer = menu_page_url( self::PLUGIN_NAME, FALSE  );
-			?>
-
-	    <div class="wrap">
-	        <h1><?= esc_html(get_admin_page_title()); ?></h1>
-	        
-						<h2 class="nav-tab-wrapper">
-						<a href="?page=<?php echo self::PLUGIN_NAME;?>&tab=general" class="nav-tab <?php echo $this->active_tab == 'general' ? 'nav-tab-active' : ''; ?>">General Settings</a>
-						<a href="?page=<?php echo self::PLUGIN_NAME;?>&tab=scripts" class="nav-tab <?php echo $this->active_tab == 'scripts' ? 'nav-tab-active' : ''; ?>">Scripts</a>
-						<a href="?page=<?php echo self::PLUGIN_NAME;?>&tab=styles" class="nav-tab <?php echo $this->active_tab == 'styles' ? 'nav-tab-active' : ''; ?>">Styles</a>
-						</h2>
-	        
-		        <form action="<?php echo admin_url( 'admin-post.php' ); ?>" method="post">
-	        		<?php	
-							$this->output_form_buttons($referer);
-							settings_fields($this->config_settings_pages[$this->active_tab]['slug']);
-							do_settings_sections($this->config_settings_pages[$this->active_tab]['slug']);
-							$this->output_form_buttons($referer);
-	        		?>	
-	        
-		        </form>  
-	    </div>
-	    <?php
-	}
-	
-	protected function output_form_buttons($referer) { 
-		?>
-		<!-- Output form buttons -->
-	  <table class="button-table" col="2">
-	    <tr>
-				<input type="hidden" name="action" value="<?php echo self::FORM_ACTION; ?>">
-				<?php wp_nonce_field( self::FORM_ACTION, self::NONCE, FALSE ); ?>
-				<input type="hidden" name="_wpssm_http_referer" value="<?php echo $referer; ?>">
-				<input type="hidden" name="_wpssm_active_tab" value="<?php echo $this->active_tab; ?>">
-
-	    	<td><?php submit_button( 'Save ' . $this->active_tab . ' settings', 'primary', 'wpssm_save', true, array('tabindex'=>'1') );?> </td>
-	    	<?php if ($this->active_tab != 'general') { ?>
-	    	<td><?php submit_button( 'Reset ' . $this->active_tab . ' settings', 'secondary', 'wpssm_reset', true, array('tabindex'=>'2') );?> </td>
-	    	<?php } ?>
-	    	<td><?php submit_button( 'Delete everything', 'delete', 'wpssm_delete', true, array('tabindex'=>'3') );?> </td>
-	  	</tr>
-	  </table>
-	<?php 
-	}
-	
 	
 /* SECTIONS
 --------------------------------------------------------------*/	
 
-	public function output_section_cb( $section ) {
-		//WPSSM_Debug::log('In section callback');
-	}
 
 
 

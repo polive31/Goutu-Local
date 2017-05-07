@@ -118,7 +118,7 @@ class WPSSM {
 	public function get_loader() {
 		return $this->loader;
 	}
-
+	
 	protected function hydrate_opt( &$attribute, $option ) {
 		$get_option = get_option( $option );
 		if ( $get_option!=false ) {
@@ -127,7 +127,7 @@ class WPSSM {
 			else
 				$attribute = $get_option;
 		}
-		WPSSM_Debug::log('In WPSSM hydrate_opt ', $attribute);
+		WPSSM_Debug::log('In WPSSM hydrate_opt option=' . $option, $attribute);
 	}
 	
 

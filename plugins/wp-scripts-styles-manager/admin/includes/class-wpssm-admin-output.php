@@ -1,50 +1,50 @@
 <?php
 
 class WPSSM_Admin_Output {
+	
+	const SMALL = 1000;
+	const LARGE = 1000;
+	const MAX = 200000;
  	
- 	private $small;
- 	private $large;
- 	private $max;
  	private $type;
- 	private $fields;
+ 	private $size_small;
+ 	private $size_large;
+ 	private $size_max;
  	
- 	private $displayed
  	private $asset_notice;
+
+ 	/* Class arguments */
+ 	private $plugin_name;
  	
  	/* Objects */
  	private $assets;
   
   public function __construct( $assets, $args ) {
+  	$this->type = $assets->get_display_attr('type');
+  	$this->size_small = self::SMALL;
+  	$this->size_large = self::LARGE;
+  	$this->size_max = self::MAX;
   	$this->assets = $assets;
-    foreach($args as $key => $value) {
-        $this->$key = $value;
-    }
-		$this->hydrate();
+  	foreach ($args as $key=>$value) {
+  		$this->$key = $value;
+  	}
   }
-  
-  private function hydrate() {
-		// Preparation of data to be displayed
-		WPSSM_Debug::log('In prepare_displayed for type', $type );
-		if ($this->type=='general') {
-			$this->displayed = $this->assets->get('pages');
-		}
-		else {
-			foreach ($this->fields as $location=>$settings) {		
-				$disp = $this->assets->filter($type, array('location'=>$location) );
-				if ($disp!=false) $this->displayed[$location]=$disp;
-			}
-		}	
-		WPSSM_Debug::log('In WPSSM_Admin prepare_displayed() $this->displayed: ', $this->displayed);
-	}
-	
-  
 
+
+  
+/* COMMON 
+--------------------------------------------------------------------*/
+	public function section_headline( $section ) {
+		//WPSSM_Debug::log('In section callback');
+	}
+    
 
 /* GENERAL SETTINGS PAGE
 --------------------------------------------------------------------*/
 	public function pages_list() {
-		WPSSM_Debug::log('In WPSSM_Output pages_list(), $this->assets ', $this->assets);
-		foreach ($this->assets as $page) {
+		if ( $this->type != 'general') return false;
+		WPSSM_Debug::log('In WPSSM_Output pages_list(), $this->assets ', $this->assets->get('pages') );
+		foreach ($this->assets->get_displayed_assets() as $page) {
 			echo '<p>' . $page[0] . ' on ' . $page[1] . '</p>';
 		}
 	}
@@ -66,58 +66,34 @@ class WPSSM_Admin_Output {
 --------------------------------------------------------------------*/  
 
 	public function header_items_list() {
-		$assets = $this->assets['header']['assets'];
-		$this->items_list( $this->sort( $assets ) );
-		//WPSSM_Debug::log('Output items list', $type . ' : ' . $location);
-		//WPSSM_Debug::log( array('$sorted_list' => $sorted_list));		
-		//WPSSM_Debug::log( array('$this->displayed' => $assets));
+		$this->items_list( $this->assets->sort( 'header' ), 'header' );
 	}
 	
 	public function footer_items_list() {
-		$assets = $this->assets['footer']['assets'];
-		$this->items_list( $this->sort( $assets ) );
+		$this->items_list( $this->assets->sort( 'footer' ), 'footer' );
 	}
 	
 	public function async_items_list() {
-		$assets = $this->displayed['async']['assets'];
-		$this->items_list( $this->sort( $assets ) );
+		$this->items_list( $this->assets->sort( 'async' ), 'async' );
 	}
 	
 	public function disabled_items_list() {
-		$assets = $this->displayed['disabled']['assets'];
-		$this->items_list( $this->sort( $assets ) );
+		$this->items_list( $this->assets->sort( 'disabled' ), 'disabled' );
 	}
 
-	public function sort( $assets ) {
-		$sort_field = $this->sort_args['field'];
-		$sort_order = $this->sort_args['order'];
-		$sort_type = $this->sort_args['type'];
-		$list = array_column($assets, $sort_field, 'handle' );		
-		//WPSSM_Debug::log( array( 'sorted list : '=>$list ));
-		if ( $sort_order == SORT_ASC)
-			asort($list, $sort_type );
-		else 
-			arsort($list, $sort_type );
-//		foreach ($sort_column as $key => $value) {
-//			echo '<p>' . $key . ' : ' . $value . '<p>';
-//		}
-		return $list;
-	}	
-
-
-
-	public function items_list( $sorted_list, $type, $location ) {
+	public function items_list( $sorted_list, $location ) {
+		WPSSM_Debug::log('In WPSSM_Output items_list() $sorted_list : ', $sorted_list);			
 		?><table class="enqueued-assets"><?php
-		$this->_item_headline();
+		$this->item_headline();
     foreach ($sorted_list as $handle => $priority ) {
-			WPSSM_Debug::log('Asset in WPSSM_Output->items_list() : ', $this->assets[$handle]);			
-			$this->_item_content( $this->assets[$handle], $type, $location, $handle );  
+			WPSSM_Debug::log('Asset in WPSSM_Output->items_list() loop for ' . $location . ' : ', $handle );			
+			$this->item_content( $this->assets->get($this->type, $handle) );  
     }
     ?></table><?php
 	}
 	
 
-	private function _item_headline() {
+	public function item_headline() {
 		?>
     	<tr>
     		<th> handle </th>
@@ -131,24 +107,23 @@ class WPSSM_Admin_Output {
 		<?php
 	}
 
-	private function _item_content( $asset, $type, $location, $handle ) {
-		
+	public function item_content( $asset ) {
+    	$handle = $asset['handle'];
     	$filename = $asset['filename'];
     	$dependencies = $asset['dependencies'];
     	$dependents = $asset['dependents'];
     	$priority = $asset['priority'];
-    	//$location = $this->get_field_value( $asset, 'location');
+    	$location = $this->assets->get_field_value( $asset, 'location');
 	    $minify = $this->assets->get_field_value( $asset, 'minify');
 	    $size = $this->assets->get_field_value( $asset, 'size');
-	    $name = $this->assets->get_field_name();
 	    	
-	    $asset_is_minified = ( $asset[ 'minify' ] == 'yes')?true:false; 
+	    $asset_is_minified = ( $minify == 'yes')?true:false; 
 	    $already_minified_msg = __('This file is already minimized within its plugin', 'jco');
 	    
 	    
 		?>
-		   	<tr class="enqueued-asset <?php echo $type;?>" id="<?php echo $handle;?>">
-	    	<td class="handle" title="<?php echo $filename;?>"><?php echo $handle;?><?php $this->output_asset_notice( $asset );?></td>
+		   	<tr class="enqueued-asset <?php echo $this->type;?>" id="<?php echo $handle;?>">
+	    	<td class="handle" title="<?php echo $filename;?>"><?php echo $handle;?><?php $this->asset_notice( $asset );?></td>
 	    	
 	    	<td><?php echo $priority;?></td>
 	    	
@@ -157,8 +132,8 @@ class WPSSM_Admin_Output {
 	    	
 	    	<td class="size" title="<?php echo $filename;?>"><?php echo size_format( $size );?></td>
 	    	
-	    	<td class="location <?php echo $this->_is_modified( $asset, 'location');?>">
-	    		<select data-dependencies='<?php echo json_encode($dependencies);?>' data-dependents='<?php echo json_encode($dependents);?>' id="<?php echo $handle;?>" class="asset-setting location <?php echo $type;?>" name="<?php echo $this->get_field_name( $type, $handle, 'location');?>">
+	    	<td class="location <?php echo $this->assets->is_modified( $asset, 'location');?>">
+	    		<select data-dependencies='<?php echo json_encode($dependencies);?>' data-dependents='<?php echo json_encode($dependents);?>' id="<?php echo $handle;?>" class="asset-setting location <?php echo $this->type;?>" name="<?php echo $location;?>">
   					<option value="header" <?php echo ($location=='header')?'selected':'';?> >header</option>
   					<option value="footer" <?php echo ($location=='footer')?'selected':'';?> >footer</option>
   					<option value="async" <?php echo ($location=='async')?'selected':'';?> >asynchronous</option>
@@ -166,8 +141,8 @@ class WPSSM_Admin_Output {
 					</select>
 				</td>
 				
-				<td class="minify <?php echo $this->_is_modified( $asset, 'minify');?>">
-	    		<select id="<?php echo $handle;?>" class="asset-setting minify <?php echo $type;?>" <?php echo ($asset_is_minified)?'disabled':'';?> <?php echo ($asset_is_minified)?'title="' . $already_minified_msg . '"' :'';?> name="<?php echo $this->get_field_name( $type, $handle, 'minify');?>">
+				<td class="minify <?php echo $this->assets->is_modified( $asset, 'minify');?>">
+	    		<select id="<?php echo $handle;?>" class="asset-setting minify <?php echo $this->type;?>" <?php echo ($asset_is_minified)?'disabled':'';?> title="<?php echo ($asset_is_minified)?$already_minified_msg:'';?>" name="<?php echo $minify;?>">
   					<option value="no" <?php echo ($minify=='no')?'selected':'';?>  >no</option>
   					<option value="yes" <?php echo ($minify=='yes')?'selected':'';?> >yes</option>
 					</select>
@@ -178,24 +153,17 @@ class WPSSM_Admin_Output {
 	}
 
 
-	private function _is_modified( $asset, $field ) {
-		if ( isset( $asset['mods'][ $field ] ) ) {
-			return 'modified';
-		}
-	}
 
-
-/* USER NOTIFICATIONS
+/* ASSET WARNING/ADVICE NOTICES
 --------------------------------------------------------------*/		
 	
-	
-	private function output_asset_notice( $asset ) {
+	private function asset_notice( $asset ) {
 		
 		$size= $asset['size'];
 		//WPSSM_Debug::log(array('size : '=>$size));
-		$is_minified = $this->get_field_value( $asset, 'minify') == 'yes';
+		$is_minified = $this->assets->get_field_value( $asset, 'minify') == 'yes';
 		//WPSSM_Debug::log(array('is_minified: '=>$is_minified));
-		$in_footer = ( $this->get_field_value( $asset, 'location') == 'footer');
+		$in_footer = ( $this->assets->get_field_value( $asset, 'location') == 'footer');
 		
 		$this->reset_asset_notice();
 		if (!$is_minified) {
@@ -222,10 +190,8 @@ class WPSSM_Admin_Output {
 			$msg = __('This file is small and requires a specific http request : it is recommended to inline it, or to group it with other files', 'jco');			
 			$this->enqueue_asset_notice( $msg, $level);
 		}	
-		echo $this->asset_notice;
-		
+		echo $this->asset_notice;		
 	}
-
 
 	private function reset_asset_notice() {
 		$this->asset_notice='';

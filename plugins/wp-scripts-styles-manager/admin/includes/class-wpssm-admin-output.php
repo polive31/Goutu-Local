@@ -22,6 +22,59 @@ class WPSSM_Admin_Output {
   	}
   }
 
+
+/* OPTIONS PAGE
+--------------------------------------------------------------*/	
+
+	public function options_page( $page_slug ) {
+	    // check user capabilities
+	    if (!current_user_can('manage_options')) return;
+			$referer = menu_page_url( $this->plugin_name, FALSE  );
+			//$page_slug = $this->config_settings_pages[$this->active_tab]['slug'];
+			?>
+
+	    <div class="wrap">
+	        <h1><?= esc_html(get_admin_page_title()); ?></h1>
+	        
+						<h2 class="nav-tab-wrapper">
+						<a href="?page=<?php echo $this->plugin_name;?>&tab=general" class="nav-tab <?php echo $this->type == 'general' ? 'nav-tab-active' : ''; ?>">General Settings</a>
+						<a href="?page=<?php echo $this->plugin_name;?>&tab=scripts" class="nav-tab <?php echo $this->type == 'scripts' ? 'nav-tab-active' : ''; ?>">Scripts</a>
+						<a href="?page=<?php echo $this->plugin_name;?>&tab=styles" class="nav-tab <?php echo $this->type == 'styles' ? 'nav-tab-active' : ''; ?>">Styles</a>
+						</h2>
+	        
+		        <form action="<?php echo admin_url( 'admin-post.php' ); ?>" method="post">
+	        		<?php	
+							$this->form_buttons($referer);
+							settings_fields( $page_slug );
+							do_settings_sections( $page_slug );
+							$this->form_buttons($referer);
+	        		?>	
+	        
+		        </form>  
+	    </div>
+	    <?php
+	}
+		
+	protected function form_buttons($referer) { 
+		?>
+		<!-- Output form buttons -->
+	  <table class="button-table" col="2">
+	    <tr>
+				<input type="hidden" name="action" value="<?php echo $this->form_action; ?>">
+				<?php wp_nonce_field( $this->form_action, $this->nonce, FALSE ); ?>
+				<input type="hidden" name="_wpssm_http_referer" value="<?php echo $referer; ?>">
+				<input type="hidden" name="_wpssm_active_tab" value="<?php echo $this->type; ?>">
+
+	    	<td><?php submit_button( 'Save ' . $this->type . ' settings', 'primary', 'wpssm_save', true, array('tabindex'=>'1') );?> </td>
+	    	<?php if ($this->type != 'general') { ?>
+	    	<td><?php submit_button( 'Reset ' . $this->type . ' settings', 'secondary', 'wpssm_reset', true, array('tabindex'=>'2') );?> </td>
+	    	<?php } ?>
+	    	<td><?php submit_button( 'Delete everything', 'delete', 'wpssm_delete', true, array('tabindex'=>'3') );?> </td>
+	  	</tr>
+	  </table>
+	<?php 
+	}
+	
   
 /* COMMON 
 --------------------------------------------------------------------*/
@@ -29,6 +82,7 @@ class WPSSM_Admin_Output {
 		//WPSSM_Debug::log('In section callback');
 	}
     
+
 
 /* GENERAL SETTINGS PAGE
 --------------------------------------------------------------------*/

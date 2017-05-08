@@ -1,6 +1,6 @@
 <?php
 
-class WPSSM_Admin_Post {
+class WPSSM_Admin_Update {
 
  	private $type;
 
@@ -118,7 +118,19 @@ class WPSSM_Admin_Post {
 
 
 
+/* RECORDING CALLBACKS 
+----------------------------------------------------*/
+	public function record_header_assets_cb() {
+		WPSSM_Debug::log('In record header assets cb');
+		$this->assets->record( false );
+	}
 
+	public function record_footer_assets_cb() {
+		WPSSM_Debug::log('In record footer assets cb');
+		$this->assets->record( true );
+	}
+	
+	
   
 
 	

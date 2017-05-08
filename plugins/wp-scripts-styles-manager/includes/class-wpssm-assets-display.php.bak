@@ -32,10 +32,7 @@ class WPSSM_Assets_Display extends WPSSM_Assets {
 	
 	public function displayed_hydrate() {
 		WPSSM_Debug::log('In WPSSM_Assets_Display hydrate() $this->type: ', $this->type);
-		if ($this->type=='general') {
-			$this->displayed['assets'] = $this->get_assets('pages');
-		}
-		else {
+		if ($this->type!='general') {
 			//WPSSM_Debug::log('In WPSSM_Assets_Display hydrate() $this->get_assets for type ' . $this->type, $this->get_assets( $this->type ));
 			foreach ($this->get_assets( $this->type ) as $handle=>$asset) {		
 				$group_id = $this->get_field_value( $this->type, $handle, $this->groupby);

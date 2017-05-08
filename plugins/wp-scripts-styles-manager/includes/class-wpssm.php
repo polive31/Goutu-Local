@@ -52,6 +52,7 @@ class WPSSM {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wpssm-loader.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'debug/class-dbg.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wpssm-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/includes/class-wpssm-admin-record.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wpssm-public.php';
 		$this->loader = new WPSSM_Loader();
 	}
@@ -73,7 +74,7 @@ class WPSSM {
 	private function _define_admin_hooks() {
 		WPSSM_Debug::log('In define_admin_hooks');														
 		$plugin_admin = new WPSSM_Admin();
-		$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'init_admin' 															);
+		$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'init_admin_cb' 															);
 		//$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'init_settings' 														);
 		$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'add_plugin_menu_option_cb' 								);
 		$this->loader->add_action( 'admin_enqueue_scripts', 						$plugin_admin, 'enqueue_scripts' 													);
@@ -87,11 +88,12 @@ class WPSSM {
 		$plugin_public = new WPSSM_Public();
 		$this->loader->add_action( 'wp', 																$plugin_public, 'hydrate' 																);
 		
-		// manage frontend pages recording 
+		// Public pages recording : TODO replace with recording from admin 
 		if ( self::$opt_general_settings['record'] == 'on' ) {
-			$this->loader->add_action( 'wp', 															$plugin_public, 'init_recording' 								);
-			$this->loader->add_action( 'wp_head', 												$plugin_public, 'record_header_assets_cb' 								);
-			$this->loader->add_action( 'wp_print_footer_scripts', 				$plugin_public, 'record_footer_assets_cb' 								);
+			$plugin_record = new WPSSM_Admin_Record();
+			$this->loader->add_action( 'wp', 															$plugin_record, 'init_recording' 								);
+			$this->loader->add_action( 'wp_head', 												$plugin_record, 'record_header_assets_cb' 								);
+			$this->loader->add_action( 'wp_print_footer_scripts', 				$plugin_record, 'record_footer_assets_cb' 								);
 		}	
 
 		if ( (self::$opt_general_settings['record']=='off') && (self::$opt_general_settings['optimize']=='on') ) {	

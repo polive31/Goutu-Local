@@ -105,19 +105,7 @@ class WPSSM_Public extends WPSSM {
 	}
 
 	
-/* RECORDING CALLBACKS 
-----------------------------------------------------*/
-	public function record_header_assets_cb() {
-		WPSSM_Debug::log('In record header assets cb');
-		$this->assets->record( false );
-	}
 
-	public function record_footer_assets_cb() {
-		WPSSM_Debug::log('In record footer assets cb');
-		$this->assets->record( true );
-	}
-	
-	
 		
 //		if ( !is_front_page() ) {
 //			wp_dequeue_script( 'easingslider' );

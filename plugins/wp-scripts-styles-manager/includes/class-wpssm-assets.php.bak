@@ -83,7 +83,7 @@ class WPSSM_Assets {
 		elseif ( isset( $asset[ $field ] )) 
 			return $asset[ $field ];
 		else
-			return '';
+			return false;
 	}
 	
 	public function is_modified( $asset, $field ) {
@@ -97,11 +97,57 @@ class WPSSM_Assets {
 		$this->opt_enqueued_assets[$type][$handle][$field]=$value;
 	}
 	
-	public function mod_field_value( $type, $handle, $field, $value ) {
+	public function add_mod( $type, $handle, $field, $value ) {
 		$this->opt_enqueued_assets[$type][$handle]['mods'][$field]=$value;
 	}
 	
 	
+	public function remove_mod_field( $type, $handle, $field ) {
+		if ( !isset($this->opt_enqueued_assets[$type][$handle]['mods'][$field]) ) return false; 
+		unset($this->opt_enqueued_assets[$type][$handle]['mods'][$field]); 
+		$this->assets->update_priority( $type, $handle ); 
+	}		
+	
+	public function reset_asset( $type, $handle ) {
+		unset($this->opt_enqueued_assets[$type][$handle]['mods']); 
+		$this->assets->update_priority( $type, $handle ); 	
+	}
+
+	public function reset_assets( $type ) {
+		foreach ( $this->opt_enqueued_assets[$type] as $handle=>$asset ) {
+			unset( $this->opt_enqueued_assets[$type]['mods'] ); 
+			$this->update_priority( $type, $handle ); 
+		}
+	}	
+
+	public function update_priority( $type, $handle ) {
+		$location = $this->get_field_value( $type, $handle, 'location');
+		
+		if ( $location != 'disabled' ) {
+			$minify = $this->get_field_value( $type, $handle, 'minify');
+			$size = $this->get_field_value( $type, $handle, 'size');
+			$score = ( $location == 'header' )?1000:0;
+			//WPSSM_Debug::log(array('base after location'=>$score));
+			$score += ( $size >= self::SIZE_LARGE )?500:0; 	
+			$score += ( ($minify == 'no') && ( $size != 0 ))?200:0;
+			//WPSSM_Debug::log(array('base after minify'=>$score));
+			$score += ( $size <= self::SIZE_SMALL )?100:0; 	
+			//WPSSM_Debug::log(array('base after size'=>$score));
+			if ( $size >= self::SIZE_LARGE ) 
+				$normalizer = self::SIZE_MAX;
+			elseif ( $size <= self::SIZE_SMALL )
+				$normalizer = self::SIZE_SMALL;
+			else 
+				$normalizer = self::SIZE_LARGE;
+			//WPSSM_Debug::log(array('normalizer'=>$normalizer));
+			$score += $size/$normalizer*100; 	
+			//WPSSM_Debug::log(array('score'=>$score));
+		}
+		else 
+			$score = 0;
+			
+		$this->set_field_value( $type, $handle, 'priority', $score);
+	}		
 
 /* RECORDING FUNCTIONS
 -----------------------------------------------------------*/

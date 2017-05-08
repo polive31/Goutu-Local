@@ -133,35 +133,7 @@ class WPSSM_Assets_Display extends WPSSM_Assets {
 //		return $match;
 //	}
 
-	public function update_priority( $handle ) {
-		$type = $this->type;
-		$location = $this->get_field_value( $type, $handle, 'location');
-		
-		if ( $location != 'disabled' ) {
-			$minify = $this->get_field_value( $type, $handle, 'minify');
-			$size = $this->get_field_value( $type, $handle, 'size');
-			$score = ( $location == 'header' )?1000:0;
-			//WPSSM_Debug::log(array('base after location'=>$score));
-			$score += ( $size >= self::SIZE_LARGE )?500:0; 	
-			$score += ( ($minify == 'no') && ( $size != 0 ))?200:0;
-			//WPSSM_Debug::log(array('base after minify'=>$score));
-			$score += ( $size <= self::SIZE_SMALL )?100:0; 	
-			//WPSSM_Debug::log(array('base after size'=>$score));
-			if ( $size >= self::SIZE_LARGE ) 
-				$normalizer = self::SIZE_MAX;
-			elseif ( $size <= self::SIZE_SMALL )
-				$normalizer = self::SIZE_SMALL;
-			else 
-				$normalizer = self::SIZE_LARGE;
-			//WPSSM_Debug::log(array('normalizer'=>$normalizer));
-			$score += $size/$normalizer*100; 	
-			//WPSSM_Debug::log(array('score'=>$score));
-		}
-		else 
-			$score = 0;
-			
-		$this->set_field_value( $type, $handle, 'priority', $score);
-	}	
+
 
 }
 

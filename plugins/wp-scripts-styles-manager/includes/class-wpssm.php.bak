@@ -19,6 +19,13 @@ class WPSSM {
 	/* Post update */
 	const FORM_ACTION = 'wpssm_update_settings';
 	const NONCE = 'wp8756';	
+
+
+	/* File size limits for priority calculation & notifications */
+	const SMALL = 1000;
+	const LARGE = 1000;
+	const MAX = 200000;
+	protected $sizes=array('small'=>self::SMALL, 'large'=>self::LARGE, 'max'=>self::MAX, )
 		
 	/* Plugin load atttributes */
 	protected $loader;
@@ -118,7 +125,17 @@ class WPSSM {
 	public function get_loader() {
 		return $this->loader;
 	}
-
+	
+	protected function hydrate_opt( &$attribute, $option ) {
+		$get_option = get_option( $option );
+		if ( $get_option!=false ) {
+			if ( is_array($get_option) )
+				foreach ($get_option as $key=>$value) {$attribute[$key]=$value;}
+			else
+				$attribute = $get_option;
+		}
+		WPSSM_Debug::log('In WPSSM hydrate_opt option=' . $option, $attribute);
+	}
 	
 
 }

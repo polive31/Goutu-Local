@@ -19,6 +19,11 @@ class WPSSM_Admin extends WPSSM {
 	protected $output;														
 	protected $post;														
 
+	/* File size limits for priority calculation & notifications */
+	const SMALL = 1000;
+	const LARGE = 1000;
+	const MAX = 200000;
+	protected $sizes = array('small'=>self::SMALL, 'large'=>self::LARGE, 'max'=>self::MAX );
 
 	public function __construct() {
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'includes/class-wpssm-assets.php' ;	
@@ -57,12 +62,14 @@ class WPSSM_Admin extends WPSSM {
 		// Get active tab
 		$this->active_tab = isset( $_GET[ 'tab' ] ) ? esc_html($_GET[ 'tab' ]) : 'general';
 		
-		$this->assets = new WPSSM_Assets_Display( $this->active_tab, 'location' );
-		$this->output = new WPSSM_Admin_Output( $this->assets, array(
-																														'plugin_name' => self::PLUGIN_NAME,
-																														'form_action' => self::FORM_ACTION,
-																														'nonce' => self::NONCE,
-																														) );
+		$this->assets = new WPSSM_Assets_Display( array(	'type'=>$this->active_tab, 
+																											'groupby' => 'location', 
+																											'sizes' => $this->sizes ));
+																											
+		$this->output = new WPSSM_Admin_Output	( $this->assets, array(	'plugin_name' => self::PLUGIN_NAME,
+																																		'form_action' => self::FORM_ACTION,
+																																		'nonce' => self::NONCE,
+																																		'sizes' => $this->sizes));
 		
 		// Initialize options settings for active tab
 		$this->config_settings_pages = array(

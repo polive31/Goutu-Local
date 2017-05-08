@@ -9,51 +9,53 @@ if ( ! defined( 'ABSPATH' ) ) {
 class WPSSM_Assets_Display extends WPSSM_Assets {
 
 	/* Assets attributes */
-	private $displayed;			
+	private $displayed=array();			
 	
 	/* Filter & sort array functions arguments */
 	private $type;
 	private $groupby;
+	private $display_fields = array( 'handle', 'filename', 'version', 'dependencies', 'dependents', 'location', 'minify', 'size', 'group', 'priority');
 	private $filter_args = array( 'location' => 'header' );			
-	private $sort_args = array( 
-														'field' => 'priority', 
-														'order' => SORT_DESC, 
-														'type' => SORT_NUMERIC);
-	
+	private $sort_args = array( 'field' => 'priority', 'order' => SORT_DESC, 'type' => SORT_NUMERIC);
 						
-	public function __construct( $type, $groupby) {
-		WPSSM_Debug::log('In WPSSM_Assets_Display before __construct() ');
+	public function __construct( $args ) {
+		//WPSSM_Debug::log('In WPSSM_Assets_Display before __construct() ');
 		parent::__construct();
-		WPSSM_Debug::log('In WPSSM_Assets_Display after __construct() ');
-		$this->type = $type;
-		$this->groupby = $groupby;
-		WPSSM_Debug::log('In WPSSM_Assets_Display __construct() $this->type: ', $this->type);
-		WPSSM_Debug::log('In WPSSM_Assets_Display __construct() $this->groupby: ', $this->groupby);
+		//WPSSM_Debug::log('In WPSSM_Assets_Display after __construct() ');
+  	foreach ($args as $key=>$value) {
+  		$this->$key = $value;
+  	}
+		//WPSSM_Debug::log('In WPSSM_Assets_Display __construct() $this->type: ', $this->type);
+		//WPSSM_Debug::log('In WPSSM_Assets_Display __construct() $this->groupby: ', $this->groupby);
 		$this->displayed_hydrate();
 	}
 	
 	public function displayed_hydrate() {
 		WPSSM_Debug::log('In WPSSM_Assets_Display hydrate() $this->type: ', $this->type);
 		if ($this->type=='general') {
-			$this->displayed = $this->get('pages');
+			$this->displayed['assets'] = $this->get_assets('pages');
 		}
 		else {
-			foreach ($this->get( $this->type ) as $handle=>$asset) {		
-				WPSSM_Debug::log('In WPSSM_Assets_Display display_hydrate() loop on ' . $handle, $asset);
-				//WPSSM_Debug::log('In WPSSM_Assets_Display display_hydrate() loop $this->get($this->type)', $this->get($this->type));
-				$value = $this->assets->get_field_value( $asset, $this->groupby);
-				WPSSM_Debug::log('In WPSSM_Assets_Display display_hydrate() $value', $value);
-				if (isset($this->displayed[$value])) $group=$this->displayed[$value];
-				$group['assets'][$handle] = $asset;	
-				if (isset($group['size'])) $group['size'] += (isset($asset['size']))?$asset['size']:0;	
+			//WPSSM_Debug::log('In WPSSM_Assets_Display hydrate() $this->get_assets for type ' . $this->type, $this->get_assets( $this->type ));
+			foreach ($this->get_assets( $this->type ) as $handle=>$asset) {		
+				$group_id = $this->get_field_value( $this->type, $handle, $this->groupby);
+				//WPSSM_Debug::log('In WPSSM_Assets_Display display_hydrate() $group_id ', $group_id);
+				if ( isset($this->displayed[$group_id]) ) 
+					$group=$this->displayed[$group_id];
+				else 
+					$group = array();
+				$group['assets'][$handle] = $this->get_modified_asset( $handle );	
+				if (isset($group['size'])) $group['size'] += $this->get_field_value( $this->type, $handle, 'size');	
 				else $group['size']=0;
 				if (isset($group['count'])) $group['count']++;	
-				else $group['count']=0;	
-				$this->displayed[$value]=$group;	
+				else $group['count']=1;	
+				$this->displayed[$group_id]=$group;	
+				WPSSM_Debug::log('In WPSSM_Assets_Display display_hydrate() loop on ' . $handle . ', group_id=' . $group_id, $this->displayed);
 			}
 		}	
 		WPSSM_Debug::log('In WPSSM_Assets_Display hydrate() $this->displayed: ', $this->displayed);
 	}
+	
 	
 	
 /* GETTER FUNCTIONS	
@@ -69,25 +71,35 @@ class WPSSM_Assets_Display extends WPSSM_Assets {
 		return $this->displayed[$group][$stat];
 	}
 
-  public function get_displayed_assets( $field_value=false, $handle=false ) {
-  	if ( $field_value==false ) {
-			return $this->displayed;
-  	}
-  	else {
-			if (! isset( $this->displayed[ $field_value ] ) ) return '';
-			if ($handle==false) return $this->displayed[ $field_value ];
-			elseif ( !isset( $this->displayed[ $field_value ]['assets'][ $handle ] )) return '';
-			return $this->displayed[ $field_value ]['assets'][ $handle ];
-  	}
+  public function get_displayed_assets( $group_id ) {
+		if ( !isset( $this->displayed[ $group_id ] ) ) return array();
+		return $this->displayed[ $group_id ]['assets'];
   }
 
-	public function sort( $field ) {
+  public function get_displayed_asset( $group_id, $handle ) {
+		if ( !isset( $this->displayed[ $group_id ]['assets'][ $handle ] )) return array();
+		return $this->displayed[ $group_id ]['assets'][ $handle ];
+  }
+  
+  public function get_modified_asset( $handle ) {
+  	/* Generate an asset with modified fields replacing original ones */
+		$modasset = array();
+		foreach ($this->display_fields as $field) {
+			$value=$this->get_field_value( $this->type, $handle, $field);
+			$modasset[$field]=$value;
+		}
+		//WPSSM_Debug::log( 'In WPSSM_Assets_Display get_modified_asset()', $modasset);
+		return $modasset;
+  }
+
+	public function get_sort_list( $group_id ) {
 		$sort_field = $this->sort_args['field'];
 		$sort_order = $this->sort_args['order'];
 		$sort_type = $this->sort_args['type'];
-		$assets = $this->get_displayed_assets( $field )['assets'];
+		$assets = $this->get_displayed_assets( $group_id );
+		WPSSM_Debug::log( 'In WPSSM_Assets_Display get_sort_list() $assets for ' . $group_id, $assets);
 		$list = array_column($assets, $sort_field, 'handle' );		
-		//WPSSM_Debug::log( array( 'sorted list : '=>$list ));
+		WPSSM_Debug::log( 'In WPSSM_Assets_Display get_sort_list() $list before sorting', $list);
 		if ( $sort_order == SORT_ASC)
 			asort($list, $sort_type );
 		else 
@@ -95,6 +107,7 @@ class WPSSM_Assets_Display extends WPSSM_Assets {
 //		foreach ($sort_column as $key => $value) {
 //			echo '<p>' . $key . ' : ' . $value . '<p>';
 //		}
+		WPSSM_Debug::log( 'In WPSSM_Assets_Display get_sort_list() $list after sorting', $list);
 		return $list;
 	}		
 	
@@ -123,13 +136,13 @@ class WPSSM_Assets_Display extends WPSSM_Assets {
 //		return $match;
 //	}
 
-	public function update_priority( $type, $handle ) {
-		$asset = $this->opt_enqueued_assets[$type][$handle];
-		$location = $this->get_field_value( $asset, 'location');
+	public function update_priority( $handle ) {
+		$type = $this->type;
+		$location = $this->get_field_value( $type, $handle, 'location');
 		
 		if ( $location != 'disabled' ) {
-			$minify = $this->get_field_value( $asset, 'minify');
-			$size = $this->get_field_value( $asset, 'size');
+			$minify = $this->get_field_value( $type, $handle, 'minify');
+			$size = $this->get_field_value( $type, $handle, 'size');
 			$score = ( $location == 'header' )?1000:0;
 			//WPSSM_Debug::log(array('base after location'=>$score));
 			$score += ( $size >= self::SIZE_LARGE )?500:0; 	
@@ -149,9 +162,9 @@ class WPSSM_Assets_Display extends WPSSM_Assets {
 		}
 		else 
 			$score = 0;
-
-		$this->opt_enqueued_assets[$type][$handle]['priority'] = $score;
-	}		
+			
+		$this->set_field_value( $type, $handle, 'priority', $score);
+	}	
 
 }
 

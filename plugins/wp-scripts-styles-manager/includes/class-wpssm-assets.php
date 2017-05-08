@@ -57,44 +57,51 @@ class WPSSM_Assets {
 	
 /* GETTER FUNCTIONS	
 --------------------------------------------------------------------------*/	
-  public function get( $type=false, $handle=false ) {
-		WPSSM_Debug::log('In WPSSM_Assets get() type=' . $type . ' - opt_enqueued_assets ', $this->opt_enqueued_assets);
-  	if ( $type==false ) {
-			return $this->opt_enqueued_assets;
-  	}
-  	else {
-			if (!isset( $this->opt_enqueued_assets[$type] ) ) return '';
-			if ( $handle==false ) return $this->opt_enqueued_assets[$type];
-  		elseif ( !isset( $this->opt_enqueued_assets[$type][$handle] ) ) return '' ;
-  		return $this->opt_enqueued_assets[$type][$handle];
-  	}  	
+  public function get_assets( $type ) {
+		//WPSSM_Debug::log('In WPSSM_Assets get_assets() type=' . $type . ' - opt_enqueued_assets ', $this->opt_enqueued_assets[$type] );
+		if ( !isset( $this->opt_enqueued_assets[$type] ) ) return '';
+		return $this->opt_enqueued_assets[$type];
+  }
+  
+  public function get_asset( $type, $handle ) {
+		//WPSSM_Debug::log('In WPSSM_Assets get_asset() type=' . $type . ' - opt_enqueued_assets ', $this->opt_enqueued_assets[$type][$handle] );
+		if ( !isset( $this->opt_enqueued_assets[$type][$handle] ) ) return '' ;
+		return $this->opt_enqueued_assets[$type][$handle];
   }
 	
 	public function get_field_name( $type, $handle, $field ) {
 		return  $type . '_' . $handle . '_' . $field;
 	}
 	
-	public function get_field_value( $asset, $field ) {
+	public function get_field_value( $type, $handle, $field ) {
 		//WPSSM_Debug::log('In Field Value for ' . $field);
 		//WPSSM_Debug::log(array('Asset : ' => $asset));
-		if ( isset( $asset['mods'] ) && (isset( $asset['mods'][ $field ] ) ) ) {
-			$value=$asset['mods'][ $field ];
-			//WPSSM_Debug::log('Mod found !');
-		}
-		else {
-			//WPSSM_Debug::log('Mod not found');
-			$value=$asset[ $field ];
-		}
-		//WPSSM_Debug::log( array(' Field value of ' . $field . ' : ' => $value ));
-		return $value;
+		if ( !isset( $this->opt_enqueued_assets[$type][$handle] ) ) return false ;
+		$asset = $this->opt_enqueued_assets[$type][$handle];
+		if ( isset( $asset['mods'][ $field ] ) ) 
+			return $asset['mods'][ $field ];
+		elseif ( isset( $asset[ $field ] )) 
+			return $asset[ $field ];
+		else
+			return false;
 	}
 	
 	public function is_modified( $asset, $field ) {
-		if ( isset( $asset['mods'][ $field ] ) ) {
-			return 'modified';
-		}
+		if ( isset( $asset['mods'][ $field ] ) ) return 'modified';
 	}
 
+
+/* SETTING FUNCTIONS
+-----------------------------------------------------------*/
+	public function set_field_value( $type, $handle, $field, $value ) {
+		$this->opt_enqueued_assets[$type][$handle][$field]=$value;
+	}
+	
+	public function mod_field_value( $type, $handle, $field, $value ) {
+		$this->opt_enqueued_assets[$type][$handle]['mods'][$field]=$value;
+	}
+	
+	
 
 /* RECORDING FUNCTIONS
 -----------------------------------------------------------*/
@@ -177,8 +184,7 @@ class WPSSM_Assets {
 	  WPSSM_Debug::log(array('assets after update' => $this->opt_enqueued_assets));
 	  if ( $in_footer )	hydrate_option( 'wpssm_enqueued_assets', $this->opt_enqueued_assets, true );
 	}
-	
-
+		
 
 }
 

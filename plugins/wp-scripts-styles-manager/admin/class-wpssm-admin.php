@@ -437,38 +437,6 @@ class WPSSM_Admin extends WPSSM {
 
 
 
-
-/* ENQUEUED SCRIPTS & STYLES RECORDING
--------------------------------------------------------*/
-
-	public function auto_detect() {
-
-		WPSSM_Debug::log('In auto detect !!!');
-
-		foreach ($this->urls_to_request as $url) {
-			$request = array(
-				'url'  => $url,
-				'args' => array(
-					'timeout'   => 0.01,
-					'blocking'  => false,
-					'sslverify' => apply_filters('https_local_ssl_verify', true)
-				)
-			);
-
-			wp_remote_get($request['url'], $request['args']);
-		}
-	}
-
-	public function get_permalink_by_slug( $slug) {
-    $permalink = null;
-    $page = get_page_by_path( $slug );
-    if( null != $page ) {
-        $permalink = get_permalink( $page->ID );
-    }
-    return $permalink;
-	}
-
-
 	
 /* SECTIONS
 --------------------------------------------------------------*/	

@@ -8,6 +8,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class WPSSM {
 	
+	/* WPSSM general options attributes */
+	protected static $opt_general_settings = array(
+									'record'=>'off', 
+									'optimize'=>'off', 
+									'javasync'=>'off', 
+									'wpssm_version'=>self::PLUGIN_VERSION);	
+	
 	/* Plugin attributes */
 	const PLUGIN_NAME = 'wpssm';
 	const PLUGIN_VERSION = '1.1.0';
@@ -23,16 +30,6 @@ class WPSSM {
 	/* Plugin load atttributes */
 	protected $loader;
 	protected $user_notification; 
-
-	/* WPSSM general options attributes */
-	protected static $opt_general_settings = array(
-									'record'=>'off', 
-									'optimize'=>'off', 
-									'javasync'=>'off', 
-									'wpssm_version'=>self::PLUGIN_VERSION);
-									
-
-							
 						
 	public function __construct() {
 		$this->plugin_name = self::PLUGIN_NAME;
@@ -51,8 +48,9 @@ class WPSSM {
 		/* The class responsible for orchestrating the actions and filters of the core plugin */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wpssm-loader.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'debug/class-dbg.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/includes/class-wpssm-admin-record.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'assets/class-wpssm-assets.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wpssm-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/includes/class-wpssm-admin-record.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wpssm-public.php';
 		$this->loader = new WPSSM_Loader();
 	}
@@ -70,6 +68,12 @@ class WPSSM {
 		//set_error_handler( 'WPSSM_Debug::error' );	
 	}
 	
+	private function _define_assets_hooks() {
+		WPSSM_Debug::log('In define_debug_hooks');
+		$plugin_assets = new WPSSM_Assets();
+		//$this->loader->add_action( 'wp', 																$plugin_debug, 'init_dbg' 																);
+		//set_error_handler( 'WPSSM_Debug::error' );	
+	}	
 	
 	private function _define_admin_hooks() {
 		WPSSM_Debug::log('In define_admin_hooks');														

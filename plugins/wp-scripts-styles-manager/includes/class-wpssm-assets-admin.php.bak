@@ -6,7 +6,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-class WPSSM_Assets_Display extends WPSSM_Assets {
+class WPSSM_Assets_Admin extends WPSSM_Assets {
+	
 
 	/* Assets attributes */
 	private $displayed=array();			

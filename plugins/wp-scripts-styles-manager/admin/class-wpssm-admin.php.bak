@@ -10,8 +10,8 @@ class WPSSM_Admin extends WPSSM {
 	
 	protected $config_settings_pages; // Initialized in hydrate_settings
 
-	protected $header_scripts;
-	protected $header_styles;
+	//protected $header_scripts;
+	//protected $header_styles;
 	protected $active_tab;
 	
 	/* Objects */ 													
@@ -27,9 +27,9 @@ class WPSSM_Admin extends WPSSM {
 
 	public function __construct() {
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'includes/class-wpssm-assets.php' ;	
-		require_once plugin_dir_path( dirname(__FILE__) ) . 'includes/class-wpssm-assets-display.php' ;	
+		require_once plugin_dir_path( dirname(__FILE__) ) . 'includes/class-wpssm-assets-admin.php' ;	
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-output.php' ;	
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-update.php' ;										
+		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-post.php' ;										
 	}														
 														
 	public function enqueue_styles() {
@@ -62,16 +62,16 @@ class WPSSM_Admin extends WPSSM {
 		// Get active tab
 		$this->active_tab = isset( $_GET[ 'tab' ] ) ? esc_html($_GET[ 'tab' ]) : 'general';
 		
-		$this->assets = new WPSSM_Assets_Display( array(	'type'=>$this->active_tab, 
-																											'groupby' => 'location', 
-																											'sizes' => $this->sizes ));
+		$this->assets = new WPSSM_Assets_Admin( array(	'type'=>$this->active_tab, 
+																										'groupby' => 'location', 
+																										'sizes' => $this->sizes ));
 																											
-		$this->output = new WPSSM_Admin_Output	( $this->assets, array(	'plugin_name' => self::PLUGIN_NAME,
+		$this->output = new WPSSM_Admin_Output( $this->assets, array(	'plugin_name' => self::PLUGIN_NAME,
 																																		'form_action' => self::FORM_ACTION,
 																																		'nonce' => self::NONCE,
 																																		'sizes' => $this->sizes));
 
-		$this->post = new WPSSM_Admin_Post	( $this->assets, array(	'plugin_name' => self::PLUGIN_NAME,
+		$this->post = new WPSSM_Admin_Post( $this->assets, array(	'plugin_name' => self::PLUGIN_NAME,
 																																		'form_action' => self::FORM_ACTION,
 																																		'nonce' => self::NONCE,
 																																		'sizes' => $this->sizes));

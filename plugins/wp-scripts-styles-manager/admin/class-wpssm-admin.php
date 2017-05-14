@@ -24,8 +24,8 @@ class WPSSM_Admin extends WPSSM {
 	protected $sizes = array('small'=>self::SMALL, 'large'=>self::LARGE, 'max'=>self::MAX );
 
 	public function __construct() {
-		require_once plugin_dir_path( dirname(__FILE__) ) . 'includes/class-wpssm-assets.php' ;	
-		require_once plugin_dir_path( dirname(__FILE__) ) . 'includes/class-wpssm-assets-admin.php' ;	
+		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-assets.php' ;	
+		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-assets-admin.php' ;	
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-output.php' ;	
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-post.php' ;										
 	}														

@@ -10,8 +10,6 @@ class WPSSM_Admin extends WPSSM {
 	
 	protected $config_settings_pages; // Initialized in hydrate_settings
 
-	//protected $header_scripts;
-	//protected $header_styles;
 	protected $active_tab;
 	
 	/* Objects */ 													

@@ -32,6 +32,8 @@ class WPSSM_Assets_Admin extends WPSSM_Assets {
 	public function __construct( $args ) {
 		//WPSSM_Debug::log('In WPSSM_Assets_Display before __construct() ');
 		parent::__construct();
+		$this->hydrate_opt( $this->opt_enqueued_assets, 'wpssm_enqueued_assets');
+		
 		//WPSSM_Debug::log('In WPSSM_Assets_Display after __construct() ');
   	foreach ($args as $key=>$value) {
   		$this->$key = $value;
@@ -97,7 +99,7 @@ class WPSSM_Assets_Admin extends WPSSM_Assets {
 	}
 	
 	public function is_modified( $asset, $field ) {
-		if ( isset( $asset['mods'][ $field ] ) ) return 'modified';
+		if ( isset( $asset[ 'mods' ][ $field ] ) ) return 'modified';
 	}
 
 

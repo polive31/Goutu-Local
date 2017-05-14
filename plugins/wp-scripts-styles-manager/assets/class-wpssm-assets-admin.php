@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-class WPSSM_Assets_Admin extends WPSSM_Assets {	
+class WPSSM_Assets_Admin extends WPSSM_Assets_Mods {	
 
 	/* Options attributes */	
 	private $opt_enqueued_assets = array( 
@@ -99,7 +99,7 @@ class WPSSM_Assets_Admin extends WPSSM_Assets {
 	}
 	
 	public function is_modified( $asset, $field ) {
-		if ( isset( $asset['mods'][ $field ] ) ) return 'modified';
+		if ( isset( $asset[ 'mods' ][ $field ] ) ) return 'modified';
 	}
 
 

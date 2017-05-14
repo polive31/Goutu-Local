@@ -6,7 +6,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-class WPSSM_Assets {
+class WPSSM_Assets_Mods {
+	
+	use DB_Opt;
 
 	/* Options attributes */	
 	private $opt_mods = array(
@@ -14,38 +16,55 @@ class WPSSM_Assets {
 									'footer'=> array(),
 									'async'=>array(),
 									'group'=>array(),
+									'disabled'=>array(),
 									'minify'=>array(),
 									), 
 						'styles'=>array(
 									'footer'=> array(),
 									'async'=>array(),
 									'group'=>array(),
+									'disabled'=>array(),
 									'minify'=>array(),
 									), 						
 						);
-						
-
-	protected function hydrate_opt( &$attribute, $option ) {
-		$get_option = get_option( $option );
-		if ( $get_option!=false ) {
-			if ( is_array($get_option) )
-				foreach ($get_option as $key=>$value) {$attribute[$key]=$value;}
-			else
-				$attribute = $get_option;
-		}
-		WPSSM_Debug::log('In WPSSM hydrate_opt option=' . $option, $attribute);
-	}
+					
 						
 	public function __construct() {
-		//WPSSM_Debug::log('In WPSSM_Assets __construct()');
 		//$this->assets_hydrate();
 		$this->hydrate_opt( $this->opt_mods, 'wpssm_mods');
-		//$this->hydrate_opt( $this->opt_enqueued_assets, 'wpssm_enqueued_assets');
+		WPSSM_Debug::log('In WPSSM_Assets __construct() $this->opt_mods ', $this->opt_mods );
+	}
+
+	public function is_mod( $handle, $field ) {
+		if ( isset( $this->opt_mods[ $handle ][ $field ] ) ) return 'modified';
+		return '';
 	}
 	
+	public function is_async( $handle ) {
+		if ( ! isset( $this->opt_mods['scripts']['async'] ) ) return false;
+		return in_array( $handle, $this->opt_mods['scripts']['async'] );
+	}
+	
+	public function is_footer( $type, $handle ) {
+		if ( ! isset( $this->opt_mods[ $type ]['footer'] ) ) return false;
+		return in_array( $handle, $this->opt_mods[$type]['footer'] );
+	}
 
+	public function is_disabled( $type, $handle ) {
+		if ( ! isset( $this->opt_mods[ $type ]['disabled'] ) ) return false;
+		return in_array( $handle, $this->opt_mods[$type]['disabled'] );
+	}
 
-		
+	public function get( $type, $field ) {
+		WPSSM_Debug::log( ' In WPSSM_Assets get() ');
+		//if ( ! isset( $this->opt_mods[ $type ]['footer'] ) return false;
+		if ( !isset( $this->opt_mods[$type][$field] ) ) {
+			//WPSSM_Debug::log( ' In WPSSM_Assets get() unset element ' . $type . ' ' . $field);
+			return array();
+		}
+		//WPSSM_Debug::log( ' In WPSSM_Assets get() found content for ' . $type . ' ' . $field, $this->opt_mods[$type][$field]);
+		return $this->opt_mods[$type][$field];
+	}
 
 }
 

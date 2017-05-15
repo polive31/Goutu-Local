@@ -37,7 +37,7 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 	public function get_value( $type, $handle, $field) {
 		WPSSM_Debug::log('In WPSSM_Options_Assets get_value() ' . $type . ' ' . $handle . ' ' . $field);
 		$value = false;
-		$asset = parent::get( $type, $handle );
+		$asset = $this->get( $type, $handle );
 //		if ( $get == false ) 
 //			$get=array();
 		if ( $asset != false ) {

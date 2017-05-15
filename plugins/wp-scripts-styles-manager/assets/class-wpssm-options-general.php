@@ -7,6 +7,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 class WPSSM_Options_General extends WPSSM_Options {
+		
+	use Utilities;	
 	
 	const OPT_KEY = 'wpssm_mods';
 	
@@ -14,8 +16,7 @@ class WPSSM_Options_General extends WPSSM_Options {
 	private $plugin_version;
 	
 	public function __construct( $args ) {
-		
-		foreach ($args as $key=>$value) {$this->$key = $value;}		
+		$this->hydrate_args( $args );	
 		$opt_proto = array(
 									'record'=>'off', 
 									'optimize'=>'off', 

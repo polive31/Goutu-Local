@@ -6,11 +6,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-class WPSSM_Assets_Display extends WPSSM_Options_Assets {	
+class WPSSM_Assets_Display {	
+
+	use Utilities;	
 
 	/* Assets attributes */
-	//private $assets;
-	private $displayed=array();			
+	private $assets;
+	private $mods;
+	private $displayed = array();			
 
 	/* Class arguments */
 	private $type;
@@ -22,17 +25,17 @@ class WPSSM_Assets_Display extends WPSSM_Options_Assets {
 	private $filter_args = array( 'location' => 'header' );			
 	private $sort_args = array( 'field' => 'priority', 'order' => SORT_DESC, 'type' => SORT_NUMERIC);
 						
-	//public function __construct( WPSSM_Options_Assets $assets, $args ) {	
 	public function __construct( $args ) {	
-  	foreach ($args as $key=>$value) {$this->$key = $value;}
-		//$this->assets = $assets;
-		$thisdisplayed_hydrate();
+  	$this->hydrate_args( $args );
+		$this->assets = new WPSSM_Options_Assets( $args );
+		$this->mods = new WPSSM_Options_Mods( $args );
+		$this->displayed_hydrate();
 	}
 	
 	public function displayed_hydrate() {
 		WPSSM_Debug::log('In WPSSM_Assets_Display hydrate() $this->type: ', $this->type);
 		if ($this->type!='general') {
-			//WPSSM_Debug::log('In WPSSM_Assets_Display hydrate() $this->get_assets for type ' . $this->type, $this->get_assets( $this->type ));
+			WPSSM_Debug::log('In WPSSM_Assets_Display hydrate() $this->get_assets for type ' . $this->type, $this->get_assets( $this->type ));
 			foreach ($this->assets->get( $this->type ) as $handle=>$asset) {		
 				$group_id = $this->get_field_value( $this->type, $handle, $this->groupby);
 				//WPSSM_Debug::log('In WPSSM_Assets_Display display_hydrate() $group_id ', $group_id);
@@ -106,32 +109,13 @@ class WPSSM_Assets_Display extends WPSSM_Options_Assets {
 //		}
 		WPSSM_Debug::log( 'In WPSSM_Assets_Display get_sort_list() $list after sorting', $list);
 		return $list;
-	}		
+	}	
 	
-/* SETTER FUNCTIONS 
---------------------------------------------------------------------------*/	
-//
-//	public function filter($type, $filter_args) {
-//		WPSSM_Debug::log('In WPSSM_Assets filter() : ' . $type );
-//		if (! isset( $this->opt_enqueued_assets[$type] ) ) return false;
-//		if (! is_array( $filter_args ) ) return false;
-//		$this->filter_args = $filter_args;
-//		WPSSM_Debug::log( 'In WPSSM_Assets filter_args() : ' . $this->filter_args );
-//		$filtered_assets['assets'] = array_filter($this->opt_enqueued_assets[$type], array($this, 'filter_cb') );	
-//		$filtered_assets['count']=count($filtered_assets['assets']);
-//		$filtered_assets['size']=array_sum( array_column( $filtered_assets['assets'],'size'));
-//		WPSSM_Debug::log('In WPSSM_Assets filter() return value ', $filtered_assets );
-//		return $filtered_assets;
-//	}
-//
-//	public function filter_cb( $asset ) {
-//		$match=true;
-//		foreach ($this->filter_args as $field=>$value) {
-//			//WPSSM_Debug::log('In filter assets filter args loop', array($field=>$value));
-//			$match=($this->get_field_value($asset,$field)==$value)?$match:false;
-//		}
-//		return $match;
-//	}
+	
+//	public function is_modified( $asset, $field ) {
+//		if ( isset( $asset[ 'mods' ][ $field ] ) ) return 'modified';
+//	}		
+//	
 
 }
 

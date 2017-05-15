@@ -5,6 +5,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+trait Utilities {
+	
+	function hydrate_args( $args ) {
+		WP_Debug::log( 'In hydrate_args before ', $args);
+		foreach ($args as $key=>$value) {
+			if ( property_exists( $this,$key ) ) {
+				$this->$key = $value;
+				WP_Debug::log( 'In hydrate_args loop ' . $key, $value);
+			}
+		}	
+	}
+	
+	
+}
+
 
 class WPSSM {
 	

@@ -5,7 +5,7 @@ class WPSSM_Admin_Output {
  	private $type;
  	private $asset_notice;
 
- 	/* Class parameters */
+ 	/* Class arguments */
  	private $plugin_name;
  	private $sizes;
  	private $form_action;
@@ -14,12 +14,10 @@ class WPSSM_Admin_Output {
  	/* Objects */
  	private $assets;
   
-  public function __construct( $assets, $args ) {
+  public function __construct( WPSSM_Options_Assets $assets, $args ) {
   	$this->type = $assets->get_display_attr('type');
-  	$this->assets = $assets;
-  	foreach ($args as $key=>$value) {
-  		$this->$key = $value;
-  	}
+  	foreach ($args as $key=>$value) {$this->$key = $value;}
+  	$this->assets = new WPSSM_Assets_Display( $assets, $args );
   }
 
 

@@ -13,11 +13,10 @@ class WPSSM_Admin_Record {
  	private $assets;
  	 	
   public function __construct( $args ) {
-  	$this->type = $assets->get_display_attr('type');
   	foreach ($args as $key=>$value) {
   		$this->$key = $value;
   	}
-		$this->assets = new WPSSM_Assets( array(	'plugin_name' => self::PLUGIN_NAME));
+		$this->assets = new WPSSM_Options_Assets( array(	'plugin_name' => $this->plugin_name ));
   }
   
 

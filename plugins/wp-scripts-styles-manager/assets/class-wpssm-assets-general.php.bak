@@ -1,0 +1,29 @@
+<?php
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+
+class WPSSM_Opt_General extends WPSSM_Assets {
+	
+	const OPT_GENERAL = 'wpssm_mods';
+	
+	/* WPSSM general options attributes */
+	protected static $opt_general_settings = array(
+									'record'=>'off', 
+									'optimize'=>'off', 
+									'javasync'=>'off', 
+									'wpssm_version'=>self::PLUGIN_VERSION);	
+	
+						
+	public function __construct() {
+		parent::__construct( self::OPT_GENERAL, $opt_general_settings )
+		WPSSM_Debug::log('In WPSSM_Assets __construct() $this->get()', $this->get() );
+		WPSSM_Debug::log('In WPSSM_Assets __construct() $this->get("record")', $this->get('record') );
+	}
+
+
+}
+

@@ -7,24 +7,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 class WPSSM_Public extends WPSSM {
+	
 	/* Attributes */
 	private $mods;
 
 	/* Methods */
 	public function __construct() {
-		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-assets.php' ;	
-		$this->mods = new WPSSM_Assets_Mods;
+		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options.php' ;	
+		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-mods.php' ;	
+		$this->mods = new WPSSM_Options_Mods;
 	}		
 	
 	public function hydrate() {
 		if ( is_admin() ) return;
 		//$this->hydrate_opt( $this->opt_mods, 'wpssm_mods');
 		WPSSM_Debug::log('In WPSSM_Public hydrate' );
-	}
-	
-	public function init_recording() {
-		/* In case recording is activated, instantiates relevant classes */
-		$this->assets = new WPSSM_Assets();
 	}
 	
 	public function enqueue_scripts() {
@@ -73,11 +70,11 @@ class WPSSM_Public extends WPSSM {
 		//WPSSM_Debug::log('In apply_styles_mods_cb : mods ',$this->opt_mods['styles']);
 		global $wp_styles;
 		$styles = $wp_styles->registered;
-		foreach ( $mods->get( 'styles', 'disabled' ) as $handle) {
+		foreach ( $this->mods->get( 'styles', 'disabled' ) as $handle) {
 				if (!isset($styles[$handle])) continue;
 				wp_deregister_styles( $handle );
 		}	
-		foreach ( $mods->get( 'styles', 'footer' ) as $handle) {
+		foreach ( $this->mods->get( 'styles', 'footer' ) as $handle) {
 				if (!isset($styles[$handle])) continue;
 				wp_dequeue_style( $handle );
 		}	

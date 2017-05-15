@@ -6,10 +6,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-class WPSSM_Admin extends WPSSM {
+class WPSSM_Admin {
 	
-	protected $config_settings_pages; // Initialized in hydrate_settings
-
+	protected $settings_pages_structure; // Initialized in hydrate_settings
 	protected $active_tab;
 	
 	/* Objects */ 													
@@ -24,8 +23,10 @@ class WPSSM_Admin extends WPSSM {
 	protected $sizes = array('small'=>self::SMALL, 'large'=>self::LARGE, 'max'=>self::MAX );
 
 	public function __construct() {
-		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-assets.php' ;	
-		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-assets-admin.php' ;	
+		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options.php' ;	
+		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-general.php' ;	
+		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-mods.php' ;	
+		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-assets.php' ;	
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-output.php' ;	
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-post.php' ;										
 	}														
@@ -36,8 +37,6 @@ class WPSSM_Admin extends WPSSM {
 //		WPSSM_Debug::log('In WPSSM_Admin enqueue styles : self::PLUGIN_VERSION ', self::PLUGIN_VERSION );
 //		WPSSM_Debug::log('In WPSSM_Admin enqueue styles : self::PLUGIN_SUBMENU ', self::PLUGIN_SUBMENU );
 //		WPSSM_Debug::log('In WPSSM_Admin enqueue styles : self::$opt_general_settings ', self::$opt_general_settings );
-//		WPSSM_Debug::log('In WPSSM_Admin enqueue styles : $this->opt_enqueued_assets', $this->opt_enqueued_assets );
-//		WPSSM_Debug::log('In WPSSM_Admin enqueue styles : $this->opt_mods', $this->opt_mods);
 		wp_enqueue_style( self::PLUGIN_NAME, plugin_dir_url( __FILE__ ) . 'css/wpssm-admin.css', array(), self::PLUGIN_VERSION, 'all' );
 	}
 
@@ -60,7 +59,7 @@ class WPSSM_Admin extends WPSSM {
 		// Get active tab
 		$this->active_tab = isset( $_GET[ 'tab' ] ) ? esc_html($_GET[ 'tab' ]) : 'general';
 		
-		$this->assets = new WPSSM_Assets_Admin( array(	'type'=>$this->active_tab, 
+		$this->assets = new WPSSM_Assets_Display( array('type'=>$this->active_tab, 
 																										'groupby' => 'location', 
 																										'sizes' => $this->sizes ));
 																											
@@ -75,7 +74,7 @@ class WPSSM_Admin extends WPSSM {
 																																		'sizes' => $this->sizes));
 		
 		// Initialize options settings for active tab
-		$this->config_settings_pages = array(
+		$this->settings_pages_structure = array(
 			'general' => array(
 					'slug'=>'general_settings_page',
 					'sections'=> array(
@@ -245,10 +244,10 @@ class WPSSM_Admin extends WPSSM {
 ----------------------------------------------------------*/
 	
 	public function init_settings() {
-			WPSSM_Debug::log('In WPSSM_Admin init_settings : $this->config_settings_pages', $this->config_settings_pages);
+			WPSSM_Debug::log('In WPSSM_Admin init_settings : $this->settings_pages_structure', $this->settings_pages_structure);
 			
-			$page = $this->config_settings_pages[$this->active_tab];
-			WPSSM_Debug::log('In WPSSM_Admin init_settings : $this->config_settings_pages[$this->active_tab]', $page);
+			$page = $this->settings_pages_structure[$this->active_tab];
+			WPSSM_Debug::log('In WPSSM_Admin init_settings : $this->settings_pages_structure[$this->active_tab]', $page);
 	    // register all settings, sections, and fields
     	foreach ( $page['sections'] as $section ) {
     		WPSSM_Debug::log('register loop - sections', $section );
@@ -286,7 +285,7 @@ class WPSSM_Admin extends WPSSM {
 ----------------------------------------------------------------*/
 
 	public function output_options_page() {
-		$this->output->options_page( $this->config_settings_pages[$this->active_tab]['slug'] );
+		$this->output->options_page( $this->settings_pages_structure[$this->active_tab]['slug'] );
 	}
 
 	public function output_toggle_switch_recording_cb() {

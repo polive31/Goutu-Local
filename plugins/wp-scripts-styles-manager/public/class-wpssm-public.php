@@ -6,25 +6,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-class WPSSM_Public extends WPSSM {
+class WPSSM_Public {
+	
 	/* Attributes */
 	private $mods;
 
 	/* Methods */
 	public function __construct() {
-		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-assets.php' ;	
-		$this->mods = new WPSSM_Assets_Mods;
+		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options.php' ;	
+		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-mods.php' ;	
+		$this->mods = new WPSSM_Options_Mods;
 	}		
 	
 	public function hydrate() {
 		if ( is_admin() ) return;
 		//$this->hydrate_opt( $this->opt_mods, 'wpssm_mods');
 		WPSSM_Debug::log('In WPSSM_Public hydrate' );
-	}
-	
-	public function init_recording() {
-		/* In case recording is activated, instantiates relevant classes */
-		$this->assets = new WPSSM_Assets();
 	}
 	
 	public function enqueue_scripts() {

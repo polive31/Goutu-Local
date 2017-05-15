@@ -30,46 +30,43 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 /* GETTER FUNCTIONS	
 --------------------------------------------------------------------------*/	
 
-	/* 	Outputs empty array instead of false on missing handle
-			Since in the case of assets all handles are arrays 
-	-------------------------------------------------------------*/
-	public function get( $type, $handle=false, $field=false ) {
-		WPSSM_Debug::log('In WPSSM_Options_Assets get() ' . $type . ' ' . $handle . ' ' . $field);
-		$get = parent::get( $type, $handle );
-//		if ( $get == false ) 
-//			$get=array();
-		if ( $field != false ) {
-			if ( isset( $get[$field]['mods'] )) 
-				$get = $get[$field]['mods'];
-			elseif ( isset( $get[$field] )) 
-				$get = $get[$field];
-			else
-				$get = false;
-		}
-		WPSSM_Debug::log('In WPSSM_Options_Assets get() after ', $get);
-		return $get;
-	}
-
 	
 	/* 	Retrieves the most up-to-date value of a field within an asset
 			Whether the original value or the one after modification          
 	---------------------------------------------------------------------*/
-	public function get_field_value( $type, $handle, $field ) {
-		//WPSSM_Debug::log('In Field Value for ' . $field);
-		//WPSSM_Debug::log(array('Asset : ' => $asset));
+	public function get_value( $type, $handle, $field) {
+		WPSSM_Debug::log('In WPSSM_Options_Assets get_value() ' . $type . ' ' . $handle . ' ' . $field);
 		$value = false;
-		if ( !isset( $this->opt_enqueued_assets[$type][$handle] ) ) return false ;
-		$asset = $this->opt_enqueued_assets[$type][$handle];
-		
-		if ( isset( $asset['mods'][ $field ] ) ) return $asset['mods'][ $field ];
-		elseif ( isset( $asset[ $field ] )) 
-			return $asset[ $field ];
-		else
-			return false;
+		$asset = parent::get( $type, $handle );
+//		if ( $get == false ) 
+//			$get=array();
+		if ( $asset != false ) {
+			if ( isset( $asset[$field]['mods'] )) 
+				$value = $asset[$field]['mods'];
+			elseif ( isset( $asset[$field] )) 
+				$value = $asset[$field];
+		}
+		WPSSM_Debug::log('In WPSSM_Options_Assets get() after ', $get);
+		return $value;
 	}
+
+
+//	public function get_field_value( $type, $handle, $field ) {
+//		//WPSSM_Debug::log('In Field Value for ' . $field);
+//		//WPSSM_Debug::log(array('Asset : ' => $asset));
+//		$value = false;
+//		if ( !isset( $this->opt_enqueued_assets[$type][$handle] ) ) return false ;
+//		$asset = $this->opt_enqueued_assets[$type][$handle];
+//		
+//		if ( isset( $asset['mods'][ $field ] ) ) return $asset['mods'][ $field ];
+//		elseif ( isset( $asset[ $field ] )) 
+//			return $asset[ $field ];
+//		else
+//			return false;
+//	}
 	
 	public function is_mod( $type, $handle, $field ) {
-		$asset = $this->get( $type, $handle );
+		$asset = parent::get( $type, $handle );
 		return ( isset( $asset[ 'mods' ][ $field ] ) );
 	}		
 	

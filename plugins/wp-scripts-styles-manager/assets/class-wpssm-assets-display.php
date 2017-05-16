@@ -6,13 +6,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-class WPSSM_Assets_Display {	
+class WPSSM_Assets_Display extends WPSSM_Options_Assets {	
 
 	use Utilities;	
 
 	/* Assets attributes */
-	private $assets;
-	private $mods;
 	private $displayed = array();			
 
 	/* Class arguments */
@@ -25,7 +23,8 @@ class WPSSM_Assets_Display {
 	private $filter_args = array( 'location' => 'header' );			
 	private $sort_args = array( 'field' => 'priority', 'order' => SORT_DESC, 'type' => SORT_NUMERIC);
 						
-	public function __construct( WPSSM_Options_Assets $assets, $args ) {	
+	public function __construct( $args ) {	
+		parent::construct( $args );
   	$this->hydrate_args( $args );
 		$this->displayed_hydrate();
 	}

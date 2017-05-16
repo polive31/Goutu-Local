@@ -86,7 +86,10 @@ class WPSSM {
 	
 	private function _define_admin_hooks() {
 		WPSSM_Debug::log('In define_admin_hooks');														
-		$plugin_admin = new WPSSM_Admin();
+		$plugin_admin = new WPSSM_Admin(	'plugin_name' => self::PLUGIN_NAME,
+																			'form_action' => self::FORM_ACTION,
+																			'nonce' => self::NONCE,
+																			'sizes' => $this->sizes );
 		$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'init_admin_cb' 															);
 		//$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'init_settings' 														);
 		$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'add_plugin_menu_option_cb' 								);

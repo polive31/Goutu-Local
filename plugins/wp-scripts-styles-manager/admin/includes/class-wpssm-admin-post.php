@@ -1,10 +1,12 @@
 <?php
 
 class WPSSM_Admin_Post {
+	
+	use Utilities;
 
  	private $type;
 
- 	/* Class parameters */
+ 	/* Class arguments */
  	private $plugin_name;
  	private $sizes;
  	private $form_action;
@@ -13,12 +15,10 @@ class WPSSM_Admin_Post {
  	/* Objects */
  	private $assets;
  	 	
-  public function __construct( $assets, $args ) {
+  public function __construct( WPSSM_Options_Assets $assets, $args ) {
+  	$this->hydrate_args( $args );
   	$this->type = $assets->get_display_attr('type');
   	$this->assets = $assets;
-  	foreach ($args as $key=>$value) {
-  		$this->$key = $value;
-  	}
   }
   
 

@@ -1,6 +1,8 @@
 <?php
 
 class WPSSM_Admin_Post {
+	
+	use Utilities;
 
  	private $type;
 
@@ -13,12 +15,10 @@ class WPSSM_Admin_Post {
  	/* Objects */
  	private $assets;
  	 	
-  public function __construct( $assets, $args ) {
+  public function __construct( WPSSM_Options_Assets $assets, $args ) {
+  	$this->hydrate_args( $args );
   	$this->type = $assets->get_display_attr('type');
   	$this->assets = $assets;
-  	foreach ($args as $key=>$value) {
-  		$this->$key = $value;
-  	}
   }
   
 
@@ -118,7 +118,19 @@ class WPSSM_Admin_Post {
 
 
 
+/* RECORDING CALLBACKS 
+----------------------------------------------------*/
+	public function record_header_assets_cb() {
+		WPSSM_Debug::log('In record header assets cb');
+		$this->assets->record( false );
+	}
 
+	public function record_footer_assets_cb() {
+		WPSSM_Debug::log('In record footer assets cb');
+		$this->assets->record( true );
+	}
+	
+	
   
 
 	

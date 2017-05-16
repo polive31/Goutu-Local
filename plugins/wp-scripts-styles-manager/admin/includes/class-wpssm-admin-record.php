@@ -7,7 +7,6 @@ class WPSSM_Admin_Record {
 
  	/* Class parameters */
  	private $plugin_name;
-
  	
  	/* Objects */
  	private $assets;

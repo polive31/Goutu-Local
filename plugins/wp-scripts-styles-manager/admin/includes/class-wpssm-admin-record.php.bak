@@ -16,7 +16,7 @@ class WPSSM_Admin_Record {
   	foreach ($args as $key=>$value) {
   		$this->$key = $value;
   	}
-		$this->assets = new WPSSM_Options_Assets( array(	'plugin_name' => self::PLUGIN_NAME));
+		$this->assets = new WPSSM_Options_Assets( array(	'plugin_name' => $this->plugin_name ));
   }
   
 

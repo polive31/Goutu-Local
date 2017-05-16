@@ -2,6 +2,8 @@
 
 class WPSSM_Admin_Output {
  	
+	use Utilities;	
+ 	
  	private $type;
  	private $asset_notice;
 
@@ -15,8 +17,8 @@ class WPSSM_Admin_Output {
  	private $assets;
   
   public function __construct( WPSSM_Options_Assets $assets, $args ) {
+  	$this->hydrate_args( $args );
   	$this->type = $assets->get_display_attr('type');
-  	foreach ($args as $key=>$value) {$this->$key = $value;}
   	$this->assets = new WPSSM_Assets_Display( $assets, $args );
   }
 

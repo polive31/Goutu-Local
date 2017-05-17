@@ -39,27 +39,27 @@ class WPSSM_Options_Mods extends WPSSM_Options {
 	-------------------------------------------------------------*/
 	public function get( $type, $field ) {
 		$get = parent::get( $type, $field );
-		return ($get==false):array():$get;
+		return ($get==false)?array():$get;
 	}
 
 	public function is_mod( $type, $handle, $field ) {
-		if ( isset( $this->get( $type, $field ))) {
-			return in_array( $handle, $this->get( $type, $field) );
-		}
+		if ( parent::get( $type, $field ) == false ) return false;
+		return in_array( $handle, parent::get( $type, $field ) );
 	}
 	
 	public function is_async( $type, $handle ) {
-		if ( ! isset( $this->get('scripts','async' ))) return false;
+		if ( parent::get( $type, 'async' ) == false ) return false;
+		return in_array( $handle, parent::get( $type,'async' ) );
 	}
 	
 	public function is_footer( $type, $handle ) {
-		if ( ! isset( $this->get( $type, 'footer' ))) return false;
-		return in_array( $handle, $this->et($type,'footer') );
+		if ( parent::get( $type, 'footer' ) == false ) return false;
+		return in_array( $handle, parent::get( $type,'footer' ) );
 	}
 
 	public function is_disabled( $type, $handle ) {
-		if ( ! isset( $this->get( $type,'disabled' ))) return false;
-		return in_array( $handle, $this->get( $type, 'disabled' ));
+		if ( parent::get( $type, 'disabled' ) == false ) return false;
+		return in_array( $handle, parent::get( $type, 'disabled' ));
 	}
 
 

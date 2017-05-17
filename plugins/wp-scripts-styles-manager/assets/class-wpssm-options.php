@@ -46,7 +46,7 @@ abstract class WPSSM_Options {
 	/* SETTINGS & ASSETS MANAGEMENT */	
 
 	public function get( $field=false, $subfield=false ) {
-		WPSSM_Debug::log( ' In WPSSM_Assets get() ');
+		//WPSSM_Debug::log( ' In WPSSM_Assets get() ' );
 		$get = false;
 		if ($field == false) {
 			if ( isset( $this->asset ) ) $get=$this->asset;			
@@ -57,8 +57,7 @@ abstract class WPSSM_Options {
 		elseif ( isset( $this->asset[$field][$subfield] ) ) {
 			$get=$this->asset[$field][$subfield]; 
 		}
-		
-		WPSSM_Debug::log( ' In WPSSM_Assets get() ' . $field . ' ' . $subfield, $get);
+		//WPSSM_Debug::log( ' In WPSSM_Assets get() ' . $field . ' ' . $subfield, $get);
 		return $get;
 	}
 

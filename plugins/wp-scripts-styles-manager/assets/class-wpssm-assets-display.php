@@ -24,7 +24,7 @@ class WPSSM_Assets_Display extends WPSSM_Options_Assets {
 	private $sort_args = array( 'field' => 'priority', 'order' => SORT_DESC, 'type' => SORT_NUMERIC);
 						
 	public function __construct( $args ) {	
-		parent::construct( $args );
+		parent::__construct( $args );
   	$this->hydrate_args( $args );
 		$this->displayed_hydrate();
 	}
@@ -32,16 +32,16 @@ class WPSSM_Assets_Display extends WPSSM_Options_Assets {
 	public function displayed_hydrate() {
 		WPSSM_Debug::log('In WPSSM_Assets_Display hydrate() $this->type: ', $this->type);
 		if ($this->type!='general') {
-			WPSSM_Debug::log('In WPSSM_Assets_Display hydrate() $this->get_assets for type ' . $this->type, $this->get_assets( $this->type ));
-			foreach ($this->assets->get( $this->type ) as $handle=>$asset) {		
-				$group_id = $this->assets->get_value( $this->type, $handle, $this->groupby);
+			WPSSM_Debug::log('In WPSSM_Assets_Display hydrate() $this->get_assets for type ' . $this->type, $this->get( $this->type ));
+			foreach ($this->get( $this->type ) as $handle=>$asset) {		
+				$group_id = $this->get_value( $this->type, $handle, $this->groupby);
 				//WPSSM_Debug::log('In WPSSM_Assets_Display display_hydrate() $group_id ', $group_id);
 				if ( isset($this->displayed[$group_id]) ) 
 					$group=$this->displayed[$group_id];
 				else 
 					$group = array();
 				$group['assets'][$handle] = $this->get_modified_asset( $handle );	
-				if (isset($group['size'])) $group['size'] += $this->assets->get_value( $this->type, $handle, 'size');	
+				if (isset($group['size'])) $group['size'] += $this->get_value( $this->type, $handle, 'size');	
 				else $group['size']=0;
 				if (isset($group['count'])) $group['count']++;	
 				else $group['count']=1;	
@@ -65,7 +65,7 @@ class WPSSM_Assets_Display extends WPSSM_Options_Assets {
 		return $this->displayed[$group][$stat];
 	}
 
-  public function get_displayed_assets( $group_id, $handle=false ) {
+  public function get_displayed( $group_id, $handle=false ) {
 		if ( !isset( $this->displayed[ $group_id ] ) ) return false;
 		if ( $handle==false ) return $this->displayed[ $group_id ]['assets'];
 		if ( !isset( $this->displayed[ $group_id ]['assets'][ $handle ] )) return array();
@@ -76,7 +76,7 @@ class WPSSM_Assets_Display extends WPSSM_Options_Assets {
   	/* Generate an asset with modified fields replacing original ones */
 		$modasset = array();
 		foreach ($this->display_fields as $field) {
-			$value=$this->assets->get_value( $this->type, $handle, $field);
+			$value=$this->get_value( $this->type, $handle, $field);
 			$modasset[$field]=$value;
 		}
 		//WPSSM_Debug::log( 'In WPSSM_Assets_Display get_modified_asset()', $modasset);
@@ -87,7 +87,7 @@ class WPSSM_Assets_Display extends WPSSM_Options_Assets {
 		$sort_field = $this->sort_args['field'];
 		$sort_order = $this->sort_args['order'];
 		$sort_type = $this->sort_args['type'];
-		$assets = $this->get_displayed_assets( $group_id );
+		$assets = $this->get_displayed( $group_id );
 		WPSSM_Debug::log( 'In WPSSM_Assets_Display get_sort_list() $assets for ' . $group_id, $assets);
 		$list = array_column($assets, $sort_field, 'handle' );		
 		WPSSM_Debug::log( 'In WPSSM_Assets_Display get_sort_list() $list before sorting', $list);

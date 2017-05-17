@@ -6,6 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
+
 class WPSSM_Admin {
 	
 	use Utilities;
@@ -15,11 +16,12 @@ class WPSSM_Admin {
 
  	/* Class arguments */
  	private $plugin_name;
- 	private $sizes;
+ 	private $plugin_submenu;
  	private $form_action;
  	private $nonce;
 	
 	/* Objects */ 													
+	protected $settings;														
 	protected $assets;														
 	protected $output;														
 	protected $update;														
@@ -36,6 +38,7 @@ class WPSSM_Admin {
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-general.php' ;	
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-mods.php' ;	
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-assets.php' ;	
+		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-assets-display.php' ;	
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-output.php' ;	
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-post.php' ;										
 	}														
@@ -46,12 +49,12 @@ class WPSSM_Admin {
 //		WPSSM_Debug::log('In WPSSM_Admin enqueue styles : self::PLUGIN_VERSION ', self::PLUGIN_VERSION );
 //		WPSSM_Debug::log('In WPSSM_Admin enqueue styles : self::PLUGIN_SUBMENU ', self::PLUGIN_SUBMENU );
 //		WPSSM_Debug::log('In WPSSM_Admin enqueue styles : self::$opt_general_settings ', self::$opt_general_settings );
-		wp_enqueue_style( self::PLUGIN_NAME, plugin_dir_url( __FILE__ ) . 'css/wpssm-admin.css', array(), self::PLUGIN_VERSION, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wpssm-admin.css', array(), $this->plugin_version, 'all' );
 	}
 
 	public function enqueue_scripts() {
 		//WPSSM_Debug::log('In WPSSM_Admin enqueue scripts');
-		wp_enqueue_script( self::PLUGIN_NAME, plugin_dir_url( __FILE__ ) . 'js/wpssm-admin.js', array( 'jquery' ), self::PLUGIN_VERSION, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wpssm-admin.js', array( 'jquery' ), $this->plugin_version, false );
 	}
 	
 	
@@ -67,19 +70,21 @@ class WPSSM_Admin {
 
 		// Get active tab
 		$this->active_tab = isset( $_GET[ 'tab' ] ) ? esc_html($_GET[ 'tab' ]) : 'general';
-		
-		$this->assets = new WPSSM_Assets_Display( array(								'type'=>$this->active_tab, 
-																																		'groupby' => 'location', 
-																																		'sizes' => $this->sizes ));
-																											
-		$this->output = new WPSSM_Admin_Output( $this->assets, array(		'plugin_name' => self::PLUGIN_NAME,
-																																		'form_action' => self::FORM_ACTION,
-																																		'nonce' => self::NONCE,
-																																		'sizes' => $this->sizes));
 
-		$this->post = new WPSSM_Admin_Post( $this->assets, array(				'plugin_name' => self::PLUGIN_NAME,
-																																		'form_action' => self::FORM_ACTION,
-																																		'nonce' => self::NONCE,
+		$this->settings = new WPSSM_Options_General( 						array(	'plugin_version'=> $this->plugin_version)); 
+		
+		$this->assets = new WPSSM_Assets_Display( 							array(	'type'					=> $this->active_tab, 
+																																		'groupby' 			=> 'location', 
+																																		'sizes' 				=> $this->sizes ));
+																											
+		$this->output = new WPSSM_Admin_Output( $this->assets, 	array(	'plugin_name' 	=> $this->plugin_name,
+																																		'form_action' 	=> $this->form_action,
+																																		'nonce' 				=> $this->nonce,
+																																		'sizes' 				=> $this->sizes));
+
+		$this->post = new WPSSM_Admin_Post( $this->assets, 			array(	'plugin_name' 	=> $this->plugin_name,
+																																		'form_action' 	=> $this->form_action,
+																																		'nonce' => $this->nonce,
 																																		'sizes' => $this->sizes));
 		
 		// Initialize options settings for active tab
@@ -224,11 +229,11 @@ class WPSSM_Admin {
 	public function add_plugin_menu_option_cb() {
 		//WPSSM_Debug::log('In add_plugin_menu_option_cb');								
 		$opt_page_id = add_submenu_page(
-      self::PLUGIN_SUBMENU,
+      $this->plugin_submenu,
       'WP Scripts & Styles Manager',
       'Scripts & Styles Manager',
       'manage_options',
-      self::PLUGIN_NAME,
+      $this->plugin_name,
       array($this, 'output_options_page' )
 	    );
 	  /* Add hook for admin notice display on page load */  
@@ -298,15 +303,15 @@ class WPSSM_Admin {
 	}
 
 	public function output_toggle_switch_recording_cb() {
-		$this->output->toggle_switch( 'general_record', self::$opt_general_settings['record']);
+		$this->output->toggle_switch( 'general_record', $this->settings->get('record') );
 	}	
 
 	public function output_toggle_switch_optimize_cb() {
-		$this->output->toggle_switch( 'general_optimize', self::$opt_general_settings['optimize']);
+		$this->output->toggle_switch( 'general_optimize', $this->settings->get('optimize') );
 	}		
 	
 	public function output_toggle_switch_javasync_cb() {
-		$this->output->toggle_switch( 'general_javasync', self::$opt_general_settings['javasync']);
+		$this->output->toggle_switch( 'general_javasync', $this->settings->get('javasync') );
 	}	
 	
 

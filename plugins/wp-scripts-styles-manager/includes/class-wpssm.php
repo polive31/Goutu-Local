@@ -5,22 +5,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-trait Utilities {
-	
-	function hydrate_args( $args ) {
-		WP_Debug::log( 'In hydrate_args before ', $args);
-		foreach ($args as $key=>$value) {
-			if ( property_exists( $this,$key ) ) {
-				$this->$key = $value;
-				WP_Debug::log( 'In hydrate_args loop ' . $key, $value);
-			}
-		}	
+	trait Utilities {
+		function hydrate_args( $args ) {
+			//WP_Debug::log( 'In hydrate_args before ', $args);
+			foreach ($args as $key=>$value) {
+				if ( property_exists( $this,$key ) ) {
+					$this->$key = $value;
+					//WP_Debug::log( 'In hydrate_args loop ' . $key, $value);
+				}
+			}	
+		}
 	}
 	
-	
-}
-
-
 class WPSSM {
 	
 	/* Plugin attributes */
@@ -44,12 +40,8 @@ class WPSSM {
 	
 	
 	public function __construct() {
-		$this->plugin_name = self::PLUGIN_NAME;
-		$this->plugin_version = self::PLUGIN_VERSION;
-		$this->plugin_submenu = self::PLUGIN_SUBMENU;
-		
 		$this->_load_dependencies();
-		$this->_define_debug_hooks();
+		//$this->_define_debug_hooks();
 		$this->_get_plugin_settings();
 		$this->_define_admin_hooks();
 		$this->_define_public_hooks();
@@ -78,7 +70,7 @@ class WPSSM {
 	private function _define_debug_hooks() {
 		if ( !self::PLUGIN_DBG ) return;
 		WPSSM_Debug::log('In define_debug_hooks');
-		$plugin_debug = new WPSSM_Debug();
+		//$plugin_debug = new WPSSM_Debug();
 		//$this->loader->add_action( 'wp',	$plugin_debug, 'init_dbg' 																);
 		//set_error_handler( 'WPSSM_Debug::error' );	
 	}
@@ -86,10 +78,11 @@ class WPSSM {
 	
 	private function _define_admin_hooks() {
 		WPSSM_Debug::log('In define_admin_hooks');														
-		$plugin_admin = new WPSSM_Admin(	'plugin_name' => self::PLUGIN_NAME,
-																			'form_action' => self::FORM_ACTION,
-																			'nonce' => self::NONCE,
-																			'sizes' => $this->sizes );
+		$plugin_admin = new WPSSM_Admin(	array('plugin_name' => self::PLUGIN_NAME,
+																						'submenu' 		=> self::PLUGIN_SUBMENU,
+																						'form_action' => self::FORM_ACTION,
+																						'nonce' => self::NONCE,
+																						'sizes' => $this->sizes ));
 		$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'init_admin_cb' 															);
 		//$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'init_settings' 														);
 		$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'add_plugin_menu_option_cb' 								);
@@ -147,3 +140,7 @@ class WPSSM {
 		
 
 }
+
+
+
+

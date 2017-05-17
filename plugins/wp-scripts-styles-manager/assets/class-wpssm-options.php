@@ -19,8 +19,8 @@ abstract class WPSSM_Options {
 	// Hydrates the asset attribute with content of the WP option $id
 	// Only populate the initial $asset prototype with $id option existing values 
 	public function get_opt( $id, $asset ) {
-		WPSSM_Debug::log('In WPSSM_Options get_opt option=' . $id, $attribute);
 		$get_option = get_option( $id );
+		//WPSSM_Debug::log('In WPSSM_Options $get_option', $get_option);
 		if ( $get_option!=false ) {
 			//WPSSM_Debug::log('In WPSSM hydrate_opt get_option', $get_option);
 			if ( is_array($get_option) ) {
@@ -35,6 +35,7 @@ abstract class WPSSM_Options {
 			else
 				$asset = $get_option;
 		}
+		//WPSSM_Debug::log('In WPSSM_Options get_opt option=' . $id, $asset);
 		return $asset;
 	}
 	

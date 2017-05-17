@@ -10,7 +10,7 @@ class WPSSM_Options_General extends WPSSM_Options {
 		
 	use Utilities;	
 	
-	const OPT_KEY = 'wpssm_mods';
+	const OPT_KEY = 'wpssm_general_settings';
 	
 	/* Args attributes */
 	private $plugin_version;
@@ -24,8 +24,8 @@ class WPSSM_Options_General extends WPSSM_Options {
 									'wpssm_version'=>$this->plugin_version);	
 						
 		parent::__construct( self::OPT_KEY, $opt_proto );
-		WPSSM_Debug::log('In WPSSM_Assets __construct() $this->get()', $this->get() );
-		WPSSM_Debug::log('In WPSSM_Assets __construct() $this->get("record")', $this->get('record') );
+		//WPSSM_Debug::log('In WPSSM_Assets __construct() $this->get()', $this->get() );
+		//WPSSM_Debug::log('In WPSSM_Assets __construct() $this->get(record)', $this->get('record') );
 	}
 
 

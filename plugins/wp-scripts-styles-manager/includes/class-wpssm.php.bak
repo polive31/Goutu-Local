@@ -61,9 +61,9 @@ class WPSSM {
 	}
 	
 	private function _get_plugin_settings() {
-		WPSSM_Debug::log('In WPSSM get_plugin_settings');
+		//WPSSM_Debug::log('In WPSSM get_plugin_settings');
 		$this->settings = new WPSSM_Options_General( array('plugin_version'=>self::PLUGIN_VERSION) );
-		WPSSM_Debug::log('$this->settings->get()', $this->settings->get() );
+		//WPSSM_Debug::log('$this->settings->get()', $this->settings->get() );
 	}
 	
 	
@@ -79,7 +79,7 @@ class WPSSM {
 	private function _define_admin_hooks() {
 		WPSSM_Debug::log('In define_admin_hooks');														
 		$plugin_admin = new WPSSM_Admin(	array('plugin_name' => self::PLUGIN_NAME,
-																						'submenu' => self::PLUGIN_SUBMENU,
+																						'submenu' 		=> self::PLUGIN_SUBMENU,
 																						'form_action' => self::FORM_ACTION,
 																						'nonce' => self::NONCE,
 																						'sizes' => $this->sizes ));

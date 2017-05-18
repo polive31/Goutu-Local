@@ -24,6 +24,7 @@ class WPSSM_Assets_Display extends WPSSM_Options_Assets {
 	private $sort_args = array( 'field' => 'priority', 'order' => SORT_DESC, 'type' => SORT_NUMERIC);
 						
 	public function __construct( $args ) {	
+		WPSSM_Debug::log('*** In WPSSM_Options_Assets __construct ***' );				
 		parent::__construct( $args );
   	$this->hydrate_args( $args );
 		$this->displayed_hydrate();

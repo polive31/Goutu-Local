@@ -18,6 +18,7 @@ class WPSSM_Admin_Output {
  	private $assets;
   
   public function __construct( WPSSM_Options_Assets $assets, $args ) {
+		WPSSM_Debug::log('*** In WPSSM_Admin_Output __construct ***' );		  	
   	$this->hydrate_args( $args );
   	$this->assets = new WPSSM_Assets_Display( $assets, $args );
   	$this->type = $this->assets->get_display_attr('type');

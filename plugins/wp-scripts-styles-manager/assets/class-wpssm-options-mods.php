@@ -13,6 +13,7 @@ class WPSSM_Options_Mods extends WPSSM_Options {
 	const OPT_KEY = 'wpssm_mods';
 						
 	public function __construct( $args ) {
+		WPSSM_Debug::log('*** In WPSSM_Options_Mods __construct ***' );
 		$this->hydrate_args( $args );			
 		$opt_proto = array(
 						'scripts'=>array(

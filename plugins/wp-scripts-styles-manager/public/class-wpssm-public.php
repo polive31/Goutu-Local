@@ -12,16 +12,16 @@ class WPSSM_Public {
 	private $mods;
 
 	/* Methods */
-	public function __construct() {
+//	public function __construct() {
+//		WPSSM_Debug::log('*** In WPSSM_Public __construct ***' );		
+//	}		
+	
+	public function init_public_cb() {
+		WPSSM_Debug::log('*** In WPSSM_Public init_plugin_cb ***' );
+		if ( is_admin() ) return;
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options.php' ;	
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-mods.php' ;	
 		$this->mods = new WPSSM_Options_Mods;
-	}		
-	
-	public function hydrate() {
-		if ( is_admin() ) return;
-		//$this->hydrate_opt( $this->opt_mods, 'wpssm_mods');
-		WPSSM_Debug::log('In WPSSM_Public hydrate' );
 	}
 	
 	public function enqueue_scripts() {

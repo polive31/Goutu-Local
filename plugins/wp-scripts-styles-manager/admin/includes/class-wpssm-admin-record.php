@@ -3,6 +3,8 @@
 class WPSSM_Admin_Record {
 	/* Class triggerred independantly from WPSSM_Public even if it runs in frontend */
 
+	use Utilities;
+
  	private $type;
 
  	/* Class parameters */
@@ -12,9 +14,8 @@ class WPSSM_Admin_Record {
  	private $assets;
  	 	
   public function __construct( $args ) {
-  	foreach ($args as $key=>$value) {
-  		$this->$key = $value;
-  	}
+		WPSSM_Debug::log('*** In WPSSM_Admin_Record __construct ***' );		  	
+  	$this->hydrate_args( $args );	
 		$this->assets = new WPSSM_Options_Assets( array(	'plugin_name' => $this->plugin_name ));
   }
   

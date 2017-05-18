@@ -15,7 +15,8 @@ class WPSSM_Admin_Post {
  	/* Objects */
  	private $assets;
  	 	
-  public function __construct( WPSSM_Options_Assets $assets, $args ) {
+  public function __construct( $args ) {
+ 		WPSSM_Debug::log('*** In WPSSM_Admin_Post __construct ***' );		  	 	
   	$this->hydrate_args( $args );
   	$this->type = $assets->get_display_attr('type');
   	$this->assets = $assets;

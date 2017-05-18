@@ -17,6 +17,7 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 	protected $header_styles;
 
 	public function __construct( $args ) {
+		WPSSM_Debug::log('*** In WPSSM_Options_Assets __construct ***' );		
   	$this->hydrate_args( $args );	
 		$opt_proto = array( 
 									'pages'=>array(), 

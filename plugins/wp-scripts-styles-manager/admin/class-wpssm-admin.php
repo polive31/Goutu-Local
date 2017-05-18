@@ -33,59 +33,47 @@ class WPSSM_Admin {
 	protected $sizes = array('small'=>self::SMALL, 'large'=>self::LARGE, 'max'=>self::MAX );
 
 	public function __construct( $args ) {
-  	$this->hydrate_args( $args );		
+		WPSSM_Debug::log('*** In WPSSM_Admin __construct ***' );		
+  	$this->hydrate_args( $args );											
+	}														
+														
+	public function enqueue_styles_cb() {
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wpssm-admin.css', array(), $this->plugin_version, 'all' );
+	}
+
+	public function enqueue_scripts_cb() {
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wpssm-admin.js', array( 'jquery' ), $this->plugin_version, false );
+	}
+		
+	public function init_admin_cb() {
+		WPSSM_Debug::log( 'In WPSSM_Admin init_admin()' );								
+		if ( !is_admin() ) return;
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options.php' ;	
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-general.php' ;	
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-mods.php' ;	
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-assets.php' ;	
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-assets-display.php' ;	
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-output.php' ;	
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-post.php' ;										
-	}														
-														
-	public function enqueue_styles() {
-//		WPSSM_Debug::log('In WPSSM_Admin enqueue styles');
-//		WPSSM_Debug::log('In WPSSM_Admin enqueue styles : self::PLUGIN_NAME ', self::PLUGIN_NAME );
-//		WPSSM_Debug::log('In WPSSM_Admin enqueue styles : self::PLUGIN_VERSION ', self::PLUGIN_VERSION );
-//		WPSSM_Debug::log('In WPSSM_Admin enqueue styles : self::PLUGIN_SUBMENU ', self::PLUGIN_SUBMENU );
-//		WPSSM_Debug::log('In WPSSM_Admin enqueue styles : self::$opt_general_settings ', self::$opt_general_settings );
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wpssm-admin.css', array(), $this->plugin_version, 'all' );
-	}
-
-	public function enqueue_scripts() {
-		//WPSSM_Debug::log('In WPSSM_Admin enqueue scripts');
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wpssm-admin.js', array( 'jquery' ), $this->plugin_version, false );
-	}
-	
-	
-	public function init_admin_cb() {
-		WPSSM_Debug::log( 'In WPSSM_Admin init_admin()' );								
-		/* Instantiates objects and hydrates them 
-		Instantiation not done in __construct() to avoid useless database accesses */	
-		//$this->assets = new WPSSM_Assets();
-		//$this->post = new WPSSM_Admin_Post( $this->assets );
+		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-post.php' ;	
 		
-		WPSSM_Debug::log('In WPSSM_Admin init_admin()');
-		if ( !is_admin() ) return;
-
 		// Get active tab
 		$this->active_tab = isset( $_GET[ 'tab' ] ) ? esc_html($_GET[ 'tab' ]) : 'general';
 
-		$this->settings = new WPSSM_Options_General( 						array(	'plugin_version'=> $this->plugin_version)); 
+		//$this->settings = new WPSSM_Options_General( 							array(	'plugin_version'=> $this->plugin_version)); 
 		
-		$this->assets = new WPSSM_Assets_Display( 							array(	'type'					=> $this->active_tab, 
-																																		'groupby' 			=> 'location', 
-																																		'sizes' 				=> $this->sizes ));
+		$this->assets = 	new WPSSM_Assets_Display( 							array(	'type'					=> $this->active_tab, 
+																																			'groupby' 			=> 'location', 
+																																			'sizes' 				=> $this->sizes ));
 																											
-		$this->output = new WPSSM_Admin_Output( $this->assets, 	array(	'plugin_name' 	=> $this->plugin_name,
-																																		'form_action' 	=> $this->form_action,
-																																		'nonce' 				=> $this->nonce,
-																																		'sizes' 				=> $this->sizes));
+		$this->output = 	new WPSSM_Admin_Output( $this->assets, 	array(	'plugin_name' 	=> $this->plugin_name,
+																																			'form_action' 	=> $this->form_action,
+																																			'nonce' 				=> $this->nonce,
+																																			'sizes' 				=> $this->sizes));
 
-		$this->post = new WPSSM_Admin_Post( $this->assets, 			array(	'plugin_name' 	=> $this->plugin_name,
-																																		'form_action' 	=> $this->form_action,
-																																		'nonce' => $this->nonce,
-																																		'sizes' => $this->sizes));
+//		$this->post = 		new WPSSM_Admin_Post( $this->assets, 		array(	'plugin_name' 	=> $this->plugin_name,
+//																																			'form_action' 	=> $this->form_action,
+//																																			'nonce' 				=> $this->nonce,
+//																																			'sizes' 				=> $this->sizes));
 		
 		// Initialize options settings for active tab
 		$this->settings_pages_structure = array(

@@ -16,6 +16,7 @@ class WPSSM_Options_General extends WPSSM_Options {
 	private $plugin_version;
 	
 	public function __construct( $args ) {
+		WPSSM_Debug::log('*** In WPSSM_Options_General __construct ***' );
 		$this->hydrate_args( $args );	
 		$opt_proto = array(
 									'record'=>'off', 

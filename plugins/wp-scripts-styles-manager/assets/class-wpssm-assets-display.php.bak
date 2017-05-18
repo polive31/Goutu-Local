@@ -87,7 +87,7 @@ class WPSSM_Assets_Display extends WPSSM_Options_Assets {
 		$sort_field = $this->sort_args['field'];
 		$sort_order = $this->sort_args['order'];
 		$sort_type = $this->sort_args['type'];
-		$assets = $this->get_displayed_assets( $group_id );
+		$assets = $this->get_displayed( $group_id );
 		WPSSM_Debug::log( 'In WPSSM_Assets_Display get_sort_list() $assets for ' . $group_id, $assets);
 		$list = array_column($assets, $sort_field, 'handle' );		
 		WPSSM_Debug::log( 'In WPSSM_Assets_Display get_sort_list() $list before sorting', $list);

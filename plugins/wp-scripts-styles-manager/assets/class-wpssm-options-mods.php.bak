@@ -13,6 +13,7 @@ class WPSSM_Options_Mods extends WPSSM_Options {
 	const OPT_KEY = 'wpssm_mods';
 						
 	public function __construct( $args ) {
+		WPSSM_Debug::log('In WPSSM_Options_Mods __construct' );
 		$this->hydrate_args( $args );			
 		$opt_proto = array(
 						'scripts'=>array(
@@ -58,7 +59,7 @@ class WPSSM_Options_Mods extends WPSSM_Options {
 	}
 
 	public function is_disabled( $type, $handle ) {
-		if ( parent::get( $type,'disabled' ) == false ) return false;
+		if ( parent::get( $type, 'disabled' ) == false ) return false;
 		return in_array( $handle, parent::get( $type, 'disabled' ));
 	}
 

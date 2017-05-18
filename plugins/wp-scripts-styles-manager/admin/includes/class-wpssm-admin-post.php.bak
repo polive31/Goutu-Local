@@ -13,14 +13,23 @@ class WPSSM_Admin_Post {
  	private $nonce;
  	
  	/* Objects */
+ 	private $general;
  	private $assets;
+ 	private $mods;
  	 	
-  public function __construct( WPSSM_Options_Assets $assets, $args ) {
+  public function __construct( $args ) {
  		WPSSM_Debug::log('*** In WPSSM_Admin_Post __construct ***' );		  	 	
   	$this->hydrate_args( $args );
-  	$this->type = $assets->get_display_attr('type');
-  	$this->assets = $assets;
   }
+  
+  public function init_post_cb() {
+ 		WPSSM_Debug::log('*** In WPSSM_Admin_Post init_post_cb ***' );		  	 	
+  	$this->general = new WPSSM_Options_General;
+  	$this->assets  = new WPSSM_Options_Assets;
+  	$this->mods    = new WPSSM_Options_Mods;
+  	$this->type = $assets->get_display_attr('type');
+		
+  }  
   
 
 /* FORM SUBMISSION

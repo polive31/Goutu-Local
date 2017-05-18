@@ -55,13 +55,11 @@ class WPSSM_Admin {
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-assets-display.php' ;	
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-output.php' ;	
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-post.php' ;	
-		
-		// Get active tab
-		$this->active_tab = isset( $_GET[ 'tab' ] ) ? esc_html($_GET[ 'tab' ]) : 'general';
+	
 
 		//$this->settings = new WPSSM_Options_General( 							array(	'plugin_version'=> $this->plugin_version)); 
 		
-		$this->assets = 	new WPSSM_Assets_Display( 							array(	'type'					=> $this->active_tab, 
+		$this->assets = 	new WPSSM_Assets_Display( 							array(	'type'					=> $this->get_tab(), 
 																																			'groupby' 			=> 'location', 
 																																			'sizes' 				=> $this->sizes ));
 																											
@@ -70,10 +68,10 @@ class WPSSM_Admin {
 																																			'nonce' 				=> $this->nonce,
 																																			'sizes' 				=> $this->sizes));
 
-		$this->post = 		new WPSSM_Admin_Post( $this->assets, 		array(	'plugin_name' 	=> $this->plugin_name,
-																																			'form_action' 	=> $this->form_action,
-																																			'nonce' 				=> $this->nonce,
-																																			'sizes' 				=> $this->sizes));
+//		$this->post = 		new WPSSM_Admin_Post( $this->assets, 		array(	'plugin_name' 	=> $this->plugin_name,
+//																																			'form_action' 	=> $this->form_action,
+//																																			'nonce' 				=> $this->nonce,
+//																																			'sizes' 				=> $this->sizes));
 		
 		// Initialize options settings for active tab
 		$this->settings_pages_structure = array(
@@ -204,7 +202,7 @@ class WPSSM_Admin {
 			),
 		);		
 
-		WPSSM_Debug::log('In WPSSM_Admin init_admin(), $this->active_tab', $this->active_tab);	
+		WPSSM_Debug::log('In WPSSM_Admin init_admin(), $this->get_tab()', $this->get_tab() );	
 
 		// Prepare assets to display
 		$this->init_settings();						
@@ -248,7 +246,7 @@ class WPSSM_Admin {
 	public function init_settings() {
 			WPSSM_Debug::log('In WPSSM_Admin init_settings : $this->settings_pages_structure', $this->settings_pages_structure);
 			
-			$page = $this->settings_pages_structure[$this->active_tab];
+			$page = $this->settings_pages_structure[$this->get_tab()];
 			WPSSM_Debug::log('In WPSSM_Admin init_settings : $this->settings_pages_structure[$this->active_tab]', $page);
 	    // register all settings, sections, and fields
     	foreach ( $page['sections'] as $section ) {
@@ -287,7 +285,7 @@ class WPSSM_Admin {
 ----------------------------------------------------------------*/
 
 	public function output_options_page() {
-		$this->output->options_page( $this->settings_pages_structure[$this->active_tab]['slug'] );
+		$this->output->options_page( $this->settings_pages_structure[$this->get_tab()]['slug'] );
 	}
 
 	public function output_toggle_switch_recording_cb() {

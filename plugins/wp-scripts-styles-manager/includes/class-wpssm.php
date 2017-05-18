@@ -15,6 +15,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 				}
 			}	
 		}
+		
+		// Get active tab
+		function get_tab() {
+			return isset( $_GET[ 'tab' ] ) ? esc_html($_GET[ 'tab' ]) : 'general';
+		}
+		
 	}
 	
 class WPSSM {
@@ -95,6 +101,7 @@ class WPSSM {
 	private function define_admin_post_hooks() {
 		WPSSM_Debug::log('In define_admin_post_hooks');														
 		$plugin_post = new WPSSM_Admin_Post(	$this->args );
+		$this->loader->add_action( 'admin_menu', 												$plugin_post, 'init_post_cb' 															);
 		$this->loader->add_action( 'admin_post_' . self::FORM_ACTION, 	$plugin_post, 'update_settings_cb' 											);
 	}
 	

@@ -24,11 +24,6 @@ class WPSSM_Admin_Post {
   
   public function init_post_cb() {
  		WPSSM_Debug::log('*** In WPSSM_Admin_Post init_post_cb ***' );		  	 	
-  	$this->general = new WPSSM_Options_General;
-  	$this->assets  = new WPSSM_Options_Assets;
-  	$this->mods    = new WPSSM_Options_Mods;
-  	$this->type = $assets->get_display_attr('type');
-		
   }  
   
 
@@ -48,25 +43,29 @@ class WPSSM_Admin_Post {
 		else
 			$url = $_POST['_wpssm_http_referer'];
 		
-		//$type = isset($_POST[ '_wpssm_active_tab' ])?$_POST[ '_wpssm_active_tab' ]:'general';
-		$type = $this->active_tab;
+		$type = $this->get_tab();
 		$query_args=array();
 		$query_args['tab']=$type;
 		
 		if ( isset ( $_POST[ 'wpssm_reset' ] ) ) {
+  			$assets 	= new WPSSM_Options_Assets;
+  			$mods   	= new WPSSM_Options_Mods;
 		   	WPSSM_Debug::log( 'In Form submission : RESET' );
 				WPSSM_Debug::log( 'assets before submission' , $this->assets->get_assets($type) );
-				$this->assets->reset_assets( $type );
+				$assets->reset( $type );
+				$mods->delete( $type );
 				WPSSM_Debug::log( 'assets after submission', $this->assets->get_assets($type));
 				hydrate_option( 'wpssm_enqueued_assets', $this->opt_enqueued_assets);
 		    $query_args['msg']='reset';
 		}
 		elseif ( isset ( $_POST[ 'wpssm_delete' ] ) ) {
+			  $general 	= new WPSSM_Options_General;
+  			$assets 	= new WPSSM_Options_Assets;
+  			$mods   	= new WPSSM_Options_Mods;
 		   	WPSSM_Debug::log( 'In Form submission : DELETE' );
-		    $this->opt_enqueued_assets = array();
-		    self::$opt_general_settings = array();
-		    hydrate_option( 'wpssm_enqueued_assets', array() );
-		    hydrate_option( 'wpssm_general_settings', array() );
+		    $general->delete();
+		    $assets->delete();
+		    $mods->delete();
 		    $query_args['msg']='delete';
 		}
 		else {

@@ -12,7 +12,7 @@ class WPSSM_Admin {
 	use Utilities;
 	
 	protected $settings_pages_structure; // Initialized in hydrate_settings
-	protected $active_tab;
+	//protected $active_tab;
 
  	/* Class arguments */
  	private $plugin_name;
@@ -247,7 +247,7 @@ class WPSSM_Admin {
 			WPSSM_Debug::log('In WPSSM_Admin init_settings : $this->settings_pages_structure', $this->settings_pages_structure);
 			
 			$page = $this->settings_pages_structure[$this->get_tab()];
-			WPSSM_Debug::log('In WPSSM_Admin init_settings : $this->settings_pages_structure[$this->active_tab]', $page);
+			WPSSM_Debug::log('In WPSSM_Admin init_settings : $this->settings_pages_structure[$this->get_tab()]', $page);
 	    // register all settings, sections, and fields
     	foreach ( $page['sections'] as $section ) {
     		WPSSM_Debug::log('register loop - sections', $section );

@@ -95,7 +95,7 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 		$this->assets->update_priority( $type, $handle ); 	
 	}
 
-	public function reset_assets( $type ) {
+	public function reset( $type ) {
 		foreach ( $this->opt_enqueued_assets[$type] as $handle=>$asset ) {
 			unset( $this->opt_enqueued_assets[$type][$handle]['mods'] ); 
 			$this->update_priority( $type, $handle ); 

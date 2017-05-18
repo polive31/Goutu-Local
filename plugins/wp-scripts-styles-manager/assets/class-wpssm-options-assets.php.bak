@@ -17,7 +17,7 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 	protected $header_styles;
 
 	public function __construct( $args ) {
-		WPSSM_Debug::log('In WPSSM_Options_Assets __construct' );		
+		WPSSM_Debug::log('*** In WPSSM_Options_Assets __construct ***' );		
   	$this->hydrate_args( $args );	
 		$opt_proto = array( 
 									'pages'=>array(), 
@@ -90,12 +90,12 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 		$this->assets->update_priority( $type, $handle ); 
 	}		
 	
-	public function reset_asset( $type, $handle ) {
+	public function reset( $type, $handle ) {
 		unset($this->opt_enqueued_assets[$type][$handle]['mods']); 
 		$this->assets->update_priority( $type, $handle ); 	
 	}
 
-	public function reset_assets( $type ) {
+	public function reset( $type ) {
 		foreach ( $this->opt_enqueued_assets[$type] as $handle=>$asset ) {
 			unset( $this->opt_enqueued_assets[$type][$handle]['mods'] ); 
 			$this->update_priority( $type, $handle ); 

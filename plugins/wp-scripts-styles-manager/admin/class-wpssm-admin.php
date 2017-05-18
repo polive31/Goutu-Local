@@ -12,7 +12,7 @@ class WPSSM_Admin {
 	use Utilities;
 	
 	protected $settings_pages_structure; // Initialized in hydrate_settings
-	protected $active_tab;
+	//protected $active_tab;
 
  	/* Class arguments */
  	private $plugin_name;
@@ -46,7 +46,7 @@ class WPSSM_Admin {
 	}
 		
 	public function init_admin_cb() {
-		WPSSM_Debug::log( 'In WPSSM_Admin init_admin()' );								
+		WPSSM_Debug::log( 'In WPSSM_Admin init_admin_cb()' );								
 		if ( !is_admin() ) return;
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options.php' ;	
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-general.php' ;	

@@ -86,12 +86,17 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 /* SETTING FUNCTIONS
 -----------------------------------------------------------*/
 
-	public function add_asset( $value, $type, $handle ) {
+/* Asset 
+-----------------------------------------------------------*/
+	public function add( $type, $handle, $value ) {
 		parent::set($value, $type, $handle);
 		$this->update_priority( $type, $handle);
 		$this->update_dependants( $type, $handle);
 	}
 
+
+/* Assets fields
+-----------------------------------------------------------*/
 	public function set_field( $type, $handle, $field, $value ) {
 		$this->opt_enqueued_assets[$type][$handle][$field]=$value;
 	}
@@ -100,27 +105,24 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 		$this->opt_enqueued_assets[$type][$handle][$field][]=$value;
 	}
 	
-	public function set_mod( $type, $handle, $field, $value ) {
+/* Mods 
+-----------------------------------------------------------*/
+	public function set_mod_field( $type, $handle, $field, $value ) {
 		$this->opt_enqueued_assets[$type][$handle]['mods'][$field]=$value;
 	}
-	
-	public function remove_mod_field( $type, $handle, $field ) {
-		if ( !isset($this->opt_enqueued_assets[$type][$handle]['mods'][$field]) ) return false; 
-		unset($this->opt_enqueued_assets[$type][$handle]['mods'][$field]); 
+
+	public function unset_mod( $type, $handle==false, $field==false ) {
+		if ( $handle == false ) {
+			foreach ( $this->opt_enqueued_assets[$type] as $handle=>$asset ) {
+				unset_mod( $type, $handle); 
+			}
+		}	
+		elseif ( $field == false )
+			unset($this->opt_enqueued_assets[$type][$handle]['mods']); 
+		else
+			unset($this->opt_enqueued_assets[$type][$handle]['mods'][$field]); 
 		$this->assets->update_priority( $type, $handle ); 
 	}		
-	
-	public function reset_asset( $type, $handle ) {
-		unset($this->opt_enqueued_assets[$type][$handle]['mods']); 
-		$this->assets->update_priority( $type, $handle ); 	
-	}
-
-	public function reset( $type ) {
-		foreach ( $this->opt_enqueued_assets[$type] as $handle=>$asset ) {
-			unset( $this->opt_enqueued_assets[$type][$handle]['mods'] ); 
-			$this->update_priority( $type, $handle ); 
-		}
-	}	
 	
 
 /* ASSET FIELDS UPDATE FUNCTIONS

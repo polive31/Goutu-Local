@@ -109,11 +109,9 @@ class WPSSM_Admin_Record {
 					'minify' => (strpos( $obj->src, '.min.' ) != false )?'yes':'no',
 					'size' => $size,
 					'version' => $version,
-				);
-				
-				$this->set( $args, $type, $handle );
+				);				
+				$this->assets->add( $type, $handle, $args );
 
-				
 			}
 		}
 	  WPSSM_Debug::log(array('assets after update' => $this->opt_enqueued_assets));

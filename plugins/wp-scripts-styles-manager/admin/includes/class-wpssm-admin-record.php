@@ -75,7 +75,7 @@ class WPSSM_Admin_Record {
 			'styles'=>array(
 					'handles'=>$styles,
 					'registered'=> $wp_styles->registered),
-			);
+		);
 				
 		WPSSM_Debug::log( array( '$assets' => $assets ) );		
 			
@@ -84,34 +84,8 @@ class WPSSM_Admin_Record {
 					
 			foreach( $asset['handles'] as $index => $handle ) {
 				$obj = $asset['registered'][$handle];
-				$path = strtok($obj->src, '?'); // remove any query parameters
-				
-				if ( strpos( $path, 'wp-' ) != false) {
-					$path = wp_make_link_relative( $path );
-					$uri = $_SERVER['DOCUMENT_ROOT'] . $path;
-					$size = filesize( $uri );
-					$version = $obj->ver;
-				}
-				else {
-					$path = $obj->src;
-					$version = $obj->ver;
-					$size = 0;
-				}
-				
-				// Update current asset properties
-				$args = array(
-					'handle' => $handle,
-					'enqueue_index' => $index,
-					'filename' => $path,
-					'location' => $in_footer?'footer':'header',
-					'dependencies' => $obj->deps,
-					'dependents' => array(),
-					'minify' => (strpos( $obj->src, '.min.' ) != false )?'yes':'no',
-					'size' => $size,
-					'version' => $version,
-				);				
-				$this->assets->add( $type, $handle, $args );
-
+				$location=$in_footer?'footer':'header';
+				$this->assets->add( $type, $handle, $obj, $location );
 			}
 		}
 	  WPSSM_Debug::log(array('assets after update' => $this->opt_enqueued_assets));

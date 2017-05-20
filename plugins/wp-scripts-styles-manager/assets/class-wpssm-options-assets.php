@@ -88,8 +88,32 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 
 /* Asset 
 -----------------------------------------------------------*/
-	public function add( $type, $handle, $value ) {
-		parent::set($value, $type, $handle);
+	public function add( $type, $handle, $obj, $location ) {
+		$path = strtok($obj->src, '?'); // remove any query parameters
+		if ( strpos( $path, 'wp-' ) != false) {
+			$path = wp_make_link_relative( $path );
+			$uri = $_SERVER['DOCUMENT_ROOT'] . $path;
+			$size = filesize( $uri );
+			$version = $obj->ver;
+		}
+		else {
+			$path = $obj->src;
+			$version = $obj->ver;
+			$size = 0;
+		}
+		// Update current asset properties
+		$args = array(
+			'handle' => $handle,
+			'enqueue_index' => $index,
+			'filename' => $path,
+			'location' => $location,
+			'dependencies' => $obj->deps,
+			'dependents' => array(),
+			'minify' => (strpos( $obj->src, '.min.' ) != false )?'yes':'no',
+			'size' => $size,
+			'version' => $version,
+		);						
+		parent::set($args, $type, $handle);
 		$this->update_priority( $type, $handle);
 		$this->update_dependants( $type, $handle);
 	}

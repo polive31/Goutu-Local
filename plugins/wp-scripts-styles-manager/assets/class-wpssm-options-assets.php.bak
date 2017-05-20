@@ -37,11 +37,10 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 		parent::__construct( self::OPT_KEY, $opt_proto );
 		WPSSM_Debug::log('In WPSSM_Options_Assets __construct() $this->get() ', $this->get() );
 	}
-	
+		
 	
 /* GETTER FUNCTIONS	
 --------------------------------------------------------------------------*/	
-
 	
 	/* 	Retrieves the most up-to-date value of a field within an asset
 			Whether the original value or the one after modification          
@@ -62,21 +61,6 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 		return $value;
 	}
 
-
-//	public function get_field_value( $type, $handle, $field ) {
-//		//WPSSM_Debug::log('In Field Value for ' . $field);
-//		//WPSSM_Debug::log(array('Asset : ' => $asset));
-//		$value = false;
-//		if ( !isset( $this->opt_enqueued_assets[$type][$handle] ) ) return false ;
-//		$asset = $this->opt_enqueued_assets[$type][$handle];
-//		
-//		if ( isset( $asset['mods'][ $field ] ) ) return $asset['mods'][ $field ];
-//		elseif ( isset( $asset[ $field ] )) 
-//			return $asset[ $field ];
-//		else
-//			return false;
-//	}
-	
 	public function is_mod( $type, $handle, $field ) {
 		$asset = parent::get( $type, $handle );
 		return ( isset( $asset[ 'mods' ][ $field ] ) );
@@ -113,23 +97,25 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 			'size' => $size,
 			'version' => $version,
 		);						
-		parent::set($value, $type, $handle);
+		parent::set($args, $type, $handle);
 		$this->update_priority( $type, $handle);
 		$this->update_dependants( $type, $handle);
 	}
 
 
-/* Assets fields
+/* Asset field
 -----------------------------------------------------------*/
 	public function set_field( $type, $handle, $field, $value ) {
 		$this->opt_enqueued_assets[$type][$handle][$field]=$value;
 	}
 	
+/* Asset field value
+-----------------------------------------------------------*/
 	public function add_field_value( $type, $handle, $field, $value ) {
 		$this->opt_enqueued_assets[$type][$handle][$field][]=$value;
 	}
 	
-/* Mods 
+/* Asset Mod
 -----------------------------------------------------------*/
 	public function set_mod_field( $type, $handle, $field, $value ) {
 		$this->opt_enqueued_assets[$type][$handle]['mods'][$field]=$value;
@@ -137,8 +123,8 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 
 	public function unset_mod( $type, $handle==false, $field==false ) {
 		if ( $handle == false ) {
-			foreach ( $this->opt_enqueued_assets[$type] as $handle=>$asset ) {
-				unset_mod( $type, $handle); 
+			foreach ( $this->get($type) as $handle=>$asset ) {
+				$this->unset_mod( $type, $handle); 
 			}
 		}	
 		elseif ( $field == false )
@@ -154,7 +140,6 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 
 	public function update_priority( $type, $handle ) {
 		$location = $this->get_field_value( $type, $handle, 'location');
-		
 		if ( $location != 'disabled' ) {
 			$minify = $this->get_field_value( $type, $handle, 'minify');
 			$size = $this->get_field_value( $type, $handle, 'size');

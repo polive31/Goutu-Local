@@ -261,5 +261,16 @@ class WPSSM_Admin_Output {
 		}		
 	}
 	
+/* ADMIN NOTICE
+-------------------------------------------------------------*/	
+	
+	public function output_admin_notice_cb() {
+		?>
+		<div class="notice notice-success is-dismissible">
+        <p><?php echo 'JCO settings update completed : ' . esc_attr( $_GET['msg'] ) ?></p>
+    </div>
+		<?php
+	}	
+	
 	
 }

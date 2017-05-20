@@ -111,10 +111,9 @@ class WPSSM {
 		$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'init_admin_cb' 															);
 		//$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'init_settings' 														);
 		$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'add_plugin_menu_option_cb' 								);
-		$this->loader->add_action( 'admin_enqueue_scripts', 						$plugin_admin, 'enqueue_scripts' 													);
-		$this->loader->add_action( 'admin_enqueue_scripts', 						$plugin_admin, 'enqueue_styles' 													);
+		$this->loader->add_action( 'admin_enqueue_scripts', 						$plugin_admin, 'enqueue_scripts_cb' 													);
+		$this->loader->add_action( 'admin_enqueue_scripts', 						$plugin_admin, 'enqueue_styles_cb' 													);
 	}
-	
 
 	private function define_public_hooks() {
 		WPSSM_Debug::log('In define_public_hooks'); 

@@ -9,9 +9,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 abstract class WPSSM_Options {
 
 	private $asset;
+	private $option;
 
 	public function __construct( $option, $prototype ) {
 		$this->asset = $this->get_opt( $option, $prototype );
+		$this->option = $option;
 	}
 
 	/* OPTIONS MANAGEMENT */
@@ -40,7 +42,8 @@ abstract class WPSSM_Options {
 	}
 	
 	
-	public function set_opt( $option, $asset ) {
+	public function update_opt() {
+		update_option( $this->option, $this->asset );
 	}	
 		
 		
@@ -61,6 +64,33 @@ abstract class WPSSM_Options {
 		//WPSSM_Debug::log( ' In WPSSM_Assets get() ' . $field . ' ' . $subfield, $get);
 		return $get;
 	}
+	
+	public function set( $value, $field=false, $subfield=false ) {
+		WPSSM_Debug::log( '*** In ' . get_class($this) . ' set() ***' );
+		$set = false
+		if ($field == false) {
+			$this->asset = $value;
+			$set = true;			
+		}
+		elseif ($subfield==false) {
+			$this->asset[$field] = $value;
+			$set = true;			
+		}
+		elseif ( isset( $this->asset[$field][$subfield] ) ) {
+			$this->asset[$field][$subfield] = $value; 
+			$set = true;			
+		}
+		WPSSM_Debug::log( ' Set result $this->asset ', $this->asset);
+		return $set;
+	}	
+	
+	public function add( $value, $field, $subfield=false ) {
+		if ($subfield == false) 
+			$this->asset[$field][] = $value;
+		else
+			$this->asset[$field][$subfield][] = $value;
+	}
+	
 
 }
 

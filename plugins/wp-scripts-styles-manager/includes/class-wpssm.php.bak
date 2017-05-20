@@ -16,8 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			}	
 		}
 		
+		// Get active tab
 		function get_tab() {
-			// Get active tab
 			return isset( $_GET[ 'tab' ] ) ? esc_html($_GET[ 'tab' ]) : 'general';
 		}
 		
@@ -114,7 +114,6 @@ class WPSSM {
 		$this->loader->add_action( 'admin_enqueue_scripts', 						$plugin_admin, 'enqueue_scripts' 													);
 		$this->loader->add_action( 'admin_enqueue_scripts', 						$plugin_admin, 'enqueue_styles' 													);
 	}
-	
 
 	private function define_public_hooks() {
 		WPSSM_Debug::log('In define_public_hooks'); 

@@ -17,11 +17,15 @@ class WPSSM_Admin {
  	/* Class arguments */
  	private $plugin_name;
  	private $plugin_submenu;
+ 	private $plugin_version;
  	private $form_action;
  	private $nonce;
-	
+	private $record;
+	private $optimize;
+	private $javasync;
+		
 	/* Objects */ 													
-	protected $settings;														
+	//protected $settings;														
 	protected $assets;														
 	protected $output;														
 	protected $update;														
@@ -46,7 +50,7 @@ class WPSSM_Admin {
 	}
 		
 	public function init_admin_cb() {
-		WPSSM_Debug::log( 'In WPSSM_Admin init_admin()' );								
+		WPSSM_Debug::log( 'In WPSSM_Admin init_admin_cb()' );								
 		if ( !is_admin() ) return;
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options.php' ;	
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-general.php' ;	
@@ -229,10 +233,10 @@ class WPSSM_Admin {
 	public function load_option_page_cb() {
 		//WPSSM_Debug::log('In load_option_page_cb function');
 		if (isset ( $_GET['msg'] ) )
-			add_action( 'admin_notices', array ( $this, 'render_msg' ) );
+			add_action( 'admin_notices', array ( $this->output, 'admin_notice_cb' ) );
 	}
 
-	public function render_msg() {
+	public function output_admin_notice_cb() {
 		?>
 		<div class="notice notice-success is-dismissible">
         <p><?php echo 'JCO settings update completed : ' . esc_attr( $_GET['msg'] ) ?></p>
@@ -289,15 +293,15 @@ class WPSSM_Admin {
 	}
 
 	public function output_toggle_switch_recording_cb() {
-		$this->output->toggle_switch( 'general_record', $this->settings->get('record') );
+		$this->output->toggle_switch( 'general_record', $this->record );
 	}	
 
 	public function output_toggle_switch_optimize_cb() {
-		$this->output->toggle_switch( 'general_optimize', $this->settings->get('optimize') );
+		$this->output->toggle_switch( 'general_optimize', $this->optimize );
 	}		
 	
 	public function output_toggle_switch_javasync_cb() {
-		$this->output->toggle_switch( 'general_javasync', $this->settings->get('javasync') );
+		$this->output->toggle_switch( 'general_javasync', $this->javasync );
 	}	
 	
 

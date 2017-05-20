@@ -5,7 +5,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-
+/* Asset structure array(
+											'handle' 
+											'enqueue_index' 
+											'filename' 
+											'location' 
+											'minify' 
+											'dependents' 
+											'dependencies' 
+											'size' 
+											'version' 
+											'priority' )
+-----------------------------------------------------------*/
 class WPSSM_Options_Assets extends WPSSM_Options {	
 
 	use Utilities;	
@@ -35,7 +46,7 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 	/* 	Retrieves the most up-to-date value of a field within an asset
 			Whether the original value or the one after modification          
 	---------------------------------------------------------------------*/
-	public function get_value( $type, $handle, $field) {
+	public function get_field( $type, $handle, $field) {
 		WPSSM_Debug::log('In WPSSM_Options_Assets get_value() ' . $type . ' ' . $handle . ' ' . $field);
 		$value = false;
 		$asset = $this->get( $type, $handle );
@@ -72,17 +83,26 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 	}		
 	
 
-
 /* SETTING FUNCTIONS
 -----------------------------------------------------------*/
-	public function set_field_value( $type, $handle, $field, $value ) {
+
+	public function set( $value, $type, $handle ) {
+		parent::set($value, $type, $handle);
+		$this->update_priority( $type, $handle);
+		$this->update_dependants( $type, $handle);
+	}
+
+	public function set_field( $type, $handle, $field, $value ) {
 		$this->opt_enqueued_assets[$type][$handle][$field]=$value;
 	}
 	
-	public function add_mod( $type, $handle, $field, $value ) {
-		$this->opt_enqueued_assets[$type][$handle]['mods'][$field]=$value;
+	public function add_field_value( $type, $handle, $field, $value ) {
+		$this->opt_enqueued_assets[$type][$handle][$field][]=$value;
 	}
 	
+	public function set_mod( $type, $handle, $field, $value ) {
+		$this->opt_enqueued_assets[$type][$handle]['mods'][$field]=$value;
+	}
 	
 	public function remove_mod_field( $type, $handle, $field ) {
 		if ( !isset($this->opt_enqueued_assets[$type][$handle]['mods'][$field]) ) return false; 
@@ -90,7 +110,7 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 		$this->assets->update_priority( $type, $handle ); 
 	}		
 	
-	public function reset( $type, $handle ) {
+	public function reset_asset( $type, $handle ) {
 		unset($this->opt_enqueued_assets[$type][$handle]['mods']); 
 		$this->assets->update_priority( $type, $handle ); 	
 	}
@@ -101,6 +121,10 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 			$this->update_priority( $type, $handle ); 
 		}
 	}	
+	
+
+/* ASSET FIELDS UPDATE FUNCTIONS
+-----------------------------------------------------------*/	
 
 	public function update_priority( $type, $handle ) {
 		$location = $this->get_field_value( $type, $handle, 'location');
@@ -127,93 +151,18 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 		}
 		else 
 			$score = 0;
-			
 		$this->set_field_value( $type, $handle, 'priority', $score);
 	}		
-
 	
-
-/* RECORDING FUNCTIONS
------------------------------------------------------------*/
-
-	public function record( $in_footer ) {
-		WPSSM_Debug::log('In record enqueued assets');
-		global $wp_scripts;
-		global $wp_styles;
-
-		/* Select data source depending whether in header or footer */
-		if ($in_footer) {
-			//WPSSM_Debug::log('FOOTER record');
-			//WPSSM_Debug::log(array( '$header_scripts' => $this->header_scripts ));
-			$scripts=array_diff( $wp_scripts->done, $this->header_scripts );
-			$styles=array_diff( $wp_styles->done, $this->header_styles );
-			//WPSSM_Debug::log(array('$source'=>$source));
-		}
-		else {
-			$this->opt_enqueued_assets['pages'][get_permalink()] = array(get_permalink(), current_time( 'mysql' ));
-			$scripts=$wp_scripts->done;
-			$styles=$wp_styles->done;
-			$this->header_scripts = $scripts;
-			$this->header_styles = $styles;
-			//WPSSM_Debug::log('HEADER record');
-			//WPSSM_Debug::log(array('$source'=>$source));
-		}
-	  //WPSSM_Debug::log(array('assets before update' => $this->opt_enqueued_assets));
-				
-		$assets = array(
-			'scripts'=>array(
-					'handles'=>$scripts,
-					'registered'=> $wp_scripts->registered),
-			'styles'=>array(
-					'handles'=>$styles,
-					'registered'=> $wp_styles->registered),
-			);
-				
-		WPSSM_Debug::log( array( '$assets' => $assets ) );		
-			
-		foreach( $assets as $type=>$asset ) {
-			WPSSM_Debug::log( $type . ' recording');		
-					
-			foreach( $asset['handles'] as $index => $handle ) {
-				$obj = $asset['registered'][$handle];
-				$path = strtok($obj->src, '?'); // remove any query parameters
-				
-				if ( strpos( $path, 'wp-' ) != false) {
-					$path = wp_make_link_relative( $path );
-					$uri = $_SERVER['DOCUMENT_ROOT'] . $path;
-					$size = filesize( $uri );
-					$version = $obj->ver;
-				}
-				else {
-					$path = $obj->src;
-					$version = $obj->ver;
-					$size = 0;
-				}
-				
-				// Update current asset properties
-				$this->opt_enqueued_assets[$type][$handle] = array(
-					'handle' => $handle,
-					'enqueue_index' => $index,
-					'filename' => $path,
-					'location' => $in_footer?'footer':'header',
-					'dependencies' => $obj->deps,
-					'dependents' => array(),
-					'minify' => (strpos( $obj->src, '.min.' ) != false )?'yes':'no',
-					'size' => $size,
-					'version' => $version,
-				);
-				// Update current asset priority
-				$priority = $this->assets->update_priority( $type, $handle );
-				// Update all dependancies assets properties
-				foreach ($obj->deps as $dep_handle) {
-					//WPSSM_Debug::log(array('dependencies loop : '=>$dep_handle));
-					$this->opt_enqueued_assets[$type][$dep_handle]['dependents'][]=$handle;
-				}
-			}
-		}
-	  WPSSM_Debug::log(array('assets after update' => $this->opt_enqueued_assets));
-	  if ( $in_footer )	hydrate_option( self::OPT_ASSETS , $this->opt_enqueued_assets, true );
+	// Update all assets 'dependants' property, based on this asset's dependencies
+	public function update_dependants( $type, $handle ) {
+		$dependencies = $this->get_field( $type, $handle, 'dependencies');
+		foreach ($dependencies as $dep_handle) {
+			//WPSSM_Debug::log(array('dependencies loop : '=>$dep_handle));
+			$this->add_field_value( $type, $dep_handle, 'dependents', $handle );
+		}	
 	}
+	
 
 
 }

@@ -213,11 +213,11 @@ class WPSSM_Admin_Output {
 	
 	private function asset_notice( $handle ) {
 		
-		$size= $this->assets->get_value( $this->type, $handle, 'size');
+		$size= $this->assets->get_field( $this->type, $handle, 'size');
 		//WPSSM_Debug::log(array('size : '=>$size));
-		$is_minified = $this->assets->get_value( $this->type, $handle, 'minify') == 'yes';
+		$is_minified = $this->assets->get_field( $this->type, $handle, 'minify') == 'yes';
 		//WPSSM_Debug::log(array('is_minified: '=>$is_minified));
-		$in_footer = ( $this->assets->get_value( $this->type, $handle, 'location') == 'footer');
+		$in_footer = ( $this->assets->get_field( $this->type, $handle, 'location') == 'footer');
 		
 		$this->reset_asset_notice();
 		if (!$is_minified) {

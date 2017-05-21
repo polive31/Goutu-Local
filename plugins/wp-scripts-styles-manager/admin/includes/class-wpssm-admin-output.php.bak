@@ -261,6 +261,9 @@ class WPSSM_Admin_Output {
 		}		
 	}
 	
+/* ADMIN NOTICE
+-------------------------------------------------------------*/	
+	
 	public function output_admin_notice_cb() {
 		?>
 		<div class="notice notice-success is-dismissible">

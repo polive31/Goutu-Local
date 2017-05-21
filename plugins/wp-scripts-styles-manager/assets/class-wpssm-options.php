@@ -8,12 +8,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 abstract class WPSSM_Options {
 
-	private $asset;
-	private $option;
+	/* Class local attributes */
+		private $asset;
+		private $option;
+		private $prototype;
 
 	public function __construct( $option, $prototype ) {
 		$this->asset = $this->get_opt( $option, $prototype );
 		$this->option = $option;
+		$this->prototype = $prototype;
 	}
 
 	/* OPTIONS MANAGEMENT */
@@ -47,8 +50,12 @@ abstract class WPSSM_Options {
 	}	
 		
 		
-	/* SETTINGS & ASSETS MANAGEMENT */	
-
+	/* ASSETS MANAGEMENT */	
+	public function delete() {
+		$this->asset = $this->prototype;
+		$this->update_opt();
+	}
+	
 	public function get( $field=false, $subfield=false ) {
 		//WPSSM_Debug::log( ' In WPSSM_Assets get() ' );
 		$get = false;
@@ -67,8 +74,8 @@ abstract class WPSSM_Options {
 	
 	public function set( $value, $field=false, $subfield=false ) {
 		WPSSM_Debug::log( '*** In ' . get_class($this) . ' set() ***' );
-		$set = false
-		if ($field == false) {
+		$set = false;
+		if ( $field == false) {
 			$this->asset = $value;
 			$set = true;			
 		}

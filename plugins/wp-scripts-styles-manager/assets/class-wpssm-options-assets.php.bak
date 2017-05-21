@@ -60,6 +60,18 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 		WPSSM_Debug::log('In WPSSM_Options_Assets get() after ', $get);
 		return $value;
 	}
+	
+	public function get_mod( $type, $handle, $field) {
+		$value = false;
+		$asset = $this->get( $type, $handle );
+		if ( $asset != false ) {
+			if ( isset( $asset[$field]['mods'] )) {
+				$value = $asset[$field]['mods'];
+			}
+		}
+		return $value;
+	}	
+		
 
 	public function is_mod( $type, $handle, $field ) {
 		$asset = parent::get( $type, $handle );
@@ -102,15 +114,32 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 		$this->update_dependants( $type, $handle);
 	}
 
-
+	public function update_from_post( $type, $handle, $field ) {
+		$is_mod=false;
+		$val='';
+		$input = $this->get_field_name($type, $handle, $field);
+		if ( ( isset($_POST[ $input ] )) && ( $_POST[ $input ] != $this->get($type,$handle,$field]) ) ) {
+			WPSSM_Debug::log( 'Asset field modified (mods) !' , $this->get($type,$handle) );
+			//WPSSM_Debug::log( 'input name', $input );
+			//WPSSM_Debug::log( 'POST content for this field',$_POST[ $input ] );
+			$val = esc_html($_POST[ $input ]);
+			$this->set_mod_field($type,$handle,$field,$val);
+			$is_mod=true;
+		}
+		elseif ( ) {
+			$this->assets->unset_mod( $type, $handle, $field );
+			WPSSM_Debug::log( 'Mod Field removed !' , $this->assets->get($type,$handle) );
+		}
+		return array($is_mod, $val);
+	}
+	
+	
 /* Asset field
 -----------------------------------------------------------*/
 	public function set_field( $type, $handle, $field, $value ) {
 		$this->opt_enqueued_assets[$type][$handle][$field]=$value;
 	}
 	
-/* Asset field value
------------------------------------------------------------*/
 	public function add_field_value( $type, $handle, $field, $value ) {
 		$this->opt_enqueued_assets[$type][$handle][$field][]=$value;
 	}
@@ -121,16 +150,18 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 		$this->opt_enqueued_assets[$type][$handle]['mods'][$field]=$value;
 	}
 
-	public function unset_mod( $type, $handle==false, $field==false ) {
+	public function unset_mod( $type, $handle=false, $field=false ) {
 		if ( $handle == false ) {
 			foreach ( $this->get($type) as $handle=>$asset ) {
 				$this->unset_mod( $type, $handle); 
 			}
 		}	
 		elseif ( $field == false )
-			unset($this->opt_enqueued_assets[$type][$handle]['mods']); 
+			if ( isset( $this->opt_enqueued_assets[$type][$handle]['mods'] ) )
+				unset($this->opt_enqueued_assets[$type][$handle]['mods']); 
 		else
-			unset($this->opt_enqueued_assets[$type][$handle]['mods'][$field]); 
+			if ( isset( $this->opt_enqueued_assets[$type][$handle]['mods'][$field] ) )
+				unset($this->opt_enqueued_assets[$type][$handle]['mods'][$field]); 
 		$this->assets->update_priority( $type, $handle ); 
 	}		
 	

@@ -35,14 +35,14 @@ class WPSSM_Assets_Display extends WPSSM_Options_Assets {
 		if ($this->type!='general') {
 			WPSSM_Debug::log('In WPSSM_Assets_Display hydrate() $this->get_assets for type ' . $this->type, $this->get( $this->type ));
 			foreach ($this->get( $this->type ) as $handle=>$asset) {		
-				$group_id = $this->get_value( $this->type, $handle, $this->groupby);
+				$group_id = $this->get_field( $this->type, $handle, $this->groupby );
 				//WPSSM_Debug::log('In WPSSM_Assets_Display display_hydrate() $group_id ', $group_id);
 				if ( isset($this->displayed[$group_id]) ) 
 					$group=$this->displayed[$group_id];
 				else 
 					$group = array();
 				$group['assets'][$handle] = $this->get_modified_asset( $handle );	
-				if (isset($group['size'])) $group['size'] += $this->get_value( $this->type, $handle, 'size');	
+				if (isset($group['size'])) $group['size'] += $this->get_field( $this->type, $handle, 'size');	
 				else $group['size']=0;
 				if (isset($group['count'])) $group['count']++;	
 				else $group['count']=1;	
@@ -77,7 +77,7 @@ class WPSSM_Assets_Display extends WPSSM_Options_Assets {
   	/* Generate an asset with modified fields replacing original ones */
 		$modasset = array();
 		foreach ($this->display_fields as $field) {
-			$value=$this->get_value( $this->type, $handle, $field);
+			$value=$this->get_field( $this->type, $handle, $field);
 			$modasset[$field]=$value;
 		}
 		//WPSSM_Debug::log( 'In WPSSM_Assets_Display get_modified_asset()', $modasset);

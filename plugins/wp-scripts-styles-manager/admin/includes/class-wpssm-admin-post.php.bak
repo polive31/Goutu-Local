@@ -48,52 +48,52 @@ class WPSSM_Admin_Post {
 		$query_args['tab']=$type;
 		
 		if ( isset ( $_POST[ 'wpssm_reset' ] ) ) {
-  			$assets 	= new WPSSM_Options_Assets;
-  			$mods   	= new WPSSM_Options_Mods;
 		   	WPSSM_Debug::log( 'In Form submission : RESET' );
+  			$this->assets 	= new WPSSM_Options_Assets;
+  			$this->mods   	= new WPSSM_Options_Mods;
 				WPSSM_Debug::log( 'assets before submission' , $this->assets->get_assets($type) );
-				$assets->reset( $type );
-				$mods->delete( $type );
+				$this->assets->reset( $type );
+				$this->mods->delete( $type );
 				WPSSM_Debug::log( 'assets after submission', $this->assets->get_assets($type));
-				hydrate_option( 'wpssm_enqueued_assets', $this->opt_enqueued_assets);
 		    $query_args['msg']='reset';
 		}
 		elseif ( isset ( $_POST[ 'wpssm_delete' ] ) ) {
-			  $general 	= new WPSSM_Options_General;
-  			$assets 	= new WPSSM_Options_Assets;
-  			$mods   	= new WPSSM_Options_Mods;
 		   	WPSSM_Debug::log( 'In Form submission : DELETE' );
-		    $general->delete();
-		    $assets->delete();
-		    $mods->delete();
+			  $this->general 	= new WPSSM_Options_General;
+  			$this->assets 	= new WPSSM_Options_Assets;
+  			$this->mods   	= new WPSSM_Options_Mods;
+		    $this->general->delete();
+		    $this->assets->delete();
+		    $this->mods->delete();
 		    $query_args['msg']='delete';
 		}
 		else {
 				WPSSM_Debug::log( 'In Form submission : SAVE, tab ' . $type );
 				if ( $type=='general' ) {
+			  	$this->general 	= new WPSSM_Options_General;
 					//WPSSM_Debug::log('general save self::$opt_general_settings' ,self::$opt_general_settings);
-					$settings=array('record','optimize');
-					foreach ($settings as $setting) {
-						self::$opt_general_settings[$setting]= isset($_POST[ 'general_' . $setting . '_checkbox' ])?$_POST[ 'general_' . $setting . '_checkbox' ]:'off';
-					}			
-					hydrate_option( 'wpssm_general_settings', self::$opt_general_settings );
+					$this->general->update_from_post();
+					$this->general->update_opt();
 				}
 				else {
+  				$this->assets 	= new WPSSM_Options_Assets;
+  				$this->mods   	= new WPSSM_Options_Mods;
 					$this->mods[$type]=array();	
-					WPSSM_Debug::log( 'assets before submission',$this->opt_enqueued_assets );
-					foreach ( $this->opt_enqueued_assets[$type] as $handle=>$asset ) {
+					WPSSM_Debug::log( 'assets before submission',$this->assets->get() );
+					WPSSM_Debug::log( 'mods before submission',$this->assets->get() );
+					foreach ( $this->assets->get($type) as $handle=>$asset ) {
 						//WPSSM_Debug::log( array('Looping : asset = ' => $asset ) );
 						//WPSSM_Debug::log( array('Looping : handle = ' => $handle ) );
-						$result=$this->update_mod($type, $handle, 'location');
-						if ($result[0]) $this->mods[$type][$result[1]][]=$handle;
-						$result=$this->update_mod($type, $handle, 'minify');
-						if ($result[0]) $this->mods[$type]['minify'][]=$handle;
+						$result=$this->assets->update_from_post($type, $handle, 'location');
+						if ($result[0]) $this->mods->add( $type, $result[1], $handle);
+						$result=$this->assets->update_from_post($type, $handle, 'minify');
+						if ($result[0]) $this->mods->add( $type, 'minify', $handle);
 						$this->assets->update_priority( $type, $handle ); 
 					}
-					WPSSM_Debug::log( 'opt_enqueued_assets after submission',$this->opt_enqueued_assets);				
-					WPSSM_Debug::log( '$this->mods after submission',$this->mods);				
-					hydrate_option( 'wpssm_enqueued_assets', $this->opt_enqueued_assets);
-					hydrate_option( 'wpssm_mods', $this->mods);
+					WPSSM_Debug::log( 'assets after submission',$this->assets->get() );				
+					WPSSM_Debug::log( 'mods after submission',$this->mods->get()) ;				
+					$this->assets->update_opt();
+					$this->mods->update_opt();
 				}
 		    $query_args['msg']='save';
 		}
@@ -106,24 +106,7 @@ class WPSSM_Admin_Post {
 		exit;
 	}
 	
-	public function update_mod( $type, $handle, $field ) {
-		$is_mod=false;
-		$val='';
-		$input = $this->get_field_name($type, $handle, $field);
-		if ( ( isset($_POST[ $input ] )) && ( $_POST[ $input ] != $this->opt_enqueued_assets[$type][$handle][$field]  ) ) {
-			WPSSM_Debug::log( 'Asset field modified (mods) !' ,$this->opt_enqueued_assets[$type][$handle]);
-			//WPSSM_Debug::log( 'input name', $input );
-			//WPSSM_Debug::log( 'POST content for this field',$_POST[ $input ] );
-			$val = esc_html($_POST[ $input ]);
-			$this->opt_enqueued_assets[$type][$handle]['mods'][$field] = $val;
-			$is_mod=true;
-		}
-		elseif ( isset( $this->opt_enqueued_assets[$type][$handle]['mods'][$field]) ) {
-			unset($this->opt_enqueued_assets[$type][$handle]['mods'][$field]);
-			WPSSM_Debug::log( 'Mod Field removed !' ,$this->opt_enqueued_assets[$type][$handle] );
-		}
-		return array($is_mod, $val);
-	}
+
 
 
 

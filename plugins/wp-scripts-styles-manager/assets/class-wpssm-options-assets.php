@@ -118,7 +118,7 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 		$is_mod=false;
 		$val='';
 		$input = $this->get_field_name($type, $handle, $field);
-		if ( ( isset($_POST[ $input ] )) && ( $_POST[ $input ] != $this->get($type,$handle,$field]) ) ) {
+		if ( ( isset($_POST[ $input ] ) ) && ( $_POST[ $input ] != $this->get($type,$handle,$field) ) ) {
 			WPSSM_Debug::log( 'Asset field modified (mods) !' , $this->get($type,$handle) );
 			//WPSSM_Debug::log( 'input name', $input );
 			//WPSSM_Debug::log( 'POST content for this field',$_POST[ $input ] );

@@ -24,8 +24,7 @@ class WPSSM_Admin {
 	private $optimize;
 	private $javasync;
 		
-	/* Objects */ 													
-	//protected $settings;														
+	/* Objects */ 																									
 	protected $assets;														
 	protected $output;														
 	protected $update;														
@@ -236,13 +235,7 @@ class WPSSM_Admin {
 			add_action( 'admin_notices', array ( $this->output, 'admin_notice_cb' ) );
 	}
 
-	public function output_admin_notice_cb() {
-		?>
-		<div class="notice notice-success is-dismissible">
-        <p><?php echo 'JCO settings update completed : ' . esc_attr( $_GET['msg'] ) ?></p>
-    </div>
-		<?php
-	}
+
 
 /* SETTINGS INIT FOR OPTION PAGES
 ----------------------------------------------------------*/

@@ -49,7 +49,7 @@ class WPSSM {
 	private $args;
 	
 	public function __construct() {
-		$this->load_dependencies();
+		$this->load_common_dependencies();
 		//$this->define_debug_hooks();
 		$this->init_plugin();
 		$this->define_admin_hooks();
@@ -59,16 +59,12 @@ class WPSSM {
 	}
 
 	
-	private function load_dependencies() {
+	private function load_common_dependencies() {
 		/* The class responsible for orchestrating the actions and filters of the core plugin */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wpssm-loader.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'debug/class-dbg.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'assets/class-wpssm-options.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'assets/class-wpssm-options-general.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wpssm-admin.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/includes/class-wpssm-admin-post.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/includes/class-wpssm-admin-record.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wpssm-public.php';
 		$this->loader = new WPSSM_Loader();
 	}
 	
@@ -100,6 +96,9 @@ class WPSSM {
 	
 	private function define_admin_post_hooks() {
 		WPSSM_Debug::log('In define_admin_post_hooks');														
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/includes/class-wpssm-admin-post.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'assets/class-wpssm-options-assets.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'assets/class-wpssm-options-mods.php';		
 		$plugin_post = new WPSSM_Admin_Post(	$this->args );
 		$this->loader->add_action( 'admin_menu', 												$plugin_post, 'init_post_cb' 															);
 		$this->loader->add_action( 'admin_post_' . self::FORM_ACTION, 	$plugin_post, 'update_settings_cb' 											);
@@ -107,6 +106,7 @@ class WPSSM {
 	
 	private function define_admin_hooks() {
 		WPSSM_Debug::log('In define_admin_hooks');														
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wpssm-admin.php';
 		$plugin_admin = new WPSSM_Admin( $this->args );
 		$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'init_admin_cb' 															);
 		//$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'init_settings' 														);
@@ -117,6 +117,8 @@ class WPSSM {
 
 	private function define_public_hooks() {
 		WPSSM_Debug::log('In define_public_hooks'); 
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wpssm-public.php';		
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'assets/class-wpssm-options-mods.php';		
 		$plugin_public = new WPSSM_Public();
 		$this->loader->add_action( 'wp', 															$plugin_public, 'init_public_cb' 																);
 		$this->loader->add_action( 'wp_enqueue_scripts',							$plugin_public, 'apply_scripts_mods_cb', 	PHP_INT_MAX 		);
@@ -130,6 +132,7 @@ class WPSSM {
 		
 	public function define_record_hooks() {
 		WPSSM_Debug::log('In define_record_hooks'); 
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/includes/class-wpssm-admin-record.php';		
 		$plugin_record = new WPSSM_Admin_Record();
 		$this->loader->add_action( 'wp', 															$plugin_record, 'init_recording' 													);
 		$this->loader->add_action( 'wp_head', 												$plugin_record, 'record_header_assets_cb' 								);

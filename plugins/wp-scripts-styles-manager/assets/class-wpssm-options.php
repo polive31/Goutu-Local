@@ -51,8 +51,13 @@ abstract class WPSSM_Options {
 		
 		
 	/* ASSETS MANAGEMENT */	
-	public function delete() {
-		$this->asset = $this->prototype;
+	public function reset( $field=false ) {
+		if ( $field == false) {
+			$this->asset = $this->prototype;
+		}
+		else {
+			$this->asset($field) = $this->prototype($field);			
+		}
 		$this->update_opt();
 	}
 	

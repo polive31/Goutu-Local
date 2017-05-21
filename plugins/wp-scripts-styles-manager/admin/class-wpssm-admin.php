@@ -11,8 +11,15 @@ class WPSSM_Admin {
 	
 	use Utilities;
 	
+	/* Local class attributes */
 	protected $settings_pages_structure; // Initialized in hydrate_settings
 	//protected $active_tab;
+
+	/* File size limits for priority calculation & notifications */
+	const SMALL = 1000;
+	const LARGE = 1000;
+	const MAX = 200000;
+	protected $sizes = array('small'=>self::SMALL, 'large'=>self::LARGE, 'max'=>self::MAX );	
 
  	/* Class arguments */
  	private $plugin_name;
@@ -24,17 +31,11 @@ class WPSSM_Admin {
 	private $optimize;
 	private $javasync;
 		
-	/* Objects */ 													
-	//protected $settings;														
+	/* Objects */ 																									
 	protected $assets;														
 	protected $output;														
 	protected $update;														
 
-	/* File size limits for priority calculation & notifications */
-	const SMALL = 1000;
-	const LARGE = 1000;
-	const MAX = 200000;
-	protected $sizes = array('small'=>self::SMALL, 'large'=>self::LARGE, 'max'=>self::MAX );
 
 	public function __construct( $args ) {
 		WPSSM_Debug::log('*** In WPSSM_Admin __construct ***' );		

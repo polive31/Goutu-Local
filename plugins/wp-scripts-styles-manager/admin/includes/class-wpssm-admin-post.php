@@ -4,6 +4,7 @@ class WPSSM_Admin_Post {
 	
 	use Utilities;
 
+ 	/* Class local attributes */
  	private $type;
 
  	/* Class arguments */
@@ -20,10 +21,12 @@ class WPSSM_Admin_Post {
   public function __construct( $args ) {
  		WPSSM_Debug::log('*** In WPSSM_Admin_Post __construct ***' );		  	 	
   	$this->hydrate_args( $args );
+ 		WPSSM_Debug::log('Type', $this->type );		  	 	
   }
   
   public function init_post_cb() {
  		WPSSM_Debug::log('*** In WPSSM_Admin_Post init_post_cb ***' );		  	 	
+		$this->type = $this->get_tab();
   }  
   
 
@@ -36,25 +39,24 @@ class WPSSM_Admin_Post {
     
     if ( ! wp_verify_nonce( $_POST[ $this->nonce ], $this->form_action ) )
         die( 'Invalid nonce.' . var_export( $_POST, true ) );
-		//WPSSM_Debug::log('In update_settings_cb function');
+		WPSSM_Debug::log('Security checks passed');
 		
 		if ( ! isset ( $_POST['_wpssm_http_referer'] ) )
 		    die( 'Missing valid referer' );
 		else
 			$url = $_POST['_wpssm_http_referer'];
 		
-		$type = $this->get_tab();
 		$query_args=array();
-		$query_args['tab']=$type;
+		$query_args['tab']=$this->type;
 		
 		if ( isset ( $_POST[ 'wpssm_reset' ] ) ) {
 		   	WPSSM_Debug::log( 'In Form submission : RESET' );
   			$this->assets 	= new WPSSM_Options_Assets;
   			$this->mods   	= new WPSSM_Options_Mods;
-				WPSSM_Debug::log( 'assets before submission' , $this->assets->get_assets($type) );
-				$this->assets->reset( $type );
-				$this->mods->delete( $type );
-				WPSSM_Debug::log( 'assets after submission', $this->assets->get_assets($type));
+				WPSSM_Debug::log( 'assets before submission' , $this->assets->get_assets($this->type) );
+				$this->assets->unset_mod( $this->type );
+				$this->mods->reset( $this->type );
+				WPSSM_Debug::log( 'assets after submission', $this->assets->get_assets($this->type));
 		    $query_args['msg']='reset';
 		}
 		elseif ( isset ( $_POST[ 'wpssm_delete' ] ) ) {
@@ -62,14 +64,14 @@ class WPSSM_Admin_Post {
 			  $this->general 	= new WPSSM_Options_General;
   			$this->assets 	= new WPSSM_Options_Assets;
   			$this->mods   	= new WPSSM_Options_Mods;
-		    $this->general->delete();
-		    $this->assets->delete();
-		    $this->mods->delete();
+		    $this->general->reset();
+		    $this->assets->reset();
+		    $this->mods->reset();
 		    $query_args['msg']='delete';
 		}
 		else {
-				WPSSM_Debug::log( 'In Form submission : SAVE, tab ' . $type );
-				if ( $type=='general' ) {
+				WPSSM_Debug::log( 'In Form submission : SAVE, tab ' . $this->type );
+				if ( $this->type=='general' ) {
 			  	$this->general 	= new WPSSM_Options_General;
 					//WPSSM_Debug::log('general save self::$opt_general_settings' ,self::$opt_general_settings);
 					$this->general->update_from_post();
@@ -78,24 +80,25 @@ class WPSSM_Admin_Post {
 				else {
   				$this->assets 	= new WPSSM_Options_Assets;
   				$this->mods   	= new WPSSM_Options_Mods;
-					$this->mods[$type]=array();	
+					$this->mods->reset($this->type);	
 					WPSSM_Debug::log( 'assets before submission',$this->assets->get() );
 					WPSSM_Debug::log( 'mods before submission',$this->mods->get() );
-					foreach ( $this->assets->get($type) as $handle=>$asset ) {
+					foreach ( $this->assets->get($this->type) as $handle=>$asset ) {
 						//WPSSM_Debug::log( array('Looping : asset = ' => $asset ) );
 						//WPSSM_Debug::log( array('Looping : handle = ' => $handle ) );
-						$result=$this->assets->update_from_post($type, $handle, 'location');
-						if ($result[0]) $this->mods->add( $type, $result[1], $handle);
-						$result=$this->assets->update_from_post($type, $handle, 'minify');
-						if ($result[0]) $this->mods->add( $type, 'minify', $handle);
-						$this->assets->update_priority( $type, $handle ); 
+						$result=$this->assets->update_from_post($this->type, $handle, 'location');
+						if ($result[0]) $this->mods->add( $this->type, $result[1], $handle);
+						$result=$this->assets->update_from_post($this->type, $handle, 'minify');
+						if ($result[0]) $this->mods->add( $this->type, 'minify', $handle);
+						$this->assets->update_priority( $this->type, $handle ); 
 					}
 					WPSSM_Debug::log( 'assets after submission',$this->assets->get() );				
 					WPSSM_Debug::log( 'mods after submission',$this->mods->get()) ;				
 					$this->assets->update_opt();
 					$this->mods->update_opt();
 				}
-		    $query_args['msg']='save';
+		    //$query_args['msg']='save';
+		    $query_args['msg']='save:' . $this->type;
 		}
 
 		WPSSM_Debug::log('http referer',$url);

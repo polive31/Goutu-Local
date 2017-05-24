@@ -50,15 +50,13 @@ class WPSSM {
 	/* Class objects */
 	protected $Settings;
 
-
 	public function __construct() {
 		$this->load_common_dependencies();
-		//$this->define_debug_hooks();
 		$this->init_plugin();
 		$this->define_admin_hooks();
-		//$this->define_admin_post_hooks();
-		//if ( ($this->record=='off') && ($this->optimize=='on') ) 	$this->define_public_hooks();
-		//if ( $this->record == 'on' ) 															$this->define_record_hooks();
+		$this->define_admin_post_hooks();
+		if ( ($this->record=='off') && ($this->optimize=='on') ) 	$this->define_public_hooks();
+		if ( $this->record == 'on' ) 															$this->define_record_hooks();
 	}
 
 	
@@ -79,7 +77,7 @@ class WPSSM {
 		$this->javasync = $this->Settings->get('javasync');	
 		$this->args = array(	'plugin_name' 		=> self::PLUGIN_NAME,
 													'plugin_submenu' 	=> self::PLUGIN_SUBMENU,
-													'plugin_version' 	=> self::PLUGIN_SUBMENU,
+													'plugin_version' 	=> self::PLUGIN_VERSION,
 													'form_action' 		=> self::FORM_ACTION,
 													'record' 					=> $this->record,
 													'optimize' 				=> $this->optimize,
@@ -87,14 +85,6 @@ class WPSSM {
 													'nonce' 					=> self::NONCE,
 													'sizes' 					=> $this->sizes );	
 		//WPSSM_Debug::log('$this->Settings->get()', $this->Settings->get() );
-	}
-	
-	private function define_debug_hooks() {
-		if ( !self::PLUGIN_DBG ) return;
-		WPSSM_Debug::log('In define_debug_hooks');
-		//$plugin_debug = new WPSSM_Debug();
-		//$this->loader->add_action( 'wp',	$plugin_debug, 'init_dbg' 																);
-		//set_error_handler( 'WPSSM_Debug::error' );	
 	}
 	
 	private function define_admin_post_hooks() {

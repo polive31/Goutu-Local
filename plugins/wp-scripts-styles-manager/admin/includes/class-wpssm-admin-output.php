@@ -16,9 +16,10 @@ class WPSSM_Admin_Output {
  	private $record;
  	private $optimize;
  	private $javasync;
+ 	private $page_slug;
  	
  	/* Objects */
- 	private $assets;
+ 	private $Assets;
   
   public function __construct( WPSSM_Options_Assets $assets, $args ) {
 		WPSSM_Debug::log('*** In WPSSM_Admin_Output __construct ***' );		  	

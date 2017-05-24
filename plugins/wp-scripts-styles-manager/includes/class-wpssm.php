@@ -50,18 +50,15 @@ class WPSSM {
 	/* Class objects */
 	protected $Settings;
 
-
 	public function __construct() {
 		$this->load_common_dependencies();
-		//$this->define_debug_hooks();
 		$this->init_plugin();
 		$this->define_admin_hooks();
-		//$this->define_admin_post_hooks();
-		//if ( ($this->record=='off') && ($this->optimize=='on') ) 	$this->define_public_hooks();
-		//if ( $this->record == 'on' ) 															$this->define_record_hooks();
+		$this->define_admin_post_hooks();
+		if ( ($this->record=='off') && ($this->optimize=='on') ) 	$this->define_public_hooks();
+		if ( $this->record == 'on' ) 															$this->define_record_hooks();
 	}
 
-	
 	private function load_common_dependencies() {
 		/* The class responsible for orchestrating the actions and filters of the core plugin */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wpssm-loader.php';
@@ -87,14 +84,6 @@ class WPSSM {
 													'nonce' 					=> self::NONCE,
 													'sizes' 					=> $this->sizes );	
 		//WPSSM_Debug::log('$this->Settings->get()', $this->Settings->get() );
-	}
-	
-	private function define_debug_hooks() {
-		if ( !self::PLUGIN_DBG ) return;
-		WPSSM_Debug::log('In define_debug_hooks');
-		//$plugin_debug = new WPSSM_Debug();
-		//$this->loader->add_action( 'wp',	$plugin_debug, 'init_dbg' 																);
-		//set_error_handler( 'WPSSM_Debug::error' );	
 	}
 	
 	private function define_admin_post_hooks() {

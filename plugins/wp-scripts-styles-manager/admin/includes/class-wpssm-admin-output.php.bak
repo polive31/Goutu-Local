@@ -16,6 +16,7 @@ class WPSSM_Admin_Output {
  	private $record;
  	private $optimize;
  	private $javasync;
+ 	private $page_slug;
  	
  	/* Objects */
  	private $assets;
@@ -110,7 +111,7 @@ class WPSSM_Admin_Output {
 		$this->toggle_switch( 'general_optimize', $this->optimize );
 	}		
 	
-	public function output_toggle_switch_javasync_cb() {
+	public function toggle_switch_javasync_cb() {
 		$this->toggle_switch( 'general_javasync', $this->javasync );
 	}	
 	

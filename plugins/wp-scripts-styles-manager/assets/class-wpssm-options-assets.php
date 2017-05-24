@@ -130,7 +130,7 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 			$this->assets->unset_mod( $type, $handle, $field );
 			WPSSM_Debug::log( 'Mod Field removed !' , $this->assets->get($type,$handle) );
 		}
-		return array($is_mod, $val);
+		return array('modified' => $is_mod, 'value' =>$val);
 	}
 	
 	

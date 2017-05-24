@@ -34,6 +34,7 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 									'pages'=>array(), 
 									'scripts'=>array(), 
 									'styles'=>array());	
+		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options.php' ;													
 		parent::__construct( self::OPT_KEY, $opt_proto );
 		WPSSM_Debug::log('In WPSSM_Options_Assets __construct() $this->get() ', $this->get() );
 	}
@@ -118,7 +119,7 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 		$is_mod=false;
 		$val='';
 		$input = $this->get_field_name($type, $handle, $field);
-		if ( ( isset($_POST[ $input ] )) && ( $_POST[ $input ] != $this->get($type,$handle,$field) ) ) {
+		if ( ( isset($_POST[ $input ] ) ) && ( $_POST[ $input ] != $this->get($type,$handle,$field) ) ) {
 			WPSSM_Debug::log( 'Asset field modified (mods) !' , $this->get($type,$handle) );
 			//WPSSM_Debug::log( 'input name', $input );
 			//WPSSM_Debug::log( 'POST content for this field',$_POST[ $input ] );
@@ -130,7 +131,7 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 			$this->assets->unset_mod( $type, $handle, $field );
 			WPSSM_Debug::log( 'Mod Field removed !' , $this->assets->get($type,$handle) );
 		}
-		return array($is_mod, $val);
+		return array('modified' => $is_mod, 'value' =>$val);
 	}
 	
 	

@@ -38,7 +38,7 @@ class WPSSM_Admin_Post {
     if (!current_user_can('manage_options')) return;
     
     if ( ! wp_verify_nonce( $_POST[ $this->nonce ], $this->form_action ) )
-        die( 'Invalid nonce.' . var_export( $_POST, true ) );
+        die( 'Invalid nonce : ' . var_export( $_POST[ $this->nonce ], true ) . ' action : ' . $this->form_action);
 		WPSSM_Debug::log('Security checks passed');
 		
 		if ( ! isset ( $_POST['_wpssm_http_referer'] ) )
@@ -87,9 +87,9 @@ class WPSSM_Admin_Post {
 						//WPSSM_Debug::log( array('Looping : asset = ' => $asset ) );
 						//WPSSM_Debug::log( array('Looping : handle = ' => $handle ) );
 						$result=$this->assets->update_from_post($this->type, $handle, 'location');
-						if ($result[0]) $this->mods->add( $this->type, $result[1], $handle);
+						if ($result['modified']) $this->mods->add( $this->type, $result['value'], $handle);
 						$result=$this->assets->update_from_post($this->type, $handle, 'minify');
-						if ($result[0]) $this->mods->add( $this->type, 'minify', $handle);
+						if ($result['modified']) $this->mods->add( $this->type, 'minify', $handle);
 						$this->assets->update_priority( $this->type, $handle ); 
 					}
 					WPSSM_Debug::log( 'assets after submission',$this->assets->get() );				

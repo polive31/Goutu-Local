@@ -41,21 +41,24 @@ class WPSSM {
 	protected $loader;
 	protected $user_notification; 
 						
-	/* Plugin settings */
-	protected $settings;
+	/* Class local attributes */
 	private $record;
 	private $optimize;
 	private $javasync;
 	private $args;
 	
+	/* Class objects */
+	protected $Settings;
+
+
 	public function __construct() {
 		$this->load_common_dependencies();
 		//$this->define_debug_hooks();
 		$this->init_plugin();
 		$this->define_admin_hooks();
-		$this->define_admin_post_hooks();
-		if ( ($this->record=='off') && ($this->optimize=='on') ) 	$this->define_public_hooks();
-		if ( $this->record == 'on' ) 															$this->define_record_hooks();
+		//$this->define_admin_post_hooks();
+		//if ( ($this->record=='off') && ($this->optimize=='on') ) 	$this->define_public_hooks();
+		//if ( $this->record == 'on' ) 															$this->define_record_hooks();
 	}
 
 	
@@ -63,28 +66,28 @@ class WPSSM {
 		/* The class responsible for orchestrating the actions and filters of the core plugin */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wpssm-loader.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'debug/class-dbg.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'assets/class-wpssm-options.php';
+		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options.php' ;			
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'assets/class-wpssm-options-general.php';
 		$this->loader = new WPSSM_Loader();
 	}
 	
 	private function init_plugin() {
-		//WPSSM_Debug::log('In WPSSM get_plugin_settings');
-		$this->settings = new WPSSM_Options_General( array('plugin_version'=>self::PLUGIN_VERSION) );
-		$this->record = 	$this->settings->get('record');
-		$this->optimize = $this->settings->get('optimize');
-		$this->javasync = $this->settings->get('javasync');	
-		$this->args = array(	'plugin_name' => self::PLUGIN_NAME,
-													'submenu' 		=> self::PLUGIN_SUBMENU,
-													'form_action' => self::FORM_ACTION,
-													'record' 			=> $this->record,
-													'optimize' 		=> $this->optimize,
-													'javasync' 		=> $this->javasync,
-													'nonce' 			=> self::NONCE,
-													'sizes' 			=> $this->sizes );	
-		//WPSSM_Debug::log('$this->settings->get()', $this->settings->get() );
+		//WPSSM_Debug::log('In WPSSM get_plugin_Settings');
+		$this->Settings = new WPSSM_Options_General( array('plugin_version'=>self::PLUGIN_VERSION) );
+		$this->record = 	$this->Settings->get('record');
+		$this->optimize = $this->Settings->get('optimize');
+		$this->javasync = $this->Settings->get('javasync');	
+		$this->args = array(	'plugin_name' 		=> self::PLUGIN_NAME,
+													'plugin_submenu' 	=> self::PLUGIN_SUBMENU,
+													'plugin_version' 	=> self::PLUGIN_VERSION,
+													'form_action' 		=> self::FORM_ACTION,
+													'record' 					=> $this->record,
+													'optimize' 				=> $this->optimize,
+													'javasync' 				=> $this->javasync,
+													'nonce' 					=> self::NONCE,
+													'sizes' 					=> $this->sizes );	
+		//WPSSM_Debug::log('$this->Settings->get()', $this->Settings->get() );
 	}
-	
 	
 	private function define_debug_hooks() {
 		if ( !self::PLUGIN_DBG ) return;
@@ -97,8 +100,6 @@ class WPSSM {
 	private function define_admin_post_hooks() {
 		WPSSM_Debug::log('In define_admin_post_hooks');														
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/includes/class-wpssm-admin-post.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'assets/class-wpssm-options-assets.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'assets/class-wpssm-options-mods.php';		
 		$plugin_post = new WPSSM_Admin_Post(	$this->args );
 		$this->loader->add_action( 'admin_menu', 												$plugin_post, 'init_post_cb' 															);
 		$this->loader->add_action( 'admin_post_' . self::FORM_ACTION, 	$plugin_post, 'update_settings_cb' 											);
@@ -109,7 +110,6 @@ class WPSSM {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wpssm-admin.php';
 		$plugin_admin = new WPSSM_Admin( $this->args );
 		$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'init_admin_cb' 															);
-		//$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'init_settings' 														);
 		$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'add_plugin_menu_option_cb' 								);
 		$this->loader->add_action( 'admin_enqueue_scripts', 						$plugin_admin, 'enqueue_scripts_cb' 													);
 		$this->loader->add_action( 'admin_enqueue_scripts', 						$plugin_admin, 'enqueue_styles_cb' 													);

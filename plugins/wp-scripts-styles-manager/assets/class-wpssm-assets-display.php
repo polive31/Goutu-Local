@@ -12,11 +12,10 @@ class WPSSM_Assets_Display extends WPSSM_Options_Assets {
 
 	/* Assets attributes */
 	private $displayed = array();			
+	private $type;
 
 	/* Class arguments */
-	private $type;
 	private $groupby;
-	private $sizes;
 	
 	/* Filter & sort array functions arguments */
 	private $display_fields = array( 'handle', 'filename', 'version', 'dependencies', 'dependents', 'location', 'minify', 'size', 'group', 'priority');
@@ -24,9 +23,10 @@ class WPSSM_Assets_Display extends WPSSM_Options_Assets {
 	private $sort_args = array( 'field' => 'priority', 'order' => SORT_DESC, 'type' => SORT_NUMERIC);
 						
 	public function __construct( $args ) {	
-		WPSSM_Debug::log('*** In WPSSM_Options_Assets __construct ***' );				
+		WPSSM_Debug::log('*** In WPSSM_Options_Assets_Display __construct ***' );			
 		parent::__construct( $args );
   	$this->hydrate_args( $args );
+  	$this->type = $this->get_tab();
 		$this->displayed_hydrate();
 	}
 	

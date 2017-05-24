@@ -13,6 +13,9 @@ class WPSSM_Admin_Output {
  	private $sizes;
  	private $form_action;
  	private $nonce;
+ 	private $record;
+ 	private $optimize;
+ 	private $javasync;
  	
  	/* Objects */
  	private $assets;
@@ -20,8 +23,8 @@ class WPSSM_Admin_Output {
   public function __construct( WPSSM_Options_Assets $assets, $args ) {
 		WPSSM_Debug::log('*** In WPSSM_Admin_Output __construct ***' );		  	
   	$this->hydrate_args( $args );
-  	$this->assets = new WPSSM_Assets_Display( $assets, $args );
-  	$this->type = $this->assets->get_display_attr('type');
+  	$this->Assets = $assets;
+  	$this->type = $this->Assets->get_display_attr('type');
   }
 
 
@@ -63,7 +66,10 @@ class WPSSM_Admin_Output {
 	  <table class="button-table" col="2">
 	    <tr>
 				<input type="hidden" name="action" value="<?php echo $this->form_action; ?>">
-				<?php wp_nonce_field( $this->form_action, $this->nonce, FALSE ); ?>
+				<?php		
+				WPSSM_Debug::log( 'In WPSSM_Admin_Output Nonce : ' . $this->nonce . ' Action : ' . $this->form_action );
+				wp_nonce_field( $this->form_action, $this->nonce, FALSE ); 
+				?>
 				<input type="hidden" name="_wpssm_http_referer" value="<?php echo $referer; ?>">
 				<input type="hidden" name="_wpssm_active_tab" value="<?php echo $this->type; ?>">
 
@@ -90,11 +96,23 @@ class WPSSM_Admin_Output {
 --------------------------------------------------------------------*/
 	public function pages_list() {
 		if ( $this->type != 'general') return false;
-		//WPSSM_Debug::log('In WPSSM_Output pages_list(), $this->assets ', $this->assets->get_assets('pages') );
-		foreach ($this->assets->get('pages') as $page) {
+		//WPSSM_Debug::log('In WPSSM_Output pages_list(), $this->Assets ', $this->Assets->get_assets('pages') );
+		foreach ($this->Assets->get('pages') as $page) {
 			echo '<p>' . $page[0] . ' on ' . $page[1] . '</p>';
 		}
 	}
+	
+	public function toggle_switch_recording_cb() {
+		$this->toggle_switch( 'general_record', $this->record );
+	}	
+
+	public function toggle_switch_optimize_cb() {
+		$this->toggle_switch( 'general_optimize', $this->optimize );
+	}		
+	
+	public function output_toggle_switch_javasync_cb() {
+		$this->toggle_switch( 'general_javasync', $this->javasync );
+	}	
 	
 
 	public function toggle_switch( $input_name, $value ) {
@@ -129,7 +147,7 @@ class WPSSM_Admin_Output {
 	}
 
 	public function items_list( $location ) {
-		$sort_list = $this->assets->get_sort_list( $location );
+		$sort_list = $this->Assets->get_sort_list( $location );
 		WPSSM_Debug::log('In WPSSM_Output items_list() $sorted_list : ', $sort_list);			
 		?><table class="enqueued-assets"><?php
 			$this->item_headline();
@@ -156,7 +174,7 @@ class WPSSM_Admin_Output {
 	}
 
 	public function item_content( $location, $handle ) {
-    	$asset = $this->assets->get_displayed( $location, $handle );
+    	$asset = $this->Assets->get_displayed( $location, $handle );
     	$filename 		= $asset['filename'];
     	$dependencies = $asset['dependencies'];
     	$dependents 	= $asset['dependents'];
@@ -203,7 +221,7 @@ class WPSSM_Admin_Output {
 /* HELPERS
 --------------------------------------------------------------*/		
 	private function classmod( $handle, $field ) {
-		return $this->assets->is_mod( $this->type, $handle, $field )?'modified':'';
+		return $this->Assets->is_mod( $this->type, $handle, $field )?'modified':'';
 	}
 
 
@@ -213,11 +231,11 @@ class WPSSM_Admin_Output {
 	
 	private function asset_notice( $handle ) {
 		
-		$size= $this->assets->get_value( $this->type, $handle, 'size');
+		$size= $this->Assets->get_field( $this->type, $handle, 'size');
 		//WPSSM_Debug::log(array('size : '=>$size));
-		$is_minified = $this->assets->get_value( $this->type, $handle, 'minify') == 'yes';
+		$is_minified = $this->Assets->get_field( $this->type, $handle, 'minify') == 'yes';
 		//WPSSM_Debug::log(array('is_minified: '=>$is_minified));
-		$in_footer = ( $this->assets->get_value( $this->type, $handle, 'location') == 'footer');
+		$in_footer = ( $this->Assets->get_field( $this->type, $handle, 'location') == 'footer');
 		
 		$this->reset_asset_notice();
 		if (!$is_minified) {

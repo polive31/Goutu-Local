@@ -25,8 +25,7 @@ class WPSSM_Options_General extends WPSSM_Options {
 									'record'=>'off', 
 									'optimize'=>'off', 
 									'javasync'=>'off', 
-									'wpssm_version'=>$this->plugin_version);	
-						
+									'wpssm_version'=>$this->plugin_version);																			
 		parent::__construct( self::OPT_KEY, $this->opt_proto );
 		//WPSSM_Debug::log('In WPSSM_Assets __construct() $this->get()', $this->get() );
 		//WPSSM_Debug::log('In WPSSM_Assets __construct() $this->get(record)', $this->get('record') );

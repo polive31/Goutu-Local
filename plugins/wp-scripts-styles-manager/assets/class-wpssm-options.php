@@ -56,7 +56,7 @@ abstract class WPSSM_Options {
 			$this->asset = $this->prototype;
 		}
 		else {
-			$this->asset($field) = $this->prototype($field);			
+			$this->asset[$field] = $this->prototype[$field];			
 		}
 		$this->update_opt();
 	}

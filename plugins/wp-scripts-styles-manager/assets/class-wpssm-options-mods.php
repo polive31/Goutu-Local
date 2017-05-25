@@ -38,7 +38,7 @@ class WPSSM_Options_Mods extends WPSSM_Options {
 	/* 	Outputs empty array instead of false on missing field
 			Since in the case of mods assets all fields are arrays 
 	-------------------------------------------------------------*/
-	public function get( $type, $field ) {
+	public function get( $type=false, $field=false ) {
 		$get = parent::get( $type, $field );
 		return ($get==false)?array():$get;
 	}

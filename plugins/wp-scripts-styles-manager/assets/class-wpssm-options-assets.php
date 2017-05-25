@@ -23,9 +23,8 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 
 	const OPT_KEY = 'wpssm_enqueued_assets';
 
-  /* Recording attributes */
-	protected $header_scripts;
-	protected $header_styles;
+  /* Class arguments */
+	private $sizes;
 
 	public function __construct( $args ) {
 		WPSSM_Debug::log('*** In WPSSM_Options_Assets __construct ***' );		
@@ -84,7 +83,12 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 
 /* Asset 
 -----------------------------------------------------------*/
-	public function add( $type, $handle, $obj, $location ) {
+
+	public function store_page( $value , $handle ) {
+		$this->set( $value, 'pages', $handle);
+	}
+
+	public function store( $type, $handle, $obj, $location ) {
 		$path = strtok($obj->src, '?'); // remove any query parameters
 		if ( strpos( $path, 'wp-' ) != false) {
 			$path = wp_make_link_relative( $path );
@@ -117,7 +121,7 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 	public function update_from_post( $type, $handle, $field ) {
 		$is_mod=false;
 		$val='';
-		$input = $this->get_field_name($type, $handle, $field);
+		$input = $this->get_input_name($type, $handle, $field);
 		if ( ( isset($_POST[ $input ] ) ) && ( $_POST[ $input ] != $this->get($type,$handle,$field) ) ) {
 			WPSSM_Debug::log( 'Asset field modified (mods) !' , $this->get($type,$handle) );
 			//WPSSM_Debug::log( 'input name', $input );
@@ -127,8 +131,8 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 			$is_mod=true;
 		}
 		else {
-			$this->assets->unset_mod( $type, $handle, $field );
-			WPSSM_Debug::log( 'Mod Field removed !' , $this->assets->get($type,$handle) );
+			$this->unset_mod( $type, $handle, $field );
+			WPSSM_Debug::log( 'Mod Field removed !' , $this->get($type,$handle) );
 		}
 		return array('modified' => $is_mod, 'value' =>$val);
 	}
@@ -136,18 +140,18 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 	
 /* Asset field
 -----------------------------------------------------------*/
-	public function set_field( $type, $handle, $field, $value ) {
-		$this->opt_enqueued_assets[$type][$handle][$field]=$value;
+	public function set_priority( $type, $handle, $value ) {
+		$this->set( $value, $type, $handle, 'priority' );
 	}
 	
 	public function add_field_value( $type, $handle, $field, $value ) {
-		$this->opt_enqueued_assets[$type][$handle][$field][]=$value;
+		$this->add( $value, $type, $handle, $field );
 	}
 	
 /* Asset Mod
 -----------------------------------------------------------*/
 	public function set_mod_field( $type, $handle, $field, $value ) {
-		$this->opt_enqueued_assets[$type][$handle]['mods'][$field]=$value;
+		$this->set( $value, $type, $handle, 'mods', $field );
 	}
 
 	public function unset_mod( $type, $handle=false, $field=false ) {
@@ -162,7 +166,7 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 		else
 			if ( isset( $this->opt_enqueued_assets[$type][$handle]['mods'][$field] ) )
 				unset($this->opt_enqueued_assets[$type][$handle]['mods'][$field]); 
-		$this->assets->update_priority( $type, $handle ); 
+		$this->update_priority( $type, $handle ); 
 	}		
 	
 
@@ -170,30 +174,30 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 -----------------------------------------------------------*/	
 
 	public function update_priority( $type, $handle ) {
-		$location = $this->get_field_value( $type, $handle, 'location');
+		$location = $this->get_field( $type, $handle, 'location');
 		if ( $location != 'disabled' ) {
-			$minify = $this->get_field_value( $type, $handle, 'minify');
-			$size = $this->get_field_value( $type, $handle, 'size');
+			$minify = $this->get_field( $type, $handle, 'minify');
+			$size = $this->get_field( $type, $handle, 'size');
 			$score = ( $location == 'header' )?1000:0;
 			//WPSSM_Debug::log(array('base after location'=>$score));
-			$score += ( $size >= self::SIZE_LARGE )?500:0; 	
+			$score += ( $size >= $this->sizes['large'] )?500:0; 	
 			$score += ( ($minify == 'no') && ( $size != 0 ))?200:0;
 			//WPSSM_Debug::log(array('base after minify'=>$score));
-			$score += ( $size <= self::SIZE_SMALL )?100:0; 	
+			$score += ( $size <= $this->sizes['small'] )?100:0; 	
 			//WPSSM_Debug::log(array('base after size'=>$score));
-			if ( $size >= self::SIZE_LARGE ) 
-				$normalizer = self::SIZE_MAX;
-			elseif ( $size <= self::SIZE_SMALL )
-				$normalizer = self::SIZE_SMALL;
+			if ( $size >= $this->sizes['large'] ) 
+				$normalizer = $this->sizes['max'];
+			elseif ( $size <= $this->sizes['small'] )
+				$normalizer = $this->sizes['small'];
 			else 
-				$normalizer = self::SIZE_LARGE;
+				$normalizer = $this->sizes['large'];
 			//WPSSM_Debug::log(array('normalizer'=>$normalizer));
 			$score += $size/$normalizer*100; 	
 			//WPSSM_Debug::log(array('score'=>$score));
 		}
 		else 
 			$score = 0;
-		$this->set_field_value( $type, $handle, 'priority', $score);
+		$this->set_priority( $type, $handle, $score);
 	}		
 	
 	// Update all assets 'dependants' property, based on this asset's dependencies
@@ -201,7 +205,7 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 		$dependencies = $this->get_field( $type, $handle, 'dependencies');
 		foreach ($dependencies as $dep_handle) {
 			//WPSSM_Debug::log(array('dependencies loop : '=>$dep_handle));
-			$this->add_field_value( $type, $dep_handle, 'dependents', $handle );
+			$this->add( $handle, $type, $dep_handle, 'dependents' );
 		}	
 	}
 	

@@ -31,15 +31,14 @@ class WPSSM_Options_Mods extends WPSSM_Options {
 									'minify'=>array(),
 									), 						
 						);
-		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options.php' ;																					
 		parent::__construct( self::OPT_KEY, $opt_proto );
-		WPSSM_Debug::log('In WPSSM_Options_Mods __construct() $this->get() ', $this->get() );
+		//WPSSM_Debug::log('In WPSSM_Options_Mods __construct() $this->get() ', $this->get() );
 	}
 
 	/* 	Outputs empty array instead of false on missing field
 			Since in the case of mods assets all fields are arrays 
 	-------------------------------------------------------------*/
-	public function get( $type, $field ) {
+	public function get( $type=false, $field=false ) {
 		$get = parent::get( $type, $field );
 		return ($get==false)?array():$get;
 	}

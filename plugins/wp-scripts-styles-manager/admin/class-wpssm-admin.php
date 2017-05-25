@@ -11,12 +11,6 @@ class WPSSM_Admin {
 	
 	use Utilities;
 
-	/* File size limits for priority calculation & notifications */
-	const SMALL = 1000;
-	const LARGE = 1000;
-	const MAX = 200000;
-	protected $sizes = array('small'=>self::SMALL, 'large'=>self::LARGE, 'max'=>self::MAX );	
-
  	/* Class arguments */
  	private $args;
  	private $plugin_name;
@@ -27,6 +21,7 @@ class WPSSM_Admin {
 	private $record;
 	private $optimize;
 	private $javasync;
+	private $sizes;
 	
 	/* Local class attributes */
 	private $page; 	

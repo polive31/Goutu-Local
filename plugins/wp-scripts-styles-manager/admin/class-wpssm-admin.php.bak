@@ -27,6 +27,7 @@ class WPSSM_Admin {
 	private $record;
 	private $optimize;
 	private $javasync;
+	private $sizes;
 	
 	/* Local class attributes */
 	private $page; 	
@@ -60,7 +61,7 @@ class WPSSM_Admin {
 		$this->Output = 	new WPSSM_Admin_Output( $this->Assets, 	$this->args);
 
 		// Initialize options settings 
-		$this->page = $this->get_page_structure( get_tab() );
+		$this->page = $this->get_page_structure( $this->get_tab() );
 
 		// Prepare assets to display
 		WPSSM_Debug::log('In WPSSM_Admin init_admin(), $this->get_tab()', $this->get_tab() );	

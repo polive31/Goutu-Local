@@ -21,6 +21,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 			return isset( $_GET[ 'tab' ] ) ? esc_html($_GET[ 'tab' ]) : 'general';
 		}
 		
+		// Get form input name
+		public function get_input_name( $type, $handle, $field ) {
+			return  $type . '_' . $handle . '_' . $field;
+		}	
+		
 	}
 	
 class WPSSM {
@@ -29,9 +34,12 @@ class WPSSM {
 	const PLUGIN_NAME = 'wpssm';
 	const PLUGIN_VERSION = '1.1.0';
 	const PLUGIN_SUBMENU = 'tools.php'; // 'options-general.php'
-	
-	/* Debug */
-	const PLUGIN_DBG = on;
+
+	/* File size limits for priority calculation & notifications */
+	const SMALL = 1000;
+	const LARGE = 1000;
+	const MAX = 200000;
+	protected $sizes = array('small'=>self::SMALL, 'large'=>self::LARGE, 'max'=>self::MAX );	
 	
 	/* Post update */
 	const FORM_ACTION = 'wpssm_update_settings';
@@ -62,7 +70,6 @@ class WPSSM {
 	private function load_common_dependencies() {
 		/* The class responsible for orchestrating the actions and filters of the core plugin */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wpssm-loader.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'debug/class-dbg.php';
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options.php' ;			
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'assets/class-wpssm-options-general.php';
 		$this->loader = new WPSSM_Loader();
@@ -88,20 +95,22 @@ class WPSSM {
 	
 	private function define_admin_post_hooks() {
 		WPSSM_Debug::log('In define_admin_post_hooks');														
+		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-assets.php' ;			
+		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-mods.php' ;			
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/includes/class-wpssm-admin-post.php';
-		$plugin_post = new WPSSM_Admin_Post(	$this->args );
-		$this->loader->add_action( 'admin_menu', 												$plugin_post, 'init_post_cb' 															);
-		$this->loader->add_action( 'admin_post_' . self::FORM_ACTION, 	$plugin_post, 'update_settings_cb' 											);
+		$plugin_post = new WPSSM_Admin_Post( $this->args );
+		$this->loader->add_action( 'admin_post_' . self::FORM_ACTION, 	$plugin_post, 'update_settings_cb' 					);
+		$this->loader->add_action( 'admin_head', 												$plugin_post, 'init_post_cb' 								);
 	}
 	
 	private function define_admin_hooks() {
 		WPSSM_Debug::log('In define_admin_hooks');														
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wpssm-admin.php';
 		$plugin_admin = new WPSSM_Admin( $this->args );
-		$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'init_admin_cb' 															);
-		$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'add_plugin_menu_option_cb' 								);
-		$this->loader->add_action( 'admin_enqueue_scripts', 						$plugin_admin, 'enqueue_scripts_cb' 													);
-		$this->loader->add_action( 'admin_enqueue_scripts', 						$plugin_admin, 'enqueue_styles_cb' 													);
+		$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'init_admin_cb' 							);
+		$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'add_plugin_menu_option_cb' 	);
+		$this->loader->add_action( 'admin_enqueue_scripts', 						$plugin_admin, 'enqueue_scripts_cb' 				);
+		$this->loader->add_action( 'admin_enqueue_scripts', 						$plugin_admin, 'enqueue_styles_cb' 					);
 	}
 
 	private function define_public_hooks() {

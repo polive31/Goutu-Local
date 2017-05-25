@@ -77,30 +77,44 @@ abstract class WPSSM_Options {
 		return $get;
 	}
 	
-	public function set( $value, $field=false, $subfield=false ) {
+	public function set( $value, $field1=false, $field2=false, $field3=false, $field4=false ) {
 		WPSSM_Debug::log( '*** In ' . get_class($this) . ' set() ***' );
 		$set = false;
-		if ( $field == false) {
+		if ( $field1==false) {
 			$this->asset = $value;
 			$set = true;			
 		}
-		elseif ($subfield==false) {
-			$this->asset[$field] = $value;
+		elseif ($field2==false) {
+			$this->asset[$field1] = $value;
 			$set = true;			
 		}
-		elseif ( isset( $this->asset[$field][$subfield] ) ) {
-			$this->asset[$field][$subfield] = $value; 
-			$set = true;			
+		elseif ($field3==false) {
+			if ( isset( $this->asset[$field1] ) ) {
+				$this->asset[$field1][$field2] = $value;
+				$set = true;			
+			}	
 		}
+		elseif ($field4==false) {
+			if ( isset( $this->asset[$field1][$field2] ) ) {
+				$this->asset[$field1][$field2][$field3] = $value;
+				$set = true;			
+			}	
+		}		
+		elseif ( isset( $this->asset[$field1][$field2][$field3] ) ) {
+			$this->asset[$field1][$field2][$field3][$field4] = $value; 
+			$set = true;			
+		}		
 		WPSSM_Debug::log( ' Set result $this->asset ', $this->asset);
 		return $set;
 	}	
 	
-	public function add( $value, $field, $subfield=false ) {
-		if ($subfield == false) 
-			$this->asset[$field][] = $value;
-		else
-			$this->asset[$field][$subfield][] = $value;
+	public function add( $value, $field1, $field2=false, $field3=false ) {
+		if ($field2==false) 
+			$this->asset[$field1][] = $value;
+		elseif ($field3==false)
+			$this->asset[$field1][$field2][] = $value;
+		else	
+			$this->asset[$field1][$field2][$field3][] = $value;
 	}
 	
 

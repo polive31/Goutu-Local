@@ -1,12 +1,12 @@
-<?php
+<?Php
 /*
-Plugin Name: WP Scripts & Styles Manager
-Plugin URI: http://goutu.org/wp-scripts-styles-manager
-Description: custom enqueue, minimize, and concatenate your css & js code
+Plugin Name: Wp Scripts & Styles Manager
+Plugin Uri: Http://Goutu.Org/Wp-Scripts-Styles-Manager
+Description: Custom Enqueue, Minimize, And Concatenate Your Css & Js Code
 Version: 1.0.0
 Author: Pascal Olive
-Author URI: http://goutu.org
-License: GPL
+Author Uri: Http://Goutu.Org
+License: Gpl
 */
 
 // Exit if accessed directly.

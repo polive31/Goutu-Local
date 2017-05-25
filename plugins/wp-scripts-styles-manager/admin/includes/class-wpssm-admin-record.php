@@ -58,7 +58,7 @@ class WPSSM_Admin_Record {
 		}
 		else {
 			$page_info = array(get_permalink(), current_time( 'mysql' ));
-			$this->assets->set(	$page_info,'pages',get_permalink());
+			$this->assets->store_page(	$page_info, get_permalink() );
 			$scripts=$wp_scripts->done;
 			$styles=$wp_styles->done;
 			$this->header_scripts = $scripts;
@@ -85,7 +85,7 @@ class WPSSM_Admin_Record {
 			foreach( $asset['handles'] as $index => $handle ) {
 				$obj = $asset['registered'][$handle];
 				$location=$in_footer?'footer':'header';
-				$this->assets->add( $type, $handle, $obj, $location );
+				$this->assets->store( $type, $handle, $obj, $location );
 			}
 		}
 	  WPSSM_Debug::log(array('assets after update' => $this->opt_enqueued_assets));

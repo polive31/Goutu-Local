@@ -35,8 +35,15 @@ class WPSSM_Options_General extends WPSSM_Options {
 	---------------------------------------*/
 
 	public function update_from_post() {
-		foreach ($this->opt_proto as $setting) {
-			$this->asset[$setting]= isset($_POST[ 'general_' . $setting . '_checkbox' ])?$_POST[ 'general_' . $setting . '_checkbox' ]:'off';
+		WPSSM_Debug::log('In WPSSM_Options_General update_from_post' );
+		foreach ($this->opt_proto as $setting=>$value) {
+			$name = 'general_' . $setting . '_checkbox';
+			if ( isset($_POST[ $name ]) )
+				$value = $_POST[ $name ];
+			else 
+				$value='off';
+			WPSSM_Debug::log('In WPSSM_Options_General update_from_post loop ' . $setting . ' = ' . $value  );
+			$this->set( $value, $setting );
 		}			
 	}
 

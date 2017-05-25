@@ -6,6 +6,7 @@ class WPSSM_Admin_Post {
 
  	/* Class local attributes */
  	private $type;
+ 	private $args;
 
  	/* Class arguments */
  	private $plugin_name;
@@ -21,19 +22,23 @@ class WPSSM_Admin_Post {
   public function __construct( $args ) {
  		WPSSM_Debug::log('*** In WPSSM_Admin_Post __construct ***' );		  	 	
   	$this->hydrate_args( $args );
- 		WPSSM_Debug::log('Type', $this->type );		  	 	
+  	$this->args = $args;
+ 		$this->type = $this->get_tab();
+ 		WPSSM_Debug::log('In WPSSM_Admin_Post __construct $this->type = ' . $this->type );		  	 	
   }
   
-  public function init_post_cb() {
- 		WPSSM_Debug::log('*** In WPSSM_Admin_Post init_post_cb ***' );		  	 	
-		$this->type = $this->get_tab();
-  }  
+  
+ /* Gets the active tab (not possible when submitting the post) */
+ public function init_post_cb() {
+ 		$this->type = $this->get_tab();
+ 		WPSSM_Debug::log('In WPSSM_Admin_Post init_post_cb(), $this->type = ' . $this->type );		  	 	
+ }
   
 
 /* FORM SUBMISSION
 --------------------------------------------------------------*/
 	public function update_settings_cb() {
-		WPSSM_Debug::log('In update_settings_cb');
+		WPSSM_Debug::log('In update_settings_cb, type = ' . $this->type );
 		// check user capabilities
     if (!current_user_can('manage_options')) return;
     
@@ -51,54 +56,54 @@ class WPSSM_Admin_Post {
 		
 		if ( isset ( $_POST[ 'wpssm_reset' ] ) ) {
 		   	WPSSM_Debug::log( 'In Form submission : RESET' );
-  			$this->assets 	= new WPSSM_Options_Assets;
-  			$this->mods   	= new WPSSM_Options_Mods;
-				WPSSM_Debug::log( 'assets before submission' , $this->assets->get_assets($this->type) );
-				$this->assets->unset_mod( $this->type );
-				$this->mods->reset( $this->type );
-				WPSSM_Debug::log( 'assets after submission', $this->assets->get_assets($this->type));
+  			$this->Assets 	= new WPSSM_Options_Assets( $this->args );
+  			$this->Mods   	= new WPSSM_Options_Mods( $this->args );
+				WPSSM_Debug::log( 'assets before submission' , $this->Assets->get_assets($this->type) );
+				$this->Assets->unset_mod( $this->type );
+				$this->Mods->reset( $this->type );
+				WPSSM_Debug::log( 'assets after submission', $this->Assets->get_assets($this->type));
 		    $query_args['msg']='reset';
 		}
 		elseif ( isset ( $_POST[ 'wpssm_delete' ] ) ) {
 		   	WPSSM_Debug::log( 'In Form submission : DELETE' );
-			  $this->general 	= new WPSSM_Options_General;
-  			$this->assets 	= new WPSSM_Options_Assets;
-  			$this->mods   	= new WPSSM_Options_Mods;
-		    $this->general->reset();
-		    $this->assets->reset();
-		    $this->mods->reset();
+			  $this->General 	= new WPSSM_Options_General( $this->args );
+  			$this->Assets 	= new WPSSM_Options_Assets( $this->args );
+  			$this->Mods   	= new WPSSM_Options_Mods( $this->args );
+		    $this->General->reset();
+		    $this->Assets->reset();
+		    $this->Mods->reset();
 		    $query_args['msg']='delete';
 		}
-		else {
+		elseif ( isset ( $_POST[ 'wpssm_save' ] ) ) {
 				WPSSM_Debug::log( 'In Form submission : SAVE, tab ' . $this->type );
 				if ( $this->type=='general' ) {
-			  	$this->general 	= new WPSSM_Options_General;
-					//WPSSM_Debug::log('general save self::$opt_general_settings' ,self::$opt_general_settings);
-					$this->general->update_from_post();
-					$this->general->update_opt();
+			  	$this->General 	= new WPSSM_Options_General( $this->args );
+					WPSSM_Debug::log('In WPSSM_Post general save' );
+					$this->General->update_from_post();
+					$this->General->update_opt();
 				}
 				else {
-  				$this->assets 	= new WPSSM_Options_Assets;
-  				$this->mods   	= new WPSSM_Options_Mods;
-					$this->mods->reset($this->type);	
-					WPSSM_Debug::log( 'assets before submission',$this->assets->get() );
-					WPSSM_Debug::log( 'mods before submission',$this->mods->get() );
-					foreach ( $this->assets->get($this->type) as $handle=>$asset ) {
-						//WPSSM_Debug::log( array('Looping : asset = ' => $asset ) );
-						//WPSSM_Debug::log( array('Looping : handle = ' => $handle ) );
-						$result=$this->assets->update_from_post($this->type, $handle, 'location');
-						if ($result['modified']) $this->mods->add( $this->type, $result['value'], $handle);
-						$result=$this->assets->update_from_post($this->type, $handle, 'minify');
-						if ($result['modified']) $this->mods->add( $this->type, 'minify', $handle);
-						$this->assets->update_priority( $this->type, $handle ); 
+  				$this->Assets 	= new WPSSM_Options_Assets( $this->args );
+  				$this->Mods   	= new WPSSM_Options_Mods( $this->args );
+					$this->Mods->reset($this->type);	
+					WPSSM_Debug::log( 'assets before submission',$this->Assets->get() );
+					WPSSM_Debug::log( 'mods before submission',$this->Mods->get() );
+					foreach ( $this->Assets->get($this->type) as $handle=>$asset ) {
+						WPSSM_Debug::log( array('Looping : asset = ' => $asset ) );
+						WPSSM_Debug::log( array('Looping : handle = ' => $handle ) );
+						$result=$this->Assets->update_from_post($this->type, $handle, 'location');
+						if ($result['modified']) $this->Mods->add( $handle, $this->type, $result['value'] );
+						$result=$this->Assets->update_from_post($this->type, $handle, 'minify');
+						if ($result['modified']) $this->Mods->add( $handle, $this->type, 'minify' );
+						$this->Assets->update_priority( $this->type, $handle ); 
 					}
-					WPSSM_Debug::log( 'assets after submission',$this->assets->get() );				
-					WPSSM_Debug::log( 'mods after submission',$this->mods->get()) ;				
-					$this->assets->update_opt();
-					$this->mods->update_opt();
+					WPSSM_Debug::log( 'assets after submission',$this->Assets->get() );				
+					WPSSM_Debug::log( 'mods after submission',$this->Mods->get()) ;				
+					$this->Assets->update_opt();
+					$this->Mods->update_opt();
 				}
 		    //$query_args['msg']='save';
-		    $query_args['msg']='save:' . $this->type;
+		    $query_args['msg']='save-' . $this->type;
 		}
 
 		WPSSM_Debug::log('http referer',$url);
@@ -108,23 +113,7 @@ class WPSSM_Admin_Post {
 		wp_safe_redirect( $url );
 		exit;
 	}
-	
 
-
-
-
-/* RECORDING CALLBACKS 
-----------------------------------------------------*/
-	public function record_header_assets_cb() {
-		WPSSM_Debug::log('In record header assets cb');
-		$this->assets->record( false );
-	}
-
-	public function record_footer_assets_cb() {
-		WPSSM_Debug::log('In record footer assets cb');
-		$this->assets->record( true );
-	}
-	
 	
   
 

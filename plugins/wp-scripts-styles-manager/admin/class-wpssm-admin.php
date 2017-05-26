@@ -61,7 +61,6 @@ class WPSSM_Admin {
 		WPSSM_Debug::log('In WPSSM_Admin init_admin(), $this->get_tab()', $this->get_tab() );	
 		$this->init_settings( $this->page );						
 	}
-	
 
 	public function get_page_structure( $tab ) {
 		if ( $tab == 'general' ) return array(

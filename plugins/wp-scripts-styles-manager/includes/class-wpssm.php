@@ -6,8 +6,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 	trait Utilities {
+		
+		function debug( $msg, $var ) {
+			if ( class_exists( 'WPSSM_Debug' ) ) {
+				WPSSM_Debug::log( $msg, $var );
+			}
+		}
+		
 		function hydrate_args( $args ) {
-			//WP_Debug::log( 'In hydrate_args before ', $args);
+			$this->debug( 'In ' . get_class() . ' : hydrate_args before ', $args);
 			foreach ($args as $key=>$value) {
 				if ( property_exists( $this,$key ) ) {
 					$this->$key = $value;

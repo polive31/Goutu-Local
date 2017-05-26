@@ -6,8 +6,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 	trait Utilities {
+		
+		function debug( $msg, $var ) {
+			if ( class_exists( 'WPSSM_Debug' ) ) {
+				WP_Debug::log( $msg, $var );
+			}
+		}
+		
 		function hydrate_args( $args ) {
-			//WP_Debug::log( 'In hydrate_args before ', $args);
+			$this->debug( 'In ' . get_class() . ' : hydrate_args before ', $args);
 			foreach ($args as $key=>$value) {
 				if ( property_exists( $this,$key ) ) {
 					$this->$key = $value;
@@ -99,18 +106,18 @@ class WPSSM {
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-mods.php' ;			
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/includes/class-wpssm-admin-post.php';
 		$plugin_post = new WPSSM_Admin_Post( $this->args );
-		$this->loader->add_action( 'admin_post_' . self::FORM_ACTION, 	$plugin_post, 'update_settings_cb' 							);
-		$this->loader->add_action( 'admin_head', 												$plugin_post, 'init_post_cb' 										);
+		$this->loader->add_action( 'admin_post_' . self::FORM_ACTION, 	$plugin_post, 'update_settings_cb' 					);
+		$this->loader->add_action( 'admin_head', 												$plugin_post, 'init_post_cb' 								);
 	}
 	
 	private function define_admin_hooks() {
 		WPSSM_Debug::log('In define_admin_hooks');														
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wpssm-admin.php';
 		$plugin_admin = new WPSSM_Admin( $this->args );
-		$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'init_admin_cb' 															);
-		$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'add_plugin_menu_option_cb' 								);
-		$this->loader->add_action( 'admin_enqueue_scripts', 						$plugin_admin, 'enqueue_scripts_cb' 													);
-		$this->loader->add_action( 'admin_enqueue_scripts', 						$plugin_admin, 'enqueue_styles_cb' 													);
+		$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'init_admin_cb' 							);
+		$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'add_plugin_menu_option_cb' 	);
+		$this->loader->add_action( 'admin_enqueue_scripts', 						$plugin_admin, 'enqueue_scripts_cb' 				);
+		$this->loader->add_action( 'admin_enqueue_scripts', 						$plugin_admin, 'enqueue_styles_cb' 					);
 	}
 
 	private function define_public_hooks() {

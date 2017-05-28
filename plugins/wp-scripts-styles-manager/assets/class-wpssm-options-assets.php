@@ -27,14 +27,14 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 	private $sizes;
 
 	public function __construct( $args ) {
-		WPSSM_Debug::log('*** In WPSSM_Options_Assets __construct ***' );		
+		PHP_Debug::log('*** In WPSSM_Options_Assets __construct ***' );		
   	$this->hydrate_args( $args );	
 		$opt_proto = array( 
 									'pages'=>array(), 
 									'scripts'=>array(), 
 									'styles'=>array());	
 		parent::__construct( self::OPT_KEY, $opt_proto );
-		WPSSM_Debug::log('In WPSSM_Options_Assets __construct() $this->get() ', $this->get() );
+		PHP_Debug::log('In WPSSM_Options_Assets __construct() $this->get() ', $this->get() );
 	}
 		
 	
@@ -45,7 +45,7 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 			Whether the original value or the one after modification          
 	---------------------------------------------------------------------*/
 	public function get_field( $type, $handle, $field) {
-		WPSSM_Debug::log('In WPSSM_Options_Assets get_value() ' . $type . ' ' . $handle . ' ' . $field);
+		PHP_Debug::log('In WPSSM_Options_Assets get_value() ' . $type . ' ' . $handle . ' ' . $field);
 		$value = false;
 		$asset = $this->get( $type, $handle );
 //		if ( $get == false ) 
@@ -56,7 +56,7 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 			elseif ( isset( $asset[$field] )) 
 				$value = $asset[$field];
 		}
-		WPSSM_Debug::log('In WPSSM_Options_Assets get() after ', $get);
+		PHP_Debug::log('In WPSSM_Options_Assets get() after ', $get);
 		return $value;
 	}
 	
@@ -123,16 +123,16 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 		$val='';
 		$input = $this->get_input_name($type, $handle, $field);
 		if ( ( isset($_POST[ $input ] ) ) && ( $_POST[ $input ] != $this->get($type,$handle,$field) ) ) {
-			WPSSM_Debug::log( 'Asset field modified (mods) !' , $this->get($type,$handle) );
-			//WPSSM_Debug::log( 'input name', $input );
-			//WPSSM_Debug::log( 'POST content for this field',$_POST[ $input ] );
+			PHP_Debug::log( 'Asset field modified (mods) !' , $this->get($type,$handle) );
+			//PHP_Debug::log( 'input name', $input );
+			//PHP_Debug::log( 'POST content for this field',$_POST[ $input ] );
 			$val = esc_html($_POST[ $input ]);
 			$this->set_mod_field($type,$handle,$field,$val);
 			$is_mod=true;
 		}
 		else {
 			$this->unset_mod( $type, $handle, $field );
-			WPSSM_Debug::log( 'Mod Field removed !' , $this->get($type,$handle) );
+			PHP_Debug::log( 'Mod Field removed !' , $this->get($type,$handle) );
 		}
 		return array('modified' => $is_mod, 'value' =>$val);
 	}
@@ -179,21 +179,21 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 			$minify = $this->get_field( $type, $handle, 'minify');
 			$size = $this->get_field( $type, $handle, 'size');
 			$score = ( $location == 'header' )?1000:0;
-			//WPSSM_Debug::log(array('base after location'=>$score));
+			//PHP_Debug::log(array('base after location'=>$score));
 			$score += ( $size >= $this->sizes['large'] )?500:0; 	
 			$score += ( ($minify == 'no') && ( $size != 0 ))?200:0;
-			//WPSSM_Debug::log(array('base after minify'=>$score));
+			//PHP_Debug::log(array('base after minify'=>$score));
 			$score += ( $size <= $this->sizes['small'] )?100:0; 	
-			//WPSSM_Debug::log(array('base after size'=>$score));
+			//PHP_Debug::log(array('base after size'=>$score));
 			if ( $size >= $this->sizes['large'] ) 
 				$normalizer = $this->sizes['max'];
 			elseif ( $size <= $this->sizes['small'] )
 				$normalizer = $this->sizes['small'];
 			else 
 				$normalizer = $this->sizes['large'];
-			//WPSSM_Debug::log(array('normalizer'=>$normalizer));
+			//PHP_Debug::log(array('normalizer'=>$normalizer));
 			$score += $size/$normalizer*100; 	
-			//WPSSM_Debug::log(array('score'=>$score));
+			//PHP_Debug::log(array('score'=>$score));
 		}
 		else 
 			$score = 0;
@@ -204,7 +204,7 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 	public function update_dependants( $type, $handle ) {
 		$dependencies = $this->get_field( $type, $handle, 'dependencies');
 		foreach ($dependencies as $dep_handle) {
-			//WPSSM_Debug::log(array('dependencies loop : '=>$dep_handle));
+			//PHP_Debug::log(array('dependencies loop : '=>$dep_handle));
 			$this->add( $handle, $type, $dep_handle, 'dependents' );
 		}	
 	}

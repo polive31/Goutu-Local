@@ -25,12 +25,12 @@ abstract class WPSSM_Options {
 	// Only populate the initial $asset prototype with $id option existing values 
 	public function get_opt( $id, $asset ) {
 		$get_option = get_option( $id );
-		//WPSSM_Debug::log('In WPSSM_Options $get_option', $get_option);
+		//PHP_Debug::log('In WPSSM_Options $get_option', $get_option);
 		if ( $get_option!=false ) {
-			//WPSSM_Debug::log('In WPSSM hydrate_opt get_option', $get_option);
+			//PHP_Debug::log('In WPSSM hydrate_opt get_option', $get_option);
 			if ( is_array($get_option) ) {
 				foreach ($get_option as $key=>$value) {
-					//WPSSM_Debug::log('In WPSSM hydrate_opt array loop key = ' . $key . ' value ', $value );
+					//PHP_Debug::log('In WPSSM hydrate_opt array loop key = ' . $key . ' value ', $value );
 					if ( is_array($value) )
 						foreach ($value as $key1=>$value1) {$asset[$key][$key1]=$value1;}
 					else 
@@ -40,7 +40,8 @@ abstract class WPSSM_Options {
 			else
 				$asset = $get_option;
 		}
-		//WPSSM_Debug::log('In WPSSM_Options get_opt option=' . $id, $asset);
+		PHP_Debug::trace('In WPSSM_Options get_opt option=' . $id . ' $get_option = ', $get_option );
+		PHP_Debug::trace('In WPSSM_Options get_opt option=' . $id . ' $asset = ', $asset );
 		return $asset;
 	}
 	
@@ -62,7 +63,7 @@ abstract class WPSSM_Options {
 	}
 	
 	public function get( $field=false, $subfield=false ) {
-		//WPSSM_Debug::log( ' In WPSSM_Assets get() ' );
+		//PHP_Debug::log( ' In WPSSM_Assets get() ' );
 		$get = false;
 		if ($field == false) {
 			if ( isset( $this->asset ) ) $get=$this->asset;			
@@ -73,12 +74,12 @@ abstract class WPSSM_Options {
 		elseif ( isset( $this->asset[$field][$subfield] ) ) {
 			$get=$this->asset[$field][$subfield]; 
 		}
-		//WPSSM_Debug::log( ' In WPSSM_Assets get() ' . $field . ' ' . $subfield, $get);
+		//PHP_Debug::log( ' In WPSSM_Assets get() ' . $field . ' ' . $subfield, $get);
 		return $get;
 	}
 	
 	public function set( $value, $field1=false, $field2=false, $field3=false, $field4=false ) {
-		WPSSM_Debug::log( '*** In ' . get_class($this) . ' set() ***' );
+		PHP_Debug::log( '*** In ' . get_class($this) . ' set() ***' );
 		$set = false;
 		if ( $field1==false) {
 			$this->asset = $value;
@@ -104,7 +105,7 @@ abstract class WPSSM_Options {
 			$this->asset[$field1][$field2][$field3][$field4] = $value; 
 			$set = true;			
 		}		
-		WPSSM_Debug::log( ' Set result $this->asset ', $this->asset);
+		PHP_Debug::log( ' Set result $this->asset ', $this->asset);
 		return $set;
 	}	
 	

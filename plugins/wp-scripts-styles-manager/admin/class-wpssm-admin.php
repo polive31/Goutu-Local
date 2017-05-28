@@ -31,7 +31,7 @@ class WPSSM_Admin {
 	protected $Output;														
 
 	public function __construct( $args ) {
-		WPSSM_Debug::log('*** In WPSSM_Admin __construct ***' );		
+		PHP_Debug::log('*** In WPSSM_Admin __construct ***' );		
   	$this->args = $args;									
   	$this->hydrate_args( $args );		
 	}														
@@ -45,20 +45,20 @@ class WPSSM_Admin {
 	}
 		
 	public function init_admin_cb() {
-		WPSSM_Debug::log( 'In WPSSM_Admin init_admin_cb()' );								
+		PHP_Debug::log( 'In WPSSM_Admin init_admin_cb()' );								
 		if ( !is_admin() ) return;
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-assets.php' ;				
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-assets-display.php' ;		
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-output.php' ;	
 	
-		$this->Assets = 	new WPSSM_Assets_Display( array( 'groupby'=> 'location' ) );									
+		$this->Assets = 	new WPSSM_Assets_Display( $this->args );									
 		$this->Output = 	new WPSSM_Admin_Output( $this->Assets, 	$this->args);
 
 		// Initialize options settings 
 		$this->page = $this->get_page_structure( $this->get_tab() );
 
 		// Prepare assets to display
-		WPSSM_Debug::log('In WPSSM_Admin init_admin(), $this->get_tab()', $this->get_tab() );	
+		PHP_Debug::log('In WPSSM_Admin init_admin(), $this->get_tab()', $this->get_tab() );	
 		$this->init_settings( $this->page );						
 	}
 
@@ -198,7 +198,7 @@ class WPSSM_Admin {
 ----------------------------------------------------------*/
 
 	public function add_plugin_menu_option_cb() {
-		WPSSM_Debug::log('In add_plugin_menu_option_cb');								
+		PHP_Debug::log('In add_plugin_menu_option_cb');								
 		$page_id = add_submenu_page(
       $this->plugin_submenu,
       'WP Scripts & Styles Manager',
@@ -212,7 +212,7 @@ class WPSSM_Admin {
 	}
 	
 	public function load_option_page_cb() {
-		//WPSSM_Debug::log('In load_option_page_cb function');
+		//PHP_Debug::log('In load_option_page_cb function');
 		if (isset ( $_GET['msg'] ) )
 			add_action( 'admin_notices', array ( $this->Output, 'admin_notice_cb' ) );
 	}
@@ -223,11 +223,11 @@ class WPSSM_Admin {
 ----------------------------------------------------------*/
 	
 	public function init_settings( $page ) {
-			WPSSM_Debug::log('In WPSSM_Admin init_settings');
-			WPSSM_Debug::log('=> $this->settings_pages_structure[$this->get_tab()]', $page);
+			PHP_Debug::log('In WPSSM_Admin init_settings');
+			PHP_Debug::log('=> $this->settings_pages_structure[$this->get_tab()]', $page);
 	    // register all settings, sections, and fields
     	foreach ( $page['sections'] as $section ) {
-    		WPSSM_Debug::log('register loop - sections', $section );
+    		PHP_Debug::log('register loop - sections', $section );
 				add_settings_section(
 	        $section['slug'],
 	        $section['title'],
@@ -235,7 +235,7 @@ class WPSSM_Admin {
 	        $page['slug']
 	    	);	
     		foreach ($section['fields'] as $field => $settings) {
-    			WPSSM_Debug::log('register loop - fields', array($field => $settings));
+    			PHP_Debug::log('register loop - fields', array($field => $settings));
     			register_setting($section['slug'], $settings['slug']);
     			if (isset($settings['stats'])) {
     				$count=$this->Assets->get_group_stat($field, 'count');

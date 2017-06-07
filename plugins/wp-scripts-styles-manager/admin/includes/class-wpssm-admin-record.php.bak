@@ -22,27 +22,21 @@ class WPSSM_Admin_Record {
 		$this->Assets = new WPSSM_Options_Assets( $args );
   }
   
-
-
 /* RECORDING CALLBACKS 
 ----------------------------------------------------*/
 	public function record_header_assets_cb() {
 		PHP_Debug::log('In record header assets cb');
-		$this->Assets->record( false );
+		$this->record( false );
 	}
 
 	public function record_footer_assets_cb() {
 		PHP_Debug::log('In record footer assets cb');
-		$this->Assets->record( true );
+		$this->record( true );
 	}
-	
-	
-	
 
 /* RECORDING FUNCTIONS
 -----------------------------------------------------------*/
-  
-
+ 
 	public function record( $in_footer ) {
 		PHP_Debug::log('In record enqueued assets');
 		global $wp_scripts;

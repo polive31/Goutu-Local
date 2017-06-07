@@ -17,44 +17,38 @@ class WPSSM_Admin_Record {
  	private $Assets;
  	 	
   public function __construct( $args ) {
-		PHP_Debug::log('*** In WPSSM_Admin_Record __construct ***' );		  	
+		PHP_Debug::trace('*** In WPSSM_Admin_Record __construct ***' );		  	
   	$this->hydrate_args( $args );	
 		$this->Assets = new WPSSM_Options_Assets( $args );
   }
   
-
-
 /* RECORDING CALLBACKS 
 ----------------------------------------------------*/
 	public function record_header_assets_cb() {
-		PHP_Debug::log('In record header assets cb');
+		PHP_Debug::trace('In record header assets cb');
 		$this->record( false );
 	}
 
 	public function record_footer_assets_cb() {
-		PHP_Debug::log('In record footer assets cb');
+		PHP_Debug::trace('In record footer assets cb');
 		$this->record( true );
 	}
-	
-	
-	
 
 /* RECORDING FUNCTIONS
 -----------------------------------------------------------*/
-  
-
+ 
 	public function record( $in_footer ) {
-		PHP_Debug::log('In record enqueued assets');
+		PHP_Debug::trace('In record enqueued assets');
 		global $wp_scripts;
 		global $wp_styles;
 
 		/* Select data source depending whether in header or footer */
 		if ($in_footer) {
-			//PHP_Debug::log('FOOTER record');
-			//PHP_Debug::log(array( '$header_scripts' => $this->header_scripts ));
+			//PHP_Debug::trace('FOOTER record');
+			//PHP_Debug::trace(array( '$header_scripts' => $this->header_scripts ));
 			$scripts=array_diff( $wp_scripts->done, $this->header_scripts );
 			$styles=array_diff( $wp_styles->done, $this->header_styles );
-			//PHP_Debug::log(array('$source'=>$source));
+			//PHP_Debug::trace(array('$source'=>$source));
 		}
 		else {
 			$page_info = array(get_permalink(), current_time( 'mysql' ));
@@ -63,10 +57,10 @@ class WPSSM_Admin_Record {
 			$styles=$wp_styles->done;
 			$this->header_scripts = $scripts;
 			$this->header_styles = $styles;
-			//PHP_Debug::log('HEADER record');
-			//PHP_Debug::log(array('$source'=>$source));
+			//PHP_Debug::trace('HEADER record');
+			//PHP_Debug::trace(array('$source'=>$source));
 		}
-	  //PHP_Debug::log(array('assets before update' => $this->opt_enqueued_assets));
+	  //PHP_Debug::trace(array('assets before update' => $this->opt_enqueued_assets));
 				
 		$assets = array(
 			'scripts'=>array(
@@ -77,10 +71,10 @@ class WPSSM_Admin_Record {
 					'registered'=> $wp_styles->registered),
 		);
 				
-		PHP_Debug::log( array( '$assets' => $assets ) );		
+		PHP_Debug::trace( array( '$assets' => $assets ) );		
 			
 		foreach( $assets as $type=>$asset ) {
-			PHP_Debug::log( $type . ' recording');		
+			PHP_Debug::trace( $type . ' recording');		
 					
 			foreach( $asset['handles'] as $index => $handle ) {
 				$obj = $asset['registered'][$handle];
@@ -88,7 +82,7 @@ class WPSSM_Admin_Record {
 				$this->Assets->store( $type, $handle, $obj, $location );
 			}
 		}
-	  PHP_Debug::log(array('assets after update' => $this->opt_enqueued_assets));
+	  PHP_Debug::trace(array('assets after update' => $this->opt_enqueued_assets));
 	  if ( $in_footer )	$this->Assets->update_opt();
 	}
 

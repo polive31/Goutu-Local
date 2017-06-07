@@ -186,8 +186,8 @@ class Custom_Recipe_Templates {
 				}
 			}
 			
-			elseif ( is_page( ['nouvelle-recette', 'mes-recettes'] ) ) {
-			 $js_enqueue = js_enqueue;
+			elseif ( is_page( ['nouvelle-recette', 'mes-recettes'] ) || is_admin() ) {
+			 $js_enqueue = $js_enqueue;
 			}
 			
 			else {

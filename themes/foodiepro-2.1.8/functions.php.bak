@@ -277,9 +277,9 @@ function custom_load_custom_style_sheet() {
 	//wp_enqueue_style( 'font-awesome', CHILD_THEME_URL . '/assets/fonts/font-awesome/css/font-awesome.min.css', array(), CHILD_THEME_VERSION );
 	//wp_enqueue_style( 'google-font-ruge', '//fonts.googleapis.com/css?family=Ruge+Boogie:400', array(), CHILD_THEME_VERSION );
 	//wp_enqueue_style( 'google-font-crafty-girls', '//fonts.googleapis.com/css?family=Crafty+Girls', array(), CHILD_THEME_VERSION );
-	//wp_enqueue_style( 'google-font-sacramento', '//fonts.googleapis.com/css?family=Sacramento', array(), CHILD_THEME_VERSION );
+	wp_enqueue_style( 'google-font-sacramento', '//fonts.googleapis.com/css?family=Delius', array(), CHILD_THEME_VERSION );
+	//wp_enqueue_style( 'google-font-delius', '//fonts.googleapis.com/css?family=Delius', array(), CHILD_THEME_VERSION, true );
 	wp_enqueue_style( 'google-font-delius-swash-caps', '//fonts.googleapis.com/css?family=Delius+Swash+Caps', array(), CHILD_THEME_VERSION, true );
-	wp_enqueue_style( 'google-font-delius', '//fonts.googleapis.com/css?family=Delius', array(), CHILD_THEME_VERSION, true );
 	wp_enqueue_style( 'google-font-lobstertwo', '//fonts.googleapis.com/css?family=Lobster+Two', array(), CHILD_THEME_VERSION, true );
 }
 
@@ -293,10 +293,10 @@ function use_minified_stylesheet( $default_stylesheet_uri ) {
 //	$min_mod_date = filemtime( $stylesheet_path );
 //	$orig_mod_date = filemtime( $default_stylesheet_path );
 //	if ( file_exists( $stylesheet_path ) && ($min_mod_date >= $orig_mod_date) ) {
-//		PHP_Debug::log::log( 'Minified stylesheet exist and is valid' );
+//		PHP_Debug::log( 'Minified stylesheet exist and is valid' );
 //		return $stylesheet_uri;	
 //	}
-//	PHP_Debug::log::log( 'Minified stylesheet doesn t exist or too old' );
+//	PHP_Debug::log( 'Minified stylesheet doesn t exist or too old' );
 //	return $default_stylesheet_uri;	
 }
 
@@ -417,7 +417,7 @@ function execute_php($html){
 add_filter('rpwe_after_thumbnail', 'wprpe_add_rating', 10, 2);
 function wprpe_add_rating($output, $args ) {
 		$disp_rating = substr($args['cssID'],1,1);
-		//PHP_Debug::log::log( array('WPRPE Output add rating'=>$output) );
+		//PHP_Debug::log( array('WPRPE Output add rating'=>$output) );
 		if ( $disp_rating == '1') {
 			$output .= '<div class="rpwe-title">' . do_shortcode('[display-star-rating display="minimal" category="global"]') . '</div>';
 		}
@@ -481,9 +481,9 @@ function display_debug_info() {
 
 		$post_id = get_the_id();
 
-		PHP_Debug::log::log( 'In foodiepro functions.php' );		
+		PHP_Debug::log( 'In foodiepro functions.php' );		
 		$output = get_post_meta( $post_id , '' , true);
-		PHP_Debug::log::log( 'get_post_meta( $post_id ) : ',$output);
+		PHP_Debug::log( 'get_post_meta( $post_id ) : ',$output);
 
 		//$output = get_post_meta( $post_id, 'user_ratings' );
 		//PC:debug(array('user_ratings : '=> $output) );

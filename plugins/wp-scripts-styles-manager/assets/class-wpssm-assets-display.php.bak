@@ -16,6 +16,7 @@ class WPSSM_Assets_Display extends WPSSM_Options_Assets {
 
 	/* Class arguments */
 	private $groupby;
+	private $sizes;
 	
 	/* Filter & sort array functions arguments */
 	private $display_fields = array( 'handle', 'filename', 'version', 'dependencies', 'dependents', 'location', 'minify', 'size', 'group', 'priority');

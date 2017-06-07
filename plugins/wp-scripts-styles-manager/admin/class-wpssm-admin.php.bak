@@ -36,14 +36,6 @@ class WPSSM_Admin {
   	$this->hydrate_args( $args );		
 	}														
 														
-	public function enqueue_styles_cb() {
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wpssm-admin.css', array(), $this->plugin_version, 'all' );
-	}
-
-	public function enqueue_scripts_cb() {
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wpssm-admin.js', array( 'jquery' ), $this->plugin_version, false );
-	}
-		
 	public function init_admin_cb() {
 		PHP_Debug::log( 'In WPSSM_Admin init_admin_cb()' );								
 		if ( !is_admin() ) return;
@@ -51,7 +43,7 @@ class WPSSM_Admin {
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-assets-display.php' ;		
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-output.php' ;	
 	
-		$this->Assets = 	new WPSSM_Assets_Display( array( 'groupby'=> 'location' ) );									
+		$this->Assets = 	new WPSSM_Assets_Display( $this->args );									
 		$this->Output = 	new WPSSM_Admin_Output( $this->Assets, 	$this->args);
 
 		// Initialize options settings 
@@ -208,7 +200,8 @@ class WPSSM_Admin {
       array($this, 'output_options_page_cb' )
 	    );
 	  /* Add hook for admin notice display on page load */  
-		add_action( "load-$page_id", array( $this, 'load_option_page_cb' ) );
+		add_action( "load-$page_id", 								array( $this, 'load_option_page_cb' ) );
+		add_action( "admin_print_scripts-$page_id", array( $this, 'enqueue_admin_scripts_cb' ) );
 	}
 	
 	public function load_option_page_cb() {
@@ -217,7 +210,11 @@ class WPSSM_Admin {
 			add_action( 'admin_notices', array ( $this->Output, 'admin_notice_cb' ) );
 	}
 
-
+	public function enqueue_admin_scripts_cb() {
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wpssm-admin.css', array(), $this->plugin_version, 'all' );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wpssm-admin.js', array( 'jquery' ), $this->plugin_version, false );
+	}
+		
 
 /* SETTINGS INIT FOR OPTION PAGES
 ----------------------------------------------------------*/

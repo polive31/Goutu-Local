@@ -22,7 +22,7 @@ class WPSSM_Admin_Output {
  	private $Assets;
   
   public function __construct( WPSSM_Options_Assets $assets, $args ) {
-		PHP_Debug::log('*** In WPSSM_Admin_Output __construct ***' );		  	
+		PHP_Debug::trace('*** In WPSSM_Admin_Output __construct ***' );		  	
   	$this->hydrate_args( $args );
   	$this->Assets = $assets;
   	$this->type = $this->Assets->get_display_attr('type');
@@ -68,7 +68,7 @@ class WPSSM_Admin_Output {
 	    <tr>
 				<input type="hidden" name="action" value="<?php echo $this->form_action; ?>">
 				<?php		
-				PHP_Debug::log( 'In WPSSM_Admin_Output Nonce : ' . $this->nonce . ' Action : ' . $this->form_action );
+				PHP_Debug::trace( 'In WPSSM_Admin_Output Nonce : ' . $this->nonce . ' Action : ' . $this->form_action );
 				wp_nonce_field( $this->form_action, $this->nonce, FALSE ); 
 				?>
 				<input type="hidden" name="_wpssm_http_referer" value="<?php echo $referer; ?>">
@@ -88,7 +88,7 @@ class WPSSM_Admin_Output {
 /* COMMON 
 --------------------------------------------------------------------*/
 	public function section_headline( $section ) {
-		//PHP_Debug::log('In section callback');
+		//PHP_Debug::trace('In section callback');
 	}
     
 
@@ -97,7 +97,7 @@ class WPSSM_Admin_Output {
 --------------------------------------------------------------------*/
 	public function pages_list() {
 		if ( $this->type != 'general') return false;
-		//PHP_Debug::log('In WPSSM_Output pages_list(), $this->Assets ', $this->Assets->get_assets('pages') );
+		//PHP_Debug::trace('In WPSSM_Output pages_list(), $this->Assets ', $this->Assets->get_assets('pages') );
 		foreach ($this->Assets->get('pages') as $page) {
 			echo '<p>' . $page[0] . ' on ' . $page[1] . '</p>';
 		}
@@ -117,7 +117,7 @@ class WPSSM_Admin_Output {
 	
 
 	public function toggle_switch( $input_name, $value ) {
-		PHP_Debug::log( 'in output toggle switch for ' . $input_name , $value);
+		PHP_Debug::trace( 'in output toggle switch for ' . $input_name , $value);
 		$checked = ( $value == 'on')?'checked="checked"':'';
 		?>
 		<label class="switch">
@@ -149,11 +149,11 @@ class WPSSM_Admin_Output {
 
 	public function items_list( $location ) {
 		$sort_list = $this->Assets->get_sort_list( $location );
-		PHP_Debug::log('In WPSSM_Output items_list() $sorted_list : ', $sort_list);			
+		PHP_Debug::trace('In WPSSM_Output items_list() $sorted_list : ', $sort_list);			
 		?><table class="enqueued-assets"><?php
 			$this->item_headline();
 	    foreach ($sort_list as $handle => $priority ) {
-				PHP_Debug::log('Asset in WPSSM_Output->items_list() loop for ' . $location . ' : ', $handle );			
+				PHP_Debug::trace('Asset in WPSSM_Output->items_list() loop for ' . $location . ' : ', $handle );			
 				$this->item_content( $location, $handle );  
 	    }
     ?></table><?php
@@ -233,9 +233,9 @@ class WPSSM_Admin_Output {
 	private function asset_notice( $handle ) {
 		
 		$size= $this->Assets->get_field( $this->type, $handle, 'size');
-		//PHP_Debug::log(array('size : '=>$size));
+		//PHP_Debug::trace(array('size : '=>$size));
 		$is_minified = $this->Assets->get_field( $this->type, $handle, 'minify') == 'yes';
-		//PHP_Debug::log(array('is_minified: '=>$is_minified));
+		//PHP_Debug::trace(array('is_minified: '=>$is_minified));
 		$in_footer = ( $this->Assets->get_field( $this->type, $handle, 'location') == 'footer');
 		
 		$this->reset_asset_notice();

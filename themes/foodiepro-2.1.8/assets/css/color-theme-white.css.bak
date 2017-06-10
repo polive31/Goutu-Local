@@ -2,32 +2,87 @@
 --------------------------------------------- */
 
 body {
-  background:#eaa05f;
+  background:#ffffff;
 }
 
 .site-container {
-	background:#ecc485;
+	background-color:#ffffff;
 }
 
 .site-title a {
-	background:url("../images/header_goutu_transparent_360_150.png") no-repeat center;
+	background:url("../../images/header_goutu_transparent_h75.png") no-repeat center;
 }
 
 .home-page .site-title a {
-	background:url("../images/header_goutu_transparent_450_190.png") no-repeat center;
+	background:url("../../images/header_goutu_transparent_450_190.png") no-repeat center;
 }
 
-.footer-widgets {
-	background:#f5f5f5;
+h1.entry-title,
+.entry-title a,
+.sidebar .widgettitle a,
+.widgettitle  {
+	color:#000;
 }
+
 
 .home-bottom .widgettitle {
 	border-bottom:1px solid #ccc;
 }
 
+.img-menu a .menu-title span,
 a.more-link,
 .more-from-category a {
 	background:#f5f5f5;
+}
+
+
+.img-menu:hover a .menu-title span,
+a.more-link:hover,
+.more-from-category a:hover {
+	/*background:#da5c00;
+  background:#923e00;
+  background:#e08800;*/
+  background:#63584b;
+	color:#fff;
+}
+
+.top5 .rpwe-block {
+	background-color:#f4f4f4;
+}
+
+.footer-widgets,
+.recipes-top, 
+.blogs-top,
+.archives-top,
+html body .wpurp-container .add-picture-link {
+	background-color:#f5f5f5!important; /* important needed because of WPURP override	*/
+}
+
+
+/* Text area specific formatting */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+optgroup,
+textarea,
+.search-form input {
+	background-color:#fff6e7;/* background-color important, pas background car conflit avec autre setting plus loin*/
+}
+
+select {
+    background-color:#fefefe;
+}
+
+/* WIDGETS 
+-------------------------------------------------------*/
+
+
+.sidebar-primary .widget.themes {
+	border: 1px dashed #ccc;
+}
+
+.widget_nav_menu.themes ul li {
+	background-color:#f8f8f8;	
 }
 
 input, select, textarea,
@@ -35,77 +90,64 @@ input, select, textarea,
 	border:1px solid #ccc;
 }
 
-a.more-link:hover,
-.more-from-category a:hover {
-	background:#010101;
-	color:#fff;
-}
-
-.search-form input {
-	background:url('../images/search.png') center right no-repeat;
-	background-color:#FFF;
-}
-
-.top5 .rpwe-block {
-	background-color:#f4f4f4;
+.widget.themes ul li,
+.single .widget.themes ul li {
+	background-color:#fcfcfc;	
 }
 
 .widget.back ul li {
 	background-color:#fafafa;	
 }
 
-.widget_nav_menu.themes ul li {
-	background-color:#f8f8f8;	
-}
-
-.rating:before {
-	  color:gold;
-}
-
-.rating:after {
-	  color:#ddd;
-}
-
-.recipes-top, 
-.blogs-top,
-.archives-top,
-html body .wpurp-container .add-picture-link {
-	background:#f5f5f5!important; 
-}
-
-.widget.themes ul li {
-	background-color:#fcfcfc;	
-}
-
-.widget.themes ul li:hover {
+.single .widget.themes ul li:hover,
+.widget.themes ul li:hover,
+.widget.back ul li:hover {
 	background-color:#fefefe;	
 }
 
-.single .widget.themes ul li,
-.widget.themes ul li.current-menu-item {
-  background-color:#fff;
+.widget.themes ul li.current-menu-item,
+.archive-pagination li.active {
+	background-color:#fefefe;
 }
 
-.wpurp-recipe-ingredients {
-	background-color:#EFEFEF;
+.recipes-bottom .rpwe_widget .widget-wrap,
+.blogs-bottom .rpwe_widget .widget-wrap {
+	/*background-color:#f5f5f5;*/
 }
+
+
+/* MENU 
+--------------------------------------------*/
+
+
+
+
+/* ARCHIVES 
+--------------------------------------------*/
 
 .archive-pagination li {
 	border:1px solid #ccc;
 }
 
-.archive-pagination li.active {
-  background: #CCC;
-}
-
-.frontier-list-item {
-	border-color:#ccc;
-}
-
-.archive .entry-header a.entry-image-link img,
-.search .entry-header a.entry-image-link img {
+/*.archive .entry-header a.entry-image-link img,
+.search .entry-header a.entry-image-link img,*/
+/*.content a.rpwe-img img,*/
+a.entry-image-link img {
 	border:5px solid #CCC;
 }
+
+/*.content a.rpwe-img:hover img,*/
+a.entry-image-link:hover img {
+	border-color:#fff;
+}
+
+/* MISC 
+--------------------------------------------*/
+
+.frontier-list-item {
+	border-color:#aaa;
+}
+
 
 /* MEDIA QUERIES 
 --------------------------------------------*
@@ -116,7 +158,7 @@ html body .wpurp-container .add-picture-link {
 
 	.site-title a,
 	.home .site-title a {
-		background:url("../images/header_goutu_transparent_360_150.png") no-repeat center;
+		background:url("../../images/header_goutu_transparent_360_150.png") no-repeat center;
 	}
 	
 }
@@ -128,7 +170,7 @@ html body .wpurp-container .add-picture-link {
  
 	.site-title a,
 	.home .site-title a {
-		background:url("images/header_goutu_transparent_720_300.png") no-repeat center;
+		background:url("../../images/header_goutu_transparent_720_300.png") no-repeat center;
 		background-size:contain;
 	} 	
 

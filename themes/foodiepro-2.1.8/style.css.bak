@@ -608,7 +608,7 @@ h3.rpwe-title a {
 .tagcloud a {
   border-top:5px solid #000;
   /*font-family:"PT Sans Narrow","Helvetica Neue",sans-serif;*/
-  font-family:"Delius", cursive !important;
+  font-family:"Delius Swash Caps", cursive !important;
 }
 
 /* Widgets */
@@ -1174,7 +1174,8 @@ img.avatar#square,
 /* WordPress misc
 --------------------------------------------- */
 
-.search-form {
+.search-form input {
+	background:url('../images/search.png') center right no-repeat;
 }
 
 .search-form input[type="submit"] {

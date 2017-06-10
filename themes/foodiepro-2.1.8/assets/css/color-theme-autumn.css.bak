@@ -25,6 +25,11 @@ h1.entry-title,
 	color:#000;
 }
 
+
+.home-bottom .widgettitle {
+	border-bottom:1px solid #d6bc95;
+}
+
 .img-menu a .menu-title span,
 a.more-link,
 .more-from-category a {
@@ -58,8 +63,8 @@ html body .wpurp-container .add-picture-link {
 	background-color:#ddc3a3!important; /* important needed because of WPURP override	*/
 }
 
-.home-bottom .widgettitle {
-	border-bottom:1px solid #d6bc95;
+.widget_nav_menu.themes ul li {
+	background-color:#f8f8f8;	
 }
 
 /* Text area specific formatting */
@@ -76,9 +81,13 @@ select {
     background-color:#ffedd0;
 }
 
+/* WIDGETS 
+-------------------------------------------------------*/
+
 input, select, textarea,
 .widget.back ul li {
-	border:1px solid #aaa;
+	/*border:1px solid #aaa;*/
+	border:1px solid #cebca6;
 }
 
 .widget.themes ul li,
@@ -101,12 +110,17 @@ input, select, textarea,
 	background-color:#fff6e7;
 }
 
-.archive-pagination li {
-	border:1px solid #aaa;
+.recipes-bottom .rpwe_widget .widget-wrap,
+.blogs-bottom .rpwe_widget .widget-wrap {
+	background:#ddc3a3;
 }
 
-.frontier-list-item {
-	border-color:#aaa;
+
+/* ARCHIVES 
+--------------------------------------------*/
+
+.archive-pagination li {
+	border:1px solid #aaa;
 }
 
 /*.archive .entry-header a.entry-image-link img,
@@ -122,9 +136,16 @@ a.entry-image-link:hover img {
 	border-color:#fff;
 }
 
+/* MISC 
+--------------------------------------------*/
+
+.frontier-list-item {
+	border-color:#aaa;
+}
+
 
 /* MEDIA QUERIES 
---------------------------------------------*
+--------------------------------------------*/
 
 /* Smartphone */
 @media only screen 

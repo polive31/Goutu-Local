@@ -1174,7 +1174,8 @@ img.avatar#square,
 /* WordPress misc
 --------------------------------------------- */
 
-.search-form {
+.search-form input {
+	background:url('../images/search.png') center right no-repeat;
 }
 
 .search-form input[type="submit"] {
@@ -1534,11 +1535,6 @@ form[role="search"] {
 	padding:0px;
 }
 
-.recipes-bottom .rpwe_widget .widget-wrap,
-.blogs-bottom .rpwe_widget .widget-wrap
- {
-	background:#ddc3a3;
-}
 
 /* Text Widget Display
 --------------------------------------------- */

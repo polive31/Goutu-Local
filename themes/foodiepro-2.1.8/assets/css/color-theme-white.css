@@ -104,18 +104,18 @@ input, select, textarea,
 
 .widget.themes ul li,
 .single .widget.themes ul li {
-	background-color:#fcfcfc;	
+	background-color:#e0dfdf;	
 }
 
 .single .widget.themes ul li:hover,
 .widget.themes ul li:hover,
 .widget.back ul li:hover {
-	background-color:#fefefe;	
+	background-color:#f1f0f0;	
 }
 
 .widget.themes ul li.current-menu-item,
 .archive-pagination li.active {
-	background-color:#fefefe;
+	background-color:#f1f0f0;
 }
 
 .recipes-bottom .rpwe_widget .widget-wrap,

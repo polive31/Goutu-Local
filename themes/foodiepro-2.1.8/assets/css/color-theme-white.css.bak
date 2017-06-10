@@ -96,25 +96,26 @@ input, select, textarea,
 /* Widget top5 */
 
 .top5 .rpwe-block {
-	background-color:#f4f4f4;
+	/*background-color:#f4f4f4;*/
+	border : 1px dashed #CCC;
 }
 
 /* Widget themes */
 
 .widget.themes ul li,
 .single .widget.themes ul li {
-	background-color:#fcfcfc;	
+	background-color:#d0d0d0;	
 }
 
 .single .widget.themes ul li:hover,
 .widget.themes ul li:hover,
 .widget.back ul li:hover {
-	background-color:#fefefe;	
+	background-color:#f1f0f0;	
 }
 
 .widget.themes ul li.current-menu-item,
 .archive-pagination li.active {
-	background-color:#fefefe;
+	background-color:#f1f0f0;
 }
 
 .recipes-bottom .rpwe_widget .widget-wrap,

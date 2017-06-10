@@ -10,11 +10,11 @@ body {
 }
 
 .site-title a {
-	background:url("../../images/header_goutu_transparent_h75.png") no-repeat center;
+	background:url("../../images/logo_goutu_transparent_h75.png") no-repeat center;
 }
 
 .home-page .site-title a {
-	background:url("../../images/header_goutu_transparent_450_190.png") no-repeat center;
+	background:url("../../images/logo_goutu_transparent_450_190.png") no-repeat center;
 }
 
 h1.entry-title,
@@ -46,9 +46,6 @@ a.more-link:hover,
 	color:#fff;
 }
 
-.top5 .rpwe-block {
-	background-color:#f4f4f4;
-}
 
 .footer-widgets,
 .recipes-top, 
@@ -66,7 +63,7 @@ input[type="password"],
 optgroup,
 textarea,
 .search-form input {
-	background-color:#fff6e7;/* background-color important, pas background car conflit avec autre setting plus loin*/
+	background-color:#fefefe;/* background-color important, pas background car conflit avec autre setting plus loin*/
 }
 
 select {
@@ -90,13 +87,23 @@ input, select, textarea,
 	border:1px solid #ccc;
 }
 
-.widget.themes ul li,
-.single .widget.themes ul li {
-	background-color:#fcfcfc;	
-}
 
 .widget.back ul li {
 	background-color:#fafafa;	
+}
+
+
+/* Widget top5 */
+
+.top5 .rpwe-block {
+	background-color:#f4f4f4;
+}
+
+/* Widget themes */
+
+.widget.themes ul li,
+.single .widget.themes ul li {
+	background-color:#fcfcfc;	
 }
 
 .single .widget.themes ul li:hover,
@@ -113,6 +120,7 @@ input, select, textarea,
 .recipes-bottom .rpwe_widget .widget-wrap,
 .blogs-bottom .rpwe_widget .widget-wrap {
 	/*background-color:#f5f5f5;*/
+	border-bottom: 1px dotted #ccc;
 }
 
 
@@ -158,7 +166,7 @@ a.entry-image-link:hover img {
 
 	.site-title a,
 	.home .site-title a {
-		background:url("../../images/header_goutu_transparent_360_150.png") no-repeat center;
+		background:url("../../images/logo_goutu_transparent_360_150.png") no-repeat center;
 	}
 	
 }
@@ -170,7 +178,7 @@ a.entry-image-link:hover img {
  
 	.site-title a,
 	.home .site-title a {
-		background:url("../../images/header_goutu_transparent_720_300.png") no-repeat center;
+		background:url("../../images/logo_goutu_transparent_720_300.png") no-repeat center;
 		background-size:contain;
 	} 	
 

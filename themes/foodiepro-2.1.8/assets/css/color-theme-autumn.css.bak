@@ -112,7 +112,7 @@ input, select, textarea,
 
 .recipes-bottom .rpwe_widget .widget-wrap,
 .blogs-bottom .rpwe_widget .widget-wrap {
-	background:#ddc3a3;
+	background-color:#ddc3a3;
 }
 
 

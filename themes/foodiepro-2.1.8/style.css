@@ -2855,7 +2855,6 @@ input#url {
 li.comment {
 	float: left;
   clear: both;
-  background-color:#ddc3a3;
 }
 
 li.comment.depth-1 {

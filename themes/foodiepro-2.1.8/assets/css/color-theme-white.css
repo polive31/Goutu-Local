@@ -138,7 +138,7 @@ input, select, textarea,
 }
 
 
-/* RECIPE 
+/* RECIPES & POSTS
 --------------------------------------------*/
 #joined-pics .add-picture-button button {
 	background:#ececec;
@@ -151,6 +151,10 @@ input, select, textarea,
 
 span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
     color: #9a9a9a;
+}
+
+li.comment {
+  background-color:#f5f5f5;
 }
 
 

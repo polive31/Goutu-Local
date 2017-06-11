@@ -126,11 +126,11 @@ input, select, textarea,
 .ingredients-container {
 	background-color :#f1b46c;
 }
-
 	
 span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
 	color:#555555;
 }
+
 /* ARCHIVES 
 --------------------------------------------*/
 

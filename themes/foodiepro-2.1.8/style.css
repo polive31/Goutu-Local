@@ -591,9 +591,6 @@ a.comment-reply-link,
 	font-family:'Lato', sans-serif;*/
 }
 
-.widgettitle {
-	font-family:'Amatic SC', cursive;
-}
 
 /* Nav menu */
 span.bp_counter,
@@ -642,6 +639,11 @@ h3.rpwe-title a {
  	font-size:18px;	  
 }
 
+
+.widgettitle {
+	font-family:'Amatic SC', cursive;
+}
+
 .fancy .widgettitle {
   font-family:"Ruge Boogie", cursive;
 	font-size:60px;
@@ -661,6 +663,10 @@ h3.rpwe-title a {
 
 .title-big-font .widgettitle {
 	font-size:50px;
+}
+
+.footer-widgets .widgettitle {
+	font-size:26px;
 }
 
 .widget.themes ul li a,
@@ -3048,10 +3054,6 @@ Footer Widgets
 
 .footer-widgets .widget {
 	margin-bottom:22px;
-}
-
-.footer-widgets .widgettitle {
-	font-size:16px;
 }
 
 .footer-widgets li {

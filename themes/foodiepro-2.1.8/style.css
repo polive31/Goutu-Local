@@ -1624,7 +1624,7 @@ form[role="search"] {
 	padding:5px;
 	margin:5px 10px;
 	border:1px solid transparent;
-	border-radius:10px;
+	/*border-radius:10px;*/
 }
 
 .widget.themes ul li:before,

@@ -70,17 +70,27 @@ select {
     background-color:#fefefe;
 }
 
+
+/* STAR RATING 
+-------------------------------------------------------*/
+/* Icons colors */
+
+i.fa.fa-star,
+i.fa.fa-star-half-o {
+	color:#f5a241;
+}
+i.fa.fa-star-o {
+	color:#d3d3d3;
+}
+.full i.fa.fa-star-o {
+	color:#f18b14;
+}
+
+
 /* WIDGETS 
 -------------------------------------------------------*/
 
 
-.sidebar-primary .widget.themes {
-	border: 1px dashed #ccc;
-}
-
-.widget_nav_menu.themes ul li {
-	background-color:#f8f8f8;	
-}
 
 input, select, textarea,
 .widget.back ul li {
@@ -102,9 +112,14 @@ input, select, textarea,
 
 /* Widget themes */
 
+.sidebar-primary .widget.themes {
+	/*border: 1px dashed #ccc;*/
+}
+
+.widget_nav_menu.themes ul li,
 .widget.themes ul li,
 .single .widget.themes ul li {
-	background-color:#e0dfdf;	
+	/*background-color:#e0dfdf;	*/
 }
 
 .single .widget.themes ul li:hover,
@@ -115,7 +130,9 @@ input, select, textarea,
 
 .widget.themes ul li.current-menu-item,
 .archive-pagination li.active {
-	background-color:#f1f0f0;
+  background-color: #f7f7f7;
+  border-top: 1px dashed;
+  border-bottom: 1px dashed;
 }
 
 .recipes-bottom .rpwe_widget .widget-wrap,

@@ -652,7 +652,7 @@ h3.rpwe-title a {
 
 .elegant .widgettitle {
   /*font-family:"Delius Swash Caps", cursive;*/
-  font-family:"Nixie One", serif;
+  font-family:"Amatic SC", cursive;
 	font-size:50px;
   color:#222;
   font-weight:normal;

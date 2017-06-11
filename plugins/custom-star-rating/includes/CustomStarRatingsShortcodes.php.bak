@@ -252,7 +252,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		foreach (self::$ratingCats as $id => $cat) {?>
 		
 		<tr>
-		<td class="rating-title"><?php echo __($cat['question'],'custom-star-rating');?></td>
+		<td align="left" class="rating-title"><?php echo __($cat['question'],'custom-star-rating');?></td>
 		<td align="left"><?php echo $this -> output_rating_form( $id );?></td>
 		</tr>
 		
@@ -262,7 +262,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		</table>
 		
 		<div class="comment-reply">
-		<label for="comment"><?php echo _x( 'Comment', 'noun' );?></label>
+		<label for="comment"><?php echo _x('Add a comment','custom-star-rating' );?></label>
 		<textarea id="comment" name="comment" cols="50" rows="6" aria-required="true"></textarea>
 		</div>
 
@@ -294,14 +294,3 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-

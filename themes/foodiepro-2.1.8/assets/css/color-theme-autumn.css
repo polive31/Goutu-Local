@@ -81,6 +81,14 @@ select {
     background-color:#ffedd0;
 }
 
+/* POPUP MAKER
+-------------------------------------------------------*/
+.pum-container {
+	background-color : #FFFFFF!important;
+}
+
+
+
 /* WIDGETS 
 -------------------------------------------------------*/
 

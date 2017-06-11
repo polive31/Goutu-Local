@@ -86,6 +86,12 @@ i.fa.fa-star-o {
 	color:#f18b14;
 }
 
+/* POPUP MAKER
+-------------------------------------------------------*/
+.pum-container {
+	background-color : blue!important;
+}
+
 
 /* WIDGETS 
 -------------------------------------------------------*/
@@ -154,7 +160,7 @@ span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
 }
 
 li.comment {
-  background-color:#ddc3a3;
+  background-color:#f5f5f5;
 }
 
 

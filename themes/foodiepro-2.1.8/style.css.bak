@@ -649,7 +649,7 @@ h1.entry-title {
 
 /* Recipes & ingredients */
 
-.single-recipe h3 {
+.single h3 {
   font-size: 30px;
   font-family: "Amatic SC";
 }
@@ -1942,11 +1942,11 @@ Custom Page Templates
 	background-position-y:10px!important;
 }
 
-.pum-title {
-	font-family:"PT Sans Narrow","Helvetica Neue",sans-serif!important;
-	margin:20px 0px 50px 110px;
-	text-transform:uppercase!important;	
-	font-size:26px!important;	
+.pum-title {		
+	font-family: "Amatic SC", sans-serif!important;
+  margin: 20px 0px 50px 110px;
+  text-transform: uppercase!important;
+  font-size: 44px!important;
 }
 
 .pum-content.popmake-content li {
@@ -2901,7 +2901,7 @@ li.comment a {
 
 .comment-reply label {
 	display:block;
-	margin-right:12px;
+	margin:0 0 10px 0;
 }
 
 .comment .avatar {

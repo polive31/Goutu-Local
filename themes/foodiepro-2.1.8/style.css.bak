@@ -639,7 +639,7 @@ h1.entry-title {
 	font-family:"Nixie One", sans-serifs;
   text-decoration: none;
 	text-transform: none;
-	font-size:45px;
+	font-size:40px;
 }
 
 /*.recipe h1.entry-title {
@@ -1407,7 +1407,7 @@ h3.share-title {
 .recipes-top .widgettitle, 
 .blogs-top .widgettitle,
 .archives-top .widgettitle  {
-	font-size:14px; 
+	font-size:24px; 
 	margin-bottom:0;
 }
 
@@ -2004,7 +2004,7 @@ Custom Page Templates
 --------------------------------------------- */
 
 .home-top {
-	margin:0 auto;
+	margin: 30px 0 0 0;
 	max-width:680px;
 }
 

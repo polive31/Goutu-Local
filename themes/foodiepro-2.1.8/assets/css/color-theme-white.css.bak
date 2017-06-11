@@ -104,7 +104,7 @@ input, select, textarea,
 
 .widget.themes ul li,
 .single .widget.themes ul li {
-	background-color:#d0d0d0;	
+	background-color:#e0dfdf;	
 }
 
 .single .widget.themes ul li:hover,

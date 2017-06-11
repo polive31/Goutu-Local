@@ -70,6 +70,23 @@ select {
     background-color:#fefefe;
 }
 
+
+/* STAR RATING 
+-------------------------------------------------------*/
+/* Icons colors */
+
+i.fa.fa-star,
+i.fa.fa-star-half-o {
+	color:#f5a241;
+}
+i.fa.fa-star-o {
+	color:#d3d3d3;
+}
+.full i.fa.fa-star-o {
+	color:#f18b14;
+}
+
+
 /* WIDGETS 
 -------------------------------------------------------*/
 

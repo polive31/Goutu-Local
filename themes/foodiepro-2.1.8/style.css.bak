@@ -262,7 +262,6 @@ a.comment-reply-link,
 	text-decoration:none;
 	background-image:none;
 	padding:5px;
-	font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;
 }
 
 /* Text area and selec specific formatting */
@@ -561,24 +560,39 @@ input[type="search"] {
 Defaults
 ---------------------------------------------------------------------------------------------------- */
 
-/* Fonts
+/* FONTS 
 --------------------------------------------- */
 
 body {
-	/*font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;*/
-	font-family:'Oswald', Helvetica, Arial, sans-serif;
+	font-family:'Lato', sans-serif;
+	font-size : 18px;
+	color:#333;
+	font-weight:300;
+	line-height:1.625;	
 }
 
+button,
 input,
+optgroup,
 select,
 textarea,
+.button,
+a.button,
+a.black-button, 
+ul.wpuf-form li .wpuf-fields a.file-selector, 
+a.comment-reply-link,
+.frontier-list-item-content#frontier-post-actions a,
 .wp-caption-text,
 .site-description,
 .entry-meta,
 .post-info,
-.post-meta {
-	font-family:'Droid Serif', georgia, serif;
+.post-meta,
+.widgettitle {
+	/*font-family:'Droid Serif', georgia, serif;*/
+	font-family:'Amatic SC', cursive;
+	/*font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;*/
 }
+
 
 /* Nav menu */
 span.bp_counter,
@@ -592,6 +606,14 @@ span.bp_counter,
 
 .mega-menu-toggle a[class^='fa']:before {
 	font-family:FontAwesome;
+}
+
+/* Headlines */
+h1.entry-title {
+	font-family:"Amatic SC", sans-serifs;
+  text-decoration: none;
+	text-transform:capitalize;
+	font-size:65px;
 }
 
 /* Recipes & ingredients */
@@ -612,12 +634,32 @@ h3.rpwe-title a {
 }
 
 /* Widgets */
+
+.textwidget {
+  /*font-family:"Droid Sans", sans-serif;*/
+  font-family:"Lato", sans-serif;
+ 	font-size:18px;	  
+}
+
 .fancy .widgettitle {
   font-family:"Ruge Boogie", cursive;
+	font-size:60px;
+  font-weight:normal;
+  text-transform:none;
+  color:#222;
 }
 
 .elegant .widgettitle {
-  font-family:"Lobster Two", cursive;
+  /*font-family:"Delius Swash Caps", cursive;*/
+  font-family:"Amatic SC", cursive;
+	font-size:50px;
+  color:#222;
+  font-weight:normal;
+  text-transform:none;  
+}
+
+.title-big-font .widgettitle {
+	font-size:50px;
 }
 
 .widget.themes ul li a,
@@ -626,16 +668,8 @@ h3.rpwe-title a {
 }
 
 
-
 /* Typographical Elements 
 --------------------------------------------- */
-
-body {
-	color:#333;
-	font-weight:300;
-	font-size:15px;
-	line-height:1.625;
-}
 
 a,
 button,
@@ -1283,7 +1317,6 @@ img.alignright,
 --------------------------------------------- */
 
 .entry-title {
-	font-size:28px;
 	line-height:1.2;
 	margin-bottom:5px;
 	margin-top:20px;
@@ -1330,8 +1363,8 @@ h3.share-title {
 /* Widget Titles */
 
 .widgettitle {
-  font-size:20px;
-	font-weight:300; /* P.O. Original 400 */
+  font-size:36px;
+	/* font-weight:300; P.O. Original 400 */
 	letter-spacing:1px;
 	text-align:center;
 	/*text-transform:uppercase;*/
@@ -1355,20 +1388,10 @@ h3.share-title {
 }
 
 .fancy .widgettitle {
-	font-size:60px;
-  color:#222;
-  font-weight:normal;
-  text-transform:none;
 	padding:50px 0 0 0;
   margin:10px 0;
 }
 
-.elegant .widgettitle {
-	font-size:35px;
-  color:#222;
-  font-weight:normal;
-  text-transform:none;
-}
 
 .home .elegant .widgettitle {
 	padding:20px 0 0 0;
@@ -1383,10 +1406,6 @@ h3.share-title {
 .tilde .widgettitle:after {
 	content:url(images/tilde-r.png);
 	margin-left:10px;
-}
-
-.title-big-font .widgettitle {
-	font-size:30px;
 }
 
 .sidebar .widgettitle a {
@@ -1543,8 +1562,7 @@ form[role="search"] {
 }
 
 .textwidget {
-  padding:0px 10px;
- 	font-size:17px;	   
+  padding:0px 10px; 
 }
 
 .widget.text-align-center .textwidget {
@@ -2128,7 +2146,7 @@ Custom Page Templates
 	clear:both;
 	display:block;
 	overflow:hidden;
-	padding:20px 0;
+	/*padding:20px 0*/;
 }
 
 .recipes-bottom section:nth-of-type(2),

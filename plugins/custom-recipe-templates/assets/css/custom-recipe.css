@@ -136,6 +136,7 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 /* Recipe info : rating, tags 
 -------------------------------------------------*/
 	
+	
 .info-container {
 	float:left;
 	padding-left:30px;
@@ -148,7 +149,6 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 	float:left;
 }
 
-
 .recipe-container .rating {
   font-size:24px;
 }
@@ -156,7 +156,6 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 .recipe-container span.fa-stack {
 	width: 23px;
 }
-
 
 .recipe-label {
 	float:left;
@@ -216,6 +215,11 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 	text-decoration:none;
 }
 
+.ingredients-container .entry-content ul li {
+  list-style-type: decimal;
+  display: block;
+}
+
 li.ingredient-group,
 .recipe-instruction-group {
   font-weight: bold;
@@ -239,6 +243,8 @@ li.wpurp-recipe-ingredient a:hover {
 }
 
 
+
+
 /* Instructions */
 
 ol.wpurp-recipe-instructions {
@@ -248,7 +254,6 @@ ol.wpurp-recipe-instructions {
 li.wpurp-recipe-instruction {
     margin-bottom: 10px;
 }
-
 
 
 /* Picture gallery 

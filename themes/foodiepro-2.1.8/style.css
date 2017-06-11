@@ -2483,11 +2483,7 @@ Content Area
 
 .entry-content ol li,
 .entry-content ul li {
-	margin-left:20px;
-}
-
-.entry-content ol li {
-	list-style-type:decimal;
+	margin-left:10px;
 }
 
 .entry-content ul li {

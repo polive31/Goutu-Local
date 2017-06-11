@@ -498,7 +498,7 @@ function display_debug_info() {
 		//PHP_Debug::log(array('user_ratings : '=> $output) );
 
 		//$output = get_post_meta( $post_id, 'user_rating_stats' );
-		//PC:debug(array('user_rating_stats : '=> $output) );
+		//PHP_Debug::log(array('user_rating_stats : '=> $output) );
 		
 //		delete_post_meta( $post_id, 'recipe_user_ratings' );
 //		$user_ratings_update = get_post_meta( $post_id, 'recipe_user_ratings' );

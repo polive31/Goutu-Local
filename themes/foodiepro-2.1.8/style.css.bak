@@ -2486,10 +2486,6 @@ Content Area
 	margin-left:10px;
 }
 
-.entry-content ol li {
-	list-style-type:decimal;
-}
-
 .entry-content ul li {
 	list-style-type:disc;
 }

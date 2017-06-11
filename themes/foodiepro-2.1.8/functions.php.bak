@@ -272,7 +272,7 @@ add_filter( 'foodie_pro_disable_google_fonts', '__return_true' );
 add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_syles' );
 function foodie_pro_enqueue_syles() {
 	//wp_enqueue_style( 'font-awesome', CHILD_THEME_URL . '/assets/fonts/font-awesome/css/font-awesome.min.css', array(), CHILD_THEME_VERSION );
-	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400|Snippet|Nixie+One|Lato:300|Delius+Swash+Caps', array(), CHILD_THEME_VERSION );
+	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400|Sacramento|Nixie+One|Lato:300|Delius+Swash+Caps', array(), CHILD_THEME_VERSION );
 }
 
 
@@ -295,10 +295,10 @@ function use_minified_stylesheet( $default_stylesheet_uri ) {
 //	$min_mod_date = filemtime( $stylesheet_path );
 //	$orig_mod_date = filemtime( $default_stylesheet_path );
 //	if ( file_exists( $stylesheet_path ) && ($min_mod_date >= $orig_mod_date) ) {
-//		PHP_Debug::log( 'Minified stylesheet exist and is valid' );
+//		//PHP_Debug::log( 'Minified stylesheet exist and is valid' );
 //		return $stylesheet_uri;	
 //	}
-//	PHP_Debug::log( 'Minified stylesheet doesn t exist or too old' );
+//	//PHP_Debug::log( 'Minified stylesheet doesn t exist or too old' );
 //	return $default_stylesheet_uri;	
 }
 
@@ -416,7 +416,7 @@ function execute_php($html){
 add_filter('rpwe_after_thumbnail', 'wprpe_add_rating', 10, 2);
 function wprpe_add_rating($output, $args ) {
 		$disp_rating = substr($args['cssID'],1,1);
-		//PHP_Debug::log( array('WPRPE Output add rating'=>$output) );
+		////PHP_Debug::log( array('WPRPE Output add rating'=>$output) );
 		if ( $disp_rating == '1') {
 			$output .= '<div class="rpwe-title">' . do_shortcode('[display-star-rating display="minimal" category="global"]') . '</div>';
 		}
@@ -468,8 +468,6 @@ function archive_title($title) {
 add_filter( 'genesis_post_title_output', 'archive_title', 15 );
 
 
-
-
 /* =================================================================*/
 /* =                      DEBUG
 /* =================================================================*/
@@ -480,9 +478,9 @@ function display_debug_info() {
 
 		$post_id = get_the_id();
 
-		PHP_Debug::log( 'In foodiepro functions.php' );		
+		//PHP_Debug::log( 'In foodiepro functions.php' );		
 		$output = get_post_meta( $post_id , '' , true);
-		PHP_Debug::log( 'get_post_meta( $post_id ) : ',$output);
+		//PHP_Debug::log( 'get_post_meta( $post_id ) : ',$output);
 
 		//$output = get_post_meta( $post_id, 'user_ratings' );
 		//PC:debug(array('user_ratings : '=> $output) );

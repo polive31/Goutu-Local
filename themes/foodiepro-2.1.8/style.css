@@ -634,6 +634,7 @@ span.bp_counter,
 }
 
 /* Headlines */
+h1.archive-title,
 h1.entry-title {
 	font-family:"Nixie One", sans-serifs;
   text-decoration: none;
@@ -1406,7 +1407,7 @@ h3.share-title {
 .recipes-top .widgettitle, 
 .blogs-top .widgettitle,
 .archives-top .widgettitle  {
-	font-size:14px; 
+	font-size:24px; 
 	margin-bottom:0;
 }
 
@@ -2643,7 +2644,7 @@ a.entry-image-link img {
 }
 
 a.entry-image-link:hover img {
-	opacity:0.8;
+	opacity:0.4;
 }
 
 h1.archive-title::first-letter, 

@@ -52,7 +52,8 @@ a.more-link:hover,
 .blogs-top,
 .archives-top,
 html body .wpurp-container .add-picture-link {
-	background-color:#f5f5f5!important; /* important needed because of WPURP override	*/
+    background-color: #f5f5f5!important;
+    border: 1px dashed #555;
 }
 
 
@@ -89,7 +90,7 @@ i.fa.fa-star-o {
 /* POPUP MAKER
 -------------------------------------------------------*/
 .pum-container {
-	background-color : blue!important;
+	background-color : #FFFFFF!important;
 }
 
 
@@ -171,17 +172,6 @@ li.comment {
 	border:1px solid #ccc;
 }
 
-/*.archive .entry-header a.entry-image-link img,
-.search .entry-header a.entry-image-link img,*/
-/*.content a.rpwe-img img,*/
-a.entry-image-link img {
-	border:5px solid #CCC;
-}
-
-/*.content a.rpwe-img:hover img,*/
-a.entry-image-link:hover img {
-	border-color:#fff;
-}
 
 /* MISC 
 --------------------------------------------*/

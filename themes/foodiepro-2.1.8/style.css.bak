@@ -634,6 +634,7 @@ span.bp_counter,
 }
 
 /* Headlines */
+h1.archive-title,
 h1.entry-title {
 	font-family:"Nixie One", sans-serifs;
   text-decoration: none;
@@ -1946,7 +1947,7 @@ Custom Page Templates
 	font-family: "Amatic SC", sans-serif!important;
   margin: 20px 0px 50px 110px;
   text-transform: uppercase!important;
-  font-size: 44px!important;
+  font-size: 40px!important;
 }
 
 .pum-content.popmake-content li {
@@ -2643,7 +2644,7 @@ a.entry-image-link img {
 }
 
 a.entry-image-link:hover img {
-	opacity:0.8;
+	opacity:0.4;
 }
 
 h1.archive-title::first-letter, 

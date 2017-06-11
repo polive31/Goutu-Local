@@ -41,7 +41,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 			'back' => 'false',
 		), $atts ) );
 		
-		PC::debug(' In index-link shortcode');
+		PHP_Debug::log(' In index-link shortcode');
 		
 
 		if ($back!='true'):
@@ -50,14 +50,14 @@ class CustomNavigationShortcodes extends CustomArchive {
 			$tax_id = $obj -> taxonomy;
 			$parent_id = $obj -> parent;
 			$parent = get_term_by('id', $parent_id,'cuisine');
-			//PC::debug(array('Parent id = ', $parent_id));
+			//PHP_Debug::log(array('Parent id = ', $parent_id));
 			$parent_slug = ($parent)?$parent->slug:'';
 			$parent_name = ($parent)?$parent->name:'';
-			//PC::debug(array('Parent slug = ', $parent_slug));
-			//PC::debug(array('Parent name = ', $parent_name));
+			//PHP_Debug::log(array('Parent slug = ', $parent_slug));
+			//PHP_Debug::log(array('Parent name = ', $parent_name));
 			$current_slug = $obj -> slug;
-			//PC::debug(array('Current taxonomy = ', $tax_id));
-			//PC::debug(array('Current slug = ', $current_slug));
+			//PHP_Debug::log(array('Current taxonomy = ', $tax_id));
+			//PHP_Debug::log(array('Current slug = ', $current_slug));
 
 			switch ($tax_id) {
 		    case 'course':

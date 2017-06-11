@@ -586,7 +586,7 @@ a.comment-reply-link,
 .site-description,
 .entry-meta,
 .post-info,
-.post-meta,
+.post-meta {
 	/*font-family:'Droid Serif', georgia, serif;
 	font-family:'Lato', sans-serif;*/
 }
@@ -611,10 +611,10 @@ span.bp_counter,
 
 /* Headlines */
 h1.entry-title {
-	font-family:"Amatic SC", sans-serifs;
+	font-family:"Nixie One", sans-serifs;
   text-decoration: none;
 	text-transform:capitalize;
-	font-size:55px;
+	font-size:45px;
 }
 
 /* Recipes & ingredients */

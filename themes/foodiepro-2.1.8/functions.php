@@ -476,6 +476,13 @@ add_filter( 'genesis_post_title_output', 'archive_title', 15 );
 /* =================================================================*/
 /* =                      DEBUG
 /* =================================================================*/
+if (! class_exists( 'PHP_Debug')) {
+	class PHP_Debug {
+		public function log( $msg, $var=false) {}
+		public function trace( $msg, $var=false) {}
+	}
+}
+
 
 add_action( 'genesis_before_content', 'display_debug_info' );
 function display_debug_info() {
@@ -488,10 +495,10 @@ function display_debug_info() {
 		//PHP_Debug::log( 'get_post_meta( $post_id ) : ',$output);
 
 		//$output = get_post_meta( $post_id, 'user_ratings' );
-		//PC:debug(array('user_ratings : '=> $output) );
+		//PHP_Debug::log(array('user_ratings : '=> $output) );
 
 		//$output = get_post_meta( $post_id, 'user_rating_stats' );
-		//PC:debug(array('user_rating_stats : '=> $output) );
+		//PHP_Debug::log(array('user_rating_stats : '=> $output) );
 		
 //		delete_post_meta( $post_id, 'recipe_user_ratings' );
 //		$user_ratings_update = get_post_meta( $post_id, 'recipe_user_ratings' );

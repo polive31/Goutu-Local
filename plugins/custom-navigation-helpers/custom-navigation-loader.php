@@ -19,6 +19,13 @@ if ( !defined('ABSPATH') )
 /* Main
 ------------------------------------------------------------*/
 
+//if (! class_exists( 'PHP_Debug')) {
+//	class PHP_Debug {
+//		public function log( $msg, $var=false) {}
+//		public function trace( $msg, $var=false) {}
+//	}
+//}
+
 require_once 'includes/CustomArchive.php';
 require_once 'includes/CustomArchiveHeadline.php';
 require_once 'includes/CustomNavigationShortcodes.php';

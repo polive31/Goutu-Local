@@ -14,6 +14,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+if (! class_exists( 'PHP_Debug')) {
+	class PHP_Debug {
+		public function log( $msg, $var=false) {}
+		public function trace( $msg, $var=false) {}
+	}
+}
+
 /* Plugin Management hooks
 ---------------------------------------------------------*/
 function uninstall_wpss() {

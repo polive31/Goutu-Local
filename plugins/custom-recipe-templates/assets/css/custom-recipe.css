@@ -212,8 +212,7 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 	border:1px dashed #000;
 	width:40%;
 	margin:0 30px 10px 0;
-	padding:10px 0 0 10px;
-	background-color :#f1b46c;
+	padding:10px;
 	text-decoration:none;
 }
 
@@ -238,10 +237,7 @@ li.wpurp-recipe-ingredient a {
 li.wpurp-recipe-ingredient a:hover {
 	text-decoration: underline;
 }
-	
-span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
-	color:#555555;
-}
+
 
 /* Instructions */
 
@@ -268,9 +264,8 @@ li.wpurp-recipe-instruction {
   width:75px;
   height:75px;
   font-size:12px;
-	color:#787878;
 	float:left;
-	background:#ddc3a3;
+	margin-top: 4px;	
 }
 
 #joined-pics .add-picture-button button:hover {

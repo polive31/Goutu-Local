@@ -116,6 +116,21 @@ input, select, textarea,
 }
 
 
+/* RECIPE 
+--------------------------------------------*/
+#joined-pics .add-picture-button button {
+	background:#ddc3a3;
+	color:#787878;	
+}
+
+.ingredients-container {
+	background-color :#f1b46c;
+}
+	
+span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
+	color:#555555;
+}
+
 /* ARCHIVES 
 --------------------------------------------*/
 

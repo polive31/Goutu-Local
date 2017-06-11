@@ -90,18 +90,14 @@ i.fa.fa-star-o {
 /* WIDGETS 
 -------------------------------------------------------*/
 
-
-
 input, select, textarea,
 .widget.back ul li {
 	border:1px solid #ccc;
 }
 
-
 .widget.back ul li {
 	background-color:#fafafa;	
 }
-
 
 /* Widget top5 */
 
@@ -142,10 +138,20 @@ input, select, textarea,
 }
 
 
-/* MENU 
+/* RECIPE 
 --------------------------------------------*/
+#joined-pics .add-picture-button button {
+	background:#ececec;
+	color:#787878;	
+}
 
+.ingredients-container {
+	background-color :#f5f5f5;
+}
 
+span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
+    color: #9a9a9a;
+}
 
 
 /* ARCHIVES 

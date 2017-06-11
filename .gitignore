@@ -14,8 +14,9 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
-# Windows shortcuts
+# Windows shortcuts & backup files
 *.lnk
+*.bak
 
 # =========================
 # Operating System Files
@@ -66,7 +67,7 @@ themes/foodiepro-2.1.8/images/Backup/*
 
 plugins/*
 !plugins/bp-custom.php
-!plugins/debug-custom.php
+!plugins/wp-php-debug/
 !plugins/batch-manage-posts/
 !plugins/custom-js-css-optimization/
 !plugins/wp-scripts-styles-manager/

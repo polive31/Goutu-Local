@@ -637,7 +637,7 @@ span.bp_counter,
 h1.entry-title {
 	font-family:"Nixie One", sans-serifs;
   text-decoration: none;
-	text-transform:capitalize;
+	text-transform: none;
 	font-size:45px;
 }
 
@@ -2458,7 +2458,9 @@ Content Area
 }*/
 
 .entry-avatar img {
-    margin-right:10px;
+	margin-right:10px;
+	margin-top:10px;
+	margin-bottom: 0;    
 }
 
 .entry-content .attachment a,

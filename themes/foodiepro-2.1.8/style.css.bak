@@ -637,7 +637,7 @@ span.bp_counter,
 h1.entry-title {
 	font-family:"Nixie One", sans-serifs;
   text-decoration: none;
-	text-transform:capitalize;
+	text-transform: none;
 	font-size:45px;
 }
 
@@ -710,6 +710,10 @@ h3.rpwe-title a {
 .widget.themes ul li a,
 .widget.back ul li a {
 	font-family:"PT Sans Narrow","Helvetica Neue",sans-serif;
+	font-weight:normal;
+	letter-spacing:.5px;
+	font-size:14px;
+	text-transform:uppercase;	
 }
 
 
@@ -2455,6 +2459,7 @@ Content Area
 
 .entry-avatar img {
     margin-right:10px;
+    margin-top:10px;
 }
 
 .entry-content .attachment a,

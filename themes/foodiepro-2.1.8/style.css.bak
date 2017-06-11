@@ -587,12 +587,13 @@ a.comment-reply-link,
 .entry-meta,
 .post-info,
 .post-meta,
-.widgettitle {
 	/*font-family:'Droid Serif', georgia, serif;*/
-	font-family:'Amatic SC', cursive;
-	/*font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;*/
+	font-family:'Lato', sans-serif;
 }
 
+.widgettitle {
+	font-family:'Amatic SC', cursive;
+}
 
 /* Nav menu */
 span.bp_counter,
@@ -613,7 +614,7 @@ h1.entry-title {
 	font-family:"Amatic SC", sans-serifs;
   text-decoration: none;
 	text-transform:capitalize;
-	font-size:65px;
+	font-size:55px;
 }
 
 /* Recipes & ingredients */

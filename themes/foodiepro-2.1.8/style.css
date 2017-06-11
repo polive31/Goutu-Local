@@ -587,12 +587,13 @@ a.comment-reply-link,
 .entry-meta,
 .post-info,
 .post-meta,
-.widgettitle {
-	/*font-family:'Droid Serif', georgia, serif;*/
-	font-family:'Amatic SC', cursive;
-	/*font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;*/
+	/*font-family:'Droid Serif', georgia, serif;
+	font-family:'Lato', sans-serif;*/
 }
 
+.widgettitle {
+	font-family:'Amatic SC', cursive;
+}
 
 /* Nav menu */
 span.bp_counter,

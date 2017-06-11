@@ -263,7 +263,8 @@ li.wpurp-recipe-instruction {
   text-align:center;
   width:75px;
   height:75px;
-  font-size:12px;
+	font-family: "PT Sans Narrow",sans-serif;
+  font-size: 13px;	
 	float:left;
 	margin-top: 4px;	
 }
@@ -275,7 +276,6 @@ li.wpurp-recipe-instruction {
 #joined-pics .add-picture-button button:before {
 	/* content:"\f067"; Plus */
 	content:"+"; /* Plus */
-  font-size: 14px;
 	display:block;
 }
 

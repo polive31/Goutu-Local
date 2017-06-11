@@ -615,8 +615,8 @@ a.comment-reply-link,
 	font-family:'Lato', sans-serif;*/
 }
 
-select#recipe-ingredient {
-    font-size: 14px;
+#wpurp-search ~ select {
+	font-size: 14px;
 }
 
 /* Nav menu */
@@ -704,12 +704,16 @@ h3.rpwe-title a {
 }
 
 .footer-widgets .widgettitle {
-	font-size:26px;
+	font-family: "PT Sans Narrow",sans-serif;
+	text-transform: uppercase;
+	font-weight: normal;
+	font-size: 18px;
+	color: #555;
 }
 
 .widget.themes ul li a,
 .widget.back ul li a {
-	font-family:"PT Sans Narrow","Helvetica Neue",sans-serif;
+	font-family:"PT Sans Narrow",sans-serif;
 	font-weight:normal;
 	letter-spacing:.5px;
 	font-size:14px;

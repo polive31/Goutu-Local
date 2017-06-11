@@ -131,6 +131,12 @@ span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
 	color:#555555;
 }
 
+li.comment {
+	float: left;
+  clear: both;
+  background-color:#ddc3a3;
+}
+
 /* ARCHIVES 
 --------------------------------------------*/
 

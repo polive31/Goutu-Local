@@ -164,6 +164,8 @@ add_shortcode('bp-pending-friendship-count', 'pending_friendship_count_shortcode
 /* =               SMARTPHONE (TOGGLE) MENU ICONS                        
 /* =================================================================*/
 
+add_shortcode('toggle-icon', 'display_toggle_icon');
+
 function display_toggle_icon($atts) {
 		$a = shortcode_atts( array(
   			'item' => 'profile', // id, pseudo, name
@@ -220,7 +222,6 @@ function display_toggle_icon($atts) {
 		
 	return $html;
 }
-add_shortcode('toggle-icon', 'display_toggle_icon');
 
 
 

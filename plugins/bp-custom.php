@@ -189,6 +189,31 @@ function remove_xprofile_links() {
 //define( 'BP_FORUMS_SLUG', 'discuss' );
 
 
+/* =================================================================*/
+/* =    EXCLUDE ADMIN FROM MEMBERS DIRECTORY & SEARCH
+/* =================================================================*/
+
+function custom_bp_core_get_users($users, $params) {
+
+	//$users_ids_to_hide = array(1, 40);
+	$users_roles_to_hide = array('administrator');
+
+	if (isset($users['users'])) {
+		foreach($users['users'] as $user_idx => $user) {
+			//if (in_array($user->ID, $users_ids_to_hide) !== false) {
+			if (in_array($user->roles[0], $users_roles_to_hide) !== false) {
+				unset($users['users'][$user_idx]);
+			}
+		}
+		$users['users'] = array_values($users['users']);
+		$users['total'] = count($users['users']);
+	}
+
+	return $users;
+}
+add_filter( 'bp_core_get_users', 'custom_bp_core_get_users', 10, 2 );
+
+
  
 /* =================================================================*/
 /* =     BP-DEPENDANT AVATAR MGT FUNCTIONS  

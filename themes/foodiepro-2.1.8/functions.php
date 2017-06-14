@@ -300,10 +300,10 @@ function use_minified_stylesheet( $default_stylesheet_uri ) {
 //	$min_mod_date = filemtime( $stylesheet_path );
 //	$orig_mod_date = filemtime( $default_stylesheet_path );
 //	if ( file_exists( $stylesheet_path ) && ($min_mod_date >= $orig_mod_date) ) {
-//		//PHP_Debug::log( 'Minified stylesheet exist and is valid' );
+//		//foodiepro_log( 'Minified stylesheet exist and is valid' );
 //		return $stylesheet_uri;	
 //	}
-//	//PHP_Debug::log( 'Minified stylesheet doesn t exist or too old' );
+//	//foodiepro_log( 'Minified stylesheet doesn t exist or too old' );
 //	return $default_stylesheet_uri;	
 }
 
@@ -421,7 +421,7 @@ function execute_php($html){
 add_filter('rpwe_after_thumbnail', 'wprpe_add_rating', 10, 2);
 function wprpe_add_rating($output, $args ) {
 		$disp_rating = substr($args['cssID'],1,1);
-		////PHP_Debug::log( array('WPRPE Output add rating'=>$output) );
+		////foodiepro_log( array('WPRPE Output add rating'=>$output) );
 		if ( $disp_rating == '1') {
 			$output .= '<div class="rpwe-title">' . do_shortcode('[display-star-rating display="minimal" category="global"]') . '</div>';
 		}
@@ -476,11 +476,13 @@ add_filter( 'genesis_post_title_output', 'archive_title', 15 );
 /* =================================================================*/
 /* =                      DEBUG
 /* =================================================================*/
-if (! class_exists( 'PHP_Debug')) {
-	class PHP_Debug {
-		public function log( $msg, $var=false) {}
-		public function trace( $msg, $var=false) {}
-	}
+
+function foodiepro_log($msg,$var=false) {
+	if (class_exists( 'PHP_Debug')) PHP_Debug::log($msg, $var);
+}
+
+function foodiepro_trace($msg,$var=false) {
+	if (class_exists( 'PHP_Debug')) PHP_Debug::trace($msg, $var);
 }
 
 
@@ -490,15 +492,15 @@ function display_debug_info() {
 
 		$post_id = get_the_id();
 
-		//PHP_Debug::log( 'In foodiepro functions.php' );		
+		//foodiepro_log( 'In foodiepro functions.php' );		
 		$output = get_post_meta( $post_id , '' , true);
-		//PHP_Debug::log( 'get_post_meta( $post_id ) : ',$output);
+		//foodiepro_log( 'get_post_meta( $post_id ) : ',$output);
 
 		//$output = get_post_meta( $post_id, 'user_ratings' );
-		//PHP_Debug::log(array('user_ratings : '=> $output) );
+		//foodiepro_log(array('user_ratings : '=> $output) );
 
 		//$output = get_post_meta( $post_id, 'user_rating_stats' );
-		//PHP_Debug::log(array('user_rating_stats : '=> $output) );
+		//foodiepro_log(array('user_rating_stats : '=> $output) );
 		
 //		delete_post_meta( $post_id, 'recipe_user_ratings' );
 //		$user_ratings_update = get_post_meta( $post_id, 'recipe_user_ratings' );

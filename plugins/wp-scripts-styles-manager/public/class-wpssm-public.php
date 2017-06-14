@@ -13,12 +13,12 @@ class WPSSM_Public {
 
 	/* Methods */
 	public function __construct() {
-		PHP_Debug::trace('*** In WPSSM_Public __construct ***' );		
+		//PHP_Debug::trace('*** In WPSSM_Public __construct ***' );		
 	}		
 	
 	public function init_public_cb() {
 		if ( is_admin() ) return;
-		PHP_Debug::trace('*** In WPSSM_Public init_plugin_cb ***' );
+		//PHP_Debug::trace('*** In WPSSM_Public init_plugin_cb ***' );
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options.php' ;	
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-mods.php' ;	
 		$this->Mods = new WPSSM_Options_Mods;
@@ -30,9 +30,9 @@ class WPSSM_Public {
 	
 	public function add_async_tag_cb( $tag, $handle, $src ) { 
 		if ( is_admin() ) return;
-		PHP_Debug::trace('in script_loader_trag => add_async_tag_cb' );
+		//PHP_Debug::trace('in script_loader_trag => add_async_tag_cb' );
 		if ( $this->Mods->is_async( $handle ) ) {
-			PHP_Debug::trace('in add_async_tag_cb : async found for ' . $handle );
+			//PHP_Debug::trace('in add_async_tag_cb : async found for ' . $handle );
 	    $tag='<script src="' . $src . '" async type="text/javascript"></script>' . "\n";
 		}
 		return $tag;
@@ -40,7 +40,7 @@ class WPSSM_Public {
 	
 	public function apply_scripts_mods_cb() {
 		if ( is_admin() ) return;
-		PHP_Debug::trace('In apply_scripts_mods_cb');
+		//PHP_Debug::trace('In apply_scripts_mods_cb');
 		global $wp_scripts;
 		$scripts = $wp_scripts->registered;
 		//PHP_Debug::trace('In apply_scripts_mods_cb : registered scripts ',$scripts);
@@ -54,9 +54,9 @@ class WPSSM_Public {
 		foreach ( $this->Mods->get( 'scripts', 'footer' ) as $handle) {
 				// continue in case a script was recorded but disappeared in between - plugin uninstalled for instance
 			if (!isset($scripts[$handle])) continue;
-//				PHP_Debug::trace('In footer enqueue loop, src for handle ' . $handle, $scripts[$handle]->src);
-//				PHP_Debug::trace('In footer enqueue loop, deps for handle ' . $handle, $scripts[$handle]->deps);
-//				PHP_Debug::trace('In footer enqueue loop, ver for handle ' . $handle, $scripts[$handle]->ver);
+//				//PHP_Debug::trace('In footer enqueue loop, src for handle ' . $handle, $scripts[$handle]->src);
+//				//PHP_Debug::trace('In footer enqueue loop, deps for handle ' . $handle, $scripts[$handle]->deps);
+//				//PHP_Debug::trace('In footer enqueue loop, ver for handle ' . $handle, $scripts[$handle]->ver);
 		
 			wp_deregister_script( $handle );
 			wp_register_script( $handle, 
@@ -70,7 +70,7 @@ class WPSSM_Public {
 		
 	public function apply_styles_mods_cb() {
 		if ( is_admin() ) return;
-		PHP_Debug::trace('In apply_styles_mods_cb');
+		//PHP_Debug::trace('In apply_styles_mods_cb');
 		//PHP_Debug::trace('In apply_styles_mods_cb : mods ',$this->opt_mods['styles']);
 		global $wp_styles;
 		$styles = $wp_styles->registered;
@@ -86,10 +86,10 @@ class WPSSM_Public {
 	
 	function enqueue_footer_styles_cb() {
 		if ( is_admin() ) return;
-		PHP_Debug::trace('In enqueue_footer_styles_cb');
+		//PHP_Debug::trace('In enqueue_footer_styles_cb');
 		global $wp_styles;
 		$styles = $wp_styles->registered;
-		PHP_Debug::trace('In enqueue_footer_styles_cb : styles ',$styles);
+		//PHP_Debug::trace('In enqueue_footer_styles_cb : styles ',$styles);
 		foreach ( $this->Mods->get( 'styles', 'footer' ) as $handle) {
 			if (!isset($styles[$handle])) continue;
   		wp_enqueue_style( $handle, 

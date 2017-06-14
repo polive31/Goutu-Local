@@ -31,13 +31,13 @@ class WPSSM_Admin {
 	protected $Output;														
 
 	public function __construct( $args ) {
-		PHP_Debug::trace('*** In WPSSM_Admin __construct ***' );		
+		//PHP_Debug::trace('*** In WPSSM_Admin __construct ***' );		
   	$this->args = $args;									
   	$this->hydrate_args( $args );		
 	}														
 														
 	public function init_admin_cb() {
-		PHP_Debug::trace( 'In WPSSM_Admin init_admin_cb()' );								
+		//PHP_Debug::trace( 'In WPSSM_Admin init_admin_cb()' );								
 		if ( !is_admin() ) return;
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-assets.php' ;				
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-assets-display.php' ;		
@@ -50,7 +50,7 @@ class WPSSM_Admin {
 		$this->page = $this->get_page_structure( $this->get_tab() );
 
 		// Prepare assets to display
-		PHP_Debug::trace('In WPSSM_Admin init_admin(), $this->get_tab()', $this->get_tab() );	
+		//PHP_Debug::trace('In WPSSM_Admin init_admin(), $this->get_tab()', $this->get_tab() );	
 		$this->init_settings( $this->page );						
 	}
 
@@ -190,7 +190,7 @@ class WPSSM_Admin {
 ----------------------------------------------------------*/
 
 	public function add_plugin_menu_option_cb() {
-		PHP_Debug::trace('In add_plugin_menu_option_cb');								
+		//PHP_Debug::trace('In add_plugin_menu_option_cb');								
 		$page_id = add_submenu_page(
       $this->plugin_submenu,
       'WP Scripts & Styles Manager',
@@ -220,11 +220,11 @@ class WPSSM_Admin {
 ----------------------------------------------------------*/
 	
 	public function init_settings( $page ) {
-			PHP_Debug::trace('In WPSSM_Admin init_settings');
-			PHP_Debug::trace('=> $this->settings_pages_structure[$this->get_tab()]', $page);
+			//PHP_Debug::trace('In WPSSM_Admin init_settings');
+			//PHP_Debug::trace('=> $this->settings_pages_structure[$this->get_tab()]', $page);
 	    // register all settings, sections, and fields
     	foreach ( $page['sections'] as $section ) {
-    		PHP_Debug::trace('register loop - sections', $section );
+    		//PHP_Debug::trace('register loop - sections', $section );
 				add_settings_section(
 	        $section['slug'],
 	        $section['title'],
@@ -232,7 +232,7 @@ class WPSSM_Admin {
 	        $page['slug']
 	    	);	
     		foreach ($section['fields'] as $field => $settings) {
-    			PHP_Debug::trace('register loop - fields', array($field => $settings));
+    			//PHP_Debug::trace('register loop - fields', array($field => $settings));
     			register_setting($section['slug'], $settings['slug']);
     			if (isset($settings['stats'])) {
     				$count=$this->Assets->get_group_stat($field, 'count');

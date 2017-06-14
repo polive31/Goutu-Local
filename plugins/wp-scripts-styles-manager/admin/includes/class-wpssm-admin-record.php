@@ -17,7 +17,7 @@ class WPSSM_Admin_Record {
  	private $Assets;
  	 	
   public function __construct( $args ) {
-		PHP_Debug::trace('*** In WPSSM_Admin_Record __construct ***' );		  	
+		//PHP_Debug::trace('*** In WPSSM_Admin_Record __construct ***' );		  	
   	$this->hydrate_args( $args );	
 		$this->Assets = new WPSSM_Options_Assets( $args );
   }
@@ -25,12 +25,12 @@ class WPSSM_Admin_Record {
 /* RECORDING CALLBACKS 
 ----------------------------------------------------*/
 	public function record_header_assets_cb() {
-		PHP_Debug::trace('In record header assets cb');
+		//PHP_Debug::trace('In record header assets cb');
 		$this->record( false );
 	}
 
 	public function record_footer_assets_cb() {
-		PHP_Debug::trace('In record footer assets cb');
+		//PHP_Debug::trace('In record footer assets cb');
 		$this->record( true );
 	}
 
@@ -38,7 +38,7 @@ class WPSSM_Admin_Record {
 -----------------------------------------------------------*/
  
 	public function record( $in_footer ) {
-		PHP_Debug::trace('In record enqueued assets');
+		//PHP_Debug::trace('In record enqueued assets');
 		global $wp_scripts;
 		global $wp_styles;
 
@@ -71,10 +71,10 @@ class WPSSM_Admin_Record {
 					'registered'=> $wp_styles->registered),
 		);
 				
-		PHP_Debug::trace( array( '$assets' => $assets ) );		
+		//PHP_Debug::trace( array( '$assets' => $assets ) );		
 			
 		foreach( $assets as $type=>$asset ) {
-			PHP_Debug::trace( $type . ' recording');		
+			//PHP_Debug::trace( $type . ' recording');		
 					
 			foreach( $asset['handles'] as $index => $handle ) {
 				$obj = $asset['registered'][$handle];
@@ -82,7 +82,7 @@ class WPSSM_Admin_Record {
 				$this->Assets->store( $type, $handle, $obj, $location );
 			}
 		}
-	  PHP_Debug::trace(array('assets after update' => $this->opt_enqueued_assets));
+	  //PHP_Debug::trace(array('assets after update' => $this->opt_enqueued_assets));
 	  if ( $in_footer )	$this->Assets->update_opt();
 	}
 

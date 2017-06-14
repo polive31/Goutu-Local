@@ -73,8 +73,8 @@ class WPSSM_Admin {
 	}
 	
 	public function load_admin_assets_cb() {
-		PHP_Debug::log('In load_admin_assets_cb');
-		//PHP_Debug::log( plugins_url( '/css/wpssm_options_page.css', __FILE__ ) );
+		wpssm_log('In load_admin_assets_cb');
+		//wpssm_log( plugins_url( '/css/wpssm_options_page.css', __FILE__ ) );
   	wp_enqueue_style( 'wpssm_admin_css', plugins_url( '../admin/css/wpssm_options_page.css', __FILE__ ) , false, self::WPSSM_VERSION );
   	wp_enqueue_script( 'wpssm_admin_js', plugins_url( '../admin/js/wpssm_options_page.js', __FILE__ ) , array('jquery'), self::WPSSM_VERSION );
 	}
@@ -213,7 +213,7 @@ class WPSSM_Admin {
 		$this->active_tab = isset( $_GET[ 'tab' ] ) ? esc_html($_GET[ 'tab' ]) : 'general';
 		// Prepare assets to disply
 		if ($this->active_tab != 'general') $this->prepare_displayed_assets($this->active_tab);
-		PHP_Debug::log('In hydrate admin, $this->displayed_assets', $this->displayed_assets);								
+		wpssm_log('In hydrate admin, $this->displayed_assets', $this->displayed_assets);								
 	}
 
 	

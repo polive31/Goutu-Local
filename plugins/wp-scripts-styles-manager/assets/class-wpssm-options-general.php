@@ -19,7 +19,7 @@ class WPSSM_Options_General extends WPSSM_Options {
 	private $plugin_version;
 	
 	public function __construct( $args ) {
-		PHP_Debug::trace('*** In WPSSM_Options_General __construct ***' );
+		//PHP_Debug::trace('*** In WPSSM_Options_General __construct ***' );
 		$this->hydrate_args( $args );	
 		$this->opt_proto = array(
 									'record'=>'off', 
@@ -35,14 +35,14 @@ class WPSSM_Options_General extends WPSSM_Options {
 	---------------------------------------*/
 
 	public function update_from_post() {
-		PHP_Debug::trace('In WPSSM_Options_General update_from_post' );
+		//PHP_Debug::trace('In WPSSM_Options_General update_from_post' );
 		foreach ($this->opt_proto as $setting=>$value) {
 			$name = 'general_' . $setting . '_checkbox';
 			if ( isset($_POST[ $name ]) )
 				$value = $_POST[ $name ];
 			else 
 				$value='off';
-			PHP_Debug::trace('In WPSSM_Options_General update_from_post loop ' . $setting . ' = ' . $value  );
+			//PHP_Debug::trace('In WPSSM_Options_General update_from_post loop ' . $setting . ' = ' . $value  );
 			$this->set( $value, $setting );
 		}			
 	}

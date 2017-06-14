@@ -13,7 +13,7 @@ class WPSSM_Options_Mods extends WPSSM_Options {
 	const OPT_KEY = 'wpssm_mods';
 						
 	public function __construct( $args ) {
-		PHP_Debug::log('*** In WPSSM_Options_Mods __construct ***' );
+		wpssm_log('*** In WPSSM_Options_Mods __construct ***' );
 		$this->hydrate_args( $args );			
 		$opt_proto = array(
 						'scripts'=>array(
@@ -32,7 +32,7 @@ class WPSSM_Options_Mods extends WPSSM_Options {
 									), 						
 						);
 		parent::__construct( self::OPT_KEY, $opt_proto );
-		PHP_Debug::log('In WPSSM_Options_Mods __construct() $this->get() ', $this->get() );
+		wpssm_log('In WPSSM_Options_Mods __construct() $this->get() ', $this->get() );
 	}
 
 	/* 	Outputs empty array instead of false on missing field

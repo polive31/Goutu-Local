@@ -22,7 +22,7 @@ class WPSSM_Admin_Output {
  	private $Assets;
   
   public function __construct( WPSSM_Options_Assets $assets, $args ) {
-		PHP_Debug::trace('*** In WPSSM_Admin_Output __construct ***' );		  	
+		//PHP_Debug::trace('*** In WPSSM_Admin_Output __construct ***' );		  	
   	$this->hydrate_args( $args );
   	$this->Assets = $assets;
   	$this->type = $this->Assets->get_display_attr('type');
@@ -68,7 +68,7 @@ class WPSSM_Admin_Output {
 	    <tr>
 				<input type="hidden" name="action" value="<?php echo $this->form_action; ?>">
 				<?php		
-				PHP_Debug::trace( 'In WPSSM_Admin_Output Nonce : ' . $this->nonce . ' Action : ' . $this->form_action );
+				//PHP_Debug::trace( 'In WPSSM_Admin_Output Nonce : ' . $this->nonce . ' Action : ' . $this->form_action );
 				wp_nonce_field( $this->form_action, $this->nonce, FALSE ); 
 				?>
 				<input type="hidden" name="_wpssm_http_referer" value="<?php echo $referer; ?>">
@@ -117,7 +117,7 @@ class WPSSM_Admin_Output {
 	
 
 	public function toggle_switch( $input_name, $value ) {
-		PHP_Debug::trace( 'in output toggle switch for ' . $input_name , $value);
+		//PHP_Debug::trace( 'in output toggle switch for ' . $input_name , $value);
 		$checked = ( $value == 'on')?'checked="checked"':'';
 		?>
 		<label class="switch">
@@ -149,11 +149,11 @@ class WPSSM_Admin_Output {
 
 	public function items_list( $location ) {
 		$sort_list = $this->Assets->get_sort_list( $location );
-		PHP_Debug::trace('In WPSSM_Output items_list() $sorted_list : ', $sort_list);			
+		//PHP_Debug::trace('In WPSSM_Output items_list() $sorted_list : ', $sort_list);			
 		?><table class="enqueued-assets"><?php
 			$this->item_headline();
 	    foreach ($sort_list as $handle => $priority ) {
-				PHP_Debug::trace('Asset in WPSSM_Output->items_list() loop for ' . $location . ' : ', $handle );			
+				//PHP_Debug::trace('Asset in WPSSM_Output->items_list() loop for ' . $location . ' : ', $handle );			
 				$this->item_content( $location, $handle );  
 	    }
     ?></table><?php

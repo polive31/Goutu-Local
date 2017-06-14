@@ -8,8 +8,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	trait Utilities {
 		
 		function debug( $msg, $var ) {
-			if ( class_exists( 'PHP_Debug' ) ) {
-				PHP_Debug::trace( $msg, $var );
+			if ( class_exists( '//PHP_Debug' ) ) {
+				//PHP_Debug::trace( $msg, $var );
 			}
 		}
 		
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			foreach ($args as $key=>$value) {
 				if ( property_exists( $this,$key ) ) {
 					$this->$key = $value;
-					//WP_Debug::log( 'In hydrate_args loop ' . $key, $value);
+					//PHP_Debug::log( 'In hydrate_args loop ' . $key, $value);
 				}
 			}	
 		}
@@ -86,7 +86,7 @@ class WPSSM {
 	}
 	
 	private function init_plugin() {
-		PHP_Debug::trace('get_plugin_Settings');
+		//PHP_Debug::trace('get_plugin_Settings');
 		$this->Settings = new WPSSM_Options_General( array('plugin_version'=>self::PLUGIN_VERSION) );
 		$this->record = 	$this->Settings->get('record');
 		$this->optimize = $this->Settings->get('optimize');
@@ -101,11 +101,11 @@ class WPSSM {
 													'nonce' 					=> self::NONCE,
 													'groupby' 				=> self::DEFAULT_GROUPBY,
 													'sizes' 					=> $this->sizes );	
-		PHP_Debug::trace('$this->args', $this->args );
+		//PHP_Debug::trace('$this->args', $this->args );
 	}
 	
 	private function define_admin_post_hooks() {
-		PHP_Debug::trace('In define_admin_post_hooks');														
+		//PHP_Debug::trace('In define_admin_post_hooks');														
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-assets.php' ;			
 		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-mods.php' ;			
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/includes/class-wpssm-admin-post.php';
@@ -115,7 +115,7 @@ class WPSSM {
 	}
 	
 	private function define_admin_hooks() {
-		PHP_Debug::trace('In define_admin_hooks');														
+		//PHP_Debug::trace('In define_admin_hooks');														
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wpssm-admin.php';
 		$plugin_admin = new WPSSM_Admin( $this->args );
 		$this->loader->add_action( 'admin_menu', 												$plugin_admin, 'init_admin_cb' 							);
@@ -123,7 +123,7 @@ class WPSSM {
 	}
 
 	private function define_public_hooks() {
-		PHP_Debug::trace('In define_public_hooks'); 
+		//PHP_Debug::trace('In define_public_hooks'); 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wpssm-public.php';		
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'assets/class-wpssm-options-mods.php';		
 		$plugin_public = new WPSSM_Public();
@@ -138,7 +138,7 @@ class WPSSM {
 	}			
 		
 	public function define_record_hooks() {
-		PHP_Debug::trace('In define_record_hooks'); 
+		//PHP_Debug::trace('In define_record_hooks'); 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/includes/class-wpssm-admin-record.php';		
 		$plugin_record = new WPSSM_Admin_Record( $this->args );
 		$this->loader->add_action( 'wp', 															$plugin_record, 'init_recording' 													);

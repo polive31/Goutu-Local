@@ -22,6 +22,7 @@ define ( 'BP_AVATAR_DEFAULT', 'https://goutu.org/wp-content/themes/foodiepro-2.1
 define ( 'BP_AVATAR_DEFAULT_THUMB', 'https://goutu.org/wp-content/themes/foodiepro-2.1.8/images/cook_avatar_thumb.png' );
 
 
+
 /* =================================================================*/
 /* =             CUSTOM ACTIVATION MAIL => FONCTIONNE PAS !!!
 /* =================================================================*/
@@ -193,26 +194,25 @@ function remove_xprofile_links() {
 /* =    EXCLUDE ADMIN FROM MEMBERS DIRECTORY & SEARCH
 /* =================================================================*/
 
-function custom_bp_core_get_users($users, $params) {
+add_filter( 'bp_after_has_members_parse_args', 'buddydev_exclude_users_by_role' );
 
-	//$users_ids_to_hide = array(1, 40);
-	$users_roles_to_hide = array('administrator');
+function buddydev_exclude_users_by_role( $args ) {
+	//do not exclude in admin
+	if( is_admin() && ! defined( 'DOING_AJAX' ) ) return $args;
+	
+	$excluded = isset( $args['exclude'] )? $args['exclude'] : array();
 
-	if (isset($users['users'])) {
-		foreach($users['users'] as $user_idx => $user) {
-			//if (in_array($user->ID, $users_ids_to_hide) !== false) {
-			if (in_array($user->roles[0], $users_roles_to_hide) !== false) {
-				unset($users['users'][$user_idx]);
-			}
-		}
-		$users['users'] = array_values($users['users']);
-		$users['total'] = count($users['users']);
-	}
-
-	return $users;
+	if( !is_array( $excluded ) ) $excluded = explode(',', $excluded );
+	
+	$roles = array('administrator','pending');
+	$user_ids =  get_users( array( 'role__in' => $roles ,'fields'=>'ID') );
+	
+	$excluded = array_merge( $excluded, $user_ids );
+	
+	$args['exclude'] = $excluded;
+	
+	return $args;
 }
-add_filter( 'bp_core_get_users', 'custom_bp_core_get_users', 10, 2 );
-
 
  
 /* =================================================================*/

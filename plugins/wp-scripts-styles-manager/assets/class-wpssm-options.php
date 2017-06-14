@@ -14,7 +14,7 @@ abstract class WPSSM_Options {
 	private $prototype;
 
 	public function __construct( $option, $prototype ) {
-		PHP_Debug::trace('*** __construct ***' );
+		//PHP_Debug::trace('*** __construct ***' );
 		$this->asset = $this->get_opt( $option, $prototype );
 		$this->option = $option;
 		$this->prototype = $prototype;
@@ -27,7 +27,7 @@ abstract class WPSSM_Options {
 	public function get_opt( $id, $asset ) {
 		$get_option = get_option( $id );
 		if ( $get_option!=false ) {
-			PHP_Debug::trace('get_opt option=' . $id . ' $get_option = ', $get_option );
+			//PHP_Debug::trace('get_opt option=' . $id . ' $get_option = ', $get_option );
 			if ( is_array($get_option) ) {
 				foreach ($get_option as $key=>$value) {
 					//PHP_Debug::trace('In WPSSM hydrate_opt array loop key = ' . $key . ' value ', $value );
@@ -38,8 +38,8 @@ abstract class WPSSM_Options {
 				}
 			}
 		}
-		else PHP_Debug::trace('get_opt $get_option == false' );
-		PHP_Debug::trace('get_opt option=' . $id . ' $asset = ', $asset );
+		else //PHP_Debug::trace('get_opt $get_option == false' );
+		//PHP_Debug::trace('get_opt option=' . $id . ' $asset = ', $asset );
 		return $asset;
 	}
 	
@@ -81,7 +81,7 @@ abstract class WPSSM_Options {
 	}
 	
 	public function set( $value, $field1=false, $field2=false, $field3=false, $field4=false ) {
-		PHP_Debug::trace( '*** In ' . get_class($this) . ' set() ***' );
+		//PHP_Debug::trace( '*** In ' . get_class($this) . ' set() ***' );
 		$set = false;
 		if ( $field1==false) {
 			$this->asset = $value;
@@ -107,7 +107,7 @@ abstract class WPSSM_Options {
 			$this->asset[$field1][$field2][$field3][$field4] = $value; 
 			$set = true;			
 		}		
-		PHP_Debug::trace( ' Set result $this->asset ', $this->asset);
+		//PHP_Debug::trace( ' Set result $this->asset ', $this->asset);
 		return $set;
 	}	
 	

@@ -322,7 +322,8 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 	        $meta = WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ) != 'json' && $args['template_type'] == 'recipe' && $args['desktop'] ? ' itemprop="recipeInstructions"' : '';
 
 	        $out .= '<li class="wpurp-recipe-instruction">';
-	        $out .= '<div' . $meta . '>'.$instruction['description'].'</div>';
+	        //$out .= '<div' . $meta . '>'.$instruction['description'].'</div>';
+	        $out .= $instruction['description'];
 
 	        if( $instruction['image'] != '' ) {
 	            $thumb = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
@@ -335,11 +336,11 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 	            $alt_tag = WPUltimateRecipe::option( 'recipe_instruction_images_alt', 'attachment' ) == 'attachment' ? esc_attr( get_post_meta( $instruction['image'], '_wp_attachment_image_alt', true ) ) : esc_attr( $instruction['description'] );
 
 	            if( WPUltimateRecipe::option( 'recipe_images_clickable', '0' ) == 1 ) {
-	                $out .= '<a href="' . $full_img_url . '" rel="lightbox" title="' . $title_tag . '">';
+	                $out .= '<div><a href="' . $full_img_url . '" rel="lightbox" title="' . $title_tag . '">';
 	                $out .= '<img src="' . $thumb_url . '" alt="' . $alt_tag . '" title="' . $title_tag . '"' . '/>';
-	                $out .= '</a>';
+	                $out .= '</a></div>';
 	            } else {
-	                $out .= '<img src="' . $thumb_url . '" alt="' . $alt_tag . '" title="' . $title_tag . '"' . '/>';
+	                $out .= '<div><img src="' . $thumb_url . '" alt="' . $alt_tag . '" title="' . $title_tag . '"' . '/></div>';
 	            }
 	        }
 

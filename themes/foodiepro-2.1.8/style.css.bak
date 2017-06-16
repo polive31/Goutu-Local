@@ -659,18 +659,19 @@ h1.entry-title {
 .search h2.entry-title a,
 h3.easingslider-post-title,
 h3.rpwe-title a {
-	font-family:"Delius Swash Caps", cursive !important;
+	/*font-family:"Delius Swash Caps", cursive !important;*/
+	font-family:"Roboto slab", cursive !important;
   text-decoration: none;
 	text-transform:capitalize !important;
 }
 
+/* Widgets */
 .tagcloud a {
   border-top:5px solid #000;
-  /*font-family:"PT Sans Narrow","Helvetica Neue",sans-serif;*/
-  font-family:"Delius Swash Caps", cursive !important;
+  /*font-family:"PT Sans Narrow","Helvetica Neue",sans-serif;
+  font-family:"Delius Swash Caps", cursive !important;*/
+  font-family:"Roboto Slab", cursive !important;
 }
-
-/* Widgets */
 
 .textwidget {
   /*font-family:"Droid Sans", sans-serif;*/
@@ -714,11 +715,12 @@ h3.rpwe-title a {
 
 .widget.themes ul li a,
 .widget.back ul li a {
-	font-family:"PT Sans Narrow",sans-serif;
+	/*font-family:"PT Sans Narrow",sans-serif;*/
+	font-family:"Roboto Slab",sans-serif;
 	font-weight:normal;
 	letter-spacing:.5px;
 	font-size:14px;
-	text-transform:uppercase;	
+	text-transform:uppercase;
 }
 
 
@@ -1632,7 +1634,8 @@ form[role="search"] {
 	margin-top:auto;
 	margin-bottom:auto;
 	width: 100%;
-  margin: 0px;	
+  margin: 0px;
+	text-align:left;  	
 }
 
 /* Menu themes 
@@ -1652,8 +1655,17 @@ form[role="search"] {
 .widget.themes ul li {
 	padding:5px;
 	margin:5px 10px;
-	border:1px dashed transparent;
+	border-top:1px dashed transparent;
+	border-bottom:1px dashed transparent;
+	text-align:left; 
 	/*border-radius:10px;*/
+}
+
+.sidebar .widget.themes ul li:before {
+  content: "\f054";
+  font-family: FontAwesome;
+  font-size: 12px;
+  padding-right: 10px;
 }
 
 .widget.themes ul li:hover {
@@ -2136,7 +2148,6 @@ Custom Page Templates
 .recipes-top .widget.themes ul li.current-menu-item > a,
 .blogs-top .widget.themes ul li.current-menu-item > a {
 	color:#444;
-	text-align:center;
 }
 
 .recipes-top .widget_text.themes, 

@@ -478,32 +478,6 @@ add_filter( 'genesis_post_title_output', 'archive_title', 15 );
 /* =================================================================*/
 
 
-add_action( 'genesis_before_content', 'display_debug_info' );
-function display_debug_info() {
-	if (is_single()) {
-
-		$post_id = get_the_id();
-
-		//foodiepro_log( 'In foodiepro functions.php' );		
-		$output = get_post_meta( $post_id , '' , true);
-		//foodiepro_log( 'get_post_meta( $post_id ) : ',$output);
-
-		//$output = get_post_meta( $post_id, 'user_ratings' );
-		//foodiepro_log(array('user_ratings : '=> $output) );
-
-		//$output = get_post_meta( $post_id, 'user_rating_stats' );
-		//foodiepro_log(array('user_rating_stats : '=> $output) );
-		
-//		delete_post_meta( $post_id, 'recipe_user_ratings' );
-//		$user_ratings_update = get_post_meta( $post_id, 'recipe_user_ratings' );
-//		echo 'Recipe user ratings after deletion : ';
-//		print_r($user_ratings_update);
-
-		//echo '</pre>';			
-	}
-}
-
-
 /* =================================================================*/
 /* =                      POSTS
 /* =================================================================*/

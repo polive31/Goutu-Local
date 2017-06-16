@@ -115,8 +115,5 @@ class WPSSM_Admin_Post {
 	}
 
 	
-  
-
-	
 	
 }

@@ -63,6 +63,5 @@ class WPSSM_Options_Mods extends WPSSM_Options {
 		return in_array( $handle, parent::get( $type, 'disabled' ));
 	}
 
-
 }
 

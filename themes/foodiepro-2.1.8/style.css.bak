@@ -615,10 +615,6 @@ a.comment-reply-link,
 	font-family:'Lato', sans-serif;*/
 }
 
-#wpurp-search ~ select {
-	font-size: 14px;
-}
-
 /* Nav menu */
 span.bp_counter,
 .author-box-title {
@@ -667,11 +663,17 @@ h3.rpwe-title a {
 }
 
 /* Widgets */
-.tagcloud a,
+.tagcloud a {
+  font-family:"Roboto Slab", cursive !important;
+}
+
+
 #wpurp-search ~ select {
   /*font-family:"PT Sans Narrow","Helvetica Neue",sans-serif;
   font-family:"Delius Swash Caps", cursive !important;*/
   font-family:"Roboto Slab", cursive !important;
+	font-size: 12px;
+	font-weight:300;
 }
 
 .textwidget {
@@ -716,11 +718,13 @@ h3.rpwe-title a {
 
 .widget.themes ul li a,
 .widget.back ul li a {
-	/*font-family:"PT Sans Narrow",sans-serif;*/
-	font-family:"Roboto Slab",sans-serif;
+	/*font-family:"PT Sans Narrow",sans-serif;
+	font-family:"Roboto Slab",sans-serif;*/
+	font-family:"Amatic SC",cursive;
 	font-weight:normal;
 	letter-spacing:.5px;
-	font-size:14px;
+	font-size:24px;
+	line-height:14px;
 	text-transform:uppercase;
 }
 
@@ -3048,6 +3052,12 @@ font-size:12px;
 .sidebar .rpwe-time {
 color:#bbb;
 font-size:11px;
+}
+
+
+/* Tagcloud */
+.tagcloud a {
+	border-top:5px solid #000;
 }
 
 /*

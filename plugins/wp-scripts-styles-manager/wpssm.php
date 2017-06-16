@@ -1,4 +1,4 @@
-<?Php
+<?php
 /*
 Plugin Name: Wp Scripts & Styles Manager
 Plugin Uri: Http://Goutu.Org/Wp-Scripts-Styles-Manager

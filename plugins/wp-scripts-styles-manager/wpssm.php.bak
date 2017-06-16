@@ -1,4 +1,4 @@
-<?Php
+<?PHP
 /*
 Plugin Name: Wp Scripts & Styles Manager
 Plugin Uri: Http://Goutu.Org/Wp-Scripts-Styles-Manager
@@ -14,13 +14,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-function wpssm_log($msg,$var=false) {
-	if (class_exists( 'PHP_Debug')) Dbg::log($msg, $var=false);
-}
-
-function wpssm_trace($msg,$var=false) {
-	if (class_exists( 'PHP_Debug')) PHP_Debug::trace($msg, $var=false);
-}
+//function wpssm_log($msg,$var=false) {
+//	if (class_exists( '//PHP_Debug')) Dbg::log($msg, $var=false);
+//}
+//
+//function //PHP_Debug::trace($msg,$var=false) {
+//	if (class_exists( '//PHP_Debug')) //PHP_Debug::trace($msg, $var=false);
+//}
 
 
 /* Plugin Management hooks

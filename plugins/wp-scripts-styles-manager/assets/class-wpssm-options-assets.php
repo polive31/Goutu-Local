@@ -209,7 +209,5 @@ class WPSSM_Options_Assets extends WPSSM_Options {
 		}	
 	}
 	
-
-
 }
 

@@ -275,9 +275,15 @@ class SearchEverything {
 			$searchQuery .= $this->se_search_authors();
 		}
 
-		if ( $searchQuery != '' ) {
-            // lets use _OUR_ query instead of WP's, as we have posts already included in our query as well(assuming it's not empty which we check for)
-			$where = " AND ((" . $searchQuery . ")) ";
+//		if ( $searchQuery != '' ) {
+//            // lets use _OUR_ query instead of WP's, as we have posts already included in our query as well(assuming it's not empty which we check for)
+//			$where = " AND ((" . $searchQuery . ")) ";
+//		}
+		
+		//TODO: Hotfix! with empty search params, se_search_default()='()’
+		// leading to an invalid where clause … AND ((()))
+		if ( $searchQuery != '' && $searchQuery != '()' ) {
+			$where = ' AND ((' . $searchQuery . ')) ';
 		}
 
 		if ( $this->options['se_exclude_posts_list'] != '' ) {

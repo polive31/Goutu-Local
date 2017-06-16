@@ -1664,6 +1664,7 @@ form[role="search"] {
 
 .sidebar .widget.themes ul li:before { /* .sidebar important */
   content: "\f054";
+  content: "\f101";
   font-family: FontAwesome;
   font-size: 12px;
   padding-right: 10px;

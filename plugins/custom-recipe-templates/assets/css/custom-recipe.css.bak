@@ -242,9 +242,6 @@ li.wpurp-recipe-ingredient a:hover {
 	text-decoration: underline;
 }
 
-
-
-
 /* Instructions */
 
 ol.wpurp-recipe-instructions {

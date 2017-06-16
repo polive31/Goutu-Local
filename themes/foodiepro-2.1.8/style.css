@@ -640,6 +640,7 @@ h1.entry-title {
   text-decoration: none;
 	text-transform: none;
 	font-size:40px;
+	font-weight:100;
 }
 
 /*.recipe h1.entry-title {

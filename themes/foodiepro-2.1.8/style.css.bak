@@ -1661,7 +1661,7 @@ form[role="search"] {
 	/*border-radius:10px;*/
 }
 
-.sidebar .widget.themes ul li:before {
+.sidebar .widget.themes ul li:before { /* .sidebar important */
   content: "\f054";
   font-family: FontAwesome;
   font-size: 12px;

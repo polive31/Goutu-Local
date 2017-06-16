@@ -167,47 +167,43 @@ add_shortcode('bp-pending-friendship-count', 'pending_friendship_count_shortcode
 add_shortcode('toggle-icon', 'display_toggle_icon');
 
 function display_toggle_icon($atts) {
-		$a = shortcode_atts( array(
-  			'item' => 'profile', // id, pseudo, name
-				), $atts );
-	
-		$user_id = bp_loggedin_user_id(); 
-		
-		switch ($a['item']) {
-			
-			case "profile":
-				if ( is_user_logged_in() )
-					$html = bp_core_get_userlink( $user_id );
-				else
-					$html='<a class="dashicons-profile toggle-menu" href="' . get_page_link(7013) . '"></a>';
+	$a = shortcode_atts( array(
+			'item' => 'profile', // id, pseudo, name
+			), $atts );
+
+	$user_id = bp_loggedin_user_id(); 
+	$html = '';
+	switch ($a['item']) {
+		case "profile":
+			if ( is_user_logged_in() )
+				$html = bp_core_get_userlink( $user_id );
+			else
+				$html='<a class="dashicons-profile toggle-menu" href="' . get_page_link(7013) . '"></a>';
 			break;
-			
-			case "friends":
-				if ( is_user_logged_in() ) {
-					$count = bp_friend_get_total_requests_count( $user_id );
-					if ($count=="0"||$count=="") 
-						$count=NULL;
-					else 
-						$count = '<span class="bp_counter" id="friendships">' . $count . '</span>';
-					$html='<a class="fa-friendships toggle-menu" href="' . bp_core_get_user_domain( $user_id ) . 'friends/requests/">' . $count . '</a>';
-					/* Variant : only display latest friendship requests */
-					//$html='<a class="fa-friendships toggle-menu" href="' . bp_core_get_user_domain( $user_id ) . '/friends/requests/?new">' . $count . '</a>';
-				}
-				break;
-				
-			case "notifications":
-				if ( is_user_logged_in() ) {
-					$count = bp_notifications_get_unread_notification_count( $user_id );
-					if ($count=="0"||$count=="")
-						$count=NULL;
-					else 
-						$count = '<span class="bp_counter" id="notifications">' . $count . '</span>';
-					$html='<a class="fa-notifications toggle-menu" href="' . bp_core_get_user_domain( $user_id) . 'notifications/">' . $count . '</a>';
-				}
-				break;		
-		
-			case "events":
-				if ( is_user_logged_in() ) {
+		case "friends":
+			if ( is_user_logged_in() ) {
+				$count = bp_friend_get_total_requests_count( $user_id );
+				if ($count=="0"||$count=="") 
+					$count=NULL;
+				else 
+					$count = '<span class="bp_counter" id="friendships">' . $count . '</span>';
+				$html='<a class="fa-friendships toggle-menu" href="' . bp_core_get_user_domain( $user_id ) . 'friends/requests/">' . $count . '</a>';
+				/* Variant : only display latest friendship requests */
+				//$html='<a class="fa-friendships toggle-menu" href="' . bp_core_get_user_domain( $user_id ) . '/friends/requests/?new">' . $count . '</a>';
+			}
+			break;		
+		case "notifications":
+			if ( is_user_logged_in() ) {
+				$count = bp_notifications_get_unread_notification_count( $user_id );
+				if ($count=="0"||$count=="")
+					$count=NULL;
+				else 
+					$count = '<span class="bp_counter" id="notifications">' . $count . '</span>';
+				$html='<a class="fa-notifications toggle-menu" href="' . bp_core_get_user_domain( $user_id) . 'notifications/">' . $count . '</a>';
+			}
+			break;		
+		case "events":
+			if ( is_user_logged_in() ) {
 				//$count = EM_Events::count( array( 'scope' => 'future') );
 				$count = "";
 				if ($count=="0"||$count=="") 
@@ -215,14 +211,8 @@ function display_toggle_icon($atts) {
 				else 
 					$count = '<span class="bp_counter" id="events">' . $count . '</span>';
 				$html='<a class="fa-events toggle-menu" href="' . bp_core_get_user_domain( $user_id ) . 'events/">' . $count . '</a>';
-				}
-				break;
-		
-		}
-		
+			}
+			break;
+	}
 	return $html;
 }
-
-
-
-?>

@@ -477,14 +477,6 @@ add_filter( 'genesis_post_title_output', 'archive_title', 15 );
 /* =                      DEBUG
 /* =================================================================*/
 
-//function foodiepro_log($msg,$var=false) {
-//	if (class_exists( 'PHP_Debug')) PHP_Debug::log($msg, $var);
-//}
-//
-//function foodiepro_trace($msg,$var=false) {
-//	if (class_exists( 'PHP_Debug')) PHP_Debug::trace($msg, $var);
-//}
-
 
 add_action( 'genesis_before_content', 'display_debug_info' );
 function display_debug_info() {

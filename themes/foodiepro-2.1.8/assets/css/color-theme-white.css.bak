@@ -52,8 +52,8 @@ a.more-link:hover,
 .blogs-top,
 .archives-top,
 html body .wpurp-container .add-picture-link {
-    background-color: #f5f5f5!important;
-    border: 1px dashed #555;
+  background-color: #f5f5f5!important;
+  border: 1px dashed #555;
 }
 
 
@@ -128,14 +128,13 @@ input, select, textarea,
 .single .widget.themes ul li:hover,
 .widget.themes ul li:hover,
 .widget.back ul li:hover {
-	background-color:#f7f7f7;	
+  border-color:#000;
 }
 
 .widget.themes ul li.current-menu-item,
 .archive-pagination li.active {
   background-color: #f7f7f7;
-  border-top: 1px dashed;
-  border-bottom: 1px dashed;
+  border-color:#000;
 }
 
 .recipes-bottom .rpwe_widget .widget-wrap,

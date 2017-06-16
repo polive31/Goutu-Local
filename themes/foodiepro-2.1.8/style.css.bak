@@ -636,7 +636,7 @@ span.bp_counter,
 /* Headlines */
 h1.archive-title,
 h1.entry-title {
-	font-family:"Nixie One", sans-serifs;
+	font-family:"Roboto Slab", sans-serifs;
   text-decoration: none;
 	text-transform: none;
 	font-size:40px;
@@ -1652,8 +1652,12 @@ form[role="search"] {
 .widget.themes ul li {
 	padding:5px;
 	margin:5px 10px;
-	border:1px solid transparent;
+	border:1px dashed transparent;
 	/*border-radius:10px;*/
+}
+
+.widget.themes ul li:hover {
+	border-color:#CCC;
 }
 
 .widget.themes ul li:before,

@@ -45,13 +45,13 @@ class CustomStarRatingsMeta extends CustomStarRatings {
 	-------------------------------------------------------------*/ 
 	//public function add_default_rating( $id, $post ) {
 	public function add_default_rating() {
-	 	if ( ! wp_is_post_revision() && is_singular( self::$ratedPostTypes ) ) {
-	 		//PC:debug('Default rating add');
-			foreach (self::$ratingCats as $id=>$cat) {
-				$this->update_post_meta($post->ID, 'user_rating_' . $id, '0');
-	 		}
-			$this->update_post_meta($post->ID, 'user_rating_global', '0');
-	 	}
+	 	if ( is_singular( self::$ratedPostTypes ) && (! wp_is_post_revision( $post->ID )) ) {
+		 		//PC:debug('Default rating add');
+				foreach (self::$ratingCats as $id=>$cat) {
+					$this->update_post_meta($post->ID, 'user_rating_' . $id, '0');
+		 		}
+				$this->update_post_meta($post->ID, 'user_rating_global', '0');
+		}	
 	}
 
 

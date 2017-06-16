@@ -66,6 +66,9 @@ themes/foodiepro-2.1.8/backups/*
 themes/foodiepro-2.1.8/images/Backup/*
 
 plugins/*
+!plugins/search-everything/
+plugins/search-everything/*
+!plugins/search-everything/search-everything.php
 !plugins/bp-custom.php
 !plugins/wp-php-debug/
 !plugins/batch-manage-posts/

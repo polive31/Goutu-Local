@@ -33,7 +33,7 @@ class CustomArchiveHeadline extends CustomArchive {
 		
 		/* WPURP Detailed search : customized page title and description 
  		------------------------------------------------------------*/
-		add_filter( 'genesis_search_title_text', 'custom_search_title_text' );
+		add_filter( 'genesis_search_title_text', array($this,'custom_search_title_text') );
 	}
 	
 	public function custom_search_title_text() {	

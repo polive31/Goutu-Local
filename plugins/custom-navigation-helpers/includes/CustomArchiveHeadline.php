@@ -68,8 +68,6 @@ class CustomArchiveHeadline extends CustomArchive {
 		remove_action( 'genesis_before_loop', 'genesis_do_author_title_description', 15 );
 		//Removes Title and Description on Blog Template Page
 		remove_action( 'genesis_before_loop', 'genesis_do_blog_template_heading' );		
-
-			
 	}
 
 

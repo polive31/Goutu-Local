@@ -194,7 +194,7 @@ function remove_xprofile_links() {
 /* =    EXCLUDE ADMIN FROM MEMBERS DIRECTORY & SEARCH
 /* =================================================================*/
 
-add_filter( 'bp_after_has_members_parse_args', 'buddydev_exclude_users_by_role' );
+//add_filter( 'bp_after_has_members_parse_args', 'buddydev_exclude_users_by_role' );
 
 function buddydev_exclude_users_by_role( $args ) {
 	//do not exclude in admin
@@ -294,7 +294,3 @@ function wprpe_query_displayed_user_posts( $args ) {
 //    return $args;
 //}
 ////add_filter( 'rpwe_default_args', 'wprpe_author_more_link' );
-
-
-/* File end */
-?>

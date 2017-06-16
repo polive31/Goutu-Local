@@ -1,0 +1,18 @@
+#wp-admin-bar-sqpn_wp_pages .ab-sub-wrapper,
+#wp-admin-bar-sqpn_bb_pages .ab-sub-wrapper {
+	width: 200px;
+}
+
+#wp-admin-bar-search_sqpn_wp_sub_pages.sqpn-wp-pages-search .ab-item,
+#wp-admin-bar-search_sqpn_bb_sub_pages.sqpn-bb-pages-search .ab-item {
+	line-height: 27px;
+    height: 27px;
+}
+
+#wp-admin-bar-search_sqpn_wp_sub_pages.sqpn-wp-pages-search input,
+#wp-admin-bar-search_sqpn_bb_sub_pages.sqpn-bb-pages-search input {
+    box-sizing: border-box !important;
+	height: 23px;
+    width: 100%;
+    padding: 3px;
+}

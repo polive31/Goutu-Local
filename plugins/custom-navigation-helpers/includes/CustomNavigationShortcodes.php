@@ -43,7 +43,9 @@ class CustomNavigationShortcodes extends CustomArchive {
 		
 		//PHP_Debug::log(' In index-link shortcode');
 		
-
+		$url='';				
+		$msg='';				
+	
 		if ($back!='true'):
 			
 			$obj = get_queried_object();

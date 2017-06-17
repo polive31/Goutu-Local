@@ -128,7 +128,7 @@ input, select, textarea,
 .single .widget.themes ul li:hover,
 .widget.themes ul li:hover,
 .widget.back ul li:hover {
-  border-color:#000;
+  border-color:#AAA;
 }
 
 .widget.themes ul li.current-menu-item,

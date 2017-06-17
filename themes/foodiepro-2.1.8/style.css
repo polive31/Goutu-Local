@@ -972,7 +972,7 @@ Structure and Layout
 }
 
 .single-recipe .sidebar {
-	margin-top:50px;
+	margin-top:145px;
 }
 
 .single-post .sidebar,
@@ -1777,6 +1777,15 @@ Plugins
 
 .yarpp-related {
     float: left;
+}
+
+/* Fullscreen Galleria */
+#galleria {
+	background: rgba(255, 255, 255, 0.7)!important;
+}
+
+.galleria-container {
+    background: rgba(255, 255, 255, 0.4)!important;
 }
 
 

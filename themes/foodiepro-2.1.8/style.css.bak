@@ -972,7 +972,7 @@ Structure and Layout
 }
 
 .single-recipe .sidebar {
-	margin-top:50px;
+	margin-top:145px;
 }
 
 .single-post .sidebar,
@@ -1664,6 +1664,7 @@ form[role="search"] {
 
 .sidebar .widget.themes ul li:before { /* .sidebar important */
   content: "\f054";
+  content: "\f101";
   font-family: FontAwesome;
   font-size: 12px;
   padding-right: 10px;
@@ -1776,6 +1777,15 @@ Plugins
 
 .yarpp-related {
     float: left;
+}
+
+/* Fullscreen Galleria */
+#galleria {
+	background: rgba(255, 255, 255, 0.7);
+}
+
+.galleria-container {
+    background: rgba(255, 255, 255, 0.4);
 }
 
 

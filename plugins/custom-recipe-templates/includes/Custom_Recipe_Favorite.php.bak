@@ -31,7 +31,7 @@ class Custom_Recipe_Favorite extends WPURP_Template_Block {
         else {
         	$this->link_id='';
         	$this->class_id .= ' logged-in';
-        	$favorites_link = '/mon-goutu/recettes-favorites';
+        	$favorites_link = '/favoris/favoris-recettes';
         }
         
         $tooltip_in = sprintf(__('In my <a href="%s">favorites</a>','foodiepro'),$favorites_link);
@@ -61,7 +61,6 @@ class Custom_Recipe_Favorite extends WPURP_Template_Block {
 
 				<?php echo Custom_Recipe_Templates::output_tooltip($tooltip.$tooltip_alt,'top');
 
-				<?php
         $output .= ob_get_contents();
         ob_end_clean();
 

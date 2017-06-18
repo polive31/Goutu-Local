@@ -99,7 +99,7 @@ if( !class_exists( "capn_Quick_Page_Navigation" ) ) {
 		    	)
 		    );
 
-			$this->capn_add_pages_to_menu($wp_admin_bar, 2, 0);
+			$this->capn_add_pages_to_menu($wp_admin_bar, 3, 0);
 		}
 				
 

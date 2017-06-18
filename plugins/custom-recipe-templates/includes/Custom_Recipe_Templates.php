@@ -75,7 +75,7 @@ class Custom_Recipe_Templates {
 							array(
 		              'url' => '//fonts.googleapis.com/css?family=Oswald',
 		              'public' => true,
-		          ),
+		          ),	          
 			);
 		}
 		elseif ( is_page( 'menus' ) ) { // Menu page
@@ -113,6 +113,11 @@ class Custom_Recipe_Templates {
 				}
 				else {
 					
+				$pause = '<i class="fa fa-pause" aria-hidden="true"></i>';
+				$play = '<i class="fa fa-play" aria-hidden="true"></i>';
+				$close = '<i class="fa fa-times" aria-hidden="true"></i>';
+
+					
 		    $js_enqueue=array(
 		            array(
 		                'name' => 'fraction',
@@ -140,6 +145,7 @@ class Custom_Recipe_Templates {
 		                ),
 		            ),
 		    	      array(
+		                'name' => 'adjustable-servings',
 		                'url' => WPUltimateRecipe::get()->coreUrl . '/js/adjustable_servings.js',
 		                'public' => true,
 		                'deps' => array(
@@ -154,6 +160,7 @@ class Custom_Recipe_Templates {
 		                ),
 		            ),
 								array(
+		                'name' => 'custom-favorite-recipe',
 		                /*'url' => WPUltimateRecipePremium::get()->premiumUrl . '/addons/favorite-recipes/js/favorite-recipes.js',*/
 		                'url' => self::$_PluginPath . 'assets/js/custom_favorite_recipe.js',
 		               	'premium' => true,
@@ -170,6 +177,7 @@ class Custom_Recipe_Templates {
 		            ),	  
 		            array(
 		                /*'url' => WPUltimateRecipePremium::get()->premiumUrl . '/js/add-to-shopping-list.js',*/
+		                'name' => 'custom-shopping-list',
 		                'url' => self::$_PluginPath . 'assets/js/custom_shopping_list.js',
 		                'premium' => true,
 		                'public' => true,
@@ -182,6 +190,23 @@ class Custom_Recipe_Templates {
 		                    'nonce' => wp_create_nonce( 'wpurp_add_to_shopping_list' ),
 		                )
 		            ),
+		            array(
+		                'name' => 'wpurp-timer',
+		                'url' => WPUltimateRecipePremium::get()->premiumUrl . '/addons/timer/js/timer.js',
+		                'premium' => true,
+		                'public' => true,
+		                'deps' => array(
+		                    'jquery',
+		                ),
+		                'data' => array(
+		                    'name' => 'wpurp_timer',
+		                    'icons' => array(
+		                        'pause' => $pause,
+		                        'play' => $play,
+		                        'close' => $close,
+		                    ),
+		                )
+		            ),		            
 		    );	
 				}
 			}

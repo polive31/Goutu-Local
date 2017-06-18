@@ -26,7 +26,7 @@ class Custom_Recipe_Add_To_Shopping_List extends WPURP_Template_Block {
 
 				else {
 					$classes[] = 'logged-in';
-					$menu_link = '/mon-goutu/menus';
+					$menu_link = '/accueil/publier/publier-menus';
 				}
         $tooltip_in=sprintf(__('In my <a href="%s">shopping list</a>','foodiepro'),$menu_link);
         $tooltip_add=sprintf(__('Add to my <a href="%s">shopping list</a>','foodiepro'),$menu_link);
@@ -58,8 +58,8 @@ class Custom_Recipe_Add_To_Shopping_List extends WPURP_Template_Block {
 				<a href="#"<?php echo $this->style(); ?> id="<?php echo $link_id;?>" data-recipe-id="<?php echo $recipe->ID(); ?>">
 				<div class="button-caption"><?php echo __('Add to Shopping List','foodiepro'); ?></div>
 				</a>
-				<?php echo Custom_Recipe_Templates::output_tooltip($tooltip.$tooltip_alt,'top');?>
-				<?php
+				<?php echo Custom_Recipe_Templates::output_tooltip($tooltip.$tooltip_alt,'top');
+				
         $output .= ob_get_contents();
         ob_end_clean();
 

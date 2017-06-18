@@ -1781,11 +1781,11 @@ Plugins
 
 /* Fullscreen Galleria */
 #galleria {
-	background: rgba(255, 255, 255, 0.7);
+	background: rgba(255, 255, 255, 0.7)!important;
 }
 
 .galleria-container {
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.4)!important;
 }
 
 

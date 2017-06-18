@@ -43,8 +43,10 @@ class CustomNavigationShortcodes extends CustomArchive {
 		
 		//PHP_Debug::log(' In index-link shortcode');
 		
-
-		if ($back!='true'):
+		$url='';				
+		$msg='';				
+	
+		if ( ($back!='true') && !is_search() ) {
 			
 			$obj = get_queried_object();
 			$tax_id = $obj -> taxonomy;

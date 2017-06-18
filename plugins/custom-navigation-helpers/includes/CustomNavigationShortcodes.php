@@ -46,7 +46,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		$url='';				
 		$msg='';				
 	
-		if ($back!='true'):
+		if ( ($back!='true') && !is_search() ) {
 			
 			$obj = get_queried_object();
 			$tax_id = $obj -> taxonomy;
@@ -97,11 +97,12 @@ class CustomNavigationShortcodes extends CustomArchive {
 					$msg = __('All posts', 'foodiepro');
 					break;	
 			}
+		}
 			
-		else:
+		else {
 				$url = 'javascript:history.back()';
 				$msg = __('Previous page','foodiepro');
-		endif;
+		}
 		
 		$output = '<ul class="menu"> <li> <a class="back-link" href="' . $url . '">' . $msg . '</a> </li> </menu>';
 		return $output;

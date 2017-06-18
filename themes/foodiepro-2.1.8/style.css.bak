@@ -664,13 +664,14 @@ h3.rpwe-title a {
 }
 
 /* Widgets */
-.tagcloud a,
-#wpurp-search ~ select {
-  /*font-family:"PT Sans Narrow","Helvetica Neue",sans-serif;
-  font-family:"Delius Swash Caps", cursive !important;*/
+.tagcloud a {
   font-family:"Roboto Slab", cursive !important;
 	font-size: 12px; /* For tagcloud will be superseded by plugin setting*/
 	font-weight:300
+}
+
+#wpurp-search ~ select {
+	font-size: 13px;
 }
 
 .textwidget {
@@ -715,8 +716,13 @@ h3.rpwe-title a {
 
 .widget.back ul li a {
 	text-transform:uppercase;
-	font-size:12px;	
 }
+
+.archives-top .textwidget ul li,
+.archives-top .dropdown-select select {
+	font-size:12px;
+}
+
 
 .widget.themes ul li a {
 	font-family:"Amatic SC",cursive;

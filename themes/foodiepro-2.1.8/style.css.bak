@@ -666,7 +666,6 @@ h3.rpwe-title a {
 /* Widgets */
 .tagcloud a {
   font-family:"Roboto Slab", cursive !important;
-	font-size: 12px; /* For tagcloud will be superseded by plugin setting*/
 	font-weight:300
 }
 

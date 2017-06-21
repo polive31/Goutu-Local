@@ -114,8 +114,6 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 
 /* Recipe info : rating, tags 
 -------------------------------------------------*/
-	
-	
 .info-container {
 	float:left;
 	padding-left:30px;
@@ -228,8 +226,9 @@ ol.wpurp-recipe-instructions {
 }
 
 li.wpurp-recipe-instruction {
-    list-style-position: inside;
-    margin-bottom: 10px;
+  list-style-position: inside;
+  margin-bottom: 10px;
+  text-align:justify;
 }
 
 /* Recipe timer WPURP addon 

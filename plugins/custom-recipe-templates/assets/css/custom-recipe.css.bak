@@ -272,7 +272,6 @@ li.wpurp-recipe-instruction {
           background-color: #000;
           border: 0; }
 
-
 /* Picture gallery 
 ----------------------------------------------*/
 #joined-pics .add-picture-button button,

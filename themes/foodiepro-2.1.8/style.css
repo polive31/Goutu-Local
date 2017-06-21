@@ -1996,6 +1996,7 @@ Custom Page Templates
 }
 
 /* Recipe eval popup */
+.popmake-evaluation-form .pum-title,
 #popmake-10197 .pum-title {
 	margin:20px 0px 50px 120px;	
 	text-align: left;

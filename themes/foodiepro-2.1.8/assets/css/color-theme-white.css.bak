@@ -89,10 +89,11 @@ i.fa.fa-star-o {
 
 /* POPUP MAKER
 -------------------------------------------------------*/
-.pum-container {
-	background-color : #FFFFFF!important;
-}
 
+/* Evaluation Form */
+#pum-10320 .pum-container {
+	background-color:#FFF;
+}
 
 /* WIDGETS 
 -------------------------------------------------------*/

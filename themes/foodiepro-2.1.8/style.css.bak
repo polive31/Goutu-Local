@@ -2156,7 +2156,7 @@ Custom Page Templates
 .top .widget  {
 	width:33.3%;
 	padding:0px 10px;
-	max-width: 250px;	
+	max-width: 215px;	
 	float:left;
 }
 

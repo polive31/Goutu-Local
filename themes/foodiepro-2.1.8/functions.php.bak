@@ -277,7 +277,7 @@ add_filter( 'foodie_pro_disable_google_fonts', '__return_true' );
 add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_syles' );
 function foodie_pro_enqueue_syles() {
 	//wp_enqueue_style( 'font-awesome', CHILD_THEME_URL . '/assets/fonts/font-awesome/css/font-awesome.min.css', array(), CHILD_THEME_VERSION );
-	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400|PT+Sans+Narrow|Roboto+Slab:100|Lato:300|Delius+Swash+Caps', array(), CHILD_THEME_VERSION );
+	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400|PT+Sans+Narrow|Roboto+Slab:100,300|Lato:300|Delius+Swash+Caps', array(), CHILD_THEME_VERSION );
 }
 
 
@@ -442,6 +442,14 @@ function wprpe_orderby_rating( $args ) {
 /* =================================================================*/
 /* =                      ARCHIVES
 /* =================================================================*/
+
+// Apply Full Width Content layout to Archives.
+add_action( 'get_header', 'set_full_layout' );
+function set_full_layout() {
+	if ( ! ( is_archive() || is_tax() || is_search() ) return;
+	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+}
+
 
 /* Hook category widget areas before post content and after archive title
 -----------------------------------------------------------------------------*/

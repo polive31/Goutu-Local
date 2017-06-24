@@ -2154,6 +2154,8 @@ Custom Page Templates
 .archives-top .widget  {
 	width:33.3%;
 	padding:0px 10px;
+	max-width: 200px;	
+	float:left;
 }
 
 

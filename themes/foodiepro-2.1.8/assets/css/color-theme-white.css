@@ -46,16 +46,16 @@ a.more-link:hover,
 	color:#fff;
 }
 
-
-.footer-widgets,
 .recipes-top, 
 .blogs-top,
-.archives-top,
-html body .wpurp-container .add-picture-link {
+.archives-top {
+  border-bottom: 1px dotted #555;
+}
+
+.footer-widgets {
   background-color: #f5f5f5!important;
   border: 1px dashed #555;
 }
-
 
 /* Text area specific formatting */
 input[type="text"],
@@ -103,7 +103,7 @@ input, select, textarea,
 	border:1px solid #ccc;
 }
 
-.widget.back ul li {
+.widget.back ul li:hover {
 	background-color:#fafafa;	
 }
 

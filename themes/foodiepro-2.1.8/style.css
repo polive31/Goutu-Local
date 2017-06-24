@@ -1015,8 +1015,10 @@ Structure and Layout
 	Link:http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css
 --------------------------------------------- */
 
+.rpwe-block li,
 .simple-grid {
 	float:left;
+	padding: 5px;	
 }
 
 
@@ -2161,7 +2163,7 @@ Custom Page Templates
 
 /* Archives bottom section */
 .archives-bottom .widget  {
-	width:33.3%;
+	width:50%;
 	padding:0px 10px;
 	max-width: 300px;	
 	float:left;

@@ -216,7 +216,9 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 	    $vocals = array('a','e','i','o','u');
 	    $exceptions = array('huile','herbes');
 	    
-	    $out .= '<ul class="wpurp-recipe-ingredients">';
+	    $first_group = true;
+	    //$out .= '<ul class="wpurp-recipe-ingredients">';
+	    
 	    foreach( $recipe->ingredients() as $ingredient ) {
 
 	        if( WPUltimateRecipe::option( 'ignore_ingredient_ids', '' ) != '1' && isset( $ingredient['ingredient_id'] ) ) {
@@ -227,10 +229,11 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 	        }
 
 	        if( $ingredient['group'] != $previous_group ) { //removed isset($ingredient['group'] ) && 
-	            $out .= '</ul>';
+	            $out .= $first_group ? '' : '</ul>';
 	            $out .= '<li class="ingredient-group">' . $ingredient['group'] . '</li>';
 	            $previous_group = $ingredient['group'];
 	            $out .= '<ul class="wpurp-recipe-ingredients">';
+							$first_group = false;
 	        }
 
 	        $fraction = false;
@@ -298,7 +301,7 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 
 	        $out .= '</li>';
 	    }
-	    $out .= '</ul>';
+	    //$out .= '</ul>';
 
 	    return $out;
 	}
@@ -309,24 +312,30 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 	    $instructions = $recipe->instructions();
 	    
 	    $out .= '<ol class="wpurp-recipe-instruction-container">';
+	    $first_group = true;
+	    
 	    for( $i = 0; $i < count($instructions); $i++ ) {
+					
 	        $instruction = $instructions[$i];
-
-					if( $instruction['group'] != $previous_group ) {
-	            $out .= '</ol>';
+					$first_inst = false;
+					
+					if( $instruction['group'] != $previous_group ) { /* Entering new instruction group */
+							$first_inst = true;
+	            $out .= $first_group ? '' : '</ol>';
 	            $out .= '<div class="wpurp-recipe-instruction-group recipe-instruction-group">' . $instruction['group'] . '</div>';
-	            $out .= '<ol class="">';
+	            $out .= '<ol class="wpurp-recipe-instructions">';
 	            $previous_group = $instruction['group'];
+	    				$first_group = false;
 	        }
 
-
-	        $style = !isset( $instructions[$i+1] ) || $instruction['group'] != $instructions[$i+1]['group'] ? array('li','li-last') : 'li';
+	        $style = $first_inst ? ' li-first' : '';
+	        $style .= !isset( $instructions[$i+1] ) || $instruction['group'] != $instructions[$i+1]['group'] ? ' li-last' : '';
 
 	        $meta = WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ) != 'json' && $args['template_type'] == 'recipe' && $args['desktop'] ? ' itemprop="recipeInstructions"' : '';
 
-	        $out .= '<li class="wpurp-recipe-instruction">';
+	        $out .= '<li class="wpurp-recipe-instruction ' . $style . '">';
 	        //$out .= '<div' . $meta . '>'.$instruction['description'].'</div>';
-	        $out .= $instruction['description'];
+	        $out .= '<span>' . $instruction['description'] . '</span>';
 
 	        if( $instruction['image'] != '' ) {
 	            $thumb = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
@@ -349,6 +358,7 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 
 	        $out .= '</li>';
 	    }
+			$out .= '</ol>';
 
 	    return $out;
 	}

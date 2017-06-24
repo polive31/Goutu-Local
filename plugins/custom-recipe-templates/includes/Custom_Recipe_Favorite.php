@@ -9,14 +9,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Custom_Recipe_Favorite extends WPURP_Template_Block {
 
     private $class_id='wpurp-recipe-favorite';
+    private $logged_in;
     private $link_id;
     private $editorField = 'favoriteRecipe';
 		private static $_PluginPath;	
 	
 
-    public function __construct( $type = 'recipe-favorite' )
+    public function __construct( $logged_in, $type = 'recipe-favorite' )
     {
         parent::__construct( $type );
+        $this->logged_in = $logged_in;
 				self::$_PluginPath = plugin_dir_url( dirname( __FILE__ ) );
     }
 
@@ -24,8 +26,8 @@ class Custom_Recipe_Favorite extends WPURP_Template_Block {
     {
         if( !$this->output_block( $recipe, $args ) ) return '';
         
-        if( !is_user_logged_in() ) {
-        	$this->link_id='id="join_us"';
+        if( !$this->logged_in ) {
+        	$this->link_id='id="join-us"';
         	$favorites_link = '/connexion';
         } 
         else {

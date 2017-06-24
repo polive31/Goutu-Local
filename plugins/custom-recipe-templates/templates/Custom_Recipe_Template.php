@@ -3,8 +3,11 @@
 
 class Custom_Recipe_Template extends Custom_Recipe_Templates {
 	
+	protected $logged_in;
+	
 	public function __construct() {
 		/* Custom recipe template */
+		$this->logged_in = is_user_logged_in();
 		add_filter( 'wpurp_output_recipe', array($this,'wpurp_custom_recipe_template'), 10, 2 );
 	}
 
@@ -42,14 +45,14 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 					<!-- Recipe Add to Cart Button -->
 					<div class="recipe-button tooltip tooltip-above">
 					<?php 
-						$shopping_list = new Custom_Recipe_Add_To_Shopping_List();  
+						$shopping_list = new Custom_Recipe_Add_To_Shopping_List( $this->logged_in );  
 						echo $shopping_list->output( $recipe );?>
 					</div>				
 					
 					<!-- Add To Favorites Button -->
 					<div class="recipe-button tooltip tooltip-above">
 					<?php
-						$favorite_recipe = new Custom_Recipe_Favorite();
+						$favorite_recipe = new Custom_Recipe_Favorite( $this->logged_in );
 						echo $favorite_recipe->output( $recipe );?>
 					</div>				
 					
@@ -63,7 +66,7 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 												
 					<!-- Recipe Rate Button -->
 					<div class="recipe-button tooltip tooltip-above">
-						<a class="recipe-review-button" id="recipe-review">
+						<a class="recipe-review-button" id="<?php echo $this->logged_in?'recipe-review':'join-us';?>">
 						<div class="button-caption"><?php echo __('Rate','foodiepro'); ?></div>
 						</a>
 						<?php echo Custom_Recipe_Templates::output_tooltip(__('Comment and rate this recipe','foodiepro'),'top');?>

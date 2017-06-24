@@ -106,7 +106,6 @@ class CustomArchiveHeadline extends CustomArchive {
 			else 
 				echo $this->get_archive_headline('', $query->slug, $headline);
 
-		}
 	}
 	
 	protected function get_archive_headline($tax,$value,$headline) {

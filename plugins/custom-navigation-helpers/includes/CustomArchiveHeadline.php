@@ -83,7 +83,7 @@ class CustomArchiveHeadline extends CustomArchive {
 			
 			elseif ( is_tax() ) {
 			  $headline = get_term_meta( $query->term_id, 'headline', true );
-				$intro_text = get_term_meta( $term_id, 'intro_text', true );
+				$intro_text = get_term_meta( $query->term_id, 'intro_text', true );
 				
 		    if ( is_tax('ingredient') )
 					echo $this->get_archive_headline('ingredient', $query->slug, $headline);			

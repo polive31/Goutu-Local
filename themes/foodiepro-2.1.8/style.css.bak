@@ -2156,14 +2156,14 @@ Custom Page Templates
 .top .widget  {
 	width:33.3%;
 	padding:0px 10px;
-	max-width: 200px;	
+	max-width: 250px;	
 	float:left;
 }
 
 
 /* Archives bottom section */
 .archives-bottom .widget  {
-	width:33.3%;
+	width:50%;
 	padding:0px 10px;
 	max-width: 300px;	
 	float:left;

@@ -381,8 +381,6 @@ function block_new_users ($user) {
 
 
 
-
-
 /* =================================================================*/
 /* =              LAYOUT      
 /* =================================================================*/
@@ -472,6 +470,7 @@ function add_archive_bottom_area() {
   		));
   }     
 }
+
 
 
 /* Customize entry title in the archive pages

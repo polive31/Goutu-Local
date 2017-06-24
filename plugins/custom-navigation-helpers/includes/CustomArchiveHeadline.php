@@ -83,18 +83,20 @@ class CustomArchiveHeadline extends CustomArchive {
 			
 			elseif ( is_tax() ) {
 			  $headline = get_term_meta( $query->term_id, 'headline', true );
-
+				$intro_text = get_term_meta( $term_id, 'intro_text', true );
+				
 		    if ( is_tax('ingredient') )
-					echo $this->get_archive_headline('ingredient', $query->slug, $headline);
+					echo $this->get_archive_headline('ingredient', $query->slug, $headline);			
 
 				elseif ( is_tax('cuisine') )
 					echo $this->get_archive_headline('cuisine', $query->slug, $headline);
 									
-				elseif( is_tax('difficult') ) {
+				elseif( is_tax('difficult') ) 
 					echo $this->get_archive_headline('difficult', $query->slug, $headline);
-		  		$intro_text = get_term_meta( $term_id, 'intro_text', true );
-					if ( !empty($intro_text) )
-						echo self::$intro_style['begin'] . $intro_text . self::$intro_style['end'];
+
+				if ( !empty($intro_text) )
+					echo self::$intro_style['begin'] . $intro_text . self::$intro_style['end'];				  
+
 				}
 
 				else 
@@ -104,7 +106,6 @@ class CustomArchiveHeadline extends CustomArchive {
 			else 
 				echo $this->get_archive_headline('', $query->slug, $headline);
 
-		}
 	}
 	
 	protected function get_archive_headline($tax,$value,$headline) {

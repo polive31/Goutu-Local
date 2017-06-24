@@ -32,12 +32,12 @@ function foodie_pro_recipes_genesis_meta() {
  */
 function foodie_pro_recipes_loop_helper() {
 	genesis_widget_area( 'recipes-top',  array(
-		'before' => '<div class="widget-area recipes-top">',
+		'before' => '<div class="widget-area top recipes-top">',
 		'after'  => '</div> <!-- end .recipes-top -->',
 	) );
 
 	genesis_widget_area( 'recipes-bottom', array(
-		'before' => '<div class="widget-area recipes-bottom">',
+		'before' => '<div class="widget-area bottom recipes-bottom">',
 		'after'  => '</div> <!-- end .recipes-bottom -->',
 	) );
 }

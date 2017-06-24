@@ -32,12 +32,12 @@ function foodie_pro_blogs_genesis_meta() {
  */
 function foodie_pro_blogs_loop_helper() {
 	genesis_widget_area( 'blogs-top',  array(
-		'before' => '<div class="widget-area blogs-top">',
+		'before' => '<div class="widget-area top blogs-top">',
 		'after'  => '</div> <!-- end .blogs-top -->',
 	) );
 
 	genesis_widget_area( 'blogs-bottom', array(
-		'before' => '<div class="widget-area blogs-bottom">',
+		'before' => '<div class="widget-area bottom blogs-bottom">',
 		'after'  => '</div> <!-- end .blogs-bottom -->',
 	) );
 }

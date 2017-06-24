@@ -2125,18 +2125,20 @@ Custom Page Templates
 
 /* Top section commons */
 
-.recipes-top, 
-.blogs-top,
-.archives-top {
+.top, .bottom {
+	float:left;
 	padding:10px;
 	margin-top:0; /* P.O. Original none */
 	width:100%;
 	margin-bottom:40px;
 }
 
-.recipes-top .widget ul, 
-.blogs-top .widget ul,
-.archives-top .widget ul {
+.bottom {
+	margin-top:40px; 
+}
+
+.top .widget ul,
+.bottom .widget ul {
 	list-style-type:none;
 }
 
@@ -2149,12 +2151,19 @@ Custom Page Templates
 
 /* Recipes & Blogs Top section */
 /* Archive pages Top section */
-.recipes-top .widget, 
-.blogs-top .widget,
-.archives-top .widget  {
+.top .widget  {
 	width:33.3%;
 	padding:0px 10px;
 	max-width: 200px;	
+	float:left;
+}
+
+
+/* Archives bottom section */
+.archives-bottom .widget  {
+	width:33.3%;
+	padding:0px 10px;
+	max-width: 300px;	
 	float:left;
 }
 

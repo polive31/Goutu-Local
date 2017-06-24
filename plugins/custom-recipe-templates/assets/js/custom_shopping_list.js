@@ -13,8 +13,8 @@ jQuery(document).ready(function() {
 				var tooltip=button.parent().find('div.toggle');
 				console.log('Tooltip',tooltip);
 
-        //if(!button.hasClass('in-shopping-list')) {
-        if(true) {
+        if(!button.hasClass('in-shopping-list')) {
+        //if(true) {
             // Placed here rather than ajax return such that the user sees the change immediately
             button.addClass('in-shopping-list');
 						tooltip.toggle();

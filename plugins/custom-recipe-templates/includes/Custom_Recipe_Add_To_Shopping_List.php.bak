@@ -22,7 +22,7 @@ class Custom_Recipe_Add_To_Shopping_List extends WPURP_Template_Block {
         $link_id='';
 	      $classes = array();
         
-        if( !$this->logged_in() ) {
+        if( !$this->logged_in ) {
         	$link_id='id="join-us"';
 					$menu_link = '/connexion';
         }

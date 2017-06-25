@@ -79,25 +79,26 @@ class CustomArchiveHeadline extends CustomArchive {
 		remove_action( 'genesis_before_loop', 'genesis_do_blog_template_heading' );		
 	}
 
-
 	public function custom_archive_title() {
 		if ( is_archive() ) {
 		  if ( is_author() ) 
 		  	echo $this->get_archive_headline('author', $this->query->user_login, '');
-			elseif ( is_tax() ) {
-			  $headline = get_term_meta( $this->query->term_id, 'headline', true );
-		    if ( is_tax('ingredient') )
-					echo $this->get_archive_headline('ingredient', $this->query->slug, $headline);			
-				elseif ( is_tax('cuisine') )
-					echo $this->get_archive_headline('cuisine', $this->query->slug, $headline);
-				elseif( is_tax('difficult') ) 
-					echo $this->get_archive_headline('difficult', $this->query->slug, $headline);
+			else {
+				$headline = get_term_meta( $this->query->term_id, 'headline', true );
+				if ( is_tax() ) {
+			    if ( is_tax('ingredient') )
+						echo $this->get_archive_headline('ingredient', $this->query->slug, $headline);			
+					elseif ( is_tax('cuisine') )
+						echo $this->get_archive_headline('cuisine', $this->query->slug, $headline);
+					elseif( is_tax('difficult') ) 
+						echo $this->get_archive_headline('difficult', $this->query->slug, $headline);
+					else 
+						echo $this->get_archive_headline('', $this->query->slug, $headline);
 				}
 				else 
 					echo $this->get_archive_headline('', $this->query->slug, $headline);
 			}
-			else 
-				echo $this->get_archive_headline('', $this->query->slug, $headline);
+		}
 	}
 	
 	public function custom_archive_description() {

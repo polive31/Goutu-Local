@@ -727,6 +727,7 @@ h3.rpwe-title a {
 .archives-top .textwidget ul li,
 .archives-top select {
 	font-size:12px;
+	font-weight:bold;
 }
 
 .widget.themes ul li a {

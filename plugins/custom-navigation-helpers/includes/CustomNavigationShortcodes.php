@@ -193,7 +193,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		if ($dropdown=='true') {	
 			$dropdown_id = $taxonomy . ++$dropdown_cnt;
 			
-			$html = '<label class="screen-reader-text" for="' . esc_attr( $dropdown_id ) . '">' . $label . '</label>';
+			$html = '<label class="screen-reader-text" for="' . esc_attr( $dropdown_id ) . '"> . $label . </label>';
 
 			$args['show_option_none'] = $select_msg;
 			//$args['show_option_all'] = $all_msg;

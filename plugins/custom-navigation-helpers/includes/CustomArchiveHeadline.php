@@ -30,7 +30,7 @@ class CustomArchiveHeadline extends CustomArchive {
 		
 		/* Add customized page title and description 
 	 	------------------------------------------------------------*/
-		add_action( 'genesis_before_content', array($this,'custom_archive_title' ));
+		add_action( 'genesis_before_loop', array($this,'custom_archive_title' ));
 		add_action( 'genesis_before_loop', array($this,'custom_archive_description' ));
 		add_filter( 'genesis_term_intro_text_output', 'wpautop' );	
 		
@@ -86,11 +86,14 @@ class CustomArchiveHeadline extends CustomArchive {
 			else {
 				$headline = get_term_meta( $this->query->term_id, 'headline', true );
 				if ( is_tax() ) {
-			    if ( is_tax('ingredient') )
+					$obj = get_queried_object();
+					$tax = $obj->taxonomy;			
+					//echo $tax;
+			    if ( $tax=='ingredient' )
 						echo $this->get_archive_headline('ingredient', $this->query->slug, $headline);			
-					elseif ( is_tax('cuisine') )
+					elseif ( $tax=='cuisine' )
 						echo $this->get_archive_headline('cuisine', $this->query->slug, $headline);
-					elseif( is_tax('difficult') ) 
+					elseif( $tax=='difficult' ) 
 						echo $this->get_archive_headline('difficult', $this->query->slug, $headline);
 					else 
 						echo $this->get_archive_headline('', $this->query->slug, $headline);
@@ -110,7 +113,6 @@ class CustomArchiveHeadline extends CustomArchive {
 			}
 		}
 	}	
-	
 	
 	protected function get_archive_headline($tax,$value,$headline) {
 		$from_vowel = _x('All recipes from ','vowel','foodiepro');

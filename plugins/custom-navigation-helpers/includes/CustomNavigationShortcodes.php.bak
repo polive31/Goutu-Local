@@ -13,8 +13,18 @@ class CustomNavigationShortcodes extends CustomArchive {
 		add_shortcode('ct-terms', array($this,'list_terms_taxonomy'));
 		add_shortcode('permalink', array($this,'add_permalink_shortcode'));
 		add_shortcode('share-title', array($this,'display_share_title')); 
+		add_filter( 'query_vars', array($this,'archive_filter_queryvars') );		
+
 	}
 	
+
+	/* Custom query variable for taxonomy filter
+	--------------------------------------------- */		
+	function archive_filter_queryvars($vars) {
+	  $vars[] = 'filter';
+	  $vars[] .= 'filter_term';
+	  return $vars;
+	}
 	
 	/* Share Title Output
 	--------------------------------------------- */		
@@ -160,8 +170,12 @@ class CustomNavigationShortcodes extends CustomArchive {
 
 	// Filter taxonomy
 			//$obj->name;
-		if ($filter) 
-			$flt_tax = 'course';
+		if ($filter) {
+			if ( $src_tax=='course' )
+				$flt_tax = 'occasion';
+			else
+				$flt_tax = 'course';
+		}
 		else 		
 			$flt_tax = $src_tax;
 		
@@ -179,13 +193,15 @@ class CustomNavigationShortcodes extends CustomArchive {
 		if ($dropdown=='true') {	
 			$dropdown_id = $taxonomy . ++$dropdown_cnt;
 			
+			echo 'TERM !!! ' . get_query_var('fterm');
+			
 			$html = '<label class="screen-reader-text" for="' . esc_attr( $dropdown_id ) . '">' . $label . '</label>';
 
 			$args['show_option_none'] = $select_msg;
 			//$args['show_option_all'] = $all_msg;
 			$args['show_option_all'] = '';
 			$args['option_none_value'] = 'none';
-			$args['selected'] = 'none';
+			$args['selected'] = get_query_var('fterm');
 			$args['id'] = $dropdown_id;
 			$args['name'] = $dropdown_id;
 			$args['class'] = 'dropdown-select';
@@ -208,9 +224,16 @@ class CustomNavigationShortcodes extends CustomArchive {
 			 function on_<?php echo $dropdown_id;?>_Change() {
 			  var choice = <?php echo $dropdown_id;?>_dropdown.options[ <?php echo $dropdown_id;?>_dropdown.selectedIndex ].value;
 				if ( choice !="none" ) {
-					<?php if ($filter)  
-					  //echo 'location.href = "' . home_url() . '/' . $src_tax . '/' . $obj->name . '/?' . $flt_tax . '=" + choice';
-					  echo 'location.href = "' . esc_url( add_query_arg( $src_tax, $obj->name, home_url() ) ) . '&' . $flt_tax . '=" + choice';
+					<?php if ($filter)  {
+//						$query_url = add_query_arg( array( 
+//																		$src_tax => $obj->slug,
+//																		'ocat' => $src_tax, 
+//																		'oterm' => $obj->slug,
+//																	), 
+//																	home_url() );
+					  echo 'location.href = "' . home_url() . '/' . $src_tax . '/' . $obj->slug . '/?ocat=' . $src_tax . '&oterm=' . $obj->slug . '&fcat=' . $flt_tax . '&fterm=" + choice';
+					  //echo 'location.href = "' . $query_url . '&filter=' . $flt_tax . '&term=" + choice';
+					}
 					else	
 					  echo 'location.href = "' . home_url() . '/' . $src_tax . '/" + choice';
 					 ?>

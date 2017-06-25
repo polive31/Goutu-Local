@@ -41,34 +41,34 @@ public function widget( $args, $instance ) {
 	echo $args['before_widget'];
 	
 
-	if ( is_tax('course') )
-		echo $args['before_title'] . __('Other Courses', 'foodiepro') . $args['after_title'];
-	elseif ( is_tax('cuisine') ) {
-		$term = get_term_by( 'slug', get_query_var( 'term' ), 'cuisine' );
-		$parent = get_term_by('id', $term->parent,'cuisine');
-		if ($term->slug=='france') 
-			echo $args['before_title'] . __('Region', 'foodiepro') . $args['after_title'];
-		elseif ($parent->slug=='france')
-			echo $args['before_title'] . __('Other Regions', 'foodiepro') . $args['after_title'];
-		elseif ( !empty($parent->slug) ) 
-			echo $args['before_title'] . __('Other Countries', 'foodiepro') . $args['after_title'];
-		else 
-			echo $args['before_title'] . __('Country', 'foodiepro') . $args['after_title'];
-	}
-	elseif ( is_tax('season') )
-		echo $args['before_title'] . __('Other Seasons', 'foodiepro') . $args['after_title'];
-	elseif ( is_tax('occasion') )
-		echo $args['before_title'] . __('Other Occasions', 'foodiepro') . $args['after_title'];
-	elseif ( is_tax('diet') )
-		echo $args['before_title'] . __('Other Diets', 'foodiepro') . $args['after_title'];
-	elseif ( is_tax('difficult') )
-		echo $args['before_title'] . __('Other Levels', 'foodiepro') . $args['after_title'];
-	else 
+//	if ( is_tax('course') )
+//		echo $args['before_title'] . __('Other Courses', 'foodiepro') . $args['after_title'];
+//	elseif ( is_tax('cuisine') ) {
+//		$term = get_term_by( 'slug', get_query_var( 'term' ), 'cuisine' );
+//		$parent = get_term_by('id', $term->parent,'cuisine');
+//		if ($term->slug=='france') 
+//			echo $args['before_title'] . __('Region', 'foodiepro') . $args['after_title'];
+//		elseif ($parent->slug=='france')
+//			echo $args['before_title'] . __('Other Regions', 'foodiepro') . $args['after_title'];
+//		elseif ( !empty($parent->slug) ) 
+//			echo $args['before_title'] . __('Other Countries', 'foodiepro') . $args['after_title'];
+//		else 
+//			echo $args['before_title'] . __('Country', 'foodiepro') . $args['after_title'];
+//	}
+//	elseif ( is_tax('season') )
+//		echo $args['before_title'] . __('Other Seasons', 'foodiepro') . $args['after_title'];
+//	elseif ( is_tax('occasion') )
+//		echo $args['before_title'] . __('Other Occasions', 'foodiepro') . $args['after_title'];
+//	elseif ( is_tax('diet') )
+//		echo $args['before_title'] . __('Other Diets', 'foodiepro') . $args['after_title'];
+//	elseif ( is_tax('difficult') )
+//		echo $args['before_title'] . __('Other Levels', 'foodiepro') . $args['after_title'];
+//	else 
 		echo $args['before_title'] . __('Filter recipes', 'foodiepro') . $args['after_title'];
 
 	// Start of widget code
 	
-	echo do_shortcode('[ct-terms taxonomy="url" dropdown="true"]');
+	echo do_shortcode('[ct-terms taxonomy="url" dropdown="true" filter="true"]');
 
 	// Output end
 	echo $args['after_widget'];

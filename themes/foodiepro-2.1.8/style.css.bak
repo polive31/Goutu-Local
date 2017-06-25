@@ -725,10 +725,9 @@ h3.rpwe-title a {
 }
 
 .archives-top .textwidget ul li,
-.archives-top .dropdown-select select {
+.archives-top select {
 	font-size:12px;
 }
-
 
 .widget.themes ul li a {
 	font-family:"Amatic SC",cursive;
@@ -1406,11 +1405,6 @@ h2.entry-title, .wpupg-post-title,
   text-decoration:none;
 }
 
-h3.share-title {
-	margin-top:40px;
-	margin-bottom:20px;
-}
-
 
 /* Widget Titles */
 
@@ -1609,9 +1603,6 @@ form[role="search"] {
 
 /* Text Widget Display
 --------------------------------------------- */
-.widget_text {
-	margin-bottom:20px;
-}
 
 .textwidget {
   padding:0px 10px; 

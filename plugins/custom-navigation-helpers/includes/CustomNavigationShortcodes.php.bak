@@ -97,11 +97,12 @@ class CustomNavigationShortcodes extends CustomArchive {
 					$msg = __('All posts', 'foodiepro');
 					break;	
 			}
+		}
 			
-		else:
+		else {
 				$url = 'javascript:history.back()';
 				$msg = __('Previous page','foodiepro');
-		endif;
+		}
 		
 		$output = '<ul class="menu"> <li> <a class="back-link" href="' . $url . '">' . $msg . '</a> </li> </menu>';
 		return $output;
@@ -117,7 +118,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		extract( shortcode_atts( array(
 			'dropdown' => 'false',
 			'taxonomy' => 'category',
-			'label' => '',
+			'filter' => 'false',
 			'select_msg' => __( 'Select...', 'foodiepro' ),
 			'all_msg' => '',
 			'depth' => 1,
@@ -127,37 +128,52 @@ class CustomNavigationShortcodes extends CustomArchive {
 			'index_path' => ''
 		), $atts ) );
 
+		$filter = ($filter == 'true');
 
 		$html = '';
-	// Extraction of taxonomy from current url
+		
+/* arguments for function wp_list_categories
+------------------------------------------------------------------------*/
+	// Source taxonomy
 		$all_url='#';
-		if ($taxonomy == 'url') {
+		if ( $taxonomy=='url' ) {
 			$obj = get_queried_object();
-			$taxonomy = $obj -> taxonomy;
-			if ($taxonomy == 'cuisine') {
-				// extract term of depth = 1
-				$parent = $obj -> parent;
-				$current = $obj -> term_id;
-				if ($parent==0) {
-					$child_of = $current;}
-				else {
-					$child_of = $parent;
-					$parent_meta = get_term_by('id', $parent, 'cuisine');
-					//if ($parent_meta != false) $all_msg = $parent_meta->name;
-					//$all_url = add_query_arg( 'cuisine', $parent_meta->slug, home_url() );
-				}
-			}
+			//echo var_dump( $obj );
+			$src_tax = $obj->taxonomy;
 		}
+		else 
+			$src_tax = $taxonomy;	
 
-	 //arguments for function wp_list_categories
+
+	// Parent term (child_of = false by default)
+		if (! $filter) {
+			if ($obj->parent != 0) {
+				$child_of = $obj->parent;
+				//$parent_meta = get_term_by('id', $parent, 'cuisine');
+				//if ($parent_meta != false) $all_msg = $parent_meta->name;
+				//$all_url = add_query_arg( 'cuisine', $parent_meta->slug, home_url() );
+			}
+//			else {
+//				$child_of = $obj->term_id;
+//			}
+		} 
+
+	// Filter taxonomy
+			//$obj->name;
+		if ($filter) 
+			$flt_tax = 'course';
+		else 		
+			$flt_tax = $src_tax;
+		
+	// Arguments for wp_list_categories	
 		$args = array( 
-			'taxonomy' => $taxonomy,
-			'child_of' => $child_of,
-			'depth' => $depth,
-			'exclude' => $exclude,
-			'orderby'  => 'slug',
+			'taxonomy'	=> $flt_tax,
+			'child_of'	=> $child_of,
+			'depth' 		=> $depth,
+			'exclude' 	=> $exclude,
+			'orderby' 	=> 'slug',
 			//'title_li' => '',
-			'echo' => false
+			'echo' 			=> false
 		);
 		
 		if ($dropdown=='true') {	
@@ -172,14 +188,15 @@ class CustomNavigationShortcodes extends CustomArchive {
 			$args['selected'] = 'none';
 			$args['id'] = $dropdown_id;
 			$args['name'] = $dropdown_id;
+			$args['class'] = 'dropdown-select';
 			$args['value_field'] = 'slug';
 			
 			$html .= wp_dropdown_categories( $args );
-			
-			// Get taxonomy slug from taxonomy ID
-			$tax_meta = get_taxonomy( $taxonomy );
-			if ($tax_meta != false) 
-				$tax_slug = $tax_meta->rewrite['slug'];
+	
+//			// Get taxonomy slug from taxonomy ID
+//			$tax_meta = get_taxonomy( $taxonomy );
+//			if ($tax_meta != false) 
+//				$tax_slug = $tax_meta->rewrite['slug'];
 				
 			ob_start();
 			?>
@@ -191,7 +208,13 @@ class CustomNavigationShortcodes extends CustomArchive {
 			 function on_<?php echo $dropdown_id;?>_Change() {
 			  var choice = <?php echo $dropdown_id;?>_dropdown.options[ <?php echo $dropdown_id;?>_dropdown.selectedIndex ].value;
 				if ( choice !="none" ) {
-					  location.href = "<?php echo home_url() . '/' . $tax_slug . '/';?>" + choice;
+					<?php if ($filter)  
+					  //echo 'location.href = "' . home_url() . '/' . $src_tax . '/' . $obj->name . '/?' . $flt_tax . '=" + choice';
+					  echo 'location.href = "' . esc_url( add_query_arg( $src_tax, $obj->name, home_url() ) ) . '&' . $flt_tax . '=" + choice';
+					else	
+					  echo 'location.href = "' . home_url() . '/' . $src_tax . '/" + choice';
+					 ?>
+					 /*location.href = "<?php echo home_url() . '/' . $src_tax . '/';?>" + choice;*/
 				}
 				if ( choice =="0" ) {
 					  location.href = "<?php echo $all_url;?>";

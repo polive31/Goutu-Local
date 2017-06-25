@@ -203,7 +203,7 @@ li.ingredient-group,
   display: block;
  	margin-bottom:10px;
  	color:#737373;
-	font-size:25px;	
+	font-size:20px;	
 }
 
 ul.wpurp-recipe-ingredients {
@@ -238,7 +238,7 @@ li.wpurp-recipe-instruction {
   color: #737373;
 }
 
-li.wpurp-recipe-instruction.li-single {
+li.wpurp-recipe-instruction.li-first.li-last {
 	list-style-type: none;
 }
 

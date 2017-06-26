@@ -88,7 +88,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		$a = shortcode_atts( array(
 			'source' => 'post', //comment
 			'display' => 'normal', //minimal = only stars, normal = caption + stars, full = with votes
-			'category' => 'all',  // "global", "rating", "clarity"...
+			'category' => 'all',  // which rating(s) is(are) to be displayed : "all", "global", "rating", "clarity"...
 		), $atts );
 		
 		$display_style = $a['display'];
@@ -125,6 +125,8 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		<table class="ratings-table">
 		<?php
 		foreach ($display_cats as $id=>$cat) {
+			
+			echo 'SHORTCODE !!!';
 	
 			//$this->dbg('In display loop $cats',$cat);
 			//$this->dbg('In display loop $id',$id);
@@ -143,7 +145,9 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 				}
 			}
 			else {
+				//echo 'CATEGORY = ' . $id;
 				$rating = $this->get_post_rating( $post_id , $id);
+				//echo 'RATING = ' . $rating;				
 				//$this->dbg('In display loop $rating',$rating);
 			}
 
@@ -262,7 +266,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		</table>
 		
 		<div class="comment-reply">
-		<label for="comment"><?php echo _x('Add a comment','custom-star-rating' );?></label>
+		<label for="comment"><?php echo __('Add a comment','custom-star-rating' );?></label>
 		<textarea id="comment" name="comment" cols="50" rows="6" aria-required="true"></textarea>
 		</div>
 

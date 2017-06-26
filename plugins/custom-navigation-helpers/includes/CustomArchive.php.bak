@@ -13,10 +13,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CustomArchive {
 	
 	protected static $vowels = array('a','e','i','o','u');
+	protected $fcat;
+	protected $fterm;
+	protected $orderby;
 	
 	public function __construct() {
 		add_action( 'pre_get_posts', array($this,'archive_filter_sort'));		
-		add_filter( 'query_vars', array($this,'add_filter_queryvars') );			
+		add_filter( 'query_vars', array($this,'add_filter_queryvars') );		
+			
+		add_action( 'wp_loaded', array($this,'hydrate'));		
 	}
 	
 	/* Output debug information 
@@ -30,13 +35,20 @@ class CustomArchive {
 	/* Custom query variable for taxonomy filter
 	--------------------------------------------- */		
 	function add_filter_queryvars($vars) {
-	  $vars[] = 'filter';
+	  $vars[] = 'fcat';
 	  $vars[] .= 'fterm';
 	  $vars[] .= 'ocat';
 	  $vars[] .= 'oterm';
 	  return $vars;
 	}	
-		
+
+	/* Class attributes initialization
+	--------------------------------------------- */		
+	function hydrate() {
+		$this->orderby = get_query_var('orderby','ASC');
+		$this->fcat = get_query_var('fcat');
+		$this->fterm = get_query_var('fterm');
+	}			
 	
 	public function archive_filter_sort($query) {
 	  // Select any archive. For custom post type use: is_post_type_archive( $post_type )
@@ -61,12 +73,13 @@ class CustomArchive {
 //		}		
 	
 		// Change the archive post orderby and sort order from slug
-		$orderby= get_query_var('orderby','title');
+
 		//echo 'ORDERBY' . $orderby;
 
-		if ($orderby=='rating') {
+		if ($this->orderby=='rating') {
+			PHP_Debug::trace('RATING !!!!');
 			$orderby = 'meta_value_num';
-			$meta_key = "user_rating_global";
+			$meta_key = 'user_rating_global';
 			$order = 'DESC';
 		}
 		else {	

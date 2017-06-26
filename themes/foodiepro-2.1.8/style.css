@@ -642,7 +642,7 @@ h1.archive-title,
 h1.entry-title {
 	font-family:"Roboto Slab", sans-serifs;
   text-decoration: none;
-	text-transform: none;
+	text-transform: capitalize;
 	font-size:40px;
 	font-weight:100;
 }
@@ -1388,6 +1388,7 @@ h1.entry-title,
 .entry-title a,
 .sidebar .widgettitle a {
 	text-decoration:none;
+	text-transform:capitalize;
 }
 
 .page h1.entry-title {
@@ -2281,12 +2282,12 @@ Site Header
 
 .foodie-pro .site-header {
 	background-position:left; /* P.O. Original center */
-	padding:20px 0; /* P.O. Original 20px 0 */
+	padding:10px 0; /* P.O. Original 20px 0 */
 	background-size:cover!important;
 }
 
 .home-page .site-header {
-    height:260px;
+    height:240px;
 }
 
 /* Title Area
@@ -2325,7 +2326,7 @@ Site Header
 }
 
 .home-page .title-area {
-  margin:20px 0;
+  margin:10px 0;
 }
 
 /*.home-page .site-title a,

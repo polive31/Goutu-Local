@@ -479,7 +479,7 @@ function archive_title($title) {
 	/* Display start rating below entry */
 	if ( is_tax() || is_search() ) :
 			$title .= do_shortcode('[display-star-rating category="global" display="minimal"]');
-			echo 'User rating global = ' . get_post_meta( get_the_ID(), 'user_rating_global', true );
+			//echo 'User rating global = ' . get_post_meta( get_the_ID(), 'user_rating_global', true );
 	endif;
 
 	if ( is_tax('cuisine', array('france', 'europe', 'asie', 'afrique', 'amerique-nord', 'amerique-sud') ) ) :

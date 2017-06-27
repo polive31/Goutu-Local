@@ -978,25 +978,15 @@ Structure and Layout
 	margin-top:0px;
 }
 
+.page .sidebar,
+.single-recipe .sidebar,
 .search .sidebar {
 	margin-top:20px;
-}
-
-.page .sidebar {
-	margin-top:40px;
-}
-
-.single-recipe .sidebar {
-	margin-top:90px;
 }
 
 .single-post .sidebar,
 .page-template-blogs .sidebar {
 	margin-top:60px;
-}
-
-.index-page .sidebar {
-/*	margin-top:180px;*/
 }
 
 

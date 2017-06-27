@@ -978,16 +978,10 @@ Structure and Layout
 	margin-top:0px;
 }
 
+.page .sidebar,
+.single-recipe .sidebar,
 .search .sidebar {
 	margin-top:20px;
-}
-
-.page .sidebar {
-	margin-top:40px;
-}
-
-.single-recipe .sidebar {
-	margin-top:90px;
 }
 
 .single-post .sidebar,
@@ -1800,7 +1794,7 @@ Plugins
 
 /* Easing Slider */
 h3.easingslider-post-title {
-	font-size:24px!important;
+	font-size:25px!important;
 	font-weight:300!important;
 }
 

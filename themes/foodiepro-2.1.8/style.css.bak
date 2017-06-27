@@ -1798,6 +1798,12 @@ Plugins
     background: rgba(255, 255, 255, 0.4)!important;
 }
 
+/* Easing Slider */
+h3.easingslider-post-title {
+	font-size:24px!important;
+	font-weight:300!important;
+}
+
 
 /* Social Share
 --------------------------------------------- */
@@ -2326,7 +2332,7 @@ Site Header
 }
 
 .home-page .title-area {
-  margin:20px 0;
+  margin:10px 0;
 }
 
 /*.home-page .site-title a,
@@ -3549,7 +3555,7 @@ Media Queries
     padding-left:20px!important;
    }
 	
-	 h3.easingslider-post-title {
+	 .easingslider-post-title {
     font-size:25px!important;
 	 }
 	

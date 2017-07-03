@@ -973,20 +973,12 @@ Structure and Layout
 	float:left;
 }
 
-.sidebar,
 .home.page .sidebar {
 	margin-top:0px;
 }
 
-.page .sidebar,
-.single-recipe .sidebar,
-.search .sidebar {
+.sidebar {
 	margin-top:20px;
-}
-
-.single-post .sidebar,
-.page-template-blogs .sidebar {
-	margin-top:60px;
 }
 
 

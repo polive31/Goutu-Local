@@ -989,10 +989,6 @@ Structure and Layout
 	margin-top:60px;
 }
 
-.index-page .sidebar {
-/*	margin-top:180px;*/
-}
-
 
 /* Secondary Sidebar */
 

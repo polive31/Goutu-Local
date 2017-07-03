@@ -188,7 +188,7 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 	border:1px dashed #000;
 	width:40%;
 	margin:0 30px 10px 0;
-	padding:10px;
+	padding:10px 10px 10px 20px;
 	text-decoration:none;
 }
 
@@ -305,6 +305,8 @@ li.wpurp-recipe-instruction span {
   font-size: 13px;	
 	float:left;
 	margin-top: 4px;	
+	line-height: 14px;
+	padding: 10px;
 }
 
 #joined-pics .add-picture-button button:hover {

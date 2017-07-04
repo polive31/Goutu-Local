@@ -479,12 +479,12 @@ function archive_title($title) {
 	/* Display start rating below entry */
 	if ( is_tax() || is_search() ) :
 			$title .= do_shortcode('[display-star-rating category="global" display="minimal"]');
-			echo 'User rating global = ' . get_post_meta( get_the_ID(), 'user_rating_global', true );
+			//echo 'User rating global = ' . get_post_meta( get_the_ID(), 'user_rating_global', true );
 	endif;
 
 	if ( is_tax('cuisine', array('france', 'europe', 'asie', 'afrique', 'amerique-nord', 'amerique-sud') ) ) :
 		$origin = wp_get_post_terms( get_the_ID(), 'cuisine', array("fields" => "names"));
-		$title .= '<div class="origin">' . $origin[0] . '</div>';
+		$title =. '<div class="origin">' . $origin[0] . '</div>';
 	endif;
 
 	return $title;

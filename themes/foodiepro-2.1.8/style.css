@@ -666,6 +666,13 @@ h1.entry-title {
   font-family: "Amatic SC";
 }
 
+.entry-header .origin {
+  font-family: 'Amatic SC';
+  text-transform: capitalize;
+  font-size: 24px;
+  font-weight: bold;
+}
+
 .archive h2.entry-title a,
 .search h2.entry-title a,
 h3.easingslider-post-title,
@@ -675,6 +682,8 @@ h3.rpwe-title a {
   text-decoration: none;
 	text-transform:capitalize !important;
 }
+
+
 
 /* Widgets */
 .tagcloud a {
@@ -2105,10 +2114,19 @@ Custom Page Templates
 	width:100px;
 }
 
+.entry-header .origin {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background: rgba(78, 76, 76, 0.43);
+  border-radius: 8px;
+  padding: 0 10px 0 10px;
+  color: white;
+}
+
 .entry-content {
 	clear:both;
 }
-
 
 /* Recipes, Blog & Archive Pages
 --------------------------------------------- */
@@ -2669,6 +2687,7 @@ a.more-link,
 	-webkit-flex-direction:column;
   display:flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
 	flex-direction:column;
+	position:relative;
 }
 
 a.entry-image-link {
@@ -3309,7 +3328,6 @@ Media Queries
 
 	.archive-description,
 	.author-box,
-	.entry,
 	.entry-comments,
 	.entry-footer .entry-meta,
 	.sidebar .widget,

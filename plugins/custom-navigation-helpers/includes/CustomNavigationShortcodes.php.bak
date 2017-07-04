@@ -156,7 +156,6 @@ class CustomNavigationShortcodes extends CustomArchive {
 
 
 	// Parent term (child_of = false by default)
-		if (! $filter) {
 			if ($obj->parent != 0) {
 				$child_of = $obj->parent;
 				//$parent_meta = get_term_by('id', $parent, 'cuisine');
@@ -166,13 +165,15 @@ class CustomNavigationShortcodes extends CustomArchive {
 //			else {
 //				$child_of = $obj->term_id;
 //			}
-		} 
+	
 
 	// Filter taxonomy
 			//$obj->name;
 		if ($filter) {
-			if ( $src_tax=='course' )
+			if ( $obj->taxonomy=='course' )
 				$flt_tax = 'occasion';
+			elseif ( $obj->taxonomy=='cuisine' )
+				$flt_tax = 'cuisine';
 			else
 				$flt_tax = 'course';
 		}
@@ -193,7 +194,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		if ($dropdown=='true') {	
 			$dropdown_id = $taxonomy . ++$dropdown_cnt;
 			
-			$html = '<label class="screen-reader-text" for="' . esc_attr( $dropdown_id ) . '"></label>';
+			$html = '<label class="screen-reader-text" for="' . esc_attr( $dropdown_id ) . '"> . $label . </label>';
 
 			$args['show_option_none'] = $select_msg;
 			//$args['show_option_all'] = $all_msg;

@@ -156,7 +156,6 @@ class CustomNavigationShortcodes extends CustomArchive {
 
 
 	// Parent term (child_of = false by default)
-		if (! $filter) {
 			if ($obj->parent != 0) {
 				$child_of = $obj->parent;
 				//$parent_meta = get_term_by('id', $parent, 'cuisine');
@@ -166,18 +165,20 @@ class CustomNavigationShortcodes extends CustomArchive {
 //			else {
 //				$child_of = $obj->term_id;
 //			}
-		} 
+	
 
 	// Filter taxonomy
 			//$obj->name;
 		if ($filter) {
-			if ( $src_tax=='course' )
+			if ( $obj->taxonomy=='course' )
 				$flt_tax = 'occasion';
+			elseif ( $obj->taxonomy=='cuisine' )
+				$flt_tax = 'cuisine';
 			else
 				$flt_tax = 'course';
 		}
 		else 		
-			$flt_tax = $src_tax;
+			$flt_tax = $obj->taxonomy;
 		
 	// Arguments for wp_list_categories	
 		$args = array( 

@@ -647,6 +647,16 @@ h1.entry-title {
 	font-weight:100;
 }
 
+h1.archive-title {
+	text-transform: uppercase;
+}
+
+.archive h2 { /* Subtitle */
+  font-family: "Amatic SC";
+  font-size: 45px;
+	margin: 40px 0 0 0;
+}
+
 /*.recipe h1.entry-title {
 	font-family:"Amatic SC", cursive !important;
 	font-size:40px;
@@ -973,20 +983,12 @@ Structure and Layout
 	float:left;
 }
 
-.sidebar,
 .home.page .sidebar {
 	margin-top:0px;
 }
 
-.page .sidebar,
-.single-recipe .sidebar,
-.search .sidebar {
+.sidebar {
 	margin-top:20px;
-}
-
-.single-post .sidebar,
-.page-template-blogs .sidebar {
-	margin-top:60px;
 }
 
 
@@ -1412,8 +1414,9 @@ h2.entry-title, .wpupg-post-title,
 
 .recipes-top .widgettitle, 
 .blogs-top .widgettitle,
-.archives-top .widgettitle  {
-	font-size:24px; 
+.archives-top .widgettitle {
+  font-family:"Lato", sans-serif;	
+	font-size:13px; 
 	margin-bottom:0;
 }
 

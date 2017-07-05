@@ -667,13 +667,6 @@ h1.entry-title {
 }
 
 .entry-header .origin {
-  position: absolute;
-  left: 10px;
-  top: 10px;
-  background: rgba(78, 76, 76, 0.43);
-  border-radius: 8px;
-  padding: 0 10px 0 10px;
-  color: white;
   font-family: 'Amatic SC';
   text-transform: capitalize;
   font-size: 24px;
@@ -3514,7 +3507,9 @@ Media Queries
 	.rpwe-block.grid-5col li,
 	.simple-grid.one-fifth,
 	.rpwe-block.grid-4col li,
-	.simple-grid.one-fourth {
+	.simple-grid.one-fourth,
+	.rpwe-block.grid-3col li,
+	.simple-grid.one-third {
   	width:50%;         
 	}
 	

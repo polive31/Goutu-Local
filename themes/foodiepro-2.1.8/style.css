@@ -1660,7 +1660,8 @@ form[role="search"] {
 	margin-bottom:auto;
 	width: 100%;
   margin: 0px;
-	text-align:left;  	
+	text-align:left; 
+	font-variant: small-caps;	 	
 }
 
 /* Menu themes 

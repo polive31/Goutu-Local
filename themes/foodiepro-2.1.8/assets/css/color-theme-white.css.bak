@@ -21,7 +21,7 @@ h1.entry-title,
 .entry-title a,
 .sidebar .widgettitle a,
 .widgettitle  {
-	color:#000;
+	color:#5d5d5d;
 }
 
 
@@ -136,10 +136,14 @@ input, select, textarea,
   border-color:#AAA;
 }
 
+.widget.themes ul li a {
+	color:#949494;
+}
+
 .widget.themes ul li.current-menu-item,
 .archive-pagination li.active {
-  background-color: #f7f7f7;
-  border-color:#000;
+  /*background-color: #f7f7f7;
+  border-color:#000;*/
 }
 
 .recipes-bottom .rpwe_widget .widget-wrap,
@@ -206,7 +210,7 @@ li.comment {
  
 	.site-title a,
 	.home .site-title a {
-		background:url("../../images/logo_goutu_transparent_720_300.png") no-repeat center;
+		background:url("../../images/logo-white/logo_720_300.png") no-repeat center;
 		background-size:contain;
 	} 	
 

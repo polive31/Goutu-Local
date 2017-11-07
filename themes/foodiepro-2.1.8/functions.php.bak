@@ -251,6 +251,16 @@ function foodie_pro_add_body_class( $classes ) {
 //}
 
 
+//Prevent conflict between BP & BJ Lazy Load
+
+add_action( 'wp_enqueue_scripts', 'deregister_bjll' );
+
+function deregister_bjll() {
+  if ( bp_is_change_avatar() ) {
+    wp_deregister_script( 'BJLL' );
+ }
+}
+
 //Making jQuery Google API
 //add_action('init', 'load_jquery_from_google');
 function load_jquery_from_google() {

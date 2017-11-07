@@ -3415,6 +3415,9 @@ Media Queries
 		display:initial;
 	}
 	
+	h3.easingslider-post-title {
+		font-size: 20px!important;
+	}
 	
 }
 

@@ -10,11 +10,11 @@ body {
 }
 
 .site-title a {
-	background:url("../../images/logo_goutu_transparent_h75.png") no-repeat center;
+	background:url("../../images/logo-white/logo_small.png") no-repeat center;
 }
 
 .home-page .site-title a {
-	background:url("../../images/logo_goutu_transparent_450_190.png") no-repeat center;
+	background:url("../../images/logo-white/logo_450_190.png") no-repeat center;
 }
 
 h1.entry-title,
@@ -53,7 +53,6 @@ a.more-link:hover,
 }
 
 .archives-bottom {
-  border-bottom: 1px dashed #555;
   border-top: 1px dashed #555;
 }
 
@@ -195,7 +194,7 @@ li.comment {
 
 	.site-title a,
 	.home .site-title a {
-		background:url("../../images/logo_goutu_transparent_360_150.png") no-repeat center;
+		background:url("../../images/logo-white/logo_360_150.png") no-repeat center;
 	}
 	
 }

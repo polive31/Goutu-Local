@@ -3510,7 +3510,7 @@ Media Queries
 	.simple-grid.one-fourth,
 	.rpwe-block.grid-3col li,
 	.simple-grid.one-third {
-  	width:50%;         
+  	width:100%;         
 	}
 	
 

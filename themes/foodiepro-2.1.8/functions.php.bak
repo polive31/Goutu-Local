@@ -484,7 +484,7 @@ function archive_title($title) {
 
 	if ( is_tax('cuisine', array('france', 'europe', 'asie', 'afrique', 'amerique-nord', 'amerique-sud') ) ) :
 		$origin = wp_get_post_terms( get_the_ID(), 'cuisine', array("fields" => "names"));
-		$title =. '<div class="origin">' . $origin[0] . '</div>';
+		$title = '<div class="origin">' . $origin[0] . '</div>' . $title;
 	endif;
 
 	return $title;

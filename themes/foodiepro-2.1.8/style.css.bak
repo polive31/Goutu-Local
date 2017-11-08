@@ -651,12 +651,13 @@ h1.archive-title,
 	font-size:60px;
 	font-weight:bold;
   line-height: 70px;
-	padding: 30px 0;  
+  padding-bottom: 30px;
 }
 
 h1.archive-title {
 	font-size:50px;
   text-align: center;   
+  padding-bottom: 0px;
 }
 
 .archive h2 { /* Subtitle */
@@ -696,11 +697,21 @@ h3.rpwe-title a {
 	font-family: "Podkova",cursive !important;
   text-decoration: none;
 	text-transform:capitalize !important;
-  /*font-weight: 300;*/
+  font-weight: normal;
   font-size: 16px;	
 }
 
 /* Widgets */
+
+.recipes-top .widgettitle, 
+.blogs-top .widgettitle,
+.archives-top .widgettitle {
+  font-family:"Lato", sans-serif;	
+	font-size:13px; 
+	margin-bottom:0;
+	font-weight:300;
+}
+
 .tagcloud a {
   font-family:"Podkova",cursive !important;
   /*font-family:"Roboto Slab", cursive !important;*/
@@ -744,9 +755,9 @@ h3.rpwe-title a {
 }
 
 .footer-widgets .widgettitle {
-	font-family: "PT Sans Narrow",sans-serif;
+	font-family: "Lato",sans-serif;
 	text-transform: uppercase;
-	font-weight: normal;
+	font-weight: 300;
 	font-size: 18px;
 	color: #555;
 }
@@ -758,22 +769,23 @@ h3.rpwe-title a {
 .archives-top .textwidget ul li,
 .archives-top select {
 	font-size:12px;
-	font-weight:bold;
+	font-weight:normal;
 }
 
 .widget.themes ul li a {
-	font-family:"Lato",sans-serif;
+	font-family:"Podkova",sans-serif;
 	font-weight:normal;
 	letter-spacing:.5px;
-	font-size:16px;
+	font-size:18px;
 	line-height:14px;
+	text-transform:none;
 	/*font-variant: small-caps;*/
 }
 
 .widget.themes ul li.current-menu-item > a,
 .widget.themes ul li:hover > a {
 	color:#444;
-	font-size : 18px;
+	font-size : 20px;
 	font-weight: 400;	
 }
 
@@ -1434,13 +1446,6 @@ h2.entry-title, .wpupg-post-title,
   padding:10px;
 }
 
-.recipes-top .widgettitle, 
-.blogs-top .widgettitle,
-.archives-top .widgettitle {
-  font-family:"Lato", sans-serif;	
-	font-size:13px; 
-	margin-bottom:0;
-}
 
 .content .widgettitle {
 	margin:0 0 20px 0;

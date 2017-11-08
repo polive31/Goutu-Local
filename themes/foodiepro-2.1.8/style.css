@@ -638,26 +638,32 @@ span.bp_counter,
 }
 
 /* Headlines */
-h1.archive-title,
 h1.entry-title {
-	font-family:"Podkova", serif;
+	font-family: "Podkova",cursive;
   text-decoration: none;
 	text-transform: capitalize;
-	font-size:50px;
-	font-weight:200;
-	letter-spacing:-1px;
+	font-size:35px;
 }
 
+h1.archive-title,
 .page h1.entry-title {
-	/*text-transform: uppercase;*/
-	font-variant:small-caps;
-	font-size:60px;	
+  font-family: "Amatic SC";	
+	font-size:60px;
+	font-weight:bold;
+  line-height: 70px;
+	padding: 30px 0;  
+}
+
+h1.archive-title {
+	font-size:50px;
+  text-align: center;   
 }
 
 .archive h2 { /* Subtitle */
   font-family: "Amatic SC";
   font-size: 45px;
 	margin: 40px 0 0 0;
+	font-weight:bold;
 }
 
 /*.recipe h1.entry-title {
@@ -671,6 +677,7 @@ h1.entry-title {
 .single h3 {
   font-size: 30px;
   font-family: "Amatic SC";
+	font-weight: bold;  
 }
 
 .entry-header .origin {
@@ -686,18 +693,16 @@ h3.easingslider-post-title,
 h3.rpwe-title a {
 	/*font-family:"Delius Swash Caps", cursive !important;
 	font-family:"Roboto slab", cursive !important;*/
-	font-family: "Podkova", cursive !important;
+	font-family: "Podkova",cursive !important;
   text-decoration: none;
 	text-transform:capitalize !important;
   /*font-weight: 300;*/
   font-size: 16px;	
 }
 
-
-
 /* Widgets */
 .tagcloud a {
-  font-family:"Podkova", cursive !important;
+  font-family:"Podkova",cursive !important;
   /*font-family:"Roboto Slab", cursive !important;*/
 	font-weight:300
 }
@@ -730,7 +735,7 @@ h3.rpwe-title a {
   font-family:"Amatic SC", cursive;
 	font-size:50px;
   color:#222;
-  font-weight:normal;
+  font-weight:bold;
   text-transform:none;  
 }
 
@@ -1388,10 +1393,6 @@ img.alignright,
 	margin-top:20px;
 }
 
-.page .entry-title {
-	margin-bottom:16px;
-}
-
 .sidebar .entry-title {
 	font-size:16px;
 	font-weight:400;
@@ -1405,7 +1406,7 @@ img.alignright,
 }
 
 .page .entry-title {
-	margin-top:0px;
+	/*margin-top:0px;*/
 }
 
 h2.entry-title, .wpupg-post-title, 
@@ -1424,8 +1425,8 @@ h2.entry-title, .wpupg-post-title,
 /* Widget Titles */
 
 .widgettitle {
-  font-size:36px;
-	/* font-weight:300; P.O. Original 400 */
+  font-size:30px;
+	font-weight: bold;  
 	letter-spacing:1px;
 	text-align:center;
 	/*text-transform:uppercase;*/
@@ -1477,9 +1478,7 @@ h2.entry-title, .wpupg-post-title,
 /* Archive title
 --------------------------------------------- */
 
-
 .archive-title {
-	font-size:28px;
 	margin-bottom:22px;
 }
 

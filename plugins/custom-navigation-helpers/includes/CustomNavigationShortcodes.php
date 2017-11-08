@@ -149,45 +149,40 @@ class CustomNavigationShortcodes extends CustomArchive {
 		if ( $taxonomy=='url' ) {
 			$obj = get_queried_object();
 			//echo var_dump( $obj );
-			$src_tax = $obj->taxonomy;
+			$tax_slug = $obj->taxonomy;
+			$tax = get_taxonomy($tax_slug);
+			//$term_name = $obj->name;
+			//$term_slug = $obj->slug;		
 		}
 		else 
-			$src_tax = $taxonomy;	
-
-
+			$tax_slug = $taxonomy;	
+		//echo sprintf( '$tax_slug = %s <br>', $tax_slug);
+				
 	// Parent term (child_of = false by default)
-			if ($obj->parent != 0) {
-				$child_of = $obj->parent;
-				//$parent_meta = get_term_by('id', $parent, 'cuisine');
-				//if ($parent_meta != false) $all_msg = $parent_meta->name;
-				//$all_url = add_query_arg( 'cuisine', $parent_meta->slug, home_url() );
-			}
-//			else {
-//				$child_of = $obj->term_id;
-//			}
-	
+		if ($obj->parent != 0) 
+			$child_of = $obj->parent;
+		else 
+			$child_of = $obj->term_id;
+		//echo sprintf( '$child_of = %s <br>', $child_of);
 
 	// Filter taxonomy
-			//$obj->name;
+		//$obj->name;
 		if ($filter) {
-			if ( $obj->taxonomy=='course' )
-				$flt_tax = 'occasion';
-			elseif ( $obj->taxonomy=='cuisine' )
-				$flt_tax = 'cuisine';
+			if ( $tax_slug=='course' )
+				$tax_slug = 'occasion';
+			elseif ( $tax_slug=='cuisine' )
+				$tax_slug = 'cuisine';
 			else
-				$flt_tax = 'course';
+				$tax_slug = 'course';
 		}
-		else 		
-			$flt_tax = $obj->taxonomy;
-		
+
 	// Arguments for wp_list_categories	
 		$args = array( 
-			'taxonomy'	=> $flt_tax,
+			'taxonomy'	=> $tax_slug,
 			'child_of'	=> $child_of,
 			'depth' 		=> $depth,
 			'exclude' 	=> $exclude,
 			'orderby' 	=> 'slug',
-			//'title_li' => '',
 			'echo' 			=> false
 		);
 		
@@ -207,11 +202,6 @@ class CustomNavigationShortcodes extends CustomArchive {
 			$args['value_field'] = 'slug';
 			
 			$html .= wp_dropdown_categories( $args );
-	
-//			// Get taxonomy slug from taxonomy ID
-//			$tax_meta = get_taxonomy( $taxonomy );
-//			if ($tax_meta != false) 
-//				$tax_slug = $tax_meta->rewrite['slug'];
 				
 			ob_start();
 			?>
@@ -223,20 +213,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 			 function on_<?php echo $dropdown_id;?>_Change() {
 			  var choice = <?php echo $dropdown_id;?>_dropdown.options[ <?php echo $dropdown_id;?>_dropdown.selectedIndex ].value;
 				if ( choice !="none" ) {
-					<?php if ($filter)  {
-//						$query_url = add_query_arg( array( 
-//																		$src_tax => $obj->slug,
-//																		'ocat' => $src_tax, 
-//																		'oterm' => $obj->slug,
-//																	), 
-//																	home_url() );
-					  echo 'location.href = "' . home_url() . '/' . $src_tax . '/' . $obj->slug . '/?ocat=' . $src_tax . '&oterm=' . $obj->slug . '&fcat=' . $flt_tax . '&fterm=" + choice';
-					  //echo 'location.href = "' . $query_url . '&filter=' . $flt_tax . '&term=" + choice';
-					}
-					else	
-					  echo 'location.href = "' . home_url() . '/' . $src_tax . '/" + choice';
-					 ?>
-					 /*location.href = "<?php echo home_url() . '/' . $src_tax . '/';?>" + choice;*/
+					  <?php echo 'location.href = "' . home_url() . '/?' . $tax_slug . '=" + choice'; ?>
 				}
 				if ( choice =="0" ) {
 					  location.href = "<?php echo $all_url;?>";

@@ -2335,7 +2335,7 @@ Site Header
 .site-title,
 .site-title a {
 	padding:0; /* P.O. Original 16px 0 */
-	width:290px; /* P.O. Original 360px */
+	width:300px; /* P.O. Original 360px */
 	height:70px; /* P.O. Original 300px */
 	float:left;
   text-indent:-9999px;

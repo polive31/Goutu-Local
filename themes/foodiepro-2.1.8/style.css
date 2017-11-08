@@ -1404,8 +1404,8 @@ img.alignright,
 	text-transform:capitalize;
 }
 
-.page h1.entry-title {
-	padding-top:15px;
+.page .entry-title {
+	margin-top:0px;
 }
 
 h2.entry-title, .wpupg-post-title, 

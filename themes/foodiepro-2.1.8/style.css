@@ -785,7 +785,7 @@ h3.rpwe-title a {
 
 .widget.themes ul li.current-menu-item > a,
 .widget.themes ul li:hover > a {
-	color:#444;
+	color:#666;
 	font-size : 20px;
 	font-weight: 400;	
 }

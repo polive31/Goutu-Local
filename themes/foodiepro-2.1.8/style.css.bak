@@ -777,7 +777,7 @@ h3.rpwe-title a {
 	font-family:"Lato",sans-serif;
 	font-weight:normal;
 	letter-spacing:.5px;
-	font-size:18px;
+	font-size:16px;
 	line-height:14px;
 	text-transform:none;
 	/*font-variant: small-caps;*/

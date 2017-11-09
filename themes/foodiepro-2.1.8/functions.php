@@ -308,7 +308,7 @@ add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_syles' );
 function foodie_pro_enqueue_syles() {
 	//wp_enqueue_style( 'font-awesome', CHILD_THEME_URL . '/assets/fonts/font-awesome/css/font-awesome.min.css', array(), CHILD_THEME_VERSION );
 	//wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400|PT+Sans+Narrow|Roboto+Slab:100,300|Lato:300|Delius+Swash+Caps', array(), CHILD_THEME_VERSION );
-	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:700|Podkova|PT+Sans+Narrow|Lato:300,400', array(), CHILD_THEME_VERSION );
+	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Podkova|PT+Sans+Narrow|Lato:300,400', array(), CHILD_THEME_VERSION );
 }
 
 

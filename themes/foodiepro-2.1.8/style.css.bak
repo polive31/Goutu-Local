@@ -650,8 +650,10 @@ h1.archive-title,
   font-family: "Amatic SC";	
 	font-size:60px;
 	font-weight:bold;
+	font-variant:small-caps;
   line-height: 70px;
   padding-bottom: 30px;
+  letter-spacing:2px;
 }
 
 h1.archive-title {
@@ -785,7 +787,7 @@ h3.rpwe-title a {
 
 .widget.themes ul li.current-menu-item > a,
 .widget.themes ul li:hover > a {
-	color:#444;
+	color:#666;
 	font-size : 20px;
 	font-weight: 400;	
 }
@@ -1419,7 +1421,7 @@ img.alignright,
 }
 
 .page .entry-title {
-	/*margin-top:0px;*/
+	padding-top: 40px;
 }
 
 h2.entry-title, .wpupg-post-title, 
@@ -1438,8 +1440,7 @@ h2.entry-title, .wpupg-post-title,
 /* Widget Titles */
 
 .widgettitle {
-  font-size:30px;
-	font-weight: bold;  
+  font-size:30px; 
 	letter-spacing:1px;
 	text-align:center;
 	/*text-transform:uppercase;*/
@@ -2314,8 +2315,8 @@ Site Header
 ---------------------------------------------------------------------------------------------------- */
 
 .foodie-pro .site-header {
-	background-position:left; /* P.O. Original center */
-	padding:10px 0; /* P.O. Original 20px 0 */
+	background-position:left; 
+	padding:10px 0; 
 	background-size:cover!important;
 }
 
@@ -2339,9 +2340,8 @@ Site Header
 .title-area,
 .site-title,
 .site-title a {
-	padding:0; /* P.O. Original 16px 0 */
-	width:300px; /* P.O. Original 360px */
-	height:70px; /* P.O. Original 300px */
+	width:350px; 
+	height:100px; 
 	float:left;
   text-indent:-9999px;
 }

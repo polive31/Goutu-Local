@@ -33,6 +33,7 @@ function rpwe_get_default_args() {
 		'post_status'      => 'publish',
 		'ignore_sticky'    => 1,
 		'exclude_current'  => 1,
+		'author'					 => '',
 
 		'excerpt'          => false,
 		'length'           => 10,
@@ -166,6 +167,12 @@ function rpwe_get_recent_posts( $args = array() ) {
 							endif;
 
 						endif;
+						
+						/* Added P.O. */
+						$meta_html = '';
+						$meta_html = apply_filters( 'rpwe_after_thumbnail', $meta_html, $args);
+						$html .= $meta_html;
+						/* End P.O. */
 
 						$html .= '<h3 class="rpwe-title"><a href="' . esc_url( get_permalink() ) . '" title="' . sprintf( esc_attr__( 'Permalink to %s', 'recent-posts-widget-extended' ), the_title_attribute( 'echo=0' ) ) . '" rel="bookmark">' . esc_attr( get_the_title() ) . '</a></h3>';
 
@@ -242,6 +249,7 @@ function rpwe_get_posts( $args = array() ) {
 		'post_type'           => $args['post_type'],
 		'post_status'         => $args['post_status'],
 		'ignore_sticky_posts' => $args['ignore_sticky'],
+		'author' => $args['author'],
 	);
 
 	// Exclude current post
@@ -258,6 +266,13 @@ function rpwe_get_posts( $args = array() ) {
 	if ( ! empty( $args['tag'] ) ) {
 		$query['tag__in'] = $args['tag'];
 	}
+
+	// Limit posts based on author.
+	if ( ! empty( $args['author'] ) ) {
+		$query['author'] = $args['author'];
+	}
+
+
 
 	/**
 	 * Taxonomy query.

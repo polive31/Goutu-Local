@@ -10,7 +10,7 @@ body {
 }
 
 .site-title a {
-	background:url("../../images/logo-white/logo_vsmall.png") no-repeat center;
+	background:url("../../images/logo-white/logo_small.png") no-repeat center;
 }
 
 .home-page .site-title a {
@@ -176,7 +176,7 @@ input, select, textarea,
 }
 
 .widget.bubbles ul li:hover {
-	background-color:#f9f9f9;
+	/*background-color:#f9f9f9;*/
 }
 
 .widget.bubbles ul li:hover a {

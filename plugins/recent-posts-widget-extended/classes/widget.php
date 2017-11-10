@@ -110,7 +110,8 @@ class Recent_Posts_Widget_Extended extends WP_Widget {
 		$instance['cat']              = $new_instance['cat'];
 		$instance['tag']              = $new_instance['tag'];
 		$instance['taxonomy']         = esc_attr( $new_instance['taxonomy'] );
-
+		$instance['author']         	= esc_attr( $new_instance['author'] );
+		
 		$instance['excerpt']          = isset( $new_instance['excerpt'] ) ? (bool) $new_instance['excerpt'] : false;
 		$instance['length']           = intval( $new_instance['length'] );
 		$instance['date']             = isset( $new_instance['date'] ) ? (bool) $new_instance['date'] : false;

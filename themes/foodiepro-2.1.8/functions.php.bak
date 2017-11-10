@@ -308,7 +308,7 @@ add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_syles' );
 function foodie_pro_enqueue_syles() {
 	//wp_enqueue_style( 'font-awesome', CHILD_THEME_URL . '/assets/fonts/font-awesome/css/font-awesome.min.css', array(), CHILD_THEME_VERSION );
 	//wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400|PT+Sans+Narrow|Roboto+Slab:100,300|Lato:300|Delius+Swash+Caps', array(), CHILD_THEME_VERSION );
-	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:700|Podkova|PT+Sans+Narrow|Lato:300,400', array(), CHILD_THEME_VERSION );
+	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Podkova|Lato:300,400', array(), CHILD_THEME_VERSION );
 }
 
 
@@ -421,6 +421,41 @@ remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
 add_action( 'genesis_after_content', 'genesis_posts_nav' );
 
 
+/* Hook widget areas 
+-----------------------------------------------------------------------------*/
+
+add_action( 'genesis_before_content', 'add_before_content_area');
+function add_before_content_area() {
+  if ( is_page() ) {
+  		genesis_widget_area( 'before-content', array(
+        'before' => '<div class="top before-content widget-area">',
+        'after'  => '</div>',
+  		));
+  }     
+}
+
+
+add_action( 'genesis_before_loop', 'add_archive_top_area');
+function add_archive_top_area() {
+  if ( is_archive() || is_search() ) {
+  		genesis_widget_area( 'archives-top', array(
+        'before' => '<div class="top archives-top widget-area">',
+        'after'  => '</div>',
+  		));
+  }     
+}
+
+add_action( 'genesis_after_loop', 'add_archive_bottom_area');
+function add_archive_bottom_area() {
+  if ( is_archive() || is_search() ) {
+  		genesis_widget_area( 'archives-bottom', array(
+        'before' => '<div class="bottom archives-bottom widget-area">',
+        'after'  => '</div>',
+  		));
+  }     
+}
+
+
 /* =================================================================*/
 /* =                 RECIPES
 /* =================================================================*/
@@ -480,27 +515,6 @@ function set_full_layout() {
 }
 
 
-/* Hook category widget areas before post content and after archive title
------------------------------------------------------------------------------*/
-add_action( 'genesis_before_loop', 'add_archive_top_area');
-function add_archive_top_area() {
-  if ( is_archive() || is_search() ) {
-  		genesis_widget_area( 'archives-top', array(
-        'before' => '<div class="top archives-top widget-area">',
-        'after'  => '</div>',
-  		));
-  }     
-}
-
-add_action( 'genesis_after_loop', 'add_archive_bottom_area');
-function add_archive_bottom_area() {
-  if ( is_archive() || is_search() ) {
-  		genesis_widget_area( 'archives-bottom', array(
-        'before' => '<div class="bottom archives-bottom widget-area">',
-        'after'  => '</div>',
-  		));
-  }     
-}
 
 
 /* Customize entry title in the archive pages

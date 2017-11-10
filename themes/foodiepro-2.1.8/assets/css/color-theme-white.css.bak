@@ -10,7 +10,7 @@ body {
 }
 
 .site-title a {
-	background:url("../../images/logo-white/logo_small.png") no-repeat center;
+	background:url("../../images/logo-white/logo_vsmall.png") no-repeat center;
 }
 
 .home-page .site-title a {
@@ -112,14 +112,16 @@ input, select, textarea,
 	background-color:#fafafa;	
 }
 
-/* Widget top5 */
+/* Widget top5
+-------------------------------------------- */
 
 .top5 .rpwe-block {
 	/*background-color:#f4f4f4;*/
 	border : 1px dashed #CCC;
 }
 
-/* Widget themes */
+/* Widget themes
+-------------------------------------------- */
 
 .sidebar-primary .widget.themes {
 	/*border: 1px dashed #ccc;*/
@@ -138,7 +140,7 @@ input, select, textarea,
 }
 
 .widget.themes ul li a {
-	color:#949494;
+	color:#6b6b6b;
 }
 
 .widget.themes ul li.current-menu-item,
@@ -147,12 +149,35 @@ input, select, textarea,
   border-color:#000;*/
 }
 
+.widget.themes ul li.current-menu-item > a,
+.widget.themes ul li:hover > a {
+	color:#af4a2b;
+}
+
 .recipes-bottom .rpwe_widget .widget-wrap,
 .blogs-bottom .rpwe_widget .widget-wrap {
 	/*background-color:#f5f5f5;*/
 	border-bottom: 1px dotted #ccc;
 }
 
+/* Widget bubbles
+-------------------------------------------- */
+
+.widget.bubbles ul li {
+	border: 1px solid #AAA;
+}
+
+.widget.bubbles ul li.current-menu-item {
+	background-color:#d8d8d8;
+}
+
+.widget.bubbles ul li:hover {
+	background-color:#f9f9f9;
+}
+
+.widget.bubbles ul li:hover a {
+	color:#666;
+}
 
 /* RECIPES & POSTS
 --------------------------------------------*/

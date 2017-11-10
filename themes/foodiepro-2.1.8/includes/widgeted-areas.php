@@ -54,6 +54,11 @@ function foodie_pro_after_entry() {
 
 //* Register widget areas.
 genesis_register_sidebar( array(
+	'id'			=> 'before-content',
+	'name'			=> __( 'Before Content', 'foodiepro' ),
+	'description'	=> __( 'This is the first section before content and sidebars.', 'foodiepro' ),
+) );
+genesis_register_sidebar( array(
 	'id'			=> 'before-header',
 	'name'			=> __( 'Before Header', 'foodiepro' ),
 	'description'	=> __( 'This is the section before the header.', 'foodiepro' ),

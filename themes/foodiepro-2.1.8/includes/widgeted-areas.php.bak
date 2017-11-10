@@ -118,7 +118,7 @@ genesis_register_sidebar( array(
 ) );
 //* Create custom category archive bottom widget area (lef)
 genesis_register_sidebar( array(
-    'id'          => 'archives-top',
-    'name'        => __( 'Archives Top', 'foodiepro' ),
-    'description' => __( 'This is the top widget section of archived pages.', 'foodiepro' ),
+    'id'          => 'archives-bottom',
+    'name'        => __( 'Archives Bottom', 'foodiepro' ),
+    'description' => __( 'This is the bottom widget section of archived pages.', 'foodiepro' ),
 ) );

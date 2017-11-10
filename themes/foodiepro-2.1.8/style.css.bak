@@ -1670,6 +1670,11 @@ form[role="search"] {
     text-align: center;
 }
 
+
+.widget.bubbles ul li:hover {
+    border-radius: 20px;
+}
+
 .widget.bubbles ul li a {
     margin-top: auto;
     margin-bottom: auto;
@@ -3459,6 +3464,16 @@ Site Footer
 	.before-header .enews-widget form {
 		margin:0;
 	}
+
+	.before-content {
+		display:initial;
+	}
+	
+	.site-header .widget-area,	
+	.sidebar {
+		display:none;
+	}
+
 	
 	/* Added P.O. Do not display some items on smartphones */
 	/*.footer-widgets-1,*/

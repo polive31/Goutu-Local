@@ -164,11 +164,15 @@ input, select, textarea,
 -------------------------------------------- */
 
 .widget.bubbles ul li {
-	border: 1px solid #AAA;
+	border: 1px dashed #666;
 }
 
 .widget.bubbles ul li.current-menu-item {
-	background-color:#d8d8d8;
+	background-color:#d8d8d8;	
+}
+
+.widget.bubbles ul li.current-menu-item a {
+    color: #000;
 }
 
 .widget.bubbles ul li:hover {

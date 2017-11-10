@@ -164,7 +164,7 @@ input, select, textarea,
 -------------------------------------------- */
 
 .widget.bubbles ul li {
-	border: 1px solid #AAA;
+	border: 1px dashed #666;
 }
 
 .widget.bubbles ul li.current-menu-item {
@@ -176,7 +176,7 @@ input, select, textarea,
 }
 
 .widget.bubbles ul li:hover {
-	background-color:#f9f9f9;
+	/*background-color:#f9f9f9;*/
 }
 
 .widget.bubbles ul li:hover a {

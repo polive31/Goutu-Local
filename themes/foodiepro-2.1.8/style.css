@@ -1670,6 +1670,11 @@ form[role="search"] {
     text-align: center;
 }
 
+
+.widget.bubbles ul li:hover {
+    border-radius: 30px;
+}
+
 .widget.bubbles ul li a {
     margin-top: auto;
     margin-bottom: auto;

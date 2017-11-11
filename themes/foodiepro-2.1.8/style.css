@@ -2728,8 +2728,6 @@ a.more-link,
 
 .content img.rpwe-thumb {
 	margin:0;
-	width: 120px;
-  height: 120px;
   object-fit:contain;
   flex:1;
 }
@@ -3541,10 +3539,6 @@ Site Footer
 	.one-fifth,
 	.one-fourth {
   	width:30%; 
-	}
-	
-	.content a.rpwe-img {
-    width: 80%;
 	}
 	
 	.title-area, 

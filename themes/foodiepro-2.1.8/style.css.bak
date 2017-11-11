@@ -2728,7 +2728,6 @@ a.more-link,
 
 .content img.rpwe-thumb {
 	margin:0;
-  width:100%;
   object-fit:contain;
   flex:1;
 }

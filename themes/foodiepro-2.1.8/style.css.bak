@@ -3514,12 +3514,16 @@ Site Footer
 		padding-top:0;
 	}
 	
+	.content ..widgettitle {
+    font-size: 20px;
+  }
+  
 	.tilde .widgettitle:before {
-		content:"";
+		content: url(images/tilde-l-small.png);;
 	}
 
 	.tilde .widgettitle:after {
-		content:"";
+		content: url(images/tilde-r-small.png);;
 	}
 	
 	/*.home-page .sidebar {
@@ -3539,10 +3543,6 @@ Site Footer
 	.one-fifth,
 	.one-fourth {
   	width:30%; 
-	}
-	
-	.content a.rpwe-img {
-    width: 80%;
 	}
 	
 	.title-area, 

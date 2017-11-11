@@ -199,7 +199,7 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 
 li.ingredient-group,
 .recipe-instruction-group {
-	font-family:"PT Sans Narrow";
+	font-family:"Podkova";
   display: block;
  	margin-bottom:10px;
  	color:#737373;
@@ -229,7 +229,7 @@ ol.wpurp-recipe-instructions {
 }
 
 li.wpurp-recipe-instruction {
-	font-family:"PT Sans Narrow";
+	font-family:"Podkova";
   list-style-position: inside;
   margin-bottom: 20px;
   text-align:justify;
@@ -301,8 +301,8 @@ li.wpurp-recipe-instruction span {
   text-align:center;
   width:75px;
   height:75px;
-	font-family: "PT Sans Narrow",sans-serif;
-  font-size: 13px;	
+	font-family: "Lato",sans-serif;
+  font-size: 10px;	
 	float:left;
 	margin-top: 4px;	
 	line-height: 14px;

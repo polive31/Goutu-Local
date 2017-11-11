@@ -642,7 +642,8 @@ h1.entry-title {
 	font-family: "Podkova",cursive;
   text-decoration: none;
 	text-transform: capitalize;
-	font-size:35px;
+	font-size:40px;
+	padding: 10px 0 0 0;	
 }
 
 h1.archive-title,
@@ -708,6 +709,7 @@ h3.rpwe-title a {
 
 .widgettitle {
 	font-family:'Amatic SC', cursive;
+	font-weight:bold;
 }
 
 .fancy .widgettitle {
@@ -847,7 +849,7 @@ strong {
 ol,
 ul {
 	margin:0;
-	padding:0;
+	padding:10px;
 }
 
 blockquote,
@@ -1664,10 +1666,10 @@ form[role="search"] {
 --------------------------------------------- */
 
 .widget.bubbles ul li {
-    padding: 4px;
-    margin: 10px 10px;
-    border-radius: 10px;
-    text-align: center;
+  padding: 4px;
+  margin: 20px 10px;
+  border-radius: 10px;
+  text-align: center;
 }
 
 

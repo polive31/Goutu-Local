@@ -164,24 +164,25 @@ input, select, textarea,
 -------------------------------------------- */
 
 .widget.bubbles ul li {
-	border: 1px dashed #666;
+  border: 1px dashed #ddd;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 5px #ddd;	
 }
 
+.widget.bubbles ul li:hover,
 .widget.bubbles ul li.current-menu-item {
-	background-color:#d8d8d8;	
+	border-color: #aaa;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 5px #aaa;	
 }
 
+.widget.bubbles ul li:hover a,
 .widget.bubbles ul li.current-menu-item a {
     color: #000;
 }
 
-.widget.bubbles ul li:hover {
-	/*background-color:#f9f9f9;*/
-}
-
-.widget.bubbles ul li:hover a {
-	color:#000;
-}
+/*.widget.bubbles ul li:hover {
+	border-color: #ea3f3f;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 5px #ea3f3f;	
+}*/
 
 /* RECIPES & POSTS
 --------------------------------------------*/

@@ -642,7 +642,8 @@ h1.entry-title {
 	font-family: "Podkova",cursive;
   text-decoration: none;
 	text-transform: capitalize;
-	font-size:35px;
+	font-size:40px;
+	padding: 10px 0 0 0;	
 }
 
 h1.archive-title,
@@ -847,7 +848,7 @@ strong {
 ol,
 ul {
 	margin:0;
-	padding:0;
+	padding:10px;
 }
 
 blockquote,
@@ -1664,10 +1665,10 @@ form[role="search"] {
 --------------------------------------------- */
 
 .widget.bubbles ul li {
-    padding: 4px;
-    margin: 10px 10px;
-    border-radius: 10px;
-    text-align: center;
+  padding: 4px;
+  margin: 20px 10px;
+  border-radius: 10px;
+  text-align: center;
 }
 
 
@@ -3514,14 +3515,15 @@ Site Footer
 		padding-top:0;
 	}
 	
-	.tilde .widgettitle:before {
-		content:"";
-	}
-
+	.tilde .widgettitle:before,
 	.tilde .widgettitle:after {
 		content:"";
 	}
-	
+
+	h3.widgettitle {
+		font-weight: bold;
+	}
+
 	/*.home-page .sidebar {
 		display:block;
 	}	*/

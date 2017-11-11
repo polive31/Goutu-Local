@@ -18,3 +18,9 @@
   overflow-y: scroll;
   height: 100%;
 }*/
+
+
+#ozhmenu li .wp-menu-image {
+	width: 20px;
+	height: 20px;
+}

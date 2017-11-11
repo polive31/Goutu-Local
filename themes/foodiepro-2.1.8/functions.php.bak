@@ -312,9 +312,16 @@ function foodie_pro_enqueue_syles() {
 }
 
 
+/* Chargement de la feuille de style admin*/
+add_action( 'wp_enqueue_scripts', 'load_admin_stylesheet' );
+function load_admin_stylesheet() {
+	wp_enqueue_style( 'admin-css', CHILD_THEME_URL . '/assets/css/admin.css', array(), CHILD_THEME_VERSION );		
+}
+
 /* Chargement des feuilles de style custom et polices */
 add_action( 'wp_enqueue_scripts', 'load_custom_stylesheet' );
 function load_custom_stylesheet() {
+	wp_enqueue_style( 'admin-css', CHILD_THEME_URL . '/assets/css/admin.css', array(), CHILD_THEME_VERSION );		
 	if ( CHILD_COLOR_THEME=='autumn')
 		wp_enqueue_style( 'color-theme-autumn', CHILD_THEME_URL . '/assets/css/color-theme-autumn.css', array(), CHILD_THEME_VERSION );
 	else 
@@ -434,7 +441,7 @@ function add_before_content_area() {
   }     
 }
 
-add_action( 'genesis_before_loop', 'add_archive_top_area');
+add_action( 'genesis_before_loop', 'add_archive_top_area', 15);
 function add_archive_top_area() {
   if ( is_archive() || is_search() ) {
   		genesis_widget_area( 'archives-top', array(

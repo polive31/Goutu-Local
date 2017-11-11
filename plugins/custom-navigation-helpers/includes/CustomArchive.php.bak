@@ -20,7 +20,6 @@ class CustomArchive {
 	public function __construct() {
 		//add_action( 'pre_get_posts', array($this,'archive_filter_sort'));		
 		add_filter( 'query_vars', array($this,'add_filter_queryvars') );		
-			
 		add_action( 'wp_loaded', array($this,'hydrate'));		
 	}
 	

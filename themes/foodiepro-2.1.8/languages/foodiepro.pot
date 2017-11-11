@@ -5,14 +5,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-04-07 16:12+0200\n"
+"POT-Creation-Date: 2017-11-11 00:53+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Shay Bocks (http://shaybocks.com)\n"
 "Language-Team: Shay Bocks (http://shaybocks.com)\n"
-"X-Generator: Poedit 2.0\n"
+"X-Generator: Poedit 2.0.4\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -33,88 +33,93 @@ msgstr ""
 msgid "Add a picture"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchive.php:60
+#: plugins/custom-navigation-helpers/includes/CustomArchive.php:103
+#, php-format
 msgctxt "vowel"
-msgid "Cuisine from "
+msgid "Cuisine from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchive.php:62
+#: plugins/custom-navigation-helpers/includes/CustomArchive.php:105
+#, php-format
 msgctxt "consonant"
-msgid "Cuisine from "
+msgid "Cuisine from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:44
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:53
 msgid "Detailed Search Results"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:46
-#: themes/foodiepro-2.1.8/search.php:24
-msgid "Search Results for:"
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:55
+#, php-format
+msgid "Search Results for \"%s\""
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:113
-msgctxt "vowel"
-msgid "All recipes from "
-msgstr ""
-
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:114
 #: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:128
-msgctxt "consonant"
-msgid "All recipes from "
-msgstr ""
-
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:115
+#, php-format
 msgctxt "vowel"
-msgid "All recipes containing "
+msgid "All recipes from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:116
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:130
+#, php-format
 msgctxt "consonant"
-msgid "All recipes containing "
+msgid "All recipes from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:24
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:61
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:135
+#, php-format
+msgctxt "vowel"
+msgid "All recipes containing %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:137
+#, php-format
+msgctxt "consonant"
+msgid "All recipes containing %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:34
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:64
 msgid "Share this recipe"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:26
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:36
 msgid "Share this post"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:65
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:77
 msgid "Courses"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:69
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:81
 msgid "Seasons"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:73
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:85
 msgid "Occasions"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:77
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:89
 msgid "Diets"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:82
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:94
 msgid "France"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:90
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:102
 msgid "World"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:95
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:107
 msgid "All posts"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:101
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:114
 msgid "Previous page"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:119
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:132
 msgid "Select..."
 msgstr ""
 
@@ -164,7 +169,7 @@ msgstr ""
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:107
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:82
-#: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:89
+#: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:90
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:84
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:74
 msgid "New title"
@@ -175,7 +180,7 @@ msgstr ""
 #: plugins/custom-recipe-templates/helpers/custom_nutrition_label.php:60
 #: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:101
 #: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:180
-#: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:98
+#: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:99
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:88
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:78
 #: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:106
@@ -189,44 +194,6 @@ msgstr ""
 
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:24
 msgid "Displays a dropdown list allowing to navigate between taxonomy terms"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:45
-msgid "Other Courses"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:50
-msgid "Region"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:52
-msgid "Other Regions"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:54
-msgid "Other Countries"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:56
-#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:46
-#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:57
-msgid "Country"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:59
-msgid "Other Seasons"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:61
-msgid "Other Occasions"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:63
-msgid "Other Diets"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:65
-msgid "Other Levels"
 msgstr ""
 
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:67
@@ -319,101 +286,101 @@ msgstr ""
 msgid "Show Images"
 msgstr ""
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Add_To_Shopping_List.php:31
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Add_To_Shopping_List.php:34
 #, php-format
 msgid "In my <a href=\"%s\">shopping list</a>"
 msgstr ""
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Add_To_Shopping_List.php:32
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Add_To_Shopping_List.php:35
 #, php-format
 msgid "Add to my <a href=\"%s\">shopping list</a>"
 msgstr ""
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Add_To_Shopping_List.php:59
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Add_To_Shopping_List.php:62
 msgid "Add to Shopping List"
 msgstr ""
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:37
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:39
 #, php-format
 msgid "In my <a href=\"%s\">favorites</a>"
 msgstr ""
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:38
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:40
 #, php-format
 msgid "Add to my <a href=\"%s\">favorites</a>"
 msgstr ""
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:59
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:61
 msgid "Favorites"
 msgstr ""
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Templates.php:131
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Templates.php:143
 msgid "Print this Recipe"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:37
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:40
 msgid "Print"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:39
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:42
 msgid "Print this recipe"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:59
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:62
 msgid "Share"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:67
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:70
 msgid "Rate"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:69
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:72
 msgid "Comment and rate this recipe"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:100
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:103
 msgid "Origin"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:107
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:110
 msgid "Diet"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:114
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:117
 msgid "Level"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:121
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:124
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:40
 msgid "Serves"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:128
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:131
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:47
 msgid "Preparation"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:135
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:138
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:54
 msgid "Cooking"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:141
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:144
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:60
 msgid "Wait"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:177
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:180
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:95
 msgid "Notes"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:258
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:264
 msgctxt "vowel"
 msgid "of "
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:260
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:266
 msgctxt "consonant"
 msgid "of "
 msgstr ""
@@ -486,7 +453,7 @@ msgstr ""
 msgid "Displays latest registered members"
 msgstr ""
 
-#: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:104
+#: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:105
 msgid "Number of users to show"
 msgstr ""
 
@@ -504,6 +471,32 @@ msgstr ""
 
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:28
 msgid "Displays gravatar and name of current loggued-in user"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/backups/functions_foodie.php:184
+#: themes/foodiepro-2.1.8/functions.php:568
+msgid "Read More"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/backups/functions_foodie.php:197
+#: themes/foodiepro-2.1.8/functions.php:596
+msgid "Comments"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/backups/functions_foodie.php:213
+msgid "Copyright"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/backups/functions_foodie.php:214
+msgid "by"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/backups/functions_foodie.php:216
+msgid "Built on the "
+msgstr ""
+
+#: themes/foodiepro-2.1.8/backups/functions_foodie.php:217
+msgid "Powered by "
 msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/groups/create.php:66
@@ -1390,60 +1383,52 @@ msgstr ""
 msgid "Visibility"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:278
+#: themes/foodiepro-2.1.8/functions.php:371
 msgid "Goûtu.org - Cuisiner, Découvrir, Partager"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:314
+#: themes/foodiepro-2.1.8/functions.php:408
 msgid "<strong>ERROR</strong>: User pending "
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:314
+#: themes/foodiepro-2.1.8/functions.php:408
 msgid "approval"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:501
-msgid "Read More"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/functions.php:529
-msgid "Comments"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/functions.php:538
+#: themes/foodiepro-2.1.8/functions.php:605
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:202
 msgid "Previous comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:544
+#: themes/foodiepro-2.1.8/functions.php:611
 msgid "Next comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:563
+#: themes/foodiepro-2.1.8/functions.php:630
 msgid "Your answer here"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:582
+#: themes/foodiepro-2.1.8/functions.php:649
 msgid "All rights reserved"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:582
+#: themes/foodiepro-2.1.8/functions.php:649
 msgid "Contact us"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:582
+#: themes/foodiepro-2.1.8/functions.php:649
 msgid "Legal notice"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:582
+#: themes/foodiepro-2.1.8/functions.php:649
 msgid "Goûtu charter"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:582
+#: themes/foodiepro-2.1.8/functions.php:649
 msgid "Personal data"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:582
+#: themes/foodiepro-2.1.8/functions.php:649
 msgid "Terms of use"
 msgstr ""
 
@@ -1981,99 +1966,83 @@ msgid "Monospaced"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:58
-msgid "Before Header"
+msgid "Before Content"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:59
-msgid "This is the section before the header."
+msgid "This is the first section before content and sidebars."
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:63
-msgid "Home Top"
+msgid "Before Header"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:64
-msgid "This is the home top section."
+msgid "This is the section before the header."
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:68
-msgid "Home Middle"
+msgid "Home Top"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:69
-msgid "This is the home middle section."
+msgid "This is the home top section."
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:73
-msgid "Home Bottom"
+msgid "Home Middle"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:74
-msgid "This is the home bottom section."
+msgid "This is the home middle section."
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:78
-msgid "Post Bottom"
+msgid "Home Bottom"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:79
-msgid "This is the after entry section."
+msgid "This is the home bottom section."
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:83
-msgid "Recipes Top"
+msgid "Post Bottom"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:84
-msgid "This is the recipes top section."
+msgid "This is the after entry section."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:88
-msgid "Recipes Bottom"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:89
-msgid "This is the recipes bottom section."
-msgstr ""
-
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:94
-msgid "Blogs Top"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:95
-msgid "This is the blogs top section."
-msgstr ""
-
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:99
-msgid "Blogs Bottom"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:100
-msgid "This is the blogs bottom section."
-msgstr ""
-
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:104
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:109
 msgid "Social sidebar"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:105
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:110
 msgid "This is the sidebar for social pages."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:110
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:115
 msgid "Social Bottom"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:111
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:116
 msgid "This is the widget section of buddypress pages."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:116
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:121
 msgid "Archives Top"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:117
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:122
 msgid "This is the top widget section of archived pages."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:127
+msgid "Archives Bottom"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:128
+msgid "This is the bottom widget section of archived pages."
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:54
@@ -2891,6 +2860,11 @@ msgstr ""
 msgid "State"
 msgstr ""
 
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:46
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:57
+msgid "Country"
+msgstr ""
+
 #: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:13
 #: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:18
 #, php-format
@@ -3022,6 +2996,10 @@ msgstr ""
 
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:269
 msgid "Post type"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/search.php:24
+msgid "Search Results for:"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/yarpp-template-goutu.php:29

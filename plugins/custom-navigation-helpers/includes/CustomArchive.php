@@ -100,9 +100,9 @@ class CustomArchive {
 	protected function get_cuisine_caption($origin) {
 		//PC::debug(array('origin'=>$origin));
 		if ($this->initial_is_vowel($origin))
-			$msg = _x('Cuisine from ','vowel','foodiepro') . $origin;
+			$msg = _x('Cuisine from %s','vowel','foodiepro') . $origin;
 		else
-			$msg = _x('Cuisine from ','consonant','foodiepro') . $origin;
+			$msg = _x('Cuisine from %s','consonant','foodiepro') . $origin;
 		//$msg = sprintf(_x('Cuisine from %s',$context,'foodiepro'),$origin);
 		return $msg;
 	}

@@ -11,8 +11,8 @@
  * @link    http://my.studiopress.com/themes/genesis/
  */
 
-remove_action( 'genesis_before_loop', 'genesis_do_search_title' );
-add_action( 'genesis_before_content', 'genesis_do_search_title' );
+add_action( 'genesis_before_loop', 'genesis_do_search_title' );
+//add_action( 'genesis_before_content', 'genesis_do_search_title' );
 /**
  * Echo the title with the search term.
  *

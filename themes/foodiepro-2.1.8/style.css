@@ -3082,6 +3082,10 @@ li.comment a {
 	padding-right:7px;
 }
 
+.sidebar .widget_bp_core_members_widget ul li:before {
+	display:none;
+}
+
 .sidebar ul > li:last-child {
 	margin-bottom:0;
 }

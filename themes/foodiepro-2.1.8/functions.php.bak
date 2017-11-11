@@ -323,7 +323,7 @@ function load_custom_stylesheet() {
 
 /* Gestion des feuilles de style minifiées */
 //add_filter( 'stylesheet_uri', 'use_minified_stylesheet', 10, 1 );
-function use_minified_stylesheet( $default_stylesheet_uri ) {
+//function use_minified_stylesheet( $default_stylesheet_uri ) {
 //	$stylesheet_path = CHILD_THEME_PATH . '/style.min.css';
 //	$default_stylesheet_path = CHILD_THEME_PATH . '/style.css';
 //	$stylesheet_uri =  wp_make_link_relative( CHILD_THEME_URL . '/style.min.css');
@@ -336,7 +336,7 @@ function use_minified_stylesheet( $default_stylesheet_uri ) {
 //	}
 //	//foodiepro_log( 'Minified stylesheet doesn t exist or too old' );
 //	return $default_stylesheet_uri;	
-}
+//}
 
 
 /* Suppression de la feuille de style YARPP */
@@ -433,7 +433,6 @@ function add_before_content_area() {
   		));
   }     
 }
-
 
 add_action( 'genesis_before_loop', 'add_archive_top_area');
 function add_archive_top_area() {

@@ -1672,7 +1672,7 @@ form[role="search"] {
 
 
 .widget.bubbles ul li:hover {
-    border-radius: 20px;
+    border-radius: 30px;
 }
 
 .widget.bubbles ul li a {
@@ -3090,6 +3090,10 @@ li.comment a {
 	/*margin-top:40px;*/
 	width:300px;
 	margin-bottom:20px;
+}
+
+.sidebar .widget_bp_core_members_widget ul li:before {
+	display:none;
 }
 
 .sidebar-primary .widget.themes {

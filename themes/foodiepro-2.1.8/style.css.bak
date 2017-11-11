@@ -3541,10 +3541,6 @@ Site Footer
   	width:30%; 
 	}
 	
-	.content a.rpwe-img {
-    width: 80%;
-	}
-	
 	.title-area, 
 	.home-page .title-area, 
 	.site-title, 

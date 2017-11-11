@@ -3514,14 +3514,15 @@ Site Footer
 		padding-top:0;
 	}
 	
-	.tilde .widgettitle:before {
-		content:"";
-	}
-
+	.tilde .widgettitle:before,
 	.tilde .widgettitle:after {
 		content:"";
 	}
-	
+
+	h3.widgettitle {
+		font-weight: bold;
+	}
+
 	/*.home-page .sidebar {
 		display:block;
 	}	*/

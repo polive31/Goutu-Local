@@ -3082,6 +3082,10 @@ li.comment a {
 	padding-right:7px;
 }
 
+.sidebar .widget_bp_core_members_widget ul li:before {
+	display:none;
+}
+
 .sidebar ul > li:last-child {
 	margin-bottom:0;
 }
@@ -3090,10 +3094,6 @@ li.comment a {
 	/*margin-top:40px;*/
 	width:300px;
 	margin-bottom:20px;
-}
-
-.sidebar .widget_bp_core_members_widget ul li:before {
-	display:none;
 }
 
 .sidebar-primary .widget.themes {
@@ -3562,6 +3562,9 @@ Site Footer
     margin-top:10px;
    }
 
+	h1.archive-title, h1.entry-title {
+    text-align: center;
+	}
 	
 }
 

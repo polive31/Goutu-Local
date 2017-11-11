@@ -3562,6 +3562,9 @@ Site Footer
     margin-top:10px;
    }
 
+	h1.archive-title, h1.entry-title {
+    text-align: center;
+	}
 	
 }
 
@@ -3617,8 +3620,7 @@ Site Footer
 		float:left;
 		margin:0 0 10px;
 		width:100%;
-		-webkit-flex:1;
-		flex:1;
+		max-width: 100%;
 	}
 	
 

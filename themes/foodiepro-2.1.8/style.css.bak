@@ -3542,6 +3542,10 @@ Site Footer
   	width:30%; 
 	}
 	
+	.content a.rpwe-img {
+    width: 80%;
+	}
+	
 	.title-area, 
 	.home-page .title-area, 
 	.site-title, 
@@ -3580,8 +3584,6 @@ Site Footer
     /*margin-left:auto;
     margin-right:auto;*/
 	}
-
- 	
 }
 
 
@@ -3620,11 +3622,8 @@ Site Footer
 		float:left;
 		margin:0 0 10px;
 		width:100%;
-		-webkit-flex:1;
-		flex:1;
+		max-width: 100%;
 	}
-	
-
 }
 
 @media only screen and (max-width:420px) {

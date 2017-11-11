@@ -2728,7 +2728,8 @@ a.more-link,
 
 .content img.rpwe-thumb {
 	margin:0;
-  width:100%;
+	width: 120px;
+  height: 120px;
   object-fit:contain;
   flex:1;
 }
@@ -3542,6 +3543,10 @@ Site Footer
   	width:30%; 
 	}
 	
+	.content a.rpwe-img {
+    width: 80%;
+	}
+	
 	.title-area, 
 	.home-page .title-area, 
 	.site-title, 
@@ -3580,8 +3585,6 @@ Site Footer
     /*margin-left:auto;
     margin-right:auto;*/
 	}
-
- 	
 }
 
 
@@ -3622,8 +3625,6 @@ Site Footer
 		width:100%;
 		max-width: 100%;
 	}
-	
-
 }
 
 @media only screen and (max-width:420px) {

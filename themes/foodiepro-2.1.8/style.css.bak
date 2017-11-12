@@ -2240,9 +2240,9 @@ Custom Page Templates
 }	
 
 .before-content .widget ul li {
-  float:left;
-	width:45%;
-  margin:5px;
+  float: left;
+  width: 40%;
+  margin: 10px;  
 }
 
 .before-content {
@@ -2454,7 +2454,7 @@ Site Header
 	/*width:450px; P.O. Original 450px */
 	/*height:190px; P.O. Original 380px */
 	width:530px; 
-	height:220px;
+	height:230px;
 }
 
 /* Added P.O. Vertical centering and header height */

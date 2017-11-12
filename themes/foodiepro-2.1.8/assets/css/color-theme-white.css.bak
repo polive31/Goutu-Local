@@ -3,7 +3,14 @@
 
 body {
   /*background:#ffffff;*/
-	background:url("../../images/background-l.jpg"),url("../../images/background-r.jpg");
+	background:url("../../images/background/background-l-small.jpg"),url("../../images/background/background-r-small.jpg");
+	background-position:top left, top right;
+	background-repeat:no-repeat;
+}
+
+body.home {
+  /*background:#ffffff;*/
+	background:url("../../images/background/background-l.jpg"),url("../../images/background/background-r.jpg");
 	background-position:top left, top right;
 	background-repeat:no-repeat;
 }
@@ -227,15 +234,13 @@ li.comment {
 
 /* MEDIA QUERIES 
 --------------------------------------------*
-/* Smartphone */
+/* Background */
 @media only screen 
 	and (max-width:1080px) {
 
-	body {
+	body.home {
 	  /*background:#ffffff;*/
-		background:url("../../images/background-l.jpg");
-		background-position:top left;
-		background-repeat:no-repeat;
+		background:url("../../images/background/background-l.jpg") no-repeat top left;
 	}
 
 }
@@ -247,7 +252,7 @@ li.comment {
 
 	.site-title a,
 	.home .site-title a {
-		background:url("../../images/logo-white/logo_360_150.png") no-repeat center;
+		background:url("../../images/logo-white/logo_450_190.png") no-repeat center;
 	}
 	
 }
@@ -260,8 +265,44 @@ li.comment {
 	.site-title a,
 	.home .site-title a {
 		background:url("../../images/logo-white/logo_720_300.png") no-repeat center;
-		background-size:contain;
 	} 	
 
+}
 
+
+/* Medium screens */
+@media only screen 
+	and (max-width:720px) {
+		
+	body{
+		background:url("../../images/background/background-l-small.jpg") no-repeat top left;
+	}	
+
+	.site-title a,
+	.home .site-title a {	
+		background:url("../../images/logo-white/logo_360_150.png") no-repeat center;
+		background-size:contain;
+	}
+	
+}
+
+/* Small screens */
+@media only screen 
+	and (max-width:570px) {
+	
+	body.home {
+		background-size: contain;
+	}	
+	
+}
+
+/* Very Small screens */
+@media only screen 
+	and (max-width:570px) {
+	
+	.site-title a,
+	.home .site-title a {	
+		background-size:contain;
+	}
+	
 }

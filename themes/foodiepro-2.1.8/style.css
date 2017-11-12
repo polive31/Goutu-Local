@@ -1739,6 +1739,7 @@ form[role="search"] {
 	font-size : 22px;
 }
 
+
 .sidebar .widget.bubbles ul li:before { /* .sidebar important */
   content: none;
 }
@@ -2234,6 +2235,11 @@ Custom Page Templates
 /* Before Content section
 --------------------------------------------- */
 
+.top.before-content.widget-area {
+    padding: 0;
+    margin: 0;
+}
+
 .before-content .widget {
 	width:100%;
 	margin:0;
@@ -2241,13 +2247,24 @@ Custom Page Templates
 
 .before-content .widget ul li {
   float: left;
-  width: 40%;
-  margin: 10px;  
+  margin: 10px 15px;
+  width:40%;
+}
+
+.before-content .widget ul li a {
+  display:block;
 }
 
 .before-content {
 	display:none;
 }
+
+.before-content .widget.bubbles ul li.current-menu-item a, 
+.before-content .widget.bubbles ul li:hover a {
+    font-size: initial;
+}
+
+
 
 /* Recipes, Blog & Archive Pages
 --------------------------------------------- */
@@ -2419,11 +2436,12 @@ Site Header
 	background-position:left; 
 	/*padding:10px 0; */
 	padding:0; 
+	margin:10px;
 	background-size:cover!important;
 }
 
 .home-page .site-header {
-    height:260px;
+	height:260px;
 }
 
 /* Title Area

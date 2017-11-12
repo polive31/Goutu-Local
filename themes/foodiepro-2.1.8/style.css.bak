@@ -1934,24 +1934,9 @@ ul.cnss-social-icon {
 /* WP Ultimate Recipe
 --------------------------------------------- */
 
-/* Category Grid */
-
-.wpupg-grid .wpupg-container {
-	padding:10px;
+.widget_wpurp_recipe_search_widget br {
+    display: none;
 }
-
-.wpupg-grid .wpupg-container.grid-2col {
-	width:50%;
-}
-
-.wpupg-grid .wpupg-container.grid-3col {
-	width:30%;
-}
-
-.wpupg-grid .wpupg-container.grid-4col {
-	width:25%;
-}
-
 
 /* Genesis eNews Extended
 --------------------------------------------- */
@@ -2441,7 +2426,7 @@ Site Header
 }
 
 .home-page .site-header {
-    height:260px;
+	height:260px;
 }
 
 /* Title Area
@@ -2604,8 +2589,7 @@ nav.nav-primary .wrap {
 }
 
 
-/*
-Content Area
+/* Content Area
 ---------------------------------------------------------------------------------------------------- */
 
 
@@ -3248,8 +3232,7 @@ font-size:11px;
 	border-top:5px solid #000;
 }
 
-/*
-Footer Widgets
+/* Footer Widgets
 ---------------------------------------------------------------------------------------------------- */
 
 .footer-widgets {

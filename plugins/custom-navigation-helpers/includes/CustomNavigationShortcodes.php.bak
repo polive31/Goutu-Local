@@ -213,7 +213,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 			 function on_<?php echo $dropdown_id;?>_Change() {
 			  var choice = <?php echo $dropdown_id;?>_dropdown.options[ <?php echo $dropdown_id;?>_dropdown.selectedIndex ].value;
 				if ( choice !="none" ) {
-					  echo 'location.href = "' . home_url() . '/?' . $tax_slug . '=" + choice';
+					  <?php echo 'location.href = "' . home_url() . '/?' . $tax_slug . '=" + choice'; ?>
 				}
 				if ( choice =="0" ) {
 					  location.href = "<?php echo $all_url;?>";
@@ -255,16 +255,16 @@ class CustomNavigationShortcodes extends CustomArchive {
 
 	public function add_permalink_shortcode($atts) {
 		extract(shortcode_atts(array(
-			'id' => 1,
+			'id' => false,
+			'html' => false, // html markup or url only
 			'text' => ""  // default value if none supplied
 	    ), $atts));
-	    
-	    if ($text) {
-	        $url = get_permalink($id);
-	        return "<a href='$url'>$text</a>";
-	    } else {
-		   return get_permalink($id);
-		}
+	
+		if (! $id) $url=$_SERVER['REQUEST_URI'];
+		else $url=get_permalink($id);
+			
+    if ($html) return "<a href='$url'>$text</a>";
+    else return $url;
 	}
 
 

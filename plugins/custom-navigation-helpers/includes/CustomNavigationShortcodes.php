@@ -255,22 +255,17 @@ class CustomNavigationShortcodes extends CustomArchive {
 
 	public function add_permalink_shortcode($atts) {
 		extract(shortcode_atts(array(
-			'id' => 1,
+			'id' => false,
+			'html' => false, // html markup or url only
 			'text' => ""  // default value if none supplied
 	    ), $atts));
-	    
-	    if ($text) {
-	        $url = get_permalink($id);
-	        return "<a href='$url'>$text</a>";
-	    } else {
-		   return get_permalink($id);
-		}
+	
+		if (! $id) $url=$_SERVER['REQUEST_URI'];
+		else $url=get_permalink($id);
+			
+    if ($html) return "<a href='$url'>$text</a>";
+    else return $url;
 	}
-
-
-
-
-
 
 
 

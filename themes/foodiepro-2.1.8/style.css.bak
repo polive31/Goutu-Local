@@ -562,6 +562,49 @@ input[type="search"] {
   display:table;
 }
 
+/* Accessibility
+------------------------------------------------------------*/
+
+ul.genesis-skip-link {
+	padding: 0;
+}
+
+/* ## Screen reader text
+--------------------------------------------- */
+
+.screen-reader-text,
+.screen-reader-text span,
+.screen-reader-shortcut {
+	position: absolute !important;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	width: 1px;
+	border: 0;
+	overflow: hidden;
+}
+
+.screen-reader-text:focus,
+.screen-reader-shortcut:focus,
+.genesis-nav-menu .search input[type="submit"]:focus,
+.widget_search input[type="submit"]:focus  {
+	clip: auto !important;
+	height: auto;
+	width: auto;
+	display: block;
+	font-size: 1em;
+	font-weight: bold;
+	padding: 15px 23px 14px;
+	color: #333;
+	background: #fff;
+	z-index: 100000; /* Above WP toolbar. */
+	text-decoration: none;
+	box-shadow: 0 0 2px 2px rgba(0,0,0,.6);
+}
+
+.more-link {
+    position: relative;
+}
+
 
 /*
 Defaults
@@ -709,6 +752,7 @@ h3.rpwe-title a {
 
 .widgettitle {
 	font-family:'Amatic SC', cursive;
+	font-weight:bold;
 }
 
 .fancy .widgettitle {
@@ -795,6 +839,11 @@ h3.rpwe-title a {
 .widget.themes ul li:hover > a {
 	font-size : 28px;
 }
+
+
+
+
+
 
 /* Typographical Elements 
 --------------------------------------------- */
@@ -1667,7 +1716,7 @@ form[role="search"] {
 .widget.bubbles ul li {
   padding: 4px;
   margin: 20px 10px;
-  border-radius: 10px;
+  /*border-radius: 10px;*/
   text-align: center;
 }
 
@@ -2368,12 +2417,13 @@ Site Header
 
 .foodie-pro .site-header {
 	background-position:left; 
-	padding:10px 0; 
+	/*padding:10px 0; */
+	padding:0; 
 	background-size:cover!important;
 }
 
 .home-page .site-header {
-    height:240px;
+    height:260px;
 }
 
 /* Title Area
@@ -2401,8 +2451,10 @@ Site Header
 .home-page .title-area,
 .home-page .site-title,
 .home-page .site-title a {
-	width:450px; /* P.O. Original 450px */
-	height:190px; /* P.O. Original 380px */
+	/*width:450px; P.O. Original 450px */
+	/*height:190px; P.O. Original 380px */
+	width:530px; 
+	height:220px;
 }
 
 /* Added P.O. Vertical centering and header height */

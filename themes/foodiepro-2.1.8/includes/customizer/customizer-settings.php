@@ -384,13 +384,21 @@ function foodie_pro_get_fonts() {
 			'selector'       => 'input, select, textarea, .wp-caption-text, .site-description, .entry-meta, .post-info, .post-meta',
 		),
 		'foodie_heading_font' => array(
-			'default_family' => 'Source Sans Pro',
+			'default_family' => 'Podkova',
 			'default_size'   => 'disabled',
 			'default_style'  => 'normal',
 			'default_weight' => '300',
 			'label'          => __( 'Heading Font', 'foodiepro' ),
-			'selector'       => 'h1, h2, h3, h4, h5, h6, .site-title, .entry-title, .widgettitle',
-		),
+			'selector'       => 'h1, h2, h3, h4, h5, h6, .site-title, .entry-title',
+		),	
+		'foodie_widget_font' => array(
+			'default_family' => 'Amatic SC',
+			'default_size'   => 'disabled',
+			'default_style'  => 'normal',
+			'default_weight' => '400',
+			'label'          => __( 'Widget Font', 'foodiepro' ),
+			'selector'       => '.widgettitle',
+		),			
 	);
 	return apply_filters( 'foodie_pro_get_fonts', $fonts );
 }
@@ -466,6 +474,16 @@ function foodie_pro_get_google_fonts( $fonts ) {
 				'latin-ext',
 			),
 		),
+		'Amatic SC' => array(
+			'label'    => 'Amatic SC',
+			'variants' => array(
+				'regular',
+				'700',
+			),
+			'subsets' => array(
+				'latin',
+			),
+		),		
 		'Abril Fatface' => array(
 			'label'    => 'Abril Fatface',
 			'variants' => array(

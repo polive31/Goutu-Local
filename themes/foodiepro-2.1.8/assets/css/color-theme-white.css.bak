@@ -2,11 +2,15 @@
 --------------------------------------------- */
 
 body {
-  background:#ffffff;
+  /*background:#ffffff;*/
+	background:url("../../images/background-l.jpg"),url("../../images/background-r.jpg");
+	background-position:top left, top right;
+	background-repeat:no-repeat;
 }
 
 .site-container {
-	background-color:#ffffff;
+	/*background-color:#ffffff;*/
+	background-color:rgba(255, 255, 255, 0.78);	
 }
 
 .site-title a {
@@ -14,7 +18,7 @@ body {
 }
 
 .home-page .site-title a {
-	background:url("../../images/logo-white/logo_530_220.png") no-repeat center;
+	background:url("../../images/logo-white/logo_530_230.png") no-repeat center;
 }
 
 h1.entry-title,

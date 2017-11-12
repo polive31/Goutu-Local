@@ -3,7 +3,9 @@
 
 body {
   /*background:#ffffff;*/
-	background:url("../../images/background-l.jpg") no-repeat top left;
+	background:url("../../images/background-l.jpg"),url("../../images/background-r.jpg");
+	background-position:top left, top right;
+	background-repeat:no-repeat;
 }
 
 .site-container {
@@ -225,6 +227,19 @@ li.comment {
 
 /* MEDIA QUERIES 
 --------------------------------------------*
+/* Background */
+@media only screen 
+	and (max-width:1080px) {
+
+	body {
+	  /*background:#ffffff;*/
+		background:url("../../images/background-l.jpg");
+		background-position:top left;
+		background-repeat:no-repeat;
+	}
+
+}
+
 
 /* Smartphone */
 @media only screen 

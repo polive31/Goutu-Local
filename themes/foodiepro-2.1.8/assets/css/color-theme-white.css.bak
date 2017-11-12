@@ -227,6 +227,19 @@ li.comment {
 
 /* MEDIA QUERIES 
 --------------------------------------------*
+/* Smartphone */
+@media only screen 
+	and (max-width:1080px) {
+
+	body {
+	  /*background:#ffffff;*/
+		background:url("../../images/background-l.jpg");
+		background-position:top left;
+		background-repeat:no-repeat;
+	}
+
+}
+
 
 /* Smartphone */
 @media only screen 

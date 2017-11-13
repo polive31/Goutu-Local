@@ -1818,6 +1818,10 @@ form[role="search"] {
 	padding:2px;
 }
 
+.archives-top ul.menu {
+	padding:0;
+}
+
 .widget.back ul li {
 	border:1px solid #aaa;
 	border-radius:3px;

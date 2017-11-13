@@ -1,20 +1,6 @@
 /* Color theme :  White (default) 
 --------------------------------------------- */
 
-body {
-  /*background:#ffffff;*/
-	background:url("../../images/background/background-l-small.jpg"),url("../../images/background/background-r.jpg");
-	background-position:top left, top right;
-	background-repeat:no-repeat;
-}
-
-body.home {
-  /*background:#ffffff;*/
-	background:url("../../images/background/background-l.jpg"),url("../../images/background/background-r.jpg");
-	background-position:top left, top right;
-	background-repeat:no-repeat;
-}
-
 .site-container {
 	/*background-color:#ffffff;*/
 	background-color:rgba(255, 255, 255, 0.78);	
@@ -36,7 +22,6 @@ h1.entry-title,
 	color:#444;
 }
 
-
 .home-bottom .widgettitle {
 	border-bottom:1px solid #ccc;
 }
@@ -51,9 +36,6 @@ a.more-link,
 .img-menu:hover a .menu-title span,
 a.more-link:hover,
 .more-from-category a:hover {
-	/*background:#da5c00;
-  background:#923e00;
-  background:#e08800;*/
   background:#63584b;
 	color:#fff;
 }
@@ -234,16 +216,6 @@ li.comment {
 
 /* MEDIA QUERIES 
 --------------------------------------------*
-/* Background */
-@media only screen 
-	and (max-width:1080px) {
-
-	body.home {
-	  /*background:#ffffff;*/
-		background:url("../../images/background/background-l.jpg") no-repeat top left;
-	}
-
-}
 
 
 /* Smartphone */
@@ -274,10 +246,6 @@ li.comment {
 @media only screen 
 	and (max-width:720px) {
 		
-	body{
-		background:url("../../images/background/background-l-small.jpg") no-repeat top left;
-	}	
-
 	.site-title a,
 	.home .site-title a {	
 		background:url("../../images/logo-white/logo_360_150.png") no-repeat center;

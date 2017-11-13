@@ -831,10 +831,9 @@ h3.rpwe-title a {
 
 /* Nav Menu Widget */
 
-.sidebar .widget_nav_menu li.current-menu-item {
+.widget_nav_menu.no-current li.current-menu-item {
 	display:none;
 }
-
 
 
 .widget.themes ul li a {

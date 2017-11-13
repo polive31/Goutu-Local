@@ -3,7 +3,7 @@
 
 body {
   /*background:#ffffff;*/
-	background:url("../../images/background/background-l-small.jpg"),url("../../images/background/background-r-small.jpg");
+	background:url("../../images/background/background-l-small.jpg"),url("../../images/background/background-r.jpg");
 	background-position:top left, top right;
 	background-repeat:no-repeat;
 }

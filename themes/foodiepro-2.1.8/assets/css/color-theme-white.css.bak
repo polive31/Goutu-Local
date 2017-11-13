@@ -281,7 +281,6 @@ li.comment {
 	.site-title a,
 	.home .site-title a {	
 		background:url("../../images/logo-white/logo_360_150.png") no-repeat center;
-		background-size:contain;
 	}
 	
 }

@@ -728,10 +728,18 @@ h1.archive-title {
 	font-weight: bold;  
 }
 
-.entry-header .origin {
+.entry-header .overlay {
   font-family: 'Amatic SC';
   text-transform: capitalize;
-  font-size: 24px;
+  font-size: 22px;
+  line-height: 22px;
+  font-weight: bold;
+}
+
+.entry-header .overlay#veg {
+  font-family: 'FontAwesome';
+  font-size: 22px;
+  line-height: 22px;
   font-weight: bold;
 }
 
@@ -1919,12 +1927,6 @@ form[role="search"] {
     background: rgba(255, 255, 255, 0.4)!important;
 }
 
-/* Easing Slider */
-.slider-text {
-	font-size:25px!important;
-	font-weight:300!important;
-}
-
 
 /* Social Share
 --------------------------------------------- */
@@ -2222,15 +2224,29 @@ Custom Page Templates
 	width:100px;
 }
 
-.entry-header .origin {
+.entry-header .overlay {
   position: absolute;
-  left: 10px;
-  top: 10px;
   background: rgba(78, 76, 76, 0.43);
   border-radius: 8px;
-  padding: 0 10px 0 10px;
+  padding: 0 10px;
   color: white;
 }
+
+.overlay#tag0 {
+  left: 10px;
+  top: 10px;	
+}
+
+.overlay#tag1 {
+  left: 10px;
+  top: 40px;	
+}
+
+.overlay#tag2 {
+  left: 10px;
+  top: 60px;	
+}
+
 
 .entry-content {
 	clear:both;

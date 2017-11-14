@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-11-14 01:11+0100\n"
-"PO-Revision-Date: 2017-11-14 01:11+0100\n"
+"POT-Creation-Date: 2017-11-15 00:18+0100\n"
+"PO-Revision-Date: 2017-11-15 00:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -18,58 +18,44 @@ msgstr ""
 msgid "Add a picture"
 msgstr "Ajoutez votre photo"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchive.php:110
-#, php-format
-msgctxt "plural"
-msgid "Cuisine from %s"
-msgstr "Cuisine des %s"
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:83
+msgid "Seasonal !"
+msgstr "De Saison !"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchive.php:112
-#, php-format
-msgctxt "vowel"
-msgid "Cuisine from %s"
-msgstr "Cuisine d'%s"
-
-#: plugins/custom-navigation-helpers/includes/CustomArchive.php:114
-#, php-format
-msgctxt "consonant"
-msgid "Cuisine from %s"
-msgstr "Cuisine de %s"
-
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:53
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:54
 msgid "Detailed Search Results"
 msgstr "Résultats de recherche détaillée"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:55
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:56
 #: themes/foodiepro-2.1.8/search.php:24
 msgid "Search Results for:"
 msgstr "Résultats de recherche pour : "
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:129
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:130
 #, php-format
 msgctxt "plural"
 msgid "All recipes from %s"
 msgstr "Toutes les recettes des %s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:131
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:132
 #, php-format
 msgctxt "vowel"
 msgid "All recipes from %s"
 msgstr "Toutes les recettes d'%s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:133
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:134
 #, php-format
 msgctxt "consonant"
 msgid "All recipes from %s"
 msgstr "Toutes les recettes de %s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:138
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:139
 #, php-format
 msgctxt "vowel"
 msgid "All recipes containing %s"
 msgstr "Toutes les recettes à base d'%s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:140
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:141
 #, php-format
 msgctxt "consonant"
 msgid "All recipes containing %s"
@@ -101,22 +87,23 @@ msgid "Diets"
 msgstr "Régimes et diététique"
 
 #: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:94
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:98
 msgid "France"
 msgstr "Cuisines de régions"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:102
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:106
 msgid "World"
 msgstr "Cuisines du monde"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:107
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:111
 msgid "All posts"
 msgstr "Tous les articles"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:114
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:118
 msgid "Previous page"
 msgstr "Page précédente"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:132
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:136
 msgid "Select..."
 msgstr "Choisir..."
 
@@ -471,12 +458,12 @@ msgid "Displays gravatar and name of current loggued-in user"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:184
-#: themes/foodiepro-2.1.8/functions.php:573
+#: themes/foodiepro-2.1.8/functions.php:572
 msgid "Read More"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:197
-#: themes/foodiepro-2.1.8/functions.php:601
+#: themes/foodiepro-2.1.8/functions.php:600
 msgid "Comments"
 msgstr ""
 
@@ -1402,40 +1389,40 @@ msgstr "<strong> ERREUR</strong>: Utilisateur en attente d'"
 msgid "approval"
 msgstr "approbation"
 
-#: themes/foodiepro-2.1.8/functions.php:610
+#: themes/foodiepro-2.1.8/functions.php:609
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:202
 msgid "Previous comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:616
+#: themes/foodiepro-2.1.8/functions.php:615
 msgid "Next comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:635
+#: themes/foodiepro-2.1.8/functions.php:634
 msgid "Your answer here"
 msgstr "Entrez votre réponse ci-dessous"
 
-#: themes/foodiepro-2.1.8/functions.php:654
+#: themes/foodiepro-2.1.8/functions.php:653
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
-#: themes/foodiepro-2.1.8/functions.php:654
+#: themes/foodiepro-2.1.8/functions.php:653
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:654
+#: themes/foodiepro-2.1.8/functions.php:653
 msgid "Legal notice"
 msgstr "Mentions légales"
 
-#: themes/foodiepro-2.1.8/functions.php:654
+#: themes/foodiepro-2.1.8/functions.php:653
 msgid "Goûtu charter"
 msgstr "Charte Goûtu"
 
-#: themes/foodiepro-2.1.8/functions.php:654
+#: themes/foodiepro-2.1.8/functions.php:653
 msgid "Personal data"
 msgstr "Données personnelles"
 
-#: themes/foodiepro-2.1.8/functions.php:654
+#: themes/foodiepro-2.1.8/functions.php:653
 msgid "Terms of use"
 msgstr "Conditions d'utilisation"
 
@@ -3018,6 +3005,18 @@ msgstr "Ces recettes pourraient également vous intéresser..."
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
 
+#~ msgctxt "plural"
+#~ msgid "Cuisine from %s"
+#~ msgstr "Cuisine des %s"
+
+#~ msgctxt "vowel"
+#~ msgid "Cuisine from %s"
+#~ msgstr "Cuisine d'%s"
+
+#~ msgctxt "consonant"
+#~ msgid "Cuisine from %s"
+#~ msgstr "Cuisine de %s"
+
 #~ msgid "Search Results for \"%s\""
 #~ msgstr "Résultats de recherche pour \"%s\""
 
@@ -3059,9 +3058,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 
 #~ msgid "Course"
 #~ msgstr "Plat"
-
-#~ msgid "Season"
-#~ msgstr "Saison"
 
 #~ msgid "Occasion"
 #~ msgstr "Occasion"

@@ -728,10 +728,18 @@ h1.archive-title {
 	font-weight: bold;  
 }
 
-.entry-header .origin {
+.entry-header .overlay {
   font-family: 'Amatic SC';
   text-transform: capitalize;
-  font-size: 24px;
+  font-size: 22px;
+  line-height: 22px;
+  font-weight: bold;
+}
+
+.entry-header .overlay#veg {
+  font-family: 'FontAwesome';
+  font-size: 22px;
+  line-height: 22px;
   font-weight: bold;
 }
 
@@ -2216,15 +2224,29 @@ Custom Page Templates
 	width:100px;
 }
 
-.entry-header .origin {
+.entry-header .overlay {
   position: absolute;
-  left: 10px;
-  top: 10px;
   background: rgba(78, 76, 76, 0.43);
   border-radius: 8px;
-  padding: 0 10px 0 10px;
+  padding: 0 10px;
   color: white;
 }
+
+.overlay#tag0 {
+  left: 10px;
+  top: 10px;	
+}
+
+.overlay#tag1 {
+  left: 10px;
+  top: 40px;	
+}
+
+.overlay#veg {
+  right: 10px;
+  top: 10px;	
+}
+
 
 .entry-content {
 	clear:both;

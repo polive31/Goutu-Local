@@ -94,7 +94,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 						$msg = __('France', 'foodiepro');
 					}
 		    	elseif ( $parent_slug=='france' ) {
-		    		$url = '/origine/france/regions';
+		    		$url = '/origine/france';
 						$msg = __('France', 'foodiepro');
 					}					
 		    	elseif (!empty($parent_slug)) {

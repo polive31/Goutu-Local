@@ -322,7 +322,7 @@ function load_custom_stylesheet() {
 }
 
 add_action( 'get_footer', 'load_background_stylesheet' );
-function prefix_add_footer_styles() {
+function load_background_stylesheet() {
 		wp_enqueue_style( 'color-theme-white', CHILD_THEME_URL . '/assets/css/color-theme-white.css', array(), CHILD_THEME_VERSION );		
 };
 
@@ -520,11 +520,11 @@ function set_full_layout() {
 
 
 
-
 /* Customize entry title in the archive pages
 -----------------------------------------------------------------------------*/
-function archive_title($title) {
-	
+add_filter( 'genesis_post_title_output', 'archive_title1', 15 );	
+
+ function archive_title1($title) {	
 	/* Display start rating below entry */
 	if ( is_tax() || is_search() ) :
 			$title .= do_shortcode('[display-star-rating category="global" display="minimal"]');
@@ -538,7 +538,6 @@ function archive_title($title) {
 
 	return $title;
 }
-add_filter( 'genesis_post_title_output', 'archive_title', 15 );
 
 
 /* =================================================================*/

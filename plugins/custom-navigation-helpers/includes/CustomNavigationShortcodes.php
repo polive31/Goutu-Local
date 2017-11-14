@@ -99,7 +99,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 					}					
 		    	elseif (!empty($parent_slug)) {
 		    		$url = '/origine/' . $parent_slug;
-		    		$msg = $this->get_cuisine_caption($parent_name);
+		    		$msg = $parent_name;
 		    	}
 		    	else {
 		    		$url = "/accueil/recettes/monde";
@@ -166,6 +166,9 @@ class CustomNavigationShortcodes extends CustomArchive {
 				$child_of = $obj->parent; // wp_list_categories will use parent to filter
 			else // term has no parent => either continent or france
 				$child_of = $obj->term_id; // wp_list_categories will use current term to filter
+		}
+		elseif ($tax_slug == 'occasion') {
+			
 		}
 	
 

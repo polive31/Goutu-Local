@@ -13,13 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CustomArchive {
 	
 	protected static $vowels = array('a','e','i','o','u');
-	protected $fcat;
-	protected $fterm;
 	protected $orderby;
 	
-	public function __construct() {
-		//add_action( 'pre_get_posts', array($this,'archive_filter_sort'));		
-		add_filter( 'query_vars', array($this,'add_filter_queryvars') );		
+	public function __construct() {	
 		add_action( 'wp_loaded', array($this,'hydrate'));		
 	}
 	
@@ -31,22 +27,11 @@ class CustomArchive {
 			}
 	}
 	
-	/* Custom query variable for taxonomy filter
-	--------------------------------------------- */		
-	function add_filter_queryvars($vars) {
-	  $vars[] = 'fcat';
-	  $vars[] .= 'fterm';
-	  $vars[] .= 'ocat';
-	  $vars[] .= 'oterm';
-	  return $vars;
-	}	
 
 	/* Class attributes initialization
 	--------------------------------------------- */		
 	function hydrate() {
 		$this->orderby = get_query_var('orderby','ASC');
-		$this->fcat = get_query_var('fcat');
-		$this->fterm = get_query_var('fterm');
 	}			
 	
 	public function archive_filter_sort($query) {
@@ -92,6 +77,11 @@ class CustomArchive {
 
 	}
 	
+
+
+	/* Helper functions
+	---------------------------------------------------------------------------*/
+	
 	protected function initial_is_vowel($word) {
 		$first = strtolower($word[0]);
 		return in_array($first,self::$vowels);
@@ -102,22 +92,24 @@ class CustomArchive {
 		return ($last=='s');	
 	}	
 	
-	protected function get_cuisine_caption($origin) {
-		//PC::debug(array('origin'=>$origin));
-//		if ($this->is_plural($origin))
-//			$msg = _x('Cuisine from %s','plural','foodiepro');
-//		elseif ($this->initial_is_vowel($origin))
-//			$msg = _x('Cuisine from %s','vowel','foodiepro');
-//		else
-//			$msg = _x('Cuisine from %s','consonant','foodiepro');
-//		$msg = sprintf($msg,$origin);
+	protected function is_season($season) {
+		//get current month
+		$currentMonth=DATE("m");
+		 
+		//retrieve season
+		if ($currentMonth>="03" && $currentMonth<="05")
+		  $currentSeason = "0";
+		elseif ($currentMonth>="06" && $currentMonth<="08")
+		  $currentSeason = "1";
+		elseif ($currentMonth>="09" && $currentMonth<="11")
+		  $currentSeason = "2";
+		else
+		  $currentSeason = "3";	
+		  
+		return ($season[0] == $currentSeason);
 
-		// Simplified to $origin, since caption length exceeds button...
-		//... size with "cuisine from" + some countries
-		return $origin; // Simplified to $origin, since caption length exceeds button size with "cuisine from" + some countries
 	}
 	
-
-
+	
 
 }

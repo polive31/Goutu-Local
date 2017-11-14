@@ -41,11 +41,11 @@ class CustomArchiveEntryTitle extends CustomArchive {
 		if ( is_tax('course') ) {
 			$post_id = get_the_ID();
 			
-			//$occasion = wp_get_post_terms( $post_id, 'occasion', array("fields" => "names"));
+			$occasion = wp_get_post_terms( $post_id, 'occasion', array("fields" => "names"));
 			$season = wp_get_post_terms( $post_id, 'season');
 			$diet = wp_get_post_terms( $post_id, 'diet');
 			
-			$title = $this->output_tags('', $diet[0]->slug, '', $season[0]->slug) . $title;
+			$title = $this->output_tags('', $diet[0]->slug, $occasion[0], $season[0]->slug) . $title;
 		};	
 		
 		if ( is_tax('season') ) {
@@ -63,7 +63,7 @@ class CustomArchiveEntryTitle extends CustomArchive {
 			$season = wp_get_post_terms( $post_id, 'season');
 			$occasion = wp_get_post_terms( $post_id, 'occasion', array("fields" => "names"));
 			
-			$title = $this->output_tags('', $occasion[0], $season[0]->slug) . $title;
+			$title = $this->output_tags('', '', $occasion[0], $season[0]->slug) . $title;
 		};						
 
 		if ( is_tax('occasion') ) {
@@ -85,27 +85,28 @@ class CustomArchiveEntryTitle extends CustomArchive {
 		$veg_msg = '<i class="fa fa-leaf" aria-hidden="true"></i>';
 		$tags = '';
 		
-		$css_id=0;
+		$left_id=0;
+		$right_id=0;
 		
 		if ( $origin!='' ) {
-			$tags .= '<div class="overlay" id="tag' . $css_id . '">' . $origin . '</div>';
-			$css_id++;
+			$tags .= '<div class="overlay" id="left' . $left_id . '">' . $origin . '</div>';
+			$left_id++;
 		}			
-		
-		if ($this->is_season($season)) {
-			$tags = '<div class="overlay" id="tag' . $css_id . '">' . $season_msg . '</div>';
-			$css_id++;
-		}
 
 		if ( $this->is_veg($diet) ) {
 			//$tags .= '<div class="overlay" id="veg">' . $veg_msg . '</div>';
 			$tags .= '<div class="overlay" id="veg">' . $veg_msg . '</div>';
-			//$css_id++;
+			$right_id++;
+		}
+				
+		if ($this->is_season($season)) {
+			$tags .= '<div class="overlay" id="right' . $right_id . '">' . $season_msg . '</div>';
+			$right_id++;
 		}
 		
 		if ( $occasion != '' ) {
-			$tags .= '<div class="overlay" id="tag' . $css_id . '">' . $occasion . '</div>';
-			$css_id++;
+			$tags .= '<div class="overlay" id="left' . $left_id . '">' . $occasion . '</div>';
+			$left_id++;
 		}	
 		
 		return $tags;

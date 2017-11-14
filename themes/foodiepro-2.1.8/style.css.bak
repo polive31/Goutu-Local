@@ -2232,19 +2232,29 @@ Custom Page Templates
   color: white;
 }
 
-.overlay#tag0 {
+.overlay#left0 {
   left: 10px;
   top: 10px;	
 }
 
-.overlay#tag1 {
+.overlay#left1 {
   left: 10px;
   top: 40px;	
 }
 
-.overlay#tag2 {
+.overlay#veg {
+  right: 10px;
+  top: 10px;	
+}
+
+.overlay#right0 {
+  right: 10px;
+  top: 10px;	
+}
+
+.overlay#right1 {
   left: 10px;
-  top: 60px;	
+  top: 40px;	
 }
 
 

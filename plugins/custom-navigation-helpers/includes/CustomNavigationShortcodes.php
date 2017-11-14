@@ -89,10 +89,14 @@ class CustomNavigationShortcodes extends CustomArchive {
 					$msg = __('Diets', 'foodiepro');
 					break;
 		    case 'cuisine':
-		    	if ( $current_slug=='france' || $parent_slug=='france' ) {
+		    	if ( $current_slug=='france' ) {
 		    		$url = "/accueil/recettes/regions";
 						$msg = __('France', 'foodiepro');
 					}
+		    	elseif ( $parent_slug=='france' ) {
+		    		$url = '/origine/france';
+						$msg = __('France', 'foodiepro');
+					}					
 		    	elseif (!empty($parent_slug)) {
 		    		$url = '/origine/' . $parent_slug;
 		    		$msg = $this->get_cuisine_caption($parent_name);

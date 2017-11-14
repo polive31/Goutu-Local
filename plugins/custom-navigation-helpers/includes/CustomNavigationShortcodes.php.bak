@@ -89,10 +89,14 @@ class CustomNavigationShortcodes extends CustomArchive {
 					$msg = __('Diets', 'foodiepro');
 					break;
 		    case 'cuisine':
-		    	if ( $current_slug=='france' || $parent_slug=='france' ) {
+		    	if ( $current_slug=='france' ) {
 		    		$url = "/accueil/recettes/regions";
 						$msg = __('France', 'foodiepro');
 					}
+		    	elseif ( $parent_slug=='france' ) {
+		    		$url = '/origine/france/regions';
+						$msg = __('France', 'foodiepro');
+					}					
 		    	elseif (!empty($parent_slug)) {
 		    		$url = '/origine/' . $parent_slug;
 		    		$msg = $this->get_cuisine_caption($parent_name);
@@ -145,24 +149,24 @@ class CustomNavigationShortcodes extends CustomArchive {
 /* arguments for function wp_list_categories
 ------------------------------------------------------------------------*/
 	// Source taxonomy
-	$all_url='#';
-	
-	$obj = get_queried_object();
-	//echo var_dump( $obj );
-	$tax_slug = $obj->taxonomy;
-	$tax = get_taxonomy($tax_slug);
-	//$term_name = $obj->name;
-	$term_slug = $obj->slug;		
-	//echo sprintf( '$tax_slug = %s <br>', $tax_slug);
+		$all_url='#';
+		
+		$obj = get_queried_object();
+		//echo var_dump( $obj );
+		$tax_slug = $obj->taxonomy;
+		$tax = get_taxonomy($tax_slug);
+		//$term_name = $obj->name;
+		$term_slug = $obj->slug;		
+		//echo sprintf( '$tax_slug = %s <br>', $tax_slug);
 			
 			
 	// Output taxonomy and parent term			
-	if ($tax_slug == 'cuisine') { // $tax_slug will stay cuisine
-		if ($obj->parent != 0) // term has a parent => either country or region archive
-			$child_of = $obj->parent; // wp_list_categories will use parent to filter
-		else // term has no parent => either continent or france
-			$child_of = $obj->term_id; // wp_list_categories will use current term to filter
-	}
+		if ($tax_slug == 'cuisine') { // $tax_slug will stay cuisine
+			if ($obj->parent != 0) // term has a parent => either country or region archive
+				$child_of = $obj->parent; // wp_list_categories will use parent to filter
+			else // term has no parent => either continent or france
+				$child_of = $obj->term_id; // wp_list_categories will use current term to filter
+		}
 	
 
 	// Arguments for wp_list_categories	

@@ -737,7 +737,6 @@ h1.archive-title {
 
 .archive h2.entry-title a,
 .search h2.entry-title a,
-h3.easingslider-post-title,
 h3.rpwe-title a {
 	/*font-family:"Delius Swash Caps", cursive !important;
 	font-family:"Roboto slab", cursive !important;*/
@@ -747,6 +746,15 @@ h3.rpwe-title a {
   font-weight: normal;
   font-size: 16px;	
 }
+
+/* Slider formatting */
+.slider-text {
+  font-family: podkova;
+  font-size: 30px!important;
+  color: #FFF;
+}
+
+
 
 /* Widgets Headline */
 
@@ -1621,7 +1629,7 @@ form[role="search"] {
 
 /* Slider widget
 --------------------------------------------- */
-.content .widget_easingslider_widget {
+.content .master-slider-main-widget {
     margin-bottom: 30px;
 }
 
@@ -1909,12 +1917,6 @@ form[role="search"] {
 
 .galleria-container {
     background: rgba(255, 255, 255, 0.4)!important;
-}
-
-/* Easing Slider */
-h3.easingslider-post-title {
-	font-size:25px!important;
-	font-weight:300!important;
 }
 
 
@@ -3569,7 +3571,7 @@ Site Footer
 		display:initial;
 	}
 	
-	h3.easingslider-post-title {
+	.slider-text {
 		font-size: 20px!important;
 	}
 	
@@ -3711,14 +3713,9 @@ Site Footer
 		width:100%;
 	}*/
 	
-	.easingslider-post-summary {
-    padding-left:20px!important;
-   }
-	
-	 .easingslider-post-title {
-    font-size:25px!important;
-	 }
-	
+	.slider-text {
+	 	font-size:25px!important;
+	}
 	
 	/* Added P.O. allows to resize the header picture */
 	.site-title a,

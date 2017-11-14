@@ -68,7 +68,7 @@ public function widget( $args, $instance ) {
 
 	// Start of widget code
 	
-	echo do_shortcode('[ct-terms taxonomy="url" dropdown="true" filter="true"]');
+	echo do_shortcode('[ct-terms dropdown="true"]');
 
 	// Output end
 	echo $args['after_widget'];

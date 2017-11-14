@@ -125,7 +125,9 @@ class CustomArchiveHeadline extends CustomArchive {
 
 			////PC::debug(array('value'=>$value));	
 			////PC::debug(array('value'=>$this->initial_is_vowel($value)));	
-			if ($this->initial_is_vowel($value)) 
+			if ($this->is_plural($value)) 
+				$msg = sprintf(_x('All recipes from %s','plural','foodiepro'), $value);
+			elseif ($this->initial_is_vowel($value)) 
 				$msg = sprintf(_x('All recipes from %s','vowel','foodiepro'), $value);
 			else 
 				$msg = sprintf(_x('All recipes from %s','consonant','foodiepro'), $value);

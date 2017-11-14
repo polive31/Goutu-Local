@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-11-11 00:53+0100\n"
-"PO-Revision-Date: 2017-11-11 00:53+0100\n"
+"POT-Creation-Date: 2017-11-14 01:11+0100\n"
+"PO-Revision-Date: 2017-11-14 01:11+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -18,13 +18,19 @@ msgstr ""
 msgid "Add a picture"
 msgstr "Ajoutez votre photo"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchive.php:103
+#: plugins/custom-navigation-helpers/includes/CustomArchive.php:110
+#, php-format
+msgctxt "plural"
+msgid "Cuisine from %s"
+msgstr "Cuisine des %s"
+
+#: plugins/custom-navigation-helpers/includes/CustomArchive.php:112
 #, php-format
 msgctxt "vowel"
 msgid "Cuisine from %s"
 msgstr "Cuisine d'%s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchive.php:105
+#: plugins/custom-navigation-helpers/includes/CustomArchive.php:114
 #, php-format
 msgctxt "consonant"
 msgid "Cuisine from %s"
@@ -35,29 +41,35 @@ msgid "Detailed Search Results"
 msgstr "Résultats de recherche détaillée"
 
 #: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:55
-#, php-format
-msgid "Search Results for \"%s\""
-msgstr "Résultats de recherche pour \"%s\""
+#: themes/foodiepro-2.1.8/search.php:24
+msgid "Search Results for:"
+msgstr "Résultats de recherche pour : "
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:128
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:129
+#, php-format
+msgctxt "plural"
+msgid "All recipes from %s"
+msgstr "Toutes les recettes des %s"
+
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:131
 #, php-format
 msgctxt "vowel"
 msgid "All recipes from %s"
 msgstr "Toutes les recettes d'%s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:130
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:133
 #, php-format
 msgctxt "consonant"
 msgid "All recipes from %s"
 msgstr "Toutes les recettes de %s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:135
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:138
 #, php-format
 msgctxt "vowel"
 msgid "All recipes containing %s"
 msgstr "Toutes les recettes à base d'%s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:137
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:140
 #, php-format
 msgctxt "consonant"
 msgid "All recipes containing %s"
@@ -459,12 +471,12 @@ msgid "Displays gravatar and name of current loggued-in user"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:184
-#: themes/foodiepro-2.1.8/functions.php:568
+#: themes/foodiepro-2.1.8/functions.php:573
 msgid "Read More"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:197
-#: themes/foodiepro-2.1.8/functions.php:596
+#: themes/foodiepro-2.1.8/functions.php:601
 msgid "Comments"
 msgstr ""
 
@@ -1378,52 +1390,52 @@ msgstr ""
 msgid "Visibility"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:371
+#: themes/foodiepro-2.1.8/functions.php:376
 msgid "Goûtu.org - Cuisiner, Découvrir, Partager"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:408
+#: themes/foodiepro-2.1.8/functions.php:413
 msgid "<strong>ERROR</strong>: User pending "
 msgstr "<strong> ERREUR</strong>: Utilisateur en attente d'"
 
-#: themes/foodiepro-2.1.8/functions.php:408
+#: themes/foodiepro-2.1.8/functions.php:413
 msgid "approval"
 msgstr "approbation"
 
-#: themes/foodiepro-2.1.8/functions.php:605
+#: themes/foodiepro-2.1.8/functions.php:610
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:202
 msgid "Previous comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:611
+#: themes/foodiepro-2.1.8/functions.php:616
 msgid "Next comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:630
+#: themes/foodiepro-2.1.8/functions.php:635
 msgid "Your answer here"
 msgstr "Entrez votre réponse ci-dessous"
 
-#: themes/foodiepro-2.1.8/functions.php:649
+#: themes/foodiepro-2.1.8/functions.php:654
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
-#: themes/foodiepro-2.1.8/functions.php:649
+#: themes/foodiepro-2.1.8/functions.php:654
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:649
+#: themes/foodiepro-2.1.8/functions.php:654
 msgid "Legal notice"
 msgstr "Mentions légales"
 
-#: themes/foodiepro-2.1.8/functions.php:649
+#: themes/foodiepro-2.1.8/functions.php:654
 msgid "Goûtu charter"
 msgstr "Charte Goûtu"
 
-#: themes/foodiepro-2.1.8/functions.php:649
+#: themes/foodiepro-2.1.8/functions.php:654
 msgid "Personal data"
 msgstr "Données personnelles"
 
-#: themes/foodiepro-2.1.8/functions.php:649
+#: themes/foodiepro-2.1.8/functions.php:654
 msgid "Terms of use"
 msgstr "Conditions d'utilisation"
 
@@ -1660,6 +1672,10 @@ msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:391
 msgid "Heading Font"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:399
+msgid "Widget Font"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:398
@@ -2994,10 +3010,6 @@ msgstr ""
 msgid "Post type"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/search.php:24
-msgid "Search Results for:"
-msgstr "Résultats de recherche pour : "
-
 #: themes/foodiepro-2.1.8/yarpp-template-goutu.php:29
 msgid "Related Recipes"
 msgstr "Ces recettes pourraient également vous intéresser..."
@@ -3005,6 +3017,9 @@ msgstr "Ces recettes pourraient également vous intéresser..."
 #: themes/foodiepro-2.1.8/yarpp-template-goutu.php:31
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
+
+#~ msgid "Search Results for \"%s\""
+#~ msgstr "Résultats de recherche pour \"%s\""
 
 #~ msgid "Other Courses"
 #~ msgstr "Autres plats"

@@ -36,7 +36,7 @@ class CustomArchiveHeadline extends CustomArchive {
 		
 		/* WPURP Detailed search : customized page title and description 
  		------------------------------------------------------------*/
-		add_filter( 'genesis_search_title_text', array($this,'custom_search_title_text') );
+		//add_filter( 'genesis_search_title_text', array($this,'custom_search_title_text') );
 	}
 	
 	public function init() {
@@ -125,6 +125,8 @@ class CustomArchiveHeadline extends CustomArchive {
 
 			////PC::debug(array('value'=>$value));	
 			////PC::debug(array('value'=>$this->initial_is_vowel($value)));	
+			if ($this->is_plural($value)) 
+				$msg = sprintf(_x('All recipes from %s','plural','foodiepro'), $value);
 			if ($this->initial_is_vowel($value)) 
 				$msg = sprintf(_x('All recipes from %s','vowel','foodiepro'), $value);
 			else 

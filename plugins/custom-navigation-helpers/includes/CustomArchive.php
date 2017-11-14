@@ -97,14 +97,24 @@ class CustomArchive {
 		return in_array($first,self::$vowels);
 	}
 	
+	protected function is_plural($word) {
+		$last = strtolower($word[strlen($word)-1]);
+		return ($last=='s');	
+	}	
+	
 	protected function get_cuisine_caption($origin) {
 		//PC::debug(array('origin'=>$origin));
-		if ($this->initial_is_vowel($origin))
-			$msg = _x('Cuisine from %s','vowel','foodiepro') . $origin;
-		else
-			$msg = _x('Cuisine from %s','consonant','foodiepro') . $origin;
-		//$msg = sprintf(_x('Cuisine from %s',$context,'foodiepro'),$origin);
-		return $msg;
+//		if ($this->is_plural($origin))
+//			$msg = _x('Cuisine from %s','plural','foodiepro');
+//		elseif ($this->initial_is_vowel($origin))
+//			$msg = _x('Cuisine from %s','vowel','foodiepro');
+//		else
+//			$msg = _x('Cuisine from %s','consonant','foodiepro');
+//		$msg = sprintf($msg,$origin);
+
+		// Simplified to $origin, since caption length exceeds button...
+		//... size with "cuisine from" + some countries
+		return $origin; 
 	}
 	
 

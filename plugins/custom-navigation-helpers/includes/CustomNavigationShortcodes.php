@@ -120,7 +120,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 
 
 	/* =================================================================*/
-	/* =                    TAXONOMY LIST SHORTCODE     
+	/* = TAXONOMY LIST SHORTCODE     
 	/* =================================================================*/
 
 	public function list_terms_taxonomy( $atts ) {
@@ -146,35 +146,24 @@ class CustomNavigationShortcodes extends CustomArchive {
 ------------------------------------------------------------------------*/
 	// Source taxonomy
 		$all_url='#';
-		if ( $taxonomy=='url' ) {
-			$obj = get_queried_object();
-			//echo var_dump( $obj );
-			$tax_slug = $obj->taxonomy;
-			$tax = get_taxonomy($tax_slug);
-			//$term_name = $obj->name;
-			//$term_slug = $obj->slug;		
-		}
-		else 
-			$tax_slug = $taxonomy;	
+		
+		$obj = get_queried_object();
+		//echo var_dump( $obj );
+		$tax_slug = $obj->taxonomy;
+		$tax = get_taxonomy($tax_slug);
+		//$term_name = $obj->name;
+		$term_slug = $obj->slug;		
 		//echo sprintf( '$tax_slug = %s <br>', $tax_slug);
-				
-	// Parent term (child_of = false by default)
-		if ($obj->parent != 0) 
-			$child_of = $obj->parent;
-		else 
-			$child_of = $obj->term_id;
-		//echo sprintf( '$child_of = %s <br>', $child_of);
-
-	// Filter taxonomy
-		//$obj->name;
-		if ($filter) {
-			if ( $tax_slug=='course' )
-				$tax_slug = 'occasion';
-			elseif ( $tax_slug=='cuisine' )
-				$tax_slug = 'cuisine';
-			else
-				$tax_slug = 'course';
+			
+			
+	// Output taxonomy and parent term			
+		if ($tax_slug == 'cuisine') { // $tax_slug will stay cuisine
+			if ($obj->parent != 0) // term has a parent => either country or region archive
+				$child_of = $obj->parent; // wp_list_categories will use parent to filter
+			else // term has no parent => either continent or france
+				$child_of = $obj->term_id; // wp_list_categories will use current term to filter
 		}
+	
 
 	// Arguments for wp_list_categories	
 		$args = array( 

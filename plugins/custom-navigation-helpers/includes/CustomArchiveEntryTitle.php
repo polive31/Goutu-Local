@@ -34,8 +34,9 @@ class CustomArchiveEntryTitle extends CustomArchive {
 			$post_id = get_the_ID();
 			$origin = wp_get_post_terms( $post_id, 'cuisine', array("fields" => "names"));
 			$diet = wp_get_post_terms( $post_id, 'diet');
+			//$season = wp_get_post_terms( $post_id, 'season');
 
-			$title = $this->output_tags($origin[0], $diet[0]->slug, '', '') . $title;
+			$title = $this->output_tags($origin[0], $diet[0]->slug, '', ''/*$season[0]->slug*/) . $title;
 		};
 		
 		if ( is_tax('course') ) {

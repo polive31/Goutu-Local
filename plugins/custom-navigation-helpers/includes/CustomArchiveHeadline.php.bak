@@ -40,7 +40,6 @@ class CustomArchiveHeadline extends CustomArchive {
 		
 	}
 
-	
 	public function init() {
 		if ( is_archive() ) {
 			$this->query = get_queried_object();

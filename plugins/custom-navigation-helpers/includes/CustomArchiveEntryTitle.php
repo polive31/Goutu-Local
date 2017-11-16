@@ -36,17 +36,18 @@ class CustomArchiveEntryTitle extends CustomArchive {
 			$diet = wp_get_post_terms( $post_id, 'diet');
 			$season = wp_get_post_terms( $post_id, 'season');
 
-			$title = $this->output_tags($origin[0], $diet[0]->slug, '', $season[0]->slug) . $title;
+			$title = $this->output_tags( $origin[0], $diet[0]->slug, '', $season[0]->slug) . $title;
 		};
 		
-		if ( is_tax('course') ) {
+		if ( is_search() || is_tax('difficult') ) {
 			$post_id = get_the_ID();
 			
+			$origin = wp_get_post_terms( $post_id, 'cuisine', array("fields" => "names"));			
 			$occasion = wp_get_post_terms( $post_id, 'occasion');
 			$season = wp_get_post_terms( $post_id, 'season');
 			$diet = wp_get_post_terms( $post_id, 'diet');
 			
-			$title = $this->output_tags('', $diet[0]->slug, $occasion, $season[0]->slug) . $title;
+			$title = $this->output_tags( $origin[0], $diet[0]->slug, $occasion, $season[0]->slug) . $title;
 		};	
 		
 		if ( is_tax('season') ) {
@@ -55,24 +56,26 @@ class CustomArchiveEntryTitle extends CustomArchive {
 			$diet = wp_get_post_terms( $post_id, 'diet');
 			$occasion = wp_get_post_terms( $post_id, 'occasion');
 			
-			$title = $this->output_tags('', $diet[0]->slug, $occasion, '') . $title;
+			$title = $this->output_tags( '', $diet[0]->slug, $occasion, '') . $title;
 		};
 		
 		if ( is_tax('diet') ) {
 			$post_id = get_the_ID();
-			
+
+			$origin = wp_get_post_terms( $post_id, 'cuisine', array("fields" => "names"));			
 			$season = wp_get_post_terms( $post_id, 'season');
 			$occasion = wp_get_post_terms( $post_id, 'occasion');
 			
-			$title = $this->output_tags('', '', $occasion, $season[0]->slug) . $title;
+			$title = $this->output_tags( $origin[0], '', $occasion, $season[0]->slug) . $title;
 		};						
 
 		if ( is_tax('occasion') ) {
 			$post_id = get_the_ID();
+			$origin = wp_get_post_terms( $post_id, 'cuisine', array("fields" => "names"));
 			$diet = wp_get_post_terms( $post_id, 'diet');
 			$season = wp_get_post_terms( $post_id, 'season');
 			
-			$title = $this->output_tags( '', $diet[0]->slug, '', $season[0]->slug) . $title;
+			$title = $this->output_tags( $origin[0], $diet[0]->slug, '', $season[0]->slug) . $title;
 		};	
 
 		if ( is_tax('ingredient') ) {
@@ -90,7 +93,7 @@ class CustomArchiveEntryTitle extends CustomArchive {
 	}
 
 
-	public function output_tags($origin, $diet, $occasion, $season) {
+	public function output_tags( $origin, $diet, $occasion, $season) {
 		
 		$season_msg = __('Seasonal', 'foodiepro');
 		$fest_msg = __('Festive', 'foodiepro');
@@ -100,6 +103,7 @@ class CustomArchiveEntryTitle extends CustomArchive {
 		
 		$left_id=0;
 		$right_id=0;
+		$left_msg=='';
 		
 
 		if ( $this->is_veg($diet) ) {
@@ -109,8 +113,10 @@ class CustomArchiveEntryTitle extends CustomArchive {
 		}
 		
 		if ( $origin!='' ) {
-			$tags .= '<div class="overlay" id="left' . $left_id . '">' . $origin . '</div>';
-			$left_id++;		
+			if ( $tax=='cuisine' ) {
+				$tags .= '<div class="overlay" id="left' . $left_id . '">' . $origin . '</div>';
+				$left_id++;		
+			}
 		}
 		
 		if ($this->is_season($season)) {

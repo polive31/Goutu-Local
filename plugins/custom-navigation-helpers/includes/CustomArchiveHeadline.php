@@ -93,16 +93,16 @@ class CustomArchiveHeadline extends CustomArchive {
 					$tax = $obj->taxonomy;			
 					//echo $tax;
 			    if ( $tax=='ingredient' )
-						echo $this->get_archive_headline('ingredient', $this->query->slug, $headline);			
+						echo $this->get_archive_headline('ingredient', $this->query->name, $headline);			
 					elseif ( $tax=='cuisine' )
-						echo $this->get_archive_headline('cuisine', $this->query->slug, $headline);
+						echo $this->get_archive_headline('cuisine', $this->query->name, $headline);
 					elseif( $tax=='difficult' ) 
-						echo $this->get_archive_headline('difficult', $this->query->slug, $headline);
+						echo $this->get_archive_headline('difficult', $this->query->name, $headline);
 					else 
-						echo $this->get_archive_headline('', $this->query->slug, $headline);
+						echo $this->get_archive_headline('', $this->query->name, $headline);
 				}
 				else 
-					echo $this->get_archive_headline('', $this->query->slug, $headline);
+					echo $this->get_archive_headline('', $this->query->name, $headline);
 			}
 		}
 	}

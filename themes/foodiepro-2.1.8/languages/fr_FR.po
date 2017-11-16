@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-11-15 00:18+0100\n"
-"PO-Revision-Date: 2017-11-15 00:18+0100\n"
+"POT-Creation-Date: 2017-11-16 01:11+0100\n"
+"PO-Revision-Date: 2017-11-16 01:11+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -18,9 +18,13 @@ msgstr ""
 msgid "Add a picture"
 msgstr "Ajoutez votre photo"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:83
-msgid "Seasonal !"
-msgstr "De Saison !"
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:95
+msgid "Seasonal"
+msgstr "De Saison"
+
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:96
+msgid "Festive"
+msgstr "Fêtes"
 
 #: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:54
 msgid "Detailed Search Results"

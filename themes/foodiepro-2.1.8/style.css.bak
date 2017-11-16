@@ -2226,10 +2226,30 @@ Custom Page Templates
 
 .entry-header .overlay {
   position: absolute;
-  background: rgba(78, 76, 76, 0.43);
   border-radius: 8px;
   padding: 0 10px;
+  background: rgba(78, 76, 76, 0.43);
   color: white;
+}
+
+.overlay.col-0 {
+ color: #2fe803;
+ background: #f1ff2e;
+}
+
+.overlay.col-1 {
+	color: #e8ff36;
+	background: #ff1900;
+}
+
+.overlay.col-2 {
+  color: #d06b20;
+  background: #ffde35;
+}
+
+.overlay.col-3 {
+  color: #ffffff;
+  background: #a1ffd4;
 }
 
 .overlay#left0 {
@@ -2253,7 +2273,7 @@ Custom Page Templates
 }
 
 .overlay#right1 {
-  left: 10px;
+  right: 10px;
   top: 40px;	
 }
 

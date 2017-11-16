@@ -107,9 +107,23 @@ class CustomArchive {
 		  $currentSeason = "3";	
 		  
 		return ($season[0] == $currentSeason);
-
 	}
 	
+	protected function is_fest($occasion) {
+		$currentMonth=DATE("m");
+		$needle = '2-fetes';
+		
+		foreach ($occasion as $obj) {
+			if ($obj->slug == $needle) {
+				//if ( $currentMonth==11 || $currentMonth==12 ) {
+					return true;
+				//}
+			}
+		}
+	}
 	
+	protected function is_veg($diet) {
+		return ($diet[0] == "0");
+	}
 
 }

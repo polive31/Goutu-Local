@@ -2252,6 +2252,11 @@ Custom Page Templates
   background: #a1ffd4;
 }
 
+.overlay#left0::before {
+	content:url("images/christmas-stars-24.png");
+	padding-right:5px;
+}
+
 .overlay#left0 {
   left: 10px;
   top: 10px;	

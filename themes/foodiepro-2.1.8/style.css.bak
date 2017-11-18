@@ -2233,8 +2233,8 @@ Custom Page Templates
 }
 
 .overlay.col-0 {
- color: #2fe803;
- background: #f1ff2e;
+	color: #2fe803;
+	background: #f1ff2e;
 }
 
 .overlay.col-1 {
@@ -2252,9 +2252,15 @@ Custom Page Templates
   background: #a1ffd4;
 }
 
+.overlay#left0::before {
+	content:url("images/christmas-stars-24.png");
+	padding-right:5px;
+}
+
 .overlay#left0 {
   left: 10px;
   top: 10px;	
+  padding-left:40px;
 }
 
 .overlay#left1 {

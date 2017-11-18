@@ -2267,12 +2267,7 @@ Custom Page Templates
 
 .overlay.left1 {
   left: 10px;
-  top: 50px;	
-}
-
-.overlay.botright {
-  right: 10px;
-  bottom: 10px;	
+  top: 45px;	
 }
 
 .overlay.right0 {
@@ -2282,7 +2277,7 @@ Custom Page Templates
 
 .overlay.right1 {
   right: 10px;
-  top: 50px;	
+  top: 45px;	
 }
 
 

@@ -314,16 +314,16 @@ function foodie_pro_enqueue_fonts() {
 /* Chargement des feuilles de style custom et polices */
 add_action( 'wp_enqueue_scripts', 'load_custom_stylesheet' );
 function load_custom_stylesheet() {
-	wp_enqueue_style( 'admin-css', CHILD_THEME_URL . '/assets/css/admin.css', array(), CHILD_THEME_VERSION );		
+	//wp_enqueue_style( 'admin-css', CHILD_THEME_URL . '/assets/css/admin.css', array(), CHILD_THEME_VERSION );		
 	if ( CHILD_COLOR_THEME=='autumn')
 		wp_enqueue_style( 'color-theme-autumn', CHILD_THEME_URL . '/assets/css/color-theme-autumn.css', array(), CHILD_THEME_VERSION );
 	else 
-		wp_enqueue_style( 'background-white', CHILD_THEME_URL . '/assets/css/background-white.css', array(), CHILD_THEME_VERSION );		
+		wp_enqueue_style( 'color-theme-white', CHILD_THEME_URL . '/assets/css/color-theme-white.css', array(), CHILD_THEME_VERSION );		
 }
 
 add_action( 'get_footer', 'load_background_stylesheet' );
 function load_background_stylesheet() {
-		wp_enqueue_style( 'color-theme-white', CHILD_THEME_URL . '/assets/css/color-theme-white.css', array(), CHILD_THEME_VERSION );		
+		wp_enqueue_style( 'background-white', CHILD_THEME_URL . '/assets/css/background-white.css', array(), CHILD_THEME_VERSION );		
 };
 
 /* Gestion des feuilles de style minifiées */

@@ -105,19 +105,16 @@ class CustomArchiveEntryTitle extends CustomArchive {
 		$left_id=0;
 		$right_id=0;
 
+
+	
+		if ($this->is_season($season)) {
+			$tags .= '<div class="overlay col-' . $season[0] . ' right' . $right_id . '">' . $season_msg . '</div>';
+			$right_id++;
+		}
+
 		if ( $this->is_veg($diet) ) {
 			//$tags .= '<div class="overlay" id="veg">' . $veg_msg . '</div>';
 			$tags .= '<div class="overlay right' . $right_id . '" id="veg">' . $veg_msg . '</div>';
-			$right_id++;
-		}
-		
-		if ( $origin!='' ) {
-			$tags .= '<div class="overlay left' . $left_id . '">' . $origin . '</div>';
-			$left_id++;		
-		}
-		
-		if ($this->is_season($season)) {
-			$tags .= '<div class="overlay col-' . $season[0] . ' right' . $right_id . '">' . $season_msg . '</div>';
 			$right_id++;
 		}
 		
@@ -125,7 +122,15 @@ class CustomArchiveEntryTitle extends CustomArchive {
 		if ($this->is_fest($occasion)) {
 			$tags .= '<div class="overlay left' . $left_id . '" id="fest">' . $fest_msg . '</div>';
 			$left_id++;
-		}	
+		}			
+		
+		if ( $origin!='' ) {
+			$tags .= '<div class="overlay left' . $left_id . '">' . $origin . '</div>';
+			$left_id++;		
+		}
+	
+		
+
 		
 		return $tags;
 	}

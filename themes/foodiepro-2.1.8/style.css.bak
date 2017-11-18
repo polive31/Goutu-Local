@@ -2260,29 +2260,29 @@ Custom Page Templates
   top: 10px;	
 }
 
-.overlay#left0 {
+.overlay.left0 {
   left: 10px;
   top: 10px;	
 }
 
-.overlay#left1 {
+.overlay.left1 {
   left: 10px;
-  top: 40px;	
+  top: 50px;	
 }
 
-.overlay#veg {
+.overlay.botright {
+  right: 10px;
+  bottom: 10px;	
+}
+
+.overlay.right0 {
   right: 10px;
   top: 10px;	
 }
 
-.overlay#right0 {
+.overlay.right1 {
   right: 10px;
-  top: 10px;	
-}
-
-.overlay#right1 {
-  right: 10px;
-  top: 40px;	
+  top: 50px;	
 }
 
 

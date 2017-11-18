@@ -26,6 +26,19 @@ parent::__construct(
 }
 
 
+public function is_region( $obj ) {
+	//print_r($obj);
+	if ($obj->slug=='france') return true;
+	if ($obj->parent!='') {
+		echo $obj->parent;
+		//echo $parent;
+		//print_r($parent);
+	}
+	$parent = get_term_by('id',$obj->parent,'cuisine');
+	return ($parent->slug=='france');
+}
+
+
 // Creating widget front-end
 public function widget( $args, $instance ) {
 	global $wp;
@@ -37,38 +50,29 @@ public function widget( $args, $instance ) {
 		return '';
 	
 	$title = apply_filters( 'widget_title', $instance['title'] );
+		
 	// before and after widget arguments are defined by themes
 	echo $args['before_widget'];
 	
-
-//	if ( is_tax('course') )
-//		echo $args['before_title'] . __('Other Courses', 'foodiepro') . $args['after_title'];
-//	elseif ( is_tax('cuisine') ) {
-//		$term = get_term_by( 'slug', get_query_var( 'term' ), 'cuisine' );
-//		$parent = get_term_by('id', $term->parent,'cuisine');
-//		if ($term->slug=='france') 
-//			echo $args['before_title'] . __('Region', 'foodiepro') . $args['after_title'];
-//		elseif ($parent->slug=='france')
-//			echo $args['before_title'] . __('Other Regions', 'foodiepro') . $args['after_title'];
-//		elseif ( !empty($parent->slug) ) 
-//			echo $args['before_title'] . __('Other Countries', 'foodiepro') . $args['after_title'];
-//		else 
-//			echo $args['before_title'] . __('Country', 'foodiepro') . $args['after_title'];
-//	}
-//	elseif ( is_tax('season') )
-//		echo $args['before_title'] . __('Other Seasons', 'foodiepro') . $args['after_title'];
-//	elseif ( is_tax('occasion') )
-//		echo $args['before_title'] . __('Other Occasions', 'foodiepro') . $args['after_title'];
-//	elseif ( is_tax('diet') )
-//		echo $args['before_title'] . __('Other Diets', 'foodiepro') . $args['after_title'];
-//	elseif ( is_tax('difficult') )
-//		echo $args['before_title'] . __('Other Levels', 'foodiepro') . $args['after_title'];
-//	else 
-		echo $args['before_title'] . __('Filter recipes', 'foodiepro') . $args['after_title'];
+	$obj = get_queried_object();
+	//print_r($obj);
+	$tax = get_taxonomy($obj->taxonomy);
+	if ($obj->taxonomy=='cuisine') {
+		if ( $this->is_region($obj) )
+			$tax = __('regions','foodiepro');
+		else 
+			$tax = __('countries','foodiepro');
+	}
+	else
+		$tax=$tax->label;
+	//$tax = sprintf(__('Filter by %s', 'foodiepro'),$tax->label);
+	//$tax = sprintf(__('Other %s', 'foodiepro'),$tax);
+	//$tax = $tax->label;
+	//print_r($tax);
+	echo $args['before_title'] . $tax . $args['after_title'];
 
 	// Start of widget code
-	
-	echo do_shortcode('[ct-terms taxonomy="url" dropdown="true"]');
+	echo do_shortcode('[ct-terms dropdown="true"]');
 
 	// Output end
 	echo $args['after_widget'];

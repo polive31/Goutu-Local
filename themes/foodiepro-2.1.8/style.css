@@ -732,14 +732,14 @@ h1.archive-title {
   font-family: 'Amatic SC';
   text-transform: capitalize;
   font-size: 22px;
-  line-height: 22px;
+  line-height: 30px;
   font-weight: bold;
 }
 
 .entry-header .overlay#veg {
   font-family: 'FontAwesome';
   font-size: 22px;
-  line-height: 22px;
+  line-height: 30px;
   font-weight: bold;
 }
 
@@ -800,9 +800,9 @@ h3.rpwe-title a {
 .blogs-top .widgettitle,
 .archives-top .widgettitle {
   font-family:"Lato", sans-serif;	
-	font-size:13px; 
+	font-size:11px; 
 	margin-bottom:0;
-	font-weight:300;
+	font-weight:normal;
 }
 
 .footer-widgets .widgettitle {
@@ -2230,6 +2230,7 @@ Custom Page Templates
   padding: 0 10px;
   background: rgba(78, 76, 76, 0.43);
   color: white;
+  height:30px;
 }
 
 .overlay.col-0 {
@@ -2252,32 +2253,29 @@ Custom Page Templates
   background: #a1ffd4;
 }
 
-.overlay#left0::before {
+.overlay#fest::before {
 	content:url("images/christmas-stars-24.png");
 	padding-right:5px;
-}
-
-.overlay#left0 {
   left: 10px;
   top: 10px;	
 }
 
-.overlay#left1 {
+.overlay.left0 {
+  left: 10px;
+  top: 10px;	
+}
+
+.overlay.left1 {
   left: 10px;
   top: 40px;	
 }
 
-.overlay#veg {
+.overlay.right0 {
   right: 10px;
   top: 10px;	
 }
 
-.overlay#right0 {
-  right: 10px;
-  top: 10px;	
-}
-
-.overlay#right1 {
+.overlay.right1 {
   right: 10px;
   top: 40px;	
 }

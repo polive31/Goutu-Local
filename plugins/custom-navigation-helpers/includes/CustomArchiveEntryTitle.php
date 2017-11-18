@@ -30,7 +30,7 @@ class CustomArchiveEntryTitle extends CustomArchive {
 				//echo 'User rating global = ' . get_post_meta( get_the_ID(), 'user_rating_global', true );
 		};
 
-		if ( is_tax('cuisine', array('france', 'europe', 'asie', 'afrique', 'amerique-nord', 'amerique-sud') ) ) {
+		if ( is_tax('cuisine'/*, array('france', 'europe', 'asie', 'afrique', 'amerique-nord', 'amerique-sud') */) ) {
 			$post_id = get_the_ID();
 			$origin = wp_get_post_terms( $post_id, 'cuisine', array("fields" => "names"));
 			$diet = wp_get_post_terms( $post_id, 'diet');
@@ -100,33 +100,30 @@ class CustomArchiveEntryTitle extends CustomArchive {
 		//$veg_msg = __('Veggie', 'foodiepro');
 		$veg_msg = '<i class="fa fa-leaf" aria-hidden="true"></i>';
 		$tags = '';
+		$tmp = '';
 		
 		$left_id=0;
 		$right_id=0;
-		$left_msg=='';
-		
 
 		if ( $this->is_veg($diet) ) {
 			//$tags .= '<div class="overlay" id="veg">' . $veg_msg . '</div>';
-			$tags .= '<div class="overlay" id="veg">' . $veg_msg . '</div>';
+			$tags .= '<div class="overlay right' . $right_id . '" id="veg">' . $veg_msg . '</div>';
 			$right_id++;
 		}
 		
 		if ( $origin!='' ) {
-			if ( $tax=='cuisine' ) {
-				$tags .= '<div class="overlay" id="left' . $left_id . '">' . $origin . '</div>';
-				$left_id++;		
-			}
+			$tags .= '<div class="overlay left' . $left_id . '">' . $origin . '</div>';
+			$left_id++;		
 		}
 		
 		if ($this->is_season($season)) {
-			$tags .= '<div class="overlay col-' . $season[0] . '" id="left' . $left_id . '">' . $season_msg . '</div>';
-			$left_id++;
+			$tags .= '<div class="overlay col-' . $season[0] . ' right' . $right_id . '">' . $season_msg . '</div>';
+			$right_id++;
 		}
 		
 		//print_r($occasion);
 		if ($this->is_fest($occasion)) {
-			$tags .= '<div class="overlay" id="left' . $left_id . '">' . $fest_msg . '</div>';
+			$tags .= '<div class="overlay left' . $left_id . '" id="fest">' . $fest_msg . '</div>';
 			$left_id++;
 		}	
 		

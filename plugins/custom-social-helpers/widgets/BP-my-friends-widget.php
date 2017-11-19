@@ -39,15 +39,17 @@ class BP_My_Friends extends WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
 	public function widget( $args, $instance ) {
+		
+		if ( !(is_user_logged_in() ) ) return;
 	
      	echo $args['before_widget'];
-		if ( ! empty( $instance['title'] ) ) {
+		if ( ! (empty( $instance['title']) ) ) {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 		}
 		
 		/* Code Start */
 		
-		if ( bp_has_members( 'type=newest&max=6&user_id=' . bp_loggedin_user_id() ) & is_user_logged_in() ) {
+		if ( bp_has_members( 'type=newest&max=6&user_id=' . bp_loggedin_user_id() ) ) {
 			echo	'<div class="avatar-block">';
 			
 			while ( bp_members() ) {

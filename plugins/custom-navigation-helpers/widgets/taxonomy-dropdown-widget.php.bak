@@ -6,7 +6,7 @@ if ( !defined('ABSPATH') )
 	
 	
 add_action( 'widgets_init', function(){
-     register_widget( 'Taxonomy_Navigation_Widget' );
+	register_widget( 'Taxonomy_Navigation_Widget' );
 });	
 
 // Creating the widget 
@@ -59,7 +59,7 @@ public function widget( $args, $instance ) {
 			$tax = __('countries','foodiepro');
 	}
 	else
-		$tax=$author?__('author','foodiepro'):$tax->label;
+		$tax=$author?__('authors','foodiepro'):$tax->label;
 	//$tax = sprintf(__('Filter by %s', 'foodiepro'),$tax->label);
 	//$tax = sprintf(__('Other %s', 'foodiepro'),$tax);
 	//$tax = $tax->label;

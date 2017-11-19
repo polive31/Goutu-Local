@@ -4,10 +4,7 @@
 if ( !defined('ABSPATH') )
 	die('-1');
 	
-	
-add_action( 'widgets_init', function(){
-     register_widget( 'Dropdown_Posts_Sort_Widget' );
-});	
+
 
 // Creating the widget 
 class Dropdown_Posts_Sort_Widget extends WP_Widget {
@@ -123,10 +120,10 @@ return $instance;
 } // Class wpb_widget ends here
 
 // Register and load the widget
+add_action( 'widgets_init', 'wpb_load_widget' );
 function wpb_load_widget() {
 	register_widget( 'dropdown_posts_sort_widget' );
 }
-add_action( 'widgets_init', 'wpb_load_widget' );
 
 
 

@@ -326,6 +326,8 @@ function load_background_stylesheet() {
 		wp_enqueue_style( 'background-white', CHILD_THEME_URL . '/assets/css/background-white.css', array(), CHILD_THEME_VERSION );		
 };
 
+
+
 /* Gestion des feuilles de style minifiées */
 //add_filter( 'stylesheet_uri', 'use_minified_stylesheet', 10, 1 );
 //function use_minified_stylesheet( $default_stylesheet_uri ) {
@@ -350,6 +352,15 @@ function yarpp_dequeue_footer_styles() {
   wp_dequeue_style('yarpp-thumbnails-yarpp-thumbnail');
 }
 add_action('get_footer','yarpp_dequeue_footer_styles');
+
+
+/* Disable buddypress widgets */
+add_action(‘widgets_init’, ‘hide_bp_widgets’, 100); // Has to run before bp_setup_widgets()
+//remove_action( 'bp_register_widgets', 'bp_friends_register_widgets' );
+function hide_bp_widgets() {
+	unregister_widget('BP_My_Friends');	
+	unregister_widget('WP_Widget_Calendar');
+}
 
 
 /* =================================================================*/

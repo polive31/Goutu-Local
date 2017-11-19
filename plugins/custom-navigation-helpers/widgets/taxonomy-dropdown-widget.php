@@ -4,10 +4,7 @@
 if ( !defined('ABSPATH') )
 	die('-1');
 	
-	
-add_action( 'widgets_init', function(){
-     register_widget( 'Taxonomy_Navigation_Widget' );
-});	
+
 
 // Creating the widget 
 class Taxonomy_Navigation_Widget extends WP_Widget {

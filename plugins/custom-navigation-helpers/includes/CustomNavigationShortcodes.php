@@ -152,11 +152,15 @@ class CustomNavigationShortcodes extends CustomArchive {
 		$all_url='#';
 		
 		$obj = get_queried_object();
-		//echo var_dump( $obj );
-		$tax_slug = $obj->taxonomy;
-		$tax = get_taxonomy($tax_slug);
+		$author = ($obj->data->user_login!='');
+		//print_r( $obj );
+		$tax_slug = $author?'author':$obj->taxonomy;
+		//echo $tax_slug;
+		$tax = $author?__('authors', 'foodiepro'):get_taxonomy($tax_slug);
+		//echo $tax;
 		//$term_name = $obj->name;
-		$term_slug = $obj->slug;		
+		$term_slug = $author?$obj->user_login:$obj->slug;		
+		//echo $term_slug;
 		//echo sprintf( '$tax_slug = %s <br>', $tax_slug);
 			
 			
@@ -167,20 +171,23 @@ class CustomNavigationShortcodes extends CustomArchive {
 			else // term has no parent => either continent or france
 				$child_of = $obj->term_id; // wp_list_categories will use current term to filter
 		}
-		elseif ($tax_slug == 'occasion') {
-			
+		else {
+			$child_of='';
 		}
 	
 
-	// Arguments for wp_list_categories	
+	// Arguments for wp_list_categories	/ wp_list_authors
 		$args = array( 
-			'taxonomy'	=> $tax_slug,
-			'child_of'	=> $child_of,
-			'depth' 		=> $depth,
-			'exclude' 	=> $exclude,
-			'orderby' 	=> 'slug',
-			'echo' 			=> false
+			'taxonomy'			=> $tax_slug,
+			'child_of'			=> $child_of,
+			'depth' 				=> $depth,
+			'exclude' 			=> $exclude,
+			'orderby' 			=> 'slug',
+			'echo' 					=> false,
+			'role__not_in'	=> array('administrator','pending'),
+			'show'					=> user_login
 		);
+		
 		
 		if ($dropdown=='true') {	
 			$dropdown_id = $taxonomy . ++$dropdown_cnt;
@@ -197,7 +204,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 			$args['class'] = 'dropdown-select';
 			$args['value_field'] = 'slug';
 			
-			$html .= wp_dropdown_categories( $args );
+			$html .= $author?wp_dropdown_users( $args ):wp_dropdown_categories( $args );
 				
 			ob_start();
 			?>

@@ -49,8 +49,9 @@ public function widget( $args, $instance ) {
 	echo $args['before_widget'];
 	
 	$obj = get_queried_object();
+	$author = ($obj->data->user_login!='');	
 	//print_r($obj);
-	$tax = get_taxonomy($obj->taxonomy);
+	$tax = $author?'author':get_taxonomy($obj->taxonomy);
 	if ($obj->taxonomy=='cuisine') {
 		if ( $this->is_region($obj) )
 			$tax = __('regions','foodiepro');
@@ -58,7 +59,7 @@ public function widget( $args, $instance ) {
 			$tax = __('countries','foodiepro');
 	}
 	else
-		$tax=$tax->label;
+		$tax=$author?__('authors','foodiepro'):$tax->label;
 	//$tax = sprintf(__('Filter by %s', 'foodiepro'),$tax->label);
 	//$tax = sprintf(__('Other %s', 'foodiepro'),$tax);
 	//$tax = $tax->label;

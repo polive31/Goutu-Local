@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-11-18 23:02+0100\n"
-"PO-Revision-Date: 2017-11-18 23:02+0100\n"
+"POT-Creation-Date: 2017-11-19 13:52+0100\n"
+"PO-Revision-Date: 2017-11-19 13:53+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -56,10 +56,22 @@ msgstr "Toutes les recettes de %s"
 #: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:139
 #, php-format
 msgctxt "vowel"
+msgid "All posts from %s"
+msgstr "Toutes les publications d'%s"
+
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:141
+#, php-format
+msgctxt "consonant"
+msgid "All posts from %s"
+msgstr "Toutes les publications de %s"
+
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:146
+#, php-format
+msgctxt "vowel"
 msgid "All recipes containing %s"
 msgstr "Toutes les recettes à base d'%s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:141
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:148
 #, php-format
 msgctxt "consonant"
 msgid "All recipes containing %s"
@@ -113,6 +125,11 @@ msgstr "Page précédente"
 msgid "Select..."
 msgstr "Choisir..."
 
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:159
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:62
+msgid "authors"
+msgstr "auteurs"
+
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:21
 msgid "Dropdown Posts Sort Widget"
 msgstr ""
@@ -163,7 +180,7 @@ msgid "Rating"
 msgstr "Appréciation"
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:107
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:79
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:81
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:90
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:84
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:74
@@ -171,7 +188,7 @@ msgid "New title"
 msgstr ""
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:111
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:83
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:85
 #: plugins/custom-recipe-templates/helpers/custom_nutrition_label.php:60
 #: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:101
 #: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:180
@@ -194,18 +211,13 @@ msgstr ""
 msgid "Displays a dropdown list allowing to navigate between taxonomy terms"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:55
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:57
 msgid "regions"
 msgstr "régions"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:57
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:59
 msgid "countries"
 msgstr "pays"
-
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:62
-#, php-format
-msgid "Other %s"
-msgstr "Autres %s"
 
 #: plugins/custom-recipe-templates/custom-recipe-templates.php:44
 msgid ""
@@ -8513,6 +8525,13 @@ msgstr "Ces recettes pourraient également vous intéresser..."
 #: themes/foodiepro-2.1.8/yarpp-template-goutu.php:31
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
+
+#~ msgctxt "plural"
+#~ msgid "All posts from %s"
+#~ msgstr "Tous les articles des %s"
+
+#~ msgid "Other %s"
+#~ msgstr "Autres %s"
 
 #~ msgid "Filter by %s"
 #~ msgstr "Filtrer par %s"

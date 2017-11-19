@@ -30,7 +30,7 @@ class CustomArchiveEntryTitle extends CustomArchive {
 				//echo 'User rating global = ' . get_post_meta( get_the_ID(), 'user_rating_global', true );
 		};
 
-		if ( is_tax('cuisine'/*, array('france', 'europe', 'asie', 'afrique', 'amerique-nord', 'amerique-sud') */) ) {
+		if ( is_tax('cuisine') || is_author() ) {
 			$post_id = get_the_ID();
 			$origin = wp_get_post_terms( $post_id, 'cuisine', array("fields" => "names"));
 			$diet = wp_get_post_terms( $post_id, 'diet');

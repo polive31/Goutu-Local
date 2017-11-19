@@ -84,7 +84,7 @@ class CustomArchiveHeadline extends CustomArchive {
 	public function custom_archive_title() {
 		if ( is_archive() ) {
 		  if ( is_author() ) {
-		  	echo $this->get_archive_headline('author', $this->query->user_login, '');
+		  	echo $this->get_archive_headline('author', $this->query->display_name, '');
 		  }
 			else {
 				$headline = get_term_meta( $this->query->term_id, 'headline', true );
@@ -122,7 +122,7 @@ class CustomArchiveHeadline extends CustomArchive {
 		if ( !empty($headline) ) 
 			$msg = $headline;
 		
-		elseif ($tax=='author'||$tax=='cuisine') {
+		elseif ($tax=='cuisine') {
 
 			////PC::debug(array('value'=>$value));	
 			////PC::debug(array('value'=>$this->initial_is_vowel($value)));	
@@ -133,6 +133,13 @@ class CustomArchiveHeadline extends CustomArchive {
 			else 
 				$msg = sprintf(_x('All recipes from %s','consonant','foodiepro'), $value);
 		}
+
+		elseif ($tax=='author') {
+			if ($this->initial_is_vowel($value)) 
+				$msg = sprintf(_x('All posts from %s','vowel','foodiepro'), $value);
+			else 
+				$msg = sprintf(_x('All posts from %s','consonant','foodiepro'), $value);
+		}		
 		
 		elseif ($tax=='ingredient') {
 			if ($this->initial_is_vowel($value))

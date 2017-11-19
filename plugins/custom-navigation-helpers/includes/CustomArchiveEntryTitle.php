@@ -104,9 +104,7 @@ class CustomArchiveEntryTitle extends CustomArchive {
 		
 		$left_id=0;
 		$right_id=0;
-
-
-	
+		
 		if ($this->is_season($season)) {
 			$tags .= '<div class="overlay col-' . $season[0] . ' right' . $right_id . '">' . $season_msg . '</div>';
 			$right_id++;

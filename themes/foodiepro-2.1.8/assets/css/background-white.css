@@ -1,36 +1,6 @@
-/* Background  :  White (default) 
---------------------------------------------- */
 
-body {
-	background:url("../../images/background/background-l-small.jpg"),url("../../images/background/background-r.jpg");
-	background-position:top left, top right;
-	background-repeat:no-repeat;
-}
-
-body.home {
-	background:url("../../images/background/background-l.jpg"),url("../../images/background/background-r-big.jpg");
-	background-position: 10px 10px, right 10px top 10px;
-	background-repeat:no-repeat;
-}
 
 /* MEDIA QUERIES 
 --------------------------------------------*
-/* Background */
-@media only screen 
-	and (max-width:1080px) {
 
-	body.home {
-		background:url("../../images/background/background-l.jpg") no-repeat top left;
-	}
 
-}
-
-/* Medium screens */
-@media only screen 
-	and (max-width:720px) {
-		
-	body{
-		background:url("../../images/background/background-l-small.jpg") no-repeat top left;
-	}	
-	
-}

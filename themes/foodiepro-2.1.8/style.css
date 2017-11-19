@@ -3695,11 +3695,11 @@ Site Footer
     padding:0;
 	}	
 	
-	.one-sixth,
+/*	.one-sixth,
 	.one-fifth,
 	.one-fourth {
   	width:30%; 
-	}
+	}*/
 	
 	.title-area, 
 	.home-page .title-area, 
@@ -3752,7 +3752,7 @@ Site Footer
 	.simple-grid.one-fourth,
 	.rpwe-block.grid-3col li,
 	.simple-grid.one-third {
-  	width:100%;         
+  	width:50%;         
 	}
 	
 
@@ -3782,22 +3782,6 @@ Site Footer
 }
 
 @media only screen and (max-width:420px) {
-
-	/*.five-sixths,
-	.four-sixths,
-	.one-fourth,
-	.one-half,
-	.one-sixth,
-	.one-third,
-	.three-fourths,
-	.three-sixths,
-	.two-fourths,
-	.two-sixths,
-	.two-thirds,
-	.odd {
-		margin-left:0;
-		width:100%;
-	}*/
 	
 	.slider-text {
 	 	font-size:25px!important;
@@ -3820,14 +3804,10 @@ Site Footer
 	
 	/* Grid widgets */
 	
+	.content .rpwe-block.grid-2col li,
 	.content .rpwe-block.grid-3col li {
   	width:50%;       
 	}
-
-	.content .rpwe-block.grid-2col li {
-  	width:100%;
-	}
-
 
 /* Footer */
 

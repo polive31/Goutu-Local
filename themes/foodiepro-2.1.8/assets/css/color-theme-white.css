@@ -1,3 +1,19 @@
+/* Background  :  White (default) 
+--------------------------------------------- */
+
+body {
+	background:url("../../images/background/background-l-small.jpg"),url("../../images/background/background-r.jpg");
+	background-position:top left, top right;
+	background-repeat:no-repeat;
+}
+
+body.home {
+	background:url("../../images/background/background-l.jpg"),url("../../images/background/background-r-big.jpg");
+	background-position: 10px 10px, right 10px top 10px;
+	background-repeat:no-repeat;
+}
+
+
 /* Color theme :  White (default) 
 --------------------------------------------- */
 
@@ -217,6 +233,16 @@ li.comment {
 /* MEDIA QUERIES 
 --------------------------------------------*
 
+/* Background */
+@media only screen 
+	and (max-width:1080px) {
+
+	body.home {
+		background:url("../../images/background/background-l.jpg") no-repeat top left;
+	}
+
+}
+
 
 /* Smartphone */
 @media only screen 
@@ -250,8 +276,13 @@ li.comment {
 	.home .site-title a {	
 		background:url("../../images/logo-white/logo_360_150.png") no-repeat center;
 	}
+
+	body{
+		background:url("../../images/background/background-l-small.jpg") no-repeat top left;
+	}	
 	
 }
+
 
 /* Small screens */
 @media only screen 

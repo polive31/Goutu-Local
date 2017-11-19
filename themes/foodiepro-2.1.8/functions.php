@@ -321,7 +321,7 @@ function load_custom_stylesheet() {
 		wp_enqueue_style( 'color-theme-white', CHILD_THEME_URL . '/assets/css/color-theme-white.css', array(), CHILD_THEME_VERSION );		
 }
 
-add_action( 'get_footer', 'load_background_stylesheet' );
+//add_action( 'get_footer', 'load_background_stylesheet' );
 function load_background_stylesheet() {
 		wp_enqueue_style( 'background-white', CHILD_THEME_URL . '/assets/css/background-white.css', array(), CHILD_THEME_VERSION );		
 };

@@ -1672,6 +1672,7 @@ body.register #buddypress div.page ul {
 }
 
 .widget.buddypress div.item-options {
+	display:none;
 	font-size: 90%;
 	margin: 0 0 1em 0;
 	padding: 1em 0;

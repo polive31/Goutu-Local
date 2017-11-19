@@ -59,7 +59,8 @@ class CustomNavigationShortcodes extends CustomArchive {
 		if ( ($back!='true') && !is_search() ) {
 			
 			$obj = get_queried_object();
-			$tax_id = $obj -> taxonomy;
+			$author = ($obj->data->user_login!='');				
+			$tax_id = $author?'author':$obj -> taxonomy;
 			$parent_id = $obj -> parent;
 			$parent = get_term_by('id', $parent_id,'cuisine');
 			////PHP_Debug::log(array('Parent id = ', $parent_id));
@@ -72,6 +73,10 @@ class CustomNavigationShortcodes extends CustomArchive {
 			////PHP_Debug::log(array('Current slug = ', $current_slug));
 
 			switch ($tax_id) {
+		    case 'author':
+					$url = "/sociall/membres";
+					$msg = __('authors', 'foodiepro');
+					break;				
 		    case 'course':
 					$url = "/accueil/recettes/plats";
 					$msg = __('Courses', 'foodiepro');
@@ -178,13 +183,14 @@ class CustomNavigationShortcodes extends CustomArchive {
 
 	// Arguments for wp_list_categories	/ wp_list_authors
 		$args = array( 
-			'taxonomy'	=> $tax_slug,
-			'child_of'	=> $child_of,
-			'depth' 		=> $depth,
-			'exclude' 	=> $exclude,
-			'orderby' 	=> 'slug',
-			'echo' 			=> false,
-			'role__not_in'	=> array('administrator','pending') 
+			'taxonomy'			=> $tax_slug,
+			'child_of'			=> $child_of,
+			'depth' 				=> $depth,
+			'exclude' 			=> $exclude,
+			'orderby' 			=> 'slug',
+			'echo' 					=> false,
+			'role__not_in'	=> array('administrator','pending'),
+			'show'					=> user_login
 		);
 		
 		

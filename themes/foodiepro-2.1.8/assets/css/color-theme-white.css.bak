@@ -245,14 +245,20 @@ li.comment {
 
 
 /* Smartphone */
-@media only screen 
-	and (max-width:870px) {
 
-	.site-title a,
-	.home .site-title a {
-		background:url("../../images/logo-white/logo_450_190.png") no-repeat center;
-	}
+@media only screen 
+	and (max-width:980px) {
 	
+	.site-container {
+    background:none;
+	}
+			
+	.site-title a, 
+	.home .site-title a {
+    background: rgba(255,255,255,0.7) url("../../images/logo-white/logo_450_190.png") no-repeat;
+		background-position: center;
+	}	
+
 }
 
 /* Retina smartphone */
@@ -269,13 +275,10 @@ li.comment {
 
 
 /* Medium screens */
+
+
 @media only screen 
 	and (max-width:720px) {
-		
-	.site-title a,
-	.home .site-title a {	
-		background:url("../../images/logo-white/logo_360_150.png") no-repeat center;
-	}
 
 	body{
 		background:url("../../images/background/background-l-small.jpg") no-repeat top left;
@@ -283,13 +286,6 @@ li.comment {
 	
 }
 
-/* Medium screens */
-@media only screen 
-	and (max-width:720px) {
-		
-
-	
-}
 
 /* Small screens */
 @media only screen 
@@ -298,6 +294,12 @@ li.comment {
 	body.home {
 		background-size: contain;
 	}	
+	
+	.site-title a, 
+	.home .site-title a {
+    background: rgba(255,255,255,0.7) url("../../images/logo-white/logo_450_190.png") no-repeat;
+		background-position: center;
+	}		
 	
 }
 

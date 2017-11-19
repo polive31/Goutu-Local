@@ -1659,7 +1659,7 @@ Widgets
 }
 
 .widget-wrap .text a {
-    text-transform: none;
+  text-transform: none;
 }
 
 .widget_bp_latest img#square {
@@ -3616,6 +3616,11 @@ Site Footer
 }
 
 @media only screen and (max-width:980px) {
+	
+	.site-title a, .home .site-title a {
+    background-position: center;
+	}	
+	
 	.before-header .enews-widget form,
 	.before-header .enews-widget .widgettitle,
 	.before-header .enews-widget p,

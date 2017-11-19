@@ -257,6 +257,7 @@ li.comment {
 	.home .site-title a {
     background: rgba(255,255,255,0.7) url("../../images/logo-white/logo_450_190.png") no-repeat;
 		background-position: center;
+		width: 500px;
 	}	
 
 }
@@ -269,6 +270,7 @@ li.comment {
 	.site-title a,
 	.home .site-title a {
 		background:url("../../images/logo-white/logo_720_300.png") no-repeat center;
+		width: 400px;
 	} 	
 
 }
@@ -291,13 +293,9 @@ li.comment {
 @media only screen 
 	and (max-width:570px) {
 	
-	body.home {
-		background-size: contain;
-	}	
-	
 	.site-title a, 
 	.home .site-title a {
-    background: rgba(255,255,255,0.7) url("../../images/logo-white/logo_450_190.png") no-repeat;
+    background: rgba(255,255,255,0.7) url("../../images/logo-white/logo_360_150.png") no-repeat;
 		background-position: center;
 	}		
 	
@@ -305,11 +303,12 @@ li.comment {
 
 /* Very Small screens */
 @media only screen 
-	and (max-width:570px) {
+	and (max-width:500px) {
 	
 	.site-title a,
 	.home .site-title a {	
 		background-size:contain;
+		width:100%;
 	}
 	
 }

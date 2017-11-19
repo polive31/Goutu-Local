@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-11-19 13:52+0100\n"
-"PO-Revision-Date: 2017-11-19 13:53+0100\n"
+"POT-Creation-Date: 2017-11-19 14:23+0100\n"
+"PO-Revision-Date: 2017-11-19 14:23+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -86,46 +86,50 @@ msgstr "Partager sur les réseaux sociaux"
 msgid "Share this post"
 msgstr "Partager cet article"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:77
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:78
+msgid "members"
+msgstr "membres"
+
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:82
 #: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:68
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_options.php:2051
 msgid "Courses"
 msgstr "De l'apéritif au dessert"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:81
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:86
 msgid "Seasons"
 msgstr "Cuisine de saisons"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:85
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:90
 msgid "Occasions"
 msgstr "En toutes occasions"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:89
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:94
 msgid "Diets"
 msgstr "Régimes et diététique"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:94
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:98
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:99
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:103
 msgid "France"
 msgstr "Cuisines de régions"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:106
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:111
 msgid "World"
 msgstr "Cuisines du monde"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:111
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:116
 msgid "All posts"
 msgstr "Tous les articles"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:118
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:123
 msgid "Previous page"
 msgstr "Page précédente"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:136
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:141
 msgid "Select..."
 msgstr "Choisir..."
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:159
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:164
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:62
 msgid "authors"
 msgstr "auteurs"

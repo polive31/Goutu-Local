@@ -75,7 +75,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 			switch ($tax_id) {
 		    case 'author':
 					$url = "/social/membres";
-					$msg = __('authors', 'foodiepro');
+					$msg = __('members', 'foodiepro');
 					break;				
 		    case 'course':
 					$url = "/accueil/recettes/plats";

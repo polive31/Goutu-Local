@@ -42,7 +42,7 @@ class BP_My_Friends extends WP_Widget {
 		
 		if ( !(is_user_logged_in() ) ) return;
 	
-     	echo $args['before_widget'];
+    echo $args['before_widget'];
 		if ( ! (empty( $instance['title']) ) ) {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 		}
@@ -63,6 +63,9 @@ class BP_My_Friends extends WP_Widget {
 			}
 
 			echo '</div>';
+		}
+		else {
+			echo '<div class="text aligncenter"><a href="' . get_site_url() . '\social\membres">' . __('Make new friends','foodiepro') . '</a></div>';
 		}
 		
 		/* Code End */

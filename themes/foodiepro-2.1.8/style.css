@@ -1424,6 +1424,7 @@ img.centered,
 .aligncenter {
 	display:block;
 	margin:0 auto 22px;
+	text-align:center;
 }
 
 img.alignnone {
@@ -1655,6 +1656,10 @@ Widgets
 .widget-wrap a, .widget-wrap li a {
 	text-decoration:none;
 	text-transform:capitalize;
+}
+
+.widget-wrap .text a {
+  text-transform: none;
 }
 
 .widget_bp_latest img#square {

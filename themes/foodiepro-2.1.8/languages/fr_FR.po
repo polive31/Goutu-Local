@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-11-19 14:23+0100\n"
-"PO-Revision-Date: 2017-11-19 14:23+0100\n"
+"POT-Creation-Date: 2017-11-19 16:20+0100\n"
+"PO-Revision-Date: 2017-11-19 16:20+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -130,51 +130,51 @@ msgid "Select..."
 msgstr "Choisir..."
 
 #: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:164
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:62
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:59
 msgid "authors"
 msgstr "auteurs"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:21
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:18
 msgid "Dropdown Posts Sort Widget"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:24
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:21
 msgid "Displays a dropdown list allowing to sort posts"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:45
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:42
 msgid "Sort recipes"
 msgstr "Classer les recettes"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:47
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:44
 msgid "Sort posts"
 msgstr "Classer les articles"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:49
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:46
 msgid "Sort results"
 msgstr "Classer les résultats"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:62
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:59
 msgid "Select sort order..."
 msgstr "Trier par..."
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:63
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:60
 msgid "Title : ascending"
 msgstr "Titre : de A à Z"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:64
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:61
 msgid "Title : descending"
 msgstr "Titre : de Z à A"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:67
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:64
 msgid "Newest first"
 msgstr "Date de publication"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:72
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:69
 msgid "Comment count"
 msgstr "Commentaires"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:76
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:73
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:66
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-ratings/templates/user_rating.php:34
 #: plugins/wp-ultimate-recipe-premium/premium/helpers/recipe_columns.php:25
@@ -183,21 +183,21 @@ msgstr "Commentaires"
 msgid "Rating"
 msgstr "Appréciation"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:107
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:81
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:104
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:78
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:90
-#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:84
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:89
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:74
 msgid "New title"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:111
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:85
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:108
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:82
 #: plugins/custom-recipe-templates/helpers/custom_nutrition_label.php:60
 #: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:101
 #: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:180
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:99
-#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:88
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:93
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:78
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/widgets/nutrition_label_widget.php:52
 #: plugins/wp-ultimate-recipe-premium/premium/addons/recipe-search/widgets/recipe_search_widget.php:82
@@ -207,19 +207,19 @@ msgstr ""
 msgid "Title:"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:21
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:18
 msgid "Taxonomy Navigation widget"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:24
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:21
 msgid "Displays a dropdown list allowing to navigate between taxonomy terms"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:57
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:54
 msgid "regions"
 msgstr "régions"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:59
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:56
 msgid "countries"
 msgstr "pays"
 
@@ -536,6 +536,10 @@ msgstr ""
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:29
 msgid "Displays a chosen number of my friends"
 msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:68
+msgid "Make new friends"
+msgstr "Faites vous de nouveaux amis"
 
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:27
 msgid "(Buddypress) Welcome"
@@ -6176,12 +6180,12 @@ msgid ""
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:184
-#: themes/foodiepro-2.1.8/functions.php:572
+#: themes/foodiepro-2.1.8/functions.php:582
 msgid "Read More"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:197
-#: themes/foodiepro-2.1.8/functions.php:600
+#: themes/foodiepro-2.1.8/functions.php:610
 msgid "Comments"
 msgstr ""
 
@@ -7045,52 +7049,52 @@ msgstr ""
 msgid "Visibility"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:376
+#: themes/foodiepro-2.1.8/functions.php:386
 msgid "Goûtu.org - Cuisiner, Découvrir, Partager"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:413
+#: themes/foodiepro-2.1.8/functions.php:423
 msgid "<strong>ERROR</strong>: User pending "
 msgstr "<strong> ERREUR</strong>: Utilisateur en attente d'"
 
-#: themes/foodiepro-2.1.8/functions.php:413
+#: themes/foodiepro-2.1.8/functions.php:423
 msgid "approval"
 msgstr "approbation"
 
-#: themes/foodiepro-2.1.8/functions.php:609
+#: themes/foodiepro-2.1.8/functions.php:619
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:202
 msgid "Previous comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:615
+#: themes/foodiepro-2.1.8/functions.php:625
 msgid "Next comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:634
+#: themes/foodiepro-2.1.8/functions.php:644
 msgid "Your answer here"
 msgstr "Entrez votre réponse ci-dessous"
 
-#: themes/foodiepro-2.1.8/functions.php:653
+#: themes/foodiepro-2.1.8/functions.php:663
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
-#: themes/foodiepro-2.1.8/functions.php:653
+#: themes/foodiepro-2.1.8/functions.php:663
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:653
+#: themes/foodiepro-2.1.8/functions.php:663
 msgid "Legal notice"
 msgstr "Mentions légales"
 
-#: themes/foodiepro-2.1.8/functions.php:653
+#: themes/foodiepro-2.1.8/functions.php:663
 msgid "Goûtu charter"
 msgstr "Charte Goûtu"
 
-#: themes/foodiepro-2.1.8/functions.php:653
+#: themes/foodiepro-2.1.8/functions.php:663
 msgid "Personal data"
 msgstr "Données personnelles"
 
-#: themes/foodiepro-2.1.8/functions.php:653
+#: themes/foodiepro-2.1.8/functions.php:663
 msgid "Terms of use"
 msgstr "Conditions d'utilisation"
 

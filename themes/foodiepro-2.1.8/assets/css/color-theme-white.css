@@ -261,7 +261,7 @@ li.comment {
 	}	
 	
 	#mega-menu-wrap-secondary {
-	    background: rgba(255,255,255,0.7);
+		background: rgba(255,255,255,0.7);
 	}	
 
 }
@@ -312,6 +312,7 @@ li.comment {
 	.home .site-title a {	
 		background-size:contain;
 		width:100%;
+		background-position: center;		
 	}
 	
 }

@@ -261,7 +261,7 @@ li.comment {
 	}	
 	
 	#mega-menu-wrap-secondary {
-	    background: rgba(255,255,255,0.7);
+		background: rgba(255,255,255,0.7);
 	}	
 
 }
@@ -300,7 +300,6 @@ li.comment {
 	.site-title a, 
 	.home .site-title a {
     background: rgba(255,255,255,0.7) url("../../images/logo-white/logo_360_150.png") no-repeat;
-		background-position: 30px center;
 	}		
 	
 }

@@ -15,6 +15,8 @@ function display_menu_entry($atts) {
 		$a = shortcode_atts( array(
   	'item' => 'friendship_requests', // id, pseudo, name
 	), $atts );
+	
+	$class='';
 
 	if ( is_user_logged_in() ) {
 	
@@ -39,6 +41,7 @@ function display_menu_entry($atts) {
 				$count = '';			
 				$url .= '/profile/edit/group/1/';
 				$text = __('My Profile', 'foodiepro');
+;				$class = 'fa-user-circle';
 				break;
 				
 			} /* End switch */
@@ -47,7 +50,7 @@ function display_menu_entry($atts) {
 			if ($count=="0"||$count=="") $count=NULL;
 			else $count = ' (' . $count . ')';
 			
-			$html = '<a class="mega-menu-link" href="' . $url . '">' . $text . $count . '</a>';
+			$html = '<a class="' . $class . ' mega-menu-link" href="' . $url . '">' . $text . $count . '</a>';
 	
 	} /* End if loggued-in */
 

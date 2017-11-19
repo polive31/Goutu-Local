@@ -64,6 +64,7 @@ define ( 'BP_AVATAR_DEFAULT_THUMB', 'https://goutu.org/wp-content/themes/foodiep
 
 /* Enqueue Buddypress scripts in the footer rather than the header 
 --------------------------------------------------------------------*/
+//add_filter( 'bp_core_register_common_scripts', 'enqueue_bp_core_scripts', 15, 1 );
 function enqueue_bp_core_scripts($scripts) {
 	if (is_admin()) return $scripts;
 		
@@ -78,23 +79,7 @@ function enqueue_bp_core_scripts($scripts) {
 	
 	return $scripts;
 }
-//add_filter( 'bp_core_register_common_scripts', 'enqueue_bp_core_scripts', 15, 1 );
 
-
-/* Buddypress Friends Widget */
-function enqueue_bp_js() {
-	if (is_admin()) return;
-	
-	$min='min';
-	
-	wp_deregister_script('bp-legacy-js');
-  wp_enqueue_script( 'bp-legacy-js', buddypress()->plugin_url . "bp-templates/bp-legacy/js/buddypress{min}.js", array( 'bp-confirm', 'bp-jquery-cookie', 'bp-jquery-query', 'bp-jquery-scroll-to', 'bp-widget-members', 'jquery' ), bp_get_version(), true );
-
-	wp_deregister_script('bp_core_widget_friends-js');
-  wp_enqueue_script( 'bp_core_widget_friends-js', buddypress()->plugin_url . "bp-friends/js/widget-friends{min}.js", array( 'jquery' ), bp_get_version(), true );
-
-}
-//add_action( 'wp_enqueue_scripts', 'enqueue_bp_js' );
 
 /* =================================================================*/
 /* =              COVER IMAGE SETTINGS
@@ -154,7 +139,7 @@ function your_theme_cover_image_callback( $params = array() ) {
 }
 
 // Override default css stylesheet
-function your_theme_cover_image_css( $settings = array() ) {
+function foodiepro_cover_image_css( $settings = array() ) {
     /**
      * If you are using a child theme, use bp-child-css
      * as the theme handel
@@ -170,8 +155,8 @@ function your_theme_cover_image_css( $settings = array() ) {
  
     return $settings;
 }
-add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'your_theme_cover_image_css', 10, 1 );
-add_filter( 'bp_before_groups_cover_image_settings_parse_args', 'your_theme_cover_image_css', 10, 1 );
+add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'foodiepro_cover_image_css', 10, 1 );
+add_filter( 'bp_before_groups_cover_image_settings_parse_args', 'foodiepro_cover_image_css', 10, 1 );
 
  
 /* =================================================================*/
@@ -179,10 +164,10 @@ add_filter( 'bp_before_groups_cover_image_settings_parse_args', 'your_theme_cove
 /* =================================================================*/
 
 /* Removing the links automatically created in a member’s profile */
+//add_action( 'bp_init', 'remove_xprofile_links' );
 function remove_xprofile_links() {
     remove_filter( 'bp_get_the_profile_field_value', 'xprofile_filter_link_profile_data', 9, 2 );
 }
-//add_action( 'bp_init', 'remove_xprofile_links' );
 
 
 
@@ -260,25 +245,25 @@ function bg_entry_image() {
 /* Modify WP Recent Posts extended output, depending on the css ID field value */
 add_filter('rpwe_after_thumbnail', 'wprpe_add_gravatar', 20, 2);
 function wprpe_add_gravatar($output, $args) {
-		//PC::debug( array('WPRPE Output add gravatar'=>$output) );
-		$disp_avatar = substr($args['cssID'],0,1);
-		if ( $disp_avatar == '1') {
-			$output .= '<a class="auth-avatar" href="' . bp_core_get_user_domain( get_the_author_meta( 'ID' )) . '" title="' . bp_core_get_username(get_the_author_meta( 'ID' )) . '">';
-			$output .= get_avatar( get_the_author_meta( 'ID' ), '45');
-			$output .= '</a>';
-		}
-		//$output = print_r($args, true);
+	//PC::debug( array('WPRPE Output add gravatar'=>$output) );
+	$disp_avatar = substr($args['cssID'],0,1);
+	if ( $disp_avatar == '1') {
+		$output .= '<a class="auth-avatar" href="' . bp_core_get_user_domain( get_the_author_meta( 'ID' )) . '" title="' . bp_core_get_username(get_the_author_meta( 'ID' )) . '">';
+		$output .= get_avatar( get_the_author_meta( 'ID' ), '45');
+		$output .= '</a>';
+	}
+	//$output = print_r($args, true);
 	return $output;
 }
 
-/* TODO Add Comment here */
+/* Modify WPRPE output, displaying posts from current logged-in user */
 add_filter( 'rpwe_default_query_arguments', 'wprpe_query_displayed_user_posts' );
 
 function wprpe_query_displayed_user_posts( $args ) {
-		if ( $args['author']=='bp_member' )  {
-    	$args['author'] = bp_displayed_user_id();
-		}
-    return $args;
+	if ( $args['author']=='bp_member' )  {
+  	$args['author'] = bp_displayed_user_id();
+	}
+  return $args;
 }
 
 //

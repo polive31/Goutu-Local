@@ -49,7 +49,7 @@ class BP_My_Friends extends WP_Widget {
 		
 		/* Code Start */
 		
-		if ( bp_has_members( 'type=newest&max=6&user_id=' . bp_loggedin_user_id() ) ) {
+		if ( bp_has_members( 'type=newest&max=8&user_id=' . bp_loggedin_user_id() ) ) {
 			echo	'<div class="avatar-block">';
 			
 			while ( bp_members() ) {

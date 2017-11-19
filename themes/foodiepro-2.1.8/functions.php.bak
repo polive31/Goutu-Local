@@ -355,9 +355,9 @@ add_action('get_footer','yarpp_dequeue_footer_styles');
 
 
 /* Disable buddypress widgets */
-add_action(‘widgets_init’, ‘hide_bp_widgets’, 100); // Has to run before bp_setup_widgets()
-//remove_action( 'bp_register_widgets', 'bp_friends_register_widgets' );
-function hide_bp_widgets() {
+add_action('widgets_init', 'unregister_widgets', 100); 
+function unregister_widgets() {
+	unregister_widget('BP_My_Friends');	
 	unregister_widget('WP_Widget_Calendar');
 }
 

@@ -81,7 +81,6 @@ function enqueue_bp_core_scripts($scripts) {
 //add_filter( 'bp_core_register_common_scripts', 'enqueue_bp_core_scripts', 15, 1 );
 
 
-
 /* Buddypress Friends Widget */
 function enqueue_bp_js() {
 	if (is_admin()) return;

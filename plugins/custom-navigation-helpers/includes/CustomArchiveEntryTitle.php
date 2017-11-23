@@ -49,6 +49,16 @@ class CustomArchiveEntryTitle extends CustomArchive {
 			
 			$title = $this->output_tags( $origin[0], $diet[0]->slug, $occasion, $season[0]->slug) . $title;
 		};	
+
+		if ( is_tax('diet') ) {
+			$post_id = get_the_ID();
+
+			$origin = wp_get_post_terms( $post_id, 'cuisine', array("fields" => "names"));			
+			$season = wp_get_post_terms( $post_id, 'season');
+			$occasion = wp_get_post_terms( $post_id, 'occasion');
+			
+			$title = $this->output_tags( $origin[0], '', $occasion, $season[0]->slug) . $title;
+		};	
 		
 		if ( is_tax('season') ) {
 			$post_id = get_the_ID();
@@ -58,16 +68,7 @@ class CustomArchiveEntryTitle extends CustomArchive {
 			
 			$title = $this->output_tags( '', $diet[0]->slug, $occasion, '') . $title;
 		};
-		
-		if ( is_tax('diet') ) {
-			$post_id = get_the_ID();
-
-			$origin = wp_get_post_terms( $post_id, 'cuisine', array("fields" => "names"));			
-			$season = wp_get_post_terms( $post_id, 'season');
-			$occasion = wp_get_post_terms( $post_id, 'occasion');
 			
-			$title = $this->output_tags( $origin[0], '', $occasion, $season[0]->slug) . $title;
-		};						
 
 		if ( is_tax('occasion') ) {
 			$post_id = get_the_ID();

@@ -1007,37 +1007,6 @@ img {
 }
 
 
-/* 
-Admin area
---------------------------------------------------------------------------------------------------- */
-.foodie-pro-widget-box {
-	background: #fafafa;
-	border: 1px solid #e5e5e5;
-	display: block;
-	margin-bottom: 10px;
-	padding: 5px 15px;
-}
-
-.customize-control select {
-	width: 100%;
-}
-
-/*div.widget-liquid-right {
-  position: fixed;
-  top: 50px;
-  left: 50%;
-  width: 50%;
-  overflow-y: scroll;
-  height: 100%;
-}*/
-
-
-#ozhmenu li .wp-menu-image {
-	width: 20px;
-	height: 20px;
-}
-
-
 /*
 Structure and Layout
 ---------------------------------------------------------------------------------------------------- */

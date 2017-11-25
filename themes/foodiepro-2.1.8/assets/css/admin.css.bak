@@ -10,6 +10,24 @@
 	width: 100%;
 }
 
+
+/* OZ Horizontal Menu
+---------------------------------------------------*/
+
+#ozhmenu_wrap {
+	margin-top: 10px;
+}
+
+#ozhmenu {
+	padding:10px;
+	background: #5a5a5a!important;
+}
+
+#ozhmenu li .wp-menu-image {
+	width: 20px;
+	height: 20px;
+}
+
 /*div.widget-liquid-right {
   position: fixed;
   top: 50px;
@@ -18,9 +36,3 @@
   overflow-y: scroll;
   height: 100%;
 }*/
-
-
-#ozhmenu li .wp-menu-image {
-    width: 20px;
-    height: 20px;
-}

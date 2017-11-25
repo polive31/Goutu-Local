@@ -347,19 +347,25 @@ function load_background_stylesheet() {
 
 
 /* Suppression de la feuille de style YARPP */
+add_action('get_footer','yarpp_dequeue_footer_styles');
 function yarpp_dequeue_footer_styles() {
+  wp_dequeue_style('yarppWidgetCss');
   wp_dequeue_style('yarppRelatedCss');
   wp_dequeue_style('yarpp-thumbnails-yarpp-thumbnail');
 }
-add_action('get_footer','yarpp_dequeue_footer_styles');
 
-
-/* Disable buddypress widgets */
-add_action('widgets_init', 'unregister_widgets', 100); 
-function unregister_widgets() {
-	unregister_widget('BP_My_Friends');	
-	unregister_widget('WP_Widget_Calendar');
+add_action('get_header','yarpp_dequeue_header_styles');
+function yarpp_dequeue_header_styles() {
+  wp_dequeue_style('yarppWidgetCss');
 }
+
+
+///* Disable buddypress widgets */ => Fonctionne pas
+//add_action('widgets_init', 'unregister_widgets', 100); 
+//function unregister_widgets() {
+//	unregister_widget('BP_My_Friends');	
+//	unregister_widget('WP_Widget_Calendar');
+//}
 
 
 /* =================================================================*/

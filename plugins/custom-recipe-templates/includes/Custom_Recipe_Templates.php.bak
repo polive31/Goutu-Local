@@ -19,9 +19,7 @@ class Custom_Recipe_Templates {
 		/* Load stylesheets */
 		add_filter ( 'wpurp_assets_css', array($this,'enqueue_wpurp_css'), 15, 1 );
 
-		/* Custom tooltips */
-		add_action( 'wp_enqueue_scripts', array($this,'load_tooltips_styles') );
-		
+
 		/* Custom menu template */
 		//add_filter( 'wpurp_user_menus_form', 'wpurp_custom_menu_template', 10, 2 );
 
@@ -33,11 +31,7 @@ class Custom_Recipe_Templates {
 		add_action( 'genesis_before_content', array($this,'display_debug_info') );
 
 	}
-	
-	public function load_tooltips_styles() {
-		wp_enqueue_style( 'google-font-oswald', '//fonts.googleapis.com/css?family=Oswald', array(), CHILD_THEME_VERSION );
-		wp_enqueue_style( 'tooltips-stylesheet', self::$_PluginPath . 'assets/css/tooltips.css', array(), CHILD_THEME_VERSION );
-	}
+
 
 	
 	/* Output debug information 
@@ -74,9 +68,9 @@ class Custom_Recipe_Templates {
 		              'public' => true,//fonts.googleapis.com/css?family=Oswald'
 		          ),
 							array(
-		              'url' => '//fonts.googleapis.com/css?family=Oswald',
+		              'url' => '//fonts.googleapis.com/css?family=Oswald|Open+Sans',
 		              'public' => true,
-		          ),	          
+		          ),				                             
 			);
 		}
 		elseif ( is_page( 'menus' ) ) { // Menu page

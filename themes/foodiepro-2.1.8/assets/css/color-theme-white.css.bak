@@ -237,6 +237,7 @@ li.comment {
 @media only screen 
 	and (max-width:1080px) {
 
+	body,
 	body.home {
 		background:url("../../images/background/background-l.jpg") no-repeat top left;
 	}
@@ -312,6 +313,7 @@ li.comment {
 	.home .site-title a {	
 		background-size:contain;
 		width:100%;
+		background-position: center;		
 	}
 	
 }

@@ -237,6 +237,7 @@ li.comment {
 @media only screen 
 	and (max-width:1080px) {
 
+	body,
 	body.home {
 		background:url("../../images/background/background-l.jpg") no-repeat top left;
 	}
@@ -286,9 +287,9 @@ li.comment {
 @media only screen 
 	and (max-width:720px) {
 
-	body{
+	/*body{
 		background:url("../../images/background/background-l-small.jpg") no-repeat top left;
-	}	
+	}	*/
 	
 }
 

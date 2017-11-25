@@ -371,6 +371,16 @@ function dequeue_footer_styles() {
 }
 
 
+/* Defer Javascript parsing using <async> tag */
+add_filter( 'script_loader_tag','add_async_tag_cb',PHP_INT_MAX, 3 );
+function add_async_tag_cb( $tag, $handle, $src ) { 
+	if ( is_admin() ) return;
+	if ( in_array($handle,array('galleria','masterslider-core'))) {
+	  $tag='<script src="' . $src . '" async type="text/javascript"></script>' . "\n";
+	}
+	return $tag;
+} 
+
 
 ///* Disable buddypress widgets */ => Fonctionne pas
 //add_action('widgets_init', 'unregister_widgets', 100); 

@@ -1963,6 +1963,26 @@ form[role="search"] {
     background: rgba(255, 255, 255, 0.4)!important;
 }
 
+/* Custom Gallery Shortcode
+--------------------------------------------- */
+
+.gallery {
+	overflow:hidden;
+}
+
+.gallery-item {
+	float:left;
+	/*margin:0 0 28px!important;*/
+	margin-right:10px!important;
+	text-align:center;
+}
+
+.gallery img {
+	/*border:1px solid #ddd;*/
+	height:auto;
+	padding:4px;
+}
+
 
 /* Social Share
 --------------------------------------------- */
@@ -3616,10 +3636,6 @@ Site Footer
 }
 
 @media only screen and (max-width:980px) {
-	
-	.site-title a, .home .site-title a {
-    background-position: center;
-	}	
 	
 	.before-header .enews-widget form,
 	.before-header .enews-widget .widgettitle,

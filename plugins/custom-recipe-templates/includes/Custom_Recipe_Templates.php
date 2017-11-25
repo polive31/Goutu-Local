@@ -15,11 +15,12 @@ class Custom_Recipe_Templates {
 		
 		/* Load javascript styles */
 		add_filter ( 'wpurp_assets_js', array($this,'enqueue_wpurp_js'), 15, 1 );
+		
 		/* Load stylesheets */
 		add_filter ( 'wpurp_assets_css', array($this,'enqueue_wpurp_css'), 15, 1 );
 
 		/* Custom tooltips */
-		add_action( 'wp_enqueue_scripts', array($this,'load_tooltips_styles') );
+		//add_action( 'wp_enqueue_scripts', array($this,'load_tooltips_styles') );
 		
 		/* Custom menu template */
 		//add_filter( 'wpurp_user_menus_form', 'wpurp_custom_menu_template', 10, 2 );

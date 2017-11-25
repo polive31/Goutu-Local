@@ -346,18 +346,28 @@ function load_background_stylesheet() {
 //}
 
 
-/* Suppression de la feuille de style YARPP */
-add_action('get_footer','yarpp_dequeue_footer_styles');
-function yarpp_dequeue_footer_styles() {
+/* Inline CSS styles by dequeuing plugin actions */
+add_action('wp_enqueue_scripts','dequeue_header_styles');
+function dequeue_header_styles() {
+  wp_deregister_style('yarppWidgetCss');
   wp_dequeue_style('yarppWidgetCss');
+  wp_deregister_style('galleria-fs');
+  wp_dequeue_style('galleria-fs');
+  wp_deregister_style('wpurp_style5');  
+  wp_dequeue_style('wpurp_style5');
+  wp_deregister_style('wpurp_style6');  
+  wp_dequeue_style('wpurp_style6');    
+  wp_deregister_style('wpurp_style7');  
+  wp_dequeue_style('wpurp_style7');
+}
+
+
+add_action('get_footer','dequeue_footer_styles');
+function dequeue_footer_styles() {
   wp_dequeue_style('yarppRelatedCss');
   wp_dequeue_style('yarpp-thumbnails-yarpp-thumbnail');
 }
 
-add_action('get_header','yarpp_dequeue_header_styles');
-function yarpp_dequeue_header_styles() {
-  wp_dequeue_style('yarppWidgetCss');
-}
 
 
 ///* Disable buddypress widgets */ => Fonctionne pas

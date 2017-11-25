@@ -26,7 +26,7 @@ class Custom_Gallery_Shortcode {
 		add_filter( 'use_default_gallery_style', '__return_false' );
 		
 		add_shortcode('custom-gallery', array($this,'custom_gallery_shortcode') );
-		add_action( 'wp_enqueue_scripts', array($this, 'enqueue_styles') );
+		//add_action( 'wp_enqueue_scripts', array($this, 'enqueue_styles') );
 		
 	}
 	

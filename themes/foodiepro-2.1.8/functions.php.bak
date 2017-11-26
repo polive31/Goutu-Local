@@ -369,7 +369,7 @@ function load_background_stylesheet() {
 //}
 
 
-/* Optimize page loading by dequeuing CSS stylesheets loading actions */
+/* Optimize page loading by dequeuing specific CSS stylesheets loading actions */
 add_action('wp_enqueue_scripts','dequeue_header_styles');
 function dequeue_header_styles() {
   wp_deregister_style('yarppWidgetCss');

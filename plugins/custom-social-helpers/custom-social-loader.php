@@ -32,6 +32,7 @@ if ( class_exists( 'BuddyPress' ) ) {
 function bp_custom_shortcodes_load() {
 	require_once 'widgets/BP-custom-login-widget.php';
 	require_once 'widgets/BP-latest-registered-members-widget.php';
+	require_once 'widgets/BP-member-profile-widget.php';
 	require_once 'widgets/BP-my-friends-widget.php';
 	require_once 'widgets/BP-welcome-widget.php';
 	require_once 'shortcodes/BP-custom-shortcodes.php';

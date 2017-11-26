@@ -27,11 +27,12 @@ do_action( 'bp_before_member_header' ); ?>
 			if ( bp_is_my_profile() ) {
 				$link.='profile/change-avatar';
 				$css = 'change-avatar';
+				$text = __('Update avatar profile', 'foodiepro');
 			}
 			?>	
 			<a class="<?php echo $css; ?> title="Modify Profile Picture" href="<?php echo $link; ?>">
 				<?php bp_displayed_user_avatar( 'type=full' ); ?>
-				<div class="overlay"></div>
+				<div class="overlay"><?php echo $text;?></div>
 			</a>
 		</div><!-- #item-header-avatar -->
 

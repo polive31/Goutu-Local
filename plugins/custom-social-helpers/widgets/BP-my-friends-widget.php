@@ -57,7 +57,7 @@ class BP_My_Friends extends WP_Widget {
 				echo '<div class="item-avatar">';
 					//echo '<a href="' . bp_get_member_permalink() . '" title="' . bp_core_get_user_displayname(bp_get_member_user_id()) . '">';
 					echo '<a href="' . bp_get_member_permalink() . '" title="' . bp_core_get_username(bp_get_member_user_id()) . '">';
-					echo bp_member_avatar('type=full&width=82&height=82&id=square');
+					echo bp_member_avatar('type=thumb&id=square');
 					echo '</a>';
 				echo '</div>';
 			}

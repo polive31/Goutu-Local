@@ -1763,10 +1763,10 @@ body.register #buddypress div.page ul {
 
 /* General */
 
-.widget.buddypress div.item-avatar img {
+/*.widget.buddypress div.item-avatar img {
 	width:60px;
 	height:60px;
-}
+}*/
 
 .widget.buddypress .avatar-block {
 	margin-left:10px
@@ -1774,8 +1774,8 @@ body.register #buddypress div.page ul {
 
 .widget.buddypress div.item-avatar img.avatar, 
 .bp_my_friends_big_widget img.avatar {
-	margin-right:10px;
-	margin-bottom:10px;
+	margin-right:5px;
+	margin-bottom:5px;
 }
 
 .widget.buddypress .bp-login-widget-user-links>div.bp-login-widget-user-link a {

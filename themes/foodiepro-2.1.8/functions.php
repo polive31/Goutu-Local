@@ -235,6 +235,31 @@ function foodie_pro_add_body_class( $classes ) {
 /* =================================================================*/
 
 
+/* =================================================================*/
+/* =              ADMIN
+/* =================================================================*/
+
+/**
+ * Show all parents, regardless of post status.
+ *
+ * @param   array  $args  Original get_pages() $args.
+ *
+ * @return  array  $args  Args set to also include posts with pending, draft, and private status.
+ */
+add_filter( 'page_attributes_dropdown_pages_args', 'my_slug_show_all_parents' );
+add_filter( 'quick_edit_dropdown_pages_args', 'my_slug_show_all_parents' );
+function my_slug_show_all_parents( $args ) {
+	$args['post_status'] = array( 'publish', 'pending', 'draft', 'private' );
+	return $args;
+}
+
+/* Chargement des feuilles de style admin */
+add_action( 'wp_admin_enqueue_scripts', 'load_admin_stylesheet' );
+function load_admin_stylesheet() {
+	wp_enqueue_style( 'admin-css', CHILD_THEME_URL . '/assets/css/admin.css', array(), CHILD_THEME_VERSION );		
+}
+
+
 
 /* =================================================================*/
 /* =              CUSTOM SCRIPTS ENQUEUE
@@ -296,42 +321,18 @@ function megamenu_dequeue_google_fonts() {
 }
 
 
-/* =================================================================*/
-/* =              ADMIN
-/* =================================================================*/
-
-/**
- * Show all parents, regardless of post status.
- *
- * @param   array  $args  Original get_pages() $args.
- *
- * @return  array  $args  Args set to also include posts with pending, draft, and private status.
- */
-function my_slug_show_all_parents( $args ) {
-	$args['post_status'] = array( 'publish', 'pending', 'draft', 'private' );
-	return $args;
-}
-add_filter( 'page_attributes_dropdown_pages_args', 'my_slug_show_all_parents' );
-add_filter( 'quick_edit_dropdown_pages_args', 'my_slug_show_all_parents' );
-
 
 /* =================================================================*/
 /* =              STYLING     
 /* =================================================================*/
 
-//* Load Custom Google Fonts
+//* Load Fonts
 add_filter( 'foodie_pro_disable_google_fonts', '__return_true' );
 add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_fonts' );
 function foodie_pro_enqueue_fonts() {
 	//wp_enqueue_style( 'font-awesome', CHILD_THEME_URL . '/assets/fonts/font-awesome/css/font-awesome.min.css', array(), CHILD_THEME_VERSION );
-	//wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400|PT+Sans+Narrow|Roboto+Slab:100,300|Lato:300|Delius+Swash+Caps', array(), CHILD_THEME_VERSION );
 	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Podkova|Lato:300,400', array(), CHILD_THEME_VERSION );
-}
-
-/* Chargement des feuilles de style admin */
-add_action( 'wp_admin_enqueue_scripts', 'load_admin_stylesheet' );
-function load_admin_stylesheet() {
-	wp_enqueue_style( 'admin-css', CHILD_THEME_URL . '/assets/css/admin.css', array(), CHILD_THEME_VERSION );		
+	wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
 }
 
 
@@ -368,7 +369,7 @@ function load_background_stylesheet() {
 //}
 
 
-/* Inline CSS styles by dequeuing plugin actions */
+/* Optimize page loading by dequeuing specific CSS stylesheets loading actions */
 add_action('wp_enqueue_scripts','dequeue_header_styles');
 function dequeue_header_styles() {
   wp_deregister_style('yarppWidgetCss');
@@ -382,7 +383,11 @@ function dequeue_header_styles() {
   wp_deregister_style('wpurp_style7');  
   wp_dequeue_style('wpurp_style7');
   wp_deregister_style('wpurp_style11');  
-  wp_dequeue_style('wpurp_style11');  
+  wp_dequeue_style('wpurp_style11'); 
+  wp_deregister_style('cnss_font_awesome_css');  
+  wp_dequeue_style('cnss_font_awesome_css');   
+  wp_deregister_style('megamenu-fontawesome');  
+  wp_dequeue_style('megamenu-fontawesome');
 }
 
 

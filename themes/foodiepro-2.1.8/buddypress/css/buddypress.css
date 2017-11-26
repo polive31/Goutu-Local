@@ -1693,11 +1693,6 @@ body.register #buddypress div.page ul {
 	margin-right: 10px;
 	width: 40px;
 }
-.widget.buddypress div.item-avatar img {
-	height: 40px;
-	margin: 1px;
-	width: 40px;
-}
 
 .widget.buddypress div.avatar-block{
 	overflow: hidden;

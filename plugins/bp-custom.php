@@ -12,10 +12,10 @@ define('BP_DEFAULT_COMPONENT', 'profile' );
 /* Change default thumbnail size */
 define ( 'BP_AVATAR_THUMB_WIDTH', 65 );
 define ( 'BP_AVATAR_THUMB_HEIGHT', 65 );
-//define ( 'BP_AVATAR_FULL_WIDTH', 150 );
-//define ( 'BP_AVATAR_FULL_HEIGHT', 150 );
+define ( 'BP_AVATAR_FULL_WIDTH', 150 );
+define ( 'BP_AVATAR_FULL_HEIGHT', 150 );
 //define ( 'BP_AVATAR_ORIGINAL_MAX_WIDTH', 640 );
-//define ( 'BP_AVATAR_ORIGINAL_MAX_FILESIZE', $max_in_kb );
+//define ( 'BP_AVATAR_ORIGINAL_MAX_FILESIZE', 2*1024);
 
 /* Change default avatar picture */
 define ( 'BP_AVATAR_DEFAULT', 'https://goutu.org/wp-content/themes/foodiepro-2.1.8/images/cook_avatar.png' );

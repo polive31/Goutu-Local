@@ -61,7 +61,7 @@ class BP_Latest extends WP_Widget {
 					//echo '<a href="' . bp_get_member_permalink() . '" title="' . bp_core_get_user_displayname(bp_get_member_user_id()) . '">';
 					echo '<a href="' . bp_get_member_permalink() . '" title="' . bp_core_get_username(bp_get_member_user_id()) . '">';
 					/*echo bp_member_avatar('type=full&width=100&height=100&id=square');*/
-					echo bp_member_avatar('type=full&id=square');
+					echo bp_member_avatar('type=thumb&id=square');
 					echo '</a>';
 					echo '</div>';
 				}

@@ -14,13 +14,8 @@
 /* OZ Horizontal Menu
 ---------------------------------------------------*/
 
-#ozhmenu_wrap {
-	margin-top: 10px;
-	float: left;	
-}
-
 #ozhmenu {
-	padding:10px;
+	padding:5px;
 	background: #5a5a5a!important;
 }
 
@@ -37,3 +32,17 @@
   overflow-y: scroll;
   height: 100%;
 }*/
+
+
+/* Media Queries
+---------------------------------------------------*/
+
+
+@media only screen and (max-width:600px) {
+
+	#ozhmenu {
+		padding:20px 5px 5px 5px;
+		background: #744d84!important;
+	}
+
+}

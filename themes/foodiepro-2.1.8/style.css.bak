@@ -1631,10 +1631,6 @@ Widgets
   text-transform: none;
 }
 
-.widget_bp_latest img#square {
-	border:solid 2px #FFF;
-}
-
 form[role="search"] {
 	text-align:center;
 	padding:10px;

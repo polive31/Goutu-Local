@@ -126,6 +126,23 @@ a.change-avatar:hover .overlay {
   opacity: 1;
 }
 
+.bp-profile-fields .label {
+	font-weight:bold;
+}
+
+
+/* Member profile edit page
+--------------------------------------------- */
+
+#buddypress #item-body .field_type_multiselect_custom_taxonomy {
+    display:block;
+    float:left;
+   	width:230px;
+    margin-right:70px;
+}
+
+
+
 /*--------------------------------------------------------------
 3.1 - Activity
 --------------------------------------------------------------*/

@@ -52,21 +52,21 @@ class BP_Member_Profile extends WP_Widget {
 				if ( bp_profile_group_has_fields() ) : ?>
 	
 					<div class="bp-widget <?php bp_the_profile_group_slug(); ?>">
-						<h4><?php bp_the_profile_group_name(); ?></h4>
-						<table class="profile-fields">
-							
+						<!-- <h4><?php bp_the_profile_group_name(); ?></h4> -->
+						
+							<div class="bp-profile-fields">						
 							<?php while ( bp_profile_fields() ) : bp_the_profile_field(); ?>
 							
 								<?php if ( bp_field_has_data() ) : ?>
-									<tr<?php bp_field_css_class(); ?>>
-										<td class="label"><?php bp_the_profile_field_name(); ?></td>
-										<td class="data"><?php bp_the_profile_field_value(); ?></td>
-									</tr>
+									<div<?php bp_field_css_class(); ?>>
+										<span class="label"><?php bp_the_profile_field_name(); ?> : </span>
+										<span class="data"><?php bp_the_profile_field_value(); ?></span>
+									</div>
 
 								<?php endif; ?>
 							<?php endwhile; ?>
 							
-						</table>
+						</div>
 					</div>
 								
 				<?php endif; ?>
@@ -104,12 +104,7 @@ class BP_Member_Profile extends WP_Widget {
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
 		
-		<p>
-			<label for="<?php echo $this->get_field_id( 'limit' ); ?>">
-				<?php _e( 'Number of users to show', 'foodiepro' ); ?>
-			</label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" type="number" step="1" min="-1" value="<?php echo (int)( $instance['limit'] ); ?>" />
-	</p>
+
 		<?php 
 	}
 

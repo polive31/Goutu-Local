@@ -200,6 +200,14 @@ function buddydev_exclude_users_by_role( $args ) {
 	return $args;
 }
 
+/* =================================================================*/
+/* =     PROFILE FIELDS MARKUP
+/* =================================================================*/
+
+add_action( 'bp_init', 'custom_field_rendering' );
+function custom_field_rendering() {
+	remove_filter( 'bp_get_the_profile_field_value', 'wpautop' );
+}
  
 /* =================================================================*/
 /* =     BP-DEPENDANT AVATAR MGT FUNCTIONS  

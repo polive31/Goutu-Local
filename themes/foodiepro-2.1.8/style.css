@@ -2282,16 +2282,6 @@ Custom Page Templates
 }
 
 
-/* Member profile edit page
---------------------------------------------- */
-
-.field_type_multiselect_custom_taxonomy {
-    display:block;
-    float:left;
-   	width:230px;
-    margin-left:70px;
-}
-
 
 /* Pages with entry header image
 --------------------------------------------- */

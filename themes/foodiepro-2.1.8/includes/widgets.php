@@ -25,7 +25,7 @@ function foodie_pro_include_widgets() {
 		return;
 	}
 	$widgets_dir = trailingslashit( get_stylesheet_directory() ) . 'includes/widgets/';
-	require_once $widgets_dir . 'foodie-featured-posts.php';
+	//require_once $widgets_dir . 'foodie-featured-posts.php';
 }
 
 //add_action( 'widgets_init', 'foodie_pro_register_widgets', 11 );
@@ -40,5 +40,5 @@ function foodie_pro_register_widgets() {
 		return;
 	}
 	unregister_widget( 'Genesis_Featured_Post' );
-	register_widget( 'Foodie_Pro_Featured_Posts' );
+	//register_widget( 'Foodie_Pro_Featured_Posts' );
 }

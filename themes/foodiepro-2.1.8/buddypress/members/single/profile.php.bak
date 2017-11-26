@@ -9,7 +9,8 @@
 ?>
 
 <?php // Prevents profile actions buttons if public profile 
-if ( bp_current_action() != 'public' ) { 
+//if ( bp_current_action() != 'public' ) { 
+if ( bp_is_my_profile() ) { 
 	echo '<div class="item-list-tabs no-ajax" id="subnav" role="navigation">';
 		echo '<ul>';
 			bp_get_options_nav();
@@ -61,7 +62,13 @@ if ( bp_current_action() != 'public' ) {
 			// Display WordPress profile (fallback)
 			else
 				bp_get_template_part( 'members/single/profile/profile-wp' );
-			break;
+			
+			// Displays widgeted public profile content
+	    genesis_widget_area( 'social-bottom', array(
+	        'before' => '<div class="social-bottom widget-area">',
+	        'after'  => '</div>',
+	  	));
+	  	break;
 
 
 		// Any other

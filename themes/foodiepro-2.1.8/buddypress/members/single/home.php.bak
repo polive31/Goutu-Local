@@ -34,7 +34,7 @@
 
 		//if (!bp_is_home() ) : /* Do not dispay header if my profile */
 			if ( bp_displayed_user_use_cover_image_header() ) :
-				echo '<h1>Appel à cover-image-header</h1>';
+				//echo '<h1>Appel à cover-image-header</h1>';
 				bp_get_template_part( 'members/single/cover-image-header' );
 			else :
 				bp_get_template_part( 'members/single/member-header' );

@@ -135,5 +135,6 @@
 	 * @since 1.2.0
 	 */
 	do_action( 'bp_after_member_home_content' ); ?>
+	
 
 </div><!-- #buddypress -->

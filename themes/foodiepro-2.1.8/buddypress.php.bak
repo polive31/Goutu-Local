@@ -12,30 +12,33 @@
  */
 
 /* =================================================================*/
-/* =                 OVERALL LAYOUT  
+/* =                 WIDGETED AREAS
 /* =================================================================*/
 
-
-/*
- * Swap in a different sidebar instead of the default sidebar.*/
-function child_sidebar_logic() {
-    remove_action( 'genesis_after_content', 'genesis_get_sidebar' );
-    add_action( 'genesis_after_content', 'child_get_blog_sidebar' );
-}
-//add_action( 'get_header', 'child_sidebar_logic' );
-
-/*
- * Retrieve blog sidebar */
-function child_get_blog_sidebar() {
-    get_sidebar( 'social' );
-}
-
 // Apply Full Width Content layout
+add_action( 'get_header', 'bp_set_full_layout' );
 function bp_set_full_layout() {
 	// Force full width content
 	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 }
-add_action( 'get_header', 'bp_set_full_layout' );
+
+
+//* Hook category widget area after profile content
+add_action( 'bp_public_profile_content', 'add_social_widgeted_area' );
+function add_social_widgeted_area() {
+	//if (!bp_is_register_page())
+    genesis_widget_area( 'social-bottom', array(
+        'before' => '<div class="social-bottom widget-area">',
+        'after'  => '</div>',
+  	));
+}
+
+// Add a "social" sidebar besides the profile page 
+add_action( 'bp_after_member_home_content', 'get_social_sidebar' );
+function get_social_sidebar() {
+  get_sidebar( 'social' );
+}
+
 
 
 /* =================================================================*/
@@ -60,20 +63,7 @@ function wps_remove_genesis_entry_header() {
 }
 
 
-/* =================================================================*/
-/* =                 WIDGETS
-/* =================================================================*/
 
-
-//* Hook category widget area after post content
-function add_social_widgeted_area() {
-	    genesis_widget_area( 'social-bottom', array(
-	        'before' => '<div class="social-bottom widget-area">',
-	        'after'  => '</div>',
-    ));
-}
-add_action( 'genesis_after_loop', 'add_social_widgeted_area' );
- 
 
 
 genesis();

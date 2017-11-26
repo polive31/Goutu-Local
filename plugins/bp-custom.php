@@ -86,6 +86,7 @@ function enqueue_bp_core_scripts($scripts) {
 /* =================================================================*/
 
 // Define cover image size
+add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'your_theme_xprofile_cover_image', 10, 1 );
 function your_theme_xprofile_cover_image( $settings = array() ) {
     $settings['width']  = 1140;
     $settings['height'] = 350;
@@ -93,7 +94,6 @@ function your_theme_xprofile_cover_image( $settings = array() ) {
  
     return $settings;
 }
-add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'your_theme_xprofile_cover_image', 10, 1 );
 
 
 /**
@@ -139,6 +139,8 @@ function your_theme_cover_image_callback( $params = array() ) {
 }
 
 // Override default css stylesheet
+add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'foodiepro_cover_image_css', 10, 1 );
+add_filter( 'bp_before_groups_cover_image_settings_parse_args', 'foodiepro_cover_image_css', 10, 1 );
 function foodiepro_cover_image_css( $settings = array() ) {
     /**
      * If you are using a child theme, use bp-child-css
@@ -155,8 +157,6 @@ function foodiepro_cover_image_css( $settings = array() ) {
  
     return $settings;
 }
-add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'foodiepro_cover_image_css', 10, 1 );
-add_filter( 'bp_before_groups_cover_image_settings_parse_args', 'foodiepro_cover_image_css', 10, 1 );
 
  
 /* =================================================================*/
@@ -258,7 +258,6 @@ function wprpe_add_gravatar($output, $args) {
 
 /* Modify WPRPE output, displaying posts from current logged-in user */
 add_filter( 'rpwe_default_query_arguments', 'wprpe_query_displayed_user_posts' );
-
 function wprpe_query_displayed_user_posts( $args ) {
 	if ( $args['author']=='bp_member' )  {
   	$args['author'] = bp_displayed_user_id();

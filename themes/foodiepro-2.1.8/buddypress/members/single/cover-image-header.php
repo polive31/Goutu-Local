@@ -22,10 +22,15 @@ do_action( 'bp_before_member_header' ); ?>
 
 	<div id="item-header-cover-image">
 		<div id="item-header-avatar">
-			<a href="<?php bp_displayed_user_link(); ?>">
-
+			<?php 
+			$link=esc_url( bp_get_displayed_user_link() );
+			if ( bp_is_my_profile() )
+				$link.='profile/change-avatar';
+				$css = 'change-avatar';
+			?>	
+			<a class="<?php echo $css; ?> title="Modify Profile Picture" href="<?php echo $link; ?>">
 				<?php bp_displayed_user_avatar( 'type=full' ); ?>
-
+				<div class="overlay"></div>
 			</a>
 		</div><!-- #item-header-avatar -->
 

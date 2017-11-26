@@ -18,11 +18,16 @@
 do_action( 'bp_before_member_header' ); ?>
 
 <div id="item-header-avatar">
-	<a href="<?php bp_displayed_user_link(); ?>">
-
+	<?php 
+	if ( bp_is_my_profile() )
+		$link=bp_displayed_user_link() . '/profile/change-avatar' ;
+	else
+		$link=bp_displayed_user_link();
+	?>	
+	<a href="<?php $link; ?>">
 		<?php bp_displayed_user_avatar( 'type=full' ); ?>
-
 	</a>
+	
 </div><!-- #item-header-avatar -->
 
 <div id="item-header-content">

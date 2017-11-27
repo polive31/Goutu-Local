@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-11-19 16:20+0100\n"
-"PO-Revision-Date: 2017-11-19 16:20+0100\n"
+"POT-Creation-Date: 2017-11-27 01:00+0100\n"
+"PO-Revision-Date: 2017-11-27 01:01+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -18,11 +18,11 @@ msgstr ""
 msgid "Add a picture"
 msgstr "Ajoutez votre photo"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:98
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:99
 msgid "Seasonal"
 msgstr "De Saison"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:99
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:100
 msgid "Festive"
 msgstr "Fêtes"
 
@@ -186,6 +186,7 @@ msgstr "Appréciation"
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:104
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:78
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:90
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:94
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:89
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:74
 msgid "New title"
@@ -197,6 +198,7 @@ msgstr ""
 #: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:101
 #: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:180
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:99
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:103
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:93
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:78
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/widgets/nutrition_label_widget.php:52
@@ -374,7 +376,7 @@ msgstr "Ajouter à mon <a href=\"%s\">carnet de recettes </a>"
 msgid "Favorites"
 msgstr "Favoris"
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Templates.php:143
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Templates.php:138
 msgid "Print this Recipe"
 msgstr "Imprimer cette recette"
 
@@ -465,22 +467,22 @@ msgstr "avis"
 msgid "reviews"
 msgstr "avis"
 
-#: plugins/custom-social-helpers/custom-social-loader.php:42
+#: plugins/custom-social-helpers/custom-social-loader.php:43
 msgid ""
 "<strong>BP Social Helpers</strong></a> requires the BuddyPress plugin to "
 "work. Please <a href=\"https://buddypress.org/download\">install BuddyPress</"
 "a> first, or <a href=\"plugins.php\">deactivate BP Custom Shortcodes</a>."
 msgstr ""
 
-#: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:29
+#: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:31
 msgid "Friendship Requests"
 msgstr "Demandes d'amitié"
 
-#: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:35
+#: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:37
 msgid "Notifications"
 msgstr "Notifications"
 
-#: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:41
+#: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:43
 #: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:28
 msgid "My Profile"
 msgstr "Mon Profil"
@@ -527,6 +529,14 @@ msgstr ""
 
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:105
 msgid "Number of users to show"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:28
+msgid "(Buddypress) Member profile"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:29
+msgid "Shows profile details of the current displayed member"
 msgstr ""
 
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:28
@@ -6180,12 +6190,12 @@ msgid ""
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:184
-#: themes/foodiepro-2.1.8/functions.php:582
+#: themes/foodiepro-2.1.8/functions.php:626
 msgid "Read More"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:197
-#: themes/foodiepro-2.1.8/functions.php:610
+#: themes/foodiepro-2.1.8/functions.php:654
 msgid "Comments"
 msgstr ""
 
@@ -6800,6 +6810,10 @@ msgstr ""
 msgid "Newest"
 msgstr ""
 
+#: themes/foodiepro-2.1.8/buddypress/members/single/cover-image-header.php:30
+msgid "Update profile picture"
+msgstr "Changer de photo"
+
 #: themes/foodiepro-2.1.8/buddypress/members/single/friends/requests.php:102
 msgid "You have no pending friendship requests."
 msgstr ""
@@ -7049,52 +7063,52 @@ msgstr ""
 msgid "Visibility"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:386
+#: themes/foodiepro-2.1.8/functions.php:430
 msgid "Goûtu.org - Cuisiner, Découvrir, Partager"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:423
+#: themes/foodiepro-2.1.8/functions.php:467
 msgid "<strong>ERROR</strong>: User pending "
 msgstr "<strong> ERREUR</strong>: Utilisateur en attente d'"
 
-#: themes/foodiepro-2.1.8/functions.php:423
+#: themes/foodiepro-2.1.8/functions.php:467
 msgid "approval"
 msgstr "approbation"
 
-#: themes/foodiepro-2.1.8/functions.php:619
+#: themes/foodiepro-2.1.8/functions.php:663
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:202
 msgid "Previous comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:625
+#: themes/foodiepro-2.1.8/functions.php:669
 msgid "Next comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:644
+#: themes/foodiepro-2.1.8/functions.php:688
 msgid "Your answer here"
 msgstr "Entrez votre réponse ci-dessous"
 
-#: themes/foodiepro-2.1.8/functions.php:663
+#: themes/foodiepro-2.1.8/functions.php:707
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
-#: themes/foodiepro-2.1.8/functions.php:663
+#: themes/foodiepro-2.1.8/functions.php:707
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:663
+#: themes/foodiepro-2.1.8/functions.php:707
 msgid "Legal notice"
 msgstr "Mentions légales"
 
-#: themes/foodiepro-2.1.8/functions.php:663
+#: themes/foodiepro-2.1.8/functions.php:707
 msgid "Goûtu charter"
 msgstr "Charte Goûtu"
 
-#: themes/foodiepro-2.1.8/functions.php:663
+#: themes/foodiepro-2.1.8/functions.php:707
 msgid "Personal data"
 msgstr "Données personnelles"
 
-#: themes/foodiepro-2.1.8/functions.php:663
+#: themes/foodiepro-2.1.8/functions.php:707
 msgid "Terms of use"
 msgstr "Conditions d'utilisation"
 

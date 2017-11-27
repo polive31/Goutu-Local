@@ -111,13 +111,17 @@ a.change-avatar .overlay {
 	position:absolute;
 	width:100%;
 	height:100%;
-	background:url("../../images/photo-camera.png") center center no-repeat;
+	background:url("../../images/photo-camera.png") rgba(0,0,0,0.1) center center no-repeat;
 	opacity:0;	
   text-align: center;
   color: #FFF;
   font-size: 16px;
   padding: 15px 5px;
   line-height: 16px;
+}
+
+a.change-avatar img {
+	margin-bottom: 0px;
 }
 
 
@@ -138,7 +142,7 @@ a.change-avatar:hover .overlay {
     display:block;
     float:left;
    	width:230px;
-    margin-left:70px;
+    margin-right:70px;
 }
 
 

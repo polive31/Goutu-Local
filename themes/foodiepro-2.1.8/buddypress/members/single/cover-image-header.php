@@ -18,19 +18,22 @@
 do_action( 'bp_before_member_header' ); ?>
 
 <div id="cover-image-container">
-	<a id="header-cover-image" href="<?php bp_displayed_user_link(); ?>"></a>
-
+	<?php $link=esc_url( bp_get_displayed_user_link() );
+	if ( bp_is_my_profile() ) {
+		$css = 'change-avatar';
+		$text = __('Update cover picture', 'foodiepro');
+	}	?>
+	<a class="<?php echo $css; ?>" title="<?php echo $text;?>" id="header-cover-image" href="<?php echo $link . 'profile/change-cover-image'; ?>">
+		<div class="overlay"><?php echo $text;?></div>
+	</a>
 	<div id="item-header-cover-image">
 		<div id="item-header-avatar">
 			<?php 
-			$link=esc_url( bp_get_displayed_user_link() );
 			if ( bp_is_my_profile() ) {
-				$link.='profile/change-avatar';
-				$css = 'change-avatar';
 				$text = __('Update profile picture', 'foodiepro');
 			}
 			?>	
-			<a class="<?php echo $css; ?> title="Modify Profile Picture" href="<?php echo $link; ?>">
+			<a class="<?php echo $css; ?>" title="<?php echo $text;?>" href="<?php echo $link . 'profile/change-avatar'; ?>">
 				<?php bp_displayed_user_avatar( 'type=full' ); ?>
 				<div class="overlay"><?php echo $text;?></div>
 			</a>

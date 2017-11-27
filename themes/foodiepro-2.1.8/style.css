@@ -238,6 +238,8 @@ hr {
 
 pre {
 	overflow:auto;
+	font-size: 12px;
+	line-height: 12px;
 }
 
 code,
@@ -610,6 +612,26 @@ ul.genesis-skip-link {
 Defaults
 ---------------------------------------------------------------------------------------------------- */
 
+/* Headings
+--------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color:#444;
+	font-weight:300;
+	margin:10px 0 16px;
+	padding:0;
+	text-transform:uppercase;
+}
+
+
+
+
+
 /* FONTS 
 --------------------------------------------- */
 
@@ -639,6 +661,7 @@ h3 {
 h4 {
 	font-family: "Amatic SC";	
 	font-size:30px;
+	font-weight:bold;
 }
 
 h5 {
@@ -969,23 +992,6 @@ cite {
 .screen-reader-text {
 	position:absolute !important;
 	left:-999em;
-}
-
-
-/* Headings
---------------------------------------------- */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	color:#444;
-	font-weight:300;
-	margin:10px 0 16px;
-	padding:0;
-	text-transform:uppercase;
 }
 
 
@@ -1529,13 +1535,12 @@ h2.entry-title, .wpupg-post-title,
 	letter-spacing:1px;
 	text-align:center;
 	/*text-transform:uppercase;*/
-  margin:10px 0 0 0;
+	margin:0 0 20px 0;
   padding:10px;
 }
 
-
-.content .widgettitle {
-	margin:0 0 20px 0;
+.sidebar .widgettitle {
+  margin: 20px 0 0 0;
 }
 
 .title-no-display .widgettitle {

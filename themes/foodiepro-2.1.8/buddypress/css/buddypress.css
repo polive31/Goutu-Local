@@ -115,9 +115,14 @@ a.change-avatar .overlay {
 	opacity:0;	
   text-align: center;
   color: #FFF;
+  font-size: 20px;
+  padding: 90px 5px;
+  line-height: 16px;
+}
+
+#item-header-avatar a.change-avatar .overlay {
   font-size: 16px;
   padding: 15px 5px;
-  line-height: 16px;
 }
 
 a.change-avatar img {
@@ -133,6 +138,18 @@ a.change-avatar:hover .overlay {
 .bp-profile-fields .label {
 	font-weight:bold;
 }
+
+#subnav li a:before {
+    font-family: FontAwesome;
+    font-size: 14px;
+    padding-right: 3px;
+}
+
+/* a#change-avatar:before,
+a#change-cover-image:before,
+a#edit:before {
+    content: "\f040 ";
+} */
 
 
 /* Member profile edit page
@@ -1433,6 +1450,7 @@ body.activity-permalink #buddypress ul.item-list li.activity-item {
 }
 #buddypress div.item-list-tabs#subnav ul li {
 	margin-top: 0;
+	margin-right: 10px;	
 }
 #buddypress div.item-list-tabs ul li.last {
 	float: right;

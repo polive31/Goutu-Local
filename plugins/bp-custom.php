@@ -208,7 +208,29 @@ add_action( 'bp_init', 'custom_field_rendering' );
 function custom_field_rendering() {
 	remove_filter( 'bp_get_the_profile_field_value', 'wpautop' );
 }
- 
+
+
+/* =================================================================*/
+/* =     NAV MENUS DISPLAY
+/* =================================================================*/
+
+//add_action( 'bp_setup_nav', 'bp_rename_profile_tabs', 999 );
+//function bp_rename_profile_tabs() {
+//	global $bp;
+//	
+//	$bp->bp_nav['activity']['name'] = 'wall';
+//}
+
+add_action( 'bp_setup_nav', 'custom_subnav_name', 100 );
+function custom_subnav_name() {
+	
+  buddypress()->members->nav->edit_nav( array('name' => __('Edit Profile', 'foodiepro')), 'edit', 'profile' );
+  buddypress()->members->nav->edit_nav( array('name' => __('Change Avatar', 'foodiepro')), 'change-avatar', 'profile' );
+  buddypress()->members->nav->edit_nav( array('name' => __('Change Cover', 'foodiepro')), 'change-cover-image', 'profile' );
+}
+
+
+
 /* =================================================================*/
 /* =     BP-DEPENDANT AVATAR MGT FUNCTIONS  
 /* =================================================================*/

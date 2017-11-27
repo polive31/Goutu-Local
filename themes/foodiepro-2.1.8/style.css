@@ -622,26 +622,32 @@ body {
 }
 
 h1 {
+	font-family: "Amatic SC";	
 	font-size:22px;
 }
 
 h2 {
+	font-family: "Amatic SC";	
 	font-size:20px;
 }
 
 h3 {
+	font-family: "Amatic SC";	
 	font-size:18px;
 }
 
 h4 {
-	font-size:16px;
+	font-family: "Amatic SC";	
+	font-size:30px;
 }
 
 h5 {
+	font-family: "Amatic SC";	
 	font-size:14px;
 }
 
 h6 {
+	font-family: "Amatic SC";	
 	font-size:12px;
 }
 
@@ -691,7 +697,6 @@ h1.entry-title {
 
 h1.archive-title,
 .page h1.entry-title {
-  font-family: "Amatic SC";	
 	font-size:60px;
 	font-weight:bold;
 	font-variant:small-caps;
@@ -708,10 +713,13 @@ h1.archive-title {
 }
 
 .archive h2 { /* Subtitle */
-  font-family: "Amatic SC";
   font-size: 45px;
 	margin: 40px 0 0 0;
 	font-weight:bold;
+}
+
+h2.user-nicename {
+    font-family: Lato, sans-serif;
 }
 
 /*.recipe h1.entry-title {
@@ -724,7 +732,6 @@ h1.archive-title {
 
 .single h3 {
   font-size: 30px;
-  font-family: "Amatic SC";
 	font-weight: bold;  
 }
 
@@ -757,7 +764,7 @@ h3.rpwe-title a {
 
 /* Slider formatting */
 .slider-text {
-  font-family: podkova;
+	font-family: "Podkova",cursive;
   font-size: 30px!important;
   color: #FFF;
 }

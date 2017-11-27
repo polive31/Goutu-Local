@@ -1449,7 +1449,10 @@ body.activity-permalink #buddypress ul.item-list li.activity-item {
 	display: block;
 	padding: 5px 10px;
 	text-decoration: none;
+  text-transform: uppercase;
+  font-size: 13px;	
 }
+
 #buddypress div.item-list-tabs ul li a span {
 	background: #eee;
 	border-radius: 50%;
@@ -1488,6 +1491,7 @@ body.activity-permalink #buddypress ul.item-list li.activity-item {
 	background: transparent;
 	margin: 10px 0 10px;
 	overflow: hidden;
+	border-bottom: 1px dotted #AAA;	
 }
 #buddypress #admins-list li,
 #buddypress #mods-list li,

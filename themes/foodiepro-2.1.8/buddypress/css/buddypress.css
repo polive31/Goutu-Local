@@ -1489,10 +1489,11 @@ body.activity-permalink #buddypress ul.item-list li.activity-item {
 }
 #buddypress div.item-list-tabs#subnav {
 	background: transparent;
-	margin: 10px 0 10px;
+	margin: 10px 0 40px;
 	overflow: hidden;
 	border-bottom: 1px dotted #AAA;	
 }
+
 #buddypress #admins-list li,
 #buddypress #mods-list li,
 #buddypress #members-list li {

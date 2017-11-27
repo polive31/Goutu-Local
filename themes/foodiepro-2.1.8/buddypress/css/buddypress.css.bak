@@ -1452,6 +1452,7 @@ body.activity-permalink #buddypress ul.item-list li.activity-item {
   text-transform: uppercase;
   font-size: 13px;	
 }
+
 #buddypress div.item-list-tabs ul li a span {
 	background: #eee;
 	border-radius: 50%;

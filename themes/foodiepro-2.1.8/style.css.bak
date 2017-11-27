@@ -718,6 +718,10 @@ h1.archive-title {
 	font-weight:bold;
 }
 
+h2.user-nicename {
+    font-family: Lato, sans-serif;
+}
+
 /*.recipe h1.entry-title {
 	font-family:"Amatic SC", cursive !important;
 	font-size:40px;

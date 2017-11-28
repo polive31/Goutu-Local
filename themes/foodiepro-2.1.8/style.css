@@ -645,7 +645,8 @@ body {
 
 h1 {
 	font-family: "Amatic SC";	
-	font-size:22px;
+	font-size: 60px;
+  font-weight: bold;	
 }
 
 h2 {
@@ -713,7 +714,8 @@ span.bp_counter,
 h1.entry-title {
   text-decoration: none;
 	text-transform: capitalize;
-	font-size:40px;
+	font-size:44px;
+	font-weight:normal;
 	padding: 10px 0 0 0;	
 }
 

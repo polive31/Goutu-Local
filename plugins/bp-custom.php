@@ -204,6 +204,7 @@ function buddydev_exclude_users_by_role( $args ) {
 /* =     PROFILE FIELDS MARKUP
 /* =================================================================*/
 
+// Remove <p> from profile fields display
 add_action( 'bp_init', 'custom_field_rendering' );
 function custom_field_rendering() {
 	remove_filter( 'bp_get_the_profile_field_value', 'wpautop' );
@@ -223,7 +224,7 @@ function custom_field_rendering() {
 
 add_action( 'bp_setup_nav', 'custom_subnav_name', 100 );
 function custom_subnav_name() {
-	
+  buddypress()->members->nav->edit_nav( array('name' => __('Display Profile', 'foodiepro')), 'public', 'profile' );
   buddypress()->members->nav->edit_nav( array('name' => __('Edit Profile', 'foodiepro')), 'edit', 'profile' );
   buddypress()->members->nav->edit_nav( array('name' => __('Change Avatar', 'foodiepro')), 'change-avatar', 'profile' );
   buddypress()->members->nav->edit_nav( array('name' => __('Change Cover', 'foodiepro')), 'change-cover-image', 'profile' );

@@ -24,13 +24,15 @@
 
 /* Top Buttons */
 
+.recipe-buttons {
+	float:left;
+}
+
 .recipe-button {
-	float: right;
+	float: left;
 	font-size:25px;
 	margin: 0 10px;
 	padding: 5px 0;
-	/*padding: 20px 0 5px 0;
-	height:50px;*/
 }
 
 .recipe-button a {
@@ -243,7 +245,7 @@ li.wpurp-recipe-instruction.li-first.li-last {
 }
 
 li.wpurp-recipe-instruction span {
-	font-family:"Open Sans";
+	font-family: Open Sans, sans-serif;
   font-size: 14px;
   color: #1a1a1a;
   vertical-align:middle;

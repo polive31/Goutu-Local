@@ -13,7 +13,7 @@
 if ( bp_is_my_profile() ) { 
 	echo '<div class="item-list-tabs no-ajax" id="subnav" role="navigation">';
 		echo '<ul>';
-			//bp_get_options_nav();
+			bp_get_options_nav();
 		echo '</ul>';
 	echo '</div><!-- .item-list-tabs -->';
 } ?>
@@ -28,7 +28,7 @@ if ( bp_is_my_profile() ) {
 	 */
 	do_action( 'bp_before_profile_content' ); ?>
 
-	<div class="profile">
+	<div class="profile">	
 
 	<!-- <h1> Je suis dans /www/wp-content/themes/foodiepro-2.1.8/buddypress/members/single/profile.php <h1>  -->
 

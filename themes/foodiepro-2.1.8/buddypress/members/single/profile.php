@@ -28,7 +28,7 @@ if ( bp_is_my_profile() ) {
 	 */
 	do_action( 'bp_before_profile_content' ); ?>
 
-	<div class="profile">
+	<div class="profile">	
 
 	<!-- <h1> Je suis dans /www/wp-content/themes/foodiepro-2.1.8/buddypress/members/single/profile.php <h1>  -->
 
@@ -51,17 +51,6 @@ if ( bp_is_my_profile() ) {
 
 		// Compose
 		case 'public' :
-		
-			//echo '<h1> Je suis dans /www/wp-content/themes/foodiepro-2.1.8/buddypress/members/single/profile.php => section "public" </h1>'; 
-
-
-//			// Display XProfile
-//			if ( bp_is_active( 'xprofile' ) )
-//				bp_get_template_part( 'members/single/profile/profile-loop' );
-//
-//			// Display WordPress profile (fallback)
-//			else
-//				bp_get_template_part( 'members/single/profile/profile-wp' );
 			
 			// Displays widgeted public profile content
 	    genesis_widget_area( 'social-bottom', array(

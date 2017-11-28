@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-11-28 00:15+0100\n"
-"PO-Revision-Date: 2017-11-28 00:21+0100\n"
+"POT-Creation-Date: 2017-11-28 19:23+0100\n"
+"PO-Revision-Date: 2017-11-28 19:24+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -15,14 +15,18 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: plugins/bp-custom.php:227
+msgid "Display Profile"
+msgstr "Afficher mon profil"
+
+#: plugins/bp-custom.php:228
 msgid "Edit Profile"
 msgstr "Modifier mon profil"
 
-#: plugins/bp-custom.php:228
+#: plugins/bp-custom.php:229
 msgid "Change Avatar"
 msgstr "Photo de profil"
 
-#: plugins/bp-custom.php:229
+#: plugins/bp-custom.php:230
 msgid "Change Cover"
 msgstr "Image d'en-tête"
 
@@ -6202,12 +6206,12 @@ msgid ""
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:184
-#: themes/foodiepro-2.1.8/functions.php:639
+#: themes/foodiepro-2.1.8/functions.php:623
 msgid "Read More"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:197
-#: themes/foodiepro-2.1.8/functions.php:667
+#: themes/foodiepro-2.1.8/functions.php:651
 msgid "Comments"
 msgstr ""
 
@@ -6826,7 +6830,7 @@ msgstr ""
 msgid "Update cover picture"
 msgstr "Changer mon image d'en-tête"
 
-#: themes/foodiepro-2.1.8/buddypress/members/single/cover-image-header.php:33
+#: themes/foodiepro-2.1.8/buddypress/members/single/cover-image-header.php:36
 msgid "Update profile picture"
 msgstr "Changer ma photo"
 
@@ -7090,40 +7094,40 @@ msgstr "<strong> ERREUR</strong>: Utilisateur en attente d'"
 msgid "approval"
 msgstr "approbation"
 
-#: themes/foodiepro-2.1.8/functions.php:676
+#: themes/foodiepro-2.1.8/functions.php:660
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:202
 msgid "Previous comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:682
+#: themes/foodiepro-2.1.8/functions.php:666
 msgid "Next comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:701
+#: themes/foodiepro-2.1.8/functions.php:685
 msgid "Your answer here"
 msgstr "Entrez votre réponse ci-dessous"
 
-#: themes/foodiepro-2.1.8/functions.php:720
+#: themes/foodiepro-2.1.8/functions.php:704
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
-#: themes/foodiepro-2.1.8/functions.php:720
+#: themes/foodiepro-2.1.8/functions.php:704
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:720
+#: themes/foodiepro-2.1.8/functions.php:704
 msgid "Legal notice"
 msgstr "Mentions légales"
 
-#: themes/foodiepro-2.1.8/functions.php:720
+#: themes/foodiepro-2.1.8/functions.php:704
 msgid "Goûtu charter"
 msgstr "Charte Goûtu"
 
-#: themes/foodiepro-2.1.8/functions.php:720
+#: themes/foodiepro-2.1.8/functions.php:704
 msgid "Personal data"
 msgstr "Données personnelles"
 
-#: themes/foodiepro-2.1.8/functions.php:720
+#: themes/foodiepro-2.1.8/functions.php:704
 msgid "Terms of use"
 msgstr "Conditions d'utilisation"
 

@@ -24,13 +24,15 @@
 
 /* Top Buttons */
 
+.recipe-buttons {
+	float:left;
+}
+
 .recipe-button {
-	float: right;
+	float: left;
 	font-size:25px;
 	margin: 0 10px;
 	padding: 5px 0;
-	/*padding: 20px 0 5px 0;
-	height:50px;*/
 }
 
 .recipe-button a {
@@ -323,7 +325,7 @@ li.wpurp-recipe-instruction span {
 /* MEDIA QUERIES 
 ---------------------------------------------------*/
 
-@media only screen and (max-width:420px) {
+@media only screen and (max-width:570px) {
 	
 .image-container,
 .info-container,

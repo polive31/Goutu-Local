@@ -27,13 +27,16 @@ do_action( 'bp_before_member_header' ); ?>
 		<div class="overlay"><?php echo $text;?></div>
 	</a>
 	<div id="item-header-cover-image">
+		<div class="blog-title">
+				<h1><?php echo xprofile_get_field_data( 'Titre de votre blog', $user_id ); ?>	</h1>
+		</div>	
 		<div id="item-header-avatar">
 			<?php 
 			if ( bp_is_my_profile() ) {
 				$text = __('Update profile picture', 'foodiepro');
 			}
-			?>	
-			<a class="<?php echo $css; ?>" title="<?php echo $text;?>" href="<?php echo $link . 'profile/change-avatar'; ?>">
+			?>			
+			<a class="<?php echo $css; ?>" title="<?php echo $text;?>" href="<?php echo $link . 'profile/change-avatar'; ?>">	
 				<?php bp_displayed_user_avatar( 'type=full' ); ?>
 				<div class="overlay"><?php echo $text;?></div>
 			</a>

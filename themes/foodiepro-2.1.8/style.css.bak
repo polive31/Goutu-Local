@@ -2829,6 +2829,10 @@ nav.nav-primary .wrap {
 	list-style-type:disc;
 }
 
+.sidebar ul li {
+	list-style-type:none;
+}
+
 .entry-content ol ol,
 .entry-content ul ul,
 .entry-content .wp-caption p {

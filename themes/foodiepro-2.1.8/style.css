@@ -720,7 +720,7 @@ h1.entry-title {
 h1.archive-title,
 .page h1.entry-title {
 	font-size:60px;
-	font-weight:bold;
+	font-weight:normal;
 	font-variant:small-caps;
   line-height: 70px;
   padding-bottom: 30px;

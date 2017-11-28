@@ -1450,6 +1450,7 @@ body.activity-permalink #buddypress ul.item-list li.activity-item {
 }
 #buddypress div.item-list-tabs#subnav ul li {
 	margin-top: 0;
+	margin-right: 10px;	
 }
 #buddypress div.item-list-tabs ul li.last {
 	float: right;

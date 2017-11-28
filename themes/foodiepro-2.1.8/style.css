@@ -2791,6 +2791,7 @@ nav.nav-primary .wrap {
 
 .entry {
   float:left;
+  clear: none;
 }
 
 /*.entry-content a {
@@ -2977,8 +2978,6 @@ a.entry-image-link {
 }
 
 a.entry-image-link img {
-	margin-left:auto;
-	margin-right:auto;
 	margin:0;
 }
 
@@ -3562,7 +3561,7 @@ Site Footer
 	}
 
 	.content,
-	/*.site-header .widget-area P.O.*/{
+	#buddypress #item-body {
 		width:620px;
 	}
 	

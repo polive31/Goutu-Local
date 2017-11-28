@@ -104,9 +104,9 @@ Hello, this is the BuddyPress Legacy stylesheet.
 }
 
 #buddypress .blog-title {
-  width: 100%;
   position: absolute;
   left: 0;
+  width: 100%;
   padding: 0 0 40px 0;
   background: linear-gradient(#8282827d, #ffffff00);
   /*background: linear-gradient(#ffffff7d, #ffffff00);*/

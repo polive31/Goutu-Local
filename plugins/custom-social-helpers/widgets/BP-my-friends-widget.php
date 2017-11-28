@@ -49,7 +49,10 @@ class BP_My_Friends extends WP_Widget {
 		
 		/* Code Start */
 		
-		if ( bp_has_members( 'type=newest&max=8&user_id=' . bp_loggedin_user_id() ) ) {
+		if ( ! (empty( $instance['title']) ) )
+			$user_id = ($instance['title']=='loggedin')?bp_loggedin_user_id():bp_displayed_user_id();
+		
+		if ( bp_has_members( 'type=newest&max=8&user_id=' . $user_id ) ) {
 			echo	'<div class="avatar-block">';
 			
 			while ( bp_members() ) {
@@ -88,11 +91,32 @@ class BP_My_Friends extends WP_Widget {
 		else {
 			$title = __( 'New title', 'text_domain' );
 		}
+		if ( isset( $instance[ 'user' ] ) ) {
+			$user = $instance[ 'user' ];
+		}
+		else {
+			$user = 'loggedin';
+		}		
 		?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
+		
+		<p>
+		  <label for="<?php echo $this->get_field_id('text'); ?>">
+		  	<?php _e( 'Friends of', 'foodiepro' );?> :
+		  </label>
+		    <select class='widefat' id="<?php echo $this->get_field_id('user'); ?>" name="<?php echo $this->get_field_name('user'); ?>" type="text">
+		      <option value='loggedin'<?php echo ($user=='loggedin')?'selected':''; ?>>
+		        Logged-in User
+		      </option>
+		      <option value='displayed'<?php echo ($user=='displayed')?'selected':''; ?>>
+		        Displayed User
+		      </option>
+		    </select>                
+		</p>	
+		
 		<?php 
 	}
 
@@ -109,7 +133,7 @@ class BP_My_Friends extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-
+		$instance['user'] = $new_instance['user'];	
 		return $instance;
 	}
 

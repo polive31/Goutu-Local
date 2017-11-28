@@ -103,6 +103,10 @@ Hello, this is the BuddyPress Legacy stylesheet.
     width: 680px;
 }
 
+#buddypress .sidebar {
+	margin-top:0;
+}
+
 #buddypress .blog-title {
   position: absolute;
   left: 0;

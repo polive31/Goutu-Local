@@ -107,7 +107,40 @@ Hello, this is the BuddyPress Legacy stylesheet.
 	margin-top:0;
 }
 
-#buddypress .blog-title {
+
+
+/*--------------------------------------------------------------
+	COVER IMAGE
+--------------------------------------------------------------*/
+
+#buddypress #item-header {
+    float: left;
+    width: 100%;
+    margin-bottom: 80px;
+}
+
+#buddypress #cover-image-container {
+	position: relative;
+	z-index: 0;
+}
+
+
+/* Cover Image layer */
+
+#buddypress #item-header-cover-image {
+	padding: 0 1em;
+	position: relative;
+	z-index: 1;
+}
+
+/* Cover Image layer content */
+
+#buddypress #item-header-cover-image .cover-image-link {
+  position: absolute;
+  z-index: 0;
+}
+
+#buddypress #item-header-cover-image .blog-title {
   position: absolute;
   left: 0;
   width: 100%;
@@ -115,20 +148,18 @@ Hello, this is the BuddyPress Legacy stylesheet.
   background: linear-gradient(#8282827d, #ffffff00);
   /*background: linear-gradient(#ffffff7d, #ffffff00);*/
   text-align: center;
+  z-index:1;
 }
 
 #buddypress .blog-title h1 {
   color: #FFF;
-  font-size: 80px;
   font-weight:normal;
 }
 
-#item-header-avatar {
-	position:relative;
-}
 
-a.change-avatar .overlay {
-	position:absolute;
+#buddypress #item-header-avatar .overlay {
+  position: absolute;
+  z-index: 2;
 	width:100%;
 	height:100%;
 	background:url("../../images/photo-camera.png") rgba(0,0,0,0.3) 50% 60% no-repeat;
@@ -136,24 +167,42 @@ a.change-avatar .overlay {
   text-align: center;
   color: #FFF;
   font-size: 20px;
-  padding: 140px 5px;
+  /*padding: 140px 5px;*/
   line-height: 16px;
 }
 
-#item-header-avatar a.change-avatar .overlay {
-  font-size: 16px;
-  padding: 15px 5px;
-}
 
-a.change-avatar img {
-	margin-bottom: 0px;
-}
-
-
-a.change-avatar:hover .overlay {
+#item-header-cover-image:hover .overlay {
 	transition: .5s ease;
   opacity: 1;
 }
+
+#item-header-avatar:hover .overlay {
+	transition: .5s ease;
+  opacity: 1;	
+}
+
+/*#item-header-avatar a.change-avatar .overlay {
+  font-size: 16px;
+  padding: 15px 5px;
+}
+*/
+
+/* Avatar layer */
+
+#buddypress #item-header-avatar {
+	position:relative;
+	z-index:2;
+	bottom:-75px;
+	left:40px;
+}
+
+#buddypress #item-header-avatar img {
+	border-radius: 0px;
+	border:3px solid #FFF;
+}
+
+
 
 .bp-profile-fields .label {
 	font-weight:bold;
@@ -1543,42 +1592,6 @@ body.activity-permalink #buddypress ul.item-list li.activity-item {
 }
 
 /*--------------------------------------------------------------
-3.8.1 - Cover Image
---------------------------------------------------------------*/
-
-#buddypress #cover-image-container {
-	position: relative;
-	z-index: 0;
-}
-
-#buddypress #header-cover-image {
-	background-color: #c5c5c5;
-	background-position: center top;
-	background-repeat: no-repeat;
-	background-size: cover;
-	border: 0;
-	display: block;
-	left: 0;
-	margin: 0;
-	padding: 0;
-	position: absolute;
-	top: 0;
-	width: 100%;
-	z-index: 1;
-}
-
-#buddypress #item-header-cover-image {
-	padding: 0 1em;
-	position: relative;
-	z-index: 2;
-}
-
-#buddypress #item-header-cover-image #item-header-avatar .avatar  {
-	border-radius: 0px;
-	border:3px solid #FFF;
-}
-
-/*--------------------------------------------------------------
 3.9 - Private Messaging Threads
 --------------------------------------------------------------*/
 #buddypress table#message-threads tr.unread td {
@@ -1980,6 +1993,18 @@ body.register #buddypress div.page ul {
 	#buddypress form.standard-form .main-column ul#friend-list h4{
 		width:100%;
 	}
+
+	#buddypress div.item-list-tabs#subnav ul li {
+    margin: 0;
+    width: 50%;
+    text-align: center;
+    padding: 5px;
+	}	
+	
+	#buddypress #subnav li a {
+		border: 1px dashed #CCC;
+	}	
+	
 }
 
 /*--------------------------------------------------------------

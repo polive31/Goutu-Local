@@ -2572,9 +2572,8 @@ Site Header
 
 .foodie-pro .site-header {
 	background-position:left; 
-	/*padding:10px 0; */
 	padding:0; 
-	margin:10px;
+	margin:10px 0;
 	background-size:cover!important;
 }
 
@@ -3746,8 +3745,8 @@ Site Footer
 	.site-header, 
 	.home-page .site-header, 
 	.foodie-pro .site-header {
-		/*background-position:center !important;*/
-		background:none!important;
+		/*background-position:center !important;
+		background:none!important;*/
     height:auto;
     padding:0;
 	}	
@@ -3758,17 +3757,13 @@ Site Footer
   	width:30%; 
 	}*/
 	
-	.title-area, 
+
+	
 	.home-page .title-area, 
-	.site-title, 
 	.home-page .site-title, 
-	.site-title a,
 	.home-page .site-title a {
-		width:100%;
     height:190px;
-		margin-left:auto;
-    margin-right:auto;
-	}
+	}	
 	
 	.home-page .title-area {
 		margin:20px 0;
@@ -3849,6 +3844,12 @@ Site Footer
 	.home .site-title a {
 		background-size:contain;
 	}
+	
+	.title-area, 
+	.site-title, 
+	.site-title a {
+		width:100%;
+	}	
 
 	/* Image menu */
 	.menu-2col {

@@ -15,21 +15,41 @@
  *
  * @since 1.2.0
  */
-do_action( 'bp_before_member_header' ); ?>
+do_action( 'bp_before_member_header' ); 
+
+$user_id =  get_current_user_id();
+
+$member_cover_image_url = bp_attachments_get_attachment('url', array(
+  'object_dir' => 'members',
+  'item_id' => $user_id,
+));
+
+?>
 
 <div id="cover-image-container">
-	<?php $link=esc_url( bp_get_displayed_user_link() );
-	if ( bp_is_my_profile() ) {
-		$css = 'change-avatar';
+	
+		
+	<?php
+		$link=esc_url( bp_get_displayed_user_link() );
 		$text = __('Update cover picture', 'foodiepro');
-	}	?>
-	<a class="<?php echo $css; ?>" title="<?php echo $text;?>" id="header-cover-image" href="<?php echo $link . 'profile/change-cover-image'; ?>">
-		<div class="overlay"><?php echo $text;?></div>
-	</a>
+	?>
+		
 	<div id="item-header-cover-image">
+		
+		<div class="cover-image-link <?php echo $css; ?>"> 
+		<a id="header-cover-image" href="<?php echo $link . 'profile/change-cover-image'; ?>">
+			<img src="<?php echo $member_cover_image_url;?>">
+		</a>
+		</div>
 		<div class="blog-title">
-				<h1><?php echo xprofile_get_field_data( 'Titre de votre blog', $user_id ); ?>	</h1>
+			<h1><?php echo xprofile_get_field_data( 'Titre de votre blog', $user_id ); ?>	</h1>
 		</div>	
+		<?php if ( bp_is_my_profile() ) { ?>
+			<div class="overlay"><?php echo $text;?></div>
+		<?php }	?>			
+		
+	</div><!-- #item-header-cover-image -->
+			
 		<div id="item-header-avatar">
 			<?php 
 			if ( bp_is_my_profile() ) {
@@ -38,8 +58,9 @@ do_action( 'bp_before_member_header' ); ?>
 			?>			
 			<a class="<?php echo $css; ?>" title="<?php echo $text;?>" href="<?php echo $link . 'profile/change-avatar'; ?>">	
 				<?php bp_displayed_user_avatar( 'type=full' ); ?>
-				<div class="overlay"><?php echo $text;?></div>
 			</a>
+			<div class="overlay"><?php echo $text;?></div>
+			
 		</div><!-- #item-header-avatar -->
 
 		<div id="item-header-content">
@@ -98,7 +119,6 @@ do_action( 'bp_before_member_header' ); ?>
 
 		</div><!-- #item-header-content -->
 
-	</div><!-- #item-header-cover-image -->
 </div><!-- #cover-image-container -->
 
 <?php

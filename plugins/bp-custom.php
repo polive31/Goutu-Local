@@ -86,8 +86,8 @@ function enqueue_bp_core_scripts($scripts) {
 /* =================================================================*/
 
 // Define cover image size
-add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'your_theme_xprofile_cover_image', 10, 1 );
-function your_theme_xprofile_cover_image( $settings = array() ) {
+//add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'foodiepro_xprofile_cover_image', 10, 1 );
+function foodiepro_xprofile_cover_image( $settings = array() ) {
     $settings['width']  = 1140;
     $settings['height'] = 350;
     $settings['default_cover'] = 'https://goutu.org/wp-content/themes/foodiepro-2.1.8/images/cover_default.jpg';
@@ -101,33 +101,42 @@ function your_theme_xprofile_cover_image( $settings = array() ) {
  *
  * <a class="bp-suggestions-mention" href="https://buddypress.org/members/see/" rel="nofollow">@see</a> bp_legacy_theme_cover_image() to discover the one used by BP Legacy
  */
-function your_theme_cover_image_callback( $params = array() ) {
+function foodiepro_cover_image_callback( $params = array() ) {
     if ( empty( $params ) ) return;
  
     ob_start();?>
     
-        /* Cover image */
-        #buddypress #header-cover-image {
-            height: <?php echo $params['height'];?>px;
-            background-image: url(<?php echo $params['cover_image'];?>);
-        }
-        
-        /* Avatar */
-        #buddypress #item-header-cover-image #item-header-avatar {
-				    margin-top:<?php echo ($params['height']-intval(BP_AVATAR_FULL_HEIGHT+10)/2);?>px;
-				    float: left;
-				    overflow: visible;
-				    width: auto;
-				}
-				
-        /* Name & meta */
-				#buddypress div#item-header #item-header-cover-image #item-header-content {
-				    clear: both;
-				    float: left;
-				    margin-left:<?php echo BP_AVATAR_FULL_WIDTH+20;?>px;
-				    margin-top:-<?php echo BP_AVATAR_FULL_HEIGHT-10;?>px;
-				    width: auto;
-				} 
+/* Cover image */
+#buddypress #header-cover-image {
+    height: <?php echo $params['height'];?>px;
+    background-image: url(<?php echo $params['cover_image'];?>);
+}
+
+/* Avatar */
+#buddypress #item-header-cover-image #item-header-avatar {
+    margin-top:<?php echo ($params['height']-intval(BP_AVATAR_FULL_HEIGHT+10)/2);?>px;
+    float: left;
+    overflow: visible;
+    width: auto;
+}
+
+/* Name & meta */
+#buddypress div#item-header #item-header-cover-image #item-header-content {
+    clear: both;
+    float: left;
+    margin-left:<?php echo BP_AVATAR_FULL_WIDTH+20;?>px;
+    margin-top:-<?php echo BP_AVATAR_FULL_HEIGHT-10;?>px;
+    width: auto;
+} 
+
+/* Media Queries */
+
+@media only screen and (max-width:720px) {
+
+	#buddypress #header-cover-image {
+	}
+		
+}
 	
 	<?php
 				
@@ -139,12 +148,12 @@ function your_theme_cover_image_callback( $params = array() ) {
 }
 
 // Override default css stylesheet
-add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'foodiepro_cover_image_css', 10, 1 );
-add_filter( 'bp_before_groups_cover_image_settings_parse_args', 'foodiepro_cover_image_css', 10, 1 );
+//add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'foodiepro_cover_image_css', 10, 1 );
+//add_filter( 'bp_before_groups_cover_image_settings_parse_args', 'foodiepro_cover_image_css', 10, 1 );
 function foodiepro_cover_image_css( $settings = array() ) {
     /**
      * If you are using a child theme, use bp-child-css
-     * as the theme handel
+     * as the theme handle
      */
     $theme_handle = 'bp-child-css';
     $settings['theme_handle'] = $theme_handle;
@@ -153,8 +162,7 @@ function foodiepro_cover_image_css( $settings = array() ) {
      * Then you'll probably also need to use your own callback function
      * <a class="bp-suggestions-mention" href="https://buddypress.org/members/see/" rel="nofollow">@see</a> the previous snippet
      */
-     $settings['callback'] = 'your_theme_cover_image_callback';
- 
+     $settings['callback'] = 'foodiepro_cover_image_callback';
     return $settings;
 }
 

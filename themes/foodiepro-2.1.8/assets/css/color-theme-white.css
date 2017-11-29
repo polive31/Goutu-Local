@@ -237,10 +237,6 @@ li.comment {
 @media only screen 
 	and (max-width:1080px) {
 
-	body,
-	body.home {
-		background:url("../../images/background/background-l.jpg") no-repeat top left;
-	}
 
 }
 
@@ -249,16 +245,25 @@ li.comment {
 
 @media only screen 
 	and (max-width:980px) {
+		
+	body,
+	body.home {
+		background:url("../../images/background/background-l-small.jpg") no-repeat top left;
+	}		
 	
 	.site-container {
     background:none;
 	}
+	
+	.site-header {
+    background: rgba(255,255,255,0.7);
+	}
 			
 	.site-title a, 
 	.home .site-title a {
-    background: rgba(255,255,255,0.7) url("../../images/logo-white/logo_450_190.png") no-repeat;
+    background: url("../../images/logo-white/logo_320_100.png") no-repeat;
 		background-position: center;
-		width: 500px;
+		width: 340px;
 	}	
 	
 	#mega-menu-wrap-secondary {
@@ -287,9 +292,21 @@ li.comment {
 @media only screen 
 	and (max-width:720px) {
 
-	/*body{
+	body,
+	body.home {
 		background:url("../../images/background/background-l-small.jpg") no-repeat top left;
-	}	*/
+	}	
+
+	.title-area, 
+	.site-title, 
+	.site-title a {
+		height: auto;
+	}	
+	
+	.site-title a, 
+	.home .site-title a {
+	 	background: url("../../images/logo-white/logo_230_80.png") no-repeat; 	
+	}	
 	
 }
 
@@ -298,7 +315,6 @@ li.comment {
 @media only screen 
 	and (max-width:570px) {
 	
-	.site-title a, 
 	.home .site-title a {
     background: rgba(255,255,255,0.7) url("../../images/logo-white/logo_360_150.png") no-repeat;
 	}		
@@ -309,8 +325,7 @@ li.comment {
 @media only screen 
 	and (max-width:500px) {
 	
-	.site-title a,
-	.home .site-title a {	
+	.site-title a {	
 		background-size:contain;
 		width:100%;
 		background-position: center;		

@@ -10,16 +10,8 @@
 
 <?php // Prevents profile actions buttons if public profile 
 //if ( bp_current_action() != 'public' ) { 
-if ( bp_is_my_profile() ) { 
-	echo '<div class="item-list-tabs no-ajax" id="subnav" role="navigation">';
-		echo '<ul>';
-			bp_get_options_nav();
-		echo '</ul>';
-	echo '</div><!-- .item-list-tabs -->';
-} ?>
 
 
-	<?php
 
 	/**
 	 * Fires before the display of member profile content.

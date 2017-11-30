@@ -22,7 +22,6 @@ class CustomArchiveEntryTitle extends CustomArchive {
 	/* Customize entry title in the archive pages
 	-----------------------------------------------------------------------------*/
 	public function archive_title($title) {
-
 		
 		/* Display start rating below entry */
 		if ( is_tax() || is_search() ) {
@@ -39,7 +38,7 @@ class CustomArchiveEntryTitle extends CustomArchive {
 			$title = $this->output_tags( $origin[0], $diet[0]->slug, '', $season[0]->slug) . $title;
 		};
 		
-		if ( is_search() || is_tax('difficult') ) {
+		if ( is_tax('course') || is_search() || is_tax('difficult') ) {
 			$post_id = get_the_ID();
 			
 			$origin = wp_get_post_terms( $post_id, 'cuisine', array("fields" => "names"));			

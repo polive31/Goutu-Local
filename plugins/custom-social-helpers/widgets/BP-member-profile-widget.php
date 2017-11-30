@@ -46,38 +46,69 @@ class BP_Member_Profile extends WP_Widget {
 		}
 		
 		/* Code start */
-
-		if ( bp_has_profile() ) {
-			while ( bp_profile_groups() ) : bp_the_profile_group();
-				if ( bp_profile_group_has_fields() ) : ?>
-	
-					<div class="bp-widget <?php bp_the_profile_group_slug(); ?>">
-						<!-- <h4><?php bp_the_profile_group_name(); ?></h4> -->
-						
-							<div class="bp-profile-fields">						
-							<?php while ( bp_profile_fields() ) : bp_the_profile_field(); ?>
-							
-								<?php if ( bp_field_has_data() ) : ?>
-									<div<?php bp_field_css_class(); ?>>
-										<span class="label"><?php bp_the_profile_field_name(); ?> : </span>
-										<span class="data"><?php bp_the_profile_field_value(); ?></span>
-									</div>
-
-								<?php endif; ?>
-							<?php endwhile; ?>
-							
-						</div>
-					</div>
-								
-				<?php endif; ?>
-			<?php endwhile; ?>
+		
+		if ( 0 ) {
 			
-				
-		<?php
+
+			if ( bp_has_profile() ) {
+				while ( bp_profile_groups() ) : bp_the_profile_group();
+					if ( bp_profile_group_has_fields() ) : ?>
+		
+						<div class="bp-widget <?php bp_the_profile_group_slug(); ?>">
+							<!-- <h4><?php bp_the_profile_group_name(); ?></h4> -->
+							
+								<div class="bp-profile-fields">						
+								<?php while ( bp_profile_fields() ) : bp_the_profile_field(); ?>
+								
+									<?php if ( bp_field_has_data() ) : ?>
+										<div<?php bp_field_css_class(); ?>>
+											<span class="label"><?php bp_the_profile_field_name(); ?> : </span>
+											<span class="data"><?php bp_the_profile_field_value(); ?></span>
+										</div>
+
+									<?php endif; ?>
+								<?php endwhile; ?>
+								
+							</div>
+						</div>
+									
+					<?php endif; ?>
+				<?php endwhile; ?>
+			
+			<?php
+			}	
+		
 		}
+		else { ?>
+		
+		<div class="bp-profile-fields">						
+			<?php echo '<span class="label">Prénom : </span><span class="data">' . xprofile_get_field_data( 'Prénom', $user_id ) . '</span>'; ?>			
+		</div>
+		
+		
+		<div class="bp-profile-fields">						
+		<?php 
+			$age=xprofile_get_field_data( 'Date de naissance', $user_id );
+			if (!empty($age)) {
+				echo '<span class="label">Age : </span>';
+				echo '<span class="data">'  . $age . ' ans</span>';
+			}
+		?>
+		</div>
+		
+		<div class="bp-profile-fields">						
+			<?php echo '<span class="label">Habite à : </span><span class="data">' . xprofile_get_field_data( 'Ville', $user_id ) . '</span>'; ?>			
+		</div>
+				
+
+		<?php
+		
+		}		
+				
 		echo '<div class="clear"></div>';	
 		echo $args['after_widget'];
 	}
+	
 
 	/**
 	 * Back-end widget form.

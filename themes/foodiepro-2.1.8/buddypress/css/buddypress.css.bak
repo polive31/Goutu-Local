@@ -1448,7 +1448,7 @@ a.bp-title-button {
 	margin: 0 0 5px 0;
 }
 #buddypress div#item-header ul {
-	margin-bottom: 15px;
+	margin-bottom: 5px;
 	overflow: hidden;
 }
 #buddypress div#item-header ul h5,

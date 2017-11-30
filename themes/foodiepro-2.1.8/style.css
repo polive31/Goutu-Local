@@ -2755,6 +2755,7 @@ nav.nav-primary .wrap {
 
 .entry-content .rpwe-block ul li, /* Prevents styling from other .entry-content section */
 .content .rpwe-block li {
+	position: relative;
 	float:left;
   border-width:0px;
   margin: 0 0 20px 0;
@@ -2768,6 +2769,7 @@ nav.nav-primary .wrap {
 	flex-direction:column;
 	-ms-flex-align:center;
 }
+
 
 .content a.rpwe-img {
 	margin-right:auto;
@@ -2795,10 +2797,10 @@ nav.nav-primary .wrap {
 	padding:0 0 22px;
 }*/
 
-.entry {
+/*.entry {
   float:left;
   clear: none;
-}
+}*/
 
 /*.entry-content a {
 	color:#010101;
@@ -2959,6 +2961,21 @@ a.more-link,
 	line-height:18px;
 	text-align:center;
 	padding-top:5px;
+}
+
+.profile .content h3.rpwe-title {
+  position: absolute;
+  background: #ffffff70;
+  padding: 10px;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  opacity:0;
+}
+
+.profile li.rpwe-li:hover .rpwe-title {
+  opacity: 1;
+  transition: 1s ease;
 }
 
 /* Archive layout

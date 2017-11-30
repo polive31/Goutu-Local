@@ -44,7 +44,7 @@
 		// Compose
 		case 'public' :?>
 		
-			<div class="blog-title"><?php echo xprofile_get_field_data( 'Description du blog', bp_displayed_user_id() ); ?>	</div>
+			<div class="blog-title"><?php echo wpautop(xprofile_get_field_data( 'Description du blog', bp_displayed_user_id() ) ); ?>	</div>
 			<?php
 			
 			// Displays widgeted public profile content

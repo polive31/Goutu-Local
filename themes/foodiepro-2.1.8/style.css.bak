@@ -783,7 +783,7 @@ h3.rpwe-title a {
   text-decoration: none;
 	text-transform:capitalize !important;
   font-weight: normal;
-  font-size: 16px;	
+  font-size: 18px;	
 }
 
 /* Slider formatting */

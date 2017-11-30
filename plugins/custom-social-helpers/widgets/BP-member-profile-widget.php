@@ -90,14 +90,18 @@ class BP_Member_Profile extends WP_Widget {
 		<?php 
 			$age=xprofile_get_field_data( 'Date de naissance', $user_id );
 			if (!empty($age)) {
-				echo '<span class="label">Age : </span>';
-				echo '<span class="data">'  . $age . ' ans</span>';
+				echo '<span class="label">' . __('Age ','foodiepro') . '</span>';
+				echo '<span class="data">'  . $age  . __('years old ','foodiepro') . '</span>';
 			}
 		?>
 		</div>
 		
 		<div class="bp-profile-fields">						
-			<?php echo '<span class="label">Habite à : </span><span class="data">' . xprofile_get_field_data( 'Ville', $user_id ) . '</span>'; ?>			
+		<?php
+			$city=xprofile_get_field_data( 'Ville', $user_id );
+			if (!empty($city))
+				echo '<span class="label">' . __('Lives in ','foodiepro') . '</span><span class="data">' . $city . '</span>';
+		?>				
 		</div>
 				
 

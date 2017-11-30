@@ -1752,13 +1752,17 @@ form[role="search"] {
 /* Menu bubbles 
 --------------------------------------------- */
 
+.widget.bubbles .menu-recipe_taxonomies-container {
+  background: rgba(255,255,255,0.7);
+  float: left;
+}
+
 .widget.bubbles ul li {
   padding: 4px;
   margin: 20px 10px;
   /*border-radius: 10px;*/
   text-align: center;
 }
-
 
 .widget.bubbles ul li:hover {
     border-radius: 30px;
@@ -2598,7 +2602,7 @@ Site Header
 .site-title,
 .site-title a {
 	width:350px; 
-	/*height:100px; */
+	height:100px; 
 	float:left;
   text-indent:-9999px;
 }
@@ -3743,13 +3747,22 @@ Site Footer
 	}	*/
 	
 	.site-header, 
-	.home-page .site-header, 
 	.foodie-pro .site-header {
+		display:none;
+	}	
+	
+	nav.nav-secondary {
+    margin-top: 10px;
+	}
+	
+	.home-page .site-header {
 		/*background-position:center !important;
 		background:none!important;*/
     height:auto;
     padding:0;
 	}	
+	
+	
 	
 /*	.one-sixth,
 	.one-fifth,

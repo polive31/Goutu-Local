@@ -297,7 +297,9 @@ li.comment {
 		background:url("../../images/background/background-l-small.jpg") no-repeat top left;
 	}	
 
-	.title-area, .site-title, .site-title a {
+	.title-area, 
+	.site-title, 
+	.site-title a {
 		height: auto;
 	}	
 	

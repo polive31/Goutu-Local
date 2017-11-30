@@ -10,16 +10,8 @@
 
 <?php // Prevents profile actions buttons if public profile 
 //if ( bp_current_action() != 'public' ) { 
-if ( bp_is_my_profile() ) { 
-	echo '<div class="item-list-tabs no-ajax" id="subnav" role="navigation">';
-		echo '<ul>';
-			bp_get_options_nav();
-		echo '</ul>';
-	echo '</div><!-- .item-list-tabs -->';
-} ?>
 
 
-	<?php
 
 	/**
 	 * Fires before the display of member profile content.
@@ -50,13 +42,17 @@ if ( bp_is_my_profile() ) {
 			break;
 
 		// Compose
-		case 'public' :
+		case 'public' :?>
+		
+			<div class="blog-title"><?php echo xprofile_get_field_data( 'Description du blog', bp_displayed_user_id() ); ?>	</div>
+			<?php
 			
 			// Displays widgeted public profile content
 	    genesis_widget_area( 'social-bottom', array(
 	        'before' => '<div class="social-bottom widget-area">',
 	        'after'  => '</div>',
 	  	));
+	  		  	
 	  	break;
 
 
@@ -76,4 +72,17 @@ if ( bp_is_my_profile() ) {
  *
  * @since 1.1.0
  */
-do_action( 'bp_after_profile_content' ); ?>
+do_action( 'bp_after_profile_content' ); 
+
+
+//* Hook category widget area after profile content
+add_action( 'genesis_before_footer', 'add_social_footer_widgeted_area', 1 );
+function add_social_footer_widgeted_area() {
+  genesis_widget_area( 'social-footer', array(
+      'before' => '<div class="social-footer widget-area">',
+      'after'  => '</div>',
+	));
+}
+
+
+?>

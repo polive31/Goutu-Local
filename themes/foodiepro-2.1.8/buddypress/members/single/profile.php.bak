@@ -50,24 +50,17 @@ if ( bp_is_my_profile() ) {
 			break;
 
 		// Compose
-		case 'public' :
+		case 'public' :?>
 		
-			//echo '<h1> Je suis dans /www/wp-content/themes/foodiepro-2.1.8/buddypress/members/single/profile.php => section "public" </h1>'; 
-
-
-//			// Display XProfile
-//			if ( bp_is_active( 'xprofile' ) )
-//				bp_get_template_part( 'members/single/profile/profile-loop' );
-//
-//			// Display WordPress profile (fallback)
-//			else
-//				bp_get_template_part( 'members/single/profile/profile-wp' );
+			<div class="blog-title"><?php echo xprofile_get_field_data( 'Description du blog', bp_displayed_user_id() ); ?>	</div>
+			<?php
 			
 			// Displays widgeted public profile content
 	    genesis_widget_area( 'social-bottom', array(
 	        'before' => '<div class="social-bottom widget-area">',
 	        'after'  => '</div>',
 	  	));
+	  		  	
 	  	break;
 
 
@@ -87,4 +80,17 @@ if ( bp_is_my_profile() ) {
  *
  * @since 1.1.0
  */
-do_action( 'bp_after_profile_content' ); ?>
+do_action( 'bp_after_profile_content' ); 
+
+
+//* Hook category widget area after profile content
+add_action( 'genesis_before_footer', 'add_social_footer_widgeted_area', 1 );
+function add_social_footer_widgeted_area() {
+  genesis_widget_area( 'social-footer', array(
+      'before' => '<div class="social-footer widget-area">',
+      'after'  => '</div>',
+	));
+}
+
+
+?>

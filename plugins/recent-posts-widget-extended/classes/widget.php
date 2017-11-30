@@ -52,7 +52,7 @@ class Recent_Posts_Widget_Extended extends WP_Widget {
 
 		$recent = rpwe_get_recent_posts( $instance );
 
-		if ( $recent ) {
+		if ( $recent!=$instance['after'] ) {
 
 			// Output the theme's $before_widget wrapper.
 			echo $before_widget;

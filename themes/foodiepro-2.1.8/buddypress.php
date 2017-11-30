@@ -13,16 +13,6 @@ function bp_set_full_layout() {
 }
 
 
-//* Hook category widget area after profile content
-//add_action( 'bp_public_profile_content', 'add_social_widgeted_area' );
-function add_social_widgeted_area() {
-	//if (!bp_is_register_page())
-    genesis_widget_area( 'social-bottom', array(
-        'before' => '<div class="social-bottom widget-area">',
-        'after'  => '</div>',
-  	));
-}
-
 // Add a "social" sidebar besides the profile page 
 add_action( 'bp_after_member_home_content', 'get_social_sidebar' );
 function get_social_sidebar() {

@@ -40,17 +40,26 @@ class BP_My_Friends extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		
-		if ( !(is_user_logged_in() ) ) return;
-	
-    echo $args['before_widget'];
-		if ( ! (empty( $instance['title']) ) ) {
-			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
-		}
-		
 		/* Code Start */
-		
+		if ( ! (empty( $instance['user']) ) )
+			if ($instance['user']=='loggedin') {
+				if ( !(is_user_logged_in() ) ) return;
+				$user_id=bp_loggedin_user_id();
+				$title= __('My Friends','foodiepro');
+			}
+			else {
+				$user_id=bp_displayed_user_id();
+				$title= sprintf( __('Friends of %s','foodiepro'), bp_core_get_username($user_id));
+			}
+
+		//echo $user_id;
+
+    echo $args['before_widget'];
 		if ( ! (empty( $instance['title']) ) )
-			$user_id = ($instance['title']=='loggedin')?bp_loggedin_user_id():bp_displayed_user_id();
+			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
+		else
+			echo $args['before_title'] . apply_filters( 'widget_title', $title ). $args['after_title'];
+		
 		
 		if ( bp_has_members( 'type=newest&max=8&user_id=' . $user_id ) ) {
 			echo	'<div class="avatar-block">';

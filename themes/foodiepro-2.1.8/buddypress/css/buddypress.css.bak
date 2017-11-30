@@ -188,6 +188,7 @@ Hello, this is the BuddyPress Legacy stylesheet.
 .overlay#cover,
 #cover .overlay-text {
   text-align:right;
+	font-size: 16px;  
 }
 
 .overlay#avatar,
@@ -1615,6 +1616,7 @@ body.activity-permalink #buddypress ul.item-list li.activity-item {
 	margin: 10px 0 40px;
 	overflow: hidden;
 	border-bottom: 1px dotted #AAA;	
+	position: absolute;	
 }
 
 #buddypress #admins-list li,
@@ -2041,6 +2043,44 @@ body.register #buddypress div.page ul {
 		border: 1px dashed #CCC;
 	}	
 	
+	
+/* Profile Page 
+--------------------------------------*/	
+
+	body.xprofile.bp-user {
+		background:none;
+	}
+	
+	#item-header-avatar img {
+	    width: 100px;
+	}
+	
+	#buddypress #item-header-avatar {
+	    position: relative;
+	    z-index: 2;
+	    bottom: 50px;
+	    left: 20px;
+	    float: left;
+	}	
+
+	#buddypress h1.blog-title {
+	    padding: 0px 0 20px 0;
+	    font-size: 40px;
+	}
+	
+	#buddypress div#item-header-cover-image .user-nicename {
+	    font-size: 19px;
+	}	
+
+	#buddypress #item-userid {
+			left: 130px;
+	}
+	
+	#buddypress div#item-header div#item-header-content {
+	    padding-left: 130px;
+	}
+
+	
 }
 
 /*--------------------------------------------------------------
@@ -2049,10 +2089,6 @@ body.register #buddypress div.page ul {
 
 
 @media only screen and (max-width: 420px) {
-
-	#buddypress div#item-header-cover-image .user-nicename {
-		font-size: 30px;
-	}
 
 }
 

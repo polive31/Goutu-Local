@@ -896,9 +896,10 @@ h3.rpwe-title a {
 	font-size : 28px;
 }
 
-
-
-
+.sidebar .widget_bp_member_profile {
+    border: 3px dashed #DEDEDE;
+    padding: 0 15px 20px 15px;
+}
 
 
 /* Typographical Elements 

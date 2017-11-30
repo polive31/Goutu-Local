@@ -88,7 +88,7 @@ $a_css = bp_is_my_profile()?'':'class="disabled"';
 
 					<div id="latest-update">
 
-						<?php bp_activity_latest_update( bp_displayed_user_id() ); ?>
+						<?php //bp_activity_latest_update( bp_displayed_user_id() ); ?>
 
 					</div>
 
@@ -108,9 +108,18 @@ $a_css = bp_is_my_profile()?'':'class="disabled"';
 
 				 ?>
 
-			</div><!-- #item-meta -->
+			</div><!-- #item-meta -->		
 
 		</div><!-- #item-header-content -->
+
+		<?php 	
+		if ( bp_is_my_profile() ) { 
+			echo '<div class="item-list-tabs no-ajax" id="subnav" role="navigation">';
+				echo '<ul>';
+					bp_get_options_nav();
+				echo '</ul>';
+			echo '</div><!-- .item-list-tabs -->';
+		} ?>	
 
 </div><!-- #cover-image-container -->
 

@@ -115,6 +115,12 @@ genesis_register_sidebar( array(
     'name'        => __( 'Social Bottom', 'foodiepro' ),
     'description' => __( 'This is the widget section of buddypress pages.', 'foodiepro' ),
 ) );
+//* Create custom category Social widget area
+genesis_register_sidebar( array(
+    'id'          => 'social-footer',
+    'name'        => __( 'Social Footer', 'foodiepro' ),
+    'description' => __( 'This goes just before the footer, and occupies the whole page width.', 'foodiepro' ),
+) );
 //* Create custom category archive bottom widget area (lef)
 genesis_register_sidebar( array(
     'id'          => 'archives-top',

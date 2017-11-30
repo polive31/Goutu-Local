@@ -896,9 +896,10 @@ h3.rpwe-title a {
 	font-size : 28px;
 }
 
-
-
-
+.sidebar .widget_bp_member_profile {
+    border: 3px dashed #dedede;
+    padding: 0 15px 20px 15px;
+}
 
 
 /* Typographical Elements 
@@ -1752,7 +1753,7 @@ form[role="search"] {
 /* Menu bubbles 
 --------------------------------------------- */
 
-.widget.bubbles .menu-recipe_taxonomies-container {
+.widget.bubbles {
   background: rgba(255,255,255,0.7);
   float: left;
 }

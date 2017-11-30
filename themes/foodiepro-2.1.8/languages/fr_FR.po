@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-11-28 19:23+0100\n"
-"PO-Revision-Date: 2017-11-28 19:24+0100\n"
+"POT-Creation-Date: 2017-12-01 00:14+0100\n"
+"PO-Revision-Date: 2017-12-01 00:16+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -14,19 +14,19 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: plugins/bp-custom.php:227
+#: plugins/bp-custom.php:235
 msgid "Display Profile"
 msgstr "Afficher mon profil"
 
-#: plugins/bp-custom.php:228
+#: plugins/bp-custom.php:236
 msgid "Edit Profile"
 msgstr "Modifier mon profil"
 
-#: plugins/bp-custom.php:229
+#: plugins/bp-custom.php:237
 msgid "Change Avatar"
 msgstr "Photo de profil"
 
-#: plugins/bp-custom.php:230
+#: plugins/bp-custom.php:238
 msgid "Change Cover"
 msgstr "Image d'en-tête"
 
@@ -34,11 +34,11 @@ msgstr "Image d'en-tête"
 msgid "Add a picture"
 msgstr "Ajoutez votre photo"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:99
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:98
 msgid "Seasonal"
 msgstr "De Saison"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:100
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:99
 msgid "Festive"
 msgstr "Fêtes"
 
@@ -202,8 +202,8 @@ msgstr "Appréciation"
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:104
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:78
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:90
-#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:94
-#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:89
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:125
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:101
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:74
 msgid "New title"
 msgstr ""
@@ -214,8 +214,8 @@ msgstr ""
 #: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:101
 #: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:180
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:99
-#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:103
-#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:93
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:134
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:111
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:78
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/widgets/nutrition_label_widget.php:52
 #: plugins/wp-ultimate-recipe-premium/premium/addons/recipe-search/widgets/recipe_search_widget.php:82
@@ -563,9 +563,22 @@ msgstr ""
 msgid "Displays a chosen number of my friends"
 msgstr ""
 
-#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:68
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:48
+msgid "My Friends"
+msgstr "Mes amis"
+
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:52
+#, php-format
+msgid "Friends of %s"
+msgstr "Les amis de %s"
+
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:80
 msgid "Make new friends"
 msgstr "Faites vous de nouveaux amis"
+
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:117
+msgid "Friends of"
+msgstr ""
 
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:27
 msgid "(Buddypress) Welcome"
@@ -6826,11 +6839,11 @@ msgstr ""
 msgid "Newest"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/single/cover-image-header.php:24
+#: themes/foodiepro-2.1.8/buddypress/members/single/cover-image-header.php:28
 msgid "Update cover picture"
 msgstr "Changer mon image d'en-tête"
 
-#: themes/foodiepro-2.1.8/buddypress/members/single/cover-image-header.php:36
+#: themes/foodiepro-2.1.8/buddypress/members/single/cover-image-header.php:29
 msgid "Update profile picture"
 msgstr "Changer ma photo"
 
@@ -7702,18 +7715,26 @@ msgid "This is the widget section of buddypress pages."
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:121
-msgid "Archives Top"
+msgid "Social Footer"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:122
-msgid "This is the top widget section of archived pages."
+msgid "This goes just before the footer, and occupies the whole page width."
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:127
-msgid "Archives Bottom"
+msgid "Archives Top"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:128
+msgid "This is the top widget section of archived pages."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:133
+msgid "Archives Bottom"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:134
 msgid "This is the bottom widget section of archived pages."
 msgstr ""
 

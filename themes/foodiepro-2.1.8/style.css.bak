@@ -779,7 +779,7 @@ h2.user-nicename {
 h3.rpwe-title a {
 	/*font-family:"Delius Swash Caps", cursive !important;
 	font-family:"Roboto slab", cursive !important;*/
-	font-family: "Podkova",cursive !important;
+	font-family: "Oswald", sans-serif;
   text-decoration: none;
 	text-transform:capitalize !important;
   font-weight: normal;
@@ -2797,10 +2797,10 @@ nav.nav-primary .wrap {
 	padding:0 0 22px;
 }*/
 
-.entry {
+/*.entry {
   float:left;
   clear: none;
-}
+}*/
 
 /*.entry-content a {
 	color:#010101;
@@ -2957,7 +2957,7 @@ a.more-link,
 }
 
 .content .rpwe-block h3 {
-	font-size:16px!important;
+	font-size:16px;
 	line-height:18px;
 	text-align:center;
 	padding-top:5px;
@@ -2966,11 +2966,15 @@ a.more-link,
 .profile .content h3.rpwe-title {
   position: absolute;
   background: #ffffff70;
-  padding: 10px;
+  padding: 30px 15px;
   bottom: 0;
   left: 0;
   margin: 0;
   opacity:0;
+}
+
+.profile .content h3.rpwe-title a {
+	font-size:20px;
 }
 
 .profile li.rpwe-li:hover .rpwe-title {

@@ -17,57 +17,50 @@
  */
 do_action( 'bp_before_member_header' ); 
 
-$user_id =  get_current_user_id();
-
+$user_id =  bp_displayed_user_id();
 $member_cover_image_url = bp_attachments_get_attachment('url', array(
   'object_dir' => 'members',
   'item_id' => $user_id,
-));
+));	
+$url=esc_url( bp_get_displayed_user_link() );
+$url_cover = $url . 'profile/change-cover-image';
+$url_avatar = $url . 'profile/change-avatar';
+$cover_text = __('Update cover picture', 'foodiepro');
+$avatar_text = __('Update profile picture', 'foodiepro');
+$overlay_css = bp_is_my_profile()?'class="overlay"':'class="hidden"';
+$a_css = bp_is_my_profile()?'':'class="disabled"';
 
 ?>
 
 <div id="cover-image-container">
-	
-		
-	<?php
-		$link=esc_url( bp_get_displayed_user_link() );
-		$text = __('Update cover picture', 'foodiepro');
-	?>
 		
 	<div id="item-header-cover-image">
-		
-		<div class="cover-image-link <?php echo $css; ?>"> 
-		<a id="header-cover-image" href="<?php echo $link . 'profile/change-cover-image'; ?>">
+		<a <?php echo $a_css;?> id="header-cover-image" href="<?php echo $url_cover; ?>">
+			<div <?php echo $overlay_css;?> id="cover">
+				<div class="overlay-text"><?php echo $cover_text;?></div>
+			</div>
 			<img src="<?php echo $member_cover_image_url;?>">
+			<h1 class="blog-title"><?php echo xprofile_get_field_data( 'Titre de votre blog', $user_id ); ?>	</h1>
+			<div id="item-userid">
+				<?php if ( bp_is_active( 'activity' ) && bp_activity_do_mentions() ) : ?>
+					<h2 class="user-nicename">@<?php bp_displayed_user_mentionname(); ?></h2>
+				<?php endif; ?>
+			</div>
 		</a>
-		</div>
-		<div class="blog-title">
-			<h1><?php echo xprofile_get_field_data( 'Titre de votre blog', $user_id ); ?>	</h1>
-		</div>	
-		<?php if ( bp_is_my_profile() ) { ?>
-			<div class="overlay"><?php echo $text;?></div>
-		<?php }	?>			
-		
 	</div><!-- #item-header-cover-image -->
 			
-		<div id="item-header-avatar">
-			<?php 
-			if ( bp_is_my_profile() ) {
-				$text = __('Update profile picture', 'foodiepro');
-			}
-			?>			
-			<a class="<?php echo $css; ?>" title="<?php echo $text;?>" href="<?php echo $link . 'profile/change-avatar'; ?>">	
-				<?php bp_displayed_user_avatar( 'type=full' ); ?>
-			</a>
-			<div class="overlay"><?php echo $text;?></div>
-			
-		</div><!-- #item-header-avatar -->
+
+	<div id="item-header-avatar">
+		<a <?php echo $a_css;?> title="<?php echo $text;?>" href="<?php echo $url_avatar; ?>">	
+			<div <?php echo $overlay_css;?> id="avatar">
+				<div class="overlay-text"><?php echo $avatar_text;?></div>
+			</div>
+			<?php bp_displayed_user_avatar( 'type=full' ); ?>
+		</a>	
+	</div><!-- #item-header-avatar -->
+
 
 		<div id="item-header-content">
-
-			<?php if ( bp_is_active( 'activity' ) && bp_activity_do_mentions() ) : ?>
-				<h2 class="user-nicename">@<?php bp_displayed_user_mentionname(); ?></h2>
-			<?php endif; ?>
 
 			<div id="item-buttons"><?php
 

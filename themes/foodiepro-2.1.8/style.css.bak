@@ -3026,12 +3026,6 @@ h1.entry-title::first-letter {
 	/*text-transform:uppercase;*/
 }
 
-
-.archive h2.entry-title a,
-.search h2.entry-title a {
-	font-size: 16px;
-}
-
 .archive .entry-meta,
 .search .entry-meta {
   letter-spacing:.5px;

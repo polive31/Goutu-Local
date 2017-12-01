@@ -16,10 +16,13 @@ body.home {
 
 /* Color theme :  White (default) 
 --------------------------------------------- */
-
+.entry-header,
+.site-header,
+#mega-menu-wrap-secondary,
+.widget.bubbles,
 .site-container {
 	/*background-color:#ffffff;*/
-	background-color:rgba(255, 255, 255, 0.78);	
+	background-color:rgba(255, 255, 255, 0.7);	
 }
 
 .site-title a {
@@ -175,6 +178,7 @@ input, select, textarea,
 .widget.bubbles ul li {
   border: 1px dashed #ddd;
   box-shadow: 0 0 0 3px #fff, 0 0 0 5px #ddd;	
+	background: #FFF;  
 }
 
 .widget.bubbles ul li:hover,
@@ -254,10 +258,6 @@ li.comment {
 	.site-container {
     background:none;
 	}
-	
-	.site-header {
-    background: rgba(255,255,255,0.7);
-	}
 			
 	.site-title a, 
 	.home .site-title a {
@@ -266,9 +266,6 @@ li.comment {
 		width: 340px;
 	}	
 	
-	#mega-menu-wrap-secondary {
-		background: rgba(255,255,255,0.7);
-	}	
 
 }
 

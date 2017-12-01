@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-12-01 00:14+0100\n"
-"PO-Revision-Date: 2017-12-01 00:16+0100\n"
+"POT-Creation-Date: 2017-12-01 08:47+0100\n"
+"PO-Revision-Date: 2017-12-01 08:48+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -202,7 +202,7 @@ msgstr "Appréciation"
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:104
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:78
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:90
-#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:125
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:129
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:101
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:74
 msgid "New title"
@@ -214,7 +214,7 @@ msgstr ""
 #: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:101
 #: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:180
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:99
-#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:134
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:138
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:111
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:78
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/widgets/nutrition_label_widget.php:52
@@ -554,6 +554,16 @@ msgstr ""
 #: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:29
 msgid "Shows profile details of the current displayed member"
 msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:93
+#, php-format
+msgid ""
+"<span class=\"label\"> Age </span><span class=\"data\">%s years old</span>"
+msgstr "<span class=\"label\"> Age </span><span class=\"data\">%s ans</span>"
+
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:103
+msgid "Lives in "
+msgstr "Ville "
 
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:28
 msgid "(Buddypress) My Friends"

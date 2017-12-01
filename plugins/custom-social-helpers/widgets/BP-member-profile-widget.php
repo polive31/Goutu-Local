@@ -82,7 +82,7 @@ class BP_Member_Profile extends WP_Widget {
 		else { ?>
 		
 		<div class="bp-profile-fields">						
-			<?php echo '<span class="label">Prénom : </span><span class="data">' . xprofile_get_field_data( 'Prénom', $user_id ) . '</span>'; ?>			
+			<?php echo '<span class="label">Prénom </span><span class="data">' . xprofile_get_field_data( 'Prénom', $user_id ) . '</span>'; ?>			
 		</div>
 		
 		
@@ -90,8 +90,8 @@ class BP_Member_Profile extends WP_Widget {
 		<?php 
 			$age=xprofile_get_field_data( 'Date de naissance', $user_id );
 			if (!empty($age)) {
-				echo '<span class="label">' . __('Age ','foodiepro') . '</span>';
-				echo '<span class="data">'  . $age  . __('years old ','foodiepro') . '</span>';
+				$text= __('<span class="label"> Age </span><span class="data">%s years old</span>','foodiepro');
+				echo sprintf($text, $age);
 			}
 		?>
 		</div>

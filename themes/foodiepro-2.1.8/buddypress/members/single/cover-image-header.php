@@ -62,16 +62,16 @@ $a_css = bp_is_my_profile()?'':'class="disabled"';
 
 		<div id="item-header-content">
 
-			<div id="item-buttons"><?php
+			<span class="activity"><?php bp_last_activity( bp_displayed_user_id() ); ?></span>
 
+			<div id="item-buttons"><?php
 				/**
 				 * Fires in the member header actions section.
 				 *
 				 * @since 1.2.6
 				 */
-				do_action( 'bp_member_header_actions' ); ?></div><!-- #item-buttons -->
-
-			<span class="activity"><?php bp_last_activity( bp_displayed_user_id() ); ?></span>
+				do_action( 'bp_member_header_actions' ); ?>
+			</div><!-- #item-buttons -->
 
 			<?php
 

@@ -1985,10 +1985,19 @@ body.register #buddypress div.page ul {
     padding: 10px 0 40px 0;
     font-size: 50px;	
 	}
+
+	#buddypress div.item-list-tabs#subnav {
+	    padding: 0;
+	    position: initial;
+	    float: left;
+	    margin: -60px 0 30px 0;
+	    width: 100%;
+	}
 	
 	#buddypress div.item-list-tabs#subnav ul li {
     width: 50%;
 	}		
+
 
 
 }

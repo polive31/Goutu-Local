@@ -265,8 +265,6 @@ a#edit:before {
 -----------------------------------------------*/
 	#buddypress div.item-list-tabs#subnav {
 		padding: 30px 0 0 200px;
-		position: absolute;
-    float: left;		
 	}
 	
 	#buddypress div.item-list-tabs#subnav ul {

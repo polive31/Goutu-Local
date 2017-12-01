@@ -3571,7 +3571,7 @@ Site Footer
 	.site-inner,
 	.wrap {
 		max-width:960px;
-		overflow:hidden; 
+		/*overflow:hidden; */
 	}
 
 	.content-sidebar-sidebar .content-sidebar-wrap,

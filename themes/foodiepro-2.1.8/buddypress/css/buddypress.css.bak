@@ -237,6 +237,10 @@ Hello, this is the BuddyPress Legacy stylesheet.
 	font-weight:bold;
 }
 
+.bp-profile-fields td.data {
+    padding-left: 10px;
+}
+
 #subnav li a:before {
     font-family: FontAwesome;
     font-size: 14px;
@@ -265,8 +269,6 @@ a#edit:before {
 -----------------------------------------------*/
 	#buddypress div.item-list-tabs#subnav {
 		padding: 30px 0 0 200px;
-		position: absolute;
-    float: left;		
 	}
 	
 	#buddypress div.item-list-tabs#subnav ul {

@@ -237,10 +237,14 @@ Hello, this is the BuddyPress Legacy stylesheet.
 	font-weight:bold;
 }
 
+.bp-profile-fields .data {
+   padding-left: 10px;
+}
+
 #subnav li a:before {
-    font-family: FontAwesome;
-    font-size: 14px;
-    padding-right: 3px;
+  font-family: FontAwesome;
+  font-size: 14px;
+  padding-right: 3px;
 }
 
 /* a#change-avatar:before,

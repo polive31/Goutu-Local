@@ -81,28 +81,35 @@ class BP_Member_Profile extends WP_Widget {
 		}
 		else { ?>
 		
-		<div class="bp-profile-fields">						
-			<?php echo '<span class="label">Prénom </span><span class="data">' . xprofile_get_field_data( 'Prénom', $user_id ) . '</span>'; ?>			
-		</div>
-		
-		
-		<div class="bp-profile-fields">						
-		<?php 
+		<table class="bp-profile-fields"> 
+			<tr>
+				<td class="label"><?php echo 'Prénom'?></td>
+				<td class="data"><?php echo xprofile_get_field_data( 'Prénom', $user_id ); ?></td>		
+			</tr>	
+			<?php 
 			$age=xprofile_get_field_data( 'Date de naissance', $user_id );
-			if (!empty($age)) {
-				$text= __('<span class="label"> Age </span><span class="data">%s years old</span>','foodiepro');
-				echo sprintf($text, $age);
-			}
-		?>
-		</div>
-		
-		<div class="bp-profile-fields">						
+			if (!empty($age)) {?>
+			<tr>	
+				<td class="label"><?php echo __('Age','foodiepro');?></td>
+				<td class="data"><?php echo sprintf(__('%s years old','foodiepro'),$age);?></td>
+			</tr>
+			<?php
+			}?>
+			
 		<?php
 			$city=xprofile_get_field_data( 'Ville', $user_id );
-			if (!empty($city))
-				echo '<span class="label">' . __('Lives in ','foodiepro') . '</span><span class="data">' . $city . '</span>';
-		?>				
-		</div>
+			if (!empty($city)) {?>
+			<tr>						
+				<td class="label"><?php echo __('Lives in ','foodiepro');?></td>
+				<td class="data"><?php echo $city;?></td>
+			</tr>
+		<?php
+			}?>				
+
+		</table>
+	
+		
+
 				
 
 		<?php

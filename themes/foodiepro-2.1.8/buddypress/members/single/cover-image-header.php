@@ -70,8 +70,9 @@ $a_css = bp_is_my_profile()?'':'class="disabled"';
 				 *
 				 * @since 1.2.6
 				 */
-				do_action( 'bp_member_header_actions' ); ?>
-			</div><!-- #item-buttons -->
+				do_action( 'bp_member_header_actions' ); ?>				
+						
+			</div><!-- #item-buttons -->		
 
 			<?php
 
@@ -112,16 +113,16 @@ $a_css = bp_is_my_profile()?'':'class="disabled"';
 
 		</div><!-- #item-header-content -->
 
-		<?php 	
-		if ( bp_is_my_profile() ) { 
-			echo '<div class="item-list-tabs no-ajax" id="subnav" role="navigation">';
-				echo '<ul>';
-					bp_get_options_nav();
-				echo '</ul>';
-			echo '</div><!-- .item-list-tabs -->';
-		} ?>	
-
 </div><!-- #cover-image-container -->
+
+<?php 	
+if ( bp_is_my_profile() ) { 
+	echo '<div class="item-list-tabs no-ajax" id="subnav" role="navigation">';
+		echo '<ul>';
+			bp_get_options_nav();
+		echo '</ul>';
+	echo '</div><!-- .item-list-tabs -->';
+} ?>		
 
 <?php
 

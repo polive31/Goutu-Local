@@ -16,12 +16,7 @@ body.home {
 
 /* Color theme :  White (default) 
 --------------------------------------------- */
-.entry-header,
-.site-header,
-#mega-menu-wrap-secondary,
-.widget.bubbles,
 .site-container {
-	/*background-color:#ffffff;*/
 	background-color:rgba(255, 255, 255, 0.7);	
 }
 
@@ -304,6 +299,17 @@ li.comment {
 	.home .site-title a {
 	 	background: url("../../images/logo-white/logo_230_80.png") no-repeat; 	
 	}	
+	
+	.entry-header,
+	.site-header,
+	#mega-menu-wrap-secondary,
+	.widget.bubbles {
+		background-color:rgba(255, 255, 255, 0.7);	
+	}	
+	
+	.site-container {
+		background-color:rgba(255, 255, 255, 0.7);	
+	}		
 	
 }
 

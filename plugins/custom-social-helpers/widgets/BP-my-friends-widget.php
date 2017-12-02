@@ -53,15 +53,10 @@ class BP_My_Friends extends WP_Widget {
 			}
 
 		//echo $user_id;
-
-    echo $args['before_widget'];
-		if ( ! (empty( $instance['title']) ) )
-			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
-		else
-			echo $args['before_title'] . apply_filters( 'widget_title', $title ). $args['after_title'];
-		
 		
 		if ( bp_has_members( 'type=newest&max=8&user_id=' . $user_id ) ) {
+			
+			$this->display_title($args, $instance, $title);				
 			echo	'<div class="avatar-block">';
 			
 			while ( bp_members() ) {
@@ -76,7 +71,8 @@ class BP_My_Friends extends WP_Widget {
 
 			echo '</div>';
 		}
-		else {
+		elseif ($instance['user']=='loggedin') {
+			$this->display_title($args, $instance, $title);				
 			echo '<div class="text aligncenter"><a href="' . get_site_url() . '\social\membres">' . __('Make new friends','foodiepro') . '</a></div>';
 		}
 		
@@ -84,6 +80,16 @@ class BP_My_Friends extends WP_Widget {
 		
 		echo '<div class="clear"></div>';
 		echo $args['after_widget'];
+	}
+	
+	
+	
+	public function display_title($args, $instance, $title) {
+	echo $args['before_widget'];
+		if ( ! (empty( $instance['title']) ) )
+			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
+		else
+			echo $args['before_title'] . apply_filters( 'widget_title', $title ). $args['after_title'];		
 	}
 
 	/**

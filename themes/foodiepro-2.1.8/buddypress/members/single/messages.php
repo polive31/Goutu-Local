@@ -8,10 +8,10 @@
 
 ?>
 
-<div class="item-list-tabs no-ajax" id="subnav" role="navigation">
+<div class="item-filter no-ajax" id="sort" role="navigation">
 	<ul>
 
-		<?php bp_get_options_nav(); ?>
+		<?php //bp_get_options_nav(); ?>
 
 	</ul>
 

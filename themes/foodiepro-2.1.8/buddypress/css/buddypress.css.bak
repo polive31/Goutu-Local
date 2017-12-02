@@ -104,7 +104,7 @@ Hello, this is the BuddyPress Legacy stylesheet.
 }
 
 #buddypress .sidebar {
-	margin-top:0;
+	margin-top:0px;
 }
 
 
@@ -196,9 +196,7 @@ Hello, this is the BuddyPress Legacy stylesheet.
   text-align:center;
 }
 
-#buddypress li {
-	list-style-type: none;
-}
+
 
 #buddypress .overlay-text:before {
 	font-family:FontAwesome;
@@ -258,6 +256,8 @@ a#edit:before {
 } */
 
 
+
+
 /* Member profile edit page
 --------------------------------------------- */
 
@@ -308,6 +308,18 @@ a#edit:before {
 	#buddypress div.item-list-tabs ul li.current a {
 		font-weight:bold;
 	}	
+	
+
+/* FRIENDS REQUESTS
+-----------------------------------------*/
+
+#buddypress .item-filter {
+  width: 200px;
+}
+
+#buddypress li {
+	list-style-type: none;
+}	
 
 /*--------------------------------------------------------------
 3.1 - Activity

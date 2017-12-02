@@ -8,7 +8,7 @@
 
 ?>
 
-<div class="item_filter no-ajax" id="filter" role="navigation">
+<div class="item-filter no-ajax" id="sort" role="navigation">
 	<ul>
 		<?php //if ( bp_is_my_profile() ) bp_get_options_nav(); ?>
 

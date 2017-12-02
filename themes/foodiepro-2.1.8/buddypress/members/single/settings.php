@@ -12,7 +12,7 @@
 	<ul>
 		<?php if ( bp_core_can_edit_settings() ) : ?>
 
-			<?php bp_get_options_nav(); ?>
+			<?php //bp_get_options_nav(); ?>
 
 		<?php endif; ?>
 	</ul>

@@ -4,10 +4,7 @@
 if ( !defined('ABSPATH') )
 	die('-1');
 	
-	
-add_action( 'widgets_init', function(){
-	register_widget( 'Taxonomy_Navigation_Widget' );
-});	
+
 
 // Creating the widget 
 class Taxonomy_Navigation_Widget extends WP_Widget {
@@ -36,38 +33,40 @@ public function is_region( $obj ) {
 // Creating widget front-end
 public function widget( $args, $instance ) {
 	global $wp;
-	
-	/* Do not display in the case of a WPURP dropdown search widget result */
-	$url = $_SERVER["REQUEST_URI"];
-	$WPURP_search = strpos($url, 'wpurp-search');
-	if ($WPURP_search)
-		return '';
-	
+		
 	$title = apply_filters( 'widget_title', $instance['title'] );
 		
 	// before and after widget arguments are defined by themes
 	echo $args['before_widget'];
 	
-	$obj = get_queried_object();
-	$author = ($obj->data->user_login!='');	
-	//print_r($obj);
-	$tax = $author?'author':get_taxonomy($obj->taxonomy);
-	if ($obj->taxonomy=='cuisine') {
-		if ( $this->is_region($obj) )
-			$tax = __('regions','foodiepro');
-		else 
-			$tax = __('countries','foodiepro');
-	}
-	else
-		$tax=$author?__('authors','foodiepro'):$tax->label;
-	//$tax = sprintf(__('Filter by %s', 'foodiepro'),$tax->label);
-	//$tax = sprintf(__('Other %s', 'foodiepro'),$tax);
-	//$tax = $tax->label;
-	//print_r($tax);
-	echo $args['before_title'] . $tax . $args['after_title'];
+	/* Do not display in the case of a search query or WPURP dropdown search widget result */
 
-	// Start of widget code
-	echo do_shortcode('[ct-terms dropdown="true"]');
+	$WPURP_search = strpos($_SERVER["REQUEST_URI"], 'wpurp-search');
+	
+	if ( (! $WPURP_search) && (! is_search() ) ) {
+		
+		$obj = get_queried_object();
+		$author = ($obj->data->user_login!='');	
+		//print_r($obj);
+		$tax = $author?'author':get_taxonomy($obj->taxonomy);
+		if ($obj->taxonomy=='cuisine') {
+			if ( $this->is_region($obj) )
+				$tax = __('regions','foodiepro');
+			else 
+				$tax = __('countries','foodiepro');
+		}
+		else
+			$tax=$author?__('authors','foodiepro'):$tax->label;
+		//$tax = sprintf(__('Filter by %s', 'foodiepro'),$tax->label);
+		//$tax = sprintf(__('Other %s', 'foodiepro'),$tax);
+		//$tax = $tax->label;
+		//print_r($tax);
+		echo $args['before_title'] . $tax . $args['after_title'];
+
+		// Start of widget code
+		echo do_shortcode('[ct-terms dropdown="true"]');
+	
+	}
 
 	// Output end
 	echo $args['after_widget'];

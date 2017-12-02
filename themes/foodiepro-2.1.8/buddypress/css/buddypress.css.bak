@@ -235,13 +235,6 @@ Hello, this is the BuddyPress Legacy stylesheet.
 	border:3px solid #FFF;
 }
 
-.bp-profile-fields .label {
-	font-weight:bold;
-}
-
-.bp-profile-fields .data {
-   padding-left: 10px;
-}
 
 #subnav li a:before {
   font-family: FontAwesome;
@@ -1444,7 +1437,7 @@ a.bp-title-button {
 	margin-top: 3px;
 	text-decoration: none;
 	background-color: #fbfbfb;
-	border: 1px dashed #1b1b1b;
+	border: 1px solid #dedede;
 	color: #515151;
 }
 
@@ -1900,6 +1893,28 @@ body.register #buddypress div.page ul {
 	clear: both;
 	list-style-type: none;
 }
+
+/* Profile Widget
+--------------------------------------------- */
+
+.bp-profile-fields .label {
+	font-weight:bold;
+}
+
+.bp-profile-fields td {
+	padding-bottom: 10px;
+}
+
+
+.bp-profile-fields td,
+.sidebar .widget-wrap .bp-profile-fields a {
+   font-size:14px;
+}
+
+.bp-profile-fields .data {
+   padding-left: 10px;
+}
+
 
 /* Buddypress Widgets
 --------------------------------------------- */

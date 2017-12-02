@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-12-02 01:31+0100\n"
-"PO-Revision-Date: 2017-12-02 01:31+0100\n"
+"POT-Creation-Date: 2017-12-02 13:52+0100\n"
+"PO-Revision-Date: 2017-12-02 14:07+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -202,8 +202,8 @@ msgstr "Appréciation"
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:104
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:78
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:90
-#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:136
-#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:101
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:159
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:107
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:74
 msgid "New title"
 msgstr ""
@@ -214,8 +214,8 @@ msgstr ""
 #: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:101
 #: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:180
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:99
-#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:145
-#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:111
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:168
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:117
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:78
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/widgets/nutrition_label_widget.php:52
 #: plugins/wp-ultimate-recipe-premium/premium/addons/recipe-search/widgets/recipe_search_widget.php:82
@@ -562,11 +562,19 @@ msgstr ""
 #: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:94
 #, php-format
 msgid "%s years old"
-msgstr ""
+msgstr "%s ans"
 
 #: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:103
 msgid "Lives in "
 msgstr "Ville "
+
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:113
+msgid "My preferred plate "
+msgstr "Mon plat préféré "
+
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:124
+msgid "My preferred desert "
+msgstr "Mon dessert préféré "
 
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:28
 msgid "(Buddypress) My Friends"
@@ -585,11 +593,11 @@ msgstr "Mes amis"
 msgid "Friends of %s"
 msgstr "Les amis de %s"
 
-#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:80
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:76
 msgid "Make new friends"
 msgstr "Faites vous de nouveaux amis"
 
-#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:117
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:123
 msgid "Friends of"
 msgstr ""
 
@@ -5028,10 +5036,8 @@ msgid "There is no Nutrition Label for this recipe yet."
 msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:14
-#, fuzzy
-#| msgid "Sort recipes"
 msgid "Select a recipe"
-msgstr "Classer les recettes"
+msgstr "Choisir une recette"
 
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:82
 #, fuzzy
@@ -5191,10 +5197,8 @@ msgid "Save Menu"
 msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-menus/templates/user-menus.php:143
-#, fuzzy
-#| msgid "Add to Shopping List"
 msgid "Print Shopping List"
-msgstr "Courses"
+msgstr "Imprimer la liste de courses"
 
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-menus/templates/user-menus.php:147
 #, fuzzy
@@ -5220,10 +5224,8 @@ msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-ratings/templates/user_rating.php:33
 #: plugins/wp-ultimate-recipe-premium/premium/helpers/recipe_columns.php:52
-#, fuzzy
-#| msgid "Notes"
 msgid "Votes"
-msgstr "Notes"
+msgstr "Evaluations"
 
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-ratings/templates/user_rating.php:35
 msgid "You"
@@ -5268,10 +5270,8 @@ msgid "Submit"
 msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:65
-#, fuzzy
-#| msgid "Be the first to evaluate this recipe !"
 msgid "Are you sure you want to delete this recipe:"
-msgstr "Soyez le premier à évaluer cette recette !"
+msgstr "Etes vous sûr de vouloir supprimer cette recette :"
 
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:104
 msgid "Sorry, the site administrator has disabled recipe submissions."

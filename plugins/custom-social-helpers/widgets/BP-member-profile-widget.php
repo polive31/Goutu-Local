@@ -105,6 +105,31 @@ class BP_Member_Profile extends WP_Widget {
 			</tr>
 		<?php
 			}?>				
+			
+		<?php
+			$preferred=xprofile_get_field_data( 'Plat préféré', $user_id );
+			if (!empty($preferred)) {?>
+			<tr>						
+				<td class="label"><?php echo __('My preferred plate ','foodiepro');?></td>
+				<td class="data"><a href="<?php echo get_site_url(null, '/?s=' . $preferred);?>"> 
+					<?php echo $preferred;?>
+				</a></td>
+			</tr>
+		<?php
+			}?>				
+			
+		<?php
+			$preferred=xprofile_get_field_data( 'Dessert préféré', $user_id );
+			if (!empty($preferred)) {?>
+			<tr>						
+				<td class="label"><?php echo __('My preferred desert ','foodiepro');?></td>
+				<td class="data"><a href="<?php echo get_site_url(null, '/?s=' . $preferred);?>"> 
+					<?php echo $preferred;?>
+				</a></td>
+			</tr>
+		<?php
+			}?>					
+
 
 		</table>
 	

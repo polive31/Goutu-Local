@@ -2286,6 +2286,21 @@ Custom Page Templates
 }*/
 
 
+/* Single Entries
+----------------------------------------------*/
+
+.single .entry-avatar {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.single h1.entry-title {
+    display: inline-block;
+    padding-top: 0;
+    margin-top: 0;
+    vertical-align: middle;
+}
+
 /* Mon Goûtu pages
 --------------------------------------------- */
 
@@ -2947,6 +2962,8 @@ a.more-link,
 }
 
 
+
+
 /* Recipes & Posts grid
 --------------------------------------------- */
 
@@ -3022,7 +3039,7 @@ a.entry-image-link img {
 }
 
 .entry-header-overlay:hover {
-	opacity:0.4;
+	opacity:0.8;
 }
 
 h1.archive-title::first-letter, 
@@ -3774,10 +3791,6 @@ Site Footer
 		display:block;
 	}	*/
 	
-	.site-header, 
-	.foodie-pro .site-header {
-		display:none;
-	}	
 	
 	nav.nav-secondary {
     margin-top: 10px;
@@ -3797,18 +3810,13 @@ Site Footer
 	.one-fourth {
   	width:30%; 
 	}*/
-	
 
-	
 	.home-page .title-area, 
 	.home-page .site-title, 
 	.home-page .site-title a {
-    height:190px;
+    height:150px;
+		margin:0;
 	}	
-	
-	.home-page .title-area {
-		margin:20px 0;
-	}
 	
 	.flex-control-nav {
     margin-top:10px;
@@ -3846,6 +3854,10 @@ Site Footer
 	.rpwe-block.grid-3col li,
 	.simple-grid.one-third {
   	width:50%;         
+	}
+	
+	.title-area {
+		height:80px;
 	}
 	
 

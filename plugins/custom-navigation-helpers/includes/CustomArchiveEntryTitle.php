@@ -23,13 +23,17 @@ class CustomArchiveEntryTitle extends CustomArchive {
 	
 	// Add custom opening div for post title
 	public function do_post_title_before() {
-		echo '<div class="entry-header-overlay">';
-		echo $this->entry_tags();
+		if ( is_tax() || is_search() ) {
+			echo '<div class="entry-header-overlay">';
+			echo $this->entry_tags();
+		}
 	}
 
 	// Add custom closing div for post title
 	public function do_post_title_after() {
-		echo '</div>';
+		if ( is_tax() || is_search() ) {
+			echo '</div>';
+		}
 	}	
 		
 	/* Add rating to entry title

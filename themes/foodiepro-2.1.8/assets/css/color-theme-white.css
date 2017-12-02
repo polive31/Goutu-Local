@@ -247,7 +247,8 @@ li.comment {
 		
 	body,
 	body.home {
-		background:url("../../images/background/background-l-small.jpg") no-repeat top left;
+		/*background:url("../../images/background/background-l-small.jpg") no-repeat top left;*/
+		background:none;
 	}		
 	
 	.site-container {
@@ -257,8 +258,7 @@ li.comment {
 	.site-title a, 
 	.home .site-title a {
     background: url("../../images/logo-white/logo_320_100.png") no-repeat;
-		background-position: center;
-		width: 340px;
+		background-position: left;
 	}	
 	
 
@@ -286,7 +286,8 @@ li.comment {
 
 	body,
 	body.home {
-		background:url("../../images/background/background-l-small.jpg") no-repeat top left;
+		/*background:url("../../images/background/background-l-small.jpg") no-repeat top left;*/
+		background:none;
 	}	
 
 	.title-area, 
@@ -295,10 +296,12 @@ li.comment {
 		height: auto;
 	}	
 	
-	.site-title a, 
 	.home .site-title a {
-	 	background: url("../../images/logo-white/logo_230_80.png") no-repeat; 	
+	 	background: url("../../images/logo-white/logo_360_150.png") no-repeat; 	
 	}	
+	
+	.site-title a { 
+	 	background: url("../../images/logo-white/logo_230_80.png") no-repeat; 	
 	
 	.entry-header,
 	.site-header,
@@ -324,14 +327,6 @@ li.comment {
 	
 }
 
-/* Very Small screens */
-@media only screen 
-	and (max-width:500px) {
-	
-	.site-title a {	
-		background-size:contain;
-		width:100%;
-		background-position: center;		
-	}
+
 	
 }

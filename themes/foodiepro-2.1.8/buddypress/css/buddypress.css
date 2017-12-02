@@ -1940,9 +1940,15 @@ p.wp_widget_plugin_textarea {
     background-color: #f1efef;
 }
 
-.bppp-widget-bar,
 .bppp-stat-percent {
 	vertical-align:middle;
+	font-weight: bold;
+}
+
+.bppp-widget-bar {
+	vertical-align:middle;
+	border: none!important;
+  margin-right: 10px!important;
 }
 
 

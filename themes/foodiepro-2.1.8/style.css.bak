@@ -1144,7 +1144,8 @@ Structure and Layout
 
 .rpwe-block li,
 .simple-grid {
-	float:left;
+  display: inline-block;
+  vertical-align: top;
 	padding: 5px;	
 }
 
@@ -3012,10 +3013,12 @@ a.entry-image-link {
 	font-size:0;
 	background:#fff;
 	padding:0;
+	width:100%;
 }
 
 a.entry-image-link img {
 	margin:0;
+	width:100%;
 }
 
 .entry-header-overlay:hover {

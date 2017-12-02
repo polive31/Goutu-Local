@@ -1144,7 +1144,8 @@ Structure and Layout
 
 .rpwe-block li,
 .simple-grid {
-	float:left;
+  display: inline-block;
+  vertical-align: top;
 	padding: 5px;	
 }
 
@@ -3021,7 +3022,7 @@ a.entry-image-link img {
 }
 
 .entry-header-overlay:hover {
-	opacity:0.4;
+	opacity:0.8;
 }
 
 h1.archive-title::first-letter, 

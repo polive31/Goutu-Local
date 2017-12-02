@@ -1931,14 +1931,25 @@ p.wp_widget_plugin_textarea {
 	padding: 10px 0;  
 }
 
+.bppp-stat {
+    padding: 0px 20%;
+}
+
 .widget-text.wp_widget_plugin_box {
     padding: 0px 5px 20px 5px;
     background-color: #f1efef;
 }
 
-.bppp-widget-bar,
 .bppp-stat-percent {
 	vertical-align:middle;
+	font-weight: bold;
+	font-size: 19px;	
+}
+
+.bppp-widget-bar {
+	vertical-align:middle;
+	border: none!important;
+  margin-right: 10px!important;
 }
 
 

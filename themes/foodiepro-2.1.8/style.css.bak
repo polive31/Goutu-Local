@@ -2364,12 +2364,17 @@ Custom Page Templates
 
 .overlay.topright0 {
   right: 10px;
-  top: 20px;	
+  top: 10px;	
 }
 
 .overlay.topright1 {
   right: 10px;
   top: 45px;	
+}
+
+.overlay.botright0 {
+  right: 10px;
+  bottom: 20px;	
 }
 
 

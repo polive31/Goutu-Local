@@ -2756,6 +2756,7 @@ nav.nav-primary .wrap {
 .content .rpwe-block li {
 	position: relative;
 	float:left;
+	overflow: hidden; /* In order to allow slide down effects */
   border-width:0px;
   margin: 0 0 20px 0;
   padding:5px;
@@ -2966,10 +2967,11 @@ a.more-link,
   position: absolute;
   background: #ffffff70;
   padding: 30px 15px;
-  bottom: 0;
+  top: -250px;
   left: 0;
+  overflow:hidden;
   margin: 0;
-  opacity:0;
+  box-sizing:border-box;
 }
 
 .profile .content h3.rpwe-title a {
@@ -2977,8 +2979,8 @@ a.more-link,
 }
 
 .profile li.rpwe-li:hover .rpwe-title {
-  opacity: 1;
-  transition: 1s ease;
+	top:0px;
+  transition:top 0.5s linear;
 }
 
 /* Archive layout

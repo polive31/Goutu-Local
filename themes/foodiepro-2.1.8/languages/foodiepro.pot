@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-12-01 08:47+0100\n"
+"POT-Creation-Date: 2017-12-02 01:31+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -219,7 +219,7 @@ msgstr ""
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:104
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:78
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:90
-#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:129
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:136
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:101
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:74
 msgid "New title"
@@ -231,7 +231,7 @@ msgstr ""
 #: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:101
 #: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:180
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:99
-#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:138
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:145
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:111
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:78
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/widgets/nutrition_label_widget.php:52
@@ -573,9 +573,12 @@ msgid "Shows profile details of the current displayed member"
 msgstr ""
 
 #: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:93
+msgid "Age"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:94
 #, php-format
-msgid ""
-"<span class=\"label\"> Age </span><span class=\"data\">%s years old</span>"
+msgid "%s years old"
 msgstr ""
 
 #: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:103

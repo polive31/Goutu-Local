@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-12-01 08:47+0100\n"
-"PO-Revision-Date: 2017-12-01 08:48+0100\n"
+"POT-Creation-Date: 2017-12-02 01:31+0100\n"
+"PO-Revision-Date: 2017-12-02 01:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -202,7 +202,7 @@ msgstr "Appréciation"
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:104
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:78
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:90
-#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:129
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:136
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:101
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:74
 msgid "New title"
@@ -214,7 +214,7 @@ msgstr ""
 #: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:101
 #: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:180
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:99
-#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:138
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:145
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:111
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:78
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/widgets/nutrition_label_widget.php:52
@@ -556,10 +556,13 @@ msgid "Shows profile details of the current displayed member"
 msgstr ""
 
 #: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:93
+msgid "Age"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:94
 #, php-format
-msgid ""
-"<span class=\"label\"> Age </span><span class=\"data\">%s years old</span>"
-msgstr "<span class=\"label\"> Age </span><span class=\"data\">%s ans</span>"
+msgid "%s years old"
+msgstr ""
 
 #: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:103
 msgid "Lives in "
@@ -6678,13 +6681,13 @@ msgstr ""
 #: themes/foodiepro-2.1.8/buddypress/members/single/friends/requests.php:57
 #: themes/foodiepro-2.1.8/buddypress/members/single/groups/invites.php:45
 msgid "Accept"
-msgstr ""
+msgstr "Accepter"
 
 #: themes/foodiepro-2.1.8/buddypress/groups/single/requests-loop.php:59
 #: themes/foodiepro-2.1.8/buddypress/members/single/friends/requests.php:58
 #: themes/foodiepro-2.1.8/buddypress/members/single/groups/invites.php:46
 msgid "Reject"
-msgstr ""
+msgstr "Refuser"
 
 #: themes/foodiepro-2.1.8/buddypress/groups/single/requests-loop.php:95
 msgid "There are no pending membership requests."
@@ -8597,6 +8600,11 @@ msgstr "Ces recettes pourraient également vous intéresser..."
 #: themes/foodiepro-2.1.8/yarpp-template-goutu.php:31
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
+
+#~ msgid ""
+#~ "<span class=\"label\"> Age </span><span class=\"data\">%s years old</span>"
+#~ msgstr ""
+#~ "<span class=\"label\"> Age </span><span class=\"data\">%s ans</span>"
 
 #~ msgctxt "plural"
 #~ msgid "All posts from %s"

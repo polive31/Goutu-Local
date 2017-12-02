@@ -15,19 +15,40 @@ class CustomArchiveEntryTitle extends CustomArchive {
 
 	public function __construct() {
 		parent::__construct();
-		add_filter( 'genesis_post_title_output', array($this,'archive_title' ), 15 );		
+		add_filter( 'genesis_post_title_output', array($this,'archive_rating' ), 15 );		
+		add_action( 'genesis_entry_header', array($this, 'do_post_title_before'), 1 );
+		add_action( 'genesis_entry_header', array($this, 'do_post_title_after') );
 	}
 	
+	
+	// Add custom opening div for post title
+	public function do_post_title_before() {
+		echo '<div class="entry-header-overlay">';
+		echo $this->entry_tags();
+	}
 
-	/* Customize entry title in the archive pages
+	// Add custom closing div for post title
+	public function do_post_title_after() {
+		echo '</div>';
+	}	
+		
+	/* Add rating to entry title
 	-----------------------------------------------------------------------------*/
-	public function archive_title($title) {
+	public function archive_rating($title) {
 		
 		/* Display start rating below entry */
 		if ( is_tax() || is_search() ) {
 				$title .= do_shortcode('[display-star-rating category="global" display="minimal"]');
 				//echo 'User rating global = ' . get_post_meta( get_the_ID(), 'user_rating_global', true );
-		};
+		};	
+		
+		return $title;	
+		
+	}	
+
+	/* Add tags to entry title 
+	-----------------------------------------------------------------------------*/
+	public function entry_tags($title) {
 
 		if ( is_tax('cuisine') || is_author() ) {
 			$post_id = get_the_ID();
@@ -103,17 +124,18 @@ class CustomArchiveEntryTitle extends CustomArchive {
 		$tmp = '';
 		
 		$left_id=0;
-		$right_id=0;
+		$tr_id=0;
+		$br_id=0; // Bottom Right
 		
 		if ($this->is_season($season)) {
-			$tags .= '<div class="overlay col-' . $season[0] . ' right' . $right_id . '">' . $season_msg . '</div>';
-			$right_id++;
+			$tags .= '<div class="overlay col-' . $season[0] . ' botright' . $br_id . '">' . $season_msg . '</div>';
+			$br_id++;
 		}
 
 		if ( $this->is_veg($diet) ) {
 			//$tags .= '<div class="overlay" id="veg">' . $veg_msg . '</div>';
-			$tags .= '<div class="overlay right' . $right_id . '" id="veg">' . $veg_msg . '</div>';
-			$right_id++;
+			$tags .= '<div class="overlay topright' . $tr_id . '" id="veg">' . $veg_msg . '</div>';
+			$tr_id++;
 		}
 		
 		//print_r($occasion);

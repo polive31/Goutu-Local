@@ -35,6 +35,7 @@ function bp_custom_shortcodes_load() {
 	require_once 'widgets/BP-member-profile-widget.php';
 	require_once 'widgets/BP-my-friends-widget.php';
 	require_once 'widgets/BP-welcome-widget.php';
+	require_once 'widgets/BP-profile-completion-widget.php';
 	require_once 'shortcodes/BP-custom-shortcodes.php';
 }
 

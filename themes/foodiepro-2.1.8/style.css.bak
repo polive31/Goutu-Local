@@ -759,7 +759,7 @@ h2.user-nicename {
 	font-weight: bold;  
 }
 
-.entry-header .overlay {
+.entry-header-overlay .overlay {
   font-family: 'Amatic SC';
   text-transform: capitalize;
   font-size: 22px;
@@ -767,7 +767,7 @@ h2.user-nicename {
   font-weight: bold;
 }
 
-.entry-header .overlay#veg {
+.entry-header-overlay .overlay#veg {
   font-family: 'FontAwesome';
   font-size: 22px;
   line-height: 30px;
@@ -2312,7 +2312,11 @@ Custom Page Templates
 	width:100px;
 }
 
-.entry-header .overlay {
+.entry-header-overlay {
+	position:relative;
+}
+
+.entry-header-overlay .overlay {
   position: absolute;
   border-radius: 8px;
   padding: 0 10px;
@@ -2358,12 +2362,12 @@ Custom Page Templates
   top: 45px;	
 }
 
-.overlay.right0 {
+.overlay.topright0 {
   right: 10px;
-  top: 10px;	
+  top: 20px;	
 }
 
-.overlay.right1 {
+.overlay.topright1 {
   right: 10px;
   top: 45px;	
 }
@@ -2868,7 +2872,7 @@ nav.nav-primary .wrap {
 	color:#010101;
 }
 
-.entry-header .entry-meta,
+.entry-header-overlay .entry-meta,
 .post-info {
 	margin-bottom:20px;
 	line-height:1;
@@ -2986,8 +2990,8 @@ a.more-link,
 /* Archive layout
 --------------------------------------------- */
 
-.archive .entry-header,
-.search .entry-header {
+.archive .entry-header-overlay,
+.search .entry-header-overlay {
 	align-items:center;
  	display:-webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
   display:-moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
@@ -3009,7 +3013,7 @@ a.entry-image-link img {
 	margin:0;
 }
 
-a.entry-image-link:hover img {
+.entry-header-overlay:hover {
 	opacity:0.4;
 }
 
@@ -3638,7 +3642,6 @@ Site Footer
 	.author-box,
 	.entry-comments,
 	.entry-footer .entry-meta,
-	.sidebar .widget,
 	.site-header,
 	.comment-reply {
 		padding:0;

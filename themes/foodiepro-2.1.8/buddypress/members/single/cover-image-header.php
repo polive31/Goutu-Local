@@ -115,8 +115,10 @@ $a_css = bp_is_my_profile()?'':'class="disabled"';
 
 </div><!-- #cover-image-container -->
 
+
 <?php 	
 if ( bp_is_my_profile() ) { 
+	
 	echo '<div class="item-list-tabs no-ajax" id="subnav" role="navigation">';
 		echo '<ul>';
 			bp_get_options_nav();

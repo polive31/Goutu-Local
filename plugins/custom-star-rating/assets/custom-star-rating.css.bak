@@ -94,6 +94,7 @@ td.rating-category {
 	font-size:13px;
 	color:#666;
 	padding:0 0 0 10px;
+	min-width: 60px;
 }
 
 

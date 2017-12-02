@@ -62,6 +62,7 @@ td.rating-title {
 
 table.ratings-table {
 	text-align: center;
+	width: 100%;	
 }
 
 .ratings-table tr {

@@ -196,6 +196,8 @@ Hello, this is the BuddyPress Legacy stylesheet.
   text-align:center;
 }
 
+
+
 #buddypress .overlay-text:before {
 	font-family:FontAwesome;
 	content:'\f030';
@@ -254,6 +256,8 @@ a#edit:before {
 } */
 
 
+
+
 /* Member profile edit page
 --------------------------------------------- */
 
@@ -304,6 +308,18 @@ a#edit:before {
 	#buddypress div.item-list-tabs ul li.current a {
 		font-weight:bold;
 	}	
+	
+
+/* FRIENDS REQUESTS
+-----------------------------------------*/
+
+.item-filter #filter {
+    width: 200px;
+}
+
+#buddypress li {
+	list-style-type: none;
+}	
 
 /*--------------------------------------------------------------
 3.1 - Activity

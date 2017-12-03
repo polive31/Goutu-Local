@@ -269,10 +269,8 @@ li.comment {
 	and (max-width:870px)
   and (-webkit-min-device-pixel-ratio:2) {
  
-	.site-title a,
 	.home .site-title a {
 		background:url("../../images/logo-white/logo_720_300.png") no-repeat center;
-		width: 400px;
 	} 	
 
 }

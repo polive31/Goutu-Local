@@ -272,7 +272,6 @@ li.comment {
 	.site-title a,
 	.home .site-title a {
 		background:url("../../images/logo-white/logo_720_300.png") no-repeat center;
-		width: 400px;
 	} 	
 
 }
@@ -297,7 +296,7 @@ li.comment {
 	}	
 	
 	.site-title a { 
-	 	background: url("../../images/logo-white/logo_230_60.png") center left no-repeat; 	
+	 	background: url("../../images/logo-white/logo_160_40.png") center left no-repeat; 	
 	}
 	
 	.entry-header,

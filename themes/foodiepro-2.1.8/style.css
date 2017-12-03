@@ -2292,20 +2292,20 @@ Custom Page Templates
 /* Single Entries
 ----------------------------------------------*/
 
-.single .entry-avatar {
+/*.single .entry-avatar {
     display: inline-block;
     vertical-align: middle;
-}
+}*/
 
 .single h1.entry-title {
-    display: inline-block;
-    padding-top: 0;
-    margin-top: 0;
-    vertical-align: middle;
+    /*display: inline-block;
+    vertical-align: middle;*/
+  padding-top: 0;
+  margin-top: 0;
 }
 
 .single .entry-header {
-    padding-bottom: 40px;
+  padding-bottom: 40px;
 }
 
 /* Mon Goûtu pages
@@ -2620,16 +2620,6 @@ Site Header
 /* Title Area
 --------------------------------------------- */
 
-/*.title-area,
-.site-title,
-.site-title a {
-	padding:0; // P.O. Original 16px 0 
-	width:360px; // P.O. Original 360px 
-	height:150px; // P.O. Original 300px 
-	float:left;
-  text-indent:-9999px;
-}*/
-
 .title-area,
 .site-title,
 .site-title a {
@@ -2642,9 +2632,7 @@ Site Header
 .home-page .title-area,
 .home-page .site-title,
 .home-page .site-title a {
-	/*width:450px; P.O. Original 450px */
-	/*height:190px; P.O. Original 380px */
-	width:530px; 
+	width:100%; 
 	height:230px;
 }
 
@@ -2657,12 +2645,6 @@ Site Header
   margin:10px 0;
 }
 
-/*.home-page .site-title a,
-.site-title a {
-	background-size:contain;
-}*/
-
-
 .title-area h1 {
 	margin:0 auto;
 }
@@ -2670,11 +2652,6 @@ Site Header
 .title-area p {
 	margin:0;
 }
-
-/*.header-image .title-area {
-	padding:0;
-	float:left;
-}*/
 
 .site-title,
 .site-title a {
@@ -3747,10 +3724,15 @@ Site Footer
 	.sidebar {
 		display:none;
 	}
-
 	
-	/* Added P.O. Do not display some items on smartphones */
-	/*.footer-widgets-1,*/
+	.title-area {
+  	height:100px;
+	}	
+
+	.title-area {
+  	height:150px;
+	}	
+	
 	.footer-widgets-2,
 	.mobile-nodisplay {
 		display:none;
@@ -3843,7 +3825,7 @@ Site Footer
 }
 
 
-@media only screen and (max-width:767px) {
+@media only screen and (max-width:720px) {
 
 	.rpwe-block.grid-6col li,
 	.simple-grid.one-sixth,
@@ -3882,8 +3864,16 @@ Site Footer
 		float:left;
 		margin:0 0 10px;
 		width:100%;
-		max-width: 100%;
+		max-width: 100%;		
 	}
+	
+	.title-area, 
+	.site-title, 
+	.site-title a {
+		height: 40px;
+	}		
+	
+	
 }
 
 @media only screen and (max-width:420px) {

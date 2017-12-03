@@ -149,7 +149,7 @@ Hello, this is the BuddyPress Legacy stylesheet.
   top:0;
   width: 100%;
   margin:0;
-  padding: 50px 0 40px 0;
+  padding: 30px 0 40px 0;
   color: #FFF;
   font-size:80px;
   font-weight:normal;
@@ -157,6 +157,7 @@ Hello, this is the BuddyPress Legacy stylesheet.
   background: linear-gradient(#4c4c4cb3, #ffffff00);
   text-align: center;
   z-index:1;
+	text-shadow: 0 0 3px rgba( 0, 0, 0, 0.8 );  
 }
 
 #buddypress #item-userid {
@@ -180,8 +181,8 @@ Hello, this is the BuddyPress Legacy stylesheet.
   background: linear-gradient(#ffffff00, #8282827d);
   opacity:0;
   color: #FFF;
-  font-size: 14px;
-	line-height: 14px;  
+  font-size: 18px;
+	line-height: 18px;  
 	padding: 40px 0 0 0;	
 	font-family: Oswald, sans-serif;	
 }
@@ -294,11 +295,10 @@ a#edit:before {
 	
 	#buddypress div.item-list-tabs#subnav ul li#main-menu-item a,
 	#buddypress div.item-list-tabs#subnav ul li#main-menu-item a span {
-    /*font-family: "Amatic SC", sans-serif ;
+    font-family: "Oswald", sans-serif ;
     font-size: 30px;
-    font-weight: bold;*/
 		border: none;
-    color: #444;
+    color: #e0e0e0;
     padding: 0 20px 0 0;
     line-height: 30px;
 	}
@@ -1443,11 +1443,17 @@ a.bp-title-button {
 
 
 #buddypress div#item-header-cover-image .user-nicename a, 
-#buddypress div#item-header-cover-image .user-nicename {
-	font-size: 200%;
+#buddypress div#item-header-cover-image .user-nicename,
+#buddypress div#item-header-cover-image #intro {
+	font-size: 40px;
   color: #fff;
   text-rendering: optimizelegibility;
   text-shadow: 0 0 3px rgba( 0, 0, 0, 0.8 );
+}
+
+#buddypress div#item-header-cover-image #intro {
+	font-size:100%;
+	padding:10px 0;
 }
 
 #buddypress div#message p,
@@ -1470,6 +1476,7 @@ a.bp-title-button {
   position:absolute;
   float:left;
   clear:none;
+  height:40px;
 }
 
 #buddypress #item-header {
@@ -2079,6 +2086,10 @@ p.wp_widget_plugin_textarea {
     padding: 10px 0 40px 0;
     font-size: 50px;	
 	}
+	
+	#buddypress div#item-header-cover-image .user-nicename {
+		font-size: 25px;
+	}	
 
 	#buddypress div.item-list-tabs#main,
 	#buddypress div.item-list-tabs#subnav {

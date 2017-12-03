@@ -43,7 +43,8 @@ $a_css = bp_is_my_profile()?'':'class="disabled"';
 			<h1 class="blog-title"><?php echo xprofile_get_field_data( 'Titre de votre blog', $user_id ); ?>	</h1>
 			<div id="item-userid">
 				<?php if ( bp_is_active( 'activity' ) && bp_activity_do_mentions() ) : ?>
-					<h2 class="user-nicename">@<?php bp_displayed_user_mentionname(); ?></h2>
+					<div id="intro"><?php echo __('The Blog Of ','foodiepro');?></div>
+					<h2 class="user-nicename"><?php bp_displayed_user_mentionname(); ?></h2>
 				<?php endif; ?>
 			</div>
 		</a>
@@ -186,9 +187,9 @@ function bp_display_current_user_nav() {
 			 *                              Passed by reference.
 			 */
 			
-			echo '<h2 id="' . $user_nav_item->css_id . '-personal-li" ' . $selected . '><a id="user-' . $user_nav_item->css_id . '" href="' . $link . '">' . $user_nav_item->name . '</a></h2>';
+			//echo '<h2 id="' . $user_nav_item->css_id . '-personal-li" ' . $selected . '><a id="user-' . $user_nav_item->css_id . '" href="' . $link . '">' . $user_nav_item->name . '</a></h2>';
+			echo '<a id="user-' . $user_nav_item->css_id . '" href="' . $link . '">' . $user_nav_item->name . '</a>';
 			//echo apply_filters_ref_array( 'bp_get_displayed_user_nav_' . $user_nav_item->css_id, array( '<h2 id="' . $user_nav_item->css_id . '-personal-li" ' . $selected . '><a id="user-' . $user_nav_item->css_id . '" href="' . $link . '">' . $user_nav_item->name . '</a></h2>', &$user_nav_item ) );
-			//echo '<a id="user-' . $user_nav_item->css_id . '" href="' . $link . '">' . $user_nav_item->name . '</a>';
 		}
 	}
 }

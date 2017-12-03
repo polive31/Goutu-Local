@@ -254,13 +254,15 @@ li.comment {
 	.site-container {
     background:none;
 	}
+
+	.site-title a { 
+	 	background: url("../../images/logo-white/logo_320_100.png") center left no-repeat; 	
+	}
 			
-	.site-title a, 
 	.home .site-title a {
     background: url("../../images/logo-white/logo_360_150.png") no-repeat;
 		background-position: center;
 	}	
-	
 
 }
 
@@ -280,10 +282,15 @@ li.comment {
 	.site-title a {
 		height: 40px;
 	}	
-	
-	.site-title a { 
-	 	background: url("../../images/logo-white/logo_160_40.png") center left no-repeat; 	
-	}
+
+	.site-title a {
+		background:url("../../images/logo-white/logo_160_40.png") no-repeat left;
+		background-size:contain;
+	} 
+
+	.home .site-title a {
+		background:url("../../images/logo-white/logo_360_150.png") no-repeat center;
+	} 
 	
 	.entry-header,
 	.site-header,
@@ -296,6 +303,8 @@ li.comment {
 		background:none;	
 	}		
 	
+	
+	
 }
 
 /* Retina smartphone */
@@ -305,6 +314,7 @@ li.comment {
  
 	.site-title a {
 		background:url("../../images/logo-white/logo_320_80.png") no-repeat left;
+		background-size:contain;
 	} 	
 	
 	.home .site-title a {

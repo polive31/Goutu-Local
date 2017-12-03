@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-12-02 13:52+0100\n"
+"POT-Creation-Date: 2017-12-03 17:28+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,19 +31,19 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-2: themes/foodiepro-2.1.8/buddypress/blogs\n"
 "X-Poedit-SearchPathExcluded-3: themes/foodiepro-2.1.8/buddypress/forums\n"
 
-#: plugins/bp-custom.php:235
+#: plugins/bp-custom.php:165
 msgid "Display Profile"
 msgstr ""
 
-#: plugins/bp-custom.php:236
+#: plugins/bp-custom.php:166
 msgid "Edit Profile"
 msgstr ""
 
-#: plugins/bp-custom.php:237
+#: plugins/bp-custom.php:167
 msgid "Change Avatar"
 msgstr ""
 
-#: plugins/bp-custom.php:238
+#: plugins/bp-custom.php:168
 msgid "Change Cover"
 msgstr ""
 
@@ -51,11 +51,11 @@ msgstr ""
 msgid "Add a picture"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:98
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:123
 msgid "Seasonal"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:99
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:124
 msgid "Festive"
 msgstr ""
 
@@ -217,21 +217,21 @@ msgid "Rating"
 msgstr ""
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:104
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:78
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:82
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:90
-#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:159
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:161
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:107
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:74
 msgid "New title"
 msgstr ""
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:108
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:82
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:86
 #: plugins/custom-recipe-templates/helpers/custom_nutrition_label.php:60
 #: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:101
 #: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:180
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:99
-#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:168
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:170
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:117
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:78
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/widgets/nutrition_label_widget.php:52
@@ -500,7 +500,7 @@ msgstr ""
 msgid "reviews"
 msgstr ""
 
-#: plugins/custom-social-helpers/custom-social-loader.php:43
+#: plugins/custom-social-helpers/custom-social-loader.php:46
 msgid ""
 "<strong>BP Social Helpers</strong></a> requires the BuddyPress plugin to work. "
 "Please <a href=\"https://buddypress.org/download\">install BuddyPress</a> "
@@ -589,7 +589,7 @@ msgstr ""
 msgid "My preferred plate "
 msgstr ""
 
-#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:124
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:125
 msgid "My preferred desert "
 msgstr ""
 
@@ -616,6 +616,22 @@ msgstr ""
 
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:123
 msgid "Friends of"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:19
+msgid "(Buddypress) Profile completion"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:20
+msgid "Displays profile completion bar (requires Buddy Progress Bar plugin)"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:41
+msgid "Widget Title"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:46
+msgid "Message:"
 msgstr ""
 
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:27
@@ -6539,7 +6555,7 @@ msgstr ""
 msgid "Newest Registered"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/members-loop.php:142
+#: themes/foodiepro-2.1.8/buddypress/members/members-loop.php:138
 msgid "Sorry, no members were found."
 msgstr ""
 
@@ -6654,6 +6670,10 @@ msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/members/single/cover-image-header.php:29
 msgid "Update profile picture"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/cover-image-header.php:46
+msgid "The Blog Of "
 msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/members/single/friends/requests.php:102

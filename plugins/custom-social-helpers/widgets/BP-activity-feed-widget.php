@@ -42,6 +42,8 @@ class BP_Activity_Feed extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		
+		if ( !(is_user_logged_in() ) ) return;
+		
 		/* Code Start */
     echo $args['before_widget'];
     

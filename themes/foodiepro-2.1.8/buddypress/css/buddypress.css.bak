@@ -357,6 +357,7 @@ a#edit:before {
 	border-bottom: none;
 	padding-bottom: 0;
 }
+
 #buddypress form#whats-new-form #whats-new-avatar {
 	float: left;
 }
@@ -515,6 +516,7 @@ body.activity-permalink #buddypress .activity-list li .activity-header > p {
 #buddypress .activity-list .activity-content blockquote {
 	margin: 10px 10px 5px 0;
 	overflow: hidden;
+	font-size: 14px;	
 }
 #buddypress .activity-list li.new_forum_post .activity-content .activity-inner,
 #buddypress .activity-list li.new_forum_topic .activity-content .activity-inner {

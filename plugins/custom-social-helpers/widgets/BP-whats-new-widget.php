@@ -40,14 +40,17 @@ class BP_Whats_New extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		
+		if ( !(is_user_logged_in() ) ) return;
+		
 		/* Code Start */
     echo $args['before_widget'];
      	
-		$user_id=bp_displayed_user_id();
-    $user_name = bp_core_get_username($user_id); 	
+		//$user_id=bp_loggedin_user_id();
+    //$user_name = bp_get_loggedin_user_fullname(); 	
      	
-		$default_title=sprintf(__('What\'s New %s ?','foodiepro'),$user_name);
-		$this->display_title($args, $instance, $default_title);
+		//$default_title=sprintf(__('What\'s New %s ?','foodiepro'),$user_name);
+		if ( ! (empty( $instance['title']) ) )
+			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 
 		?>
 
@@ -62,25 +65,32 @@ class BP_Whats_New extends WP_Widget {
 			 */
 			do_action( 'bp_before_activity_post_form' ); ?>
 
-			<div id="whats-new-avatar">
+			<table id="whats-new-container">
+
+			<tr >
+			<td id="whats-new-avatar">
+				<div class="avatar-container">
 				<a href="<?php echo bp_loggedin_user_domain(); ?>">
 					<?php bp_loggedin_user_avatar( 'width=' . bp_core_avatar_thumb_width() . '&height=' . bp_core_avatar_thumb_height() ); ?>
 				</a>
-			</div>
+				<div class="avatar-bubble"></div>
+				</div>
+				</td>
 
-			<p class="activity-greeting"><?php if ( bp_is_group() )
-				printf( __( "What's new in %s, %s?", 'buddypress' ), bp_get_group_name(), bp_get_user_firstname( bp_get_loggedin_user_fullname() ) );
-			else
-				printf( __( "What's new, %s?", 'buddypress' ), bp_get_user_firstname( bp_get_loggedin_user_fullname() ) );
-			?></p>
-
+			<td>
+				
 			<div id="whats-new-content">
+				<span class="activity-greeting"><?php if ( bp_is_group() )
+					printf( __( "What's new in %s, %s?", 'buddypress' ), bp_get_group_name(), bp_get_user_firstname( bp_get_loggedin_user_fullname() ) );
+				else
+					printf( __( "What's new, %s?", 'buddypress' ), bp_get_user_firstname( bp_get_loggedin_user_fullname() ) );
+				?></span>
 				<div id="whats-new-textarea">
 					<label for="whats-new" class="bp-screen-reader-text"><?php
 						/* translators: accessibility text */
 						_e( 'Post what\'s new', 'buddypress' );
 					?></label>
-					<textarea class="bp-suggestions" name="whats-new" id="whats-new" cols="50" rows="10"
+					<textarea class="bp-suggestions" name="whats-new" id="whats-new" cols="50" rows="1"
 						<?php if ( bp_is_group() ) : ?>data-suggestions-group-id="<?php echo esc_attr( (int) bp_get_current_group_id() ); ?>" <?php endif; ?>
 					><?php if ( isset( $_GET['r'] ) ) : ?>@<?php echo esc_textarea( $_GET['r'] ); ?> <?php endif; ?></textarea>
 				</div>
@@ -90,6 +100,7 @@ class BP_Whats_New extends WP_Widget {
 						<input type="submit" name="aw-whats-new-submit" id="aw-whats-new-submit" value="<?php esc_attr_e( 'Post Update', 'buddypress' ); ?>" />
 					</div>
 
+					<!--
 					<?php if ( bp_is_active( 'groups' ) && !bp_is_my_profile() && !bp_is_group() ) : ?>
 
 						<div id="whats-new-post-in-box">
@@ -129,10 +140,12 @@ class BP_Whats_New extends WP_Widget {
 					 *
 					 * @since 1.2.0
 					 */
-					do_action( 'bp_activity_post_form_options' ); ?>
+					do_action( 'bp_activity_post_form_options' ); ?>  -->
 
 				</div><!-- #whats-new-options -->
 			</div><!-- #whats-new-content -->
+			</td>
+			</table><!-- #whats-new-container-->
 
 			<?php wp_nonce_field( 'post_update', '_wpnonce_post_update' ); ?>
 			<?php
@@ -152,14 +165,6 @@ class BP_Whats_New extends WP_Widget {
 	}
 	
 	
-	
-	public function display_title($args, $instance, $title) {
-		if ( ! (empty( $instance['title']) ) )
-			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
-		else
-			echo $args['before_title'] . apply_filters( 'widget_title', $title ). $args['after_title'];		
-	}
-
 	/**
 	 * Back-end widget form.
 	 *

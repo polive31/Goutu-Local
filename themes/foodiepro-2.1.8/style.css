@@ -849,6 +849,88 @@ h3.rpwe-title a {
 /* Widgets 
 ----------------------------------------------------------------------*/
 
+/* BP What's New */
+
+.widget_bp_whats_new {
+	padding:10px 20px;
+	/*border:1px dashed #dedede;*/
+	background-color:#f3f3f3;
+	margin-bottom: 20px;
+}
+
+table#whats-new-container {
+	width:100%;
+}
+
+td#whats-new-avatar {
+  padding:20px 0px;
+}
+
+.avatar-container {
+	position:relative;
+}
+
+textarea#whats-new {
+    resize: vertical;
+}
+
+.avatar-bubble {
+	background:url('images/bubble.png') no-repeat;
+	position:absolute;
+	top:40px;
+	left:40px;
+	width:50px;
+	height:50px;
+	z-index:99;
+}
+
+td#whats-new-avatar img {
+ margin:0;
+ border-radius:0;
+ border:2px solid #FFF;
+}
+
+/* Profile Progression Widget 
+--------------------------------------------- */
+
+.bppp-widget-bar {
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#ff0101), color-stop(100%,#00ff37))!important;
+	background: -webkit-linear-gradient(left, #ff0101 0%,#00ff37 100%)!important;
+	background: linear-gradient(to right, #ff0101 0%,#00ff37 100%)!important;
+}
+
+p.wp_widget_plugin_textarea {
+  font-size: 14px;
+  font-style: italic;
+  text-align:center;
+	padding: 10px 0;  
+}
+
+.bppp-stat {
+    padding: 0px 20%;
+}
+
+.widget-text.wp_widget_plugin_box {
+    padding: 0px 5px 20px 5px;
+    background-color: #f3f3f3;
+}
+
+.bppp-stat-percent {
+	vertical-align:middle;
+	font-weight: bold;
+}
+
+.bppp-widget-bar {
+	vertical-align:middle;
+	border: none!important;
+  margin-right: 10px!important;
+}
+
+
+
+
+/* Tag Cloud */
+
 .tagcloud {
 	float:left;
 	position:relative;
@@ -872,7 +954,7 @@ h3.rpwe-title a {
 .tagcloud #layer-base a,
 .tagcloud #layer-hover a {
   font-family:"Oswald",cursive !important;
-  margin:5px 5px!important;
+  margin:5px 2px!important;
   line-height:24px!important;
 }
 

@@ -41,20 +41,22 @@ class BP_My_Friends extends WP_Widget {
 	public function widget( $args, $instance ) {
 		
 		/* Code Start */
-		if ( ! (empty( $instance['user']) ) )
-			if ($instance['user']=='loggedin') {
-				if ( !(is_user_logged_in() ) ) return;
-				$user_id=bp_loggedin_user_id();
-				$title= __('My Friends','foodiepro');
-			}
-			else {
-				$user_id=bp_displayed_user_id();
-				$title= sprintf( __('Friends of %s','foodiepro'), bp_core_get_username($user_id));
-			}
+	
+		if ($instance['user']=='loggedin') {
+			if ( !(is_user_logged_in() ) ) return;
+			$user_id=bp_loggedin_user_id();
+			$user_id=bp_loggedin_user_id();
+			$title= __('My Friends','foodiepro');
+		}
+		else {
+			$user_id=bp_displayed_user_id();
+			$title= sprintf( __('Friends of %s','foodiepro'), bp_core_get_username($user_id));
+		}
+		$limit=($instance['limit']=='')?'3':$instance['limit'];
 
 		//echo $user_id;
 		
-		if ( bp_has_members( 'type=newest&max=8&user_id=' . $user_id ) ) {
+		if ( bp_has_members( 'type=newest&max=' . $limit . '&user_id=' . $user_id ) ) {
 			
 			$this->display_title($args, $instance, $title);				
 			echo	'<div class="avatar-block">';
@@ -111,12 +113,23 @@ class BP_My_Friends extends WP_Widget {
 		}
 		else {
 			$user = 'loggedin';
-		}		
+		}	
+		if ( isset( $instance[ 'limit' ] ) )
+			$limit = $instance[ 'limit' ];
+		else 
+			$limit = '8';	
 		?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
+		
+		<p>
+			<label for="<?php echo $this->get_field_id( 'limit' ); ?>">
+				<?php _e( 'Number of users to show', 'foodiepro' ); ?>
+			</label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" type="number" step="1" min="-1" value="<?php echo (int)( $instance['limit'] ); ?>" />
+		</p>		
 		
 		<p>
 		  <label for="<?php echo $this->get_field_id('text'); ?>">
@@ -149,6 +162,7 @@ class BP_My_Friends extends WP_Widget {
 		$instance = array();
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 		$instance['user'] = $new_instance['user'];	
+		$instance['limit'] = $new_instance['limit'];	
 		return $instance;
 	}
 

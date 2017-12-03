@@ -13,7 +13,17 @@
  */
 do_action( 'bp_before_activity_loop' ); ?>
 
-<?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ) ) ) : ?>
+<?php 
+//if ( bp_has_activities( bp_ajax_querystring( 'activity' )  ) ) : 
+if ( bp_has_activities( bp_ajax_querystring( 'activity' ).'&scope=just-me&max=5' ) ) : 
+// Accepted Parameters :
+// scope=just-me, friends, groups, favorites, mentions
+// max=MAX NUMBER OF FEEDS
+// search_terms=XXX
+// Accepted Filters :
+// object=profile (profile updates, or new profiles), friends, groups, status, blogs
+// action=activity_update
+?>
 
 	<?php if ( empty( $_POST['page'] ) ) : ?>
 

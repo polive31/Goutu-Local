@@ -34,6 +34,8 @@ function bp_social_helpers_load() {
 	require_once 'widgets/BP-member-profile-widget.php';
 	require_once 'widgets/BP-my-friends-widget.php';
 	require_once 'widgets/BP-welcome-widget.php';
+	require_once 'widgets/BP-whats-new-widget.php';
+	require_once 'widgets/BP-activity-feed-widget.php';
 	if ( class_exists( 'Buddy_Progress_Bar' ) )
 		require_once 'widgets/BP-profile-completion-widget.php';
 	else

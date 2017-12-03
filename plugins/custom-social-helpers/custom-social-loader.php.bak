@@ -34,6 +34,7 @@ function bp_social_helpers_load() {
 	require_once 'widgets/BP-member-profile-widget.php';
 	require_once 'widgets/BP-my-friends-widget.php';
 	require_once 'widgets/BP-welcome-widget.php';
+	require_once 'widgets/BP-whats-new-widget.php';
 	if ( class_exists( 'Buddy_Progress_Bar' ) )
 		require_once 'widgets/BP-profile-completion-widget.php';
 	else
@@ -51,6 +52,7 @@ function bp_social_helpers_missing_plugin() {
 	$class = 'notice notice-error';
 	$message = 'The customized profile completion widget requires the <a href="https://fr.wordpress.org/plugins/buddy-progress-bar/">Buddy Progress Bar</a> plugin to be installed.';
 
-	printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
+	//printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
+	echo '<div class="notice notice-error"><p>' . $message . '</p></div>'; 
 }
 

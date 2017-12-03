@@ -105,7 +105,7 @@ class BP_Latest extends WP_Widget {
 				<?php _e( 'Number of users to show', 'foodiepro' ); ?>
 			</label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" type="number" step="1" min="-1" value="<?php echo (int)( $instance['limit'] ); ?>" />
-	</p>
+		</p>
 		<?php 
 	}
 

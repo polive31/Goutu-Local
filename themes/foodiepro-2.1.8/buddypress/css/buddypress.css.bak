@@ -149,7 +149,7 @@ Hello, this is the BuddyPress Legacy stylesheet.
   top:0;
   width: 100%;
   margin:0;
-  padding: 50px 0 40px 0;
+  padding: 30px 0 40px 0;
   color: #FFF;
   font-size:80px;
   font-weight:normal;
@@ -320,6 +320,12 @@ a#edit:before {
 		font-weight:bold;
 	}	
 	
+	
+	#buddypress .more-from-category a {
+    padding: 10px 20px;
+    width: 100%;
+	}	
+	
 
 /* FRIENDS REQUESTS
 -----------------------------------------*/
@@ -482,7 +488,9 @@ body.activity-permalink #buddypress .activity-list li .activity-header > p {
 #buddypress .activity-list .activity-content .activity-header,
 #buddypress .activity-list .activity-content .comment-header {
 	color: #767676;
-	line-height: 220%;
+  font-size: 12px;
+  font-style: italic;
+}
 }
 #buddypress .activity-header {
 	margin-right: 20px;
@@ -780,7 +788,7 @@ body.activity-permalink #buddypress div.activity-comments div.acomment-content {
 }
 #buddypress div#message.updated p {
 	background-color: #efc;
-	border: 1px solid #591;
+	/*border: 1px solid #591;*/
 	color: #250;
 }
 #buddypress #pass-strength-result {

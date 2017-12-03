@@ -96,76 +96,6 @@ function foodiepro_xprofile_cover_image( $settings = array() ) {
 }
 
 
-/**
- * Your theme callback function
- *
- * <a class="bp-suggestions-mention" href="https://buddypress.org/members/see/" rel="nofollow">@see</a> bp_legacy_theme_cover_image() to discover the one used by BP Legacy
- */
-function foodiepro_cover_image_callback( $params = array() ) {
-    if ( empty( $params ) ) return;
- 
-    ob_start();?>
-    
-/* Cover image */
-#buddypress #header-cover-image {
-    height: <?php echo $params['height'];?>px;
-    background-image: url(<?php echo $params['cover_image'];?>);
-}
-
-/* Avatar */
-#buddypress #item-header-cover-image #item-header-avatar {
-    margin-top:<?php echo ($params['height']-intval(BP_AVATAR_FULL_HEIGHT+10)/2);?>px;
-    float: left;
-    overflow: visible;
-    width: auto;
-}
-
-/* Name & meta */
-#buddypress div#item-header #item-header-cover-image #item-header-content {
-    clear: both;
-    float: left;
-    margin-left:<?php echo BP_AVATAR_FULL_WIDTH+20;?>px;
-    margin-top:-<?php echo BP_AVATAR_FULL_HEIGHT-10;?>px;
-    width: auto;
-} 
-
-/* Media Queries */
-
-@media only screen and (max-width:720px) {
-
-	#buddypress #header-cover-image {
-	}
-		
-}
-	
-	<?php
-				
-	$css = ob_get_contents();
-	echo $css;
-	ob_end_clean();
-	
-	return $css;
-}
-
-// Override default css stylesheet
-//add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'foodiepro_cover_image_css', 10, 1 );
-//add_filter( 'bp_before_groups_cover_image_settings_parse_args', 'foodiepro_cover_image_css', 10, 1 );
-function foodiepro_cover_image_css( $settings = array() ) {
-    /**
-     * If you are using a child theme, use bp-child-css
-     * as the theme handle
-     */
-    $theme_handle = 'bp-child-css';
-    $settings['theme_handle'] = $theme_handle;
- 
-    /**
-     * Then you'll probably also need to use your own callback function
-     * <a class="bp-suggestions-mention" href="https://buddypress.org/members/see/" rel="nofollow">@see</a> the previous snippet
-     */
-     $settings['callback'] = 'foodiepro_cover_image_callback';
-    return $settings;
-}
-
  
 /* =================================================================*/
 /* =              OTHER SETTINGS
@@ -236,6 +166,8 @@ function custom_subnav_name() {
   buddypress()->members->nav->edit_nav( array('name' => __('Edit Profile', 'foodiepro')), 'edit', 'profile' );
   buddypress()->members->nav->edit_nav( array('name' => __('Change Avatar', 'foodiepro')), 'change-avatar', 'profile' );
   buddypress()->members->nav->edit_nav( array('name' => __('Change Cover', 'foodiepro')), 'change-cover-image', 'profile' );
+  //buddypress()->members->nav->edit_nav( array('name' => __('Recent Notifications', 'foodiepro')), 'notifications', 'notifications' );
+  //buddypress()->members->nav->edit_nav( array('name' => __('Archived Notifications', 'foodiepro')), 'read', 'notifications' );
 }
 
 

@@ -95,7 +95,7 @@ body {
 
 /* Solve IE bug with underline in pseudo elements */
 a {text-decoration:none;}
-a:hover {text-decoration:underline;}
+a:hover {text-decoration:none;}
 a:before,a:after { text-decoration:underline;}
 a:before,a:after,
 a:hover:before,a:hover:after {text-decoration:none;}
@@ -154,7 +154,7 @@ a {
 a:active,
 a:hover {
 	outline:0;
-	text-decoration:underline;
+	/*text-decoration:underline;*/
 }
 
 
@@ -651,18 +651,19 @@ h1 {
 
 h2 {
 	font-family: "Amatic SC";	
-	font-size:20px;
+  font-size: 30px;
+  font-weight: bold;
 }
 
 h3 {
 	font-family: "Amatic SC";	
-	font-size:18px;
+	font-size:30px;
+	font-weight:bold;
 }
 
 h4 {
 	font-family: "Amatic SC";	
 	font-size:30px;
-	font-weight:bold;
 }
 
 h5 {
@@ -743,7 +744,8 @@ h1.archive-title {
 }
 
 h2.user-nicename {
-    font-family: Lato, sans-serif;
+  font-family: Lato, sans-serif;
+  font-weight: 100;
 }
 
 /*.recipe h1.entry-title {
@@ -931,7 +933,7 @@ textarea:focus {
 
 a {
 	color:#010101;
-	text-decoration:underline;
+	/*text-decoration:underline;*/
 }
 
 a img {
@@ -983,6 +985,7 @@ pre {
 	overflow:scroll;
 	padding:0 20px;
 	white-space:pre;
+	font-size: 12px;	
 }
 
 cite {

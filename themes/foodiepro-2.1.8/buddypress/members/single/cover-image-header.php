@@ -64,16 +64,6 @@ $a_css = bp_is_my_profile()?'':'class="disabled"';
 
 			<span class="activity"><?php bp_last_activity( bp_displayed_user_id() ); ?></span>
 
-			<div id="item-buttons"><?php
-				/**
-				 * Fires in the member header actions section.
-				 *
-				 * @since 1.2.6
-				 */
-				do_action( 'bp_member_header_actions' ); ?>				
-						
-			</div><!-- #item-buttons -->		
-
 			<?php
 
 			/**
@@ -115,15 +105,35 @@ $a_css = bp_is_my_profile()?'':'class="disabled"';
 
 </div><!-- #cover-image-container -->
 
+<div class="item-list-tabs no-ajax" id="subnav"><?php
+	/**
+	 * Fires in the member header actions section.
+	 *
+	 * @since 1.2.6
+	 */
+	do_action( 'bp_member_header_actions' ); ?>				
+</div><!-- #item-buttons -->		
+
 
 <?php 	
 if ( bp_is_my_profile() ) { 
 	
+//	echo '<div class="item-list-tabs" id="main">';
+//	echo '</div><!-- .item-list-tabs#main -->';
+
+//	echo "<pre>";
+//	print_r(buddypress()->members->nav);	
+//	echo "</pre>";
+	
 	echo '<div class="item-list-tabs no-ajax" id="subnav" role="navigation">';
 		echo '<ul>';
+			echo '<li class="disabled" id="main-menu-item">';
+				bp_display_current_user_nav();
+			echo '</li>';
 			bp_get_options_nav();
 		echo '</ul>';
-	echo '</div><!-- .item-list-tabs -->';
+	echo '</div><!-- .item-list-tabs#subnav -->';
+	
 } ?>		
 
 <?php
@@ -139,3 +149,46 @@ do_action( 'bp_after_member_header' ); ?>
 
 /** This action is documented in bp-templates/bp-legacy/buddypress/activity/index.php */
 do_action( 'template_notices' ); ?>
+
+<?php
+/**
+ * Render the navigation markup for the displayed user.
+ *
+ * @since 1.1.0
+ */
+function bp_display_current_user_nav() {
+	$bp = buddypress();
+
+	foreach ( $bp->members->nav->get_primary() as $user_nav_item ) {
+		if ( empty( $user_nav_item->show_for_displayed_user ) && ! bp_is_my_profile() ) {
+			continue;
+		}
+
+		$selected = '';
+		if ( bp_is_current_component( $user_nav_item->slug ) ) {
+			$selected = ' class="current selected"';
+
+			if ( bp_loggedin_user_domain() ) {
+				$link = str_replace( bp_loggedin_user_domain(), bp_displayed_user_domain(), $user_nav_item->link );
+			} else {
+				$link = trailingslashit( bp_displayed_user_domain() . $user_nav_item->link );
+			}
+
+			/**
+			 * Filters the navigation markup for the displayed user.
+			 *
+			 * This is a dynamic filter that is dependent on the navigation tab component being rendered.
+			 *
+			 * @since 1.1.0
+			 *
+			 * @param string $value         Markup for the tab list item including link.
+			 * @param array  $user_nav_item Array holding parts used to construct tab list item.
+			 *                              Passed by reference.
+			 */
+			
+			echo '<h2 id="' . $user_nav_item->css_id . '-personal-li" ' . $selected . '><a id="user-' . $user_nav_item->css_id . '" href="' . $link . '">' . $user_nav_item->name . '</a></h2>';
+			//echo apply_filters_ref_array( 'bp_get_displayed_user_nav_' . $user_nav_item->css_id, array( '<h2 id="' . $user_nav_item->css_id . '-personal-li" ' . $selected . '><a id="user-' . $user_nav_item->css_id . '" href="' . $link . '">' . $user_nav_item->name . '</a></h2>', &$user_nav_item ) );
+			//echo '<a id="user-' . $user_nav_item->css_id . '" href="' . $link . '">' . $user_nav_item->name . '</a>';
+		}
+	}
+}

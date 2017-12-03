@@ -24,15 +24,11 @@ do_action( 'bp_before_members_loop' ); ?>
 	<div id="pag-top" class="pagination">
 
 		<div class="pag-count" id="member-dir-count-top">
-
-			<?php bp_members_pagination_count(); ?>
-
+			<?php //bp_members_pagination_count(); ?>
 		</div>
 
 		<div class="pagination-links" id="member-dir-pag-top">
-
 			<?php bp_members_pagination_links(); ?>
-
 		</div>
 
 	</div>
@@ -124,7 +120,7 @@ do_action( 'bp_before_members_loop' ); ?>
 
 		<div class="pag-count" id="member-dir-count-bottom">
 
-			<?php bp_members_pagination_count(); ?>
+			<?php //bp_members_pagination_count(); ?>
 
 		</div>
 

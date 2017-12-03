@@ -264,28 +264,14 @@ li.comment {
 
 }
 
-/* Retina smartphone */
-@media only screen 
-	and (max-width:870px)
-  and (-webkit-min-device-pixel-ratio:2) {
- 
-	.site-title a,
-	.home .site-title a {
-		background:url("../../images/logo-white/logo_720_300.png") no-repeat center;
-	} 	
-
-}
-
 
 /* Medium screens */
-
 
 @media only screen 
 	and (max-width:720px) {
 
 	body,
 	body.home {
-		/*background:url("../../images/background/background-l-small.jpg") no-repeat top left;*/
 		background:none;
 	}	
 
@@ -310,6 +296,21 @@ li.comment {
 		background:none;	
 	}		
 	
+}
+
+/* Retina smartphone */
+@media only screen 
+	and (max-width:720px)
+  and (-webkit-min-device-pixel-ratio:2) {
+ 
+	.site-title a {
+		background:url("../../images/logo-white/logo_320_80.png") no-repeat left;
+	} 	
+	
+	.home .site-title a {
+		background:url("../../images/logo-white/logo_720_300.png") no-repeat center;
+	} 		
+
 }
 
 

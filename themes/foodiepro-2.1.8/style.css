@@ -3807,19 +3807,12 @@ Site Footer
     padding:0;
 	}	
 	
-	
-	
-/*	.one-sixth,
-	.one-fifth,
-	.one-fourth {
-  	width:30%; 
-	}*/
-
 	.home-page .title-area, 
 	.home-page .site-title, 
 	.home-page .site-title a {
     height:150px;
 		margin:0;
+    width: 100%;		
 	}	
 	
 	.flex-control-nav {

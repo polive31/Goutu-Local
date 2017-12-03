@@ -2301,6 +2301,10 @@ Custom Page Templates
     vertical-align: middle;
 }
 
+.single .entry-header {
+    padding-bottom: 40px;
+}
+
 /* Mon Goûtu pages
 --------------------------------------------- */
 
@@ -3816,6 +3820,7 @@ Site Footer
 	.home-page .site-title a {
     height:150px;
 		margin:0;
+    width: 100%;		
 	}	
 	
 	.flex-control-nav {

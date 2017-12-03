@@ -125,9 +125,14 @@ Hello, this is the BuddyPress Legacy stylesheet.
 }
 
 /* Image layer content */
-#item-header-avatar img,
+#item-header-avatar img {
+  margin: 0;
+}
+
 #item-header-cover-image img {
   margin: 0;
+  object-fit: cover;
+  min-height: 150px;
 }
 
 #item-header-avatar,
@@ -1943,7 +1948,6 @@ p.wp_widget_plugin_textarea {
 .bppp-stat-percent {
 	vertical-align:middle;
 	font-weight: bold;
-	font-size: 19px;	
 }
 
 .bppp-widget-bar {

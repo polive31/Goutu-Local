@@ -257,8 +257,8 @@ li.comment {
 			
 	.site-title a, 
 	.home .site-title a {
-    background: url("../../images/logo-white/logo_320_100.png") no-repeat;
-		background-position: left;
+    background: url("../../images/logo-white/logo_360_150.png") no-repeat;
+		background-position: center;
 	}	
 	
 
@@ -293,15 +293,12 @@ li.comment {
 	.title-area, 
 	.site-title, 
 	.site-title a {
-		height: auto;
-	}	
-	
-	.home .site-title a {
-	 	background: url("../../images/logo-white/logo_360_150.png") no-repeat; 	
+		height: 40px;
 	}	
 	
 	.site-title a { 
-	 	background: url("../../images/logo-white/logo_230_80.png") no-repeat; 	
+	 	background: url("../../images/logo-white/logo_160_40.png") center left no-repeat; 	
+	}
 	
 	.entry-header,
 	.site-header,
@@ -319,11 +316,12 @@ li.comment {
 
 /* Small screens */
 @media only screen 
-	and (max-width:570px) {
+	and (max-width:420px) {
 	
 	.home .site-title a {
-    background: rgba(255,255,255,0.7) url("../../images/logo-white/logo_360_150.png") no-repeat;
-	}		
+    background-size: contain;
+	}	
+
 	
 }
 

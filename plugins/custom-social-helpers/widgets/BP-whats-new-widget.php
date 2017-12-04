@@ -73,24 +73,18 @@ class BP_Whats_New extends WP_Widget {
 				<a href="<?php echo bp_loggedin_user_domain(); ?>">
 					<?php bp_loggedin_user_avatar( 'width=' . bp_core_avatar_thumb_width() . '&height=' . bp_core_avatar_thumb_height() ); ?>
 				</a>
-				<div class="avatar-bubble"></div>
-				</div>
 				</td>
 
 			<td>
 				
 			<div id="whats-new-content">
-				<span class="activity-greeting"><?php if ( bp_is_group() )
-					printf( __( "What's new in %s, %s?", 'buddypress' ), bp_get_group_name(), bp_get_user_firstname( bp_get_loggedin_user_fullname() ) );
-				else
-					printf( __( "What's new, %s?", 'buddypress' ), bp_get_user_firstname( bp_get_loggedin_user_fullname() ) );
-				?></span>
 				<div id="whats-new-textarea">
 					<label for="whats-new" class="bp-screen-reader-text"><?php
 						/* translators: accessibility text */
 						_e( 'Post what\'s new', 'buddypress' );
 					?></label>
-					<textarea class="bp-suggestions" name="whats-new" id="whats-new" cols="50" rows="1"
+					<?php $invite = sprintf( __( "What's new, %s?", 'foodiepro' ), bp_get_user_firstname( bp_get_loggedin_user_fullname() ) );?>
+					<textarea class="bp-suggestions" name="whats-new" id="whats-new" cols="50" rows="1" placeholder="<?php echo $invite;?>"
 						<?php if ( bp_is_group() ) : ?>data-suggestions-group-id="<?php echo esc_attr( (int) bp_get_current_group_id() ); ?>" <?php endif; ?>
 					><?php if ( isset( $_GET['r'] ) ) : ?>@<?php echo esc_textarea( $_GET['r'] ); ?> <?php endif; ?></textarea>
 				</div>

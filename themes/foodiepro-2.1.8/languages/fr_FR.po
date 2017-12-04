@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-12-04 00:59+0100\n"
-"PO-Revision-Date: 2017-12-04 01:01+0100\n"
+"POT-Creation-Date: 2017-12-04 09:22+0100\n"
+"PO-Revision-Date: 2017-12-04 09:23+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -206,7 +206,7 @@ msgstr "Appréciation"
 #: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:161
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:109
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:74
-#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:180
+#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:176
 msgid "New title"
 msgstr ""
 
@@ -220,7 +220,7 @@ msgstr ""
 #: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:170
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:123
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:78
-#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:184
+#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:180
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/widgets/nutrition_label_widget.php:52
 #: plugins/wp-ultimate-recipe-premium/premium/addons/recipe-search/widgets/recipe_search_widget.php:82
 #: plugins/wp-ultimate-recipe-premium/premium/helpers/widgets/recipe_list_widget.php:75
@@ -503,7 +503,7 @@ msgid "Notifications"
 msgstr "Notifications"
 
 #: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:43
-#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:115
+#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:111
 #: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:28
 msgid "My Profile"
 msgstr "Mon Profil"
@@ -666,22 +666,17 @@ msgstr ""
 msgid "Displays a Buddypress \"what's New ?\" input form"
 msgstr ""
 
-#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:84
-#, php-format
-msgid "What's new in %s, %s?"
-msgstr ""
-
 #: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:86
-#, php-format
-msgid "What's new, %s?"
-msgstr ""
-
-#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:91
 msgid "Post what's new"
 msgstr ""
 
+#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:88
+#, php-format
+msgid "What's new, %s?"
+msgstr "Exprimez vous, %s !"
+
+#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:104
 #: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:108
-#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:112
 #, fuzzy
 #| msgid "Comment count"
 msgid "Post in"

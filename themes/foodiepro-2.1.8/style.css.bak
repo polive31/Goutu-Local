@@ -870,6 +870,10 @@ td#whats-new-avatar {
 	position:relative;
 }
 
+textarea#whats-new {
+    resize: vertical;
+}
+
 .avatar-bubble {
 	background:url('images/bubble.png') no-repeat;
 	position:absolute;

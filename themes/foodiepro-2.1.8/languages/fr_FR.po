@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-12-03 17:28+0100\n"
-"PO-Revision-Date: 2017-12-03 17:29+0100\n"
+"POT-Creation-Date: 2017-12-04 00:59+0100\n"
+"PO-Revision-Date: 2017-12-04 01:01+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -201,10 +201,12 @@ msgstr "Appréciation"
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:104
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:82
+#: plugins/custom-social-helpers/widgets/BP-activity-feed-widget.php:138
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:90
 #: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:161
-#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:107
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:109
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:74
+#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:180
 msgid "New title"
 msgstr ""
 
@@ -212,11 +214,13 @@ msgstr ""
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:86
 #: plugins/custom-recipe-templates/helpers/custom_nutrition_label.php:60
 #: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:101
+#: plugins/custom-social-helpers/widgets/BP-activity-feed-widget.php:146
 #: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:180
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:99
 #: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:170
-#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:117
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:123
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:78
+#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:184
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/widgets/nutrition_label_widget.php:52
 #: plugins/wp-ultimate-recipe-premium/premium/addons/recipe-search/widgets/recipe_search_widget.php:82
 #: plugins/wp-ultimate-recipe-premium/premium/helpers/widgets/recipe_list_widget.php:75
@@ -483,7 +487,7 @@ msgstr "avis"
 msgid "reviews"
 msgstr "avis"
 
-#: plugins/custom-social-helpers/custom-social-loader.php:46
+#: plugins/custom-social-helpers/custom-social-loader.php:48
 msgid ""
 "<strong>BP Social Helpers</strong></a> requires the BuddyPress plugin to "
 "work. Please <a href=\"https://buddypress.org/download\">install BuddyPress</"
@@ -499,9 +503,35 @@ msgid "Notifications"
 msgstr "Notifications"
 
 #: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:43
+#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:115
 #: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:28
 msgid "My Profile"
 msgstr "Mon Profil"
+
+#: plugins/custom-social-helpers/widgets/BP-activity-feed-widget.php:30
+msgid "(Buddypress) Activity Feed"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-activity-feed-widget.php:31
+msgid "Displays a Buddypress Activity Feed"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-activity-feed-widget.php:53
+#, php-format
+msgid "Activity Feed for %s"
+msgstr "Les dernières nouvelles de %s"
+
+#: plugins/custom-social-helpers/widgets/BP-activity-feed-widget.php:87
+msgid "Previous Feeds"
+msgstr "Nouvelles précédentes"
+
+#: plugins/custom-social-helpers/widgets/BP-activity-feed-widget.php:97
+msgid "Sorry, there was no activity found. Please try a different filter."
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-activity-feed-widget.php:152
+msgid "Number of feeds to show"
+msgstr ""
 
 #: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:35
 msgctxt "Title of the login widget"
@@ -544,6 +574,7 @@ msgid "Displays latest registered members"
 msgstr ""
 
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:105
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:129
 msgid "Number of users to show"
 msgstr ""
 
@@ -584,20 +615,20 @@ msgstr ""
 msgid "Displays a chosen number of my friends"
 msgstr ""
 
-#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:48
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:49
 msgid "My Friends"
 msgstr "Mes amis"
 
-#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:52
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:53
 #, php-format
 msgid "Friends of %s"
 msgstr "Les amis de %s"
 
-#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:76
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:78
 msgid "Make new friends"
 msgstr "Faites vous de nouveaux amis"
 
-#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:123
+#: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:136
 msgid "Friends of"
 msgstr ""
 
@@ -626,6 +657,35 @@ msgstr ""
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:28
 msgid "Displays gravatar and name of current loggued-in user"
 msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:28
+msgid "(Buddypress) What's New"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:29
+msgid "Displays a Buddypress \"what's New ?\" input form"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:84
+#, php-format
+msgid "What's new in %s, %s?"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:86
+#, php-format
+msgid "What's new, %s?"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:91
+msgid "Post what's new"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:108
+#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:112
+#, fuzzy
+#| msgid "Comment count"
+msgid "Post in"
+msgstr "Commentaires"
 
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:45
 #: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/custom-taxonomies.php:64

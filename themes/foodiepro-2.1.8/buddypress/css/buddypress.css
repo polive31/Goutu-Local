@@ -576,6 +576,7 @@ body.activity-permalink #buddypress div.activity-meta {
 #buddypress a.activity-time-since {
 	color: #767676;
 	text-decoration: none;
+	text-transform: none;
 }
 #buddypress a.activity-time-since:hover {
 	color: #767676;

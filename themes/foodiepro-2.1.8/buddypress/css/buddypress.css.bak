@@ -1957,42 +1957,6 @@ body.register #buddypress div.page ul {
    padding-left: 10px;
 }
 
-/* Profile Progression Plugin 
---------------------------------------------- */
-
-.bppp-widget-bar {
-	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#ff0101), color-stop(100%,#00ff37))!important;
-	background: -webkit-linear-gradient(left, #ff0101 0%,#00ff37 100%)!important;
-	background: linear-gradient(to right, #ff0101 0%,#00ff37 100%)!important;
-}
-
-p.wp_widget_plugin_textarea {
-  font-size: 14px;
-  font-style: italic;
-  text-align:center;
-	padding: 10px 0;  
-}
-
-.bppp-stat {
-    padding: 0px 20%;
-}
-
-.widget-text.wp_widget_plugin_box {
-    padding: 0px 5px 20px 5px;
-    background-color: #f1efef;
-}
-
-.bppp-stat-percent {
-	vertical-align:middle;
-	font-weight: bold;
-}
-
-.bppp-widget-bar {
-	vertical-align:middle;
-	border: none!important;
-  margin-right: 10px!important;
-}
-
 
 /* Buddypress Widgets
 --------------------------------------------- */

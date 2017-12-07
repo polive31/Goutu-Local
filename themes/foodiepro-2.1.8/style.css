@@ -903,9 +903,9 @@ td#whats-new-avatar img {
 --------------------------------------------- */
 
 .bppp-widget-bar {
-	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#8a8a8a), color-stop(100%,#bbff35))!important;
-	background: -webkit-linear-gradient(left, #8a8a8a 0%,#bbff35 100%)!important;
-	background: linear-gradient(to right, #8a8a8a 0%,#bbff35 100%)!important;
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#ffb822 ), color-stop(100%,#bbff35))!important;
+	background: -webkit-linear-gradient(left, #ffb822  0%,#bbff35 100%)!important;
+	background: linear-gradient(to right, #ffb822  0%,#bbff35 100%)!important;
 }
 
 p.wp_widget_plugin_textarea {

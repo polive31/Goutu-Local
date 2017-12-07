@@ -231,9 +231,34 @@ function foodie_pro_add_body_class( $classes ) {
 }
 
 /* =================================================================*/
-/* =              DEBUG
+/* =              FAVICON
 /* =================================================================*/
 
+remove_action('wp_head', 'genesis_load_favicon');
+
+/** Adding custom Favicon */
+add_action ('genesis_meta','custom_favicon_links');
+ 
+function custom_favicon_links() {
+	$path = CHILD_THEME_URL . '/images/favicon';
+	echo sprintf('<link rel="apple-touch-icon" sizes="57x57" href="%s/apple-icon-57x57.png">',$path);
+	echo sprintf('<link rel="apple-touch-icon" sizes="60x60" href="%s/apple-icon-60x60.png">',$path);
+	echo sprintf('<link rel="apple-touch-icon" sizes="72x72" href="%s/apple-icon-72x72.png">',$path);
+	echo sprintf('<link rel="apple-touch-icon" sizes="76x76" href="%s/apple-icon-76x76.png">',$path);
+	echo sprintf('<link rel="apple-touch-icon" sizes="114x114" href="%s/apple-icon-114x114.png">',$path);
+	echo sprintf('<link rel="apple-touch-icon" sizes="120x120" href="%s/apple-icon-120x120.png">',$path);
+	echo sprintf('<link rel="apple-touch-icon" sizes="144x144" href="%s/apple-icon-144x144.png">',$path);
+	echo sprintf('<link rel="apple-touch-icon" sizes="152x152" href="%s/apple-icon-152x152.png">',$path);
+	echo sprintf('<link rel="apple-touch-icon" sizes="180x180" href="%s/apple-icon-180x180.png">',$path);
+	echo sprintf('<link rel="icon" type="image/png" sizes="192x192" href="%s/android-icon-192x192.png">',$path);
+	echo sprintf('<link rel="icon" type="image/png" sizes="32x32" href="%s/favicon-32x32.png">',$path);
+	echo sprintf('<link rel="icon" type="image/png" sizes="96x96" href="%s/favicon-96x96.png">',$path);
+	echo sprintf('<link rel="icon" type="image/png" sizes="16x16" href="%s/favicon-16x16.png">',$path);
+	echo sprintf('<link rel="manifest" href="%s/manifest.json">',$path);
+	echo sprintf('<meta name="msapplication-TileColor" content="#ffffff">',$path);
+	echo sprintf('<meta name="msapplication-TileImage" content="%s/ms-icon-144x144.png">',$path);
+	echo sprintf('<meta name="theme-color" content="#ffffff">',$path); 
+}
 
 /* =================================================================*/
 /* =              ADMIN

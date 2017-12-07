@@ -896,7 +896,7 @@ td#whats-new-avatar img {
  width: 40px;
  margin:0;
  border-radius:0;
- /*border:2px solid #FFF;*
+ /*border:2px solid #FFF;*/
 }
 
 /* Profile Progression Widget 

@@ -97,8 +97,8 @@ class custom_progress_bar_widget extends WP_Widget {
 
 		if ($user_percent > $trigger_percent) return;
 
-		$profile_completed = bp_get_option( 'bppp-completed-title-embed', '' );	
-		$profile_empty = bp_get_option( 'bppp-empty-profile-embed' );
+		$profile_completed = __( 'Profile completed !', 'foodiepro' );	
+		$profile_empty = __( 'Profile empty !', 'foodiepro' );
 		$award = bp_get_option ( 'bppp-award-embed' );
 
 		extract( $args );
@@ -120,7 +120,7 @@ class custom_progress_bar_widget extends WP_Widget {
 		}
 
 			if( empty( $user_percent ) || $user_percent == 0 ) {		
-				echo '<p>'. $profile_empty .'</p>';
+				echo '<p class="aligncenter">'. $profile_empty .'</p>';
 			}
 
 			if(  $user_percent == 100 && $award == 1 )  {

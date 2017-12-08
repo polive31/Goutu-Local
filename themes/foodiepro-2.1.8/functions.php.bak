@@ -241,7 +241,6 @@ add_action ('genesis_meta','custom_favicon_links');
  
 function custom_favicon_links() {
 	$path = CHILD_THEME_URL . '/images/favicon';
-	echo $path;
 	echo sprintf('<link rel="apple-touch-icon" sizes="57x57" href="%s/apple-icon-57x57.png">',$path);
 	echo sprintf('<link rel="apple-touch-icon" sizes="60x60" href="%s/apple-icon-60x60.png">',$path);
 	echo sprintf('<link rel="apple-touch-icon" sizes="72x72" href="%s/apple-icon-72x72.png">',$path);
@@ -303,7 +302,7 @@ function load_admin_stylesheet() {
 
 
 /* Defer Javascript parsing using <async> tag */
-add_filter( 'script_loader_tag','add_async_tag_cb',PHP_INT_MAX, 3 );
+//add_filter( 'script_loader_tag','add_async_tag_cb', PHP_INT_MAX, 3 );
 function add_async_tag_cb( $tag, $handle, $src ) { 
 	if ( is_admin() ) return $tag;
 	$defer_js = array(

@@ -302,7 +302,7 @@ function load_admin_stylesheet() {
 
 
 /* Defer Javascript parsing using <async> tag */
-add_filter( 'script_loader_tag','add_async_tag_cb',PHP_INT_MAX, 3 );
+add_filter( 'script_loader_tag','add_async_tag_cb', PHP_INT_MAX, 3 );
 function add_async_tag_cb( $tag, $handle, $src ) { 
 	if ( is_admin() ) return $tag;
 	$defer_js = array(

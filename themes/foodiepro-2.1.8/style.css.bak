@@ -937,9 +937,14 @@ p.wp_widget_plugin_textarea {
 
 
 
+/* Tag Cloud
+--------------------------------------- */
+.tagcloud a {
+  font-family:"Oswald",cursive !important;
+}
 
-/* Tag Cloud */
 
+/*
 .tagcloud {
 	float:left;
 	position:relative;
@@ -959,7 +964,6 @@ p.wp_widget_plugin_textarea {
 	z-index:1;
 }
 
-
 .tagcloud #layer-base a,
 .tagcloud #layer-hover a {
   font-family:"Oswald",cursive !important;
@@ -970,15 +974,12 @@ p.wp_widget_plugin_textarea {
 .tagcloud #layer-base a {
 	opacity:0;
 }
-
-
 .tagcloud #layer-hover a:hover {
-  /*margin:0!important;*/
 	font-size: 30px!important;
 	letter-spacing:0px!important;
   word-spacing: -5px!important;
   transition:1s ease;
-}
+}*/
 
 
 #wpurp-search ~ select {
@@ -1667,7 +1668,7 @@ h2.entry-title, .wpupg-post-title,
 	letter-spacing:1px;
 	text-align:center;
 	/*text-transform:uppercase;*/
-	margin:0 0 20px 0;
+	margin:20px 0 0px 0;
   padding:10px;
 }
 
@@ -1690,15 +1691,20 @@ h2.entry-title, .wpupg-post-title,
   margin:0;
 }
 
-.tilde .widgettitle:before {
-	content:url(images/tilde-l.png);
-	margin-right:10px;
+.tilde .widgettitle:before,
+.tilde .widgettitle:after {
+	display:inline-block;
+	content:" ";
+	margin:0 10px;
+	background:url(images/tilde.png) no-repeat;
+	width:66px;
+	height:24px;
 }
 
 .tilde .widgettitle:after {
-	content:url(images/tilde-r.png);
-	margin-left:10px;
+	background-position:-66px 0;
 }
+
 
 .sidebar .widgettitle a {
 	border:none;

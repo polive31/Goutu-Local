@@ -86,10 +86,14 @@ class custom_progress_bar_widget extends WP_Widget {
 		$user_percent = get_user_meta( $user_id, '_progress_bar_percent_level', true ); 
 		$user_percent = get_user_meta( $user_id, '_progress_bar_percent_level', true ); 
 		// 2 successive accesses required for a mysterious reason
+		//echo "user percent from meta = " . $user_percent;
+		
+		$user_percent = ($user_percent!='')?$user_percent:bppp_custom_get_progression($user_id);
+		//echo "user id = " . $user_id;
+		//echo "user percent final = " . $user_percent;
 		
 		$trigger_percent=(($instance['trigger_percent']==''))?'100':$instance['trigger_percent'];
 		
-//		echo $user_percent;
 //		echo $trigger_percent;		
 //		echo '<pre>';
 //		print_r($instance);
@@ -153,3 +157,63 @@ class custom_progress_bar_widget extends WP_Widget {
 }
 // register widget
 add_action( 'widgets_init', create_function( '', 'return register_widget( "custom_progress_bar_widget" );' ) );
+
+
+
+/**
+ * Calculate user progression percent 
+ * and register it in user_meta table
+ *
+ * @return  (int)
+ *
+ * since 1.0
+*/
+function bppp_custom_get_progression( $user_id = false ) {
+	global $bp;
+
+	$potential_points = 0;
+	$user_points = 0;
+	$percent = '';
+
+	if( !$user_id ) return false;
+
+	if ( !bppp_has_point_items() ) return false;
+
+	while ( bppp()->have_points() ) : bppp()->the_point();
+
+		$item = bppp()->query->point;
+		$potential_points+= $item['points'];
+
+		$item_points = bppp()->query->point['callback']();
+
+		if( $item_points === true ) { //returned TRUE, wich means 100% of potential points
+			$item_points = 100;
+		}
+
+		//balance points for this item
+		$add_points = ($item_points/100)*$item['points'];
+
+		$user_points+= $add_points;
+
+	endwhile;
+
+	//calculate total
+	if ( !empty( $potential_points ) ) {	
+			$percent = round( ( $user_points/$potential_points )*100 );
+	}
+
+	/**
+	* store percentage as usermeta
+	*
+	* since 1.0
+	*/
+	$percent_val = $percent;
+	$meta_key = '_progress_bar_percent_level';
+
+	if( empty( $potential_points ) || $percent_val == 0 || $percent_val > 0 ) {
+		update_user_meta( $user_id, $meta_key, $percent_val ); 
+	}
+
+	return (int)$percent;     
+}
+

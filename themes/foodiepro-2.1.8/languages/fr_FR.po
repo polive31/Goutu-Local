@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-12-09 01:06+0100\n"
-"PO-Revision-Date: 2017-12-09 01:08+0100\n"
+"POT-Creation-Date: 2017-12-09 14:50+0100\n"
+"PO-Revision-Date: 2017-12-09 14:54+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -494,15 +494,15 @@ msgid ""
 "a> first, or <a href=\"plugins.php\">deactivate BP Custom Shortcodes</a>."
 msgstr ""
 
-#: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:31
+#: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:32
 msgid "Friendship Requests"
 msgstr "Demandes d'amitié"
 
-#: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:37
+#: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:38
 msgid "Notifications"
 msgstr "Notifications"
 
-#: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:43
+#: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:44
 #: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:109
 #: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:28
 msgid "My Profile"
@@ -650,13 +650,22 @@ msgstr ""
 msgid "Message:"
 msgstr "Répondre au message"
 
-#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:100
+#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:105
 msgid "Profile completed !"
 msgstr "Profil rempli !"
 
-#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:101
+#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:106
 msgid "Profile empty !"
 msgstr "Profil vide !"
+
+#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:116
+#, php-format
+msgid ""
+"<a href=\"%s\">Fill-in your profile</a> to make yourself visible from other "
+"users."
+msgstr ""
+"<a href=\"%s\">Complétez votre profil</a> afin de vous faire connaître des "
+"autres utilisateurs."
 
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:27
 msgid "(Buddypress) Welcome"
@@ -6313,12 +6322,12 @@ msgid ""
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:184
-#: themes/foodiepro-2.1.8/functions.php:648
+#: themes/foodiepro-2.1.8/functions.php:652
 msgid "Read More"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:197
-#: themes/foodiepro-2.1.8/functions.php:676
+#: themes/foodiepro-2.1.8/functions.php:680
 msgid "Comments"
 msgstr ""
 
@@ -7197,48 +7206,46 @@ msgstr ""
 msgid "Goûtu.org - Cuisiner, Découvrir, Partager"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:492
-msgid "<strong>ERROR</strong>: User pending "
-msgstr "<strong> ERREUR</strong>: Utilisateur en attente d'"
+#: themes/foodiepro-2.1.8/functions.php:494
+#, fuzzy, php-format
+#| msgid "<strong>ERROR</strong>: User pending approval."
+msgid "<strong>ERROR</strong>: User pending <a href=\"%s\">approval</a>."
+msgstr "<strong>ERREUR</strong> : Utilisateur en attente d'approbation."
 
-#: themes/foodiepro-2.1.8/functions.php:492
-msgid "approval"
-msgstr "approbation"
-
-#: themes/foodiepro-2.1.8/functions.php:685
+#: themes/foodiepro-2.1.8/functions.php:689
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:202
 msgid "Previous comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:691
+#: themes/foodiepro-2.1.8/functions.php:695
 msgid "Next comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:710
+#: themes/foodiepro-2.1.8/functions.php:714
 msgid "Your answer here"
 msgstr "Entrez votre réponse ci-dessous"
 
-#: themes/foodiepro-2.1.8/functions.php:729
+#: themes/foodiepro-2.1.8/functions.php:733
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
-#: themes/foodiepro-2.1.8/functions.php:729
+#: themes/foodiepro-2.1.8/functions.php:733
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:729
+#: themes/foodiepro-2.1.8/functions.php:733
 msgid "Legal notice"
 msgstr "Mentions légales"
 
-#: themes/foodiepro-2.1.8/functions.php:729
+#: themes/foodiepro-2.1.8/functions.php:733
 msgid "Goûtu charter"
 msgstr "Charte Goûtu"
 
-#: themes/foodiepro-2.1.8/functions.php:729
+#: themes/foodiepro-2.1.8/functions.php:733
 msgid "Personal data"
 msgstr "Données personnelles"
 
-#: themes/foodiepro-2.1.8/functions.php:729
+#: themes/foodiepro-2.1.8/functions.php:733
 msgid "Terms of use"
 msgstr "Conditions d'utilisation"
 
@@ -8686,6 +8693,12 @@ msgstr "Ces recettes pourraient également vous intéresser..."
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
 
+#~ msgid "<strong>ERROR</strong>: User pending "
+#~ msgstr "<strong> ERREUR</strong>: Utilisateur en attente d'"
+
+#~ msgid "approval"
+#~ msgstr "approbation"
+
 #~ msgid ""
 #~ "<span class=\"label\"> Age </span><span class=\"data\">%s years old</span>"
 #~ msgstr ""
@@ -8778,6 +8791,3 @@ msgstr "Ces articles pourraient également vous intéresser..."
 
 #~ msgid "No related posts."
 #~ msgstr "Pas d'articles similaires."
-
-#~ msgid "<strong>ERROR</strong>: User pending approval."
-#~ msgstr "<strong>ERREUR</strong> : Utilisateur en attente d'approbation."

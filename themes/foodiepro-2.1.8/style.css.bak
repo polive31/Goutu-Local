@@ -1059,7 +1059,7 @@ textarea:focus {
 
 a {
 	color:#010101;
-	/*text-decoration:underline;*/
+	text-decoration:underline;
 }
 
 a img {
@@ -1685,7 +1685,6 @@ h2.entry-title, .wpupg-post-title,
   margin:10px 0;
 }
 
-
 .home .elegant .widgettitle {
 	padding:0;
   margin:0;
@@ -1774,6 +1773,11 @@ Widgets
 .widget-wrap a, .widget-wrap li a {
 	text-decoration:none;
 	text-transform:capitalize;
+}
+
+.wp_widget_plugin_textarea a {
+    text-decoration: underline;
+    text-transform: none;
 }
 
 .widget-wrap .text a {
@@ -2533,6 +2537,7 @@ Custom Page Templates
 
 
 .entry-content {
+	text-align: justify;	
 	clear:both;
 }
 

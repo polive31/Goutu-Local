@@ -13,6 +13,7 @@ add_shortcode('menu-entry', 'display_menu_entry');
 
 function display_menu_entry($atts) {
 		$a = shortcode_atts( array(
+		'html' => 'true',
   	'item' => 'friendship_requests', // id, pseudo, name
 	), $atts );
 	
@@ -27,34 +28,38 @@ function display_menu_entry($atts) {
 			
 			case "friendship_requests":
 				$count = bp_friend_get_total_requests_count( $user_id );
-				$url .= '/friends/requests/';
+				$url .= 'friends/requests/';
 				$text = __('Friendship Requests', 'foodiepro');
 				break;	 		
 				
 			case "notifications":				
 				$count = bp_notifications_get_unread_notification_count( $user_id );
-				$url .= '/notifications/';
+				$url .= 'notifications/';
 				$text = __('Notifications', 'foodiepro');
 				break;	
 				
 			case "profile_edit":	
 				$count = '';			
-				$url .= '/profile/edit/group/1/';
+				$url .= 'profile/edit/group/1/';
 				$text = __('My Profile', 'foodiepro');
 ;				$class = 'fa-user-circle';
 				break;
 				
 			} /* End switch */
 				
-			/* Render HTML output */
-			if ($count=="0"||$count=="") $count=NULL;
-			else $count = ' (' . $count . ')';
+			/* Render output */
 			
-			$html = '<a class="' . $class . ' mega-menu-link" href="' . $url . '">' . $text . $count . '</a>';
+			if ($a['html']=='true') { // return whole html link markup
+				if ($count=="0"||$count=="") $count=NULL;
+				else $count = ' (' . $count . ')';
+				$link = '<a class="' . $class . ' mega-menu-link" href="' . $url . '">' . $text . $count . '</a>';
+			}
+			else //only return url
+				$link = $url;
 	
 	} /* End if loggued-in */
 
-	return $html;
+	return $link;
 	
 } /* End funtion */
 	

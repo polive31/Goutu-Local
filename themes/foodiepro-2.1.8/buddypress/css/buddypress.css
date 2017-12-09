@@ -308,6 +308,7 @@ a#edit:before {
 		display: block;
 		border: 1px solid #CCC;
 		padding: 5px;
+		text-decoration:none;
 	}
 	
 	#buddypress div.item-list-tabs ul li a:hover,

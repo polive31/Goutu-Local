@@ -488,8 +488,12 @@ add_action('wp_logout','go_home');
 add_filter('wp_authenticate_user', 'block_new_users',10,1);
 function block_new_users ($user) {
 		$role=$user->roles[0];
-    if ( $role=='pending' )
-    	return new WP_Error( 'user_not_approved', __( '<strong>ERROR</strong>: User pending ', 'foodiepro') . '<a href="' . get_page_link(10066) . '"> ' . __('approval', 'foodiepro') . ' </a>');
+    if ( $role=='pending' ) {
+    	//$approve_url=get_permalink(get_page_by_path('pending-approval'));
+    	$approve_url=get_permalink('10066');
+    	$msg=sprintf(__( '<strong>ERROR</strong>: User pending <a href="%s">approval</a>.', 'foodiepro' ),$approve_url);
+    	return new WP_Error( 'user_not_approved', $msg);
+    }
 		else
 			return $user;
 }

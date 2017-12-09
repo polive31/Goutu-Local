@@ -75,7 +75,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 			switch ($tax_id) {
 		    case 'author':
 					$url = "/social/membres";
-					$msg = __('authors', 'foodiepro');
+					$msg = __('members', 'foodiepro');
 					break;				
 		    case 'course':
 					$url = "/accueil/recettes/plats";
@@ -264,6 +264,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 	public function add_permalink_shortcode($atts) {
 		extract(shortcode_atts(array(
 			'id' => false,
+			'slug' => false,
 			'html' => false, // html markup or url only
 			'text' => ""  // default value if none supplied
 	    ), $atts));
@@ -271,7 +272,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		if (! $id) $url=$_SERVER['REQUEST_URI'];
 		else $url=get_permalink($id);
 			
-    if ($html) return "<a href='$url'>$text</a>";
+    if ($html) return '"<a href=' . $url . '>$text</a>"';
     else return $url;
 	}
 

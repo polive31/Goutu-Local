@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-12-09 14:50+0100\n"
-"PO-Revision-Date: 2017-12-09 14:54+0100\n"
+"POT-Creation-Date: 2017-12-10 11:21+0100\n"
+"PO-Revision-Date: 2017-12-10 11:23+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -650,15 +650,15 @@ msgstr ""
 msgid "Message:"
 msgstr "Répondre au message"
 
-#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:105
+#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:102
 msgid "Profile completed !"
 msgstr "Profil rempli !"
 
-#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:106
+#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:103
 msgid "Profile empty !"
 msgstr "Profil vide !"
 
-#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:116
+#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:113
 #, php-format
 msgid ""
 "<a href=\"%s\">Fill-in your profile</a> to make yourself visible from other "
@@ -868,7 +868,7 @@ msgstr ""
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-menus/user-menus.php:238
 #: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/post_type.php:28
 #: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/post_type.php:29
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:310
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:268
 msgid "No"
 msgstr ""
 
@@ -1657,7 +1657,7 @@ msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:145
 msgid "required"
-msgstr ""
+msgstr "requis"
 
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:206
 msgid "tbsp"
@@ -2876,7 +2876,7 @@ msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_options.php:1492
 msgid "Required Fields"
-msgstr ""
+msgstr "Informations requises"
 
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_options.php:1493
 msgid "Fields that are required to fill in."
@@ -5142,7 +5142,6 @@ msgstr ""
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:94
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:160
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:219
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:194
 #: themes/foodiepro-2.1.8/buddypress/members/single/profile/edit.php:73
 msgid "Close"
 msgstr ""
@@ -6840,21 +6839,14 @@ msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/members/register.php:59
 msgid ""
-"Registering for this site is easy. Just fill in the fields below, and we'll "
-"get a new account set up for you in no time."
+"Just fill in the fields below, and we'll get a new account set up for you in "
+"no time."
 msgstr ""
+"Renseignez les champs ci-dessous, et votre compte sera créé immédiatement "
+"après confirmation de votre adresse mail."
 
 #: themes/foodiepro-2.1.8/buddypress/members/register.php:74
 msgid "Account Details"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:76
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:87
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:98
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:110
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:272
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:288
-msgid "(required)"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/members/register.php:87
@@ -6871,6 +6863,9 @@ msgid ""
 "stronger, use upper and lower case letters, numbers and symbols like ! ? $ % "
 "^ & )."
 msgstr ""
+"Conseil : Le mot de passe doit comporter au moins 7 caractères. Pour le "
+"rendre plus robuste, utilisez une combinaison de majuscules, minuscules, "
+"chiffres et symboles tels que ! ? $ % ^ & ) ."
 
 #: themes/foodiepro-2.1.8/buddypress/members/register.php:110
 msgid "Confirm Password"
@@ -6880,50 +6875,41 @@ msgstr ""
 msgid "Profile Details"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:180
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:201
-#: themes/foodiepro-2.1.8/buddypress/members/single/profile/edit.php:59
-#: themes/foodiepro-2.1.8/buddypress/members/single/profile/edit.php:79
-#, php-format
-msgid "This field can be seen by: %s"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:189
-#: themes/foodiepro-2.1.8/buddypress/members/single/profile/edit.php:68
-msgid "Who can see this field?"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:266
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:224
 msgid "Blog Details"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:268
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:226
 msgid "Yes, I'd like to create a new site"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:272
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:230
 msgid "Blog URL"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:288
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:246
 msgid "Site Title"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:299
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:257
 msgid ""
 "I would like my site to appear in search engines, and in public listings "
 "around this network."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:309
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:267
 msgid "Yes"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:378
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:304
+msgid "Required fields"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:339
 msgid "Registration completed"
 msgstr "Inscription terminée"
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:379
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:340
 msgid ""
 "You have successfully completed the registration!<br>In order to create your "
 "account, please activate it via the email we have just sent to your address."
@@ -6932,7 +6918,7 @@ msgstr ""
 "merci de l'activer suivant les instructions dans le mail qui vient de vous "
 "être envoyé."
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:381
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:342
 msgid ""
 "You have successfully created your account! Please log in using the username "
 "and password you have just created."
@@ -7118,8 +7104,18 @@ msgstr ""
 msgid "Editing '%s' Profile Group"
 msgstr ""
 
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/edit.php:59
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/edit.php:79
+#, php-format
+msgid "This field can be seen by: %s"
+msgstr ""
+
 #: themes/foodiepro-2.1.8/buddypress/members/single/profile/edit.php:63
 msgid "Change"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/edit.php:68
+msgid "Who can see this field?"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:28
@@ -8692,6 +8688,9 @@ msgstr "Ces recettes pourraient également vous intéresser..."
 #: themes/foodiepro-2.1.8/yarpp-template-goutu.php:31
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
+
+#~ msgid "(required)"
+#~ msgstr "*"
 
 #~ msgid "<strong>ERROR</strong>: User pending "
 #~ msgstr "<strong> ERREUR</strong>: Utilisateur en attente d'"

@@ -258,9 +258,51 @@ a#edit:before {
 } */
 
 
+/* REGISTER PAGE
+--------------------------------------------  */
+#buddypress .standard-form #basic-details-section,
+#buddypress .standard-form #profile-details-section,
+#buddypress .standard-form #security-section,
+#buddypress .standard-form #blog-details-section {
+	float: left;
+	width: 50%;
+}
+
+#register-page .g-recaptcha {
+    float: left;
+}
+
+#register-page .registration-intro {
+    font-size: 18px;
+}
+
+#register-page legend,
+#register-page label {
+    float: left;
+}
+
+#register-page .required-field span {
+	display:none;
+}
+#register-page label.required-field:after,
+#register-page .required-field legend:after {
+	content:"*";
+	color:red;
+}
+
+#register-page .description {
+	float:left;
+	font-size: 16px;
+	margin: 15px 0;
+}
+
+#register-page .description #red{
+	color:red;
+}
 
 
-/* Member profile edit page
+
+/* PROFILE EDIT PAGE
 --------------------------------------------- */
 
 #buddypress #item-body .field_type_multiselect_custom_taxonomy {
@@ -268,6 +310,18 @@ a#edit:before {
     float:left;
    	width:230px;
     margin-right:70px;
+}
+
+select#field_84_day {
+    width: 50px;
+}
+
+select#field_84_month {
+    width: 100px;
+}
+
+select#field_84_year {
+    width: 80px;
 }
 
 
@@ -953,10 +1007,9 @@ body.activity-permalink #buddypress div.activity-comments div.acomment-content {
 	padding: 4px;
 	width: 95%;
 }
-#buddypress .standard-form #basic-details-section input[type=password],
-#buddypress .standard-form #blog-details-section input#signup_blog_url {
-	width: 35%;
-}
+#buddypress #register-page .reg_nota,
+#buddypress .standard-form #basic-details-section input[type="password"], 
+#buddypress .standard-form #blog-details-section input#signup_blog_url,
 #buddypress .standard-form#signup_form input[type=text],
 #buddypress .standard-form#signup_form input[type=email],
 #buddypress .standard-form#signup_form textarea,
@@ -981,11 +1034,6 @@ body.activity-permalink #buddypress div.activity-comments div.acomment-content {
 #buddypress .standard-form#send-reply textarea {
 	width: 97.5%;
 }
-#buddypress .standard-form p.description {
-	color: #767676;
-	font-size: 80%;
-	margin: 5px 0;
-}
 #buddypress .standard-form div.submit {
 	clear: both;
 	padding: 15px 0 0 0;
@@ -1009,18 +1057,6 @@ body.activity-permalink #buddypress div.activity-comments div.acomment-content {
 	margin-top: 5px;
 	outline: none;
 }
-#buddypress .standard-form #basic-details-section,
-#buddypress .standard-form #blog-details-section {
-	float: left;
-	width: 48%;
-}
-
-#buddypress .standard-form #profile-details-section,
-#buddypress .standard-form #security-section {
-	float: right;
-	width:48%;
-}
-
 #buddypress .standard-form #blog-details-section,
 #buddypress #notifications-bulk-management {
 	clear: left;
@@ -1050,11 +1086,11 @@ body.no-js #buddypress #messages-bulk-management #select-all-messages {
 	padding: 5px;
 	width: 160px;
 }
-#buddypress button,
+/*#buddypress button,
 #buddypress a.button,
 #buddypress input[type=submit],
 #buddypress input[type=button],
-#buddypress input[type=reset],
+#buddypress input[type=reset],*/
 #buddypress ul.button-nav li a,
 #buddypress .generic-button a,
 #buddypress .comment-reply-link,
@@ -1070,12 +1106,12 @@ a.bp-title-button {
 	text-transform:uppercase;
 	text-decoration: none;
 }
-#buddypress button:hover,
+/*#buddypress button:hover,
 #buddypress a.button:hover,
 #buddypress a.button:focus,
 #buddypress input[type=submit]:hover,
 #buddypress input[type=button]:hover,
-#buddypress input[type=reset]:hover,
+#buddypress input[type=reset]:hover,*/
 #buddypress ul.button-nav li a:hover,
 #buddypress ul.button-nav li.current a,
 #buddypress div.generic-button a:hover,
@@ -1940,6 +1976,10 @@ body.register #buddypress div.page ul {
 
 /* Profile Widget
 --------------------------------------------- */
+
+table.bp-profile-fields {
+	text-align: left;
+}
 
 .bp-profile-fields .label {
 	font-weight:bold;

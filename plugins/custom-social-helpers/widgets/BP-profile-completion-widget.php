@@ -84,9 +84,6 @@ class custom_progress_bar_widget extends WP_Widget {
 		if (bp_current_component() && ($user_id != bp_displayed_user_id()) ) return;
 		//echo "user id = " . $user_id;
 
-		//$user_percent = get_user_meta( $user_id, '_progress_bar_percent_level', true );
-		//$user_percent = get_user_meta( $user_id, '_progress_bar_percent_level', true );
-		// 2 successive accesses required for a mysterious reason
 		//echo "user percent from meta = " . $user_percent;
 
 		//$user_percent = ($user_percent!='')?$user_percent:bppp_custom_get_progression($user_id);
@@ -197,7 +194,6 @@ function bppp_custom_get_progression( $user_id = false ) {
 		//balance points for this item
 		$user_points += ($item_points)*$item['points'];
 
-		//$user_points+= $add_points;
 		//echo 'Weighted user points = ' . ($item_points*$item['points']) . '<br>';
 		//echo 'Cumulated user points = ' . $user_points . '<br>';
 
@@ -209,23 +205,11 @@ function bppp_custom_get_progression( $user_id = false ) {
 	//calculate total
 	if ( !empty( $total_points ) ) {
 			$percent = round( $user_points/$total_points*100 );
-			//$percent = $user_points/$total_points*100;
 	}
 
 	//echo 'Percentage = ' . $percent . '<br>';
 	//echo '</pre>';
-	
-	/**
-	* store percentage as usermeta
-	*
-	* since 1.0
-	*/
-	$percent_val = $percent;
-	$meta_key = '_progress_bar_percent_level';
 
-	if( empty( $total_points ) || $percent_val == 0 || $percent_val > 0 ) {
-		update_user_meta( $user_id, $meta_key, $percent_val );
-	}
 
 	return (int)$percent;
 }

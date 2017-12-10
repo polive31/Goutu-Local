@@ -266,7 +266,6 @@ ul.wpuf-form li .wpuf-fields a.file-selector,
 a.comment-reply-link,
 .frontier-list-item-content#frontier-post-actions a {
 	border-radius:3px;  /* P.O. custom */
-	font-size:11px; /* P.O. custom */
 	margin:2px;  /* P.O. Origine 0 */
 	text-decoration:none;
 	background-image:none;
@@ -628,10 +627,6 @@ h6 {
 	text-transform:uppercase;
 }
 
-
-
-
-
 /* FONTS 
 --------------------------------------------- */
 
@@ -641,6 +636,11 @@ body {
 	color:#333;
 	font-weight:300;
 	line-height:1.625;	
+}
+
+body #register-page {
+	font-size: 16px;
+	max-width: 780px;    
 }
 
 h1 {
@@ -694,7 +694,12 @@ a.comment-reply-link,
 .post-meta,
 .widget.back ul li a {
 	/*font-family:'Droid Serif', georgia, serif;*/
+	font-size:11px;
 	font-family:'Lato', sans-serif;
+}
+
+#signup_blog_url {
+	font-size:13px;
 }
 
 /* Nav menu */
@@ -1776,8 +1781,8 @@ Widgets
 }
 
 .wp_widget_plugin_textarea a {
-    text-decoration: underline;
-    text-transform: none;
+  text-decoration: underline;
+  text-transform: none;
 }
 
 .widget-wrap .text a {
@@ -3090,7 +3095,7 @@ a.more-link,
 
 .content img.rpwe-thumb {
 	margin:0;
-  object-fit:contain;
+  object-fit: cover;
   flex:1;
 }
 

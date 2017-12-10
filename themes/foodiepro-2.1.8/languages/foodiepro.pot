@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-12-09 14:50+0100\n"
+"POT-Creation-Date: 2017-12-10 11:21+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -665,15 +665,15 @@ msgstr ""
 msgid "Message:"
 msgstr ""
 
-#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:105
+#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:102
 msgid "Profile completed !"
 msgstr ""
 
-#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:106
+#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:103
 msgid "Profile empty !"
 msgstr ""
 
-#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:116
+#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:113
 #, php-format
 msgid ""
 "<a href=\"%s\">Fill-in your profile</a> to make yourself visible from other "
@@ -877,7 +877,7 @@ msgstr ""
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-menus/user-menus.php:238
 #: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/post_type.php:28
 #: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/post_type.php:29
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:310
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:268
 msgid "No"
 msgstr ""
 
@@ -4977,7 +4977,6 @@ msgstr ""
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:94
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:160
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:219
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:194
 #: themes/foodiepro-2.1.8/buddypress/members/single/profile/edit.php:73
 msgid "Close"
 msgstr ""
@@ -6633,21 +6632,12 @@ msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/members/register.php:59
 msgid ""
-"Registering for this site is easy. Just fill in the fields below, and we'll "
-"get a new account set up for you in no time."
+"Just fill in the fields below, and we'll get a new account set up for you in "
+"no time."
 msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/members/register.php:74
 msgid "Account Details"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:76
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:87
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:98
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:110
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:272
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:288
-msgid "(required)"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/members/register.php:87
@@ -6673,56 +6663,47 @@ msgstr ""
 msgid "Profile Details"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:180
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:201
-#: themes/foodiepro-2.1.8/buddypress/members/single/profile/edit.php:59
-#: themes/foodiepro-2.1.8/buddypress/members/single/profile/edit.php:79
-#, php-format
-msgid "This field can be seen by: %s"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:189
-#: themes/foodiepro-2.1.8/buddypress/members/single/profile/edit.php:68
-msgid "Who can see this field?"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:266
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:224
 msgid "Blog Details"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:268
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:226
 msgid "Yes, I'd like to create a new site"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:272
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:230
 msgid "Blog URL"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:288
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:246
 msgid "Site Title"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:299
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:257
 msgid ""
 "I would like my site to appear in search engines, and in public listings "
 "around this network."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:309
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:267
 msgid "Yes"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:378
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:304
+msgid "Required fields"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:339
 msgid "Registration completed"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:379
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:340
 msgid ""
 "You have successfully completed the registration!<br>In order to create your "
 "account, please activate it via the email we have just sent to your address."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:381
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:342
 msgid ""
 "You have successfully created your account! Please log in using the username "
 "and password you have just created."
@@ -6905,8 +6886,18 @@ msgstr ""
 msgid "Editing '%s' Profile Group"
 msgstr ""
 
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/edit.php:59
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/edit.php:79
+#, php-format
+msgid "This field can be seen by: %s"
+msgstr ""
+
 #: themes/foodiepro-2.1.8/buddypress/members/single/profile/edit.php:63
 msgid "Change"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/edit.php:68
+msgid "Who can see this field?"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:28

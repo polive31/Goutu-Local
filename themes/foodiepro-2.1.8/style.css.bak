@@ -4107,8 +4107,6 @@ Site Footer
 	}
 	
 	.home-page .site-header {
-		/*background-position:center !important;
-		background:none!important;*/
     height:auto;
     padding:0;
 	}	

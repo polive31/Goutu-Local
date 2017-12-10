@@ -73,41 +73,49 @@
 
 				<h4><?php _e( 'Account Details', 'buddypress' ); ?></h4>
 
-				<label for="signup_username" class="required-field"><?php _e( 'Username', 'buddypress' ); ?> </label>
-				<?php
+				<div class="bp-reg-field">
+					<label for="signup_username" class="required-field"><?php _e( 'Username', 'foodiepro' ); ?> </label>
+					<?php
 
-				/**
-				 * Fires and displays any member registration username errors.
-				 *
-				 * @since 1.1.0
-				 */
-				do_action( 'bp_signup_username_errors' ); ?>
-				<input type="text" name="signup_username" id="signup_username" value="<?php bp_signup_username_value(); ?>" <?php bp_form_field_attributes( 'username' ); ?>/>
+					/**
+					 * Fires and displays any member registration username errors.
+					 *
+					 * @since 1.1.0
+					 */
+					do_action( 'bp_signup_username_errors' ); ?>
+					<input type="text" name="signup_username" id="signup_username" value="<?php bp_signup_username_value(); ?>" <?php bp_form_field_attributes( 'username' ); ?>/>
+					<p class="description"><?php _e('This is the identifier you will use for logging in, and under which you\'ll appear to others in the site','foodiepro'); ?></p>
+				</div>
 
-				<label for="signup_email" class="required-field"><?php _e( 'Email Address', 'buddypress' ); ?></label>
-				<?php
 
-				/**
-				 * Fires and displays any member registration email errors.
-				 *
-				 * @since 1.1.0
-				 */
-				do_action( 'bp_signup_email_errors' ); ?>
-				<input type="email" name="signup_email" id="signup_email" value="<?php bp_signup_email_value(); ?>" <?php bp_form_field_attributes( 'email' ); ?>/>
+				<div class="bp-reg-field">
+					<label for="signup_email" class="required-field"><?php _e( 'Email Address', 'buddypress' ); ?></label>
+					<?php
 
-				<label for="signup_password" class="required-field"><?php _e( 'Choose a Password', 'buddypress' ); ?> </label>
-				<?php
+					/**
+					 * Fires and displays any member registration email errors.
+					 *
+					 * @since 1.1.0
+					 */
+					do_action( 'bp_signup_email_errors' ); ?>
+					<input type="email" name="signup_email" id="signup_email" value="<?php bp_signup_email_value(); ?>" <?php bp_form_field_attributes( 'email' ); ?>/>
+				</div>
 
-				/**
-				 * Fires and displays any member registration password errors.
-				 *
-				 * @since 1.1.0
-				 */
-				do_action( 'bp_signup_password_errors' ); ?>
-				<input type="password" name="signup_password" id="signup_password" value="" class="password-entry" <?php bp_form_field_attributes( 'password' ); ?>/>
-				<div id="pass-strength-result"></div>
-				<p class="reg_nota"> <?php _e('Hint: The password should be at least seven characters long. To make it stronger, use upper and lower case letters, numbers and symbols like ! ? $ % ^ & ).', 'foodiepro'); ?> </p>
-				<label for="signup_password_confirm" class="required-field"><?php _e( 'Confirm Password', 'buddypress' ); ?> </label>
+				<div class="bp-reg-field">
+					<label for="signup_password" class="required-field"><?php _e( 'Choose a Password', 'buddypress' ); ?> </label>
+					<?php
+
+					/**
+					 * Fires and displays any member registration password errors.
+					 *
+					 * @since 1.1.0
+					 */
+					do_action( 'bp_signup_password_errors' ); ?>
+					<input type="password" name="signup_password" id="signup_password" value="" class="password-entry" <?php bp_form_field_attributes( 'password' ); ?>/>
+					<div id="pass-strength-result"></div>
+					<p class="reg_nota"> <?php _e('Hint: The password should be at least seven characters long. To make it stronger, use upper and lower case letters, numbers and symbols like ! ? $ % ^ & ).', 'foodiepro'); ?> </p>
+					<label for="signup_password_confirm" class="required-field"><?php _e( 'Confirm Password', 'buddypress' ); ?> </label>
+				</div>
 				<?php
 
 				/**
@@ -301,7 +309,7 @@
 			do_action( 'bp_before_registration_submit_buttons' ); ?>
 
 
-			<p class="description"> <span id="red">*</span><?php _e('Required informations','foodiepro');?></p>	
+			<p class="description"> <span id="red">*</span><?php _e('Required fields','foodiepro');?></p>	
 
 			<div class="submit">
 				<input type="submit" name="signup_submit" id="signup_submit" value="<?php esc_attr_e( 'Complete Sign Up', 'buddypress' ); ?>" />

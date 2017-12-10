@@ -73,50 +73,58 @@
 
 				<h4><?php _e( 'Account Details', 'buddypress' ); ?></h4>
 
-				<label for="signup_username" class="required-field"><?php _e( 'Username', 'buddypress' ); ?> </label>
+				<div class="bp-reg-field">
+					<label for="signup_username" class="required-field"><?php _e( 'Username', 'foodiepro' ); ?> </label>
+					<?php
+
+					/**
+					 * Fires and displays any member registration username errors.
+					 *
+					 * @since 1.1.0
+					 */
+					do_action( 'bp_signup_username_errors' ); ?>
+					<input type="text" name="signup_username" id="signup_username" value="<?php bp_signup_username_value(); ?>" <?php bp_form_field_attributes( 'username' ); ?>/>
+					<p class="description"><?php _e('This is the identifier you will use for logging in, and under which you\'ll appear to others in the site','foodiepro'); ?></p>
+				</div>
+
+
+				<div class="bp-reg-field">
+					<label for="signup_email" class="required-field"><?php _e( 'Email Address', 'buddypress' ); ?></label>
+					<?php
+
+					/**
+					 * Fires and displays any member registration email errors.
+					 *
+					 * @since 1.1.0
+					 */
+					do_action( 'bp_signup_email_errors' ); ?>
+					<input type="email" name="signup_email" id="signup_email" value="<?php bp_signup_email_value(); ?>" <?php bp_form_field_attributes( 'email' ); ?>/>
+				</div>
+
+				<div class="bp-reg-field">
+					<label for="signup_password" class="required-field"><?php _e( 'Choose a Password', 'buddypress' ); ?> </label>
+					<?php
+
+					/**
+					 * Fires and displays any member registration password errors.
+					 *
+					 * @since 1.1.0
+					 */
+					do_action( 'bp_signup_password_errors' ); ?>
+					<input type="password" name="signup_password" id="signup_password" value="" class="password-entry" <?php bp_form_field_attributes( 'password' ); ?>/>
+					<div id="pass-strength-result"></div>
+					<p class="reg_nota"> <?php _e('Hint: The password should be at least seven characters long. To make it stronger, use upper and lower case letters, numbers and symbols like ! ? $ % ^ & ).', 'foodiepro'); ?> </p>
+					<label for="signup_password_confirm" class="required-field"><?php _e( 'Confirm Password', 'buddypress' ); ?> </label>
 				<?php
 
-				/**
-				 * Fires and displays any member registration username errors.
-				 *
-				 * @since 1.1.0
-				 */
-				do_action( 'bp_signup_username_errors' ); ?>
-				<input type="text" name="signup_username" id="signup_username" value="<?php bp_signup_username_value(); ?>" <?php bp_form_field_attributes( 'username' ); ?>/>
-
-				<label for="signup_email" class="required-field"><?php _e( 'Email Address', 'buddypress' ); ?></label>
-				<?php
-
-				/**
-				 * Fires and displays any member registration email errors.
-				 *
-				 * @since 1.1.0
-				 */
-				do_action( 'bp_signup_email_errors' ); ?>
-				<input type="email" name="signup_email" id="signup_email" value="<?php bp_signup_email_value(); ?>" <?php bp_form_field_attributes( 'email' ); ?>/>
-
-				<label for="signup_password" class="required-field"><?php _e( 'Choose a Password', 'buddypress' ); ?> </label>
-				<?php
-
-				/**
-				 * Fires and displays any member registration password errors.
-				 *
-				 * @since 1.1.0
-				 */
-				do_action( 'bp_signup_password_errors' ); ?>
-				<input type="password" name="signup_password" id="signup_password" value="" class="password-entry" <?php bp_form_field_attributes( 'password' ); ?>/>
-				<div id="pass-strength-result"></div>
-				<p class="reg_nota"> <?php _e('Hint: The password should be at least seven characters long. To make it stronger, use upper and lower case letters, numbers and symbols like ! ? $ % ^ & ).', 'foodiepro'); ?> </p>
-				<label for="signup_password_confirm" class="required-field"><?php _e( 'Confirm Password', 'buddypress' ); ?> </label>
-				<?php
-
-				/**
-				 * Fires and displays any member registration password confirmation errors.
-				 *
-				 * @since 1.1.0
-				 */
-				do_action( 'bp_signup_password_confirm_errors' ); ?>
-				<input type="password" name="signup_password_confirm" id="signup_password_confirm" value="" class="password-entry-confirm" <?php bp_form_field_attributes( 'password' ); ?>/>
+					/**
+					 * Fires and displays any member registration password confirmation errors.
+					 *
+					 * @since 1.1.0
+					 */
+					do_action( 'bp_signup_password_confirm_errors' ); ?>
+					<input type="password" name="signup_password_confirm" id="signup_password_confirm" value="" class="password-entry-confirm" <?php bp_form_field_attributes( 'password' ); ?>/>
+				</div>
 
 				<?php
 

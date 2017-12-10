@@ -860,8 +860,12 @@ h3.rpwe-title a {
 /* Widgets 
 ----------------------------------------------------------------------*/
 
-/* BP What's New */
+/* Latest registered */
+.avatar-block img {
+    margin: 1px;
+}
 
+/* BP What's New */
 .widget_bp_whats_new {
 	padding:10px 20px;
 	/*border:1px dashed #dedede;*/
@@ -2092,13 +2096,13 @@ li.share-icons a {
   display: block;
 	-webkit-filter: grayscale(100%);  
 	filter: grayscale(100%);	
-	opacity:0.6;
+	opacity:1;
 }
 
 li.share-icons a:hover {
 	-webkit-filter: none;  
 	filter: none;	
-	opacity:1;
+	opacity:0.5;
 }
 
 li.share-icons.size-big a {

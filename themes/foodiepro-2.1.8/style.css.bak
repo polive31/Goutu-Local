@@ -2091,12 +2091,14 @@ li.share-icons {
 li.share-icons a {
   display: block;
 	-webkit-filter: grayscale(100%);  
-	opacity:0.6;
+	filter: grayscale(100%);	
+	opacity:1;
 }
 
 li.share-icons a:hover {
 	-webkit-filter: none;  
-	opacity:1;
+	filter: none;	
+	opacity:0.5;
 }
 
 li.share-icons.size-big a {

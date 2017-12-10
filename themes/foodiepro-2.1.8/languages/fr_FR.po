@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-12-10 15:47+0100\n"
-"PO-Revision-Date: 2017-12-10 15:51+0100\n"
+"POT-Creation-Date: 2017-12-10 16:05+0100\n"
+"PO-Revision-Date: 2017-12-10 16:06+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -549,7 +549,7 @@ msgid "Log Out"
 msgstr "Déconnexion"
 
 #: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:112
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:76
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:77
 msgid "Username"
 msgstr "Pseudo"
 
@@ -868,7 +868,7 @@ msgstr ""
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-menus/user-menus.php:238
 #: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/post_type.php:28
 #: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/post_type.php:29
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:268
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:276
 msgid "No"
 msgstr ""
 
@@ -6850,14 +6850,22 @@ msgid "Account Details"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/members/register.php:87
+msgid ""
+"This is the identifier you will use for logging in, and under which you'll "
+"appear to others in the site."
+msgstr ""
+"Vous utiliserez cet identifiant pour vous connecter au site, et c'est "
+"également le pseudonyme sous lequel vous apparaîtrez aux autres membres."
+
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:92
 msgid "Email Address"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:98
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:105
 msgid "Choose a Password"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:109
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:116
 msgid ""
 "Hint: The password should be at least seven characters long. To make it "
 "stronger, use upper and lower case letters, numbers and symbols like ! ? $ % "
@@ -6867,49 +6875,49 @@ msgstr ""
 "rendre plus robuste, utilisez une combinaison de majuscules, minuscules, "
 "chiffres et symboles tels que ! ? $ % ^ & ) ."
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:110
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:117
 msgid "Confirm Password"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:156
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:164
 msgid "Profile Details"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:224
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:232
 msgid "Blog Details"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:226
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:234
 msgid "Yes, I'd like to create a new site"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:230
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:238
 msgid "Blog URL"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:246
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:254
 msgid "Site Title"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:257
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:265
 msgid ""
 "I would like my site to appear in search engines, and in public listings "
 "around this network."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:267
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:275
 msgid "Yes"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:304
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:312
 msgid "Required fields"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:339
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:347
 msgid "Registration completed"
 msgstr "Inscription terminée"
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:340
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:348
 msgid ""
 "You have successfully completed the registration!<br>In order to create your "
 "account, please activate it via the email we have just sent to your address."
@@ -6918,7 +6926,7 @@ msgstr ""
 "merci de l'activer suivant les instructions dans le mail qui vient de vous "
 "être envoyé."
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:342
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:350
 msgid ""
 "You have successfully created your account! Please log in using the username "
 "and password you have just created."

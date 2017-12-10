@@ -201,7 +201,7 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 
 li.ingredient-group,
 .recipe-instruction-group {
-	font-family:"Podkova";
+	font-family:"Oswald";
   display: block;
  	margin-bottom:10px;
  	color:#737373;
@@ -231,7 +231,7 @@ ol.wpurp-recipe-instructions {
 }
 
 li.wpurp-recipe-instruction {
-	font-family:"Podkova";
+	font-family:"Oswald";
   list-style-position: inside;
   margin-bottom: 20px;
   text-align:justify;
@@ -320,6 +320,8 @@ li.wpurp-recipe-instruction span {
 	content:"+"; /* Plus */
 	display:block;
 }
+
+
 
 
 /* MEDIA QUERIES 

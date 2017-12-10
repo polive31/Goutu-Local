@@ -28,7 +28,7 @@ class Custom_Recipe_Templates {
 		//wp_deregister_script('wpurp_script_minified');
 		//wp_enqueue_script( 'wpurp_custom_script', get_stylesheet_directory_uri() . '/assets/js/wpurp_custom.js', array('jquery'), WPURP_VERSION, true );
 
-		add_action( 'genesis_before_content', array($this,'display_debug_info') );
+		//add_action( 'genesis_before_content', array($this,'display_debug_info') );
 
 	}
 

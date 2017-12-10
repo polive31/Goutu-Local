@@ -35,7 +35,7 @@ new CustomStarRatingsCommentsList();
 function load_custom_rating_style_sheet() {
 	wp_enqueue_style( 'custom-ratings',  plugins_url( '/assets/custom-star-rating.css', __FILE__ ), array(), CHILD_THEME_VERSION );
 }
-add_action( 'wp_enqueue_scripts', 'load_custom_rating_style_sheet' );
+//add_action( 'wp_enqueue_scripts', 'load_custom_rating_style_sheet' );
 
 /* Chargement du text domain */
 function custom_star_rating_load_textdomain() {

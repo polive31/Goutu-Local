@@ -50,8 +50,6 @@ if ( bp_has_profile( 'profile_group_id=' . bp_get_current_profile_group_id() ) )
 				 */
 				do_action( 'bp_custom_profile_edit_fields_pre_visibility' );?>
 
-				<p class="description"><?php bp_the_profile_field_description(); ?></p>
-
 				<?php if ( bp_current_user_can( 'bp_xprofile_change_field_visibility' ) ) : ?>
 					<p class="field-visibility-settings-toggle" id="field-visibility-settings-toggle-<?php bp_the_profile_field_id() ?>">
 						<?php

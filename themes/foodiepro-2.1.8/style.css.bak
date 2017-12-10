@@ -703,6 +703,10 @@ a.comment-reply-link,
 }
 
 /* Nav menu */
+.mega-search input {
+    font-size: 16px;
+}
+
 span.bp_counter,
 .author-box-title {
 	font-family:"Lato","Helvetica Neue",sans-serif;
@@ -2072,9 +2076,15 @@ form[role="search"] {
 	text-align:left;
 }
 
+/*===== BUDDYPRESS COMMONS =======================
+------- (not specific to buddypress pages) -------
+
+
+
+
 
 /* Plugins
----------------------------------------------------------------------------------------------------- */
+-------------------------------------------------------- */
 
 .yarpp-related {
     float: left;
@@ -2135,7 +2145,7 @@ td.rating-title {
 		display: block;
 		width: 24px;
 		height: 24px;
-		background: url('../images/rating-star.png') -24px 0/48px 24px no-repeat;
+		background: url('images/rating-star.png') -24px 0/48px 24px no-repeat;
 }
 
 
@@ -3764,6 +3774,7 @@ font-size:11px;
 
 /* BP Login Widget */
 /* Specific #buddypress styles in /buddypress/css/buddypress.css */
+
 .footer-widgets .widget_bp_custom_login_widget div#logged-in {
 	margin-top:30px;
 	display:-webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
@@ -3776,6 +3787,47 @@ font-size:11px;
 	flex-flow:row nowrap;
 	/*justify-content:center;*/
 }
+
+
+/* BP Custom Login in Footer
+--------------------------------------------- */
+
+/*.buddypress .bp-login-widget-user-link {
+	margin-top:30px;
+}*/
+
+.buddypress .bp-login-widget-user-link a {
+	font-family : "PT Sans Narrow","Helvetica Neue",sans-serif;
+	text-transform : uppercase;
+	font-weight : normal;
+	font-size : 24px;
+	color:#555;
+}
+
+.buddypress .bp-login-widget-user-link a:hover {
+	color:#555;
+}
+
+.buddypress .bp-login-widget-user-logout {
+	margin-top:10px;
+	/*padding-left:50px;*/
+}
+
+.buddypress #bp-login-widget-form label {
+	margin-top:8px;
+	margin-bottom:4px;
+}
+
+.widget.buddypress .bp-login-widget-user-avatar {
+	margin:auto;
+}
+
+.buddypress .bp-login-widget-user-avatar img.avatar {
+	width:120px;
+	height:120px;
+	border: 4px solid #FFF;
+}
+
 
 .bp-login-widget-user-links {
   margin:auto;
@@ -4043,17 +4095,12 @@ Site Footer
 	
 	.tilde .widgettitle:before,
 	.tilde .widgettitle:after {
-		content:"";
+		display:none;
 	}
 
 	h3.widgettitle {
 		font-weight: bold;
 	}
-
-	/*.home-page .sidebar {
-		display:block;
-	}	*/
-	
 	
 	nav.nav-secondary {
     margin-top: 10px;

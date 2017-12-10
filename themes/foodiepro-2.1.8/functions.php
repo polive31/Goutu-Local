@@ -396,7 +396,7 @@ function load_background_stylesheet() {
 
 /* Optimize page loading by dequeuing specific CSS stylesheets loading actions */
 add_action('wp_enqueue_scripts','dequeue_header_styles');
-function dequeue_header_styles() {
+function dequeue_header_styles() {	
   wp_deregister_style('yarppWidgetCss');
   wp_dequeue_style('yarppWidgetCss');
   wp_deregister_style('galleria-fs');
@@ -422,6 +422,14 @@ function dequeue_footer_styles() {
   wp_dequeue_style('yarpp-thumbnails-yarpp-thumbnail');
 }
 
+add_action('wp_enqueue_scripts','custom_dequeue_bp_styles');
+function custom_dequeue_bp_styles() {
+	if (!function_exists( 'bp_is_blog_page')) return;
+	if (bp_is_blog_page()) {
+  	wp_deregister_style('bp-child-css');
+  	wp_dequeue_style('bp-child-css');
+	}
+}
 
 ///* Disable buddypress widgets */ => Fonctionne pas
 //add_action('widgets_init', 'unregister_widgets', 100); 

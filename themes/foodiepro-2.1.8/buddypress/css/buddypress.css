@@ -1938,16 +1938,6 @@ body.register #buddypress div.page ul {
 	margin-right: 10px;
 }
 
-.widget.buddypress .bp-login-widget-user-avatar {
-	/*float: left;*/
-	margin:auto;
-}
-
-.bp-login-widget-user-avatar img.avatar {
-	height: 40px;
-	width: 40px;
-}
-
 .widget.buddypress .bp-login-widget-user-links > div {
 	/*padding-left: 60px;*/
 }
@@ -2022,42 +2012,6 @@ table.bp-profile-fields {
 
 .widget.buddypress .bp-login-widget-user-links>div.bp-login-widget-user-link a {
 	font-weight:normal;
-}
-
-
-/* BP Custom Login in Footer
---------------------------------------------- */
-
-/*.buddypress .bp-login-widget-user-link {
-	margin-top:30px;
-}*/
-
-.buddypress .bp-login-widget-user-link a {
-	font-family : "PT Sans Narrow","Helvetica Neue",sans-serif;
-	text-transform : uppercase;
-	font-weight : normal;
-	font-size : 24px;
-	color:#555;
-}
-
-.buddypress .bp-login-widget-user-link a:hover {
-	color:#555;
-}
-
-.buddypress .bp-login-widget-user-logout {
-	margin-top:10px;
-	/*padding-left:50px;*/
-}
-
-.buddypress #bp-login-widget-form label {
-	margin-top:8px;
-	margin-bottom:4px;
-}
-
-.buddypress .bp-login-widget-user-avatar img.avatar {
-	width:120px;
-	height:120px;
-	border: 4px solid #FFF;
 }
 
 

@@ -724,15 +724,10 @@ function change_comment_form_defaults( $defaults ) {
   return $defaults;
 }
 
-/* =================================================================*/
-/* =          AVATARS
-/* =================================================================*/
-
-// Moved to plugins/bp-custom.php
 
 
 /* =================================================================*/
-/* =                      
+/* =      FOOTER           
 /* =================================================================*/
 
 
@@ -744,3 +739,4 @@ function sp_footer_creds_filter( $creds ) {
 }
 
 add_filter('genesis_footer_creds_text', 'sp_footer_creds_filter');
+

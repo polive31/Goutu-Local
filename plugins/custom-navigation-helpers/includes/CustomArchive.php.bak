@@ -115,9 +115,9 @@ class CustomArchive {
 		
 		foreach ($occasion as $obj) {
 			if ($obj->slug == $needle) {
-				//if ( $currentMonth==11 || $currentMonth==12 ) {
+				if ( $currentMonth==11 || $currentMonth==12 ) {
 					return true;
-				//}
+				}
 			}
 		}
 	}

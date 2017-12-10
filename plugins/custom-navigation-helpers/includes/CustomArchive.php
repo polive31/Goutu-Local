@@ -30,7 +30,7 @@ class CustomArchive {
 
 	/* Class attributes initialization
 	--------------------------------------------- */		
-	function hydrate() {
+	public function hydrate() {
 		$this->orderby = get_query_var('orderby','ASC');
 	}			
 	

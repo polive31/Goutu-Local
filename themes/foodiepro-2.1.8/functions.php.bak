@@ -422,7 +422,7 @@ function dequeue_footer_styles() {
   wp_dequeue_style('yarpp-thumbnails-yarpp-thumbnail');
 }
 
-//add_action('wp_enqueue_scripts','custom_dequeue_bp_styles');
+add_action('wp_enqueue_scripts','custom_dequeue_bp_styles');
 function custom_dequeue_bp_styles() {
 	if (!function_exists( 'bp_is_blog_page')) return;
 	if (bp_is_blog_page()) {
@@ -724,15 +724,10 @@ function change_comment_form_defaults( $defaults ) {
   return $defaults;
 }
 
-/* =================================================================*/
-/* =          AVATARS
-/* =================================================================*/
-
-// Moved to plugins/bp-custom.php
 
 
 /* =================================================================*/
-/* =                      
+/* =      FOOTER           
 /* =================================================================*/
 
 
@@ -744,3 +739,19 @@ function sp_footer_creds_filter( $creds ) {
 }
 
 add_filter('genesis_footer_creds_text', 'sp_footer_creds_filter');
+
+
+/* =================================================================*/
+/* =      SOCIAL SHARING
+/* =================================================================*/
+
+add_filter( 'the_content', 'custom_social_sharing_buttons');
+function custom_social_sharing_buttons($content) {
+	if (is_singular() || is_home()){
+		// Get current page URL 
+		$page_url = urlencode(get_permalink());
+		//$page_url = ;
+		$content .= get_sharing_buttons($page_url);
+	}
+	return $content;
+}

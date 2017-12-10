@@ -2077,21 +2077,66 @@ form[role="search"] {
 	text-align:left;
 }
 
-/*===== BUDDYPRESS COMMONS =======================
-------- (not specific to buddypress pages) -------
-
-
-
-
 
 /* Plugins
 -------------------------------------------------------- */
 
+/* Custom Social Sharing Buttons
+----------------------------------------------*/
+li.share-icons {
+  display: inline-block;
+  margin: 10px;
+}
+
+li.share-icons a {
+  display: block;
+	-webkit-filter: grayscale(100%);  
+	filter: grayscale(100%);	
+	opacity:0.6;
+}
+
+li.share-icons a:hover {
+	-webkit-filter: none;  
+	filter: none;	
+	opacity:1;
+}
+
+li.share-icons.size-big a {
+  width: 96px;
+  height: 96px;
+  background:url('images/social-icons/icons-big.png') no-repeat;
+}
+
+li.share-icons.size-medium a {
+  width: 48px;
+  height: 48px;
+  background:url('images/social-icons/icons-medium.png') no-repeat;
+}
+
+.size-medium#facebook a {
+	background-position: 0 0;
+}
+
+.size-medium#twitter a {
+	background-position: -48px 0;
+}
+
+.size-medium#googleplus a {
+	background-position: -96px 0;
+}
+
+.size-medium#mailto a {
+	background-position: -144px 0;
+}
+
+/* YARPP 
+----------------------------------------------*/
 .yarpp-related {
     float: left;
 }
 
-/* Fullscreen Galleria */
+/* Fullscreen Galleria 
+----------------------------------------------*/
 #galleria {
 	background: rgba(255, 255, 255, 0.7)!important;
 }

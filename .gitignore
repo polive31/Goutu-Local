@@ -78,6 +78,7 @@ plugins/search-everything/*
 !plugins/custom-google-tag-manager/
 !plugins/custom-navigation-helpers/
 !plugins/custom-social-helpers/
+!plugins/custom-social-sharing-buttons/
 !plugins/custom-star-rating/
 !plugins/custom-gallery-shortcode/
 !plugins/custom-recipe-templates/

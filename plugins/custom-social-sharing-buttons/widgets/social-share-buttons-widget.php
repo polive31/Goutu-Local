@@ -15,7 +15,7 @@ parent::__construct(
 'social_share_buttons_widget', 
 
 // Widget name will appear in UI
-__('Custom Social Share Buttons Widget', 'foodiepro'), /*$widget_ops ???*/
+__('Custom Social Share Buttons', 'foodiepro'), /*$widget_ops ???*/
 
 // Widget description
 array( 'description' => __( 'Displays share buttons of selected social networks', 'foodiepro' ), ) 

@@ -922,6 +922,7 @@ td#whats-new-avatar img {
 	background: linear-gradient(to right, #ffb822  0%,#bbff35 100%)!important;
 }
 
+.sidebar .widget-wrap .wp_widget_plugin_textarea a,
 p.wp_widget_plugin_textarea {
   font-size: 14px;
   font-style: italic;

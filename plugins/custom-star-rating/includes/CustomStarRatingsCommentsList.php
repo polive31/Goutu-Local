@@ -11,6 +11,7 @@ class CustomStarRatingsCommentsList extends CustomStarRatings {
 	public function __construct() {
 		parent::__construct();
 		add_action( 'genesis_before_content', array($this,'custom_genesis_list_comments') );
+		add_filter('genesis_title_comments', array($this,'add_comments_title_markup'), 15, 1 );
 	}
 	
 	/* Output debug information 
@@ -20,6 +21,17 @@ class CustomStarRatingsCommentsList extends CustomStarRatings {
 		//$this->dbg('Rated types: ', self::$ratedPostTypes );
 	}	
 	
+
+
+	/* Add anchor to comments section title
+	-------------------------------------------------------*/
+
+	public function add_comments_title_markup($html) {
+		$html .= '<a id="comments-section"></a>';
+		return $html;
+	}
+
+
 	
 	/* Remove the genesis_default_list_comments function
 		 Replace comment list with one including ratings
@@ -103,7 +115,7 @@ class CustomStarRatingsCommentsList extends CustomStarRatings {
   
 	<?php
 	}
-	
+
 	
 	/* Change the comment reply link to display our own comment form */
 	//add_filter('comment_reply_link', 'remove_nofollow', 420, 4);

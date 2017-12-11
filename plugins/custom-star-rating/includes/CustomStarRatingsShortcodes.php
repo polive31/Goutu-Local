@@ -170,7 +170,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 			}
 			if ( $display_style=='full' && !empty( $votes ) ) {
 				$rating_plural=sprintf(_n('%s review','%s reviews',$votes,'custom-star-rating'), $votes); ?>
-				<td class="rating-details">(<?php echo $rating_plural ?>)</td> 
+				<td class="rating-details"><a href="#comments-section"><?php echo $rating_plural ?></a></td> 
 			<?php 
 			}?>
 			</tr>

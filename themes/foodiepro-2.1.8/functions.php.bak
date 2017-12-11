@@ -740,18 +740,3 @@ function sp_footer_creds_filter( $creds ) {
 
 add_filter('genesis_footer_creds_text', 'sp_footer_creds_filter');
 
-
-/* =================================================================*/
-/* =      SOCIAL SHARING
-/* =================================================================*/
-
-add_filter( 'the_content', 'custom_social_sharing_buttons');
-function custom_social_sharing_buttons($content) {
-	if (is_singular() || is_home()){
-		// Get current page URL 
-		$page_url = urlencode(get_permalink());
-		//$page_url = ;
-		$content .= get_sharing_buttons($page_url);
-	}
-	return $content;
-}

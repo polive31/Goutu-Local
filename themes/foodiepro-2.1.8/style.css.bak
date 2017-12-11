@@ -860,8 +860,12 @@ h3.rpwe-title a {
 /* Widgets 
 ----------------------------------------------------------------------*/
 
-/* BP What's New */
+/* Latest registered */
+.avatar-block img {
+    margin: 1px;
+}
 
+/* BP What's New */
 .widget_bp_whats_new {
 	padding:10px 20px;
 	/*border:1px dashed #dedede;*/

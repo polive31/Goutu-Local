@@ -2094,8 +2094,8 @@ li.share-icons {
 
 li.share-icons a {
   display: block;
-	-webkit-filter: grayscale(100%);  
-	filter: grayscale(100%);	
+	-webkit-filter: grayscale(80%);  
+	filter: grayscale(80%);	
 	opacity:1;
 }
 

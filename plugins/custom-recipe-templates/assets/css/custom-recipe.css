@@ -23,6 +23,11 @@
 }
 
 /* Top Buttons */
+#share-buttons {
+	/*display:none;*/
+}
+
+/* Top Buttons */
 
 .recipe-buttons {
 	float:left;
@@ -36,6 +41,7 @@
 	padding: 5px 0;
 }
 
+.recipe-button#share,
 .recipe-button#print {
 	float:right;
 }

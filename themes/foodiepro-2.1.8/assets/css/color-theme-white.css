@@ -119,6 +119,10 @@ input, select, textarea,
 	background-color:#fafafa;	
 }
 
+.widget_wpurp_recipe_search_widget select {
+	border:1px solid #ddd;
+}
+
 /* Widget top5
 -------------------------------------------- */
 

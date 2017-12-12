@@ -119,6 +119,11 @@ input, select, textarea,
 	background-color:#fafafa;	
 }
 
+.widget_wpurp_recipe_search_widget select {
+	border:1px dashed #ddd;
+	background:none;
+}
+
 /* Widget top5
 -------------------------------------------- */
 
@@ -275,12 +280,6 @@ li.comment {
 	body,
 	body.home {
 		background:none;
-	}	
-
-	.title-area, 
-	.site-title, 
-	.site-title a {
-		height: 40px;
 	}	
 
 	.site-title a {

@@ -935,6 +935,7 @@ p.wp_widget_plugin_textarea {
     display: inline-block;
     height: 1em;
     padding: 0px 20%;
+    margin: 0px auto;
     width: auto;
 }
 
@@ -942,7 +943,6 @@ p.wp_widget_plugin_textarea {
     display: inherit;
     height: 1em;
     border: 0.1em solid #ddd;
-    margin: 0px auto;
     width: 125px;
     background: #1e5799;
     background: -moz-linear-gradient(left, #1e5799 0%, #7db9e8 100%);
@@ -1018,8 +1018,14 @@ p.wp_widget_plugin_textarea {
 }*/
 
 
-#wpurp-search ~ select {
-	font-size: 13px;
+.widget_wpurp_recipe_search_widget select {
+	font-size: 15px;
+	font-variant: all-small-caps;	
+	color: #555555;	
+}
+
+.widget_wpurp_recipe_search_widget option.level-1 {
+	color: #CCCCCC;
 }
 
 .textwidget {
@@ -2106,6 +2112,17 @@ form[role="search"] {
 
 /* Plugins
 -------------------------------------------------------- */
+/* Mashshare 
+----------------------------------------------*/
+.mashsb-container {
+  float:left;
+ 	width:100%;
+	padding-top: 0px!important;
+	padding-bottom: 0!important; */
+}
+.mashsb_below_buttons {
+    display: none;
+}
 
 /* Cookie Notice
 ----------------------------------------------*/
@@ -2718,10 +2735,9 @@ Custom Page Templates
 .entry-header-overlay .overlay {
   position: absolute;
   border-radius: 8px;
-  padding: 0 10px;
+  padding: 5px 10px;
   background: rgba(78, 76, 76, 0.43);
   color: white;
-  height:30px;
 }
 
 .overlay.col-0 {
@@ -3354,23 +3370,25 @@ a.more-link,
 
 .profile .content h3.rpwe-title {
   position: absolute;
-  background: #ffffff70;
+	background: linear-gradient(#04040400, #ffffffc9, #ffffffeb);
   padding: 30px 15px;
-  top: -250px;
+  bottom: 0px;
   left: 0;
   overflow:hidden;
   margin: 0;
   box-sizing:border-box;
+  /*top: -250px;
+  background: #ffffff70;*/
 }
 
 .profile .content h3.rpwe-title a {
 	font-size:20px;
 }
 
-.profile li.rpwe-li:hover .rpwe-title {
+/*.profile li.rpwe-li:hover .rpwe-title {
 	top:0px;
   transition:top 0.5s linear;
-}
+}*/
 
 /* Archive layout
 --------------------------------------------- */
@@ -3420,23 +3438,7 @@ h1.entry-title::first-letter {
 
 .archive .entry-meta,
 .search .entry-meta {
-  letter-spacing:.5px;
-  display:-webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-  display:-moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-  display:-ms-flexbox;      /* TWEENER - IE 10 */
-  -webkit-flex-direction:row;
-  -webkit-justify-content:center;
-  -webkit-flex-wrap:wrap;
-  display:-webkit-flex;     /* NEW - Chrome */
-  display:flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
-  flex-direction:row;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-
-.archive .entry-time,
-.search .entry-time {
-	margin-right:5px;
+  text-align:center;
 }
 
 .archive .entry-author,
@@ -4245,6 +4247,36 @@ Site Footer
 	h1.archive-title, h1.entry-title {
     text-align: center;
 	}
+	
+	.entry-header-overlay .overlay {
+    font-size: 17px;
+    line-height: 17px;
+		padding: 2px 10px;    
+	}	
+
+	.entry-header-overlay .overlay#veg {
+    font-size: 16px;
+    line-height: unset;
+	}	
+
+	.overlay.left0 {
+    top: 3px;
+    left:5px;
+	}
+
+	.overlay.left1 {
+    top: 35px;
+    left:5px;
+	}	
+
+	.overlay.topright0 {
+    right: 5px;
+    top: 3px;
+	}	
+	.overlay.botright0 {
+    right: 5px;
+    bottom: 12px;
+	}	
 	
 }
 

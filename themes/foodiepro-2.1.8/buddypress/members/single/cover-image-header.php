@@ -41,11 +41,13 @@ $a_css = bp_is_my_profile()?'':'class="disabled"';
 			</div>
 			<img src="<?php echo $member_cover_image_url;?>">
 			<h1 class="blog-title"><?php echo xprofile_get_field_data( 'Titre de votre blog', $user_id ); ?>	</h1>
-			<div id="item-userid">
-				<?php if ( bp_is_active( 'activity' ) && bp_activity_do_mentions() ) : ?>
-					<div id="intro"><?php echo __('The Blog Of ','foodiepro');?></div>
-					<h2 class="user-nicename"><?php bp_displayed_user_mentionname(); ?></h2>
-				<?php endif; ?>
+			<div id="userid-container">
+				<div id="item-userid">
+					<?php if ( bp_is_active( 'activity' ) && bp_activity_do_mentions() ) : ?>
+						<div id="intro"><?php echo __('The Blog Of ','foodiepro');?></div>
+						<h2 class="user-nicename"><?php bp_displayed_user_mentionname(); ?></h2>
+					<?php endif; ?>
+				</div>
 			</div>
 		</a>
 	</div><!-- #item-header-cover-image -->

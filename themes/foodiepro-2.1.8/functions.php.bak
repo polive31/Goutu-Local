@@ -635,7 +635,7 @@ function set_full_layout() {
 //* Customize the entry meta in the entry header (requires HTML5 theme support)
 add_filter( 'genesis_post_info', 'custom_post_info_filter' );
 function custom_post_info_filter($post_info) {
-	$post_info = sprintf(__('Published on %s by <span class="username">%s</span>', 'foodiepro'), '[post_date]', '[bp-author]');
+	$post_info = sprintf(__('Published on %s by <span id="username">%s</span>', 'foodiepro'), '[post_date]', '[bp-author]');
 	return $post_info;
 }
 

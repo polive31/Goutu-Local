@@ -930,8 +930,28 @@ p.wp_widget_plugin_textarea {
 	padding: 10px 0;  
 }
 
+/* Buddy Progress Bar */
 .bppp-stat {
+    display: inline-block;
+    height: 1em;
     padding: 0px 20%;
+    width: auto;
+}
+
+.bppp-widget-bar {
+    display: inherit;
+    height: 1em;
+    border: 0.1em solid #ddd;
+    margin: 0px auto;
+    width: 125px;
+    background: #1e5799;
+    background: -moz-linear-gradient(left, #1e5799 0%, #7db9e8 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#1e5799), color-stop(100%,#7db9e8));
+    background: -webkit-linear-gradient(left, #1e5799 0%,#7db9e8 100%);
+    background: -o-linear-gradient(left, #1e5799 0%,#7db9e8 100%);
+    background: -ms-linear-gradient(left, #1e5799 0%,#7db9e8 100%);
+    background: linear-gradient(to right, #1e5799 0%,#7db9e8 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=1 );
 }
 
 .widget-text.wp_widget_plugin_box {
@@ -940,6 +960,7 @@ p.wp_widget_plugin_textarea {
 }
 
 .bppp-stat-percent {
+    display: inherit;
 	vertical-align:middle;
 	font-weight: bold;
 }
@@ -3231,7 +3252,7 @@ nav.nav-primary .wrap {
 }
 
 #username {
-    text-transform: capitalize;
+	text-transform: capitalize;
 }
 
 .entry-header-overlay .entry-meta,

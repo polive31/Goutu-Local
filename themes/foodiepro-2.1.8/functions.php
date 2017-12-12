@@ -394,7 +394,7 @@ function remove_header_styles() {
 	if (!(is_single())) {
   	remove_style('galleria-fs');
 	}
-  //remove_style('cookie-notice-front');
+  remove_style('cookie-notice-front');
   remove_style('bppp-style');
   remove_style('wpurp_style5');
   remove_style('wpurp_style6');    

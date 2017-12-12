@@ -29,7 +29,7 @@ class CustomSocialButtonsShortcodes extends CustomSocialButtons {
 			'linkedin' => 'false', 
 			'pinterest' => 'false', 
 			'buffer' => 'false',
-	   ));
+	   ),$atts);
 	    
 	  $networks=array(
 			'facebook', 

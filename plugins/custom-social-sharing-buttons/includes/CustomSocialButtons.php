@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CustomSocialButtons {
 
 	public function __construct() {	
-		add_action( 'wp_loaded', array($this,'hydrate'));		
+		//add_action( 'wp_loaded', array($this,'hydrate'));		
 	}
 	
 	public function get_sharing_buttons($url, $size, $networks) {

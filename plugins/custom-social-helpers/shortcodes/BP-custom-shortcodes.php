@@ -63,7 +63,31 @@ function display_menu_entry($atts) {
 	
 } /* End funtion */
 	
-	
+/* =================================================================*/
+/* =                   BP Author shortcode 
+/* =================================================================*/
+
+function bp_author_shortcode( $atts ) {
+		$a = shortcode_atts( array(
+    	'type' => 'pseudo', // id, pseudo, name
+		), $atts );
+		
+		$user_id=get_the_author_meta('ID');
+		
+		switch ($a['type']) {
+			case "id":
+				$name=$user_id;
+				break;
+			case "pseudo":
+				$name=bp_core_get_username($user_id);
+				break;
+			case "name":
+				$name=bp_core_get_user_displayname($user_id);
+				break;
+		} 
+		return $name; 
+}
+add_shortcode('bp-author', 'bp_author_shortcode');	
 	
 /* =================================================================*/
 /* =                   BP Displayed User shortcode 

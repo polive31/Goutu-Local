@@ -2086,6 +2086,22 @@ form[role="search"] {
 /* Plugins
 -------------------------------------------------------- */
 
+/* Cookie Notice
+----------------------------------------------*/
+#cookie-notice {
+  position: fixed;
+  width: 100%;
+  z-index: 100000;
+  line-height: 20px;
+  left: 0;
+  text-align: center;
+  padding: 20px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px!important;
+  background: rgba(129, 129, 129, 0.7) !important;
+  color: #FFF !important;
+}
+
 /* Custom Social Sharing Buttons
 ----------------------------------------------*/
 li.share-icons {
@@ -3827,6 +3843,22 @@ font-size:11px;
 /* BP Login Widget */
 /* Specific #buddypress styles in /buddypress/css/buddypress.css */
 
+
+.mega-sub-menu #bp-login-widget-form {
+  padding: 0 20px 0 0px;
+}
+
+.widget.buddypress #bp-login-widget-form #bp-login-widget-submit {
+	margin-right: 10px;
+}
+
+#bp-login-widget-form {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 14px;
+}
+
 .footer-widgets .widget_bp_custom_login_widget div#logged-in {
 	margin-top:30px;
 	display:-webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
@@ -3838,6 +3870,15 @@ font-size:11px;
 	-ms-flex-flow:row nowrap;
 	flex-flow:row nowrap;
 	/*justify-content:center;*/
+}
+
+.widget.buddypress .forgetmenot {
+    margin: 10px 0;
+}
+
+.widget.buddypress #bp-login-widget-form label {
+	display: block;
+	margin: 10px 0 0 5px;
 }
 
 

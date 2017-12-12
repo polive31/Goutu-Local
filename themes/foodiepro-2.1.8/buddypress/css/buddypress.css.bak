@@ -1011,8 +1011,6 @@ body.activity-permalink #buddypress div.activity-comments div.acomment-content {
 	width: 95%;
 }
 
-#buddypress .standard-form #basic-details-section input[type="password"], 
-#buddypress .standard-form #blog-details-section input#signup_blog_url,
 #buddypress .form-allowed-tags,
 #buddypress #commentform input[type=text],
 #buddypress #commentform textarea {
@@ -1916,18 +1914,6 @@ body.register #buddypress div.page ul {
 
 .mega-sub-menu #bp-login-widget-form {
   padding: 0 20px 0 0px;
-}
-
-#bp-login-widget-form {
-  width:300px;
-  margin-left:auto;
-  margin-right:auto;
-  font-size:14px;
-}
-
-.widget.buddypress #bp-login-widget-form label {
-	display: block;
-	margin: 10px 0 0 5px;
 }
 
 .widget.buddypress .forgetmenot {

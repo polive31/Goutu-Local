@@ -26,6 +26,7 @@
 
 .recipe-buttons {
 	float:left;
+	width:100%;
 }
 
 .recipe-button {
@@ -33,6 +34,10 @@
 	font-size:25px;
 	margin: 0 10px;
 	padding: 5px 0;
+}
+
+.recipe-button#print {
+	float:right;
 }
 
 .recipe-button a {

@@ -35,7 +35,7 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 					<div class="recipe-buttons">
 					
 					<!-- Recipe Print Button -->
-					<div class="recipe-button tooltip tooltip-above">
+					<div class="recipe-button tooltip tooltip-above" id="print">
 						<a class="wpurp-recipe-print recipe-print-button" href="<?php echo $recipe->link_print(); ?>" target="_blank">
 						<div class="button-caption"><?php echo __('Print', 'foodiepro'); ?></div>
 						</a>
@@ -43,21 +43,21 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 					</div>
 					
 					<!-- Recipe Add to Cart Button -->
-					<div class="recipe-button tooltip tooltip-above">
+					<div class="recipe-button tooltip tooltip-above" id="shopping">
 					<?php 
 						$shopping_list = new Custom_Recipe_Add_To_Shopping_List( $this->logged_in );  
 						echo $shopping_list->output( $recipe );?>
 					</div>				
 					
 					<!-- Add To Favorites Button -->
-					<div class="recipe-button tooltip tooltip-above">
+					<div class="recipe-button tooltip tooltip-above" id="favorite">
 					<?php
 						$favorite_recipe = new Custom_Recipe_Favorite( $this->logged_in );
 						echo $favorite_recipe->output( $recipe );?>
 					</div>				
 					
 					<!-- Recipe Share Button -->
-					<div class="recipe-button tooltip tooltip-above">
+					<div class="recipe-button tooltip tooltip-above" id="share">
 						<a class="recipe-share-button"  id="recipe-share">
 						<div class="button-caption"><?php echo __('Share','foodiepro'); ?></div>
 						</a>
@@ -65,7 +65,7 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 					</div>				
 												
 					<!-- Recipe Rate Button -->
-					<div class="recipe-button tooltip tooltip-above">
+					<div class="recipe-button tooltip tooltip-above" id="rate">
 						<a class="recipe-review-button" id="<?php echo $this->logged_in?'recipe-review':'join-us';?>">
 						<div class="button-caption"><?php echo __('Rate','foodiepro'); ?></div>
 						</a>

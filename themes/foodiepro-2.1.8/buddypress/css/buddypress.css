@@ -1912,29 +1912,6 @@ body.register #buddypress div.page ul {
 	overflow: hidden;
 }
 
-.mega-sub-menu #bp-login-widget-form {
-  padding: 0 20px 0 0px;
-}
-
-#bp-login-widget-form {
-  width:300px;
-  margin-left:auto;
-  margin-right:auto;
-  font-size:14px;
-}
-
-.widget.buddypress #bp-login-widget-form label {
-	display: block;
-	margin: 10px 0 0 5px;
-}
-
-.widget.buddypress .forgetmenot {
-    margin: 10px 0;
-}
-
-.widget.buddypress #bp-login-widget-form #bp-login-widget-submit {
-	margin-right: 10px;
-}
 
 .widget.buddypress .bp-login-widget-user-links > div {
 	/*padding-left: 60px;*/

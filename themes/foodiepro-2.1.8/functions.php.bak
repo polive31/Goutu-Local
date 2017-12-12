@@ -300,6 +300,19 @@ function load_admin_stylesheet() {
 //    $wp_scripts->add_data( 'jquery-migrate', 'group', true );
 //}
 
+function remove_script($script) {
+	wp_deregister_script($script);
+	wp_dequeue_script($script);
+}
+
+add_action('get_footer','remove_footer_scripts');
+function remove_footer_scripts() {
+	if (!(is_single())) {
+		remove_script('galleria');
+		remove_script('galleria-fs');
+		remove_script('galleria-fs-theme');		
+	}
+}
 
 /* Defer Javascript parsing using <async> tag */
 add_filter( 'script_loader_tag','add_async_tag_cb', PHP_INT_MAX, 3 );
@@ -309,7 +322,6 @@ function add_async_tag_cb( $tag, $handle, $src ) {
 		'galleria',
 		'masterslider-core',
 		'bp-confirm',
-		'cnss_js',
 		'skip-links',
 		'foodie-pro-general'
 	);
@@ -345,8 +357,6 @@ function megamenu_dequeue_google_fonts() {
    wp_dequeue_style( 'megamenu-google-fonts' );
 }
 
-
-
 /* =================================================================*/
 /* =              STYLING     
 /* =================================================================*/
@@ -359,7 +369,6 @@ function foodie_pro_enqueue_fonts() {
 	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Oswald|Lato:300,400', array(), CHILD_THEME_VERSION );
 	wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
 }
-
 
 /* Chargement des feuilles de style custom et polices */
 add_action( 'wp_enqueue_scripts', 'load_custom_stylesheet' );
@@ -375,6 +384,40 @@ function load_background_stylesheet() {
 		wp_enqueue_style( 'background-white', CHILD_THEME_URL . '/assets/css/background-white.css', array(), CHILD_THEME_VERSION );		
 };
 
+/* Optimize page loading by dequeuing specific CSS stylesheets loading actions */
+function remove_style($style) {
+	wp_deregister_style($style);
+	wp_dequeue_style($style);
+}
+
+add_action('wp_enqueue_scripts','remove_header_styles');
+function remove_header_styles() {	
+	if (!(is_single())) {
+  	remove_style('galleria-fs');
+	}
+  //remove_style('cookie-notice-front');
+  remove_style('bppp-style');
+  remove_style('wpurp_style5');
+  remove_style('wpurp_style6');    
+  remove_style('wpurp_style7');
+  remove_style('wpurp_style11');  	
+  remove_style('yarppWidgetCss');
+  //remove_style('cnss_font_awesome_css');   
+  remove_style('megamenu-fontawesome');
+}
+
+add_action('get_footer','remove_footer_styles');
+function remove_footer_styles() {
+  remove_style('yarpp-thumbnails-yarpp-thumbnail');
+}
+
+add_action('wp_enqueue_scripts','remove_bp_styles');
+function remove_bp_styles() {
+	if (!function_exists( 'bp_is_blog_page')) return;
+	if (bp_is_blog_page()) {
+  	remove_style('bp-child-css');
+	}
+}
 
 /* Gestion des feuilles de style minifiées */
 //add_filter( 'stylesheet_uri', 'use_minified_stylesheet', 10, 1 );
@@ -392,52 +435,6 @@ function load_background_stylesheet() {
 //	//foodiepro_log( 'Minified stylesheet doesn t exist or too old' );
 //	return $default_stylesheet_uri;	
 //}
-
-
-/* Optimize page loading by dequeuing specific CSS stylesheets loading actions */
-add_action('wp_enqueue_scripts','dequeue_header_styles');
-function dequeue_header_styles() {	
-  wp_deregister_style('yarppWidgetCss');
-  wp_dequeue_style('yarppWidgetCss');
-  wp_deregister_style('galleria-fs');
-  wp_dequeue_style('galleria-fs');
-  wp_deregister_style('wpurp_style5');  
-  wp_dequeue_style('wpurp_style5');
-  wp_deregister_style('wpurp_style6');  
-  wp_dequeue_style('wpurp_style6');    
-  wp_deregister_style('wpurp_style7');  
-  wp_dequeue_style('wpurp_style7');
-  wp_deregister_style('wpurp_style11');  
-  wp_dequeue_style('wpurp_style11'); 
-  wp_deregister_style('cnss_font_awesome_css');  
-  wp_dequeue_style('cnss_font_awesome_css');   
-  wp_deregister_style('megamenu-fontawesome');  
-  wp_dequeue_style('megamenu-fontawesome');
-}
-
-
-add_action('get_footer','dequeue_footer_styles');
-function dequeue_footer_styles() {
-  wp_dequeue_style('yarppRelatedCss');
-  wp_dequeue_style('yarpp-thumbnails-yarpp-thumbnail');
-}
-
-add_action('wp_enqueue_scripts','custom_dequeue_bp_styles');
-function custom_dequeue_bp_styles() {
-	if (!function_exists( 'bp_is_blog_page')) return;
-	if (bp_is_blog_page()) {
-  	wp_deregister_style('bp-child-css');
-  	wp_dequeue_style('bp-child-css');
-	}
-}
-
-///* Disable buddypress widgets */ => Fonctionne pas
-//add_action('widgets_init', 'unregister_widgets', 100); 
-//function unregister_widgets() {
-//	unregister_widget('BP_My_Friends');	
-//	unregister_widget('WP_Widget_Calendar');
-//}
-
 
 /* =================================================================*/
 /* =              CUSTOM LOGIN                                     =*/
@@ -607,7 +604,6 @@ function set_full_layout() {
 }
 
 
-
 /* Customize entry title in the archive pages
 -----------------------------------------------------------------------------*/
 //add_filter( 'genesis_post_title_output', 'archive_title1', 15 );	
@@ -634,10 +630,17 @@ function set_full_layout() {
 
 
 /* =================================================================*/
-/* =                      POSTS
+/* =                POSTS
 /* =================================================================*/
 
-//* Remove the post meta display
+//* Customize the entry meta in the entry header (requires HTML5 theme support)
+add_filter( 'genesis_post_info', 'custom_post_info_filter' );
+function custom_post_info_filter($post_info) {
+	$post_info = sprintf(__('Published on the %s by %s', 'foodiepro'), '[post_date]', '[bp-author]');
+	return $post_info;
+}
+
+//* Remove the post meta display from footer
 remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
 
 /* Remove mention from private & protected titles */
@@ -661,12 +664,17 @@ function foodie_pro_read_more_link() {
 }
 
 
-//* Add social share icons
+/* Add social share icons
+-------------------------------------------------------*/
+add_action( 'genesis_entry_footer', 'add_share_icons' , 10 ); /* Original genesis_after_entry_content */
 function add_share_icons() {
 	if ( is_singular( 'post' ) )
 		echo do_shortcode('[mashshare]');
 }
-//add_action( 'genesis_entry_footer', 'add_share_icons' , 10 ); /* Original genesis_after_entry_content */
+
+/* =================================================================*/
+/* =               COMMENTS
+/* =================================================================*/
 
 
 /* Remove comment form unless it's a comment reply page
@@ -703,7 +711,6 @@ function custom_comments_next_link_text() {
 	$text = __('Next comments','foodiepro');
 	return $text;
 }
-
 
 /* Disable url input box in comment form unlogged users
 ------------------------------------------------------*/

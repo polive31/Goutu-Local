@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-12-10 16:05+0100\n"
-"PO-Revision-Date: 2017-12-10 16:06+0100\n"
+"POT-Creation-Date: 2017-12-12 01:35+0100\n"
+"PO-Revision-Date: 2017-12-12 01:36+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -206,7 +206,7 @@ msgstr "Appréciation"
 #: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:161
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:109
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:74
-#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:174
+#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:170
 msgid "New title"
 msgstr ""
 
@@ -220,7 +220,7 @@ msgstr ""
 #: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:170
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:123
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:78
-#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:178
+#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:174
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/widgets/nutrition_label_widget.php:52
 #: plugins/wp-ultimate-recipe-premium/premium/addons/recipe-search/widgets/recipe_search_widget.php:82
 #: plugins/wp-ultimate-recipe-premium/premium/helpers/widgets/recipe_list_widget.php:75
@@ -503,7 +503,7 @@ msgid "Notifications"
 msgstr "Notifications"
 
 #: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:44
-#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:109
+#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:105
 #: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:28
 msgid "My Profile"
 msgstr "Mon Profil"
@@ -683,17 +683,13 @@ msgstr ""
 msgid "Displays a Buddypress \"what's New ?\" input form"
 msgstr ""
 
-#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:84
-msgid "Post what's new"
-msgstr ""
-
-#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:86
+#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:82
 #, php-format
 msgid "What's new, %s?"
 msgstr "Exprimez vous, %s !"
 
+#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:98
 #: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:102
-#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:106
 #, fuzzy
 #| msgid "Comment count"
 msgid "Post in"
@@ -6321,12 +6317,12 @@ msgid ""
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:184
-#: themes/foodiepro-2.1.8/functions.php:660
+#: themes/foodiepro-2.1.8/functions.php:662
 msgid "Read More"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:197
-#: themes/foodiepro-2.1.8/functions.php:688
+#: themes/foodiepro-2.1.8/functions.php:695
 msgid "Comments"
 msgstr ""
 
@@ -7206,50 +7202,55 @@ msgstr ""
 msgid "Visibility"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:463
+#: themes/foodiepro-2.1.8/functions.php:459
 msgid "Goûtu.org - Cuisiner, Découvrir, Partager"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:502
+#: themes/foodiepro-2.1.8/functions.php:498
 #, fuzzy, php-format
 #| msgid "<strong>ERROR</strong>: User pending approval."
 msgid "<strong>ERROR</strong>: User pending <a href=\"%s\">approval</a>."
 msgstr "<strong>ERREUR</strong> : Utilisateur en attente d'approbation."
 
-#: themes/foodiepro-2.1.8/functions.php:697
+#: themes/foodiepro-2.1.8/functions.php:638
+#, php-format
+msgid "Published on %s by <span id=\"username\">%s</span>"
+msgstr "Publié le %s  par <span id=\"username\">%s</span>"
+
+#: themes/foodiepro-2.1.8/functions.php:704
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:202
 msgid "Previous comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:703
+#: themes/foodiepro-2.1.8/functions.php:710
 msgid "Next comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:722
+#: themes/foodiepro-2.1.8/functions.php:728
 msgid "Your answer here"
 msgstr "Entrez votre réponse ci-dessous"
 
-#: themes/foodiepro-2.1.8/functions.php:741
+#: themes/foodiepro-2.1.8/functions.php:742
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
-#: themes/foodiepro-2.1.8/functions.php:741
+#: themes/foodiepro-2.1.8/functions.php:742
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:741
+#: themes/foodiepro-2.1.8/functions.php:742
 msgid "Legal notice"
 msgstr "Mentions légales"
 
-#: themes/foodiepro-2.1.8/functions.php:741
+#: themes/foodiepro-2.1.8/functions.php:742
 msgid "Goûtu charter"
 msgstr "Charte Goûtu"
 
-#: themes/foodiepro-2.1.8/functions.php:741
+#: themes/foodiepro-2.1.8/functions.php:742
 msgid "Personal data"
 msgstr "Données personnelles"
 
-#: themes/foodiepro-2.1.8/functions.php:741
+#: themes/foodiepro-2.1.8/functions.php:742
 msgid "Terms of use"
 msgstr "Conditions d'utilisation"
 

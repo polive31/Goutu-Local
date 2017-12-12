@@ -2799,6 +2799,7 @@ Custom Page Templates
 /* Recipes, Blog & Archive Pages
 --------------------------------------------- */
 
+
 /* Top section commons */
 
 .top, .bottom {
@@ -3227,6 +3228,10 @@ nav.nav-primary .wrap {
 
 .entry-meta a:hover {
 	color:#010101;
+}
+
+#username {
+    text-transform: capitalize;
 }
 
 .entry-header-overlay .entry-meta,
@@ -3843,6 +3848,15 @@ font-size:11px;
 /* BP Login Widget */
 /* Specific #buddypress styles in /buddypress/css/buddypress.css */
 
+
+.mega-sub-menu #bp-login-widget-form {
+  padding: 0 20px 0 0px;
+}
+
+.widget.buddypress #bp-login-widget-form #bp-login-widget-submit {
+	margin-right: 10px;
+}
+
 #bp-login-widget-form {
   width: 300px;
   margin-left: auto;
@@ -3861,6 +3875,10 @@ font-size:11px;
 	-ms-flex-flow:row nowrap;
 	flex-flow:row nowrap;
 	/*justify-content:center;*/
+}
+
+.widget.buddypress .forgetmenot {
+    margin: 10px 0;
 }
 
 .widget.buddypress #bp-login-widget-form label {

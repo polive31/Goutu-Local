@@ -2799,6 +2799,7 @@ Custom Page Templates
 /* Recipes, Blog & Archive Pages
 --------------------------------------------- */
 
+
 /* Top section commons */
 
 .top, .bottom {
@@ -3227,6 +3228,10 @@ nav.nav-primary .wrap {
 
 .entry-meta a:hover {
 	color:#010101;
+}
+
+#username {
+	text-transform: capitalize;
 }
 
 .entry-header-overlay .entry-meta,

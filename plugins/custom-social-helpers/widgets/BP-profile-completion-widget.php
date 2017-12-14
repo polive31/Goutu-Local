@@ -19,6 +19,9 @@ class custom_progress_bar_widget extends WP_Widget {
 		__( '(Buddypress) Profile completion', 'buddy-progress-bar' ), // Name
 		array( 'description' => __( 'Displays profile completion bar (requires Buddy Progress Bar plugin)', 'buddy-progress-bar' ), ) // Args
 		);
+		
+    if(is_active_widget(false, false, $this->id_base))
+    	add_action('wp_enqueue_scripts', array($this,'load_custom_stylesheet'));
 	}
 
 	// widget form creation
@@ -82,12 +85,12 @@ class custom_progress_bar_widget extends WP_Widget {
 		// setting vars
 		$user_id = bp_loggedin_user_id();
 		if (bp_current_component() && ($user_id != bp_displayed_user_id()) ) return;
+
+		$user_percent = $this->get_progression($user_id);
+
 		//echo "user id = " . $user_id;
-
 		//echo "user percent from meta = " . $user_percent;
-
 		//$user_percent = ($user_percent!='')?$user_percent:bppp_custom_get_progression($user_id);
-		$user_percent = bppp_custom_get_progression($user_id);
 		//echo "user percent final = " . $user_percent;
 
 		$trigger_percent=(($instance['trigger_percent']==''))?'100':$instance['trigger_percent'];
@@ -132,15 +135,8 @@ class custom_progress_bar_widget extends WP_Widget {
 					echo  '<div class="bppp-congrats">' . $profile_completed . '</div>';
 				}
 
-			//if( false ) {
 			if( $user_percent > 0 && $user_percent !=100 ) {
-				echo '
-				<div class="bppp-stat">
-					<div class="bppp-widget-bar">
-						<div class="bppp-bar-mask" style="width: ' . (int)(100-$user_percent) . '%"></div>
-					</div>
-					<div class="bppp-stat-percent">' . $user_percent . '%</div>
-				</div>';
+				$this->display_circular_progress_bar($user_percent);					
 			}
 			
 		echo '<p class="wp_widget_plugin_textarea">' . $textarea . '</p>';
@@ -150,84 +146,116 @@ class custom_progress_bar_widget extends WP_Widget {
 
 
 	}
+	
+
+	/**
+	 * Calculate user progression percent
+	 * and register it in user_meta table
+	 *
+	 * @return  (int)
+	 *
+	 * since 1.0
+	*/
+	public function get_progression( $user_id = false ) {
+		global $bp;
+
+		$total_points = 0;
+		$user_points = 0;
+		$percent = '';
+
+		if( !$user_id ) return false;
+
+		if ( !bppp_has_point_items() ) return false;
+		//echo '<pre>';
+
+		while ( bppp()->have_points() ) : bppp()->the_point();
+
+			$item = bppp()->query->point;
+
+			//print_r($item);
+
+			$total_points+= $item['points'];
+			//echo 'Item weight = ' . $item['points'] . '<br>';
+
+			$item_points = $this->get_user_progression_for_field($user_id);
+			//echo 'User points = ' . $item_points . '<br>';
+
+			if( $item_points === true ) { //returned TRUE, wich means 100% of potential points
+				$item_points = 1;
+			}
+
+			//balance points for this item
+			$user_points += ($item_points)*$item['points'];
+
+			//echo 'Weighted user points = ' . ($item_points*$item['points']) . '<br>';
+			//echo 'Cumulated user points = ' . $user_points . '<br>';
+
+		endwhile;
+
+		//echo 'Total weight points = ' . $total_points . '<br>';
+		//echo 'Total user points = ' . $user_points . '<br>';
+
+		//calculate total
+		if ( !empty( $total_points ) ) {
+				$percent = round( $user_points/$total_points*100 );
+		}
+
+		//echo 'Percentage = ' . $percent . '<br>';
+		//echo '</pre>';
+
+
+		return (int)$percent;
+	}
+
+
+	public function get_user_progression_for_field($user_id) {    
+	    //get current point item
+	    $point_item		= bppp()->query->point;
+	    $field_id		= $point_item['args']['field-id'];
+
+	    if(!$field_id) return false;
+	    
+	    //get field value
+	    $value = bp_get_profile_field_data( array(
+			'field'		=> $field_id,
+			'user_id'	=>$user_id 
+		) );
+
+	    return (bool)$value; //return TRUE (100% of potential points)
+	}
+
+	public function display_circular_progress_bar($user_percent) {
+		$over50 = ($user_percent>50)?'over50':'';?>
+		<div class="stat-wrapper">
+			<div class="progress-circle p<?php echo $user_percent . ' ' . $over50;?>">
+		  <span><?php echo $user_percent;?>%</span>
+			  <div class="left-half-clipper">
+			    <div class="first50-bar"></div>
+			    <div class="value-bar"></div>
+			  </div>
+			</div>
+		</div>
+		<?php
+	}
+
+	public function display_linear_progress_bar($user_percent) {?>
+		<div class="bppp-stat">
+			<div class="bppp-widget-bar">
+				<div class="bppp-bar-mask" style="width: <?php echo (int)(100-$user_percent)?>;%"></div>
+			</div>
+			<div class="bppp-stat-percent"><?php echo $user_percent;?>%</div>
+		</div>
+		<?php
+	}
+
+
+	public function load_custom_stylesheet() {
+		wp_enqueue_style( 'circular-progress-bar',  plugins_url( '../assets/circular-progress-bar.css', __FILE__ ), array(), '1.0.0' );	
+	}		
+		
+	
 }
 // register widget
 add_action( 'widgets_init', create_function( '', 'return register_widget( "custom_progress_bar_widget" );' ) );
 
 
-
-/**
- * Calculate user progression percent
- * and register it in user_meta table
- *
- * @return  (int)
- *
- * since 1.0
-*/
-function bppp_custom_get_progression( $user_id = false ) {
-	global $bp;
-
-	$total_points = 0;
-	$user_points = 0;
-	$percent = '';
-
-	if( !$user_id ) return false;
-
-	if ( !bppp_has_point_items() ) return false;
-	//echo '<pre>';
-
-	while ( bppp()->have_points() ) : bppp()->the_point();
-
-		$item = bppp()->query->point;
-
-		//print_r($item);
-
-		$total_points+= $item['points'];
-		//echo 'Item weight = ' . $item['points'] . '<br>';
-
-		$item_points = bppp_custom_get_user_progression_for_field($user_id);
-		//echo 'User points = ' . $item_points . '<br>';
-
-		if( $item_points === true ) { //returned TRUE, wich means 100% of potential points
-			$item_points = 1;
-		}
-
-		//balance points for this item
-		$user_points += ($item_points)*$item['points'];
-
-		//echo 'Weighted user points = ' . ($item_points*$item['points']) . '<br>';
-		//echo 'Cumulated user points = ' . $user_points . '<br>';
-
-	endwhile;
-
-	//echo 'Total weight points = ' . $total_points . '<br>';
-	//echo 'Total user points = ' . $user_points . '<br>';
-
-	//calculate total
-	if ( !empty( $total_points ) ) {
-			$percent = round( $user_points/$total_points*100 );
-	}
-
-	//echo 'Percentage = ' . $percent . '<br>';
-	//echo '</pre>';
-
-
-	return (int)$percent;
-}
-
-
-function bppp_custom_get_user_progression_for_field($user_id) {    
-    //get current point item
-    $point_item		= bppp()->query->point;
-    $field_id		= $point_item['args']['field-id'];
-
-    if(!$field_id) return false;
-    
-    //get field value
-    $value = bp_get_profile_field_data( array(
-		'field'		=> $field_id,
-		'user_id'	=>$user_id 
-	) );
-
-    return (bool)$value; //return TRUE (100% of potential points)
-}

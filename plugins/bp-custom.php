@@ -86,10 +86,10 @@ function enqueue_bp_core_scripts($scripts) {
 /* =================================================================*/
 
 // Define cover image size
-//add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'foodiepro_xprofile_cover_image', 10, 1 );
+add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'foodiepro_xprofile_cover_image', 10, 1 );
 function foodiepro_xprofile_cover_image( $settings = array() ) {
-    $settings['width']  = 1140;
-    $settings['height'] = 350;
+    /*$settings['width']  = 1140;
+    $settings['height'] = 350;*/
     $settings['default_cover'] = 'https://goutu.org/wp-content/themes/foodiepro-2.1.8/images/cover_default.jpg';
  
     return $settings;

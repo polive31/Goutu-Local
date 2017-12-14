@@ -15,14 +15,22 @@ if ( !defined('ABSPATH') )
 	die('-1');
 	
 	
+define( 'CSH_PLUGIN_VERSION', '1.1.0' );
+	
 	
 /* Main
 ------------------------------------------------------------*/
-
 if ( class_exists( 'BuddyPress' ) ) {
 	add_action( 'bp_include', 'bp_social_helpers_load' );
 } else {
 	add_action( 'admin_notices', 'bp_social_helpers_install_notice' );
+}
+
+/* Load stylesheet
+---------------------------------------------------------------*/
+add_action( 'wp_enqueue_scripts', 'csh_load_custom_stylesheet' );
+function csh_load_custom_stylesheet() {
+	wp_enqueue_style( 'circular-progress-bar',  plugins_url( '/assets/circular-progress-bar.css', __FILE__ ), array(), CSH_PLUGIN_VERSION );
 }
 
 
@@ -35,6 +43,7 @@ function bp_social_helpers_load() {
 	require_once 'widgets/BP-my-friends-widget.php';
 	require_once 'widgets/BP-welcome-widget.php';
 	require_once 'widgets/BP-whats-new-widget.php';
+	require_once 'widgets/BP-activity-feed-widget.php';
 	if ( class_exists( 'Buddy_Progress_Bar' ) )
 		require_once 'widgets/BP-profile-completion-widget.php';
 	else

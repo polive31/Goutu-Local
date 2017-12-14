@@ -915,7 +915,6 @@ td#whats-new-avatar img {
 
 /* Profile Progression Widget 
 --------------------------------------------- */
-
 .bppp-widget-bar {
 	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#ffb822 ), color-stop(100%,#bbff35))!important;
 	background: -webkit-linear-gradient(left, #ffb822  0%,#bbff35 100%)!important;
@@ -931,6 +930,11 @@ p.wp_widget_plugin_textarea {
 }
 
 /* Buddy Progress Bar */
+.stat-wrapper {
+   display: flex;
+}
+
+
 .bppp-stat {
     display: inline-block;
     height: 1em;
@@ -960,7 +964,7 @@ p.wp_widget_plugin_textarea {
 }
 
 .bppp-stat-percent {
-    display: inherit;
+  display: inherit;
 	vertical-align:middle;
 	font-weight: bold;
 }

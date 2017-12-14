@@ -15,10 +15,11 @@ if ( !defined('ABSPATH') )
 	die('-1');
 	
 	
+define( 'CSH_PLUGIN_VERSION', '1.1.0' );
+	
 	
 /* Main
 ------------------------------------------------------------*/
-
 if ( class_exists( 'BuddyPress' ) ) {
 	add_action( 'bp_include', 'bp_social_helpers_load' );
 } else {

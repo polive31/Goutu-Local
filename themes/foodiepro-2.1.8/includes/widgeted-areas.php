@@ -63,6 +63,13 @@ genesis_register_sidebar( array(
 	'name'			=> __( 'Before Header', 'foodiepro' ),
 	'description'	=> __( 'This is the section before the header.', 'foodiepro' ),
 ) );
+//* Post Widgeted areas
+genesis_register_sidebar( array(
+	'id'			=> 'post-bottom',
+	'name'			=> __( 'Post Bottom', 'foodiepro' ),
+	'description'	=> __( 'This is the section below content and sidebar, just before the footer.', 'foodiepro' ),
+) );
+//* Home Page widgeted areas
 genesis_register_sidebar( array(
 	'id'			=> 'home-top',
 	'name'			=> __( 'Home Top', 'foodiepro' ),
@@ -77,11 +84,6 @@ genesis_register_sidebar( array(
 	'id'			=> 'home-bottom',
 	'name'			=> __( 'Home Bottom', 'foodiepro' ),
 	'description'	=> __( 'This is the home bottom section.', 'foodiepro' ),
-) );
-genesis_register_sidebar( array(
-	'id'			=> 'after-entry',
-	'name'			=> __( 'Post Bottom', 'foodiepro' ),
-	'description'	=> __( 'This is the after entry section.', 'foodiepro' ),
 ) );
 //genesis_register_sidebar( array(
 //	'id'			=> 'recipes-top',

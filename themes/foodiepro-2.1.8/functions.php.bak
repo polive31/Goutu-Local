@@ -546,7 +546,16 @@ function add_archive_bottom_area() {
   }     
 }
 
-
+//add_action( 'genesis_after_content_sidebar_wrap', 'add_post_bottom_area');
+add_action( 'genesis_after_loop', 'add_post_bottom_area');
+function add_post_bottom_area() {
+  if ( is_single() ) {
+	  genesis_widget_area( 'post-bottom', array(
+	      'before' => '<div class="post-bottom widget-area">',
+	      'after'  => '</div>',
+		));
+	}
+}
 
 
 /* =================================================================*/
@@ -622,12 +631,6 @@ function set_full_layout() {
 	return $title;
 }
 
-
-/* =================================================================*/
-/* =                      DEBUG
-/* =================================================================*/
-
-
 /* =================================================================*/
 /* =                POSTS
 /* =================================================================*/
@@ -665,7 +668,7 @@ function foodie_pro_read_more_link() {
 
 /* Add social share icons
 -------------------------------------------------------*/
-add_action( 'genesis_entry_footer', 'add_share_icons' , 10 ); /* Original genesis_after_entry_content */
+add_action( 'genesis_entry_header', 'add_share_icons' , 10 ); /* Original genesis_after_entry_content */
 function add_share_icons() {
 	if ( is_singular( 'post' ) )
 		echo do_shortcode('[mashshare]');

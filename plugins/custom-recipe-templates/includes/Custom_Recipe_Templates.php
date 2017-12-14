@@ -63,10 +63,10 @@ class Custom_Recipe_Templates {
 		              'url' => self::$_PluginPath . 'assets/css/custom-recipe.css',
 		              'public' => true,
 		          ),
-							array(
+							/*array(
 		              'url' => self::$_PluginPath . 'assets/css/tooltips.css',
 		              'public' => true,
-		          ),
+		          ),*/
 							array(
 		              'url' => '//fonts.googleapis.com/css?family=Oswald|Open+Sans',
 		              'public' => true,

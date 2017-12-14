@@ -132,6 +132,7 @@ class custom_progress_bar_widget extends WP_Widget {
 					echo  '<div class="bppp-congrats">' . $profile_completed . '</div>';
 				}
 
+			//if( false ) {
 			if( $user_percent > 0 && $user_percent !=100 ) {
 				echo '
 				<div class="bppp-stat">
@@ -141,7 +142,7 @@ class custom_progress_bar_widget extends WP_Widget {
 					<div class="bppp-stat-percent">' . $user_percent . '%</div>
 				</div>';
 			}
-
+			
 		echo '<p class="wp_widget_plugin_textarea">' . $textarea . '</p>';
 		echo '</div>';
 

@@ -930,6 +930,171 @@ p.wp_widget_plugin_textarea {
 	padding: 10px 0;  
 }
 
+/* Rounded progress bar */
+.size(@w, @h) {
+  height: @h;
+  width: @w;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.charts-container:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.set-size {
+  font-size: 18px;
+}
+
+@bg: #34495e;
+@size: 1em;
+
+.pie-wrapper {
+  .size(@size, @size);
+  float: left;
+  margin: 15px;
+  position: relative;
+  
+  &:nth-child(3n+1) {
+    clear: both;
+  }
+
+  .pie {
+    .size(100%, 100%);
+    clip: rect(0, @size, @size, @size / 2);
+    left: 0;
+    position: absolute;
+    top: 0;
+
+    .half-circle {
+      .size(100%, 100%);
+      border: @size / 10 solid #3498db;
+      border-radius: 50%;
+      clip: rect(0, @size / 2, @size, 0);
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  .label {
+    @font-size: @size / 4;
+    @font-size-redo: @size * 4;
+
+    background: @bg;
+    border-radius: 50%;
+    bottom: @font-size-redo / 10;
+    color: #ecf0f1;
+    cursor: default;
+    display: block;
+    font-size: @font-size;
+    left: @font-size-redo / 10;
+    line-height: @font-size-redo * .65;
+    position: absolute;
+    right: @font-size-redo / 10;
+    text-align: center;
+    top: @font-size-redo / 10;
+
+    .smaller {
+      color: #bdc3c7;
+      font-size: .45em;
+      padding-bottom: 20px;
+      vertical-align: super;
+    }
+  }
+
+  .shadow {
+    .size(100%, 100%);
+    border: @size / 10 solid #bdc3c7;
+    border-radius: 50%;
+  }
+
+  &.style-2 {
+    .label {
+      background: none;
+      color: #7f8c8d;
+
+      .smaller {
+        color: #bdc3c7;
+      }
+    }
+  }
+
+  &.progress-10 {
+    .draw-progress(10, #3498db);
+  }
+
+  &.progress-20 {
+    .draw-progress(20, #3498db);
+  }
+
+  &.progress-30 {
+    .draw-progress(30, #3498db);
+  }
+
+  &.progress-40 {
+    .draw-progress(40, #3498db);
+  }
+
+  &.progress-50 {
+    .draw-progress(50, #3498db);
+  }
+  
+  &.progress-60 {
+    .draw-progress(60, #9b59b6);
+  }
+  
+	&.progress-70 {
+    .draw-progress(70, #9b59b6);
+  }
+  
+	&.progress-80 {
+    .draw-progress(80, #9b59b6);
+  }
+  
+  &.progress-90 {
+    .draw-progress(90, #e67e22);
+  }
+}
+
+.draw-progress(@progress, @color) when (@progress <= 50) {
+  .pie {
+    .right-side {
+      display: none;
+    }
+  }
+}
+
+.draw-progress(@progress, @color) when (@progress > 50) {
+  .pie {
+    clip: rect(auto, auto, auto, auto);
+
+    .right-side {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.draw-progress(@progress, @color) {
+  .pie {
+    .half-circle {
+      border-color: @color;
+    }
+
+    .left-side {
+      @rotate: @progress * 3.6;
+      transform: rotate(~'@{rotate}deg');
+    }
+  }
+}
+
+
 /* Buddy Progress Bar */
 .bppp-stat {
     display: inline-block;
@@ -1261,6 +1426,12 @@ Structure and Layout
 }
 
 .full-width-content .content {
+	width:100%;
+}
+
+/* Post Bottom */
+.post-bottom {
+	float:left;
 	width:100%;
 }
 
@@ -2114,14 +2285,22 @@ form[role="search"] {
 -------------------------------------------------------- */
 /* Mashshare 
 ----------------------------------------------*/
+
 .mashsb-container {
   float:left;
  	width:100%;
 	padding-top: 0px!important;
-	padding-bottom: 0!important; */
+	padding-bottom: 0!important; 
 }
+
+.mashsb-stretched .mashsb-buttons {
+    display: initial!important;
+}
+
+.mashsb-count,
+.mashsb-buttons span.text,
 .mashsb_below_buttons {
-    display: none;
+    display: none!important;
 }
 
 /* Cookie Notice
@@ -2366,6 +2545,10 @@ i.fa.fa-star-o {
 						CUSTOM RECIPE TEMPLATES Plugin
 --------------------------------------------------------------*/
 
+
+
+
+
 /* CSS TOOLTIP styling 
 ------------------------------------------*/
 
@@ -2374,13 +2557,16 @@ i.fa.fa-star-o {
   visibility: hidden;
 	position:absolute; 
   z-index: 10;
-  margin-top: -60px;
+  margin-top: -65px;
   margin-left: -150px;
   opacity:0;
   transition: visibility 0s, opacity 0.2s ease-in-out;
   transition-delay:0.2s;
   /*background:rgba(10, 10, 10, 0.5);*/
   /*max-width: 150px; */
+}
+#share .tooltip-content {
+  margin-left: -220px;
 }
 
 .tooltip-above  .tooltip-content {
@@ -2395,7 +2581,14 @@ i.fa.fa-star-o {
 	background:#fffAF0;
   line-height: 16px;
 	font-family: 'Oswald', sans-serif;
+  border-radius:4px;
+  box-shadow: 5px 5px 8px #CCC;
+  height:50px;
 }
+#share .tooltip-content .wrap {
+  padding: 10px 20px;
+}
+
 
 .tooltip:hover .tooltip-content,
 .tooltip-content:hover {
@@ -2403,7 +2596,6 @@ i.fa.fa-star-o {
 	visibility:visible;
 }
    
-  
 .tooltip .callout {
 	z-index:20;
 	position:absolute;
@@ -2414,13 +2606,9 @@ i.fa.fa-star-o {
   bottom: 9px;
   left: 70px;
 }
-	
-/*CSS3 extras*/
-.tooltip-content .wrap {
-    border-radius:4px;
-    box-shadow: 5px 5px 8px #CCC;
+.tooltip-above#share  img.callout {
+  left: 140px;
 }
-
 
 
 /* Social Share
@@ -3152,7 +3340,8 @@ nav.nav-primary .wrap {
 --------------------------------------------- */
 
 .entry-content .rpwe-block ul li, /* Prevents styling from other .entry-content section */
-.content .rpwe-block li {
+.content .rpwe-block li,
+.post-bottom .rpwe-block li {
 	position: relative;
 	float:left;
 	overflow: hidden; /* In order to allow slide down effects */
@@ -3345,6 +3534,7 @@ a.more-link,
 /* Recipes & Posts grid
 --------------------------------------------- */
 
+.post-bottom .rpwe-block,
 .content .rpwe-block {
   margin-right:0;
   text-align:left;
@@ -3361,6 +3551,7 @@ a.more-link,
   width:100%;       
 }
 
+.post-bottom .rpwe-block h3,
 .content .rpwe-block h3 {
 	font-size:16px;
 	line-height:18px;
@@ -4375,6 +4566,8 @@ Site Footer
 	
 	/* Grid widgets */
 	
+	.post-bottom .rpwe-block.grid-2col li,
+	.post-bottom .rpwe-block.grid-3col li,
 	.content .rpwe-block.grid-2col li,
 	.content .rpwe-block.grid-3col li {
   	width:50%;       

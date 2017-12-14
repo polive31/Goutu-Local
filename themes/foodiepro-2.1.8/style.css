@@ -1264,6 +1264,12 @@ Structure and Layout
 	width:100%;
 }
 
+/* Post Bottom */
+.post-bottom {
+	float:left;
+	width:100%;
+}
+
 /* Primary Sidebar */
 
 .sidebar-primary {
@@ -2119,10 +2125,17 @@ form[role="search"] {
   float:left;
  	width:100%;
 	padding-top: 0px!important;
-	padding-bottom: 0!important; */
+	padding-bottom: 0!important; 
 }
+
+.mashsb-stretched .mashsb-buttons {
+    display: initial!important;
+}
+
+.mashsb-count,
+.mashsb-buttons span.text,
 .mashsb_below_buttons {
-    display: none;
+    display: none!important;
 }
 
 /* Cookie Notice
@@ -2367,6 +2380,10 @@ i.fa.fa-star-o {
 						CUSTOM RECIPE TEMPLATES Plugin
 --------------------------------------------------------------*/
 
+
+
+
+
 /* CSS TOOLTIP styling 
 ------------------------------------------*/
 
@@ -2375,13 +2392,16 @@ i.fa.fa-star-o {
   visibility: hidden;
 	position:absolute; 
   z-index: 10;
-  margin-top: -60px;
+  margin-top: -65px;
   margin-left: -150px;
   opacity:0;
   transition: visibility 0s, opacity 0.2s ease-in-out;
   transition-delay:0.2s;
   /*background:rgba(10, 10, 10, 0.5);*/
   /*max-width: 150px; */
+}
+#share .tooltip-content {
+  margin-left: -220px;
 }
 
 .tooltip-above  .tooltip-content {
@@ -2396,7 +2416,14 @@ i.fa.fa-star-o {
 	background:#fffAF0;
   line-height: 16px;
 	font-family: 'Oswald', sans-serif;
+  border-radius:4px;
+  box-shadow: 5px 5px 8px #CCC;
+  height:50px;
 }
+#share .tooltip-content .wrap {
+  padding: 10px 20px;
+}
+
 
 .tooltip:hover .tooltip-content,
 .tooltip-content:hover {
@@ -2404,7 +2431,6 @@ i.fa.fa-star-o {
 	visibility:visible;
 }
    
-  
 .tooltip .callout {
 	z-index:20;
 	position:absolute;
@@ -2415,13 +2441,9 @@ i.fa.fa-star-o {
   bottom: 9px;
   left: 70px;
 }
-	
-/*CSS3 extras*/
-.tooltip-content .wrap {
-    border-radius:4px;
-    box-shadow: 5px 5px 8px #CCC;
+.tooltip-above#share  img.callout {
+  left: 140px;
 }
-
 
 
 /* Social Share
@@ -3153,7 +3175,8 @@ nav.nav-primary .wrap {
 --------------------------------------------- */
 
 .entry-content .rpwe-block ul li, /* Prevents styling from other .entry-content section */
-.content .rpwe-block li {
+.content .rpwe-block li,
+.post-bottom .rpwe-block li {
 	position: relative;
 	float:left;
 	overflow: hidden; /* In order to allow slide down effects */
@@ -3346,6 +3369,7 @@ a.more-link,
 /* Recipes & Posts grid
 --------------------------------------------- */
 
+.post-bottom .rpwe-block,
 .content .rpwe-block {
   margin-right:0;
   text-align:left;
@@ -3362,6 +3386,7 @@ a.more-link,
   width:100%;       
 }
 
+.post-bottom .rpwe-block h3,
 .content .rpwe-block h3 {
 	font-size:16px;
 	line-height:18px;
@@ -4376,6 +4401,8 @@ Site Footer
 	
 	/* Grid widgets */
 	
+	.post-bottom .rpwe-block.grid-2col li,
+	.post-bottom .rpwe-block.grid-3col li,
 	.content .rpwe-block.grid-2col li,
 	.content .rpwe-block.grid-3col li {
   	width:50%;       

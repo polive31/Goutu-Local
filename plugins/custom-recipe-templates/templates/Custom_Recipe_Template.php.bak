@@ -21,7 +21,7 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 			echo $this->json_ld_meta_output($recipe,'');
 		?>
 		
-		<div id="share-buttons"><?php echo do_shortcode('[mashshare text=""]'); ?></div>
+		<div id="share-buttons"><?php //echo do_shortcode('[mashshare text=""]'); ?></div>
 
 		<!-- Class .wpurp-container important for adjustable servings javascript -->	
 		<div class="recipe wpurp-container" id="wpurp-container-recipe-<?php echo $recipe->ID(); ?>" data-id="<?php echo $recipe->ID(); ?>" data-permalink="<?php echo $recipe->link(); ?>" data-servings-original="<?php echo $recipe->servings_normalized(); ?>">
@@ -66,18 +66,20 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 						<?php echo Custom_Recipe_Templates::output_tooltip(__('Print this recipe','foodiepro'),'top');?>
 					</div>	
 										
-					<!-- Recipe Share Button 
+					<!-- Recipe Share Button -->
 					<div class="recipe-button tooltip tooltip-above" id="share">
 						<a class="recipe-share-button" id="recipe-share" cursor-style="pointer">
 						<div class="button-caption"><?php echo __('Share','foodiepro'); ?></div>
-						</a>
-						<?php echo Custom_Recipe_Templates::output_tooltip(__('Share this recipe','foodiepro'),'top');?>
+						</a> 
+						<div id="share-buttons"></div>
+						<?php //echo Custom_Recipe_Templates::output_tooltip(__('Share this recipe','foodiepro'),'top');?>
+						<?php echo Custom_Recipe_Templates::output_tooltip(echo do_shortcode('[mashshare]'),'top');?>
 					</div>				
 					<script type="text/javascript">
 					jQuery( "#recipe-share" ).click(function() {
 			    	jQuery( "#share-buttons" ).toggle();
 					});
-					</script>-->
+					</script>
 														
 				</div>
 				
@@ -170,13 +172,6 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 
 				<?php
 						echo $this->custom_instructions_list($recipe,'');
-				?>
-			</div>
-			
-			<div class="recipe-container">
-				<?php
-				// Related Posts
-				//rp4wp_children();
 				?>
 			</div>
 			

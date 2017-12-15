@@ -13,6 +13,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		add_shortcode('ct-terms', array($this,'list_terms_taxonomy'));
 		add_shortcode('permalink', array($this,'add_permalink_shortcode'));
 		add_shortcode('share-title', array($this,'display_share_title')); 
+		add_shortcode('registration', array($this,'output_registation_url')); 
 		add_filter( 'query_vars', array($this,'archive_filter_queryvars') );		
 
 	}
@@ -262,18 +263,39 @@ class CustomNavigationShortcodes extends CustomArchive {
 	------------------------------------------------------*/
 
 	public function add_permalink_shortcode($atts) {
-		$atts = shortcode_atts(array(
+		$a = shortcode_atts(array(
 			'id' => false,
 			'slug' => false,
 			'html' => false, // html markup or url only
 			'text' => ""  // default value if none supplied
 	    ), $atts);
 	
+		$id=$a['id'];
+		$html=$a['html'];
+		$text=$a['text'];
+	
 		if ($id) $url=get_permalink($id);
 		elseif ($slug) $url=get_permalink(get_page_by_path($slug));			
 		else $url=$_SERVER['REQUEST_URI'];			
 			
-    if ($html) return '"<a href=' . $url . '>$text</a>"';
+    if ($html) return '<a href=' . $url . '>' . $text . '</a>';
+    else return $url;
+	}
+
+
+	/* Output registration page url
+	------------------------------------------------------*/
+
+	public function output_registation_url($atts) {
+		$a = shortcode_atts(array(
+			'html' => true,
+			'text' => ""  // default value if none supplied
+	    ), $atts);
+		$html=$a['html'];
+		$text=$a['text'];
+	    
+  	$url=wp_registration_url();
+    if ($html) return '<a href=' . $url . '>' . $text . '</a>';
     else return $url;
 	}
 

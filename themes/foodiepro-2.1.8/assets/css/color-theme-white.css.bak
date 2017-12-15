@@ -120,8 +120,7 @@ input, select, textarea,
 }
 
 .widget_wpurp_recipe_search_widget select {
-	border:1px dashed #ddd;
-	background:none;
+	border:1px solid #ddd;
 }
 
 /* Widget top5

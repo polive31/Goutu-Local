@@ -41,7 +41,7 @@ define ( 'BP_AVATAR_DEFAULT_THUMB', 'https://goutu.org/wp-content/themes/foodiep
 ///* Customize registration mail subject */
 //function custom_buddypress_activation_subject( $subject, $user_id ) {
 //	$user = get_userdata( $user_id );
-//	$text = 'essai3' . ' – Activate your ' . get_bloginfo( 'name' ) . ' account';
+//	$text = 'essai3' . ' â€“ Activate your ' . get_bloginfo( 'name' ) . ' account';
 //	return $text;
 //}
 //add_filter( 'bp_core_signup_send_validation_email_subject', 'custom_buddypress_activation_subject', 10, 2 );
@@ -98,7 +98,7 @@ function foodiepro_xprofile_cover_image( $settings = array() ) {
 /* =              OTHER SETTINGS
 /* =================================================================*/
 
-/* Removing the links automatically created in a member’s profile */
+/* Removing the links automatically created in a memberâ€™s profile */
 //add_action( 'bp_init', 'remove_xprofile_links' );
 function remove_xprofile_links() {
     remove_filter( 'bp_get_the_profile_field_value', 'xprofile_filter_link_profile_data', 9, 2 );
@@ -231,6 +231,19 @@ function wprpe_query_displayed_user_posts( $args ) {
   	$args['author'] = bp_displayed_user_id();
 	}
   return $args;
+}
+/* Workaround for shortcodes in rpwe "after" html not executing 
+in social-bottom widgeted area  */
+add_filter( 'rpwe_markup', 'add_more_from_author_link',15,2);
+function add_more_from_author_link($html,$args) {
+	$user_id=bp_displayed_user_id();
+	$name=bp_core_get_username($user_id);	
+  if ($args['author']=='bp_member') {
+		$html.='<p class="more-from-category">'; 
+		$html.='<a href="/author/' . $name . '">Toutes les recettes de ' . $name . 'â†’</a>';
+		$html.='</p>';
+	}
+	return $html;
 }
 
 //

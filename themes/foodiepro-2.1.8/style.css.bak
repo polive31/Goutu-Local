@@ -3835,10 +3835,11 @@ font-size:11px;
 
 .footer-widgets {
 	color:#333;
-	display:block;
-	clear:both;
 	overflow:hidden;
 	text-align:center;
+  margin-top: 40px;
+  float: left;	
+	clear:both;
 }
 
 .frontier-post .footer-widgets {

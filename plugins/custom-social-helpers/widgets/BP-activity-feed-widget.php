@@ -53,7 +53,7 @@ class BP_Activity_Feed extends WP_Widget {
 		$default_title=sprintf(__('Activity Feed for %s','foodiepro'),$user_name);
 		$this->display_title($args, $instance, $default_title);
 		
-		$limit=($instance['limit']=='')?self::DEFAULT_LIMIT:$instance['limit'];
+		$limit=(empty($instance['limit']))?self::DEFAULT_LIMIT:$instance['limit'];
 
 		/**
 		 * Fires before the start of the activity loop.

@@ -1269,6 +1269,7 @@ Structure and Layout
 }
 
 /* Post Bottom */
+.social-bottom,
 .post-bottom {
 	float:left;
 	width:100%;
@@ -3179,6 +3180,7 @@ nav.nav-primary .wrap {
 
 .entry-content .rpwe-block ul li, /* Prevents styling from other .entry-content section */
 .content .rpwe-block li,
+.social-bottom .rpwe-block li,
 .post-bottom .rpwe-block li {
 	position: relative;
 	float:left;
@@ -3364,14 +3366,14 @@ a.more-link,
 	float:none;
 	text-align:center;
 	margin-top:20px;
+	margin-bottom:40px;
 }
-
-
 
 
 /* Recipes & Posts grid
 --------------------------------------------- */
 
+.social-bottom .rpwe-block,
 .post-bottom .rpwe-block,
 .content .rpwe-block {
   margin-right:0;
@@ -3389,6 +3391,7 @@ a.more-link,
   width:100%;       
 }
 
+.social-bottom .rpwe-block h3,
 .post-bottom .rpwe-block h3,
 .content .rpwe-block h3 {
 	font-size:16px;
@@ -3832,10 +3835,11 @@ font-size:11px;
 
 .footer-widgets {
 	color:#333;
-	display:block;
-	clear:both;
 	overflow:hidden;
 	text-align:center;
+  margin-top: 40px;
+  float: left;	
+	clear:both;
 }
 
 .frontier-post .footer-widgets {
@@ -4408,6 +4412,8 @@ Site Footer
 	
 	/* Grid widgets */
 	
+	.social-bottom .rpwe-block.grid-2col li,
+	.social-bottom .rpwe-block.grid-2col li,
 	.post-bottom .rpwe-block.grid-2col li,
 	.post-bottom .rpwe-block.grid-3col li,
 	.content .rpwe-block.grid-2col li,

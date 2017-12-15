@@ -95,13 +95,13 @@ genesis_register_sidebar( array(
 	'description'	=> __( 'This is the sidebar for social pages.', 'foodiepro' ),
 ) );
 genesis_register_sidebar( array(
-    'id'          => 'social-bottom',
-    'name'        => __( 'Social Bottom', 'foodiepro' ),
+    'id'          => 'social-content',
+    'name'        => __( 'Social Content', 'foodiepro' ),
     'description' => __( 'This is the widget section of buddypress pages.', 'foodiepro' ),
 ) );
 genesis_register_sidebar( array(
-    'id'          => 'social-footer',
-    'name'        => __( 'Social Footer', 'foodiepro' ),
+    'id'          => 'social-bottom',
+    'name'        => __( 'Social Bottom', 'foodiepro' ),
     'description' => __( 'This goes just before the footer, and occupies the whole page width.', 'foodiepro' ),
 ) );
 

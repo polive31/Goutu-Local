@@ -51,9 +51,8 @@ class Recent_Posts_Widget_Extended extends WP_Widget {
 		extract( $args );
 
 		$recent = rpwe_get_recent_posts( $instance );
-		
 
-		if ( $recent!=$instance['after'] ) {
+		if ( !empty($recent) ) { // the query retrieved posts
 
 			// Output the theme's $before_widget wrapper.
 			echo $before_widget;
@@ -74,7 +73,6 @@ class Recent_Posts_Widget_Extended extends WP_Widget {
 			echo $after_widget;
 
 		}
-
 	}
 
 	/**

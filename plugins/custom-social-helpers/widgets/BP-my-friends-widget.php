@@ -52,7 +52,7 @@ class BP_My_Friends extends WP_Widget {
 			$user_id=bp_displayed_user_id();
 			$title= sprintf( __('Friends of %s','foodiepro'), bp_core_get_username($user_id));
 		}
-		$limit=($instance['limit']=='')?'3':$instance['limit'];
+		$limit=(empty($instance['limit']))?'3':$instance['limit'];
 
 		//echo $user_id;
 		

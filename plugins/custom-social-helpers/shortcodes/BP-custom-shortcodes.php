@@ -113,7 +113,7 @@ function bp_displayed_user_shortcode( $atts ) {
 		} 
 		return $name; 
 }
-add_shortcode('bp_displayed', 'bp_displayed_user_shortcode');
+add_shortcode('bp-displayed', 'bp_displayed_user_shortcode');
 
 /* =================================================================*/
 /* =                   BP User Avatar Shortcode 

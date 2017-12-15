@@ -210,16 +210,27 @@ class custom_progress_bar_widget extends WP_Widget {
 
 	public function get_user_progression_for_field($user_id) {    
 	    //get current point item
+	    $field_id = false;
 	    $point_item		= bppp()->query->point;
-	    $field_id		= $point_item['args']['field-id'];
-
-	    if(!$field_id) return false;
 	    
-	    //get field value
-	    $value = bp_get_profile_field_data( array(
-			'field'		=> $field_id,
-			'user_id'	=>$user_id 
-		) );
+			$label=$point_item['label'];
+			if ($label=='Avatar') {
+				$value = bp_get_user_has_avatar($user_id);
+			}
+			else {	
+				$field_id=$point_item['args']['field-id'];
+		    	
+		    //echo '<pre>' . print_r($point_item, true) . '</pre>';	
+		    //echo $field_id;
+
+		    if(!$field_id) return false;
+		    
+		    //get field value
+		    $value = bp_get_profile_field_data( array(
+					'field'		=> $field_id,
+					'user_id'	=>$user_id 
+				) );
+			}
 
 	    return (bool)$value; //return TRUE (100% of potential points)
 	}

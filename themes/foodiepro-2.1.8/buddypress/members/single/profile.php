@@ -49,8 +49,8 @@
 			<?php
 			
 			// Displays widgeted public profile content
-	    genesis_widget_area( 'social-bottom', array(
-	        'before' => '<div class="social-bottom widget-area">',
+	    genesis_widget_area( 'social-content', array(
+	        'before' => '<div class="social-content widget-area">',
 	        'after'  => '</div>',
 	  	));
 	  		  	

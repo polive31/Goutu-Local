@@ -54,7 +54,7 @@ $a_css = bp_is_my_profile()?'':'class="disabled"';
 			
 
 	<div id="item-header-avatar">
-		<a <?php echo $a_css;?> title="<?php echo $text;?>" href="<?php echo $url_avatar; ?>">	
+		<a <?php echo $a_css;?> href="<?php echo $url_avatar; ?>">	
 			<div <?php echo $overlay_css;?> id="avatar">
 				<div class="overlay-text"><?php echo $avatar_text;?></div>
 			</div>

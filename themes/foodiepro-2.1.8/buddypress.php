@@ -2,7 +2,7 @@
 
 
 /* =================================================================*/
-/* =                 WIDGETED AREAS
+/* =                 LAYOUT
 /* =================================================================*/
 
 // Apply Full Width Content layout
@@ -12,15 +12,39 @@ function bp_set_full_layout() {
 	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 }
 
-
-// Add a "social" sidebar besides the profile page 
+// Add widgeted areas
 add_action( 'bp_after_member_home_content', 'get_social_sidebar' );
 function get_social_sidebar() {
   get_sidebar( 'social' );
 }
 
+add_action( 'genesis_after_loop', 'add_social_bottom_area');
+function add_social_bottom_area() {
+  if ( bp_is_user() && (bp_current_action()=='public') ) {
+  	//echo bp_current_action();
+	  genesis_widget_area( 'social-bottom', array(
+	      'before' => '<div class="social-bottom widget-area">',
+	      'after'  => '</div>',
+		));
+	}
+}
 
-//* Remove the breacrumbs
+/* Workaround for shortcodes in rpwe "after" html not executing 
+in social-bottom widgeted area  */
+add_filter( 'rpwe_markup', 'add_more_from_author_link');
+function add_more_from_author_link($html) {
+	$user_id=bp_displayed_user_id();
+	$name=bp_core_get_username($user_id);	
+  if ( bp_is_user() && (bp_current_action()=='public') ) {
+		$html.='<p class="more-from-category">'; 
+		$html.='<a href="/author/' . $name . '">Toutes les recettes de ' . $name . '→</a>';
+		$html.='</p>';
+	}
+	return $html;
+}
+
+
+/* Remove the breacrumbs
 /**
  * I used genesis_before, but you can also use get_header or other hooks as long
  * as you call the check function prior to the breadcrumbs being called.

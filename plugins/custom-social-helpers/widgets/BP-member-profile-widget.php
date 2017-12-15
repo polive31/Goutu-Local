@@ -40,12 +40,13 @@ class BP_Member_Profile extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 	
-     	echo $args['before_widget'];
+    echo $args['before_widget'];
 		if ( ! empty( $instance['title'] ) ) {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 		}
 		
 		/* Code start */
+		$user_id=bp_displayed_user_id();
 		
 		if ( 0 ) {
 			

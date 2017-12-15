@@ -52,7 +52,7 @@ function foodie_pro_after_entry() {
 	echo '</div>';
 }
 
-//* Register widget areas.
+//* General widgeted areas.
 genesis_register_sidebar( array(
 	'id'			=> 'before-content',
 	'name'			=> __( 'Before Content', 'foodiepro' ),
@@ -63,6 +63,7 @@ genesis_register_sidebar( array(
 	'name'			=> __( 'Before Header', 'foodiepro' ),
 	'description'	=> __( 'This is the section before the header.', 'foodiepro' ),
 ) );
+
 //* Post Widgeted areas
 genesis_register_sidebar( array(
 	'id'			=> 'post-bottom',
@@ -94,8 +95,8 @@ genesis_register_sidebar( array(
 	'description'	=> __( 'This is the sidebar for social pages.', 'foodiepro' ),
 ) );
 genesis_register_sidebar( array(
-    'id'          => 'social-bottom',
-    'name'        => __( 'Social Bottom', 'foodiepro' ),
+    'id'          => 'social-content',
+    'name'        => __( 'Social Content', 'foodiepro' ),
     'description' => __( 'This is the widget section of buddypress pages.', 'foodiepro' ),
 ) );
 genesis_register_sidebar( array(

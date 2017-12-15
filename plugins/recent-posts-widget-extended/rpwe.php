@@ -59,6 +59,7 @@ class RPW_Extended {
 
 	}
 
+
 	/**
 	 * Defines constants used by the plugin.
 	 *

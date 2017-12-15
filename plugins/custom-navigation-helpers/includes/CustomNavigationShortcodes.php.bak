@@ -47,9 +47,9 @@ class CustomNavigationShortcodes extends CustomArchive {
 
 	public function add_index_link($atts) {
 		 //Inside the function we extract parameter of our shortcode
-		extract( shortcode_atts( array(
+		$atts = shortcode_atts( array(
 			'back' => 'false',
-		), $atts ) );
+		), $atts );
 		
 		//PHP_Debug::log(' In index-link shortcode');
 		
@@ -134,7 +134,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 
 	public function list_terms_taxonomy( $atts ) {
 		static $dropdown_cnt;
-		extract( shortcode_atts( array(
+		$atts = shortcode_atts( array(
 			'dropdown' => 'false',
 			'taxonomy' => 'category',
 			'filter' => 'false',
@@ -145,9 +145,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 			'exclude' => '',
 			'index_title' => '',
 			'index_path' => ''
-		), $atts ) );
-		
-		print_r($atts);
+		), $atts );
 
 		$filter = ($filter == 'true');
 
@@ -264,12 +262,12 @@ class CustomNavigationShortcodes extends CustomArchive {
 	------------------------------------------------------*/
 
 	public function add_permalink_shortcode($atts) {
-		extract(shortcode_atts(array(
+		$atts = shortcode_atts(array(
 			'id' => false,
 			'slug' => false,
 			'html' => false, // html markup or url only
 			'text' => ""  // default value if none supplied
-	    ), $atts));
+	    ), $atts);
 	
 		if ($id) $url=get_permalink($id);
 		elseif ($slug) $url=get_permalink(get_page_by_path($slug));			

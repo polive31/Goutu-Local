@@ -21,7 +21,7 @@ if (have_posts()):?>
 ?>
 </h2>
 
-<div class="rpwe-block <?php echo $grid; ?>">
+<div class="rpwe-block related-posts <?php echo $grid; ?>">
 	<ul class="rpwe-ul">
 	<?php while (have_posts()) : the_post(); ?>
 		<?php if (has_post_thumbnail()):?>

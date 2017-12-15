@@ -23,7 +23,7 @@ function add_social_bottom_area() {
   if ( bp_is_user() && (bp_current_action()=='public') ) {
   	//echo bp_current_action();
 	  genesis_widget_area( 'social-bottom', array(
-	      'before' => '<div class="social-bottom widget-area">',
+	      'before' => '<div class="social-bottom widget-area page-bottom">',
 	      'after'  => '</div>',
 		));
 	}

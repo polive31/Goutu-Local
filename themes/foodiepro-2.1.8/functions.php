@@ -553,7 +553,7 @@ add_action( 'genesis_after_content_sidebar_wrap', 'add_post_bottom_area');
 function add_post_bottom_area() {
 	if ( is_single() ) {
 	  genesis_widget_area( 'post-bottom', array(
-	      'before' => '<div class="post-bottom widget-area">',
+	      'before' => '<div class="post-bottom widget-area page-bottom">',
 	      'after'  => '</div>',
 		));
 	}

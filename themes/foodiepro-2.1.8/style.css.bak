@@ -1112,6 +1112,17 @@ a img {
 	margin-bottom:20px;
 }
 
+.page-bottom a img {
+  height: 200px!important;
+  object-fit: cover;
+}
+
+.page-bottom .related-posts a img {
+  margin-bottom: 0;
+  height: 250px!important;
+  object-fit: cover;
+}
+
 a:hover {
 	color:#111;
 }
@@ -1269,8 +1280,7 @@ Structure and Layout
 }
 
 /* Post Bottom */
-.social-bottom,
-.post-bottom {
+.page-bottom {
 	float:left;
 	width:100%;
 }
@@ -1527,17 +1537,7 @@ img.avatar#square,
   -webkit-border-radius:0;
 }
 
-/*.content .featured-post .avatar {
-  display:inline-block;
-  border:3px solid #fff;
-  margin-top:-55px;
-  margin-left:-10px;
-  position:absolute;
-  z-index:4;
-  margin-right:0;
-	width:55px;
- }*/
-
+.page-bottom .rpwe-block a.auth-avatar,
 .content .rpwe-block a.auth-avatar {
 	margin-right:auto;
 	margin-left:auto;
@@ -1550,6 +1550,11 @@ img.avatar#square,
   display:flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */  
 }
 
+.page-bottom .rpwe-block a.auth-avatar {
+  margin-top:-65px;
+}
+
+.page-bottom .rpwe-block img.avatar,
 .content .rpwe-block img.avatar {
 	border:3px solid #ffffff;
 	width:55px;
@@ -1557,15 +1562,10 @@ img.avatar#square,
 	margin:auto;
 }
 
-/*
-.alignleft .avatar {
-	margin-right:22px;
+.page-bottom .rpwe-block img.avatar {
+	width:60px;
+	height:60px;
 }
-
-.alignright .avatar {
-	margin-left:22px;
-}*/
-
 
 /* WordPress misc
 --------------------------------------------- */
@@ -2682,6 +2682,11 @@ Custom Page Templates
 	max-width:680px;
 }
 
+.home-bottom {
+	float:left;
+	width:100%;
+}
+
 .paged .home-middle,
 .paged .home-top {
 	display:none;
@@ -3180,8 +3185,7 @@ nav.nav-primary .wrap {
 
 .entry-content .rpwe-block ul li, /* Prevents styling from other .entry-content section */
 .content .rpwe-block li,
-.social-bottom .rpwe-block li,
-.post-bottom .rpwe-block li {
+.page-bottom .rpwe-block li {
 	position: relative;
 	float:left;
 	overflow: hidden; /* In order to allow slide down effects */
@@ -3366,15 +3370,13 @@ a.more-link,
 	float:none;
 	text-align:center;
 	margin-top:20px;
-	margin-bottom:40px;
 }
 
 
 /* Recipes & Posts grid
 --------------------------------------------- */
 
-.social-bottom .rpwe-block,
-.post-bottom .rpwe-block,
+.page-bottom .rpwe-block,
 .content .rpwe-block {
   margin-right:0;
   text-align:left;
@@ -3391,8 +3393,7 @@ a.more-link,
   width:100%;       
 }
 
-.social-bottom .rpwe-block h3,
-.post-bottom .rpwe-block h3,
+.page-bottom .rpwe-block h3,
 .content .rpwe-block h3 {
 	font-size:16px;
 	line-height:18px;
@@ -4412,10 +4413,8 @@ Site Footer
 	
 	/* Grid widgets */
 	
-	.social-bottom .rpwe-block.grid-2col li,
-	.social-bottom .rpwe-block.grid-2col li,
-	.post-bottom .rpwe-block.grid-2col li,
-	.post-bottom .rpwe-block.grid-3col li,
+	.page-bottom .rpwe-block.grid-2col li,
+	.page-bottom .rpwe-block.grid-3col li,
 	.content .rpwe-block.grid-2col li,
 	.content .rpwe-block.grid-3col li {
   	width:50%;       

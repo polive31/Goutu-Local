@@ -82,6 +82,7 @@ function rpwe_get_recent_posts( $args = array() ) {
 
 	// Set up a default, empty variable.
 	$html = '';
+	$first = ($args['limit'] & 1);
 
 	// Merge the input arguments and the defaults.
 	$args = wp_parse_args( $args, rpwe_get_default_args() );
@@ -122,7 +123,8 @@ function rpwe_get_recent_posts( $args = array() ) {
 					$image    = rpwe_resize( $img_url, $args['thumb_width'], $args['thumb_height'], true );
 
 					// Start recent posts markup.
-					$html .= '<li class="rpwe-li rpwe-clearfix">';
+					$html .= '<li class="rpwe-li rpwe-clearfix ' . (($first)?'rpwe-first':'') . '">';
+					$first = false;
 
 						if ( $args['thumb'] ) :
 

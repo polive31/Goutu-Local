@@ -51,6 +51,7 @@ class Recent_Posts_Widget_Extended extends WP_Widget {
 		extract( $args );
 
 		$recent = rpwe_get_recent_posts( $instance );
+		
 
 		if ( $recent!=$instance['after'] ) {
 

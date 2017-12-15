@@ -7,11 +7,10 @@ Author: Pascal O.
 
 <?php
 define ( 'COLUMNS', '5');
+$grid = 'grid-' . COLUMNS . 'col';
+$first = (COLUMNS & 1);
 
-$grid = 'grid-' . COLUMNS . 'col';?>
-
-
-<?php if (have_posts()):?>
+if (have_posts()):?>
 
 <h2>
 <?php
@@ -26,7 +25,8 @@ $grid = 'grid-' . COLUMNS . 'col';?>
 	<ul class="rpwe-ul">
 	<?php while (have_posts()) : the_post(); ?>
 		<?php if (has_post_thumbnail()):?>
-				<li class="rpwe-li rpwe-clearfix">
+				<li class="rpwe-li rpwe-clearfix <?php echo ($first)?'rpwe-first':'';?>">
+					<?php $first=false;?>
 					<a class="rpwe-img" href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
 						<?php the_post_thumbnail( 'square-thumbnail', array( 'class' => 'rpwe-aligncenter rpwe-thumb' ) ); ?>
 					</a>

@@ -4336,6 +4336,10 @@ Site Footer
 	.simple-grid.one-third {
   	width:50%;         
 	}
+		
+	li.rpwe-li.rpwe-clearfix.rpwe-first {
+	    width: 100%;
+	}	
 	
 	.title-area {
 		height:80px;

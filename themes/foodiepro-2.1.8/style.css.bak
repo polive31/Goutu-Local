@@ -930,6 +930,11 @@ p.wp_widget_plugin_textarea {
 }
 
 /* Buddy Progress Bar */
+.stat-wrapper {
+   display: flex;
+}
+
+
 .bppp-stat {
     display: inline-block;
     height: 1em;
@@ -959,7 +964,7 @@ p.wp_widget_plugin_textarea {
 }
 
 .bppp-stat-percent {
-    display: inherit;
+  display: inherit;
 	vertical-align:middle;
 	font-weight: bold;
 }
@@ -2224,9 +2229,8 @@ li.share-icons.size-medium a {
 
 td.rating-title {
 	font-size:16px;
-	padding:10px 0 10px;
+	padding:5px 0;
 }
-
 
 .form-submit {
 	display:block;
@@ -2235,7 +2239,7 @@ td.rating-title {
 }
 
 .rating-wrapper {
-		padding:10px;
+		padding:5px 0;
 		float:left;
 		clear:right;
 		overflow: hidden;

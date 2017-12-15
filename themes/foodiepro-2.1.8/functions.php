@@ -68,7 +68,6 @@ function foodie_pro_theme_setup() {
 
 	//* Add new featured image sizes.
 	add_image_size( 'horizontal-thumbnail', 680, 450, true );
-	//add_image_size( 'flexslider', 680, 400, true );
 	add_image_size( 'vertical-thumbnail', 680, 900, true );
 	add_image_size( 'square-thumbnail', 320, 320, true );
 	add_image_size( 'medium-thumbnail', 450, 450, true );
@@ -511,6 +510,10 @@ function block_new_users ($user) {
 // Move pagination on all archive pages
 remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
 add_action( 'genesis_after_content', 'genesis_posts_nav' );
+
+// Move footer widget area (avoid "out of content" issue on buddypress pages)
+remove_action( 'genesis_before_footer', 'genesis_footer_widget_areas' );
+add_action( 'genesis_after_content_sidebar_wrap', 'genesis_footer_widget_areas', 999 );
 
 
 /* Hook widget areas 

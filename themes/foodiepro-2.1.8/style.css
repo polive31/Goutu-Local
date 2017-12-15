@@ -2229,9 +2229,8 @@ li.share-icons.size-medium a {
 
 td.rating-title {
 	font-size:16px;
-	padding:10px 0 10px;
+	padding:5px 0;
 }
-
 
 .form-submit {
 	display:block;
@@ -2240,7 +2239,7 @@ td.rating-title {
 }
 
 .rating-wrapper {
-		padding:10px;
+		padding:5px 0;
 		float:left;
 		clear:right;
 		overflow: hidden;
@@ -3686,7 +3685,7 @@ li.comment a {
 
 .comment-reply label {
 	display:block;
-	margin:0 0 10px 0;
+	margin:10px 0;
 }
 
 .comment .avatar {

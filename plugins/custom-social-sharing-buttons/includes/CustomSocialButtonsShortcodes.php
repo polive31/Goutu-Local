@@ -48,15 +48,15 @@ class CustomSocialButtonsShortcodes extends CustomSocialButtons {
 	  	//echo '$atts for ' . $id . '=' . $atts[$id] . '<br>';
 	  }  
 	
-		if ($atts['url']=='site') $url=get_permalink();
+		if ($atts['url']=='site') $url=get_site_url(null,'','https');
 		elseif ($atts['url']=='current') $url=get_permalink();
+		
+		$url=esc_html($url);
 		
 		$html=$this->get_sharing_buttons($url, $atts['size'],$supported_networks);
 		
     return $html;
 	}
-
-
 
 }
 

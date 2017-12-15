@@ -33,7 +33,7 @@ function foodie_pro_before_header() {
 	echo '</div>';
 }
 
-add_action( 'genesis_before_comments', 'foodie_pro_after_entry' );
+//add_action( 'genesis_before_comments', 'foodie_pro_after_entry' );
 /**
  * Load an after entry section before .entry-comments on single entries.
  *
@@ -52,7 +52,7 @@ function foodie_pro_after_entry() {
 	echo '</div>';
 }
 
-//* Register widget areas.
+//* General widgeted areas.
 genesis_register_sidebar( array(
 	'id'			=> 'before-content',
 	'name'			=> __( 'Before Content', 'foodiepro' ),
@@ -63,12 +63,14 @@ genesis_register_sidebar( array(
 	'name'			=> __( 'Before Header', 'foodiepro' ),
 	'description'	=> __( 'This is the section before the header.', 'foodiepro' ),
 ) );
+
 //* Post Widgeted areas
 genesis_register_sidebar( array(
 	'id'			=> 'post-bottom',
 	'name'			=> __( 'Post Bottom', 'foodiepro' ),
 	'description'	=> __( 'This is the section below content and sidebar, just before the footer.', 'foodiepro' ),
 ) );
+
 //* Home Page widgeted areas
 genesis_register_sidebar( array(
 	'id'			=> 'home-top',
@@ -85,51 +87,30 @@ genesis_register_sidebar( array(
 	'name'			=> __( 'Home Bottom', 'foodiepro' ),
 	'description'	=> __( 'This is the home bottom section.', 'foodiepro' ),
 ) );
-//genesis_register_sidebar( array(
-//	'id'			=> 'recipes-top',
-//	'name'			=> __( 'Recipes Top', 'foodiepro' ),
-//	'description'	=> __( 'This is the recipes top section.', 'foodiepro' ),
-//) );
-//genesis_register_sidebar( array(
-//	'id'			=> 'recipes-bottom',
-//	'name'			=> __( 'Recipes Bottom', 'foodiepro' ),
-//	'description'	=> __( 'This is the recipes bottom section.', 'foodiepro' ),
-//) );
-///* P.O. Added */
-//genesis_register_sidebar( array(
-//	'id'			=> 'blogs-top',
-//	'name'			=> __( 'Blogs Top', 'foodiepro' ),
-//	'description'	=> __( 'This is the blogs top section.', 'foodiepro' ),
-//) );
-//genesis_register_sidebar( array(
-//	'id'			=> 'blogs-bottom',
-//	'name'			=> __( 'Blogs Bottom', 'foodiepro' ),
-//	'description'	=> __( 'This is the blogs bottom section.', 'foodiepro' ),
-//) );
+
+//* Social (Buddypress) widgeted areas
 genesis_register_sidebar( array(
 	'id'			=> 'social-sidebar',
 	'name'			=> __( 'Social sidebar', 'foodiepro' ),
 	'description'	=> __( 'This is the sidebar for social pages.', 'foodiepro' ),
 ) );
-//* Create custom category Social widget area
 genesis_register_sidebar( array(
     'id'          => 'social-bottom',
     'name'        => __( 'Social Bottom', 'foodiepro' ),
     'description' => __( 'This is the widget section of buddypress pages.', 'foodiepro' ),
 ) );
-//* Create custom category Social widget area
 genesis_register_sidebar( array(
     'id'          => 'social-footer',
     'name'        => __( 'Social Footer', 'foodiepro' ),
     'description' => __( 'This goes just before the footer, and occupies the whole page width.', 'foodiepro' ),
 ) );
-//* Create custom category archive bottom widget area (lef)
+
+//* Archive pages widgeted areas
 genesis_register_sidebar( array(
     'id'          => 'archives-top',
     'name'        => __( 'Archives Top', 'foodiepro' ),
     'description' => __( 'This is the top widget section of archived pages.', 'foodiepro' ),
 ) );
-//* Create custom category archive bottom widget area (lef)
 genesis_register_sidebar( array(
     'id'          => 'archives-bottom',
     'name'        => __( 'Archives Bottom', 'foodiepro' ),

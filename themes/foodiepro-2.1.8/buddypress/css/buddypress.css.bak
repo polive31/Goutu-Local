@@ -166,7 +166,7 @@ Hello, this is the BuddyPress Legacy stylesheet.
   bottom: 0;
   z-index: 1;
 	width: 100%;
-	background: linear-gradient(#4c4c4cb3, #ffffff00);
+	background: linear-gradient(#ffffff00,#4c4c4cb3);
 }
 
 #buddypress #item-userid {

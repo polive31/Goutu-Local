@@ -42,16 +42,13 @@ class BP_Activity_Feed extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		
-		if ( !(is_user_logged_in() ) ) return;
 		
 		/* Code Start */
     echo $args['before_widget'];
     
-    $user_id=bp_displayed_user_id();
-    $user_name = bp_core_get_username($user_id);
-		
-		$default_title=sprintf(__('Activity Feed for %s','foodiepro'),$user_name);
-		$this->display_title($args, $instance, $default_title);
+		if ( !(is_user_logged_in()) && !(bp_is_user()) ) return;
+    
+		$this->display_title($args, $instance);
 		
 		$limit=(empty($instance['limit']))?self::DEFAULT_LIMIT:$instance['limit'];
 
@@ -83,14 +80,15 @@ class BP_Activity_Feed extends WP_Widget {
 
 			<?php if ( bp_activity_has_more_items() ) : ?>
 
-				<p class="more-from-category">
-					<a href="<?php bp_activity_load_more_link() ?>"><?php echo __( 'Previous Feeds', 'foodiepro' ) . ' →'; ?></a>
-				</p>
-
 			<?php endif; ?>
 
 				</ul>
 
+				<p class="more-from-category">
+					<a href="<?php bp_activity_load_more_link() ?>"><?php echo __( 'Previous Feeds', 'foodiepro' ) . ' →'; ?></a>
+				</p>
+				
+				
 		<?php else : ?>
 
 			<div id="message" class="info">
@@ -98,6 +96,7 @@ class BP_Activity_Feed extends WP_Widget {
 			</div>
 
 		<?php endif; ?>
+		
 
 		<?php
 
@@ -115,13 +114,7 @@ class BP_Activity_Feed extends WP_Widget {
 		echo $args['after_widget'];
 	}
 	
-	
-	public function display_title($args, $instance, $title) {
-		if ( ! (empty( $instance['title']) ) )
-			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
-		else
-			echo $args['before_title'] . apply_filters( 'widget_title', $title ). $args['after_title'];		
-	}
+
 
 	/**
 	 * Back-end widget form.
@@ -140,8 +133,20 @@ class BP_Activity_Feed extends WP_Widget {
 		if ( isset( $instance[ 'limit' ] ) )
 			$limit = $instance[ 'limit' ];
 		else 
-			$limit = self::DEFAULT_LIMIT;			
+			$limit = self::DEFAULT_LIMIT;		
+		if ( isset( $instance[ 'autotitle' ] ) )
+			$autotitle = $instance[ 'autotitle' ];
+		else 
+			$autotitle = false;						
 		?>
+
+		<p>
+			<input class="checkbox" type="checkbox" <?php echo $autotitle?"checked":""; ?> id="<?php echo $this->get_field_id( 'autotitle' ); ?>" name="<?php echo $this->get_field_name( 'autotitle' ); ?>" />
+			<label for="<?php echo $this->get_field_id( 'autotitle' ); ?>">
+				<?php _e( 'Automatic title ?', 'foodiepro' ); ?>
+			</label>
+		</p>
+
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
@@ -153,6 +158,8 @@ class BP_Activity_Feed extends WP_Widget {
 			</label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" type="number" step="1" min="-1" value="<?php echo (int)( $limit ); ?>" />
 		</p>			
+		
+		
 		
 		<?php 
 	}
@@ -171,8 +178,23 @@ class BP_Activity_Feed extends WP_Widget {
 		$instance = array();
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 		$instance['limit'] = $new_instance['limit'];			
+		$instance['autotitle'] = $new_instance['autotitle'];			
 		return $instance;
 	}
+	
+	public function display_title($args, $instance) {
+		
+    $user_id=empty(bp_displayed_user_id())?bp_loggedin_user_id():bp_displayed_user_id();
+    $user_name = bp_core_get_username($user_id);
+		$default_title=sprintf(__('Activity Feed for %s','foodiepro'),$user_name);		
+	
+		$autotitle = (empty($instance['autotitle']))?false:$instance['autotitle'];
+	
+		if ( $autotitle )
+			echo $args['before_title'] . apply_filters( 'widget_title', $default_title ). $args['after_title'];		
+		elseif (! empty($instance['title']))
+			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];	
+	}	
 
 } // class BP_Whats_New
 

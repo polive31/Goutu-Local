@@ -88,6 +88,79 @@ function bp_author_shortcode( $atts ) {
 		return $name; 
 }
 add_shortcode('bp-author', 'bp_author_shortcode');	
+
+	
+/* =================================================================*/
+/* =                   Social Buttons shortcode
+/* =================================================================*/
+
+function bp_social_button( $atts ) {
+		$a = shortcode_atts( array(
+    	'text' => '', // backup text
+    	'type' => 'like', // like, unlike, comment, delete
+		), $atts );
+		
+		switch ($a['type']) {
+			case "like":
+				$html='<a href="' . bp_get_activity_favorite_link() . '" class="social-button fav bp-secondary-action" title="' . esc_attr( 'I like that', 'foodiepro' ) . '">';
+				$html.='<i class="fa fa-thumbs-up"></i>';
+				$html.='</a>';
+				break;
+			case "unlike":
+				$html='<a href="' . bp_get_activity_unfavorite_link() . '" class="social-button unfav bp-secondary-action" title="' . esc_attr( 'I don\'t like that anymore', 'foodiepro' ) . '">';
+				$html.='<i class="fa fa-thumbs-down"></i>';
+				$html.='</a>';			
+				break;
+			case "comment":
+				$html='<a href="' . bp_get_activity_comment_link() . '" class="social-button acomment-reply bp-primary-action" id="acomment-comment-' . bp_get_activity_id() . '" title="' . esc_attr( 'Comment', 'foodiepro' ) . '">';
+				//$html='<a href="' . bp_get_activity_comment_link() . '" class="social-button acomment-reply bp-primary-action" id="acomment-comment-' . bp_get_activity_id() . '" title="' . esc_attr( 'Comment', 'foodiepro' ) . '">';
+				$html.='<i class="fa fa-commenting-o"></i><span>' . bp_activity_get_comment_count() . '</span>';
+				$html.='</a>';			
+				break;
+			case "delete":
+				$html=custom_get_activity_delete_link();
+				break;
+		} 
+		return $html; 
+}
+add_shortcode('social-button', 'bp_social_button');	
+
+	
+
+/**
+ * Return the activity delete link.
+ *
+ * @since 1.1.0
+ *
+ * @global object $activities_template {@link BP_Activity_Template}
+ *
+ * @return string $link Activity delete link. Contains $redirect_to arg
+ *                      if on single activity page.
+ */
+function custom_get_activity_delete_link() {
+
+	$url   = bp_get_activity_delete_url();
+	$class = 'delete-activity';
+	$delete_icon = '<i class="fa fa-trash-o"></i>';
+
+	// Determine if we're on a single activity page, and customize accordingly.
+	if ( bp_is_activity_component() && is_numeric( bp_current_action() ) ) {
+		$class = 'delete-activity-single';
+	}
+
+	$link = '<a href="' . esc_url( $url ) . '" class="social-button item-button bp-secondary-action ' . $class . ' confirm" rel="nofollow">' . $delete_icon . '</a>';
+
+	/**
+	 * Filters the activity delete link.
+	 *
+	 * @since 1.1.0
+	 *
+	 * @param string $link Activity delete HTML link.
+	 */
+	return apply_filters( 'bp_get_activity_delete_link', $link );
+}	
+	
+	
 	
 /* =================================================================*/
 /* =                   BP Displayed User shortcode 

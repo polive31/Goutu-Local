@@ -272,6 +272,14 @@ a.comment-reply-link,
 	padding:5px;
 }
 
+.social-button {
+  background: #eaeaea;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  font-size: 15px;
+  color: #444;  
+}
+
 /* Text area and selec specific formatting */
 input[type="email"],
 input[type="text"],
@@ -893,6 +901,7 @@ div#whats-new-content {
 textarea#whats-new {
   resize: vertical;
   border: none;    
+	font-size: 13px;  
 }
 
 .avatar-bubble {
@@ -960,7 +969,7 @@ p.wp_widget_plugin_textarea {
 
 .widget-text.wp_widget_plugin_box {
     padding: 0px 5px 20px 5px;
-    background-color: #f3f3f3;
+    background-color: #f6f6f6;
 }
 
 .bppp-stat-percent {
@@ -1214,7 +1223,7 @@ Structure and Layout
 .site-inner {
 	clear:both;
 	display:block;
-	margin:20px auto 40px auto; /* P.O. original 40px auto*/
+	margin:20px auto 0px auto; /* P.O. original 40px auto*/
 }
 
 .logged-in .site-inner {
@@ -1832,8 +1841,8 @@ form[role="search"] {
 
 /* Slider widget
 --------------------------------------------- */
-.content .master-slider-main-widget {
-    margin-bottom: 30px;
+.master-slider-main-widget {
+    margin: 40px 0;
 }
 
 
@@ -2603,8 +2612,7 @@ div.gform_wrapper .gform_footer input[type="submit"] {
 	padding-right:0 !important;
 }
 
-/*
-Custom Page Templates
+/* Custom Page Templates
 ---------------------------------------------------------------------------------------------------- */
 
 
@@ -3390,14 +3398,18 @@ a.more-link,
 }
 
 .page-bottom img.rpwe-thumb {
-  height: 200px!important;
+  height: 200px;
   object-fit: cover;
+}
+
+.page-bottom .rpwe-first img.rpwe-thumb {
+  max-height: 200px;
+  width: 100%;
 }
 
 .page-bottom .related-posts img.rpwe-thumb {
   margin-bottom: 0;
-  height: 250px!important;
-  object-fit: cover;
+  height: 250px;
 }
 
 .content h3.rpwe-title {
@@ -3914,10 +3926,398 @@ font-size:11px;
 	max-width:95%;
 }
 
-/* BP Login Widget */
-/* Specific #buddypress styles in /buddypress/css/buddypress.css */
+/* ====================================================================
+	BUDDYPRESS COMPONENTS USED EVERYWHERE ON THE WEBSITE
+=======================================================================*/
+
+/*--------------------------------------------------------------
+	1 - Activity
+--------------------------------------------------------------*/
+#activity-stream {
+	margin-top: -5px;
+}
+
+#activity-stream p {
+	margin: 5px 0;
+}
+
+#item-body form#whats-new-form {
+	margin: 0;
+	padding: 0;
+}
+.home-page form#whats-new-form {
+	border-bottom: none;
+	padding-bottom: 0;
+}
+
+form#whats-new-form #whats-new-avatar {
+	float: left;
+}
+form#whats-new-form p.activity-greeting {
+	line-height: 0.5em;
+	margin-bottom: 15px;
+	margin-left: 75px;
+}
+form#whats-new-form textarea {
+	background: #fff;
+	box-sizing: border-box;
+	color: #555;
+	font-family: inherit;
+	font-size: medium;
+	height: 2.2em;
+	line-height: 1.4;
+	padding: 6px;
+	width: 100%;
+}
+body.no-js form#whats-new-form textarea {
+	height: 50px;
+}
+form#whats-new-form #whats-new-options select {
+	max-width: 200px;
+	margin-top: 12px;
+}
+form#whats-new-form #whats-new-submit {
+	float: right;
+	margin-top: 12px;
+}
+#whats-new-options:after {
+	clear: both;
+	content: "";
+	display: table;
+}
+body.no-js #whats-new-options {
+	height: auto;
+}
+#whats-new:focus {
+	border-color: rgba(31, 179, 221, 0.9) !important;
+	outline-color: rgba(31, 179, 221, 0.9);
+}
+
+/*--------------------------------------------------------------
+3.1.1 - Activity Listing
+--------------------------------------------------------------*/
+ul.activity-list li {
+	overflow: hidden;
+	padding: 15px 0 0;
+	list-style: none;
+}
+.activity-list .activity-avatar {
+	float: left;
+}
+ul.item-list.activity-list li.has-comments {
+	padding-bottom: 15px;
+}
+body.activity-permalink ul.activity-list li.has-comments {
+	padding-bottom: 0;
+}
+.activity-list li.mini {
+	font-size: 80%;
+	position: relative;
+}
+.activity-list li.mini .activity-avatar img.avatar,
+.activity-list li.mini .activity-avatar img.FB_profile_pic {
+	height: 20px;
+	margin-left: 30px;
+	width: 20px;
+}
+.activity-permalink .activity-list li.mini .activity-avatar img.avatar,
+.activity-permalink .activity-list li.mini .activity-avatar img.FB_profile_pic {
+	height: auto;
+	margin-left: 0;
+	width: auto;
+}
+body.activity-permalink .activity-list > li:first-child {
+	padding-top: 0;
+}
+.activity-list li .activity-content {
+	position: relative;
+}
+.activity-list li.mini .activity-content p {
+	margin: 0;
+}
+.activity-list li.mini .activity-comments {
+	clear: both;
+	font-size: 120%;
+}
+body.activity-permalink li.mini .activity-meta {
+	margin-top: 4px;
+}
+.activity-list li .activity-inreplyto {
+	color: #767676;
+	font-size: 80%;
+}
+.activity-list li .activity-inreplyto > p {
+	margin: 0;
+	display: inline;
+}
+.activity-list li .activity-inreplyto blockquote,
+.activity-list li .activity-inreplyto div.activity-inner {
+	background: none;
+	border: none;
+	display: inline;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+}
+.activity-list .activity-content {
+	margin: 0 0 0 70px;
+}
+body.activity-permalink .activity-list li .activity-content {
+	border: none;
+	font-size: 100%;
+	line-height: 150%;
+	margin-left: 170px;
+	margin-right: 0;
+	padding: 0;
+}
+body.activity-permalink .activity-list li .activity-header > p {
+	margin: 0;
+	padding: 5px 0 0 0;
+}
+.activity-list .activity-content .activity-header,
+.activity-list .activity-content .comment-header {
+	color: #767676;
+  font-size: 12px;
+  font-style: italic;
+}
+}
+.activity-header {
+	margin-right: 20px;
+}
+.activity-header a,
+.comment-meta a,
+.acomment-meta a {
+	text-decoration: none;
+}
+.activity-list .activity-content .activity-header img.avatar {
+	float: none !important;
+	margin: 0 5px -8px 0 !important;
+}
+.activity-list .activity-content .activity-inner,
+.activity-list .activity-content blockquote {
+	margin: 10px 10px 5px 0;
+	overflow: hidden;
+	font-size: 14px;	
+}
+.activity-list li.new_forum_post .activity-content .activity-inner,
+.activity-list li.new_forum_topic .activity-content .activity-inner {
+	border-left: 2px solid #EAEAEA;
+	margin-left: 5px;
+	padding-left: 10px;
+}
+body.activity-permalink .activity-content .activity-inner,
+body.activity-permalink .activity-content blockquote {
+	margin-left: 0;
+	margin-top: 5px;
+}
+.activity-inner > p {
+	word-wrap: break-word;
+}
+.activity-inner > .activity-inner {
+	margin: 0;
+}
+.activity-inner > blockquote {
+	margin: 0;
+}
+.activity-list .activity-content img.thumbnail {
+	border: 2px solid #eee;
+	float: left;
+	margin: 0 10px 5px 0;
+}
+.activity-read-more {
+	margin-left: 1em;
+	white-space: nowrap;
+}
+.activity-list li.load-more,
+.activity-list li.load-newest {
+	background: #f0f0f0;
+	font-size: 110%;
+	margin: 15px 0;
+	padding: 10px 15px;
+	text-align: center;
+}
+.activity-list li.load-more a,
+.activity-list li.load-newest a {
+	color: #4D4D4D;
+}
 
 
+/*--------------------------------------------------------------
+3.1.2 - Activity Comments
+--------------------------------------------------------------*/
+div.activity-meta {
+	margin: 18px 0 0;
+}
+body.activity-permalink div.activity-meta {
+	margin-bottom: 6px;
+}
+div.activity-meta a {
+	padding: 4px 8px;
+}
+a.activity-time-since {
+	color: #767676;
+	text-decoration: none;
+	text-transform: none;
+}
+a.activity-time-since:hover {
+	color: #767676;
+	text-decoration: underline;
+}
+a.bp-primary-action,
+#reply-title small a {
+	font-size: 80%;
+	margin-right: 5px;
+	text-decoration: none;
+}
+a.bp-primary-action span,
+#reply-title small a span {
+	background: #767676;
+	color: #fff;
+	font-size: 90%;
+	margin-left: 2px;
+	padding: 0 5px;
+}
+div.activity-comments {
+	margin: 0 0 0 70px;
+	overflow: hidden; /* IE fix */
+	position: relative;
+	width: auto;
+	clear: both;
+}
+body.activity-permalink div.activity-comments {
+	background: none;
+	margin-left: 170px;
+	width: auto;
+}
+div.activity-comments > ul {
+	padding: 0 0 0 10px;
+}
+div.activity-comments ul,
+div.activity-comments ul li {
+	border: none;
+	list-style: none;
+}
+div.activity-comments ul {
+	clear: both;
+	margin: 0;
+}
+div.activity-comments ul li {
+	border-top: 1px solid #eee;
+	padding: 10px 0 0;
+}
+body.activity-permalink .activity-list li.mini .activity-comments {
+	clear: none;
+	margin-top: 0;
+}
+body.activity-permalink div.activity-comments ul li {
+	border-width: 1px;
+	padding: 10px 0 0 0;
+}
+div.activity-comments > ul > li:first-child {
+	border-top: none;
+}
+div.activity-comments ul li:last-child {
+	margin-bottom: 0;
+}
+div.activity-comments ul li > ul {
+	margin-left: 30px;
+	margin-top: 0;
+	padding-left: 10px;
+}
+body.activity-permalink div.activity-comments ul li > ul {
+	margin-top: 10px;
+}
+body.activity-permalink div.activity-comments > ul {
+	padding: 0 10px 0 15px;
+}
+div.activity-comments div.acomment-avatar img {
+	border-width: 1px;
+	float: left;
+	height: 25px;
+	margin-right: 10px;
+	width: 25px;
+}
+div.activity-comments div.acomment-content {
+	font-size: 80%;
+	margin: 5px 0 0 40px;
+}
+div.acomment-content .time-since,
+div.acomment-content .activity-delete-link,
+div.acomment-content .comment-header {
+	display: none;
+}
+body.activity-permalink div.activity-comments div.acomment-content {
+	font-size: 90%;
+}
+div.activity-comments div.acomment-meta {
+	color: #767676;
+	font-size: 80%;
+}
+div.activity-comments form.ac-form {
+	display: none;
+	padding: 10px;
+}
+div.activity-comments li form.ac-form {
+	margin-right: 15px;
+	clear: both;
+}
+div.activity-comments form.root {
+	margin-left: 0;
+}
+div.activity-comments div#message {
+	margin-top: 15px;
+	margin-bottom: 0;
+}
+div.activity-comments form .ac-textarea {
+	background: #fff;
+	border: 1px inset #ccc;
+	margin-bottom: 10px;
+	padding: 8px;
+}
+div.activity-comments form textarea {
+	border: none;
+	background: transparent;
+	box-shadow: none;
+	outline: none;
+	color: #555;
+	font-family: inherit;
+	font-size: 100%;
+	height: 60px;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+div.activity-comments form input {
+	margin-top: 5px;
+}
+div.activity-comments form div.ac-reply-avatar {
+	float: left;
+}
+div.ac-reply-avatar img {
+	border: 1px solid #eee;
+}
+div.activity-comments form div.ac-reply-content {
+	color: #767676;
+	margin-left: 50px;
+	padding-left: 15px;
+}
+div.activity-comments form div.ac-reply-content a {
+	text-decoration: none;
+}
+.acomment-options {
+	float: left;
+	margin: 5px 0 5px 40px;
+}
+.acomment-options a {
+	color: #767676;
+}
+.acomment-options a:hover {
+	color: inherit;
+}
+
+
+/* BP Login Widget 
+--------------------------------------------------------------*/
 .mega-sub-menu #bp-login-widget-form {
   padding: 0 20px 0 0px;
 }

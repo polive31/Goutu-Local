@@ -103,12 +103,12 @@ function bp_social_button( $atts ) {
 		switch ($a['type']) {
 			case "like":
 				$html='<a href="' . bp_get_activity_favorite_link() . '" class="social-button fav bp-secondary-action" title="' . esc_attr( 'I like that', 'foodiepro' ) . '">';
-				$html.='<i class="fa fa-thumbs-up"></i>';
+				$html.='<i class="fa fa-thumbs-o-up"></i>';
 				$html.='</a>';
 				break;
 			case "unlike":
 				$html='<a href="' . bp_get_activity_unfavorite_link() . '" class="social-button unfav bp-secondary-action" title="' . esc_attr( 'I don\'t like that anymore', 'foodiepro' ) . '">';
-				$html.='<i class="fa fa-thumbs-down"></i>';
+				$html.='<i class="fa fa-thumbs-up"></i>';
 				$html.='</a>';			
 				break;
 			case "comment":
@@ -120,6 +120,12 @@ function bp_social_button( $atts ) {
 			case "delete":
 				$html=custom_get_activity_delete_link();
 				break;
+			case "delete-comment":
+				$delete_icon = '<i class="fa fa-trash-o"></i>'; 
+				$html='<a href="' . bp_get_activity_comment_delete_link() . '" class="social-button delete acomment-delete confirm bp-secondary-action" rel="nofollow">' . $delete_icon . '</a>';
+				break;
+				
+
 		} 
 		return $html; 
 }

@@ -1242,10 +1242,6 @@ body.activity-permalink #buddypress ul.item-list li.activity-item {
 #buddypress ul.single-line li {
 	border: none;
 }
-#buddypress ul.item-list li img.avatar {
-	float: left;
-	margin: 0 10px 0 0;
-}
 #buddypress ul.item-list li div.item-title,
 #buddypress ul.item-list li h4 {
 	font-weight: normal;

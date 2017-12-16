@@ -272,15 +272,17 @@ a.comment-reply-link,
 	padding:5px;
 }
 
+input[type="submit"].social-button,
 .social-button {
+	float: left;
 	background: #eaeaea;
 	border: 1px solid #CCC;
 	border-radius: 5px;
-	font-size: 15px;
+	font-size: 14px;
 	color: #444;  
 	margin-right: 10px;
-	font-variant: small-caps;
-	font-weight: bold;  
+	padding: 0 8px;	
+	font-variant: small-caps; 
 }
 
 /* Text area and selec specific formatting */
@@ -3933,6 +3935,7 @@ font-size:11px;
 	BUDDYPRESS COMPONENTS USED EVERYWHERE ON THE WEBSITE
 =======================================================================*/
 
+
 /*--------------------------------------------------------------
 	1 - Activity
 --------------------------------------------------------------*/
@@ -4013,16 +4016,6 @@ ul.item-list.activity-list li.has-comments {
 body.activity-permalink ul.activity-list li.has-comments {
 	padding-bottom: 0;
 }
-.activity-list li.mini {
-	font-size: 80%;
-	position: relative;
-}
-.activity-list li.mini .activity-avatar img.avatar,
-.activity-list li.mini .activity-avatar img.FB_profile_pic {
-	height: 20px;
-	margin-left: 30px;
-	width: 20px;
-}
 .activity-permalink .activity-list li.mini .activity-avatar img.avatar,
 .activity-permalink .activity-list li.mini .activity-avatar img.FB_profile_pic {
 	height: auto;
@@ -4077,8 +4070,8 @@ body.activity-permalink .activity-list li .activity-header > p {
 	margin: 0;
 	padding: 5px 0 0 0;
 }
-.activity-list .activity-content .activity-header,
-.activity-list .activity-content .comment-header {
+.activity-list .activity-header,
+.activity-list .comment-header {
 	color: #767676;
   font-size: 12px;
   font-style: italic;
@@ -4094,13 +4087,25 @@ body.activity-permalink .activity-list li .activity-header > p {
 }
 .activity-list .activity-content .activity-header img.avatar {
 	float: none !important;
-	margin: 0 5px -8px 0 !important;
+	margin: 0 5px;
 }
+
+.activity-comments .acomment-content,
 .activity-list .activity-content .activity-inner,
 .activity-list .activity-content blockquote {
 	margin: 10px 10px 5px 0;
 	overflow: hidden;
-	font-size: 14px;	
+  font-size: 14px;
+  color: black;
+  font-weight: bold;
+  text-align: left;
+	line-height: 14px;
+}
+.activity-inner img {
+  /* max-width: 200px; */
+  max-height: 100px;
+  display: inline-block;
+  vertical-align: text-bottom;
 }
 .activity-list li.new_forum_post .activity-content .activity-inner,
 .activity-list li.new_forum_topic .activity-content .activity-inner {
@@ -4151,9 +4156,7 @@ body.activity-permalink .activity-content blockquote {
 body.activity-permalink div.activity-meta {
 	margin-bottom: 6px;
 }
-div.activity-meta a {
-	padding: 4px 8px;
-}
+a.activity-time-since span,
 a.activity-time-since {
 	color: #767676;
 	text-decoration: none;
@@ -4163,6 +4166,17 @@ a.activity-time-since:hover {
 	color: #767676;
 	text-decoration: underline;
 }
+
+.activity-meta span {
+  margin: 0 5px;
+  background: #b2b2b2;
+  color: #FFF;
+  padding: 1px 5px;
+  border-radius: 50% 50%;
+  font-weight: normal;
+  font-size: 13px;    
+}
+
 div.activity-comments {
 	margin: 0 0 0 70px;
 	overflow: hidden; /* IE fix */
@@ -4222,10 +4236,6 @@ div.activity-comments div.acomment-avatar img {
 	height: 25px;
 	margin-right: 10px;
 	width: 25px;
-}
-div.activity-comments div.acomment-content {
-	font-size: 80%;
-	margin: 5px 0 0 40px;
 }
 div.acomment-content .time-since,
 div.acomment-content .activity-delete-link,
@@ -4293,12 +4303,6 @@ div.activity-comments form div.ac-reply-content a {
 .acomment-options {
 	float: left;
 	margin: 5px 0 5px 40px;
-}
-.acomment-options a {
-	color: #767676;
-}
-.acomment-options a:hover {
-	color: inherit;
 }
 
 

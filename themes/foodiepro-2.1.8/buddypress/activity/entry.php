@@ -25,7 +25,7 @@ do_action( 'bp_before_activity_entry' ); ?>
 		</a>
 	</div>
 
-	<div class="activity-content">
+	<div class="activity activity-content">
 
 		<div class="activity-header">
 
@@ -56,7 +56,13 @@ do_action( 'bp_before_activity_entry' ); ?>
 
 			<?php if ( bp_get_activity_type() == 'activity_comment' ) : ?>
 
-				<a href="<?php bp_activity_thread_permalink(); ?>" class="button view bp-secondary-action" title="<?php esc_attr_e( 'View Conversation', 'buddypress' ); ?>"><?php _e( 'View Conversation', 'buddypress' ); ?></a>
+				<?php global $activities_template;?>
+				
+				<?php //print_r($activities_template->activity);?>
+				<a href="#activity-<?php echo $activities_template->activity->item_id; ?>" class="social-button view bp-secondary-action" title="<?php esc_attr_e( 'Show conversation', 'foodiepro' ); ?>"><?php _e( 'Show conversation', 'foodiepro' ); ?></a>
+				
+				<!-- To show a particular comment rather than whole conversation -->
+				<!-- <a href="#acomment-<?php echo $activities_template->activity->id; ?>" class="social-button view bp-secondary-action" title="<?php esc_attr_e( 'Show conversation', 'foodiepro' ); ?>"><?php _e( 'Show conversation', 'foodiepro' ); ?></a>-->
 
 			<?php endif; ?>
 

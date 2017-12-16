@@ -273,11 +273,14 @@ a.comment-reply-link,
 }
 
 .social-button {
-  background: #eaeaea;
-  border: 1px solid #CCC;
-  border-radius: 5px;
-  font-size: 15px;
-  color: #444;  
+	background: #eaeaea;
+	border: 1px solid #CCC;
+	border-radius: 5px;
+	font-size: 15px;
+	color: #444;  
+	margin-right: 10px;
+	font-variant: small-caps;
+	font-weight: bold;  
 }
 
 /* Text area and selec specific formatting */
@@ -3953,10 +3956,6 @@ font-size:11px;
 form#whats-new-form #whats-new-avatar {
 	float: left;
 }
-form#whats-new-form #whats-new-content {
-	margin-left: 55px;
-	padding: 0 0 20px 20px;
-}
 form#whats-new-form p.activity-greeting {
 	line-height: 0.5em;
 	margin-bottom: 15px;
@@ -4149,9 +4148,6 @@ body.activity-permalink .activity-content blockquote {
 /*--------------------------------------------------------------
 3.1.2 - Activity Comments
 --------------------------------------------------------------*/
-div.activity-meta {
-	margin: 18px 0 0;
-}
 body.activity-permalink div.activity-meta {
 	margin-bottom: 6px;
 }
@@ -4166,20 +4162,6 @@ a.activity-time-since {
 a.activity-time-since:hover {
 	color: #767676;
 	text-decoration: underline;
-}
-a.bp-primary-action,
-#reply-title small a {
-	font-size: 80%;
-	margin-right: 5px;
-	text-decoration: none;
-}
-a.bp-primary-action span,
-#reply-title small a span {
-	background: #767676;
-	color: #fff;
-	font-size: 90%;
-	margin-left: 2px;
-	padding: 0 5px;
 }
 div.activity-comments {
 	margin: 0 0 0 70px;

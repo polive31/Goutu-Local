@@ -17,9 +17,16 @@ define ( 'BP_AVATAR_FULL_HEIGHT', 150 );
 //define ( 'BP_AVATAR_ORIGINAL_MAX_WIDTH', 640 );
 //define ( 'BP_AVATAR_ORIGINAL_MAX_FILESIZE', 2*1024);
 
-/* Change default avatar picture */
-define ( 'BP_AVATAR_DEFAULT', 'https://goutu.org/wp-content/themes/foodiepro-2.1.8/images/cook_avatar.png' );
-define ( 'BP_AVATAR_DEFAULT_THUMB', 'https://goutu.org/wp-content/themes/foodiepro-2.1.8/images/cook_avatar_thumb.png' );
+/* =================================================================*/
+/* =            CUSTOM JAVSCRIPT
+/* =================================================================*/
+
+//add_action('wp_enqueue_scripts', 'custom_bp_js'); // Reserved for debug, better not replace core BP javascript !
+function custom_bp_js() {
+	$version = '1.0.0';
+	wp_deregister_script( 'dtheme-ajax-js');
+	wp_enqueue_script( 'dtheme-ajax-js', get_bloginfo('stylesheet_directory') . '/buddypress/_inc/global.js', array( 'jquery' ), $version );
+}
 
 
 
@@ -82,8 +89,14 @@ function enqueue_bp_core_scripts($scripts) {
 
 
 /* =================================================================*/
-/* =              COVER IMAGE SETTINGS
+/* =           AVATAR & COVER IMAGE 
 /* =================================================================*/
+
+/* Change default avatar picture */
+define ( 'BP_AVATAR_DEFAULT', 'https://goutu.org/wp-content/themes/foodiepro-2.1.8/images/cook_avatar.png' );
+define ( 'BP_AVATAR_DEFAULT_THUMB', 'https://goutu.org/wp-content/themes/foodiepro-2.1.8/images/cook_avatar_thumb.png' );
+
+
 
 // Define cover image size
 add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'foodiepro_xprofile_cover_image', 10, 1 );

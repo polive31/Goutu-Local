@@ -311,7 +311,7 @@ li.comment {
   and (-webkit-min-device-pixel-ratio:2) {
  
 	.site-title a {
-		background:url("../../images/logo-white/logo_320_80.png") no-repeat left;
+		background:url("../../images/logo-white/logo_320_100.png") no-repeat left;
 		background-size:contain;
 	} 	
 	

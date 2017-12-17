@@ -2,13 +2,13 @@
 --------------------------------------------- */
 
 body {
-	background:url("../../images/background/background-l-small.jpg"),url("../../images/background/background-r.jpg");
+	background:url("../../images/background/background-l-small.jpg"),url("../../images/background/background-r-small.jpg");
 	background-position:top left, top right;
 	background-repeat:no-repeat;
 }
 
 body.home {
-	background:url("../../images/background/background-l.jpg"),url("../../images/background/background-r-big.jpg");
+	background:url("../../images/background/background-l.jpg"),url("../../images/background/background-r.jpg");
 	background-position: 10px 10px, right 10px top 10px;
 	background-repeat:no-repeat;
 }

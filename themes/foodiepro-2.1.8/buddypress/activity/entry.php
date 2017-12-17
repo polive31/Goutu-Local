@@ -59,10 +59,12 @@ do_action( 'bp_before_activity_entry' ); ?>
 				<?php global $activities_template;?>
 				
 				<?php //print_r($activities_template->activity);?>
-				<a href="#activity-<?php echo $activities_template->activity->item_id; ?>" class="social-button view bp-secondary-action" title="<?php esc_attr_e( 'Show conversation', 'foodiepro' ); ?>"><?php _e( 'Show conversation', 'foodiepro' ); ?></a>
 				
+				<!-- <a href="#activity-<?php echo $activities_template->activity->item_id; ?>" class="social-button view bp-secondary-action" title="<?php esc_attr_e( 'Show conversation', 'foodiepro' ); ?>"><?php _e( 'Show conversation', 'foodiepro' ); ?></a>-->
 				<!-- To show a particular comment rather than whole conversation -->
 				<!-- <a href="#acomment-<?php echo $activities_template->activity->id; ?>" class="social-button view bp-secondary-action" title="<?php esc_attr_e( 'Show conversation', 'foodiepro' ); ?>"><?php _e( 'Show conversation', 'foodiepro' ); ?></a>-->
+
+				<a href="<?php bp_activity_thread_permalink(); ?>" class="social-button view bp-secondary-action"><?php esc_attr_e( 'Show conversation', 'foodiepro' ); ?></a>
 
 			<?php endif; ?>
 

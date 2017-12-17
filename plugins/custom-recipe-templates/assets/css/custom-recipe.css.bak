@@ -24,7 +24,7 @@
 
 /* Top Buttons */
 #share-buttons {
-	display:none;
+	/*display:none;*/
 }
 
 /* Top Buttons */

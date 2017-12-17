@@ -267,12 +267,10 @@ a#edit:before {
 
 /* REGISTER PAGE
 --------------------------------------------  */
-#buddypress .standard-form #basic-details-section,
-#buddypress .standard-form #profile-details-section,
-#buddypress .standard-form #security-section,
-#buddypress .standard-form #blog-details-section {
+#buddypress .register-section {
 	float: left;
 	width: 50%;
+	padding: 0 5px;	
 }
 
 #register-page .bp-reg-field {
@@ -351,15 +349,21 @@ select#field_84_year {
 	  text-transform: uppercase;
 		text-decoration: none;
 	}	
-	
-	#buddypress div.item-list-tabs#subnav ul li#main-menu-item a,
-	#buddypress div.item-list-tabs#subnav ul li#main-menu-item a span {
+
+	#buddypress div.item-list-tabs#subnav ul li#main-menu-item a {
     font-family: "Oswald", sans-serif ;
-    font-size: 30px;
-		border: none;
-    color: #e0e0e0;
-    padding: 0 20px 0 0;
+    border: none;
     line-height: 30px;
+    padding: 0 10px;
+    color: #e0e0e0;
+    display:none;
+	}
+	
+	#buddypress div.item-list-tabs#subnav ul li#main-menu-item a.selected,
+	#buddypress div.item-list-tabs#subnav ul li#main-menu-item a span {
+    font-size: 30px;
+    color: #bdbdbd;
+    display:initial;
 	}
 
 	#buddypress div.item-list-tabs ul li a,
@@ -370,16 +374,9 @@ select#field_84_year {
 		text-decoration:none;
 	}
 	
-	#buddypress div.item-list-tabs ul li a:hover,
-	#buddypress div.item-list-tabs ul li.current a {
-		background-color:#eee;
-		color:#666;
-	}
-	
 	#buddypress div.item-list-tabs ul li.current a {
 		font-weight:bold;
 	}	
-	
 	
 	#buddypress .more-from-category a {
     padding: 10px 20px;
@@ -1654,12 +1651,39 @@ table.bp-profile-fields {
     width: 100%;
 	}	
 	
+	#buddypress div.item-list-tabs#subnav ul li#main-menu-item a#user-profile, 
+	#buddypress div.item-list-tabs#subnav ul li#main-menu-item a#user-settings {
+    display: initial;
+	}	
+	
+	#buddypress div.item-list-tabs#subnav ul li#main-menu-item a:hover {
+    color: #8c8c8c;
+    font-size: 30px;
+	}	
+	
+	#buddypress .disabled {
+	  pointer-events: initial;
+	  cursor: initial;
+	}	
+
+	.overlay#cover, #cover .overlay-text {
+    font-size: 18px;
+    width: 85%;
+    float: right;
+	}	
+	
+	
 }
 
 /*--------------------------------------------------------------
 4.1 - Smartphones - landscape
 --------------------------------------------------------------*/
 @media only screen and (max-width: 480px ){
+	
+	#buddypress .register-section {
+		width: 100%;
+	}
+	
 	#buddypress div.dir-search {
 		float: right;
 		margin-top: -50px;
@@ -1679,10 +1703,6 @@ table.bp-profile-fields {
 	#buddypress form.standard-form .main-column ul#friend-list h4{
 		width:100%;
 	}
-
-
-
-
 	
 /* Profile Page 
 --------------------------------------*/	
@@ -1713,7 +1733,7 @@ table.bp-profile-fields {
 	}	
 
 	#buddypress #item-userid {
-			left: 130px;
+			margin-left: 130px;
 	}
 	
 	#buddypress div#item-header div#item-header-content {

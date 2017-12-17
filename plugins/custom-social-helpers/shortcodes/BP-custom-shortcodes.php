@@ -91,6 +91,33 @@ add_shortcode('bp-author', 'bp_author_shortcode');
 
 	
 /* =================================================================*/
+/* =           Conditional Text shortcode
+/* =================================================================*/
+
+function bp_conditional_text( $atts, $content=null ) {
+	$a = shortcode_atts( array(
+  	'tag' => 'p', // div, p, ...
+  	'user' => 'loggued-in', // loggued-in, loggued-out, profile
+	), $atts );
+	
+	$tag=esc_html($a['tag']);
+	$open='<' . $tag. '>';
+	$close='</' . $tag. '>';
+	$content=esc_html($content);
+	
+	$html='';
+	$user=($a['user']);
+	
+	if ((($user=="loggued-in") && (is_user_logged_in())) || (($user=="loggued-out") && (!is_user_logged_in()))) {
+		$html=$open . $content . $close;			
+	}
+	$html=do_shortcode($html);
+	return $html;
+}
+add_shortcode('if', 'bp_conditional_text');	
+
+
+/* =================================================================*/
 /* =                   Social Buttons shortcode
 /* =================================================================*/
 

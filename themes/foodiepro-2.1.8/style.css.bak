@@ -1808,7 +1808,7 @@ form[role="search"] {
 
 .textwidget {
   padding:0px 10px; 
-  text-align:justify;
+  text-align:left;
 }
 
 .widget.text-align-center .textwidget {
@@ -2591,7 +2591,7 @@ div.gform_wrapper .gform_footer input[type="submit"] {
 .home-bottom {
 	float:left;
 	width:100%;
-	margin-top:40px;
+	margin-top:60px;
 }
 
 .paged .home-middle,
@@ -2732,7 +2732,7 @@ div.gform_wrapper .gform_footer input[type="submit"] {
 }
 
 
-.entry-content {
+.entry-content p {
 	text-align: justify;	
 	clear:both;
 }
@@ -3275,10 +3275,12 @@ a.more-link,
 	clear:both;
 	display:block;
 	float:none;
-	text-align:center;
 	margin-top:20px;
 }
 
+p.more-from-category {
+	text-align:center;
+}
 
 /* Recipes & Posts grid
 --------------------------------------------- */
@@ -3292,8 +3294,7 @@ a.more-link,
 .content img.rpwe-thumb {
 	margin:0;
   object-fit: cover;
-  flex:1;
-	height: 200px;  
+  flex:1; 
 }
 
 .page-bottom img.rpwe-thumb {
@@ -4545,6 +4546,11 @@ Site Footer
 	.slider-text {
 		font-size: 40px!important;
 	}
+	
+	.content img.rpwe-thumb,
+	.page-bottom img.rpwe-thumb {
+		height: auto;
+	}	
 	
 }
 

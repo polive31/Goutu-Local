@@ -286,16 +286,17 @@ class CustomNavigationShortcodes extends CustomArchive {
 	/* Output registration page url
 	------------------------------------------------------*/
 
-	public function output_registation_url($atts) {
+	public function output_registation_url($atts, $content=null) {
 		$a = shortcode_atts(array(
 			'html' => true,
 			'text' => ""  // default value if none supplied
 	    ), $atts);
 		$html=$a['html'];
-		$text=$a['text'];
+		$text=esc_html($a['text']);
+		$content=esc_html($content);
 	    
   	$url=wp_registration_url();
-    if ($html) return '<a href=' . $url . '>' . $text . '</a>';
+    if ($html) return '<a href=' . $url . '>' . $text . $content . '</a>';
     else return $url;
 	}
 

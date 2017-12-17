@@ -18,10 +18,25 @@
 do_action( 'bp_before_member_header' ); 
 
 $user_id =  bp_displayed_user_id();
+
 $member_cover_image_url = bp_attachments_get_attachment('url', array(
   'object_dir' => 'members',
   'item_id' => $user_id,
 ));	
+
+$settings = bp_parse_args( $args, array(
+		/*'components'    => array(),
+		'width'         => 1300,
+		'height'        => 225,
+		'callback'      => '',
+		'theme_handle'  => '',*/
+		'default_cover' => '',
+	), 'xprofile_cover_image_settings' );
+
+if (empty($member_cover_image_url)) {
+	$member_cover_image_url = $settings['default_cover'];
+}
+	
 $url=esc_url( bp_get_displayed_user_link() );
 $url_cover = $url . 'profile/change-cover-image';
 $url_avatar = $url . 'profile/change-avatar';
@@ -167,9 +182,10 @@ function bp_display_current_user_nav() {
 			continue;
 		}
 
-		$selected = '';
+		$class = '';
 		if ( bp_is_current_component( $user_nav_item->slug ) ) {
-			$selected = ' class="current selected"';
+			$class = 'class="current selected"';
+		}
 
 			if ( bp_loggedin_user_domain() ) {
 				$link = str_replace( bp_loggedin_user_domain(), bp_displayed_user_domain(), $user_nav_item->link );
@@ -190,8 +206,7 @@ function bp_display_current_user_nav() {
 			 */
 			
 			//echo '<h2 id="' . $user_nav_item->css_id . '-personal-li" ' . $selected . '><a id="user-' . $user_nav_item->css_id . '" href="' . $link . '">' . $user_nav_item->name . '</a></h2>';
-			echo '<a id="user-' . $user_nav_item->css_id . '" href="' . $link . '">' . $user_nav_item->name . '</a>';
+			echo '<a ' . $class . ' id="user-' . $user_nav_item->css_id . '" href="' . $link . '">' . $user_nav_item->name . '</a>';
 			//echo apply_filters_ref_array( 'bp_get_displayed_user_nav_' . $user_nav_item->css_id, array( '<h2 id="' . $user_nav_item->css_id . '-personal-li" ' . $selected . '><a id="user-' . $user_nav_item->css_id . '" href="' . $link . '">' . $user_nav_item->name . '</a></h2>', &$user_nav_item ) );
-		}
 	}
 }

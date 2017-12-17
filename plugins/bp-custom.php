@@ -147,6 +147,8 @@ function customize_posts_tracking_args() {
   ) );
 }
 
+
+// Customize recipe publication activity feed content
 add_action('bp_activity_excerpt_append_text', 'icondeposit_bp_activity_entry_meta');
 function icondeposit_bp_activity_entry_meta() {
   if ( bp_get_activity_type() == 'new_recipe_post' ) {
@@ -160,6 +162,19 @@ function icondeposit_bp_activity_entry_meta() {
     echo '<div class="excerpt-image"><a href="' . $post_url . '"><img src="' . $post_img[0] . '" ></a></div>';
     echo $recipe_intro;
   }
+}
+
+// Customize post publication activity feed content
+add_filter('bp_blogs_record_activity_action', 'record_cpt_activity_content');
+add_filter('bp_blogs_record_activity_content', 'record_cpt_activity_content');
+function record_cpt_activity_content( $cpt ) {
+		echo "Any text";
+	  //if ( 'new_blog_post' === $cpt['type'] ) {
+	      //$cpt['content'] = 'what you need';
+	  $cpt='Any text';
+	  $cpt['content']='Any text';
+	  //}
+  return $cpt;
 }
 
 /* =================================================================*/

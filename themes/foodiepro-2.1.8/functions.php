@@ -18,10 +18,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'CHILD_THEME_NAME', 'Foodie Pro Theme' );
 define( 'CHILD_THEME_VERSION', '2.1.8' );
 define( 'CHILD_THEME_DEVELOPER', 'Shay Bocks' );
-//define( 'CHILD_COLOR_THEME', 'autumn' ); 
-define( 'CHILD_COLOR_THEME', 'christmas' ); // christmas, white
 define( 'CHILD_THEME_URL', get_stylesheet_directory_uri() );
 define( 'CHILD_THEME_PATH', get_stylesheet_directory() );
+
+define( 'CHILD_COLOR_THEME', 'christmas' ); // christmas, white
+define( 'CHILD_COLOR_THEME_VERSION', '1.0.0' ); // triggers browser cache flush
+
 define( 'PLUGINS_URL', plugins_url() );
 
 
@@ -359,25 +361,16 @@ function megamenu_dequeue_google_fonts() {
 /* =              STYLING     
 /* =================================================================*/
 
-//* Load Fonts
+//* Load Custom Styles & Fonts
 add_filter( 'foodie_pro_disable_google_fonts', '__return_true' );
 add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_stylesheets' );
 function foodie_pro_enqueue_stylesheets() {
 	//wp_enqueue_style( 'font-awesome', CHILD_THEME_URL . '/assets/fonts/font-awesome/css/font-awesome.min.css', array(), CHILD_THEME_VERSION );
 	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Oswald|Lato:300,400', array(), CHILD_THEME_VERSION );
 	wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
-	wp_enqueue_style( 'color-theme-' . CHILD_COLOR_THEME , CHILD_THEME_URL . '/assets/css/color-theme-' . CHILD_COLOR_THEME . '.css', array(), CHILD_THEME_VERSION );
+	// Theme stylesheet with varying name & version, forces cache busting at browser level
+	wp_enqueue_style( 'color-theme-' . CHILD_COLOR_THEME , CHILD_THEME_URL . '/assets/css/color-theme-' . CHILD_COLOR_THEME . '.css', array(), CHILD_COLOR_THEME . CHILD_COLOR_THEME_VERSION );
 }
-
-/* Chargement des feuilles de style custom et polices
-add_action( 'wp_enqueue_scripts', 'load_custom_stylesheet' );
-function load_custom_stylesheet() {
-} */
-
-//add_action( 'get_footer', 'load_background_stylesheet' );
-function load_background_stylesheet() {
-		wp_enqueue_style( 'background-white', CHILD_THEME_URL . '/assets/css/background-white.css', array(), CHILD_THEME_VERSION );		
-};
 
 /* Optimize page loading by dequeuing specific CSS stylesheets loading actions */
 function remove_style($style) {

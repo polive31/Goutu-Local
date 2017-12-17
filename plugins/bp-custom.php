@@ -25,7 +25,7 @@ define ( 'BP_AVATAR_FULL_HEIGHT', 150 );
 function custom_bp_js() {
 	$version = '1.0.0';
 	wp_deregister_script( 'dtheme-ajax-js');
-	wp_enqueue_script( 'dtheme-ajax-js', get_bloginfo('stylesheet_directory') . '/buddypress/_inc/global.js', array( 'jquery' ), $version );
+	wp_enqueue_script( 'dtheme-ajax-js', get_bloginfo('stylesheet_directory') . '/buddypress/js/global.js', array( 'jquery' ), $version );
 }
 
 

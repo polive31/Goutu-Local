@@ -1,0 +1,23 @@
+/* Custom Recipe Submission 
+-------------------------------------------*/
+
+#wpurp_user_submission_form .select2wpurp-container {
+    float: left;
+    margin: 5px 10px!important;
+    width: 20%!important;
+}
+
+#wpurp_user_submission_form h4 {
+  font-family: "Oswald", sans-serif;
+  float: left;
+  clear: both;
+}
+
+.select2wpurp-container-multi .select2wpurp-choices {
+  background-image: none;
+  border-radius: 5px;
+}
+
+#wpurp_user_submission_form  .recipe-general-form-field input {
+ 	width:auto;
+}

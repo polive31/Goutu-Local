@@ -17,6 +17,9 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 
 		ob_start();
 		
+		// Debug
+			//echo '<pre>' . print_r(get_post_meta($post_ID), true) . '</pre>';
+		
 		// Output JSON+LD metadata & rich snippets
 			echo $this->json_ld_meta_output($recipe,'');
 		?>

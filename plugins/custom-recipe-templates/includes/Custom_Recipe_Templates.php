@@ -48,17 +48,15 @@ class Custom_Recipe_Templates {
 			//$this->dbg('Plugin path', self::$_PluginPath);
 	}	
 	
-	public function enqueue_wpurp_css($js_enqueue) {
+	public function enqueue_wpurp_css($css_enqueue) {
 				
 		//$this->dbg('In Enqueue WPURP CSS', '');
 		//$this->dbg('Plugin path', self::$_PluginPath);
+		
+		if ( is_admin() ) return $css_enqueue;
 			
 		if ( is_singular('recipe') ) {
-		  $js_enqueue=array(
-							array(
-		              'url' => WPUltimateRecipe::get()->coreUrl . '/css/admin.css',
-		              'admin' => true,
-		          ),
+		  $css_enqueue=array(
 							array(
 		              'url' => self::$_PluginPath . 'assets/css/custom-recipe.css',
 		              'public' => true,
@@ -66,22 +64,32 @@ class Custom_Recipe_Templates {
 							/*array(
 		              'url' => self::$_PluginPath . 'assets/css/tooltips.css',
 		              'public' => true,
-		          ),*/
+		          ),
 							array(
 		              'url' => '//fonts.googleapis.com/css?family=Oswald|Open+Sans',
 		              'public' => true,
-		          ),				                             
+		          ),*/				                             
 			);
 		}
 		elseif ( is_page( 'menus' ) ) { // Menu page
-		  $js_enqueue=array(
+		  $css_enqueue=array(
 							array(
 		              'url' => self::$_PluginPath . 'assets/css/custom-menu.css',
 		              'public' => true,
 		          ),
 			);		
 		}
-		return $js_enqueue;
+		
+		elseif ( is_page( ['nouvelle-recette', 'publier-recettes'] ) ) {
+			//echo '<pre>' . print_r($css_enqueue,true) . '</pre>';
+		  $css_enqueue[]=
+							array(
+		              'url' => self::$_PluginPath . 'assets/css/custom-recipe-submission.css',
+		              'public' => true,
+		          ); 
+		}
+		
+		return $css_enqueue;
 	}
 
 
@@ -92,6 +100,7 @@ class Custom_Recipe_Templates {
 
 	public function enqueue_wpurp_js($js_enqueue) {
 		
+			if ( is_admin() ) return $js_enqueue;
 		
 			if ( is_singular('recipe') ) {
 				
@@ -206,7 +215,7 @@ class Custom_Recipe_Templates {
 				}
 			}
 			
-			elseif ( is_page( ['nouvelle-recette', 'publier-recettes'] ) || is_admin() ) {
+			elseif ( is_page( ['nouvelle-recette', 'publier-recettes'] ) ) {
 			 $js_enqueue = $js_enqueue;
 			}
 			

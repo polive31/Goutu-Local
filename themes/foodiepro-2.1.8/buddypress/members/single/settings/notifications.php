@@ -28,7 +28,7 @@ do_action( 'bp_before_member_settings_template' ); ?>
 	 *
 	 * @since 1.5.0
 	 */
-	do_action( 'bp_members_notification_settings_before_submit' ); ?>
+	//do_action( 'bp_members_notification_settings_before_submit' ); ?>
 
 	<div class="submit">
 		<input type="submit" name="submit" value="<?php esc_attr_e( 'Save Changes', 'buddypress' ); ?>" id="submit" class="auto" />

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-12-12 01:35+0100\n"
-"PO-Revision-Date: 2017-12-12 22:55+0100\n"
+"POT-Creation-Date: 2017-12-17 01:57+0100\n"
+"PO-Revision-Date: 2017-12-17 01:59+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -14,21 +14,69 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: plugins/bp-custom.php:165
+#: plugins/bp-custom.php:140
+msgid "Published a new recipe"
+msgstr "Publié une nouvelle recette"
+
+#: plugins/bp-custom.php:141
+#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:20
+#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:4
+#, fuzzy
+#| msgid "Related Recipes"
+msgid "Recipes"
+msgstr "Ces recettes pourraient également vous intéresser..."
+
+#: plugins/bp-custom.php:142
+#: plugins/custom-recipe-templates/helpers/custom_nutrition_label.php:64
+#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_meta_box.php:60
+#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:21
+#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_options.php:236
+#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_options.php:3091
+#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:57
+#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:92
+#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:132
+#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:156
+#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:331
+#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:381
+#: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:11
+#: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/widgets/nutrition_label_widget.php:56
+#: plugins/wp-ultimate-recipe-premium/premium/addons/user-menus/user-menus.php:87
+msgid "Recipe"
+msgstr ""
+
+#: plugins/bp-custom.php:228
 msgid "Display Profile"
 msgstr "Afficher mon profil"
 
-#: plugins/bp-custom.php:166
+#: plugins/bp-custom.php:229
 msgid "Edit Profile"
 msgstr "Modifier mon profil"
 
-#: plugins/bp-custom.php:167
+#: plugins/bp-custom.php:230
 msgid "Change Avatar"
 msgstr "Photo de profil"
 
-#: plugins/bp-custom.php:168
+#: plugins/bp-custom.php:231
 msgid "Change Cover"
 msgstr "Image d'en-tête"
+
+#: plugins/bp-custom.php:400
+#, php-format
+msgid ""
+"%1$s wrote a new post, <a class=\"activity-post-title\" href=\"%2$s\">%3$s</"
+"a>"
+msgstr ""
+"%1$s a publié un nouvel article, <a class=\"activity-post-title\" href=\"%2$s"
+"\">%3$s</a>"
+
+#: plugins/bp-custom.php:403
+#, php-format
+msgid ""
+"%1$s wrote a new recipe, <a class=\"activity-post-title\" href=\"%2$s\">"
+"%3$s</a>"
+msgstr ""
+"%1$s a publié une nouvelle recette, <a class=\"activity-post-title\" href="
+"\"%2$s\">%3$s</a>"
 
 #: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:147
 msgid "Add a picture"
@@ -93,59 +141,58 @@ msgctxt "consonant"
 msgid "All recipes containing %s"
 msgstr "Toutes les recettes à base de %s"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:34
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:64
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:35
 msgid "Share this recipe"
 msgstr "Partager sur les réseaux sociaux"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:36
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:37
 msgid "Share this post"
 msgstr "Partager cet article"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:78
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:79
 msgid "members"
 msgstr "membres"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:82
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:83
 #: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:68
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_options.php:2051
 msgid "Courses"
 msgstr "De l'apéritif au dessert"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:86
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:87
 msgid "Seasons"
 msgstr "Cuisine de saisons"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:90
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:91
 msgid "Occasions"
 msgstr "En toutes occasions"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:94
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:95
 msgid "Diets"
 msgstr "Régimes et diététique"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:99
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:103
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:100
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:104
 msgid "France"
 msgstr "Cuisines de régions"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:111
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:112
 msgid "World"
 msgstr "Cuisines du monde"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:116
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:117
 msgid "All posts"
 msgstr "Tous les articles"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:123
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:124
 msgid "Previous page"
 msgstr "Page précédente"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:141
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:142
 msgid "Select..."
 msgstr "Choisir..."
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:164
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:165
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:59
 msgid "authors"
 msgstr "auteurs"
@@ -201,9 +248,9 @@ msgstr "Appréciation"
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:104
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:82
-#: plugins/custom-social-helpers/widgets/BP-activity-feed-widget.php:138
+#: plugins/custom-social-helpers/widgets/BP-activity-feed-widget.php:131
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:90
-#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:161
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:162
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:109
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:74
 #: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:170
@@ -214,16 +261,17 @@ msgstr ""
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:86
 #: plugins/custom-recipe-templates/helpers/custom_nutrition_label.php:60
 #: plugins/custom-recipe-templates/helpers/custom_recipe_list.php:101
-#: plugins/custom-social-helpers/widgets/BP-activity-feed-widget.php:146
+#: plugins/custom-social-helpers/widgets/BP-activity-feed-widget.php:151
 #: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:180
 #: plugins/custom-social-helpers/widgets/BP-latest-registered-members-widget.php:99
-#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:170
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:171
 #: plugins/custom-social-helpers/widgets/BP-my-friends-widget.php:123
 #: plugins/custom-social-helpers/widgets/BP-welcome-widget.php:78
 #: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:174
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/widgets/nutrition_label_widget.php:52
 #: plugins/wp-ultimate-recipe-premium/premium/addons/recipe-search/widgets/recipe_search_widget.php:82
 #: plugins/wp-ultimate-recipe-premium/premium/helpers/widgets/recipe_list_widget.php:75
+#: themes/foodiepro-2.1.8/buddypress/forums/index.php:168
 #: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:106
 #: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:74
 msgid "Title:"
@@ -264,23 +312,6 @@ msgstr ""
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:322
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/widgets/nutrition_label_widget.php:43
 msgid "Nutrition Label"
-msgstr ""
-
-#: plugins/custom-recipe-templates/helpers/custom_nutrition_label.php:64
-#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_meta_box.php:60
-#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:21
-#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_options.php:236
-#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_options.php:3091
-#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:57
-#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:92
-#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:132
-#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:156
-#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:331
-#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:381
-#: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:11
-#: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/widgets/nutrition_label_widget.php:56
-#: plugins/wp-ultimate-recipe-premium/premium/addons/user-menus/user-menus.php:87
-msgid "Recipe"
 msgstr ""
 
 #: plugins/custom-recipe-templates/helpers/custom_nutrition_label.php:66
@@ -396,64 +427,64 @@ msgstr "Ajouter à mon <a href=\"%s\">carnet de recettes </a>"
 msgid "Favorites"
 msgstr "Favoris"
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Templates.php:138
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Templates.php:147
 msgid "Print this Recipe"
 msgstr "Imprimer cette recette"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:40
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:45
+msgid "Rate"
+msgstr "Evaluer"
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:47
+msgid "Comment and rate this recipe"
+msgstr "Commenter et noter cette recette"
+
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:67
 #: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/templates/shopping-list.php:25
 msgid "Print"
 msgstr "Imprimer"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:42
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:69
 msgid "Print this recipe"
 msgstr "Imprimer cette recette"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:62
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:75
 msgid "Share"
 msgstr "Partager"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:70
-msgid "Rate"
-msgstr "Evaluer"
-
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:72
-msgid "Comment and rate this recipe"
-msgstr "Commenter et noter cette recette"
-
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:103
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:115
 msgid "Origin"
 msgstr "Origine"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:110
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:122
 msgid "Diet"
 msgstr "Régime"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:117
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:129
 msgid "Level"
 msgstr "Niveau"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:124
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:136
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:40
 msgid "Serves"
 msgstr "Portions"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:131
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:143
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:47
 msgid "Preparation"
 msgstr "Préparation"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:138
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:150
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:54
 msgid "Cooking"
 msgstr "Cuisson"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:144
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:156
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:60
 msgid "Wait"
 msgstr "Attente"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:180
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:185
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:95
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:19
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:49
@@ -469,12 +500,12 @@ msgstr "Attente"
 msgid "Notes"
 msgstr "Notes"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:264
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:269
 msgctxt "vowel"
 msgid "of "
 msgstr "d'"
 
-#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:266
+#: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:271
 msgctxt "consonant"
 msgid "of "
 msgstr "de "
@@ -487,7 +518,7 @@ msgstr "avis"
 msgid "reviews"
 msgstr "avis"
 
-#: plugins/custom-social-helpers/custom-social-loader.php:48
+#: plugins/custom-social-helpers/custom-social-loader.php:49
 msgid ""
 "<strong>BP Social Helpers</strong></a> requires the BuddyPress plugin to "
 "work. Please <a href=\"https://buddypress.org/download\">install BuddyPress</"
@@ -504,6 +535,7 @@ msgstr "Notifications"
 
 #: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:44
 #: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:105
+#: themes/foodiepro-2.1.8/buddypress/activity/post-form.php:61
 #: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:28
 msgid "My Profile"
 msgstr "Mon Profil"
@@ -516,22 +548,27 @@ msgstr ""
 msgid "Displays a Buddypress Activity Feed"
 msgstr ""
 
-#: plugins/custom-social-helpers/widgets/BP-activity-feed-widget.php:53
-#, php-format
-msgid "Activity Feed for %s"
-msgstr "Les dernières nouvelles de %s"
-
-#: plugins/custom-social-helpers/widgets/BP-activity-feed-widget.php:87
+#: plugins/custom-social-helpers/widgets/BP-activity-feed-widget.php:88
 msgid "Previous Feeds"
 msgstr "Nouvelles précédentes"
 
-#: plugins/custom-social-helpers/widgets/BP-activity-feed-widget.php:97
+#: plugins/custom-social-helpers/widgets/BP-activity-feed-widget.php:95
+#: themes/foodiepro-2.1.8/buddypress/activity/activity-loop.php:57
 msgid "Sorry, there was no activity found. Please try a different filter."
 msgstr ""
 
-#: plugins/custom-social-helpers/widgets/BP-activity-feed-widget.php:152
+#: plugins/custom-social-helpers/widgets/BP-activity-feed-widget.php:146
+msgid "Automatic title ?"
+msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-activity-feed-widget.php:157
 msgid "Number of feeds to show"
 msgstr ""
+
+#: plugins/custom-social-helpers/widgets/BP-activity-feed-widget.php:189
+#, php-format
+msgid "Activity Feed for %s"
+msgstr "Les dernières nouvelles de %s"
 
 #: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:35
 msgctxt "Title of the login widget"
@@ -561,6 +598,16 @@ msgstr ""
 msgid "Remember Me"
 msgstr ""
 
+#: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:120
+#, fuzzy
+#| msgid "Log Out"
+msgid "Log In"
+msgstr "Déconnexion"
+
+#: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:124
+msgid "Register for a new account"
+msgstr ""
+
 #: plugins/custom-social-helpers/widgets/BP-custom-login-widget.php:124
 msgid "Register"
 msgstr ""
@@ -586,24 +633,24 @@ msgstr ""
 msgid "Shows profile details of the current displayed member"
 msgstr ""
 
-#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:93
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:94
 msgid "Age"
 msgstr ""
 
-#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:94
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:95
 #, php-format
 msgid "%s years old"
 msgstr "%s ans"
 
-#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:103
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:104
 msgid "Lives in "
 msgstr "Ville "
 
-#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:113
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:114
 msgid "My preferred plate "
 msgstr "Mon plat préféré "
 
-#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:125
+#: plugins/custom-social-helpers/widgets/BP-member-profile-widget.php:126
 msgid "My preferred desert "
 msgstr "Mon dessert préféré "
 
@@ -640,25 +687,25 @@ msgstr ""
 msgid "Displays profile completion bar (requires Buddy Progress Bar plugin)"
 msgstr ""
 
-#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:41
+#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:44
 msgid "Widget Title"
 msgstr ""
 
-#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:46
+#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:49
 #, fuzzy
 #| msgid "Reply to Message"
 msgid "Message:"
 msgstr "Répondre au message"
 
-#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:102
+#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:105
 msgid "Profile completed !"
 msgstr "Profil rempli !"
 
-#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:103
+#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:106
 msgid "Profile empty !"
 msgstr "Profil vide !"
 
-#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:113
+#: plugins/custom-social-helpers/widgets/BP-profile-completion-widget.php:116
 #, php-format
 msgid ""
 "<a href=\"%s\">Fill-in your profile</a> to make yourself visible from other "
@@ -684,12 +731,20 @@ msgid "Displays a Buddypress \"what's New ?\" input form"
 msgstr ""
 
 #: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:82
+#: themes/foodiepro-2.1.8/buddypress/activity/post-form.php:31
 #, php-format
 msgid "What's new, %s?"
 msgstr "Exprimez vous, %s !"
 
+#: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:90
+#: themes/foodiepro-2.1.8/buddypress/activity/post-form.php:47
+msgid "Post Update"
+msgstr ""
+
 #: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:98
 #: plugins/custom-social-helpers/widgets/BP-whats-new-widget.php:102
+#: themes/foodiepro-2.1.8/buddypress/activity/post-form.php:54
+#: themes/foodiepro-2.1.8/buddypress/activity/post-form.php:58
 #, fuzzy
 #| msgid "Comment count"
 msgid "Post in"
@@ -1279,6 +1334,8 @@ msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:79
 #: plugins/wp-ultimate-recipe-premium/core/vendor/vafpress/classes/shortcodegenerator.php:264
+#: themes/foodiepro-2.1.8/buddypress/activity/entry.php:125
+#: themes/foodiepro-2.1.8/buddypress/forums/index.php:205
 #: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:69
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:259
 msgid "Cancel"
@@ -1695,7 +1752,7 @@ msgstr ""
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:324
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:356
 msgid "Instruction Step Image"
-msgstr ""
+msgstr "Illustration pour cette étape"
 
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:335
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:364
@@ -1738,13 +1795,6 @@ msgstr ""
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_meta_box.php:46
 msgid "Add Recipe Box"
 msgstr ""
-
-#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:20
-#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:4
-#, fuzzy
-#| msgid "Related Recipes"
-msgid "Recipes"
-msgstr "Ces recettes pourraient également vous intéresser..."
 
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:40
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:41
@@ -2339,6 +2389,8 @@ msgid "Use the old print style."
 msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_options.php:589
+#: themes/foodiepro-2.1.8/buddypress/activity/index.php:142
+#: themes/foodiepro-2.1.8/buddypress/groups/single/activity.php:12
 msgid "RSS Feed"
 msgstr ""
 
@@ -4479,6 +4531,13 @@ msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/core/vendor/vafpress/views/option/set.php:69
 #: plugins/wp-ultimate-recipe-premium/core/vendor/vafpress/views/option/set.php:84
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:69
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:157
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:92
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:126
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/edit.php:103
+#: themes/foodiepro-2.1.8/buddypress/members/single/settings/general.php:43
+#: themes/foodiepro-2.1.8/buddypress/members/single/settings/notifications.php:34
 msgid "Save Changes"
 msgstr ""
 
@@ -5060,6 +5119,7 @@ msgstr ""
 #: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/templates/shopping-list.php:22
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:159
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:289
+#: themes/foodiepro-2.1.8/buddypress/members/single/settings/capabilities.php:29
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:234
 msgid "Save"
 msgstr ""
@@ -5809,6 +5869,7 @@ msgid "Link to"
 msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/meta_boxes/meta_box_grid.php:33
+#: themes/foodiepro-2.1.8/buddypress/activity/entry.php:124
 msgid "Post"
 msgstr ""
 
@@ -5926,6 +5987,7 @@ msgid "Term Order"
 msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/meta_boxes/meta_box_isotope_filter.php:122
+#: themes/foodiepro-2.1.8/buddypress/blogs/index.php:91
 #: themes/foodiepro-2.1.8/buddypress/groups/index.php:86
 #: themes/foodiepro-2.1.8/buddypress/members/index.php:89
 #: themes/foodiepro-2.1.8/buddypress/members/single/blogs.php:22
@@ -6078,6 +6140,7 @@ msgid "Text shown on the \"Load More\" button."
 msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/meta_boxes/meta_box_pagination_style.php:118
+#: themes/foodiepro-2.1.8/buddypress/activity/activity-loop.php:43
 msgid "Load More"
 msgstr ""
 
@@ -6317,12 +6380,12 @@ msgid ""
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:184
-#: themes/foodiepro-2.1.8/functions.php:662
+#: themes/foodiepro-2.1.8/functions.php:668
 msgid "Read More"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:197
-#: themes/foodiepro-2.1.8/functions.php:695
+#: themes/foodiepro-2.1.8/functions.php:701
 msgid "Comments"
 msgstr ""
 
@@ -6340,6 +6403,303 @@ msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:217
 msgid "Powered by "
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/activity/comment.php:29
+#, php-format
+msgid ""
+"<a href=\"%1$s\">%2$s</a> replied <a href=\"%3$s\" class=\"activity-time-"
+"since\"><span class=\"time-since\">%4$s</span></a>"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/activity/comment.php:39
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:23
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/topic.php:191
+msgid "Reply"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/activity/entry.php:62
+#: themes/foodiepro-2.1.8/buddypress/activity/entry.php:65
+msgid "Show conversation"
+msgstr "Voir la conversation"
+
+#: themes/foodiepro-2.1.8/buddypress/activity/entry.php:120
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/booking-fields.php:26
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:28
+msgid "Comment"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/activity/index.php:55
+msgid "The public activity for everyone on this site."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/activity/index.php:55
+#: themes/foodiepro-2.1.8/buddypress/members/index.php:53
+#, php-format
+msgid "All Members %s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/activity/index.php:72
+msgid "The activity of my friends only."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/activity/index.php:72
+#: themes/foodiepro-2.1.8/buddypress/members/index.php:56
+#, php-format
+msgid "My Friends %s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/activity/index.php:91
+msgid "The activity of groups I am a member of."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/activity/index.php:91
+#: themes/foodiepro-2.1.8/buddypress/groups/index.php:52
+#, php-format
+msgid "My Groups %s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/activity/index.php:108
+msgid "The activity I've marked as a favorite."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/activity/index.php:108
+#, fuzzy, php-format
+#| msgid "Favorites"
+msgid "My Favorites %s"
+msgstr "Favoris"
+
+#: themes/foodiepro-2.1.8/buddypress/activity/index.php:123
+msgid "Activity that I have been mentioned in."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/activity/index.php:123
+#, fuzzy
+#| msgid "Notifications"
+msgid "Mentions"
+msgstr "Notifications"
+
+#: themes/foodiepro-2.1.8/buddypress/activity/index.php:142
+#: themes/foodiepro-2.1.8/buddypress/groups/single/activity.php:12
+msgid "RSS"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/activity/index.php:154
+#: themes/foodiepro-2.1.8/buddypress/groups/single/activity.php:24
+#: themes/foodiepro-2.1.8/buddypress/members/single/activity.php:17
+msgid "Show:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/activity/index.php:156
+#: themes/foodiepro-2.1.8/buddypress/groups/single/activity.php:26
+#: themes/foodiepro-2.1.8/buddypress/members/single/activity.php:19
+msgid "&mdash; Everything &mdash;"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/activity/post-form.php:29
+#, fuzzy, php-format
+#| msgid "What's new, %s?"
+msgid "What's new in %s, %s?"
+msgstr "Exprimez vous, %s !"
+
+#: themes/foodiepro-2.1.8/buddypress/activity/post-form.php:38
+#, fuzzy
+#| msgid "What's new, %s?"
+msgid "Post what's new"
+msgstr "Exprimez vous, %s !"
+
+#: themes/foodiepro-2.1.8/buddypress/assets/_attachments/avatars/index.php:37
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/change-avatar.php:44
+msgid ""
+"If you'd like to delete your current profile photo but not upload a new one, "
+"please use the delete profile photo button."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/assets/_attachments/avatars/index.php:38
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/change-avatar.php:45
+msgid "Delete Profile Photo"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/assets/_attachments/avatars/index.php:40
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:181
+msgid ""
+"If you'd like to remove the existing group profile photo but not upload a "
+"new one, please use the delete group profile photo button."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/assets/_attachments/avatars/index.php:41
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:183
+msgid "Delete Group Profile Photo"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/assets/_attachments/cover-images/index.php:26
+msgid ""
+"If you'd like to delete your current cover image but not upload a new one, "
+"please use the delete Cover Image button."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/assets/_attachments/cover-images/index.php:27
+#: themes/foodiepro-2.1.8/buddypress/assets/_attachments/cover-images/index.php:30
+#, fuzzy
+#| msgid "Remove from Favorites"
+msgid "Delete Cover Image"
+msgstr "Favorite"
+
+#: themes/foodiepro-2.1.8/buddypress/assets/_attachments/cover-images/index.php:29
+msgid ""
+"If you'd like to remove the existing group cover image but not upload a new "
+"one, please use the delete group cover image button."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/assets/_attachments/uploader.php:28
+#, fuzzy
+#| msgid "Sort recipes"
+msgid "Select your File"
+msgstr "Classer les recettes"
+
+#: themes/foodiepro-2.1.8/buddypress/blogs/blogs-loop.php:120
+msgid "Sorry, there were no sites found."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/blogs/create.php:37
+msgid "Site registration is currently disabled"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/blogs/index.php:53
+#, fuzzy, php-format
+#| msgid "All diets"
+msgid "All Sites %s"
+msgstr "Tous les régimes"
+
+#: themes/foodiepro-2.1.8/buddypress/blogs/index.php:57
+#, php-format
+msgid "My Sites %s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/blogs/index.php:87
+#: themes/foodiepro-2.1.8/buddypress/forums/index.php:86
+#: themes/foodiepro-2.1.8/buddypress/groups/index.php:80
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:50
+#: themes/foodiepro-2.1.8/buddypress/members/index.php:83
+#: themes/foodiepro-2.1.8/buddypress/members/single/blogs.php:18
+#: themes/foodiepro-2.1.8/buddypress/members/single/forums.php:17
+#: themes/foodiepro-2.1.8/buddypress/members/single/friends.php:19
+#: themes/foodiepro-2.1.8/buddypress/members/single/groups.php:19
+msgid "Order By:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/blogs/index.php:89
+#: themes/foodiepro-2.1.8/buddypress/forums/index.php:88
+#: themes/foodiepro-2.1.8/buddypress/groups/index.php:83
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:52
+#: themes/foodiepro-2.1.8/buddypress/members/index.php:85
+#: themes/foodiepro-2.1.8/buddypress/members/single/blogs.php:20
+#: themes/foodiepro-2.1.8/buddypress/members/single/forums.php:19
+#: themes/foodiepro-2.1.8/buddypress/members/single/friends.php:21
+#: themes/foodiepro-2.1.8/buddypress/members/single/groups.php:21
+msgid "Last Active"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/blogs/index.php:90
+#: themes/foodiepro-2.1.8/buddypress/members/single/blogs.php:21
+msgid "Newest"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/forums/forums-loop.php:52
+msgid "Topic"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/forums/forums-loop.php:53
+#, fuzzy
+#| msgid "All posts"
+msgid "Posts"
+msgstr "Tous les articles"
+
+#: themes/foodiepro-2.1.8/buddypress/forums/forums-loop.php:54
+msgid "Freshness"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/forums/forums-loop.php:74
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/topic.php:129
+msgid "Permanent link to this post"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/forums/forums-loop.php:81
+#, php-format
+msgid "Started by %1$s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/forums/forums-loop.php:92
+#, php-format
+msgid "in %1$s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/forums/forums-loop.php:163
+msgid "Sorry, there were no forum topics found."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/forums/index.php:52
+#, fuzzy, php-format
+#| msgid "All posts"
+msgid "All Topics %s"
+msgstr "Tous les articles"
+
+#: themes/foodiepro-2.1.8/buddypress/forums/index.php:56
+#, php-format
+msgid "My Topics %s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/forums/index.php:89
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:53
+#: themes/foodiepro-2.1.8/buddypress/members/single/forums.php:20
+msgid "Most Posts"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/forums/index.php:90
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:54
+#: themes/foodiepro-2.1.8/buddypress/members/single/forums.php:21
+msgid "Unreplied"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/forums/index.php:161
+msgid "Create New Topic:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/forums/index.php:171
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:109
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:77
+msgid "Content:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/forums/index.php:174
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:112
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:80
+msgid "Tags (comma separated):"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/forums/index.php:177
+msgid "Post In Group Forum:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/forums/index.php:180
+msgid "----"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/forums/index.php:204
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:125
+#, fuzzy
+#| msgid "Comment count"
+msgid "Post Topic"
+msgstr "Commentaires"
+
+#: themes/foodiepro-2.1.8/buddypress/forums/index.php:216
+#, php-format
+msgid ""
+"You are not a member of any groups so you don't have any group forums you "
+"can post in. To start posting, first find a group that matches the topic "
+"subject you'd like to start. If this group does not exist, why not <a "
+"href='%s'>create a new group</a>? Once you have joined or created the group "
+"you can post your topic in that group's forum."
 msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/groups/create.php:66
@@ -6472,6 +6832,12 @@ msgstr ""
 msgid "Select an image"
 msgstr ""
 
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:208
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:175
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/change-avatar.php:39
+msgid "Upload Image"
+msgstr ""
+
 #: themes/foodiepro-2.1.8/buddypress/groups/create.php:212
 msgid ""
 "To skip the group profile photo upload process, hit the \"Next Step\" button."
@@ -6480,6 +6846,30 @@ msgstr ""
 #: themes/foodiepro-2.1.8/buddypress/groups/create.php:227
 msgid "Crop Group Profile Photo"
 msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:229
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:203
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/change-avatar.php:54
+#, fuzzy
+#| msgid "Profile empty !"
+msgid "Profile photo to crop"
+msgstr "Profil vide !"
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:232
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:206
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/change-avatar.php:57
+#, fuzzy
+#| msgid "Profile empty !"
+msgid "Profile photo preview"
+msgstr "Profil vide !"
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:235
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:209
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/change-avatar.php:60
+#, fuzzy
+#| msgid "Remove from Favorites"
+msgid "Crop Image"
+msgstr "Favorite"
 
 #: themes/foodiepro-2.1.8/buddypress/groups/create.php:273
 #: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:237
@@ -6501,6 +6891,22 @@ msgid ""
 "to your group."
 msgstr ""
 
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:399
+msgid "Back to Previous Step"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:406
+msgid "Next Step"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:413
+msgid "Create Group and Continue"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/create.php:420
+msgid "Finish"
+msgstr ""
+
 #: themes/foodiepro-2.1.8/buddypress/groups/groups-loop.php:62
 #: themes/foodiepro-2.1.8/buddypress/groups/single/cover-image-header.php:62
 #: themes/foodiepro-2.1.8/buddypress/groups/single/group-header.php:71
@@ -6517,31 +6923,6 @@ msgstr ""
 msgid "All Groups %s"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/groups/index.php:52
-#, php-format
-msgid "My Groups %s"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/buddypress/groups/index.php:80
-#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:50
-#: themes/foodiepro-2.1.8/buddypress/members/index.php:83
-#: themes/foodiepro-2.1.8/buddypress/members/single/blogs.php:18
-#: themes/foodiepro-2.1.8/buddypress/members/single/forums.php:17
-#: themes/foodiepro-2.1.8/buddypress/members/single/friends.php:19
-#: themes/foodiepro-2.1.8/buddypress/members/single/groups.php:19
-msgid "Order By:"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/buddypress/groups/index.php:83
-#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:52
-#: themes/foodiepro-2.1.8/buddypress/members/index.php:85
-#: themes/foodiepro-2.1.8/buddypress/members/single/blogs.php:20
-#: themes/foodiepro-2.1.8/buddypress/members/single/forums.php:19
-#: themes/foodiepro-2.1.8/buddypress/members/single/friends.php:21
-#: themes/foodiepro-2.1.8/buddypress/members/single/groups.php:21
-msgid "Last Active"
-msgstr ""
-
 #: themes/foodiepro-2.1.8/buddypress/groups/index.php:84
 #: themes/foodiepro-2.1.8/buddypress/members/single/groups.php:22
 msgid "Most Members"
@@ -6552,32 +6933,8 @@ msgstr ""
 msgid "Newly Created"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/groups/single/activity.php:12
-msgid "RSS"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/buddypress/groups/single/activity.php:24
-#: themes/foodiepro-2.1.8/buddypress/members/single/activity.php:17
-msgid "Show:"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/buddypress/groups/single/activity.php:26
-#: themes/foodiepro-2.1.8/buddypress/members/single/activity.php:19
-msgid "&mdash; Everything &mdash;"
-msgstr ""
-
 #: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:56
 msgid "Notify group members of these changes via email"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:181
-msgid ""
-"If you'd like to remove the existing group profile photo but not upload a "
-"new one, please use the delete group profile photo button."
-msgstr ""
-
-#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:183
-msgid "Delete Group Profile Photo"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:201
@@ -6622,7 +6979,15 @@ msgid "(banned)"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:354
+msgid "Unban this member"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:354
 msgid "Remove Ban"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:358
+msgid "Kick and ban this member"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:358
@@ -6632,6 +6997,12 @@ msgstr ""
 #: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:359
 msgid "Promote to Mod"
 msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:364
+#, fuzzy
+#| msgid "Remove from Favorites"
+msgid "Remove this member"
+msgstr "Favorite"
 
 #: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:364
 msgid "Remove from group"
@@ -6649,6 +7020,10 @@ msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:475
 msgid "I understand the consequences of deleting this group."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/admin.php:487
+msgid "Delete Group"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/groups/single/cover-image-header.php:73
@@ -6671,37 +7046,12 @@ msgstr ""
 msgid "Forum Directory"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:53
-#: themes/foodiepro-2.1.8/buddypress/members/single/forums.php:20
-msgid "Most Posts"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:54
-#: themes/foodiepro-2.1.8/buddypress/members/single/forums.php:21
-msgid "Unreplied"
-msgstr ""
-
 #: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:100
 msgid "You will auto join this group when you start a new topic."
 msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:104
 msgid "Post a New Topic:"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:109
-#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:77
-msgid "Content:"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/buddypress/groups/single/forum.php:112
-#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:80
-msgid "Tags (comma separated):"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:23
-#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/topic.php:191
-msgid "Reply"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:38
@@ -6741,6 +7091,10 @@ msgstr ""
 msgid "Add a reply:"
 msgstr ""
 
+#: themes/foodiepro-2.1.8/buddypress/groups/single/forum/topic.php:196
+msgid "Post Reply"
+msgstr ""
+
 #: themes/foodiepro-2.1.8/buddypress/groups/single/forum/topic.php:214
 msgid "This topic is closed, replies are no longer accepted."
 msgstr ""
@@ -6762,6 +7116,12 @@ msgstr ""
 msgid "Comments (optional)"
 msgstr ""
 
+#: themes/foodiepro-2.1.8/buddypress/groups/single/request-membership.php:32
+#, fuzzy
+#| msgid "Friendship Requests"
+msgid "Send Request"
+msgstr "Demandes d'amitié"
+
 #: themes/foodiepro-2.1.8/buddypress/groups/single/requests-loop.php:57
 #: themes/foodiepro-2.1.8/buddypress/members/single/friends/requests.php:57
 #: themes/foodiepro-2.1.8/buddypress/members/single/groups/invites.php:45
@@ -6776,6 +7136,10 @@ msgstr "Refuser"
 
 #: themes/foodiepro-2.1.8/buddypress/groups/single/requests-loop.php:95
 msgid "There are no pending membership requests."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/groups/single/send-invites.php:28
+msgid "Send Invites"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/groups/single/send-invites.php:43
@@ -6810,14 +7174,9 @@ msgstr ""
 msgid "Activation Key:"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/index.php:53
-#, php-format
-msgid "All Members %s"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/buddypress/members/index.php:56
-#, php-format
-msgid "My Friends %s"
+#: themes/foodiepro-2.1.8/buddypress/members/activate.php:56
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2612
+msgid "Activate"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/members/index.php:86
@@ -6909,6 +7268,10 @@ msgstr ""
 msgid "Required fields"
 msgstr ""
 
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:315
+msgid "Complete Sign Up"
+msgstr ""
+
 #: themes/foodiepro-2.1.8/buddypress/members/register.php:347
 msgid "Registration completed"
 msgstr "Inscription terminée"
@@ -6928,10 +7291,6 @@ msgid ""
 "and password you have just created."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/single/blogs.php:21
-msgid "Newest"
-msgstr ""
-
 #: themes/foodiepro-2.1.8/buddypress/members/single/cover-image-header.php:28
 msgid "Update cover picture"
 msgstr "Changer mon image d'en-tête"
@@ -6940,7 +7299,7 @@ msgstr "Changer mon image d'en-tête"
 msgid "Update profile picture"
 msgstr "Changer ma photo"
 
-#: themes/foodiepro-2.1.8/buddypress/members/single/cover-image-header.php:46
+#: themes/foodiepro-2.1.8/buddypress/members/single/cover-image-header.php:47
 msgid "The Blog Of "
 msgstr "Le blog de "
 
@@ -6969,6 +7328,12 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:51
+#, fuzzy
+#| msgid "Reply to Message"
+msgid "Send Message"
+msgstr "Répondre au message"
+
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:56
 #: themes/foodiepro-2.1.8/buddypress/members/single/notifications/notifications-loop.php:17
 msgid "Select all"
@@ -6990,6 +7355,12 @@ msgstr ""
 msgid "To:"
 msgstr ""
 
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:113
+#, fuzzy
+#| msgid "Reply to Message"
+msgid "View Message"
+msgstr "Répondre au message"
+
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:137
 msgid "Read"
 msgstr ""
@@ -7005,6 +7376,12 @@ msgstr ""
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/notices-loop.php:63
 msgid "Sent:"
 msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/notices-loop.php:77
+#, fuzzy
+#| msgid "Reply to Message"
+msgid "Delete Message"
+msgstr "Répondre au message"
 
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/notices-loop.php:95
 msgid "Sorry, no notices were found."
@@ -7024,6 +7401,12 @@ msgstr ""
 msgid "Conversation between %s and you."
 msgstr ""
 
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/single.php:44
+#, fuzzy
+#| msgid "All occasions"
+msgid "Delete Conversation"
+msgstr "Toutes les occasions"
+
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/single.php:101
 msgid "Send a Reply"
 msgstr "Envoyer une répondre"
@@ -7031,6 +7414,12 @@ msgstr "Envoyer une répondre"
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/single.php:124
 msgid "Reply to Message"
 msgstr "Répondre au message"
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/single.php:138
+#, fuzzy
+#| msgid "Send a Reply"
+msgid "Send Reply"
+msgstr "Envoyer une répondre"
 
 #: themes/foodiepro-2.1.8/buddypress/members/single/notifications/feedback-no-notifications.php:16
 msgid "You have no unread notifications."
@@ -7075,12 +7464,6 @@ msgstr ""
 msgid ""
 "Click below to select a JPG, GIF or PNG format photo from your computer and "
 "then click 'Upload Image' to proceed."
-msgstr ""
-
-#: themes/foodiepro-2.1.8/buddypress/members/single/profile/change-avatar.php:44
-msgid ""
-"If you'd like to delete your current profile photo but not upload a new one, "
-"please use the delete profile photo button."
 msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/members/single/profile/change-avatar.php:45
@@ -7167,10 +7550,18 @@ msgstr ""
 msgid "I understand the consequences."
 msgstr ""
 
+#: themes/foodiepro-2.1.8/buddypress/members/single/settings/delete-account.php:43
+msgid "Delete Account"
+msgstr ""
+
 #: themes/foodiepro-2.1.8/buddypress/members/single/settings/general.php:16
 msgid ""
 "Current Password <span>(required to update email or change current "
 "password)</span>"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/buddypress/members/single/settings/general.php:17
+msgid "Password Lost and Found"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/members/single/settings/general.php:17
@@ -7202,55 +7593,59 @@ msgstr ""
 msgid "Visibility"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:459
+#: themes/foodiepro-2.1.8/buddypress/members/single/settings/profile.php:62
+msgid "Save Settings"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:458
 msgid "Goûtu.org - Cuisiner, Découvrir, Partager"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:498
+#: themes/foodiepro-2.1.8/functions.php:497
 #, fuzzy, php-format
 #| msgid "<strong>ERROR</strong>: User pending approval."
 msgid "<strong>ERROR</strong>: User pending <a href=\"%s\">approval</a>."
 msgstr "<strong>ERREUR</strong> : Utilisateur en attente d'approbation."
 
-#: themes/foodiepro-2.1.8/functions.php:638
+#: themes/foodiepro-2.1.8/functions.php:644
 #, php-format
 msgid "Published on %s by <span id=\"username\">%s</span>"
 msgstr "Publié le %s  par <span id=\"username\">%s</span>"
 
-#: themes/foodiepro-2.1.8/functions.php:704
+#: themes/foodiepro-2.1.8/functions.php:710
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:202
 msgid "Previous comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:710
+#: themes/foodiepro-2.1.8/functions.php:716
 msgid "Next comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:728
+#: themes/foodiepro-2.1.8/functions.php:734
 msgid "Your answer here"
 msgstr "Entrez votre réponse ci-dessous"
 
-#: themes/foodiepro-2.1.8/functions.php:742
+#: themes/foodiepro-2.1.8/functions.php:748
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
-#: themes/foodiepro-2.1.8/functions.php:742
+#: themes/foodiepro-2.1.8/functions.php:748
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:742
+#: themes/foodiepro-2.1.8/functions.php:748
 msgid "Legal notice"
 msgstr "Mentions légales"
 
-#: themes/foodiepro-2.1.8/functions.php:742
+#: themes/foodiepro-2.1.8/functions.php:748
 msgid "Goûtu charter"
 msgstr "Charte Goûtu"
 
-#: themes/foodiepro-2.1.8/functions.php:742
+#: themes/foodiepro-2.1.8/functions.php:748
 msgid "Personal data"
 msgstr "Données personnelles"
 
-#: themes/foodiepro-2.1.8/functions.php:742
+#: themes/foodiepro-2.1.8/functions.php:748
 msgid "Terms of use"
 msgstr "Conditions d'utilisation"
 
@@ -7627,10 +8022,6 @@ msgstr ""
 msgid "Install"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2612
-msgid "Activate"
-msgstr ""
-
 #: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2643
 msgid "No plugins were selected to be installed. No action taken."
 msgstr ""
@@ -7776,75 +8167,75 @@ msgstr ""
 msgid "This is the section before the header."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:68
-msgid "Home Top"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:69
-msgid "This is the home top section."
-msgstr ""
-
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:73
-msgid "Home Middle"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:74
-msgid "This is the home middle section."
-msgstr ""
-
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:78
-msgid "Home Bottom"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:79
-msgid "This is the home bottom section."
-msgstr ""
-
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:83
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:70
 msgid "Post Bottom"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:84
-msgid "This is the after entry section."
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:71
+msgid "This is the section below content and sidebar, just before the footer."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:109
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:77
+msgid "Home Top"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:78
+msgid "This is the home top section."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:82
+msgid "Home Middle"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:83
+msgid "This is the home middle section."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:87
+msgid "Home Bottom"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:88
+msgid "This is the home bottom section."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:94
 msgid "Social sidebar"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:110
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:95
 msgid "This is the sidebar for social pages."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:115
-msgid "Social Bottom"
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:99
+msgid "Social Content"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:116
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:100
 msgid "This is the widget section of buddypress pages."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:121
-msgid "Social Footer"
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:104
+msgid "Social Bottom"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:122
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:105
 msgid "This goes just before the footer, and occupies the whole page width."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:127
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:111
 msgid "Archives Top"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:128
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:112
 msgid "This is the top widget section of archived pages."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:133
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:116
 msgid "Archives Bottom"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:134
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:117
 msgid "This is the bottom widget section of archived pages."
 msgstr ""
 
@@ -8115,11 +8506,6 @@ msgstr ""
 msgid "E-mail"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/booking-fields.php:26
-#: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:28
-msgid "Comment"
-msgstr ""
-
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/ticket-single.php:37
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/tickets-list.php:45
 msgid "N/A"
@@ -8199,6 +8585,26 @@ msgstr ""
 msgid "export csv"
 msgstr ""
 
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:13
+msgid "Enter a ticket name."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:22
+msgid "Enter a maximum number of spaces (required)."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:28
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:33
+msgid "Leave either blank for no upper/lower limit."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:39
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:58
+msgid ""
+"Add a start or end date (or both) to impose time constraints on ticket "
+"availability. Leave either blank for no upper/lower limit."
+msgstr ""
+
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:50
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:51
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:69
@@ -8208,6 +8614,12 @@ msgstr ""
 #, php-format
 msgctxt "before or after"
 msgid "%s the event starts"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:79
+msgid ""
+"If checked every booking must select one or the minimum number of this "
+"ticket."
 msgstr ""
 
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:86
@@ -8614,6 +9026,15 @@ msgstr ""
 msgid "Please <a href=\"%s\">Log In</a> to view your bookings."
 msgstr ""
 
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/search/geo.php:13
+#, php-format
+msgid "We are going to use %s for searching."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/search/geo.php:13
+msgid "If this is incorrect, click cancel and try a more specific address."
+msgstr ""
+
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_list_detail.php:18
 msgid "Future"
 msgstr ""
@@ -8690,11 +9111,11 @@ msgstr ""
 msgid "Post type"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/yarpp-template-goutu.php:29
+#: themes/foodiepro-2.1.8/yarpp-template-goutu.php:18
 msgid "Related Recipes"
 msgstr "Ces recettes pourraient également vous intéresser..."
 
-#: themes/foodiepro-2.1.8/yarpp-template-goutu.php:31
+#: themes/foodiepro-2.1.8/yarpp-template-goutu.php:20
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
 
@@ -8768,9 +9189,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 
 #~ msgid "All seasons"
 #~ msgstr "Toutes les saisons"
-
-#~ msgid "All diets"
-#~ msgstr "Tous les régimes"
 
 #~ msgid "All levels"
 #~ msgstr "Tous les niveaux de difficulté"

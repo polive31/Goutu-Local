@@ -2591,6 +2591,7 @@ div.gform_wrapper .gform_footer input[type="submit"] {
 .home-bottom {
 	float:left;
 	width:100%;
+	margin-top:20px;
 }
 
 .paged .home-middle,

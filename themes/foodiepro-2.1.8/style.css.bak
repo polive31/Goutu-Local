@@ -4008,6 +4008,7 @@ body.activity-permalink .activity-list li .activity-header > p {
 a.activity-post-title {
 	font-family: "Oswald", sans-serif;
 	font-size:14px;
+	font-style:normal;
 }
 .activity-inner img {
   /* max-width: 200px; */

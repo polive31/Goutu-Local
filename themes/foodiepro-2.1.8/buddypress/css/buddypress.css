@@ -608,7 +608,8 @@ select#field_84_year {
 	width: 90%;
 }
 #buddypress .standard-form#signup_form div.submit {
-	float: right;
+	width: 100%;
+	text-align: center;
 }
 #buddypress div#signup-avatar img {
 	margin: 0 15px 10px 0;
@@ -632,7 +633,8 @@ select#field_84_year {
 	padding: 15px 0 0 0;
 }
 #buddypress .standard-form div.submit input {
-	margin-right: 15px;
+	padding: 8px 30px;
+	border-radius: 5px;
 }
 #buddypress .standard-form div.radio ul {
 	margin: 10px 0 15px 38px;

@@ -309,7 +309,7 @@
 			do_action( 'bp_before_registration_submit_buttons' ); ?>
 
 
-			<p class="description"> <span id="red">*</span><?php _e('Required fields','foodiepro');?></p>	
+			<p class="description"> <span id="red">*</span><?php _e('Required Fields','foodiepro');?></p>	
 
 			<div class="submit">
 				<input type="submit" name="signup_submit" id="signup_submit" value="<?php esc_attr_e( 'Complete Sign Up', 'buddypress' ); ?>" />

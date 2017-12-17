@@ -84,7 +84,7 @@
 					 */
 					do_action( 'bp_signup_username_errors' ); ?>
 					<input type="text" name="signup_username" id="signup_username" value="<?php bp_signup_username_value(); ?>" <?php bp_form_field_attributes( 'username' ); ?>/>
-					<p class="description"><?php _e('This is the identifier you will use for logging in, and under which you\'ll appear to others in the site','foodiepro'); ?></p>
+					<p class="description"><?php _e('This is the identifier you will use for logging in, and under which you\'ll appear to others in the site.','foodiepro'); ?></p>
 				</div>
 
 

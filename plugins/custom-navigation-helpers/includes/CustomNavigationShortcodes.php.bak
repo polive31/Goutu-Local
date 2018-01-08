@@ -273,11 +273,17 @@ class CustomNavigationShortcodes extends CustomArchive {
 		$id=$a['id'];
 		$html=$a['html'];
 		$text=$a['text'];
+		$slug=$a['slug'];
 	
-		if ($id) $url=get_permalink($id);
-		elseif ($slug) $url=get_permalink(get_page_by_path($slug));			
-		else $url=$_SERVER['REQUEST_URI'];			
-			
+		if ($id) 
+			$url=get_permalink($id);
+		elseif ($slug) {
+			$url=get_permalink(get_page_by_path($slug));			
+		}
+		else {
+			$url=$_SERVER['REQUEST_URI'];			
+		}
+
     if ($html) return '<a href=' . $url . '>' . $text . '</a>';
     else return $url;
 	}
@@ -296,7 +302,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		$content=esc_html($content);
 	    
   	$url=wp_registration_url();
-    if ($html) return '<a href=' . $url . '>' . $text . '</a>';
+    if ($html) return '<a href=' . $url . '>' . $text . $content . '</a>';
     else return $url;
 	}
 

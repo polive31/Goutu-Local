@@ -151,7 +151,7 @@ Hello, this is the BuddyPress Legacy stylesheet.
   margin:0;
   padding: 30px 0 40px 0;
   color: #FFF;
-  font-size:80px;
+  font-size:70px;
   font-weight:normal;
  	line-height:initial;
   background: linear-gradient(#4c4c4cb3, #ffffff00);
@@ -184,7 +184,7 @@ Hello, this is the BuddyPress Legacy stylesheet.
 	top:0;
   left:0;
   text-align: center;
-	background:url("../../images/photo-camera.png") rgba(0,0,0,0.3) 50% 60% no-repeat;*/
+	background:url("../../images/buddypress/photo-camera.png") rgba(0,0,0,0.3) 50% 60% no-repeat;*/
   background: linear-gradient(#ffffff00, #8282827d);
   opacity:0;
   color: #FFF;
@@ -1081,14 +1081,16 @@ a.bp-title-button {
   clear: both;
 }
 
-
-#buddypress div#item-header-cover-image .user-nicename a, 
 #buddypress div#item-header-cover-image .user-nicename,
 #buddypress div#item-header-cover-image #intro {
 	font-size: 40px;
   color: #fff;
   text-rendering: optimizelegibility;
   text-shadow: 0 0 3px rgba( 0, 0, 0, 0.8 );
+}
+
+#buddypress div#item-header-cover-image .user-nicename {
+	text-transform: capitalize;
 }
 
 #buddypress div#item-header-cover-image #intro {

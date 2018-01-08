@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2017-12-18 00:43+0100\n"
-"PO-Revision-Date: 2017-12-18 00:43+0100\n"
+"POT-Creation-Date: 2017-12-18 16:27+0100\n"
+"PO-Revision-Date: 2017-12-18 16:28+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -14,17 +14,17 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: plugins/bp-custom.php:140
+#: plugins/bp-custom.php:143
 msgid "Published a new recipe"
 msgstr "Publié une nouvelle recette"
 
-#: plugins/bp-custom.php:141
+#: plugins/bp-custom.php:144
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:20
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:4
 msgid "Recipes"
 msgstr "Recettes"
 
-#: plugins/bp-custom.php:142
+#: plugins/bp-custom.php:145
 #: plugins/custom-recipe-templates/helpers/custom_nutrition_label.php:64
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_meta_box.php:60
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:21
@@ -42,23 +42,23 @@ msgstr "Recettes"
 msgid "Recipe"
 msgstr ""
 
-#: plugins/bp-custom.php:243
+#: plugins/bp-custom.php:246
 msgid "Display Profile"
 msgstr "Afficher mon profil"
 
-#: plugins/bp-custom.php:244
+#: plugins/bp-custom.php:247
 msgid "Edit Profile"
 msgstr "Modifier mon profil"
 
-#: plugins/bp-custom.php:245
+#: plugins/bp-custom.php:248
 msgid "Change Avatar"
 msgstr "Photo de profil"
 
-#: plugins/bp-custom.php:246
+#: plugins/bp-custom.php:249
 msgid "Change Cover"
 msgstr "Image d'en-tête"
 
-#: plugins/bp-custom.php:415
+#: plugins/bp-custom.php:418
 #, php-format
 msgid ""
 "%1$s wrote a new post, <a class=\"activity-post-title\" href=\"%2$s\">%3$s</"
@@ -67,7 +67,7 @@ msgstr ""
 "%1$s a publié un nouvel article, <a class=\"activity-post-title\" href=\"%2$s"
 "\">%3$s</a>"
 
-#: plugins/bp-custom.php:418
+#: plugins/bp-custom.php:421
 #, php-format
 msgid ""
 "%1$s wrote a new recipe, <a class=\"activity-post-title\" href=\"%2$s\">"
@@ -537,6 +537,36 @@ msgstr "Notifications"
 #: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:28
 msgid "My Profile"
 msgstr "Mon Profil"
+
+#: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:132
+msgid "I like that"
+msgstr "J'aime"
+
+#: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:137
+msgid "I don't like that anymore"
+msgstr "Je n'aime plus"
+
+#: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:142
+#: themes/foodiepro-2.1.8/buddypress/activity/entry.php:122
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/booking-fields.php:26
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:28
+msgid "Comment"
+msgstr "Ajouter un commentaire"
+
+#: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:152
+#: plugins/custom-social-helpers/shortcodes/BP-custom-shortcodes.php:184
+#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-fields/templates/page_list.php:33
+#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/templates/page_list.php:45
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:142
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/single.php:44
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:101
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:95
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:132
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:113
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:147
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:254
+msgid "Delete"
+msgstr "Supprimer"
 
 #: plugins/custom-social-helpers/widgets/BP-activity-feed-widget.php:30
 msgid "(Buddypress) Activity Feed"
@@ -4590,19 +4620,6 @@ msgstr ""
 msgid "Do you really want to delete this custom field?"
 msgstr ""
 
-#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-fields/templates/page_list.php:33
-#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/templates/page_list.php:45
-#: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:142
-#: themes/foodiepro-2.1.8/buddypress/members/single/messages/single.php:44
-#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:101
-#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:95
-#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:132
-#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:113
-#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:147
-#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:254
-msgid "Delete"
-msgstr ""
-
 #: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/custom-taxonomies.php:31
 #: plugins/wp-ultimate-recipe-premium/premium/helpers/ingredient_metadata.php:14
 #: plugins/wp-ultimate-recipe-premium/premium/helpers/ingredient_metadata.php:42
@@ -6379,12 +6396,12 @@ msgid ""
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:184
-#: themes/foodiepro-2.1.8/functions.php:658
+#: themes/foodiepro-2.1.8/functions.php:667
 msgid "Read More"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/backups/functions_foodie.php:197
-#: themes/foodiepro-2.1.8/functions.php:691
+#: themes/foodiepro-2.1.8/functions.php:700
 msgid "Comments"
 msgstr ""
 
@@ -6422,12 +6439,6 @@ msgstr ""
 #: themes/foodiepro-2.1.8/buddypress/activity/entry.php:67
 msgid "Show conversation"
 msgstr "Voir la conversation"
-
-#: themes/foodiepro-2.1.8/buddypress/activity/entry.php:122
-#: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/booking-fields.php:26
-#: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:28
-msgid "Comment"
-msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/activity/index.php:55
 msgid "The public activity for everyone on this site."
@@ -7603,45 +7614,49 @@ msgstr ""
 msgid "<strong>ERROR</strong>: User pending <a href=\"%s\">approval</a>."
 msgstr "<strong>ERREUR</strong> : Utilisateur en attente d'approbation."
 
-#: themes/foodiepro-2.1.8/functions.php:634
+#: themes/foodiepro-2.1.8/functions.php:501
+msgid "author"
+msgstr "auteur"
+
+#: themes/foodiepro-2.1.8/functions.php:643
 #, php-format
 msgid "Published on %s by <span id=\"username\">%s</span>"
 msgstr "Publié le %s  par <span id=\"username\">%s</span>"
 
-#: themes/foodiepro-2.1.8/functions.php:700
+#: themes/foodiepro-2.1.8/functions.php:709
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:202
 msgid "Previous comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:706
+#: themes/foodiepro-2.1.8/functions.php:715
 msgid "Next comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:724
+#: themes/foodiepro-2.1.8/functions.php:733
 msgid "Your answer here"
 msgstr "Entrez votre réponse ci-dessous"
 
-#: themes/foodiepro-2.1.8/functions.php:738
+#: themes/foodiepro-2.1.8/functions.php:747
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
-#: themes/foodiepro-2.1.8/functions.php:738
+#: themes/foodiepro-2.1.8/functions.php:747
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:738
+#: themes/foodiepro-2.1.8/functions.php:747
 msgid "Legal notice"
 msgstr "Mentions légales"
 
-#: themes/foodiepro-2.1.8/functions.php:738
+#: themes/foodiepro-2.1.8/functions.php:747
 msgid "Goûtu charter"
 msgstr "Charte Goûtu"
 
-#: themes/foodiepro-2.1.8/functions.php:738
+#: themes/foodiepro-2.1.8/functions.php:747
 msgid "Personal data"
 msgstr "Données personnelles"
 
-#: themes/foodiepro-2.1.8/functions.php:738
+#: themes/foodiepro-2.1.8/functions.php:747
 msgid "Terms of use"
 msgstr "Conditions d'utilisation"
 
@@ -9068,7 +9083,7 @@ msgstr ""
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_simple.php:30
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:32
 msgid "Enter title here"
-msgstr ""
+msgstr "Entrez le titre de votre article"
 
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_simple.php:59
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:70

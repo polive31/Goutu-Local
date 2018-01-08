@@ -1617,7 +1617,9 @@ h2.entry-title, .wpupg-post-title,
   font-size:30px; 
 	letter-spacing:1px;
 	text-align:center;
-  padding:10px 0 20px 0;
+	/*text-transform:uppercase;*/
+	margin:20px 0 0px 0;
+  padding:10px;
 }
 
 .sidebar .widgettitle {
@@ -1634,9 +1636,11 @@ h2.entry-title, .wpupg-post-title,
 }
 
 .home .elegant .widgettitle {
-	padding:0 0 20px 0;
+	padding:0;
+  margin:0;
 }
 
+/* Illumination */
 .tilde .widgettitle:before,
 .tilde .widgettitle:after {
 	display:inline-block;
@@ -1647,11 +1651,19 @@ h2.entry-title, .wpupg-post-title,
 	height:24px;
 }
 
+.stars .widgettitle:before,
+.stars .widgettitle:after {
+	background:url(images/deco-icons/stars.png) no-repeat;
+	height:44px;
+}
+
+/* Important : place at the end of tilde formatting */
 .tilde .widgettitle:after {
-	background-position:-66px 0;
+	background-position-x:-66px;
 }
 
 
+/* Sidebar  */
 .sidebar .widgettitle a {
 	border:none;
 }
@@ -2731,7 +2743,6 @@ div.gform_wrapper .gform_footer input[type="submit"] {
 
 .entry-content p {
 	text-align: justify;	
-	clear:both;
 }
 
 
@@ -3305,7 +3316,6 @@ p.more-from-category {
 
 .page-bottom .related-posts img.rpwe-thumb {
   margin-bottom: 0;
-  height: 250px;
 }
 
 .content h3.rpwe-title {
@@ -3321,7 +3331,7 @@ p.more-from-category {
 	padding-top:5px;
 }
 
-/*.profile .content h3.rpwe-title {
+.profile .content h3.rpwe-title {
   position: absolute;
 	background: linear-gradient(#04040400, #ffffffc9, #ffffffeb);
   padding: 30px 15px;
@@ -3330,19 +3340,15 @@ p.more-from-category {
   overflow:hidden;
   margin: 0;
   box-sizing:border-box;
+  /*top: -250px;
+  background: #ffffff70;*/
 }
 
 .profile .content h3.rpwe-title a {
 	font-size:20px;
-}/*
-
-/*
-.profile .content h3.rpwe-title {
-  top: -250px;
-  background: #ffffff70;
 }
 
-.profile li.rpwe-li:hover .rpwe-title {
+/*.profile li.rpwe-li:hover .rpwe-title {
 	top:0px;
   transition:top 0.5s linear;
 }*/
@@ -3765,12 +3771,7 @@ font-size:11px;
   margin-top: 40px;
   float: left;	
 	clear:both;
-}
-
-.frontier-post .footer-widgets {
-  max-width: 80%;
-  margin-left: auto;
-  margin-right: auto;	
+	width:100%;
 }
 
 .footer-widgets-1,
@@ -3968,7 +3969,7 @@ body.activity-permalink .activity-list li .activity-header > p {
 .activity-list .activity-header,
 .activity-list .comment-header {
 	color: #767676;
-  font-size: 12px;
+  font-size: 14px;
   font-style: italic;
 }
 }
@@ -4594,7 +4595,7 @@ Site Footer
     margin-top:10px;
    }
 
-	h1.archive-title, h1.entry-title {
+	h1.archive-title {
     text-align: center;
 	}
 	

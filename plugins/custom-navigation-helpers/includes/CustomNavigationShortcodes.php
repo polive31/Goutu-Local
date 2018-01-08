@@ -271,13 +271,19 @@ class CustomNavigationShortcodes extends CustomArchive {
 	    ), $atts);
 	
 		$id=$a['id'];
+		$slug=$a['slug'];
 		$html=$a['html'];
-		$text=$a['text'];
+		$text=esc_html($a['text']);
 	
-		if ($id) $url=get_permalink($id);
-		elseif ($slug) $url=get_permalink(get_page_by_path($slug));			
-		else $url=$_SERVER['REQUEST_URI'];			
-			
+		if ($id) 
+			$url=get_permalink($id);
+		elseif ($slug) {
+			$url=get_permalink(get_page_by_path($slug));			
+		}
+		else {
+			$url=$_SERVER['REQUEST_URI'];			
+		}
+
     if ($html) return '<a href=' . $url . '>' . $text . '</a>';
     else return $url;
 	}

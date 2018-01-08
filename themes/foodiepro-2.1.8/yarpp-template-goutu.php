@@ -12,7 +12,7 @@ $first = (COLUMNS & 1);
 
 if (have_posts()):?>
 
-<h2>
+<h2 class="widgettitle widget-title">
 <?php
 	if ( is_singular( 'recipe' ) ) 
 		echo __('Related Recipes','foodiepro');

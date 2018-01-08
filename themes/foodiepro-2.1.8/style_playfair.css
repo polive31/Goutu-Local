@@ -572,7 +572,7 @@ h6 {
 	font-weight:300;
 	margin:10px 0 16px;
 	padding:0;
-	text-transform:uppercase;
+	/*text-transform:uppercase;*/
 }
 
 /* FONTS 
@@ -592,35 +592,32 @@ body #register-page {
 }
 
 h1 {
-	font-family: "Amatic SC";	
+	font-family: "Playfair Display";	
 	font-size: 60px;
-  font-weight: bold;	
 }
 
 h2 {
-	font-family: "Amatic SC";	
+	font-family: "Playfair Display";	
   font-size: 30px;
-  font-weight: bold;
 }
 
 h3 {
-	font-family: "Amatic SC";	
+	font-family: "Playfair Display";	
 	font-size:30px;
-	font-weight:bold;
 }
 
 h4 {
-	font-family: "Amatic SC";	
+	font-family: "Playfair Display";	
 	font-size:30px;
 }
 
 h5 {
-	font-family: "Amatic SC";	
+	font-family: "Playfair Display";	
 	font-size:14px;
 }
 
 h6 {
-	font-family: "Amatic SC";	
+	font-family: "Playfair Display";	
 	font-size:12px;
 }
 
@@ -670,21 +667,21 @@ span.bp_counter,
 
 /* Headlines */
 h1.entry-title {
-  text-decoration: none;
-	text-transform: capitalize;
-	font-size:44px;
-	font-weight:normal;
-	padding: 10px 0 0 0;	
+	text-decoration: none;
+  text-transform: initial;
+  font-size: 40px;
+  font-weight: normal;
+  padding: 10px 0 0 0;
 }
 
 h1.archive-title,
 .page h1.entry-title {
-	font-size:60px;
-	font-weight:normal;
-	font-variant:small-caps;
-  line-height: 70px;
-  padding-bottom: 30px;
-  letter-spacing:2px;
+	font-size: 42px;
+	font-weight: bold;
+	font-variant: small-caps;
+	line-height: 70px;
+	padding-bottom: 30px;
+	letter-spacing: 2px;
 }
 
 h1.archive-title {
@@ -692,6 +689,10 @@ h1.archive-title {
   text-align: center;   
   padding-top: 10px;
   padding-bottom: 0px;
+}
+
+h1.blog-title {
+	font-family:"Oswald", sans-serif;
 }
 
 .archive h2 { /* Subtitle */
@@ -706,20 +707,19 @@ h2.user-nicename {
 }
 
 /*.recipe h1.entry-title {
-	font-family:"Amatic SC", cursive !important;
+	font-family:"Playfair Display", cursive !important;
 	font-size:40px;
 	color:#3C3C3C;
 }*/
 
 /* Recipes & ingredients */
 
-.single h3 {
-  font-size: 30px;
-	font-weight: bold;  
+.single .content h3 {
+  font-size: 20px;
 }
 
 .entry-header-overlay .overlay {
-  font-family: 'Amatic SC';
+  font-family: 'Playfair Display';
   text-transform: capitalize;
   font-size: 22px;
   line-height: 30px;
@@ -758,8 +758,7 @@ h3.rpwe-title a {
 /* Widgets Headline */
 
 .widgettitle {
-	font-family:'Amatic SC', cursive;
-	font-weight:bold;
+	font-family:'Playfair Display', cursive;
 }
 
 .fancy .widgettitle {
@@ -772,19 +771,26 @@ h3.rpwe-title a {
 
 .elegant .widgettitle {
   /*font-family:"Delius Swash Caps", cursive;*/
-  font-family:"Amatic SC", cursive;
-	font-size:50px;
+  font-family:"Playfair Display", cursive;
+	font-size:35px;
   color:#222;
   font-weight:bold;
   text-transform:none;  
 }
 
 .title-big-font .widgettitle {
-	font-size:50px;
+  font-size: 37px;
+  font-weight: bold;
+  text-transform: uppercase;	
 }
 
 .before-content .widgettitle {
    display: none;
+}
+
+.content .rpwe_widget h3.widgettitle {
+    text-transform: initial;
+    font-size: 30px;
 }
 
 .recipes-top .widgettitle, 
@@ -1579,7 +1585,7 @@ img.alignright,
 .entry-title {
 	line-height:1.2;
 	margin-bottom:5px;
-	margin-top:20px;
+	/*margin-top:20px;*/
 }
 
 .sidebar .entry-title {
@@ -1614,14 +1620,16 @@ h2.entry-title, .wpupg-post-title,
 /* Widget Titles */
 
 .widgettitle {
-  font-size:30px; 
+  font-size:26px; 
 	letter-spacing:1px;
 	text-align:center;
-  padding:10px 0 20px 0;
+	font-variant:small-caps;
+	margin:20px 0 0px 0;
+  padding:10px;
 }
 
 .sidebar .widgettitle {
-  margin: 20px 0 0 0;
+  margin: 20px 0 10px 0;
 }
 
 .title-no-display .widgettitle {
@@ -1634,12 +1642,14 @@ h2.entry-title, .wpupg-post-title,
 }
 
 .home .elegant .widgettitle {
-	padding:0 0 20px 0;
+	padding:0;
+	margin: 0 0 30px 0;
 }
 
+/* Illumination */
 .tilde .widgettitle:before,
 .tilde .widgettitle:after {
-	display:inline-block;
+	display:none;
 	content:" ";
 	margin:0 10px;
 	background:url(images/deco-icons/tilde.png) no-repeat;
@@ -1647,11 +1657,19 @@ h2.entry-title, .wpupg-post-title,
 	height:24px;
 }
 
+.stars .widgettitle:before,
+.stars .widgettitle:after {
+	background:url(images/deco-icons/stars.png) no-repeat;
+	height:44px;
+}
+
+/* Important : place at the end of tilde formatting */
 .tilde .widgettitle:after {
-	background-position:-66px 0;
+	background-position-x:-66px;
 }
 
 
+/* Sidebar  */
 .sidebar .widgettitle a {
 	border:none;
 }
@@ -1865,12 +1883,14 @@ form[role="search"] {
 }
 
 .widget.bubbles ul li a {
-    margin-top: auto;
-    margin-bottom: auto;
-    width: 100%;
-    margin: 0px;
-    font-variant: small-caps;
-    line-height:20px;
+	margin-top: auto;
+	margin-bottom: auto;
+	width: 100%;
+	margin: 0px;
+	font-variant: small-caps;
+	line-height:20px;
+	letter-spacing: 1px;
+	font-weight: bold;    
 }
 
 .widget.bubbles ul li.current-menu-item a,
@@ -2520,7 +2540,7 @@ div.gform_wrapper .gform_footer input[type="submit"] {
 }
 
 .pum-title {		
-	font-family: "Amatic SC", sans-serif!important;
+	font-family: "Playfair Display", sans-serif!important;
   margin: 20px 0px 50px 110px;
   text-transform: uppercase!important;
   font-size: 40px!important;
@@ -2581,7 +2601,7 @@ div.gform_wrapper .gform_footer input[type="submit"] {
 --------------------------------------------- */
 
 .home-top {
-	margin: 20px 0 0 0;
+	/*margin: 20px 0 0 0;*/
 	max-width:680px;
 }
 
@@ -2627,10 +2647,9 @@ div.gform_wrapper .gform_footer input[type="submit"] {
 }*/
 
 .single h1.entry-title {
-    /*display: inline-block;
-    vertical-align: middle;*/
-  padding-top: 0;
+	padding-top: 0;
   margin-top: 0;
+	font-variant: initial;  
 }
 
 .single .entry-header {
@@ -2731,7 +2750,6 @@ div.gform_wrapper .gform_footer input[type="submit"] {
 
 .entry-content p {
 	text-align: justify;	
-	clear:both;
 }
 
 
@@ -3305,7 +3323,6 @@ p.more-from-category {
 
 .page-bottom .related-posts img.rpwe-thumb {
   margin-bottom: 0;
-  height: 250px;
 }
 
 .content h3.rpwe-title {
@@ -3321,7 +3338,7 @@ p.more-from-category {
 	padding-top:5px;
 }
 
-/*.profile .content h3.rpwe-title {
+.profile .content h3.rpwe-title {
   position: absolute;
 	background: linear-gradient(#04040400, #ffffffc9, #ffffffeb);
   padding: 30px 15px;
@@ -3330,19 +3347,15 @@ p.more-from-category {
   overflow:hidden;
   margin: 0;
   box-sizing:border-box;
+  /*top: -250px;
+  background: #ffffff70;*/
 }
 
 .profile .content h3.rpwe-title a {
 	font-size:20px;
-}/*
-
-/*
-.profile .content h3.rpwe-title {
-  top: -250px;
-  background: #ffffff70;
 }
 
-.profile li.rpwe-li:hover .rpwe-title {
+/*.profile li.rpwe-li:hover .rpwe-title {
 	top:0px;
   transition:top 0.5s linear;
 }*/
@@ -3765,12 +3778,7 @@ font-size:11px;
   margin-top: 40px;
   float: left;	
 	clear:both;
-}
-
-.frontier-post .footer-widgets {
-  max-width: 80%;
-  margin-left: auto;
-  margin-right: auto;	
+	width:100%;
 }
 
 .footer-widgets-1,
@@ -3968,7 +3976,7 @@ body.activity-permalink .activity-list li .activity-header > p {
 .activity-list .activity-header,
 .activity-list .comment-header {
 	color: #767676;
-  font-size: 12px;
+  font-size: 14px;
   font-style: italic;
 }
 }
@@ -4594,7 +4602,7 @@ Site Footer
     margin-top:10px;
    }
 
-	h1.archive-title, h1.entry-title {
+	h1.archive-title {
     text-align: center;
 	}
 	

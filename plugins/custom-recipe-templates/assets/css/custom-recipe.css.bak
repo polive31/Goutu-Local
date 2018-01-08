@@ -349,3 +349,10 @@ li.wpurp-recipe-instruction span {
 	margin-bottom:20px;
 	float:left;
 }
+
+.single .entry-header {
+	padding-bottom: 20px;
+}
+
+
+}

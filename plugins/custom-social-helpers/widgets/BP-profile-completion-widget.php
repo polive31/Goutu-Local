@@ -261,7 +261,7 @@ class custom_progress_bar_widget extends WP_Widget {
 
 
 	public function load_custom_stylesheet() {
-		wp_enqueue_style( 'circular-progress-bar',  plugins_url( '../assets/circular-progress-bar.css', __FILE__ ), array(), '1.0.0' );	
+		wp_enqueue_style( 'circular-progress-bar',  plugins_url( '../assets/circular-progress-bar.min.css', __FILE__ ), array(), '1.0.1' );	
 	}		
 		
 	

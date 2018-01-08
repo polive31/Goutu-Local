@@ -2,13 +2,13 @@
 --------------------------------------------- */
 
 body {
-	background:url("../../images/background-christmas/background-l-small.jpg"),url("../../images/background-christmas/background-r-small.jpg");
+	background:url("../../images/theme/background-christmas/background-l.jpg"),url("../../images/theme/background-christmas/background-r-small.jpg");
 	background-position:top left, top right;
 	background-repeat:no-repeat;
 }
 
 body.home {
-	background:url("../../images/background-christmas/background-l.jpg"),url("../../images/background-christmas/background-r.jpg");
+	background:url("../../images/theme/background-christmas/background-l.jpg"),url("../../images/theme/background-christmas/background-r.jpg");
 	background-position: 10px 10px, right 10px top 10px;
 	background-repeat:no-repeat;
 }
@@ -21,11 +21,11 @@ body.home {
 }
 
 .site-title a {
-	background:url("../../images/logo-christmas/logo_320_100.png") no-repeat center;
+	background:url("../../images/theme/logo-christmas/logo_320_100.png") no-repeat center;
 }
 
 .home-page .site-title a {
-	background:url("../../images/logo-christmas/logo_530_230.png") no-repeat center;
+	background:url("../../images/theme/logo-christmas/logo_530_230.png") no-repeat center;
 }
 
 h1.entry-title,
@@ -260,11 +260,11 @@ li.comment {
 	}
 
 	.site-title a { 
-	 	background: url("../../images/logo-christmas/logo_320_100.png") center left no-repeat; 	
+	 	background: url("../../images/theme/logo-christmas/logo_320_100.png") center left no-repeat; 	
 	}
 			
 	.home .site-title a {
-    background: url("../../images/logo-christmas/logo_360_150.png") no-repeat;
+    background: url("../../images/theme/logo-christmas/logo_360_150.png") no-repeat;
 		background-position: center;
 	}	
 
@@ -282,12 +282,12 @@ li.comment {
 	}	
 
 	.site-title a {
-		background:url("../../images/logo-christmas/logo_160_40.png") no-repeat left;
+		background:url("../../images/theme/logo-christmas/logo_160_40.png") no-repeat left;
 		background-size:contain;
 	} 
 
 	.home .site-title a {
-		background:url("../../images/logo-christmas/logo_360_150.png") no-repeat center;
+		background:url("../../images/theme/logo-christmas/logo_360_150.png") no-repeat center;
 	} 
 	
 	.entry-header,
@@ -311,12 +311,12 @@ li.comment {
   and (-webkit-min-device-pixel-ratio:2) {
  
 	.site-title a {
-		background:url("../../images/logo-christmas/logo_320_100.png") no-repeat left;
+		background:url("../../images/theme/logo-christmas/logo_320_100.png") no-repeat left;
 		background-size:contain;
 	} 	
 	
 	.home .site-title a {
-		background:url("../../images/logo-christmas/logo_720_300.png") no-repeat center;
+		background:url("../../images/theme/logo-christmas/logo_720_300.png") no-repeat center;
 	} 		
 
 }

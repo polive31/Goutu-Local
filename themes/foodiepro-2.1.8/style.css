@@ -1617,9 +1617,7 @@ h2.entry-title, .wpupg-post-title,
   font-size:30px; 
 	letter-spacing:1px;
 	text-align:center;
-	/*text-transform:uppercase;*/
-	margin:20px 0 0px 0;
-  padding:10px;
+  padding:10px 0 20px 0;
 }
 
 .sidebar .widgettitle {
@@ -1636,8 +1634,7 @@ h2.entry-title, .wpupg-post-title,
 }
 
 .home .elegant .widgettitle {
-	padding:0;
-  margin:0;
+	padding:0 0 20px 0;
 }
 
 .tilde .widgettitle:before,
@@ -1645,7 +1642,7 @@ h2.entry-title, .wpupg-post-title,
 	display:inline-block;
 	content:" ";
 	margin:0 10px;
-	background:url(images/tilde.png) no-repeat;
+	background:url(images/deco-icons/tilde.png) no-repeat;
 	width:66px;
 	height:24px;
 }
@@ -2700,7 +2697,7 @@ div.gform_wrapper .gform_footer input[type="submit"] {
 }
 
 .overlay#fest::before {
-	content:url("images/christmas-stars-24.png");
+	content:url("images/deco-icons/christmas-stars-24.png");
 	padding-right:5px;
   left: 10px;
   top: 10px;	
@@ -3324,7 +3321,7 @@ p.more-from-category {
 	padding-top:5px;
 }
 
-.profile .content h3.rpwe-title {
+/*.profile .content h3.rpwe-title {
   position: absolute;
 	background: linear-gradient(#04040400, #ffffffc9, #ffffffeb);
   padding: 30px 15px;
@@ -3333,15 +3330,20 @@ p.more-from-category {
   overflow:hidden;
   margin: 0;
   box-sizing:border-box;
-  /*top: -250px;
-  background: #ffffff70;*/
 }
 
 .profile .content h3.rpwe-title a {
 	font-size:20px;
+}/*
+
+/* Title drop down on hover */
+/* 
+.profile .content h3.rpwe-title {
+  top: -250px;
+  background: #ffffff70;
 }
 
-/*.profile li.rpwe-li:hover .rpwe-title {
+.profile li.rpwe-li:hover .rpwe-title {
 	top:0px;
   transition:top 0.5s linear;
 }*/

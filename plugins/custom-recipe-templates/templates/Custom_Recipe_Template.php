@@ -94,7 +94,7 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 				<div class="image-container">
 					<div class="clearfix">
 					  <a href="<?php echo $recipe->featured_image_url('full');?>">
-							<img src="<?php echo $recipe->featured_image_url('horizontal-thumbnail');?>">
+							<img src="<?php echo $recipe->featured_image_url('vertical-thumbnail');?>">
 						</a>
 					</div>
 					<div class="clearfix">

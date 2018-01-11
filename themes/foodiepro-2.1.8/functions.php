@@ -21,7 +21,7 @@ define( 'CHILD_THEME_DEVELOPER', 'Shay Bocks' );
 define( 'CHILD_THEME_URL', get_stylesheet_directory_uri() );
 define( 'CHILD_THEME_PATH', get_stylesheet_directory() );
 
-define( 'CHILD_COLOR_THEME', 'christmas' ); // christmas, white
+define( 'CHILD_COLOR_THEME', 'winter' ); // christmas, autumn, winter, summer
 define( 'CHILD_COLOR_THEME_VERSION', '1.0.1' ); // triggers browser cache flush
 
 define( 'PLUGINS_URL', plugins_url() );
@@ -241,7 +241,7 @@ remove_action('wp_head', 'genesis_load_favicon');
 add_action ('genesis_meta','custom_favicon_links');
  
 function custom_favicon_links() {
-	$path = CHILD_THEME_URL . '/images/theme/favicon';
+	$path = CHILD_THEME_URL . '/images/favicon';
 	echo sprintf('<link rel="apple-touch-icon" sizes="57x57" href="%s/apple-icon-57x57.png">',$path);
 	echo sprintf('<link rel="apple-touch-icon" sizes="60x60" href="%s/apple-icon-60x60.png">',$path);
 	echo sprintf('<link rel="apple-touch-icon" sizes="72x72" href="%s/apple-icon-72x72.png">',$path);

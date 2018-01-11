@@ -1,70 +1,72 @@
-/* Color Theme : Autumn 
---------------------------------------------------*/
+/* Background  :  White (default) 
+--------------------------------------------- */
 
 body {
-  background:#e0cab7;
+	background:url("../../images/theme/background-autumn/background-l-small.jpg"),url("../../images/theme/background-autumn/background-r-small.jpg");
+	background-position:top left, top right;
+	background-repeat:no-repeat;
 }
 
+body.home {
+	background:url("../../images/theme/background-autumn/background-l.jpg"),url("../../images/theme/background-autumn/background-r.jpg");
+	background-position: 10px 10px, right 10px top 10px;
+	background-repeat:no-repeat;
+}
+
+
+/* Color theme :  White (default) 
+--------------------------------------------- */
 .site-container {
-	/*background-color:#f5d7a9;*/
-	background-color:#ead0b1;
+	background-color:rgba(255, 255, 255, 0.8);	
 }
 
 .site-title a {
-	background:url("../../images/logo_goutu_autumn_h75.png") no-repeat center;
+	background:url("../../images/theme/logo-white/logo_320_100.png") no-repeat center;
 }
 
 .home-page .site-title a {
-	background:url("../../images/logo_goutu_autumn_450_190.png") no-repeat center;
+	background:url("../../images/theme/logo-white/logo_530_230.png") no-repeat center;
 }
 
 h1.entry-title,
 .entry-title a,
 .sidebar .widgettitle a,
 .widgettitle  {
-	color:#000;
+	/*color:#5d5d5d;*/
+	color:#444;
 }
 
-
 .home-bottom .widgettitle {
-	border-bottom:1px solid #d6bc95;
+	border-bottom:1px solid #ccc;
 }
 
 .img-menu a .menu-title span,
 a.more-link,
 .more-from-category a {
-	/*background-color:#e8a472;
-	background-color:#c5b197;
-	background-color:#d2b39c;*/
-	background-color:#e0cab7;
+	background:#f5f5f5;
 }
+
 
 .img-menu:hover a .menu-title span,
 a.more-link:hover,
 .more-from-category a:hover {
-	/*background:#da5c00;
-  background:#923e00;
-  background:#e08800;*/
   background:#63584b;
 	color:#fff;
 }
 
-.top5 .rpwe-block {
-	background-color:#ffedd0;
-}
-
-.footer-widgets,
 .recipes-top, 
 .blogs-top,
-.archives-top,
-.sidebar-primary .widget.themes,
-html body .wpurp-container .add-picture-link {
-	/*background-color:#eacea2;*/	
-	background-color:#ddc3a3!important; /* important needed because of WPURP override	*/
+.archives-top {
+  border-bottom: 1px dotted #555;
 }
 
-.widget_nav_menu.themes ul li {
-	background-color:#f8f8f8;	
+.archives-bottom {
+  border-top: 1px dashed #555;
+}
+
+.footer-widgets {
+  background-color: #f5f5f5!important;
+  border: 1px dashed #555;
 }
 
 /* Text area specific formatting */
@@ -74,91 +76,154 @@ input[type="password"],
 optgroup,
 textarea,
 .search-form input {
-	background-color:#fff6e7;/* background-color important, pas background car conflit avec autre setting plus loin*/
+	background-color:#fefefe;/* background-color important, pas background car conflit avec autre setting plus loin*/
 }
 
 select {
-    background-color:#ffedd0;
+    background-color:#fefefe;
+}
+
+
+/* STAR RATING 
+-------------------------------------------------------*/
+/* Icons colors */
+
+i.fa.fa-star,
+i.fa.fa-star-half-o {
+	color:#f5a241;
+}
+i.fa.fa-star-o {
+	color:#d3d3d3;
+}
+.full i.fa.fa-star-o {
+	color:#f18b14;
 }
 
 /* POPUP MAKER
 -------------------------------------------------------*/
 
-
+/* Evaluation Form */
+.pum-container#popmake-10320 {
+	background-color:#FFF;
+}
 
 /* WIDGETS 
 -------------------------------------------------------*/
 
 input, select, textarea,
 .widget.back ul li {
-	/*border:1px solid #aaa;*/
-	border:1px solid #cebca6;
+	border:1px solid #ccc;
 }
 
+.widget.back ul li:hover {
+	background-color:#fafafa;	
+}
+
+.widget_wpurp_recipe_search_widget select {
+	border:1px solid #ddd;
+}
+
+/* Widget top5
+-------------------------------------------- */
+
+.top5 .rpwe-block {
+	/*background-color:#f4f4f4;*/
+	border : 1px dashed #CCC;
+}
+
+/* Widget themes
+-------------------------------------------- */
+
+.sidebar-primary .widget.themes {
+	/*border: 1px dashed #ccc;*/
+}
+
+.widget_nav_menu.themes ul li,
 .widget.themes ul li,
 .single .widget.themes ul li {
-	background-color:#ffedd0;
-}
-
-.widget.back ul li {
-	background-color:#ffedd0;
+	/*background-color:#e0dfdf;	*/
 }
 
 .single .widget.themes ul li:hover,
 .widget.themes ul li:hover,
 .widget.back ul li:hover {
-	background-color:#fff6e7;
+  border-color:#AAA;
+}
+
+.widget.themes ul li a {
+	color:#6b6b6b;
 }
 
 .widget.themes ul li.current-menu-item,
 .archive-pagination li.active {
-	background-color:#fff6e7;
+  /*background-color: #f7f7f7;
+  border-color:#000;*/
+}
+
+.widget.themes ul li.current-menu-item > a,
+.widget.themes ul li:hover > a {
+	color:#af4a2b;
 }
 
 .recipes-bottom .rpwe_widget .widget-wrap,
 .blogs-bottom .rpwe_widget .widget-wrap {
-	background-color:#ddc3a3;
+	/*background-color:#f5f5f5;*/
+	border-bottom: 1px dotted #ccc;
+}
+
+/* Widget bubbles
+-------------------------------------------- */
+
+.widget.bubbles ul li {
+  border: 1px dashed #ddd;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 5px #ddd;	
+	background: #FFF;  
+}
+
+.widget.bubbles ul li:hover,
+.widget.bubbles ul li.current-menu-item {
+	border-color: #aaa;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 5px #aaa;	
+}
+
+/*.widget.bubbles ul li:hover {
+	border-color: #ea3f3f;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 5px #ea3f3f;	
+}*/
+
+.widget.bubbles ul li:hover a,
+.widget.bubbles ul li.current-menu-item a {
+    color: #000;
 }
 
 
 /* RECIPES & POSTS
 --------------------------------------------*/
 #joined-pics .add-picture-button button {
-	background:#ddc3a3;
+	background:#ececec;
 	color:#787878;	
 }
 
 .ingredients-container {
-	background-color :#f1b46c;
+	background-color :#f5f5f5;
 }
-	
+
 span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
-	color:#555555;
+    color: #9a9a9a;
 }
 
 li.comment {
-  background-color:#ddc3a3;
+  background-color:#f5f5f5;
 }
+
 
 /* ARCHIVES 
 --------------------------------------------*/
 
 .archive-pagination li {
-	border:1px solid #aaa;
+	border:1px solid #ccc;
 }
 
-/*.archive .entry-header a.entry-image-link img,
-.search .entry-header a.entry-image-link img,*/
-/*.content a.rpwe-img img,*/
-a.entry-image-link img {
-	/*border:1px solid #fff;*/
-	border:1px solid #ead0b1;
-}
-
-/*.content a.rpwe-img:hover img,*/
-a.entry-image-link:hover img {
-	border-color:#fff;
-}
 
 /* MISC 
 --------------------------------------------*/
@@ -169,29 +234,105 @@ a.entry-image-link:hover img {
 
 
 /* MEDIA QUERIES 
---------------------------------------------*/
+--------------------------------------------*
+
+/* Background */
+@media only screen 
+	and (max-width:1080px) {
+
+
+}
+
 
 /* Smartphone */
-@media only screen 
-	and (max-width:870px) {
-  	
 
-	.site-title a,
-	.home .site-title a {
-		background:url("../../images/logo_goutu_autumn_360_150.png") no-repeat center;
+@media only screen 
+	and (max-width:980px) {
+		
+	body,
+	body.home {
+		/*background:url("../../images/background/background-l-small.jpg") no-repeat top left;*/
+		background:none;
+	}		
+	
+	.site-container {
+    background:none;
 	}
 
+	.site-title a { 
+	 	background: url("../../images/theme/logo-white/logo_320_100.png") center left no-repeat; 	
+	}
+			
+	.home .site-title a {
+    background: url("../../images/theme/logo-white/logo_360_150.png") no-repeat;
+		background-position: center;
+	}	
+
+}
+
+
+/* Medium screens */
+
+@media only screen 
+	and (max-width:720px) {
+
+	body,
+	body.home {
+		background:none;
+	}	
+
+	.site-title a {
+		background:url("../../images/theme/logo-white/logo_160_40.png") no-repeat left;
+		background-size:contain;
+	} 
+
+	.home .site-title a {
+		background:url("../../images/theme/logo-white/logo_360_150.png") no-repeat center;
+	} 
+	
+	.entry-header,
+	.site-header,
+	#mega-menu-wrap-secondary,
+	.widget.bubbles {
+		background-color:rgba(255, 255, 255, 0.7);	
+	}	
+	
+	.site-container {
+		background:none;	
+	}		
+	
+	
+	
 }
 
 /* Retina smartphone */
 @media only screen 
-	and (max-width:870px)
+	and (max-width:720px)
   and (-webkit-min-device-pixel-ratio:2) {
  
-	.site-title a,
-	.home .site-title a {
-		background:url("../../images/logo_goutu_autumn_720_300.png") no-repeat center;
+	.site-title a {
+		background:url("../../images/theme/logo-white/logo_320_100.png") no-repeat left;
 		background-size:contain;
-	}
+	} 	
+	
+	.home .site-title a {
+		background:url("../../images/theme/logo-white/logo_720_300.png") no-repeat center;
+	} 		
 
+}
+
+
+/* Small screens */
+@media only screen 
+	and (max-width:420px) {
+	
+	.home .site-title a {
+    background-size: contain;
+	}	
+
+	
+}
+
+
+	
 }

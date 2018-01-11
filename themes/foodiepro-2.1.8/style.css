@@ -1620,6 +1620,10 @@ h2.entry-title, .wpupg-post-title,
   padding:10px 0 20px 0;
 }
 
+.post-bottom .widgettitle {
+  padding:20px 0 10px 0;
+}
+
 .sidebar .widgettitle {
   margin: 20px 0 0 0;
 }
@@ -1650,7 +1654,6 @@ h2.entry-title, .wpupg-post-title,
 .tilde .widgettitle:after {
 	background-position:-66px 0;
 }
-
 
 .sidebar .widgettitle a {
 	border:none;

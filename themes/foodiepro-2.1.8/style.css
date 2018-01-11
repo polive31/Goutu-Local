@@ -3906,9 +3906,14 @@ ul.activity-list li {
 	padding: 15px 0 0;
 	list-style: none;
 }
-.activity-list .activity-avatar {
-	float: left;
+
+.activity-list .activity-avatar img {
+    float: left;
+    width: 40px;
+    vertical-align: middle;
+    padding: 10px 0px;
 }
+
 ul.item-list.activity-list li.has-comments {
 	padding-bottom: 15px;
 }

@@ -354,5 +354,8 @@ li.wpurp-recipe-instruction span {
 	padding-bottom: 20px;
 }
 
+.recipe-top {
+	margin-top:0;
+}
 
 }

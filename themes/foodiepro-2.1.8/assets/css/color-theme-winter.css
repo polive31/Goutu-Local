@@ -194,10 +194,10 @@ input, select, textarea,
   box-shadow: 0 0 0 3px #fff, 0 0 0 5px #ea3f3f;	
 }*/
 
-.widget.bubbles ul li:hover a,
+/*.widget.bubbles ul li:hover a,
 .widget.bubbles ul li.current-menu-item a {
     color: #000;
-}
+}*/
 
 
 /* RECIPES & POSTS

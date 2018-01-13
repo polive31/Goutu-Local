@@ -1861,7 +1861,7 @@ form[role="search"] {
 
 .widget.bubbles ul li {
   padding: 4px;
-  margin: 20px 10px;
+  margin: 13px 10px;
   /*border-radius: 10px;*/
   text-align: center;
 }
@@ -1882,8 +1882,8 @@ form[role="search"] {
 .widget.bubbles ul li.current-menu-item a,
 .widget.bubbles ul li:hover a {
 	font-size : 22px;
+	color:#555555;
 }
-
 
 .sidebar .widget.bubbles ul li:before { /* .sidebar important */
   content: none;

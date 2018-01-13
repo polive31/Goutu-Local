@@ -1882,8 +1882,8 @@ form[role="search"] {
 .widget.bubbles ul li.current-menu-item a,
 .widget.bubbles ul li:hover a {
 	font-size : 22px;
+	color:#555555;
 }
-
 
 .sidebar .widget.bubbles ul li:before { /* .sidebar important */
   content: none;
@@ -3871,7 +3871,6 @@ form#whats-new-form textarea {
 	box-sizing: border-box;
 	padding: 6px;
 	background:none;
-	border: 1px solid #dedede;
 	color: #555;
 	font-family: inherit;
 	font-size: medium;

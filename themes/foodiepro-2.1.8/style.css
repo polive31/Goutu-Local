@@ -816,13 +816,12 @@ h3.rpwe-title a {
 .widget_bp_whats_new {
 	padding:10px 20px;
 	/*border:1px dashed #dedede;*/
-	background-color:#f3f3f3;
+	background-color:#60606012;
 	margin-bottom: 20px;
 }
 
 table#whats-new-container {
 	width:100%;
-	background:#FFF;
 }
 
 td#whats-new-avatar {
@@ -841,6 +840,10 @@ textarea#whats-new {
   resize: vertical;
   border: none;    
 	font-size: 13px;  
+}
+
+textarea#whats-new::-webkit-scrollbar {
+	display:none;
 }
 
 .avatar-bubble {
@@ -1115,7 +1118,7 @@ Structure and Layout
 .site-container {
 	margin:0 auto;
 	max-width:1140px;
-	padding:0 30px;
+	padding:0 30px 30px 30px;
 }
 
 .site-inner {
@@ -3302,7 +3305,7 @@ p.more-from-category {
 }
 
 .page-bottom .rpwe-first img.rpwe-thumb {
-  max-height: 200px;
+  /*max-height: 200px;*/
   width: 100%;
 }
 
@@ -3864,15 +3867,15 @@ form#whats-new-form p.activity-greeting {
 	margin-left: 75px;
 }
 form#whats-new-form textarea {
-	background: #fff;
+	width: 100%;
 	box-sizing: border-box;
+	padding: 6px;
+	background:none;
 	color: #555;
 	font-family: inherit;
 	font-size: medium;
 	height: 2.2em;
 	line-height: 1.4;
-	padding: 6px;
-	width: 100%;
 }
 body.no-js form#whats-new-form textarea {
 	height: 50px;
@@ -3929,9 +3932,16 @@ body.activity-permalink ul.activity-list li.has-comments {
 body.activity-permalink .activity-list > li:first-child {
 	padding-top: 0;
 }
+.activity-list li .activity-avatar,
 .activity-list li .activity-content {
-	position: relative;
+	display:inline-block;
+	vertical-align:top;
 }
+
+.activity-list li .activity-avatar {
+	margin-right:10px;
+}
+
 .activity-list li.mini .activity-content p {
 	margin: 0;
 }
@@ -3959,9 +3969,7 @@ body.activity-permalink li.mini .activity-meta {
 	overflow: hidden;
 	padding: 0;
 }
-.activity-list .activity-content {
-	margin: 0 0 0 70px;
-}
+
 body.activity-permalink .activity-list li .activity-content {
 	border: none;
 	font-size: 100%;
@@ -4670,6 +4678,10 @@ Site Footer
 	li.rpwe-li.rpwe-clearfix.rpwe-first {
 	    width: 100%;
 	}	
+	
+	.page-bottom .related-posts img.rpwe-thumb {
+	  height: auto;
+	}
 	
 	.title-area {
 		height:80px;

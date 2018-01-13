@@ -1494,12 +1494,6 @@ body.register #buddypress div.page ul {
 	margin-left: 50px;
 }
 
-.widget.buddypress ul.item-list img.avatar {
-	height: 40px;
-	margin-right: 10px;
-	width: 40px;
-}
-
 .widget.buddypress div.avatar-block{
 	overflow: hidden;
 }

@@ -17,7 +17,10 @@ body.home {
 /* Color theme :  White (default) 
 --------------------------------------------- */
 .site-container {
-	background-color:rgba(255, 255, 255, 0.8);	
+	/*background-color:rgba(255, 249, 236, 0.7);
+	background-image: url("../../images/container/bedge-grunge.png");*/
+  background-color: rgba(255, 245, 225, 0.7);
+  background-image: url("../../images/container/clean-gray-paper.png");
 }
 
 .site-title a {
@@ -65,7 +68,7 @@ a.more-link:hover,
 }
 
 .footer-widgets {
-  background-color: #f5f5f5!important;
+  background-color: #c8c8c83d!important;
   border: 1px dashed #555;
 }
 
@@ -180,11 +183,11 @@ input, select, textarea,
 	background: #FFF;  
 }
 
-.widget.bubbles ul li:hover,
+/*.widget.bubbles ul li:hover,
 .widget.bubbles ul li.current-menu-item {
 	border-color: #aaa;
   box-shadow: 0 0 0 3px #fff, 0 0 0 5px #aaa;	
-}
+}*/
 
 /*.widget.bubbles ul li:hover {
 	border-color: #ea3f3f;

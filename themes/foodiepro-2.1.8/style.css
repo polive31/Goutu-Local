@@ -836,15 +836,6 @@ div#whats-new-content {
 	position:relative;
 }
 
-textarea#whats-new {
-  resize: vertical;
-  border: none;    
-	font-size: 13px;  
-}
-
-textarea#whats-new::-webkit-scrollbar {
-	display:none;
-}
 
 .avatar-bubble {
 	display:none;
@@ -2603,6 +2594,10 @@ div.gform_wrapper .gform_footer input[type="submit"] {
 	visibility:hidden;
 }
 
+.home-bottom .widget {
+    margin-bottom: 40px;
+}
+
 .home-bottom .widgettitle {
 	margin:0 0 20px;
 	padding:0 0 10px;
@@ -2943,10 +2938,20 @@ Site Header
 ---------------------------------------------------------------------------------------------------- */
 
 .foodie-pro .site-header {
-	background-position:left; 
-	padding:0; 
-	margin:10px 0;
-	background-size:cover!important;
+  position:fixed;
+  top:0;
+	transition: top 0.2s ease-in-out;  
+ 	z-index: 99999;  
+  margin:0;
+  padding:0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.foodie-pro .header-inner {
+  background-position: left;
+  padding: 20px 20px 0 20px;
+  margin: 0 auto;
+  max-width: 1140px;
 }
 
 /* Title Area
@@ -2964,8 +2969,10 @@ Site Header
 .home-page .title-area,
 .home-page .site-title,
 .home-page .site-title a {
-	width:530px; 
-	height:230px;
+	/*width:530px; 
+	height:230px;*/
+	width:360px; 
+	height:150px;
 }
 
 /* Added P.O. Vertical centering and header height */
@@ -3896,10 +3903,25 @@ form#whats-new-form #whats-new-submit {
 body.no-js #whats-new-options {
 	height: auto;
 }
-#whats-new:focus {
-	border-color: rgba(31, 179, 221, 0.9) !important;
-	outline-color: rgba(31, 179, 221, 0.9);
+
+textarea#whats-new {
+  resize: none;
+  border: none;    
+	font-size: 13px;  
 }
+
+textarea#whats-new::-webkit-scrollbar {
+	display:none;
+}
+
+textarea#whats-new:focus {
+	border-color: #CCC!important;
+	outline-color: #CCC;
+	/*border-color: rgba(31, 179, 221, 0.9) !important;
+	outline-color: rgba(31, 179, 221, 0.9);*/
+	resize: vertical;
+}
+
 
 /*--------------------------------------------------------------
 3.1.1 - Activity Listing
@@ -3936,10 +3958,15 @@ body.activity-permalink .activity-list > li:first-child {
 .activity-list li .activity-content {
 	display:inline-block;
 	vertical-align:top;
+	float:left;
 }
 
 .activity-list li .activity-avatar {
 	margin-right:10px;
+}
+
+.activity.activity-content {
+    width: calc(100% - 50px);
 }
 
 .activity-list li.mini .activity-content p {

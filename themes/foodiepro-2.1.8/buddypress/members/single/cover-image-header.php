@@ -24,6 +24,7 @@ $member_cover_image_url = bp_attachments_get_attachment('url', array(
   'item_id' => $user_id,
 ));	
 
+$args='';
 $settings = bp_parse_args( $args, array(
 		/*'components'    => array(),
 		'width'         => 1300,

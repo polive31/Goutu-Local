@@ -91,6 +91,37 @@ function foodie_pro_theme_setup() {
 	//* Add support for custom background.
 	add_theme_support( 'custom-background' );
 
+	/** Reposition header outside body */
+	remove_action( 'genesis_header', 'genesis_header_markup_open', 5 );
+	remove_action( 'genesis_header', 'genesis_do_header' );
+	remove_action( 'genesis_header', 'genesis_header_markup_close', 15 ) ;
+
+	add_action( 'genesis_before', 'custom_header_markup_open', 5 );
+	add_action( 'genesis_before', 'genesis_do_header' );
+	add_action( 'genesis_before', 'custom_header_markup_close', 15 );	
+	
+		
+	//New Header functions
+	function custom_header_markup_open() {
+		genesis_markup( array(
+			'html5'   => '<header %s>',
+			'context' => 'site-header',
+		) );
+		// Added in content
+		echo '<div class="header-inner">';
+		genesis_structural_wrap( 'header' );
+	}
+	function custom_header_markup_close() {
+		genesis_structural_wrap( 'header', 'close' ); // widgets area
+		do_action('before_header_close');
+		echo '</div>';// header-inner
+		genesis_markup( array(
+			'close'   => '</header>',
+			'context' => 'site-header',
+		) ); // <header> tag
+	}	
+	
+
 	//* Add support for custom header.
 	add_theme_support( 'genesis-custom-header', array(
 			'width'  => 1400, /*P.O. Original 800 */
@@ -507,6 +538,29 @@ function custom_author_base() {
 /* =              LAYOUT      
 /* =================================================================*/
 
+//* Positions the content below the header
+add_action('wp_head','add_content_padding_js');
+function add_content_padding_js(){
+?>
+<script>
+	jQuery(document).ready(function() {
+	  var height = jQuery("header").height();
+		jQuery(".site-container").css("margin-top", height-20);
+	  //alert("height = " + height);
+	});
+</script>
+<?php
+}
+
+//* Reposition the primary navigation menu within header
+remove_action( 'genesis_after_header', 'genesis_do_subnav' );
+add_action( 'before_header_close', 'genesis_do_subnav');
+	
+//* Reposition the primary navigation menu within header
+remove_action( 'genesis_after_header', 'genesis_do_nav' );
+//add_action( 'genesis_header', 'genesis_do_nav');
+		
+	
 // Move pagination on all archive pages
 remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
 add_action( 'genesis_after_content', 'genesis_posts_nav' );

@@ -1,24 +1,33 @@
-/* Background  :  White (default) 
+/* Color theme :  White (default) 
 --------------------------------------------- */
 
-body {
+.site-header {
 	background:url("../../images/theme/background-winter/background-l-small.jpg"),url("../../images/theme/background-winter/background-r-small.jpg");
 	background-position:top left, top right;
 	background-repeat:no-repeat;
+  background-color: #ffffff;	
 }
 
-body.home {
+.home .site-header {
 	background:url("../../images/theme/background-winter/background-l.jpg"),url("../../images/theme/background-winter/background-r.jpg");
 	background-position: 10px 10px, right 10px top 10px;
 	background-repeat:no-repeat;
+  background-color: #ffffff;	
+}
+
+.foodie-pro .header-inner {
+	background-color: #ffffffe0;
+}
+
+body {
+	background-color:#e0e0e05e;
 }
 
 
-/* Color theme :  White (default) 
---------------------------------------------- */
 .site-container {
-  background-color: rgba(255, 255, 255, 0.7);
-  background-image: url("../../images/container/bedge-grunge-brown.png");
+	background-color:#FFF;
+/*  background-color: rgba(255, 255, 255, 0.7);
+  background-image: url("../../images/container/bedge-grunge-beige.png");*/
 }
 
 .site-title a {
@@ -26,7 +35,8 @@ body.home {
 }
 
 .home-page .site-title a {
-	background:url("../../images/theme/logo-white/logo_530_230.png") no-repeat center;
+	/*background:url("../../images/theme/logo-white/logo_530_230.png") no-repeat center;*/
+	background:url("../../images/theme/logo-white/logo_360_150.png") no-repeat center;
 }
 
 h1.entry-title,
@@ -81,7 +91,7 @@ textarea,
 }
 
 select {
-    background-color:#fefefe;
+    background-color:#ffffffab;
 }
 
 
@@ -122,6 +132,13 @@ input, select, textarea,
 
 .widget_wpurp_recipe_search_widget select {
 	border:1px solid #ddd;
+}
+
+/* Widgets with background
+-------------------------------------------- */
+.widget-text.wp_widget_plugin_box,
+.widget_bp_whats_new {
+	background-color:#f6f6f6;
 }
 
 /* Widget top5

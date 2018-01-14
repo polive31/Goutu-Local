@@ -271,9 +271,9 @@ class CustomNavigationShortcodes extends CustomArchive {
 	    ), $atts);
 	
 		$id=$a['id'];
-		$html=$a['html'];
-		$text=$a['text'];
 		$slug=$a['slug'];
+		$html=$a['html'];
+		$text=esc_html($a['text']);
 	
 		if ($id) 
 			$url=get_permalink($id);

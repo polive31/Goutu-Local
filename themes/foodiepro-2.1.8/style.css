@@ -2024,6 +2024,32 @@ form[role="search"] {
 
 /* Plugins
 -------------------------------------------------------- */
+
+/* Max Mega Meny
+----------------------------------------------*/
+.mega-search-wrap .dashicons {
+	font-size:30px;
+}
+
+/* Responsive menu
+----------------------------------------------*/
+#responsive-menu-pro-container {
+	z-index:99999!important; /* Prevents mmm search button to appear */
+	background:linear-gradient(to bottom right,#2c2c2c,#898989)!important;
+}
+
+#responsive-menu-pro-container .user_name {
+  font-family: "Oswald", sans-serif;
+  font-size: 30px;
+  color: #f3f3f3;
+  float: right;
+  padding-right: 20px;
+}
+
+#responsive-menu-pro-container input.responsive-menu-pro-search-box {
+    border-radius: 10px;
+}
+
 /* Mashshare 
 ----------------------------------------------*/
 
@@ -2284,9 +2310,6 @@ i.fa.fa-star-o {
 /* ------------------------------------------------------------
 						CUSTOM RECIPE TEMPLATES Plugin
 --------------------------------------------------------------*/
-
-
-
 
 
 /* CSS TOOLTIP styling 
@@ -2937,6 +2960,10 @@ Top Ad
 Site Header
 ---------------------------------------------------------------------------------------------------- */
 
+.mobile#wpadminbar {
+    display: none;
+}
+
 .foodie-pro .site-header {
   position:fixed;
   top:0;
@@ -2949,7 +2976,7 @@ Site Header
 
 .foodie-pro .header-inner {
   background-position: left;
-  padding: 20px 20px 0 20px;
+  padding: 0 20px 0 20px;
   margin: 0 auto;
   max-width: 1140px;
 }
@@ -4617,10 +4644,6 @@ Site Footer
 		font-weight: bold;
 	}
 	
-	nav.nav-secondary {
-    margin-top: 10px;
-	}
-	
 	.home-page .site-header {
     height:auto;
     padding:0;
@@ -4633,6 +4656,19 @@ Site Footer
 		margin:0;
     width: 100%;		
 	}	
+	
+	.home .site-header,
+	.site-header {
+		background:none;
+	}
+	
+	.foodie-pro .header-inner {
+	    padding: 0 10px;	
+	}	
+	
+	.title-area {
+    display:none;
+	} 
 	
 	.flex-control-nav {
     margin-top:10px;

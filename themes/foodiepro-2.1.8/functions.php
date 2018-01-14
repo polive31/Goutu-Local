@@ -545,7 +545,7 @@ function add_content_padding_js(){
 <script>
 	jQuery(document).ready(function() {
 	  var height = jQuery("header").height();
-		jQuery(".site-container").css("margin-top", height-20);
+		jQuery(".site-container").css("margin-top", height+20);
 	  //alert("height = " + height);
 	});
 </script>
@@ -658,7 +658,7 @@ function wprpe_orderby_rating( $args ) {
 
 
 /* =================================================================*/
-/* =                      ARCHIVES
+/* =               ARCHIVES
 /* =================================================================*/
 
 // Apply Full Width Content layout to Archives.
@@ -689,7 +689,27 @@ function set_full_layout() {
 }
 
 /* =================================================================*/
-/* =                POSTS
+/* =               PAGES
+/* =================================================================*/
+
+//* Add icon before page title
+add_action( 'genesis_entry_header', 'add_page_icon', 7 );
+
+function add_page_icon() {
+	if ( is_page() ) {
+		$icon_dir = trailingslashit( get_stylesheet_directory() ) . 'images/page-icons/';
+		$key_val = get_post_meta( get_the_ID(), 'entry_header_image', true );
+		if ( ! empty( $key_val ) ) {
+			echo '<div class="entry-header-image">';
+			//echo '<img src="' . site_url( NULL, 'https' ) . '/wp-content/themes/foodiepro-2.1.8/images/' . $key_val . '">';	
+			echo '<img src="' . $icon_dir . $key_val . '">';	
+			echo '</div>';	
+		}
+	}
+}
+
+/* =================================================================*/
+/* =               POSTS
 /* =================================================================*/
 
 //* Customize the entry meta in the entry header (requires HTML5 theme support)

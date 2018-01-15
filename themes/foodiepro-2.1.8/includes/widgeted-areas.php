@@ -53,10 +53,15 @@ function foodie_pro_after_entry() {
 }
 
 //* General widgeted areas.
+//genesis_register_sidebar( array(
+//	'id'			=> 'before-content',
+//	'name'			=> __( 'Before Content', 'foodiepro' ),
+//	'description'	=> __( 'This is the first section before content and sidebars.', 'foodiepro' ),
+//) );
 genesis_register_sidebar( array(
-	'id'			=> 'before-content',
-	'name'			=> __( 'Before Content', 'foodiepro' ),
-	'description'	=> __( 'This is the first section before content and sidebars.', 'foodiepro' ),
+	'id'			=> 'after-content',
+	'name'			=> __( 'After Content', 'foodiepro' ),
+	'description'	=> __( 'This is the last section after content and sidebars.', 'foodiepro' ),
 ) );
 genesis_register_sidebar( array(
 	'id'			=> 'before-header',

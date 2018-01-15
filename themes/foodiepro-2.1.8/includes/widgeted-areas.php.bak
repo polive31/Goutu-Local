@@ -59,6 +59,11 @@ genesis_register_sidebar( array(
 	'description'	=> __( 'This is the first section before content and sidebars.', 'foodiepro' ),
 ) );
 genesis_register_sidebar( array(
+	'id'			=> 'after-content',
+	'name'			=> __( 'After Content', 'foodiepro' ),
+	'description'	=> __( 'This is the last section after content and sidebars.', 'foodiepro' ),
+) );
+genesis_register_sidebar( array(
 	'id'			=> 'before-header',
 	'name'			=> __( 'Before Header', 'foodiepro' ),
 	'description'	=> __( 'This is the section before the header.', 'foodiepro' ),
@@ -100,8 +105,8 @@ genesis_register_sidebar( array(
     'description' => __( 'This is the widget section of buddypress pages.', 'foodiepro' ),
 ) );
 genesis_register_sidebar( array(
-    'id'          => 'social-footer',
-    'name'        => __( 'Social Footer', 'foodiepro' ),
+    'id'          => 'social-bottom',
+    'name'        => __( 'Social Bottom', 'foodiepro' ),
     'description' => __( 'This goes just before the footer, and occupies the whole page width.', 'foodiepro' ),
 ) );
 

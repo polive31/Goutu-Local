@@ -252,6 +252,25 @@ function custom_subnav_name() {
 }
 
 
+/* =================================================================*/
+/* =     COVER IMAGE MGT FUNCTIONS  
+/* =================================================================*/
+
+add_action( 'xprofile_cover_image_uploaded', 'generate_cover_thumbnails' );
+
+function generate_cover_thumbnails($user_id) {
+		
+	$member_cover_image_url = bp_attachments_get_attachment('url', array(
+	  'object_dir' => 'members',
+	  'item_id' => $user_id,
+	));	
+	
+	echo '<script> alert("Image uploaded"); </script>';
+
+	//echo "TOTO LA UPLOADE ET LE CHEMIN EST : " . $member_cover_image_url;	
+
+}
+
 
 /* =================================================================*/
 /* =     BP-DEPENDANT AVATAR MGT FUNCTIONS  

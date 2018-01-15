@@ -573,11 +573,21 @@ add_action( 'genesis_after_content_sidebar_wrap', 'genesis_footer_widget_areas',
 /* Hook widget areas 
 -----------------------------------------------------------------------------*/
 
-add_action( 'genesis_before_content', 'add_before_content_area');
-function add_before_content_area() {
+//add_action( 'genesis_before_content', 'add_before_content_area');
+//function add_before_content_area() {
+//  if ( is_page() ) {
+//  		genesis_widget_area( 'before-content', array(
+//        'before' => '<div class="top before-content widget-area">',
+//        'after'  => '</div>',
+//  		));
+//  }     
+//}
+
+add_action( 'genesis_after_content', 'add_after_content_area');
+function add_after_content_area() {
   if ( is_page() ) {
-  		genesis_widget_area( 'before-content', array(
-        'before' => '<div class="top before-content widget-area">',
+  		genesis_widget_area( 'after-content', array(
+        'before' => '<div class="bottom after-content widget-area">',
         'after'  => '</div>',
   		));
   }     

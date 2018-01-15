@@ -783,10 +783,6 @@ h3.rpwe-title a {
 	font-size:50px;
 }
 
-.before-content .widgettitle {
-   display: none;
-}
-
 .recipes-top .widgettitle, 
 .blogs-top .widgettitle,
 .archives-top .widgettitle {
@@ -2770,35 +2766,34 @@ div.gform_wrapper .gform_footer input[type="submit"] {
 /* Before Content section
 --------------------------------------------- */
 
-.top.before-content.widget-area {
+.after-content.widget-area {
     padding: 0;
     margin: 0;
 }
 
-.before-content .widget {
+.after-content .widget {
 	width:100%;
 	margin:0;
 }	
 
-.before-content .widget ul li {
+.after-content .widget ul li {
   float: left;
   margin: 10px 15px;
   width:40%;
 }
 
-.before-content .widget ul li a {
+.after-content .widget ul li a {
   display:block;
 }
 
-.before-content {
+.after-content {
 	display:none;
 }
 
-.before-content .widget.bubbles ul li.current-menu-item a, 
-.before-content .widget.bubbles ul li:hover a {
-    font-size: initial;
+.after-content .widget.bubbles ul li.current-menu-item a, 
+.after-content .widget.bubbles ul li:hover a {
+	font-size: initial;
 }
-
 
 
 /* Recipes, Blog & Archive Pages
@@ -4584,7 +4579,7 @@ Site Footer
 		margin:0;
 	}
 
-	.before-content {
+	.after-content {
 		display:initial;
 	}
 	

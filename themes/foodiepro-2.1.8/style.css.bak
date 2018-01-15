@@ -2035,7 +2035,7 @@ form[role="search"] {
 ----------------------------------------------*/
 #responsive-menu-pro-container {
 	z-index:99999!important; /* Prevents mmm search button to appear */
-	background:linear-gradient(to bottom right,#2c2c2c,#898989)!important
+	background:linear-gradient(to bottom right,#2c2c2c,#898989)!important;
 }
 
 #responsive-menu-pro-container .user_name {

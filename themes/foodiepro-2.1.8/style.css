@@ -2050,6 +2050,14 @@ form[role="search"] {
     border-radius: 10px;
 }
 
+#responsive-menu-pro-additional-content {
+    display: none;
+}
+
+.logged-in #responsive-menu-pro-additional-content {
+    display: block;
+}
+
 /* Mashshare 
 ----------------------------------------------*/
 

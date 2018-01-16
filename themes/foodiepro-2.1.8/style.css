@@ -2029,6 +2029,10 @@ form[role="search"] {
 
 /* Responsive menu
 ----------------------------------------------*/
+#responsive-menu-pro-noscroll-wrapper {
+	height: auto!important;
+}
+
 #responsive-menu-pro-container {
 	z-index:99999!important; /* Prevents mmm search button to appear */
 	background:linear-gradient(to bottom right,#2c2c2c,#898989)!important;

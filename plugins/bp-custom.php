@@ -256,19 +256,22 @@ function custom_subnav_name() {
 /* =     COVER IMAGE MGT FUNCTIONS  
 /* =================================================================*/
 
-add_action( 'xprofile_cover_image_uploaded', 'generate_cover_thumbnails' );
+add_action( 'xprofile_cover_image_uploaded', 'generate_cover_thumbnails', 15, 4 );
 
-function generate_cover_thumbnails($user_id) {
-		
-	$member_cover_image_url = bp_attachments_get_attachment('url', array(
-	  'object_dir' => 'members',
-	  'item_id' => $user_id,
-	));	
-	
-	echo '<script> alert("Image uploaded"); </script>';
+function generate_cover_thumbnails($user_id, $cover_url, $name, $feedback_code) {
 
-	//echo "TOTO LA UPLOADE ET LE CHEMIN EST : " . $member_cover_image_url;	
 
+	//$attach_id = media_sideload_image($filename, $post_id);
+	// => lets go the picture through the "normal" media upload process
+
+}
+
+function debug_to_console( $data ) {
+    $output = $data;
+    if ( is_array( $output ) )
+        $output = implode( ',', $output);
+
+    echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
 }
 
 

@@ -783,10 +783,6 @@ h3.rpwe-title a {
 	font-size:50px;
 }
 
-.before-content .widgettitle {
-   display: none;
-}
-
 .recipes-top .widgettitle, 
 .blogs-top .widgettitle,
 .archives-top .widgettitle {
@@ -2033,6 +2029,10 @@ form[role="search"] {
 
 /* Responsive menu
 ----------------------------------------------*/
+#responsive-menu-pro-noscroll-wrapper {
+	overflow-y: scroll!important;
+}
+
 #responsive-menu-pro-container {
 	z-index:99999!important; /* Prevents mmm search button to appear */
 	background:linear-gradient(to bottom right,#2c2c2c,#898989)!important;

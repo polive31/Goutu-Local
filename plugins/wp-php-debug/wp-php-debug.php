@@ -2,7 +2,7 @@
 /*
 Plugin Name: WP PHP Debug
 Plugin URI: http://goutu.org/wp-scripts-styles-manager
-Description: custom enqueue, minimize, and concatenate your css & js code
+Description: Logs debug info in the javascript console
 Version: 1.0.0
 Author: Pascal Olive
 Author URI: http://goutu.org
@@ -15,6 +15,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
+add_action( 'wp_head', 'display_trace');
+
+function display_trace() {
+	PHP_Debug::trace('WP PHP Debug plugin activated');
+}
 
 class PHP_Debug {
 		
@@ -27,8 +32,9 @@ class PHP_Debug {
 	
 	public function __construct() {
 		set_error_handler( 'PHP_Debug::error' );	
+		/* Displays sign of life in java console */
 	}
-	
+
 	public static function error($code, $str, $file, $line) {
 		$msg = $str . ' in ' . $file . ' line ' . $line;
 		self::log($msg, false, self::errstr($code), 'red');
@@ -37,7 +43,12 @@ class PHP_Debug {
 	public static function trace($msg, $var=false ) {	
 		if ( !self::DISP_TRACE ) return;
 		$trace = debug_backtrace();
-		$class = $trace[1]['class'];
+		if (isset($trace[1]) & isset($trace[1]['class']) ) {
+			$class = $trace[1]['class'];
+		}
+		else {
+			$class='default';
+		}
 		$color = self::get_class_color($class);
 		self::log($msg, $var, $class?$class:'TRACE', $color?$color:'#CCCCCC');
 	}
@@ -45,7 +56,8 @@ class PHP_Debug {
 	public static function trace1($msg, $var=false ) {	
 		if ( !self::DISP_TRACE1 ) return;
 		$trace = debug_backtrace();
-		$class = $trace[1]['class'];
+		if (isset($trace[1]))
+			$class = $trace[1]['class'];
 		$color = self::get_class_color($class);
 		self::log($msg, $var, $class?$class:'TRACE', $color?$color:'#CCCCCC');
 	}	
@@ -71,7 +83,7 @@ class PHP_Debug {
 			//if ( defined( 'DOING_AJAX' ) || strstr($_SERVER['REQUEST_URI'], 'admin-post.php') ) return; //Prevents blocking of post submissions/ajax requests
 			if ( !is_array($var) ) $var = '"' . $var . '"';
 			if ( is_array($var) ) $var = json_encode($var);
-			$output='console.log("%c' . $type . '%c ' . str_replace('\\', '\\\\', $msg) . '", "border-radius:4px;padding:2px 4px;background:' . $color . ';color:white", "color:' . $style . '");';  
+			$output='console.log("%c' . $type . '%c ' . str_replace('\\', '\\\\', $msg) . '", "border-radius:4px;padding:2px 4px;background:' . $color . ';color:white", "color:' . $color . '");';  
 			$output.='console.log(' . $var . ');';
 			self::output_debug_buffer( $output );
 		}

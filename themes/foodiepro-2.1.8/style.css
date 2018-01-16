@@ -1112,10 +1112,11 @@ Structure and Layout
 	clear:both;
 	display:block;
 	margin:20px auto 0px auto; /* P.O. original 40px auto*/
+	padding-top:10px;
 }
 
 .logged-in .site-inner {
-	margin-top:10px; /* P.O. original 40px auto*/
+/*	margin-top:10px;*/ /* P.O. original 40px auto*/
 }
 	
 .wrap {

@@ -1115,7 +1115,7 @@ Structure and Layout
 }
 
 .logged-in .site-inner {
-	margin-top:10px; /* P.O. original 40px auto*/
+/*	margin-top:10px;*/ /* P.O. original 40px auto*/
 }
 	
 .wrap {
@@ -2030,7 +2030,7 @@ form[role="search"] {
 /* Responsive menu
 ----------------------------------------------*/
 #responsive-menu-pro-noscroll-wrapper {
-	overflow-y: scroll!important;
+	height: auto!important;
 }
 
 #responsive-menu-pro-container {

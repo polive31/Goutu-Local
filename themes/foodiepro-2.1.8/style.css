@@ -87,6 +87,7 @@ html {
 	font-family:sans-serif;
 	-webkit-text-size-adjust:100%;
 	-ms-text-size-adjust:100%;
+	-webkit-font-smoothing: antialiased;	
 }
 
 body {
@@ -584,6 +585,7 @@ body {
 	color:#333;
 	font-weight:300;
 	line-height:1.625;	
+	-webkit-font-smoothing: antialiased;	
 }
 
 body #register-page {
@@ -2099,7 +2101,7 @@ form[role="search"] {
 ----------------------------------------------*/
 li.share-icons {
   display: inline-block;
-  margin: 10px;
+  margin: 10px 5px;
 }
 
 li.share-icons a {
@@ -3812,8 +3814,6 @@ font-size:11px;
 	overflow:hidden;
 	text-align:center;
   margin-top: 40px;
-  float: left;	
-	clear:both;
 }
 
 .frontier-post .footer-widgets {

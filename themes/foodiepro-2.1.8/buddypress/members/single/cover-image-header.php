@@ -70,16 +70,13 @@ function url_exists($url) {
 				<div class="overlay-text"><?php echo $cover_text;?></div>
 			</div>
 			<picture><?php
-				echo '<!--' . $dir . $name . '.webp' . '-->';
 				if (url_exists( $dir . $name . '.webp'))
-					echo '<source src="' . $dir . $name . '.webp" ' . 'type="image/webp">';
+					echo '<source srcset="' . $dir . $name . '.webp" ' . 'type="image/webp">';
 				if (url_exists( $dir . $name . '.jpg')) {
-					echo '<source src="' . $dir . $name . '.jpg" ' . 'type="image/jpeg">';
-					echo '<image src="' . $dir . $name . '.jpg' . '">';
+					echo '<img src="' . $dir . $name . '.jpg' . '">';
 				}
 				elseif (url_exists( $dir . $name . '.png')) {
-					echo '<source src="' . $dir . $name . '.png" ' . 'type="image/png">';
-					echo '<image src="' . $dir . $name . '.png' . '">';
+					echo '<img src="' . $dir . $name . '.png' . '">';
 				}
 			?></picture>
 			<h1 class="blog-title"><?php echo xprofile_get_field_data( 'Titre de votre blog', $user_id ); ?>	</h1>

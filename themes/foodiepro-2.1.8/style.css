@@ -4647,12 +4647,18 @@ Site Footer
 	
 	.tilde .widgettitle:before,
 	.tilde .widgettitle:after {
-		display:none;
+		/*display:none;*/
 	}
 
 	h3.widgettitle {
 		font-weight: bold;
 	}
+	
+	.title-big-font .widgettitle,
+	.elegant .widgettitle {
+    font-size: 40px;
+		line-height: 45px;
+	}	
 	
 	.home-page .site-header {
     height:auto;

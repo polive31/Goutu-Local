@@ -1851,7 +1851,7 @@ form[role="search"] {
 
 .widget.bubbles ul li {
   padding: 4px;
-  margin: 13px 10px;
+  margin: 15px 10px;
   /*border-radius: 10px;*/
   text-align: center;
 }
@@ -4647,12 +4647,17 @@ Site Footer
 	
 	.tilde .widgettitle:before,
 	.tilde .widgettitle:after {
-		display:none;
+		/*display:none;*/
 	}
 
 	h3.widgettitle {
 		font-weight: bold;
 	}
+	
+	.title-big-font .widgettitle,
+	.elegant .widgettitle {
+    font-size: 40px;
+	}	
 	
 	.home-page .site-header {
     height:auto;

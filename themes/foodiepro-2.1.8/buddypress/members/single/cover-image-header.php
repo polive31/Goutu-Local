@@ -72,7 +72,7 @@ function url_exists($url) {
 			<picture><?php
 				echo '<!--' . $dir . $name . '.webp' . '-->';
 				if (url_exists( $dir . $name . '.webp'))
-					echo '<source src="' . $dir . $name . '.webp' . 'type="image/webp">';
+					echo '<source src="' . $dir . $name . '.webp" ' . 'type="image/webp">';
 				if (url_exists( $dir . $name . '.jpg')) {
 					echo '<source src="' . $dir . $name . '.jpg" ' . 'type="image/jpeg">';
 					echo '<image src="' . $dir . $name . '.jpg' . '">';

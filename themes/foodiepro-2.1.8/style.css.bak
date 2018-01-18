@@ -2101,7 +2101,7 @@ form[role="search"] {
 ----------------------------------------------*/
 li.share-icons {
   display: inline-block;
-  margin: 10px;
+  margin: 10px 5px;
 }
 
 li.share-icons a {
@@ -3814,6 +3814,8 @@ font-size:11px;
 	overflow:hidden;
 	text-align:center;
   margin-top: 40px;
+	float: left;
+	clear: both;  
 }
 
 .frontier-post .footer-widgets {

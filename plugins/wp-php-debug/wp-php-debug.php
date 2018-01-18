@@ -23,7 +23,7 @@ function display_trace() {
 
 class PHP_Debug {
 		
-	const PHP_CONSOLE = false; // Outputs debug messages via WP_PHP_Console if it exists
+	const PHP_CONSOLE = true; // Outputs debug messages via WP_PHP_Console if it exists
 	const DISP_TRACE = true;
 	const DISP_TRACE1 = true;
 	const COLORS = array( '#e912ea', '#27f3cf', '#fd6d03', '#9c27b0', '#607d8b', '#ffc107', '#795548', '#9c27b0', 'green' );

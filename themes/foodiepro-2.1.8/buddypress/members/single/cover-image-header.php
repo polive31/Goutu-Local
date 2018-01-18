@@ -37,6 +37,12 @@ $settings = bp_parse_args( $args, array(
 if (empty($member_cover_image_url)) {
 	$member_cover_image_url = $settings['default_cover'];
 }
+
+$path_parts = pathinfo($member_cover_image_url );
+$dir=$path_parts['dirname'] . '/';
+$name=$path_parts['filename'];
+$ext=$path_parts['extension'];
+
 	
 $url=esc_url( bp_get_displayed_user_link() );
 $url_cover = $url . 'profile/change-cover-image';
@@ -45,6 +51,14 @@ $cover_text = __('Update cover picture', 'foodiepro');
 $avatar_text = __('Update profile picture', 'foodiepro');
 $overlay_css = bp_is_my_profile()?'class="overlay"':'class="hidden"';
 $a_css = bp_is_my_profile()?'':'class="disabled"';
+
+function url_exists($url) {
+	$headers = @get_headers($url);
+	if(strpos($headers[0],'404') === false)
+		return true;
+	else
+		return false;
+}
 
 ?>
 
@@ -55,7 +69,19 @@ $a_css = bp_is_my_profile()?'':'class="disabled"';
 			<div <?php echo $overlay_css;?> id="cover">
 				<div class="overlay-text"><?php echo $cover_text;?></div>
 			</div>
-			<img src="<?php echo $member_cover_image_url;?>">
+			<picture><?php
+				echo '<!--' . $dir . $name . '.webp' . '-->';
+				if (url_exists( $dir . $name . '.webp'))
+					echo '<source src="' . $dir . $name . '.webp' . 'type="image/webp">';
+				if (url_exists( $dir . $name . '.jpg')) {
+					echo '<source src="' . $dir . $name . '.jpg" ' . 'type="image/jpeg">';
+					echo '<image src="' . $dir . $name . '.jpg' . '">';
+				}
+				elseif (url_exists( $dir . $name . '.png')) {
+					echo '<source src="' . $dir . $name . '.png" ' . 'type="image/png">';
+					echo '<image src="' . $dir . $name . '.png' . '">';
+				}
+			?></picture>
 			<h1 class="blog-title"><?php echo xprofile_get_field_data( 'Titre de votre blog', $user_id ); ?>	</h1>
 			<div id="userid-container">
 				<div id="item-userid">

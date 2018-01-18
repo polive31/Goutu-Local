@@ -1851,7 +1851,7 @@ form[role="search"] {
 
 .widget.bubbles ul li {
   padding: 4px;
-  margin: 13px 10px;
+  margin: 15px 10px;
   /*border-radius: 10px;*/
   text-align: center;
 }
@@ -3814,6 +3814,8 @@ font-size:11px;
 	overflow:hidden;
 	text-align:center;
   margin-top: 40px;
+	float: left;
+	clear: both;  
 }
 
 .frontier-post .footer-widgets {

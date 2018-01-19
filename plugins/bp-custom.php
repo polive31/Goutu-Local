@@ -264,7 +264,7 @@ function generate_cover_thumbnails($user_id, $cover_url, $name, $feedback_code) 
 	add2log('cover_url',$cover_url);
 	add2log('name',$name);
 	add2log('feedback_code',$feedback_code);
-	//$attach_id = media_sideload_image($filename, $post_id);
+	$attach_id = media_sideload_image($cover_url, 0);
 	// => lets go the picture through the "normal" media upload process
 
 }

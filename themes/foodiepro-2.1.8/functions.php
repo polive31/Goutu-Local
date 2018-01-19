@@ -545,8 +545,9 @@ function add_content_padding_js(){
 <script>
 	jQuery(document).ready(function() {
 	  var height = jQuery("header").height();
-		jQuery(".site-container").css("margin-top", height+20);
+	  var margin = jQuery("html").css("margin-top");
 	  //alert("height = " + height);
+		jQuery(".site-container").css("margin-top", height+10-margin);
 	});
 </script>
 <?php

@@ -70,6 +70,11 @@ plugins/*
 !plugins/search-everything/
 plugins/search-everything/*
 !plugins/search-everything/search-everything.php
+!plugins/buddypress/
+plugins/buddypress/*
+!plugins/buddypress/bp-core/
+plugins/buddypress/bp-core/*
+!plugins/buddypress/bp-core/bp-core-attachments.php
 !plugins/bp-custom.php
 !plugins/wp-php-debug/
 !plugins/batch-manage-posts/

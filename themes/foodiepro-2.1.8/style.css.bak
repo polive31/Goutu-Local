@@ -1106,8 +1106,8 @@ Structure and Layout
 
 .site-container {
 	margin:0 auto;
-	max-width:1140px;
-	padding:0 30px 30px 30px;
+	max-width:1060px;
+	padding:0 20px 30px 20px;
 }
 
 .site-inner {
@@ -1150,7 +1150,7 @@ Structure and Layout
 
 .content {
 	float:right;
-	width:600px; /* 680px */
+	width:680px; /* 680px */
 }
 
 .content-sidebar .content,
@@ -2985,7 +2985,7 @@ Site Header
   background-position: left;
   padding: 0 20px 0 20px;
   margin: 0 auto;
-  max-width: 1140px;
+  max-width: 1060px;
 }
 
 /* Title Area
@@ -3824,13 +3824,8 @@ font-size:11px;
 .footer-widgets-1,
 .footer-widgets-2,
 .footer-widgets-3 {
-	float:left;
-	margin-left:2.564102564102564%;
-	width:31.623931623931625%;
-}
-
-.footer-widgets-1 {
-	margin-left:0;
+	width: 33%;
+	margin: 0;
 }
 
 .footer-widgets-1,

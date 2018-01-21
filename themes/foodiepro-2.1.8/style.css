@@ -2692,8 +2692,8 @@ div.gform_wrapper .gform_footer input[type="submit"] {
 
 .entry-header-image {
 	box-sizing:border-box;
-	/*height:80px;*/
 	float:left;
+	/*height:80px;*/
 	margin-right:15px;
 	margin-bottom:20px;
 	width:100px;

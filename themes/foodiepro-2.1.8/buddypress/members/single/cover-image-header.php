@@ -52,7 +52,7 @@ $avatar_text = __('Update profile picture', 'foodiepro');
 $overlay_css = bp_is_my_profile()?'class="overlay"':'class="hidden"';
 $a_css = bp_is_my_profile()?'':'class="disabled"';
 
-function url_exists($url) {
+function bp_url_exists($url) {
 	$headers = @get_headers($url);
 	if(strpos($headers[0],'404') === false)
 		return true;
@@ -70,12 +70,12 @@ function url_exists($url) {
 				<div class="overlay-text"><?php echo $cover_text;?></div>
 			</div>
 			<picture><?php
-				if (url_exists( $dir . $name . '.webp'))
+				if (bp_url_exists( $dir . $name . '.webp'))
 					echo '<source srcset="' . $dir . $name . '.webp" ' . 'type="image/webp">';
-				if (url_exists( $dir . $name . '.jpg')) {
+				if (bp_url_exists( $dir . $name . '.jpg')) {
 					echo '<img src="' . $dir . $name . '.jpg' . '">';
 				}
-				elseif (url_exists( $dir . $name . '.png')) {
+				elseif (bp_url_exists( $dir . $name . '.png')) {
 					echo '<img src="' . $dir . $name . '.png' . '">';
 				}
 			?></picture>

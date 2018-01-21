@@ -17,6 +17,12 @@ define ( 'BP_AVATAR_FULL_HEIGHT', 150 );
 //define ( 'BP_AVATAR_ORIGINAL_MAX_WIDTH', 640 );
 //define ( 'BP_AVATAR_ORIGINAL_MAX_FILESIZE', 2*1024);
 
+/* Define cover thumbnail size */
+define ( 'BP_COVER_FULL_WIDTH', 1140 );
+define ( 'BP_COVER_FULL_HEIGHT', 400 );
+define ( 'BP_COVER_THUMB_WIDTH', 350 );
+define ( 'BP_COVER_THUMB_HEIGHT', 300 );
+
 /* Set default paths */
 define ( 'BP_IMAGES_PATH', get_bloginfo('stylesheet_directory') . '/images/buddypress/');
 
@@ -104,8 +110,8 @@ define ( 'BP_AVATAR_DEFAULT_THUMB', BP_IMAGES_PATH . 'cook_avatar_thumb.png' );
 // Define cover image size
 add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'foodiepro_xprofile_cover_image', 10, 1 );
 function foodiepro_xprofile_cover_image( $settings = array() ) {
-	$settings['width']  = 1140;
-	$settings['height'] = 350;
+	$settings['width']  = BP_COVER_FULL_WIDTH;
+	$settings['height'] = BP_COVER_FULL_HEIGHT;
 	$settings['default_cover'] = BP_IMAGES_PATH . 'cover_default.jpg';
 	return $settings;
 }
@@ -256,16 +262,35 @@ function custom_subnav_name() {
 /* =     COVER IMAGE MGT FUNCTIONS  
 /* =================================================================*/
 
-add_action( 'xprofile_cover_image_uploaded', 'generate_cover_thumbnails', 15, 4 );
+//add_action( 'xprofile_cover_image_uploaded', 'generate_cover_thumbnails', 15, 4 );
 
 function generate_cover_thumbnails($user_id, $cover_url, $name, $feedback_code) {
 
-	add2log('user_id',$user_id);
-	add2log('cover_url',$cover_url);
+	$path = parse_url($cover_url, PHP_URL_PATH);	
+	$path_parts = pathinfo($path, PATHINFO_EXTENSION | PATHINFO_FILENAME);
+	$extension = $path_parts['extension'];
+	$filename = $path_parts['filename'];
+
+	$dirname = bp_attachments_uploads_dir_get( 'basedir');
+	$dirname .= '/members/' . $user_id . '/cover-image/'; 
+		
+	$image_path = $dirname . $filename . '.' . $extension;	
+	$image = wp_get_image_editor( $image_path );
+	if ( ! is_wp_error( $image ) ) {
+    $image->resize( BP_COVER_THUMB_WIDTH, BP_COVER_THUMB_HEIGHT, true );
+    $image->save( $dirname . 'thumb-' . $filename . '-' . BP_COVER_THUMB_WIDTH . 'x' . BP_COVER_THUMB_HEIGHT );
+		$result= 'success';
+	}
+	else
+		$result = 'failure';
+
+	/*add2log('user_id',$user_id);
+	add2log('cover_url', $cover_url);
 	add2log('name',$name);
 	add2log('feedback_code',$feedback_code);
-	$attach_id = media_sideload_image($cover_url, 0);
-	// => lets go the picture through the "normal" media upload process
+	add2log('dirname', $dirname );
+	add2log('image_path', $image_path );
+	add2log('media upload outcome : ', $result);*/
 
 }
 

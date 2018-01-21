@@ -711,15 +711,44 @@ add_action( 'genesis_entry_header', 'add_page_icon', 7 );
 
 function add_page_icon() {
 	if ( is_page() ) {
-		$icon_dir = trailingslashit( get_stylesheet_directory() ) . 'images/page-icons/';
+		$icon_url = trailingslashit( get_stylesheet_directory_uri() ) . 'images/page-icons/';
 		$key_val = get_post_meta( get_the_ID(), 'entry_header_image', true );
 		if ( ! empty( $key_val ) ) {
+			$ext = substr(strrchr($key_val, "."), 1);
+			$filename = substr($key_val, 0 , (strrpos($key_val, ".")));
 			echo '<div class="entry-header-image">';
-			//echo '<img src="' . site_url( NULL, 'https' ) . '/wp-content/themes/foodiepro-2.1.8/images/' . $key_val . '">';	
-			echo '<img src="' . $icon_dir . $key_val . '">';	
+			output_picture_markup($icon_url, $filename, $ext);
 			echo '</div>';	
 		}
 	}
+}
+
+function output_picture_markup($dir, $name, $ext=null) {
+	?>
+	<picture><?php
+	if (url_exists( $dir . $name . '.webp'))
+		echo '<source srcset="' . $dir . $name . '.webp" ' . 'type="image/webp">';
+	if (isset($ext)) {
+		echo '<img src="' . $dir . $name . '.' . $ext . '">';
+	}
+	else {
+		if (url_exists( $dir . $name . '.jpg')) {
+			echo '<img src="' . $dir . $name . '.jpg' . '">';
+		}
+		elseif (url_exists( $dir . $name . '.png')) {
+			echo '<img src="' . $dir . $name . '.png' . '">';
+		}
+	}
+?></picture>
+	<?php
+}
+
+function url_exists($url) {
+	$headers = @get_headers($url);
+	if(strpos($headers[0],'404') === false)
+		return true;
+	else
+		return false;
 }
 
 /* =================================================================*/

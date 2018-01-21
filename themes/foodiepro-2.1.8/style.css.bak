@@ -2692,8 +2692,9 @@ div.gform_wrapper .gform_footer input[type="submit"] {
 
 .entry-header-image {
 	box-sizing:border-box;
+	display:inline-block;
+	vertical-align:middle;
 	/*height:80px;*/
-	float:left;
 	margin-right:15px;
 	margin-bottom:20px;
 	width:100px;
@@ -3826,10 +3827,6 @@ font-size:11px;
 .footer-widgets-3 {
 	width: 33%;
 	margin: 0;
-}
-
-.footer-widgets-1,
-.footer-widgets-2 {
 	float:left;
 }
 

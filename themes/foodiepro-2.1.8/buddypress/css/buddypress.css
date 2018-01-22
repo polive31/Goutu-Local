@@ -154,7 +154,7 @@ Hello, this is the BuddyPress Legacy stylesheet.
   font-size:70px;
   font-weight:normal;
  	line-height:initial;
-  background: linear-gradient(#4c4c4c66, #ffffff00);
+  background: linear-gradient(#cbcbcb61, #ffffff00);
   text-align: center;
   z-index:1;
 	text-shadow: 0 0 3px rgba( 0, 0, 0, 0.8 );  
@@ -166,7 +166,7 @@ Hello, this is the BuddyPress Legacy stylesheet.
   bottom: 0;
   z-index: 1;
 	width: 100%;
-	background: linear-gradient(#ffffff00,#4c4c4cb3);
+	background: linear-gradient(#ffffff00,#7d7d7d61);
 }
 
 #buddypress #item-userid {

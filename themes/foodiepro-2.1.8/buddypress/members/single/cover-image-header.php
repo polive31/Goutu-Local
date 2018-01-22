@@ -65,11 +65,11 @@ function bp_url_exists($url) {
 <div id="cover-image-container">
 		
 	<div id="item-header-cover-image">
-		<a <?php echo $a_css;?> id="header-cover-image" href="<?php echo $url_cover; ?>">
+		<a <?php echo $a_css;?> id="custom-header-cover-image" href="<?php echo $url_cover; ?>">
 			<div <?php echo $overlay_css;?> id="cover">
 				<div class="overlay-text"><?php echo $cover_text;?></div>
 			</div>
-			<picture><?php
+			<picture id="cover-image"><?php
 				if (bp_url_exists( $dir . $name . '.webp'))
 					echo '<source srcset="' . $dir . $name . '.webp" ' . 'type="image/webp">';
 				if (bp_url_exists( $dir . $name . '.jpg')) {

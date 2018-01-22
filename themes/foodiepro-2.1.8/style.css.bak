@@ -1733,7 +1733,7 @@ form[role="search"] {
 /* Slider widget
 --------------------------------------------- */
 .master-slider-main-widget {
-    margin: 40px 0;
+	margin: 40px 0;
 }
 
 
@@ -2039,14 +2039,14 @@ form[role="search"] {
 #responsive-menu-pro-container {
 	z-index:99999!important; /* Prevents mmm search button to appear */
 	background:linear-gradient(to bottom right,#2c2c2c,#898989)!important;
+	max-width: 300px;
 }
 
 #responsive-menu-pro-container .user_name {
   font-family: "Oswald", sans-serif;
   font-size: 30px;
   color: #f3f3f3;
-  float: right;
-  padding-right: 20px;
+  padding: 20px;
 }
 
 #responsive-menu-pro-container input.responsive-menu-pro-search-box {
@@ -2692,8 +2692,7 @@ div.gform_wrapper .gform_footer input[type="submit"] {
 
 .entry-header-image {
 	box-sizing:border-box;
-	display:inline-block;
-	vertical-align:middle;
+	float:left;
 	/*height:80px;*/
 	margin-right:15px;
 	margin-bottom:20px;
@@ -3808,6 +3807,7 @@ font-size:11px;
 ---------------------------------------------------------------------------------------------------- */
 
 .footer-widgets {
+	width:100%;
 	color:#333;
 	overflow:hidden;
 	text-align:center;
@@ -4571,10 +4571,11 @@ Site Footer
 		width:100%;
 	}
 
+	.home-top .widget,
 	.before-header .enews-widget form {
 		margin:0;
 	}
-
+	
 	.after-content {
 		display:initial;
 	}
@@ -4593,6 +4594,11 @@ Site Footer
 	.home-page .site-title a {
     width: 100%;
   	height:150px;
+	}	
+		
+	.footer-widgets .widgettitle {
+    padding: 0;
+    margin: 20px 0 0 0;
 	}	
 	
 	.footer-widgets-2,

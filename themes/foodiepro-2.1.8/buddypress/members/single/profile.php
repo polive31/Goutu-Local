@@ -38,6 +38,7 @@
 
 		// Change Cover Image
 		case 'change-cover-image' :
+			add_action('wp_footer','show_uploaded_cover_image'); // too late for header, adds Javascript code into footer
 			bp_get_template_part( 'members/single/profile/change-cover-image' );
 			break;
 
@@ -47,7 +48,6 @@
 			<div class="blog-title"><?php echo wpautop(xprofile_get_field_data( 'Description du blog', bp_displayed_user_id() ) ); ?>	</div>
 			
 			<?php
-			
 			// Displays widgeted public profile content
 	    genesis_widget_area( 'social-content', array(
 	        'before' => '<div class="social-content widget-area">',
@@ -86,4 +86,16 @@ function add_social_footer_widgeted_area() {
 }
 
 
+//* Display Uploaded Cover Image following Ajax call completion
+function show_uploaded_cover_image() {
+	?>
+	<script type="text/javascript">
+		bp.CoverImage.Attachment.on( 'change:url', function( data ) {
+			url = data.attributes['url'];
+			jQuery("picture#cover-image img").attr('src', url);
+		} );
+	</script>
+	<?php
+}
 ?>
+

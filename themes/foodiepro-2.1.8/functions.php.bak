@@ -547,9 +547,9 @@ function add_content_padding_js(){
 	  var height = jQuery("header").height();
 	  var htmlMargin = parseInt(jQuery("html").css("margin-top"));
 	  topMargin = height - htmlMargin + 10;
-	  /*alert("height = " + height);
+	  alert("height = " + height);
 	  alert("html margin = " + htmlMargin);
-	  alert("top margin = " + topMargin);*/
+	  alert("top margin = " + topMargin);
 		jQuery(".site-container").css("margin-top", topMargin);
 	});
 </script>
@@ -713,7 +713,6 @@ function add_page_icon() {
 	if ( is_page() ) {
 		$icon_url = trailingslashit( get_stylesheet_directory_uri() ) . 'images/page-icons/';
 		$key_val = get_post_meta( get_the_ID(), 'entry_header_image', true );
-		echo $key_val;
 		if ( ! empty( $key_val ) ) {
 			$ext = substr(strrchr($key_val, "."), 1);
 			$filename = substr($key_val, 0 , (strrpos($key_val, ".")));

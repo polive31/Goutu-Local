@@ -52,7 +52,7 @@ class CustomArchiveEntryTitle extends CustomArchive {
 
 	/* Add tags to entry title 
 	-----------------------------------------------------------------------------*/
-	public function entry_tags($title) {
+	public function entry_tags( $title='' ) {
 
 		if ( is_tax('cuisine') || is_author() ) {
 			$post_id = get_the_ID();

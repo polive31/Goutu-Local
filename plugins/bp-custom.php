@@ -284,13 +284,13 @@ function generate_cover_thumbnails($user_id, $cover_url, $name, $feedback_code) 
 	else
 		$result = 'failure';
 
-	/*add2log('user_id',$user_id);
+	add2log('user_id',$user_id);
 	add2log('cover_url', $cover_url);
 	add2log('name',$name);
 	add2log('feedback_code',$feedback_code);
 	add2log('dirname', $dirname );
 	add2log('image_path', $image_path );
-	add2log('media upload outcome : ', $result);*/
+	add2log('media upload outcome : ', $result);
 
 }
 

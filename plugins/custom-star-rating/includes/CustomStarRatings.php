@@ -28,7 +28,7 @@ class CustomStarRatings {
 								__('Very good','custom-star-rating'),
 								__('Delicious','custom-star-rating'),
 				)	
-			),
+			),/*
 			'clarity' => array(
 				'weight' => 1,
 				'title'=> __('Recipe','custom-star-rating'),
@@ -41,7 +41,7 @@ class CustomStarRatings {
 								__('Very clear','custom-star-rating'),
 								__('Crystal clear even for kitchen dummies','custom-star-rating'),
 				)	
-			),
+			),*/
 		);
 		//self::$ratingGlobal = array( 
 		self::$ratingGlobal = array( 

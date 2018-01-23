@@ -2240,7 +2240,9 @@ td.rating-category {
 	padding:0 10px 0 0;
 	font-style:italic;
 	text-align: left;
+	display:none;
 }
+
 .rating-label {
   font-size:18px;
 }

@@ -4571,6 +4571,7 @@ Site Footer
 		width:100%;
 	}
 
+	.site-inner,
 	.home-top .widget,
 	.before-header .enews-widget form {
 		margin:0;

@@ -50,7 +50,7 @@ td.rating-title {
 		display: block;
 		width: 24px;
 		height: 24px;
-		background: url('../images/rating-star.png') -24px 0/48px 24px no-repeat;
+		background: url('../images/rating-icons/rating-star.png') -24px 0/48px 24px no-repeat;
 }
 
 
@@ -132,10 +132,6 @@ i.fa.fa-star-half-o {
 	color:#f5a241;
 }
 i.fa.fa-star-o {
-	/*color:#aaa;
-	color:#d6a86d;
-	color:#d67f33;
-	color:#cc9c73;*/
 	color:#d6b090;
 }
 .full i.fa.fa-star-o {

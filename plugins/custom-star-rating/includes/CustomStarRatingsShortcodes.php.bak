@@ -164,7 +164,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 				<?php
 				}?>
 				<td class="rating" title="<?php echo $rating?> : <?php echo $this->rating_caption($rating,$id)?>">
-				<a class="pum-trigger" id="recipe-rating" style="cursor: pointer;"><?php echo $this->output_stars($stars, $half)?></a>
+				<a class="pum-trigger" id="recipe-review" style="cursor: pointer;"><?php echo $this->output_stars_png($stars, $half)?></a>
 				</td>
 			<?php
 			}
@@ -242,7 +242,24 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		}
 		return $html;
 	}
-
+	
+		/* Output stars FI
+	-------------------------------------------------------------*/
+	public function output_stars_png($stars, $half) {
+		$html = '';
+		for ($i = 1; $i <= $stars; $i++) {
+			$html .= '<i class="fi fi-star fi-on"></i>';
+		}
+		for ($i = $stars+1; $i <= 5; $i++) {
+			if ( ($i == ($stars+1) ) && $half ) {
+				$html .= '<i class="fi"><i class="fi fi-star fi-half fi-on"></i><i class="fi fi-star fi-half fi-off"></i></i>';
+			}
+			else {
+				$html .= '<i class="fi fi-star fi-off"></i>';
+			}
+		}
+		return $html;
+	}
 
 	/* Custom Comment Form 
 	------------------------------------------------------------ */

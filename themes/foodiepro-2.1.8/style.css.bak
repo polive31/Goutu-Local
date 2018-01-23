@@ -2206,7 +2206,7 @@ td.rating-title {
 		display: block;
 		width: 24px;
 		height: 24px;
-		background: url('images/rating-star.png') -24px 0/48px 24px no-repeat;
+		background: url('images/rating-icons/rating-star.png') -24px 0/48px 24px no-repeat;
 }
 
 
@@ -2240,7 +2240,9 @@ td.rating-category {
 	padding:0 10px 0 0;
 	font-style:italic;
 	text-align: left;
+	display:none;
 }
+
 .rating-label {
   font-size:18px;
 }
@@ -2254,9 +2256,47 @@ td.rating-category {
 	min-width: 60px;
 }
 
-
 /* Rating stars formatting 
 -----------------------------------------*/
+
+
+/* Font Icons Rating icons */
+
+i.fi {
+	display:inline-block;
+	width:20px;
+	height:23px;
+	margin:6px 2px 0 1px
+}
+
+
+.recipe i.fi {
+	width:24px;
+	height:28px;
+	margin:6px 2px 0 0;
+}
+
+i.fi.fi-star {
+	background:url("images/rating-icons/rating-hat.png") no-repeat;
+	background-size:cover;
+}
+
+i.fi.fi-half {
+	width:50%;
+	margin:0;
+}
+
+i.fi.fi-on {
+	background-position:0 0;
+}
+
+i.fi.fi-off {
+	background-position: 100% 0;
+}
+
+i.fi.fi-half.fi-off {
+	background-position: 100% 0;
+}
 
 /* Rating star size */
 
@@ -2284,14 +2324,9 @@ td.rating-category {
 
 i.fa.fa-star,
 i.fa.fa-star-half-o {
-	/*color:#ff8f00;*/
 	color:#f5a241;
 }
 i.fa.fa-star-o {
-	/*color:#aaa;
-	color:#d6a86d;
-	color:#d67f33;
-	color:#cc9c73;*/
 	color:#d6b090;
 }
 .full i.fa.fa-star-o {

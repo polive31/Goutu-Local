@@ -75,6 +75,9 @@ function bp_url_exists($url) {
 				if (bp_url_exists( $dir . $name . '.jpg')) {
 					echo '<img src="' . $dir . $name . '.jpg' . '">';
 				}
+				elseif (bp_url_exists( $dir . $name . '.jpeg')) {
+					echo '<img src="' . $dir . $name . '.jpeg' . '">';
+				}				
 				elseif (bp_url_exists( $dir . $name . '.png')) {
 					echo '<img src="' . $dir . $name . '.png' . '">';
 				}

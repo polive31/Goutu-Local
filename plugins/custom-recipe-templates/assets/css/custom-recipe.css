@@ -106,7 +106,7 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 
 .image-container {
 	min-width:300px;
-	max-width:60%;
+	max-width:50%;
 	float:left;
 	padding:0px;
 }
@@ -130,7 +130,7 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 .info-container {
 	float:left;
 	padding-left:30px;
-	max-width:40%;
+	max-width:50%;
 }
 
 .label-container {
@@ -148,7 +148,8 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 }
 
 .recipe-label {
-	float:left;
+	display:inline-block;
+	vertical-align:bottom;
 	width:120px;
 	font-weight:bold;
 }
@@ -160,38 +161,64 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 	float:left;
 }
 
-.recipe-label#servings {
+#servings .recipe-label,
+#servings .recipe-input {
 	padding-top: 4px;
 }
 	
-.recipe-label#servings:before {
+#servings .recipe-label:before {
 	content:"\f0f5";
 }
 
-.recipe-label#tag:before {
+#tag .recipe-label:before {
 	content:"\f02b";
 }
 
-.recipe-label#prep:before {
+#prep .recipe-label:before {
 	content:"\f256";
 }
 
-.recipe-label#cook:before {
+#cook .recipe-label:before {
 	content:"\f252";
 }
 
-.recipe-label#wait:before {
+#wait .recipe-label:before {
 	content:"\f04c";
 }
 
 .adjust-recipe-servings {
-	width:40px;
+	width:30px;
 	padding:2px;
 	background:white;
 	border:1px solid #bbbbbb;
 	border-radius:0;
 	line-height:20px;
 	font-size:16px;
+}
+
+#servings .fa {
+  font-size: 20px;
+  margin: 0 3px;
+  color: #444;
+  font-size: 20px;
+  margin: 0 3px;
+  color: #444;
+  cursor:pointer;
+}
+
+#servings .recipe-input {
+  display:inline-block;
+  vertical-align:top;
+}
+
+#servings #dec,
+#servings #inc {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#servings .fa:hover {
+	color: #666;
 }
 
 /* Ingredients */
@@ -303,22 +330,33 @@ li.wpurp-recipe-instruction span {
 
 /* Picture gallery 
 ----------------------------------------------*/
-#joined-pics .add-picture-button button,
+.gallery {
+	overflow:hidden;
+}
+
+#joined-pics .add-picture-button,
 #joined-pics .gallery-item {
-	margin-right:5px!important;
+  display: inline-block;	
+  vertical-align:top;
+	margin: 0!important;
+  padding: 5px; 
+}
+
+#joined-pics .gallery-icon {
+  width: 75px;
+  height: 75px;
 }
 
 #joined-pics .add-picture-button button {
+	width: 75px;
+  height: 75px;
+  margin: 0px;  
+	padding: 5px!important;
 	text-transform:uppercase;
   text-align:center;
-  width:75px;
-  height:75px;
 	font-family: "Lato",sans-serif;
   font-size: 10px;	
-	float:left;
-	margin-top: 4px;	
 	line-height: 14px;
-	padding: 10px;
 }
 
 #joined-pics .add-picture-button button:hover {
@@ -330,9 +368,6 @@ li.wpurp-recipe-instruction span {
 	content:"+"; /* Plus */
 	display:block;
 }
-
-
-
 
 /* MEDIA QUERIES 
 ---------------------------------------------------*/

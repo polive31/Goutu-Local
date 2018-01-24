@@ -112,48 +112,82 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 						// Origin
 					  $test = get_the_term_list( $post_ID, 'cuisine', '', '', '' ); 
 						if ($test!='') {
-							$html = '<div class="label-container"><div id="tag" class="recipe-label">' . __('Origin','foodiepro') . '</div>' . $test . '</div>';
+							$html = '<div class="label-container" id="tag"><div class="recipe-label">' . __('Origin','foodiepro') . '</div>' . $test . '</div>';
 							echo $html;
 						}		
 						
 						// Diet
 					  $test = get_the_term_list( $post_ID, 'diet', '', '', '' ); 
 						if ($test!='') {
-							$html = '<div class="label-container"><div id="tag" class="recipe-label">' . __('Diet','foodiepro') . '</div>' . $test . '</div>';
+							$html = '<div class="label-container" id="tag"><div class="recipe-label">' . __('Diet','foodiepro') . '</div>' . $test . '</div>';
 							echo $html;
 						}	
 						
 						// Difficulty
 					  $test = get_the_term_list( $post_ID, 'difficult', '', '', '' ); 
 						if ($test!='') {
-							$html = '<div class="label-container"><div id="tag" class="recipe-label">' . __('Level','foodiepro') . '</div>' . $test . '</div>';
+							$html = '<div class="label-container" id="tag"><div class="recipe-label">' . __('Level','foodiepro') . '</div>' . $test . '</div>';
 							echo $html;
 						}			
 					
 						// Servings
 						$test = $recipe->servings_normalized();
 						if ($test!='') {
-							$html = '<div class="label-container"><div id="servings" class="recipe-label">' . __('Serves','foodiepro') . '</div><input type="number" min="1" class="adjust-recipe-servings" data-original="' . $recipe->servings_normalized() . '" data-start-servings="' . $recipe->servings_normalized() . '" value="' . $recipe->servings_normalized() . '"/> ' . $recipe->servings_type() . '</div>';
+							$html = '<div class="label-container" id="servings">';
+							$html .= '<div class="recipe-label">' . __('Serves','foodiepro') . '</div>';
+							$html .= '<div class="recipe-input">';
+							$html .= '<i id="dec" class="fa fa-minus-circle"></i>';
+							$html .= '<input type="number" min="1" class="adjust-recipe-servings" data-original="' . $recipe->servings_normalized() . '" data-start-servings="' . $recipe->servings_normalized() . '" value="' . $recipe->servings_normalized() . '"/>';
+							$html .= '<i id="inc" class="fa fa-plus-circle"></i>';
+							$html .= $recipe->servings_type();
+							$html .= '</div>';
+							$html .= '</div>';
 							echo $html;
 						}
 						
+						?>
+	<script>
+		jQuery(".recipe-input i").on("click", function() {
+			//console.log("Button Click !!!");
+		  var $button = jQuery(this);
+		  var $input= $button.parent().find("input");
+		  var oldValue = $input.val();
+		  //console.log("Old value : " + oldValue );
+		  //console.log( "button id " + $button.attr('id') );
+		  if ($button.attr('id') == "inc") {
+			//console.log("INC Click !!!");
+			  var newVal = parseFloat(oldValue) + 1;
+			} else {
+			//console.log("DEC Click !!!");
+		    if (oldValue > 1) {
+		      var newVal = parseFloat(oldValue) - 1;
+		    } else {
+		      newVal = 1;
+		    }
+		  }
+		  $input.val(newVal);
+		  $input.trigger("change");
+		});
+	</script>
+	
+<?php					
 						// Prep time
 						$test = $recipe->prep_time();
 						if ($test!='') {
-							$html = '<div class="label-container"><div id="prep" class="recipe-label">' . __('Preparation','foodiepro') . '</div>' . $test . ' ' . $recipe->prep_time_text() . '</div>';
+							$html = '<div class="label-container" id="prep"><div class="recipe-label">' . __('Preparation','foodiepro') . '</div>' . $test . ' ' . $recipe->prep_time_text() . '</div>';
 							echo $html;
 						}
 						
 						// Prep time
 						$test = $recipe->cook_time();
 						if ($test!='') {
-							$html= '<div class="label-container"><div id="cook" class="recipe-label">' . __('Cooking','foodiepro') . '</div>' . $test . ' ' . $recipe->cook_time_text() . '</div>';
+							$html= '<div class="label-container" id="cook"><div class="recipe-label">' . __('Cooking','foodiepro') . '</div>' . $test . ' ' . $recipe->cook_time_text() . '</div>';
 							echo $html;
 							}
 						
 						$test = $recipe->passive_time();
 						if ($test!='') {
-							$html = '<div class="label-container"><div id="wait" class="recipe-label">' . __('Wait','foodiepro') . '</div>' . $test . ' ' . $recipe->passive_time_text() . '</div>';
+							$html = '<div class="label-container" id="wait"><div class="recipe-label">' . __('Wait','foodiepro') . '</div>' . $test . ' ' . $recipe->passive_time_text() . '</div>';
 							echo $html;					
 						}
 					?>

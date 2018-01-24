@@ -398,9 +398,13 @@ input[type="radio"] {
 	padding:0;
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-	height:auto;
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"] {
+	-webkit-appearance: none; 
+  -moz-appearance: none;
+  appearance: textfield;
+  margin: 0;	
 }
 
 input[type="search"] {
@@ -2314,6 +2318,10 @@ i.fi.fi-half.fi-off {
   line-height: 18px!important;
 }
 
+.recipe .fa-stack {
+	margin: 0 2px;  
+}	
+
 .comment .fa-stack {
   height: 16px!important;
 	width: 16px!important;
@@ -2333,25 +2341,6 @@ i.fa.fa-star-o {
 	color:#f18b14;
 }
 
-/* Custom Gallery Shortcode
---------------------------------------------- */
-
-.gallery {
-	overflow:hidden;
-}
-
-.gallery-item {
-	float:left;
-	/*margin:0 0 28px!important;*/
-	margin-right:10px!important;
-	text-align:center;
-}
-
-.gallery img {
-	/*border:1px solid #ddd;*/
-	height:auto;
-	padding:4px;
-}
 
 /* ------------------------------------------------------------
 						CUSTOM RECIPE TEMPLATES Plugin

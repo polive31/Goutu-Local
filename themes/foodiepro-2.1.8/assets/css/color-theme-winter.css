@@ -136,9 +136,10 @@ input, select, textarea,
 
 /* Widgets with background
 -------------------------------------------- */
-.widget-text.wp_widget_plugin_box,
-.widget_bp_whats_new {
-	background-color:#f6f6f6;
+.widget-text.wp_widget_plugin_box, 
+.home-top .widget.widget_bp_whats_new {
+  background-color: #dad5ce;
+  margin-bottom: 30px;
 }
 
 /* Widget top5

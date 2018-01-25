@@ -275,20 +275,14 @@ a.comment-reply-link,
 
 input[type="submit"].social-button,
 .social-button {
-	float: left;
-	background: #eaeaea;
-	border: 1px solid #CCC;
-	border-radius: 3px;
-	font-size: 14px;
-	color: #444;  
-	margin-right: 10px;
-	padding: 0 8px;	
-	font-variant: small-caps; 
+  font-size: 20px;
+  color: #b3b3b3;
+  padding: 0 10px;
+  font-variant: small-caps;
 }
 
 .social-button .fa-thumbs-up {
-  color: #686868;
-  font-size: 16px;
+  color: #5d5d5de8;
 }
 
 /* Text area and selec specific formatting */
@@ -399,10 +393,14 @@ input[type="radio"] {
 }
 
 input[type="number"]::-webkit-inner-spin-button, 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"] {
+input[type="number"]::-webkit-outer-spin-button {
 	-webkit-appearance: none; 
-  -moz-appearance: none;
+  appearance: textfield;
+  margin: 0;	
+}
+
+input[type="number"] { 
+  -moz-appearance: textfield;
   appearance: textfield;
   margin: 0;	
 }
@@ -866,7 +864,7 @@ td#whats-new-avatar img {
 
 .sidebar .widget-wrap .wp_widget_plugin_textarea a,
 p.wp_widget_plugin_textarea {
-  font-size: 14px;
+  font-size: 15px;
   font-style: italic;
   text-align:center;
 	padding: 10px 0;  
@@ -3976,17 +3974,34 @@ textarea#whats-new:focus {
 /*--------------------------------------------------------------
 3.1.1 - Activity Listing
 --------------------------------------------------------------*/
+
+ul.activity-list {
+	padding:0;
+}
+
+
 ul.activity-list li {
 	overflow: hidden;
-	padding: 15px 0 0;
-	list-style: none;
+	padding: 15px 10px;
+  list-style: none;
+  background: #f5f5f5;  
+	margin: 10px 0;
+}
+
+.activity-list .activity-meta {
+   float: right;
 }
 
 .activity-list .activity-avatar img {
-    float: left;
-    width: 40px;
-    vertical-align: middle;
-    padding: 10px 0px;
+  float: left;
+  width: 40px;
+  vertical-align: middle;
+  padding: 10px 0px;
+}
+
+.activity-list label.bp-screen-reader-text {
+    display: none;
+    /* font-size: 12px; */
 }
 
 ul.item-list.activity-list li.has-comments {
@@ -4178,7 +4193,8 @@ a.activity-time-since:hover {
   color: #FFF;
   padding: 1px 5px;
   font-weight: normal;
-  font-size: 12px;    
+  font-size: 12px;   
+  display:none; 
 }
 
 div.activity-comments {
@@ -4202,6 +4218,7 @@ div.activity-comments ul li {
 	list-style: none;
 }
 div.activity-comments ul {
+	border-top: 1px solid #dedede;	
 	clear: both;
 	margin: 0;
 }
@@ -4303,9 +4320,14 @@ div.activity-comments form div.ac-reply-content {
 }
 div.activity-comments form div.ac-reply-content a {
 	text-decoration: none;
+  margin-top: 5px;
+  font-size: 14px;
+  font-variant: small-caps;
+  margin-left: 10px;	
 }
+
 .acomment-options {
-	float: left;
+	float: right;
 }
 
 

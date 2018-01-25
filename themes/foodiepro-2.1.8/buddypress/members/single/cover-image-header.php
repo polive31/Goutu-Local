@@ -45,8 +45,8 @@ $ext=$path_parts['extension'];
 
 	
 $url=esc_url( bp_get_displayed_user_link() );
-$url_cover = is_user_logged_in()?'#':$url . 'profile/change-cover-image';
-$url_avatar = is_user_logged_in()?'#':$url . 'profile/change-avatar';
+$url_cover = is_user_logged_in()?$url . 'profile/change-cover-image':'#';
+$url_avatar = is_user_logged_in()?$url . 'profile/change-avatar':"#";
 $cover_text = __('Update cover picture', 'foodiepro');
 $avatar_text = __('Update profile picture', 'foodiepro');
 $overlay_css = bp_is_my_profile()?'class="overlay"':'class="hidden"';

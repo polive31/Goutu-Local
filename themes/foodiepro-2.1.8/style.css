@@ -4670,6 +4670,17 @@ Site Footer
 		height: auto;
 	}	
 	
+	.pum-title {
+		text-align:left;
+		margin: 60px auto 40px auto;
+	}
+	
+	.pum-theme-add-picture .pum-container, 
+	.pum-theme-small-form .pum-container,
+	.pum-theme-default-theme .pum-container {
+    background-size: 80px 60px;
+	}
+	
 }
 
 

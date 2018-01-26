@@ -3984,7 +3984,7 @@ ul.activity-list li {
 	overflow: hidden;
 	padding: 15px 10px;
   list-style: none;
-  background: ##efeeee;  
+  background: #efeeee;  
 	margin: 10px 0;
 }
 
@@ -4669,6 +4669,16 @@ Site Footer
 	.page-bottom img.rpwe-thumb {
 		height: auto;
 	}	
+	
+	.pum-title {
+		margin: 60px auto 40px auto;
+	}
+	
+	.pum-theme-add-picture .pum-container, 
+	.pum-theme-small-form .pum-container,
+	.pum-theme-default-theme .pum-container {
+    background-size: 80px 60px;
+	}
 	
 }
 

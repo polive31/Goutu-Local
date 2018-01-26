@@ -58,15 +58,16 @@ do_action( 'bp_before_activity_entry' ); ?>
 
 				<?php global $activities_template;?>
 				
-				<?php //print_r($activities_template->activity);?>
-				
+				<?php //print_r($activities_template->activity);
+				?>
 				<!-- <a href="#activity-<?php echo $activities_template->activity->item_id; ?>" class="social-button view bp-secondary-action" title="<?php esc_attr_e( 'Show conversation', 'foodiepro' ); ?>"><?php _e( 'Show conversation', 'foodiepro' ); ?></a>-->
 				<!-- To show a particular comment rather than whole conversation -->
 				<!-- <a href="#acomment-<?php echo $activities_template->activity->id; ?>" class="social-button view bp-secondary-action" title="<?php esc_attr_e( 'Show conversation', 'foodiepro' ); ?>"><?php _e( 'Show conversation', 'foodiepro' ); ?></a>-->
+				<?php
+			
+				echo do_shortcode('[social-button type="conversation"]');
 
-				<a href="<?php bp_activity_thread_permalink(); ?>" class="social-button view bp-secondary-action"><?php esc_attr_e( 'Show conversation', 'foodiepro' ); ?></a>
-
-			<?php endif; ?>
+				endif; ?>
 
 			<?php if ( is_user_logged_in() ) : 
 
@@ -117,10 +118,10 @@ do_action( 'bp_before_activity_entry' ); ?>
 					<div class="ac-reply-avatar"><?php bp_loggedin_user_avatar( 'width=' . BP_AVATAR_THUMB_WIDTH . '&height=' . BP_AVATAR_THUMB_HEIGHT ); ?></div>
 					<div class="ac-reply-content">
 						<div class="ac-textarea">
-							<label for="ac-input-<?php bp_activity_id(); ?>" class="bp-screen-reader-text"><?php
+							<!-- <label for="ac-input-<?php bp_activity_id(); ?>" class="bp-screen-reader-text"><?php
 								/* translators: accessibility text */
 								_e( 'Comment', 'buddypress' );
-							?></label>
+							?></label>-->
 							<textarea id="ac-input-<?php bp_activity_id(); ?>" class="ac-input bp-suggestions" name="ac_input_<?php bp_activity_id(); ?>"></textarea>
 						</div>
 						<input type="submit" name="ac_form_submit" value="<?php esc_attr_e( 'Post', 'buddypress' ); ?>" />

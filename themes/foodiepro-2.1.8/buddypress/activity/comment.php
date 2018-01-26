@@ -36,7 +36,7 @@ do_action( 'bp_before_activity_comment' ); ?>
 
 		<?php if ( is_user_logged_in() && bp_activity_can_comment_reply( bp_activity_current_comment() ) ) : ?>
 
-			<a href="#acomment-<?php bp_activity_comment_id(); ?>" class="acomment-reply bp-primary-action social-button" id="acomment-reply-<?php bp_activity_id(); ?>-from-<?php bp_activity_comment_id(); ?>"><?php _e( 'Reply', 'buddypress' ); ?></a>
+			<?php echo do_shortcode('[social-button type="reply"]');	?>
 
 		<?php endif; ?>
 

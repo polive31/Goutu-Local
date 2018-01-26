@@ -124,31 +124,46 @@ add_shortcode('if', 'bp_conditional_text');
 function bp_social_button( $atts ) {
 		$a = shortcode_atts( array(
     	'text' => '', // backup text
-    	'type' => 'like', // like, unlike, comment, delete
+    	'type' => 'like', // like, unlike, comment, tete
 		), $atts );
 		
 		switch ($a['type']) {
 			case "like":
 				$html='<a href="' . bp_get_activity_favorite_link() . '" class="social-button fav bp-secondary-action" title="' . __( 'I like that', 'foodiepro' ) . '">';
-				$html.='<i class="fa fa-thumbs-o-up"></i>';
+				//$html.='<i class="fa fa-thumbs-o-up"></i>';
+				$html.='<i class="fi fi-glove fi-off"></i>';
 				$html.='</a>';
 				break;
 			case "unlike":
 				$html='<a href="' . bp_get_activity_unfavorite_link() . '" class="social-button unfav bp-secondary-action" title="' . __( 'I don\'t like that anymore', 'foodiepro' ) . '">';
-				$html.='<i class="fa fa-thumbs-up"></i>';
+				/*$html.='<span class="fa fa-stack">';
+				$html.='<i class="fa fa-thumbs-up fa-stack-1x"></i>';
+				$html.='<i class="fa fa-thumbs-o-up fa-stack-1x"></i>';
+				$html.='</span>';*/		
+				$html.='<i class="fi fi-glove fi-on"></i>';
 				$html.='</a>';			
 				break;
 			case "comment":
 				$html='<a href="' . bp_get_activity_comment_link() . '" class="social-button acomment-reply bp-primary-action" id="acomment-comment-' . bp_get_activity_id() . '" title="' . __( 'Comment', 'foodiepro' ) . '">';
-				//$html='<a href="' . bp_get_activity_comment_link() . '" class="social-button acomment-reply bp-primary-action" id="acomment-comment-' . bp_get_activity_id() . '" title="' . __( 'Comment', 'foodiepro' ) . '">';
 				$html.='<i class="fa fa-commenting-o"></i><span>' . bp_activity_get_comment_count() . '</span>';
 				$html.='</a>';			
 				break;
+			case "reply":
+				$html='<a href="#acomment-' . bp_get_activity_comment_id() . '" class="acomment-reply bp-primary-action social-button" id="acomment-reply-' . bp_get_activity_id() . '-from-' . bp_get_activity_comment_id() . '" title="' . __( 'Reply', 'foodiepro' ) . '">';
+				$html.='<i class="fa fa-reply"></i>';
+				$html.='</a>';			
+				break;	
+			case "conversation":
+				$html='<a href="' . bp_get_activity_thread_permalink() . '" class="social-button view bp-secondary-action" title="' . esc_attr__( 'Show conversation', 'foodiepro' ) . '">';
+				$html.='<i class="fa fa-comments-o"></i>';
+				$html.='</a>';			
+				break;								
 			case "delete":
 				$html=custom_get_activity_delete_link();
 				break;
 			case "delete-comment":
-				$delete_icon = '<i class="fa fa-trash-o"></i>'; 
+				//$delete_icon = '<i class="fa fa-trash-o"></i>'; 
+				$delete_icon = '<i class="fa fa-times"></i>'; 
 				$html='<a href="' . bp_get_activity_comment_delete_link() . '" class="social-button delete acomment-delete confirm bp-secondary-action" rel="nofollow" title="' . __( 'Delete', 'foodiepro' ) . '">' . $delete_icon . '</a>';
 				break;
 				
@@ -174,7 +189,8 @@ function custom_get_activity_delete_link() {
 
 	$url   = bp_get_activity_delete_url();
 	$class = 'delete-activity';
-	$delete_icon = '<i class="fa fa-trash-o"></i>';
+	//$delete_icon = '<i class="fa fa-trash-o"></i>';
+	$delete_icon = '<i class="fa fa-times"></i>';
 
 	// Determine if we're on a single activity page, and customize accordingly.
 	if ( bp_is_activity_component() && is_numeric( bp_current_action() ) ) {

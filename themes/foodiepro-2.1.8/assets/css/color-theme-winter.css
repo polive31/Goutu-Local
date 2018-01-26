@@ -19,6 +19,7 @@
 	background-color: rgba(255, 255, 255, 0.8);
 }
 
+.home body,
 body {
 	background-color:rgba(224, 224, 224, 0.34);
 }
@@ -138,7 +139,7 @@ input, select, textarea,
 -------------------------------------------- */
 .widget-text.wp_widget_plugin_box, 
 .home-top .widget.widget_bp_whats_new {
-  background-color: #dad5ce;
+  background-color: #efeeee;
   margin-bottom: 30px;
 }
 

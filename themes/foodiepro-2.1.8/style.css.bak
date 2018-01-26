@@ -277,12 +277,34 @@ input[type="submit"].social-button,
 .social-button {
   font-size: 20px;
   color: #b3b3b3;
-  padding: 0 10px;
-  font-variant: small-caps;
+  padding: 0 5px;
 }
 
-.social-button .fa-thumbs-up {
-  color: #5d5d5de8;
+.social-button.fav,
+.social-button.unfav {
+	font-size: 25px;
+  display: inline-block;
+  vertical-align: middle;	
+}
+
+.social-button.unfav .fa-thumbs-up {
+	color: #ffffff;
+}
+
+.social-button.unfav .fa-thumbs-o-up {
+	color: #5d5d5d;
+}
+
+/* Prevents vertical shift on hover */
+.social-button:before {
+	content:'';
+	font-size:25px;
+}
+
+a.social-button:hover {
+  color: #5d5d5d;
+	text-shadow: #6b6b6b 2px 2px 6px;  
+	font-size: 25px;
 }
 
 /* Text area and selec specific formatting */
@@ -2271,6 +2293,10 @@ i.fi {
 	margin:6px 2px 0 1px
 }
 
+.activity-list i.fi {
+	width:33px;
+	height:25px;
+}
 
 .recipe i.fi {
 	width:24px;
@@ -2280,6 +2306,11 @@ i.fi {
 
 i.fi.fi-star {
 	background:url("images/rating-icons/rating-hat.png") no-repeat;
+	background-size:cover;
+}
+
+i.fi.fi-glove {
+	background:url("images/social-icons/glove.png") no-repeat;
 	background-size:cover;
 }
 
@@ -2294,6 +2325,19 @@ i.fi.fi-on {
 
 i.fi.fi-off {
 	background-position: 100% 0;
+}
+
+.activity-list i.fi.fi-off {
+	background-position: 50% 0;
+}
+
+.activity-list i.fi.fi-on:hover,
+.activity-list i.fi.fi-off:hover {
+	background-position: 100% 0;
+}
+
+i.fi.fi-off:hover {
+	background-position: 200% 0;
 }
 
 i.fi.fi-half.fi-off {
@@ -3965,8 +4009,6 @@ textarea#whats-new::-webkit-scrollbar {
 textarea#whats-new:focus {
 	border-color: #CCC!important;
 	outline-color: #CCC;
-	/*border-color: rgba(31, 179, 221, 0.9) !important;
-	outline-color: rgba(31, 179, 221, 0.9);*/
 	resize: vertical;
 }
 
@@ -3989,7 +4031,9 @@ ul.activity-list li {
 }
 
 .activity-list .activity-meta {
-   float: right;
+  float: right;
+  text-align: right;
+  width: 200px;   
 }
 
 .activity-list .activity-avatar img {
@@ -4574,10 +4618,6 @@ Site Footer
 		margin:16px auto ;
 	}
 
-	.genesis-nav-menu li.right {
-		display:none;
-	}
-
 	.entry-footer .entry-meta {
 		margin:0;
 		padding-top:12px;
@@ -4624,7 +4664,8 @@ Site Footer
 	
 	.site-header .widget-area,	
 	.sidebar {
-		display:none;
+		/*display:none;*/
+		float:left;
 	}
 	
 	.title-area {
@@ -4671,6 +4712,7 @@ Site Footer
 	}	
 	
 	.pum-title {
+		text-align:left;
 		margin: 60px auto 40px auto;
 	}
 	

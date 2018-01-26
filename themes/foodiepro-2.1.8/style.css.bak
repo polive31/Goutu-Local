@@ -3192,6 +3192,17 @@ nav.nav-primary .wrap {
 	/*border-color:#9c9b9b;*/
 }
 
+/* Last registered widget */
+.avatar-block {
+  float: left;
+  width: 100%;
+}
+
+.item-avatar {
+  margin: 3px;
+  display: inline-block;
+}
+
 
 /* Content Area
 ---------------------------------------------------------------------------------------------------- */

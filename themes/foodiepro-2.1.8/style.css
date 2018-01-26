@@ -4673,12 +4673,10 @@ Site Footer
 		display:initial;
 	}
 	
-	.site-header .widget-area,	
-	.sidebar {
-		/*display:none;*/
-		float:left;
+	.site-header .widget-area {
+		display:none;
 	}
-	
+		
 	.title-area {
   	height:100px;
 	}	

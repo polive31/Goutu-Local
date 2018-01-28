@@ -417,39 +417,7 @@ select#field_84_year {
 /*--------------------------------------------------------------
 3.4 - Errors / Success Messages
 --------------------------------------------------------------*/
-#buddypress div#message {
-	margin: 0 0 15px;
-}
-#buddypress #message.info {
-	margin-bottom: 0;
-}
-#buddypress div#message.updated {
-	clear: both;
-	display: block;
-}
-#buddypress div#message p,
-#sitewide-notice p {
-	font-size: 90%;
-	display: block;
-	padding: 10px 15px;
-}
-#buddypress div#message.error p {
-	background-color: #fdc;
-	border: 1px solid #a00;
-	clear: left;
-	color: #800;
-}
-#buddypress div#message.warning p {
-	background-color: #ffe0af;
-	border: 1px solid #ffd087;
-	clear: left;
-	color: #800;
-}
-#buddypress div#message.updated p {
-	background-color: #efc;
-	/*border: 1px solid #591;*/
-	color: #250;
-}
+
 #buddypress #pass-strength-result {
 	background-color: #eee;
 	border-color: #ddd;

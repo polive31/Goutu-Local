@@ -7,6 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Custom_Recipe_Templates {
 	
+	const RECIPES_PUBLISH_SLUG = 'publier-recettes';
+	const RECIPE_NEW_SLUG = 'nouvelle-recette';
+	const RECIPE_EDIT_SLUG = 'modifier-recette';
 	protected static $_PluginPath;	
 	
 	public function __construct() {
@@ -19,6 +22,8 @@ class Custom_Recipe_Templates {
 		/* Load stylesheets */
 		add_filter ( 'wpurp_assets_css', array($this,'enqueue_wpurp_css'), 15, 1 );
 
+		/* Customize User Submission shortcode */
+		add_filter ( 'wpurp_user_submissions_current_user_edit_item', array($this, 'remove_recipe_list_on_edit_recipe'), 15, 2 );
 
 		/* Custom menu template */
 		//add_filter( 'wpurp_user_menus_form', 'wpurp_custom_menu_template', 10, 2 );
@@ -48,6 +53,14 @@ class Custom_Recipe_Templates {
 			//$this->dbg('Plugin path', self::$_PluginPath);
 	}	
 	
+	
+/* Custom Menu Template */	
+	public function wpurp_custom_menu_template( $form, $menu ) {
+		return '';
+	}
+	
+	
+/* Custom Enqueue CSS */	
 	public function enqueue_wpurp_css($css_enqueue) {
 				
 		//$this->dbg('In Enqueue WPURP CSS', '');
@@ -80,7 +93,7 @@ class Custom_Recipe_Templates {
 			);		
 		}
 		
-		elseif ( is_page( ['nouvelle-recette', 'publier-recettes'] ) ) {
+		elseif ( is_page( [self::RECIPES_PUBLISH_SLUG, self::RECIPE_NEW_SLUG, self::RECIPE_EDIT_SLUG] ) ) {
 			//echo '<pre>' . print_r($css_enqueue,true) . '</pre>';
 		  $css_enqueue[]=
 							array(
@@ -92,12 +105,7 @@ class Custom_Recipe_Templates {
 		return $css_enqueue;
 	}
 
-
-	public function wpurp_custom_menu_template( $form, $menu ) {
-		return '';
-	}
-
-
+/* Custom Enqueue JS */
 	public function enqueue_wpurp_js($js_enqueue) {
 		
 			if ( is_admin() ) return $js_enqueue;
@@ -215,7 +223,7 @@ class Custom_Recipe_Templates {
 				}
 			}
 			
-			elseif ( is_page( ['nouvelle-recette', 'publier-recettes'] ) ) {
+			elseif ( is_page( [self::RECIPES_PUBLISH_SLUG, self::RECIPE_NEW_SLUG, self::RECIPE_EDIT_SLUG] ) ) {
 			 $js_enqueue = $js_enqueue;
 			}
 			
@@ -224,6 +232,21 @@ class Custom_Recipe_Templates {
 			}
 			
 		return $js_enqueue;
+	}
+
+	
+/* Custom Recipe Submission Shortcode */
+	public function remove_recipe_list_on_edit_recipe( $item, $recipe ) {
+		if ( isset( $_GET['wpurp-edit-recipe'] ) )
+			$html = '';
+		else {
+			$url = get_permalink() . self::RECIPE_EDIT_SLUG;	
+			//$url = 'http://www.goutu.main/accueil/publier/publier-recettes/recipe-edit/';	
+			$html = '<li>';
+      $html .= '<a href="' . $url . '?wpurp-edit-recipe=' . $recipe->ID() . '">' . $recipe->title() . '</a>';
+      $html .= '</li>';
+		}
+		return $html;
 	}
 	
 	

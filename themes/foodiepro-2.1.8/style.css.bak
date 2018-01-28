@@ -961,8 +961,6 @@ p.wp_widget_plugin_textarea {
  	font-size:18px;	  
 }
 
-
-
 .widget.back ul li a {
 	text-transform:uppercase;
 }
@@ -1731,8 +1729,38 @@ h2.entry-title, .wpupg-post-title,
 	list-style:none;
 }
 
-/*
-Widgets
+
+/* Form Submission Messages
+--------------------------------------------------------------*/
+p.successbox,
+#message.updated {
+	clear: both;
+	display: block;
+	padding:10px;
+}
+
+#message.error p {
+	background-color: #fdc;
+	border: 1px solid #a00;
+	clear: left;
+	color: #800;
+}
+
+#message.warning p {
+	background-color: #ffe0af;
+	border: 1px solid #ffd087;
+	clear: left;
+	color: #800;
+}
+
+p.successbox,
+#message.updated p {
+	background-color: #efc!important;
+	/*border: 1px solid #591;*/
+	color: #250;
+}
+
+/* Widgets
 ---------------------------------------------------------------------------------------------------- */
 
 /* General Widget formatting
@@ -4673,12 +4701,10 @@ Site Footer
 		display:initial;
 	}
 	
-	.site-header .widget-area,	
-	.sidebar {
-		/*display:none;*/
-		float:left;
+	.site-header .widget-area {
+		display:none;
 	}
-	
+		
 	.title-area {
   	height:100px;
 	}	

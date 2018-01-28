@@ -165,8 +165,8 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 		      newVal = 1;
 		    }
 		  }
-		  $button.parent().find("input").val(newVal);
-		  
+		  $input.val(newVal);
+		  $input.trigger("change");
 		});
 	</script>
 	

@@ -3,11 +3,8 @@
 
 class Custom_Recipe_Template extends Custom_Recipe_Templates {
 	
-	protected $logged_in;
-	
 	public function __construct() {
 		/* Custom recipe template */
-		$this->logged_in = is_user_logged_in();
 		add_filter( 'wpurp_output_recipe', array($this,'wpurp_custom_recipe_template'), 10, 2 );
 		
 	}

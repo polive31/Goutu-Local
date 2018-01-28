@@ -11,10 +11,12 @@ class Custom_Recipe_Templates {
 	const RECIPE_NEW_SLUG = 'nouvelle-recette';
 	const RECIPE_EDIT_SLUG = 'modifier-recette';
 	protected static $_PluginPath;	
+	protected $logged_in;
 	
 	public function __construct() {
-		
+	
 		self::$_PluginPath = plugin_dir_url( dirname( __FILE__ ) );
+		$this->logged_in = is_user_logged_in();	
 		
 		/* Load javascript styles */
 		add_filter ( 'wpurp_assets_js', array($this,'enqueue_wpurp_js'), 15, 1 );

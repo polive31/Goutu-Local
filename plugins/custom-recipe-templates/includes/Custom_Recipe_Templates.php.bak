@@ -11,9 +11,11 @@ class Custom_Recipe_Templates {
 	const RECIPE_NEW_SLUG = 'nouvelle-recette';
 	const RECIPE_EDIT_SLUG = 'modifier-recette';
 	protected static $_PluginPath;	
+	protected $logged_in;
 	
 	public function __construct() {
-		
+	
+		$this->logged_in = is_user_logged_in();	
 		self::$_PluginPath = plugin_dir_url( dirname( __FILE__ ) );
 		
 		/* Load javascript styles */
@@ -238,7 +240,7 @@ class Custom_Recipe_Templates {
 /* Custom Recipe Submission Shortcode */
 	public function remove_recipe_list_on_edit_recipe( $item, $recipe ) {
 		if ( isset( $_GET['wpurp-edit-recipe'] ) )
-			$html = $item;
+			$html = '';
 		else {
 			$url = get_permalink() . self::RECIPE_EDIT_SLUG;	
 			//$url = 'http://www.goutu.main/accueil/publier/publier-recettes/recipe-edit/';	

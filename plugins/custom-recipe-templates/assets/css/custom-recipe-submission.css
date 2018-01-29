@@ -20,6 +20,13 @@
   margin-top: 40px;
 }
 
+label.recipe-image,
+label.recipe-title {
+	font-family:Oswald, sans-serif;
+	font-size: 25px;
+	font-variant: small-caps;
+}
+
 #wpurp_user_submission_form textarea,
 #wpurp_user_submission_form input[type="text"] {
 	font-size:13px;
@@ -28,6 +35,14 @@
 #wpurp_user_submission_form table#recipe-instructions {
   border-collapse:separate; 
   border-spacing: 0 20px;
+}
+
+#wpurp_user_submission_form tr.instruction {
+  background-color: #e4e4e4;
+}
+
+#wpurp_user_submission_form tr.instruction td {
+	padding:10px;
 }
 
 #wpurp_user_submission_form label {
@@ -46,10 +61,11 @@
   font-size: 13px;
   border-radius: 5px;
   border: 1px solid #AAA;
+	color: #616161;  
 }
 
 #wpurp_user_submission_form input.recipe_thumbnail_image {
-  background-color: #8e8e8e;
+  /*background-color: #8e8e8e;*/
   margin:0px 10px 30px 0;
   padding: 6px 10px;
 }
@@ -110,7 +126,7 @@
 #wpurp_user_submission_form a:hover {
 	font-weight:400;
 	text-decoration:none;
-	color:initial;
+	color: #616161;
 }
 
 #wpurp_user_submission_form #wp-recipe_notes-wrap,
@@ -174,4 +190,24 @@ table#recipe-instructions .recipe_instructions_thumbnail,
     color: white;
     border: 1px solid #666;
     margin:10px;
+}
+
+
+/* Media Queries */
+
+
+/* Smartphone */
+@media only screen 
+	and (max-width:870px) {
+
+	#wpurp_user_submission_form .instruction-text {
+	  width: 100%;
+	  clear:both;
+	}
+
+	#wpurp_user_submission_form .instruction-image {
+	  width: 100%;
+	  clear:both;
+	}
+	
 }

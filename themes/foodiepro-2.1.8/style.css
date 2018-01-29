@@ -4808,7 +4808,7 @@ Site Footer
 	
 	.home .site-header,
 	.site-header {
-		background:none;
+		background:none!important;
 	}
 	
 	.foodie-pro .header-inner {

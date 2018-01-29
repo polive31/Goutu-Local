@@ -38,7 +38,7 @@
 <?php } ?>
         </div>
         <div class="recipe-tags-container">
-						<h4><?php _e( 'Recipe Tags', 'foodiepro' ) ?></h4>
+						<p><label class="recipe-tags"><?php _e( 'Recipe Tags', 'foodiepro' ) ?></label></p>
             <p class="taxonomy-select-boxes">
 <?php
         $select_fields = array();

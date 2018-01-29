@@ -32,17 +32,23 @@ label.recipe-title {
 	font-size:13px;
 } 	
 
+#wpurp_user_submission_form table#recipe-ingredients,
 #wpurp_user_submission_form table#recipe-instructions {
   border-collapse:separate; 
   border-spacing: 0 20px;
 }
 
+#wpurp_user_submission_form tr.ingredient,
 #wpurp_user_submission_form tr.instruction {
   background-color: #e4e4e4;
 }
 
+#wpurp_user_submission_form tr.ingredient td {
+	padding:0 10px;	
+}
+
 #wpurp_user_submission_form tr.instruction td {
-	padding:10px;
+	padding:10px 10px;
 }
 
 #wpurp_user_submission_form label {

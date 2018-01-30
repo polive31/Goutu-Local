@@ -1,6 +1,14 @@
 /* Custom Recipe Submission 
 -------------------------------------------*/
 
+/* Custom Recipe Submission List */
+ul.wpurp-user-submissions-current-user-edit {
+    font-family: sans-serif;
+}
+
+
+/* Custom Recipe Submission Form
+-------------------------------------------*/
 #wpurp_user_submission_form {
 	background-color:#f3f3f3;
 	padding:10px;
@@ -240,8 +248,8 @@ table#recipe-instructions .recipe_instructions_thumbnail,
 }
 
 
-/* Media Queries */
-
+/* MEDIA QUERIES
+--------------------------------------------*/
 
 /* Smartphone */
 @media only screen 

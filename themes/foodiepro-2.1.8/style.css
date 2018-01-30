@@ -1739,20 +1739,7 @@ p.successbox,
 	clear: both;
 	display: block;
 	padding:10px;
-}
-
-#message.error p {
-	background-color: #fdc;
-	border: 1px solid #a00;
-	clear: left;
-	color: #800;
-}
-
-#message.warning p {
-	background-color: #ffe0af;
-	border: 1px solid #ffd087;
-	clear: left;
-	color: #800;
+	margin: 0 0 30px 0;
 }
 
 p.successbox,
@@ -1762,6 +1749,34 @@ p.successbox,
 	font-size: 16px;
   font-weight: 400;	
 }
+
+.wpurp-errors,
+#message.error p {
+	background-color: #fdc;
+	clear: left;
+	color: #800;
+	padding:10px;
+	margin: 0 0 30px 0;
+	font-size: 16px;
+  font-weight: 300;	
+}
+
+.wpurp-errors li {
+	font-weight:400;
+}
+
+
+#message.warning p {
+	background-color: #ffe0af;
+	clear: left;
+	color: #800;
+	padding:10px;
+	margin: 0 0 30px 0;
+	font-size: 16px;
+  font-weight: 400;	
+}
+
+
 
 /* Widgets
 ---------------------------------------------------------------------------------------------------- */

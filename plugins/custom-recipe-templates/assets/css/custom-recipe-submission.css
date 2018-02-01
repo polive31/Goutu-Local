@@ -1,12 +1,6 @@
 /* Custom Recipe Submission 
 -------------------------------------------*/
 
-/* Custom Recipe Submission List */
-ul.wpurp-user-submissions-current-user-edit {
-    font-family: sans-serif;
-}
-
-
 /* Custom Recipe Submission Form
 -------------------------------------------*/
 #wpurp_user_submission_form {
@@ -20,28 +14,53 @@ ul.wpurp-user-submissions-current-user-edit {
   width: 20%!important;
 }
 
+/* Fonts */
+ul.wpurp-user-submissions-current-user-edit {
+    font-family: sans-serif;
+}
+
+#wpurp_user_submission_form label {
+  font-weight: 400;
+  color: #616161;
+  font-family: sans-serif;
+}
+
+#wpurp_user_submission_form label.recipe-tags,
+#wpurp_user_submission_form label.recipe-image,
+#wpurp_user_submission_form label.recipe-title,
 #wpurp_user_submission_form h4 {
   font-family: "Oswald", sans-serif;
+	font-size: 25px;
+	font-variant: small-caps;
+}
+
+#wpurp_user_submission_form textarea,
+#wpurp_user_submission_form input[type="text"],
+#wpurp_user_submission_form input[type="number"] {
+	font-size:13px;
+} 	
+
+/* Headlines */
+
+#wpurp_user_submission_form h4 {
   float: left;
   clear: both;
 	color: #616161;
   margin-top: 40px;
 }
 
-label.recipe-tags,
-label.recipe-image,
-label.recipe-title {
-	font-family:Oswald, sans-serif;
-	font-size: 25px;
-	font-variant: small-caps;
+/* Tags section */
+
+#wpurp_user_submission_form .select2wpurp-container {
+  min-width: 200px;
+  vertical-align: top !important;
+  margin: 0 5px 5px 0 !important;
+  letter-spacing: normal; 
 }
 
-#wpurp_user_submission_form textarea,
-#wpurp_user_submission_form input[type="text"] {
-	font-size:13px;
-} 	
-
-/* Tags section */
+#wpurp_user_submission_form .select2wpurp-container li.select2wpurp-search-field {
+  background: none !important; 
+}
 
 .select2wpurp-container-multi .select2wpurp-choices .select2wpurp-search-choice {
 	font-family:sans-serif;
@@ -53,6 +72,11 @@ select#recipe-occasion option {
     font-family: sans-serif;
     font-size: 14px!important;
 }
+
+.select2-results__options{
+	font-family:sans-serif!important;
+}
+
 
 /* Ingredients & Instructions section 
 --------------------------------------------------------------------*/
@@ -89,6 +113,12 @@ table#recipe-ingredients input.ingredients_amount {
 
 table#recipe-ingredients input.ingredients_unit {
     max-width: 120px;
+}
+
+.ingredient-field-header td {
+	color: #616161;
+  padding: 10px 0px 0 15px;
+  font-size: 16px;
 }
 
 #wpurp_user_submission_form tr.instruction td {

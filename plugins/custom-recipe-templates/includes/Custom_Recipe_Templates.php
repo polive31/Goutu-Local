@@ -96,14 +96,34 @@ class Custom_Recipe_Templates {
 		}
 		
 		elseif ( is_page( [self::RECIPES_PUBLISH_SLUG, self::RECIPE_NEW_SLUG, self::RECIPE_EDIT_SLUG] ) ) {
-			//echo '<pre>' . print_r($css_enqueue,true) . '</pre>';
+//		  $css_enqueue=null;
+//		  $css_enqueue[]=
+//							array(
+//		              'name' => 'jquery-ui',
+//		              'file' => '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css',
+//		              'direct' => true,
+//		              'public' => true,
+//		              'url' => '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css',
+//		              'dir' => '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css',
+//		          ); 
+//		  $css_enqueue[]=
+//							array(
+//		              'file' =>  self::$_PluginPath . 'vendor/select2/css/select2.min.css',
+//		              'url' =>  self::$_PluginPath . 'vendor/select2/css/select2.min.css',
+//		              'dir' =>  self::$_PluginPath . 'vendor/select2/css/select2.min.css',
+//		              'public' => true,
+//		              'direct' => true,
+//		          ); 			
 		  $css_enqueue[]=
 							array(
 		              'url' => self::$_PluginPath . 'assets/css/custom-recipe-submission.css',
+		              'dir' => self::$_PluginPath . 'assets/css/custom-recipe-submission.css',
 		              'public' => true,
-		          ); 
+		              'direct' => true,
+		          ); 			
 		}
 		
+		//echo '<pre style="margin-top:200px">' . print_r($css_enqueue,true) . '</pre>';
 		return $css_enqueue;
 	}
 

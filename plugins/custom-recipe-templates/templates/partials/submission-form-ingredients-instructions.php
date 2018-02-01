@@ -7,6 +7,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
 <script>
     function autoSuggestTag(id, type) {
         <?php if( WPUltimateRecipe::option( 'disable_ingredient_autocomplete', '' ) !== '1' ) { ?>
+        console.log('ingredient autocomplete active');
         jQuery('#' + id).suggest("<?php echo get_bloginfo( 'wpurl' ); ?>/wp-admin/admin-ajax.php?action=ajax-tag-search&tax=" + type);
         <?php } ?>
     }
@@ -126,8 +127,8 @@ if( !isset( $required_fields ) ) $required_fields = array();
         <thead>
         <tr class="ingredient-group ingredient-group-first">
             <td class="mobile-hidden">&nbsp;</td>
-            <td><strong><?php _e( 'Group', 'foodiepro' ); ?>:</strong></td>
-            <td colspan="2">
+            <td class="header"><?php _e( 'Group', 'foodiepro' ); ?>:</td>
+            <td class="name" colspan="2">
                 <span class="ingredient-groups-disabled"><?php echo __( 'Main Ingredients', 'foodiepro' ) . ' ' . __( '(this label is not shown)', 'foodiepro' ); ?></span>
                 <?php
                 $previous_group = '';
@@ -144,15 +145,15 @@ if( !isset( $required_fields ) ) $required_fields = array();
             <td>&nbsp;</td>
             <td><?php _e( 'Quantity', 'foodiepro' ); ?></td>
             <td><?php _e( 'Unit', 'foodiepro' ); ?></td>
-            <td><?php _e( 'Ingredient', 'foodiepro' ); ?> <span class="wpurp-required">(<?php _e( 'required', 'foodiepro' ); ?>)</span></td>
+            <td><?php _e( 'Ingredient (singular)', 'foodiepro' ); ?> <span class="wpurp-required">*</span></td>
             <td><?php _e( 'Notes', 'foodiepro' ); ?></td>
         </tr>
         </thead>
         <tbody>
         <tr class="ingredient-group-stub">
             <td class="mobile-hidden">&nbsp;</td>
-            <td><strong><?php _e( 'Group', 'foodiepro' ); ?>:</strong></td>
-            <td colspan="2"><input type="text" class="ingredient-group-label" /></td>
+            <td class="header"><?php _e( 'Group', 'foodiepro' ); ?>:</td>
+            <td class="name" colspan="2"><input type="text" class="ingredient-group-label" /></td>
             <td class="mobile-hidden">&nbsp;</td>
             <td class="center-column delete-button" colspan="2"><span class="ingredient-group-delete"><!--img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16">--></span></td>
         </tr>
@@ -176,8 +177,8 @@ if( !isset( $required_fields ) ) $required_fields = array();
                 if( $ingredient['group'] != $previous_group ) { ?>
                     <tr class="ingredient-group">
                         <td class="mobile-hidden">&nbsp;</td>
-                        <td><strong><?php _e( 'Group', 'foodiepro' ); ?>:</strong></td>
-                        <td colspan="2"><input type="text" class="ingredient-group-label" value="<?php echo esc_attr( $ingredient['group'] ); ?>" /></td>
+                        <td class="header"><?php _e( 'Group', 'foodiepro' ); ?>:</td>
+                        <td class="name" colspan="2"><input type="text" class="ingredient-group-label" value="<?php echo esc_attr( $ingredient['group'] ); ?>" /></td>
                         <td class="mobile-hidden">&nbsp;</td>
                         <td class="center-column delete-button" colspan="2"><span class="ingredient-group-delete">&nbsp;<!--<img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16">--></span></td>
                     </tr>

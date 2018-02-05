@@ -307,9 +307,10 @@ a.social-button:hover {
 	font-size: 25px;
 }
 
-/* Text area and selec specific formatting */
+/* Text area and select specific formatting */
 input[type="email"],
 input[type="text"],
+input[type="number"],
 input[type="password"],
 input[type="search"],
 optgroup,

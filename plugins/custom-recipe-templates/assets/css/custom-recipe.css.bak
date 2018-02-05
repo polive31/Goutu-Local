@@ -160,11 +160,6 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 	width:20px;
 	float:left;
 }
-
-#servings .recipe-label,
-#servings .recipe-input {
-	padding-top: 4px;
-}
 	
 #servings .recipe-label:before {
 	content:"\f0f5";
@@ -186,16 +181,6 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 	content:"\f04c";
 }
 
-.adjust-recipe-servings {
-	width:30px;
-	padding:2px;
-	background:white;
-	border:1px solid #bbbbbb;
-	border-radius:0;
-	line-height:20px;
-	font-size:16px;
-}
-
 #servings .fa {
   font-size: 20px;
   margin: 0 3px;
@@ -203,17 +188,26 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
   font-size: 20px;
   margin: 0 3px;
   color: #444;
+  cursor:pointer;
 }
 
-#servings .recipe-input {
-  display:inline-block;
-  vertical-align:top;
-}
-
+#servings .recipe-label,
+#servings .recipe-input,
 #servings #dec,
 #servings #inc {
   display: inline-block;
   vertical-align: middle;
+}
+
+input.adjust-recipe-servings {
+  width: 50px;
+  vertical-align: middle;
+  padding: 6px;
+	background:white;
+	border:1px solid #bbbbbb;
+	border-radius:0;
+	line-height:20px;
+	font-size:16px;
 }
 
 #servings .fa:hover {

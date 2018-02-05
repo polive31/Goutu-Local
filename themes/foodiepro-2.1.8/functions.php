@@ -238,15 +238,16 @@ add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_js' );
 function foodie_pro_enqueue_js() {
 	$js_uri = CHILD_THEME_URL . '/assets/js/';
 	// Add general purpose scripts.
-	wp_enqueue_script(
-		'foodie-pro-general',
-		$js_uri . 'general.js',
-		array( 'jquery' ),
-		CHILD_THEME_VERSION,
-		true
-	);
+	wp_enqueue_script( 'foodie-pro-general', $js_uri . 'general.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
+	// .webp detection
+	wp_enqueue_script( 'modernizr', $js_uri . 'modernizr-custom.js', array(), CHILD_THEME_VERSION );
 }
 
+/* Add the theme name class to the body element. */
+add_filter('language_attributes', 'modernizr');
+function modernizr($output) {
+	return $output . ' class="no-js"';
+}
 
 /**
  * Add the theme name class to the body element.
@@ -315,7 +316,6 @@ add_action( 'wp_admin_enqueue_scripts', 'load_admin_stylesheet' );
 function load_admin_stylesheet() {
 	wp_enqueue_style( 'admin-css', CHILD_THEME_URL . '/assets/css/admin.css', array(), CHILD_THEME_VERSION );		
 }
-
 
 
 /* =================================================================*/
@@ -387,6 +387,7 @@ add_action( 'wp_print_styles', 'megamenu_dequeue_google_fonts', 100 );
 function megamenu_dequeue_google_fonts() {
    wp_dequeue_style( 'megamenu-google-fonts' );
 }
+
 
 /* =================================================================*/
 /* =              STYLING     
@@ -868,4 +869,3 @@ function sp_footer_creds_filter( $creds ) {
 }
 
 add_filter('genesis_footer_creds_text', 'sp_footer_creds_filter');
-

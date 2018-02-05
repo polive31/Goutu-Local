@@ -2,17 +2,33 @@
 --------------------------------------------- */
 
 .site-header {
-	background:url("../../images/theme/background-winter/background-l-small.jpg"),url("../../images/theme/background-winter/background-r-small.jpg");
 	background-position:top left, top right;
 	background-repeat:no-repeat;
   background-color: #ffffff;	
 }
 
 .home .site-header {
-	background:url("../../images/theme/background-winter/background-l.jpg"),url("../../images/theme/background-winter/background-r.jpg");
 	background-position: 10px 10px, right 10px top 10px;
 	background-repeat:no-repeat;
   background-color: #ffffff;	
+}
+
+.no-js .home .site-header,
+.no-webp .home .site-header {
+	background-image:url("../../images/theme/background-winter/background-l.jpg"),url("../../images/theme/background-winter/background-r.jpg");
+}
+
+.webp .home .site-header {
+	background-image:url("../../images/theme/background-winter/background-l.webp"),url("../../images/theme/background-winter/background-r.webp");
+}
+
+.no-js .site-header,
+.no-webp .site-header {
+	background-image:url("../../images/theme/background-winter/background-l-small.jpg"),url("../../images/theme/background-winter/background-r-small.jpg");
+}
+
+.webp .site-header {
+	background-image:url("../../images/theme/background-winter/background-l-small.webp"),url("../../images/theme/background-winter/background-r-small.webp");
 }
 
 .foodie-pro .header-inner {
@@ -24,20 +40,30 @@ body {
 	background-color:rgba(224, 224, 224, 0.34);
 }
 
-
 .site-container {
 	background-color:#FFF;
 /*  background-color: rgba(255, 255, 255, 0.7);
   background-image: url("../../images/container/bedge-grunge-beige.png");*/
 }
 
-.site-title a {
+.no-js .site-title a,
+.no-webp .site-title a {
 	background:url("../../images/theme/logo-white/logo_320_100.png") no-repeat center;
 }
 
-.home-page .site-title a {
+.webp .site-title a {
+	background:url("../../images/theme/logo-white/logo_320_100.webp") no-repeat center;
+}
+
+.no-js .home-page .site-title a,
+.no-webp .home-page .site-title a {
 	/*background:url("../../images/theme/logo-white/logo_530_230.png") no-repeat center;*/
 	background:url("../../images/theme/logo-white/logo_360_150.png") no-repeat center;
+}
+
+.webp .home-page .site-title a {
+	/*background:url("../../images/theme/logo-white/logo_530_230.png") no-repeat center;*/
+	background:url("../../images/theme/logo-white/logo_360_150.webp") no-repeat center;
 }
 
 h1.entry-title,
@@ -57,7 +83,6 @@ a.more-link,
 .more-from-category a {
 	background:#f5f5f5;
 }
-
 
 .img-menu:hover a .menu-title span,
 a.more-link:hover,

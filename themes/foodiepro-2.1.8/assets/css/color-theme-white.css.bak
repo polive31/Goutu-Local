@@ -22,6 +22,7 @@ body.home {
 
 .site-title a {
 	background:url("../../images/theme/logo-white/logo_320_100.png") no-repeat center;
+	background:url("../../images/theme/logo-white/logo_320_100.webp") no-repeat center;
 }
 
 .home-page .site-title a {
@@ -311,12 +312,12 @@ li.comment {
   and (-webkit-min-device-pixel-ratio:2) {
  
 	.site-title a {
-		background:url("../../images/logo-white/logo_320_100.png") no-repeat left;
+		background:url("../../images/theme/logo-white/logo_320_100.png") no-repeat left;
 		background-size:contain;
 	} 	
 	
 	.home .site-title a {
-		background:url("../../images/logo-white/logo_720_300.png") no-repeat center;
+		background:url("../../images/theme/logo-white/logo_720_300.png") no-repeat center;
 	} 		
 
 }

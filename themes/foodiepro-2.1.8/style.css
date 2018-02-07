@@ -604,6 +604,12 @@ h6 {
 /* FONTS 
 --------------------------------------------- */
 
+/*@font-face {
+  font-family: "Amatic SC";  
+  src: url('assets/fonts/lucie-mandragore/lucie-mandragore.ttf');  
+  font-weight: normal;  
+}*/
+
 body {
 	font-family:'Lato', sans-serif;
 	font-size : 18px;

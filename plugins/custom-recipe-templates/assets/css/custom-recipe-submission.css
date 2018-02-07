@@ -14,15 +14,27 @@
   width: 20%!important;
 }
 
+#wpurp_user_submission_form .recipe-form-notes,
+#wpurp_user_submission_form .recipe-ingredients-container,
+#wpurp_user_submission_form .recipe-instructions-container {
+	float: left;
+}
+
 /* Fonts */
 ul.wpurp-user-submissions-current-user-edit {
     font-family: sans-serif;
 }
 
+#wpurp_user_submission_form span.header,
 #wpurp_user_submission_form label {
   font-weight: 400;
   color: #616161;
   font-family: sans-serif;
+}
+
+#wpurp_user_submission_form input#recipe_title,
+#wpurp_user_submission_form input.ingredient-group-label {
+	font-size: 16px!important;
 }
 
 #wpurp_user_submission_form label.recipe-tags,
@@ -40,6 +52,16 @@ ul.wpurp-user-submissions-current-user-edit {
 	font-size:13px;
 } 	
 
+#wpurp_user_submission_form .recipe-general-form-notes,
+#wpurp_user_submission_form .recipe-form-notes {
+	font-style:italic;
+	font-size:14px;
+}
+
+span.wpurp-required {
+	color: #dc1d1d;
+}
+
 /* Headlines */
 
 #wpurp_user_submission_form h4 {
@@ -47,6 +69,13 @@ ul.wpurp-user-submissions-current-user-edit {
   clear: both;
 	color: #616161;
   margin-top: 40px;
+}
+
+/* Recipe Thumbnail */
+
+table#recipe-instructions .recipe_instructions_thumbnail, 
+.postbox img.recipe_thumbnail {
+	max-height: initial!important;
 }
 
 /* Tags section */
@@ -77,6 +106,12 @@ select#recipe-occasion option {
 	font-family:sans-serif!important;
 }
 
+.select2wpurp-container-multi .select2wpurp-choices {
+  background-image: none;
+  border-radius: 5px;
+}
+
+
 
 /* Ingredients & Instructions section 
 --------------------------------------------------------------------*/
@@ -103,16 +138,21 @@ select#recipe-occasion option {
 	padding:10px 10px;	
 }
 
-#wpurp_user_submission_form tr td.mobile-display {
+#wpurp_user_submission_form span.mobile-display {
 	display:none!important;
 }
 
-table#recipe-ingredients input.ingredients_amount {
-    max-width: 80px;
+.ingredient td#qty {
+    width: 100px;
 }
 
-table#recipe-ingredients input.ingredients_unit {
-    max-width: 120px;
+.ingredient td#unit {
+    width: 140px;
+}
+
+.ingredient td#icon {
+  width: 30px;
+  vertical-align: middle!important;    
 }
 
 .ingredient-field-header td {
@@ -134,11 +174,32 @@ table#recipe-ingredients input.ingredients_unit {
 #wpurp_user_submission_form tr td.delete-button {
   width: 30px;
   cursor: pointer;
+	padding: 10px;  
 }
 
 #wpurp_user_submission_form label {
 	font-weight:400;
 	color:#616161;
+}
+
+/* Instructions & ingredients groups */
+#wpurp_user_submission_form td.group {
+	padding:4px;
+	border-top: 2px dashed #dcdcdc;
+  border-bottom: 2px dashed #dcdcdc;
+}
+
+#wpurp_user_submission_form span.name {
+  min-width: 300px;
+  max-width: 600px;
+  display:inline-block;
+}
+
+#wpurp_user_submission_form span.header {
+	display: inline-block;
+	font-weight:bold; 
+	margin: 0 20px;	
+	color: #b5b5b5;	
 }
 
 
@@ -157,6 +218,8 @@ table#recipe-ingredients input.ingredients_unit {
   border: 1px solid #AAA;
 	color: #616161;  
 }
+
+
 
 #wpurp_user_submission_form input.recipe_thumbnail_image {
   /*background-color: #8e8e8e;*/
@@ -200,7 +263,9 @@ table#recipe-ingredients input.ingredients_unit {
 
 
 #wpurp_user_submission_form span.ingredients-delete:before,
-#wpurp_user_submission_form span.instructions-delete:before {
+#wpurp_user_submission_form span.ingredient-group-delete:before,
+#wpurp_user_submission_form span.instructions-delete:before,
+#wpurp_user_submission_form span.instruction-group-delete:before {
   content: "\f014";
   font-family: FontAwesome;
   font-size:20px;
@@ -221,20 +286,22 @@ table#recipe-ingredients input.ingredients_unit {
   width: 100%;
 }
 
-#wpurp_user_submission_form .recipe-form-notes {
-	font-style:italic;
-	font-size:14px;
-	float: left;	
-}
 
+
+/* Inputs formatting 
+-------------------------------------------------*/
+#wpurp_user_submission_form input[type=text],
+#wpurp_user_submission_form select,
 #wpurp_user_submission_form textarea {
   border: 1px solid #ddd;
+  border-radius:5px;
   box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
   background-color: #fff;
   color: #32373c;
   outline: 0;
   transition: 50ms border-color ease-in-out;
 }
+
 
 #wpurp_user_submission_form input:focus, 
 #wpurp_user_submission_form select:focus, 
@@ -243,10 +310,19 @@ table#recipe-ingredients input.ingredients_unit {
   box-shadow: 0 0 2px rgba(30,140,190,.8);
 }
 
-.select2wpurp-container-multi .select2wpurp-choices {
-  background-image: none;
-  border-radius: 5px;
+/* Specific input formatting */
+
+#wpurp_user_submission_form .recipe-tags-container input[type=text] {
+  box-shadow: none;
+	border:none;
 }
+
+
+textarea.ingredients_notes {
+    resize: vertical;
+    padding: 10px;
+}
+
 
 #wpurp_user_submission_form  .recipe-general-form-field input {
  	width:auto;
@@ -259,10 +335,6 @@ table#recipe-ingredients input.ingredients_unit {
     width: 50px!important;
 }
 
-table#recipe-instructions .recipe_instructions_thumbnail, 
-.postbox img.recipe_thumbnail {
-	max-height: initial!important;
-}
 
 /* Buttons Formatting
 -------------------------------------------*/
@@ -304,17 +376,16 @@ table#recipe-instructions .recipe_instructions_thumbnail,
 	
 	#wpurp_user_submission_form tr.ingredient td {
 		padding:0 10px;	
+		width:100%;
+		float:left;
 	}	
 
-	table#recipe-ingredients input.ingredients_amount,
-	table#recipe-ingredients input.ingredients_name,
-	table#recipe-ingredients input.ingredients_notes,
-	table#recipe-ingredients input.ingredients_unit {
-		max-width: 100%;
-		width: 70%;
+	#wpurp_user_submission_form tr.ingredient td textarea,
+	#wpurp_user_submission_form tr.ingredient td input {
+		width:68%;
 	}	
 	
-	#wpurp_user_submission_form tr td.mobile-display {
+	#wpurp_user_submission_form span.mobile-display {
 		display:inline-block!important;
     float: left;
     width: 30%;
@@ -324,15 +395,21 @@ table#recipe-instructions .recipe_instructions_thumbnail,
     font-weight: bold;
 	}
 	
-	#wpurp_user_submission_form tr td.mobile-hidden,
+	#wpurp_user_submission_form .mobile-hidden,
 	#wpurp_user_submission_form tr.ingredient-field-header {
   	display:none!important;
 	}		
 	
+	#wpurp_user_submission_form tr td.group {
+		width:calc(100% - 50px);
+    float:left;
+	}
+	
+	
 	#wpurp_user_submission_form tr td.delete-button {
-    float: right;
-    padding: 0;
-    margin: 0 10px 0 0;
+    width:50px;
+    float:right;
+    padding:9px;
 	}	
 	
 }

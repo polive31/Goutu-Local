@@ -424,7 +424,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 input[type="number"] { 
   -moz-appearance: textfield;
-  appearance: textfield;
+  -webkit-appearance: textfield;
   margin: 0;	
 }
 
@@ -603,6 +603,12 @@ h6 {
 
 /* FONTS 
 --------------------------------------------- */
+
+@font-face {
+  font-family: "Amatic SC";  
+  src: url('assets/fonts/lucie-mandragore/lucie-mandragore.ttf');  
+  font-weight: normal;  
+}
 
 body {
 	font-family:'Lato', sans-serif;

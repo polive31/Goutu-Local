@@ -399,7 +399,7 @@ add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_stylesheets' );
 function foodie_pro_enqueue_stylesheets() {
 	//wp_enqueue_style( 'font-awesome', CHILD_THEME_URL . '/assets/fonts/font-awesome/css/font-awesome.min.css', array(), CHILD_THEME_VERSION );
 	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Oswald|Lato:300,400', array(), CHILD_THEME_VERSION );
-	//wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Playfair+Display:400,700|Oswald|Lato:300,400', array(), CHILD_THEME_VERSION );
+	//wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Oswald|Lato:300,400', array(), CHILD_THEME_VERSION );
 	wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
 	// Theme stylesheet with varying name & version, forces cache busting at browser level
 	wp_enqueue_style( 'color-theme-' . CHILD_COLOR_THEME , CHILD_THEME_URL . '/assets/css/color-theme-' . CHILD_COLOR_THEME . '.css', array(), CHILD_COLOR_THEME . CHILD_COLOR_THEME_VERSION );

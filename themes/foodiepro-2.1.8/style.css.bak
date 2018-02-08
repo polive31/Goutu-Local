@@ -604,11 +604,11 @@ h6 {
 /* FONTS 
 --------------------------------------------- */
 
-@font-face {
+/*@font-face {
   font-family: "Amatic SC";  
   src: url('assets/fonts/lucie-mandragore/lucie-mandragore.ttf');  
   font-weight: normal;  
-}
+}*/
 
 body {
 	font-family:'Lato', sans-serif;
@@ -978,6 +978,7 @@ p.wp_widget_plugin_textarea {
 .archives-top select {
 	font-size:12px;
 	font-weight:normal;
+	padding:10px;
 }
 
 /* Nav Menu Widget */
@@ -2127,15 +2128,16 @@ form[role="search"] {
 }
 
 #responsive-menu-pro-container input.responsive-menu-pro-search-box {
-    border-radius: 10px;
+	border-radius: 10px;
 }
 
 #responsive-menu-pro-additional-content {
-    display: none;
+	display: none;
 }
 
 .logged-in #responsive-menu-pro-additional-content {
-    display: block;
+  display: block;
+  border-bottom: 1px solid #c5c5c5;
 }
 
 /* Mashshare 

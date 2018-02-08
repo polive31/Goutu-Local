@@ -111,8 +111,6 @@ select#recipe-occasion option {
   border-radius: 5px;
 }
 
-
-
 /* Ingredients & Instructions section 
 --------------------------------------------------------------------*/
 #wpurp_user_submission_form table#recipe-ingredients {
@@ -356,6 +354,11 @@ textarea.ingredients_notes {
 /* Smartphone */
 @media only screen 
 	and (max-width:870px) {
+		
+	#wpurp_user_submission_form {
+    background-color: initial;
+    padding: 0;
+	}	
 
 	#wpurp_user_submission_form .instruction-text {
 	  width: 100%;
@@ -372,6 +375,15 @@ textarea.ingredients_notes {
 	#wpurp_user_submission_form table#recipe-ingredients {
 	  border-collapse:separate; 
 	  border-spacing: 0 20px;
+	}	
+	
+	#wpurp_user_submission_form td.recipe-general-form-label {
+    float: left;
+	}
+	
+	#wpurp_user_submission_form td.recipe-general-form-field {
+    float: left;
+    width: 100%;
 	}	
 	
 	#wpurp_user_submission_form tr.ingredient td {

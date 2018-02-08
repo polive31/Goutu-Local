@@ -1830,8 +1830,7 @@ form[role="search"] {
 }
 
 .rpwe-title {
-	margin-left:auto;
-	margin-right:auto;
+	margin:auto;
 }
 
 .rpwe-block ul,
@@ -2129,7 +2128,7 @@ form[role="search"] {
 
 #responsive-menu-pro-container input.responsive-menu-pro-search-box {
 	border-radius: 10px;
-	height:45px!important;
+	height:45px!important
 }
 
 #responsive-menu-pro-additional-content {
@@ -3897,6 +3896,8 @@ li.comment a {
 .sidebar .rpwe-block a.rpwe-img {
 	/*flex:1; Supprimé pour pb IE11 */
 	width:100%;
+  margin-top: auto;
+  margin-bottom: auto;	
 }
 
 .sidebar .rpwe-block li a.rpwe-img img {
@@ -3906,8 +3907,7 @@ li.comment a {
 
 .sidebar .rpwe-block h3 {
 	background:none;
-	margin-top:25px;
-	margin-left:10px;
+	vertical-align:middle;
 	font-weight:400;
 	width:200%;
 }

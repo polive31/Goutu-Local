@@ -60,7 +60,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		if ( ($back!='true') && !is_search() ) {
 			
 			$obj = get_queried_object();
-			$author = ($obj->data->user_login!='');				
+			$author = isset($obj->data->user_login);				
 			$tax_id = $author?'author':$obj -> taxonomy;
 			$parent_id = $obj -> parent;
 			$parent = get_term_by('id', $parent_id,'cuisine');
@@ -137,20 +137,18 @@ class CustomNavigationShortcodes extends CustomArchive {
 		static $dropdown_cnt;
 		$atts = shortcode_atts( array(
 			'dropdown' => 'false',
-			'taxonomy' => 'category',
-			'filter' => 'false',
-			'select_msg' => __( 'Select...', 'foodiepro' ),
-			'all_msg' => '',
 			'depth' => 1,
-			'child_of' => 0,
 			'exclude' => '',
 			'index_title' => '',
 			'index_path' => ''
 		), $atts );
 
-		$filter = ($filter == 'true');
-
 		$html = '';
+		$depth = $atts['depth'];
+		$exclude = $atts['exclude'];
+		$dropdown = $atts['dropdown'];
+		$index_title = $atts['index_title'];
+		$index_path = $atts['index_path'];
 		
 /* arguments for function wp_list_categories
 ------------------------------------------------------------------------*/
@@ -158,7 +156,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		$all_url='#';
 		
 		$obj = get_queried_object();
-		$author = ($obj->data->user_login!='');
+		$author = isset($obj->data->user_login);
 		//print_r( $obj );
 		$tax_slug = $author?'author':$obj->taxonomy;
 		//echo $tax_slug;

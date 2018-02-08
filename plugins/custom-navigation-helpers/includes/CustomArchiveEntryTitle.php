@@ -52,66 +52,51 @@ class CustomArchiveEntryTitle extends CustomArchive {
 
 	/* Add tags to entry title 
 	-----------------------------------------------------------------------------*/
+	public function get_post_term($post_id, $tax, $field=null) {
+		if (is_null($field))
+ 			$terms=wp_get_post_terms($post_id, $tax);
+ 		else
+ 			$terms=wp_get_post_terms($post_id, $tax, array("fields" => $field));
+ 		if (is_wp_error($terms)) 
+ 			return '';
+ 		else
+ 			return $terms[0];
+	}
+	
 	public function entry_tags( $title='' ) {
-
+		
+		$post_id = get_the_ID();
+		$origin = $this->get_post_term( $post_id, 'cuisine', 'names');
+		//echo '<pre>' . print_r($origin) . '</pre>';
+		$diet = $this->get_post_term( $post_id, 'diet');
+		//echo '<pre>' . print_r($diet->slug) . '</pre>';
+		$occasion = $this->get_post_term( $post_id, 'occasion');
+		//echo '<pre>' . print_r($occasion) . '</pre>';
+		$season = $this->get_post_term( $post_id, 'season');
+		//echo '<pre>' . print_r($season->slug) . '</pre>';
+	
 		if ( is_tax('cuisine') || is_author() ) {
-			$post_id = get_the_ID();
-			$origin = wp_get_post_terms( $post_id, 'cuisine', array("fields" => "names"));
-			$diet = wp_get_post_terms( $post_id, 'diet');
-			$season = wp_get_post_terms( $post_id, 'season');
-
-			$title = $this->output_tags( $origin[0], $diet[0]->slug, '', $season[0]->slug) . $title;
+			$title = $this->output_tags( $origin, $diet->slug, '', $season->slug) . $title;
 		};
 		
 		if ( is_tax('course') || is_search() || is_tax('difficult') ) {
-			$post_id = get_the_ID();
-			
-			$origin = wp_get_post_terms( $post_id, 'cuisine', array("fields" => "names"));			
-			$occasion = wp_get_post_terms( $post_id, 'occasion');
-			$season = wp_get_post_terms( $post_id, 'season');
-			$diet = wp_get_post_terms( $post_id, 'diet');
-			
-			$title = $this->output_tags( $origin[0], $diet[0]->slug, $occasion, $season[0]->slug) . $title;
+			$title = $this->output_tags( $origin, $diet->slug, $occasion, $season->slug) . $title;
 		};	
 
 		if ( is_tax('diet') ) {
-			$post_id = get_the_ID();
-
-			$origin = wp_get_post_terms( $post_id, 'cuisine', array("fields" => "names"));			
-			$season = wp_get_post_terms( $post_id, 'season');
-			$occasion = wp_get_post_terms( $post_id, 'occasion');
-			
-			$title = $this->output_tags( $origin[0], '', $occasion, $season[0]->slug) . $title;
+			$title = $this->output_tags( $origin, '', $occasion, $season->slug) . $title;
 		};	
 		
 		if ( is_tax('season') ) {
-			$post_id = get_the_ID();
-			
-			$diet = wp_get_post_terms( $post_id, 'diet');
-			$occasion = wp_get_post_terms( $post_id, 'occasion');
-			
-			$title = $this->output_tags( '', $diet[0]->slug, $occasion, '') . $title;
+			$title = $this->output_tags( '', $diet->slug, $occasion, '') . $title;
 		};
 			
-
 		if ( is_tax('occasion') ) {
-			$post_id = get_the_ID();
-			$origin = wp_get_post_terms( $post_id, 'cuisine', array("fields" => "names"));
-			$diet = wp_get_post_terms( $post_id, 'diet');
-			$season = wp_get_post_terms( $post_id, 'season');
-			
-			$title = $this->output_tags( $origin[0], $diet[0]->slug, '', $season[0]->slug) . $title;
+			$title = $this->output_tags( $origin, $diet->slug, '', $season->slug) . $title;
 		};	
 
 		if ( is_tax('ingredient') ) {
-			
-			$post_id = get_the_ID();
-			$origin = wp_get_post_terms( $post_id, 'cuisine', array("fields" => "names"));
-			$diet = wp_get_post_terms( $post_id, 'diet');
-			$season = wp_get_post_terms( $post_id, 'season');
-			$occasion = wp_get_post_terms( $post_id, 'occasion');
-			
-			$title = $this->output_tags( $origin[0], $diet[0]->slug, $occasion, $season[0]->slug) . $title;
+			$title = $this->output_tags( $origin, $diet->slug, $occasion, $season->slug) . $title;
 		};					
 
 		return $title;

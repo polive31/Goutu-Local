@@ -46,7 +46,7 @@ public function widget( $args, $instance ) {
 	if ( (! $WPURP_search) && (! is_search() ) ) {
 		
 		$obj = get_queried_object();
-		$author = ($obj->data->user_login!='');	
+		$author = isset($obj->data->user_login);	
 		//print_r($obj);
 		$tax = $author?'author':get_taxonomy($obj->taxonomy);
 		if ($obj->taxonomy=='cuisine') {

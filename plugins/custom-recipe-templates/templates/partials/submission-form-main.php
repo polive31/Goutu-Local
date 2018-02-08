@@ -135,7 +135,7 @@
             <?php if( WPUltimateRecipe::option( 'user_submission_preview_button', '1') == '1' ) { ?>
             <input type="submit" value="<?php _e( 'Preview', 'foodiepro' ); ?>" id="preview" name="preview" />
             <?php } ?>
-            <input type="submit" value="<?php _e( 'Draft', 'foodiepro' ); ?>" id="draft" name="draft" />
+            <!--<input type="submit" value="<?php _e( 'Draft', 'foodiepro' ); ?>" id="draft" name="draft" />-->
             <input type="submit" value="<?php _e( 'Submit', 'foodiepro' ); ?>" id="submit" name="submit" />
         </p>
         <input type="hidden" name="action" value="post" />

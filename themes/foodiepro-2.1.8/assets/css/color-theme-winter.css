@@ -160,13 +160,15 @@ input, select, textarea,
 	border:1px solid #ddd;
 }
 
+.widget-text.wp_widget_plugin_box {
+  background-color: #efeeee;
+}
+
 /* Widgets with background
 -------------------------------------------- */
-.widget-text.wp_widget_plugin_box, 
 .home-top .widget.widget_bp_whats_new {
-  background-color: #efeeee;
+  background-color: #fff;
   margin-bottom: 30px;
-	border: 1px dotted #ccc;  
 }
 
 /* Widget top5

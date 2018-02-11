@@ -860,13 +860,13 @@ td#whats-new-avatar {
 }
 
 div#whats-new-content {
-	padding: 5px;
+	border: 1px dotted #bdbdbd;
+	border-radius: 10px;
 }
 
 .avatar-container {
 	position:relative;
 }
-
 
 .avatar-bubble {
 	display:none;

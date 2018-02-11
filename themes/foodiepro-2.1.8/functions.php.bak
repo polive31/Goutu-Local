@@ -398,9 +398,8 @@ add_filter( 'foodie_pro_disable_google_fonts', '__return_true' );
 add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_stylesheets' );
 function foodie_pro_enqueue_stylesheets() {
 	//wp_enqueue_style( 'font-awesome', CHILD_THEME_URL . '/assets/fonts/font-awesome/css/font-awesome.min.css', array(), CHILD_THEME_VERSION );
-	//wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Oswald|Lato:300,400', array(), CHILD_THEME_VERSION );
-	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Oswald|Lato:300,400', array(), CHILD_THEME_VERSION );
-	//wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Playfair+Display:400,700|Oswald|Lato:300,400', array(), CHILD_THEME_VERSION );
+	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Oswald|Lato:300,400', array(), CHILD_THEME_VERSION );
+	//wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Oswald|Lato:300,400', array(), CHILD_THEME_VERSION );
 	wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
 	// Theme stylesheet with varying name & version, forces cache busting at browser level
 	wp_enqueue_style( 'color-theme-' . CHILD_COLOR_THEME , CHILD_THEME_URL . '/assets/css/color-theme-' . CHILD_COLOR_THEME . '.css', array(), CHILD_COLOR_THEME . CHILD_COLOR_THEME_VERSION );
@@ -464,10 +463,8 @@ function remove_bp_styles() {
 
 /* Sets login page color theme */
 function my_custom_login() {
-	if ( CHILD_COLOR_THEME=='autumn')
-		echo '<link rel="stylesheet" type="text/css" href="' . CHILD_THEME_URL . '/login/custom-login-styles-autumn.css" />';
-	else 
-		echo '<link rel="stylesheet" type="text/css" href="' . get_stylesheet_directory_uri() . '/login/custom-login-styles-white.css" />';
+	echo '<link rel="stylesheet" type="text/css" href="' . CHILD_THEME_URL . '/login/custom-login-styles-' . CHILD_COLOR_THEME . '.css" />';
+	echo '<link rel="stylesheet" type="text/css" href="' . CHILD_THEME_URL . '/login/custom-login-styles-default.css" />';
 }
 add_action('login_head', 'my_custom_login');
 
@@ -479,7 +476,7 @@ function my_login_logo_url() {
 add_filter( 'login_headerurl', 'my_login_logo_url' );
 
 function my_login_logo_url_title() {
-	$output = __('Goûtu.org - Cuisiner, Découvrir, Partager', 'foodiepro');
+	$output = __('Goûtu.org - La Communauté des Gourmets', 'foodiepro');
 	return $output;
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );

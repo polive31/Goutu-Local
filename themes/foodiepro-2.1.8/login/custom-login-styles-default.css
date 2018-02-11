@@ -1,0 +1,28 @@
+/*
+Login Page
+---------------------------------------------------------------------------------------------------- */
+
+
+body.login {
+  background-color:#FFFFFF;
+  /*background-image: url('home-bg.jpg');*/
+  /*background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;*/
+}
+
+
+.login h1 a {
+  background-image: url('login-logo.png');
+  background-repeat:no-repeat;
+  background-size:100px 100px;
+	background-position: center;  
+  width:150px;
+  height:150px;
+	border-radius : 50%;
+  box-shadow : 5px 5px 5px #CCC;
+}
+
+#nav > a:first-child {
+	color: #d76642;
+}

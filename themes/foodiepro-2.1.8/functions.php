@@ -463,10 +463,8 @@ function remove_bp_styles() {
 
 /* Sets login page color theme */
 function my_custom_login() {
-	if ( CHILD_COLOR_THEME=='autumn')
-		echo '<link rel="stylesheet" type="text/css" href="' . CHILD_THEME_URL . '/login/custom-login-styles-autumn.css" />';
-	else 
-		echo '<link rel="stylesheet" type="text/css" href="' . get_stylesheet_directory_uri() . '/login/custom-login-styles-white.css" />';
+	//echo '<link rel="stylesheet" type="text/css" href="' . CHILD_THEME_URL . '/login/custom-login-styles-' . CHILD_COLOR_THEME . '.css" />';
+	echo '<link rel="stylesheet" type="text/css" href="' . CHILD_THEME_URL . '/login/custom-login-styles-default.css" />';
 }
 add_action('login_head', 'my_custom_login');
 
@@ -478,7 +476,7 @@ function my_login_logo_url() {
 add_filter( 'login_headerurl', 'my_login_logo_url' );
 
 function my_login_logo_url_title() {
-	$output = __('Goûtu.org - Cuisiner, Découvrir, Partager', 'foodiepro');
+	$output = __('Goûtu.org - La Communauté des Gourmets', 'foodiepro');
 	return $output;
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );

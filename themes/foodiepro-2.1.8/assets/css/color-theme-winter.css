@@ -166,6 +166,7 @@ input, select, textarea,
 .home-top .widget.widget_bp_whats_new {
   background-color: #efeeee;
   margin-bottom: 30px;
+	border: 1px dotted #ccc;  
 }
 
 /* Widget top5

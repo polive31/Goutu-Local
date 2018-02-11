@@ -783,7 +783,7 @@ h3.rpwe-title a {
 /* Slider formatting */
 .slider-text {
 	font-family: "Oswald",cursive;
-  font-size: 50px!important;
+  font-size: 40px!important;
 	padding-bottom:20px!important;  
   color: #FFF;
 }
@@ -4768,7 +4768,8 @@ Site Footer
 	}
 	
 	.slider-text {
-		font-size: 40px!important;
+		font-size: 35px !important;
+		padding: 0 10px !important;
 	}
 	
 	.content img.rpwe-thumb,

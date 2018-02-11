@@ -783,7 +783,7 @@ h3.rpwe-title a {
 /* Slider formatting */
 .slider-text {
 	font-family: "Oswald",cursive;
-  font-size: 50px!important;
+  font-size: 40px!important;
 	padding-bottom:20px!important;  
   color: #FFF;
 }
@@ -867,7 +867,6 @@ div#whats-new-content {
 .avatar-container {
 	position:relative;
 }
-
 
 .avatar-bubble {
 	display:none;

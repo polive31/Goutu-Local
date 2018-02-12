@@ -239,7 +239,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
             </td>
             <td>
             		<span class="mobile-display"><?php _e( 'Notes', 'foodiepro' ); ?></span>
-                <textarea rows="1" cols="20" type="text" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>"><?php if($i == 0) { echo 'placeholder="' . __( 'extra virgin', 'foodiepro' ) . '"'; } ?> </textarea>
+                <textarea rows="1" cols="20" type="text" name="recipe_ingredients[<?php echo $i; ?>][notes]" <?php if($i == 0) { echo 'placeholder="' . __( 'extra virgin', 'foodiepro' ) . '"'; }?> class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>"></textarea>
                 <input type="hidden" name="recipe_ingredients[<?php echo $i; ?>][group]"    class="ingredients_group" id="ingredient_group_<?php echo $i; ?>" value="" />
             </td>
             <td id="icon" class="delete-button" colspan="1"><span class="ingredients-delete">&nbsp;<!--<img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16">--></span></td>

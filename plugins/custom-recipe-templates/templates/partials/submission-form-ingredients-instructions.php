@@ -18,7 +18,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
     <table class="recipe-general-form">
     <?php if( !isset( $wpurp_user_submission ) ) { ?>
         <?php if( WPUltimateRecipe::is_premium_active() ) { ?>
-        <tr class="recipe-general-form-template">
+<!--        <tr class="recipe-general-form-template">
             <td class="recipe-general-form-label"><label for="recipe_custom_template"><?php _e( 'Template', 'foodiepro' ); ?></label></td>
             <td class="recipe-general-form-field">
                 <select name="recipe_custom_template" id="recipe_custom_template">
@@ -34,7 +34,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                     } ?>
                 </select>
             </td>
-        </tr>
+        </tr> -->
         <?php } ?>
         <tr class="recipe-general-form-title">
             <td class="recipe-general-form-label"><label for="recipe_title"><?php _e( 'Title', 'foodiepro' ); ?></label></td>
@@ -151,13 +151,13 @@ if( !isset( $required_fields ) ) $required_fields = array();
         </thead>
         <tbody>
         <tr class="ingredient-group-stub">
-            <td colspan="5" class="group">
+            <td colspan="6" class="group">
             	<div class="group-container">
             		<span class="header"><?php _e( 'Group', 'foodiepro' ); ?></span>
             		<span class="name"><input type="text" class="ingredient-group-label" /></span>
             	</div>
+            	<div id="icon" class="group center-column delete-button"><span class="ingredient-group-delete"><!--img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16">--></span></div>
             </td>
-            <td id="icon" class="group center-column delete-button" colspan="1"><span class="ingredient-group-delete"><!--img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16">--></span></td>
         </tr>
         <?php
         $i = 0;
@@ -178,16 +178,15 @@ if( !isset( $required_fields ) ) $required_fields = array();
 
                 if( $ingredient['group'] != $previous_group ) { ?>
                     <tr class="ingredient-group">
-                        <td colspan="5" class="group">
+                        <td colspan="6" class="group">
                         	<div class="group-container">
                         		<span class="header"><?php _e( 'Group', 'foodiepro' ); ?></span>
                         		<span class="name" colspan="2"><input type="text" class="ingredient-group-label" value="<?php echo esc_attr( $ingredient['group'] ); ?>" /></span>
                         	</div>
-                        </td>
-                        <td class="group center-column delete-button" colspan="1">
-                        	<div class="group-container">
-                        	<span class="ingredient-group-delete">&nbsp;<!--<img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16">--></span></td>
+                        	<div class="group center-column delete-button">
+                        		<span class="ingredient-group-delete">&nbsp;<!--<img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16">--></span>
                         	</div>
+                        </td>
                     </tr>
                     <?php
                     $previous_group = $ingredient['group'];
@@ -263,7 +262,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
     <table id="recipe-instructions">
         <thead>
         <tr class="instruction-group instruction-group-first">
-						<td colspan="2" class="group">
+						<td colspan="3" class="group">
           		<span class="header"><?php _e( 'Group', 'foodiepro' ); ?></span>
 							<span class="name instruction-groups-disabled"><?php echo __( 'Main Instructions', 'foodiepro' ) . ' ' . __( '(this label is not shown)', 'foodiepro' ); ?></span>
               <?php
@@ -279,13 +278,13 @@ if( !isset( $required_fields ) ) $required_fields = array();
         </thead>
         <tbody>
         <tr class="instruction-group-stub">
-		        <td colspan="2" class="group">
+		        <td colspan="3" class="group">
 		        	<div class="group-container">
 		            <span class="header"><?php _e( 'Group', 'foodiepro' ); ?></span>
 		            <span class="name"><input type="text" class="instruction-group-label" /></span>
 		        	</div>
+            	<div id="icon" class="group center-column delete-button"><span class="instruction-group-delete">&nbsp;<!--<img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16">--></span></div>
 		        </td>
-            <td id="icon" class="group center-column delete-button" colspan="1"><span class="instruction-group-delete">&nbsp;<!--<img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16">--></span></td>
         </tr>
     <?php
     $i = 0;
@@ -300,13 +299,13 @@ if( !isset( $required_fields ) ) $required_fields = array();
             if( $instruction['group'] != $previous_group )
             { ?>
                 <tr class="instruction-group">
-                    <td colspan="2" class="group">
+                    <td colspan="3" class="group">
                     	<div class="group-container">
                         <span class="header"><?php _e( 'Group', 'foodiepro' ); ?></span>
                         <span class="name"><input type="text" class="instruction-group-label" value="<?php echo esc_attr( $instruction['group'] ); ?>"/></span>
                     	</div>
+                    	<div id="icon" class="group center-column delete-button"><span class="instruction-group-delete">&nbsp;<!--<img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16">--></span></div>
                     </td>
-                    <td id="icon" class="group center-column delete-button" colspan="1"><span class="instruction-group-delete">&nbsp;<!--<img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16">--></span></td>
                 </tr>
     <?php
                 $previous_group = $instruction['group'];
@@ -402,19 +401,9 @@ if( !isset( $required_fields ) ) $required_fields = array();
     </div>
 </div>
 
-<div class="recipe-notes-container">
+<div class="recipe-notes-container-nojs">
     <h4><?php _e( 'Recipe notes', 'foodiepro' ) ?></h4>
-    <?php
-    $options = array(
-        'textarea_rows' => 7
-    );
-
-    if( isset( $wpurp_user_submission ) ) {
-        $options['media_buttons'] = false;
-    }
-
-    wp_editor( $recipe->notes(), 'recipe_notes',  $options );
-    ?>
+		<textarea name="recipe_notes" id="recipe_notes" rows="6"><?php echo esc_html( $recipe->notes() ); ?></textarea>
 </div>
 <?php
 $custom_fields_addon = WPUltimateRecipe::addon( 'custom-fields' );

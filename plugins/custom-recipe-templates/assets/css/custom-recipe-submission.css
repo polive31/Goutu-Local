@@ -181,6 +181,11 @@ select#recipe-occasion option {
 }
 
 /* Instructions & ingredients groups */
+
+#wpurp_user_submission_form .group-container {
+    display: inline-block;
+}
+
 #wpurp_user_submission_form td.group {
 	padding:4px;
 	border-top: 2px dashed #dcdcdc;
@@ -191,6 +196,7 @@ select#recipe-occasion option {
   min-width: 300px;
   max-width: 600px;
   display:inline-block;
+	margin: 0 20px;  
 }
 
 #wpurp_user_submission_form span.header {
@@ -200,6 +206,10 @@ select#recipe-occasion option {
 	color: #b5b5b5;	
 }
 
+#wpurp_user_submission_form #icon {
+	display: inline-block;
+	text-align: right;
+}
 
 /* Buttons */
 
@@ -347,6 +357,10 @@ textarea.ingredients_notes {
     margin:10px;
 }
 
+#wpurp_user_submission_form #qt_recipe_notes_toolbar {
+	display:none;
+}
+
 
 /* MEDIA QUERIES
 --------------------------------------------*/
@@ -411,13 +425,7 @@ textarea.ingredients_notes {
 	#wpurp_user_submission_form tr.ingredient-field-header {
   	display:none!important;
 	}		
-	
-	#wpurp_user_submission_form tr td.group {
-		width:calc(100% - 50px);
-    float:left;
-	}
-	
-	
+		
 	#wpurp_user_submission_form tr td.delete-button {
     width:50px;
     float:right;

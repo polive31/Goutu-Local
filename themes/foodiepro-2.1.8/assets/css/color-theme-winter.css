@@ -160,8 +160,15 @@ input, select, textarea,
 	border:1px solid #ddd;
 }
 
+
+/* Profile Completion Widget */
 .widget-text.wp_widget_plugin_box {
-  background-color: #efeeee;
+  /*background-color: #efeeee;*/
+  background-color: transparent;
+}
+
+.progress-circle:after{
+	/*background-color: #ffffff!important;*/
 }
 
 /* Widgets with background

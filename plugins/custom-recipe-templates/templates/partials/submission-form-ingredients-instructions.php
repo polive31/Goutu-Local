@@ -273,7 +273,6 @@ if( !isset( $required_fields ) ) $required_fields = array();
               ?>
               <span class="name instruction-groups-enabled"><input type="text" class="instruction-group-label" value="<?php echo esc_attr( $previous_group ); ?>"/></span>
             </td>
-            <td class="group mobile-hidden">&nbsp;</td>
         </tr>
         </thead>
         <tbody>

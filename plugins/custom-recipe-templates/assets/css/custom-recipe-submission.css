@@ -357,7 +357,7 @@ textarea.ingredients_notes {
     margin:10px;
 }
 
-#wpurp_user_submission_form #qt_recipe_notes_toolbar {
+#wpurp_user_submission_form div#qt_recipe_notes_toolbar {
 	display:none;
 }
 

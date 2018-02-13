@@ -17,25 +17,6 @@ if( !isset( $required_fields ) ) $required_fields = array();
     <h4><?php _e( 'General', 'foodiepro' ); ?></h4>
     <table class="recipe-general-form">
     <?php if( !isset( $wpurp_user_submission ) ) { ?>
-        <?php if( WPUltimateRecipe::is_premium_active() ) { ?>
-<!--        <tr class="recipe-general-form-template">
-            <td class="recipe-general-form-label"><label for="recipe_custom_template"><?php _e( 'Template', 'foodiepro' ); ?></label></td>
-            <td class="recipe-general-form-field">
-                <select name="recipe_custom_template" id="recipe_custom_template">
-                    <?php
-                    $recipe_template = $recipe->template();
-                    $templates = WPUltimateRecipe::addon( 'custom-templates' )->get_mapping();
-                    ?>
-                    <option value="default"<?php echo $recipe_template == 'default' ? ' selected' : '';?>><?php _e( 'Use default template from settings', 'foodiepro' ); ?></option>
-                    <?php
-                    foreach ( $templates as $index => $template ) {
-                        $selected = $recipe_template != 'default' && $recipe_template == $index ? ' selected' : '';
-                        echo '<option value="' . $index . '"' . $selected. '>' . $template . '</option>';
-                    } ?>
-                </select>
-            </td>
-        </tr> -->
-        <?php } ?>
         <tr class="recipe-general-form-title">
             <td class="recipe-general-form-label"><label for="recipe_title"><?php _e( 'Title', 'foodiepro' ); ?></label></td>
             <td class="recipe-general-form-field">

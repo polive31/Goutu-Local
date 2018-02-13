@@ -463,7 +463,7 @@ function remove_bp_styles() {
 
 /* Sets login page color theme */
 function my_custom_login() {
-	echo '<link rel="stylesheet" type="text/css" href="' . CHILD_THEME_URL . '/login/custom-login-styles-' . CHILD_COLOR_THEME . '.css" />';
+	//echo '<link rel="stylesheet" type="text/css" href="' . CHILD_THEME_URL . '/login/custom-login-styles-' . CHILD_COLOR_THEME . '.css" />';
 	echo '<link rel="stylesheet" type="text/css" href="' . CHILD_THEME_URL . '/login/custom-login-styles-default.css" />';
 }
 add_action('login_head', 'my_custom_login');
@@ -563,7 +563,6 @@ add_action( 'before_header_close', 'genesis_do_subnav');
 remove_action( 'genesis_after_header', 'genesis_do_nav' );
 //add_action( 'genesis_header', 'genesis_do_nav');
 		
-	
 // Move pagination on all archive pages
 remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
 add_action( 'genesis_after_content', 'genesis_posts_nav' );

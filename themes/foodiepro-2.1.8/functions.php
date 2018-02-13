@@ -563,7 +563,6 @@ add_action( 'before_header_close', 'genesis_do_subnav');
 remove_action( 'genesis_after_header', 'genesis_do_nav' );
 //add_action( 'genesis_header', 'genesis_do_nav');
 		
-	
 // Move pagination on all archive pages
 remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
 add_action( 'genesis_after_content', 'genesis_posts_nav' );
@@ -588,12 +587,12 @@ add_action( 'genesis_after_content_sidebar_wrap', 'genesis_footer_widget_areas',
 
 add_action( 'genesis_after_content', 'add_after_content_area');
 function add_after_content_area() {
-  if ( is_page() ) {
+  //if ( is_page() ) {
   		genesis_widget_area( 'after-content', array(
         'before' => '<div class="bottom after-content widget-area">',
         'after'  => '</div>',
   		));
-  }     
+  //}     
 }
 
 add_action( 'genesis_before_loop', 'add_archive_top_area', 15);

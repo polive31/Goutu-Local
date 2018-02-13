@@ -771,8 +771,6 @@ h2.user-nicename {
 .archive h2.entry-title a,
 .search h2.entry-title a,
 h3.rpwe-title a {
-	/*font-family:"Delius Swash Caps", cursive !important;
-	font-family:"Roboto slab", cursive !important;*/
 	font-family: "Oswald", sans-serif;
   text-decoration: none;
 	text-transform:capitalize !important;
@@ -845,7 +843,7 @@ h3.rpwe-title a {
 
 /* BP What's New */
 .widget_bp_whats_new {
-	padding:10px 20px;
+	padding:10px 0px;
 	/*border:1px dashed #dedede;*/
 	background-color:#60606012;
 	margin-bottom: 20px;
@@ -1267,27 +1265,27 @@ Structure and Layout
 
 .rpwe-block.grid-6col li,
 .simple-grid.one-sixth {
-  width:15%; 
+  width: calc(15% - 20px);; 
 }
 
 .rpwe-block.grid-5col li,
 .simple-grid.one-fifth {
-  width:20%;             
+  width: calc(20% - 20px);             
 }
 
 .rpwe-block.grid-4col li,
 .simple-grid.one-fourth {
-  width:25%;            
+  width: calc(25% - 20px); 
 }
 
 .rpwe-block.grid-3col li,
 .simple-grid.one-third {
-  width:33.3%; 								
+  width: calc(33.3% - 20px);
 }
 
 .rpwe-block.grid-2col li,
 .simple-grid.one-half {
-  width:50%; 									
+  width: calc(50% - 20px);
 }
 
 .rpwe-block.grid-1col li {
@@ -1460,7 +1458,7 @@ img.avatar#square,
   -webkit-border-radius:0;
 }
 
-.page-bottom .rpwe-block a.auth-avatar,
+.after-content .rpwe-block a.auth-avatar,
 .content .rpwe-block a.auth-avatar {
 	margin-right:auto;
 	margin-left:auto;
@@ -1473,11 +1471,11 @@ img.avatar#square,
   display:flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */  
 }
 
-.page-bottom .rpwe-block a.auth-avatar {
+.after-content .rpwe-block a.auth-avatar {
   margin-top:-65px;
 }
 
-.page-bottom .rpwe-block img.avatar,
+.after-content .rpwe-block img.avatar,
 .content .rpwe-block img.avatar {
 	border:3px solid #ffffff;
 	width:55px;
@@ -1485,7 +1483,7 @@ img.avatar#square,
 	margin:auto;
 }
 
-.page-bottom .rpwe-block img.avatar {
+.after-content .rpwe-block img.avatar {
 	width:60px;
 	height:60px;
 }
@@ -1832,6 +1830,8 @@ form[role="search"] {
 
 .rpwe-title {
 	margin:auto;
+	text-align: center;
+  line-height: 20px;	
 }
 
 .rpwe-block ul,
@@ -2046,7 +2046,9 @@ form[role="search"] {
 
 /* Tagcloud Widget Display
 --------------------------------------------- */
-
+.tagcloud {
+	padding: 10px;
+}
 
 /* Featured Page and Featured Post
 --------------------------------------------- */
@@ -2892,7 +2894,7 @@ div.gform_wrapper .gform_footer input[type="submit"] {
 }
 
 
-/* Before Content section
+/* After Content section
 --------------------------------------------- */
 
 .after-content.widget-area {
@@ -2905,19 +2907,13 @@ div.gform_wrapper .gform_footer input[type="submit"] {
 	margin:0;
 }	
 
-.after-content .widget ul li {
-  float: left;
-  margin: 10px 15px;
-  width:40%;
-}
-
 .after-content .widget ul li a {
   display:block;
 }
 
-.after-content {
+/*.after-content {
 	display:none;
-}
+}*/
 
 .after-content .widget.bubbles ul li.current-menu-item a, 
 .after-content .widget.bubbles ul li:hover a {
@@ -2927,7 +2923,6 @@ div.gform_wrapper .gform_footer input[type="submit"] {
 
 /* Recipes, Blog & Archive Pages
 --------------------------------------------- */
-
 
 /* Top section commons */
 
@@ -2965,7 +2960,6 @@ div.gform_wrapper .gform_footer input[type="submit"] {
 	max-width: 215px;	
 	float:left;
 }
-
 
 /* Archives bottom section */
 .archives-bottom .widget  {
@@ -3252,6 +3246,7 @@ nav.nav-primary .wrap {
 .avatar-block {
   float: left;
   width: 100%;
+	text-align: center;  
 }
 
 .item-avatar {
@@ -3269,12 +3264,12 @@ nav.nav-primary .wrap {
 
 .entry-content .rpwe-block ul li, /* Prevents styling from other .entry-content section */
 .content .rpwe-block li,
-.page-bottom .rpwe-block li {
+.after-content .rpwe-block li {
 	position: relative;
 	float:left;
 	overflow: hidden; /* In order to allow slide down effects */
   border-width:0px;
-  margin: 0 0 20px 0;
+  margin: 10px;
   padding:5px;
   display:-webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
   display:-moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
@@ -3478,12 +3473,12 @@ p.more-from-category {
   object-fit: cover;
 }
 
-.page-bottom .rpwe-first img.rpwe-thumb {
+.after-content .rpwe-first img.rpwe-thumb {
   /*max-height: 200px;*/
   width: 100%;
 }
 
-.page-bottom .related-posts img.rpwe-thumb {
+.related-posts img.rpwe-thumb {
   margin-bottom: 0;
   height: 250px;
 }
@@ -3501,32 +3496,6 @@ p.more-from-category {
 	padding-top:5px;
 }
 
-/*.profile .content h3.rpwe-title {
-  position: absolute;
-	background: linear-gradient(#04040400, #ffffffc9, #ffffffeb);
-  padding: 30px 15px;
-  bottom: 0px;
-  left: 0;
-  overflow:hidden;
-  margin: 0;
-  box-sizing:border-box;
-}
-
-.profile .content h3.rpwe-title a {
-	font-size:20px;
-}/*
-
-/* Title drop down on hover */
-/* 
-.profile .content h3.rpwe-title {
-  top: -250px;
-  background: #ffffff70;
-}
-
-.profile li.rpwe-li:hover .rpwe-title {
-	top:0px;
-  transition:top 0.5s linear;
-}*/
 
 /* Archive layout
 --------------------------------------------- */
@@ -4625,6 +4594,19 @@ Site Footer
 }
 
 @media only screen and (max-width:1023px) {
+	
+	.content-sidebar-wrap {
+    display: flex;
+    flex-direction: column;
+	}
+	
+	aside.sidebar-primary {
+    order: 3;
+	}
+	
+	.after-content {
+    order: 2;
+	}
 
 	.content,
 	.content-sidebar-sidebar .content,
@@ -4644,6 +4626,10 @@ Site Footer
 	.wrap {
 		width:100%;
 	}
+	
+	.sidebar .widget {
+		width: calc(50% - 20px);	
+	}	
 
 	.header-image .site-header .wrap {
 		background-position:center top;
@@ -4911,14 +4897,18 @@ Site Footer
 	.simple-grid.one-fourth,
 	.rpwe-block.grid-3col li,
 	.simple-grid.one-third {
-  	width:50%;         
+		width: calc(50% - 20px);  
 	}
+	
+	.sidebar .widget {
+		width: 100%;	
+	}	
 		
 	li.rpwe-li.rpwe-clearfix.rpwe-first {
 	    width: 100%;
 	}	
 	
-	.page-bottom .related-posts img.rpwe-thumb {
+	.related-posts img.rpwe-thumb {
 	  height: auto;
 	}
 	
@@ -4926,7 +4916,6 @@ Site Footer
 		height:80px;
 	}
 	
-
 	.odd {
 		clear:both;
 		margin-left:0;
@@ -4993,7 +4982,7 @@ Site Footer
 	.page-bottom .rpwe-block.grid-3col li,
 	.content .rpwe-block.grid-2col li,
 	.content .rpwe-block.grid-3col li {
-  	width:50%;       
+  	width: calc(50% - 20px);;       
 	}
 
 /* Footer */

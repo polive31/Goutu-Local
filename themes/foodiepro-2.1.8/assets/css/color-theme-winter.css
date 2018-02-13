@@ -102,7 +102,7 @@ a.more-link:hover,
 }
 
 .footer-widgets {
-  background-color: #c8c8c83d!important;
+  background-color: #f8f8f8!important;
   border: 1px dashed #555;
 }
 
@@ -115,11 +115,6 @@ textarea,
 .search-form input {
 	background-color:#fefefe;/* background-color important, pas background car conflit avec autre setting plus loin*/
 }
-
-select {
-    background-color:#ffffffab;
-}
-
 
 /* STAR RATING 
 -------------------------------------------------------*/
@@ -235,23 +230,6 @@ input, select, textarea,
 	background: #FFF;  
 }
 
-/*.widget.bubbles ul li:hover,
-.widget.bubbles ul li.current-menu-item {
-	border-color: #aaa;
-  box-shadow: 0 0 0 3px #fff, 0 0 0 5px #aaa;	
-}*/
-
-/*.widget.bubbles ul li:hover {
-	border-color: #ea3f3f;
-  box-shadow: 0 0 0 3px #fff, 0 0 0 5px #ea3f3f;	
-}*/
-
-/*.widget.bubbles ul li:hover a,
-.widget.bubbles ul li.current-menu-item a {
-    color: #000;
-}*/
-
-
 /* RECIPES & POSTS
 --------------------------------------------*/
 #joined-pics .add-picture-button button {
@@ -260,7 +238,7 @@ input, select, textarea,
 }
 
 .ingredients-container {
-	background-color :#ffffff59;
+	background-color :#f8f8f8;
 }
 
 span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
@@ -305,15 +283,12 @@ li.comment {
 	and (max-width:980px) {
 		
 	body,
-	body.home {
+	body.home,
+	.site-container {
 		/*background:url("../../images/background/background-l-small.jpg") no-repeat top left;*/
 		background:none;
 	}		
 	
-	.site-container {
-    background:none;
-	}
-
 	.site-title a { 
 	 	background: url("../../images/theme/logo-white/logo_320_100.png") center left no-repeat; 	
 	}
@@ -331,11 +306,6 @@ li.comment {
 @media only screen 
 	and (max-width:720px) {
 
-	body,
-	body.home {
-		background:none;
-	}	
-
 	.site-title a {
 		background:url("../../images/theme/logo-white/logo_160_40.png") no-repeat left;
 		background-size:contain;
@@ -351,12 +321,6 @@ li.comment {
 	.widget.bubbles {
 		background-color:rgba(255, 255, 255, 0.7);	
 	}	
-	
-	.site-container {
-		background:none;	
-	}		
-	
-	
 	
 }
 
@@ -384,10 +348,6 @@ li.comment {
 	.home .site-title a {
     background-size: contain;
 	}	
-
-	
-}
-
 
 	
 }

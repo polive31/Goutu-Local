@@ -4075,8 +4075,8 @@ textarea#whats-new::-webkit-scrollbar {
 }
 
 textarea#whats-new:focus {
-	border-color: #transparent!important;
-	outline-color: #transparent;
+	border-color: transparent!important;
+	outline-color: transparent;
 	resize: vertical;
 }
 

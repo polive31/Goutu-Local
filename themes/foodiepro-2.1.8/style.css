@@ -845,7 +845,7 @@ h3.rpwe-title a {
 
 /* BP What's New */
 .widget_bp_whats_new {
-	padding:10px 20px;
+	padding:10px 0px;
 	/*border:1px dashed #dedede;*/
 	background-color:#60606012;
 	margin-bottom: 20px;

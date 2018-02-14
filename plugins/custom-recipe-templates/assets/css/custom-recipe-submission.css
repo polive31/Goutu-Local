@@ -163,6 +163,15 @@ select#recipe-occasion option {
 	padding:10px 10px;
 }
 
+#wpurp_user_submission_form td.sort-handle.ui-sortable-handle {
+	width: 40px;
+}
+
+#wpurp_user_submission_form td.sort-handle.ui-sortable-handle:hover {
+	background-color: #d2d2d2;
+}
+
+
 #wpurp_user_submission_form tr td.sort-handle.ui-sortable-handle {
   cursor: -webkit-grab; 
   cursor: -moz-grab;
@@ -206,9 +215,8 @@ select#recipe-occasion option {
 	color: #b5b5b5;	
 }
 
-#wpurp_user_submission_form #icon {
+#wpurp_user_submission_form .group.delete-button {
 	display: inline-block;
-	text-align: right;
 }
 
 /* Buttons */

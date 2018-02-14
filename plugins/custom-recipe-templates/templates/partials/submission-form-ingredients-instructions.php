@@ -44,22 +44,6 @@ if( !isset( $required_fields ) ) $required_fields = array();
                 <textarea name="recipe_description" id="recipe_description" rows="4"><?php echo esc_html( $recipe->description() ); ?></textarea>
             </td>
         </tr>
-        <!--
-        <tr class="recipe-general-form-rating">
-            <td class="recipe-general-form-label"><label for="recipe_rating"><?php _e( 'Rating', 'foodiepro' ); ?></label></td>
-            <td class="recipe-general-form-field">
-                <select name="recipe_rating" id="recipe_rating">
-                    <?php
-                    for ( $i = 0; $i <= 5; $i ++ ) {
-                    ?>
-                    <option value="<?php echo $i; ?>" <?php echo selected( $i, $recipe->rating_author() ); ?>>
-                        <?php echo $i == 1 ? $i .' '. __( 'star', 'foodiepro' ) : $i .' '. __( 'stars', 'foodiepro' ); ?>
-                    </option>
-                    <?php } ?>
-                </select>
-            </td>
-        </tr>
-        -->
         <tr class="recipe-general-form-servings">
             <td class="recipe-general-form-label"><label for="recipe_servings"><?php _e( 'Servings', 'foodiepro' ); ?><?php if( in_array( 'recipe_servings', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
             <td class="recipe-general-form-field">
@@ -137,7 +121,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
             		<span class="header"><?php _e( 'Group', 'foodiepro' ); ?></span>
             		<span class="name"><input type="text" class="ingredient-group-label" /></span>
             	</div>
-            	<div id="icon" class="group center-column delete-button"><span class="ingredient-group-delete"><!--img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16">--></span></div>
+            	<div class="group center-column delete-button"><span class="ingredient-group-delete"><!--img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16">--></span></div>
             </td>
         </tr>
         <?php
@@ -165,7 +149,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                         		<span class="name" colspan="2"><input type="text" class="ingredient-group-label" value="<?php echo esc_attr( $ingredient['group'] ); ?>" /></span>
                         	</div>
                         	<div class="group center-column delete-button">
-                        		<span class="ingredient-group-delete">&nbsp;<!--<img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16">--></span>
+                        		<span class="ingredient-group-delete">&nbsp;</span>
                         	</div>
                         </td>
                     </tr>
@@ -174,16 +158,17 @@ if( !isset( $required_fields ) ) $required_fields = array();
                 }
                 ?>
                 <tr class="ingredient">
-                    <td id="icon" class="sort-handle"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16"></td>
+                    <td class="sort-handle"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16"></td>
                     <td id="qty"><span class="mobile-display"><?php _e( 'Quantity', 'foodiepro' ); ?></span><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][amount]"     class="ingredients_amount" id="ingredients_amount_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['amount'] ); ?>" /></td>
                     <td id="unit"><span class="mobile-display"><?php _e( 'Unit', 'foodiepro' ); ?></span><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][unit]"       class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['unit'] ); ?>" /></td>
-                    <td id="name"><span class="mobile-display"><?php _e( 'Ingredients', 'foodiepro' ); ?></span><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onfocus="autoSuggestTag('ingredients_<?php echo $i; ?>', 'ingredient');"  value="<?php echo esc_attr( $ingredient['ingredient'] ); ?>" /></td>
+                    <td id="name"><span class="mobile-display"><?php _e( 'Ingredients', 'foodiepro' ); ?></span><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onfocus="autoSuggestTag('ingredients_<?php echo $i; ?>', 'ingredient');" value="<?php echo esc_attr( $ingredient['ingredient'] ); ?>" /></td>
                     <td id="notes">
                     		<span class="mobile-display"><?php _e( 'Notes', 'foodiepro' ); ?></span>
-                        <textarea rows="1" col="20" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>"><?php echo esc_attr( $ingredient['notes'] ); ?></textarea>
+                        <!--<textarea rows="1" col="20" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>"><?php echo esc_attr( $ingredient['notes'] ); ?></textarea> -->
+                        <input type="text" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['notes'] ); ?>" />
                         <input type="hidden" name="recipe_ingredients[<?php echo $i; ?>][group]" class="ingredients_group" id="ingredient_group_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['group'] ); ?>" />
                     </td>
-                    <td id="icon" class="delete-button" colspan="1"><span class="ingredients-delete">&nbsp;<!--<img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16">--></span></td>
+                    <td class="delete-button" colspan="1"><span class="ingredients-delete">&nbsp;<!--<img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16">--></span></td>
                 </tr>
                 <?php
                 $i++;
@@ -192,37 +177,23 @@ if( !isset( $required_fields ) ) $required_fields = array();
         }
         ?>
         <tr class="ingredient">
-            <td  id="icon" class="sort-handle"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16"></td>
-            <td><span class="mobile-display"><?php _e( 'Quantity', 'foodiepro' ); ?></span><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][amount]"     class="ingredients_amount" id="ingredients_amount_<?php echo $i; ?>"<?php if($i == 0) { echo 'placeholder="1"'; } ?> /></td>
-            <td><span class="mobile-display"><?php _e( 'Unit', 'foodiepro' ); ?></span><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][unit]"       class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>"<?php if($i == 0) { echo 'placeholder="' . __( 'tbsp', 'foodiepro' ) . '"'; } ?> /></td>
+            <td  class="sort-handle"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16"></td>
+            <td><span class="mobile-display"><?php _e( 'Quantity', 'foodiepro' ); ?></span>
+            	<input type="text"   name="recipe_ingredients[<?php echo $i; ?>][amount]" class="ingredients_amount" id="ingredients_amount_<?php echo $i; ?>"<?php if($i == 0) { echo 'placeholder="1"'; } ?> />
+            </td>
+            <td><span class="mobile-display"><?php _e( 'Unit', 'foodiepro' ); ?></span>
+            	<input type="text"   name="recipe_ingredients[<?php echo $i; ?>][unit]" class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>"<?php if($i == 0) { echo 'placeholder="' . __( 'tbsp', 'foodiepro' ) . '"'; } ?> />
+            </td>
             <td><span class="mobile-display"><?php _e( 'Ingredient', 'foodiepro' ); ?></span>
-                <?php if( isset( $wpurp_user_submission ) && WPUltimateRecipe::option( 'user_submission_ingredient_list', '0' ) == '1' ) { ?>
-                    <select name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name_list" id="ingredients_<?php echo $i; ?>">
-                        <option value=""><?php _e( 'Select an ingredient', 'foodiepro' ); ?></option>
-                        <?php
-                        $args = array(
-                            'orderby'       => 'name',
-                            'order'         => 'ASC',
-                            'hide_empty'    => false,
-                        );
-                        $ingredient_terms = get_terms( 'ingredient', $args );
-
-                        foreach( $ingredient_terms as $term )
-                        {
-                            ?>
-                            <option value="<?php echo esc_attr( $term->name ); ?>"><?php echo $term->name; ?></option>
-                        <?php } ?>
-                    </select>
-                <?php } else { ?>
-                    <input type="text"   name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onfocus="autoSuggestTag('ingredients_<?php echo $i; ?>', 'ingredient');"<?php if($i == 0) { echo 'placeholder="' . __( 'olive oil', 'foodiepro' ) . '"'; } ?> />
-                <?php } ?>
+							 <input type="text"   name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onfocus="autoSuggestTag('ingredients_<?php echo $i; ?>', 'ingredient');"<?php if($i == 0) { echo 'placeholder="' . __( 'olive oil', 'foodiepro' ) . '"'; } ?> />
             </td>
             <td>
             		<span class="mobile-display"><?php _e( 'Notes', 'foodiepro' ); ?></span>
-                <textarea rows="1" cols="20" type="text" name="recipe_ingredients[<?php echo $i; ?>][notes]" <?php if($i == 0) { echo 'placeholder="' . __( 'extra virgin', 'foodiepro' ) . '"'; }?> class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>"></textarea>
+                <!-- <textarea rows="1" cols="20" type="text" name="recipe_ingredients[<?php echo $i; ?>][notes]" <?php if($i == 0) { echo 'placeholder="' . __( 'extra virgin', 'foodiepro' ) . '"'; }?> class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>"></textarea> -->
+								<input type="text" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['notes'] );?>" <?php if($i == 0) { echo 'placeholder="' . __( 'extra virgin', 'foodiepro' ) . '"'; }?>  />
                 <input type="hidden" name="recipe_ingredients[<?php echo $i; ?>][group]"    class="ingredients_group" id="ingredient_group_<?php echo $i; ?>" value="" />
             </td>
-            <td id="icon" class="delete-button" colspan="1"><span class="ingredients-delete">&nbsp;<!--<img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16">--></span></td>
+            <td class="delete-button" colspan="1"><span class="ingredients-delete">&nbsp;</span></td>
         </tr>
         </tbody>
     </table>
@@ -263,7 +234,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
 		            <span class="header"><?php _e( 'Group', 'foodiepro' ); ?></span>
 		            <span class="name"><input type="text" class="instruction-group-label" /></span>
 		        	</div>
-            	<div id="icon" class="group center-column delete-button"><span class="instruction-group-delete">&nbsp;<!--<img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16">--></span></div>
+            	<div class="group center-column delete-button"><span class="instruction-group-delete">&nbsp;</span></div>
 		        </td>
         </tr>
     <?php
@@ -284,7 +255,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                         <span class="header"><?php _e( 'Group', 'foodiepro' ); ?></span>
                         <span class="name"><input type="text" class="instruction-group-label" value="<?php echo esc_attr( $instruction['group'] ); ?>"/></span>
                     	</div>
-                    	<div id="icon" class="group center-column delete-button"><span class="instruction-group-delete">&nbsp;<!--<img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16">--></span></div>
+                    	<div class="group center-column delete-button"><span class="instruction-group-delete">&nbsp;</span></div>
                     </td>
                 </tr>
     <?php
@@ -308,7 +279,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
             }
             ?>
             <tr class="instruction">
-                <td  id="icon" class="sort-handle"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16"></td>
+                <td  class="sort-handle"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16"></td>
                 <td>
                   <div class="instruction-text">
                     <textarea name="recipe_instructions[<?php echo $i; ?>][description]" rows="4" id="ingredient_description_<?php echo $i; ?>"><?php echo $instruction['description']; ?></textarea>
@@ -333,7 +304,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                     <br /><img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
                     <?php } ?>
                 </td>
-                <td id="icon" class="delete-button" colspan="1"><span class="instructions-delete">&nbsp;<!--<img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16">--></span></td>
+                <td class="delete-button" colspan="1"><span class="instructions-delete">&nbsp;</span></td>
             </tr>
             <?php
             $i++;
@@ -365,7 +336,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                     <br /><img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
                     <?php } ?>
                 </td>
-                <td id="icon" class="delete-button" colspan="1"><span class="instructions-delete">&nbsp;<!--<img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16">--></span></td>
+                <td class="delete-button" colspan="1"><span class="instructions-delete">&nbsp;</span></td>
             </tr>
         </tbody>
     </table>

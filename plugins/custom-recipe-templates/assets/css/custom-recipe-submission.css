@@ -178,7 +178,7 @@ select#recipe-occasion option {
   text-align:center;
 }
 
-#wpurp_user_submission_form tr td.delete-button {
+#wpurp_user_submission_form .delete-button {
   width: 30px;
   cursor: pointer;
 	padding: 10px;  

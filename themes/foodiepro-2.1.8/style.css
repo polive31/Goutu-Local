@@ -858,9 +858,31 @@ td#whats-new-avatar {
 }
 
 div#whats-new-content {
-	padding: 10px;
-	border: 1px dotted #bdbdbd;
+	position:relative;
+	border: 1px solid #bdbdbd;
 	border-radius: 10px;
+	padding: 10px;
+	margin-left: 10px;
+}
+
+div#whats-new-content:before{
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-color: transparent #969696;
+  border-width: 11px 18px 11px 0;
+  top: 20px;
+  left: -18px;
+}
+
+div#whats-new-content:after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-color: transparent #fff;
+  border-width: 10px 17px 10px 0px;
+  top: 21px;
+  left: -17px;
 }
 
 .avatar-container {

@@ -227,6 +227,29 @@ define('GENESIS_LANGUAGES_URL', STYLESHEETPATH.'/languages/genesis');
  */
 require_once( get_template_directory() . '/lib/init.php' );
 
+function url_exists($url) {
+	$headers = @get_headers($url);
+	return (strpos($headers[0],'404') === false);
+}
+
+function custom_enqueue_script( $handler, $path, $deps, $version ) {	
+	$path_parts = pathinfo($path); 			
+	$dir = $path_parts['dirname'] . '/'; 			
+	$base = $path_parts['filename']; 			
+	$ext = $path_parts['extension']; 			
+
+	$minpath = $dir . $base . '.min.' . $ext;
+	//echo '<pre>' . $minpath . '</pre>';
+	//echo '<pre> File exists ? ' . url_exists($minpath) . '</pre>';
+	
+  if ((url_exists($minpath)) && !(WP_DEBUG==false)) {
+    wp_enqueue_script( $handler, $minpath, $deps, $random );
+  }
+  else {
+    $random = mt_rand();
+    wp_enqueue_script( $handler, $path, $deps, $version );
+  }
+}
 
 add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_js' );
 /**
@@ -238,9 +261,9 @@ add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_js' );
 function foodie_pro_enqueue_js() {
 	$js_uri = CHILD_THEME_URL . '/assets/js/';
 	// Add general purpose scripts.
-	wp_enqueue_script( 'foodie-pro-general', $js_uri . 'general.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
+	custom_enqueue_script( 'foodie-pro-general', $js_uri . 'general.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
 	// .webp detection
-	wp_enqueue_script( 'modernizr', $js_uri . 'modernizr-custom.js', array(), CHILD_THEME_VERSION );
+	custom_enqueue_script( 'modernizr', $js_uri . 'modernizr-custom.js', array(), CHILD_THEME_VERSION );
 }
 
 /* Add the theme name class to the body element. */
@@ -741,13 +764,7 @@ function output_picture_markup($dir, $name, $ext=null) {
 	<?php
 }
 
-function url_exists($url) {
-	$headers = @get_headers($url);
-	if(strpos($headers[0],'404') === false)
-		return true;
-	else
-		return false;
-}
+
 
 /* =================================================================*/
 /* =               POSTS

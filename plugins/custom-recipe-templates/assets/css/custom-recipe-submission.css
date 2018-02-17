@@ -165,6 +165,7 @@ select#recipe-occasion option {
 
 #wpurp_user_submission_form td.sort-handle.ui-sortable-handle {
 	width: 40px;
+	transition: all 1s ease-in-out;	
 }
 
 #wpurp_user_submission_form td.sort-handle.ui-sortable-handle:hover {

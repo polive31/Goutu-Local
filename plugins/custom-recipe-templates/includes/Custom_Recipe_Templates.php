@@ -16,7 +16,8 @@ class Custom_Recipe_Templates {
 	public function __construct() {
 	
 		self::$_PluginPath = plugin_dir_url( dirname( __FILE__ ) );
-		$this->logged_in = is_user_logged_in();	
+		
+		add_action( 'init', array($this, 'hydrate'));
 		
 		/* Load javascript styles */
 		add_filter ( 'wpurp_assets_js', array($this,'enqueue_wpurp_js'), 15, 1 );
@@ -39,7 +40,11 @@ class Custom_Recipe_Templates {
 
 	}
 
-
+	/* Hydrate
+	--------------------------------------------------------------*/	
+	public function hydrate() {
+		$this->logged_in = is_user_logged_in();	
+	}
 	
 	/* Output debug information 
 	--------------------------------------------------------------*/	

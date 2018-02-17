@@ -337,6 +337,11 @@ function remove_script($script) {
 	wp_dequeue_script($script);
 }
 
+add_action( 'wp_enqueue_scripts', 'remove_header_scripts' );
+function remove_header_scripts() {
+  //if ( bp_is_user_change_avatar() ) remove_script( 'BJLL' ); //Prevent conflict between BP & BJ Lazy Load
+}
+
 add_action('get_footer','remove_footer_scripts');
 function remove_footer_scripts() {
 	if (!(is_single())) {
@@ -362,13 +367,7 @@ function add_async_tag_cb( $tag, $handle, $src ) {
 	return $tag;
 } 
 
-//Prevent conflict between BP & BJ Lazy Load
-//add_action( 'wp_enqueue_scripts', 'deregister_bjll' );
-function deregister_bjll() {
-  if ( bp_is_user_change_avatar() ) {
-    wp_deregister_script( 'BJLL' );
- }
-}
+
 
 /*  Making jQuery Google API  
 --------------------------------------------------------*/
@@ -416,6 +415,7 @@ function remove_header_styles() {
 	if (!(is_single())) {
   	remove_style('galleria-fs');
 	}
+  remove_style('popup-maker-site');
   remove_style('cookie-notice-front');
   remove_style('bppp-style');
   remove_style('wpurp_style5');

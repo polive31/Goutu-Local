@@ -337,6 +337,11 @@ function remove_script($script) {
 	wp_dequeue_script($script);
 }
 
+add_action( 'wp_enqueue_scripts', 'remove_header_scripts' );
+function remove_header_scripts() {
+  //if ( bp_is_user_change_avatar() ) remove_script( 'BJLL' ); //Prevent conflict between BP & BJ Lazy Load
+}
+
 add_action('get_footer','remove_footer_scripts');
 function remove_footer_scripts() {
 	if (!(is_single())) {
@@ -362,13 +367,7 @@ function add_async_tag_cb( $tag, $handle, $src ) {
 	return $tag;
 } 
 
-//Prevent conflict between BP & BJ Lazy Load
-//add_action( 'wp_enqueue_scripts', 'deregister_bjll' );
-function deregister_bjll() {
-  if ( bp_is_user_change_avatar() ) {
-    wp_deregister_script( 'BJLL' );
- }
-}
+
 
 /*  Making jQuery Google API  
 --------------------------------------------------------*/
@@ -587,12 +586,12 @@ add_action( 'genesis_after_content_sidebar_wrap', 'genesis_footer_widget_areas',
 
 add_action( 'genesis_after_content', 'add_after_content_area');
 function add_after_content_area() {
-  if ( is_page() ) {
+  //if ( is_page() ) {
   		genesis_widget_area( 'after-content', array(
         'before' => '<div class="bottom after-content widget-area">',
         'after'  => '</div>',
   		));
-  }     
+  //}     
 }
 
 add_action( 'genesis_before_loop', 'add_archive_top_area', 15);

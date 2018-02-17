@@ -3,12 +3,10 @@
 
 class Custom_Recipe_Template extends Custom_Recipe_Templates {
 	
-	protected $logged_in;
-	
 	public function __construct() {
+		parent::__construct();
 		/* Custom recipe template */
 		add_filter( 'wpurp_output_recipe', array($this,'wpurp_custom_recipe_template'), 10, 2 );
-		
 	}
 
 	public function wpurp_custom_recipe_template( $content, $recipe ) {
@@ -43,6 +41,7 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 					<div class="recipe-button tooltip tooltip-above" id="rate">
 						<a class="recipe-review-button" id="<?php echo $this->logged_in?'recipe-review':'join-us';?>">
 						<div class="button-caption"><?php echo __('Rate','foodiepro'); ?></div>
+						<div> <?php echo $this->logged_in;?> </div>
 						</a>
 						<?php echo Custom_Recipe_Templates::output_tooltip(__('Comment and rate this recipe','foodiepro'),'top');?>
 					</div>	

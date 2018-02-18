@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'CHILD_THEME_NAME', 'Foodie Pro Theme' );
-define( 'CHILD_THEME_VERSION', '2.1.9' );
+define( 'CHILD_THEME_VERSION', '2.1.10' );
 define( 'CHILD_THEME_DEVELOPER', 'Shay Bocks' );
 define( 'CHILD_THEME_URL', get_stylesheet_directory_uri() );
 define( 'CHILD_THEME_PATH', get_stylesheet_directory() );
@@ -232,18 +232,17 @@ function url_exists($url) {
 	return (strpos($headers[0],'404') === false);
 }
 
-function custom_enqueue_script( $handler, $minpath, $deps, $version ) {	
-	$path = str_replace( '.min', '', $minpath );
+function custom_enqueue_script( $handler, $uri, $path, $file, $deps, $version ) {	
+	$minfile = str_replace( '.js', '.min.js', $file );
 	//echo '<pre>' . "minpath = {$minpath}" . '</pre>';
 	//echo '<pre>' . "path = {$path}" . '</pre>';
 	
   //if ((url_exists($minpath)) && (WP_DEBUG==false)) {
-  if (url_exists($minpath)) {
-    wp_enqueue_script( $handler, $minpath, $deps, $random );
+  if (file_exists( $path . $minfile)) {
+    wp_enqueue_script( $handler, $uri . $minfile, $deps, $version );
   }
   else {
-    $random = mt_rand();
-    wp_enqueue_script( $handler, $path, $deps, $version );
+    wp_enqueue_script( $handler, $uri . $file, $deps, $version );
   }
 }
 
@@ -256,10 +255,11 @@ add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_js' );
  */
 function foodie_pro_enqueue_js() {
 	$js_uri = CHILD_THEME_URL . '/assets/js/';
+	$js_path = CHILD_THEME_PATH . '/assets/js/';
 	// Add general purpose scripts.
-	custom_enqueue_script( 'foodie-pro-general', $js_uri . 'general.min.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
+	custom_enqueue_script( 'foodie-pro-general', $js_uri, $js_path, 'general.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
 	// .webp detection
-	custom_enqueue_script( 'modernizr', $js_uri . 'modernizr-custom.min.js', array(), CHILD_THEME_VERSION );
+	custom_enqueue_script( 'modernizr', $js_uri, $js_path, 'modernizr-custom.js', array(), CHILD_THEME_VERSION );
 }
 
 /* Add the theme name class to the body element. */
@@ -460,21 +460,38 @@ function remove_bp_styles() {
 }
 
 /* Gestion des feuilles de style minifiées */
-//add_filter( 'stylesheet_uri', 'use_minified_stylesheet', 10, 1 );
-//function use_minified_stylesheet( $default_stylesheet_uri ) {
-//	$stylesheet_path = CHILD_THEME_PATH . '/style.min.css';
-//	$default_stylesheet_path = CHILD_THEME_PATH . '/style.css';
-//	$stylesheet_uri =  wp_make_link_relative( CHILD_THEME_URL . '/style.min.css');
-//	$default_stylesheet_uri =  wp_make_link_relative( $default_stylesheet_uri );
-//	$min_mod_date = filemtime( $stylesheet_path );
-//	$orig_mod_date = filemtime( $default_stylesheet_path );
-//	if ( file_exists( $stylesheet_path ) && ($min_mod_date >= $orig_mod_date) ) {
-//		//foodiepro_log( 'Minified stylesheet exist and is valid' );
-//		return $stylesheet_uri;	
-//	}
-//	//foodiepro_log( 'Minified stylesheet doesn t exist or too old' );
-//	return $default_stylesheet_uri;	
-//}
+add_filter( 'stylesheet_uri', 'enqueue_minified_stylesheet', 10, 1 );
+
+function enqueue_minified_stylesheet( $default_stylesheet_uri ) {
+	$path_parts = pathinfo( $default_stylesheet_uri );
+	$file = $path_parts['basename'];
+	$min_file = str_replace( '.css', '.min.css', $file ); 
+	$min_file_path = CHILD_THEME_PATH . '/' . $min_file;
+	// echo '<pre>' . "Default stylesheet URI : {$default_stylesheet_uri}" . '</pre>';
+	// echo '<pre>' . "Min file : {$min_file}" . '</pre>';
+	// echo '<pre>' . "Min file path : { $min_file_path }" . '</pre>';
+
+	if ( file_exists( $min_file_path ) ) {
+		$default_stylesheet_uri = CHILD_THEME_URL . '/' . $min_file;
+	} 
+	return $default_stylesheet_uri;
+}
+
+
+function use_minified_stylesheet( $default_stylesheet_uri ) {
+	$stylesheet_path = CHILD_THEME_PATH . '/style.min.css';
+	$default_stylesheet_path = CHILD_THEME_PATH . '/style.css';
+	$stylesheet_uri =  wp_make_link_relative( CHILD_THEME_URL . '/style.min.css');
+	$default_stylesheet_uri =  wp_make_link_relative( $default_stylesheet_uri );
+	$min_mod_date = filemtime( $stylesheet_path );
+	$orig_mod_date = filemtime( $default_stylesheet_path );
+	if ( file_exists( $stylesheet_path ) && ($min_mod_date >= $orig_mod_date) ) {
+		//foodiepro_log( 'Minified stylesheet exist and is valid' );
+		return $stylesheet_uri;	
+	}
+	//foodiepro_log( 'Minified stylesheet doesn t exist or too old' );
+	return $default_stylesheet_uri;	
+}
 
 /* =================================================================*/
 /* =              CUSTOM LOGIN                                     =*/

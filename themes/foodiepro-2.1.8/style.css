@@ -3307,15 +3307,15 @@ nav.nav-primary .wrap {
 	position: relative;
 	float:left;
 	overflow: hidden; /* In order to allow slide down effects */
-  border-width:0px;
-  margin: 10px;
-  padding:5px;
-  display:-webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-  display:-moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-  display:-ms-flexbox;      /* TWEENER - IE 10 */
-  display:-webkit-flex;     /* NEW - Chrome */
+	border-width:0px;
+	margin: 10px;
+	padding:5px;
+	display:-webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display:-moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display:-ms-flexbox;      /* TWEENER - IE 10 */
+	display:-webkit-flex;     /* NEW - Chrome */
 	-webkit-flex-direction:column;
-  display:flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+	display:flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
 	flex-direction:column;
 	-ms-flex-align:center;
 }

@@ -5,19 +5,33 @@
 /* =                 LAYOUT
 /* =================================================================*/
 
-// Apply Full Width Content layout
-add_action( 'get_header', 'bp_set_full_layout' );
-function bp_set_full_layout() {
-	// Force full width content
-	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+// Social before content (Cover Image) widgeted area
+add_action( 'genesis_before_content_sidebar_wrap', 'add_before_content_area');
+
+function add_before_content_area() {
+	genesis_widget_area( 'social-before-content', array(
+	   'before' => '<div class="top before-content widget-area" id="buddypress">',
+	   'after'  => '</div>',
+	));  
 }
 
-// Add widgeted areas
-add_action( 'bp_after_member_home_content', 'get_social_sidebar' );
-function get_social_sidebar() {
-  get_sidebar( 'social' );
+// Replace primary sidebar with social sidebar
+add_action('get_header','social_sidebar');
+
+function social_sidebar() {
+	// remove the default genesis primary sidebar
+	remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
+	// add an action hook to call the function for your custom sidebar
+	add_action( 'genesis_sidebar', 'foodiepro_do_social_sidebar' );
 }
 
+// Display the social sidebar
+function foodiepro_do_social_sidebar() {
+	//get_sidebar( 'social' );
+	dynamic_sidebar( 'social-sidebar' );
+}
+
+// Social Bottom sidebar
 add_action( 'genesis_after_loop', 'add_social_bottom_area');
 function add_social_bottom_area() {
   if ( bp_is_user() && (bp_current_action()=='public') ) {
@@ -28,6 +42,10 @@ function add_social_bottom_area() {
 		));
 	}
 }
+
+/* =================================================================*/
+/* =                 BREADCRUMBS
+/* =================================================================*/
 
 
 /* Remove the breacrumbs

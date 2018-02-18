@@ -24,7 +24,9 @@ define ( 'BP_COVER_THUMB_WIDTH', 350 );
 define ( 'BP_COVER_THUMB_HEIGHT', 300 );
 
 /* Set default paths */
-define ( 'BP_IMAGES_PATH', get_bloginfo('stylesheet_directory') . '/images/buddypress/');
+//define ( 'BP_IMAGES_PATH', get_bloginfo('stylesheet_directory') . '/images/buddypress/');
+define ( 'BP_IMAGES_PATH', get_stylesheet_directory() . '/images/buddypress/');
+define ( 'BP_IMAGES_URL', get_stylesheet_directory_uri() . '/images/buddypress/');
 
 /* =================================================================*/
 /* =            CUSTOM JAVSCRIPT
@@ -36,7 +38,6 @@ function custom_bp_js() {
 	wp_deregister_script( 'dtheme-ajax-js');
 	wp_enqueue_script( 'dtheme-ajax-js', get_bloginfo('stylesheet_directory') . '/buddypress/js/global.js', array( 'jquery' ), $version );
 }
-
 
 
 /* =================================================================*/
@@ -102,8 +103,8 @@ function enqueue_bp_core_scripts($scripts) {
 /* =================================================================*/
 
 /* Change default avatar picture */
-define ( 'BP_AVATAR_DEFAULT', BP_IMAGES_PATH . 'cook_avatar.png' );
-define ( 'BP_AVATAR_DEFAULT_THUMB', BP_IMAGES_PATH . 'cook_avatar_thumb.png' );
+define ( 'BP_AVATAR_DEFAULT', BP_IMAGES_URL . 'cook_avatar.png' );
+define ( 'BP_AVATAR_DEFAULT_THUMB', BP_IMAGES_URL . 'cook_avatar_thumb.png' );
 
 
 
@@ -112,7 +113,8 @@ add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'foodiepro_xpr
 function foodiepro_xprofile_cover_image( $settings = array() ) {
 	$settings['width']  = BP_COVER_FULL_WIDTH;
 	$settings['height'] = BP_COVER_FULL_HEIGHT;
-	$settings['default_cover'] = BP_IMAGES_PATH . 'cover_default.jpg';
+	$settings['default_cover_url'] = BP_IMAGES_URL . 'cover_default.jpg';
+	$settings['default_cover_path'] = BP_IMAGES_PATH . 'cover_default.jpg';
 	return $settings;
 }
 

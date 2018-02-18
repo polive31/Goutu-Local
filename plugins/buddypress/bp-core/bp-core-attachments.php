@@ -415,6 +415,10 @@ function bp_attachments_get_attachment( $data = 'url', $args = array() ) {
 		'file'       => '',
 	), 'attachments_get_attachment_src' );
 
+	// echo '<pre>' . $r['object_dir'] . '</pre>';
+	// echo '<pre>' . $r['item_id'] . '</pre>';
+	// echo '<pre>' . $r['type'] . '</pre>';
+
 	/**
 	 * Filters whether or not to handle fetching a BuddyPress image attachment.
 	 *
@@ -439,17 +443,31 @@ function bp_attachments_get_attachment( $data = 'url', $args = array() ) {
 	// Get BuddyPress Attachments Uploads Dir datas.
 	$bp_attachments_uploads_dir = bp_attachments_uploads_dir_get();
 
+	// echo '<pre>' . "bp_attachments_uploads_dir : " . print_r($bp_attachments_uploads_dir, true) . '</pre>';
+
 	// The BP Attachments Uploads Dir is not set, stop.
 	if ( ! $bp_attachments_uploads_dir ) {
 		return $attachment_data;
 	}
+	// echo '<pre>' . "after upload dir validation" . '</pre>';
 
 	$type_subdir = $r['object_dir'] . '/' . $r['item_id'] . '/' . $r['type'];
 	$type_dir    = trailingslashit( $bp_attachments_uploads_dir['basedir'] ) . $type_subdir;
 
-	if ( 0 !== validate_file( $type_dir ) || ! is_dir( $type_dir ) ) {
-		return $attachment_data;
-	}
+	// echo '<pre>' . "type_dir = $type_dir" . '</pre>';
+
+	$validate_file = validate_file( $type_dir );
+	$is_dir = is_dir( $type_dir );
+
+	// echo '<pre>' . "is dir  = {$is_dir} " . '</pre>';
+	// echo '<pre>' . "validate file  = {$validate_file} " . '</pre>';
+
+	//if ( 0 !== validate_file( $type_dir ) || ! is_dir( $type_dir ) ) {
+		// echo '<pre>' . "type dir not validated" . '</pre>';
+		// return $attachment_data;
+	//}
+
+	// echo '<pre>' . "after subdir validation" . '</pre>';
 
 	if ( ! empty( $r['file'] ) ) {
 		if ( ! file_exists( trailingslashit( $type_dir ) . $r['file'] ) ) {
@@ -465,6 +483,7 @@ function bp_attachments_get_attachment( $data = 'url', $args = array() ) {
 	} else {
 		$file = false;
 
+		// echo '<pre>' . "In file empty checks " . '</pre>';
 		// Open the directory and get the first file.
 		if ( $att_dir = opendir( $type_dir ) ) {
 

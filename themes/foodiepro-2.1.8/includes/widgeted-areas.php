@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-add_action( 'genesis_before', 'foodie_pro_before_header' );
+//add_action( 'genesis_before', 'foodie_pro_before_header' );
 /**
  * Load an ad section before .site-inner.
  *
@@ -22,16 +22,16 @@ add_action( 'genesis_before', 'foodie_pro_before_header' );
  *
  * @return  null if the before-header sidebar isn't active.
  */
-function foodie_pro_before_header() {
-	//* Return early if we have no ad.
-	if ( ! is_active_sidebar( 'before-header' ) ) {
-		return;
-	}
+// function foodie_pro_before_header() {
+// 	//* Return early if we have no ad.
+// 	if ( ! is_active_sidebar( 'before-header' ) ) {
+// 		return;
+// 	}
 
-	echo '<div class="before-header">';
-		dynamic_sidebar( 'before-header' );
-	echo '</div>';
-}
+// 	echo '<div class="before-header">';
+// 		dynamic_sidebar( 'before-header' );
+// 	echo '</div>';
+// }
 
 //add_action( 'genesis_before_comments', 'foodie_pro_after_entry' );
 /**
@@ -52,31 +52,28 @@ function foodie_pro_after_entry() {
 	echo '</div>';
 }
 
-//* General widgeted areas.
-//genesis_register_sidebar( array(
-//	'id'			=> 'before-content',
-//	'name'			=> __( 'Before Content', 'foodiepro' ),
-//	'description'	=> __( 'This is the first section before content and sidebars.', 'foodiepro' ),
-//) );
+/* General widgeted areas.
+----------------------------------------------------*/
 genesis_register_sidebar( array(
 	'id'			=> 'after-content',
 	'name'			=> __( 'After Content', 'foodiepro' ),
 	'description'	=> __( 'This is the last section after content and sidebars.', 'foodiepro' ),
 ) );
-genesis_register_sidebar( array(
-	'id'			=> 'before-header',
-	'name'			=> __( 'Before Header', 'foodiepro' ),
-	'description'	=> __( 'This is the section before the header.', 'foodiepro' ),
-) );
+// genesis_register_sidebar( array(
+// 	'id'			=> 'before-header',
+// 	'name'			=> __( 'Before Header', 'foodiepro' ),
+// 	'description'	=> __( 'This is the section before the header.', 'foodiepro' ),
+// ) );
 
 //* Post Widgeted areas
-genesis_register_sidebar( array(
-	'id'			=> 'post-bottom',
-	'name'			=> __( 'Post Bottom', 'foodiepro' ),
-	'description'	=> __( 'This is the section below content and sidebar, just before the footer.', 'foodiepro' ),
-) );
+// genesis_register_sidebar( array(
+// 	'id'			=> 'post-bottom',
+// 	'name'			=> __( 'Post Bottom', 'foodiepro' ),
+// 	'description'	=> __( 'This is the section below content and sidebar, just before the footer.', 'foodiepro' ),
+// ) );
 
-//* Home Page widgeted areas
+/* Home Page widgeted areas
+----------------------------------------------------*/
 genesis_register_sidebar( array(
 	'id'			=> 'home-top',
 	'name'			=> __( 'Home Top', 'foodiepro' ),
@@ -93,10 +90,16 @@ genesis_register_sidebar( array(
 	'description'	=> __( 'This is the home bottom section.', 'foodiepro' ),
 ) );
 
-//* Social (Buddypress) widgeted areas
+/* Social (Buddypress) widgeted areas
+----------------------------------------------------*/
+genesis_register_sidebar( array(
+	'id'			=> 'social-before-content',
+	'name'			=> __( 'Social Before Content', 'foodiepro' ),
+	'description'	=> __( 'On social pages, this is the first section before content and sidebars.', 'foodiepro' ),
+) );
 genesis_register_sidebar( array(
 	'id'			=> 'social-sidebar',
-	'name'			=> __( 'Social sidebar', 'foodiepro' ),
+	'name'			=> __( 'Social Sidebar', 'foodiepro' ),
 	'description'	=> __( 'This is the sidebar for social pages.', 'foodiepro' ),
 ) );
 genesis_register_sidebar( array(
@@ -110,7 +113,8 @@ genesis_register_sidebar( array(
     'description' => __( 'This goes just before the footer, and occupies the whole page width.', 'foodiepro' ),
 ) );
 
-//* Archive pages widgeted areas
+/* Archive pages widgeted areas
+----------------------------------------------------*/
 genesis_register_sidebar( array(
     'id'          => 'archives-top',
     'name'        => __( 'Archives Top', 'foodiepro' ),

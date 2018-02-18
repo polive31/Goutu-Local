@@ -34,6 +34,7 @@ function bp_social_helpers_load() {
 	require_once 'widgets/BP-latest-registered-members-widget.php';
 	require_once 'widgets/BP-member-profile-widget.php';
 	require_once 'widgets/BP-my-friends-widget.php';
+	require_once 'widgets/BP-cover-image-header.php';
 	require_once 'widgets/BP-welcome-widget.php';
 	require_once 'widgets/BP-whats-new-widget.php';
 	require_once 'widgets/BP-activity-feed-widget.php';

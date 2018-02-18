@@ -23,7 +23,9 @@
 	 *
 	 * @since 1.2.0
 	 */
-	do_action( 'bp_before_member_home_content' ); ?>
+	//do_action( 'bp_before_member_home_content' ); ?>
+
+	<!--
 
 	<div id="item-header" role="complementary">
 
@@ -32,17 +34,21 @@
 		 * If the cover image feature is enabled, use a specific header
 		 */
 
-		//if (!bp_is_home() ) : /* Do not dispay header if my profile */
-			if ( bp_displayed_user_use_cover_image_header() ) :
-				//echo '<h1>Appel à cover-image-header</h1>';
-				bp_get_template_part( 'members/single/cover-image-header' );
-			else :
-				bp_get_template_part( 'members/single/member-header' );
-			endif;
-		//endif;
+		// if (!bp_is_home() ) : /* Do not dispay header if my profile */
+		// 	if ( bp_displayed_user_use_cover_image_header() ) :
+		// 		//echo '<h1>Appel à cover-image-header</h1>';
+		// 		bp_get_template_part( 'members/single/cover-image-header' );
+		// 	else :
+		// 		bp_get_template_part( 'members/single/member-header' );
+		// 	endif;
+		// endif;
 			?>
 
-	</div><!-- #item-header -->
+	</div>
+
+	-->
+
+	<!-- #item-header -->
 
 	<!-- <div class="item-list-tabs no-ajax" id="object-nav">
 	  <ul>

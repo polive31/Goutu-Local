@@ -19,29 +19,40 @@ do_action( 'bp_before_member_header' );
 
 $user_id =  bp_displayed_user_id();
 
-$member_cover_image_url = bp_attachments_get_attachment('url', array(
-  'object_dir' => 'members',
-  'item_id' => $user_id,
-));	
+// echo '<pre>' . "user id : $user_id ". '</pre>';
 
-$args='';
-$settings = bp_parse_args( $args, array(
-		/*'components'    => array(),
-		'width'         => 1300,
-		'height'        => 225,
-		'callback'      => '',
-		'theme_handle'  => '',*/
-		'default_cover' => '',
-	), 'xprofile_cover_image_settings' );
+$cover_image_url = bp_attachments_get_attachment('url', array('object_dir' => 'members','item_id' => $user_id ));		
+$cover_image_path = bp_attachments_get_attachment('path', array('object_dir' => 'members','item_id' => $user_id ));	
 
-if (empty($member_cover_image_url)) {
-	$member_cover_image_url = $settings['default_cover'];
+
+// echo '<pre>' . "Member cover image url : {$cover_image_url}" . '</pre>';
+// echo '<pre>' . "Member cover image path : {$cover_image_path}" . '</pre>';
+
+
+if (empty($cover_image_path)) {
+	$args='';
+	$settings = bp_parse_args( $args, array(
+			/*'components'    => array(),
+			'width'         => 1300,
+			'height'        => 225,
+			'callback'      => '',
+			'theme_handle'  => '',*/
+			'default_cover_path' => '',
+			'default_cover_url' => '',
+		), 'xprofile_cover_image_settings' );
+	$cover_image_path = $settings['default_cover_path'];
+	$cover_image_url = $settings['default_cover_url'];
 }
 
-$path_parts = pathinfo($member_cover_image_url );
-$dir=$path_parts['dirname'] . '/';
+// echo '<pre>' . "AFTER DEFAULT CHECK : " . '</pre>';
+// echo '<pre>' . "Member cover image url : {$cover_image_url}" . '</pre>';
+// echo '<pre>' . "Member cover image path : {$cover_image_path}" . '</pre>';
+
+$path_parts = pathinfo( $cover_image_path );
+$dir=trailingslashit($path_parts['dirname']);
 $name=$path_parts['filename'];
 $ext=$path_parts['extension'];
+$urlpath = trailingslashit( pathinfo( $cover_image_url, PATHINFO_DIRNAME ) );
 
 	
 $url=esc_url( bp_get_displayed_user_link() );
@@ -52,13 +63,13 @@ $avatar_text = __('Update profile picture', 'foodiepro');
 $overlay_css = bp_is_my_profile()?'class="overlay"':'class="hidden"';
 $a_css = bp_is_my_profile()?'':'class="disabled"';
 
-function bp_url_exists($url) {
-	$headers = @get_headers($url);
-	if(strpos($headers[0],'404') === false)
-		return true;
-	else
-		return false;
-}
+// function bp_url_exists($url) {
+// 	$headers = @get_headers($url);
+// 	if(strpos($headers[0],'404') === false)
+// 		return true;
+// 	else
+// 		return false;
+// }
 
 ?>
 
@@ -70,16 +81,16 @@ function bp_url_exists($url) {
 				<div class="overlay-text"><?php echo $cover_text;?></div>
 			</div>
 			<picture id="cover-image"><?php
-				if (bp_url_exists( $dir . $name . '.webp'))
-					echo '<source srcset="' . $dir . $name . '.webp" ' . 'type="image/webp">';
-				if (bp_url_exists( $dir . $name . '.jpg')) {
-					echo '<img src="' . $dir . $name . '.jpg' . '">';
+				if (file_exists( $dir . $name . '.webp'))
+					echo '<source srcset="' . $urlpath . $name . '.webp" ' . 'type="image/webp">';
+				if (file_exists( $dir . $name . '.jpg')) {
+					echo '<img src="' . $urlpath . $name . '.jpg' . '">';
 				}
-				elseif (bp_url_exists( $dir . $name . '.jpeg')) {
-					echo '<img src="' . $dir . $name . '.jpeg' . '">';
+				elseif (file_exists( $dir . $name . '.jpeg')) {
+					echo '<img src="' . $urlpath . $name . '.jpeg' . '">';
 				}				
-				elseif (bp_url_exists( $dir . $name . '.png')) {
-					echo '<img src="' . $dir . $name . '.png' . '">';
+				elseif (file_exists( $dir . $name . '.png')) {
+					echo '<img src="' . $urlpath . $name . '.png' . '">';
 				}
 			?></picture>
 			<h1 class="blog-title"><?php echo xprofile_get_field_data( 'Titre de votre blog', $user_id ); ?>	</h1>

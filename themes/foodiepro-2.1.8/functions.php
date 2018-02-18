@@ -27,6 +27,65 @@ define( 'CHILD_COLOR_THEME_VERSION', '1.0.1' ); // triggers browser cache flush
 define( 'PLUGINS_URL', plugins_url() );
 
 
+
+/* =================================================================*/
+/* =              FAVICON
+/* =================================================================*/
+
+remove_action('wp_head', 'genesis_load_favicon');
+
+/** Adding custom Favicon */
+add_action ('genesis_meta','custom_favicon_links');
+ 
+function custom_favicon_links() {
+	$path = CHILD_THEME_URL . '/images/favicon';
+	echo sprintf('<link rel="apple-touch-icon" sizes="57x57" href="%s/apple-icon-57x57.png">',$path);
+	echo sprintf('<link rel="apple-touch-icon" sizes="60x60" href="%s/apple-icon-60x60.png">',$path);
+	echo sprintf('<link rel="apple-touch-icon" sizes="72x72" href="%s/apple-icon-72x72.png">',$path);
+	echo sprintf('<link rel="apple-touch-icon" sizes="76x76" href="%s/apple-icon-76x76.png">',$path);
+	echo sprintf('<link rel="apple-touch-icon" sizes="114x114" href="%s/apple-icon-114x114.png">',$path);
+	echo sprintf('<link rel="apple-touch-icon" sizes="120x120" href="%s/apple-icon-120x120.png">',$path);
+	echo sprintf('<link rel="apple-touch-icon" sizes="144x144" href="%s/apple-icon-144x144.png">',$path);
+	echo sprintf('<link rel="apple-touch-icon" sizes="152x152" href="%s/apple-icon-152x152.png">',$path);
+	echo sprintf('<link rel="apple-touch-icon" sizes="180x180" href="%s/apple-icon-180x180.png">',$path);
+	echo sprintf('<link rel="icon" type="image/png" sizes="192x192" href="%s/android-icon-192x192.png">',$path);
+	echo sprintf('<link rel="icon" type="image/png" sizes="32x32" href="%s/favicon-32x32.png">',$path);
+	echo sprintf('<link rel="icon" type="image/png" sizes="96x96" href="%s/favicon-96x96.png">',$path);
+	echo sprintf('<link rel="icon" type="image/png" sizes="16x16" href="%s/favicon-16x16.png">',$path);
+	echo sprintf('<link rel="manifest" href="%s/manifest.json">',$path);
+	echo sprintf('<meta name="msapplication-TileColor" content="#ffffff">',$path);
+	echo sprintf('<meta name="msapplication-TileImage" content="%s/ms-icon-144x144.png">',$path);
+	echo sprintf('<meta name="theme-color" content="#ffffff">',$path); 
+}
+
+/* =================================================================*/
+/* =              ADMIN
+/* =================================================================*/
+
+/**
+ * Show all parents, regardless of post status.
+ *
+ * @param   array  $args  Original get_pages() $args.
+ *
+ * @return  array  $args  Args set to also include posts with pending, draft, and private status.
+ */
+add_filter( 'page_attributes_dropdown_pages_args', 'my_slug_show_all_parents' );
+add_filter( 'quick_edit_dropdown_pages_args', 'my_slug_show_all_parents' );
+function my_slug_show_all_parents( $args ) {
+	$args['post_status'] = array( 'publish', 'pending', 'draft', 'private' );
+	return $args;
+}
+
+/* Chargement des feuilles de style admin */
+add_action( 'wp_admin_enqueue_scripts', 'load_admin_stylesheet' );
+function load_admin_stylesheet() {
+	wp_enqueue_style( 'admin-css', CHILD_THEME_URL . '/assets/css/admin.css', array(), CHILD_THEME_VERSION );		
+}
+
+/* =================================================================*/
+/* =              FOODIEPRO CHILD THEME SETUP
+/* =================================================================*/
+
 add_action( 'after_setup_theme', 'foodie_pro_load_textdomain' );
 /**
  * Loads the child theme textdomain.
@@ -42,11 +101,6 @@ function foodie_pro_load_textdomain() {
 }
 
 add_action( 'genesis_setup', 'foodie_pro_theme_setup', 15 );
-
-
-/* =================================================================*/
-// =                   THEME SETUP & LOADING
-/* =================================================================*/
 
 /**
  * Theme Setup
@@ -227,6 +281,33 @@ define('GENESIS_LANGUAGES_URL', STYLESHEETPATH.'/languages/genesis');
  */
 require_once( get_template_directory() . '/lib/init.php' );
 
+/**
+ * Add the theme name class to the body element.
+ *
+ * @since  1.0.0
+ *
+ * @param  string $classes
+ * @return string Modified body classes.
+ */
+add_filter( 'body_class', 'foodie_pro_add_body_class' );
+function foodie_pro_add_body_class( $classes ) {
+	$classes[] = 'foodie-pro';
+	$classes[] = 'no-js';
+	return $classes;
+}
+
+/* Add the theme name class to the body element. */
+// add_filter('language_attributes', 'modernizr');
+// function modernizr($output) {
+// 	return $output . ' class="no-js"';
+// }
+
+
+/* =================================================================*/
+/* =              CUSTOM SCRIPTS ENQUEUE
+/* =================================================================*/
+
+
 function url_exists($url) {
 	$headers = @get_headers($url);
 	return (strpos($headers[0],'404') === false);
@@ -238,7 +319,7 @@ function custom_enqueue_script( $handler, $uri, $path, $file, $deps, $version ) 
 	//echo '<pre>' . "path = {$path}" . '</pre>';
 	
   //if ((url_exists($minpath)) && (WP_DEBUG==false)) {
-  if (file_exists( $path . $minfile)) {
+  if (file_exists( $path . $minfile) && WP_MINIFY ) {
     wp_enqueue_script( $handler, $uri . $minfile, $deps, $version );
   }
   else {
@@ -262,84 +343,7 @@ function foodie_pro_enqueue_js() {
 	custom_enqueue_script( 'modernizr', $js_uri, $js_path, 'modernizr-custom.js', array(), CHILD_THEME_VERSION );
 }
 
-/* Add the theme name class to the body element. */
-add_filter('language_attributes', 'modernizr');
-function modernizr($output) {
-	return $output . ' class="no-js"';
-}
 
-/**
- * Add the theme name class to the body element.
- *
- * @since  1.0.0
- *
- * @param  string $classes
- * @return string Modified body classes.
- */
-add_filter( 'body_class', 'foodie_pro_add_body_class' );
-function foodie_pro_add_body_class( $classes ) {
-	$classes[] = 'foodie-pro';
-	return $classes;
-}
-
-/* =================================================================*/
-/* =              FAVICON
-/* =================================================================*/
-
-remove_action('wp_head', 'genesis_load_favicon');
-
-/** Adding custom Favicon */
-add_action ('genesis_meta','custom_favicon_links');
- 
-function custom_favicon_links() {
-	$path = CHILD_THEME_URL . '/images/favicon';
-	echo sprintf('<link rel="apple-touch-icon" sizes="57x57" href="%s/apple-icon-57x57.png">',$path);
-	echo sprintf('<link rel="apple-touch-icon" sizes="60x60" href="%s/apple-icon-60x60.png">',$path);
-	echo sprintf('<link rel="apple-touch-icon" sizes="72x72" href="%s/apple-icon-72x72.png">',$path);
-	echo sprintf('<link rel="apple-touch-icon" sizes="76x76" href="%s/apple-icon-76x76.png">',$path);
-	echo sprintf('<link rel="apple-touch-icon" sizes="114x114" href="%s/apple-icon-114x114.png">',$path);
-	echo sprintf('<link rel="apple-touch-icon" sizes="120x120" href="%s/apple-icon-120x120.png">',$path);
-	echo sprintf('<link rel="apple-touch-icon" sizes="144x144" href="%s/apple-icon-144x144.png">',$path);
-	echo sprintf('<link rel="apple-touch-icon" sizes="152x152" href="%s/apple-icon-152x152.png">',$path);
-	echo sprintf('<link rel="apple-touch-icon" sizes="180x180" href="%s/apple-icon-180x180.png">',$path);
-	echo sprintf('<link rel="icon" type="image/png" sizes="192x192" href="%s/android-icon-192x192.png">',$path);
-	echo sprintf('<link rel="icon" type="image/png" sizes="32x32" href="%s/favicon-32x32.png">',$path);
-	echo sprintf('<link rel="icon" type="image/png" sizes="96x96" href="%s/favicon-96x96.png">',$path);
-	echo sprintf('<link rel="icon" type="image/png" sizes="16x16" href="%s/favicon-16x16.png">',$path);
-	echo sprintf('<link rel="manifest" href="%s/manifest.json">',$path);
-	echo sprintf('<meta name="msapplication-TileColor" content="#ffffff">',$path);
-	echo sprintf('<meta name="msapplication-TileImage" content="%s/ms-icon-144x144.png">',$path);
-	echo sprintf('<meta name="theme-color" content="#ffffff">',$path); 
-}
-
-/* =================================================================*/
-/* =              ADMIN
-/* =================================================================*/
-
-/**
- * Show all parents, regardless of post status.
- *
- * @param   array  $args  Original get_pages() $args.
- *
- * @return  array  $args  Args set to also include posts with pending, draft, and private status.
- */
-add_filter( 'page_attributes_dropdown_pages_args', 'my_slug_show_all_parents' );
-add_filter( 'quick_edit_dropdown_pages_args', 'my_slug_show_all_parents' );
-function my_slug_show_all_parents( $args ) {
-	$args['post_status'] = array( 'publish', 'pending', 'draft', 'private' );
-	return $args;
-}
-
-/* Chargement des feuilles de style admin */
-add_action( 'wp_admin_enqueue_scripts', 'load_admin_stylesheet' );
-function load_admin_stylesheet() {
-	wp_enqueue_style( 'admin-css', CHILD_THEME_URL . '/assets/css/admin.css', array(), CHILD_THEME_VERSION );		
-}
-
-
-/* =================================================================*/
-/* =              CUSTOM SCRIPTS ENQUEUE
-/* =================================================================*/
 
 /* Enqueue default WP jQuery in the footer rather than the header 
 --------------------------------------------------------------------*/
@@ -408,7 +412,7 @@ function megamenu_dequeue_google_fonts() {
 
 
 /* =================================================================*/
-/* =              STYLING     
+/* =              CUSTOM STYLES ENQUEUE     
 /* =================================================================*/
 
 //* Load Custom Styles & Fonts
@@ -471,7 +475,7 @@ function enqueue_minified_stylesheet( $default_stylesheet_uri ) {
 	// echo '<pre>' . "Min file : {$min_file}" . '</pre>';
 	// echo '<pre>' . "Min file path : { $min_file_path }" . '</pre>';
 
-	if ( file_exists( $min_file_path ) ) {
+	if ( file_exists( $min_file_path ) && WP_MINIFY ) {
 		$default_stylesheet_uri = CHILD_THEME_URL . '/' . $min_file;
 	} 
 	return $default_stylesheet_uri;
@@ -612,15 +616,6 @@ add_action( 'genesis_after_content_sidebar_wrap', 'genesis_footer_widget_areas',
 /* Hook widget areas 
 -----------------------------------------------------------------------------*/
 
-//add_action( 'genesis_before_content', 'add_before_content_area');
-//function add_before_content_area() {
-//  if ( is_page() ) {
-//  		genesis_widget_area( 'before-content', array(
-//        'before' => '<div class="top before-content widget-area">',
-//        'after'  => '</div>',
-//  		));
-//  }     
-//}
 
 add_action( 'genesis_after_content', 'add_after_content_area');
 function add_after_content_area() {
@@ -652,15 +647,15 @@ function add_archive_bottom_area() {
   }     
 }
 
-add_action( 'genesis_after_content_sidebar_wrap', 'add_post_bottom_area');
-function add_post_bottom_area() {
-	if ( is_single() ) {
-	  genesis_widget_area( 'post-bottom', array(
-	      'before' => '<div class="post-bottom widget-area page-bottom">',
-	      'after'  => '</div>',
-		));
-	}
-}
+// add_action( 'genesis_after_content_sidebar_wrap', 'add_post_bottom_area');
+// function add_post_bottom_area() {
+// 	if ( is_single() ) {
+// 	  genesis_widget_area( 'post-bottom', array(
+// 	      'before' => '<div class="post-bottom widget-area page-bottom">',
+// 	      'after'  => '</div>',
+// 		));
+// 	}
+// }
 
 
 

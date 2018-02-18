@@ -1272,14 +1272,6 @@ Structure and Layout
 	float:left;
 }
 
-.home.page .sidebar {
-	margin-top:0px;
-}
-
-.sidebar {
-	margin-top:20px;
-}
-
 
 /* Secondary Sidebar */
 
@@ -1839,7 +1831,7 @@ p.successbox,
 --------------------------------------------- */
 .widget-wrap a, .widget-wrap li a {
 	text-decoration:none;
-	text-transform:capitalize;
+	/*text-transform:capitalize;*/
 }
 
 .widget-wrap .text a,
@@ -2971,6 +2963,10 @@ input#ug_photo {font-size: 14px; margin-top: 10px;}
 	margin-top:0; /* P.O. Original none */
 	width:100%;
 	margin-bottom:40px;
+}
+
+.top.before-content {
+    margin-bottom: 0px;
 }
 
 .bottom {

@@ -232,17 +232,13 @@ function url_exists($url) {
 	return (strpos($headers[0],'404') === false);
 }
 
-function custom_enqueue_script( $handler, $path, $deps, $version ) {	
-	$path_parts = pathinfo($path); 			
-	$dir = $path_parts['dirname'] . '/'; 			
-	$base = $path_parts['filename']; 			
-	$ext = $path_parts['extension']; 			
-
-	$minpath = $dir . $base . '.min.' . $ext;
-	echo '<pre>' . $minpath . '</pre>';
-	echo '<pre> File exists ? ' . url_exists($minpath) . '</pre>';
+function custom_enqueue_script( $handler, $minpath, $deps, $version ) {	
+	$path = str_replace( '.min', '', $minpath );
+	echo '<pre>' . "minpath = {$minpath}" . '</pre>';
+	echo '<pre>' . "path = {$path}" . '</pre>';
+	//echo '<pre> File exists ? ' . url_exists($minpath) . '</pre>';
 	
-  if ((url_exists($minpath)) && !(WP_DEBUG==false)) {
+  if ((url_exists($minpath)) && (WP_DEBUG==false)) {
     wp_enqueue_script( $handler, $minpath, $deps, $random );
   }
   else {
@@ -261,9 +257,9 @@ add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_js' );
 function foodie_pro_enqueue_js() {
 	$js_uri = CHILD_THEME_URL . '/assets/js/';
 	// Add general purpose scripts.
-	custom_enqueue_script( 'foodie-pro-general', $js_uri . 'general.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
+	custom_enqueue_script( 'foodie-pro-general', $js_uri . 'general.min.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
 	// .webp detection
-	custom_enqueue_script( 'modernizr', $js_uri . 'modernizr-custom.js', array(), CHILD_THEME_VERSION );
+	custom_enqueue_script( 'modernizr', $js_uri . 'modernizr-custom.min.js', array(), CHILD_THEME_VERSION );
 }
 
 /* Add the theme name class to the body element. */

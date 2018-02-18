@@ -864,7 +864,7 @@ div#whats-new-content {
 	border: 1px solid #bdbdbd;
 	border-radius: 10px;
 	padding: 10px;
-	margin-left: 10px;
+	margin-left: 20px;
 }
 
 div#whats-new-content:before{
@@ -872,9 +872,9 @@ div#whats-new-content:before{
   position: absolute;
   border-style: solid;
   border-color: transparent #969696;
-  border-width: 11px 18px 11px 0;
-  top: 20px;
-  left: -18px;
+  border-width: 7px 23px 11px 0;
+  top: 29px;
+  left: -23px;
 }
 
 div#whats-new-content:after {
@@ -882,9 +882,9 @@ div#whats-new-content:after {
   position: absolute;
   border-style: solid;
   border-color: transparent #fff;
-  border-width: 10px 17px 10px 0px;
-  top: 21px;
-  left: -17px;
+  border-width: 6px 22px 10px 0px;
+  top: 30px;
+  left: -22px;
 }
 
 
@@ -894,9 +894,6 @@ div#whats-new-content:after {
 
 #whats-new-submit.loading {
 	display:inline-block;
-  width: 40px;
-  height: 40px; 
-  margin:10px;
   -webkit-animation: fa-spin 2s infinite linear;
   animation: fa-spin 2s infinite linear;
 }
@@ -1502,6 +1499,7 @@ img.avatar#square,
   -webkit-border-radius:0;
 }
 
+.page-bottom .rpwe-block a.auth-avatar,
 .after-content .rpwe-block a.auth-avatar,
 .content .rpwe-block a.auth-avatar {
 	margin-right:auto;
@@ -1515,10 +1513,12 @@ img.avatar#square,
   display:flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */  
 }
 
+.page-bottom .rpwe-block a.auth-avatar,
 .after-content .rpwe-block a.auth-avatar {
   margin-top:-65px;
 }
 
+.page-bottom .rpwe-block img.avatar,
 .after-content .rpwe-block img.avatar,
 .content .rpwe-block img.avatar {
 	border:3px solid #ffffff;
@@ -1527,6 +1527,7 @@ img.avatar#square,
 	margin:auto;
 }
 
+.page-bottom .rpwe-block img.avatar {
 .after-content .rpwe-block img.avatar {
 	width:60px;
 	height:60px;

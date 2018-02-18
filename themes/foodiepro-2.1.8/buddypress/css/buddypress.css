@@ -1190,13 +1190,6 @@ body.activity-permalink #buddypress ul.item-list,
 body.activity-permalink #buddypress ul.item-list li.activity-item {
 	border: none;
 }
-#buddypress ul.item-list li {
-	border-bottom: 1px solid #eaeaea;
-	padding: 15px 0;
-	margin: 0;
-	position: relative;
-	list-style: none;
-}
 #buddypress ul.single-line li {
 	border: none;
 }

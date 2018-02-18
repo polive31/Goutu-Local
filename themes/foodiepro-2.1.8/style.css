@@ -4626,16 +4626,16 @@ Site Footer
 @media only screen and (max-width:1023px) {
 	
 	.content-sidebar-wrap {
-    display: flex;
-    flex-direction: column;
+	    display: flex;
+	    flex-direction: column;
 	}
 	
 	aside.sidebar-primary {
-    order: 3;
+    	order: 3;
 	}
 	
 	.after-content {
-    order: 2;
+    	order: 2;
 	}
 
 	.content,
@@ -4655,6 +4655,10 @@ Site Footer
 	/*.title-area,P.O.*/
 	.wrap {
 		width:100%;
+	}
+
+	.content-sidebar-wrap {
+		float:left;
 	}
 	
 	.sidebar .widget {

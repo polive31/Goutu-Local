@@ -32,16 +32,17 @@ function foodiepro_do_social_sidebar() {
 }
 
 // Social Bottom sidebar
-add_action( 'genesis_after_loop', 'add_social_bottom_area');
+add_action( 'genesis_after_content', 'add_social_bottom_area');
 function add_social_bottom_area() {
   if ( bp_is_user() && (bp_current_action()=='public') ) {
   	//echo bp_current_action();
 	  genesis_widget_area( 'social-bottom', array(
-	      'before' => '<div class="social-bottom widget-area page-bottom">',
+	      'before' => '<div class="bottom after-content social-bottom widget-area">',
 	      'after'  => '</div>',
 		));
 	}
 }
+
 
 /* =================================================================*/
 /* =                 BREADCRUMBS

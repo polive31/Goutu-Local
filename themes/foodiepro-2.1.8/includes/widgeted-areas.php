@@ -54,11 +54,6 @@ function foodie_pro_after_entry() {
 
 /* General widgeted areas.
 ----------------------------------------------------*/
-genesis_register_sidebar( array(
-	'id'			=> 'after-content',
-	'name'			=> __( 'After Content', 'foodiepro' ),
-	'description'	=> __( 'This is the last section after content and sidebars.', 'foodiepro' ),
-) );
 // genesis_register_sidebar( array(
 // 	'id'			=> 'before-header',
 // 	'name'			=> __( 'Before Header', 'foodiepro' ),
@@ -88,6 +83,11 @@ genesis_register_sidebar( array(
 	'id'			=> 'home-bottom',
 	'name'			=> __( 'Home Bottom', 'foodiepro' ),
 	'description'	=> __( 'This is the home bottom section.', 'foodiepro' ),
+) );
+genesis_register_sidebar( array(
+	'id'			=> 'after-content',
+	'name'			=> __( 'After Content', 'foodiepro' ),
+	'description'	=> __( 'This is the last section after content and sidebars.', 'foodiepro' ),
 ) );
 
 /* Social (Buddypress) widgeted areas

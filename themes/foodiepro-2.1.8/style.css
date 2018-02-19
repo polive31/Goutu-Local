@@ -1675,15 +1675,18 @@ h2.entry-title, .wpupg-post-title,
 /* Widget Titles */
 
 .widgettitle {
-  font-size:30px; 
+	font-size:30px; 
 	letter-spacing:1px;
 	text-align:center;
-  padding:10px 0 20px 0;
+	padding:10px 0 20px 0;
+}
+
+.content .widgettitle {
+	padding:20px 0 0px 0;
 }
 
 .after-content .widgettitle {
-	text-align:left;
-  padding:20px 0 10px 0;
+	padding:20px 0 10px 0;
 	margin: 10px 0 0 0;  
 }
 

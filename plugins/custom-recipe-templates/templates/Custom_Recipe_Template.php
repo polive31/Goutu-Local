@@ -46,11 +46,11 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 					</div>	
 					
 					<!-- Recipe Add to Cart Button -->
-				<!-- 	<div class="recipe-button tooltip tooltip-above" id="shopping">
+					<div class="recipe-button tooltip tooltip-above" id="shopping">
 					<?php 
 						$shopping_list = new Custom_Recipe_Add_To_Shopping_List( $this->logged_in );  
 						echo $shopping_list->output( $recipe );?>
-					</div>			 -->	
+					</div>				
 					
 					<!-- Add To Favorites Button -->
 					<div class="recipe-button tooltip tooltip-above" id="favorite">

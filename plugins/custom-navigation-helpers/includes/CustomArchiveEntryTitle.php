@@ -137,9 +137,6 @@ class CustomArchiveEntryTitle extends CustomArchive {
 			$tags .= '<div class="overlay left' . $left_id . '">' . $origin . '</div>';
 			$left_id++;		
 		}
-	
-		
-
 		
 		return $tags;
 	}

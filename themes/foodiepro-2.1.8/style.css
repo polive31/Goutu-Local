@@ -4880,8 +4880,11 @@ Site Footer
     margin-top:10px;
    }
 
-	h1.archive-title, h1.entry-title {
-    text-align: center;
+	h1.archive-title, 
+	h1.entry-title {
+		text-align: center;
+		font-size: 40px;
+		line-height: 45px;
 	}
 	
 	.entry-header-overlay .overlay {
@@ -4980,8 +4983,7 @@ Site Footer
 	.archives-top .widget  {
 		float:left;
 		margin:0 0 10px;
-		width:100%;
-		max-width: 100%;		
+		width:50%;	
 	}
 	
 	.title-area, 

@@ -38,19 +38,19 @@ public function widget( $args, $instance ) {
 	echo $args['before_widget'];
 	//if ( ! empty( $title ) )
 	$search_term='';
-	if ( is_tax() )
-		echo $args['before_title'] . __('Sort recipes', 'foodiepro') . $args['after_title'];
-	elseif ( is_archive() ) 
-		echo $args['before_title'] . __('Sort posts', 'foodiepro') . $args['after_title'];
-	elseif ( is_search() ) 
-		echo $args['before_title'] . __('Sort results', 'foodiepro') . $args['after_title'];
+	echo $args['before_title'] . __('Sort', 'foodiepro') . $args['after_title'];
+	// if ( is_tax() )
+	// 	echo $args['before_title'] . __('Sort recipes', 'foodiepro') . $args['after_title'];
+	// elseif ( is_archive() ) 
+	// 	echo $args['before_title'] . __('Sort posts', 'foodiepro') . $args['after_title'];
+	// elseif ( is_search() ) 
+	// 	echo $args['before_title'] . __('Sort results', 'foodiepro') . $args['after_title'];
 	// Start of widget code
-	
-	else {
-		$search_term = get_search_query();
-		if ( empty( $search_term ) )
-			$search_term = 's=' . $search_term . '&';
-	}
+	// else {
+	// 	$search_term = get_search_query();
+	// 	if ( empty( $search_term ) )
+	// 		$search_term = 's=' . $search_term . '&';
+	// }
 	?>
 
 	<div class="dropdown-select">

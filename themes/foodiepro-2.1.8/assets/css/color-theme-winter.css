@@ -138,6 +138,7 @@ i.fa.fa-star-o {
 input, select, textarea,
 .widget.back ul li {
 	border:1px solid #ccc;
+	background-color: #fff;
 }
 
 .widget.back ul li:hover {

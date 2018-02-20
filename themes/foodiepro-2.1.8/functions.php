@@ -593,13 +593,9 @@ function add_content_padding_js(){
 ?>
 <script>
 	jQuery(document).ready(function() {
-		//console.log("In site container top margin function");
 		var height = jQuery("header").height();
 		var htmlMargin = parseInt(jQuery("html").css("margin-top"));
 		topMargin = height - htmlMargin + 10;
-		//console.log("height = " + height);
-		//console.log("html margin = " + htmlMargin);
-		//console.log("top margin = " + topMargin);
 		jQuery(".site-container").css("margin-top", topMargin);
 	});
 </script>
@@ -709,23 +705,6 @@ function wprpe_orderby_rating( $args ) {
 		$args['meta_key'] = 'user_rating_global';
 	return $args;
 }
-
-
-//* Positions the content below the header
-add_action('wp_head','close_galleria_on_click_js');
-function close_galleria_on_click_js(){
-?>
-<script>
-	jQuery(document).ready(function() {
-		jQuery('#galleria' ).on( 'click', function() {
-			console.log("click on galleria !");
-			jQuery(".galleria-close").trigger('click');
-		});			
-	});
-</script>
-<?php
-}
-
 
 
 /* =================================================================*/

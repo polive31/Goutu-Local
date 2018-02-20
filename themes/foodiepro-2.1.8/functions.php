@@ -719,25 +719,6 @@ function set_full_layout() {
 }
 
 
-/* Customize entry title in the archive pages
------------------------------------------------------------------------------*/
-//add_filter( 'genesis_post_title_output', 'archive_title1', 15 );	
-
- function archive_title1($title) {	
-	/* Display start rating below entry */
-	if ( is_tax() || is_search() ) :
-			$title .= do_shortcode('[display-star-rating category="global" display="minimal"]');
-			//echo 'User rating global = ' . get_post_meta( get_the_ID(), 'user_rating_global', true );
-	endif;
-
-	if ( is_tax('cuisine', array('france', 'europe', 'asie', 'afrique', 'amerique-nord', 'amerique-sud') ) ) :
-		$origin = wp_get_post_terms( get_the_ID(), 'cuisine', array("fields" => "names"));
-		$title = '<div class="origin">' . $origin[0] . '</div>' . $title;
-	endif;
-
-	return $title;
-}
-
 /* =================================================================*/
 /* =               PAGES
 /* =================================================================*/
@@ -786,13 +767,6 @@ function output_picture_markup($url, $path, $name, $ext=null) {
 /* =================================================================*/
 /* =               POSTS
 /* =================================================================*/
-
-//* Customize the entry meta in the entry header (requires HTML5 theme support)
-add_filter( 'genesis_post_info', 'custom_post_info_filter' );
-function custom_post_info_filter($post_info) {
-	$post_info = sprintf(__('Published on %s by <span id="username">%s</span>', 'foodiepro'), '[post_date]', '[bp-author]');
-	return $post_info;
-}
 
 //* Remove the post meta display from footer
 remove_action( 'genesis_entry_footer', 'genesis_post_meta' );

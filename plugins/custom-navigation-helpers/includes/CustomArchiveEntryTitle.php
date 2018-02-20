@@ -18,6 +18,19 @@ class CustomArchiveEntryTitle extends CustomArchive {
 		add_filter( 'genesis_post_title_output', array($this,'archive_rating' ), 15 );		
 		add_action( 'genesis_entry_header', array($this, 'do_post_title_before'), 1 );
 		add_action( 'genesis_entry_header', array($this, 'do_post_title_after') );
+		add_action( 'genesis_post_info', array($this, 'custom_post_info_filter') );
+	}
+
+
+	//* Customize the entry meta in the entry header (requires HTML5 theme support)
+	function custom_post_info_filter($post_info) {
+		if (is_single()) 
+			$post_info = sprintf(__('Published on %s by <span id="username">%s</span>', 'foodiepro'), '[post_date]', '[bp-author]');
+		else {
+			//$post_info = sprintf(__('By <span id="username">%s</span>', 'foodiepro'), '[bp-author]');
+			$post_info = '';
+		}
+		return $post_info;
 	}
 	
 	

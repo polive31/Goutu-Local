@@ -77,10 +77,10 @@ class Custom_Recipe_Templates {
 			
 		if ( is_singular('recipe') ) {
 		  $css_enqueue=array(
-							array(
-		              'url' => self::$_PluginPath . 'assets/css/custom-recipe.css',
-		              'public' => true,
-		          ),
+					array(
+						'url' => self::$_PluginPath . 'assets/css/custom-recipe.css',
+						'public' => true,
+					),
 							/*array(
 		              'url' => self::$_PluginPath . 'assets/css/tooltips.css',
 		              'public' => true,
@@ -94,6 +94,7 @@ class Custom_Recipe_Templates {
 		elseif ( is_page( 'menus' ) ) { // Menu page
 		  $css_enqueue=array(
 							array(
+						'name' => 'custom-menu-styles',		
 		              'url' => self::$_PluginPath . 'assets/css/custom-menu.css',
 		              'public' => true,
 		          ),
@@ -144,10 +145,10 @@ class Custom_Recipe_Templates {
 				
 				if ( file_exists( $min_js ) ) {
 					$js_enqueue[] = array(
-            'name' => 'custom-recipe-tools-minified',
-            'url' => $min_js,
-            'public' => true,
-            'admin' => true,					
+			            'name' => 'custom-recipe-tools-minified',
+			            'url' => $min_js,
+			            'public' => true,
+			            'admin' => true,					
 					);
 				}
 				else {

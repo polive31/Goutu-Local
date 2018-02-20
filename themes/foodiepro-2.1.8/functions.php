@@ -413,6 +413,16 @@ function megamenu_dequeue_google_fonts() {
 /* =              CUSTOM STYLES ENQUEUE     
 /* =================================================================*/
 
+function custom_enqueue_style( $handler, $uri, $path, $file, $deps, $version ) {	
+	$minfile = str_replace( '.css', '.min.css', $file );
+	if (file_exists( $path . $minfile) && WP_MINIFY ) {
+		wp_enqueue_style( $handler, $uri . $minfile, $deps, $version );
+	}
+	else {
+		wp_enqueue_style( $handler, $uri . $file, $deps, $version );
+	}
+}
+
 //* Load Custom Styles & Fonts
 add_filter( 'foodie_pro_disable_google_fonts', '__return_true' );
 add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_stylesheets' );
@@ -422,7 +432,9 @@ function foodie_pro_enqueue_stylesheets() {
 	//wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Oswald|Lato:300,400', array(), CHILD_THEME_VERSION );
 	wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
 	// Theme stylesheet with varying name & version, forces cache busting at browser level
-	wp_enqueue_style( 'color-theme-' . CHILD_COLOR_THEME , CHILD_THEME_URL . '/assets/css/color-theme-' . CHILD_COLOR_THEME . '.css', array(), CHILD_COLOR_THEME . CHILD_COLOR_THEME_VERSION );
+	$color_theme_url = CHILD_THEME_URL . '/assets/css/';
+	$color_theme_path = CHILD_THEME_PATH . '/assets/css/';
+	custom_enqueue_style( 'color-theme-' . CHILD_COLOR_THEME , $color_theme_url, $color_theme_path, 'color-theme-' .CHILD_COLOR_THEME . '.css', array(), CHILD_COLOR_THEME . CHILD_COLOR_THEME_VERSION );
 }
 
 /* Optimize page loading by dequeuing specific CSS stylesheets loading actions */
@@ -581,13 +593,13 @@ function add_content_padding_js(){
 ?>
 <script>
 	jQuery(document).ready(function() {
-		console.log("In site container top margin function");
-	  var height = jQuery("header").height();
-	  var htmlMargin = parseInt(jQuery("html").css("margin-top"));
-	  topMargin = height - htmlMargin + 10;
-	  console.log("height = " + height);
-	  console.log("html margin = " + htmlMargin);
-	  console.log("top margin = " + topMargin);
+		//console.log("In site container top margin function");
+		var height = jQuery("header").height();
+		var htmlMargin = parseInt(jQuery("html").css("margin-top"));
+		topMargin = height - htmlMargin + 10;
+		//console.log("height = " + height);
+		//console.log("html margin = " + htmlMargin);
+		//console.log("top margin = " + topMargin);
 		jQuery(".site-container").css("margin-top", topMargin);
 	});
 </script>
@@ -658,7 +670,7 @@ function add_archive_bottom_area() {
 
 
 /* =================================================================*/
-/* =              WIDGETS
+/* =              WIDGETS / PLUGINS
 /* =================================================================*/
 
 // Allow Text widgets to execute shortcodes
@@ -697,6 +709,23 @@ function wprpe_orderby_rating( $args ) {
 		$args['meta_key'] = 'user_rating_global';
 	return $args;
 }
+
+
+//* Positions the content below the header
+add_action('wp_head','close_galleria_on_click_js');
+function close_galleria_on_click_js(){
+?>
+<script>
+	jQuery(document).ready(function() {
+		jQuery('#galleria' ).on( 'click', function() {
+			console.log("click on galleria !");
+			jQuery(".galleria-close").trigger('click');
+		});			
+	});
+</script>
+<?php
+}
+
 
 
 /* =================================================================*/
@@ -739,32 +768,34 @@ add_action( 'genesis_entry_header', 'add_page_icon', 7 );
 
 function add_page_icon() {
 	if ( is_page() ) {
-		$icon_url = trailingslashit( get_stylesheet_directory_uri() ) . 'images/page-icons/';
+		$icon_url = trailingslashit( CHILD_THEME_URL ) . 'images/page-icons/';
+		$icon_path = trailingslashit( CHILD_THEME_PATH ) . 'images/page-icons/';
 		$key_val = get_post_meta( get_the_ID(), 'entry_header_image', true );
 		if ( ! empty( $key_val ) ) {
 			$ext = substr(strrchr($key_val, "."), 1);
 			$filename = substr($key_val, 0 , (strrpos($key_val, ".")));
 			echo '<div class="entry-header-image">';
-			output_picture_markup($icon_url, $filename, $ext);
+			output_picture_markup($icon_url, $icon_path, $filename, $ext);
 			echo '</div>';	
 		}
 	}
 }
 
-function output_picture_markup($dir, $name, $ext=null) {
+function output_picture_markup($url, $path, $name, $ext=null) {
 	?>
+
 	<picture><?php
-	if (url_exists( $dir . $name . '.webp'))
-		echo '<source srcset="' . $dir . $name . '.webp" ' . 'type="image/webp">';
+	if (file_exists( $path . $name . '.webp'))
+		echo '<source srcset="' . $url . $name . '.webp" ' . 'type="image/webp">';
 	if (isset($ext)) {
-		echo '<img src="' . $dir . $name . '.' . $ext . '">';
+		echo '<img src="' . $url . $name . '.' . $ext . '">';
 	}
 	else {
-		if (url_exists( $dir . $name . '.jpg')) {
-			echo '<img src="' . $dir . $name . '.jpg' . '">';
+		if (file_exists( $path . $name . '.jpg')) {
+			echo '<img src="' . $url . $name . '.jpg' . '">';
 		}
-		elseif (url_exists( $dir . $name . '.png')) {
-			echo '<img src="' . $dir . $name . '.png' . '">';
+		elseif (file_exists( $path . $name . '.png')) {
+			echo '<img src="' . $url . $name . '.png' . '">';
 		}
 	}
 ?></picture>

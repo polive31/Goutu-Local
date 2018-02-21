@@ -15,7 +15,7 @@ class CustomArchiveEntryTitle extends CustomArchive {
 
 	public function __construct() {
 		parent::__construct();
-		add_filter( 'genesis_post_title_output', array($this,'archive_rating' ), 15 );		
+		add_filter( 'genesis_post_title_output', array($this,'archive_rating' ), 1 );		
 		add_action( 'genesis_entry_header', array($this, 'do_post_title_before'), 1 );
 		add_action( 'genesis_entry_header', array($this, 'do_post_title_after') );
 		add_action( 'genesis_post_info', array($this, 'custom_post_info_filter') );
@@ -55,7 +55,7 @@ class CustomArchiveEntryTitle extends CustomArchive {
 		
 		/* Display start rating below entry */
 		if ( is_tax() || is_search() ) {
-				$title .= do_shortcode('[display-star-rating category="global" display="minimal"]');
+				$title = do_shortcode('[display-star-rating category="global" display="minimal"]') . $title;
 				//echo 'User rating global = ' . get_post_meta( get_the_ID(), 'user_rating_global', true );
 		};	
 		

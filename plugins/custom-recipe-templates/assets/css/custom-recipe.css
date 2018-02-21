@@ -140,11 +140,11 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 }
 
 .recipe-container .rating {
-  font-size:24px;
+	font-size:24px;
 }
 
-.recipe-container span.fa-stack {
-	width: 23px;
+.recipe-container .fa-stack {
+	margin:0 2px;
 }
 
 .recipe-label {

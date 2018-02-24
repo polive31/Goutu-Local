@@ -2271,25 +2271,10 @@ li.share-icons.size-medium a {
     float: left;
 }
 
-/* Fullscreen Galleria 
+/* Lightbox Plugin (featherlight) 
 ----------------------------------------------*/
-#galleria {
-	background: rgba(255, 255, 255, 0.7)!important;
-}
-#galleria .galleria-close {
-    color: #4a4a4a;
-    font-size: 50px;
-    font-family: Dashicons;
-    height: 50px;
-    width: 50px;
-}
-
-.galleria-close::before {
-    content: '\f335';
-}
-
-.galleria-container {
-    background: rgba(255, 255, 255, 0.4)!important;
+.featherlight:last-of-type {
+	background: rgba(255, 255, 255, 0.9)!important;
 }
 
 /* CUSTOM RATING STARS PLUGIN

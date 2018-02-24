@@ -885,7 +885,6 @@ div#whats-new-content:after {
   left: -22px;
 }
 
-
 #aw-whats-new-submit.loading {
 	display:none;
 }
@@ -2275,6 +2274,11 @@ li.share-icons.size-medium a {
 ----------------------------------------------*/
 .featherlight:last-of-type {
 	background: rgba(255, 255, 255, 0.9)!important;
+}
+
+.featherlight .featherlight-close-icon {
+	display:none!important;
+	/*opacity: 0;*/
 }
 
 /* CUSTOM RATING STARS PLUGIN

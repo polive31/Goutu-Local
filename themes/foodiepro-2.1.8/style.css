@@ -1718,7 +1718,7 @@ h2.entry-title, .wpupg-post-title,
 	height:24px;
 }
 
-.title .widgettitle:after {
+.tilde .widgettitle:after {
 	background-position:-66px 0;
 }
 
@@ -3477,12 +3477,12 @@ a.more-link,
 .more-from-category a:after {
 	content:' →';
 	float: right;
-    padding-right:2px;
+    padding-right:3px;
 }
 
 .more-from-category:hover a:after {
     padding-right:0px;
-	padding-left:2px;
+	padding-left:3px;
 }
 
 .more-link {

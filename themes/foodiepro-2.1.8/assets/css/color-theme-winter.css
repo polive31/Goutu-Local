@@ -87,8 +87,9 @@ a.more-link,
 .img-menu:hover a .menu-title span,
 a.more-link:hover,
 .more-from-category a:hover {
-  background:#63584b;
-	color:#fff;
+	background: #e4e4e4;
+	color: #616161;
+	transition: all 0.2s ease-in-out;
 }
 
 .recipes-top, 

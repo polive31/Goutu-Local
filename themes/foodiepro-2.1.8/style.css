@@ -3471,7 +3471,7 @@ a.more-link,
 }
 
 .more-from-category a:after {
-	content:'→';
+	content:' →';
 }
 
 .more-from-category:hover a:after {

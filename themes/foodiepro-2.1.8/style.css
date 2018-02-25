@@ -1692,7 +1692,7 @@ h2.entry-title, .wpupg-post-title,
 }
 
 .sidebar .widgettitle {
-  margin: 20px 0 0 0;
+	margin: 20px 0 0 0;
 }
 
 .title-no-display .widgettitle {
@@ -1701,7 +1701,7 @@ h2.entry-title, .wpupg-post-title,
 
 .fancy .widgettitle {
 	padding:50px 0 0 0;
-  margin:10px 0;
+	margin:10px 0;
 }
 
 .home .elegant .widgettitle {
@@ -1718,7 +1718,7 @@ h2.entry-title, .wpupg-post-title,
 	height:24px;
 }
 
-.tilde .widgettitle:after {
+.title .widgettitle:after {
 	background-position:-66px 0;
 }
 
@@ -3476,9 +3476,12 @@ a.more-link,
 
 .more-from-category a:after {
 	content:' →';
+	float: right;
+    padding-right:2px;
 }
 
 .more-from-category:hover a:after {
+    padding-right:0px;
 	padding-left:2px;
 }
 
@@ -4835,35 +4838,45 @@ Site Footer
 	
 	.tilde .widgettitle:before,
 	.tilde .widgettitle:after {
-		/*display:none;*/
+    	background: url(images/deco-icons/tilde-small.png) no-repeat;
+    	width: 33px;
+	}
+
+	.tilde .widgettitle:after {
+    	background-position: -33px 0;
 	}
 
 	h3.widgettitle {
 		font-weight: bold;
+		font-size:24px;
 	}
 	
 	.title-big-font .widgettitle,
 	.elegant .widgettitle {
-    font-size: 40px;
+    	font-size: 28px;
 		line-height: 45px;
 	}	
 	
 	.home-page .site-header {
-    height:auto;
-    padding:0;
+		height:auto;
+		padding:0;
 	}	
 	
 	.home-page .title-area, 
 	.home-page .site-title, 
 	.home-page .site-title a {
-    height:150px;
+		height:150px;
 		margin:0;
-    width: 100%;		
+		width: 100%;		
 	}	
 	
 	.home .site-header,
 	.site-header {
 		background:none!important;
+	}
+
+	.home .elegant .widgettitle {
+    	padding: 20px 0 0px 0;
 	}
 	
 	.foodie-pro .header-inner {

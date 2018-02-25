@@ -254,21 +254,24 @@ li.wpurp-recipe-ingredient a:hover {
 
 /* Instructions */
 .recipe-instruction-group {
- 	font-size:30px;
+ 	font-size:26px;
+ 	line-height:30px;
+ 	margin-bottom:10px;
 }
 
 ol.wpurp-recipe-instructions {
     list-style-position: inside;
+    padding: 10px 0;
 }
 
 li.wpurp-recipe-instruction {
 	font-family:"Oswald";
-  list-style-position: inside;
-  margin-bottom: 20px;
-  text-align:justify;
-  font-size: 30px;
-  line-height: 20px;  
-  color: #737373;
+	list-style-position: inside;
+	margin-bottom: 20px;
+	text-align:justify;
+	font-size: 30px;
+	line-height: 20px;  
+	color: #737373;
 }
 
 li.wpurp-recipe-instruction.li-first.li-last {
@@ -298,29 +301,35 @@ li.wpurp-recipe-instruction span {
 }
   #wpurp-timer-container .wpurp-timer-icon {
     cursor: pointer;
-    padding: 0 10px; }
-    #wpurp-timer-container .wpurp-timer-icon svg {
-      display: table-cell;
-      vertical-align: middle;
-      width: 24px;
-      height: 24px; }
-  #wpurp-timer-container span {
-    display: table-cell;
-    vertical-align: middle; }
-    #wpurp-timer-container span#wpurp-timer-bar-container {
-      width: 100%;
-      padding: 0 10px 0 15px; }
-      #wpurp-timer-container span#wpurp-timer-bar-container #wpurp-timer-bar {
-        display: block;
-        border: 2px solid #000;
-        height: 24px;
-        width: 100%; }
-        #wpurp-timer-container span#wpurp-timer-bar-container #wpurp-timer-bar #wpurp-timer-bar-elapsed {
-          display: block;
-          height: 100%;
-          width: 0%;
-          background-color: #000;
-          border: 0; }
+    padding: 0 10px; 
+}
+#wpurp-timer-container .wpurp-timer-icon svg {
+  display: table-cell;
+  vertical-align: middle;
+  width: 24px;
+  height: 24px; 
+}
+#wpurp-timer-container span {
+	display: table-cell;
+	vertical-align: middle; 
+}
+#wpurp-timer-container span#wpurp-timer-bar-container {
+	width: 100%;
+	padding: 0 10px 0 15px; 
+}
+#wpurp-timer-container span#wpurp-timer-bar-container #wpurp-timer-bar {
+	display: block;
+	border: 2px solid #000;
+	height: 24px;
+	width: 100%; 
+}
+#wpurp-timer-container span#wpurp-timer-bar-container #wpurp-timer-bar #wpurp-timer-bar-elapsed {
+	display: block;
+	height: 100%;
+	width: 0%;
+	background-color: #000;
+	border: 0; 
+}
 
 /* Picture gallery 
 ----------------------------------------------*/
@@ -330,10 +339,10 @@ li.wpurp-recipe-instruction span {
 
 #joined-pics .add-picture-button,
 #joined-pics .gallery-item {
-  display: inline-block;	
-  vertical-align:top;
+	display: inline-block;	
+	vertical-align:top;
 	margin: 0!important;
-  padding: 5px; 
+	padding: 5px; 
 }
 
 #joined-pics .gallery-icon {
@@ -343,13 +352,13 @@ li.wpurp-recipe-instruction span {
 
 #joined-pics .add-picture-button button {
 	width: 75px;
-  height: 75px;
-  margin: 0px;  
+	height: 75px;
+	margin: 0px;  
 	padding: 5px!important;
 	text-transform:uppercase;
-  text-align:center;
+	text-align:center;
 	font-family: "Lato",sans-serif;
-  font-size: 10px;	
+	font-size: 10px;	
 	line-height: 14px;
 }
 

@@ -27,7 +27,7 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 		<!-- Class .wpurp-container important for adjustable servings javascript -->	
 		<div class="recipe wpurp-container" id="wpurp-container-recipe-<?php echo $recipe->ID(); ?>" data-id="<?php echo $recipe->ID(); ?>" data-permalink="<?php echo $recipe->link(); ?>" data-servings-original="<?php echo $recipe->servings_normalized(); ?>">
 			<!-- Recipe description -->
-			<div class="recipe-container">
+			<div class="recipe-container" id="general">
 				<?php
 				echo $recipe->description();
 				?>	
@@ -87,7 +87,7 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 			</div>
 			
 			<!-- Image + recipe info -->
-			<div class="recipe-container">
+			<div class="recipe-container"  id="image">
 				
 				<div class="image-container">
 					<div class="clearfix">
@@ -196,7 +196,7 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 			</div>
 			
 			<!-- Ingredients + Instructions -->
-			<div class="recipe-container">
+			<div class="recipe-container" id="main">
 				
 				<div class="ingredients-container"> 
 					<?php
@@ -210,7 +210,7 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 				?>
 			</div>
 			
-			<div class="recipe-container">
+			<div class="recipe-container"  id="general">
 				<?php
 				$test = $recipe->notes();
 				if ($test!='') {

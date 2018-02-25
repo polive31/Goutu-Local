@@ -1331,7 +1331,7 @@ Structure and Layout
 /* Menus
 --------------------------------------------- */
 
-/* Mon Goûtu image menu */
+/* Mon GoÃ»tu image menu */
 .img-menu {
 	float:left;
 	margin-bottom:20px;
@@ -1556,14 +1556,14 @@ img.alignnone {
 .post-nav.prev-post.alignleft, /* Important, not to be superseded @ media queries*/
 .alignleft {
 	float:left;
-	/*margin-right:40px; Pose problème dans les sections archive top */
+	/*margin-right:40px; Pose problÃ¨me dans les sections archive top */
 	text-align:left;
 }
 
 .post-nav.next-post.alignright, /* important for media queries */
 .alignright {
 	float:right;
-	/*margin-left:40px; Pose problème dans les sections archive top */
+	/*margin-left:40px; Pose problÃ¨me dans les sections archive top */
 	text-align:right;
 }
 
@@ -2822,7 +2822,7 @@ input#ug_photo {font-size: 14px; margin-top: 10px;}
   padding-bottom: 40px;
 }
 
-/* Mon Goûtu pages
+/* Mon GoÃ»tu pages
 --------------------------------------------- */
 
 .page-header-wrap {
@@ -3463,10 +3463,19 @@ a.more-link,
 	padding:3px 8px;
 	text-decoration:none;
 	text-transform:uppercase;
+	border-radius: 5px;
 }
 
 .more-from-category a {
 	margin:0 auto 0px; /* P.O. Original margin-bottom:40px; */
+}
+
+.more-from-category a:after {
+	content:'â†’';
+}
+
+.more-from-category:hover a:after {
+	padding-left:2px;
 }
 
 .more-link {
@@ -3478,10 +3487,10 @@ a.more-link,
 	display:block;
 	float:none;
 	margin-top:20px;
+	text-align:center;
 }
 
 p.more-from-category {
-	text-align:center;
 }
 
 /* Recipes & Posts grid
@@ -3893,7 +3902,7 @@ li.comment a {
 }
 
 .sidebar .rpwe-block a.rpwe-img {
-	/*flex:1; Supprimé pour pb IE11 */
+	/*flex:1; SupprimÃ© pour pb IE11 */
 	width:100%;
   margin-top: auto;
   margin-bottom: auto;	

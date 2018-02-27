@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2018-02-21 00:16+0100\n"
-"PO-Revision-Date: 2018-02-21 00:17+0100\n"
+"PO-Revision-Date: 2018-02-27 00:50+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -790,7 +790,7 @@ msgstr "Instructions principales"
 #: plugins/custom-recipe-templates/templates/partials/submission-form-ingredients-instructions.php:294
 #: plugins/custom-recipe-templates/templates/partials/submission-form-ingredients-instructions.php:326
 msgid "Select Image"
-msgstr "Photo"
+msgstr "Image"
 
 #: plugins/custom-recipe-templates/templates/partials/submission-form-ingredients-instructions.php:302
 #: plugins/custom-recipe-templates/templates/partials/submission-form-ingredients-instructions.php:334

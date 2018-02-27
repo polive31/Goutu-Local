@@ -153,10 +153,14 @@ select#recipe-occasion option {
   vertical-align: middle!important;    
 }
 
-.ingredient-field-header td {
-	color: #616161;
-  padding: 10px 0px 0 15px;
+#wpurp_user_submission_form label.add-instruction-thumbnail {
+  color: #616161;
   font-size: 16px;
+  font-weight: bold;
+}
+
+.ingredient-field-header td {
+  padding: 10px 0px 0 15px;
 }
 
 #wpurp_user_submission_form tr.instruction td {
@@ -222,6 +226,7 @@ select#recipe-occasion option {
 
 /* Buttons */
 
+#wpurp_user_submission_form input.recipe_instructions_image,
 #wpurp_user_submission_form input.recipe_thumbnail_image,
 #wpurp_user_submission_form label.add-image-button,
 #wpurp_user_submission_form #ingredients-add-box,
@@ -238,6 +243,7 @@ select#recipe-occasion option {
 
 
 
+#wpurp_user_submission_form input.recipe_instructions_image,
 #wpurp_user_submission_form input.recipe_thumbnail_image {
   /*background-color: #8e8e8e;*/
   margin:0px 10px 30px 0;

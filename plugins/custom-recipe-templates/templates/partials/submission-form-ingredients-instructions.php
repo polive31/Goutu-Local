@@ -281,28 +281,20 @@ if( !isset( $required_fields ) ) $required_fields = array();
             <tr class="instruction">
                 <td  class="sort-handle"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16"></td>
                 <td>
-                  <div class="instruction-text">
-                    <textarea name="recipe_instructions[<?php echo $i; ?>][description]" rows="4" id="ingredient_description_<?php echo $i; ?>"><?php echo $instruction['description']; ?></textarea>
-                    <input type="hidden" name="recipe_instructions[<?php echo $i; ?>][group]"    class="instructions_group" id="instruction_group_<?php echo $i; ?>" value="<?php echo esc_attr( $instruction['group'] ); ?>" />
-                <?php if ( isset( $wpurp_user_submission ) && ( !current_user_can( 'upload_files' ) || WPUltimateRecipe::option( 'user_submission_use_media_manager', '1' ) != '1' ) ) { ?>
-                    <?php if( $has_image ) { ?>
-                    <img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
-                    <input type="hidden" value="<?php echo $instruction['image']; ?>" name="recipe_instructions[<?php echo $i; ?>][image]" /><br/>
-                    <?php } ?>
-                  </div>
-                  <div class="instruction-image">
-  										<label for="recipe_thumbnail" class="add-image-button"><?php _e('Select Image','foodiepro'); ?></label>
-                    	<input class="recipe_instructions_image button" style="visibility:hidden;" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail_<?php echo $i; ?>" />
-									</div>
-                </td>
-                <?php } else { ?>
-                </td>
-                <td>
-                    <input name="recipe_instructions[<?php echo $i; ?>][image]" class="recipe_instructions_image" type="hidden" value="<?php echo $instruction['image']; ?>" />
-                    <input class="recipe_instructions_add_image button<?php if($has_image) { echo ' wpurp-hide'; } ?>" rel="<?php echo $recipe->ID(); ?>" type="button" value="<?php _e( 'Add Image', 'foodiepro' ) ?>" />
-                    <input class="recipe_instructions_remove_image button<?php if(!$has_image) { echo ' wpurp-hide'; } ?>" type="button" value="<?php _e( 'Remove Image', 'foodiepro' ) ?>" />
-                    <br /><img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
-                    <?php } ?>
+                    <div class="instruction-text">
+                        <textarea name="recipe_instructions[<?php echo $i; ?>][description]" rows="4" id="ingredient_description_<?php echo $i; ?>"><?php echo $instruction['description']; ?></textarea>
+                        <input type="hidden" name="recipe_instructions[<?php echo $i; ?>][group]"    class="instructions_group" id="instruction_group_<?php echo $i; ?>" value="<?php echo esc_attr( $instruction['group'] ); ?>" />
+                        <!-- User submission activated -->    
+                        <?php if( $has_image ) { ?>
+                            <!-- Has Image ! -->    
+                            <img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
+                            <input type="hidden" value="<?php echo $instruction['image']; ?>" name="recipe_instructions[<?php echo $i; ?>][image]" /><br/>
+                        <?php } ?>
+                    </div>
+<!--                     <div class="instruction-image">
+                        <label class="add-instruction-thumbnail"><?php _e('Select Image','foodiepro'); ?></label>
+                        <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail_<?php echo $i; ?>" />
+                    </div> -->
                 </td>
                 <td class="delete-button" colspan="1"><span class="instructions-delete">&nbsp;</span></td>
             </tr>
@@ -317,24 +309,14 @@ if( !isset( $required_fields ) ) $required_fields = array();
             <tr class="instruction">
                 <td class="sort-handle"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16"></td>
                 <td>
-									<div class="instruction-text">
-                    <textarea name="recipe_instructions[<?php echo $i; ?>][description]" rows="4" id="ingredient_description_<?php echo $i; ?>"></textarea>
-                    <input type="hidden" name="recipe_instructions[<?php echo $i; ?>][group]"    class="instructions_group" id="instruction_group_<?php echo $i; ?>" value="" />
-                    <?php if ( isset( $wpurp_user_submission ) && ( !current_user_can( 'upload_files' ) || WPUltimateRecipe::option( 'user_submission_use_media_manager', '1' ) != '1' ) ) { ?>
-                  </div>
-									<div class="instruction-image">
-	              		<label for="recipe_thumbnail" class="add-image-button"><?php _e('Select Image','foodiepro'); ?></label>
-	                  <input class="recipe_instructions_image button" style="visibility:hidden;" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail_<?php echo $i; ?>" />
-                  </div>
-                </td>
-                    <?php } else { ?>
-                </td>
-                <td>
-                    <input name="recipe_instructions[<?php echo $i; ?>][image]" class="recipe_instructions_image" type="hidden" value="" />
-                    <input class="recipe_instructions_add_image button" rel="<?php echo $recipe->ID(); ?>" type="button" value="<?php _e('Add Image', 'foodiepro' ) ?>" />
-                    <input class="recipe_instructions_remove_image button wpurp-hide" type="button" value="<?php _e( 'Remove Image', 'foodiepro' ) ?>" />
-                    <br /><img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
-                    <?php } ?>
+                    <div class="instruction-text">
+                        <textarea name="recipe_instructions[<?php echo $i; ?>][description]" rows="4" id="ingredient_description_<?php echo $i; ?>"></textarea>
+                        <input type="hidden" name="recipe_instructions[<?php echo $i; ?>][group]"    class="instructions_group" id="instruction_group_<?php echo $i; ?>" value="" />
+                    </div>
+<!-- 				    <div class="instruction-image">
+                        <label class="add-instruction-thumbnail"><?php _e('Select Image','foodiepro'); ?></label>
+                        <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail_<?php echo $i; ?>" />
+                    </div> -->
                 </td>
                 <td class="delete-button" colspan="1"><span class="instructions-delete">&nbsp;</span></td>
             </tr>

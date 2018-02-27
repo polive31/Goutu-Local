@@ -85,7 +85,7 @@ class BP_Activity_Feed extends WP_Widget {
 				</ul>
 
 				<p class="more-from-category">
-					<a href="<?php bp_activity_load_more_link() ?>"><?php echo __( 'Previous Feeds', 'foodiepro' ) . ' →'; ?></a>
+					<a href="<?php bp_activity_load_more_link() ?>"><?php echo __( 'Previous Feeds', 'foodiepro' ); ?></a>
 				</p>
 				
 				

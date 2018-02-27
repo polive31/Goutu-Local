@@ -2285,6 +2285,11 @@ li.share-icons.size-medium a {
 	/*opacity: 0;*/
 }
 
+.featherlight-previous,
+.featherlight-next {
+    background-color: #a1a1a1!important;
+}
+
 /* CUSTOM RATING STARS PLUGIN
 --------------------------------------------- */
 

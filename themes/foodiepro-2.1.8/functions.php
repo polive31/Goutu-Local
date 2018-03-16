@@ -113,7 +113,7 @@ function foodie_pro_theme_setup() {
 	//* Add support for custom background.
 	add_theme_support( 'custom-background' );
 
-	/** Reposition header outside body */
+	/** Reposition header outside container */
 	remove_action( 'genesis_header', 'genesis_header_markup_open', 5 );
 	remove_action( 'genesis_header', 'genesis_do_header' );
 	remove_action( 'genesis_header', 'genesis_header_markup_close', 15 ) ;
@@ -121,7 +121,18 @@ function foodie_pro_theme_setup() {
 	add_action( 'genesis_before', 'custom_header_markup_open', 5 );
 	add_action( 'genesis_before', 'genesis_do_header' );
 	add_action( 'genesis_before', 'custom_header_markup_close', 15 );	
-	
+
+	// Custom Body wrap
+	add_action( 'genesis_before', 'custom_body_markup_open', 15 );	
+	add_action( 'wp_footer', 'custom_body_markup_close', 15 );	
+
+	function custom_body_markup_open() {
+		echo '<div class="body-wrap">';
+	}
+
+	function custom_body_markup_close() {
+		echo '</div>';
+	}
 		
 	//New Header functions
 	function custom_header_markup_open() {
@@ -427,14 +438,23 @@ function custom_enqueue_style( $handler, $uri, $path, $file, $deps, $version ) {
 add_filter( 'foodie_pro_disable_google_fonts', '__return_true' );
 add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_stylesheets' );
 function foodie_pro_enqueue_stylesheets() {
-	//wp_enqueue_style( 'font-awesome', CHILD_THEME_URL . '/assets/fonts/font-awesome/css/font-awesome.min.css', array(), CHILD_THEME_VERSION );
-	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Oswald|Lato:300,400', array(), CHILD_THEME_VERSION );
-	//wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Oswald|Lato:300,400', array(), CHILD_THEME_VERSION );
+	
+	/* Google Fonts
+	--------------------------------------------------- */
+	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Oswald|Vollkorn:300,400', array(), CHILD_THEME_VERSION );
+	//wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Oswald|Lato:300,400', array(), CHILD_THEME_VERSION );
+	
+	/* Font Awesome
+	--------------------------------------------------- */
 	wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
-	// Theme stylesheet with varying name & version, forces cache busting at browser level
+	//wp_enqueue_style( 'font-awesome', CHILD_THEME_URL . '/assets/fonts/font-awesome/css/font-awesome.min.css', array(), CHILD_THEME_VERSION );
+	
+	/* Theme stylesheet with varying name & version, forces cache busting at browser level
+	--------------------------------------------------- */
 	$color_theme_url = CHILD_THEME_URL . '/assets/css/';
 	$color_theme_path = CHILD_THEME_PATH . '/assets/css/';
-	custom_enqueue_style( 'color-theme-' . CHILD_COLOR_THEME , $color_theme_url, $color_theme_path, 'color-theme-' .CHILD_COLOR_THEME . '.css', array(), CHILD_COLOR_THEME . CHILD_COLOR_THEME_VERSION );
+	$color_theme_handler = 'color-theme-' . CHILD_COLOR_THEME;
+	custom_enqueue_style( $color_theme_handler , $color_theme_url, $color_theme_path, $color_theme_handler . '.css', array(), CHILD_COLOR_THEME . CHILD_COLOR_THEME_VERSION );
 }
 
 /* Optimize page loading by dequeuing specific CSS stylesheets loading actions */

@@ -689,6 +689,14 @@ function add_archive_bottom_area() {
 /* =              WIDGETS / PLUGINS
 /* =================================================================*/
 
+//* Adds Mailchimp newsletter subscribe form
+add_action('wp_head','mailchimp_subscribe_form');
+function mailchimp_subscribe_form(){
+?>
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us17.list-manage.com","uuid":"86ca729ff9d0eb5dc6a0d0ff1","lid":"f2167601d1"}) })</script>
+<?php
+}
+
 // Allow Text widgets to execute shortcodes
 add_filter( 'widget_text', 'shortcode_unautop');
 add_filter('widget_text', 'do_shortcode');

@@ -4881,6 +4881,10 @@ Site Footer
 		width:100%;
 	}
 
+	.before-header .enews-widget form {
+		margin:0;
+	}
+
 	.site-inner,
 	.home-top .widget,
 	.before-header .enews-widget form {

@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-//add_action( 'genesis_before', 'foodie_pro_before_header' );
+add_action( 'genesis_before', 'foodie_pro_before_header' );
 /**
  * Load an ad section before .site-inner.
  *
@@ -22,16 +22,16 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @return  null if the before-header sidebar isn't active.
  */
-// function foodie_pro_before_header() {
-// 	//* Return early if we have no ad.
-// 	if ( ! is_active_sidebar( 'before-header' ) ) {
-// 		return;
-// 	}
+function foodie_pro_before_header() {
+	//* Return early if we have no ad.
+	if ( ! is_active_sidebar( 'before-header' ) ) {
+		return;
+	}
 
-// 	echo '<div class="before-header">';
-// 		dynamic_sidebar( 'before-header' );
-// 	echo '</div>';
-// }
+	echo '<div class="before-header">';
+		dynamic_sidebar( 'before-header' );
+	echo '</div>';
+}
 
 //add_action( 'genesis_before_comments', 'foodie_pro_after_entry' );
 /**
@@ -66,6 +66,15 @@ function foodie_pro_after_entry() {
 // 	'name'			=> __( 'Post Bottom', 'foodiepro' ),
 // 	'description'	=> __( 'This is the section below content and sidebar, just before the footer.', 'foodiepro' ),
 // ) );
+
+
+/* Common widgeted areas
+----------------------------------------------------*/
+genesis_register_sidebar( array(
+	'id'			=> 'before-header',
+	'name'			=> __( 'Before Header', 'foodiepro' ),
+	'description'	=> __( 'This is the section before the header.', 'foodiepro' ),
+) );
 
 /* Home Page widgeted areas
 ----------------------------------------------------*/

@@ -114,7 +114,7 @@ function foodiepro_xprofile_cover_image( $settings = array() ) {
 	$settings['width']  = BP_COVER_FULL_WIDTH;
 	$settings['height'] = BP_COVER_FULL_HEIGHT;
 	$settings['default_cover_url'] = BP_IMAGES_URL . 'cover_default.jpg';
-	$settings['default_cover_path'] = BP_IMAGES_URL . 'cover_default.jpg';
+	$settings['default_cover_path'] = BP_IMAGES_PATH . 'cover_default.jpg';
 	return $settings;
 }
 

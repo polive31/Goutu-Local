@@ -1350,7 +1350,9 @@ Structure and Layout
 }
 
 .img-menu a:hover {
-	background:#e7cea7;
+	/*background:#e7cea7;*/
+	background: #e5dbd5;
+	border-radius: 10px;	
 }
 
 .img-menu a img {
@@ -1401,6 +1403,7 @@ nav.nav-secondary {
     border-radius: 10px 10px 0 0;
 }
 
+#mega-menu-wrap-secondary #mega-menu-secondary > li.mega-menu-item.mega-plate:active,
 #mega-menu-wrap-secondary #mega-menu-secondary > li.mega-menu-item.mega-plate:hover {
     background-color: #d76920;
 }

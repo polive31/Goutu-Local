@@ -123,16 +123,16 @@ function foodie_pro_theme_setup() {
 	add_action( 'genesis_before', 'custom_header_markup_close', 15 );	
 
 	// Custom Body wrap
-	add_action( 'genesis_before', 'custom_body_markup_open', 15 );	
-	add_action( 'wp_footer', 'custom_body_markup_close', 15 );	
+	// add_action( 'genesis_before', 'custom_body_markup_open', 15 );	
+	// add_action( 'wp_footer', 'custom_body_markup_close', 15 );	
 
-	function custom_body_markup_open() {
-		echo '<div class="body-wrap">';
-	}
+	// function custom_body_markup_open() {
+	// 	echo '<div class="body-wrap">';
+	// }
 
-	function custom_body_markup_close() {
-		echo '</div>';
-	}
+	// function custom_body_markup_close() {
+	// 	echo '</div>';
+	// }
 		
 	//New Header functions
 	function custom_header_markup_open() {
@@ -888,7 +888,7 @@ function change_comment_form_defaults( $defaults ) {
 
 //* Change the credits text
 function sp_footer_creds_filter( $creds ) {
-	$creds = '[footer_copyright before="' . __('All rights reserved','foodiepro') . ' " first="2015"] &middot; <a href="https://goutu.org">Goutu.org</a> &middot; <a href="https://goutu.org/contact">' . __('Contact us', 'foodiepro') . '</a> &middot; ' . __('Legal notice', 'foodiepro') . ' &middot; ' . __('Goûtu charter','foodiepro') . ' &middot; ' . __('Personal data','foodiepro') . ' &middot; ' . __('Terms of use','foodiepro') . ' &middot; [footer_loginout]';
+	$creds = '[footer_copyright before="' . __('All rights reserved','foodiepro') . ' " first="2015"] &middot; <a href="https://goutu.org">Goutu.org</a> &middot; <a href="https://goutu.org/contact">' . __('Contact us', 'foodiepro') . '</a> &middot; ' . '<a href=" https://goutu.org/mentions-legales">' . __('Legal notice', 'foodiepro') . '</a>' . ' &middot; ' . __('Goûtu charter','foodiepro') . ' &middot; ' . __('Personal data','foodiepro') . ' &middot; ' . __('Terms of use','foodiepro') . ' &middot; [footer_loginout]';
 	//$creds .= '<a href="http://www.beyondsecurity.com/vulnerability-scanner-verification/goutu.org"><img src="https://seal.beyondsecurity.com/verification-images/goutu.org/vulnerability-scanner-2.gif" alt="Website Security Test" border="0" /></a>';
 	return $creds;
 }

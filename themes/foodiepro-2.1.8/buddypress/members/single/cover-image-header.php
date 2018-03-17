@@ -44,9 +44,9 @@ if (empty($cover_image_path)) {
 	$cover_image_url = $settings['default_cover_url'];
 }
 
-// echo '<pre>' . "AFTER DEFAULT CHECK : " . '</pre>';
-// echo '<pre>' . "Member cover image url : {$cover_image_url}" . '</pre>';
-// echo '<pre>' . "Member cover image path : {$cover_image_path}" . '</pre>';
+ // echo '<pre>' . "AFTER DEFAULT CHECK : " . '</pre>';
+ //echo '<pre>' . "Member cover image url : {$cover_image_url}" . '</pre>';
+ // echo '<pre>' . "Member cover image path : {$cover_image_path}" . '</pre>';
 
 $path_parts = pathinfo( $cover_image_path );
 $dir=trailingslashit($path_parts['dirname']);

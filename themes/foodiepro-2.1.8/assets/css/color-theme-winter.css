@@ -13,24 +13,28 @@
   background-color: #ffffff;	
 }
 
+.no-js .site-header,
+.no-webp .site-header,
 .no-js .home .site-header,
 .no-webp .home .site-header {
 	background-image:url("../../images/theme/background-winter/background-l.jpg"),url("../../images/theme/background-winter/background-r.jpg");
 }
 
+
+.webp .site-header,
 .webp .home .site-header {
 	background-image:url("../../images/theme/background-winter/background-l.webp"),url("../../images/theme/background-winter/background-r.webp");
 }
 
-.no-js .site-header,
+/*.no-js .site-header,
 .no-webp .site-header {
 	background-image:url("../../images/theme/background-winter/background-l-small.jpg"),url("../../images/theme/background-winter/background-r-small.jpg");
 }
-
-.webp .site-header {
+*/
+/*.webp .site-header {
 	background-image:url("../../images/theme/background-winter/background-l-small.webp"),url("../../images/theme/background-winter/background-r-small.webp");
 }
-
+*/
 .foodie-pro .header-inner {
 	background-color: rgba(255, 255, 255, 0.8);
 }

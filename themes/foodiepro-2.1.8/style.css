@@ -2688,7 +2688,11 @@ i.fa.fa-star-o {
     left:-100px;
 }
 
-.tooltip-above  .tooltip-content {
+.recipe-button .tooltip-content a {
+	text-decoration: underline;
+}
+
+.tooltip-above .tooltip-content {
 	padding-bottom : 20px;
 }
 

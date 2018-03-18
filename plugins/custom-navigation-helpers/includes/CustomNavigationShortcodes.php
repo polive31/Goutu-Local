@@ -9,8 +9,9 @@ class CustomNavigationShortcodes extends CustomArchive {
 	
 	public function __construct() {
 		parent::__construct();
-		add_shortcode('index-link', array($this,'add_index_link')); 
+		// add_shortcode('index-link', array($this,'add_index_link')); 
 		add_shortcode('ct-terms-menu', array($this,'list_taxonomy_terms')); 
+		add_shortcode('tags-menu', array($this,'list_tags')); 
 		add_shortcode('ct-terms', array($this,'list_terms_taxonomy'));
 		add_shortcode('permalink', array($this,'add_permalink_shortcode'));
 		add_shortcode('share-title', array($this,'display_share_title')); 
@@ -42,92 +43,92 @@ class CustomNavigationShortcodes extends CustomArchive {
 	}
 
 
-	/* =================================================================*/
-	/* =                   ADD INDEX LINK  
-	/* =================================================================*/
+	// /* =================================================================*/
+	// /* =                   ADD INDEX LINK  
+	// /* =================================================================*/
 
 
-	public function add_index_link($atts) {
-		 // Get shortcode parameters
-		$atts = shortcode_atts( array(
-			'back' => 'false',
-		), $atts );
+	// public function add_index_link($atts) {
+	// 	 // Get shortcode parameters
+	// 	$atts = shortcode_atts( array(
+	// 		'back' => 'false',
+	// 	), $atts );
 		
-		//PHP_Debug::log(' In index-link shortcode');
+	// 	//PHP_Debug::log(' In index-link shortcode');
 		
-		$url='';				
-		$msg='';				
+	// 	$url='';				
+	// 	$msg='';				
 	
-		if ( ($back!='true') && !is_search() ) {
+	// 	if ( ($back!='true') && !is_search() ) {
 			
-			$obj = get_queried_object();
-			$author = isset($obj->data->user_login);				
-			$tax_id = $author?'author':$obj -> taxonomy;
-			$parent_id = $obj -> parent;
-			$parent = get_term_by('id', $parent_id,'cuisine');
-			////PHP_Debug::log(array('Parent id = ', $parent_id));
-			$parent_slug = ($parent)?$parent->slug:'';
-			$parent_name = ($parent)?$parent->name:'';
-			////PHP_Debug::log(array('Parent slug = ', $parent_slug));
-			////PHP_Debug::log(array('Parent name = ', $parent_name));
-			$current_slug = $obj -> slug;
-			////PHP_Debug::log(array('Current taxonomy = ', $tax_id));
-			////PHP_Debug::log(array('Current slug = ', $current_slug));
+	// 		$obj = get_queried_object();
+	// 		$author = isset($obj->data->user_login);				
+	// 		$tax_id = $author?'author':$obj -> taxonomy;
+	// 		$parent_id = $obj -> parent;
+	// 		$parent = get_term_by('id', $parent_id,'cuisine');
+	// 		////PHP_Debug::log(array('Parent id = ', $parent_id));
+	// 		$parent_slug = ($parent)?$parent->slug:'';
+	// 		$parent_name = ($parent)?$parent->name:'';
+	// 		////PHP_Debug::log(array('Parent slug = ', $parent_slug));
+	// 		////PHP_Debug::log(array('Parent name = ', $parent_name));
+	// 		$current_slug = $obj -> slug;
+	// 		////PHP_Debug::log(array('Current taxonomy = ', $tax_id));
+	// 		////PHP_Debug::log(array('Current slug = ', $current_slug));
 
-			switch ($tax_id) {
-		    case 'author':
-					$url = "/social/membres";
-					$msg = __('members', 'foodiepro');
-					break;				
-		    case 'course':
-					$url = "/accueil/recettes/plats";
-					$msg = __('Courses', 'foodiepro');
-					break;
-		    case 'season':
-					$url = "/accueil/recettes/saisons";
-					$msg = __('Seasons', 'foodiepro');
-					break;
-		    case 'occasion':
-					$url = "/accueil/recettes/occasions";
-					$msg = __('Occasions', 'foodiepro');
-					break;
-		    case 'diet':
-					$url = "/accueil/recettes/regimes";
-					$msg = __('Diets', 'foodiepro');
-					break;
-		    case 'cuisine':
-		    	if ( $current_slug=='france' ) {
-		    		$url = "/accueil/recettes/regions";
-						$msg = __('France', 'foodiepro');
-					}
-		    	elseif ( $parent_slug=='france' ) {
-		    		$url = '/origine/france';
-						$msg = __('France', 'foodiepro');
-					}					
-		    	elseif (!empty($parent_slug)) {
-		    		$url = '/origine/' . $parent_slug;
-		    		$msg = $parent_name;
-		    	}
-		    	else {
-		    		$url = "/accueil/recettes/monde";
-						$msg = __('World', 'foodiepro');
-					}
-		    	break;
-		    case 'category':
-					$url = "/accueil/articles";
-					$msg = __('All posts', 'foodiepro');
-					break;	
-			}
-		}
+	// 		switch ($tax_id) {
+	// 	    case 'author':
+	// 				$url = "/social/membres";
+	// 				$msg = __('members', 'foodiepro');
+	// 				break;				
+	// 	    case 'course':
+	// 				$url = "/accueil/recettes/plats";
+	// 				$msg = __('Courses', 'foodiepro');
+	// 				break;
+	// 	    case 'season':
+	// 				$url = "/accueil/recettes/saisons";
+	// 				$msg = __('Seasons', 'foodiepro');
+	// 				break;
+	// 	    case 'occasion':
+	// 				$url = "/accueil/recettes/occasions";
+	// 				$msg = __('Occasions', 'foodiepro');
+	// 				break;
+	// 	    case 'diet':
+	// 				$url = "/accueil/recettes/regimes";
+	// 				$msg = __('Diets', 'foodiepro');
+	// 				break;
+	// 	    case 'cuisine':
+	// 	    	if ( $current_slug=='france' ) {
+	// 	    		$url = "/accueil/recettes/regions";
+	// 					$msg = __('France', 'foodiepro');
+	// 				}
+	// 	    	elseif ( $parent_slug=='france' ) {
+	// 	    		$url = '/origine/france';
+	// 					$msg = __('France', 'foodiepro');
+	// 				}					
+	// 	    	elseif (!empty($parent_slug)) {
+	// 	    		$url = '/origine/' . $parent_slug;
+	// 	    		$msg = $parent_name;
+	// 	    	}
+	// 	    	else {
+	// 	    		$url = "/accueil/recettes/monde";
+	// 					$msg = __('World', 'foodiepro');
+	// 				}
+	// 	    	break;
+	// 	    case 'category':
+	// 				$url = "/accueil/articles";
+	// 				$msg = __('All posts', 'foodiepro');
+	// 				break;	
+	// 		}
+	// 	}
 			
-		else {
-				$url = 'javascript:history.back()';
-				$msg = __('Previous page','foodiepro');
-		}
+	// 	else {
+	// 			$url = 'javascript:history.back()';
+	// 			$msg = __('Previous page','foodiepro');
+	// 	}
 		
-		$output = '<ul class="menu"> <li> <a class="back-link" href="' . $url . '">' . $msg . '</a> </li> </menu>';
-		return $output;
-	}
+	// 	$output = '<ul class="menu"> <li> <a class="back-link" href="' . $url . '">' . $msg . '</a> </li> </menu>';
+	// 	return $output;
+	// }
 
 
 	/* =================================================================*/
@@ -181,30 +182,26 @@ class CustomNavigationShortcodes extends CustomArchive {
 
 	public function list_tags( $atts ) {
 		$atts = shortcode_atts( array(
-			'post_type' => '',
 			'title' => '',
 			'class' => '',
 			'parent' => '',
 			'exclude' => '',
+			'count' => 'false'
 			), $atts );
+
+		$count = $atts['count']=='true';
 
 		$html = '<div class="tax-container">';
 
+		$title = $atts['title'];
 		$html .= '<h3>' . $title . '</h3>';
-		$html .= '<div class="subnav" id="' . $tax . '" style="display:none">';
+		$html .= '<div class="subnav" id="tags" style="display:none">';
 
-		$terms = get_categories( array(
-			'taxonomy' => $tax,
-			'child_of' => $atts['child_of'],
-			'exclude' => $atts['exclude'],
-			'parent' => $atts['parent'],		
-			// 'count' => $atts['count'],		
-			'orderby' => 'slug',
-			'order'   => 'ASC'
-		) );
+		$tags = get_tags( $args );
 		
-		foreach ( $terms as $term ) {
-			$html .= '<li><a href="' . get_term_link( $term, $tax ) . '">' . $term->name . '</a></li>';
+		foreach ( $tags as $tag ) {
+			$post_count = $count?'(' . $tag->count . ')':'';
+			$html .= '<li><a href="' .  get_tag_link($tag->term_id) . '">' . $tag->name . $post_count . '</a></li>';
 		}	
 		
 		$html .= '</div></div>';

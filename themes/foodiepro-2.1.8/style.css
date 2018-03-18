@@ -1655,7 +1655,7 @@ img.alignright,
 
 .archive-description,
 .author-box {
-	margin-bottom:20px;
+	padding: 5px 20px;
 }
 
 .author-box {
@@ -2239,6 +2239,11 @@ span.ui-icon.ui-icon-triangle-1-s:before {
     /*font-variant: small-caps;*/
     font-size: 20px;
 }
+
+#accordion .subnav#tags a {
+    padding: 0;
+}
+
 
 
 /* Genesis eNews Extended

@@ -63,12 +63,12 @@ public function widget( $args, $instance ) {
 	// echo '<pre>' . 'current tax : ' . $current_tax . '</pre>';
 
 	echo '<div id="accordion">';
-	echo do_shortcode('[ct-terms-menu tax="course" title="De l\'Apéro au Dessert" orderby="name" order="ASC" count="no" hide_empty="true"]');
-	echo do_shortcode('[ct-terms-menu tax="season" title="Cuisine de Saisons" orderby="name" order="ASC" count="no" hide_empty="true"]');
-	echo do_shortcode('[ct-terms-menu tax="occasion" title="Pour toutes les occasions" orderby="name" order="ASC" count="no" hide_empty="true"]');
+	echo do_shortcode('[ct-terms-menu tax="course" title="De l\'Apéro au Dessert" orderby="name" order="ASC" count="true" hide_empty="true"]');
+	echo do_shortcode('[ct-terms-menu tax="season" title="Cuisine de Saisons" orderby="name" order="ASC" count="true" hide_empty="true"]');
+	echo do_shortcode('[ct-terms-menu tax="occasion" title="Pour toutes les occasions" orderby="name" order="ASC" count="true" hide_empty="true"]');
 	echo do_shortcode('[ct-terms-menu tax="cuisine" exclude="9996" title="Cuisines du Monde" orderby="name" order="ASC" count="no" hide_empty="true"]');
-	echo do_shortcode('[ct-terms-menu tax="cuisine" parent="9996" title="Cuisines de nos Régions" orderby="name" order="ASC" count="no" hide_empty="true"]');
-	echo do_shortcode('[ct-terms-menu tax="diet" title="Régimes et Diététique" orderby="name" order="ASC" count="no" hide_empty="true"]');
+	echo do_shortcode('[ct-terms-menu tax="cuisine" parent="9996" title="Cuisines de nos Régions" orderby="name" order="ASC" count="true" hide_empty="true"]');
+	echo do_shortcode('[ct-terms-menu tax="diet" title="Régimes et Diététique" orderby="name" order="ASC" count="true" hide_empty="true"]');
 	echo do_shortcode('[tags-menu title="Inspirations" orderby="name" order="ASC" count="true" hide_empty="true"]');	
 	echo '</div>';
 

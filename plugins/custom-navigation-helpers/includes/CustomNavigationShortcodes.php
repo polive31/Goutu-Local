@@ -142,8 +142,10 @@ class CustomNavigationShortcodes extends CustomArchive {
 			'class' => '',
 			'parent' => '',
 			'exclude' => '',
+			'count' => 'false'
 			), $atts );
 
+		$count = $atts['count']=='true';
 		$tax = $atts['tax'];
 		$html = '<div class="tax-container">';
 			
@@ -168,7 +170,8 @@ class CustomNavigationShortcodes extends CustomArchive {
 		) );
 		
 		foreach ( $terms as $term ) {
-			$html .= '<li><a href="' . get_term_link( $term, $tax ) . '">' . $term->name . '</a></li>';
+			$post_count = $count?' (' . $term->count . ')':'';
+			$html .= '<li><a href="' . get_term_link( $term, $tax ) . '">' . $term->name . $post_count . '</a></li>';
 		}	
 		
 		$html .= '</div></div>';
@@ -200,7 +203,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		$tags = get_tags( $args );
 		
 		foreach ( $tags as $tag ) {
-			$post_count = $count?'(' . $tag->count . ')':'';
+			$post_count = $count?' (' . $tag->count . ')':'';
 			$html .= '<li><a href="' .  get_tag_link($tag->term_id) . '">' . $tag->name . $post_count . '</a></li>';
 		}	
 		

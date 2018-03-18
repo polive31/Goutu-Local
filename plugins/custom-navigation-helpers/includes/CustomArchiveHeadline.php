@@ -110,7 +110,11 @@ class CustomArchiveHeadline extends CustomArchive {
 	public function custom_archive_description() {
 		if ( is_archive() ) {
 			if ( is_tax() ) {
-				$intro_text = get_term_meta( $this->query->term_id, 'intro_text', true );
+				$id = $this->query->term_id;
+				$tax = $this->query->taxonomy;
+				$intro_text = term_description( $id, $tax );
+				if (empty($intro_text)) 
+					$intro_text = get_term_meta( $this->query->term_id, 'intro_text', true );
 				if ( !empty($intro_text) )
 					echo self::$intro_style['begin'] . $intro_text . self::$intro_style['end'];				  
 			}

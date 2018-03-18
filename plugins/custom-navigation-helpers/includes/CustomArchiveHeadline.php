@@ -30,8 +30,8 @@ class CustomArchiveHeadline extends CustomArchive {
 			
 		/* Add customized page title and description 
 	 	------------------------------------------------------------*/
-		add_action( 'genesis_before_loop', array($this,'custom_archive_title' ));
-		add_action( 'genesis_before_loop', array($this,'custom_archive_description' ));
+		add_action( 'genesis_before_content', array($this,'custom_archive_title' ));
+		add_action( 'genesis_before_content', array($this,'custom_archive_description' ));
 		add_filter( 'genesis_term_intro_text_output', 'wpautop' );	
 		
 		/* WPURP Detailed search : customized page title and description 

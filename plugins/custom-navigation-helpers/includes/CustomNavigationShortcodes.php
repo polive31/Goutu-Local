@@ -163,7 +163,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 			'child_of' => $atts['child_of'],
 			'exclude' => $atts['exclude'],
 			'parent' => $atts['parent'],		
-			'orderby' => 'name',
+			'orderby' => 'slug',
 			'order'   => 'ASC'
 		) );
 		

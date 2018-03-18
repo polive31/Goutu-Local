@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-add_action( 'genesis_before', 'foodie_pro_before_header' );
+//add_action( 'genesis_before', 'foodie_pro_before_header' );
 /**
  * Load an ad section before .site-inner.
  *

@@ -717,8 +717,8 @@ h1.archive-title,
 	font-size:60px;
 	font-weight:normal;
 	font-variant:small-caps;
-	line-height: 70px;
-	padding-bottom: 30px;
+	line-height: 50px;
+    padding-left: 20px;
 	letter-spacing:2px;
 }
 
@@ -728,7 +728,7 @@ h1.archive-title,
 
 h1.archive-title {
 	font-size:50px;
-	text-align: center;   
+	/*text-align: center;   */
 	padding-top: 10px;
 	padding-bottom: 0px;
 }
@@ -3176,6 +3176,10 @@ input#ug_photo {font-size: 14px; margin-top: 10px;}
 	padding:0px 10px;
 	max-width: 215px;	
 	float:left;
+}
+
+.archives-top .widget:last-of-type {
+    float: right;
 }
 
 /* Archives bottom section */

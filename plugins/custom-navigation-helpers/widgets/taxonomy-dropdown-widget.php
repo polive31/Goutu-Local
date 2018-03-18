@@ -47,7 +47,6 @@ public function widget( $args, $instance ) {
 		
 		$obj = get_queried_object();
 		$author = isset($obj->data->user_login);	
-		//print_r($obj);
 		$tax = $author?'author':get_taxonomy($obj->taxonomy);
 		if ($obj->taxonomy=='cuisine') {
 			if ( $this->is_region($obj) )
@@ -57,11 +56,8 @@ public function widget( $args, $instance ) {
 		}
 		else
 			$tax=$author?__('authors','foodiepro'):$tax->label;
-		//$tax = sprintf(__('Filter by %s', 'foodiepro'),$tax->label);
-		//$tax = sprintf(__('Other %s', 'foodiepro'),$tax);
-		//$tax = $tax->label;
-		//print_r($tax);
 		echo $args['before_title'] . $tax . $args['after_title'];
+		// echo $args['before_title'] . __('Filter', 'foodiepro') . $args['after_title'];
 
 		// Start of widget code
 		echo do_shortcode('[ct-terms dropdown="true"]');

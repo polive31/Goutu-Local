@@ -50,26 +50,27 @@ public function widget( $args, $instance ) {
 		// echo '<pre>' . 'taxonomy : ' . $tax_slug . '</pre>';
 		$tax_parent = $obj->parent;
 		// echo '<pre>' . 'parent : ' . $tax_parent . '</pre>';
-		if ($tax_slug=="course") $current_tax=0;
-		elseif ($tax_slug=="season") $current_tax=1;
-		elseif ($tax_slug=="occasion") $current_tax=2;
+		if ($tax_slug=="course") $current_menu_item=0;
+		elseif ($tax_slug=="season") $current_menu_item=1;
+		elseif ($tax_slug=="occasion") $current_menu_item=2;
 		elseif ($tax_slug=="cuisine") {
-			if ($tax_parent!=9996) $current_tax=3;
-			else $current_tax=4;
+			if ($tax_parent!=9996) $current_menu_item=3;
+			else $current_menu_item=4;
 		}
-		elseif ($tax_slug=="diet") $current_tax=5;
+		elseif ($tax_slug=="diet") $current_menu_item=5;
+		elseif ($tax_slug=="post_tag") $current_menu_item=6;
 	}
-	else $current_tax=0;
-	// echo '<pre>' . 'current tax : ' . $current_tax . '</pre>';
+	else $current_menu_item=0;
+	// echo '<pre>' . 'current tax : ' . $current_menu_item . '</pre>';
 
 	echo '<div id="accordion">';
-	echo do_shortcode('[ct-terms-menu tax="course" title="De l\'Apéro au Dessert" orderby="name" order="ASC" count="true" hide_empty="true"]');
-	echo do_shortcode('[ct-terms-menu tax="season" title="Cuisine de Saisons" orderby="name" order="ASC" count="true" hide_empty="true"]');
-	echo do_shortcode('[ct-terms-menu tax="occasion" title="Pour toutes les occasions" orderby="name" order="ASC" count="true" hide_empty="true"]');
-	echo do_shortcode('[ct-terms-menu tax="cuisine" exclude="9996" title="Cuisines du Monde" orderby="name" order="ASC" count="no" hide_empty="true"]');
-	echo do_shortcode('[ct-terms-menu tax="cuisine" parent="9996" title="Cuisines de nos Régions" orderby="name" order="ASC" count="true" hide_empty="true"]');
-	echo do_shortcode('[ct-terms-menu tax="diet" title="Régimes et Diététique" orderby="name" order="ASC" count="true" hide_empty="true"]');
-	echo do_shortcode('[tags-menu title="Inspirations" orderby="name" order="ASC" count="true" hide_empty="true"]');	
+	echo do_shortcode('[ct-terms-menu tax="course" title="De l\'Apéro au Dessert" orderby="name" order="ASC" count="true"]');
+	echo do_shortcode('[ct-terms-menu tax="season" title="Cuisine de Saisons" orderby="name" order="ASC" count="true"]');
+	echo do_shortcode('[ct-terms-menu tax="occasion" title="Pour toutes les occasions" orderby="name" order="ASC" count="true"]');
+	echo do_shortcode('[ct-terms-menu tax="cuisine" parent="0" drill="true" exclude="9996" title="Cuisines du Monde" orderby="name" order="ASC" count="true"]');
+	echo do_shortcode('[ct-terms-menu tax="cuisine" parent="9996" title="Cuisines de nos Régions" orderby="name" order="ASC" count="true"]');
+	echo do_shortcode('[ct-terms-menu tax="diet" title="Régimes et Diététique" orderby="name" order="ASC" count="true"]');
+	echo do_shortcode('[tags-menu title="Inspirations" orderby="name" order="ASC" count="true"]');	
 	echo '</div>';
 
 
@@ -77,7 +78,7 @@ public function widget( $args, $instance ) {
 	<script>
 		jQuery(document).ready(function() {
 			// console.log('Ca démarre !');
-			jQuery( "#accordion" ).accordion({ collapsible: true, header: "h3", heightStyle: "content", active: <?php echo $current_tax ?> });
+			jQuery( "#accordion" ).accordion({ collapsible: true, header: "h3", heightStyle: "content", active: <?php echo $current_menu_item ?> });
 		});
 	</script>
 	<?php

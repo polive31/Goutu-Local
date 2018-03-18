@@ -142,9 +142,11 @@ class CustomNavigationShortcodes extends CustomArchive {
 			'class' => '',
 			'parent' => '',
 			'exclude' => '',
+			'drill'	=> 'false',
 			'count' => 'false'
 			), $atts );
 
+		$drill = $atts['drill']=='true';
 		$count = $atts['count']=='true';
 		$tax = $atts['tax'];
 		$html = '<div class="tax-container">';
@@ -161,16 +163,30 @@ class CustomNavigationShortcodes extends CustomArchive {
 
 		$terms = get_categories( array(
 			'taxonomy' => $tax,
-			'child_of' => $atts['child_of'],
 			'exclude' => $atts['exclude'],
 			'parent' => $atts['parent'],		
-			// 'count' => $atts['count'],		
+			'hide_empty' => true,		
 			'orderby' => 'slug',
 			'order'   => 'ASC'
 		) );
 		
 		foreach ( $terms as $term ) {
-			$post_count = $count?' (' . $term->count . ')':'';
+			$post_count='';
+			if  ( $count ) {
+				if ( $drill ) {
+					$subterms = get_categories( array(
+						'taxonomy' => $tax,
+						'parent' => $term->term_id,		
+					) );
+					// echo '<pre>' . $term->name . '</pre>';
+					foreach ($subterms as $subterm) {
+						// echo '<pre>' . print_r($subterm) . '</pre>';
+						$post_count += $subterm->count;
+					}
+				}
+				$post_count += $term->count;
+				$post_count = ' (' . $post_count . ')';
+			}
 			$html .= '<li><a href="' . get_term_link( $term, $tax ) . '">' . $term->name . $post_count . '</a></li>';
 		}	
 		
@@ -187,7 +203,6 @@ class CustomNavigationShortcodes extends CustomArchive {
 		$atts = shortcode_atts( array(
 			'title' => '',
 			'class' => '',
-			'parent' => '',
 			'exclude' => '',
 			'count' => 'false'
 			), $atts );
@@ -200,7 +215,12 @@ class CustomNavigationShortcodes extends CustomArchive {
 		$html .= '<h3>' . $title . '</h3>';
 		$html .= '<div class="subnav" id="tags" style="display:none">';
 
-		$tags = get_tags( $args );
+		$tags = get_tags( array(
+			'hide_empty' => true,
+			'exclude' => $atts['exclude'],		
+			'orderby' => 'name',
+			'order'   => 'ASC'
+		) );
 		
 		foreach ( $tags as $tag ) {
 			$post_count = $count?' (' . $tag->count . ')':'';
@@ -299,21 +319,17 @@ class CustomNavigationShortcodes extends CustomArchive {
 			?>
 			
 			<script type='text/javascript'>
-			/* <![CDATA[ */
-			(function() {
-			 var <?php echo $dropdown_id;?>_dropdown = document.getElementById( "<?php echo esc_js( $dropdown_id );?>" );
-			 function on_<?php echo $dropdown_id;?>_Change() {
-			  var choice = <?php echo $dropdown_id;?>_dropdown.options[ <?php echo $dropdown_id;?>_dropdown.selectedIndex ].value;
-				if ( choice !="none" ) {
-					  <?php echo 'location.href = "' . home_url() . '/?' . $tax_slug . '=" + choice'; ?>
-				}
-				if ( choice =="0" ) {
-					  location.href = "<?php echo $all_url;?>";
-				}
-			 }
-				<?php echo $dropdown_id;?>_dropdown.onchange = on_<?php echo $dropdown_id;?>_Change;
-			})();
-			/* ]]> */
+				/* <![CDATA[ */
+				(function() {
+					var dropdown_<?php echo $dropdown_id;?> = document.getElementById( "<?php echo esc_js( $dropdown_id );?>" );
+					function on_<?php echo $dropdown_id;?>_Change() {
+						var choice = dropdown_<?php echo $dropdown_id;?>.options[ dropdown_<?php echo $dropdown_id;?>.selectedIndex ].value;
+						if ( choice !="none" ) {<?php echo 'location.href = "' . home_url() . '/?' . $tax_slug . '=" + choice'; ?>}
+						if ( choice =="0" ) {location.href = "<?php echo $all_url;?>";}
+					}
+					dropdown_<?php echo $dropdown_id;?>.onchange = on_<?php echo $dropdown_id;?>_Change;
+				})();
+				/* ]]> */
 			</script>
 			
 			<?php

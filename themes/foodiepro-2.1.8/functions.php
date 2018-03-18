@@ -16,13 +16,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'CHILD_THEME_NAME', 'Foodie Pro Theme' );
-define( 'CHILD_THEME_VERSION', '2.1.10' );
+define( 'CHILD_THEME_VERSION', '2.1.11' );
 define( 'CHILD_THEME_DEVELOPER', 'Shay Bocks' );
 define( 'CHILD_THEME_URL', get_stylesheet_directory_uri() );
 define( 'CHILD_THEME_PATH', get_stylesheet_directory() );
 
 define( 'CHILD_COLOR_THEME', 'winter' ); // christmas, autumn, winter, summer
-define( 'CHILD_COLOR_THEME_VERSION', '1.0.1' ); // triggers browser cache flush
+define( 'CHILD_COLOR_THEME_VERSION', '1.0.2' ); // triggers browser cache flush
 
 define( 'PLUGINS_URL', plugins_url() );
 

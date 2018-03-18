@@ -57,6 +57,7 @@ public function widget( $args, $instance ) {
 			if ($tax_parent!=9996) $current_tax=3;
 			else $current_tax=4;
 		}
+		elseif ($tax_slug=="diet") $current_tax=5;
 	}
 	else $current_tax=0;
 	// echo '<pre>' . 'current tax : ' . $current_tax . '</pre>';
@@ -67,6 +68,7 @@ public function widget( $args, $instance ) {
 	echo do_shortcode('[ct-terms-menu tax="occasion" title="Pour toutes les occasions" orderby="name" order="ASC" show_count="no" hide_empty="yes"]');
 	echo do_shortcode('[ct-terms-menu tax="cuisine" exclude="9996" title="Cuisines du Monde" orderby="name" order="ASC" show_count="no" hide_empty="yes"]');
 	echo do_shortcode('[ct-terms-menu tax="cuisine" parent="9996" title="Cuisines de nos Régions" orderby="name" order="ASC" show_count="no" hide_empty="yes"]');
+	echo do_shortcode('[ct-terms-menu tax="diet" title="Régimes et Diététique" orderby="name" order="ASC" show_count="no" hide_empty="yes"]');
 	echo '</div>';
 
 

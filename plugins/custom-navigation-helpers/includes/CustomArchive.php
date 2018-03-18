@@ -96,6 +96,8 @@ class CustomArchive {
 		//get current month
 		$currentMonth=DATE("m");
 		 
+		if (empty($season)) return false;
+		
 		//retrieve season
 		if ($currentMonth>="03" && $currentMonth<="05")
 		  $currentSeason = "0";
@@ -110,6 +112,9 @@ class CustomArchive {
 	}
 	
 	protected function is_fest($occasion) {
+		
+		if (empty($occasion)) return false;
+		
 		$currentMonth=DATE("m");
 		$needle = '2-fetes';
 		
@@ -123,6 +128,7 @@ class CustomArchive {
 	}
 	
 	protected function is_veg($diet) {
+		if (empty($diet)) return false;
 		return ($diet[0] == "0");
 	}
 

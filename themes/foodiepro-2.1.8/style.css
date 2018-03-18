@@ -2188,6 +2188,58 @@ form[role="search"] {
 -------------------------------------------------------- */
 
 
+/* Genesis eNews Extended
+--------------------------------------------- */
+.tax-container {
+    margin-bottom: 10px;
+    /*background: #ebebeb;*/
+    background: #e6e5e2;
+    padding: 5px 20px;
+    border-radius: 20px;
+}
+
+h3.ui-accordion-header:focus {
+	outline:none;
+    /*font-family: Oswald, sans-serif;*/
+    /*font-size: 24px;*/
+    /*font-weight: normal;*/
+}
+
+#accordion h3 {
+	padding: 0;
+    margin: 0;
+    font-size: 26px;
+}
+
+.ui-icon {
+	display: inline-block;
+	width:30px;
+	height:16px;
+	cursor: pointer;
+}
+
+span.ui-icon:before {
+	font-family:fontAwesome;
+	font-size:14px;
+/*	padding: 0px 10px 0px 10px;*/
+    color: #8f8f8f;
+    vertical-align: middle;
+}
+
+span.ui-icon.ui-icon-triangle-1-e:before {
+    content: "\f054";
+}
+
+span.ui-icon.ui-icon-triangle-1-s:before {
+    content: "\f078";
+}
+
+#accordion .subnav a {
+    padding: 0 40px;
+    font-variant: small-caps;
+    font-size: 20px;
+}
+
 
 /* Genesis eNews Extended
 --------------------------------------------- */

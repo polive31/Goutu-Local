@@ -36,5 +36,6 @@ $customNavigationShortcodes = new CustomNavigationShortcodes;
 
 require_once 'widgets/dropdown-posts-sort-widget.php';
 require_once 'widgets/taxonomy-dropdown-widget.php';
+require_once 'widgets/taxonomy-accordion-widget.php';
 
 

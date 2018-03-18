@@ -10,6 +10,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 	public function __construct() {
 		parent::__construct();
 		add_shortcode('index-link', array($this,'add_index_link')); 
+		add_shortcode('ct-terms-menu', array($this,'list_taxonomy_terms')); 
 		add_shortcode('ct-terms', array($this,'list_terms_taxonomy'));
 		add_shortcode('permalink', array($this,'add_permalink_shortcode'));
 		add_shortcode('share-title', array($this,'display_share_title')); 
@@ -130,12 +131,60 @@ class CustomNavigationShortcodes extends CustomArchive {
 
 
 	/* =================================================================*/
+	/* = TAXONOMIES LIST SHORTCODE     
+	/* =================================================================*/
+
+	public function list_taxonomy_terms( $atts ) {
+		$atts = shortcode_atts( array(
+			'tax' => '',
+			'title' => '',
+			'class' => '',
+			'parent' => 0,
+			'child_of' => '',
+			'exclude' => '',
+			'show_count' => '1'
+			), $atts );
+
+		$tax = $atts['tax'];
+		$html = '<div class="tax-container">';
+			
+		if ( $atts['title']=='' ) {
+			$tax_details = get_taxonomy( $tax );
+			$title = $tax_details->labels->name;
+		}
+		else 
+			$title = $atts['title'];
+
+		$html .= '<h3>' . $title . '</h3>';
+		$html .= '<div class="subnav" id="' . $tax . '" style="display:none">';
+
+		$terms = get_categories( array(
+			'taxonomy' => $tax,
+			'child_of' => $atts['child_of'],
+			'exclude' => $atts['exclude'],
+			'parent' => $atts['parent'],		
+			'orderby' => 'name',
+			'order'   => 'ASC'
+		) );
+		
+		foreach ( $terms as $term ) {
+			$html .= '<li><a href="' . get_term_link( $term, $tax ) . '">' . $term->name . '</a></li>';
+		}	
+		
+		$html .= '</div></div>';
+
+		return $html;
+	}
+
+
+	/* =================================================================*/
 	/* = TAXONOMY LIST SHORTCODE     
 	/* =================================================================*/
 
 	public function list_terms_taxonomy( $atts ) {
 		static $dropdown_cnt;
 		$atts = shortcode_atts( array(
+			'taxonomies' => '',
 			'dropdown' => 'false',
 			'depth' => 1,
 			'exclude' => '',
@@ -184,12 +233,12 @@ class CustomNavigationShortcodes extends CustomArchive {
 		$args = array( 
 			'taxonomy'			=> $tax_slug,
 			'child_of'			=> $child_of,
-			'depth' 				=> $depth,
+			'depth' 			=> $depth,
 			'exclude' 			=> $exclude,
 			'orderby' 			=> 'slug',
-			'echo' 					=> false,
-			'role__not_in'	=> array('administrator','pending'),
-			'show'					=> user_login
+			'echo' 				=> false,
+			'role__not_in'		=> array('administrator','pending'),
+			'show'				=> user_login
 		);
 		
 		
@@ -239,7 +288,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		
 		else {
 
-		 	$html = '<ul class="menu">';
+		 	$html = '<ul class="menu" id="accordion">';
 		 	// wrap it in unordered list 
 
 			$html .= wp_list_categories($args);	

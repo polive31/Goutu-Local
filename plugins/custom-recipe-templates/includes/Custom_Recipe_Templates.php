@@ -128,6 +128,9 @@ class Custom_Recipe_Templates {
 		              'direct' => true,
 		          ); 			
 		}
+		else 
+		  $css_enqueue=array();
+			
 		
 		//echo '<pre style="margin-top:200px">' . print_r($css_enqueue,true) . '</pre>';
 		return $css_enqueue;

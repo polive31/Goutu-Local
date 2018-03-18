@@ -97,15 +97,15 @@ class CustomArchiveEntryTitle extends CustomArchive {
 		};	
 
 		if ( is_tax('diet') ) {
-			$title = $this->output_tags( $origin, '', $occasion, $season->slug) . $title;
+			$title = $this->output_tags( $origin, null, $occasion, $season->slug) . $title;
 		};	
 		
 		if ( is_tax('season') ) {
-			$title = $this->output_tags( '', $diet->slug, $occasion, '') . $title;
+			$title = $this->output_tags( null, $diet->slug, $occasion, null) . $title;
 		};
 			
 		if ( is_tax('occasion') ) {
-			$title = $this->output_tags( $origin, $diet->slug, '', $season->slug) . $title;
+			$title = $this->output_tags( $origin, $diet->slug, null, $season->slug) . $title;
 		};	
 
 		if ( is_tax('ingredient') ) {
@@ -146,7 +146,7 @@ class CustomArchiveEntryTitle extends CustomArchive {
 			$left_id++;
 		}			
 		
-		if ( $origin!='' ) {
+		if ( !is_null($origin) ) {
 			$tags .= '<div class="overlay left' . $left_id . '">' . $origin . '</div>';
 			$left_id++;		
 		}

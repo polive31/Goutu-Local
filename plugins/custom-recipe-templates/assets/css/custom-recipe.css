@@ -1,6 +1,47 @@
 /* Custom Recipe Template 
 -------------------------------------------*/
 
+/* Fonts */
+
+.recipe-container {
+	font-family: Cabin, sans-serif;
+	font-size:16px;
+	color:#1a1a1a;
+	font-weight:normal;
+}
+
+.recipe-container#intro {
+	font-family: Vollkorn, serif;
+	font-size:18px;
+}
+
+.button-caption {
+	font-family: Oswald;
+	font-size:20px;
+	color:#666;
+	text-decoration:none;	
+	font-variant: small-caps;
+}
+
+li.ingredient-group,
+.recipe-instruction-group {
+	font-family:"Oswald";
+	display: block;
+	color:#737373;
+	font-size:20px;	
+}
+
+.ingredients-container {
+	font-size: 17px;
+}
+
+span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
+	font-style: italic;
+	font-size: 15px;	
+}
+
+
+/* Styles */
 .recipe-top {
 	width:100%;
 	float:left;
@@ -16,10 +57,6 @@
 	clear:both;
 	width:100%;
 	margin-bottom:20px;
-	font-family: Open Sans, sans-serif;
-	font-size:14px;
-	color:#1a1a1a;
-	font-weight:normal;
 }
 
 /* Top Buttons */
@@ -36,6 +73,7 @@
 
 .recipe-button {
 	float: left;
+	position: relative;
 	font-size:25px;
 	margin: 0 10px;
 	padding: 5px 0;
@@ -48,14 +86,15 @@
 
 .recipe-button a {
 	color:#555555;
+    text-decoration: none;	
 }
 
 .recipe-button a:before {
-	display:block;
-	float:left;
+	/*display:inline-block;*/
+	/*float:left;*/
 	font-family:FontAwesome;
 	font-size:inherit;
-	line-height: 24px;
+	/*line-height: 24px;*/
 }
 
 a.recipe-share-button:before {
@@ -88,13 +127,9 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 	
 	
 .button-caption {
-	font-size:14px;
-	color:#666;
-	text-decoration:none;	
-	float:left;
+	display: inline-block;
+	/*float:left;*/
 	margin-left:10px;
-	font-variant: small-caps;
-  font-weight: bold;
 }
 
 .tooltip-alt,
@@ -231,14 +266,6 @@ input.adjust-recipe-servings {
   display: block;
 }
 
-li.ingredient-group,
-.recipe-instruction-group {
-	font-family:"Oswald";
-  display: block;
- 	color:#737373;
-	font-size:20px;	
-}
-
 ul.wpurp-recipe-ingredients {
   margin: 0 0 10px 7px;
 }
@@ -265,13 +292,9 @@ ol.wpurp-recipe-instructions {
 }
 
 li.wpurp-recipe-instruction {
-	font-family:"Oswald";
 	list-style-position: inside;
 	margin-bottom: 20px;
 	text-align:justify;
-	font-size: 30px;
-	line-height: 20px;  
-	color: #737373;
 }
 
 li.wpurp-recipe-instruction.li-first.li-last {
@@ -279,10 +302,7 @@ li.wpurp-recipe-instruction.li-first.li-last {
 }
 
 li.wpurp-recipe-instruction span {
-	font-family: Open Sans, sans-serif;
-  font-size: 14px;
-  color: #1a1a1a;
-  vertical-align:middle;
+	vertical-align:middle;
 }
 
 /* Recipe timer WPURP addon 

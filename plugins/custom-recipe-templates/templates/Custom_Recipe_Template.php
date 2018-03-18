@@ -27,7 +27,7 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 		<!-- Class .wpurp-container important for adjustable servings javascript -->	
 		<div class="recipe wpurp-container" id="wpurp-container-recipe-<?php echo $recipe->ID(); ?>" data-id="<?php echo $recipe->ID(); ?>" data-permalink="<?php echo $recipe->link(); ?>" data-servings-original="<?php echo $recipe->servings_normalized(); ?>">
 			<!-- Recipe description -->
-			<div class="recipe-container" id="general">
+			<div class="recipe-container" id="intro">
 				<?php
 				echo $recipe->description();
 				?>	
@@ -38,7 +38,7 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 					<div class="recipe-buttons">
 
 					<!-- Recipe Rate Button -->
-					<div class="recipe-button tooltip tooltip-above" id="rate">
+					<div class="recipe-button tooltip tooltip-above tooltip-left" id="rate">
 						<a class="recipe-review-button" id="<?php echo $this->logged_in?'recipe-review':'join-us';?>">
 						<div class="button-caption"><?php echo __('Rate','foodiepro'); ?></div>
 						</a>
@@ -46,21 +46,21 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 					</div>	
 					
 					<!-- Recipe Add to Cart Button -->
-					<div class="recipe-button tooltip tooltip-above" id="shopping">
+					<div class="recipe-button tooltip tooltip-above tooltip-left" id="shopping">
 					<?php 
 						$shopping_list = new Custom_Recipe_Add_To_Shopping_List( $this->logged_in );  
 						echo $shopping_list->output( $recipe );?>
 					</div>				
 					
 					<!-- Add To Favorites Button -->
-					<div class="recipe-button tooltip tooltip-above" id="favorite">
+					<div class="recipe-button tooltip tooltip-above tooltip-left" id="favorite">
 					<?php
 						$favorite_recipe = new Custom_Recipe_Favorite( $this->logged_in );
 						echo $favorite_recipe->output( $recipe );?>
 					</div>				
 
 					<!-- Recipe Print Button -->
-					<div class="recipe-button tooltip tooltip-above" id="print">
+					<div class="recipe-button tooltip tooltip-above tooltip-right" id="print">
 						<a class="wpurp-recipe-print recipe-print-button" href="<?php echo $recipe->link_print(); ?>" target="_blank">
 						<div class="button-caption"><?php echo __('Print', 'foodiepro'); ?></div>
 						</a>
@@ -72,7 +72,6 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 						<a class="recipe-share-button" id="recipe-share" cursor-style="pointer">
 						<div class="button-caption"><?php echo __('Share','foodiepro'); ?></div>
 						</a> 
-						<div id="share-buttons"></div>
 						<?php //echo Custom_Recipe_Templates::output_tooltip(__('Share this recipe','foodiepro'),'top');?>
 						<?php echo Custom_Recipe_Templates::output_tooltip('[mashshare]','top');?>
 					</div>				
@@ -137,7 +136,7 @@ class Custom_Recipe_Template extends Custom_Recipe_Templates {
 							$html .= '<i id="dec" class="fa fa-minus-circle"></i>';
 							$html .= '<input type="number" min="1" class="adjust-recipe-servings" data-original="' . $recipe->servings_normalized() . '" data-start-servings="' . $recipe->servings_normalized() . '" value="' . $recipe->servings_normalized() . '"/>';
 							$html .= '<i id="inc" class="fa fa-plus-circle"></i>';
-							$html .= $recipe->servings_type();
+							$html .= ' ' . $recipe->servings_type();
 							$html .= '</div>';
 							$html .= '</div>';
 							echo $html;

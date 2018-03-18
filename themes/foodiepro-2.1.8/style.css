@@ -2672,20 +2672,20 @@ i.fa.fa-star-o {
 ------------------------------------------*/
 
 .tooltip-content {
-	display:inline; 
 	visibility: hidden;
 	position:absolute; 
 	z-index: 10;
-	margin-top: -65px;
-	margin-left: -150px;
 	opacity:0;
 	transition: visibility 0s, opacity 0.2s ease-in-out;
 	transition-delay:0.2s;
-	/*background:rgba(10, 10, 10, 0.5);*/
-	/*max-width: 150px; */
+    left: -40px;
+    top: -50px;
+    min-width: 200px;	
 }
+
 #share .tooltip-content {
-	margin-left: -220px;
+    min-width: 300px;
+    left:-100px;
 }
 
 .tooltip-above  .tooltip-content {
@@ -2698,6 +2698,8 @@ i.fa.fa-star-o {
 	color:#111;
 	border:1px solid #DCA; 
 	background:#fffAF0;
+/*	border: 1px solid #c3c3c3;
+    background: #f8f8f8;*/
 	line-height: 16px;
 	font-family: 'Oswald', sans-serif;
 	border-radius:4px;
@@ -2705,9 +2707,9 @@ i.fa.fa-star-o {
 	height:50px;
 }
 
-#share .tooltip-content .wrap {
+/*#share .tooltip-content .wrap {
   padding: 10px 20px;
-}
+}*/
 
 .tooltip:hover .tooltip-content,
 .tooltip-content:hover {
@@ -2722,13 +2724,13 @@ i.fa.fa-star-o {
 }
     
 .tooltip-above img.callout {
-  bottom: 9px;
-  left: 70px;
-}
-.tooltip-above#share  img.callout {
-  left: 140px;
+	bottom: 9px;
+	left: 40px;
 }
 
+#share img.callout {
+	left: 100px;
+}
 
 /* Social Share
 --------------------------------------------- */

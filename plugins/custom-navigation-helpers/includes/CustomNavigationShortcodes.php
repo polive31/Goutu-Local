@@ -139,10 +139,8 @@ class CustomNavigationShortcodes extends CustomArchive {
 			'tax' => '',
 			'title' => '',
 			'class' => '',
-			'parent' => 0,
-			'child_of' => '',
+			'parent' => '',
 			'exclude' => '',
-			'show_count' => '1'
 			), $atts );
 
 		$tax = $atts['tax'];
@@ -163,6 +161,44 @@ class CustomNavigationShortcodes extends CustomArchive {
 			'child_of' => $atts['child_of'],
 			'exclude' => $atts['exclude'],
 			'parent' => $atts['parent'],		
+			// 'count' => $atts['count'],		
+			'orderby' => 'slug',
+			'order'   => 'ASC'
+		) );
+		
+		foreach ( $terms as $term ) {
+			$html .= '<li><a href="' . get_term_link( $term, $tax ) . '">' . $term->name . '</a></li>';
+		}	
+		
+		$html .= '</div></div>';
+
+		return $html;
+	}
+
+	/* =================================================================*/
+	/* = TAGS LIST SHORTCODE     
+	/* =================================================================*/
+
+	public function list_tags( $atts ) {
+		$atts = shortcode_atts( array(
+			'post_type' => '',
+			'title' => '',
+			'class' => '',
+			'parent' => '',
+			'exclude' => '',
+			), $atts );
+
+		$html = '<div class="tax-container">';
+
+		$html .= '<h3>' . $title . '</h3>';
+		$html .= '<div class="subnav" id="' . $tax . '" style="display:none">';
+
+		$terms = get_categories( array(
+			'taxonomy' => $tax,
+			'child_of' => $atts['child_of'],
+			'exclude' => $atts['exclude'],
+			'parent' => $atts['parent'],		
+			// 'count' => $atts['count'],		
 			'orderby' => 'slug',
 			'order'   => 'ASC'
 		) );

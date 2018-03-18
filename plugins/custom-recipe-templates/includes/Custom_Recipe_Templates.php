@@ -76,19 +76,19 @@ class Custom_Recipe_Templates {
 		if ( is_admin() ) return $css_enqueue;
 			
 		if ( is_singular('recipe') ) {
-		  $css_enqueue=array(
+		  	$css_enqueue=array(
 					array(
 						'url' => self::$_PluginPath . 'assets/css/custom-recipe.css',
 						'public' => true,
 					),
-							/*array(
-		              'url' => self::$_PluginPath . 'assets/css/tooltips.css',
+					// array(
+		   //            'url' => self::$_PluginPath . 'assets/css/tooltips.css',
+		   //            'public' => true,
+		   //        	),
+					array(
+		              'url' => '//fonts.googleapis.com/css?family=Cabin',
 		              'public' => true,
-		          ),
-							array(
-		              'url' => '//fonts.googleapis.com/css?family=Oswald|Open+Sans',
-		              'public' => true,
-		          ),*/				                             
+		          	),				                             
 			);
 		}
 		elseif ( is_page( 'menus' ) ) { // Menu page

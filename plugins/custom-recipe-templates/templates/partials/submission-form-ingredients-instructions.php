@@ -121,7 +121,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
             		<span class="header"><?php _e( 'Group', 'foodiepro' ); ?></span>
             		<span class="name"><input type="text" class="ingredient-group-label" /></span>
             	</div>
-            	<div class="group center-column delete-button"><span class="ingredient-group-delete"><!--img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16">--></span></div>
+            	<div class="group center-column delete-button"><span class="ingredient-group-delete">&nbsp;</span></div>
             </td>
         </tr>
         <?php
@@ -168,7 +168,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                         <input type="text" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['notes'] ); ?>" />
                         <input type="hidden" name="recipe_ingredients[<?php echo $i; ?>][group]" class="ingredients_group" id="ingredient_group_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['group'] ); ?>" />
                     </td>
-                    <td class="delete-button" colspan="1"><span class="ingredients-delete">&nbsp;<!--<img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/minus.png" width="16" height="16">--></span></td>
+                    <td class="delete-button" colspan="1"><span class="ingredients-delete">&nbsp;</span></td>
                 </tr>
                 <?php
                 $i++;
@@ -188,9 +188,9 @@ if( !isset( $required_fields ) ) $required_fields = array();
 							 <input type="text"   name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onfocus="autoSuggestTag('ingredients_<?php echo $i; ?>', 'ingredient');"<?php if($i == 0) { echo 'placeholder="' . __( 'olive oil', 'foodiepro' ) . '"'; } ?> />
             </td>
             <td>
-            		<span class="mobile-display"><?php _e( 'Notes', 'foodiepro' ); ?></span>
+            	<span class="mobile-display"><?php _e( 'Notes', 'foodiepro' ); ?></span>
                 <!-- <textarea rows="1" cols="20" type="text" name="recipe_ingredients[<?php echo $i; ?>][notes]" <?php if($i == 0) { echo 'placeholder="' . __( 'extra virgin', 'foodiepro' ) . '"'; }?> class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>"></textarea> -->
-								<input type="text" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['notes'] );?>" <?php if($i == 0) { echo 'placeholder="' . __( 'extra virgin', 'foodiepro' ) . '"'; }?>  />
+				<input type="text" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['notes'] );?>" <?php if($i == 0) { echo 'placeholder="' . __( 'extra virgin', 'foodiepro' ) . '"'; }?>  />
                 <input type="hidden" name="recipe_ingredients[<?php echo $i; ?>][group]"    class="ingredients_group" id="ingredient_group_<?php echo $i; ?>" value="" />
             </td>
             <td class="delete-button" colspan="1"><span class="ingredients-delete">&nbsp;</span></td>
@@ -214,16 +214,16 @@ if( !isset( $required_fields ) ) $required_fields = array();
     <table id="recipe-instructions">
         <thead>
         <tr class="instruction-group instruction-group-first">
-						<td colspan="3" class="group">
+			<td colspan="3" class="group">
           		<span class="header"><?php _e( 'Group', 'foodiepro' ); ?></span>
-							<span class="name instruction-groups-disabled"><?php echo __( 'Main Instructions', 'foodiepro' ) . ' ' . __( '(this label is not shown)', 'foodiepro' ); ?></span>
-              <?php
-              $previous_group = '';
-              if( isset( $instructions[0] ) && isset( $instructions[0]['group'] ) ) {
-                  $previous_group = $instructions[0]['group'];
-              }
-              ?>
-              <span class="name instruction-groups-enabled"><input type="text" class="instruction-group-label" value="<?php echo esc_attr( $previous_group ); ?>"/></span>
+				<span class="name instruction-groups-disabled"><?php echo __( 'Main Instructions', 'foodiepro' ) . ' ' . __( '(this label is not shown)', 'foodiepro' ); ?></span>
+                <?php
+                $previous_group = '';
+                if( isset( $instructions[0] ) && isset( $instructions[0]['group'] ) ) {
+                    $previous_group = $instructions[0]['group'];
+                }
+                ?>
+                <span class="name instruction-groups-enabled"><input type="text" class="instruction-group-label" value="<?php echo esc_attr( $previous_group ); ?>"/></span>
             </td>
         </tr>
         </thead>
@@ -240,61 +240,62 @@ if( !isset( $required_fields ) ) $required_fields = array();
     <?php
     $i = 0;
 
-    if( $instructions )
-    {
+    if( $instructions ) {
         foreach( $instructions as $instruction ) {
             if( !isset( $instruction['group'] ) ) {
                 $instruction['group'] = '';
             }
 
             if( $instruction['group'] != $previous_group )
-            { ?>
-                <tr class="instruction-group">
-                    <td colspan="3" class="group">
-                    	<div class="group-container">
-                        <span class="header"><?php _e( 'Group', 'foodiepro' ); ?></span>
-                        <span class="name"><input type="text" class="instruction-group-label" value="<?php echo esc_attr( $instruction['group'] ); ?>"/></span>
-                    	</div>
-                    	<div class="group center-column delete-button"><span class="instruction-group-delete">&nbsp;</span></div>
-                    </td>
-                </tr>
-    <?php
-                $previous_group = $instruction['group'];
-            }
+                { ?>
+                    <tr class="instruction-group">
+                        <td colspan="3" class="group">
+                        	<div class="group-container">
+                            <span class="header"><?php _e( 'Group', 'foodiepro' ); ?></span>
+                            <span class="name"><input type="text" class="instruction-group-label" value="<?php echo esc_attr( $instruction['group'] ); ?>"/></span>
+                        	</div>
+                        	<div class="group center-column delete-button"><span class="instruction-group-delete">&nbsp;</span></div>
+                        </td>
+                    </tr>
+        <?php
+                    $previous_group = $instruction['group'];
+                }
 
             if( !isset( $instruction['image'] ) ) {
                 $instruction['image'] = '';
+                echo '<pre>' . 'instruction image variable : ' . $instruction['image'] . '</pre>';
             }
 
-            if( $instruction['image'] )
-            {
+            if( $instruction['image'] ) {
                 $image = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
                 $image = $image[0];
                 $has_image = true;
+                echo '<pre>' . "Has image = true !" . '</pre>';
             }
-            else
-            {
+            else {
                 $image = WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
                 $has_image = false;
+                echo '<pre>' . "Has image = false" . '</pre>';
             }
-            ?>
+        ?> 
+            <!-- Existing Instructions Section -->
+
             <tr class="instruction">
                 <td  class="sort-handle"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16"></td>
                 <td>
                     <div class="instruction-text">
                         <textarea name="recipe_instructions[<?php echo $i; ?>][description]" rows="4" id="ingredient_description_<?php echo $i; ?>"><?php echo $instruction['description']; ?></textarea>
                         <input type="hidden" name="recipe_instructions[<?php echo $i; ?>][group]"    class="instructions_group" id="instruction_group_<?php echo $i; ?>" value="<?php echo esc_attr( $instruction['group'] ); ?>" />
-                        <!-- User submission activated -->    
-                        <?php if( $has_image ) { ?>
-                            <!-- Has Image ! -->    
-                            <img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
-                            <input type="hidden" value="<?php echo $instruction['image']; ?>" name="recipe_instructions[<?php echo $i; ?>][image]" /><br/>
-                        <?php } ?>
                     </div>
-<!--                     <div class="instruction-image">
-                        <label class="add-instruction-thumbnail"><?php _e('Select Image','foodiepro'); ?></label>
-                        <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail_<?php echo $i; ?>" />
-                    </div> -->
+                    <div class="instruction-image">
+                        <?php _e( 'Instruction Step Image', 'wp-ultimate-recipe' ); ?>:<br/>
+                        <?php if( $has_image ) { ?>
+                        <img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
+                         <!--Add type="hidden" -->
+                        <input value="<?php echo $instruction['image']; ?>" name="recipe_instructions[<?php echo $i; ?>][image]" /><br/>
+                        <?php } ?>
+                        <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail_<?php echo $i; ?>" />                  
+                    </div>
                 </td>
                 <td class="delete-button" colspan="1"><span class="instructions-delete">&nbsp;</span></td>
             </tr>
@@ -306,17 +307,22 @@ if( !isset( $required_fields ) ) $required_fields = array();
 
     $image = WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
     ?>
+            <!-- New (stub) Instruction Section -->
+
             <tr class="instruction">
                 <td class="sort-handle"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16"></td>
                 <td>
+
                     <div class="instruction-text">
                         <textarea name="recipe_instructions[<?php echo $i; ?>][description]" rows="4" id="ingredient_description_<?php echo $i; ?>"></textarea>
-                        <input type="hidden" name="recipe_instructions[<?php echo $i; ?>][group]"    class="instructions_group" id="instruction_group_<?php echo $i; ?>" value="" />
+                        <input type="hidden" name="recipe_instructions[<?php echo $i; ?>][group]" class="instructions_group" id="instruction_group_<?php echo $i; ?>" value="" />
                     </div>
-<!-- 				    <div class="instruction-image">
-                        <label class="add-instruction-thumbnail"><?php _e('Select Image','foodiepro'); ?></label>
+
+				    <div class="instruction-image">
+                        <?php _e( 'Instruction Step Image', 'wp-ultimate-recipe' ); ?>:<br/>
                         <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail_<?php echo $i; ?>" />
-                    </div> -->
+                        <br /><img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
+			         </div>
                 </td>
                 <td class="delete-button" colspan="1"><span class="instructions-delete">&nbsp;</span></td>
             </tr>

@@ -719,6 +719,7 @@ h1.archive-title,
 	font-variant:small-caps;
 	line-height: 50px;
     padding-left: 20px;
+	padding-bottom: 40px;
 	letter-spacing:2px;
 }
 
@@ -770,23 +771,29 @@ h2.user-nicename {
 .search h2.entry-title a,
 h3.rpwe-title a {
 	font-family: "Oswald", sans-serif;
-  text-decoration: none;
+	text-decoration: none;
 	text-transform:capitalize !important;
-  font-weight: normal;
-  font-size: 18px;	
+	font-weight: normal;
+	font-size: 18px;	
 }
 
-/* Slider formatting */
+/* Slider fonts*/
 .slider-text {
 	font-family: "Oswald",cursive;
-  font-size: 40px!important;
+	font-size: 40px!important;
 	padding-bottom:20px!important;  
-  color: #FFF;
+	color: #FFF;
 }
 
+/* Responsive menu fonts */
+#responsive-menu-pro-container .user_name {
+	font-family: "Oswald", sans-serif;
+	font-size: 30px;
+	color: #f3f3f3;
+	padding: 20px;
+}
 
-
-/* Widgets Headline */
+/* Widgets Fonts  */
 
 .widgettitle {
 	font-family:'Amatic SC', cursive;
@@ -794,20 +801,20 @@ h3.rpwe-title a {
 }
 
 .fancy .widgettitle {
-  font-family:"Ruge Boogie", cursive;
+	font-family:"Ruge Boogie", cursive;
 	font-size:60px;
-  font-weight:normal;
-  text-transform:none;
-  color:#222;
+	font-weight:normal;
+	text-transform:none;
+	color:#222;
 }
 
 .elegant .widgettitle {
-  /*font-family:"Delius Swash Caps", cursive;*/
-  font-family:"Amatic SC", cursive;
+	/*font-family:"Delius Swash Caps", cursive;*/
+	font-family:"Amatic SC", cursive;
 	font-size:50px;
-  color:#222;
-  font-weight:bold;
-  text-transform:none;  
+	color:#222;
+	font-weight:bold;
+	text-transform:none;  
 }
 
 .title-big-font .widgettitle {
@@ -823,13 +830,27 @@ h3.rpwe-title a {
 	font-weight:normal;
 }
 
+/* Footer fonts */
+
+.footer-widgets,
 .footer-widgets .widgettitle {
-	font-family: "Vollkorn",sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.footer-widgets .widgettitle {
 	text-transform: uppercase;
 	font-weight: 300;
 	font-size: 13px;
 	color: #555;
 }
+
+.buddypress .bp-login-widget-user-link a {
+	text-transform : uppercase;
+	font-weight : normal;
+	font-size : 24px;
+	color:#555;
+}
+
 
 /* Widgets 
 ----------------------------------------------------------------------*/
@@ -2238,7 +2259,7 @@ span.ui-icon.ui-icon-triangle-1-s:before {
 #accordion .subnav a {
     /*padding: 0 36px;*/
     /*font-variant: small-caps;*/
-    font-size: 20px;
+    font-size: 16px;
 }
 
 
@@ -2340,13 +2361,6 @@ span.ui-icon.ui-icon-triangle-1-s:before {
 	z-index:99999!important; /* Prevents mmm search button to appear */
 	background:linear-gradient(to bottom right,#2c2c2c,#898989)!important;
 	max-width: 300px;
-}
-
-#responsive-menu-pro-container .user_name {
-  font-family: "Oswald", sans-serif;
-  font-size: 30px;
-  color: #f3f3f3;
-  padding: 20px;
 }
 
 #responsive-menu-pro-container input.responsive-menu-pro-search-box {
@@ -4604,18 +4618,6 @@ div.activity-comments form div.ac-reply-content a {
 
 /* BP Custom Login in Footer
 --------------------------------------------- */
-
-/*.buddypress .bp-login-widget-user-link {
-	margin-top:30px;
-}*/
-
-.buddypress .bp-login-widget-user-link a {
-	font-family : "PT Sans Narrow","Helvetica Neue",sans-serif;
-	text-transform : uppercase;
-	font-weight : normal;
-	font-size : 24px;
-	color:#555;
-}
 
 .buddypress .bp-login-widget-user-link a:hover {
 	color:#555;

@@ -22,28 +22,28 @@
 
 /* Fonts */
 ul.wpurp-user-submissions-current-user-edit {
-    font-family: sans-serif;
+  font-family: Oswald, sans-serif;
 }
 
 #wpurp_user_submission_form span.header,
 #wpurp_user_submission_form label {
+  font-family: Oswald, sans-serif;
   font-weight: 400;
   color: #616161;
-  font-family: sans-serif;
-}
-
-#wpurp_user_submission_form input#recipe_title,
-#wpurp_user_submission_form input.ingredient-group-label {
-	font-size: 16px!important;
 }
 
 #wpurp_user_submission_form label.recipe-tags,
 #wpurp_user_submission_form label.recipe-image,
 #wpurp_user_submission_form label.recipe-title,
 #wpurp_user_submission_form h4 {
-  font-family: "Oswald", sans-serif;
+  font-family: Oswald, sans-serif;
 	font-size: 25px;
 	font-variant: small-caps;
+}
+
+#wpurp_user_submission_form input#recipe_title,
+#wpurp_user_submission_form input.ingredient-group-label {
+  font-size: 16px!important;
 }
 
 #wpurp_user_submission_form textarea,
@@ -215,9 +215,10 @@ select#recipe-occasion option {
 
 #wpurp_user_submission_form span.header {
 	display: inline-block;
-	font-weight:bold; 
+  font-size: 28px; 
 	margin: 0 20px;	
 	color: #b5b5b5;	
+  font-variant: small-caps;
 }
 
 #wpurp_user_submission_form .group.delete-button {

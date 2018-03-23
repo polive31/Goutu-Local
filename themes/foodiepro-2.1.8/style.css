@@ -2230,7 +2230,7 @@ h3.ui-accordion-header:focus {
 #accordion h3 {
 	padding: 0;
     margin: 0;
-    font-size: 26px;
+    font-size: 24px;
 }
 
 .ui-icon {
@@ -3275,7 +3275,7 @@ Site Header
 	width:350px; 
 	height:100px; 
 	float:left;
-  text-indent:-9999px;
+	text-indent:-9999px;
 }
 
 .home-page .title-area,
@@ -3284,7 +3284,8 @@ Site Header
 	/*width:530px; 
 	height:230px;*/
 	width:360px; 
-	height:150px;
+	/*height:150px;*/
+	height:200px;
 }
 
 /* Added P.O. Vertical centering and header height */

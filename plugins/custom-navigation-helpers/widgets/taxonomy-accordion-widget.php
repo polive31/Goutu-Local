@@ -37,12 +37,14 @@ public function widget( $args, $instance ) {
 	global $wp;
 		
 	$title = apply_filters( 'widget_title', $instance['title'] );
+
+	$show_count = $instance['show_count']?'true':'false';
+	$displayed_user = $instance['displayed_user'];
 		
 	// before and after widget arguments are defined by themes
 	echo $args['before_widget'];
 	
 	// Widget code starts
-
 
 	$obj = get_queried_object();
 	if (isset($obj->taxonomy)) {
@@ -63,14 +65,19 @@ public function widget( $args, $instance ) {
 	else $current_menu_item=0;
 	// echo '<pre>' . 'current tax : ' . $current_menu_item . '</pre>';
 
+	if ( $displayed_user ) {
+		$user_id=bp_displayed_user_id();
+		if ( empty($user_id) ) $displayed_user=false;
+	}
+
 	echo '<div id="accordion">';
-	echo do_shortcode('[ct-terms-menu tax="course" title="De l\'Apéro au Dessert" orderby="name" order="ASC" count="true"]');
-	echo do_shortcode('[ct-terms-menu tax="season" title="Cuisine de Saisons" orderby="name" order="ASC" count="true"]');
-	echo do_shortcode('[ct-terms-menu tax="occasion" title="Pour toutes les occasions" orderby="name" order="ASC" count="true"]');
-	echo do_shortcode('[ct-terms-menu tax="cuisine" parent="0" drill="true" exclude="9996" title="Cuisines du Monde" orderby="name" order="ASC" count="true"]');
-	echo do_shortcode('[ct-terms-menu tax="cuisine" parent="9996" title="Cuisines de nos Régions" orderby="name" order="ASC" count="true"]');
-	echo do_shortcode('[ct-terms-menu tax="diet" title="Régimes et Diététique" orderby="name" order="ASC" count="true"]');
-	echo do_shortcode('[tags-menu title="Inspirations" orderby="name" order="ASC" count="true"]');	
+	echo do_shortcode('[ct-terms-menu tax="course" title="' . __('Courses', 'foodiepro') . '" orderby="name" author="0" order="ASC" count="' . $show_count . '"]');
+	echo do_shortcode('[ct-terms-menu tax="season" title="' . __('Seasons', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
+	echo do_shortcode('[ct-terms-menu tax="occasion" title="' . __('Occasions', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
+	echo do_shortcode('[ct-terms-menu tax="cuisine" parent="0" drill="true" exclude="9996" title="' . __('World', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
+	echo do_shortcode('[ct-terms-menu tax="cuisine" parent="9996" title="' . __('France', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
+	echo do_shortcode('[ct-terms-menu tax="diet" title="' . __('Diets', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
+	echo do_shortcode('[tags-menu title="' . __('Ideas', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');	
 	echo '</div>';
 
 
@@ -93,12 +100,27 @@ public function form( $instance ) {
 		$title = $instance[ 'title' ];
 	else
 		$title = __( 'New title', 'foodiepro' );
+	if ( isset( $instance[ 'show_count' ] ) ) $show_count = $instance[ 'show_count' ];
+		else $show_count = false;
+	if ( isset( $instance[ 'displayed_user' ] ) ) $displayed_user = $instance[ 'displayed_user' ];
+		else $displayed_user = false;
+		
 // Widget admin form
 ?>
 	<p>
-	<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+	<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'foodiepro' ); ?></label> 
 	<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 	</p>
+
+	<p>
+	    <label for="<?php echo $this->get_field_id( 'show_count' ); ?>"><?php _e( 'Show Recipe Count', 'foodiepro' ); ?></label>
+	    <input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id( 'show_count' ); ?>" name="<?php echo $this->get_field_name( 'show_count' ); ?>" <?php checked( $instance[ 'show_count' ], 'on' ); ?>  >
+	</p>
+
+	<p>
+	    <label for="<?php echo $this->get_field_id( 'displayed_user' ); ?>"><?php _e( 'Limit Recipes to Current Displayed User', 'foodiepro' ); ?></label>
+	    <input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id( 'displayed_user' ); ?>" name="<?php echo $this->get_field_name( 'displayed_user' ); ?>" <?php checked( $instance[ 'displayed_user' ], 'on' ); ?>  >
+	</p>	
 <?php 
 }
 	
@@ -106,6 +128,8 @@ public function form( $instance ) {
 public function update( $new_instance, $old_instance ) {
 $instance = array();
 $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+$instance['show_count'] = $new_instance['show_count'];        
+$instance['displayed_user'] = $new_instance['displayed_user'];
 return $instance;
 }
 } // Class wpb_widget ends here

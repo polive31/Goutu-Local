@@ -141,6 +141,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 			'title' => '',
 			'class' => '',
 			'parent' => '',
+			'author' => '',
 			'exclude' => '',
 			'drill'	=> 'false',
 			'count' => 'false'
@@ -164,7 +165,9 @@ class CustomNavigationShortcodes extends CustomArchive {
 		$terms = get_categories( array(
 			'taxonomy' => $tax,
 			'exclude' => $atts['exclude'],
-			'parent' => $atts['parent'],		
+			'parent' => $atts['parent'],
+			'author' => 0,		
+			// 'author' => $atts['author'],		
 			'hide_empty' => true,		
 			'orderby' => 'slug',
 			'order'   => 'ASC'

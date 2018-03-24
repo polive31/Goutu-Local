@@ -146,7 +146,7 @@ class WPURP_Custom_Recipe_List_Widget extends WP_Widget {
         $instance['order_by'] = ( !empty( $new_instance['order_by'] ) ) ? strip_tags( $new_instance['order_by'] ) : 'date';
         $instance['order'] = ( !empty( $new_instance['order'] ) ) ? strip_tags( $new_instance['order'] ) : 'DESC';
         $instance['limit'] = ( !empty( $new_instance['limit'] ) ) ? strip_tags( $new_instance['limit'] ) : '10';
-        $instance['images'] = ( !empty( $new_instance['images'] ) ) ? $new_instance['limit'] : '';
+        $instance['images'] = ( !empty( $new_instance['images'] ) ) ? $new_instance['images'] : '';
 
         return $instance;
     }

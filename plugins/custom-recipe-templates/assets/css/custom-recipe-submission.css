@@ -62,6 +62,16 @@ span.wpurp-required {
 	color: #dc1d1d;
 }
 
+#wpurp_user_submission_form input.recipe_instructions_image,
+#wpurp_user_submission_form input.recipe_thumbnail_image,
+#wpurp_user_submission_form label.add-image-button,
+#wpurp_user_submission_form #ingredients-add-box,
+#wpurp_user_submission_form #ingredients-add-group-box {
+  font-family: sans-serif;  
+  font-size: 13px;
+  color: #616161;    
+}
+
 /* Headlines */
 
 #wpurp_user_submission_form h4 {
@@ -202,8 +212,8 @@ select#recipe-occasion option {
 
 #wpurp_user_submission_form td.group {
 	padding:4px;
-	border-top: 2px dashed #dcdcdc;
-  border-bottom: 2px dashed #dcdcdc;
+	/*border-top: 2px dashed #dcdcdc;*/
+  border-bottom: 2px solid #dcdcdc;
 }
 
 #wpurp_user_submission_form span.name {
@@ -236,10 +246,8 @@ select#recipe-occasion option {
   float: left;
   padding: 3px 10px;
   margin: 20px 10px 10px 0;
-  font-size: 13px;
   border-radius: 5px;
   border: 1px solid #AAA;
-	color: #616161;  
 }
 
 
@@ -256,13 +264,18 @@ select#recipe-occasion option {
 }
 
 #wpurp_user_submission_form .instruction-text {
-  width: calc(100% - 200px);
+  /*width: calc(100% - 200px);*/
+  width: 100%;
+  float: left;
+}
+
+#wpurp_user_submission_form .instruction-buttons {
   float: left;
 }
 
 #wpurp_user_submission_form .instruction-image {
-  width: 200px;
   float: left;
+  width: 200px;
   padding: 0 20px;
 }
 
@@ -375,6 +388,13 @@ textarea.ingredients_notes {
 
 #wpurp_user_submission_form div#qt_recipe_notes_toolbar {
 	display:none;
+}
+
+.afu-process-file label {
+  font-family: sans-serif!important;
+  background-color: #eeeeee;
+  font-size: 14px;
+  border-radius: 5px;
 }
 
 

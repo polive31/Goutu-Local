@@ -121,16 +121,18 @@
         </div>
 <?php
         $wpurp_user_submission = true;
-        include( 'submission-form-ingredients-instructions.php' );
+        // echo dirname(__DIR__) . '/templates/partials/submission_form_ingredients_instructions.php';
+        // include( dirname(__DIR__) . '/templates/partials/submission_form_ingredients_instructions.php' );
+        include( 'partials/submission_form_ingredients_instructions.php' );
 ?>
-<?php if( WPUltimateRecipe::option( 'user_submissions_use_security_question', '' ) == '1' ) { ?>
+<!-- <?php if( WPUltimateRecipe::option( 'user_submissions_use_security_question', '' ) == '1' ) { ?>
     <div class="security-question-container">
         <h4><?php _e( 'Security Question', 'wp-ultimate-recipe' ); ?><span class="wpurp-required">*</span></h4>
         <p>
             <label for="security-answer"><?php echo WPUltimateRecipe::option( 'user_submissions_security_question', '4 + 7 =' ); ?></label> <input type="text" id="security-answer" value="<?php echo isset( $_POST['security-answer'] ) ? $_POST['security-answer'] : '';  ?>" size="25" name="security-answer" />
         </p>
     </div>
-<?php } ?>
+<?php } ?> -->
         <p align="right">
             <?php if( WPUltimateRecipe::option( 'user_submission_preview_button', '1') == '1' ) { ?>
             <input type="submit" value="<?php _e( 'Preview', 'foodiepro' ); ?>" id="preview" name="preview" />

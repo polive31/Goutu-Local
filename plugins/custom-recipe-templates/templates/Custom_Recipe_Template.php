@@ -1,7 +1,7 @@
 <?php
 
 
-class Custom_Recipe_Template extends Custom_Recipe_Templates {
+class Custom_Recipe_Template extends Custom_WPURP_Templates {
 	
 	public function __construct() {
 		parent::__construct();

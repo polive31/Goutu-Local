@@ -241,6 +241,19 @@ if( !isset( $required_fields ) ) $required_fields = array();
     $i = 0;
 
     if( $instructions ) {
+
+        ?>
+<!--         <script>
+            jQuery(document).ready(function() {
+                window.addEventListener( "afu_file_uploaded", function(e){
+                    if( "undefined" !== typeof e.data.response.media_uri ) {
+                        console.log( e.data.response.media_uri ); // the uploaded media URL
+                    }
+                }, false);
+            });
+        </script> -->
+        <?php
+
         foreach( $instructions as $instruction ) {
             if( !isset( $instruction['group'] ) ) {
                 $instruction['group'] = '';
@@ -263,40 +276,56 @@ if( !isset( $required_fields ) ) $required_fields = array();
 
             if( !isset( $instruction['image'] ) ) {
                 $instruction['image'] = '';
-                echo '<pre>' . 'instruction image variable : ' . $instruction['image'] . '</pre>';
+                //echo '<pre>' . 'instruction image variable : ' . $instruction['image'] . '</pre>';
             }
 
             if( $instruction['image'] ) {
                 $image = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
                 $image = $image[0];
                 $has_image = true;
-                echo '<pre>' . "Has image = true !" . '</pre>';
+                //echo '<pre>' . "Has image = true !" . '</pre>';
             }
             else {
-                $image = WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
+                // $image = WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
+                $image='';
                 $has_image = false;
-                echo '<pre>' . "Has image = false" . '</pre>';
+                //echo '<pre>' . "Has image = false" . '</pre>';
             }
         ?> 
             <!-- Existing Instructions Section -->
 
             <tr class="instruction">
-                <td  class="sort-handle"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16"></td>
+                <td  class="sort-handle"><span><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16"></span></td>
                 <td>
                     <div class="instruction-text">
                         <textarea name="recipe_instructions[<?php echo $i; ?>][description]" rows="4" id="ingredient_description_<?php echo $i; ?>"><?php echo $instruction['description']; ?></textarea>
                         <input type="hidden" name="recipe_instructions[<?php echo $i; ?>][group]"    class="instructions_group" id="instruction_group_<?php echo $i; ?>" value="<?php echo esc_attr( $instruction['group'] ); ?>" />
                     </div>
-                    <div class="instruction-image">
-                        <?php _e( 'Instruction Step Image', 'wp-ultimate-recipe' ); ?>:<br/>
-                        <?php if( $has_image ) { ?>
+
+                    <div class="instruction-buttons">
+                        <?php
+                        $args = array(
+                            "unique_identifier" => "recipe_thumbnail_{$i}",
+                            "allowed_extensions" => "jpg, png, bmp, gif",
+                            "set_image_source" => "#recipe_thumbnail_container_{$i} img",
+                            "on_success_set_input_value" => "#recipe_thumbnail_input_{$i}",
+                            // "on_success_alert" => __("Image upload success", "foodiepro")
+                        );
+                        echo ajax_file_upload( $args );
+                        ?>                            
+                    </div>
+                 </td>   
+
+                 <td>   
+                    <div class="instruction-image" id="recipe_thumbnail_container_<?php echo $i; ?>">
+                        <!-- <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail_<?php echo $i; ?>" />   -->  
+                        <!-- Instruction image display -->
                         <img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
                          <!--Add type="hidden" -->
-                        <input value="<?php echo $instruction['image']; ?>" name="recipe_instructions[<?php echo $i; ?>][image]" /><br/>
-                        <?php } ?>
-                        <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail_<?php echo $i; ?>" />                  
+                        <input id="recipe_thumbnail_input_<?php echo $i ;?>" type="hidden" value="<?php echo $instruction['image']; ?>" name="recipe_instructions[<?php echo $i; ?>][image]" /><br/>             
                     </div>
                 </td>
+
                 <td class="delete-button" colspan="1"><span class="instructions-delete">&nbsp;</span></td>
             </tr>
             <?php
@@ -310,7 +339,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
             <!-- New (stub) Instruction Section -->
 
             <tr class="instruction">
-                <td class="sort-handle"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16"></td>
+                <td class="sort-handle"><span><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16" /></span></td>
                 <td>
 
                     <div class="instruction-text">
@@ -318,11 +347,28 @@ if( !isset( $required_fields ) ) $required_fields = array();
                         <input type="hidden" name="recipe_instructions[<?php echo $i; ?>][group]" class="instructions_group" id="instruction_group_<?php echo $i; ?>" value="" />
                     </div>
 
-				    <div class="instruction-image">
-                        <?php _e( 'Instruction Step Image', 'wp-ultimate-recipe' ); ?>:<br/>
-                        <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail_<?php echo $i; ?>" />
-                        <br /><img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
-			         </div>
+                    <div class="instruction-buttons">
+                        <?php
+                        $args = array(
+                            "unique_identifier" => "recipe_thumbnail_{$i}",
+                            "allowed_extensions" => "jpg, png, bmp, gif",
+                            "set_image_source" => "#recipe_thumbnail_container_{$i} img",
+                            "on_success_set_input_value" => "#recipe_thumbnail_input_{$i}",
+                            // "on_success_alert" => __("Image upload success", "foodiepro")
+                        );
+                        echo ajax_file_upload( $args );
+                        ?>                            
+                    </div>
+                </td>
+
+                <td>
+                    <div class="instruction-image" id="recipe_thumbnail_container_<?php echo $i; ?>">
+                    
+                        <!-- <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail_<?php echo $i; ?>" /> -->
+                        <img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail"/>
+                        <!-- <?php _e( 'Instruction Step Image', 'wp-ultimate-recipe' ); ?>:<br/> -->
+                        <input id="recipe_thumbnail_input_<?php echo $i ;?>" value="" type="hidden" name="recipe_instructions[<?php echo $i; ?>][image]" /><br/>
+                     </div>
                 </td>
                 <td class="delete-button" colspan="1"><span class="instructions-delete">&nbsp;</span></td>
             </tr>

@@ -351,7 +351,6 @@ input[type="checkbox"], input[type="radio"] {
 	width:20px;
 }
 
-
 /* Hover formatting */
 .user-menus-buttons-container button:hover,
 .button:hover,
@@ -675,10 +674,11 @@ a.comment-reply-link,
 .post-meta,
 .widget.back ul li a {
 	/*font-family:'Droid Serif', georgia, serif;*/
+	font-family: sans-serif;
+	/*font-family:'Vollkorn', sans-serif;*/
 	font-size:11px;
-	font-family:'Vollkorn', sans-serif;
 	font-weight: 400;
-  padding: 5px 10px;	
+	padding: 5px 10px;	
 }
 
 #signup_submit {
@@ -1196,7 +1196,8 @@ Structure and Layout
 
 .site-container {
 	margin:0 auto;
-	max-width:1060px;
+	/*max-width:1060px;*/
+	max-width:1140px;
 	padding:0 20px 30px 20px;
 }
 
@@ -1269,12 +1270,12 @@ Structure and Layout
 
 .sidebar-primary {
 	float:right;
-	width:300px;
+	width:380px;
 	display:-webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-  display:-moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-  display:-ms-flexbox;      /* TWEENER - IE 10 */
-  display:-webkit-flex;     /* NEW - Chrome */
-  display:flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */ 
+	display:-moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display:-ms-flexbox;      /* TWEENER - IE 10 */
+	display:-webkit-flex;     /* NEW - Chrome */
+	display:flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */ 
 	-webkit-flex-flow:row wrap;
 	-moz-flex-flow:row wrap;
 	-ms-flex-flow:row wrap;
@@ -3263,7 +3264,8 @@ Site Header
   background-position: left;
   padding: 0 20px 0px 20px;
   margin: 0 auto;
-  max-width: 1060px;
+  /*max-width: 1060px;*/
+  max-width: 1140px;
 }
 
 /* Title Area
@@ -3997,7 +3999,8 @@ li.comment a {
 
 .sidebar .widget {
 	/*margin-top:40px;*/
-	width:300px;
+	/*width:300px;*/
+	width:340px;
 	margin-bottom:20px;
 }
 

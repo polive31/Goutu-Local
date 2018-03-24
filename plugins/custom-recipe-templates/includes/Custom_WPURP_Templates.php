@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Custom_Recipe_Templates {
+class Custom_WPURP_Templates {
 	
 	const RECIPES_PUBLISH_SLUG = 'publier-recettes';
 	const RECIPE_NEW_SLUG = 'nouvelle-recette';
@@ -26,7 +26,7 @@ class Custom_Recipe_Templates {
 		add_filter ( 'wpurp_assets_css', array($this,'enqueue_wpurp_css'), 15, 1 );
 
 		/* Customize User Submission shortcode */
-		add_filter ( 'wpurp_user_submissions_current_user_edit_item', array($this, 'remove_recipe_list_on_edit_recipe'), 15, 2 );
+		// add_filter ( 'wpurp_user_submissions_current_user_edit_item', array($this, 'remove_recipe_list_on_edit_recipe'), 15, 2 );
 
 		/* Custom menu template */
 		//add_filter( 'wpurp_user_menus_form', 'wpurp_custom_menu_template', 10, 2 );
@@ -274,8 +274,8 @@ class Custom_Recipe_Templates {
 			$url = get_permalink() . self::RECIPE_EDIT_SLUG;	
 			//$url = 'http://www.goutu.main/accueil/publier/publier-recettes/recipe-edit/';	
 			$html = '<li>';
-      $html .= '<a href="' . $url . '?wpurp-edit-recipe=' . $recipe->ID() . '">' . $recipe->title() . '</a>';
-      $html .= '</li>';
+			$html .= '<a href="' . $url . '?wpurp-edit-recipe=' . $recipe->ID() . '">' . $recipe->title() . '</a>';
+			$html .= '</li>';
 		}
 		return $html;
 	}

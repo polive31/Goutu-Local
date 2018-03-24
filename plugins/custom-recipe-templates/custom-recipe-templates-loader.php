@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Custom Recipe Templates
+Plugin Name: Custom WPURP Templates
 Plugin URI: http://goutu.org/
 Description: Customized templates & functionality for WP Ultimate Recipe
 Version: 1.0
@@ -15,26 +15,37 @@ if ( !defined('ABSPATH') )
 	die('-1');
 
 
-add_action( 'plugins_loaded', 'WPURP_custom_templates_init' ); 
+add_action( 'plugins_loaded', 'Custom_WPURP_templates_init' ); 
 
-function WPURP_custom_templates_init() {
+function Custom_WPURP_templates_init() {
 	
 	if ( class_exists('WPUltimateRecipe') ) {
 
-		require_once 'includes/Custom_Recipe_Templates.php';
+		/* Includes
+		------------------------------------*/
+		require_once 'includes/Custom_WPURP_Templates.php';
 		require_once 'includes/Custom_Recipe_Favorite.php';
 		require_once 'includes/Custom_Recipe_Add_To_Shopping_List.php';
 		require_once 'includes/Custom_Recipe_Metadata.php';
+		// require_once 'includes/Custom_Recipe_Templates.php';
+		/* Templates
+		------------------------------------*/
 		require_once 'templates/Custom_Recipe_Template.php';
-		require_once 'templates/Custom_Recipe_Submission_Template.php';
-		//require_once 'templates/Custom_Menu_Template.php';
+		// require_once 'templates/Custom_Recipe_Submission_Template.php';
 		require_once 'templates/custom-recipe-print-template.php';
-		require_once 'helpers/custom_recipe_list.php';
-		require_once 'helpers/custom_nutrition_label.php';
+		//require_once 'templates/Custom_Menu_Template.php';
+		/* Helpers
+		------------------------------------*/
+		require_once 'helpers/Custom_User_Submissions.php';
+		/* Helpers
+		------------------------------------*/
+		require_once 'widgets/custom_recipe_list_widget.php';
+		require_once 'widgets/custom_nutrition_label_widget.php';
 
-		new Custom_Recipe_Templates();
+		new Custom_WPURP_Templates();
+		new Custom_User_Submissions();
 		new Custom_Recipe_Template();
-		new Custom_Recipe_Submission_Template();
+		// new Custom_Recipe_Submission_Template();
 
 	}
 

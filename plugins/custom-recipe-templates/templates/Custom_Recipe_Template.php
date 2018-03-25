@@ -42,7 +42,7 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 						<a class="recipe-review-button" id="<?php echo $this->logged_in?'recipe-review':'join-us';?>">
 						<div class="button-caption"><?php echo __('Rate','foodiepro'); ?></div>
 						</a>
-						<?php echo Custom_Recipe_Templates::output_tooltip(__('Comment and rate this recipe','foodiepro'),'top');?>
+						<?php echo Custom_WPURP_Templates::output_tooltip(__('Comment and rate this recipe','foodiepro'),'top');?>
 					</div>	
 					
 					<!-- Recipe Add to Cart Button -->
@@ -64,7 +64,7 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 						<a class="wpurp-recipe-print recipe-print-button" href="<?php echo $recipe->link_print(); ?>" target="_blank">
 						<div class="button-caption"><?php echo __('Print', 'foodiepro'); ?></div>
 						</a>
-						<?php echo Custom_Recipe_Templates::output_tooltip(__('Print this recipe','foodiepro'),'top');?>
+						<?php echo Custom_WPURP_Templates::output_tooltip(__('Print this recipe','foodiepro'),'top');?>
 					</div>	
 										
 					<!-- Recipe Share Button -->
@@ -72,8 +72,8 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 						<a class="recipe-share-button" id="recipe-share" cursor-style="pointer">
 						<div class="button-caption"><?php echo __('Share','foodiepro'); ?></div>
 						</a> 
-						<?php //echo Custom_Recipe_Templates::output_tooltip(__('Share this recipe','foodiepro'),'top');?>
-						<?php echo Custom_Recipe_Templates::output_tooltip('[mashshare]','top');?>
+						<?php //echo Custom_WPURP_Templates::output_tooltip(__('Share this recipe','foodiepro'),'top');?>
+						<?php echo Custom_WPURP_Templates::output_tooltip('[mashshare]','top');?>
 					</div>				
 					<script type="text/javascript">
 					jQuery( "#recipe-share" ).click(function() {

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2018-03-24 15:06+0100\n"
-"PO-Revision-Date: 2018-03-24 15:06+0100\n"
+"PO-Revision-Date: 2018-03-25 03:06+0200\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -271,7 +271,7 @@ msgstr "Régimes et diététique"
 
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:80
 msgid "Ideas"
-msgstr ""
+msgstr "Inspirations Culinaires"
 
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:116
 #, fuzzy

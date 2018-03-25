@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Custom_Recipe_Add_To_Shopping_List extends WPURP_Template_Block {
 
-		private $logged_in;
+	private $logged_in;
 
     public function __construct( $logged_in, $type = 'recipe-add-to-shopping-list' )
     {
@@ -26,11 +26,10 @@ class Custom_Recipe_Add_To_Shopping_List extends WPURP_Template_Block {
         	$link_id='id="join-us"';
 					$menu_link = '/connexion';
         }
-
-				else {
-					$classes[] = 'logged-in';
-					$menu_link = '/accueil/favoris/favoris-menus/liste-courses';
-				}
+		else {
+			$classes[] = 'logged-in';
+			$menu_link = '/favoris/favoris-menus/liste-courses';
+		}
         $tooltip_in=sprintf(__('In my <a href="%s">shopping list</a>','foodiepro'),$menu_link);
         $tooltip_add=sprintf(__('Add to my <a href="%s">shopping list</a>','foodiepro'),$menu_link);
 					
@@ -61,7 +60,7 @@ class Custom_Recipe_Add_To_Shopping_List extends WPURP_Template_Block {
 				<a href="#"<?php echo $this->style(); ?> <?php echo $link_id;?> data-recipe-id="<?php echo $recipe->ID(); ?>">
 				<div class="button-caption"><?php echo __('Add to Shopping List','foodiepro'); ?></div>
 				</a>
-				<?php echo Custom_Recipe_Templates::output_tooltip($tooltip.$tooltip_alt,'top');
+				<?php echo Custom_WPURP_Templates::output_tooltip($tooltip.$tooltip_alt,'top');
 				
         $output .= ob_get_contents();
         ob_end_clean();

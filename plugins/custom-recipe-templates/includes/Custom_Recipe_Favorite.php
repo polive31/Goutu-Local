@@ -61,7 +61,7 @@ class Custom_Recipe_Favorite extends WPURP_Template_Block {
 				<div class="button-caption"><?php echo __('Favorites','foodiepro'); ?></div>
 				</a>
 
-				<?php echo Custom_Recipe_Templates::output_tooltip($tooltip.$tooltip_alt,'top');
+				<?php echo Custom_WPURP_Templates::output_tooltip($tooltip.$tooltip_alt,'top');
 
         $output .= ob_get_contents();
         ob_end_clean();

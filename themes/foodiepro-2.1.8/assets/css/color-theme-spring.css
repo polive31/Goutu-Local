@@ -26,7 +26,7 @@
 .webp .site-header,
 .webp .home .site-header {
 	/*background-image:url("../../images/theme/background-spring/background-l.webp"),url("../../images/theme/background-spring/background-r.webp");*/
-	background-image:url("../../images/theme/header.jpg");
+	background-image:url("../../images/theme/header.webp");
 	background-size:cover;
 }
 

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2018-03-24 15:06+0100\n"
+"POT-Creation-Date: 2018-03-24 23:56+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -335,7 +335,7 @@ msgid "Anonymous"
 msgstr ""
 
 #: plugins/custom-recipe-templates/helpers/Custom_User_Submissions.php:358
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:389
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:403
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:409
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_whitelist.php:286
 #: plugins/wp-ultimate-recipe-premium/premium/addons/custom-fields/custom-fields.php:18
@@ -840,27 +840,23 @@ msgstr ""
 msgid "Main Instructions"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:307
-msgid "Uploading..."
-msgstr ""
-
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:355
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:369
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:324
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:356
 msgid "Instruction Step Image"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:365
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:379
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:375
 msgid "Add an instruction"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:368
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:382
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:378
 msgid "Add an instruction group"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:371
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:385
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:381
 msgid ""
 "<strong>Use the TAB key</strong> while adding instructions, it will "
@@ -868,7 +864,7 @@ msgid ""
 "strong>, these will be ignored."
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:376
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:390
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:386
 msgid "Recipe notes"
 msgstr ""
@@ -7449,49 +7445,49 @@ msgstr ""
 msgid "Save Settings"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:549
+#: themes/foodiepro-2.1.8/functions.php:550
 msgid "Goûtu.org - La Communauté des Gourmets"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:588
+#: themes/foodiepro-2.1.8/functions.php:589
 #, php-format
 msgid "<strong>ERROR</strong>: User pending <a href=\"%s\">approval</a>."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:602
+#: themes/foodiepro-2.1.8/functions.php:603
 msgid "author"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:819
+#: themes/foodiepro-2.1.8/functions.php:820
 msgid "Read More"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:852
+#: themes/foodiepro-2.1.8/functions.php:853
 msgid "Comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:861
+#: themes/foodiepro-2.1.8/functions.php:862
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:202
 msgid "Previous comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:867
+#: themes/foodiepro-2.1.8/functions.php:868
 msgid "Next comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:885
+#: themes/foodiepro-2.1.8/functions.php:886
 msgid "Your answer here"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:900
+#: themes/foodiepro-2.1.8/functions.php:901
 msgid "All rights reserved"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:900
+#: themes/foodiepro-2.1.8/functions.php:901
 msgid "Contact us"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:900
+#: themes/foodiepro-2.1.8/functions.php:901
 msgid "Legal notice"
 msgstr ""
 

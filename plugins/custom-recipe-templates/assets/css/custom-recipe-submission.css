@@ -25,8 +25,10 @@ ul.wpurp-user-submissions-current-user-edit {
   font-family: Oswald, sans-serif;
 }
 
+.ingredient-field-header td ,
 #wpurp_user_submission_form span.header,
-#wpurp_user_submission_form label {
+#wpurp_user_submission_form label,
+#wpurp_user_submission_form h4 {
   font-family: Oswald, sans-serif;
   font-weight: 400;
   color: #616161;
@@ -36,7 +38,6 @@ ul.wpurp-user-submissions-current-user-edit {
 #wpurp_user_submission_form label.recipe-image,
 #wpurp_user_submission_form label.recipe-title,
 #wpurp_user_submission_form h4 {
-  font-family: Oswald, sans-serif;
 	font-size: 25px;
 	font-variant: small-caps;
 }
@@ -73,7 +74,6 @@ span.wpurp-required {
 }
 
 /* Headlines */
-
 #wpurp_user_submission_form h4 {
   float: left;
   clear: both;

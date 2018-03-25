@@ -348,6 +348,7 @@ function foodie_pro_enqueue_js() {
 	$js_path = CHILD_THEME_PATH . '/assets/js/';
 	// Add general purpose scripts.
 	custom_enqueue_script( 'foodie-pro-general', $js_uri, $js_path, 'general.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
+	custom_enqueue_script( 'custom-js-helpers', $js_uri, $js_path, 'custom_helpers.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
 	// .webp detection
 	custom_enqueue_script( 'modernizr', $js_uri, $js_path, 'modernizr-custom.js', array(), CHILD_THEME_VERSION );
 }
@@ -608,7 +609,7 @@ function custom_author_base() {
 /* =================================================================*/
 
 //* Positions the content below the header
-add_action('wp_head','add_content_padding_js');
+// add_action('wp_head','add_content_padding_js');
 function add_content_padding_js(){
 ?>
 <script>

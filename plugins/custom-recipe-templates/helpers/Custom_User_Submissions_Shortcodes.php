@@ -1,6 +1,6 @@
 <?php
 
-class Custom_User_Submissions extends WPURP_Premium_Addon {
+class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
 
     const RECIPES_PUBLISH_SLUG = 'publier-recettes';
     const RECIPE_NEW_SLUG = 'nouvelle-recette';
@@ -13,14 +13,14 @@ class Custom_User_Submissions extends WPURP_Premium_Addon {
         
         self::$_PluginDir = plugin_dir_path( dirname( __FILE__ ) );
 
-        add_action( 'init', array( $this, 'assets' ) );
+        // add_action( 'init', array( $this, 'assets' ) );
         // add_action( 'wp_enqueue_scripts', array( $this, 'scripts_for_image_upload' ), -10 );
         // add_action( 'init', array( $this, 'allow_logged_in_uploads' ) );
 
-        add_action( 'wp_ajax_query-attachments', array( $this, 'ajax_restrict_media' ), 1 );
-        add_action( 'wp_ajax_nopriv_query-attachments', array( $this, 'ajax_restrict_media' ), 1 );
-        add_action( 'wp_ajax_user_submissions_delete_recipe', array( $this, 'ajax_user_submissions_delete_recipe' ) );
-        add_action( 'wp_ajax_nopriv_user_submissions_delete_recipe', array( $this, 'ajax_user_submissions_delete_recipe' ) );
+        // add_action( 'wp_ajax_query-attachments', array( $this, 'ajax_restrict_media' ), 1 );
+        // add_action( 'wp_ajax_nopriv_query-attachments', array( $this, 'ajax_restrict_media' ), 1 );
+        // add_action( 'wp_ajax_user_submissions_delete_recipe', array( $this, 'ajax_user_submissions_delete_recipe' ) );
+        // add_action( 'wp_ajax_nopriv_user_submissions_delete_recipe', array( $this, 'ajax_user_submissions_delete_recipe' ) );
 
         // Ajax uploader
         add_action( 'afu_after_upload_done', array( $this, 'update_recipe_fields' ) );
@@ -30,54 +30,37 @@ class Custom_User_Submissions extends WPURP_Premium_Addon {
         add_shortcode( 'custom-recipe-submissions-current-user-edit', array( $this, 'submissions_current_user_edit_shortcode' ) );
     }
 
-    public function assets() {
-        WPUltimateRecipe::get()->helper( 'assets' )->add(
-            array(
-                'file' => $this->addonPath . '/css/public.css',
-                'premium' => true,
-                'public' => true,
-                'shortcode' => array( 'wpurp_submissions', 'ultimate-recipe-submissions' ),
-                //'setting' => array( 'user_submission_css', '1' ),
-            ),
-            array(
-                'file' => $this->addonPath . '/css/public_base.css',
-                'premium' => true,
-                'public' => true,
-                'shortcode' => array( 'wpurp_submissions', 'ultimate-recipe-submissions' ),
-            ),
-            array(
-                'file' => '/js/recipe_form.js',
-                'public' => true,
-                'shortcode' => array( 'wpurp_submissions', 'ultimate-recipe-submissions' ),
-                'deps' => array(
-                    'jquery',
-                    'jquery-ui-sortable',
-                    'suggest',
-                ),
-                'data' => array(
-                    'name' => 'wpurp_recipe_form',
-                    'coreUrl' => WPUltimateRecipe::get()->coreUrl,
-                )
-            ),
-            array(
-                'name' => 'user-submissions',
-                'file' => $this->addonPath . '/js/user-submissions.js',
-                'premium' => true,
-                'public' => true,
-                'shortcode' => 'ultimate-recipe-submissions',
-                'deps' => array(
-                    'jquery',
-                    'select2wpurp',
-                ),
-                'data' => array(
-                    'name' => 'wpurp_user_submissions',
-                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
-                    'nonce' => wp_create_nonce( 'wpurp_user_submissions' ),
-                    'confirm_message' => __( 'Are you sure you want to delete this recipe:', 'foodiepro' ),
-                )
-            )
-        );
-    }
+    // public function assets() {
+    //     WPUltimateRecipe::get()->helper( 'assets' )->add(
+    //         array(
+    //             'file' => $this->addonPath . '/css/public.css',
+    //             'premium' => true,
+    //             'public' => true,
+    //             'shortcode' => array( 'wpurp_submissions', 'ultimate-recipe-submissions' ),
+    //             //'setting' => array( 'user_submission_css', '1' ),
+    //         ),
+    //         array(
+    //             'file' => $this->addonPath . '/css/public_base.css',
+    //             'premium' => true,
+    //             'public' => true,
+    //             'shortcode' => array( 'wpurp_submissions', 'ultimate-recipe-submissions' ),
+    //         ),
+    //         array(
+    //             'file' => '/js/recipe_form.js',
+    //             'public' => true,
+    //             'shortcode' => array( 'wpurp_submissions', 'ultimate-recipe-submissions' ),
+    //             'deps' => array(
+    //                 'jquery',
+    //                 'jquery-ui-sortable',
+    //                 'suggest',
+    //             ),
+    //             'data' => array(
+    //                 'name' => 'wpurp_recipe_form',
+    //                 'coreUrl' => WPUltimateRecipe::get()->coreUrl,
+    //             )
+    //         )
+    //     );
+    // }
 
     // public function allow_logged_in_uploads() {
     //     if( is_user_logged_in() && !current_user_can('upload_files') && WPUltimateRecipe::option( 'user_submission_enable', 'guests' ) != 'off' && WPUltimateRecipe::option( 'user_submission_use_media_manager', '1' ) == '1' ) {
@@ -100,12 +83,12 @@ class Custom_User_Submissions extends WPURP_Premium_Addon {
     //     }
     // }
 
-    public function ajax_restrict_media()
-    {
-        if( WPUltimateRecipe::option( 'user_submission_restrict_media_access', '1' ) == '1' && !current_user_can( 'edit_others_posts' ) ) {
-            exit;
-        }
-    }
+    // public function ajax_restrict_media()
+    // {
+    //     if( WPUltimateRecipe::option( 'user_submission_restrict_media_access', '1' ) == '1' && !current_user_can( 'edit_others_posts' ) ) {
+    //         exit;
+    //     }
+    // }
 
     public function submissions_shortcode() {
         if( !is_user_logged_in() ) {

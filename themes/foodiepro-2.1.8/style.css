@@ -626,13 +626,13 @@ body #register-page {
 h1 {
 	font-family: "Amatic SC";	
 	font-size: 60px;
-  font-weight: bold;	
+	font-weight: bold;	
 }
 
 h2 {
 	font-family: "Amatic SC";	
-  font-size: 30px;
-  font-weight: bold;
+	font-size: 30px;
+	font-weight: bold;
 }
 
 h3 {
@@ -691,6 +691,7 @@ a.comment-reply-link,
 }
 
 span.bp_counter,
+.search-form input, 
 .author-box-title {
 	font-family:"Vollkorn","Helvetica Neue",sans-serif;
 }
@@ -746,7 +747,6 @@ h2.user-nicename {
 }
 
 /* Recipes & ingredients */
-
 .single h3 {
   font-size: 30px;
 	font-weight: bold;  
@@ -1439,6 +1439,13 @@ nav.nav-secondary {
 	font-family: Oswald, sans-serif!important;
 	font-size: 16px!important;
 	text-align:center!important;
+}
+
+#mega-menu-wrap-secondary #mega-menu-secondary > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item a.mega-menu-link:hover, 
+#mega-menu-wrap-secondary #mega-menu-secondary > li.mega-menu-flyout ul.mega-sub-menu li.mega-menu-item a.mega-menu-link:focus {
+    /*background: #ab8f7e!important;*/
+    background: #FFF!important;
+    color: #ab8f7e!important;
 }
 
 #mega-menu-wrap-secondary #mega-menu-secondary > li.mega-menu-item.mega-plate > a.mega-menu-link:hover {
@@ -3280,15 +3287,39 @@ Site Header
 	text-indent:-9999px;
 }
 
+.home-page .header-widget-area {
+	width:400px; 
+	height: 400px;
+    -webkit-transition: height 0.2s ease-in-out; /* Safari */
+    transition: height 0.2s ease-in-out;    	
+}
+
+.home-page .nav-up .header-widget-area { 
+	height: 200px;
+}
+
+
 .home-page .title-area,
 .home-page .site-title,
 .home-page .site-title a {
-	/*width:530px; 
-	height:230px;*/
+	/*width:360px; */
+	/*height:200px;*/
+	width:500px; 
+	height: 400px;
+	padding: 0 20px;
+    background-size: contain!important;	
+    -webkit-transition: height 0.2s ease-in-out; /* Safari */
+    transition: height 0.2s ease-in-out;    
+}
+
+.home-page .nav-up .title-area,
+.home-page .nav-up .site-title,
+.home-page .nav-up .site-title a {
 	width:360px; 
-	/*height:150px;*/
 	height:200px;
 }
+
+
 
 /* Added P.O. Vertical centering and header height */
 .title-area {
@@ -3381,8 +3412,13 @@ nav.nav-primary .wrap {
 	float:right;
 	text-align:right;
 	margin:auto;
-	width:300px; /* P.O. Original 720px */
+	width:400px; /* P.O. Original 720px */
 	/*height:130px;  P.O. Original empty */
+	display:-webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display:-moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display:-ms-flexbox;      /* TWEENER - IE 10 */
+	display:-webkit-flex;  	
+	display: flex;
 }
 
 .header-image .site-header .widget-area {
@@ -3392,25 +3428,24 @@ nav.nav-primary .wrap {
 .site-header .widget_search {
 	width:100%;
 	padding-right:20px;
-	/*margin-top:24px;*/
+	padding-top: 24px;
+	margin:auto;
 }
 
 .home .site-header .widget_search {
-	margin-top:40px;
+	padding-top: 0;
 }
 
 .search-form input {
-	font-size:12px;
+	font-size:13px;
 	border-radius:10px;
-	border-width:2px;
-	border-color:##ddc3a3;
-	/*border-color:#9c9b9b;*/
+	height: 50px;
 }
 
 /* Last registered widget */
 .avatar-block {
-  float: left;
-  width: 100%;
+	float: left;
+	width: 100%;
 	text-align: center;  
 }
 

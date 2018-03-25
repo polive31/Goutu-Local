@@ -5,12 +5,31 @@ if( !isset( $required_fields ) ) $required_fields = array();
 ?>
 
 <script>
-    function autoSuggestTag(id, type) {
-        <?php if( WPUltimateRecipe::option( 'disable_ingredient_autocomplete', '' ) !== '1' ) { ?>
-        console.log('ingredient autocomplete active');
-        jQuery('#' + id).suggest("<?php echo get_bloginfo( 'wpurl' ); ?>/wp-admin/admin-ajax.php?action=ajax-tag-search&tax=" + type);
-        <?php } ?>
-    }
+    // function autoSuggestTag(id, type) {
+    //     <?php if( WPUltimateRecipe::option( 'disable_ingredient_autocomplete', '' ) !== '1' ) { ?>
+    //     console.log('ingredient autocomplete active');
+    //     jQuery('#' + id).suggest("<?php echo get_bloginfo( 'wpurl' ); ?>/wp-admin/admin-ajax.php?action=ajax-tag-search&tax=" + type);
+    //     <?php } ?>
+    // }
+
+    jQuery(document).ready(function() {
+        
+        jQuery(".recipe-instructions-container").on("change", "input.recipe_instructions_image", function() { 
+            var changedSelectId = jQuery(this).attr("id");
+            var Id = changedSelectId.match(/\d+/);
+            // console.log( "Changement sur l'input..." + Id );
+            PreviewImage(Id);
+        });
+
+    });
+
+    function PreviewImage(id="") {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("recipe_thumbnail_input_" + id).files[0]);
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("instruction_thumbnail_preview_" + id ).src = oFREvent.target.result;
+        };
+    };
 </script>
 <input type="hidden" name="recipe_meta_box_nonce" value="<?php echo wp_create_nonce( 'recipe' ); ?>" />
 <div class="recipe-general-container">
@@ -28,7 +47,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
         <tr class="recipe-general-form-alternate-image">
             <td class="recipe-general-form-label"><label for="recipe_alternate_image"><?php _e( 'Image', 'foodiepro' ); ?></label></td>
             <td class="recipe-general-form-field">
-                <input type="hidden" name="recipe_alternate_image" id="recipe_alternate_image"  value="<?php echo $recipe->alternate_image(); ?>" />
+                <input type="hidden" name="recipe_alternate_image" id="recipe_alternate_image" value="<?php echo $recipe->alternate_image(); ?>" />
                 <input class="recipe_alternate_image_add button <?php if( $recipe->alternate_image() ) { echo ' wpurp-hide'; } ?>" rel="<?php echo $recipe->ID(); ?>" type="button" value="<?php _e( 'Add Alternate Image', 'foodiepro' ); ?>" />
                 <input class="recipe_alternate_image_remove button<?php if( !$recipe->alternate_image() ) { echo ' wpurp-hide'; } ?>" type="button" value="<?php _e('Remove Alternate Image', 'foodiepro' ); ?>" />
 
@@ -162,9 +181,9 @@ if( !isset( $required_fields ) ) $required_fields = array();
                     <!-- Sort handle -->
                     <td class="sort-handle"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16"></td>
                     <!-- Quantity -->
-                    <td id="qty"><span class="mobile-display"><?php _e( 'Quantity', 'foodiepro' ); ?></span><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][amount]"     class="ingredients_amount" id="ingredients_amount_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['amount'] ); ?>" /></td>
+                    <td id="qty"><span class="mobile-display"><?php _e( 'Quantity', 'foodiepro' ); ?></span><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][amount]" class="ingredients_amount" id="ingredients_amount_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['amount'] ); ?>" /></td>
                     <!-- Unit -->
-                    <td id="unit"><span class="mobile-display"><?php _e( 'Unit', 'foodiepro' ); ?></span><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][unit]"       class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['unit'] ); ?>" /></td>
+                    <td id="unit"><span class="mobile-display"><?php _e( 'Unit', 'foodiepro' ); ?></span><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][unit]" class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['unit'] ); ?>" /></td>
                     <!-- Name -->
                     <td id="name"><span class="mobile-display"><?php _e( 'Ingredients', 'foodiepro' ); ?></span><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onfocus="autoSuggestTag('ingredients_<?php echo $i; ?>', 'ingredient');" value="<?php echo esc_attr( $ingredient['ingredient'] ); ?>" /></td>
                     <!-- Notes -->
@@ -254,18 +273,6 @@ if( !isset( $required_fields ) ) $required_fields = array();
 
     if( $instructions ) {
 
-        ?>
-<!--         <script>
-            jQuery(document).ready(function() {
-                window.addEventListener( "afu_file_uploaded", function(e){
-                    if( "undefined" !== typeof e.data.response.media_uri ) {
-                        console.log( e.data.response.media_uri ); // the uploaded media URL
-                    }
-                }, false);
-            });
-        </script> -->
-        <?php
-
         foreach( $instructions as $instruction ) {
             if( !isset( $instruction['group'] ) ) {
                 $instruction['group'] = '';
@@ -299,7 +306,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
             }
             else {
                 // $image = WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
-                $image='';
+                $image = WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
                 $has_image = false;
                 //echo '<pre>' . "Has image = false" . '</pre>';
             }
@@ -311,30 +318,26 @@ if( !isset( $required_fields ) ) $required_fields = array();
                 <td>
                     <div class="instruction-text">
                         <textarea name="recipe_instructions[<?php echo $i; ?>][description]" rows="4" id="ingredient_description_<?php echo $i; ?>"><?php echo $instruction['description']; ?></textarea>
-                        <input type="hidden" name="recipe_instructions[<?php echo $i; ?>][group]"    class="instructions_group" id="instruction_group_<?php echo $i; ?>" value="<?php echo esc_attr( $instruction['group'] ); ?>" />
+                        <input type="hidden" name="recipe_instructions[<?php echo $i; ?>][group]" class="instructions_group" id="instruction_group_<?php echo $i; ?>" value="<?php echo esc_attr( $instruction['group'] ); ?>" />
                     </div>
 
                     <div class="instruction-buttons">
-                        <?php
-                        $args = array(
-                            "unique_identifier" => "recipe_thumbnail_{$i}",
-                            "allowed_extensions" => "jpg, png, bmp, gif",
-                            "set_image_source" => "#recipe_thumbnail_container_{$i} img",
-                            "on_success_set_input_value" => "#recipe_thumbnail_input_{$i}",
-                            // "on_success_alert" => __("Image upload success", "foodiepro")
-                        );
-                        echo ajax_file_upload( $args );
-                        ?>                            
+                        <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail_input_<?php echo $i; ?>" value="" size="50" name="recipe_thumbnail_<?php echo $i; ?>" />
                     </div>
-                 </td>   
-
-                 <td>   
-                    <div class="instruction-image" id="recipe_thumbnail_container_<?php echo $i; ?>">
-                        <!-- <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail_<?php echo $i; ?>" />   -->  
-                        <!-- Instruction image display -->
-                        <img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
-                         <!--Add type="hidden" -->
-                        <input id="recipe_thumbnail_input_<?php echo $i ;?>" type="hidden" value="<?php echo $instruction['image']; ?>" name="recipe_instructions[<?php echo $i; ?>][image]" /><br/>             
+                </td>
+                <td>
+                    <div class="instruction-image">
+                    <?php if ( isset( $wpurp_user_submission ) && ( !current_user_can( 'upload_files' ) || WPUltimateRecipe::option( 'user_submission_use_media_manager', '1' ) != '1' ) ) { ?>
+                        <img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" id="instruction_thumbnail_preview_<?php echo $i; ?>" />
+                        <?php if( $has_image ) { ?>
+                        <input type="hidden" value="<?php echo $instruction['image']; ?>" name="recipe_instructions[<?php echo $i; ?>][image]" /><br/>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <input name="recipe_instructions[<?php echo $i; ?>][image]" class="recipe_instructions_image" type="hidden" value="<?php echo $instruction['image']; ?>" />
+                        <input class="recipe_instructions_add_image button<?php if($has_image) { echo ' wpurp-hide'; } ?>" rel="<?php echo $recipe->ID(); ?>" type="button" value="<?php _e( 'Add Image', 'wp-ultimate-recipe' ) ?>" />
+                        <input class="recipe_instructions_remove_image button<?php if(!$has_image) { echo ' wpurp-hide'; } ?>" type="button" value="<?php _e( 'Remove Image', 'wp-ultimate-recipe' ) ?>" />
+                        <br /><img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
+                    <?php } ?>           
                     </div>
                 </td>
 
@@ -360,26 +363,19 @@ if( !isset( $required_fields ) ) $required_fields = array();
                     </div>
 
                     <div class="instruction-buttons">
-                        <?php
-                        $args = array(
-                            "unique_identifier" => "recipe_thumbnail_{$i}",
-                            "allowed_extensions" => "jpg, png, bmp, gif",
-                            "set_image_source" => "#recipe_thumbnail_container_{$i} img",
-                            "on_success_set_input_value" => "#recipe_thumbnail_input_{$i}",
-                            // "on_success_alert" => __("Image upload success", "foodiepro")
-                        );
-                        echo ajax_file_upload( $args );
-                        ?>                            
+                        <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail_input_<?php echo $i; ?>" value="" size="50" name="recipe_thumbnail_<?php echo $i; ?>" />
                     </div>
                 </td>
-
-                <td>
-                    <div class="instruction-image" id="recipe_thumbnail_container_<?php echo $i; ?>">
-                    
-                        <!-- <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail" value="" size="50" name="recipe_thumbnail_<?php echo $i; ?>" /> -->
-                        <img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail"/>
-                        <!-- <?php _e( 'Instruction Step Image', 'wp-ultimate-recipe' ); ?>:<br/> -->
-                        <input id="recipe_thumbnail_input_<?php echo $i ;?>" value="" type="hidden" name="recipe_instructions[<?php echo $i; ?>][image]" /><br/>
+                <td>                    
+                    <div class="instruction-image">
+                    <?php if ( isset( $wpurp_user_submission ) && ( !current_user_can( 'upload_files' ) || WPUltimateRecipe::option( 'user_submission_use_media_manager', '1' ) != '1' ) ) { ?>
+                        <img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" id="instruction_thumbnail_preview_<?php echo $i; ?>" />
+                    <?php } else { ?>
+                        <input name="recipe_instructions[<?php echo $i; ?>][image]" class="recipe_instructions_image" type="hidden" value="" />
+                        <input class="recipe_instructions_add_image button" rel="<?php echo $recipe->ID(); ?>" type="button" value="<?php _e('Add Image', 'wp-ultimate-recipe' ) ?>" />
+                        <input class="recipe_instructions_remove_image button wpurp-hide" type="button" value="<?php _e( 'Remove Image', 'wp-ultimate-recipe' ) ?>" />
+                        <img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
+                    <?php } ?>
                      </div>
                 </td>
                 <td class="delete-button" colspan="1"><span class="instructions-delete">&nbsp;</span></td>

@@ -11,14 +11,19 @@ class Custom_WPURP_Templates {
 	const RECIPE_NEW_SLUG = 'nouvelle-recette';
 	const RECIPE_EDIT_SLUG = 'modifier-recette';
 	protected static $_PluginPath;	
+	protected static $_PluginUri;	
 	protected $logged_in;
 	protected $custom_enqueued_scripts = array();
 	
 	public function __construct() {
 	
-		self::$_PluginPath = plugin_dir_url( dirname( __FILE__ ) );
+		self::$_PluginUri = plugin_dir_url( dirname( __FILE__ ) );
+		self::$_PluginPath = plugin_dir_path( dirname( __FILE__ ) );
 		
 		add_action( 'init', array($this, 'hydrate'));
+
+		// Full width on user submission pages
+		add_action( 'get_header', 'set_full_layout' );
 		
 		/* Load javascript styles */
 		add_filter ( 'wpurp_assets_js', array($this,'enqueue_wpurp_js'), 15, 1 );
@@ -69,6 +74,13 @@ class Custom_WPURP_Templates {
 		return '';
 	}
 	
+// Full width layout on user submission pages
+	public function set_full_layout() {
+		if ( is_page( [self::RECIPE_NEW_SLUG, self::RECIPE_EDIT_SLUG] ) ) 
+			add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+	}
+
+
 	
 /* Custom Enqueue CSS */	
 	public function enqueue_wpurp_css($css_enqueue) {
@@ -81,7 +93,7 @@ class Custom_WPURP_Templates {
 		if ( is_singular('recipe') ) {
 		  	$css_enqueue=array(
 					array(
-						'url' => self::$_PluginPath . 'assets/css/custom-recipe.css',
+						'url' => self::$_PluginUri . 'assets/css/custom-recipe.css',
 						'public' => true,
 					),
 					// array(
@@ -98,7 +110,7 @@ class Custom_WPURP_Templates {
 		  $css_enqueue=array(
 							array(
 						'name' => 'custom-menu-styles',		
-		              'url' => self::$_PluginPath . 'assets/css/custom-menu.css',
+		              'url' => self::$_PluginUri . 'assets/css/custom-menu.css',
 		              'public' => true,
 		          ),
 			);		
@@ -125,7 +137,7 @@ class Custom_WPURP_Templates {
 //		          ); 			
 		  $css_enqueue[]=
 							array(
-		              'url' => self::$_PluginPath . 'assets/css/custom-recipe-submission.css',
+		              'url' => self::$_PluginUri . 'assets/css/custom-recipe-submission.css',
 		              'dir' => self::$_PluginPath . 'assets/css/custom-recipe-submission.css',
 		              'public' => true,
 		              'direct' => true,
@@ -149,15 +161,15 @@ class Custom_WPURP_Templates {
 				$js_enqueue=array();		
 				$min_js=self::$_PluginPath . 'assets/js/custom-recipe-tools.min.js';
 				
-				if ( file_exists( $min_js ) ) {
-					$js_enqueue[] = array(
-			            'name' => 'custom-recipe-tools-minified',
-			            'url' => $min_js,
-			            'public' => true,
-			            'admin' => true,					
-					);
-				}
-				else {
+				// if ( file_exists( $min_js ) ) {
+				// 	$js_enqueue[] = array(
+			 //            'name' => 'custom-recipe-tools-minified',
+			 //            'url' => $min_js,
+			 //            'public' => true,
+			 //            'admin' => true,					
+				// 	);
+				// }
+				// else {
 					
 					$pause = '<i class="fa fa-pause" aria-hidden="true"></i>';
 					$play = '<i class="fa fa-play" aria-hidden="true"></i>';
@@ -254,44 +266,39 @@ class Custom_WPURP_Templates {
 			                )
 			            ),		            
 		    		);	
-				}
+				// }
 			}
 			
 			// elseif ( is_page( [self::RECIPES_PUBLISH_SLUG, self::RECIPE_NEW_SLUG, self::RECIPE_EDIT_SLUG] ) ) {
 			elseif ( is_page( [self::RECIPE_NEW_SLUG, self::RECIPE_EDIT_SLUG] ) ) {
-				$js_enqueue = $this->remove_entry($js_enqueue, 'name', 'select2wpurp');
+				// $js_enqueue = $this->remove_entry($js_enqueue, 'name', 'select2wpurp');
 				$js_enqueue = $this->remove_entry($js_enqueue, 'name', 'user-submissions');
+				$js_enqueue = $this->remove_entry($js_enqueue, 'file', '/js/recipe_form.js');
+				$js_enqueue = $this->remove_entry($js_enqueue, 'name', 'wpurp-user-menus');
+
+				// echo '<pre>' . print_r($js_enqueue) . '</pre>';
+
+				// $js_enqueue = $js_enqueue;
 
 				$this->custom_enqueued_scripts = array(
-					array(
-						'name' => 'select2wpurp',
-						'uri' => WPUltimateRecipe::get()->coreUrl . '/vendor/select2/',
-						'path' => WPUltimateRecipe::get()->corePath . '/vendor/select2/',
-						'file' => 'select2.min.js',
-						'footer' => false,
-						'deps' => array(
-							'jquery',
-						),
-					),
-	            	array(
-		                'name' => 'user-submissions',
-		                'uri' => WPUltimateRecipePremium::get()->premiumUrl . '/addons/user-submissions/js/',
-		                'path' => WPUltimateRecipePremium::get()->premiumPath . '/addons/user-submissions/js/',
-		                'file' => 'user-submissions.js',
+		            array(
+		                'name' => 'custom-user-submissions',
+		                'uri' => self::$_PluginUri . 'assets/js/',
+		                'path' => self::$_PluginPath . 'assets/js/',
+		                'file' => 'custom_user_submission.js',
 		                'deps' => array(
 		                    'jquery',
 		                    'select2wpurp',
 		                ),
-		                'footer' => false,
+		                'footer' => true,
 		                'data' => array(
-		                    'name' => 'wpurp_user_submissions',
+		                    'name' => 'custom_user_submissions',
 		                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
-		                    'nonce' => wp_create_nonce( 'wpurp_user_submissions' ),
+		                    'nonce' => wp_create_nonce( 'custom_user_submissions' ),
 		                    'confirm_message' => __( 'Are you sure you want to delete this recipe:', 'foodiepro' ),
 		                )
-	           		)					
+		           	)					
             	);            	
-				$js_enqueue=$js_enqueue;
 			}
 			
 			else {
@@ -301,8 +308,8 @@ class Custom_WPURP_Templates {
 		return $js_enqueue;
 	}
 
-	public function remove_entry( &$array, $field, $value) {
-		if (!isset( $array )) return;
+	public function remove_entry( $array, $field, $value) {
+		if (!isset( $array )) return false;
 		foreach ($array as $key=>$item) {
 			if ( isset( $item[ $field ] ) )
 				if ( $item[ $field ] == $value) 
@@ -310,6 +317,8 @@ class Custom_WPURP_Templates {
 		}
 		if ( isset($key) ) 
 			unset($array[ $key ]);
+
+		return $array;
 	}
 
 	public function custom_wpurp_scripts_enqueue() {

@@ -331,36 +331,18 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
                 update_post_meta( $post_id, '_thumbnail_id', $_POST['recipe_thumbnail'] );
             }
 
-            // Add all instruction images
-            $instructions = $_POST['recipe_instructions'];
-            foreach ($instructions as $number=>$instruction ) {
-                // If a thumbnail is present, then update the image field containing the attachment id
-                if ( $instruction['thumbnail'] != '' ) {
-                    $attach_id = $this->afu_attachment_insert( $number, $instruction['thumbnail'], $post_id, false ); 
-                    $instructions[$number]['image'] = $attach_id;
-                    // unset($instruction['thumbnail']);
+            // Add all images from basic uploader
+            if( $_FILES ) {
+                foreach( $_FILES as $key => $file ) {
+                    if ( 'recipe_thumbnail' == $key ) {
+                        if( $file['name'] != '' ) {
+                            $this->insert_attachment_basic( $key, $post_id, true );
+                        }
+                    } else {
+                        $this->insert_attachment_basic( $key, $post_id, false );
+                    }
                 }
-                // Otherwise, let the image field as it is (empty or not)
             }
-            //update_post_meta( $post_id, 'recipe_instructions', $instructions );
-            $_POST['recipe_instructions'] = $instructions;
-            //$instructions = get_post_meta( $post_id, 'recipe_instructions', true );
-
-
-            // if( $_FILES ) {
-            //     foreach( $_FILES as $key => $file ) {
-            //         if ( 'recipe_thumbnail' == $key ) {
-            //             if( $file['name'] != '' ) {
-            //                 $this->insert_attachment_basic( $key, $post_id, true );
-            //             }
-            //         } else {
-            //             $this->afu_attachment_insert( $key, $post_id, false );
-            //         }
-            //     }
-            // }
-
-
-
 
             // Check required fields
             $errors = array();
@@ -470,7 +452,6 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
         return '<p class="successbox">' . $successmsg . '</p>';
     }
 
-
     public function insert_attachment_basic( $file_handler, $post_id, $setthumb = false ) {
         if ( $_FILES[$file_handler]['error'] !== UPLOAD_ERR_OK ) {
             return;
@@ -480,14 +461,11 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
         require_once( ABSPATH . 'wp-admin/includes/file.php' );
         require_once( ABSPATH . 'wp-admin/includes/media.php' );
 
-        
-        if( true == $setthumb ) { // Thumbnail image
-            $attach_id = media_handle_upload( $file_handler, $post_id );
-            update_post_meta( $post_id, '_thumbnail_id', $attach_id );
-        } 
-        else { // Instructions image
+        $attach_id = media_handle_upload( $file_handler, $post_id );
 
-            $attach_id = $this->afu_attachment_insert( $file_handler, $post_id );
+        if( true == $setthumb ) { // Thumbnail image
+            update_post_meta( $post_id, '_thumbnail_id', $attach_id );
+        } else { // Instructions image
             $number = explode( '_', $file_handler );
             $number = $number[2];
             $instructions = get_post_meta( $post_id, 'recipe_instructions', true );
@@ -498,55 +476,6 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
 
         return $attach_id;
     }
-
-
-    public function afu_attachment_insert( $id, $url, $post_id ) {
-
-        require_once( ABSPATH . 'wp-admin/includes/image.php' );
-        require_once( ABSPATH . 'wp-admin/includes/file.php' );
-        require_once( ABSPATH . 'wp-admin/includes/media.php' );
-
-        $name = pathinfo( $url, PATHINFO_FILENAME );
-        $type = 'image/';
-        $file = self::$_UploadPath . $name;
-        $title = sanitize_text_field( $name );
-        $content = '';
-        $excerpt = '';
-
-        if ( wp_read_image_metadata( $file ) ) {
-            $image_meta = wp_read_image_metadata( $file );
-            if ( trim( $image_meta['title'] ) && ! is_numeric( sanitize_title( $image_meta['title'] ) ) ) {
-                $title = $image_meta['title'];
-            }
-
-            if ( trim( $image_meta['caption'] ) ) {
-                $excerpt = $image_meta['caption'];
-            }
-        }
-
-        // Construct the attachment array
-        $post_data = array();
-        $attachment = array_merge( array(
-            'post_mime_type' => $type,
-            'guid' => $url,
-            'post_parent' => $post_id,
-            'post_title' => $title,
-            'post_content' => $content,
-            'post_excerpt' => $excerpt,
-        ), $post_data );
-
-        // This should never be set as it would then overwrite an existing attachment.
-        unset( $attachment['ID'] );
-
-        // Save the data
-        $id = wp_insert_attachment( $attachment, $file, $post_id, true );
-        if ( !is_wp_error($id) ) {
-            wp_update_attachment_metadata( $id, wp_generate_attachment_metadata( $id, $file ) );
-        }
-
-        return $id;
-
-    }    
 
     public function add_helper_buttons( $form, $recipe ) {
         

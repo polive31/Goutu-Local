@@ -85,7 +85,7 @@ span.wpurp-required {
 
 table#recipe-instructions .recipe_instructions_thumbnail, 
 .postbox img.recipe_thumbnail {
-	max-height: initial!important;
+	max-height: 100px;
 }
 
 /* Tags section */
@@ -250,8 +250,6 @@ select#recipe-occasion option {
   border: 1px solid #AAA;
 }
 
-
-
 #wpurp_user_submission_form input.recipe_instructions_image,
 #wpurp_user_submission_form input.recipe_thumbnail_image {
   /*background-color: #8e8e8e;*/
@@ -275,7 +273,7 @@ select#recipe-occasion option {
 
 #wpurp_user_submission_form .instruction-image {
   float: left;
-  width: 200px;
+  width: 150px;
   padding: 0 20px;
 }
 

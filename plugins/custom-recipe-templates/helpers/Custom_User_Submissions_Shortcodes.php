@@ -11,6 +11,8 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
 
     public function __construct( $name = 'user-submissions' ) {
         parent::__construct( $name );
+
+        $this->hydrate();
         
         self::$_PluginDir = plugin_dir_path( dirname( __FILE__ ) );
         $upload_dir = wp_upload_dir();
@@ -21,6 +23,11 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
         add_shortcode( 'custom-recipe-submissions-current-user-edit', array( $this, 'submissions_current_user_edit_shortcode' ) );
     }
 
+
+    public function hydrate() {
+        // $taxonomies = WPUltimateRecipe::get()->tags();
+        // insert rest of code => add 'multiselect' & value to each taxonomy 
+    }
 
     public function submissions_shortcode() {
         if( !is_user_logged_in() ) {
@@ -131,6 +138,13 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
 
             wp_verify_nonce( $_POST['submitrecipe'], 'recipe_submit' );
 
+
+            // If guest, interrupt execution
+            if( !is_user_logged_in() ) {
+                echo __('You must be logged-in to access this page.', 'foodiepro');
+                return;
+            }
+
             // Check if updating
             $updating = false;
 
@@ -157,28 +171,6 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
                 'post_status' => 'auto-draft',
             );
 
-            // If guest, use default author
-            if( !is_user_logged_in() ) {
-                $default_author = intval( WPUltimateRecipe::option( 'user_submission_default_user', '0' ) );
-
-                if( $default_author ) {
-                    $post['post_author'] = $default_author;
-                }
-            }
-
-            // Check ingredients
-            if( WPUltimateRecipe::option( 'user_submission_ingredient_list', '0' ) == '1' ) {
-                $ingredients = $_POST['recipe_ingredients'];
-                $correct_ingredients = array();
-
-                foreach( $ingredients as $ingredient ) {
-                    if( term_exists( $ingredient['ingredient'], 'ingredient' ) ) {
-                        $correct_ingredients[] = $ingredient;
-                    }
-                }
-
-                $_POST['recipe_ingredients'] = $correct_ingredients;
-            }
 
             // Save post
             if( $updating ) {
@@ -226,19 +218,6 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
 
                     wp_set_object_terms( $post_id, $terms, $taxonomy );
                 }
-            }
-
-            // If guest, add author name
-            if( !is_user_logged_in() ) {
-                if( $_POST['recipe-author'] != '' ) {
-                    $authorname = $_POST['recipe-author'];
-                } else {
-                    $authorname = __( 'Anonymous', 'foodiepro' );
-                }
-                update_post_meta( $post_id, 'recipe-author', $authorname );
-            } else {
-                // Prevent issue with required field
-                $_POST['recipe-author'] = 'OK';
             }
 
             // Add featured image from media uploader
@@ -344,7 +323,7 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
                 wp_update_post( $args );
 
                 // Success message
-                $successmsg = WPUltimateRecipe::option( 'user_submission_submitted_text', __( 'Recipe submitted! Thank you, your recipe is now awaiting moderation.', 'foodiepro' ) );
+                $successmsg = __( 'Recipe submitted! Thank you, your recipe is now awaiting moderation.', 'foodiepro' );
 
                 // Send notification email to administrator
                 if( WPUltimateRecipe::option('user_submission_email_admin', '0' ) == '1' ) {

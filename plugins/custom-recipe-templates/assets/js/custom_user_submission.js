@@ -1,6 +1,11 @@
 //TODO Refactor this asap.
 jQuery(document).ready(function() {
 
+    /* 
+     * Display taxonomy select fields
+     */
+    jQuery('.taxonomy-select-boxes').removeClass('nodisplay');
+
     /*
      * Add shortcode buttons
      */

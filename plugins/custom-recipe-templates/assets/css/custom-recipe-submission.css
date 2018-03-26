@@ -1,6 +1,10 @@
 /* Custom Recipe Submission 
 -------------------------------------------*/
 
+.nodisplay {
+    display: none;
+}
+
 /* Custom Recipe Submission Form
 -------------------------------------------*/
 #wpurp_user_submission_form {

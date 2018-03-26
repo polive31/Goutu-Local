@@ -43,7 +43,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                 <span class="recipe-general-form-notes"> <?php _e( '(leave blank to use post title)', 'foodiepro' ) ?></span>
             </td>
         </tr>
-        <?php if( WPUltimateRecipe::option( 'recipe_alternate_image', '1' ) == '1' ) { ?>
+<!--         <?php if( WPUltimateRecipe::option( 'recipe_alternate_image', '1' ) == '1' ) { ?>
         <tr class="recipe-general-form-alternate-image">
             <td class="recipe-general-form-label"><label for="recipe_alternate_image"><?php _e( 'Image', 'foodiepro' ); ?></label></td>
             <td class="recipe-general-form-field">
@@ -55,7 +55,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                 <span class="recipe-general-form-notes"> <?php _e( '(leave blank to use featured image)', 'foodiepro' ); ?></span>
             </td>
         </tr>
-        <?php } ?>
+        <?php } ?> -->
     <?php } ?>
         <tr class="recipe-general-form-description">
             <td class="recipe-general-form-label"><label for="recipe_description"><?php _e('Description', 'foodiepro' ); ?><?php if( in_array( 'recipe_description', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>

@@ -608,16 +608,13 @@ function custom_author_base() {
 /* =              LAYOUT      
 /* =================================================================*/
 
-//* Positions the content below the header
-// add_action('wp_head','add_content_padding_js');
-function add_content_padding_js(){
+//* Adds custom inline Javascript
+// add_action('wp_head','add_custom_js');
+function add_custom_js(){
 ?>
 <script>
 	jQuery(document).ready(function() {
-		var height = jQuery("header").height();
-		var htmlMargin = parseInt(jQuery("html").css("margin-top"));
-		topMargin = height - htmlMargin + 10;
-		jQuery(".site-container").css("margin-top", topMargin);
+		// place your code here
 	});
 </script>
 <?php

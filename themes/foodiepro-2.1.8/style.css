@@ -2899,7 +2899,8 @@ input#ug_photo {font-size: 14px; margin-top: 10px;}
 
 .home-top {
 	/*margin: 20px 0 0 0;*/
-	max-width:680px;
+	/*max-width:680px;*/
+	width:100%;
 }
 
 .home-bottom {
@@ -3298,7 +3299,6 @@ Site Header
 	height: 200px;
 }
 
-
 .home-page .title-area,
 .home-page .site-title,
 .home-page .site-title a {
@@ -3317,6 +3317,7 @@ Site Header
 .home-page .nav-up .site-title a {
 	width:360px; 
 	height:200px;
+	margin: 0;
 }
 
 
@@ -3327,7 +3328,7 @@ Site Header
 }
 
 .home-page .title-area {
-  margin:10px 0;
+  /*margin:10px 0;*/
 }
 
 .title-area h1 {

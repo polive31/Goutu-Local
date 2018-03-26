@@ -69,6 +69,7 @@ function display_menu_entry($atts) {
 
 function bp_author_shortcode( $atts ) {
 		$a = shortcode_atts( array(
+    	'profile' => 'true', // adds link towards profile page
     	'type' => 'pseudo', // id, pseudo, name
 		), $atts );
 		

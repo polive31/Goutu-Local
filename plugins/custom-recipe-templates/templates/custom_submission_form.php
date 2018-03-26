@@ -37,7 +37,7 @@
         </div>
         <div class="recipe-tags-container">
 						<p><label class="recipe-tags"><?php _e( 'Recipe Tags', 'foodiepro' ) ?></label></p>
-            <p class="taxonomy-select-boxes">
+            <p class="taxonomy-select-boxes nodisplay">
 <?php
         $select_fields = array();
         $multiselect = WPUltimateRecipe::option( 'recipe_tags_user_submissions_multiselect', '1' ) == '1' ? true : false;

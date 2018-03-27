@@ -11,158 +11,97 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class CustomArchiveHeadline extends CustomArchive {
-	
-	private static $head_style=array(
-		'begin'=>'<h1 class="archive-title">',
-		'end'=>'</h1>');
-
-	private static $intro_style=array(
-		'begin'=>'<div class="archive-description taxonomy-archive-description taxonomy-description">',
-		'end'=>'</div>');
-		
-	private $query='';
-	
 
 	public function __construct() {
 		parent::__construct();
-		add_action( 'wp_head', array($this,'init') ); /* Get queried object */
-		add_action( 'genesis_before_content', array($this,'genesis_remove_default_archive_headline') );
-			
-		/* Add customized page title and description 
-	 	------------------------------------------------------------*/
-		add_action( 'genesis_before_content', array($this,'custom_archive_title' ));
-		add_action( 'genesis_before_content', array($this,'custom_archive_description' ));
-		add_filter( 'genesis_term_intro_text_output', 'wpautop' );	
-		
-		/* WPURP Detailed search : customized page title and description 
- 		------------------------------------------------------------*/
+		// Title text
 		add_filter( 'genesis_search_title_text', array($this,'custom_search_title_text') );
-		
+		add_filter( 'genesis_archive_title_text', array($this,'custom_archive_title') );
+		// Intro text
+		add_filter( 'genesis_term_intro_text_output', 'wpautop' );	
+		add_filter( 'genesis_archive_description_text', array($this,'custom_archive_description') );
+		// Shortcode
+		add_shortcode('seo-friendly-title', array($this,'get_friendly_title')); 
 	}
 
-	public function init() {
-		if ( is_archive() ) {
-			$this->query = get_queried_object();
-		}
-	}
-	
-	public function custom_search_title_text() {	
+	public function custom_search_title_text( $title ) {	
 		$url = $_SERVER["REQUEST_URI"];
 		$WPURP_search = strpos($url, 'wpurp-search');
 
-		if ($WPURP_search!==false)
-			$html = __('Detailed Search Results', 'foodiepro');
+		if ( $WPURP_search!==false )
+			return __('Detailed Search Results', 'foodiepro');
 		else 
-			$html = __('Search Results for:', 'foodiepro');
-
-	  return $html;
-	}
-	
-	public function genesis_remove_default_archive_headline() {
-		
-		//$this->dbg('In Genesis Custom Archive function !','');
-		
-		if ( !is_archive() && !is_search() ) return;
-		
-		//Removes Title and Description on Custom Post Type Archive
-		remove_action( 'genesis_before_loop', 'genesis_do_cpt_archive_title_description' );
-		//Removes Title and Description on Blog Archive
-		remove_action( 'genesis_before_loop', 'genesis_do_posts_page_heading' );
-		//Removes Title and Description on Date Archive
-		remove_action( 'genesis_before_loop', 'genesis_do_date_archive_title' );
-		//Removes Title and Description on Archive, Taxonomy, Category, Tag
-		remove_action( 'genesis_before_loop', 'genesis_do_taxonomy_title_description', 15 );
-		//Removes Title and Description on Author Archive
-		remove_action( 'genesis_before_loop', 'genesis_do_author_box_archive', 15 );
-		//Removes Title and Description on Author Archive
-		remove_action( 'genesis_before_loop', 'genesis_do_author_title_description', 15 );
-		//Removes Title and Description on Blog Template Page
-		remove_action( 'genesis_before_loop', 'genesis_do_blog_template_heading' );		
-
+			return sprintf( __('Search Results for:%s', 'foodiepro'), get_search_query());
 	}
 
-	public function custom_archive_title() {
-		if ( is_archive() ) {
-		  if ( is_author() ) {
-		  	echo $this->get_archive_headline('author', $this->query->display_name, '');
-		  }
-			else {
-				$headline = get_term_meta( $this->query->term_id, 'headline', true );
-				if ( is_tax() ) {
-					$obj = get_queried_object();
-					$tax = $obj->taxonomy;			
-					//echo $tax;
-			    if ( $tax=='ingredient' )
-						echo $this->get_archive_headline('ingredient', $this->query->name, $headline);			
-					elseif ( $tax=='cuisine' )
-						echo $this->get_archive_headline('cuisine', $this->query->name, $headline);
-					elseif( $tax=='difficult' ) 
-						echo $this->get_archive_headline('difficult', $this->query->name, $headline);
-					else 
-						echo $this->get_archive_headline('', $this->query->name, $headline);
-				}
+	public function get_friendly_title( $atts ) {
+		$atts = shortcode_atts( array(
+			'url' => 'true',
+			), $atts );
+
+		if ( is_archive() )
+			$title = $this->custom_archive_title();
+		elseif ( is_search() )
+			$title = $this->custom_search_title_text();
+		elseif ( is_singular() ) 
+			$title = get_the_title();
+		else
+			$title = __('Visit Goutu.org', 'foodiepro');
+
+		if ($atts['url']=='true') 
+				$title = str_replace( ' ', '%20', $title);
+		
+		return $title;
+	}
+
+	public function custom_archive_title( $msg='' ) {
+		if ( is_author() ) {
+			$term = $this->query->display_name;
+			if ($this->initial_is_vowel($term)) 
+				return $msg . sprintf(_x('All posts from %s','vowel','foodiepro'), $term);
+			else 
+				return $msg . sprintf(_x('All posts from %s','consonant','foodiepro'), $term);			
+		}
+		elseif ( is_tax() ) {
+			$headline = get_term_meta( $this->query->term_id, 'headline', true );
+			if ( !empty($headline) ) return $headline;
+
+			$term = $this->query->display_name;
+
+		    if ( is_tax('ingredient') ) {
+				if ($this->initial_is_vowel($term))
+					return $msg . sprintf(_x('All recipes containing %s','vowel','foodiepro'), $term);
 				else 
-					echo $this->get_archive_headline('', $this->query->name, $headline);
-			}
+					return $msg . sprintf(_x('All recipes containing %s','consonant','foodiepro'), $term);			
+		    }
+		    if ( is_tax('cuisine') ) {
+				if ($this->is_plural($term)) 
+					return $msg . sprintf(_x('All recipes from %s','plural','foodiepro'), $term);
+				elseif ($this->initial_is_vowel($term)) 
+					return $msg . sprintf(_x('All recipes from %s','vowel','foodiepro'), $term);
+				else 
+					return $msg . sprintf(_x('All recipes from %s','consonant','foodiepro'), $term);
+		    }
+			else 
+				return $msg . single_term_title('', false);
 		}
+		else {	
+			$headline = get_term_meta( $this->query->term_id, 'headline', true );
+			if ( !empty($headline) ) return $headline;			
+			return $msg . single_term_title('', false);
+		};
 	}
-	
-	public function custom_archive_description() {
-		if ( is_archive() ) {
-			if ( is_tax() ) {
-				$id = $this->query->term_id;
-				$tax = $this->query->taxonomy;
-				$intro_text = term_description( $id, $tax );
-				if (empty($intro_text)) 
-					$intro_text = get_term_meta( $this->query->term_id, 'intro_text', true );
-				if ( !empty($intro_text) )
-					echo self::$intro_style['begin'] . $intro_text . self::$intro_style['end'];				  
-			}
-		}
+
+	public function custom_archive_description( $description ) {
+		if ( !$this->is_tax ) return;
+		$id = $this->query->term_id;
+		$tax = $this->query->taxonomy;
+		$description .= term_description( $id, $tax );
+		if (empty($description)) 
+			$description .= get_term_meta( $this->query->term_id, 'intro_text', true );		  
+		return $description;
 	}	
 	
-	protected function get_archive_headline($tax,$value,$headline) {
-		
-		if ( !empty($headline) ) 
-			$msg = $headline;
-		
-		elseif ($tax=='cuisine') {
-
-			////PC::debug(array('value'=>$value));	
-			////PC::debug(array('value'=>$this->initial_is_vowel($value)));	
-			if ($this->is_plural($value)) 
-				$msg = sprintf(_x('All recipes from %s','plural','foodiepro'), $value);
-			elseif ($this->initial_is_vowel($value)) 
-				$msg = sprintf(_x('All recipes from %s','vowel','foodiepro'), $value);
-			else 
-				$msg = sprintf(_x('All recipes from %s','consonant','foodiepro'), $value);
-		}
-
-		elseif ($tax=='author') {
-			if ($this->initial_is_vowel($value)) 
-				$msg = sprintf(_x('All posts from %s','vowel','foodiepro'), $value);
-			else 
-				$msg = sprintf(_x('All posts from %s','consonant','foodiepro'), $value);
-		}		
-		
-		elseif ($tax=='ingredient') {
-			if ($this->initial_is_vowel($value))
-				$msg = sprintf(_x('All recipes containing %s','vowel','foodiepro'), $value);
-			else 
-				$msg = sprintf(_x('All recipes containing %s','consonant','foodiepro'), $value);
-		}
-		
-		elseif ($tax=='') {
-				$msg = single_term_title('', false);
-		}
-
-		$msg = self::$head_style['begin'] . $msg . self::$head_style['end'];
-
-		return $msg;
-			
-	}
-
-
 
 
 }

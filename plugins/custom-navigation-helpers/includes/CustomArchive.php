@@ -14,23 +14,17 @@ class CustomArchive {
 	
 	protected static $vowels = array('a','e','i','o','u');
 	protected $orderby;
+	protected $query='';
 	
 	public function __construct() {	
-		add_action( 'wp_loaded', array($this,'hydrate'));		
-	}
-	
-	/* Output debug information 
-	--------------------------------------------------------------*/	
-	protected function dbg( $msg, $var ) {
-			if ( class_exists('PC') ) {
-				PC::debug(array( $msg => $var ) );
-			}
+		add_action( 'pre_get_posts', array($this,'hydrate'));	
 	}
 	
 
 	/* Class attributes initialization
 	--------------------------------------------- */		
 	public function hydrate() {
+		$this->query = get_queried_object();
 		$this->orderby = get_query_var('orderby','ASC');
 	}			
 	

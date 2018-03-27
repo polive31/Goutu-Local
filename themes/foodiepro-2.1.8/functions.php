@@ -643,32 +643,32 @@ add_action( 'genesis_after_content_sidebar_wrap', 'genesis_footer_widget_areas',
 add_action( 'genesis_after_content', 'add_after_content_area');
 function add_after_content_area() {
   //if ( is_page() ) {
-  		genesis_widget_area( 'after-content', array(
-        'before' => '<div class="bottom after-content widget-area">',
-        'after'  => '</div>',
-  		));
+  	genesis_widget_area( 'after-content', array(
+		'before' => '<div class="bottom after-content widget-area">',
+		'after'  => '</div>',
+  	));
   //}     
 }
 
 // add_action( 'genesis_before_loop', 'add_archive_top_area', 15);
 add_action( 'genesis_before_content', 'add_archive_top_area', 15);
 function add_archive_top_area() {
-  if ( is_archive() || is_search() ) {
-  		genesis_widget_area( 'archives-top', array(
-        'before' => '<div class="top archives-top widget-area">',
-        'after'  => '</div>',
-  		));
-  }     
+	if ( is_archive() || is_search() ) {
+		genesis_widget_area( 'archives-top', array(
+		    'before' => '<div class="top archives-top widget-area">',
+		    'after'  => '</div>',
+		));
+	}     
 }
 
 add_action( 'genesis_after_loop', 'add_archive_bottom_area');
 function add_archive_bottom_area() {
-  if ( is_archive() || is_search() ) {
-  		genesis_widget_area( 'archives-bottom', array(
-        'before' => '<div class="bottom archives-bottom widget-area">',
-        'after'  => '</div>',
-  		));
-  }     
+	if ( is_archive() || is_search() ) {
+		genesis_widget_area( 'archives-bottom', array(
+		    'before' => '<div class="bottom archives-bottom widget-area">',
+		    'after'  => '</div>',
+		));
+	}     
 }
 
 // add_action( 'genesis_after_content_sidebar_wrap', 'add_post_bottom_area');
@@ -680,7 +680,6 @@ function add_archive_bottom_area() {
 // 		));
 // 	}
 // }
-
 
 
 /* =================================================================*/

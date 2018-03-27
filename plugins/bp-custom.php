@@ -118,6 +118,9 @@ function foodiepro_xprofile_cover_image( $settings = array() ) {
 	return $settings;
 }
 
+// Inline css not used in foodiepro theme (replaced it with custom cover image php)
+remove_action( 'bp_enqueue_scripts', 'bp_add_cover_image_inline_css', 11 );
+
 
 /* =================================================================*/
 /* =              ACTIVITY
@@ -314,7 +317,6 @@ function debug_to_console( $data ) {
 /* =     BP-DEPENDANT AVATAR MGT FUNCTIONS  
 /* =================================================================*/
 
-
 //* Prevents Gravatar to be fetched from internet
 add_filter('bp_core_fetch_avatar_no_grav', '__return_true');
 
@@ -369,9 +371,9 @@ add_filter( 'rpwe_markup', 'add_more_from_author_link',15,2);
 function add_more_from_author_link($html,$args) {
 	$user_id=bp_displayed_user_id();
 	$name=bp_core_get_username($user_id);	
-  if ($args['author']=='bp_member') {
+  	if ($args['author']=='bp_member') {
 		$html.='<p class="more-from-category">'; 
-		$html.='<a href="/author/' . $name . '">Toutes les recettes de ' . $name . '→</a>';
+		$html.='<a href="/author/' . $name . '">Toutes les recettes de ' . $name . '</a>';
 		$html.='</p>';
 	}
 	return $html;

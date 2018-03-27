@@ -23,7 +23,8 @@ class Custom_WPURP_Templates {
 		add_action( 'init', array($this, 'hydrate'));
 
 		// Full width on user submission pages
-		add_action( 'get_header', 'set_full_layout' );
+		// add_action( 'get_header', 'set_full_layout' );
+		// => Buggy !!! Causes archive & search pages to also be full width !!!
 		
 		/* Load javascript styles */
 		add_filter ( 'wpurp_assets_js', array($this,'enqueue_wpurp_js'), 15, 1 );

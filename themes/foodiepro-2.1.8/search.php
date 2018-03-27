@@ -11,20 +11,20 @@
  * @link    http://my.studiopress.com/themes/genesis/
  */
 
-add_action( 'genesis_before_loop', 'genesis_do_search_title' );
-//add_action( 'genesis_before_content', 'genesis_do_search_title' );
+add_action( 'genesis_before_content', 'genesis_do_search_title' );
+
 /**
  * Echo the title with the search term.
  *
  * @since 1.9.0
  */
 function genesis_do_search_title() {
-		echo '<div class="search-description archive-description">';
-	  echo '<h1 class="archive-title">';
-			$title = sprintf( '<div class="archive-description"><h1 class="search-title archive-title">%s %s</h1></div>', apply_filters( 'genesis_search_title_text', __( 'Search Results for:', 'genesis' ) ), get_search_query() );
-			echo apply_filters( 'genesis_search_title_output', $title ) . "\n";
-		echo '</h1>';
-		echo '</div>';
+	echo '<div class="search-description archive-description">';
+	echo '<h1 class="search-title archive-title">';
+	$title = __( 'Search Results for:', 'genesis' ) . get_search_query(); 
+	echo apply_filters( 'genesis_search_title_text', $title) . "\n";
+	echo '</h1>';
+	echo '</div>';
 }
 
 genesis();

@@ -18,7 +18,7 @@ class CustomSocialButtons {
 		$onClick = 'onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=250,width=600\');return false;"';
 
 		// Get current page title
-		$title = str_replace( ' ', '%20', get_the_title());
+		$title = do_shortcode('[seo-friendly-title]');
 			
 		// Get Post Thumbnail for pinterest
 		$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );

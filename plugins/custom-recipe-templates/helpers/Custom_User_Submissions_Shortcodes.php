@@ -5,28 +5,22 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
     const RECIPES_PUBLISH_SLUG = 'publier-recettes';
     const RECIPE_NEW_SLUG = 'nouvelle-recette';
     const RECIPE_EDIT_SLUG = 'modifier-recette';
+    const MULTISELECT = array( 'ingredient' => true, 'course' => true, 'cuisine' => false, 'season' => false, 'occasion' => true, 'diet' => true, 'difficult' => false, 'category'=>true, 'post_tag' => true);
     protected static $_PluginDir;  
     protected static $_UploadPath; 
     protected $logged_in;
+    protected $taxonomies;
 
     public function __construct( $name = 'user-submissions' ) {
         parent::__construct( $name );
-
-        $this->hydrate();
         
         self::$_PluginDir = plugin_dir_path( dirname( __FILE__ ) );
         $upload_dir = wp_upload_dir();
         self::$_UploadPath = trailingslashit( $upload_dir['basedir'] );
 
-        add_shortcode( 'custom_submissions', array( $this, 'submissions_shortcode' ) ); // For backwards compatibility
+        // add_shortcode( 'custom_submissions', array( $this, 'submissions_shortcode' ) ); // For backwards compatibility
         // add_shortcode( 'custom-recipe-submissions', array( $this, 'submissions_shortcode' ) );
         add_shortcode( 'custom-recipe-submissions-current-user-edit', array( $this, 'submissions_current_user_edit_shortcode' ) );
-    }
-
-
-    public function hydrate() {
-        $taxonomies = WPUltimateRecipe::get()->tags();
-        // insert rest of code => add 'multiselect' & value to each taxonomy 
     }
 
     // public function submissions_shortcode() {
@@ -69,9 +63,11 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
                 $output .= '<table class="wpurp-user-submissions-current-user-edit">';
                 foreach ( $recipes as $recipe ) {
                     // $item = '<li>';
+                    $image_url = $recipe->image_ID() > 0 ? $recipe->image_url( 'mini-thumbnail' ) : WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
                     $item = '<tr class="recipe-list-row">';
                     $url = get_permalink() . self::RECIPE_EDIT_SLUG;    
-                    $item .= '<td class="recipe-list-title"><a href="' . $url . '?wpurp-edit-recipe=' . $recipe->ID() . '">' . $recipe->title() . '</a></td>';
+                    $item .= '<td class="recipe-list-thumbnail"><a href="' . $url . '?wpurp-edit-recipe=' . $recipe->ID() . '"><img src="' . $image_url . '"></a></td>';
+                    $item .= '<td class="recipe-list-title"><a href="' . $url . '?wpurp-edit-recipe=' . $recipe->ID() . '"><!--<i class="fa fa-pencil-square-o"></i>-->' . $recipe->title() . '</a></td>';
                     $item .= '<td class="recipe-list-status">' . $recipe->post_status() . '</td>';
                     $item .= '<td class="recipe-list-actions"><i class="fa fa-trash user-submissions-delete-recipe" data-id="' . $recipe->ID() . '" data-title="' . esc_attr( $recipe->title() ) . '"></i></td>';
                     $item .= '</tr>';
@@ -191,6 +187,8 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
                 $post_id = wp_insert_post( $post, true );
             }
 
+            $meta = get_post_meta( $post );
+
             // Add terms
             $taxonomies = WPUltimateRecipe::get()->tags();
             unset($taxonomies['ingredient']);
@@ -276,7 +274,9 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
             // }
 
             if ( isset( $_POST['preview'] ) ) {
-                $output = '<div class="recipe-preview">';
+                
+                $output = '';
+                $output .= '<div class="recipe-preview">';
                 $output .= '<div class="submitbox">';
                 // $output .= '<h5>' . __( 'Recipe preview', 'foodiepro' ). '</h5>';
                 $output .= '<p>' . __( 'Here is what your recipe will look like once it is published. You can choose to continue editing it, or save it as a draft, or publish it, using the buttons at the bottom of the page.', 'foodiepro') . '</p>';
@@ -291,6 +291,7 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
 
             elseif ( isset( $_POST['edit'] ) ) {
 
+                $output = '';
                 // $output = '<div class="submitbox">';
                 // $output .= '<h5>' . __( 'Recipe edit', 'foodiepro' ). '</h5>';
                 $output .= '<p>' . __( 'You can edit your recipe here, before submitting it.', 'foodiepro') . '</p>';
@@ -308,12 +309,14 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
                 );
                 wp_update_post( $args );
 
+                $output = '';
+
                 // Display confirmation message                 
                 $output .= '<p class="successbox">';
                 $output .= __( 'Recipe saved as draft. It will not be visible on the site, but you can edit it at any time and submit it later.', 'foodiepro' );
                 $output .= '</p>';
                 $url = do_shortcode('[permalink slug="publier-recettes"]');
-                $output .= '<p>←' . sprintf( __( 'Back to <a href="%s">my published recipes</a>' ), $url ) . '</p>';
+                $output .= '<p>←' . sprintf( __( 'Back to <a href="%s">my published recipes</a>', 'foodiepro' ), $url ) . '</p>';
                 $output .= $this->submissions_form( $post_id, array( 'preview', 'draft', 'submit' ) );
                 do_action('wp_insert_post', 'wp_insert_post');
                 return $output;

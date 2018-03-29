@@ -5,6 +5,7 @@ jQuery(document).ready(function() {
      * Display taxonomy select fields
      */
     jQuery('.taxonomy-select-boxes').removeClass('nodisplay');
+    jQuery('.taxonomy-select-spinner').addClass('nodisplay');
 
     /*
      * Add shortcode buttons

@@ -2695,7 +2695,7 @@ i.fa.fa-star-o {
 table.wpurp-user-submissions-current-user-edit {
     width: 100%;
     border-top: 1px solid #bebebe;
-    margin-top: 50px;    
+    margin-top: 50px;   
 }
 
 table.wpurp-user-submissions-current-user-edit td {
@@ -2713,6 +2713,23 @@ table.wpurp-user-submissions-current-user-edit a {
 
 tr.recipe-list-row:hover {
 	background-color:#f1f1f1;
+}
+
+td.recipe-list-title {
+    font-family: Oswald, sans-serif;
+     font-size: 20px; 
+}
+
+td.recipe-list-thumbnail {
+    padding: 10px;
+    width: 80px;
+    height: 80px;
+}
+
+td.recipe-list-thumbnail img {
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;  
 }
 
 

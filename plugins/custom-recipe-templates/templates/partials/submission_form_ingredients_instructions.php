@@ -111,17 +111,18 @@ if( !isset( $required_fields ) ) $required_fields = array();
         <thead>
         <tr class="ingredient-group ingredient-group-first">
 	          	<td class="group" colspan="5">
-								<div class="group-container">
-		            		<span class="header"><?php _e( 'Group', 'foodiepro' ); ?></span>
-		                <span class="name ingredient-groups-disabled"><?php echo __( 'Main Ingredients', 'foodiepro' ) . ' ' . __( '(this label is not shown)', 'foodiepro' ); ?></span>
+					<div class="group-container">
+		            	<span class="header"><?php _e( 'Group', 'foodiepro' ); ?></span>
+		                <!-- <span class="name ingredient-groups-disabled"><?php echo __( 'Main Ingredients', 'foodiepro' ) . ' ' . __( '(this label is not shown)', 'foodiepro' ); ?></span> -->
 		                <?php
 		                $previous_group = '';
 		                if( isset( $ingredients[0] ) && isset( $ingredients[0]['group'] ) ) {
 		                    $previous_group = $ingredients[0]['group'];
 		                }
 		                ?>
-		                <span class="name ingredient-groups-enabled"><input type="text" class="ingredient-group-label" value="<?php echo esc_attr( $previous_group ); ?>" /></span>
-								</div>
+                        <!-- <span class="name ingredient-groups-enabled"><input type="text" class="ingredient-group-label" value="<?php echo esc_attr( $previous_group ); ?>" /></span> -->
+		                <span class="name"><input type="text" placeholder="<?php echo __('eg. For the dough', 'foodiepro');?>" class="ingredient-group-label" value="<?php echo esc_attr( $previous_group ); ?>" /></span>
+					</div>
 		          </td>
 		          <td class="group mobile-hidden" colspan="1">&nbsp;</td>
         </tr>
@@ -164,7 +165,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                     <tr class="ingredient-group">
                         <td colspan="6" class="group">
                         	<div class="group-container">
-                        		<span class="header"><?php _e( 'Group', 'foodiepro' ); ?></span>
+                        		<span class="header"><?php _e( 'Ingredients Group', 'foodiepro' ); ?></span>
                         		<span class="name" colspan="2"><input type="text" class="ingredient-group-label" value="<?php echo esc_attr( $ingredient['group'] ); ?>" /></span>
                         	</div>
                         	<div class="group center-column delete-button">
@@ -228,10 +229,10 @@ if( !isset( $required_fields ) ) $required_fields = array();
         </tr>
         </tbody>
     </table>
-    <div id="ingredients-add-box">
+    <div class="button" id="ingredients-add-box">
         <a href="#" id="ingredients-add"><?php _e( 'Add an ingredient', 'foodiepro' ); ?></a>
     </div>
-    <div id="ingredients-add-group-box">
+    <div  class="button" id="ingredients-add-group-box">
         <a href="#" id="ingredients-add-group"><?php _e( 'Add an ingredient group', 'foodiepro' ); ?></a>
     </div>
     <div class="recipe-form-notes">
@@ -247,14 +248,14 @@ if( !isset( $required_fields ) ) $required_fields = array();
         <tr class="instruction-group instruction-group-first">
 			<td colspan="3" class="group">
           		<span class="header"><?php _e( 'Group', 'foodiepro' ); ?></span>
-				<span class="name instruction-groups-disabled"><?php echo __( 'Main Instructions', 'foodiepro' ) . ' ' . __( '(this label is not shown)', 'foodiepro' ); ?></span>
+				<!-- <span class="name instruction-groups-disabled"><?php echo __( 'Main Instructions', 'foodiepro' ) . ' ' . __( '(this label is not shown)', 'foodiepro' ); ?></span> -->
                 <?php
                 $previous_group = '';
                 if( isset( $instructions[0] ) && isset( $instructions[0]['group'] ) ) {
                     $previous_group = $instructions[0]['group'];
                 }
                 ?>
-                <span class="name instruction-groups-enabled"><input type="text" class="instruction-group-label" value="<?php echo esc_attr( $previous_group ); ?>"/></span>
+                <span class="name"><input type="text" placeholder="<?php echo __('eg. For the dough','foodiepro'); ?>" class="instruction-group-label" value="<?php echo esc_attr( $previous_group ); ?>"/></span>
             </td>
         </tr>
         </thead>
@@ -262,7 +263,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
         <tr class="instruction-group-stub">
 		        <td colspan="3" class="group">
 		        	<div class="group-container">
-		            <span class="header"><?php _e( 'Group', 'foodiepro' ); ?></span>
+		            <span class="header"><?php _e( 'Instructions Group', 'foodiepro' ); ?></span>
 		            <span class="name"><input type="text" class="instruction-group-label" /></span>
 		        	</div>
             	<div class="group center-column delete-button"><span class="instruction-group-delete">&nbsp;</span></div>
@@ -283,7 +284,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                     <tr class="instruction-group">
                         <td colspan="3" class="group">
                         	<div class="group-container">
-                            <span class="header"><?php _e( 'Group', 'foodiepro' ); ?></span>
+                            <span class="header"><?php _e( 'Instructions Group', 'foodiepro' ); ?></span>
                             <span class="name"><input type="text" class="instruction-group-label" value="<?php echo esc_attr( $instruction['group'] ); ?>"/></span>
                         	</div>
                         	<div class="group center-column delete-button"><span class="instruction-group-delete">&nbsp;</span></div>
@@ -383,10 +384,10 @@ if( !isset( $required_fields ) ) $required_fields = array();
         </tbody>
     </table>
 
-    <div id="ingredients-add-box">
+    <div class="button" id="ingredients-add-box">
         <a href="#" id="instructions-add"><?php _e( 'Add an instruction', 'foodiepro' ); ?></a>
     </div>
-    <div id="ingredients-add-group-box">
+    <div class="button" id="ingredients-add-group-box">
         <a href="#" id="instructions-add-group"><?php _e( 'Add an instruction group', 'foodiepro' ); ?></a>
     </div>
     <div class="recipe-form-notes">

@@ -1,7 +1,7 @@
 <?php $required_fields = WPUltimateRecipe::option( 'user_submission_required_fields', array() ); ?>
 <div id="wpurp_user_submission_form" class="postbox">
     <form id="new_recipe" name="new_recipe" method="post" action="" enctype="multipart/form-data">
-    <div class="hide-on-preview">
+    <div class= "hide-on-preview">
         <input type="hidden" name="recipe_id" value="<?php echo $recipe->ID(); ?>" />
         <div class="recipe-title-container">      	
             <p>
@@ -37,11 +37,12 @@
 <?php } ?>
         </div>
         <div class="recipe-tags-container">
-						<p><label class="recipe-tags"><?php _e( 'Recipe Tags', 'foodiepro' ) ?></label></p>
-            <p class="taxonomy-select-boxes nodisplay">
+			
+        <p><label class="recipe-tags"><?php _e( 'Recipe Tags', 'foodiepro' ) ?></label></p>
+        <div class="taxonomy-select-spinner"><i class="fa fa-spinner fa-spin"></i></div>
+        <div class="taxonomy-select-boxes nodisplay">
 <?php
         $select_fields = array();
-        $multiselect = WPUltimateRecipe::option( 'recipe_tags_user_submissions_multiselect', '1' ) == '1' ? true : false;
 
         $taxonomies = WPUltimateRecipe::get()->tags();
         unset( $taxonomies['ingredient'] );
@@ -56,6 +57,7 @@
         $hide_tags = WPUltimateRecipe::option( 'user_submission_hide_tags', array() );
 
         foreach( $taxonomies as $taxonomy => $options ) {
+            $multiselect = self::MULTISELECT[$taxonomy];
             if( !in_array( $taxonomy, $hide_tags ) ) {
                 $args['show_option_none'] = $multiselect ? '' : $options['labels']['singular_name'];
                 $args['taxonomy'] = $taxonomy;
@@ -68,6 +70,7 @@
             }
         }
 
+        $multiselect=true;
         if( WPUltimateRecipe::option( 'recipe_tags_user_submissions_categories', '0' ) == '1' ) {
             $args['show_option_none'] = $multiselect ? '' : __( 'Category', 'wp-ultimate-recipe' );
             $args['taxonomy'] = 'category';
@@ -82,6 +85,7 @@
             );
         }
 
+        $multiselect=true;
         if( WPUltimateRecipe::option( 'recipe_tags_user_submissions_tags', '0' ) == '1' ) {
             $args['show_option_none'] = $multiselect ? '' : __( 'Tag', 'wp-ultimate-recipe' );
             $args['taxonomy'] = 'post_tag';
@@ -97,7 +101,7 @@
         }
 
         foreach( $select_fields as $taxonomy => $select_field ) {
-
+            $multiselect = self::MULTISELECT[$taxonomy];
             // Multiselect
             if( $multiselect ) {
                 preg_match( "/<select[^>]+>/i", $select_field['dropdown'], $select_field_match );
@@ -116,7 +120,7 @@
             echo $select_field['dropdown'];
         }
 ?>
-            </p>
+            </div>
         </div>
 <?php
         $wpurp_user_submission = true;

@@ -24,11 +24,11 @@ class CustomArchiveHeadline extends CustomArchive {
 		add_shortcode('seo-friendly-title', array($this,'get_friendly_title')); 
 	}
 
-	public function custom_search_title_text( $title ) {	
-		$url = $_SERVER["REQUEST_URI"];
-		$WPURP_search = strpos($url, 'wpurp-search');
-
-		if ( $WPURP_search!==false )
+	public function custom_search_title_text() {	
+		// $url = $_SERVER["REQUEST_URI"];
+		// $WPURP_search = strpos($url, 'wpurp-search');
+		// if ( $WPURP_search!==false )
+		if ( isset( $_GET['wpurp-search'] ) )
 			return __('Detailed Search Results', 'foodiepro');
 		else 
 			return sprintf( __('Search Results for:%s', 'foodiepro'), get_search_query());
@@ -54,7 +54,7 @@ class CustomArchiveHeadline extends CustomArchive {
 		return $title;
 	}
 
-	public function custom_archive_title( $msg='' ) {
+	public function custom_archive_title() {
 		if ( is_author() ) {
 			$term = $this->query->display_name;
 			if ($this->initial_is_vowel($term)) 

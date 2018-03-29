@@ -1,6 +1,7 @@
 <?php $required_fields = WPUltimateRecipe::option( 'user_submission_required_fields', array() ); ?>
 <div id="wpurp_user_submission_form" class="postbox">
     <form id="new_recipe" name="new_recipe" method="post" action="" enctype="multipart/form-data">
+    <div class="hide-on-preview">
         <input type="hidden" name="recipe_id" value="<?php echo $recipe->ID(); ?>" />
         <div class="recipe-title-container">      	
             <p>
@@ -131,13 +132,21 @@
         </p>
     </div>
 <?php } ?> -->
-        <p align="right">
-            <?php if( WPUltimateRecipe::option( 'user_submission_preview_button', '1') == '1' ) { ?>
-            <input type="submit" value="<?php _e( 'Preview', 'foodiepro' ); ?>" id="preview" name="preview" />
-            <?php } ?>
-            <!--<input type="submit" value="<?php _e( 'Draft', 'foodiepro' ); ?>" id="draft" name="draft" />-->
-            <input type="submit" value="<?php _e( 'Submit', 'foodiepro' ); ?>" id="submit" name="submit" />
-        </p>
+    </div> <!-- /hide-on-preview -->
+        <div class="recipe-submit-buttons">
+            <?php if (in_array('preview', $buttons)) {;?>    
+                <input type="submit" value="<?php _e( 'Preview', 'foodiepro' ); ?>" id="preview" name="preview" />
+            <?php }; ?>
+            <?php if (in_array('edit', $buttons)) {;?>    
+                <input type="submit" value="<?php _e( 'Edit', 'foodiepro' ); ?>" id="edit" name="edit" />
+            <?php }; ?>        
+            <?php if (in_array('draft', $buttons)) {;?>    
+                <input type="submit" value="<?php _e( 'Draft', 'foodiepro' ); ?>" id="draft" name="draft" />
+            <?php }; ?>
+            <?php if (in_array('submit', $buttons)) {;?>    
+                <input type="submit" value="<?php _e( 'Submit', 'foodiepro' ); ?>" id="submit" name="submit" />
+            <?php }; ?>
+        </div>
         <input type="hidden" name="action" value="post" />
         <?php echo wp_nonce_field( 'recipe_submit', 'submitrecipe' ); ?>
     </form>

@@ -2690,6 +2690,31 @@ i.fa.fa-star-o {
 						CUSTOM RECIPE TEMPLATES Plugin
 --------------------------------------------------------------*/
 
+/* Recipe List
+-------------------------------------------*/
+table.wpurp-user-submissions-current-user-edit {
+    width: 100%;
+    border-top: 1px solid #bebebe;
+    margin-top: 50px;    
+}
+
+table.wpurp-user-submissions-current-user-edit td {
+	padding:10px;
+}
+
+table.wpurp-user-submissions-current-user-edit a {
+    text-decoration: none;
+}
+
+/*tr.recipe-list-row {
+	height:40px;
+	padding:10px;
+}*/
+
+tr.recipe-list-row:hover {
+	background-color:#f1f1f1;
+}
+
 
 /* CSS TOOLTIP styling 
 ------------------------------------------*/

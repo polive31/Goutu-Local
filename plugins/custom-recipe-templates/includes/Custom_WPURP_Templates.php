@@ -21,10 +21,6 @@ class Custom_WPURP_Templates {
 		self::$_PluginPath = plugin_dir_path( dirname( __FILE__ ) );
 		
 		add_action( 'init', array($this, 'hydrate'));
-
-		// Full width on user submission pages
-		// add_action( 'get_header', 'set_full_layout' );
-		// => Buggy !!! Causes archive & search pages to also be full width !!!
 		
 		/* Load javascript styles */
 		add_filter ( 'wpurp_assets_js', array($this,'enqueue_wpurp_js'), 15, 1 );
@@ -43,9 +39,6 @@ class Custom_WPURP_Templates {
 		/* Misc */
 		//remove_action ( 'wp_enqueue_scripts', 'WPURP_Assets::enqueue');
 		//wp_deregister_script('wpurp_script_minified');
-		//wp_enqueue_script( 'wpurp_custom_script', get_stylesheet_directory_uri() . '/assets/js/wpurp_custom.js', array('jquery'), WPURP_VERSION, true );
-
-		//add_action( 'genesis_before_content', array($this,'display_debug_info') );
 
 	}
 
@@ -55,39 +48,15 @@ class Custom_WPURP_Templates {
 		$this->logged_in = is_user_logged_in();	
 	}
 	
-	/* Output debug information 
-	--------------------------------------------------------------*/	
-	public function dbg( $msg, $var ) {
-			if ( class_exists('PC') ) {
-				//PC::debug(array( $msg => $var ) );
-			}
-	}
-
-	public function display_debug_info() {
-				
-			//$this->dbg('In WPURP Custom Custom Templates Class', '');
-			//$this->dbg('Plugin path', self::$_PluginPath);
-	}	
-	
 	
 /* Custom Menu Template */	
 	public function wpurp_custom_menu_template( $form, $menu ) {
 		return '';
 	}
-	
-// Full width layout on user submission pages
-	public function set_full_layout() {
-		if ( is_page( [self::RECIPE_NEW_SLUG, self::RECIPE_EDIT_SLUG] ) ) 
-			add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
-	}
-
 
 	
 /* Custom Enqueue CSS */	
 	public function enqueue_wpurp_css($css_enqueue) {
-				
-		//$this->dbg('In Enqueue WPURP CSS', '');
-		//$this->dbg('Plugin path', self::$_PluginPath);
 		
 		if ( is_admin() ) return $css_enqueue;
 			
@@ -117,7 +86,7 @@ class Custom_WPURP_Templates {
 			);		
 		}
 		
-		elseif ( is_page( [self::RECIPES_PUBLISH_SLUG, self::RECIPE_NEW_SLUG, self::RECIPE_EDIT_SLUG] ) ) {
+		elseif ( is_page( [self::RECIPE_NEW_SLUG, self::RECIPE_EDIT_SLUG] ) ) {
 //		  $css_enqueue=null;
 //		  $css_enqueue[]=
 //							array(
@@ -136,13 +105,16 @@ class Custom_WPURP_Templates {
 //		              'public' => true,
 //		              'direct' => true,
 //		          ); 			
-		  $css_enqueue[]=
-							array(
-		              'url' => self::$_PluginUri . 'assets/css/custom-recipe-submission.css',
-		              'dir' => self::$_PluginPath . 'assets/css/custom-recipe-submission.css',
-		              'public' => true,
-		              'direct' => true,
-		          ); 			
+		  $css_enqueue[]=array(
+						'url' => self::$_PluginUri . 'assets/css/custom-recipe.css',
+						'public' => true,
+					);		  	
+		  $css_enqueue[]=array(
+						'url' => self::$_PluginUri . 'assets/css/custom-recipe-submission.css',
+						'dir' => self::$_PluginPath . 'assets/css/custom-recipe-submission.css',
+						'public' => true,
+						'direct' => true,
+		          	);	          		
 		}
 		else 
 		  $css_enqueue=array();
@@ -358,18 +330,18 @@ class Custom_WPURP_Templates {
 
 	
 /* Custom Recipe Submission Shortcode */
-	public function remove_recipe_list_on_edit_recipe( $item, $recipe ) {
-		if ( isset( $_GET['wpurp-edit-recipe'] ) )
-			$html = '';
-		else {
-			$url = get_permalink() . self::RECIPE_EDIT_SLUG;	
-			//$url = 'http://www.goutu.main/accueil/publier/publier-recettes/recipe-edit/';	
-			$html = '<li>';
-			$html .= '<a href="' . $url . '?wpurp-edit-recipe=' . $recipe->ID() . '">' . $recipe->title() . '</a>';
-			$html .= '</li>';
-		}
-		return $html;
-	}
+	// public function remove_recipe_list_on_edit_recipe( $item, $recipe ) {
+	// 	if ( isset( $_GET['wpurp-edit-recipe'] ) )
+	// 		$html = '';
+	// 	else {
+	// 		$url = get_permalink() . self::RECIPE_EDIT_SLUG;	
+	// 		//$url = 'http://www.goutu.main/accueil/publier/publier-recettes/recipe-edit/';	
+	// 		$html = '<li>';
+	// 		$html .= '<a href="' . $url . '?wpurp-edit-recipe=' . $recipe->ID() . '">' . $recipe->title() . '</a>';
+	// 		$html .= '</li>';
+	// 	}
+	// 	return $html;
+	// }
 	
 	
 	public static function output_tooltip($content,$position) {

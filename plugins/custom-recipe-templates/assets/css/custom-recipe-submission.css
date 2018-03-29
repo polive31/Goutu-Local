@@ -1,15 +1,37 @@
 /* Custom Recipe Submission 
 -------------------------------------------*/
 
+.recipe-preview .hide-on-preview,
+.recipe-preview .recipe-top,
 .nodisplay {
     display: none;
 }
 
+.recipe-preview h4 {
+  /*border-top: 1px solid #bebebe;*/
+  padding-top: 40px;
+  font-size:45px;
+}
+
+.recipe-preview h5 {
+  font-family: Oswald, sans-serif;
+  font-size:25px;
+}
+
+.submitbox {
+  background-color: #e8e8e8;
+  padding: 10px;
+  margin: 20px 0;
+}
+
+
 /* Custom Recipe Submission Form
 -------------------------------------------*/
 #wpurp_user_submission_form {
-	background-color:#f3f3f3;
+  background-color:#f3f3f3;
 	padding:10px;
+  float:left;
+  width: 100%;
 }
 
 #wpurp_user_submission_form .select2wpurp-container {
@@ -20,8 +42,10 @@
 
 #wpurp_user_submission_form .recipe-form-notes,
 #wpurp_user_submission_form .recipe-ingredients-container,
-#wpurp_user_submission_form .recipe-instructions-container {
+#wpurp_user_submission_form .recipe-instructions-container,
+#wpurp_user_submission_form .recipe-notes-container-nojs {
 	float: left;
+  width: 100%;
 }
 
 /* Fonts */
@@ -86,7 +110,6 @@ span.wpurp-required {
 }
 
 /* Recipe Thumbnail */
-
 table#recipe-instructions .recipe_instructions_thumbnail, 
 .postbox img.recipe_thumbnail {
 	max-height: 100px;
@@ -123,6 +146,24 @@ select#recipe-occasion option {
 .select2wpurp-container-multi .select2wpurp-choices {
   background-image: none;
   border-radius: 5px;
+}
+
+/*General Input styling */
+
+#wpurp_user_submission_form input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #B1B1B1;
+    font-style: italic;
+    opacity: 1; /* Firefox */
+}
+
+#wpurp_user_submission_form input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #B1B1B1;
+    font-style: italic;
+}
+
+#wpurp_user_submission_form input::-ms-input-placeholder { /* Microsoft Edge */
+    color: #B1B1B1;
+    font-style: italic;
 }
 
 /* Ingredients & Instructions section 
@@ -240,6 +281,17 @@ select#recipe-occasion option {
 }
 
 /* Buttons */
+
+.recipe-submit-buttons {
+  float: right;
+  padding: 20px;
+}
+
+.recipe-submit-buttons input {
+  padding: 10px 20px;
+  margin: 10px;
+  font-weight: bold;
+}
 
 #wpurp_user_submission_form input.recipe_instructions_image,
 #wpurp_user_submission_form input.recipe_thumbnail_image,

@@ -14,12 +14,15 @@ class CustomArchiveHeadline extends CustomArchive {
 
 	public function __construct() {
 		parent::__construct();
-		// Title text
+		// Headline text
 		add_filter( 'genesis_search_title_text', array($this,'custom_search_title_text') );
 		add_filter( 'genesis_archive_title_text', array($this,'custom_archive_title') );
 		// Intro text
 		add_filter( 'genesis_term_intro_text_output', 'wpautop' );	
 		add_filter( 'genesis_archive_description_text', array($this,'custom_archive_description') );
+		// Page title text
+		// remove_filter('wp_title','genesis_default_title', 10, 3);
+		// add_filter('wp_title', 'custom_archive_title', 10, 3);
 		// Shortcode
 		add_shortcode('seo-friendly-title', array($this,'get_seo_friendly_page_title')); 
 	}
@@ -55,6 +58,8 @@ class CustomArchiveHeadline extends CustomArchive {
 	}
 
 	public function custom_archive_title($msg) {
+
+		$msg='';
 
 		$headline = get_term_meta( $this->query->term_id, 'headline', true );
 		if ( !empty($headline) ) return $headline;		

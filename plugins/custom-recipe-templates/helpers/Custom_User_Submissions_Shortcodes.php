@@ -61,11 +61,13 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
                     // $item = '<li>';
                     $image_url = $recipe->image_ID() > 0 ? $recipe->image_url( 'mini-thumbnail' ) : WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
                     $item = '<tr class="recipe-list-row">';
-                    $url = get_permalink() . self::RECIPE_EDIT_SLUG;    
-                    $item .= '<td class="recipe-list-thumbnail"><a href="' . $url . '?wpurp-edit-recipe=' . $recipe->ID() . '"><img src="' . $image_url . '"></a></td>';
-                    $item .= '<td class="recipe-list-title"><a href="' . $url . '?wpurp-edit-recipe=' . $recipe->ID() . '"><!--<i class="fa fa-pencil-square-o"></i>-->' . $recipe->title() . '</a></td>';
+                    $edit_url = get_permalink() . self::RECIPE_EDIT_SLUG;    
+                    $view_url = get_permalink($recipe->ID());    
+                    $item .= '<td class="recipe-list-actions"><a href="' . $edit_url . '?wpurp-edit-recipe=' . $recipe->ID() . '" title="' . __('Edit recipe', 'foodiepro') . '"><i class="fa fa-pencil-square-o"></i></a></td>';
+                    $item .= '<td class="recipe-list-thumbnail"><a href="' . $view_url . '" title="' . __('View recipe', 'foodiepro') . '"><img src="' . $image_url . '"></a></td>';
+                    $item .= '<td class="recipe-list-title"><a href="' . $view_url . '" title="' . __('View recipe', 'foodiepro') . '">' . $recipe->title() . '</a></td>';
                     $item .= '<td class="recipe-list-status">' . $statuses[ $recipe->post_status() ] . '</td>';
-                    $item .= '<td class="recipe-list-actions"><i class="fa fa-trash user-submissions-delete-recipe nodisplay" data-id="' . $recipe->ID() . '" data-title="' . esc_attr( $recipe->title() ) . '"></i></td>';
+                    $item .= '<td class="recipe-list-actions" title="' . __('Delete recipe', 'foodiepro') . '"><i class="fa fa-trash user-submissions-delete-recipe nodisplay" data-id="' . $recipe->ID() . '" data-title="' . esc_attr( $recipe->title() ) . '"></i></td>';
                     $item .= '</tr>';
                     // $item .= '</li>';
                     $output .= apply_filters( 'wpurp_user_submissions_current_user_edit_item', $item, $recipe );

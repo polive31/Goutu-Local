@@ -2709,13 +2709,13 @@ table.custom-user-submissions-list a {
     text-decoration: none;
 }
 
-.user-submissions-delete-recipe {
+.recipe-list-actions .fa {
 	cursor: pointer;
 	width: 30px;
-	transition: font-size 0.3s ease-in-out;    
+	transition: font-size 0.2s ease-in-out;    
 }
 
-.user-submissions-delete-recipe:hover {
+.recipe-list-actions .fa:hover {
 	color: #5d5d5d;
 	text-shadow: #6b6b6b 2px 2px 6px;
 	font-size: 25px;

@@ -283,6 +283,13 @@ class Custom_WPURP_Templates {
 					        'jquery',
 					    ),
 					),
+					array(
+						'name' => 'jquery-touch-punch',
+					    'deps' => array(
+					        'jquery',
+					        'jquery_ui',
+					    ),						
+					),
 		            array(
 		                'name' => 'custom-user-submissions',
 		                'uri' => self::$_PluginUri . 'assets/js/',
@@ -343,8 +350,8 @@ class Custom_WPURP_Templates {
   		}
 	}
 
-	public function custom_enqueue_script( $handler, $uri, $path, $file, $deps, $version, $footer=false ) {	
-		if ( ! strpos($file, '.min.js') ) {
+	public function custom_enqueue_script( $handler, $uri='', $path='', $file='', $deps='', $version='', $footer=false ) {	
+		if ( !strpos($file, '.min.js') ) {
 			$minfile = str_replace( '.js', '.min.js', $file );
 			if (file_exists( $path . $minfile) && WP_MINIFY ) {	
 				$file=$minfile;

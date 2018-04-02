@@ -89,6 +89,7 @@ plugins/buddypress/bp-core/*
 !plugins/custom-recipe-templates/
 !plugins/recent-posts-widget-extended/
 !plugins/custom-post-meta-inspector/
+!plugins/custom-contact-form/
 #!plugins/frontier-post/
 #plugins/frontier-post/*
 #!plugins/frontier-post/language/*FR.*

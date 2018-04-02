@@ -373,7 +373,7 @@ function add_more_from_author_link($html,$args) {
 	$name=bp_core_get_username($user_id);	
   	if ($args['author']=='bp_member') {
 		$html.='<p class="more-from-category">'; 
-		$html.='<a href="/author/' . $name . '">Toutes les recettes de ' . $name . '</a>';
+		$html.='<a href="' . get_author_posts_url($user_id) . '">' . sprintf(_x('All posts from %s','consonant','foodiepro'), $name) . '</a>';
 		$html.='</p>';
 	}
 	return $html;

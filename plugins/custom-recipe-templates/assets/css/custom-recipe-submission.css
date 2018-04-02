@@ -344,7 +344,7 @@ select#recipe-occasion option {
   color: #FFF;
   font-family: Oswald, sans-serif;
   font-size: 16px;
-  vertical-align: text-bottom;  
+  vertical-align: middle;  
 }
 
 .recipe-submit-buttons .submitbutton:hover {
@@ -355,6 +355,7 @@ select#recipe-occasion option {
 .recipe-submit-buttons .submitbutton:before {
   font-family: FontAwesome;
   padding: 0 5px;
+  vertical-align: middle;
 }
 
 .recipe-submit-buttons .submitbutton#draft:before {
@@ -610,5 +611,25 @@ textarea.ingredients_notes {
     float:right;
     padding:9px;
 	}	
+
+
+  /*Recipe Submit Buttons*/
+  #wpurp_user_submission_form .recipe-submit-buttons {
+    float: left;
+    padding: 0;
+    text-align: left;
+  }
+
+  #wpurp_user_submission_form .recipe-submit-buttons span.submitbutton {
+    padding: 7px 5px;
+    margin: 5px;
+    font-size: 14px;
+  }
+
+  #wpurp_user_submission_form input:before,
+  #wpurp_user_submission_form input {
+    padding: 0;
+  }
+
 	
 }

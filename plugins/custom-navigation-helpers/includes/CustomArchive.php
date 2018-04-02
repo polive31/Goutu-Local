@@ -17,13 +17,18 @@ class CustomArchive {
 	protected $query='';
 	
 	public function __construct() {	
-		add_action( 'pre_get_posts', array($this,'hydrate'));	
+		// IMPORTANT : use wp as a hook, otherwise the archive will not be set yet and errors will occur
+		add_action( 'wp', array($this,'hydrate'));		
 	}
 	
 
 	/* Class attributes initialization
 	--------------------------------------------- */		
 	public function hydrate() {
+		if ( !is_archive() ) return;
+		// if (is_author()) {
+		// 	$this->query=get_user_by( 'slug', $userid );
+		// }
 		$this->query = get_queried_object();
 		$this->orderby = get_query_var('orderby','ASC');
 	}			

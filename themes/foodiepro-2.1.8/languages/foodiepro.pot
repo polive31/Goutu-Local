@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2018-04-02 18:46+0200\n"
+"POT-Creation-Date: 2018-04-03 00:21+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,6 +26,7 @@ msgstr ""
 "X-Poedit-SearchPath-4: plugins/custom-recipe-templates\n"
 "X-Poedit-SearchPath-5: plugins/wp-ultimate-recipe-premium\n"
 "X-Poedit-SearchPath-6: plugins/bp-custom.php\n"
+"X-Poedit-SearchPath-7: plugins/custom-contact-form\n"
 
 #: plugins/bp-custom.php:154
 msgid "Published a new recipe"
@@ -89,6 +90,147 @@ msgstr ""
 msgid ""
 "%1$s wrote a new recipe, <a class=\"activity-post-title\" href=\"%2$s\">%3$s</"
 "a>"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/ContactFormPostType.php:19
+msgctxt "Post Type General Name"
+msgid "Contact Requests"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/ContactFormPostType.php:20
+msgctxt "Post Type Singular Name"
+msgid "Contact Request"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/ContactFormPostType.php:21
+#: plugins/custom-contact-form/includes/ContactFormPostType.php:22
+#: plugins/custom-contact-form/includes/ContactFormPostType.php:43
+msgid "Contacts"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/ContactFormPostType.php:23
+msgid "Parent Item:"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/ContactFormPostType.php:24
+msgid "All Items"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/ContactFormPostType.php:25
+msgid "Add New Item"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/ContactFormPostType.php:26
+#: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:113
+#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:35
+#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:36
+#: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:116
+#: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:163
+#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/custom-taxonomies.php:173
+#: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/meal-planner.php:315
+#: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/meal-planner.php:316
+#: plugins/wp-ultimate-recipe-premium/premium/addons/user-menus/user-menus.php:229
+#: plugins/wp-ultimate-recipe-premium/premium/addons/user-menus/user-menus.php:230
+#: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/post_type.php:20
+#: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/post_type.php:21
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:14
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:4
+msgid "Add New"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/ContactFormPostType.php:27
+msgid "New Item"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/ContactFormPostType.php:28
+msgid "Edit Item"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/ContactFormPostType.php:29
+msgid "Update Item"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/ContactFormPostType.php:30
+msgid "View Item"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/ContactFormPostType.php:31
+msgid "Search Item"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/ContactFormPostType.php:32
+msgid "Not found"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/ContactFormPostType.php:33
+msgid "Not found in Trash"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/ContactFormPostType.php:36
+msgctxt "contact"
+msgid "contact"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/ContactFormPostType.php:42
+msgid "contact"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:25
+msgid "Message sent, we will answer you shortly."
+msgstr ""
+
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:28
+msgid "Please fill in all required fields."
+msgstr ""
+
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:36
+#: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:114
+#: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_form.php:13
+#: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_list.php:15
+#: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:117
+#: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:164
+#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:206
+#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-fields/templates/page_form.php:16
+#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-fields/templates/page_list.php:12
+#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/custom-taxonomies.php:174
+#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/templates/page_form.php:13
+#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/templates/page_list.php:15
+#: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/meta_boxes/meta_box_data_source_terms.php:30
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:35
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:42
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:42
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/booking-fields.php:12
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:62
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:43
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:54
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:24
+msgid "Name"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:39
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:92
+msgid "Email Address"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:42
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:33
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:59
+msgid "Subject"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:45
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:36
+msgid "Message"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:49
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:51
+msgid "Send Message"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:84
+#, php-format
+msgid "%s : Contact request from %s"
 msgstr ""
 
 #: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:147
@@ -386,7 +528,7 @@ msgstr ""
 
 #: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:360
 #: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:410
-#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:436
+#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:434
 #, php-format
 msgid "Back to <a href=\"%s\">my published recipes</a>"
 msgstr ""
@@ -403,16 +545,21 @@ msgstr ""
 msgid "Recipe submitted! Thank you, your recipe is now awaiting moderation."
 msgstr ""
 
-#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:434
+#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:417
+#, php-format
+msgid "New user submission:%s"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:432
 msgid "Unknown action."
 msgstr ""
 
-#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:480
+#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:478
 #: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes_bak.php:488
 msgid "Format as Duration"
 msgstr ""
 
-#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:481
+#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:479
 #: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes_bak.php:489
 msgid "Format as Ingredient"
 msgstr ""
@@ -1387,23 +1534,6 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:113
-#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:35
-#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:36
-#: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:116
-#: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:163
-#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/custom-taxonomies.php:173
-#: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/meal-planner.php:315
-#: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/meal-planner.php:316
-#: plugins/wp-ultimate-recipe-premium/premium/addons/user-menus/user-menus.php:229
-#: plugins/wp-ultimate-recipe-premium/premium/addons/user-menus/user-menus.php:230
-#: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/post_type.php:20
-#: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/post_type.php:21
-#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:14
-#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:4
-msgid "Add New"
-msgstr ""
-
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:114
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:39
 #: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:117
@@ -1413,29 +1543,6 @@ msgstr ""
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-menus/user-menus.php:233
 #: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/post_type.php:24
 msgid "New"
-msgstr ""
-
-#: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:114
-#: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_form.php:13
-#: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_list.php:15
-#: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:117
-#: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:164
-#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:206
-#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-fields/templates/page_form.php:16
-#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-fields/templates/page_list.php:12
-#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/custom-taxonomies.php:174
-#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/templates/page_form.php:13
-#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/templates/page_list.php:15
-#: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/meta_boxes/meta_box_data_source_terms.php:30
-#: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:35
-#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:42
-#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:42
-#: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/booking-fields.php:12
-#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:62
-#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:43
-#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:54
-#: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:24
-msgid "Name"
 msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:115
@@ -7166,10 +7273,6 @@ msgid ""
 "appear to others in the site."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:92
-msgid "Email Address"
-msgstr ""
-
 #: themes/foodiepro-2.1.8/buddypress/members/register.php:105
 msgid "Choose a Password"
 msgstr ""
@@ -7261,19 +7364,6 @@ msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:30
 msgid "This is a notice to all users."
-msgstr ""
-
-#: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:33
-#: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:59
-msgid "Subject"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:36
-msgid "Message"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:51
-msgid "Send Message"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:56

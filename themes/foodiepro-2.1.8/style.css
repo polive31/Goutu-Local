@@ -1858,6 +1858,15 @@ h2.entry-title, .wpupg-post-title,
 
 /* Form Submission Messages
 --------------------------------------------------------------*/
+p.submitbox{
+  /*background-color: #e8e8e8;*/
+  background-color: #505050;
+  color:#FFF;
+  padding: 10px;
+  margin: 20px 0; 
+}
+
+
 p.successbox,
 #message.updated {
 	clear: both;
@@ -1874,6 +1883,7 @@ p.successbox,
   font-weight: 400;	
 }
 
+p.errorbox,
 .wpurp-errors,
 #message.error p {
 	background-color: #fdc;
@@ -2712,13 +2722,14 @@ table.custom-user-submissions-list a {
 .recipe-list-actions .fa {
 	cursor: pointer;
 	width: 30px;
-	transition: font-size 0.2s ease-in-out;    
+	transition: font-size 0.2s ease-in-out;
+	font-size: 22px;   
 }
 
 .recipe-list-actions .fa:hover {
 	color: #5d5d5d;
 	text-shadow: #6b6b6b 2px 2px 6px;
-	font-size: 25px;
+	font-size: 27px;
 }
 
 /*tr.recipe-list-row {
@@ -2856,28 +2867,10 @@ ul.cnss-social-icon {
 	margin-bottom:16px;
 }
 
-/* Gravity Forms
+/* Custom Contact Form
 --------------------------------------------- */
-
-div.gform_wrapper input[type="email"],
-div.gform_wrapper input[type="text"],
-div.gform_wrapper textarea,
-div.gform_wrapper .ginput_complex label {
-	font-size:16px;
-	padding:8px;
-}
-
-div.gform_wrapper .ginput_complex label {
-	padding:0;
-}
-
-div.gform_wrapper li,
-div.gform_wrapper form li {
-	margin:16px 0 0;
-}
-
-div.gform_wrapper .gform_footer input[type="submit"] {
-	font-size:12px;
+span.required_field {
+	color:red;
 }
 
 

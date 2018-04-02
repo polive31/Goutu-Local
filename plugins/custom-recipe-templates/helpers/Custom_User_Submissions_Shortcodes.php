@@ -410,20 +410,18 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
                 $output .= '<p>←' . sprintf( __( 'Back to <a href="%s">my published recipes</a>', 'foodiepro' ), $url ) . '</p>';
 
                 // Send notification email to administrator
-                if( WPUltimateRecipe::option('user_submission_email_admin', '0' ) == '1' ) {
-                    $to = get_option( 'admin_email' );
+                $to = get_option( 'admin_email' );
+                if( $to ) {
+                    $edit_link = admin_url( 'post.php?action=edit&post=' . $post_id );
 
-                    if( $to ) {
-                        $edit_link = admin_url( 'post.php?action=edit&post=' . $post_id );
+                    $subject = sprintf( __('New user submission:%s', 'foodiepro'), $title );
+                    $message = 'A new recipe has been submitted on your website.';
+                    $message .= "\r\n\r\n";
+                    $message .= 'Edit this recipe: ' . $edit_link;
 
-                        $subject = 'New user submission: ' . $title;
-                        $message = 'A new recipe has been submitted on your website.';
-                        $message .= "\r\n\r\n";
-                        $message .= 'Edit this recipe: ' . $edit_link;
-
-                        wp_mail( $to, $subject, $message );
-                    }
+                    wp_mail( $to, $subject, $message );
                 }
+
                 do_action('wp_insert_post', 'wp_insert_post');
                 return $output;
             }

@@ -18,14 +18,6 @@
   font-size:25px;
 }
 
-.submitbox {
-  /*background-color: #e8e8e8;*/
-  background-color: #505050;
-  color:#FFF;
-  padding: 10px;
-  margin: 20px 0;
-}
-
 #wpurp_user_submission_form input {
   vertical-align: middle;
 }

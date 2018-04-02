@@ -537,6 +537,22 @@ textarea.ingredients_notes {
     padding: 0;
 	}	
 
+  #wpurp_user_submission_form table {
+    table-layout: fixed;
+  }   
+
+  #wpurp_user_submission_form span.header,
+  #wpurp_user_submission_form span.name,
+  #wpurp_user_submission_form .instruction-group-label,
+  #wpurp_user_submission_form .ingredient-group-label,
+  #wpurp_user_submission_form span {
+    margin:0;
+  }  
+
+  #wpurp_user_submission_form .group-container {
+    width: calc(100% - 45px);
+  }
+
 	#wpurp_user_submission_form .instruction-text {
 	  width: 100%;
 	  clear:both;
@@ -548,11 +564,11 @@ textarea.ingredients_notes {
     margin: 0;
     padding: 0;
 	}
-		
-	#wpurp_user_submission_form table#recipe-ingredients {
-	  border-collapse:separate; 
-	  border-spacing: 0 20px;
-	}	
+    
+  #wpurp_user_submission_form table#recipe-ingredients {
+    border-collapse:separate; 
+    border-spacing: 0 20px;
+  } 
 	
 	#wpurp_user_submission_form td.recipe-general-form-label {
     float: left;

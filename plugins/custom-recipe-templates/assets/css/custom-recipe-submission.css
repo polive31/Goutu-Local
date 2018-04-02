@@ -19,9 +19,15 @@
 }
 
 .submitbox {
-  background-color: #e8e8e8;
+  /*background-color: #e8e8e8;*/
+  background-color: #505050;
+  color:#FFF;
   padding: 10px;
   margin: 20px 0;
+}
+
+#wpurp_user_submission_form input {
+  vertical-align: middle;
 }
 
 
@@ -29,9 +35,14 @@
 -------------------------------------------*/
 #wpurp_user_submission_form {
   background-color:#f3f3f3;
-	padding:10px;
+  /*background-color: #f2efeb;*/
+	padding:20px;
   float:left;
   width: 100%;
+}
+
+.recipe-preview #wpurp_user_submission_form {
+  background:none;
 }
 
 #wpurp_user_submission_form .recipe-form-notes,
@@ -64,8 +75,8 @@ ul.wpurp-user-submissions-current-user-edit {
 	font-variant: small-caps;
 }
 
-#wpurp_user_submission_form input#recipe_title,
-#wpurp_user_submission_form input.ingredient-group-label {
+
+#wpurp_user_submission_form input#recipe_title {
   font-size: 16px!important;
 }
 
@@ -133,7 +144,7 @@ table#recipe-instructions .recipe_instructions_thumbnail,
 }
 
 #wpurp_user_submission_form .taxonomy-select-boxes select {
-  width: 20%!important;
+  width: 200px!important;
 }
 
 #wpurp_user_submission_form .select2wpurp-container ul {
@@ -312,21 +323,65 @@ select#recipe-occasion option {
 .recipe-submit-buttons {
   float: right;
   padding: 20px;
+  margin-top: 24px;
+  width: 100%;
+  text-align: right;
+}
+
+.recipe-submit-buttons .submitbutton {
+  padding: 5px 10px;
+  margin: 10px;
+  /*background-color: #818181;*/
+  background-color: #505050;
+  color: #FFF;
+  font-size: 26px;
+  border-radius: 10px; 
+  transition: background-color 0.5s ease-in-out;
 }
 
 .recipe-submit-buttons input {
-  padding: 10px 20px;
-  margin: 10px;
-  font-weight: bold;
+  background: transparent;
+  color: #FFF;
+  font-family: Oswald, sans-serif;
+  font-size: 16px;
+  vertical-align: text-bottom;  
 }
 
+.recipe-submit-buttons .submitbutton:hover {
+  background-color : #000;
+}
+
+
+.recipe-submit-buttons .submitbutton:before {
+  font-family: FontAwesome;
+  padding: 0 5px;
+}
+
+.recipe-submit-buttons .submitbutton#draft:before {
+  content:"\f0c7";
+}
+
+.recipe-submit-buttons .submitbutton#submit:before {
+  content:"\f0ee";
+}
+
+.recipe-submit-buttons .submitbutton#preview:before {
+  content:"\f002";
+}
+
+.recipe-submit-buttons .submitbutton#edit:before {
+  content:"\f044";
+}
+
+
 #wpurp_user_submission_form .button {
-  background-color: #d0d0d0;
   float: left;
   padding: 8px 10px;
   margin: 20px 10px 10px 0;
   border-radius: 2px;
   border: 1px solid #c4c4c4;
+  background-color: #d0d0d0;
+  transition: background-color ease-in-out 0.5s;  
 }
 
 #wpurp_user_submission_form label.add-image-button {
@@ -356,7 +411,8 @@ select#recipe-occasion option {
 
 #wpurp_user_submission_form label.add-image-button:hover,
 #wpurp_user_submission_form .button:hover {
-	background-color:#e0e0e0;
+	background-color:#b2b2b2;
+
 }
 
 #wpurp_user_submission_form label.add-image-button:before,
@@ -390,6 +446,9 @@ select#recipe-occasion option {
   clear: both;
   width: 100%;
 }
+
+
+
 
 
 

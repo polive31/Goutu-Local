@@ -10,6 +10,7 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
     protected static $_UploadPath; 
     protected $logged_in;
     protected $taxonomies;
+    protected $instructions;
 
     public function __construct( $name = 'user-submissions' ) {
         parent::__construct( $name );
@@ -18,49 +19,44 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
         $upload_dir = wp_upload_dir();
         self::$_UploadPath = trailingslashit( $upload_dir['basedir'] );
 
-        // add_shortcode( 'custom_submissions', array( $this, 'submissions_shortcode' ) ); // For backwards compatibility
-        // add_shortcode( 'custom-recipe-submissions', array( $this, 'submissions_shortcode' ) );
+        add_shortcode( 'custom-recipe-submissions-new-recipe', array( $this, 'new_submission_shortcode' ) );
         add_shortcode( 'custom-recipe-submissions-current-user-edit', array( $this, 'submissions_current_user_edit_shortcode' ) );
+
+
+        // Recipe List Shortcode and associated actions
+        add_shortcode( 'custom-recipe-submissions-current-user-list', array( $this, 'submissions_current_user_list_shortcode' ) );
+        add_action( 'wp_ajax_custom_user_submissions_delete_recipe', array( $this, 'ajax_user_delete_recipe') );
+        add_action( 'wp_ajax_nopriv_custom_user_submissions_delete_recipe', array( $this, 'ajax_user_delete_recipe') );
     }
 
-    // public function submissions_shortcode() {
-    //     if( !is_user_logged_in() ) {
-    //         return '<p class="errorbox">' . __( 'Sorry, only registered users may submit recipes.', 'foodiepro' ) . '</p>';
-    //     } else {
-    //         if( isset( $_POST['submitrecipe'] ) ) {
-    //             return $this->submissions_process();
-    //         } else {
-    //             return $this->submissions_form();
-    //         }
-    //     }
-    // }
+    public function new_submission_shortcode() {
+        if( !is_user_logged_in() ) {
+            return '<p class="errorbox">' . __( 'Sorry, only registered users may submit recipes.', 'foodiepro' ) . '</p>';
+        } else {
+            if( isset( $_POST['submitrecipe'] ) ) {
+                return $this->submissions_process();
+            } else {
+                return $this->submissions_form();
+            }
+        }
+    }
 
-    public function submissions_current_user_edit_shortcode() {
+    public function submissions_current_user_list_shortcode() {
         $output = '';
         $author = get_current_user_id();
 
-        if( isset( $_POST['submitrecipe'] ) ) {
-            $output .= $this->submissions_process();
-        } 
-
-        elseif( isset( $_GET['wpurp-edit-recipe'] ) ) {
-            $recipe_id = $_GET['wpurp-edit-recipe'];
-            $post = get_post( $recipe_id );
-
-            if( $post->post_author == $author ) {
-                // $output .='<h3>CUSTOM SUBMISSION FORM</h3>';
-                $output .= $this->submissions_form( $recipe_id );
-            }
-        }        
-
-        elseif( $author !== 0 ) {
+        if( $author !== 0 ) {
             // $output .= 'In Custom User Submission Class !';
             $recipes = WPUltimateRecipe::get()->query()->author( $author )->post_status( array( 'publish', 'private', 'pending', 'draft' ) )->get();
 
             if( count( $recipes ) !== 0 ) {
                 // $output .= '<ul class="wpurp-user-submissions-current-user-edit">';
                 $output .= '<p>' . __('Here is the list of the recipes that you created, and their status. You can choose to edit them, change their visibility, or delete them.', 'foodiepro') . '</p>';
-                $output .= '<table class="wpurp-user-submissions-current-user-edit">';
+                $output .= '<table class="custom-user-submissions-list">';
+
+
+                $statuses = get_post_statuses();
+
                 foreach ( $recipes as $recipe ) {
                     // $item = '<li>';
                     $image_url = $recipe->image_ID() > 0 ? $recipe->image_url( 'mini-thumbnail' ) : WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
@@ -68,8 +64,8 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
                     $url = get_permalink() . self::RECIPE_EDIT_SLUG;    
                     $item .= '<td class="recipe-list-thumbnail"><a href="' . $url . '?wpurp-edit-recipe=' . $recipe->ID() . '"><img src="' . $image_url . '"></a></td>';
                     $item .= '<td class="recipe-list-title"><a href="' . $url . '?wpurp-edit-recipe=' . $recipe->ID() . '"><!--<i class="fa fa-pencil-square-o"></i>-->' . $recipe->title() . '</a></td>';
-                    $item .= '<td class="recipe-list-status">' . $recipe->post_status() . '</td>';
-                    $item .= '<td class="recipe-list-actions"><i class="fa fa-trash user-submissions-delete-recipe" data-id="' . $recipe->ID() . '" data-title="' . esc_attr( $recipe->title() ) . '"></i></td>';
+                    $item .= '<td class="recipe-list-status">' . $statuses[ $recipe->post_status() ] . '</td>';
+                    $item .= '<td class="recipe-list-actions"><i class="fa fa-trash user-submissions-delete-recipe nodisplay" data-id="' . $recipe->ID() . '" data-title="' . esc_attr( $recipe->title() ) . '"></i></td>';
                     $item .= '</tr>';
                     // $item .= '</li>';
                     $output .= apply_filters( 'wpurp_user_submissions_current_user_edit_item', $item, $recipe );
@@ -78,24 +74,51 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
                 // $output .= '</ul>';
             }
         }
-
         return $output;
-    }
+    }    
 
-    public function ajax_user_submissions_delete_recipe() {
-        if(check_ajax_referer( 'wpurp_user_submissions', 'security', false ) )
-        {
+    public function ajax_user_delete_recipe() {
+        if(check_ajax_referer( 'custom_user_submissions_list', 'security', false ) ) {
             global $user_ID;
 
             $recipe_id = intval( $_POST['recipe'] );
             $recipe = get_post( $recipe_id );
 
-            if( WPUltimateRecipe::option( 'user_submission_delete_button', '0') == '1' && $recipe->post_type == 'recipe' && $recipe->post_author == $user_ID ) {
+            if( $recipe->post_type == 'recipe' && $recipe->post_author == $user_ID ) {
                 wp_delete_post( $recipe_id );
+                wp_send_json_success( 'Recipe deleted !');
             }
+            else {
+                wp_send_json_error( 'Recipe not deleted');
+            }
+        }
+        else {
+            wp_send_json_error( 'Nonce not recognized');
         }
 
         die();
+    }
+
+    public function submissions_current_user_edit_shortcode() {
+        $output = '';
+        $user_id = get_current_user_id();
+
+        if( isset( $_POST['submitrecipe'] ) ) {            
+            $output .= $this->submissions_process();
+        } 
+
+        elseif( isset( $_GET['wpurp-edit-recipe'] ) ) {
+            $recipe_id = $_GET['wpurp-edit-recipe'];
+            $post = get_post( $recipe_id );
+            $user = get_userdata( $user_id );
+
+            if( $post->post_author == $user_id ) {
+                $output .= '<p class="submitbox">' . __( 'You can edit your recipe here, before submitting it.', 'foodiepro') . '</p>';
+                $output .= $this->submissions_form( $recipe_id );
+            }
+        }        
+
+        return $output;
     }
 
 
@@ -130,8 +153,8 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
 
         // $output .= self::$_PluginDir . 'templates/custom_submission_form.php';
         // $output .= '<h3>In CUSTOM USER SUBMISSIONS </h3>';
-        $output .= apply_filters( 'custom_user_submissions_form', $form, $recipe );
-        // $output .= $form;
+        // $output .= apply_filters( 'custom_user_submissions_form', $form, $recipe );
+        $output .= $form;
         
         return $output;
     }
@@ -175,7 +198,6 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
                 'post_status' => 'auto-draft',
             );
 
-
             // Save post
             if( $updating ) {
                 $post['ID'] = $updating_id;
@@ -187,7 +209,7 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
                 $post_id = wp_insert_post( $post, true );
             }
 
-            $meta = get_post_meta( $post );
+            // $meta = get_post_meta( $post );
 
             // Add terms
             $taxonomies = WPUltimateRecipe::get()->tags();
@@ -226,12 +248,13 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
                 }
             }
 
-            // Add featured image from media uploader
-            if( isset( $_POST['recipe_thumbnail'] ) ) {
-                update_post_meta( $post_id, '_thumbnail_id', $_POST['recipe_thumbnail'] );
-            }
+            // // Add featured image from media uploader
+            // if( isset( $_POST['recipe_thumbnail'] ) ) {
+            //     update_post_meta( $post_id, '_thumbnail_id', $_POST['recipe_thumbnail'] );
+            // }
 
             // Add all images from basic uploader
+            $this->instructions = get_post_meta( $post_id, 'recipe_instructions', true ); 
             if( $_FILES ) {
                 foreach( $_FILES as $key => $file ) {
                     if ( 'recipe_thumbnail' == $key ) {
@@ -239,11 +262,12 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
                             $this->insert_attachment_basic( $key, $post_id, true );
                         }
                     } else {
+                }
                         $this->insert_attachment_basic( $key, $post_id, false );
                     }
-                }
             }
-
+            update_post_meta( $post_id, 'recipe_instructions', $this->instructions );
+            $toto = get_post_meta( $post_id, 'recipe_instructions', true ); 
 
             // Check required fields
             $errors = array();
@@ -294,7 +318,7 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
                 $output = '';
                 // $output = '<div class="submitbox">';
                 // $output .= '<h5>' . __( 'Recipe edit', 'foodiepro' ). '</h5>';
-                $output .= '<p>' . __( 'You can edit your recipe here, before submitting it.', 'foodiepro') . '</p>';
+                $output .= '<p class="submitbox">' . __( 'You can edit your recipe here, before submitting it.', 'foodiepro') . '</p>';
                 // $output .= '</div>';
                 $output .= $this->submissions_form( $post_id, array( 'preview', 'draft', 'submit' ) );
                 return $output;
@@ -303,22 +327,41 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
 
             elseif ( isset( $_POST['draft'] ) ) {
                 // Update post status
+                $output = '';
+
+                // $output .= '<h5>BEFORE WP UPDATE POST</h5>';
+                // $debug_vars = get_post_meta( $post_id, 'recipe_instructions', true);
+                // $output .= '<pre>' . print_r($debug_vars, true) . '</pre>';
+                
+                // Protect the metadata added since the last post update, ie the instruction images
+                // Reason : otherwise they get deleted in wp_update_post 
+                $meta_backup = get_post_meta( $post_id, 'recipe_instructions', true );
+
                 $args = array(
                     'ID' => $post_id,
                     'post_status' => 'draft',
                 );
                 wp_update_post( $args );
 
-                $output = '';
+                // Restore backuped metadata
+                update_post_meta( $post_id, 'recipe_instructions', $meta_backup );
+
+                // $output .= '<h5>AFTER WP UPDATE POST</h5>';
+                // $debug_vars = get_post_meta( $post_id, 'recipe_instructions', true);
+                // $output .= '<pre>' . print_r($debug_vars, true) . '</pre>';
 
                 // Display confirmation message                 
-                $output .= '<p class="successbox">';
+                $output .= '<p class="submitbox">';
                 $output .= __( 'Recipe saved as draft. It will not be visible on the site, but you can edit it at any time and submit it later.', 'foodiepro' );
                 $output .= '</p>';
-                $url = do_shortcode('[permalink slug="publier-recettes"]');
+                $url = do_shortcode('[permalink slug="' . self::RECIPES_PUBLISH_SLUG . '"]');
                 $output .= '<p>←' . sprintf( __( 'Back to <a href="%s">my published recipes</a>', 'foodiepro' ), $url ) . '</p>';
                 $output .= $this->submissions_form( $post_id, array( 'preview', 'draft', 'submit' ) );
-                do_action('wp_insert_post', 'wp_insert_post');
+
+                // $output .= '<h5>AFTER WP INSERT POST</h5>';
+                // $debug_vars = get_post_meta( $post_id, 'recipe_instructions', true);
+                // $output .= '<pre>' . print_r($debug_vars, true) . '</pre>';
+
                 return $output;
 
             } 
@@ -337,10 +380,15 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
                     $output .= '</div>';
                 }
                 $output .= $this->submissions_form( $post_id, array( 'preview', 'draft', 'submit' ) );
+                do_action('wp_insert_post', 'wp_insert_post');
                 return $output;
             }
 
-            else {
+            elseif ( isset( $_POST['submit'] ) ) {
+
+                // Protect the metadata added since the last post update, ie the instruction images
+                // Reason : otherwise they get deleted in wp_update_post 
+                $meta_backup = get_post_meta( $post_id, 'recipe_instructions', true );
                 
                 // Update post status
                 $args = array(
@@ -350,11 +398,14 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
                 
                 wp_update_post( $args );
 
+                // Restore backuped metadata
+                update_post_meta( $post_id, 'recipe_instructions', $meta_backup );
+
                 // Success message
                 $successmsg = __( 'Recipe submitted! Thank you, your recipe is now awaiting moderation.', 'foodiepro' );
-                $url = do_shortcode('[permalink slug="publier-recettes"]');
+                $url = do_shortcode('[permalink slug="' . self::RECIPES_PUBLISH_SLUG . '"]');
                 $output = '<p class="successbox">' . $successmsg . '</p>';
-                $output .= '<p>←' . sprintf( __( 'Back to <a href="%s">my published recipes</a>' ), $url ) . '</p>';
+                $output .= '<p>←' . sprintf( __( 'Back to <a href="%s">my published recipes</a>', 'foodiepro' ), $url ) . '</p>';
 
                 // Send notification email to administrator
                 if( WPUltimateRecipe::option('user_submission_email_admin', '0' ) == '1' ) {
@@ -374,8 +425,19 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
                 do_action('wp_insert_post', 'wp_insert_post');
                 return $output;
             }
-        }
 
+            else {
+
+                $output = '';
+                $output .= '<p class="submitbox">' . __( 'Unknown action.', 'foodiepro') . '</p>';
+                $url = do_shortcode('[permalink slug="' . self::RECIPES_PUBLISH_SLUG . '"]');
+                $output .= '<p>←' . sprintf( __( 'Back to <a href="%s">my published recipes</a>', 'foodiepro' ), $url ) . '</p>';                
+
+                return $output;
+
+            }     
+
+        }
     }
 
 
@@ -395,10 +457,10 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
         } else { // Instructions image
             $number = explode( '_', $file_handler );
             $number = $number[2];
-            $instructions = get_post_meta( $post_id, 'recipe_instructions', true );
-            $instructions[$number]['image'] = $attach_id;
-            update_post_meta( $post_id, 'recipe_instructions', $instructions );
-            $instructions = get_post_meta( $post_id, 'recipe_instructions', true );
+            // $instructions = get_post_meta( $post_id, 'recipe_instructions', true );
+            $this->instructions[$number]['image'] = $attach_id;
+            // update_post_meta( $post_id, 'recipe_instructions', $instructions );
+            // $instructions = get_post_meta( $post_id, 'recipe_instructions', true );
         }
 
         return $attach_id;

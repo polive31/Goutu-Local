@@ -316,11 +316,8 @@ jQuery(document).ready(function() {
         new_instruction
             .find('.recipe_instructions_thumbnail').val('')
 
-        // new_instruction
-        //     .find('.recipe_instructions_thumbnail').attr('src', wpurp_recipe_form.coreUrl + '/img/image_placeholder.png')
-
+            // Thumbnail file selector input
         new_instruction
-            // .find('.recipe_instructions_image')
             .find('.recipe_instructions_image')
             .attr('name', function(index, name) {
                 return name.replace(/(\d+)/, nbr_instructions);
@@ -328,14 +325,17 @@ jQuery(document).ready(function() {
             .attr('id', function(index, id) {
                 return id.replace(/(\d+)/, nbr_instructions);
             }) 
+            .val(null);
 
+            // Thumbnail content
         new_instruction
-            // .find('.recipe_instructions_image')
             .find('.recipe_instructions_thumbnail')
             .attr('id', function(index, id) {
                 return id.replace(/(\d+)/, nbr_instructions);
-            })                    
+            })
+            .attr('src', custom_user_submissions.placeholder );                 
 
+            // instructions group
         new_instruction
             .find('.instructions_group')
             .attr('name', function(index, name) {
@@ -466,68 +466,6 @@ jQuery(document).ready(function() {
         }
     });
 
-    // // TODO Alternate Image
-    // jQuery('.recipe_alternate_image_add').on('click', function(e) {
-
-    //     e.preventDefault();
-
-    //     var button = jQuery(this);
-
-    //     image = button.siblings('#recipe_alternate_image');
-    //     preview = button.siblings('.recipe_alternate_image');
-
-    //     if(typeof wp.media == 'function') {
-    //         var custom_uploader = wp.media({
-    //             title: 'Insert Media',
-    //             button: {
-    //                 text: 'Add alternate image'
-    //             },
-    //             multiple: false
-    //         })
-    //             .on('select', function() {
-    //                 var attachment = custom_uploader.state().get('selection').first().toJSON();
-    //                 jQuery(preview).attr('src', attachment.url);
-    //                 jQuery(image).val(attachment.id).trigger('change');
-    //             })
-    //             .open();
-    //     } else { //fallback
-    //         post_id = button.attr('rel');
-
-    //         tb_show(button.attr('value'), 'wp-admin/media-upload.php?post_id='+post_id+'&type=image&TB_iframe=1');
-
-    //         window.send_to_editor = function(html) {
-    //             img = jQuery('img', html);
-    //             imgurl = img.attr('src');
-    //             classes = img.attr('class');
-    //             id = classes.replace(/(.*?)wp-image-/, '');
-    //             image.val(id).trigger('change');
-    //             preview.attr('src', imgurl);
-    //             tb_remove();
-    //         }
-    //     }
-
-    // });
-
-    // jQuery('.recipe_alternate_image_remove').on('click', function(e) {
-    //     e.preventDefault();
-
-    //     var button = jQuery(this);
-
-    //     button.siblings('#recipe_alternate_image').val('').trigger('change');
-    //     button.siblings('.recipe_alternate_image').attr('src', wpurp_recipe_form.coreUrl + '/img/image_placeholder.png');
-    // });
-
-    // jQuery('#recipe_alternate_image').on('change', function() {
-    //     var image = jQuery(this);
-    //     if(image.val() == '') {
-    //         image.siblings('.recipe_alternate_image_add').removeClass('wpurp-hide');
-    //         image.siblings('.recipe_alternate_image_remove').addClass('wpurp-hide');
-    //     } else {
-    //         image.siblings('.recipe_alternate_image_remove').removeClass('wpurp-hide');
-    //         image.siblings('.recipe_alternate_image_add').addClass('wpurp-hide');
-    //     }
-    // });
-
     jQuery('.recipe_instructions_add_image').on('click', function(e) {
 
         e.preventDefault();
@@ -599,77 +537,6 @@ jQuery(document).ready(function() {
         tinyMCE.activeEditor.windowManager.close();
     });
 
-    // /* 
-    //  * Image preview settings fields
-    //  */
-    // jQuery('.wpurp-preview-select').on('change', function() {
-    //     var prefix = jQuery(this).siblings('.wpurp-preview-img').children('img').attr('alt');
-
-    //     if( prefix.split('-').length > 1 ) {
-    //         prefix = prefix.split('-')[0] + '-';
-    //     }
-
-    //     var old_img = jQuery(this).siblings('.wpurp-preview-img').children('img').attr('src');
-    //     var new_img = prefix + jQuery(this).val() + '.jpg';
-    //     var old_img_file = old_img.split('/');
-
-    //     old_img_file = old_img_file[old_img_file.length - 1];
-
-    //     new_img = old_img.replace(old_img_file, new_img);
-
-    //     jQuery(this).siblings('.wpurp-preview-img').children('img').attr('src', new_img)
-
-    // });
-
-    // /*
-    //  * Image upload settings fields
-    //  * @TODO: This pretty much repeats the instruction image code, we should combine them
-    //  */
-    // jQuery('.wpurp-file-upload').on('click', function(e) {
-
-    //     e.preventDefault();
-
-    //     var button = jQuery(this);
-
-    //     preview = button.siblings('img');
-    //     fieldname = preview.attr('class');
-    //     image = button.siblings('.' + fieldname + '_image');
-
-    //     if(typeof wp.media == 'function') {
-    //         var custom_uploader = wp.media({
-    //             title: 'Insert Media',
-    //             button: {
-    //                 text: 'Add image'
-    //             },
-    //             multiple: false
-    //         })
-    //             .on('select', function() {
-    //                 var attachment = custom_uploader.state().get('selection').first().toJSON();
-    //                 jQuery(preview).attr('src', attachment.url);
-    //                 jQuery(image).val(attachment.id);
-    //             })
-    //             .open();
-    //     } else { //fallback
-    //         post_id = button.attr('rel');
-
-    //         tb_show(button.attr('value'), 'wp-admin/media-upload.php?post_id='+post_id+'&type=image&TB_iframe=1');
-
-    //         window.send_to_editor = function(html) {
-    //             img = jQuery('img', html);
-    //             imgurl = img.attr('src');
-    //             classes = img.attr('class');
-    //             id = classes.replace(/(.*?)wp-image-/, '');
-    //             image.val(id).trigger('change');
-    //             preview.attr('src', imgurl);
-    //             tb_remove();
-    //         }
-    //     }
-
-    //     button.addClass('wpurp-hide');
-    //     button.siblings('.wpurp-file-remove').removeClass('wpurp-hide');
-
-    // });
-
     jQuery('.wpurp-file-remove').on('click', function(e) {
         e.preventDefault();
 
@@ -693,19 +560,5 @@ jQuery(document).ready(function() {
         dropdownAutoWidth: false
     });
 
-    jQuery('.user-submissions-delete-recipe').on('click', function() {
-        var button = jQuery(this);
-        if(confirm(wpurp_user_submissions.confirm_message + ' ' + button.data('title'))) {
-            button.parent('li').remove();
-
-            var data = {
-                action: 'user_submissions_delete_recipe',
-                security: wpurp_user_submissions.nonce,
-                recipe: button.data('id')
-            };
-
-            jQuery.post(wpurp_user_submissions.ajaxurl, data);
-        }
-    });    
 
 });

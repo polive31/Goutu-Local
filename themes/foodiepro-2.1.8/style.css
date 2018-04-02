@@ -136,6 +136,7 @@ audio:not([controls]) {
 }
 
 [hidden],
+.nodisplay,
 template,
 .no-display,
 .desktop-nodisplay,
@@ -2692,18 +2693,30 @@ i.fa.fa-star-o {
 
 /* Recipe List
 -------------------------------------------*/
-table.wpurp-user-submissions-current-user-edit {
+table.custom-user-submissions-list {
     width: 100%;
     border-top: 1px solid #bebebe;
     margin-top: 50px;   
 }
 
-table.wpurp-user-submissions-current-user-edit td {
+table.custom-user-submissions-list td {
 	padding:10px;
 }
 
-table.wpurp-user-submissions-current-user-edit a {
+table.custom-user-submissions-list a {
     text-decoration: none;
+}
+
+.user-submissions-delete-recipe {
+	cursor: pointer;
+	width: 30px;
+	transition: font-size 0.3s ease-in-out;    
+}
+
+.user-submissions-delete-recipe:hover {
+	color: #5d5d5d;
+	text-shadow: #6b6b6b 2px 2px 6px;
+	font-size: 25px;
 }
 
 /*tr.recipe-list-row {
@@ -4132,9 +4145,11 @@ li.comment a {
 
 .sidebar .rpwe-block h3 {
 	background:none;
-	vertical-align:middle;
+	/*vertical-align:middle;*/
 	font-weight:400;
 	width:200%;
+	margin-top: auto;
+    margin-bottom: auto;
 }
 
 .sidebar .rpwe-comment {
@@ -4990,10 +5005,10 @@ Site Footer
 	.recipes-top,
 	.blogs-top {
 		display:-webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-	  display:-moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-	  display:-ms-flexbox;      /* TWEENER - IE 10 */
-	  display:-webkit-flex;     /* NEW - Chrome */
-	  display:flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */ 
+		display:-moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+		display:-ms-flexbox;      /* TWEENER - IE 10 */
+		display:-webkit-flex;     /* NEW - Chrome */
+		display:flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */ 
 	}
 	
 	.screen-nodisplay {

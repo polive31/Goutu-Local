@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Custom_WPURP_Templates {
 	
-	const RECIPES_PUBLISH_SLUG = 'publier-recettes';
+	const RECIPES_LIST_SLUG = 'publier-recettes';
 	const RECIPE_NEW_SLUG = 'nouvelle-recette';
 	const RECIPE_EDIT_SLUG = 'modifier-recette';
 	protected static $_PluginPath;	
@@ -105,11 +105,16 @@ class Custom_WPURP_Templates {
 //		              'public' => true,
 //		              'direct' => true,
 //		          ); 			
-		  $css_enqueue[]=array(
+		  	$css_enqueue[]=array(
 						'url' => self::$_PluginUri . 'assets/css/custom-recipe.css',
 						'public' => true,
-					);		  	
-		  $css_enqueue[]=array(
+					);	
+			$css_enqueue[]=						
+					array(
+		              'url' => '//fonts.googleapis.com/css?family=Cabin',
+		              'public' => true,
+		          	);						  	
+		  	$css_enqueue[]=array(
 						'url' => self::$_PluginUri . 'assets/css/custom-recipe-submission.css',
 						'dir' => self::$_PluginPath . 'assets/css/custom-recipe-submission.css',
 						'public' => true,
@@ -242,18 +247,42 @@ class Custom_WPURP_Templates {
 				// }
 			}
 			
-			// elseif ( is_page( [self::RECIPES_PUBLISH_SLUG, self::RECIPE_NEW_SLUG, self::RECIPE_EDIT_SLUG] ) ) {
+			elseif ( is_page( [self::RECIPES_LIST_SLUG] ) ) {
+				$js_enqueue = array();
+
+				$this->custom_enqueued_scripts = array (
+					array(
+		                'name' => 'custom-user-submissions-list',
+		                'uri' => self::$_PluginUri . 'assets/js/',
+		                'path' => self::$_PluginPath . 'assets/js/',
+		                'file' => 'custom_user_submissions_list.js',
+		                'deps' => array(
+		                ),
+		                'footer' => true,
+		                'data' => array(
+		                    'name' => 'custom_user_submissions_list',
+		                    'ajaxurl' => admin_url( 'admin-ajax.php' ),
+		                    'nonce' => wp_create_nonce( 'custom_user_submissions_list' ),
+		                    'confirm_message' => __( 'Are you sure you want to delete this recipe:', 'foodiepro' ),
+		                )
+		            ),
+		        );
+
+			}	
+
 			elseif ( is_page( [self::RECIPE_NEW_SLUG, self::RECIPE_EDIT_SLUG] ) ) {
-				// $js_enqueue = $this->remove_entry($js_enqueue, 'name', 'select2wpurp');
-				$js_enqueue = $this->remove_entry($js_enqueue, 'name', 'user-submissions');
-				$js_enqueue = $this->remove_entry($js_enqueue, 'file', '/js/recipe_form.js');
-				$js_enqueue = $this->remove_entry($js_enqueue, 'name', 'wpurp-user-menus');
+				$js_enqueue = array();
 
-				// echo '<pre>' . print_r($js_enqueue) . '</pre>';
-
-				// $js_enqueue = $js_enqueue;
-
+		                
 				$this->custom_enqueued_scripts = array(
+					array(
+					    'name' => 'select2wpurp',
+					    'uri' => WPUltimateRecipe::get()->coreUrl . '/vendor/select2/',
+					    'file' => 'select2.min.js',
+					    'deps' => array(
+					        'jquery',
+					    ),
+					),
 		            array(
 		                'name' => 'custom-user-submissions',
 		                'uri' => self::$_PluginUri . 'assets/js/',
@@ -261,14 +290,13 @@ class Custom_WPURP_Templates {
 		                'file' => 'custom_user_submission.js',
 		                'deps' => array(
 		                    'jquery',
+		                    'jquery-ui-sortable',
 		                    'select2wpurp',
 		                ),
 		                'footer' => true,
 		                'data' => array(
 		                    'name' => 'custom_user_submissions',
-		                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
-		                    'nonce' => wp_create_nonce( 'custom_user_submissions' ),
-		                    'confirm_message' => __( 'Are you sure you want to delete this recipe:', 'foodiepro' ),
+		                	'placeholder' => WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png',
 		                )
 		           	)					
             	);            	

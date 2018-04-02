@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2018-03-30 01:41+0200\n"
-"PO-Revision-Date: 2018-03-30 01:43+0200\n"
+"POT-Creation-Date: 2018-04-01 12:19+0200\n"
+"PO-Revision-Date: 2018-04-01 22:39+0200\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -343,18 +343,25 @@ msgstr ""
 msgid "Custom Fields"
 msgstr ""
 
-#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:280
+#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:282
 msgid ""
 "Here is what your recipe will look like once it is published. You can choose "
 "to continue editing it, or save it as a draft, or publish it, using the "
 "buttons at the bottom of the page."
 msgstr ""
+"Voici comment se présentera votre recette lorsqu'elle sera publiée. Vous "
+"pouvez choisir de la modifier, de l'enregistrer en tant que brouillon, ou "
+"bien de la soumettre pour publication, en utilisant les boutons au bas de "
+"cette page. "
 
-#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:294
+#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:297
 msgid "You can edit your recipe here, before submitting it."
 msgstr ""
+"Vous pouvez modifier votre recette ici et la sauvegarder en tant que "
+"brouillon aussi longtemps que vous le souhaitez, avant de la soumettre pour "
+"publication."
 
-#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:311
+#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:316
 msgid ""
 "Recipe saved as draft. It will not be visible on the site, but you can edit "
 "it at any time and submit it later."
@@ -363,18 +370,18 @@ msgstr ""
 "visible sur le site, mais vous pouvez la modifier à tout moment, et la "
 "publier plus tard."
 
-#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:314
-#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:352
+#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:319
+#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:357
 #, php-format
 msgid "Back to <a href=\"%s\">my published recipes</a>"
 msgstr "Retour à <a href=\"%s\">mes recettes publiées</a>"
 
-#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:326
+#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:331
 #: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes_bak.php:380
 msgid "Please fill-in those required fields:"
 msgstr "Merci de renseigner les informations suivantes :"
 
-#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:349
+#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:354
 #: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes_bak.php:431
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_options.php:1494
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:430
@@ -382,12 +389,12 @@ msgid "Recipe submitted! Thank you, your recipe is now awaiting moderation."
 msgstr ""
 "Nous avons bien reçu votre recette ! Elle sera publiée après modération. "
 
-#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:411
+#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:416
 #: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes_bak.php:488
 msgid "Format as Duration"
 msgstr ""
 
-#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:412
+#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes.php:417
 #: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes_bak.php:489
 #, fuzzy
 #| msgid "Main Ingredients"
@@ -444,7 +451,7 @@ msgstr "Favoris"
 msgid "Print this Recipe"
 msgstr "Imprimer cette recette"
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:271
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:307
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:65
 msgid "Are you sure you want to delete this recipe:"
 msgstr "Etes vous sûr de vouloir supprimer cette recette :"
@@ -806,7 +813,6 @@ msgid "(this label is not shown)"
 msgstr "(ce titre n'apparaît pas dans la recette) "
 
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:124
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:258
 msgid "eg. For the dough"
 msgstr "ex : Pour la pâte"
 
@@ -913,6 +919,10 @@ msgstr ""
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:257
 msgid "Main Instructions"
 msgstr "Instructions principales"
+
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:258
+msgid "eg. Preparation of the dough"
+msgstr "ex : Préparation de la pâte"
 
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:266
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:287

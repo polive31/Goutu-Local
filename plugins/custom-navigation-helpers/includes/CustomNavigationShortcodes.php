@@ -380,7 +380,8 @@ class CustomNavigationShortcodes extends CustomArchive {
 		if ($id) 
 			$url=get_permalink($id);
 		elseif ($slug) {
-			$url=get_permalink(get_page_by_path($slug));			
+			// $url=get_permalink(get_page_by_path($slug));			
+			$url=$this->get_page_by_slug($slug);			
 		}
 		else {
 			$url=$_SERVER['REQUEST_URI'];			
@@ -389,6 +390,14 @@ class CustomNavigationShortcodes extends CustomArchive {
     if ($html) return '<a href=' . $url . '>' . $text . '</a>';
     else return $url;
 	}
+
+	public function get_page_by_slug($page_slug, $post_type = 'page' ) { 
+		global $wpdb; 
+		$page = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND post_type= %s AND post_status = 'publish'", $page_slug, $post_type ) ); 
+		 if ( $page ) 
+		    return get_permalink($page); 
+		return null; 
+  	}
 
 
 	/* Output registration page url

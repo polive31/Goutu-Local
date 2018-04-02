@@ -139,16 +139,24 @@
     </div> <!-- /hide-on-preview -->
         <div class="recipe-submit-buttons">
             <?php if (in_array('preview', $buttons)) {;?>    
+                <span class="submitbutton" id="preview">
                 <input type="submit" value="<?php _e( 'Preview', 'foodiepro' ); ?>" id="preview" name="preview" />
+                </span>
             <?php }; ?>
             <?php if (in_array('edit', $buttons)) {;?>    
+                <span class="submitbutton" id="edit">
                 <input type="submit" value="<?php _e( 'Edit', 'foodiepro' ); ?>" id="edit" name="edit" />
+                </span>
             <?php }; ?>        
             <?php if (in_array('draft', $buttons)) {;?>    
+                <span class="submitbutton" id="draft">
                 <input type="submit" value="<?php _e( 'Draft', 'foodiepro' ); ?>" id="draft" name="draft" />
+                </span>
             <?php }; ?>
             <?php if (in_array('submit', $buttons)) {;?>    
+                <span class="submitbutton" id="submit">
                 <input type="submit" value="<?php _e( 'Submit', 'foodiepro' ); ?>" id="submit" name="submit" />
+                </span>
             <?php }; ?>
         </div>
         <input type="hidden" name="action" value="post" />

@@ -112,7 +112,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
         <tr class="ingredient-group ingredient-group-first">
 	          	<td class="group" colspan="5">
 					<div class="group-container">
-		            	<span class="header"><?php _e( 'Group', 'foodiepro' ); ?></span>
+		            	<span class="header"><?php _e( 'Ingredients Group', 'foodiepro' ); ?></span>
 		                <!-- <span class="name ingredient-groups-disabled"><?php echo __( 'Main Ingredients', 'foodiepro' ) . ' ' . __( '(this label is not shown)', 'foodiepro' ); ?></span> -->
 		                <?php
 		                $previous_group = '';
@@ -138,7 +138,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
         <tr class="ingredient-group-stub">
             <td colspan="6" class="group">
             	<div class="group-container">
-            		<span class="header"><?php _e( 'Group', 'foodiepro' ); ?></span>
+            		<span class="header"><?php _e( 'Ingredients Group', 'foodiepro' ); ?></span>
             		<span class="name"><input type="text" class="ingredient-group-label" /></span>
             	</div>
             	<div class="group center-column delete-button"><span class="ingredient-group-delete">&nbsp;</span></div>
@@ -247,7 +247,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
         <thead>
         <tr class="instruction-group instruction-group-first">
 			<td colspan="3" class="group">
-          		<span class="header"><?php _e( 'Group', 'foodiepro' ); ?></span>
+          		<span class="header"><?php _e( 'Instructions Group', 'foodiepro' ); ?></span>
 				<!-- <span class="name instruction-groups-disabled"><?php echo __( 'Main Instructions', 'foodiepro' ) . ' ' . __( '(this label is not shown)', 'foodiepro' ); ?></span> -->
                 <?php
                 $previous_group = '';
@@ -255,7 +255,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                     $previous_group = $instructions[0]['group'];
                 }
                 ?>
-                <span class="name"><input type="text" placeholder="<?php echo __('eg. For the dough','foodiepro'); ?>" class="instruction-group-label" value="<?php echo esc_attr( $previous_group ); ?>"/></span>
+                <span class="name"><input type="text" placeholder="<?php echo __('eg. Preparation of the dough','foodiepro'); ?>" class="instruction-group-label" value="<?php echo esc_attr( $previous_group ); ?>"/></span>
             </td>
         </tr>
         </thead>
@@ -295,22 +295,31 @@ if( !isset( $required_fields ) ) $required_fields = array();
                 }
 
             if( !isset( $instruction['image'] ) ) {
-                $instruction['image'] = '';
+                // $instruction['image'] = '';
+                $image = WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
+                $has_image = false;
                 //echo '<pre>' . 'instruction image variable : ' . $instruction['image'] . '</pre>';
             }
 
-            if( $instruction['image'] ) {
+            else {
+            // if( $instruction['image'] ) {
                 $image = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
-                $image = $image[0];
-                $has_image = true;
+                if ( $image ) {
+                    $image = $image[0];
+                    $has_image = true;
+                }
+                else {
+                    $image = WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
+                    $has_image = false;
+                }
                 //echo '<pre>' . "Has image = true !" . '</pre>';
             }
-            else {
-                // $image = WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
-                $image = WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
-                $has_image = false;
-                //echo '<pre>' . "Has image = false" . '</pre>';
-            }
+            // else {
+            //     // $image = WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
+            //     $image = WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
+            //     $has_image = false;
+            //     //echo '<pre>' . "Has image = false" . '</pre>';
+            // }
         ?> 
             <!-- Existing Instructions Section -->
 

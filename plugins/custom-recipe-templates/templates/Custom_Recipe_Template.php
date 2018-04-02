@@ -76,9 +76,9 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 						<?php echo Custom_WPURP_Templates::output_tooltip('[mashshare]','top');?>
 					</div>				
 					<script type="text/javascript">
-					jQuery( "#recipe-share" ).click(function() {
-			    	jQuery( "#share-buttons" ).toggle();
-					});
+						jQuery( "#recipe-share" ).click(function() {
+					    	jQuery( "#share-buttons" ).toggle();
+						});
 					</script>
 														
 				</div>

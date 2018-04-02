@@ -55,8 +55,11 @@ class CustomArchiveHeadline extends CustomArchive {
 	}
 
 	public function custom_archive_title() {
+		// $this->query = get_queried_object();
 		if ( is_author() ) {
-			$term = $this->query->display_name;
+			// $term = $this->query->display_name;
+			$term = get_query_var('author_name');
+			
 			if ($this->initial_is_vowel($term)) 
 				return $msg . sprintf(_x('All posts from %s','vowel','foodiepro'), $term);
 			else 
@@ -66,7 +69,8 @@ class CustomArchiveHeadline extends CustomArchive {
 			$headline = get_term_meta( $this->query->term_id, 'headline', true );
 			if ( !empty($headline) ) return $headline;
 
-			$term = $this->query->display_name;
+			// $term = $this->query->display_name;
+			$term = single_term_title('', false);
 
 		    if ( is_tax('ingredient') ) {
 				if ($this->initial_is_vowel($term))

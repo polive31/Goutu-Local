@@ -230,6 +230,9 @@ function foodie_pro_includes() {
 	require_once $includes_dir . 'widgeted-areas.php';
 	require_once $includes_dir . 'widgets.php';
 
+	// P.O. Load the custom helpers
+	require_once trailingslashit(CHILD_THEME_PATH) . 'custom-helpers.php';
+
 	// End here if we're not in the admin panel.
 	if ( ! is_admin() ) {
 		return;
@@ -316,26 +319,6 @@ function custom_favicon_links() {
 /* =              CUSTOM SCRIPTS ENQUEUE
 /* =================================================================*/
 
-
-function url_exists($url) {
-	$headers = @get_headers($url);
-	return (strpos($headers[0],'404') === false);
-}
-
-function custom_enqueue_script( $handler, $uri, $path, $file, $deps, $version ) {	
-	$minfile = str_replace( '.js', '.min.js', $file );
-	//echo '<pre>' . "minpath = {$minpath}" . '</pre>';
-	//echo '<pre>' . "path = {$path}" . '</pre>';
-	
-  //if ((url_exists($minpath)) && (WP_DEBUG==false)) {
-  if (file_exists( $path . $minfile) && WP_MINIFY ) {
-    wp_enqueue_script( $handler, $uri . $minfile, $deps, $version );
-  }
-  else {
-    wp_enqueue_script( $handler, $uri . $file, $deps, $version );
-  }
-}
-
 add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_js' );
 /**
  * Load all required JavaScript for the Foodie theme.
@@ -354,22 +337,8 @@ function foodie_pro_enqueue_js() {
 }
 
 
-
 /* Enqueue default WP jQuery in the footer rather than the header 
 --------------------------------------------------------------------*/
-//add_action( 'wp_default_scripts', 'move_jquery_into_footer' );
-//function move_jquery_into_footer( $wp_scripts ) {
-//    if( is_admin() ) return;
-//    $wp_scripts->add_data( 'jquery', 'group', true );
-//    $wp_scripts->add_data( 'jquery-core', 'group', true );
-//    $wp_scripts->add_data( 'jquery-migrate', 'group', true );
-//}
-
-function remove_script($script) {
-	wp_deregister_script($script);
-	wp_dequeue_script($script);
-}
-
 add_action( 'wp_enqueue_scripts', 'remove_header_scripts' );
 function remove_header_scripts() {
   //if ( bp_is_user_change_avatar() ) remove_script( 'BJLL' ); //Prevent conflict between BP & BJ Lazy Load
@@ -425,16 +394,6 @@ function megamenu_dequeue_google_fonts() {
 /* =              CUSTOM STYLES ENQUEUE     
 /* =================================================================*/
 
-function custom_enqueue_style( $handler, $uri, $path, $file, $deps, $version ) {	
-	$minfile = str_replace( '.css', '.min.css', $file );
-	if (file_exists( $path . $minfile) && WP_MINIFY ) {
-		wp_enqueue_style( $handler, $uri . $minfile, $deps, $version );
-	}
-	else {
-		wp_enqueue_style( $handler, $uri . $file, $deps, $version );
-	}
-}
-
 //* Load Custom Styles & Fonts
 add_filter( 'foodie_pro_disable_google_fonts', '__return_true' );
 add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_stylesheets' );
@@ -456,12 +415,6 @@ function foodie_pro_enqueue_stylesheets() {
 	$color_theme_path = CHILD_THEME_PATH . '/assets/css/';
 	$color_theme_handler = 'color-theme-' . CHILD_COLOR_THEME;
 	custom_enqueue_style( $color_theme_handler , $color_theme_url, $color_theme_path, $color_theme_handler . '.css', array(), CHILD_COLOR_THEME . CHILD_COLOR_THEME_VERSION );
-}
-
-/* Optimize page loading by dequeuing specific CSS stylesheets loading actions */
-function remove_style($style) {
-	wp_deregister_style($style);
-	wp_dequeue_style($style);
 }
 
 add_action('wp_enqueue_scripts','remove_header_styles');
@@ -894,7 +847,7 @@ function change_comment_form_defaults( $defaults ) {
 //* Change the credits text
 function sp_footer_creds_filter( $creds ) {
 	/*$creds = '[footer_copyright before="' . __('All rights reserved','foodiepro') . ' " first="2015"] &middot; <a href="https://goutu.org">Goutu.org</a> &middot; <a href="https://goutu.org/contact">' . __('Contact us', 'foodiepro') . '</a> &middot; ' . '<a href=" https://goutu.org/mentions-legales">' . __('Legal notice', 'foodiepro') . '</a>' . ' &middot; ' . __('Goûtu charter','foodiepro') . ' &middot; ' . __('Personal data','foodiepro') . ' &middot; ' . __('Terms of use','foodiepro') . ' &middot; [footer_loginout]';*/
-	$creds = '[footer_copyright before="' . __('All rights reserved','foodiepro') . ' " first="2015"] &middot; <a href="https://goutu.org">Goutu.org</a> &middot; <a href="/plus/contact">' . __('Contact us', 'foodiepro') . '</a> &middot; ' . '<a href="https://goutu.org/plus/mentions-legales">' . __('Legal notice', 'foodiepro') . '</a> &middot; [footer_loginout]';
+	$creds = '[footer_copyright before="' . __('All rights reserved','foodiepro') . ' " first="2015"] &middot; <a href="\">Goutu.org</a> &middot; <a href="/plus/contact-form">' . __('Contact us', 'foodiepro') . '</a> &middot; ' . '<a href=/plus/mentions-legales">' . __('Legal notice', 'foodiepro') . '</a> &middot; [footer_loginout]';
 	//$creds .= '<a href="http://www.beyondsecurity.com/vulnerability-scanner-verification/goutu.org"><img src="https://seal.beyondsecurity.com/verification-images/goutu.org/vulnerability-scanner-2.gif" alt="Website Security Test" border="0" /></a>';
 	return $creds;
 }

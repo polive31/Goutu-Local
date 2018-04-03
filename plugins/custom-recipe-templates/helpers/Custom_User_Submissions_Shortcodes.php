@@ -357,7 +357,7 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
                 $output .= __( 'Recipe saved as draft. It will not be visible on the site, but you can edit it at any time and submit it later.', 'foodiepro' );
                 $output .= '</p>';
                 $url = do_shortcode('[permalink slug="' . self::RECIPES_PUBLISH_SLUG . '"]');
-                $output .= '<p>←' . sprintf( __( 'Back to <a href="%s">my published recipes</a>', 'foodiepro' ), $url ) . '</p>';
+                $output .= '<p>← ' . sprintf( __( 'Back to <a href="%s">my published recipes</a>', 'foodiepro' ), $url ) . '</p>';
                 $output .= $this->submissions_form( $post_id, array( 'preview', 'draft', 'submit' ) );
 
                 // $output .= '<h5>AFTER WP INSERT POST</h5>';

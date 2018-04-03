@@ -14,22 +14,11 @@ License: GPL
 if ( !defined('ABSPATH') )
 	die('-1');
 	
-	
-	
-/* Main
-------------------------------------------------------------*/
 
-//if (! class_exists( 'PHP_Debug')) {
-//	class PHP_Debug {
-//		public function log( $msg, $var=false) {}
-//		public function trace( $msg, $var=false) {}
-//	}
-//}
 
-require_once 'includes/ContactFormPostType.php';
-require_once 'includes/CustomContactFormShortcode.php';
+require_once 'includes/CustomContactForm.php';
+// require_once 'includes/CustomContactFormShortcode.php';
 
-// new ContactFormPostType();
-new CustomContactFormShortcode();
+new CustomContactForm();
 
 

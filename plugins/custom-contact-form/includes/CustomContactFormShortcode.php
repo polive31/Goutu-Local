@@ -11,8 +11,7 @@ class CustomContactFormShortcode extends ContactFormPostType {
 	public function __construct() {	
 		//add_action( 'wp_loaded', array($this,'hydrate'));		
 		parent::__construct();
-		add_action('admin_post_ccf_submission', array($this, 'ccf_submission_process'));
-		add_action('admin_post_nopriv_ccf_submission', array($this, 'ccf_submission_process'));
+		
 		// add_action( 'wp_enqueue_scripts', array($this, 'add_recaptcha'));
 		add_shortcode('contact-form', array($this, 'custom_create_post_form'));
 	}
@@ -22,8 +21,16 @@ class CustomContactFormShortcode extends ContactFormPostType {
 	}
 
 	public function custom_create_post_form() {
+		// add_action('init', array($this, 'ccf_submission_process'));
 		ob_start(); 
+		
+		if(isset($_POST['ccf_submitted'])) {
+			echo "Submission Process";	
+			$this->ccf_submission_process;
+		}
+			
 		if(isset($_GET['post'])) {
+			echo "Submission Process";	
 			$homelink = do_shortcode('[wp-page-link target="home" text="' . __('Home page', 'foodiepro') . '"]');
 			switch($_GET['post']) {
 				case 'successfull':
@@ -40,20 +47,27 @@ class CustomContactFormShortcode extends ContactFormPostType {
 			}
 		}
 		?>
-		<form id="custom-contact-form" action="<?php echo admin_url('admin-post.php'); ?>" method="POST">
-			<input type="hidden" name="action" value="ccf_submission" />
+		<form id="custom-contact-form" action="<?php the_permalink(); ?>" method="POST">
+			<!-- <input type="hidden" name="action" value="ccf_submission" /> -->
 
+			<div class="fieldset">	
 			<label for="contact_name"><?php echo __('Name', 'foodiepro') . '<span class="required_field">*</span>'; ?></label>
-			<input name="contact_name" id="contact_name" type="text"/>
-
+			<input name="contact_name" id="contact_name" value="<?php isset($_POST['contact_name'])?$_POST['contact_name']:''; ?>" type="text"/>
+			</div>
+			<div class="fieldset">	
 			<label for="contact_email" class="required"><?php echo __('Email Address', 'foodiepro') . '<span class="required_field">*</span>'; ?></label>
 			<input name="contact_email" id="contact_email" type="email"/>
+			</div>
 
+			<div class="fieldset">	
 			<label for="contact_subject" class="required"><?php echo __('Subject', 'foodiepro'); ?></label>
 			<input name="contact_subject" id="contact_subject" type="text"/>
+			</div>
 
+			<div class="fieldset">	
 			<label for="contact_msg" class="required"><?php echo __('Message', 'foodiepro') . '<span class="required_field">*</span>'; ?></label>
 			<textarea rows="10" name="contact_msg" id="contact_msg"></textarea>
+			</div>
 
 			<label for="contact_captcha" class="required">2+5=?</label>
 			<input name="contact_captcha" id="contact_captcha" type="text"/>	
@@ -62,24 +76,43 @@ class CustomContactFormShortcode extends ContactFormPostType {
 			<!-- <div class="g-recaptcha" data-sitekey="6LeIb84SAAAAALIrAdEQoV5GUsuc5WzMfP4Z5ctc"></div> -->
 
 			<?php wp_nonce_field('contact_form_submit', 'ccf_nonce'); ?>
-			<input type="submit" name="contact_submit" value="<?php _e('Send Message', 'foodiepro'); ?>"/>
+			<input type="submit" name="ccf_submitted" id="ccf_submitted" value="<?php _e('Send Message', 'foodiepro'); ?>"/>
 
 		</form>
 
+<!-- 		<script>
+			jQuery('#custom-contact-form').submit({
+				console.log("CCF Submitted");
+				validate;
+			);
+
+			function validate(){
+				var captcha = $('#contact_captcha').val();
+				if ( jQuery.trim(captcha)!='7') {
+					alert( "<?php echo __('Please enter the correct response.', 'foodiepro'); ?>");
+					return false;} else { return true; }
+			}
+
+		</script> -->
 
 		<?php 
 		return ob_get_clean();
 	}
 	 
 	public function ccf_submission_process() {
-	 
+	
+	 	
 		if ((isset($_POST['ccf_nonce'])) && wp_verify_nonce($_POST['ccf_nonce'], 'contact_form_submit')) {
 			
 			if(strlen(trim($_POST['contact_name'])) < 1 || strlen(trim($_POST['contact_email'])) < 1 || strlen(trim($_POST['contact_msg'])) < 1 ) {
-				$redirect = add_query_arg('post', 'required_missing', home_url($_POST['_wp_http_referer']));
+				echo '<p class="errorbox">' . __('Please fill in all required fields.', 'foodiepro') . '</p>';
+				return;
+				// $redirect = add_query_arg('post', 'required_missing', home_url($_POST['_wp_http_referer']));
 			} 
 			elseif ( trim($_POST['contact_captcha']) != '7') {
-				$redirect = add_query_arg('post', 'captcha_failed', home_url($_POST['_wp_http_referer']));
+				echo '<p class="errorbox">' . __('Captcha.', 'foodiepro') . '</p>';
+				return;
+				// $redirect = add_query_arg('post', 'captcha_failed', home_url($_POST['_wp_http_referer']));
 			}
 			else {		
 				$args = array(
@@ -112,11 +145,12 @@ class CustomContactFormShortcode extends ContactFormPostType {
 	                    wp_mail( $to, $subject, $message, $headers );
 	                }
 
+				echo '<p class="errorbox">' . __('Form Submitted.', 'foodiepro') . '</p>';
+				exit;
 
 				}
 			}
-			wp_redirect($redirect); 
-			exit;
+			// wp_redirect($redirect); 
 		}
 	}
 

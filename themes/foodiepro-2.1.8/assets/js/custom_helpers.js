@@ -32,7 +32,7 @@ jQuery(document).ready(function()   {
             }    
             else if (didScroll == "no" && count <= 4) {
                 count++;
-                console.log( "count = " + count);
+                // console.log( "count = " + count);
             }
         }, 250);
 

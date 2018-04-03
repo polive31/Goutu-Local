@@ -2869,6 +2869,43 @@ ul.cnss-social-icon {
 
 /* Custom Contact Form
 --------------------------------------------- */
+
+#contactForm {
+    margin-top: 40px;
+}
+
+#contactForm .fieldset {
+    margin: 20px 0;
+}
+
+#contactForm textarea,
+#contactForm input {
+	font-size:16px;
+}
+
+#contactForm .mathquestion {
+	font-weight: bold;
+}
+
+#contactForm .fieldset label {
+	font-family: Oswald, sans-serif;
+}
+
+#contactForm button {
+	font-size : 14px;
+	margin-top:20px;
+}
+
+#contactForm .aligned label {
+	display: inline-block;
+	width:80px;
+}
+
+#contactForm .aligned input {
+	max-width:400px;
+}
+
+span.error,
 span.required_field {
 	color:red;
 }

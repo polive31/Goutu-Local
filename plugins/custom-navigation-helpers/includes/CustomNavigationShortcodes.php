@@ -16,7 +16,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		add_shortcode('permalink', array($this,'add_permalink_shortcode'));
 		add_shortcode('share-title', array($this,'display_share_title')); 
 		add_shortcode('registration', array($this,'output_registation_url')); 
-		add_shortcode( 'login-page-link', array($this,'display_login_page_link') );		
+		add_shortcode( 'wp-page-link', array($this,'display_wordpress_page_link') );		
 		add_filter( 'query_vars', array($this,'archive_filter_queryvars') );		
 
 	}
@@ -46,13 +46,18 @@ class CustomNavigationShortcodes extends CustomArchive {
 	/* = LOGIN PAGE LINK SHORTCODE    
 	/* =================================================================*/
 
-	public function display_login_page_link( $atts ) {
+	public function display_wordpress_page_link( $atts ) {
 		$atts = shortcode_atts( array(
+			'target' => 'home', // home, login
 			'markup' => 'full', // url, full
 			'text' => '',
 			), $atts );
 
-		$url = wp_login_url();
+		if ($atts['target'] == 'home')
+			$url = get_home_url();
+		else 
+			$url = wp_login_url();
+
 		if ($atts['markup'] == 'full') {
 			$html .= '<a href="' .  $url . '">' . $atts['text'] . '</a>';
 			return $html;

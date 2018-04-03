@@ -24,16 +24,19 @@ class CustomContactFormShortcode extends ContactFormPostType {
 	public function custom_create_post_form() {
 		ob_start(); 
 		if(isset($_GET['post'])) {
+			$homelink = do_shortcode('[wp-page-link target="home" text="' . __('Home page', 'foodiepro') . '"]');
 			switch($_GET['post']) {
 				case 'successfull':
 					echo '<p class="successbox">' . __('Message sent, we will answer you shortly.', 'foodiepro') . '</p>';
+					echo '<p>←' . sprintf( __( 'Back to %s', 'foodiepro' ), $homelink ) . '</p>'; 					
 					return;
 				case 'required_missing' :
 					echo '<p class="errorbox">' . __('Please fill in all required fields.', 'foodiepro') . '</p>';
 					break;
 				case 'captcha_failed' :
 					echo '<p class="errorbox">' . __('Please enter the correct response.', 'foodiepro') . '</p>';
-					break;					
+					break;	
+				echo '<p>←' . sprintf( __( 'Back to %s', 'foodiepro' ), $homelink ) . '</p>'; 					
 			}
 		}
 		?>

@@ -13,9 +13,13 @@ class CustomContactFormShortcode extends ContactFormPostType {
 		parent::__construct();
 		add_action('admin_post_ccf_submission', array($this, 'ccf_submission_process'));
 		add_action('admin_post_nopriv_ccf_submission', array($this, 'ccf_submission_process'));
+		// add_action( 'wp_enqueue_scripts', array($this, 'add_recaptcha'));
 		add_shortcode('contact-form', array($this, 'custom_create_post_form'));
 	}
 	
+	public function add_recaptcha() {
+		wp_enqueue_script('google_recaptcha', 'https://www.google.com/recaptcha/api.js', array(), '', true);
+	}
 
 	public function custom_create_post_form() {
 		ob_start(); 
@@ -24,9 +28,12 @@ class CustomContactFormShortcode extends ContactFormPostType {
 				case 'successfull':
 					echo '<p class="successbox">' . __('Message sent, we will answer you shortly.', 'foodiepro') . '</p>';
 					return;
-				case 'failed' :
+				case 'required_missing' :
 					echo '<p class="errorbox">' . __('Please fill in all required fields.', 'foodiepro') . '</p>';
 					break;
+				case 'captcha_failed' :
+					echo '<p class="errorbox">' . __('Please enter the correct response.', 'foodiepro') . '</p>';
+					break;					
 			}
 		}
 		?>
@@ -45,10 +52,18 @@ class CustomContactFormShortcode extends ContactFormPostType {
 			<label for="contact_msg" class="required"><?php echo __('Message', 'foodiepro') . '<span class="required_field">*</span>'; ?></label>
 			<textarea rows="10" name="contact_msg" id="contact_msg"></textarea>
 
+			<label for="contact_captcha" class="required">2+5=?</label>
+			<input name="contact_captcha" id="contact_captcha" type="text"/>	
+
+			<!-- Google Recaptcha -->
+			<!-- <div class="g-recaptcha" data-sitekey="6LeIb84SAAAAALIrAdEQoV5GUsuc5WzMfP4Z5ctc"></div> -->
+
 			<?php wp_nonce_field('contact_form_submit', 'ccf_nonce'); ?>
 			<input type="submit" name="contact_submit" value="<?php _e('Send Message', 'foodiepro'); ?>"/>
 
 		</form>
+
+
 		<?php 
 		return ob_get_clean();
 	}
@@ -58,8 +73,11 @@ class CustomContactFormShortcode extends ContactFormPostType {
 		if ((isset($_POST['ccf_nonce'])) && wp_verify_nonce($_POST['ccf_nonce'], 'contact_form_submit')) {
 			
 			if(strlen(trim($_POST['contact_name'])) < 1 || strlen(trim($_POST['contact_email'])) < 1 || strlen(trim($_POST['contact_msg'])) < 1 ) {
-				$redirect = add_query_arg('post', 'failed', home_url($_POST['_wp_http_referer']));
+				$redirect = add_query_arg('post', 'required_missing', home_url($_POST['_wp_http_referer']));
 			} 
+			elseif ( trim($_POST['contact_captcha']) != '7') {
+				$redirect = add_query_arg('post', 'captcha_failed', home_url($_POST['_wp_http_referer']));
+			}
 			else {		
 				$args = array(
 					'post_title' => esc_attr(strip_tags($_POST['contact_subject'])),

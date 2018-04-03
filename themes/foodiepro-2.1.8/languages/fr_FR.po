@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2018-04-03 00:21+0200\n"
-"PO-Revision-Date: 2018-04-03 00:23+0200\n"
+"POT-Creation-Date: 2018-04-03 01:19+0200\n"
+"PO-Revision-Date: 2018-04-03 01:20+0200\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -182,16 +182,20 @@ msgstr "Contactez-nous"
 msgid "contact"
 msgstr "Contactez-nous"
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:25
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:29
 msgid "Message sent, we will answer you shortly."
 msgstr "Message envoyé, nous vous répondrons dans les plus brefs délais."
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:28
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:32
 msgid "Please fill in all required fields."
 msgstr ""
 "Merci de renseigner tous les champs obligatoires (marqués d'une étoile)."
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:36
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:35
+msgid "Please enter the correct response."
+msgstr "Merci de donner la réponse correcte."
+
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:43
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:114
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_form.php:13
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_list.php:15
@@ -215,28 +219,28 @@ msgstr ""
 msgid "Name"
 msgstr "Nom"
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:39
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:46
 #: themes/foodiepro-2.1.8/buddypress/members/register.php:92
 msgid "Email Address"
 msgstr "Adresse mail"
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:42
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:49
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:33
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:59
 msgid "Subject"
 msgstr "Sujet"
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:45
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:52
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:36
 msgid "Message"
 msgstr "Message"
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:49
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:62
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:51
 msgid "Send Message"
 msgstr "Envoyer"
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:84
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:101
 #, php-format
 msgid "%s : Contact request from %s"
 msgstr ""
@@ -315,7 +319,7 @@ msgstr "Partager sur les réseaux sociaux"
 msgid "Share this post"
 msgstr "Partager cet article"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:271
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:290
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:58
 msgid "authors"
 msgstr "auteurs"

@@ -50,6 +50,10 @@ function load_admin_stylesheet() {
 	wp_enqueue_style( 'admin-css', CHILD_THEME_URL . '/assets/css/admin.css', array(), CHILD_THEME_VERSION );		
 }
 
+// Adds a contact_email address based on wp-config.php value
+// if ( isset( CONTACT_EMAIL ))
+add_option( 'contact_email', CONTACT_EMAIL);
+
 /* =================================================================*/
 /* =              FOODIEPRO CHILD THEME SETUP
 /* =================================================================*/

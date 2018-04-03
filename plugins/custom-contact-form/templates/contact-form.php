@@ -70,7 +70,7 @@ if(isset($_POST['submitted'])) {
 			update_post_meta($post_id, 'ccf_email', $email);
 
 			// Send Mail
-            $to = get_option( 'admin_email' );
+            $to = get_option( 'contact_email' );
 
             if( $to ) {
                 $edit_link = admin_url( 'post.php?action=edit&post=' . $post_id );
@@ -79,10 +79,12 @@ if(isset($_POST['submitted'])) {
 				$sendCopy = trim($_POST['sendCopy']);
 				if ($sendCopy == 'true') 
 					$header .= 'Cc:' . $email . "\r\n";
-                $message = 'Here is the message content : ';
+
                 $message .= "\r\n\r\n";
+                $message = 'Here is the message content : ';
                 $message .= $comments;
                 $message .= "\r\n\r\n";
+                $message = 'Sent by : <a href="mailto:' . $email . '">' . $name . '</a>' . "\r\n";
                 $message .= 'Check out this contact request:' . $edit_link;
                 wp_mail( $to, $mailSubject, $message, $headers );
                 $emailSent = true;
@@ -105,7 +107,7 @@ if(isset($_POST['submitted'])) {
 	$homelink = do_shortcode('[wp-page-link target="home" text="' . __('Home page', 'foodiepro') . '"]');
 		?>
 		<p class="successbox">
-			<?php echo sprintf( __('Thanks,%s','foodiepro'), $name); ?><br>
+			<?php echo sprintf( __('Thanks %s,','foodiepro'), $name); ?><br>
 			<?php echo __('Message sent, we will answer you shortly.','foodiepro'); ?>
 		</p>
 		<p>

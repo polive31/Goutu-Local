@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2018-04-03 23:30+0200\n"
+"POT-Creation-Date: 2018-04-04 00:49+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -175,17 +175,77 @@ msgstr ""
 msgid "contact"
 msgstr ""
 
+#: plugins/custom-contact-form/includes/CustomContactForm.php:93
+msgid ""
+"For security reasons, and to avoid spam, please solve the following "
+"operation : "
+msgstr ""
+
+#: plugins/custom-contact-form/includes/CustomContactForm.php:96
+msgid "zero"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/CustomContactForm.php:97
+msgid "one"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/CustomContactForm.php:98
+msgid "two"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/CustomContactForm.php:99
+msgid "three"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/CustomContactForm.php:100
+msgid "four"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/CustomContactForm.php:101
+msgid "five"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/CustomContactForm.php:102
+msgid "six"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/CustomContactForm.php:103
+msgid "seven"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/CustomContactForm.php:104
+msgid "eight"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/CustomContactForm.php:105
+msgid "nine"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/CustomContactForm.php:106
+msgid "ten"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/CustomContactForm.php:107
+msgid "eleven"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/CustomContactForm.php:108
+msgid "twelve"
+msgstr ""
+
 #: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:34
+#: plugins/custom-contact-form/templates/contact-form.php:105
 msgid "Home page"
 msgstr ""
 
 #: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:37
-#: plugins/custom-contact-form/templates/contact-form.php:118
+#: plugins/custom-contact-form/templates/contact-form.php:109
 msgid "Message sent, we will answer you shortly."
 msgstr ""
 
 #: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:38
 #: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:46
+#: plugins/custom-contact-form/templates/contact-form.php:112
 #, php-format
 msgid "Back to %s"
 msgstr ""
@@ -201,7 +261,7 @@ msgid "Please enter the correct response."
 msgstr ""
 
 #: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:54
-#: plugins/custom-contact-form/templates/contact-form.php:132
+#: plugins/custom-contact-form/templates/contact-form.php:130
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:114
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_form.php:13
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_list.php:15
@@ -231,20 +291,20 @@ msgid "Email Address"
 msgstr ""
 
 #: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:63
-#: plugins/custom-contact-form/templates/contact-form.php:148
+#: plugins/custom-contact-form/templates/contact-form.php:146
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:33
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:59
 msgid "Subject"
 msgstr ""
 
 #: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:68
-#: plugins/custom-contact-form/templates/contact-form.php:155
+#: plugins/custom-contact-form/templates/contact-form.php:153
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:36
 msgid "Message"
 msgstr ""
 
 #: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:79
-#: plugins/custom-contact-form/templates/contact-form.php:168
+#: plugins/custom-contact-form/templates/contact-form.php:167
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:51
 msgid "Send Message"
 msgstr ""
@@ -254,7 +314,7 @@ msgid "Captcha."
 msgstr ""
 
 #: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:137
-#: plugins/custom-contact-form/templates/contact-form.php:83
+#: plugins/custom-contact-form/templates/contact-form.php:77
 #, php-format
 msgid "%s : Contact request from %s"
 msgstr ""
@@ -263,36 +323,40 @@ msgstr ""
 msgid "Form Submitted."
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:28
+#: plugins/custom-contact-form/templates/contact-form.php:27
 msgid "You forgot to enter your name."
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:36
+#: plugins/custom-contact-form/templates/contact-form.php:34
 msgid "You forgot to enter a subject."
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:44
+#: plugins/custom-contact-form/templates/contact-form.php:41
 msgid "You forgot to enter your email address."
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:47
+#: plugins/custom-contact-form/templates/contact-form.php:44
 msgid "You entered an invalid email address."
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:55
+#: plugins/custom-contact-form/templates/contact-form.php:51
 msgid "You forgot to enter your comments."
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:117
+#: plugins/custom-contact-form/templates/contact-form.php:108
 #, php-format
-msgid "Thanks,%s"
+msgid "Thanks %s,"
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:124
-msgid "There was an error submitting the form."
+#: plugins/custom-contact-form/templates/contact-form.php:118
+msgid "Please provide the required information."
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:162
+#: plugins/custom-contact-form/templates/contact-form.php:122
+msgid "Please provide the correct operation result."
+msgstr ""
+
+#: plugins/custom-contact-form/templates/contact-form.php:164
 msgid "Send a copy of this email to yourself"
 msgstr ""
 

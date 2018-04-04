@@ -51,8 +51,8 @@ function load_admin_stylesheet() {
 }
 
 // Adds a contact_email address based on wp-config.php value
-// if ( isset( CONTACT_EMAIL ))
-add_option( 'contact_email', CONTACT_EMAIL);
+// require_once( get_home_path() . 'wp-config.php' );
+update_option( 'contact_email', CONTACT_EMAIL);
 
 /* =================================================================*/
 /* =              FOODIEPRO CHILD THEME SETUP

@@ -9,6 +9,7 @@ class CustomContactForm {
 
 	public static $CCF_PATH;
 	public static $CCF_URI;
+	public static $CONTACT_EMAIL;
 
 	public function __construct() {	
 		add_action('init', array($this, 'ccf_create_contact_post_type'), 10);
@@ -91,7 +92,7 @@ class CustomContactForm {
 	public function pdscaptcha($step) {
 		if ($step=="ask") {
 			$msg=__('For security reasons, and to avoid spam, please solve the following operation : ', 'foodiepro');
-			$tchiffres=array(0,1,2,3,4,5,6,7,8,9,10,12);
+			$tchiffres=array(0,1,2,3,4,5,6,7,8,9,10,11,12);
 			$tlettres=array(
 				__('zero','foodiepro'),
 				__('one','foodiepro'),
@@ -108,26 +109,22 @@ class CustomContactForm {
 				__('twelve','foodiepro'));
 			$premier=rand ( 0 , count($tchiffres)-1 );
 			$second=rand ( 0 , count($tchiffres)-1 );
-			// $choixsigne=rand ( 0 ,1 );
-			$choixsigne=0;
-			if($second<=$premier && $choixsigne==1 ) {
-				$resultat=md5($tchiffres[$premier]-$tchiffres[$second]);
-				$operation="Combien font ".$tlettres[$premier]." retranché de ".$tlettres[$second]." (en chiffres) ?";
-			}
-			else if($second<=$premier && $choixsigne==0 ) {
-				$resultat=md5($tchiffres[$premier]-$tchiffres[$second]);
+
+			if($second<=$premier ) {
+				$resultat=$tchiffres[$premier]-$tchiffres[$second];
 				$operation="Combien font ".$tlettres[$premier]." moins ".$tlettres[$second]." (en chiffres) ?";
 			}
-			else if ($second>$premier && $choixsigne==1 ) {
-				$resultat=md5($tchiffres[$premier]+$tchiffres[$second]);
-				$operation="Combien font ".$tlettres[$premier]." ajouté à ".$tlettres[$second]." (en chiffres) ?";
-				
+			else if($second>$premier ) {
+				$resultat=$tchiffres[$second]-$tchiffres[$premier];
+				$operation="Combien font ".$tlettres[$second]." moins ".$tlettres[$premier]." (en chiffres) ?";
 			}
 			else {
-				$resultat=md5($tchiffres[$premier]+$tchiffres[$second]);
+				$resultat=$tchiffres[$premier]+$tchiffres[$second];
 				$operation="Combien font ".$tlettres[$premier]." plus ".$tlettres[$second]." (en chiffres) ?";
-				
 			}
+			// echo 'resultat de reference avant md5 : ' . $resultat . "<br>";
+			$resultat=md5($resultat);
+			// echo 'resultat de reference après md5 : ' . $resultat . "<br>";
 			$o="";
 			foreach (str_split(utf8_decode($operation)) as $obj) {
 				$o .= "&#".ord($obj).";";
@@ -140,6 +137,8 @@ class CustomContactForm {
 			return $html;
 		}
 		else {
+			// echo 'reponse utilisateur' . $step["reponsecap"] . "<br>";
+			// echo 'MD5 de reference' . $step["reponsecapcode"] . "<br>";
 			if (md5(htmlspecialchars($step["reponsecap"]))==htmlspecialchars($step["reponsecapcode"]))
 				return true;
 			else

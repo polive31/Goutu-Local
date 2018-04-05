@@ -179,8 +179,8 @@ function icondeposit_bp_activity_entry_meta() {
 }
 
 // Customize post publication activity feed content
-add_filter('bp_blogs_record_activity_action', 'record_cpt_activity_content');
-add_filter('bp_blogs_record_activity_content', 'record_cpt_activity_content');
+// add_filter('bp_blogs_record_activity_action', 'record_cpt_activity_content');
+// add_filter('bp_blogs_record_activity_content', 'record_cpt_activity_content');
 function record_cpt_activity_content( $cpt ) {
 		echo "Any text";
 	  //if ( 'new_blog_post' === $cpt['type'] ) {

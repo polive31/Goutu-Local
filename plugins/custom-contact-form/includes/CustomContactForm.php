@@ -15,9 +15,33 @@ class CustomContactForm {
 		add_action('init', array($this, 'ccf_create_contact_post_type'), 10);
 		// add_filter ('theme_page_templates', array($this,'add_ccf_template'));
 		add_filter ('template_include', array($this, 'redirect_ccf_template'));
+		
+		// Create options page
+		add_action('admin_menu', array($this, 'add_ccf_options'));
 	
 		self::$CCF_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$CCF_URI = plugin_dir_url( dirname( __FILE__ ) );
+	}
+
+	public function add_ccf_options() {
+		add_options_page('Custom Contact Form', 'Custom Contact Form', 'manage_options', 'functions', array($this, 'ccf_options'));
+	}
+
+	public function ccf_options() {
+	?>
+	    <div class="wrap">
+	        <h2>Custom Contact Form Options</h2>
+	        <form method="post" action="options.php">
+	            <?php wp_nonce_field('update-options') ?>
+	            <p><strong>Contact Email</strong><br />
+	                <input type="text" name="contact_email" size="45" value="<?php echo get_option('contact_email'); ?>" />
+	            </p>
+	            <p><input type="submit" name="Submit" value="<?= __('Save Options','foodiepro') ?>" /></p>
+	            <input type="hidden" name="action" value="update" />
+	            <input type="hidden" name="page_options" value="contact_email" />
+	        </form>
+	    </div>
+	<?php
 	}
 
 	public function add_ccf_template($templates) {

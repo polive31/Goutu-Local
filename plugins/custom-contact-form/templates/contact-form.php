@@ -83,13 +83,13 @@ function ccf_output_form() {
 					$headers = 'From: '. $email . "\r\n" . 'Reply-To: ' . $email . "\r\n";
 					$sendCopy = trim($_POST['sendCopy']);
 					if ($sendCopy == 'true') 
-						$header .= 'Cc:' . $email . "\r\n";
+						$headers .= 'Cc:' . $email . "\r\n";
 
 	                $message .= "\r\n\r\n";
-	                $message = 'Here is the message content : ';
+	                $message .= 'Here is the message content : ';
 	                $message .= $comments;
 	                $message .= "\r\n\r\n";
-	                $message = 'Sent by : <a href="mailto:' . $email . '">' . $name . '</a>' . "\r\n";
+	                $message .= 'Sent by : <a href="mailto:' . $email . '">' . $name . '</a>' . "\r\n";
 	                $message .= 'Check out this contact request:' . $edit_link;
 	                wp_mail( $to, $mailSubject, $message, $headers );
 	                $emailSent = true;

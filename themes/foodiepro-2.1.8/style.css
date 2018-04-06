@@ -1243,9 +1243,11 @@ Structure and Layout
 /* Content */
 
 .content {
+	min-height: 700px; 
 	float:right;
-	width:680px; /* 680px */
+	width:680px;
 }
+	/* Workaround for cookie notice appearing on pages with few content (ex : contact form submitted) */ 
 
 .content-sidebar .content,
 .content-sidebar-sidebar .content,

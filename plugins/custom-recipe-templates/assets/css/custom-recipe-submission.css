@@ -312,60 +312,63 @@ select#recipe-occasion option {
 
 /* Buttons */
 
-.recipe-submit-buttons {
-  float: right;
+#recipe-form-buttons {
   padding: 20px;
   margin-top: 24px;
   width: 100%;
   text-align: right;
 }
 
-.recipe-submit-buttons .submitbutton {
-  padding: 5px 10px;
+#recipe-form-buttons .formbutton {
+  display: inline-block;
+  cursor: pointer;
+  padding: 0px 10px;
   margin: 10px;
   /*background-color: #818181;*/
   background-color: #505050;
   color: #FFF;
-  font-size: 26px;
+  font-size: 16px;
   border-radius: 10px; 
   transition: background-color 0.5s ease-in-out;
 }
 
-.recipe-submit-buttons input {
+#recipe-form-buttons .formbutton span {
+  text-transform: uppercase;
+  padding:5px 10px;  
   background: transparent;
   color: #FFF;
   font-family: Oswald, sans-serif;
-  font-size: 16px;
   vertical-align: middle;  
 }
 
-.recipe-submit-buttons .submitbutton:hover {
+#recipe-form-buttons .formbutton:hover {
   background-color : #000;
 }
 
 
-.recipe-submit-buttons .submitbutton:before {
+#recipe-form-buttons .formbutton:before {
   font-family: FontAwesome;
+  font-size: 26px;
+  font-weight: normal;
   padding: 0 5px;
   vertical-align: middle;
 }
 
-.recipe-submit-buttons .submitbutton#draft:before {
+#recipe-form-buttons .formbutton#draft:before {
   content:"\f0c7";
 }
 
-.recipe-submit-buttons .submitbutton#submit:before {
+#recipe-form-buttons .formbutton#publish:before {
   content:"\f0ee";
 }
 
-.recipe-submit-buttons .submitbutton#preview:before {
+#recipe-form-buttons .formbutton#preview:before {
   content:"\f002";
 }
 
-.recipe-submit-buttons .submitbutton#edit:before {
+#recipe-form-buttons .formbutton#edit:before {
   content:"\f044";
 }
-
 
 #wpurp_user_submission_form .button {
   float: left;
@@ -606,13 +609,13 @@ textarea.ingredients_notes {
 
 
   /*Recipe Submit Buttons*/
-  #wpurp_user_submission_form .recipe-submit-buttons {
+  #wpurp_user_submission_form .recipe-form-buttons {
     float: left;
     padding: 0;
     text-align: left;
   }
 
-  #wpurp_user_submission_form .recipe-submit-buttons span.submitbutton {
+  #wpurp_user_submission_form .recipe-submit-buttons span.formbutton {
     padding: 7px 5px;
     margin: 5px;
     font-size: 14px;

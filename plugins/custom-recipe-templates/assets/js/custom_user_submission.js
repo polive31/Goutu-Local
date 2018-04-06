@@ -7,6 +7,14 @@ jQuery(document).ready(function() {
     jQuery('.taxonomy-select-boxes').removeClass('nodisplay');
     jQuery('.taxonomy-select-spinner').addClass('nodisplay');
 
+    /* 
+     * Submit buttons
+     */
+    jQuery('.formbutton').on('click', function() {
+        jQuery(this).children('input').val(true);
+        jQuery('#new_recipe').submit();
+    });
+
     /*
      * Add shortcode buttons
      */

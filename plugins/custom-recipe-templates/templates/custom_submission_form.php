@@ -137,26 +137,30 @@
     </div>
 <?php } ?> -->
     </div> <!-- /hide-on-preview -->
-        <div class="recipe-submit-buttons">
+        <div id="recipe-form-buttons">
             <?php if (in_array('preview', $buttons)) {;?>    
-                <span class="submitbutton" id="preview">
-                <input type="submit" value="<?php _e( 'Preview', 'foodiepro' ); ?>" id="preview" name="preview" />
-                </span>
+                <div class="formbutton" id="preview">
+                    <span><?php _e( 'Preview', 'foodiepro' ); ?></span>    
+                    <input type="hidden" value="" id="preview" name="preview" />
+                </div>
             <?php }; ?>
             <?php if (in_array('edit', $buttons)) {;?>    
-                <span class="submitbutton" id="edit">
-                <input type="submit" value="<?php _e( 'Edit', 'foodiepro' ); ?>" id="edit" name="edit" />
-                </span>
+                <div class="formbutton" id="edit"></span>
+                    <span><?php _e( 'Edit', 'foodiepro' ); ?>
+                    <input type="hidden" value="" id="edit" name="edit" />
+                </div>
             <?php }; ?>        
             <?php if (in_array('draft', $buttons)) {;?>    
-                <span class="submitbutton" id="draft">
-                <input type="submit" value="<?php _e( 'Draft', 'foodiepro' ); ?>" id="draft" name="draft" />
-                </span>
+                <div class="formbutton" id="draft"></span>
+                    <span><?php _e( 'Draft', 'foodiepro' ); ?>
+                    <input type="hidden" value="" id="draft" name="draft" />
+                </div>
             <?php }; ?>
-            <?php if (in_array('submit', $buttons)) {;?>    
-                <span class="submitbutton" id="submit">
-                <input type="submit" value="<?php _e( 'Submit', 'foodiepro' ); ?>" id="submit" name="submit" />
-                </span>
+            <?php if (in_array('publish', $buttons)) {;?>    
+                <div class="formbutton" id="publish"></span>
+                    <span><?php _e( 'Publish', 'foodiepro' ); ?>
+                    <input type="hidden" value="" id="publish" name="publish" />
+                </div>
             <?php }; ?>
         </div>
         <input type="hidden" name="action" value="post" />

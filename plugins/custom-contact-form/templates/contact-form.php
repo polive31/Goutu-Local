@@ -83,7 +83,7 @@ function ccf_output_form() {
 					$headers = 'From: '. $email . "\r\n" . 'Reply-To: ' . $email . "\r\n";
 					$sendCopy = trim($_POST['sendCopy']);
 					if ($sendCopy == 'true') 
-						$headers .= 'Cc:' . $email . "\r\n";
+						$headers .= 'Bcc:' . $email . "\r\n";
 
 	                $message .= "\r\n\r\n";
 	                $message .= 'Here is the message content : ';
@@ -167,6 +167,8 @@ function ccf_output_form() {
 				</div>
 			<!-- </ul> -->
 			</form>
+
+
 		
 		<?php } //Check successful submission 
 

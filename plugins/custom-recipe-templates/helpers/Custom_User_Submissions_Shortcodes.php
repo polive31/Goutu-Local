@@ -303,13 +303,13 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
                 
                 $output = '';
                 $output .= '<div class="recipe-preview">';
-                $output .= '<div class="submitbox">';
+                $output .= '<p class="submitbox">';
                 // $output .= '<h5>' . __( 'Recipe preview', 'foodiepro' ). '</h5>';
-                $output .= '<p>' . __( 'Here is what your recipe will look like once it is published. You can choose to continue editing it, or save it as a draft, or publish it, using the buttons at the bottom of the page.', 'foodiepro') . '</p>';
-                $output .= '</div>';
+                $output .= __( 'Here is what your recipe will look like once it is published. You can choose to continue editing it, or save it as a draft, or publish it, using the buttons at the bottom of the page.', 'foodiepro');
+                $output .= '</p>';
                 $output .= '<h4>' . get_the_title( $post_id ) . '</h4>';
                 $output .= '[ultimate-recipe id=' . $post_id . ']';
-                $output .= $this->submissions_form( $post_id, array( 'edit', 'draft', 'submit' ) );
+                $output .= $this->submissions_form( $post_id, array( 'edit', 'draft', 'publish' ) );
                 $output .= '<div>';
                 return do_shortcode( $output );
             } 
@@ -322,7 +322,7 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
                 // $output .= '<h5>' . __( 'Recipe edit', 'foodiepro' ). '</h5>';
                 $output .= '<p class="submitbox">' . __( 'You can edit your recipe here, before submitting it.', 'foodiepro') . '</p>';
                 // $output .= '</div>';
-                $output .= $this->submissions_form( $post_id, array( 'preview', 'draft', 'submit' ) );
+                $output .= $this->submissions_form( $post_id, array( 'preview', 'draft', 'publish' ) );
                 return $output;
 
             }            
@@ -358,7 +358,7 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
                 $output .= '</p>';
                 $url = do_shortcode('[permalink slug="' . self::RECIPES_PUBLISH_SLUG . '"]');
                 $output .= '<p>← ' . sprintf( __( 'Back to <a href="%s">my published recipes</a>', 'foodiepro' ), $url ) . '</p>';
-                $output .= $this->submissions_form( $post_id, array( 'preview', 'draft', 'submit' ) );
+                $output .= $this->submissions_form( $post_id, array( 'preview', 'draft', 'publish' ) );
 
                 // $output .= '<h5>AFTER WP INSERT POST</h5>';
                 // $debug_vars = get_post_meta( $post_id, 'recipe_instructions', true);
@@ -381,12 +381,12 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
                     $output .= '</ul>';
                     $output .= '</div>';
                 }
-                $output .= $this->submissions_form( $post_id, array( 'preview', 'draft', 'submit' ) );
+                $output .= $this->submissions_form( $post_id, array( 'preview', 'draft', 'publish' ) );
                 do_action('wp_insert_post', 'wp_insert_post');
                 return $output;
             }
 
-            elseif ( isset( $_POST['submit'] ) ) {
+            elseif ( isset( $_POST['publish'] ) ) {
 
                 // Protect the metadata added since the last post update, ie the instruction images
                 // Reason : otherwise they get deleted in wp_update_post 

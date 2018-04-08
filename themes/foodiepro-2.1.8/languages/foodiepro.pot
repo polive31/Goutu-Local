@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2018-04-04 23:58+0200\n"
+"POT-Creation-Date: 2018-04-08 21:55+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -93,34 +93,38 @@ msgid ""
 msgstr ""
 
 #: plugins/custom-contact-form/includes/CustomContactForm.php:39
+msgid "Save Options"
+msgstr ""
+
+#: plugins/custom-contact-form/includes/CustomContactForm.php:63
 msgctxt "Post Type General Name"
 msgid "Contact Requests"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:40
+#: plugins/custom-contact-form/includes/CustomContactForm.php:64
 msgctxt "Post Type Singular Name"
 msgid "Contact Request"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:41
-#: plugins/custom-contact-form/includes/CustomContactForm.php:42
-#: plugins/custom-contact-form/includes/CustomContactForm.php:63
+#: plugins/custom-contact-form/includes/CustomContactForm.php:65
+#: plugins/custom-contact-form/includes/CustomContactForm.php:66
+#: plugins/custom-contact-form/includes/CustomContactForm.php:87
 msgid "Contacts"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:43
+#: plugins/custom-contact-form/includes/CustomContactForm.php:67
 msgid "Parent Item:"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:44
+#: plugins/custom-contact-form/includes/CustomContactForm.php:68
 msgid "All Items"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:45
+#: plugins/custom-contact-form/includes/CustomContactForm.php:69
 msgid "Add New Item"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:46
+#: plugins/custom-contact-form/includes/CustomContactForm.php:70
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:113
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:35
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:36
@@ -138,132 +142,152 @@ msgstr ""
 msgid "Add New"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:47
+#: plugins/custom-contact-form/includes/CustomContactForm.php:71
 msgid "New Item"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:48
+#: plugins/custom-contact-form/includes/CustomContactForm.php:72
 msgid "Edit Item"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:49
+#: plugins/custom-contact-form/includes/CustomContactForm.php:73
 msgid "Update Item"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:50
+#: plugins/custom-contact-form/includes/CustomContactForm.php:74
 msgid "View Item"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:51
+#: plugins/custom-contact-form/includes/CustomContactForm.php:75
 msgid "Search Item"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:52
+#: plugins/custom-contact-form/includes/CustomContactForm.php:76
 msgid "Not found"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:53
+#: plugins/custom-contact-form/includes/CustomContactForm.php:77
 msgid "Not found in Trash"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:56
+#: plugins/custom-contact-form/includes/CustomContactForm.php:80
 msgctxt "contact"
 msgid "contact"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:62
+#: plugins/custom-contact-form/includes/CustomContactForm.php:86
 msgid "contact"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:94
+#: plugins/custom-contact-form/includes/CustomContactForm.php:118
 msgid ""
 "For security reasons, and to avoid spam, please solve the following "
 "operation : "
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:97
+#: plugins/custom-contact-form/includes/CustomContactForm.php:121
 msgid "zero"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:98
+#: plugins/custom-contact-form/includes/CustomContactForm.php:122
 msgid "one"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:99
+#: plugins/custom-contact-form/includes/CustomContactForm.php:123
 msgid "two"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:100
+#: plugins/custom-contact-form/includes/CustomContactForm.php:124
 msgid "three"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:101
+#: plugins/custom-contact-form/includes/CustomContactForm.php:125
 msgid "four"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:102
+#: plugins/custom-contact-form/includes/CustomContactForm.php:126
 msgid "five"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:103
+#: plugins/custom-contact-form/includes/CustomContactForm.php:127
 msgid "six"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:104
+#: plugins/custom-contact-form/includes/CustomContactForm.php:128
 msgid "seven"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:105
+#: plugins/custom-contact-form/includes/CustomContactForm.php:129
 msgid "eight"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:106
+#: plugins/custom-contact-form/includes/CustomContactForm.php:130
 msgid "nine"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:107
+#: plugins/custom-contact-form/includes/CustomContactForm.php:131
 msgid "ten"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:108
+#: plugins/custom-contact-form/includes/CustomContactForm.php:132
 msgid "eleven"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:109
+#: plugins/custom-contact-form/includes/CustomContactForm.php:133
 msgid "twelve"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:34
-#: plugins/custom-contact-form/templates/contact-form-backup.php:108
+#: plugins/custom-contact-form/templates/contact-form.php:31
+msgid "You forgot to enter your name."
+msgstr ""
+
+#: plugins/custom-contact-form/templates/contact-form.php:38
+msgid "You forgot to enter a subject."
+msgstr ""
+
+#: plugins/custom-contact-form/templates/contact-form.php:45
+msgid "You forgot to enter your email address."
+msgstr ""
+
+#: plugins/custom-contact-form/templates/contact-form.php:48
+msgid "You entered an invalid email address."
+msgstr ""
+
+#: plugins/custom-contact-form/templates/contact-form.php:55
+msgid "You forgot to enter your comments."
+msgstr ""
+
+#: plugins/custom-contact-form/templates/contact-form.php:82
+#, php-format
+msgid "%s : Contact request from %s"
+msgstr ""
+
 #: plugins/custom-contact-form/templates/contact-form.php:103
 msgid "Home page"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:37
-#: plugins/custom-contact-form/templates/contact-form-backup.php:112
-msgid "Message sent, we will answer you shortly."
+#: plugins/custom-contact-form/templates/contact-form.php:106
+#, php-format
+msgid "Thanks %s,"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:38
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:46
-#: plugins/custom-contact-form/templates/contact-form-backup.php:115
+#: plugins/custom-contact-form/templates/contact-form.php:108
+msgid "Your message was sent, we will answer you shortly."
+msgstr ""
+
 #: plugins/custom-contact-form/templates/contact-form.php:111
 #, php-format
 msgid "Back to %s"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:41
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:108
-msgid "Please fill in all required fields."
+#: plugins/custom-contact-form/templates/contact-form.php:117
+msgid "Please provide the required information."
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:44
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:92
-msgid "Please enter the correct response."
+#: plugins/custom-contact-form/templates/contact-form.php:121
+msgid "Please provide the correct operation result."
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:54
-#: plugins/custom-contact-form/templates/contact-form-backup.php:133
 #: plugins/custom-contact-form/templates/contact-form.php:129
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:114
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_form.php:13
@@ -288,96 +312,24 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:58
-#: themes/foodiepro-2.1.8/buddypress/members/register.php:92
-msgid "Email Address"
-msgstr ""
-
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:63
-#: plugins/custom-contact-form/templates/contact-form-backup.php:149
 #: plugins/custom-contact-form/templates/contact-form.php:145
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:33
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:59
 msgid "Subject"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:68
-#: plugins/custom-contact-form/templates/contact-form-backup.php:156
 #: plugins/custom-contact-form/templates/contact-form.php:152
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:36
 msgid "Message"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:79
-#: plugins/custom-contact-form/templates/contact-form-backup.php:170
-#: plugins/custom-contact-form/templates/contact-form.php:166
-#: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:51
-msgid "Send Message"
-msgstr ""
-
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:113
-msgid "Captcha."
-msgstr ""
-
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:137
-#: plugins/custom-contact-form/templates/contact-form-backup.php:78
-#: plugins/custom-contact-form/templates/contact-form.php:82
-#, php-format
-msgid "%s : Contact request from %s"
-msgstr ""
-
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:148
-msgid "Form Submitted."
-msgstr ""
-
-#: plugins/custom-contact-form/templates/contact-form-backup.php:27
-#: plugins/custom-contact-form/templates/contact-form.php:31
-msgid "You forgot to enter your name."
-msgstr ""
-
-#: plugins/custom-contact-form/templates/contact-form-backup.php:34
-#: plugins/custom-contact-form/templates/contact-form.php:38
-msgid "You forgot to enter a subject."
-msgstr ""
-
-#: plugins/custom-contact-form/templates/contact-form-backup.php:41
-#: plugins/custom-contact-form/templates/contact-form.php:45
-msgid "You forgot to enter your email address."
-msgstr ""
-
-#: plugins/custom-contact-form/templates/contact-form-backup.php:44
-#: plugins/custom-contact-form/templates/contact-form.php:48
-msgid "You entered an invalid email address."
-msgstr ""
-
-#: plugins/custom-contact-form/templates/contact-form-backup.php:51
-#: plugins/custom-contact-form/templates/contact-form.php:55
-msgid "You forgot to enter your comments."
-msgstr ""
-
-#: plugins/custom-contact-form/templates/contact-form-backup.php:111
-#: plugins/custom-contact-form/templates/contact-form.php:106
-#, php-format
-msgid "Thanks %s,"
-msgstr ""
-
-#: plugins/custom-contact-form/templates/contact-form-backup.php:121
-#: plugins/custom-contact-form/templates/contact-form.php:117
-msgid "Please provide the required information."
-msgstr ""
-
-#: plugins/custom-contact-form/templates/contact-form-backup.php:125
-#: plugins/custom-contact-form/templates/contact-form.php:121
-msgid "Please provide the correct operation result."
-msgstr ""
-
-#: plugins/custom-contact-form/templates/contact-form-backup.php:167
 #: plugins/custom-contact-form/templates/contact-form.php:163
 msgid "Send a copy of this email to yourself"
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:108
-msgid "Your message was sent, we will answer you shortly."
+#: plugins/custom-contact-form/templates/contact-form.php:166
+#: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:51
+msgid "Send Message"
 msgstr ""
 
 #: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:147
@@ -922,7 +874,7 @@ msgstr ""
 msgid "Security Question"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/custom_submission_form.php:148
+#: plugins/custom-recipe-templates/templates/custom_submission_form.php:149
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:111
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_list.php:42
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:37
@@ -941,15 +893,16 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/custom_submission_form.php:153
+#: plugins/custom-recipe-templates/templates/custom_submission_form.php:155
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-xml/templates/before_importing.php:17
 #: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:26
 msgid "Draft"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/custom_submission_form.php:158
-#: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/templates/public_recipe_form.php:137
-msgid "Submit"
+#: plugins/custom-recipe-templates/templates/custom_submission_form.php:161
+#: plugins/wp-ultimate-recipe-premium/premium/addons/import-xml/templates/before_importing.php:18
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:244
+msgid "Publish"
 msgstr ""
 
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:36
@@ -5236,11 +5189,6 @@ msgstr ""
 msgid "Post status after import"
 msgstr ""
 
-#: plugins/wp-ultimate-recipe-premium/premium/addons/import-xml/templates/before_importing.php:18
-#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:244
-msgid "Publish"
-msgstr ""
-
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-xml/templates/before_importing.php:19
 msgid "Private"
 msgstr ""
@@ -5731,6 +5679,10 @@ msgstr ""
 msgid ""
 "Are you sure you want to reset the rating for this recipe? This will set the "
 "votes and rating to 0."
+msgstr ""
+
+#: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/templates/public_recipe_form.php:137
+msgid "Submit"
 msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:104
@@ -7420,6 +7372,10 @@ msgid ""
 "appear to others in the site."
 msgstr ""
 
+#: themes/foodiepro-2.1.8/buddypress/members/register.php:92
+msgid "Email Address"
+msgstr ""
+
 #: themes/foodiepro-2.1.8/buddypress/members/register.php:105
 msgid "Choose a Password"
 msgstr ""
@@ -7765,49 +7721,49 @@ msgstr ""
 msgid "Save Settings"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:507
+#: themes/foodiepro-2.1.8/functions.php:503
 msgid "Goûtu.org - La Communauté des Gourmets"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:546
+#: themes/foodiepro-2.1.8/functions.php:542
 #, php-format
 msgid "<strong>ERROR</strong>: User pending <a href=\"%s\">approval</a>."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:560
+#: themes/foodiepro-2.1.8/functions.php:556
 msgid "author"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:773
+#: themes/foodiepro-2.1.8/functions.php:769
 msgid "Read More"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:806
+#: themes/foodiepro-2.1.8/functions.php:802
 msgid "Comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:815
+#: themes/foodiepro-2.1.8/functions.php:811
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:202
 msgid "Previous comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:821
+#: themes/foodiepro-2.1.8/functions.php:817
 msgid "Next comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:839
+#: themes/foodiepro-2.1.8/functions.php:835
 msgid "Your answer here"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:854
+#: themes/foodiepro-2.1.8/functions.php:850
 msgid "All rights reserved"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:854
+#: themes/foodiepro-2.1.8/functions.php:850
 msgid "Contact us"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:854
+#: themes/foodiepro-2.1.8/functions.php:850
 msgid "Legal notice"
 msgstr ""
 

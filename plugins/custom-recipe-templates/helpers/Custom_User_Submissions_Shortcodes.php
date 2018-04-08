@@ -124,7 +124,7 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
     }
 
 
-    public function submissions_form( $recipe_ID = false, $buttons = array('preview', 'draft','submit') ) {
+    public function submissions_form( $recipe_ID = false, $buttons = array('preview', 'draft','publish') ) {
 
         $output='';
         

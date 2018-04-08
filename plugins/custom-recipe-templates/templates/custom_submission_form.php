@@ -139,28 +139,32 @@
     </div> <!-- /hide-on-preview -->
         <div id="recipe-form-buttons">
             <?php if (in_array('preview', $buttons)) {;?>    
-                <div class="formbutton" id="preview">
-                    <span><?php _e( 'Preview', 'foodiepro' ); ?></span>    
-                    <input type="hidden" value="" id="preview" name="preview" />
-                </div>
+                    <input type="submit" value="<?php _e( 'Preview', 'foodiepro' ); ?>" id="preview" name="preview" />
+                <!-- <div class="formbutton" id="preview"> -->
+                    <!-- <span><?php _e( 'Preview', 'foodiepro' ); ?></span>     -->
+                    <!-- <input type="hidden" value="" id="preview" name="preview" /> -->
+                <!-- </div> -->
             <?php }; ?>
             <?php if (in_array('edit', $buttons)) {;?>    
-                <div class="formbutton" id="edit"></span>
-                    <span><?php _e( 'Edit', 'foodiepro' ); ?>
-                    <input type="hidden" value="" id="edit" name="edit" />
-                </div>
+                    <input type="submit" value="<?php _e( 'Edit', 'foodiepro' ); ?>" id="edit" name="edit" />
+                <!-- <div class="formbutton" id="edit"> -->
+                    <!-- <span><?php _e( 'Edit', 'foodiepro' ); ?></span> -->
+                    <!-- <input type="hidden" value="" id="edit" name="edit" /> -->
+                <!-- </div> -->
             <?php }; ?>        
             <?php if (in_array('draft', $buttons)) {;?>    
-                <div class="formbutton" id="draft"></span>
-                    <span><?php _e( 'Draft', 'foodiepro' ); ?>
-                    <input type="hidden" value="" id="draft" name="draft" />
-                </div>
+                    <input type="submit" value="<?php _e( 'Draft', 'foodiepro' ); ?>" id="draft" name="draft" />
+                <!-- <div class="formbutton" id="draft"> -->
+                    <!-- <span><?php _e( 'Draft', 'foodiepro' ); ?></span> -->
+                    <!-- <input type="hidden" value="" id="draft" name="draft" /> -->
+                <!-- </div> -->
             <?php }; ?>
             <?php if (in_array('publish', $buttons)) {;?>    
-                <div class="formbutton" id="publish"></span>
-                    <span><?php _e( 'Publish', 'foodiepro' ); ?>
-                    <input type="hidden" value="" id="publish" name="publish" />
-                </div>
+                    <input type="submit" value="<?php _e( 'Publish', 'foodiepro' ); ?>" id="publish" name="publish" />
+                <!-- <div class="formbutton" id="publish"> -->
+                    <!-- <span><?php _e( 'Publish', 'foodiepro' ); ?></span> -->
+                    <!-- <input type="hidden" value="" id="publish" name="publish" /> -->
+                <!-- </div> -->
             <?php }; ?>
         </div>
         <input type="hidden" name="action" value="post" />

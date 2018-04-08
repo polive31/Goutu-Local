@@ -10,10 +10,12 @@ jQuery(document).ready(function() {
     /* 
      * Submit buttons
      */
-    jQuery('.formbutton').on('click', function() {
-        jQuery(this).children('input').val(true);
-        jQuery('#new_recipe').submit();
-    });
+    // jQuery('.formbutton').on('click', function() {
+    //     console.log( 'CLICK');
+    //     console.log( jQuery(this).html());
+    //     jQuery(this).children('input').val(true);
+    //     // jQuery('#new_recipe').submit();
+    // });
 
     /*
      * Add shortcode buttons

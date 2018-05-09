@@ -10,7 +10,6 @@ class CustomNavigationShortcodes extends CustomArchive {
 	public function __construct() {
 		parent::__construct();
 		// add_shortcode('index-link', array($this,'add_index_link')); 
-		// add_shortcode('cp-terms', array($this,'list_cp_taxonomy_terms')); 
 		add_shortcode('ct-terms-menu', array($this,'list_taxonomy_terms')); 
 		add_shortcode('tags-menu', array($this,'list_tags')); 
 		add_shortcode('ct-terms', array($this,'list_terms_taxonomy'));
@@ -20,23 +19,6 @@ class CustomNavigationShortcodes extends CustomArchive {
 		add_shortcode( 'wp-page-link', array($this,'display_wordpress_page_link') );		
 		add_filter( 'query_vars', array($this,'archive_filter_queryvars') );		
 		add_filter('terms_clauses', array($this,'add_terms_clauses'), 10, 3 );
-	}
-
-	public function list_cp_taxonomy_terms() {
-		$html='';
-		$terms = get_terms( array(	'post_type' => 'recipe',
-									 'taxonomy' => 'post_tag'
-							));
-		$count = count( $terms );
-		if ( $count > 0 ) {
-		    $html .= '<h3>Number of terms in Recipes : '. $count . '</h3>';
-		    $html .= '<ul>';
-		    foreach ( $terms as $term ) {
-		        $html .= '<li>' . $term->name . '</li>';
-		    }
-		    $html .= '</ul>';
-		}
-		return $html;
 	}
 
 	public function add_terms_clauses($clauses, $taxonomy, $args) {

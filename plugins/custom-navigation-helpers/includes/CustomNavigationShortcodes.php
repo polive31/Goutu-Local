@@ -23,11 +23,11 @@ class CustomNavigationShortcodes extends CustomArchive {
 
 	public function add_terms_clauses($clauses, $taxonomy, $args) {
 	  global $wpdb;
-	  if ($args['post_type']) {
-	    $post_types = $args['post_type'];
+	  if ($args['tags_post_type']) {
+	    $post_types = $args['tags_post_type'];
 	    // allow for arrays
-	    if ( is_array($args['post_type']) ) {
-	      $post_types = implode("','", $args['post_type']);
+	    if ( is_array($args['tags_post_type']) ) {
+	      $post_types = implode("','", $args['tags_post_type']);
 	    }
 	    $clauses['join'] .= " INNER JOIN $wpdb->term_relationships AS r ON r.term_taxonomy_id = tt.term_taxonomy_id INNER JOIN $wpdb->posts AS p ON p.ID = r.object_id";
 	    $clauses['where'] .= " AND p.post_type IN ('". esc_sql( $post_types ). "') GROUP BY t.term_id";
@@ -260,7 +260,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		$html .= '<div class="subnav" id="tags" style="display:none">';
 
 		$tags = get_tags( array(
-			'post_type' => $atts['post_type'],
+			'tags_post_type' => $atts['post_type'],
 			'hide_empty' => true,
 			'exclude' => $atts['exclude'],		
 			'orderby' => 'name',

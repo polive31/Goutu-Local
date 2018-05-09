@@ -3,22 +3,21 @@
 // Block direct requests
 if ( !defined('ABSPATH') )
 	die('-1');
-	
 
 
 // Creating the widget 
-class Taxonomy_Accordion_Widget extends WP_Widget {
+class Recipe_Taxonomy_Accordion_Widget extends WP_Widget {
 
 function __construct() {
 parent::__construct(
 	// Base ID of your widget
-	'taxonomy_accordion_widget', 
+	'recipe_taxonomy_accordion_widget', 
 
 	// Widget name will appear in UI
-	__('Taxonomy Accordion widget', 'foodiepro'), 
+	__('Recipe Taxonomies Accordion widget', 'foodiepro'), 
 
 	// Widget description
-	array( 'description' => __( 'Displays a accordion-style list allowing to navigate between chosen taxonomy terms', 'foodiepro' ), ) 
+	array( 'description' => __( 'Displays a accordion-style list allowing to navigate between chosen recipe taxonomy terms', 'foodiepro' ), ) 
 	);
 
 	//enqueue CSS and JS on frontend only if widget is active.
@@ -71,13 +70,15 @@ public function widget( $args, $instance ) {
 	}
 
 	echo '<div id="accordion">';
+	// echo do_shortcode('[cp-terms]');
+
 	echo do_shortcode('[ct-terms-menu tax="course" title="' . __('Courses', 'foodiepro') . '" orderby="name" author="0" order="ASC" count="' . $show_count . '"]');
 	echo do_shortcode('[ct-terms-menu tax="season" title="' . __('Seasons', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
 	echo do_shortcode('[ct-terms-menu tax="occasion" title="' . __('Occasions', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
 	echo do_shortcode('[ct-terms-menu tax="cuisine" parent="0" drill="true" exclude="9996" title="' . __('World', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
 	echo do_shortcode('[ct-terms-menu tax="cuisine" parent="9996" title="' . __('France', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
 	echo do_shortcode('[ct-terms-menu tax="diet" title="' . __('Diets', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
-	echo do_shortcode('[tags-menu title="' . __('Ideas', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');	
+	echo do_shortcode('[tags-menu post_type="recipe" title="' . __('Ideas', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');	
 	echo '</div>';
 
 
@@ -137,7 +138,7 @@ return $instance;
 // Register and load the widget
 add_action( 'widgets_init', 'wpb_load_widget_accordion_taxonomy' );
 function wpb_load_widget_accordion_taxonomy() {
-	register_widget( 'taxonomy_accordion_widget' );
+	register_widget( 'recipe_taxonomy_accordion_widget' );
 }
 
 

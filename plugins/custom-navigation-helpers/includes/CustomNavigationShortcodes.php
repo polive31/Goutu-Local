@@ -10,6 +10,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 	public function __construct() {
 		parent::__construct();
 		// add_shortcode('index-link', array($this,'add_index_link')); 
+		// add_shortcode('cp-terms', array($this,'list_cp_taxonomy_terms')); 
 		add_shortcode('ct-terms-menu', array($this,'list_taxonomy_terms')); 
 		add_shortcode('tags-menu', array($this,'list_tags')); 
 		add_shortcode('ct-terms', array($this,'list_terms_taxonomy'));
@@ -18,12 +19,44 @@ class CustomNavigationShortcodes extends CustomArchive {
 		add_shortcode('registration', array($this,'output_registation_url')); 
 		add_shortcode( 'wp-page-link', array($this,'display_wordpress_page_link') );		
 		add_filter( 'query_vars', array($this,'archive_filter_queryvars') );		
-
+		add_filter('terms_clauses', array($this,'add_terms_clauses'), 10, 3 );
 	}
+
+	public function list_cp_taxonomy_terms() {
+		$html='';
+		$terms = get_terms( array(	'post_type' => 'recipe',
+									 'taxonomy' => 'post_tag'
+							));
+		$count = count( $terms );
+		if ( $count > 0 ) {
+		    $html .= '<h3>Number of terms in Recipes : '. $count . '</h3>';
+		    $html .= '<ul>';
+		    foreach ( $terms as $term ) {
+		        $html .= '<li>' . $term->name . '</li>';
+		    }
+		    $html .= '</ul>';
+		}
+		return $html;
+	}
+
+	public function add_terms_clauses($clauses, $taxonomy, $args) {
+	  global $wpdb;
+	  if ($args['post_type']) {
+	    $post_types = $args['post_type'];
+	    // allow for arrays
+	    if ( is_array($args['post_type']) ) {
+	      $post_types = implode("','", $args['post_type']);
+	    }
+	    $clauses['join'] .= " INNER JOIN $wpdb->term_relationships AS r ON r.term_taxonomy_id = tt.term_taxonomy_id INNER JOIN $wpdb->posts AS p ON p.ID = r.object_id";
+	    $clauses['where'] .= " AND p.post_type IN ('". esc_sql( $post_types ). "') GROUP BY t.term_id";
+	  }
+	  return $clauses;
+	}
+
 
 	/* Custom query variable for taxonomy filter
 	--------------------------------------------- */		
-	function archive_filter_queryvars($vars) {
+	public function archive_filter_queryvars($vars) {
 	  $vars[] = 'filter';
 	  $vars[] .= 'filter_term';
 	  return $vars;
@@ -164,6 +197,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 			'tax' => '',
 			'title' => '',
 			'class' => '',
+			'post_type' => '',
 			'parent' => '',
 			'author' => '',
 			'exclude' => '',
@@ -230,6 +264,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		$atts = shortcode_atts( array(
 			'title' => '',
 			'class' => '',
+			'post_type' => '',
 			'exclude' => '',
 			'count' => 'false'
 			), $atts );
@@ -243,6 +278,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		$html .= '<div class="subnav" id="tags" style="display:none">';
 
 		$tags = get_tags( array(
+			'post_type' => $atts['post_type'],
 			'hide_empty' => true,
 			'exclude' => $atts['exclude'],		
 			'orderby' => 'name',

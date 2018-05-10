@@ -1,6 +1,6 @@
 <?php
 
-class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
+class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
 
     const RECIPES_PUBLISH_SLUG = 'publier-recettes';
     const RECIPE_NEW_SLUG = 'nouvelle-recette';
@@ -19,8 +19,9 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
         $upload_dir = wp_upload_dir();
         self::$_UploadPath = trailingslashit( $upload_dir['basedir'] );
 
-        add_shortcode( 'custom-recipe-submissions-new-recipe', array( $this, 'new_submission_shortcode' ) );
-        add_shortcode( 'custom-recipe-submissions-current-user-edit', array( $this, 'submissions_current_user_edit_shortcode' ) );
+        add_shortcode( 'custom-wpurp-submissions-new-recipe', array( $this, 'new_submission_shortcode' ) );
+        add_shortcode( 'custom-wpurp-submissions-current-user-edit', array( $this, 'submissions_current_user_edit_shortcode' ) );
+        add_shortcode( 'custom-wpurp-favorites', array( $this, 'favorite_recipes_shortcode' ) );
 
 
         // Recipe List Shortcode and associated actions
@@ -41,7 +42,29 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
         }
     }
 
-    public function submissions_current_user_list_shortcode() {
+    public function favorite_recipes_shortcode( $options ) {
+        $options = shortcode_atts( array(
+        ), $options );
+        $output = '';
+        $user_id = get_current_user_id();
+
+        if( $user_id !== 0 ) {
+            $favorites = get_user_meta( $user_id, 'wpurp_favorites', true );
+            $favorites = is_array( $favorites ) ? $favorites : array();
+
+            $recipes = empty( $favorites ) ? array() : WPUltimateRecipe::get()->query()->ids( $favorites )->order_by('name')->order('ASC')->get();
+
+            if( count( $favorites ) == 0 || count( $recipes ) == 0 ) {
+                $output .= '<p class="wpurp-no-favorite-recipes">' . __( "You don't have any favorite recipes.", 'wp-ultimate-recipe' ) . '</p>';
+            } else {
+                // $output .= '<p>' . __('Here is the list of the recipes that you bookmarked.', 'foodiepro') . '</p>';
+                $output .= $this->display_recipes( $recipes, false);
+            }
+        }
+        return $output;
+    }
+
+   public function submissions_current_user_list_shortcode() {
         $output = '';
         $author = get_current_user_id();
 
@@ -52,32 +75,42 @@ class Custom_User_Submissions_Shortcodes extends WPURP_Premium_Addon {
             if( count( $recipes ) !== 0 ) {
                 // $output .= '<ul class="wpurp-user-submissions-current-user-edit">';
                 $output .= '<p>' . __('Here is the list of the recipes that you created, and their status. You can choose to edit them, change their visibility, or delete them.', 'foodiepro') . '</p>';
-                $output .= '<table class="custom-user-submissions-list">';
-
-
-                $statuses = get_post_statuses();
-
-                foreach ( $recipes as $recipe ) {
-                    // $item = '<li>';
-                    $image_url = $recipe->image_ID() > 0 ? $recipe->image_url( 'mini-thumbnail' ) : WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
-                    $item = '<tr class="recipe-list-row">';
-                    $edit_url = get_permalink() . self::RECIPE_EDIT_SLUG;    
-                    $view_url = get_permalink($recipe->ID());    
-                    $item .= '<td class="recipe-list-actions"><a href="' . $edit_url . '?wpurp-edit-recipe=' . $recipe->ID() . '" title="' . __('Edit recipe', 'foodiepro') . '"><i class="fa fa-pencil-square-o"></i></a></td>';
-                    $item .= '<td class="recipe-list-thumbnail"><a href="' . $view_url . '" title="' . __('View recipe', 'foodiepro') . '"><img src="' . $image_url . '"></a></td>';
-                    $item .= '<td class="recipe-list-title"><a href="' . $view_url . '" title="' . __('View recipe', 'foodiepro') . '">' . $recipe->title() . '</a></td>';
-                    $item .= '<td class="recipe-list-status">' . $statuses[ $recipe->post_status() ] . '</td>';
-                    $item .= '<td class="recipe-list-actions" title="' . __('Delete recipe', 'foodiepro') . '"><i class="fa fa-trash user-submissions-delete-recipe nodisplay" data-id="' . $recipe->ID() . '" data-title="' . esc_attr( $recipe->title() ) . '"></i></td>';
-                    $item .= '</tr>';
-                    // $item .= '</li>';
-                    $output .= apply_filters( 'wpurp_user_submissions_current_user_edit_item', $item, $recipe );
-                }
-                $output .= '</table>';
-                // $output .= '</ul>';
+                $output .= $this->display_recipes( $recipes, true );
             }
         }
         return $output;
-    }    
+    }  
+
+    public function display_recipes( $recipes, $edit=false ) {
+        $output = '';
+        $output .= '<table class="custom-recipe-list">';
+
+        $statuses = get_post_statuses();
+
+        foreach ( $recipes as $recipe ) {
+            $image_url = $recipe->image_ID() > 0 ? $recipe->image_url( 'mini-thumbnail' ) : WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
+ 
+            $view_url = 'href="' . get_permalink($recipe->ID()) . '" ';    
+            $view_title = 'title="' . __('View recipe', 'foodiepro') . '" ';
+            $edit_url = $edit?'href="' . get_permalink() . self::RECIPE_EDIT_SLUG . '?wpurp-edit-recipe=' . $recipe->ID() . '" ':$view_url;   
+            $edit_title = $edit?'title="' . __('Edit recipe', 'foodiepro') . '" ':$view_title;
+ 
+            $item = '<tr class="recipe-list-row">';
+            if ($edit) $item .= '<td class="recipe-list-actions">';
+            // if ($edit) $item .= '<a ' . $edit_url . $edit_title . '><i class="fa fa-pencil-square-o"></i></a>';
+            if ($edit) $item .= '<a ' . $view_url . $view_title . '><i class="fa fa-eye"></i></a>';
+            if ($edit) $item .= '</td>';
+            $item .= '<td class="recipe-list-thumbnail"><a ' . $edit_url . $edit_title . '><img src="' . $image_url . '"></a></td>';
+            $item .= '<td class="recipe-list-title"><a ' . $edit_url . $edit_title . '>' . $recipe->title() . '</a></td>';
+            if ($edit) $item .= '<td class="recipe-list-status">' . $statuses[ $recipe->post_status() ] . '</td>';
+            if ($edit) $item .= '<td class="recipe-list-actions" title="' . __('Delete recipe', 'foodiepro') . '"><i class="fa fa-trash user-submissions-delete-recipe nodisplay" data-id="' . $recipe->ID() . '" data-title="' . esc_attr( $recipe->title() ) . '"></i></td>';
+            $item .= '</tr>';
+ 
+            $output .= apply_filters( 'custom_wpurp_recipe_list_item', $item, $recipe );
+        }
+        $output .= '</table>';
+        return $output;
+    }  
 
     public function ajax_user_delete_recipe() {
         if(check_ajax_referer( 'custom_user_submissions_list', 'security', false ) ) {

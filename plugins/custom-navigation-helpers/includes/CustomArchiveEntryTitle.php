@@ -55,7 +55,10 @@ class CustomArchiveEntryTitle extends CustomArchive {
 		
 		/* Display start rating below entry */
 		if ( is_tax() || is_search() ) {
-				$title = do_shortcode('[display-star-rating category="global" display="minimal"]') . $title;
+				// Rating BEFORE entry title
+				// $title = do_shortcode('[display-star-rating category="global" display="minimal"]') . $title;
+				// Rating AFTER entry title
+				$title .= do_shortcode('[display-star-rating category="global" display="minimal"]');
 				//echo 'User rating global = ' . get_post_meta( get_the_ID(), 'user_rating_global', true );
 		};	
 		

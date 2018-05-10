@@ -260,6 +260,8 @@ class CustomNavigationShortcodes extends CustomArchive {
 		$html .= '<div class="subnav" id="tags" style="display:none">';
 
 		$tags = get_tags( array(
+			// New clause "tags_post_type" added to the WP_Query function
+			// see req_clauses filter above
 			'tags_post_type' => $atts['post_type'],
 			'hide_empty' => true,
 			'exclude' => $atts['exclude'],		

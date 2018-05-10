@@ -19,8 +19,9 @@ class CustomArchive {
 	public function __construct() {	
 		// IMPORTANT : use wp as a hook, otherwise the archive will not be set yet and errors will occur
 		add_action( 'wp', array($this,'hydrate'));		
+		// add_filter( 'genesis_attr_content', 'add_columns_class_to_content' );
 	}
-	
+
 
 	/* Class attributes initialization
 	--------------------------------------------- */		

@@ -664,8 +664,8 @@ function execute_php($html){
 }
 
 // Add user rating to WPRPE widget
-add_filter('rpwe_after_thumbnail', 'wprpe_add_rating', 10, 2);
-function wprpe_add_rating($output, $args ) {
+add_filter('rpwe_post_title', 'rpwe_add_rating', 10, 2);
+function rpwe_add_rating($output, $args ) {
 		$disp_rating = substr($args['cssID'],1,1);
 		////foodiepro_log( array('WPRPE Output add rating'=>$output) );
 		if ( $disp_rating == '1') {

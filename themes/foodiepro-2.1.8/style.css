@@ -687,6 +687,10 @@ a.comment-reply-link,
 	padding: 7px 10px;	
 }
 
+.entry-meta i.fa {
+    font-size: 20px;
+}
+
 #signup_submit {
 	font-size:13px;
 }

@@ -23,7 +23,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 
 	public function add_terms_clauses($clauses, $taxonomy, $args) {
 	  global $wpdb;
-	  if ($args['tags_post_type']) {
+	  if (isset($args['tags_post_type'])) {
 	    $post_types = $args['tags_post_type'];
 	    // allow for arrays
 	    if ( is_array($args['tags_post_type']) ) {

@@ -24,8 +24,18 @@ class CustomArchiveEntryTitle extends CustomArchive {
 
 	//* Customize the entry meta in the entry header (requires HTML5 theme support)
 	function custom_post_info_filter($post_info) {
-		if (is_single()) 
+		if (is_single()) {
 			$post_info = sprintf(__('Published on %s by <span id="username">%s</span>', 'foodiepro'), '[post_date]', '[bp-author]');
+			global $post, $current_user;
+			get_currentuserinfo();
+			if ($post->post_author == $current_user->ID) { 
+				$edit_page_url = do_shortcode( '[permalink slug="' . Custom_WPURP_Shortcodes::RECIPE_EDIT_SLUG . '"]' );
+				$edit_url = 'href="' . $edit_page_url . '?wpurp-edit-recipe=' . $post->ID . '" ';   
+            	$edit_title = 'title="' . __('Edit recipe', 'foodiepro') . '" ';
+
+	   			$post_info .= ' <a ' . $edit_url . $edit_title . '><i class="fa fa-pencil"></i></a>';    
+			}
+		}
 		else {
 			//$post_info = sprintf(__('By <span id="username">%s</span>', 'foodiepro'), '[bp-author]');
 			$post_info = '';
@@ -54,7 +64,7 @@ class CustomArchiveEntryTitle extends CustomArchive {
 	public function archive_rating($title) {
 		
 		/* Display start rating below entry */
-		if ( is_tax() || is_search() ) {
+		if ( is_archive() || is_search() ) {
 				// Rating BEFORE entry title
 				// $title = do_shortcode('[display-star-rating category="global" display="minimal"]') . $title;
 				// Rating AFTER entry title

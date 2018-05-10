@@ -57,7 +57,7 @@ class CustomArchiveHeadline extends CustomArchive {
 		return $title;
 	}
 
-	public function custom_archive_title($msg) {
+	public function custom_archive_title() {
 
 		$msg='';
 

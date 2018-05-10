@@ -33,7 +33,7 @@ class Custom_Recipe_Favorite extends WPURP_Template_Block {
         else {
         	$this->link_id='';
         	$this->class_id .= ' logged-in';
-        	$favorites_link = '/accueil/favoris/favoris-recettes';
+        	$favorites_link = do_shortcode('[permalink slug="favoris-recettes"]');
         }
         
         $tooltip_in = sprintf(__('In my <a href="%s">favorites</a>','foodiepro'),$favorites_link);

@@ -39,7 +39,7 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 
 					<!-- Recipe Rate Button -->
 					<div class="recipe-button tooltip tooltip-above tooltip-left" id="rate">
-						<a class="recipe-review-button" id="<?php echo $this->logged_in?'recipe-review':'join-us';?>">
+						<a href="<?php echo $this->logged_in?'#':'/connexion';?>" class="recipe-review-button" id="<?php echo $this->logged_in?'recipe-review':'join-us';?>">
 						<div class="button-caption"><?php echo __('Rate','foodiepro'); ?></div>
 						</a>
 						<?php echo Custom_WPURP_Templates::output_tooltip(__('Comment and rate this recipe','foodiepro'),'top');?>

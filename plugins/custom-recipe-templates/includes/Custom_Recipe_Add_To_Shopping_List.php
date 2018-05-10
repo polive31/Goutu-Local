@@ -28,7 +28,7 @@ class Custom_Recipe_Add_To_Shopping_List extends WPURP_Template_Block {
         }
 		else {
 			$classes[] = 'logged-in';
-			$menu_link = '/favoris/favoris-menus/liste-courses';
+			$menu_link = do_shortcode('[permalink slug="liste-courses"]');
 		}
         $tooltip_in=sprintf(__('In my <a href="%s">shopping list</a>','foodiepro'),$menu_link);
         $tooltip_add=sprintf(__('Add to my <a href="%s">shopping list</a>','foodiepro'),$menu_link);

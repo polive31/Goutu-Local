@@ -143,7 +143,7 @@ class Custom_Gallery_Shortcode {
 		
 		/* Add picture button markup output */
 		$output .='<div class="add-picture-button">';
-		$button_id = is_user_logged_in() ? 'upload_picture' : 'join-us';
+		$button_id = is_user_logged_in() ? 'upload-picture' : 'join-us';
 		$output.='<button id="' . $button_id . '">' . __('Add a picture','foodiepro') . '</button>';
 		$output.='</div>';
 		

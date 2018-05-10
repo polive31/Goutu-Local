@@ -55,7 +55,7 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
             $recipes = empty( $favorites ) ? array() : WPUltimateRecipe::get()->query()->ids( $favorites )->order_by('name')->order('ASC')->get();
 
             if( count( $favorites ) == 0 || count( $recipes ) == 0 ) {
-                $output .= '<p class="wpurp-no-favorite-recipes">' . __( "You don't have any favorite recipes.", 'wp-ultimate-recipe' ) . '</p>';
+                $output .= '<p class="submitbox">' . __( "You don't have any favorite recipes.", 'wp-ultimate-recipe' ) . '</p>';
             } else {
                 // $output .= '<p>' . __('Here is the list of the recipes that you bookmarked.', 'foodiepro') . '</p>';
                 $output .= $this->display_recipes( $recipes, false);

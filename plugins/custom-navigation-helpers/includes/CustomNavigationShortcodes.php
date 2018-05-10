@@ -58,7 +58,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 	}
 
 	/* =================================================================*/
-	/* = LOGIN PAGE LINK SHORTCODE    
+	/* = HOME/LOGIN PAGE LINK SHORTCODE    
 	/* =================================================================*/
 
 	public function display_wordpress_page_link( $atts ) {

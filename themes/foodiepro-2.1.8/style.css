@@ -1867,7 +1867,7 @@ h2.entry-title, .wpupg-post-title,
 /* Form Submission Messages
 --------------------------------------------------------------*/
 p.submitbox{
-  background-color: #f3f3f3;
+  background-color: #e3dcd7;
   padding: 10px;
   margin: 20px 0; 
   border: 1px solid #ccc;
@@ -3805,12 +3805,14 @@ p.more-from-category {
 
 /* Archive layout
 --------------------------------------------- */
+.search .content,
 .archive .content {
 	column-count: 3; /* Independently from customizer settings, this style will determine the column count in archive pages */
 	-webkit-column-count: 3;
 	column-gap: 1em; 
 }
 
+.search .content h2.entry-title,
 .archive .content h2.entry-title {
 	padding-bottom: 5px;
 	margin: 0;
@@ -5227,6 +5229,7 @@ Site Footer
 		width: calc(50% - 20px);  
 	}*/
 
+	.search .content,
 	.archive .content {
 		column-count : 2;
 		-webkit-column-count : 2;

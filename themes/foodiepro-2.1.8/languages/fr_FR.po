@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2018-04-08 21:55+0200\n"
-"PO-Revision-Date: 2018-05-09 01:11+0200\n"
+"PO-Revision-Date: 2018-05-10 13:05+0200\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -928,7 +928,7 @@ msgstr "Modifier"
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-xml/templates/before_importing.php:17
 #: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:26
 msgid "Draft"
-msgstr "Enregistrer (privé)"
+msgstr "Enregistrer (brouillon)"
 
 #: plugins/custom-recipe-templates/templates/custom_submission_form.php:161
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-xml/templates/before_importing.php:18
@@ -5177,7 +5177,7 @@ msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/premium/addons/favorite-recipes/favorite-recipes.php:87
 msgid "You don't have any favorite recipes."
-msgstr ""
+msgstr "Aucune recette favorite dans votre carnet."
 
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-cooked/import-cooked.php:26
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-cooked/import-cooked.php:38

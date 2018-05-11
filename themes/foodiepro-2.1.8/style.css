@@ -2567,12 +2567,28 @@ td.rating-title {
 /* Star rating output
 --------------------------------------------- */
 
+span.entry-rating {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+}
+
+span.like-count {
+    font-family: sans-serif;
+    font-size: 16px;
+    color: #bababa;
+    vertical-align: top;
+    display: inline-block;
+    letter-spacing: 2px;
+}
+
 /* Rating table formatting
 --------------------------------*/
 
 table.ratings-table {
+	display: inline-block;
 	text-align: center;
-	width: 100%;	
+	vertical-align: middle;
 }
 
 .ratings-table tr {
@@ -4735,23 +4751,23 @@ div.activity-comments form div.ac-reply-content a {
   padding: 0 20px 0 0px;
 }
 
-.widget.buddypress #bp-login-widget-form #bp-login-widget-submit {
+.widget.buddypress .bp-login-form .bp-login-widget-submit {
 	margin-right: 10px;
 }
 
-#bp-login-widget-form {
-  width: 300px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 14px;
+/*.bp-login-widget-form {
+	width: 300px;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 14px;
 }
-
+*/
 .footer-widgets .widget_bp_custom_login_widget div#logged-in {
 	margin-top:30px;
 	display:-webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-  display:-moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-  display:-ms-flexbox;      /* TWEENER - IE 10 */
-  display:-webkit-flex;     /* NEW - Chrome */
+	display:-moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display:-ms-flexbox;      /* TWEENER - IE 10 */
+	display:-webkit-flex;     /* NEW - Chrome */
 	-webkit-flex-flow:row nowrap;
 	-moz-flex-flow:row nowrap;
 	-ms-flex-flow:row nowrap;
@@ -4763,7 +4779,7 @@ div.activity-comments form div.ac-reply-content a {
     margin: 10px 0;
 }
 
-.widget.buddypress #bp-login-widget-form label {
+.widget.buddypress .bp-login-form label {
 	display: block;
 	margin: 10px 0 0 5px;
 }

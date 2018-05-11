@@ -164,7 +164,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 				<?php
 				}?>
 				<td class="rating" title="<?php echo $rating?> : <?php echo $this->rating_caption($rating,$id)?>">
-				<a class="pum-trigger" id="recipe-review" style="cursor: pointer;"><?php echo $this->output_stars($stars, $half)?></a>
+				<a class="pum-trigger" id="recipe-review"><?php echo $this->output_stars($stars, $half)?></a>
 				</td>
 			<?php
 			}

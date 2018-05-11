@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Custom Social Helpers
+Plugin Name: Custom Buddypress Helpers
 Plugin URI: http://goutu.org/
 Description: Custom BP-related shortcodes & widgets for Goutu
 Version: 1.0
@@ -15,7 +15,7 @@ if ( !defined('ABSPATH') )
 	die('-1');
 	
 	
-define( 'CSH_PLUGIN_VERSION', '1.1.0' );
+define( 'CBPH_PLUGIN_VERSION', '1.1.0' );
 	
 	
 /* Main
@@ -26,13 +26,6 @@ if ( class_exists( 'BuddyPress' ) ) {
 	add_action( 'admin_notices', 'bp_social_helpers_install_notice' );
 }
 
-/* Load stylesheet
----------------------------------------------------------------*/
-add_action( 'wp_enqueue_scripts', 'csh_load_custom_stylesheet' );
-function csh_load_custom_stylesheet() {
-	wp_enqueue_style( 'circular-progress-bar',  plugins_url( '/assets/circular-progress-bar.css', __FILE__ ), array(), CSH_PLUGIN_VERSION );
-}
-
 
 /* Support functions 
 ------------------------------------------------------------*/
@@ -41,6 +34,7 @@ function bp_social_helpers_load() {
 	require_once 'widgets/BP-latest-registered-members-widget.php';
 	require_once 'widgets/BP-member-profile-widget.php';
 	require_once 'widgets/BP-my-friends-widget.php';
+	require_once 'widgets/BP-cover-image-header.php';
 	require_once 'widgets/BP-welcome-widget.php';
 	require_once 'widgets/BP-whats-new-widget.php';
 	require_once 'widgets/BP-activity-feed-widget.php';

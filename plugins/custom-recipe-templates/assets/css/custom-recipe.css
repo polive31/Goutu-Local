@@ -117,6 +117,14 @@ a.wpurp-recipe-favorite.is-favorite:before {
 	content:"\f004"; /* fa-heart */
 }
 
+a.social-like-post:before {
+	content:"\f087"; /* fa-thumbs-o-up */
+}
+
+a.social-like-post.is-liked:before {
+	content:"\f164"; /* fa-thumbs-up */
+}
+
 a.wpurp-recipe-add-to-shopping-list:before {
 	content:"\f07a"; /* fa-cart */ 
 }

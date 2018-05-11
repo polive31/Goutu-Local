@@ -62,18 +62,18 @@ class CustomArchiveEntryTitle extends CustomArchive {
 	/* Add rating to entry title
 	-----------------------------------------------------------------------------*/
 	public function archive_rating($title) {
-		
 		/* Display start rating below entry */
 		if ( is_archive() || is_search() ) {
 				// Rating BEFORE entry title
 				// $title = do_shortcode('[display-star-rating category="global" display="minimal"]') . $title;
 				// Rating AFTER entry title
+				$title .= '<span class="entry-rating">';
 				$title .= do_shortcode('[display-star-rating category="global" display="minimal"]');
+				$title .= do_shortcode('[like-count]');
+				$title .= '</span>';
 				//echo 'User rating global = ' . get_post_meta( get_the_ID(), 'user_rating_global', true );
 		};	
-		
 		return $title;	
-		
 	}	
 
 	/* Add tags to entry title 

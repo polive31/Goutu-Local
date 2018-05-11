@@ -46,18 +46,25 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 					</div>	
 					
 					<!-- Recipe Add to Cart Button -->
-					<div class="recipe-button tooltip tooltip-above tooltip-left" id="shopping">
+	<!-- 				<div class="recipe-button tooltip tooltip-above tooltip-left" id="shopping">
 					<?php 
 						$shopping_list = new Custom_Recipe_Add_To_Shopping_List( $this->logged_in );  
 						echo $shopping_list->output( $recipe );?>
-					</div>				
+					</div>	 -->			
 					
 					<!-- Add To Favorites Button -->
 					<div class="recipe-button tooltip tooltip-above tooltip-left" id="favorite">
 					<?php
 						$favorite_recipe = new Custom_Recipe_Favorite( $this->logged_in );
 						echo $favorite_recipe->output( $recipe );?>
-					</div>				
+					</div>			
+
+					<!-- Like Button -->
+					<div class="recipe-button tooltip tooltip-above tooltip-left" id="like">
+					<?php
+						$recipe_like = new Custom_Social_Like_Post( $this->logged_in );
+						echo $recipe_like->output();?>
+					</div>		
 
 					<!-- Recipe Print Button -->
 					<div class="recipe-button tooltip tooltip-above tooltip-right" id="print">
@@ -104,9 +111,9 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 				<div class="info-container">
 					
 					<div class="label-container">
-					<?php echo do_shortcode('[display-star-rating display="full"]');?>
+						[display-star-rating display="full"]
 					</div>
-					
+
 					<?php
 						// Origin
 					  $test = get_the_term_list( $post_ID, 'cuisine', '', '', '' ); 

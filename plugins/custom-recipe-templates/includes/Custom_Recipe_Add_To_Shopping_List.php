@@ -60,7 +60,9 @@ class Custom_Recipe_Add_To_Shopping_List extends WPURP_Template_Block {
 				<a href="#"<?php echo $this->style(); ?> <?php echo $link_id;?> data-recipe-id="<?php echo $recipe->ID(); ?>">
 				<div class="button-caption"><?php echo __('Add to Shopping List','foodiepro'); ?></div>
 				</a>
-				<?php echo Custom_WPURP_Templates::output_tooltip($tooltip.$tooltip_alt,'top');
+                [tooltip text='<?php echo $tooltip . $tooltip_alt;?>' pos="top"]   
+
+                <?php 
 				
         $output .= ob_get_contents();
         ob_end_clean();

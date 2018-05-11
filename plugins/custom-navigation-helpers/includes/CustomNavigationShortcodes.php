@@ -9,14 +9,19 @@ class CustomNavigationShortcodes extends CustomArchive {
 	
 	public function __construct() {
 		parent::__construct();
+		
+		// Shortcodes
 		// add_shortcode('index-link', array($this,'add_index_link')); 
+		add_shortcode('tooltip', array($this,'output_tooltip')); 
 		add_shortcode('ct-terms-menu', array($this,'list_taxonomy_terms')); 
 		add_shortcode('tags-menu', array($this,'list_tags')); 
 		add_shortcode('ct-terms', array($this,'list_terms_taxonomy'));
 		add_shortcode('permalink', array($this,'add_permalink_shortcode'));
 		add_shortcode('share-title', array($this,'display_share_title')); 
 		add_shortcode('registration', array($this,'output_registation_url')); 
-		add_shortcode( 'wp-page-link', array($this,'display_wordpress_page_link') );		
+		add_shortcode( 'wp-page-link', array($this,'display_wordpress_page_link') );	
+
+		// Filters	
 		add_filter( 'query_vars', array($this,'archive_filter_queryvars') );		
 		add_filter('terms_clauses', array($this,'add_terms_clauses'), 10, 3 );
 	}
@@ -34,7 +39,6 @@ class CustomNavigationShortcodes extends CustomArchive {
 	  }
 	  return $clauses;
 	}
-
 
 	/* Custom query variable for taxonomy filter
 	--------------------------------------------- */		
@@ -57,6 +61,33 @@ class CustomNavigationShortcodes extends CustomArchive {
 		return $html;
 	}
 
+	/* =================================================================*/
+	/* = DISPLAY TOOLTIP SHORTCODE    
+	/* =================================================================*/
+
+    public function output_tooltip( $atts ) {
+        // $path = self::$_PluginPath . 'assets/img/callout_'. $position . '.png';
+		$atts = shortcode_atts( array(
+			'text' => '', 
+			'pos' => 'top',
+			), $atts );
+
+		$content = $atts['text']; 
+		$position = $atts['pos']; 
+
+        $uri = plugin_dir_url( dirname( __FILE__ ) ) . 'assets/img/callout_'. $position . '.png';
+    
+        $html ='<div class="tooltip-content">';
+        $html.='<div class="wrap">';
+        $html.= $content;
+        $html.='<img class="callout" data-no-lazy="1" src="' . $uri . '">';
+        $html.='</div>';
+        $html.='</div>';
+        
+        return $html;
+    }
+
+	
 	/* =================================================================*/
 	/* = HOME/LOGIN PAGE LINK SHORTCODE    
 	/* =================================================================*/

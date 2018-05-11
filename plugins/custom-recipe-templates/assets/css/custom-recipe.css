@@ -75,7 +75,7 @@ span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
 	float: left;
 	position: relative;
 	font-size:25px;
-	margin: 0 10px;
+	margin: 0 10px 0 0;
 	padding: 5px 0;
 }
 
@@ -129,7 +129,7 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 .button-caption {
 	display: inline-block;
 	/*float:left;*/
-	margin-left:10px;
+	/*margin-left:10px;*/
 }
 
 .tooltip-alt,

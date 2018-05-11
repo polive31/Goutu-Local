@@ -21,16 +21,19 @@ class Custom_Recipe_Favorite extends WPURP_Template_Block {
 		self::$_PluginPath = plugin_dir_url( dirname( __FILE__ ) );
     }
 
-    public function output( $recipe, $args = array() )
-    {
+    public function output( $recipe, $args = array() ) {
         if( !$this->output_block( $recipe, $args ) ) return '';
         
+        
+        $link_url = '#';
+        
         if( !$this->logged_in ) {
-        	$this->link_id='id="join-us"';
-        	$favorites_link = '/connexion';
+            $this->link_id='id="join-us"';
+            $favorites_link = '/connexion';
+            $link_url = '/connexion';
         } 
         else {
-        	$this->link_id='';
+            $this->link_id='';
         	$this->class_id .= ' logged-in';
         	$favorites_link = do_shortcode('[permalink slug="favoris-recettes"]');
         }
@@ -56,7 +59,7 @@ class Custom_Recipe_Favorite extends WPURP_Template_Block {
         ob_start();
 ?>
 
-				<a href="#" <?php echo $this->link_id;?> class="<?php echo $this->class_id; ?>" data-recipe-id="<?php echo $recipe->ID(); ?>">
+				<a href="<?php echo $link_url;?>" <?php echo $this->link_id;?> class="<?php echo $this->class_id; ?>" data-recipe-id="<?php echo $recipe->ID(); ?>">
 				<div class="button-caption"><?php echo __('Favorites','foodiepro'); ?></div>
 				</a>
                 [tooltip text='<?php echo $tooltip . $tooltip_alt;?>' pos="top"]    

@@ -198,7 +198,7 @@ class Custom_WPURP_Templates {
 						array(
 			                'name' => 'custom-favorite-recipe',
 			                /*'url' => WPUltimateRecipePremium::get()->premiumUrl . '/addons/favorite-recipes/js/favorite-recipes.js',*/
-			                'url' => self::$_PluginPath . 'assets/js/custom_favorite_recipe.js',
+			                'url' => self::$_PluginUri . 'assets/js/custom_favorite_recipe.js',
 			               	'premium' => true,
 			                'public' => true,
 			                'setting' => array( 'favorite_recipes_enabled', '1' ),
@@ -214,7 +214,7 @@ class Custom_WPURP_Templates {
 			            array(
 			                /*'url' => WPUltimateRecipePremium::get()->premiumUrl . '/js/add-to-shopping-list.js',*/
 			                'name' => 'custom-shopping-list',
-			                'url' => self::$_PluginPath . 'assets/js/custom_shopping_list.js',
+			                'url' => self::$_PluginUri . 'assets/js/custom_shopping_list.js',
 			                'premium' => true,
 			                'public' => true,
 			                'deps' => array(

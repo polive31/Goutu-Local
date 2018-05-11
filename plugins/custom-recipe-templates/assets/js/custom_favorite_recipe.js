@@ -1,10 +1,7 @@
-//jQuery(document).ready(function() {
-//	console.log('Custom favorite recipe loaded');
-//});
-//
-
 jQuery(document).ready(function(){
+    console.log('Favorite Recipe loaded !');	
     jQuery(document).on('click', '.wpurp-recipe-favorite.logged-in', function(e) {
+		console.log('Click on favorite detected !');
         e.preventDefault();
         e.stopPropagation();
 
@@ -32,7 +29,7 @@ jQuery(document).ready(function(){
         };
 
         jQuery.post(wpurp_favorite_recipe.ajaxurl, data, function(html) {
-					console.log('Add to Favorites AJAX call completed');
+			console.log('Add to Favorites AJAX call completed');
 
         });
     });

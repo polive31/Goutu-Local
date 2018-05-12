@@ -736,6 +736,10 @@ h1.archive-title,
 
 .page h1.entry-title {
 	text-align: left;
+	display: inline-block;
+	vertical-align: middle;
+	margin:0;
+	padding:0;
 }
 
 h1.archive-title {
@@ -3093,11 +3097,10 @@ input#ug_photo {font-size: 14px; margin-top: 10px;}
 
 .entry-header-image {
 	box-sizing:border-box;
-	float:left;
-	/*height:80px;*/
 	margin-right:15px;
-	margin-bottom:20px;
 	width:100px;
+	display:inline-block;
+	vertical-align: middle;
 }
 
 .entry-header-overlay {
@@ -5179,6 +5182,11 @@ Site Footer
     margin-top:10px;
    }
 
+	.entry-header-image {
+	    width: 60px;
+	}
+
+	.page h1.entry-title, 
 	h1.archive-title, 
 	h1.entry-title {
 		text-align: center;

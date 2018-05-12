@@ -116,29 +116,29 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 
 					<?php
 						// Origin
-					  $test = get_the_term_list( $post_ID, 'cuisine', '', '', '' ); 
-						if ($test!='') {
-							$html = '<div class="label-container" id="tag"><div class="recipe-label">' . __('Origin','foodiepro') . '</div>' . $test . '</div>';
+					  $terms = get_the_term_list( $post_ID, 'cuisine', '', ', ', '' ); 
+						if ($terms!='') {
+							$html = '<div class="label-container" id="tag"><div class="recipe-label">' . __('Origin','foodiepro') . '</div>' . $terms . '</div>';
 							echo $html;
 						}		
 						
 						// Diet
-					  $test = get_the_term_list( $post_ID, 'diet', '', '', '' ); 
-						if ($test!='') {
-							$html = '<div class="label-container" id="tag"><div class="recipe-label">' . __('Diet','foodiepro') . '</div>' . $test . '</div>';
+					  $terms = get_the_term_list( $post_ID, 'diet', '', ', ', '' ); 
+						if ($terms!='') {
+							$html = '<div class="label-container" id="tag"><div class="recipe-label">' . __('Diet','foodiepro') . '</div>' . $terms . '</div>';
 							echo $html;
 						}	
 						
 						// Difficulty
-					  $test = get_the_term_list( $post_ID, 'difficult', '', '', '' ); 
-						if ($test!='') {
-							$html = '<div class="label-container" id="tag"><div class="recipe-label">' . __('Level','foodiepro') . '</div>' . $test . '</div>';
+					  $terms = get_the_term_list( $post_ID, 'difficult', '', '', '' ); 
+						if ($terms!='') {
+							$html = '<div class="label-container" id="tag"><div class="recipe-label">' . __('Level','foodiepro') . '</div>' . $terms . '</div>';
 							echo $html;
 						}			
 					
 						// Servings
-						$test = $recipe->servings_normalized();
-						if ($test!='') {
+						$terms = $recipe->servings_normalized();
+						if ($terms!='') {
 							$html = '<div class="label-container" id="servings">';
 							$html .= '<div class="recipe-label">' . __('Serves','foodiepro') . '</div>';
 							$html .= '<div class="recipe-input">';

@@ -91,7 +91,7 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
             $image_url = $recipe->image_ID() > 0 ? $recipe->image_url( 'mini-thumbnail' ) : WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
  
             $view_url = 'href="' . get_permalink($recipe->ID()) . '" ';    
-            $view_title = 'title="' . __('View recipe', 'foodiepro') . '" ';
+            $view_title = 'title="' . __('Preview recipe', 'foodiepro') . '" ';
             $edit_url = $edit?'href="' . get_permalink() . self::RECIPE_EDIT_SLUG . '?wpurp-edit-recipe=' . $recipe->ID() . '" ':$view_url;   
             $edit_title = $edit?'title="' . __('Edit recipe', 'foodiepro') . '" ':$view_title;
  

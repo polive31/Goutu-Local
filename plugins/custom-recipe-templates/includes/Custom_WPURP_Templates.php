@@ -110,9 +110,16 @@ class Custom_WPURP_Templates {
 						'url' => '//fonts.googleapis.com/css?family=Cabin',
 						'public' => true,
 		          	),
+		          	// The style below is needed for recipe preview
+		  			array(
+						'url' => self::$_PluginUri . 'assets/css/custom-recipe.css',
+						'path' => self::$_PluginPath . 'assets/css/custom-recipe.css',
+						'public' => true,
+						'direct' => true,
+		          	),	          	
 		  			array(
 						'url' => self::$_PluginUri . 'assets/css/custom-recipe-submission.css',
-						'dir' => self::$_PluginPath . 'assets/css/custom-recipe-submission.css',
+						'path' => self::$_PluginPath . 'assets/css/custom-recipe-submission.css',
 						'public' => true,
 						'direct' => true,
 		          	)

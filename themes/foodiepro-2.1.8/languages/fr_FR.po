@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2018-05-11 23:53+0200\n"
-"PO-Revision-Date: 2018-05-11 23:54+0200\n"
+"POT-Creation-Date: 2018-05-12 18:41+0200\n"
+"PO-Revision-Date: 2018-05-12 18:41+0200\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -854,68 +854,10 @@ msgid ""
 "or deactivate this plugin </a>."
 msgstr ""
 
-#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes_bak.php:112
 #: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:35
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:117
 msgid "Sorry, only registered users may submit recipes."
 msgstr ""
-
-#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes_bak.php:237
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:228
-#: plugins/wp-ultimate-recipe-premium/premium/addons/import-fdx/import-fdx.php:65
-#: plugins/wp-ultimate-recipe-premium/premium/addons/import-xml/import-xml.php:65
-#: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:235
-msgid "Untitled"
-msgstr ""
-
-#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes_bak.php:321
-#: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:323
-msgid "Anonymous"
-msgstr ""
-
-#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes_bak.php:354
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:314
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:421
-#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:409
-#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_whitelist.php:286
-#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-fields/custom-fields.php:18
-#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-fields/templates/page.php:4
-#: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:356
-msgid "Custom Fields"
-msgstr ""
-
-#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes_bak.php:380
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:409
-msgid "Please fill-in those required fields:"
-msgstr "Merci de renseigner les informations suivantes :"
-
-#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes_bak.php:390
-#: plugins/custom-recipe-templates/templates/custom_submission_form.php:142
-#: plugins/custom-recipe-templates/templates/custom_submission_form.php:144
-#: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/templates/public_recipe_form.php:135
-#: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:392
-msgid "Preview"
-msgstr "Aperçu"
-
-#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes_bak.php:431
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:440
-#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_options.php:1494
-#: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:430
-msgid "Recipe submitted! Thank you, your recipe is now awaiting moderation."
-msgstr ""
-"Nous avons bien reçu votre recette ! Elle sera publiée après modération. "
-
-#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes_bak.php:488
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:511
-msgid "Format as Duration"
-msgstr ""
-
-#: plugins/custom-recipe-templates/helpers/Custom_User_Submissions_Shortcodes_bak.php:489
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:512
-#, fuzzy
-#| msgid "Main Ingredients"
-msgid "Format as Ingredient"
-msgstr "Ingrédients principaux"
 
 #: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:58
 #: plugins/wp-ultimate-recipe-premium/premium/addons/favorite-recipes/favorite-recipes.php:87
@@ -932,8 +874,8 @@ msgstr ""
 "(privé, amis, groupes, public), ou bien aussi les supprimer."
 
 #: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:94
-msgid "View recipe"
-msgstr "Voir la recette"
+msgid "Preview recipe"
+msgstr "Aperçu de la recette"
 
 #: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:106
 msgid "Delete recipe"
@@ -950,6 +892,23 @@ msgstr ""
 #: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:206
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:245
 msgid "You must be logged-in to access this page."
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:228
+#: plugins/wp-ultimate-recipe-premium/premium/addons/import-fdx/import-fdx.php:65
+#: plugins/wp-ultimate-recipe-premium/premium/addons/import-xml/import-xml.php:65
+#: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:235
+msgid "Untitled"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:314
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:421
+#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:409
+#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_whitelist.php:286
+#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-fields/custom-fields.php:18
+#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-fields/templates/page.php:4
+#: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:356
+msgid "Custom Fields"
 msgstr ""
 
 #: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:341
@@ -979,6 +938,17 @@ msgstr ""
 msgid "Back to <a href=\"%s\">my published recipes</a>"
 msgstr "Retour à <a href=\"%s\">mes recettes publiées</a>"
 
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:409
+msgid "Please fill-in those required fields:"
+msgstr "Merci de renseigner les informations suivantes :"
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:440
+#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_options.php:1494
+#: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:430
+msgid "Recipe submitted! Thank you, your recipe is now awaiting moderation."
+msgstr ""
+"Nous avons bien reçu votre recette ! Elle sera publiée après modération. "
+
 #: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:450
 #, php-format
 msgid "New user submission:%s"
@@ -987,6 +957,16 @@ msgstr ""
 #: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:465
 msgid "Unknown action."
 msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:511
+msgid "Format as Duration"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:512
+#, fuzzy
+#| msgid "Main Ingredients"
+msgid "Format as Ingredient"
+msgstr "Ingrédients principaux"
 
 #: plugins/custom-recipe-templates/includes/Custom_Recipe_Add_To_Shopping_List.php:33
 #, php-format
@@ -1018,11 +998,11 @@ msgstr "Ajouter à mon <a href=\"%s\">carnet de recettes </a>"
 msgid "Favorites"
 msgstr "Favoris"
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:179
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:170
 msgid "Print this Recipe"
 msgstr "Imprimer cette recette"
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:266
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:262
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:65
 msgid "Are you sure you want to delete this recipe:"
 msgstr "Etes vous sûr de vouloir supprimer cette recette :"
@@ -1186,6 +1166,13 @@ msgstr ""
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:373
 msgid "Security Question"
 msgstr ""
+
+#: plugins/custom-recipe-templates/templates/custom_submission_form.php:142
+#: plugins/custom-recipe-templates/templates/custom_submission_form.php:144
+#: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/templates/public_recipe_form.php:135
+#: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:392
+msgid "Preview"
+msgstr "Aperçu"
 
 #: plugins/custom-recipe-templates/templates/custom_submission_form.php:149
 #: plugins/custom-recipe-templates/templates/custom_submission_form.php:151
@@ -1632,6 +1619,16 @@ msgstr ""
 msgid "Show Images"
 msgstr ""
 
+#: plugins/custom-social-interactions/includes/CustomSocialInteractions.php:69
+#: plugins/custom-social-interactions/includes/CustomSocialInteractionsShortcodes.php:30
+#: plugins/custom-social-interactions/includes/CustomSocialInteractionsShortcodes.php:33
+#: plugins/custom-social-interactions/includes/CustomSocialLikePost.php:54
+#, php-format
+msgid "%s like"
+msgid_plural "%s likes"
+msgstr[0] "%s J'aime"
+msgstr[1] "%s J'aime"
+
 #: plugins/custom-social-interactions/includes/CustomSocialLikePost.php:30
 msgid "Like this recipe"
 msgstr "Aimer cette recette"
@@ -1639,13 +1636,6 @@ msgstr "Aimer cette recette"
 #: plugins/custom-social-interactions/includes/CustomSocialLikePost.php:31
 msgid "Do not like this recipe anymore"
 msgstr "Ne plus aimer cette recette"
-
-#: plugins/custom-social-interactions/includes/CustomSocialLikePost.php:54
-#, php-format
-msgid "%s like"
-msgid_plural "%s likes"
-msgstr[0] "%s J'aime"
-msgstr[1] "%s J'aime"
 
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:45
 #: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/custom-taxonomies.php:64
@@ -5929,6 +5919,10 @@ msgstr "Publier"
 msgid "Sorry, the site administrator has disabled recipe submissions."
 msgstr ""
 
+#: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:323
+msgid "Anonymous"
+msgstr ""
+
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:382
 msgid "Please fill in these required fields:"
 msgstr "Merci de renseigner les champs suivants :"
@@ -9582,6 +9576,9 @@ msgstr "Ces recettes pourraient également vous intéresser..."
 #: themes/foodiepro-2.1.8/yarpp-template-goutu.php:20
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
+
+#~ msgid "View recipe"
+#~ msgstr "Voir la recette"
 
 #~ msgid "I Like It"
 #~ msgstr "J'aime"

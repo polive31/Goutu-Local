@@ -16,7 +16,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		add_shortcode('ct-terms-menu', array($this,'list_taxonomy_terms')); 
 		add_shortcode('tags-menu', array($this,'list_tags')); 
 		add_shortcode('ct-terms', array($this,'list_terms_taxonomy'));
-		add_shortcode('permalink', array($this,'add_permalink_shortcode'));
+		add_shortcode('permalink', array($this,'get_permalink'));
 		add_shortcode('share-title', array($this,'display_share_title')); 
 		add_shortcode('registration', array($this,'output_registation_url')); 
 		add_shortcode( 'wp-page-link', array($this,'display_wordpress_page_link') );	
@@ -215,7 +215,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 			'author' => '',
 			'exclude' => '',
 			'drill'	=> 'false',
-			'count' => 'false'
+			'count' => 'false',
 			), $atts );
 
 		$drill = $atts['drill']=='true';
@@ -231,6 +231,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 			$title = $atts['title'];
 
 		$html .= '<h3>' . $title . '</h3>';
+
 		$html .= '<div class="subnav" id="' . $tax . '" style="display:none">';
 
 		$terms = get_categories( array(
@@ -439,17 +440,15 @@ class CustomNavigationShortcodes extends CustomArchive {
 	/* Output permalink of a given post id
 	------------------------------------------------------*/
 
-	public function add_permalink_shortcode($atts) {
+	public function get_permalink($atts) {
 		$a = shortcode_atts(array(
 			'id' => false,
 			'slug' => false,
-			'html' => false, // html markup or url only
-			'text' => ""  // default value if none supplied
+			'text' => ""  // html link is output if not empty
 	    ), $atts);
 	
 		$id=$a['id'];
 		$slug=$a['slug'];
-		$html=$a['html'];
 		$text=esc_html($a['text']);
 	
 		if ($id) 
@@ -459,11 +458,12 @@ class CustomNavigationShortcodes extends CustomArchive {
 			$url=$this->get_page_by_slug($slug);			
 		}
 		else {
+			// Current URL is supplied by default
 			$url=$_SERVER['REQUEST_URI'];			
 		}
 
-    if ($html) return '<a href=' . $url . '>' . $text . '</a>';
-    else return $url;
+	    if ($text) return '<a href=' . $url . '>' . $text . '</a>';
+	    else return $url;
 	}
 
 	public function get_page_by_slug($page_slug, $post_type = 'page' ) { 

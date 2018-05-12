@@ -140,12 +140,13 @@ table#recipe-instructions .recipe_instructions_thumbnail,
   width: 200px!important;
 }
 
-#wpurp_user_submission_form .select2wpurp-container ul {
+#wpurp_user_submission_form .select2wpurp-container ul input {
   min-height: 40px;
+  padding-left: 10px;
 }
 
 #wpurp_user_submission_form .select2wpurp-container ul li div {
-  padding:5px;
+  /*padding:5px;*/
 }
 
 #wpurp_user_submission_form .taxonomy-select-boxes select option {
@@ -622,8 +623,7 @@ textarea.ingredients_notes {
     font-size: 14px;
   }
 
-  #wpurp_user_submission_form input:before,
-  #wpurp_user_submission_form input {
+  #wpurp_user_submission_form input:before {
     padding: 0;
   }
 

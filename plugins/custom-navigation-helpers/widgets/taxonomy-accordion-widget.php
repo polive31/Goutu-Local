@@ -70,6 +70,12 @@ public function widget( $args, $instance ) {
 	}
 
 	echo '<div id="accordion">';
+	// echo do_shortcode('[ct-terms-menu page_slug="plats" page_title="' . __('Latest recipes', 'foodiepro') . '" tax="course" title="' . __('Courses', 'foodiepro') . '" orderby="name" author="0" order="ASC" count="' . $show_count . '"]');
+	// echo do_shortcode('[ct-terms-menu  page_slug="saisons" page_title="' . __('Latest recipes', 'foodiepro') . '" tax="season" title="' . __('Seasons', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
+	// echo do_shortcode('[ct-terms-menu  page_slug="occasions" page_title="' . __('Latest recipes', 'foodiepro') . '" tax="occasion" title="' . __('Occasions', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
+	// echo do_shortcode('[ct-terms-menu  page_slug="monde" page_title="' . __('Latest recipes', 'foodiepro') . '" tax="cuisine" parent="0" drill="true" exclude="9996" title="' . __('World', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
+	// echo do_shortcode('[ct-terms-menu  page_slug="regions" page_title="' . __('Latest recipes', 'foodiepro') . '" tax="cuisine" parent="9996" title="' . __('France', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
+	// echo do_shortcode('[ct-terms-menu  page_slug="regimes" page_title="' . __('Latest recipes', 'foodiepro') . '" tax="diet" title="' . __('Diets', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
 	echo do_shortcode('[ct-terms-menu tax="course" title="' . __('Courses', 'foodiepro') . '" orderby="name" author="0" order="ASC" count="' . $show_count . '"]');
 	echo do_shortcode('[ct-terms-menu tax="season" title="' . __('Seasons', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
 	echo do_shortcode('[ct-terms-menu tax="occasion" title="' . __('Occasions', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');

@@ -216,6 +216,9 @@ class CustomNavigationShortcodes extends CustomArchive {
 			'exclude' => '',
 			'drill'	=> 'false',
 			'count' => 'false',
+			'page_slug' => '', // no custom page entry if empty
+			'page_title' => '',
+			'page_order' => 'last', //first, last
 			), $atts );
 
 		$drill = $atts['drill']=='true';
@@ -229,6 +232,12 @@ class CustomNavigationShortcodes extends CustomArchive {
 		}
 		else 
 			$title = $atts['title'];
+
+		$page_link = '';
+		if ($atts['page_slug'] != '') {
+			$page_url = $this->get_permalink(array('slug'=>$atts['page_slug']));
+			$page_link .= '<li class="accordion-page-link"><a href="' . $page_url . '">' . $atts['page_title'] . '</a></li>';
+		}	
 
 		$html .= '<h3>' . $title . '</h3>';
 
@@ -245,6 +254,8 @@ class CustomNavigationShortcodes extends CustomArchive {
 			'order'   => 'ASC'
 		) );
 		
+
+		$html .= ($atts['page_order']=='first')?$page_link:'';
 		foreach ( $terms as $term ) {
 			$post_count='';
 			if  ( $count ) {
@@ -265,6 +276,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 			$html .= '<li><a href="' . get_term_link( $term, $tax ) . '">' . $term->name . $post_count . '</a></li>';
 		}	
 		
+		$html .= ($atts['page_order']=='last')?$page_link:'';
 		$html .= '</div></div>';
 
 		return $html;

@@ -3083,6 +3083,7 @@ input#ug_photo {font-size: 14px; margin-top: 10px;}
 .page header.entry-header,
 .single header.entry-header {
     display: inline-block;
+    margin-bottom:20px;
 }
 
 .page-header-wrap {

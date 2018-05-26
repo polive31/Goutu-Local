@@ -29,7 +29,7 @@ define ( 'BP_IMAGES_PATH', get_stylesheet_directory() . '/images/buddypress/');
 define ( 'BP_IMAGES_URL', get_stylesheet_directory_uri() . '/images/buddypress/');
 
 /* =================================================================*/
-/* =            CUSTOM JAVSCRIPT
+/* =            CUSTOM JAVASCRIPT
 /* =================================================================*/
 
 //add_action('wp_enqueue_scripts', 'custom_bp_js'); // Reserved for debug, better not replace core BP javascript !
@@ -39,6 +39,28 @@ function custom_bp_js() {
 	wp_enqueue_script( 'dtheme-ajax-js', get_bloginfo('stylesheet_directory') . '/buddypress/js/global.js', array( 'jquery' ), $version );
 }
 
+/* =================================================================*/
+/* =            REGISTRATION
+/* =================================================================*/
+
+add_action( 'bp_before_registration_submit_buttons', function () { ?>
+	<div style="clear: both;">
+		<?php do_action( 'bp_privacy_policy_errors' ); ?>
+		<p>
+			<input type="checkbox" name="agree-to-privacy-policy" checked>
+			I agree with the <a href="<?php echo home_url( 'privacy' ); ?>">Privacy Policy</a>
+		</p>
+	</div>
+	<?php
+}, 11 );
+
+add_action( 'bp_signup_validate', function () {
+	global $bp;
+  
+	if ( ! isset( $_POST['agree-to-privacy-policy'] ) || $_POST['agree-to-privacy-policy'] !== 'on' ) {
+	  $bp->signup->errors['privacy_policy'] = 'Please confirm that you agree with our privacy policy';
+	}
+} );
 
 /* =================================================================*/
 /* =             CUSTOM ACTIVATION MAIL => FONCTIONNE PAS !!!

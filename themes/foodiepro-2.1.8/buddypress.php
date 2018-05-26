@@ -8,7 +8,11 @@
 // Social before content (Cover Image) widgeted area
 add_action( 'genesis_before_content_sidebar_wrap', 'add_before_content_area');
 
+
+add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+
 function add_before_content_area() {
+	if (bp_is_register_page()) return;
 	genesis_widget_area( 'social-before-content', array(
 	   'before' => '<div class="top before-content widget-area" id="buddypress">',
 	   'after'  => '</div>',
@@ -21,6 +25,8 @@ add_action('get_header','social_sidebar');
 function social_sidebar() {
 	// remove the default genesis primary sidebar
 	remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
+	// no sidebar at all on registration page
+	if (bp_is_register_page()) return;
 	// add an action hook to call the function for your custom sidebar
 	add_action( 'genesis_sidebar', 'foodiepro_do_social_sidebar' );
 }

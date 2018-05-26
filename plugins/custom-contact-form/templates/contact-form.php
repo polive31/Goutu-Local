@@ -164,9 +164,10 @@ function ccf_output_form() {
 					<?php } ?>
 				</div>
 
-				<div class="screenReader">
+				<div class="fieldset buttons"><?php echo do_shortcode('[bws_google_captcha]');?></div>
+<!-- 				<div class="screenReader">
 					<?php echo CustomContactForm::pdscaptcha("ask"); ?>
-				</div>	
+				</div>	 -->
 
 				<div class="fieldset inline"><input type="checkbox" name="sendCopy" id="sendCopy" value="true"<?php if(isset($_POST['sendCopy']) && $_POST['sendCopy'] == true) echo ' checked="checked"'; ?> /><label for="sendCopy"><?php echo __('Send a copy of this email to yourself','foodiepro'); ?></label>
 				</div>		
@@ -179,6 +180,8 @@ function ccf_output_form() {
 					
 				<div class="fieldset buttons"><input type="hidden" name="submitted" id="submitted" value="true" /><button type="submit"><?php echo __('Send Message', 'foodiepro'); ?></button>
 				</div>
+
+
 			<!-- </ul> -->
 			</form>
 

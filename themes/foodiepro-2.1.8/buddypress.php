@@ -5,6 +5,12 @@
 /* =                 LAYOUT
 /* =================================================================*/
 
+// Apply Full Width Content to registration page
+// add_action( 'bp_loaded', 'bp_register_set_full_layout' );
+// function bp_register_set_full_layout() {
+// 	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+// }
+
 // Social before content (Cover Image) widgeted area
 add_action( 'genesis_before_content_sidebar_wrap', 'add_before_content_area');
 function add_before_content_area() {

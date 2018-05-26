@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2018-05-26 22:43+0200\n"
+"POT-Creation-Date: 2018-05-27 01:30+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,17 +29,28 @@ msgstr ""
 "X-Poedit-SearchPath-7: plugins/custom-buddypress-helpers\n"
 "X-Poedit-SearchPath-8: plugins/custom-social-interactions\n"
 
-#: plugins/bp-custom.php:154
+#: plugins/bp-custom.php:59
+msgid ""
+"On submitting this form, I agree that my email address be used by <a href="
+"\"goutu.org\">goutu.org</a> for contacting me, and that my first name, sex and "
+"pseudonym be visible to all visitors of this website."
+msgstr ""
+
+#: plugins/bp-custom.php:68
+msgid "Please confirm that you agree with our privacy policy"
+msgstr ""
+
+#: plugins/bp-custom.php:183
 msgid "Published a new recipe"
 msgstr ""
 
-#: plugins/bp-custom.php:155
+#: plugins/bp-custom.php:184
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:20
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:4
 msgid "Recipes"
 msgstr ""
 
-#: plugins/bp-custom.php:156
+#: plugins/bp-custom.php:185
 #: plugins/custom-recipe-templates/widgets/custom_nutrition_label_widget.php:64
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_meta_box.php:60
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:21
@@ -57,36 +68,36 @@ msgstr ""
 msgid "Recipe"
 msgstr ""
 
-#: plugins/bp-custom.php:257
+#: plugins/bp-custom.php:286
 msgid "Display Profile"
 msgstr ""
 
-#: plugins/bp-custom.php:258
+#: plugins/bp-custom.php:287
 msgid "Edit Profile"
 msgstr ""
 
-#: plugins/bp-custom.php:259
+#: plugins/bp-custom.php:288
 msgid "Change Avatar"
 msgstr ""
 
-#: plugins/bp-custom.php:260
+#: plugins/bp-custom.php:289
 msgid "Change Cover"
 msgstr ""
 
-#: plugins/bp-custom.php:376
+#: plugins/bp-custom.php:405
 #: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:74
 #, php-format
 msgctxt "consonant"
 msgid "All posts from %s"
 msgstr ""
 
-#: plugins/bp-custom.php:467
+#: plugins/bp-custom.php:496
 #, php-format
 msgid ""
 "%1$s wrote a new post, <a class=\"activity-post-title\" href=\"%2$s\">%3$s</a>"
 msgstr ""
 
-#: plugins/bp-custom.php:470
+#: plugins/bp-custom.php:499
 #, php-format
 msgid ""
 "%1$s wrote a new recipe, <a class=\"activity-post-title\" href=\"%2$s\">%3$s</"
@@ -561,43 +572,43 @@ msgstr ""
 msgid "You must accept the privacy notice for this form to be submitted."
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:88
+#: plugins/custom-contact-form/templates/contact-form.php:96
 #, php-format
 msgid "%s : Contact request from %s"
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:109
+#: plugins/custom-contact-form/templates/contact-form.php:117
 msgid "Home page"
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:112
+#: plugins/custom-contact-form/templates/contact-form.php:120
 #, php-format
 msgid "Thanks %s,"
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:114
+#: plugins/custom-contact-form/templates/contact-form.php:122
 msgid "Your message was sent, we will answer you shortly."
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:117
+#: plugins/custom-contact-form/templates/contact-form.php:125
 #, php-format
 msgid "Back to %s"
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:123
+#: plugins/custom-contact-form/templates/contact-form.php:131
 msgid "Please provide the required information."
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:127
+#: plugins/custom-contact-form/templates/contact-form.php:135
 msgid "Please provide the correct operation result."
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:134
+#: plugins/custom-contact-form/templates/contact-form.php:142
 msgid ""
 "Fields marked with an asterisk (<span class=\"error\">*</span>) are mandatory."
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:137
+#: plugins/custom-contact-form/templates/contact-form.php:145
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:114
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_form.php:13
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_list.php:15
@@ -621,27 +632,27 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:153
+#: plugins/custom-contact-form/templates/contact-form.php:161
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:33
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:59
 msgid "Subject"
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:160
+#: plugins/custom-contact-form/templates/contact-form.php:168
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:36
 msgid "Message"
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:171
+#: plugins/custom-contact-form/templates/contact-form.php:180
 msgid "Send a copy of this email to yourself"
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:174
+#: plugins/custom-contact-form/templates/contact-form.php:183
 msgid ""
 "I accept that the data entered on this form is stored on the present website."
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:180
+#: plugins/custom-contact-form/templates/contact-form.php:189
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:51
 msgid "Send Message"
 msgstr ""
@@ -7759,36 +7770,36 @@ msgstr ""
 msgid "author"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:769
+#: themes/foodiepro-2.1.8/functions.php:762
 msgid "Read More"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:802
+#: themes/foodiepro-2.1.8/functions.php:795
 msgid "Comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:811
+#: themes/foodiepro-2.1.8/functions.php:804
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:202
 msgid "Previous comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:817
+#: themes/foodiepro-2.1.8/functions.php:810
 msgid "Next comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:835
+#: themes/foodiepro-2.1.8/functions.php:828
 msgid "Your answer here"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:850
+#: themes/foodiepro-2.1.8/functions.php:843
 msgid "All rights reserved"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:850
+#: themes/foodiepro-2.1.8/functions.php:843
 msgid "Contact us"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:850
+#: themes/foodiepro-2.1.8/functions.php:843
 msgid "Legal notice"
 msgstr ""
 

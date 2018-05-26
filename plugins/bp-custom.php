@@ -50,21 +50,22 @@ function custom_bp_js() {
 // }
 
 add_action( 'bp_before_registration_submit_buttons', function () { ?>
-	<div style="clear: both;">
+	<div class="bp-reg-field">
 		<?php do_action( 'bp_privacy_policy_errors' ); ?>
-		<p>
-			<input type="checkbox" name="agree-to-privacy-policy" checked>
-			I agree with the <a href="<?php echo home_url( 'privacy' ); ?>">Privacy Policy</a>
-		</p>
+		<label for="agree_to_privacy_policy" class="required-field"> Protection de la vie privée </label>
+		<div class="alignleft">
+		<!-- <div class="alignleft legal-mention"> -->
+		<input type="checkbox" name="agree_to_privacy_policy">
+		<?php echo __('On submitting this form, I agree that my email address be used by <a href="goutu.org">goutu.org</a> for contacting me, and that my first name, sex and pseudonym be visible to all visitors of this website.', 'foodiepro'); ?>
+		</div>
 	</div>
 	<?php
 }, 11 );
 
 add_action( 'bp_signup_validate', function () {
 	global $bp;
-  
-	if ( ! isset( $_POST['agree-to-privacy-policy'] ) || $_POST['agree-to-privacy-policy'] !== 'on' ) {
-	  $bp->signup->errors['privacy_policy'] = 'Please confirm that you agree with our privacy policy';
+	if ( ! isset( $_POST['agree_to_privacy_policy'] ) || $_POST['agree_to_privacy_policy'] !== 'on' ) {
+	  $bp->signup->errors['privacy_policy'] = __('Please confirm that you agree with our privacy policy','foodiepro');
 	}
 } );
 

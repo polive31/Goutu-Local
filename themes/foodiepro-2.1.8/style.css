@@ -2919,7 +2919,8 @@ ul.cnss-social-icon {
 }
 
 #contactForm p.fieldset,
-#contactForm .fieldset label {
+#contactForm .fieldset label,
+.legal-mention {
 	font-family: Oswald, sans-serif;
 }
 

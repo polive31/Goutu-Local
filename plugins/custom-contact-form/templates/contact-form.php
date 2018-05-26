@@ -62,6 +62,13 @@ function ccf_output_form() {
 			$privacyError = __('You must accept the privacy notice for this form to be submitted.','foodiepro');
 			$hasError = true;
 		};
+
+		// //Check RECapcha
+		// if(!isset($_POST['g-recaptcha-response'])) {
+		// 	$privacyError = __('You must accept the privacy notice for this form to be submitted.','foodiepro');
+		// 	$hasError = true;
+		// };
+		
 		
 		//If there is no error, save the post and send notification
 		// if(!isset($hasError) && !isset($captchaError)) {
@@ -165,15 +172,15 @@ function ccf_output_form() {
 					<?php } ?>
 				</div>
 
-				<div class="fieldset buttons"><?php echo do_shortcode('[bws_google_captcha]');?></div>
-<!-- 				<div class="screenReader">
+				<!-- <div class="fieldset buttons"><?php echo do_shortcode('[bws_google_captcha]');?></div> -->
+				<div class="screenReader">
 					<?php echo CustomContactForm::pdscaptcha("ask"); ?>
-				</div>	 -->
+				</div>
 
-				<div class="fieldset inline"><input type="checkbox" name="sendCopy" id="sendCopy" value="true"<?php if(isset($_POST['sendCopy']) && $_POST['sendCopy'] == true) echo ' checked="checked"'; ?> /><label for="sendCopy"><?php echo __('Send a copy of this email to yourself','foodiepro'); ?></label>
+				<div class="fieldset inline"><input type="checkbox" name="sendCopy" id="sendCopy" value="true" <?php if(isset($_POST['sendCopy']) && $_POST['sendCopy'] == true) echo 'checked'; ?> /><label for="sendCopy"><?php echo __('Send a copy of this email to yourself','foodiepro'); ?></label>
 				</div>		
 
-				<div class="fieldset inline"><input type="checkbox" name="privacyNotice" id="privacyNotice" value="true" <?php if(isset($_POST['privacyNotice']) && $_POST['privacyNotice'] == true) echo 'checked="checked"'; ?> /><label for="privacyNotice" class="requiredField"><?php echo __('I accept that the data entered on this form is stored on the present website.','foodiepro'); ?></label>
+				<div class="fieldset inline"><input type="checkbox" name="privacyNotice" id="privacyNotice" value="true" <?php if(isset($_POST['privacyNotice']) && $_POST['privacyNotice'] == true) echo 'checked'; ?> /><label for="privacyNotice" class="requiredField"><?php echo __('I accept that the data entered on this form is stored on the present website.','foodiepro'); ?></label>
 				<?php if($privacyError != '') { ?>
 					<span class="error">  <?=$privacyError;?></span> 
 				<?php } ?>										

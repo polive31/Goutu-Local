@@ -689,13 +689,6 @@ function wprpe_orderby_rating( $args ) {
 /* =               ARCHIVES
 /* =================================================================*/
 
-// Apply Full Width Content layout to Archives.
-//add_action( 'get_header', 'set_full_layout' );
-function set_full_layout() {
-	if ( ! ( is_archive() || is_tax() || is_search() ) ) return;
-	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
-}
-
 
 /* =================================================================*/
 /* =               PAGES

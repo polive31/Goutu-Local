@@ -43,6 +43,12 @@ function custom_bp_js() {
 /* =            REGISTRATION
 /* =================================================================*/
 
+// Apply Full Width Content to registration page
+// add_action( 'bp_loaded', 'bp_register_set_full_layout' );
+// function bp_register_set_full_layout() {
+// 	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+// }
+
 add_action( 'bp_before_registration_submit_buttons', function () { ?>
 	<div style="clear: both;">
 		<?php do_action( 'bp_privacy_policy_errors' ); ?>

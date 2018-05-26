@@ -7,10 +7,6 @@
 
 // Social before content (Cover Image) widgeted area
 add_action( 'genesis_before_content_sidebar_wrap', 'add_before_content_area');
-
-
-add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
-
 function add_before_content_area() {
 	if (bp_is_register_page()) return;
 	genesis_widget_area( 'social-before-content', array(

@@ -23,8 +23,8 @@ function ccf_output_form() {
 	if(isset($_POST['submitted'])) {
 
 		//Check to see if the honeypot captcha field was filled in
-		if (!CustomContactForm::pdscaptcha($_POST))
-			$captchaError = true;
+		// if (!CustomContactForm::pdscaptcha($_POST))
+		// 	$captchaError = true;
 		
 		//Check to make sure that the name field is not empty
 		if(trim($_POST['contactName']) === '') {
@@ -64,7 +64,8 @@ function ccf_output_form() {
 		};
 		
 		//If there is no error, save the post and send notification
-		if(!isset($hasError) && !isset($captchaError)) {
+		// if(!isset($hasError) && !isset($captchaError)) {
+		if(!isset($hasError)) {
 			// Submit Custom Contact Post
 			$args = array(
 				'post_title' => $subject,

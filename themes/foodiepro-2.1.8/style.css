@@ -612,7 +612,7 @@ h6 {
 
 body {
 	font-family:'Vollkorn', sans-serif;
-	font-size : 18px;
+	font-size : 16px;
 	color:#333;
 	font-weight:300;
 	line-height:1.625;	
@@ -2918,6 +2918,7 @@ ul.cnss-social-icon {
 	font-weight: bold;
 }
 
+#contactForm p.fieldset,
 #contactForm .fieldset label {
 	font-family: Oswald, sans-serif;
 }
@@ -2936,9 +2937,13 @@ ul.cnss-social-icon {
 	max-width:400px;
 }
 
-span.error,
-span.required_field {
+span.error {
 	color:red;
+}
+
+label.requiredField:after {
+    content: "*";
+    color: red;
 }
 
 

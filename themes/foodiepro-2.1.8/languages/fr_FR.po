@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2018-05-12 18:41+0200\n"
-"PO-Revision-Date: 2018-05-12 18:41+0200\n"
+"POT-Creation-Date: 2018-05-26 22:43+0200\n"
+"PO-Revision-Date: 2018-05-26 22:45+0200\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -166,7 +166,7 @@ msgstr ""
 #: plugins/custom-buddypress-helpers/widgets/BP-welcome-widget.php:74
 #: plugins/custom-buddypress-helpers/widgets/BP-whats-new-widget.php:170
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:104
-#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:101
+#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:107
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:78
 msgid "New title"
 msgstr ""
@@ -184,7 +184,7 @@ msgstr ""
 #: plugins/custom-buddypress-helpers/widgets/BP-welcome-widget.php:78
 #: plugins/custom-buddypress-helpers/widgets/BP-whats-new-widget.php:174
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:108
-#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:110
+#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:116
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:82
 #: plugins/custom-recipe-templates/widgets/custom_nutrition_label_widget.php:60
 #: plugins/custom-recipe-templates/widgets/custom_recipe_list_widget.php:101
@@ -563,10 +563,6 @@ msgstr "douze"
 msgid "You forgot to enter your name."
 msgstr "Merci de rentrer votre nom"
 
-#: plugins/custom-contact-form/templates/contact-form.php:38
-msgid "You forgot to enter a subject."
-msgstr "Merci de renseigner le sujet de votre demande."
-
 #: plugins/custom-contact-form/templates/contact-form.php:45
 msgid "You forgot to enter your email address."
 msgstr "Merci de renseigner votre adresse mail."
@@ -579,40 +575,53 @@ msgstr "Cette adresse mail est invalide."
 msgid "You forgot to enter your comments."
 msgstr "Merci de renseigner votre message"
 
-#: plugins/custom-contact-form/templates/contact-form.php:82
+#: plugins/custom-contact-form/templates/contact-form.php:62
+msgid "You must accept the privacy notice for this form to be submitted."
+msgstr ""
+"Merci de donner votre accord, afin que ce formulaire puisse être envoyé."
+
+#: plugins/custom-contact-form/templates/contact-form.php:88
 #, php-format
 msgid "%s : Contact request from %s"
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:103
+#: plugins/custom-contact-form/templates/contact-form.php:109
 msgid "Home page"
 msgstr "l'accueil."
 
-#: plugins/custom-contact-form/templates/contact-form.php:106
+#: plugins/custom-contact-form/templates/contact-form.php:112
 #, php-format
 msgid "Thanks %s,"
 msgstr "Merci %s,"
 
-#: plugins/custom-contact-form/templates/contact-form.php:108
+#: plugins/custom-contact-form/templates/contact-form.php:114
 msgid "Your message was sent, we will answer you shortly."
 msgstr ""
 "Votre message nous a été transmis, nous vous répondrons dans les plus brefs "
 "délais."
 
-#: plugins/custom-contact-form/templates/contact-form.php:111
+#: plugins/custom-contact-form/templates/contact-form.php:117
 #, php-format
 msgid "Back to %s"
 msgstr "Retour à %s"
 
-#: plugins/custom-contact-form/templates/contact-form.php:117
+#: plugins/custom-contact-form/templates/contact-form.php:123
 msgid "Please provide the required information."
 msgstr "Merci de renseigner les informations ci-dessous."
 
-#: plugins/custom-contact-form/templates/contact-form.php:121
+#: plugins/custom-contact-form/templates/contact-form.php:127
 msgid "Please provide the correct operation result."
 msgstr "Merci de donner le résultat correct de l'opération ci-dessous."
 
-#: plugins/custom-contact-form/templates/contact-form.php:129
+#: plugins/custom-contact-form/templates/contact-form.php:134
+msgid ""
+"Fields marked with an asterisk (<span class=\"error\">*</span>) are "
+"mandatory."
+msgstr ""
+"Les champs marqués d'une astérisque (<span class=\"error\">*</span>) sont "
+"requis."
+
+#: plugins/custom-contact-form/templates/contact-form.php:137
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:114
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_form.php:13
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_list.php:15
@@ -636,22 +645,29 @@ msgstr "Merci de donner le résultat correct de l'opération ci-dessous."
 msgid "Name"
 msgstr "Nom"
 
-#: plugins/custom-contact-form/templates/contact-form.php:145
+#: plugins/custom-contact-form/templates/contact-form.php:153
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:33
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:59
 msgid "Subject"
 msgstr "Sujet"
 
-#: plugins/custom-contact-form/templates/contact-form.php:152
+#: plugins/custom-contact-form/templates/contact-form.php:160
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:36
 msgid "Message"
 msgstr "Message"
 
-#: plugins/custom-contact-form/templates/contact-form.php:163
+#: plugins/custom-contact-form/templates/contact-form.php:171
 msgid "Send a copy of this email to yourself"
 msgstr "Je souhaite recevoir une copie de ce message."
 
-#: plugins/custom-contact-form/templates/contact-form.php:166
+#: plugins/custom-contact-form/templates/contact-form.php:174
+msgid ""
+"I accept that the data entered on this form is stored on the present website."
+msgstr ""
+"J'accepte que les informations contenues dans ce formulaire soient stockées "
+"sur ce site web."
+
+#: plugins/custom-contact-form/templates/contact-form.php:180
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:51
 msgid "Send Message"
 msgstr "Envoyer"
@@ -735,7 +751,7 @@ msgstr "Partager sur les réseaux sociaux"
 msgid "Share this post"
 msgstr "Partager cet article"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:346
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:359
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:58
 msgid "authors"
 msgstr "auteurs"
@@ -791,43 +807,43 @@ msgid ""
 "taxonomy terms"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:73
+#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:79
 #: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:68
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_options.php:2058
 msgid "Courses"
 msgstr "De l'apéritif au dessert"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:74
+#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:80
 msgid "Seasons"
 msgstr "Cuisine de saisons"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:75
+#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:81
 msgid "Occasions"
 msgstr "En toutes occasions"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:76
+#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:82
 msgid "World"
 msgstr "Cuisines du monde"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:77
+#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:83
 msgid "France"
 msgstr "Cuisines de régions"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:78
+#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:84
 msgid "Diets"
 msgstr "Régimes et diététique"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:79
+#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:85
 msgid "Ideas"
 msgstr "Inspirations Culinaires"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:115
+#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:121
 #, fuzzy
 #| msgid "Recipe notes"
 msgid "Show Recipe Count"
 msgstr "Notes"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:120
+#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:126
 msgid "Limit Recipes to Current Displayed User"
 msgstr ""
 
@@ -9576,6 +9592,9 @@ msgstr "Ces recettes pourraient également vous intéresser..."
 #: themes/foodiepro-2.1.8/yarpp-template-goutu.php:20
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
+
+#~ msgid "You forgot to enter a subject."
+#~ msgstr "Merci de renseigner le sujet de votre demande."
 
 #~ msgid "View recipe"
 #~ msgstr "Voir la recette"

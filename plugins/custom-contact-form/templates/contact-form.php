@@ -34,10 +34,10 @@ function ccf_output_form() {
 			$name = esc_attr(strip_tags($_POST['contactName']));
 		
 		//Get mail subject
-		if(trim($_POST['ccfSubject']) === '') {
-			$subjectError = __('You forgot to enter a subject.', 'foodiepro');
-			$hasError = true;
-		} else
+		// if(trim($_POST['ccfSubject']) === '') {
+		// 	$subjectError = __('You forgot to enter a subject.', 'foodiepro');
+		// 	$hasError = true;
+		// } else
 			$subject = esc_attr(strip_tags($_POST['ccfSubject']));
 
 		//Check to make sure sure that a valid email address is submitted
@@ -56,6 +56,12 @@ function ccf_output_form() {
 			$hasError = true;
 		} else
 			$comments = esc_attr(strip_tags($_POST['comments']));
+
+		//Check to make sure comments were entered	
+		if(!isset($_POST['privacyNotice'])) {
+			$privacyError = __('You must accept the privacy notice for this form to be submitted.','foodiepro');
+			$hasError = true;
+		};
 		
 		//If there is no error, save the post and send notification
 		if(!isset($hasError) && !isset($captchaError)) {
@@ -125,16 +131,18 @@ function ccf_output_form() {
 			<form action="<?php the_permalink(); ?>" id="contactForm" method="post">
 
 			<!-- <ul class="forms"> -->
+				<p class="fieldset inline"><?php echo __('Fields marked with an asterisk (<span class="error">*</span>) are mandatory.', 'foodiepro'); ?></p>
+
 				<div class="fieldset aligned" >
-					<label for="contactName"><?php echo __('Name','foodiepro'); ?></label>
-					<input type="text" name="contactName" id="contactName" value="<?php if(isset($_POST['contactName'])) echo $_POST['contactName'];?>" class="requiredField" />
+					<label for="contactName" class="requiredField"><?php echo __('Name','foodiepro'); ?></label>
+					<input type="text" name="contactName" id="contactName" value="<?php if(isset($_POST['contactName'])) echo $_POST['contactName'];?>" />
 					<?php if($nameError != '') { ?>
 						<span class="error"><?=$nameError;?></span> 
 					<?php } ?>
 				</div>
 				
 				<div class="fieldset aligned" >
-					<label class="aligned" for="email">Email</label>
+					<label class="aligned requiredField" for="email">Email</label>
 					<input type="text" name="email" id="email" value="<?php if(isset($_POST['email']))  echo $_POST['email'];?>" class="requiredField email" />
 					<?php if($emailError != '') { ?>
 						<span class="error"><?=$emailError;?></span>
@@ -143,14 +151,14 @@ function ccf_output_form() {
 				
 				<div class="fieldset aligned" >
 					<label class="aligned" for="ccfSubject"><?php echo __('Subject','foodiepro'); ?></label>
-					<input type="text" name="ccfSubject" id="ccfSubject" value="<?php if(isset($_POST['ccfSubject'])) echo $_POST['ccfSubject'];?>" class="requiredField" />
+					<input type="text" name="ccfSubject" id="ccfSubject" value="<?php if(isset($_POST['ccfSubject'])) echo $_POST['ccfSubject'];?>" />
 					<?php if($subjectError != '') { ?>
 						<span class="error"><?=$subjectError;?></span> 
 					<?php } ?>
 				</div>
 
-				<div class="fieldset textarea"><label for="commentsText"><?php echo __('Message','foodiepro'); ?></label>
-					<textarea name="comments" id="commentsText" rows="10" cols="20" class="requiredField"><?php if(isset($_POST['comments'])) { if(function_exists('stripslashes')) { echo stripslashes($_POST['comments']); } else { echo $_POST['comments']; } } ?></textarea>
+				<div class="fieldset textarea"><label for="commentsText" class="requiredField"><?php echo __('Message','foodiepro'); ?></label>
+					<textarea name="comments" id="commentsText" rows="10" cols="20" ><?php if(isset($_POST['comments'])) { if(function_exists('stripslashes')) { echo stripslashes($_POST['comments']); } else { echo $_POST['comments']; } } ?></textarea>
 					<?php if($commentError != '') { ?>
 						<span class="error"><?=$commentError;?></span> 
 					<?php } ?>
@@ -161,7 +169,13 @@ function ccf_output_form() {
 				</div>	
 
 				<div class="fieldset inline"><input type="checkbox" name="sendCopy" id="sendCopy" value="true"<?php if(isset($_POST['sendCopy']) && $_POST['sendCopy'] == true) echo ' checked="checked"'; ?> /><label for="sendCopy"><?php echo __('Send a copy of this email to yourself','foodiepro'); ?></label>
-				</div>				
+				</div>		
+
+				<div class="fieldset inline"><input type="checkbox" name="privacyNotice" id="privacyNotice" value="true" <?php if(isset($_POST['privacyNotice']) && $_POST['privacyNotice'] == true) echo 'checked="checked"'; ?> /><label for="privacyNotice" class="requiredField"><?php echo __('I accept that the data entered on this form is stored on the present website.','foodiepro'); ?></label>
+				<?php if($privacyError != '') { ?>
+					<span class="error">  <?=$privacyError;?></span> 
+				<?php } ?>										
+				</div>	
 					
 				<div class="fieldset buttons"><input type="hidden" name="submitted" id="submitted" value="true" /><button type="submit"><?php echo __('Send Message', 'foodiepro'); ?></button>
 				</div>

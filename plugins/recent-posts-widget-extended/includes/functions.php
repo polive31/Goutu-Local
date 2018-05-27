@@ -106,6 +106,8 @@ function rpwe_get_recent_posts( $args = array() ) {
 	// Get the posts query.
 	$posts = rpwe_get_posts( $args );
 
+	// echo '<pre>' . print_r( $posts ) . '</pre>';
+
 	if ( $posts->have_posts() ) :
 
 		// Recent posts wrapper
@@ -180,6 +182,10 @@ function rpwe_get_recent_posts( $args = array() ) {
 						$title_html = '<h3 class="rpwe-title"><a href="' . esc_url( get_permalink() ) . '" title="' . sprintf( esc_attr__( 'Permalink to %s', 'recent-posts-widget-extended' ), the_title_attribute( 'echo=0' ) ) . '" rel="bookmark">' . esc_attr( get_the_title() ) . '</a></h3>';
 						$title_html = apply_filters( 'rpwe_post_title', $title_html, $args);
 						$html .= $title_html;
+						/* End P.O. */
+
+						/* Added P.O. */
+						do_action( 'rpwe_loop', get_post() );
 						/* End P.O. */
 
 

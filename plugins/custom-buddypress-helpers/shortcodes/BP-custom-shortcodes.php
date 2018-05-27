@@ -131,17 +131,18 @@ function bp_social_button( $atts ) {
 		switch ($a['type']) {
 			case "like":
 				$html='<a href="' . bp_get_activity_favorite_link() . '" class="social-button fav bp-secondary-action" title="' . __( 'I like that', 'foodiepro' ) . '">';
-				//$html.='<i class="fa fa-thumbs-o-up"></i>';
-				$html.='<i class="fi fi-glove fi-off"></i>';
+				$html.='<i class="fa fa-thumbs-o-up"></i>';
+				// $html.='<i class="fi fi-glove fi-off"></i>';
 				$html.='</a>';
 				break;
 			case "unlike":
 				$html='<a href="' . bp_get_activity_unfavorite_link() . '" class="social-button unfav bp-secondary-action" title="' . __( 'I don\'t like that anymore', 'foodiepro' ) . '">';
-				/*$html.='<span class="fa fa-stack">';
-				$html.='<i class="fa fa-thumbs-up fa-stack-1x"></i>';
-				$html.='<i class="fa fa-thumbs-o-up fa-stack-1x"></i>';
-				$html.='</span>';*/		
-				$html.='<i class="fi fi-glove fi-on"></i>';
+				// $html.='<span class="fa fa-stack">';
+				// $html.='<i class="fa fa-thumbs-up fa-stack-1x"></i>';
+				// $html.='<i class="fa fa-thumbs-o-up fa-stack-1x"></i>';
+				$html.='<i class="fa fa-thumbs-up"></i>';
+				// $html.='</span>';		
+				// $html.='<i class="fi fi-glove fi-on"></i>';
 				$html.='</a>';			
 				break;
 			case "comment":

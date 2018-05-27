@@ -23,6 +23,8 @@ class CustomContactForm {
 		self::$CCF_URI = plugin_dir_url( dirname( __FILE__ ) );
 	}
 
+
+
 	public function add_ccf_options() {
 		add_options_page('Custom Contact Form', 'Custom Contact Form', 'manage_options', 'functions', array($this, 'ccf_options'));
 	}

@@ -8,24 +8,24 @@ Template Name: Contact Form
 <?php 
 
 // add_action( 'wp_enqueue_scripts', 'enqueue_contact_script' );
+
+add_action( 'genesis_loop', 'ccf_output_form' );
+
 function enqueue_contact_script() {
 	$js_uri = CCF_URI . '/assets/js/';
 	$js_path = CCF_PATH . '/assets/js/';
 	custom_enqueue_script( 'contact-form', $js_uri, $js_path, 'contact-form.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
 }
 
-add_action( 'genesis_loop', 'ccf_output_form' );
-
-
 function ccf_output_form() {
+	if (class_exists('CustomGoogleRecaptcha'))
+		$contactCaptcha = new CustomGoogleRecaptcha();
+	else
+		$contactCaptcha = false;
 
 	//If the form is submitted
 	if(isset($_POST['submitted'])) {
 
-		//Check to see if the honeypot captcha field was filled in
-		// if (!CustomContactForm::pdscaptcha($_POST))
-		// 	$captchaError = true;
-		
 		//Check to make sure that the name field is not empty
 		if(trim($_POST['contactName']) === '') {
 			$nameError = __('You forgot to enter your name.', 'foodiepro');
@@ -57,18 +57,25 @@ function ccf_output_form() {
 		} else
 			$comments = esc_attr(strip_tags($_POST['comments']));
 
-		//Check to make sure comments were entered	
+		//Check to make sure privacy notice was accepted	
 		if(!isset($_POST['privacyNotice'])) {
 			$privacyError = __('You must accept the privacy notice for this form to be submitted.','foodiepro');
 			$hasError = true;
-		};
+		};	
 
-		// //Check RECapcha
-		// if(!isset($_POST['g-recaptcha-response'])) {
-		// 	$privacyError = __('You must accept the privacy notice for this form to be submitted.','foodiepro');
-		// 	$hasError = true;
-		// };
-		
+		// Check Captcha
+		if ($contactCaptcha) {
+			$captchaError = ($contactCaptcha->verify()!='success');
+			// echo '<pre>' . '$contactCaptcha->verify() : ' . $contactCaptcha->verify() . '</pre>';
+			}
+		else {
+			$captchaError = !( CustomContactForm::pdscaptcha($_POST) );
+		}
+		if ($captchaError) {	
+			$captchaError = __('Please complete the captcha verification.','foodiepro');;
+			$hasError=true;
+		}
+		// echo '<pre>' . '$captchaError : ' . $captchaError . '</pre>';
 		
 		//If there is no error, save the post and send notification
 		// if(!isset($hasError) && !isset($captchaError)) {
@@ -130,10 +137,6 @@ function ccf_output_form() {
 				<p class="errorbox">
 					<?php echo __('Please provide the required information.','foodiepro'); ?>
 				</p>
-			<?php } elseif (isset($captchaError)) {?>
-				<p class="errorbox">
-					<?php echo __('Please provide the correct operation result.','foodiepro'); ?>
-				</p>
 			<?php } ?>
 
 			<form action="<?php the_permalink(); ?>" id="contactForm" method="post">
@@ -165,16 +168,28 @@ function ccf_output_form() {
 					<?php } ?>
 				</div>
 
-				<div class="fieldset textarea"><label for="commentsText" class="requiredField"><?php echo __('Message','foodiepro'); ?></label>
-					<textarea name="comments" id="commentsText" rows="10" cols="20" ><?php if(isset($_POST['comments'])) { if(function_exists('stripslashes')) { echo stripslashes($_POST['comments']); } else { echo $_POST['comments']; } } ?></textarea>
+				<div class="fieldset textarea">
+					<div class="clearfix">
+						<label for="commentsText" class="requiredField"><?php echo __('Message','foodiepro'); ?></label>
 					<?php if($commentError != '') { ?>
 						<span class="error"><?=$commentError;?></span> 
 					<?php } ?>
+					</div>	
+					<textarea name="comments" id="commentsText" rows="10" cols="20" ><?php if(isset($_POST['comments'])) { if(function_exists('stripslashes')) { echo stripslashes($_POST['comments']); } else { echo $_POST['comments']; } } ?></textarea>
 				</div>
 
-				<!-- <div class="fieldset buttons"><?php echo do_shortcode('[bws_google_captcha]');?></div> -->
-				<div class="screenReader">
-					<?php echo CustomContactForm::pdscaptcha("ask"); ?>
+				<div class="fieldset inline">
+				<?php 
+				if ($contactCaptcha) {
+					$contactCaptcha->display( 'alignleft' );
+				}
+				else {
+					echo CustomContactForm::pdscaptcha("ask");
+				}
+				?>	
+				<?php if ($captchaError) { ?>
+					<span class="error"><?=$captchaError;?></span> 
+				<?php } ?>
 				</div>
 
 				<div class="fieldset inline"><input type="checkbox" name="sendCopy" id="sendCopy" value="true" <?php if(isset($_POST['sendCopy']) && $_POST['sendCopy'] == true) echo 'checked'; ?> /><label for="sendCopy"><?php echo __('Send a copy of this email to yourself','foodiepro'); ?></label>
@@ -192,8 +207,6 @@ function ccf_output_form() {
 
 			<!-- </ul> -->
 			</form>
-
-
 		
 		<?php } //Check successful submission 
 

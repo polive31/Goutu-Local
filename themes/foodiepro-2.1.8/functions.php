@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'CHILD_THEME_NAME', 'Foodie Pro Theme' );
-define( 'CHILD_THEME_VERSION', '2.2.03' );
+define( 'CHILD_THEME_VERSION', '2.2.04' );
 define( 'CHILD_THEME_DEVELOPER', 'Shay Bocks' );
 define( 'CHILD_THEME_URL', get_stylesheet_directory_uri() );
 define( 'CHILD_THEME_PATH', get_stylesheet_directory() );
@@ -662,6 +662,50 @@ function execute_php($html){
 	}
 	return $html;
 }
+
+/* Recent Posts Widget Extended
+-------------------------------------------------------------------*/
+// Prevent redundant posts when several rpwe instances are called on the same page
+$rpwe_exclude_posts=array();
+add_action('rpwe_loop','rpwe_get_queried_posts');
+add_filter('rpwe_default_query_arguments','rpwe_exclude_posts');
+
+function rpwe_get_queried_posts( $post ) {
+	// echo $post->ID;
+	noglobal( 'collect', $post->ID);
+}
+
+function rpwe_exclude_posts( $query ) {
+	// echo '<br>IN FILTER FUNCTION <br>';
+	// echo '<br>$query before function : <br>';
+	// echo print_r($query);
+	$query = noglobal( 'exclude', '', $query);
+	// echo '<br>$query after function : <br>';
+	// echo print_r($query);
+	return $query;
+}
+
+function noglobal( $action, $postId='', $query=array() ) {
+	static $rpwe_queried_posts=array();
+	if ($action=='collect') {
+		// echo '<br>In RPWE LOOP ACTION ! <br>';
+		// echo $postId;
+		$rpwe_queried_posts[]=$postId;
+		// echo print_r($rpwe_queried_posts);
+		return;
+	}
+	else {
+		// echo '<br>In RPWE DEFAULT QUERY ARGS FILTER ! <br>';
+		// echo '$rpwe_queried_posts : <br>';
+		// echo print_r($rpwe_queried_posts);
+		// echo '<br>$query before merge : <br>';
+		// echo print_r($query);
+		$query['post__not_in'] = array_merge( $query['post__not_in'], $rpwe_queried_posts );
+		// echo '<pre>' . '$query after merge : ' . print_r($query) . '</pre>';
+		return $query;
+	}
+}
+
 
 // Add user rating to WPRPE widget
 add_filter('rpwe_post_title', 'rpwe_add_rating', 10, 2);

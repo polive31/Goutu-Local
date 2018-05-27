@@ -276,16 +276,14 @@ a.comment-reply-link,
 
 input[type="submit"].social-button,
 .social-button {
-  font-size: 20px;
-  color: #b3b3b3;
-  padding: 0 5px;
+	font-size: 20px;
+	color: #b3b3b3;
+	padding: 0 5px;
 }
 
 .social-button.fav,
 .social-button.unfav {
-	font-size: 25px;
-  display: inline-block;
-  vertical-align: middle;	
+	display: inline-block;
 }
 
 .social-button.unfav .fa-thumbs-up {
@@ -1117,6 +1115,9 @@ a img {
 	margin-bottom:20px;
 }
 
+.sidebar a img {
+	margin-bottom: 0px;
+}
 
 a:hover {
 	color:#111;
@@ -1649,9 +1650,10 @@ img.alignnone {
 
 .post-nav.prev-post.alignleft, /* Important, not to be superseded @ media queries*/
 .alignleft {
-	float:left;
 	/*margin-right:40px; Pose problème dans les sections archive top */
 	text-align:left;
+    display: inline-block;
+    vertical-align: middle;	
 }
 
 .post-nav.next-post.alignright, /* important for media queries */
@@ -1992,11 +1994,17 @@ form[role="search"] {
 .rpwe-li {
 	list-style-type:none;
 	display:-webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-  display:-moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-  display:-ms-flexbox;      /* TWEENER - IE 10 */
-  display:-webkit-flex;     /* NEW - Chrome */
-  display:flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
-  float:left;
+	display:-moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display:-ms-flexbox;      /* TWEENER - IE 10 */
+	display:-webkit-flex;     /* NEW - Chrome */
+	display:flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+	float:left;
+}
+
+.sidebar .rpwe-block li,
+.sidebar .rpwe-li {
+	display:initial;
+	float:none;
 }
 
 /*.home .rpwe_widget {
@@ -2906,16 +2914,25 @@ ul.cnss-social-icon {
 }
 
 #contactForm .fieldset {
-    margin: 20px 0;
+	float:left;
+	vertical-align: middle;
+    clear:both;
+	margin: 5px 0;
+	width:100%;
 }
 
 #contactForm textarea,
 #contactForm input {
 	font-size:16px;
+	max-width: 600px;
 }
 
 #contactForm .mathquestion {
 	font-weight: bold;
+}
+
+#contactForm .fieldset.textarea label {
+	width: 100%;
 }
 
 #contactForm p.fieldset,
@@ -2981,6 +2998,7 @@ label.requiredField:after {
 
 /* General */
 .pum-container {
+    max-width: 600px!important;	
 	border-radius: 5px; 
 	border: 2px solid #777777;	
 	padding:25px;
@@ -4197,7 +4215,8 @@ li.comment a {
 .sidebar .rpwe-li {
 	border-bottom:1px dotted #AAA;
 	line-height:18px;
-  width:100%;               /* For old syntax, otherwise collapses. */
+	width:100%;               /* For old syntax, otherwise collapses. */
+	padding:10px 0;
 }
 
 /* Suppression du signe de liste */
@@ -4213,25 +4232,17 @@ li.comment a {
 	border-width:0px;
 }
 
-.sidebar .rpwe-block a.rpwe-img {
-	/*flex:1; Supprimé pour pb IE11 */
-	width:100%;
-  margin-top: auto;
-  margin-bottom: auto;	
-}
-
 .sidebar .rpwe-block li a.rpwe-img img {
-	margin-bottom:0px;
-	margin-top:5px;
+    display:inline-block;
+    vertical-align: middle;
 }
 
 .sidebar .rpwe-block h3 {
 	background:none;
-	/*vertical-align:middle;*/
 	font-weight:400;
-	width:200%;
-	margin-top: auto;
-    margin-bottom: auto;
+    padding-left:20px;
+    display:inline-block;
+    vertical-align: middle;
 }
 
 .sidebar .rpwe-comment {

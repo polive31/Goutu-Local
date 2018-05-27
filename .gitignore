@@ -81,6 +81,7 @@ plugins/buddypress/bp-core/*
 !plugins/custom-js-css-optimization/
 !plugins/wp-scripts-styles-manager/
 !plugins/custom-google-tag-manager/
+!plugins/custom-google-recaptcha/
 !plugins/custom-navigation-helpers/
 !plugins/custom-buddypress-helpers/
 !plugins/custom-social-interactions/

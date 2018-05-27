@@ -18,6 +18,7 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
         $link_class='social-like-post';
         $link_id='';
         $link_url='#';
+        $output='';
 
         if( is_user_logged_in() ) {
             $link_class .= ' logged-in';
@@ -59,7 +60,7 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
                 <!-- [tooltip post="top"] <?php echo $tooltip . $tooltip_alt;?> [/tooltip]         -->
 
         <?php 
-        $output .= ob_get_contents();
+        $output = ob_get_contents();
         ob_end_clean();
 
         // $output = $this->after_output( $output );

@@ -47,10 +47,11 @@ public function widget( $args, $instance ) {
 	// 	echo $args['before_title'] . __('Sort results', 'foodiepro') . $args['after_title'];
 	// Start of widget code
 	// else {
-	// 	$search_term = get_search_query();
-	// 	if ( empty( $search_term ) )
-	// 		$search_term = 's=' . $search_term . '&';
-	// }
+	if ( is_search() ) {
+		$search_term = get_search_query();
+		if ( !empty( $search_term ) )
+			$search_term = 's=' . $search_term . '&';
+	}
 	?>
 
 	<div class="dropdown-select">

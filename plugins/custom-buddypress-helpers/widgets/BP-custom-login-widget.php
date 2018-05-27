@@ -25,7 +25,7 @@ add_action( 'widgets_init', function(){
  
 class BP_Custom_Login_Widget extends WP_Widget {
 
-	private static $instance=0;
+	private $instance=0;
 
 	/**
 	 * Constructor method.

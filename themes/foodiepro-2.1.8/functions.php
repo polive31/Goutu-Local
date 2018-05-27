@@ -700,7 +700,9 @@ function noglobal( $action, $postId='', $query=array() ) {
 		// echo print_r($rpwe_queried_posts);
 		// echo '<br>$query before merge : <br>';
 		// echo print_r($query);
-		$query['post__not_in'] = array_merge( $query['post__not_in'], $rpwe_queried_posts );
+		if (isset($query['post__not_in']) && isset($rpwe_queried_posts)) {
+			$query['post__not_in'] = array_merge( $query['post__not_in'], $rpwe_queried_posts );	
+		} 
 		// echo '<pre>' . '$query after merge : ' . print_r($query) . '</pre>';
 		return $query;
 	}

@@ -15,11 +15,17 @@ class CustomArchive {
 	protected static $vowels = array('a','e','i','o','u');
 	protected $orderby;
 	protected $query='';
+	public static $PLUGIN_PATH;
+	public static $PLUGIN_URI;	
 	
 	public function __construct() {	
 		// IMPORTANT : use wp as a hook, otherwise the archive will not be set yet and errors will occur
 		add_action( 'wp', array($this,'hydrate'));		
 		// add_filter( 'genesis_attr_content', 'add_columns_class_to_content' );
+		// self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
+		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
+		add_action('wp_enqueue_scripts', array($this, 'enqueue_masonry_scripts'));		
+		add_action('wp_head', array($this, 'add_masonry_layout_js'));
 	}
 
 
@@ -32,7 +38,26 @@ class CustomArchive {
 		// }
 		$this->query = get_queried_object();
 		$this->orderby = get_query_var('orderby','ASC');
-	}			
+	}		
+
+	public function enqueue_masonry_scripts() {
+	  	if ( is_archive() || is_search() ) {	
+			wp_enqueue_script( 'jquery-masonry' );
+			// $js_uri = self::$PLUGIN_URI . '/assets/js/';
+			// $js_path = self::$PLUGIN_PATH . '/assets/js/';
+			// custom_enqueue_script( 'masonry-layout', $js_uri, $js_path, 'masonry-layout.js', array( 'jquery-masonry' ), CHILD_THEME_VERSION, true);
+	  	};
+	}
+
+	public function add_masonry_layout_js(){
+	  	if ( is_archive() || is_search() ) {	
+		?>
+		<script>
+		jQuery(document).ready(function(){var e=jQuery("#genesis-content");e.imagesLoaded(function(){$itemSelector="article.simple-grid",e.masonry({itemSelector:$itemSelector})})});
+		</script>
+		<?php
+		}
+	}		
 	
 	public function archive_filter_sort($query) {
 	  // Select any archive. For custom post type use: is_post_type_archive( $post_type )

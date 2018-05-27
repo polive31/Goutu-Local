@@ -1328,33 +1328,33 @@ Structure and Layout
 
 .rpwe-block li,
 .simple-grid {
-	display: inline-block;
+	float:left;
 	vertical-align: top;
 	padding: 5px;	
 	margin-bottom: 20px;
 }
 
-/*.simple-grid.one-sixth,*/
+.simple-grid.one-sixth,
 .rpwe-block.grid-6col li {
   width: calc(15% - 20px);; 
 }
 
-/*.simple-grid.one-fifth,*/
+.simple-grid.one-fifth,
 .rpwe-block.grid-5col li {
   width: calc(20% - 20px);             
 }
 
-/*.simple-grid.one-fourth,*/
+.simple-grid.one-fourth,
 .rpwe-block.grid-4col li {
   width: calc(25% - 20px); 
 }
 
-/*.simple-grid.one-third,*/
+.simple-grid.one-third,
 .rpwe-block.grid-3col li {
   width: calc(33.3% - 20px);
 }
 
-/*.simple-grid.one-half,*/
+.simple-grid.one-half,
 .rpwe-block.grid-2col li {
   width: calc(50% - 20px);
 }
@@ -3853,13 +3853,6 @@ p.more-from-category {
 
 /* Archive layout
 --------------------------------------------- */
-.search .content,
-.archive .content {
-	column-count: 3; /* Independently from customizer settings, this style will determine the column count in archive pages */
-	-webkit-column-count: 3;
-	column-gap: 1em; 
-}
-
 .search .content h2.entry-title,
 .archive .content h2.entry-title {
 	padding-bottom: 5px;
@@ -3935,7 +3928,35 @@ h1.entry-title::first-letter {
 	flex:1 100%;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
 }
 
+/**** Masonry Transitions ****/
 
+/*.masonry,
+.masonry .masonry-brick,
+.article.simple-grid {
+  -webkit-transition-duration: 0.7s;
+     -moz-transition-duration: 0.7s;
+      -ms-transition-duration: 0.7s;
+       -o-transition-duration: 0.7s;
+          transition-duration: 0.7s;
+}
+
+.masonry {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.masonry .masonry-brick,
+.article.single-grid {
+  -webkit-transition-property: left, right, top;
+     -moz-transition-property: left, right, top;
+      -ms-transition-property: left, right, top;
+       -o-transition-property: left, right, top;
+          transition-property: left, right, top;
+}
+*/
 /* Archive Navigation
 --------------------------------------------- */
 
@@ -5268,19 +5289,13 @@ Site Footer
 		width: calc(50% - 20px);  
 	}
 
-	/*.simple-grid.one-sixth,
+	.simple-grid.one-sixth,
 	.simple-grid.one-fifth,
 	.simple-grid.one-fourth,
 	.simple-grid.one-third {
 		width: calc(50% - 20px);  
-	}*/
-
-	.search .content,
-	.archive .content {
-		column-count : 2;
-		-webkit-column-count : 2;
 	}
-	
+
 	.sidebar .widget {
 		width: 100%;	
 	}	

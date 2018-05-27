@@ -60,6 +60,7 @@ public function widget( $args, $instance ) {
 		}
 		elseif ($tax_slug=="diet") $current_menu_item=5;
 		elseif ($tax_slug=="post_tag") $current_menu_item=6;
+		else $current_menu_item=0;
 	}
 	else $current_menu_item=0;
 	// echo '<pre>' . 'current tax : ' . $current_menu_item . '</pre>';

@@ -2249,12 +2249,12 @@ form[role="search"] {
 
 /* GDPR */
 .gdpr-wrapper {
-    background: #bdbdbdbf;
+    background: #bdbdbdbf!important;
 }
 
 .gdpr a {
     /*color: #d9edff;*/
-    color: #fff;
+    color: #fff!important;
 }
 
 /* Taxonomies/Tags Accordion Menu
@@ -4271,10 +4271,12 @@ li.comment a {
 	text-decoration:none;
 }
 
+.sidebar .entry-header-overlay,
 .sidebar a.rpwe-img {
 	display:table-cell;
 	width:70px;
 	padding:5px 0;
+	text-align: left;
 }
 
 .sidebar .rpwe-block h3 {

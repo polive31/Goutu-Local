@@ -46,22 +46,23 @@ public function widget( $args, $instance ) {
 	// Widget code starts
 
 	$obj = get_queried_object();
+	$tax_slug='';
+	$tax_parent='';
 	if (isset($obj->taxonomy)) {
 		$tax_slug = $obj->taxonomy;
 		// echo '<pre>' . 'taxonomy : ' . $tax_slug . '</pre>';
 		$tax_parent = $obj->parent;
 		// echo '<pre>' . 'parent : ' . $tax_parent . '</pre>';
-		if ($tax_slug=="course") $current_menu_item=0;
-		elseif ($tax_slug=="season") $current_menu_item=1;
-		elseif ($tax_slug=="occasion") $current_menu_item=2;
-		elseif ($tax_slug=="cuisine") {
-			if ($tax_parent!=9996) $current_menu_item=3;
-			else $current_menu_item=4;
-		}
-		elseif ($tax_slug=="diet") $current_menu_item=5;
-		elseif ($tax_slug=="post_tag") $current_menu_item=6;
-		else $current_menu_item=0;
 	}
+	$page_slug=get_post_meta( get_the_ID(), 'page_slug', true );
+
+	if ($tax_slug=="course" || $page_slug=="course") $current_menu_item=0;
+	elseif ($tax_slug=="season" || $page_slug=="season") $current_menu_item=1;
+	elseif ($tax_slug=="occasion" || $page_slug=="occasion") $current_menu_item=2;
+	elseif ( ($tax_slug=="cuisine" && $tax_parent!=9996) || ( $page_slug=="world" ) ) $current_menu_item=3;
+	elseif ( ($tax_slug=="cuisine" && $tax_parent==9996) || ( $page_slug=="region" ) ) $current_menu_item=4;
+	elseif ($tax_slug=="diet" || $page_slug=="diet") $current_menu_item=5;
+	elseif ($tax_slug=="post_tag") $current_menu_item=6;
 	else $current_menu_item=0;
 	// echo '<pre>' . 'current tax : ' . $current_menu_item . '</pre>';
 

@@ -2247,6 +2247,15 @@ form[role="search"] {
 /* Plugins
 -------------------------------------------------------- */
 
+/* GDPR */
+.gdpr-wrapper {
+    background: #bdbdbdbf;
+}
+
+.gdpr a {
+    /*color: #d9edff;*/
+    color: #fff;
+}
 
 /* Taxonomies/Tags Accordion Menu
 --------------------------------------------- */

@@ -132,6 +132,7 @@ function rpwe_get_recent_posts( $args = array() ) {
 
 							// Check if post has post thumbnail.
 							if ( has_post_thumbnail() ) :
+								$html .= '<div class="entry-header-overlay">';
 								$html .= '<a class="rpwe-img" href="' . esc_url( get_permalink() ) . '"  rel="bookmark">';
 									if ( $image ) :
 										$html .= '<img class="' . esc_attr( $args['thumb_align'] ) . ' rpwe-thumb" src="' . esc_url( $image ) . '" alt="' . esc_attr( get_the_title() ) . '">';
@@ -145,6 +146,10 @@ function rpwe_get_recent_posts( $args = array() ) {
 										);
 									endif;
 								$html .= '</a>';
+								/* Added P.O. */
+								$html .= apply_filters( 'rpwe_in_thumbnail', '', $args);
+								/* End P.O. */									
+								$html .= '</div>';
 
 							// If no post thumbnail found, check if Get The Image plugin exist and display the image.
 							elseif ( function_exists( 'get_the_image' ) ) :
@@ -172,10 +177,8 @@ function rpwe_get_recent_posts( $args = array() ) {
 
 						endif;
 						
-						/* Added P.O. */
-						$meta_html = '';
-						$meta_html = apply_filters( 'rpwe_after_thumbnail', $meta_html, $args);
-						$html .= $meta_html;
+						/* Added P.O. */ 
+						$html .= apply_filters( 'rpwe_after_thumbnail', $meta_html, $args);
 						/* End P.O. */
 
 						/* Added P.O. */

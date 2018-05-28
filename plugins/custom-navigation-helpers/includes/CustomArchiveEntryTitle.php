@@ -19,6 +19,7 @@ class CustomArchiveEntryTitle extends CustomArchive {
 		add_action( 'genesis_entry_header', array($this, 'do_post_title_before'), 1 );
 		add_action( 'genesis_entry_header', array($this, 'do_post_title_after') );
 		add_action( 'genesis_post_info', array($this, 'custom_post_info_filter') );
+		add_filter( 'rpwe_in_thumbnail', array($this, 'rpwe_add_overlay'), 10, 2 );
 	}
 
 
@@ -88,6 +89,20 @@ class CustomArchiveEntryTitle extends CustomArchive {
  		else
  			return $terms[0];
 	}
+
+	// Add overlay to RPWE widget
+	public function rpwe_add_overlay($output, $args) {
+		$disp_overlay = substr($args['cssID'],3,1);
+		////foodiepro_log( array('WPRPE Output add rating'=>$output) );
+		if ( $disp_overlay == '1') {
+			$post_id = get_the_ID();
+			$origin = $this->get_post_term( $post_id, 'cuisine', 'names');
+			$output .= $this->output_tags( $origin, null, null, null);
+			// $overlay = "TOTO";
+		}
+		return $output;
+	}
+
 	
 	public function entry_tags( $title='' ) {
 		

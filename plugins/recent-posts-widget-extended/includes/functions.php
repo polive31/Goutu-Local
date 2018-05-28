@@ -179,7 +179,9 @@ function rpwe_get_recent_posts( $args = array() ) {
 						/* End P.O. */
 
 						/* Added P.O. */
-						$title_html = '<h3 class="rpwe-title"><a href="' . esc_url( get_permalink() ) . '" title="' . sprintf( esc_attr__( 'Permalink to %s', 'recent-posts-widget-extended' ), the_title_attribute( 'echo=0' ) ) . '" rel="bookmark">' . esc_attr( get_the_title() ) . '</a></h3>';
+						$title_meta = '';
+						$title_meta = apply_filters( 'rpwe_post_title_meta', $title_meta, $args);
+						$title_html = '<h3 class="rpwe-title"><a href="' . esc_url( get_permalink() ) . '" title="' . sprintf( esc_attr__( 'Permalink to %s', 'recent-posts-widget-extended' ), the_title_attribute( 'echo=0' ) ) . '" rel="bookmark">' . esc_attr( get_the_title() ) . '</a>' . $title_meta . '</h3>';
 						$title_html = apply_filters( 'rpwe_post_title', $title_html, $args);
 						$html .= $title_html;
 						/* End P.O. */

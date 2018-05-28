@@ -371,6 +371,20 @@ function add_author_image() {
 	}
 }
 
+// Add post author to RPWE  widget
+add_filter('rpwe_post_title_meta', 'rpwe_add_author', 10, 2);
+function rpwe_add_author($output, $args ) {
+	$disp_author = substr($args['cssID'],2,1);
+	if ( $disp_author == '1') {
+		$id = get_the_author_meta( 'ID' );
+		$name = bp_core_get_username( $id );
+		$url = get_author_posts_url( $id );
+		$link = '<a href="' . $url . '">' . $name . '</a>';
+		$output .= '<span class="rpwe-author">' . sprintf(__('by %s','foodiepro'), $link ) . '</span>';
+	}
+	return $output;
+}
+
 
 /* Modify WP Recent Posts extended output, depending on the css ID field value */
 add_filter('rpwe_after_thumbnail', 'wprpe_add_gravatar', 20, 2);

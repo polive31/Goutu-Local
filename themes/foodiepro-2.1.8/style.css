@@ -1990,6 +1990,7 @@ form[role="search"] {
 	justify-content: center;
 }
 
+
 .rpwe-block li,
 .rpwe-li {
 	list-style-type:none;
@@ -1999,12 +2000,6 @@ form[role="search"] {
 	display:-webkit-flex;     /* NEW - Chrome */
 	display:flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
 	float:left;
-}
-
-.sidebar .rpwe-block li,
-.sidebar .rpwe-li {
-	display:initial;
-	float:none;
 }
 
 /*.home .rpwe_widget {
@@ -2017,10 +2012,9 @@ form[role="search"] {
 }
 
 
-.sidebar .rpwe_widget .widget-wrap {
-	padding:0px;
-}
-
+/* RPWE in sidebar
+---------------------------------------------------*/
+/*See Sidebars section*/
 
 /* Text Widget Display
 --------------------------------------------- */
@@ -4232,12 +4226,31 @@ li.comment a {
 
 /* Recent Posts Extended in sidebar
 --------------------------------------------- */
+.sidebar .rpwe_widget .widget-wrap {
+	padding:0px;
+}
 
+.sidebar .rpwe-block ul,
+.sidebar .rpwe-ul {
+	display:table;
+	float:none;
+	table-layout: auto;
+	border-collapse: collapse;
+}
+
+.sidebar .rpwe-block li,
 .sidebar .rpwe-li {
+	display:table-row;
+	float:none;
+	margin : 0;
 	border-bottom:1px dotted #AAA;
 	line-height:18px;
 	width:100%;               /* For old syntax, otherwise collapses. */
 	padding:10px 0;
+}
+
+.sidebar .rpwe-block li:last-of-type {
+	border-width:0px;
 }
 
 /* Suppression du signe de liste */
@@ -4249,21 +4262,17 @@ li.comment a {
 	text-decoration:none;
 }
 
-.sidebar .rpwe-block li:last-of-type {
-	border-width:0px;
-}
-
-.sidebar .rpwe-block li a.rpwe-img img {
-    display:inline-block;
-    vertical-align: middle;
+.sidebar a.rpwe-img {
+	display:table-cell;
+	width:70px;
+	padding:5px 0;
 }
 
 .sidebar .rpwe-block h3 {
-	background:none;
-	font-weight:400;
-    padding-left:20px;
-    display:inline-block;
-    vertical-align: middle;
+    display:table-cell;
+    padding: 5px 0;
+    vertical-align: top;
+    text-align: left;
 }
 
 .sidebar .rpwe-comment {
@@ -4277,15 +4286,32 @@ li.comment a {
 .sidebar .rpwe-thumb {
 	border-width:0px;
 	box-shadow:none;
+	vertical-align: middle;
 }
 
 .sidebar .rpwe-summary {
-font-size:12px;
+	font-size:12px;
 }
 
 .sidebar .rpwe-time {
-color:#bbb;
-font-size:11px;
+	color:#bbb;
+	font-size:11px;
+}
+
+.sidebar span.rpwe-author,
+.sidebar span.rpwe-author a {
+    font-family: initial;
+    font-size: 16px;
+    font-style: italic;
+    font-variant: initial;
+    text-transform: initial;
+    font-weight: initial;
+    /*color: #878787;*/
+}
+
+.sidebar span.rpwe-author {
+    display: block;
+    padding : 5px 0;
 }
 
 

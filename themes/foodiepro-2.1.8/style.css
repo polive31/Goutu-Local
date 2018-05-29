@@ -1800,6 +1800,10 @@ h2.entry-title, .wpupg-post-title,
 	padding:0 0 20px 0;
 }
 
+.sidebar .widgettitle a {
+	border:none;
+}
+
 .tilde .widgettitle:before,
 .tilde .widgettitle:after {
 	display:inline-block;
@@ -1814,8 +1818,18 @@ h2.entry-title, .wpupg-post-title,
 	background-position:-66px 0;
 }
 
-.sidebar .widgettitle a {
-	border:none;
+.top5 .widgettitle:before,
+.top5 .widgettitle:after {
+	display:inline-block;
+	vertical-align: -30px;
+	margin:0px -20px;
+	content:url(images/deco-icons/laurel-l.png);
+	/*content:url(images/deco-icons/laurel-o-l.png);*/
+}
+
+.top5 .widgettitle:after {
+	content:url(images/deco-icons/laurel-r.png);
+	/*content:url(images/deco-icons/laurel-o-r.png);*/
 }
 
 /* Archive title
@@ -4248,6 +4262,7 @@ li.comment a {
 	float:none;
 	table-layout: auto;
 	border-collapse: collapse;
+    width: 100%;	
 }
 
 .sidebar .rpwe-block li,

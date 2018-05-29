@@ -28,20 +28,25 @@ class CustomGoogleRecaptcha {
 	}
 
 	public function verify() {
+		$retries=4;
 		if(isset($_POST['g-recaptcha-response'])){
 			$captcha=$_POST['g-recaptcha-response'];
 	    }
         if(!$captcha){
           return 'missing';
         }
-        $ip = $_SERVER['REMOTE_ADDR'];
-        $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=". self::$PRIVATE_KEY ."&response=".$captcha."&remoteip=".$ip);
-        $responseKeys = json_decode($response,true);
-        if(intval($responseKeys["success"]) !== 1) {
-          return 'success';
-        } else {
-          return 'fail';
-        }
+        do {	
+	        $ip = $_SERVER['REMOTE_ADDR'];
+	        $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=". self::$PRIVATE_KEY ."&response=".$captcha."&remoteip=".$ip);
+	        $responseKeys = json_decode($response,true);
+	        if(intval($responseKeys["success"]) !== 1) {
+	          $result ='success';
+	        } else {
+	          $result = 'fail';
+	        }
+	        --$retries;
+        } while ($result=='fail' && $retries>0);
+        return $result;
 	}
 
 

@@ -89,11 +89,37 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 			'source' => 'post', //comment
 			'display' => 'normal', //minimal = only stars, normal = caption + stars, full = with votes
 			'category' => 'all',  // which rating(s) is(are) to be displayed : "all", "global", "rating", "clarity"...
+			'markup' => 'table',  // span, list...
 		), $atts );
 		
 		$display_style = $a['display'];
 		$comment_rating = ( $a['source'] == 'comment');
 		
+		if ($a['markup']=='table') {
+			$otag = '<table class="ratings-table">'; // main opening tag
+			$ctag = '</table>'; // mai opening tag
+			$rotag = '<tr>'; // row opening tag
+			$rctag = '</tr>'; // row closing tag
+			$cotag = '<td'; // cell opening tag
+			$cctag = '</td>'; // cell closing tag
+		}
+		elseif ($a['markup']=='list') {
+			$otag = '<ul class="ratings-table">'; // main opening tag
+			$ctag = '</ul>'; // mai opening tag
+			$rotag = '<li>'; // row opening tag
+			$rctag = '</li>'; // row closing tag
+			$cotag = '<div'; // cell opening tag
+			$cctag = '</div>'; // cell closing tag
+		}		
+		elseif ($a['markup']=='span') {
+			$otag = '<span class="ratings-table">'; // main opening tag
+			$ctag = '</span>'; // mai opening tag
+			$rotag = ''; // row opening tag
+			$rctag = ''; // row closing tag
+			$cotag = '<span'; // cell opening tag
+			$cctag = '</span>'; // cell closing tag
+		}
+
 		//if (!$comment_rating) $this->dbg('In POST rating display shortcode','');
 		//if ($comment_rating) $this->dbg('In COMMENT rating display shortcode','');
 
@@ -106,8 +132,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 				$display_cats[$key]=self::$ratingCats[$key];	
 			}
 		}
-		//$this->dbg('$display cats',$display_cats);
-		
+
 		// Setup ratings source
 		if ( $comment_rating ) {
 			$comment_id = get_comment_ID();
@@ -122,14 +147,10 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		ob_start();
 	
 		?>
-		<table class="ratings-table">
+		<?php echo $otag; ?>
 		<?php
 		foreach ($display_cats as $id=>$cat) {
 			
-			//echo 'SHORTCODE !!!';
-	
-			//$this->dbg('In display loop $cats',$cat);
-			//$this->dbg('In display loop $id',$id);
 			if ( $comment_rating ) {
 				$rating=$this->get_comment_rating($comment_id,$id);
 			}
@@ -145,45 +166,43 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 				}
 			}
 			else {
-				//echo 'CATEGORY = ' . $id;
 				$rating = $this->get_post_rating( $post_id , $id);
-				//echo 'RATING = ' . $rating;				
-				//$this->dbg('In display loop $rating',$rating);
 			}
 
 			$rating=empty($rating)?0:$rating;
 			$stars = floor($rating);
 			$half = ($rating-$stars) >= 0.5;
 			?>
-			<tr>
+			<?= $rotag;?>
 			<?php
 			if ( ! ( $comment_rating && $rating==0 ) ) { // Don't show empty ratings in comments 	
 				if ( $display_style!='minimal' ) {
 				?>
-				<td class="rating-category" title="<?php echo __($cat['legend'], 'custom-star-rating')?>"><?php echo __($cat['title'], 'custom-star-rating')?></td>
+				<?= $cotag;?> class="rating-category" title="<?php echo __($cat['legend'], 'custom-star-rating')?>"><?php echo __($cat['title'], 'custom-star-rating')?>
+				<?= $cctag;?>
 				<?php
 				}?>
-				<td class="rating" title="<?php echo $rating?> : <?php echo $this->rating_caption($rating,$id)?>">
+				<?= $cotag;?> class="rating" title="<?php echo $rating?> : <?php echo $this->rating_caption($rating,$id)?>">
 				<a class="pum-trigger" id="recipe-review"><?php echo $this->output_stars($stars, $half)?></a>
-				</td>
+				<?= $cctag;?>
 			<?php
 			}
 			if ( $display_style=='full' && !empty( $votes ) ) {
 				$rating_plural=sprintf(_n('%s review','%s reviews',$votes,'custom-star-rating'), $votes); ?>
-				<td class="rating-details"><a href="#comments-section"><?php echo $rating_plural ?></a></td> 
+				<?= $cotag;?> class="rating-details"><a href="#comments-section"><?php echo $rating_plural ?></a><?= $cctag;?> 
 			<?php 
 			}?>
-			</tr>
+			<?= $rctag;?>
 			<?php	
 		}?>
-		</table>
+		<?= $ctag;?>
 		<?php 
 			//else {
 				//echo '<div class="rating-details">' . __('Be the first to rate this recipe !','custom-star-rating') . '</div>';
 			//}
 
 		$html = ob_get_contents();
-	  ob_end_clean();	
+	  	ob_end_clean();	
 
 		return $html;
 	}

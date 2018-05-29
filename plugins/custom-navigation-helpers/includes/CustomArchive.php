@@ -75,7 +75,7 @@ class CustomArchive {
 		//echo 'ORDERBY' . $orderby;
 
 		if ($this->orderby=='rating') {
-			PHP_Debug::trace('RATING !!!!');
+			// PHP_Debug::trace('RATING !!!!');
 			$orderby = 'meta_value_num';
 			$meta_key = 'user_rating_global';
 			$order = 'DESC';

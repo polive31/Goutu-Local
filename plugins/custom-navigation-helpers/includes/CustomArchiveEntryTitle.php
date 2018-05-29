@@ -69,7 +69,7 @@ class CustomArchiveEntryTitle extends CustomArchive {
 				// $title = do_shortcode('[display-star-rating category="global" display="minimal"]') . $title;
 				// Rating AFTER entry title
 				$title .= '<span class="entry-rating">';
-				$title .= do_shortcode('[display-star-rating category="global" display="minimal"]');
+				$title .= do_shortcode('[display-star-rating category="global" display="minimal" markup="span"]');
 				$title .= do_shortcode('[like-count]');
 				$title .= '</span>';
 				//echo 'User rating global = ' . get_post_meta( get_the_ID(), 'user_rating_global', true );

@@ -145,10 +145,10 @@ function rpwe_get_recent_posts( $args = array() ) {
 											)
 										);
 									endif;
-								$html .= '</a>';
 								/* Added P.O. */
 								$html .= apply_filters( 'rpwe_in_thumbnail', '', $args);
 								/* End P.O. */									
+								$html .= '</a>';
 								$html .= '</div>';
 
 							// If no post thumbnail found, check if Get The Image plugin exist and display the image.

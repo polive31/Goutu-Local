@@ -2709,6 +2709,7 @@ i.fi.fi-half.fi-off {
 
 .rating {
   font-size:18px;
+  margin: 0 5px;
 }
 .comment .rating {
   font-size:16px;
@@ -2716,8 +2717,8 @@ i.fi.fi-half.fi-off {
 
 /* Stars spacing */
 .fa-stack {
-  width: 18px!important;
-  height: 23px!important;
+  width: 17px!important;
+  height: 20px!important;
   line-height: 18px!important;
 }
 
@@ -3133,6 +3134,7 @@ input#ug_photo {font-size: 14px; margin-top: 10px;}
 
 .entry-header-overlay {
 	position:relative;
+	text-align:center; /* Allows image centering in any resolution */
 }
 
 .entry-header-overlay .overlay {
@@ -3632,13 +3634,14 @@ nav.nav-primary .wrap {
 	margin-right:auto;
 	margin-left:auto;
 	background:white;
-  font-size:0;
+  	font-size:0;
+  	display: inline-block;
+  	position: relative;
 }
 
 .content a.rpwe-img:hover img {
 	opacity:0.8;
 }
-
 
 .rpwe-block img.avatar {
 	width:55px;
@@ -5270,36 +5273,6 @@ Site Footer
 		line-height: 45px;
 	}
 	
-	.entry-header-overlay .overlay {
-    font-size: 17px;
-    line-height: 17px;
-		padding: 2px 10px;    
-	}	
-
-	.entry-header-overlay .overlay#veg {
-    font-size: 16px;
-    line-height: unset;
-	}	
-
-	.overlay.left0 {
-    top: 3px;
-    left:5px;
-	}
-
-	.overlay.left1 {
-    top: 35px;
-    left:5px;
-	}	
-
-	.overlay.topright0 {
-    right: 5px;
-    top: 3px;
-	}	
-	.overlay.botright0 {
-    right: 5px;
-    bottom: 12px;
-	}	
-	
 }
 
 /* Retina smartphone */
@@ -5318,6 +5291,10 @@ Site Footer
 
 
 @media only screen and (max-width:720px) {
+		
+	li.rpwe-li.rpwe-clearfix.rpwe-first {
+	    width: 100%!important;
+	}	
 
 	.rpwe-block.grid-6col li,
 	.rpwe-block.grid-5col li,
@@ -5335,10 +5312,6 @@ Site Footer
 
 	.sidebar .widget {
 		width: 100%;	
-	}	
-		
-	li.rpwe-li.rpwe-clearfix.rpwe-first {
-	    width: 100%;
 	}	
 	
 	.related-posts img.rpwe-thumb {
@@ -5382,6 +5355,36 @@ Site Footer
 }
 
 @media only screen and (max-width:420px) {
+	
+	.entry-header-overlay .overlay {
+		font-size: 17px;
+		line-height: 17px;
+		padding: 2px 10px;    
+	}	
+
+	.entry-header-overlay .overlay#veg {
+		font-size: 16px;
+		line-height: unset;
+	}	
+
+	.overlay.left0 {
+    top: 3px;
+    left:5px;
+	}
+
+	.overlay.left1 {
+    top: 35px;
+    left:5px;
+	}	
+
+	.overlay.topright0 {
+    right: 5px;
+    top: 3px;
+	}	
+	.overlay.botright0 {
+    right: 5px;
+    bottom: 12px;
+	}		
 	
 	.slider-text {
 	 	font-size:25px!important;

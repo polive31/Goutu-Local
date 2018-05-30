@@ -47,7 +47,7 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
         // $output = $this->before_output();
         
         ob_start();
-?>
+        ?>
                 <a href="<?php echo $link_url;?>" id="<?php echo $link_id;?>" class="<?php echo $link_class; ?>" data-post-id="<?php echo $post_id; ?>">
                 <div class="button-caption">
                     <?php 
@@ -58,7 +58,6 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
                 </a>
                 [tooltip text='<?php echo $tooltip . $tooltip_alt;?>' pos="top"]        
                 <!-- [tooltip post="top"] <?php echo $tooltip . $tooltip_alt;?> [/tooltip]         -->
-
         <?php 
         $output = ob_get_contents();
         ob_end_clean();

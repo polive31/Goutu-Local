@@ -282,7 +282,7 @@ class Custom_WPURP_Templates {
 						'name' => 'jquery-touch-punch',
 					    'deps' => array(
 					        'jquery',
-					        'jquery_ui',
+					        'jquery-ui-core',
 					    ),						
 					),
 		            array(

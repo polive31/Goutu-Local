@@ -286,12 +286,14 @@ input[type="submit"].social-button,
 	display: inline-block;
 }
 
-.social-button.unfav .fa-thumbs-up {
+/*.social-button.unfav .fa-thumbs-up {
 	color: #ffffff;
-}
+}*/
 
-.social-button.unfav .fa-thumbs-o-up {
-	color: #5d5d5d;
+.social-button.unfav {
+	color: #e56602;
+  	/*color: #5d5d5d;*/
+	font-size:23px;
 }
 
 /* Prevents vertical shift on hover */
@@ -301,7 +303,7 @@ input[type="submit"].social-button,
 }
 
 a.social-button:hover {
-  color: #5d5d5d;
+  	color: #5d5d5d;
 	text-shadow: #6b6b6b 2px 2px 6px;  
 	font-size: 25px;
 }

@@ -389,7 +389,7 @@ function rpwe_add_author($output, $args ) {
 add_filter('rpwe_after_thumbnail', 'wprpe_add_gravatar', 20, 2);
 function wprpe_add_gravatar($output, $args) {
 	//PC::debug( array('WPRPE Output add gravatar'=>$output) );
-	$disp_avatar = substr($args['cssID'],3,1);
+	$disp_avatar = substr($args['cssID'],0,1);
 	if ( $disp_avatar == '1') {
 		$output .= '<a class="auth-avatar" href="' . bp_core_get_user_domain( get_the_author_meta( 'ID' )) . '" title="' . bp_core_get_username(get_the_author_meta( 'ID' )) . '">';
 		$output .= get_avatar( get_the_author_meta( 'ID' ), '45');

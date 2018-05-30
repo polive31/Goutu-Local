@@ -352,7 +352,6 @@ add_filter('bp_core_fetch_avatar_no_grav', '__return_true');
 
 //* Add gravatar or picture before entry title
 add_action( 'genesis_entry_header', 'add_author_image', 7 );
-
 function add_author_image() {
 	if ( is_singular( 'recipe' ) | is_singular( 'post' ) ) /*&& ( function_exists('bp_is_active') ) */{ /* Post or Custom Post */
 		$id = get_the_author_meta( 'ID' );
@@ -378,7 +377,7 @@ function rpwe_add_author($output, $args ) {
 	if ( $disp_author == '1') {
 		$id = get_the_author_meta( 'ID' );
 		$name = bp_core_get_username( $id );
-		$url = get_author_posts_url( $id );
+		$url = bp_core_get_user_domain( $id );
 		$link = '<a href="' . $url . '">' . $name . '</a>';
 		$output .= '<span class="rpwe-author">' . sprintf(__('by %s','foodiepro'), $link ) . '</span>';
 	}
@@ -390,7 +389,7 @@ function rpwe_add_author($output, $args ) {
 add_filter('rpwe_after_thumbnail', 'wprpe_add_gravatar', 20, 2);
 function wprpe_add_gravatar($output, $args) {
 	//PC::debug( array('WPRPE Output add gravatar'=>$output) );
-	$disp_avatar = substr($args['cssID'],0,1);
+	$disp_avatar = substr($args['cssID'],3,1);
 	if ( $disp_avatar == '1') {
 		$output .= '<a class="auth-avatar" href="' . bp_core_get_user_domain( get_the_author_meta( 'ID' )) . '" title="' . bp_core_get_username(get_the_author_meta( 'ID' )) . '">';
 		$output .= get_avatar( get_the_author_meta( 'ID' ), '45');

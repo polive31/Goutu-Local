@@ -708,19 +708,19 @@ function noglobal( $action, $postId='', $query=array() ) {
 	}
 }
 
-
 // Add user rating to RPWE widget
 add_filter('rpwe_post_title', 'rpwe_add_rating', 10, 2);
-function rpwe_add_rating($output, $args ) {
+function rpwe_add_rating($title, $args ) {
 	$disp_rating = substr($args['cssID'],1,1);
 	////foodiepro_log( array('WPRPE Output add rating'=>$output) );
+	$output='';
 	if ( $disp_rating == '1') {
 		$output .= '<span class="entry-rating">';
 		$output .= do_shortcode('[display-star-rating display="minimal" category="global" markup="span"]');
 		$output .= do_shortcode('[like-count]');
 		$output .= '</span>';
 	}
-	return $output;
+	return $title . $output;
 }
 
 

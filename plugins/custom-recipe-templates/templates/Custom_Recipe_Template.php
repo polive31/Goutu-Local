@@ -242,7 +242,8 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 	public function json_ld_meta_output( $recipe, $args ) {
 		
 		$Custom_Metadata = new Custom_Recipe_Metadata;
-		$metadata = in_array( WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ), array( 'json', 'json-inline' ) ) ? $Custom_Metadata->get_metadata( $recipe ) : '';
+		// $metadata = in_array( WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ), array( 'json', 'json-inline' ) ) ? $Custom_Metadata->get_metadata( $recipe ) : '';
+		$metadata = $Custom_Metadata->get_metadata( $recipe );
 
 		ob_start();?>
 

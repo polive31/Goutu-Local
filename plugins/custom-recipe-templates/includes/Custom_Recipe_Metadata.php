@@ -165,10 +165,24 @@ class Custom_Recipe_Metadata {
             $metadata['recipeCuisine'] = $cuisines[0];
         }
         
-				$diets = wp_get_post_terms( $recipe->ID(), 'diet', array( 'fields' => 'names' ) );
+        $diets = wp_get_post_terms( $recipe->ID(), 'diet', array( 'fields' => 'names' ) );
         if( !is_wp_error( $diets ) && isset( $diets[0] ) ) {
             $metadata['suitableForDiet'] = $diets[0];
         }
+
+        // Keywords
+        $season = wp_get_post_terms( $recipe->ID(), 'season', array( 'fields' => 'names' ) );
+        if( !is_wp_error( $season ) && isset( $season[0] ) ) {
+            $metadata['keywords'] = $season[0] . ',';
+        }
+        $occasion = wp_get_post_terms( $recipe->ID(), 'occasion', array( 'fields' => 'names' ) );
+        if( !is_wp_error( $occasion ) ) {
+            $metadata['keywords'] .= implode(',',$occasion) . ',';
+        }        
+        $tag = wp_get_post_terms( $recipe->ID(), 'post_tag', array( 'fields' => 'names' ) );
+        if( !is_wp_error( $tag ) ) {
+            $metadata['keywords'] .= implode(',',$tag);
+        }         
 
         // Allow external filtering of metadata
         return apply_filters( 'wpurp_custom_recipe_metadata', $metadata, $recipe );

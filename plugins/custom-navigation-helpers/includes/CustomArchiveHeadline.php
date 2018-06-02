@@ -18,7 +18,7 @@ class CustomArchiveHeadline extends CustomArchive {
 		add_filter( 'genesis_search_title_text', array($this,'custom_search_title_text') );
 		add_filter( 'genesis_archive_title_text', array($this,'custom_archive_title') );
 		// Intro text
-		add_filter( 'genesis_term_intro_text_output', 'wpautop' );	
+		add_filter( 'genesis_term_intro_text_output', 'wpautop' );		
 		add_filter( 'genesis_archive_description_text', array($this,'custom_archive_description') );
 		// Page title text
 		// remove_filter('wp_title','genesis_default_title', 10, 3);
@@ -120,7 +120,7 @@ class CustomArchiveHeadline extends CustomArchive {
 			$parent = $this->query->parent;
 			$intro = get_term_meta( $this->query->parent, 'intro_text', true );
 		}		  
-		return $description . $intro;
+		return do_shortcode($description . $intro);
 	}	
 	
 

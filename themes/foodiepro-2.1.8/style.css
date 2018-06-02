@@ -291,7 +291,8 @@ input[type="submit"].social-button,
 }*/
 
 .social-button.unfav {
-	color: #e56602;
+	/*color: #e56602;*/
+	color: #99785f;
   	/*color: #5d5d5d;*/
 	font-size:23px;
 }
@@ -612,7 +613,7 @@ h6 {
 
 body {
 	font-family:'Vollkorn', sans-serif;
-	font-size : 16px;
+	font-size : 18px;
 	color:#333;
 	font-weight:300;
 	line-height:1.625;	

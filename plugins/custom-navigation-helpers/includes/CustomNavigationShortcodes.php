@@ -478,9 +478,9 @@ class CustomNavigationShortcodes extends CustomArchive {
 	    else return $url;
 	}
 
-	public function get_page_by_slug($page_slug, $post_type = 'page' ) { 
+	public function get_page_by_slug($page_slug ) { 
 		global $wpdb; 
-		$page = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND post_type= %s AND post_status = 'publish'", $page_slug, $post_type ) ); 
+		$page = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND post_status = 'publish'", $page_slug ) ); 
 		 if ( $page ) 
 		    return get_permalink($page); 
 		return null; 

@@ -62,7 +62,13 @@ class CustomArchiveHeadline extends CustomArchive {
 		$msg='';
 
 		$headline = get_term_meta( $this->query->term_id, 'headline', true );
-		if ( !empty($headline) ) return $headline;		
+		if ( !empty($headline) ) 
+			return $headline;		
+		else {
+			$parent = $this->query->parent;
+			$headline = get_term_meta( $parent, 'headline', true );
+			if ( !empty($headline) ) return $headline;	
+		}
 
 		if ( is_author() ) {
 			$term = $this->query->display_name;
@@ -107,11 +113,14 @@ class CustomArchiveHeadline extends CustomArchive {
 
 	public function custom_archive_description( $description ) {
 		if ( !is_archive() ) return;
-		// $tax = $this->query->taxonomy; // can also be category, post_tag
-		$description .= get_term_meta( $this->query->term_id, 'intro_text', true );		  
-		if (empty($description)) 
-			$description .= $this->query->description;
-		return $description;
+		// Check archive intro text field
+		$intro = get_term_meta( $this->query->term_id, 'intro_text', true );		  
+		// Check parent intro text field
+		if (empty($intro)) {
+			$parent = $this->query->parent;
+			$intro = get_term_meta( $this->query->parent, 'intro_text', true );
+		}		  
+		return $description . $intro;
 	}	
 	
 

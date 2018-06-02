@@ -218,23 +218,28 @@ if ( strlen($fpost_sc_parms['frontier_edit_text_before']) > 1 )
 		
 		do_action('frontier_post_form_standard', $thispost, $tmp_task_new);
 		
-		
 		echo '<tr><td class="frontier_no_border">';
 	
 	?>
-	
-	
+
+		<h1> TOTO </h1>
 	
 		<fieldset class="frontier_post_fieldset">
 		<legend><?php _e("Actions", "frontier-post"); ?></legend>
 		<?php
+
+		if ( fp_get_option_bool("fps_submit_preview") )
+		{ ?>
+			<button class="button" type="submit" name="user_post_submit" 	id="user_post_preview" 	value="preview"><?php _e("Preview", "frontier-post"); ?></button>
+		<?php } 		
 			
 		if ( fp_get_option_bool("fps_submit_save") )
 		{ ?>
-			<button class="button" type="submit" name="user_post_submit" 		id="user_post_save" 	value="save"><?php _e("Save", "frontier-post"); ?></button>
+			<button class="button" type="submit" name="user_post_submit" 		id="user_post_save" 	value="save"><?php _e("Draft", "frontier-post"); ?></button>
 		<?php }
 		
-		if ( fp_get_option_bool("fps_submit_savereturn") )
+		// if ( fp_get_option_bool("fps_submit_savereturn") )
+		if ( false )
 		{ ?>
 			<button class="button" type="submit" name="user_post_submit" 	id="user_post_submit" 	value="savereturn"><?php echo $fpost_sc_parms['frontier_return_text']; ?></button>
 		<?php }
@@ -243,11 +248,6 @@ if ( strlen($fpost_sc_parms['frontier_edit_text_before']) > 1 )
 		{ ?>
 			<button class="button" type="submit" name="user_post_submit" 	id="user_post_publish" 	value="publish"><?php _e("Publish", "frontier-post"); ?></button>
 		<?php }
-		
-		if ( fp_get_option_bool("fps_submit_preview") )
-		{ ?>
-			<button class="button" type="submit" name="user_post_submit" 	id="user_post_preview" 	value="preview"><?php _e("Save & Preview", "frontier-post"); ?></button>
-		<?php } 
 		
 		if ( fp_get_option_bool("fps_submit_delete")  && current_user_can("frontier_post_can_delete") && !$tmp_task_new )
 		{ ?>

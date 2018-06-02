@@ -474,7 +474,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 			$url=$_SERVER['REQUEST_URI'];			
 		}
 
-	    if ($text) return '<a href=' . $url . '>' . $text . '</a>';
+	    if ($text) return '<a href="' . $url . '">' . $text . '</a>';
 	    else return $url;
 	}
 

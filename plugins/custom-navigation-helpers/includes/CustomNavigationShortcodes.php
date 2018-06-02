@@ -456,15 +456,19 @@ class CustomNavigationShortcodes extends CustomArchive {
 		$a = shortcode_atts(array(
 			'id' => false,
 			'slug' => false,
+			'tax' => false,
 			'text' => ""  // html link is output if not empty
 	    ), $atts);
 	
 		$id=$a['id'];
+		$tax=$a['tax'];
 		$slug=$a['slug'];
 		$text=esc_html($a['text']);
 	
 		if ($id) 
 			$url=get_permalink($id);
+		elseif ($tax)
+			$url=get_term_link((string) $slug, (string) $tax);			
 		elseif ($slug) {
 			// $url=get_permalink(get_page_by_path($slug));			
 			$url=$this->get_page_by_slug($slug);			

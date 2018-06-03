@@ -199,7 +199,7 @@ class BP_Member_Profile extends WP_Widget {
 		if(!$user_id) $user_id=bp_displayed_user_id ();
 		// $dob_time=xprofile_get_field_data($dob_field_name, $user_id);//get the datetime as myswl datetime
 		$dob=new DateTime($birth_date);//create a DateTime Object from that
-		echo $dob->format("%y years, %m months, %d days");
+		// echo $dob->format("%y years, %m months, %d days");
 		$current_date_time=new DateTime();//current date time object
 		//calculate difference
 		$diff= $current_date_time->diff($dob);//returns DateInterval object

@@ -93,7 +93,7 @@ class custom_progress_bar_widget extends WP_Widget {
 		//$user_percent = ($user_percent!='')?$user_percent:bppp_custom_get_progression($user_id);
 		//echo "user percent final = " . $user_percent;
 
-		$trigger_percent=(($instance['trigger_percent']==''))?'100':$instance['trigger_percent'];
+		$trigger_percent=(isset($instance['trigger_percent']))?$instance['trigger_percent']:'100';
 
 //		echo $trigger_percent;
 //		echo '<pre>';

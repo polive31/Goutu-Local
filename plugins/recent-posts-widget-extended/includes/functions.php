@@ -178,7 +178,7 @@ function rpwe_get_recent_posts( $args = array() ) {
 						endif;
 						
 						/* Added P.O. */ 
-						$html .= apply_filters( 'rpwe_after_thumbnail', $meta_html, $args);
+						$html .= apply_filters( 'rpwe_after_thumbnail', '', $args);
 						/* End P.O. */
 
 						/* Added P.O. */

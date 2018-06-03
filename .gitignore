@@ -60,11 +60,11 @@ Temporary Items
 !languages/
 languages/*
 !languages/buddypress*
-# languages/continents*
+languages/continents*
 languages/plugins/*
 languages/themes/*
 
-# !themes/
+!themes/
 themes/*
 !themes/foodiepro-2.1.8/
 themes/foodiepro-2.1.8/backups/*

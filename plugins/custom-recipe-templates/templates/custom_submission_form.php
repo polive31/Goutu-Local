@@ -46,7 +46,9 @@
 
         $taxonomies = WPUltimateRecipe::get()->tags();
         unset( $taxonomies['ingredient'] );
-
+        unset( $taxonomies['wpurp_keyword'] );
+        // echo print_r($taxonomies);
+        
         $args = array(
             'echo' => 0,
             'orderby' => 'NAME',

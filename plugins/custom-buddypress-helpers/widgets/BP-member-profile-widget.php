@@ -88,11 +88,11 @@ class BP_Member_Profile extends WP_Widget {
 				<td class="data"><?php echo xprofile_get_field_data( 'Prénom', $user_id ); ?></td>		
 			</tr>	
 			<?php 
-			$age=xprofile_get_field_data( 'Date de naissance', $user_id );
-			if (!empty($age)) {?>
+			$birth=xprofile_get_field_data( 'Date de naissance', $user_id );
+			if (!empty($birth)) {?>
 			<tr>	
 				<td class="label"><?php echo __('Age','foodiepro');?></td>
-				<td class="data"><?php echo sprintf(__('%s years old','foodiepro'),$age);?></td>
+				<td class="data"><?php echo sprintf(__('%s years old','foodiepro'), $this->get_users_age($birth) );?></td>
 			</tr>
 			<?php
 			}?>
@@ -193,5 +193,21 @@ class BP_Member_Profile extends WP_Widget {
 
 		return $instance;
 	}
+
+	public function get_users_age($birth_date,$user_id=false,$format="%y"){
+		if(!$user_id)
+			$user_id=bp_displayed_user_id ();
+
+		// $dob_time=xprofile_get_field_data($dob_field_name, $user_id);//get the datetime as myswl datetime
+
+		$dob=new DateTime($birth_date);//create a DateTime Object from that
+
+		$current_date_time=new DateTime();//current date time object
+		//calculate difference
+		$diff= $current_date_time->diff($dob);//returns DateInterval object
+		//format and return
+		return $diff->format($format);
+	}
+
 
 } // class BP_Member_Profile

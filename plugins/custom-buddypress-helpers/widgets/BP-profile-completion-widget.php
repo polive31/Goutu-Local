@@ -20,8 +20,8 @@ class custom_progress_bar_widget extends WP_Widget {
 		array( 'description' => __( 'Displays profile completion bar (requires Buddy Progress Bar plugin)', 'buddy-progress-bar' ), ) // Args
 		);
 		
-    if(is_active_widget(false, false, $this->id_base))
-    	add_action('wp_enqueue_scripts', array($this,'load_custom_stylesheet'));
+    	if(is_active_widget(false, false, $this->id_base))
+    		add_action('wp_enqueue_scripts', array($this,'load_custom_stylesheet'));
 	}
 
 	// widget form creation
@@ -36,7 +36,7 @@ class custom_progress_bar_widget extends WP_Widget {
 			} else {
 		$title = '';
 		$textarea = '';
-		$trigger_percent= '';
+		$trigger_percent= '100';
 	}
 	?>
 
@@ -51,11 +51,11 @@ class custom_progress_bar_widget extends WP_Widget {
 	</p>
 
   <p>
-  <label for="<?php echo $this->get_field_id( 'trigger_percent' ); ?>">Percent threshold for widget hide (100 to always display) :</label>
+  <label for="<?php echo $this->get_field_id( 'trigger_percent' ); ?>">Percent threshold for widget hide :</label>
   <table width="100%" >
   	<tr>
   		<td>
-		  	<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'trigger_percent' ); ?>" name="<?php echo $this->get_field_name( 'trigger_percent' ); ?>" value="<?php echo esc_attr( $trigger_percent ); ?>">
+		  	<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'trigger_percent' ); ?>" name="<?php echo $this->get_field_name( 'trigger_percent' ); ?>" placeholder="100" value="<?php echo esc_attr( $trigger_percent ); ?>">
   		</td>
   		<td>
 	  		<span class="input-unit">%</span>
@@ -100,7 +100,7 @@ class custom_progress_bar_widget extends WP_Widget {
 //		print_r($instance);
 //		echo '</pre>';
 
-		if ($user_percent > $trigger_percent) return;
+		if ((int)$user_percent >= (int)$trigger_percent) return;
 
 		$profile_completed = __( 'Profile completed !', 'foodiepro' );
 		$profile_empty = __( 'Profile empty !', 'foodiepro' );

@@ -195,6 +195,13 @@
 		<small><?php _e( 'The number of posts to skip', 'recent-posts-widget-extended' ); ?></small>
 	</p>
 
+	<p>
+		<input id="<?php echo $this->get_field_id( 'link' ); ?>" name="<?php echo $this->get_field_name( 'link' ); ?>" type="checkbox" <?php checked( $instance['link'] ); ?> />
+		<label for="<?php echo $this->get_field_id( 'link' ); ?>">
+			<?php _e( 'Display Link', 'recent-posts-widget-extended' ); ?>
+		</label>
+	</p>	
+
 	<?php if ( current_theme_supports( 'post-thumbnails' ) ) { ?>
 
 		<p>

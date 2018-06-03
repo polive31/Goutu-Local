@@ -159,6 +159,12 @@ a:hover {
 	/*text-decoration:underline;*/
 }
 
+a.nolink {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  color: initial;	
+}
 
 /* Text-level semantics
 --------------------------------------------- */
@@ -3908,6 +3914,10 @@ a.entry-image-link img {
 	opacity:0.8;
 }
 
+.entry-header-overlay.nolink:hover {
+	opacity: initial;
+}
+
 h1.archive-title::first-letter, 
 h1.entry-title::first-letter {
   font-size:150%;
@@ -4412,6 +4422,10 @@ li.comment a {
 	BUDDYPRESS COMPONENTS USED EVERYWHERE ON THE WEBSITE
 =======================================================================*/
 
+/*MEMBER PROFILE */
+.bp_members header.entry-header {
+    display: none;
+}
 
 /*--------------------------------------------------------------
 	1 - Activity

@@ -37,6 +37,7 @@ function rpwe_get_default_args() {
 
 		'excerpt'          => false,
 		'length'           => 10,
+		'link'             => true,
 		'thumb'            => true,
 		'thumb_height'     => 45,
 		'thumb_width'      => 45,
@@ -98,6 +99,10 @@ function rpwe_get_recent_posts( $args = array() ) {
 		rpwe_custom_styles();
 	}
 
+	// Link display
+	$link = isset($args['link'])?(bool)$args['link']:false;
+	$entry_class = $link?'':'nolink';	
+
 	// If the default style is disabled then use the custom css if it's not empty.
 	if ( $args['styles_default'] === false && ! empty( $args['css'] ) ) {
 		echo '<style>' . $args['css'] . '</style>';
@@ -120,6 +125,7 @@ function rpwe_get_recent_posts( $args = array() ) {
 					// Thumbnails
 					$thumb_id = get_post_thumbnail_id(); // Get the featured image id.
 					$img_url  = wp_get_attachment_url( $thumb_id ); // Get img URL.
+					$entry_url = $link?esc_url( get_permalink() ):'#';	
 
 					// Display the image url and crop using the resizer.
 					$image    = rpwe_resize( $img_url, $args['thumb_width'], $args['thumb_height'], true );
@@ -132,8 +138,8 @@ function rpwe_get_recent_posts( $args = array() ) {
 
 							// Check if post has post thumbnail.
 							if ( has_post_thumbnail() ) :
-								$html .= '<div class="entry-header-overlay">';
-								$html .= '<a class="rpwe-img" href="' . esc_url( get_permalink() ) . '"  rel="bookmark">';
+								$html .= '<div class="entry-header-overlay ' . $entry_class . '">';
+								$html .= '<a class="rpwe-img ' . $entry_class . '" href="' . $entry_url . '"  rel="bookmark">';
 									if ( $image ) :
 										$html .= '<img class="' . esc_attr( $args['thumb_align'] ) . ' rpwe-thumb" src="' . esc_url( $image ) . '" alt="' . esc_attr( get_the_title() ) . '">';
 									else :
@@ -165,7 +171,7 @@ function rpwe_get_recent_posts( $args = array() ) {
 							// Display default image.
 							elseif ( ! empty( $args['thumb_default'] ) ) :
 								$html .= sprintf( '<a class="rpwe-img" href="%1$s" rel="bookmark"><img class="%2$s rpwe-thumb rpwe-default-thumb" src="%3$s" alt="%4$s" width="%5$s" height="%6$s"></a>',
-									esc_url( get_permalink() ),
+									$entry_url,
 									esc_attr( $args['thumb_align'] ),
 									esc_url( $args['thumb_default'] ),
 									esc_attr( get_the_title() ),
@@ -184,7 +190,7 @@ function rpwe_get_recent_posts( $args = array() ) {
 						/* Added P.O. */
 						$title_meta = '';
 						$title_meta = apply_filters( 'rpwe_post_title_meta', $title_meta, $args);
-						$title_html = '<h3 class="rpwe-title"><a href="' . esc_url( get_permalink() ) . '" title="' . sprintf( esc_attr__( 'Permalink to %s', 'recent-posts-widget-extended' ), the_title_attribute( 'echo=0' ) ) . '" rel="bookmark">' . esc_attr( get_the_title() ) . '</a>' . $title_meta . '</h3>';
+						$title_html = '<h3 class="rpwe-title"><a href="' . $entry_url . '" class="' . $entry_class . '" title="' . sprintf( esc_attr__( 'Permalink to %s', 'recent-posts-widget-extended' ), the_title_attribute( 'echo=0' ) ) . '" rel="bookmark">' . esc_attr( get_the_title() ) . '</a>' . $title_meta . '</h3>';
 						$title_html = apply_filters( 'rpwe_post_title', $title_html, $args);
 						$html .= $title_html;
 						/* End P.O. */

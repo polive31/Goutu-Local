@@ -216,12 +216,6 @@ input, select, textarea,
 	color:#af4a2b;
 }
 
-.recipes-bottom .rpwe_widget .widget-wrap,
-.blogs-bottom .rpwe_widget .widget-wrap {
-	/*background-color:#f5f5f5;*/
-	border-bottom: 1px dotted #ccc;
-}
-
 /* Widget bubbles
 -------------------------------------------- */
 

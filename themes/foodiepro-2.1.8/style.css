@@ -3336,67 +3336,6 @@ input#ug_photo {font-size: 14px; margin-top: 10px;}
 }
 
 
-/* Recipes & Blogs Bottom section */
-
-.recipes-bottom .widget.intro, 
-.blogs-bottom .widget.intro {
-	/*border-top:1px dashed #aaa;*/
-	border-width:0;
-	padding:0px;
-}
-
-.recipes-bottom .intro .widgettitle, 
-.blogs-bottom .intro .widgettitle {
-	font-size:28px;
-	text-align:left;
-	margin-bottom:0px;
-}
-
-.recipes-bottom .intro .widgettitle:first-letter, 
-.blogs-bottom .intro .widgettitle:first-letter {
-	font-size:150%;
-}
-
-.recipes-bottom .intro .textwidget, 
-.blogs-bottom .intro .textwidget {
-	/*text-align:center;*/
-	margin-bottom:10px;
-}
-
-.recipes-bottom .widget, 
-.blogs-bottom .widget {
-	/*border-top:1px dotted #333;*/ 
-	clear:both;
-	display:block;
-	overflow:hidden;
-	/*padding:20px 0*/;
-}
-
-.recipes-bottom section:nth-of-type(2),
-.blogs-bottom section:nth-of-type(2) {
-	padding-top:0;
-	border-top:0px;
-}
-
-.recipes-bottom .featuredpost h2,
-.blogs-bottom .featuredpost h2,
-.archive .one-third .entry-title,
-.archive .one-fourth .entry-title,
-.archive .one-sixth .entry-title,
-.search .one-third .entry-title,
-.search .one-fourth .entry-title,
-.search .one-sixth .entry-title,
-.page-template-page_blog .one-third .entry-title,
-.page-template-page_blog .one-fourth .entry-title,
-.page-template-page_blog .one-sixth .entry-title{
-	font-size:13px;
-	font-weight:400;
-	text-transform:none;
-	text-align:center;/*P.O. originzal none */
-}
-
-
-
 /*
 Top Ad
 ---------------------------------------------------------------------------------------------------- */
@@ -5455,11 +5394,11 @@ Site Footer
 		width:100%;
 	}
 
-	.recipes-bottom .entry, 
+/*	.recipes-bottom .entry, 
 	.blogs-bottom .entry {
 		margin:0;
 		width:100%;
-	}
+	}*/
 
 	.slide-excerpt {
 		display:none;

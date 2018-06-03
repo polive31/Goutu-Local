@@ -9,7 +9,7 @@
 /** This action is documented in bp-templates/bp-legacy/buddypress/members/single/profile/profile-wp.php */
 do_action( 'bp_before_profile_loop_content' ); ?>
 
-<!-- <h1>Je suis dans /www/wp-content/themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-loop.php</h1>-->
+ <!-- <h1>Je suis dans /www/wp-content/themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-loop.php</h1> -->
 
 <?php if ( bp_has_profile() ) : ?>
 

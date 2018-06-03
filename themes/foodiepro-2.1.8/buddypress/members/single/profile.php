@@ -22,7 +22,7 @@
 
 	<div class="profile">	
 
-	<!-- <h1> Je suis dans /www/wp-content/themes/foodiepro-2.1.8/buddypress/members/single/profile.php <h1>  -->
+	<!-- <h4> Je suis dans /www/wp-content/themes/foodiepro-2.1.8/buddypress/members/single/profile.php </h4>  -->
 
 	<?php switch ( bp_current_action() ) :
 

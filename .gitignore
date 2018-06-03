@@ -54,14 +54,19 @@ Temporary Items
 
 /*
 
-!themes/
 !mu-plugins/
 !plugins/
-!languages/
 
+!languages/
+languages/*
+!languages/buddypress*
+# languages/continents*
+languages/plugins/*
+languages/themes/*
+
+# !themes/
 themes/*
 !themes/foodiepro-2.1.8/
-
 themes/foodiepro-2.1.8/backups/*
 themes/foodiepro-2.1.8/images/Backup/*
 
@@ -96,6 +101,3 @@ plugins/buddypress/bp-core/*
 #plugins/frontier-post/*
 #!plugins/frontier-post/language/*FR.*
 #!plugins/wp-ultimate-recipe-premium/
-
-languages/*
-#!/languages/plugins/

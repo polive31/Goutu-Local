@@ -164,7 +164,7 @@ class CustomArchiveEntryTitle extends CustomArchive {
 
 		if ( $this->is_veg($diet) ) {
 			//$tags .= '<div class="overlay" id="veg">' . $veg_msg . '</div>';
-			$tags .= '<div class="overlay topright' . $tr_id . '" id="veg">' . $veg_msg . '</div>';
+			$tags .= '<div class="overlay topright' . $tr_id . '" id="veg" title="' . __('Vegetarian','foodiepro') . '">' . $veg_msg . '</div>';
 			$tr_id++;
 		}
 		

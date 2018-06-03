@@ -11,7 +11,7 @@
 <div id="buddypress">
 
 
-<!-- <h1>Je suis dans /www/wp-content/themes/foodiepro-2.1.8/buddypress/members/single/home.php</h1>-->
+<!-- <h4>Je suis dans /www/wp-content/themes/foodiepro-2.1.8/buddypress/members/single/home.php</h4> -->
 
 <?php //if ( is_user_logged_in()  ) : 
 ?> 

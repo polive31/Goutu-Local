@@ -22,7 +22,9 @@ jQuery(document).ready(function()   {
 
         setInterval(function() {
             if (didScroll == "yes" ) {
+                // ****** Trigger the resize Header function !
                 resizeHeader();
+                // *******************************************
                 didScroll = "last";
             }
             else if (didScroll == "last") {

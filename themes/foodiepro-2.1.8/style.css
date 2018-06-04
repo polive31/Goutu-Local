@@ -3401,7 +3401,7 @@ Site Header
 
 .home-page .header-widget-area {
 	width:400px; 
-	height: 400px;
+	height:300px;
     -webkit-transition: height 0.2s ease-in-out; /* Safari */
     transition: height 0.2s ease-in-out;    	
 }
@@ -3416,7 +3416,7 @@ Site Header
 	/*width:360px; */
 	/*height:200px;*/
 	width:450px; 
-	height: 400px;
+	height: 300px;
 	padding: 0 20px;
     background-size: contain!important;	
     -webkit-transition: height 0.2s ease-in-out; /* Safari */

@@ -270,7 +270,7 @@ textarea,
 .button,
 a.button,
 a.black-button, 
-ul.wpuf-form li .wpuf-fields a.file-selector, 
+ul.wpuf-form li .wpuf-fields a.file-selector,
 a.comment-reply-link,
 .frontier-list-item-content#frontier-post-actions a {
 	border-radius:3px;  /* P.O. custom */
@@ -2275,6 +2275,11 @@ form[role="search"] {
 .gdpr a {
     /*color: #d9edff;*/
     color: #fff!important;
+}
+
+.gdpr.gdpr-privacy-preferences .gdpr-wrapper .gdpr-content .gdpr-tab-content>div .gdpr-info .gdpr-cookies-used .gdpr-cookies, 
+.gdpr.gdpr-general-confirmation .gdpr-wrapper .gdpr-content .gdpr-tab-content>div .gdpr-info .gdpr-cookies-used .gdpr-cookies {
+    background-color: #cacaca!important;
 }
 
 /* Taxonomies/Tags Accordion Menu

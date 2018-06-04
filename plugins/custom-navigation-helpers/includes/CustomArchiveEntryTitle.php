@@ -47,7 +47,7 @@ class CustomArchiveEntryTitle extends CustomArchive {
 	
 	// Add custom opening div for post title
 	public function do_post_title_before() {
-		if ( is_tax() || is_search() ) {
+		if ( is_tax() || is_search() || is_tag() ) {
 			echo '<div class="entry-header-overlay">';
 			echo $this->entry_tags();
 		}
@@ -55,7 +55,7 @@ class CustomArchiveEntryTitle extends CustomArchive {
 
 	// Add custom closing div for post title
 	public function do_post_title_after() {
-		if ( is_tax() || is_search() ) {
+		if ( is_tax() || is_search() || is_tag() ) {
 			echo '</div>';
 		}
 	}	
@@ -64,7 +64,7 @@ class CustomArchiveEntryTitle extends CustomArchive {
 	-----------------------------------------------------------------------------*/
 	public function archive_rating($title) {
 		/* Display start rating below entry */
-		if ( is_archive() || is_search() ) {
+		if ( is_archive() || is_search() || is_tag() ) {
 				// Rating BEFORE entry title
 				// $title = do_shortcode('[display-star-rating category="global" display="minimal"]') . $title;
 				// Rating AFTER entry title
@@ -138,7 +138,11 @@ class CustomArchiveEntryTitle extends CustomArchive {
 
 		if ( is_tax('ingredient') ) {
 			$title = $this->output_tags( $origin, $diet->slug, $occasion, $season->slug) . $title;
-		};					
+		};		
+
+		if ( is_tag() ) {
+			$title = $this->output_tags( $origin, $diet->slug, $occasion, $season->slug) . $title;
+		};				
 
 		return $title;
 	}

@@ -557,6 +557,18 @@ function custom_author_base() {
     $wp_rewrite->author_base = $author_slug;
 }
 
+
+/* =================================================================*/
+/* =              SEO 
+/* =================================================================*/
+
+/* Exclude Multiple Taxonomies From Yoast SEO Sitemap */
+add_filter( 'wpseo_sitemap_exclude_taxonomy', 'sitemap_exclude_taxonomy', 10, 2 );
+function sitemap_exclude_taxonomy( $value, $taxonomy ) {
+	$taxonomy_to_exclude = array( 'slider' );
+	if( in_array( $taxonomy, $taxonomy_to_exclude ) ) return true;
+}
+
 /* =================================================================*/
 /* =              LAYOUT      
 /* =================================================================*/

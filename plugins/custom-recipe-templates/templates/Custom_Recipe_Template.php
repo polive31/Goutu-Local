@@ -17,8 +17,8 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 
  		$imgAlt = get_post_meta($imgID,'_wp_attachment_image_alt', true);
  		if (empty($imgAlt))
- 			// $imgAlt="Recipe Title";
- 			$imgAlt=sprintf(__('Recipe of %s', 'foodiepro'), $recipe->title());
+ 			// $imgAlt=sprintf(__('Recipe of %s', 'foodiepro'), $recipe->title());
+ 			$imgAlt=$recipe->title();
 
 		ob_start();
 		

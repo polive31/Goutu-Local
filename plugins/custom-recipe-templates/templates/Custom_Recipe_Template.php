@@ -13,6 +13,13 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 
 		$post_ID = get_the_ID();
 
+		$imgID  = $recipe->featured_image();
+
+ 		$imgAlt = get_post_meta($imgID,'_wp_attachment_image_alt', true);
+ 		if (empty($imgAlt))
+ 			// $imgAlt="Recipe Title";
+ 			$imgAlt=sprintf(__('Recipe of %s', 'foodiepro'), $recipe->title());
+
 		ob_start();
 		
 		// Debug
@@ -99,8 +106,8 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 				
 				<div class="image-container">
 					<div class="clearfix">
-					  <a href="<?php echo $recipe->featured_image_url('full');?>">
-							<img src="<?php echo $recipe->featured_image_url('vertical-thumbnail');?>">
+					  	<a href="<?php echo $recipe->featured_image_url('full');?>">
+							<img src="<?php echo $recipe->featured_image_url('vertical-thumbnail');?>" alt="<?php echo $imgAlt;?>">
 						</a>
 					</div>
 					<div class="clearfix">

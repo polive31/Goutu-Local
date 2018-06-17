@@ -145,6 +145,12 @@ template,
 	display:none;
 }
 
+.seo-hidden {
+	font-size: 10px; 
+	position: absolute; 
+	top: -9999px; 
+	left: -9999px; 
+}
 
 /* Links
 --------------------------------------------- */
@@ -3387,6 +3393,7 @@ Site Header
   max-width: 1140px;
 }
 
+
 /* Title Area
 --------------------------------------------- */
 
@@ -3519,6 +3526,7 @@ nav.nav-primary .wrap {
 
 /* Header Widget Area & widgets
 --------------------------------------------- */
+
 
 .site-header .widget-area {
 	float:right;

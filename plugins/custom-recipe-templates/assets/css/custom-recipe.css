@@ -76,7 +76,7 @@ span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
 	float: left;
 	position: relative;
 	font-size:25px;
-	margin: 0 10px 0 0;
+	margin: 0 20px 0 0;
 	padding: 5px 0;
 }
 
@@ -112,10 +112,12 @@ a.wpurp-recipe-print:before {
 
 a.wpurp-recipe-favorite:before {
 	content:"\f08a"; /* fa-heart-o */
+	content:"\f097"; /* fa-bookmark-o */
 }
 
 a.wpurp-recipe-favorite.is-favorite:before {
 	content:"\f004"; /* fa-heart */
+	content:"\f02e"; /* fa-bookmark */
 }
 
 a.social-like-post:before {

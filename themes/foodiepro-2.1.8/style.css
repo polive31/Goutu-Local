@@ -850,7 +850,7 @@ h3.rpwe-title a {
 .recipes-top .widgettitle, 
 .blogs-top .widgettitle,
 .archives-top .widgettitle {
-  font-family:"Vollkorn", sans-serif;	
+	font-family:"Vollkorn", sans-serif;	
 	font-size:11px; 
 	margin-bottom:0;
 	font-weight:normal;
@@ -877,6 +877,9 @@ h3.rpwe-title a {
 	color:#555;
 }
 
+.widget.buddypress .bp-login-form label {
+	font-size : 15px;
+}
 
 /* Widgets 
 ----------------------------------------------------------------------*/
@@ -1784,6 +1787,10 @@ h2.entry-title, .wpupg-post-title,
 	letter-spacing:1px;
 	text-align:center;
 	padding:10px 0 20px 0;
+}
+
+.footer-widgets .widgettile {
+	padding:10px 0;
 }
 
 .content .widgettitle {
@@ -3413,10 +3420,6 @@ Site Header
     transition: height 0.2s ease-in-out;    	
 }
 
-.home-page .nav-up .header-widget-area { 
-	height: 200px;
-}
-
 .home-page .title-area,
 .home-page .site-title,
 .home-page .site-title a {
@@ -3434,10 +3437,13 @@ Site Header
 .home-page .nav-up .site-title,
 .home-page .nav-up .site-title a {
 	width:360px; 
-	height:200px;
+	height:100px;
 	margin: 0;
 }
 
+.home-page .nav-up .header-widget-area { 
+	height: 100px;
+}
 
 
 /* Added P.O. Vertical centering and header height */
@@ -5128,8 +5134,8 @@ Site Footer
 	}	
 		
 	.footer-widgets .widgettitle {
-    padding: 0;
-    margin: 20px 0 0 0;
+	    padding:0;
+	    margin: 20px 0 0 0;
 	}	
 	
 	.footer-widgets-2,

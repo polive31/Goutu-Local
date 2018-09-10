@@ -3436,9 +3436,12 @@ Site Header
 .home-page .nav-up .title-area,
 .home-page .nav-up .site-title,
 .home-page .nav-up .site-title a {
-	width:360px; 
+	width:350px; 
 	height:100px;
 	margin: 0;
+	padding: 0;
+	float:left;
+	text-indent:-9999px;	
 }
 
 .home-page .nav-up .header-widget-area { 

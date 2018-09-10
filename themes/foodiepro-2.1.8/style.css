@@ -3403,16 +3403,6 @@ Site Header
 
 /* Title Area
 --------------------------------------------- */
-
-.title-area,
-.site-title,
-.site-title a {
-	width:350px; 
-	height:100px; 
-	float:left;
-	text-indent:-9999px;
-}
-
 .home-page .header-widget-area {
 	width:400px; 
 	height:300px;
@@ -3420,28 +3410,28 @@ Site Header
     transition: height 0.2s ease-in-out;    	
 }
 
-.home-page .title-area,
-.home-page .site-title,
-.home-page .site-title a {
-	/*width:360px; */
-	/*height:200px;*/
-	width:450px; 
-	height: 300px;
-	padding: 0 20px;
-    background-size: contain!important;	
-    -webkit-transition: height 0.2s ease-in-out; /* Safari */
-    transition: height 0.2s ease-in-out;    
-}
-
+.title-area,
+.site-title,
+.site-title a,
 .home-page .nav-up .title-area,
 .home-page .nav-up .site-title,
 .home-page .nav-up .site-title a {
-	width:350px; 
-	height:100px;
-	margin: 0;
-	padding: 0;
 	float:left;
-	text-indent:-9999px;	
+	width:300px; 
+	height:100px; 
+	padding: 0 15px;
+	text-indent:-9999px;
+    background-size: contain!important;	
+    -webkit-transition: height 0.2s ease-in-out; /* Safari */
+    transition: height 0.2s ease-in-out;   	
+}
+
+.home-page .title-area,
+.home-page .site-title,
+.home-page .site-title a {
+	width:450px; 
+	height: 300px;
+	padding: 0 20px; 
 }
 
 .home-page .nav-up .header-widget-area { 

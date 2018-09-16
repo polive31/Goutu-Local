@@ -61,7 +61,9 @@ Temporary Items
 languages/*
 !languages/buddypress*
 languages/continents*
+!languages/plugins/
 languages/plugins/*
+!languages/plugins/name-directory-fr*
 languages/themes/*
 
 !themes/

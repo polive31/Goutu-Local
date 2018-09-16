@@ -1,0 +1,654 @@
+# Copyright (C) 2016 Shay Bocks
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Foodie Pro Theme 2.1.7\n"
+"Report-Msgid-Bugs-To: http://shaybocks.com/\n"
+"POT-Creation-Date: 2018-09-16 20:43+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2018-09-16 20:56+0200\n"
+"Language-Team: Shay Bocks (http://shaybocks.com)\n"
+"X-Generator: Poedit 2.1.1\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-Basepath: ../../../plugins/name-directory\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;esc_attr_e;_n:1,2\n"
+"X-Textdomain-Support: yes\n"
+"Last-Translator: \n"
+"Language: fr_FR\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin.php:14 admin.php:15
+msgid "Name Directory"
+msgstr ""
+
+#: admin.php:24 admin.php:25 admin.php:101
+msgid "Add directory"
+msgstr ""
+
+#: admin.php:39 admin.php:275 admin.php:434 admin.php:715 admin.php:879
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: admin.php:88
+#, php-format
+msgid "Name directory %s and all entries deleted"
+msgstr ""
+
+#: admin.php:100
+msgid "Name Directory management"
+msgstr ""
+
+#: admin.php:128
+#, php-format
+msgid "Directory %s updated."
+msgstr ""
+
+#: admin.php:157
+#, php-format
+msgid "Directory %s created."
+msgstr ""
+
+#: admin.php:163
+msgid "name directory"
+msgstr ""
+
+#: admin.php:163
+msgid "name directories"
+msgstr ""
+
+#: admin.php:166
+#, php-format
+msgid "You currently have %d %s."
+msgstr ""
+
+#: admin.php:206
+msgid "Add, edit and remove names"
+msgstr ""
+
+#: admin.php:206
+msgid "Manage names"
+msgstr ""
+
+#: admin.php:207
+msgid "Go to the add-name-form on the Manage page"
+msgstr ""
+
+#: admin.php:207 admin.php:620
+msgid "Add name"
+msgstr ""
+
+#: admin.php:208
+msgid "Edit name, description and appearance settings"
+msgstr ""
+
+#: admin.php:208
+msgid "Settings"
+msgstr ""
+
+#: admin.php:209
+msgid "Import entries for this directory by uploading a .csv file"
+msgstr ""
+
+#: admin.php:209
+msgid "Import"
+msgstr ""
+
+#: admin.php:210
+msgid "Download the contents of this directory as a .csv file"
+msgstr ""
+
+#: admin.php:210 admin.php:909
+msgid "Export"
+msgstr ""
+
+#: admin.php:211
+msgid "Show the copy-paste shortcode for this directory"
+msgstr ""
+
+#: admin.php:211
+msgid "Shortcode"
+msgstr ""
+
+#: admin.php:212
+msgid "Permanently remove this name directory"
+msgstr ""
+
+#: admin.php:212 admin.php:601
+msgid "Delete"
+msgstr ""
+
+#: admin.php:214
+msgid "Number of names in this directory"
+msgstr ""
+
+#: admin.php:230
+msgid "To show your directory on your website, use the shortcode on the right."
+msgstr ""
+
+#: admin.php:231
+msgid "Copy the code and paste it in a post or in a page."
+msgstr ""
+
+#: admin.php:232
+msgid ""
+"If you want to start with a specific character, like \"J\", use "
+"[namedirectory dir=\"X\" start_with=\"j\"]."
+msgstr ""
+
+#: admin.php:253
+msgid "Are you sure you want to delete this name directory?"
+msgstr ""
+
+#: admin.php:297 admin.php:299
+msgid "Create new name directory"
+msgstr ""
+
+#: admin.php:298
+msgid "Create"
+msgstr ""
+
+#: admin.php:300
+msgid "Complete the form below to create a new name directory."
+msgstr ""
+
+#: admin.php:304
+msgid "Edit this directory"
+msgstr ""
+
+#: admin.php:305
+msgid "Save Changes"
+msgstr ""
+
+#: admin.php:306
+msgid "Edit name directory"
+msgstr ""
+
+#: admin.php:308
+#, php-format
+msgid "You are editing the name, description and settings of directory %s"
+msgstr ""
+
+#: admin.php:311 admin.php:567 admin.php:626
+msgid "Back to the directory overview"
+msgstr ""
+
+#: admin.php:327 helpers.php:331
+msgid "Title"
+msgstr ""
+
+#: admin.php:331 admin.php:575 admin.php:668 helpers.php:244 shortcode.php:26
+msgid "Description"
+msgstr "Description"
+
+#: admin.php:338
+msgid "Show title"
+msgstr ""
+
+#: admin.php:342
+msgid "Show description"
+msgstr ""
+
+#: admin.php:346
+msgid "Submit form"
+msgstr ""
+
+#: admin.php:347
+msgid "Visitors can submit suggestions"
+msgstr ""
+
+#: admin.php:350
+msgid "Submitter name"
+msgstr ""
+
+#: admin.php:351
+msgid "Show the name of the submitter"
+msgstr ""
+
+#: admin.php:354
+msgid "Show search form"
+msgstr ""
+
+#: admin.php:358
+msgid "Show line between names"
+msgstr ""
+
+#: admin.php:362
+msgid "Show all names by default"
+msgstr ""
+
+#: admin.php:363
+msgid "If no, user HAS to use the index before entries are shown"
+msgstr ""
+
+#: admin.php:366
+msgid "Show all letters on index"
+msgstr ""
+
+#: admin.php:367
+msgid "If no, just A B D E are shown if there are no entries starting with C"
+msgstr ""
+
+#: admin.php:370
+msgid "Jump to Name Directory when searching"
+msgstr ""
+
+#: admin.php:371
+msgid ""
+"On the front-end, jump to the Name Directory search box. Particularly useful "
+"if you have Name Directory on a long page or onepage websites"
+msgstr ""
+
+#: admin.php:377
+msgid "Show most recent names"
+msgstr ""
+
+#: admin.php:378
+msgid "If No, frontend will not show 'Latest' option."
+msgstr ""
+
+#: admin.php:379 admin.php:384 admin.php:685 helpers.php:66 helpers.php:288
+msgid "No"
+msgstr ""
+
+#: admin.php:382
+msgid "Limit amount of words in description"
+msgstr ""
+
+#: admin.php:383
+msgid ""
+"Display a \"read-more\" link on the website if the description exceeds X "
+"characters."
+msgstr ""
+
+#: admin.php:387
+msgid "Number of columns"
+msgstr ""
+
+#: admin.php:388
+msgid "The number of (vertical) columns to display the names in"
+msgstr ""
+
+#: admin.php:411
+msgid "Cancel"
+msgstr ""
+
+#: admin.php:446
+#, php-format
+msgid "Name %s deleted"
+msgstr ""
+
+#: admin.php:466 admin.php:474
+#, php-format
+msgid "Name %s updated"
+msgstr ""
+
+#: admin.php:467 admin.php:508
+msgid "Will be visible when the page is refreshed."
+msgstr ""
+
+#: admin.php:468 admin.php:509
+msgid "Refresh now"
+msgstr ""
+
+#: admin.php:485
+#, php-format
+msgid "Name %s was already on the list, so it was not added"
+msgstr ""
+
+#: admin.php:507 admin.php:515
+#, php-format
+msgid "New name %s added"
+msgstr ""
+
+#: admin.php:522 admin.php:527 shortcode.php:80
+msgid "Please fill in at least a name"
+msgstr ""
+
+#: admin.php:557
+#, php-format
+msgid "Manage names for %s"
+msgstr ""
+
+#: admin.php:562 admin.php:803
+msgid "all"
+msgstr ""
+
+#: admin.php:563
+msgid "published"
+msgstr ""
+
+#: admin.php:564
+msgid "unpublished"
+msgstr ""
+
+#: admin.php:574 admin.php:664 helpers.php:243 shortcode.php:24
+msgid "Name"
+msgstr "Terme"
+
+#: admin.php:576
+msgid "Submitter"
+msgstr ""
+
+#: admin.php:577 admin.php:674 helpers.php:334
+msgid "Published"
+msgstr ""
+
+#: admin.php:578
+msgid "Manage"
+msgstr ""
+
+#: admin.php:586
+msgid "Currently, there are no names in this directory.."
+msgstr ""
+
+#: admin.php:598
+msgid "Toggle published status"
+msgstr ""
+
+#: admin.php:600
+msgid "Edit"
+msgstr ""
+
+#: admin.php:614
+msgid "Edit a name"
+msgstr ""
+
+#: admin.php:615
+msgid "Save name"
+msgstr ""
+
+#: admin.php:619
+msgid "Add a new name"
+msgstr ""
+
+#: admin.php:650
+msgid "Show the compact form, showing only the name, always published)"
+msgstr ""
+
+#: admin.php:652
+msgid "Quick add view"
+msgstr ""
+
+#: admin.php:654
+msgid ""
+"Show the full form, which allows you to enter a description and submitter"
+msgstr ""
+
+#: admin.php:656
+msgid "Full add view"
+msgstr ""
+
+#: admin.php:670
+msgid "Please be careful!"
+msgstr ""
+
+#: admin.php:671
+msgid ""
+"HTML markup is allowed and will we printed on your website and in the "
+"WordPress admin."
+msgstr ""
+
+#: admin.php:677 helpers.php:63 helpers.php:280
+msgid "Yes"
+msgstr ""
+
+#: admin.php:689 helpers.php:245
+msgid "Submitted by"
+msgstr ""
+
+#: admin.php:781
+#, php-format
+msgid "Imported %d entries in this directory"
+msgstr ""
+
+#: admin.php:787
+msgid "Could not import any names into Name Directory"
+msgstr ""
+
+#: admin.php:798
+#, php-format
+msgid ""
+"There were %d names that produces errors with the WordPress database on "
+"import"
+msgstr ""
+
+#: admin.php:805
+#, php-format
+msgid ""
+"Ignored %s names, because they were duplicate (already in the directory)"
+msgstr ""
+
+#: admin.php:810
+msgid "please check your .csv-file"
+msgstr ""
+
+#: admin.php:826
+#, php-format
+msgid "Import names for %s"
+msgstr ""
+
+#: admin.php:830
+msgid ""
+"Use the upload form below to upload a .csv-file containing all of your names "
+"(in the first column), description and submitter are optional."
+msgstr ""
+
+#: admin.php:831
+msgid "If you saved it from Excel or OpenOffice, please ensure that:"
+msgstr ""
+
+#: admin.php:832
+msgid ""
+"There is a header row (this contains the column names, the first row will "
+"NOT be imported)"
+msgstr ""
+
+#: admin.php:833
+msgid "Fields are encapsulated by double quotes"
+msgstr ""
+
+#: admin.php:834
+msgid "Fields are comma-separated"
+msgstr ""
+
+#: admin.php:836
+msgid "If uploading or importing fails, these are your options"
+msgstr ""
+
+#: admin.php:837
+#, php-format
+msgid "Please check out %s first and ensure your file is formatted the same."
+msgstr ""
+
+#: admin.php:839
+msgid "the example import file"
+msgstr ""
+
+#: admin.php:848
+msgid "Use an online File Convertor"
+msgstr ""
+
+#: admin.php:850
+#, php-format
+msgid "If everything else fails, you can always ask a question at the %s."
+msgstr ""
+
+#: admin.php:852
+msgid "plugin support forums"
+msgstr ""
+
+#: admin.php:858
+msgid ""
+"Name Directory Import requires PHP 5.3, you seem to have in older version. "
+"Importing names will not work for your website."
+msgstr ""
+
+#: admin.php:862
+msgid "Upload your .csv-file"
+msgstr ""
+
+#: admin.php:866
+#, php-format
+msgid "Back to %s"
+msgstr ""
+
+#: admin.php:868 admin.php:910
+msgid "Go to Name Directory Overview"
+msgstr ""
+
+#: admin.php:900
+msgid ""
+"Name Directory Export works best in Mozilla Firefox, Google Chrome and "
+"Internet Explorer 10+."
+msgstr ""
+
+#: admin.php:901
+msgid ""
+"If you encounter problems (or it does not export) in Internet Explorer or "
+"Microsoft Edge, please try another browser."
+msgstr ""
+
+#: admin.php:906
+#, php-format
+msgid "Export directory %s"
+msgstr ""
+
+#: admin.php:908
+msgid ""
+"Click the Export button to download a .csv file with the contents of your "
+"directory."
+msgstr ""
+
+#: helpers.php:240
+msgid "New submission for Name Directory"
+msgstr ""
+
+#: helpers.php:241
+msgid "Howdy,"
+msgstr ""
+
+#: helpers.php:242
+#, php-format
+msgid "There was a new submission to the Name Directory on %s at %s"
+msgstr ""
+
+#: helpers.php:246
+msgid "This new submission does not have the published status."
+msgstr ""
+
+#: helpers.php:247
+msgid ""
+"Please login to your WordPress admin to review and accept the submission."
+msgstr ""
+
+#: helpers.php:333
+msgid "Entries"
+msgstr ""
+
+#: helpers.php:335
+msgid "Unpublished"
+msgstr ""
+
+#: helpers.php:344
+msgid "Name Directory has been updated."
+msgstr ""
+
+#: helpers.php:345
+msgid "You can now find Name Directory directly in your Admin menu!"
+msgstr ""
+
+#: shortcode.php:25
+msgid "Required"
+msgstr "Requis"
+
+#: shortcode.php:27
+msgid "Your name"
+msgstr ""
+
+#: shortcode.php:28
+msgid "Submit"
+msgstr "Envoyer"
+
+#: shortcode.php:29
+msgid "Back to name directory"
+msgstr "Retour au lexique"
+
+#: shortcode.php:45
+#, php-format
+msgid "Sorry, %s was already on the list so your submission was not sent."
+msgstr ""
+
+#: shortcode.php:66
+msgid "Thank you for your submission! It will be reviewed shortly."
+msgstr ""
+
+#: shortcode.php:73
+msgid "Something must have gone terribly wrong. Would you please try it again?"
+msgstr ""
+
+#: shortcode.php:152
+msgid "All"
+msgstr "Tous"
+
+#: shortcode.php:153
+msgid "Latest"
+msgstr ""
+
+#: shortcode.php:223 shortcode.php:364
+msgid "Submit a name"
+msgstr "Soumettre un nouveau terme"
+
+#: shortcode.php:252
+msgid "Search for..."
+msgstr "Terme à rechercher..."
+
+#: shortcode.php:253
+msgid "Search"
+msgstr "Rechercher"
+
+#: shortcode.php:261
+#, php-format
+msgid "There are currently %d names in this directory"
+msgstr ""
+
+#: shortcode.php:265
+#, php-format
+msgid "There are %d names in this directory containing the search term %s."
+msgstr ""
+
+#: shortcode.php:266
+msgid "Clear results"
+msgstr ""
+
+#: shortcode.php:270
+#, php-format
+msgid "Showing %d most recent names in this directory"
+msgstr ""
+
+#: shortcode.php:274
+#, php-format
+msgid "There are %d names in this directory beginning with the letter %s."
+msgstr ""
+
+#: shortcode.php:281
+msgid "There are no names in this directory at the moment"
+msgstr "Il n'y a pas de termes dans ce lexique pour le moment."
+
+#: shortcode.php:285
+msgid "Please select a letter from the index (above) to see entries"
+msgstr ""
+
+#: shortcode.php:334
+msgid "Submitted by:"
+msgstr ""
+
+#: shortcode.php:370
+msgid "Show more"
+msgstr ""
+
+#: shortcode.php:374
+msgid "Show less"
+msgstr ""

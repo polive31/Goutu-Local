@@ -2286,6 +2286,12 @@ form[role="search"] {
     opacity: 0;
 }
 
+input#name-directory-search-input-box {
+    font-family: Vollkorn,"Helvetica Neue",sans-serif;
+    font-size: 14px;
+    font-style: italic;
+}
+
 /* GDPR */
 .gdpr-wrapper {
     background: #bdbdbdbf!important;

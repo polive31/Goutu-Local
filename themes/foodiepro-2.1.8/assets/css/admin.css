@@ -1,7 +1,7 @@
 
 /*Remove category/taxonomy description (use archive intro text instead) */
 tr.form-field.term-description-wrap {
-    display: none;
+    /*display: none;*/
 }
 
 .foodie-pro-widget-box {

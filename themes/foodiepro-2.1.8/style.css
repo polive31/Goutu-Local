@@ -87,7 +87,9 @@ html {
 	font-family:sans-serif;
 	-webkit-text-size-adjust:100%;
 	-ms-text-size-adjust:100%;
-	-webkit-font-smoothing: antialiased;	
+	-webkit-font-smoothing: antialiased;
+	/*Fix blue flash issue when opening/closing slider menu */
+	-webkit-tap-highlight-color: transparent;	
 }
 
 body {

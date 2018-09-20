@@ -2467,6 +2467,10 @@ span.ui-icon.ui-icon-triangle-1-s:before {
 	height:45px!important
 }
 
+#responsive-menu-pro-container .fa {
+    width: 25px;
+}
+
 #responsive-menu-pro-additional-content {
 	display: none;
 }
@@ -3768,6 +3772,7 @@ a.more-link,
 	text-decoration:none;
 	text-transform:uppercase;
 	border-radius: 5px;
+	text-align: center;
 }
 
 .more-from-category a {
@@ -3776,7 +3781,6 @@ a.more-link,
 
 .more-from-category a:after {
 	content:' →';
-	float: right;
     padding-right:3px;
 }
 

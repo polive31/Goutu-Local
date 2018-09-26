@@ -336,7 +336,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 			'depth' => 1,
 			'exclude' => '',
 			'index_title' => '',
-			'index_path' => ''
+			'index_path' => '',
 		), $atts );
 
 		$html = '';
@@ -376,7 +376,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		}
 	
 
-	// Arguments for wp_list_categories	/ wp_list_authors
+	// Arguments for wp_dropdown_categories	/ wp_dropdown_users
 		$args = array( 
 			'taxonomy'			=> $tax_slug,
 			'child_of'			=> $child_of,
@@ -385,16 +385,16 @@ class CustomNavigationShortcodes extends CustomArchive {
 			'orderby' 			=> 'slug',
 			'echo' 				=> false,
 			'role__not_in'		=> array('administrator','pending'),
-			'show'				=> user_login
+			'show'				=> 'user_login'
 		);
 		
 		
 		if ($dropdown=='true') {	
-			$dropdown_id = $taxonomy . ++$dropdown_cnt;
+			$dropdown_id = $tax_slug . ++$dropdown_cnt;
 			
 			$html = '<label class="screen-reader-text" for="' . esc_attr( $dropdown_id ) . '"> . $label . </label>';
 
-			$args['show_option_none'] = $select_msg;
+			// $args['show_option_none'] = $no_msg;
 			//$args['show_option_all'] = $all_msg;
 			$args['show_option_all'] = '';
 			$args['option_none_value'] = 'none';

@@ -84,7 +84,7 @@ class CustomArchiveEntryTitle extends CustomArchive {
  			$terms=wp_get_post_terms($post_id, $tax);
  		else
  			$terms=wp_get_post_terms($post_id, $tax, array("fields" => $field));
- 		if (is_wp_error($terms)) 
+ 		if (is_wp_error($terms) || is_null($terms)) 
  			return '';
  		else
  			return $terms[0];
@@ -110,38 +110,42 @@ class CustomArchiveEntryTitle extends CustomArchive {
 		$origin = $this->get_post_term( $post_id, 'cuisine', 'names');
 		//echo '<pre>' . print_r($origin) . '</pre>';
 		$diet = $this->get_post_term( $post_id, 'diet');
+		if (!is_null($diet)) 
+			$diet_slug = $diet->slug;
 		//echo '<pre>' . print_r($diet->slug) . '</pre>';
 		$occasion = $this->get_post_term( $post_id, 'occasion');
 		//echo '<pre>' . print_r($occasion) . '</pre>';
 		$season = $this->get_post_term( $post_id, 'season');
+		if (!is_null($season)) 
+			$season_slug = $season->slug;		
 		//echo '<pre>' . print_r($season->slug) . '</pre>';
 	
 		if ( is_tax('cuisine') || is_author() ) {
-			$title = $this->output_tags( $origin, $diet->slug, '', $season->slug) . $title;
+			$title = $this->output_tags( $origin, $diet_slug, '', $season_slug) . $title;
 		};
 		
 		if ( is_tax('course') || is_search() || is_tax('difficult') ) {
-			$title = $this->output_tags( $origin, $diet->slug, $occasion, $season->slug) . $title;
+			$title = $this->output_tags( $origin, $diet_slug, $occasion, $season_slug) . $title;
 		};	
 
 		if ( is_tax('diet') ) {
-			$title = $this->output_tags( $origin, null, $occasion, $season->slug) . $title;
+			$title = $this->output_tags( $origin, null, $occasion, $season_slug) . $title;
 		};	
 		
 		if ( is_tax('season') ) {
-			$title = $this->output_tags( null, $diet->slug, $occasion, null) . $title;
+			$title = $this->output_tags( null, $diet_slug, $occasion, null) . $title;
 		};
 			
 		if ( is_tax('occasion') ) {
-			$title = $this->output_tags( $origin, $diet->slug, null, $season->slug) . $title;
+			$title = $this->output_tags( $origin, $diet_slug, null, $season_slug) . $title;
 		};	
 
 		if ( is_tax('ingredient') ) {
-			$title = $this->output_tags( $origin, $diet->slug, $occasion, $season->slug) . $title;
+			$title = $this->output_tags( $origin, $diet_slug, $occasion, $season_slug) . $title;
 		};		
 
 		if ( is_tag() ) {
-			$title = $this->output_tags( $origin, $diet->slug, $occasion, $season->slug) . $title;
+			$title = $this->output_tags( $origin, $diet_slug, $occasion, $season_slug) . $title;
 		};				
 
 		return $title;

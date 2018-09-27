@@ -2291,6 +2291,10 @@ form[role="search"] {
     background: #35353557!important;
 }
 
+#swipebox-top-bar {
+    font-size: 25px!important;
+}
+
 
 /*Name Directory */
 .name_directory_total {

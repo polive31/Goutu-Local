@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2018-09-27 22:45+0200\n"
-"PO-Revision-Date: 2018-09-27 22:46+0200\n"
+"PO-Revision-Date: 2018-09-28 00:46+0200\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -800,15 +800,15 @@ msgstr "Trier"
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:60
 msgid "Select sort order..."
-msgstr "Trier les recettes par..."
+msgstr "Trier par..."
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:61
 msgid "Title : ascending"
-msgstr "Titre : de A à Z"
+msgstr "De A à Z"
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:62
 msgid "Title : descending"
-msgstr "Titre : de Z à A"
+msgstr "De Z à A"
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:65
 msgid "Newest first"
@@ -4912,7 +4912,7 @@ msgstr ""
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:292
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:530
 msgid "Sort order"
-msgstr "Trier les recettes par..."
+msgstr "Trier par..."
 
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:296
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:534

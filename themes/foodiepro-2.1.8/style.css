@@ -2288,9 +2288,7 @@ form[role="search"] {
 }
 
 #swipebox-bottom-bar, #swipebox-top-bar {
-    text-shadow: 1px 1px 1px #000;
-    background: #35353557;
-    opacity: .95;
+    background: #35353557!important;
 }
 
 

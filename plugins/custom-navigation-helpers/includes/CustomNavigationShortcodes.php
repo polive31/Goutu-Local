@@ -337,6 +337,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 			'exclude' => '',
 			'index_title' => '',
 			'index_path' => '',
+			'option_none_msg' => __('Choose...','foodiepro'),
 		), $atts );
 
 		$html = '';
@@ -345,6 +346,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		$dropdown = $atts['dropdown'];
 		$index_title = $atts['index_title'];
 		$index_path = $atts['index_path'];
+		$option_none_msg = $atts['option_none_msg'];
 		
 /* arguments for function wp_list_categories
 ------------------------------------------------------------------------*/
@@ -394,7 +396,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 			
 			$html = '<label class="screen-reader-text" for="' . esc_attr( $dropdown_id ) . '"> . $label . </label>';
 
-			// $args['show_option_none'] = $no_msg;
+			$args['show_option_none'] = $option_none_msg;
 			//$args['show_option_all'] = $all_msg;
 			$args['show_option_all'] = '';
 			$args['option_none_value'] = 'none';

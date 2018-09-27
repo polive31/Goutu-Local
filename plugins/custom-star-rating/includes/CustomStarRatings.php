@@ -48,14 +48,16 @@ class CustomStarRatings {
 			'global'=>array (
 				'title'=> __('Overall','custom-star-rating'),
 				'caption' => array(
-								__('Disappointing recipe','custom-star-rating'),
-								__('Average recipe','custom-star-rating'),
-								__('Good recipe','custom-star-rating'),
-								__('Very good recipe','custom-star-rating'),
-								__('Fabulous recipe','custom-star-rating'),
+								__('Disappointing','custom-star-rating'),
+								__('Average','custom-star-rating'),
+								__('Good','custom-star-rating'),
+								__('Very good','custom-star-rating'),
+								__('Fabulous','custom-star-rating'),
 				)	
 			)
 		);
+
+	add_filter( 'wpurp_register_ratings_taxonomy', array( $this, 'translate_ratings_taxonomy' ) );
 
 		//self::$s_ratingCats = self::$ratingCats;
 		//self::$s_ratingGlobal = self::$ratingGlobal;
@@ -78,6 +80,22 @@ class CustomStarRatings {
 		//$this->dbg('Rated types: ', self::$ratedPostTypes );
 		//$this->dbg('ratingCats : ', self::$ratingCats );
 	}	
+
+
+	/* Translate ratings taxonomy from WPURP
+	--------------------------------------------------------------*/	
+    public function translate_ratings_taxonomy( $args ) {
+        $name = __( 'Evaluations', 'foodiepro' );
+        $singular = __( 'Evaluation', 'foodiepro' );
+
+        $name_lower = strtolower($name);
+
+        $args['labels']['name'] = $name;
+        $args['labels']['singular_name'] = $singular;
+        $args['rewrite'] = array('slug'=>__('rating','foodiepro'),'with_front' => false);
+
+        return $args;
+    }	
 	
 	
 	public static function getRatingCats( $global ) {

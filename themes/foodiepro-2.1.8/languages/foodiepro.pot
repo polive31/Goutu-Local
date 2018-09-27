@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2018-09-16 20:52+0200\n"
+"POT-Creation-Date: 2018-09-27 22:45+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,6 +28,7 @@ msgstr ""
 "X-Poedit-SearchPath-6: plugins/custom-contact-form\n"
 "X-Poedit-SearchPath-7: plugins/custom-buddypress-helpers\n"
 "X-Poedit-SearchPath-8: plugins/custom-social-interactions\n"
+"X-Poedit-SearchPath-9: plugins/custom-star-rating\n"
 
 #: plugins/bp-custom.php:59
 msgid ""
@@ -678,15 +679,15 @@ msgstr ""
 msgid "Edit recipe"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:153
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:157
 msgid "Seasonal"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:154
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:158
 msgid "Festive"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:171
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:175
 msgid "Vegetarian"
 msgstr ""
 
@@ -747,7 +748,11 @@ msgstr ""
 msgid "Share this post"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:359
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:340
+msgid "Choose..."
+msgstr ""
+
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:361
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:58
 msgid "authors"
 msgstr ""
@@ -1625,6 +1630,121 @@ msgstr ""
 msgid "Do not like this recipe anymore"
 msgstr ""
 
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:21
+msgid "Dish"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:22
+msgid "Appreciation of the dish"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:23
+msgid "How did you like this dish ?"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:25
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:51
+msgid "Disappointing"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:26
+msgid "Rather good"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:27
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:53
+msgid "Good"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:28
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:54
+msgid "Very good"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:29
+msgid "Delicious"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:49
+msgid "Overall"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:52
+msgid "Average"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:55
+msgid "Fabulous"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:88
+msgid "Evaluations"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:89
+msgid "Evaluation"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:95
+msgid "rating"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:113
+msgid "Not rated"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatingsCommentsList.php:77
+#, php-format
+msgid "%s says:"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatingsCommentsList.php:79
+#, php-format
+msgid "%s responds:"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatingsCommentsList.php:83
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatingsCommentsList.php:89
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatingsCommentsList.php:108
+msgid "(Edit)"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatingsShortcodes.php:65
+msgid "Send"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatingsShortcodes.php:68
+msgid "Reply Title"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatingsShortcodes.php:69
+#: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:79
+#: plugins/wp-ultimate-recipe-premium/core/vendor/vafpress/classes/shortcodegenerator.php:264
+#: themes/foodiepro-2.1.8/buddypress/activity/entry.php:128
+#: themes/foodiepro-2.1.8/buddypress/forums/index.php:205
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:69
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:259
+msgid "Cancel"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatingsShortcodes.php:191
+#, php-format
+msgid "%s review"
+msgid_plural "%s reviews"
+msgstr[0] ""
+msgstr[1] ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatingsShortcodes.php:305
+msgid "Add a comment"
+msgstr ""
+
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:45
 #: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/custom-taxonomies.php:64
 msgid "Custom Taxonomies"
@@ -1997,15 +2117,6 @@ msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:78
 msgid "Use"
-msgstr ""
-
-#: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:79
-#: plugins/wp-ultimate-recipe-premium/core/vendor/vafpress/classes/shortcodegenerator.php:264
-#: themes/foodiepro-2.1.8/buddypress/activity/entry.php:128
-#: themes/foodiepro-2.1.8/buddypress/forums/index.php:205
-#: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:69
-#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:259
-msgid "Cancel"
 msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/core/helpers/admin_tour.php:26

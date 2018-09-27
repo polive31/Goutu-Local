@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2018-09-16 20:52+0200\n"
-"PO-Revision-Date: 2018-09-16 20:53+0200\n"
+"POT-Creation-Date: 2018-09-27 22:45+0200\n"
+"PO-Revision-Date: 2018-09-27 22:46+0200\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -708,15 +708,15 @@ msgstr "Publié le %s  par <span id=\"username\">%s</span>"
 msgid "Edit recipe"
 msgstr "Modifier la recette"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:153
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:157
 msgid "Seasonal"
 msgstr "De Saison"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:154
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:158
 msgid "Festive"
 msgstr "Fêtes"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:171
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:175
 msgid "Vegetarian"
 msgstr "Recette végétarienne"
 
@@ -777,7 +777,11 @@ msgstr "Partager sur les réseaux sociaux"
 msgid "Share this post"
 msgstr "Partager cet article"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:359
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:340
+msgid "Choose..."
+msgstr "Choisir..."
+
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:361
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:58
 msgid "authors"
 msgstr "auteurs"
@@ -1681,6 +1685,132 @@ msgstr "Aimer cette recette"
 msgid "Do not like this recipe anymore"
 msgstr "Ne plus aimer cette recette"
 
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:21
+msgid "Dish"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:22
+#, fuzzy
+#| msgid "eg. Preparation of the dough"
+msgid "Appreciation of the dish"
+msgstr "ex : Préparation de la pâte"
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:23
+msgid "How did you like this dish ?"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:25
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:51
+msgid "Disappointing"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:26
+msgid "Rather good"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:27
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:53
+msgid "Good"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:28
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:54
+msgid "Very good"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:29
+msgid "Delicious"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:49
+msgid "Overall"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:52
+msgid "Average"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:55
+msgid "Fabulous"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:88
+msgid "Evaluations"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:89
+#, fuzzy
+#| msgid "Preparation"
+msgid "Evaluation"
+msgstr "Préparation"
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:95
+msgid "rating"
+msgstr "evaluation"
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:113
+#, fuzzy
+#| msgid "No related posts."
+msgid "Not rated"
+msgstr "Pas d'articles similaires."
+
+#: plugins/custom-star-rating/includes/CustomStarRatingsCommentsList.php:77
+#, php-format
+msgid "%s says:"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatingsCommentsList.php:79
+#, php-format
+msgid "%s responds:"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatingsCommentsList.php:83
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatingsCommentsList.php:89
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatingsCommentsList.php:108
+#, fuzzy
+#| msgid "Edit"
+msgid "(Edit)"
+msgstr "Modifier"
+
+#: plugins/custom-star-rating/includes/CustomStarRatingsShortcodes.php:65
+msgid "Send"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatingsShortcodes.php:68
+msgid "Reply Title"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatingsShortcodes.php:69
+#: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:79
+#: plugins/wp-ultimate-recipe-premium/core/vendor/vafpress/classes/shortcodegenerator.php:264
+#: themes/foodiepro-2.1.8/buddypress/activity/entry.php:128
+#: themes/foodiepro-2.1.8/buddypress/forums/index.php:205
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:69
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:259
+msgid "Cancel"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatingsShortcodes.php:191
+#, fuzzy, php-format
+#| msgid "review"
+msgid "%s review"
+msgid_plural "%s reviews"
+msgstr[0] "avis"
+msgstr[1] "avis"
+
+#: plugins/custom-star-rating/includes/CustomStarRatingsShortcodes.php:305
+#, fuzzy
+#| msgid "Add a picture"
+msgid "Add a comment"
+msgstr "Ajoutez votre photo"
+
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:45
 #: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/custom-taxonomies.php:64
 msgid "Custom Taxonomies"
@@ -2072,15 +2202,6 @@ msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:78
 msgid "Use"
-msgstr ""
-
-#: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:79
-#: plugins/wp-ultimate-recipe-premium/core/vendor/vafpress/classes/shortcodegenerator.php:264
-#: themes/foodiepro-2.1.8/buddypress/activity/entry.php:128
-#: themes/foodiepro-2.1.8/buddypress/forums/index.php:205
-#: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:69
-#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:259
-msgid "Cancel"
 msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/core/helpers/admin_tour.php:26
@@ -9975,6 +10096,3 @@ msgstr "Ces articles pourraient également vous intéresser..."
 #~ msgctxt "consonant"
 #~ msgid " "
 #~ msgstr "de "
-
-#~ msgid "No related posts."
-#~ msgstr "Pas d'articles similaires."

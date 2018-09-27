@@ -2282,6 +2282,18 @@ form[role="search"] {
 /* Plugins
 -------------------------------------------------------- */
 
+/*Swipebox*/
+#swipebox-overlay {
+    background: #ffffffc2!important;
+}
+
+#swipebox-bottom-bar, #swipebox-top-bar {
+    text-shadow: 1px 1px 1px #000;
+    background: #35353557;
+    opacity: .95;
+}
+
+
 /*Name Directory */
 .name_directory_total {
     margin-bottom: 40px;

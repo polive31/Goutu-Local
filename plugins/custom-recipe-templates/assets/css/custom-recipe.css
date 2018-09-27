@@ -266,7 +266,7 @@ input.adjust-recipe-servings {
 .ingredients-container {
 	float:left;
 	border:1px dashed #000;
-	width:40%;
+	width:50%;
 	margin:0 30px 10px 0;
 	padding:10px 10px 10px 20px;
 	text-decoration:none;

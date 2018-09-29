@@ -281,12 +281,12 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 	            }
 	        }
 
-	        if( $ingredient['group'] != $previous_group ) { //removed isset($ingredient['group'] ) && 
+	        if( $ingredient['group'] != $previous_group || $first_group ) { //removed isset($ingredient['group'] ) && 
 	            $out .= $first_group ? '' : '</ul>';
+	            $out .= '<ul class="wpurp-recipe-ingredients">';
 	            $out .= '<li class="ingredient-group">' . $ingredient['group'] . '</li>';
 	            $previous_group = $ingredient['group'];
-	            $out .= '<ul class="wpurp-recipe-ingredients">';
-							$first_group = false;
+				$first_group = false;
 	        }
 
 	        $fraction = false;

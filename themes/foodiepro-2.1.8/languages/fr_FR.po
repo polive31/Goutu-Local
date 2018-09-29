@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2018-09-27 22:45+0200\n"
-"PO-Revision-Date: 2018-09-28 00:46+0200\n"
+"PO-Revision-Date: 2018-09-29 11:12+0200\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -800,15 +800,15 @@ msgstr "Trier"
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:60
 msgid "Select sort order..."
-msgstr "Trier par..."
+msgstr "Trier les recettes par..."
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:61
 msgid "Title : ascending"
-msgstr "De A à Z"
+msgstr "Titre : de A à Z"
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:62
 msgid "Title : descending"
-msgstr "De Z à A"
+msgstr "Titre : de Z à A"
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:65
 msgid "Newest first"
@@ -1739,10 +1739,8 @@ msgid "Evaluations"
 msgstr ""
 
 #: plugins/custom-star-rating/includes/CustomStarRatings.php:89
-#, fuzzy
-#| msgid "Preparation"
 msgid "Evaluation"
-msgstr "Préparation"
+msgstr "Evaluation"
 
 #: plugins/custom-star-rating/includes/CustomStarRatings.php:95
 msgid "rating"
@@ -4912,7 +4910,7 @@ msgstr ""
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:292
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:530
 msgid "Sort order"
-msgstr "Trier par..."
+msgstr "Trier les recettes par..."
 
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:296
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:534

@@ -2292,7 +2292,28 @@ form[role="search"] {
 }
 
 #swipebox-top-bar {
+    display: none !important;
     font-size: 25px!important;
+}
+
+#swipebox-close {
+    background-image: none!important;
+    right: 20px!important;
+	top: 40px!important
+}
+
+a#swipebox-close {
+    color: #ababab!important;
+}
+
+a#swipebox-close:hover {
+	color: #616161!important;
+}
+
+#swipebox-close::before {
+    content: "\f00d";
+    font-size: 40px;
+    font-family: fontAwesome;
 }
 
 

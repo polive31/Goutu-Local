@@ -147,6 +147,10 @@ template,
 	display:none;
 }
 
+.transparent {
+	opacity:0;
+}
+
 .seo-hidden {
 	font-size: 10px; 
 	position: absolute; 
@@ -2515,6 +2519,41 @@ span.ui-icon.ui-icon-triangle-1-s:before {
   border-bottom: 1px solid #c5c5c5;
 }
 
+.mobile-menu-hint-container {
+    transition-property: opacity;
+  	transition-duration: 1s;
+}
+
+.mobile-menu-hint {
+    position: absolute;
+    text-align: left;
+    right: 39px;
+    bottom: -45px;
+    background-color: white;
+    /* box-shadow: 7px 7px 8px 1px rgb(222, 222, 222); */
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+    padding: 10px 30px 10px 10px;
+    font-family: Oswald;
+    font-size: 18px;
+    line-height: 20px;
+    border-radius: 20px;
+    /* border: 2px dashed #666; */
+    background-color: #da6d24;
+    color: white;
+}
+
+.arrow {
+    background: url(images/deco-icons/arrow-up2.png) no-repeat;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    /* background-color: chocolate; */
+    right: 27px;
+    bottom: -29px;
+    z-index: 999;
+    background-size: contain;
+}
+
 /* Mashshare 
 ----------------------------------------------*/
 
@@ -3848,10 +3887,15 @@ p.more-from-category {
   text-align:left;
 }
 
+.content img.rpwe-thumb,
+.after-content img.rpwe-thumb {
+	border-radius: 5px;
+}
+
 .content img.rpwe-thumb {
 	margin:0;
-  object-fit: cover;
-  flex:1; 
+	object-fit: cover;
+	flex:1; 
 }
 
 .page-bottom img.rpwe-thumb {

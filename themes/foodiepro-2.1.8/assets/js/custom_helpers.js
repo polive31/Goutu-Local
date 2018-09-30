@@ -1,13 +1,24 @@
 jQuery(document).ready(function()   {
     // window.initDone = false;
+    var hintAlreadyRead="false";
     setContainerTopMargin( true );
+    
+    hintAlreadyRead=getCookie('menuHint');
+    if (hintAlreadyRead=="" || hintAlreadyRead=="false") {
+        setCookie('menuHint','true',30);
+        console.log("Set Cookie to true and remove class nodisplay");
+        jQuery('.mobile-menu-hint-container').removeClass('nodisplay');       
+    }
+    else {
+        console.log("Cookie=True => do not show hint");
+    }
     // window.initDone = true;
     // console.log( "Init Done = " + window.initDone );
 });
 
 jQuery(document).ready(function()   {
 
-    if ( jQuery( "body" ).hasClass( "home-page" ) ) {
+    // if ( jQuery( "body" ).hasClass( "home-page" ) ) {
         // console.log( "IS HOME PAGE !");
         var didScroll = "no";
         var count = 0;
@@ -23,7 +34,7 @@ jQuery(document).ready(function()   {
         setInterval(function() {
             if (didScroll == "yes" ) {
                 // ****** Trigger the resize Header function !
-                resizeHeader();
+                actionsOnScroll();
                 // *******************************************
                 didScroll = "last";
             }
@@ -38,11 +49,39 @@ jQuery(document).ready(function()   {
             }
         }, 250);
 
-    }
+    // }
 });
 
-function resizeHeader() {
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+
+
+function actionsOnScroll() {
+    // Resize header
     jQuery('header').addClass('nav-up');
+    // Hide hint
+    jQuery('.mobile-menu-hint-container').addClass('transparent');
 }
 
 function setContainerTopMargin( scrollTop ) {

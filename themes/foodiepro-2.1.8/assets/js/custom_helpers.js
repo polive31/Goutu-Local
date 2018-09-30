@@ -6,12 +6,12 @@ jQuery(document).ready(function()   {
     hintAlreadyRead=getCookie('menuHint');
     if (hintAlreadyRead=="" || hintAlreadyRead=="false") {
         setCookie('menuHint','true',30);
-        console.log("Set Cookie to true and remove class nodisplay");
+        // console.log("Set Cookie to true and remove class nodisplay");
         jQuery('.mobile-menu-hint-container').removeClass('nodisplay');       
     }
-    else {
-        console.log("Cookie=True => do not show hint");
-    }
+    // else {
+    //     console.log("Cookie=True => do not show hint");
+    // }
     // window.initDone = true;
     // console.log( "Init Done = " + window.initDone );
 });

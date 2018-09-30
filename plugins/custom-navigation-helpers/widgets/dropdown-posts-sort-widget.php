@@ -54,9 +54,9 @@ public function widget( $args, $instance ) {
 	}
 	?>
 
-	<div class="dropdown-select">
 	<label class="screen-reader-text" for="sort_dropdown"><?php echo $title;?></label>
-	<select name="sort_dropdown" id="sort_dropdown" class="postform">
+	<!-- <div class="dropdown-select"> -->
+	<select name="sort_dropdown" id="sort_dropdown" class="dropdown-select postform">
 	<option value="none" class="separator"><?php echo __('Select sort order...', 'foodiepro');?></option>
 	<option class="level-0" value="?<?php echo $search_term;?>orderby=title&order=ASC"><?php echo __('Title : ascending', 'foodiepro');?></option>
 	<option class="level-0" value="?<?php echo $search_term;?>orderby=title&order=DESC"><?php echo __('Title : descending', 'foodiepro');?></option>
@@ -75,7 +75,7 @@ public function widget( $args, $instance ) {
 	<?php 
 	}?>
 	</select> 
-	</div>
+	<!-- </div> -->
 
 	<script type="text/javascript">
 		/* <![CDATA[ */

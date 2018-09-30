@@ -3401,12 +3401,15 @@ input#ug_photo {font-size: 14px; margin-top: 10px;}
 .archives-top .widget {
 	width:33.3%;
 	padding:0px 10px;
-	max-width: 215px;	
-	float:left;
+	max-width: 215px;
+	display: inline-block;	
+	text-align: left;
+	/*float:left;*/
 }
 
 .alignright.widget {
-	float:right;
+	/*float:right;*/
+	text-align: right;
 }
 
 /* Archives bottom section */
@@ -3428,9 +3431,9 @@ input#ug_photo {font-size: 14px; margin-top: 10px;}
 
 .recipes-top .widget.themes ul li, 
 .blogs-top .widget.themes ul li {
-  float:left;
+  	float:left;
 	width:45%;
-  margin:5px;
+  	margin:5px;
 }
 
 .recipes-top .widget.themes ul li.current-menu-item > a,
@@ -5417,9 +5420,9 @@ Site Footer
 	.recipes-top .widget, 
 	.blogs-top .widget,
 	.archives-top .widget {
-		float:left;
-		margin:0 0 10px;
-		width:50%;	
+		/*float:left;*/
+		margin:0 0 10px 0;
+		width:49%;	
 	}
 
 	.title-area, 

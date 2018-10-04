@@ -126,7 +126,7 @@ class CustomArchive {
 	
 	protected function is_fest($occasion) {
 		
-		if (empty($occasion)) return false;
+		if (!isset($occasion)) return false;
 		
 		$currentMonth=DATE("m");
 		$needle = '2-fetes';

@@ -7,7 +7,14 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 		parent::__construct();
 		/* Custom recipe template */
 		add_filter( 'wpurp_output_recipe', array($this,'wpurp_custom_recipe_template'), 10, 2 );
+		add_filter('wp_dropdown_cats', array($this, 'add_lang_to_select'));
 	}
+
+
+	public function add_lang_to_select($output){
+  		return str_replace('<select','<select lang="fr"',$output);
+	}
+
 
 	public function wpurp_custom_recipe_template( $content, $recipe ) {
 
@@ -390,7 +397,7 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 	        //$out .= '<div' . $meta . '>'.$instruction['description'].'</div>';
 	        $out .= '<span>' . $instruction['description'] . '</span>';
 
-	        if( $instruction['image'] != '' ) {
+	        if( isset($instruction['image']) ) {
 	            $thumb = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
 	            $thumb_url = $thumb['0'];
 

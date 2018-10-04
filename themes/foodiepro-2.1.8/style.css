@@ -3890,9 +3890,10 @@ p.more-from-category {
   text-align:left;
 }
 
+img.post-image.entry-image,
 .content img.rpwe-thumb,
 .after-content img.rpwe-thumb {
-	border-radius: 5px;
+	border-radius: 10px;
 }
 
 .content img.rpwe-thumb {

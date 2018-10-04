@@ -84,7 +84,7 @@ class CustomArchiveEntryTitle extends CustomArchive {
  			$terms=wp_get_post_terms($post_id, $tax);
  		else
  			$terms=wp_get_post_terms($post_id, $tax, array("fields" => $field));
- 		if (is_wp_error($terms) || is_null($terms)) 
+ 		if (is_wp_error($terms) || !isset($terms)) 
  			return '';
  		else
  			return $terms[0];
@@ -110,14 +110,14 @@ class CustomArchiveEntryTitle extends CustomArchive {
 		$origin = $this->get_post_term( $post_id, 'cuisine', 'names');
 		//echo '<pre>' . print_r($origin) . '</pre>';
 		$diet = $this->get_post_term( $post_id, 'diet');
-		if (!is_null($diet)) 
-			$diet_slug = $diet->slug;
+		if (isset($diet)) $diet_slug = $diet->slug;
+		else $diet_slug = null;
 		//echo '<pre>' . print_r($diet->slug) . '</pre>';
 		$occasion = $this->get_post_term( $post_id, 'occasion');
 		//echo '<pre>' . print_r($occasion) . '</pre>';
 		$season = $this->get_post_term( $post_id, 'season');
-		if (!is_null($season)) 
-			$season_slug = $season->slug;		
+		if (isset($season)) $season_slug = $season->slug;
+		else $season = null;	
 		//echo '<pre>' . print_r($season->slug) . '</pre>';
 	
 		if ( is_tax('cuisine') || is_author() ) {

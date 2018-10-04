@@ -38,7 +38,7 @@ class Custom_WPURP_Ingredient_Metadata {
 	public function taxonomy_add_months_field() {
 		// this will add the custom meta field to the add new term page
 		?>
-		<label for="wpurp_ctm_ingredient_month">Months</label>
+		<label for="wpurp_ctm_ingredient_month"><?php echo __('Months','foodiepro');?></label>
 		<table>
 		<tr>
 		<?php
@@ -74,7 +74,7 @@ class Custom_WPURP_Ingredient_Metadata {
 	 	?>
 	 	<tr class="form-field">
 		<th scope="row" valign="top">
-		<label for="wpurp_ctm_ingredient_month">Months</label>
+		<label for="wpurp_ctm_ingredient_month"><?php echo __('Months','foodiepro');?></label>
 		<td>
 			<table>
 				<tr>		

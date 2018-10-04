@@ -18,9 +18,9 @@ class CustomStarRatings {
 		self::$ratingCats = array( 
 			'rating' => array (
 				'weight' => 2,
-				'title'=> __('Dish','custom-star-rating'),
-				'legend'=> __('Appreciation of the dish'),
-				'question'=> __('How did you like this dish ?'),
+				'title'=> __('Dish','custom-star-rating','custom-star-rating'),
+				'legend'=> __('Appreciation of the dish','custom-star-rating'),
+				'question'=> __('How did you like this dish ?','custom-star-rating'),
 				'caption' => array(
 								__('Disappointing','custom-star-rating'),
 								__('Rather good','custom-star-rating'),

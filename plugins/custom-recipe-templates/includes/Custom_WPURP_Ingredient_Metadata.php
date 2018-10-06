@@ -6,8 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Custom_WPURP_Ingredient_Metadata {
 
-	private static $MONTHS;
-
+	protected static $MONTHS;
 
 	public function __construct() {
 		// parent::__construct();
@@ -28,10 +27,8 @@ class Custom_WPURP_Ingredient_Metadata {
 			__('September','foodiepro'),
 			__('October','foodiepro'),
 			__('November','foodiepro'),
-			__('December','foodiepro'),
+			__('December','foodiepro')
 		);
-
-
 	}
 
 	// Add term page
@@ -39,23 +36,25 @@ class Custom_WPURP_Ingredient_Metadata {
 		// this will add the custom meta field to the add new term page
 		?>
 		<label for="wpurp_ctm_ingredient_month"><?php echo __('Months','foodiepro');?></label>
-		<table>
-		<tr>
+		<!-- <table> -->
+		<!-- <tr> -->
 		<?php
+		$i=1;
 		foreach (self::$MONTHS as $month) {	
 		// echo '<pre>' . print_r(self::$MONTHS) . '</pre>';
 			// echo '<pre>' . print_r($month) . '<br></pre>';
 			?>
-			<td>
-			<div class="form-field">
-				<label for="wpurp_ctm_ingredient[<?php echo $month;?>]" title="<?php echo $month;?>"><?php echo $month[0]; ?></label>
-				<input type="checkbox" name="wpurp_ctm_ingredient[<?php echo $month;?>]" id="wpurp_ctm_ingredient_<?php echo $month;?>" value="available" title="<?php echo $month;?>" >
+			<!-- <td> -->
+			<div class="form-ingredient-month">
+				<label for="wpurp_taxonomy_metadata_ingredient[month][<?php echo $i;?>]" title="<?php echo $month;?>"><?php echo $month[0]; ?></label>
+				<input type="checkbox" name="wpurp_taxonomy_metadata_ingredient[month][<?php echo $i;?>]" id="wpurp_taxonomy_metadata_ingredientmonth<?php echo $i;?>" value="available" title="<?php echo $month;?>" >
 			</div>
-			</td>
+			<!-- </td> -->
 			<?php
+			$i++;
 		}?>
-		</tr>
-		</table>
+		<!-- </tr> -->
+		<!-- </table> -->
 		<p class="description"><?php _e( 'Check the months when this ingredient is available','foodiepro' ); ?></p>
 		<?php
 	}
@@ -63,34 +62,33 @@ class Custom_WPURP_Ingredient_Metadata {
 
 	// Edit term page
 	public function taxonomy_edit_months_field($term) {
-
 		// put the term ID into a variable
 		$t_id = $term->term_id;
 		// retrieve the existing value(s) for this meta field. This returns an array
 		$ingredient_meta = get_option( "taxonomy_$t_id" ); 
 		// echo '<pre>' . print_r($ingredient_meta) . '<br></pre>';
-		
-		 
 	 	?>
 	 	<tr class="form-field">
 		<th scope="row" valign="top">
-		<label for="wpurp_ctm_ingredient_month"><?php echo __('Months','foodiepro');?></label>
+		<label for="wpurp_taxonomy_metadata_ingredient_months"><?php echo __('Months','foodiepro');?></label>
 		<td>
 			<table>
 				<tr>		
 				<?php
+				$i=1;
 				foreach (self::$MONTHS as $month) {	
 				// echo '<pre>' . print_r(self::$MONTHS) . '</pre>';
 					// echo '<pre>' . print_r($month) . '<br></pre>';
-					$checked = isset($ingredient_meta[$month]);
+					$checked = isset($ingredient_meta['month'][$i]);
 					?>
 					<td>
 					<div class="form-field">
-						<label for="wpurp_ctm_ingredient[<?php echo $month;?>]" title="<?php echo $month;?>"><?php echo $month[0]; ?></label>
-						<input type="checkbox" name="wpurp_ctm_ingredient[<?php echo $month;?>]" id="wpurp_ctm_ingredient_<?php echo $month;?>" value="available" title="<?php echo $month;?>" <?php echo $checked?"checked":"";?>  >
+						<label for="wpurp_taxonomy_metadata_ingredient[month][<?php echo $i;?>]" title="<?php echo $month;?>"><?php echo $month[0]; ?></label>
+						<input type="checkbox" name="wpurp_taxonomy_metadata_ingredient[month][<?php echo $i;?>]" id="wpurp_taxonomy_metadata_ingredientmonth<?php echo $i;?>" title="<?php echo $month;?>" <?php echo $checked?"checked":"";?>  >
 					</div>
 					</td>
 					<?php
+					$i++;
 				}?>
 				</tr>
 			</table>
@@ -105,22 +103,21 @@ class Custom_WPURP_Ingredient_Metadata {
 
 	// Save extra taxonomy fields callback function.
 	public function save_ingredient_custom_meta( $term_id ) {
-		if ( isset( $_POST['wpurp_ctm_ingredient'] ) ) {
-			$t_id = $term_id;
-			$ingredient_meta = get_option( "taxonomy_$t_id" );
-
+		if ( isset( $_POST['wpurp_taxonomy_metadata_ingredient'] ) ) {
+			// $t_id = $term_id;
+			$ingredient_meta = get_option( "taxonomy_$term_id" );
+			$i=1;
 			foreach ( self::$MONTHS as $month ) {
-				if ( isset ( $_POST['wpurp_ctm_ingredient'][$month] ) ) 
-					$ingredient_meta[$month] = $_POST['wpurp_ctm_ingredient'][$month];
-				else
-					unset($ingredient_meta[$month]);
+				if ( isset ( $_POST['wpurp_taxonomy_metadata_ingredient']['month'][$i] ) ) 
+					$ingredient_meta['month'][$i] = $_POST['wpurp_taxonomy_metadata_ingredient']['month'][$i];
+				elseif ( isset($ingredient_meta['month'][$i]) )
+					unset($ingredient_meta['month'][$i]);
+				$i++;
 			}
 			// Save the option array.
-			update_option( "taxonomy_$t_id", $ingredient_meta );
+			update_option( "taxonomy_$term_id", $ingredient_meta );
 		}
 	}  
-
-
 
 
 

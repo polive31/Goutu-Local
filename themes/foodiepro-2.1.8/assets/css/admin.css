@@ -16,6 +16,12 @@ tr.form-field.term-description-wrap {
 	width: 100%;
 }
 
+/* Category Admin Page 
+---------------------------------------------------*/
+.form-ingredient-month {
+    display: inline-block;
+}
+
 
 /* OZ Horizontal Menu
 ---------------------------------------------------*/

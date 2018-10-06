@@ -126,13 +126,13 @@ if( !isset( $required_fields ) ) $required_fields = array();
 		          </td>
 		          <td class="group mobile-hidden" colspan="1">&nbsp;</td>
         </tr>
-        <tr class="ingredient-field-header">
+<!--         <tr class="ingredient-field-header">
             <td>&nbsp;</td>
             <td><?php _e( 'Quantity', 'foodiepro' ); ?></td>
             <td><?php _e( 'Unit', 'foodiepro' ); ?></td>
             <td><?php _e( 'Ingredient', 'foodiepro' );?><span class="wpurp-required">* </span><?php _e( '(singular)', 'foodiepro' ); ?></td>
             <td><?php _e( 'Notes', 'foodiepro' ); ?></td>
-        </tr>
+        </tr> -->
         </thead>
         <tbody>
         <tr class="ingredient-group-stub">
@@ -182,14 +182,14 @@ if( !isset( $required_fields ) ) $required_fields = array();
                     <!-- Sort handle -->
                     <td class="sort-handle"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16"></td>
                     <!-- Quantity -->
-                    <td id="qty"><span class="mobile-display"><?php _e( 'Quantity', 'foodiepro' ); ?></span><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][amount]" class="ingredients_amount" id="ingredients_amount_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['amount'] ); ?>" /></td>
+                    <td id="qty"><!-- <span class="mobile-display"><?php _e( 'Quantity', 'foodiepro' ); ?></span> --><input type="text" name="recipe_ingredients[<?php echo $i; ?>][amount]" class="ingredients_amount" id="ingredients_amount_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['amount'] ); ?>" /></td>
                     <!-- Unit -->
-                    <td id="unit"><span class="mobile-display"><?php _e( 'Unit', 'foodiepro' ); ?></span><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][unit]" class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['unit'] ); ?>" /></td>
+                    <td id="unit"><!-- <span class="mobile-display"><?php _e( 'Unit', 'foodiepro' ); ?></span> --><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][unit]" class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['unit'] ); ?>" /></td>
                     <!-- Name -->
-                    <td id="name"><span class="mobile-display"><?php _e( 'Ingredients', 'foodiepro' ); ?></span><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onfocus="autoSuggestTag('ingredients_<?php echo $i; ?>', 'ingredient');" value="<?php echo esc_attr( $ingredient['ingredient'] ); ?>" /></td>
+                    <td id="name"><!-- <span class="mobile-display"><?php _e( 'Ingredients', 'foodiepro' ); ?></span> --><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onfocus="autoSuggestTag('ingredients_<?php echo $i; ?>', 'ingredient');" value="<?php echo esc_attr( $ingredient['ingredient'] ); ?>" /></td>
                     <!-- Notes -->
                     <td id="notes">
-                            <span class="mobile-display"><?php _e( 'Notes', 'foodiepro' ); ?></span>
+                            <!-- <span class="mobile-display"><?php _e( 'Notes', 'foodiepro' ); ?></span> -->
                         <!--<textarea rows="1" col="20" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>"><?php echo esc_attr( $ingredient['notes'] ); ?></textarea> -->
                         <input type="text" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['notes'] ); ?>" />
                         <input type="hidden" name="recipe_ingredients[<?php echo $i; ?>][group]" class="ingredients_group" id="ingredient_group_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['group'] ); ?>" />
@@ -207,21 +207,21 @@ if( !isset( $required_fields ) ) $required_fields = array();
             <td class="sort-handle"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16"></td>
             <!-- Quantity -->
             <td><span class="mobile-display"><?php _e( 'Quantity', 'foodiepro' ); ?></span>
-                <input type="text" name="recipe_ingredients[<?php echo $i; ?>][amount]" class="ingredients_amount" id="ingredients_amount_<?php echo $i; ?>"<?php if($i == 0) { echo 'placeholder="1"'; } ?> />
+                <input type="text" name="recipe_ingredients[<?php echo $i; ?>][amount]" class="ingredients_amount" id="ingredients_amount_<?php echo $i; ?>" placeholder="<?php _e( 'Quantity', 'foodiepro' ); ?>" />
             </td>
             <!-- Unit -->
             <td><span class="mobile-display"><?php _e( 'Unit', 'foodiepro' ); ?></span>
-                <input type="text" name="recipe_ingredients[<?php echo $i; ?>][unit]" class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>"<?php if($i == 0) { echo 'placeholder="' . __( 'tbsp', 'foodiepro' ) . '"'; } ?> />
+                <input type="text" name="recipe_ingredients[<?php echo $i; ?>][unit]" class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" placeholder="<?php _e( 'Unit', 'foodiepro' ); ?>" />
             </td>
             <!-- Ingredient Name -->
             <td><span class="mobile-display"><?php _e( 'Ingredient', 'foodiepro' ); ?></span>
-                <input type="text" name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onfocus="autoSuggestTag('ingredients_<?php echo $i; ?>', 'ingredient');"<?php if($i == 0) { echo 'placeholder="' . __( 'olive oil', 'foodiepro' ) . '"'; } ?> />
+                <input type="text" name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onfocus="autoSuggestTag('ingredients_<?php echo $i; ?>', 'ingredient');" placeholder="<?php _e( 'Ingredient', 'foodiepro' ); ?>" />
             </td>
             <!-- Ingredient Notes -->
             <td>
                 <span class="mobile-display"><?php _e( 'Notes', 'foodiepro' ); ?></span>
                 <!-- <textarea rows="1" cols="20" type="text" name="recipe_ingredients[<?php echo $i; ?>][notes]" <?php if($i == 0) { echo 'placeholder="' . __( 'extra virgin', 'foodiepro' ) . '"'; }?> class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>"></textarea> -->
-                <input type="text" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" <?php if($i == 0) { echo 'placeholder="' . __( 'extra virgin', 'foodiepro' ) . '"'; }?>  />
+                <input type="text" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" placeholder="<?php _e( 'Notes', 'foodiepro' ); ?>"  />
                 <input type="hidden" name="recipe_ingredients[<?php echo $i; ?>][group]" class="ingredients_group" id="ingredient_group_<?php echo $i; ?>" value="" />
             </td>
             <!-- Delete button -->

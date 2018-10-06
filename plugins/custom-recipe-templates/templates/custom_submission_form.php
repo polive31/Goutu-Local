@@ -40,7 +40,9 @@
 			
         <p><label class="recipe-tags"><?php _e( 'Recipe Tags', 'foodiepro' ) ?></label></p>
         <div class="taxonomy-select-spinner"><i class="fa fa-spinner fa-spin"></i></div>
+        <!-- <div class="taxonomy-select-spinner nodisplay"><i class="fa fa-spinner fa-spin"></i></div> -->
         <div class="taxonomy-select-boxes nodisplay">
+        <!-- <div class="taxonomy-select-boxes"> -->
 <?php
         $select_fields = array();
 
@@ -58,6 +60,8 @@
 
         $hide_tags = WPUltimateRecipe::option( 'user_submission_hide_tags', array() );
 
+        // Generate dropdown markup for each taxonomy (course, cuisine, difficulty, diet...)
+        // -----------------------------------------------------------
         foreach( $taxonomies as $taxonomy => $options ) {
             $multiselect = self::MULTISELECT[$taxonomy];
             if( !in_array( $taxonomy, $hide_tags ) ) {
@@ -72,6 +76,8 @@
             }
         }
 
+        // Category selection dropdown list (display depends on WPURP option)
+        // -----------------------------------------------------------
         $multiselect=true;
         if( WPUltimateRecipe::option( 'recipe_tags_user_submissions_categories', '0' ) == '1' ) {
             $args['show_option_none'] = $multiselect ? '' : __( 'Category', 'wp-ultimate-recipe' );
@@ -87,6 +93,9 @@
             );
         }
 
+
+        // Generate markup for tag selection dropdown list
+        // -----------------------------------------------------------
         $multiselect=true;
         if( WPUltimateRecipe::option( 'recipe_tags_user_submissions_tags', '0' ) == '1' ) {
             $args['show_option_none'] = $multiselect ? '' : __( 'Tag', 'wp-ultimate-recipe' );
@@ -102,6 +111,8 @@
             );
         }
 
+        // 
+        // -----------------------------------------------------------
         foreach( $select_fields as $taxonomy => $select_field ) {
             $multiselect = self::MULTISELECT[$taxonomy];
             // Multiselect

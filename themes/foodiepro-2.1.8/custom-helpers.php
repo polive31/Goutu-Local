@@ -15,17 +15,17 @@ function url_exists($url) {
 	return (strpos($headers[0],'404') === false);
 }
 
-function custom_enqueue_script( $handler, $uri, $path, $file, $deps, $version ) {	
+function custom_enqueue_script( $handler, $uri, $path, $file, $deps, $version, $footer=false ) {	
 	$minfile = str_replace( '.js', '.min.js', $file );
 	//echo '<pre>' . "minpath = {$minpath}" . '</pre>';
 	//echo '<pre>' . "path = {$path}" . '</pre>';
 	
   //if ((url_exists($minpath)) && (WP_DEBUG==false)) {
   if (file_exists( $path . $minfile) && WP_MINIFY ) {
-    wp_enqueue_script( $handler, $uri . $minfile, $deps, $version );
+    wp_enqueue_script( $handler, $uri . $minfile, $deps, $version, $footer );
   }
   else {
-    wp_enqueue_script( $handler, $uri . $file, $deps, $version );
+    wp_enqueue_script( $handler, $uri . $file, $deps, $version, $footer );
   }
 }
 

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2018-10-05 00:57+0200\n"
-"PO-Revision-Date: 2018-10-05 01:05+0200\n"
+"PO-Revision-Date: 2018-10-05 22:02+0200\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -1099,7 +1099,7 @@ msgstr "Mois"
 #: plugins/custom-recipe-templates/includes/Custom_WPURP_Ingredient_Metadata.php:59
 #: plugins/custom-recipe-templates/includes/Custom_WPURP_Ingredient_Metadata.php:100
 msgid "Check the months when this ingredient is available"
-msgstr ""
+msgstr "Cocher les mois où cet ingrédient est disponible"
 
 #: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:170
 msgid "Print this Recipe"

@@ -1,11 +1,24 @@
-//TODO Refactor this asap.
 jQuery(document).ready(function() {
 
-    /* 
-     * Display taxonomy select fields
-     */
+    /* Display taxonomy select fields
+    -------------------------------------------- */
     jQuery('.taxonomy-select-boxes').removeClass('nodisplay');
     jQuery('.taxonomy-select-spinner').addClass('nodisplay');
+
+    /* Set language of taxonomy multiselect fields (not used since lang attribute is set on all dropdowns thanks to wp_dropdown_cats filter)
+    -------------------------------------------- */
+    // jQuery().select2({
+    //     language: "fr"
+    // });
+
+    jQuery(".select2-hidden-accessible").select2({
+        placeholder: "Pick states",
+        theme: "material"
+    });
+    
+    jQuery(".select2-selection__arrow")
+        .addClass("material-icons")
+        .html("arrow_drop_down");    
 
     /* 
      * Submit buttons
@@ -563,12 +576,19 @@ jQuery(document).ready(function() {
     });
 
 
+    // Select2WPRUP
+    // jQuery('#wpurp_user_submission_form select[multiple]').select2wpurp({
+    //     allowClear: true,
+    //     width: 'off',
+    //     dropdownAutoWidth: false
+    // });
+
+
     // Select2
-    jQuery('#wpurp_user_submission_form select[multiple]').select2wpurp({
+    jQuery('#wpurp_user_submission_form select[multiple]').select2({
         allowClear: true,
         width: 'off',
         dropdownAutoWidth: false
     });
-
 
 });

@@ -5,6 +5,11 @@
  * Released under the MIT license
  * https://github.com/select2/select2/blob/master/LICENSE.md
  */
+
+ jQuery(document).ready(function() {
+    console.log("In select2 !!!");
+});
+
 ;(function (factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
@@ -4613,6 +4618,7 @@ S2.define('select2/i18n/en',[],function () {
     },
     noResults: function () {
       return 'No results found';
+      // return 'Toto';
     },
     searching: function () {
       return 'Searching…';

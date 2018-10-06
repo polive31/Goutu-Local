@@ -76,7 +76,6 @@ function getCookie(cname) {
 }
 
 
-
 function actionsOnScroll() {
     // Resize header
     jQuery('header').addClass('nav-up');

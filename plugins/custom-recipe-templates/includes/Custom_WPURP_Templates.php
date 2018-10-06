@@ -98,13 +98,13 @@ class Custom_WPURP_Templates {
 //		              'url' => '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css',
 //		              'dir' => '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css',
 //		          ); 
-//		  $css_enqueue[]=array(
-//		              'file' =>  self::$_PluginPath . 'vendor/select2/css/select2.min.css',
-//		              'url' =>  self::$_PluginPath . 'vendor/select2/css/select2.min.css',
-//		              'dir' =>  self::$_PluginPath . 'vendor/select2/css/select2.min.css',
-//		              'public' => true,
-//		              'direct' => true,
-//		          ); 			
+		  $css_enqueue[]=array(
+		              'url' =>  self::$_PluginUri . 'vendor/select2/css/select2.min.css',
+		              'dir' =>  self::$_PluginPath . 'vendor/select2/css/select2.min.css',
+		              'file' => 'select2.min.css',
+		              'public' => true,
+		              'direct' => true,
+		          ); 			
 			$this->custom_enqueued_styles=array(
 					array(
 						'url' => '//fonts.googleapis.com/css?family=Cabin',
@@ -116,13 +116,19 @@ class Custom_WPURP_Templates {
 						'path' => self::$_PluginPath . 'assets/css/custom-recipe.css',
 						'public' => true,
 						'direct' => true,
-		          	),	          	
+		          	),
 		  			array(
 						'url' => self::$_PluginUri . 'assets/css/custom-recipe-submission.css',
 						'path' => self::$_PluginPath . 'assets/css/custom-recipe-submission.css',
 						'public' => true,
 						'direct' => true,
-		          	)
+		          	),
+		  		// 	array(
+						// 'url' => self::$_PluginUri . 'assets/css/select2_material.css',
+						// 'path' => self::$_PluginPath . 'assets/css/select2_material.css',
+						// 'public' => true,
+						// 'direct' => true,
+		    //       	),		          		          	
 		        );	          		
 		}
 		else 
@@ -270,14 +276,32 @@ class Custom_WPURP_Templates {
 				$js_enqueue = array();
 
 				$this->custom_enqueued_scripts = array(
+					// array(
+					//     'name' => 'select2wpurp',
+					//     'url' => WPUltimateRecipe::get()->coreUrl . '/vendor/select2/',
+					//     'file' => 'select2.min.js',
+					//     'deps' => array(
+					//         'jquery',
+					//     ),
+					// ),
 					array(
-					    'name' => 'select2wpurp',
-					    'url' => WPUltimateRecipe::get()->coreUrl . '/vendor/select2/',
-					    'file' => 'select2.min.js',
+					    'name' => 'select2',
+					    'url' => self::$_PluginUri . 'vendor/select2/js/',
+					    'path' => self::$_PluginPath . 'vendor/select2/js/',
+					    'file' => 'select2.js',
 					    'deps' => array(
 					        'jquery',
 					    ),
 					),
+					array(
+					    'name' => 'select2-fr',
+					    'url' => self::$_PluginUri . 'vendor/select2/js/i18n/',
+					    'path' => self::$_PluginPath . 'vendor/select2/js/i18n/',
+					    'file' => 'fr.js',
+					    'deps' => array(
+					        'select2',
+					    ),
+					),											
 					array(
 						'name' => 'jquery-touch-punch',
 					    'deps' => array(
@@ -293,7 +317,8 @@ class Custom_WPURP_Templates {
 		                'deps' => array(
 		                    'jquery',
 		                    'jquery-ui-sortable',
-		                    'select2wpurp',
+		                    'select2',
+		                    // 'select2wpurp',
 		                ),
 		                'footer' => true,
 		                'data' => array(

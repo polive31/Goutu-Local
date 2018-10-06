@@ -1,3 +1,28 @@
+/* SELECT2
+-------------------------------------------*/
+
+/*Select2 fonts*/
+
+ li.select2-selection__choice {
+    font-family: Oswald;
+    font-size: 16px;
+}
+
+.select2-results li,
+ .taxonomy-select-boxes select option {
+    font-family: Oswald;
+    color: #5a5a5a;
+}
+
+.select2-container-multi .select2-choices .select2-search-choice {
+  font-family:sans-serif;
+  font-size:14px;
+}
+
+
+/* Other
+-------------------------------------------*/
+
 /*Headlines fonts */
 
 .recipe-preview h5 {
@@ -15,8 +40,7 @@ ul.wpurp-user-submissions-current-user-edit {
  h4 {
   font-family: Oswald, sans-serif;
   font-weight: 400;
-  /*color: #616161;*/
-  color: #a9a9a9;
+  color: #616161;
 }
 
  label.recipe-tags,
@@ -24,8 +48,7 @@ ul.wpurp-user-submissions-current-user-edit {
  label.recipe-title,
  h4 {
   font-size: 25px;
-  /*font-variant: small-caps;*/
-  text-transform: uppercase;
+  font-variant: small-caps;
 }
 
 
@@ -36,7 +59,7 @@ ul.wpurp-user-submissions-current-user-edit {
  textarea,
  input[type="text"],
  input[type="number"] {
-  font-size:14px;
+  font-size:13px;
 }   
 
  .recipe-general-form-notes,
@@ -82,9 +105,9 @@ span.wpurp-required {
 /* Custom Recipe Submission Form
 -------------------------------------------*/
 #wpurp_user_submission_form {
-  /*background-color:#f3f3f3;*/
+  background-color:#f3f3f3;
   /*background-color: #f2efeb;*/
-  padding:20px;
+	padding:20px;
   float:left;
   width: 100%;
   margin-top: 40px;
@@ -98,38 +121,80 @@ span.wpurp-required {
  .recipe-ingredients-container,
  .recipe-instructions-container,
  .recipe-notes-container-nojs {
-  float: left;
+	float: left;
   width: 100%;
 }
 
 
 
 /* Headlines */
- label.recipe-tags,
- label.recipe-image,
- label.recipe-title,
  h4 {
-  color: #101010;
-  /*color: #616161;*/
-  margin-top: 50px;
-  margin-bottom: 0px;
-}
-
-h4 {
   float: left;
   clear: both;
+	color: #616161;
+  margin-top: 40px;
 }
 
 /* Recipe Thumbnail */
 table#recipe-instructions .recipe_instructions_thumbnail, 
 .postbox img.recipe_thumbnail {
-  max-height: 100px;
+	max-height: 100px;
 }
 
 
+/* Tags section */
+.taxonomy-select-spinner {
+    text-align: center;
+    font-size: 40px;
+    color:#b7b7b7;
+}
+
+ .taxonomy-select-boxes select,
+ .select2-container {
+  display: inline-block;
+  min-width: 200px;
+  min-height: 40px;
+  margin: 5px 10px!important;
+  /*margin: 0 5px 5px 0 !important;*/
+  vertical-align: top !important;
+  letter-spacing: normal; 
+  font-size: 13px;
+  font-style: initial;
+  /*color: #999999;*/
+  border-color: #aaaaaa;  
+}
+
+ .taxonomy-select-boxes select {
+  width: 200px!important;
+}
+
+ .select2-container ul input {
+  min-height: 40px;
+  padding-left: 10px;
+}
+
+
+ input.select2-search__field {
+  background: none; 
+  border:none;
+}
+
+option,
+select#recipe-occasion option {
+    font-family: sans-serif;
+    font-size: 14px!important;
+}
+
+.select2-results__options{
+	font-family:sans-serif!important;
+}
+
+.select2-container-multi .select2-choices {
+  background-image: none;
+  border-radius: 5px;
+}
 
 /*General Input styling */
-
 
  input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #B1B1B1;
@@ -162,18 +227,18 @@ table#recipe-instructions .recipe_instructions_thumbnail,
 
 /* Table formatting */
 
-/* tr.ingredient,
+ tr.ingredient,
  tr.instruction {
   background-color: #e4e4e4;
-  box-shadow: 3px 3px 5px #cacaca;  
-}*/
+	box-shadow: 3px 3px 5px #cacaca;  
+}
 
  tr.ingredient td {
-  padding:10px 10px;  
+	padding:10px 10px;	
 }
 
  span.mobile-display {
-  display:none!important;
+	display:none!important;
 }
 
 .ingredient td#qty {
@@ -200,16 +265,16 @@ table#recipe-instructions .recipe_instructions_thumbnail,
 }
 
  tr.instruction td {
-  padding:10px 10px;
+	padding:10px 10px;
 }
 
  td.sort-handle.ui-sortable-handle {
-  width: 40px;
-  transition: all 1s ease-in-out; 
+	width: 40px;
+	transition: all 1s ease-in-out;	
 }
 
  td.sort-handle.ui-sortable-handle:hover {
-  background-color: #d2d2d2;
+	background-color: #d2d2d2;
 }
 
 
@@ -222,12 +287,12 @@ table#recipe-instructions .recipe_instructions_thumbnail,
  .delete-button {
   width: 30px;
   cursor: pointer;
-  padding: 10px;  
+	padding: 10px;  
 }
 
  label {
-  font-weight:400;
-  color:#616161;
+	font-weight:400;
+	color:#616161;
 }
 
 /* Instructions & ingredients groups */
@@ -237,30 +302,29 @@ table#recipe-instructions .recipe_instructions_thumbnail,
 }
 
  td.group {
-  padding:4px;
-  /*border-top: 2px dashed #dcdcdc;*/
-  /*border-bottom: 2px solid #dcdcdc;*/
+	padding:4px;
+	/*border-top: 2px dashed #dcdcdc;*/
+  border-bottom: 2px solid #dcdcdc;
 }
 
  span.name {
   min-width: 300px;
   max-width: 600px;
   display:inline-block;
-  margin: 0 20px;  
+	margin: 0 20px;  
 }
 
  span.header {
-  display: inline-block;
-  font-size: 26px; 
-  margin: 0 20px; 
-  color: #696969; 
-  /*color: #b5b5b5; */
+	display: inline-block;
+  font-size: 28px; 
+	margin: 0 20px;	
+	color: #b5b5b5;	
   font-variant: small-caps;
   vertical-align: middle;  
 }
 
  .group.delete-button {
-  display: inline-block;
+	display: inline-block;
 }
 
 /* Buttons */
@@ -354,21 +418,21 @@ table#recipe-instructions .recipe_instructions_thumbnail,
 }
 
  input.recipe_thumbnail_image:hover {
-  background-color:#7b7b7b;
-  color: #ffffff!important;
+	background-color:#7b7b7b;
+	color: #ffffff!important;
 }
 
  label.add-image-button:hover,
  .button:hover {
-  background-color:#b2b2b2;
+	background-color:#b2b2b2;
 
 }
 
  label.add-image-button:before,
  .button a:before {
-  font-family:FontAwesome;
-  content:"\f055";
-  padding:0 10px;
+	font-family:FontAwesome;
+	content:"\f055";
+	padding:0 10px;
 }
 
 
@@ -381,12 +445,12 @@ table#recipe-instructions .recipe_instructions_thumbnail,
   font-size:20px;
   padding:10px;
 }
-  
+	
  a,
  a:hover {
-  font-weight:400;
-  text-decoration:none;
-  color: #616161;
+	font-weight:400;
+	text-decoration:none;
+	color: #616161;
 }
 
  #wp-recipe_notes-wrap,
@@ -402,18 +466,14 @@ table#recipe-instructions .recipe_instructions_thumbnail,
  input[type=text],
  select,
  textarea {
-  /*border: 1px solid #ddd;*/
-  border: none;
-  border-bottom: 1px solid #CCC;
-  /*border-radius:5px;*/
-  border-radius: 0px;
-  /*box-shadow: inset 0 1px 2px rgba(0,0,0,.07);*/
+  border: 1px solid #ddd;
+  border-radius:5px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
   background-color: #fff;
-  color: #2b2b2b;
+  color: #999;
   outline: 0;
   transition: 50ms border-color ease-in-out;
 }
-
 
 
 /* input:focus, 
@@ -421,14 +481,17 @@ table#recipe-instructions .recipe_instructions_thumbnail,
  textarea:focus {
 }*/
 
-
+ .select2-container--default.select2-container--focus .select2-selection--multiple {
+  border-color: #5b9dd9;
+  box-shadow: 0 0 2px rgba(30,140,190,.8);
+}
 
 
 /* Specific input formatting */
 
  .recipe-tags-container input[type=text] {
   box-shadow: none;
-  border:none;
+	border:none;
 }
 
 
@@ -439,7 +502,7 @@ textarea.ingredients_notes {
 
 
   .recipe-general-form-field input {
-  width:auto;
+ 	width:auto;
 }
 
  input#recipe_passive_time,
@@ -464,7 +527,7 @@ textarea.ingredients_notes {
 }
 
  div#qt_recipe_notes_toolbar {
-  display:none;
+	display:none;
 }
 
 .afu-process-file label {
@@ -474,158 +537,18 @@ textarea.ingredients_notes {
   border-radius: 5px;
 }
 
-/* SELECT2 & TAGS
--------------------------------------------*/
-
-/*Select2 fonts*/
-
- li.select2-selection__choice,
-.select2-results li,
- .taxonomy-select-boxes select {
-    font-size: 14px!important;
-    /*font-family: Oswald;*/
-    font-family:sans-serif;
-    color: #5a5a5a;
-}
-
-/*.select2-container-multi .select2-choices .select2-search-choice {
-  font-family:sans-serif;
-  font-size:14px;
-}
-*/
-/*option,
-select#recipe-occasion option {
-    font-family: sans-serif;
-    font-size: 14px!important;
-}
-*/
-
-
-/* Tags section */
-.taxonomy-select-spinner {
-    text-align: center;
-    font-size: 40px;
-    color:#b7b7b7;
-}
-
- .taxonomy-select-boxes select,
- .select2-container {
-  display: inline-block;
-  /*float:left;*/
-  margin: 5px 10px!important;
-  min-width: 200px;
-  min-height: 45px;
-  /*margin: 0 5px 5px 0 !important;*/
-  /*vertical-align: top !important;*/
-  /*letter-spacing: normal; */
-  /*font-size: 13px;*/
-  /*font-style: initial;*/
-  /*color: #999999;*/
-  /*border-color: #aaaaaa;  */
-}
-
- .taxonomy-select-boxes select {
-  width: 200px!important;
-}
-
-/*Select 2*/
-
-li.select2-selection__choice {
-    border:none!important;
-    border-radius: 20px!important;
-    padding: 5px 15px!important;
-    text-align: left;    
-}
-
-span.select2-selection__clear {
-    visibility: hidden;
-}
-
-.select2-container .select2-selection--multiple .select2-selection__choice__remove {
-    font-size: 0;
-    opacity: 0.38;
-    cursor: pointer;
-    float: right;
-    margin-right: -6px;
-    margin-left: 6px;
-    transition: opacity;
-}
-
-.select2-container .select2-selection--multiple .select2-selection__choice__remove::before {
-    content: "\f057";
-    font-family: FontAwesome;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px;
-    line-height: 1;
-    letter-spacing: normal;
-    text-transform: none;
-    display: inline-block;
-    white-space: nowrap;
-    word-wrap: normal;
-    direction: ltr;
-    -webkit-font-feature-settings: 'liga';
-    -webkit-font-smoothing: antialiased;
-    color: #5a5a5a;
-}
-
-.select2-container--material .select2-selection--multiple .select2-selection__choice__remove:hover {
-    opacity: 0.54;
-    color:#000;
-}
-
-.taxonomy-select-boxes select,
-.select2-container--default .select2-selection--multiple {
-    background-color: transparent;
-    border:none;
-    border-bottom:1px solid #CCC;
-    border-radius:0px!important;
-    box-shadow: none;
-}
-
- .select2-container--default.select2-container--focus .select2-selection--multiple {
-    border:none;
-    border-bottom:1px solid #5b9dd9;
-  /*border-color: #5b9dd9;*/
-  /*box-shadow: 0 0 2px rgba(30,140,190,.8);*/
-}
-
-
-/* .select2-container ul input {
-  min-height: 40px;
-  padding-left: 10px;
-}*/
-
-/*
- input.select2-search__field {
-  background: none; 
-  border:none;
-}*/
-
-
-/*
-.select2-results__options{
-  font-family:sans-serif!important;
-}
-
-.select2-container-multi .select2-choices {
-  background-image: none;
-  border-radius: 5px;
-}*/
-
-
 
 /* MEDIA QUERIES
 --------------------------------------------*/
 
 /* Smartphone */
 @media only screen 
-  and (max-width:870px) {
-    
-  #wpurp_user_submission_form {
+	and (max-width:870px) {
+		
+	#wpurp_user_submission_form {
     background-color: initial;
     padding: 0;
-  } 
+	}	
 
    table {
     table-layout: fixed;
@@ -643,63 +566,63 @@ span.select2-selection__clear {
     width: calc(100% - 45px);
   }
 
-   .instruction-text {
-    width: 100%;
-    clear:both;
-  }
+	 .instruction-text {
+	  width: 100%;
+	  clear:both;
+	}
 
-   .instruction-image {
-    width: 50%;
+	 .instruction-image {
+	  width: 50%;
     clear: left;
     margin: 0;
     padding: 0;
-  }
+	}
     
    table#recipe-ingredients {
     border-collapse:separate; 
     border-spacing: 0 20px;
   } 
-  
-   td.recipe-general-form-label {
+	
+	 td.recipe-general-form-label {
     float: left;
-  }
-  
-   td.recipe-general-form-field {
+	}
+	
+	 td.recipe-general-form-field {
     float: left;
     width: 100%;
-  } 
-  
-   tr.ingredient td {
-    padding:0 10px; 
-    width:100%;
-    float:left;
-  } 
+	}	
+	
+	 tr.ingredient td {
+		padding:0 10px;	
+		width:100%;
+		float:left;
+	}	
 
-   tr.ingredient td textarea,
-   tr.ingredient td input {
-    width:68%;
-  } 
-  
-   span.mobile-display {
-    display:inline-block!important;
+	 tr.ingredient td textarea,
+	 tr.ingredient td input {
+		width:68%;
+	}	
+	
+	 span.mobile-display {
+		display:inline-block!important;
     float: left;
     width: 30%;
     font-family: sans-serif;
     font-size: 14px;
     padding: 10px;
     font-weight: bold;
-  }
-  
-   .mobile-hidden,
-   tr.ingredient-field-header {
-    display:none!important;
-  }   
-    
-   tr td.delete-button {
+	}
+	
+	 .mobile-hidden,
+	 tr.ingredient-field-header {
+  	display:none!important;
+	}		
+		
+	 tr td.delete-button {
     width:50px;
     float:right;
     padding:9px;
-  } 
+	}	
 
 
   /*Recipe Submit Buttons*/
@@ -719,5 +642,5 @@ span.select2-selection__clear {
     padding: 0;
   }
 
-  
+	
 }

@@ -122,13 +122,7 @@ class Custom_WPURP_Templates {
 						'path' => self::$_PluginPath . 'assets/css/custom-recipe-submission.css',
 						'public' => true,
 						'direct' => true,
-		          	),
-		  		// 	array(
-						// 'url' => self::$_PluginUri . 'assets/css/select2_material.css',
-						// 'path' => self::$_PluginPath . 'assets/css/select2_material.css',
-						// 'public' => true,
-						// 'direct' => true,
-		    //       	),		          		          	
+		          	),        		          	
 		        );	          		
 		}
 		else 

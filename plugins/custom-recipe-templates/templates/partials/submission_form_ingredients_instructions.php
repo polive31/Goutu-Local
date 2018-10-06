@@ -206,20 +206,20 @@ if( !isset( $required_fields ) ) $required_fields = array();
         <tr class="ingredient">
             <td class="sort-handle"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16"></td>
             <!-- Quantity -->
-            <td><span class="mobile-display"><?php _e( 'Quantity', 'foodiepro' ); ?></span>
+            <td><!-- <span class="mobile-display"><?php _e( 'Quantity', 'foodiepro' ); ?> </span>-->
                 <input type="text" name="recipe_ingredients[<?php echo $i; ?>][amount]" class="ingredients_amount" id="ingredients_amount_<?php echo $i; ?>" placeholder="<?php _e( 'Quantity', 'foodiepro' ); ?>" />
             </td>
             <!-- Unit -->
-            <td><span class="mobile-display"><?php _e( 'Unit', 'foodiepro' ); ?></span>
+            <td><!-- <span class="mobile-display"><?php _e( 'Unit', 'foodiepro' ); ?> </span>-->
                 <input type="text" name="recipe_ingredients[<?php echo $i; ?>][unit]" class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" placeholder="<?php _e( 'Unit', 'foodiepro' ); ?>" />
             </td>
             <!-- Ingredient Name -->
-            <td><span class="mobile-display"><?php _e( 'Ingredient', 'foodiepro' ); ?></span>
+            <td><!-- <span class="mobile-display"><?php _e( 'Ingredient', 'foodiepro' ); ?></span> -->
                 <input type="text" name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onfocus="autoSuggestTag('ingredients_<?php echo $i; ?>', 'ingredient');" placeholder="<?php _e( 'Ingredient', 'foodiepro' ); ?>" />
             </td>
             <!-- Ingredient Notes -->
             <td>
-                <span class="mobile-display"><?php _e( 'Notes', 'foodiepro' ); ?></span>
+                <!-- <span class="mobile-display"><?php _e( 'Notes', 'foodiepro' ); ?></span> -->
                 <!-- <textarea rows="1" cols="20" type="text" name="recipe_ingredients[<?php echo $i; ?>][notes]" <?php if($i == 0) { echo 'placeholder="' . __( 'extra virgin', 'foodiepro' ) . '"'; }?> class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>"></textarea> -->
                 <input type="text" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" placeholder="<?php _e( 'Notes', 'foodiepro' ); ?>"  />
                 <input type="hidden" name="recipe_ingredients[<?php echo $i; ?>][group]" class="ingredients_group" id="ingredient_group_<?php echo $i; ?>" value="" />

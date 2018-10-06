@@ -68,6 +68,7 @@
                 $args['show_option_none'] = $multiselect ? '' : $options['labels']['singular_name'];
                 $args['taxonomy'] = $taxonomy;
                 $args['name'] = 'recipe-' . $taxonomy;
+                // $args['class'] .= $multiselect?'multiple':'';
 
                 $select_fields[$taxonomy] = array(
                     'label' => $options['labels']['singular_name'],
@@ -76,13 +77,14 @@
             }
         }
 
-        // Category selection dropdown list (display depends on WPURP option)
+        // Category Dropdown
         // -----------------------------------------------------------
         $multiselect=true;
         if( WPUltimateRecipe::option( 'recipe_tags_user_submissions_categories', '0' ) == '1' ) {
             $args['show_option_none'] = $multiselect ? '' : __( 'Category', 'wp-ultimate-recipe' );
             $args['taxonomy'] = 'category';
             $args['name'] = 'recipe-category';
+            // $args['class'] .= $multiselect?'multiple':'';
 
             $exclude = WPUltimateRecipe::option( 'user_submission_hide_category_terms', array() );
             $args['exclude'] = implode( ',', $exclude );
@@ -94,13 +96,14 @@
         }
 
 
-        // Generate markup for tag selection dropdown list
+        // Tags Dropdown
         // -----------------------------------------------------------
         $multiselect=true;
         if( WPUltimateRecipe::option( 'recipe_tags_user_submissions_tags', '0' ) == '1' ) {
             $args['show_option_none'] = $multiselect ? '' : __( 'Tag', 'wp-ultimate-recipe' );
             $args['taxonomy'] = 'post_tag';
             $args['name'] = 'recipe-post_tag';
+            // $args['class'] .= $multiselect?'multiple':'';
 
             $exclude = WPUltimateRecipe::option( 'user_submission_hide_tag_terms', array() );
             $args['exclude'] = implode( ',', $exclude );
@@ -111,7 +114,7 @@
             );
         }
 
-        // 
+        // Taxonomies Dropdowns
         // -----------------------------------------------------------
         foreach( $select_fields as $taxonomy => $select_field ) {
             $multiselect = self::MULTISELECT[$taxonomy];

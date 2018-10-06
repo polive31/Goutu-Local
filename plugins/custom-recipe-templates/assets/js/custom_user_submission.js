@@ -11,14 +11,13 @@ jQuery(document).ready(function() {
     //     language: "fr"
     // });
 
-    jQuery(".select2-hidden-accessible").select2({
-        placeholder: "Pick states",
-        theme: "material"
+    jQuery('select.multiple').select2({
+      minimumResultsForSearch: Infinity
     });
-    
-    jQuery(".select2-selection__arrow")
-        .addClass("material-icons")
-        .html("arrow_drop_down");    
+
+    jQuery('select.multiple').on('select2:open', function(e) {
+        jQuery('.select2-search input').prop('focus',false);
+    })         
 
     /* 
      * Submit buttons

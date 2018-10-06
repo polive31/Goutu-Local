@@ -11,13 +11,29 @@ jQuery(document).ready(function() {
     //     language: "fr"
     // });
 
-    jQuery('select.multiple').select2({
-      minimumResultsForSearch: Infinity
-    });
+    // jQuery('select.multiple').select2({
+    //   minimumResultsForSearch: Infinity
+    // });
 
-    jQuery('select.multiple').on('select2:open', function(e) {
-        jQuery('.select2-search input').prop('focus',false);
-    })         
+    // jQuery('select.multiple').on('select2:open', function(e) {
+    //     jQuery('.select2-search input').prop('focus',false);
+    // })  
+
+    // run test on initial page load
+    checkSize();
+
+    // run test on resize of the window
+    jQuery(window).resize(checkSize);       
+
+    function checkSize(){
+      if (window.matchMedia("(min-width: 1024px)").matches) {
+        jQuery("select.multiple").select2();
+      } else {
+        jQuery("select.multiple").select2("destroy");
+        jQuery("select.multiple").off('select2:select');
+        console.log("Select2 disabled !")
+      }
+    }
 
     /* 
      * Submit buttons

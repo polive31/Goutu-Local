@@ -73,13 +73,18 @@ span.wpurp-required {
   font-size:45px;
 }
 
- #wpurp_user_submission_form input {
+#wpurp_user_submission_form input {
   vertical-align: middle;
+}
+
+#wpurp_user_submission_form .spinner {
+  visibility: hidden;
 }
 
 
 /* Custom Recipe Submission Form
 -------------------------------------------*/
+
 #wpurp_user_submission_form {
   /*background-color:#f3f3f3;*/
   /*background-color: #f2efeb;*/
@@ -100,7 +105,6 @@ span.wpurp-required {
   float: left;
   width: 100%;
 }
-
 
 
 /* Headlines */

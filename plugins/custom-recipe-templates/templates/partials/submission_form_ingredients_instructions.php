@@ -7,14 +7,20 @@ if( !isset( $required_fields ) ) $required_fields = array();
 <script>
 
     function autoSuggestIngredient(id) {
-        // console.log('In autoSuggestIngredient');
+        console.log('In autoSuggestIngredient');
         <?php if( WPUltimateRecipe::option( 'disable_ingredient_autocomplete', '' ) !== '1' ) { ?>
         // jQuery('#' + id).suggest("<?php echo get_bloginfo( 'wpurl' ); ?>/wp-admin/admin-ajax.php?action=ajax-tag-search&tax=" + type);
         // console.log("<?php echo get_bloginfo( 'wpurl' ); ?>/wp-admin/admin-ajax.php?action=ajax-tag-search&tax=" + type);
-        term=jQuery('#' + id).val();
         tax='ingredient';
-        // console.log(term);
+        thisInput=jQuery('#' + id);
+        term=thisInput.val();
+        // term1=jQuery(this).val();
+        console.log(term);
+        // console.log(term1);
         // console.log('#' + id);
+                spinnerHTML = jQuery('#spinner-' + id).html();
+                console.log( '#spinner-' + id + ' : ' + spinnerHTML);
+                jQuery('#spinner-' + id).show();
         jQuery('#' + id).autoComplete({
             minChars: 3,
             source: function(term, response) {
@@ -25,6 +31,9 @@ if( !isset( $required_fields ) ) $required_fields = array();
                     data: 'action=get_tax_terms&tax='+tax+'&keys='+term,
                     success: function(data) {
                         response(data);
+                    },
+                    complete: function() {
+                        jQuery('#spinner-' + id).hide();
                     }
                 });
             }
@@ -205,7 +214,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                     <!-- Unit -->
                     <td id="unit"><!-- <span class="mobile-display"><?php _e( 'Unit', 'foodiepro' ); ?></span> --><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][unit]" class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['unit'] ); ?>" /></td>
                     <!-- Name -->
-                    <td id="name"><!-- <span class="mobile-display"><?php _e( 'Ingredients', 'foodiepro' ); ?></span> --><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onkeyup="autoSuggestIngredient('ingredients_<?php echo $i; ?>');" value="<?php echo esc_attr( $ingredient['ingredient'] ); ?>" /></td>
+                    <td id="name"><!-- <span class="mobile-display"><?php _e( 'Ingredients', 'foodiepro' ); ?></span> --><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onkeyup="autoSuggestIngredient('ingredients_<?php echo $i; ?>');" value="<?php echo esc_attr( $ingredient['ingredient'] ); ?>" /></td><td><i id="spinner-ingredients_<?php echo $i; ?>" class="spinner fa fa-refresh fa-spin"></i></td>
                     <!-- Notes -->
                     <td id="notes">
                             <!-- <span class="mobile-display"><?php _e( 'Notes', 'foodiepro' ); ?></span> -->
@@ -234,7 +243,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
             </td>
             <!-- Ingredient Name -->
             <td><!-- <span class="mobile-display"><?php _e( 'Ingredient', 'foodiepro' ); ?></span> -->
-                <input type="text" name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onkeyup="autoSuggestIngredient('ingredients_<?php echo $i; ?>');" placeholder="<?php _e( 'Ingredient', 'foodiepro' ); ?>" />
+                <input type="text" name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onkeyup="autoSuggestIngredient('ingredients_<?php echo $i; ?>');" placeholder="<?php _e( 'Ingredient', 'foodiepro' ); ?>" /></td><td><i id="spinner-ingredients_<?php echo $i; ?>" class="spinner fa fa-refresh fa-spin"></i>
             </td>
             <!-- Ingredient Notes -->
             <td>

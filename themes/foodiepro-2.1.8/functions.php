@@ -817,14 +817,12 @@ add_filter('private_title_format', 'title_format');
 add_filter('protected_title_format', 'title_format');
 
 
-//* Add readmore links
+/* Add & modified read more link
+-------------------------------------------------------*/
 add_filter( 'excerpt_more', 'foodie_pro_read_more_link' );
 add_filter( 'get_the_content_more_link', 'foodie_pro_read_more_link' );
 add_filter( 'the_content_more_link', 'foodie_pro_read_more_link' );
 
-
-/* Modify the Genesis read more link
--------------------------------------------------------*/
 function foodie_pro_read_more_link() {
 	return '...</p><p><a class="more-link" href="' . get_permalink() . '">' . __( 'Read More', 'foodiepro' ) . ' &raquo;</a></p>';
 }

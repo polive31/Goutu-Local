@@ -19,7 +19,7 @@ jQuery(document).ready(function() {
         width: 'off',
         dropdownAutoWidth: false,
         minimumResultsForSearch: -1,
-        closeOnSelect: false,
+        // closeOnSelect: false,
     });
 
 });

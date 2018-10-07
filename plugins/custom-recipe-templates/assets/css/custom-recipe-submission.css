@@ -139,6 +139,7 @@ table#recipe-instructions .recipe_instructions_thumbnail,
 }
 
 /*General Placeholder styling */
+textarea.recipe-description::placeholder,
 textarea.recipe-instruction::placeholder,
 #wpurp_user_submission_form input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #b7b7b7;

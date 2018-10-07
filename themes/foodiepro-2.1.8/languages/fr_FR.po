@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2018-10-07 16:57+0200\n"
-"PO-Revision-Date: 2018-10-07 16:58+0200\n"
+"POT-Creation-Date: 2018-10-07 17:13+0200\n"
+"PO-Revision-Date: 2018-10-07 17:16+0200\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -1509,6 +1509,13 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:36
+msgid "Provide general information about this recipe"
+msgstr ""
+"Vous pouvez apporter ici des informations générales sur votre recette, son "
+"origine, ses particularités… tout ce qu'il faut pour donner aux lecteurs "
+"l'envie de la cuisiner !"
+
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:40
 #: plugins/wp-ultimate-recipe-premium/core/addons/custom-templates/templates/general/title.php:35
 #: plugins/wp-ultimate-recipe-premium/core/addons/custom-templates/templates/general/title.php:37
@@ -1731,6 +1738,7 @@ msgid "Move this instruction"
 msgstr "Déplacer cette instruction"
 
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:312
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:353
 msgid "Enter the instructions for this recipe step"
 msgstr "Décrivez les instructions correspondant à cette étape de la recette..."
 
@@ -1754,12 +1762,6 @@ msgstr "Favorite"
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:373
 msgid "Remove this instruction"
 msgstr "Retirer cette instruction"
-
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:353
-#, fuzzy
-#| msgid "Instructions Group"
-msgid "Instructions of current recipe step"
-msgstr "Groupe d'instructions"
 
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:379
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:376
@@ -10030,6 +10032,11 @@ msgstr "Ces recettes pourraient également vous intéresser..."
 #: themes/foodiepro-2.1.8/yarpp-template-goutu.php:20
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
+
+#, fuzzy
+#~| msgid "Instructions Group"
+#~ msgid "Instructions of current recipe step"
+#~ msgstr "Groupe d'instructions"
 
 #, fuzzy
 #~| msgid "Add a picture"

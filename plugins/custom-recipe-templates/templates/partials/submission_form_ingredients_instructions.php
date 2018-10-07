@@ -39,31 +39,31 @@ if( !isset( $required_fields ) ) $required_fields = array();
         <tr class="recipe-general-form-servings">
             <td class="recipe-general-form-label"><label for="recipe_servings"><?php _e( 'Servings', 'foodiepro' ); ?><?php if( in_array( 'recipe_servings', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
             <td class="recipe-general-form-field">
-                <input type="text" name="recipe_servings" id="recipe_servings" value="<?php echo esc_attr( $recipe->servings() ); ?>" />
-                <input type="text" name="recipe_servings_type" id="recipe_servings_type" value="<?php echo esc_attr( $recipe->servings_type() ); ?>" />
+                <input type="text" name="recipe_servings" id="recipe_servings" value="<?php echo esc_attr( $recipe->servings() ); ?>" placeholder="<?php echo __("Quantity",'foodiepro');?>" />
+                <input type="text" name="recipe_servings_type" id="recipe_servings_type" value="<?php echo esc_attr( $recipe->servings_type() ); ?>" placeholder="<?php echo __("Unit",'foodiepro');?>" />
                 <span class="recipe-general-form-notes"> <?php _e( '(e.g. 2 people, 3 loafs, ...)', 'foodiepro' ); ?></span>
             </td>
         </tr>
         <tr class="recipe-general-form-prep-time">
             <td class="recipe-general-form-label"><label for="recipe_prep_time"><?php _e( 'Prep Time', 'foodiepro' ); ?><?php if( in_array( 'recipe_prep_time', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
             <td class="recipe-general-form-field">
-                <input type="text" name="recipe_prep_time" id="recipe_prep_time" value="<?php echo esc_attr( $recipe->prep_time() ); ?>" />
-                <input type="text" name="recipe_prep_time_text" id="recipe_prep_time_text" value="<?php echo esc_attr( $recipe->prep_time_text() ); ?>" />
+                <input type="text" name="recipe_prep_time" id="recipe_prep_time" value="<?php echo esc_attr( $recipe->prep_time() ); ?>" placeholder="<?php echo __("Duration",'foodiepro');?>" />
+                <input type="text" name="recipe_prep_time_text" id="recipe_prep_time_text" value="<?php echo esc_attr( $recipe->prep_time_text() ); ?>" placeholder="<?php echo __("Unit",'foodiepro');?>" />
                 <span class="recipe-general-form-notes"> <?php _e( '(e.g. 20 minutes, 1-2 hours, ...)', 'foodiepro' ); ?></span>
             </td>
         </tr>
         <tr class="recipe-general-form-cook-time">
             <td class="recipe-general-form-label"><label for="recipe_cook_time"><?php _e( 'Cook Time', 'foodiepro' ); ?><?php if( in_array( 'recipe_cook_time', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
             <td class="recipe-general-form-field">
-                <input type="text" name="recipe_cook_time" id="recipe_cook_time" value="<?php echo esc_attr( $recipe->cook_time() ); ?>" />
-                <input type="text" name="recipe_cook_time_text" id="recipe_cook_time_text" value="<?php echo esc_attr( $recipe->cook_time_text() ); ?>" />
+                <input type="text" name="recipe_cook_time" id="recipe_cook_time" value="<?php echo esc_attr( $recipe->cook_time() ); ?>" placeholder="<?php echo __("Duration",'foodiepro');?>" />
+                <input type="text" name="recipe_cook_time_text" id="recipe_cook_time_text" value="<?php echo esc_attr( $recipe->cook_time_text() ); ?>" placeholder="<?php echo __("Unit",'foodiepro');?>" />
             </td>
         </tr>
         <tr class="recipe-general-form-passive-time">
             <td class="recipe-general-form-label"><label for="recipe_passive_time"><?php _e( 'Passive Time', 'foodiepro' ); ?><?php if( in_array( 'recipe_passive_time', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
             <td class="recipe-general-form-field">
-                <input type="text" name="recipe_passive_time" id="recipe_passive_time" value="<?php echo esc_attr( $recipe->passive_time() ); ?>" />
-                <input type="text" name="recipe_passive_time_text" id="recipe_passive_time_text" value="<?php echo esc_attr( $recipe->passive_time_text() ); ?>" />
+                <input type="text" name="recipe_passive_time" id="recipe_passive_time" value="<?php echo esc_attr( $recipe->passive_time() ); ?>" placeholder="<?php echo __("Duration",'foodiepro');?>" />
+                <input type="text" name="recipe_passive_time_text" id="recipe_passive_time_text" value="<?php echo esc_attr( $recipe->passive_time_text() ); ?>" placeholder="<?php echo __("Unit",'foodiepro');?>" />
             </td>
         </tr>
     <?php if( !isset( $wpurp_user_submission ) ) { ?>
@@ -120,7 +120,13 @@ if( !isset( $required_fields ) ) $required_fields = array();
         <?php
         $i = 0;
         if( $ingredients )
-        {
+        {?>
+            <datalist id="units_list">
+                <?php foreach(self::$UNITS as $unit) {?>
+                <option value="<?php echo $unit[0];?>"><?php echo $unit[1];?></option>
+                <?php } ?>
+            </datalist>
+        <?php
             foreach( $ingredients as $ingredient ) {
 
                 if( WPUltimateRecipe::option( 'ignore_ingredient_ids', '' ) != '1' && isset( $ingredient['ingredient_id'] ) ) {
@@ -155,24 +161,19 @@ if( !isset( $required_fields ) ) $required_fields = array();
                     <!-- Sort handle -->
                     <td class="sort-handle" title="<?php echo __('Move this ingredient', 'foodiepro');?>"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16" > </td>
                     <!-- Quantity -->
-                    <td id="qty"><!-- <span class="mobile-display"><?php _e( 'Quantity', 'foodiepro' ); ?></span> --><input type="text" name="recipe_ingredients[<?php echo $i; ?>][amount]" class="ingredients_amount" id="ingredients_amount_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['amount'] ); ?>" /></td>
+                    <td id="qty"><!-- <span class="mobile-display"><?php _e( 'Quantity', 'foodiepro' ); ?></span> --><input type="text" name="recipe_ingredients[<?php echo $i; ?>][amount]" class="ingredients_amount" id="ingredients_amount_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['amount'] ); ?>"  placeholder="<?php _e( 'Quantity', 'foodiepro' ); ?>"  /></td>
                     <!-- Unit -->
                     <td id="unit"><!-- <span class="mobile-display"><?php _e( 'Unit', 'foodiepro' ); ?></span> -->
 
-                        <input type="text" name="recipe_ingredients[<?php echo $i; ?>][unit]" class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['unit'] ); ?>" list="units" />
-                        <datalist id="units">
-                        <?php foreach(self::$UNITS as $unit) {?>
-                          <option value="<?php echo $unit;?>">
-                        <?php } ?>
-                        </datalist>
+                        <input type="text" name="recipe_ingredients[<?php echo $i; ?>][unit]" class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['unit'] ); ?>" list="units_list"  placeholder="<?php _e( 'Unit', 'foodiepro' );?>" />
                     </td>
                     <!-- Name -->
-                    <td id="name"><!-- <span class="mobile-display"><?php _e( 'Ingredients', 'foodiepro' ); ?></span> --><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['ingredient'] ); ?>" /></td><td class="spinner"><i id="spinner-ingredients_<?php echo $i; ?>" class="ajax-indicator fa fa-refresh fa-spin"></i></td>
+                    <td id="name"><!-- <span class="mobile-display"><?php _e( 'Ingredients', 'foodiepro' ); ?></span> --><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['ingredient'] ); ?>" placeholder="<?php _e( 'Ingredient', 'foodiepro' ); ?>"  /></td><td class="spinner"><i id="spinner-ingredients_<?php echo $i; ?>" class="ajax-indicator fa fa-refresh fa-spin"></i></td>
                     <!-- Notes -->
                     <td id="notes">
                             <!-- <span class="mobile-display"><?php _e( 'Notes', 'foodiepro' ); ?></span> -->
                         <!--<textarea rows="1" col="20" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>"><?php echo esc_attr( $ingredient['notes'] ); ?></textarea> -->
-                        <input type="text" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['notes'] ); ?>" />
+                        <input type="text" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['notes'] ); ?>" placeholder="<?php _e( 'Notes', 'foodiepro' ); ?>" />
                         <input type="hidden" name="recipe_ingredients[<?php echo $i; ?>][group]" class="ingredients_group" id="ingredient_group_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['group'] ); ?>" />
                     </td>
                     <td class="delete-button" colspan="1"><span class="ingredients-delete" title="<?php echo __('Remove this ingredient', 'foodiepro');?>" >&nbsp;</span></td>
@@ -192,12 +193,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
             </td>
             <!-- Unit -->
             <td><!-- <span class="mobile-display"><?php _e( 'Unit', 'foodiepro' ); ?> </span>-->
-                <input type="text" name="recipe_ingredients[<?php echo $i; ?>][unit]" class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" placeholder="<?php _e( 'Unit', 'foodiepro' ); ?>" />
-                <datalist id="units">
-                    <?php foreach(self::$UNITS as $unit) {?>
-                    <option value="<?php echo $unit;?>">
-                    <?php } ?>
-                </datalist>
+                <input type="text" name="recipe_ingredients[<?php echo $i; ?>][unit]" class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" placeholder="<?php _e( 'Unit', 'foodiepro' ); ?>" list="units_list" />
             </td>
             <!-- Ingredient Name -->
             <td><!-- <span class="mobile-display"><?php _e( 'Ingredient', 'foodiepro' ); ?></span> -->
@@ -313,7 +309,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                 <td class="sort-handle" title="<?php echo __('Move this instruction', 'foodiepro');?>"><span><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16" ></span></td>
                 <td>
                     <div class="instruction-text">
-                        <textarea name="recipe_instructions[<?php echo $i; ?>][description]" rows="4" id="ingredient_description_<?php echo $i; ?>"><?php echo $instruction['description']; ?></textarea>
+                        <textarea class="recipe-instruction" name="recipe_instructions[<?php echo $i; ?>][description]" rows="4" id="ingredient_description_<?php echo $i; ?>"  placeholder="<?php echo __('Enter the instructions for this recipe step', 'foodiepro');?>" ><?php echo $instruction['description']; ?></textarea>
                         <input type="hidden" name="recipe_instructions[<?php echo $i; ?>][group]" class="instructions_group" id="instruction_group_<?php echo $i; ?>" value="<?php echo esc_attr( $instruction['group'] ); ?>" />
                     </div>
 
@@ -354,7 +350,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                 <td>
 
                     <div class="instruction-text">
-                        <textarea name="recipe_instructions[<?php echo $i; ?>][description]" rows="4" id="ingredient_description_<?php echo $i; ?>"></textarea>
+                        <textarea class="recipe-instruction" name="recipe_instructions[<?php echo $i; ?>][description]" rows="4" id="ingredient_description_<?php echo $i; ?>" placeholder="<?php echo __('Enter the instructions for this recipe step', 'foodiepro');?>" ></textarea>
                         <input type="hidden" name="recipe_instructions[<?php echo $i; ?>][group]" class="instructions_group" id="instruction_group_<?php echo $i; ?>" value="" />
                     </div>
 

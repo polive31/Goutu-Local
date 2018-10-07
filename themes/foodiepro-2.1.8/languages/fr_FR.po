@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2018-10-07 14:38+0200\n"
-"PO-Revision-Date: 2018-10-07 14:39+0200\n"
+"POT-Creation-Date: 2018-10-07 16:57+0200\n"
+"PO-Revision-Date: 2018-10-07 16:58+0200\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -704,7 +704,7 @@ msgid "Published on %s by <span id=\"username\">%s</span>"
 msgstr "Publié le %s  par <span id=\"username\">%s</span>"
 
 #: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:35
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:96
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:128
 msgid "Edit recipe"
 msgstr "Modifier la recette"
 
@@ -900,17 +900,130 @@ msgid ""
 "or deactivate this plugin </a>."
 msgstr ""
 
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:34
+msgid "gram"
+msgstr ""
+
 #: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:35
+msgid "kilogram"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:36
+msgid "centiliter"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:37
+msgid "deciliter"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:38
+msgid "liter"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:39
+msgid "table spoon"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:40
+msgid "tea spoon"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:41
+msgid "stick"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:42
+msgid "can"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:43
+msgid "bowl"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:44
+msgid "bunch"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:45
+msgid "bouquet"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:46
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:47
+msgid "sprig"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:48
+msgid "bulb"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:49
+msgid "cube"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:50
+msgid "finger"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:51
+msgid "sheet"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:52
+#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress_menu.php:16
+msgid "leave"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:53
+msgid "fillet"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:54
+#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress_menu.php:14
+msgid "clove"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:55
+msgid "knob"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:56
+#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress_menu.php:22
+msgid "pinch"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:57
+msgid "handful"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:58
+msgid "sachet"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:59
+msgid "cup"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:60
+#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress_menu.php:18
+msgid "slice"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:61
+msgid "glass"
+msgstr ""
+
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:68
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:117
 msgid "Sorry, only registered users may submit recipes."
 msgstr ""
 
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:58
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:90
 #: plugins/wp-ultimate-recipe-premium/premium/addons/favorite-recipes/favorite-recipes.php:87
 msgid "You don't have any favorite recipes."
 msgstr "Aucune recette favorite dans votre carnet."
 
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:77
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:109
 msgid ""
 "Here is the list of the recipes that you created, and their status. You can "
 "choose to edit them, change their visibility, or delete them."
@@ -919,35 +1032,35 @@ msgstr ""
 "publication. Vous pouvez toujours modifier leur contenu, leur visibilité "
 "(privé, amis, groupes, public), ou bien aussi les supprimer."
 
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:94
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:126
 msgid "Preview recipe"
 msgstr "Aperçu de la recette"
 
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:106
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:138
 msgid "Delete recipe"
 msgstr "Supprimer la recette"
 
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:151
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:356
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:183
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:388
 msgid "You can edit your recipe here, before submitting it."
 msgstr ""
 "Vous pouvez modifier votre recette ici et la sauvegarder en tant que "
 "brouillon aussi longtemps que vous le souhaitez, avant de la soumettre pour "
 "publication."
 
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:206
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:238
 msgid "You must be logged-in to access this page."
 msgstr ""
 
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:228
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:260
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-fdx/import-fdx.php:65
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-xml/import-xml.php:65
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:235
 msgid "Untitled"
 msgstr ""
 
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:314
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:394
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:346
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:403
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:410
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_whitelist.php:286
 #: plugins/wp-ultimate-recipe-premium/premium/addons/custom-fields/custom-fields.php:18
@@ -956,7 +1069,7 @@ msgstr ""
 msgid "Custom Fields"
 msgstr ""
 
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:341
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:373
 msgid ""
 "Here is what your recipe will look like once it is published. You can choose "
 "to continue editing it, or save it as a draft, or publish it, using the "
@@ -967,7 +1080,7 @@ msgstr ""
 "bien de la soumettre pour publication, en utilisant les boutons au bas de "
 "cette page. "
 
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:390
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:422
 msgid ""
 "Recipe saved as draft. It will not be visible on the site, but you can edit "
 "it at any time and submit it later."
@@ -976,41 +1089,41 @@ msgstr ""
 "visible sur le site, mais vous pouvez la modifier à tout moment, et la "
 "publier plus tard."
 
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:393
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:425
 msgid "Back to my published recipes"
 msgstr "Retour à la liste de mes recettes"
 
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:409
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:441
 msgid "Please fill-in those required fields:"
 msgstr "Merci de renseigner les informations suivantes :"
 
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:440
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:472
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_options.php:1494
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:426
 msgid "Recipe submitted! Thank you, your recipe is now awaiting moderation."
 msgstr ""
 "Nous avons bien reçu votre recette ! Elle sera publiée après modération. "
 
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:443
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:467
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:475
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:499
 #, php-format
 msgid "Back to <a href=\"%s\">my published recipes</a>"
 msgstr "Retour à <a href=\"%s\">mes recettes publiées</a>"
 
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:450
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:482
 #, php-format
 msgid "New user submission:%s"
 msgstr ""
 
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:465
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:497
 msgid "Unknown action."
 msgstr ""
 
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:511
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:543
 msgid "Format as Duration"
 msgstr ""
 
-#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:512
+#: plugins/custom-recipe-templates/helpers/Custom_WPURP_Shortcodes.php:544
 #, fuzzy
 #| msgid "Main Ingredients"
 msgid "Format as Ingredient"
@@ -1104,61 +1217,16 @@ msgstr "Mois"
 msgid "Check the months when this ingredient is available"
 msgstr "Cocher les mois où cet ingrédient est disponible"
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:40
-msgid "centiliter"
-msgstr ""
-
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:41
-msgid "liter"
-msgstr ""
-
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:42
-msgid "table spoon"
-msgstr ""
-
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:43
-msgid "tea spoon"
-msgstr ""
-
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:44
-msgid "stick"
-msgstr ""
-
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:45
-msgid "gram"
-msgstr ""
-
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:46
-msgid "kilogram"
-msgstr ""
-
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:47
-#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress_menu.php:14
-msgid "clove"
-msgstr ""
-
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:48
-msgid "sheet"
-msgstr ""
-
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:49
-msgid "cup"
-msgstr ""
-
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:50
-msgid "bowl"
-msgstr ""
-
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:194
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:181
 msgid "Print this Recipe"
 msgstr "Imprimer cette recette"
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:286
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:273
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:65
 msgid "Are you sure you want to delete this recipe:"
 msgstr "Etes vous sûr de vouloir supprimer cette recette :"
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:495
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:482
 msgctxt "tag delimiter"
 msgid ","
 msgstr ""
@@ -1219,9 +1287,10 @@ msgstr "Attente"
 #: plugins/custom-recipe-templates/templates/Custom_Recipe_Template.php:239
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:95
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:107
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:165
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:195
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:197
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:174
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:176
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:204
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:206
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:19
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:49
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:81
@@ -1452,6 +1521,40 @@ msgstr ""
 msgid "Servings"
 msgstr "Portions"
 
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:42
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:104
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:164
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:191
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:192
+#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:144
+#: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/meal-planner.php:136
+#: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/meal-planner.php:281
+#: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/templates/shopping-list.php:5
+#: themes/foodiepro-2.1.8/plugins/events-manager/emails/bookingsummary.php:13
+#: themes/foodiepro-2.1.8/plugins/events-manager/emails/bookingtickets.php:7
+msgid "Quantity"
+msgstr "Quantité"
+
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:43
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:51
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:59
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:66
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:105
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:166
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:168
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:195
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:196
+#: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:79
+#: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:50
+#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:145
+#: plugins/wp-ultimate-recipe-premium/premium/addons/import-cooked/templates/manual_import.php:49
+#: plugins/wp-ultimate-recipe-premium/premium/addons/import-easyrecipe/templates/manual_import.php:127
+#: plugins/wp-ultimate-recipe-premium/premium/addons/import-recipecard/templates/manual_import.php:45
+#: plugins/wp-ultimate-recipe-premium/premium/addons/import-yummly/templates/manual_import.php:51
+#: plugins/wp-ultimate-recipe-premium/premium/addons/import-ziplist/templates/manual_import.php:51
+msgid "Unit"
+msgstr "Unité"
+
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:44
 msgid "(e.g. 2 people, 3 loafs, ...)"
 msgstr "(ex : 2 personnes, 3 pains, ...)"
@@ -1462,6 +1565,12 @@ msgstr "(ex : 2 personnes, 3 pains, ...)"
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_whitelist.php:272
 msgid "Prep Time"
 msgstr "Temps de préparation"
+
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:50
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:58
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:65
+msgid "Duration"
+msgstr "Durée"
 
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:52
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:93
@@ -1491,7 +1600,7 @@ msgid ""
 msgstr ""
 
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:81
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:162
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:171
 #: plugins/wp-ultimate-recipe-premium/core/addons/custom-templates/templates/general/title.php:47
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:17
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:56
@@ -1511,7 +1620,7 @@ msgstr ""
 
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:88
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:114
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:141
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:147
 msgid "Ingredients Group"
 msgstr "Groupe d'ingrédients"
 
@@ -1521,7 +1630,7 @@ msgid "Main Ingredients"
 msgstr "Ingrédients principaux"
 
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:89
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:224
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:233
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:130
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:258
 msgid "(this label is not shown)"
@@ -1531,37 +1640,10 @@ msgstr "(ce titre n'apparaît pas dans la recette) "
 msgid "eg. For the dough"
 msgstr "ex : Pour la pâte"
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:104
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:158
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:182
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:183
-#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:144
-#: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/meal-planner.php:136
-#: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/meal-planner.php:281
-#: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/templates/shopping-list.php:5
-#: themes/foodiepro-2.1.8/plugins/events-manager/emails/bookingsummary.php:13
-#: themes/foodiepro-2.1.8/plugins/events-manager/emails/bookingtickets.php:7
-msgid "Quantity"
-msgstr "Quantité"
-
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:105
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:160
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:186
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:187
-#: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:79
-#: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:50
-#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:145
-#: plugins/wp-ultimate-recipe-premium/premium/addons/import-cooked/templates/manual_import.php:49
-#: plugins/wp-ultimate-recipe-premium/premium/addons/import-easyrecipe/templates/manual_import.php:127
-#: plugins/wp-ultimate-recipe-premium/premium/addons/import-recipecard/templates/manual_import.php:45
-#: plugins/wp-ultimate-recipe-premium/premium/addons/import-yummly/templates/manual_import.php:51
-#: plugins/wp-ultimate-recipe-premium/premium/addons/import-ziplist/templates/manual_import.php:51
-msgid "Unit"
-msgstr "Unité"
-
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:106
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:190
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:191
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:171
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:199
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:200
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:80
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:51
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:146
@@ -1582,43 +1664,43 @@ msgstr "Ingrédient"
 msgid "(singular)"
 msgstr "(au singulier)"
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:156
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:180
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:162
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:189
 msgid "Move this ingredient"
 msgstr "Déplacer cet ingrédient"
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:170
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:201
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:179
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:210
 msgid "Remove this ingredient"
 msgstr "Retirer cet ingrédient"
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:196
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:205
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:231
 msgid "extra virgin"
 msgstr "extra vierge"
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:206
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:215
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:239
 msgid "Add an ingredient"
 msgstr "Nouvel ingrédient"
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:209
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:218
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:242
 msgid "Add an ingredient group"
 msgstr "Nouveau groupe d'ingrédients"
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:212
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:221
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:245
 msgid ""
 "<strong>Use the TAB key</strong> while adding ingredients, it will "
 "automatically create new fields. <strong>Don't worry about empty lines</"
 "strong>, these will be ignored."
 msgstr ""
-"Utilisez la touche <strong>TAB</strong> afin de faire apparaître une "
-"nouvelle ligne d'ingrédient. Ne vous souciez pas des lignes vides, elles "
-"seront ignorées."
+"Vous pouvez aussi utiliser la touche <strong>TAB</strong> afin de faire "
+"apparaître une nouvelle ligne d'ingrédient. Ne vous souciez pas des lignes "
+"vides, elles seront ignorées."
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:217
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:226
 #: plugins/wp-ultimate-recipe-premium/core/addons/custom-templates/templates/general/title.php:49
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:18
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:88
@@ -1628,35 +1710,39 @@ msgstr ""
 msgid "Instructions"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:223
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:239
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:260
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:232
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:248
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:269
 msgid "Instructions Group"
 msgstr "Groupe d'instructions"
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:224
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:233
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:258
 msgid "Main Instructions"
 msgstr "Instructions principales"
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:231
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:240
 msgid "eg. Preparation of the dough"
 msgstr "ex : Préparation de la pâte"
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:300
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:340
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:309
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:349
 msgid "Move this instruction"
 msgstr "Déplacer cette instruction"
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:320
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:358
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:312
+msgid "Enter the instructions for this recipe step"
+msgstr "Décrivez les instructions correspondant à cette étape de la recette..."
+
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:329
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:367
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:336
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:365
 msgid "Add Image"
 msgstr ""
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:321
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:359
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:330
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:368
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:337
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:366
 #, fuzzy
@@ -1664,22 +1750,28 @@ msgstr ""
 msgid "Remove Image"
 msgstr "Favorite"
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:327
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:364
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:336
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:373
 msgid "Remove this instruction"
 msgstr "Retirer cette instruction"
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:370
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:353
+#, fuzzy
+#| msgid "Instructions Group"
+msgid "Instructions of current recipe step"
+msgstr "Groupe d'instructions"
+
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:379
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:376
 msgid "Add an instruction"
 msgstr "Nouvelle instruction"
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:373
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:382
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:379
 msgid "Add an instruction group"
 msgstr "Nouveau groupe d'instructions"
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:376
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:385
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:382
 msgid ""
 "<strong>Use the TAB key</strong> while adding instructions, it will "
@@ -1690,7 +1782,7 @@ msgstr ""
 "ligne d'instruction. Ne vous souciez pas des lignes vides, elles seront "
 "ignorées."
 
-#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:381
+#: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:390
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:387
 msgid "Recipe notes"
 msgstr "Notes"
@@ -5164,16 +5256,8 @@ msgstr ""
 msgid "cloves"
 msgstr ""
 
-#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress_menu.php:16
-msgid "leave"
-msgstr ""
-
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress_menu.php:17
 msgid "leaves"
-msgstr ""
-
-#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress_menu.php:18
-msgid "slice"
 msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress_menu.php:19
@@ -5186,10 +5270,6 @@ msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress_menu.php:21
 msgid "pieces"
-msgstr ""
-
-#: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress_menu.php:22
-msgid "pinch"
 msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress_menu.php:23

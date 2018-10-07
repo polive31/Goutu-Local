@@ -138,9 +138,10 @@ table#recipe-instructions .recipe_instructions_thumbnail,
   max-height: 100px;
 }
 
-/*General Input styling */
- #wpurp_user_submission_form input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #5a5a5a;
+/*General Placeholder styling */
+textarea.recipe-instruction::placeholder,
+#wpurp_user_submission_form input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #b7b7b7;
     font-style: italic;
     opacity: 1; /* Firefox */
     opacity: 1; /* Firefox */
@@ -148,14 +149,14 @@ table#recipe-instructions .recipe_instructions_thumbnail,
 }
 
 #wpurp_user_submission_form input:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: #5a5a5a;
+    color: #b7b7b7;
     /*color: #B1B1B1;*/
     font-style: italic;
     font-size: 14px;
 }
 
 #wpurp_user_submission_form input::-ms-input-placeholder { /* Microsoft Edge */
-    color: #B1B1B1;
+    color: #b7b7b7;
     font-style: italic;
     font-size: 14px;
 }
@@ -456,7 +457,7 @@ textarea.ingredients_notes {
  input#recipe_cook_time,
  input#recipe_prep_time,
  input#recipe_servings {
-    width: 50px!important;
+    width: 100px!important;
 }
 
 
@@ -560,7 +561,7 @@ li.select2-selection__choice,
  .select2-container--default.select2-container--focus .select2-selection--single,
  .select2-container--default.select2-container--focus .select2-selection--multiple {
     border:none;
-    border-bottom:1px solid #5b9dd9;
+    /*border-bottom:1px solid #5b9dd9;*/
   /*border-color: #5b9dd9;*/
   /*box-shadow: 0 0 2px rgba(30,140,190,.8);*/
 }
@@ -578,6 +579,11 @@ li.select2-selection__choice,
     transition: all .3s;
     margin-left: 10px;
     margin-top: 3px;
+}
+
+.select2-selection__rendered {
+    border: none;
+    outline: none;
 }
 
 .select2-selection__choice {

@@ -409,6 +409,11 @@ function foodie_pro_enqueue_stylesheets() {
 	--------------------------------------------------- */
 	wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
 	//wp_enqueue_style( 'font-awesome', CHILD_THEME_URL . '/assets/fonts/font-awesome/css/font-awesome.min.css', array(), CHILD_THEME_VERSION );
+
+	/* Material Icons
+	--------------------------------------------------- */
+	// wp_enqueue_style('material-icons', '//fonts.googleapis.com/icon?family=Material+Icons'); 
+
 	
 	/* Theme stylesheet with varying name & version, forces cache busting at browser level
 	--------------------------------------------------- */

@@ -1,51 +1,51 @@
 jQuery(document).ready(function() {
+  // run test on initial page load
+  // checkSize();
+
+  // run test on resize of the window
+  // jQuery(window).resize(checkSize);
+
+    // Activate select2WPURP
+    // jQuery('#wpurp_user_submission_form select[multiple]').select2wpurp({
+    //     allowClear: true,
+    //     width: 'off',
+    //     dropdownAutoWidth: false
+    // });
+    
+    // Activate select2
+    // jQuery("select[multiple]").select2({
+    jQuery("select").select2({
+        allowClear: true,
+        width: 'off',
+        dropdownAutoWidth: false,
+        minimumResultsForSearch: -1,
+        closeOnSelect: false,
+    });
+
+});
+
+// function checkSize(){
+//     if (window.matchMedia("(min-width: 768px)").matches) {
+//         jQuery("select[multiple]").select2({
+//             allowClear: true,
+//             width: 'off',
+//             dropdownAutoWidth: false
+//         });
+//     } 
+    // else if ( jQuery("select[multiple]").data('select2') ) {
+    //     jQuery("select[multiple]").select2("destroy");
+    // };
+// };
+
+
+jQuery(document).ready(function() {
 
     /* Display taxonomy select fields
     -------------------------------------------- */
     jQuery('.taxonomy-select-boxes').removeClass('nodisplay');
     jQuery('.taxonomy-select-spinner').addClass('nodisplay');
 
-    /* Set language of taxonomy multiselect fields (not used since lang attribute is set on all dropdowns thanks to wp_dropdown_cats filter)
-    -------------------------------------------- */
-    // jQuery().select2({
-    //     language: "fr"
-    // });
-
-    // jQuery('select.multiple').select2({
-    //   minimumResultsForSearch: Infinity
-    // });
-
-    // jQuery('select.multiple').on('select2:open', function(e) {
-    //     jQuery('.select2-search input').prop('focus',false);
-    // })  
-
-    // run test on initial page load
-    checkSize();
-
-    // run test on resize of the window
-    jQuery(window).resize(checkSize);       
-
-    function checkSize(){
-      if (window.matchMedia("(min-width: 1024px)").matches) {
-        jQuery("select.multiple").select2();
-      } else {
-        jQuery("select.multiple").select2("destroy");
-        jQuery("select.multiple").off('select2:select');
-        console.log("Select2 disabled !")
-      }
-    }
-
-    /* 
-     * Submit buttons
-     */
-    // jQuery('.formbutton').on('click', function() {
-    //     console.log( 'CLICK');
-    //     console.log( jQuery(this).html());
-    //     jQuery(this).children('input').val(true);
-    //     // jQuery('#new_recipe').submit();
-    // });
-
-    /*
+     /*
      * Add shortcode buttons
      */
     jQuery('#insert-recipe-shortcode').on('click', function(){
@@ -591,19 +591,5 @@ jQuery(document).ready(function() {
     });
 
 
-    // Select2WPRUP
-    // jQuery('#wpurp_user_submission_form select[multiple]').select2wpurp({
-    //     allowClear: true,
-    //     width: 'off',
-    //     dropdownAutoWidth: false
-    // });
-
-
-    // Select2
-    jQuery('#wpurp_user_submission_form select[multiple]').select2({
-        allowClear: true,
-        width: 'off',
-        dropdownAutoWidth: false
-    });
 
 });

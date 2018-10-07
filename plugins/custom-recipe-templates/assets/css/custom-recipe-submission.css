@@ -61,7 +61,6 @@ span.wpurp-required {
 
 /* General
 -------------------------------------------*/
-
 .recipe-preview .hide-on-preview,
 .recipe-preview .recipe-top,
 .nodisplay {
@@ -74,7 +73,7 @@ span.wpurp-required {
   font-size:45px;
 }
 
- input {
+ #wpurp_user_submission_form input {
   vertical-align: middle;
 }
 
@@ -108,14 +107,14 @@ span.wpurp-required {
  label.recipe-tags,
  label.recipe-image,
  label.recipe-title,
- h4 {
+ #wpurp_user_submission_form h4 {
   color: #101010;
   /*color: #616161;*/
   margin-top: 50px;
   margin-bottom: 0px;
 }
 
-h4 {
+#wpurp_user_submission_form h4 {
   float: left;
   clear: both;
 }
@@ -126,11 +125,8 @@ table#recipe-instructions .recipe_instructions_thumbnail,
   max-height: 100px;
 }
 
-
-
 /*General Input styling */
-  
- input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+ #wpurp_user_submission_form input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #5a5a5a;
     font-style: italic;
     opacity: 1; /* Firefox */
@@ -138,14 +134,14 @@ table#recipe-instructions .recipe_instructions_thumbnail,
     font-size: 14px;
 }
 
- input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+#wpurp_user_submission_form input:-ms-input-placeholder { /* Internet Explorer 10-11 */
     color: #5a5a5a;
     /*color: #B1B1B1;*/
     font-style: italic;
     font-size: 14px;
 }
 
- input::-ms-input-placeholder { /* Microsoft Edge */
+#wpurp_user_submission_form input::-ms-input-placeholder { /* Microsoft Edge */
     color: #B1B1B1;
     font-style: italic;
     font-size: 14px;
@@ -194,7 +190,13 @@ table#recipe-instructions .recipe_instructions_thumbnail,
   vertical-align: middle!important;    
 }
 
- label.add-instruction-thumbnail {
+
+#wpurp_user_submission_form label {
+  font-weight:400;
+  color:#616161;
+}
+
+label.add-instruction-thumbnail {
   color: #616161;
   font-size: 16px;
   font-weight: bold;
@@ -230,10 +232,6 @@ table#recipe-instructions .recipe_instructions_thumbnail,
   padding: 10px;  
 }
 
- label {
-  font-weight:400;
-  color:#616161;
-}
 
 /* Instructions & ingredients groups */
 
@@ -404,9 +402,10 @@ table#recipe-instructions .recipe_instructions_thumbnail,
 
 /* Inputs formatting 
 -------------------------------------------------*/
- input[type=text],
- select,
- textarea {
+
+#wpurp_user_submission_form input[type=text],
+#wpurp_user_submission_form select,
+#wpurp_user_submission_form textarea {
   /*border: 1px solid #ddd;*/
   border: none;
   border-bottom: 1px solid #CCC;
@@ -420,27 +419,16 @@ table#recipe-instructions .recipe_instructions_thumbnail,
 }
 
 /* make it red instead (with with same width and style) */
-select:active, select:hover {
+#wpurp_user_submission_form select:active, 
+#wpurp_user_submission_form select:hover {
   outline-color: red
 }
 
-
-
-/* input:focus, 
- select:focus, 
- textarea:focus {
-}*/
-
-
-
-
 /* Specific input formatting */
-
  .recipe-tags-container input[type=text] {
   box-shadow: none;
   border:none;
 }
-
 
 textarea.ingredients_notes {
     resize: vertical;
@@ -448,7 +436,7 @@ textarea.ingredients_notes {
 }
 
 
-  .recipe-general-form-field input {
+.recipe-general-form-field input {
   width:auto;
 }
 
@@ -489,14 +477,15 @@ textarea.ingredients_notes {
 
 /*Select2 fonts*/
 
- li.select2-selection__choice,
+li.select2-selection__choice,
 .select2-results li,
- .taxonomy-select-boxes select {
-    font-size: 14px!important;
-    /*font-family: Oswald;*/
-    font-family:sans-serif;
-    color: #5a5a5a;
-}
+.taxonomy-select-boxes select,
+.select2-container {
+  font-size: 14px!important;
+  /*font-family: Oswald;*/
+  font-family:sans-serif;
+  color: #272727;
+  }
 
 
 /* Tags section */
@@ -507,20 +496,20 @@ textarea.ingredients_notes {
 }
 
 
- .taxonomy-select-boxes select {
-  width: 200px!important;
-}
-
-
 /*Select drop down*/
-option {
+
+  .taxonomy-select-boxes select {
+    width: 200px;
+  }
+
+#wpurp_user_submission_form option {
     color: #aaa;
     font-style: italic;
 }
 
-option.level-0,
-option.level-1,
-option.level-2 {
+#wpurp_user_submission_form option.level-0,
+#wpurp_user_submission_form option.level-1,
+#wpurp_user_submission_form option.level-2 {
     font-style: initial;
     color: initial;
 }
@@ -541,18 +530,22 @@ option.level-2 {
   margin: 5px 10px!important;
   min-width: 200px;
   min-height: 45px;
+  background-color: transparent;
+  border:none;
+  border-bottom:1px solid #CCC;
+  border-radius:0px!important;
+  box-shadow: none;
 }
-
 
 .taxonomy-select-boxes select,
+/*.select2-container--default,*/
+.select2-container--default .select2-selection--single,
 .select2-container--default .select2-selection--multiple {
-    background-color: transparent;
     border:none;
-    border-bottom:1px solid #CCC;
-    border-radius:0px!important;
-    box-shadow: none;
+    border-radius:0px;
 }
 
+ .select2-container--default.select2-container--focus .select2-selection--single,
  .select2-container--default.select2-container--focus .select2-selection--multiple {
     border:none;
     border-bottom:1px solid #5b9dd9;
@@ -575,8 +568,6 @@ option.level-2 {
     margin-top: 3px;
 }
 
-
-
 .select2-selection__choice {
     border:none!important;
     border-radius: 20px!important;
@@ -587,7 +578,8 @@ option.level-2 {
 
 .select2-container .select2-selection--multiple .select2-selection__choice__remove {
     font-size: 0;
-    opacity: 0.38;
+    opacity: 0.54;
+    color: #000;    
     cursor: pointer;
     float: right;
     margin-right: -6px;
@@ -613,8 +605,7 @@ option.level-2 {
 }
 
 .select2-container .select2-selection--multiple .select2-selection__choice__remove:hover {
-    opacity: 0.54;
-    color:#000;
+    opacity: 0.8;
 }
 
 .select2-selection__clear {
@@ -670,7 +661,7 @@ option.level-2 {
     cursor: not-allowed!important;
 }
 
-.select2-results__option[aria-selected=true] {
+ul[aria-multiselectable=true] .select2-results__option[aria-selected=true] {
     /* @extend .dropdown-content li:active, .dropdow-content li:hover */
     display: none
 }
@@ -714,7 +705,7 @@ option.level-2 {
     padding: 0;
   } 
 
-   table {
+  #wpurp_user_submission_form table {
     table-layout: fixed;
   }   
 
@@ -802,18 +793,26 @@ option.level-2 {
     font-size: 14px;
   }
 
-   input:before {
+  #wpurp_user_submission_form input:before {
     padding: 0;
   }
+
+
+  /*SELECTION BOXES*/
 
   /*Prevent display of keyboard on smartphone*/
   input.select2-search__field {
     display: none;
   }
 
-  select[multiple] {
-    display:initial;
+  .recipe-tags-container {
+    padding:20px;
   }
+
+ .taxonomy-select-boxes select,
+ .select2-container {
+    width:100%;
+}
 
   
 }

@@ -16,6 +16,7 @@ class Custom_WPURP_Templates {
 	protected $logged_in;
 	protected $custom_enqueued_scripts = array();
 	protected $custom_enqueued_styles = array();
+	protected static $UNITS;
 	
 	public function __construct() {
 	
@@ -30,7 +31,24 @@ class Custom_WPURP_Templates {
 		
 		/* Custom enqueue list */
 		add_action( 'wp_enqueue_scripts', array($this, 'custom_wpurp_scripts_styles_enqueue') );
+
+		/* Ajax Callbacks for Autocomplete jquery plugin  */
+		add_action('wp_ajax_nopriv_get_tax_terms', array($this, 'custom_get_tax_terms'));
+		add_action('wp_ajax_get_tax_terms', array($this, 'custom_get_tax_terms'));
 		
+		self::$UNITS = array(
+			'cl' 	=> __('centiliter','foodiepro'),
+			'l'		=> __('liter','foodiepro'),
+			'tbs' 	=> __('table spoon', 'foodiepro'),
+			'tsp'	=> __('tea spoon', 'foodiepro'),
+			'stick' => __('stick','foodiepro'),
+			'g'		=> __('gram','foodiepro'),
+			'kg'	=> __('kilogram', 'foodiepro'),
+			'clove'	=> __('clove','foodiepro'),
+			'sheet'	=> __('sheet', 'foodiepro'),
+			'cup'	=> __('cup', 'foodiepro'),
+			'bowl'	=> __('bowl', 'foodiepro')	
+		);
 
 		/* Customize User Submission shortcode */
 		// add_filter ( 'wpurp_user_submissions_current_user_edit_item', array($this, 'remove_recipe_list_on_edit_recipe'), 15, 2 );
@@ -110,6 +128,12 @@ class Custom_WPURP_Templates {
 						'url' => '//fonts.googleapis.com/css?family=Cabin',
 						'public' => true,
 		          	),
+		  			array(
+						'url' => self::$_PluginUri . 'vendor/autocomplete/jquery.auto-complete.css',
+						'path' => self::$_PluginPath . 'vendor/autocomplete/jquery.auto-complete.css',
+						'public' => true,
+						'direct' => true,
+		          	),		          	
 		          	// The style below is needed for recipe preview
 		  			array(
 						'url' => self::$_PluginUri . 'assets/css/custom-recipe.css',
@@ -279,6 +303,15 @@ class Custom_WPURP_Templates {
 					//     ),
 					// ),
 					array(
+					    'name' => 'autocomplete',
+					    'url' => self::$_PluginUri . 'vendor/autocomplete/',
+					    'path' => self::$_PluginPath . 'vendor/autocomplete/',
+					    'file' => 'jquery.auto-complete.js',
+					    'deps' => array(
+					        'jquery',
+					    ),
+					),					
+					array(
 					    'name' => 'select2',
 					    'url' => self::$_PluginUri . 'vendor/select2/js/',
 					    'path' => self::$_PluginPath . 'vendor/select2/js/',
@@ -303,6 +336,12 @@ class Custom_WPURP_Templates {
 					        'jquery-ui-core',
 					    ),						
 					),
+					// array(
+					// 	'name' => 'suggest',
+					//     'deps' => array(
+					//         'jquery',
+					//     ),						
+					// ),					
 		            array(
 		                'name' => 'custom-user-submissions',
 		                'url' => self::$_PluginUri . 'assets/js/',
@@ -406,6 +445,86 @@ class Custom_WPURP_Templates {
 	  	//if ((url_exists($minpath)) && (WP_DEBUG==false)) {
 	    wp_enqueue_script( $handler, $url . $file, $deps, $version, $footer );
 	}
+
+
+	public function custom_get_tax_terms() {
+		// global $wpdb; //get access to the WordPress database object variable
+
+		if ( !is_user_logged_in() ) wp_die();
+		if ( ! isset( $_GET['tax'] ) ) wp_die( 0 );
+		if ( ! isset( $_GET['keys'] ) ) wp_die( 0 );
+		
+		$taxonomy = $_GET['tax'];
+		$keys = $_GET['keys'];
+
+		$terms = get_terms( array(
+		    'taxonomy' => $taxonomy,
+		    'name__like' => $keys,
+		    'hide_empty' => false,
+		) );
+
+
+		//copy the business titles to a simple array
+		$suggestions = array();
+		foreach( $terms as $term )
+			$suggestions[] = addslashes($term->name);
+			
+		echo json_encode($suggestions); //encode into JSON format and output
+	 
+		die(); //stop "0" from being output		
+	}
+
+
+function wp_ajax_ajax_tag_search() {
+	if ( ! isset( $_GET['tax'] ) ) {
+		wp_die( 0 );
+	}
+
+	$taxonomy = sanitize_key( $_GET['tax'] );
+	$tax = get_taxonomy( $taxonomy );
+	if ( ! $tax ) {
+		wp_die( 0 );
+	}
+
+	if ( ! current_user_can( $tax->cap->assign_terms ) ) {
+		wp_die( -1 );
+	}
+
+	$s = wp_unslash( $_GET['q'] );
+
+	$comma = _x( ',', 'tag delimiter' );
+	if ( ',' !== $comma )
+		$s = str_replace( $comma, ',', $s );
+	if ( false !== strpos( $s, ',' ) ) {
+		$s = explode( ',', $s );
+		$s = $s[count( $s ) - 1];
+	}
+	$s = trim( $s );
+
+	/**
+	 * Filters the minimum number of characters required to fire a tag search via Ajax.
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param int         $characters The minimum number of characters required. Default 2.
+	 * @param WP_Taxonomy $tax        The taxonomy object.
+	 * @param string      $s          The search term.
+	 */
+	$term_search_min_chars = (int) apply_filters( 'term_search_min_chars', 2, $tax, $s );
+
+	/*
+	 * Require $term_search_min_chars chars for matching (default: 2)
+	 * ensure it's a non-negative, non-zero integer.
+	 */
+	if ( ( $term_search_min_chars == 0 ) || ( strlen( $s ) < $term_search_min_chars ) ){
+		wp_die();
+	}
+
+	$results = get_terms( $taxonomy, array( 'name__like' => $s, 'fields' => 'names', 'hide_empty' => false ) );
+
+	echo join( $results, "\n" );
+	wp_die();
+}
 
 	
 /* Custom Recipe Submission Shortcode */

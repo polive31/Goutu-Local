@@ -5,22 +5,41 @@ if( !isset( $required_fields ) ) $required_fields = array();
 ?>
 
 <script>
-    // function autoSuggestTag(id, type) {
-    //     <?php if( WPUltimateRecipe::option( 'disable_ingredient_autocomplete', '' ) !== '1' ) { ?>
-    //     console.log('ingredient autocomplete active');
-    //     jQuery('#' + id).suggest("<?php echo get_bloginfo( 'wpurl' ); ?>/wp-admin/admin-ajax.php?action=ajax-tag-search&tax=" + type);
-    //     <?php } ?>
-    // }
+
+    function autoSuggestIngredient(id) {
+        // console.log('In autoSuggestIngredient');
+        <?php if( WPUltimateRecipe::option( 'disable_ingredient_autocomplete', '' ) !== '1' ) { ?>
+        // jQuery('#' + id).suggest("<?php echo get_bloginfo( 'wpurl' ); ?>/wp-admin/admin-ajax.php?action=ajax-tag-search&tax=" + type);
+        // console.log("<?php echo get_bloginfo( 'wpurl' ); ?>/wp-admin/admin-ajax.php?action=ajax-tag-search&tax=" + type);
+        term=jQuery('#' + id).val();
+        tax='ingredient';
+        // console.log(term);
+        // console.log('#' + id);
+        jQuery('#' + id).autoComplete({
+            minChars: 3,
+            source: function(term, response) {
+                try { xhr.abort(); } catch(e){}
+                xhr = jQuery.ajax({
+                    dataType: 'json',
+                    url: '/wp-admin/admin-ajax.php',
+                    data: 'action=get_tax_terms&tax='+tax+'&keys='+term,
+                    success: function(data) {
+                        response(data);
+                    }
+                });
+            }
+
+        });
+        <?php } ?>
+    }
 
     jQuery(document).ready(function() {
-        
         jQuery(".recipe-instructions-container").on("change", "input.recipe_instructions_image", function() { 
             var changedSelectId = jQuery(this).attr("id");
             var Id = changedSelectId.match(/\d+/);
             // console.log( "Changement sur l'input..." + Id );
             PreviewImage(Id);
         });
-
     });
 
     function PreviewImage(id="") {
@@ -186,7 +205,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                     <!-- Unit -->
                     <td id="unit"><!-- <span class="mobile-display"><?php _e( 'Unit', 'foodiepro' ); ?></span> --><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][unit]" class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['unit'] ); ?>" /></td>
                     <!-- Name -->
-                    <td id="name"><!-- <span class="mobile-display"><?php _e( 'Ingredients', 'foodiepro' ); ?></span> --><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onfocus="autoSuggestTag('ingredients_<?php echo $i; ?>', 'ingredient');" value="<?php echo esc_attr( $ingredient['ingredient'] ); ?>" /></td>
+                    <td id="name"><!-- <span class="mobile-display"><?php _e( 'Ingredients', 'foodiepro' ); ?></span> --><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onkeyup="autoSuggestIngredient('ingredients_<?php echo $i; ?>');" value="<?php echo esc_attr( $ingredient['ingredient'] ); ?>" /></td>
                     <!-- Notes -->
                     <td id="notes">
                             <!-- <span class="mobile-display"><?php _e( 'Notes', 'foodiepro' ); ?></span> -->
@@ -215,7 +234,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
             </td>
             <!-- Ingredient Name -->
             <td><!-- <span class="mobile-display"><?php _e( 'Ingredient', 'foodiepro' ); ?></span> -->
-                <input type="text" name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onfocus="autoSuggestTag('ingredients_<?php echo $i; ?>', 'ingredient');" placeholder="<?php _e( 'Ingredient', 'foodiepro' ); ?>" />
+                <input type="text" name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onkeyup="autoSuggestIngredient('ingredients_<?php echo $i; ?>');" placeholder="<?php _e( 'Ingredient', 'foodiepro' ); ?>" />
             </td>
             <!-- Ingredient Notes -->
             <td>

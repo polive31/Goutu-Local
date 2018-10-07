@@ -16,7 +16,6 @@ class Custom_WPURP_Templates {
 	protected $logged_in;
 	protected $custom_enqueued_scripts = array();
 	protected $custom_enqueued_styles = array();
-	protected static $UNITS;
 	
 	public function __construct() {
 	
@@ -36,19 +35,7 @@ class Custom_WPURP_Templates {
 		add_action('wp_ajax_nopriv_get_tax_terms', array($this, 'custom_get_tax_terms'));
 		add_action('wp_ajax_get_tax_terms', array($this, 'custom_get_tax_terms'));
 		
-		self::$UNITS = array(
-			'cl' 	=> __('centiliter','foodiepro'),
-			'l'		=> __('liter','foodiepro'),
-			'tbs' 	=> __('table spoon', 'foodiepro'),
-			'tsp'	=> __('tea spoon', 'foodiepro'),
-			'stick' => __('stick','foodiepro'),
-			'g'		=> __('gram','foodiepro'),
-			'kg'	=> __('kilogram', 'foodiepro'),
-			'clove'	=> __('clove','foodiepro'),
-			'sheet'	=> __('sheet', 'foodiepro'),
-			'cup'	=> __('cup', 'foodiepro'),
-			'bowl'	=> __('bowl', 'foodiepro')	
-		);
+
 
 		/* Customize User Submission shortcode */
 		// add_filter ( 'wpurp_user_submissions_current_user_edit_item', array($this, 'remove_recipe_list_on_edit_recipe'), 15, 2 );

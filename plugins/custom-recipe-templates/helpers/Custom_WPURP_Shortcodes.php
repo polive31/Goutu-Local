@@ -11,6 +11,7 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
     protected $logged_in;
     protected $taxonomies;
     protected $instructions;
+    protected static $UNITS;    
 
     public function __construct( $name = 'user-submissions' ) {
         parent::__construct( $name );
@@ -28,6 +29,37 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
         add_shortcode( 'custom-recipe-submissions-current-user-list', array( $this, 'submissions_current_user_list_shortcode' ) );
         add_action( 'wp_ajax_custom_user_submissions_delete_recipe', array( $this, 'ajax_user_delete_recipe') );
         add_action( 'wp_ajax_nopriv_custom_user_submissions_delete_recipe', array( $this, 'ajax_user_delete_recipe') );
+
+        self::$UNITS = array(
+            'g'     => __('gram','foodiepro'),
+            'kg'    => __('kilogram', 'foodiepro'),
+            'cl'    => __('centiliter','foodiepro'),
+            'l'     => __('liter','foodiepro'),
+            'tbs'   => __('table spoon', 'foodiepro'),
+            'tsp'   => __('tea spoon', 'foodiepro'),
+            'stick' => __('stick','foodiepro'), //Baton
+            'can'   => __('can', 'foodiepro'), //Boite
+            'bowl'  => __('bowl', 'foodiepro'), //Bol
+            'bunch' => __('bunch', 'foodiepro'), //Botte
+            'bouquet'   => __('bouquet', 'foodiepro'), //Bouquet
+            'sprig'   => __('sprig', 'foodiepro'), //Branche (thym)
+            'sprig'   => __('sprig', 'foodiepro'), //Brin
+            'bulbe'   => __('bulbe', 'foodiepro'), //Verre
+            'cube' => __('cube', 'foodiepro'), //Cube
+            'finger'=> __('finger', 'foodiepro'), //Doigt
+            'sheet' => __('sheet', 'foodiepro'),  //Feuille
+            'leave' => __('leave', 'foodiepro'),  //Feuille (plante)
+            'fillet'   => __('fillet', 'foodiepro'), //Filet (anchois)
+            'clove' => __('clove','foodiepro'), // Gousse
+            'knob'   => __('nut', 'foodiepro'), //Noix
+            'pinch' => __('pinch', 'foodiepro'), // Pincée
+            'handful'=> __('handful', 'foodiepro'), //Poignée
+            'sachet'=> __('sachet', 'foodiepro'), //Sachet
+            'cup'   => __('cup', 'foodiepro'), //Tasse
+            'slice'   => __('slice', 'foodiepro'), //Tranche
+            'glass'   => __('glass', 'foodiepro'), //Verre
+        );
+
     }
 
     public function new_submission_shortcode() {
@@ -390,7 +422,7 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
                 $output .= __( 'Recipe saved as draft. It will not be visible on the site, but you can edit it at any time and submit it later.', 'foodiepro' );
                 $output .= '</p>';
                 $url = do_shortcode('[permalink slug="' . self::RECIPES_PUBLISH_SLUG . '"]');
-                $output .= '<a href=' . $url . '><p>← ' .  __( 'Back to my published recipes', 'foodiepro' ) . '</p></a>';
+                $output .= '<a class="more-link" href=' . $url . '>← ' .  __( 'Back to my published recipes', 'foodiepro' ) . '</a>';
                 $output .= $this->submissions_form( $post_id, array( 'preview', 'draft', 'publish' ) );
 
                 // $output .= '<h5>AFTER WP INSERT POST</h5>';

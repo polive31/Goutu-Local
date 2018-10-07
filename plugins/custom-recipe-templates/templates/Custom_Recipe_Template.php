@@ -350,7 +350,8 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 	            }
 	        }
 
-	        $out .= $plural && ($ingredient['unit']!='' || $ingredient['amount_normalized'] > 1) ? $plural : $ingredient['ingredient'];
+	        // $out .= $plural && ($ingredient['unit']!='' || $ingredient['amount_normalized'] > 1) ? $plural : $ingredient['ingredient'];
+	        $out .= $plural && ($ingredient['amount_normalized'] > 1) ? $plural : $ingredient['ingredient'];
 	        $out .= $closing_tag;
 	        $out .= '</span>';
 

@@ -114,6 +114,15 @@ span.wpurp-required {
  #wpurp_user_submission_form h4 {
   color: #101010;
   /*color: #616161;*/
+}
+
+/*Containers */
+.recipe-image-container,
+.recipe-tags-container,
+.recipe-general-container,
+.recipe-ingredients-container,
+.recipe-instructions-container,
+.recipe-notes-container-nojs {
   margin-top: 50px;
   margin-bottom: 0px;
 }
@@ -391,7 +400,6 @@ label.add-instruction-thumbnail {
   
  a,
  a:hover {
-  font-weight:400;
   text-decoration:none;
   color: #616161;
 }
@@ -408,7 +416,7 @@ label.add-instruction-thumbnail {
 -------------------------------------------------*/
 
 #wpurp_user_submission_form input[type=text],
-#wpurp_user_submission_form select,
+/*#wpurp_user_submission_form select,*/
 #wpurp_user_submission_form textarea {
   /*border: 1px solid #ddd;*/
   border: none;
@@ -423,10 +431,10 @@ label.add-instruction-thumbnail {
 }
 
 /* make it red instead (with with same width and style) */
-#wpurp_user_submission_form select:active, 
+/*#wpurp_user_submission_form select:active, 
 #wpurp_user_submission_form select:hover {
   outline-color: red
-}
+}*/
 
 /* Specific input formatting */
  .recipe-tags-container input[type=text] {

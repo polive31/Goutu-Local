@@ -77,7 +77,7 @@ span.wpurp-required {
   vertical-align: middle;
 }
 
-#wpurp_user_submission_form .spinner {
+#wpurp_user_submission_form .ajax-indicator {
   visibility: hidden;
 }
 
@@ -383,7 +383,7 @@ label.add-instruction-thumbnail {
  span.ingredient-group-delete:before,
  span.instructions-delete:before,
  span.instruction-group-delete:before {
-  content: "\f014";
+  content: "\f056";
   font-family: FontAwesome;
   font-size:20px;
   padding:10px;

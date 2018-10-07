@@ -408,6 +408,7 @@ function foodie_pro_enqueue_stylesheets() {
 	/* Font Awesome
 	--------------------------------------------------- */
 	wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
+	wp_enqueue_style('font-awesome', '//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
 	//wp_enqueue_style( 'font-awesome', CHILD_THEME_URL . '/assets/fonts/font-awesome/css/font-awesome.min.css', array(), CHILD_THEME_VERSION );
 
 	/* Material Icons

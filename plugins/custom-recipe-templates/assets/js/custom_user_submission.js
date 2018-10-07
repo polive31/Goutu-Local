@@ -1,20 +1,79 @@
+function autoSuggestIngredient( thisInput ) {
+    // console.log('In autoSuggestIngredient');
+    term=thisInput.val();
+    id=thisInput.attr('id');
+    tax = 'ingredient';
+    // console.log(term);
+    // console.log(id);
+
+    spinnerHTML = thisInput.closest("td").next().children('.ajax-indicator');
+    spinnerHTML.css('visibility','hidden');
+    // console.log(spinnerHTML);
+    
+    jQuery('#' + id).autoComplete({
+        minChars: 3,
+        delay : 200,
+        source: function(term, response) {
+            spinnerHTML.css('visibility','visible');
+            try { xhr.abort(); } catch(e){}
+            xhr = jQuery.ajax({
+                dataType: 'json',
+                url: '/wp-admin/admin-ajax.php',
+                data: 'action=get_tax_terms&tax='+tax+'&keys='+term,
+                success:function(data) {
+                    response(data);
+                    spinnerHTML.css('visibility','hidden');
+                },
+                // error:function() {
+                //     spinnerHTML.css('visibility','hidden');
+                // },
+                // complete: function() {
+                // }
+            });
+        }
+    });
+};
+
+function PreviewImage(id) {
+    // console.log( "In Preview Image");
+    var oFReader = new FileReader();
+    oFReader.readAsDataURL(document.getElementById("recipe_thumbnail_input_" + id).files[0]);
+    oFReader.onload = function (oFREvent) {
+        document.getElementById("instruction_thumbnail_preview_" + id ).src = oFREvent.target.result;
+    };
+};
+
+
 jQuery(document).ready(function() {
-  // run test on initial page load
-  // checkSize();
 
-  // run test on resize of the window
-  // jQuery(window).resize(checkSize);
 
+/* Ingredient Suggestions 
+---------------------------------------------------------------- */
+
+    jQuery(document).on('input', '.ingredients_name', function(){
+        autoSuggestIngredient( jQuery(this) );
+    });
+
+    jQuery('input.ingredients_name').focusout(function(){
+        // console.log('In ingredient focusout');
+        spinnerHTML = jQuery(this).closest("td").next().children('.ajax-indicator');
+        // console.log(spinnerHTML);
+        spinnerHTML.css('visibility','hidden');
+        try { xhr.abort(); } catch(e){}
+    });
+
+/* Taxonomy selection fields 
+---------------------------------------------------------------- */
     // Activate select2WPURP
     // jQuery('#wpurp_user_submission_form select[multiple]').select2wpurp({
     //     allowClear: true,
     //     width: 'off',
     //     dropdownAutoWidth: false
     // });
-    
+
     // Activate select2
     // jQuery("select[multiple]").select2({
-    jQuery("select").select2({
+    jQuery("#wpurp_user_submission_form select").select2({
         allowClear: true,
         width: 'off',
         dropdownAutoWidth: false,
@@ -22,26 +81,6 @@ jQuery(document).ready(function() {
         // closeOnSelect: false,
     });
 
-});
-
-// function checkSize(){
-//     if (window.matchMedia("(min-width: 768px)").matches) {
-//         jQuery("select[multiple]").select2({
-//             allowClear: true,
-//             width: 'off',
-//             dropdownAutoWidth: false
-//         });
-//     } 
-    // else if ( jQuery("select[multiple]").data('select2') ) {
-    //     jQuery("select[multiple]").select2("destroy");
-    // };
-// };
-
-
-jQuery(document).ready(function() {
-
-    /* Display taxonomy select fields
-    -------------------------------------------- */
     jQuery('.taxonomy-select-boxes').removeClass('nodisplay');
     jQuery('.taxonomy-select-spinner').addClass('nodisplay');
 
@@ -504,66 +543,75 @@ jQuery(document).ready(function() {
         }
     });
 
-    jQuery('.recipe_instructions_add_image').on('click', function(e) {
+    // Instruction Step Image 
 
-        e.preventDefault();
-
-        var button = jQuery(this);
-
-        image = button.siblings('.recipe_instructions_image');
-        preview = button.siblings('.recipe_instructions_thumbnail');
-
-        if(typeof wp.media == 'function') {
-            var custom_uploader = wp.media({
-                title: 'Insert Media',
-                button: {
-                    text: 'Add instruction image'
-                },
-                multiple: false
-            })
-                .on('select', function() {
-                    var attachment = custom_uploader.state().get('selection').first().toJSON();
-                    jQuery(preview).attr('src', attachment.url);
-                    jQuery(image).val(attachment.id).trigger('change');
-                })
-                .open();
-        } else { //fallback
-            post_id = button.attr('rel');
-
-            tb_show(button.attr('value'), 'wp-admin/media-upload.php?post_id='+post_id+'&type=image&TB_iframe=1');
-
-            window.send_to_editor = function(html) {
-                img = jQuery('img', html);
-                imgurl = img.attr('src');
-                classes = img.attr('class');
-                id = classes.replace(/(.*?)wp-image-/, '');
-                image.val(id).trigger('change');
-                preview.attr('src', imgurl);
-                tb_remove();
-            }
-        }
-
+    jQuery(".recipe-instructions-container").on("change", "input.recipe_instructions_image", function() { 
+        var changedSelectId = jQuery(this).attr("id");
+        var Id = changedSelectId.match(/\d+/);
+        // console.log( "Changement sur l'input..." + Id );
+        PreviewImage(Id);
     });
 
-    jQuery('.recipe_instructions_remove_image').on('click', function(e) {
-        e.preventDefault();
+    // jQuery('.recipe_instructions_add_image').on('click', function(e) {
 
-        var button = jQuery(this);
+    //     e.preventDefault();
 
-        button.siblings('.recipe_instructions_image').val('').trigger('change');
-        button.siblings('.recipe_instructions_thumbnail').attr('src', wpurp_recipe_form.coreUrl + '/img/image_placeholder.png');
-    });
+    //     var button = jQuery(this);
 
-    jQuery('.recipe_instructions_image').on('change', function() {
-        var image = jQuery(this);
-        if(image.val() == '') {
-            image.siblings('.recipe_instructions_add_image').removeClass('wpurp-hide');
-            image.siblings('.recipe_instructions_remove_image').addClass('wpurp-hide');
-        } else {
-            image.siblings('.recipe_instructions_remove_image').removeClass('wpurp-hide');
-            image.siblings('.recipe_instructions_add_image').addClass('wpurp-hide');
-        }
-    });
+    //     image = button.siblings('.recipe_instructions_image');
+    //     preview = button.siblings('.recipe_instructions_thumbnail');
+
+    //     if(typeof wp.media == 'function') {
+    //         var custom_uploader = wp.media({
+    //             title: 'Insert Media',
+    //             button: {
+    //                 text: 'Add instruction image'
+    //             },
+    //             multiple: false
+    //         })
+    //             .on('select', function() {
+    //                 var attachment = custom_uploader.state().get('selection').first().toJSON();
+    //                 jQuery(preview).attr('src', attachment.url);
+    //                 jQuery(image).val(attachment.id).trigger('change');
+    //             })
+    //             .open();
+    //     } else { //fallback
+    //         post_id = button.attr('rel');
+
+    //         tb_show(button.attr('value'), 'wp-admin/media-upload.php?post_id='+post_id+'&type=image&TB_iframe=1');
+
+    //         window.send_to_editor = function(html) {
+    //             img = jQuery('img', html);
+    //             imgurl = img.attr('src');
+    //             classes = img.attr('class');
+    //             id = classes.replace(/(.*?)wp-image-/, '');
+    //             image.val(id).trigger('change');
+    //             preview.attr('src', imgurl);
+    //             tb_remove();
+    //         }
+    //     }
+
+    // });
+
+    // jQuery('.recipe_instructions_remove_image').on('click', function(e) {
+    //     e.preventDefault();
+
+    //     var button = jQuery(this);
+
+    //     button.siblings('.recipe_instructions_image').val('').trigger('change');
+    //     button.siblings('.recipe_instructions_thumbnail').attr('src', wpurp_recipe_form.coreUrl + '/img/image_placeholder.png');
+    // });
+
+    // jQuery('.recipe_instructions_image').on('change', function() {
+    //     var image = jQuery(this);
+    //     if(image.val() == '') {
+    //         image.siblings('.recipe_instructions_add_image').removeClass('wpurp-hide');
+    //         image.siblings('.recipe_instructions_remove_image').addClass('wpurp-hide');
+    //     } else {
+    //         image.siblings('.recipe_instructions_remove_image').removeClass('wpurp-hide');
+    //         image.siblings('.recipe_instructions_add_image').addClass('wpurp-hide');
+    //     }
+    // });
 
     jQuery('#wpurp-insert-recipe').on('click', function() {
         var shortcode = '[ultimate-recipe id=';

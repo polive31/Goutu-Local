@@ -4,61 +4,6 @@ if( is_null( $recipe ) ) $recipe = new WPURP_Recipe(0);
 if( !isset( $required_fields ) ) $required_fields = array();
 ?>
 
-<script>
-
-    function autoSuggestIngredient(id) {
-        console.log('In autoSuggestIngredient');
-        <?php if( WPUltimateRecipe::option( 'disable_ingredient_autocomplete', '' ) !== '1' ) { ?>
-        // jQuery('#' + id).suggest("<?php echo get_bloginfo( 'wpurl' ); ?>/wp-admin/admin-ajax.php?action=ajax-tag-search&tax=" + type);
-        // console.log("<?php echo get_bloginfo( 'wpurl' ); ?>/wp-admin/admin-ajax.php?action=ajax-tag-search&tax=" + type);
-        tax='ingredient';
-        thisInput=jQuery('#' + id);
-        term=thisInput.val();
-        // term1=jQuery(this).val();
-        console.log(term);
-        // console.log(term1);
-        // console.log('#' + id);
-                spinnerHTML = jQuery('#spinner-' + id).html();
-                console.log( '#spinner-' + id + ' : ' + spinnerHTML);
-                jQuery('#spinner-' + id).show();
-        jQuery('#' + id).autoComplete({
-            minChars: 3,
-            source: function(term, response) {
-                try { xhr.abort(); } catch(e){}
-                xhr = jQuery.ajax({
-                    dataType: 'json',
-                    url: '/wp-admin/admin-ajax.php',
-                    data: 'action=get_tax_terms&tax='+tax+'&keys='+term,
-                    success: function(data) {
-                        response(data);
-                    },
-                    complete: function() {
-                        jQuery('#spinner-' + id).hide();
-                    }
-                });
-            }
-
-        });
-        <?php } ?>
-    }
-
-    jQuery(document).ready(function() {
-        jQuery(".recipe-instructions-container").on("change", "input.recipe_instructions_image", function() { 
-            var changedSelectId = jQuery(this).attr("id");
-            var Id = changedSelectId.match(/\d+/);
-            // console.log( "Changement sur l'input..." + Id );
-            PreviewImage(Id);
-        });
-    });
-
-    function PreviewImage(id="") {
-        var oFReader = new FileReader();
-        oFReader.readAsDataURL(document.getElementById("recipe_thumbnail_input_" + id).files[0]);
-        oFReader.onload = function (oFREvent) {
-            document.getElementById("instruction_thumbnail_preview_" + id ).src = oFREvent.target.result;
-        };
-    };
-</script>
 <input type="hidden" name="recipe_meta_box_nonce" value="<?php echo wp_create_nonce( 'recipe' ); ?>" />
 <div class="recipe-general-container">
     <h4><?php _e( 'General', 'foodiepro' ); ?></h4>
@@ -214,7 +159,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                     <!-- Unit -->
                     <td id="unit"><!-- <span class="mobile-display"><?php _e( 'Unit', 'foodiepro' ); ?></span> --><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][unit]" class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['unit'] ); ?>" /></td>
                     <!-- Name -->
-                    <td id="name"><!-- <span class="mobile-display"><?php _e( 'Ingredients', 'foodiepro' ); ?></span> --><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onkeyup="autoSuggestIngredient('ingredients_<?php echo $i; ?>');" value="<?php echo esc_attr( $ingredient['ingredient'] ); ?>" /></td><td><i id="spinner-ingredients_<?php echo $i; ?>" class="spinner fa fa-refresh fa-spin"></i></td>
+                    <td id="name"><!-- <span class="mobile-display"><?php _e( 'Ingredients', 'foodiepro' ); ?></span> --><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['ingredient'] ); ?>" /></td><td class="spinner"><i id="spinner-ingredients_<?php echo $i; ?>" class="ajax-indicator fa fa-refresh fa-spin"></i></td>
                     <!-- Notes -->
                     <td id="notes">
                             <!-- <span class="mobile-display"><?php _e( 'Notes', 'foodiepro' ); ?></span> -->
@@ -222,7 +167,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                         <input type="text" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['notes'] ); ?>" />
                         <input type="hidden" name="recipe_ingredients[<?php echo $i; ?>][group]" class="ingredients_group" id="ingredient_group_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['group'] ); ?>" />
                     </td>
-                    <td class="delete-button" colspan="1"><span class="ingredients-delete">&nbsp;</span></td>
+                    <td class="delete-button" colspan="1"><span class="ingredients-delete" title="<?php echo __('Remove this ingredient', 'foodiepro');?>" >&nbsp;</span></td>
                 </tr>
                 <?php
                 $i++;
@@ -243,7 +188,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
             </td>
             <!-- Ingredient Name -->
             <td><!-- <span class="mobile-display"><?php _e( 'Ingredient', 'foodiepro' ); ?></span> -->
-                <input type="text" name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onkeyup="autoSuggestIngredient('ingredients_<?php echo $i; ?>');" placeholder="<?php _e( 'Ingredient', 'foodiepro' ); ?>" /></td><td><i id="spinner-ingredients_<?php echo $i; ?>" class="spinner fa fa-refresh fa-spin"></i>
+                <input type="text" name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" placeholder="<?php _e( 'Ingredient', 'foodiepro' ); ?>" /></td><td class"spinner"><i id="spinner-ingredients_<?php echo $i; ?>" class="ajax-indicator fa fa-refresh fa-spin"></i>
             </td>
             <!-- Ingredient Notes -->
             <td>
@@ -253,7 +198,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                 <input type="hidden" name="recipe_ingredients[<?php echo $i; ?>][group]" class="ingredients_group" id="ingredient_group_<?php echo $i; ?>" value="" />
             </td>
             <!-- Delete button -->
-            <td class="delete-button" colspan="1"><span class="ingredients-delete">&nbsp;</span></td>
+            <td class="delete-button" colspan="1"><span class="ingredients-delete" title="<?php echo __('Remove this ingredient', 'foodiepro');?>" >&nbsp;</span></td>
         </tr>
         </tbody>
     </table>
@@ -379,7 +324,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                     </div>
                 </td>
 
-                <td class="delete-button" colspan="1"><span class="instructions-delete">&nbsp;</span></td>
+                <td class="delete-button" colspan="1"><span class="instructions-delete" title="<?php echo __('Remove this instruction', 'foodiepro');?>">&nbsp;</span></td>
             </tr>
             <?php
             $i++;
@@ -416,7 +361,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                     <?php } ?>
                      </div>
                 </td>
-                <td class="delete-button" colspan="1"><span class="instructions-delete">&nbsp;</span></td>
+                <td class="delete-button" colspan="1"><span class="instructions-delete" title="<?php echo __('Remove this instruction', 'foodiepro');?>">&nbsp;</span></td>
             </tr>
         </tbody>
     </table>

@@ -2334,8 +2334,32 @@ input#name-directory-search-input-box {
 }
 
 /* GDPR */
+
+.gdpr-overlay {
+    background: rgb(255, 255, 255)!important;
+}
+
+.gdpr.gdpr-privacy-bar, 
+.gdpr.gdpr-reconsent-bar {
+    background: rgba(255, 255, 255, 0.84)!important;
+}
+
+
 .gdpr-wrapper {
-    background: #bdbdbdbf!important;
+    background: rgb(175, 175, 175)!important;
+    /*background: #bdbdbdbf!important;*/
+}
+
+
+.gdpr.gdpr-privacy-bar .gdpr-wrapper .gdpr-content, 
+.gdpr.gdpr-reconsent-bar .gdpr-wrapper .gdpr-content {
+    padding: 0!important;
+}
+
+.gdpr.gdpr-privacy-bar .gdpr-wrapper .gdpr-content p, 
+.gdpr.gdpr-reconsent-bar .gdpr-wrapper .gdpr-content p {
+    color: #676767;
+    font-size: 15px;
 }
 
 .gdpr a {

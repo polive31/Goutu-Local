@@ -30,25 +30,33 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
         add_action( 'wp_ajax_custom_user_submissions_delete_recipe', array( $this, 'ajax_user_delete_recipe') );
         add_action( 'wp_ajax_nopriv_custom_user_submissions_delete_recipe', array( $this, 'ajax_user_delete_recipe') );
 
+        // Init actions
+        add_action( 'wp', array($this, 'hydrate'));
+
+
+    }
+
+    public function hydrate() {
+
         self::$UNITS = array(
-            array('g'     , __('gram','foodiepro')),
-            array('kg'    , __('kilogram', 'foodiepro')),
-            array('cl'    , __('centiliter','foodiepro')),
-            array('dl'     , __('deciliter','foodiepro')),
-            array('l'     , __('liter','foodiepro')),
-            array('tbs'   , __('table spoon', 'foodiepro')),
-            array('tsp'   , __('tea spoon', 'foodiepro')),
-            array('stick' , __('stick','foodiepro')), //Baton
-            array('can'   , __('can', 'foodiepro')), //Boite
-            array('bowl'  , __('bowl', 'foodiepro')), //Bol
-            array('bunch' , __('bunch', 'foodiepro')), //Botte
-            array('bouquet'   , __('bouquet', 'foodiepro')), //Bouquet
-            array('sprig'   , __('sprig', 'foodiepro')), //Branche (thym)
-            array('sprig'   , __('sprig', 'foodiepro')), //Brin
-            array('bulb'   , __('bulb', 'foodiepro')), //Bulbe
-            array('cube' , __('cube', 'foodiepro')), //Cube
-            array('finger', __('finger', 'foodiepro')), //Doigt
-            array('sheet' , __('sheet', 'foodiepro')),  //Feuille
+            array('g'     , _n('gram','grams',1,'foodiepro')),
+            array('kg'    , _n('kilogram', 'kilograms',1, 'foodiepro')),
+            array('cl'    , _n('cl','cl',1,'foodiepro')),
+            array('dl'     , _n('dl','dl',1,'foodiepro')),
+            array('l'     , _n('l','l',1,'foodiepro')),
+            array('tbs'   , _n('table spoon','table spoons',1, 'foodiepro')),
+            array('tsp'   , _n('tea spoon','tea spoons',1, 'foodiepro')),
+            array('stick' , _n('stick','sticks',1,'foodiepro')), //Baton
+            array('can'   , _n('can','cans',1, 'foodiepro')), //Boite
+            array('bowl'  , _n('bowl','bowls',1, 'foodiepro')), //Bol
+            array('bunch' , _n('bunch','bunches',1, 'foodiepro')), //Botte
+            array('bouquet'   , _n('bouquet','bouquets',1, 'foodiepro')), //Bouquet
+            array('sprig'   , _n('sprig','sprigs',1, 'foodiepro')), //Brin
+            array('branch'   , _n('branch','branches',1, 'foodiepro')), //Branche (thym)
+            array('bulb'   , _n('bulb','bulbs',1, 'foodiepro')), //Bulbe
+            array('cube' , _n('cube','cubes',1, 'foodiepro')), //Cube
+            array('finger', _n('finger','fingers',1, 'foodiepro')), //Doigt
+            array('sheet' , _n('sheet','sheets',1, 'foodiepro')),  //Feuille
             array('leave' , __('leave', 'foodiepro')),  //Feuille (plante)
             array('fillet'   , __('fillet', 'foodiepro')), //Filet (anchois)
             array('clove' , __('clove','foodiepro')), // Gousse
@@ -59,8 +67,7 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
             array('cup'   , __('cup', 'foodiepro')), //Tasse
             array('slice'   , __('slice', 'foodiepro')), //Tranche
             array('glass'   , __('glass', 'foodiepro')), //Verre
-        );
-
+        );        
     }
 
     public function new_submission_shortcode() {

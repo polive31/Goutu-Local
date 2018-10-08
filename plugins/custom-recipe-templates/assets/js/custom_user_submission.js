@@ -10,7 +10,8 @@ function autoSuggestIngredient( thisInput ) {
     spinnerHTML.css('visibility','hidden');
     // console.log(spinnerHTML);
     
-    jQuery('#' + id).autoComplete({
+    // jQuery('#' + id).autoComplete({
+    jQuery( thisInput ).autoComplete({
         minChars: 3,
         delay : 200,
         source: function(term, response) {
@@ -34,6 +35,25 @@ function autoSuggestIngredient( thisInput ) {
     });
 };
 
+function autoSuggestUnit( thisInput ) {
+    console.log('In autoSuggestUnit');
+    // console.log( thisInput );
+    term=thisInput.val();
+    // console.log( term );
+    jQuery( thisInput ).autoComplete({ 
+        minChars: 1,
+        source: function(term, suggest){
+            term = term.toLowerCase();
+            var choices = thisInput.parents('.recipe-ingredients-container').data('units');
+            // console.log(choices);
+            var matches = [];
+            for (i=0; i<choices.length; i++)
+                if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
+            suggest(matches);
+        }    
+    })
+}
+
 function PreviewImage(id) {
     // console.log( "In Preview Image");
     var oFReader = new FileReader();
@@ -49,7 +69,6 @@ jQuery(document).ready(function() {
 
 /* Ingredient Suggestions 
 ---------------------------------------------------------------- */
-
     jQuery(document).on('input', '.ingredients_name', function(){
         autoSuggestIngredient( jQuery(this) );
     });
@@ -61,6 +80,14 @@ jQuery(document).ready(function() {
         spinnerHTML.css('visibility','hidden');
         try { xhr.abort(); } catch(e){}
     });
+
+/* Ingredient Unit Suggestions 
+---------------------------------------------------------------- */
+    jQuery(document).on('input', '.ingredients_unit', function(){
+        autoSuggestUnit( jQuery(this) );
+    });
+
+
 
 /* Taxonomy selection fields 
 ---------------------------------------------------------------- */
@@ -79,6 +106,11 @@ jQuery(document).ready(function() {
         dropdownAutoWidth: false,
         minimumResultsForSearch: -1,
         // closeOnSelect: false,
+    });    
+
+    jQuery(".select2-search input").prop("readonly", true);
+    jQuery(".select2, .select2-multiple").on('select2:open', function (e) {
+        jQuery('.select2-search input').prop('focus',false);
     });
 
     jQuery('.taxonomy-select-boxes').removeClass('nodisplay');

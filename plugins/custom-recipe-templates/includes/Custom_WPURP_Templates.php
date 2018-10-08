@@ -103,38 +103,38 @@ class Custom_WPURP_Templates {
 //		              'url' => '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css',
 //		              'dir' => '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css',
 //		          ); 
-		  $css_enqueue[]=array(
-		              'url' =>  self::$_PluginUri . 'vendor/select2/css/select2.min.css',
-		              'dir' =>  self::$_PluginPath . 'vendor/select2/css/select2.min.css',
-		              'file' => 'select2.min.css',
-		              'public' => true,
-		              'direct' => true,
-		          ); 			
+		  		$css_enqueue[]=array(
+					'url' =>  self::$_PluginUri . 'vendor/select2/css/select2.min.css',
+					'dir' =>  self::$_PluginPath . 'vendor/select2/css/select2.min.css',
+					'file' => 'select2.min.css',
+					'public' => true,
+					'direct' => true,
+				); 			
 			$this->custom_enqueued_styles=array(
-					array(
-						'url' => '//fonts.googleapis.com/css?family=Cabin',
-						'public' => true,
-		          	),
-		  			array(
-						'url' => self::$_PluginUri . 'vendor/autocomplete/jquery.auto-complete.css',
-						'path' => self::$_PluginPath . 'vendor/autocomplete/jquery.auto-complete.css',
-						'public' => true,
-						'direct' => true,
-		          	),		          	
-		          	// The style below is needed for recipe preview
-		  			array(
-						'url' => self::$_PluginUri . 'assets/css/custom-recipe.css',
-						'path' => self::$_PluginPath . 'assets/css/custom-recipe.css',
-						'public' => true,
-						'direct' => true,
-		          	),
-		  			array(
-						'url' => self::$_PluginUri . 'assets/css/custom-recipe-submission.css',
-						'path' => self::$_PluginPath . 'assets/css/custom-recipe-submission.css',
-						'public' => true,
-						'direct' => true,
-		          	),        		          	
-		        );	          		
+				array(
+					'url' => '//fonts.googleapis.com/css?family=Cabin',
+					'public' => true,
+	          	),
+	  			array(
+					'url' => self::$_PluginUri . 'vendor/autocomplete/jquery.auto-complete.css',
+					'path' => self::$_PluginPath . 'vendor/autocomplete/jquery.auto-complete.css',
+					'public' => true,
+					'direct' => true,
+	          	),		          	
+	          	// The style below is needed for recipe preview
+	  			array(
+					'url' => self::$_PluginUri . 'assets/css/custom-recipe.css',
+					'path' => self::$_PluginPath . 'assets/css/custom-recipe.css',
+					'public' => true,
+					'direct' => true,
+	          	),
+	  			array(
+					'url' => self::$_PluginUri . 'assets/css/custom-recipe-submission.css',
+					'path' => self::$_PluginPath . 'assets/css/custom-recipe-submission.css',
+					'public' => true,
+					'direct' => true,
+	          	),        		          	
+			);	          		
 		}
 		else 
 		  $css_enqueue=array();
@@ -380,7 +380,8 @@ class Custom_WPURP_Templates {
 			$path = isset($style['path'])?$style['path']:'';
 			$file = isset($style['file'])?$style['file']:'';
 			$deps = isset($style['deps'])?$style['deps']:'';
-			$version = self::CUSTOM_WPURP_TEMPLATES_VERSION;
+			// $version = self::CUSTOM_WPURP_TEMPLATES_VERSION;
+			$version = CHILD_THEME_VERSION;
 			$this->custom_enqueue_style( $handler, $url, $path, $file, $deps, $version );
   		}
 
@@ -393,7 +394,8 @@ class Custom_WPURP_Templates {
 			$path = isset($script['path'])?$script['path']:'';
 			$file = isset($script['file'])?$script['file']:'';
 			$deps = isset($script['deps'])?$script['deps']:'';
-			$version = self::CUSTOM_WPURP_TEMPLATES_VERSION;
+			// $version = self::CUSTOM_WPURP_TEMPLATES_VERSION;
+			$version = CHILD_THEME_VERSION;
 			$footer = isset($script['footer'])?$script['footer']:false;
 			$this->custom_enqueue_script( $handler, $url, $path, $file, $deps, $version, $footer );
 

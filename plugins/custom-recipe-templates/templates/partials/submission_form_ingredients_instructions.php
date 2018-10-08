@@ -77,7 +77,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
     </table>
 </div>
 
-<div class="recipe-ingredients-container">
+<div class="recipe-ingredients-container" data-units='<?php echo json_encode(array_column(self::$UNITS,1));?>'>
     <h4><?php _e( 'Ingredients', 'foodiepro' ); ?></h4>
     <?php $ingredients = $recipe->ingredients(); ?>
     <table id="recipe-ingredients">
@@ -119,14 +119,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
         </tr>
         <?php
         $i = 0;
-        if( $ingredients )
-        {?>
-            <datalist id="units_list">
-                <?php foreach(self::$UNITS as $unit) {?>
-                <option value="<?php echo $unit[0];?>"><?php echo $unit[1];?></option>
-                <?php } ?>
-            </datalist>
-        <?php
+        if( $ingredients ) {
             foreach( $ingredients as $ingredient ) {
 
                 if( WPUltimateRecipe::option( 'ignore_ingredient_ids', '' ) != '1' && isset( $ingredient['ingredient_id'] ) ) {
@@ -165,7 +158,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                     <!-- Unit -->
                     <td id="unit"><!-- <span class="mobile-display"><?php _e( 'Unit', 'foodiepro' ); ?></span> -->
 
-                        <input type="text" name="recipe_ingredients[<?php echo $i; ?>][unit]" class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['unit'] ); ?>" list="units_list"  placeholder="<?php _e( 'Unit', 'foodiepro' );?>" />
+                        <input type="text" name="recipe_ingredients[<?php echo $i; ?>][unit]" class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['unit'] ); ?>" placeholder="<?php _e( 'Unit', 'foodiepro' );?>" />
                     </td>
                     <!-- Name -->
                     <td id="name"><!-- <span class="mobile-display"><?php _e( 'Ingredients', 'foodiepro' ); ?></span> --><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['ingredient'] ); ?>" placeholder="<?php _e( 'Ingredient', 'foodiepro' ); ?>"  /></td><td class="spinner"><i id="spinner-ingredients_<?php echo $i; ?>" class="ajax-indicator fa fa-refresh fa-spin"></i></td>
@@ -193,7 +186,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
             </td>
             <!-- Unit -->
             <td><!-- <span class="mobile-display"><?php _e( 'Unit', 'foodiepro' ); ?> </span>-->
-                <input type="text" name="recipe_ingredients[<?php echo $i; ?>][unit]" class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" placeholder="<?php _e( 'Unit', 'foodiepro' ); ?>" list="units_list" />
+                <input type="text" name="recipe_ingredients[<?php echo $i; ?>][unit]" class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" placeholder="<?php _e( 'Unit', 'foodiepro' ); ?>" />
             </td>
             <!-- Ingredient Name -->
             <td><!-- <span class="mobile-display"><?php _e( 'Ingredient', 'foodiepro' ); ?></span> -->

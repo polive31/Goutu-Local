@@ -12,9 +12,19 @@ class CustomStarRatings {
 	protected static $ratingGlobal;
 
 	public function __construct() {
-		
-		self::$ratedPostTypes = array( 'recipe' );
 
+		self::$ratedPostTypes = array( 'recipe' );
+		add_action('wp',array($this,'hydrate'));
+		add_filter( 'wpurp_register_ratings_taxonomy', array( $this, 'translate_ratings_taxonomy' ) );
+
+		//self::$s_ratingCats = self::$ratingCats;
+		//self::$s_ratingGlobal = self::$ratingGlobal;
+		//add_action( 'genesis_before_content', array($this,'display_debug_info') );
+	}
+
+
+	// Initialize all strings needing a translation (doesn't work in __construct)
+	protected function hydrate() {
 		self::$ratingCats = array( 
 			'rating' => array (
 				'weight' => 2,
@@ -43,7 +53,6 @@ class CustomStarRatings {
 				)	
 			),*/
 		);
-		//self::$ratingGlobal = array( 
 		self::$ratingGlobal = array( 
 			'global'=>array (
 				'title'=> __('Overall','custom-star-rating'),
@@ -56,13 +65,8 @@ class CustomStarRatings {
 				)	
 			)
 		);
-
-	add_filter( 'wpurp_register_ratings_taxonomy', array( $this, 'translate_ratings_taxonomy' ) );
-
-		//self::$s_ratingCats = self::$ratingCats;
-		//self::$s_ratingGlobal = self::$ratingGlobal;
-		//add_action( 'genesis_before_content', array($this,'display_debug_info') );
 	}
+
 	
 	/* Output debug information 
 	--------------------------------------------------------------*/	

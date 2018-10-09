@@ -52,7 +52,7 @@ class Custom_Social_Interactions {
             $liking_users = get_post_meta( $post_id, 'liking_users', true );
             $liking_users = is_array( $liking_users ) ? $liking_users : array();
 
-            $user_id = is_user_logged_in()?get_current_user_id():$this->get_user_ip();
+            $user_id = is_user_logged_in()?get_current_user_id():self::get_user_ip();
 
             if ( in_array( $user_id, $liking_users ) ) {
                 $key = array_search( $user_id, $liking_users );
@@ -80,7 +80,7 @@ class Custom_Social_Interactions {
     }
 
     public static function is_liked_post( $post_id ) {
-        $user_id = is_user_logged_in()?get_current_user_id():$this->get_user_ip();
+        $user_id = is_user_logged_in()?get_current_user_id():self::get_user_ip();
 
         $liking_users = get_post_meta( $post_id, 'liking_users', true );
         $liking_users = is_array( $liking_users ) ? $liking_users : array();
@@ -100,7 +100,7 @@ class Custom_Social_Interactions {
 
     /* Get the user ip (from WP Beginner)
     -------------------------------------------------------------*/
-    public function get_user_ip() {
+    public static function get_user_ip() {
         if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
             //check ip from share internet
             $ip = $_SERVER['HTTP_CLIENT_IP'];

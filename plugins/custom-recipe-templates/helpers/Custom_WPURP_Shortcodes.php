@@ -101,9 +101,10 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
 
 
     public function display_ingredient( $ingredient ) {
-        
+
         $vocals = array('a','e','i','o','u');
         $exceptions = array('huile','herbes');
+        $fraction = strpos($ingredient['amount'], '/') === false ? false : true;
 
         $out = '';
 

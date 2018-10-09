@@ -294,9 +294,6 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 				$first_group = false;
 	        }
 
-	        $fraction = false;
-	        $fraction = strpos($ingredient['amount'], '/') === false ? $fraction : true;
-
 	        $meta = WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ) != 'json' && $args['template_type'] == 'recipe' && $args['desktop'] ? ' itemprop="recipeIngredient"' : '';
 
 	        $out .= '<li class="wpurp-recipe-ingredient"' . $meta . '>';

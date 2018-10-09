@@ -12,9 +12,7 @@ class CustomStarRatings {
 	protected static $ratingGlobal;
 
 	public function __construct() {
-
-		self::$ratedPostTypes = array( 'recipe' );
-		add_action('wp',array($this,'hydrate'));
+		add_action('wp', array( $this , 'hydrate' ));
 		add_filter( 'wpurp_register_ratings_taxonomy', array( $this, 'translate_ratings_taxonomy' ) );
 
 		//self::$s_ratingCats = self::$ratingCats;
@@ -24,7 +22,8 @@ class CustomStarRatings {
 
 
 	// Initialize all strings needing a translation (doesn't work in __construct)
-	protected function hydrate() {
+	public function hydrate() {
+		self::$ratedPostTypes = array( 'recipe' );
 		self::$ratingCats = array( 
 			'rating' => array (
 				'weight' => 2,
@@ -38,21 +37,22 @@ class CustomStarRatings {
 								__('Very good','custom-star-rating'),
 								__('Delicious','custom-star-rating'),
 				)	
-			),/*
-			'clarity' => array(
-				'weight' => 1,
-				'title'=> __('Recipe','custom-star-rating'),
-				'legend'=> __('Clarity of the recipe'),
-				'question'=> __('How clear was the recipe ?','custom-star-rating'),
-				'caption' => array(
-								__('Confusing','custom-star-rating'),
-								__('Not so clear','custom-star-rating'),
-								__('Rather clear','custom-star-rating'),
-								__('Very clear','custom-star-rating'),
-								__('Crystal clear even for kitchen dummies','custom-star-rating'),
-				)	
-			),*/
+			),
 		);
+		/*
+		'clarity' => array(
+			'weight' => 1,
+			'title'=> __('Recipe','custom-star-rating'),
+			'legend'=> __('Clarity of the recipe'),
+			'question'=> __('How clear was the recipe ?','custom-star-rating'),
+			'caption' => array(
+							__('Confusing','custom-star-rating'),
+							__('Not so clear','custom-star-rating'),
+							__('Rather clear','custom-star-rating'),
+							__('Very clear','custom-star-rating'),
+							__('Crystal clear even for kitchen dummies','custom-star-rating'),
+			)	
+		),*/
 		self::$ratingGlobal = array( 
 			'global'=>array (
 				'title'=> __('Overall','custom-star-rating'),

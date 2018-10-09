@@ -20,13 +20,13 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
         $link_url='#';
         $output='';
 
-        if( is_user_logged_in() ) {
-            $link_class .= ' logged-in';
-        } 
-        else {
-            $link_id='join-us';
-            $link_url = '/connexion';
-        }
+        // if( is_user_logged_in() ) {
+        //     $link_class .= ' logged-in';
+        // } 
+        // else {
+        //     $link_id='join-us';
+        //     $link_url = '/connexion';
+        // }
         
         $tooltip_like = __('Like this recipe','foodiepro');
         $tooltip_dislike = __('Do not like this recipe anymore','foodiepro');

@@ -12,7 +12,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		add_shortcode( 'json-ld-rating', array($this,'display_json_ld_rating') );
 		add_shortcode( 'comment-rating-form', array($this,'display_comment_form_with_rating') );
 		add_shortcode( 'display-star-rating', array($this,'display_star_rating_shortcode') );
-		add_shortcode( 'add-comment-form', 'add_comment_form_shortcode' );
+		add_shortcode( 'add-comment-form', array($this,'add_comment_form_shortcode') );
 	}
 
 

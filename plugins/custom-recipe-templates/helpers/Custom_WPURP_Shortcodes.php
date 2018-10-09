@@ -101,6 +101,10 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
 
 
     public function display_ingredient( $ingredient ) {
+        
+        $vocals = array('a','e','i','o','u');
+        $exceptions = array('huile','herbes');
+
         $out = '';
 
         $out .= '<span class="recipe-ingredient-quantity-unit"><span class="wpurp-recipe-ingredient-quantity recipe-ingredient-quantity" data-normalized="'.$ingredient['amount_normalized'].'" data-fraction="'.$fraction.'" data-original="'.$ingredient['amount'].'">'.$ingredient['amount'].'</span> <span class="wpurp-recipe-ingredient-unit recipe-ingredient-unit" data-original="'.$ingredient['unit'].'">'.$ingredient['unit'].'</span></span>';

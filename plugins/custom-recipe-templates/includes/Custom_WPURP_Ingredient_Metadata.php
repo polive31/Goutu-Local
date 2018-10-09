@@ -10,10 +10,15 @@ class Custom_WPURP_Ingredient_Metadata {
 
 	public function __construct() {
 		// parent::__construct();
+		add_action( 'wp', array ($this, 'hydrate' ));
 		add_action( 'ingredient_add_form_fields', array($this, 'taxonomy_add_months_field'), 10, 2 );
 		add_action( 'ingredient_edit_form_fields', array($this, 'taxonomy_edit_months_field'), 10, 2 );
 		add_action( 'edited_ingredient', array($this, 'save_ingredient_custom_meta'), 10, 2 );  
 		add_action( 'create_ingredient', array($this, 'save_ingredient_custom_meta'), 10, 2 );
+
+	}
+
+	public hydrate() {
 
 		self::$MONTHS = array(
 			__('January','foodiepro'),
@@ -29,6 +34,7 @@ class Custom_WPURP_Ingredient_Metadata {
 			__('November','foodiepro'),
 			__('December','foodiepro')
 		);
+		
 	}
 
 	// Add term page

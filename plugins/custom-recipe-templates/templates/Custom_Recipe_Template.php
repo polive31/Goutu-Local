@@ -273,10 +273,7 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 
 	public function custom_ingredients_list( $recipe, $args ) {
 	    $out = '';
-	    $previous_group = '';
-	    $vocals = array('a','e','i','o','u');
-	    $exceptions = array('huile','herbes');
-	    
+	    $previous_group = '';	    
 	    $first_group = true;
 	    //$out .= '<ul class="wpurp-recipe-ingredients">';
 	    

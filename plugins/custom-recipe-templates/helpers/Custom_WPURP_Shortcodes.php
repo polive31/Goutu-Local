@@ -23,12 +23,16 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
         add_shortcode( 'custom-wpurp-submissions-new-recipe', array( $this, 'new_submission_shortcode' ) );
         add_shortcode( 'custom-wpurp-submissions-current-user-edit', array( $this, 'submissions_current_user_edit_shortcode' ) );
         add_shortcode( 'custom-wpurp-favorites', array( $this, 'favorite_recipes_shortcode' ) );
-
+        
 
         // Recipe List Shortcode and associated actions
         add_shortcode( 'custom-recipe-submissions-current-user-list', array( $this, 'submissions_current_user_list_shortcode' ) );
         add_action( 'wp_ajax_custom_user_submissions_delete_recipe', array( $this, 'ajax_user_delete_recipe') );
         add_action( 'wp_ajax_nopriv_custom_user_submissions_delete_recipe', array( $this, 'ajax_user_delete_recipe') );
+
+        
+        // Misc 
+        add_shortcode( 'display-ingredient', array( $this, 'display_ingredient_shortcode' ) );
 
         // Init actions
         add_action( 'wp', array($this, 'hydrate'));
@@ -57,16 +61,16 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
             array('cube' , _n('cube','cubes',1, 'foodiepro')), //Cube
             array('finger', _n('finger','fingers',1, 'foodiepro')), //Doigt
             array('sheet' , _n('sheet','sheets',1, 'foodiepro')),  //Feuille
-            array('leave' , __('leave', 'foodiepro')),  //Feuille (plante)
-            array('fillet'   , __('fillet', 'foodiepro')), //Filet (anchois)
-            array('clove' , __('clove','foodiepro')), // Gousse
-            array('knob'   , __('knob', 'foodiepro')), //Noix
-            array('pinch' , __('pinch', 'foodiepro')), // Pincée
-            array('handful', __('handful', 'foodiepro')), //Poignée
-            array('sachet', __('sachet', 'foodiepro')), //Sachet
-            array('cup'   , __('cup', 'foodiepro')), //Tasse
-            array('slice'   , __('slice', 'foodiepro')), //Tranche
-            array('glass'   , __('glass', 'foodiepro')), //Verre
+            array('leave' , _n('leave','leaves',1, 'foodiepro')),  //Feuille (plante)
+            array('fillet'   , _n('fillet','fillets',1, 'foodiepro')), //Filet (anchois)
+            array('clove' , _n('clove','cloves',1,'foodiepro')), // Gousse
+            array('knob'   , _n('knob', 'knobs',1,'foodiepro')), //Noix
+            array('pinch' , _n('pinch','pinches',1, 'foodiepro')), // Pincée
+            array('handful', _n('handful', 'handfuls',1,'foodiepro')), //Poignée
+            array('sachet', _n('sachet','sachets',1, 'foodiepro')), //Sachet
+            array('cup'   , _n('cup','cups',1, 'foodiepro')), //Tasse
+            array('slice'   , _n('slice', 'slices',1,'foodiepro')), //Tranche
+            array('glass'   , _n('glass', 'glasses',1,'foodiepro')), //Verre
         );        
     }
 
@@ -80,6 +84,85 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
                 return $this->submissions_form();
             }
         }
+    }
+
+    public function display_ingredient_shortcode( $options ) {
+        $options = shortcode_atts( array(
+            'amount' => '', 
+            'amount_normalized' => '', 
+            'unit' => '',
+            'ingredient' => '',
+            'notes' => '',
+        ), $options );
+
+        return $this->display_ingredient( $options );
+
+    }
+
+
+    public function display_ingredient( $ingredient ) {
+        $out = '';
+
+        $out .= '<span class="recipe-ingredient-quantity-unit"><span class="wpurp-recipe-ingredient-quantity recipe-ingredient-quantity" data-normalized="'.$ingredient['amount_normalized'].'" data-fraction="'.$fraction.'" data-original="'.$ingredient['amount'].'">'.$ingredient['amount'].'</span> <span class="wpurp-recipe-ingredient-unit recipe-ingredient-unit" data-original="'.$ingredient['unit'].'">'.$ingredient['unit'].'</span></span>';
+
+        $taxonomy = get_term_by('name', $ingredient['ingredient'], 'ingredient');
+        // $taxonomy_slug = is_object( $taxonomy ) ? $taxonomy->slug : $args['ingredient_name'];
+        $taxonomy_slug = $taxonomy->slug;
+
+        $plural = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'plural' );
+        $plural = is_array( $plural ) ? false : $plural;
+        ////PC::debug( array('Plural array'=>$plural) );
+        
+        $plural_data = $plural ? ' data-singular="' . esc_attr( $ingredient['ingredient'] ) . '" data-plural="' . esc_attr( $plural ) . '"' : '';
+
+        $out .= ' <span class="wpurp-recipe-ingredient-name recipe-ingredient-name"' . $plural_data . '>';
+
+                $ingredient_name = remove_accents( $ingredient['ingredient'] );
+                $first_letter = $ingredient_name[0];
+                $first_word = strtolower( explode(' ', trim($ingredient_name))[0] );
+                
+                if ( $ingredient['unit']!='' ) {
+                    if ( in_array($first_letter, $vocals) || in_array( $first_word, $exceptions) )
+                        $out .= _x('of ','vowel','foodiepro');
+                    else 
+                        $out .= _x('of ','consonant','foodiepro');                  
+                }
+
+        $ingredient_links = WPUltimateRecipe::option('recipe_ingredient_links', 'archive_custom');
+
+        $closing_tag = '';
+        if ( !empty( $taxonomy ) && $ingredient_links != 'disabled' ) {
+
+            if( $ingredient_links == 'archive_custom' || $ingredient_links == 'custom' ) {
+                $custom_link = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'link' );
+            } else {
+                $custom_link = false;
+            }
+
+            if( WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'hide_link' ) !== '1' ) {
+                if( $custom_link !== false && $custom_link !== '' ) {
+                    $nofollow = WPUltimateRecipe::option( 'recipe_ingredient_custom_links_nofollow', '0' ) == '1' ? ' rel="nofollow"' : '';
+
+                    $out .= '<a href="'.$custom_link.'" class="custom-ingredient-link" target="'.WPUltimateRecipe::option( 'recipe_ingredient_custom_links_target', '_blank' ).'"' . $nofollow . '>';
+                    $closing_tag = '</a>';
+                } else if( $ingredient_links != 'custom' ) {
+                    $out .= '<a href="'.get_term_link( $taxonomy_slug, 'ingredient' ).'">';
+                    $closing_tag = '</a>';
+                }
+            }
+        }
+
+        // $out .= $plural && ($ingredient['unit']!='' || $ingredient['amount_normalized'] > 1) ? $plural : $ingredient['ingredient'];
+        $out .= $plural && ($ingredient['amount_normalized'] > 1) ? $plural : $ingredient['ingredient'];
+        $out .= $closing_tag;
+        $out .= '</span>';
+
+        if( $ingredient['notes'] != '' ) {
+            $out .= ' ';
+            $out .= '<span class="wpurp-recipe-ingredient-notes recipe-ingredient-notes">'.$ingredient['notes'].'</span>';
+        }
+
+        return $out;
     }
 
     public function favorite_recipes_shortcode( $options ) {

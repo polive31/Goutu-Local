@@ -1,7 +1,7 @@
 jQuery(document).ready(function(){
-    console.log('Favorite Recipe loaded !');	
+    // console.log('Favorite Recipe loaded !');	
     jQuery(document).on('click', '.wpurp-recipe-favorite.logged-in', function(e) {
-		console.log('Click on favorite detected !');
+		// console.log('Click on favorite detected !');
         e.preventDefault();
         e.stopPropagation();
 

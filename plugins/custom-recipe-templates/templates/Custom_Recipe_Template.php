@@ -1,6 +1,7 @@
 <?php
 
 
+// class Custom_Recipe_Template  {
 class Custom_Recipe_Template extends Custom_WPURP_Templates {
 	
 	public function __construct() {
@@ -302,63 +303,13 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 	        $meta = WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ) != 'json' && $args['template_type'] == 'recipe' && $args['desktop'] ? ' itemprop="recipeIngredient"' : '';
 
 	        $out .= '<li class="wpurp-recipe-ingredient"' . $meta . '>';
-	        $out .= '<span class="recipe-ingredient-quantity-unit"><span class="wpurp-recipe-ingredient-quantity recipe-ingredient-quantity" data-normalized="'.$ingredient['amount_normalized'].'" data-fraction="'.$fraction.'" data-original="'.$ingredient['amount'].'">'.$ingredient['amount'].'</span> <span class="wpurp-recipe-ingredient-unit recipe-ingredient-unit" data-original="'.$ingredient['unit'].'">'.$ingredient['unit'].'</span></span>';
 
-	        $taxonomy = get_term_by('name', $ingredient['ingredient'], 'ingredient');
-	        $taxonomy_slug = is_object( $taxonomy ) ? $taxonomy->slug : $args['ingredient_name'];
-
-	        $plural = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'plural' );
-	        $plural = is_array( $plural ) ? false : $plural;
-	        ////PC::debug( array('Plural array'=>$plural) );
-	        
-	        $plural_data = $plural ? ' data-singular="' . esc_attr( $ingredient['ingredient'] ) . '" data-plural="' . esc_attr( $plural ) . '"' : '';
-
-	        $out .= ' <span class="wpurp-recipe-ingredient-name recipe-ingredient-name"' . $plural_data . '>';
-
-					$ingredient_name = remove_accents( $ingredient['ingredient'] );
-					$first_letter = $ingredient_name[0];
-					$first_word = strtolower( explode(' ', trim($ingredient_name))[0] );
-					
-					if ( $ingredient['unit']!='' ) {
-						if ( in_array($first_letter, $vocals) || in_array( $first_word, $exceptions) )
-							$out .= _x('of ','vowel','foodiepro');
-						else 
-							$out .= _x('of ','consonant','foodiepro');					
-					}
-
-	        $ingredient_links = WPUltimateRecipe::option('recipe_ingredient_links', 'archive_custom');
-
-	        $closing_tag = '';
-	        if ( !empty( $taxonomy ) && $ingredient_links != 'disabled' ) {
-
-	            if( $ingredient_links == 'archive_custom' || $ingredient_links == 'custom' ) {
-	                $custom_link = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'link' );
-	            } else {
-	                $custom_link = false;
-	            }
-
-	            if( WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'hide_link' ) !== '1' ) {
-	                if( $custom_link !== false && $custom_link !== '' ) {
-	                    $nofollow = WPUltimateRecipe::option( 'recipe_ingredient_custom_links_nofollow', '0' ) == '1' ? ' rel="nofollow"' : '';
-
-	                    $out .= '<a href="'.$custom_link.'" class="custom-ingredient-link" target="'.WPUltimateRecipe::option( 'recipe_ingredient_custom_links_target', '_blank' ).'"' . $nofollow . '>';
-	                    $closing_tag = '</a>';
-	                } else if( $ingredient_links != 'custom' ) {
-	                    $out .= '<a href="'.get_term_link( $taxonomy_slug, 'ingredient' ).'">';
-	                    $closing_tag = '</a>';
-	                }
-	            }
-	        }
-
-	        // $out .= $plural && ($ingredient['unit']!='' || $ingredient['amount_normalized'] > 1) ? $plural : $ingredient['ingredient'];
-	        $out .= $plural && ($ingredient['amount_normalized'] > 1) ? $plural : $ingredient['ingredient'];
-	        $out .= $closing_tag;
-	        $out .= '</span>';
-
-	        if( $ingredient['notes'] != '' ) {
-	            $out .= ' ';
-	            $out .= '<span class="wpurp-recipe-ingredient-notes recipe-ingredient-notes">'.$ingredient['notes'].'</span>';
-	        }
+	        $out .= do_shortcode('[display-ingredient amount="' . $ingredient['amount'] . 
+	        	'" amount_normalized="' . $ingredient['amount_normalized'] . 
+	        	'" unit="' . $ingredient['unit'] . 
+	        	'" ingredient="' . $ingredient['ingredient'] . 
+	        	'" notes="' . $ingredient['notes'] .
+	        ']');
 
 	        $out .= '</li>';
 	    }

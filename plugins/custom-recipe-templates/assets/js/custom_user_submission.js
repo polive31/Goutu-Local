@@ -105,6 +105,7 @@ jQuery(document).ready(function() {
         width: 'off',
         dropdownAutoWidth: false,
         minimumResultsForSearch: -1,
+        allowClear: false,
         // closeOnSelect: false,
     });    
 

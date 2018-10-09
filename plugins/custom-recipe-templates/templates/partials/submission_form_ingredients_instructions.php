@@ -153,17 +153,22 @@ if( !isset( $required_fields ) ) $required_fields = array();
                 <tr class="ingredient">
                     <!-- Sort handle -->
                     <td class="sort-handle" title="<?php echo __('Move this ingredient', 'foodiepro');?>"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16" > </td>
-                    <!-- Quantity -->
-                    <td id="qty"><!-- <span class="mobile-display"><?php _e( 'Quantity', 'foodiepro' ); ?></span> --><input type="text" name="recipe_ingredients[<?php echo $i; ?>][amount]" class="ingredients_amount" id="ingredients_amount_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['amount'] ); ?>"  placeholder="<?php _e( 'Quantity', 'foodiepro' ); ?>"  /></td>
+                    <!-- Ingredient displayed like in published recipe -->
+                    <td class="preview">
+                    <?php
+                        echo $this->display_ingredient($ingredient);
+                    ?>
+                    </td>
+                    <td class="input" id="qty"><!-- <span class="mobile-display"><?php _e( 'Quantity', 'foodiepro' ); ?></span> --><input type="text" name="recipe_ingredients[<?php echo $i; ?>][amount]" class="ingredients_amount" id="ingredients_amount_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['amount'] ); ?>"  placeholder="<?php _e( 'Quantity', 'foodiepro' ); ?>"  /></td>
                     <!-- Unit -->
-                    <td id="unit"><!-- <span class="mobile-display"><?php _e( 'Unit', 'foodiepro' ); ?></span> -->
+                    <td class="input" id="unit"><!-- <span class="mobile-display"><?php _e( 'Unit', 'foodiepro' ); ?></span> -->
 
                         <input type="text" name="recipe_ingredients[<?php echo $i; ?>][unit]" class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['unit'] ); ?>" placeholder="<?php _e( 'Unit', 'foodiepro' );?>" />
                     </td>
                     <!-- Name -->
-                    <td id="name"><!-- <span class="mobile-display"><?php _e( 'Ingredients', 'foodiepro' ); ?></span> --><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['ingredient'] ); ?>" placeholder="<?php _e( 'Ingredient', 'foodiepro' ); ?>"  /></td><td class="spinner"><i id="spinner-ingredients_<?php echo $i; ?>" class="ajax-indicator fa fa-refresh fa-spin"></i></td>
+                    <td class="input" id="name"><!-- <span class="mobile-display"><?php _e( 'Ingredients', 'foodiepro' ); ?></span> --><input type="text"   name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['ingredient'] ); ?>" placeholder="<?php _e( 'Ingredient', 'foodiepro' ); ?>"  /></td><td class="spinner"><i id="spinner-ingredients_<?php echo $i; ?>" class="ajax-indicator fa fa-refresh fa-spin"></i></td>
                     <!-- Notes -->
-                    <td id="notes">
+                    <td class="input" id="notes">
                             <!-- <span class="mobile-display"><?php _e( 'Notes', 'foodiepro' ); ?></span> -->
                         <!--<textarea rows="1" col="20" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>"><?php echo esc_attr( $ingredient['notes'] ); ?></textarea> -->
                         <input type="text" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['notes'] ); ?>" placeholder="<?php _e( 'Notes', 'foodiepro' ); ?>" />

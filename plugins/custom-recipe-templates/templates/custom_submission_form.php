@@ -118,6 +118,7 @@
         // -----------------------------------------------------------
         foreach( $select_fields as $taxonomy => $select_field ) {
             $multiselect = self::MULTISELECT[$taxonomy];
+            
             // Multiselect
             if( $multiselect ) {
                 preg_match( "/<select[^>]+>/i", $select_field['dropdown'], $select_field_match );

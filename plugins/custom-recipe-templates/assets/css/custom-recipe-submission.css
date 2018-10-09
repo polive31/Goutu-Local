@@ -188,6 +188,10 @@ textarea.recipe-instruction::placeholder,
   padding:10px 10px;  
 }
 
+tr.ingredient td.preview {
+  display:none;
+}
+
  span.mobile-display {
   display:none!important;
 }
@@ -512,20 +516,20 @@ li.select2-selection__choice,
 
 /*Select drop down*/
 
-  .taxonomy-select-boxes select {
-    width: 200px;
-  }
+.taxonomy-select-boxes select {
+  width: 200px;
+}
 
 #wpurp_user_submission_form option {
-    color: #aaa;
-    font-style: italic;
+  color: #aaa;
+  font-style: italic;
 }
 
 #wpurp_user_submission_form option.level-0,
 #wpurp_user_submission_form option.level-1,
 #wpurp_user_submission_form option.level-2 {
-    font-style: initial;
-    color: initial;
+  font-style: initial;
+  color: initial;
 }
 
 #recipe-cuisine option.level-0 {
@@ -537,8 +541,8 @@ li.select2-selection__choice,
 
 /*Select 2*/
 
- .taxonomy-select-boxes select,
- .select2-container {
+.taxonomy-select-boxes select,
+.select2-container {
   display: inline-block;
   cursor:pointer!important;
   margin: 5px 10px!important;
@@ -627,10 +631,10 @@ li.select2-selection__choice,
     opacity: 0.8;
 }
 
-.select2-selection__clear {
+/*.select2-selection__clear {
     visibility: hidden;
 }
-
+*/
 .select2-dropdown {
   border:0;
 }
@@ -772,12 +776,12 @@ ul[aria-multiselectable=true] .select2-results__option[aria-selected=true] {
     float:left;
   } 
 
-   tr.ingredient td textarea,
-   tr.ingredient td input {
+  tr.ingredient td textarea,
+  tr.ingredient td input {
     width:68%;
   } 
   
-   span.mobile-display {
+  span.mobile-display {
     display:inline-block!important;
     float: left;
     width: 30%;
@@ -787,7 +791,7 @@ ul[aria-multiselectable=true] .select2-results__option[aria-selected=true] {
     font-weight: bold;
   }
   
-   .mobile-hidden,
+  .mobile-hidden,
    tr.ingredient-field-header {
     display:none!important;
   }   
@@ -820,9 +824,9 @@ ul[aria-multiselectable=true] .select2-results__option[aria-selected=true] {
   /*SELECTION BOXES*/
 
   /*Prevent display of keyboard on smartphone*/
-  input.select2-search__field {
+/*  input.select2-search__field {
     display: none;
-  }
+  }*/
 
   .recipe-tags-container {
     padding:20px;

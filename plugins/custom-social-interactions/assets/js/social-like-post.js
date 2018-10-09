@@ -1,6 +1,7 @@
 jQuery(document).ready(function(){
-    console.log('Social like Post loaded !');
-    jQuery(document).on('click', '.social-like-post.logged-in', function(e) {
+    // console.log('Social like Post loaded !');
+    // jQuery(document).on('click', '.social-like-post.logged-in', function(e) {
+    jQuery(document).on('click', '.social-like-post', function(e) {
         console.log('Click on like detected !');
 
         // console.log( 'ajaxurl = ' + custom_post_like.ajaxurl );
@@ -24,7 +25,7 @@ jQuery(document).ready(function(){
                 
                 // Prep ajax call
         var postId = button.data('post-id');
-                console.log('post ID :'+ postId);
+        // console.log('post ID :'+ postId);
 
         var data = {
           action: 'like_post',

@@ -37,7 +37,7 @@ class Custom_Social_Interactions {
 
     public function social_like_post_script() {
         if (! is_single() ) return;
-            wp_enqueue_script( 'custom-post-like', self::$_PluginPath . '/assets/js/social-like-post.js', array( 'jquery' ), CSI_PLUGIN_VERSION, false );
+            wp_enqueue_script( 'custom-post-like', self::$_PluginPath . '/assets/js/social-like-post.js', array( 'jquery' ), CHILD_THEME_VERSION, false );
             wp_localize_script( 'custom-post-like', 'custom_post_like', array( 
                     'ajaxurl' => admin_url( 'admin-ajax.php' ),
                     'nonce' => wp_create_nonce( 'custom_post_like' ))

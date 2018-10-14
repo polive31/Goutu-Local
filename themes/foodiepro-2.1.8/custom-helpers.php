@@ -9,7 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 /* =              CUSTOM SCRIPTS ENQUEUE
 /* =================================================================*/
 
-
 function url_exists($url) {
 	$headers = @get_headers($url);
 	return (strpos($headers[0],'404') === false);
@@ -33,7 +32,6 @@ function remove_script($script) {
 	wp_deregister_script($script);
 	wp_dequeue_script($script);
 }
-
 
 
 /* =================================================================*/

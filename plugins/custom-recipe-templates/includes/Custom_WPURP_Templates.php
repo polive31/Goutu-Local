@@ -35,7 +35,9 @@ class Custom_WPURP_Templates {
 		add_action('wp_ajax_nopriv_get_tax_terms', array($this, 'custom_get_tax_terms'));
 		add_action('wp_ajax_get_tax_terms', array($this, 'custom_get_tax_terms'));
 		
-
+        // Ajax callbacks for ingredient preview 
+        add_action( 'wp_ajax_ingredient_preview', array( $this, 'ajax_ingredient_preview'));
+        add_action( 'wp_ajax_nopriv_ingredient_preview', array( $this, 'ajax_ingredient_preview'));
 
 		/* Customize User Submission shortcode */
 		// add_filter ( 'wpurp_user_submissions_current_user_edit_item', array($this, 'remove_recipe_list_on_edit_recipe'), 15, 2 );
@@ -343,6 +345,8 @@ class Custom_WPURP_Templates {
 		                'footer' => true,
 		                'data' => array(
 		                    'name' => 'custom_user_submissions',
+							'ajaxurl' => admin_url( 'admin-ajax.php' ),
+							'nonce' => wp_create_nonce('preview_ingredient'),
 		                	'placeholder' => WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png',
 		                )
 		           	)					
@@ -452,7 +456,6 @@ class Custom_WPURP_Templates {
 		    'hide_empty' => false,
 		) );
 
-
 		//copy the business titles to a simple array
 		$suggestions = array();
 		foreach( $terms as $term )
@@ -462,58 +465,6 @@ class Custom_WPURP_Templates {
 	 
 		die(); //stop "0" from being output		
 	}
-
-
-function wp_ajax_ajax_tag_search() {
-	if ( ! isset( $_GET['tax'] ) ) {
-		wp_die( 0 );
-	}
-
-	$taxonomy = sanitize_key( $_GET['tax'] );
-	$tax = get_taxonomy( $taxonomy );
-	if ( ! $tax ) {
-		wp_die( 0 );
-	}
-
-	if ( ! current_user_can( $tax->cap->assign_terms ) ) {
-		wp_die( -1 );
-	}
-
-	$s = wp_unslash( $_GET['q'] );
-
-	$comma = _x( ',', 'tag delimiter' );
-	if ( ',' !== $comma )
-		$s = str_replace( $comma, ',', $s );
-	if ( false !== strpos( $s, ',' ) ) {
-		$s = explode( ',', $s );
-		$s = $s[count( $s ) - 1];
-	}
-	$s = trim( $s );
-
-	/**
-	 * Filters the minimum number of characters required to fire a tag search via Ajax.
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param int         $characters The minimum number of characters required. Default 2.
-	 * @param WP_Taxonomy $tax        The taxonomy object.
-	 * @param string      $s          The search term.
-	 */
-	$term_search_min_chars = (int) apply_filters( 'term_search_min_chars', 2, $tax, $s );
-
-	/*
-	 * Require $term_search_min_chars chars for matching (default: 2)
-	 * ensure it's a non-negative, non-zero integer.
-	 */
-	if ( ( $term_search_min_chars == 0 ) || ( strlen( $s ) < $term_search_min_chars ) ){
-		wp_die();
-	}
-
-	$results = get_terms( $taxonomy, array( 'name__like' => $s, 'fields' => 'names', 'hide_empty' => false ) );
-
-	echo join( $results, "\n" );
-	wp_die();
-}
 
 	
 /* Custom Recipe Submission Shortcode */
@@ -544,6 +495,50 @@ function wp_ajax_ajax_tag_search() {
 		
 	// 	return $html;
 	// }
+
+    public function ajax_ingredient_preview() {
+
+        // if( ! check_ajax_referer( 'preview_ingredient', 'security', false ) ) {
+        //     wp_send_json_error( array('msg' => 'Nonce not recognized'));
+        //     die();
+        // }
+
+        if( isset($_POST['target_ingredient_id'] ) ) {
+            $id= $_POST['target_ingredient_id'][0];
+            // echo $id;
+        }
+        else {
+            wp_send_json_error( array('msg' => 'No ingredient id provided'));
+            die();
+        }
+
+        $args=array(
+            'amount' => '',
+            'unit'  => '',
+            'ingredient' => '',
+            'notes' => ''
+        );
+
+        foreach ($args as $key => $value ) {
+            if( isset( $_POST[$key] ) )            
+                $args[$key] = $_POST[$key];
+        }
+
+        if ( $args['ingredient']=='' ) {
+             wp_send_json_error( array('msg' => 'No ingredient name provided'));
+            die();       	
+        }
+
+        $args['links']='no';
+
+        $ingredient_preview =  Custom_WPURP_Ingredient::preview( $args );
+
+        wp_send_json_success( array('msg' => $ingredient_preview) );
+
+        die();
+          
+    }
+
 
 	
 }

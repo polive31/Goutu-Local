@@ -5,13 +5,25 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
     const RECIPES_PUBLISH_SLUG = 'publier-recettes';
     const RECIPE_NEW_SLUG = 'nouvelle-recette';
     const RECIPE_EDIT_SLUG = 'modifier-recette';
-    const MULTISELECT = array( 'ingredient' => true, 'course' => true, 'cuisine' => false, 'season' => false, 'occasion' => true, 'diet' => true, 'difficult' => false, 'category'=>true, 'post_tag' => true);
+    const MULTISELECT = array( 
+        'ingredient' => true, 
+        'course' => true, 
+        'cuisine' => false, 
+        'season' => false, 
+        'occasion' => true, 
+        'diet' => true, 
+        'difficult' => false, 
+        'category'=>true, 
+        'post_tag' => true
+    );
+
+
     protected static $_PluginDir;  
     protected static $_UploadPath; 
     protected $logged_in;
     protected $taxonomies;
     protected $instructions;
-    protected static $UNITS;    
+
 
     public function __construct( $name = 'user-submissions' ) {
         parent::__construct( $name );
@@ -24,7 +36,6 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
         add_shortcode( 'custom-wpurp-submissions-current-user-edit', array( $this, 'submissions_current_user_edit_shortcode' ) );
         add_shortcode( 'custom-wpurp-favorites', array( $this, 'favorite_recipes_shortcode' ) );
         
-
         // Recipe List Shortcode and associated actions
         add_shortcode( 'custom-recipe-submissions-current-user-list', array( $this, 'submissions_current_user_list_shortcode' ) );
         add_action( 'wp_ajax_custom_user_submissions_delete_recipe', array( $this, 'ajax_user_delete_recipe') );
@@ -35,44 +46,16 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
         add_shortcode( 'display-ingredient', array( $this, 'display_ingredient_shortcode' ) );
 
         // Init actions
-        add_action( 'wp', array($this, 'hydrate'));
-
+        // add_action( 'wp', array($this, 'hydrate'));
 
     }
 
     public function hydrate() {
 
-        self::$UNITS = array(
-            array('g'     , _n('gram','grams',1,'foodiepro')),
-            array('kg'    , _n('kilogram', 'kilograms',1, 'foodiepro')),
-            array('cl'    , _n('cl','cl',1,'foodiepro')),
-            array('dl'     , _n('dl','dl',1,'foodiepro')),
-            array('l'     , _n('l','l',1,'foodiepro')),
-            array('tbs'   , _n('table spoon','table spoons',1, 'foodiepro')),
-            array('tsp'   , _n('tea spoon','tea spoons',1, 'foodiepro')),
-            array('stick' , _n('stick','sticks',1,'foodiepro')), //Baton
-            array('can'   , _n('can','cans',1, 'foodiepro')), //Boite
-            array('bowl'  , _n('bowl','bowls',1, 'foodiepro')), //Bol
-            array('bunch' , _n('bunch','bunches',1, 'foodiepro')), //Botte
-            array('bouquet'   , _n('bouquet','bouquets',1, 'foodiepro')), //Bouquet
-            array('sprig'   , _n('sprig','sprigs',1, 'foodiepro')), //Brin
-            array('branch'   , _n('branch','branches',1, 'foodiepro')), //Branche (thym)
-            array('bulb'   , _n('bulb','bulbs',1, 'foodiepro')), //Bulbe
-            array('cube' , _n('cube','cubes',1, 'foodiepro')), //Cube
-            array('finger', _n('finger','fingers',1, 'foodiepro')), //Doigt
-            array('sheet' , _n('sheet','sheets',1, 'foodiepro')),  //Feuille
-            array('leave' , _n('leave','leaves',1, 'foodiepro')),  //Feuille (plante)
-            array('fillet'   , _n('fillet','fillets',1, 'foodiepro')), //Filet (anchois)
-            array('clove' , _n('clove','cloves',1,'foodiepro')), // Gousse
-            array('knob'   , _n('knob', 'knobs',1,'foodiepro')), //Noix
-            array('pinch' , _n('pinch','pinches',1, 'foodiepro')), // Pincée
-            array('handful', _n('handful', 'handfuls',1,'foodiepro')), //Poignée
-            array('sachet', _n('sachet','sachets',1, 'foodiepro')), //Sachet
-            array('cup'   , _n('cup','cups',1, 'foodiepro')), //Tasse
-            array('slice'   , _n('slice', 'slices',1,'foodiepro')), //Tranche
-            array('glass'   , _n('glass', 'glasses',1,'foodiepro')), //Verre
-        );        
+        // echo '<pre>' . print_r( self::$UNITS ) . '</pre>'; 
     }
+
+
 
     public function new_submission_shortcode() {
         if( !is_user_logged_in() ) {
@@ -93,81 +76,10 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
             'unit' => '',
             'ingredient' => '',
             'notes' => '',
+            'links' => 'yes',
         ), $options );
 
-        return $this->display_ingredient( $options );
-
-    }
-
-
-    public function display_ingredient( $ingredient ) {
-
-        $vocals = array('a','e','i','o','u');
-        $exceptions = array('huile','herbes');
-        $fraction = strpos($ingredient['amount'], '/') === false ? false : true;
-
-        $out = '';
-
-        $out .= '<span class="recipe-ingredient-quantity-unit"><span class="wpurp-recipe-ingredient-quantity recipe-ingredient-quantity" data-normalized="'.$ingredient['amount_normalized'].'" data-fraction="'.$fraction.'" data-original="'.$ingredient['amount'].'">'.$ingredient['amount'].'</span> <span class="wpurp-recipe-ingredient-unit recipe-ingredient-unit" data-original="'.$ingredient['unit'].'">'.$ingredient['unit'].'</span></span>';
-
-        $taxonomy = get_term_by('name', $ingredient['ingredient'], 'ingredient');
-        // $taxonomy_slug = is_object( $taxonomy ) ? $taxonomy->slug : $args['ingredient_name'];
-        $taxonomy_slug = $taxonomy->slug;
-
-        $plural = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'plural' );
-        $plural = is_array( $plural ) ? false : $plural;
-        ////PC::debug( array('Plural array'=>$plural) );
-        
-        $plural_data = $plural ? ' data-singular="' . esc_attr( $ingredient['ingredient'] ) . '" data-plural="' . esc_attr( $plural ) . '"' : '';
-
-        $out .= ' <span class="wpurp-recipe-ingredient-name recipe-ingredient-name"' . $plural_data . '>';
-
-                $ingredient_name = remove_accents( $ingredient['ingredient'] );
-                $first_letter = $ingredient_name[0];
-                $first_word = strtolower( explode(' ', trim($ingredient_name))[0] );
-                
-                if ( $ingredient['unit']!='' ) {
-                    if ( in_array($first_letter, $vocals) || in_array( $first_word, $exceptions) )
-                        $out .= _x('of ','vowel','foodiepro');
-                    else 
-                        $out .= _x('of ','consonant','foodiepro');                  
-                }
-
-        $ingredient_links = WPUltimateRecipe::option('recipe_ingredient_links', 'archive_custom');
-
-        $closing_tag = '';
-        if ( !empty( $taxonomy ) && $ingredient_links != 'disabled' ) {
-
-            if( $ingredient_links == 'archive_custom' || $ingredient_links == 'custom' ) {
-                $custom_link = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'link' );
-            } else {
-                $custom_link = false;
-            }
-
-            if( WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'hide_link' ) !== '1' ) {
-                if( $custom_link !== false && $custom_link !== '' ) {
-                    $nofollow = WPUltimateRecipe::option( 'recipe_ingredient_custom_links_nofollow', '0' ) == '1' ? ' rel="nofollow"' : '';
-
-                    $out .= '<a href="'.$custom_link.'" class="custom-ingredient-link" target="'.WPUltimateRecipe::option( 'recipe_ingredient_custom_links_target', '_blank' ).'"' . $nofollow . '>';
-                    $closing_tag = '</a>';
-                } else if( $ingredient_links != 'custom' ) {
-                    $out .= '<a href="'.get_term_link( $taxonomy_slug, 'ingredient' ).'">';
-                    $closing_tag = '</a>';
-                }
-            }
-        }
-
-        // $out .= $plural && ($ingredient['unit']!='' || $ingredient['amount_normalized'] > 1) ? $plural : $ingredient['ingredient'];
-        $out .= $plural && ($ingredient['amount_normalized'] > 1) ? $plural : $ingredient['ingredient'];
-        $out .= $closing_tag;
-        $out .= '</span>';
-
-        if( $ingredient['notes'] != '' ) {
-            $out .= ' ';
-            $out .= '<span class="wpurp-recipe-ingredient-notes recipe-ingredient-notes">'.$ingredient['notes'].'</span>';
-        }
-
-        return $out;
+        return Custom_WPURP_Ingredient::preview( $options );
     }
 
     public function favorite_recipes_shortcode( $options ) {
@@ -219,18 +131,27 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
  
             $view_url = 'href="' . get_permalink($recipe->ID()) . '" ';    
             $view_title = 'title="' . __('Preview recipe', 'foodiepro') . '" ';
+            // $edit_url = $edit?'href="' . get_permalink() . self::RECIPE_EDIT_SLUG . '?wpurp-edit-recipe=' . $recipe->ID() . '" ':$view_url;   
             $edit_url = $edit?'href="' . get_permalink() . self::RECIPE_EDIT_SLUG . '?wpurp-edit-recipe=' . $recipe->ID() . '" ':$view_url;   
             $edit_title = $edit?'title="' . __('Edit recipe', 'foodiepro') . '" ':$view_title;
  
-            $item = '<tr class="recipe-list-row">';
-            if ($edit) $item .= '<td class="recipe-list-actions">';
-            // if ($edit) $item .= '<a ' . $edit_url . $edit_title . '><i class="fa fa-pencil-square-o"></i></a>';
-            if ($edit) $item .= '<a ' . $view_url . $view_title . '><i class="fa fa-eye"></i></a>';
-            if ($edit) $item .= '</td>';
-            $item .= '<td class="recipe-list-thumbnail"><a ' . $edit_url . $edit_title . '><img src="' . $image_url . '"></a></td>';
-            $item .= '<td class="recipe-list-title"><a ' . $edit_url . $edit_title . '>' . $recipe->title() . '</a></td>';
-            if ($edit) $item .= '<td class="recipe-list-status">' . $statuses[ $recipe->post_status() ] . '</td>';
-            if ($edit) $item .= '<td class="recipe-list-actions" title="' . __('Delete recipe', 'foodiepro') . '"><i class="fa fa-trash user-submissions-delete-recipe nodisplay" data-id="' . $recipe->ID() . '" data-title="' . esc_attr( $recipe->title() ) . '"></i></td>';
+            $item = '<tr class="recipe-list-row ' . $recipe->post_status() . '">';
+            // $item .= '<td class="recipe-list-thumbnail"><a ' . $edit_url . $edit_title . '><img src="' . $image_url . '"></a></td>';
+            $item .= '<td class="recipe-list-thumbnail"><a ' . $view_url . $view_title . '><img src="' . $image_url . '"></a></td>';
+            // $item .= '<td class="recipe-list-title"><a ' . $edit_url . $edit_title . '>' . $recipe->title() . '</a></td>';
+            $item .= '<td class="recipe-list-title"><a ' . $view_url . $view_title . '>' . $recipe->title() . '</a></td>';
+            if ($edit) {
+                $item .= '<td class="recipe-list-status">' . $statuses[ $recipe->post_status() ] . '</td>';
+                $item .= '<td class="recipe-list-actions">';
+                    $item .= '<div class="recipe-edit" title="' . __('Edit recipe', 'foodiepro') . '">';
+                    $item .= '<a ' . $edit_url . $edit_title . '><i class="fa fa-pencil-square-o"></i></a>';
+                    // $item .= '<a ' . $view_url . $view_title . '><i class="fa fa-eye"></i></a>';
+                    $item .= '</div>';
+                
+                    $item .= '<div class="recipe-delete" title="' . __('Delete recipe', 'foodiepro') . '"><i class="fa fa-trash user-submissions-delete-recipe nodisplay" data-id="' . $recipe->ID() . '" data-title="' . esc_attr( $recipe->title() ) . '"></i></td>';
+                    $item .= '</div>';
+                $item .= '</td>';
+            }
             $item .= '</tr>';
  
             $output .= apply_filters( 'custom_wpurp_recipe_list_item', $item, $recipe );
@@ -260,6 +181,8 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
 
         die();
     }
+
+
 
     public function submissions_current_user_edit_shortcode() {
         $output = '';

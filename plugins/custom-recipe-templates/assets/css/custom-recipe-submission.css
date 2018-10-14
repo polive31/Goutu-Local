@@ -184,12 +184,20 @@ textarea.recipe-instruction::placeholder,
   box-shadow: 3px 3px 5px #cacaca;  
 }*/
 
- tr.ingredient td {
-  padding:10px 10px;  
+tr.ingredient.saved td.ingredient-input,
+tr.ingredient.new td.ingredient-preview,
+tr.ingredient.edit td.ingredient-preview {
+  display: none;
 }
 
-tr.ingredient td.preview {
-  display:none;
+tr.ingredient.saved td.ingredient-preview,
+tr.ingredient.new td.ingredient-input,
+tr.ingredient.edit td.ingredient-input {
+  display: table-cell;
+}
+
+ tr.ingredient td {
+  padding:10px 10px;  
 }
 
  span.mobile-display {
@@ -770,7 +778,7 @@ ul[aria-multiselectable=true] .select2-results__option[aria-selected=true] {
     width: 100%;
   } 
   
-   tr.ingredient td {
+  tr.ingredient td {
     padding:0 10px; 
     width:100%;
     float:left;

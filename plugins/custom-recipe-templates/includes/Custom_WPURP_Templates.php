@@ -32,8 +32,8 @@ class Custom_WPURP_Templates {
 		add_action( 'wp_enqueue_scripts', array($this, 'custom_wpurp_scripts_styles_enqueue') );
 
 		/* Ajax Callbacks for Autocomplete jquery plugin  */
-		add_action('wp_ajax_nopriv_get_tax_terms', array($this, 'custom_get_tax_terms'));
-		add_action('wp_ajax_get_tax_terms', array($this, 'custom_get_tax_terms'));
+		add_action('wp_ajax_nopriv_get_tax_terms', array($this, 'ajax_custom_get_tax_terms'));
+		add_action('wp_ajax_get_tax_terms', array($this, 'ajax_custom_get_tax_terms'));
 		
         // Ajax callbacks for ingredient preview 
         add_action( 'wp_ajax_ingredient_preview', array( $this, 'ajax_ingredient_preview'));
@@ -440,12 +440,12 @@ class Custom_WPURP_Templates {
 	}
 
 
-	public function custom_get_tax_terms() {
+	public function ajax_custom_get_tax_terms() {
 		// global $wpdb; //get access to the WordPress database object variable
 
-		if ( !is_user_logged_in() ) wp_die();
-		if ( ! isset( $_GET['tax'] ) ) wp_die( 0 );
-		if ( ! isset( $_GET['keys'] ) ) wp_die( 0 );
+		if ( !is_user_logged_in() ) die();
+		if ( ! isset( $_GET['tax'] ) ) die();
+		if ( ! isset( $_GET['keys'] ) ) die();
 		
 		$taxonomy = $_GET['tax'];
 		$keys = $_GET['keys'];
@@ -498,10 +498,15 @@ class Custom_WPURP_Templates {
 
     public function ajax_ingredient_preview() {
 
-        // if( ! check_ajax_referer( 'preview_ingredient', 'security', false ) ) {
-        //     wp_send_json_error( array('msg' => 'Nonce not recognized'));
-        //     die();
-        // }
+        if( ! check_ajax_referer( 'preview_ingredient', 'security', false ) ) {
+            wp_send_json_error( array('msg' => 'Nonce not recognized'));
+            die();
+        }
+
+        if (! is_user_logged_in()) {
+            wp_send_json_error( array('msg' => 'User not logged-in'));
+            die();
+        }
 
         if( isset($_POST['target_ingredient_id'] ) ) {
             $id= $_POST['target_ingredient_id'][0];
@@ -510,6 +515,11 @@ class Custom_WPURP_Templates {
         else {
             wp_send_json_error( array('msg' => 'No ingredient id provided'));
             die();
+        }
+
+        if ( $_POST['ingredient']=='' ) {
+             wp_send_json_error( array('msg' => 'No ingredient name provided'));
+            die();       	
         }
 
         $args=array(
@@ -522,11 +532,6 @@ class Custom_WPURP_Templates {
         foreach ($args as $key => $value ) {
             if( isset( $_POST[$key] ) )            
                 $args[$key] = $_POST[$key];
-        }
-
-        if ( $args['ingredient']=='' ) {
-             wp_send_json_error( array('msg' => 'No ingredient name provided'));
-            die();       	
         }
 
         $args['links']='no';

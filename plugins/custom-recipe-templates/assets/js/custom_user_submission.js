@@ -199,7 +199,7 @@ jQuery(document).on('click', 'tr.ingredient.saved', function(){
                 addRecipeIngredient();
             } 
             else {
-                current_ingredient.next().find('input.ingredients_amount').focus();
+                current_ingredient.next().focus();
             }
         }
     });
@@ -211,11 +211,11 @@ jQuery(document).on('click', 'tr.ingredient.saved', function(){
         var last_id = jQuery('#recipe-ingredients tr:last').attr('id');
         var current_ingredient = jQuery(this).closest('tr.ingredient');
         var current_id = current_ingredient.attr('id');
+        console.log ("Current ingredient : " + current_id);
         
         if (keyCode == 9 && e.shiftKey == true) {
             console.log("Keypress shift !");
-            previousIngredient = current_ingredient.prev();
-            previousIngredient.focus();
+            current_ingredient.prev().focus();
         }
     });
 
@@ -439,11 +439,11 @@ function toggleIngredientPreview(thisIngredient) {
         try { xhr_ingredient.abort(); } catch(e){}
         
         xhr_ingredient=jQuery.ajax({
-            url : ajaxurl,
+            url : custom_user_submissions.ajaxurl,
             method : 'POST',
             data : {
                 action : 'ingredient_preview',
-                // security : nonce,
+                security : custom_user_submissions.nonce,
                 target_ingredient_id : lastIngredientId,
                 amount : lastIngredient.find('.ingredients_amount').val(),
                 unit : lastIngredient.find('.ingredients_unit').val(),

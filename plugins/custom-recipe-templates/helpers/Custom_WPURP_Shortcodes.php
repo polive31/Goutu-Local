@@ -55,8 +55,6 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
         // echo '<pre>' . print_r( self::$UNITS ) . '</pre>'; 
     }
 
-
-
     public function new_submission_shortcode() {
         if( !is_user_logged_in() ) {
             return '<p class="errorbox">' . __( 'Sorry, only registered users may submit recipes.', 'foodiepro' ) . '</p>';
@@ -161,6 +159,9 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
     }  
 
     public function ajax_user_delete_recipe() {
+
+        if( ! is_user_logged_in() ) die();
+
         if(check_ajax_referer( 'custom_user_submissions_list', 'security', false ) ) {
             global $user_ID;
 

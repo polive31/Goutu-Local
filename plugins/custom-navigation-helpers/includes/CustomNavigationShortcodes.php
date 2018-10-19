@@ -19,7 +19,8 @@ class CustomNavigationShortcodes extends CustomArchive {
 		add_shortcode('permalink', array($this,'get_permalink'));
 		add_shortcode('share-title', array($this,'display_share_title')); 
 		add_shortcode('registration', array($this,'output_registation_url')); 
-		add_shortcode( 'wp-page-link', array($this,'display_wordpress_page_link') );	
+		add_shortcode('wp-page-link', array($this,'display_wordpress_page_link') );	
+		add_shortcode('glossary', array($this,'search_display_definition') );	
 
 		// Filters	
 		add_filter( 'query_vars', array($this,'archive_filter_queryvars') );		
@@ -59,6 +60,23 @@ class CustomNavigationShortcodes extends CustomArchive {
 			$html = '<h3 class="share-title">' . $msg . '</h3>';
 		}
 		return $html;
+	}
+
+	/* =================================================================*/
+	/* = GLOSSARY SHORTCODE
+	/* =================================================================*/
+	public function search_display_definition( $atts, $content ) {
+		$atts = shortcode_atts( array(
+			'searchkey' => 'name-directory-search-value', 
+			'slug' => 'lexique-de-cuisine',
+			), $atts );
+
+		$glossary_url = $this->get_page_by_slug($atts['slug']);
+		$html=add_query_arg( $atts['searchkey'], $content, $glossary_url);
+		$html='<a href="' . $html . '">' . $content . '</a>';
+
+		return $html;
+
 	}
 
 	/* =================================================================*/

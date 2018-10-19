@@ -20,7 +20,8 @@ class CustomNavigationShortcodes extends CustomArchive {
 		add_shortcode('share-title', array($this,'display_share_title')); 
 		add_shortcode('registration', array($this,'output_registation_url')); 
 		add_shortcode('wp-page-link', array($this,'display_wordpress_page_link') );	
-		add_shortcode('glossary', array($this,'search_display_definition') );	
+		add_shortcode('glossary', array($this,'search_glossary') );	
+		add_shortcode('search', array($this,'search_posts') );	
 
 		// Filters	
 		add_filter( 'query_vars', array($this,'archive_filter_queryvars') );		
@@ -65,7 +66,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 	/* =================================================================*/
 	/* = GLOSSARY SHORTCODE
 	/* =================================================================*/
-	public function search_display_definition( $atts, $content ) {
+	public function search_glossary( $atts, $content ) {
 		$atts = shortcode_atts( array(
 			'searchkey' => 'name-directory-search-value', 
 			'slug' => 'lexique-de-cuisine',
@@ -76,8 +77,21 @@ class CustomNavigationShortcodes extends CustomArchive {
 		$html='<a href="' . $html . '">' . $content . '</a>';
 
 		return $html;
-
 	}
+
+	/* =================================================================*/
+	/* = SEARCH SHORTCODE
+	/* =================================================================*/
+	public function search_posts( $atts, $content ) {
+		$atts = shortcode_atts( array(
+			'searchkey' => 's',
+			), $atts );
+
+		$html=add_query_arg( $atts['searchkey'], $content, get_site_url());
+		$html='<a href="' . $html . '">' . $content . '</a>';
+
+		return $html;
+	}	
 
 	/* =================================================================*/
 	/* = DISPLAY TOOLTIP SHORTCODE    

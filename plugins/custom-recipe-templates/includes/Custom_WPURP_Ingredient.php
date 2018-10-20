@@ -157,6 +157,7 @@ class Custom_WPURP_Ingredient {
         $out .= $closing_tag;
         $out .= '</span>';
 
+        // INGREDIENT "NOTES"
         if( $args['notes'] != '' ) {
             $out .= ' ';
             $out .= '<span class="wpurp-recipe-ingredient-notes recipe-ingredient-notes">'.$args['notes'].'</span>';

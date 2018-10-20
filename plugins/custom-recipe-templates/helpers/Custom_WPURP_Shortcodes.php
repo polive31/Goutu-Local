@@ -40,7 +40,6 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
         add_shortcode( 'custom-recipe-submissions-current-user-list', array( $this, 'submissions_current_user_list_shortcode' ) );
         add_action( 'wp_ajax_custom_user_submissions_delete_recipe', array( $this, 'ajax_user_delete_recipe') );
         add_action( 'wp_ajax_nopriv_custom_user_submissions_delete_recipe', array( $this, 'ajax_user_delete_recipe') );
-
         
         // Misc 
         add_shortcode( 'display-ingredient', array( $this, 'display_ingredient_shortcode' ) );

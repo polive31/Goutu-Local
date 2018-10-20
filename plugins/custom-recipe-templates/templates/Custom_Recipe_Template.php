@@ -303,7 +303,7 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 	        	'" unit="' . $ingredient['unit'] . 
 	        	'" ingredient="' . $ingredient['ingredient'] . 
 	        	'" notes="' . $ingredient['notes'] .
-	        ']');
+	        '"]');
 
 	        $out .= '</li>';
 	    }

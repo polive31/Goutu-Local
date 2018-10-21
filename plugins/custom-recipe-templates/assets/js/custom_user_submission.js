@@ -185,10 +185,11 @@ jQuery(document).on('click', 'tr.ingredient.saved', function(){
         addRecipeIngredient();
     });
 
-    jQuery('#recipe-ingredients input.ingredients_notes').on('keydown',function(e) {
+    jQuery('#recipe-ingredients .ingredients_notes').on('keydown',function(e) {
         console.log("Found keypress on .ingredient_notes !!!");
         var keyCode = e.keyCode || e.which;
         var last_id = jQuery('#recipe-ingredients tr:last').attr('id');
+        console.log("Last ID = " + last_id);
         var current_ingredient = jQuery(this).closest('tr.ingredient');
         var current_id = current_ingredient.attr('id');
         
@@ -204,7 +205,7 @@ jQuery(document).on('click', 'tr.ingredient.saved', function(){
         }
     });
 
-    jQuery('#recipe-ingredients input.ingredients_amount').on('keydown',function(e) {
+    jQuery('#recipe-ingredients .ingredients_amount').on('keydown',function(e) {
         console.log("Keypress detected on ingredients amount !");
         
         var keyCode = e.keyCode || e.which;
@@ -214,8 +215,12 @@ jQuery(document).on('click', 'tr.ingredient.saved', function(){
         console.log ("Current ingredient : " + current_id);
         
         if (keyCode == 9 && e.shiftKey == true) {
+            event.preventDefault()
             console.log("Keypress shift !");
-            current_ingredient.prev().focus();
+            var previous_ingredient = current_ingredient.prev();
+            previous_ingredient.focus();
+            var prev_id = previous_ingredient.attr('id');
+            console.log ("Previous ingredient : " + prev_id);
         }
     });
 
@@ -673,7 +678,7 @@ function addRecipeIngredient()
 
     clone_ingredient
         .insertAfter(last_row)
-        .find('input, select').val('')
+        .find('input, select, textarea').val('')
         .attr('name', function(index, name) {
             return name.replace(/(\d+)/, nbr_ingredients);
         })

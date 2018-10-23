@@ -158,7 +158,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                     <!-- Ingredient displayed like in published recipe -->
                     <td class="ingredient-preview" colspan="4">
                     <?php
-                        echo Custom_WPURP_Ingredient::preview($ingredient);
+                        echo Custom_WPURP_Ingredient::display($ingredient);
                     ?>
                     </td>
                     <td class="ingredient-input" id="qty">

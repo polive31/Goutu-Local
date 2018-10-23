@@ -76,7 +76,7 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
             'links' => 'yes',
         ), $options );
 
-        return Custom_WPURP_Ingredient::preview( $options );
+        return Custom_WPURP_Ingredient::display( $options );
     }
 
     public function favorite_recipes_shortcode( $options ) {

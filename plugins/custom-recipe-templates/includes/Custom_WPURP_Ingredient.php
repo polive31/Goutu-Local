@@ -94,7 +94,7 @@ class Custom_WPURP_Ingredient {
         return ( in_array($first_letter, self::VOWELS) || in_array( $first_word, self::EXCEPTIONS) );
     } 
 
-    public static function preview( $args ) {
+    public static function display( $args ) {
         if (!isset($args['ingredient']) || $args['ingredient']=='' ) return false;
         $out = '';
         

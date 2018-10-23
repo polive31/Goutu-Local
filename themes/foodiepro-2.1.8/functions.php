@@ -576,8 +576,17 @@ function sitemap_exclude_taxonomy( $value, $taxonomy ) {
 	if( in_array( $taxonomy, $taxonomy_to_exclude ) ) return true;
 }
 
+
+// Add pinterest meta
+add_action ('genesis_meta','add_pinterest_meta');
+ 
+function add_pinterest_meta() { 
+	echo '<meta name="p:domain_verify" content="ace7d3a039fc8a36f43a85bb5d0ad86a"/>'; 
+}
+
 /* =================================================================*/
 /* =              LAYOUT      
+function custom_favicon_links() {
 /* =================================================================*/
 
 //* Adds custom inline Javascript

@@ -46,6 +46,7 @@ class Custom_Recipe_Metadata {
             ),
             'datePublished' => $recipe->date(),
             'image' => $recipe->image_url( 'full' ),
+            // 'description' => $description,
             'description' => $recipe->description(),
         );
 

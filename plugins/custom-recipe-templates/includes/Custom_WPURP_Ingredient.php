@@ -9,6 +9,8 @@ class Custom_WPURP_Ingredient {
 	public static $MONTHS;
     public static $UNITS = array(); 
 
+    private $ingredient_meta;
+
     CONST VOWELS = array('a','e','i','o','u');
     CONST EXCEPTIONS = array('huile','herbes');
     CONST UNITS_LIST = array(
@@ -45,9 +47,11 @@ class Custom_WPURP_Ingredient {
 		// parent::__construct();
 		add_action( 'init', array($this, 'hydrate' ));
 		add_action( 'ingredient_add_form_fields', array($this, 'taxonomy_add_months_field'), 10, 2 );
-		add_action( 'ingredient_edit_form_fields', array($this, 'taxonomy_edit_months_field'), 10, 2 );
+		add_action( 'ingredient_add_form_fields', array($this, 'taxonomy_add_plural_field'), 10, 2 );
+		add_action( 'ingredient_edit_form_fields', array($this, 'taxonomy_edit_fields'), 10, 2 );
+		// add_action( 'ingredient_edit_form_fields', array($this, 'taxonomy_edit_plural_field'), 10, 2 );
 		add_action( 'edited_ingredient', array($this, 'save_ingredient_custom_meta'), 10, 2 );  
-		add_action( 'create_ingredient', array($this, 'save_ingredient_custom_meta'), 10, 2 );
+		add_action( 'create_ingredient', array($this, 'save_ingredient_custom_meta'), 10, 2 );		
 	}
 
 	public function hydrate() {
@@ -90,6 +94,10 @@ class Custom_WPURP_Ingredient {
         return ( in_array($first_letter, self::VOWELS) || in_array( $first_word, self::EXCEPTIONS) );
     } 
 
+    public static function get_meta( $slug, $meta ) {
+
+    }
+
     public static function preview( $args ) {
         if (!isset($args['ingredient']) || $args['ingredient']=='' ) return false;
         $out = '';
@@ -103,7 +111,6 @@ class Custom_WPURP_Ingredient {
 
         // OUTPUT FIRST PART 
         $out .= '<span class="recipe-ingredient-quantity-unit"><span class="wpurp-recipe-ingredient-quantity recipe-ingredient-quantity" data-normalized="'. $amount_normalized .'" data-fraction="'.$fraction.'" data-original="'.$args['amount'].'">'.$args['amount'].' </span>';
-        
         $out .= '<span class="wpurp-recipe-ingredient-unit recipe-ingredient-unit" data-original="'. $unit .'">'.$unit.'</span></span>';
 
 
@@ -166,6 +173,88 @@ class Custom_WPURP_Ingredient {
         return $out;
     }    	
 
+	public function taxonomy_edit_fields($term) {
+		$t_id = $term->term_id;
+		// retrieve the existing value(s) for this meta field. This returns an array
+		$ingredient_meta = get_option( "taxonomy_$t_id" ); 
+		$this->taxonomy_edit_months_field($term, $ingredient_meta);
+		$this->taxonomy_edit_isplural_field($term, $ingredient_meta);
+	}
+
+	// Edit term page
+	public function taxonomy_edit_isplural_field($term, $ingredient_meta) {
+		// put the term ID into a variable
+		// echo '<pre>' . print_r($ingredient_meta) . '<br></pre>';
+	 	?>
+	 	<tr class="form-field">
+		<th scope="row" valign="top">
+		<label for="wpurp_taxonomy_metadata_ingredientisplural"><?php echo __('Always plural ?','foodiepro');?></label>
+		<td>	
+			<?php
+				// echo '<pre>' . print_r(self::$MONTHS) . '</pre>';
+				// echo '<pre>' . print_r($month) . '<br></pre>';
+				$checked = isset($ingredient_meta['isplural']);
+			?>
+			<div class="form-field">
+				<input type="checkbox" name="wpurp_taxonomy_metadata_ingredient[isplural]" id="wpurp_taxonomy_metadata_ingredientisplural" title="always_plural" <?php echo $checked?"checked":"";?>  >
+			</div>
+			<p class="description"><?php _e( 'Check whenever this ingredient should always displayed in its plural form','foodiepro' ); ?></p>
+		</td>
+		</th>
+		</tr>
+
+		<?php
+	}	
+
+	// Edit term page
+	public function taxonomy_edit_months_field($term, $ingredient_meta) {
+
+	 	?>
+	 	<tr class="form-field">
+		<th scope="row" valign="top">
+		<label for="wpurp_taxonomy_metadata_ingredient_months"><?php echo __('Months','foodiepro');?></label>
+		<td>
+			<table>
+				<tr>		
+				<?php
+				$i=1;
+				foreach (self::$MONTHS as $month) {	
+				// echo '<pre>' . print_r(self::$MONTHS) . '</pre>';
+					// echo '<pre>' . print_r($month) . '<br></pre>';
+					$checked = isset($ingredient_meta['month'][$i]);
+					?>
+					<td>
+					<div class="form-field">
+						<label for="wpurp_taxonomy_metadata_ingredient[month][<?php echo $i;?>]" title="<?php echo $month;?>"><?php echo $month[0]; ?></label>
+						<input type="checkbox" name="wpurp_taxonomy_metadata_ingredient[month][<?php echo $i;?>]" id="wpurp_taxonomy_metadata_ingredientmonth<?php echo $i;?>" title="<?php echo $month;?>" <?php echo $checked?"checked":"";?>  >
+					</div>
+					</td>
+					<?php
+					$i++;
+				}?>
+				</tr>
+			</table>
+			<p class="description"><?php _e( 'Check the months when this ingredient is available','foodiepro' ); ?></p>
+		</td>
+		</th>
+		</tr>
+
+		<?php
+	}
+
+
+	// Add term page
+	public function taxonomy_add_plural_field() {
+		// this will add the custom meta field to the add new term page
+		?>
+		<label for="wpurp_taxonomy_metadata_ingredientisplural"><?php echo __('Always plural ?','foodiepro');?></label>
+		<div class="form-ingredient-plural">
+			<input type="checkbox" name="wpurp_taxonomy_metadata_ingredient[isplural]" id="wpurp_taxonomy_metadata_ingredientisplural" value="available" title="always_plural" >
+		</div>
+		<p class="description"><?php _e( 'Check whenever this ingredient should always displayed in its plural form','foodiepro' ); ?></p>
+		<?php
+	}
+
 	// Add term page
 	public function taxonomy_add_months_field() {
 		// this will add the custom meta field to the add new term page
@@ -195,65 +284,37 @@ class Custom_WPURP_Ingredient {
 	}
 
 
-	// Edit term page
-	public function taxonomy_edit_months_field($term) {
-		// put the term ID into a variable
-		$t_id = $term->term_id;
-		// retrieve the existing value(s) for this meta field. This returns an array
-		$ingredient_meta = get_option( "taxonomy_$t_id" ); 
-		// echo '<pre>' . print_r($ingredient_meta) . '<br></pre>';
-	 	?>
-	 	<tr class="form-field">
-		<th scope="row" valign="top">
-		<label for="wpurp_taxonomy_metadata_ingredient_months"><?php echo __('Months','foodiepro');?></label>
-		<td>
-			<table>
-				<tr>		
-				<?php
-				$i=1;
-				foreach (self::$MONTHS as $month) {	
-				// echo '<pre>' . print_r(self::$MONTHS) . '</pre>';
-					// echo '<pre>' . print_r($month) . '<br></pre>';
-					$checked = isset($ingredient_meta['month'][$i]);
-					?>
-					<td>
-					<div class="form-field">
-						<label for="wpurp_taxonomy_metadata_ingredient[month][<?php echo $i;?>]" title="<?php echo $month;?>"><?php echo $month[0]; ?></label>
-						<input type="checkbox" name="wpurp_taxonomy_metadata_ingredient[month][<?php echo $i;?>]" id="wpurp_taxonomy_metadata_ingredientmonth<?php echo $i;?>" title="<?php echo $month;?>" <?php echo $checked?"checked":"";?>  >
-					</div>
-					</td>
-					<?php
-					$i++;
-				}?>
-				</tr>
-			</table>
-		</td>
-		</th>
-		</tr>
-		<p class="description"><?php _e( 'Check the months when this ingredient is available','foodiepro' ); ?></p>
-
-		<?php
-	}
-
-
 	// Save extra taxonomy fields callback function.
 	public function save_ingredient_custom_meta( $term_id ) {
 		if ( isset( $_POST['wpurp_taxonomy_metadata_ingredient'] ) ) {
 			// $t_id = $term_id;
-			$ingredient_meta = get_option( "taxonomy_$term_id" );
-			$i=1;
-			foreach ( self::$MONTHS as $month ) {
-				if ( isset ( $_POST['wpurp_taxonomy_metadata_ingredient']['month'][$i] ) ) 
-					$ingredient_meta['month'][$i] = $_POST['wpurp_taxonomy_metadata_ingredient']['month'][$i];
-				elseif ( isset($ingredient_meta['month'][$i]) )
-					unset($ingredient_meta['month'][$i]);
-				$i++;
-			}
+			$this->ingredient_meta = get_option( "taxonomy_$term_id" );
+
+			$this->update_month();
+			$this->update_isplural();
+
 			// Save the option array.
-			update_option( "taxonomy_$term_id", $ingredient_meta );
+			update_option( "taxonomy_$term_id", $this->ingredient_meta );
 		}
 	}  
 
+	public function update_month() {
+		$i=1;
+		foreach ( self::$MONTHS as $month ) {
+			if ( isset ( $_POST['wpurp_taxonomy_metadata_ingredient']['month'][$i] ) ) 
+				$this->ingredient_meta['month'][$i] = $_POST['wpurp_taxonomy_metadata_ingredient']['month'][$i];
+			elseif ( isset($this->ingredient_meta['month'][$i]) )
+				unset($this->ingredient_meta['month'][$i]);
+			$i++;
+		}
+	}
+
+	public function update_isplural() {
+		if ( isset ( $_POST['wpurp_taxonomy_metadata_ingredient']['isplural'] ) ) 
+			$this->ingredient_meta['isplural'] = $_POST['wpurp_taxonomy_metadata_ingredient']['isplural'];
+		elseif ( isset($this->ingredient_meta['isplural']) )
+			unset($this->ingredient_meta['isplural']);
+	}
 
 
 }

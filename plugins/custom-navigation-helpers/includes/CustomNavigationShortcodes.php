@@ -22,6 +22,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		add_shortcode('wp-page-link', array($this,'display_wordpress_page_link') );	
 		add_shortcode('glossary', array($this,'search_glossary') );	
 		add_shortcode('search', array($this,'search_posts') );	
+		add_shortcode('taxonomy-terms', array($this,'simple_list_taxonomy_terms'));	
 
 		// Filters	
 		add_filter( 'query_vars', array($this,'archive_filter_queryvars') );		
@@ -62,6 +63,46 @@ class CustomNavigationShortcodes extends CustomArchive {
 		}
 		return $html;
 	}
+
+	/* =================================================================*/
+	/* = LIST TAXONOMY TERMS SHORTCODE
+	/* =================================================================*/
+	public function simple_list_taxonomy_terms($args)
+	{
+	    $args = shortcode_atts( array(
+	        'taxonomy' => 'post_tag',
+	        'orderby' => 'name',
+	        'groupby' => ''
+	    ), $args );
+
+	    // $args = array(
+	    //     'taxonomy' => $attributes['taxonomy'],
+	    //     'orderby' => $attributes['orderby'],
+	    // );
+
+	    $terms = get_categories($args);
+	    
+	    $output = '';
+
+	    // Exit if there are no terms
+	    if (! $terms) {
+	        return $output;
+	    }
+
+	    // Start list
+	    $output .= '<ul>';
+
+	    // Add terms
+	    foreach($terms as $term) {
+	        $output .= '<li><a href="'. get_term_link($term) .'">'. esc_html($term->cat_name) .'</a></li>';
+	    }
+
+	    // End list
+	    $output .= '</ul>';
+
+	    return $output;
+	}
+
 
 	/* =================================================================*/
 	/* = GLOSSARY SHORTCODE

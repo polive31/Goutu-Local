@@ -50,8 +50,8 @@ class Custom_WPURP_Ingredient {
 		add_action( 'ingredient_add_form_fields', array($this, 'taxonomy_add_plural_field'), 10, 2 );
 		add_action( 'ingredient_edit_form_fields', array($this, 'taxonomy_edit_fields'), 10, 2 );
 		// add_action( 'ingredient_edit_form_fields', array($this, 'taxonomy_edit_plural_field'), 10, 2 );
-		add_action( 'edited_ingredient', array($this, 'save_ingredient_custom_meta'), 10, 2 );  
-		add_action( 'create_ingredient', array($this, 'save_ingredient_custom_meta'), 10, 2 );		
+		add_action( 'edited_ingredient', array($this, 'save_meta'), 10, 2 );  
+		add_action( 'create_ingredient', array($this, 'save_meta'), 10, 2 );		
 	}
 
 	public function hydrate() {
@@ -94,10 +94,6 @@ class Custom_WPURP_Ingredient {
         return ( in_array($first_letter, self::VOWELS) || in_array( $first_word, self::EXCEPTIONS) );
     } 
 
-    public static function get_meta( $slug, $meta ) {
-
-    }
-
     public static function preview( $args ) {
         if (!isset($args['ingredient']) || $args['ingredient']=='' ) return false;
         $out = '';
@@ -122,9 +118,12 @@ class Custom_WPURP_Ingredient {
         $plural = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'plural' );
         $plural = is_array( $plural ) ? false : $plural;
         ////PC::debug( array('Plural array'=>$plural) );  
+
         $plural_data = $plural ? ' data-singular="' . esc_attr( $args['ingredient'] ) . '" data-plural="' . esc_attr( $plural ) . '"' : '';
         $out .= ' <span class="wpurp-recipe-ingredient-name recipe-ingredient-name"' . $plural_data . '>';
 
+        $isplural = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'isplural' );
+        // echo '<pre>' . print_r("is plural : " . $isplural) . '</pre>';
 
         // INGREDIENT "OF"
         if ($unit != '') {
@@ -152,6 +151,7 @@ class Custom_WPURP_Ingredient {
 
                     $out .= '<a href="'.$custom_link.'" class="custom-ingredient-link" target="'.WPUltimateRecipe::option( 'recipe_ingredient_custom_links_target', '_blank' ).'"' . $nofollow . '>';
                     $closing_tag = '</a>';
+
                 } else if( $ingredient_links != 'custom' ) {
                     $out .= '<a href="'.get_term_link( $taxonomy_slug, 'ingredient' ).'">';
                     $closing_tag = '</a>';
@@ -160,7 +160,7 @@ class Custom_WPURP_Ingredient {
         }
 
         // $out .= $plural && ($ingredient['unit']!='' || $ingredient['amount_normalized'] > 1) ? $plural : $ingredient['ingredient'];
-        $out .= ( $plural && $amount_normalized > 1) ? $plural : $args['ingredient'];
+        $out .= ( $plural && ($amount_normalized > 1 || $isplural)) ? $plural : $args['ingredient'];
         $out .= $closing_tag;
         $out .= '</span>';
 
@@ -284,8 +284,15 @@ class Custom_WPURP_Ingredient {
 	}
 
 
+	// Get taxonomy field.
+    public function get_meta( $term ) {
+		$t_id = $term->term_id;
+		// retrieve the existing value(s) for this meta field. This returns an array
+		return get_option( "taxonomy_$t_id" ); 
+    }
+
 	// Save extra taxonomy fields callback function.
-	public function save_ingredient_custom_meta( $term_id ) {
+	public function save_meta( $term_id ) {
 		if ( isset( $_POST['wpurp_taxonomy_metadata_ingredient'] ) ) {
 			// $t_id = $term_id;
 			$this->ingredient_meta = get_option( "taxonomy_$term_id" );

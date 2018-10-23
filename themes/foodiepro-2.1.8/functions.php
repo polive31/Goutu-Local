@@ -576,6 +576,12 @@ function sitemap_exclude_taxonomy( $value, $taxonomy ) {
 	if( in_array( $taxonomy, $taxonomy_to_exclude ) ) return true;
 }
 
+// Capitalize SEO title
+add_filter( 'wpseo_title', 'wpseo_uppercase_title' );
+function wpseo_uppercase_title( $title ) {
+	return ucfirst($title);
+}
+
 
 // Add pinterest meta
 add_action ('genesis_meta','add_pinterest_meta');

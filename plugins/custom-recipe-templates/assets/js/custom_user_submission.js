@@ -158,9 +158,6 @@ jQuery(document).on('click', 'tr.ingredient.saved', function(){
     });
 
 
-
-
-
     // // Hide AutoSuggest box on TAB or click
     // jQuery('#recipe-ingredients').on('keydown', function(e) {
     //     var keyCode = e.keyCode || e.which;
@@ -186,17 +183,17 @@ jQuery(document).on('click', 'tr.ingredient.saved', function(){
     });
 
     jQuery('#recipe-ingredients .ingredients_notes').on('keydown',function(e) {
-        console.log("Found keypress on .ingredient_notes !!!");
+        // console.log("Found keypress on .ingredient_notes !!!");
         var keyCode = e.keyCode || e.which;
         var last_id = jQuery('#recipe-ingredients tr:last').attr('id');
-        console.log("Last ID = " + last_id);
+        // console.log("Last ID = " + last_id);
         var current_ingredient = jQuery(this).closest('tr.ingredient');
         var current_id = current_ingredient.attr('id');
         
         if (keyCode == 9 && e.shiftKey == false) {
             e.preventDefault();
             if (current_id == last_id ) {
-                console.log("Found keypress on tr::last .ingredient_notes !!!");
+                // console.log("Found keypress on tr::last .ingredient_notes !!!");
                 addRecipeIngredient();
             } 
             else {
@@ -206,7 +203,7 @@ jQuery(document).on('click', 'tr.ingredient.saved', function(){
     });
 
     jQuery('#recipe-ingredients .ingredients_amount').on('keydown',function(e) {
-        console.log("Keypress detected on ingredients amount !");
+        // console.log("Keypress detected on ingredients amount !");
         
         var keyCode = e.keyCode || e.which;
         var last_id = jQuery('#recipe-ingredients tr:last').attr('id');
@@ -216,11 +213,11 @@ jQuery(document).on('click', 'tr.ingredient.saved', function(){
         
         if (keyCode == 9 && e.shiftKey == true) {
             event.preventDefault()
-            console.log("Keypress shift !");
+            // console.log("Keypress shift !");
             var previous_ingredient = current_ingredient.prev();
             previous_ingredient.focus();
             var prev_id = previous_ingredient.attr('id');
-            console.log ("Previous ingredient : " + prev_id);
+            // console.log ("Previous ingredient : " + prev_id);
         }
     });
 

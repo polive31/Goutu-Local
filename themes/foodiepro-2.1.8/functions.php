@@ -587,7 +587,7 @@ function wpseo_uppercase_title( $title ) {
 add_action ('genesis_meta','add_pinterest_meta');
  
 function add_pinterest_meta() { 
-	echo '<meta name="p:domain_verify" content="ace7d3a039fc8a36f43a85bb5d0ad86a"/>'; 
+	echo '<meta name="p:domain_verify" content="c4a191084b3f5ef29b9df4a1a9f05aab"/>'; 
 }
 
 /* =================================================================*/

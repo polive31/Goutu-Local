@@ -16,6 +16,7 @@ class Custom_WPURP_Ingredient {
     CONST UNITS_LIST = array(
         array('g'     , 'g'),
         array('kg'    , 'kg'),
+        array('ml'    , 'ml'),
         array('cl'    , 'cl'),
         array('dl'     , 'dl'),
         array('l'     , 'l'),
@@ -30,7 +31,7 @@ class Custom_WPURP_Ingredient {
         array('branche'   , 'branches'), //Branche (thym)
         array('bulbe'   , 'bulbes'), //Bulbe
         array('cube' , 'cubes'), //Cube
-        array('doigt', 'fingers'), //Doigt
+        array('doigt', 'doigts'), //Doigt
         array('feuille' , 'feuilles'),  //Feuille
         array('filet'   , 'filets'), //Filet (anchois)
         array('gousse' , 'gousses'), // Gousse

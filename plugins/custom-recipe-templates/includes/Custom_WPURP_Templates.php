@@ -186,7 +186,9 @@ class Custom_WPURP_Templates {
 		            ),
 		    	    array(
 		                'name' => 'adjustable-servings',
-		                'url' => WPUltimateRecipe::get()->coreUrl . '/js/adjustable_servings.js',
+		                // 'url' => WPUltimateRecipe::get()->coreUrl . '/js/adjustable_servings.js',
+		                'url' => self::$_PluginUri . 'assets/js/custom_adjustable_servings.js',
+		                'path' => self::$_PluginPath . 'assets/js/custom_adjustable_servings.js',
 		                'public' => true,
 		                'deps' => array(
 		                    'jquery',

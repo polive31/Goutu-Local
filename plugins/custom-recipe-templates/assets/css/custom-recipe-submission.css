@@ -207,13 +207,17 @@ tr.ingredient.edit td.ingredient-input {
   display:none!important;
 }
 
-.ingredient td#qty {
+td.ingredient-input.qty {
     width: 100px;
 }
 
-.ingredient td#unit {
-    width: 140px;
+td.ingredient-input.unit {
+    width: 150px;
 }
+
+
+
+
 
 .ingredient td#icon {
   width: 30px;

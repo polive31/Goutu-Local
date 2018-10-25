@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2018-10-09 00:53+0200\n"
-"PO-Revision-Date: 2018-10-23 09:26+0200\n"
+"PO-Revision-Date: 2018-10-26 01:08+0200\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -1618,7 +1618,7 @@ msgstr "Quantité"
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-yummly/templates/manual_import.php:51
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-ziplist/templates/manual_import.php:51
 msgid "Unit"
-msgstr "Unité (singulier)"
+msgstr "Unité"
 
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:44
 msgid "(e.g. 2 people, 3 loafs, ...)"

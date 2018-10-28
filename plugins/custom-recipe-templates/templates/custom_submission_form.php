@@ -49,78 +49,48 @@
         $taxonomies = WPUltimateRecipe::get()->tags();
         unset( $taxonomies['ingredient'] );
         unset( $taxonomies['wpurp_keyword'] );
-        // echo print_r($taxonomies);
+
+        // $taxonomies['category']=array(
+        //                             'labels'=>array(
+        //                                 'singular_name'=>__( 'Category', 'wp-ultimate-recipe' ),
+        //                             ),
+        //                         );
+        $taxonomies['post_tag']=array(
+                                    'labels'=>array(
+                                        'singular_name'=>__( 'Tag', 'wp-ultimate-recipe' ),
+                                    ),
+                                );        
         
+        // General dropdown arguments
         $args = array(
             'echo' => 0,
-            'orderby' => 'NAME',
+            'orderby' => 'name',
             'hide_empty' => 0,
-            'hierarchical' => 1,
         );
-
-        $hide_tags = WPUltimateRecipe::option( 'user_submission_hide_tags', array() );
 
         // Generate dropdown markup for each taxonomy (course, cuisine, difficulty, diet...)
         // -----------------------------------------------------------
         foreach( $taxonomies as $taxonomy => $options ) {
-            $multiselect = self::MULTISELECT[$taxonomy];
-            if( !in_array( $taxonomy, $hide_tags ) ) {
-                $args['show_option_none'] = $multiselect ? '' : $options['labels']['singular_name'];
-                $args['taxonomy'] = $taxonomy;
-                $args['name'] = 'recipe-' . $taxonomy;
-                // $args['class'] .= $multiselect?'multiple':'';
-
-                $select_fields[$taxonomy] = array(
-                    'label' => $options['labels']['singular_name'],
-                    'dropdown' => wp_dropdown_categories( $args ),
-                );
-            }
-        }
-
-        // Category Dropdown
-        // -----------------------------------------------------------
-        $multiselect=true;
-        if( WPUltimateRecipe::option( 'recipe_tags_user_submissions_categories', '0' ) == '1' ) {
-            $args['show_option_none'] = $multiselect ? '' : __( 'Category', 'wp-ultimate-recipe' );
-            $args['taxonomy'] = 'category';
-            $args['name'] = 'recipe-category';
+            $args['taxonomy'] = $taxonomy;
+            $args['show_option_none'] = $this->is_multiselect($taxonomy) ?'':$options['labels']['singular_name'];
+            $args['hierarchical'] = $this->is_hierarchical($taxonomy)?1:0;
+            $args['exclude'] = $this->excluded_terms($taxonomy);
             // $args['class'] .= $multiselect?'multiple':'';
 
-            $exclude = WPUltimateRecipe::option( 'user_submission_hide_category_terms', array() );
-            $args['exclude'] = implode( ',', $exclude );
-
-            $select_fields['category'] = array(
-                'label' => __( 'Category', 'wp-ultimate-recipe' ),
-                'dropdown' => wp_dropdown_categories( $args ),
+            $select_fields[$taxonomy] = array(
+                'label' => $options['labels']['singular_name'],
+                'dropdown' => $this->custom_dropdown_categories( $args ),
+                // 'dropdown' => wp_dropdown_categories( $args ),
             );
         }
 
 
-        // Tags Dropdown
-        // -----------------------------------------------------------
-        $multiselect=true;
-        if( WPUltimateRecipe::option( 'recipe_tags_user_submissions_tags', '0' ) == '1' ) {
-            $args['show_option_none'] = $multiselect ? '' : __( 'Tag', 'wp-ultimate-recipe' );
-            $args['taxonomy'] = 'post_tag';
-            $args['name'] = 'recipe-post_tag';
-            // $args['class'] .= $multiselect?'multiple':'';
-
-            $exclude = WPUltimateRecipe::option( 'user_submission_hide_tag_terms', array() );
-            $args['exclude'] = implode( ',', $exclude );
-
-            $select_fields['post_tag'] = array(
-                'label' => __( 'Tag', 'wp-ultimate-recipe' ),
-                'dropdown' => wp_dropdown_categories( $args ),
-            );
-        }
-
-        // Taxonomies Dropdowns
+        // Echoes all dropdowns that were previously built
         // -----------------------------------------------------------
         foreach( $select_fields as $taxonomy => $select_field ) {
-            $multiselect = self::MULTISELECT[$taxonomy];
-            
+    
             // Multiselect
-            if( $multiselect ) {
+            if( $this->is_multiselect($taxonomy) ) {
                 preg_match( "/<select[^>]+>/i", $select_field['dropdown'], $select_field_match );
                 if( isset( $select_field_match[0] ) ) {
                     $select_multiple = preg_replace( "/name='([^']+)/i", "$0[]' data-placeholder='".$select_field['label']."' multiple='multiple", $select_field_match[0] );
@@ -128,7 +98,7 @@
                 }
             }
 
-            // Selected terms
+            // Mark existing post terms as Selected in the dropdown
             $terms = wp_get_post_terms( $recipe->ID(), $taxonomy, array( 'fields' => 'ids' ) );
             foreach( $terms as $term_id ) {
                 $select_field['dropdown'] = str_replace( ' value="'. $term_id .'"', ' value="'. $term_id .'" selected="selected"', $select_field['dropdown'] );

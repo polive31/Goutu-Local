@@ -5,16 +5,16 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
     const RECIPES_PUBLISH_SLUG = 'publier-recettes';
     const RECIPE_NEW_SLUG = 'nouvelle-recette';
     const RECIPE_EDIT_SLUG = 'modifier-recette';
-    const MULTISELECT = array( 
-        'ingredient' => true, 
-        'course' => true, 
-        'cuisine' => false, 
-        'season' => false, 
-        'occasion' => true, 
-        'diet' => true, 
-        'difficult' => false, 
-        'category'=>true, 
-        'post_tag' => true
+    const TAXONOMY = array( 
+        'ingredient' => array('hierarchical'=> false, 'multiselect'=> false), 
+        'course' => array('hierarchical'=> false, 'multiselect'=> false), 
+        'cuisine' => array('hierarchical'=> true, 'multiselect'=> false), 
+        'season' => array('hierarchical'=> false, 'multiselect'=> false), 
+        'occasion' => array('hierarchical'=> false, 'multiselect'=> true), 
+        'diet' => array('hierarchical'=> false, 'multiselect'=> true), 
+        'difficult' => array('hierarchical'=> false, 'multiselect'=> false), 
+        'category'=>array('hierarchical'=> false, 'multiselect'=> false), 
+        'post_tag' => array('hierarchical'=> false, 'multiselect'=> true)
     );
 
 
@@ -53,6 +53,65 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
 
         // echo '<pre>' . print_r( self::$UNITS ) . '</pre>'; 
     }
+
+    public function is_multiselect($tax) {
+        if (!isset(self::TAXONOMY[$tax])) return;
+        return self::TAXONOMY[$tax]['multiselect'];
+    }
+
+    public function is_hierarchical($tax) {
+        if (!isset(self::TAXONOMY[$tax])) return;
+        return self::TAXONOMY[$tax]['hierarchical'];
+    }
+
+    public function excluded_terms($tax) {
+        $exclude='';    
+        if ($tax=='category') {
+            $exclude = WPUltimateRecipe::option( 'user_submission_hide_category_terms', array() );
+            $exclude = implode( ',', $exclude );
+        }
+        return $exclude;
+    }
+
+    public function custom_dropdown_categories( $args ) {
+        // $args = array( 'taxonomy' => 'course');
+        // This function generates a select dropdown list with option groups whenever
+        // the argument hierarchical is true, otherwise it renders the standard wp_dropdown_categories output 
+
+        if ( $args['hierarchical']==0 ) {   
+            $args['name']='recipe-' . $args['taxonomy'];
+            return wp_dropdown_categories( $args );
+        }
+
+        $getparents=$args;
+        $getparents['depth']=1;
+        $getparents['parent']=0;
+        $parents = get_categories( $getparents );
+
+        $html = '<select lang="fr" name="recipe-' . $args['taxonomy'] . '"  id="recipe-' . $args['taxonomy'] . '" class="postform" tabindex="-1">';
+        // echo '<pre>' . print_r( $terms ) . '</pre>';
+        if ($args['show_option_none'] != '') {
+                $html.='<option class="" value="-1">' . $args['show_option_none'] . '</option>';                
+        }
+
+        foreach ($parents as $parent) {
+        
+            $getchildren=$args;
+            $getchildren['depth']=0;
+            $getchildren['child_of']=$parent->term_id;
+            
+            $children = get_categories( $getchildren );
+            
+            $html.='<optgroup label="' . $parent->name . '">';
+            foreach ($children as $child) {
+                $html.='<option class="" value="' . $child->term_id . '">' . $child->name . '</option>';                
+            }
+            $html.='</optgroup>';
+            
+        }
+        $html .= '</select>';
+        return $html;
+    }    
 
     public function new_submission_shortcode() {
         if( !is_user_logged_in() ) {

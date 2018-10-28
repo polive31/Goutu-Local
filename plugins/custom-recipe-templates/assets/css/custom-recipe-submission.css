@@ -142,6 +142,7 @@ table#recipe-instructions .recipe_instructions_thumbnail,
 /*textarea.recipe-description::placeholder,
 textarea.recipe-instruction::placeholder,
 #wpurp_user_submission_form input::placeholder,*/
+#wpurp_user_submission_form .option-none,
 #wpurp_user_submission_form select::placeholder,
 #wpurp_user_submission_form textarea::placeholder,
 #wpurp_user_submission_form input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -214,10 +215,6 @@ td.ingredient-input.qty {
 td.ingredient-input.unit {
     width: 150px;
 }
-
-
-
-
 
 .ingredient td#icon {
   width: 30px;
@@ -531,7 +528,7 @@ li.select2-selection__choice,
 
 /*Select drop down*/
 
-.taxonomy-select-boxes select {
+/*.taxonomy-select-boxes select {
   width: 200px;
 }
 
@@ -550,8 +547,7 @@ li.select2-selection__choice,
 #recipe-cuisine option.level-0 {
   font-weight: bold;
   cursor:none;
-}
-
+}*/
 
 
 /*Select 2*/
@@ -665,8 +661,11 @@ li.select2-selection__choice,
   min-width: 100px;
   max-height: 650px;
   overflow-y: auto;
-  z-index: 999;
-  will-change: width,height;        
+  z-index: 999;     
+}
+
+.select2-results__options--nested {
+  box-shadow:none;
 }
 
 /*.select2-results__options {

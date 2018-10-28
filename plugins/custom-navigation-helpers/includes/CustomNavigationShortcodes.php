@@ -64,6 +64,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		return $html;
 	}
 
+
 	/* =================================================================*/
 	/* = LIST TAXONOMY TERMS SHORTCODE
 	/* =================================================================*/

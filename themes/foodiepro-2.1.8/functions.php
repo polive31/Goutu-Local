@@ -50,6 +50,7 @@ function load_admin_stylesheet() {
 	wp_enqueue_style( 'admin-css', CHILD_THEME_URL . '/assets/css/admin.css', array(), CHILD_THEME_VERSION );		
 }
 
+
 /* =================================================================*/
 /* =              FOODIEPRO CHILD THEME SETUP
 /* =================================================================*/
@@ -473,20 +474,20 @@ function enqueue_minified_stylesheet( $default_stylesheet_uri ) {
 }
 
 
-function use_minified_stylesheet( $default_stylesheet_uri ) {
-	$stylesheet_path = CHILD_THEME_PATH . '/style.min.css';
-	$default_stylesheet_path = CHILD_THEME_PATH . '/style.css';
-	$stylesheet_uri =  wp_make_link_relative( CHILD_THEME_URL . '/style.min.css');
-	$default_stylesheet_uri =  wp_make_link_relative( $default_stylesheet_uri );
-	$min_mod_date = filemtime( $stylesheet_path );
-	$orig_mod_date = filemtime( $default_stylesheet_path );
-	if ( file_exists( $stylesheet_path ) && ($min_mod_date >= $orig_mod_date) ) {
-		//foodiepro_log( 'Minified stylesheet exist and is valid' );
-		return $stylesheet_uri;	
-	}
-	//foodiepro_log( 'Minified stylesheet doesn t exist or too old' );
-	return $default_stylesheet_uri;	
-}
+// function use_minified_stylesheet( $default_stylesheet_uri ) {
+// 	$stylesheet_path = CHILD_THEME_PATH . '/style.min.css';
+// 	$default_stylesheet_path = CHILD_THEME_PATH . '/style.css';
+// 	$stylesheet_uri =  wp_make_link_relative( CHILD_THEME_URL . '/style.min.css');
+// 	$default_stylesheet_uri =  wp_make_link_relative( $default_stylesheet_uri );
+// 	$min_mod_date = filemtime( $stylesheet_path );
+// 	$orig_mod_date = filemtime( $default_stylesheet_path );
+// 	if ( file_exists( $stylesheet_path ) && ($min_mod_date >= $orig_mod_date) ) {
+// 		//foodiepro_log( 'Minified stylesheet exist and is valid' );
+// 		return $stylesheet_uri;	
+// 	}
+// 	//foodiepro_log( 'Minified stylesheet doesn t exist or too old' );
+// 	return $default_stylesheet_uri;	
+// }
 
 /* =================================================================*/
 /* =              CUSTOM LOGIN                                     =*/

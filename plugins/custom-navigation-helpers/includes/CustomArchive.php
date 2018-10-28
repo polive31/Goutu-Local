@@ -94,7 +94,7 @@ class CustomArchive {
 
 	/* Helper functions
 	---------------------------------------------------------------------------*/
-	
+
 	protected function initial_is_vowel($word) {
 		$first = strtolower($word[0]);
 		return in_array($first,self::$vowels);

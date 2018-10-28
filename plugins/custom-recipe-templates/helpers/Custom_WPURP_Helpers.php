@@ -1,20 +1,20 @@
 <?php
 
-class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
+class Custom_WPURP_Helpers extends WPURP_Premium_Addon {
 
     const RECIPES_PUBLISH_SLUG = 'publier-recettes';
     const RECIPE_NEW_SLUG = 'nouvelle-recette';
     const RECIPE_EDIT_SLUG = 'modifier-recette';
     const TAXONOMY = array( 
-        'ingredient' => array('hierarchical'=> false, 'multiselect'=> false), 
-        'course' => array('hierarchical'=> false, 'multiselect'=> false), 
-        'cuisine' => array('hierarchical'=> true, 'multiselect'=> false), 
-        'season' => array('hierarchical'=> false, 'multiselect'=> false), 
-        'occasion' => array('hierarchical'=> false, 'multiselect'=> true), 
-        'diet' => array('hierarchical'=> false, 'multiselect'=> true), 
-        'difficult' => array('hierarchical'=> false, 'multiselect'=> false), 
-        'category'=>array('hierarchical'=> false, 'multiselect'=> false), 
-        'post_tag' => array('hierarchical'=> false, 'multiselect'=> true)
+        'ingredient'    => array('hierarchical'=> false, 'multiselect'=> false, 'orderby'=> 'name'), 
+        'course'        => array('hierarchical'=> false, 'multiselect'=> false, 'orderby'=> 'description'), 
+        'cuisine'       => array('hierarchical'=> true , 'multiselect'=> false, 'orderby'=> 'name'), 
+        'season'        => array('hierarchical'=> false, 'multiselect'=> false, 'orderby'=> 'description'), 
+        'occasion'      => array('hierarchical'=> false, 'multiselect'=> true , 'orderby'=> 'description'), 
+        'diet'          => array('hierarchical'=> false, 'multiselect'=> true , 'orderby'=> 'description'), 
+        'difficult'     => array('hierarchical'=> false, 'multiselect'=> false, 'orderby'=> 'description'), 
+        'category'      => array('hierarchical'=> false, 'multiselect'=> false, 'orderby'=> 'name'), 
+        'post_tag'      => array('hierarchical'=> false, 'multiselect'=> true , 'orderby'=> 'name')
     );
 
 
@@ -64,6 +64,11 @@ class Custom_WPURP_Shortcodes extends WPURP_Premium_Addon {
         return self::TAXONOMY[$tax]['hierarchical'];
     }
 
+    public static function orderby($tax) {
+        if (!isset(self::TAXONOMY[$tax])) return;
+        return self::TAXONOMY[$tax]['orderby'];
+    }  
+    
     public function excluded_terms($tax) {
         $exclude='';    
         if ($tax=='category') {

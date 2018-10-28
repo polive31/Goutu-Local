@@ -225,7 +225,7 @@ function foodie_pro_includes() {
 	require_once $includes_dir . 'customizer/customizer-settings.php';
 
 	// Load everything in the includes root directory.
-	require_once $includes_dir . 'helper-functions.php';
+	// require_once $includes_dir . 'helper-functions.php';
 	require_once $includes_dir . 'compatability.php';
 	require_once $includes_dir . 'simple-grid.php';
 	require_once $includes_dir . 'widgeted-areas.php';

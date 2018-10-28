@@ -37,14 +37,14 @@ function Custom_WPURP_templates_init() {
 		//require_once 'templates/Custom_Menu_Template.php';
 		/* Helpers
 		------------------------------------*/
-		require_once 'helpers/Custom_WPURP_Shortcodes.php';
+		require_once 'helpers/Custom_WPURP_Helpers.php';
 		/* Helpers
 		------------------------------------*/
 		require_once 'widgets/custom_recipe_list_widget.php';
 		require_once 'widgets/custom_nutrition_label_widget.php';
 
 		new Custom_WPURP_Templates();
-		new Custom_WPURP_Shortcodes();
+		new Custom_WPURP_Helpers();
 		new Custom_Recipe_Template();
 		new Custom_WPURP_Ingredient();
 		// new Custom_Recipe_Submission_Template();

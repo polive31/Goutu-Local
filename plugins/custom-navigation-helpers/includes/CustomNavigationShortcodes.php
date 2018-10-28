@@ -72,7 +72,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 	{
 	    $args = shortcode_atts( array(
 	        'taxonomy' => 'post_tag',
-	        'orderby' => 'name',
+	        'orderby' => 'description',
 	        'groupby' => ''
 	    ), $args );
 
@@ -235,7 +235,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 			'author' => 0,		
 			// 'author' => $atts['author'],		
 			'hide_empty' => true,		
-			'orderby' => 'slug',
+			'orderby' => Custom_WPURP_Helpers::orderby($tax),
 			'order'   => 'ASC'
 		) );
 		
@@ -369,7 +369,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 			'child_of'			=> $child_of,
 			'depth' 			=> $depth,
 			'exclude' 			=> $exclude,
-			'orderby' 			=> 'slug',
+			'orderby' 			=> Custom_WPURP_Helpers::orderby($tax_slug),
 			'echo' 				=> false,
 			'role__not_in'		=> array('administrator','pending'),
 			'show'				=> 'user_login'

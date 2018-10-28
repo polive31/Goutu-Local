@@ -75,12 +75,12 @@ class Recipe_Taxonomy_Accordion_Widget extends WP_Widget {
 		// echo do_shortcode('[ct-terms-menu  page_slug="monde" page_title="' . __('Latest recipes', 'foodiepro') . '" tax="cuisine" parent="0" drill="true" exclude="9996" title="' . __('World', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
 		// echo do_shortcode('[ct-terms-menu  page_slug="regions" page_title="' . __('Latest recipes', 'foodiepro') . '" tax="cuisine" parent="9996" title="' . __('France', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
 		// echo do_shortcode('[ct-terms-menu  page_slug="regimes" page_title="' . __('Latest recipes', 'foodiepro') . '" tax="diet" title="' . __('Diets', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
-		echo do_shortcode('[ct-terms-menu tax="course" title="' . __('Courses', 'foodiepro') . '" orderby="name" author="0" order="ASC" count="' . $show_count . '"]');
-		echo do_shortcode('[ct-terms-menu tax="season" title="' . __('Seasons', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
-		echo do_shortcode('[ct-terms-menu tax="occasion" title="' . __('Occasions', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
+		echo do_shortcode('[ct-terms-menu tax="course" title="' . __('Courses', 'foodiepro') . '" orderby="description" author="0" order="ASC" count="' . $show_count . '"]');
+		echo do_shortcode('[ct-terms-menu tax="season" title="' . __('Seasons', 'foodiepro') . '" orderby="description" order="ASC" count="' . $show_count . '"]');
+		echo do_shortcode('[ct-terms-menu tax="occasion" title="' . __('Occasions', 'foodiepro') . '" orderby="description" order="ASC" count="' . $show_count . '"]');
 		echo do_shortcode('[ct-terms-menu tax="cuisine" parent="0" drill="true" exclude="9996" title="' . __('World', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
 		echo do_shortcode('[ct-terms-menu tax="cuisine" parent="9996" title="' . __('France', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
-		echo do_shortcode('[ct-terms-menu tax="diet" title="' . __('Diets', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
+		echo do_shortcode('[ct-terms-menu tax="diet" title="' . __('Diets', 'foodiepro') . '" orderby="description" order="ASC" count="' . $show_count . '"]');
 		echo do_shortcode('[tags-menu post_type="recipe" title="' . __('Ideas', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');	
 		echo '</div>';
 

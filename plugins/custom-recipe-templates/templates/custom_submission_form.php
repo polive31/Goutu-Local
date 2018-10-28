@@ -75,6 +75,7 @@
             $args['show_option_none'] = $this->is_multiselect($taxonomy) ?'':$options['labels']['singular_name'];
             $args['hierarchical'] = $this->is_hierarchical($taxonomy)?1:0;
             $args['exclude'] = $this->excluded_terms($taxonomy);
+            $args['tags_post_type'] = 'recipe';
             $args['orderby'] = Custom_WPURP_Helpers::orderby($taxonomy);
             // $args['class'] .= $multiselect?'multiple':'';
 

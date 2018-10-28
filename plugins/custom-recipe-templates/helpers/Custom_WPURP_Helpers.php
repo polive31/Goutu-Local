@@ -68,7 +68,7 @@ class Custom_WPURP_Helpers extends WPURP_Premium_Addon {
         if (!isset(self::TAXONOMY[$tax])) return;
         return self::TAXONOMY[$tax]['orderby'];
     }  
-    
+
     public function excluded_terms($tax) {
         $exclude='';    
         if ($tax=='category') {

@@ -129,7 +129,7 @@ class CustomArchive {
 		if (!isset($occasion)) return false;
 		
 		$currentMonth=DATE("m");
-		$needle = '2-fetes';
+		$needle = 'fetes';
 		
 		foreach ($occasion as $obj) {
 			if ($obj->slug == $needle) {

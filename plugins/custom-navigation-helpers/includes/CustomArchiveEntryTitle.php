@@ -30,7 +30,7 @@ class CustomArchiveEntryTitle extends CustomArchive {
 			global $post, $current_user;
 			get_currentuserinfo();
 			if ($post->post_author == $current_user->ID) { 
-				$edit_page_url = do_shortcode( '[permalink slug="' . Custom_WPURP_Shortcodes::RECIPE_EDIT_SLUG . '"]' );
+				$edit_page_url = do_shortcode( '[permalink slug="' . Custom_WPURP_Helpers::RECIPE_EDIT_SLUG . '"]' );
 				$edit_url = 'href="' . $edit_page_url . '?wpurp-edit-recipe=' . $post->ID . '" ';   
             	$edit_title = 'title="' . __('Edit recipe', 'foodiepro') . '" ';
 

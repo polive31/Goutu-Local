@@ -6,15 +6,15 @@ class Custom_WPURP_Helpers extends WPURP_Premium_Addon {
     const RECIPE_NEW_SLUG = 'nouvelle-recette';
     const RECIPE_EDIT_SLUG = 'modifier-recette';
     const TAXONOMY = array( 
-        'ingredient'    => array('hierarchical'=> false, 'multiselect'=> false, 'orderby'=> 'name'), 
-        'course'        => array('hierarchical'=> false, 'multiselect'=> false, 'orderby'=> 'description'), 
-        'cuisine'       => array('hierarchical'=> true , 'multiselect'=> false, 'orderby'=> 'name'), 
-        'season'        => array('hierarchical'=> false, 'multiselect'=> false, 'orderby'=> 'description'), 
-        'occasion'      => array('hierarchical'=> false, 'multiselect'=> true , 'orderby'=> 'description'), 
-        'diet'          => array('hierarchical'=> false, 'multiselect'=> true , 'orderby'=> 'description'), 
-        'difficult'     => array('hierarchical'=> false, 'multiselect'=> false, 'orderby'=> 'description'), 
-        'category'      => array('hierarchical'=> false, 'multiselect'=> false, 'orderby'=> 'name'), 
-        'post_tag'      => array('hierarchical'=> false, 'multiselect'=> true , 'orderby'=> 'name')
+        'ingredient'    => array('hierarchical'=> false, 'multiselect'=> false, 'required'=> true, 'orderby'=> 'name'), 
+        'course'        => array('hierarchical'=> false, 'multiselect'=> false, 'required'=> true, 'orderby'=> 'description'), 
+        'cuisine'       => array('hierarchical'=> true , 'multiselect'=> false, 'required'=> false, 'orderby'=> 'name'), 
+        'season'        => array('hierarchical'=> false, 'multiselect'=> false, 'required'=> false, 'orderby'=> 'description'), 
+        'occasion'      => array('hierarchical'=> false, 'multiselect'=> true , 'required'=> true , 'orderby'=> 'description'), 
+        'diet'          => array('hierarchical'=> false, 'multiselect'=> true , 'required'=> false , 'orderby'=> 'description'), 
+        'difficult'     => array('hierarchical'=> false, 'multiselect'=> false, 'required'=> true, 'orderby'=> 'description'), 
+        'category'      => array('hierarchical'=> false, 'multiselect'=> false, 'required'=> false, 'orderby'=> 'name'), 
+        'post_tag'      => array('hierarchical'=> false, 'multiselect'=> true , 'required'=> false , 'orderby'=> 'name')
     );
 
 
@@ -64,6 +64,11 @@ class Custom_WPURP_Helpers extends WPURP_Premium_Addon {
         return self::TAXONOMY[$tax]['hierarchical'];
     }
 
+    public function is_required($tax) {
+        if (!isset(self::TAXONOMY[$tax])) return;
+        return self::TAXONOMY[$tax]['required'];
+    }
+
     public static function orderby($tax) {
         if (!isset(self::TAXONOMY[$tax])) return;
         return self::TAXONOMY[$tax]['orderby'];
@@ -78,7 +83,7 @@ class Custom_WPURP_Helpers extends WPURP_Premium_Addon {
         return $exclude;
     }
 
-    public function custom_dropdown_categories( $args ) {
+    public function custom_dropdown_categories( $args, $options ) {
         // $args = array( 'taxonomy' => 'course');
         // This function generates a select dropdown list with option groups whenever
         // the argument hierarchical is true, otherwise it renders the standard wp_dropdown_categories output 
@@ -96,7 +101,8 @@ class Custom_WPURP_Helpers extends WPURP_Premium_Addon {
         $html = '<select lang="fr" name="recipe-' . $args['taxonomy'] . '"  id="recipe-' . $args['taxonomy'] . '" class="postform" tabindex="-1">';
         // echo '<pre>' . print_r( $terms ) . '</pre>';
         if ($args['show_option_none'] != '') {
-                $html.='<option class="" value="-1">' . $args['show_option_none'] . '</option>';                
+                $html .= '<option value="" disabled selected>' . $options['labels']['singular_name'] . '</option>';
+                $html .= '<option class="" value="-1">' . __('none','foodiepro') . '</option>';                
         }
 
         foreach ($parents as $parent) {

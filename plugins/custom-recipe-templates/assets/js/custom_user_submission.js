@@ -60,7 +60,7 @@ jQuery(document).on('click', 'tr.ingredient.saved', function(){
 
     function formatItem(data, container) {
         var elClass='';
-        if (data.element.value == -1) {
+        if (data.element.value == -1 || data.element.value == "") {
            elClass='class="option-none"';
         }
         var $state = jQuery('<span ' + elClass + '>' + data.text + '</span>');

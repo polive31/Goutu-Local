@@ -72,7 +72,7 @@
         // -----------------------------------------------------------
         foreach( $taxonomies as $taxonomy => $options ) {
             $args['taxonomy'] = $taxonomy;
-            $args['show_option_none'] = $this->is_multiselect($taxonomy) ?'':$options['labels']['singular_name'];
+            $args['show_option_none'] = ($this->is_multiselect($taxonomy) ) ?'':$options['labels']['singular_name'];
             $args['hierarchical'] = $this->is_hierarchical($taxonomy)?1:0;
             $args['exclude'] = $this->excluded_terms($taxonomy);
             $args['tags_post_type'] = 'recipe';
@@ -81,7 +81,7 @@
 
             $select_fields[$taxonomy] = array(
                 'label' => $options['labels']['singular_name'],
-                'dropdown' => $this->custom_dropdown_categories( $args ),
+                'dropdown' => $this->custom_dropdown_categories( $args, $options ),
                 // 'dropdown' => wp_dropdown_categories( $args ),
             );
         }

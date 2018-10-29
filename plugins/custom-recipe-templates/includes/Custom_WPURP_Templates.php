@@ -538,7 +538,7 @@ class Custom_WPURP_Templates {
 
         $args['links']='no';
 
-        $ingredient_preview =  Custom_WPURP_Ingredient::preview( $args );
+        $ingredient_preview =  Custom_WPURP_Ingredient::display( $args );
 
         wp_send_json_success( array('msg' => $ingredient_preview) );
 

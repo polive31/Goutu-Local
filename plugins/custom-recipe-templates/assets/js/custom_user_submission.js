@@ -443,7 +443,7 @@ function toggleIngredientPreview(thisIngredient) {
         }
 
         lastIngredient = jQuery('#recipe-ingredients').find('tr#ingredient_' + lastIngredientId);
-        console.log("Ajax call launched !");
+        console.log("Toggle Ingredient Preview : Ajax call launched !", 'background: #ccc; color: blue');
         // console.log('Ingredients amount : ' + jQuery('#recipe-ingredients').find('#ingredients_amount_' + lastIngredientId).val() );
         // console.log('Target : ' + 'tr#ingredient_' + lastIngredientId + ' td.ingredient-preview')
 

@@ -519,7 +519,7 @@ class Custom_WPURP_Templates {
             die();
         }
 
-        if ( $_POST['ingredient']=='' ) {
+        if ( empty($_POST['ingredient']) ) {
              wp_send_json_error( array('msg' => 'No ingredient name provided'));
             die();       	
         }

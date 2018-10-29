@@ -16,13 +16,16 @@ class CustomNavigationShortcodes extends CustomArchive {
 		add_shortcode('ct-terms-menu', array($this,'list_taxonomy_terms')); 
 		add_shortcode('tags-menu', array($this,'list_tags')); 
 		add_shortcode('ct-terms', array($this,'list_terms_taxonomy'));
-		add_shortcode('permalink', array($this,'get_permalink'));
 		add_shortcode('share-title', array($this,'display_share_title')); 
 		add_shortcode('registration', array($this,'output_registation_url')); 
 		add_shortcode('wp-page-link', array($this,'display_wordpress_page_link') );	
+		add_shortcode('taxonomy-terms', array($this,'simple_list_taxonomy_terms'));	
+
+
+		// Helpful shortcodes within recipes or posts
+		add_shortcode('permalink', array($this,'get_permalink'));
 		add_shortcode('glossary', array($this,'search_glossary') );	
 		add_shortcode('search', array($this,'search_posts') );	
-		add_shortcode('taxonomy-terms', array($this,'simple_list_taxonomy_terms'));	
 
 		// Filters	
 		add_filter( 'query_vars', array($this,'archive_filter_queryvars') );		
@@ -197,7 +200,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		$tax = $atts['tax'];
 		$html = '<div class="tax-container">';
 			
-		if ( $atts['title']=='' ) {
+		if ( empty($atts['title']) ) {
 			$tax_details = get_taxonomy( $tax );
 			$title = $tax_details->labels->name;
 		}
@@ -425,7 +428,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 	/* Output permalink of a given post id
 	------------------------------------------------------*/
 
-	public function get_permalink($atts) {
+	public function get_permalink($atts, $content=null) {
 		$a = shortcode_atts(array(
 			'id' => false,
 			'slug' => false,
@@ -451,7 +454,8 @@ class CustomNavigationShortcodes extends CustomArchive {
 			$url=$_SERVER['REQUEST_URI'];			
 		}
 
-	    if ($text) return '<a href="' . $url . '">' . $text . '</a>';
+	    if (!empty($content)) return '<a href="' . $url . '">' . $content . '</a>';
+	    if (!empty($text)) return '<a href="' . $url . '">' . $text . '</a>';
 	    else return $url;
 	}
 

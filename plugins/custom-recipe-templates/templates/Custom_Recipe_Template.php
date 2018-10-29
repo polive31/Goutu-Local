@@ -343,7 +343,7 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 	        //$out .= '<div' . $meta . '>'.$instruction['description'].'</div>';
 	        $out .= '<span>' . $instruction['description'] . '</span>';
 
-	        if( isset($instruction['image']) & ($instruction['image'] != '') ) {
+	        if( !empty($instruction['image']) ) {
 	            $thumb = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
 	            $thumb_url = $thumb['0'];
 

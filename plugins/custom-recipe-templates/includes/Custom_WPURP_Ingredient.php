@@ -88,7 +88,7 @@ class Custom_WPURP_Ingredient {
     }
 
     public static function is_initial_vowel( $expression ) {  
-        if ($expression=='') return false;
+        if (empty($expression)) return false;
         $name = remove_accents( $expression );
         $first_letter = $name[0];
         $first_word = strtolower( explode(' ', trim($name))[0] );

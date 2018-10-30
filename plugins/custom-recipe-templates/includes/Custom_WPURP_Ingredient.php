@@ -96,7 +96,7 @@ class Custom_WPURP_Ingredient {
     } 
 
     public static function display( $args ) {
-        if (!isset($args['ingredient']) || $args['ingredient']=='' ) return false;
+        if ( empty($args['ingredient']) ) return false;
         $out = '';
         
         // amount
@@ -161,7 +161,7 @@ class Custom_WPURP_Ingredient {
         }
 
         // $out .= $plural && ($ingredient['unit']!='' || $ingredient['amount_normalized'] > 1) ? $plural : $ingredient['ingredient'];
-        $out .= ( $plural && ($amount_normalized > 1 || $isplural || $unit != '')) ? $plural : $args['ingredient'];
+        $out .= ($plural && ($amount_normalized > 1 || $isplural || $unit != '' || (empty($amount_normalized) && empty($unit)) )) ? $plural : $args['ingredient'];
         $out .= $closing_tag;
         $out .= '</span>';
 

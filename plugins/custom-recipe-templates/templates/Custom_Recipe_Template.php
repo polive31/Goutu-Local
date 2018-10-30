@@ -9,8 +9,21 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 		/* Custom recipe template */
 		add_filter( 'wpurp_output_recipe', array($this,'wpurp_custom_recipe_template'), 10, 2 );
 		add_filter('wp_dropdown_cats', array($this, 'add_lang_to_select'));
+		add_action('wp_head',array($this,'add_custom_js'));
 	}
 
+	function add_custom_js(){
+	?>
+	<script>
+		jQuery(document).ready(function() {
+			jQuery('li.wpurp-recipe-ingredient').on('click', function () {
+				console.log('click detected on ingredient');
+        		jQuery(this).toggleClass('clicked');
+    		});
+		});
+	</script>
+	<?php
+	}
 
 	public function add_lang_to_select($output){
   		return str_replace('<select','<select lang="fr"',$output);

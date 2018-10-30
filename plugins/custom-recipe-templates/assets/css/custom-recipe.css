@@ -291,6 +291,25 @@ li.wpurp-recipe-ingredient a:hover {
 	border-bottom:1px dashed #000;
 }
 
+.entry-content ul li.wpurp-recipe-ingredient {
+    list-style-type: none;
+}
+
+.entry-content ul li.wpurp-recipe-ingredient:before {
+    display: inline-block;
+	font-family: fontAwesome;
+	content: "\f096"; /*fa-square-o*/
+	width: 20px;
+}
+
+.entry-content ul li.wpurp-recipe-ingredient:hover:before {
+	cursor:pointer;
+}
+
+.entry-content ul li.wpurp-recipe-ingredient.clicked:before {
+	content: "\f046"; /*fa-check-square-o*/
+}
+
 /* Instructions */
 .recipe-instruction-group {
  	font-size:26px;

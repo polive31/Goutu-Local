@@ -36,6 +36,7 @@ class Custom_WPURP_Ingredient {
         array('filet'   , 'filets'), //Filet (anchois)
         array('gousse' , 'gousses'), // Gousse
         array('noix'   , 'noix'), //Noix
+        array('pavé' , 'pavés'), // Pincée
         array('pincée' , 'pincées'), // Pincée
         array('poignée', 'poignées'), //Poignée
         array('sachet', 'sachets'), //Sachet

@@ -26,10 +26,13 @@ jQuery(document).ready(function() {
 
 /* Ingredient Preview 
 ---------------------------------------------------------------- */
-jQuery(document).on('focusin', 'tr.ingredient', function(){
-    console.log("Focus in on tr.ingredient");
+// jQuery(document).on('focusin', 'tr.ingredient', function(){
+jQuery(document).on('focusin', function(){
+    console.log("Focus in on document");
+    // console.log("Focus in on tr.ingredient");
     toggleIngredientPreview(this);
 });
+
 
 jQuery(document).on('click', 'tr.ingredient.saved', function(){
     console.log("Click on tr.ingredient.saved");
@@ -256,6 +259,15 @@ jQuery(document).on('click', 'tr.ingredient.saved', function(){
         addRecipeInstruction();
     });
 
+    jQuery('#recipe-instructions .instruction-text').on('keydown',function(e) {
+        // console.log("Found keypress on .ingredient_notes !!!");
+        var keyCode = e.keyCode || e.which;
+      
+        if (keyCode == 9 && e.shiftKey == false) {
+            e.preventDefault();
+            addRecipeInstruction();
+        }
+    });
 
 
     // addRecipeInstructionOnTab();
@@ -423,27 +435,36 @@ jQuery(document).on('click', 'tr.ingredient.saved', function(){
 
 /* Functions Library
 ----------------------------------------------------- */
-
-
-function toggleIngredientPreview(thisIngredient) {
+function toggleIngredientPreview() {
 
         lastIngredientId = currentIngredientId;
+        console.log('Last ingredient : ', lastIngredientId );
 
-        // thisIngredient = jQuery(thisInput).closest('tr.ingredient');
-        currentIngredientId = jQuery(thisIngredient).attr('id').match(/\d+/);
-        currentIngredientId = currentIngredientId[0];
-        jQuery(thisIngredient).removeClass('saved new');
-        jQuery(thisIngredient).addClass('edit');
+        var thisElement = document.activeElement;
+        console.log('This element : ', thisElement );
 
-        console.log('Current ingredient : ' + currentIngredientId );
-        console.log('Last ingredient : ' + lastIngredientId );
-        if (lastIngredientId == currentIngredientId || lastIngredientId==-1) {
-            console.log( "No row change");
-            return;
+
+        var isIngredient = jQuery(thisElement).parents('#recipe-ingredients').length;
+        console.log("is Ingredient : ", isIngredient);
+
+        if (isIngredient) {
+            currentIngredientId = jQuery(thisElement).attr('id').match(/\d+/);
+            currentIngredientId = currentIngredientId[0];
+            jQuery(thisElement).removeClass('saved new');
+            jQuery(thisElement).addClass('edit');
+            console.log('Current ingredient : ' + currentIngredientId );
+            if (lastIngredientId == currentIngredientId || lastIngredientId==-1) {
+                console.log( "No row change");
+                return;
+            }
+        }
+        else {   
+            console.log('Not an ingredient ! ' );
         }
 
+
         lastIngredient = jQuery('#recipe-ingredients').find('tr#ingredient_' + lastIngredientId);
-        console.log("Toggle Ingredient Preview : Ajax call launched !", 'background: #ccc; color: blue');
+        console.log("%c Toggle Ingredient Preview : Ajax call launched !", 'background: #ccc; color: blue');
         // console.log('Ingredients amount : ' + jQuery('#recipe-ingredients').find('#ingredients_amount_' + lastIngredientId).val() );
         // console.log('Target : ' + 'tr#ingredient_' + lastIngredientId + ' td.ingredient-preview')
 

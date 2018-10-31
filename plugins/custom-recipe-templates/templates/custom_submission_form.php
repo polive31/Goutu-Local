@@ -5,15 +5,17 @@
         <input type="hidden" name="recipe_id" value="<?php echo $recipe->ID(); ?>" />
         <div class="recipe-title-container">      	
             <p>
-                <label for="recipe_title" class="recipe-title"><?php _e( 'Recipe title', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_title_check', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label><br />
+                <!-- <label for="recipe_title" class="recipe-title"><?php _e( 'Recipe title', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_title_check', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label><br /> -->
+                <h4><?php _e( 'Recipe title', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_title_check', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></h4>
                 <input type="text" id="recipe_title" value="<?php echo isset( $_POST['recipe_title'] ) ? $_POST['recipe_title'] : $recipe->title();  ?>" size="20" name="recipe_title" />
             </p>
         </div>
 
 <?php if( !is_user_logged_in() ) { ?>
         <div class="recipe-author-container">
+                <!-- <label for="recipe-author"><?php _e( 'Your name', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe-author', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label><br /> -->
+            <h4><?php _e( 'Your name', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe-author', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></h4>
             <p>
-                <label for="recipe-author"><?php _e( 'Your name', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe-author', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label><br />
                 <input type="text" id="recipe-author" value="<?php echo isset( $_POST['recipe-author'] ) ? $_POST['recipe-author'] : $recipe->author();  ?>" size="50" name="recipe-author" />
             </p>
         </div>
@@ -21,8 +23,9 @@
         <div class="recipe-image-container">     	
 <?php $image_url = $recipe->image_ID() > 0 ? $recipe->image_url( 'square-thumbnail' ) : WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png'; ?>
 <?php if ( !current_user_can( 'upload_files' ) || WPUltimateRecipe::option( 'user_submission_use_media_manager', '1' ) != '1' ) { ?>
+                <!-- <label for="recipe_thumbnail" class="recipe-image"><?php _e( 'Featured image', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_thumbnail', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label><br /> -->
+            <h4><?php _e( 'Featured image', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_thumbnail', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></h4>
             <p>
-                <label for="recipe_thumbnail" class="recipe-image"><?php _e( 'Featured image', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_thumbnail', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label><br />
                 <img src="<?php echo $image_url; ?>" class="recipe_thumbnail" id="instruction_thumbnail_preview_" /><br/>
                 <input class="recipe_thumbnail_image button" type="file" id="recipe_thumbnail_input_" value="" size="50" name="recipe_thumbnail" onchange="PreviewImage()" />
             </p>
@@ -38,10 +41,13 @@
         </div>
         <div class="recipe-tags-container">
 			
-        <p><label class="recipe-tags"><?php _e( 'Recipe Tags', 'foodiepro' ) ?></label></p>
+        <!-- <p><label class="recipe-tags"><?php _e( 'Recipe Tags', 'foodiepro' ) ?></label></p> -->
+        <h4><?php _e( 'Recipe Tags', 'foodiepro' ) ?></h4>
+        <p>
         <div class="taxonomy-select-spinner"><i class="fa fa-spinner fa-spin"></i></div>
         <!-- <div class="taxonomy-select-spinner nodisplay"><i class="fa fa-spinner fa-spin"></i></div> -->
         <div class="taxonomy-select-boxes nodisplay">
+        </p>
         <!-- <div class="taxonomy-select-boxes"> -->
 <?php
         $select_fields = array();

@@ -114,17 +114,21 @@ class Custom_WPURP_Ingredient {
 
         // INGREDIENT PLURAL DATA
         $taxonomy = get_term_by('name', $args['ingredient'], 'ingredient');
-        // $taxonomy_slug = is_object( $taxonomy ) ? $taxonomy->slug : $args['ingredient_name'];
-        $taxonomy_slug = $taxonomy->slug;
         
-        $plural = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'plural' );
-        $plural = is_array( $plural ) ? false : $plural;
-        ////PC::debug( array('Plural array'=>$plural) );  
+        $plural=false;
+        // $isplural=false;
+        if ($taxonomy) {
+	        // $taxonomy_slug = is_object( $taxonomy ) ? $taxonomy->slug : $args['ingredient_name'];
+	        $taxonomy_slug = $taxonomy->slug;
+	        $plural = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'plural' );
+        // $isplural = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'isplural' );
+	        $plural = is_array( $plural ) ? false : $plural;
+	        ////PC::debug( array('Plural array'=>$plural) );  
+        }
 
         $plural_data = $plural ? ' data-singular="' . esc_attr( $args['ingredient'] ) . '" data-plural="' . esc_attr( $plural ) . '"' : '';
         $out .= ' <span class="wpurp-recipe-ingredient-name recipe-ingredient-name"' . $plural_data . '>';
 
-        $isplural = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'isplural' );
         // echo '<pre>' . print_r("is plural : " . $isplural) . '</pre>';
 
         // INGREDIENT "OF"
@@ -162,7 +166,7 @@ class Custom_WPURP_Ingredient {
         }
 
         // $out .= $plural && ($ingredient['unit']!='' || $ingredient['amount_normalized'] > 1) ? $plural : $ingredient['ingredient'];
-        $out .= ($plural && ($amount_normalized > 1 || $isplural || $unit != '' || (empty($amount_normalized) && empty($unit)) )) ? $plural : $args['ingredient'];
+        $out .= ($plural && ($amount_normalized > 1 || $unit != '' || (empty($amount_normalized) && empty($unit)) )) ? $plural : $args['ingredient'];
         $out .= $closing_tag;
         $out .= '</span>';
 

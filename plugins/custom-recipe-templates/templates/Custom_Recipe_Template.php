@@ -55,11 +55,11 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 		<!-- Class .wpurp-container important for adjustable servings javascript -->	
 		<div class="recipe wpurp-container" id="wpurp-container-recipe-<?php echo $recipe->ID(); ?>" data-id="<?php echo $recipe->ID(); ?>" data-permalink="<?php echo $recipe->link(); ?>" data-servings-original="<?php echo $recipe->servings_normalized(); ?>">
 			<!-- Recipe description -->
-			<div class="recipe-container" id="intro">
+<!-- 			<div class="recipe-container" id="intro">
 				<?php
 				echo $recipe->description();
 				?>	
-			</div>
+			</div> -->
 				
 			<!-- Function buttons  -->
 			<div class="recipe-top">

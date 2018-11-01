@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Batch Manage Posts
+Plugin Name: Custom Batch Manage Posts
 Plugin URI: http://goutu.org/
 Description: Shortcodes for post & comments batch processing
 Version: 1.0

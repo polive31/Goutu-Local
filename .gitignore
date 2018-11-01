@@ -84,7 +84,7 @@ plugins/buddypress/bp-core/*
 !plugins/buddypress/bp-core/bp-core-attachments.php
 !plugins/bp-custom.php
 !plugins/wp-php-debug/
-!plugins/batch-manage-posts/
+!plugins/custom-batch-manage-posts/
 !plugins/custom-js-css-optimization/
 !plugins/wp-scripts-styles-manager/
 !plugins/custom-google-tag-manager/

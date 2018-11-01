@@ -676,7 +676,7 @@ function updateIngredientIndex()
 {
     jQuery('#recipe-ingredients tr.ingredient').each(function(i) {
         jQuery(this)
-            .find('input')
+            .find('input, textarea')
             .attr('name', function(index, name) {
                 return name.replace(/(\d+)/, i);
             })

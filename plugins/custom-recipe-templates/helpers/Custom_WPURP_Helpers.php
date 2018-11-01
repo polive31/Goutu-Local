@@ -347,10 +347,13 @@ class Custom_WPURP_Helpers extends WPURP_Premium_Addon {
 
             if( !$title ) $title = __( 'Untitled', 'foodiepro' );
 
+            $content = isset( $_POST['recipe_description'] ) ? $_POST['recipe_description'] : '';
+
             $post = array(
                 'post_title' => $title,
                 'post_type'	=> 'recipe',
                 'post_status' => 'auto-draft',
+                'post_content' => $content,
             );
 
             // Save post

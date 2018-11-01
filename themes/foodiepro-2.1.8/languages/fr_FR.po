@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2018-10-29 01:07+0100\n"
-"PO-Revision-Date: 2018-10-29 01:10+0100\n"
+"PO-Revision-Date: 2018-11-01 01:34+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -1023,7 +1023,7 @@ msgstr ""
 #: plugins/custom-recipe-templates/helpers/Custom_WPURP_Helpers.php:581
 #, php-format
 msgid "Back to <a href=\"%s\">my published recipes</a>"
-msgstr "Retour à <a href=\"%s\">mes recettes publiées</a>"
+msgstr "Retour à <a href=\"%s\">mes recettes</a>"
 
 #: plugins/custom-recipe-templates/helpers/Custom_WPURP_Helpers.php:564
 #, php-format

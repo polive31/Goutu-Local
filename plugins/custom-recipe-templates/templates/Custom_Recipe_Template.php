@@ -10,7 +10,7 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 	public function __construct() {
 		parent::__construct();
 		/* Custom recipe template */
-		add_filter( 'wpurp_output_recipe', array($this,'wpurp_custom_recipe_template'), 10, 2 );
+		add_filter('wpurp_output_recipe', array($this,'wpurp_custom_recipe_template'), 10, 2 );
 		add_filter('wp_dropdown_cats', array($this, 'add_lang_to_select'));
 		add_action('wp_head',array($this,'add_custom_js'));
 
@@ -86,8 +86,8 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 					<div class="recipe-buttons">
 
 					<!-- Recipe Rate Button -->
-					<div class="recipe-button tooltip tooltip-above tooltip-left" id="rate">
-						<a href="<?php echo $this->logged_in?'#':'/connexion';?>" class="recipe-review-button" id="<?php echo $this->logged_in?'recipe-review':'join-us';?>">
+					<div class="recipe-button tooltip tooltip-above tooltip-left <?php echo self::$logged_in?'':'disabled';?>" id="rate">
+						<a href="<?php echo self::$logged_in?'#':'/connexion';?>" class="recipe-review-button" id="<?php echo self::$logged_in?'recipe-review':'join-us';?>">
 						<div class="button-caption"><?php echo __('Rate','foodiepro'); ?></div>
 						</a>
 						[tooltip text="<?php echo __('Comment and rate this recipe','foodiepro'); ?>" pos="top"]   
@@ -96,21 +96,21 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 					<!-- Recipe Add to Cart Button -->
 	<!-- 				<div class="recipe-button tooltip tooltip-above tooltip-left" id="shopping">
 					<?php 
-						$shopping_list = new Custom_Recipe_Add_To_Shopping_List( $this->logged_in );  
+						$shopping_list = new Custom_Recipe_Add_To_Shopping_List( self::$logged_in );  
 						echo $shopping_list->output( $recipe );?>
 					</div>	 -->			
 					
 					<!-- Add To Favorites Button -->
-					<div class="recipe-button tooltip tooltip-above tooltip-left" id="favorite">
+					<div class="recipe-button tooltip tooltip-above tooltip-left <?php echo self::$logged_in?'':'disabled';?>" id="favorite">
 					<?php
-						$favorite_recipe = new Custom_Recipe_Favorite( $this->logged_in );
+						$favorite_recipe = new Custom_Recipe_Favorite( self::$logged_in );
 						echo $favorite_recipe->output( $recipe );?>
 					</div>			
 
 					<!-- Like Button -->
 					<div class="recipe-button tooltip tooltip-above tooltip-left" id="like">
 					<?php
-						$recipe_like = new Custom_Social_Like_Post( $this->logged_in );
+						$recipe_like = new Custom_Social_Like_Post( 'recipe' );
 						echo $recipe_like->output();?>
 					</div>		
 
@@ -132,11 +132,11 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 						?>  
 						[tooltip text='<?php echo $share;?>' pos="top"] 
 					</div>				
-					<script type="text/javascript">
+<!-- 					<script type="text/javascript">
 						jQuery( "#recipe-share" ).click(function() {
 					    	jQuery( "#share-buttons" ).toggle();
 						});
-					</script>
+					</script> -->
 														
 				</div>
 				

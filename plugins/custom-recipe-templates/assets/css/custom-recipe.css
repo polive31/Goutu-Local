@@ -16,14 +16,6 @@
 	font-size:18px;
 }
 
-.button-caption {
-	font-family: Oswald;
-	font-size:20px;
-	color:#666;
-	text-decoration:none;	
-	font-variant: small-caps;
-}
-
 li.ingredient-group,
 .recipe-instruction-group {
 	font-family:"Oswald";
@@ -41,112 +33,6 @@ span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
 	font-size: 15px;	
 }
 
-
-/* Styles */
-.recipe-top {
-	width:100%;
-	float:left;
-	clear:both;
-	border-bottom:1px dotted #333;	
-	margin:20px 0;
-	padding:10px 0;
-}
-
-.recipe-container {
-	display:inline;		
-	float:left;
-	clear:both;
-	width:100%;
-	margin-bottom:20px;
-}
-
-/* Top Buttons */
-#share-buttons {
-	/*display:none;*/
-}
-
-/* Top Buttons */
-
-.recipe-buttons {
-	float:left;
-	width:100%;
-}
-
-.recipe-button {
-	float: left;
-	position: relative;
-	font-size:25px;
-	margin: 0 20px 0 0;
-	padding: 5px 0;
-}
-
-.recipe-button#share,
-.recipe-button#print {
-	float:right;
-}
-
-.recipe-button a {
-	color:#555555;
-    text-decoration: none;	
-}
-
-.recipe-button a:before {
-	/*display:inline-block;*/
-	/*float:left;*/
-	font-family:FontAwesome;
-	font-size:inherit;
-	/*line-height: 24px;*/
-}
-
-a.recipe-share-button:before {
-	content:"\f1e0"; /* fa-alt-share */
-}
-
-a.recipe-review-button:before {
-	content:"\f044"; /* fa-pencil-square-o */
-}
-
-a.wpurp-recipe-print:before {
-	content:"\f02f"; /* fa-print */
-}
-
-a.wpurp-recipe-favorite:before {
-	content:"\f08a"; /* fa-heart-o */
-	content:"\f097"; /* fa-bookmark-o */
-}
-
-a.wpurp-recipe-favorite.is-favorite:before {
-	content:"\f004"; /* fa-heart */
-	content:"\f02e"; /* fa-bookmark */
-}
-
-a.social-like-post:before {
-	content:"\f087"; /* fa-thumbs-o-up */
-}
-
-a.social-like-post.is-liked:before {
-	content:"\f164"; /* fa-thumbs-up */
-}
-
-a.wpurp-recipe-add-to-shopping-list:before {
-	content:"\f07a"; /* fa-cart */ 
-}
-
-a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
-	content:"\f218"; /* fa-cart-plus */
-}
-	
-	
-.button-caption {
-	display: inline-block;
-	/*float:left;*/
-	/*margin-left:10px;*/
-}
-
-.tooltip-alt,
-.recipe-tooltip-content {
-	display:none;
-}
 
 /* Image */
 

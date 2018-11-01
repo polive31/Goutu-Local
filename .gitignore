@@ -95,6 +95,7 @@ plugins/buddypress/bp-core/*
 !plugins/custom-social-sharing-buttons/
 !plugins/custom-star-rating/
 !plugins/custom-gallery-shortcode/
+!plugins/custom-post-templates/
 !plugins/custom-recipe-templates/
 !plugins/recent-posts-widget-extended/
 !plugins/custom-post-meta-inspector/

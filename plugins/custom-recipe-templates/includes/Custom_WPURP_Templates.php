@@ -13,7 +13,7 @@ class Custom_WPURP_Templates {
 	const CUSTOM_WPURP_TEMPLATES_VERSION = '0.0.1';
 	protected static $_PluginPath;	
 	protected static $_PluginUri;	
-	protected $logged_in;
+	public static $logged_in;
 	protected $custom_enqueued_scripts = array();
 	protected $custom_enqueued_styles = array();
 	
@@ -54,7 +54,7 @@ class Custom_WPURP_Templates {
 	/* Hydrate
 	--------------------------------------------------------------*/	
 	public function hydrate() {
-		$this->logged_in = is_user_logged_in();	
+		self::$logged_in = is_user_logged_in();	
 	}
 	
 	

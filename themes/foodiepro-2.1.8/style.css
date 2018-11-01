@@ -2970,6 +2970,133 @@ td.recipe-list-thumbnail img {
 }
 
 
+/* POST & RECIPE styling 
+------------------------------------------*/
+
+.post-top,
+.recipe-top {
+	width:100%;
+	float:left;
+	clear:both;
+	border-bottom:1px dotted #333;	
+	margin:20px 0;
+	padding:10px 0;
+}
+
+.post-container,
+.recipe-container {
+	display:inline;		
+	float:left;
+	clear:both;
+	width:100%;
+	margin-bottom:20px;
+}
+
+/* TOOLBAR BUTTONS  */
+
+.button-caption {
+	font-family: Oswald;
+	font-size:20px;
+	color:#666;
+	text-decoration:none;	
+	font-variant: small-caps;
+}
+
+.toolbar-buttons,
+.recipe-buttons {
+	float:left;
+	width:100%;
+}
+
+.toolbar-button,
+.recipe-button {
+	float: left;
+	position: relative;
+	font-size:25px;
+	margin: 0 20px 0 0;
+	padding: 5px 0;
+}
+
+.toolbar-button#share,
+.toolbar-button#print,
+.recipe-button#share,
+.recipe-button#print {
+	float:right;
+}
+
+.toolbar-button a,
+.recipe-button a {
+	color:#555555;
+    text-decoration: none;	
+}
+
+.toolbar-button a:hover,
+.recipe-button a:hover {
+	color:#222222;
+	cursor:pointer;
+}
+
+.toolbar-button a:before,
+.recipe-button a:before {
+	/*display:inline-block;*/
+	/*float:left;*/
+	font-family:FontAwesome;
+	font-size:inherit;
+	/*line-height: 24px;*/
+}
+
+a.post-share-button:before,
+a.recipe-share-button:before {
+	content:"\f1e0"; /* fa-alt-share */
+}
+
+a.post-review-button:before,
+a.recipe-review-button:before {
+	content:"\f044"; /* fa-pencil-square-o */
+}
+
+a.post-print-button:before,
+a.wpurp-recipe-print:before {
+	content:"\f02f"; /* fa-print */
+}
+
+a.wpurp-recipe-favorite:before {
+	content:"\f08a"; /* fa-heart-o */
+	content:"\f097"; /* fa-bookmark-o */
+}
+
+a.wpurp-recipe-favorite.is-favorite:before {
+	content:"\f004"; /* fa-heart */
+	content:"\f02e"; /* fa-bookmark */
+}
+
+a.social-like-post:before {
+	content:"\f087"; /* fa-thumbs-o-up */
+}
+
+a.social-like-post.is-liked:before {
+	content:"\f164"; /* fa-thumbs-up */
+}
+
+a.wpurp-recipe-add-to-shopping-list:before {
+	content:"\f07a"; /* fa-cart */ 
+}
+
+a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
+	content:"\f218"; /* fa-cart-plus */
+}
+	
+.button-caption {
+	display: inline-block;
+}
+
+.toolbar-button.disabled a,
+.recipe-button.disabled a,
+.disabled .button-caption {
+    /*color: #D5D5D5;*/
+    color: #ABABAB;
+}
+
 /* CSS TOOLTIP styling 
 ------------------------------------------*/
 

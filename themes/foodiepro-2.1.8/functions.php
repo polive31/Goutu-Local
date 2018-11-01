@@ -399,6 +399,7 @@ function megamenu_dequeue_google_fonts() {
 //* Load Custom Styles & Fonts
 add_filter( 'foodie_pro_disable_google_fonts', '__return_true' );
 add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_stylesheets' );
+
 function foodie_pro_enqueue_stylesheets() {
 	
 	/* Google Fonts
@@ -419,10 +420,15 @@ function foodie_pro_enqueue_stylesheets() {
 	
 	/* Theme stylesheet with varying name & version, forces cache busting at browser level
 	--------------------------------------------------- */
-	$color_theme_url = CHILD_THEME_URL . '/assets/css/';
-	$color_theme_path = CHILD_THEME_PATH . '/assets/css/';
+	$css_url = CHILD_THEME_URL . '/assets/css/';
+	$css_path = CHILD_THEME_PATH . '/assets/css/';
 	$color_theme_handler = 'color-theme-' . CHILD_COLOR_THEME;
-	custom_enqueue_style( $color_theme_handler , $color_theme_url, $color_theme_path, $color_theme_handler . '.css', array(), CHILD_COLOR_THEME . CHILD_COLOR_THEME_VERSION );
+	custom_enqueue_style( $color_theme_handler , $css_url, $css_path, $color_theme_handler . '.css', array(), CHILD_COLOR_THEME . CHILD_COLOR_THEME_VERSION );
+
+	/* Print stylesheet
+	--------------------------------------------------- */
+	custom_enqueue_style( 'custom-print-style' , $css_url, $css_path, 'print.css', array(), CHILD_THEME_VERSION, 'print' );	
+
 }
 
 add_action('wp_enqueue_scripts','remove_header_styles');
@@ -439,6 +445,7 @@ function remove_header_styles() {
   remove_style('wpurp_style11');  	
   remove_style('yarppWidgetCss');
   //remove_style('cnss_font_awesome_css');   
+  remove_style('megamenu-fontawesome');
   remove_style('megamenu-fontawesome');
 }
 
@@ -472,22 +479,6 @@ function enqueue_minified_stylesheet( $default_stylesheet_uri ) {
 	} 
 	return $default_stylesheet_uri;
 }
-
-
-// function use_minified_stylesheet( $default_stylesheet_uri ) {
-// 	$stylesheet_path = CHILD_THEME_PATH . '/style.min.css';
-// 	$default_stylesheet_path = CHILD_THEME_PATH . '/style.css';
-// 	$stylesheet_uri =  wp_make_link_relative( CHILD_THEME_URL . '/style.min.css');
-// 	$default_stylesheet_uri =  wp_make_link_relative( $default_stylesheet_uri );
-// 	$min_mod_date = filemtime( $stylesheet_path );
-// 	$orig_mod_date = filemtime( $default_stylesheet_path );
-// 	if ( file_exists( $stylesheet_path ) && ($min_mod_date >= $orig_mod_date) ) {
-// 		//foodiepro_log( 'Minified stylesheet exist and is valid' );
-// 		return $stylesheet_uri;	
-// 	}
-// 	//foodiepro_log( 'Minified stylesheet doesn t exist or too old' );
-// 	return $default_stylesheet_uri;	
-// }
 
 /* =================================================================*/
 /* =              CUSTOM LOGIN                                     =*/
@@ -790,10 +781,6 @@ function wprpe_orderby_rating( $args ) {
 }
 
 
-/* =================================================================*/
-/* =               ARCHIVES
-/* =================================================================*/
-
 
 /* =================================================================*/
 /* =               PAGES
@@ -866,13 +853,6 @@ function foodie_pro_read_more_link() {
 }
 
 
-/* Add social share icons
--------------------------------------------------------*/
-add_action( 'genesis_entry_header', 'add_share_icons' , 10 ); /* Original genesis_after_entry_content */
-function add_share_icons() {
-	if ( is_singular( 'post' ) )
-		echo do_shortcode('[mashshare]');
-}
 
 /* =================================================================*/
 /* =               COMMENTS

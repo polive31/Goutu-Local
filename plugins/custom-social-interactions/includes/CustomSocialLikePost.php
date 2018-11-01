@@ -7,10 +7,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Custom_Social_Like_Post extends Custom_Social_Interactions {
 
-    private $logged_in;
+    // private $logged_in;
+    private $post_type;
 
-    public function __construct( $logged_in ) {
-        $this->logged_in = $logged_in;
+    public function __construct( $post_type ) {
+        $this->post_type = $post_type;
     }
 
     public function output() {
@@ -28,8 +29,14 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
         //     $link_url = '/connexion';
         // }
         
-        $tooltip_like = __('Like this recipe','foodiepro');
-        $tooltip_dislike = __('Do not like this recipe anymore','foodiepro');
+        if ($this->post_type=='recipe') {
+            $tooltip_like = __('Like this recipe','foodiepro');
+            $tooltip_dislike = __('Do not like this recipe anymore','foodiepro');
+        }
+        else {
+            $tooltip_like = __('Like this post','foodiepro');
+            $tooltip_dislike = __('Do not like this post anymore','foodiepro');           
+        } 
                 
         if( $this->is_liked_post( $post_id ) ) {
             $link_class .= ' is-liked';
@@ -47,7 +54,7 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
         // $output = $this->before_output();
         
         ob_start();
-        ?>
+            ?>
                 <a href="<?php echo $link_url;?>" id="<?php echo $link_id;?>" class="<?php echo $link_class; ?>" data-post-id="<?php echo $post_id; ?>">
                 <div class="button-caption">
                     <?php 
@@ -56,9 +63,8 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
                     ?>     
                 </div>
                 </a>
-                [tooltip text='<?php echo $tooltip . $tooltip_alt;?>' pos="top"]        
-                <!-- [tooltip post="top"] <?php echo $tooltip . $tooltip_alt;?> [/tooltip]         -->
-        <?php 
+            <?php 
+            do_shortcode('[tooltip text="' . $tooltip . $tooltip_alt . '" pos="top"]');        
         $output = ob_get_contents();
         ob_end_clean();
 

@@ -38,13 +38,13 @@ function remove_script($script) {
 /* =              CUSTOM STYLES ENQUEUE     
 /* =================================================================*/
 
-function custom_enqueue_style( $handler, $uri, $path, $file, $deps, $version ) {	
+function custom_enqueue_style( $handler, $uri, $path, $file, $deps=array(), $version=false, $media='all' ) {	
 	$minfile = str_replace( '.css', '.min.css', $file );
 	if (file_exists( $path . $minfile) && WP_MINIFY ) {
-		wp_enqueue_style( $handler, $uri . $minfile, $deps, $version );
+		wp_enqueue_style( $handler, $uri . $minfile, $deps, $version, $media );
 	}
 	else {
-		wp_enqueue_style( $handler, $uri . $file, $deps, $version );
+		wp_enqueue_style( $handler, $uri . $file, $deps, $version, $media );
 	}
 }
 

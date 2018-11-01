@@ -1,0 +1,56 @@
+.site-container {
+	margin-top:0!important;
+}
+
+body {
+	background:none;
+}
+
+h1, h2, h3, h4,
+body {
+    font-family:'Open Sans', sans-serif;
+    font-size:14px;
+    padding:0 10px;
+}
+
+h1 {
+    font-weight:bold;
+    font-size:30px;
+}
+
+h2 {
+    font-size:20px;
+    font-weight:bold;
+    padding-top:20px;
+}
+
+.wpurp-responsive-desktop {
+    margin-top:10px;
+}
+
+
+.mashsb-container {
+    display:none;
+}
+
+header,
+img,
+#query-monitor.qm-show, 
+#query-monitor.qm-peek,
+.post-top,
+.entry-avatar,
+.comment,
+.comment-respond,
+.footer-widgets,
+.sidebar {
+	display:none;
+}
+
+#responsive-menu-pro-noscroll-wrapper {
+     height: 100%!important; 
+}
+
+.site-footer {
+	position:absolute;
+	bottom:20px;
+}

@@ -299,6 +299,11 @@ class Custom_WPURP_Helpers extends WPURP_Premium_Addon {
 
         $required_fields = WPUltimateRecipe::option( 'user_submission_required_fields', array() );
 
+        $post = get_post( $recipe_ID );
+        $content = $post->post_content;
+        $content = trim(preg_replace("/\[wpurp-searchable-recipe\][^\[]*\[\/wpurp-searchable-recipe\]/", "", $content));
+        $content = (empty($content))?$recipe->description():$content;
+
         ob_start();
 
         include( self::$_PluginDir . 'templates/custom_submission_form.php' );
@@ -347,7 +352,7 @@ class Custom_WPURP_Helpers extends WPURP_Premium_Addon {
 
             if( !$title ) $title = __( 'Untitled', 'foodiepro' );
 
-            $content = isset( $_POST['recipe_description'] ) ? $_POST['recipe_description'] : '';
+            $content = isset( $_POST['content'] ) ? $_POST['content'] : '';
 
             $post = array(
                 'post_title' => $title,

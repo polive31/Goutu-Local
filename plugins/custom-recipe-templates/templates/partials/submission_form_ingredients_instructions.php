@@ -34,7 +34,8 @@ if( !isset( $required_fields ) ) $required_fields = array();
         <tr class="recipe-general-form-description">
             <td class="recipe-general-form-label"><label for="recipe_description"><?php _e('Description', 'foodiepro' ); ?><?php if( in_array( 'recipe_description', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
             <td class="recipe-general-form-field">
-                <textarea class="recipe-description" name="recipe_description" id="recipe_description" rows="4" placeholder="<?php echo __('Provide general information about this recipe', 'foodiepro');?>"><?php echo esc_html( $recipe->description() ); ?></textarea>
+                <!-- <textarea class="recipe-description" name="recipe_description" id="recipe_description" rows="4" placeholder="<?php echo __('Provide general information about this recipe', 'foodiepro');?>"><?php echo esc_html( $recipe->description() ); ?></textarea> -->
+                <textarea class="recipe-description" name="content" id="recipe_description" rows="4" placeholder="<?php echo __('Provide general information about this recipe', 'foodiepro');?>"><?php echo esc_html( $content ); ?></textarea>
             </td>
         </tr>
         <tr class="recipe-general-form-servings">

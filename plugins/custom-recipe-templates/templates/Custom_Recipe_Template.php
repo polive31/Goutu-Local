@@ -3,6 +3,9 @@
 
 // class Custom_Recipe_Template  {
 class Custom_Recipe_Template extends Custom_WPURP_Templates {
+
+	private $post_ID;
+	private $post_content;
 	
 	public function __construct() {
 		parent::__construct();
@@ -10,9 +13,18 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 		add_filter( 'wpurp_output_recipe', array($this,'wpurp_custom_recipe_template'), 10, 2 );
 		add_filter('wp_dropdown_cats', array($this, 'add_lang_to_select'));
 		add_action('wp_head',array($this,'add_custom_js'));
+
+		$this->hydrate();
 	}
 
-	function add_custom_js(){
+	public function hydrate() {
+		$this->post_ID = get_the_ID();
+		$post = get_post( $this->post_ID );
+        $content = $post->post_content;
+        $this->post_content = trim(preg_replace("/\[wpurp-searchable-recipe\][^\[]*\[\/wpurp-searchable-recipe\]/", "", $content));
+	}
+
+	public function add_custom_js(){
 	?>
 	<script>
 		jQuery(document).ready(function() {
@@ -32,7 +44,7 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 
 	public function wpurp_custom_recipe_template( $content, $recipe ) {
 
-		$post_ID = get_the_ID();
+		$this->post_ID = get_the_ID();
 
 		$imgID  = $recipe->featured_image();
 
@@ -44,7 +56,7 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 		ob_start();
 		
 		// Debug
-			//echo '<pre>' . print_r(get_post_meta($post_ID), true) . '</pre>';
+			//echo '<pre>' . print_r(get_post_meta($this->post_ID), true) . '</pre>';
 		
 		// Output JSON+LD metadata & rich snippets
 			echo $this->json_ld_meta_output($recipe,'');
@@ -57,7 +69,8 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 			<!-- Recipe description -->
 			<div class="recipe-container" id="intro">
 				<?php
-				if (empty($content)) {
+
+				if (empty($this->post_content)) {
 					echo $recipe->description();
 				}
 				?>	
@@ -146,21 +159,21 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 
 					<?php
 						// Origin
-					  $terms = get_the_term_list( $post_ID, 'cuisine', '', ', ', '' ); 
+					  $terms = get_the_term_list( $this->post_ID, 'cuisine', '', ', ', '' ); 
 						if ($terms!='') {
 							$html = '<div class="label-container" id="tag"><div class="recipe-label">' . __('Origin','foodiepro') . '</div>' . $terms . '</div>';
 							echo $html;
 						}		
 						
 						// Diet
-					  $terms = get_the_term_list( $post_ID, 'diet', '', ', ', '' ); 
+					  $terms = get_the_term_list( $this->post_ID, 'diet', '', ', ', '' ); 
 						if ($terms!='') {
 							$html = '<div class="label-container" id="tag"><div class="recipe-label">' . __('Diet','foodiepro') . '</div>' . $terms . '</div>';
 							echo $html;
 						}	
 						
 						// Difficulty
-					  $terms = get_the_term_list( $post_ID, 'difficult', '', '', '' ); 
+					  $terms = get_the_term_list( $this->post_ID, 'difficult', '', '', '' ); 
 						if ($terms!='') {
 							$html = '<div class="label-container" id="tag"><div class="recipe-label">' . __('Level','foodiepro') . '</div>' . $terms . '</div>';
 							echo $html;

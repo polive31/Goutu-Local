@@ -20,8 +20,13 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 	public function hydrate() {
 		$this->post_ID = get_the_ID();
 		$post = get_post( $this->post_ID );
-        $content = $post->post_content;
-        $this->post_content = trim(preg_replace("/\[wpurp-searchable-recipe\][^\[]*\[\/wpurp-searchable-recipe\]/", "", $content));
+		if ($post) {
+	        $content = $post->post_content;
+	        $this->post_content = trim(preg_replace("/\[wpurp-searchable-recipe\][^\[]*\[\/wpurp-searchable-recipe\]/", "", $content));
+		}
+		else {
+			$this->post_content = '';	
+		}
 	}
 
 	public function add_custom_js(){

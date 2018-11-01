@@ -307,7 +307,6 @@ class CustomNavigationShortcodes extends CustomArchive {
 		$atts = shortcode_atts( array(
 			'taxonomies' => '',
 			'dropdown' => 'false',
-			'depth' => 1,
 			'exclude' => '',
 			'index_title' => '',
 			'index_path' => '',
@@ -315,7 +314,6 @@ class CustomNavigationShortcodes extends CustomArchive {
 		), $atts );
 
 		$html = '';
-		$depth = $atts['depth'];
 		$exclude = $atts['exclude'];
 		$dropdown = $atts['dropdown'];
 		$index_title = $atts['index_title'];
@@ -339,13 +337,18 @@ class CustomNavigationShortcodes extends CustomArchive {
 		//echo $term_slug;
 		//echo sprintf( '$tax_slug = %s <br>', $tax_slug);
 			
-			
+		
+		$hierarchical=0;	
+		$depth=0;	
 	// Output taxonomy and parent term			
 		if ($tax_slug == 'cuisine') { // $tax_slug will stay cuisine
 			if ($obj->parent != 0) // term has a parent => either country or region archive
 				$child_of = $obj->parent; // wp_list_categories will use parent to filter
 			else // term has no parent => either continent or france
 				$child_of = $obj->term_id; // wp_list_categories will use current term to filter
+		}
+		elseif ($tax_slug == 'ingredient') {
+			$hierarchical = 1; 
 		}
 		else {
 			$child_of='';
@@ -356,6 +359,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		$args = array( 
 			'taxonomy'			=> $tax_slug,
 			'child_of'			=> $child_of,
+			'hierarchical'		=> $hierarchical,
 			'depth' 			=> $depth,
 			'exclude' 			=> $exclude,
 			'orderby' 			=> Custom_WPURP_Helpers::orderby($tax_slug),

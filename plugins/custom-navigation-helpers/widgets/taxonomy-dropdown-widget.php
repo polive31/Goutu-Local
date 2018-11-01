@@ -45,6 +45,7 @@ public function widget( $args, $instance ) {
 	
 	if ( (! $WPURP_search) && (! is_search() ) ) {
 		
+		// Widget title
 		$obj = get_queried_object();
 		$author = isset($obj->data->user_login);	
 		$tax = $author?'author':get_taxonomy($obj->taxonomy);
@@ -59,7 +60,7 @@ public function widget( $args, $instance ) {
 		echo $args['before_title'] . $tax . $args['after_title'];
 		// echo $args['before_title'] . __('Filter', 'foodiepro') . $args['after_title'];
 
-		// Start of widget code
+		// Dropdown display
 		echo do_shortcode('[ct-terms dropdown="true"]');
 	
 	}

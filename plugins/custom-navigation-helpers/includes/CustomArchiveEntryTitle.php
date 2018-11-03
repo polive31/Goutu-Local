@@ -18,34 +18,11 @@ class CustomArchiveEntryTitle extends CustomArchive {
 		add_filter( 'genesis_post_title_output', array($this,'archive_rating' ), 1 );		
 		add_action( 'genesis_entry_header', array($this, 'do_post_title_before'), 1 );
 		add_action( 'genesis_entry_header', array($this, 'do_post_title_after') );
-		add_action( 'genesis_post_info', array($this, 'custom_post_info_filter') );
 		add_filter( 'rpwe_in_thumbnail', array($this, 'rpwe_add_overlay'), 10, 2 );
 	}
 
-
-	//* Customize the entry meta in the entry header (requires HTML5 theme support)
-	function custom_post_info_filter($post_info) {
-		if (is_single()) {
-			$post_info = sprintf(__('Published on %s by <span id="username">%s</span>', 'foodiepro'), '[post_date]', '[bp-author]');
-			global $post, $current_user;
-			get_currentuserinfo();
-			if ($post->post_author == $current_user->ID) { 
-				$edit_page_url = do_shortcode( '[permalink slug="' . Custom_WPURP_Helpers::RECIPE_EDIT_SLUG . '"]' );
-				$edit_url = 'href="' . $edit_page_url . '?wpurp-edit-recipe=' . $post->ID . '" ';   
-            	$edit_title = 'title="' . __('Edit recipe', 'foodiepro') . '" ';
-
-	   			$post_info .= ' <a ' . $edit_url . $edit_title . '><i class="fa fa-pencil"></i></a>';    
-			}
-		}
-		else {
-			//$post_info = sprintf(__('By <span id="username">%s</span>', 'foodiepro'), '[bp-author]');
-			$post_info = '';
-		}
-		return $post_info;
-	}
 	
-	
-	// Add custom opening div for post title
+	// Add custom opening div for post thumbnail title
 	public function do_post_title_before() {
 		if ( is_tax() || is_search() || is_tag() ) {
 			echo '<div class="entry-header-overlay">';
@@ -53,7 +30,7 @@ class CustomArchiveEntryTitle extends CustomArchive {
 		}
 	}
 
-	// Add custom closing div for post title
+	// Add custom closing div for post thumbnail title
 	public function do_post_title_after() {
 		if ( is_tax() || is_search() || is_tag() ) {
 			echo '</div>';

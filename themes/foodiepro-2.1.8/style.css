@@ -3842,6 +3842,10 @@ nav.nav-primary .wrap {
 /* Blogs/Recipes grid in main content
 --------------------------------------------- */
 
+.content ul.rpwe-ul {
+    margin-bottom: 0;
+}
+
 .entry-content .rpwe-block ul li, /* Prevents styling from other .entry-content section */
 .content .rpwe-block li,
 .after-content .rpwe-block li {
@@ -3873,6 +3877,10 @@ nav.nav-primary .wrap {
 
 .content a.rpwe-img:hover img {
 	opacity:0.8;
+}
+
+.rpwe-block + p {
+    display: none;
 }
 
 .rpwe-block img.avatar {

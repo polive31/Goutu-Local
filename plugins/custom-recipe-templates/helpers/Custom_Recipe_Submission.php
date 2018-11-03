@@ -1,22 +1,10 @@
 <?php
 
-class Custom_WPURP_Helpers extends WPURP_Premium_Addon {
+class Custom_Recipe_Submission extends WPURP_Premium_Addon {
 
     const RECIPES_PUBLISH_SLUG = 'publier-recettes';
     const RECIPE_NEW_SLUG = 'nouvelle-recette';
     const RECIPE_EDIT_SLUG = 'modifier-recette';
-    const TAXONOMY = array( 
-        'ingredient'    => array('hierarchical'=> false, 'multiselect'=> false, 'required'=> true, 'orderby'=> 'name'), 
-        'course'        => array('hierarchical'=> false, 'multiselect'=> false, 'required'=> true, 'orderby'=> 'description'), 
-        'cuisine'       => array('hierarchical'=> true , 'multiselect'=> false, 'required'=> false, 'orderby'=> 'name'), 
-        'season'        => array('hierarchical'=> false, 'multiselect'=> false, 'required'=> false, 'orderby'=> 'description'), 
-        'occasion'      => array('hierarchical'=> false, 'multiselect'=> true , 'required'=> true , 'orderby'=> 'description'), 
-        'diet'          => array('hierarchical'=> false, 'multiselect'=> true , 'required'=> false , 'orderby'=> 'description'), 
-        'difficult'     => array('hierarchical'=> false, 'multiselect'=> false, 'required'=> true, 'orderby'=> 'description'), 
-        'category'      => array('hierarchical'=> false, 'multiselect'=> false, 'required'=> false, 'orderby'=> 'name'), 
-        'post_tag'      => array('hierarchical'=> false, 'multiselect'=> true , 'required'=> false , 'orderby'=> 'name')
-    );
-
 
     protected static $_PluginDir;  
     protected static $_UploadPath; 
@@ -32,48 +20,23 @@ class Custom_WPURP_Helpers extends WPURP_Premium_Addon {
         $upload_dir = wp_upload_dir();
         self::$_UploadPath = trailingslashit( $upload_dir['basedir'] );
 
+        // Recipe headline filter
+        add_action( 'genesis_post_info', array($this, 'recipe_edit_button') );
+
+        // Submission pages shortcodes
         add_shortcode( 'custom-wpurp-submissions-new-recipe', array( $this, 'new_submission_shortcode' ) );
         add_shortcode( 'custom-wpurp-submissions-current-user-edit', array( $this, 'submissions_current_user_edit_shortcode' ) );
-        add_shortcode( 'custom-wpurp-favorites', array( $this, 'favorite_recipes_shortcode' ) );
         
-        // Recipe List Shortcode and associated actions
+        // Created & Favorite recipes lists shortcodes
         add_shortcode( 'custom-recipe-submissions-current-user-list', array( $this, 'submissions_current_user_list_shortcode' ) );
+        add_shortcode( 'custom-wpurp-favorites', array( $this, 'favorite_recipes_shortcode' ) );
+
+        // Ajax callbacks
         add_action( 'wp_ajax_custom_user_submissions_delete_recipe', array( $this, 'ajax_user_delete_recipe') );
         add_action( 'wp_ajax_nopriv_custom_user_submissions_delete_recipe', array( $this, 'ajax_user_delete_recipe') );
-        
-        // Misc 
-        add_shortcode( 'display-ingredient', array( $this, 'display_ingredient_shortcode' ) );
-
-        // Init actions
-        // add_action( 'wp', array($this, 'hydrate'));
-
     }
 
-    public function hydrate() {
-
-        // echo '<pre>' . print_r( self::$UNITS ) . '</pre>'; 
-    }
-
-    public function is_multiselect($tax) {
-        if (!isset(self::TAXONOMY[$tax])) return;
-        return self::TAXONOMY[$tax]['multiselect'];
-    }
-
-    public function is_hierarchical($tax) {
-        if (!isset(self::TAXONOMY[$tax])) return;
-        return self::TAXONOMY[$tax]['hierarchical'];
-    }
-
-    public function is_required($tax) {
-        if (!isset(self::TAXONOMY[$tax])) return;
-        return self::TAXONOMY[$tax]['required'];
-    }
-
-    public static function orderby($tax) {
-        if (!isset(self::TAXONOMY[$tax])) return;
-        return self::TAXONOMY[$tax]['orderby'];
-    }  
-
+    // Returns list of excluded categories
     public function excluded_terms($tax) {
         $exclude='';    
         if ($tax=='category') {
@@ -81,6 +44,28 @@ class Custom_WPURP_Helpers extends WPURP_Premium_Addon {
             $exclude = implode( ',', $exclude );
         }
         return $exclude;
+    }
+
+
+    //* Customize the entry meta in the entry header (requires HTML5 theme support)
+    function recipe_edit_button($post_info) {
+        if (is_singular('recipe')) {
+            $post_info = sprintf(__('Published on %s by <span id="username">%s</span>', 'foodiepro'), '[post_date]', '[bp-author]');
+            global $post, $current_user;
+            get_currentuserinfo();
+            if ($post->post_author == $current_user->ID || current_user_can('administrator')) { 
+                $edit_page_url = do_shortcode( '[permalink slug="' . self::RECIPE_EDIT_SLUG . '"]' );
+                $edit_url = 'href="' . $edit_page_url . '?wpurp-edit-recipe=' . $post->ID . '" ';   
+                $edit_title = 'title="' . __('Edit recipe', 'foodiepro') . '" ';
+
+                $post_info .= ' <a ' . $edit_url . $edit_title . '><i class="fa fa-pencil"></i></a>';    
+            }
+        }
+        else {
+            //$post_info = sprintf(__('By <span id="username">%s</span>', 'foodiepro'), '[bp-author]');
+            $post_info = '';
+        }
+        return $post_info;
     }
 
     public function custom_dropdown_categories( $args, $options ) {
@@ -136,18 +121,22 @@ class Custom_WPURP_Helpers extends WPURP_Premium_Addon {
         }
     }
 
-    public function display_ingredient_shortcode( $options ) {
-        $options = shortcode_atts( array(
-            'amount' => '', 
-            'amount_normalized' => '', 
-            'unit' => '',
-            'ingredient' => '',
-            'notes' => '',
-            'links' => 'yes',
-        ), $options );
+   public function submissions_current_user_list_shortcode() {
+        $output = '';
+        $author = get_current_user_id();
 
-        return Custom_WPURP_Ingredient::display( $options );
-    }
+        if( $author !== 0 ) {
+            // $output .= 'In Custom User Submission Class !';
+            $recipes = WPUltimateRecipe::get()->query()->author( $author )->post_status( array( 'publish', 'private', 'pending', 'draft' ) )->get();
+
+            if( count( $recipes ) !== 0 ) {
+                // $output .= '<ul class="wpurp-user-submissions-current-user-edit">';
+                $output .= '<p>' . __('Here is the list of the recipes that you created, and their status. You can choose to edit them, change their visibility, or delete them.', 'foodiepro') . '</p>';
+                $output .= $this->display_recipes( $recipes, true );
+            }
+        }
+        return $output;
+    }  
 
     public function favorite_recipes_shortcode( $options ) {
         $options = shortcode_atts( array(), $options );
@@ -170,22 +159,6 @@ class Custom_WPURP_Helpers extends WPURP_Premium_Addon {
         return $output;
     }
 
-   public function submissions_current_user_list_shortcode() {
-        $output = '';
-        $author = get_current_user_id();
-
-        if( $author !== 0 ) {
-            // $output .= 'In Custom User Submission Class !';
-            $recipes = WPUltimateRecipe::get()->query()->author( $author )->post_status( array( 'publish', 'private', 'pending', 'draft' ) )->get();
-
-            if( count( $recipes ) !== 0 ) {
-                // $output .= '<ul class="wpurp-user-submissions-current-user-edit">';
-                $output .= '<p>' . __('Here is the list of the recipes that you created, and their status. You can choose to edit them, change their visibility, or delete them.', 'foodiepro') . '</p>';
-                $output .= $this->display_recipes( $recipes, true );
-            }
-        }
-        return $output;
-    }  
 
     public function display_recipes( $recipes, $edit=false ) {
         $output = '';
@@ -253,7 +226,6 @@ class Custom_WPURP_Helpers extends WPURP_Premium_Addon {
     }
 
 
-
     public function submissions_current_user_edit_shortcode() {
         $output = '';
         $user_id = get_current_user_id();
@@ -267,7 +239,7 @@ class Custom_WPURP_Helpers extends WPURP_Premium_Addon {
             $post = get_post( $recipe_id );
             $user = get_userdata( $user_id );
 
-            if( $post->post_author == $user_id ) {
+            if( $post->post_author == $user_id || current_user_can('administrator') ) {
                 $output .= '<p class="submitbox">' . __( 'You can edit your recipe here, before submitting it.', 'foodiepro') . '</p>';
                 $output .= $this->submissions_form( $recipe_id );
             }

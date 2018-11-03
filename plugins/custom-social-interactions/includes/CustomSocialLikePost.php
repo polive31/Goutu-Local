@@ -10,11 +10,11 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
     // private $logged_in;
     private $post_type;
 
-    public function __construct( $post_type ) {
-        $this->post_type = $post_type;
+    public function __construct( $type ) {
+        $this->post_type = $type;
     }
 
-    public function output() {
+    public function get_html() {
         $post_id = get_the_id();
         $link_class='social-like-post';
         $link_id='';
@@ -64,12 +64,20 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
                 </div>
                 </a>
             <?php 
-            do_shortcode('[tooltip text="' . $tooltip . $tooltip_alt . '" pos="top"]');        
+            // echo do_shortcode('[tooltip text="' . $tooltip . $tooltip_alt . '" pos="top"]');      
+            Tooltip::display( $tooltip . $tooltip_alt, 'top');      
+        
         $output = ob_get_contents();
         ob_end_clean();
 
         // $output = $this->after_output( $output );
         return $output;
     }
+
+    public function display() {
+        echo $this->get_html();
+    }
+
+
 
 }

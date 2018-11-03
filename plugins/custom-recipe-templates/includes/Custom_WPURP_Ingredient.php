@@ -53,7 +53,9 @@ class Custom_WPURP_Ingredient {
 		add_action( 'ingredient_edit_form_fields', array($this, 'taxonomy_edit_fields'), 10, 2 );
 		// add_action( 'ingredient_edit_form_fields', array($this, 'taxonomy_edit_plural_field'), 10, 2 );
 		add_action( 'edited_ingredient', array($this, 'save_meta'), 10, 2 );  
-		add_action( 'create_ingredient', array($this, 'save_meta'), 10, 2 );		
+		add_action( 'create_ingredient', array($this, 'save_meta'), 10, 2 );
+		// Shortcode
+		add_shortcode( 'display-ingredient', array( $this, 'display_ingredient_shortcode' ) );		
 	}
 
 	public function hydrate() {
@@ -75,6 +77,20 @@ class Custom_WPURP_Ingredient {
         //     self::$UNITS[sanitize_title($unit[0])]=array($unit[0],$unit[1]);
         // }		
 	}
+
+    public function display_ingredient_shortcode( $options ) {
+        $options = shortcode_atts( array(
+            'amount' => '', 
+            'amount_normalized' => '', 
+            'unit' => '',
+            'ingredient' => '',
+            'notes' => '',
+            'links' => 'yes',
+        ), $options );
+
+        return self::display( $options );
+    }
+
 
     public static function get_units( $plural ) {
         $column=$plural?1:0;

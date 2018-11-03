@@ -30,9 +30,11 @@ require_once 'includes/CustomArchive.php';
 require_once 'includes/CustomArchiveHeadline.php';
 require_once 'includes/CustomArchiveEntryTitle.php';
 require_once 'includes/CustomNavigationShortcodes.php';
-$customArchiveHeadline = new CustomArchiveHeadline;
-$customEntryTitle = new CustomArchiveEntryTitle;
-$customNavigationShortcodes = new CustomNavigationShortcodes;
+require_once 'includes/Tooltip.php';
+new CustomArchiveHeadline();
+new CustomArchiveEntryTitle();
+new CustomNavigationShortcodes();
+new Tooltip();
 
 require_once 'widgets/dropdown-posts-sort-widget.php';
 require_once 'widgets/taxonomy-dropdown-widget.php';

@@ -200,6 +200,10 @@ tr.ingredient.edit td.ingredient-input {
   display: table-cell;
 }
 
+#wpurp_user_submission_form .saved td {
+  padding: 3px;
+}
+
  tr.ingredient td {
   padding:10px 10px;  
 }
@@ -243,7 +247,7 @@ label.add-instruction-thumbnail {
 
  td.sort-handle.ui-sortable-handle {
   width: 40px;
-  transition: all 1s ease-in-out; 
+  transition: background-color 1s ease-in-out; 
 }
 
  td.sort-handle.ui-sortable-handle:hover {

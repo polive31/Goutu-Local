@@ -51,7 +51,7 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 
 		$this->post_ID = get_the_ID();
 
-		$imgID  = $recipe->featured_image();
+		$imgID = $recipe->featured_image();
 
  		$imgAlt = get_post_meta($imgID,'_wp_attachment_image_alt', true);
  		if (empty($imgAlt))
@@ -111,7 +111,7 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 					<div class="recipe-button tooltip tooltip-above tooltip-left" id="like">
 					<?php
 						$recipe_like = new Custom_Social_Like_Post( 'recipe' );
-						echo $recipe_like->output();?>
+						echo $recipe_like->display();?>
 					</div>		
 
 					<!-- Recipe Print Button -->

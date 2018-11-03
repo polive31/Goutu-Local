@@ -12,6 +12,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class CustomArchive {
 	
+    const TAXONOMY = array( 
+        'ingredient'    => array('hierarchical'=> false, 'multiselect'=> false, 'required'=> true, 'orderby'=> 'name'), 
+        'course'        => array('hierarchical'=> false, 'multiselect'=> false, 'required'=> true, 'orderby'=> 'description'), 
+        'cuisine'       => array('hierarchical'=> true , 'multiselect'=> false, 'required'=> false, 'orderby'=> 'name'), 
+        'season'        => array('hierarchical'=> false, 'multiselect'=> false, 'required'=> false, 'orderby'=> 'description'), 
+        'occasion'      => array('hierarchical'=> false, 'multiselect'=> true , 'required'=> true , 'orderby'=> 'description'), 
+        'diet'          => array('hierarchical'=> false, 'multiselect'=> true , 'required'=> false , 'orderby'=> 'description'), 
+        'difficult'     => array('hierarchical'=> false, 'multiselect'=> false, 'required'=> true, 'orderby'=> 'description'), 
+        'category'      => array('hierarchical'=> false, 'multiselect'=> false, 'required'=> false, 'orderby'=> 'name'), 
+        'post_tag'      => array('hierarchical'=> false, 'multiselect'=> true , 'required'=> false , 'orderby'=> 'name')
+    );
+
 	protected static $vowels = array('a','e','i','o','u');
 	protected $orderby;
 	protected $query='';
@@ -24,7 +36,9 @@ class CustomArchive {
 		// add_filter( 'genesis_attr_content', 'add_columns_class_to_content' );
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
-		add_action('wp_enqueue_scripts', array($this, 'enqueue_masonry_scripts'));		
+		add_action('wp_enqueue_scripts', array($this, 'enqueue_masonry_scripts'));
+		// Filters	
+		// add_filter( 'query_vars', array($this,'archive_filter_queryvars') );					
 	}
 
 
@@ -44,7 +58,7 @@ class CustomArchive {
 			wp_enqueue_script( 'jquery-masonry' );
 			$js_uri = self::$PLUGIN_URI . '/assets/js/';
 			$js_path = self::$PLUGIN_PATH . '/assets/js/';
-			custom_enqueue_script( 'masonry-layout', $js_uri, $js_path, 'masonry-layout.js', array( 'jquery-masonry' ), CHILD_THEME_VERSION, true);
+			custom_enqueue_script( 'masonry-layout', $js_uri, $js_path, 'masonry-layout.js', array( 'jquery', 'jquery-masonry' ), CHILD_THEME_VERSION, true);
 	  	};
 	}
 	
@@ -94,6 +108,36 @@ class CustomArchive {
 
 	/* Helper functions
 	---------------------------------------------------------------------------*/
+
+	// Taxonomy information
+    public static function is_multiselect($tax) {
+        if (!isset(self::TAXONOMY[$tax])) return;
+        return self::TAXONOMY[$tax]['multiselect'];
+    }
+
+    public static function is_hierarchical($tax) {
+        if (!isset(self::TAXONOMY[$tax])) return;
+        return self::TAXONOMY[$tax]['hierarchical'];
+    }
+
+    public static function is_required($tax) {
+        if (!isset(self::TAXONOMY[$tax])) return;
+        return self::TAXONOMY[$tax]['required'];
+    }
+
+    public static function orderby($tax) {
+        if (!isset(self::TAXONOMY[$tax])) return;
+        return self::TAXONOMY[$tax]['orderby'];
+    }  
+
+
+	/* Custom query variable for taxonomy filter
+	--------------------------------------------- */		
+	public function archive_filter_queryvars($vars) {
+	  $vars[] = 'filter';
+	  $vars[] .= 'filter_term';
+	  return $vars;
+	}	
 
 	protected function initial_is_vowel($word) {
 		$first = strtolower($word[0]);

@@ -78,11 +78,11 @@
         // -----------------------------------------------------------
         foreach( $taxonomies as $taxonomy => $options ) {
             $args['taxonomy'] = $taxonomy;
-            $args['show_option_none'] = ($this->is_multiselect($taxonomy) ) ?'':$options['labels']['singular_name'];
-            $args['hierarchical'] = $this->is_hierarchical($taxonomy)?1:0;
+            $args['show_option_none'] = (CustomArchive::is_multiselect($taxonomy) ) ?'':$options['labels']['singular_name'];
+            $args['hierarchical'] = CustomArchive::is_hierarchical($taxonomy)?1:0;
             $args['exclude'] = $this->excluded_terms($taxonomy);
             $args['tags_post_type'] = 'recipe';
-            $args['orderby'] = Custom_WPURP_Helpers::orderby($taxonomy);
+            $args['orderby'] = CustomArchive::orderby($taxonomy);
             // $args['class'] .= $multiselect?'multiple':'';
 
             $select_fields[$taxonomy] = array(
@@ -98,7 +98,7 @@
         foreach( $select_fields as $taxonomy => $select_field ) {
     
             // Multiselect
-            if( $this->is_multiselect($taxonomy) ) {
+            if( CustomArchive::is_multiselect($taxonomy) ) {
                 preg_match( "/<select[^>]+>/i", $select_field['dropdown'], $select_field_match );
                 if( isset( $select_field_match[0] ) ) {
                     $select_multiple = preg_replace( "/name='([^']+)/i", "$0[]' data-placeholder='".$select_field['label']."' multiple='multiple", $select_field_match[0] );

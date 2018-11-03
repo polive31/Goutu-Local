@@ -21,6 +21,7 @@ class Custom_Recipe_Favorite extends WPURP_Template_Block {
 		self::$_PluginPath = plugin_dir_url( dirname( __FILE__ ) );
     }
 
+
     public function output( $recipe, $args = array() ) {
         if( !$this->output_block( $recipe, $args ) ) return '';
         
@@ -61,11 +62,10 @@ class Custom_Recipe_Favorite extends WPURP_Template_Block {
 
 				<a href="<?php echo $link_url;?>" <?php echo $this->link_id;?> class="<?php echo $this->class_id; ?>" data-recipe-id="<?php echo $recipe->ID(); ?>">
 				<div class="button-caption"><?php echo __('Favorites','foodiepro'); ?></div>
-				</a>
-                [tooltip text='<?php echo $tooltip . $tooltip_alt;?>' pos="top"]    
-  
-                <?php 
+                </a>
+<?php 
 
+        Tooltip::display($tooltip . $tooltip_alt, 'top');    
         $output .= ob_get_contents();
         ob_end_clean();
 

@@ -12,7 +12,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		
 		// Shortcodes
 		// add_shortcode('index-link', array($this,'add_index_link')); 
-		add_shortcode('tooltip', array($this,'output_tooltip')); 
+		// add_shortcode('tooltip', array($this,'output_tooltip')); 
 		add_shortcode('ct-terms-menu', array($this,'list_taxonomy_terms')); 
 		add_shortcode('tags-menu', array($this,'list_tags')); 
 		add_shortcode('ct-terms', array($this,'list_terms_taxonomy'));
@@ -26,19 +26,9 @@ class CustomNavigationShortcodes extends CustomArchive {
 		add_shortcode('permalink', array($this,'get_permalink'));
 		add_shortcode('glossary', array($this,'search_glossary') );	
 		add_shortcode('search', array($this,'search_posts') );	
-
-		// Filters	
-		add_filter( 'query_vars', array($this,'archive_filter_queryvars') );		
+	
 	}
 
-
-	/* Custom query variable for taxonomy filter
-	--------------------------------------------- */		
-	public function archive_filter_queryvars($vars) {
-	  $vars[] = 'filter';
-	  $vars[] .= 'filter_term';
-	  return $vars;
-	}
 	
 	/* Share Title Output
 	--------------------------------------------- */		
@@ -128,27 +118,27 @@ class CustomNavigationShortcodes extends CustomArchive {
 	/* = DISPLAY TOOLTIP SHORTCODE    
 	/* =================================================================*/
 
-    public function output_tooltip( $atts ) {
-        // $path = self::$_PluginPath . 'assets/img/callout_'. $position . '.png';
-		$atts = shortcode_atts( array(
-			'text' => '', 
-			'pos' => 'top',
-			), $atts );
+  //   public function output_tooltip( $atts ) {
+  //       // $path = self::$_PluginPath . 'assets/img/callout_'. $position . '.png';
+		// $atts = shortcode_atts( array(
+		// 	'text' => '', 
+		// 	'pos' => 'top',
+		// 	), $atts );
 
-		$content = $atts['text']; 
-		$position = $atts['pos']; 
+		// $content = $atts['text']; 
+		// $position = $atts['pos']; 
 
-        $uri = plugin_dir_url( dirname( __FILE__ ) ) . 'assets/img/callout_'. $position . '.png';
+  //       $uri = plugin_dir_url( dirname( __FILE__ ) ) . 'assets/img/callout_'. $position . '.png';
     
-        $html ='<div class="tooltip-content">';
-        $html.='<div class="wrap">';
-        $html.= $content;
-        $html.='<img class="callout" data-no-lazy="1" src="' . $uri . '">';
-        $html.='</div>';
-        $html.='</div>';
+  //       $html ='<div class="tooltip-content">';
+  //       $html.='<div class="wrap">';
+  //       $html.= $content;
+  //       $html.='<img class="callout" data-no-lazy="1" src="' . $uri . '">';
+  //       $html.='</div>';
+  //       $html.='</div>';
         
-        return $html;
-    }
+  //       return $html;
+  //   }
 
 	
 	/* =================================================================*/
@@ -224,7 +214,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 			'author' => 0,		
 			// 'author' => $atts['author'],		
 			'hide_empty' => true,		
-			'orderby' => Custom_WPURP_Helpers::orderby($tax),
+			'orderby' => self::orderby($tax),
 			'order'   => 'ASC'
 		) );
 		
@@ -362,7 +352,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 			'hierarchical'		=> $hierarchical,
 			'depth' 			=> $depth,
 			'exclude' 			=> $exclude,
-			'orderby' 			=> Custom_WPURP_Helpers::orderby($tax_slug),
+			'orderby' 			=> self::orderby($tax_slug),
 			'echo' 				=> false,
 			'role__not_in'		=> array('administrator','pending'),
 			'show'				=> 'user_login'

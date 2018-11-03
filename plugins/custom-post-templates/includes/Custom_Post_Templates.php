@@ -36,7 +36,10 @@ class CustomPostTemplates {
         	ob_end_clean();
         	echo $toolbar;
 		}
-	}     		
+	} 
+
+
+
 
 
 }

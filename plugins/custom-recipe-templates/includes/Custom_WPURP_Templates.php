@@ -94,9 +94,17 @@ class Custom_WPURP_Templates {
 		        ),
 			);		
 		}
-		
 		elseif ( is_page( [self::RECIPE_NEW_SLUG, self::RECIPE_EDIT_SLUG] ) ) {
-//		  $css_enqueue=null;
+			// $css_enqueue=array();
+			
+			// Remove public_base.css stylesheet from enqueued styles
+			foreach ($css_enqueue as $key=>$style) {
+				if ( strpos('public_base.css',$style['file']) ) {
+					break 1;
+				}
+			}
+			unset($css_enqueue[$key]);
+
 //		  $css_enqueue[]=array(
 //		              'name' => 'jquery-ui',
 //		              'file' => '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css',
@@ -105,13 +113,13 @@ class Custom_WPURP_Templates {
 //		              'url' => '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css',
 //		              'dir' => '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css',
 //		          ); 
-		  		$css_enqueue[]=array(
-					'url' =>  self::$_PluginUri . 'vendor/select2/css/select2.min.css',
-					'dir' =>  self::$_PluginPath . 'vendor/select2/css/select2.min.css',
-					'file' => 'select2.min.css',
-					'public' => true,
-					'direct' => true,
-				); 			
+	  		$css_enqueue[]=array(
+				'url' =>  self::$_PluginUri . 'vendor/select2/css/select2.min.css',
+				'dir' =>  self::$_PluginPath . 'vendor/select2/css/select2.min.css',
+				'file' => 'select2.min.css',
+				'public' => true,
+				'direct' => true,
+			); 			
 			$this->custom_enqueued_styles=array(
 				array(
 					'url' => '//fonts.googleapis.com/css?family=Cabin',
@@ -268,6 +276,7 @@ class Custom_WPURP_Templates {
 		                'path' => self::$_PluginPath . 'assets/js/',
 		                'file' => 'custom_user_submissions_list.js',
 		                'deps' => array(
+					        'jquery',
 		                ),
 		                'footer' => true,
 		                'data' => array(
@@ -285,14 +294,6 @@ class Custom_WPURP_Templates {
 				$js_enqueue = array();
 
 				$this->custom_enqueued_scripts = array(
-					// array(
-					//     'name' => 'select2wpurp',
-					//     'url' => WPUltimateRecipe::get()->coreUrl . '/vendor/select2/',
-					//     'file' => 'select2.min.js',
-					//     'deps' => array(
-					//         'jquery',
-					//     ),
-					// ),
 					array(
 					    'name' => 'autocomplete',
 					    'url' => self::$_PluginUri . 'vendor/autocomplete/',
@@ -378,39 +379,41 @@ class Custom_WPURP_Templates {
 	public function custom_wpurp_scripts_styles_enqueue() {
 
 		// Enqueue Styles
-		if ( array() == $this->custom_enqueued_styles ) return;
-		foreach ( $this->custom_enqueued_styles as $key=>$style) {
-			$handler = isset($style['name'])?$style['name']:'custom_wpurp_style_' . $key;
-			// $handler = (null !== $script(['name']))?$script(['name']):'custom_wpurp_' . $key;
-			$url = isset($style['url'])?$style['url']:'';
-			$path = isset($style['path'])?$style['path']:'';
-			$file = isset($style['file'])?$style['file']:'';
-			$deps = isset($style['deps'])?$style['deps']:'';
-			// $version = self::CUSTOM_WPURP_TEMPLATES_VERSION;
-			$version = CHILD_THEME_VERSION;
-			$this->custom_enqueue_style( $handler, $url, $path, $file, $deps, $version );
-  		}
+		if ( $this->custom_enqueued_styles != array() ) {
+			foreach ( $this->custom_enqueued_styles as $key=>$style) {
+				$handler = isset($style['name'])?$style['name']:'custom_wpurp_style_' . $key;
+				// $handler = (null !== $script(['name']))?$script(['name']):'custom_wpurp_' . $key;
+				$url = isset($style['url'])?$style['url']:'';
+				$path = isset($style['path'])?$style['path']:'';
+				$file = isset($style['file'])?$style['file']:'';
+				$deps = isset($style['deps'])?$style['deps']:'';
+				// $version = self::CUSTOM_WPURP_TEMPLATES_VERSION;
+				$version = CHILD_THEME_VERSION;
+				$this->custom_enqueue_style( $handler, $url, $path, $file, $deps, $version );
+	  		}
+		}
 
 		// Enqueue Scripts
-		if ( array() == $this->custom_enqueued_scripts ) return;
-		foreach ( $this->custom_enqueued_scripts as $key=>$script) {
-			$handler = isset($script['name'])?$script['name']:'custom_wpurp_script_' . $key;
-			// $handler = (null !== $script(['name']))?$script(['name']):'custom_wpurp_' . $key;
-			$url = isset($script['url'])?$script['url']:'';
-			$path = isset($script['path'])?$script['path']:'';
-			$file = isset($script['file'])?$script['file']:'';
-			$deps = isset($script['deps'])?$script['deps']:'';
-			// $version = self::CUSTOM_WPURP_TEMPLATES_VERSION;
-			$version = CHILD_THEME_VERSION;
-			$footer = isset($script['footer'])?$script['footer']:false;
-			$this->custom_enqueue_script( $handler, $url, $path, $file, $deps, $version, $footer );
+		if ( $this->custom_enqueued_scripts != array() ) {
+			foreach ( $this->custom_enqueued_scripts as $key=>$script) {
+				$handler = isset($script['name'])?$script['name']:'custom_wpurp_script_' . $key;
+				// $handler = (null !== $script(['name']))?$script(['name']):'custom_wpurp_' . $key;
+				$url = isset($script['url'])?$script['url']:'';
+				$path = isset($script['path'])?$script['path']:'';
+				$file = isset($script['file'])?$script['file']:'';
+				$deps = isset($script['deps'])?$script['deps']:'';
+				// $version = self::CUSTOM_WPURP_TEMPLATES_VERSION;
+				$version = CHILD_THEME_VERSION;
+				$footer = isset($script['footer'])?$script['footer']:false;
+				$this->custom_enqueue_script( $handler, $url, $path, $file, $deps, $version, $footer );
 
-			if (isset($script['data'])) {	
-				$data_name = $script['data']['name'];
-				unset( $script['data']['name'] );
-				wp_localize_script( $handler, $data_name, $script['data'] );
+				if (isset($script['data'])) {	
+					$data_name = $script['data']['name'];
+					unset( $script['data']['name'] );
+					wp_localize_script( $handler, $data_name, $script['data'] );
+				}
 			}
-  		}
+		}
 	}
 
 

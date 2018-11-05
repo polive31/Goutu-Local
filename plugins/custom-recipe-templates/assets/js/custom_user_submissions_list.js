@@ -3,6 +3,7 @@ jQuery(document).ready(function() {
     jQuery('.user-submissions-delete-recipe').removeClass('nodisplay');
 
     jQuery('.user-submissions-delete-recipe').on('click', function() {
+        // console.log('Click on recipe delete !');
         var button = jQuery(this);
         if(confirm(custom_user_submissions_list.confirm_message + ' ' + button.data('title'))) {
             var data = {

@@ -116,6 +116,42 @@ span.wpurp-required {
   /*color: #616161;*/
 }
 
+/*Headline image*/
+.recipe-container h4:before {
+  display: inline-block;
+  padding: 0 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+h4#headline-title:before {
+  content: url(../img/pen.png);
+}
+
+h4#headline-image:before {
+  content: url(../img/camera.png);
+}
+
+h4#headline-tags:before {
+  content: url(../img/price-tag.png);
+}
+
+h4#headline-instructions:before {
+  content: url(../img/frying-pan.png);
+}
+
+h4#headline-ingredients:before {
+  content: url(../img/vegetables.png);
+}
+
+h4#headline-general:before {
+  content: url(../img/clock.png);
+}
+
+h4#headline-notes:before {
+  content: url(../img/notes.png);
+}
+
 /*Containers */
 .recipe-image-container,
 .recipe-tags-container,
@@ -190,13 +226,15 @@ textarea.recipe-instruction::placeholder,
 
 tr.ingredient.saved td.ingredient-input,
 tr.ingredient.new td.ingredient-preview,
-tr.ingredient.edit td.ingredient-preview {
+tr.ingredient.edit td.ingredient-preview,
+tr.ingredient.saved td.spinner {
   display: none;
 }
 
 tr.ingredient.saved td.ingredient-preview,
 tr.ingredient.new td.ingredient-input,
-tr.ingredient.edit td.ingredient-input {
+tr.ingredient.edit td.ingredient-input,
+tr.ingredient.edit td.spinner {
   display: table-cell;
 }
 
@@ -208,9 +246,9 @@ tr.ingredient.edit td.ingredient-input {
   padding:10px 10px;  
 }
 
- span.mobile-display {
+/* span.mobile-display {
   display:none!important;
-}
+}*/
 
 td.ingredient-input.qty {
     width: 100px;
@@ -382,7 +420,23 @@ label.add-instruction-thumbnail {
 }
 
  .instruction-buttons {
-  float: left;
+  display: inline-block;
+  clear:both;
+  /*float: left;*/
+}
+
+.instruction-buttons input {
+  display: inline-block;
+  bottom: 10px;
+  position: relative;
+}
+
+.instruction-buttons:before {
+  content: url(../img/paper-clip.png);
+  display: inline-block;
+  padding: 10px;
+  vertical-align: middle;
+  float:left;
 }
 
  .instruction-image {
@@ -787,19 +841,71 @@ ul[aria-multiselectable=true] .select2-results__option[aria-selected=true] {
     float: left;
     width: 100%;
   } 
-  
-  tr.ingredient td {
+  /*
+  tr.ingredient.new td.ingredient-input,
+  tr.ingredient.edit td.ingredient-input {
     padding:0 10px; 
-    width:100%;
     float:left;
   } 
+*/
+  #recipe-ingredients td,
+  #recipe-instructions td {
+    display:block;
+    text-align:left;
+  }
 
-  tr.ingredient td textarea,
+  tr.instruction td {
+    padding:0;
+  }
+
+  #recipe-instructions td.sort-handle,
+  #recipe-ingredients td.sort-handle {
+    float:left;
+    width:30px;
+  }  
+
+  #recipe-instructions td.delete-button,
+  #recipe-ingredients td.delete-button {
+    width:30px;
+    float:right;
+  }  
+
+ #recipe-instructions td.instruction-content,
+ #recipe-ingredients td.ingredient-preview {
+    float:left;
+    width:calc(100% - 60px);
+  } 
+
+  #recipe-ingredients tr.ingredient.new td.ingredient-input {
+    width:100%;
+  }
+
+  .instruction-buttons:before {
+    display: none;
+  }
+
+  #recipe-ingredients tr.ingredient.saved td.ingredient-input,
+  #recipe-ingredients tr.ingredient.new td.ingredient-preview,
+  #recipe-ingredients tr.ingredient.edit td.ingredient-preview,
+  #recipe-ingredients tr.ingredient.saved td.spinner {
+    display: none;
+  }
+
+  #recipe-ingredients tr.ingredient.saved td.ingredient-preview,
+  #recipe-ingredients tr.ingredient.new td.ingredient-input,
+  #recipe-ingredients tr.ingredient.edit td.ingredient-input,
+  #recipe-ingredients tr.ingredient.new td.spinner,
+  #recipe-ingredients tr.ingredient.edit td.spinner {
+    display: block;
+  }
+
+
+/*  tr.ingredient td textarea,
   tr.ingredient td input {
     width:68%;
   } 
-  
-  span.mobile-display {
+*/  
+ /* span.mobile-display {
     display:inline-block!important;
     float: left;
     width: 30%;
@@ -812,13 +918,7 @@ ul[aria-multiselectable=true] .select2-results__option[aria-selected=true] {
   .mobile-hidden,
    tr.ingredient-field-header {
     display:none!important;
-  }   
-    
-   tr td.delete-button {
-    width:50px;
-    float:right;
-    padding:9px;
-  } 
+  }   */
 
 
   /*Recipe Submit Buttons*/
@@ -847,7 +947,7 @@ ul[aria-multiselectable=true] .select2-results__option[aria-selected=true] {
   }*/
 
   .recipe-tags-container {
-    padding:20px;
+    padding-right:20px;
   }
 
  .taxonomy-select-boxes select,

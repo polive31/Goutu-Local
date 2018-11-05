@@ -313,7 +313,7 @@ class Custom_Recipe_Submission extends WPURP_Premium_Addon {
 
                 if( $updating_post->post_type == 'recipe' && $updating_post->post_status == 'auto-draft' ) {
                     $updating = true;
-                } elseif( $updating_post->post_type == 'recipe' && $updating_post->post_author == get_current_user_id() ) {
+                } elseif( $updating_post->post_type == 'recipe' && ($updating_post->post_author == get_current_user_id() || current_user_can('administrator') ) ) {
                     $updating = true;
                 }
             }

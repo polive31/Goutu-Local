@@ -6,8 +6,8 @@ if( !isset( $required_fields ) ) $required_fields = array();
 ?>
 
 <input type="hidden" name="recipe_meta_box_nonce" value="<?php echo wp_create_nonce( 'recipe' ); ?>" />
-<div class="recipe-general-container">
-    <h4><?php _e( 'General', 'foodiepro' ); ?></h4>
+<div class="recipe-container recipe-general-container">
+    <h4 id="headline-general"><?php _e( 'General', 'foodiepro' ); ?></h4>
     <table class="recipe-general-form">
     <?php if( !isset( $wpurp_user_submission ) ) { ?>
         <tr class="recipe-general-form-title">
@@ -79,8 +79,8 @@ if( !isset( $required_fields ) ) $required_fields = array();
     </table>
 </div>
 
-<div class="recipe-ingredients-container" data-units='<?php echo json_encode(Custom_WPURP_Ingredient::get_units(false));?>'>
-    <h4><?php _e( 'Ingredients', 'foodiepro' ); ?></h4>
+<div class="recipe-container recipe-ingredients-container" data-units='<?php echo json_encode(Custom_WPURP_Ingredient::get_units(false));?>'>
+    <h4 id="headline-ingredients"><?php _e( 'Ingredients', 'foodiepro' ); ?></h4>
     <?php $ingredients = $recipe->ingredients(); ?>
     <table id="recipe-ingredients">
         <thead>
@@ -157,7 +157,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                     <!-- Sort handle -->
                     <td class="sort-handle" title="<?php echo __('Move this ingredient', 'foodiepro');?>"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16" > </td>
                     <!-- Ingredient displayed like in published recipe -->
-                    <td class="ingredient-preview" colspan="4">
+                    <td class="ingredient-preview" colspan="5">
                     <?php
                         echo Custom_WPURP_Ingredient::display($ingredient);
                     ?>
@@ -189,7 +189,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
         <!-- tabindex=-1 is important for the cell to be able to get focus and trigger jQuery events -->
         <tr class="ingredient new" id="ingredient_<?php echo $i;?>" tabindex="-1">
             <td class="sort-handle" title="<?php echo __('Move this ingredient', 'foodiepro');?>"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16" ></td>
-            <td class="ingredient-preview" colspan="4">
+            <td class="ingredient-preview" colspan="5">
                 &nbsp;
             </td>
             <!-- Quantity -->
@@ -227,8 +227,8 @@ if( !isset( $required_fields ) ) $required_fields = array();
     </div>
 </div>
 
-<div class="recipe-instructions-container">
-    <h4><?php _e( 'Instructions', 'foodiepro' ); ?></h4>
+<div class="recipe-container recipe-instructions-container">
+    <h4 id="headline-instructions"><?php _e( 'Instructions', 'foodiepro' ); ?></h4>
     <?php $instructions = $recipe->instructions(); ?>
     <table id="recipe-instructions">
         <thead>
@@ -312,7 +312,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
 
             <tr class="instruction">
                 <td class="sort-handle" title="<?php echo __('Move this instruction', 'foodiepro');?>"><span><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16" ></span></td>
-                <td>
+                <td class="instruction-content">
                     <div class="instruction-text">
                         <textarea class="recipe-instruction" name="recipe_instructions[<?php echo $i; ?>][description]" rows="2" id="ingredient_description_<?php echo $i; ?>"  placeholder="<?php echo __('Enter the instructions for this recipe step', 'foodiepro');?>" ><?php echo $instruction['description']; ?></textarea>
                         <input type="hidden" name="recipe_instructions[<?php echo $i; ?>][group]" class="instructions_group" id="instruction_group_<?php echo $i; ?>" value="<?php echo esc_attr( $instruction['group'] ); ?>" />
@@ -352,7 +352,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
 
             <tr class="instruction">
                 <td class="sort-handle" title="<?php echo __('Move this instruction', 'foodiepro');?>"><span><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16" /></span></td>
-                <td>
+                <td class="instruction-content">
 
                     <div class="instruction-text">
                         <textarea class="recipe-instruction" name="recipe_instructions[<?php echo $i; ?>][description]" rows="2" id="ingredient_description_<?php echo $i; ?>" placeholder="<?php echo __('Enter the instructions for this recipe step', 'foodiepro');?>" ></textarea>
@@ -391,8 +391,8 @@ if( !isset( $required_fields ) ) $required_fields = array();
     </div>
 </div>
 
-<div class="recipe-notes-container-nojs">
-    <h4><?php _e( 'Recipe notes', 'foodiepro' ) ?></h4>
+<div class="recipe-container recipe-notes-container-nojs">
+    <h4 id="headline-notes"><?php _e( 'Recipe notes', 'foodiepro' ) ?></h4>
 		<textarea name="recipe_notes" id="recipe_notes" rows="6"><?php echo esc_html( $recipe->notes() ); ?></textarea>
 </div>
 <?php
@@ -404,8 +404,8 @@ if( $custom_fields_addon && ( !isset( $wpurp_user_submission ) || WPUltimateReci
 
     if( count( $custom_fields ) > 0 ) {
 ?>
-<div class="recipe-custom-fields-container">
-    <h4><?php _e( 'Custom Fields', 'foodiepro' ) ?></h4>
+<div class="recipe-container recipe-custom-fields-container">
+    <h4 id="headline-custom"><?php _e( 'Custom Fields', 'foodiepro' ) ?></h4>
     <table class="recipe-general-form">
         <?php foreach( $custom_fields as $key => $custom_field ) {
             if( isset( $wpurp_user_submission ) && !in_array( $key, $custom_fields_in_user_submission ) ) continue;

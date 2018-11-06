@@ -94,7 +94,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 			), $atts );
 
 		$glossary_url = $this->get_page_by_slug($atts['slug']);
-		$html=add_query_arg( $atts['searchkey'], $content, $glossary_url);
+		$html=add_query_arg( $atts['searchkey'], strip_tags($content), $glossary_url);
 		$html='<a href="' . $html . '">' . $content . '</a>';
 
 		return $html;

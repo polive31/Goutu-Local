@@ -239,7 +239,7 @@ function remove_xprofile_links() {
 /* =    EXCLUDE ADMIN FROM MEMBERS DIRECTORY & SEARCH
 /* =================================================================*/
 
-//add_filter( 'bp_after_has_members_parse_args', 'buddydev_exclude_users_by_role' );
+add_filter( 'bp_after_has_members_parse_args', 'buddydev_exclude_users_by_role' );
 
 function buddydev_exclude_users_by_role( $args ) {
 	//do not exclude in admin
@@ -257,6 +257,32 @@ function buddydev_exclude_users_by_role( $args ) {
 	$args['exclude'] = $excluded;
 	
 	return $args;
+}
+
+
+// add_action('bp_ajax_querystring','bpdev_exclude_users',20,2);
+// Remove admin from the member directory
+function bpdev_exclude_users($qs=false,$object=false){
+    
+    $excluded_user='1'; // Id's to remove, separated by comma
+	
+    if($object != 'members' && $object != 'friends')// hide admin to members & friends 
+    return $qs;
+	
+    $args=wp_parse_args($qs);
+
+    if(!empty($args['user_id']))
+    return $qs;	
+	
+    if(!empty($args['exclude']))
+		$args['exclude'] = $args['exclude'].','.$excluded_user;
+    else
+		$args['exclude'] = $excluded_user;
+	
+    $qs = build_query($args);
+
+    return $qs;
+	
 }
 
 /* =================================================================*/

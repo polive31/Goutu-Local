@@ -75,7 +75,7 @@ class BP_My_Friends extends WP_Widget {
 		}
 		elseif ($instance['user']=='loggedin') {
 			$this->display_title($args, $instance, $title);				
-			echo '<div class="aligncenter wp_widget_plugin_textarea"><a href="' . get_site_url() . '\social\membres">' . __('Make new friends','foodiepro') . '</a></div>';
+			echo '<div class="aligncenter wp_widget_plugin_textarea">' . do_shortcode('[permalink slug="blogs" text="'. __('Make new friends','foodiepro') . '"]') . '</div>';
 		}
 		
 		/* Code End */

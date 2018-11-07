@@ -78,7 +78,9 @@ class Custom_Recipe_Submission extends WPURP_Premium_Addon {
             return wp_dropdown_categories( $args );
         }
 
-        $getparents=$args;
+        $getparents['orderby']=$args['orderby']; 
+        $getparents['taxonomy']=$args['taxonomy']; 
+        $getparents['hierarchical']=true; 
         $getparents['depth']=1;
         $getparents['parent']=0;
         $parents = get_categories( $getparents );

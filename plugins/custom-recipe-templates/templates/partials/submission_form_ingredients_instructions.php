@@ -88,26 +88,17 @@ if( !isset( $required_fields ) ) $required_fields = array();
 	          	<td class="group" colspan="5">
 					<div class="group-container">
 		            	<span class="header"><?php _e( 'Ingredients Group', 'foodiepro' ); ?></span>
-		                <!-- <span class="name ingredient-groups-disabled"><?php echo __( 'Main Ingredients', 'foodiepro' ) . ' ' . __( '(this label is not shown)', 'foodiepro' ); ?></span> -->
 		                <?php
 		                $previous_group = '';
 		                if( isset( $ingredients[0] ) && isset( $ingredients[0]['group'] ) ) {
 		                    $previous_group = $ingredients[0]['group'];
 		                }
 		                ?>
-                        <!-- <span class="name ingredient-groups-enabled"><input type="text" class="ingredient-group-label" value="<?php echo esc_attr( $previous_group ); ?>" /></span> -->
 		                <span class="name"><input type="text" placeholder="<?php echo __('eg. For the dough', 'foodiepro');?>" class="ingredient-group-label" value="<?php echo esc_attr( $previous_group ); ?>" /></span>
 					</div>
 		          </td>
 		          <td class="group mobile-hidden" colspan="1">&nbsp;</td>
         </tr>
-<!--         <tr class="ingredient-field-header">
-            <td>&nbsp;</td>
-            <td><?php _e( 'Quantity', 'foodiepro' ); ?></td>
-            <td><?php _e( 'Unit', 'foodiepro' ); ?></td>
-            <td><?php _e( 'Ingredient', 'foodiepro' );?><span class="wpurp-required">* </span><?php _e( '(singular)', 'foodiepro' ); ?></td>
-            <td><?php _e( 'Notes', 'foodiepro' ); ?></td>
-        </tr> -->
         </thead>
         <tbody>
         <tr class="ingredient-group-stub">
@@ -226,6 +217,8 @@ if( !isset( $required_fields ) ) $required_fields = array();
         <?php _e( "<strong>Use the TAB key</strong> while adding ingredients, it will automatically create new fields. <strong>Don't worry about empty lines</strong>, these will be ignored.", 'foodiepro' ); ?>
     </div>
 </div>
+
+
 
 <div class="recipe-container recipe-instructions-container">
     <h4 id="headline-instructions"><?php _e( 'Instructions', 'foodiepro' ); ?></h4>
@@ -393,7 +386,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
 
 <div class="recipe-container recipe-notes-container-nojs">
     <h4 id="headline-notes"><?php _e( 'Recipe notes', 'foodiepro' ) ?></h4>
-		<textarea name="recipe_notes" id="recipe_notes" rows="6"><?php echo esc_html( $recipe->notes() ); ?></textarea>
+		<textarea name="recipe_notes" id="recipe_notes" rows="6" placeholder="<?php echo __('Provide any additional notes here... E.g. side dishes, wine to drink with...');?>"><?php echo esc_html( $recipe->notes() ); ?></textarea>
 </div>
 <?php
 $custom_fields_addon = WPUltimateRecipe::addon( 'custom-fields' );

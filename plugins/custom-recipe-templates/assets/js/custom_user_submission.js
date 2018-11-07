@@ -379,23 +379,23 @@ jQuery(document).on('click', 'tr.ingredient.saved', function(){
 function toggleIngredientPreview() {
 
         lastIngredientId = currentIngredientId;
-        console.log('Last ingredient : ', lastIngredientId );
+        // console.log('Last ingredient : ', lastIngredientId );
 
         var thisElement = document.activeElement;
-        console.log('This element : ', thisElement );
+        // console.log('This element : ', thisElement );
 
 
         var isIngredient = jQuery(thisElement).parents('#recipe-ingredients').length;
-        console.log("is Ingredient : ", isIngredient);
+        // console.log("is Ingredient : ", isIngredient);
 
         if (isIngredient) {
             currentIngredientId = jQuery(thisElement).attr('id').match(/\d+/);
             currentIngredientId = currentIngredientId[0];
             jQuery(thisElement).removeClass('saved new');
             jQuery(thisElement).addClass('edit');
-            console.log('Current ingredient : ' + currentIngredientId );
+            // console.log('Current ingredient : ' + currentIngredientId );
             if (lastIngredientId == currentIngredientId || lastIngredientId==-1) {
-                console.log( "No row change");
+                // console.log( "No row change");
                 return;
             }
         }
@@ -405,7 +405,7 @@ function toggleIngredientPreview() {
 
 
         lastIngredient = jQuery('#recipe-ingredients').find('tr#ingredient_' + lastIngredientId);
-        console.log("%c Toggle Ingredient Preview : Ajax call launched !", 'background: #ccc; color: blue');
+        // console.log("%c Toggle Ingredient Preview : Ajax call launched !", 'background: #ccc; color: blue');
         // console.log('Ingredients amount : ' + jQuery('#recipe-ingredients').find('#ingredients_amount_' + lastIngredientId).val() );
         // console.log('Target : ' + 'tr#ingredient_' + lastIngredientId + ' td.ingredient-preview')
 
@@ -485,12 +485,19 @@ function autoSuggestUnit( thisInput ) {
     console.log('In autoSuggestUnit');
     // console.log( thisInput );
     term=thisInput.val();
+    qty=thisInput.parents('tr.ingredient').find('td.qty input').val();
+    console.log('Qty = ' + qty);
     // console.log( term );
     jQuery( thisInput ).autoComplete({ 
         minChars: 1,
         source: function(term, suggest){
             term = term.toLowerCase();
-            var choices = thisInput.parents('.recipe-ingredients-container').data('units');
+            if (qty > 1) {
+                var choices = thisInput.parents('.recipe-ingredients-container').data('units-plural');
+            }
+            else {
+                var choices = thisInput.parents('.recipe-ingredients-container').data('units');
+            }
             // console.log(choices);
             var matches = [];
             for (i=0; i<choices.length; i++)

@@ -11,10 +11,10 @@
             </p>
         </div>
 
-<?php if( !is_user_logged_in() ) { ?>
+<?php if( is_admin() ) { ?>
         <div class="recipe-author-container">
                 <!-- <label for="recipe-author"><?php _e( 'Your name', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe-author', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label><br /> -->
-            <h4 id="headline-author"><?php _e( 'Your name', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe-author', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></h4>
+            <h4 id="headline-author"><?php _e( 'Author', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe-author', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></h4>
             <p>
                 <input type="text" id="recipe-author" value="<?php echo isset( $_POST['recipe-author'] ) ? $_POST['recipe-author'] : $recipe->author();  ?>" size="50" name="recipe-author" />
             </p>

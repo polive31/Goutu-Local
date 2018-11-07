@@ -139,8 +139,8 @@ class Custom_WPURP_Templates {
 					'direct' => true,
 	          	),
 	  			array(
-					'url' => self::$_PluginUri . 'assets/css/custom-recipe-submission.css',
-					'path' => self::$_PluginPath . 'assets/css/custom-recipe-submission.css',
+					'url' => self::$_PluginUri . 'assets/css/custom-user-submission.css',
+					'path' => self::$_PluginPath . 'assets/css/custom-user-submission.css',
 					'public' => true,
 					'direct' => true,
 	          	),        		          	

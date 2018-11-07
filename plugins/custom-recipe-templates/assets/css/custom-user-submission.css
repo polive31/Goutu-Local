@@ -488,6 +488,15 @@ label.add-instruction-thumbnail {
 }
 
 
+
+/* Stubs 
+-------------------------------------------------*/
+.ingredient-group-stub,
+.instruction-group-stub {
+  display:none;
+}
+
+
 /* Inputs formatting 
 -------------------------------------------------*/
 

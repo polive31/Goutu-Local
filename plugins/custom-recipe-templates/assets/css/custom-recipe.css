@@ -20,7 +20,7 @@ li.ingredient-group,
 .recipe-instruction-group {
 	font-family:"Oswald";
 	display: block;
-	color:#737373;
+	color:#656565;
 	font-size:20px;	
 }
 
@@ -161,6 +161,10 @@ input.adjust-recipe-servings {
 .ingredients-container .entry-content ul li {
   list-style-type: decimal;
   display: block;
+}
+
+li.ingredient-group {
+    margin-bottom: 10px;
 }
 
 ul.wpurp-recipe-ingredients {

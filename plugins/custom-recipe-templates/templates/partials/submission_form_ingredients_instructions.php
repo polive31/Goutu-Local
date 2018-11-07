@@ -9,32 +9,9 @@ if( !isset( $required_fields ) ) $required_fields = array();
 <div class="recipe-container recipe-general-container">
     <h4 id="headline-general"><?php _e( 'General', 'foodiepro' ); ?></h4>
     <table class="recipe-general-form">
-    <?php if( !isset( $wpurp_user_submission ) ) { ?>
-        <tr class="recipe-general-form-title">
-            <td class="recipe-general-form-label"><label for="recipe_title"><?php _e( 'Title', 'foodiepro' ); ?></label></td>
-            <td class="recipe-general-form-field">
-                <input type="text" name="recipe_title" id="recipe_title" value="<?php echo esc_attr( $recipe->title() ); ?>" />
-                <span class="recipe-general-form-notes"> <?php _e( '(leave blank to use post title)', 'foodiepro' ) ?></span>
-            </td>
-        </tr>
-<!--         <?php if( WPUltimateRecipe::option( 'recipe_alternate_image', '1' ) == '1' ) { ?>
-        <tr class="recipe-general-form-alternate-image">
-            <td class="recipe-general-form-label"><label for="recipe_alternate_image"><?php _e( 'Image', 'foodiepro' ); ?></label></td>
-            <td class="recipe-general-form-field">
-                <input type="hidden" name="recipe_alternate_image" id="recipe_alternate_image" value="<?php echo $recipe->alternate_image(); ?>" />
-                <input class="recipe_alternate_image_add button <?php if( $recipe->alternate_image() ) { echo ' wpurp-hide'; } ?>" rel="<?php echo $recipe->ID(); ?>" type="button" value="<?php _e( 'Add Alternate Image', 'foodiepro' ); ?>" />
-                <input class="recipe_alternate_image_remove button<?php if( !$recipe->alternate_image() ) { echo ' wpurp-hide'; } ?>" type="button" value="<?php _e('Remove Alternate Image', 'foodiepro' ); ?>" />
-
-                <br/><img src="<?php echo $recipe->alternate_image() ? $recipe->image_url( 'thumbnail' ) : WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png'; ?>" class="recipe_alternate_image" />
-                <span class="recipe-general-form-notes"> <?php _e( '(leave blank to use featured image)', 'foodiepro' ); ?></span>
-            </td>
-        </tr>
-        <?php } ?> -->
-    <?php } ?>
         <tr class="recipe-general-form-description">
             <td class="recipe-general-form-label"><label for="recipe_description"><?php _e('Description', 'foodiepro' ); ?><?php if( in_array( 'recipe_description', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
             <td class="recipe-general-form-field">
-                <!-- <textarea class="recipe-description" name="recipe_description" id="recipe_description" rows="4" placeholder="<?php echo __('Provide general information about this recipe', 'foodiepro');?>"><?php echo esc_html( $recipe->description() ); ?></textarea> -->
                 <textarea class="recipe-description" name="content" id="recipe_description" rows="4" placeholder="<?php echo __('Provide general information about this recipe', 'foodiepro');?>"><?php echo esc_html( $content ); ?></textarea>
             </td>
         </tr>
@@ -79,7 +56,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
     </table>
 </div>
 
-<div class="recipe-container recipe-ingredients-container" data-units='<?php echo json_encode(Custom_WPURP_Ingredient::get_units(false));?>'>
+<div class="recipe-container recipe-ingredients-container" data-units='<?php echo json_encode(Custom_WPURP_Ingredient::get_units(false));?>'  data-units-plural='<?php echo json_encode(Custom_WPURP_Ingredient::get_units(true));?>'>
     <h4 id="headline-ingredients"><?php _e( 'Ingredients', 'foodiepro' ); ?></h4>
     <?php $ingredients = $recipe->ingredients(); ?>
     <table id="recipe-ingredients">

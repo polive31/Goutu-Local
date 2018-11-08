@@ -12,7 +12,7 @@ class CustomStarRatings {
 	protected static $ratingGlobal;
 
 	public function __construct() {
-		add_action('wp', array( $this , 'hydrate' ));
+		add_action('init', array( $this , 'hydrate' ));
 		add_filter( 'wpurp_register_ratings_taxonomy', array( $this, 'translate_ratings_taxonomy' ) );
 
 		//self::$s_ratingCats = self::$ratingCats;

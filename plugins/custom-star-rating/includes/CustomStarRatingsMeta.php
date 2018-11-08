@@ -79,11 +79,11 @@ class CustomStarRatingsMeta extends CustomStarRatings {
 		/* User Ratings table structure
 		------------------------------------------------------------										
 		$user_ratings = array( 
-		'user' => average rating for category "name1"
-		'ip' => average rating for category "name1"
-		'name1' => rating for category "name1"
-			...
-		'nameN' => rating for category "nameN"
+			'user' => average rating for category "name1"
+			'ip' => average rating for category "name1"
+			'name1' => rating for category "name1"
+				...
+			'nameN' => rating for category "nameN"
 		)
 		------------------------------------------------------------*/	
 		
@@ -121,9 +121,9 @@ class CustomStarRatingsMeta extends CustomStarRatings {
 		$global_count=0;
 		foreach (self::$ratingCats as $cat_id=>$cat) {
 			/* $stats = array( 
-						'rating' => average rating 
-						'votes' => number of votes
-						)
+					'rating' => average rating 
+					'votes' => number of votes
+				)
 			------------------------------------------------------------*/	
 			
 			$stats = $this->get_rating_stats( array_column($user_ratings,$cat_id) );

@@ -331,12 +331,7 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 
 	        $out .= '<li class="wpurp-recipe-ingredient"' . $meta . '>';
 
-	        $out .= do_shortcode('[display-ingredient amount="' . $ingredient['amount'] . 
-	        	'" amount_normalized="' . $ingredient['amount_normalized'] . 
-	        	'" unit="' . $ingredient['unit'] . 
-	        	'" ingredient="' . $ingredient['ingredient'] . 
-	        	'" notes="' . $ingredient['notes'] .
-	        '"]');
+	        $out .= Custom_WPURP_Ingredient::display( $ingredient );
 
 	        $out .= '</li>';
 	    }

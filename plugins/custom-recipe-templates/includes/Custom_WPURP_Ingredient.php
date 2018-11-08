@@ -128,7 +128,7 @@ class Custom_WPURP_Ingredient {
         $out .= '<span class="wpurp-recipe-ingredient-unit recipe-ingredient-unit" data-original="'. $unit .'">'.$unit.'</span></span>';
 
 
-        // INGREDIENT PLURAL DATA
+        // INGREDIENT TAXONOMY TERM DATA
         $taxonomy = get_term_by('name', $args['ingredient'], 'ingredient');
         
         $plural=false;
@@ -138,6 +138,7 @@ class Custom_WPURP_Ingredient {
 	        $taxonomy_slug = $taxonomy->slug;
 	        $plural = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'plural' );
         // $isplural = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'isplural' );
+	        $plural = is_array( $plural ) ? false : $plural;
 	        $plural = is_array( $plural ) ? false : $plural;
 	        ////PC::debug( array('Plural array'=>$plural) );  
         }
@@ -158,8 +159,10 @@ class Custom_WPURP_Ingredient {
         $ingredient_links = WPUltimateRecipe::option('recipe_ingredient_links', 'archive_custom');
 
         $closing_tag = '';
+		
+		$hide_link = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'hide_link' ) == '1';
 
-        if ( !empty( $taxonomy ) && $ingredient_links != 'disabled' ) {
+        if ( !empty( $taxonomy ) && $ingredient_links != 'disabled' && !$hide_link) {
 
             if( $ingredient_links == 'archive_custom' || $ingredient_links == 'custom' ) {
                 $custom_link = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'link' );
@@ -167,18 +170,18 @@ class Custom_WPURP_Ingredient {
                 $custom_link = false;
             }
 
-            if( isset($args['links']) &&  ($args['links'] == 'yes') ) {
-                if( $custom_link !== false && $custom_link !== '' ) {
-                    $nofollow = WPUltimateRecipe::option( 'recipe_ingredient_custom_links_nofollow', '0' ) == '1' ? ' rel="nofollow"' : '';
+            // if( isset($args['links']) &&  ($args['links'] == 'yes') ) {
+            if( $custom_link !== false && $custom_link !== '' ) {
+                $nofollow = WPUltimateRecipe::option( 'recipe_ingredient_custom_links_nofollow', '0' ) == '1' ? ' rel="nofollow"' : '';
 
-                    $out .= '<a href="'.$custom_link.'" class="custom-ingredient-link" target="'.WPUltimateRecipe::option( 'recipe_ingredient_custom_links_target', '_blank' ).'"' . $nofollow . '>';
-                    $closing_tag = '</a>';
+            	$out .= '<a href="'.$custom_link.'" class="custom-ingredient-link" target="'.WPUltimateRecipe::option( 'recipe_ingredient_custom_links_target', '_blank' ).'"' . $nofollow . '>';
+            	$closing_tag = '</a>';
 
-                } else if( $ingredient_links != 'custom' ) {
-                    $out .= '<a href="'.get_term_link( $taxonomy_slug, 'ingredient' ).'">';
-                    $closing_tag = '</a>';
-                }
+            } else if( $ingredient_links != 'custom' ) {
+                $out .= '<a href="'.get_term_link( $taxonomy_slug, 'ingredient' ).'">';
+                $closing_tag = '</a>';
             }
+            // }   
         }
 
         // $out .= $plural && ($ingredient['unit']!='' || $ingredient['amount_normalized'] > 1) ? $plural : $ingredient['ingredient'];

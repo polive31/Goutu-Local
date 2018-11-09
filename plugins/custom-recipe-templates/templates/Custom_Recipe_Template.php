@@ -382,11 +382,11 @@ class Custom_Recipe_Template extends Custom_WPURP_Templates {
 	            $alt_tag = WPUltimateRecipe::option( 'recipe_instruction_images_alt', 'attachment' ) == 'attachment' ? esc_attr( get_post_meta( $instruction['image'], '_wp_attachment_image_alt', true ) ) : esc_attr( $instruction['description'] );
 
 	            if( WPUltimateRecipe::option( 'recipe_images_clickable', '0' ) == 1 ) {
-	                $out .= '<div><a href="' . $full_img_url . '" rel="lightbox" title="' . $title_tag . '">';
+	                $out .= '<div class="instruction-step-image"><a href="' . $full_img_url . '" rel="lightbox" title="' . $title_tag . '">';
 	                $out .= '<img src="' . $thumb_url . '" alt="' . $alt_tag . '" title="' . $title_tag . '"' . '/>';
 	                $out .= '</a></div>';
 	            } else {
-	                $out .= '<div><img src="' . $thumb_url . '" alt="' . $alt_tag . '" title="' . $title_tag . '"' . '/></div>';
+	                $out .= '<div class="instruction-step-image"><img src="' . $thumb_url . '" alt="' . $alt_tag . '" title="' . $title_tag . '"' . '/></div>';
 	            }
 	        }
 

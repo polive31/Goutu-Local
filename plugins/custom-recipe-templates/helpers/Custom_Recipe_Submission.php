@@ -23,6 +23,9 @@ class Custom_Recipe_Submission extends WPURP_Premium_Addon {
         // Recipe headline filter
         add_action( 'genesis_post_info', array($this, 'recipe_edit_button') );
 
+        // Save post action
+        add_action( 'save_post', array( $this, 'save' ), 10, 2 );
+
         // Submission pages shortcodes
         add_shortcode( 'custom-wpurp-submissions-new-recipe', array( $this, 'new_submission_shortcode' ) );
         add_shortcode( 'custom-wpurp-submissions-current-user-edit', array( $this, 'submissions_current_user_edit_shortcode' ) );
@@ -46,9 +49,20 @@ class Custom_Recipe_Submission extends WPURP_Premium_Addon {
         return $exclude;
     }
 
+    // Saves extended meta defined in Custom_Recipe
+    public function save( $id, $post ) {
+        if( $post->post_type != 'recipe' ) return;
+        $recipe=new Custom_Recipe( $id );
+
+        foreach ($recipe->extfields() as $field) {
+            if (isset( $_POST[$field] )) {
+                update_post_meta( $recipe->ID(), $field, $_POST[$field] );
+            }
+        }
+    }
 
     //* Customize the entry meta in the entry header (requires HTML5 theme support)
-    function recipe_edit_button($post_info) {
+    public function recipe_edit_button($post_info) {
         if (is_singular('recipe')) {
             $post_info = sprintf(__('Published on %s by <span id="username">%s</span>', 'foodiepro'), '[post_date]', '[bp-author]');
             global $post, $current_user;
@@ -269,7 +283,7 @@ class Custom_Recipe_Submission extends WPURP_Premium_Addon {
             $recipe_ID = wp_insert_post( $recipe_draft );
         }
 
-        $recipe = new WPURP_Recipe( $recipe_ID );
+        $recipe = new Custom_Recipe( $recipe_ID );
 
         $required_fields = WPUltimateRecipe::option( 'user_submission_required_fields', array() );
 
@@ -404,7 +418,6 @@ class Custom_Recipe_Submission extends WPURP_Premium_Addon {
                     }
             }
             update_post_meta( $post_id, 'recipe_instructions', $this->instructions );
-            $toto = get_post_meta( $post_id, 'recipe_instructions', true ); 
 
             // Check required fields
             $errors = array();

@@ -23,6 +23,7 @@ function Custom_WPURP_templates_init() {
 
 		/* Includes
 		------------------------------------*/
+		require_once 'includes/Custom_Recipe_Class.php';
 		require_once 'includes/Custom_WPURP_Templates.php';
 		require_once 'includes/Custom_Recipe_Favorite.php';
 		require_once 'includes/Custom_Recipe_Add_To_Shopping_List.php';

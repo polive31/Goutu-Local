@@ -24,7 +24,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
             </td>
         </tr>
         <tr class="recipe-general-form-prep-time">
-            <td class="recipe-general-form-label"><label for="recipe_prep_time"><?php _e( 'Prep Time', 'foodiepro' ); ?><?php if( in_array( 'recipe_prep_time', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
+            <td class="recipe-general-form-label"><label for="recipe_prep_time_old"><?php _e( 'Prep Time (old)', 'foodiepro' ); ?><?php if( in_array( 'recipe_prep_time_old', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
             <td class="recipe-general-form-field">
                 <input type="text" name="recipe_prep_time" id="recipe_prep_time" value="<?php echo esc_attr( $recipe->prep_time() ); ?>" placeholder="<?php echo __("Duration",'foodiepro');?>" />
                 <input type="text" name="recipe_prep_time_text" id="recipe_prep_time_text" value="<?php echo esc_attr( $recipe->prep_time_text() ); ?>" placeholder="<?php echo __("Unit",'foodiepro');?>" />
@@ -32,12 +32,46 @@ if( !isset( $required_fields ) ) $required_fields = array();
             </td>
         </tr>
         <tr class="recipe-general-form-cook-time">
-            <td class="recipe-general-form-label"><label for="recipe_cook_time"><?php _e( 'Cook Time', 'foodiepro' ); ?><?php if( in_array( 'recipe_cook_time', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
+            <td class="recipe-general-form-label"><label for="recipe_cook_time_old"><?php _e( 'Cook Time (old)', 'foodiepro' ); ?><?php if( in_array( 'recipe_cook_time', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
             <td class="recipe-general-form-field">
                 <input type="text" name="recipe_cook_time" id="recipe_cook_time" value="<?php echo esc_attr( $recipe->cook_time() ); ?>" placeholder="<?php echo __("Duration",'foodiepro');?>" />
                 <input type="text" name="recipe_cook_time_text" id="recipe_cook_time_text" value="<?php echo esc_attr( $recipe->cook_time_text() ); ?>" placeholder="<?php echo __("Unit",'foodiepro');?>" />
             </td>
         </tr>
+        <tr class="recipe-general-form-prep-time">
+            <td class="recipe-general-form-label"><label for="recipe_prep_time"><?php _e( 'Prep Time', 'foodiepro' ); ?><?php if( in_array( 'recipe_prep_time', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
+            <td class="recipe-general-form-field">
+                <span class="time-input">
+                    <input type="number" name="recipe_prep_time_days" id="recipe_prep_time_days" value="<?php echo esc_attr( $recipe->prep_time_days() ); ?>" min="0" max="99" />
+                    <span class="recipe-general-form-notes"> <?php _e( 'days', 'foodiepro' ); ?></span>
+                </span>
+                <span class="time-input">
+                    <input type="number" name="recipe_prep_time_hours" id="recipe_prep_time_hours" value="<?php echo esc_attr( $recipe->prep_time_hours() ); ?>" min="0" max="24" />
+                    <span class="recipe-general-form-notes"> <?php _e( 'hours', 'foodiepro' ); ?></span>
+                </span>
+                <span class="time-input">
+                    <input type="number" name="recipe_prep_time_minutes" id="recipe_prep_time_minutes" value="<?php echo esc_attr( $recipe->prep_time_minutes() ); ?>" min="0" max="60"  />
+                    <span class="recipe-general-form-notes"> <?php _e( 'minutes', 'foodiepro' ); ?></span>
+                </span>
+            </td>
+        </tr>        
+         <tr class="recipe-general-form-cook-time">
+            <td class="recipe-general-form-label"><label for="recipe_cook_time"><?php _e( 'Cook Time', 'foodiepro' ); ?><?php if( in_array( 'recipe_cook_time', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
+            <td class="recipe-general-form-field">
+                <span class="time-input">
+                    <input type="number" name="recipe_cook_time_days" id="recipe_cook_time_days" value="<?php echo esc_attr( $recipe->cook_time_days() ); ?>" min="0" max="99" />
+                    <span class="recipe-general-form-notes"> <?php _e( 'days', 'foodiepro' ); ?></span>
+                </span>
+                <span class="time-input">
+                    <input type="number" name="recipe_cook_time_hours" id="recipe_cook_time_hours" value="<?php echo esc_attr( $recipe->cook_time_hours() ); ?>" min="0" max="24" />
+                    <span class="recipe-general-form-notes"> <?php _e( 'hours', 'foodiepro' ); ?></span>
+                </span>
+                <span class="time-input">
+                    <input type="number" name="recipe_cook_time_minutes" id="recipe_cook_time_minutes" value="<?php echo esc_attr( $recipe->cook_time_minutes() ); ?>" min="0" max="60"  />
+                    <span class="recipe-general-form-notes"> <?php _e( 'minutes', 'foodiepro' ); ?></span>
+                </span>
+            </td>
+        </tr>     
         <tr class="recipe-general-form-passive-time">
             <td class="recipe-general-form-label"><label for="recipe_passive_time"><?php _e( 'Passive Time', 'foodiepro' ); ?><?php if( in_array( 'recipe_passive_time', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
             <td class="recipe-general-form-field">

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2018-11-08 09:07+0100\n"
-"PO-Revision-Date: 2018-11-08 23:20+0100\n"
+"PO-Revision-Date: 2018-11-10 02:02+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -10330,7 +10330,7 @@ msgstr "Mai"
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:20
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:42
 msgid "days"
-msgstr ""
+msgstr "jours"
 
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/recurring-when.php:21
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/when-with-recurring.php:43

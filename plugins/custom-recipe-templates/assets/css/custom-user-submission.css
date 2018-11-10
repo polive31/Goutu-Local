@@ -501,6 +501,7 @@ label.add-instruction-thumbnail {
 -------------------------------------------------*/
 
 #wpurp_user_submission_form input[type=text],
+#wpurp_user_submission_form input[type=number],
 /*#wpurp_user_submission_form select,*/
 #wpurp_user_submission_form textarea {
   /*border: 1px solid #ddd;*/
@@ -535,6 +536,14 @@ textarea.ingredients_notes {
 
 .recipe-general-form-field input {
   width:auto;
+}
+
+span.time-input {
+    margin-right: 20px;
+}
+
+.time-input input {
+  width:40px;
 }
 
  input#recipe_passive_time,

@@ -1,6 +1,6 @@
 <?php
 
-class Custom_Recipe_Submission extends WPURP_Premium_Addon {
+class Custom_Recipe_Submission_Shortcodes extends WPURP_Premium_Addon {
 
     const RECIPES_PUBLISH_SLUG = 'publier-recettes';
     const RECIPE_NEW_SLUG = 'nouvelle-recette';
@@ -24,7 +24,11 @@ class Custom_Recipe_Submission extends WPURP_Premium_Addon {
         add_action( 'genesis_post_info', array($this, 'recipe_edit_button') );
 
         // Save post action
-        add_action( 'save_post', array( $this, 'save' ), 10, 2 );
+        // add_action( 'save_post', array( $this, 'save' ), 10, 2 );
+
+        // Submission form customization
+        add_filter('wp_dropdown_cats', array($this, 'add_lang_to_select'));
+        add_action('wp_head',array($this,'add_custom_js'));        
 
         // Submission pages shortcodes
         add_shortcode( 'custom-wpurp-submissions-new-recipe', array( $this, 'new_submission_shortcode' ) );
@@ -39,6 +43,25 @@ class Custom_Recipe_Submission extends WPURP_Premium_Addon {
         add_action( 'wp_ajax_nopriv_custom_user_submissions_delete_recipe', array( $this, 'ajax_user_delete_recipe') );
     }
 
+
+    public function add_custom_js(){
+    ?>
+    <script>
+        jQuery(document).ready(function() {
+            jQuery('li.wpurp-recipe-ingredient').on('click', function () {
+                console.log('click detected on ingredient');
+                jQuery(this).toggleClass('clicked');
+            });
+        });
+    </script>
+    <?php
+    }
+
+    public function add_lang_to_select($output){
+        return str_replace('<select','<select lang="fr"',$output);
+    }
+
+
     // Returns list of excluded categories
     public function excluded_terms($tax) {
         $exclude='';    
@@ -52,12 +75,22 @@ class Custom_Recipe_Submission extends WPURP_Premium_Addon {
     // Saves extended meta defined in Custom_Recipe
     public function save( $id, $post ) {
         if( $post->post_type != 'recipe' ) return;
+
         $recipe=new Custom_Recipe( $id );
 
-        foreach ($recipe->extfields() as $field) {
-            if (isset( $_POST[$field] )) {
-                update_post_meta( $recipe->ID(), $field, $_POST[$field] );
+        $types = array('prep','cook','passive');
+        foreach ($types as $type) {
+            $field = "recipe_{$type}_time";
+            $days=isset( $_POST["{$field}_days"] )?(int)$_POST["{$field}_days"]:0;
+            $hours=isset( $_POST["{$field}_hours"] )?(int)$_POST["{$field}_hours"]:0;
+            $minutes=isset( $_POST["{$field}_minutes"] )?(int)$_POST["{$field}_minutes"]:0;
+            $time = $recipe->get_time($days,$hours,$minutes);
+            if ( $time!= 0 ) {
+                update_post_meta( $recipe->ID(), $field, $time );
+                $_POST[$field]=$time;
             }
+            else 
+                update_post_meta( $recipe->ID(), $field, $_POST[$field] );
         }
     }
 
@@ -287,11 +320,6 @@ class Custom_Recipe_Submission extends WPURP_Premium_Addon {
 
         $required_fields = WPUltimateRecipe::option( 'user_submission_required_fields', array() );
 
-        $post = get_post( $recipe_ID );
-        $content = $post->post_content;
-        $content = trim(preg_replace("/\[wpurp-searchable-recipe\][^\[]*\[\/wpurp-searchable-recipe\]/", "", $content));
-        $content = (empty($content))?$recipe->description():$content;
-
         ob_start();
 
         include( self::$_PluginDir . 'templates/custom_submission_form.php' );
@@ -359,6 +387,9 @@ class Custom_Recipe_Submission extends WPURP_Premium_Addon {
             } else {
                 $post_id = wp_insert_post( $post, true );
             }
+
+            // Save extended recipe meta and set time fields
+            $this->save( $post_id, get_post($post_id) );
 
             // $meta = get_post_meta( $post );
 
@@ -456,7 +487,7 @@ class Custom_Recipe_Submission extends WPURP_Premium_Addon {
                 $output .= __( 'Here is what your recipe will look like once it is published. You can choose to continue editing it, or save it as a draft, or publish it, using the buttons at the bottom of the page.', 'foodiepro');
                 $output .= '</p>';
                 $output .= '<h4>' . get_the_title( $post_id ) . '</h4>';
-                $output .= '[ultimate-recipe id=' . $post_id . ']';
+                $output .= '[display-recipe id=' . $post_id . ']';
                 $output .= $this->submissions_form( $post_id, array( 'edit', 'draft', 'publish' ) );
                 $output .= '<div>';
                 return do_shortcode( $output );

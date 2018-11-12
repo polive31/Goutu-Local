@@ -32,8 +32,8 @@ class Custom_Recipe_Metadata {
 
     private function get_metadata_array( $recipe )
     {
-        $recipe = is_null( $recipe ) ? new WPURP_Recipe(0) : $recipe;
         $post_id = get_the_id();
+        $recipe = new Custom_Recipe( $post_id );
 
         // Essentials
         $metadata = array(
@@ -47,7 +47,7 @@ class Custom_Recipe_Metadata {
             'datePublished' => $recipe->date(),
             'image' => $recipe->image_url( 'full' ),
             // 'description' => $description,
-            'description' => $recipe->description(),
+            'description' => $recipe->description_meta(),
         );
 
 
@@ -68,14 +68,14 @@ class Custom_Recipe_Metadata {
         }
 
         // Times
-        if( $recipe->prep_time_meta() && $recipe->cook_time_meta() ) {
+        if( $recipe->get_time_meta('prep') && $recipe->get_time_meta('cook') ) {
             // Only use separate ones when we have both
-            $metadata['prepTime'] = $recipe->prep_time_meta();
-            $metadata['cookTime'] = $recipe->cook_time_meta();
+            $metadata['prepTime'] = $recipe->get_time_meta('prep');
+            $metadata['cookTime'] = $recipe->get_time_meta('cook');
         } else {
             // Otherwise use total time
-            if( $recipe->prep_time_meta() ) $metadata['totalTime'] = $recipe->prep_time_meta();
-            if( $recipe->cook_time_meta() ) $metadata['totalTime'] = $recipe->cook_time_meta();
+            if( $recipe->get_time_meta('prep') ) $metadata['totalTime'] = $recipe->get_time_meta('prep');
+            if( $recipe->get_time_meta('cook') ) $metadata['totalTime'] = $recipe->get_time_meta('cook');
         }
 
         // Nutrition
@@ -147,9 +147,36 @@ class Custom_Recipe_Metadata {
         // Instructions
         if( $recipe->has_instructions() ) {
             $metadata_instructions = array();
+            $previous_group = '';
+            $instructions = $recipe->instructions();
 
-            foreach( $recipe->instructions() as $instruction ) {
-                $metadata_instructions[] = $instruction['description'];
+            $metadata_key=-1;
+            foreach( $instructions as $key=>$instruction ) {
+                if( !empty( $instruction['group'] ) ) {
+                    if ( $instruction['group'] != $previous_group ) {
+                        // Group start, create section
+                        $metadata_instructions[] = array(
+                            '@type' => 'HowToSection',
+                            'name'  => $instruction['group'],
+                            'itemListElement' => array()
+                        );
+                        $previous_group = $instruction['group'];
+                        $metadata_key++;
+                    }
+                    // Aggregate instructions to the group
+                    $metadata_instructions[$metadata_key]['itemListElement'][] = array(
+                        '@type' => 'HowToStep',
+                        'text'  => $instruction['description']
+                    );
+                }
+                elseif( !empty( $instruction['description'] ) ) {
+                    // Top level instruction
+                    $metadata_instructions[] = array(
+                        '@type' => 'HowToStep',
+                        'text'  => $instruction['description']
+                    );
+                    $metadata_key++;
+                } 
             }
 
             $metadata['recipeInstructions'] = $metadata_instructions;

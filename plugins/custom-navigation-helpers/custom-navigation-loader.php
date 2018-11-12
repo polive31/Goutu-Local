@@ -27,10 +27,12 @@ if ( !defined('ABSPATH') )
 //}
 
 require_once 'includes/CustomArchive.php';
+require_once 'includes/CustomArchiveMeta.php';
 require_once 'includes/CustomArchiveHeadline.php';
 require_once 'includes/CustomArchiveEntryTitle.php';
 require_once 'includes/CustomNavigationShortcodes.php';
 require_once 'includes/Tooltip.php';
+new CustomArchiveMeta();
 new CustomArchiveHeadline();
 new CustomArchiveEntryTitle();
 new CustomNavigationShortcodes();

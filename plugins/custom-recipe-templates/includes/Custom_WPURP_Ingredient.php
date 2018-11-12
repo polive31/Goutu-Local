@@ -22,7 +22,7 @@ class Custom_WPURP_Ingredient {
         array('l'     , 'l'),
         array('cuillère à café'   , 'cuillerées à café'),
         array('cuillère à soupe'   , 'cuillerées à soupe'),
-        array('baton' , 'batons'), //Baton
+        array('bâton' , 'bâtons'), //Baton
         array('boîte'   , 'boîtes'), //Boite
         array('bol'   , 'bols'), //Bols
         array('botte'   , 'bottes'), //Bottes
@@ -85,7 +85,7 @@ class Custom_WPURP_Ingredient {
             'unit' => '',
             'ingredient' => '',
             'notes' => '',
-            'links' => 'yes',
+            'links' => 'no',
         ), $options );
 
         return self::display( $options );
@@ -170,18 +170,18 @@ class Custom_WPURP_Ingredient {
                 $custom_link = false;
             }
 
-            // if( isset($args['links']) &&  ($args['links'] == 'yes') ) {
-            if( $custom_link !== false && $custom_link !== '' ) {
-                $nofollow = WPUltimateRecipe::option( 'recipe_ingredient_custom_links_nofollow', '0' ) == '1' ? ' rel="nofollow"' : '';
+            if( isset($args['links']) &&  ($args['links'] == 'yes') ) {
+	            if( $custom_link !== false && $custom_link !== '' ) {
+	                $nofollow = WPUltimateRecipe::option( 'recipe_ingredient_custom_links_nofollow', '0' ) == '1' ? ' rel="nofollow"' : '';
 
-            	$out .= '<a href="'.$custom_link.'" class="custom-ingredient-link" target="'.WPUltimateRecipe::option( 'recipe_ingredient_custom_links_target', '_blank' ).'"' . $nofollow . '>';
-            	$closing_tag = '</a>';
+	            	$out .= '<a href="'.$custom_link.'" class="custom-ingredient-link" target="'.WPUltimateRecipe::option( 'recipe_ingredient_custom_links_target', '_blank' ).'"' . $nofollow . '>';
+	            	$closing_tag = '</a>';
 
-            } else if( $ingredient_links != 'custom' ) {
-                $out .= '<a href="'.get_term_link( $taxonomy_slug, 'ingredient' ).'">';
-                $closing_tag = '</a>';
-            }
-            // }   
+	            } else if( $ingredient_links != 'custom' ) {
+	                $out .= '<a href="'.get_term_link( $taxonomy_slug, 'ingredient' ).'">';
+	                $closing_tag = '</a>';
+	            }
+            }   
         }
 
         // $out .= $plural && ($ingredient['unit']!='' || $ingredient['amount_normalized'] > 1) ? $plural : $ingredient['ingredient'];

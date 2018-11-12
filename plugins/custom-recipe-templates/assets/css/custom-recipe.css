@@ -109,7 +109,7 @@ span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
 	content:"\f252";
 }
 
-#wait .recipe-label:before {
+#passive .recipe-label:before {
 	content:"\f04c";
 }
 
@@ -154,7 +154,7 @@ input.adjust-recipe-servings {
 	border:1px dashed #000;
 	width:50%;
 	margin:0 30px 10px 0;
-	padding:10px 10px 10px 20px;
+	padding:10px 5px;
 	text-decoration:none;
 }
 
@@ -168,7 +168,7 @@ li.ingredient-group {
 }
 
 ul.wpurp-recipe-ingredients {
-  margin: 0 0 10px 7px;
+  margin: 0 0 10px 0;
 }
 
 li.wpurp-recipe-ingredient a {

@@ -5,6 +5,37 @@
 /* =                 LAYOUT
 /* =================================================================*/
 
+// Provide the page headline on some buddypress pages
+add_action( 'genesis_entry_header', 'buddypress_page_title' );
+function buddypress_page_title() {
+	if ( bp_is_members_directory() ) {
+		echo '<h1>' . get_the_title() . '</h1>';
+	}
+}
+
+// Provide the page content on some buddypress pages
+// add_action( 'genesis_before_content', 'buddypress_page_content' );
+add_action( 'bp_before_directory_members_page', 'buddypress_page_content' );
+add_action( 'bp_before_member_home_content', 'buddypress_page_content' );
+add_action( 'bp_before_register_page', 'buddypress_page_content' );
+add_action( 'bp_before_activation_page', 'buddypress_page_content' );
+function buddypress_page_content( $post_id = 0, $more_link_text = null, $stripteaser = false ) {
+	global $post;
+	$result = bp_current_component();
+
+	$page_array = get_option( 'bp-pages' );
+
+	$post_id = $page_array[ $result ];
+
+	$post = get_post( $post_id );
+
+	setup_postdata( $post, $more_link_text, $stripteaser );
+	the_content();
+	wp_reset_postdata( $post );
+}
+
+
+
 // Apply Full Width Content to registration page
 // add_action( 'bp_loaded', 'bp_register_set_full_layout' );
 // function bp_register_set_full_layout() {
@@ -14,27 +45,28 @@
 // Social before content (Cover Image) widgeted area
 add_action( 'genesis_before_content_sidebar_wrap', 'add_before_content_area');
 function add_before_content_area() {
-	if (bp_is_register_page()) return;
+	if ( !bp_is_my_profile() || !bp_is_user_profile() ) return;
 	genesis_widget_area( 'social-before-content', array(
 	   'before' => '<div class="top before-content widget-area" id="buddypress">',
 	   'after'  => '</div>',
 	));  
 }
 
-// Replace primary sidebar with social sidebar
-add_action('get_header','social_sidebar');
+// Specific sidebar logic on Buddypress pages
+add_action('get_header','buddypress_sidebar');
 
-function social_sidebar() {
-	// remove the default genesis primary sidebar
+function buddypress_sidebar() {
+	// This function removes the default genesis primary sidebar
+	// and ensures that there is no sidebar at all if registration page
+	// then enables the social sidebar callback
 	remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
-	// no sidebar at all on registration page
 	if (bp_is_register_page()) return;
-	// add an action hook to call the function for your custom sidebar
 	add_action( 'genesis_sidebar', 'foodiepro_do_social_sidebar' );
 }
 
 // Display the social sidebar
 function foodiepro_do_social_sidebar() {
+	if ( !bp_is_my_profile() || !bp_is_user_profile() ) return;
 	//get_sidebar( 'social' );
 	dynamic_sidebar( 'social-sidebar' );
 }

@@ -16,7 +16,8 @@ class Custom_WPURP_Templates {
 	public static $logged_in;
 	protected $custom_enqueued_scripts = array();
 	protected $custom_enqueued_styles = array();
-	
+	private $post_ID;
+
 	public function __construct() {
 	
 		self::$_PluginUri = plugin_dir_url( dirname( __FILE__ ) );
@@ -39,6 +40,10 @@ class Custom_WPURP_Templates {
         add_action( 'wp_ajax_ingredient_preview', array( $this, 'ajax_ingredient_preview'));
         add_action( 'wp_ajax_nopriv_ingredient_preview', array( $this, 'ajax_ingredient_preview'));
 
+		/* Customize Recipe output */
+		add_filter('wpurp_output_recipe', array($this,'display_recipe'), 10, 2 );
+
+
 		/* Customize User Submission shortcode */
 		// add_filter ( 'wpurp_user_submissions_current_user_edit_item', array($this, 'remove_recipe_list_on_edit_recipe'), 15, 2 );
 
@@ -59,9 +64,9 @@ class Custom_WPURP_Templates {
 	
 	
 /* Custom Menu Template */	
-	public function wpurp_custom_menu_template( $form, $menu ) {
-		return '';
-	}
+	// public function wpurp_custom_menu_template( $form, $menu ) {
+	// 	return '';
+	// }
 
 	
 /* Custom Enqueue CSS */	
@@ -471,36 +476,6 @@ class Custom_WPURP_Templates {
 		die(); //stop "0" from being output		
 	}
 
-	
-/* Custom Recipe Submission Shortcode */
-	// public function remove_recipe_list_on_edit_recipe( $item, $recipe ) {
-	// 	if ( isset( $_GET['wpurp-edit-recipe'] ) )
-	// 		$html = '';
-	// 	else {
-	// 		$url = get_permalink() . self::RECIPE_EDIT_SLUG;	
-	// 		//$url = 'http://www.goutu.main/accueil/publier/publier-recettes/recipe-edit/';	
-	// 		$html = '<li>';
-	// 		$html .= '<a href="' . $url . '?wpurp-edit-recipe=' . $recipe->ID() . '">' . $recipe->title() . '</a>';
-	// 		$html .= '</li>';
-	// 	}
-	// 	return $html;
-	// }
-	
-	
-	// public static function output_tooltip($content,$position) {
-	// 	// $path = self::$_PluginPath . 'assets/img/callout_'. $position . '.png';
-	// 	$uri = self::$_PluginUri . 'assets/img/callout_'. $position . '.png';
-	
-	// 	$html ='<div class="tooltip-content">';
-	// 	$html.= '<div class="wrap">';
-	// 	$html.=$content;
-	// 	$html.='<img class="callout" data-no-lazy="1" src="' . $uri . '">';
-	// 	$html.='</div>';
-	// 	$html.='</div>';
-		
-	// 	return $html;
-	// }
-
     public function ajax_ingredient_preview() {
 
         if( ! check_ajax_referer( 'preview_ingredient', 'security', false ) ) {
@@ -549,6 +524,147 @@ class Custom_WPURP_Templates {
           
     }
 
+
+	public function display_recipe( $content, $recipe ) {
+
+		// $this->post_ID = get_the_ID();	
+		// $recipe = new Custom_Recipe( $recipe->post_ID );
+
+		if ( isset($recipe->ID ) )
+			$recipe = new Custom_Recipe( $recipe->ID );
+		else
+			$recipe = new Custom_Recipe( $recipe->ID() );
+
+		$imgID = $recipe->featured_image();
+
+ 		$imgAlt = get_post_meta($imgID,'_wp_attachment_image_alt', true);
+ 		if (empty($imgAlt))
+ 			// $imgAlt=sprintf(__('Recipe of %s', 'foodiepro'), $recipe->title());
+ 			$imgAlt=$recipe->title();
+
+		ob_start();
+		
+		// Debug
+			//echo '<pre>' . print_r(get_post_meta($this->post_ID), true) . '</pre>';
+		
+		// Output JSON+LD metadata & rich snippets
+		echo $this->json_ld_meta_output($recipe,'');
+
+		include( self::$_PluginPath . 'templates/custom-recipe-template.php' );
+
+	    $output = ob_get_contents();
+	    ob_end_clean();
+
+		return $output;
+	}
+
+    public function json_ld_meta_output( $recipe, $args ) {
+        
+        $Custom_Metadata = new Custom_Recipe_Metadata;
+        // $metadata = in_array( WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ), array( 'json', 'json-inline' ) ) ? $Custom_Metadata->get_metadata( $recipe ) : '';
+        $metadata = $Custom_Metadata->get_metadata( $recipe );
+
+        ob_start();
+        echo $metadata;
+        $output = ob_get_contents();
+      	ob_end_clean();
+
+        return $output;
+    }
+
+    public function custom_ingredients_list( $recipe, $args ) {
+        $out = '';
+        $previous_group = '';       
+        $first_group = true;
+        //$out .= '<ul class="wpurp-recipe-ingredients">';
+        
+        foreach( $recipe->ingredients() as $ingredient ) {
+
+            if( WPUltimateRecipe::option( 'ignore_ingredient_ids', '' ) != '1' && isset( $ingredient['ingredient_id'] ) ) {
+                $term = get_term( $ingredient['ingredient_id'], 'ingredient' );
+                if ( $term !== null && !is_wp_error( $term ) ) {
+                    $ingredient['ingredient'] = $term->name;
+                }
+            }
+
+            if( $ingredient['group'] != $previous_group || $first_group ) { //removed isset($ingredient['group'] ) && 
+                $out .= $first_group ? '' : '</ul>';
+                $out .= '<ul class="wpurp-recipe-ingredients">';
+                $out .= '<li class="ingredient-group">' . $ingredient['group'] . '</li>';
+                $previous_group = $ingredient['group'];
+                $first_group = false;
+            }
+
+            $meta = WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ) != 'json' && $args['template_type'] == 'recipe' && $args['desktop'] ? ' itemprop="recipeIngredient"' : '';
+
+            $out .= '<li class="wpurp-recipe-ingredient"' . $meta . '>';
+
+            $ingredient['links'] = 'yes';
+            $out .= Custom_WPURP_Ingredient::display( $ingredient );
+
+            $out .= '</li>';
+        }
+        //$out .= '</ul>';
+
+        return $out;
+    }
+            
+    public function custom_instructions_list( $recipe, $args ) {
+        $out = '';
+        $previous_group = '';
+        $instructions = $recipe->instructions();
+        
+        $out .= '<ol class="wpurp-recipe-instruction-container">';
+        $first_group = true;
+        
+        for( $i = 0; $i < count($instructions); $i++ ) {
+                    
+            $instruction = $instructions[$i];
+                    $first_inst = false;
+                    
+                    if( $instruction['group'] != $previous_group ) { /* Entering new instruction group */
+                            $first_inst = true;
+                $out .= $first_group ? '' : '</ol>';
+                $out .= '<div class="wpurp-recipe-instruction-group recipe-instruction-group">' . $instruction['group'] . '</div>';
+                $out .= '<ol class="wpurp-recipe-instructions">';
+                $previous_group = $instruction['group'];
+                        $first_group = false;
+            }
+
+            $style = $first_inst ? ' li-first' : '';
+            $style .= !isset( $instructions[$i+1] ) || $instruction['group'] != $instructions[$i+1]['group'] ? ' li-last' : '';
+
+            $meta = WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ) != 'json' && $args['template_type'] == 'recipe' && $args['desktop'] ? ' itemprop="recipeInstructions"' : '';
+
+            $out .= '<li class="wpurp-recipe-instruction ' . $style . '">';
+            //$out .= '<div' . $meta . '>'.$instruction['description'].'</div>';
+            $out .= '<span>' . $instruction['description'] . '</span>';
+
+            if( !empty($instruction['image']) ) {
+                $thumb = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
+                $thumb_url = $thumb['0'];
+
+                $full_img = wp_get_attachment_image_src( $instruction['image'], 'full' );
+                $full_img_url = $full_img['0'];
+
+                $title_tag = WPUltimateRecipe::option( 'recipe_instruction_images_title', 'attachment' ) == 'attachment' ? esc_attr( get_the_title( $instruction['image'] ) ) : esc_attr( $instruction['description'] );
+                $alt_tag = WPUltimateRecipe::option( 'recipe_instruction_images_alt', 'attachment' ) == 'attachment' ? esc_attr( get_post_meta( $instruction['image'], '_wp_attachment_image_alt', true ) ) : esc_attr( $instruction['description'] );
+
+                if( WPUltimateRecipe::option( 'recipe_images_clickable', '0' ) == 1 ) {
+                    $out .= '<div class="instruction-step-image"><a href="' . $full_img_url . '" rel="lightbox" title="' . $title_tag . '">';
+                    $out .= '<img src="' . $thumb_url . '" alt="' . $alt_tag . '" title="' . $title_tag . '"' . '/>';
+                    $out .= '</a></div>';
+                } else {
+                    $out .= '<div class="instruction-step-image"><img src="' . $thumb_url . '" alt="' . $alt_tag . '" title="' . $title_tag . '"' . '/></div>';
+                }
+            }
+
+            $out .= '</li>';
+        }
+            $out .= '</ol>';
+
+        return $out;
+    }
 
 	
 }

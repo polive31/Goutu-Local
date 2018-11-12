@@ -63,7 +63,7 @@
         //                         );
         $taxonomies['post_tag']=array(
                                     'labels'=>array(
-                                        'singular_name'=>__( 'Tag', 'wp-ultimate-recipe' ),
+                                        'singular_name'=>__( 'Keywords', 'foodiepro' ),
                                     ),
                                 );        
         

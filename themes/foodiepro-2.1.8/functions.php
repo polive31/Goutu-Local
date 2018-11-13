@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'CHILD_THEME_NAME', 'Foodie Pro Theme' );
-define( 'CHILD_THEME_VERSION', '2.2.29' );
+define( 'CHILD_THEME_VERSION', '2.2.30' );
 define( 'CHILD_THEME_DEVELOPER', 'Shay Bocks' );
 define( 'CHILD_THEME_URL', get_stylesheet_directory_uri() );
 define( 'CHILD_THEME_PATH', get_stylesheet_directory() );
@@ -479,6 +479,35 @@ function enqueue_minified_stylesheet( $default_stylesheet_uri ) {
 	} 
 	return $default_stylesheet_uri;
 }
+
+/* =================================================================*/
+/* =         REMOVE CUSTOMIZER                                     =*/
+/* =================================================================*/
+
+// add_action( 'init', 'public_customizer_remove', 10 ); // was priority 5
+// function public_customizer_remove() {
+// 	add_filter( 'map_meta_cap', 'filter_to_remove_customize_capability', 10, 4 );
+// }
+// function filter_to_remove_customize_capability( $caps = array(), $cap = '', $user_id = 0, $args = array() ) {
+// 	if ($cap == 'customize') {
+// 		return array('nope'); 
+// 	}
+// 	return $caps;
+// }
+// add_action( 'admin_init', 'admin_customizer_remove', 10 ); // was priority 5
+// function admin_customizer_remove() {
+// 	// Drop some customizer actions
+// 	remove_action( 'plugins_loaded', '_wp_customize_include', 10);
+// 	remove_action( 'admin_enqueue_scripts', '_wp_customize_loader_settings', 11);
+
+// 	// Manually overrid Customizer behaviors
+// 	add_action( 'load-customize.php', 'override_load_customizer_action' );
+// }
+// function override_load_customizer_action() {
+// 	// If accessed directly
+// 	wp_die( __( 'The Customizer is currently disabled.', 'wp-crap' ) );
+// }
+
 
 /* =================================================================*/
 /* =              CUSTOM LOGIN                                     =*/

@@ -4869,8 +4869,9 @@ body.activity-permalink .activity-list li .activity-header > p {
 	text-transform:none;
 }
 .activity-inner .excerpt-image {
-	float:right;
-	padding: 5px;		
+    float: right;
+    margin: 0 0 0 20px;
+    width: 150px;		
 }
 a.activity-post-title {
 	font-family: "Oswald", sans-serif;

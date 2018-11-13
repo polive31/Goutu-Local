@@ -151,74 +151,6 @@ function foodiepro_xprofile_cover_image( $settings = array() ) {
 remove_action( 'bp_enqueue_scripts', 'bp_add_cover_image_inline_css', 11 );
 
 
-/* =================================================================*/
-/* =              ACTIVITY
-/* =================================================================*/
-
-add_post_type_support( 'recipe', 'buddypress-activity' );
-
-//add_action('wp_head', 'display_bp_tracking_args');
-function display_bp_tracking_args() {
-	$tracking_args = bp_activity_get_post_type_tracking_args('post');
-	echo '<pre>' . print_r($tracking_args,true) . '</pre>';
-	$tracking_args = bp_activity_get_post_type_tracking_args('recipe');
-	echo '<pre>' . print_r($tracking_args,true) . '</pre>';
-}
-
-
-add_action( 'bp_register_activity_actions', 'customize_posts_tracking_args' );
-function customize_posts_tracking_args() {
-  // Check if the Activity component is active before using it.
-  if ( ! bp_is_active( 'activity' ) ) return;
-
-  /*bp_activity_set_post_type_tracking_args( 'post', array(
-      'component_id'             => buddypress()->blogs->id,
-      'action_id'                => 'new_blog_post',
-      'format_callback'					 => 'custom_format_activity_action_post',
-	)	);*/
-
-  bp_activity_set_post_type_tracking_args( 'recipe', array(
-      'component_id'             => buddypress()->blogs->id,
-      'action_id'                => 'new_recipe_post',
-      'bp_activity_admin_filter' => __( 'Published a new recipe', 'foodiepro' ),
-      'bp_activity_front_filter' => __( 'Recipes', 'foodiepro' ),
-      'singular' 								 => __( 'Recipe', 'foodiepro' ),
-      'contexts'                 => array( 'activity', 'member' ),
-      'format_callback'					 => 'custom_format_activity_action_post',
-      'activity_comment'         => true,
-      'position'                 => 100,
-  ) );
-}
-
-
-// Customize recipe publication activity feed content
-add_action('bp_activity_excerpt_append_text', 'icondeposit_bp_activity_entry_meta');
-function icondeposit_bp_activity_entry_meta() {
-  if ( bp_get_activity_type() == 'new_recipe_post' ) {
-    global $wpdb, $post, $bp;
-    $blogpost_id = bp_get_activity_secondary_item_id();
-    $post_url = get_permalink($blogpost_id);
-    $post_img = wp_get_attachment_image_src(  get_post_thumbnail_id( $blogpost_id ), 'square-thumbnail' );
-    //$post_content = get_post_field('post_content', $blogpost_id);
-    //$post_excerpt = get_the_excerpt($blogpost_id);
-    $recipe_intro = get_post_meta($blogpost_id, 'recipe_description', true);
-    echo '<div class="excerpt-image"><a href="' . $post_url . '"><img src="' . $post_img[0] . '" ></a></div>';
-    echo $recipe_intro;
-  }
-}
-
-// Customize post publication activity feed content
-// add_filter('bp_blogs_record_activity_action', 'record_cpt_activity_content');
-// add_filter('bp_blogs_record_activity_content', 'record_cpt_activity_content');
-function record_cpt_activity_content( $cpt ) {
-		echo "Any text";
-	  //if ( 'new_blog_post' === $cpt['type'] ) {
-	      //$cpt['content'] = 'what you need';
-	  $cpt='Any text';
-	  $cpt['content']='Any text';
-	  //}
-  return $cpt;
-}
 
 /* =================================================================*/
 /* =              MISC
@@ -462,6 +394,77 @@ function add_more_from_author_link($html,$args) {
 //}
 ////add_filter( 'rpwe_default_args', 'wprpe_author_more_link' );
 
+
+/* =================================================================*/
+/* =              ACTIVITY
+/* =================================================================*/
+
+add_post_type_support( 'recipe', 'buddypress-activity' );
+
+//add_action('wp_head', 'display_bp_tracking_args');
+function display_bp_tracking_args() {
+	$tracking_args = bp_activity_get_post_type_tracking_args('post');
+	echo '<pre>' . print_r($tracking_args,true) . '</pre>';
+	$tracking_args = bp_activity_get_post_type_tracking_args('recipe');
+	echo '<pre>' . print_r($tracking_args,true) . '</pre>';
+}
+
+
+add_action( 'bp_register_activity_actions', 'customize_posts_tracking_args' );
+function customize_posts_tracking_args() {
+  // Check if the Activity component is active before using it.
+  if ( ! bp_is_active( 'activity' ) ) return;
+
+  /*bp_activity_set_post_type_tracking_args( 'post', array(
+      'component_id'             => buddypress()->blogs->id,
+      'action_id'                => 'new_blog_post',
+      'format_callback'					 => 'custom_format_activity_action_post',
+	)	);*/
+
+  bp_activity_set_post_type_tracking_args( 'recipe', array(
+      'component_id'             	=> buddypress()->blogs->id,
+      'action_id'                	=> 'new_recipe_post',
+      'bp_activity_admin_filter' 	=> __( 'Published a new recipe', 'foodiepro' ),
+      'bp_activity_front_filter' 	=> __( 'Recipes', 'foodiepro' ),
+      'singular' 					=> __( 'Recipe', 'foodiepro' ),
+      'contexts'                 	=> array( 'activity', 'member' ),
+      'format_callback'				=> 'custom_format_activity_action_post',
+      'activity_comment'         	=> true,
+      'position'                 	=> 100,
+  ) );
+}
+
+
+// Customize post publication activity feed content
+add_filter('bp_get_activity_content_body','customize_activity_feed_on_post_publish', 0, 2);
+function customize_activity_feed_on_post_publish( $text, $activity ) {
+	if (  in_array( $activity->type, array('new_recipe_post','new_blog_post') ) ) {
+		$blogpost_id = $activity->secondary_item_id;
+		// $post_url = get_permalink($blogpost_id);
+		$post_img = wp_get_attachment_image_src(  get_post_thumbnail_id( $blogpost_id ), 'square-thumbnail' );
+		$post_content = get_post_field('post_content', $blogpost_id);
+		//$post_excerpt = get_the_excerpt($blogpost_id);
+		// $post_intro = get_post_meta($blogpost_id, 'recipe_description', true);
+		// $content = $post_content;	
+		$text = '<div class="excerpt-image"><a class="excerpt-image" href="' . $post_url . '"><img src="' . $post_img[0] . '" ></a></div>' . $text;
+		return $text;
+	}
+}
+
+
+// Customize post publication activity feed content
+// Be careful this is recorded and never goes afterwards !!!
+// add_filter('bp_blogs_record_activity_action', 'record_cpt_activity_content');
+// add_filter('bp_blogs_record_activity_content', 'record_cpt_activity_content');
+function record_cpt_activity_content( $cpt ) {
+		echo "Any text";
+	  //if ( 'new_blog_post' === $cpt['type'] ) {
+	      //$cpt['content'] = 'what you need';
+	  $cpt='Any text';
+	  $cpt['content']='Any text';
+	  //}
+  return $cpt;
+}
 
 /* =================================================================*/
 /* =     ACTIVITY CALLBACKS

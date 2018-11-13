@@ -2,7 +2,7 @@
 
 
 /* =================================================================*/
-/* =                 LAYOUT
+/* =                 HEADLINE 
 /* =================================================================*/
 
 // Provide the page headline on some buddypress pages
@@ -12,6 +12,10 @@ function buddypress_page_title() {
 		echo '<h1>' . get_the_title() . '</h1>';
 	}
 }
+
+/* =================================================================*/
+/* =                 CONTENT 
+/* =================================================================*/
 
 // Provide the page content on some buddypress pages
 // add_action( 'genesis_before_content', 'buddypress_page_content' );
@@ -34,27 +38,29 @@ function buddypress_page_content( $post_id = 0, $more_link_text = null, $stripte
 	wp_reset_postdata( $post );
 }
 
-
-
 // Apply Full Width Content to registration page
 // add_action( 'bp_loaded', 'bp_register_set_full_layout' );
 // function bp_register_set_full_layout() {
 // 	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 // }
 
+/* =================================================================*/
+/* =                 SIDEBARS
+/* =================================================================*/
+
 // Social before content (Cover Image) widgeted area
 add_action( 'genesis_before_content_sidebar_wrap', 'add_before_content_area');
 function add_before_content_area() {
-	if ( !bp_is_my_profile() || !bp_is_user_profile() ) return;
-	genesis_widget_area( 'social-before-content', array(
-	   'before' => '<div class="top before-content widget-area" id="buddypress">',
-	   'after'  => '</div>',
-	));  
+	if ( bp_is_my_profile() || bp_is_user_profile() ) {
+		genesis_widget_area( 'social-before-content', array(
+		   'before' => '<div class="top before-content widget-area" id="buddypress">',
+		   'after'  => '</div>',
+		));  
+	}
 }
 
 // Specific sidebar logic on Buddypress pages
 add_action('get_header','buddypress_sidebar');
-
 function buddypress_sidebar() {
 	// This function removes the default genesis primary sidebar
 	// and ensures that there is no sidebar at all if registration page
@@ -66,9 +72,10 @@ function buddypress_sidebar() {
 
 // Display the social sidebar
 function foodiepro_do_social_sidebar() {
-	if ( !bp_is_my_profile() || !bp_is_user_profile() ) return;
-	//get_sidebar( 'social' );
-	dynamic_sidebar( 'social-sidebar' );
+	if ( bp_is_my_profile() || bp_is_user_profile() ) {
+		//get_sidebar( 'social' );
+		dynamic_sidebar( 'social-sidebar' );
+	}
 }
 
 // Social Bottom sidebar

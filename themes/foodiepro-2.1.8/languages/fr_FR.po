@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2018-11-17 01:14+0100\n"
-"PO-Revision-Date: 2018-11-17 02:07+0100\n"
+"PO-Revision-Date: 2018-11-17 02:11+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -1943,10 +1943,8 @@ msgid "Share this recipe on Pinterest"
 msgstr "Partager cette recette sur Pinterest"
 
 #: plugins/custom-site-notifications/includes/CustomSiteNotifications.php:106
-#, fuzzy
-#| msgid "Share this recipe"
 msgid "Send this recipe to a friend"
-msgstr "Partager sur les réseaux sociaux"
+msgstr "Envoyer cette recette à un ami"
 
 #: plugins/custom-social-interactions/includes/CustomSocialInteractions.php:70
 #: plugins/custom-social-interactions/includes/CustomSocialInteractionsShortcodes.php:30

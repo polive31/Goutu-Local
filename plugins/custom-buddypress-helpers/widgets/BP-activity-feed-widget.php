@@ -28,7 +28,7 @@ class BP_Activity_Feed extends WP_Widget {
 		parent::__construct(
 			'bp_activity_feed', // Base ID
 			__('(Buddypress) Activity Feed', 'foodiepro'), // Name
-			array( 'description' => __( 'Displays a Buddypress Activity Feed', 'foodiepro' ), ) // Args
+			array( 'description' => __( 'Displays a Customized Buddypress Activity Feed', 'foodiepro' ), ) // Args
 		);
 	}
 
@@ -82,11 +82,11 @@ class BP_Activity_Feed extends WP_Widget {
 
 			<?php endif; ?>
 
-				</ul>
+			</ul>
 
-				<p class="more-from-category">
-					<a href="<?php bp_activity_load_more_link() ?>"><?php echo __( 'Previous Feeds', 'foodiepro' ); ?></a>
-				</p>
+			<p class="more-from-category">
+				<a href="<?php bp_activity_load_more_link() ?>"><?php echo __( 'Previous Feeds', 'foodiepro' ); ?></a>
+			</p>
 				
 				
 		<?php else : ?>

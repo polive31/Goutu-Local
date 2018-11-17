@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2018-11-12 00:56+0100\n"
-"PO-Revision-Date: 2018-11-12 00:58+0100\n"
+"POT-Creation-Date: 2018-11-17 01:14+0100\n"
+"PO-Revision-Date: 2018-11-17 01:14+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -29,17 +29,45 @@ msgstr ""
 msgid "Please confirm that you agree with our privacy policy"
 msgstr ""
 
-#: plugins/bp-custom.php:183
+#: plugins/bp-custom.php:244
+msgid "Display Profile"
+msgstr "Afficher mon profil"
+
+#: plugins/bp-custom.php:245
+msgid "Edit Profile"
+msgstr "Modifier mon profil"
+
+#: plugins/bp-custom.php:246
+msgid "Change Avatar"
+msgstr "Photo de profil"
+
+#: plugins/bp-custom.php:247
+msgid "Change Cover"
+msgstr "Image d'en-tête"
+
+#: plugins/bp-custom.php:340
+#, php-format
+msgid "by %s"
+msgstr "par %s"
+
+#: plugins/bp-custom.php:376
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:80
+#, php-format
+msgctxt "consonant"
+msgid "All posts from %s"
+msgstr "Toutes les publications de %s"
+
+#: plugins/bp-custom.php:427
 msgid "Published a new recipe"
 msgstr "Publié une nouvelle recette"
 
-#: plugins/bp-custom.php:184
+#: plugins/bp-custom.php:428
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:20
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:4
 msgid "Recipes"
 msgstr "Recettes"
 
-#: plugins/bp-custom.php:185
+#: plugins/bp-custom.php:429
 #: plugins/custom-recipe-templates/widgets/custom_nutrition_label_widget.php:64
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_meta_box.php:60
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:21
@@ -57,35 +85,7 @@ msgstr "Recettes"
 msgid "Recipe"
 msgstr "Recette"
 
-#: plugins/bp-custom.php:312
-msgid "Display Profile"
-msgstr "Afficher mon profil"
-
-#: plugins/bp-custom.php:313
-msgid "Edit Profile"
-msgstr "Modifier mon profil"
-
-#: plugins/bp-custom.php:314
-msgid "Change Avatar"
-msgstr "Photo de profil"
-
-#: plugins/bp-custom.php:315
-msgid "Change Cover"
-msgstr "Image d'en-tête"
-
-#: plugins/bp-custom.php:408
-#, php-format
-msgid "by %s"
-msgstr "par %s"
-
-#: plugins/bp-custom.php:444
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:80
-#, php-format
-msgctxt "consonant"
-msgid "All posts from %s"
-msgstr "Toutes les publications de %s"
-
-#: plugins/bp-custom.php:535
+#: plugins/bp-custom.php:538
 #, php-format
 msgid ""
 "%1$s wrote a new post, <a class=\"activity-post-title\" href=\"%2$s\">%3$s</"
@@ -94,7 +94,7 @@ msgstr ""
 "%1$s a publié un nouvel article, <a class=\"activity-post-title\" href=\"%2$s"
 "\">%3$s</a>"
 
-#: plugins/bp-custom.php:538
+#: plugins/bp-custom.php:541
 #, php-format
 msgid ""
 "%1$s wrote a new recipe, <a class=\"activity-post-title\" href=\"%2$s\">"
@@ -103,44 +103,49 @@ msgstr ""
 "%1$s a publié une nouvelle recette, <a class=\"activity-post-title\" href="
 "\"%2$s\">%3$s</a>"
 
-#: plugins/custom-buddypress-helpers/custom-bph-loader.php:50
+#: plugins/custom-buddypress-helpers/custom-bph-loader.php:51
 msgid ""
 "<strong>BP Social Helpers</strong></a> requires the BuddyPress plugin to "
 "work. Please <a href=\"https://buddypress.org/download\">install BuddyPress</"
 "a> first, or <a href=\"plugins.php\">deactivate BP Custom Shortcodes</a>."
 msgstr ""
 
-#: plugins/custom-buddypress-helpers/shortcodes/BP-custom-shortcodes.php:32
+#: plugins/custom-buddypress-helpers/shortcodes/CustomSocialHelpers.php:34
 msgid "Friendship Requests"
 msgstr "Demandes d'amitié"
 
-#: plugins/custom-buddypress-helpers/shortcodes/BP-custom-shortcodes.php:38
+#: plugins/custom-buddypress-helpers/shortcodes/CustomSocialHelpers.php:38
 msgid "Notifications"
 msgstr "Notifications"
 
-#: plugins/custom-buddypress-helpers/shortcodes/BP-custom-shortcodes.php:44
+#: plugins/custom-buddypress-helpers/shortcodes/CustomSocialHelpers.php:42
 #: plugins/custom-buddypress-helpers/widgets/BP-whats-new-widget.php:105
 #: themes/foodiepro-2.1.8/buddypress/activity/post-form.php:61
 #: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:28
 msgid "My Profile"
 msgstr "Mon Profil"
 
-#: plugins/custom-buddypress-helpers/shortcodes/BP-custom-shortcodes.php:133
+#: plugins/custom-buddypress-helpers/shortcodes/CustomSocialHelpers.php:47
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/profile.php:7
+msgid "My Events"
+msgstr ""
+
+#: plugins/custom-buddypress-helpers/shortcodes/CustomSocialHelpers.php:181
 msgid "I like that"
 msgstr "J'aime"
 
-#: plugins/custom-buddypress-helpers/shortcodes/BP-custom-shortcodes.php:139
+#: plugins/custom-buddypress-helpers/shortcodes/CustomSocialHelpers.php:187
 msgid "I don't like that anymore"
 msgstr "Je n'aime plus"
 
-#: plugins/custom-buddypress-helpers/shortcodes/BP-custom-shortcodes.php:149
+#: plugins/custom-buddypress-helpers/shortcodes/CustomSocialHelpers.php:197
 #: themes/foodiepro-2.1.8/buddypress/activity/entry.php:123
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/booking-fields.php:26
 #: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:28
 msgid "Comment"
 msgstr "Ajouter un commentaire"
 
-#: plugins/custom-buddypress-helpers/shortcodes/BP-custom-shortcodes.php:154
+#: plugins/custom-buddypress-helpers/shortcodes/CustomSocialHelpers.php:202
 #: themes/foodiepro-2.1.8/buddypress/groups/single/forum/edit.php:23
 #: themes/foodiepro-2.1.8/buddypress/groups/single/forum/topic.php:191
 #, fuzzy
@@ -148,8 +153,8 @@ msgstr "Ajouter un commentaire"
 msgid "Reply"
 msgstr "Envoyer une répondre"
 
-#: plugins/custom-buddypress-helpers/shortcodes/BP-custom-shortcodes.php:169
-#: plugins/custom-buddypress-helpers/shortcodes/BP-custom-shortcodes.php:202
+#: plugins/custom-buddypress-helpers/shortcodes/CustomSocialHelpers.php:217
+#: plugins/custom-buddypress-helpers/shortcodes/CustomSocialHelpers.php:241
 #: plugins/wp-ultimate-recipe-premium/premium/addons/custom-fields/templates/page_list.php:33
 #: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/templates/page_list.php:45
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:142
@@ -168,7 +173,7 @@ msgid "(Buddypress) Activity Feed"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-activity-feed-widget.php:31
-msgid "Displays a Buddypress Activity Feed"
+msgid "Displays a Customized Buddypress Activity Feed"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-activity-feed-widget.php:88
@@ -786,19 +791,19 @@ msgctxt "consonant"
 msgid "All recipes from %s"
 msgstr "Toutes les recettes de %s"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:38
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:41
 msgid "Share this recipe"
 msgstr "Partager sur les réseaux sociaux"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:40
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:43
 msgid "Share this post"
 msgstr "Partager cet article"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:303
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:313
 msgid "Choose..."
 msgstr "Choisir..."
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:323
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:333
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:59
 msgid "authors"
 msgstr "auteurs"
@@ -932,27 +937,27 @@ msgid ""
 "or deactivate this plugin </a>."
 msgstr ""
 
-#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:99
+#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:100
 #, php-format
 msgid "Published on %s by <span id=\"username\">%s</span>"
 msgstr "Publié le %s  par <span id=\"username\">%s</span>"
 
-#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:105
-#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:224
-#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:234
+#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:106
+#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:225
+#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:235
 msgid "Edit recipe"
 msgstr "Modifier la recette"
 
-#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:138
+#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:139
 msgid "none"
 msgstr "aucun(e)"
 
-#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:162
+#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:163
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:117
 msgid "Sorry, only registered users may submit recipes."
 msgstr ""
 
-#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:182
+#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:183
 msgid ""
 "Here is the list of the recipes that you created, and their status. You can "
 "choose to edit them, change their visibility, or delete them."
@@ -961,39 +966,39 @@ msgstr ""
 "publication. Vous pouvez toujours modifier leur contenu, leur visibilité "
 "(privé, amis, groupes, public), ou bien aussi les supprimer."
 
-#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:201
+#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:202
 #: plugins/wp-ultimate-recipe-premium/premium/addons/favorite-recipes/favorite-recipes.php:87
 msgid "You don't have any favorite recipes."
 msgstr "Aucune recette favorite dans votre carnet."
 
-#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:221
+#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:222
 msgid "Preview recipe"
 msgstr "Aperçu de la recette"
 
-#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:239
+#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:240
 msgid "Delete recipe"
 msgstr "Supprimer la recette"
 
-#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:291
-#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:503
+#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:292
+#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:501
 msgid "You can edit your recipe here, before submitting it."
 msgstr ""
 "Vous pouvez modifier votre recette ici et la sauvegarder en tant que "
 "brouillon aussi longtemps que vous le souhaitez, avant de la soumettre pour "
 "publication."
 
-#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:351
+#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:347
 msgid "You must be logged-in to access this page."
 msgstr ""
 
-#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:373
+#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:369
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-fdx/import-fdx.php:65
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-xml/import-xml.php:65
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:235
 msgid "Untitled"
 msgstr ""
 
-#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:461
+#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:459
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:435
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:410
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_whitelist.php:286
@@ -1003,7 +1008,7 @@ msgstr ""
 msgid "Custom Fields"
 msgstr ""
 
-#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:488
+#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:486
 msgid ""
 "Here is what your recipe will look like once it is published. You can choose "
 "to continue editing it, or save it as a draft, or publish it, using the "
@@ -1014,7 +1019,7 @@ msgstr ""
 "la soumettre pour publication, en utilisant les boutons au bas de cette "
 "page. "
 
-#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:537
+#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:535
 msgid ""
 "Recipe saved as draft. It will not be visible on the site, but you can edit "
 "it at any time and submit it later."
@@ -1023,13 +1028,18 @@ msgstr ""
 "visible sur le site, mais vous pouvez la modifier à tout moment, et la "
 "publier plus tard."
 
-#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:540
-msgid "Back to my published recipes"
-msgstr "Retour à la liste de mes recettes"
+#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:538
+#, php-format
+msgid "Back to <a href=\"%s\">my published recipes</a>"
+msgstr "Retour à <a href=\"%s\">mes recettes</a>"
 
-#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:556
+#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:555
 msgid "Please fill-in those required fields:"
 msgstr "Merci de renseigner les informations suivantes :"
+
+#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:587
+msgid "Recipe published."
+msgstr "Recette publiée."
 
 #: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:587
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_options.php:1494
@@ -1041,8 +1051,8 @@ msgstr ""
 #: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:590
 #: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:614
 #, php-format
-msgid "Back to <a href=\"%s\">my published recipes</a>"
-msgstr "Retour à <a href=\"%s\">mes recettes</a>"
+msgid "<a href=\"%s\">Back to my recipes</a>"
+msgstr "<a href=\"%s\">Retour à mes recettes</a>"
 
 #: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:597
 #, php-format
@@ -1080,21 +1090,21 @@ msgstr "Cuisson"
 msgid "Wait"
 msgstr "Attente"
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe.php:120
+#: plugins/custom-recipe-templates/includes/Custom_Recipe.php:124
 #, php-format
 msgid "%s day "
 msgid_plural "%s days "
 msgstr[0] "%s jour "
 msgstr[1] "%s jours "
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe.php:123
+#: plugins/custom-recipe-templates/includes/Custom_Recipe.php:127
 #, php-format
 msgid "%s hour "
 msgid_plural "%s hours "
 msgstr[0] "%s h "
 msgstr[1] "%s h "
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe.php:127
+#: plugins/custom-recipe-templates/includes/Custom_Recipe.php:131
 #, php-format
 msgid "%s minute"
 msgid_plural "%s minutes"
@@ -1210,14 +1220,19 @@ msgstr "Mois"
 msgid "Check the months when this ingredient is available"
 msgstr "Cocher les mois où cet ingrédient est disponible"
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:196
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:203
 msgid "Print this Recipe"
 msgstr "Imprimer cette recette"
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:291
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:298
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:65
 msgid "Are you sure you want to delete this recipe:"
 msgstr "Etes vous sûr de vouloir supprimer cette recette :"
+
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Templates.php:694
+#: plugins/wp-ultimate-recipe-premium/premium/addons/timer/timer.php:73
+msgid "Click to Start Timer"
+msgstr "Cliquez pour lancer le minuteur"
 
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:26
 msgid "review"
@@ -1865,6 +1880,79 @@ msgstr ""
 #| msgid "Remove from Favorites"
 msgid "Show Images"
 msgstr "Favorite"
+
+#: plugins/custom-site-notifications/includes/CustomSiteNotifications.php:38
+#, php-format
+msgid "Hello %s,"
+msgstr "Bonjour %s,"
+
+#: plugins/custom-site-notifications/includes/CustomSiteNotifications.php:42
+#, php-format
+msgid "The <a href=\"%s\">Goûtu.org</a> Team."
+msgstr "L'équipe <a href=\"%s\">Goûtu.org</a>."
+
+#: plugins/custom-site-notifications/includes/CustomSiteNotifications.php:48
+#, php-format
+msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
+msgstr "Un problème ? Une question ? Contacte nous <a href=\"%s\">ici</a>"
+
+#: plugins/custom-site-notifications/includes/CustomSiteNotifications.php:54
+#: themes/foodiepro-2.1.8/functions.php:955
+msgid "All rights reserved"
+msgstr "Tous droits réservés"
+
+#: plugins/custom-site-notifications/includes/CustomSiteNotifications.php:58
+msgid "Want to change how you receive these emails?"
+msgstr "Tu ne souhaites plus recevoir ces courriels ?"
+
+#: plugins/custom-site-notifications/includes/CustomSiteNotifications.php:59
+#, php-format
+msgid "You can <a href=\"%s\">update your preferences</a> on %s."
+msgstr "Tu peux <a href=\"%s\">mettre à jour tes préférences</a> sur %s."
+
+#: plugins/custom-site-notifications/includes/CustomSiteNotifications.php:67
+msgid "Your recipe just got published !"
+msgstr "Ta recette est publiée !"
+
+#: plugins/custom-site-notifications/includes/CustomSiteNotifications.php:70
+msgid "Your post just got published !"
+msgstr ""
+
+#: plugins/custom-site-notifications/includes/CustomSiteNotifications.php:81
+#, php-format
+msgid "Greetings, your recipe <a href=\"%s\">%s</a> just got published !"
+msgstr "Félicitations, ta recette <a href=\"%s\">%s</a> vient d'être publiée !"
+
+#: plugins/custom-site-notifications/includes/CustomSiteNotifications.php:85
+#, php-format
+msgid ""
+"It is visible on the website, and appears on <a href=\"%s\">your blog</a>."
+msgstr ""
+"Elle est visible sur le site, et apparaît sur <a href=\"%s\">ton blog</a>."
+
+#: plugins/custom-site-notifications/includes/CustomSiteNotifications.php:100
+#, fuzzy
+#| msgid "Share this recipe"
+msgid "Share this recipe on Facebook"
+msgstr "Partager sur les réseaux sociaux"
+
+#: plugins/custom-site-notifications/includes/CustomSiteNotifications.php:102
+#, fuzzy
+#| msgid "Share this recipe"
+msgid "Share this recipe on Twitter"
+msgstr "Partager sur les réseaux sociaux"
+
+#: plugins/custom-site-notifications/includes/CustomSiteNotifications.php:104
+#, fuzzy
+#| msgid "Share this recipe"
+msgid "Share this recipe on Pinterest"
+msgstr "Partager sur les réseaux sociaux"
+
+#: plugins/custom-site-notifications/includes/CustomSiteNotifications.php:106
+#, fuzzy
+#| msgid "Share this recipe"
+msgid "Send this recipe to a friend"
+msgstr "Partager sur les réseaux sociaux"
 
 #: plugins/custom-social-interactions/includes/CustomSocialInteractions.php:70
 #: plugins/custom-social-interactions/includes/CustomSocialInteractionsShortcodes.php:30
@@ -6657,10 +6745,6 @@ msgstr ""
 msgid "Please set a Preview Recipe in the settings first."
 msgstr ""
 
-#: plugins/wp-ultimate-recipe-premium/premium/addons/timer/timer.php:73
-msgid "Click to Start Timer"
-msgstr ""
-
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-menus/templates/ingredient-groups.php:42
 #: plugins/wp-ultimate-recipe-premium/premium/helpers/ingredient_metadata.php:31
 #, fuzzy
@@ -9080,56 +9164,52 @@ msgstr ""
 msgid "Save Settings"
 msgstr "Imprimer cette recette"
 
-#: themes/foodiepro-2.1.8/functions.php:502
+#: themes/foodiepro-2.1.8/functions.php:531
 msgid "Goûtu.org - La Communauté des Gourmets"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:541
+#: themes/foodiepro-2.1.8/functions.php:570
 #, fuzzy, php-format
 #| msgid "<strong>ERROR</strong>: User pending approval."
 msgid "<strong>ERROR</strong>: User pending <a href=\"%s\">approval</a>."
 msgstr "<strong>ERREUR</strong> : Utilisateur en attente d'approbation."
 
-#: themes/foodiepro-2.1.8/functions.php:555
+#: themes/foodiepro-2.1.8/functions.php:584
 msgid "author"
 msgstr "auteur"
 
-#: themes/foodiepro-2.1.8/functions.php:852
+#: themes/foodiepro-2.1.8/functions.php:881
 msgid "Read More"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:878
+#: themes/foodiepro-2.1.8/functions.php:907
 #, fuzzy
 #| msgid "Comment"
 msgid "Comments"
 msgstr "Ajouter un commentaire"
 
-#: themes/foodiepro-2.1.8/functions.php:887
+#: themes/foodiepro-2.1.8/functions.php:916
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:202
 #, fuzzy
 #| msgid "Previous Feeds"
 msgid "Previous comments"
 msgstr "Nouvelles précédentes"
 
-#: themes/foodiepro-2.1.8/functions.php:893
+#: themes/foodiepro-2.1.8/functions.php:922
 #, fuzzy
 #| msgid "Comment"
 msgid "Next comments"
 msgstr "Ajouter un commentaire"
 
-#: themes/foodiepro-2.1.8/functions.php:911
+#: themes/foodiepro-2.1.8/functions.php:940
 msgid "Your answer here"
 msgstr "Entrez votre réponse ci-dessous"
 
-#: themes/foodiepro-2.1.8/functions.php:926
-msgid "All rights reserved"
-msgstr "Tous droits réservés"
-
-#: themes/foodiepro-2.1.8/functions.php:926
+#: themes/foodiepro-2.1.8/functions.php:955
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:926
+#: themes/foodiepro-2.1.8/functions.php:955
 msgid "Legal notice"
 msgstr "Mentions légales"
 
@@ -10011,10 +10091,6 @@ msgstr ""
 msgid "Duplicate this event"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/profile.php:7
-msgid "My Events"
-msgstr ""
-
 #: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/profile.php:24
 msgid "Add Event"
 msgstr ""
@@ -10734,6 +10810,15 @@ msgstr "Ces recettes pourraient également vous intéresser..."
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
 
+#~ msgid "Unsubscribe"
+#~ msgstr "Se désinscrire"
+
+#~ msgid "Show in browser"
+#~ msgstr "Afficher dans mon navigateur"
+
+#~ msgid "Back to my published recipes"
+#~ msgstr "Retour à la liste de mes recettes"
+
 #~ msgid "Duration"
 #~ msgstr "Durée"
 
@@ -10787,11 +10872,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 
 #~ msgid "all"
 #~ msgstr "Tous"
-
-#, fuzzy
-#~| msgid "Publish"
-#~ msgid "published"
-#~ msgstr "Publier"
 
 #, fuzzy
 #~| msgid "Publish"

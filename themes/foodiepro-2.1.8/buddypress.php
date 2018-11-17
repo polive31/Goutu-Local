@@ -19,10 +19,10 @@ function buddypress_page_title() {
 
 // Provide the page content on some buddypress pages
 // add_action( 'genesis_before_content', 'buddypress_page_content' );
-add_action( 'bp_before_directory_members_page', 'buddypress_page_content' );
-add_action( 'bp_before_member_home_content', 'buddypress_page_content' );
-add_action( 'bp_before_register_page', 'buddypress_page_content' );
-add_action( 'bp_before_activation_page', 'buddypress_page_content' );
+// add_action( 'bp_before_directory_members_page', 'buddypress_page_content' );
+// add_action( 'bp_before_member_home_content', 'buddypress_page_content' );
+// add_action( 'bp_before_register_page', 'buddypress_page_content' );
+// add_action( 'bp_before_activation_page', 'buddypress_page_content' );
 function buddypress_page_content( $post_id = 0, $more_link_text = null, $stripteaser = false ) {
 	global $post;
 	$result = bp_current_component();

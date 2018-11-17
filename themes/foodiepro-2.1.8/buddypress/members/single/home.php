@@ -11,7 +11,7 @@
 <div id="buddypress">
 
 
-<!-- <h4>Je suis dans /www/wp-content/themes/foodiepro-2.1.8/buddypress/members/single/home.php</h4> -->
+[debug]<!-- <h4>Je suis dans /www/wp-content/themes/foodiepro-2.1.8/buddypress/members/single/home.php</h4> -->[/debug]
 
 <?php //if ( is_user_logged_in()  ) : 
 ?> 
@@ -25,7 +25,7 @@
 	 */
 	//do_action( 'bp_before_member_home_content' ); ?>
 
-	<!--
+	[debug]<!--
 
 	<div id="item-header" role="complementary">
 
@@ -56,6 +56,8 @@
 	   <?php //do_action( 'bp_member_options_nav' ); ?>
 	  </ul>
 	</div>-->
+
+	[/debug]
 
 	<div id="item-body">
 

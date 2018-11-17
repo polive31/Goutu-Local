@@ -42,7 +42,8 @@ function bp_social_helpers_load() {
 		require_once 'widgets/BP-profile-completion-widget.php';
 	else
 		add_action( 'admin_notices', 'bp_social_helpers_missing_plugin' );
-	require_once 'shortcodes/BP-custom-shortcodes.php';
+	require_once 'shortcodes/CustomSocialHelpers.php';
+	new CustomSocialHelpers();
 }
 
 function bp_social_helpers_install_notice() {

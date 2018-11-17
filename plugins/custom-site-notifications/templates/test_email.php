@@ -1,0 +1,20 @@
+<table>
+  <tr>
+    <td>SHOW-IN-BROWSER</td><td>%%SHOW-IN-BROWSER%%</td>
+  </tr>
+  <tr>
+    <td>HEADLINE</td><td>%%HEADLINE%%</td>
+  </tr>
+  <tr>
+    <td>CONTENT</td><td>%%CONTENT%%</td>
+  </tr> 
+  <tr>
+    <td>IMAGE_URL</td><td>%%IMAGE_URL%%</td>
+  </tr>  
+  <tr>
+    <td>IMAGE</td><td><img src="%%IMAGE_URL%%"></td>
+  </tr>
+  <tr>
+    <td>UNSUBSCRIBE</td><td>%%UNSUBSCRIBE%%></td>
+  </tr>
+</table>

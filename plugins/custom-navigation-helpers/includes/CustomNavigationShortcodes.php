@@ -25,7 +25,10 @@ class CustomNavigationShortcodes extends CustomArchive {
 		// Helpful shortcodes within recipes or posts
 		add_shortcode('permalink', array($this,'get_permalink'));
 		add_shortcode('glossary', array($this,'search_glossary') );	
-		add_shortcode('search', array($this,'search_posts') );	
+		add_shortcode('search', array($this,'search_posts') );
+
+		// Misc 	
+		add_shortcode('debug', array($this,'show_debug_html') );	
 	
 	}
 
@@ -42,6 +45,13 @@ class CustomNavigationShortcodes extends CustomArchive {
 		}
 		return $html;
 	}
+
+	/* =================================================================*/
+	/* = DEBUG SHORTCODE
+	/* =================================================================*/
+	public function show_debug_html( $atts, $content ) {
+		return WP_DEBUG?$content:'';
+	}	
 
 
 	/* =================================================================*/

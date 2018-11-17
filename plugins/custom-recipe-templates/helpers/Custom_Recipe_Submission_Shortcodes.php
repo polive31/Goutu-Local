@@ -381,7 +381,6 @@ class Custom_Recipe_Submission_Shortcodes extends WPURP_Premium_Addon {
             if( $updating ) {
                 $post['ID'] = $updating_id;
                 $post['post_status'] = $updating_post->post_status;
-
                 wp_update_post( $post );
                 $post_id = $updating_id;
             } else {
@@ -536,7 +535,8 @@ class Custom_Recipe_Submission_Shortcodes extends WPURP_Premium_Addon {
                 $output .= __( 'Recipe saved as draft. It will not be visible on the site, but you can edit it at any time and submit it later.', 'foodiepro' );
                 $output .= '</p>';
                 $url = do_shortcode('[permalink slug="' . self::RECIPES_PUBLISH_SLUG . '"]');
-                $output .= '<a class="more-link" href=' . $url . '>← ' .  __( 'Back to my published recipes', 'foodiepro' ) . '</a>';
+                $output .= sprintf(__('Back to <a href="%s">my published recipes</a>','foodiepro'),$url);
+                // $output .= '<a class="more-link" href=' . $url . '>← ' .  __( 'Back to my published recipes', 'foodiepro' ) . '</a>';
                 $output .= $this->submissions_form( $post_id, array( 'preview', 'draft', 'publish' ) );
 
                 // $output .= '<h5>AFTER WP INSERT POST</h5>';
@@ -572,9 +572,10 @@ class Custom_Recipe_Submission_Shortcodes extends WPURP_Premium_Addon {
                 $meta_backup = get_post_meta( $post_id, 'recipe_instructions', true );
                 
                 // Update post status
+                $status=current_user_can('administrator')?'publish':'pending';
                 $args = array(
                     'ID' => $post_id,
-                    'post_status' => 'pending',
+                    'post_status' => $status,
                 );
                 
                 wp_update_post( $args );
@@ -583,10 +584,10 @@ class Custom_Recipe_Submission_Shortcodes extends WPURP_Premium_Addon {
                 update_post_meta( $post_id, 'recipe_instructions', $meta_backup );
 
                 // Success message
-                $successmsg = __( 'Recipe submitted! Thank you, your recipe is now awaiting moderation.', 'foodiepro' );
+                $successmsg = current_user_can('administrator')?__( 'Recipe published.', 'foodiepro' ):__( 'Recipe submitted! Thank you, your recipe is now awaiting moderation.', 'foodiepro' );
                 $url = do_shortcode('[permalink slug="' . self::RECIPES_PUBLISH_SLUG . '"]');
                 $output = '<p class="successbox">' . $successmsg . '</p>';
-                $output .= '<p>←' . sprintf( __( 'Back to <a href="%s">my published recipes</a>', 'foodiepro' ), $url ) . '</p>';
+                $output .= '<p>←' . sprintf( __( '<a href="%s">Back to my recipes</a>', 'foodiepro' ), $url ) . '</p>';
 
                 // Send notification email to administrator
                 $to = get_option( 'admin_email' );
@@ -610,7 +611,7 @@ class Custom_Recipe_Submission_Shortcodes extends WPURP_Premium_Addon {
                 $output = '';
                 $output .= '<p class="submitbox">' . __( 'Unknown action.', 'foodiepro') . '</p>';
                 $url = do_shortcode('[permalink slug="' . self::RECIPES_PUBLISH_SLUG . '"]');
-                $output .= '<p>←' . sprintf( __( 'Back to <a href="%s">my published recipes</a>', 'foodiepro' ), $url ) . '</p>';                
+                $output .= '<p>←' . sprintf( __( '<a href="%s">Back to my recipes</a>', 'foodiepro' ), $url ) . '</p>';
 
                 return $output;
 

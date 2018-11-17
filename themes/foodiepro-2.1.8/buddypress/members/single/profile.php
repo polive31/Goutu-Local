@@ -10,9 +10,6 @@
 
 <?php // Prevents profile actions buttons if public profile 
 //if ( bp_current_action() != 'public' ) { 
-
-
-
 	/**
 	 * Fires before the display of member profile content.
 	 *
@@ -22,7 +19,7 @@
 
 	<div class="profile">	
 
-	<!-- <h4> Je suis dans /www/wp-content/themes/foodiepro-2.1.8/buddypress/members/single/profile.php </h4>  -->
+	[debug]<!-- <h4> Je suis dans /www/wp-content/themes/foodiepro-2.1.8/buddypress/members/single/profile.php </h4>  -->[/debug]
 
 	<?php switch ( bp_current_action() ) :
 

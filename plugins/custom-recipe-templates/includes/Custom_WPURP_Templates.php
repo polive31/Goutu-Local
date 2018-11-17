@@ -11,9 +11,12 @@ class Custom_WPURP_Templates {
 	const RECIPE_NEW_SLUG = 'nouvelle-recette';
 	const RECIPE_EDIT_SLUG = 'modifier-recette';
 	const CUSTOM_WPURP_TEMPLATES_VERSION = '0.0.1';
+
 	protected static $_PluginPath;	
 	protected static $_PluginUri;	
 	public static $logged_in;
+	public static $id;
+
 	protected $custom_enqueued_scripts = array();
 	protected $custom_enqueued_styles = array();
 	private $post_ID;
@@ -43,6 +46,9 @@ class Custom_WPURP_Templates {
 		/* Customize Recipe output */
 		add_filter('wpurp_output_recipe', array($this,'display_recipe'), 10, 2 );
 
+		// Customize recipe timer shortcode
+		remove_shortcode('recipe-timer');
+		add_shortcode('recipe-timer', array($this,'custom_recipe_timer'));
 
 		/* Customize User Submission shortcode */
 		// add_filter ( 'wpurp_user_submissions_current_user_edit_item', array($this, 'remove_recipe_list_on_edit_recipe'), 15, 2 );
@@ -60,6 +66,7 @@ class Custom_WPURP_Templates {
 	--------------------------------------------------------------*/	
 	public function hydrate() {
 		self::$logged_in = is_user_logged_in();	
+		self::$id=0;
 	}
 	
 	
@@ -665,6 +672,34 @@ class Custom_WPURP_Templates {
 
         return $out;
     }
+
+    public function custom_recipe_timer( $atts, $content ) {
+    	self::$id++;
+
+        $atts = shortcode_atts( array(
+			'seconds' => '0',
+			'minutes' => '0',
+			'hours' => '0',
+		), $atts );
+
+		$seconds = intval( $atts['seconds'] );
+		$minutes = intval( $atts['minutes'] );
+		$hours = intval( $atts['hours'] );
+
+		$seconds = $seconds + (60 * $minutes) + (60 * 60 * $hours);
+		if ( $seconds <= 0 ) return $content;
+
+		// $msg = sprintf(__('Timer started for %s','foodiepro'), self::$id);
+
+        $timer = '<a href="#" class="wpurp-timer-link" title="' . __( 'Click to Start Timer', 'foodiepro' ) . '">';
+		$timer .= '<span class="wpurp-timer" data-seconds="' . esc_attr( $seconds ) . '">';
+        $timer .= $content;
+        $timer .= '</span></a>';
+
+        return $timer;
+
+
+    }    
 
 	
 }

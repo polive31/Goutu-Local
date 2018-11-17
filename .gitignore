@@ -91,6 +91,7 @@ plugins/buddypress/bp-core/*
 !plugins/custom-google-recaptcha/
 !plugins/custom-navigation-helpers/
 !plugins/custom-buddypress-helpers/
+!plugins/custom-site-notifications/
 !plugins/custom-social-interactions/
 !plugins/custom-social-sharing-buttons/
 !plugins/custom-star-rating/

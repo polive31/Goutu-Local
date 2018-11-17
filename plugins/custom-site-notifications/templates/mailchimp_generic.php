@@ -633,55 +633,35 @@
 </table></td>
                             </tr>
                             <tr>
-                                <td valign="top" id="templateBody"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
-    <tbody class="mcnTextBlockOuter">
+                                <td valign="top" id="templateBody"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCaptionBlock">
+    <tbody class="mcnCaptionBlockOuter">
         <tr>
-            <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
-                <!--[if mso]>
-        <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-        <tr>
-        <![endif]-->
-          
-        <!--[if mso]>
-        <td valign="top" width="390" style="width:390px;">
-        <![endif]-->
-                <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:390px;" width="100%" class="mcnTextContentContainer">
-                    <tbody><tr>
-                        
-                        <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; text-align: left;">
-                        
-                            <h1>%%HEADLINE%%</h1>
+            <td class="mcnCaptionBlockInner" valign="top" style="padding:9px;">
+                
 
-<p style="text-align: left;">%%CONTENT%%<br>
+<table align="left" border="0" cellpadding="0" cellspacing="0" class="mcnCaptionBottomContent">
+    <tbody><tr>
+        <td class="mcnCaptionBottomImageContent" align="center" valign="top" style="padding:0 9px 9px 9px;">
+        
+            <img alt="%%TITLE%%" src="%%IMAGE_URL%%" width="300" style="max-width:300px;" class="mcnImage">
+        
+        </td>
+    </tr>
+    <tr>
+        <td class="mcnTextContent" valign="top" style="padding:0 9px 0 9px;" width="564">
+            <h1>%%HEADLINE%%</h1>
+
+<p>%%CONTENT%%<br>
 %%SIGNATURE%%</p>
 
-                        </td>
-                    </tr>
-                </tbody></table>
-        <!--[if mso]>
         </td>
-        <![endif]-->
-                
-        <!--[if mso]>
-        <td valign="top" width="210" style="width:210px;">
-        <![endif]-->
-                <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:210px;" width="100%" class="mcnTextContentContainer">
-                    <tbody><tr>
-                        
-                        <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; text-align: left;">
-                        
-                            <img align="center" src="%%IMAGE_URL%%">
-                        </td>
-                    </tr>
-                </tbody></table>
-        <!--[if mso]>
-        </td>
-        <![endif]-->
-                
-        <!--[if mso]>
-        </tr>
-        </table>
-        <![endif]-->
+    </tr>
+</tbody></table>
+
+
+
+
+
             </td>
         </tr>
     </tbody>

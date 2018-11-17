@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2018-11-17 01:14+0100\n"
-"PO-Revision-Date: 2018-11-17 01:14+0100\n"
+"PO-Revision-Date: 2018-11-17 02:07+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -1931,22 +1931,16 @@ msgstr ""
 "Elle est visible sur le site, et apparaît sur <a href=\"%s\">ton blog</a>."
 
 #: plugins/custom-site-notifications/includes/CustomSiteNotifications.php:100
-#, fuzzy
-#| msgid "Share this recipe"
 msgid "Share this recipe on Facebook"
-msgstr "Partager sur les réseaux sociaux"
+msgstr "Partager cette recette sur Facebook"
 
 #: plugins/custom-site-notifications/includes/CustomSiteNotifications.php:102
-#, fuzzy
-#| msgid "Share this recipe"
 msgid "Share this recipe on Twitter"
-msgstr "Partager sur les réseaux sociaux"
+msgstr "Partager cette recette sur Twitter"
 
 #: plugins/custom-site-notifications/includes/CustomSiteNotifications.php:104
-#, fuzzy
-#| msgid "Share this recipe"
 msgid "Share this recipe on Pinterest"
-msgstr "Partager sur les réseaux sociaux"
+msgstr "Partager cette recette sur Pinterest"
 
 #: plugins/custom-site-notifications/includes/CustomSiteNotifications.php:106
 #, fuzzy
@@ -2414,10 +2408,8 @@ msgid "Recipe Notes"
 msgstr "Notes"
 
 #: plugins/wp-ultimate-recipe-premium/core/addons/custom-templates/templates/general/title.php:53
-#, fuzzy
-#| msgid "Share this recipe"
 msgid "Share this Recipe"
-msgstr "Partager sur les réseaux sociaux"
+msgstr "Partager cette recette"
 
 #: plugins/wp-ultimate-recipe-premium/core/addons/custom-templates/templates/general/title.php:55
 msgid "Powered by"

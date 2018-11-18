@@ -26,7 +26,7 @@
                 <!-- <label for="recipe_thumbnail" class="recipe-image"><?php _e( 'Featured image', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_thumbnail', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label><br /> -->
             <h4 id="headline-image"><?php _e( 'Featured image', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_thumbnail', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></h4>
             <p>
-                <img src="<?php echo $image_url; ?>" class="recipe_thumbnail" id="instruction_thumbnail_preview_" /><br/>
+                <img src="<?php echo $image_url; ?>" class="recipe_thumbnail" id="recipe_thumbnail_preview_" /><br/>
                 <input class="recipe_thumbnail_image button" type="file" id="recipe_thumbnail_input_" value="" size="50" name="recipe_thumbnail" onchange="PreviewImage()" />
             </p>
 <?php } else { ?>
@@ -78,16 +78,17 @@
         // -----------------------------------------------------------
         foreach( $taxonomies as $taxonomy => $options ) {
             $args['taxonomy'] = $taxonomy;
-            $args['show_option_none'] = (CustomArchive::is_multiselect($taxonomy) ) ?'':$options['labels']['singular_name'];
-            $args['hierarchical'] = CustomArchive::is_hierarchical($taxonomy)?1:0;
+            $args['class'] = "postform $taxonomy";
+            $args['show_option_none'] = (CustomNavigationHelpers::is_multiselect($taxonomy) ) ?'':$options['labels']['singular_name'];
+            $args['hierarchical'] = CustomNavigationHelpers::is_hierarchical($taxonomy)?1:0;
             $args['exclude'] = $this->excluded_terms($taxonomy);
             $args['tags_post_type'] = 'recipe';
-            $args['orderby'] = CustomArchive::orderby($taxonomy);
+            $args['orderby'] = CustomNavigationHelpers::orderby($taxonomy);
             // $args['class'] .= $multiselect?'multiple':'';
 
             $select_fields[$taxonomy] = array(
                 'label' => $options['labels']['singular_name'],
-                'dropdown' => $this->custom_dropdown_categories( $args, $options ),
+                'dropdown' => CustomNavigationHelpers::custom_categories_dropdown( $args, $options ),
                 // 'dropdown' => wp_dropdown_categories( $args ),
             );
         }
@@ -98,7 +99,7 @@
         foreach( $select_fields as $taxonomy => $select_field ) {
     
             // Multiselect
-            if( CustomArchive::is_multiselect($taxonomy) ) {
+            if( CustomNavigationHelpers::is_multiselect($taxonomy) ) {
                 preg_match( "/<select[^>]+>/i", $select_field['dropdown'], $select_field_match );
                 if( isset( $select_field_match[0] ) ) {
                     $select_multiple = preg_replace( "/name='([^']+)/i", "$0[]' data-placeholder='".$select_field['label']."' multiple='multiple", $select_field_match[0] );

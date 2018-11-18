@@ -16,8 +16,8 @@
 					<div class="recipe-buttons">
 
 					<!-- Recipe Rate Button -->
-					<div class="recipe-button tooltip tooltip-above tooltip-left <?php echo self::$logged_in?'':'disabled';?>" id="rate">
-						<a href="<?php echo self::$logged_in?'#':'/connexion';?>" class="recipe-review-button" id="<?php echo self::$logged_in?'recipe-review':'join-us';?>">
+					<div class="recipe-button tooltip tooltip-above tooltip-left <?php echo is_user_logged_in()?'':'disabled';?>" id="rate">
+						<a href="<?php echo is_user_logged_in()?'#':'/connexion';?>" class="recipe-review-button" id="<?php echo is_user_logged_in()?'recipe-review':'join-us';?>">
 						<div class="button-caption"><?php echo __('Rate','foodiepro'); ?></div>
 						</a>
 						[tooltip text="<?php echo __('Comment and rate this recipe','foodiepro'); ?>" pos="top"]   
@@ -26,14 +26,14 @@
 					<!-- Recipe Add to Cart Button -->
 	<!-- 				<div class="recipe-button tooltip tooltip-above tooltip-left" id="shopping">
 					<?php 
-						$shopping_list = new Custom_Recipe_Add_To_Shopping_List( self::$logged_in );  
+						$shopping_list = new Custom_Recipe_Add_To_Shopping_List( is_user_logged_in() );  
 						echo $shopping_list->output( $recipe );?>
 					</div>	 -->			
 					
 					<!-- Add To Favorites Button -->
-					<div class="recipe-button tooltip tooltip-above tooltip-left <?php echo self::$logged_in?'':'disabled';?>" id="favorite">
+					<div class="recipe-button tooltip tooltip-above tooltip-left <?php echo is_user_logged_in()?'':'disabled';?>" id="favorite">
 					<?php
-						$favorite_recipe = new Custom_Recipe_Favorite( self::$logged_in );
+						$favorite_recipe = new Custom_Recipe_Favorite( is_user_logged_in() );
 						echo $favorite_recipe->output( $recipe );?>
 					</div>			
 
@@ -128,33 +128,7 @@
 							$html .= '</div>';
 							echo $html;
 						}
-						
-						?>
-	<script>
-		jQuery(".recipe-input i").on("click", function() {
-			//console.log("Button Click !!!");
-		  var $button = jQuery(this);
-		  var $input= $button.parent().find("input");
-		  var oldValue = $input.val();
-		  //console.log("Old value : " + oldValue );
-		  //console.log( "button id " + $button.attr('id') );
-		  if ($button.attr('id') == "inc") {
-			//console.log("INC Click !!!");
-			  var newVal = parseFloat(oldValue) + 1;
-			} else {
-			//console.log("DEC Click !!!");
-		    if (oldValue > 1) {
-		      var newVal = parseFloat(oldValue) - 1;
-		    } else {
-		      newVal = 1;
-		    }
-		  }
-		  $input.val(newVal);
-		  $input.trigger("change");
-		});
-	</script>
-	
-<?php					
+				
 				// Times
 				echo $recipe->output_time( 'prep' );				
 				echo $recipe->output_time( 'cook' );

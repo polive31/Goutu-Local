@@ -187,70 +187,14 @@ jQuery(document).ready(function() {
         }
     });
 
-    // TODO To user submission js
-    jQuery('.recipe_thumbnail_add_image').on('click', function(e) {
 
-        e.preventDefault();
-
-        var button = jQuery(this);
-
-        image = button.siblings('.recipe_thumbnail_image');
-        preview = button.siblings('.recipe_thumbnail');
-
-        if(typeof wp.media == 'function') {
-            var custom_uploader = wp.media({
-                title: 'Insert Media',
-                button: {
-                    text: 'Add featured image'
-                },
-                multiple: false
-            })
-                .on('select', function() {
-                    var attachment = custom_uploader.state().get('selection').first().toJSON();
-                    jQuery(preview).attr('src', attachment.url);
-                    jQuery(image).val(attachment.id).trigger('change');
-                })
-                .open();
-        } else { //fallback
-            post_id = button.attr('rel');
-
-            tb_show(button.attr('value'), 'wp-admin/media-upload.php?post_id='+post_id+'&type=image&TB_iframe=1');
-
-            window.send_to_editor = function(html) {
-                img = jQuery('img', html);
-                imgurl = img.attr('src');
-                classes = img.attr('class');
-                id = classes.replace(/(.*?)wp-image-/, '');
-                image.val(id).trigger('change');
-                preview.attr('src', imgurl);
-                tb_remove();
-            }
-        }
-
+    // Recipe Featured Image 
+    jQuery(".recipe-image-container").on("change", "input.recipe_thumbnail_image", function() { 
+        PreviewImage('');
     });
 
-    jQuery('.recipe_thumbnail_remove_image').on('click', function(e) {
-        e.preventDefault();
-
-        var button = jQuery(this);
-
-        button.siblings('.recipe_thumbnail_image').val('').trigger('change');
-        button.siblings('.recipe_thumbnail').attr('src', wpurp_recipe_form.coreUrl + '/img/image_placeholder.png');
-    });
-
-    jQuery('.recipe_thumbnail_image').on('change', function() {
-        var image = jQuery(this);
-        if(image.val() == '') {
-            image.siblings('.recipe_thumbnail_add_image').removeClass('wpurp-hide');
-            image.siblings('.recipe_thumbnail_remove_image').addClass('wpurp-hide');
-        } else {
-            image.siblings('.recipe_thumbnail_remove_image').removeClass('wpurp-hide');
-            image.siblings('.recipe_thumbnail_add_image').addClass('wpurp-hide');
-        }
-    });
 
     // Instruction Step Image 
-
     jQuery(".recipe-instructions-container").on("change", "input.recipe_instructions_image", function() { 
         var changedSelectId = jQuery(this).attr("id");
         var Id = changedSelectId.match(/\d+/);
@@ -303,13 +247,38 @@ function isLastIngredient( thisRow ) {
 }
 
 
-function PreviewImage(id) {
-    // console.log( "In Preview Image");
-    var oFReader = new FileReader();
-    oFReader.readAsDataURL(document.getElementById("recipe_thumbnail_input_" + id).files[0]);
-    oFReader.onload = function (oFREvent) {
-        document.getElementById("instruction_thumbnail_preview_" + id ).src = oFREvent.target.result;
-    };
+function PreviewImage(id) { 
+    var fileInput = document.getElementById("recipe_thumbnail_input_" + id);
+
+    // console.log('Max file size ' + custom_user_submissions.maxFileSize);
+    // console.log('Authorized file types ' + custom_user_submissions.fileTypes);
+    // console.log('Authorized file types ', custom_user_submissions.fileTypes);
+    // console.log('File too big msg :  ' + custom_user_submissions.fileTooBig);
+    // console.log('Wrong File Type msg :  ' + custom_user_submissions.wrongFileType);
+
+    if (fileInput.files && fileInput.files[0]) {
+        var extension = fileInput.files[0].name.split('.').pop().toLowerCase(),  //file extension from input file
+        isSuccess = custom_user_submissions.fileTypes.indexOf(extension) > -1;  //is extension i
+        if ( isSuccess ) {
+            var imgSize = fileInput.files[0].size/1024;
+            console.log('File size (kB) = ' + document.getElementById("recipe_thumbnail_input_" + id).files[0].size/1024);
+            if (imgSize < custom_user_submissions.maxFileSize) {
+                var oFReader = new FileReader();
+                oFReader.readAsDataURL(fileInput.files[0]);
+                oFReader.onload = function (oFREvent) {
+                    document.getElementById("recipe_thumbnail_preview_" + id ).src = oFREvent.target.result;
+                }    
+            }
+            else {
+                jQuery(fileInput).val('');
+                alert(custom_user_submissions.fileTooBig);   
+            }
+        }
+        else {
+            jQuery(fileInput).val('');
+            alert(custom_user_submissions.wrongFileType);
+        }
+    }
 };
 
 

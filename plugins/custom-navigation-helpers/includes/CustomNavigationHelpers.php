@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-class CustomArchive {
+class CustomNavigationHelpers {
 	
     const TAXONOMY = array( 
         'ingredient'    => array('hierarchical'=> false, 'multiselect'=> false, 'required'=> true, 'orderby'=> 'name'), 
@@ -61,6 +61,50 @@ class CustomArchive {
 			custom_enqueue_script( 'masonry-layout', $js_uri, $js_path, 'masonry-layout.js', array( 'jquery', 'jquery-masonry' ), CHILD_THEME_VERSION, true);
 	  	};
 	}
+
+
+    public static function custom_categories_dropdown( $args, $options ) {
+        // $args = array( 'taxonomy' => 'course');
+        // This function generates a select dropdown list with option groups whenever
+        // the argument hierarchical is true, otherwise it renders the standard wp_dropdown_categories output 
+
+        if ( $args['hierarchical']==0 ) {   
+            $args['name']='recipe-' . $args['taxonomy'];
+            return wp_dropdown_categories( $args );
+        }
+
+        $getparents['orderby']=$args['orderby']; 
+        $getparents['taxonomy']=$args['taxonomy']; 
+        $getparents['hierarchical']=true; 
+        $getparents['depth']=1;
+        $getparents['parent']=0;
+        $parents = get_categories( $getparents );
+
+        $html = '<select lang="fr" name="recipe-' . $args['taxonomy'] . '"  id="recipe-' . $args['taxonomy'] . '" class="postform ' . $args['class'] . '" tabindex="-1">';
+        // echo '<pre>' . print_r( $terms ) . '</pre>';
+        if ($args['show_option_none'] != '') {
+                $html .= '<option value="" disabled selected>' . $options['labels']['singular_name'] . '</option>';
+                $html .= '<option class="" value="-1">' . __('none','foodiepro') . '</option>';                
+        }
+
+        foreach ($parents as $parent) {
+            $getchildren=$args;
+            $getchildren['depth']=0;
+            $getchildren['child_of']=$parent->term_id;
+            
+            $children = get_categories( $getchildren );
+            
+            $html.='<optgroup label="' . $parent->name . '">';
+            foreach ($children as $child) {
+                $html.='<option class="" value="' . $child->term_id . '">' . $child->name . '</option>';                
+            }
+            $html.='</optgroup>';
+        }
+        
+        $html .= '</select>';
+        return $html;
+    }    
+
 	
 	public function archive_filter_sort($query) {
 	  // Select any archive. For custom post type use: is_post_type_archive( $post_type )

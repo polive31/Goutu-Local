@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class CustomArchiveEntryTitle extends CustomArchive {
+class CustomArchiveEntryTitle extends CustomNavigationHelpers {
 
 
 	public function __construct() {

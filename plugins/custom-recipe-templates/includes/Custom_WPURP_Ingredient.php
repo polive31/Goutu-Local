@@ -55,7 +55,9 @@ class Custom_WPURP_Ingredient {
 		add_action( 'edited_ingredient', array($this, 'save_meta'), 10, 2 );  
 		add_action( 'create_ingredient', array($this, 'save_meta'), 10, 2 );
 		// Shortcode
-		add_shortcode( 'display-ingredient', array( $this, 'display_ingredient_shortcode' ) );		
+		add_shortcode( 'display-ingredient', array( $this, 'display_ingredient_shortcode' ) );	
+
+
 	}
 
 	public function hydrate() {
@@ -345,6 +347,8 @@ class Custom_WPURP_Ingredient {
 		elseif ( isset($this->ingredient_meta['isplural']) )
 			unset($this->ingredient_meta['isplural']);
 	}
+
+
 
 
 }

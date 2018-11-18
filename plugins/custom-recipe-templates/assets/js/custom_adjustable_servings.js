@@ -143,6 +143,29 @@ wpurp_adjustable_servings.toFixed = function(amount, fraction)
 
 jQuery(document).ready(function() {
 
+    // Custom increase & decrease quantity buttons
+    jQuery(".recipe-input i").on("click", function() {
+        //console.log("Button Click !!!");
+      var $button = jQuery(this);
+      var $input= $button.parent().find("input");
+      var oldValue = $input.val();
+      //console.log("Old value : " + oldValue );
+      //console.log( "button id " + $button.attr('id') );
+      if ($button.attr('id') == "inc") {
+        //console.log("INC Click !!!");
+          var newVal = parseFloat(oldValue) + 1;
+        } else {
+        //console.log("DEC Click !!!");
+        if (oldValue > 1) {
+          var newVal = parseFloat(oldValue) - 1;
+        } else {
+          newVal = 1;
+        }
+      }
+      $input.val(newVal);
+      $input.trigger("change");
+    });    
+
     // console.log("In custom adjustable servings !");
 
     jQuery(document).on('keyup change', '.adjust-recipe-servings', function(e) {
@@ -177,4 +200,6 @@ jQuery(document).ready(function() {
 
         RecipePrintButton.update(servings_input.parents('.wpurp-container'));
     });
+
+
 });

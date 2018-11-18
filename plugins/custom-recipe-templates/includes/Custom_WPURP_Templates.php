@@ -11,11 +11,12 @@ class Custom_WPURP_Templates {
 	const RECIPE_NEW_SLUG = 'nouvelle-recette';
 	const RECIPE_EDIT_SLUG = 'modifier-recette';
 	const CUSTOM_WPURP_TEMPLATES_VERSION = '0.0.1';
+	const ATTACHMENT_FORMATS = array('jpg','jpeg','png');
+	const MAX_ATTACHMENT_SIZE_KB = 500;
 
 	protected static $_PluginPath;	
 	protected static $_PluginUri;	
-	public static $logged_in;
-	public static $id;
+	// public static $logged_in;
 
 	protected $custom_enqueued_scripts = array();
 	protected $custom_enqueued_styles = array();
@@ -35,20 +36,11 @@ class Custom_WPURP_Templates {
 		/* Custom enqueue list */
 		add_action( 'wp_enqueue_scripts', array($this, 'custom_wpurp_scripts_styles_enqueue') );
 
-		/* Ajax Callbacks for Autocomplete jquery plugin  */
-		add_action('wp_ajax_nopriv_get_tax_terms', array($this, 'ajax_custom_get_tax_terms'));
-		add_action('wp_ajax_get_tax_terms', array($this, 'ajax_custom_get_tax_terms'));
-		
-        // Ajax callbacks for ingredient preview 
-        add_action( 'wp_ajax_ingredient_preview', array( $this, 'ajax_ingredient_preview'));
-        add_action( 'wp_ajax_nopriv_ingredient_preview', array( $this, 'ajax_ingredient_preview'));
+        /* Customize Recipe Screen output */
+        add_filter('wpurp_output_recipe', array($this,'display_recipe'), 10, 2 ); 
 
-		/* Customize Recipe output */
-		add_filter('wpurp_output_recipe', array($this,'display_recipe'), 10, 2 );
-
-		// Customize recipe timer shortcode
-		remove_shortcode('recipe-timer');
-		add_shortcode('recipe-timer', array($this,'custom_recipe_timer'));
+        /* Customize Recipe Print output */
+        add_filter( 'wpurp_output_recipe_print', array($this,'print_recipe'), 10, 2 );
 
 		/* Customize User Submission shortcode */
 		// add_filter ( 'wpurp_user_submissions_current_user_edit_item', array($this, 'remove_recipe_list_on_edit_recipe'), 15, 2 );
@@ -65,18 +57,182 @@ class Custom_WPURP_Templates {
 	/* Hydrate
 	--------------------------------------------------------------*/	
 	public function hydrate() {
-		self::$logged_in = is_user_logged_in();	
-		self::$id=0;
+		// self::$logged_in = is_user_logged_in();	
+		// self::$id=0;
 	}
-	
 	
 /* Custom Menu Template */	
 	// public function wpurp_custom_menu_template( $form, $menu ) {
 	// 	return '';
 	// }
 
+    public function print_recipe( $content, $recipe ) {
+        $post_ID = get_the_ID();
+
+        ob_start();
+        include( self::$_PluginPath . 'templates/custom-recipe-template.php' );
+        $output = ob_get_contents();
+        ob_end_clean();
+
+        return $output;
+    }
+
+
+    public function display_recipe( $content, $recipe ) {
+
+        if ( isset($recipe->ID ) )
+            $recipe = new Custom_WPURP_Recipe( $recipe->ID );
+        else
+            $recipe = new Custom_WPURP_Recipe( $recipe->ID() );
+
+
+        $imgID = $recipe->featured_image();
+        $imgAlt = get_post_meta($imgID,'_wp_attachment_image_alt', true);
+        if (empty($imgAlt))
+            // $imgAlt=sprintf(__('Recipe of %s', 'foodiepro'), $recipe->title());
+            $imgAlt=$recipe->title();
+
+        ob_start();
+        
+        // Output JSON+LD metadata & rich snippets
+        echo $this->json_ld_meta_output($recipe,'');
+
+        include( self::$_PluginPath . 'templates/custom-recipe-template.php' );
+
+        $output = ob_get_contents();
+        ob_end_clean();
+
+        return $output;
+    }
+
+
+    public function json_ld_meta_output( $recipe, $args ) {
+        $Custom_Metadata = new Custom_Recipe_Metadata();
+        // $metadata = in_array( WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ), array( 'json', 'json-inline' ) ) ? $Custom_Metadata->get_metadata( $recipe ) : '';
+        $metadata = $Custom_Metadata->get_metadata( $recipe );
+
+        ob_start();
+        echo $metadata;
+        $output = ob_get_contents();
+        ob_end_clean();
+
+        return $output;
+    }
+
+    public function custom_ingredients_list( $recipe, $args ) {
+        $out = '';
+        $previous_group = '';       
+        $first_group = true;
+        //$out .= '<ul class="wpurp-recipe-ingredients">';
+        
+        foreach( $recipe->ingredients() as $ingredient ) {
+
+            if( WPUltimateRecipe::option( 'ignore_ingredient_ids', '' ) != '1' && isset( $ingredient['ingredient_id'] ) ) {
+                $term = get_term( $ingredient['ingredient_id'], 'ingredient' );
+                if ( $term !== null && !is_wp_error( $term ) ) {
+                    $ingredient['ingredient'] = $term->name;
+                }
+            }
+
+            if( $ingredient['group'] != $previous_group || $first_group ) { //removed isset($ingredient['group'] ) && 
+                $out .= $first_group ? '' : '</ul>';
+                $out .= '<ul class="wpurp-recipe-ingredients">';
+                $out .= '<li class="ingredient-group">' . $ingredient['group'] . '</li>';
+                $previous_group = $ingredient['group'];
+                $first_group = false;
+            }
+
+            $meta = WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ) != 'json' && $args['template_type'] == 'recipe' && $args['desktop'] ? ' itemprop="recipeIngredient"' : '';
+
+            $out .= '<li class="wpurp-recipe-ingredient"' . $meta . '>';
+
+            $ingredient['links'] = 'yes';
+            $out .= Custom_WPURP_Ingredient::display( $ingredient );
+
+            $out .= '</li>';
+        }
+        //$out .= '</ul>';
+
+        return $out;
+    }
+            
+    public function custom_instructions_list( $recipe, $args ) {
+        $out = '';
+        $previous_group = '';
+        $instructions = $recipe->instructions();
+        
+        $out .= '<ol class="wpurp-recipe-instruction-container">';
+        $first_group = true;
+        
+        for( $i = 0; $i < count($instructions); $i++ ) {
+                    
+            $instruction = $instructions[$i];
+                    $first_inst = false;
+                    
+                    if( $instruction['group'] != $previous_group ) { /* Entering new instruction group */
+                            $first_inst = true;
+                $out .= $first_group ? '' : '</ol>';
+                $out .= '<div class="wpurp-recipe-instruction-group recipe-instruction-group">' . $instruction['group'] . '</div>';
+                $out .= '<ol class="wpurp-recipe-instructions">';
+                $previous_group = $instruction['group'];
+                        $first_group = false;
+            }
+
+            $style = $first_inst ? ' li-first' : '';
+            $style .= !isset( $instructions[$i+1] ) || $instruction['group'] != $instructions[$i+1]['group'] ? ' li-last' : '';
+
+            $meta = WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ) != 'json' && $args['template_type'] == 'recipe' && $args['desktop'] ? ' itemprop="recipeInstructions"' : '';
+
+            $out .= '<li class="wpurp-recipe-instruction ' . $style . '">';
+            //$out .= '<div' . $meta . '>'.$instruction['description'].'</div>';
+            $out .= '<span>' . $instruction['description'] . '</span>';
+
+            if( !empty($instruction['image']) ) {
+                $thumb = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
+                $thumb_url = $thumb['0'];
+
+                $full_img = wp_get_attachment_image_src( $instruction['image'], 'full' );
+                $full_img_url = $full_img['0'];
+
+                $title_tag = WPUltimateRecipe::option( 'recipe_instruction_images_title', 'attachment' ) == 'attachment' ? esc_attr( get_the_title( $instruction['image'] ) ) : esc_attr( $instruction['description'] );
+                $alt_tag = WPUltimateRecipe::option( 'recipe_instruction_images_alt', 'attachment' ) == 'attachment' ? esc_attr( get_post_meta( $instruction['image'], '_wp_attachment_image_alt', true ) ) : esc_attr( $instruction['description'] );
+
+                if( WPUltimateRecipe::option( 'recipe_images_clickable', '0' ) == 1 ) {
+                    $out .= '<div class="instruction-step-image"><a href="' . $full_img_url . '" rel="lightbox" title="' . $title_tag . '">';
+                    $out .= '<img src="' . $thumb_url . '" alt="' . $alt_tag . '" title="' . $title_tag . '"' . '/>';
+                    $out .= '</a></div>';
+                } else {
+                    $out .= '<div class="instruction-step-image"><img src="' . $thumb_url . '" alt="' . $alt_tag . '" title="' . $title_tag . '"' . '/></div>';
+                }
+            }
+
+            $out .= '</li>';
+        }
+            $out .= '</ol>';
+
+        return $out;
+    }
 	
-/* Custom Enqueue CSS */	
+
+
+
+
+
+
+
+
+/********************************************************************************
+****                   CUSTOM ENQUEUE STYLES                           **********
+********************************************************************************/
+
+
+
+
+
+
+
+
+	
 	public function enqueue_wpurp_css($css_enqueue) {
 		
 		if ( is_admin() ) return $css_enqueue;
@@ -165,7 +321,25 @@ class Custom_WPURP_Templates {
 		return $css_enqueue;
 	}
 
-/* Custom Enqueue JS */
+
+
+
+
+
+
+
+
+/********************************************************************************
+****                   CUSTOM ENQUEUE SCRIPTS                           **********
+********************************************************************************/
+
+
+
+
+
+
+
+
 	public function enqueue_wpurp_js($js_enqueue) {
 		
 			if ( is_admin() ) return $js_enqueue;
@@ -390,6 +564,10 @@ class Custom_WPURP_Templates {
 		                'data' => array(
 		                    'name' => 'custom_user_submissions',
 		                	'placeholder' => WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png',
+		                	'fileTypes' => self::ATTACHMENT_FORMATS,
+		                	'wrongFileType' => sprintf(__('Authorized file formats are : %s','foodiepro'),implode(', ',self::ATTACHMENT_FORMATS)),
+		                	'maxFileSize' => self::MAX_ATTACHMENT_SIZE_KB,
+		                	'fileTooBig' => sprintf(__('The maximum file size is %s kB','foodiepro'), self::MAX_ATTACHMENT_SIZE_KB),
 		                )
 		           	)					
             	);            	
@@ -402,18 +580,22 @@ class Custom_WPURP_Templates {
 		return $js_enqueue;
 	}
 
-	public function remove_entry( $array, $field, $value) {
-		if (!isset( $array )) return false;
-		foreach ($array as $key=>$item) {
-			if ( isset( $item[ $field ] ) )
-				if ( $item[ $field ] == $value) 
-					break;
-		}
-		if ( isset($key) ) 
-			unset($array[ $key ]);
 
-		return $array;
-	}
+
+
+
+
+
+
+/********************************************************************************
+****                GENERAL ENQUEUE FUNCTIONS                          **********
+********************************************************************************/
+
+
+
+
+
+
 
 	public function custom_wpurp_scripts_styles_enqueue() {
 
@@ -483,250 +665,6 @@ class Custom_WPURP_Templates {
 	    wp_enqueue_script( $handler, $url . $file, $deps, $version, $footer );
 	}
 
-
-	public function ajax_custom_get_tax_terms() {
-		// global $wpdb; //get access to the WordPress database object variable
-
-		if ( !is_user_logged_in() ) die();
-		if ( ! isset( $_GET['tax'] ) ) die();
-		if ( ! isset( $_GET['keys'] ) ) die();
-		
-		$taxonomy = $_GET['tax'];
-		$keys = $_GET['keys'];
-
-		$terms = get_terms( array(
-		    'taxonomy' => $taxonomy,
-		    'name__like' => $keys,
-		    'hide_empty' => false,
-		) );
-
-		//copy the terms to a simple array
-		$suggestions = array();
-		foreach( $terms as $term )
-			$suggestions[] = addslashes($term->name);
-			
-		echo json_encode($suggestions); //encode into JSON format and output
-	 
-		die(); //stop "0" from being output		
-	}
-
-    public function ajax_ingredient_preview() {
-
-        if( ! check_ajax_referer( 'preview_ingredient', 'security', false ) ) {
-            wp_send_json_error( array('msg' => 'Nonce not recognized'));
-            die();
-        }
-
-        if (! is_user_logged_in()) {
-            wp_send_json_error( array('msg' => 'User not logged-in'));
-            die();
-        }
-
-        // if( isset($_POST['ingredient_id'] ) ) {
-        //     $id= $_POST['ingredient_id'];
-        //     // echo $id;
-        // }
-        // else {
-        //     wp_send_json_error( array('msg' => 'No ingredient id provided'));
-        //     die();
-        // }
-
-        if ( empty($_POST['ingredient']) ) {
-             wp_send_json_error( array('msg' => 'No ingredient name provided'));
-            die();       	
-        }
-
-        $args=array(
-            'amount' => '',
-            'unit'  => '',
-            'ingredient' => '',
-            'notes' => ''
-        );
-
-        foreach ($args as $key => $value ) {
-            if( isset( $_POST[$key] ) )            
-                $args[$key] = $_POST[$key];
-        }
-
-        $args['links']='no';
-
-        $ingredient_preview =  Custom_WPURP_Ingredient::display( $args );
-
-        wp_send_json_success( array('msg' => $ingredient_preview) );
-
-        die();
-          
-    }
-
-
-	public function display_recipe( $content, $recipe ) {
-
-		// $this->post_ID = get_the_ID();	
-		// $recipe = new Custom_Recipe( $recipe->post_ID );
-
-		if ( isset($recipe->ID ) )
-			$recipe = new Custom_Recipe( $recipe->ID );
-		else
-			$recipe = new Custom_Recipe( $recipe->ID() );
-
-		$imgID = $recipe->featured_image();
-
- 		$imgAlt = get_post_meta($imgID,'_wp_attachment_image_alt', true);
- 		if (empty($imgAlt))
- 			// $imgAlt=sprintf(__('Recipe of %s', 'foodiepro'), $recipe->title());
- 			$imgAlt=$recipe->title();
-
-		ob_start();
-		
-		// Debug
-			//echo '<pre>' . print_r(get_post_meta($this->post_ID), true) . '</pre>';
-		
-		// Output JSON+LD metadata & rich snippets
-		echo $this->json_ld_meta_output($recipe,'');
-
-		include( self::$_PluginPath . 'templates/custom-recipe-template.php' );
-
-	    $output = ob_get_contents();
-	    ob_end_clean();
-
-		return $output;
-	}
-
-    public function json_ld_meta_output( $recipe, $args ) {
-        
-        $Custom_Metadata = new Custom_Recipe_Metadata;
-        // $metadata = in_array( WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ), array( 'json', 'json-inline' ) ) ? $Custom_Metadata->get_metadata( $recipe ) : '';
-        $metadata = $Custom_Metadata->get_metadata( $recipe );
-
-        ob_start();
-        echo $metadata;
-        $output = ob_get_contents();
-      	ob_end_clean();
-
-        return $output;
-    }
-
-    public function custom_ingredients_list( $recipe, $args ) {
-        $out = '';
-        $previous_group = '';       
-        $first_group = true;
-        //$out .= '<ul class="wpurp-recipe-ingredients">';
-        
-        foreach( $recipe->ingredients() as $ingredient ) {
-
-            if( WPUltimateRecipe::option( 'ignore_ingredient_ids', '' ) != '1' && isset( $ingredient['ingredient_id'] ) ) {
-                $term = get_term( $ingredient['ingredient_id'], 'ingredient' );
-                if ( $term !== null && !is_wp_error( $term ) ) {
-                    $ingredient['ingredient'] = $term->name;
-                }
-            }
-
-            if( $ingredient['group'] != $previous_group || $first_group ) { //removed isset($ingredient['group'] ) && 
-                $out .= $first_group ? '' : '</ul>';
-                $out .= '<ul class="wpurp-recipe-ingredients">';
-                $out .= '<li class="ingredient-group">' . $ingredient['group'] . '</li>';
-                $previous_group = $ingredient['group'];
-                $first_group = false;
-            }
-
-            $meta = WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ) != 'json' && $args['template_type'] == 'recipe' && $args['desktop'] ? ' itemprop="recipeIngredient"' : '';
-
-            $out .= '<li class="wpurp-recipe-ingredient"' . $meta . '>';
-
-            $ingredient['links'] = 'yes';
-            $out .= Custom_WPURP_Ingredient::display( $ingredient );
-
-            $out .= '</li>';
-        }
-        //$out .= '</ul>';
-
-        return $out;
-    }
-            
-    public function custom_instructions_list( $recipe, $args ) {
-        $out = '';
-        $previous_group = '';
-        $instructions = $recipe->instructions();
-        
-        $out .= '<ol class="wpurp-recipe-instruction-container">';
-        $first_group = true;
-        
-        for( $i = 0; $i < count($instructions); $i++ ) {
-                    
-            $instruction = $instructions[$i];
-                    $first_inst = false;
-                    
-                    if( $instruction['group'] != $previous_group ) { /* Entering new instruction group */
-                            $first_inst = true;
-                $out .= $first_group ? '' : '</ol>';
-                $out .= '<div class="wpurp-recipe-instruction-group recipe-instruction-group">' . $instruction['group'] . '</div>';
-                $out .= '<ol class="wpurp-recipe-instructions">';
-                $previous_group = $instruction['group'];
-                        $first_group = false;
-            }
-
-            $style = $first_inst ? ' li-first' : '';
-            $style .= !isset( $instructions[$i+1] ) || $instruction['group'] != $instructions[$i+1]['group'] ? ' li-last' : '';
-
-            $meta = WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ) != 'json' && $args['template_type'] == 'recipe' && $args['desktop'] ? ' itemprop="recipeInstructions"' : '';
-
-            $out .= '<li class="wpurp-recipe-instruction ' . $style . '">';
-            //$out .= '<div' . $meta . '>'.$instruction['description'].'</div>';
-            $out .= '<span>' . $instruction['description'] . '</span>';
-
-            if( !empty($instruction['image']) ) {
-                $thumb = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
-                $thumb_url = $thumb['0'];
-
-                $full_img = wp_get_attachment_image_src( $instruction['image'], 'full' );
-                $full_img_url = $full_img['0'];
-
-                $title_tag = WPUltimateRecipe::option( 'recipe_instruction_images_title', 'attachment' ) == 'attachment' ? esc_attr( get_the_title( $instruction['image'] ) ) : esc_attr( $instruction['description'] );
-                $alt_tag = WPUltimateRecipe::option( 'recipe_instruction_images_alt', 'attachment' ) == 'attachment' ? esc_attr( get_post_meta( $instruction['image'], '_wp_attachment_image_alt', true ) ) : esc_attr( $instruction['description'] );
-
-                if( WPUltimateRecipe::option( 'recipe_images_clickable', '0' ) == 1 ) {
-                    $out .= '<div class="instruction-step-image"><a href="' . $full_img_url . '" rel="lightbox" title="' . $title_tag . '">';
-                    $out .= '<img src="' . $thumb_url . '" alt="' . $alt_tag . '" title="' . $title_tag . '"' . '/>';
-                    $out .= '</a></div>';
-                } else {
-                    $out .= '<div class="instruction-step-image"><img src="' . $thumb_url . '" alt="' . $alt_tag . '" title="' . $title_tag . '"' . '/></div>';
-                }
-            }
-
-            $out .= '</li>';
-        }
-            $out .= '</ol>';
-
-        return $out;
-    }
-
-    public function custom_recipe_timer( $atts, $content ) {
-    	self::$id++;
-
-        $atts = shortcode_atts( array(
-			'seconds' => '0',
-			'minutes' => '0',
-			'hours' => '0',
-		), $atts );
-
-		$seconds = intval( $atts['seconds'] );
-		$minutes = intval( $atts['minutes'] );
-		$hours = intval( $atts['hours'] );
-
-		$seconds = $seconds + (60 * $minutes) + (60 * 60 * $hours);
-		if ( $seconds <= 0 ) return $content;
-
-		// $msg = sprintf(__('Timer started for %s','foodiepro'), self::$id);
-
-        $timer = '<a href="#" class="wpurp-timer-link" title="' . __( 'Click to Start Timer', 'foodiepro' ) . '">';
-		$timer .= '<span class="wpurp-timer" data-seconds="' . esc_attr( $seconds ) . '">';
-        $timer .= $content;
-        $timer .= '</span></a>';
-
-        return $timer;
-
-
-    }    
 
 	
 }

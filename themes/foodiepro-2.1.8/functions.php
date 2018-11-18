@@ -643,9 +643,15 @@ function adjust_header_width(){
 ?>
 <script>
 	jQuery(document).ready(function() {
-		screenWidth = jQuery('html').width();
-		console.log('Screen Width = ' + screenWidth);
-		jQuery('.site-header').width(screenWidth);
+		function adjustHeaderWidth() {
+			screenWidth = jQuery('html').width();
+			// console.log('Screen Width = ' + screenWidth);
+			jQuery('.site-header').width(screenWidth);
+		}
+		adjustHeaderWidth();
+		jQuery( window ).resize(function() {
+		  adjustHeaderWidth();
+		});	
 	});
 </script>
 <?php

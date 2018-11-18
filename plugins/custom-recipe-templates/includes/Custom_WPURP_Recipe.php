@@ -1,29 +1,39 @@
 <?php
 
-class Custom_Recipe extends WPURP_Recipe {
+class Custom_WPURP_Recipe extends WPURP_Recipe {
+  
+    private static $title;
 
-    // private $extfields = array(
-    //     'recipe_prep_time_days',
-    //     'recipe_prep_time_hours',
-    //     'recipe_prep_time_minutes',
-    //     'recipe_cook_time_days',
-    //     'recipe_cook_time_hours',
-    //     'recipe_cook_time_minutes',
-    //     'recipe_passive_time_days',
-    //     'recipe_passive_time_hours',
-    //     'recipe_passive_time_minutes',                
-    // );    
-
-    private $title;
-
-    public function __construct( $post )
-    {
-        parent::__construct( $post );
-        $this->title = array(
+    public function __construct( $post ) {
+        parent::__construct( $post );   
+        // This class is called "on demand" depending on user actions
+        // therefore actions are not effective in the constructor context
+        // as a consequence hydrate is done in the constructor itself 
+        self::$title = array(
             'prep' => __('Preparation','foodiepro'),
             'cook' => __('Cooking','foodiepro'),
             'passive' => __('Wait','foodiepro'),
-        );       
+        );
+    }
+
+    // Saves extended meta defined in Custom_Recipe
+    // the rest of the WPURP recipe meta are already saved thanks
+    // to a callback in WPURP plugin
+    public function save() {
+        $types = array('prep','cook','passive');
+        foreach ($types as $type) {
+            $field = "recipe_{$type}_time";
+            $days=isset( $_POST["{$field}_days"] )?(int)$_POST["{$field}_days"]:0;
+            $hours=isset( $_POST["{$field}_hours"] )?(int)$_POST["{$field}_hours"]:0;
+            $minutes=isset( $_POST["{$field}_minutes"] )?(int)$_POST["{$field}_minutes"]:0;
+            $time = $this->get_time($days,$hours,$minutes);
+            if ( $time!= 0 ) {
+                update_post_meta( $this->ID(), $field, $time );
+                $_POST[$field]=$time;
+            }
+            else 
+                update_post_meta( $this->ID(), $field, $_POST[$field] );
+        }
     }
 
     // Description output in json meta
@@ -105,7 +115,12 @@ class Custom_Recipe extends WPURP_Recipe {
             $meta = sprintf('P%dDT%dH%dM', $days, $hours, $minutes);
         }
         return $meta;
-    }    
+    } 
+
+    public function get_title( $type ) {
+        $title = isset(self::$title[$type])?self::$title[$type]:'';
+        return $title;
+    }
 
     public function output_time( $type ) {
 
@@ -133,10 +148,11 @@ class Custom_Recipe extends WPURP_Recipe {
             if ( empty($html) ) return '';
         }
 
-        $html = '<div class="label-container" id="' . $type . '"><div class="recipe-label">' . $this->title[$type] . '</div>' . $html;
+        $html = '<div class="label-container" id="' . $type . '"><div class="recipe-label">' . $this->get_title($type) . '</div>' . $html;
         $html .= '</div>';
         return $html;
     }
+
 
 
 }

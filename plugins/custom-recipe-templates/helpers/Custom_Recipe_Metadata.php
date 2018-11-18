@@ -33,7 +33,7 @@ class Custom_Recipe_Metadata {
     private function get_metadata_array( $recipe )
     {
         $post_id = get_the_id();
-        $recipe = new Custom_Recipe( $post_id );
+        $recipe = new Custom_WPURP_Recipe( $post_id );
 
         // Essentials
         $metadata = array(

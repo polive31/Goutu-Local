@@ -5,7 +5,7 @@
 if ( !defined('ABSPATH') )
 	die('-1');
 	
-class Tooltip extends CustomArchive {
+class Tooltip extends CustomNavigationHelpers {
 	
 	public function __construct() {
 		parent::__construct();

@@ -23,36 +23,29 @@ function Custom_WPURP_templates_init() {
 
 		/* Includes
 		------------------------------------*/
-		require_once 'includes/Custom_Recipe.php';
 		require_once 'includes/Custom_WPURP_Templates.php';
-		require_once 'includes/Custom_Recipe_Favorite.php';
-		require_once 'includes/Custom_Recipe_Add_To_Shopping_List.php';
-		require_once 'includes/Custom_Recipe_Metadata.php';
+		require_once 'includes/Custom_WPURP_Recipe.php';
+		require_once 'includes/Custom_WPURP_Recipe_Submission.php';
 		require_once 'includes/Custom_WPURP_Ingredient.php';
-		// require_once 'includes/Custom_Recipe_Templates.php';
-		/* Templates
-		------------------------------------*/
-		// require_once 'templates/Custom_Recipe_Template.php';
-		// require_once 'templates/Custom_Recipe_Submission_Template.php';
-		require_once 'templates/custom-recipe-print-template.php';
-		//require_once 'templates/Custom_Menu_Template.php';
+
 		/* Helpers
 		------------------------------------*/
-		require_once 'helpers/Custom_Recipe_Display_Shortcodes.php';
+		require_once 'helpers/Custom_Recipe_Metadata.php';
+		require_once 'helpers/Custom_Recipe_Favorite.php';
+		require_once 'helpers/Custom_Recipe_Add_To_Shopping_List.php';
+		require_once 'helpers/Custom_Recipe_Shortcodes.php';
 		require_once 'helpers/Custom_Recipe_Submission_Shortcodes.php';
-		// require_once 'helpers/Custom_WPURP_Shortcodes.php';
+
 		/* Helpers
 		------------------------------------*/
 		require_once 'widgets/custom_recipe_list_widget.php';
 		require_once 'widgets/custom_nutrition_label_widget.php';
 
 		new Custom_WPURP_Templates();
-		// new Custom_WPURP_Shortcodes();
-		new Custom_Recipe_Display_Shortcodes();
-		new Custom_Recipe_Submission_Shortcodes();
-		// new Custom_Recipe_Template();
 		new Custom_WPURP_Ingredient();
-		// new Custom_Recipe_Submission_Template();
+		new Custom_WPURP_Recipe_Submission();
+		new Custom_Recipe_Shortcodes();
+		new Custom_Recipe_Submission_Shortcodes();
 
 	}
 

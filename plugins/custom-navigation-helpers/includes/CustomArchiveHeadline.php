@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class CustomArchiveHeadline extends CustomArchive {
+class CustomArchiveHeadline extends CustomNavigationHelpers {
 
 	public function __construct() {
 		parent::__construct();

@@ -431,13 +431,17 @@ label.add-instruction-thumbnail {
   position: relative;
 }
 
-.instruction-buttons:before {
-  content: url(../img/paper-clip.png);
-  display: inline-block;
-  padding: 10px;
-  vertical-align: middle;
-  float:left;
-}
+/*.instruction-buttons:before {
+  content: " ";
+  background: url(../img/camera.png) bottom right no-repeat;
+  background-size: contain;
+  display: inline;
+  padding: 22px;*/
+  /* ---- other version ---- */
+  /* content: url(../img/paper-clip.png); */
+  /* width: 60px; */
+  /* vertical-align: text-bottom; */
+/*}*/
 
  .instruction-image {
   float: left;
@@ -528,6 +532,7 @@ label.add-instruction-thumbnail {
   border:none;
 }
 
+textarea.recipe-instruction,
 textarea.ingredients_notes {
     resize: vertical;
     padding: 10px;
@@ -754,7 +759,7 @@ li.select2-selection__choice,
   cursor: pointer!important;
   clear: both;
   color: rgba(0,0,0,.87);
-  line-height: 0.5rem!important;
+  line-height: 1rem!important;
   width: 100%;
   text-align: left;
   text-transform: none;
@@ -960,9 +965,9 @@ ul[aria-multiselectable=true] .select2-results__option[aria-selected=true] {
   /*SELECTION BOXES*/
 
   /*Prevent display of keyboard on smartphone*/
-/*  input.select2-search__field {
+  .readonly input.select2-search__field {
     display: none;
-  }*/
+  }
 
   .recipe-tags-container {
     padding-right:20px;

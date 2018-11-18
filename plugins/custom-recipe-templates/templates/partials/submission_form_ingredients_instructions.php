@@ -352,7 +352,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                 <td>
                     <div class="instruction-image">
                     <?php if ( isset( $wpurp_user_submission ) && ( !current_user_can( 'upload_files' ) || WPUltimateRecipe::option( 'user_submission_use_media_manager', '1' ) != '1' ) ) { ?>
-                        <img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" id="instruction_thumbnail_preview_<?php echo $i; ?>" />
+                        <img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" id="recipe_thumbnail_preview_<?php echo $i; ?>" />
                         <?php if( $has_image ) { ?>
                         <input type="hidden" value="<?php echo $instruction['image']; ?>" name="recipe_instructions[<?php echo $i; ?>][image]" /><br/>
                         <?php } ?>
@@ -393,7 +393,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                 <td>                    
                     <div class="instruction-image">
                     <?php if ( isset( $wpurp_user_submission ) && ( !current_user_can( 'upload_files' ) || WPUltimateRecipe::option( 'user_submission_use_media_manager', '1' ) != '1' ) ) { ?>
-                        <img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" id="instruction_thumbnail_preview_<?php echo $i; ?>" />
+                        <img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" id="recipe_thumbnail_preview_<?php echo $i; ?>" />
                     <?php } else { ?>
                         <input name="recipe_instructions[<?php echo $i; ?>][image]" class="recipe_instructions_image" type="hidden" value="" />
                         <input class="recipe_instructions_add_image button" rel="<?php echo $recipe->ID(); ?>" type="button" value="<?php _e('Add Image', 'wp-ultimate-recipe' ) ?>" />

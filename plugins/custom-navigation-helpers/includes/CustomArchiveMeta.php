@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class CustomArchiveMeta extends CustomArchive {
+class CustomArchiveMeta extends CustomNavigationHelpers {
 
 
 	public function __construct() {

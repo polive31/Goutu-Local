@@ -5,7 +5,7 @@
 if ( !defined('ABSPATH') )
 	die('-1');
 	
-class CustomNavigationShortcodes extends CustomArchive {
+class CustomNavigationShortcodes extends CustomNavigationHelpers {
 	
 	public function __construct() {
 		parent::__construct();
@@ -16,6 +16,7 @@ class CustomNavigationShortcodes extends CustomArchive {
 		add_shortcode('ct-terms-menu', array($this,'list_taxonomy_terms')); 
 		add_shortcode('tags-menu', array($this,'list_tags')); 
 		add_shortcode('ct-terms', array($this,'list_terms_taxonomy'));
+		add_shortcode('ct-dropdown', array($this,'custom_categories_dropdown_shortcode'));
 		add_shortcode('share-title', array($this,'display_share_title')); 
 		add_shortcode('registration', array($this,'output_registation_url')); 
 		add_shortcode('wp-page-link', array($this,'display_wordpress_page_link') );	
@@ -31,6 +32,11 @@ class CustomNavigationShortcodes extends CustomArchive {
 		add_shortcode('debug', array($this,'show_debug_html') );	
 	
 	}
+
+
+
+    public function custom_categories_dropdown_shortcode( $atts ) {
+    }
 
 	
 	/* Share Title Output

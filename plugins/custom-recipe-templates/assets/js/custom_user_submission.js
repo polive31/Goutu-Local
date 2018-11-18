@@ -1,86 +1,9 @@
-var currentIngredientId=-1;
-
 jQuery(document).ready(function() {
 
-/* Ingredient Suggestions 
+
+/* Shortcode buttons
 ---------------------------------------------------------------- */
-    jQuery(document).on('input', '.ingredients_name', function(){
-        autoSuggestIngredient( jQuery(this) );
-    });
 
-    jQuery('input.ingredients_name').focusout(function(){
-        // console.log('In ingredient focusout');
-        spinnerHTML = jQuery(this).closest("td").next().children('.ajax-indicator');
-        // console.log(spinnerHTML);
-        spinnerHTML.css('visibility','hidden');
-        try { xhr.abort(); } catch(e){}
-    });
-
-
-/* Ingredient Unit Suggestions 
----------------------------------------------------------------- */
-    jQuery(document).on('input', '.ingredients_unit', function(){
-        autoSuggestUnit( jQuery(this) );
-    });
-
-
-/* Ingredient Preview 
----------------------------------------------------------------- */
-// jQuery(document).on('focusin', 'tr.ingredient', function(){
-jQuery(document).on('focusin', function(){
-    console.log("Focus in on document");
-    // console.log("Focus in on tr.ingredient");
-    toggleIngredientPreview(this);
-});
-
-
-jQuery(document).on('click', 'tr.ingredient.saved', function(){
-    console.log("Click on tr.ingredient.saved");
-    jQuery(this).focus();
-});
-
-
-
-/* Taxonomy selection fields 
----------------------------------------------------------------- */
-    // Activate select2WPURP
-    // jQuery('#wpurp_user_submission_form select[multiple]').select2wpurp({
-    //     allowClear: true,
-    //     width: 'off',
-    //     dropdownAutoWidth: false
-    // });
-
-    // Activate select2
-    // jQuery("select[multiple]").select2({
-    jQuery("#wpurp_user_submission_form select").select2({
-        width: 'off',
-        dropdownAutoWidth: false,
-        minimumResultsForSearch: -1,
-        allowClear: false,
-        templateSelection: formatItem,
-        // closeOnSelect: false,
-    });  
-
-    function formatItem(data, container) {
-        var elClass='';
-        if (data.element.value == -1 || data.element.value == "") {
-           elClass='class="option-none"';
-        }
-        var $state = jQuery('<span ' + elClass + '>' + data.text + '</span>');
-        return $state;
-    }
-
-    jQuery(".select2-search input").prop("readonly", true);
-    jQuery(".select2, .select2-multiple").on('select2:open', function (e) {
-        jQuery('.select2-search input').prop('focus',false);
-    });
-
-    jQuery('.taxonomy-select-boxes').removeClass('nodisplay');
-    jQuery('.taxonomy-select-spinner').addClass('nodisplay');
-
-     /*
-     * Add shortcode buttons
-     */
     jQuery('#insert-recipe-shortcode').on('click', function(){
         wpurp_add_to_editor('[recipe]');
     });
@@ -98,6 +21,10 @@ jQuery(document).on('click', 'tr.ingredient.saved', function(){
             tinyMCE.execCommand('mceInsertContent', false, text);
         }
     }
+
+
+ /* Ingredient and Instruction Submission (from WPURP)
+---------------------------------------------------------------- */   
 
     /*
      * Do not allow removal of first ingredient/instruction
@@ -131,7 +58,6 @@ jQuery(document).on('click', 'tr.ingredient.saved', function(){
 
         calculateIngredientGroups();
     });
-
 
 
     /*
@@ -169,19 +95,6 @@ jQuery(document).on('click', 'tr.ingredient.saved', function(){
         }
     });
 
-
-    // // Hide AutoSuggest box on TAB or click
-    // jQuery('#recipe-ingredients').on('keydown', function(e) {
-    //     var keyCode = e.keyCode || e.which;
-
-    //     if (keyCode == 9) {
-    //         jQuery('ul.ac_results').hide();
-    //     }
-    // });
-    // jQuery('#recipe-ingredients').on('click', function() {
-    //     jQuery('ul.ac_results').hide();
-    // });
-
     jQuery('.ingredients-delete').on('click', function(){
         jQuery(this).parents('tr').remove();
         // addRecipeIngredientOnTab();
@@ -194,22 +107,26 @@ jQuery(document).on('click', 'tr.ingredient.saved', function(){
         addRecipeIngredient();
     });
 
-    jQuery('#recipe-ingredients .ingredients_notes').on('keydown',function(e) {
-        // console.log("Found keypress on .ingredient_notes !!!");
+
+    jQuery('#recipe-ingredients').on('keydown','.ingredients_notes, .ingredient-group-label',function(e) {
+        console.log("%c Found keypress on " + jQuery(this).attr('class') + jQuery(this).attr('id'),"background:#CCC;color:blue");
         var keyCode = e.keyCode || e.which;
-        var last_id = jQuery('#recipe-ingredients tr:last').attr('id');
-        // console.log("Last ID = " + last_id);
-        var current_ingredient = jQuery(this).closest('tr.ingredient');
-        var current_id = current_ingredient.attr('id');
-        
         if (keyCode == 9 && e.shiftKey == false) {
+            // var last_id = jQuery('#recipe-ingredients tr:last').attr('id');
+            // console.log("Last ID = " + last_id);
+            var currentRow = jQuery(this).closest('tr');
+            console.log( 'currentRow = ' + currentRow.prop('tagName') + currentRow.attr('class'));
+            // var current_id = current_ingredient.attr('id');
+
+            // Prevents that the focus jumps over the next "wrapped" ingredient
             e.preventDefault();
-            if (current_id == last_id ) {
+            if ( isLastIngredient( currentRow ) ) {
                 // console.log("Found keypress on tr::last .ingredient_notes !!!");
-                addRecipeIngredient();
+                addRecipeIngredient( currentRow );
             } 
             else {
-                current_ingredient.next().focus();
+                console.log('ingredient.next.focus');
+                currentRow.next().focus();
             }
         }
     });
@@ -269,10 +186,6 @@ jQuery(document).on('click', 'tr.ingredient.saved', function(){
             addRecipeInstruction();
         }
     });
-
-
-    // addRecipeInstructionOnTab();
-
 
     // TODO To user submission js
     jQuery('.recipe_thumbnail_add_image').on('click', function(e) {
@@ -376,136 +289,19 @@ jQuery(document).on('click', 'tr.ingredient.saved', function(){
 
 /* Functions Library
 ----------------------------------------------------- */
-function toggleIngredientPreview() {
+function isLastIngredient( thisRow ) {
+    console.log( '%c In isLastIngredient','background:#CCC;color:red;padding:10px;border-radius:2px');
+    console.log( 'item = ' + thisRow.attr('id'));
+    var hasGroupAfter = thisRow.next( ".ingredient-group").length;
+    console.log( 'next group = ' + thisRow.next( ".ingredient-group").prop('tagName'));
+    console.log( 'has group after = ' + hasGroupAfter);
+    console.log("#recipe-ingredients tr:last");
+    var isLastIngredient = ( thisRow.attr('id') == jQuery("#recipe-ingredients tr:last").attr('id') );
+    console.log( 'is last ingredient = ' + isLastIngredient);
 
-        lastIngredientId = currentIngredientId;
-        // console.log('Last ingredient : ', lastIngredientId );
-
-        var thisElement = document.activeElement;
-        // console.log('This element : ', thisElement );
-
-
-        var isIngredient = jQuery(thisElement).parents('#recipe-ingredients').length;
-        // console.log("is Ingredient : ", isIngredient);
-
-        if (isIngredient) {
-            currentIngredientId = jQuery(thisElement).attr('id').match(/\d+/);
-            currentIngredientId = currentIngredientId[0];
-            jQuery(thisElement).removeClass('saved new');
-            jQuery(thisElement).addClass('edit');
-            // console.log('Current ingredient : ' + currentIngredientId );
-            if (lastIngredientId == currentIngredientId || lastIngredientId==-1) {
-                // console.log( "No row change");
-                return;
-            }
-        }
-        else {   
-            console.log('Not an ingredient ! ' );
-        }
-
-
-        lastIngredient = jQuery('#recipe-ingredients').find('tr#ingredient_' + lastIngredientId);
-        // console.log("%c Toggle Ingredient Preview : Ajax call launched !", 'background: #ccc; color: blue');
-        // console.log('Ingredients amount : ' + jQuery('#recipe-ingredients').find('#ingredients_amount_' + lastIngredientId).val() );
-        // console.log('Target : ' + 'tr#ingredient_' + lastIngredientId + ' td.ingredient-preview')
-
-        try { xhr_ingredient.abort(); } catch(e){}
-        
-        xhr_ingredient=jQuery.ajax({
-            url : custom_user_submissions.ajaxurl,
-            method : 'POST',
-            data : {
-                action : 'ingredient_preview',
-                security : custom_user_submissions.nonce,
-                target_ingredient_id : lastIngredientId,
-                amount : lastIngredient.find('.ingredients_amount').val(),
-                unit : lastIngredient.find('.ingredients_unit').val(),
-                ingredient : lastIngredient.find('.ingredients_name').val(),
-                notes : lastIngredient.find('.ingredients_notes').val(),
-            }, 
-            success : function( response ) {
-                if( response.success ){
-                    // console.log( "Ajax ingredient preview Success !!!!");
-                    // console.log( 'Response is : ' + response.data.msg );
-                    var target = jQuery('#recipe-ingredients').find('tr#ingredient_' + lastIngredientId + ' td.ingredient-preview');
-                    target.html( response.data.msg );
-                    lastIngredient.removeClass('edit new');
-                    lastIngredient.addClass('saved');
-                } 
-                else {
-                    console.log( 'Error on Ajax call processing : ' + response.data.msg );
-                }
-            },
-            error : function( response ) {
-                console.log( 'Ajax call failed : ' + response.msg );
-            }
-        });
-
-}    
-
-
-function autoSuggestIngredient( thisInput ) {
-    // console.log('In autoSuggestIngredient');
-    term=thisInput.val();
-    id=thisInput.attr('id');
-    tax = 'ingredient';
-    // console.log(term);
-    // console.log(id);
-
-    spinnerHTML = thisInput.closest("td").next().children('.ajax-indicator');
-    spinnerHTML.css('visibility','hidden');
-    // console.log(spinnerHTML);
-    
-    // jQuery('#' + id).autoComplete({
-    jQuery( thisInput ).autoComplete({
-        minChars: 3,
-        delay : 200,
-        source: function(term, response) {
-            spinnerHTML.css('visibility','visible');
-            try { xhr.abort(); } catch(e){}
-            xhr = jQuery.ajax({
-                dataType: 'json',
-                url: '/wp-admin/admin-ajax.php',
-                data: 'action=get_tax_terms&tax='+tax+'&keys='+term,
-                success:function(data) {
-                    response(data);
-                    spinnerHTML.css('visibility','hidden');
-                },
-                // error:function() {
-                //     spinnerHTML.css('visibility','hidden');
-                // },
-                // complete: function() {
-                // }
-            });
-        }
-    });
-};
-
-function autoSuggestUnit( thisInput ) {
-    console.log('In autoSuggestUnit');
-    // console.log( thisInput );
-    term=thisInput.val();
-    qty=thisInput.parents('tr.ingredient').find('td.qty input').val();
-    console.log('Qty = ' + qty);
-    // console.log( term );
-    jQuery( thisInput ).autoComplete({ 
-        minChars: 1,
-        source: function(term, suggest){
-            term = term.toLowerCase();
-            if (qty > 1) {
-                var choices = thisInput.parents('.recipe-ingredients-container').data('units-plural');
-            }
-            else {
-                var choices = thisInput.parents('.recipe-ingredients-container').data('units');
-            }
-            // console.log(choices);
-            var matches = [];
-            for (i=0; i<choices.length; i++)
-                if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
-            suggest(matches);
-        }    
-    })
+    return (hasGroupAfter || isLastIngredient);
 }
+
 
 function PreviewImage(id) {
     // console.log( "In Preview Image");
@@ -604,21 +400,6 @@ function calculateInstructionGroups()
     }
 }
 
-// function addRecipeIngredientOnTab()
-// {    
-//     // jQuery('#recipe-ingredients .ingredients_notes')
-//     jQuery('#recipe-ingredients tr:last .ingredients_notes')
-//         .unbind('keydown')
-//         .last()
-//         .bind('keydown', function(e) {
-//             var keyCode = e.keyCode || e.which;
-
-//             if (keyCode == 9 && e.shiftKey == false) {
-//                 e.preventDefault();
-//                 addRecipeIngredient();
-//             }
-//         });
-// }
 
 function updateIngredientIndex()
 {
@@ -638,14 +419,18 @@ function updateIngredientIndex()
     });
 }
 
-function addRecipeIngredient()
+function addRecipeIngredient( currentIngredient )
 {
     var nbr_ingredients = jQuery('#recipe-ingredients tr.ingredient').length;
     var last_row = jQuery('#recipe-ingredients tr:last');
-    var last_ingredient = jQuery('#recipe-ingredients tr.ingredient:last');
+    if ( currentIngredient ) 
+        last_row = currentIngredient;
 
     // last_ingredient.find('input').attr('placeholder','');
-    var clone_ingredient = last_ingredient.clone(true);
+    // var last_ingredient = jQuery('#recipe-ingredients tr.ingredient:last');
+    
+    // var clone_ingredient = last_ingredient.clone(true);
+    var clone_ingredient = last_row.clone(true);
 
     // console.log("In add recipe ingredient");
     // console.log("Content of preview in new row : " + clone_ingredient.find('td.ingredient-preview').html());
@@ -735,25 +520,6 @@ function addRecipeInstruction()
 
 }  
 
-// function addRecipeInstructionOnTab()
-// {
-//     jQuery('#recipe-instructions textarea')
-//         .unbind('keydown')
-//         .last()
-//         .bind('keydown', function(e) {
-//             var keyCode = e.keyCode || e.which;
-
-//             if (keyCode == 9 && e.shiftKey == false) {
-//                 var last_focused = jQuery('#recipe-instructions tr:last').find('textarea').is(':focus')
-
-//                 if(last_focused == true) {
-//                     e.preventDefault();
-//                     addRecipeInstruction();
-//                 }
-
-//             }
-//         });
-// }
 
 function updateInstructionIndex()
 {

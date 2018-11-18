@@ -340,12 +340,43 @@ class Custom_WPURP_Templates {
 					        'jquery-ui-core',
 					    ),						
 					),
-					// array(
-					// 	'name' => 'suggest',
-					//     'deps' => array(
-					//         'jquery',
-					//     ),						
-					// ),					
+		            array(
+		                'name' => 'select2-taxonomies',
+		                'url' => self::$_PluginUri . 'assets/js/',
+		                'path' => self::$_PluginPath . 'assets/js/',
+		                'file' => 'select2_taxonomies.js',
+		                'deps' => array(
+		                    'jquery',
+		                    'select2',
+		                ),
+		                'footer' => false,
+		           	),
+		            array(
+		                'name' => 'ingredient-unit-suggestion',
+		                'url' => self::$_PluginUri . 'assets/js/',
+		                'path' => self::$_PluginPath . 'assets/js/',
+		                'file' => 'ingredient_unit_suggestion.js',
+		                'deps' => array(
+		                    'jquery',
+		                    'autocomplete',
+		                ),
+		                'footer' => true,
+		           	),
+		            array(
+		                'name' => 'ingredient-preview',
+		                'url' => self::$_PluginUri . 'assets/js/',
+		                'path' => self::$_PluginPath . 'assets/js/',
+		                'file' => 'ingredient_preview.js',
+		                'deps' => array(
+		                    'jquery',
+		                ),
+		                'footer' => true,
+		                'data' => array(
+		                    'name' => 'ingredient_preview',
+							'ajaxurl' => admin_url( 'admin-ajax.php' ),
+							'nonce' => wp_create_nonce('preview_ingredient'),
+		                )		                
+		           	),			           			           											
 		            array(
 		                'name' => 'custom-user-submissions',
 		                'url' => self::$_PluginUri . 'assets/js/',
@@ -354,14 +385,10 @@ class Custom_WPURP_Templates {
 		                'deps' => array(
 		                    'jquery',
 		                    'jquery-ui-sortable',
-		                    'select2',
-		                    // 'select2wpurp',
 		                ),
 		                'footer' => true,
 		                'data' => array(
 		                    'name' => 'custom_user_submissions',
-							'ajaxurl' => admin_url( 'admin-ajax.php' ),
-							'nonce' => wp_create_nonce('preview_ingredient'),
 		                	'placeholder' => WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png',
 		                )
 		           	)					
@@ -473,7 +500,7 @@ class Custom_WPURP_Templates {
 		    'hide_empty' => false,
 		) );
 
-		//copy the business titles to a simple array
+		//copy the terms to a simple array
 		$suggestions = array();
 		foreach( $terms as $term )
 			$suggestions[] = addslashes($term->name);
@@ -495,14 +522,14 @@ class Custom_WPURP_Templates {
             die();
         }
 
-        if( isset($_POST['target_ingredient_id'] ) ) {
-            $id= $_POST['target_ingredient_id'][0];
-            // echo $id;
-        }
-        else {
-            wp_send_json_error( array('msg' => 'No ingredient id provided'));
-            die();
-        }
+        // if( isset($_POST['ingredient_id'] ) ) {
+        //     $id= $_POST['ingredient_id'];
+        //     // echo $id;
+        // }
+        // else {
+        //     wp_send_json_error( array('msg' => 'No ingredient id provided'));
+        //     die();
+        // }
 
         if ( empty($_POST['ingredient']) ) {
              wp_send_json_error( array('msg' => 'No ingredient name provided'));

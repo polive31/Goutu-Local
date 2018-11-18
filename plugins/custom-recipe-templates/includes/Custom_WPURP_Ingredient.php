@@ -133,15 +133,12 @@ class Custom_WPURP_Ingredient {
         
         $plural=false;
         // $isplural=false;
-        if ($taxonomy) {
-	        // $taxonomy_slug = is_object( $taxonomy ) ? $taxonomy->slug : $args['ingredient_name'];
-	        $taxonomy_slug = $taxonomy->slug;
-	        $plural = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'plural' );
-        // $isplural = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'isplural' );
-	        $plural = is_array( $plural ) ? false : $plural;
-	        $plural = is_array( $plural ) ? false : $plural;
-	        ////PC::debug( array('Plural array'=>$plural) );  
-        }
+
+		$taxonomy_slug = ($taxonomy && is_object( $taxonomy )) ? $taxonomy->slug : false;
+		$plural = $taxonomy_slug?WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'plural' ):'';
+		// $isplural = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'isplural' );
+		$plural = is_array( $plural ) ? false : $plural;
+
 
         $plural_data = $plural ? ' data-singular="' . esc_attr( $args['ingredient'] ) . '" data-plural="' . esc_attr( $plural ) . '"' : '';
         $out .= ' <span class="wpurp-recipe-ingredient-name recipe-ingredient-name"' . $plural_data . '>';
@@ -160,7 +157,8 @@ class Custom_WPURP_Ingredient {
 
         $closing_tag = '';
 		
-		$hide_link = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'hide_link' ) == '1';
+
+		$hide_link = $taxonomy_slug? WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'hide_link' ) == '1':true;
 
         if ( !empty( $taxonomy ) && $ingredient_links != 'disabled' && !$hide_link) {
 

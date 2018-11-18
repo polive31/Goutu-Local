@@ -118,22 +118,22 @@ if( !isset( $required_fields ) ) $required_fields = array();
     <?php $ingredients = $recipe->ingredients(); ?>
     <table id="recipe-ingredients">
         <thead>
-        <tr class="ingredient-group ingredient-group-first">
-	          	<td class="group" colspan="5">
-					<div class="group-container">
-		            	<span class="header"><?php _e( 'Ingredients Group', 'foodiepro' ); ?></span>
-		                <?php
-		                $previous_group = '';
-		                if( isset( $ingredients[0] ) && isset( $ingredients[0]['group'] ) ) {
-		                    $previous_group = $ingredients[0]['group'];
-		                }
-		                ?>
-		                <span class="name"><input type="text" placeholder="<?php echo __('eg. For the dough', 'foodiepro');?>" class="ingredient-group-label" value="<?php echo esc_attr( $previous_group ); ?>" /></span>
-					</div>
-		          </td>
-		          <td class="group mobile-hidden" colspan="1">&nbsp;</td>
-        </tr>
         </thead>
+        <tr class="ingredient-group ingredient-group-first">
+                <td class="group" colspan="6">
+                    <div class="group-container">
+                        <span class="header"><?php _e( 'Ingredients Group', 'foodiepro' ); ?></span>
+                        <?php
+                        $previous_group = '';
+                        if( isset( $ingredients[0] ) && isset( $ingredients[0]['group'] ) ) {
+                            $previous_group = $ingredients[0]['group'];
+                        }
+                        ?>
+                        <span class="name"><input type="text" placeholder="<?php echo __('eg. For the dough', 'foodiepro');?>" class="ingredient-group-label" value="<?php echo esc_attr( $previous_group ); ?>" /></span>
+                    </div>
+                  </td>
+                  <td class="group mobile-hidden" colspan="1">&nbsp;</td>
+        </tr>
         <tbody>
         <tr class="ingredient-group-stub">
             <td colspan="6" class="group">

@@ -1,6 +1,7 @@
 <?php
 
-class Custom_Recipe_Submission_Shortcodes extends WPURP_Premium_Addon {
+// class Custom_Recipe_Submission_Shortcodes extends WPURP_Premium_Addon {
+class Custom_Recipe_Submission_Shortcodes {
 
     const RECIPES_PUBLISH_SLUG = 'publier-recettes';
     const RECIPE_NEW_SLUG = 'nouvelle-recette';
@@ -14,7 +15,7 @@ class Custom_Recipe_Submission_Shortcodes extends WPURP_Premium_Addon {
 
 
     public function __construct( $name = 'user-submissions' ) {
-        parent::__construct( $name );
+        // parent::__construct( $name );
         
         self::$_PluginDir = plugin_dir_path( dirname( __FILE__ ) );
         $upload_dir = wp_upload_dir();

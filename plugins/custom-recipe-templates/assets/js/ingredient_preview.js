@@ -99,13 +99,13 @@ function displayIngredientPreview( thisIngredientId ) {
                 if( response.success ){
                     console.log( "Ajax ingredient preview success for " + thisIngredientId);
                     console.log( "Ingredient is " + thisIngredient);
-                    console.log( 'Response is : ' + response.data.msg );
+                    // console.log( 'Response is : ' + response.data.msg );
                     var target = thisIngredient.find('td.ingredient-preview');
-                    console.log( 'Apply changes to : ', target );
+                    // console.log( 'Apply changes to : ', target );
                     jQuery('#recipe-ingredients').on('focusin','tr.ingredient', false);
                     jQuery('#recipe-ingredients').on('blur','tr.ingredient', false);
                     target.html( response.data.msg );
-                    console.log( 'Apply css changes to : ', thisIngredient );
+                    // console.log( 'Apply css changes to : ', thisIngredient );
                     thisIngredient.removeClass('edit new');
                     thisIngredient.addClass('saved');
                     // Last check in order to secure that there is no focus on this ingredient 

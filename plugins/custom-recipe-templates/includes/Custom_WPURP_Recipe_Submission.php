@@ -323,6 +323,7 @@ class Custom_WPURP_Recipe_Submission {
         
         $taxonomy = $_GET['tax'];
         $keys = $_GET['keys'];
+        // $plural = isset($_GET['plural'])?$_GET['plural']:false;
 
         $terms = get_terms( array(
             'taxonomy' => $taxonomy,

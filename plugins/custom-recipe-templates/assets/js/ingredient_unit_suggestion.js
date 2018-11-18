@@ -23,13 +23,17 @@ jQuery(document).ready(function() {
 
 });
 
+// function isPlural( amount, unit ) {
+//     var plural = (amount > 1) || (unit != '') || (amount=='' && unit=='');
+//     return plural;
+// } 
+
 function autoSuggestIngredient( thisInput ) {
     // console.log('In autoSuggestIngredient');
     term=thisInput.val();
     id=thisInput.attr('id');
     tax = 'ingredient';
     // console.log(term);
-    // console.log(id);
 
     spinnerHTML = thisInput.closest("td").next().children('.ajax-indicator');
     spinnerHTML.css('visibility','hidden');

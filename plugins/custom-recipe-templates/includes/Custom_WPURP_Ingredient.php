@@ -185,7 +185,7 @@ class Custom_WPURP_Ingredient {
         }
 
         // $out .= $plural && ($ingredient['unit']!='' || $ingredient['amount_normalized'] > 1) ? $plural : $ingredient['ingredient'];
-        $out .= ($plural && ($amount_normalized > 1 || $unit != '' || (empty($amount_normalized) && empty($unit)) )) ? $plural : $args['ingredient'];
+        $out .= ($plural && self::is_plural( $amount_normalized, $unit)) ? $plural : $args['ingredient'];
         $out .= $closing_tag;
         $out .= '</span>';
 
@@ -197,6 +197,11 @@ class Custom_WPURP_Ingredient {
 
         return $out;
     }    	
+
+    public static function is_plural( $amount, $unit ) {
+    	$plural = $amount > 1 || $unit != '' || (empty($amount) && empty($unit));
+    	return $plural;
+    }
 
 	public function taxonomy_edit_fields($term) {
 		$t_id = $term->term_id;

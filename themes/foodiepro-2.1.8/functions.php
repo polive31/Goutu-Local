@@ -634,16 +634,18 @@ function add_pinterest_meta() {
 
 /* =================================================================*/
 /* =              LAYOUT      
-function custom_favicon_links() {
 /* =================================================================*/
 
-//* Adds custom inline Javascript
-// add_action('wp_head','add_custom_js');
-function add_custom_js(){
+// Adds custom inline Javascript
+// to solve screen header width issue on chrome mobile displays 
+add_action('wp_head','adjust_header_width');
+function adjust_header_width(){
 ?>
 <script>
 	jQuery(document).ready(function() {
-		// place your code here
+		screenWidth = jQuery('html').width();
+		console.log('Screen Width = ' + screenWidth);
+		jQuery('.site-header').width(screenWidth);
 	});
 </script>
 <?php

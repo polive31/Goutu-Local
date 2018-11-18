@@ -10,6 +10,8 @@ class CustomSiteNotifications {
 	public static $PLUGIN_PATH;
 	public static $PLUGIN_URI;
 
+	private $headers=array();
+
 	const CONTACT = "contact@goutu.org";
 	const PROVIDER = 'mailchimp';
 
@@ -17,21 +19,39 @@ class CustomSiteNotifications {
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
 
+		add_action('init',array($this,'hydrate'));
+
 		// Notification types 
 		add_action(  'pending_to_publish',  array($this, 'published_post_notification'), 10, 1 );
 
 		// WP Mail customization 
 		add_filter ( 'wp_mail_content_type', array($this, 'html_mail_content_type'));
-		// add_filter ( 'wp_mail_from_name', array($this, 'contact_address'));
 		// add_filter ( 'wp_mail_from', array($this, 'custom_from_name'));
+		// add_filter ( 'wp_mail_from_name', array($this, 'custom_from_address'));
+	}
+
+	// public function custom_from_name() {
+	//     return get_bloginfo('name');
+	// }
+
+	// public function custom_from_address() {
+	//     return self::CONTACT;
+	// }
+
+	public function hydrate() {
+		$this->headers[] = 'From: ' . get_bloginfo('name') . ' <' . self::CONTACT . '>';
+	}
+
+	public function bcc_admin() {
+		$this->headers[] = 'Bcc: ' . get_bloginfo('admin_email');
+	}
+
+	public function headers() {
+		return $this->headers;
 	}
 
 	public function html_mail_content_type() {
 	    return "text/html";
-	}
-
-	public function custom_from_name() {
-	    return "Goutu.org";
 	}
 
 	public function hello() {
@@ -69,8 +89,10 @@ class CustomSiteNotifications {
 		else 
 		    $subject = __('Your post just got published !','foodiepro');
 			
-		// Send notification email to administrator
 		$to = get_the_author_meta('user_email', $post->post_author);
+
+		// Adds admin to the list of hidden recipients
+		$this->bcc_admin();
 
 		if( $to ) {
 			$author = ucfirst(get_the_author_meta('display_name', $post->post_author));
@@ -107,7 +129,8 @@ class CustomSiteNotifications {
 		    	'mail_text' => __('Send this recipe to a friend','foodiepro'),
 		    );
 		    $message = $this->get_html($data, self::PROVIDER.'_generic' );
-		    wp_mail( $to, $subject, $message );
+		    $headers = $this->headers();
+		    wp_mail( $to, $subject, $message, $headers );
 		}	
 	}
 

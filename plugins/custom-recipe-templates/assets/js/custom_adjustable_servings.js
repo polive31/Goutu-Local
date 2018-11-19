@@ -1,5 +1,72 @@
 var wpurp_adjustable_servings = {};
 
+
+jQuery(document).ready(function() {
+    console.log("In custom adjustable servings script");
+    
+    // Custom increase & decrease quantity buttons
+    jQuery(".recipe-input i").on("click", function() {
+      console.log("Portion ajustment button click");
+      var $button = jQuery(this);
+      var $input= $button.parent().find("input");
+      var oldValue = $input.val();
+      //console.log("Old value : " + oldValue );
+      //console.log( "button id " + $button.attr('id') );
+      if ($button.attr('id') == "inc") {
+        //console.log("INC Click !!!");
+          var newVal = parseFloat(oldValue) + 1;
+        } else {
+        //console.log("DEC Click !!!");
+        if (oldValue > 1) {
+          var newVal = parseFloat(oldValue) - 1;
+        } else {
+          newVal = 1;
+        }
+      }
+      $input.val(newVal);
+      $input.trigger("change");
+    });    
+
+    // console.log("In custom adjustable servings !");
+
+    jQuery(document).on('keyup change', '.adjust-recipe-servings', function(e) {
+        var servings_input = jQuery(this);
+
+        var amounts = servings_input.parents('.wpurp-container').find('.wpurp-recipe-ingredient-quantity');
+        var servings_original = parseFloat(servings_input.data('original'));
+        var servings_new = servings_input.val();
+
+        if(isNaN(servings_new) || servings_new <= 0){
+            servings_new = 1;
+        }
+
+        wpurp_adjustable_servings.updateAmounts(amounts, servings_original, servings_new);
+        wpurp_adjustable_servings.updateShortcode(servings_input.parents('.wpurp-container'), servings_new);
+
+        RecipePrintButton.update(servings_input.parents('.wpurp-container'));
+    });
+
+    jQuery(document).on('blur', '.adjust-recipe-servings', function(e) {
+        var servings_input = jQuery(this);
+
+        var servings_new = servings_input.val();
+
+        if(isNaN(servings_new) || servings_new <= 0){
+            servings_new = 1;
+        }
+
+        servings_input.parents('.wpurp-container').find('.adjust-recipe-servings').each(function() {
+            jQuery(this).val(servings_new);
+        });
+
+        RecipePrintButton.update(servings_input.parents('.wpurp-container'));
+    });
+
+
+});
+
+
+
 wpurp_adjustable_servings.updateShortcode = function(recipe, servings_new) {
     var servings_original = parseFloat(recipe.data('servings-original'));
 
@@ -140,66 +207,3 @@ wpurp_adjustable_servings.toFixed = function(amount, fraction)
     return formatted;
 }
 
-
-jQuery(document).ready(function() {
-
-    // Custom increase & decrease quantity buttons
-    jQuery(".recipe-input i").on("click", function() {
-        //console.log("Button Click !!!");
-      var $button = jQuery(this);
-      var $input= $button.parent().find("input");
-      var oldValue = $input.val();
-      //console.log("Old value : " + oldValue );
-      //console.log( "button id " + $button.attr('id') );
-      if ($button.attr('id') == "inc") {
-        //console.log("INC Click !!!");
-          var newVal = parseFloat(oldValue) + 1;
-        } else {
-        //console.log("DEC Click !!!");
-        if (oldValue > 1) {
-          var newVal = parseFloat(oldValue) - 1;
-        } else {
-          newVal = 1;
-        }
-      }
-      $input.val(newVal);
-      $input.trigger("change");
-    });    
-
-    // console.log("In custom adjustable servings !");
-
-    jQuery(document).on('keyup change', '.adjust-recipe-servings', function(e) {
-        var servings_input = jQuery(this);
-
-        var amounts = servings_input.parents('.wpurp-container').find('.wpurp-recipe-ingredient-quantity');
-        var servings_original = parseFloat(servings_input.data('original'));
-        var servings_new = servings_input.val();
-
-        if(isNaN(servings_new) || servings_new <= 0){
-            servings_new = 1;
-        }
-
-        wpurp_adjustable_servings.updateAmounts(amounts, servings_original, servings_new);
-        wpurp_adjustable_servings.updateShortcode(servings_input.parents('.wpurp-container'), servings_new);
-
-        RecipePrintButton.update(servings_input.parents('.wpurp-container'));
-    });
-
-    jQuery(document).on('blur', '.adjust-recipe-servings', function(e) {
-        var servings_input = jQuery(this);
-
-        var servings_new = servings_input.val();
-
-        if(isNaN(servings_new) || servings_new <= 0){
-            servings_new = 1;
-        }
-
-        servings_input.parents('.wpurp-container').find('.adjust-recipe-servings').each(function() {
-            jQuery(this).val(servings_new);
-        });
-
-        RecipePrintButton.update(servings_input.parents('.wpurp-container'));
-    });
-
-
-});

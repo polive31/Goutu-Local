@@ -747,6 +747,14 @@ function execute_php($html){
 	return $html;
 }
 
+/* Search Widget
+-------------------------------------------------------------------*/
+add_filter( 'genesis_search_text', 'custom_search_text' );
+function custom_search_text( $text ) {
+    $text=__( 'Recipe, Ingredient, Keyword, Author...','foodiepro' );
+    return $text;
+}
+
 /* Recent Posts Widget Extended
 -------------------------------------------------------------------*/
 // Prevent redundant posts when several rpwe instances are called on the same page

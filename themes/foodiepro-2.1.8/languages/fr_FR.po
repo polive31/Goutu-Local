@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2018-11-18 22:57+0100\n"
-"PO-Revision-Date: 2018-11-18 22:59+0100\n"
+"POT-Creation-Date: 2018-11-19 00:14+0100\n"
+"PO-Revision-Date: 2018-11-19 00:15+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -57,17 +57,24 @@ msgctxt "consonant"
 msgid "All posts from %s"
 msgstr "Toutes les publications de %s"
 
-#: plugins/bp-custom.php:427
+#: plugins/custom-buddypress-helpers/custom-bph-loader.php:54
+msgid ""
+"<strong>BP Social Helpers</strong></a> requires the BuddyPress plugin to "
+"work. Please <a href=\"https://buddypress.org/download\">install BuddyPress</"
+"a> first, or <a href=\"plugins.php\">deactivate BP Custom Shortcodes</a>."
+msgstr ""
+
+#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:34
 msgid "Published a new recipe"
 msgstr "Publié une nouvelle recette"
 
-#: plugins/bp-custom.php:428
+#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:35
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:20
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:4
 msgid "Recipes"
 msgstr "Recettes"
 
-#: plugins/bp-custom.php:429
+#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:36
 #: plugins/custom-recipe-templates/widgets/custom_nutrition_label_widget.php:64
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_meta_box.php:60
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:21
@@ -85,7 +92,7 @@ msgstr "Recettes"
 msgid "Recipe"
 msgstr "Recette"
 
-#: plugins/bp-custom.php:538
+#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:144
 #, php-format
 msgid ""
 "%1$s wrote a new post, <a class=\"activity-post-title\" href=\"%2$s\">%3$s</"
@@ -94,7 +101,7 @@ msgstr ""
 "%1$s a publié un nouvel article, <a class=\"activity-post-title\" href=\"%2$s"
 "\">%3$s</a>"
 
-#: plugins/bp-custom.php:541
+#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:147
 #, php-format
 msgid ""
 "%1$s wrote a new recipe, <a class=\"activity-post-title\" href=\"%2$s\">"
@@ -102,13 +109,6 @@ msgid ""
 msgstr ""
 "%1$s a publié une nouvelle recette, <a class=\"activity-post-title\" href="
 "\"%2$s\">%3$s</a>"
-
-#: plugins/custom-buddypress-helpers/custom-bph-loader.php:51
-msgid ""
-"<strong>BP Social Helpers</strong></a> requires the BuddyPress plugin to "
-"work. Please <a href=\"https://buddypress.org/download\">install BuddyPress</"
-"a> first, or <a href=\"plugins.php\">deactivate BP Custom Shortcodes</a>."
-msgstr ""
 
 #: plugins/custom-buddypress-helpers/shortcodes/CustomSocialHelpers.php:34
 msgid "Friendship Requests"
@@ -996,7 +996,7 @@ msgid "You don't have any favorite recipes."
 msgstr "Aucune recette favorite dans votre carnet."
 
 #: plugins/custom-recipe-templates/helpers/Custom_Recipe_Submission_Shortcodes.php:84
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:522
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:523
 msgid "You can edit your recipe here, before submitting it."
 msgstr ""
 "Vous pouvez modifier votre recette ici et la sauvegarder en tant que "
@@ -1061,24 +1061,24 @@ msgctxt "consonant"
 msgid "of "
 msgstr "de "
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Ingredient.php:216
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Ingredient.php:275
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Ingredient.php:221
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Ingredient.php:280
 msgid "Always plural ?"
 msgstr ""
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Ingredient.php:226
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Ingredient.php:279
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Ingredient.php:231
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Ingredient.php:284
 msgid ""
 "Check whenever this ingredient should always displayed in its plural form"
 msgstr ""
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Ingredient.php:240
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Ingredient.php:287
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Ingredient.php:245
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Ingredient.php:292
 msgid "Months"
 msgstr "Mois"
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Ingredient.php:262
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Ingredient.php:307
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Ingredient.php:267
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Ingredient.php:312
 msgid "Check the months when this ingredient is available"
 msgstr "Cocher les mois où cet ingrédient est disponible"
 
@@ -1149,18 +1149,18 @@ msgstr "Ingrédients principaux"
 msgid "Published on %s by <span id=\"username\">%s</span>"
 msgstr "Publié le %s  par <span id=\"username\">%s</span>"
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:363
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:364
 msgid "You must be logged-in to access this page."
 msgstr ""
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:385
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:386
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-fdx/import-fdx.php:65
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-xml/import-xml.php:65
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:235
 msgid "Untitled"
 msgstr ""
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:480
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:481
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:435
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:410
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_whitelist.php:286
@@ -1170,7 +1170,7 @@ msgstr ""
 msgid "Custom Fields"
 msgstr ""
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:507
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:508
 msgid ""
 "Here is what your recipe will look like once it is published. You can choose "
 "to continue editing it, or save it as a draft, or publish it, using the "
@@ -1181,7 +1181,7 @@ msgstr ""
 "la soumettre pour publication, en utilisant les boutons au bas de cette "
 "page. "
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:556
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:557
 msgid ""
 "Recipe saved as draft. It will not be visible on the site, but you can edit "
 "it at any time and submit it later."
@@ -1190,38 +1190,38 @@ msgstr ""
 "visible sur le site, mais vous pouvez la modifier à tout moment, et la "
 "publier plus tard."
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:559
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:560
 #, php-format
 msgid "Back to <a href=\"%s\">my published recipes</a>"
 msgstr "Retour à <a href=\"%s\">mes recettes</a>"
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:576
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:577
 msgid "Please fill-in those required fields:"
 msgstr "Merci de renseigner les informations suivantes :"
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:608
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:609
 msgid "Recipe published."
 msgstr "Recette publiée."
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:608
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:609
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_options.php:1494
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:426
 msgid "Recipe submitted! Thank you, your recipe is now awaiting moderation."
 msgstr ""
 "Nous avons bien reçu votre recette ! Elle sera publiée après modération. "
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:611
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:635
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:612
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:636
 #, php-format
 msgid "<a href=\"%s\">Back to my recipes</a>"
 msgstr "<a href=\"%s\">Retour à mes recettes</a>"
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:618
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:619
 #, php-format
 msgid "New user submission:%s"
 msgstr ""
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:633
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:634
 msgid "Unknown action."
 msgstr ""
 
@@ -1907,7 +1907,7 @@ msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr "Un problème ? Une question ? Contacte nous <a href=\"%s\">ici</a>"
 
 #: plugins/custom-site-notifications/includes/CustomSiteNotifications.php:74
-#: themes/foodiepro-2.1.8/functions.php:963
+#: themes/foodiepro-2.1.8/functions.php:971
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
@@ -9178,38 +9178,42 @@ msgstr "<strong>ERREUR</strong> : Utilisateur en attente d'approbation."
 msgid "author"
 msgstr "auteur"
 
-#: themes/foodiepro-2.1.8/functions.php:889
+#: themes/foodiepro-2.1.8/functions.php:754
+msgid "Recipe, Ingredient, Keyword, Author..."
+msgstr "Recette, ingrédient, mot-clé, auteur..."
+
+#: themes/foodiepro-2.1.8/functions.php:897
 msgid "Read More"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:915
+#: themes/foodiepro-2.1.8/functions.php:923
 #, fuzzy
 #| msgid "Comment"
 msgid "Comments"
 msgstr "Ajouter un commentaire"
 
-#: themes/foodiepro-2.1.8/functions.php:924
+#: themes/foodiepro-2.1.8/functions.php:932
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:202
 #, fuzzy
 #| msgid "Previous Feeds"
 msgid "Previous comments"
 msgstr "Nouvelles précédentes"
 
-#: themes/foodiepro-2.1.8/functions.php:930
+#: themes/foodiepro-2.1.8/functions.php:938
 #, fuzzy
 #| msgid "Comment"
 msgid "Next comments"
 msgstr "Ajouter un commentaire"
 
-#: themes/foodiepro-2.1.8/functions.php:948
+#: themes/foodiepro-2.1.8/functions.php:956
 msgid "Your answer here"
 msgstr "Entrez votre réponse ci-dessous"
 
-#: themes/foodiepro-2.1.8/functions.php:963
+#: themes/foodiepro-2.1.8/functions.php:971
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:963
+#: themes/foodiepro-2.1.8/functions.php:971
 msgid "Legal notice"
 msgstr "Mentions légales"
 

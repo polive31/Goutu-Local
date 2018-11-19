@@ -387,7 +387,7 @@ class Custom_WPURP_Templates {
 		                'deps' => array(
 		                    'jquery',
 		                    'fraction',
-		                		'print_button',
+		                	'print_button',
 		                ),
 		                'data' => array(
 		                    'name' => 'wpurp_servings',

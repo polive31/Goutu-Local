@@ -120,9 +120,9 @@
 							$html = '<div class="label-container" id="servings">';
 							$html .= '<div class="recipe-label">' . __('Serves','foodiepro') . '</div>';
 							$html .= '<div class="recipe-input">';
-							$html .= '<i id="dec" class="fa fa-minus-circle"></i>';
+							$html .= '<i id="dec" title="' . __('Decrease servings','foodiepro') . '" class="fa fa-minus-circle"></i>';
 							$html .= '<input type="number" min="1" class="adjust-recipe-servings" data-original="' . $recipe->servings_normalized() . '" data-start-servings="' . $recipe->servings_normalized() . '" value="' . $recipe->servings_normalized() . '"/>';
-							$html .= '<i id="inc" class="fa fa-plus-circle"></i>';
+							$html .= '<i id="inc" title="' . __('Increase servings','foodiepro') . '" class="fa fa-plus-circle"></i>';
 							$html .= ' ' . $recipe->servings_type();
 							$html .= '</div>';
 							$html .= '</div>';

@@ -624,6 +624,17 @@ function wpseo_uppercase_title( $title ) {
 	return ucfirst($title);
 }
 
+// Populate SEO meta if empty
+add_filter('wpseo_metadesc', 'populate_metadesc');
+function populate_metadesc( $text ) {
+	if (empty($text)) {
+		if (is_single()) {
+			$text = get_the_excerpt( get_post() );
+		} 
+	}
+	return $text;
+}
+
 
 // Add pinterest meta
 add_action ('genesis_meta','add_pinterest_meta');
@@ -638,7 +649,7 @@ function add_pinterest_meta() {
 
 // Adds custom inline Javascript
 // to solve screen header width issue on chrome mobile displays 
-add_action('wp_head','adjust_header_width');
+// add_action('wp_head','adjust_header_width');
 function adjust_header_width(){
 ?>
 <script>

@@ -28,7 +28,7 @@ if (have_posts()):?>
 				<li class="rpwe-li rpwe-clearfix <?php echo ($first)?'rpwe-first':'';?>">
 					<?php $first=false;?>
 					<a class="rpwe-img" href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
-						<?php the_post_thumbnail( 'square-thumbnail', array( 'class' => 'rpwe-aligncenter rpwe-thumb' ) ); ?>
+						<?php the_post_thumbnail( 'square-thumbnail', array( 'title'=> the_title_attribute('echo=0'), 'class' => 'rpwe-aligncenter rpwe-thumb', 'alt' => the_title_attribute('echo=0') ) ); ?>
 					</a>
 					<h3 class="rpwe-title">
 						<a href="<?php the_permalink() ?>" rel="bookmark">

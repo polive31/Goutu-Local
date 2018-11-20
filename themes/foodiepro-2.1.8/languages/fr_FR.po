@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2018-11-19 00:14+0100\n"
-"PO-Revision-Date: 2018-11-19 00:15+0100\n"
+"POT-Creation-Date: 2018-11-20 00:38+0100\n"
+"PO-Revision-Date: 2018-11-20 00:39+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -64,17 +64,17 @@ msgid ""
 "a> first, or <a href=\"plugins.php\">deactivate BP Custom Shortcodes</a>."
 msgstr ""
 
-#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:34
+#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:39
 msgid "Published a new recipe"
 msgstr "Publié une nouvelle recette"
 
-#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:35
+#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:40
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:20
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:4
 msgid "Recipes"
 msgstr "Recettes"
 
-#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:36
+#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:41
 #: plugins/custom-recipe-templates/widgets/custom_nutrition_label_widget.php:64
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_meta_box.php:60
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:21
@@ -92,7 +92,7 @@ msgstr "Recettes"
 msgid "Recipe"
 msgstr "Recette"
 
-#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:144
+#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:138
 #, php-format
 msgid ""
 "%1$s wrote a new post, <a class=\"activity-post-title\" href=\"%2$s\">%3$s</"
@@ -101,7 +101,7 @@ msgstr ""
 "%1$s a publié un nouvel article, <a class=\"activity-post-title\" href=\"%2$s"
 "\">%3$s</a>"
 
-#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:147
+#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:141
 #, php-format
 msgid ""
 "%1$s wrote a new recipe, <a class=\"activity-post-title\" href=\"%2$s\">"
@@ -1302,6 +1302,14 @@ msgstr "Régime"
 msgid "Level"
 msgstr "Niveau"
 
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:123
+msgid "Decrease servings"
+msgstr "Réduire les quantités"
+
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:125
+msgid "Increase servings"
+msgstr "Augmenter les quantités"
+
 #: plugins/custom-recipe-templates/templates/custom_submission_form.php:8
 #: plugins/custom-recipe-templates/templates/custom_submission_form.php:9
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_whitelist.php:267
@@ -1907,7 +1915,7 @@ msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr "Un problème ? Une question ? Contacte nous <a href=\"%s\">ici</a>"
 
 #: plugins/custom-site-notifications/includes/CustomSiteNotifications.php:74
-#: themes/foodiepro-2.1.8/functions.php:971
+#: themes/foodiepro-2.1.8/functions.php:982
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
@@ -9178,42 +9186,42 @@ msgstr "<strong>ERREUR</strong> : Utilisateur en attente d'approbation."
 msgid "author"
 msgstr "auteur"
 
-#: themes/foodiepro-2.1.8/functions.php:754
+#: themes/foodiepro-2.1.8/functions.php:765
 msgid "Recipe, Ingredient, Keyword, Author..."
 msgstr "Recette, ingrédient, mot-clé, auteur..."
 
-#: themes/foodiepro-2.1.8/functions.php:897
+#: themes/foodiepro-2.1.8/functions.php:908
 msgid "Read More"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:923
+#: themes/foodiepro-2.1.8/functions.php:934
 #, fuzzy
 #| msgid "Comment"
 msgid "Comments"
 msgstr "Ajouter un commentaire"
 
-#: themes/foodiepro-2.1.8/functions.php:932
+#: themes/foodiepro-2.1.8/functions.php:943
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:202
 #, fuzzy
 #| msgid "Previous Feeds"
 msgid "Previous comments"
 msgstr "Nouvelles précédentes"
 
-#: themes/foodiepro-2.1.8/functions.php:938
+#: themes/foodiepro-2.1.8/functions.php:949
 #, fuzzy
 #| msgid "Comment"
 msgid "Next comments"
 msgstr "Ajouter un commentaire"
 
-#: themes/foodiepro-2.1.8/functions.php:956
+#: themes/foodiepro-2.1.8/functions.php:967
 msgid "Your answer here"
 msgstr "Entrez votre réponse ci-dessous"
 
-#: themes/foodiepro-2.1.8/functions.php:971
+#: themes/foodiepro-2.1.8/functions.php:982
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:971
+#: themes/foodiepro-2.1.8/functions.php:982
 msgid "Legal notice"
 msgstr "Mentions légales"
 

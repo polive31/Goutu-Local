@@ -63,6 +63,10 @@ span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
 	float:left;
 	padding-left:30px;
 	max-width:50%;
+	user-select: none;
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+	-moz-user-select: none;     /* Firefox all */
+	-ms-user-select: none;      /* IE 10+ */	
 }
 
 .label-container {
@@ -114,13 +118,22 @@ span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
 }
 
 #servings .fa {
-  font-size: 20px;
-  margin: 0 3px;
-  color: #444;
-  font-size: 20px;
-  margin: 0 3px;
-  color: #444;
+  /*color: #444;*/
+  color: #797979;  
+  font-size: 26px;
   cursor:pointer;
+}
+
+#servings .fa:hover {
+  color: #222;  
+}
+
+#servings .fa#dec {
+    margin-right: 5px;
+}
+
+#servings .fa#inc {
+    margin-left: 5px;
 }
 
 #servings .recipe-label,
@@ -141,10 +154,6 @@ input.adjust-recipe-servings {
 	border-radius:5px;
 	line-height:20px;
 	font-size:16px;
-}
-
-#servings .fa:hover {
-	color: #666;
 }
 
 /* Ingredients */

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2018-11-19 00:14+0100\n"
+"POT-Creation-Date: 2018-11-20 00:38+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -78,17 +78,17 @@ msgid ""
 "first, or <a href=\"plugins.php\">deactivate BP Custom Shortcodes</a>."
 msgstr ""
 
-#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:34
+#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:39
 msgid "Published a new recipe"
 msgstr ""
 
-#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:35
+#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:40
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:20
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_shortcode_options.php:4
 msgid "Recipes"
 msgstr ""
 
-#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:36
+#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:41
 #: plugins/custom-recipe-templates/widgets/custom_nutrition_label_widget.php:64
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_meta_box.php:60
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:21
@@ -106,13 +106,13 @@ msgstr ""
 msgid "Recipe"
 msgstr ""
 
-#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:144
+#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:138
 #, php-format
 msgid ""
 "%1$s wrote a new post, <a class=\"activity-post-title\" href=\"%2$s\">%3$s</a>"
 msgstr ""
 
-#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:147
+#: plugins/custom-buddypress-helpers/includes/BP_Activity_Customizations.php:141
 #, php-format
 msgid ""
 "%1$s wrote a new recipe, <a class=\"activity-post-title\" href=\"%2$s\">%3$s</"
@@ -1227,6 +1227,14 @@ msgstr ""
 msgid "Level"
 msgstr ""
 
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:123
+msgid "Decrease servings"
+msgstr ""
+
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:125
+msgid "Increase servings"
+msgstr ""
+
 #: plugins/custom-recipe-templates/templates/custom_submission_form.php:8
 #: plugins/custom-recipe-templates/templates/custom_submission_form.php:9
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_whitelist.php:267
@@ -1787,7 +1795,7 @@ msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr ""
 
 #: plugins/custom-site-notifications/includes/CustomSiteNotifications.php:74
-#: themes/foodiepro-2.1.8/functions.php:971
+#: themes/foodiepro-2.1.8/functions.php:982
 msgid "All rights reserved"
 msgstr ""
 
@@ -8229,36 +8237,36 @@ msgstr ""
 msgid "author"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:754
+#: themes/foodiepro-2.1.8/functions.php:765
 msgid "Recipe, Ingredient, Keyword, Author..."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:897
+#: themes/foodiepro-2.1.8/functions.php:908
 msgid "Read More"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:923
+#: themes/foodiepro-2.1.8/functions.php:934
 msgid "Comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:932
+#: themes/foodiepro-2.1.8/functions.php:943
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:202
 msgid "Previous comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:938
+#: themes/foodiepro-2.1.8/functions.php:949
 msgid "Next comments"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:956
+#: themes/foodiepro-2.1.8/functions.php:967
 msgid "Your answer here"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:971
+#: themes/foodiepro-2.1.8/functions.php:982
 msgid "Contact us"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:971
+#: themes/foodiepro-2.1.8/functions.php:982
 msgid "Legal notice"
 msgstr ""
 

@@ -858,6 +858,7 @@ ul[aria-multiselectable=true] .select2-results__option[aria-selected=true] {
   
    td.recipe-general-form-label {
     float: left;
+    padding-top:10px;
   }
   
    td.recipe-general-form-field {
@@ -884,19 +885,19 @@ ul[aria-multiselectable=true] .select2-results__option[aria-selected=true] {
   #recipe-instructions td.sort-handle,
   #recipe-ingredients td.sort-handle {
     float:left;
-    width:30px;
+    /*width:30px;*/
   }  
 
   #recipe-instructions td.delete-button,
   #recipe-ingredients td.delete-button {
-    width:30px;
+    /*width:30px;*/
     float:right;
   }  
 
  #recipe-instructions td.instruction-content,
  #recipe-ingredients td.ingredient-preview {
     float:left;
-    width:calc(100% - 60px);
+    width:calc(100% - 70px);
   } 
 
   #recipe-ingredients tr.ingredient.new td.ingredient-input {

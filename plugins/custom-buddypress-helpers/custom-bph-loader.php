@@ -30,6 +30,9 @@ if ( class_exists( 'BuddyPress' ) ) {
 /* Support functions 
 ------------------------------------------------------------*/
 function bp_social_helpers_load() {
+	// Includes
+	require_once 'includes/BP_Activity_Customizations.php';
+	// Widgets
 	require_once 'widgets/BP-custom-login-widget.php';
 	require_once 'widgets/BP-latest-registered-members-widget.php';
 	require_once 'widgets/BP-member-profile-widget.php';

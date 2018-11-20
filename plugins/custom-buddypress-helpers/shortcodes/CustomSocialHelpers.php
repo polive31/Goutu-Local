@@ -104,7 +104,7 @@ class CustomSocialHelpers {
 		/* Render output */
 		if ($a['html']=='true') { // return whole html link markup
 			$count= $count?" ($count)":'';
-			$link = '<a class="' . $class . 'mega-menu-link" href="' . $url . '">' . $headline . $count . '</a>';
+			$link = '<a class="' . $item . ' mega-menu-link" href="' . $url . '">' . $headline . $count . '</a>';
 		}
 		else //only return url
 			$link = $url;

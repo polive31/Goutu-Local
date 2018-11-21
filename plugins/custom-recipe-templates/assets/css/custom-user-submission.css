@@ -163,6 +163,10 @@ h4#headline-notes:before {
   margin-bottom: 0px;
 }
 
+td.recipe-general-form-label {
+  padding-top:10px;
+}
+
 #wpurp_user_submission_form h4 {
   float: left;
   clear: both;
@@ -795,10 +799,6 @@ ul[aria-multiselectable=true] .select2-results__option[aria-selected=true] {
   padding-left: 10px;
 }*/
 
-
-
-
-
 /*
 .select2-results__options{
   font-family:sans-serif!important;
@@ -858,7 +858,6 @@ ul[aria-multiselectable=true] .select2-results__option[aria-selected=true] {
   
    td.recipe-general-form-label {
     float: left;
-    padding-top:10px;
   }
   
    td.recipe-general-form-field {

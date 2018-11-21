@@ -3093,9 +3093,9 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 
 .toolbar-button.disabled a,
 .recipe-button.disabled a,
-.disabled .button-caption {
-    /*color: #D5D5D5;*/
-    color: #ABABAB;
+.disabled .button-caption,
+.mega-disabled {
+    color: #969696;
 }
 
 /* CSS TOOLTIP styling 
@@ -3398,7 +3398,7 @@ input#ug_photo {font-size: 14px; margin-top: 10px;}
 }
 
 .single .entry-header {
-  padding-bottom: 40px;
+  /*padding-bottom: 40px;*/
 }
 
 /* Pages
@@ -3407,7 +3407,7 @@ input#ug_photo {font-size: 14px; margin-top: 10px;}
 .page header.entry-header,
 .single header.entry-header {
     display: inline-block;
-    margin-bottom:20px;
+    /*margin-bottom:20px;*/
 }
 
 .page-header-wrap {
@@ -5505,7 +5505,7 @@ Site Footer
 	.page h1.entry-title, 
 	h1.archive-title, 
 	h1.entry-title {
-		text-align: center;
+		/*text-align: center;*/
 		font-size: 40px;
 		line-height: 45px;
 	}

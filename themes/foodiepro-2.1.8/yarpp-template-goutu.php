@@ -26,15 +26,15 @@ if (have_posts()):?>
 	<?php while (have_posts()) : the_post(); ?>
 		<?php if (has_post_thumbnail()):?>
 				<li class="rpwe-li rpwe-clearfix <?php echo ($first)?'rpwe-first':'';?>">
-					<?php $first=false;?>
 					<a class="rpwe-img" href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
-						<?php the_post_thumbnail( 'square-thumbnail', array( 'title'=> the_title_attribute('echo=0'), 'class' => 'rpwe-aligncenter rpwe-thumb', 'alt' => the_title_attribute('echo=0') ) ); ?>
+						<?php the_post_thumbnail( $first?'medium-thumbnail':'square-thumbnail', array( 'title'=> the_title_attribute('echo=0'), 'class' => 'rpwe-aligncenter rpwe-thumb', 'alt' => the_title_attribute('echo=0') ) ); ?>
 					</a>
 					<h3 class="rpwe-title">
 						<a href="<?php the_permalink() ?>" rel="bookmark">
 							<?php the_title_attribute(); ?>
 						</a>	
 					</h3>
+					<?php $first=false;?>
 				</li>
 		<?php endif; ?>
 	<?php endwhile; ?>

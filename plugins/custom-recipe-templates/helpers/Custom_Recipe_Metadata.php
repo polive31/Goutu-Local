@@ -131,10 +131,12 @@ class Custom_Recipe_Metadata {
             $metadata_ingredients = array();
 
             foreach( $recipe->ingredients() as $ingredient ) {
+                $notes = $ingredient['notes'];
+                unset($ingredient['notes']);
                 // $metadata_ingredient = $ingredient['amount'] . ' ' . $ingredient['unit'] . ' ' . $ingredient['ingredient'];
                 $metadata_ingredient = Custom_WPURP_Ingredient::display( $ingredient );
-                if( trim( $ingredient['notes'] ) !== '' ) {
-                    $metadata_ingredient .= ' (' . $ingredient['notes'] . ')';
+                if( trim( $notes ) !== '' ) {
+                    $metadata_ingredient .= ' (' . $notes . ')';
                 }
 
                 $metadata_ingredients[] = $metadata_ingredient;

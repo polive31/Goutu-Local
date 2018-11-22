@@ -53,3 +53,28 @@ function remove_style($style) {
 	wp_deregister_style($style);
 	wp_dequeue_style($style);
 }
+
+/* =================================================================*/
+/* =         GENERATE PICTURE MARKUP FOR .WEBP SUPPORT
+/* =================================================================*/
+function output_picture_markup($url, $path, $name, $ext=null) {
+	?>
+
+	<picture><?php
+	if (file_exists( $path . $name . '.webp'))
+		echo '<source srcset="' . $url . $name . '.webp" ' . 'type="image/webp">';
+	if (isset($ext)) {
+		echo '<img src="' . $url . $name . '.' . $ext . '">';
+	}
+	else {
+		if (file_exists( $path . $name . '.jpg')) {
+			echo '<img src="' . $url . $name . '.jpg' . '">';
+		}
+		elseif (file_exists( $path . $name . '.png')) {
+			echo '<img src="' . $url . $name . '.png' . '">';
+		}
+	}
+?></picture>
+	<?php
+}
+

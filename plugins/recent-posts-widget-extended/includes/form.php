@@ -212,6 +212,15 @@
 		</p>
 
 		<p>
+			<label class="rpwe-block" for="<?php echo $this->get_field_id( 'first_thumb_height' ); ?>">
+				<?php _e( 'First Thumbnail (height,width)', 'recent-posts-widget-extended' ); ?>
+			</label>
+			<input class= "small-input" id="<?php echo $this->get_field_id( 'first_thumb_height' ); ?>" name="<?php echo $this->get_field_name( 'first_thumb_height' ); ?>" type="number" step="1" min="0" value="<?php echo (int)( $instance['first_thumb_height'] ); ?>" />
+			<input class="small-input" id="<?php echo $this->get_field_id( 'first_thumb_width' ); ?>" name="<?php echo $this->get_field_name( 'first_thumb_width' ); ?>" type="number" step="1" min="0" value="<?php echo (int)( $instance['first_thumb_width'] ); ?>"/>
+		</p>
+
+
+		<p>
 			<label class="rpwe-block" for="<?php echo $this->get_field_id( 'thumb_height' ); ?>">
 				<?php _e( 'Thumbnail (height,width,align)', 'recent-posts-widget-extended' ); ?>
 			</label>

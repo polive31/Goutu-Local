@@ -121,7 +121,10 @@ class Recent_Posts_Widget_Extended extends WP_Widget {
 		$instance['readmore_text']    = sanitize_text_field( $new_instance['readmore_text'] );
 		$instance['comment_count']    = isset( $new_instance['comment_count'] ) ? (bool) $new_instance['comment_count'] : false;
 
+
 		$instance['thumb']            = isset( $new_instance['thumb'] ) ? (bool) $new_instance['thumb'] : false;
+		$instance['first_thumb_height']     = intval( $new_instance['first_thumb_height'] );
+		$instance['first_thumb_width']      = intval( $new_instance['first_thumb_width'] );
 		$instance['thumb_height']     = intval( $new_instance['thumb_height'] );
 		$instance['thumb_width']      = intval( $new_instance['thumb_width'] );
 		$instance['thumb_default']    = esc_url_raw( $new_instance['thumb_default'] );

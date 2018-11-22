@@ -522,6 +522,7 @@ label.add-instruction-thumbnail {
   color: #2b2b2b;
   outline: 0;
   transition: 50ms border-color ease-in-out;
+  line-height: 22px;  
 }
 
 /* make it red instead (with with same width and style) */

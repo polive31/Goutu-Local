@@ -31,7 +31,7 @@ class Custom_WPURP_Recipe extends WPURP_Recipe {
                 update_post_meta( $this->ID(), $field, $time );
                 $_POST[$field]=$time;
             }
-            else 
+            elseif ( isset($_POST[$field]) )
                 update_post_meta( $this->ID(), $field, $_POST[$field] );
         }
     }
@@ -106,13 +106,15 @@ class Custom_WPURP_Recipe extends WPURP_Recipe {
             $meta_name = "recipe_{$type}_time";
             $minutes = $this->meta( $meta_name );        
 
-            $days = floor($minutes / 1440);
-            $minutes = $minutes % 1440;
+            if ($minutes) {
+                $days = floor($minutes / 1440);
+                $minutes = $minutes % 1440;
 
-            $hours = floor($minutes / 60);
-            $minutes = $minutes % 60;    
+                $hours = floor($minutes / 60);
+                $minutes = $minutes % 60;    
 
-            $meta = sprintf('P%dDT%dH%dM', $days, $hours, $minutes);
+                $meta = sprintf('P%dDT%dH%dM', $days, $hours, $minutes);
+            }
         }
         return $meta;
     } 

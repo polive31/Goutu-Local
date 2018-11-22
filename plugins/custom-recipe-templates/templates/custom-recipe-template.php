@@ -17,7 +17,7 @@
 
 					<!-- Recipe Rate Button -->
 					<div class="recipe-button tooltip tooltip-above tooltip-left <?php echo is_user_logged_in()?'':'disabled';?>" id="rate">
-						<a href="<?php echo is_user_logged_in()?'#':'/connexion';?>" class="recipe-review-button" id="<?php echo is_user_logged_in()?'recipe-review':'join-us';?>">
+						<a href="<?php echo is_user_logged_in()?'#':'/connexion';?>" class="recipe-review-button" id="<?php echo is_user_logged_in()?'recipe-review':'join-us';?>" onClick="<?= is_user_logged_in()?'':"ga('send','event','join-us','click','recipe-rate', 0)"; ?>">
 						<div class="button-caption"><?php echo __('Rate','foodiepro'); ?></div>
 						</a>
 						[tooltip text="<?php echo __('Comment and rate this recipe','foodiepro'); ?>" pos="top"]   

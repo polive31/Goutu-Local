@@ -30,7 +30,7 @@ class BP_Activity_Customizations {
 	  bp_activity_set_post_type_tracking_args( 'post', array(
 	      'component_id'             => buddypress()->blogs->id,
 	      'action_id'                => 'new_blog_post',
-	      'format_callback'			 => 'custom_format_activity_action_post',
+	      'format_callback'			 => array($this,'custom_format_activity_action_post'),
 		)	);
 
 	  bp_activity_set_post_type_tracking_args( 'recipe', array(
@@ -40,7 +40,7 @@ class BP_Activity_Customizations {
 	      'bp_activity_front_filter' 	=> __( 'Recipes', 'foodiepro' ),
 	      'singular' 					=> __( 'Recipe', 'foodiepro' ),
 	      'contexts'                 	=> array( 'activity', 'member' ),
-	      'format_callback'				=> 'custom_format_activity_action_post',
+	      'format_callback'				=> array($this,'custom_format_activity_action_post'),
 	      'activity_comment'         	=> true,
 	      'position'                 	=> 100,
 	  ) );

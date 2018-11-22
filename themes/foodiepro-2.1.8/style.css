@@ -3094,7 +3094,7 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 .toolbar-button.disabled a,
 .recipe-button.disabled a,
 .disabled .button-caption,
-.mega-disabled {
+#mega-menu-wrap-secondary #mega-menu-secondary > li.mega-menu-item.mega-disabled > a.mega-menu-link {
     color: #969696;
 }
 

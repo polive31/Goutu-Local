@@ -32,11 +32,14 @@ class Custom_Recipe_Favorite extends WPURP_Template_Block {
             $this->link_id='id="join-us"';
             $favorites_link = '/connexion';
             $link_url = '/connexion';
+            // $onclick = "_gaq.push(['_trackEvent’, 'join-us', 'click’, 'recipe-rate, '0’]);";
+            $onclick = "ga('send','event','join-us','click','recipe-rate', 0)";
         } 
         else {
             $this->link_id='';
         	$this->class_id .= ' logged-in';
         	$favorites_link = do_shortcode('[permalink slug="favoris-recettes"]');
+            $onclick = "";
         }
         
         $tooltip_in = sprintf(__('In my <a href="%s">favorites</a>','foodiepro'),$favorites_link);
@@ -60,7 +63,7 @@ class Custom_Recipe_Favorite extends WPURP_Template_Block {
         ob_start();
 ?>
 
-				<a href="<?php echo $link_url;?>" <?php echo $this->link_id;?> class="<?php echo $this->class_id; ?>" data-recipe-id="<?php echo $recipe->ID(); ?>">
+				<a href="<?php echo $link_url;?>" <?php echo $this->link_id;?> class="<?php echo $this->class_id; ?>" data-recipe-id="<?php echo $recipe->ID(); ?>" onClick="<?= $onclick; ?>" >
 				<div class="button-caption"><?php echo __('Favorites','foodiepro'); ?></div>
                 </a>
 <?php 

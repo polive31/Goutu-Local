@@ -65,7 +65,7 @@ class Custom_WPURP_Recipe extends WPURP_Recipe {
         elseif ( $target=='form' ) {
             $description = $content;
         }
-        return esc_html($description);
+        return wp_kses($description);
     }
 
     public function extfields() {

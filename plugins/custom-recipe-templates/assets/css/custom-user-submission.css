@@ -153,6 +153,15 @@ h4#headline-notes:before {
 }
 
 /*Containers */
+
+table.recipe-form {
+  float:left;
+  clear:both;
+  width:100%;
+  border-collapse:separate;  
+  border-spacing: 0 10px;   
+}
+
 .recipe-image-container,
 .recipe-tags-container,
 .recipe-general-container,
@@ -210,13 +219,10 @@ textarea.recipe-instruction::placeholder,
 /* Ingredients & Instructions section 
 --------------------------------------------------------------------*/
  table#recipe-ingredients {
-  border-collapse:separate; 
-  border-spacing: 0 10px;
   border-color: #e4e4e4;
 }
 
  table#recipe-instructions {
-  border-collapse:separate; 
   border-spacing: 0 20px;
 }
 
@@ -399,8 +405,12 @@ label.add-instruction-thumbnail {
   content:"\f044";
 }
 
- .button {
+.buttons-box {
   float: left;
+}
+ 
+.button {
+  display: inline-block;
   padding: 8px 10px;
   margin: 20px 10px 10px 0;
   border-radius: 2px;

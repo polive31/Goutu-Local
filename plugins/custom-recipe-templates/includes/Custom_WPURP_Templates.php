@@ -243,55 +243,36 @@ class Custom_WPURP_Templates {
 			
 		if ( is_singular('recipe') ) {
 		  	$css_enqueue=array();
+		  	
 		  	$this->custom_enqueued_styles=array(
 				array(
-					'url' => self::$_PluginUri . 'assets/css/custom-recipe.css',
-					'path' => self::$_PluginPath . 'assets/css/custom-recipe.css',
+					'url' => self::$_PluginUri . 'assets/css/',
+					'path' => self::$_PluginPath . 'assets/css/',
+					'file' => 'custom-recipe.css',
 					'public' => true,
 				),
 				array(
 					'url' => '//fonts.googleapis.com/css?family=Cabin',
 					'public' => true,
-	          	),				                             
+	          	),			          			                             
 			);
 		}
 		elseif ( is_page( 'menus' ) ) { // Menu page
 		  	$css_enqueue=array();
+
 		  	$this->custom_enqueued_styles=array(
 				array(
 					'name' => 'custom-menu-styles',		
-					'url' => self::$_PluginUri . 'assets/css/custom-menu.css',
-					'path' => self::$_PluginPath . 'assets/css/custom-menu.css',
+					'url' => self::$_PluginUri . 'assets/css/',
+					'path' => self::$_PluginPath . 'assets/css/',
+					'file' => 'custom-menu.css',
 					'public' => true,
 		        ),
 			);		
 		}
 		elseif ( is_page( [self::RECIPE_NEW_SLUG, self::RECIPE_EDIT_SLUG] ) ) {
-			// $css_enqueue=array();
-			
-			// Remove public_base.css stylesheet from enqueued styles
-			foreach ($css_enqueue as $key=>$style) {
-				if ( strpos('public_base.css',$style['file']) ) {
-					break 1;
-				}
-			}
-			unset($css_enqueue[$key]);
-
-//		  $css_enqueue[]=array(
-//		              'name' => 'jquery-ui',
-//		              'file' => '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css',
-//		              'direct' => true,
-//		              'public' => true,
-//		              'url' => '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css',
-//		              'dir' => '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css',
-//		          ); 
-	  // 		$css_enqueue[]=array(
-			// 	'url' =>  self::$_PluginUri . 'vendor/select2/css/select2.min.css',
-			// 	'dir' =>  self::$_PluginPath . 'vendor/select2/css/select2.min.css',
-			// 	'file' => 'select2.min.css',
-			// 	'public' => true,
-			// 	'direct' => true,
-			// ); 			
+			$css_enqueue=array();
+						
 			$this->custom_enqueued_styles=array(
 				array(
 					'url' =>  self::$_PluginUri . 'vendor/select2/css/',
@@ -305,24 +286,27 @@ class Custom_WPURP_Templates {
 					'public' => true,
 	          	),
 	  			array(
-					'url' => self::$_PluginUri . 'vendor/autocomplete/jquery.auto-complete.css',
-					'path' => self::$_PluginPath . 'vendor/autocomplete/jquery.auto-complete.css',
+					'url' => self::$_PluginUri . 'vendor/autocomplete/',
+					'path' => self::$_PluginPath . 'vendor/autocomplete/',
+					'file' => 'jquery.auto-complete.css',
 					'public' => true,
 					'direct' => true,
 	          	),		          	
 	          	// The style below is needed for recipe preview
 	  			array(
-					'url' => self::$_PluginUri . 'assets/css/custom-recipe.css',
-					'path' => self::$_PluginPath . 'assets/css/custom-recipe.css',
+					'url' => self::$_PluginUri . 'assets/css/',
+					'path' => self::$_PluginPath . 'assets/css/',
+					'file' => 'custom-recipe.css',
 					'public' => true,
 					'direct' => true,
 	          	),
 	  			array(
-					'url' => self::$_PluginUri . 'assets/css/custom-user-submission.css',
-					'path' => self::$_PluginPath . 'assets/css/custom-user-submission.css',
+					'url' => self::$_PluginUri . 'assets/css/',
+					'path' => self::$_PluginPath . 'assets/css/',
+					'file' => 'custom-user-submission.css',
 					'public' => true,
 					'direct' => true,
-	          	),        		          	
+	          	),              	   		          	
 			);	          		
 		}
 		else 

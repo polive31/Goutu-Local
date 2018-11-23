@@ -8,7 +8,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
 <input type="hidden" name="recipe_meta_box_nonce" value="<?php echo wp_create_nonce( 'recipe' ); ?>" />
 <div class="recipe-container recipe-general-container">
     <h4 id="headline-general"><?php _e( 'General', 'foodiepro' ); ?></h4>
-    <table class="recipe-general-form">
+    <table class="recipe-form" id="recipe-general-form">
         <tr class="recipe-general-form-description">
             <td class="recipe-general-form-label"><label for="recipe_description"><?php _e('Description', 'foodiepro' ); ?><?php if( in_array( 'recipe_description', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
             <td class="recipe-general-form-field">
@@ -116,9 +116,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
 <div class="recipe-container recipe-ingredients-container" data-units='<?php echo json_encode(Custom_WPURP_Ingredient::get_units(false));?>'  data-units-plural='<?php echo json_encode(Custom_WPURP_Ingredient::get_units(true));?>'>
     <h4 id="headline-ingredients"><?php _e( 'Ingredients', 'foodiepro' ); ?></h4>
     <?php $ingredients = $recipe->ingredients(); ?>
-    <table id="recipe-ingredients">
-        <thead>
-        </thead>
+    <table class="recipe-form" id="recipe-ingredients">
         <tr class="ingredient-group ingredient-group-first">
                 <td class="group" colspan="6">
                     <div class="group-container">
@@ -242,11 +240,13 @@ if( !isset( $required_fields ) ) $required_fields = array();
         </tr>
         </tbody>
     </table>
-    <div class="button" id="ingredients-add-box">
-        <a href="#" id="ingredients-add"><?php _e( 'Add an ingredient', 'foodiepro' ); ?></a>
-    </div>
-    <div  class="button" id="ingredients-add-group-box">
-        <a href="#" id="ingredients-add-group"><?php _e( 'Add an ingredient group', 'foodiepro' ); ?></a>
+    <div class="buttons-box">
+        <div class="button" id="ingredients-add-box">
+            <a href="#" id="ingredients-add"><?php _e( 'Add an ingredient', 'foodiepro' ); ?></a>
+        </div>
+        <div  class="button" id="ingredients-add-group-box">
+            <a href="#" id="ingredients-add-group"><?php _e( 'Add an ingredient group', 'foodiepro' ); ?></a>
+        </div>
     </div>
     <div class="recipe-form-notes">
         <?php _e( "<strong>Use the TAB key</strong> while adding ingredients, it will automatically create new fields. <strong>Don't worry about empty lines</strong>, these will be ignored.", 'foodiepro' ); ?>
@@ -258,7 +258,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
 <div class="recipe-container recipe-instructions-container">
     <h4 id="headline-instructions"><?php _e( 'Instructions', 'foodiepro' ); ?></h4>
     <?php $instructions = $recipe->instructions(); ?>
-    <table id="recipe-instructions">
+    <table class="recipe-form" id="recipe-instructions">
         <thead>
         <tr class="instruction-group instruction-group-first">
 			<td colspan="3" class="group">
@@ -408,11 +408,13 @@ if( !isset( $required_fields ) ) $required_fields = array();
         </tbody>
     </table>
 
-    <div class="button" id="ingredients-add-box">
-        <a href="#" id="instructions-add"><?php _e( 'Add an instruction', 'foodiepro' ); ?></a>
-    </div>
-    <div class="button" id="ingredients-add-group-box">
-        <a href="#" id="instructions-add-group"><?php _e( 'Add an instruction group', 'foodiepro' ); ?></a>
+    <div class="buttons-box">
+        <div class="button" id="ingredients-add-box">
+            <a href="#" id="instructions-add"><?php _e( 'Add an instruction', 'foodiepro' ); ?></a>
+        </div>
+        <div class="button" id="ingredients-add-group-box">
+            <a href="#" id="instructions-add-group"><?php _e( 'Add an instruction group', 'foodiepro' ); ?></a>
+        </div>
     </div>
     <div class="recipe-form-notes">
         <?php _e( "<strong>Use the TAB key</strong> while adding instructions, it will automatically create new fields. <strong>Don't worry about empty lines</strong>, these will be ignored.", 'foodiepro' ); ?>
@@ -423,7 +425,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
     <h4 id="headline-notes"><?php _e( 'Recipe notes', 'foodiepro' ) ?></h4>
 		<textarea name="recipe_notes" id="recipe_notes" rows="6" placeholder="<?php echo __('Provide any additional notes here... E.g. side dishes, wine to drink with...','foodiepro');?>"><?php echo esc_html( $recipe->notes() ); ?></textarea>
 </div>
-<?php
+<!-- <?php
 $custom_fields_addon = WPUltimateRecipe::addon( 'custom-fields' );
 if( $custom_fields_addon && ( !isset( $wpurp_user_submission ) || WPUltimateRecipe::option( 'recipe_fields_in_user_submission', '1' ) == '1' ) )
 {
@@ -446,6 +448,6 @@ if( $custom_fields_addon && ( !isset( $wpurp_user_submission ) || WPUltimateReci
             </tr>
         <?php } ?>
     </table>
-</div>
+</div> -->
 <?php }
 } ?>

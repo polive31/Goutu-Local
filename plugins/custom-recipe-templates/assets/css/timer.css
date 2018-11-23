@@ -1,0 +1,37 @@
+#wpurp-timer-container {
+  position: fixed;
+  z-index: 16777271;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 50px;
+  font-size: 24px;
+  font-family: monospace, sans-serif;
+  line-height: 50px;
+  background-color: black;
+  color: white; }
+  #wpurp-timer-container .wpurp-timer-icon {
+    cursor: pointer;
+    padding: 0 10px; }
+    #wpurp-timer-container .wpurp-timer-icon svg {
+      display: table-cell;
+      vertical-align: middle;
+      width: 24px;
+      height: 24px; }
+  #wpurp-timer-container span {
+    display: table-cell;
+    vertical-align: middle; }
+    #wpurp-timer-container span#wpurp-timer-bar-container {
+      width: 100%;
+      padding: 0 10px 0 15px; }
+      #wpurp-timer-container span#wpurp-timer-bar-container #wpurp-timer-bar {
+        display: block;
+        border: 3px solid white;
+        height: 24px;
+        width: 100%; }
+        #wpurp-timer-container span#wpurp-timer-bar-container #wpurp-timer-bar #wpurp-timer-bar-elapsed {
+          display: block;
+          height: 100%;
+          width: 0%;
+          background-color: white;
+          border: 0; }

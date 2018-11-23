@@ -73,7 +73,7 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
         return $output;
     }
 
-    public function display($vertical,$horizontal,$style='') {
+    public function display($vertical='above',$horizontal='left',$style='') {
         echo $this->get_html($vertical,$horizontal,$style);
     }
 

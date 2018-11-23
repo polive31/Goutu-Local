@@ -7,7 +7,7 @@
 		<div class="toolbar-button tooltip tooltip-above tooltip-left" id="like">
 		<?php
 			$post_like = new Custom_Social_Like_Post( 'post' );
-			$post_like->display();
+			$post_like->display('above','left');
 		?>
 		</div>		
 

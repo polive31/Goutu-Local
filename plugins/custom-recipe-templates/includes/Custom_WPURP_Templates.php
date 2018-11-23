@@ -231,13 +231,6 @@ class Custom_WPURP_Templates {
 
         return $out;
     }
-	
-
-
-
-
-
-
 
 
 /********************************************************************************
@@ -351,15 +344,22 @@ class Custom_WPURP_Templates {
 
 					
 		    	$js_enqueue=array(
+	            
+	    		);	
+
+				$this->custom_enqueued_scripts = array (
 		            array(
 		                'name' => 'fraction',
-		                'url' => WPUltimateRecipe::get()->coreUrl . '/vendor/fraction-js/index.js',
+		                'url' => self::$_PluginUri . '/vendor/fraction-js/',
+		                'url' => self::$_PluginPath . '/vendor/fraction-js/',
+		                'file' => 'fraction.js',
 		                'public' => true,
 		                'admin' => true,
 		            ),
 		            array(
 		                'name' => 'print_button',
-		                'url' => WPUltimateRecipe::get()->coreUrl . '/js/print_button.js',
+		                'url' => WPUltimateRecipe::get()->coreUrl . '/js/',
+		                'file' => 'print_button.js',
 		                'public' => true,
 		                'deps' => array(
 		                    'jquery',
@@ -377,7 +377,8 @@ class Custom_WPURP_Templates {
 		            ),
 		            array(
 		                'name' => 'wpurp-timer',
-		                'url' => WPUltimateRecipePremium::get()->premiumUrl . '/addons/timer/js/timer.js',
+		                'url' => WPUltimateRecipePremium::get()->premiumUrl . '/addons/timer/js/',
+		                'file' => 'timer.js',
 		                'premium' => true,
 		                'public' => true,
 		                'deps' => array(
@@ -391,15 +392,13 @@ class Custom_WPURP_Templates {
 		                        'close' => $close,
 		                    ),
 		                )
-		            ),		            
-	    		);	
-
-				$this->custom_enqueued_scripts = array (
+		            ),						
 		    	    array(
 		                'name' => 'custom-adjustable-servings',
 		                // 'url' => WPUltimateRecipe::get()->coreUrl . '/js/adjustable_servings.js',
-		                'url' => self::$_PluginUri . 'assets/js/custom_adjustable_servings.js',
-		                'path' => self::$_PluginPath . 'assets/js/custom_adjustable_servings.js',
+		                'url' => self::$_PluginUri . 'assets/js/',
+		                'path' => self::$_PluginPath . 'assets/js/',
+		                'file' => 'custom_adjustable_servings.js',
 		                'public' => true,
 		                'deps' => array(
 		                    'jquery',
@@ -415,8 +414,9 @@ class Custom_WPURP_Templates {
 					array(
 		                'name' => 'custom-favorite-recipe',
 		                /*'url' => WPUltimateRecipePremium::get()->premiumUrl . '/addons/favorite-recipes/js/favorite-recipes.js',*/
-		                'url' => self::$_PluginUri . 'assets/js/custom_favorite_recipe.js',
-		                'path' => self::$_PluginPath . 'assets/js/custom_favorite_recipe.js',
+		                'url' => self::$_PluginUri . 'assets/js/',
+		                'path' => self::$_PluginPath . 'assets/js/',
+		                'file' => 'custom_favorite_recipe.js',
 		               	// 'premium' => true,
 		                'public' => true,
 		                'setting' => array( 'favorite_recipes_enabled', '1' ),
@@ -433,7 +433,8 @@ class Custom_WPURP_Templates {
 		                /*'url' => WPUltimateRecipePremium::get()->premiumUrl . '/js/add-to-shopping-list.js',*/
 		                'name' => 'custom-shopping-list',
 		                'url' => self::$_PluginUri . 'assets/js/custom_shopping_list.js',
-		                'path' => self::$_PluginPath . 'assets/js/custom_shopping_list.js',
+		                'path' => self::$_PluginPath . 'assets/js/',
+		                'file' => 'custom_shopping_list.js',
 		                // 'premium' => true,
 		                'public' => true,
 		                'deps' => array(
@@ -578,21 +579,9 @@ class Custom_WPURP_Templates {
 	}
 
 
-
-
-
-
-
-
 /********************************************************************************
 ****                GENERAL ENQUEUE FUNCTIONS                          **********
 ********************************************************************************/
-
-
-
-
-
-
 
 	public function custom_wpurp_scripts_styles_enqueue() {
 

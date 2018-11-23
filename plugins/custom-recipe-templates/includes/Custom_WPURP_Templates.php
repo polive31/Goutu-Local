@@ -145,7 +145,9 @@ class Custom_WPURP_Templates {
             $meta = WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ) != 'json' && $args['template_type'] == 'recipe' && $args['desktop'] ? ' itemprop="recipeIngredient"' : '';
 
             $out .= '<li class="wpurp-recipe-ingredient"' . $meta . '>';
-            $out .= '<input type="checkbox" name="ingredient-check">&nbsp;</input>';
+
+            // $out .= '<input type="checkbox" name="ingredient-check">&nbsp;</input>';
+            $out .= '<span class="checkbox">&nbsp;</span>';
 
             $ingredient['links'] = 'yes';
             $out .= Custom_WPURP_Ingredient::display( $ingredient );
@@ -153,7 +155,23 @@ class Custom_WPURP_Templates {
             $out .= '</li>';
         }
         //$out .= '</ul>';
-
+        ob_start();
+        ?>
+        <script>
+			jQuery(document).ready(function(){
+			// console.log('Inline ingredient checkbox');	
+				jQuery(document).on('click', '.wpurp-recipe-ingredient .checkbox', function(e) {
+					// console.log('Click on ingredient checkbox detected !');
+					e.preventDefault();
+					e.stopPropagation();
+					jQuery(this).toggleClass('clicked');
+				});
+			});
+        </script>
+        <?php
+        $out .= ob_get_contents();
+        ob_end_clean();       
+        
         return $out;
     }
             
@@ -225,14 +243,6 @@ class Custom_WPURP_Templates {
 /********************************************************************************
 ****                   CUSTOM ENQUEUE STYLES                           **********
 ********************************************************************************/
-
-
-
-
-
-
-
-
 	
 	public function enqueue_wpurp_css($css_enqueue) {
 		
@@ -323,23 +333,9 @@ class Custom_WPURP_Templates {
 	}
 
 
-
-
-
-
-
-
-
 /********************************************************************************
 ****                   CUSTOM ENQUEUE SCRIPTS                           **********
 ********************************************************************************/
-
-
-
-
-
-
-
 
 	public function enqueue_wpurp_js($js_enqueue) {
 		
@@ -379,23 +375,6 @@ class Custom_WPURP_Templates {
 		                    'permalinks' => get_option('permalink_structure'),
 		                ),
 		            ),
-		    	    array(
-		                'name' => 'adjustable-servings',
-		                // 'url' => WPUltimateRecipe::get()->coreUrl . '/js/adjustable_servings.js',
-		                'url' => self::$_PluginUri . 'assets/js/custom_adjustable_servings.js',
-		                'path' => self::$_PluginPath . 'assets/js/custom_adjustable_servings.js',
-		                'public' => true,
-		                'deps' => array(
-		                    'jquery',
-		                    'fraction',
-		                	'print_button',
-		                ),
-		                'data' => array(
-		                    'name' => 'wpurp_servings',
-		                    'precision' => 1,
-		                    'decimal_character' => ',',
-		                ),
-		            ),
 		            array(
 		                'name' => 'wpurp-timer',
 		                'url' => WPUltimateRecipePremium::get()->premiumUrl . '/addons/timer/js/timer.js',
@@ -416,6 +395,23 @@ class Custom_WPURP_Templates {
 	    		);	
 
 				$this->custom_enqueued_scripts = array (
+		    	    array(
+		                'name' => 'custom-adjustable-servings',
+		                // 'url' => WPUltimateRecipe::get()->coreUrl . '/js/adjustable_servings.js',
+		                'url' => self::$_PluginUri . 'assets/js/custom_adjustable_servings.js',
+		                'path' => self::$_PluginPath . 'assets/js/custom_adjustable_servings.js',
+		                'public' => true,
+		                'deps' => array(
+		                    'jquery',
+		                    'fraction',
+		                	'print_button',
+		                ),
+		                'data' => array(
+		                    'name' => 'wpurp_servings',
+		                    'precision' => 1,
+		                    'decimal_character' => ',',
+		                ),
+		            ),					
 					array(
 		                'name' => 'custom-favorite-recipe',
 		                /*'url' => WPUltimateRecipePremium::get()->premiumUrl . '/addons/favorite-recipes/js/favorite-recipes.js',*/

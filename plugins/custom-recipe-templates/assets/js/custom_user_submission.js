@@ -29,8 +29,8 @@ jQuery(document).ready(function() {
     /*
      * Do not allow removal of first ingredient/instruction
      */
-    jQuery('#recipe-ingredients tr.ingredient:first').find('span.ingredients-delete').hide();
-    jQuery('#recipe-instructions tr.instruction:first').find('span.instructions-delete').hide();
+    // jQuery('#recipe-ingredients tr.ingredient:first').find('span.ingredients-delete').hide();
+    // jQuery('#recipe-instructions tr.instruction:first').find('span.instructions-delete').hide();
 
     /*
      * Ingredient Groups

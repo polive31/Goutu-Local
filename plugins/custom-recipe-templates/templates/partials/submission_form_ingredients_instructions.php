@@ -202,7 +202,8 @@ if( !isset( $required_fields ) ) $required_fields = array();
                        <!--  <input type="text" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['notes'] ); ?>" placeholder="<?php _e( 'Notes', 'foodiepro' ); ?>" /> -->
                         <input type="hidden" name="recipe_ingredients[<?php echo $i; ?>][group]" class="ingredients_group" id="ingredient_group_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['group'] ); ?>" />
                     </td>
-                    <td class="delete-button" colspan="1"><span class="ingredients-delete" title="<?php echo __('Remove this ingredient', 'foodiepro');?>" >&nbsp;</span></td>
+                    <td class="delete-button" colspan="1"><span class="ingredients-delete" title="<?php echo __('Remove this ingredient', 'foodiepro');?>" >&nbsp;</span>
+                    </td>
                 </tr>
                 <?php
                 $i++;

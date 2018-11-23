@@ -145,6 +145,7 @@ class Custom_WPURP_Templates {
             $meta = WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ) != 'json' && $args['template_type'] == 'recipe' && $args['desktop'] ? ' itemprop="recipeIngredient"' : '';
 
             $out .= '<li class="wpurp-recipe-ingredient"' . $meta . '>';
+            $out .= '<input type="checkbox" name="ingredient-check">&nbsp;</input>';
 
             $ingredient['links'] = 'yes';
             $out .= Custom_WPURP_Ingredient::display( $ingredient );

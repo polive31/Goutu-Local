@@ -118,12 +118,12 @@
 						if ($terms!='') {
 							$html = '<div class="label-container" id="servings">';
 							$html .= '<div class="recipe-label">' . __('Serves','foodiepro') . '</div>';
-							$html .= '<div class="recipe-input">';
-							$html .= '<i id="dec" title="' . __('Decrease servings','foodiepro') . '" class="fa fa-minus-circle"></i>';
-							$html .= '<input type="number" min="1" class="adjust-recipe-servings" data-original="' . $recipe->servings_normalized() . '" data-start-servings="' . $recipe->servings_normalized() . '" value="' . $recipe->servings_normalized() . '"/>';
-							$html .= '<i id="inc" title="' . __('Increase servings','foodiepro') . '" class="fa fa-plus-circle"></i>';
-							$html .= ' ' . $recipe->servings_type();
-							$html .= '</div>';
+								$html .= '<div class="recipe-input">';
+								$html .= '<span class="fa qty" id="dec" title="' . __('Decrease servings','foodiepro') . '">&nbsp;</span>';
+								$html .= '<input type="number" min="1" class="adjust-recipe-servings" data-original="' . $recipe->servings_normalized() . '" data-start-servings="' . $recipe->servings_normalized() . '" value="' . $recipe->servings_normalized() . '"/>';
+								$html .= '<span class="fa qty" id="inc" title="' . __('Increase servings','foodiepro') . '">&nbsp;</span>';
+								$html .= '<span>' . $recipe->servings_type() . '</span>';
+								$html .= '</div>';
 							$html .= '</div>';
 							echo $html;
 						}

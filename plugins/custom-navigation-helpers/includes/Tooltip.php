@@ -65,7 +65,7 @@ class Tooltip extends CustomNavigationHelpers {
 	/* =================================================================*/
 	/* = DISPLAY TOOLTIP    
 	/* =================================================================*/
-    public static function display( $content, $vertical, $horizontal, $style ) {
+    public static function display( $content, $vertical, $horizontal, $style='' ) {
     	echo self::get( $content, $vertical, $horizontal, $style );
     }
 

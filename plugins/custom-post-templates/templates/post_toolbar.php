@@ -17,7 +17,7 @@
 			<div class="button-caption"><?php echo __('Print', 'foodiepro'); ?></div>
 			</a>
 			<?php
-			Tooltip::display( __('Print this post','foodiepro') , 'above', 'right');  
+			Tooltip::display( __('Print this post','foodiepro'), 'above', 'right');  
 			?> 
 		</div>	
 

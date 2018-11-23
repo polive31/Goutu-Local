@@ -117,11 +117,9 @@ span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
 	content:"\f04c";
 }
 
-#servings .fa {
-  /*color: #444;*/
+/*#servings .fa {
   color: #797979;  
   font-size: 26px;
-  cursor:pointer;
 }
 
 #servings .fa:hover {
@@ -142,7 +140,49 @@ span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
 #servings #inc {
   display: inline-block;
   vertical-align: middle;
+}*/
+
+#servings .recipe-input {
+  	cursor:pointer;
+    display: inline-block;
+    vertical-align: middle;
 }
+
+.fa.qty {
+	width:34px;
+    padding: 0 0 0 8px;
+    font-size: 20px;   
+}
+
+.fa.qty:before {
+    display: inline-block;
+    vertical-align: middle;
+  	color: #797979;  
+}
+
+.fa.qty:hover:before {
+  	color: inherit;  
+    /*font-size:20px;    */
+    /*padding: 0 0px;*/
+}
+    
+.fa.qty#inc:before {
+	/*content: '\f067';*/
+	content: '\f055';
+}
+.fa.qty#dec:before {
+	/*content: '\f068';*/
+	content: '\f056';
+}
+
+/*.fa.qty.inc:hover:before {
+	content: '\f055';
+}
+.fa.qty.dec:hover:before {
+	content: '\f056';
+}*/
+
+
 
 input.adjust-recipe-servings {
 	width: 40px;
@@ -194,19 +234,8 @@ li.wpurp-recipe-ingredient a:hover {
     list-style-type: none;
 }
 
-.entry-content ul li.wpurp-recipe-ingredient:before {
-    display: inline-block;
-	font-family: fontAwesome;
-	content: "\f096"; /*fa-square-o*/
-	width: 20px;
-}
-
-.entry-content ul li.wpurp-recipe-ingredient:hover:before {
-	cursor:pointer;
-}
-
-.entry-content ul li.wpurp-recipe-ingredient.clicked:before {
-	content: "\f046"; /*fa-check-square-o*/
+.wpurp-recipe-ingredient input[type="checkbox"]:hover {
+    cursor: pointer;
 }
 
 /* Instructions */

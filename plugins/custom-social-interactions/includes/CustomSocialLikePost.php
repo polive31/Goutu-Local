@@ -14,7 +14,7 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
         $this->post_type = $type;
     }
 
-    public function get_html($vertical,$horizontal,$style) {
+    public function get_html($vertical,$horizontal,$style='') {
         $post_id = get_the_id();
         $link_class='social-like-post';
         $link_id='';

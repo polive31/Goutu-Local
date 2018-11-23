@@ -180,6 +180,9 @@ a.nolink {
 
 /* Text-level semantics
 --------------------------------------------- */
+p {
+    word-break: break-all;
+}
 
 abbr[title] {
 	border-bottom:1px dotted;
@@ -3431,7 +3434,7 @@ input#ug_photo {font-size: 14px; margin-top: 10px;}
 .page header.entry-header,
 .single header.entry-header {
     display: inline-block;
-    /*margin-bottom:20px;*/
+    margin-bottom:20px;
 }
 
 .page-header-wrap {
@@ -5533,7 +5536,11 @@ Site Footer
 		font-size: 40px;
 		line-height: 45px;
 	}
-	
+
+/* Post & Recipe tool bar */
+	.button-caption {
+	    display: none;
+	}	
 }
 
 /* Retina smartphone */
@@ -5547,7 +5554,6 @@ Site Footer
 	    flex:1 100%;
 	}
 }
-
 
 @media only screen and (max-width:720px) {
 		

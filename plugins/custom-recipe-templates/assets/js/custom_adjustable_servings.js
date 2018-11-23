@@ -5,7 +5,7 @@ jQuery(document).ready(function() {
     console.log("In custom adjustable servings script");
     
     // Custom increase & decrease quantity buttons
-    jQuery(document).on("click", ".recipe-input i", function() {
+    jQuery(document).on("click", "#servings .qty", function() {
       console.log("Portion ajustment button click");
       var $button = jQuery(this);
       var $input= $button.parent().find("input");
@@ -32,6 +32,7 @@ jQuery(document).ready(function() {
     jQuery(document).on('keyup change', '.adjust-recipe-servings', function(e) {
         var servings_input = jQuery(this);
 
+        console.log('In adjust recipe servings keyup change');
         var amounts = servings_input.parents('.wpurp-container').find('.wpurp-recipe-ingredient-quantity');
         var servings_original = parseFloat(servings_input.data('original'));
         var servings_new = servings_input.val();
@@ -45,6 +46,7 @@ jQuery(document).ready(function() {
 
         RecipePrintButton.update(servings_input.parents('.wpurp-container'));
     });
+
 
     jQuery(document).on('blur', '.adjust-recipe-servings', function(e) {
         var servings_input = jQuery(this);

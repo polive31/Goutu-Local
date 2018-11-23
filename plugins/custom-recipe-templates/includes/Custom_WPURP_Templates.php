@@ -285,14 +285,21 @@ class Custom_WPURP_Templates {
 //		              'url' => '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css',
 //		              'dir' => '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css',
 //		          ); 
-	  		$css_enqueue[]=array(
-				'url' =>  self::$_PluginUri . 'vendor/select2/css/select2.min.css',
-				'dir' =>  self::$_PluginPath . 'vendor/select2/css/select2.min.css',
-				'file' => 'select2.min.css',
-				'public' => true,
-				'direct' => true,
-			); 			
+	  // 		$css_enqueue[]=array(
+			// 	'url' =>  self::$_PluginUri . 'vendor/select2/css/select2.min.css',
+			// 	'dir' =>  self::$_PluginPath . 'vendor/select2/css/select2.min.css',
+			// 	'file' => 'select2.min.css',
+			// 	'public' => true,
+			// 	'direct' => true,
+			// ); 			
 			$this->custom_enqueued_styles=array(
+				array(
+					'url' =>  self::$_PluginUri . 'vendor/select2/css/',
+					'path' =>  self::$_PluginPath . 'vendor/select2/css/',
+					'file' => 'select2.min.css',
+					'public' => true,
+					'direct' => true,
+				),		
 				array(
 					'url' => '//fonts.googleapis.com/css?family=Cabin',
 					'public' => true,
@@ -342,23 +349,19 @@ class Custom_WPURP_Templates {
 				$play = '<i class="fa fa-play" aria-hidden="true"></i>';
 				$close = '<i class="fa fa-times" aria-hidden="true"></i>';
 
-					
-		    	$js_enqueue=array(
-	            
-	    		);	
-
 				$this->custom_enqueued_scripts = array (
 		            array(
 		                'name' => 'fraction',
-		                'url' => self::$_PluginUri . '/vendor/fraction-js/',
-		                'url' => self::$_PluginPath . '/vendor/fraction-js/',
+		                'url' => self::$_PluginUri . 'vendor/fraction/',
+		                'path' => self::$_PluginPath . 'vendor/fraction/',
 		                'file' => 'fraction.js',
 		                'public' => true,
 		                'admin' => true,
 		            ),
 		            array(
 		                'name' => 'print_button',
-		                'url' => WPUltimateRecipe::get()->coreUrl . '/js/',
+		                'url' => self::$_PluginUri . 'assets/js/',
+		                'path' => self::$_PluginPath . 'assets/js/',
 		                'file' => 'print_button.js',
 		                'public' => true,
 		                'deps' => array(
@@ -377,7 +380,8 @@ class Custom_WPURP_Templates {
 		            ),
 		            array(
 		                'name' => 'wpurp-timer',
-		                'url' => WPUltimateRecipePremium::get()->premiumUrl . '/addons/timer/js/',
+		                'url' => self::$_PluginUri . '/assets/js/',
+		                'path' => self::$_PluginPath . '/assets/js/',
 		                'file' => 'timer.js',
 		                'premium' => true,
 		                'public' => true,

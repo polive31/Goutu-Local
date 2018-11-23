@@ -1,6 +1,7 @@
 <!-- Function buttons  -->
 <div class="post-top">
-		<div class="toolbar-buttons">		
+	
+	<div class="toolbar-buttons">		
 
 		<!-- Like Button -->
 		<div class="toolbar-button tooltip tooltip-above tooltip-left" id="like">
@@ -13,20 +14,14 @@
 		<!-- Post Print Button -->
 		<div class="toolbar-button tooltip tooltip-above tooltip-right" id="print">
 			<a class="post-print-button" href="javascript:window.print()" target="_blank">
-<!-- 			<script>
-				function printInNewTab() {
-					var printWindow = window.open('http://server/module/printPage.aspx', '_blank');
-					printWindow.focus();
-					printWindow.print();
-				}
-			</script> -->
 			<div class="button-caption"><?php echo __('Print', 'foodiepro'); ?></div>
 			</a>
 			<?php
 			// echo do_shortcode('[tooltip text="' . __('Print this post','foodiepro') . '" pos="top"]');  
 			Tooltip::display( __('Print this post','foodiepro') , 'top');  
 			?> 
-		</div>				
+		</div>	
+
 		<!-- Post Share Button -->
 		<div class="toolbar-button tooltip tooltip-above" id="share">
 			<a class="post-share-button" id="post-share" cursor-style="pointer">
@@ -42,4 +37,3 @@
 	</div>
 	
 </div>
-

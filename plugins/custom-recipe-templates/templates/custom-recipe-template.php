@@ -16,11 +16,13 @@
 					<div class="recipe-buttons">
 
 					<!-- Recipe Rate Button -->
-					<div class="recipe-button tooltip tooltip-above tooltip-left <?php echo is_user_logged_in()?'':'disabled';?>" id="rate">
+					<div class="recipe-button tooltip <?php echo is_user_logged_in()?'':'disabled';?>" id="rate">
 						<a href="<?php echo is_user_logged_in()?'#':'/connexion';?>" class="recipe-review-button" id="<?php echo is_user_logged_in()?'recipe-review':'join-us';?>" onClick="<?= is_user_logged_in()?'':"ga('send','event','join-us','click','recipe-rate', 0)"; ?>">
 						<div class="button-caption"><?php echo __('Rate','foodiepro'); ?></div>
 						</a>
-						[tooltip text="<?php echo __('Comment and rate this recipe','foodiepro'); ?>" pos="top"]   
+						<?php 
+						Tooltip::display( __('Comment and rate this recipe','foodiepro'), 'above', 'left' );  
+						?>
 					</div>	
 					
 					<!-- Recipe Add to Cart Button -->
@@ -31,42 +33,39 @@
 					</div>	 -->			
 					
 					<!-- Add To Favorites Button -->
-					<div class="recipe-button tooltip tooltip-above tooltip-left <?php echo is_user_logged_in()?'':'disabled';?>" id="favorite">
+					<div class="recipe-button tooltip <?php echo is_user_logged_in()?'':'disabled';?>" id="favorite">
 					<?php
 						$favorite_recipe = new Custom_Recipe_Favorite( is_user_logged_in() );
 						echo $favorite_recipe->output( $recipe );?>
 					</div>			
 
 					<!-- Like Button -->
-					<div class="recipe-button tooltip tooltip-above tooltip-left" id="like">
+					<div class="recipe-button tooltip" id="like">
 					<?php
 						$recipe_like = new Custom_Social_Like_Post( 'recipe' );
-						echo $recipe_like->display();?>
+						echo $recipe_like->display('above','center');?>
 					</div>		
 
 					<!-- Recipe Print Button -->
-					<div class="recipe-button tooltip tooltip-above tooltip-right" id="print">
+					<div class="recipe-button tooltip" id="print">
 						<a class="wpurp-recipe-print recipe-print-button" href="<?php echo $recipe->link_print(); ?>" target="_blank">
 						<div class="button-caption"><?php echo __('Print', 'foodiepro'); ?></div>
 						</a>
-						[tooltip text="<?php echo __('Print this recipe','foodiepro'); ?>" pos="top"]   
-					</div>	
+						<?php 
+						Tooltip::display( __('Print this recipe','foodiepro'), 'above', 'right' );  
+						?>	
+						</div>	
 										
 					<!-- Recipe Share Button -->
-					<div class="recipe-button tooltip tooltip-above" id="share">
+					<div class="recipe-button tooltip" id="share">
 						<a class="recipe-share-button" id="recipe-share" cursor-style="pointer">
 						<div class="button-caption"><?php echo __('Share','foodiepro'); ?></div>
 						</a> 
-						<?php //echo Custom_WPURP_Templates::output_tooltip(__('Share this recipe','foodiepro'),'top');
+						<?php //echo Custom_WPURP_Templates::output_tooltip(__('Share this recipe','foodiepro'),'above');
 							$share = do_shortcode('[mashshare]');
+							Tooltip::display( $share, 'above', 'left', 'hidden large'); 
 						?>  
-						[tooltip text='<?php echo $share;?>' pos="top"] 
 					</div>				
-<!-- 					<script type="text/javascript">
-						jQuery( "#recipe-share" ).click(function() {
-					    	jQuery( "#share-buttons" ).toggle();
-						});
-					</script> -->
 														
 				</div>
 				

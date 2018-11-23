@@ -43,7 +43,7 @@ class Custom_Recipe_Favorite extends WPURP_Template_Block {
         }
         
         $tooltip_in = sprintf(__('In my <a href="%s">favorites</a>','foodiepro'),$favorites_link);
-				$tooltip_add = sprintf(__('Add to my <a href="%s">favorites</a>','foodiepro'),$favorites_link);
+		$tooltip_add = sprintf(__('Add to my <a href="%s">favorites</a>','foodiepro'),$favorites_link);
 				
         if( WPURP_Favorite_Recipes::is_favorite_recipe( $recipe->ID() ) ) {
         	$this->class_id .= ' is-favorite';
@@ -68,7 +68,7 @@ class Custom_Recipe_Favorite extends WPURP_Template_Block {
                 </a>
 <?php 
 
-        Tooltip::display($tooltip . $tooltip_alt, 'top');    
+        Tooltip::display($tooltip . $tooltip_alt, 'above', 'center');    
         $output .= ob_get_contents();
         ob_end_clean();
 

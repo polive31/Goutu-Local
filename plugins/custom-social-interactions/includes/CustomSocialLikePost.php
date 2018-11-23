@@ -14,7 +14,7 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
         $this->post_type = $type;
     }
 
-    public function get_html() {
+    public function get_html($vertical,$horizontal,$style) {
         $post_id = get_the_id();
         $link_class='social-like-post';
         $link_id='';
@@ -64,8 +64,7 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
                 </div>
                 </a>
             <?php 
-            // echo do_shortcode('[tooltip text="' . $tooltip . $tooltip_alt . '" pos="top"]');      
-            Tooltip::display( $tooltip . $tooltip_alt, 'top');      
+            Tooltip::display( $tooltip . $tooltip_alt, $vertical, $horizontal, $style);      
         
         $output = ob_get_contents();
         ob_end_clean();
@@ -74,8 +73,8 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
         return $output;
     }
 
-    public function display() {
-        echo $this->get_html();
+    public function display($vertical,$horizontal,$style='') {
+        echo $this->get_html($vertical,$horizontal,$style);
     }
 
 

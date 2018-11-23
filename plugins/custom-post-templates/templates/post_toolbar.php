@@ -12,13 +12,12 @@
 		</div>		
 
 		<!-- Post Print Button -->
-		<div class="toolbar-button tooltip tooltip-above tooltip-right" id="print">
+		<div class="toolbar-button tooltip" id="print">
 			<a class="post-print-button" href="javascript:window.print()" target="_blank">
 			<div class="button-caption"><?php echo __('Print', 'foodiepro'); ?></div>
 			</a>
 			<?php
-			// echo do_shortcode('[tooltip text="' . __('Print this post','foodiepro') . '" pos="top"]');  
-			Tooltip::display( __('Print this post','foodiepro') , 'top');  
+			Tooltip::display( __('Print this post','foodiepro') , 'above', 'right');  
 			?> 
 		</div>	
 
@@ -27,10 +26,9 @@
 			<a class="post-share-button" id="post-share" cursor-style="pointer">
 			<div class="button-caption"><?php echo __('Share','foodiepro'); ?></div>
 			</a> 
-			<?php //echo Custom_WPURP_Templates::output_tooltip(__('Share this recipe','foodiepro'),'top');
+			<?php //echo Custom_WPURP_Templates::output_tooltip(__('Share this recipe','foodiepro'),'above');
 				$share = do_shortcode('[mashshare]');
-				// echo do_shortcode('[tooltip text="' . $share . '" pos="top"]'); 
-				Tooltip::display( $share, 'top');  
+				Tooltip::display( $share, 'above', 'left', 'hidden large');  
 			?>  
 		</div>				
 											

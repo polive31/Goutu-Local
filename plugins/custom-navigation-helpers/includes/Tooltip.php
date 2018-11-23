@@ -49,12 +49,12 @@ class Tooltip extends CustomNavigationHelpers {
 	/* =================================================================*/
 	/* = RETURN TOOLTIP HTML    
 	/* =================================================================*/
-    public static function get( $content, $position ) {
-    	$uri = self::$PLUGIN_URI . 'assets/img/callout_'. $position . '.png';
-        $html ='<div class="tooltip-content">';
+    public static function get( $content, $vertical, $horizontal, $style='' ) {
+    	$uri = self::$PLUGIN_URI . 'assets/img/callout_'. $vertical . '.png';
+        $html ='<div class="tooltip-content ' . $vertical . ' ' . $horizontal . ' ' . $style . '">';
         $html.='<div class="wrap">';
         $html.= $content;
-        $html.='<img class="callout" data-no-lazy="1" src="' . $uri . '">';
+        $html.= (strpos($style,'hidden')===false)?'<img class="callout" data-no-lazy="1" src="' . $uri . '">':'';
         $html.='</div>';
         $html.='</div>';
 
@@ -65,8 +65,8 @@ class Tooltip extends CustomNavigationHelpers {
 	/* =================================================================*/
 	/* = DISPLAY TOOLTIP    
 	/* =================================================================*/
-    public static function display( $content, $position ) {
-    	echo self::get( $content, $position);
+    public static function display( $content, $vertical, $horizontal, $style ) {
+    	echo self::get( $content, $vertical, $horizontal, $style );
     }
 
 

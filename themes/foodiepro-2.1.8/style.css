@@ -3108,22 +3108,19 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 	opacity:0;
 	transition: visibility 0s, opacity 0.2s ease-in-out;
 	transition-delay:0.2s;
-    left: -40px;
-    top: -50px;
     min-width: 200px;	
 }
 
-#share .tooltip-content {
-    min-width: 300px;
-    left:-100px;
+.tooltip .callout {
+	z-index:20;
+	position:absolute;
+	border:0;
 }
 
-.recipe-button .tooltip-content a {
-	text-decoration: underline;
-}
-
-.tooltip-above .tooltip-content {
-	padding-bottom : 20px;
+.tooltip:hover .tooltip-content,
+.tooltip-content:hover {
+	opacity:1;
+	visibility:visible;
 }
 
 .tooltip-content .wrap {
@@ -3141,28 +3138,55 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 	height:50px;
 }
 
-/*#share .tooltip-content .wrap {
-  padding: 10px 20px;
-}*/
+.tooltip-content.hidden .wrap {
+	border:0px; 
+	background:transparent;
+	box-shadow: none;
+}
 
-.tooltip:hover .tooltip-content,
-.tooltip-content:hover {
-	opacity:1;
-	visibility:visible;
+.tooltip-content a {
+	text-decoration: underline;
 }
-   
-.tooltip .callout {
-	z-index:20;
-	position:absolute;
-	border:0;
+
+/*Tooltip positioning above */
+.tooltip-content.above {
+	padding-bottom : 20px;
+	top: -50px;
 }
-    
-.tooltip-above img.callout {
+.above img.callout {
 	bottom: 9px;
+}
+
+/*Tooltip positioning left */
+.tooltip-content.left  {
+	left: 0px;
+}
+.left img.callout {
 	left: 40px;
 }
 
-#share img.callout {
+/*Tooltip positioning right */
+.tooltip-content.right  {
+	right:0;
+}
+.right img.callout {
+	right: 40px;
+}
+
+/*Tooltip positioning right */
+.tooltip-content.center  {
+	left:-50px;
+}
+.center img.callout {
+	left: 80px;
+}
+
+/*Tooltip positioning large */
+.tooltip-content.left.large {
+    min-width: 300px;
+    left:-100px;
+}
+.left.large img.callout {
 	left: 100px;
 }
 

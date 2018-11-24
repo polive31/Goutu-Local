@@ -22,7 +22,7 @@ function foodie_pro_home_genesis_meta() {
 		remove_action( 'genesis_loop', 'genesis_do_loop' );
 		// Add a custom loop for the home page.
 		add_action( 'genesis_loop', 'foodie_pro_home_loop_helper' );
-		add_action( 'genesis_after_content_sidebar_wrap', 'foodie_pro_home_bottom' );
+		// add_action( 'genesis_after_content_sidebar_wrap', 'foodie_pro_home_bottom' );
 	}
 }
 
@@ -44,16 +44,13 @@ function foodie_pro_home_loop_helper() {
 		'after'  => '</div> <!-- end .home-middle -->',
 	) );
 
-}
-
-function foodie_pro_home_bottom() {
-	
 	// Add the home bottom section if it has content.
 	genesis_widget_area( 'home-bottom', array(
 		'before' => '<div class="widget-area home-bottom page-bottom">',
 		'after'  => '</div> <!-- end .home-bottom -->',
 	) );
-	
+
 }
+
 
 genesis();

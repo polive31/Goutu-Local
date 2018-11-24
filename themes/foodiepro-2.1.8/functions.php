@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'CHILD_THEME_NAME', 'Foodie Pro Theme' );
-define( 'CHILD_THEME_VERSION', '2.2.34' );
+define( 'CHILD_THEME_VERSION', '2.2.35' );
 define( 'CHILD_THEME_DEVELOPER', 'Shay Bocks' );
 define( 'CHILD_THEME_URL', get_stylesheet_directory_uri() );
 define( 'CHILD_THEME_PATH', get_stylesheet_directory() );
@@ -483,6 +483,15 @@ function enqueue_minified_stylesheet( $default_stylesheet_uri ) {
 /* =================================================================*/
 /* =         REMOVE CUSTOMIZER                                     =*/
 /* =================================================================*/
+
+// add_action( 'customize_register', 'prefix_remove_css_section', 15 );
+/**
+ * Remove the additional CSS section, introduced in 4.7, from the Customizer.
+ * @param $wp_customize WP_Customize_Manager
+ */
+// function prefix_remove_css_section( $wp_customize ) {
+// 	$wp_customize->remove_section( 'custom_css' );
+// }
 
 // add_action( 'init', 'public_customizer_remove', 10 ); // was priority 5
 // function public_customizer_remove() {

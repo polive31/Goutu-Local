@@ -420,7 +420,7 @@ class Custom_WPURP_Templates {
 		            array(
 		                /*'url' => WPUltimateRecipePremium::get()->premiumUrl . '/js/add-to-shopping-list.js',*/
 		                'name' => 'custom-shopping-list',
-		                'url' => self::$_PluginUri . 'assets/js/custom_shopping_list.js',
+		                'url' => self::$_PluginUri . 'assets/js/',
 		                'path' => self::$_PluginPath . 'assets/js/',
 		                'file' => 'custom_shopping_list.js',
 		                // 'premium' => true,

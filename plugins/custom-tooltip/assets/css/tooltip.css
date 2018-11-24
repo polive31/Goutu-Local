@@ -1,0 +1,92 @@
+
+/* CSS TOOLTIP styling 
+------------------------------------------*/
+
+.tooltip-content {
+	visibility: hidden;
+	position:absolute; 
+	z-index: 10;
+	opacity:0;
+	transition: visibility 0s, opacity 0.2s ease-in-out;
+	transition-delay:0.2s;
+    min-width: 200px;	
+}
+
+.tooltip .callout {
+	z-index:20;
+	position:absolute;
+	border:0;
+}
+
+.tooltip:hover .tooltip-content,
+.tooltip-content:hover {
+	opacity:1;
+	visibility:visible;
+}
+
+.tooltip-content .wrap {
+	font-size: 1.6rem;
+	padding: 7px 20px 5px 20px;
+	color:#111;
+	border:1px solid #DCA; 
+	background:#fffAF0;
+/*	border: 1px solid #c3c3c3;
+    background: #f8f8f8;*/
+	line-height: 16px;
+	font-family: 'Oswald', sans-serif;
+	border-radius:4px;
+	box-shadow: 5px 5px 8px #CCC;
+	height:50px;
+}
+
+.tooltip-content.hidden .wrap {
+	border:0px; 
+	background:transparent;
+	box-shadow: none;
+}
+
+.tooltip-content a {
+	text-decoration: underline;
+}
+
+/*Tooltip positioning above */
+.tooltip-content.above {
+	padding-bottom : 20px;
+	top: -50px;
+}
+.above img.callout {
+	bottom: 9px;
+}
+
+/*Tooltip positioning left */
+.tooltip-content.left  {
+	left: 0px;
+}
+.left img.callout {
+	left: 40px;
+}
+
+/*Tooltip positioning right */
+.tooltip-content.right  {
+	right:0;
+}
+.right img.callout {
+	right: 40px;
+}
+
+/*Tooltip positioning right */
+.tooltip-content.center  {
+	left:-50px;
+}
+.center img.callout {
+	left: 80px;
+}
+
+/*Tooltip positioning large */
+.tooltip-content.left.large {
+    min-width: 300px;
+    left:-100px;
+}
+.left.large img.callout {
+	left: 100px;
+}

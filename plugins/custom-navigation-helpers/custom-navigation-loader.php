@@ -31,12 +31,10 @@ require_once 'includes/CustomNavigationHelpers.php';
 require_once 'includes/CustomArchiveHeadline.php';
 require_once 'includes/CustomArchiveEntryTitle.php';
 require_once 'includes/CustomNavigationShortcodes.php';
-require_once 'includes/Tooltip.php';
 // new CustomArchiveMeta();
 new CustomArchiveHeadline();
 new CustomArchiveEntryTitle();
 new CustomNavigationShortcodes();
-new Tooltip();
 
 require_once 'widgets/dropdown-posts-sort-widget.php';
 require_once 'widgets/taxonomy-dropdown-widget.php';

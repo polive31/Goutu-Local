@@ -16,23 +16,26 @@ if ( !defined('ABSPATH') )
 	
 class Custom_Gallery_Shortcode {
 
-	private static $_PluginPath;	
+	public static $PLUGIN_PATH;
+	public static $PLUGIN_URI;	
 	
 	public function __construct() {
 		
-		self::$_PluginPath = plugin_dir_url( __FILE__ );	
+		self::$PLUGIN_PATH = plugin_dir_path( __FILE__ );
+		self::$PLUGIN_URI = plugin_dir_url( __FILE__ );	
 		
-		/* Suppression de la feuille de style de la gallerie Wordpress */	
 		add_filter( 'use_default_gallery_style', '__return_false' );
 		
+		add_action( 'wp_enqueue_scripts', array($this, 'custom_gallery_stylesheet') );
+		
 		add_shortcode('custom-gallery', array($this,'custom_gallery_shortcode') );
-		//add_action( 'wp_enqueue_scripts', array($this, 'enqueue_styles') );
 		
 	}
 	
-	public function enqueue_styles() {
-		//PC::debug( array('CUSTOM GALLERY SHORTCODE'=> self::$_PluginPath ) );
-		wp_enqueue_style( 'custom-gallery-stylesheet', self::$_PluginPath . 'custom-gallery.css', array(), CHILD_THEME_VERSION );		
+	public function custom_gallery_stylesheet() {
+  		$uri = self::$PLUGIN_URI . 'assets/css/';
+  		$path = self::$PLUGIN_PATH . 'assets/css/';
+		custom_enqueue_style( 'custom-gallery-stylesheet', $uri, $path, 'custom-gallery.css', array(), CHILD_THEME_VERSION );				
 	}
 	
 
@@ -93,9 +96,8 @@ class Custom_Gallery_Shortcode {
 		 * @param int    $instance Unique numeric ID of this gallery shortcode instance.
 		 */
 		$output = apply_filters( 'post_gallery', '', $attr, $instance );
-		if ( $output != '' ) {
+		if ( $output != '' )
 			return $output;
-		}
 
 		$html5 = current_theme_supports( 'html5', 'gallery' );
 		$atts = shortcode_atts( array(
@@ -116,38 +118,7 @@ class Custom_Gallery_Shortcode {
 		$selector = $gallery_id;
 		/* $selector = "gallery-{$instance}"; original */
 		
-		$output ='';
-		$gallery_style = '';
-
-		/**
-		 * Filters whether to print default gallery styles.
-		 *
-		 * @since 3.1.0
-		 *
-		 * @param bool $print Whether to print default gallery styles.
-		 *                    Defaults to false if the theme supports HTML5 galleries.
-		 *                    Otherwise, defaults to true.
-		 */
-		$size_class = sanitize_html_class( $atts['size'] );
-		$gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-size-{$size_class}'>";
-
-		/**
-		 * Filters the default gallery shortcode CSS styles.
-		 *
-		 * @since 2.5.0
-		 *
-		 * @param string $gallery_style Default CSS styles and opening HTML div container
-		 *                              for the gallery shortcode output.
-		 */
-		$output .= apply_filters( 'gallery_style', $gallery_style . $gallery_div );
-		
-		/* Add picture button markup output */
-		$output .='<div class="add-picture-button">';
-		$button_id = is_user_logged_in() ? 'upload-picture' : 'join-us';
-		$output.='<button id="' . $button_id . '">' . __('Add a picture','foodiepro') . '</button>';
-		$output.='</div>';
-		
-	  /* Gallery content output */
+		/* Retrieve attachments */
 	   
 		if ( ! empty( $atts['include'] ) ) {
 			$_attachments = get_posts( array( 'include' => $atts['include'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
@@ -162,38 +133,43 @@ class Custom_Gallery_Shortcode {
 			$attachments = get_children( array( 'post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
 		}
 
-		if ( empty( $attachments ) ) {
-			$output .= "
-				</div>\n";
-			return $output;
-		}
+		if ( empty( $attachments ) )
+			return "</div>";
 
-	  /* Gallery picture loop */ 
-
-		$i = 0;
-		foreach ( $attachments as $id => $attachment ) {
-
-			$attr = ( trim( $attachment->post_excerpt ) ) ? array( 'aria-describedby' => "$selector-$id" ) : '';
-			if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
-				$image_output = wp_get_attachment_link( $id, $atts['size'], false, false, false, $attr );
-			} elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
-				$image_output = wp_get_attachment_image( $id, $atts['size'], false, $attr );
-			} else {
-				$image_output = wp_get_attachment_link( $id, $atts['size'], true, false, false, $attr );
-			}
-			$image_meta  = wp_get_attachment_metadata( $id );
-
-			$output .= "<div class='gallery-item'>";
-			$output .= "
-				<div class='gallery-icon'>
-					$image_output
-				</div>";/*gallery-icon*/
-			$output .= "</div>"; /* gallery-item */
-		}	
+		/* Gallery content output */
+		$button_id = is_user_logged_in() ? 'upload-picture' : 'join-us';
+		$size_class = sanitize_html_class( $atts['size'] );
 		
-		$output .= "
-			</div>\n";/* gallery container */
-		$output .= '<br style="clear:both" />'; /* clearfix */
+		$gallery_style = '';
+		$gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-size-{$size_class}'>";
+		$output .= apply_filters( 'gallery_style', $gallery_style . $gallery_div );
+
+		ob_start();
+		?>
+
+		<div class="add-picture-button">
+			<button id="<?= $button_id; ?>"><?= __('Add a picture','foodiepro'); ?></button>'
+		</div>
+		
+		<?php
+		// Loop through gallery pictures
+		foreach ( $attachments as $id => $attachment ) {
+			$attr = ( trim( $attachment->post_excerpt ) ) ? array( 'aria-describedby' => "$selector-$id" ) : '';
+			$image = wp_get_attachment_image( $id, $atts['size'], false, $attr );
+			$url = wp_get_attachment_url( $id );
+		?>
+			<div class="gallery-item">
+				<div class="gallery-icon">
+					<a href="<?= $url; ?>" id="lightbox"><?= $image; ?></a>
+				</div>
+			</div>
+		<?php } 
+		?>	
+		
+		</div>
+		<?php
+		$output .= ob_get_contents();
+		ob_clean();
 
 		return $output;
 	}

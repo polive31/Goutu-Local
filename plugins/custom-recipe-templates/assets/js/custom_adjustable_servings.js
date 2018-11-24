@@ -2,11 +2,11 @@ var wpurp_adjustable_servings = {};
 
 
 jQuery(document).ready(function() {
-    console.log("In custom adjustable servings script");
+    // console.log("In custom adjustable servings script");
     
     // Custom increase & decrease quantity buttons
     jQuery(document).on("click", "#servings .qty", function() {
-      console.log("Portion ajustment button click");
+      // console.log("Portion ajustment button click");
       var $button = jQuery(this);
       var $input= $button.parent().find("input");
       var oldValue = $input.val();

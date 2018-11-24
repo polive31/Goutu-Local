@@ -76,12 +76,12 @@
 				
 				<div class="image-container">
 					<div class="clearfix">
-					  	<a href="<?php echo $recipe->featured_image_url('full');?>">
+					  	<a href="<?php echo $recipe->featured_image_url('full');?>" id="lightbox">
 							<img src="<?php echo $recipe->featured_image_url('vertical-thumbnail');?>" alt="<?php echo $imgAlt;?>">
 						</a>
 					</div>
 					<div class="clearfix">
-						[custom-gallery size="mini-thumbnail" link="file" columns="4" gallery-id="joined-pics"]
+						[custom-gallery size="mini-thumbnail" columns="4" gallery-id="joined-pics"]
 					</div>
 				</div>
 			
@@ -116,15 +116,26 @@
 						// Servings
 						$terms = $recipe->servings_normalized();
 						if ($terms!='') {
-							$html = '<div class="label-container" id="servings">';
-							$html .= '<div class="recipe-label">' . __('Serves','foodiepro') . '</div>';
-								$html .= '<div class="recipe-input">';
-								$html .= '<span class="fa qty" id="dec" title="' . __('Decrease servings','foodiepro') . '">&nbsp;</span>';
-								$html .= '<input type="number" min="1" class="adjust-recipe-servings" data-original="' . $recipe->servings_normalized() . '" data-start-servings="' . $recipe->servings_normalized() . '" value="' . $recipe->servings_normalized() . '"/>';
-								$html .= '<span class="fa qty" id="inc" title="' . __('Increase servings','foodiepro') . '">&nbsp;</span>';
-								$html .= '<span>' . $recipe->servings_type() . '</span>';
-								$html .= '</div>';
-							$html .= '</div>';
+							$html = '';
+
+							ob_start();
+							?>
+							<div class="label-container" id="servings">
+								<div class="recipe-label"><?= __('Serves','foodiepro'); ?></div>
+								<table class="recipe-input">
+									<tr>
+										<td class="fa qty" id="dec" title="<?= __('Decrease servings','foodiepro'); ?>">&nbsp;</td> 
+										<td class="input">
+											<input type="number" min="1" class="adjust-recipe-servings" data-original="<?= $recipe->servings_normalized(); ?>" data-start-servings="<?= $recipe->servings_normalized(); ?>" value="<?= $recipe->servings_normalized(); ?>"/>
+										</td>
+										<td class="fa qty" id="inc" title="<?= __('Increase servings','foodiepro'); ?>">&nbsp;</td>
+									</tr>
+								</table>
+							</div>
+							<?php 
+					        $html .= ob_get_contents();
+					        ob_end_clean();
+
 							echo $html;
 						}
 				

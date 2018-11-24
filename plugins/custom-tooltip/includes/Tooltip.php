@@ -5,13 +5,18 @@
 if ( !defined('ABSPATH') )
 	die('-1');
 	
-class Tooltip extends CustomNavigationHelpers {
+class Tooltip {
 	
-	public function __construct() {
-		parent::__construct();
-		
-		// JQuery
+	public static $PLUGIN_PATH;
+	public static $PLUGIN_URI;	
+
+	public function __construct() {		
+		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
+		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
+
+		// Scripts & styles enqueue
 		add_action('wp_enqueue_scripts', array($this, 'enqueue_easing_script'));
+		add_action('wp_enqueue_scripts', array($this, 'enqueue_tooltip_styles'));
 
 		// Shortcodes
 		add_shortcode('tooltip', array($this,'output_tooltip_shortcode')); 
@@ -19,12 +24,16 @@ class Tooltip extends CustomNavigationHelpers {
 	}
 
 	public function enqueue_easing_script() {
-	  	if ( is_single() ) {	
-			$js_uri = self::$PLUGIN_URI . '/vendor/easing/';
-			$js_path = self::$PLUGIN_PATH . '/vendor/easing/';
-			custom_enqueue_script( 'jquery-easing', $js_uri, $js_path, 'jQuery_Easing.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
-	  	};
+        if (! is_single() ) return;
+		wp_enqueue_script( 'jquery-easing', self::$PLUGIN_URI . '/vendor/easing/jQuery_Easing.min.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
 	}
+
+	public function enqueue_tooltip_styles() {
+        if (! is_single() ) return;
+  		$uri = self::$PLUGIN_URI . '/assets/css/';
+  		$path = self::$PLUGIN_PATH . '/assets/css/';
+		custom_enqueue_style( 'tooltip', $uri, $path, 'tooltip.css', array(), CHILD_THEME_VERSION );			
+	}	
 
 
 

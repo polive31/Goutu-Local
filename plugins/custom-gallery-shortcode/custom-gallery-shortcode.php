@@ -148,7 +148,7 @@ class Custom_Gallery_Shortcode {
 		?>
 
 		<div class="add-picture-button">
-			<button id="<?= $button_id; ?>"><?= __('Add a picture','foodiepro'); ?></button>'
+			<button id="<?= $button_id; ?>"><?= __('Add a picture','foodiepro'); ?></button>
 		</div>
 		
 		<?php

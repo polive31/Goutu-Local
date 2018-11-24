@@ -133,8 +133,6 @@ class Custom_Gallery_Shortcode {
 			$attachments = get_children( array( 'post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
 		}
 
-		if ( empty( $attachments ) )
-			return "</div>";
 
 		/* Gallery content output */
 		$button_id = is_user_logged_in() ? 'upload-picture' : 'join-us';
@@ -152,18 +150,20 @@ class Custom_Gallery_Shortcode {
 		</div>
 		
 		<?php
+		if ( !empty( $attachments ) ) {
 		// Loop through gallery pictures
-		foreach ( $attachments as $id => $attachment ) {
-			$attr = ( trim( $attachment->post_excerpt ) ) ? array( 'aria-describedby' => "$selector-$id" ) : '';
-			$image = wp_get_attachment_image( $id, $atts['size'], false, $attr );
-			$url = wp_get_attachment_url( $id );
-		?>
-			<div class="gallery-item">
-				<div class="gallery-icon">
-					<a href="<?= $url; ?>" id="lightbox"><?= $image; ?></a>
+			foreach ( $attachments as $id => $attachment ) {
+				$attr = ( trim( $attachment->post_excerpt ) ) ? array( 'aria-describedby' => "$selector-$id" ) : '';
+				$image = wp_get_attachment_image( $id, $atts['size'], false, $attr );
+				$url = wp_get_attachment_url( $id );
+			?>
+				<div class="gallery-item">
+					<div class="gallery-icon">
+						<a href="<?= $url; ?>" id="lightbox"><?= $image; ?></a>
+					</div>
 				</div>
-			</div>
-		<?php } 
+			<?php } 
+		}
 		?>	
 		
 		</div>

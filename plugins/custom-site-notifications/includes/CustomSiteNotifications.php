@@ -125,7 +125,7 @@ class CustomSiteNotifications {
 		    	'twitter_text' => __('Share this recipe on Twitter','foodiepro'),
 		    	'pinterest_url' => CustomSocialButtons::pinterestURL($post),
 		    	'pinterest_text' => __('Share this recipe on Pinterest','foodiepro'),
-		    	'mail_url' => CustomSocialButtons::mailURL($post),
+		    	'mail_url' => CustomSocialButtons::getPostMailURL($post),
 		    	'mail_text' => __('Send this recipe to a friend','foodiepro'),
 		    );
 		    $message = $this->get_html($data, self::PROVIDER.'_generic' );

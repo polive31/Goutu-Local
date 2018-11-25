@@ -33,7 +33,7 @@ public function widget( $args, $instance ) {
 	
 	// Start of widget code
 	
-	echo do_shortcode('[social-sharing-buttons url="site" size="medium" pinterest="false" linkedin="false"]');
+	echo do_shortcode('[social-sharing-buttons target="site" class="medium" pinterest="true" linkedin="false"]');
 	
 	// Output end
 	echo $args['after_widget'];

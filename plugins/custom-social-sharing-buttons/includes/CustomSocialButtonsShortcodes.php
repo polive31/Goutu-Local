@@ -8,9 +8,7 @@ if ( !defined('ABSPATH') )
 class CustomSocialButtonsShortcodes extends CustomSocialButtons {
 	
 	public function __construct() {
-		parent::__construct();
 		add_shortcode('social-sharing-buttons', array($this,'display_social_sharing_buttons')); 	
-
 	}
 	
 
@@ -19,41 +17,25 @@ class CustomSocialButtonsShortcodes extends CustomSocialButtons {
 
 	public function display_social_sharing_buttons($atts) {
 		$atts = shortcode_atts(array(
-			'url' => 'site', //site : site url, current : current page url
-			'size' => 'medium',
+			'target' => 'site', //site : site url, recipe, post
+			'class' => 'medium',
 			'facebook' => 'true', 
 			'twitter' => 'true', 
-			'googleplus' => 'true', 
 			'mailto' => 'true', 
-			'whatsapp' => 'false', 
+			'pinterest' => 'true', 
+			'whatsapp' => 'true', 
 			'linkedin' => 'false', 
-			'pinterest' => 'false', 
 			'buffer' => 'false',
-	   ),$atts);
-	    
-	  $networks=array(
-			'facebook', 
-			'twitter',
-			'googleplus',
-			'whatsapp',
-			'mailto',
-			'whatsapp',
-			'linkedin',
-			'pinterest',
-			'buffer'
-	  );
+			'googleplus' => 'false', 
+	   	),$atts);
+	   
 	  
-	  foreach ($networks as $id) {
-	  	$supported_networks[$id]=($atts[$id]==='true');
-	  	//echo '$atts for ' . $id . '=' . $atts[$id] . '<br>';
-	  }  
-	
-		if ($atts['url']=='site') $url=get_site_url(null,'','https');
-		elseif ($atts['url']=='current') $url=get_permalink();
-		
-		$url=esc_html($url);
-		
-		$html=$this->get_sharing_buttons($url, $atts['size'],$supported_networks);
+		foreach (self::$networks as $id) {
+			$supported_networks[$id]=($atts[$id]==='true');
+			//echo '$atts for ' . $id . '=' . $atts[$id] . '<br>';
+		}  
+
+		$html=$this->get_sharing_buttons($atts['target'], $atts['class'], $supported_networks);
 		
     return $html;
 	}

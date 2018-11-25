@@ -193,11 +193,6 @@ dfn {
 	font-style:italic;
 }
 
-h1 {
-	font-size: 2em;
-	margin:0.67em 0;
-}
-
 mark {
 	background:#ff0;
 	color:#000;
@@ -557,6 +552,10 @@ ul.genesis-skip-link {
 	padding: 0;
 }
 
+:focus {
+	outline:none;
+}
+
 /* ## Screen reader text
 --------------------------------------------- */
 
@@ -614,6 +613,8 @@ h6 {
 	text-transform:uppercase;
 }
 
+
+
 /* FONTS 
 --------------------------------------------- */
 
@@ -645,8 +646,9 @@ body #register-page {
 
 h1 {
 	font-family: "Amatic SC";	
-	font-size: 60px;
+	font-size: 6rem;
 	font-weight: bold;	
+	margin:0.67em 0;
 }
 
 h2 {
@@ -2618,54 +2620,6 @@ span.ui-icon.ui-icon-triangle-1-s:before {
   font-size: 18px!important;
   background: rgba(129, 129, 129, 0.7) !important;
   color: #FFF !important;
-}
-
-/* Custom Social Sharing Buttons
-----------------------------------------------*/
-li.share-icons {
-  display: inline-block;
-  margin: 10px 5px;
-}
-
-li.share-icons a {
-  display: block;
-	-webkit-filter: grayscale(80%);  
-	filter: grayscale(80%);	
-	opacity:1;
-}
-
-li.share-icons a:hover {
-	-webkit-filter: none;  
-	filter: none;	
-	opacity:0.7;
-}
-
-li.share-icons.size-big a {
-  width: 96px;
-  height: 96px;
-  background:url('images/social-icons/icons-big.png') no-repeat;
-}
-
-li.share-icons.size-medium a {
-  width: 48px;
-  height: 48px;
-  background:url('images/social-icons/icons-medium.png') no-repeat;
-}
-
-.size-medium#facebook a {
-	background-position: 0 0;
-}
-
-.size-medium#twitter a {
-	background-position: -48px 0;
-}
-
-.size-medium#googleplus a {
-	background-position: -96px 0;
-}
-
-.size-medium#mailto a {
-	background-position: -144px 0;
 }
 
 /* YARPP 

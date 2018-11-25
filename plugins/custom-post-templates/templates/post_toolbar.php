@@ -27,7 +27,7 @@
 			<div class="button-caption"><?php echo __('Share','foodiepro'); ?></div>
 			</a> 
 			<?php //echo Custom_WPURP_Templates::output_tooltip(__('Share this recipe','foodiepro'),'above');
-				$share = do_shortcode('[mashshare]');
+				$share = do_shortcode('[social-sharing-buttons target="post" class="small bubble"]');
 				Tooltip::display( $share, 'above', 'left', 'hidden large');  
 			?>  
 		</div>				

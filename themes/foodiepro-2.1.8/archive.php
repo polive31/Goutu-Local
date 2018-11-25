@@ -25,6 +25,11 @@ remove_action( 'genesis_before_loop', 'genesis_do_author_title_description', 15 
 //Removes Title and Description on Blog Template Page
 remove_action( 'genesis_before_loop', 'genesis_do_blog_template_heading' );	
 
+// Widgeted areas
+add_action( 'genesis_before_content', 'add_archive_top_area', 15);
+add_action( 'genesis_after_loop', 'add_archive_bottom_area');
+
+
 /**
  * Echo the title with the archive title and description
  *
@@ -43,5 +48,18 @@ function genesis_do_archive_title_description() {
 	echo '</div>';
 }
 
+function add_archive_top_area() {
+	genesis_widget_area( 'archives-top', array(
+	    'before' => '<div class="top archives-top widget-area">',
+	    'after'  => '</div>',
+	));
+}
+
+function add_archive_bottom_area() {
+	genesis_widget_area( 'archives-bottom', array(
+	    'before' => '<div class="bottom archives-bottom widget-area">',
+	    'after'  => '</div>',
+	));   
+}
 
 genesis();

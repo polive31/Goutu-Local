@@ -42,49 +42,33 @@ class CustomSocialButtons {
 	
 	public function get_sharing_buttons($target, $class, $networks) {
 		global $post;
-		$html = '';
 
-		// URL
-		if ($target=='site') 
-			$url=get_site_url(null,'','https');
-		else
-			$url=get_permalink();
-		$url=esc_html($url);
-
-		// SEO Friendly current page title
-		$title = do_shortcode('[seo-friendly-title]');
-			
-		// Get Post Thumbnail for pinterest
-		$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
-
-		// Construct sharing URL without using any script
-		
-		$bufferURL = 'https://bufferapp.com/add?url='.$url.'&amp;text='.$title;
-		$linkedInURL = 'https://www.linkedin.com/shareArticle?mini=true&url='.$url.'&amp;title='.$title;
-
-		// Add sharing button at the end of page/page content
-		$html .= '<ul class="cssb share-icons">';
+		$html = '<ul class="cssb share-icons">';
 
 		if ($networks['facebook']) 
-			$html = self::getFacebookButton($url, $class);
+			$html = self::getFacebookButton($target, $class);
 			
 		if ($networks['twitter'])
-			$html .= self::getTwitterButton($url, $title, $class);
+			$html .= self::getTwitterButton($target, $class);
 
 		if ($networks['mailto'])
 			$html .= self::getMailButton($target, $class);
 
 		if ($networks['pinterest'])
-			$html .= self::getPinterestButton( $url, $title, $thumbnail, $class);
+			$html .= self::getPinterestButton( $target, $class);
 
 		if ($networks['whatsapp'])
-			$html .= self::getWhatsappButton($url, $title, $class); 
+			$html .= self::getWhatsappButton($target, $class); 
 
-		if ($networks['linkedin'])
-			$html .= '<li class="cssb share-icons ' . $class . '" id="linkedin"><a ' . self::$onClick . ' class="cssb-link cssb-linkedin" href="'.$linkedInURL.'" target="_blank" title="LinkedIn">&nbsp;</a></li>';
+		if ($networks['linkedin']) {	
+			$url = 'https://www.linkedin.com/shareArticle?mini=true&url='.$url.'&amp;title='.$title;
+			$html .= '<li class="cssb share-icons ' . $class . '" id="linkedin"><a ' . self::$onClick . ' class="cssb-link cssb-linkedin" href="'.$url.'" target="_blank" title="LinkedIn">&nbsp;</a></li>';
+		}
 
-		if ($networks['buffer'])
-			$html .= '<li class="cssb share-icons ' . $class . '" id="buffer"><a ' . self::$onClick . ' class="cssb-link cssb-buffer" href="'.$bufferURL.'" target="_blank" title="Buffer">&nbsp;</a></li>';
+		if ($networks['buffer']) {	
+			$url = 'https://bufferapp.com/add?url='.$url.'&amp;text='.$title;
+			$html .= '<li class="cssb share-icons ' . $class . '" id="buffer"><a ' . self::$onClick . ' class="cssb-link cssb-buffer" href="'.$url.'" target="_blank" title="Buffer">&nbsp;</a></li>';
+		}
 
 		$html .= '</ul>';
 		
@@ -93,93 +77,189 @@ class CustomSocialButtons {
 	}
 
 	// Facebook URL
-	public static function getFacebookURL( $url ) {
-		return 'https://www.facebook.com/sharer/sharer.php?u='.$url;
-	}
-
 	public static function facebookURL( $post ) {
 		return self::getFacebookURL( get_permalink($post) );
 	}
 
-	public static function getFacebookButton( $url, $class ) {
-		// return '<li class="cssb share-icons ' . $class . '" id="facebook"><a ' . self::$onClick . ' class="cssb-link cssb-facebook" href="'. self::getFacebookURL($url) . '" target="_blank" title="' . __('Share on Facebook','foodiepro') . '">&nbsp;</a></li>';
+	public static function getFacebookButton( $target, $class ) {
+		if ($target=='site') 
+			$url=get_site_url(null,'','https');
+		else
+			$url=get_permalink();
+
 		return '<li class="cssb share-icons ' . $class . '" id="facebook"><a ' . self::$onClick . ' class="cssb-link cssb-facebook" href="'. self::getFacebookURL($url) . '" target="_blank" title="' . __('Share on Facebook','foodiepro') . '"> </a></li>';
 	}	
 
-	// Twitter URL
-	public static function getTwitterURL( $url, $title ) {
-		return 'https://twitter.com/intent/tweet/?text='.$title.'&amp;url='.$url; //.'&amp;via=';
+	public static function getFacebookURL( $url ) {
+		return 'https://www.facebook.com/sharer/sharer.php?u='.$url;
 	}
 
+	// Twitter Functions
 	public static function twitterURL( $post ) {
 		return self::getTwitterURL( get_permalink($post), $post->post_title );
 	}	
 	
-	public static function getTwitterButton( $url, $title, $class ) {
-		// return '<li class="cssb share-icons ' . $class . '" id="twitter"><a ' . self::$onClick . ' class="cssb-link cssb-twitter" href="'. self::getTwitterURL($url,$title) .'" target="_blank" title="' . __('Share on Twitter','foodiepro') . '">&nbsp;</a></li>';	
+	public static function getTwitterButton( $target, $class ) {
+		if ($target=='site') 
+			$url=get_site_url(null,'','https');
+		else
+			$url=get_permalink();
+		// $url=esc_html($url);
+
+		// SEO Friendly current page title
+		$title = do_shortcode('[seo-friendly-title]');		
+	
 		return '<li class="cssb share-icons ' . $class . '" id="twitter"><a ' . self::$onClick . ' class="cssb-link cssb-twitter" href="'. self::getTwitterURL($url,$title) .'" target="_blank" title="' . __('Share on Twitter','foodiepro') . '"> </a></li>';	
 	}
 
-	// Pinterest URL
-	public static function getPinterestURL( $url, $title, $thumb ) {
-		return 'https://pinterest.com/pin/create/button/?url='.$url.'&amp;media='. $thumb[0] .'&amp;description='. $title;
+	public static function getTwitterURL( $url, $title ) {
+		return 'https://twitter.com/intent/tweet/?text='.$title.'&amp;url='.$url; //.'&amp;via=';
 	}
 
+
+	// Pinterest URL
 	public static function pinterestURL( $post ) {
 		$thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'square-thumbnail' );
 		return self::getPinterestURL( get_permalink($post), $post->post_title, $thumb );
 	}	
 
-	public function getPinterestButton($url, $title, $thumb, $class ) {
-		return '<li class="cssb share-icons ' . $class . '" id="pinterest"><a ' . self::$onClick . ' class="cssb-link cssb-pinterest" href="' . self::getPinterestURL($url,$title,$thumb) . '" data-pin-custom="true" target="_blank" title="' . __('Pin It','foodiepro') . '"> </a></li>';
+	public static function getPinterestButton($target, $class ) {
+		if ($target=='site') 
+			$url=get_site_url(null,'','https');
+		else
+			$url=get_permalink();
+		// $url=esc_html($url);
+
+		// SEO Friendly current page title
+		$title = do_shortcode('[seo-friendly-title]');
+
+		// Get Post Thumbnail 
+		$thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );				
+
+		return '<li class="cssb share-icons ' . $class . '" id="pinterest"><a ' . self::$onClick . ' class="cssb-link cssb-pinterest" href="' . self::getPinterestURL($url,$title,$thumb[0]) . '" data-pin-custom="true" target="_blank" title="' . __('Pin It','foodiepro') . '"> </a></li>';
 	}
 
-	// Mail URL
-	public static function getPostMailURL( $post, $target ) {
-		$email = get_the_author_meta('user_email', $post->post_author);
-		$name = ucfirst(get_the_author_meta('display_name', $post->post_author));
-
-		$from = ($target=='recipe')?'Une recette de':'Un article de';
-		$posttype = ($target=='recipe')?'cette recette':'cet article';
-		$it = ($target=='recipe')?'la':'le';
-		$subject = $post->post_title . " - $from " . $name;
-
-		$mailURL = $author . '?subject=' . $subject . '&body=Bonjour,' . self::LINEBREAK . 'J\'ai publié ' . $posttype . ' sur Goûtu.org et voudrais ' . $it . ' partager avec toi : ' . $post->post_title .  ' (' . get_permalink($post) . ').' . self::LINEBREAK . 'A bientôt !' . self::LINEBREAK . $name . ', blogueur sur Goûtu.org';
-		return $mailURL;
+	public static function getPinterestURL( $url, $title, $thumb ) {
+		return 'https://pinterest.com/pin/create/button/?url='.$url.'&amp;media='. $thumb[0] .'&amp;description='. $title;
 	}
 
-	public static function getSiteMailURL() {
-		$subject = 'Rejoins Goûtu.org !';
-		$body = 'Bonjour,' . self::LINEBREAK . 'Je te propose de découvrir Goûtu.org (' . get_site_url(null,'','https') . '), un site de partage autour des thèmes de la Cuisine et de l\'Alimentation.' . self::LINEBREAK . 'Tu pourras y découvrir des idéees de recettes, trouver des informations sur les différents ingrédients, et apprendre de nouvelles techniques et tours de main.' . self::LINEBREAK . 'Mais Goûtu te permet également de classer tes recettes préférées dans ton carnet personnel, et de publier tes propres recettes et articles. Tu peux ainsi créer un véritable blog culinaire en toute simplicité, et partager ton actualité et tes publications avec le plus grand nombre. Rejoins-nous, l\'inscription est rapide et gratuite.' . self::LINEBREAK . 'A bientôt sur la communauté des Gourmets !' . self::LINEBREAK;
-		$body .= 'L\'équipe Goûtu.org';
 
-		return 'mailto:remplacez@cetteadresse?subject=' . $subject . '&body=' . $body;
-		// return 'mailto:someone@example.com?Subject=Hello%20again';
+	// Mail functions
+
+	public static function mailURL( $post, $target ) {
+		$fields = self::getPostFields( $post, $target );
+		return rawurlencode( htmlspecialchars_decode( self::getMailURL( $fields ) ) );
 	}
 
 	public static function getMailButton( $target, $class ) {
 		if ($target == 'recipe' || $target == 'post') {
 			global $post;
-			$url = 'mailto:remplacez@cetteadresse' . self::getPostMailURL($post, $target);
+			$fields = self::getPostFields($post, $target, 'find');
 		}
 		else 
-			$url = self::getSiteMailURL($post);
+			$fields = rawurlencode( htmlspecialchars_decode( self::getSiteFields() ) );
 
-		return '<li class="cssb share-icons ' . $class . '" id="mailto"><a ' . self::$onClick . ' class="cssb-link cssb-mailto" href="'. $url . '" data-pin-custom="true" target="_blank" title="' . __('Send an email','foodiepro') . '"> </a></li>';
+		$url = self::getMailURL( $fields );
+
+		$button = '<li class="cssb share-icons ' . $class . '" id="mailto"><a ' . self::$onClick . ' class="cssb-link cssb-mailto" href="' . $url . '" data-pin-custom="true" target="_blank" title="' . __('Share by email','foodiepro') . '"> </a></li>';
+
+		return $button;
 	}
 
-	// WhatsApp
-	public static function getWhatsappURL( $url, $title ) {
-		return 'whatsapp://send?text='.$title . ' ' . $url;
+	public static function getMailURL( $fields ) {
+		$to = 'remplacez@cetteadresse';
+		return 'mailto:' . $to . '?subject=' . $fields['subject'] . '&body=' . $fields['body'];
 	}
 
-	public static function whatsappURL( $post ) {
-		return self::getWhatsappURL( get_permalink($post), $post->post_title );
+	// WhatsApp functions
+
+	// From email button => need to precise a post, since current post doesn't work
+	public static function whatsappURL( $post, $target ) {
+		$fields = self::getPostFields($post, $target);
+		return self::getWhatsappURL( $fields['body'] );
 	}	
 	
-	public static function getWhatsappButton( $url, $title, $class ) {
-		return '<li class="cssb share-icons ' . $class . '" id="whatsapp"><a ' . self::$onClick . ' class="cssb-link cssb-whatsapp" href="'. self::getWhatsappURL($url,$title) .'" target="_blank" title="' . __('Share on Whatsapp','foodiepro') . '"> </a></li>';	
+	// From shortcode button => current post
+	public static function getWhatsappButton( $target, $class ) {
+		if ($target=='recipe'||$target=='post') {
+			global $post;
+			$fields = self::getPostFields($post, $target, 'find');
+		}
+		else 
+			$fields = self::getSiteFields();
+		
+		$url = self::getWhatsappURL($fields);
+
+		$button =  '<li class="cssb share-icons ' . $class . '" id="whatsapp"><a ' . self::$onClick . ' class="cssb-link cssb-whatsapp" href="' . $url . '" target="_blank" title="' . __('Share on Whatsapp','foodiepro') . '"> </a></li>';	
+
+		return $button;
 	}	
 
+	public static function getWhatsappURL( $fields ) {
+		// $to = '0000000000';
+		// $to = 'XXXXXXXXXXX';
+		$to = '';
+		$text = $fields['body'];
+		return 'https://api.whatsapp.com/send?phone=' . $to . '&text=' . $text;
+		// return 'whatsapp://send?text=' . rawurlencode( htmlspecialchars_decode( $text ) );
+	}
 
+
+	/* 	GENERAL FUNCTIONS
+	-----------------------------------------------------------*/
+
+	public static function getSiteFields() {
+
+		// $break = '\r\n';
+		// $break = self::LINEBREAK;
+
+		// $subject = 'Rejoins Goûtu.org !';
+		// $body = 'Bonjour,' . $break . 'Je te propose de découvrir Goûtu.org (' . get_site_url(null,'','https') . '), un site de partage autour des thèmes de la Cuisine et de l\'Alimentation.' . $break . 'Tu pourras y découvrir des idéees de recettes, trouver des informations sur les différents ingrédients, et apprendre de nouvelles techniques et tours de main.' . $break . 'Mais Goûtu te permet également de classer tes recettes préférées dans ton carnet personnel, et de publier tes propres recettes et articles. Tu peux ainsi créer un véritable blog culinaire en toute simplicité, et partager ton actualité et tes publications avec le plus grand nombre. Rejoins-nous, l\'inscription est rapide et gratuite.' . $break . 'A bientôt sur la communauté des Gourmets !' . $break;
+		// $body .= 'L\'équipe Goûtu.org';
+
+		$body = 'Bonjour,
+
+		Je te propose de découvrir Goûtu.org (' . get_site_url(null,'','https') . '), un site de partage autour des thèmes de la Cuisine et de l\'Alimentation.
+		
+		Tu pourras y découvrir des idéees de recettes, trouver des informations sur les différents ingrédients, et apprendre de nouvelles techniques et tours de main.
+		
+		Mais Goûtu te permet également de classer tes recettes préférées dans ton carnet personnel, et de publier tes propres recettes et articles. Tu peux ainsi créer un véritable blog culinaire en toute simplicité, et partager ton actualité et tes publications avec le plus grand nombre. 
+		
+		Rejoins-nous, l\'inscription est rapide et gratuite.
+		
+		A bientôt sur la communauté des Gourmets !
+		
+		L\'équipe Goûtu.org';
+
+		return array('subject' => $subject, 'body' => $body);
+	}
+
+	public static function getPostFields( $post, $target='recipe', $action='create' ) {
+		// $break = '\r\n';
+		// $break = self::LINEBREAK;
+
+		$name = ucfirst(get_the_author_meta('display_name', $post->post_author));
+
+		$from = ($target=='recipe')?'Une recette de':'Un article de';
+		$thispost = ($target=='recipe')?'cette recette':'cet article';
+		$it = ($target=='recipe')?'la':'le';
+
+		$subject = do_shortcode('[seo-friendly-title]') . " - $from " . $name;
+
+		if ($action=='create') {
+			// $body = 'Bonjour,' . $break . 'J\'ai publié ' . $posttype . ' sur Goûtu.org et voudrais ' . $it . ' partager avec toi : ' . $post->post_title .  ' (' . get_permalink($post) . ').' . $break . 'A bientôt !' . $break . $name . ', blogueur sur Goûtu.org';
+			
+			$body = 'Bonjour,
+				J\'ai publié ' . $thispost . ' sur Goûtu.org et voudrais ' . $it . ' partager avec toi : ' . $post->post_title .  ' (' . get_permalink($post) . ').
+				A bientôt !
+				' . $name . ', blogueur sur Goûtu.org';
+		}
+		elseif ($action=='find') {
+			$body = 'Bonjour,
+				J\'ai trouvé ' . $thispost . ' sur Goûtu.org, et voudrais ' . $it . ' partager avec toi : ' . $post->post_title .  ' (' . get_permalink($post) . ').
+				A bientôt !';			
+		}
+
+		return array('subject' => $subject, 'body' => $body );
+	}		
 }

@@ -646,7 +646,7 @@ function populate_metadesc( $text ) {
 
 
 // Add pinterest meta
-add_action ('genesis_meta','add_pinterest_meta');
+// add_action ('genesis_meta','add_pinterest_meta'); /* Already done in YOAST SEO */
  
 function add_pinterest_meta() { 
 	echo '<meta name="p:domain_verify" content="c4a191084b3f5ef29b9df4a1a9f05aab"/>'; 

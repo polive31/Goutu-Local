@@ -157,7 +157,7 @@ class CustomSocialButtons {
 			$fields = self::getPostFields($post, $target, 'find');
 		}
 		else 
-			$fields = rawurlencode( htmlspecialchars_decode( self::getSiteFields() ) );
+			$fields = self::getSiteFields();
 
 		$url = self::getMailURL( $fields );
 

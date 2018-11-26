@@ -277,38 +277,25 @@ body
 
 @media only screen and (max-width: 41.250em) /* 660 */
 {
-	#container
-	{
+	#container {
 		width: 100%;
 	}
-	#imagelightbox-close
-	{
+	#imagelightbox-close {
 		top: 1.25em; /* 20 */
 		right: 1.25em; /* 20 */
 	}
-	#imagelightbox-nav
-	{
+	#imagelightbox-nav {
 		bottom: 1.25em; /* 20 */
 	}
 
-	.imagelightbox-arrow
-	{
-		width: 2.5em; /* 40 */
-		height: 3.75em; /* 60 */
-		margin-top: -2.75em; /* 30 */
+	.imagelightbox-arrow {
+		display:none!important;
 	}
-	.imagelightbox-arrow-left	{ left: 1.25em; /* 20 */ }
-	.imagelightbox-arrow-right	{ right: 1.25em; /* 20 */ }
 
-	.imagelightbox-arrow:before
-	{
-		font-size:1.5em;
-	}	
 }
 
 @media only screen and (max-width: 20em) /* 320 */
 {
-	.imagelightbox-arrow-left	{ left: 0; }
-	.imagelightbox-arrow-right	{ right: 0; }
+
 }
 

@@ -31,10 +31,17 @@ class CustomSocialButtons {
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
 
-		add_action('wp_enqueue_scripts', array($this, 'enqueue_social_buttons_css'));
-	}	
+		add_action('wp_enqueue_scripts', array($this, 'enqueue_social_buttons_scripts_styles'));
+	}
 
-	public function enqueue_social_buttons_css() {
+    public function enqueue_social_buttons_scripts_styles() {
+		global $post;
+		// if ( !has_shortcode( $post->post_content, 'social-sharing-buttons') ) return;
+
+   		$uri = self::$PLUGIN_URI . '/assets/js/';
+  		$path = self::$PLUGIN_PATH . '/assets/js/';  
+		custom_enqueue_script( 'social-buttons', $uri, $path, 'social_sharing_buttons.js', array( 'jquery' ), CHILD_THEME_VERSION, true );
+
   		$uri = self::$PLUGIN_URI . '/assets/css/';
   		$path = self::$PLUGIN_PATH . '/assets/css/';
 		custom_enqueue_style( 'social-buttons', $uri, $path, 'social_sharing_buttons.css', array(), CHILD_THEME_VERSION );	
@@ -188,21 +195,22 @@ class CustomSocialButtons {
 		else 
 			$fields = self::getSiteFields();
 		
-		$url = self::getWhatsappURL($fields);
+		$url_web = self::getWhatsappWebURL($fields);
+		$url_mobile = self::getWhatsappMobileURL($fields);
 
-		$button =  '<li class="cssb share-icons ' . $class . '" id="whatsapp"><a ' . self::$onClick . ' class="cssb-link cssb-whatsapp" href="' . $url . '" target="_blank" title="' . __('Share on Whatsapp','foodiepro') . '"> </a></li>';	
+		$button =  '<li class="cssb share-icons ' . $class . '" id="whatsapp"><a class="cssb-link cssb-whatsapp" data-web="' . $url_web . '" data_mobile="' . $url_mobile . '" title="' . __('Share on Whatsapp','foodiepro') . '"> </a></li>';	
 
 		return $button;
 	}	
 
-	public static function getWhatsappURL( $fields ) {
-		// $to = '0000000000';
-		// $to = 'XXXXXXXXXXX';
+	public static function getWhatsappWebURL( $fields ) {
 		$to = '';
-		$text = $fields['body'];
-		return 'https://api.whatsapp.com/send?phone=' . $to . '&text=' . $text;
-		// return 'whatsapp://send?text=' . rawurlencode( htmlspecialchars_decode( $text ) );
+		return 'https://api.whatsapp.com/send?phone=' . $to . '&text=' . rawurlencode($fields['body']);
 	}
+
+	public static function getWhatsappMobileURL( $fields ) {
+		return 'whatsapp://send" data-text="' . rawurlencode($fields['body']) . '" data-href="' . $fields['url'] . '"';
+	}	
 
 
 	/* 	GENERAL FUNCTIONS
@@ -217,9 +225,11 @@ class CustomSocialButtons {
 		// $body = 'Bonjour,' . $break . 'Je te propose de découvrir Goûtu.org (' . get_site_url(null,'','https') . '), un site de partage autour des thèmes de la Cuisine et de l\'Alimentation.' . $break . 'Tu pourras y découvrir des idéees de recettes, trouver des informations sur les différents ingrédients, et apprendre de nouvelles techniques et tours de main.' . $break . 'Mais Goûtu te permet également de classer tes recettes préférées dans ton carnet personnel, et de publier tes propres recettes et articles. Tu peux ainsi créer un véritable blog culinaire en toute simplicité, et partager ton actualité et tes publications avec le plus grand nombre. Rejoins-nous, l\'inscription est rapide et gratuite.' . $break . 'A bientôt sur la communauté des Gourmets !' . $break;
 		// $body .= 'L\'équipe Goûtu.org';
 
+		$url = get_site_url(null,'','https');
+
 		$body = 'Bonjour,
 
-		Je te propose de découvrir Goûtu.org (' . get_site_url(null,'','https') . '), un site de partage autour des thèmes de la Cuisine et de l\'Alimentation.
+		Je te propose de découvrir Goûtu.org (' . $url . '), un site de partage autour des thèmes de la Cuisine et de l\'Alimentation.
 		
 		Tu pourras y découvrir des idéees de recettes, trouver des informations sur les différents ingrédients, et apprendre de nouvelles techniques et tours de main.
 		
@@ -231,7 +241,7 @@ class CustomSocialButtons {
 		
 		L\'équipe Goûtu.org';
 
-		return array('subject' => $subject, 'body' => $body);
+		return array('subject' => $subject, 'body' => $body, 'url' => $url);
 	}
 
 	public static function getPostFields( $post, $target='recipe', $action='create' ) {
@@ -246,20 +256,22 @@ class CustomSocialButtons {
 
 		$subject = do_shortcode('[seo-friendly-title]') . " - $from " . $name;
 
+		$url  = get_permalink($post);
+
 		if ($action=='create') {
 			// $body = 'Bonjour,' . $break . 'J\'ai publié ' . $posttype . ' sur Goûtu.org et voudrais ' . $it . ' partager avec toi : ' . $post->post_title .  ' (' . get_permalink($post) . ').' . $break . 'A bientôt !' . $break . $name . ', blogueur sur Goûtu.org';
 			
 			$body = 'Bonjour,
-				J\'ai publié ' . $thispost . ' sur Goûtu.org et voudrais ' . $it . ' partager avec toi : ' . $post->post_title .  ' (' . get_permalink($post) . ').
+				J\'ai publié ' . $thispost . ' sur Goûtu.org et voudrais ' . $it . ' partager avec toi : ' . $post->post_title .  ' (' . $url . ').
 				A bientôt !
 				' . $name . ', blogueur sur Goûtu.org';
 		}
 		elseif ($action=='find') {
 			$body = 'Bonjour,
-				J\'ai trouvé ' . $thispost . ' sur Goûtu.org, et voudrais ' . $it . ' partager avec toi : ' . $post->post_title .  ' (' . get_permalink($post) . ').
+				J\'ai trouvé ' . $thispost . ' sur Goûtu.org, et voudrais ' . $it . ' partager avec toi : ' . $post->post_title .  ' (' . $url . ').
 				A bientôt !';			
 		}
 
-		return array('subject' => $subject, 'body' => $body );
+		return array('subject' => $subject, 'body' => $body, 'url' => $url);
 	}		
 }

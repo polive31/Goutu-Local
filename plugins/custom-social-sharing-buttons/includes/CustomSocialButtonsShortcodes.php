@@ -8,6 +8,7 @@ if ( !defined('ABSPATH') )
 class CustomSocialButtonsShortcodes extends CustomSocialButtons {
 	
 	public function __construct() {
+		parent::__construct();
 		add_shortcode('social-sharing-buttons', array($this,'display_social_sharing_buttons')); 	
 	}
 	

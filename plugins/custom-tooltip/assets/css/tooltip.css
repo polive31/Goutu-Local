@@ -39,10 +39,14 @@
 	height:50px;
 }
 
-.tooltip-content.hidden .wrap {
+.tooltip-content.transparent .wrap {
 	border:0px; 
 	background:transparent;
 	box-shadow: none;
+}
+
+.tooltip-content.transparent .callout {
+	display:none;
 }
 
 .tooltip-content a {

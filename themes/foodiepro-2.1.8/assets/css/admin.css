@@ -23,38 +23,10 @@ tr.form-field.term-description-wrap {
 }
 
 
-/* OZ Horizontal Menu
----------------------------------------------------*/
-
-#ozhmenu {
-	padding:5px;
-	background: #5a5a5a!important;
-}
-
-#ozhmenu li .wp-menu-image {
-	width: 20px;
-	height: 20px;
-}
-
-/*div.widget-liquid-right {
-  position: fixed;
-  top: 50px;
-  left: 50%;
-  width: 50%;
-  overflow-y: scroll;
-  height: 100%;
-}*/
-
-
 /* Media Queries
 ---------------------------------------------------*/
 
 
 @media only screen and (max-width:600px) {
-
-	#ozhmenu {
-		padding:20px 5px 5px 5px;
-		background: #744d84!important;
-	}
 
 }

@@ -194,22 +194,10 @@ class CustomSocialButtons {
 		}
 		else 
 			$fields = self::getSiteFields();
-		
-		$url_web = self::getWhatsappWebURL($fields);
-		$url_mobile = self::getWhatsappMobileURL($fields);
 
-		$button =  '<li class="cssb share-icons ' . $class . '" id="whatsapp"><a class="cssb-link cssb-whatsapp" data-web="' . $url_web . '" data_mobile="' . $url_mobile . '" title="' . __('Share on Whatsapp','foodiepro') . '"> </a></li>';	
+		$button =  '<li class="cssb share-icons ' . $class . '" id="whatsapp"><a class="cssb-link cssb-whatsapp" data-body="' . $fields['body'] . '" data-url="' . $fields['post-url'] . '" title="' . __('Share on Whatsapp','foodiepro') . '"> </a></li>';	
 
 		return $button;
-	}	
-
-	public static function getWhatsappWebURL( $fields ) {
-		$to = '';
-		return 'https://api.whatsapp.com/send?phone=' . $to . '&text=' . rawurlencode($fields['body']);
-	}
-
-	public static function getWhatsappMobileURL( $fields ) {
-		return 'whatsapp://send" data-text="' . rawurlencode($fields['body']) . '" data-href="' . $fields['url'] . '"';
 	}	
 
 
@@ -241,7 +229,7 @@ class CustomSocialButtons {
 		
 		L\'équipe Goûtu.org';
 
-		return array('subject' => $subject, 'body' => $body, 'url' => $url);
+		return array('subject' => $subject, 'body' => $body, 'post-url' => $url);
 	}
 
 	public static function getPostFields( $post, $target='recipe', $action='create' ) {
@@ -272,6 +260,6 @@ class CustomSocialButtons {
 				A bientôt !';			
 		}
 
-		return array('subject' => $subject, 'body' => $body, 'url' => $url);
+		return array('subject' => $subject, 'body' => $body, 'post-url' => $url);
 	}		
 }

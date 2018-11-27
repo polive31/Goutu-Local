@@ -6,12 +6,14 @@ jQuery(document).ready(function() {
 
 		var body=encodeURIComponent( jQuery(this).data('body') );
 		var post_url=encodeURIComponent( jQuery(this).data('url') );
+		
 
 		console.log('Click on Whatsapp share detected !');
 
 		if( /Android|webOS|iPhone|iPad|iPod|Opera Mini/i.test(navigator.userAgent) ) {
 			console.log('On mobile device');
-			url = 'whatsapp://send" data-text="' + body + '" data-href="' + post_url + '"';
+			url = 'whatsapp://send?text=' + body + ' ' + post_url;
+			console.log('URL : ', url);
 		}
 		else {
 			console.log('Not on mobile device');
@@ -19,7 +21,7 @@ jQuery(document).ready(function() {
 			console.log('URL : ', url);
 		}
 
-		window.open(url,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=250,width=600');
+		window.open(url,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=250,width=600,,nofollow');
 
     });
 

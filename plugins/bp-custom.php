@@ -17,10 +17,6 @@ define ( 'BP_AVATAR_FULL_HEIGHT', 150 );
 //define ( 'BP_AVATAR_ORIGINAL_MAX_WIDTH', 640 );
 //define ( 'BP_AVATAR_ORIGINAL_MAX_FILESIZE', 2*1024);
 
-/* Change default avatar picture */
-define ( 'BP_AVATAR_DEFAULT', BP_IMAGES_URL . 'cook_avatar.png' );
-define ( 'BP_AVATAR_DEFAULT_THUMB', BP_IMAGES_URL . 'cook_avatar_thumb.png' );
-
 /* Define cover thumbnail size */
 define ( 'BP_COVER_FULL_WIDTH', 1140 );
 define ( 'BP_COVER_FULL_HEIGHT', 400 );
@@ -31,6 +27,11 @@ define ( 'BP_COVER_THUMB_HEIGHT', 300 );
 //define ( 'BP_IMAGES_PATH', get_bloginfo('stylesheet_directory') . '/images/buddypress/');
 define ( 'BP_IMAGES_PATH', get_stylesheet_directory() . '/images/buddypress/');
 define ( 'BP_IMAGES_URL', get_stylesheet_directory_uri() . '/images/buddypress/');
+
+/* Change default avatar picture */
+define ( 'BP_AVATAR_DEFAULT', BP_IMAGES_URL . 'cook_avatar.png' );
+define ( 'BP_AVATAR_DEFAULT_THUMB', BP_IMAGES_URL . 'cook_avatar_thumb.png' );
+
 
 /* =================================================================*/
 /* =            CUSTOM JAVASCRIPT

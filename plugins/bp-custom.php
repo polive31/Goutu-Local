@@ -17,6 +17,10 @@ define ( 'BP_AVATAR_FULL_HEIGHT', 150 );
 //define ( 'BP_AVATAR_ORIGINAL_MAX_WIDTH', 640 );
 //define ( 'BP_AVATAR_ORIGINAL_MAX_FILESIZE', 2*1024);
 
+/* Change default avatar picture */
+define ( 'BP_AVATAR_DEFAULT', BP_IMAGES_URL . 'cook_avatar.png' );
+define ( 'BP_AVATAR_DEFAULT_THUMB', BP_IMAGES_URL . 'cook_avatar_thumb.png' );
+
 /* Define cover thumbnail size */
 define ( 'BP_COVER_FULL_WIDTH', 1140 );
 define ( 'BP_COVER_FULL_HEIGHT', 400 );
@@ -130,11 +134,6 @@ function enqueue_bp_core_scripts($scripts) {
 /* =================================================================*/
 /* =           AVATAR & COVER IMAGE 
 /* =================================================================*/
-
-/* Change default avatar picture */
-define ( 'BP_AVATAR_DEFAULT', BP_IMAGES_URL . 'cook_avatar.png' );
-define ( 'BP_AVATAR_DEFAULT_THUMB', BP_IMAGES_URL . 'cook_avatar_thumb.png' );
-
 
 
 // Define cover image size

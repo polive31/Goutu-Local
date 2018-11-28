@@ -55,7 +55,7 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
         
         ob_start();
             ?>
-                <a href="<?php echo $link_url;?>" id="<?php echo $link_id;?>" class="<?php echo $link_class; ?>" data-post-id="<?php echo $post_id; ?>">
+                <a href="<?php echo $link_url;?>" onClick="ga('send','event','like','click','<?php echo $this->post_type; ?>', 0)" id="<?php echo $link_id;?>" class="<?php echo $link_class; ?>" data-post-id="<?php echo $post_id; ?>">
                 <div class="button-caption">
                     <?php 
                     $count_likes = $this->like_count( $post_id );
@@ -63,8 +63,10 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
                     ?>     
                 </div>
                 </a>
+
             <?php 
-            Tooltip::display( $tooltip . $tooltip_alt, $vertical, $horizontal, $style);      
+            Tooltip::display( $tooltip . $tooltip_alt, $vertical, $horizontal, $style); 
+
         
         $output = ob_get_contents();
         ob_end_clean();

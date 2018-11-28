@@ -43,8 +43,10 @@ function Custom_WPURP_templates_init() {
 
 		new Custom_WPURP_Templates();
 		new Custom_WPURP_Ingredient();
-		new Custom_WPURP_Recipe_Submission();
+		
 		new Custom_Recipe_Shortcodes();
+		
+		new Custom_WPURP_Recipe_Submission();
 		new Custom_Recipe_Submission_Shortcodes();
 
 	}

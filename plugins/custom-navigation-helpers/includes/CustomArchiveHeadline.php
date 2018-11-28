@@ -20,6 +20,7 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 		// Intro text
 		add_filter( 'genesis_term_intro_text_output', 'wpautop' );		
 		add_filter( 'genesis_archive_description_text', array($this,'custom_archive_description') );
+		// add_filter( 'genesis_term_intro_text_output', 'wpautop' );	
 		// Page title text
 		// remove_filter('wp_title','genesis_default_title', 10, 3);
 		// add_filter('wp_title', 'custom_archive_title', 10, 3);
@@ -36,6 +37,7 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 		else 
 			return sprintf( __('Search Results for:%s', 'foodiepro'), get_search_query());
 	}
+
 
 	public function get_seo_friendly_page_title( $atts ) {
 		$atts = shortcode_atts( array(
@@ -119,7 +121,8 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 		if (empty($intro)) {
 			$parent = $this->query->parent;
 			$intro = get_term_meta( $this->query->parent, 'intro_text', true );
-		}		  
+		}	
+			  
 		return do_shortcode($description . $intro);
 	}	
 	

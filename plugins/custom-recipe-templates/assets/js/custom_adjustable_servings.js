@@ -3,6 +3,13 @@ var wpurp_adjustable_servings = {};
 
 jQuery(document).ready(function() {
     // console.log("In custom adjustable servings script");
+
+    // Prevent context menu to appear on long touch
+    jQuery('tooltip').oncontextmenu = function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        return false;
+    };
     
     // Custom increase & decrease quantity buttons
     jQuery(document).on("click", "#servings .qty", function() {

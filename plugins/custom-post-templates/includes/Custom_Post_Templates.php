@@ -26,6 +26,9 @@ class CustomPostTemplates {
 		// add_action('wp_enqueue_scripts', array($this, 'enqueue_masonry_scripts'));
 
 		add_action( 'genesis_before_entry_content', array($this,'add_post_toolbar'), 15);
+
+        // Recipe headline filter
+        add_filter( 'genesis_post_info', array($this, 'custom_post_meta'), 1, 10 );		
 	}
 
 	public function add_post_toolbar() {
@@ -37,6 +40,14 @@ class CustomPostTemplates {
         	echo $toolbar;
 		}
 	} 
+
+
+    //* Customize the entry meta in the entry header (requires HTML5 theme support)
+    public function custom_post_meta($post_info) {
+        if ( !is_single() ) return;
+		$post_info = sprintf(__('Published on %s by <span id="username">%s</span>', 'foodiepro'), '[post_date]', '[bp-author profile="true"]');
+        return $post_info;
+    }    	
 
 
 }

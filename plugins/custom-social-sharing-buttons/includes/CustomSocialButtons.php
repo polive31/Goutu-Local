@@ -195,7 +195,7 @@ class CustomSocialButtons {
 		else 
 			$fields = self::getSiteFields();
 
-		$button =  '<li class="cssb share-icons ' . $class . '" id="whatsapp"><a class="cssb-link cssb-whatsapp" data-body="' . $fields['body'] . '" data-url="' . $fields['post-url'] . '" title="' . __('Share on Whatsapp','foodiepro') . '"> </a></li>';	
+		$button =  '<li class="cssb share-icons ' . $class . '" id="whatsapp"><a class="cssb-link cssb-whatsapp" data-body="' . $fields['body'] . '" data-url="' . $fields['post-url'] . '" title="' . __('Share on Whatsapp','foodiepro') . '" rel="noopener nofollow"> </a></li>';	
 
 		return $button;
 	}	
@@ -242,22 +242,19 @@ class CustomSocialButtons {
 		$thispost = ($target=='recipe')?'cette recette':'cet article';
 		$it = ($target=='recipe')?'la':'le';
 
-		$subject = do_shortcode('[seo-friendly-title]') . " - $from " . $name;
+		$subject = $post->post_title . " - $from " . $name;
 
 		$url  = get_permalink($post);
 
 		if ($action=='create') {
-			// $body = 'Bonjour,' . $break . 'J\'ai publié ' . $posttype . ' sur Goûtu.org et voudrais ' . $it . ' partager avec toi : ' . $post->post_title .  ' (' . get_permalink($post) . ').' . $break . 'A bientôt !' . $break . $name . ', blogueur sur Goûtu.org';
-			
+			// Share buttons located in the recipe/post publication mail
 			$body = 'Bonjour,
-				J\'ai publié ' . $thispost . ' sur Goûtu.org et voudrais ' . $it . ' partager avec toi : ' . $post->post_title .  ' (' . $url . ').
-				A bientôt !
-				' . $name . ', blogueur sur Goûtu.org';
+				J\'ai publié ' . $thispost . ' et voudrais ' . $it . ' partager avec toi : ' . $post->post_title .  ' (' . $url . ').' . $name;
 		}
+		// Share buttons located on current post/recipe page
 		elseif ($action=='find') {
 			$body = 'Bonjour,
-				J\'ai trouvé ' . $thispost . ' sur Goûtu.org, et voudrais ' . $it . ' partager avec toi : ' . $post->post_title .  ' (' . $url . ').
-				A bientôt !';			
+				J\'ai trouvé ' . $thispost . ', et voudrais ' . $it . ' partager avec toi.';			
 		}
 
 		return array('subject' => $subject, 'body' => $body, 'post-url' => $url);

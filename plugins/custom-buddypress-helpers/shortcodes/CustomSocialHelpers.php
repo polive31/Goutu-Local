@@ -127,16 +127,22 @@ class CustomSocialHelpers {
 		
 		switch ($a['type']) {
 			case "id":
-				$name=$user_id;
+				$output=$user_id;
 				break;
 			case "pseudo":
-				$name=bp_core_get_username($user_id);
+				$output=bp_core_get_username($user_id);
 				break;
 			case "name":
-				$name=bp_core_get_user_displayname($user_id);
+				$output=bp_core_get_user_displayname($user_id);
 				break;
 		} 
-		return $name; 
+
+		if ($a['profile']) {
+			$url = bp_core_get_userlink( $user_id, false, true );
+			$output = '<a href="' . $url . '">' . $output . '</a>';
+		}
+
+		return $output; 
 	}
 		
 	/* =================================================================*/

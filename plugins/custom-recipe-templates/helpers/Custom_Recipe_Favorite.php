@@ -33,7 +33,7 @@ class Custom_Recipe_Favorite extends WPURP_Template_Block {
             $favorites_link = '/connexion';
             $link_url = '/connexion';
             // $onclick = "_gaq.push(['_trackEvent’, 'join-us', 'click’, 'recipe-rate, '0’]);";
-            $onclick = "ga('send','event','join-us','click','recipe-rate', 0)";
+            $onclick = "ga('send','event','join-us','click','recipe-favorite', 0)";
         } 
         else {
             $this->link_id='';

@@ -29,9 +29,21 @@ jQuery(document).ready(function() {
         language: 'fr_FR',
         statusbar: false,
         menubar:false,
+        toolbar: 'undo redo | styleselect | bold italic underline | link image | alignleft aligncenter alignright | bullist | searchreplace',
         plugins: 'autoresize link spellchecker searchreplace placeholder lists',
         autoresize_bottom_margin : 20,
-        toolbar: 'undo redo | styleselect | bold italic underline | link image | alignleft aligncenter alignright | bullist | searchreplace',
+        placeholder_attrs : {style: {
+                position: 'absolute',
+                top:'5px',
+                left:0,
+                color: '#888',
+                'font-style': 'italic',
+                padding: '1%',
+                width:'98%',
+                overflow: 'hidden',
+                'white-space': 'pre-wrap'
+            }
+        }
     });
 
     // Inline editor for instructions, however cannot work at the moment 

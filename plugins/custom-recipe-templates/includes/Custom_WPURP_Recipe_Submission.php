@@ -169,8 +169,8 @@ class Custom_WPURP_Recipe_Submission {
 
         if ( !is_singular('recipe') ) return;
 
-        global $post, $current_user;
-        get_currentuserinfo();
+        global $post;
+        $current_user = wp_get_current_user();
         if ($post->post_author == $current_user->ID || current_user_can('administrator')) { 
 
             $edit_url = 'href="' . get_permalink() . self::RECIPE_EDIT_SLUG . '?wpurp-edit-recipe=' . $post->ID . '" ';

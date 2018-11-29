@@ -16,7 +16,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		add_shortcode('ct-terms-menu', array($this,'list_taxonomy_terms')); 
 		add_shortcode('tags-menu', array($this,'list_tags')); 
 		add_shortcode('ct-terms', array($this,'list_terms_taxonomy'));
-		add_shortcode('ct-dropdown', array($this,'custom_categories_dropdown_shortcode'));
+		// add_shortcode('ct-dropdown', array($this,'custom_categories_dropdown_shortcode'));
 		add_shortcode('share-title', array($this,'display_share_title')); 
 		add_shortcode('registration', array($this,'output_registation_url')); 
 		add_shortcode('wp-page-link', array($this,'display_wordpress_page_link') );	
@@ -28,14 +28,19 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		add_shortcode('glossary', array($this,'search_glossary') );	
 		add_shortcode('search', array($this,'search_posts') );
 
+		// Social shortcodes
+		add_shortcode('site-logo', array($this, 'get_site_logo_path'));
+
 		// Misc 	
 		add_shortcode('debug', array($this,'show_debug_html') );	
 	
 	}
 
 
-
-    public function custom_categories_dropdown_shortcode( $atts ) {
+    public function get_site_logo_path( $atts ) {
+    	$url = get_stylesheet_directory_uri();
+    	$url = $url . '\images\fb-app-icon-512x512.png';
+		return $url;    	
     }
 
 	

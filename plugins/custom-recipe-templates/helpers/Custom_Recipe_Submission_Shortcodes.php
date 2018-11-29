@@ -6,7 +6,7 @@ class Custom_Recipe_Submission_Shortcodes extends Custom_WPURP_Recipe_Submission
     protected $instructions;
 
     public function __construct() {
-        parent::__construct();
+        // parent::__construct();
 
         // Submission pages shortcodes
         add_shortcode( 'custom-wpurp-submissions-new-recipe', array( $this, 'new_submission_shortcode' ) );

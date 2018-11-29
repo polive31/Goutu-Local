@@ -12,7 +12,7 @@ jQuery(document).ready(function() {
         wpurp_add_to_editor('[nutrition-label]');
     });
 
-    var text_editor = jQuery('textarea#content');
+    var text_editor = jQuery('#recipe_description');
     function wpurp_add_to_editor(text) {
         if( !tinyMCE.activeEditor || tinyMCE.activeEditor.isHidden()) {
             var current = text_editor.val();
@@ -21,6 +21,27 @@ jQuery(document).ready(function() {
             tinyMCE.execCommand('mceInsertContent', false, text);
         }
     }
+  
+
+    tinymce.init({
+        selector: '#recipe_description, #recipe_notes',
+        theme: 'modern',
+        language: 'fr_FR',
+        statusbar: false,
+        menubar:false,
+        plugins: 'autoresize link spellchecker searchreplace placeholder lists',
+        autoresize_bottom_margin : 20,
+        toolbar: 'undo redo | styleselect | bold italic underline | link image | alignleft aligncenter alignright | bullist | searchreplace',
+    });
+
+    // Inline editor for instructions, however cannot work at the moment 
+    // since not <div> but <textarea>
+    // tinymce.init({
+    //     selector: 'textarea.recipe-instruction',
+    //     theme: 'modern',
+    //     language: 'fr_FR',
+    //     inline: true
+    // });    
 
 
  /* Ingredient and Instruction Submission (from WPURP)

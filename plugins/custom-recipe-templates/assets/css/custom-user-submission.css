@@ -351,6 +351,7 @@ label.add-instruction-thumbnail {
 /* Buttons */
 
 #recipe-form-buttons {
+  display: inline-block;
   padding: 20px;
   margin-top: 24px;
   width: 100%;
@@ -504,6 +505,11 @@ label.add-instruction-thumbnail {
   width: 100%;
 }
 
+/* TinyMCE editor
+-------------------------------------------------*/
+.mce-tinymce {
+    float: left!important;
+}
 
 
 /* Stubs 

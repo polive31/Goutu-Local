@@ -7,15 +7,17 @@ class Custom_WPURP_Recipe_Submission {
     const RECIPE_EDIT_SLUG = 'modifier-recette';
 
     protected static $_PluginDir;  
+    protected static $_PluginUrl;  
     protected static $_UploadPath; 
 
     public function __construct( $name = 'user-submissions' ) {
         self::$_PluginDir = plugin_dir_path( dirname( __FILE__ ) );
+        self::$_PluginUrl = plugin_dir_url( dirname( __FILE__ ) );
         $upload_dir = wp_upload_dir();
         self::$_UploadPath = trailingslashit( $upload_dir['basedir'] );
 
         // Recipe headline filter
-        add_action( 'genesis_post_info', array($this, 'recipe_edit_button') );
+        add_filter( 'genesis_post_info', array($this, 'add_recipe_edit_button') );
 
         // Submission form customization
         add_filter('wp_dropdown_cats', array($this, 'add_lang_to_select'));
@@ -33,7 +35,6 @@ class Custom_WPURP_Recipe_Submission {
         add_action('wp_ajax_nopriv_get_tax_terms', array($this, 'ajax_custom_get_tax_terms'));
         add_action('wp_ajax_get_tax_terms', array($this, 'ajax_custom_get_tax_terms'));        
     }
-
 
 
 /********************************************************************************
@@ -82,19 +83,9 @@ class Custom_WPURP_Recipe_Submission {
 
 
 
-
-
-
-
-
 /********************************************************************************
 ****           USERS SUBMISSION FORM CUSTOMIZATION                          *****
 ********************************************************************************/
-
-
-
-
-
 
 
     public function submissions_form( $recipe_ID = false, $buttons = array('preview', 'draft','publish') ) {
@@ -169,63 +160,38 @@ class Custom_WPURP_Recipe_Submission {
     }
 
 
-
-
-
-
-
-
-
 /********************************************************************************
 *********************         ACTIONS CALLBACKS       ***************************
 ********************************************************************************/
 
-
-
-
-
-
-
-
-
     //* Customize the entry meta in the entry header (requires HTML5 theme support)
-    public function recipe_edit_button($post_info) {
-        if (is_singular('recipe')) {
-            $post_info = sprintf(__('Published on %s by <span id="username">%s</span>', 'foodiepro'), '[post_date]', '[bp-author]');
-            global $post, $current_user;
-            get_currentuserinfo();
-            if ($post->post_author == $current_user->ID || current_user_can('administrator')) { 
-                $edit_page_url = do_shortcode( '[permalink slug="' . self::RECIPE_EDIT_SLUG . '"]' );
-                $edit_url = 'href="' . $edit_page_url . '?wpurp-edit-recipe=' . $post->ID . '" ';   
-                $edit_title = 'title="' . __('Edit recipe', 'foodiepro') . '" ';
+    public function add_recipe_edit_button($post_info) {
 
-                $post_info .= ' <a ' . $edit_url . $edit_title . '><i class="fa fa-pencil"></i></a>';    
-            }
-        }
-        else {
-            //$post_info = sprintf(__('By <span id="username">%s</span>', 'foodiepro'), '[bp-author]');
-            $post_info = '';
+        if ( !is_singular('recipe') ) return;
+
+        global $post, $current_user;
+        get_currentuserinfo();
+        if ($post->post_author == $current_user->ID || current_user_can('administrator')) { 
+
+            $edit_url = 'href="' . get_permalink() . self::RECIPE_EDIT_SLUG . '?wpurp-edit-recipe=' . $post->ID . '" ';
+            $edit_title = 'title="' . __('Edit recipe', 'foodiepro') . '" ';
+
+            $post_info .= ' <a ' . $edit_url . $edit_title . '><i class="fa fa-pencil"></i></a>';    
         }
         return $post_info;
     }    
 
+
+    // Set the language for select2 dropdown script
     public function add_lang_to_select($output){
         return str_replace('<select','<select lang="fr"',$output);
     }
 
 
 
-
-
-
-
 /********************************************************************************
 ***                FUNCTIONS USED IN USER SUBMISSION FORM                     ***
 ********************************************************************************/
-
-
-
-
 
 
     // Returns list of excluded categories
@@ -507,7 +473,7 @@ class Custom_WPURP_Recipe_Submission {
                 // $output .= '<h5>' . __( 'Recipe preview', 'foodiepro' ). '</h5>';
                 $output .= __( 'Here is what your recipe will look like once it is published. You can choose to continue editing it, or save it as a draft, or publish it, using the buttons at the bottom of the page.', 'foodiepro');
                 $output .= '</p>';
-                $output .= '<h4>' . get_the_title( $post_id ) . '</h4>';
+                $output .= '<h1>' . get_the_title( $post_id ) . '</h1>';
                 $output .= '[display-recipe id=' . $post_id . ']';
                 $output .= $this->submissions_form( $post_id, array( 'edit', 'draft', 'publish' ) );
                 $output .= '<div>';

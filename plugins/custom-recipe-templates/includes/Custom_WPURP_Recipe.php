@@ -62,14 +62,15 @@ class Custom_WPURP_Recipe extends WPURP_Recipe {
         $content = trim(preg_replace("/\[wpurp-searchable-recipe\][^\[]*\[\/wpurp-searchable-recipe\]/", "", $content));
         if ( empty($content) )
             $description = $this->description();
-        elseif ( $target=='form' ) {
+        // elseif ( $target=='form' ) {
+        else
             $description = $content;
-        }
 
         $allowed = array(   'a' => array(
                                 'href' => array(),
                                 'title' => array()
                             ),
+                            'p' => array(),
                             'b' => array(),
                             'i' => array(),
                             'br' => array(),

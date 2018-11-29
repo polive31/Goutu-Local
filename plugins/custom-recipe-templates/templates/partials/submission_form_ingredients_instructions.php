@@ -12,7 +12,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
         <tr class="recipe-general-form-description">
             <td class="recipe-general-form-label"><label for="recipe_description"><?php _e('Description', 'foodiepro' ); ?><?php if( in_array( 'recipe_description', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
             <td class="recipe-general-form-field">
-                <textarea class="recipe-description" name="content" id="recipe_description" rows="4" placeholder="<?php echo __('Provide general information about this recipe', 'foodiepro');?>"><?php echo $recipe->output_description('form'); ?></textarea>
+               <textarea class="recipe-description" name="content" id="recipe_description" rows="4" placeholder="<?php echo __('Provide general information about this recipe', 'foodiepro');?>"><?php echo $recipe->output_description('form'); ?></textarea>
             </td>
         </tr>
         <tr class="recipe-general-form-servings">
@@ -362,7 +362,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                         <input class="recipe_instructions_add_image button<?php if($has_image) { echo ' wpurp-hide'; } ?>" rel="<?php echo $recipe->ID(); ?>" type="button" value="<?php _e( 'Add Image', 'wp-ultimate-recipe' ) ?>" />
                         <input class="recipe_instructions_remove_image button<?php if(!$has_image) { echo ' wpurp-hide'; } ?>" type="button" value="<?php _e( 'Remove Image', 'wp-ultimate-recipe' ) ?>" />
                         <br /><img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
-                    <?php } ?>           
+                    <?php } ?> 
                     </div>
                 </td>
 

@@ -120,8 +120,6 @@
         </div>
 <?php
         $wpurp_user_submission = true;
-        // echo dirname(__DIR__) . '/templates/partials/submission_form_ingredients_instructions.php';
-        // include( dirname(__DIR__) . '/templates/partials/submission_form_ingredients_instructions.php' );
         include( 'partials/submission_form_ingredients_instructions.php' );
 ?>
 <!-- <?php if( WPUltimateRecipe::option( 'user_submissions_use_security_question', '' ) == '1' ) { ?>

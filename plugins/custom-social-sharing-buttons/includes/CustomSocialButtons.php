@@ -141,9 +141,13 @@ class CustomSocialButtons {
 		$title = do_shortcode('[seo-friendly-title]');
 
 		// Get Post Thumbnail 
-		$thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );				
+		$thumb_id = get_post_thumbnail_id( $post->ID, 'full' );
+		if ( $thumb_id )
+			$thumb = wp_get_attachment_image_src( $thumb_id );
+		else 
+			$thumb = array( do_shortcode('[site-logo]') );			
 
-		return '<li class="cssb share-icons ' . $class . '" id="pinterest"><a ' . self::$onClick . ' class="cssb-link cssb-pinterest" href="' . self::getPinterestURL($url,$title,$thumb[0]) . '" data-pin-custom="true" target="_blank" title="' . __('Pin It','foodiepro') . '"> </a></li>';
+		return '<li class="cssb share-icons ' . $class . '" id="pinterest"><a ' . self::$onClick . ' class="cssb-link cssb-pinterest" href="' . self::getPinterestURL($url,$title,$thumb) . '" data-pin-custom="true" target="_blank" title="' . __('Pin It','foodiepro') . '"> </a></li>';
 	}
 
 	public static function getPinterestURL( $url, $title, $thumb ) {
@@ -209,9 +213,10 @@ class CustomSocialButtons {
 		// $break = '\r\n';
 		// $break = self::LINEBREAK;
 
-		// $subject = 'Rejoins Goûtu.org !';
 		// $body = 'Bonjour,' . $break . 'Je te propose de découvrir Goûtu.org (' . get_site_url(null,'','https') . '), un site de partage autour des thèmes de la Cuisine et de l\'Alimentation.' . $break . 'Tu pourras y découvrir des idéees de recettes, trouver des informations sur les différents ingrédients, et apprendre de nouvelles techniques et tours de main.' . $break . 'Mais Goûtu te permet également de classer tes recettes préférées dans ton carnet personnel, et de publier tes propres recettes et articles. Tu peux ainsi créer un véritable blog culinaire en toute simplicité, et partager ton actualité et tes publications avec le plus grand nombre. Rejoins-nous, l\'inscription est rapide et gratuite.' . $break . 'A bientôt sur la communauté des Gourmets !' . $break;
 		// $body .= 'L\'équipe Goûtu.org';
+
+		$subject = 'Rejoins Goûtu.org !';
 
 		$url = get_site_url(null,'','https');
 
@@ -221,7 +226,7 @@ class CustomSocialButtons {
 		
 		Tu pourras y découvrir des idéees de recettes, trouver des informations sur les différents ingrédients, et apprendre de nouvelles techniques et tours de main.
 		
-		Mais Goûtu te permet également de classer tes recettes préférées dans ton carnet personnel, et de publier tes propres recettes et articles. Tu peux ainsi créer un véritable blog culinaire en toute simplicité, et partager ton actualité et tes publications avec le plus grand nombre. 
+		Sur ton espace personnel, ton carnet de recettes permet de toujours garder sous la main tes recettes préférées, mais tu pourras aussi ajouter tes propres recettes et articles. Tu peux ainsi créer un véritable blog culinaire en toute simplicité, et partager ton actualité et tes publications avec le plus grand nombre. 
 		
 		Rejoins-nous, l\'inscription est rapide et gratuite.
 		

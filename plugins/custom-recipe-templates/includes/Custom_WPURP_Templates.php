@@ -52,7 +52,9 @@ class Custom_WPURP_Templates {
 		//remove_action ( 'wp_enqueue_scripts', 'WPURP_Assets::enqueue');
 		//wp_deregister_script('wpurp_script_minified');
 
+
 	}
+
 
 	/* Hydrate
 	--------------------------------------------------------------*/	
@@ -536,13 +538,24 @@ class Custom_WPURP_Templates {
 							'ajaxurl' => admin_url( 'admin-ajax.php' ),
 							'nonce' => wp_create_nonce('preview_ingredient'),
 		                )		                
-		           	),			           			           											
+		           	),	
+		            array(
+		                'name' => 'tinymce',
+		                'url' => self::$_PluginUri . 'vendor/tinymce/',
+		                'path' => self::$_PluginPath . 'vendor/tinymce/',
+		                'file' => 'tinymce.min.js',
+		                'deps' => array(
+		                    'jquery',
+		                ),
+		                'footer' => true,	                
+		           	),			           			           			           											
 		            array(
 		                'name' => 'custom-user-submissions',
 		                'url' => self::$_PluginUri . 'assets/js/',
 		                'path' => self::$_PluginPath . 'assets/js/',
 		                'file' => 'custom_user_submission.js',
 		                'deps' => array(
+		                	'tinymce',
 		                    'jquery',
 		                    'jquery-ui-sortable',
 		                ),

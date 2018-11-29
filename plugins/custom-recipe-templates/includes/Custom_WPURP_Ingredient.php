@@ -190,7 +190,7 @@ class Custom_WPURP_Ingredient {
         $out .= '</span>';
 
         // INGREDIENT "NOTES"
-        if( ! empty($args['notes'])  {
+        if ( ! empty($args['notes']) )  {
             $out .= ' <span class="wpurp-recipe-ingredient-notes recipe-ingredient-notes">'.$args['notes'].'</span>';
         }
 

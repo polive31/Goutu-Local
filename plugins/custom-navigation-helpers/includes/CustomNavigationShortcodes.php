@@ -175,7 +175,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 
 		if ($atts['target'] == 'home')
 			$url = get_home_url();
-		else 
+		elseif ($atts['target'] == 'login') 
 			$url = wp_login_url();
 
 		if ($atts['markup'] == 'full') {

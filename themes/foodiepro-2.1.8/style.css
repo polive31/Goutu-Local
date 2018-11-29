@@ -5389,22 +5389,24 @@ Site Footer
     margin-top:10px;
    }
 
-	.entry-header-image {
-	    width: 60px;
-	}
 
 	.page h1.entry-title, 
 	h1.archive-title, 
 	h1.entry-title {
 		/*text-align: center;*/
-		font-size: 4rem;
-		line-height: 45px;
+		font-size: 5rem;
+		line-height: 6rem;
 	}
 
-/* Post & Recipe tool bar */
-/*	.button-caption {
-	    display: none;
-	}	*/
+	.entry-header-image {
+	    width: 100px;
+	}
+
+	.page h1.entry-title {
+	    margin-top: 22px;
+	    display:inline;
+	}	
+
 }
 
 /* Retina smartphone */
@@ -5486,8 +5488,8 @@ Site Footer
 @media only screen and (max-width:420px) {
 	
 	.entry-header-overlay .overlay {
-		font-size: 17px;
-		line-height: 17px;
+		font-size: 25px;
+		line-height: 27px;
 		padding: 2px 10px;    
 	}	
 
@@ -5497,7 +5499,7 @@ Site Footer
 	}	
 
 	.overlay.left0 {
-	    top: 3px;
+	    top: 5px;
 	    left:5px;
 	}
 

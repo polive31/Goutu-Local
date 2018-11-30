@@ -153,7 +153,8 @@
 .gdpr.gdpr-privacy-bar .gdpr-wrapper,
 .gdpr.gdpr-reconsent-bar .gdpr-wrapper {
     /*background : rgba(76, 76, 76, 0.6);*/
-    background : rgba(138, 55, 0, 0.53);
+    /*background : rgba(138, 55, 0, 0.53);*/
+    background : rgb(209, 98, 24);
     padding: 20px 60px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -330,7 +331,7 @@
 .gdpr.gdpr-reconsent-bar .gdpr-wrapper .gdpr-right .gdpr-cookie-categories .gdpr-policy-list-item input,
 .gdpr.gdpr-reconsent-bar .gdpr-wrapper .gdpr-right .gdpr-policy-list .gdpr-cookie-categories-item input,
 .gdpr.gdpr-reconsent-bar .gdpr-wrapper .gdpr-right .gdpr-policy-list .gdpr-policy-list-item input {
-    margin-top: 3px
+    margin-top: 7px
 }
 
 .gdpr.gdpr-privacy-bar .gdpr-wrapper .gdpr-right .gdpr-cookie-categories .gdpr-cookie-categories-item label,
@@ -343,7 +344,7 @@
 .gdpr.gdpr-reconsent-bar .gdpr-wrapper .gdpr-right .gdpr-policy-list .gdpr-policy-list-item label {
     color: #fff;
     margin: 0 5px;
-    font-size: 14px
+    font-size: 16px
 }
 
 .gdpr.gdpr-privacy-bar .gdpr-wrapper .gdpr-right .gdpr-cookie-categories .gdpr-cookie-categories-item .gdpr-policy-link,

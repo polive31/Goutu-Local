@@ -2341,44 +2341,6 @@ input#name-directory-search-input-box {
     font-style: italic;
 }
 
-/* GDPR */
-
-.gdpr-overlay {
-    background: rgb(255, 255, 255)!important;
-}
-
-.gdpr.gdpr-privacy-bar, 
-.gdpr.gdpr-reconsent-bar {
-    background: rgba(255, 255, 255, 0.84)!important;
-}
-
-
-.gdpr-wrapper {
-    background: rgb(175, 175, 175)!important;
-    /*background: #bdbdbdbf!important;*/
-}
-
-
-.gdpr.gdpr-privacy-bar .gdpr-wrapper .gdpr-content, 
-.gdpr.gdpr-reconsent-bar .gdpr-wrapper .gdpr-content {
-    padding: 0!important;
-}
-
-.gdpr.gdpr-privacy-bar .gdpr-wrapper .gdpr-content p, 
-.gdpr.gdpr-reconsent-bar .gdpr-wrapper .gdpr-content p {
-    color: #676767;
-    font-size: 15px;
-}
-
-.gdpr a {
-    /*color: #d9edff;*/
-    color: #fff!important;
-}
-
-.gdpr.gdpr-privacy-preferences .gdpr-wrapper .gdpr-content .gdpr-tab-content>div .gdpr-info .gdpr-cookies-used .gdpr-cookies, 
-.gdpr.gdpr-general-confirmation .gdpr-wrapper .gdpr-content .gdpr-tab-content>div .gdpr-info .gdpr-cookies-used .gdpr-cookies {
-    background-color: #cacaca!important;
-}
 
 /* Taxonomies/Tags Accordion Menu
 --------------------------------------------- */

@@ -417,13 +417,18 @@ function foodie_pro_enqueue_stylesheets() {
 	--------------------------------------------------- */
 	// wp_enqueue_style('material-icons', '//fonts.googleapis.com/icon?family=Material+Icons'); 
 
-	
+
 	/* Theme stylesheet with varying name & version, forces cache busting at browser level
 	--------------------------------------------------- */
 	$css_url = CHILD_THEME_URL . '/assets/css/';
 	$css_path = CHILD_THEME_PATH . '/assets/css/';
 	$color_theme_handler = 'color-theme-' . CHILD_COLOR_THEME;
 	custom_enqueue_style( $color_theme_handler , $css_url, $css_path, $color_theme_handler . '.css', array(), CHILD_COLOR_THEME . CHILD_COLOR_THEME_VERSION );
+
+	
+	/* Customized GDPR stylesheet 
+	--------------------------------------------------- */
+	custom_enqueue_style( 'custom-gdpr' , $css_url, $css_path, 'custom-gdpr-public.css', array(), CHILD_THEME_VERSION );
 
 	/* Print stylesheet
 	--------------------------------------------------- */

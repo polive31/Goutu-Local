@@ -154,7 +154,8 @@
 .gdpr.gdpr-reconsent-bar .gdpr-wrapper {
     /*background : rgba(76, 76, 76, 0.6);*/
     /*background : rgba(138, 55, 0, 0.53);*/
-    background : rgb(209, 98, 24);
+    /*background : rgb(209, 98, 24);*/
+    background : rgba(209, 98, 24, 0.70);
     padding: 20px 60px;
     display: -webkit-box;
     display: -ms-flexbox;

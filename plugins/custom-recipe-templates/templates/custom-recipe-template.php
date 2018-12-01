@@ -77,8 +77,10 @@
 				
 				<div class="image-container">
 					<div class="clearfix">
-					  	<a href="<?php echo $recipe->featured_image_url('full');?>" id="lightbox">
-							<img src="<?php echo $recipe->featured_image_url('vertical-thumbnail');?>" alt="<?php echo $imgAlt;?>">
+					  	<!-- <a href="<?php echo $recipe->featured_image_url('full');?>" id="lightbox"> -->
+					  	<a href="<?php echo get_the_post_thumbnail_url( $this->post_ID,'full');?>" id="lightbox">
+							<!-- <img src="<?php echo $recipe->featured_image_url('vertical-thumbnail');?>" alt="<?php echo $imgAlt;?>"> -->
+							<img src="<?php echo get_the_post_thumbnail_url( $this->post_ID,'vertical-thumbnail');?>" alt="<?php echo $imgAlt;?>">
 						</a>
 					</div>
 					<div class="clearfix">

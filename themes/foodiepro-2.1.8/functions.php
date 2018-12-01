@@ -322,8 +322,8 @@ function custom_favicon_links() {
 /* =         SCRIPTS & STYLES ENQUEUE                              =*/
 /* =================================================================*/
 
-	require_once trailingslashit(CHILD_THEME_PATH) . 'scripts_styles_enqueue.php';
-	new CustomScriptsStylesEnqueue();
+	// require_once trailingslashit(CHILD_THEME_PATH) . 'scripts_styles_enqueue.php';
+	// new CustomScriptsStylesEnqueue();
 
 
 /* =================================================================*/

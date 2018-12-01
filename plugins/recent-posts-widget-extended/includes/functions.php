@@ -166,6 +166,7 @@ function rpwe_get_recent_posts( $args = array() ) {
 								endif;
 							/* Added P.O. */
 							$html .= apply_filters( 'rpwe_in_thumbnail', '', $args);
+							// $html .= 'In the post thumbnail';
 							/* End P.O. */									
 							$html .= '</a>';
 							$html .= '</div>';
@@ -180,6 +181,7 @@ function rpwe_get_recent_posts( $args = array() ) {
 								'echo'          => false,
 								'default_image' => esc_url( $args['thumb_default'] )
 							) );
+							// $html .= 'In the get the image';
 
 						// Display default image.
 						elseif ( ! empty( $args['thumb_default'] ) ) :
@@ -191,6 +193,7 @@ function rpwe_get_recent_posts( $args = array() ) {
 								(int) $args['thumb_width'],
 								(int) $args[$thumb_height]
 							);
+							// $html .= 'In the default thumb';
 
 						endif;
 

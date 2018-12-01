@@ -602,7 +602,7 @@ class Custom_WPURP_Templates {
 				$media = isset($style['media'])?$style['media']:'all';
 				// $version = self::CUSTOM_WPURP_TEMPLATES_VERSION;
 				$version = CHILD_THEME_VERSION;
-				$this->custom_enqueue_style( $handler, $url, $path, $file, $deps, $version, $media );
+				custom_enqueue_style( $handler, $url, $path, $file, $deps, $version, $media );
 	  		}
 		}
 
@@ -618,7 +618,7 @@ class Custom_WPURP_Templates {
 				// $version = self::CUSTOM_WPURP_TEMPLATES_VERSION;
 				$version = CHILD_THEME_VERSION;
 				$footer = isset($script['footer'])?$script['footer']:false;
-				$this->custom_enqueue_script( $handler, $url, $path, $file, $deps, $version, $footer );
+				custom_enqueue_script( $handler, $url, $path, $file, $deps, $version, $footer );
 
 				if (isset($script['data'])) {	
 					$data_name = $script['data']['name'];
@@ -630,32 +630,32 @@ class Custom_WPURP_Templates {
 	}
 
 
-	public function custom_enqueue_style( $handler, $url='', $path='', $file='', $deps='', $version='', $media='all' ) {	
-		if ( !strpos($file, '.min.css') ) {
-			$minfile = str_replace( '.css', '.min.css', $file );
-			if (file_exists( $path . $minfile) && WP_MINIFY ) {	
-				$file=$minfile;
-			}
-		}
-		//echo '<pre>' . "minpath = {$minpath}" . '</pre>';
-		//echo '<pre>' . "path = {$path}" . '</pre>';
-	  	//if ((url_exists($minpath)) && (WP_DEBUG==false)) {
-	    wp_enqueue_style( $handler, $url . $file, $deps, $version, $media );
-	}
+	// public function custom_enqueue_style( $handler, $url='', $path='', $file='', $deps='', $version='', $media='all' ) {	
+	// 	if ( !strpos($file, '.min.css') ) {
+	// 		$minfile = str_replace( '.css', '.min.css', $file );
+	// 		if (file_exists( $path . $minfile) && WP_MINIFY ) {	
+	// 			$file=$minfile;
+	// 		}
+	// 	}
+	// 	//echo '<pre>' . "minpath = {$minpath}" . '</pre>';
+	// 	//echo '<pre>' . "path = {$path}" . '</pre>';
+	//   	//if ((url_exists($minpath)) && (WP_DEBUG==false)) {
+	//     wp_enqueue_style( $handler, $url . $file, $deps, $version, $media );
+	// }
 
 
-	public function custom_enqueue_script( $handler, $url='', $path='', $file='', $deps='', $version='', $footer=false ) {	
-		if ( !strpos($file, '.min.js') ) {
-			$minfile = str_replace( '.js', '.min.js', $file );
-			if (file_exists( $path . $minfile) && WP_MINIFY ) {	
-				$file=$minfile;
-			}
-		}
-		//echo '<pre>' . "minpath = {$minpath}" . '</pre>';
-		//echo '<pre>' . "path = {$path}" . '</pre>';
-	  	//if ((url_exists($minpath)) && (WP_DEBUG==false)) {
-	    wp_enqueue_script( $handler, $url . $file, $deps, $version, $footer );
-	}
+	// public function custom_enqueue_script( $handler, $url='', $path='', $file='', $deps='', $version='', $footer=false ) {	
+	// 	if ( !strpos($file, '.min.js') ) {
+	// 		$minfile = str_replace( '.js', '.min.js', $file );
+	// 		if (file_exists( $path . $minfile) && WP_MINIFY ) {	
+	// 			$file=$minfile;
+	// 		}
+	// 	}
+	// 	//echo '<pre>' . "minpath = {$minpath}" . '</pre>';
+	// 	//echo '<pre>' . "path = {$path}" . '</pre>';
+	//   	//if ((url_exists($minpath)) && (WP_DEBUG==false)) {
+	//     wp_enqueue_script( $handler, $url . $file, $deps, $version, $footer );
+	// }
 
 
 	

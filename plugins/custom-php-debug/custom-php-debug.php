@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name: WP PHP Debug
-Plugin URI: http://goutu.org/wp-scripts-styles-manager
+Plugin Name: Custom PHP Debug
+Plugin URI: http://goutu.org/
 Description: Logs debug info in the javascript console
 Version: 1.0.0
 Author: Pascal Olive
@@ -15,11 +15,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-add_action( 'wp_head', 'display_trace');
-
-function display_trace() {
-	PHP_Debug::trace('WP PHP Debug plugin activated');
+add_action( 'init', 'startup_message');
+function startup_message() {
+	if ( class_exists( 'PHP_Debug' ) ) {
+		PHP_Debug::log('WP PHP Debug plugin activated',null, 'INFO', 'orange');
+	}
 }
+
 
 class PHP_Debug {
 		
@@ -40,7 +42,7 @@ class PHP_Debug {
 		self::log($msg, false, self::errstr($code), 'red');
 	}
 	
-	public static function trace($msg, $var=false ) {	
+	public function trace($msg, $var=false ) {	
 		if ( !self::DISP_TRACE ) return;
 		$trace = debug_backtrace();
 		if (isset($trace[1]) & isset($trace[1]['class']) ) {

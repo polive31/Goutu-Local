@@ -20,7 +20,7 @@ class custom_progress_bar_widget extends WP_Widget {
 		array( 'description' => __( 'Displays profile completion bar (requires Buddy Progress Bar plugin)', 'buddy-progress-bar' ), ) // Args
 		);
 		
-    	if (is_active_widget(false, false, $this->id_base))
+    	if ( is_active_widget(false, false, $this->id_base) )
     		add_action('wp_enqueue_scripts', array($this,'load_custom_stylesheet'));
 	}
 
@@ -32,8 +32,8 @@ class custom_progress_bar_widget extends WP_Widget {
 		$title = esc_attr( $instance['title'] );
 		$textarea = esc_textarea( $instance['textarea'] );
 		$trigger_percent = esc_textarea( $instance['trigger_percent'] );
-
-			} else {
+	} 
+	else {
 		$title = '';
 		$textarea = '';
 		$trigger_percent= '100';
@@ -100,7 +100,7 @@ class custom_progress_bar_widget extends WP_Widget {
 //		print_r($instance);
 //		echo '</pre>';
 
-		if ((int)$user_percent >= (int)$trigger_percent) return;
+		if ( ( (int)$user_percent >= (int)$trigger_percent ) && !($trigger_percent == 0) ) return;
 
 		$profile_completed = __( 'Profile completed !', 'foodiepro' );
 		$profile_empty = __( 'Profile empty !', 'foodiepro' );
@@ -131,15 +131,16 @@ class custom_progress_bar_widget extends WP_Widget {
 
 			if(  $user_percent == 100 && $award == 1 )  {
 				echo '<div class="bppp-congrats"><span class="dashicons dashicons-awards"></span>' . $profile_completed . '</div>';
-			} elseif ( $user_percent == 100 && $award == 0 ) {
-					echo  '<div class="bppp-congrats">' . $profile_completed . '</div>';
-				}
+			} 
+			elseif ( $user_percent == 100 && $award == 0 ) {
+				echo  '<div class="bppp-congrats">' . $profile_completed . '</div>';
+			}
 
 			if( $user_percent > 0 && $user_percent !=100 ) {
 				$this->display_circular_progress_bar($user_percent);					
+				echo '<p class="wp_widget_plugin_textarea">' . $textarea . '</p>';
 			}
 			
-		echo '<p class="wp_widget_plugin_textarea">' . $textarea . '</p>';
 		echo '</div>';
 
 		echo $after_widget;

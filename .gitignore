@@ -85,7 +85,6 @@ plugins/buddypress/*
 plugins/buddypress/bp-core/*
 !plugins/buddypress/bp-core/bp-core-attachments.php
 !plugins/bp-custom.php
-!plugins/wp-php-debug/
 !plugins/wp-scripts-styles-manager/
 !plugins/custom-batch-manage-posts/
 !plugins/custom-buddypress-helpers/
@@ -96,6 +95,7 @@ plugins/buddypress/bp-core/*
 !plugins/custom-google-recaptcha/
 !plugins/custom-lightbox/
 !plugins/custom-navigation-helpers/
+!plugins/custom-php-debug/
 !plugins/custom-post-meta-inspector/
 !plugins/custom-post-templates/
 !plugins/recent-posts-widget-extended/

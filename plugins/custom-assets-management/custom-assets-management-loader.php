@@ -2,7 +2,7 @@
 /*
 Plugin Name: Custom Assets Management
 Plugin URI: http://goutu.org/
-Description: Manage loading of all Scripts & Styles,including lazy loading
+Description: Manage loading of all Scripts & Styles
 Version: 1.0
 Author: Pascal Olive
 Author URI: http://goutu.org

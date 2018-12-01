@@ -319,14 +319,6 @@ function custom_favicon_links() {
 
 
 /* =================================================================*/
-/* =         SCRIPTS & STYLES ENQUEUE                              =*/
-/* =================================================================*/
-
-	// require_once trailingslashit(CHILD_THEME_PATH) . 'scripts_styles_enqueue.php';
-	// new CustomScriptsStylesEnqueue();
-
-
-/* =================================================================*/
 /* =              CUSTOM LOGIN                                     =*/
 /* =================================================================*/
 
@@ -402,6 +394,24 @@ function custom_author_base() {
     $wp_rewrite->author_base = $author_slug;
 }
 
+
+/* =================================================================*/
+/* =             PHP DEBUG   
+/* =================================================================*/
+
+// add_action( 'wp', 'display_trace');
+function display_trace() {
+	if ( class_exists( 'PHP_Debug' ) ) {
+		$debug = new PHP_Debug();
+		$debug->trace('WP PHP Debug plugin activated');
+	}
+}
+
+function php_log($msg, $var=false, $type='DEBUG', $color='blue') {
+	if ( class_exists( 'PHP_Debug' ) ) {
+		PHP_Debug::log($msg, $var=false, $type='DEBUG', $color='blue');
+	}
+}
 
 
 /* =================================================================*/

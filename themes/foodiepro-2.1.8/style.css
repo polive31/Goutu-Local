@@ -2329,19 +2329,6 @@ a#swipebox-close:hover {
 }
 
 
-/*Name Directory */
-.name_directory_total {
-    margin-bottom: 40px;
-    opacity: 0;
-}
-
-input#name-directory-search-input-box {
-    font-family: Vollkorn,"Helvetica Neue",sans-serif;
-    font-size: 14px;
-    font-style: italic;
-}
-
-
 /* Taxonomies/Tags Accordion Menu
 --------------------------------------------- */
 .tax-container {

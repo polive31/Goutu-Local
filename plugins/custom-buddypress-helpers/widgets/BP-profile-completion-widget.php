@@ -20,7 +20,7 @@ class custom_progress_bar_widget extends WP_Widget {
 		array( 'description' => __( 'Displays profile completion bar (requires Buddy Progress Bar plugin)', 'buddy-progress-bar' ), ) // Args
 		);
 		
-    	if(is_active_widget(false, false, $this->id_base))
+    	if (is_active_widget(false, false, $this->id_base))
     		add_action('wp_enqueue_scripts', array($this,'load_custom_stylesheet'));
 	}
 

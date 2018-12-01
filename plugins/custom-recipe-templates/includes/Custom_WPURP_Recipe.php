@@ -14,6 +14,7 @@ class Custom_WPURP_Recipe extends WPURP_Recipe {
             'cook' => __('Cooking','foodiepro'),
             'passive' => __('Wait','foodiepro'),
         );
+
     }
 
     // Saves extended meta defined in Custom_Recipe

@@ -26,6 +26,7 @@ define( 'CHILD_COLOR_THEME_VERSION', '1.1.0' ); // triggers browser cache flush
 
 define( 'PLUGINS_URL', plugins_url() );
 
+
 /* =================================================================*/
 /* =              ADMIN
 /* =================================================================*/
@@ -316,211 +317,13 @@ function custom_favicon_links() {
 	echo sprintf('<meta name="theme-color" content="#ffffff">',$path); 
 }
 
-/* =================================================================*/
-/* =              CUSTOM SCRIPTS ENQUEUE
-/* =================================================================*/
-
-add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_js' );
-/**
- * Load all required JavaScript for the Foodie theme.
- *
- * @since   1.0.1
- * @return  void
- */
-function foodie_pro_enqueue_js() {
-	$js_uri = CHILD_THEME_URL . '/assets/js/';
-	$js_path = CHILD_THEME_PATH . '/assets/js/';
-	// Add general purpose scripts.
-	custom_enqueue_script( 'foodie-pro-general', $js_uri, $js_path, 'general.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
-	custom_enqueue_script( 'custom-js-helpers', $js_uri, $js_path, 'custom_helpers.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
-	custom_enqueue_script( 'one-signal', $js_uri, $js_path, 'one_signal.js', array(), CHILD_THEME_VERSION, true);
-	// .webp detection
-	custom_enqueue_script( 'modernizr', $js_uri, $js_path, 'modernizr-custom.js', array(), CHILD_THEME_VERSION );
-}
-
-
-/* Enqueue default WP jQuery in the footer rather than the header 
---------------------------------------------------------------------*/
-add_action( 'wp_enqueue_scripts', 'remove_header_scripts' );
-function remove_header_scripts() {
-  //if ( bp_is_user_change_avatar() ) remove_script( 'BJLL' ); //Prevent conflict between BP & BJ Lazy Load
-}
-
-add_action('get_footer','remove_footer_scripts');
-function remove_footer_scripts() {
-	if (!(is_single())) {
-		remove_script('galleria');
-		remove_script('galleria-fs');
-		remove_script('galleria-fs-theme');		
-	}
-}
-
-/* Defer Javascript parsing using <async> tag */
-add_filter( 'script_loader_tag','add_async_tag_cb', PHP_INT_MAX, 3 );
-function add_async_tag_cb( $tag, $handle, $src ) { 
-	if ( is_admin() ) return $tag;
-	$defer_js = array(
-		'masterslider-core',
-		'bp-confirm',
-		'skip-links',
-		'foodie-pro-general'
-	);
-	if ( in_array($handle,$defer_js) ) {
-	  $tag='<script src="' . $src . '" async type="text/javascript"></script>' . "\n";
-	}
-	return $tag;
-} 
-
-
-
-/*  Making jQuery Google API  
---------------------------------------------------------*/
-//add_action('init', 'load_jquery_from_google');   */
-function load_jquery_from_google() {
-	if (!is_admin()) {
-		// comment out the next two lines to load the local copy of jQuery
-		wp_deregister_script('jquery');
-		wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js', false, '1.8.1');
-		wp_enqueue_script('jquery');
-	}
-}
-
-// Prevent Max Mega Menu to load all google fonts
-add_action( 'wp_print_styles', 'megamenu_dequeue_google_fonts', 100 );
-function megamenu_dequeue_google_fonts() {
-   wp_dequeue_style( 'megamenu-google-fonts' );
-}
-
 
 /* =================================================================*/
-/* =              CUSTOM STYLES ENQUEUE     
+/* =         SCRIPTS & STYLES ENQUEUE                              =*/
 /* =================================================================*/
 
-//* Load Custom Styles & Fonts
-add_filter( 'foodie_pro_disable_google_fonts', '__return_true' );
-add_action( 'wp_enqueue_scripts', 'foodie_pro_enqueue_stylesheets' );
-
-function foodie_pro_enqueue_stylesheets() {
-	
-	/* Google Fonts
-	--------------------------------------------------- */
-	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Oswald|Vollkorn:300,400', array(), CHILD_THEME_VERSION );
-	//wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Oswald|Lato:300,400', array(), CHILD_THEME_VERSION );
-	
-	/* Font Awesome
-	--------------------------------------------------- */
-	wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
-	wp_enqueue_style('font-awesome', '//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
-	//wp_enqueue_style( 'font-awesome', CHILD_THEME_URL . '/assets/fonts/font-awesome/css/font-awesome.min.css', array(), CHILD_THEME_VERSION );
-
-	/* Material Icons
-	--------------------------------------------------- */
-	// wp_enqueue_style('material-icons', '//fonts.googleapis.com/icon?family=Material+Icons'); 
-
-
-	/* Theme stylesheet with varying name & version, forces cache busting at browser level
-	--------------------------------------------------- */
-	$css_url = CHILD_THEME_URL . '/assets/css/';
-	$css_path = CHILD_THEME_PATH . '/assets/css/';
-	$color_theme_handler = 'color-theme-' . CHILD_COLOR_THEME;
-	custom_enqueue_style( $color_theme_handler , $css_url, $css_path, $color_theme_handler . '.css', array(), CHILD_COLOR_THEME . CHILD_COLOR_THEME_VERSION );
-
-	
-	/* Customized GDPR stylesheet 
-	--------------------------------------------------- */
-	custom_enqueue_style( 'custom-gdpr' , $css_url, $css_path, 'custom-gdpr-public.css', array(), CHILD_THEME_VERSION );
-
-	/* Print stylesheet
-	--------------------------------------------------- */
-	custom_enqueue_style( 'custom-print-style' , $css_url, $css_path, 'print.css', array(), CHILD_THEME_VERSION, 'print' );	
-
-}
-
-add_action('wp_enqueue_scripts','remove_header_styles');
-function remove_header_styles() {	
-	if (!(is_single())) {
-  	remove_style('galleria-fs');
-	}
-  remove_style('popup-maker-site');
-  remove_style('cookie-notice-front');
-  remove_style('bppp-style');
-  remove_style('wpurp_style5');
-  remove_style('wpurp_style6');    
-  remove_style('wpurp_style7');
-  remove_style('wpurp_style11');  	
-  remove_style('yarppWidgetCss');
-  //remove_style('cnss_font_awesome_css');   
-  remove_style('megamenu-fontawesome');
-  remove_style('megamenu-fontawesome');
-}
-
-add_action('get_footer','remove_footer_styles');
-function remove_footer_styles() {
-  remove_style('yarpp-thumbnails-yarpp-thumbnail');
-}
-
-add_action('wp_enqueue_scripts','remove_bp_styles');
-function remove_bp_styles() {
-	if (!function_exists( 'bp_is_blog_page')) return;
-	if (bp_is_blog_page()) {
-  	remove_style('bp-child-css');
-	}
-}
-
-/* Gestion des feuilles de style minifiées */
-add_filter( 'stylesheet_uri', 'enqueue_minified_stylesheet', 10, 1 );
-
-function enqueue_minified_stylesheet( $default_stylesheet_uri ) {
-	$path_parts = pathinfo( $default_stylesheet_uri );
-	$file = $path_parts['basename'];
-	$min_file = str_replace( '.css', '.min.css', $file ); 
-	$min_file_path = CHILD_THEME_PATH . '/' . $min_file;
-	// echo '<pre>' . "Default stylesheet URI : {$default_stylesheet_uri}" . '</pre>';
-	// echo '<pre>' . "Min file : {$min_file}" . '</pre>';
-	// echo '<pre>' . "Min file path : { $min_file_path }" . '</pre>';
-
-	if ( file_exists( $min_file_path ) && WP_MINIFY ) {
-		$default_stylesheet_uri = CHILD_THEME_URL . '/' . $min_file;
-	} 
-	return $default_stylesheet_uri;
-}
-
-/* =================================================================*/
-/* =         REMOVE CUSTOMIZER                                     =*/
-/* =================================================================*/
-
-// add_action( 'customize_register', 'prefix_remove_css_section', 15 );
-/**
- * Remove the additional CSS section, introduced in 4.7, from the Customizer.
- * @param $wp_customize WP_Customize_Manager
- */
-// function prefix_remove_css_section( $wp_customize ) {
-// 	$wp_customize->remove_section( 'custom_css' );
-// }
-
-// add_action( 'init', 'public_customizer_remove', 10 ); // was priority 5
-// function public_customizer_remove() {
-// 	add_filter( 'map_meta_cap', 'filter_to_remove_customize_capability', 10, 4 );
-// }
-// function filter_to_remove_customize_capability( $caps = array(), $cap = '', $user_id = 0, $args = array() ) {
-// 	if ($cap == 'customize') {
-// 		return array('nope'); 
-// 	}
-// 	return $caps;
-// }
-// add_action( 'admin_init', 'admin_customizer_remove', 10 ); // was priority 5
-// function admin_customizer_remove() {
-// 	// Drop some customizer actions
-// 	remove_action( 'plugins_loaded', '_wp_customize_include', 10);
-// 	remove_action( 'admin_enqueue_scripts', '_wp_customize_loader_settings', 11);
-
-// 	// Manually overrid Customizer behaviors
-// 	add_action( 'load-customize.php', 'override_load_customizer_action' );
-// }
-// function override_load_customizer_action() {
-// 	// If accessed directly
-// 	wp_die( __( 'The Customizer is currently disabled.', 'wp-crap' ) );
-// }
+	require_once trailingslashit(CHILD_THEME_PATH) . 'scripts_styles_enqueue.php';
+	new CustomScriptsStylesEnqueue();
 
 
 /* =================================================================*/
@@ -549,11 +352,11 @@ add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 
 
 /* Disable admin bar for all users except admin */
+// add_action('after_setup_theme', 'remove_admin_bar');
 function remove_admin_bar() {
 	if (!current_user_can('administrator') && !is_admin())
   	show_admin_bar(false); 
 }
-add_action('after_setup_theme', 'remove_admin_bar');
 
 
 /* Disable dashboard for non admin */

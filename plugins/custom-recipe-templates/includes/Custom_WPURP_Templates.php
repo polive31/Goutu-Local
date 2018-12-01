@@ -27,7 +27,7 @@ class Custom_WPURP_Templates {
 		self::$_PluginUri = plugin_dir_url( dirname( __FILE__ ) );
 		self::$_PluginPath = plugin_dir_path( dirname( __FILE__ ) );
 		
-		add_action( 'init', array($this, 'hydrate'));
+		add_action( 'plugins_loaded', array($this, 'hydrate'));
 		
 		/* WPURP enqueue list */
 		add_filter ( 'wpurp_assets_js', array($this,'enqueue_wpurp_js'), 15, 1 );
@@ -52,13 +52,13 @@ class Custom_WPURP_Templates {
 		//remove_action ( 'wp_enqueue_scripts', 'WPURP_Assets::enqueue');
 		//wp_deregister_script('wpurp_script_minified');
 
-
 	}
 
 
 	/* Hydrate
 	--------------------------------------------------------------*/	
 	public function hydrate() {
+
 		// self::$logged_in = is_user_logged_in();	
 		// self::$id=0;
 	}
@@ -245,6 +245,10 @@ class Custom_WPURP_Templates {
 			
 		if ( is_singular('recipe') ) {
 		  	$css_enqueue=array();
+
+			// Enables custom gallery shortcode & stylesheet loading
+        	new Custom_Gallery_Shortcode();
+        	new Tooltip();
 		  	
 		  	$this->custom_enqueued_styles=array(
 				array(
@@ -256,7 +260,7 @@ class Custom_WPURP_Templates {
 				array(
 					'url' => '//fonts.googleapis.com/css?family=Cabin',
 					'public' => true,
-	          	),			          			                             
+	          	),         				          			                             
 			);
 		}
 		elseif ( is_page( 'menus' ) ) { // Menu page
@@ -595,9 +599,10 @@ class Custom_WPURP_Templates {
 				$path = isset($style['path'])?$style['path']:'';
 				$file = isset($style['file'])?$style['file']:'';
 				$deps = isset($style['deps'])?$style['deps']:'';
+				$media = isset($style['media'])?$style['media']:'all';
 				// $version = self::CUSTOM_WPURP_TEMPLATES_VERSION;
 				$version = CHILD_THEME_VERSION;
-				$this->custom_enqueue_style( $handler, $url, $path, $file, $deps, $version );
+				$this->custom_enqueue_style( $handler, $url, $path, $file, $deps, $version, $media );
 	  		}
 		}
 
@@ -625,7 +630,7 @@ class Custom_WPURP_Templates {
 	}
 
 
-	public function custom_enqueue_style( $handler, $url='', $path='', $file='', $deps='', $version='' ) {	
+	public function custom_enqueue_style( $handler, $url='', $path='', $file='', $deps='', $version='', $media='all' ) {	
 		if ( !strpos($file, '.min.css') ) {
 			$minfile = str_replace( '.css', '.min.css', $file );
 			if (file_exists( $path . $minfile) && WP_MINIFY ) {	
@@ -635,7 +640,7 @@ class Custom_WPURP_Templates {
 		//echo '<pre>' . "minpath = {$minpath}" . '</pre>';
 		//echo '<pre>' . "path = {$path}" . '</pre>';
 	  	//if ((url_exists($minpath)) && (WP_DEBUG==false)) {
-	    wp_enqueue_style( $handler, $url . $file, $deps, $version );
+	    wp_enqueue_style( $handler, $url . $file, $deps, $version, $media );
 	}
 
 

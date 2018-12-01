@@ -18,24 +18,26 @@ class Custom_Gallery_Shortcode {
 
 	public static $PLUGIN_PATH;
 	public static $PLUGIN_URI;	
+
+	const SHORTCODE_NAME='custom-gallery';
 	
-	public function __construct() {
-		
+	public function __construct() {	
 		self::$PLUGIN_PATH = plugin_dir_path( __FILE__ );
 		self::$PLUGIN_URI = plugin_dir_url( __FILE__ );	
-		
+	
 		add_filter( 'use_default_gallery_style', '__return_false' );
 		
+		// Load stylesheet, with fallback in case the class is called at enqueue_styles hook level
 		add_action( 'wp_enqueue_scripts', array($this, 'custom_gallery_stylesheet') );
-		
-		add_shortcode('custom-gallery', array($this,'custom_gallery_shortcode') );
-		
+		$this->custom_gallery_stylesheet();
+
+		add_shortcode( self::SHORTCODE_NAME, array($this,'custom_gallery_shortcode') );
 	}
 	
 	public function custom_gallery_stylesheet() {
   		$uri = self::$PLUGIN_URI . 'assets/css/';
   		$path = self::$PLUGIN_PATH . 'assets/css/';
-		custom_enqueue_style( 'custom-gallery-stylesheet', $uri, $path, 'custom-gallery.css', array(), CHILD_THEME_VERSION );				
+		custom_enqueue_style( 'custom-gallery', $uri, $path, 'custom-gallery.css', array(), CHILD_THEME_VERSION );				
 	}
 	
 
@@ -174,11 +176,8 @@ class Custom_Gallery_Shortcode {
 		return $output;
 	}
 
-
 }
 
-	
-new Custom_Gallery_Shortcode();
 
 
 

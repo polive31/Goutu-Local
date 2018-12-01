@@ -14,7 +14,7 @@ class Tooltip {
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
 
-		// Scripts & styles enqueue
+		// Scripts & styles enqueue, with fallback in case class is created after scripts enqueue
 		add_action('wp_enqueue_scripts', array($this, 'enqueue_easing_script'));
 		add_action('wp_enqueue_scripts', array($this, 'enqueue_tooltip_styles'));
 

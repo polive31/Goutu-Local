@@ -31,6 +31,7 @@ class CustomPostTemplates {
         add_filter( 'genesis_post_info', array($this, 'custom_post_meta'), 1, 10 );		
 	}
 
+
 	public function add_post_toolbar() {
 		if ( is_singular( 'post' ) ) {
 			ob_start();

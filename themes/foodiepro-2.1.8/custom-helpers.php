@@ -5,27 +5,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+
+
 /* =================================================================*/
-/* =              CUSTOM SCRIPTS ENQUEUE
+/* =              CUSTOM SCRIPTS HELPERS
 /* =================================================================*/
 
-function url_exists($url) {
-	$headers = @get_headers($url);
-	return (strpos($headers[0],'404') === false);
+function custom_register_script( $handler, $uri, $path, $file, $deps, $version, $footer=false ) {	
+	$minfile = str_replace( '.js', '.min.js', $file );
+	if (file_exists( $path . $minfile) && WP_MINIFY ) {
+		wp_register_script( $handler, $uri . $minfile, $deps, $version, $footer );
+	}
+	else {
+		wp_register_script( $handler, $uri . $file, $deps, $version, $footer );
+	}
 }
 
 function custom_enqueue_script( $handler, $uri, $path, $file, $deps, $version, $footer=false ) {	
 	$minfile = str_replace( '.js', '.min.js', $file );
-	//echo '<pre>' . "minpath = {$minpath}" . '</pre>';
-	//echo '<pre>' . "path = {$path}" . '</pre>';
-	
-  //if ((url_exists($minpath)) && (WP_DEBUG==false)) {
-  if (file_exists( $path . $minfile) && WP_MINIFY ) {
-    wp_enqueue_script( $handler, $uri . $minfile, $deps, $version, $footer );
-  }
-  else {
-    wp_enqueue_script( $handler, $uri . $file, $deps, $version, $footer );
-  }
+	if (file_exists( $path . $minfile) && WP_MINIFY ) {
+		wp_enqueue_script( $handler, $uri . $minfile, $deps, $version, $footer );
+	}
+	else {
+		wp_enqueue_script( $handler, $uri . $file, $deps, $version, $footer );
+	}
 }
 
 function remove_script($script) {
@@ -35,8 +38,18 @@ function remove_script($script) {
 
 
 /* =================================================================*/
-/* =              CUSTOM STYLES ENQUEUE     
+/* =              CUSTOM STYLES HELPERS     
 /* =================================================================*/
+
+function custom_register_style( $handler, $uri, $path, $file, $deps=array(), $version=false, $media='all' ) {	
+	$minfile = str_replace( '.css', '.min.css', $file );
+	if (file_exists( $path . $minfile) && WP_MINIFY ) {
+		wp_register_style( $handler, $uri . $minfile, $deps, $version, $media );
+	}
+	else {
+		wp_register_style( $handler, $uri . $file, $deps, $version, $media );
+	}
+}
 
 function custom_enqueue_style( $handler, $uri, $path, $file, $deps=array(), $version=false, $media='all' ) {	
 	$minfile = str_replace( '.css', '.min.css', $file );
@@ -50,13 +63,14 @@ function custom_enqueue_style( $handler, $uri, $path, $file, $deps=array(), $ver
 
 /* Optimize page loading by dequeuing specific CSS stylesheets loading actions */
 function remove_style($style) {
-	wp_deregister_style($style);
 	wp_dequeue_style($style);
+	wp_deregister_style($style);
 }
 
 /* =================================================================*/
 /* =         GENERATE PICTURE MARKUP FOR .WEBP SUPPORT
 /* =================================================================*/
+
 function output_picture_markup($url, $path, $name, $ext=null) {
 	?>
 
@@ -78,3 +92,12 @@ function output_picture_markup($url, $path, $name, $ext=null) {
 	<?php
 }
 
+
+/* =================================================================*/
+/* =              MISC HELPERS
+/* =================================================================*/
+
+function url_exists($url) {
+	$headers = @get_headers($url);
+	return (strpos($headers[0],'404') === false);
+}

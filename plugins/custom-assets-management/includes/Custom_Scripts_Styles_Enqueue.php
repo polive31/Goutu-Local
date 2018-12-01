@@ -76,6 +76,23 @@ class CustomScriptsStylesEnqueue {
 		// //add_action('init', 'load_jquery_from_google');   */
 		add_filter( 'stylesheet_uri', 		array($this, 'enqueue_minified_theme_stylesheet'), 10, 1 );
 
+		// add_filter( 'rocket_lazyload_excluded_src', array($this, 'exclude_from_lazyload') );
+		add_action( 'plugins_loaded', array($this, 'conditionnaly_deactivate_lazyload'), PHP_INT_MAX, 1 );
+
+	}
+
+	// public function exclude_from_lazyload($excluded) {
+	// 	$excluded[]='/change-avatar/';
+	// 	return $excluded;
+	// }
+
+	public function conditionnaly_deactivate_lazyload() {
+		$profile = bp_is_profile_component();
+		$action1 = bp_is_current_action( 'change-avatar' ) ;
+		$action2 = bp_is_current_action( 'change-cover-image' );
+		if ( $profile && ($action1 || $action2) ) {
+			remove_action( 'plugins_loaded', 'rocket_lazyload_init' );
+		}
 	}
 
 	/*  SCRIPTS & STYLES TO BE ENQUEUED UNCONDITIONALLY
@@ -131,7 +148,7 @@ class CustomScriptsStylesEnqueue {
 	public function enqueue_if() {
 		$temp = $this->css_if;
 		foreach ($this->css_if as $style => $conditions ) {
-			if (!$this->is_met( $conditions ) ) {
+			if (!$this->current_page_matches( $conditions ) ) {
 				remove_style($style);
 			}
 			else 
@@ -141,7 +158,7 @@ class CustomScriptsStylesEnqueue {
 
 		$temp = $this->js_if;
 		foreach ($this->js_if as $script => $conditions ) {
-			if (!$this->is_met( $conditions ) ) {
+			if (!$this->current_page_matches( $conditions ) ) {
 				remove_script($script);
 			} 
 			else
@@ -151,7 +168,7 @@ class CustomScriptsStylesEnqueue {
 
 	}
 
-	public function is_met( $conditions ) {
+	public function current_page_matches( $conditions ) {
 		$met = true;
 		foreach ($conditions as $type => $value) {
 			switch ($type) {

@@ -81,9 +81,9 @@ class CustomScriptsStylesEnqueue {
 		// //add_action('init', 'load_jquery_from_google');   */
 		add_filter( 'stylesheet_uri', 		array($this, 'enqueue_minified_theme_stylesheet'), 10, 1 );
 
-		// add_filter( 'rocket_lazyload_excluded_src', array($this, 'exclude_from_lazyload') );
-		add_action( 'wp', array($this, 'conditionally_deactivate_lazyload'), PHP_INT_MAX, 1 );
-		add_filter( 'rocket_lazyload_excluded_src', array($this, 'rocket_lazyload_exclude_src') );
+		// Disable lazy load to prevent issue with Buddypress photo resizer
+		// add_action( 'wp', array($this, 'conditionally_deactivate_lazyload'), PHP_INT_MAX, 1 );
+		// add_filter( 'rocket_lazyload_excluded_src', array($this, 'rocket_lazyload_exclude_src') );
 
 	}
 

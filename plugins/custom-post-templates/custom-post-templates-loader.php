@@ -19,20 +19,8 @@ if ( !defined('ABSPATH') )
 ------------------------------------*/
 require_once 'includes/Custom_Post_Templates.php';
 
-
-/* Templates
-------------------------------------*/
-// require_once 'templates/Custom_Post_Template.php';
-
-/* Helpers
-------------------------------------*/
-
-
 new CustomPostTemplates();
-// new Custom_WPURP_Helpers();
-// new Custom_Recipe_Template();
-// new Custom_WPURP_Ingredient();
-// new Custom_Recipe_Submission_Template();
+
 
 
 

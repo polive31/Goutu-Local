@@ -14,35 +14,37 @@ class Custom_WPURP_Ingredient {
     CONST VOWELS = array('a','e','i','o','u');
     CONST EXCEPTIONS = array('huile','herbes');
     CONST UNITS_LIST = array(
-        array('g'     , 'g'),
-        array('kg'    , 'kg'),
-        array('ml'    , 'ml'),
-        array('cl'    , 'cl'),
-        array('dl'     , 'dl'),
-        array('l'     , 'l'),
+        array('g'     		, 'g'),
+        array('kg'    		, 'kg'),
+        array('ml'    		, 'ml'),
+        array('cl'    		, 'cl'),
+        array('dl'    		, 'dl'),
+        array('l'     		, 'l'),
         array('cuillère à café'   , 'cuillerées à café'),
-        array('cuillère à soupe'   , 'cuillerées à soupe'),
-        array('bâton' , 'bâtons'), //Baton
-        array('boîte'   , 'boîtes'), //Boite
-        array('bol'   , 'bols'), //Bols
-        array('botte'   , 'bottes'), //Bottes
-        array('bouquet'   , 'bouquets'), //Bouquet
-        array('brin'   , 'brins'), //Brin
-        array('branche'   , 'branches'), //Branche (thym)
-        array('bulbe'   , 'bulbes'), //Bulbe
-        array('cube' , 'cubes'), //Cube
-        array('doigt', 'doigts'), //Doigt
-        array('feuille' , 'feuilles'),  //Feuille
-        array('filet'   , 'filets'), //Filet (anchois)
-        array('gousse' , 'gousses'), // Gousse
-        array('noix'   , 'noix'), //Noix
-        array('pavé' , 'pavés'), // Pincée
-        array('pincée' , 'pincées'), // Pincée
-        array('poignée', 'poignées'), //Poignée
-        array('sachet', 'sachets'), //Sachet
-        array('tasse'   , 'tasses'), //Tasse
-        array('tranche'   , 'tranches'), //Tranche
-        array('verre'   , 'verres'), //Verre
+        array('cuillère à soupe'  , 'cuillerées à soupe'),
+        array('bâton' 		, 'bâtons'), 
+        array('boîte'   	, 'boîtes'), 
+        array('bol'   		, 'bols'), 
+        array('botte'   	, 'bottes'),
+        array('bouquet'   	, 'bouquets'),
+        array('brin'   		, 'brins'), 
+        array('branche'   	, 'branches'),
+        array('bulbe'   	, 'bulbes'), 
+        array('cube' 		, 'cubes'), 
+        array('doigt'		, 'doigts'),
+        array('feuille' 	, 'feuilles'),
+        array('filet'   	, 'filets'), 
+        array('gousse' 		, 'gousses'),
+        array('noix'   		, 'noix'), 
+        array('pavé' 		, 'pavés'),
+        array('pincée' 		, 'pincées'),
+        array('poignée'		, 'poignées'), 
+        array('sachet'		, 'sachets'), 
+        array('tasse'   	, 'tasses'),
+        array('tige'   		, 'tiges'),
+        array('tubercule'   , 'tubercules'),
+        array('tranche'   	, 'tranches'), 
+        array('verre'   	, 'verres'), 		
     );      	
 
 	public function __construct() {
@@ -56,8 +58,6 @@ class Custom_WPURP_Ingredient {
 		add_action( 'create_ingredient', array($this, 'save_meta'), 10, 2 );
 		// Shortcode
 		add_shortcode( 'display-ingredient', array( $this, 'display_ingredient_shortcode' ) );	
-
-
 	}
 
 	public function hydrate() {

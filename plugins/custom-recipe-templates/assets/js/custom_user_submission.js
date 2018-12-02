@@ -164,6 +164,21 @@ jQuery(document).ready(function() {
         }
     });
 
+    jQuery(document).on('keyup', 'input', function(e) {
+        // if(e.keyCode == 13 && e.target.type !== 'submit') {
+        if( e.keyCode == 13 ) {
+            e.preventDefault();
+            var inputs = jQuery(e.target).parents("form").eq(0).find(":input:visible"),
+            idx = inputs.index(e.target);
+            if (idx == inputs.length - 1) {
+                inputs[0].select()
+            } else {
+                inputs[idx + 1].focus();
+                inputs[idx + 1].select();
+            }
+        }
+    });    
+
     jQuery('#recipe-ingredients .ingredients_amount').on('keydown',function(e) {
         // console.log("Keypress detected on ingredients amount !");
         
@@ -174,7 +189,7 @@ jQuery(document).ready(function() {
         console.log ("Current ingredient : " + current_id);
         
         if (keyCode == 9 && e.shiftKey == true) {
-            event.preventDefault()
+            e.preventDefault()
             // console.log("Keypress shift !");
             var previous_ingredient = current_ingredient.prev();
             previous_ingredient.focus();

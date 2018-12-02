@@ -309,11 +309,6 @@ class Custom_WPURP_Recipe_Submission {
 
 
 
-
-
-
-
-
 /********************************************************************************
 ****               SUBMISSION PROCESS MANAGEMENT                       **********
 ********************************************************************************/
@@ -423,15 +418,21 @@ class Custom_WPURP_Recipe_Submission {
             $this->instructions = get_post_meta( $post_id, 'recipe_instructions', true ); 
             if( $_FILES ) {
                 foreach( $_FILES as $key => $file ) {
-                    if ( 'recipe_thumbnail' == $key ) {
+                    if ( $key == 'recipe_thumbnail' ) {
                         if( $file['name'] != '' ) {
                             // Recipe thumbnail
-                            $this->insert_attachment_basic( $key, $post_id, true );
+                            $this->insert_attachment_basic( $key, $post_id, 'post' );
                         }
                     } 
+                    elseif ( $key == 'ingredients_thumbnail' ) {
+                        if( $file['name'] != '' ) {
+                            // Ingredients overview thumbnail
+                            $this->insert_attachment_basic( $key, $post_id, 'ingredients' );
+                        }
+                    }
                     else {
                             // Instruction step thumbnail
-                        $this->insert_attachment_basic( $key, $post_id, false );
+                        $this->insert_attachment_basic( $key, $post_id, 'instruction' );
                     }
                 }
             }
@@ -609,7 +610,7 @@ class Custom_WPURP_Recipe_Submission {
     }
 
 
-    public function insert_attachment_basic( $file_handler, $post_id, $post_img = false ) {
+    public function insert_attachment_basic( $file_handler, $post_id, $img_type = 'post' ) {
         if ( $_FILES[$file_handler]['error'] !== UPLOAD_ERR_OK ) {
             return;
         }
@@ -620,9 +621,13 @@ class Custom_WPURP_Recipe_Submission {
 
         $attach_id = media_handle_upload( $file_handler, $post_id );
 
-        if( true == $post_img ) { // Thumbnail image
+        if ( $img_type == 'post' ) { // Thumbnail image
             update_post_meta( $post_id, '_thumbnail_id', $attach_id );
-        } else { // Instructions image
+        } 
+        elseif ( $img_type == 'ingredients' ) { // Ingredients image
+            update_post_meta( $post_id, '_ingredients_thumbnail_id', $attach_id );
+        }            
+        else { // Instructions image
             $number = explode( '_', $file_handler );
             $number = $number[2];
             $this->instructions[$number]['image'] = $attach_id;

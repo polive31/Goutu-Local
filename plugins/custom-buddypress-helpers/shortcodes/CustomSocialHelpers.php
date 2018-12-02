@@ -18,7 +18,7 @@ class CustomSocialHelpers {
 		add_shortcode('if', array($this,'bp_conditional_text'));	
 		add_shortcode('social-button', array($this,'bp_social_button'));	
 		add_shortcode('bp-displayed', array($this,'bp_displayed_user_shortcode'));
-		add_shortcode('bp_user_avatar', array($this,'bp_user_avatar_shortcode'));
+		add_shortcode('bp-user-avatar', array($this,'bp_user_avatar_shortcode'));
 		add_shortcode('bp_user_name', array($this,'bp_user_name_shortcode'));
 		// PC screen menu icons
 		add_shortcode('bp-unread-notes-count', array($this,'logged_in_unread_notification_count_shortcode'));
@@ -112,15 +112,14 @@ class CustomSocialHelpers {
 		return $link;
 		
 	}
-
 		
 	/* =================================================================*/
 	/* =                   BP Author shortcode 
 	/* =================================================================*/	
 	public function bp_author_shortcode( $atts ) {
 		$a = shortcode_atts( array(
-    	'profile' => 'true', // adds link towards profile page
-    	'type' => 'pseudo', // id, pseudo, name
+	    	'profile' => 'true', // adds link towards profile page
+	    	'type' => 'pseudo', // id, pseudo, name
 		), $atts );
 		
 		$user_id=get_the_author_meta('ID');
@@ -137,12 +136,61 @@ class CustomSocialHelpers {
 				break;
 		} 
 
+		$url = bp_core_get_userlink( $user_id, false, true );
 		if ($a['profile']) {
-			$url = bp_core_get_userlink( $user_id, false, true );
 			$output = '<a href="' . $url . '">' . $output . '</a>';
 		}
 
 		return $output; 
+	}
+
+
+	/* =================================================================*/
+	/* =                   BP User Avatar Shortcode 
+	/* =================================================================*/
+	public function bp_user_avatar_shortcode( $atts ) {
+
+
+		$a = shortcode_atts( array(
+	        'size' => 'thumb', //'full',
+	        'profile' => false,
+	        'user' => 'current',
+	        'wrap' => '',
+	        'wrapclass' => '',
+	    ), $atts );
+
+		switch ($a['user']) {
+
+			case 'current':
+				if ( !is_user_logged_in() ) return;
+				global $current_user;
+				$user_id = $current_user->ID;
+				break;
+
+			case 'author':
+				$user_id=get_the_author_meta('ID');	
+				break;
+		};
+
+		$args = array( 
+		    'item_id' =>  $user_id, 
+		    'object' => 'user', //default
+		    'type' => $a['size'] 
+		); 
+
+		$html = bp_core_fetch_avatar( $args );
+
+		if ( $a['profile'] ) {
+			$url = bp_core_get_userlink( $user_id, false, true );
+			$html = '<a href="' . $url . '">' . $html . '</a>';
+		}
+
+		if ( $a['wrap']!='' ) {
+			$html = '<' . $a['wrap'] . ' class="' . $a['wrapclass'] . '">' . $html . '</' . $a['wrap'] . '>';
+		}
+
+		return $html;
+
 	}
 		
 	/* =================================================================*/
@@ -277,23 +325,7 @@ class CustomSocialHelpers {
 	}
 
 
-	/* =================================================================*/
-	/* =                   BP User Avatar Shortcode 
-	/* =================================================================*/
-	public function bp_user_avatar_shortcode( $atts ) {
-		if ( is_user_logged_in() ) {
-			global $current_user;
-			$a = shortcode_atts( array(
-	        'size' => 'full',
-	    ), $atts );
-			$args = array( 
-			    'item_id' =>  $current_user->ID, 
-			    'object' => 'user', //default
-			    'type' => $a['size'] 
-		); 
-			return bp_core_fetch_avatar( $args );
-		}
-	}
+
 
 	/* =================================================================*/
 	/* =               BP Loggued-in name shortcode

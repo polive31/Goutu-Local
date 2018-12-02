@@ -657,33 +657,6 @@ function add_page_icon() {
 
 
 /* =================================================================*/
-/* =               POSTS
-/* =================================================================*/
-
-//* Remove the post meta display from footer
-remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
-
-/* Remove mention from private & protected titles */
-function title_format($content) {
-	return '%s';
-}
-add_filter('private_title_format', 'title_format');
-add_filter('protected_title_format', 'title_format');
-
-
-/* Add & modified read more link
--------------------------------------------------------*/
-add_filter( 'excerpt_more', 'foodie_pro_read_more_link' );
-add_filter( 'get_the_content_more_link', 'foodie_pro_read_more_link' );
-add_filter( 'the_content_more_link', 'foodie_pro_read_more_link' );
-
-function foodie_pro_read_more_link() {
-	return '...</p><p><a class="more-link" href="' . get_permalink() . '">' . __( 'Read More', 'foodiepro' ) . ' &raquo;</a></p>';
-}
-
-
-
-/* =================================================================*/
 /* =               COMMENTS
 /* =================================================================*/
 

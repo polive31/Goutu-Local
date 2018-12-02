@@ -308,25 +308,7 @@ function debug_to_console( $data ) {
 add_filter('bp_core_fetch_avatar_no_grav', '__return_true');
 
 
-//* Add gravatar or picture before entry title
-add_action( 'genesis_entry_header', 'add_author_image', 7 );
-function add_author_image() {
-	if ( is_singular( 'recipe' ) | is_singular( 'post' ) ) /*&& ( function_exists('bp_is_active') ) */{ /* Post or Custom Post */
-		$id = get_the_author_meta( 'ID' );
-		$pseudo = bp_core_get_username( $id );
-		$url = bp_core_get_user_domain( $id );
-		$args = array( 
-	    'item_id' => $id, 
-	    'type' => 'thumb',
-	    'title' => $pseudo 
-		); 
-		echo '<div class="entry-avatar">';
-		echo '<a href="' . $url . '">';
-		echo bp_core_fetch_avatar( $args );
-		echo '</a>';
-		echo '</div>';
-	}
-}
+
 
 // Add post author to RPWE  widget
 add_filter('rpwe_post_title_meta', 'rpwe_add_author', 10, 2);

@@ -176,7 +176,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
                 ?>
                 <!-- Existing Ingredient -->
                 <!-- tabindex=-1 is important for the cell to be able to get focus and trigger jQuery events -->
-                <tr class="ingredient saved" id="ingredient_<?php echo $i;?>" tabindex="-1">
+                <tr class="ingredient saved ui-sortable" id="ingredient_<?php echo $i;?>" tabindex="-1">
                     <!-- Sort handle -->
                     <td class="sort-handle" title="<?php echo __('Move this ingredient', 'foodiepro');?>"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16" > </td>
                     <!-- Ingredient displayed like in published recipe -->
@@ -211,7 +211,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
         ?>
         <!-- New Ingredient (stub) -->
         <!-- tabindex=-1 is important for the cell to be able to get focus and trigger jQuery events -->
-        <tr class="ingredient new" id="ingredient_<?php echo $i;?>" tabindex="-1">
+        <tr class="ingredient new ui-sortable" id="ingredient_<?php echo $i;?>" tabindex="-1">
             <td class="sort-handle" title="<?php echo __('Move this ingredient', 'foodiepro');?>"><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16" ></td>
             <td class="ingredient-preview" colspan="5">
                 &nbsp;
@@ -338,7 +338,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
         ?> 
             <!-- Existing Instructions Section -->
 
-            <tr class="instruction">
+            <tr class="instruction ui-sortable">
                 <td class="sort-handle" title="<?php echo __('Move this instruction', 'foodiepro');?>"><span><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16" ></span></td>
                 <td class="instruction-content">
                     <div class="instruction-text">
@@ -378,7 +378,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
     ?>
             <!-- New (stub) Instruction Section -->
 
-            <tr class="instruction">
+            <tr class="instruction ui-sortable">
                 <td class="sort-handle" title="<?php echo __('Move this instruction', 'foodiepro');?>"><span><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16" /></span></td>
                 <td class="instruction-content">
 

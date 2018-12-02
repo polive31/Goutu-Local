@@ -16,6 +16,6 @@ if ( !defined('ABSPATH') )
 	
 
 require_once 'includes/CustomGoogleRecaptcha.php';
-new CustomGoogleRecaptcha();
+// new CustomGoogleRecaptcha();
 
 

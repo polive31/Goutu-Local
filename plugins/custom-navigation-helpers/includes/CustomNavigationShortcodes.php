@@ -68,8 +68,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 	/* =================================================================*/
 	/* = LIST TAXONOMY TERMS SHORTCODE
 	/* =================================================================*/
-	public function simple_list_taxonomy_terms($args)
-	{
+	public function simple_list_taxonomy_terms($args) {
 	    $args = shortcode_atts( array(
 	        'taxonomy' => 'post_tag',
 	        'orderby' => 'description',

@@ -811,13 +811,7 @@ h3.rpwe-title a {
 	font-size: 18px;	
 }
 
-/* Slider fonts*/
-.slider-text {
-	font-family: "Oswald",cursive;
-	font-size: 40px!important;
-	padding-bottom:20px!important;  
-	color: #FFF;
-}
+
 
 /* Responsive menu fonts */
 #responsive-menu-pro-container .user_name {
@@ -5246,10 +5240,6 @@ Site Footer
 		display:initial;
 	}
 	
-	.slider-text {
-		font-size: 35px !important;
-		padding: 0 10px !important;
-	}
 	
 	.content img.rpwe-thumb,
 	.page-bottom img.rpwe-thumb {
@@ -5471,9 +5461,7 @@ Site Footer
 	    bottom: 12px;
 	}		
 	
-	.slider-text {
-	 	font-size: 25px!important;
-	}
+
 	
 	/* Added P.O. allows to resize the header picture */
 	.site-title a,

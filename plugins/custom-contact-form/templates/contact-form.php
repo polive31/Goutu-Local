@@ -7,19 +7,26 @@ Template Name: Contact Form
 
 <?php 
 
-// add_action( 'wp_enqueue_scripts', 'enqueue_contact_script' );
 
+add_action( 'wp_enqueue_scripts', 'enqueue_contact_script' );
 add_action( 'genesis_loop', 'ccf_output_form' );
 
 function enqueue_contact_script() {
+	if ( !is_page( get_option('contact_page_slug') ) ) return;
+
 	$js_uri = CCF_URI . '/assets/js/';
 	$js_path = CCF_PATH . '/assets/js/';
 	custom_enqueue_script( 'contact-form', $js_uri, $js_path, 'contact-form.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
+
+	if (class_exists('CustomGoogleRecaptcha'))
+		new CustomGoogleRecaptcha(); // makes sure that the related plugin assets are loaded
+
 }
 
 function ccf_output_form() {
+
 	if (class_exists('CustomGoogleRecaptcha'))
-		$gCaptcha = new CustomGoogleRecaptcha();
+		$gCaptcha = new CustomGoogleRecaptcha(); 
 	else
 		$gCaptcha = false;
 

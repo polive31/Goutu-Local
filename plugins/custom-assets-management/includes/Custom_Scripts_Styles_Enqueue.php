@@ -9,7 +9,6 @@ class CustomScriptsStylesEnqueue {
 
 	// Scripts to be loaded asynchronously
 	const DEFER_JS = array(
-			'masterslider-core',
 			'bp-confirm',
 			'skip-links',
 			'foodie-pro-general',
@@ -47,9 +46,13 @@ class CustomScriptsStylesEnqueue {
 			'wpba_front_end_styles' 			=> array('false' => ''),
 		);
 
+
 	// Scripts to be loaded conditionnally
 	private $js_if = array(
-			// 'lazysizes'							=> array('false' => ''),
+			'bp-child-js'						=> array('page' => 'bp-page'),
+			'bp-mentions'						=> array('page' => 'bp-page'),
+			'bp-confirm'						=> array('page' => 'bp-page'),
+			'bp-widget-members'					=> array('page' => 'home bp-page'),
 		);
 
 	// Plugin path & url properties
@@ -142,7 +145,7 @@ class CustomScriptsStylesEnqueue {
 
 	}
 
-	/*  LOAD CONDITIONNALY 
+	/*  LOAD CONDITIONALLY 
 	/* ----------------------------------------------------------------*/
 
 	public function enqueue_if() {
@@ -171,7 +174,7 @@ class CustomScriptsStylesEnqueue {
 	public function current_page_matches( $conditions ) {
 		$met = true;
 		foreach ($conditions as $type => $value) {
-			$thismet = ($operator=='AND')?true:false;
+			$thismet = true;
 			switch ($type) {
 				case 'false' :
 					$thismet = false;

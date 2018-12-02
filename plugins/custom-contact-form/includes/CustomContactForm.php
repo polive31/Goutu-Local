@@ -14,10 +14,10 @@ class CustomContactForm {
 	public function __construct() {	
 		add_action('init', array($this, 'ccf_create_contact_post_type'), 10);
 		// add_filter ('theme_page_templates', array($this,'add_ccf_template'));
-		add_filter ('template_include', array($this, 'redirect_ccf_template'));
+		// add_filter ('template_include', array($this, 'redirect_ccf_template'));
 		
 		// Create options page
-		add_action('admin_menu', array($this, 'add_ccf_options'));
+		add_action('admin_menu', array($this, 'add_ccf_options'));	
 	
 		self::$CCF_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$CCF_URI = plugin_dir_url( dirname( __FILE__ ) );
@@ -37,7 +37,7 @@ class CustomContactForm {
 	            <?php wp_nonce_field('update-options') ?>
 	            <p><strong>Contact Email</strong><br />
 	                <input type="text" name="contact_email" size="45" value="<?php echo get_option('contact_email'); ?>" />
-	            </p>
+	            </p>            
 	            <p><input type="submit" name="Submit" value="<?= __('Save Options','foodiepro') ?>" /></p>
 	            <input type="hidden" name="action" value="update" />
 	            <input type="hidden" name="page_options" value="contact_email" />
@@ -51,12 +51,13 @@ class CustomContactForm {
 	    return $templates;
     }
 
-	public function redirect_ccf_template ($template) {
-	    // if ('contact-form.php' == basename ($template))
-	    if ( is_page('contact-form'))
-	        $template = self::$CCF_PATH . '/templates/contact-form.php';
-	    return $template;
-    }
+	// public function redirect_ccf_template ($template) {
+	//     // if ('contact-form.php' == basename ($template))
+	//     if ( is_page( get_option('contact_page_slug') ))
+	//         $template = self::$CCF_PATH . '/templates/contact-form.php';
+	//     return $template;
+ //    }
+
 
 	public function ccf_create_contact_post_type() {
 

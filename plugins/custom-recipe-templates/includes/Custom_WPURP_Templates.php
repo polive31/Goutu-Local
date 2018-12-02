@@ -423,23 +423,23 @@ class Custom_WPURP_Templates {
 		                    'nonce' => wp_create_nonce( 'wpurp_favorite_recipe' ),
 		                )
 		            ),	  
-		            array(
-		                /*'url' => WPUltimateRecipePremium::get()->premiumUrl . '/js/add-to-shopping-list.js',*/
-		                'name' => 'custom-shopping-list',
-		                'url' => self::$_PluginUri . 'assets/js/',
-		                'path' => self::$_PluginPath . 'assets/js/',
-		                'file' => 'custom_shopping_list.js',
-		                // 'premium' => true,
-		                'public' => true,
-		                'deps' => array(
-		                    'jquery',
-		                ),
-		                'data' => array(
-		                    'name' => 'wpurp_add_to_shopping_list',
-		                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
-		                    'nonce' => wp_create_nonce( 'wpurp_add_to_shopping_list' ),
-		                )
-		            ),
+		            // array(
+		            //     /*'url' => WPUltimateRecipePremium::get()->premiumUrl . '/js/add-to-shopping-list.js',*/
+		            //     'name' => 'custom-shopping-list',
+		            //     'url' => self::$_PluginUri . 'assets/js/',
+		            //     'path' => self::$_PluginPath . 'assets/js/',
+		            //     'file' => 'custom_shopping_list.js',
+		            //     // 'premium' => true,
+		            //     'public' => true,
+		            //     'deps' => array(
+		            //         'jquery',
+		            //     ),
+		            //     'data' => array(
+		            //         'name' => 'wpurp_add_to_shopping_list',
+		            //         'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
+		            //         'nonce' => wp_create_nonce( 'wpurp_add_to_shopping_list' ),
+		            //     )
+		            // ),
 		        );
 				// }
 			}

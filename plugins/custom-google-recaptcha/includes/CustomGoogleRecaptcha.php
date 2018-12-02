@@ -15,7 +15,10 @@ class CustomGoogleRecaptcha {
 	public function __construct() {	
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
+		
 		add_action('wp_enqueue_scripts', array($this, 'enqueue_recaptcha_script'));
+		$this->enqueue_recaptcha_script(); // Makes sure the script is enqueued if class is created at wp_enqueue_scripts hook time
+		
 		add_shortcode('g-recaptcha', array($this,'display_google_recaptcha')); 
 	}
 

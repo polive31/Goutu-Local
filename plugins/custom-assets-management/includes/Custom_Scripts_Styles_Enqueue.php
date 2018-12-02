@@ -30,8 +30,8 @@ class CustomScriptsStylesEnqueue {
 
 	// Stylesheets to be loaded conditionnally
 	private $css_if = array(
-			'bp-xprofile-custom-field-types' 	=> array('false' => ''),
 			'circular-progress-bar' 			=> array('page' => 'bp-page home'),
+			'bp-xprofile-custom-field-types' 	=> array('false' => ''),
 			'bp-admin-bar'						=> array('false' => ''),
 			'bp-child-css' 						=> array('page' => 'bp-page'),
 			'bp-mentions-css' 					=> array('page' => 'bp-page'),
@@ -44,6 +44,8 @@ class CustomScriptsStylesEnqueue {
 			'megamenu-genericons' 				=> array('false' => ''),
 			'popup-maker-site' 					=> array('false' => ''),
 			'wpba_front_end_styles' 			=> array('false' => ''),
+			'image-lightbox-plugin'				=> array('singular' => 'post recipe' ),
+			'custom-lightbox'					=> array('singular' => 'post recipe' )
 		);
 
 
@@ -180,7 +182,7 @@ class CustomScriptsStylesEnqueue {
 					$thismet = false;
 					break;
 				case 'page' :
-					$thismet = $this->is_page_of_type( explode(' ', $value), 'OR' );
+					$thismet = $this->is_page_of_type( explode(' ', $value) );
 					break;												
 				case 'shortcode' :
 					$thismet = has_shortcode( get_the_content(), $value);
@@ -203,12 +205,16 @@ class CustomScriptsStylesEnqueue {
 			$thismet = false;
 			switch ($type) {											
 				case 'home' :
-					$thismet = is_home();
+					$thismet = is_front_page();
 					break;	
 				case 'bp-page' :
 					if (!function_exists( 'bp_is_blog_page')) break;
-					$thismet = !bp_is_blog_page(); // bp_is_blog_page returns true on a wordpress page, false on buddypress page
+					$thismet = !bp_is_blog_page(); // buddypress page
 					break;
+				case 'blog-page' :
+					if (!function_exists( 'bp_is_blog_page')) break;
+					$thismet = bp_is_blog_page(); //  wordpress page
+					break;					
 			}
 			$met = $met||$thismet;
 		}

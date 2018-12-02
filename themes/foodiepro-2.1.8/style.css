@@ -1991,8 +1991,7 @@ form[role="search"] {
 	padding:10px;
 }
 
-/* Slider widget
---------------------------------------------- */
+
 
 
 /* Detailed search widget 
@@ -5429,6 +5428,10 @@ Site Footer
 }
 
 @media only screen and (max-width:420px) {
+
+	.nextend-arrow {
+		visibility: hidden!important;		
+	}	
 	
 	.entry-header-overlay .overlay {
 		font-size: 25px;

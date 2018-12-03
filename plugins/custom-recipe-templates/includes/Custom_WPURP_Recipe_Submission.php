@@ -17,10 +17,10 @@ class Custom_WPURP_Recipe_Submission {
         self::$_UploadPath = trailingslashit( $upload_dir['basedir'] );
 
         // Recipe headline filter
-        add_filter( 'genesis_post_info', array($this, 'add_recipe_edit_button') );
+        add_filter( 'genesis_post_info', array($this, 'add_recipe_edit_button'), 20); // Important : priority must be above 15 since post meta is customized with priority 15 (see custom post templates)
 
         // Submission form customization
-        add_filter('wp_dropdown_cats', array($this, 'add_lang_to_select'));
+        add_filter( 'wp_dropdown_cats', array($this, 'add_lang_to_select'));
         // add_action('wp_head',array($this,'add_custom_js'));        
 
         // Ajax callbacks
@@ -176,7 +176,7 @@ class Custom_WPURP_Recipe_Submission {
             $edit_url = 'href="' . get_permalink() . self::RECIPE_EDIT_SLUG . '?wpurp-edit-recipe=' . $post->ID . '" ';
             $edit_title = 'title="' . __('Edit recipe', 'foodiepro') . '" ';
 
-            $post_info .= ' <a ' . $edit_url . $edit_title . '><i class="fa fa-pencil"></i></a>';    
+            $post_info .= '<span class="edit-button"><a ' . $edit_url . $edit_title . '><i class="fa fa-pencil-square-o"></i></a></span>';    
         }
         return $post_info;
     }    

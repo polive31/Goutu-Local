@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2018-12-02 23:51+0100\n"
-"PO-Revision-Date: 2018-12-02 23:52+0100\n"
+"POT-Creation-Date: 2018-12-03 00:48+0100\n"
+"PO-Revision-Date: 2018-12-03 00:50+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -195,6 +195,7 @@ msgstr ""
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:105
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:106
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:79
+#: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:47
 msgid "New title"
 msgstr ""
 
@@ -215,6 +216,7 @@ msgstr ""
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:83
 #: plugins/custom-recipe-templates/widgets/custom_nutrition_label_widget.php:60
 #: plugins/custom-recipe-templates/widgets/custom_recipe_list_widget.php:101
+#: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:51
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/widgets/nutrition_label_widget.php:52
 #: plugins/wp-ultimate-recipe-premium/premium/addons/recipe-search/widgets/recipe_search_widget.php:82
 #: plugins/wp-ultimate-recipe-premium/premium/helpers/widgets/recipe_list_widget.php:75
@@ -938,11 +940,11 @@ msgstr "régions"
 msgid "countries"
 msgstr "pays"
 
-#: plugins/custom-post-templates/includes/Custom_Post_Templates.php:61
+#: plugins/custom-post-templates/includes/Custom_Post_Templates.php:60
 msgid "Read More"
 msgstr ""
 
-#: plugins/custom-post-templates/includes/Custom_Post_Templates.php:115
+#: plugins/custom-post-templates/includes/Custom_Post_Templates.php:114
 #, php-format
 msgid "Published on %s by %s<span id=\"username\">%s</span>"
 msgstr "Publié le %s par %s<span id=\"username\">%s</span>"
@@ -2062,68 +2064,98 @@ msgstr "J'aime cet article"
 msgid "Do not like this post anymore"
 msgstr "Je n'aime plus cet article"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:30
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:97
+msgid "Share on Facebook"
+msgstr "Partager sur Facebook"
+
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:119
+msgid "Share on Twitter"
+msgstr "Partager sur Twitter"
+
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:151
+msgid "Pin It"
+msgstr ""
+
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:176
+msgid "Share by email"
+msgstr "Partager par courriel"
+
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:203
+msgid "Share on Whatsapp"
+msgstr "Partager sur Whatsapp"
+
+#: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:18
+#, fuzzy
+#| msgid "Show conversation"
+msgid "Custom Social Share Buttons"
+msgstr "Voir la conversation"
+
+#: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:21
+msgid "Displays share buttons of selected social networks"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:44
 msgid "Dish"
 msgstr "Plat"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:31
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:45
 #, fuzzy
 #| msgid "eg. Preparation of the dough"
 msgid "Appreciation of the dish"
 msgstr "ex : Préparation de la pâte"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:32
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:46
 msgid "How did you like this dish ?"
 msgstr "Avez vous aimé ce plat ? "
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:34
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:60
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:48
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:74
 msgid "Disappointing"
 msgstr "Décevant"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:35
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:49
 msgid "Rather good"
 msgstr "Assez bon"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:36
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:62
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:50
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:76
 msgid "Good"
 msgstr "Bon"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:37
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:63
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:51
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:77
 msgid "Very good"
 msgstr "Très bon"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:38
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:52
 msgid "Delicious"
 msgstr "Délicieux"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:58
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:72
 msgid "Overall"
 msgstr "Global"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:61
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:75
 msgid "Average"
 msgstr "Moyen"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:64
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:78
 msgid "Fabulous"
 msgstr "Fabuleux"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:92
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:106
 msgid "Evaluations"
 msgstr "Evaluations"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:93
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:107
 msgid "Evaluation"
 msgstr "Evaluation"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:99
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:113
 msgid "rating"
 msgstr "evaluation"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:117
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:131
 #, fuzzy
 #| msgid "No related posts."
 msgid "Not rated"

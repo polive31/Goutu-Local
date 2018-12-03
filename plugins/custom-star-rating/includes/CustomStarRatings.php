@@ -11,13 +11,27 @@ class CustomStarRatings {
 	protected static $ratingCats;
 	protected static $ratingGlobal;
 
+	public static $PLUGIN_PATH;
+	public static $PLUGIN_URI;		
+
 	public function __construct() {
+		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
+		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
+
 		add_action('init', array( $this , 'hydrate' ));
 		add_filter( 'wpurp_register_ratings_taxonomy', array( $this, 'translate_ratings_taxonomy' ) );
 
 		//self::$s_ratingCats = self::$ratingCats;
 		//self::$s_ratingGlobal = self::$ratingGlobal;
 		//add_action( 'genesis_before_content', array($this,'display_debug_info') );
+		add_action( 'wp_enqueue_scripts', array($this, 'load_custom_rating_stylesheet' ) );
+	}
+
+	/* Chargement des feuilles de style custom et polices */
+	public function load_custom_rating_stylesheet() {
+		$uri = self::$PLUGIN_URI . 'assets/';
+  		$path = self::$PLUGIN_PATH . 'assets/'; 
+		custom_enqueue_style( 'custom-star-ratings', $uri, $path, 'custom-star-rating.css', array(), CHILD_THEME_VERSION );
 	}
 
 

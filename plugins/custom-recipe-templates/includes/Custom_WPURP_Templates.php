@@ -37,7 +37,7 @@ class Custom_WPURP_Templates {
 		add_action( 'wp_enqueue_scripts', array($this, 'custom_wpurp_scripts_styles_enqueue') );
 
         /* Customize Recipe Screen output */
-        add_filter('wpurp_output_recipe', array($this,'display_recipe'), 10, 2 ); 
+        add_filter( 'wpurp_output_recipe', array($this,'display_recipe'), 10, 2 ); 
 
         /* Customize Recipe Print output */
         add_filter( 'wpurp_output_recipe_print', array($this,'print_recipe'), 10, 2 );
@@ -299,6 +299,13 @@ class Custom_WPURP_Templates {
 					'public' => true,
 					'direct' => true,
 	          	),		          	
+	  			array(
+					'url' => self::$_PluginUri . 'assets/css/',
+					'path' => self::$_PluginPath . 'assets/css/',
+					'file' => 'custom-user-submission.css',
+					'public' => true,
+					'direct' => true,
+	          	),              	   		          	
 	          	// The style below is needed for recipe preview
 	  			array(
 					'url' => self::$_PluginUri . 'assets/css/',
@@ -307,14 +314,20 @@ class Custom_WPURP_Templates {
 					'public' => true,
 					'direct' => true,
 	          	),
-	  			array(
-					'url' => self::$_PluginUri . 'assets/css/',
-					'path' => self::$_PluginPath . 'assets/css/',
-					'file' => 'custom-user-submission.css',
+			);
+		}	          		
+		elseif ( is_page( [self::RECIPES_LIST_SLUG] ) ) {
+			$css_enqueue=array();
+						
+			$this->custom_enqueued_styles=array(
+				array(
+					'url' =>  self::$_PluginUri . 'assets/css/',
+					'path' =>  self::$_PluginPath . 'assets/css/',
+					'file' => 'custom-post-list.css',
 					'public' => true,
 					'direct' => true,
-	          	),              	   		          	
-			);	          		
+				),
+			);						
 		}
 		else 
 		  $css_enqueue=array();

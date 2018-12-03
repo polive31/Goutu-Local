@@ -64,8 +64,8 @@ class Custom_WPURP_Recipe extends WPURP_Recipe {
         if ( empty($content) )
             $description = $this->description();
         // elseif ( $target=='form' ) {
-        else
-            $description = $content;
+        // else
+        //     $description = $content;Commented-out since post content is displayed on the default post template
 
         $allowed = array(   'a' => array(
                                 'href' => array(),

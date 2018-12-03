@@ -36,6 +36,7 @@ class CustomScriptsStylesEnqueue {
 
 	// Stylesheets to be loaded conditionnally
 	private $css_if = array(
+			'custom-star-ratings' 				=> array('page' => 'blog-page'),
 			'circular-progress-bar' 			=> array('page' => 'bp-page home'),
 			'bp-xprofile-custom-field-types' 	=> array('false' => ''),
 			'bp-admin-bar'						=> array('false' => ''),
@@ -131,18 +132,21 @@ class CustomScriptsStylesEnqueue {
 		wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Oswald|Vollkorn:300,400', array(), CHILD_THEME_VERSION );
 		custom_enqueue_style( 'child-theme-fonts', $css_url, $css_path, 'fonts.css', array(), CHILD_THEME_VERSION );
 
+	}
+
+	public function enqueue_low_priority_assets() {
+		$css_url = CHILD_THEME_URL . '/assets/css/';
+		$css_path = CHILD_THEME_PATH . '/assets/css/';
+
+		wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
+		
 		/* Theme stylesheet with varying name & version, forces cache busting at browser level
 		--------------------------------------------------- */
 		$color_theme_handler = 'color-theme-' . CHILD_COLOR_THEME;
 		custom_enqueue_style( $color_theme_handler , $css_url, $css_path, $color_theme_handler . '.css', array(), CHILD_COLOR_THEME . CHILD_COLOR_THEME_VERSION );
-	}
 
-	public function enqueue_low_priority_assets() {
-		wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
 		/* Customized GDPR stylesheet 
 		--------------------------------------------------- */
-		$css_url = CHILD_THEME_URL . '/assets/css/';
-		$css_path = CHILD_THEME_PATH . '/assets/css/';
 		custom_enqueue_style( 'custom-gdpr' , $css_url, $css_path, 'custom-gdpr-public.css', array(), CHILD_THEME_VERSION );
 	}
 

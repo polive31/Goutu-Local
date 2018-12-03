@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2018-12-02 23:51+0100\n"
+"POT-Creation-Date: 2018-12-03 00:48+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,6 +31,7 @@ msgstr ""
 "X-Poedit-SearchPath-9: plugins/custom-star-rating\n"
 "X-Poedit-SearchPath-10: plugins/custom-post-templates\n"
 "X-Poedit-SearchPath-11: plugins/custom-site-notifications\n"
+"X-Poedit-SearchPath-12: plugins/custom-social-sharing-buttons\n"
 
 #: plugins/bp-custom.php:64
 msgid ""
@@ -202,6 +203,7 @@ msgstr ""
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:105
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:106
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:79
+#: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:47
 msgid "New title"
 msgstr ""
 
@@ -222,6 +224,7 @@ msgstr ""
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:83
 #: plugins/custom-recipe-templates/widgets/custom_nutrition_label_widget.php:60
 #: plugins/custom-recipe-templates/widgets/custom_recipe_list_widget.php:101
+#: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:51
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/widgets/nutrition_label_widget.php:52
 #: plugins/wp-ultimate-recipe-premium/premium/addons/recipe-search/widgets/recipe_search_widget.php:82
 #: plugins/wp-ultimate-recipe-premium/premium/helpers/widgets/recipe_list_widget.php:75
@@ -882,11 +885,11 @@ msgstr ""
 msgid "countries"
 msgstr ""
 
-#: plugins/custom-post-templates/includes/Custom_Post_Templates.php:61
+#: plugins/custom-post-templates/includes/Custom_Post_Templates.php:60
 msgid "Read More"
 msgstr ""
 
-#: plugins/custom-post-templates/includes/Custom_Post_Templates.php:115
+#: plugins/custom-post-templates/includes/Custom_Post_Templates.php:114
 #, php-format
 msgid "Published on %s by %s<span id=\"username\">%s</span>"
 msgstr ""
@@ -1935,66 +1938,94 @@ msgstr ""
 msgid "Do not like this post anymore"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:30
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:97
+msgid "Share on Facebook"
+msgstr ""
+
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:119
+msgid "Share on Twitter"
+msgstr ""
+
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:151
+msgid "Pin It"
+msgstr ""
+
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:176
+msgid "Share by email"
+msgstr ""
+
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:203
+msgid "Share on Whatsapp"
+msgstr ""
+
+#: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:18
+msgid "Custom Social Share Buttons"
+msgstr ""
+
+#: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:21
+msgid "Displays share buttons of selected social networks"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:44
 msgid "Dish"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:31
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:45
 msgid "Appreciation of the dish"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:32
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:46
 msgid "How did you like this dish ?"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:34
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:60
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:48
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:74
 msgid "Disappointing"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:35
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:49
 msgid "Rather good"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:36
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:62
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:50
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:76
 msgid "Good"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:37
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:63
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:51
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:77
 msgid "Very good"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:38
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:52
 msgid "Delicious"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:58
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:72
 msgid "Overall"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:61
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:75
 msgid "Average"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:64
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:78
 msgid "Fabulous"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:92
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:106
 msgid "Evaluations"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:93
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:107
 msgid "Evaluation"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:99
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:113
 msgid "rating"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:117
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:131
 msgid "Not rated"
 msgstr ""
 

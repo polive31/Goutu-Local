@@ -63,9 +63,8 @@ class Custom_WPURP_Recipe extends WPURP_Recipe {
         $content = trim(preg_replace("/\[wpurp-searchable-recipe\][^\[]*\[\/wpurp-searchable-recipe\]/", "", $content));
         if ( empty($content) )
             $description = $this->description();
-        // elseif ( $target=='form' ) {
-        // else
-        //     $description = $content;Commented-out since post content is displayed on the default post template
+        elseif ( $target=='form' )
+            $description = $content;//Not applicable to $target="post" since post content is already displayed on the default post template
 
         $allowed = array(   'a' => array(
                                 'href' => array(),

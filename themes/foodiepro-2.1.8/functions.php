@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'CHILD_THEME_NAME', 'Foodie Pro Theme' );
-define( 'CHILD_THEME_VERSION', '2.2.41' );
+define( 'CHILD_THEME_VERSION', '2.2.42' );
 define( 'CHILD_THEME_DEVELOPER', 'Shay Bocks' );
 define( 'CHILD_THEME_URL', get_stylesheet_directory_uri() );
 define( 'CHILD_THEME_PATH', get_stylesheet_directory() );
@@ -499,6 +499,12 @@ add_action( 'genesis_after_content', 'genesis_posts_nav' );
 // Move footer widget area (avoid "out of content" issue on buddypress pages)
 remove_action( 'genesis_before_footer', 'genesis_footer_widget_areas' );
 add_action( 'genesis_after_content_sidebar_wrap', 'genesis_footer_widget_areas', 999 );
+
+// Remove the post meta display from footer
+remove_action( 'genesis_entry_footer', 'genesis_entry_footer_markup_open', 5 );
+remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
+remove_action( 'genesis_entry_footer', 'genesis_entry_footer_markup_close', 15 );
+
 
 
 /* Hook widget areas 

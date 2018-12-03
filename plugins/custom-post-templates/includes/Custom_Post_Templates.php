@@ -33,11 +33,8 @@ class CustomPostTemplates {
 		// Filters post thumbnail output in order to let lightbox plugin format them accordingly
 		// add_filter( 'wp_get_attachment_image_attributes', array($this, 'custom_post_thumbnail_html'), 10, 5 );
 		add_filter( 'the_content', array($this, 'add_lightbox_link') );
-		
-		//* Remove the post meta display from footer
-		remove_action( 'genesis_entry_footer', array($this, 'genesis_post_meta' ) );
 
-		/* Remove public/private mention from post titles */
+		// Remove public/private mention from post titles */
 		add_filter('private_title_format', 		array($this, 'title_format') );
 		add_filter('protected_title_format',	array($this, 'title_format') );
 

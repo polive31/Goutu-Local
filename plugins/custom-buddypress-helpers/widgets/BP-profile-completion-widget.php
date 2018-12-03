@@ -112,7 +112,7 @@ class custom_progress_bar_widget extends WP_Widget {
 		$title = apply_filters( 'widget_title', $instance['title'] );
 
 		// add a textarea for long messages
-		$profile_url = do_shortcode('[menu-entry item="profile_edit" html="false"]');
+		$profile_url = do_shortcode('[menu-entry item="edit_profile" html="false"]');
 		$textarea = sprintf(__('<a href="%s">Fill-in your profile</a> to make yourself visible from other users.','foodiepro'),$profile_url);
 
 		echo $before_widget;

@@ -37,11 +37,11 @@
 
 		<?php if ( bp_account_was_activated() ) : ?>
 
-			<?php //if ( isset( $_GET['e'] ) ) : ?>
-				<p><?php _e( 'Thanks for confirming your email address!<br>Your account is now pending administrator approval.<br>Once approved, details will be sent to you in a separate email.', 'foodiepro' ); ?></p>
-			<?php //else : ?>
-				<p><?php //printf( __( 'Thanks for confirming your email address! Your account is now pending administrator approval. Once approved, details will be sent to you in a separate email.', 'foodiepro' ), wp_login_url( bp_get_root_domain() ) ); ?></p>
-			<?php //endif; ?>
+			<?php if ( isset( $_GET['e'] ) ) : ?>
+				<p><?php _e( 'Your account was activated successfully! Your account details have been sent to you in a separate email.', 'buddypress' ); ?></p>
+			<?php else : ?>
+				<p><?php printf( __( 'Your account was activated successfully! You can now <a href="%s">log in</a> with the username and password you provided when you signed up.', 'buddypress' ), wp_login_url( bp_get_root_domain() ) ); ?></p>
+			<?php endif; ?>
 
 		<?php else : ?>
 

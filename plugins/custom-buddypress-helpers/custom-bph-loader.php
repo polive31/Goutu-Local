@@ -32,6 +32,8 @@ if ( class_exists( 'BuddyPress' ) ) {
 function bp_social_helpers_load() {
 	// Includes
 	require_once 'includes/BP_Activity_Customizations.php';
+	require_once 'includes/BP_Custom_Registration.php';
+
 	// Widgets
 	require_once 'widgets/BP-custom-login-widget.php';
 	require_once 'widgets/BP-latest-registered-members-widget.php';

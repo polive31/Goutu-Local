@@ -137,7 +137,7 @@
     position: fixed;
     bottom: 0;
     left: 0;
-    background: rgba(218, 109, 36, 0.44);
+    background: rgba(125, 125, 125, 0.9);
     width: 100%;
     color: #fff;
     z-index: 9999999
@@ -152,11 +152,9 @@
 
 .gdpr.gdpr-privacy-bar .gdpr-wrapper,
 .gdpr.gdpr-reconsent-bar .gdpr-wrapper {
-    /*background : rgba(76, 76, 76, 0.6);*/
-    /*background : rgba(138, 55, 0, 0.53);*/
-    /*background : rgb(209, 98, 24);*/
-    background : rgba(209, 98, 24, 0.70);
-    padding: 20px 60px;
+    /*background : rgba(209, 98, 24, 0.70);*/
+    /*background : rgba(86, 73, 63, 0.7);*/
+    padding: 10px 60px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -221,14 +219,14 @@
 .gdpr.gdpr-privacy-bar .gdpr-wrapper .gdpr-content p,
 .gdpr.gdpr-reconsent-bar .gdpr-wrapper .gdpr-content p {
     color: #fff;
-    font-size: 18px;    
+    font-size: 1.8rem;    
 }
 
 @media screen and (max-width: 1024px) {
     .gdpr.gdpr-privacy-bar .gdpr-wrapper .gdpr-content,
     .gdpr.gdpr-reconsent-bar .gdpr-wrapper .gdpr-content {
         padding-right: 0;
-        padding-bottom: 20px
+        padding-bottom: 0px
     }
 }
 
@@ -379,6 +377,12 @@
         -ms-flex-direction: column;
         flex-direction: column
     }
+
+    .gdpr.gdpr-privacy-bar .gdpr-wrapper,
+    .gdpr.gdpr-reconsent-bar .gdpr-wrapper {
+        padding: 10px 20px;
+    }    
+
 }
 
 .gdpr.gdpr-privacy-bar .gdpr-wrapper .gdpr-right .gdpr-buttons button,
@@ -662,7 +666,7 @@
     .gdpr.gdpr-reconsent .gdpr-wrapper .reconsent-form>header .gdpr-box-title h3,
     .gdpr.gdpr-general-confirmation .gdpr-wrapper>form>header .gdpr-box-title h3,
     .gdpr.gdpr-general-confirmation .gdpr-wrapper .reconsent-form>header .gdpr-box-title h3 {
-        font-size: 18px !important
+        font-size: 16px !important
     }
 }
 

@@ -5,9 +5,14 @@
  * From: Pascal Olive
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 
 /* Change BuddyPress default Members landing tab. */
-define('BP_DEFAULT_COMPONENT', 'profile' );
+define ( 'BP_DEFAULT_COMPONENT', 'profile' );
 
 /* Change default thumbnail size */
 define ( 'BP_AVATAR_THUMB_WIDTH', 65 );
@@ -44,70 +49,6 @@ function custom_bp_js() {
 	wp_enqueue_script( 'dtheme-ajax-js', get_bloginfo('stylesheet_directory') . '/buddypress/js/global.js', array( 'jquery' ), $version );
 }
 
-/* =================================================================*/
-/* =            REGISTRATION
-/* =================================================================*/
-
-// Apply Full Width Content to registration page
-// add_action( 'bp_loaded', 'bp_register_set_full_layout' );
-// function bp_register_set_full_layout() {
-// 	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
-// }
-
-add_action( 'bp_before_registration_submit_buttons', function () { ?>
-	<div class="bp-reg-field">
-		<?php do_action( 'bp_privacy_policy_errors' ); ?>
-		<label for="agree_to_privacy_policy" class="required-field"> Protection de la vie privée </label>
-		<div class="alignleft">
-		<!-- <div class="alignleft legal-mention"> -->
-		<input type="checkbox" name="agree_to_privacy_policy">
-		<?php echo __('On submitting this form, I agree that my email address be used by <a href="goutu.org">goutu.org</a> for contacting me, and that my first name, sex and pseudonym be visible to all visitors of this website.', 'foodiepro'); ?>
-		</div>
-	</div>
-	<?php
-}, 11 );
-
-add_action( 'bp_signup_validate', function () {
-	global $bp;
-	if ( ! isset( $_POST['agree_to_privacy_policy'] ) || $_POST['agree_to_privacy_policy'] !== 'on' ) {
-	  $bp->signup->errors['privacy_policy'] = __('Please confirm that you agree with our privacy policy','foodiepro');
-	}
-} );
-
-/* =================================================================*/
-/* =             CUSTOM ACTIVATION MAIL => FONCTIONNE PAS !!!
-/* =================================================================*/
-//
-//
-//function set_content_type( $content_type ) {
-//    return 'text/html';
-//}
-//
-///* Set back plain text format to prevent any conflict with WP mails which require it */
-//function default_mail_format() {
-//	remove_filter( 'wp_mail_content_type', 'set_content_type' );
-//}
-////add_action( 'bp_core_sent_user_validation_email', 'default_mail_format' );
-//
-///* Customize registration mail subject */
-//function custom_buddypress_activation_subject( $subject, $user_id ) {
-//	$user = get_userdata( $user_id );
-//	$text = 'essai3' . ' – Activate your ' . get_bloginfo( 'name' ) . ' account';
-//	return $text;
-//}
-//add_filter( 'bp_core_signup_send_validation_email_subject', 'custom_buddypress_activation_subject', 10, 2 );
-//
-///* Customize registration mail message */
-//add_filter('bp_core_signup_send_validation_email_message', 'add_username_to_activation_email',10,3);
-//
-//function add_username_to_activation_email($msg, $user_id, $activation_url) {
-//    // $username = $_POST['signup_username'];
-//    $userinfo = get_userdata($user_id);
-//    $username = $userinfo->user_login;
-//    $msg .= sprintf( __("After successful activation, you can log in using your username (%1\$s) along with password you choose during registration process.", 'textdomain'), $username);
-//    $msg .= 'ESSAI 3';
-//    return $msg;
-//}
 
 /* =================================================================*/
 /* =              PLUGIN INIT
@@ -306,7 +247,6 @@ function debug_to_console( $data ) {
 
 //* Prevents Gravatar to be fetched from internet
 add_filter('bp_core_fetch_avatar_no_grav', '__return_true');
-
 
 
 

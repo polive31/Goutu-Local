@@ -2425,45 +2425,6 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
     color: #969696;
 }
 
-/* Social Share
---------------------------------------------- */
-.mashsb-box .mashsb-buttons a.mash-small {
-    filter:grayscale(80%);
-    -webkit-filter:grayscale(80%);
-}
-
-.site-share-icons li a img {
-    filter:grayscale(100%);
-    -webkit-filter:grayscale(100%);
-}
-
-.mashsb-box .mashsb-buttons a.mash-small:hover,
-.site-share-icons li a:hover img {
-    filter:grayscale(0%);
-    -webkit-filter:grayscale(0%);
-}
-
-/* Site Share Icons */
-ul.cnss-social-icon {
-	margin-top:0px;
-}
-
-
-
-/* WP Ultimate Recipe
---------------------------------------------- */
-
-.widget_wpurp_recipe_search_widget br {
-    display: none;
-}
-
-
-/* Genesis Latest Tweets
---------------------------------------------- */
-
-.latest-tweets ul li {
-	margin-bottom:16px;
-}
 
 /* Custom Contact Form
 --------------------------------------------- */
@@ -2533,12 +2494,6 @@ label.requiredField:after {
 }
 
 
-/* Simple Social Icons
---------------------------------------------- */
-.simple-social-icons ul li:before {
-	content:none !important;
-	padding-right:0 !important;
-}
 
 /* Custom Page Templates
 ---------------------------------------------------------------------------------------------------- */

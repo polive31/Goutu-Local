@@ -39,10 +39,10 @@ function buddypress_page_content( $post_id = 0, $more_link_text = null, $stripte
 }
 
 // Apply Full Width Content to registration page
-// add_action( 'bp_loaded', 'bp_register_set_full_layout' );
-// function bp_register_set_full_layout() {
-// 	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
-// }
+add_action( 'bp_loaded', 'bp_register_set_full_layout' );
+function bp_register_set_full_layout() {
+	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+}
 
 /* =================================================================*/
 /* =                 SIDEBARS

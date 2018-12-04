@@ -148,6 +148,4 @@ class CustomSiteNotifications {
 	}
 
 
-
 }
-

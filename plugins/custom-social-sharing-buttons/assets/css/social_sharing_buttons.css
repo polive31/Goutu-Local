@@ -50,10 +50,19 @@
 	padding:6px;
 }
 
+/* Social login plugin 
+-----------------------------------*/
+
+.plugin#social_login .footer {
+	display:none;
+}
+
+.plugin #providers .provider#provider_facebook,
 #facebook {
 	background-color: #3c5b9b;
 }
 
+.plugin #providers .provider .button,
 #facebook a {
 	background-image:url('../img/facebook.png');
 }

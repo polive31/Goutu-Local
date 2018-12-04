@@ -6,25 +6,63 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class CustomStarRatingsCommentsList extends CustomStarRatings {
+class CustomCommentsList {
 	
 	public function __construct() {
-		parent::__construct();
 		add_action( 'genesis_before_content', array($this,'custom_genesis_list_comments') );
+		/* Add anchor to comments section title	*/
 		add_filter('genesis_title_comments', array($this,'add_comments_title_markup'), 15, 1 );
+		/* Remove comment form unless it's a comment reply page */
+		add_action( 'genesis_comment_form', array($this,'remove_recipe_comments_form'), 0 );
+		/* Disable logged in / logged out link */
+		add_filter( 'comment_form_defaults', array($this,'change_comment_form_defaults') );
+		/* Customize comment section title */
+		add_filter('genesis_title_comments', array($this,'custom_comment_text') );
+		/* Customize navigation links */
+		add_filter('genesis_prev_comments_link_text', array($this,'custom_comments_prev_link_text') );
+		add_filter('genesis_next_comments_link_text', array($this,'custom_comments_next_link_text') );
+		/* Disable url input box in comment form unlogged users */
+		add_filter('comment_form_default_fields', array($this,'customize_comment_form') );
 	}
-	
-	/* Output debug information 
-	--------------------------------------------------------------*/	
-	public function display_debug_info() {
-		//$this->dbg('In Custom Rating Comments List child class !','' );
-		//$this->dbg('Rated types: ', self::$ratedPostTypes );
-	}	
-	
 
 
-	/* Add anchor to comments section title
-	-------------------------------------------------------*/
+	public function remove_recipe_comments_form() {
+		if ( is_singular( 'recipe' ) ) {
+			$url = $_SERVER["REQUEST_URI"];
+			$is_comment_reply = strpos($url, 'replytocom');
+			if ( ! $is_comment_reply )
+				remove_action( 'genesis_comment_form', 'genesis_do_comment_form' );
+		}
+	}
+
+	public function custom_comment_text() {
+		$title = __('Comments','genesis');
+		return ('<h3>' . $title . '</h3>');
+	}
+
+
+	public function custom_comments_prev_link_text() {
+		$text = __('Previous comments','foodiepro');
+		return $text;
+	}
+
+	public function custom_comments_next_link_text() {
+		$text = __('Next comments','foodiepro');
+		return $text;
+	}
+
+	public function customize_comment_form($fields) { 
+	  unset($fields['url']);
+	  return $fields;
+	}
+
+	public function change_comment_form_defaults( $defaults ) {
+	  $defaults['logged_in_as'] = '';
+	  $defaults['id_form'] = 'respond';
+	  $defaults['title_reply_to'] = __('Your answer here','foodiepro');
+	  $defaults['comment_field'] = '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>';
+	  return $defaults;
+	}
 
 	public function add_comments_title_markup($html) {
 		$html .= '<a id="comments-section"></a>';
@@ -32,12 +70,11 @@ class CustomStarRatingsCommentsList extends CustomStarRatings {
 	}
 
 
-	
 	/* Remove the genesis_default_list_comments function
 		 Replace comment list with one including ratings
 	-------------------------------------------------------*/
 	public function custom_genesis_list_comments() {
-		if ( is_singular( self::$ratedPostTypes ) ) {
+		if ( is_singular( CustomStarRatings::rated_post_types() ) ) {
 			remove_action( 'genesis_list_comments', 'genesis_default_list_comments' );
 			add_action( 'genesis_list_comments', array($this,'custom_star_rating_list_comments') );
 		}

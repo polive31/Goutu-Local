@@ -698,67 +698,6 @@ function add_page_icon() {
 
 
 /* =================================================================*/
-/* =               COMMENTS
-/* =================================================================*/
-
-
-/* Remove comment form unless it's a comment reply page
--------------------------------------------------------*/
-add_action( 'genesis_comment_form', 'remove_recipe_comments_form', 0 );
-function remove_recipe_comments_form() {
-	if ( is_singular( 'recipe' ) ) {
-		$url = $_SERVER["REQUEST_URI"];
-		$is_comment_reply = strpos($url, 'replytocom');
-		if ( ! $is_comment_reply )
-			remove_action( 'genesis_comment_form', 'genesis_do_comment_form' );
-	}
-}
-
-/* Customize comment section title 
-------------------------------------------------------*/
-add_filter('genesis_title_comments', 'custom_comment_text');
-function custom_comment_text() {
-	$title = __('Comments','genesis');
-	return ('<h3>' . $title . '</h3>');
-}
-
-
-/* Customize navigation links 
-------------------------------------------------------*/
-add_filter('genesis_prev_comments_link_text', 'custom_comments_prev_link_text');
-function custom_comments_prev_link_text() {
-	$text = __('Previous comments','foodiepro');
-	return $text;
-}
-
-add_filter('genesis_next_comments_link_text', 'custom_comments_next_link_text');
-function custom_comments_next_link_text() {
-	$text = __('Next comments','foodiepro');
-	return $text;
-}
-
-/* Disable url input box in comment form unlogged users
-------------------------------------------------------*/
-add_filter('comment_form_default_fields','customize_comment_form');
-function customize_comment_form($fields) { 
-  unset($fields['url']);
-  return $fields;
-}
-
-/* Disable logged in / logged out link
-------------------------------------------------------*/
-add_filter( 'comment_form_defaults', 'change_comment_form_defaults' );
-function change_comment_form_defaults( $defaults ) {
-  $defaults['logged_in_as'] = '';
-  $defaults['id_form'] = 'respond';
-  $defaults['title_reply_to'] = __('Your answer here','foodiepro');
-  $defaults['comment_field'] = '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>';
-  return $defaults;
-}
-
-
-
-/* =================================================================*/
 /* =      FOOTER           
 /* =================================================================*/
 

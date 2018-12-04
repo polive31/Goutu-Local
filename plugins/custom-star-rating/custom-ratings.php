@@ -24,12 +24,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 require 'includes/CustomStarRatings.php';
 require 'includes/CustomStarRatingsMeta.php';
 require 'includes/CustomStarRatingsShortcodes.php';
-require 'includes/CustomStarRatingsCommentsList.php';
+require 'includes/CustomCommentsList.php';
 
 new CustomStarRatings();
 new CustomStarRatingsMeta();
 new CustomStarRatingsShortcodes();
-new CustomStarRatingsCommentsList();
+new CustomCommentsList();
 	
 /* Chargement du text domain */
 function custom_star_rating_load_textdomain() {

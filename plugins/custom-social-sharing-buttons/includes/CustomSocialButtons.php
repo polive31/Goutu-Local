@@ -188,10 +188,13 @@ class CustomSocialButtons {
 	// From email button => need to precise a post, since current post doesn't work
 	public static function whatsappURL( $post, $target ) {
 		$fields = self::getPostFields($post, $target);
-		return self::getWhatsappURL( $fields['body'] );
+		$url = 'whatsapp://send?text=' . $fields['body'] . ' ' . $fields['url'];
+		return $url;
 	}	
-	
-	// From shortcode button => current post
+
+
+	/* From shortcode button => current post
+	For whatsapp no URL is needed, as the action is performed in javascript */
 	public static function getWhatsappButton( $target, $class ) {
 		if ($target=='recipe'||$target=='post') {
 			global $post;
@@ -238,30 +241,23 @@ class CustomSocialButtons {
 		return array('subject' => $subject, 'body' => $body, 'post-url' => $url);
 	}
 
-	public static function getPostFields( $post, $target='recipe', $action='create' ) {
+	public static function getPostFields( $post, $target='recipe', $action='publish' ) {
 		// $break = '\r\n';
 		// $break = self::LINEBREAK;
 
 		$name = ucfirst(get_the_author_meta('display_name', $post->post_author));
 
 		$from = ($target=='recipe')?'Une recette de':'Un article de';
-		$thispost = ($target=='recipe')?'cette recette':'cet article';
+		$thispost = ($target=='recipe')?' cette recette':' cet article';
 		$it = ($target=='recipe')?'la':'le';
+		$myaction = ($action=='publish')?' publié':' trouvé';
 
 		$subject = $post->post_title . " - $from " . $name;
 
 		$url  = get_permalink($post);
 
-		if ($action=='create') {
-			// Share buttons located in the recipe/post publication mail
-			$body = 'Bonjour,
-				J\'ai publié ' . $thispost . ' et voudrais ' . $it . ' partager avec toi : ' . $post->post_title .  ' (' . $url . ').' . $name;
-		}
-		// Share buttons located on current post/recipe page
-		elseif ($action=='find') {
-			$body = 'Bonjour,
-				J\'ai trouvé ' . $thispost . ', et voudrais ' . $it . ' partager avec toi.';			
-		}
+		$body = 'Bonjour,
+				J\'ai' . $myaction . $thispost . ', et voudrais ' . $it . ' partager avec toi.';			
 
 		return array('subject' => $subject, 'body' => $body, 'post-url' => $url);
 	}		

@@ -91,6 +91,11 @@ class CustomStarRatings {
 	}
 
 
+	public static function rated_post_types() {
+		return self::$ratedPostTypes;
+	}
+
+
 	/* Dump main variables
 	--------------------------------------------------------------*/	
 	protected function display_debug_info() {

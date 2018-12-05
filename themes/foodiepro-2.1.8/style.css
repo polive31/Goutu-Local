@@ -4331,6 +4331,9 @@ div.activity-comments form div.ac-reply-content a {
 	margin: 10px 0 0 5px;
 }
 
+span.bp-login-widget-register-link {
+    font-size: 16px;
+}
 
 /* BP Custom Login in Footer
 --------------------------------------------- */

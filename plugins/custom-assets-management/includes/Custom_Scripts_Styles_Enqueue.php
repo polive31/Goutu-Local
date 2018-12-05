@@ -130,7 +130,7 @@ class CustomScriptsStylesEnqueue {
 		$css_path = CHILD_THEME_PATH . '/assets/css/';
 
 		wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Oswald|Vollkorn:300,400', array(), CHILD_THEME_VERSION );
-		custom_enqueue_style( 'child-theme-fonts', $css_url, $css_path, 'fonts.css', array(), CHILD_THEME_VERSION );
+		custom_enqueue_style( 'child-theme-fonts', $css_url, $css_path, 'fonts.css', array( 'foodie-pro-theme' ), CHILD_THEME_VERSION );
 
 	}
 

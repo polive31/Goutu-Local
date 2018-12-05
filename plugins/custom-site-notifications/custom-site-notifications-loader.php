@@ -15,7 +15,7 @@ if ( !defined('ABSPATH') )
 	die('-1');
 	
 
-require_once 'includes/CustomSiteNotifications.php';
-new CustomSiteNotifications();
+require_once 'includes/CustomSiteMails.php';
+new CustomSiteMails();
 
 

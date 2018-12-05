@@ -94,6 +94,24 @@ remove_action( 'bp_enqueue_scripts', 'bp_add_cover_image_inline_css', 11 );
 
 
 /* =================================================================*/
+/* =              LAYOUT
+/* =================================================================*/
+
+// Force to use assigned Page template with BuddyPress Register page (not working !) 
+add_filter( 'template_include', 'set_register_full_width', 100 );
+function set_register_full_width( $template ) {
+	if ( bp_is_register_page() ) {
+		$template_slug = get_page_template_slug( buddypress()->pages->register->id );
+
+		if ( $template_slug && ( $located = locate_template( array( $template_slug ), false ) ) ) {
+			$template = $located;
+		}
+	}
+	return $template;
+}
+
+
+/* =================================================================*/
 /* =              MISC
 /* =================================================================*/
 

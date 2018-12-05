@@ -448,6 +448,29 @@ function php_log($msg, $var=false, $type='DEBUG', $color='blue') {
 	}
 }
 
+add_shortcode('custom-functions-debug', 'foodiepro_debug_shortcode');
+function foodiepro_debug_shortcode($args) {
+	$args = shortcode_atts( array(
+        'class' => 'CustomSiteMails',
+        'function' => 'published_post_notification',
+        'paramtype' => 'wp_post',
+        'paramval' => '7504'
+    ), $args );
+
+    $class=$args['class'];
+    $function=$args['function'];
+
+    switch ( $args['paramtype'] ) {
+		case 'wp_post' :
+			$param1 = get_post( $args['paramval'] );
+			break;
+	}
+
+    $instance = new $class('debug');
+    $html = $instance->$function( $param1 );
+
+}
+
 
 /* =================================================================*/
 /* =              CUSTOM QUERIES     

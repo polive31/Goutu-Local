@@ -119,13 +119,13 @@ class BP_Custom_Login_Widget extends WP_Widget {
 				<label for="bp-login-widget-user-pass"><?php _e( 'Password', 'buddypress' ); ?></label>
 				<input type="password" name="pwd" id="bp-login-widget-user-pass<?php echo $this->instance;?>" class="input" value="" <?php bp_form_field_attributes( 'password' ) ?> />
 
-				<div class="forgetmenot"><label for="bp-login-widget-rememberme<?php echo $this->instance;?>"><input name="rememberme" type="checkbox" id="bp-login-widget-rememberme<?php echo $this->instance;?>" value="forever" /> <?php _e( 'Remember Me', 'buddypress' ); ?></label></div>
+				<div class="forgetmenot"><label for="bp-login-widget-rememberme<?php echo $this->instance;?>"><input name="rememberme" type="checkbox" id="bp-login-widget-rememberme<?php echo $this->instance;?>" value="forever" /> <?php _e( 'Remember Me', 'foodiepro' ); ?></label></div>
 
-				<input type="submit" name="wp-submit" class="bp-login-widget-submit" id="bp-login-widget-submit<?php echo $this->instance;?>" value="<?php esc_attr_e( 'Log In', 'buddypress' ); ?>" />
+				<input type="submit" name="wp-submit" class="bp-login-widget-submit" id="bp-login-widget-submit<?php echo $this->instance;?>" value="<?php esc_attr_e( 'Log In', 'foodiepro' ); ?>" />
 
 				<?php if ( bp_get_signup_allowed() ) : ?>
 
-					<span class="bp-login-widget-register-link"><a href="<?php echo esc_url( bp_get_signup_page() ); ?>" title="<?php esc_attr_e( 'Register for a new account', 'buddypress' ); ?>"><?php _e( 'Register', 'buddypress' ); ?></a></span>
+					<span class="bp-login-widget-register-link"><a href="<?php echo esc_url( bp_get_signup_page() ); ?>" title="<?php esc_attr_e( 'Register for a new account', 'foodiepro' ); ?>"><?php _e( 'Not yet a member ? Register here !', 'foodiepro' ); ?></a></span>
 
 				<?php endif; ?>
 

@@ -55,7 +55,7 @@ class BP_Latest extends WP_Widget {
 				/* Exclude admins from the output */
 				$user_id = bp_get_member_user_id(); 
 		   		$user = new WP_User( $user_id );
-		   		if (  !in_array( 'administrator', (array) $user->roles ) && !in_array( 'pending', (array) $user->roles ) )  {
+		   		// if (  !in_array( 'administrator', (array) $user->roles ) && !in_array( 'pending', (array) $user->roles ) )  {
 		   			//if ( $user->roles[0] != 'administrator' && $user->roles[0] != 'pending') {
 					echo '<div class="item-avatar">';
 					//echo '<a href="' . bp_get_member_permalink() . '" title="' . bp_core_get_user_displayname(bp_get_member_user_id()) . '">';
@@ -64,7 +64,7 @@ class BP_Latest extends WP_Widget {
 					echo bp_member_avatar('type=thumb&id=square');
 					echo '</a>';
 					echo '</div>';
-				}
+				// }
 				
 			}
 			echo '</div>';

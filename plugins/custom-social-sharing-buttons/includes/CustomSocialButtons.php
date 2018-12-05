@@ -188,7 +188,7 @@ class CustomSocialButtons {
 	// From email button => need to precise a post, since current post doesn't work
 	public static function whatsappURL( $post, $target ) {
 		$fields = self::getPostFields($post, $target);
-		$url = 'whatsapp://send?text=' . $fields['body'] . ' ' . $fields['url'];
+		$url = 'whatsapp://send?text=' . $fields['body'] . ' ' . $fields['post-url'];
 		return $url;
 	}	
 

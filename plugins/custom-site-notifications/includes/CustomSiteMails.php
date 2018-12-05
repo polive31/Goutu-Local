@@ -5,21 +5,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class CustomSiteNotifications {
+class CustomSiteMails {
 
 	public static $PLUGIN_PATH;
 	public static $PLUGIN_URI;
 
 	private $headers=array();
+	private $target;
 
-	const CONTACT = "contact@goutu.org";
+	// const CONTACT_NAME = "Goutu.org";
+	// const CONTACT_EMAIL = "contact@goutu.org";
 	const PROVIDER = 'mailchimp';
 
-	public function __construct() {	
+	public function __construct( $target='production' ) {	
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
 
+		$this->target = $target;
 		add_action('init',array($this,'hydrate'));
+
+
+		if ($target == 'debug') return; // Do not add any actions or filters if in debug mode
 
 		/* Event hooks
 		--------------------------------------------------------------*/
@@ -30,20 +36,27 @@ class CustomSiteNotifications {
 		/* Mail Customizations
 		--------------------------------------------------------------*/
 		add_filter ( 'wp_mail_content_type', array($this, 'html_mail_content_type'));
-		// add_filter ( 'wp_mail_from', array($this, 'custom_from_name'));
-		// add_filter ( 'wp_mail_from_name', array($this, 'custom_from_address'));
+		add_filter ( 'wp_mail_from', array($this, 'contact_address'));
+		add_filter ( 'wp_mail_from_name', array($this, 'site_name'));
+		// add_filter( 'bp_core_signup_send_validation_email_message', array( $this, 'custom_activation_link'), 10, 3 );
 	}
 
-	// public function custom_from_name() {
-	//     return get_bloginfo('name');
-	// }
+	public function site_name( $from_name='' ) {
+		$from_name = get_bloginfo( 'name' );
+	    return $from_name;
+	}
 
-	// public function custom_from_address() {
-	//     return self::CONTACT;
-	// }
+	public function contact_address( $from_address='' ) {
+		$domain = strtolower( $_SERVER['SERVER_NAME'] );
+		if ( substr( $domain, 0, 4 ) == 'www.' ) {
+			$domain = substr( $domain, 4 );
+		}
+		$from_address = 'contact@' . $domain;
+	    return $from_address;
+	}
 
 	public function hydrate() {
-		$this->headers[] = 'From: ' . get_bloginfo('name') . ' <' . self::CONTACT . '>';
+		// $this->headers[] = 'From: ' . get_bloginfo('name') . ' <' . self::CONTACT_EMAIL . '>';
 		$this->headers[] = 'Bcc: ' . get_bloginfo('admin_email');
 	}
 
@@ -67,7 +80,7 @@ class CustomSiteNotifications {
 
 	public function contact() {
 		$contact =  __('Any problem or question ? Contact us <a href="%s">here</a>','foodiepro');
-		$contact = sprintf($contact, 'mailto:' . self::CONTACT );
+		$contact = sprintf($contact, 'mailto:' . $this->contact_address() );
 		return wpautop($contact);
 	}	
 
@@ -75,19 +88,25 @@ class CustomSiteNotifications {
 		return do_shortcode('[footer_copyright before="' . __('All rights reserved','foodiepro') . ' " first="2015"]');
 	}	
 
-	public function unsubscribe() {
+	public function unsubscribe( $user ) {
 		$unsubscribe = __('Want to change how you receive these emails?','foodiepro');
 		$unsubscribe1 = __('You can <a href="%s">update your preferences</a> on %s.','foodiepro');
-		$unsubscribe1 = sprintf( $unsubscribe1, CustomSocialHelpers::url('edit_profile',$post->post_author), get_bloginfo());
+		$unsubscribe1 = sprintf( $unsubscribe1, CustomSocialHelpers::url('edit_profile', $user ), get_bloginfo());
 		return $unsubscribe . '<br>' . $unsubscribe1;
 	}			
 
 	public function published_post_notification( $post ) {	
 		$text='';
-		if ($post->post_type == 'recipe')
+		if ($post->post_type == 'recipe') {	
 		    $subject = __('Your recipe just got published !','foodiepro');
-		else 
+		    $content = __('Greetings, your recipe <a href="%s">%s</a> just got published !', 'foodiepro');
+		    $content1 = _x('It is visible on the website, and appears on <a href="%s">your blog</a>.', 'it=recipe','foodiepro');
+		}
+		else {	
 		    $subject = __('Your post just got published !','foodiepro');
+		    $content = __('Greetings, your post <a href="%s">%s</a> just got published !', 'foodiepro');
+		    $content1 = _x('It is visible on the website, and appears on <a href="%s">your blog</a>.', 'it=post','foodiepro');
+		}
 
 		$title = $post->post_title;
 			
@@ -99,11 +118,9 @@ class CustomSiteNotifications {
 
 			$essai = wpautop($headline);
 
-		    $content = __('Greetings, your recipe <a href="%s">%s</a> just got published !', 'foodiepro');
 		    $content = sprintf( $content, get_permalink($post), $post->post_title);
 		    $content = wpautop( $content );
 
-		    $content1 = __('It is visible on the website, and appears on <a href="%s">your blog</a>.','foodiepro');
 		    $content1 = sprintf( $content1, bp_core_get_user_domain( $post->post_author ));
 		    $content1 = wpautop( $content1 );
 
@@ -112,12 +129,12 @@ class CustomSiteNotifications {
 		    $signature = $this->signature();
 		    $contact = $this->contact();
 		    $copyright = $this->copyright();
-		    $unsubscribe = $this->unsubscribe();
+		    $unsubscribe = $this->unsubscribe( $post->post_author );
 		    $facebook_url = CustomSocialButtons::facebookURL($post);
 		    $twitter_url = CustomSocialButtons::twitterURL($post);
 		    $pinterest_url = CustomSocialButtons::pinterestURL($post);
-		    $mail_url = CustomSocialButtons::mailURL($post,'recipe');
-		    $whatsapp_url = CustomSocialButtons::whatsappURL($post,'recipe');
+		    $mail_url = CustomSocialButtons::mailURL($post, $post->post_type);
+		    $whatsapp_url = CustomSocialButtons::whatsappURL($post, $post->post_type);
 
 		    $data = array(
 		    	'title' => $title,
@@ -139,21 +156,30 @@ class CustomSiteNotifications {
 		    	'whatsapp_url' => $whatsapp_url,
 		    	'whatsapp_text' => __('Share this recipe on Whatsapp','foodiepro'),		    	
 		    );
-		    $message = $this->get_html($data, self::PROVIDER.'_generic' );
+		    $message = $this->populate_template($data, self::PROVIDER.'_generic' );
 		    $headers = $this->headers();
-		    wp_mail( $to, $subject, $message, $headers );
+
+		    if ( $this->target == 'debug' ) {
+		    	echo "From name : " . $this->site_name() . " <br>";
+		    	echo "From address : " . $this->contact_address() . " <br>";
+		    	echo "To : $to<br>";
+		    	echo "Subject : $subject<br>";
+		    	echo "Message : $message<br>";
+		    }
+		    else 
+		    	wp_mail( $to, $subject, $message, $headers );
 		}	
 	}
 
-	public function get_html( $data, $template, $tag='%%' ) {
+	public function populate_template( $data, $template, $tag='%%' ) {
 		$path = self::$PLUGIN_PATH . 'templates/' . $template . '.php';
-		$content = file_get_contents( $path );
-		if (preg_match_all("/$tag(.*?)$tag/i", $content, $m)) {
+		$html = file_get_contents( $path );
+		if (preg_match_all("/$tag(.*?)$tag/i", $html, $m)) {
 		    foreach ($m[1] as $i => $varname) {
-		        $content = str_replace($m[0][$i], sprintf('%s', $data[strtolower($varname)]), $content);
+		        $html = str_replace($m[0][$i], sprintf('%s', $data[strtolower($varname)]), $html);
 		    }
 		}
-		return do_shortcode($content);
+		return do_shortcode($html);
 	}
 
 
@@ -207,6 +233,22 @@ class CustomSiteNotifications {
 	 
 	    return true;
 	}	
+
+	// function custom_activation_link($msg, $user_id, $activation_url) {
+	// 	//	Get some globals
+	// 	global $bp, $wpdb;
+	    
+	//     $userinfo = get_userdata($user_id);
+	//     $username = $userinfo->user_login;
+
+	//     $sql = 'select meta_value from wp_usermeta where meta_key="activation_key" and user_id in (select ID from wp_users where user_login="' . $username . '" and user_status=2)';
+	//     $activation_key = $wpdb->get_var($sql);
+		
+
+	// 	$msg = sprintf( __('Thanks for registering ! To complete the activation of your account, go to the following link and click on the "Activate" button: %s. If the "Activation Key" field is empty, copy and paste the following into the field : <strong>%s</strong> ', 'foodiepro'), $activation_url, $activation_key);
+	//     $msg .= sprintf( __("After successful activation, you can log in using your username (%1\$s) along with password you choose during registration process.", 'foodiepro'), $username);
+	//     return $msg;
+	// }
 
 
 }

@@ -61,12 +61,13 @@ class BP_Latest extends WP_Widget {
 			'order'        => 'DESC',
 			// 'offset'       => '',
 			// 'search'       => '',
-			// 'number'       => '',
+			'number'       => $instance['limit'],
 			// 'count_total'  => false,
 			// 'fields'       => 'all',
 			// 'who'          => '',
 		 ); 
 		$users = get_users( $args );
+		// echo $instance['limit'];
 
 		foreach ($users as $user) {
 			echo '<div class="item-avatar">';

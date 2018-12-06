@@ -4332,9 +4332,15 @@ div.activity-comments form div.ac-reply-content a {
 }
 
 span.bp-login-widget-register-link {
-    font-size: 16px;
-    font-family: Oswald, sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.9rem;
+    font-family: Oswald,sans-serif;
     font-weight: 300;
+    display: inline-block;
+    width: 170px;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0;
 }
 
 /* BP Custom Login in Footer

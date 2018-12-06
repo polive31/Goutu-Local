@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2018-12-05 23:17+0100\n"
-"PO-Revision-Date: 2018-12-05 23:19+0100\n"
+"PO-Revision-Date: 2018-12-06 09:26+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -281,7 +281,7 @@ msgstr "Aller sur la page d'inscription"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:128
 msgid "Not yet a member ? Register here !"
-msgstr "Pas encore membre ? Inscrivez vous !"
+msgstr "Pas encore membre ? Inscris-toi !"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-latest-registered-members-widget.php:28
 msgid "(Buddypress) Custom latest registered members"

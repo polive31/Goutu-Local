@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2018-12-05 23:17+0100\n"
-"PO-Revision-Date: 2018-12-06 09:26+0100\n"
+"POT-Creation-Date: 2018-12-06 22:17+0100\n"
+"PO-Revision-Date: 2018-12-06 22:30+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -14,28 +14,28 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: plugins/bp-custom.php:185
+#: plugins/bp-custom.php:203
 msgid "Display Profile"
 msgstr "Afficher mon profil"
 
-#: plugins/bp-custom.php:186
+#: plugins/bp-custom.php:204
 msgid "Edit Profile"
 msgstr "Modifier mon profil"
 
-#: plugins/bp-custom.php:187
+#: plugins/bp-custom.php:205
 msgid "Change Avatar"
 msgstr "Photo de profil"
 
-#: plugins/bp-custom.php:188
+#: plugins/bp-custom.php:206
 msgid "Change Cover"
 msgstr "Image d'en-tête"
 
-#: plugins/bp-custom.php:262
+#: plugins/bp-custom.php:280
 #, php-format
 msgid "by %s"
 msgstr "par %s"
 
-#: plugins/bp-custom.php:298
+#: plugins/bp-custom.php:316
 #: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:82
 #, php-format
 msgctxt "consonant"
@@ -187,7 +187,7 @@ msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-activity-feed-widget.php:131
 #: plugins/custom-buddypress-helpers/widgets/BP-cover-image-header.php:90
-#: plugins/custom-buddypress-helpers/widgets/BP-latest-registered-members-widget.php:90
+#: plugins/custom-buddypress-helpers/widgets/BP-latest-registered-members-widget.php:106
 #: plugins/custom-buddypress-helpers/widgets/BP-member-profile-widget.php:162
 #: plugins/custom-buddypress-helpers/widgets/BP-my-friends-widget.php:109
 #: plugins/custom-buddypress-helpers/widgets/BP-welcome-widget.php:74
@@ -206,7 +206,7 @@ msgstr ""
 #: plugins/custom-buddypress-helpers/widgets/BP-activity-feed-widget.php:151
 #: plugins/custom-buddypress-helpers/widgets/BP-cover-image-header.php:94
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:184
-#: plugins/custom-buddypress-helpers/widgets/BP-latest-registered-members-widget.php:99
+#: plugins/custom-buddypress-helpers/widgets/BP-latest-registered-members-widget.php:115
 #: plugins/custom-buddypress-helpers/widgets/BP-member-profile-widget.php:171
 #: plugins/custom-buddypress-helpers/widgets/BP-my-friends-widget.php:123
 #: plugins/custom-buddypress-helpers/widgets/BP-welcome-widget.php:78
@@ -280,8 +280,8 @@ msgid "Register for a new account"
 msgstr "Aller sur la page d'inscription"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:128
-msgid "Not yet a member ? Register here !"
-msgstr "Pas encore membre ? Inscris-toi !"
+msgid "Not yet a member ? <br> Register here !"
+msgstr "Pas encore membre ?<br> Inscris-toi !"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-latest-registered-members-widget.php:28
 msgid "(Buddypress) Custom latest registered members"
@@ -293,7 +293,7 @@ msgstr ""
 msgid "Displays latest registered members"
 msgstr "Evaluez cette recette"
 
-#: plugins/custom-buddypress-helpers/widgets/BP-latest-registered-members-widget.php:105
+#: plugins/custom-buddypress-helpers/widgets/BP-latest-registered-members-widget.php:121
 #: plugins/custom-buddypress-helpers/widgets/BP-my-friends-widget.php:129
 msgid "Number of users to show"
 msgstr ""
@@ -1961,45 +1961,45 @@ msgstr ""
 msgid "Show Images"
 msgstr "Favorite"
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:70
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:72
 #, php-format
 msgid "Hello %s,"
 msgstr "Bonjour %s,"
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:74
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:76
 #, php-format
 msgid "The <a href=\"%s\">Goûtu.org</a> Team."
 msgstr "L'équipe <a href=\"%s\">Goûtu.org</a>."
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:80
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:82
 #, php-format
 msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr "Un problème ? Une question ? Contacte nous <a href=\"%s\">ici</a>"
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:86
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:88
 #: themes/foodiepro-2.1.8/functions.php:735
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:90
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:92
 msgid "Want to change how you receive these emails?"
 msgstr "Tu ne souhaites plus recevoir ces courriels ?"
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:91
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:93
 #, php-format
 msgid "You can <a href=\"%s\">update your preferences</a> on %s."
 msgstr "Tu peux <a href=\"%s\">mettre à jour tes préférences</a> sur %s."
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:99
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:101
 msgid "Your recipe just got published !"
 msgstr "Ta recette est publiée !"
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:100
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:102
 #, php-format
 msgid "Greetings, your recipe <a href=\"%s\">%s</a> just got published !"
 msgstr "Félicitations, ta recette <a href=\"%s\">%s</a> vient d'être publiée !"
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:101
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:103
 #, php-format
 msgctxt "it=recipe"
 msgid ""
@@ -2007,16 +2007,16 @@ msgid ""
 msgstr ""
 "Elle est visible sur le site, et apparaît sur <a href=\"%s\">ton blog</a>."
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:104
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:106
 msgid "Your post just got published !"
 msgstr "Ton article est publié !"
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:105
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:107
 #, php-format
 msgid "Greetings, your post <a href=\"%s\">%s</a> just got published !"
 msgstr "Félicitations, ton article <a href=\"%s\">%s</a> vient d'être publié !"
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:106
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:108
 #, php-format
 msgctxt "it=post"
 msgid ""
@@ -2024,31 +2024,31 @@ msgid ""
 msgstr ""
 "Il est visible sur le site, et apparaît sur <a href=\"%s\">ton blog</a>."
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:147
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:149
 msgid "Share this recipe on Facebook"
 msgstr "Partager cette recette sur Facebook"
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:149
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:151
 msgid "Share this recipe on Twitter"
 msgstr "Partager cette recette sur Twitter"
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:151
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:153
 msgid "Share this recipe on Pinterest"
 msgstr "Partager cette recette sur Pinterest"
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:153
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:155
 #, fuzzy
 #| msgid "Share this recipe"
 msgid "Share this recipe by email"
 msgstr "Partager sur les réseaux sociaux"
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:155
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:157
 #, fuzzy
 #| msgid "Share this recipe on Pinterest"
 msgid "Share this recipe on Whatsapp"
 msgstr "Partager cette recette sur Pinterest"
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:192
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:194
 msgid ""
 "Dear USER_DISPLAY_NAME,\n"
 "\t \n"
@@ -2063,7 +2063,7 @@ msgid ""
 "\t--The Team @ SITE_NAME"
 msgstr ""
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:228
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:230
 #, php-format
 msgid "Welcome to   %1$s "
 msgstr ""

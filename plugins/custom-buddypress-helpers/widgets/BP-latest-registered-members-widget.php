@@ -49,7 +49,7 @@ class BP_Latest extends WP_Widget {
 			// 'blog_id'      => $GLOBALS['blog_id'],
 			// 'role'         => '',
 			// 'role__in'     => array(),
-			// 'role__not_in' => array('administrator','pending'),
+			'role__not_in' => array('administrator','pending'),
 			// 'meta_key'     => 'registered',
 			// 'meta_value'   => '',
 			// 'meta_compare' => '',

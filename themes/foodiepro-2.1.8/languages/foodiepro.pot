@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2018-12-05 23:17+0100\n"
+"POT-Creation-Date: 2018-12-07 00:32+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -33,28 +33,28 @@ msgstr ""
 "X-Poedit-SearchPath-11: plugins/custom-site-notifications\n"
 "X-Poedit-SearchPath-12: plugins/custom-social-sharing-buttons\n"
 
-#: plugins/bp-custom.php:185
+#: plugins/bp-custom.php:203
 msgid "Display Profile"
 msgstr ""
 
-#: plugins/bp-custom.php:186
+#: plugins/bp-custom.php:204
 msgid "Edit Profile"
 msgstr ""
 
-#: plugins/bp-custom.php:187
+#: plugins/bp-custom.php:205
 msgid "Change Avatar"
 msgstr ""
 
-#: plugins/bp-custom.php:188
+#: plugins/bp-custom.php:206
 msgid "Change Cover"
 msgstr ""
 
-#: plugins/bp-custom.php:262
+#: plugins/bp-custom.php:280
 #, php-format
 msgid "by %s"
 msgstr ""
 
-#: plugins/bp-custom.php:298
+#: plugins/bp-custom.php:316
 #: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:82
 #, php-format
 msgctxt "consonant"
@@ -195,7 +195,7 @@ msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-activity-feed-widget.php:131
 #: plugins/custom-buddypress-helpers/widgets/BP-cover-image-header.php:90
-#: plugins/custom-buddypress-helpers/widgets/BP-latest-registered-members-widget.php:90
+#: plugins/custom-buddypress-helpers/widgets/BP-latest-registered-members-widget.php:106
 #: plugins/custom-buddypress-helpers/widgets/BP-member-profile-widget.php:162
 #: plugins/custom-buddypress-helpers/widgets/BP-my-friends-widget.php:109
 #: plugins/custom-buddypress-helpers/widgets/BP-welcome-widget.php:74
@@ -214,7 +214,7 @@ msgstr ""
 #: plugins/custom-buddypress-helpers/widgets/BP-activity-feed-widget.php:151
 #: plugins/custom-buddypress-helpers/widgets/BP-cover-image-header.php:94
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:184
-#: plugins/custom-buddypress-helpers/widgets/BP-latest-registered-members-widget.php:99
+#: plugins/custom-buddypress-helpers/widgets/BP-latest-registered-members-widget.php:115
 #: plugins/custom-buddypress-helpers/widgets/BP-member-profile-widget.php:171
 #: plugins/custom-buddypress-helpers/widgets/BP-my-friends-widget.php:123
 #: plugins/custom-buddypress-helpers/widgets/BP-welcome-widget.php:78
@@ -288,7 +288,7 @@ msgid "Register for a new account"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:128
-msgid "Not yet a member ? Register here !"
+msgid "Not yet a member ? <br> Register here !"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-latest-registered-members-widget.php:28
@@ -299,7 +299,7 @@ msgstr ""
 msgid "Displays latest registered members"
 msgstr ""
 
-#: plugins/custom-buddypress-helpers/widgets/BP-latest-registered-members-widget.php:105
+#: plugins/custom-buddypress-helpers/widgets/BP-latest-registered-members-widget.php:121
 #: plugins/custom-buddypress-helpers/widgets/BP-my-friends-widget.php:129
 msgid "Number of users to show"
 msgstr ""
@@ -1844,88 +1844,88 @@ msgstr ""
 msgid "Show Images"
 msgstr ""
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:70
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:72
 #, php-format
 msgid "Hello %s,"
 msgstr ""
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:74
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:76
 #, php-format
 msgid "The <a href=\"%s\">Goûtu.org</a> Team."
 msgstr ""
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:80
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:82
 #, php-format
 msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr ""
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:86
-#: themes/foodiepro-2.1.8/functions.php:735
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:88
+#: themes/foodiepro-2.1.8/functions.php:742
 msgid "All rights reserved"
 msgstr ""
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:90
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:92
 msgid "Want to change how you receive these emails?"
 msgstr ""
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:91
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:93
 #, php-format
 msgid "You can <a href=\"%s\">update your preferences</a> on %s."
 msgstr ""
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:99
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:101
 msgid "Your recipe just got published !"
 msgstr ""
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:100
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:102
 #, php-format
 msgid "Greetings, your recipe <a href=\"%s\">%s</a> just got published !"
 msgstr ""
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:101
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:103
 #, php-format
 msgctxt "it=recipe"
 msgid ""
 "It is visible on the website, and appears on <a href=\"%s\">your blog</a>."
 msgstr ""
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:104
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:106
 msgid "Your post just got published !"
 msgstr ""
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:105
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:107
 #, php-format
 msgid "Greetings, your post <a href=\"%s\">%s</a> just got published !"
 msgstr ""
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:106
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:108
 #, php-format
 msgctxt "it=post"
 msgid ""
 "It is visible on the website, and appears on <a href=\"%s\">your blog</a>."
 msgstr ""
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:147
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:149
 msgid "Share this recipe on Facebook"
 msgstr ""
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:149
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:151
 msgid "Share this recipe on Twitter"
 msgstr ""
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:151
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:153
 msgid "Share this recipe on Pinterest"
 msgstr ""
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:153
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:155
 msgid "Share this recipe by email"
 msgstr ""
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:155
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:157
 msgid "Share this recipe on Whatsapp"
 msgstr ""
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:192
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:194
 msgid ""
 "Dear USER_DISPLAY_NAME,\n"
 "\t \n"
@@ -1940,7 +1940,7 @@ msgid ""
 "\t--The Team @ SITE_NAME"
 msgstr ""
 
-#: plugins/custom-site-notifications/includes/CustomSiteMails.php:228
+#: plugins/custom-site-notifications/includes/CustomSiteMails.php:230
 #, php-format
 msgid "Welcome to   %1$s "
 msgstr ""
@@ -8377,77 +8377,93 @@ msgstr ""
 msgid "Save Settings"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:336
+#: themes/foodiepro-2.1.8/functions.php:337
+msgid "Enter Username"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:338
+msgid "Enter Password"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:339
+msgid "Remember Login State"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:340
+msgid "Please Log In"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:347
 msgid "Goûtu.org - La Communauté des Gourmets"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:375
+#: themes/foodiepro-2.1.8/functions.php:382
 #, php-format
 msgid "<strong>ERROR</strong>: User pending <a href=\"%s\">approval</a>."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:389
+#: themes/foodiepro-2.1.8/functions.php:396
 msgid "author"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:409
+#: themes/foodiepro-2.1.8/functions.php:416
 #, php-format
 msgid "New user registration on your blog %s:"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:410
-#: themes/foodiepro-2.1.8/functions.php:421
+#: themes/foodiepro-2.1.8/functions.php:417
+#: themes/foodiepro-2.1.8/functions.php:428
 #, php-format
 msgid "Username: %s"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:411
+#: themes/foodiepro-2.1.8/functions.php:418
 #, php-format
 msgid "E-mail: %s"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:413
+#: themes/foodiepro-2.1.8/functions.php:420
 #, php-format
 msgid "[%s] New User Registration"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:418
+#: themes/foodiepro-2.1.8/functions.php:425
 msgid "Hi there,"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/functions.php:419
-#, php-format
-msgid "Welcome to %s! Here's how to log in:"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/functions.php:422
-#, php-format
-msgid "Password: %s"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/functions.php:423
-#, php-format
-msgid "If you have any problems, please contact me at %s."
-msgstr ""
-
-#: themes/foodiepro-2.1.8/functions.php:424
-msgid "Adios!"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/functions.php:426
 #, php-format
+msgid "Welcome to %s! Here's how to log in:"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:429
+#, php-format
+msgid "Password: %s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:430
+#, php-format
+msgid "If you have any problems, please contact me at %s."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:431
+msgid "Adios!"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/functions.php:433
+#, php-format
 msgid "[%s] Your username and password"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:624
+#: themes/foodiepro-2.1.8/functions.php:631
 msgid "Recipe, Ingredient, Keyword, Author..."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:735
+#: themes/foodiepro-2.1.8/functions.php:742
 msgid "Contact us"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:735
+#: themes/foodiepro-2.1.8/functions.php:742
 msgid "Legal notice"
 msgstr ""
 

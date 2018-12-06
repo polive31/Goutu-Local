@@ -125,7 +125,7 @@ class BP_Custom_Login_Widget extends WP_Widget {
 
 				<?php if ( bp_get_signup_allowed() ) : ?>
 
-					<span class="bp-login-widget-register-link"><a href="<?php echo esc_url( bp_get_signup_page() ); ?>" title="<?php esc_attr_e( 'Register for a new account', 'foodiepro' ); ?>"><?php _e( 'Not yet a member ? Register here !', 'foodiepro' ); ?></a></span>
+					<span class="bp-login-widget-register-link"><a href="<?php echo esc_url( bp_get_signup_page() ); ?>" title="<?php esc_attr_e( 'Register for a new account', 'foodiepro' ); ?>"><?php echo wp_kses( __( 'Not yet a member ? <br> Register here !', 'foodiepro' ), array('br'=>array()) ); ?></a></span>
 
 				<?php endif; ?>
 

@@ -319,25 +319,34 @@ function custom_favicon_links() {
 /* =================================================================*/
 
 /* Sets login page color theme */
+add_action('login_head', 'my_custom_login');
 function my_custom_login() {
 	//echo '<link rel="stylesheet" type="text/css" href="' . CHILD_THEME_URL . '/login/custom-login-styles-' . CHILD_COLOR_THEME . '.css" />';
 	echo '<link rel="stylesheet" type="text/css" href="' . CHILD_THEME_URL . '/login/custom-login-styles-default.css" />';
 }
-add_action('login_head', 'my_custom_login');
-
 
 /* Sets login page logo & url */
+add_filter( 'login_headerurl', 'my_login_logo_url' );
 function my_login_logo_url() {
 	return get_bloginfo( 'url' );
 }
-add_filter( 'login_headerurl', 'my_login_logo_url' );
 
+add_filter( 'login_form_defaults', 'my_login_page' );
+function my_login_page() {
+	$defaults = array(
+		'label_username' => __('Enter Username', 'foodiepro'),
+		'label_password' => __('Enter Password', 'foodiepro'),
+		'label_remember' => __('Remember Login State', 'foodiepro'),
+		'label_log_in'   => __('Please Log In', 'foodiepro'),
+	);
+	return $defaults;
+}
+
+add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 function my_login_logo_url_title() {
 	$output = __('Goûtu.org - La Communauté des Gourmets', 'foodiepro');
 	return $output;
 }
-add_filter( 'login_headertitle', 'my_login_logo_url_title' );
-
 
 /* Disable admin bar for all users except admin */
 // add_action('after_setup_theme', 'remove_admin_bar');
@@ -346,23 +355,21 @@ function remove_admin_bar() {
   	show_admin_bar(false); 
 }
 
-
 /* Disable dashboard for non admin */
+add_action( 'init', 'blockusers_init' );
 function blockusers_init() {
 	if ( is_admin() && ! current_user_can( 'administrator' ) && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
 		wp_redirect( home_url() );
 		exit;
 	}
 }
-add_action( 'init', 'blockusers_init' );
-
 
 /* Redirect towards homepage on logout */
+add_action('wp_logout','go_home');
 function go_home() {
   wp_redirect( home_url() );
   exit;
 }
-add_action('wp_logout','go_home');
 
 
 /* Prevent new users (not yet approved) to log in */
@@ -389,45 +396,6 @@ function custom_author_base() {
     $author_slug = __('author', 'foodiepro'); // the new slug name
     $wp_rewrite->author_base = $author_slug;
 }
-
-
-/* =================================================================*/
-/* =              USER REGISTRATION    
-/* =================================================================*/
-
-// Redefine user notification function
-if ( !function_exists('wp_new_user_notification') ) {
-    function wp_new_user_notification( $user_id, $plaintext_pass = '' ) {
-        $user = new WP_User($user_id);
-
-        $user_login = stripslashes($user->user_login);
-        $user_email = stripslashes($user->user_email);
-
-		// find the profile field for referrer
-		// $field1 = xprofile_get_field_data( 'Referrer', $user_id );	        
-
-        $message  = sprintf(__('New user registration on your blog %s:'), get_option('blogname')) . "\r\n\r\n";
-        $message .= sprintf(__('Username: %s'), $user_login) . "\r\n\r\n";
-        $message .= sprintf(__('E-mail: %s'), $user_email) . "\r\n";
-
-        @wp_mail(get_option('admin_email'), sprintf(__('[%s] New User Registration'), get_option('blogname')), $message);
-
-        if ( empty($plaintext_pass) )
-            return;
-
-        $message  = __('Hi there,') . "\r\n\r\n";
-        $message .= sprintf(__("Welcome to %s! Here's how to log in:"), get_option('blogname')) . "\r\n\r\n";
-        $message .= wp_login_url() . "\r\n";
-        $message .= sprintf(__('Username: %s'), $user_login) . "\r\n";
-        $message .= sprintf(__('Password: %s'), $plaintext_pass) . "\r\n\r\n";
-        $message .= sprintf(__('If you have any problems, please contact me at %s.'), get_option('admin_email')) . "\r\n\r\n";
-        $message .= __('Adios!');
-
-        wp_mail($user_email, sprintf(__('[%s] Your username and password'), get_option('blogname')), $message);
-
-    }
-}	
-
 
 
 /* =================================================================*/

@@ -44,32 +44,47 @@ class BP_Latest extends WP_Widget {
 		if ( ! empty( $instance['title'] ) ) {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 		}
-		
-		/* Code start */
-		
-		if ( bp_has_members( 'type=newest&max=' . $instance['limit'] ) ) {    
-			echo '<div class="avatar-block">';
-			while ( bp_members() ) {
-				bp_the_member();
-				
-				/* Exclude admins from the output */
-				$user_id = bp_get_member_user_id(); 
-		   		$user = new WP_User( $user_id );
-		   		// if (  !in_array( 'administrator', (array) $user->roles ) && !in_array( 'pending', (array) $user->roles ) )  {
-		   			//if ( $user->roles[0] != 'administrator' && $user->roles[0] != 'pending') {
-					echo '<div class="item-avatar">';
-					//echo '<a href="' . bp_get_member_permalink() . '" title="' . bp_core_get_user_displayname(bp_get_member_user_id()) . '">';
-					echo '<a href="' . bp_get_member_permalink() . '" title="' . bp_core_get_username(bp_get_member_user_id()) . '">';
-					/*echo bp_member_avatar('type=full&width=100&height=100&id=square');*/
-					echo bp_member_avatar('type=thumb&id=square');
-					echo '</a>';
-					echo '</div>';
-				// }
-				
-			}
+
+		$args = array(
+			// 'blog_id'      => $GLOBALS['blog_id'],
+			// 'role'         => '',
+			// 'role__in'     => array(),
+			// 'role__not_in' => array('administrator','pending'),
+			// 'meta_key'     => 'registered',
+			// 'meta_value'   => '',
+			// 'meta_compare' => '',
+			// 'meta_query'   => array(),
+			// 'date_query'   => array(),        
+			// 'include'      => array(),
+			// 'exclude'      => array(),
+			'orderby'      => 'ID',
+			'order'        => 'DESC',
+			// 'offset'       => '',
+			// 'search'       => '',
+			// 'number'       => '',
+			// 'count_total'  => false,
+			// 'fields'       => 'all',
+			// 'who'          => '',
+		 ); 
+		$users = get_users( $args );
+
+		foreach ($users as $user) {
+			echo '<div class="item-avatar">';
+			echo '<a href="' . bp_core_get_userlink( $user->ID, false, true ) . '" title="' . ucfirst( bp_core_get_username( $user->ID ) ) . '">';
+			echo bp_core_fetch_avatar( array(
+				'item_id' => $user->ID,
+				'type' => 'thumb',
+				'css_id' => 'square',
+				'class' => 'avatar',
+				'alt' => bp_core_get_username( $user->ID ),
+				// 'title' => bp_core_get_username( $user->ID ),
+				)
+			);
+			echo '</a>';
 			echo '</div>';
 		}
-		/* Code end */
+
+
 		
 	echo '<div class="clear"></div>';	
 	echo $args['after_widget'];

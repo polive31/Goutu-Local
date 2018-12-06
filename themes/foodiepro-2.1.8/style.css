@@ -4333,6 +4333,8 @@ div.activity-comments form div.ac-reply-content a {
 
 span.bp-login-widget-register-link {
     font-size: 16px;
+    font-family: Oswald, sans-serif;
+    font-weight: 300;
 }
 
 /* BP Custom Login in Footer

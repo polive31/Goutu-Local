@@ -55,8 +55,8 @@ class CustomPeepsoShortcodes {
 				break;				
 		}
 
-		if ( !empty($a['link']) ) {
-			$field = '<a class="' . $a['linkclass'] . '" href="' . Peepso::get_page(  $a['link'] ) . '">' . $field . '</a>';
+		if ( !empty($a['nav']) ) {
+			$field = '<a class="' . $a['navclass'] . '" href="' . Peepso::get_page(  $a['nav'] ) . '">' . $field . '</a>';
 		}	
 
 		return $field;    	
@@ -87,19 +87,17 @@ class CustomPeepsoShortcodes {
 		ob_start();
 		?>
 
-        <div class="ps-widget--userbar__notifications">
+        <!-- <div class="ps-widget--userbar__notifications"> -->
 		
 		<span class="dropdown-notification ps-js-notifications">
-		<a href="#" title="Notifications en cours">
-		<div class="ps-bubble__wrapper">
-		<i class="ps-icon-globe"></i>
-		<span class="js-counter ps-bubble ps-bubble--widget ps-js-counter"  style="display:none">
-		</span>
-		</div>
-		</a>
+			<a href="#" class="fa-bell mega-menu-link" title="Notifications en cours">
+				<div class="ps-bubble__wrapper">
+					<span class="js-counter ps-bubble ps-bubble--widget ps-js-counter" style="display:none"></span>
+				</div>
+			</a>
 		</span>
         
-        </div>
+        <!-- </div> -->
 		
 		<?php 
 		$html = ob_get_contents();

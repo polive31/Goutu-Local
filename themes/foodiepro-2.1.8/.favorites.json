@@ -1,0 +1,38 @@
+[
+    {
+        "type": "File",
+        "name": "d:\\local_websites\\Goutu_Main\\wp-content\\themes\\foodiepro-2.1.8\\style.css",
+        "parent_id": null,
+        "fsPath": "d:\\local_websites\\Goutu_Main\\wp-content\\themes\\foodiepro-2.1.8\\style.css",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "GkRzIinMfy78jpTS"
+    },
+    {
+        "type": "File",
+        "name": "d:\\local_websites\\Goutu_Main\\wp-content\\themes\\foodiepro-2.1.8\\functions.php",
+        "parent_id": null,
+        "fsPath": "d:\\local_websites\\Goutu_Main\\wp-content\\themes\\foodiepro-2.1.8\\functions.php",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "HoKx2IYORryXkZDV"
+    },
+    {
+        "type": "File",
+        "name": "d:\\local_websites\\Goutu_Main\\wp-content\\themes\\foodiepro-2.1.8\\custom-helpers.php",
+        "parent_id": null,
+        "fsPath": "d:\\local_websites\\Goutu_Main\\wp-content\\themes\\foodiepro-2.1.8\\custom-helpers.php",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "s5IQFz1tmLRaDl3o"
+    },
+    {
+        "type": "File",
+        "name": "d:\\local_websites\\Goutu_Main\\wp-content\\themes\\foodiepro-2.1.8\\assets\\css\\fonts.css",
+        "parent_id": null,
+        "fsPath": "d:\\local_websites\\Goutu_Main\\wp-content\\themes\\foodiepro-2.1.8\\assets\\css\\fonts.css",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "qnurwPF5coIHjKNt"
+    }
+]

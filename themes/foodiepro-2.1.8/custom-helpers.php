@@ -6,6 +6,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
+/* =================================================================*/
+/* =              SECURITY
+/* =================================================================*/
+
+// Secures translation strings outputs, while allowing some html attributes to be displayed
+function sec( $text ) {
+	return wp_kses( $text, array( 'br'=>array() ) );
+}
+
 
 /* =================================================================*/
 /* =              CUSTOM SCRIPTS HELPERS
@@ -70,13 +79,11 @@ function remove_style($style) {
 }
 
 /* =================================================================*/
-/* =         GENERATE PICTURE MARKUP FOR .WEBP SUPPORT
+/* =         GENERATE PICTURE MARKUP FOR .WEbp SUPPORT
 /* =================================================================*/
 
 function output_picture_markup($url, $path, $name, $ext=null) {
-	?>
-
-	<picture><?php
+	echo '<picture>';
 	if (file_exists( $path . $name . '.webp'))
 		echo '<source srcset="' . $url . $name . '.webp" ' . 'type="image/webp">';
 	if (isset($ext)) {
@@ -90,8 +97,7 @@ function output_picture_markup($url, $path, $name, $ext=null) {
 			echo '<img src="' . $url . $name . '.png' . '">';
 		}
 	}
-?></picture>
-	<?php
+	echo '</picture>';
 }
 
 

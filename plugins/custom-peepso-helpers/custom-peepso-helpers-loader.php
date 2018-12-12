@@ -39,6 +39,7 @@ function peepso_helpers_conditional_load() {
 	// Widgets
 	require_once 'widgets/PeepsoCoverImageHeader.php';
 	require_once 'widgets/PeepsoLatestRegisteredMembers.php';
+	require_once 'widgets/PeepsoCustomLoginWidget.php';
 
 }
 

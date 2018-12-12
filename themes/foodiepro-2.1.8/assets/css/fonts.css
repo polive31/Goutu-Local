@@ -292,14 +292,14 @@ h3.rpwe-title a {
 	color: #555;
 }
 
-.buddypress .bp-login-widget-user-link a {
+.login-widget-user-link a {
 	text-transform : uppercase;
 	font-weight : normal;
 	font-size : 24px;
 	color:#555;
 }
 
-.widget.buddypress .bp-login-form label {
+.widget .login-form label {
 	font-size : 15px;
 }
 

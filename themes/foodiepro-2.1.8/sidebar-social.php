@@ -14,7 +14,7 @@
 //* Output primary sidebar structure
 genesis_markup( array(
 	'html5'   => '<aside %s>' . genesis_sidebar_title( 'sidebar' ),
-	'xhtml'   => '<div id="sidebar" class="sidebar widget-area">',
+	'xhtml'   => '<div id="sidebar" class="sidebar widget-area social">',
 	'context' => 'sidebar-primary',
 ) );
 

@@ -64,6 +64,7 @@ languages/continents*
 !languages/plugins/
 languages/plugins/*
 !languages/plugins/name-directory-fr*
+!languages/plugins/peepso*
 languages/themes/*
 
 !themes/
@@ -88,6 +89,7 @@ plugins/buddypress/bp-core/*
 !plugins/wp-scripts-styles-manager/
 !plugins/custom-batch-manage-posts/
 !plugins/custom-buddypress-helpers/
+!plugins/custom-peepso-helpers/
 !plugins/custom-contact-form/
 !plugins/custom-js-css-optimization/
 !plugins/custom-gallery-shortcode/

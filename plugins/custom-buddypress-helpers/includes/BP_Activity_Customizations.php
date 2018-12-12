@@ -16,8 +16,14 @@ class BP_Activity_Customizations {
 		// Customize post publication activity feed content
 		// Be careful this is recorded and never goes afterwards !!!
 		// add_filter('bp_blogs_record_activity_action', array($this,'record_cpt_activity_content'));
-		// add_filter('bp_blogs_record_activity_content', array($this,'record_cpt_activity_content'));		
+		// add_filter('bp_blogs_record_activity_content', array($this,'record_cpt_activity_content'));	
+
+		add_filter( 'bp_members_format_activity_action_new_member', $action, $activity );	
     }	
+
+    public function bp_members_format_activity_action_new_member( $action, $activity ) {
+    	return $action;
+    }
 
 
 	public function display_bp_tracking_args() {

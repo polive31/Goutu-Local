@@ -152,4 +152,8 @@ class WPURP_Custom_Recipe_List_Widget extends WP_Widget {
     }
 }
 
-add_action( 'widgets_init', create_function( '', 'return register_widget("WPURP_Recipe_List_Widget");' ) );
+add_action( 'widgets_init', 'recipe_list_widget_init' );
+
+function recipe_list_widget_init() {
+    return register_widget("WPURP_Recipe_List_Widget");    
+}

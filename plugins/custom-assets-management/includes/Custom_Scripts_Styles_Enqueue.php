@@ -188,7 +188,8 @@ class CustomScriptsStylesEnqueue {
 					$thismet = $this->is_page_of_type( explode(' ', $value) );
 					break;												
 				case 'shortcode' :
-					$thismet = has_shortcode( get_the_content(), $value);
+					$content = get_the_content();
+					$thismet = empty($content)?false:has_shortcode( $content, $value);
 					break;
 				case 'single' :
 					$thismet = is_single();

@@ -90,4 +90,9 @@ class WPURP_Custom_Nutrition_Label_Widget extends WP_Widget {
     }
 }
 
-add_action( 'widgets_init', create_function( '', 'return register_widget("WPURP_Custom_Nutrition_Label_Widget");' ) );
+add_action( 'widgets_init', 'nutrition_label_widget_init' );
+
+function nutrition_label_widget_init() {
+    return register_widget("WPURP_Custom_Nutrition_Label_Widget"); 
+}
+

@@ -11,6 +11,7 @@ jQuery(document).ready(function()   {
     }
     // else {
     //     console.log("Cookie=True => do not show hint");
+    
     // }
     // window.initDone = true;
     // console.log( "Init Done = " + window.initDone );

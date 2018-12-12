@@ -241,7 +241,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 
 		$html .= ($atts['page_order']=='first')?$page_link:'';
 		foreach ( $terms as $term ) {
-			$post_count='';
+			$post_count=0;
 			if  ( $count ) {
 				if ( $drill ) {
 					$subterms = get_categories( array(
@@ -251,10 +251,10 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 					// echo '<pre>' . $term->name . '</pre>';
 					foreach ($subterms as $subterm) {
 						// echo '<pre>' . print_r($subterm) . '</pre>';
-						$post_count += $subterm->count;
+						$post_count += (int)$subterm->count;
 					}
 				}
-				$post_count += $term->count;
+				$post_count += (int)$term->count;
 				$post_count = ' (' . $post_count . ')';
 			}
 			$html .= '<li><a href="' . get_term_link( $term, $tax ) . '">' . $term->name . $post_count . '</a></li>';

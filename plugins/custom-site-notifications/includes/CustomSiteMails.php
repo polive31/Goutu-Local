@@ -29,8 +29,8 @@ class CustomSiteMails {
 
 		/* Event hooks
 		--------------------------------------------------------------*/
-		add_action( 'pending_to_publish',  array($this, 'published_post_notification'), 10, 1 );
-		add_action( 'bp_core_activated_user', array($this, 'welcome_user_notification'), 10, 3 );
+		add_action( 'pending_to_publish',  							array($this, 'published_post_notification'), 10, 1 );
+		add_action( 'bp_core_activated_user', 						array($this, 'welcome_user_notification'), 10, 3 );
 
 
 		/* Mail Customizations
@@ -38,7 +38,7 @@ class CustomSiteMails {
 		add_filter ( 'wp_mail_content_type', array($this, 'html_mail_content_type'));
 		add_filter ( 'wp_mail_from', array($this, 'contact_address'));
 		add_filter ( 'wp_mail_from_name', array($this, 'site_name'));
-		// add_filter( 'bp_core_signup_send_validation_email_message', array( $this, 'custom_activation_link'), 10, 3 );
+		// add_filter( 'bp_core_signup_send_validation_email_message', array($this, 'custom_activation_link'), 10, 3 );
 	}
 
 	public function site_name( $from_name='' ) {
@@ -96,7 +96,7 @@ class CustomSiteMails {
 	}			
 
 	public function published_post_notification( $post ) {	
-		$text='';
+
 		if ($post->post_type == 'recipe') {	
 		    $subject = __('Your recipe just got published !','foodiepro');
 		    $content = __('Greetings, your recipe <a href="%s">%s</a> just got published !', 'foodiepro');
@@ -115,8 +115,6 @@ class CustomSiteMails {
 		if( $to ) {
 			$author = ucfirst(get_the_author_meta('display_name', $post->post_author));
 			$headline = wpautop(sprintf($this->hello(), $author));
-
-			$essai = wpautop($headline);
 
 		    $content = sprintf( $content, get_permalink($post), $post->post_title);
 		    $content = wpautop( $content );
@@ -188,67 +186,86 @@ class CustomSiteMails {
 	    if ( is_multisite() ) {
 	        return ;// we don't need it for multisite
 	    }
-	    //send the welcome mail to user
-	    //welcome message
-	 
-	    $welcome_email = __( 'Dear USER_DISPLAY_NAME,
-	 
-	Your new account is set up.
-	 
-	You can log in with the following information:
-	Username: USERNAME
-	LOGINLINK
-	 
-	Thanks!
-	 
-	--The Team @ SITE_NAME' );
+
+		$subject = __('Welcome to Goûtu.org !','foodiepro');
+		$content = __('Greetings, you have successfully activated your account, and we are glad to count you as one of our members !', 'foodiepro');
 	 
 	    //get user details
 	    $user = get_userdata( $user_id );
+
 	    //get site name
-	    $site_name = get_bloginfo( 'name' );
-	    //update the details in the welcome email
-	    $welcome_email = str_replace( 'USER_DISPLAY_NAME', $user->first_name, $welcome_email );
-	    $welcome_email = str_replace( 'SITE_NAME', $site_name, $welcome_email );
-	    $welcome_email = str_replace( 'USERNAME', $user->user_login, $welcome_email );
-	    $welcome_email = str_replace( 'LOGINLINK', wp_login_url(), $welcome_email );
-	 
-	    //from email
-	    $admin_email = get_site_option( 'admin_email' );
-	 
-	    if ( empty( $admin_email ) ) {
-	        $admin_email = 'support@' . $_SERVER['SERVER_NAME'];
-	    }
-	 
-	    $from_name = $site_name . "<$admin_email>" ;//from
-	    $message_headers =  array(
-	        'from'          => $from_name,
-	        'content-type'  => 'text/plain; charset='. get_option('blog_charset')
-	    );
-	 
-	    //EMAIL SUBJECT
-	    $subject = sprintf( __( 'Welcome to   %1$s ' ), $site_name ) ;
-	    //SEND THE EMAIL
-	    wp_mail( $user->user_email, $subject, $welcome_email, $message_headers );
-	 
-	    return true;
-	}	
+		$to = $user->user_email;
 
-	// function custom_activation_link($msg, $user_id, $activation_url) {
-	// 	//	Get some globals
-	// 	global $bp, $wpdb;
-	    
-	//     $userinfo = get_userdata($user_id);
-	//     $username = $userinfo->user_login;
-
-	//     $sql = 'select meta_value from wp_usermeta where meta_key="activation_key" and user_id in (select ID from wp_users where user_login="' . $username . '" and user_status=2)';
-	//     $activation_key = $wpdb->get_var($sql);
+		//
 		
 
-	// 	$msg = sprintf( __('Thanks for registering ! To complete the activation of your account, go to the following link and click on the "Activate" button: %s. If the "Activation Key" field is empty, copy and paste the following into the field : <strong>%s</strong> ', 'foodiepro'), $activation_url, $activation_key);
-	//     $msg .= sprintf( __("After successful activation, you can log in using your username (%1\$s) along with password you choose during registration process.", 'foodiepro'), $username);
-	//     return $msg;
-	// }
+		if( $to ) {
+			$name = ucfirst($user->display_name);
+			$headline = wpautop(sprintf($this->hello(), $name));
+
+		    $content = sprintf( $content, get_permalink($post), $post->post_title);
+		    $content = wpautop( $content );
+
+		    $signature = $this->signature();
+		    $contact = $this->contact();
+		    $copyright = $this->copyright();
+		    $unsubscribe = $this->unsubscribe( $user_id );
+		    $facebook_url = CustomSocialButtons::facebookURL($post);
+		    $twitter_url = CustomSocialButtons::twitterURL($post);
+		    $pinterest_url = CustomSocialButtons::pinterestURL($post);
+		    $mail_url = CustomSocialButtons::mailURL($post, $post->post_type);
+		    $whatsapp_url = CustomSocialButtons::whatsappURL($post, $post->post_type);
+
+		    $data = array(
+		    	'title' => $title,
+		    	'headline' => $headline,
+		    	'content' => $content . $content1,
+		    	'signature' => $signature,
+		    	'contact' => $contact,
+		    	'image_url' => '',
+		    	'copyright' => $copyright,
+		    	'unsubscribe' => $unsubscribe,
+		    	'facebook_url' => $facebook_url,
+		    	'facebook_text' => __('Share this recipe on Facebook','foodiepro'),
+		    	'twitter_url' => $twitter_url,
+		    	'twitter_text' => __('Share this recipe on Twitter','foodiepro'),
+		    	'pinterest_url' => $pinterest_url,
+		    	'pinterest_text' => __('Share this recipe on Pinterest','foodiepro'),
+		    	'mail_url' => $mail_url,
+		    	'mail_text' => __('Share this recipe by email','foodiepro'),
+		    	'whatsapp_url' => $whatsapp_url,
+		    	'whatsapp_text' => __('Share this recipe on Whatsapp','foodiepro'),		    	
+		    );
+		    $message = $this->populate_template($data, self::PROVIDER.'_generic' );
+		    $headers = $this->headers();
+
+		    if ( $this->target == 'debug' ) {
+		    	echo "From name : " . $this->site_name() . " <br>";
+		    	echo "From address : " . $this->contact_address() . " <br>";
+		    	echo "To : $to<br>";
+		    	echo "Subject : $subject<br>";
+		    	echo "Message : $message<br>";
+		    }
+		    else 
+		    	wp_mail( $to, $subject, $message, $headers );
+		}	
+	}	
+
+	function custom_activation_link($msg, $user_id, $activation_url) {
+		//	Get some globals
+		global $bp, $wpdb;
+	    
+	    $userinfo = get_userdata($user_id);
+	    $username = $userinfo->user_login;
+
+	    $sql = 'select meta_value from wp_usermeta where meta_key="activation_key" and user_id in (select ID from wp_users where user_login="' . $username . '" and user_status=2)';
+	    $activation_key = $wpdb->get_var($sql);
+		
+
+		$msg = sprintf( __('JHey Toto, thanks for registering ! To complete the activation of your account, go to the following link and click on the "Activate" button: %s. If the "Activation Key" field is empty, copy and paste the following into the field : <strong>%s</strong> ', 'foodiepro'), $activation_url, $activation_key);
+	    $msg .= sprintf( __("After successful activation, you can log in using your username (%1\$s) along with password you choose during registration process.", 'foodiepro'), $username);
+	    return $msg;
+	}
 
 
 }

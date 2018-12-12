@@ -268,6 +268,10 @@ class custom_progress_bar_widget extends WP_Widget {
 	
 }
 // register widget
-add_action( 'widgets_init', create_function( '', 'return register_widget( "custom_progress_bar_widget" );' ) );
+add_action( 'widgets_init', 'bp_profile_completion_widget_init' );
+
+function bp_profile_completion_widget_init() {
+	return register_widget( "custom_progress_bar_widget" );	
+}
 
 

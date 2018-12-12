@@ -647,7 +647,7 @@ td#whats-new-avatar {
 
 div#whats-new-content {
 	position:relative;
-	border: 1px solid #bdbdbd;
+	border: 1px solid #e8e8e8;
 	border-radius: 10px;
 	padding: 10px;
 	margin-left: 20px;
@@ -657,7 +657,7 @@ div#whats-new-content:before{
   content: '';
   position: absolute;
   border-style: solid;
-  border-color: transparent #969696;
+  border-color: transparent #e8e8e8;
   border-width: 7px 23px 11px 0;
   top: 29px;
   left: -23px;
@@ -1315,8 +1315,7 @@ Common Classes
 
 img.avatar, .avatar, 
 .content .rpwe-block a.auth-avatar,
-.content .featured-post .avatar,
-a.mega-menu-link img {
+.content .featured-post .avatar {
 	-webkit-border-radius:50%;
 	-moz-border-radius:50%;
 	border-radius:50%;
@@ -3949,10 +3948,12 @@ ul.activity-list {
 
 ul.activity-list li {
 	overflow: hidden;
+	list-style: none;
 	padding: 15px 10px;
-  list-style: none;
-  background: #efeeee;  
 	margin: 10px 0;
+	background: #fbfbfb;  
+    border-bottom: 1px solid #eae9e9;
+    border-right: 1px solid #eae9e9;	
 }
 
 .activity-list .activity-meta {

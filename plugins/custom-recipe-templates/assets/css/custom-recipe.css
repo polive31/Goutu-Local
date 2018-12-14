@@ -277,18 +277,31 @@ ol.wpurp-recipe-instructions {
     padding: 10px 0;
 }
 
+li.wpurp-recipe-instruction.li-first.li-last,
+.entry-content ul li.wpurp-recipe-instruction {
+    list-style-type: none;
+}
+
 li.wpurp-recipe-instruction {
 	list-style-position: inside;
 	margin-bottom: 20px;
 	text-align:justify;
 }
 
-li.wpurp-recipe-instruction.li-first.li-last {
-	list-style-type: none;
-}
 
-li.wpurp-recipe-instruction span {
-	vertical-align:middle;
+.recipe-instruction-bullet {
+    /* padding: 10px; */
+    display: inline-block;
+    vertical-align: middle;
+	background: #f7f7f7;
+	color:#929292;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    text-align: center;
+    font-size: 25px;
+    font-style: normal;
 }
 
 /* Recipe timer WPURP addon 

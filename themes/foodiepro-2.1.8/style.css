@@ -2320,12 +2320,11 @@ span.ui-icon.ui-icon-triangle-1-s:before {
 }
 
 .post-container,
-.recipe-container {
-	display:inline;		
-	/* float:left; */
-	/* width:100%; */
+.recipe-container {	
+	float:left;
+	width:100%;
 	clear:both;
-	/* margin-bottom:20px; */
+	margin-bottom:40px;
 }
 
 /* TOOLBAR BUTTONS  */

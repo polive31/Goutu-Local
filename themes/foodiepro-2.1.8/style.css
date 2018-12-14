@@ -2345,19 +2345,13 @@ span.ui-icon.ui-icon-triangle-1-s:before {
 
 .toolbar-button,
 .recipe-button {
-	float: left;
+	display: inline-block;
 	position: relative;
 	font-size: 25px;
 	margin: 0 20px 0 0;
 	padding: 5px 0;
 }
 
-.toolbar-button#share,
-.toolbar-button#print,
-.recipe-button#share,
-.recipe-button#print {
-	float:right;
-}
 
 .toolbar-button a,
 .recipe-button a {
@@ -2378,6 +2372,11 @@ span.ui-icon.ui-icon-triangle-1-s:before {
 	font-family:FontAwesome;
 	font-size:inherit;
 	/*line-height: 24px;*/
+}
+
+a.post-read-button:before,
+a.recipe-read-button:before {
+	content:"\f028"; /* fa-sound */
 }
 
 a.post-share-button:before,

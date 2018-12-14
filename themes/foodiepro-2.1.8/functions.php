@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'CHILD_THEME_NAME', 'Foodie Pro Theme' );
-define( 'CHILD_THEME_VERSION', '2.2.46' );
+define( 'CHILD_THEME_VERSION', '2.2.47' );
 define( 'CHILD_THEME_DEVELOPER', 'Shay Bocks' );
 define( 'CHILD_THEME_URL', get_stylesheet_directory_uri() );
 define( 'CHILD_THEME_PATH', get_stylesheet_directory() );
@@ -438,6 +438,42 @@ function foodiepro_debug_shortcode($args) {
     $html = $instance->$function( $param1 );
 
 }
+
+
+/* =================================================================*/
+/* =             SCRIPTS AND STYLES DEBUG 
+/* =================================================================*/
+
+add_action( 'wp_footer', 'foodiepro_record_scripts_styles',PHP_INT_MAX );
+function foodiepro_record_scripts_styles() {
+	if( !is_admin() && is_user_logged_in() && current_user_can( 'manage_options' )) {
+		// Print Scripts
+		global $wp_scripts;
+		echo '<table align="center" style="color:#777;font-family:sans-serif;font-size:14px;width:100%;margin:20px">';
+		echo '<th colspan="2" style="margin: 0px 3%; border: 1px solid #eee; padding: 10px;background-color: #ffffff;">Scripts</th>';
+		foreach( $wp_scripts->queue as $handle ) {
+			echo '<tr style="margin: 0px 3%; border: 1px solid #eee; padding: 10px;background-color: #ffffff;">';
+			echo '<td style="padding:5px 10px">' . $handle . '</td>';
+			echo '<td>' . $wp_scripts->registered[$handle]->src . '</td>';
+			echo '</tr>';
+			echo '</div>';
+		}
+		echo '</table>';
+		
+        // Print Styles
+        global $wp_styles;
+		echo '<table align="center" style="color:#777;font-family:sans-serif;font-size:14px;width:100%;margin:20px">';
+		echo '<th colspan="2" style="margin: 0px 3%; border: 1px solid #eee; padding: 10px;background-color: #ffffff;">Styles</th>';
+		foreach( $wp_styles->queue as $handle ) {
+			echo '<tr style="margin: 0px 3%; border: 1px solid #eee; padding: 10px;background-color: #ffffff;">';
+			echo '<td style="padding:5px 10px">' . $handle . '</td>';
+			echo '<td>' . $wp_styles->registered[$handle]->src . '</td>';
+			echo '</tr>';
+			echo '</div>';			
+        }
+    }
+}
+
 
 
 /* =================================================================*/

@@ -74,8 +74,6 @@ jQuery(document).ready(function() {
 
 });
 
-
-
 wpurp_adjustable_servings.updateShortcode = function(recipe, servings_new) {
     var servings_original = parseFloat(recipe.data('servings-original'));
 

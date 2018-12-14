@@ -235,7 +235,11 @@ input, select, textarea,
 }
 
 .ingredients-container {
-	background-color :#f8f8f8;
+	background-color :#f1f0ef;
+}
+
+.recipe-instruction-bullet {
+	background-color :#f1f0ef;
 }
 
 span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {

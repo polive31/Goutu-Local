@@ -211,12 +211,13 @@ input.adjust-recipe-servings {
 /* Ingredients */
 
 .ingredients-container {
-	float:left;
-	border:1px dashed #000;
-	width:50%;
-	margin:0 30px 10px 0;
-	padding:10px 5px;
-	text-decoration:none;
+    float: left;
+    border: 2px solid #adadad;
+    width: 50%;
+    margin: 0 30px 10px 0;
+    padding: 10px 5px;
+    text-decoration: none;
+    border-radius: 10px;
 }
 
 .ingredients-container .entry-content ul li {
@@ -290,18 +291,18 @@ li.wpurp-recipe-instruction {
 
 
 .recipe-instruction-bullet {
-    /* padding: 10px; */
     display: inline-block;
-    vertical-align: middle;
-	background: #f7f7f7;
-	color:#929292;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    background: #f8f8f8;
+    color: #616161;
+    width: 50px;
+    height: 50px;
     margin-right: 10px;
     text-align: center;
-    font-size: 25px;
-    font-style: normal;
+    font-size: 35px;
+    border: 2px solid #adadad;
+    /* border-bottom: 2px solid #CCC; */
+    line-height: 50px;
+    border-radius: 50%;
 }
 
 /* Recipe timer WPURP addon 

@@ -442,7 +442,7 @@ class Custom_WPURP_Templates {
 					),
 		            array(
 		                'name' => 'responsive-voice',
-		                'url' => 'http://code.responsivevoice.org/responsivevoice.js',
+		                'url' => 'https://code.responsivevoice.org/1.5.10/responsivevoice.js?source=wp-plugin',
 						'footer' => true,
 		                'public' => true,
 		                'admin' => false,						

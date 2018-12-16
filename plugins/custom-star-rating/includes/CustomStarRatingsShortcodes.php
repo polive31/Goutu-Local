@@ -24,7 +24,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 	//			'title_reply' => __( '', 'genesis' ), 
 	//      'comment_field'=>'<p class="comment-form-comment"></p>', 
 	//		);
-			$comment_args='';
+		$comment_args='';
 	    ob_start();
 	    comment_form($comment_args);
 	    $cform = ob_get_contents();
@@ -61,12 +61,12 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 	-----------------------------------------------*/
 	public function display_comment_form_with_rating() {
 		$args = array (
-			'title_reply' => '', //Default: __( 'Leave a Reply’ )
-			'label_submit' => __( 'Send', 'custom-star-rating' ), //default=’Post Comment’
+			'title_reply' => '', //Default: __( 'Leave a Replyï¿½ )
+			'label_submit' => __( 'Send', 'custom-star-rating' ), //default=ï¿½Post Commentï¿½
 			'comment_field' => $this->output_evaluation_form(), 
-			'logged_in_as' => '', //Default: __( 'Leave a Reply to %s’ )
-			'title_reply_to' => __( 'Reply Title', 'custom-star-rating' ), //Default: __( 'Leave a Reply to %s’ )
-			'cancel_reply_link' => __( 'Cancel', 'custom-star-rating' ), //Default: __( ‘Cancel reply’ )
+			'logged_in_as' => '', //Default: __( 'Leave a Reply to %sï¿½ )
+			'title_reply_to' => __( 'Reply Title', 'custom-star-rating' ), //Default: __( 'Leave a Reply to %sï¿½ )
+			'cancel_reply_link' => __( 'Cancel', 'custom-star-rating' ), //Default: __( ï¿½Cancel replyï¿½ )
 			'rating_cats' => 'all',  //Default: "id1 id2..."
 			);
 		
@@ -293,7 +293,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		
 		<tr>
 		<td align="left" class="rating-title"><?php echo __($cat['question'],'custom-star-rating');?></td>
-		<td align="left"><?php echo $this -> output_rating_form( $id );?></td>
+		<td align="left"><?php echo $this->output_rating_form( $id );?></td>
 		</tr>
 		
 		<?php

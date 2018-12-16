@@ -239,7 +239,11 @@ input, select, textarea,
 }
 
 .recipe-instruction-bullet {
-	background-color :#f1f0ef;
+	background-color:#f1f0ef;
+}
+
+.recipe-instruction-bullet:hover {
+	background-color:#d8d4d0
 }
 
 span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {

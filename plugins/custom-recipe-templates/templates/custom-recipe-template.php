@@ -1,5 +1,3 @@
-		<div id="share-buttons"><?php //echo do_shortcode('[mashshare text=""]'); ?></div>
-
 		<!-- Class .wpurp-container important for adjustable servings javascript -->	
 		<div class="recipe wpurp-container" id="wpurp-container-recipe-<?php echo $recipe->ID(); ?>" data-id="<?php echo $recipe->ID(); ?>" data-permalink="<?php echo $recipe->link(); ?>" data-servings-original="<?php echo $recipe->servings_normalized(); ?>">
 			<!-- Recipe description -->
@@ -54,7 +52,7 @@
 							<div class="button-caption"><?php echo __('Print', 'foodiepro'); ?></div>
 						</a>
 						<?php 
-						Tooltip::display( __('Print this recipe','foodiepro'), 'above', 'right' );  
+						Tooltip::display( __('Print this Recipe','foodiepro'), 'above', 'right' );  
 						?>	
 					</div>	
 					
@@ -71,14 +69,14 @@
 					</div>				
 					
 					<!-- Recipe Read Button -->
-					<!-- <div class="recipe-button alignright tooltip" id="read">
-						<a class="recipe-read-button" />
+					<div class="recipe-button alignright tooltip" id="read">
+						<a class="recipe-read-button" onClick="<?= is_user_logged_in()?'':"ga('send','event','recipe-read','click','', 0)"; ?>"/>
 							<div class="button-caption"><?php echo __('Read', 'foodiepro'); ?></div>
 						</a>
 						<?php 
 						Tooltip::display( __('Read this recipe out loud','foodiepro'), 'above', 'right' );  
 						?>	
-					</div>						 -->
+					</div>						
 				</div>
 				
 			</div>

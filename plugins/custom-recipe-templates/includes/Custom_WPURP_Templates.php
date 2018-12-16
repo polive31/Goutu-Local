@@ -182,7 +182,7 @@ class Custom_WPURP_Templates {
         $previous_group = '';
         $instructions = $recipe->instructions();
         
-        $out .= '<ol class="wpurp-recipe-instruction-container">';
+        $out .= '<ul class="wpurp-recipe-instruction-container">';
         $first_group = true;
         
         for( $i = 0; $i < count($instructions); $i++ ) {
@@ -192,9 +192,9 @@ class Custom_WPURP_Templates {
                     
                     if( $instruction['group'] != $previous_group ) { /* Entering new instruction group */
                             $first_inst = true;
-                $out .= $first_group ? '' : '</ol>';
+                $out .= $first_group ? '' : '</ul>';
                 $out .= '<div class="wpurp-recipe-instruction-group recipe-instruction-group">' . $instruction['group'] . '</div>';
-                $out .= '<ol class="wpurp-recipe-instructions">';
+                $out .= '<ul class="wpurp-recipe-instructions">';
                 $previous_group = $instruction['group'];
                         $first_group = false;
             }
@@ -204,9 +204,14 @@ class Custom_WPURP_Templates {
 
             $meta = WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ) != 'json' && $args['template_type'] == 'recipe' && $args['desktop'] ? ' itemprop="recipeInstructions"' : '';
 
-            $out .= '<li class="wpurp-recipe-instruction ' . $style . '">';
+            $out .= '<li class="wpurp-recipe-instruction ' . $style . '" id="wpurp_recipe_instruction' . $i . '">';
             //$out .= '<div' . $meta . '>'.$instruction['description'].'</div>';
-            $out .= '<span>' . $instruction['description'] . '</span>';
+			
+			
+			// $out .= $instruction['description'];
+			$out .= $this->get_bullet($i) . '</span><span class="recipe-instruction-text">' . $instruction['description'] . '</span>';
+			// $out .= '<span class="recipe-instruction-bullet">' . ($i+1) . '</span>[tts]' . $instruction['description'] . '[/tts]';
+			
 
             if( !empty($instruction['image']) ) {
                 $thumb = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
@@ -230,10 +235,25 @@ class Custom_WPURP_Templates {
 
             $out .= '</li>';
         }
-            $out .= '</ol>';
+            $out .= '</ul>';
 
         return $out;
-    }
+	}
+	
+	public function get_bullet( $id ) {
+		ob_start();
+		?>
+		<div class="recipe-instruction-bullet" title="<?= __('Read this step aloud','foodiepro'); ?>" id="recipe-instruction-bullet<?= $id; ?>">
+			<?= $id+1;?>
+			<div id="r1" class="ring"></div>
+			<div id="r2" class="ring"></div>
+		</div>
+		<?php
+		$html = ob_get_contents();
+		ob_end_clean();
+		return $html;
+	}
+
 
 
 /********************************************************************************
@@ -352,6 +372,10 @@ class Custom_WPURP_Templates {
 				$pause = '<i class="fa fa-pause" aria-hidden="true"></i>';
 				$play = '<i class="fa fa-play" aria-hidden="true"></i>';
 				$close = '<i class="fa fa-times" aria-hidden="true"></i>';
+				$stop = '<i class="fa fa-stop" aria-hidden="true"></i>';
+				$repeat = '<i class="fa fa-repeat" aria-hidden="true"></i>';
+				$prev = '<i class="fa fa-step-backward" aria-hidden="true"></i>';
+				$next = '<i class="fa fa-step-forward" aria-hidden="true"></i>';
 
 				$this->custom_enqueued_scripts = array (
 		            array(
@@ -361,18 +385,20 @@ class Custom_WPURP_Templates {
 		                'file' => 'fraction.js',
 		                'public' => true,
 		                'admin' => true,
+		                'footer' => true,
 		            ),
 		            array(
-		                'name' => 'print_button',
+						'name' => 'print_button',
 		                'url' => self::$_PluginUri . 'assets/js/',
 		                'path' => self::$_PluginPath . 'assets/js/',
 		                'file' => 'print_button.js',
 		                'public' => true,
 		                'deps' => array(
-		                    'jquery',
+							'jquery',
 		                ),
+						'footer' => true,
 		                'data' => array(
-		                    'name' => 'wpurp_print',
+							'name' => 'wpurp_print',
 		                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
 		                    'nonce' => wp_create_nonce( 'wpurp_print' ),
 		                    'custom_print_css_url' => get_stylesheet_directory_uri() . '/assets/css/custom-recipe-print.css',
@@ -381,52 +407,93 @@ class Custom_WPURP_Templates {
 		                    'title' => __('Print this Recipe','foodiepro'),
 		                    'permalinks' => get_option('permalink_structure'),
 		                ),
-		            ),
+					),
 		            array(
-		                'name' => 'wpurp-timer',
+						'name' => 'recipe-read',
+		                'url' => self::$_PluginUri . '/assets/js/',
+		                'path' => self::$_PluginPath . '/assets/js/',
+		                'file' => 'custom_text_to_speech.js',
+		                'public' => true,
+						'footer' => true,
+		                'deps' => array(
+		                    'jquery',
+		                    'responsive-voice',
+		                ),
+		                'data' => array(
+							'name' => 'recipeRead',
+							'voice' => 'French Female',
+		                    'icon' => array(
+		                        'prev' => $prev,
+		                        'next' => $next,
+		                        'repeat' => $repeat,
+		                        'play' => $play,
+								'pause' => $pause,
+		                        'stop' => $stop,
+							),
+		                    'title' => array(
+		                        'prev' => __('Read previous step','foodiepro'),
+		                        'next' => __('Read next step','foodiepro'),
+		                        'repeat' => __('Read this step again','foodiepro'),
+		                        'pause' => __('Pause reading','foodiepro'),
+		                        'play' => __('Continue reading','foodiepro'),
+		                        'stop' => __('Stop reading and close player','foodiepro'),
+		                    ),							
+		                )
+					),
+		            array(
+		                'name' => 'responsive-voice',
+		                'url' => 'http://code.responsivevoice.org/responsivevoice.js',
+						'footer' => true,
+		                'public' => true,
+		                'admin' => false,						
+					),										
+		            array(
+						'name' => 'wpurp-timer',
 		                'url' => self::$_PluginUri . '/assets/js/',
 		                'path' => self::$_PluginPath . '/assets/js/',
 		                'file' => 'timer.js',
 		                'premium' => true,
 		                'public' => true,
+						'footer' => true,
 		                'deps' => array(
-		                    'jquery',
+							'jquery',
 		                ),
 		                'data' => array(
-		                    'name' => 'wpurp_timer',
+							'name' => 'wpurp_timer',
 		                    'icons' => array(
-		                        'pause' => $pause,
-		                        'play' => $play,
+								'play' => $play,
 		                        'close' => $close,
 		                    ),
-		                )
-		            ),						
-		    	    array(
-		                'name' => 'custom-adjustable-servings',
-		                // 'url' => WPUltimateRecipe::get()->coreUrl . '/js/adjustable_servings.js',
-		                'url' => self::$_PluginUri . 'assets/js/',
-		                'path' => self::$_PluginPath . 'assets/js/',
-		                'file' => 'custom_adjustable_servings.js',
-		                'public' => true,
-		                'deps' => array(
-		                    'jquery',
+							)
+					),						
+					array(
+						'name' => 'custom-adjustable-servings',
+						// 'url' => WPUltimateRecipe::get()->coreUrl . '/js/adjustable_servings.js',
+						'url' => self::$_PluginUri . 'assets/js/',
+						'path' => self::$_PluginPath . 'assets/js/',
+						'file' => 'custom_adjustable_servings.js',
+						'public' => true,
+						'footer' => true,
+						'deps' => array(
+							'jquery',
 		                    'fraction',
 		                	'print_button',
 		                ),
 		                'data' => array(
-		                    'name' => 'wpurp_servings',
+							'name' => 'wpurp_servings',
 		                    'precision' => 1,
 		                    'decimal_character' => ',',
 		                ),
 		            ),					
 					array(
-		                'name' => 'custom-favorite-recipe',
+						'name' => 'custom-favorite-recipe',
 		                /*'url' => WPUltimateRecipePremium::get()->premiumUrl . '/addons/favorite-recipes/js/favorite-recipes.js',*/
 		                'url' => self::$_PluginUri . 'assets/js/',
 		                'path' => self::$_PluginPath . 'assets/js/',
 		                'file' => 'custom_favorite_recipe.js',
-		               	// 'premium' => true,
+						// 'premium' => true,
 		                'public' => true,
+						'footer' => true,
 		                'setting' => array( 'favorite_recipes_enabled', '1' ),
 		                'deps' => array(
 		                    'jquery',

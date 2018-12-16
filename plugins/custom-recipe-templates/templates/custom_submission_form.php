@@ -1,4 +1,3 @@
-<?php $required_fields = WPUltimateRecipe::option( 'user_submission_required_fields', array() ); ?>
 <div id="wpurp_user_submission_form" class="postbox">
     <form id="new_recipe" name="new_recipe" method="post" action="" enctype="multipart/form-data">
     <div class= "hide-on-preview">

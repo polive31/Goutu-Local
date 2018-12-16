@@ -10,11 +10,23 @@ class Custom_WPURP_Recipe_Submission {
     protected static $_PluginUrl;  
     protected static $_UploadPath; 
 
+    protected static $required_fields; 
+    protected static $required_fields_labels; 
+    
     public function __construct( $name = 'user-submissions' ) {
         self::$_PluginDir = plugin_dir_path( dirname( __FILE__ ) );
         self::$_PluginUrl = plugin_dir_url( dirname( __FILE__ ) );
         $upload_dir = wp_upload_dir();
         self::$_UploadPath = trailingslashit( $upload_dir['basedir'] );
+
+        self::$required_fields_labels = array(
+                                'recipe_title_check' => __('You must provide a post title.','foodiepro'),
+                                'recipe_servings' => __('You must provide the number of servings.', 'foodiepro'),
+                                'recipe_prep_time' => __('You must provide the preparation time.', 'foodiepro'),
+                                'recipe-course' => __('You must provide the recipe course.', 'foodiepro'),
+                                'recipe-difficult' => __('You must provide the recipe difficulty.', 'foodiepro'),
+                            );
+        self::$required_fields = array_keys( self::$required_fields_labels );
 
         // Recipe headline filter
         add_filter( 'genesis_post_info', array($this, 'add_recipe_edit_button'), 20); // Important : priority must be above 15 since post meta is customized with priority 15 (see custom post templates)
@@ -108,7 +120,8 @@ class Custom_WPURP_Recipe_Submission {
 
         $recipe = new Custom_WPURP_Recipe( $recipe_ID );
 
-        $required_fields = WPUltimateRecipe::option( 'user_submission_required_fields', array() );
+        // $required_fields = self::REQUIRED_FIELDS;
+        // $required_fields = WPUltimateRecipe::option( 'user_submission_required_fields', array() );
 
         ob_start();
 
@@ -440,22 +453,22 @@ class Custom_WPURP_Recipe_Submission {
 
             // Check required fields
             $errors = array();
-            $required_fields = WPUltimateRecipe::option( 'user_submission_required_fields', array() );
+            // $required_fields = apply_filter('wpurp-required-fields', WPUltimateRecipe::option( 'user_submission_required_fields', array() ) );
 
-            $required_fields_labels = array();
-            $required_fields_options = wpurp_admin_user_submission_required_fields();
-            foreach( $required_fields_options as $required_fields_option ) {
-                $label = str_replace( __( 'Custom Fields', 'foodiepro' ) . ': ', '', $required_fields_option['label'] );
-                $required_fields_labels[$required_fields_option['value']] = $label;
-            }
+            // $required_fields_labels = array();
+            // $required_fields_options = wpurp_admin_user_submission_required_fields();
+            // foreach( $required_fields_options as $required_fields_option ) {
+            //     $label = str_replace( __( 'Custom Fields', 'foodiepro' ) . ': ', '', $required_fields_option['label'] );
+            //     $required_fields_labels[$required_fields_option['value']] = $label;
+            // }
 
-            foreach( $required_fields as $required_field ) {
+            foreach( self::$required_fields as $required_field ) {
                 if( $required_field != 'recipe_thumbnail' || !isset( $_FILES['recipe_thumbnail'] ) ) {
-                    if( !isset( $_POST[$required_field] ) || !$_POST[$required_field] ) {
-                        $errors[] = $required_fields_labels[$required_field];
+                    if( !isset( $_POST[$required_field] ) || !$_POST[$required_field] || $_POST[$required_field]=='-1'  ) {
+                        $errors[] = self::$required_fields_labels[$required_field];
                     }
                 } else if( !$_FILES['recipe_thumbnail']['name'] && get_post_thumbnail_id( $post_id ) == 0 ) {
-                    $errors[] = $required_fields_labels[$required_field];
+                    $errors[] = self::$required_fields_labels[$required_field];
                 }
             }
 

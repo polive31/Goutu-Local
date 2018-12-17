@@ -81,15 +81,15 @@ class BP_Custom_Login_Widget extends WP_Widget {
 			 */
 			do_action( 'bp_before_login_widget_loggedin' ); ?>
 
-			<div class="bp-login-widget-user-avatar">
+			<div class="login-widget-user-avatar">
 				<a href="<?php echo bp_loggedin_user_domain(); ?>">
 					<?php bp_loggedin_user_avatar( 'type=full&width=150&height=150' ); ?>
 				</a>
 			</div>
 
-			<div class="bp-login-widget-user-links">
-				<div class="bp-login-widget-user-link"><?php echo bp_core_get_userlink( bp_loggedin_user_id() ); ?></div>
-				<div class="bp-login-widget-user-logout"><a class="logout" href="<?php echo wp_logout_url( bp_get_requested_url() ); ?>"><?php _e( 'Log Out', 'buddypress' ); ?></a></div>
+			<div class="login-widget-user-links">
+				<div class="login-widget-user-link"><?php echo bp_core_get_userlink( bp_loggedin_user_id() ); ?></div>
+				<div class="login-widget-user-logout"><a class="logout" href="<?php echo wp_logout_url( bp_get_requested_url() ); ?>"><?php _e( 'Log Out', 'buddypress' ); ?></a></div>
 			</div>
 
 			<?php
@@ -112,20 +112,20 @@ class BP_Custom_Login_Widget extends WP_Widget {
 			 */
 			do_action( 'bp_before_login_widget_loggedout' ); ?>
 
-			<form name="bp-login-form" id="bp-login-widget-form<?php echo $this->instance;?>" class="bp-login-form" action="<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>" method="post">
-				<label for="bp-login-widget-user-login"><?php _e( 'Username', 'buddypress' ); ?></label>
-				<input type="text" name="log" id="bp-login-widget-user-login<?php echo $this->instance;?>" class="input" value="" />
+			<form name="login-form" id="login-widget-form<?php echo $this->instance;?>" class="bp-login-form" action="<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>" method="post">
+				<label for="login-widget-user-login"><?php _e( 'Username', 'buddypress' ); ?></label>
+				<input type="text" name="log" id="login-widget-user-login<?php echo $this->instance;?>" class="input" value="" />
 
-				<label for="bp-login-widget-user-pass"><?php _e( 'Password', 'buddypress' ); ?></label>
-				<input type="password" name="pwd" id="bp-login-widget-user-pass<?php echo $this->instance;?>" class="input" value="" <?php bp_form_field_attributes( 'password' ) ?> />
+				<label for="login-widget-user-pass"><?php _e( 'Password', 'buddypress' ); ?></label>
+				<input type="password" name="pwd" id="login-widget-user-pass<?php echo $this->instance;?>" class="input" value="" <?php bp_form_field_attributes( 'password' ) ?> />
 
-				<div class="forgetmenot"><label for="bp-login-widget-rememberme<?php echo $this->instance;?>"><input name="rememberme" type="checkbox" id="bp-login-widget-rememberme<?php echo $this->instance;?>" value="forever" /> <?php _e( 'Remember Me', 'foodiepro' ); ?></label></div>
+				<div class="forgetmenot"><label for="login-widget-rememberme<?php echo $this->instance;?>"><input name="rememberme" type="checkbox" id="bp-login-widget-rememberme<?php echo $this->instance;?>" value="forever" /> <?php _e( 'Remember Me', 'foodiepro' ); ?></label></div>
 
-				<input type="submit" name="wp-submit" class="bp-login-widget-submit" id="bp-login-widget-submit<?php echo $this->instance;?>" value="<?php esc_attr_e( 'Log In', 'foodiepro' ); ?>" />
+				<input type="submit" name="wp-submit" class="login-widget-submit" id="login-widget-submit<?php echo $this->instance;?>" value="<?php esc_attr_e( 'Log In', 'foodiepro' ); ?>" />
 
 				<?php if ( bp_get_signup_allowed() ) : ?>
 
-					<span class="bp-login-widget-register-link"><a href="<?php echo esc_url( bp_get_signup_page() ); ?>" title="<?php esc_attr_e( 'Register for a new account', 'foodiepro' ); ?>"><?php echo wp_kses( __( 'Not yet a member ? <br> Register here !', 'foodiepro' ), array('br'=>array()) ); ?></a></span>
+					<span class="login-widget-register-link"><a href="<?php echo esc_url( bp_get_signup_page() ); ?>" title="<?php esc_attr_e( 'Register for a new account', 'foodiepro' ); ?>"><?php echo wp_kses( __( 'Not yet a member ? <br> Register here !', 'foodiepro' ), array('br'=>array()) ); ?></a></span>
 
 				<?php endif; ?>
 

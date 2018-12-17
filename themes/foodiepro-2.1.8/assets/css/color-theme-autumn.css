@@ -275,11 +275,11 @@ li.comment {
 --------------------------------------------*
 
 /* Background */
-@media only screen 
+/* @media only screen 
 	and (max-width:1080px) {
 
 
-}
+} */
 
 
 /* Smartphone */
@@ -288,7 +288,13 @@ li.comment {
 	and (max-width:980px) {
 		
 	body,
+	.no-webp body,
+	.no-js body,
+	.webp body,
 	body.home,
+	.no-webp .home body,
+	.no-js .home body,
+	.webp .home body,
 	.site-container {
 		/*background:url("../../images/background/background-l-small.jpg") no-repeat top left;*/
 		background:none;

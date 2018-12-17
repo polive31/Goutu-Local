@@ -109,12 +109,17 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 	/* =================================================================*/
 	public function search_glossary( $atts, $content ) {
 		$atts = shortcode_atts( array(
+			'glossaryslug' => 'lexique-de-cuisine',
 			'searchkey' => 'name-directory-search-value', 
-			'slug' => 'lexique-de-cuisine',
+			'term' => '',
 			), $atts );
 
-		$glossary_url = $this->get_page_by_slug($atts['slug']);
-		$html=add_query_arg( $atts['searchkey'], strip_tags($content), $glossary_url);
+		$glossary_url = $this->get_page_by_slug($atts['glossaryslug']);
+		if ($term)
+			$html=add_query_arg( $atts['searchkey'], strip_tags($term), $glossary_url);
+		else
+			$html=add_query_arg( $atts['searchkey'], strip_tags($content), $glossary_url);
+			
 		$html='<a href="' . $html . '">' . $content . '</a>';
 
 		return $html;

@@ -9,21 +9,25 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 	
 	public function __construct() {
 		parent::__construct();
+		
 		add_shortcode( 'json-ld-rating', array($this,'display_json_ld_rating') );
 		add_shortcode( 'comment-rating-form', array($this,'display_comment_form_with_rating') );
 		add_shortcode( 'display-star-rating', array($this,'display_star_rating_shortcode') );
-		add_shortcode( 'add-comment-form', array($this,'add_comment_form_shortcode') );
+		// add_shortcode( 'add-comment-form', array($this,'add_comment_form_shortcode') );
 	}
 
 
 
 	/* Add Comment Form 
 	-----------------------------------------------*/
-	function add_comment_form_shortcode() {
+	public function add_comment_form_shortcode() {
 	//		$comments_args = array( 
 	//			'title_reply' => __( '', 'genesis' ), 
 	//      'comment_field'=>'<p class="comment-form-comment"></p>', 
 	//		);
+
+		wp_enqueue_style('custom-star-rating');
+
 		$comment_args='';
 	    ob_start();
 	    comment_form($comment_args);
@@ -33,7 +37,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 	}
 
 
-	/* Rating + Votes in string format shorcode 
+	/* Rating in string (not graphical) format for json encode
 	-----------------------------------------------*/
 	public function display_json_ld_rating($atts) {
 		$a = shortcode_atts( array(
@@ -68,20 +72,18 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 			'title_reply_to' => __( 'Reply Title', 'custom-star-rating' ), //Default: __( 'Leave a Reply to %s� )
 			'cancel_reply_link' => __( 'Cancel', 'custom-star-rating' ), //Default: __( �Cancel reply� )
 			'rating_cats' => 'all',  //Default: "id1 id2..."
-			);
-		
-	  ob_start();
-	  
-	  //display_rating_form();
-	  comment_form($args);
-	  
-	  $cr_form = ob_get_contents();
-	  ob_end_clean();
-	  
-	  return $cr_form;
+		);
+			
+		wp_enqueue_style('custom-star-rating');
+		ob_start();
+		//display_rating_form();
+		comment_form($args);
+		$cr_form = ob_get_contents();
+		ob_end_clean();
+		return $cr_form;
 	}
-
-
+	
+	
 	/* Output star rating shortcode 
 	---------------------------------------------*/
 	public function display_star_rating_shortcode($atts) {
@@ -92,6 +94,8 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 			'markup' => 'table',  // span, list...
 		), $atts );
 		
+		wp_enqueue_style('custom-star-rating');
+
 		$display_style = $a['display'];
 		$comment_rating = ( $a['source'] == 'comment');
 		

@@ -20,11 +20,11 @@ class Custom_WPURP_Recipe_Submission {
         self::$_UploadPath = trailingslashit( $upload_dir['basedir'] );
 
         self::$required_fields_labels = array(
-                                'recipe_title_check' => __('You must provide a post title.','foodiepro'),
-                                'recipe_servings' => __('You must provide the number of servings.', 'foodiepro'),
-                                'recipe_prep_time' => __('You must provide the preparation time.', 'foodiepro'),
-                                'recipe-course' => __('You must provide the recipe course.', 'foodiepro'),
-                                'recipe-difficult' => __('You must provide the recipe difficulty.', 'foodiepro'),
+                                'recipe_title_check' => __('Please provide a post title.','foodiepro'),
+                                'recipe_servings' => __('Please provide the number of servings.', 'foodiepro'),
+                                'recipe_prep_time' => __('Please provide the preparation time.', 'foodiepro'),
+                                'recipe-course' => __('Please provide the recipe course.', 'foodiepro'),
+                                'recipe-difficult' => __('Please provide the recipe difficulty.', 'foodiepro'),
                             );
         self::$required_fields = array_keys( self::$required_fields_labels );
 

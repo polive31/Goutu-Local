@@ -24,15 +24,24 @@ class CustomStarRatings {
 		//self::$s_ratingCats = self::$ratingCats;
 		//self::$s_ratingGlobal = self::$ratingGlobal;
 		//add_action( 'genesis_before_content', array($this,'display_debug_info') );
-		add_action( 'wp_enqueue_scripts', array($this, 'load_custom_rating_stylesheet' ) );
+
+		// add_action( 'wp_enqueue_scripts', array($this, 'enqueue_star_rating_style' ) );
+		add_action( 'wp_enqueue_scripts', array($this, 'register_star_rating_style') );
 	}
 
 	/* Chargement des feuilles de style custom et polices */
-	public function load_custom_rating_stylesheet() {
+	public function enqueue_star_rating_style() {
 		$uri = self::$PLUGIN_URI . 'assets/';
   		$path = self::$PLUGIN_PATH . 'assets/'; 
-		custom_enqueue_style( 'custom-star-ratings', $uri, $path, 'custom-star-rating.css', array(), CHILD_THEME_VERSION );
+		custom_enqueue_style( 'custom-star-rating', $uri, $path, 'custom-star-rating.css', array(), CHILD_THEME_VERSION );
 	}
+		
+	public function register_star_rating_style() {
+		$uri = self::$PLUGIN_URI . 'assets/';
+		$path = self::$PLUGIN_PATH . 'assets/'; 
+		custom_register_style( 'custom-star-rating', $uri, $path, 'custom-star-rating.css', array(), CHILD_THEME_VERSION );
+	}
+
 
 
 	// Initialize all strings needing a translation (doesn't work in __construct)

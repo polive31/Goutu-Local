@@ -386,10 +386,14 @@ li.wpurp-recipe-instruction {
 	height: 0px;
 	font-size: 24px;
 	font-family: monospace, sans-serif;
-	line-height: 50px;
+	line-height: 24px;
 	/* background-color: #b9b9b9d4; */
 	background-color: #dededec7;
 	transition: height 500ms ease-in-out;
+}
+
+#custom-reader-container.open {
+	height:100px;
 }
 
 #custom-reader-container .custom-reader-icon {
@@ -401,7 +405,7 @@ li.wpurp-recipe-instruction {
 	/* color: #ffffff; */
 	/* color: #e6e6e6; */
 	color: #717171;
-	margin: 25px 10px 0 10px;
+	margin: 10px 10px 0 10px;
 	vertical-align: middle;
 	transition: color 500ms ease-in-out;
 }
@@ -513,6 +517,11 @@ span#wpurp-timer-remaining {
 	margin-bottom:20px;
 	float:left;
 	padding-left: 10px;
+}
+
+
+#custom-reader-container.open {
+	height:60px;
 }
 
 #custom-reader-container .custom-reader-icon {

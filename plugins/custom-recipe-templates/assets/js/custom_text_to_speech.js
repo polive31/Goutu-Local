@@ -66,7 +66,16 @@ jQuery(document).ready(function () {
         tts.step = 0;
         console.log("tts.step = " + tts.step);
         tts.closeReader();
-    });     
+    });    
+    
+    jQuery(document).on("click", "#responsive-menu-pro-button", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log("Click on Menu Toggle !!!!");
+        tts.step = 0;
+        console.log("tts.step = " + tts.step);
+        tts.closeReader();
+    });    
     
 });
 
@@ -77,9 +86,9 @@ tts.openReader = function () {
     
     if ( !reader.length ) {
         reader = jQuery('<div class="wrapper"></div>'),
-        play = jQuery('<span id="custom-reader-play" class="custom-reader-icon" title="' + recipeRead.title.play + '">' + recipeRead.icon.play + '</span>').hide(),
-        pause = jQuery('<span id="custom-reader-pause" class="custom-reader-icon" title="' + recipeRead.title.pause + '">' + recipeRead.icon.pause + '</span>'),
-        // repeat = jQuery('<span id="custom-reader-repeat" class="custom-reader-icon" title="' + recipeRead.title.repeat + '">' + recipeRead.icon.repeat + '</span>'),
+        play = jQuery('<span id="custom-reader-play" class="custom-reader-icon" title="' + recipeRead.title.play + '">' + recipeRead.icon.play + '</span>'),
+        pause = jQuery('<span id="custom-reader-pause" class="custom-reader-icon" title="' + recipeRead.title.pause + '">' + recipeRead.icon.pause + '</span>').hide(),
+        repeat = jQuery('<span id="custom-reader-repeat" class="custom-reader-icon" title="' + recipeRead.title.repeat + '">' + recipeRead.icon.repeat + '</span>').hide(),
         prev = jQuery('<span id="custom-reader-prev" class="custom-reader-icon" title="' + recipeRead.title.prev + '">' + recipeRead.icon.prev + '</span>'),
         next = jQuery('<span id="custom-reader-next" class="custom-reader-icon" title="' + recipeRead.title.next + '">' + recipeRead.icon.next + '</span>'),
         stop = jQuery('<span id="custom-reader-stop" class="custom-reader-icon" title="' + recipeRead.title.stop + '">' + recipeRead.icon.stop + '</span>');
@@ -88,7 +97,7 @@ tts.openReader = function () {
         .append(prev)
         .append(play)
         .append(pause)
-        // .append(repeat)
+        .append(repeat)
         .append(next)
         .append(stop);
         
@@ -96,7 +105,7 @@ tts.openReader = function () {
 
         jQuery('body').append(reader);
     }
-    reader.height( "100px" );
+    reader.addClass( 'open' );
     tts.readStep();
 };
 
@@ -104,7 +113,7 @@ tts.closeReader = function () {
     var reader = jQuery('#custom-reader-container');
     if (reader.length > 0) {
         reader.clearQueue();
-        reader.height( "0px" );
+        reader.removeClass( 'open' );
     }  
     tts.thisBullet.removeClass('reading read');
     tts.cancel();      
@@ -147,9 +156,13 @@ tts.readStep = function () {
     //     // onLoadEnd:      function() { captionOn(); activityIndicatorOff(); jQuery( '.imagelightbox-arrow' ).css( 'display', 'block' ); }
     //     onLoadEnd: function () { activityIndicatorOff(); jQuery('.imagelightbox-arrow').css('display', 'block'); }
     // });
-
+    
     tts.play(thisText);
 };
+
+
+/* BASIC SERVICES
+------------------------------------------------------------*/
 
 tts.toggleStep = function () {
     console.log("In readStep for step : " + tts.step);
@@ -160,19 +173,17 @@ tts.readStepBegins = function() {
     console.log( "Read begins for step " + tts.step );
     jQuery('#custom-reader-pause').show();
     jQuery('#custom-reader-play').hide();
+    jQuery('#custom-reader-repeat').hide();
 };
 
 tts.readStepEnds = function () {
     console.log( "Read ends for step " + tts.step )
-    jQuery('#custom-reader-pause').show();
+    jQuery('#custom-reader-pause').hide();
     jQuery('#custom-reader-play').hide();
+    jQuery('#custom-reader-repeat').show();
     tts.thisBullet.removeClass('reading');
     tts.thisBullet.addClass('read');
 };
-
-
-/* Text To Speech drivers
-------------------------------------------------------------*/
 
 tts.play = function( text ) {
     var voice = recipeRead.voice;
@@ -194,8 +205,8 @@ tts.toggle = function () {
     }
     else {
         console.log("Is not playing => resume ");
-        jQuery('#custom-reader-pause').hide();
-        jQuery('#custom-reader-play').show();        
+        jQuery('#custom-reader-pause').show();
+        jQuery('#custom-reader-play').hide();        
         tts.playing = true;
         responsiveVoice.resume();
     }

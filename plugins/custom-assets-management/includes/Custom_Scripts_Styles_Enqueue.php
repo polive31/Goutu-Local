@@ -36,23 +36,23 @@ class CustomScriptsStylesEnqueue {
 
 	// Stylesheets to be loaded conditionnally
 	private $css_if = array(
-			'custom-star-ratings' 				=> array('page' => 'blog-page'),
+			// 'custom-star-ratings' 				=> array('page' => 'blog-page'),
 			'circular-progress-bar' 			=> array('page' => 'bp-page home'),
 			'bp-xprofile-custom-field-types' 	=> array('false' => ''),
 			'bp-admin-bar'						=> array('false' => ''),
 			'bp-child-css' 						=> array('page' => 'bp-page'),
 			'bp-mentions-css' 					=> array('page' => 'bp-page'),
-			'yarppRelatedCss' 					=> array('singular' => 'post recipe' ),
-			'name-directory-style' 				=> array('shortcode' => 'namedirectory'),
 			'bppp-style' 						=> array('false' => ''),// Buddypress Progress Bar
+			'yarppRelatedCss' 					=> array('singular' => 'post recipe' ),
+			'image-lightbox-plugin'				=> array('singular' => 'post recipe' ),
+			'custom-lightbox'					=> array('singular' => 'post recipe' ),
+			'name-directory-style' 				=> array('shortcode' => 'namedirectory'),
 			'yarppWidgetCss' 					=> array('false' => ''),
 			'megamenu-fontawesome' 				=> array('false' => ''),
 			'megamenu-google-fonts' 			=> array('false' => ''),
 			'megamenu-genericons' 				=> array('false' => ''),
 			'popup-maker-site' 					=> array('false' => ''),
 			'wpba_front_end_styles' 			=> array('false' => ''),
-			'image-lightbox-plugin'				=> array('singular' => 'post recipe' ),
-			'custom-lightbox'					=> array('singular' => 'post recipe' )
 		);
 
 
@@ -73,7 +73,7 @@ class CustomScriptsStylesEnqueue {
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
 
-		add_action( 'wp_enqueue_scripts', 	array($this, 'enqueue_high_priority_assets' ), 0);
+		add_action( 'wp_enqueue_scripts', 	array($this, 'enqueue_high_priority_assets' ), 15);
 		add_action( 'wp_enqueue_scripts', 	array($this, 'enqueue_low_priority_assets' ), 20);
 
 		add_action( 'wp_enqueue_scripts', 	array($this, 'enqueue_if'), PHP_INT_MAX);
@@ -143,7 +143,7 @@ class CustomScriptsStylesEnqueue {
 		/* Theme stylesheet with varying name & version, forces cache busting at browser level
 		--------------------------------------------------- */
 		$color_theme_handler = 'color-theme-' . CHILD_COLOR_THEME;
-		custom_enqueue_style( $color_theme_handler , $css_url, $css_path, $color_theme_handler . '.css', array(), CHILD_COLOR_THEME . CHILD_COLOR_THEME_VERSION );
+		custom_enqueue_style( $color_theme_handler , $css_url, $css_path, $color_theme_handler . '.css', array(), CHILD_COLOR_THEME . CHILD_THEME_VERSION );
 
 		/* Customized GDPR stylesheet 
 		--------------------------------------------------- */
@@ -213,8 +213,13 @@ class CustomScriptsStylesEnqueue {
 					break;	
 				case 'bp-page' :
 					if (!function_exists( 'bp_is_blog_page')) break;
-					$thismet = !bp_is_blog_page(); // buddypress page
+					$thismet = !bp_is_blog_page(); // buddypress page					
 					break;
+				// case 'social-page' :
+				// 	// if (!function_exists( 'bp_is_blog_page')) break;
+				// 	$thismet = is_peepso_page(); // buddypress page
+				// 	// $thismet = !bp_is_blog_page(); // buddypress page
+				// 	break;
 				case 'blog-page' :
 					if (!function_exists( 'bp_is_blog_page')) break;
 					$thismet = bp_is_blog_page(); //  wordpress page

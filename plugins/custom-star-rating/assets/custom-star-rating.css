@@ -15,11 +15,9 @@ td.rating-title {
 }
 
 .rating-wrapper {
-		padding:5px 0;
-		float:left;
-		clear:right;
-		overflow: hidden;
-		display: inline-block;
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: top;
 }
 
 .rating-input {
@@ -43,7 +41,7 @@ td.rating-title {
 		display: block;
 		width: 24px;
 		height: 24px;
-		background: url('images/rating-icons/rating-star.png') -24px 0/48px 24px no-repeat;
+		background: url('../images/rating-star.png') -24px 0/48px 24px no-repeat;
 }
 
 
@@ -114,7 +112,7 @@ td.rating-category {
 
 
 /* Font Icons Rating icons */
-
+/* 
 i.fi {
 	display:inline-block;
 	width:20px;
@@ -171,7 +169,7 @@ i.fi.fi-off:hover {
 
 i.fi.fi-half.fi-off {
 	background-position: 100% 0;
-}
+} */
 
 /* Rating star size */
 

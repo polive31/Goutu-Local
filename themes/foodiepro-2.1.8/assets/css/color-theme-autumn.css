@@ -165,9 +165,6 @@ input, select, textarea,
   background-color: transparent;
 }
 
-.progress-circle:after{
-	/*background-color: #ffffff!important;*/
-}
 
 /* Widgets with background
 -------------------------------------------- */
@@ -187,16 +184,6 @@ input, select, textarea,
 /* Widget themes
 -------------------------------------------- */
 
-.sidebar-primary .widget.themes {
-	/*border: 1px dashed #ccc;*/
-}
-
-.widget_nav_menu.themes ul li,
-.widget.themes ul li,
-.single .widget.themes ul li {
-	/*background-color:#e0dfdf;	*/
-}
-
 .single .widget.themes ul li:hover,
 .widget.themes ul li:hover,
 .widget.back ul li:hover {
@@ -205,12 +192,6 @@ input, select, textarea,
 
 .widget.themes ul li a {
 	color:#6b6b6b;
-}
-
-.widget.themes ul li.current-menu-item,
-.archive-pagination li.active {
-  /*background-color: #f7f7f7;
-  border-color:#000;*/
 }
 
 .widget.themes ul li.current-menu-item > a,

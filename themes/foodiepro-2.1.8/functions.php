@@ -22,7 +22,6 @@ define( 'CHILD_THEME_URL', get_stylesheet_directory_uri() );
 define( 'CHILD_THEME_PATH', get_stylesheet_directory() );
 
 define( 'CHILD_COLOR_THEME', 'christmas' ); // christmas, autumn, winter, summer
-define( 'CHILD_COLOR_THEME_VERSION', '1.1.0' ); // triggers browser cache flush
 
 define( 'PLUGINS_URL', plugins_url() );
 

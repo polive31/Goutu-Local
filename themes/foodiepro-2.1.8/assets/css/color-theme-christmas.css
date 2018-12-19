@@ -1,6 +1,3 @@
-/* Color theme :  White (default) 
---------------------------------------------- */
-
 .site-header {
 	background-position:top left, top right;
 	background-repeat:no-repeat;
@@ -30,15 +27,6 @@
 	background-size:cover;
 }
 
-/*.no-js .site-header,
-.no-webp .site-header {
-	background-image:url("../../images/theme/background-spring/background-l-small.jpg"),url("../../images/theme/background-spring/background-r-small.jpg");
-}
-*/
-/*.webp .site-header {
-	background-image:url("../../images/theme/background-spring/background-l-small.webp"),url("../../images/theme/background-spring/background-r-small.webp");
-}
-*/
 .foodie-pro .header-inner {
 	background-color: rgba(255, 255, 255, 0.7);
 }

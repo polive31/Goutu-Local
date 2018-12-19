@@ -10,7 +10,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 	public function __construct() {
 		parent::__construct();
 		
-		// Shortcodes
+		// Navigation shortcodes
 		// add_shortcode('index-link', array($this,'add_index_link')); 
 		// add_shortcode('tooltip', array($this,'output_tooltip')); 
 		add_shortcode('ct-terms-menu', array($this,'list_taxonomy_terms')); 
@@ -22,6 +22,8 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		add_shortcode('wp-page-link', array($this,'display_wordpress_page_link') );	
 		add_shortcode('taxonomy-terms', array($this,'simple_list_taxonomy_terms'));	
 
+		// Admin shortcodes
+		add_shortcode('post-count', array($this,'get_post_count'));
 
 		// Helpful shortcodes within recipes or posts
 		add_shortcode('permalink', array($this,'get_permalink'));
@@ -44,6 +46,34 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
     }
 
 	
+	/* Pending Posts Count
+	--------------------------------------------- */	
+	public function get_post_count( $atts ) {
+		//Let's not loose time if user doesn't have the rights
+		if( !current_user_can('editor') && !current_user_can('administrator') ) return;
+
+	    $atts = shortcode_atts( array(
+	        'status' => 'pending', //draft, publish, auto-draft, private, separated by " "
+	        'type' => 'post', //recipe
+		), $atts );
+		
+		$status = explode(' ', $atts['status']);
+
+		$args = array(
+			// 'author' => 1, // user ID here
+			// 'posts_per_page' => -1, // retrieve all
+			'post_type' => $atts['type'],
+			// 'post_status' => 'any' // any status
+			'post_status' => $status
+		);
+
+		$posts = get_posts( $args );
+			$html = (count($posts)>0)?'<span class="post-count-indicator">('.count($posts).')</span>':''; 
+
+		return $html;
+	}
+
+	
 	/* Share Title Output
 	--------------------------------------------- */		
 	public function display_share_title() {
@@ -56,6 +86,10 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		}
 		return $html;
 	}
+
+
+
+
 
 	/* =================================================================*/
 	/* = DEBUG SHORTCODE

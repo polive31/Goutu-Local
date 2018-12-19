@@ -90,8 +90,9 @@ class CustomPeepsoShortcodes {
         <!-- <div class="ps-widget--userbar__notifications"> -->
 		
 		<span class="dropdown-notification ps-js-notifications">
-			<a href="#" class="fa-bell mega-menu-link" title="Notifications en cours">
+			<a href="#" class="" title="Notifications en cours">
 				<div class="ps-bubble__wrapper">
+					<i class="fa fa-bell"></i>
 					<span class="js-counter ps-bubble ps-bubble--widget ps-js-counter" style="display:none"></span>
 				</div>
 			</a>

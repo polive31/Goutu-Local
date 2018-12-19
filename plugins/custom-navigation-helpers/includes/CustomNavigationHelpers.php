@@ -62,7 +62,6 @@ class CustomNavigationHelpers {
 	  	};
 	}
 
-
     public static function custom_categories_dropdown( $args, $options ) {
         // $args = array( 'taxonomy' => 'course');
         // This function generates a select dropdown list with option groups whenever
@@ -108,7 +107,7 @@ class CustomNavigationHelpers {
 	
 	public function archive_filter_sort($query) {
 	  // Select any archive. For custom post type use: is_post_type_archive( $post_type )
-	  //if (is_archive() || is_search() ): => ne pas utiliser car résultats de recherche non relevants
+	  //if (is_archive() || is_search() ): => ne pas utiliser car rï¿½sultats de recherche non relevants
 	  if ( !is_archive() ) return;
 			 
 		// Filter entries based on custom args

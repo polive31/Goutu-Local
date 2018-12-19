@@ -73,7 +73,7 @@ class CustomScriptsStylesEnqueue {
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
 
-		add_action( 'wp_enqueue_scripts', 	array($this, 'enqueue_high_priority_assets' ), 15);
+		add_action( 'wp_enqueue_scripts', 	array($this, 'enqueue_high_priority_assets' ), 10);
 		add_action( 'wp_enqueue_scripts', 	array($this, 'enqueue_low_priority_assets' ), 20);
 
 		add_action( 'wp_enqueue_scripts', 	array($this, 'enqueue_if'), PHP_INT_MAX);
@@ -92,20 +92,6 @@ class CustomScriptsStylesEnqueue {
 		add_filter( 'stylesheet_uri', 		array($this, 'enqueue_minified_theme_stylesheet'), 10, 1 );
 	}
 
-	public function conditionally_deactivate_lazyload() {
-		$profile = bp_is_profile_component();
-		$action1 = bp_is_current_action( 'change-avatar' ) ;
-		$action2 = bp_is_current_action( 'change-cover-image' );
-		if ( $profile && ($action1 || $action2) ) {
-			php_log( 'Rocket Lazyload deactivated ! ' );
-			add_filter( 'do_rocket_lazyload', '__return_false' );
-		}
-	}
-
-	public function rocket_lazyload_exclude_src( $src ) {
-		$src[] = 'images/theme';
-		return $src;
-	}
 
 	/*  SCRIPTS & STYLES TO BE ENQUEUED UNCONDITIONALLY
 	/* ----------------------------------------------------------------*/
@@ -131,7 +117,6 @@ class CustomScriptsStylesEnqueue {
 
 		wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Oswald|Vollkorn:300,400', array(), CHILD_THEME_VERSION );
 		custom_enqueue_style( 'child-theme-fonts', $css_url, $css_path, 'fonts.css', array( 'foodie-pro-theme' ), CHILD_THEME_VERSION );
-
 	}
 
 	public function enqueue_low_priority_assets() {

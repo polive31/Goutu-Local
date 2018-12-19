@@ -6,12 +6,12 @@ if ( !defined('ABSPATH') )
 
 
 // Creating the widget 
-class Recipe_Taxonomy_Accordion_Widget extends WP_Widget {
+class Recipe_Taxonomy_Accordion extends WP_Widget {
 
 	function __construct() {
 		parent::__construct(
 			// Base ID of your widget
-			'recipe_taxonomy_accordion_widget', 
+			'Recipe_Taxonomy_Accordion', 
 			// Widget name will appear in UI
 			__('Recipe Taxonomies Accordion widget', 'foodiepro'), 
 			// Widget description
@@ -142,7 +142,7 @@ class Recipe_Taxonomy_Accordion_Widget extends WP_Widget {
 // Register and load the widget
 add_action( 'widgets_init', 'wpb_load_widget_accordion_taxonomy' );
 function wpb_load_widget_accordion_taxonomy() {
-	register_widget( 'recipe_taxonomy_accordion_widget' );
+	register_widget( 'Recipe_Taxonomy_Accordion' );
 }
 
 

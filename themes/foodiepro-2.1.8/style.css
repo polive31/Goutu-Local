@@ -805,7 +805,7 @@ p.wp_widget_plugin_textarea {
 	padding:10px;
 }
 
-/* Nav Menu Widget */
+/* Nav menu Widget */
 
 .widget_nav_menu.no-current li.current-menu-item {
 	display:none;
@@ -1122,8 +1122,13 @@ Structure and Layout
 }
 
 
-/* Menus
+/* menus
 --------------------------------------------- */
+
+/* Highlight pending posts */
+.post-count-indicator {
+	color:red;
+}
 
 /* Mon Goûtu image menu */
 .img-menu {
@@ -1175,7 +1180,7 @@ Structure and Layout
 }
 
 
-/* PC SCREEN MENU */
+/* PC SCREEN menu */
 
 /* nav.nav-secondary { */
 /*    padding: 10px 0 0px 0;
@@ -1259,7 +1264,7 @@ span.bp_counter {
 }
 
 
-/* TOGGLE MENU RESPONSIVE */
+/* TOGGLE menu RESPONSIVE */
 
 /* Counters */
 
@@ -1809,7 +1814,7 @@ form[role="search"] {
 .widget.text-align-justify .textwidget {
 	text-align:justify;
 }
-/* Menu 
+/* menu 
 --------------------------------------------- */
 
 .widget_nav_menu li.highlight {
@@ -1833,7 +1838,7 @@ form[role="search"] {
 	padding: 0;                   
 }
 
-/* Menu bubbles 
+/* menu bubbles 
 --------------------------------------------- */
 
 .widget.bubbles {
@@ -1871,7 +1876,7 @@ form[role="search"] {
 }
 
 
-/* Menu themes 
+/* menu themes 
 --------------------------------------------- */
 
 .recipes-top .widget.themes, 
@@ -2052,7 +2057,7 @@ a#swipebox-close:hover {
 }
 
 
-/* Taxonomies/Tags Accordion Menu
+/* Taxonomies/Tags Accordion menu
 --------------------------------------------- */
 .tax-container {
     margin-bottom: 10px;

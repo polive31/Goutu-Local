@@ -352,7 +352,6 @@ class Custom_WPURP_Ingredient {
 			unset($this->ingredient_meta['isplural']);
 	}
 
-
-
-
 }
+
+new Custom_WPURP_Ingredient();

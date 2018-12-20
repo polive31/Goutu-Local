@@ -208,7 +208,7 @@ class Custom_Recipe_Metadata {
         }
         $occasion = wp_get_post_terms( $recipe->ID(), 'occasion', array( 'fields' => 'names' ) );
         if( !is_wp_error( $occasion ) ) {
-            $metadata['keywords'] .= implode(',',$occasion) . ',';
+            $metadata['keywords'] .= implode(',', $occasion) . ',';
         }        
         $tag = wp_get_post_terms( $recipe->ID(), 'post_tag', array( 'fields' => 'names' ) );
         if( !is_wp_error( $tag ) ) {

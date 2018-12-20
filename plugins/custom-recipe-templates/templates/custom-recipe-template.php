@@ -1,5 +1,10 @@
 		<!-- Class .wpurp-container important for adjustable servings javascript -->	
 		<div class="recipe wpurp-container" id="wpurp-container-recipe-<?php echo $recipe->ID(); ?>" data-id="<?php echo $recipe->ID(); ?>" data-permalink="<?php echo $recipe->link(); ?>" data-servings-original="<?php echo $recipe->servings_normalized(); ?>">
+			
+			<div class="share-buttons">
+				<?php echo do_shortcode('[social-sharing-buttons target="recipe" class="small bubble"]'); ?>
+			</div>
+			
 			<!-- Recipe description -->
 			<div class="recipe-container" id="intro">
 				<?php
@@ -33,7 +38,7 @@
 					<!-- Add To Favorites Button -->
 					<div class="recipe-button alignleft tooltip <?php echo is_user_logged_in()?'':'disabled';?>" id="favorite">
 					<?php
-						$favorite_recipe = new Custom_Recipe_Favorite( is_user_logged_in() );
+						$favorite_recipe = new Custom_Recipe_Favorite();
 						echo $favorite_recipe->output( $recipe );?>
 					</div>			
 
@@ -41,7 +46,8 @@
 					<div class="recipe-button alignleft tooltip" id="like">
 					<?php
 						$recipe_like = new Custom_Social_Like_Post( 'recipe' );
-						echo $recipe_like->display('above','center');?>
+						$recipe_like->display('above','center');
+						?>
 					</div>
 					
 					
@@ -57,7 +63,7 @@
 					</div>	
 					
 					<!-- Recipe Share Button -->
-					<div class="recipe-button alignright tooltip" id="share">
+					<!-- <div class="recipe-button alignright tooltip" id="share">
 						<a class="recipe-share-button" id="recipe-share" cursor-style="pointer">
 							<div class="button-caption"><?php echo __('Share','foodiepro'); ?></div>
 						</a> 
@@ -66,7 +72,7 @@
 							
 							Tooltip::display( $share, 'above', 'left', 'transparent large'); 
 							?>  
-					</div>				
+					</div>				 -->
 					
 					<!-- Recipe Read Button -->
 					<div class="recipe-button alignright tooltip" id="read">
@@ -78,8 +84,12 @@
 						?>	
 					</div>						
 				</div>
+
 				
 			</div>
+
+
+
 			
 			<!-- Image + recipe info -->
 			<div class="recipe-container"  id="image">

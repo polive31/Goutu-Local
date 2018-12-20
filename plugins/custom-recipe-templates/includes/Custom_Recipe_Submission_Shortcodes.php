@@ -89,6 +89,6 @@ class Custom_Recipe_Submission_Shortcodes extends Custom_WPURP_Recipe_Submission
         return $output;
     }
 
-
-
 }
+
+new Custom_Recipe_Submission_Shortcodes();

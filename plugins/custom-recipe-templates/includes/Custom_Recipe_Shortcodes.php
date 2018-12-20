@@ -8,7 +8,7 @@ class Custom_Recipe_Shortcodes extends Custom_WPURP_Templates {
     public static $id;    
     
     public function __construct() {
-        parent::__construct();
+        // parent::__construct();
         add_shortcode( 'display-recipe', array( $this, 'recipe_shortcode' ) );
 
         // Customize recipe timer shortcode
@@ -133,7 +133,6 @@ class Custom_Recipe_Shortcodes extends Custom_WPURP_Templates {
         return $timer;
     } 
 
-
-
-
 }
+
+new Custom_Recipe_Shortcodes();

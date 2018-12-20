@@ -21,33 +21,27 @@ function Custom_WPURP_templates_init() {
 	
 	if ( class_exists('WPUltimateRecipe') ) {
 
-		/* Includes
+		/* Includes (contain actions & filters, class loaded at startup)
 		------------------------------------*/
+		require_once 'includes/Custom_WPURP_Assets.php';
 		require_once 'includes/Custom_WPURP_Templates.php';
-		require_once 'includes/Custom_WPURP_Recipe.php';
 		require_once 'includes/Custom_WPURP_Recipe_Submission.php';
 		require_once 'includes/Custom_WPURP_Ingredient.php';
-
-		/* Helpers
+		require_once 'includes/Custom_Recipe_Shortcodes.php';
+		require_once 'includes/Custom_Recipe_Submission_Shortcodes.php';
+		
+		/* Helpers (class loaded on demand=)
 		------------------------------------*/
+		require_once 'helpers/Custom_WPURP_Recipe.php';
 		require_once 'helpers/Custom_Recipe_Metadata.php';
 		require_once 'helpers/Custom_Recipe_Favorite.php';
 		require_once 'helpers/Custom_Recipe_Add_To_Shopping_List.php';
-		require_once 'helpers/Custom_Recipe_Shortcodes.php';
-		require_once 'helpers/Custom_Recipe_Submission_Shortcodes.php';
 
-		/* Helpers
+		/* Widgets
 		------------------------------------*/
 		require_once 'widgets/custom_recipe_list_widget.php';
 		require_once 'widgets/custom_nutrition_label_widget.php';
 
-		new Custom_WPURP_Templates();
-		new Custom_WPURP_Ingredient();
-		
-		new Custom_Recipe_Shortcodes();
-		
-		new Custom_WPURP_Recipe_Submission();
-		new Custom_Recipe_Submission_Shortcodes();
 
 	}
 

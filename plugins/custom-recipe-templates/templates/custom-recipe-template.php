@@ -1,19 +1,16 @@
 		<!-- Class .wpurp-container important for adjustable servings javascript -->	
 		<div class="recipe wpurp-container" id="wpurp-container-recipe-<?php echo $recipe->ID(); ?>" data-id="<?php echo $recipe->ID(); ?>" data-permalink="<?php echo $recipe->link(); ?>" data-servings-original="<?php echo $recipe->servings_normalized(); ?>">
 			
-			<div class="share-buttons">
-				<?php echo do_shortcode('[social-sharing-buttons target="recipe" class="small bubble"]'); ?>
-			</div>
+		
+		<!-- Recipe description -->
+		<div class="recipe-container" id="intro">
+			<?php echo $recipe->output_description();?>	
+		</div>
 			
-			<!-- Recipe description -->
-			<div class="recipe-container" id="intro">
-				<?php
+		<div class="share-buttons">
+			<?php echo do_shortcode('[social-sharing-buttons target="recipe" class="small bubble"]'); ?>
+		</div>
 
-				echo $recipe->output_description();
-				
-				?>	
-			</div>
-				
 			<!-- Function buttons  -->
 			<div class="recipe-top">
 					<div class="recipe-buttons">
@@ -39,6 +36,7 @@
 					<div class="recipe-button alignleft tooltip <?php echo is_user_logged_in()?'':'disabled';?>" id="favorite">
 					<?php
 						$favorite_recipe = new Custom_Recipe_Favorite( is_user_logged_in() );
+						// $favorite_recipe = new Custom_Recipe_Favorite();
 						echo $favorite_recipe->output( $recipe );?>
 					</div>			
 

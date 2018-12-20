@@ -38,7 +38,7 @@
 					<!-- Add To Favorites Button -->
 					<div class="recipe-button alignleft tooltip <?php echo is_user_logged_in()?'':'disabled';?>" id="favorite">
 					<?php
-						$favorite_recipe = new Custom_Recipe_Favorite();
+						$favorite_recipe = new Custom_Recipe_Favorite( is_user_logged_in() );
 						echo $favorite_recipe->output( $recipe );?>
 					</div>			
 

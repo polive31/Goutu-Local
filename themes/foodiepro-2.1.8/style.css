@@ -411,6 +411,12 @@ input::-moz-focus-inner {
 	padding:0;
 }
 
+button.cancel {
+    background: none;
+    color: #585858;
+    border: 1px solid #ccc;
+}
+
 input {
 	line-height:normal;
 }
@@ -2263,25 +2269,6 @@ span.ui-icon.ui-icon-triangle-1-s:before {
     background-size: contain;
 }
 
-/* Mashshare 
-----------------------------------------------*/
-
-.mashsb-container {
-  float:left;
- 	width:100%;
-	padding-top: 0px!important;
-	padding-bottom: 0!important; 
-}
-
-.mashsb-stretched .mashsb-buttons {
-    display: initial!important;
-}
-
-.mashsb-count,
-.mashsb-buttons span.text,
-.mashsb_below_buttons {
-    display: none!important;
-}
 
 /* Cookie Notice
 ----------------------------------------------*/
@@ -2399,12 +2386,12 @@ a.wpurp-recipe-print:before {
 	content:"\f02f"; /* fa-print */
 }
 
-a.wpurp-recipe-favorite:before {
+a.custom-recipe-favorite:before {
 	content:"\f08a"; /* fa-heart-o */
 	content:"\f097"; /* fa-bookmark-o */
 }
 
-a.wpurp-recipe-favorite.is-favorite:before {
+a.custom-recipe-favorite.is-favorite:before {
 	content:"\f004"; /* fa-heart */
 	content:"\f02e"; /* fa-bookmark */
 }

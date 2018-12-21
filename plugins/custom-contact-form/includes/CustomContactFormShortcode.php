@@ -10,27 +10,30 @@ class CustomContactFormShortcode extends CustomContactForm {
 	const LINEBREAK = '%0D%0A%0D%0A';
 
 	public function __construct() {
-		add_action( 'wp_enqueue_scripts', array($this, 'enqueue_contact_scripts' ) );
-		add_shortcode('custom-contact-form', array($this, 'output_contact_form'));			
+		// add_action( 'wp_enqueue_scripts', array($this, 'enqueue_contact_scripts' ) );
+		add_shortcode( 'custom-contact-form', array($this, 'output_contact_form' ) );			
 	}
 
-	public function enqueue_contact_scripts() {
-		global $post;
-		if ( !has_shortcode( $post->post_content, 'custom-contact-form'  ) ) return;
+	// public function enqueue_contact_scripts() {
+	// 	global $post;
+	// 	if ( !has_shortcode( $post->post_content, 'custom-contact-form'  ) ) return;
 
-		// $js_uri = CCF_URI . '/assets/js/';
-		// $js_path = CCF_PATH . '/assets/js/';
-		// custom_enqueue_script( 'contact-form', $js_uri, $js_path, 'contact-form.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
+	// 	// $js_uri = CCF_URI . '/assets/js/';
+	// 	// $js_path = CCF_PATH . '/assets/js/';
+	// 	// custom_enqueue_script( 'contact-form', $js_uri, $js_path, 'contact-form.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
 
-		if (class_exists('CustomGoogleRecaptcha'))
-			new CustomGoogleRecaptcha(); // makes sure that the related plugin assets are loaded
+	// 	if (class_exists('CustomGoogleRecaptcha'))
+	// 		new CustomGoogleRecaptcha(); // makes sure that the related plugin assets are loaded
 
-	}
+	// }
 
-	public function output_contact_form () {
-		$args = shortcode_atts( array(
-	        'arg' => 'value',
-	    ), $args );
+	public function output_contact_form ( $atts ) {
+		$atts = shortcode_atts( array(
+	        // 'arg' => 'value',
+	    ), $atts );
+
+		// wp_enqueue_script( 'g-recaptcha' );
+		CustomGoogleRecaptcha::enqueue_scripts();
 
 	    ob_start();
 	    $this->ccf_output_form();

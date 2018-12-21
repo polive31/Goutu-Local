@@ -16,18 +16,20 @@ class CustomGoogleRecaptcha {
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
 		
-		add_action('wp_enqueue_scripts', array($this, 'enqueue_recaptcha_script'));
-		$this->enqueue_recaptcha_script(); // Makes sure the script is enqueued if class is created at wp_enqueue_scripts hook time
-		
+		add_action('wp_enqueue_scripts', array($this, 'register_recaptcha_script'));
 		add_shortcode('g-recaptcha', array($this,'display_google_recaptcha')); 
 	}
 
-	public function enqueue_recaptcha_script() {
+	public function register_recaptcha_script() {
 		// $js_uri = self::$PLUGIN_URI . '/assets/js/';
 		// $js_path = self::$PLUGIN_PATH . '/assets/js/';
 		// custom_enqueue_script( 'g-recaptcha', $js_uri, $js_path, 'contact-form.js', array(), CHILD_THEME_VERSION, true);
 		
-		wp_enqueue_script( 'g-recaptcha', 'https://www.google.com/recaptcha/api.js', array(), '1.0.0' );
+		wp_register_script( 'g-recaptcha', 'https://www.google.com/recaptcha/api.js', array(), '1.0.0' );
+	}
+	
+	public static function enqueue_scripts() {
+		wp_enqueue_script( 'g-recaptcha' );
 	}
 
 	public function verify() {
@@ -65,4 +67,6 @@ class CustomGoogleRecaptcha {
 
 
 }
+
+new CustomGoogleRecaptcha();
 

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2018-12-22 19:55+0100\n"
-"PO-Revision-Date: 2018-12-22 21:05+0100\n"
+"POT-Creation-Date: 2018-12-22 21:51+0100\n"
+"PO-Revision-Date: 2018-12-22 21:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -195,7 +195,7 @@ msgstr ""
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:105
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:106
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:79
-#: plugins/custom-recipe-templates/widgets/custom_postlist_dropdown_widget.php:70
+#: plugins/custom-recipe-templates/widgets/custom_postlist_dropdown_widget.php:68
 #: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:47
 msgid "New title"
 msgstr ""
@@ -216,7 +216,7 @@ msgstr ""
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:115
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:83
 #: plugins/custom-recipe-templates/widgets/custom_nutrition_label_widget.php:60
-#: plugins/custom-recipe-templates/widgets/custom_postlist_dropdown_widget.php:74
+#: plugins/custom-recipe-templates/widgets/custom_postlist_dropdown_widget.php:72
 #: plugins/custom-recipe-templates/widgets/custom_recipe_list_widget.php:101
 #: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:51
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/widgets/nutrition_label_widget.php:52
@@ -1039,28 +1039,28 @@ msgstr "<strong>Recettes à essayer</strong>"
 msgid "In my <a href=\"%s\">wishlist</a>"
 msgstr "Disponible dans <a href=\"%s\">mes recettes à essayer</a>"
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:76
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:39
+msgid "Remove from favorites"
+msgstr "Retirer de mon carnet"
+
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:40
 #, php-format
 msgid "Add to my <a href=\"%s\">favorites</a>"
 msgstr "Ajouter à mon <a href=\"%s\">carnet de recettes </a>"
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:89
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:84
 msgid "Cookbook"
 msgstr "Carnet"
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:144
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:142
 msgid "Choose a list :"
 msgstr "Choisir une liste :"
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:162
-msgid "Remove from favorites"
-msgstr "Retirer de mon carnet"
-
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:168
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:159
 msgid "OK"
 msgstr ""
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:169
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:160
 #: plugins/custom-star-rating/includes/CustomStarRatingsShortcodes.php:73
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:79
 #: plugins/wp-ultimate-recipe-premium/core/vendor/vafpress/classes/shortcodegenerator.php:264
@@ -1094,12 +1094,11 @@ msgstr ""
 "publication. Vous pouvez toujours modifier leur contenu, leur visibilité "
 "(privé, amis, groupes, public), ou bien aussi les supprimer."
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Submission_Shortcodes.php:78
-#: plugins/wp-ultimate-recipe-premium/premium/addons/favorite-recipes/favorite-recipes.php:87
-msgid "You don't have any favorite recipes."
-msgstr "Aucune recette favorite dans votre carnet."
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Submission_Shortcodes.php:84
+msgid "No recipes found."
+msgstr "Aucune recette trouvée."
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Submission_Shortcodes.php:102
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Submission_Shortcodes.php:103
 #: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:510
 msgid "You can edit your recipe here, before submitting it."
 msgstr ""
@@ -1136,17 +1135,17 @@ msgstr "Continuer la lecture"
 msgid "Stop reading and close player"
 msgstr "Arrêter la lecture et fermer le lecteur"
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Assets.php:340
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Assets.php:338
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:65
 msgid "Are you sure you want to delete this recipe:"
 msgstr "Etes vous sûr de vouloir supprimer cette recette :"
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Assets.php:447
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Assets.php:445
 #, php-format
 msgid "Authorized file formats are : %s"
 msgstr "Les formats de fichier autorisés sont : %s"
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Assets.php:449
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Assets.php:447
 #, php-format
 msgid "The maximum file size is %s kB"
 msgstr "La taille du fichier doit être inférieure à %s Ko."
@@ -6334,6 +6333,10 @@ msgstr ""
 #: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:498
 msgid "None"
 msgstr ""
+
+#: plugins/wp-ultimate-recipe-premium/premium/addons/favorite-recipes/favorite-recipes.php:87
+msgid "You don't have any favorite recipes."
+msgstr "Aucune recette favorite dans votre carnet."
 
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-cooked/import-cooked.php:26
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-cooked/import-cooked.php:38

@@ -66,22 +66,23 @@ class Custom_Recipe_Submission_Shortcodes extends Custom_WPURP_Recipe_Submission
             $lists = $Favs->get_lists();
         }
         else
-            $lists = array( 0=>$lists );
+            $lists = array( 0 =>$lists );
 
+        $empty=true;
         foreach ($lists as $list) {
             $favorites = get_user_meta( $user_id, $Favs->get_meta_name($list), true );
             $favorites = is_array( $favorites ) ? $favorites : array();
 
             $recipes = empty( $favorites ) ? array() : WPUltimateRecipe::get()->query()->ids( $favorites )->order_by('name')->order('ASC')->get();
 
-            if( count( $favorites ) == 0 || count( $recipes ) == 0 ) {
-                $output .= '<p class="submitbox">' . __( "You don't have any favorite recipes.", 'wp-ultimate-recipe' ) . '</p>';
-            } else {
-                // $output .= '<p>' . __('Here is the list of the recipes that you bookmarked.', 'foodiepro') . '</p>';
+            if( count( $favorites ) > 0 ) {
+                $empty=false;
                 $output .= $this->display_recipes( $recipes, false, $Favs->get_label($list) );
             }
         }
-
+        if ($empty)
+            $output .= '<div class="submitbox">' . __( "No recipes found.", 'foodiepro' ) . '</p>';
+        
         return $output;
     }
 

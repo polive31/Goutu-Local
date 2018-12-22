@@ -43,10 +43,6 @@
 	overflow: hidden;	
 }
 
-.tooltip-content.form .wrap {
-	padding: 7px 40px 5px 20px;
-}
-
 .tooltip-content.yellow .wrap {
 	border:1px solid #DCA;
 	background:#fffAF0;

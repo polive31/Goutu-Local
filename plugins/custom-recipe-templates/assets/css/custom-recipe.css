@@ -63,11 +63,18 @@ span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
 /* Recipe toolbar : 
 -------------------------------------------------*/
 
-#favorite-form span.favorite-icon {
-    position: absolute;
-    right: 10px;
-    /* text-align: center; */
-    /* padding: 0 2px; */
+.tooltip-content.form .wrap {
+	padding: 10px 60px 5px 20px;
+}
+
+
+span.favorite-icon {
+	position: absolute;
+	right: 10px;
+    font-size: 20px;
+    width: 25px;
+    text-align: center;
+    color: #5a5a5a;
 }
 
 

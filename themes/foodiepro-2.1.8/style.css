@@ -2063,6 +2063,16 @@ form[role="search"] {
     font-weight: bold;
 }
 
+.news-container li .scrollercontent,
+.news-container li .newsscroller_title {
+	opacity: 0.2;
+	transition:all 500ms;
+}
+
+.news-container li:first-of-type .scrollercontent,
+.news-container li:first-of-type .newsscroller_title {
+	opacity: 1;
+}
 
 /* Query Monitor workaround */
 

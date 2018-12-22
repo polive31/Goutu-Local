@@ -20,24 +20,32 @@ function addToFavoritesCancel(elemnt) {
     
 function addToFavoritesUpdate(elemnt) {
 
-  console.log('In addToFavorites function');
+  // console.log('In addToFavorites function');
   var tooltipForm = jQuery(elemnt).parents('.tooltip-content');
   var tooltipTarget = jQuery(elemnt).parents('.tooltip-content').siblings('.tooltip-target');
   
-  console.log('tooltipTarget : ', tooltipTarget);
+  // console.log('tooltipTarget : ', tooltipTarget);
   openCloseTooltip( tooltipForm );
+  tooltipTarget.siblings('.tooltip-content.hover').addClass('nohover');
+  tooltipTarget.siblings('.tooltip-content.hover').removeClass('hover');
   
   //console.log('Tooltip %0', tooltip);
   
   var listChoice = tooltipForm.find("input:radio[name ='favlist']:checked");
+  // console.log( 'chosen option : ' + listChoice.val());
+
+  // console.log( 'icon in : ' + custom_favorite_recipe.icon_in );
+  // console.log( 'icon out : ' + custom_favorite_recipe.icon_out );
+  // console.log('icon container : ' + tooltipTarget.children('.button-icon').html() );
   
-  console.log( 'chosen option : ' + listChoice.val());
-  if ( listChoice.val()=='remove' ) {
+  if ( listChoice.val()=='no' ) {
     // Activate shopping list button
     tooltipTarget.removeClass('is-favorite');
+    // tooltipTarget.children('.button-icon').html(custom_favorite_recipe.icon_out);
   }
   else {
     tooltipTarget.addClass('is-favorite');
+    // tooltipTarget.children('.button-icon').html(custom_favorite_recipe.icon_in);
   }
 
   var data = {
@@ -47,18 +55,25 @@ function addToFavoritesUpdate(elemnt) {
     choice: listChoice.val(),
   };
 
-  console.log('data.action : '+data.action);
-  console.log('data.security : ' + data.security);
-  console.log('data.recipe_id : ' + data.recipe_id);
-  console.log('ajax URL : ' + custom_favorite_recipe.ajaxurl);
+  // console.log('data.action : '+data.action);
+  // console.log('data.security : ' + data.security);
+  // console.log('data.recipe_id : ' + data.recipe_id);
+  // console.log('ajax URL : ' + custom_favorite_recipe.ajaxurl);
 
   jQuery.post(
-      custom_favorite_recipe.ajaxurl, 
-      data, 
-      function(response) {
-        console.log('Add to Favorites AJAX call completed');
-        console.log('Response : ' + response);
-        }
+    custom_favorite_recipe.ajaxurl, 
+    data, 
+    function(response) {
+      // console.log('Add to Favorites AJAX call completed');
+      // console.log('Response : ' + response.text);
+      // console.log('Icon : ' + response.icon);
+      // tooltipTarget.children('.button-icon').html( response.icon );
+      tooltipTarget.children('.button-icon').html( response.icon );
+      tooltipTarget.siblings('.tooltip-content.nohover').children('.wrap').html( response.text );
+      tooltipTarget.siblings('.tooltip-content.nohover').addClass('hover');
+      tooltipTarget.siblings('.tooltip-content.nohover').removeClass('nohover');
+    },
+    'json', 
   );
 
 }  

@@ -19,6 +19,8 @@ class Custom_WPURP_Assets {
 
 	protected $custom_enqueued_scripts = array();
 	protected $custom_enqueued_styles = array();
+	protected $custom_registered_scripts = array();
+	protected $custom_registered_styles = array();
 
 	public function __construct() {
 	
@@ -31,6 +33,7 @@ class Custom_WPURP_Assets {
 
 		/* Custom enqueue list */
 		add_action( 'wp_enqueue_scripts', array($this, 'custom_wpurp_scripts_styles_enqueue') );		
+		add_action( 'wp_enqueue_scripts', array($this, 'custom_wpurp_scripts_styles_register') );		
 	}
 
 /********************************************************************************
@@ -116,22 +119,36 @@ class Custom_WPURP_Assets {
 		elseif ( is_page( [self::RECIPES_LIST_SLUG] ) ) {
 			$css_enqueue=array();
 						
-			$this->custom_enqueued_styles=array(
-				array(
-					'url' =>  self::$_PluginUri . 'assets/css/',
-					'path' =>  self::$_PluginPath . 'assets/css/',
-					'file' => 'custom-post-list.css',
-					'public' => true,
-					'direct' => true,
-				),
-			);						
+			// $this->custom_registered_styles=array(
+			// 	array(
+			// 		'url' =>  self::$_PluginUri . 'assets/css/',
+			// 		'path' =>  self::$_PluginPath . 'assets/css/',
+			// 		'file' => 'custom-post-list.css',
+			// 		'public' => true,
+			// 		'direct' => true,
+			// 	),
+			// );						
 		}
 		else 
 		  $css_enqueue=array();
+
+		// Styles to be registered, and enqueued later in dedicated shortcodes
+		$this->custom_registered_styles=array(
+			array(
+				'name' => 'custom-post-list',
+				'url' =>  self::$_PluginUri . 'assets/css/',
+				'path' =>  self::$_PluginPath . 'assets/css/',
+				'file' => 'custom-post-list.css',
+				'public' => true,
+				'direct' => true,
+			),
+		);			  
 			
 		//echo '<pre style="margin-top:200px">' . print_r($css_enqueue,true) . '</pre>';
 		return $css_enqueue;
 	}
+
+
 
 
 /********************************************************************************
@@ -438,6 +455,30 @@ class Custom_WPURP_Assets {
 			}
 			
 		return $js_enqueue;
+	}
+
+
+/********************************************************************************
+****                GENERAL REGISTER FUNCTIONS                          *********
+********************************************************************************/
+
+	public function custom_wpurp_scripts_styles_register() {
+
+		// Register Styles
+		if ( $this->custom_registered_styles != array() ) {
+			foreach ( $this->custom_registered_styles as $key=>$style) {
+				$handler = isset($style['name'])?$style['name']:'custom_wpurp_style_' . $key;
+				// $handler = (null !== $script(['name']))?$script(['name']):'custom_wpurp_' . $key;
+				$url = isset($style['url'])?$style['url']:'';
+				$path = isset($style['path'])?$style['path']:'';
+				$file = isset($style['file'])?$style['file']:'';
+				$deps = isset($style['deps'])?$style['deps']:'';
+				$media = isset($style['media'])?$style['media']:'all';
+				// $version = self::CUSTOM_WPURP_TEMPLATES_VERSION;
+				$version = CHILD_THEME_VERSION;
+				custom_register_style( $handler, $url, $path, $file, $deps, $version, $media );
+	  		}
+		}		
 	}
 
 

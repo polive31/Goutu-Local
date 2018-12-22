@@ -371,9 +371,9 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		$index_path = $atts['index_path'];
 		$option_none_msg = $atts['option_none_msg'];
 		
-/* arguments for function wp_list_categories
-------------------------------------------------------------------------*/
-	// Source taxonomy
+		/* arguments for function wp_list_categories
+		------------------------------------------------------------------------*/
+		// Source taxonomy
 		$all_url='#';
 		
 		$obj = get_queried_object();
@@ -391,7 +391,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		
 		$hierarchical=0;	
 		$depth=0;	
-	// Output taxonomy and parent term			
+		// Output taxonomy and parent term			
 		if ($tax_slug == 'cuisine') { // $tax_slug will stay cuisine
 			if ($obj->parent != 0) // term has a parent => either country or region archive
 				$child_of = $obj->parent; // wp_list_categories will use parent to filter
@@ -406,7 +406,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		}
 	
 
-	// Arguments for wp_dropdown_categories	/ wp_dropdown_users
+		// Arguments for wp_dropdown_categories	/ wp_dropdown_users
 		$args = array( 
 			'taxonomy'			=> $tax_slug,
 			'child_of'			=> $child_of,
@@ -436,47 +436,21 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 			$args['value_field'] = 'slug';
 			
 			$html .= $author?wp_dropdown_users( $args ):wp_dropdown_categories( $args );
-				
-			ob_start();
-			?>
-			
-			<script type='text/javascript'>
-				/* <![CDATA[ */
-				(function() {
-					var dropdown_<?php echo $dropdown_id;?> = document.getElementById( "<?php echo esc_js( $dropdown_id );?>" );
-					function on_<?php echo $dropdown_id;?>_Change() {
-						var choice = dropdown_<?php echo $dropdown_id;?>.options[ dropdown_<?php echo $dropdown_id;?>.selectedIndex ].value;
-						if ( choice !="none" ) {<?php echo 'location.href = "' . home_url() . '/?' . $tax_slug . '=" + choice'; ?>}
-						if ( choice =="0" ) {location.href = "<?php echo $all_url;?>";}
-					}
-					dropdown_<?php echo $dropdown_id;?>.onchange = on_<?php echo $dropdown_id;?>_Change;
-				})();
-				/* ]]> */
-			</script>
-			
-			<?php
-			$html .= ob_get_contents();
-	    ob_end_clean();
-
+			$html .= $this->get_dropdown_js($dropdown_id);
 		}
-		
 		else {
 
 		 	$html = '<ul class="menu" id="accordion">';
 		 	// wrap it in unordered list 
-
 			$html .= wp_list_categories($args);	
-
-			if ($index_title!='')
+			if ($index_title!='') {		
 				$html .= '<li class="ct-index-url"> <a class="back-link" href="' . site_url($index_path) . '">' . $index_title . '</a></li>';
+			}
 		 
 		 	$html .= '</ul>';
-			
 		}
-
-	 // Return the output
+		//  Return the output
 	 	return $html;
-	 
 	}
 
 
@@ -538,6 +512,32 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
   	$url=wp_registration_url();
     if ($html) return '<a href=' . $url . '>' . $text . $content . '</a>';
     else return $url;
+	}
+
+
+	public function get_dropdown_js($id) {
+		ob_start();
+		?>
+		
+		<script type='text/javascript'>
+			/* <![CDATA[ */
+			(function() {
+				var dropdown_<?= $id;?> = document.getElementById( "<?= esc_js( $id );?>" );
+				function on_<?= $id; ?>_Change() {
+					var choice = dropdown_<?= $id;?>.options[ dropdown_<?= $id;?>.selectedIndex ].value;
+					if ( choice !="none" ) {location.href = "<?= home_url(); ?>/?<?= $tax_slug; ?>=" + choice};
+					if ( choice =="0" ) {location.href = "<?= $all_url; ?>"};
+				}
+				dropdown_<?= $id;?>.onchange = on_<?= $id;?>_Change;
+			})();
+			/* ]]> */
+		</script>
+		
+		<?php
+		$js .= ob_get_contents();
+		ob_end_clean();
+
+		return $js;
 	}
 
 

@@ -4,8 +4,8 @@
 -------------------------------------------*/
 table.custom-recipe-list {
     width: 100%;
-    border-top: 1px solid #bebebe;
-    margin-top: 50px;   
+    /* border-top: 1px solid #bebebe;
+    margin-top: 50px;    */
 }
 
 table.custom-recipe-list td {

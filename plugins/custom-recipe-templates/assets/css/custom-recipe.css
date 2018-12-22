@@ -521,6 +521,11 @@ span#wpurp-timer-remaining {
 ---------------------------------------------------*/
 
 @media only screen and (max-width:570px) {
+
+	.tooltip:hover .tooltip-content.hover, 
+	.tooltip-content.hover:hover {
+		display: none;
+	}
 	
 	.image-container,
 	.info-container,

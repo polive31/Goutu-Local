@@ -11,7 +11,7 @@ class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
 
     private $class_id='custom-recipe-favorite tooltip-target';
     private $logged_in;
-    private $link_id;
+
     private $editorField = 'favoriteRecipe';
 
     private static $FAVLISTS = array();
@@ -21,72 +21,75 @@ class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
         // parent::__construct( $type );
         // self::$_PluginPath = plugin_dir_url( dirname( __FILE__ ) );
                 // Ajax
-        add_action( 'wp_ajax_custom_favorite_recipe', array( $this, 'ajax_favorite_recipe' ) );
-        add_action( 'wp_ajax_nopriv_custom_favorite_recipe', array( $this, 'ajax_favorite_recipe' ) );
-
         self::$FAVLISTS=array(
             'favorites' => array(
                 'meta' => 'wpurp_favorites',
                 'icon' => '<i class="fa fa-heart"></i>',
                 'label' => __('<strong>My favorite recipes</strong>','foodiepro'),
+                'tooltip-in' => __('In my <a href="%s">favorites</a>','foodiepro'),
             ),
             'wishlist' => array(
                 'meta' => 'wpurp_favorites_wishlist',
                 'icon' => '<i class="fa fa-thumb-tack"></i>',
                 'label' => __('<strong>Recipes wish list</strong>','foodiepro'),
+                'tooltip-in' => __('In my <a href="%s">wishlist</a>','foodiepro'),
             ),
+            'no' => array(
+                'icon' => '✘',
+                'label' => __('Remove from favorites','foodiepro'),
+                'tooltip-in' => __('Add to my <a href="%s">favorites</a>','foodiepro'),   
+            )
         );
+
+        add_action( 'wp_ajax_custom_favorite_recipe', array( $this, 'ajax_favorite_recipe' ) );
+        add_action( 'wp_ajax_nopriv_custom_favorite_recipe', array( $this, 'ajax_favorite_recipe' ) );
+
+        add_filter( 'query_vars', array($this, 'add_query_vars_filter') );        
+    }
+    
+    
+    public function add_query_vars_filter( $vars ) {
+        $vars[] = "list";
+        return $vars;
     }
 
-
     public function output( $recipe, $args = array() ) {
-        // if( !$this->output_block( $recipe, $args ) ) return '';
-        
-        $link_url = '#';
-        
+  
         if( !is_user_logged_in() ) {
-            $this->link_id='id="join-us"';
-            $favorites_link = '/connexion';
+            $link_id='id="join-us"';
             $link_url = '/connexion';
-            // $onclick = "_gaq.push(['_trackEvent’, 'join-us', 'click’, 'recipe-rate, '0’]);";
             $onclick = "ga('send','event','join-us','click','recipe-favorite', 0);";
+            $favorites_link = '/connexion';
         } 
         else {
-            $this->link_id='';
+            $link_id='';
+            $link_url = '#';
         	$this->class_id .= ' logged-in';
-        	$favorites_link = do_shortcode('[permalink slug="favoris-recettes"]');
             $onclick = "";
+            $favorites_link = do_shortcode('[permalink slug="favoris-recettes"]');
         }
         
-        $tooltip_in = sprintf(__('In my <a href="%s">favorites</a>','foodiepro'), $favorites_link);
-        $tooltip_add = sprintf(__('Add to my <a href="%s">favorites</a>','foodiepro'), $favorites_link);
-
         $isfav = $this->is_favorite_recipe( $recipe->ID() );
         if( $isfav[0] ) {
-        	$this->class_id .= ' is-favorite';
-        	$tooltip=$tooltip_in;
-        	$tooltip_alt=$tooltip_add;
+            $favorites_link .= '/?list=' . $isfav[1];
         }
-	   else {
-        	$tooltip=$tooltip_add;
-        	$tooltip_alt=$tooltip_in;
-		}
-				
-        $tooltip='<div class="toggle">' . $tooltip . '</div>';
-        $tooltip_alt='<div class="toggle" style="display:none">' . $tooltip_alt . '</div>';
-				
-        // $output = $this->before_output();
+
+        $tooltip = $this->get_field( $isfav[1], 'tooltip-in' );
+        $tooltip=sprintf( $tooltip, $favorites_link);;
         
         ob_start();
         ?>
-            <a href="<?= $link_url;?>" <?= $this->link_id;?> class="<?= $this->class_id; ?>" data-recipe-id="<?= $recipe->ID(); ?>" onClick="<?= $onclick; ?>" >
-            <?php echo $this->get_toolbar_icon('favorites-' . $isfav[1] ); ?>
-            <div class="button-caption"><?= __('Favorites','foodiepro'); ?></div>
+            <a href="<?= $link_url;?>" <?= $link_id;?> class="<?= $this->class_id; ?>" data-recipe-id="<?= $recipe->ID(); ?>" onClick="<?= $onclick; ?>" >
+            <span class="button-icon" id="favorites"><?= $this->get_toolbar_icon('favorites-' . $isfav[1] ); ?></span>
+            <div class="button-caption"><?= __('Cookbook','foodiepro'); ?></div>
             </a>
         <?php 
 
-        Tooltip::display($tooltip . $tooltip_alt, 'above', 'center');    
-        Tooltip::display($this->add_popup( $recipe->ID() ), 'above', 'center', 'click', false, null, 'form' );    
+        // Tooltip::display($tooltip . $tooltip_alt, 'above', 'center');    
+        Tooltip::display($tooltip, 'above', 'center');    
+        if( is_user_logged_in() ) 
+            Tooltip::display($this->add_popup( $recipe->ID() ), 'above', 'center', 'click', false, null, 'form' );    
+
         $output = ob_get_contents();
         ob_end_clean();
 
@@ -95,9 +98,10 @@ class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
     }
 
     public function ajax_favorite_recipe() {
-        if( !is_user_logged_in() ) return 'user not logged-in';
+        if( !is_user_logged_in() ) return false;
 
-        echo 'reached ajax_favorite_recipe() !';
+        // Force strings translation
+        $this->__construct();
         
         if (check_ajax_referer( 'custom_favorite_recipe', 'security', false ) ) {
             
@@ -110,20 +114,20 @@ class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
                 $favorites = get_user_meta( $user_id, $this->get_meta_name($list), true );
                 $favorites = is_array( $favorites ) ? $favorites : array();
                 
-                if ( ($choice=='remove' || $choice != $list) && in_array( $recipe_id, $favorites ) ) {
+                if ( ($choice=='no' || $choice != $list) && in_array( $recipe_id, $favorites ) ) {
                     $key = array_search( $recipe_id, $favorites );
                     unset( $favorites[$key ] );
                 } 
                 elseif ( $choice==$list ) {
                     $favorites[] = $recipe_id;
                 }
-                
                 update_user_meta( $user_id, $this->get_meta_name($list), $favorites );
             }
-            echo 'User favorite recipes metadata update completed';
-        }
-        else {
-            echo 'Security check failed';
+            $isfav = $this->is_favorite_recipe( $recipe_id );
+            $response['text'] = $this->get_field( $isfav[1], 'tooltip-in' );
+            $response['icon'] = $this->get_toolbar_icon('favorites-' . $isfav[1] );
+            echo json_encode( $response );
+            // echo $this->get_toolbar_icon('favorites-' . $isfav[1] );
         }
         die();
     }
@@ -137,8 +141,8 @@ class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
         <div id="favorite-form">
         <p><?= __('Choose a list :','foodiepro'); ?></p>
         <?php 
-        $isfav=false;
-        foreach ( $this->get_lists() as $list) {
+
+        foreach ( $this->get_lists( true ) as $list) {
             $fav=$this->is_favorite_recipe( $recipe_id, $list );
             $isfav=$isfav || $fav[0];
             ?>
@@ -149,15 +153,8 @@ class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
             </p>
             <?php 
         } 
-        if ( $isfav ) {
+        
         ?>
-            <p>
-                <input type="radio" id="remove" name="favlist" value="remove">
-                <label for="remove"> <?= __('Remove from favorites','foodiepro'); ?></label>
-                <span class="favorite-icon">✘</span>
-            </p>        
-        <?php 
-        } ?>
         <p>
             <button onClick='addToFavoritesUpdate(this)'><?= __('OK','foodiepro'); ?></button>
             <button class="alignright cancel" onClick='addToFavoritesCancel(this);'><?= __('Cancel','foodiepro'); ?></button>
@@ -170,13 +167,25 @@ class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
         return $html;
     }
 
-    public static function get_lists() {
-        return array_keys(self::$FAVLISTS);
+    public static function get_lists( $include_no=false ) {
+        $favlists = self::$FAVLISTS;
+        if ( !$include_no ) {
+            unset($favlists['no']);
+        }
+        return array_keys($favlists);
     }
 
     public static function get_label( $list ) {
         return self::$FAVLISTS[$list]['label'];
     }
+
+    public static function get_field( $list, $field ) {
+        if ( isset(self::$FAVLISTS[$list][$field]) ) 
+            $val=self::$FAVLISTS[$list][$field];
+        else
+            $val=false;
+        return $val;
+    }    
 
     public static function get_meta_name( $list ) {
         return self::$FAVLISTS[$list]['meta'];
@@ -186,35 +195,31 @@ class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
         return self::$FAVLISTS[$list]['icon'];
     }
 
+    
     public static function get_toolbar_icon( $type ) {
         switch ($type) {
             case 'favorites-no' :
-                // $html = '<span class="fa-stack">';
-                $html = '<i class="fa fa-bookmark-o"></i>';
-                // $html = '<i class="fa fa-bookmark-o fa-stack-1x"></i>';
-                // $html .= '<i class="fa fa-heart fa-exp fa-stack-1x"></i>';
-                // $html .= '</span>';   
+                $html = '<i class="fa fa-book"></i>'; 
                 break;
             case 'favorites-favorites' :
-                // $html = 'favorites-favorites';
                 $html = '<span class="fa-narrow fa-stack">';
-                $html .= '<i class="fa fa-bookmark fa-stack-1x"></i>';
+                $html .= '<i class="fa fa-book fa-stack-1x"></i>';
                 $html .= '<i class="fa fa-heart fa-exp fa-stack-1x"></i>';
                 $html .= '</span>';                
                 break;
             case 'favorites-wishlist' :
-                // $html = 'favorites-wishlist';
                 $html = '<span class="fa-narrow fa-stack">';
-                $html .= '<i class="fa fa-bookmark fa-stack-1x"></i>';
-                // $html .= '<i class="fa fa-clock fa-exp fa-stack-1x"></i>';
+                $html .= '<i class="fa fa-book fa-stack-1x"></i>';
                 $html .= '<i class="fa fa-thumb-tack fa-exp fa-stack-1x"></i>';
                 $html .= '</span>';              
                 break;         
         }
         return $html;
-    }    
+    }      
     
     public static function is_favorite_recipe( $recipe_id, $lists='all' ) {
+        if( !is_user_logged_in() ) return array(false, '');
+        
         $user_id = get_current_user_id();
         $is_fav=false;
         $fav_list='no';

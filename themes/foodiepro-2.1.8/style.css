@@ -415,6 +415,9 @@ button.cancel {
     background: none;
     color: #585858;
     border: 1px solid #ccc;
+    display: inline-block;
+    position: absolute;
+    right: 10px;
 }
 
 input {
@@ -1311,8 +1314,8 @@ span.bp_counter {
 
 .fa.fa-exp {
 	font-size:0.8em;
-	color:red;
-	/* color:#d7671c; */
+	/* color:red; */
+	color:#c10101;
 	left:auto;
 	right:-11px;
 	top:-10px;

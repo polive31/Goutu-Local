@@ -134,3 +134,16 @@ genesis_register_sidebar( array(
     'name'        => __( 'Archives Bottom', 'foodiepro' ),
     'description' => __( 'This is the bottom widget section of archived pages.', 'foodiepro' ),
 ) );
+
+/* Post List pages widgeted areas
+----------------------------------------------------*/
+genesis_register_sidebar( array(
+    'id'          => 'post-list-top',
+    'name'        => __( 'Post List Top', 'foodiepro' ),
+    'description' => __( 'This is the top widget section of Post List pages.', 'foodiepro' ),
+) );
+genesis_register_sidebar( array(
+    'id'          => 'post-list-middle',
+    'name'        => __( 'Post List Middle', 'foodiepro' ),
+    'description' => __( 'This is the middle widget section of Post List pages.', 'foodiepro' ),
+) );

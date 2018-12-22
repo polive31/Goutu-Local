@@ -53,12 +53,15 @@ class Custom_WPURP_Recipe_Submission {
 ****                   RECIPE LIST FUNCTIONS                           **********
 ********************************************************************************/
 
-    public function display_recipes( $recipes, $edit=false ) {
+    public function display_recipes( $recipes, $edit=false, $title='' ) {
         $output = '';
+
+        $output .= '<h3>' . $title . '</h3>';
+
         $output .= '<table class="custom-recipe-list">';
 
         $statuses = get_post_statuses();
-
+        
         foreach ( $recipes as $recipe ) {
             $image_url = $recipe->image_ID() > 0 ? $recipe->image_url( 'mini-thumbnail' ) : WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
  
@@ -73,6 +76,10 @@ class Custom_WPURP_Recipe_Submission {
             $item .= '<td class="recipe-list-thumbnail"><a ' . $view_url . $view_title . '><img src="' . $image_url . '"></a></td>';
             // $item .= '<td class="recipe-list-title"><a ' . $edit_url . $edit_title . '>' . $recipe->title() . '</a></td>';
             $item .= '<td class="recipe-list-title"><a ' . $view_url . $view_title . '>' . $recipe->title() . '</a></td>';
+            $favinfo = Custom_Recipe_Favorite::is_favorite_recipe( $recipe->ID() );
+            $favlist = $favinfo[1];
+            $favicon = Custom_Recipe_Favorite::get_icon( $favlist );
+            $item .= '<td class="recipe-list-list" title="' . $favlist . '">' . $favicon . '</td>';
             if ($edit) {
                 $item .= '<td class="recipe-list-status">' . $statuses[ $recipe->post_status() ] . '</td>';
                 $item .= '<td class="recipe-list-actions">';

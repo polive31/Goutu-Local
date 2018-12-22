@@ -41,6 +41,7 @@ function Custom_WPURP_templates_init() {
 		------------------------------------*/
 		require_once 'widgets/custom_recipe_list_widget.php';
 		require_once 'widgets/custom_nutrition_label_widget.php';
+		require_once 'widgets/custom_postlist_dropdown_widget.php';
 
 
 	}

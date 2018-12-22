@@ -33,6 +33,8 @@ class Custom_Recipe_Submission_Shortcodes extends Custom_WPURP_Recipe_Submission
         $output = '';
         $author = get_current_user_id();
 
+        wp_enqueue_style( 'custom-post-list' );
+
         if( $author !== 0 ) {
             // $output .= 'In Custom User Submission Class !';
             $recipes = WPUltimateRecipe::get()->query()->author( $author )->post_status( array( 'publish', 'private', 'pending', 'draft' ) )->get();
@@ -46,13 +48,28 @@ class Custom_Recipe_Submission_Shortcodes extends Custom_WPURP_Recipe_Submission
         return $output;
     }  
 
-    public function favorite_recipes_shortcode( $options ) {
-        $options = shortcode_atts( array(), $options );
+    public function favorite_recipes_shortcode( $atts ) {
+        $atts = shortcode_atts( array(
+            ), $atts );
         $output = '';
-        $user_id = get_current_user_id();
 
-        if( $user_id !== 0 ) {
-            $favorites = get_user_meta( $user_id, 'wpurp_favorites', true );
+        if( !is_user_logged_in() ) return;
+        $user_id = get_current_user_id();
+        
+        wp_enqueue_style( 'custom-post-list' );
+
+        $Favs = new Custom_recipe_Favorite();
+
+        $lists = get_query_var( 'list', false );
+        if (!$lists) {
+            // $lists = Custom_recipe_Favorite::get_lists();
+            $lists = $Favs->get_lists();
+        }
+        else
+            $lists = array( 0=>$lists );
+
+        foreach ($lists as $list) {
+            $favorites = get_user_meta( $user_id, $Favs->get_meta_name($list), true );
             $favorites = is_array( $favorites ) ? $favorites : array();
 
             $recipes = empty( $favorites ) ? array() : WPUltimateRecipe::get()->query()->ids( $favorites )->order_by('name')->order('ASC')->get();
@@ -61,33 +78,35 @@ class Custom_Recipe_Submission_Shortcodes extends Custom_WPURP_Recipe_Submission
                 $output .= '<p class="submitbox">' . __( "You don't have any favorite recipes.", 'wp-ultimate-recipe' ) . '</p>';
             } else {
                 // $output .= '<p>' . __('Here is the list of the recipes that you bookmarked.', 'foodiepro') . '</p>';
-                $output .= $this->display_recipes( $recipes, false);
+                $output .= $this->display_recipes( $recipes, false, $Favs->get_label($list) );
             }
         }
+
         return $output;
     }
 
     public function submissions_current_user_edit_shortcode() {
         $output = '';
         $user_id = get_current_user_id();
-
+        
         if( isset( $_POST['submitrecipe'] ) ) {            
             $output .= $this->submissions_process();
         } 
-
+        
         elseif( isset( $_GET['wpurp-edit-recipe'] ) ) {
             $recipe_id = $_GET['wpurp-edit-recipe'];
             $post = get_post( $recipe_id );
             $user = get_userdata( $user_id );
-
+            
             if( $post->post_author == $user_id || current_user_can('administrator') ) {
                 $output .= '<p class="submitbox">' . __( 'You can edit your recipe here, before submitting it.', 'foodiepro') . '</p>';
                 $output .= $this->submissions_form( $recipe_id );
             }
         }        
-
+        
         return $output;
     }
+    
 
 }
 

@@ -2042,6 +2042,28 @@ form[role="search"] {
 
 /* Plugins
 -------------------------------------------------------- */
+
+/* Custom news scroller  */
+
+.newsscroller_title {
+	font-family:Oswald, sans-serif;
+	font-size:18px!important;
+	text-decoration:none!important;
+	color:#5d5d5d;
+}
+
+.sidebar .news-container ul li:before {
+	display:none!important;
+}
+
+.news-container {
+    font-family: courier;
+    text-align: left;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+
 /* Query Monitor workaround */
 
 .qm-sortable tbody {

@@ -257,6 +257,7 @@ class Custom_WPURP_Assets {
 							'name' => 'wpurp_timer',
 		                    'icons' => array(
 								'play' => $play,
+								'pause' => $pause,
 		                        'close' => $close,
 		                    ),
 							)

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2018-12-22 21:51+0100\n"
-"PO-Revision-Date: 2018-12-22 21:51+0100\n"
+"POT-Creation-Date: 2018-12-22 23:50+0100\n"
+"PO-Revision-Date: 2018-12-22 23:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -1022,8 +1022,9 @@ msgstr[0] "%s minute"
 msgstr[1] "%s minutes"
 
 #: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:28
-msgid "<strong>My favorite recipes</strong>"
-msgstr "<strong>Mes recettes favorites</strong>"
+#: plugins/custom-recipe-templates/widgets/custom_postlist_dropdown_widget.php:36
+msgid "My favorite recipes"
+msgstr "Mes recettes favorites"
 
 #: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:29
 #, php-format
@@ -1031,8 +1032,8 @@ msgid "In my <a href=\"%s\">favorites</a>"
 msgstr "Disponible dans <a href=\"%s\">mes recettes favorites</a>"
 
 #: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:34
-msgid "<strong>Recipes wish list</strong>"
-msgstr "<strong>Recettes à essayer</strong>"
+msgid "Recipes wish list"
+msgstr "Recettes à essayer"
 
 #: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:35
 #, php-format
@@ -1099,7 +1100,7 @@ msgid "No recipes found."
 msgstr "Aucune recette trouvée."
 
 #: plugins/custom-recipe-templates/includes/Custom_Recipe_Submission_Shortcodes.php:103
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:510
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:512
 msgid "You can edit your recipe here, before submitting it."
 msgstr ""
 "Vous pouvez modifier votre recette ici et la sauvegarder en tant que "
@@ -1254,39 +1255,39 @@ msgid "Preview recipe"
 msgstr "Aperçu de la recette"
 
 #: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:72
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:86
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:197
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:88
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:199
 msgid "Edit recipe"
 msgstr "Modifier la recette"
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:91
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:93
 msgid "Delete recipe"
 msgstr "Supprimer la recette"
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:154
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:156
 #, fuzzy
 #| msgid "Main Ingredients"
 msgid "Format as Duration"
 msgstr "Ingrédients principaux"
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:155
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:157
 #, fuzzy
 #| msgid "Main Ingredients"
 msgid "Format as Ingredient"
 msgstr "Ingrédients principaux"
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:345
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:347
 msgid "You must be logged-in to access this page."
 msgstr ""
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:367
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:369
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-fdx/import-fdx.php:65
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-xml/import-xml.php:65
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:235
 msgid "Untitled"
 msgstr ""
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:495
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:497
 msgid ""
 "Here is what your recipe will look like once it is published. You can choose "
 "to continue editing it, or save it as a draft, or publish it, using the "
@@ -1297,7 +1298,7 @@ msgstr ""
 "la soumettre pour publication, en utilisant les boutons au bas de cette "
 "page. "
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:544
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:546
 msgid ""
 "Recipe saved as draft. It will not be visible on the site, but you can edit "
 "it at any time and submit it later."
@@ -1306,38 +1307,38 @@ msgstr ""
 "visible sur le site, mais vous pouvez la modifier à tout moment, et la "
 "publier plus tard."
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:547
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:549
 #, php-format
 msgid "Back to <a href=\"%s\">my published recipes</a>"
 msgstr "Retour à <a href=\"%s\">mes recettes</a>"
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:564
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:566
 msgid "Please fill-in those required fields:"
 msgstr "Merci de renseigner les informations suivantes :"
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:596
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:598
 msgid "Recipe published."
 msgstr "Recette publiée."
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:596
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:598
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_options.php:1494
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:426
 msgid "Recipe submitted! Thank you, your recipe is now awaiting moderation."
 msgstr ""
 "Nous avons bien reçu votre recette ! Elle sera publiée après modération. "
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:599
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:623
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:601
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:625
 #, php-format
 msgid "<a href=\"%s\">Back to my recipes</a>"
 msgstr "<a href=\"%s\">Retour à mes recettes</a>"
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:606
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:608
 #, php-format
 msgid "New user submission:%s"
 msgstr ""
 
-#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:621
+#: plugins/custom-recipe-templates/includes/Custom_WPURP_Recipe_Submission.php:623
 msgid "Unknown action."
 msgstr ""
 
@@ -1984,10 +1985,6 @@ msgstr ""
 #: plugins/custom-recipe-templates/widgets/custom_postlist_dropdown_widget.php:35
 msgid "Filter your favorite recipes..."
 msgstr "Choisir votre liste..."
-
-#: plugins/custom-recipe-templates/widgets/custom_postlist_dropdown_widget.php:36
-msgid "My favorite recipes"
-msgstr "Mes recettes favorites"
 
 #: plugins/custom-recipe-templates/widgets/custom_postlist_dropdown_widget.php:37
 msgid "Recipes in my wishlist"
@@ -11110,6 +11107,12 @@ msgstr "Ces recettes pourraient également vous intéresser..."
 #: themes/foodiepro-2.1.8/yarpp-template-goutu.php:20
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
+
+#~ msgid "<strong>My favorite recipes</strong>"
+#~ msgstr "<strong>Mes recettes favorites</strong>"
+
+#~ msgid "<strong>Recipes wish list</strong>"
+#~ msgstr "<strong>Recettes à essayer</strong>"
 
 #~ msgid "Favorites"
 #~ msgstr "Favoris"

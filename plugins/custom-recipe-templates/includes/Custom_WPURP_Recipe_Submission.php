@@ -76,10 +76,12 @@ class Custom_WPURP_Recipe_Submission {
             $item .= '<td class="recipe-list-thumbnail"><a ' . $view_url . $view_title . '><img src="' . $image_url . '"></a></td>';
             // $item .= '<td class="recipe-list-title"><a ' . $edit_url . $edit_title . '>' . $recipe->title() . '</a></td>';
             $item .= '<td class="recipe-list-title"><a ' . $view_url . $view_title . '>' . $recipe->title() . '</a></td>';
+
             $favinfo = Custom_Recipe_Favorite::is_favorite_recipe( $recipe->ID() );
             $favlist = $favinfo[1];
             $favicon = Custom_Recipe_Favorite::get_icon( $favlist );
-            $item .= '<td class="recipe-list-list" title="' . $favlist . '">' . $favicon . '</td>';
+            $item .= '<td class="recipe-list-list" title="' . Custom_Recipe_Favorite::get_field( $favlist, 'label' ) . '">' . $favicon . '</td>';
+
             if ($edit) {
                 $item .= '<td class="recipe-list-status">' . $statuses[ $recipe->post_status() ] . '</td>';
                 $item .= '<td class="recipe-list-actions">';

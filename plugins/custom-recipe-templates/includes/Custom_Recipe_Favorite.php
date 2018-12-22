@@ -25,13 +25,13 @@ class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
             'favorites' => array(
                 'meta' => 'wpurp_favorites',
                 'icon' => '<i class="fa fa-heart"></i>',
-                'label' => __('<strong>My favorite recipes</strong>','foodiepro'),
+                'label' => __('My favorite recipes','foodiepro'),
                 'tooltip-in' => __('In my <a href="%s">favorites</a>','foodiepro'),
             ),
             'wishlist' => array(
                 'meta' => 'wpurp_favorites_wishlist',
                 'icon' => '<i class="fa fa-thumb-tack"></i>',
-                'label' => __('<strong>Recipes wish list</strong>','foodiepro'),
+                'label' => __('Recipes wish list','foodiepro'),
                 'tooltip-in' => __('In my <a href="%s">wishlist</a>','foodiepro'),
             ),
             'no' => array(

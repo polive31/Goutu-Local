@@ -49,7 +49,9 @@ class Custom_WPURP_Templates {
 
 		// self::$logged_in = is_user_logged_in();	
 		// self::$id=0;
-	}
+    }
+    
+
 	
 /* Custom Menu Template */	
 	// public function wpurp_custom_menu_template( $form, $menu ) {

@@ -415,7 +415,7 @@ function php_log($msg, $var=false, $type='DEBUG', $color='blue') {
 	}
 }
 
-add_shortcode('custom-functions-debug', 'foodiepro_debug_shortcode');
+// add_shortcode('custom-functions-debug', 'foodiepro_debug_shortcode');
 function foodiepro_debug_shortcode($args) {
 	$args = shortcode_atts( array(
         'class' => 'CustomSiteMails',
@@ -439,7 +439,6 @@ function foodiepro_debug_shortcode($args) {
 }
 
 
-/* =================================================================*/
 /* =             SCRIPTS AND STYLES DEBUG 
 /* =================================================================*/
 

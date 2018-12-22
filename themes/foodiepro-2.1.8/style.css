@@ -1309,6 +1309,18 @@ span.bp_counter {
     content:"\f073"; /*Calendar */
 }
 
+.fa.fa-exp {
+	font-size:0.8em;
+	color:red;
+	/* color:#d7671c; */
+	left:auto;
+	right:-11px;
+	top:-10px;
+}
+
+.fa-narrow.fa-stack {
+	width:1.5em;
+}
 
 /*
 Common Classes
@@ -2027,6 +2039,14 @@ form[role="search"] {
 
 /* Plugins
 -------------------------------------------------------- */
+/* Query Monitor workaround */
+
+.qm-sortable tbody {
+    background: white;
+    font-size: 12px;
+    font-family: sans-serif;
+}
+
 
 /*Swipebox*/
 #swipebox-overlay {
@@ -2387,14 +2407,16 @@ a.wpurp-recipe-print:before {
 }
 
 a.custom-recipe-favorite:before {
-	content:"\f08a"; /* fa-heart-o */
-	content:"\f097"; /* fa-bookmark-o */
+	/*content:"\f08a"; /* fa-heart-o */
+	/*content:"\f097"; /* fa-bookmark-o */
 }
 
 a.custom-recipe-favorite.is-favorite:before {
-	content:"\f004"; /* fa-heart */
-	content:"\f02e"; /* fa-bookmark */
+	/*content:"\f004"; /* fa-heart */
+	/*content:"\f02e"; /* fa-bookmark */
 }
+
+
 
 a.social-like-post:before {
 	content:"\f087"; /* fa-thumbs-o-up */

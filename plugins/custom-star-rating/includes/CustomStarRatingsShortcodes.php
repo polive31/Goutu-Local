@@ -100,7 +100,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		$comment_rating = ( $a['source'] == 'comment');
 		
 		if ($a['markup']=='table') {
-			$otag = '<table class="ratings-table">'; // main opening tag
+			$otag = '<table class="ratings-table" id="rating">'; // main opening tag
 			$ctag = '</table>'; // mai opening tag
 			$rotag = '<tr>'; // row opening tag
 			$rctag = '</tr>'; // row closing tag
@@ -108,7 +108,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 			$cctag = '</td>'; // cell closing tag
 		}
 		elseif ($a['markup']=='list') {
-			$otag = '<ul class="ratings-table">'; // main opening tag
+			$otag = '<ul class="ratings-table" id="rating">'; // main opening tag
 			$ctag = '</ul>'; // mai opening tag
 			$rotag = '<li>'; // row opening tag
 			$rctag = '</li>'; // row closing tag
@@ -116,7 +116,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 			$cctag = '</div>'; // cell closing tag
 		}		
 		elseif ($a['markup']=='span') {
-			$otag = '<span class="ratings-table">'; // main opening tag
+			$otag = '<span class="ratings-table" id="rating">'; // main opening tag
 			$ctag = '</span>'; // mai opening tag
 			$rotag = ''; // row opening tag
 			$rctag = ''; // row closing tag

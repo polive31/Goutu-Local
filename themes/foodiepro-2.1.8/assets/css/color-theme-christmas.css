@@ -127,14 +127,14 @@ textarea,
 -------------------------------------------------------*/
 /* Icons colors */
 
-i.fa.fa-star,
-i.fa.fa-star-half-o {
+#rating i.fa.fa-star,
+#rating i.fa.fa-star-half-o {
 	color:#f5a241;
 }
-i.fa.fa-star-o {
+#rating i.fa.fa-star-o {
 	color:#d3d3d3;
 }
-.full i.fa.fa-star-o {
+#rating .full i.fa.fa-star-o {
 	color:#f18b14;
 }
 

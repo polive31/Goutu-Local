@@ -29,12 +29,12 @@ function Custom_WPURP_templates_init() {
 		require_once 'includes/Custom_WPURP_Ingredient.php';
 		require_once 'includes/Custom_Recipe_Shortcodes.php';
 		require_once 'includes/Custom_Recipe_Submission_Shortcodes.php';
+		require_once 'includes/Custom_Recipe_Favorite.php';
 		
 		/* Helpers (class loaded on demand=)
 		------------------------------------*/
 		require_once 'helpers/Custom_WPURP_Recipe.php';
 		require_once 'helpers/Custom_Recipe_Metadata.php';
-		require_once 'helpers/Custom_Recipe_Favorite.php';
 		require_once 'helpers/Custom_Recipe_Add_To_Shopping_List.php';
 
 		/* Widgets

@@ -265,11 +265,9 @@ class Custom_WPURP_Assets {
 		            ),					
 					array(
 						'name' => 'custom-favorite-recipe',
-		                /*'url' => WPUltimateRecipePremium::get()->premiumUrl . '/addons/favorite-recipes/js/favorite-recipes.js',*/
 		                'url' => self::$_PluginUri . 'assets/js/',
 		                'path' => self::$_PluginPath . 'assets/js/',
 		                'file' => 'custom_favorite_recipe.js',
-						// 'premium' => true,
 		                'public' => true,
 						'footer' => true,
 		                'setting' => array( 'favorite_recipes_enabled', '1' ),
@@ -277,9 +275,9 @@ class Custom_WPURP_Assets {
 		                    'jquery',
 		                ),
 		                'data' => array(
-		                    'name' => 'wpurp_favorite_recipe',
-		                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
-		                    'nonce' => wp_create_nonce( 'wpurp_favorite_recipe' ),
+		                    'name' => 'custom_favorite_recipe',
+		                    'ajaxurl' => admin_url( 'admin-ajax.php' ),
+		                    'nonce' => wp_create_nonce( 'custom_favorite_recipe' ),
 		                )
 		            ),	  
 		            // array(

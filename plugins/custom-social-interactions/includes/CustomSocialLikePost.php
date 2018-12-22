@@ -65,7 +65,7 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
                 </a>
 
             <?php 
-            Tooltip::display( $tooltip . $tooltip_alt, $vertical, $horizontal, $style); 
+            Tooltip::display( $tooltip . $tooltip_alt, $vertical, $horizontal ); 
 
         
         $output = ob_get_contents();
@@ -75,8 +75,8 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
         return $output;
     }
 
-    public function display($vertical='above',$horizontal='left',$style='') {
-        echo $this->get_html($vertical,$horizontal,$style);
+    public function display($vertical='above',$horizontal='left') {
+        echo $this->get_html($vertical,$horizontal);
     }
 
 

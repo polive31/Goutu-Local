@@ -19,12 +19,14 @@ class Custom_Postlist_Dropdown_Widget extends WP_Widget {
     }
 
     public function widget( $args, $instance ) {
-        global $wp;
+        // global $wp;
 
         $title = apply_filters( 'widget_title', $instance['title'] );
 
         echo $args['before_widget'];
         echo $args['before_title'] . $title . $args['after_title'];
+
+        $lists = get_query_var( 'list', false );
 
         ?>
         
@@ -33,8 +35,8 @@ class Custom_Postlist_Dropdown_Widget extends WP_Widget {
         <select name="sort_dropdown" id="sort_dropdown" class="dropdown-select postform">
 
         <option value="none" class="separator"><?php echo __('Filter your favorite recipes...', 'foodiepro');?></option>
-        <option class="level-0" value="?list=favorites"><?php echo __('My favorite recipes', 'foodiepro');?></option>
-        <option class="level-0" value="?list=wishlist"><?php echo __('Recipes in my wishlist', 'foodiepro');?></option>
+        <option class="level-0" <?= $lists=='favorites'?'selected':''; ?> value="?list=favorites"><?php echo __('My favorite recipes', 'foodiepro');?></option>
+        <option class="level-0" <?= $lists=='wishlist'?'selected':''; ?>  value="?list=wishlist"><?php echo __('Recipes in my wishlist', 'foodiepro');?></option>
 
         </select> 
 

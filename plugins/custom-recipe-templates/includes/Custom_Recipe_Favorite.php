@@ -75,7 +75,7 @@ class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
         }
 
         $tooltip = $this->get_field( $isfav[1], 'tooltip-in' );
-        $tooltip=sprintf( $tooltip, $favorites_link);;
+        $tooltip=sprintf( $tooltip, $favorites_link);
         
         ob_start();
         ?>
@@ -218,7 +218,7 @@ class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
     }      
     
     public static function is_favorite_recipe( $recipe_id, $lists='all' ) {
-        if( !is_user_logged_in() ) return array(false, '');
+        if( !is_user_logged_in() ) return array(false, 'no');
         
         $user_id = get_current_user_id();
         $is_fav=false;

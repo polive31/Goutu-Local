@@ -31,6 +31,7 @@ class Custom_WPURP_Ingredient {
         array('branche'   	, 'branches'),
         array('bulbe'   	, 'bulbes'), 
         array('cube' 		, 'cubes'), 
+        array('capsule' 		, 'capsules'), 
         array('doigt'		, 'doigts'),
         array('feuille' 	, 'feuilles'),
         array('filet'   	, 'filets'),

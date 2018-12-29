@@ -44,7 +44,7 @@ jQuery(document).ready(function() {
 // Disable search option on some dropdowns
     jQuery('.taxonomy-select-boxes .select2.readonly').on('select2:opening select2:closing', function( event ) {
         var $searchfield = jQuery(this).parent().find('.select2-search__field');
-        $searchfield.prop('disabled', true);
+        // $searchfield.prop('disabled', true);
     });
     jQuery(".select2.readonly .select2-search input").prop("readonly", true);
     // jQuery(".select2, .select2-multiple").not(".post_tag").on('select2:open', function (e) {

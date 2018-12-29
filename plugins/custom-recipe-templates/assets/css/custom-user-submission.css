@@ -191,31 +191,30 @@ table#recipe-instructions .recipe_instructions_thumbnail,
 }
 
 /*General Placeholder styling */
-/*textarea.recipe-description::placeholder,
-textarea.recipe-instruction::placeholder,
-#wpurp_user_submission_form input::placeholder,*/
+
+/* Chrome, Firefox, Opera, Safari 10.1+ */
 #wpurp_user_submission_form .option-none,
 #wpurp_user_submission_form select::placeholder,
 #wpurp_user_submission_form textarea::placeholder,
-#wpurp_user_submission_form input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+#wpurp_user_submission_form input::placeholder { 
     color: #b7b7b7;
     font-style: italic;
-    opacity: 1; /* Firefox */
-    opacity: 1; /* Firefox */
-    font-size: 14px;
+    opacity: 1; 
+    font-size: 1.4rem;
 }
 
-#wpurp_user_submission_form input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+/* Internet Explorer 10-11 */
+#wpurp_user_submission_form input:-ms-input-placeholder { 
     color: #b7b7b7;
-    /*color: #B1B1B1;*/
     font-style: italic;
-    font-size: 14px;
+    font-size: 1.4rem;
 }
 
-#wpurp_user_submission_form input::-ms-input-placeholder { /* Microsoft Edge */
+/* Microsoft Edge */
+#wpurp_user_submission_form input::-ms-input-placeholder { 
     color: #b7b7b7;
     font-style: italic;
-    font-size: 14px;
+    font-size: 1.4rem;
 }
 
 
@@ -983,7 +982,7 @@ ul[aria-multiselectable=true] .select2-results__option[aria-selected=true] {
 
   /*Prevent display of keyboard on smartphone*/
   .readonly input.select2-search__field {
-    display: none;
+    /* display: none; */
   }
 
   .recipe-tags-container {

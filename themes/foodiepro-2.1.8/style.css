@@ -1508,7 +1508,7 @@ img.alignright,
 --------------------------------------------- */
 
 .entry-title {
-	line-height:1.2;
+	line-height:1.8rem;
 	margin-bottom:5px;
 	margin-top:20px;
 }
@@ -2770,8 +2770,8 @@ span.edit-button {
 .entry-header-image {
 	box-sizing:border-box;
 	margin-right:15px;
-	/*width:100px;*/
-	width:auto;
+	width:150px;
+	/* width:auto; */
 	display:inline-block;
 	vertical-align: middle;
 }
@@ -4591,7 +4591,8 @@ Site Footer
 	
 	.sidebar-primary,
 	.sidebar-secondary {
-		width:200px;	
+		width:calc(100% - 620px);	
+		padding:0 10px;
 	}
 
 	.sidebar-content-sidebar .content,
@@ -4788,17 +4789,6 @@ Site Footer
     	background-position: -33px 0;
 	}
 
-	h3.widgettitle {
-		font-weight: bold;
-		font-size: 24px;
-	}
-	
-	.title-big-font .widgettitle,
-	.elegant .widgettitle {
-    	font-size: 28px;
-		line-height: 45px;
-	}	
-	
 	/*.site-header,*/
 	.home-page .site-header {
 		height:auto;
@@ -4837,14 +4827,6 @@ Site Footer
     	margin-top:10px;
    }
 
-
-	.page h1.entry-title, 
-	h1.archive-title, 
-	h1.entry-title {
-		/*text-align: center;*/
-		font-size: 3.5rem;
-		line-height: 4trem;
-	}
 
 	.entry-header-image {
 	    width: 100px;
@@ -4935,6 +4917,10 @@ Site Footer
 
 	.nextend-arrow {
 		visibility: hidden!important;		
+	}	
+
+	.entry-header-image {
+	    width: 80px;
 	}	
 	
 	.entry-header-overlay .overlay {

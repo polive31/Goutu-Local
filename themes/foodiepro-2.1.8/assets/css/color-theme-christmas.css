@@ -123,20 +123,7 @@ textarea,
 	background-color:#fefefe;/* background-color important, pas background car conflit avec autre setting plus loin*/
 }
 
-/* STAR RATING 
--------------------------------------------------------*/
-/* Icons colors */
 
-#rating i.fa.fa-star,
-#rating i.fa.fa-star-half-o {
-	color:#f5a241;
-}
-#rating i.fa.fa-star-o {
-	color:#d3d3d3;
-}
-#rating .full i.fa.fa-star-o {
-	color:#f18b14;
-}
 
 
 /* WIDGETS 

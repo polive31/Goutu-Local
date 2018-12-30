@@ -102,15 +102,17 @@ class CustomPostTemplates {
 
 
     //* Customize the entry meta in the entry header (requires HTML5 theme support)
-    public function custom_post_meta($post_info) {
+    public function custom_post_meta( $post_info ) {
         // if ( !is_page() )
-		if ( is_singular( 'recipe' ) || is_singular( 'post' ) )
-			// $post_info = sprintf(__('Published on %s by <span id="username">%s</span>', 'foodiepro'), '[post_date]', '[bp-author profile="true"]');
-			$avatar = do_shortcode('[bp-user-avatar profile="true" wrap="span" user="author" wrapclass="entry-avatar"]');
-			$profile = do_shortcode('[bp-author profile="true"]');
-			$post_info = sprintf(__('Published on %s by %s<span id="username">%s</span>', 'foodiepro'), '[post_date]', $avatar, $profile);
+		if ( !is_singular( 'recipe' ) && !is_singular( 'post' ) ) return;
 
-        return $post_info;
+		// $post_info = sprintf(__('Published on %s by <span id="username">%s</span>', 'foodiepro'), '[post_date]', '[bp-author profile="true"]');
+		$avatar = do_shortcode('[bp-user-avatar profile="true" wrap="span" user="author" wrapclass="entry-avatar"]');
+		$profile = do_shortcode('[bp-author profile="true"]');
+		$post_info = sprintf(__('Published on %s by %s<span id="username">%s</span>', 'foodiepro'), '[post_date]', $avatar, $profile);
+		
+		return $post_info;
+
     }    
 
 

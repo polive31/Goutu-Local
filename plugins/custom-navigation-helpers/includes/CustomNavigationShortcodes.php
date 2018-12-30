@@ -429,14 +429,14 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 			//$args['show_option_all'] = $all_msg;
 			$args['show_option_all'] = '';
 			$args['option_none_value'] = 'none';
-			$args['selected'] = get_query_var('fterm');
+			$args['selected'] = get_query_var( $tax_slug, false );
 			$args['id'] = $dropdown_id;
 			$args['name'] = $dropdown_id;
 			$args['class'] = 'dropdown-select';
 			$args['value_field'] = 'slug';
 			
 			$html .= $author?wp_dropdown_users( $args ):wp_dropdown_categories( $args );
-			$html .= $this->get_dropdown_js($dropdown_id);
+			$html .= $this->get_dropdown_js($dropdown_id, $tax_slug, $all_url);
 		}
 		else {
 
@@ -515,7 +515,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 	}
 
 
-	public function get_dropdown_js($id) {
+	public function get_dropdown_js($id, $tax_slug, $all_url) {
 		ob_start();
 		?>
 		
@@ -525,7 +525,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 				var dropdown_<?= $id;?> = document.getElementById( "<?= esc_js( $id );?>" );
 				function on_<?= $id; ?>_Change() {
 					var choice = dropdown_<?= $id;?>.options[ dropdown_<?= $id;?>.selectedIndex ].value;
-					if ( choice !="none" ) {location.href = "<?= home_url(); ?>/?<?= $tax_slug; ?>=" + choice};
+					if ( choice !="none" ) {location.href = "<?= home_url() . '/?' . $tax_slug; ?>=" + choice};
 					if ( choice =="0" ) {location.href = "<?= $all_url; ?>"};
 				}
 				dropdown_<?= $id;?>.onchange = on_<?= $id;?>_Change;

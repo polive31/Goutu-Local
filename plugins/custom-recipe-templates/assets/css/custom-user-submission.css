@@ -761,7 +761,8 @@ li.select2-selection__choice,
   min-width: 100px;
   max-height: 650px;
   overflow-y: auto;
-  z-index: 999;     
+  z-index: 999;   
+  max-width: calc(100% - 30px);  
 }
 
 .select2-results__options--nested {
@@ -1001,7 +1002,7 @@ ul[aria-multiselectable=true] .select2-results__option[aria-selected=true] {
 
  .taxonomy-select-boxes select,
  .select2-container {
-    width:100%;
+    width:calc(100% - 30px);
 }
 
   

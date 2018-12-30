@@ -54,7 +54,7 @@ class Custom_Postlist_Dropdown_Widget extends WP_Widget {
                 dropdown.onchange=onDropDownChange;
             })();
             /* ]]> */
-            </script>
+        </script>
     
     <?php
 	// Output end

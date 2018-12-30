@@ -52,26 +52,30 @@ public function widget( $args, $instance ) {
 		if ( !empty( $search_term ) )
 			$search_term = 's=' . $search_term . '&';
 	}
+
+	$orderby = get_query_var( 'orderby', false );
+	$order = get_query_var( 'order', false );
+
 	?>
 
 	<label class="screen-reader-text" for="sort_dropdown"><?php echo $title;?></label>
 	<!-- <div class="dropdown-select"> -->
 	<select name="sort_dropdown" id="sort_dropdown" class="dropdown-select postform">
 	<option value="none" class="separator"><?php echo __('Select sort order...', 'foodiepro');?></option>
-	<option class="level-0" value="?<?php echo $search_term;?>orderby=title&order=ASC"><?php echo __('Title : ascending', 'foodiepro');?></option>
-	<option class="level-0" value="?<?php echo $search_term;?>orderby=title&order=DESC"><?php echo __('Title : descending', 'foodiepro');?></option>
+	<option class="level-0" <?= ($orderby=='title'&&$order=='ASC')?'selected':''; ?> value="?<?php echo $search_term;?>orderby=title&order=ASC"><?php echo __('Title : ascending', 'foodiepro');?></option>
+	<option class="level-0" <?= ($orderby=='title'&&$order=='DESC')?'selected':''; ?> value="?<?php echo $search_term;?>orderby=title&order=DESC"><?php echo __('Title : descending', 'foodiepro');?></option>
 	<!-- <option class="level-0" value="' . $search_prefix . 'orderby=author_name">'. __('Author', 'foodiepro') . '</option> -->
 	<!-- <option class="level-0 separator" value="author&order=ASC">'. __('Author : descending', 'foodiepro') . '</option> -->
-	<option class="level-0" value="?<?php echo $search_term;?>orderby=date&order=DESC"><?php echo __('Newest first', 'foodiepro');?></option>
+	<option class="level-0" <?= ($orderby=='date'&&$order=='DESC')?'selected':''; ?> value="?<?php echo $search_term;?>orderby=date&order=DESC"><?php echo __('Newest first', 'foodiepro');?></option>
 	<!-- <option disabled>───────────</option>-->
 	<!-- <option class="level-0 last" value="meta_value_num&order=DESC&meta_key=recipe_user_ratings_rating">'. __('Rating', 'foodiepro') . '</option>-->
 	<?php
 	if ( is_category() ) {?>
-		<option class="level-0 last" value="<?php echo $search_term;?>orderby=comment_count&order=DESC"><?php echo __('Comment count', 'foodiepro');?></option>
+		<option class="level-0 last" <?= ($orderby=='comment_count'&&$order=='DESC')?'selected':''; ?> value="<?php echo $search_term;?>orderby=comment_count&order=DESC"><?php echo __('Comment count', 'foodiepro');?></option>
 	<?php 
 	}
 	else {?>
-		<option class="level-0 last" value="<?php echo $search_term;?>orderby=rating"><?php echo __('Rating', 'foodiepro');?></option>'
+		<option class="level-0 last" <?= ($orderby=='rating')?'selected':''; ?> value="<?php echo $search_term;?>orderby=rating"><?php echo __('Rating', 'foodiepro');?></option>'
 	<?php 
 	}?>
 	</select> 

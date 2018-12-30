@@ -14,7 +14,7 @@ jQuery(document).ready(function() {
     var readonlyBoxes = jQuery(".taxonomy-select-boxes select").not(".post_tag");
 
     readonlyBoxes.select2({
-        width: 'off',
+        width: 'style',
         dropdownAutoWidth: false,
         minimumResultsForSearch: -1,
         allowClear: false,
@@ -25,7 +25,7 @@ jQuery(document).ready(function() {
     readonlyBoxes.next('.select2').addClass("readonly");
 
     jQuery(".taxonomy-select-boxes select.post_tag").select2({
-        width: 'off',
+        width: 'style',
         dropdownAutoWidth: false,
         // minimumInputLength: 3,
         allowClear: false,

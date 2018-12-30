@@ -3920,7 +3920,7 @@ li.comment a {
 	color:#333;
 	overflow:hidden;
 	text-align:center;
-  margin-top: 40px;
+  	margin-top: 40px;
 	float: left;
 	clear: both;  
 }
@@ -3937,6 +3937,7 @@ li.comment a {
 	width: 33%;
 	margin: 0;
 	float:left;
+	padding: 0 10px;
 }
 
 .footer-widgets-3 {

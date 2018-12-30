@@ -534,7 +534,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		</script>
 		
 		<?php
-		$js .= ob_get_contents();
+		$js = ob_get_contents();
 		ob_end_clean();
 
 		return $js;

@@ -4,16 +4,16 @@
         <input type="hidden" name="recipe_id" value="<?php echo $recipe->ID(); ?>" />
         <div class="recipe-container recipe-title-container">      	
             <p>
-                <!-- <label for="recipe_title" class="recipe-title"><?php _e( 'Recipe title', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_title_check', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label><br /> -->
-                <h4 id="headline-title"><?php _e( 'Recipe title', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_title_check', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></h4>
+                <!-- <label for="recipe_title" class="recipe-title"><?php _e( 'Recipe title', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_title_check', self::$required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label><br /> -->
+                <h4 id="headline-title"><?php _e( 'Recipe title', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_title_check', self::$required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></h4>
                 <input type="text" id="recipe_title" value="<?php echo isset( $_POST['recipe_title'] ) ? $_POST['recipe_title'] : $recipe->title();  ?>" size="20" name="recipe_title" />
             </p>
         </div>
 
 <?php if( is_admin() ) { ?>
         <div class="recipe-author-container">
-                <!-- <label for="recipe-author"><?php _e( 'Your name', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe-author', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label><br /> -->
-            <h4 id="headline-author"><?php _e( 'Author', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe-author', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></h4>
+                <!-- <label for="recipe-author"><?php _e( 'Your name', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe-author', self::$required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label><br /> -->
+            <h4 id="headline-author"><?php _e( 'Author', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe-author', self::$required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></h4>
             <p>
                 <input type="text" id="recipe-author" value="<?php echo isset( $_POST['recipe-author'] ) ? $_POST['recipe-author'] : $recipe->author();  ?>" size="50" name="recipe-author" />
             </p>
@@ -22,8 +22,8 @@
         <div class="recipe-container recipe-image-container">     	
 <?php $image_url = $recipe->image_ID() > 0 ? $recipe->image_url( 'square-thumbnail' ) : WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png'; ?>
 <?php if ( !current_user_can( 'upload_files' ) || WPUltimateRecipe::option( 'user_submission_use_media_manager', '1' ) != '1' ) { ?>
-                <!-- <label for="recipe_thumbnail" class="recipe-image"><?php _e( 'Featured image', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_thumbnail', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label><br /> -->
-            <h4 id="headline-image"><?php _e( 'Featured image', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_thumbnail', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></h4>
+                <!-- <label for="recipe_thumbnail" class="recipe-image"><?php _e( 'Featured image', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_thumbnail', self::$required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label><br /> -->
+            <h4 id="headline-image"><?php _e( 'Featured image', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_thumbnail', self::$required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></h4>
             <p>
                 <img src="<?php echo $image_url; ?>" class="recipe_thumbnail" id="recipe_thumbnail_preview_" /><br/>
                 <input class="recipe_thumbnail_image button" type="file" id="recipe_thumbnail_input_" value="" size="50" name="recipe_thumbnail" onchange="PreviewImage()" />
@@ -33,7 +33,7 @@
                 <input name="recipe_thumbnail" class="recipe_thumbnail_image" type="hidden" value="<?php echo $recipe->image_ID(); ?>" />
                 <input class="recipe_thumbnail_add_image button button<?php if($has_image) { echo ' wpurp-hide'; } ?>" rel="<?php echo $recipe->ID(); ?>" type="button" value="<?php _e( 'Add Featured Image', 'wp-ultimate-recipe' ); ?>" />
                 <input class="recipe_thumbnail_remove_image button<?php if(!$has_image) { echo ' wpurp-hide'; } ?>" type="button" value="<?php _e('Remove Featured Image', 'wp-ultimate-recipe' ); ?>" />
-                <?php if( in_array( 'recipe_thumbnail', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?>
+                <?php if( in_array( 'recipe_thumbnail', self::$required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?>
                 <br /><img src="<?php echo $recipe->image_url( 'thumbnail' ); ?>" class="recipe_thumbnail" />
             </p>
 <?php } ?>

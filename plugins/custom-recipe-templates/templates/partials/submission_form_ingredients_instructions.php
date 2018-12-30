@@ -18,7 +18,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
         <tr class="recipe-general-form-servings">
             <td class="recipe-general-form-label"><label for="recipe_servings"><?php _e( 'Servings', 'foodiepro' ); ?><?php if( in_array( 'recipe_servings', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
             <td class="recipe-general-form-field">
-                <input type="text" name="recipe_servings" id="recipe_servings" value="<?php echo esc_attr( $recipe->servings() ); ?>" placeholder="<?php echo __("Quantity",'foodiepro');?>" />
+                <input type="text" class="selectonfocus" name="recipe_servings" id="recipe_servings" value="<?php echo esc_attr( $recipe->servings() ); ?>" placeholder="<?php echo __("Quantity",'foodiepro');?>" />
                 <input type="text" name="recipe_servings_type" id="recipe_servings_type" value="<?php echo esc_attr( $recipe->servings_type() ); ?>" placeholder="<?php echo __("Unit",'foodiepro');?>" />
                 <span class="recipe-general-form-notes"> <?php _e( '(e.g. 2 people, 3 loafs, ...)', 'foodiepro' ); ?></span>
             </td>
@@ -55,15 +55,15 @@ if( !isset( $required_fields ) ) $required_fields = array();
             <td class="recipe-general-form-label"><label for="recipe_prep_time"><?php _e( 'Prep Time', 'foodiepro' ); ?><?php if( in_array( 'recipe_prep_time', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
             <td class="recipe-general-form-field">
                 <span class="time-input">
-                    <input type="number" name="recipe_prep_time_days" id="recipe_prep_time_days" value="<?php echo esc_attr( $recipe->get_days( 'prep' ) ); ?>" min="0" max="99" />
+                    <input type="number" class="selectonfocus" name="recipe_prep_time_days" id="recipe_prep_time_days" value="<?php echo esc_attr( $recipe->get_days( 'prep' ) ); ?>" min="0" max="99" />
                     <span class="recipe-general-form-notes"> <?php _e( 'days', 'foodiepro' ); ?></span>
                 </span>
                 <span class="time-input">
-                    <input type="number" name="recipe_prep_time_hours" id="recipe_prep_time_hours" value="<?php echo esc_attr( $recipe->get_hours( 'prep' ) ); ?>" min="0" max="24" />
+                    <input type="number"class="selectonfocus" name="recipe_prep_time_hours" id="recipe_prep_time_hours" value="<?php echo esc_attr( $recipe->get_hours( 'prep' ) ); ?>" min="0" max="24" />
                     <span class="recipe-general-form-notes"> <?php _e( 'hours', 'foodiepro' ); ?></span>
                 </span>
                 <span class="time-input">
-                    <input type="number" name="recipe_prep_time_minutes" id="recipe_prep_time_minutes" value="<?php echo esc_attr( $recipe->get_minutes( 'prep' ) ); ?>" min="0" max="60"  />
+                    <input type="number" class="selectonfocus" name="recipe_prep_time_minutes" id="recipe_prep_time_minutes" value="<?php echo esc_attr( $recipe->get_minutes( 'prep' ) ); ?>" min="0" max="60"  />
                     <span class="recipe-general-form-notes"> <?php _e( 'minutes', 'foodiepro' ); ?></span>
                 </span>
             </td>
@@ -72,15 +72,15 @@ if( !isset( $required_fields ) ) $required_fields = array();
             <td class="recipe-general-form-label"><label for="recipe_cook_time"><?php _e( 'Cook Time', 'foodiepro' ); ?><?php if( in_array( 'recipe_cook_time', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
             <td class="recipe-general-form-field">
                 <span class="time-input">
-                    <input type="number" name="recipe_cook_time_days" id="recipe_cook_time_days" value="<?php echo esc_attr( $recipe->get_days( 'cook' ) ); ?>" min="0" max="99" />
+                    <input type="number"class="selectonfocus" name="recipe_cook_time_days" id="recipe_cook_time_days" value="<?php echo esc_attr( $recipe->get_days( 'cook' ) ); ?>" min="0" max="99" />
                     <span class="recipe-general-form-notes"> <?php _e( 'days', 'foodiepro' ); ?></span>
                 </span>
                 <span class="time-input">
-                    <input type="number" name="recipe_cook_time_hours" id="recipe_cook_time_hours" value="<?php echo esc_attr( $recipe->get_hours( 'cook' ) ); ?>" min="0" max="24" />
+                    <input type="number" class="selectonfocus" name="recipe_cook_time_hours" id="recipe_cook_time_hours" value="<?php echo esc_attr( $recipe->get_hours( 'cook' ) ); ?>" min="0" max="24" />
                     <span class="recipe-general-form-notes"> <?php _e( 'hours', 'foodiepro' ); ?></span>
                 </span>
                 <span class="time-input">
-                    <input type="number" name="recipe_cook_time_minutes" id="recipe_cook_time_minutes" value="<?php echo esc_attr( $recipe->get_minutes( 'cook' ) ); ?>" min="0" max="60"  />
+                    <input type="number" class="selectonfocus" name="recipe_cook_time_minutes" id="recipe_cook_time_minutes" value="<?php echo esc_attr( $recipe->get_minutes( 'cook' ) ); ?>" min="0" max="60"  />
                     <span class="recipe-general-form-notes"> <?php _e( 'minutes', 'foodiepro' ); ?></span>
                 </span>
             </td>
@@ -89,15 +89,15 @@ if( !isset( $required_fields ) ) $required_fields = array();
             <td class="recipe-general-form-label"><label for="recipe_passive_time"><?php _e( 'Passive Time', 'foodiepro' ); ?><?php if( in_array( 'recipe_passive_time', $required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label></td>
             <td class="recipe-general-form-field">
                 <span class="time-input">
-                    <input type="number" name="recipe_passive_time_days" id="recipe_passive_time_days" value="<?php echo esc_attr( $recipe->get_days( 'passive' ) ); ?>" min="0" max="99" />
+                    <input type="number" class="selectonfocus" name="recipe_passive_time_days" id="recipe_passive_time_days" value="<?php echo esc_attr( $recipe->get_days( 'passive' ) ); ?>" min="0" max="99" />
                     <span class="recipe-general-form-notes"> <?php _e( 'days', 'foodiepro' ); ?></span>
                 </span>
                 <span class="time-input">
-                    <input type="number" name="recipe_passive_time_hours" id="recipe_passive_time_hours" value="<?php echo esc_attr( $recipe->get_hours( 'passive' ) ); ?>" min="0" max="24" />
+                    <input type="number" class="selectonfocus" name="recipe_passive_time_hours" id="recipe_passive_time_hours" value="<?php echo esc_attr( $recipe->get_hours( 'passive' ) ); ?>" min="0" max="24" />
                     <span class="recipe-general-form-notes"> <?php _e( 'hours', 'foodiepro' ); ?></span>
                 </span>
                 <span class="time-input">
-                    <input type="number" name="recipe_passive_time_minutes" id="recipe_passive_time_minutes" value="<?php echo esc_attr( $recipe->get_minutes( 'passive' ) ); ?>" min="0" max="60"  />
+                    <input type="number" class="selectonfocus" name="recipe_passive_time_minutes" id="recipe_passive_time_minutes" value="<?php echo esc_attr( $recipe->get_minutes( 'passive' ) ); ?>" min="0" max="60"  />
                     <span class="recipe-general-form-notes"> <?php _e( 'minutes', 'foodiepro' ); ?></span>
                 </span>
             </td>
@@ -226,7 +226,7 @@ if( !isset( $required_fields ) ) $required_fields = array();
             </td>
             <!-- Ingredient Name -->
             <td class='ingredient-input name'><!-- <span class="mobile-display"><?php _e( 'Ingredient', 'foodiepro' ); ?></span> -->
-                <input type="text" name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" placeholder="<?php _e( 'Ingredient', 'foodiepro' ); ?>" /></td><td class"spinner"><i id="spinner-ingredients_<?php echo $i; ?>" class="ajax-indicator fa fa-refresh fa-spin"></i>
+                <input type="text" name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" placeholder="<?php _e( 'Ingredient', 'foodiepro' ); ?>" /></td><td class="spinner"><i id="spinner-ingredients_<?php echo $i; ?>" class="ajax-indicator fa fa-refresh fa-spin"></i>
             </td>
             <!-- Ingredient Notes -->
             <td class='ingredient-input notes'>

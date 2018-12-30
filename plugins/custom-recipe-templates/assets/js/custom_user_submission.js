@@ -1,6 +1,16 @@
 jQuery(document).ready(function() {
 
 
+/* Autoselect "numeric" inputs on focux
+---------------------------------------------------------------- */
+
+
+jQuery('input.selectonfocus').focus(function() {
+    console.log('select on focus !!!');
+    jQuery(this).select();
+});
+
+
 /* Shortcode buttons
 ---------------------------------------------------------------- */
 

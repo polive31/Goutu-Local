@@ -603,7 +603,7 @@ class Custom_WPURP_Recipe_Submission {
                 update_post_meta( $post_id, 'recipe_instructions', $meta_backup );
 
                 // Success message
-                $successmsg = current_user_can('administrator')?__( 'Recipe published.', 'foodiepro' ):__( 'Recipe submitted! Thank you, your recipe is now awaiting moderation.', 'foodiepro' );
+                $successmsg = current_user_can('administrator')?sprintf( __( 'Recipe <a href="%s">published</a>.', 'foodiepro' ), get_permalink($post_id) ):__( 'Recipe submitted! Thank you, your recipe is now awaiting moderation.', 'foodiepro' );
                 $url = do_shortcode('[permalink slug="' . self::RECIPES_PUBLISH_SLUG . '"]');
                 $output = '<p class="successbox">' . $successmsg . '</p>';
                 $output .= '<p>←' . sprintf( __( '<a href="%s">Back to my recipes</a>', 'foodiepro' ), $url ) . '</p>';

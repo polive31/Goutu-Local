@@ -146,11 +146,12 @@ span.bp_counter,
 	font-family:FontAwesome;
 }
 
-/* Headlines */
+/* HEADINGS */
 h1.entry-title {
 	text-decoration: none;
 	text-transform: capitalize;
 	font-size: 4.4rem;
+	line-height: 4.4rem;
 	font-weight:normal;
 	padding: 10px 0;	
 }
@@ -185,7 +186,7 @@ h1.archive-title {
 }
 
 .archive h2 { /* Subtitle */
-	font-size: 4.5rem;
+	/* font-size: 4.5rem; */
 	margin: 40px 0 0 0;
 	font-weight:bold;
 }
@@ -223,7 +224,19 @@ h3.rpwe-title a {
 	text-decoration: none;
 	text-transform:capitalize !important;
 	font-weight: normal;
-	font-size: 18px;	
+	font-size: 1.8rem;	
+}
+
+h2.entry-title, .wpupg-post-title, 
+.sidebar .widget-wrap li a, 
+.sidebar .widget-wrap li h3 a, 
+.sidebar .widget-wrap a {
+  font-size: 1.7rem;
+}
+
+.featured-content h2.entry-title a {
+  font-size: 16px;
+  text-decoration:none;
 }
 
 

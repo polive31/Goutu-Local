@@ -13,20 +13,14 @@ class Custom_WPURP_Recipe_Submission {
     protected static $required_fields; 
     protected static $required_fields_labels; 
     
-    public function __construct( $name = 'user-submissions' ) {
+    // public function __construct( $name = 'user-submissions' ) {
+    public function __construct() {
         self::$_PluginDir = plugin_dir_path( dirname( __FILE__ ) );
         self::$_PluginUrl = plugin_dir_url( dirname( __FILE__ ) );
         $upload_dir = wp_upload_dir();
         self::$_UploadPath = trailingslashit( $upload_dir['basedir'] );
 
-        self::$required_fields_labels = array(
-                                'recipe_title_check' => __('Please provide a post title.','foodiepro'),
-                                'recipe_servings' => __('Please provide the number of servings.', 'foodiepro'),
-                                'recipe_prep_time' => __('Please provide the preparation time.', 'foodiepro'),
-                                'recipe-course' => __('Please provide the recipe course.', 'foodiepro'),
-                                'recipe-difficult' => __('Please provide the recipe difficulty.', 'foodiepro'),
-                            );
-        self::$required_fields = array_keys( self::$required_fields_labels );
+        add_action( 'wp', array( $this, 'hydrate') );
 
         // Recipe headline filter
         add_filter( 'genesis_post_info', array($this, 'add_recipe_edit_button'), 20); // Important : priority must be above 15 since post meta is customized with priority 15 (see custom post templates)
@@ -46,6 +40,17 @@ class Custom_WPURP_Recipe_Submission {
         /* Ajax Callbacks for Autocomplete jquery plugin  */
         add_action('wp_ajax_nopriv_get_tax_terms', array($this, 'ajax_custom_get_tax_terms'));
         add_action('wp_ajax_get_tax_terms', array($this, 'ajax_custom_get_tax_terms'));        
+    }
+
+    public function hydrate() {
+        self::$required_fields_labels = array(
+                        'recipe_title_check' => __('Recipe title.','foodiepro'),
+                        'recipe_servings' => __('Number of servings.', 'foodiepro'),
+                        'recipe_prep_time' => __('Preparation time.', 'foodiepro'),
+                        'recipe-course' => __('Recipe course.', 'foodiepro'),
+                        'recipe-difficult' => __('Recipe difficulty.', 'foodiepro'),
+                    );
+        self::$required_fields = array_keys( self::$required_fields_labels );
     }
 
 
@@ -663,3 +668,5 @@ class Custom_WPURP_Recipe_Submission {
 
 
 }
+
+new Custom_WPURP_Recipe_Submission();

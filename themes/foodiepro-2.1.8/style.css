@@ -1529,17 +1529,6 @@ img.alignright,
 /*	padding-top: 40px;*/
 /* } */
 
-h2.entry-title, .wpupg-post-title, 
-.sidebar .widget-wrap li a, 
-.sidebar .widget-wrap li h3 a, 
-.sidebar .widget-wrap a {
-  font-size: 17px;
-}
-
-.featured-content h2.entry-title a {
-  font-size: 16px;
-  text-decoration:none;
-}
 
 
 /* Widget Titles */

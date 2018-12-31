@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'CHILD_THEME_NAME', 'Foodie Pro Theme' );
-define( 'CHILD_THEME_VERSION', '2.2.59' );
+define( 'CHILD_THEME_VERSION', '2.2.60' );
 define( 'CHILD_THEME_DEVELOPER', 'Shay Bocks' );
 define( 'CHILD_THEME_URL', get_stylesheet_directory_uri() );
 define( 'CHILD_THEME_PATH', get_stylesheet_directory() );
@@ -442,7 +442,7 @@ function foodiepro_debug_shortcode($args) {
 /* =             SCRIPTS AND STYLES DEBUG 
 /* =================================================================*/
 
-add_action( 'wp_footer', 'foodiepro_record_scripts_styles',PHP_INT_MAX );
+// add_action( 'wp_footer', 'foodiepro_record_scripts_styles',PHP_INT_MAX );
 function foodiepro_record_scripts_styles() {
 	if( !is_admin() && is_user_logged_in() && current_user_can( 'manage_options' )) {
 		// Print Scripts

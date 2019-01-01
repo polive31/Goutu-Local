@@ -347,6 +347,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 
 		return $html;
 	}
+	
 
 
 	/* =================================================================*/
@@ -365,6 +366,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		), $atts );
 
 		$html = '';
+		$include = $atts['include'];
 		$exclude = $atts['exclude'];
 		$dropdown = $atts['dropdown'];
 		$index_title = $atts['index_title'];
@@ -404,7 +406,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		else {
 			$child_of='';
 		}
-	
+		
 
 		// Arguments for wp_dropdown_categories	/ wp_dropdown_users
 		$args = array( 
@@ -422,6 +424,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		
 		if ($dropdown=='true') {	
 			$dropdown_id = $tax_slug . ++$dropdown_cnt;
+
 			
 			$html = '<label class="screen-reader-text" for="' . esc_attr( $dropdown_id ) . '"> . $label . </label>';
 

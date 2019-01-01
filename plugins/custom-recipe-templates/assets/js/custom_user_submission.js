@@ -11,6 +11,14 @@ jQuery('input.selectonfocus').focus(function() {
 });
 
 
+/* Auto adjust textarea height
+---------------------------------------------------------------- */
+
+jQuery('#recipe-instructions,#recipe-ingredients').on('input', 'textarea', function () {
+    console.log('Auto adjust height');
+    jQuery(this).outerHeight(38).outerHeight(this.scrollHeight); // 38 or '1em' -min-height
+}); 
+
 /* Shortcode buttons
 ---------------------------------------------------------------- */
 
@@ -151,7 +159,7 @@ jQuery('input.selectonfocus').focus(function() {
     });
 
 
-    jQuery('#recipe-ingredients').on('keydown','.ingredients_notes, .ingredient-group-label',function(e) {
+    jQuery('#recipe-ingredients').on('keydown','.ingredients_notes',function(e) {
         console.log("%c Found keypress on " + jQuery(this).attr('class') + jQuery(this).attr('id'),"background:#CCC;color:blue");
         var keyCode = e.keyCode || e.which;
         if (keyCode == 9 && e.shiftKey == false) {

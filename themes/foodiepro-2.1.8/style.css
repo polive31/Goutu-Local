@@ -2717,13 +2717,6 @@ span.edit-button {
     vertical-align: middle;    
 }
 
-.single h1.entry-title {
-    /*display: inline-block;
-    vertical-align: middle;*/
-  padding-top: 0;
-  margin-top: 0;
-}
-
 /* .single .entry-header { */
   /*padding-bottom: 40px;*/
 /* } */
@@ -2731,10 +2724,11 @@ span.edit-button {
 /* Pages
 --------------------------------------------- */
 
+.archive-description,
 .page header.entry-header,
 .single header.entry-header {
     display: inline-block;
-    margin-bottom:20px;
+	padding: 10px 0px 40px 0px;	
 }
 
 .page-header-wrap {
@@ -3265,7 +3259,7 @@ nav.nav-primary .wrap {
 	color:#999;
 	font-size: 1.3rem;
 	font-style:italic;
-	margin:0;
+	margin-top:20px;
 }
 
 .entry-meta a,

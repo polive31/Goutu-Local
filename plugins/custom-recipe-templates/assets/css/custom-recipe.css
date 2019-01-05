@@ -96,6 +96,10 @@ span.favorite-icon {
 	float:left;
 }
 
+.wpurp-recipe-instruction-container {
+	padding-top:0;
+}
+
 .recipe-container .rating {
 	font-size:24px;
 }

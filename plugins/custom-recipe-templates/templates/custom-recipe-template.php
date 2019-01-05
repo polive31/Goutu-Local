@@ -100,9 +100,6 @@
 							<img src="<?php echo get_the_post_thumbnail_url( $this->post_ID,'vertical-thumbnail');?>" alt="<?php echo $imgAlt;?>">
 						</a>
 					</div>
-					<div class="clearfix">
-						[custom-gallery size="mini-thumbnail" columns="4" gallery-id="joined-pics"]
-					</div>
 				</div>
 			
 				<div class="info-container">
@@ -167,6 +164,13 @@
 			?>					
 				</div>		
 				
+			</div>
+
+			<!-- Gallerie -->
+			<div class="recipe-container"  id="gallery">
+				<div class="clearfix">
+					[custom-gallery size="mini-thumbnail" columns="4" gallery-id="joined-pics"]
+				</div>
 			</div>
 			
 			<!-- Ingredients + Instructions -->

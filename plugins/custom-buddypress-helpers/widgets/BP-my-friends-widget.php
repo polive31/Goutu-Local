@@ -45,7 +45,6 @@ class BP_My_Friends extends WP_Widget {
 		if ($instance['user']=='loggedin') {
 			if ( !(is_user_logged_in() ) ) return;
 			$user_id=bp_loggedin_user_id();
-			$user_id=bp_loggedin_user_id();
 			$title= __('My Friends','foodiepro');
 		}
 		else {
@@ -87,7 +86,7 @@ class BP_My_Friends extends WP_Widget {
 	
 	
 	public function display_title($args, $instance, $title) {
-	echo $args['before_widget'];
+		echo $args['before_widget'];
 		if ( ! (empty( $instance['title']) ) )
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 		else

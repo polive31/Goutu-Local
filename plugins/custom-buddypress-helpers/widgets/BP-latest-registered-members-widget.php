@@ -11,20 +11,20 @@ if ( !defined('ABSPATH') )
 /* =================================================================*/
 
 add_action( 'widgets_init', function(){
-     register_widget( 'BP_Latest' );
+     register_widget( 'Custom_BP_Latest' );
 });	
 
 /**
  * Adds BP_Latest widget.
  */
-class BP_Latest extends WP_Widget {
+class Custom_BP_Latest extends WP_Widget {
 
 	/**
 	 * Register widget with WordPress.
 	 */
 	function __construct() {
 		parent::__construct(
-			'bp_latest', // Base ID
+			'custom_bp_latest', // Base ID
 			__('(Buddypress) Custom latest registered members', 'text_domain'), // Name
 			array( 'description' => __( 'Displays latest registered members', 'text_domain' ), ) // Args
 		);
@@ -40,7 +40,8 @@ class BP_Latest extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 	
-     	echo $args['before_widget'];
+		echo $args['before_widget'];
+		 
 		if ( ! empty( $instance['title'] ) ) {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 		}
@@ -84,11 +85,9 @@ class BP_Latest extends WP_Widget {
 			echo '</a>';
 			echo '</div>';
 		}
-
-
 		
-	echo '<div class="clear"></div>';	
-	echo $args['after_widget'];
+		echo '<div class="clear"></div>';	
+		echo $args['after_widget'];
 	}
 
 	/**
@@ -143,4 +142,4 @@ class BP_Latest extends WP_Widget {
 		return $instance;
 	}
 
-} // class BP_Latest
+} // class Custom_BP_Latest

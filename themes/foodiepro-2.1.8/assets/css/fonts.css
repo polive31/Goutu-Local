@@ -147,22 +147,39 @@ span.bp_counter,
 }
 
 /* HEADINGS */
-h1.archive-title,
 h1.entry-title {
-	font-size: 6rem;
-	line-height: 6rem;
-	letter-spacing:2px;
-	display: inline;
-	text-align: left;
-	font-variant:small-caps;
 	text-decoration: none;
 	text-transform: capitalize;
-	vertical-align: middle;
+	font-size: 4.4rem;
+	line-height: 4.4rem;
 	font-weight:normal;
-	margin:0;
-	padding: 0px 0px 40px 0px;
+	padding: 10px 0;	
 }
 
+h1.archive-title,
+.page h1.entry-title {
+	font-size: 60px;
+	font-weight:normal;
+	font-variant:small-caps;
+	line-height: 50px;
+    padding-left: 20px;
+	padding-bottom: 40px;
+	letter-spacing:2px;
+}
+
+.page h1.entry-title {
+	text-align: left;
+	/* display: inline-block; */
+	display: inline;
+	vertical-align: middle;
+	margin:0;
+	padding:0;
+}
+
+h1.archive-title {
+	font-size: 5rem;
+	padding: 10px 10px 20px 0;
+}
 
 .archive-description p {
     padding-left: 20px;

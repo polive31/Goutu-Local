@@ -34,7 +34,6 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		add_shortcode('site-logo', array($this, 'get_site_logo_path'));
 
 		// Misc 	
-		add_shortcode('if', array($this,'display_conditionnally') );	
 		add_shortcode('debug', array($this,'show_debug_html') );	
 	
 	}
@@ -90,24 +89,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		return $html;
 	}
 
-	/* =================================================================*/
-	/* = IF SHORTCODE
-	/* =================================================================*/
-	public function display_conditionnally( $atts, $content ) {
-		$atts = shortcode_atts( array(
-			'user' => '', //logged-in, logged-out
-		), $atts );
-		
-		$display=true;
-		$user=$atts['user'];
 
-		if ( $user=='logged-out' )
-			$display=$display && !is_user_logged_in();
-		elseif ( $user=='logged-in' )
-			$display=$display && is_user_logged_in();
-		
-		return $display?$content:'';
-	}
 
 
 

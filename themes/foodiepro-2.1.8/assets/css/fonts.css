@@ -150,6 +150,7 @@ span.bp_counter,
 h1.archive-title,
 h1.entry-title {
 	font-size: 5.5rem;
+	line-height: normal;
 	letter-spacing:2px;
 	display: inline;
 	text-align: left;

@@ -12,6 +12,7 @@ class CustomScriptsStylesEnqueue {
 			'bp-confirm',
 			'skip-links',
 			'foodie-pro-general',
+			'query-monitor'
 			// 'one-signal'
 		);
 
@@ -22,49 +23,58 @@ class CustomScriptsStylesEnqueue {
 			'bp-mentions-css',
 			'custom-lightbox',
 		);
-
+		
 	// Stylesheets to be preloaded
 	const PRELOAD_CSS = array(
-			'google-fonts',
-			'child-theme-fonts',
-		);	
-
+		'google-fonts',
+		'child-theme-fonts',
+		'font-awesome'
+	);	
+	
 	// Stylesheets to be replaced
 	const CSS_REPLACE = array(
-			'name-directory-style' 	=> 'name_directory.css',
-		);
-
+		'name-directory-style' 	=> 'name_directory.css',
+	);
+	
 	// Stylesheets to be loaded conditionnally
 	private $css_if = array(
-			// 'custom-star-ratings' 				=> array('page' => 'blog-page'),
-			'circular-progress-bar' 			=> array('page' => 'bp-page home'),
-			'bp-xprofile-custom-field-types' 	=> array('false' => ''),
-			'bp-admin-bar'						=> array('false' => ''),
-			'bp-child-css' 						=> array('page' => 'bp-page'),
-			'bp-mentions-css' 					=> array('page' => 'bp-page'),
-			'bppp-style' 						=> array('false' => ''),// Buddypress Progress Bar
-			'yarppRelatedCss' 					=> array('singular' => 'post recipe' ),
-			'image-lightbox-plugin'				=> array('singular' => 'post recipe' ),
-			'custom-lightbox'					=> array('singular' => 'post recipe' ),
-			'name-directory-style' 				=> array('shortcode' => 'namedirectory'),
-			'yarppWidgetCss' 					=> array('false' => ''),
-			'megamenu-fontawesome' 				=> array('false' => ''),
-			'megamenu-google-fonts' 			=> array('false' => ''),
-			'megamenu-genericons' 				=> array('false' => ''),
-			'popup-maker-site' 					=> array('false' => ''),
-			'wpba_front_end_styles' 			=> array('false' => ''),
-		);
+		// 'custom-star-ratings' 				=> array('page' => 'blog-page'),
+		'circular-progress-bar' 			=> array('page' => 'bp-page home'),
+		'bp-xprofile-custom-field-types' 	=> array('false' => ''),
+		'bp-admin-bar'						=> array('false' => ''),
+		'bp-child-css' 						=> array('page' => 'bp-page'),
+		'bp-mentions-css' 					=> array('page' => 'bp-page'),
+		'bppp-style' 						=> array('false' => ''),// Buddypress Progress Bar
+		'yarppRelatedCss' 					=> array('singular' => 'post recipe' ),
+		'name-directory-style' 				=> array('shortcode' => 'namedirectory'),
+		'yarppWidgetCss' 					=> array('false' => ''),
+		'megamenu-fontawesome' 				=> array('false' => ''),
+		'megamenu-google-fonts' 			=> array('false' => ''),
+		'megamenu-genericons' 				=> array('false' => ''),
+		'popup-maker-site' 					=> array('false' => ''),
+		'wpba_front_end_styles' 			=> array('false' => ''),
+	);
+	
+	// Stylesheets to be loaded in footer
+	private $css_footer = array(
+		// 'query-monitor',
+	);	
 
-
+	// Scripts to be loaded in footer
+	private $js_footer = array(
+		// 'query-monitor',
+	);		
+		
+		
 	// Scripts to be loaded conditionnally
 	private $js_if = array(
-			'bp-child-js'						=> array('page' => 'bp-page'),
-			'bp-mentions'						=> array('page' => 'bp-page'),
-			'bp-confirm'						=> array('page' => 'bp-page'),
-			'bp-widget-members'					=> array('page' => 'home bp-page'),
+		'bp-child-js'						=> array('page' => 'bp-page'),
+		'bp-mentions'						=> array('page' => 'bp-page'),
+		'bp-confirm'						=> array('page' => 'bp-page'),
+		'bp-widget-members'					=> array('page' => 'home bp-page'),
 		);
-
-	// Plugin path & url properties
+		
+		// Plugin path & url properties
 	public static $PLUGIN_PATH;
 	public static $PLUGIN_URI;	
 
@@ -73,8 +83,11 @@ class CustomScriptsStylesEnqueue {
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
 
-		add_action( 'wp_enqueue_scripts', 	array($this, 'enqueue_high_priority_assets' ), 10);
-		add_action( 'wp_enqueue_scripts', 	array($this, 'enqueue_low_priority_assets' ), 20);
+		add_action( 'wp_enqueue_scripts', 	array($this, 'enqueue_high_priority_assets' ), 15);
+		add_action( 'wp_enqueue_scripts', 	array($this, 'enqueue_low_priority_assets' ), 15);
+
+		add_action( 'wp_enqueue_scripts', 	array($this, 'dequeue_from_header'), PHP_INT_MAX);
+		add_action( 'get_footer', 			array($this, 'enqueue_in_footer'), PHP_INT_MAX);
 
 		add_action( 'wp_enqueue_scripts', 	array($this, 'enqueue_if'), PHP_INT_MAX);
 		add_action( 'get_footer',			array($this, 'enqueue_if'), PHP_INT_MAX);
@@ -117,23 +130,47 @@ class CustomScriptsStylesEnqueue {
 
 		wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Oswald|Vollkorn:300,400', array(), CHILD_THEME_VERSION );
 		custom_enqueue_style( 'child-theme-fonts', $css_url, $css_path, 'fonts.css', array( 'foodie-pro-theme' ), CHILD_THEME_VERSION );
+		wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
+		
+		
 	}
-
+	
 	public function enqueue_low_priority_assets() {
 		$css_url = CHILD_THEME_URL . '/assets/css/';
 		$css_path = CHILD_THEME_PATH . '/assets/css/';
-
-		wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
 		
 		/* Theme stylesheet with varying name & version, forces cache busting at browser level
 		--------------------------------------------------- */
 		$color_theme_handler = 'color-theme-' . CHILD_COLOR_THEME;
 		custom_enqueue_style( $color_theme_handler , $css_url, $css_path, $color_theme_handler . '.css', array(), CHILD_COLOR_THEME . CHILD_THEME_VERSION );
-
+		
 		/* Customized GDPR stylesheet 
 		--------------------------------------------------- */
 		custom_enqueue_style( 'custom-gdpr' , $css_url, $css_path, 'custom-gdpr-public.css', array(), CHILD_THEME_VERSION );
+
+		// wp_enqueue_style( 'query-monitor2', 'http://goutu.main/wp-content/plugins/query-monitor/assets/query-monitor.css', array(), CHILD_THEME_VERSION );
 	}
+
+
+	/*  LOAD IN FOOTER 
+	/* ----------------------------------------------------------------*/
+	public function dequeue_from_header() {
+		foreach ($this->css_footer as $style ) {
+			wp_dequeue_style($style);
+		}
+		foreach ($this->js_footer as $script ) {
+			wp_dequeue_script($script);
+		}		
+	}	
+
+	public function enqueue_in_footer() {
+		foreach ($this->css_footer as $style ) {
+			wp_enqueue_style($style);
+		}
+		foreach ($this->js_footer as $script ) {
+			wp_enqueue_script($script);
+		}		
+	}	
 
 	/*  LOAD CONDITIONALLY 
 	/* ----------------------------------------------------------------*/

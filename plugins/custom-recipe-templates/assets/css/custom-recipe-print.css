@@ -48,6 +48,10 @@ ul.wpurp-recipe-tags,
     padding-left: 5px!important;
 }
 
+.wpurp-recipe-instruction-group {
+    font-weight: bold !important;
+}
+
 li.wpurp-recipe-instruction {
     padding-bottom: 10px!important;
 }

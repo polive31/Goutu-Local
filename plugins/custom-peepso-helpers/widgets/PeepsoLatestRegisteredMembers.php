@@ -11,22 +11,24 @@ if ( !defined('ABSPATH') )
 /* =================================================================*/
 
 add_action( 'widgets_init', function(){
-     register_widget( 'PeepsoLatestRegisteredMembers' );
+     register_widget( 'CustomPeepsoLatestRegisteredMembers' );
 });	
 
 /**
  * Adds Peepso Latest widget.
  */
-class PeepsoLatestRegisteredMembers extends WP_Widget {
+class CustomPeepsoLatestRegisteredMembers extends WP_Widget {
 
 	/**
 	 * Register widget with WordPress.
 	 */
 	function __construct() {
 		parent::__construct(
-			'peepso_latest', // Base ID
-			__('(Peepso) Latest registered members', 'text_domain'), // Name
-			array( 'description' => __( 'Displays latest registered members', 'text_domain' ), ) // Args
+			'custom_peepso_latest', // Base ID
+			__('(Peepso) Latest registered members', 'foodiepro'), // Name
+			array( 
+				'description' => __( 'Displays latest registered members', 'foodiepro' ),
+			) // Args
 		);
 	}
 
@@ -45,7 +47,7 @@ class PeepsoLatestRegisteredMembers extends WP_Widget {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 		}
 
-		$args = array(
+		$query_args = array(
 			// 'blog_id'      => $GLOBALS['blog_id'],
 			// 'role'         => '',
 			// 'role__in'     => array(),
@@ -66,7 +68,7 @@ class PeepsoLatestRegisteredMembers extends WP_Widget {
 			// 'fields'       => 'all',
 			// 'who'          => '',
 		 ); 
-		$users = get_users( $args );
+		$users = get_users( $query_args );
 		// echo $instance['limit'];
 		$size = 'full';
 
@@ -82,6 +84,7 @@ class PeepsoLatestRegisteredMembers extends WP_Widget {
 		echo '</div>';
 
 		echo '<div class="clear"></div>';	
+
 		echo $args['after_widget'];
 	}
 
@@ -139,5 +142,5 @@ class PeepsoLatestRegisteredMembers extends WP_Widget {
 
 } // class Peepso_Latest
 
-new PeepsoLatestRegisteredMembers();
+new CustomPeepsoLatestRegisteredMembers();
 

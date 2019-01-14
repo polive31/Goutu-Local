@@ -1,57 +1,87 @@
 jQuery(document).ready(function()   {
-    // window.initDone = false;
-    var hintAlreadyRead="false";
-    setContainerTopMargin( true );
+
+    sidebarHeightAdjustToContent();
     
+    /*  Minify header on scroll
+    -------------------------------------*/
+    var hintAlreadyRead="false";
+    var didScroll = "no";
+    var count = 0;
+
+    setContainerTopMargin( true );
     hintAlreadyRead=getCookie('menuHint');
     if (hintAlreadyRead=="" || hintAlreadyRead=="false") {
         setCookie('menuHint','true',30);
         // console.log("Set Cookie to true and remove class nodisplay");
         jQuery('.mobile-menu-hint-container').removeClass('nodisplay');       
     }
-    // else {
-    //     console.log("Cookie=True => do not show hint");
+    // else console.log("Cookie=True => do not show hint");
+
+    jQuery(window).scroll(function(event){
+        // console.log( "Init Done in scroll function = " + window.initDone );
+        if (didScroll == "no" && count > 4) {
+            didScroll = "yes";
+            // console.log( "SCROLLED !");
+        }
+    });
+
+    setInterval(function() {
+        if (didScroll == "yes" ) {
+            // ****** Trigger the resize Header function !
+            actionsOnScroll();
+            // *******************************************
+            didScroll = "last";
+        }
+        else if (didScroll == "last") {
+            // Allows for the css transition to be completed before computing the margin again 
+            setContainerTopMargin();
+            didScroll = "stop";
+        }    
+        else if (didScroll == "no" && count <= 4) {
+            count++;
+            // console.log( "count = " + count);
+        }
+    }, 250);
     
-    // }
-    // window.initDone = true;
-    // console.log( "Init Done = " + window.initDone );
 });
 
-jQuery(document).ready(function()   {
 
-    // if ( jQuery( "body" ).hasClass( "home-page" ) ) {
-        // console.log( "IS HOME PAGE !");
-        var didScroll = "no";
-        var count = 0;
+/* -----------------------------------------
+    Sidebar height adjust to content
+------------------------------------------*/
+function sidebarHeightAdjustToContent() {
 
-        jQuery(window).scroll(function(event){
-            // console.log( "Init Done in scroll function = " + window.initDone );
-            if (didScroll == "no" && count > 4) {
-                didScroll = "yes";
-                // console.log( "SCROLLED !");
-            }
-        });
+    // console.log( "In sidebarHeightAdjustToContent" );
 
-        setInterval(function() {
-            if (didScroll == "yes" ) {
-                // ****** Trigger the resize Header function !
-                actionsOnScroll();
-                // *******************************************
-                didScroll = "last";
-            }
-            else if (didScroll == "last") {
-                // Allows for the css transition to be completed before computing the margin again 
-                setContainerTopMargin();
-                didScroll = "stop";
-            }    
-            else if (didScroll == "no" && count <= 4) {
-                count++;
-                // console.log( "count = " + count);
-            }
-        }, 250);
+    // Variables for Sidebar height adjust to content (shac) 
+    var shacContentClass = ".site-inner .content";
+    var shacSidebarClass = ".sidebar.widget-area";
+    var shacElementToRemove = "section";
+    var shacExtraHeight = 300;
+    var shacMaxWidgetRemove = 3;
 
-    // }
-});
+    var count = 0;
+    // console.log( jQuery(shacContentClass) );
+    var contentHeight = jQuery(shacContentClass).outerHeight();
+    // console.log( contentHeight );
+    // console.log( jQuery(shacSidebarClass) );
+    var sidebarHeight = jQuery(shacSidebarClass).outerHeight();
+    // console.log("Sidebar height", sidebarHeight );
+    // console.log( "Allowed max height", contentHeight + shacExtraHeight );
+    
+    while ( (sidebarHeight > contentHeight + shacExtraHeight) && (count < shacMaxWidgetRemove ) ) {
+        // console.log( "In while loop" );
+        var element = shacSidebarClass + ' ' + shacElementToRemove + ':last-child';
+        // console.log( "Last widget in sidebar : ", jQuery(element) );
+        jQuery(element).remove();
+        sidebarHeight = jQuery(shacSidebarClass).outerHeight();
+        // console.log("New sidebar height", sidebarHeight );
+        count++;
+        // console.log( count );
+    };
+    
+    console.log( "Out of while loop" );
+}
 
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
@@ -83,6 +113,7 @@ function actionsOnScroll() {
     // Hide hint
     jQuery('.mobile-menu-hint-container').addClass('transparent');
 }
+
 
 function setContainerTopMargin( scrollTop ) {
     var height = jQuery( "header" ).outerHeight();

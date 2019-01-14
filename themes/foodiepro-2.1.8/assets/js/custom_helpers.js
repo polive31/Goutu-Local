@@ -51,7 +51,7 @@ jQuery(document).ready(function()   {
 ------------------------------------------*/
 function sidebarHeightAdjustToContent() {
 
-    // console.log( "In sidebarHeightAdjustToContent" );
+    console.log( "In sidebarHeightAdjustToContent" );
 
     // Variables for Sidebar height adjust to content (shac) 
     var shacContentClass = ".site-inner .content";
@@ -61,26 +61,24 @@ function sidebarHeightAdjustToContent() {
     var shacMaxWidgetRemove = 3;
 
     var count = 0;
-    // console.log( jQuery(shacContentClass) );
     var contentHeight = jQuery(shacContentClass).outerHeight();
-    // console.log( contentHeight );
-    // console.log( jQuery(shacSidebarClass) );
     var sidebarHeight = jQuery(shacSidebarClass).outerHeight();
-    // console.log("Sidebar height", sidebarHeight );
-    // console.log( "Allowed max height", contentHeight + shacExtraHeight );
+    console.log( "Content height", contentHeight );
+    console.log( "Sidebar height", sidebarHeight );
+    console.log( "Allowed max height", contentHeight + shacExtraHeight );
     
     while ( (sidebarHeight > contentHeight + shacExtraHeight) && (count < shacMaxWidgetRemove ) ) {
-        // console.log( "In while loop" );
+        console.log( "In adjust sidebar height loop" );
         var element = shacSidebarClass + ' ' + shacElementToRemove + ':last-child';
         // console.log( "Last widget in sidebar : ", jQuery(element) );
         jQuery(element).remove();
         sidebarHeight = jQuery(shacSidebarClass).outerHeight();
-        // console.log("New sidebar height", sidebarHeight );
+        console.log("Removed one widget, new sidebar height is ", sidebarHeight );
         count++;
         // console.log( count );
     };
     
-    console.log( "Out of while loop" );
+    // console.log( "Out of while loop" );
 }
 
 function setCookie(cname, cvalue, exdays) {

@@ -20,23 +20,19 @@
         </div>
 <?php } ?>
         <div class="recipe-container recipe-image-container">     	
-<?php $image_url = $recipe->image_ID() > 0 ? $recipe->image_url( 'square-thumbnail' ) : WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png'; ?>
-<?php if ( !current_user_can( 'upload_files' ) || WPUltimateRecipe::option( 'user_submission_use_media_manager', '1' ) != '1' ) { ?>
+            <?php 
+                $has_image = $recipe->image_ID() > 0;
+                $image_url = $has_image ? $recipe->image_url( 'square-thumbnail' ) : WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png'; ?> 
                 <!-- <label for="recipe_thumbnail" class="recipe-image"><?php _e( 'Featured image', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_thumbnail', self::$required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></label><br /> -->
-            <h4 id="headline-image"><?php _e( 'Featured image', 'wp-ultimate-recipe' ); ?><?php if( in_array( 'recipe_thumbnail', self::$required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></h4>
-            <p>
-                <img src="<?php echo $image_url; ?>" class="recipe_thumbnail" id="recipe_thumbnail_preview_" /><br/>
+            <h4 id="headline-image"><?php _e( 'Featured image', 'foodiepro' ); ?><?php if( in_array( 'recipe_thumbnail', self::$required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?></h4>
+            <p class="recipe-guidelines">Placez ici votre plus belle photo pour illustrer cette recette, c'est très important pour donner envie à vos visiteurs de la cuisiner !</p>
+            <div class="recipe-image thumbnail">
+                <img src="<?php echo $image_url; ?>" class="recipe_thumbnail <?php if( !$has_image ) { ?>nodisplay<?php };?>" id="recipe_thumbnail_preview_" />
+                <!-- <div class="recipe_remove_image_button <?php if( !$has_image ) { ?>nodisplay<?php };?>" id="recipe_thumbnail_remove_ ?>" title="<?php _e( 'Remove Image', 'foodiepro' ) ?>" /></div> -->
+            </div>
+            <div class="recipe-image input">
                 <input class="recipe_thumbnail_image button" type="file" id="recipe_thumbnail_input_" value="" size="50" name="recipe_thumbnail" onchange="PreviewImage()" />
-            </p>
-<?php } else { ?>
-            <p>
-                <input name="recipe_thumbnail" class="recipe_thumbnail_image" type="hidden" value="<?php echo $recipe->image_ID(); ?>" />
-                <input class="recipe_thumbnail_add_image button button<?php if($has_image) { echo ' wpurp-hide'; } ?>" rel="<?php echo $recipe->ID(); ?>" type="button" value="<?php _e( 'Add Featured Image', 'wp-ultimate-recipe' ); ?>" />
-                <input class="recipe_thumbnail_remove_image button<?php if(!$has_image) { echo ' wpurp-hide'; } ?>" type="button" value="<?php _e('Remove Featured Image', 'wp-ultimate-recipe' ); ?>" />
-                <?php if( in_array( 'recipe_thumbnail', self::$required_fields ) ) echo '<span class="wpurp-required">*</span>'; ?>
-                <br /><img src="<?php echo $recipe->image_url( 'thumbnail' ); ?>" class="recipe_thumbnail" />
-            </p>
-<?php } ?>
+            </div>
         </div>
         <div class="recipe-container recipe-tags-container">
 			

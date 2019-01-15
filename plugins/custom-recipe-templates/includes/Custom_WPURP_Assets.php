@@ -447,6 +447,7 @@ class Custom_WPURP_Assets {
 		                	'wrongFileType' => sprintf(__('Authorized file formats are : %s','foodiepro'),implode(', ',self::ATTACHMENT_FORMATS)),
 		                	'maxFileSize' => self::MAX_ATTACHMENT_SIZE_KB,
 		                	'fileTooBig' => sprintf(__('The maximum file size is %s kB','foodiepro'), self::MAX_ATTACHMENT_SIZE_KB),
+		                	'deleteImage' => __('Do you really want to delete this image ?','foodiepro'),
 		                )
 		           	)					
             	);            	

@@ -309,60 +309,48 @@ if( !isset( $required_fields ) ) $required_fields = array();
                     $previous_group = $instruction['group'];
                 }
 
+                
+            $has_image = false;
             if( !isset( $instruction['image'] ) ) {
                 // $instruction['image'] = '';
                 $image = WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
-                $has_image = false;
                 //echo '<pre>' . 'instruction image variable : ' . $instruction['image'] . '</pre>';
             }
-
             else {
-            // if( $instruction['image'] ) {
-                $image = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
-                if ( $image ) {
-                    $image = $image[0];
-                    $has_image = true;
+                // if( $instruction['image'] ) {
+                    $image = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
+                    if ( $image ) {
+                        $image = $image[0];
+                        $has_image = true;
+                    }
+                    else {
+                        $image = WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
+                    }
+                    //echo '<pre>' . "Has image = true !" . '</pre>';
                 }
-                else {
-                    $image = WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
-                    $has_image = false;
-                }
-                //echo '<pre>' . "Has image = true !" . '</pre>';
-            }
-            // else {
-            //     // $image = WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
-            //     $image = WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png';
-            //     $has_image = false;
-            //     //echo '<pre>' . "Has image = false" . '</pre>';
-            // }
-        ?> 
+                
+                ?> 
             <!-- Existing Instructions Section -->
-
-            <tr class="instruction ui-sortable">
+            
+            <tr class="instruction ui-sortable" id="recipe_instruction_<?php echo $i; ?>">
                 <td class="sort-handle" title="<?php echo __('Move this instruction', 'foodiepro');?>"><span><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16" ></span></td>
                 <td class="instruction-content">
                     <div class="instruction-text">
                         <textarea class="recipe-instruction" name="recipe_instructions[<?php echo $i; ?>][description]" rows="2" id="ingredient_description_<?php echo $i; ?>"  placeholder="<?php echo __('Enter the instructions for this recipe step', 'foodiepro');?>" ><?php echo $instruction['description']; ?></textarea>
                         <input type="hidden" name="recipe_instructions[<?php echo $i; ?>][group]" class="instructions_group" id="instruction_group_<?php echo $i; ?>" value="<?php echo esc_attr( $instruction['group'] ); ?>" />
                     </div>
-
                     <div class="instruction-buttons">
+                        <!-- This input stores the file to be uploaded for the given instruction step -->
                         <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail_input_<?php echo $i; ?>" value="" size="50" name="recipe_thumbnail_<?php echo $i; ?>" />
                     </div>
                 </td>
                 <td>
-                    <div class="instruction-image">
-                    <?php if ( isset( $wpurp_user_submission ) && ( !current_user_can( 'upload_files' ) || WPUltimateRecipe::option( 'user_submission_use_media_manager', '1' ) != '1' ) ) { ?>
+                    <div class="instruction-image thumbnail <?php if( !$has_image ) { ?>nodisplay<?php };?>">
                         <img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" id="recipe_thumbnail_preview_<?php echo $i; ?>" />
-                        <?php if( $has_image ) { ?>
+                        <div class="recipe_remove_image_button" id="recipe_thumbnail_remove_<?php echo $i; ?>" title="<?php _e( 'Remove Image', 'foodiepro' ) ?>" /></div>
+                        <!-- This input stores the attachment handler within the post, for meta save -->
                         <input type="hidden" value="<?php echo $instruction['image']; ?>" name="recipe_instructions[<?php echo $i; ?>][image]" /><br/>
-                        <?php } ?>
-                    <?php } else { ?>
-                        <input name="recipe_instructions[<?php echo $i; ?>][image]" class="recipe_instructions_image" type="hidden" value="<?php echo $instruction['image']; ?>" />
-                        <input class="recipe_instructions_add_image button<?php if($has_image) { echo ' wpurp-hide'; } ?>" rel="<?php echo $recipe->ID(); ?>" type="button" value="<?php _e( 'Add Image', 'wp-ultimate-recipe' ) ?>" />
-                        <input class="recipe_instructions_remove_image button<?php if(!$has_image) { echo ' wpurp-hide'; } ?>" type="button" value="<?php _e( 'Remove Image', 'wp-ultimate-recipe' ) ?>" />
-                        <br /><img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
-                    <?php } ?> 
+                      
                     </div>
                 </td>
 
@@ -378,10 +366,9 @@ if( !isset( $required_fields ) ) $required_fields = array();
     ?>
             <!-- New (stub) Instruction Section -->
 
-            <tr class="instruction ui-sortable">
+            <tr class="instruction ui-sortable" id="recipe_instruction_<?php echo $i; ?>">
                 <td class="sort-handle" title="<?php echo __('Move this instruction', 'foodiepro');?>"><span><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16" /></span></td>
                 <td class="instruction-content">
-
                     <div class="instruction-text">
                         <textarea class="recipe-instruction" name="recipe_instructions[<?php echo $i; ?>][description]" rows="2" id="ingredient_description_<?php echo $i; ?>" placeholder="<?php echo __('Enter the instructions for this recipe step', 'foodiepro');?>" ></textarea>
                         <input type="hidden" name="recipe_instructions[<?php echo $i; ?>][group]" class="instructions_group" id="instruction_group_<?php echo $i; ?>" value="" />
@@ -392,16 +379,11 @@ if( !isset( $required_fields ) ) $required_fields = array();
                     </div>
                 </td>
                 <td>                    
-                    <div class="instruction-image">
-                    <?php if ( isset( $wpurp_user_submission ) && ( !current_user_can( 'upload_files' ) || WPUltimateRecipe::option( 'user_submission_use_media_manager', '1' ) != '1' ) ) { ?>
+                    <div class="instruction-image thumbnail nodisplay">
                         <img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" id="recipe_thumbnail_preview_<?php echo $i; ?>" />
-                    <?php } else { ?>
-                        <input name="recipe_instructions[<?php echo $i; ?>][image]" class="recipe_instructions_image" type="hidden" value="" />
-                        <input class="recipe_instructions_add_image button" rel="<?php echo $recipe->ID(); ?>" type="button" value="<?php _e('Add Image', 'wp-ultimate-recipe' ) ?>" />
-                        <input class="recipe_instructions_remove_image button wpurp-hide" type="button" value="<?php _e( 'Remove Image', 'wp-ultimate-recipe' ) ?>" />
-                        <img src="<?php echo $image; ?>" class="recipe_instructions_thumbnail" />
-                    <?php } ?>
-                     </div>
+                        <div class="recipe_remove_image_button" id="recipe_thumbnail_remove_<?php echo $i; ?>" title="<?php _e( 'Remove Image', 'foodiepro' ) ?>" /></div>
+                        <input type="hidden" value="" name="recipe_instructions[<?php echo $i; ?>][image]" /><br/>
+                    </div>
                 </td>
                 <td class="delete-button" colspan="1"><span class="instructions-delete" title="<?php echo __('Remove this instruction', 'foodiepro');?>">&nbsp;</span></td>
             </tr>

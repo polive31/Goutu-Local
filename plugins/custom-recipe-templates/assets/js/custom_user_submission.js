@@ -64,14 +64,15 @@ jQuery('#recipe-instructions,#recipe-ingredients').on('input', 'textarea', funct
         }
     });
 
-    // Inline editor for instructions, however cannot work at the moment 
-    // since not <div> but <textarea>
-    // tinymce.init({
-    //     selector: 'textarea.recipe-instruction',
-    //     theme: 'modern',
-    //     language: 'fr_FR',
-    //     inline: true
-    // });    
+    // jQuery('#wpurp-insert-recipe').on('click', function () {
+    //     var shortcode = '[ultimate-recipe id=';
+
+    //     shortcode += jQuery('#wpurp-recipe').find('option:selected').val();
+    //     shortcode += ']';
+
+    //     tinyMCE.activeEditor.execCommand('mceInsertContent', 0, shortcode);
+    //     tinyMCE.activeEditor.windowManager.close();
+    // });     
 
 
  /* Ingredient and Instruction Submission (from WPURP)
@@ -106,7 +107,6 @@ jQuery('#recipe-instructions,#recipe-ingredients').on('input', 'textarea', funct
 
     jQuery('.ingredient-group-delete').on('click', function(){
         jQuery(this).parents('tr').remove();
-
         calculateIngredientGroups();
     });
 
@@ -201,7 +201,7 @@ jQuery('#recipe-instructions,#recipe-ingredients').on('input', 'textarea', funct
         // console.log("Keypress detected on ingredients amount !");
         
         var keyCode = e.keyCode || e.which;
-        var last_id = jQuery('#recipe-ingredients tr:last').attr('id');
+        // var last_id = jQuery('#recipe-ingredients tr:last').attr('id');
         var current_ingredient = jQuery(this).closest('tr.ingredient');
         var current_id = current_ingredient.attr('id');
         console.log ("Current ingredient : " + current_id);
@@ -211,7 +211,7 @@ jQuery('#recipe-instructions,#recipe-ingredients').on('input', 'textarea', funct
             // console.log("Keypress shift !");
             var previous_ingredient = current_ingredient.prev();
             previous_ingredient.focus();
-            var prev_id = previous_ingredient.attr('id');
+            // var prev_id = previous_ingredient.attr('id');
             // console.log ("Previous ingredient : " + prev_id);
         }
     });
@@ -254,45 +254,63 @@ jQuery('#recipe-instructions,#recipe-ingredients').on('input', 'textarea', funct
     });
 
 
+    /* Image management
+    ---------------------------------------------------*/
+
     // Recipe Featured Image 
     jQuery(".recipe-image-container").on("change", "input.recipe_thumbnail_image", function() { 
         PreviewImage('');
     });
 
-
     // Instruction Step Image 
     jQuery(".recipe-instructions-container").on("change", "input.recipe_instructions_image", function() { 
-        var changedSelectId = jQuery(this).attr("id");
-        var Id = changedSelectId.match(/\d+/);
+        var InstructionId = jQuery(this).attr("id");
+        var Id = InstructionId.match(/\d+/);
         // console.log( "Changement sur l'input..." + Id );
         PreviewImage(Id);
     });
-
-
-    jQuery('#wpurp-insert-recipe').on('click', function() {
-        var shortcode = '[ultimate-recipe id=';
-
-        shortcode += jQuery('#wpurp-recipe').find('option:selected').val();
-        shortcode += ']';
-
-        tinyMCE.activeEditor.execCommand('mceInsertContent', 0, shortcode);
-        tinyMCE.activeEditor.windowManager.close();
+    
+    // Remove Instruction Step Image 
+    jQuery(".recipe-instructions-container").on("click", ".recipe_remove_image_button", function() { 
+        console.log('Click on remove instruction image');
+        if (!confirm(custom_user_submissions.deleteImage)) return;
+        jQuery(this).prev('img').removeAttr('src');
+        // console.log( jQuery(this).parents('.instruction').html() );
+        // console.log( jQuery(this).parents('.instruction').find('td.instruction-content .instruction-buttons input').html() );
+        jQuery(this).parents('.instruction').find('td.instruction-content .instruction-buttons input').val('');
+        jQuery(this).next('input').val('');
+        jQuery(this).parents('.instruction-image').addClass('nodisplay');
     });
 
-    jQuery('.wpurp-file-remove').on('click', function(e) {
-        e.preventDefault();
+    // Remove Recipe Image 
+    jQuery(".recipe-image-container").on("click", ".recipe_remove_image_button", function () {
+        console.log('Click on remove recipe image');
+        if (!confirm(custom_user_submissions.deleteImage)) return;
+        var prevImg = jQuery(this).prev('img');
+        prevImg.removeAttr('src');
+        prevImg.addClass('nodisplay');
+        // console.log( jQuery(this).parents('.instruction').html() );
+        // console.log( jQuery(this).parents('.instruction').find('td.instruction-content .instruction-buttons input').html() );
+        jQuery(this).next('input').val('');
+        jQuery(this).addClass('nodisplay');
+    });    
 
-        var button = jQuery(this);
 
-        preview = button.siblings('img');
-        fieldname = preview.attr('class');
 
-        button.siblings('.' + fieldname + '_image').val('');
-        button.siblings('.' + fieldname).attr('src', '');
+    // jQuery('.wpurp-file-remove').on('click', function(e) {
+    //     e.preventDefault();
 
-        button.siblings('.wpurp-file-upload').removeClass('wpurp-hide');
-        button.addClass('wpurp-hide');
-    });
+    //     var button = jQuery(this);
+
+    //     preview = button.siblings('img');
+    //     fieldname = preview.attr('class');
+
+    //     button.siblings('.' + fieldname + '_image').val('');
+    //     button.siblings('.' + fieldname).attr('src', '');
+
+    //     button.siblings('.wpurp-file-upload').removeClass('wpurp-hide');
+    //     button.addClass('wpurp-hide');
+    // });
 
 });
 
@@ -314,6 +332,7 @@ function isLastIngredient( thisRow ) {
 
 
 function PreviewImage(id) { 
+    console.log('Entering PreviewImage');
     var fileInput = document.getElementById("recipe_thumbnail_input_" + id);
 
     // console.log('Max file size ' + custom_user_submissions.maxFileSize);
@@ -333,6 +352,7 @@ function PreviewImage(id) {
                 oFReader.readAsDataURL(fileInput.files[0]);
                 oFReader.onload = function (oFREvent) {
                     document.getElementById("recipe_thumbnail_preview_" + id ).src = oFREvent.target.result;
+                    jQuery("#recipe_instruction_" + id +" .instruction-image" ).removeClass('nodisplay');
                 }    
             }
             else {
@@ -508,14 +528,16 @@ function addRecipeInstruction()
             return id.replace(/(\d+)/, nbr_instructions);
         });
 
-    new_instruction
-        .find('.recipe_instructions_remove_image').addClass('wpurp-hide')
+    // new_instruction
+    //     .find('.recipe_instructions_add_image').removeClass('wpurp-hide')
 
     new_instruction
-        .find('.recipe_instructions_add_image').removeClass('wpurp-hide')
+        .find('input')
+        .val('')
 
     new_instruction
-        .find('.recipe_instructions_thumbnail').val('')
+        .find('.instruction-image')
+        .addClass('nodisplay')
 
         // Thumbnail file selector input
     new_instruction

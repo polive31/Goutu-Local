@@ -30,7 +30,8 @@ class Tooltip {
 		if ($once) return;
 		$once=true;
 		?>
-		<div class="tooltip-overlay" style="display:none"></div>; <!--// style="display:none" -->
+		<!-- <div class="tooltip-overlay" style="display:none"></div>;  -->
+		<div class="tooltip-overlay nodisplay"></div>; 
 		<?php  
 	}
 
@@ -66,38 +67,41 @@ class Tooltip {
 			'class' => 'grey', // color : yellow, shape : form, size : large
 			'callout' => 'no', //yes, no
 			'action' => 'hover', //click
+			'title' => null, //
+			'img' => null, // Image source
+			// 'img' => null, // Image source
 		), $atts );
 
 		$callout = $atts['callout']=='yes';
         
-        return $this->get( $atts['text'], $atts['valign'], $atts['halign'], $atts['trigger'], $atts['callout'], $atts['class'] );
+        return $this->get( $atts['text'], $atts['valign'], $atts['halign'], $atts['trigger'], $atts['callout'], $atts['class'], $atts['title'], $atts['img'] );
     }
 	
-	
-	/* =================================================================*/
-	/* = DISPLAY TOOLTIP    
-	/* =================================================================*/
-    public static function display( $content, $valign, $halign, $trigger='hover', $callout=false, $class=''  ) {
-		echo self::get( $content, $valign, $halign, $trigger, $callout, $class, $theme );
-    }
-	
-
 	/* =================================================================*/
 	/* = RETURN TOOLTIP HTML    
 	/* =================================================================*/
-	public static function get( $content, $valign, $halign, $trigger, $callout, $class ) {
+	public static function get( $content, $valign, $halign, $trigger, $callout, $class, $title=false, $img=false ) {
 		$uri = self::$PLUGIN_URI . 'assets/img/' . $theme . '/callout_'. $valign . '.png';
 		
 		$html ='<div class="tooltip-content ' . $valign . ' ' . $halign . ' ' . $class . ' ' . $trigger . '">';
 		$html.='<div class="wrap">';
+		$html.=$img?'<div class="tooltip-img"><img src="' . $img . '"></div>':'';
+		$html.=$title?'<h4 class="tooltip-title">' . $title . '</h4>':'';
 		$html.= $content;
 		$html.= $callout?'<img class="callout" data-no-lazy="1" src="' . $uri . '">':'';
 		$html.='</div>';
 		$html.='</div>';
-
+		
 		return $html;
 	}
-
+	
+	/* =================================================================*/
+	/* = DISPLAY TOOLTIP    
+	/* =================================================================*/
+	public static function display( $content, $valign, $halign, $trigger='hover', $callout=false, $class='', $title=false, $img=false  ) {
+		echo self::get( $content, $valign, $halign, $trigger, $callout, $class, $title, $img );
+	}
+	
 }
 
 

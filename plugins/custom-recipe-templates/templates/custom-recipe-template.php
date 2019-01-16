@@ -24,7 +24,7 @@
 						Tooltip::display( __('Comment and rate this recipe','foodiepro'), 'above', 'left' );  
 						if( is_user_logged_in() ) 
 							$rating_form = do_shortcode('[comment-rating-form]');
-            				Tooltip::display( $rating_form, 'above', 'left', 'click', false, 'rating-form modal' );    
+            				Tooltip::display( $rating_form, 'above', 'left', 'click', false, 'rating-form modal', __('Rate this recipe','foodiepro'), CHILD_THEME_URL . '/images/popup-icons/fiche_recette.png' );    
 						?>
 					</div>	
 					

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-01-15 20:48+0100\n"
-"PO-Revision-Date: 2019-01-16 14:38+0100\n"
+"POT-Creation-Date: 2019-01-16 22:52+0100\n"
+"PO-Revision-Date: 2019-01-16 22:54+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -948,7 +948,7 @@ msgid "Published on %s by %s<span id=\"username\">%s</span>"
 msgstr "Publié le %s par %s<span id=\"username\">%s</span>"
 
 #: plugins/custom-post-templates/templates/post_toolbar.php:17
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:56
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:57
 #: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/templates/shopping-list.php:25
 msgid "Print"
 msgstr "Imprimer"
@@ -958,7 +958,7 @@ msgid "Print this post"
 msgstr "Imprimer cet article"
 
 #: plugins/custom-post-templates/templates/post_toolbar.php:27
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:66
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:67
 msgid "Share"
 msgstr "Partager"
 
@@ -1020,7 +1020,7 @@ msgid "Add"
 msgstr "Ajouter"
 
 #: plugins/custom-recipe-templates/helpers/Custom_Recipe_Favorite.php:132
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:160
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:168
 #: plugins/custom-star-rating/includes/CustomStarRatingsShortcodes.php:73
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:79
 #: plugins/wp-ultimate-recipe-premium/core/vendor/vafpress/classes/shortcodegenerator.php:264
@@ -1089,7 +1089,11 @@ msgstr "Retirer de mon carnet"
 msgid "Cookbook"
 msgstr "Carnet"
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:159
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:91
+msgid "Add to my cookbook"
+msgstr "Ajouter à mon carnet"
+
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:167
 msgid "OK"
 msgstr ""
 
@@ -1129,7 +1133,7 @@ msgstr ""
 "publication."
 
 #: plugins/custom-recipe-templates/includes/Custom_WPURP_Assets.php:202
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:59
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:60
 msgid "Print this Recipe"
 msgstr "Imprimer cette recette"
 
@@ -1381,12 +1385,12 @@ msgid "reviews"
 msgstr "avis"
 
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:28
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:141
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:142
 msgid "Serves"
 msgstr "Portions"
 
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:83
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:195
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:196
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:199
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:200
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:233
@@ -1414,32 +1418,36 @@ msgstr "Evaluer"
 msgid "Comment and rate this recipe"
 msgstr "Commenter et noter cette recette"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:78
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:27
+msgid "Rate this recipe"
+msgstr "Evaluer cette recette"
+
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:79
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:137
 msgid "Read"
 msgstr "Lire"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:81
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:82
 msgid "Read this recipe out loud"
 msgstr "Lire cette recette à haute voix"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:115
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:116
 msgid "Origin"
 msgstr "Origine"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:122
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:123
 msgid "Diet"
 msgstr "Régime"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:129
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:130
 msgid "Level"
 msgstr "Niveau"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:144
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:145
 msgid "Decrease servings"
 msgstr "Réduire les quantités"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:148
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:149
 msgid "Increase servings"
 msgstr "Augmenter les quantités"
 

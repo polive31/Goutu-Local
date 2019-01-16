@@ -12,14 +12,16 @@
 	z-index: 10;
 	background-color: rgba(255,255,255,0.7);
 	opacity: 0;
-	transition: opacity 1s ease-in-out;
+	transition: opacity 500ms ease-in-out;
 }
 
 .on {
 	opacity: 1;
 }
 
-
+.nodisplay {
+	display:none;
+}
 
 
 /* Tooltip content  
@@ -64,6 +66,23 @@
 	white-space: nowrap;
 	overflow: hidden;	
 }
+
+
+.tooltip-img {
+	display:inline-block;
+	vertical-align: middle;
+	width: 80px;
+}
+
+h4.tooltip-title {
+	display: inline;
+	vertical-align: middle;
+    margin-left: 10px;
+}
+
+
+/* FORMAT VARIATIONS
+-----------------------------------------------*/
 
 .tooltip-content.yellow .wrap {
 	border:1px solid #DCA;
@@ -120,9 +139,29 @@
 
 /*Tooltip positioning large */
 .tooltip-content.left.large {
-    min-width: 300px;
+	min-width: 300px;
     left:-100px;
 }
 .left.large img.callout {
 	left: 100px;
 }
+
+/* Modal Tooltip (fixed positioning) */
+.tooltip-content.modal {
+    position: fixed;
+	max-width: 500px;
+	max-height: 200px;
+	margin: 5% auto; /* Will not center vertically and won't work in IE6/7. */
+	left: 0;
+	right: 0;
+	top:20%;
+}
+
+/* MEDIA QUERIES 
+---------------------------------------------------*/
+
+@media only screen and (max-width:570px) {
+
+
+}
+

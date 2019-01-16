@@ -206,3 +206,14 @@ i.fi.fi-half.fi-off {
 #rating .full i.fa.fa-star-o {
 	color:#f18b14;
 }
+
+/* MEDIA QUERIES 
+---------------------------------------------------*/
+
+@media only screen and (max-width:570px) {
+
+	.ratings-table td {
+		float: left;
+	}
+
+}

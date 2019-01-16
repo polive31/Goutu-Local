@@ -1,5 +1,6 @@
 var postContainer = "article";
 var containerObj = jQuery(postContainer);
+var overlayObj = jQuery('.tooltip-overlay');
 
 
 jQuery(document).ready(function () {
@@ -47,7 +48,7 @@ function toggleTooltip(tooltip) {
     else {
         console.log( 'Toggle tooltip' );
         tooltip.toggle();
-        if (tooltip.hasClass('modal')) transitionToggle( jQuery('.tooltip-overlay') );
+        if (tooltip.hasClass('modal')) overlayToggle();
         containerObj.toggleClass('tooltip-open tooltips-closed');
     }
 };
@@ -57,7 +58,7 @@ function closeAllTooltips() {
     containerObj.find('.tooltip-content.click:visible').hide();
     containerObj.addClass('tooltips-closed');
     containerObj.removeClass('tooltip-open');
-    transitionClose( jQuery('.tooltip-overlay') );
+    overlayClose();
 }
 
 function aTooltipOpen() {
@@ -70,26 +71,26 @@ function thisTooltipOpen(tooltip) {
     return tooltip.is(":visible");
 }
 
-function transitionToggle( box ) {
-    if (box.hasClass('on')) {
-        transitionClose( box );
+function overlayToggle() {
+    if (overlayObj.hasClass('on')) {
+        overlayClose();
     } else {
-        transitionOpen( box );
+        overlayOpen();
     }
 }
 
-function transitionOpen( box ) {
-    console.log('transition open');
-    box.show();
+function overlayOpen() {
+    console.log('overlay open');
+    overlayObj.removeClass('nodisplay');
     setTimeout(function() {
-        box.addClass('on');
+        overlayObj.addClass('on');
     }, 100);
 }
 
-function transitionClose( box ) {
-    console.log('transition close');
-    box.removeClass('on');
-    box.on('transitionend', function() {
-       box.hide(); 
+function overlayClose() {
+    console.log('overlay close');
+    overlayObj.removeClass('on');
+    overlayObj.one('transitionend', function() {
+        overlayObj.addClass('nodisplay');
     })
 }

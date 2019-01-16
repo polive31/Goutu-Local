@@ -88,7 +88,7 @@ class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
         // Tooltip::display($tooltip . $tooltip_alt, 'above', 'center');    
         Tooltip::display($tooltip, 'above', 'center');    
         if( is_user_logged_in() ) 
-            Tooltip::display($this->get_favlist_form( $recipe->ID() ), 'above', 'center', 'click', false, 'favorites-form' );    
+            Tooltip::display($this->get_favlist_form( $recipe->ID() ), 'above', 'center', 'click', false, 'favorites-form', __('Add to my cookbook', 'foodiepro'), CHILD_THEME_URL . '/images/page-icons/mon_carnet.png' );    
 
         $output = ob_get_contents();
         ob_end_clean();

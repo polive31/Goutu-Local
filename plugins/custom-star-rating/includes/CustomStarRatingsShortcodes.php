@@ -290,20 +290,20 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		
 		ob_start();?>
 		
-		<table class="ratings-table">
+		<div>
+			<table class="ratings-table">			
+			<?php
+			foreach (self::$ratingCats as $id => $cat) {?>
+	
+			<tr>
+				<td align="left" class="rating-title"><?php echo __($cat['question'],'custom-star-rating');?></td>
+				<td align="left"><?php echo $this->output_rating_form( $id );?></td>
+			</tr>
 			
-		<?php
-		foreach (self::$ratingCats as $id => $cat) {?>
-		
-		<tr>
-		<td align="left" class="rating-title"><?php echo __($cat['question'],'custom-star-rating');?></td>
-		<td align="left"><?php echo $this->output_rating_form( $id );?></td>
-		</tr>
-		
-		<?php
-		}?>	
-		
-		</table>
+			<?php
+			}?>	
+			</table>
+		</div>
 		
 		<div class="comment-reply">
 		<label for="comment"><?php echo __('Add a comment','custom-star-rating' );?></label>

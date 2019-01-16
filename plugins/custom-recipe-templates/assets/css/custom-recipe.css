@@ -97,24 +97,11 @@ span.favorite-icon {
 
 /* Popup Forms
 -------------------------------------------------*/
-.tooltip-content.form .wrap {
+
+.rating-form h3#reply-title {
+    display: none;
 }
 
-.tooltip-content.large .wrap {
-}
-
-
-.favorites-form .wrap {
-	padding: 10px;
-}
-
-
-
-.rating-form .wrap {
-	padding: 10px 60px 5px 20px;
-	min-width:500px;
-
-}
 
 
 /* Recipe info : rating, tags 

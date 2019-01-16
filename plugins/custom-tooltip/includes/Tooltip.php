@@ -30,7 +30,7 @@ class Tooltip {
 		if ($once) return;
 		$once=true;
 		?>
-		<div class="tooltip-overlay hidden"></div>; <!--// style="display:none" -->
+		<div class="tooltip-overlay" style="display:none"></div>; <!--// style="display:none" -->
 		<?php  
 	}
 

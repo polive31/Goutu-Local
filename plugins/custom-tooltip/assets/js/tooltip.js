@@ -71,7 +71,7 @@ function thisTooltipOpen(tooltip) {
 }
 
 function transitionToggle( box ) {
-    if (box.hasClass('visible')) {
+    if (box.hasClass('on')) {
         transitionClose( box );
     } else {
         transitionOpen( box );
@@ -80,16 +80,16 @@ function transitionToggle( box ) {
 
 function transitionOpen( box ) {
     console.log('transition open');
-    box.addClass('visible');
-    box.removeClass('hidden');
-    box.fadeIn("slow");
-    // box.css('opacity', '1');
+    box.show();
+    setTimeout(function() {
+        box.addClass('on');
+    }, 100);
 }
 
 function transitionClose( box ) {
     console.log('transition close');
-    box.addClass('hidden');
-    box.removeClass('visible');
-    box.fadeOut("slow");
-    // box.css('opacity', '0');
+    box.removeClass('on');
+    box.on('transitionend', function() {
+       box.hide(); 
+    })
 }

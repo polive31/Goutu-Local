@@ -34,7 +34,7 @@ class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
                 'label' => __('Recipes wish list','foodiepro'),
                 'tooltip-in' => __('In my <a href="%s">wishlist</a>','foodiepro'),
             ),
-            'no' => array(
+            'remove' => array(
                 'icon' => '✘',
                 'label' => __('Remove from favorites','foodiepro'),
                 'tooltip-in' => __('Add to my <a href="%s">favorites</a>','foodiepro'),   
@@ -88,7 +88,7 @@ class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
         // Tooltip::display($tooltip . $tooltip_alt, 'above', 'center');    
         Tooltip::display($tooltip, 'above', 'center');    
         if( is_user_logged_in() ) 
-            Tooltip::display($this->add_popup( $recipe->ID() ), 'above', 'center', 'click', false, null, 'form' );    
+            Tooltip::display($this->get_favlist_form( $recipe->ID() ), 'above', 'center', 'click', false, 'favorites-form' );    
 
         $output = ob_get_contents();
         ob_end_clean();
@@ -114,7 +114,7 @@ class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
                 $favorites = get_user_meta( $user_id, $this->get_meta_name($list), true );
                 $favorites = is_array( $favorites ) ? $favorites : array();
                 
-                if ( ($choice=='no' || $choice != $list) && in_array( $recipe_id, $favorites ) ) {
+                if ( ($choice=='remove' || $choice != $list) && in_array( $recipe_id, $favorites ) ) {
                     $key = array_search( $recipe_id, $favorites );
                     unset( $favorites[$key ] );
                 } 
@@ -132,32 +132,40 @@ class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
         die();
     }
     
-    public function add_popup( $recipe_id ) {
+    public function get_favlist_form( $recipe_id ) {
         
         $fav=$this->is_favorite_recipe( $recipe_id );
         
         ob_start();
         ?>
-        <div id="favorite-form">
-        <p><?= __('Choose a list :','foodiepro'); ?></p>
+        <div id="favorites_list_form">
+        <!-- <p><?= __('Choose a list :','foodiepro'); ?></p> -->
+        
+        <ul class="favlist">
         <?php 
-
-        foreach ( $this->get_lists( true ) as $list) {
+        foreach ( $this->get_lists( false ) as $list) {
             $fav=$this->is_favorite_recipe( $recipe_id, $list );
             $isfav=$isfav || $fav[0];
+
             ?>
-            <p>
-                <input type="radio" id="<?= $list; ?>" name="favlist" value="<?= $list; ?>" <?= $fav[0]?'checked':'' ?>>
-                <label for="<?= $list; ?>"> <?= $this->get_label( $list ) ?></label>
+            <li class="favlist-item <?= $list; ?> <?= $fav[0]?'isfav':''; ?>" id="<?= $list; ?>" >
                 <span class="favorite-icon"><?= $this->get_icon( $list ) ?></span>
-            </p>
+                <span for="<?= $list; ?>"> <?= $this->get_label( $list ) ?></span>
+            </li>
             <?php 
         } 
-        
+            // Don't display remove item whenever the recipe is not in favorites already
         ?>
+            <li class="favlist-item remove <?= $isfav?'':'nodisplay'; ?>" id="remove">
+                <span class="favorite-icon"><?= $this->get_icon( 'remove' ) ?></span>
+                <span for="remove"> <?= $this->get_label( 'remove' ) ?></span>
+            </li>
+
+        </ul>
+        
         <p>
-            <button onClick='addToFavoritesUpdate(this)'><?= __('OK','foodiepro'); ?></button>
-            <button class="alignright cancel" onClick='addToFavoritesCancel(this);'><?= __('Cancel','foodiepro'); ?></button>
+            <!-- <button onClick='addToFavoritesUpdate(this)'><?= __('OK','foodiepro'); ?></button> -->
+            <!-- <button class="alignright cancel" onClick='addToFavoritesCancel(this);'><?= __('Cancel','foodiepro'); ?></button> -->
         </p>
         </div>
         <?php
@@ -167,10 +175,10 @@ class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
         return $html;
     }
 
-    public static function get_lists( $include_no=false ) {
+    public static function get_lists( $remove=false ) {
         $favlists = self::$FAVLISTS;
-        if ( !$include_no ) {
-            unset($favlists['no']);
+        if ( !$remove ) {
+            unset($favlists['remove']);
         }
         return array_keys($favlists);
     }
@@ -198,7 +206,7 @@ class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
     
     public static function get_toolbar_icon( $type ) {
         switch ($type) {
-            case 'favorites-no' :
+            case 'favorites-remove' :
                 $html = '<i class="fa fa-book"></i>'; 
                 break;
             case 'favorites-favorites' :
@@ -218,11 +226,11 @@ class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
     }      
     
     public static function is_favorite_recipe( $recipe_id, $lists='all' ) {
-        if( !is_user_logged_in() ) return array(false, 'no');
+        if( !is_user_logged_in() ) return array(false, 'remove');
         
         $user_id = get_current_user_id();
         $is_fav=false;
-        $fav_list='no';
+        $fav_list='remove';
 
         if ($lists=='all') 
             $lists = self::get_lists();

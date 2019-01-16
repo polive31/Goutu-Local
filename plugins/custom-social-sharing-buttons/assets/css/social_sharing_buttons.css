@@ -21,7 +21,8 @@
 
 .share-icons:hover {
 	-webkit-filter: none;  
-	filter: none;	
+	filter: none;
+	cursor:pointer;	
 }
 
 .share-icons a {

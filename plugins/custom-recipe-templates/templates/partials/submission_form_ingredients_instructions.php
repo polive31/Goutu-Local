@@ -405,7 +405,8 @@ if( !isset( $required_fields ) ) $required_fields = array();
 
 <div class="recipe-container recipe-notes-container-nojs">
     <h4 id="headline-notes"><?php _e( 'Recipe notes', 'foodiepro' ) ?></h4>
-		<textarea name="recipe_notes" id="recipe_notes" rows="6" placeholder="<?php echo __('Provide any additional notes here... E.g. side dishes, wine to drink with...','foodiepro');?>"><?php echo esc_html( $recipe->notes() ); ?></textarea>
+        <p class="recipe-guidelines"><?php echo __('Provide any additional notes here, for instance side dishes, wine...','foodiepro'); ?></p>
+		<textarea name="recipe_notes" id="recipe_notes" rows="6" placeholder="<?php echo __('WHAT TO DRINK WITH THIS STRAWBERRY PIE : a sweet white wine','foodiepro');?>"><?php echo esc_html( $recipe->notes() ); ?></textarea>
 </div>
 <!-- <?php
 $custom_fields_addon = WPUltimateRecipe::addon( 'custom-fields' );

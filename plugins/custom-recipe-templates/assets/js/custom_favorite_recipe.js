@@ -1,65 +1,42 @@
 jQuery(document).ready(function(){
-  // console.log('Favorite Recipe loaded !');	
-  // jQuery(document).on('click', '.wpurp-recipe-favorite.logged-in', function(e) {
-  // jQuery(document).on('click', '.wpurp-recipe-favorite.logged-in', function(e) {
-  // // console.log('Click on favorite detected !');
-  //     e.preventDefault();
-  //     e.stopPropagation();
-  // });
+
+  jQuery('#favorites_list_form').on('click', 'li', function (e) {
+    console.log('Click in favorites list');
+    e.preventDefault();
+    e.stopPropagation();
+    // var choice = jQuery(e.target).closest('.fav-item');
+    var choice = jQuery(this);
+    console.log( 'Choice = ', choice.attr("class") );
+
+    addToFavoritesUpdate( choice );
+
+  }); 
   
 
 });
+
     
-function addToFavoritesCancel(elemnt) {
-  console.log('In add To Favorites Cancel !!!');
-
-  var tooltip = jQuery(elemnt).parents('.tooltip-content'); 
-
-  openCloseTooltip( tooltip );
-}
-    
-function addToFavoritesUpdate(elemnt) {
-
-  // console.log('In addToFavorites function');
-  var tooltipForm = jQuery(elemnt).parents('.tooltip-content');
-  var tooltipTarget = jQuery(elemnt).parents('.tooltip-content').siblings('.tooltip-target');
+function addToFavoritesUpdate( list_item ) {
+  console.log('In addToFavorites Update');
+  var tooltipButton = jQuery(list_item).parents('.tooltip-content').siblings('.tooltip-target');
+  var listChoice = list_item.attr("id");
+  console.log('Chosen option is ', listChoice );
   
-  // console.log('tooltipTarget : ', tooltipTarget);
-  openCloseTooltip( tooltipForm );
-  tooltipTarget.siblings('.tooltip-content.hover').addClass('nohover');
-  tooltipTarget.siblings('.tooltip-content.hover').removeClass('hover');
+  // closeTooltip( tooltipForm );
+  closeAllTooltips();
   
-  //console.log('Tooltip %0', tooltip);
-  
-  var listChoice = tooltipForm.find("input:radio[name ='favlist']:checked");
-  // console.log( 'chosen option : ' + listChoice.val());
-
-  // console.log( 'icon in : ' + custom_favorite_recipe.icon_in );
-  // console.log( 'icon out : ' + custom_favorite_recipe.icon_out );
-  // console.log('icon container : ' + tooltipTarget.children('.button-icon').html() );
-  
-  if ( listChoice.val()=='no' ) {
-    // Activate shopping list button
-    tooltipTarget.removeClass('is-favorite');
-    // tooltipTarget.children('.button-icon').html(custom_favorite_recipe.icon_out);
-  }
-  else {
-    tooltipTarget.addClass('is-favorite');
-    // tooltipTarget.children('.button-icon').html(custom_favorite_recipe.icon_in);
-  }
-
   var data = {
     action: 'custom_favorite_recipe',
     security: custom_favorite_recipe.nonce,
-    recipe_id: tooltipTarget.data('recipe-id'),
-    choice: listChoice.val(),
+    recipe_id: tooltipButton.data('recipe-id'),
+    choice: listChoice,
   };
-
+  
   // console.log('data.action : '+data.action);
   // console.log('data.security : ' + data.security);
   // console.log('data.recipe_id : ' + data.recipe_id);
   // console.log('ajax URL : ' + custom_favorite_recipe.ajaxurl);
-
+  
   jQuery.post(
     custom_favorite_recipe.ajaxurl, 
     data, 
@@ -67,11 +44,26 @@ function addToFavoritesUpdate(elemnt) {
       // console.log('Add to Favorites AJAX call completed');
       // console.log('Response : ' + response.text);
       // console.log('Icon : ' + response.icon);
-      // tooltipTarget.children('.button-icon').html( response.icon );
-      tooltipTarget.children('.button-icon').html( response.icon );
-      tooltipTarget.siblings('.tooltip-content.nohover').children('.wrap').html( response.text );
-      tooltipTarget.siblings('.tooltip-content.nohover').addClass('hover');
-      tooltipTarget.siblings('.tooltip-content.nohover').removeClass('nohover');
+      // tooltipButton.children('.button-icon').html( response.icon );
+      
+      
+      // Update button icon 
+      tooltipButton.children('.button-icon').html( response.icon );
+      // Update button tooltip on hover 
+      tooltipButton.siblings('.tooltip-content.hover').children('.wrap').html( response.text );
+      // Update selected list in favorites list form 
+      list_item.addClass('isfav');      
+      list_item.siblings().removeClass('isfav'); 
+      // Update selected list in favorites list form      
+      if ( listChoice=='remove' ) {
+        console.log('Updating remove display : listchoice = remove detected');
+        list_item.addClass('nodisplay');
+      }
+      else {
+        console.log('Updating remove display : listchoice != remove detected');
+        list_item.siblings('#remove').removeClass('nodisplay');
+      }
+      
     },
     'json', 
   );

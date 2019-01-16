@@ -13,15 +13,18 @@
 
 			<!-- Function buttons  -->
 			<div class="recipe-top">
-					<div class="recipe-buttons">
+					<div class="recipe-buttons tooltip-container">
 
 					<!-- Recipe Rate Button -->
 					<div class="recipe-button alignleft tooltip <?php echo is_user_logged_in()?'':'disabled';?>" id="rate">
-						<a href="<?php echo is_user_logged_in()?'#':'/connexion';?>" class="recipe-review-button" id="<?php echo is_user_logged_in()?'recipe-review':'join-us';?>" onClick="<?= is_user_logged_in()?'':"ga('send','event','join-us','click','recipe-rate', 0)"; ?>">
+						<a href="<?php echo is_user_logged_in()?'#':'/connexion';?>" class="recipe-review-button tooltip-target" id="<?php echo is_user_logged_in()?'recipe-review':'join-us';?>" onClick="<?= is_user_logged_in()?'':"ga('send','event','join-us','click','recipe-rate', 0)"; ?>">
 						<div class="button-caption"><?php echo __('Rate','foodiepro'); ?></div>
 						</a>
 						<?php 
 						Tooltip::display( __('Comment and rate this recipe','foodiepro'), 'above', 'left' );  
+						if( is_user_logged_in() ) 
+							$rating_form = do_shortcode('[comment-rating-form]');
+            				Tooltip::display( $rating_form, 'above', 'left', 'click', false, 'rating-form modal' );    
 						?>
 					</div>	
 					
@@ -47,8 +50,6 @@
 						$recipe_like->display('above','center');
 						?>
 					</div>
-					
-					
 					
 					<!-- Recipe Print Button -->
 					<div class="recipe-button alignright tooltip" id="print">

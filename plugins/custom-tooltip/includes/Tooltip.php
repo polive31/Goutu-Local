@@ -18,9 +18,20 @@ class Tooltip {
 		// add_action('wp_enqueue_scripts', array($this, 'enqueue_easing_script'));
 		add_action('wp_enqueue_scripts', array($this, 'enqueue_tooltip_assets') );
 
+		add_action('genesis_after',array($this, 'add_overlay_markup') );
+
 		// Shortcodes
 		add_shortcode('tooltip', array($this,'output_tooltip_shortcode')); 
 
+	}
+
+	public function add_overlay_markup() {
+		static $once=false;
+		if ($once) return;
+		$once=true;
+		?>
+		<div class="tooltip-overlay hidden"></div>; <!--// style="display:none" -->
+		<?php  
 	}
 
 	public function enqueue_easing_script() {
@@ -52,34 +63,32 @@ class Tooltip {
 			'content' => '', 
 			'halign' => 'middle',
 			'valign' => 'top',
-			'class' => '',
+			'class' => 'grey', // color : yellow, shape : form, size : large
 			'callout' => 'no', //yes, no
-			'theme' => 'grey', //yellow
 			'action' => 'hover', //click
 		), $atts );
 
 		$callout = $atts['callout']=='yes';
         
-        return $this->get( $atts['text'], $atts['valign'], $atts['halign'], $atts['trigger'], $atts['callout'], $atts['class'], $atts['theme'] );
+        return $this->get( $atts['text'], $atts['valign'], $atts['halign'], $atts['trigger'], $atts['callout'], $atts['class'] );
     }
 	
 	
 	/* =================================================================*/
 	/* = DISPLAY TOOLTIP    
 	/* =================================================================*/
-    public static function display( $content, $valign, $halign, $trigger='hover', $callout=false, $class='', $theme='grey'  ) {
+    public static function display( $content, $valign, $halign, $trigger='hover', $callout=false, $class=''  ) {
 		echo self::get( $content, $valign, $halign, $trigger, $callout, $class, $theme );
     }
 	
 
-
 	/* =================================================================*/
 	/* = RETURN TOOLTIP HTML    
 	/* =================================================================*/
-	public static function get( $content, $valign, $halign, $trigger, $callout, $class, $theme='grey'  ) {
+	public static function get( $content, $valign, $halign, $trigger, $callout, $class ) {
 		$uri = self::$PLUGIN_URI . 'assets/img/' . $theme . '/callout_'. $valign . '.png';
 		
-		$html ='<div class="tooltip-content ' . $valign . ' ' . $halign . ' ' . $class . ' ' . $trigger . ' ' . $theme . '">';
+		$html ='<div class="tooltip-content ' . $valign . ' ' . $halign . ' ' . $class . ' ' . $trigger . '">';
 		$html.='<div class="wrap">';
 		$html.= $content;
 		$html.= $callout?'<img class="callout" data-no-lazy="1" src="' . $uri . '">':'';

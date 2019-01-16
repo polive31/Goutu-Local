@@ -1,26 +1,30 @@
 jQuery(document).ready(function() {
 
 
-/* Autoselect "numeric" inputs on focux
----------------------------------------------------------------- */
+    /* Autoselect "numeric" inputs on focux
+    ---------------------------------------------------------------- */
+    jQuery('input.selectonfocus').focus(function() {
+        // console.log('select on focus !!!');
+        jQuery(this).select();
+    });
 
 
-jQuery('input.selectonfocus').focus(function() {
-    console.log('select on focus !!!');
-    jQuery(this).select();
-});
+    /* Auto adjust textarea height
+    ---------------------------------------------------------------- */
+    //loop through all the jQuery textarea objects
+    jQuery('#recipe-instructions textarea, #recipe-ingredients textarea').each(function () {
+        console.log('Auto adjust height at startup');
+        jQuery(this).outerHeight(38).outerHeight(this.scrollHeight+5); //.get(0) gets the underlying HTML element which has the scrollHeight property
+    });
+
+    jQuery('#recipe-instructions, #recipe-ingredients').on('input', 'textarea', function () {
+        console.log('Auto adjust height on edit');
+        jQuery(this).outerHeight(38).outerHeight(this.scrollHeight); // 38 or '1em' -min-height
+    }); 
 
 
-/* Auto adjust textarea height
----------------------------------------------------------------- */
-
-jQuery('#recipe-instructions,#recipe-ingredients').on('input', 'textarea', function () {
-    console.log('Auto adjust height');
-    jQuery(this).outerHeight(38).outerHeight(this.scrollHeight); // 38 or '1em' -min-height
-}); 
-
-/* Shortcode buttons
----------------------------------------------------------------- */
+    /* Shortcode buttons
+    ---------------------------------------------------------------- */
 
     jQuery('#insert-recipe-shortcode').on('click', function(){
         wpurp_add_to_editor('[recipe]');

@@ -82,7 +82,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		ob_end_clean();
 		return $cr_form;
 	}
-	
+
 	
 	/* Output star rating shortcode 
 	---------------------------------------------*/

@@ -28,6 +28,8 @@ jQuery(document).ready(function () {
             closeAllTooltips();            
         }
     });
+
+    
 });
 
 function initContainer() {
@@ -82,15 +84,24 @@ function overlayToggle() {
 function overlayOpen() {
     console.log('overlay open');
     overlayObj.removeClass('nodisplay');
+    overlayObj.one('transitionend', function () {
+        console.log('Entering in transitioned event in overlay Open !');
+    });
     setTimeout(function() {
         overlayObj.addClass('on');
-    }, 100);
+    }, 50);
 }
 
 function overlayClose() {
     console.log('overlay close');
     overlayObj.removeClass('on');
     overlayObj.one('transitionend', function() {
-        overlayObj.addClass('nodisplay');
-    })
+        console.log('Entering in transitioned event, overlay Close !');
+        // Check if event is triggered on overlayClose -workaround unwanted trigger bug
+        if (!overlayObj.hasClass('on')) {
+            console.log('Add class nodisplay');
+            overlayObj.addClass('nodisplay');
+        } 
+    });
+    
 }

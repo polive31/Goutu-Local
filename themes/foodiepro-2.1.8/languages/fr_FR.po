@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-01-16 22:52+0100\n"
-"PO-Revision-Date: 2019-01-16 22:54+0100\n"
+"POT-Creation-Date: 2019-01-17 17:15+0100\n"
+"PO-Revision-Date: 2019-01-17 17:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -745,9 +745,21 @@ msgstr ""
 msgid "Send Message"
 msgstr "Envoyer"
 
-#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:151
+#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:152
+msgid "You cooked this recipe ? Upload your own picture here"
+msgstr "Vous avez réalisé cette recette ? Publiez votre propre photo !"
+
+#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:152
 msgid "Add a picture"
 msgstr "Ajoutez votre photo"
+
+#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:162
+msgid "Upload your picture"
+msgstr "Publiez votre photo"
+
+#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:200
+msgid "Picture title"
+msgstr "Titre de l'image"
 
 #: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:134
 msgid "Seasonal"
@@ -948,7 +960,7 @@ msgid "Published on %s by %s<span id=\"username\">%s</span>"
 msgstr "Publié le %s par %s<span id=\"username\">%s</span>"
 
 #: plugins/custom-post-templates/templates/post_toolbar.php:17
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:57
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:71
 #: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/templates/shopping-list.php:25
 msgid "Print"
 msgstr "Imprimer"
@@ -958,7 +970,7 @@ msgid "Print this post"
 msgstr "Imprimer cet article"
 
 #: plugins/custom-post-templates/templates/post_toolbar.php:27
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:67
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:86
 msgid "Share"
 msgstr "Partager"
 
@@ -1002,7 +1014,7 @@ msgid "Favorites"
 msgstr "Favoris"
 
 #: plugins/custom-recipe-templates/helpers/Custom_Recipe_Favorite.php:120
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:142
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:158
 msgid "Choose a list :"
 msgstr "Choisir une liste :"
 
@@ -1020,7 +1032,7 @@ msgid "Add"
 msgstr "Ajouter"
 
 #: plugins/custom-recipe-templates/helpers/Custom_Recipe_Favorite.php:132
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:168
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:184
 #: plugins/custom-star-rating/includes/CustomStarRatingsShortcodes.php:73
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:79
 #: plugins/wp-ultimate-recipe-premium/core/vendor/vafpress/classes/shortcodegenerator.php:264
@@ -1089,11 +1101,11 @@ msgstr "Retirer de mon carnet"
 msgid "Cookbook"
 msgstr "Carnet"
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:91
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:102
 msgid "Add to my cookbook"
 msgstr "Ajouter à mon carnet"
 
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:167
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:183
 msgid "OK"
 msgstr ""
 
@@ -1133,7 +1145,7 @@ msgstr ""
 "publication."
 
 #: plugins/custom-recipe-templates/includes/Custom_WPURP_Assets.php:202
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:60
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:75
 msgid "Print this Recipe"
 msgstr "Imprimer cette recette"
 
@@ -1385,12 +1397,12 @@ msgid "reviews"
 msgstr "avis"
 
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:28
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:142
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:171
 msgid "Serves"
 msgstr "Portions"
 
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:83
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:196
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:225
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:199
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:200
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:233
@@ -1414,40 +1426,40 @@ msgstr "Notes"
 msgid "Rate"
 msgstr "Evaluer"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:24
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:25
 msgid "Comment and rate this recipe"
 msgstr "Commenter et noter cette recette"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:27
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:38
 msgid "Rate this recipe"
-msgstr "Evaluer cette recette"
+msgstr "Evaluez cette recette"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:79
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:102
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:137
 msgid "Read"
 msgstr "Lire"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:82
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:106
 msgid "Read this recipe out loud"
 msgstr "Lire cette recette à haute voix"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:116
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:145
 msgid "Origin"
 msgstr "Origine"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:123
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:152
 msgid "Diet"
 msgstr "Régime"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:130
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:159
 msgid "Level"
 msgstr "Niveau"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:145
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:174
 msgid "Decrease servings"
 msgstr "Réduire les quantités"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:149
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:178
 msgid "Increase servings"
 msgstr "Augmenter les quantités"
 
@@ -2102,7 +2114,7 @@ msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr "Un problème ? Une question ? Contacte nous <a href=\"%s\">ici</a>"
 
 #: plugins/custom-site-notifications/includes/CustomSiteMails.php:88
-#: themes/foodiepro-2.1.8/functions.php:741
+#: themes/foodiepro-2.1.8/functions.php:740
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
@@ -2207,7 +2219,7 @@ msgstr ""
 #: plugins/custom-social-interactions/includes/CustomSocialInteractions.php:70
 #: plugins/custom-social-interactions/includes/CustomSocialInteractionsShortcodes.php:30
 #: plugins/custom-social-interactions/includes/CustomSocialInteractionsShortcodes.php:33
-#: plugins/custom-social-interactions/includes/CustomSocialLikePost.php:62
+#: plugins/custom-social-interactions/includes/CustomSocialLikePost.php:66
 #, php-format
 msgid "%s like"
 msgid_plural "%s likes"
@@ -9511,15 +9523,15 @@ msgstr "<strong>ERREUR</strong> : Utilisateur en attente d'approbation."
 msgid "author"
 msgstr "auteur"
 
-#: themes/foodiepro-2.1.8/functions.php:630
+#: themes/foodiepro-2.1.8/functions.php:629
 msgid "Recipe, Ingredient, Keyword, Author..."
 msgstr "Recette, ingrédient, mot-clé, auteur..."
 
-#: themes/foodiepro-2.1.8/functions.php:741
+#: themes/foodiepro-2.1.8/functions.php:740
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:741
+#: themes/foodiepro-2.1.8/functions.php:740
 msgid "Legal notice"
 msgstr "Mentions légales"
 

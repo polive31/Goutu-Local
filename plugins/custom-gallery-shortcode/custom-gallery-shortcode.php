@@ -144,11 +144,27 @@ class Custom_Gallery_Shortcode {
 		$gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-size-{$size_class}'>";
 		$output .= apply_filters( 'gallery_style', $gallery_style . $gallery_div );
 
+
 		ob_start();
 		?>
 
-		<div class="add-picture-button">
-			<button id="<?= $button_id; ?>"><?= __('Add a picture','foodiepro'); ?></button>
+		<div class="add-picture-button tooltip">
+			<button class="tooltip-onclick" id="<?= $button_id; ?>" title="<?= __('You cooked this recipe ? Upload your own picture here','foodiepro'); ?>"><?= __('Add a picture','foodiepro'); ?></button>
+			<?php
+				if( is_user_logged_in() ) {
+					$args=array(
+						'content' 	=> $this->get_file_upload_form(),
+						'valign' 	=> 'above',
+						'halign'	=> 'left',
+						'trigger'	=> 'click',
+						'callout'	=> false,
+						'class'		=> 'fu-form modal',
+						'title'		=> __('Upload your picture','foodiepro'),
+						'img'		=> CHILD_THEME_URL . '/images/popup-icons/add_pic.png'
+					);
+					Tooltip::display( $args ); 
+				} 
+			?>
 		</div>
 		
 		<?php
@@ -174,6 +190,19 @@ class Custom_Gallery_Shortcode {
 		ob_clean();
 
 		return $output;
+	}
+
+	public function get_file_upload_form() {
+		$html=do_shortcode('
+			[fu-upload-form title="" suppress_default_fields="true" append_to_post="true"]' .
+			// Vous avez aimé ce plat ? Envoyez votre plus belle photo pour en illustrer la recette !
+			// __('Did you like this plate ? Upload your own picture here','foodiepro') .
+			'[input type="text" name="titre" id="title" class="required" description="' . __('Picture title','foodiepro') . '"]
+			[input type="file" name="photo" id="ug_photo" class="required" description=""]
+			[input type="submit" class="btn" value="Envoyer"]
+			[/fu-upload-form]');
+		
+		return $html;
 	}
 
 }

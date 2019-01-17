@@ -74,8 +74,11 @@ function custom_enqueue_style( $handler, $uri, $path, $file, $deps=array(), $ver
 
 /* Optimize page loading by dequeuing specific CSS stylesheets loading actions */
 function remove_style($style) {
+	global $wp_scripts;
+	
 	wp_dequeue_style($style);
 	wp_deregister_style($style);
+
 }
 
 /* =================================================================*/

@@ -18,12 +18,12 @@ jQuery(document).ready(function(){
     
 function addToFavoritesUpdate( list_item ) {
   console.log('In addToFavorites Update');
-  var tooltipButton = jQuery(list_item).parents('.tooltip-content').siblings('.tooltip-target');
+  var tooltipButton = jQuery(list_item).parents('.tooltip-content').siblings('.tooltip-onclick');
   var listChoice = list_item.attr("id");
   console.log('Chosen option is ', listChoice );
   
   // closeTooltip( tooltipForm );
-  closeAllTooltips();
+  Tooltip.closeAll();
   
   var data = {
     action: 'custom_favorite_recipe',

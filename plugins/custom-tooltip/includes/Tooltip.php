@@ -65,30 +65,49 @@ class Tooltip {
 			'halign' => 'middle',
 			'valign' => 'top',
 			'class' => 'grey', // color : yellow, shape : form, size : large
-			'callout' => 'no', //yes, no
+			'callout' => false, // color theme
 			'action' => 'hover', //click
 			'title' => null, //
 			'img' => null, // Image source
 			// 'img' => null, // Image source
 		), $atts );
-
-		$callout = $atts['callout']=='yes';
         
-        return $this->get( $atts['text'], $atts['valign'], $atts['halign'], $atts['trigger'], $atts['callout'], $atts['class'], $atts['title'], $atts['img'] );
+        return self::get( $atts );
     }
 	
 	/* =================================================================*/
 	/* = RETURN TOOLTIP HTML    
+	/* 	$args=array(
+		'content' 	=> tooltip content
+		'valign' 	=> 'above', 'below'
+		'halign'	=> 'left', 'right'
+		'trigger'	=> 'click', 'hover'
+		'callout'	=> false, 'yellow', ... any other valid color theme
+		'class'		=> 'class1 class2 ...'
+		'title'		=> tooltip title
+		'img'		=> tooltip image
+		) 
+	*/
 	/* =================================================================*/
-	public static function get( $content, $valign, $halign, $trigger, $callout, $class, $title=false, $img=false ) {
-		$uri = self::$PLUGIN_URI . 'assets/img/' . $theme . '/callout_'. $valign . '.png';
+	public static function get( $args ) {
+		extract($args);
+
+		// Default values
+		$trigger = isset($trigger)?$trigger:'hover';
+		$title = isset($title)?$title:'';
+		$img = 	isset($img)?$img:'';
+		$class = isset($class)?$class:'';
+		$callout = isset($callout)?$callout:false;
 		
 		$html ='<div class="tooltip-content ' . $valign . ' ' . $halign . ' ' . $class . ' ' . $trigger . '">';
 		$html.='<div class="wrap">';
 		$html.=$img?'<div class="tooltip-img"><img src="' . $img . '"></div>':'';
 		$html.=$title?'<h4 class="tooltip-title">' . $title . '</h4>':'';
 		$html.= $content;
-		$html.= $callout?'<img class="callout" data-no-lazy="1" src="' . $uri . '">':'';
+		if ($callout) {
+			$callout_uri = self::$PLUGIN_URI . 'assets/img/' . $callout . '/callout_'. $valign . '.png';
+			$html.= '<img class="tooltip-callout" data-no-lazy="1" src="' . $callout_uri . '">';
+		}
 		$html.='</div>';
 		$html.='</div>';
 		
@@ -98,8 +117,8 @@ class Tooltip {
 	/* =================================================================*/
 	/* = DISPLAY TOOLTIP    
 	/* =================================================================*/
-	public static function display( $content, $valign, $halign, $trigger='hover', $callout=false, $class='', $title=false, $img=false  ) {
-		echo self::get( $content, $valign, $halign, $trigger, $callout, $class, $title, $img );
+	public static function display( $args) {
+		echo self::get( $args );
 	}
 	
 }

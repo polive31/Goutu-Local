@@ -14,7 +14,7 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
         $this->post_type = $type;
     }
 
-    public function get_html($vertical,$horizontal,$style='') {
+    public function get_html( $vertical='above', $horizontal='center' ) {
         $post_id = get_the_id();
         $link_class='social-like-post';
         $link_id='';
@@ -54,8 +54,12 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
         // $output = $this->before_output();
         
         ob_start();
+        $ga = "ga('send','event','like','click','" . $this->post_type . "', 0)";
+        // echo $ga;
+        $ga = WP_MINIFY?$ga:'';
+        // echo $ga;
             ?>
-                <a href="<?php echo $link_url;?>" onClick="ga('send','event','like','click','<?php echo $this->post_type; ?>', 0)" id="<?php echo $link_id;?>" class="<?php echo $link_class; ?>" data-post-id="<?php echo $post_id; ?>">
+                <a href="<?php echo $link_url;?>" onClick="<?= $ga;?>" id="<?php echo $link_id;?>" class="<?php echo $link_class; ?>" data-post-id="<?php echo $post_id; ?>">
                 <div class="button-caption">
                     <?php 
                     $count_likes = $this->like_count( $post_id );
@@ -65,7 +69,12 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
                 </a>
 
             <?php 
-            Tooltip::display( $tooltip . $tooltip_alt, $vertical, $horizontal ); 
+            $args=array(
+                'content'   => $tooltip . $tooltip_alt,
+                'valign'    => $vertical,
+                'halign'    => $horizontal,
+            );
+            Tooltip::display( $args ); 
 
         
         $output = ob_get_contents();

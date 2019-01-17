@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // class Custom_Recipe_Favorite extends WPURP_Template_Block {
 class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
 
-    private $class_id='custom-recipe-favorite tooltip-target';
+    private $class_id='custom-recipe-favorite tooltip-onclick';
     private $logged_in;
 
     private $editorField = 'favoriteRecipe';
@@ -85,10 +85,25 @@ class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
             </a>
         <?php 
 
-        // Tooltip::display($tooltip . $tooltip_alt, 'above', 'center');    
-        Tooltip::display($tooltip, 'above', 'center');    
-        if( is_user_logged_in() ) 
-            Tooltip::display($this->get_favlist_form( $recipe->ID() ), 'above', 'center', 'click', false, 'favorites-form', __('Add to my cookbook', 'foodiepro'), CHILD_THEME_URL . '/images/page-icons/mon_carnet.png' );    
+        $args=array(
+            'content' 	=> $tooltip,
+            'valign' 	=> 'above',
+            'halign'	=> 'center',
+        );
+        Tooltip::display( $args ); 
+        if( is_user_logged_in() ) {
+            $args=array(
+                'content' 	=> $this->get_favlist_form( $recipe->ID() ),
+                'valign' 	=> 'above',
+                'halign'	=> 'center',
+                'trigger'	=> 'click',
+                'callout'	=> false,
+                'class'		=> 'favorites-form',
+                'title'		=> __('Add to my cookbook', 'foodiepro'), 
+                'img'		=> CHILD_THEME_URL . '/images/page-icons/mon_carnet.png'
+            );
+            Tooltip::display( $args ); 
+        }
 
         $output = ob_get_contents();
         ob_end_clean();
@@ -135,6 +150,7 @@ class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
     public function get_favlist_form( $recipe_id ) {
         
         $fav=$this->is_favorite_recipe( $recipe_id );
+        $isfav = false;
         
         ob_start();
         ?>

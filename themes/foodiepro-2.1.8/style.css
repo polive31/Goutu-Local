@@ -2520,8 +2520,22 @@ label.requiredField:after {
 }
 
 
-/* Upload Picture */
-.ugc-inner-wrapper br {display: none;}
+/* Frontend Uploader  */
+.ugc-inner-wrapper {
+    float: left;
+}
+
+.ugc-inner-wrapper br {
+	display: none;
+}
+
+.ugc-input-wrapper {
+	padding: 10px 0;
+
+}
+.ugc-input-wrapper input {
+	margin-left:10px;
+}
 
 .ugc-input-wrapper label.error {
 	color:red;
@@ -2636,12 +2650,10 @@ label.requiredField:after {
 button.pum-close:hover {background: #c5c5c5!important;color: #fff;}
 
 /* Popup Theme 10223: Eval form small & Default theme */
-.pum-theme-default-theme .pum-container, .pum-theme-eval-form .pum-container { background-image: url('images/popup-icons/fiche_recette.png'); } 
+.pum-theme-default-theme .pum-container{ background-image: url('images/popup-icons/fiche_recette.png'); } 
 
 /* Popup Theme 9961: Add Picture */
 .pum-theme-add-picture .pum-container {background-image: url('images/popup-icons/add_pic.png'); } 
-input#ug_photo {font-size: 14px; margin-top: 10px;}
-
 
 /* Popup Maker Customizations */
 .pum-content.popmake-content ul {

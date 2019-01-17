@@ -443,8 +443,7 @@ function foodiepro_debug_shortcode($args) {
 }
 
 
-/* =             SCRIPTS AND STYLES DEBUG 
-/* =================================================================*/
+/* SCRIPTS AND STYLES DEBUG */
 
 // add_action( 'wp_footer', 'foodiepro_record_scripts_styles',PHP_INT_MAX );
 function foodiepro_record_scripts_styles() {

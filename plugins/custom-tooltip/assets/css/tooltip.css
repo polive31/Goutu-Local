@@ -25,6 +25,7 @@
 }
 
 
+
 /* Tooltip content  
 ------------------------------------------*/
 
@@ -37,20 +38,6 @@
 	transition: all 0.2s ease-in-out;
 }
 
-.tooltip-content.click {
-    z-index: 20;
-}
-
-.tooltip .callout {
-	z-index:20;
-	position:absolute;
-	border:0;
-}
-
-.tooltips-closed .tooltip:hover .tooltip-content.hover {
-	/* opacity:1; */
-	display:block;
-}
 
 .tooltip-content .wrap {
 	font-size: 1.6rem;
@@ -68,6 +55,22 @@
 	overflow: hidden;	
 }
 
+/* Tooltip events 
+------------------------------------------*/
+.tooltips-closed .tooltip-onhover:hover .tooltip-content.hover {
+	/* opacity:1; */
+	display:block;
+}
+
+.tooltip-content.click {
+	z-index: 20;
+}
+
+/* Tooltip content other fields
+------------------------------------------*/
+.tooltip-content a {
+	text-decoration: underline;
+}
 
 .tooltip-img {
 	display:inline-block;
@@ -79,6 +82,12 @@ h4.tooltip-title {
 	display: inline;
 	vertical-align: middle;
     margin-left: 10px;
+}
+
+.tooltip-callout {
+	z-index:20;
+	position:absolute;
+	border:0;
 }
 
 
@@ -98,10 +107,6 @@ h4.tooltip-title {
 
 .tooltip-content.transparent .callout {
 	display:none;
-}
-
-.tooltip-content a {
-	text-decoration: underline;
 }
 
 /*Tooltip positioning above */

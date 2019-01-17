@@ -1,5 +1,5 @@
 		<!-- Class .wpurp-container important for adjustable servings javascript -->	
-		<div class="recipe wpurp-container" id="wpurp-container-recipe-<?php echo $recipe->ID(); ?>" data-id="<?php echo $recipe->ID(); ?>" data-permalink="<?php echo $recipe->link(); ?>" data-servings-original="<?php echo $recipe->servings_normalized(); ?>">
+		<div class="recipe wpurp-container tooltips-container" id="wpurp-container-recipe-<?php echo $recipe->ID(); ?>" data-id="<?php echo $recipe->ID(); ?>" data-permalink="<?php echo $recipe->link(); ?>" data-servings-original="<?php echo $recipe->servings_normalized(); ?>">
 			
 		
 		<!-- Recipe description -->
@@ -13,18 +13,32 @@
 
 			<!-- Function buttons  -->
 			<div class="recipe-top">
-					<div class="recipe-buttons tooltip-container">
+					<div class="recipe-buttons">
 
 					<!-- Recipe Rate Button -->
-					<div class="recipe-button alignleft tooltip <?php echo is_user_logged_in()?'':'disabled';?>" id="rate">
-						<a href="<?php echo is_user_logged_in()?'#':'/connexion';?>" class="recipe-review-button tooltip-target" id="<?php echo is_user_logged_in()?'recipe-review':'join-us';?>" onClick="<?= is_user_logged_in()?'':"ga('send','event','join-us','click','recipe-rate', 0)"; ?>">
+					<div class="recipe-button alignleft tooltip-onhover<?php echo is_user_logged_in()?'':'disabled';?>" id="rate">
+						<a href="<?php echo is_user_logged_in()?'#':'/connexion';?>" class="recipe-review-button tooltip-onclick" id="<?php echo is_user_logged_in()?'recipe-review':'join-us';?>" onClick="<?= is_user_logged_in()?'':"ga('send','event','join-us','click','recipe-rate', 0)"; ?>">
 						<div class="button-caption"><?php echo __('Rate','foodiepro'); ?></div>
 						</a>
 						<?php 
-						Tooltip::display( __('Comment and rate this recipe','foodiepro'), 'above', 'left' );  
+							$args=array(
+								'content' 	=> __('Comment and rate this recipe','foodiepro'),
+								'valign' 	=> 'above',
+								'halign'	=> 'left',
+							);
+							Tooltip::display( $args );  
 						if( is_user_logged_in() ) 
-							$rating_form = do_shortcode('[comment-rating-form]');
-            				Tooltip::display( $rating_form, 'above', 'left', 'click', false, 'rating-form modal', __('Rate this recipe','foodiepro'), CHILD_THEME_URL . '/images/popup-icons/fiche_recette.png' );    
+							$args=array(
+								'content' 	=> do_shortcode('[comment-rating-form]'),
+								'valign' 	=> 'above',
+								'halign'	=> 'left',
+								'trigger'	=> 'click',
+								'callout'	=> false,
+								'class'		=> 'rating-form modal',
+								'title'		=> __('Rate this recipe','foodiepro'),
+								'img'		=> CHILD_THEME_URL . '/images/popup-icons/fiche_recette.png'
+							);
+            				Tooltip::display( $args );    
 						?>
 					</div>	
 					
@@ -36,7 +50,7 @@
 					</div>	 -->			
 					
 					<!-- Add To Favorites Button -->
-					<div class="recipe-button alignleft tooltip <?php echo is_user_logged_in()?'':'disabled';?>" id="favorite">
+					<div class="recipe-button alignleft tooltip-onhover<?php echo is_user_logged_in()?'':'disabled';?>" id="favorite">
 					<?php
 						// $favorite_recipe = new Custom_Recipe_Favorite( is_user_logged_in() );
 						$favorite_recipe = new Custom_Recipe_Favorite();
@@ -44,20 +58,25 @@
 					</div>			
 
 					<!-- Like Button -->
-					<div class="recipe-button alignleft tooltip" id="like">
+					<div class="recipe-button alignleft tooltip-onhover" id="like">
 					<?php
 						$recipe_like = new Custom_Social_Like_Post( 'recipe' );
-						$recipe_like->display('above','center');
+						$recipe_like->display();
 						?>
 					</div>
 					
 					<!-- Recipe Print Button -->
-					<div class="recipe-button alignright tooltip" id="print">
+					<div class="recipe-button alignright tooltip-onhover" id="print">
 						<a class="wpurp-recipe-print recipe-print-button" href="<?php echo $recipe->link_print(); ?>" target="_blank">
 							<div class="button-caption"><?php echo __('Print', 'foodiepro'); ?></div>
 						</a>
 						<?php 
-						Tooltip::display( __('Print this Recipe','foodiepro'), 'above', 'right' );  
+						$args=array(
+							'content' 	=> __('Print this Recipe','foodiepro'),
+							'valign' 	=> 'above',
+							'halign'	=> 'right',
+						);
+						Tooltip::display( $args );  
 						?>	
 					</div>	
 					
@@ -67,29 +86,36 @@
 							<div class="button-caption"><?php echo __('Share','foodiepro'); ?></div>
 						</a> 
 						<?php //echo Custom_WPURP_Templates::output_tooltip(__('Share this recipe','foodiepro'),'above');
-							$share = do_shortcode('[social-sharing-buttons target="recipe" class="small bubble"]');
-							
-							Tooltip::display( $share, 'above', 'left', 'transparent large'); 
-							?>  
+					$args=array(
+						'content' 	=>  do_shortcode('[social-sharing-buttons target="recipe" class="small bubble"]'),
+						'valign' 	=> 'above',
+						'halign'	=> 'left',
+						'class'		=> 'transparent large'
+					);
+					Tooltip::display( $args ); 
+						?>  
 					</div>				 -->
 					
 					<!-- Recipe Read Button -->
-					<div class="recipe-button alignright tooltip" id="read">
+					<div class="recipe-button alignright tooltip-onhover" id="read">
 						<a class="recipe-read-button" onClick="<?= is_user_logged_in()?'':"ga('send','event','recipe-read','click','', 0)"; ?>"/>
-							<div class="button-caption"><?php echo __('Read', 'foodiepro'); ?></div>
+								<div class="button-caption"><?php echo __('Read', 'foodiepro'); ?></div>
 						</a>
 						<?php 
-						Tooltip::display( __('Read this recipe out loud','foodiepro'), 'above', 'right' );  
+						$args=array(
+							'content' 	=>  __('Read this recipe out loud','foodiepro'),
+							'valign' 	=> 'above',
+							'halign'	=> 'center',
+						);
+						Tooltip::display( $args ); 						 
 						?>	
-					</div>						
+					</div>	
+
 				</div>
 
 				
 			</div>
 
-
-
-			
 			<!-- Image + recipe info -->
 			<div class="recipe-container"  id="image">
 				

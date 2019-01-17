@@ -196,7 +196,7 @@ class Custom_WPURP_Assets {
 		                    'ajaxurl' => WPUltimateRecipe::get()->helper('ajax')->url(),
 		                    'nonce' => wp_create_nonce( 'wpurp_print' ),
 		                    // 'custom_print_css_url' => get_stylesheet_directory_uri() . '/assets/css/custom-recipe-print.css',
-		                    'custom_print_css_url' => $_PluginUri . '/assets/css/custom-recipe-print.css',
+		                    'custom_print_css_url' => self::$_PluginUri . '/assets/css/custom-recipe-print.css',
 		                    'coreUrl' => WPUltimateRecipe::get()->coreUrl,
 		                    'premiumUrl' => WPUltimateRecipe::is_premium_active() ? WPUltimateRecipePremium::get()->premiumUrl : false,
 		                    'title' => __('Print this Recipe','foodiepro'),

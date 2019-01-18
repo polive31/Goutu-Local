@@ -56,7 +56,7 @@ class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
     public function output( $recipe, $args = array() ) {
   
         if( !is_user_logged_in() ) {
-            $link_id='id="join-us"';
+            $link_id='id="join_us"';
             $link_url = '/connexion';
             $onclick = "ga('send','event','join-us','click','recipe-favorite', 0);";
             $favorites_link = '/connexion';
@@ -79,30 +79,30 @@ class Custom_Recipe_Favorite extends Custom_WPURP_Templates {
         
         ob_start();
         ?>
-            <a href="<?= $link_url;?>" <?= $link_id;?> class="<?= $this->class_id; ?>" data-recipe-id="<?= $recipe->ID(); ?>" onClick="<?= $onclick; ?>" >
+            <a href="<?= $link_url;?>" class="<?= $this->class_id; ?>" data-recipe-id="<?= $recipe->ID(); ?>" data-tooltip-id="<?php echo is_user_logged_in()?'':'join_us';?>" onClick="<?= $onclick; ?>" >
             <span class="button-icon" id="favorites"><?= $this->get_toolbar_icon('favorites-' . $isfav[1] ); ?></span>
             <div class="button-caption"><?= __('Cookbook','foodiepro'); ?></div>
             </a>
         <?php 
 
+        if( is_user_logged_in() ) {
         $args=array(
             'content' 	=> $tooltip,
             'valign' 	=> 'above',
             'halign'	=> 'center',
         );
         Tooltip::display( $args ); 
-        if( is_user_logged_in() ) {
-            $args=array(
-                'content' 	=> $this->get_favlist_form( $recipe->ID() ),
-                'valign' 	=> 'above',
-                'halign'	=> 'center',
-                'trigger'	=> 'click',
-                'callout'	=> false,
-                'class'		=> 'favorites-form',
-                'title'		=> __('Add to my cookbook', 'foodiepro'), 
-                'img'		=> CHILD_THEME_URL . '/images/page-icons/mon_carnet.png'
-            );
-            Tooltip::display( $args ); 
+        $args=array(
+            'content' 	=> $this->get_favlist_form( $recipe->ID() ),
+            'valign' 	=> 'above',
+            'halign'	=> 'center',
+            'action'	=> 'click',
+            'callout'	=> false,
+            'class'		=> 'favorites-form',
+            'title'		=> __('Add to my cookbook', 'foodiepro'), 
+            'img'		=> CHILD_THEME_URL . '/images/page-icons/mon_carnet.png'
+        );
+        Tooltip::display( $args ); 
         }
 
         $output = ob_get_contents();

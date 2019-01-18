@@ -7,12 +7,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Custom_Social_Interactions {
 
-    protected static $_PluginPath;
+    protected static $PLUGIN_PATH;
+    protected static $PLUGIN_URI;
 
     // public function __construct( $logged_in ) {
     public function __construct() {
         // $this->logged_in = $logged_in;
-        self::$_PluginPath = plugin_dir_url( dirname( __FILE__ ) );
+        self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
+        self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
 
         // Assets
         add_action( 'wp_enqueue_scripts', array( $this, 'social_like_post_script' ) );
@@ -37,7 +39,16 @@ class Custom_Social_Interactions {
 
     public function social_like_post_script() {
         if (! is_single() ) return;
-            wp_enqueue_script( 'custom-post-like', self::$_PluginPath . '/assets/js/social-like-post.js', array( 'jquery' ), CHILD_THEME_VERSION, false );
+            // wp_enqueue_script( 'custom-post-like', self::$PLUGIN_URI . '/assets/js/social-like-post.js', array( 'jquery' ), CHILD_THEME_VERSION, false );
+            custom_enqueue_script( 
+                'custom-post-like', 
+                self::$PLUGIN_URI . '/assets/js/', 
+                self::$PLUGIN_PATH . '/assets/js/', 
+                'social-like-post.js', 
+                array( 'jquery' ), 
+                CHILD_THEME_VERSION, 
+                false 
+            );
             wp_localize_script( 'custom-post-like', 'custom_post_like', array( 
                     'ajaxurl' => admin_url( 'admin-ajax.php' ),
                     'nonce' => wp_create_nonce( 'custom_post_like' ))

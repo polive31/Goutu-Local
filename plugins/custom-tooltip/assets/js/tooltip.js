@@ -1,3 +1,27 @@
+/* TOOLTIP.JS
+
+Tooltips have the following structure : 
+
+* trigger  : this can be any html element which will 
+* action : hover, click, [hover intent ?]
+* content : contains the tooltip's body
+
+Tooltip class has the following methods : 
+* For a tooltip instance :
+    - toggleVisibility => displays or hide
+    - isOpen => check if the tooltip is open
+    - updateContent => updates the content of the tooltip 
+    - updateTrigger => updates the content of the trigger : change an icon, ...
+
+* For all tooltips (static methods) :
+    - aTooltipOpen => checks whether a given tooltip is open
+    - closeAll => closes all tooltips
+
+
+
+*/
+
+
 jQuery(document).ready(function () {
     console.log('In tooltip.js');
     
@@ -9,11 +33,11 @@ jQuery(document).ready(function () {
         e.preventDefault();
         e.stopPropagation(); 
         // var tooltip = jQuery(this).siblings('.tooltip-content.click');
-        var tooltip = new Tooltip( jQuery(this).siblings('.tooltip-content.click') );
+        var tooltip = new Tooltip( this );
 
         // console.log( tooltip.html() );
         // Tooltip.toggleVisibility(tooltip );
-        tooltip.togglePopup();
+        tooltip.toggleVisibility();
     }); 
     
     jQuery(document).click( function(e) {
@@ -32,9 +56,22 @@ jQuery(document).ready(function () {
 
 class Tooltip {
 
-    constructor( obj ) {
+    constructor( trigger ) {
         // Pass the jquery object into the class, then all jQuery methods can be applied to it
-        this.obj = obj;
+        console.log('In constructor, trigger is ', trigger);
+        this.trigger = jQuery(trigger);
+        console.log('In constructor, this.trigger is ', this.trigger);
+        
+        var contentId = this.trigger.data("tooltip-id");
+        console.log('In constructor, contentId is ', contentId);
+        
+        if (contentId) {
+            this.content = jQuery('#'+contentId);
+        }
+        else {
+            this.content = this.trigger.siblings('.tooltip-content.click');
+        }
+        console.log('In constructor, this.content is ', this.content);
     }
 
     static initContainer() {
@@ -49,29 +86,34 @@ class Tooltip {
         Tooltip.containerObj.addClass('tooltips-closed');
     };
     
-    togglePopup() {
-        console.log('In toggle Popup !, for jQuery object ', this.obj );
+    toggleVisibility() {
+        console.log('In toggle Visibility !, for jQuery object ', this.content );
         // console.log('In toggle Popup !, for object ', this);
-        // console.log('The corresponding jQuery object is : ', this.obj );
+        // console.log('The corresponding jQuery object is : ', this.content );
         if (Tooltip.aTooltipOpen() && !this.isOpen()) {
             console.log('Other open tooltip detected, closing');
             Tooltip.closeAll();
         }
         else {
             console.log('OK for toggling the current tooltip');
-            this.obj.toggle();
-            if (this.obj.hasClass('modal')) Tooltip.overlayToggle();
+            this.content.toggle();
+            if (this.content.hasClass('modal')) Tooltip.overlayToggle();
             Tooltip.containerObj.toggleClass('tooltip-open tooltips-closed');
         }
     };
     
     isOpen() {
-        console.log('This tooltip is open ?', this.obj.is(":visible"));
-        return this.obj.is(":visible");
+        console.log('This tooltip is open ?', this.content.is(":visible"));
+        return this.content.is(":visible");
+    }
+
+    setContent() {
+
     }
     
     static closeAll() {
         console.log( 'In Close All Tooltips' );
+        console.log('Following open popups are found : ', Tooltip.containerObj.find('.tooltip-content.click:visible') );
         Tooltip.containerObj.find('.tooltip-content.click:visible').hide();
         Tooltip.containerObj.addClass('tooltips-closed');
         Tooltip.containerObj.removeClass('tooltip-open');

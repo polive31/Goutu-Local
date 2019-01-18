@@ -16,6 +16,10 @@ if ( !defined('ABSPATH') )
 	
 
 require_once 'includes/CustomSiteMails.php';
+require_once 'includes/CustomSitePopups.php';
+
 new CustomSiteMails();
+new CustomSitePopups();
+
 
 

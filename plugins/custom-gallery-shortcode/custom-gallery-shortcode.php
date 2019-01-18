@@ -137,7 +137,7 @@ class Custom_Gallery_Shortcode {
 
 
 		/* Gallery content output */
-		$button_id = is_user_logged_in() ? 'upload-picture' : 'join-us';
+		$button_id = is_user_logged_in() ? 'upload-picture' : '';
 		$size_class = sanitize_html_class( $atts['size'] );
 		
 		$gallery_style = '';
@@ -148,23 +148,22 @@ class Custom_Gallery_Shortcode {
 		ob_start();
 		?>
 
-		<div class="add-picture-button tooltip">
-			<button class="tooltip-onclick" id="<?= $button_id; ?>" title="<?= __('You cooked this recipe ? Upload your own picture here','foodiepro'); ?>"><?= __('Add a picture','foodiepro'); ?></button>
-			<?php
-				if( is_user_logged_in() ) {
-					$args=array(
-						'content' 	=> $this->get_file_upload_form(),
-						'valign' 	=> 'above',
-						'halign'	=> 'left',
-						'trigger'	=> 'click',
-						'callout'	=> false,
-						'class'		=> 'fu-form modal',
-						'title'		=> __('Upload your picture','foodiepro'),
-						'img'		=> CHILD_THEME_URL . '/images/popup-icons/add_pic.png'
-					);
-					Tooltip::display( $args ); 
-				} 
-			?>
+		<div class="add-picture-button">
+			<button class="tooltip-onclick" id="<?= $button_id; ?>" data-tooltip-id="<?php echo is_user_logged_in()?'':'join_us';?>" title="<?= __('You cooked this recipe ? Upload your own picture here','foodiepro'); ?>"><?= __('Add a picture','foodiepro'); ?></button>
+		<?php
+			if( is_user_logged_in() ) {
+				$args=array(
+					'content' 	=> $this->get_file_upload_form(),
+					'valign' 	=> 'above',
+					'halign'	=> 'left',
+					'action'	=> 'click',
+					'class'		=> 'fu-form modal',
+					'title'		=> __('Upload your picture','foodiepro'),
+					'img'		=> CHILD_THEME_URL . '/images/popup-icons/add_pic.png'
+				);
+				Tooltip::display( $args ); 
+			} 
+		?>
 		</div>
 		
 		<?php

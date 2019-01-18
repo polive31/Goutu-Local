@@ -72,34 +72,44 @@ class Tooltip {
 			// 'img' => null, // Image source
 		), $atts );
         
-        return self::get( $atts );
+        return self::getContent( $atts );
     }
 	
 	/* =================================================================*/
-	/* = RETURN TOOLTIP HTML    
+	/* = GET TOOLTIP CONTENT    
 	/* 	$args=array(
 		'content' 	=> tooltip content
 		'valign' 	=> 'above', 'below'
 		'halign'	=> 'left', 'right'
-		'trigger'	=> 'click', 'hover'
+		'action'	=> 'click', 'hover'
 		'callout'	=> false, 'yellow', ... any other valid color theme
+		'id'		=> used to trigger the content visibility in case the content is not a sibling of the trigger
 		'class'		=> 'class1 class2 ...'
 		'title'		=> tooltip title
 		'img'		=> tooltip image
 		) 
+
+		The tooltip trigger is build using the following HTML markup  : 
+		* add "tooltip-onclick" or "tooltip-onhover" wherever you want to place the trigger
+		* IMPORTANT: for hover tooltips, the tooltip content must be placed immediately below the container with tooltip-onhover class
+		* For click tooltips it is assumed by default, that the trigger and the content are siblings from each other
+		* If you want to separate the content from the trigger, you can use the "id" parameter to the content, and in the trigger you will use data-tooltip-id to indicate this id 
+
 	*/
 	/* =================================================================*/
-	public static function get( $args ) {
-		extract($args);
-
-		// Default values
-		$trigger = isset($trigger)?$trigger:'hover';
-		$title = isset($title)?$title:'';
-		$img = 	isset($img)?$img:'';
-		$class = isset($class)?$class:'';
-		$callout = isset($callout)?$callout:false;
+	public static function getContent( $args ) {
 		
-		$html ='<div class="tooltip-content ' . $valign . ' ' . $halign . ' ' . $class . ' ' . $trigger . '">';
+		// Default values
+		$action = 'hover';
+		$title = '';
+		$img = 	'';
+		$class = '';
+		$id = '';
+		$callout = false;
+		// Put args into variables
+		extract($args);
+		
+		$html ='<div class="tooltip-content ' . $valign . ' ' . $halign . ' ' . $class . ' ' . $action . '" id="' . $id . '">';
 		$html.='<div class="wrap">';
 		$html.=$img?'<div class="tooltip-img"><img src="' . $img . '"></div>':'';
 		$html.=$title?'<h4 class="tooltip-title">' . $title . '</h4>':'';
@@ -113,12 +123,14 @@ class Tooltip {
 		
 		return $html;
 	}
+
 	
 	/* =================================================================*/
-	/* = DISPLAY TOOLTIP    
+	/* DISPLAY 
+	   Displays Tooltip Content    
 	/* =================================================================*/
 	public static function display( $args) {
-		echo self::get( $args );
+		echo self::getContent( $args );
 	}
 	
 }

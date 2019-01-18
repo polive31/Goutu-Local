@@ -1,6 +1,9 @@
 		<!-- Class .wpurp-container important for adjustable servings javascript -->	
 		<div class="recipe wpurp-container tooltips-container" id="wpurp-container-recipe-<?php echo $recipe->ID(); ?>" data-id="<?php echo $recipe->ID(); ?>" data-permalink="<?php echo $recipe->link(); ?>" data-servings-original="<?php echo $recipe->servings_normalized(); ?>">
-			
+		
+		<?php 
+		do_action( 'wpurp_in_container' );
+		?>
 		
 		<!-- Recipe description -->
 		<div class="recipe-container" id="intro">
@@ -16,23 +19,27 @@
 					<div class="recipe-buttons">
 
 					<!-- Recipe Rate Button -->
-					<div class="recipe-button alignleft tooltip-onhover<?php echo is_user_logged_in()?'':'disabled';?>" id="rate">
-						<a href="<?php echo is_user_logged_in()?'#':'/connexion';?>" class="recipe-review-button tooltip-onclick" id="<?php echo is_user_logged_in()?'recipe-review':'join-us';?>" onClick="<?= is_user_logged_in()?'':"ga('send','event','join-us','click','recipe-rate', 0)"; ?>">
+					<div class="recipe-button alignleft <?php echo is_user_logged_in()?'tooltip-onhover':'disabled';?>" id="rate">
+						<?php
+						$ga = WP_MINIFY?is_user_logged_in()?'':"ga('send','event','join-us','click','recipe-rate', 0)":'';
+						// echo $ga;
+						?>
+						<a href="<?php echo is_user_logged_in()?'#':'/connexion';?>" class="recipe-review-button tooltip-onclick" data-tooltip-id="<?php echo is_user_logged_in()?'':'join_us';?>" onClick="<?= $ga ?>">
 						<div class="button-caption"><?php echo __('Rate','foodiepro'); ?></div>
 						</a>
 						<?php 
+						if( is_user_logged_in() ) 
 							$args=array(
 								'content' 	=> __('Comment and rate this recipe','foodiepro'),
 								'valign' 	=> 'above',
 								'halign'	=> 'left',
 							);
 							Tooltip::display( $args );  
-						if( is_user_logged_in() ) 
 							$args=array(
 								'content' 	=> do_shortcode('[comment-rating-form]'),
 								'valign' 	=> 'above',
 								'halign'	=> 'left',
-								'trigger'	=> 'click',
+								'action'	=> 'click',
 								'callout'	=> false,
 								'class'		=> 'rating-form modal',
 								'title'		=> __('Rate this recipe','foodiepro'),
@@ -50,7 +57,7 @@
 					</div>	 -->			
 					
 					<!-- Add To Favorites Button -->
-					<div class="recipe-button alignleft tooltip-onhover<?php echo is_user_logged_in()?'':'disabled';?>" id="favorite">
+					<div class="recipe-button alignleft <?php echo is_user_logged_in()?'tooltip-onhover':'disabled';?>" id="favorite">
 					<?php
 						// $favorite_recipe = new Custom_Recipe_Favorite( is_user_logged_in() );
 						$favorite_recipe = new Custom_Recipe_Favorite();
@@ -112,6 +119,10 @@
 					</div>	
 
 				</div>
+
+			<?php  
+
+			?>
 
 				
 			</div>

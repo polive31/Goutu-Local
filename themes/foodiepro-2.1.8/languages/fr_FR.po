@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-01-17 17:15+0100\n"
-"PO-Revision-Date: 2019-01-17 17:44+0100\n"
+"POT-Creation-Date: 2019-01-18 20:24+0100\n"
+"PO-Revision-Date: 2019-01-18 21:40+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -753,11 +753,11 @@ msgstr "Vous avez réalisé cette recette ? Publiez votre propre photo !"
 msgid "Add a picture"
 msgstr "Ajoutez votre photo"
 
-#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:162
+#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:161
 msgid "Upload your picture"
 msgstr "Publiez votre photo"
 
-#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:200
+#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:199
 msgid "Picture title"
 msgstr "Titre de l'image"
 
@@ -960,7 +960,7 @@ msgid "Published on %s by %s<span id=\"username\">%s</span>"
 msgstr "Publié le %s par %s<span id=\"username\">%s</span>"
 
 #: plugins/custom-post-templates/templates/post_toolbar.php:17
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:71
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:78
 #: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/templates/shopping-list.php:25
 msgid "Print"
 msgstr "Imprimer"
@@ -970,7 +970,7 @@ msgid "Print this post"
 msgstr "Imprimer cet article"
 
 #: plugins/custom-post-templates/templates/post_toolbar.php:27
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:86
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:93
 msgid "Share"
 msgstr "Partager"
 
@@ -1145,7 +1145,7 @@ msgstr ""
 "publication."
 
 #: plugins/custom-recipe-templates/includes/Custom_WPURP_Assets.php:202
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:75
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:82
 msgid "Print this Recipe"
 msgstr "Imprimer cette recette"
 
@@ -1397,12 +1397,12 @@ msgid "reviews"
 msgstr "avis"
 
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:28
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:171
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:179
 msgid "Serves"
 msgstr "Portions"
 
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:83
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:225
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:233
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:199
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:200
 #: plugins/custom-recipe-templates/templates/partials/submission_form_ingredients_instructions.php:233
@@ -1422,44 +1422,44 @@ msgstr "Portions"
 msgid "Notes"
 msgstr "Notes"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:21
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:28
 msgid "Rate"
 msgstr "Evaluer"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:25
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:33
 msgid "Comment and rate this recipe"
 msgstr "Commenter et noter cette recette"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:38
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:45
 msgid "Rate this recipe"
 msgstr "Evaluez cette recette"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:102
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:109
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:137
 msgid "Read"
 msgstr "Lire"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:106
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:113
 msgid "Read this recipe out loud"
 msgstr "Lire cette recette à haute voix"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:145
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:153
 msgid "Origin"
 msgstr "Origine"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:152
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:160
 msgid "Diet"
 msgstr "Régime"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:159
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:167
 msgid "Level"
 msgstr "Niveau"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:174
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:182
 msgid "Decrease servings"
 msgstr "Réduire les quantités"
 
-#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:178
+#: plugins/custom-recipe-templates/templates/custom-recipe-template.php:186
 msgid "Increase servings"
 msgstr "Augmenter les quantités"
 
@@ -2216,7 +2216,39 @@ msgid ""
 "with password you choose during registration process."
 msgstr ""
 
-#: plugins/custom-social-interactions/includes/CustomSocialInteractions.php:70
+#: plugins/custom-site-notifications/includes/CustomSitePopups.php:92
+msgid "Becoming a member allows you to : "
+msgstr "Inscrivez-vous pour accéder à toutes les fonctions de Goûtu.org !"
+
+#: plugins/custom-site-notifications/includes/CustomSitePopups.php:96
+msgid "Store your favorite recipes in your cookbook,"
+msgstr "Mon carnet de recettes"
+
+#: plugins/custom-site-notifications/includes/CustomSitePopups.php:97
+msgid "Publish your own recipes and posts,"
+msgstr "Publier mes recettes et articles"
+
+#: plugins/custom-site-notifications/includes/CustomSitePopups.php:98
+msgid "Create your personal profile and exchange with other members,"
+msgstr "Mon profil perso et mes contacts"
+
+#: plugins/custom-site-notifications/includes/CustomSitePopups.php:103
+msgid "Comment and rate recipes"
+msgstr "Commenter et noter les recettes"
+
+#: plugins/custom-site-notifications/includes/CustomSitePopups.php:104
+msgid "Subscribe to other members and access their private recipes,"
+msgstr "M'abonner aux blogs et accéder aux recettes privées"
+
+#: plugins/custom-site-notifications/includes/CustomSitePopups.php:105
+msgid "And many more other benefits..."
+msgstr "Et bien plus encore… idées et contributions sont bienvenues !"
+
+#: plugins/custom-site-notifications/includes/CustomSitePopups.php:109
+msgid "Register"
+msgstr "Je m'inscris"
+
+#: plugins/custom-social-interactions/includes/CustomSocialInteractions.php:81
 #: plugins/custom-social-interactions/includes/CustomSocialInteractionsShortcodes.php:30
 #: plugins/custom-social-interactions/includes/CustomSocialInteractionsShortcodes.php:33
 #: plugins/custom-social-interactions/includes/CustomSocialLikePost.php:66
@@ -11149,6 +11181,9 @@ msgstr "Ces recettes pourraient également vous intéresser..."
 #: themes/foodiepro-2.1.8/yarpp-template-goutu.php:20
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
+
+#~ msgid "Registration is simple and free !"
+#~ msgstr "L'inscription est simple et rapide !"
 
 #~ msgid "Recipe published."
 #~ msgstr "Recette publiée."

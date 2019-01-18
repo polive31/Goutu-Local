@@ -530,9 +530,9 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		$text=esc_html($a['text']);
 		$content=esc_html($content);
 	    
-  	$url=wp_registration_url();
-    if ($html) return '<a href=' . $url . '>' . $text . $content . '</a>';
-    else return $url;
+		$url=wp_registration_url();
+		if ($html) return '<a href=' . $url . '>' . $text . $content . '</a>';
+		else return $url;
 	}
 
 

@@ -51,6 +51,9 @@ function addToFavoritesUpdate( list_item ) {
       tooltipButton.children('.button-icon').html( response.icon );
       // Update button tooltip on hover 
       tooltipButton.siblings('.tooltip-content.hover').children('.wrap').html( response.text );
+
+      tooltip = new Tooltip( tooltipButton.siblings('.tooltip-content.hover') );
+
       // Update selected list in favorites list form 
       list_item.addClass('isfav');      
       list_item.siblings().removeClass('isfav'); 

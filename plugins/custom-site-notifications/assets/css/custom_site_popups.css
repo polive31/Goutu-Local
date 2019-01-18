@@ -5,8 +5,8 @@
 }
 
 #join_us .wrap {
-    background: url(../img/join_us_total.png) -179px 0px no-repeat;
-    background-size: 125%;
+    background: url(../img/join_us_picture.jpg) 0px 0px no-repeat;
+    /* background-size: 125%; */
     /* border: 10px solid #b6612b; */
     border: 10px solid #c32d1a;
     box-shadow: 10px 10px 15px #747474;
@@ -38,7 +38,7 @@
 }
 
 #join_us .textbox {
-    background: rgba(255, 255, 255, 0.82);
+    background: rgba(255, 255, 255, 0.52);
     color: #50463f;
     white-space: normal;
     font-family:Oswald, sans-serif;

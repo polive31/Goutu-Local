@@ -3287,7 +3287,11 @@ nav.nav-primary .wrap {
 
 #username {
 	text-transform: capitalize;
+	display: inline-block;
+    vertical-align: middle;
+    padding-bottom: 5px;
 }
+
 
 .entry-header-overlay .entry-meta,
 .post-info {

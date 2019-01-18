@@ -219,6 +219,15 @@ h2.entry-title, .wpupg-post-title,
   text-decoration:none;
 }
 
+/* Post Meta  */
+
+#username a {
+	font-family: Oswald,sans-serif;
+    font-size: 19px;
+    font-style: initial;
+    vertical-align: middle;
+    padding: 0 5px;
+}
 
 
 /* Responsive menu fonts */

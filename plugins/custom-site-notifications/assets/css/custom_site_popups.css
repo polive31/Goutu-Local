@@ -82,10 +82,10 @@
 
 #join_us li.pan:before {
     content:url('../img/frying-pan.png');
-    width: 128px;
+    width: 117px;
     float: right;
     position: relative;
-    top: -20px;
+    top: -4px;
 }
 
 #join_us li.pen:before {

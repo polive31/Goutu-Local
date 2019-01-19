@@ -486,6 +486,8 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 			'tax' => false,
 			'text' => '',  // html link is output if not empty
 			'data' => '', // "attr1 val1 attr2 val2  ..." separate with spaces 
+			'ga' => '', // ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue] ); separate by spaces
+
 	    ), $atts);
 	
 
@@ -496,6 +498,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		$text=esc_html($a['text']);
 		$content=esc_html($content);
 		$data=explode(' ', $a['data']);
+		$ga=explode(' ', $a['ga']);
 
 	
 		if ($id) 
@@ -512,9 +515,19 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		}
 
 		if ( $content || $text ) 
-			return '<a class="' . $class . '" id="' . $id . '" ' . $this->get_data( $data ) . ' href="' . $url . '">' . $text . $content . '</a>';
+			return '<a class="' . $class . '" id="' . $id . '" ' . $this->get_data( $data ) . ' href="' . $url . '" onclik="' . $this->get_ga( $ga ) . '">' . $text . $content . '</a>';
 		else 
 			return $url;
+	}
+
+	public function get_ga( $ga ) {
+		if (!$ga) return;
+		$html = "ga('send', 'event' ";
+		foreach ( $ga as $field ) {
+			$html .= ",'$field' ";
+		}
+		$html .= ");";
+		return $html;
 	}
 
 	public function get_data( $data ) {

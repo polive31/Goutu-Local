@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2019-01-18 20:24+0100\n"
-"PO-Revision-Date: 2019-01-18 21:40+0100\n"
+"PO-Revision-Date: 2019-01-19 14:11+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -2238,11 +2238,11 @@ msgstr "Commenter et noter les recettes"
 
 #: plugins/custom-site-notifications/includes/CustomSitePopups.php:104
 msgid "Subscribe to other members and access their private recipes,"
-msgstr "M'abonner aux blogs et accéder aux recettes privées"
+msgstr "Blogs et recettes privées"
 
 #: plugins/custom-site-notifications/includes/CustomSitePopups.php:105
 msgid "And many more other benefits..."
-msgstr "Et bien plus encore… idées et contributions sont bienvenues !"
+msgstr "Et bien plus encore…"
 
 #: plugins/custom-site-notifications/includes/CustomSitePopups.php:109
 msgid "Register"

@@ -7,8 +7,6 @@
 
 #join_us .wrap {
     background: url(../img/join_us_picture.jpg) 0px 0px no-repeat;
-    /* background-size: 125%; */
-    /* border: 10px solid #b6612b; */
     border: 10px solid #c32d1a;
     box-shadow: 10px 10px 15px #747474;
 }
@@ -42,7 +40,7 @@
     background: rgba(255, 255, 255, 0.52);
     color: #50463f;
     white-space: normal;
-    font-size: 22px;
+    font-size: 20px;
     font-weight:normal;
     line-height: 26px;
     /* text-shadow: none; */
@@ -67,64 +65,67 @@
     /* font-family: Cabin, sans-serif; */
 }
 
-#join_us li.icon:before {
-    float:left;
-    width:60px;
-    height:50px;
+#join_us li.right:after,
+#join_us li.left:before {
+    display: inline-block;
     vertical-align: middle;
+    /* float:left; */
+    width:50px;
+    height:50px;
+    /* vertical-align: middle; */
+    content:'';
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align:left;
+}
+    
+#join_us li.icon.right:after {
+    text-align:right;
 }
 
 #join_us li.cookbook:before {
-    content:url('../img/cookbook.png');
-    width:70px;
+    background-image:url('../img/cookbook.png');
+    width: 85px;
+    margin: 0 10px;
 }
 
-#join_us li.pan:before {
-    content:url('../img/frying-pan.png');
-    width: 117px;
-    float: right;
-    position: relative;
-    top: -4px;
+#join_us li.pan:after {
+    background-image:url('../img/frying-pan.png');
+    width: 90px;
 }
 
 #join_us li.pen:before {
-    content:url('../img/publish.png');
-    /* float: right; */
+    background-image:url('../img/publish.png');
 }
 
 
 #join_us li.profile:before {
-    content:url('../img/profile.png');
-    /* float: right; */
-    width: 60px;
+    background-image:url('../img/profile.png');
+    width: 45px;
+    margin: 0 10px;
+
 }
 
-#join_us li.rate:before {
-    content:url('../img/rate.png');
-    float: right;
-    width: 80px;
+#join_us li.rate:after {
+    background-image:url('../img/rate.png');
+    width: 68px;
 }
 
 #join_us li.blogs:before {
-    content:url('../img/blogs.png');
-    float: left;
+    background-image:url('../img/blogs.png');
     width: 70px;
+    margin: 0 25px;
 }
 
-#join_us li.picture:before {
-    content:url('../img/picture.png');
-    float: right;
+#join_us li.picture:after {
+    background-image:url('../img/picture.png');
     width: 80px;
-    position: relative;
-    top: 10px;
 }
 
-#join_us li.more:before {
-    content:url('../img/ideas.png');
-    float: right;
-    width: 60px;
-    position: relative;
-    top: -5px;
+#join_us li.more:after {
+    background-image:url('../img/ideas.png');
+    width: 90px;
 }
 
 #join_us .register-button {
@@ -135,27 +136,90 @@
 }
 
 #join_us .register-button a {
-    /* background: rgb(17, 243, 171); */
-    /* background: rgb(170, 232, 72); */
-    /* font-family: sans-serif; */
     background:rgb(238, 255, 212);
     border-radius: 10px;
     padding: 15px 0px;
     font-size: 22px;
     display: inline-block;
-    /* color: black; */
     color: #483e37;
     width: 140px;
     transition: all 200ms ease-in-out;
     font-weight: bold;
     text-decoration: none;
-    /* text-transform: uppercase; */
-    /* border: 2px solid #ff0000; */
-    /* border: 2px solid #f7afac; */
 }
 
 #join_us .register-button a:hover {
     /* background: rgb(184, 253, 76); */
     background: rgb(217, 255, 74);
     width: 100%;
+}
+
+
+/* MEDIA QUERIES 
+---------------------------------------------------*/
+
+@media only screen and (max-width:570px) {
+
+    .tooltip-content.modal#join_us {
+        position: absolute;
+        top:auto;
+    }
+    
+    #join_us .wrap {
+        padding:0;
+        background: rgb(255, 195, 152);
+        overflow-y: scroll;
+    }
+    
+    #join_us h4 {
+        font-size: 17px;
+        line-height: 21px;
+        margin: 14px 0;
+    }   
+    
+    #join_us li.icon:after,
+    #join_us li.icon:before {
+        width: 70px;
+        max-height: 30px;
+    }
+    
+    #join_us li.profile:before {
+        width: 36px;
+    }
+
+     #join_us li.pan:after {
+        width: 80px;
+    }
+    
+    #join_us .column {
+        padding-top:0px;
+        width:100%;
+    }
+    
+    #join_us .textbox {
+        font-size: 18px;
+    }
+
+    #join_us ul {
+        margin: 0;
+    }
+    
+    #join_us ul li {
+        margin: 5px;
+        padding: 7px 10px;
+        min-height:auto;
+    }
+    
+    #join_us li:first-child {
+        margin-top: 0;
+    }
+    
+    #join_us li.blogs {
+        text-align: left;
+    }
+    
+    #join_us .register-button a {
+        background:#ff7800;
+    }
+    
 }

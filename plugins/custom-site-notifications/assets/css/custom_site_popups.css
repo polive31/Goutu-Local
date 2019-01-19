@@ -2,6 +2,7 @@
 #join_us .wrap {
     max-width: 820px;
     height: 489px;
+    font-family:Oswald, sans-serif;
 }
 
 #join_us .wrap {
@@ -41,7 +42,6 @@
     background: rgba(255, 255, 255, 0.52);
     color: #50463f;
     white-space: normal;
-    font-family:Oswald, sans-serif;
     font-size: 22px;
     font-weight:normal;
     line-height: 26px;
@@ -51,7 +51,6 @@
 #join_us .column#group2 {
     text-align: right;
 }
-
 
 #join_us ul {
     margin:10px 0;
@@ -128,8 +127,6 @@
     top: -5px;
 }
 
-
-
 #join_us .register-button {
     display: inline-block;
     width: 100%;
@@ -140,19 +137,21 @@
 #join_us .register-button a {
     /* background: rgb(17, 243, 171); */
     /* background: rgb(170, 232, 72); */
+    /* font-family: sans-serif; */
     background:rgb(238, 255, 212);
+    border-radius: 10px;
     padding: 15px 0px;
-    font-size: 20px;
-    text-decoration: none;
+    font-size: 22px;
     display: inline-block;
     /* color: black; */
     color: #483e37;
     width: 140px;
     transition: all 200ms ease-in-out;
-    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    /* text-transform: uppercase; */
     /* border: 2px solid #ff0000; */
     /* border: 2px solid #f7afac; */
-    /* border-radius: 30px; */
 }
 
 #join_us .register-button a:hover {

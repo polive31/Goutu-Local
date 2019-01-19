@@ -18,17 +18,17 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		add_shortcode('ct-terms', array($this,'list_terms_taxonomy'));
 		// add_shortcode('ct-dropdown', array($this,'custom_categories_dropdown_shortcode'));
 		add_shortcode('share-title', array($this,'display_share_title')); 
-		add_shortcode('registration', array($this,'output_registation_url')); 
 		add_shortcode('wp-page-link', array($this,'display_wordpress_page_link') );	
 		add_shortcode('taxonomy-terms', array($this,'simple_list_taxonomy_terms'));	
-
+		
 		// Admin shortcodes
 		add_shortcode('post-count', array($this,'get_post_count'));
-
-		// Helpful shortcodes within recipes or posts
+		
+		// Add link shortcodes
 		add_shortcode('permalink', array($this,'get_permalink'));
 		add_shortcode('glossary', array($this,'search_glossary') );	
 		add_shortcode('search', array($this,'search_posts') );
+		add_shortcode('registration', array($this,'get_registration_page')); 
 
 		// Social shortcodes
 		add_shortcode('site-logo', array($this, 'get_site_logo_path'));
@@ -478,18 +478,25 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 	/* Output permalink of a given post id
 	------------------------------------------------------*/
 
-	public function get_permalink($atts, $content=null) {
+	public function get_permalink($atts, $content='') {
 		$a = shortcode_atts(array(
-			'id' => false,
+			'id' => '',
+			'class' => '',
 			'slug' => false,
 			'tax' => false,
-			'text' => ""  // html link is output if not empty
+			'text' => '',  // html link is output if not empty
+			'data' => '', // "attr1 val1 attr2 val2  ..." separate with spaces 
 	    ), $atts);
 	
+
+		$class=$a['class'];
 		$id=$a['id'];
 		$tax=$a['tax'];
 		$slug=$a['slug'];
 		$text=esc_html($a['text']);
+		$content=esc_html($content);
+		$data=explode(' ', $a['data']);
+
 	
 		if ($id) 
 			$url=get_permalink($id);
@@ -504,15 +511,26 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 			$url=$_SERVER['REQUEST_URI'];			
 		}
 
-	    if (!empty($content)) return '<a href="' . $url . '">' . $content . '</a>';
-	    if (!empty($text)) return '<a href="' . $url . '">' . $text . '</a>';
-	    else return $url;
+		if ( $content || $text ) 
+			return '<a class="' . $class . '" id="' . $id . '" ' . $this->get_data( $data ) . ' href="' . $url . '">' . $text . $content . '</a>';
+		else 
+			return $url;
+	}
+
+	public function get_data( $data ) {
+		$html = ''; 
+		$i = 0;
+		while ( isset($data[$i]) ) {
+			$html .= 'data-' . $data[$i] . '="' . $data[$i+1] . '" ';
+			$i++;
+		}
+		return $html;
 	}
 
 	public function get_page_by_slug($page_slug ) { 
 		global $wpdb; 
 		$page = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND post_status = 'publish'", $page_slug ) ); 
-		 if ( $page ) 
+		if ( $page ) 
 		    return get_permalink($page); 
 		return null; 
   	}
@@ -521,7 +539,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 	/* Output registration page url
 	------------------------------------------------------*/
 
-	public function output_registation_url($atts, $content=null) {
+	public function get_registration_page($atts, $content=null) {
 		$a = shortcode_atts(array(
 			'html' => true,
 			'text' => ""  // default value if none supplied

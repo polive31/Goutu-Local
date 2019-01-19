@@ -14,10 +14,11 @@ class Tooltip {
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
 
-		// Scripts & styles enqueue, with fallback in case class is created after scripts enqueue
+		// Scripts & styles enqueue
 		// add_action('wp_enqueue_scripts', array($this, 'enqueue_easing_script'));
 		add_action('wp_enqueue_scripts', array($this, 'enqueue_tooltip_assets') );
-
+		
+		// Overlay support
 		add_action('genesis_after',array($this, 'add_overlay_markup') );
 
 		// Shortcodes
@@ -35,21 +36,22 @@ class Tooltip {
 		<?php  
 	}
 
-	public function enqueue_easing_script() {
-        if (! is_single() ) return;
-		wp_enqueue_script( 'jquery-easing', self::$PLUGIN_URI . '/vendor/easing/jQuery_Easing.min.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
-	}
+	// public function enqueue_easing_script() {
+    //     if (! is_single() ) return;
+	// 	wp_enqueue_script( 'jquery-easing', self::$PLUGIN_URI . '/vendor/easing/jQuery_Easing.min.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
+	// }
 
 	public function enqueue_tooltip_assets() {
-        if (! is_single() ) return;
-		  
+        // if (! is_single() ) return;
 		$uri = self::$PLUGIN_URI . '/assets/css/';
   		$path = self::$PLUGIN_PATH . '/assets/css/';
-		custom_enqueue_style( 'tooltip', $uri, $path, 'tooltip.css', array(), CHILD_THEME_VERSION );			
+		// custom_enqueue_style( 'tooltip', $uri, $path, 'tooltip.css', array(), CHILD_THEME_VERSION );			
+		custom_register_style( 'tooltip', $uri, $path, 'tooltip.css', array(), CHILD_THEME_VERSION );			
 		  
 		$uri = self::$PLUGIN_URI . '/assets/js/';
   		$path = self::$PLUGIN_PATH . '/assets/js/';
-		custom_enqueue_script( 'tooltip', $uri, $path, 'tooltip.js', array(), CHILD_THEME_VERSION, true );			
+		// custom_enqueue_script( 'tooltip', $uri, $path, 'tooltip.js', array(), CHILD_THEME_VERSION, true );			
+		custom_register_script( 'tooltip', $uri, $path, 'tooltip.js', array(), CHILD_THEME_VERSION, true );			
 	}	
 
 
@@ -108,6 +110,9 @@ class Tooltip {
 		$callout = false;
 		// Put args into variables
 		extract($args);
+
+		wp_enqueue_script('tooltip');
+		wp_enqueue_style('tooltip');
 		
 		$html ='<div class="tooltip-content ' . $valign . ' ' . $halign . ' ' . $class . ' ' . $action . '" id="' . $id . '">';
 		$html.='<div class="wrap">';

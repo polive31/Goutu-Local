@@ -20,7 +20,7 @@ class CustomSitePopups {
 	*/
 	const POST_TYPES = array(
 		'post'	=> array(
-			'genesis_before_loop',
+			'genesis_before_content',
 			array( 
 				'add_join_us_popup',
 			)
@@ -38,26 +38,22 @@ class CustomSitePopups {
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
 
 		/* Actions */
-		// add_action('init',array($this,'hydrate'));
+		// The following action is used whenever the popup has to be placed selectively depending on the post type
 		add_action( 'wp', array( $this, 'create_popup_actions') );
-        add_action( 'wp_enqueue_scripts', array( $this, 'popups_styles_enqueue' ) );
+		// The following action allows to instatiate the popup on any page
+		add_action( 'genesis_before_content', array( $this, 'add_join_us_popup') );
+        add_action( 'wp_enqueue_scripts', array( $this, 'popups_styles_register' ) );
 
 	}
 
-
-    public function popups_styles_enqueue() {
-        if (! is_singular( array_keys(self::POST_TYPES) ) ) return;
-		if ( is_user_logged_in() ) return;
-        // if (! is_singular(self::POST_TYPES) ) return;
-            // wp_enqueue_script( 'custom-post-like', self::$PLUGIN_URI . '/assets/js/social-like-post.js', array( 'jquery' ), CHILD_THEME_VERSION, false );
-		custom_enqueue_style(
+    public function popups_styles_register() {
+		custom_register_style(
 			'custom-site-popups', 
 			self::$PLUGIN_URI . '/assets/css/', 
 			self::$PLUGIN_PATH . '/assets/css/', 
 			'custom_site_popups.css'
 		);
     }
-
 	
 	public function create_popup_actions() {
 		if ( is_user_logged_in() ) return;
@@ -73,8 +69,9 @@ class CustomSitePopups {
 		}
 	}
 	
-	
 	public function add_join_us_popup() {
+		if ( is_user_logged_in() ) return;
+		wp_enqueue_style('custom-site-popups');
 		$args=array(
 			'content' 	=> $this->get_join_us_form(),
 			'action'	=> 'click',
@@ -83,7 +80,6 @@ class CustomSitePopups {
 		);
 		Tooltip::display( $args ); 
 	}
-
 
 	public function get_join_us_form( $class='' ) {
 
@@ -106,7 +102,7 @@ class CustomSitePopups {
 			$html.='</ul>';
 			$html.='</div>';
 			$html.='<div class="full">';
-				$html.='<div class="register-button">[permalink slug="bp-register-captcha"]' . __('Register','foodiepro') . '[/permalink]</div>';
+				$html.='<div class="register-button">' . do_shortcode('[permalink slug="bp-register-captcha"]' . __('Register','foodiepro') . '[/permalink]') . '</div>';
 				// $html.='<p>' . __('Registration is simple and free !','foodiepro') . '</p>';
 			$html.='</div>';
 		$html.='</div>';

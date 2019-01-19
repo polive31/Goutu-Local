@@ -78,11 +78,11 @@ class Tooltip {
         console.log('In initContainer function');
         // if (jQuery('.tooltips-container')) {
         console.log('Initial Tooltips Container value ', Tooltip.containerObj );
-        var containerMaybe = jQuery(Tooltip.containerClass);
-        if (containerMaybe) {
-            Tooltip.containerObj = containerMaybe;
-            console.log('Tooltips Container changed to ', Tooltip.containerObj );
-        }
+        // var containerMaybe = jQuery(Tooltip.containerClass);
+        // if (containerMaybe) {
+        //     Tooltip.containerObj = containerMaybe;
+        //     console.log('Tooltips Container changed to ', Tooltip.containerObj );
+        // }
         Tooltip.containerObj.addClass('tooltips-closed');
     };
     
@@ -163,9 +163,9 @@ class Tooltip {
 }
 
     
-Tooltip.defaultContainer = "article";
+Tooltip.defaultContainer = "body";
+Tooltip.containerObj = jQuery(Tooltip.defaultContainer);
 // Class to search for in order to define the container for all tooltips on the page
 // Reverts to the one defined above by default
 Tooltip.containerClass = ".tooltips-container";
-Tooltip.containerObj = jQuery(Tooltip.defaultContainer);
 Tooltip.overlayObj = jQuery('.tooltip-overlay');

@@ -9,30 +9,70 @@ if ( !defined('ABSPATH') )
 class CustomPeepsoShortcodes {
 
 	public function __construct() {
-		// add_shortcode('bp-user-avatar', array($this,'bp_user_avatar_shortcode'));
+		add_shortcode('peepso-user-avatar', array($this,'get_user_avatar'));
 		add_shortcode('peepso-user-field', array($this,'get_user_field'));
-		add_shortcode('peepso-user-icon', array($this,'get_user_icon'));
+		// add_shortcode('peepso-user-icon', array($this,'get_user_icon'));
 		add_shortcode('peepso-page-url', array($this,'get_page_url'));
+	}
+
+	public function get_peepso_user( $user_type ) {
+		$user_id=false;
+		switch ( $user_type ) {
+			case 'current':
+				$user_id = get_current_user_id();
+				break;
+			case 'view':
+				$user_id = PeepSoProfileShortcode::get_instance()->get_view_user_id();
+				break;
+			case 'author':
+				if ( is_single() )
+					$user_id = get_the_author_meta('ID');
+				break;				
+			default :
+				$user_id = $a['user'];
+				break;
+		}
+		$user = $user_id?PeepsoUser::get_instance( $user_id ):false;
+
+		return $user;
+	}
+
+	public function get_user_avatar( $atts ) {
+		$a = shortcode_atts( array(
+	        'user' => 'current', // 'view', 'author', or ID
+	        'size' => '', //'full',
+	        'link' => 'profile',
+	        'wrap' => '',
+	        'wrapclass' => '',
+		), $atts );
+		
+		$user = $this->get_peepso_user( $a['user'] );
+		$html = '<img class="avatar user-' . $user->get_id() . '-avatar" src="' . $user->get_avatar( $a['size'] ) . '" alt="' . sprintf( __('Picture of %s','foodiepro') , ucfirst($user->get_username()) ) . '">';
+
+		if ( !empty($a['link']) ) {
+			$html = '<a href="' . $user->get_profileurl() . '">' . $html . '</a>';
+		}
+
+		if ( !empty($a['wrap']) ) {
+			$html = '<' . $a['wrap'] . ' class="' . $a['wrapclass'] . '">' . $html . '</' . $a['wrap'] . '>';
+		}
+
+		return $html;
 	}
 
 	public function get_user_field( $atts ) {
 		if ( !is_user_logged_in() ) return;
 		 
 		$a = shortcode_atts( array(
-        	'user-id' => 'current',// 
+        	'user' => 'current',// view, author, ID... 
         	'field' => 'nicename',// pseudo, avatar, cover
-			'size' => 'full',// full
-			'nav' => '', // profile, settings, activity, friends
-			'navclass' => '',
+			'link' => 'profile', // 
+			'class' => '', // 
 		), $atts );
-		
 
-		$user_id = ($a['user-id']=='current')?get_current_user_id():$a['user-id'];
-		$user = PeepsoUser::get_instance( $user_id );
+		$user = $this->get_peepso_user( $a['user'] );
 
-		// echo var_dump($user);
 		$field = '';
-
 		switch ($a['field']) {
 			case "pseudo" :
 				$field=$user->get_username();
@@ -48,20 +88,15 @@ class CustomPeepsoShortcodes {
 				break;				
 			case "fullname" :
 				$field=$user->get_fullname();
-				break;			
-			case "avatar" :
-				$field=$user->get_avatar( $a['size'] );
-				$field = '<img class="avatar" title="' . __('Edit my profile','foodiepro') . '" src="' . $field . '">';
-				break;				
+				break;						
 		}
 
-		if ( !empty($a['nav']) ) {
-			$field = '<a class="' . $a['navclass'] . '" href="' . Peepso::get_page(  $a['nav'] ) . '">' . $field . '</a>';
+		if ( !empty($a['link']) ) {
+			$field = '<a class="' . $a['class'] . '" href="' . $user->get_profileurl() . '">' . $field . '</a>';
 		}	
 
 		return $field;    	
 	}
-
 
 	public function get_user_icon( $atts ) {
 		if ( !is_user_logged_in() ) return;
@@ -107,15 +142,35 @@ class CustomPeepsoShortcodes {
 		return $html;
 	}
 
-	public function get_page_url( $atts ) {
+	public function get_page_url( $atts, $content ) {
 
 		if ( !is_user_logged_in() ) return;
 		 
 		$a = shortcode_atts( array(
-        	'type' => 'profile',// activity, members, account
+			'user' => 'current', // 'view', id of user
+			'type' => 'profile',// activity, members, account
+			'link' => 'no', //
+			'class' => '', //
+			'id' => '', //
+			'text' => '' //
 		), $atts );
 	
-		return PeepSo::get_page( $a['type'] );
+		switch ( $a['user'] ) {
+			case 'current':
+				$out = PeepSo::get_page( $a['type'] );
+				break;
+			case 'view':
+				break;						
+			default:
+				break;
+		}
+
+		if ( $a['link']=='yes' ) {
+			$text = strip_tags( $a['text'] . $content);
+			$out = '<a class="" id="" href="' . $out . '">' . $text . '</a>';
+		}
+
+		return $out;
 
 	}
 

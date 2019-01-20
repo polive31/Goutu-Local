@@ -1,0 +1,243 @@
+
+/* GENERAL
+-----------------------------------------------------------*/
+
+.ps-widget__members {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ps-main {
+    float: left;
+    padding-left: 0;
+    padding-right: 14px;
+    width: 100%;
+}
+
+.ps-btn, .peepso .usp-pro .usp-submit, .peepso .button, .peepso input[type="submit"].button, .ps-btn:focus, .peepso .usp-pro .usp-submit:focus, .peepso .button:focus, .peepso input[type="submit"].button:focus, .active.ps-btn, .peepso .usp-pro .active.usp-submit, .peepso .active.button, .peepso input.active[type="submit"].button {
+}
+
+.ps-btn:hover, .peepso .usp-pro .usp-submit:hover, .peepso .button:hover, .peepso input[type="submit"].button:hover, .ps-btn:focus, .peepso .usp-pro .usp-submit:focus, .peepso .button:focus, .peepso input[type="submit"].button:focus, .active.ps-btn, .peepso .usp-pro .active.usp-submit, .peepso .active.button, .peepso input.active[type="submit"].button {
+    transition:all 500ms ease-in-out;
+    background-color: #9ae7ff !important;
+}
+
+/* ACTIVITY STREAM
+-----------------------------------------------------------*/
+
+.activity-stream-front {
+    /* font-family: Oswald; */
+    /* font-family: sans-serif; */
+    font-family: var(--ps-font-family);
+}
+
+.ps-postbox-input.ps-inputbox,
+.ps-textarea-wrapper.cstream-form-input {
+    /* font-family: monospace; */
+}
+
+.ps-stream-body {
+    /* font-family: monospace; */
+    font-family: initial;
+    padding:0 12px 12px 12px;
+    color: #333;
+}
+
+div#postbox-main {
+    box-shadow: #bbbbbb 4px 5px 17px 0px;
+}
+
+.ps-stream-header {
+    padding: 12px;
+}
+
+.ps-dropdown__menu.ps-js-dropdown-menu {
+    /* font-family: sans-serif; */
+} 
+
+.ps-dropdown__menu.ps-js-dropdown-menu a {
+    font-size:1.4rem;
+}
+
+.ps-stream-user {
+    font-size: 1.6rem;
+}
+
+.activity-stream-front span {
+    font-size: 1.5rem;
+}
+
+.ps-tagging-textarea, .ps-tagging-beautifier {
+    font-size: 1.4rem !important;
+    line-height: 1.8rem !important;
+}
+
+nav.ps-stream-status-action.ps-stream-status-action span {
+    font-weight: normal;
+}
+
+.ps-reaction-likes, 
+.ps-stream-status, 
+.cstream-reactions {
+    font-size: 1.4rem;
+}
+
+
+/* PROFILE
+-----------------------------------------------------------*/
+.ps-focus-title {
+    font-family: Vollkorn, serif;
+    font-size: 35px;
+    font-weight: 100;
+    color: #fff;
+    text-rendering: optimizelegibility;
+    text-shadow: 0 0 3px rgba(0,0,0,.8);
+}
+
+.ps-focus-title>span {
+    font-size: 40px;
+    line-height: 40px;
+}
+
+
+span.ps-tooltip.ps-tooltip--online.ps-user__status.ps-icon-circle {
+    font-size: 21px;
+}
+
+/* Avatar */
+
+.ps-avatar-focus {
+    width: 130px;
+    position: relative;
+    bottom: -72px;
+    float: left;
+}
+
+.ps-avatar-focus .ps-avatar-change {
+    height: 100%;
+    width: 100%;
+}
+
+.ps-avatar-focus img {
+    max-width: 130px!important;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#ffffff00, #8282827d);
+    position: absolute;
+    bottom: 16px;
+}
+
+.overlay-text {
+    font-size: 17px;
+    font-family: Oswald;
+    color: white;
+    text-align: center;
+    bottom: 0;
+    position: absolute;
+}
+
+/* Nav Menu Items
+-----------------------------------------------------------*/
+
+.ps-focus__footer {
+    padding-left: 150px;
+}
+
+.ps-focus__menu .ps-focus__menu-item {
+    display: inline;
+    font-family: Oswald, sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    font-variant: small-caps;
+    line-height: 28px;
+    color:#bdbdbd;
+}
+.ps-focus__menu .ps-focus__menu-item:hover {
+    font-size: 28px;
+}
+
+.ps-focus__menu .ps-focus__menu-item.current {
+    font-size: 28px;
+    font-weight: normal;
+    color: #616161;
+    /* line-height: 28px; */
+}
+
+.ps-focus__interactions-item {
+    font-family: var(--ps-font-family);
+    font-size: 1.6rem;
+}
+
+.ps-focus__interactions-item #views-count {
+    font-size: 1.4rem;
+}
+
+
+/* Header Widget Area
+-----------------------------------------------------------*/
+.main-nav-widget-area .ps-widget--userbar.ps-widget--userbar--right.ps-widget--external {
+    font-size: 1.6rem;
+    font-family: Oswald;
+    font-weight: 400;
+    height: 40px;
+}
+
+.main-nav-widget-area .ps-dropdown--userbar,
+.main-nav-widget-area .ps-widget--userbar__name {
+    text-transform: uppercase;
+}
+
+.main-nav-widget-area .ps-widget--userbar__avatar {
+    width: 100px;
+    position: relative;
+    margin-left: 10px;
+}
+
+.main-nav-widget-area .ps-widget--userbar__avatar .ps-avatar {
+   max-width: 128px;
+}
+
+.main-nav-widget-area .ps-widget--userbar__avatar .ps-avatar img {
+    max-width: 128px;
+    max-height: 128px;
+    position:absolute;
+    bottom:-45px;
+}
+
+.main-nav-widget-area .ps-widget--userbar__notifications {
+    display: flex;
+    margin-right: 15px;
+}
+
+.main-nav-widget-area .ps-bubble--widget {
+    top: -6px;
+    right: -2px;
+}
+
+.main-nav-widget-area .ps-widget--userbar__logout i,
+.main-nav-widget-area .ps-bubble__wrapper i {
+    font-size:20px;
+}
+
+@media only screen and (max-width: 480px) {
+
+    /* PROFILE
+    -------------------------------------------*/
+    .ps-focus__footer {
+        padding-top: 56px;
+        padding-left: 0px;
+        float: left;
+        width: 100%;
+    }
+
+    .ps-focus__menu .ps-focus__menu-item,
+    .ps-focus__menu .ps-focus__menu-item.current,
+    .ps-focus__menu .ps-focus__menu-item:hover {
+        font-size: 20px;
+    }    
+
+}    
+

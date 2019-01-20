@@ -80,19 +80,9 @@ $a_css = bp_is_my_profile()?'':'class="disabled"';
 			<div <?php echo $overlay_css;?> id="cover">
 				<div class="overlay-text"><?php echo $cover_text;?></div>
 			</div>
-			<picture id="cover-image"><?php
-				if (file_exists( $dir . $name . '.webp'))
-					echo '<source srcset="' . $urlpath . $name . '.webp" ' . 'type="image/webp">';
-				if (file_exists( $dir . $name . '.jpg')) {
-					echo '<img src="' . $urlpath . $name . '.jpg' . '">';
-				}
-				elseif (file_exists( $dir . $name . '.jpeg')) {
-					echo '<img src="' . $urlpath . $name . '.jpeg' . '">';
-				}				
-				elseif (file_exists( $dir . $name . '.png')) {
-					echo '<img src="' . $urlpath . $name . '.png' . '">';
-				}
-			?></picture>
+
+			<?= custom_img($dir, $url, $name); ?>
+
 			<h1 class="blog-title"><?php echo xprofile_get_field_data( 'Titre de votre blog', $user_id ); ?>	</h1>
 			<div id="userid-container">
 				<div id="item-userid">

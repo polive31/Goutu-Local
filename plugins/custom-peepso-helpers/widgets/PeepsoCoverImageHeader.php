@@ -55,6 +55,7 @@ class Peepso_Cover_Image_Header extends WP_Widget {
 				
 				$PeepSoProfile = PeepSoProfile::get_instance();
 				$PeepSoProfile->init( $current_view_user );
+
 				PeepSoTemplate::exec_template('profile', 'focus');
 			?>
         </div>

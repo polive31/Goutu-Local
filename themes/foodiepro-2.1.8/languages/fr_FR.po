@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-01-18 20:24+0100\n"
-"PO-Revision-Date: 2019-01-19 14:11+0100\n"
+"POT-Creation-Date: 2019-01-20 17:55+0100\n"
+"PO-Revision-Date: 2019-01-20 17:57+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -195,6 +195,7 @@ msgstr ""
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:109
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:106
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:79
+#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:103
 #: plugins/custom-recipe-templates/widgets/custom_postlist_dropdown_widget.php:70
 #: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:47
 msgid "New title"
@@ -215,6 +216,11 @@ msgstr ""
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:113
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:115
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:83
+#: plugins/custom-peepso-helpers/widgets/PeepsoAboutWidget.php:114
+#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:86
+#: plugins/custom-peepso-helpers/widgets/PeepsoCoverImageHeader.php:84
+#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:191
+#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:112
 #: plugins/custom-recipe-templates/widgets/custom_nutrition_label_widget.php:60
 #: plugins/custom-recipe-templates/widgets/custom_postlist_dropdown_widget.php:74
 #: plugins/custom-recipe-templates/widgets/custom_recipe_list_widget.php:101
@@ -242,6 +248,7 @@ msgid "(Buddypress) Member Cover Image Header"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-cover-image-header.php:28
+#: plugins/custom-peepso-helpers/widgets/PeepsoCoverImageHeader.php:20
 msgid "Displays the cover image header of the current displayed user"
 msgstr ""
 
@@ -251,37 +258,45 @@ msgid "(BuddyPress) Custom Log In"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:40
+#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:33
 msgid ""
 "Show a Log In form to logged-out visitors, and a Log Out link to those who "
 "are logged in, with full resolution avatar."
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:92
+#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:96
 msgid "Log Out"
 msgstr "Déconnexion"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:116
+#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:123
 #: themes/foodiepro-2.1.8/buddypress/members/register.php:77
 msgid "Username"
 msgstr "Pseudo"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:119
+#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:126
 msgid "Password"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:122
+#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:129
 msgid "Remember Me"
 msgstr "Se souvenir de moi"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:124
+#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:131
 msgid "Log In"
 msgstr "Connexion"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:128
+#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:135
 msgid "Register for a new account"
 msgstr "Aller sur la page d'inscription"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:128
+#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:135
 msgid "Not yet a member ? <br> Register here !"
 msgstr "Pas encore membre ?<br> Inscris-toi !"
 
@@ -290,6 +305,7 @@ msgid "(Buddypress) Custom latest registered members"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-latest-registered-members-widget.php:29
+#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:30
 #, fuzzy
 #| msgid "Evaluate this recipe"
 msgid "Displays latest registered members"
@@ -297,6 +313,7 @@ msgstr "Evaluez cette recette"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-latest-registered-members-widget.php:120
 #: plugins/custom-buddypress-helpers/widgets/BP-my-friends-widget.php:128
+#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:118
 msgid "Number of users to show"
 msgstr ""
 
@@ -371,24 +388,29 @@ msgid "Displays profile completion bar (requires Buddy Progress Bar plugin)"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-profile-completion-widget.php:44
+#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:225
 msgid "Widget Title"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-profile-completion-widget.php:49
+#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:230
 #, fuzzy
 #| msgid "Reply to Message"
 msgid "Message:"
 msgstr "Répondre au message"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-profile-completion-widget.php:105
+#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:133
 msgid "Profile completed !"
 msgstr "Profil rempli !"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-profile-completion-widget.php:106
+#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:134
 msgid "Profile empty !"
 msgstr "Profil vide !"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-profile-completion-widget.php:116
+#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:147
 #, php-format
 msgid ""
 "<a href=\"%s\">Fill-in your profile</a> to make yourself visible from other "
@@ -949,6 +971,96 @@ msgstr "régions"
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:56
 msgid "countries"
 msgstr "pays"
+
+#: plugins/custom-peepso-helpers/custom-peepso-helpers-loader.php:51
+msgid "<strong>Peepso Helpers</strong> requires the Peepso plugin to work."
+msgstr ""
+
+#: plugins/custom-peepso-helpers/includes/CustomPeepso.php:51
+#, php-format
+msgid "What's new today, %s ?"
+msgstr "Quoi de neuf aujourd'hui, %s ?"
+
+#: plugins/custom-peepso-helpers/includes/CustomPeepso.php:57
+#, php-format
+msgid "Post a message on %s's news feed..."
+msgstr "Publie un message sur le fil d'actualités de %s..."
+
+#: plugins/custom-peepso-helpers/widgets/PeepsoAboutWidget.php:19
+#, fuzzy
+#| msgid "Profile completed !"
+msgid "(Peepso) Peepso Profile Details"
+msgstr "Profil rempli !"
+
+#: plugins/custom-peepso-helpers/widgets/PeepsoAboutWidget.php:20
+msgid "Displays chosen details about a given user"
+msgstr ""
+
+#: plugins/custom-peepso-helpers/widgets/PeepsoAboutWidget.php:74
+msgid "Sorry, no data to show"
+msgstr ""
+
+#: plugins/custom-peepso-helpers/widgets/PeepsoAboutWidget.php:120
+msgid "Fields visibility :"
+msgstr ""
+
+#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:19
+msgid "(Peepso) Configurable Activity Stream"
+msgstr ""
+
+#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:20
+msgid "Displays the filtered activity stream of a given user"
+msgstr ""
+
+#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:58
+#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:59
+#, fuzzy
+#| msgid "No recipes found."
+msgid "No posts found."
+msgstr "Aucune recette trouvée."
+
+#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:60
+msgid "Nothing more to show."
+msgstr ""
+
+#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:91
+#, fuzzy
+#| msgid "Currently, there are no names in this directory.."
+msgid "Number of items to display"
+msgstr "Il n'y a pour le moment aucun terme dans ce lexique..."
+
+#: plugins/custom-peepso-helpers/widgets/PeepsoCoverImageHeader.php:19
+msgid "(Peepso) Member Cover Image Header"
+msgstr ""
+
+#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:31
+msgctxt "Title of the login widget"
+msgid "(Peepso) Custom Log In"
+msgstr ""
+
+#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:90
+#, fuzzy
+#| msgid "Edit Profile"
+msgid "Edit my profile"
+msgstr "Modifier mon profil"
+
+#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:28
+#, fuzzy
+#| msgid "Evaluate this recipe"
+msgid "(Peepso) Latest registered members"
+msgstr "Evaluez cette recette"
+
+#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:28
+#, fuzzy
+#| msgid "Profile completed !"
+msgid "(Peepso) Profile completion"
+msgstr "Profil rempli !"
+
+#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:29
+#, fuzzy
+#| msgid "Profile completed !"
+msgid "Displays profile completion bar"
+msgstr "Profil rempli !"
 
 #: plugins/custom-post-templates/includes/Custom_Post_Templates.php:57
 msgid "Read More"
@@ -2114,7 +2226,7 @@ msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr "Un problème ? Une question ? Contacte nous <a href=\"%s\">ici</a>"
 
 #: plugins/custom-site-notifications/includes/CustomSiteMails.php:88
-#: themes/foodiepro-2.1.8/functions.php:740
+#: themes/foodiepro-2.1.8/functions.php:754
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
@@ -2216,35 +2328,35 @@ msgid ""
 "with password you choose during registration process."
 msgstr ""
 
-#: plugins/custom-site-notifications/includes/CustomSitePopups.php:92
+#: plugins/custom-site-notifications/includes/CustomSitePopups.php:88
 msgid "Becoming a member allows you to : "
 msgstr "Inscrivez-vous pour accéder à toutes les fonctions de Goûtu.org !"
 
-#: plugins/custom-site-notifications/includes/CustomSitePopups.php:96
+#: plugins/custom-site-notifications/includes/CustomSitePopups.php:92
 msgid "Store your favorite recipes in your cookbook,"
 msgstr "Mon carnet de recettes"
 
-#: plugins/custom-site-notifications/includes/CustomSitePopups.php:97
+#: plugins/custom-site-notifications/includes/CustomSitePopups.php:93
 msgid "Publish your own recipes and posts,"
 msgstr "Publier mes recettes et articles"
 
-#: plugins/custom-site-notifications/includes/CustomSitePopups.php:98
+#: plugins/custom-site-notifications/includes/CustomSitePopups.php:94
 msgid "Create your personal profile and exchange with other members,"
 msgstr "Mon profil perso et mes contacts"
 
-#: plugins/custom-site-notifications/includes/CustomSitePopups.php:103
+#: plugins/custom-site-notifications/includes/CustomSitePopups.php:99
 msgid "Comment and rate recipes"
 msgstr "Commenter et noter les recettes"
 
-#: plugins/custom-site-notifications/includes/CustomSitePopups.php:104
+#: plugins/custom-site-notifications/includes/CustomSitePopups.php:100
 msgid "Subscribe to other members and access their private recipes,"
 msgstr "Blogs et recettes privées"
 
-#: plugins/custom-site-notifications/includes/CustomSitePopups.php:105
+#: plugins/custom-site-notifications/includes/CustomSitePopups.php:101
 msgid "And many more other benefits..."
 msgstr "Et bien plus encore…"
 
-#: plugins/custom-site-notifications/includes/CustomSitePopups.php:109
+#: plugins/custom-site-notifications/includes/CustomSitePopups.php:105
 msgid "Register"
 msgstr "Je m'inscris"
 
@@ -9555,15 +9667,15 @@ msgstr "<strong>ERREUR</strong> : Utilisateur en attente d'approbation."
 msgid "author"
 msgstr "auteur"
 
-#: themes/foodiepro-2.1.8/functions.php:629
+#: themes/foodiepro-2.1.8/functions.php:643
 msgid "Recipe, Ingredient, Keyword, Author..."
 msgstr "Recette, ingrédient, mot-clé, auteur..."
 
-#: themes/foodiepro-2.1.8/functions.php:740
+#: themes/foodiepro-2.1.8/functions.php:754
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:740
+#: themes/foodiepro-2.1.8/functions.php:754
 msgid "Legal notice"
 msgstr "Mentions légales"
 
@@ -9708,7 +9820,7 @@ msgid "Before Title"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:209
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:98
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:104
 #: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:414
 #, fuzzy
 #| msgid "Other Countries"
@@ -10124,101 +10236,109 @@ msgstr ""
 msgid "This is the section before the header."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:83
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:81
+msgid "Main Nav"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:82
+msgid "This area appears within the main nav."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:89
 #, fuzzy
 #| msgid "Home page"
 msgid "Home Top"
 msgstr "l'accueil."
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:84
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:90
 msgid "This is the home top section."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:88
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:94
 #, fuzzy
 #| msgid "Home page"
 msgid "Home Middle"
 msgstr "l'accueil."
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:89
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:95
 msgid "This is the home middle section."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:93
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:99
 msgid "Home Bottom"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:94
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:100
 msgid "This is the home bottom section."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:99
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:105
 msgid "This is the last section after content and sidebars."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:106
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:112
 msgid "Social Before Content"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:107
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:113
 msgid "On social pages, this is the first section before content and sidebars."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:111
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:117
 msgid "Social Sidebar"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:112
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:118
 msgid "This is the sidebar for social pages."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:116
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:122
 msgid "Social Content"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:117
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:123
 msgid "This is the widget section of buddypress pages."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:121
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:127
 msgid "Social Bottom"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:122
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:128
 msgid "This goes just before the footer, and occupies the whole page width."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:129
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:135
 msgid "Archives Top"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:130
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:136
 msgid "This is the top widget section of archived pages."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:134
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:140
 msgid "Archives Bottom"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:135
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:141
 msgid "This is the bottom widget section of archived pages."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:142
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:148
 #, fuzzy
 #| msgid "Comment count"
 msgid "Post List Top"
 msgstr "Commentaires"
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:143
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:149
 msgid "This is the top widget section of Post List pages."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:147
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:153
 msgid "Post List Middle"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:148
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:154
 msgid "This is the middle widget section of Post List pages."
 msgstr ""
 

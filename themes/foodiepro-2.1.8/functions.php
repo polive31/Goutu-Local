@@ -348,7 +348,7 @@ function my_login_logo_url_title() {
 }
 
 /* Disable admin bar for all users except admin */
-// add_action('after_setup_theme', 'remove_admin_bar');
+add_action('after_setup_theme', 'remove_admin_bar');
 function remove_admin_bar() {
 	if (!current_user_can('administrator') && !is_admin())
   	show_admin_bar(false); 
@@ -582,6 +582,20 @@ function add_after_content_area() {
   	));
   //}     
 }
+
+add_filter('wp_nav_menu_items', 'add_main_nav_widget_area' ,10,1);
+function add_main_nav_widget_area( $html ) {
+	ob_start();
+	genesis_widget_area( 'main-nav', array(
+		'before' => '<li class="mega-menu-item main-nav-widget-area">',
+		'after'  => '</li>',
+	));
+
+	$html .= ob_get_contents(); 
+	ob_end_clean();
+	return $html;
+}
+
 
 // add_action( 'genesis_after_content_sidebar_wrap', 'add_post_bottom_area');
 // function add_post_bottom_area() {

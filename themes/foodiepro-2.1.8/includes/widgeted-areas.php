@@ -76,6 +76,12 @@ genesis_register_sidebar( array(
 	'description'	=> __( 'This is the section before the header.', 'foodiepro' ),
 ) );
 
+genesis_register_sidebar( array(
+	'id'			=> 'main-nav',
+	'name'			=> __( 'Main Nav', 'foodiepro' ),
+	'description'	=> __( 'This area appears within the main nav.', 'foodiepro' ),
+) );
+
 /* Home Page widgeted areas
 ----------------------------------------------------*/
 genesis_register_sidebar( array(

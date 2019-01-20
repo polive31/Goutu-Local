@@ -154,7 +154,8 @@ h4.tooltip-title {
 
 /* Modal Tooltip (fixed positioning) */
 .tooltip-content.modal {
-    position: fixed;
+	position: fixed;
+	z-index: 100000;
 	max-width: 500px;
 	max-height: 200px;
 	margin: 5% auto; /* Will not center vertically and won't work in IE6/7. */

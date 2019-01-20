@@ -31,7 +31,7 @@ function check_peepso_active() {
 ------------------------------------------------------------*/
 function peepso_helpers_conditional_load() {
 	// Includes
-	// require_once 'includes/BP_Activity_Customizations.php';
+	require_once 'includes/CustomPeepso.php';
 
 	// Shortcodes
 	require_once 'shortcodes/CustomPeepsoShortcodes.php';
@@ -40,6 +40,9 @@ function peepso_helpers_conditional_load() {
 	require_once 'widgets/PeepsoCoverImageHeader.php';
 	require_once 'widgets/PeepsoLatestRegisteredMembers.php';
 	require_once 'widgets/PeepsoCustomLoginWidget.php';
+	require_once 'widgets/PeepsoActivityStreamWidget.php';
+	require_once 'widgets/PeepsoProfileCompletionWidget.php';
+	require_once 'widgets/PeepsoAboutWidget.php';
 
 }
 

@@ -142,5 +142,3 @@ class CustomPeepsoLatestRegisteredMembers extends WP_Widget {
 
 } // class Peepso_Latest
 
-new CustomPeepsoLatestRegisteredMembers();
-

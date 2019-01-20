@@ -49,10 +49,15 @@ Temporary Items
 
 
 # =========================
-# Custom directories for Goûtu.org
+# Custom directories for Goï¿½tu.org
 # =========================
 
 /*
+
+!peepso/
+peepso/*
+!peepso/overrides/
+peepso/plugins/*
 
 !mu-plugins/
 !plugins/

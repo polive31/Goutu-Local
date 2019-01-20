@@ -1,10 +1,16 @@
+<div class="share-buttons">
+	<?php echo do_shortcode('[social-sharing-buttons target="post" class="small bubble"]'); ?>
+</div>
+
+
 <!-- Function buttons  -->
 <div class="post-top">
+		
 	
 	<div class="toolbar-buttons">		
 
 		<!-- Like Button -->
-		<div class="toolbar-button tooltip tooltip-above tooltip-left" id="like">
+		<div class="toolbar-button tooltip-onhover alignleft" id="like">
 		<?php
 			$post_like = new Custom_Social_Like_Post( 'post' );
 			$post_like->display('above','left');
@@ -12,25 +18,26 @@
 		</div>		
 
 		<!-- Post Print Button -->
-		<div class="toolbar-button tooltip" id="print">
+		<div class="toolbar-button tooltip-onhover alignright" id="print">
 			<a class="post-print-button" href="javascript:window.print()" target="_blank">
 			<div class="button-caption"><?php echo __('Print', 'foodiepro'); ?></div>
 			</a>
 			<?php
-			Tooltip::display( __('Print this post','foodiepro'), 'above', 'right');  
+			$args=array(
+				'content' =>  __('Print this post','foodiepro'),
+				'valign' => 'above',
+				'halign' => 'right',
+			);
+			Tooltip::display($args);  
 			?> 
 		</div>	
 
 		<!-- Post Share Button -->
-		<div class="toolbar-button tooltip tooltip-above" id="share">
+		<!-- <div class="toolbar-button tooltip-onhover alignright" id="share">
 			<a class="post-share-button" id="post-share" cursor-style="pointer">
 			<div class="button-caption"><?php echo __('Share','foodiepro'); ?></div>
 			</a> 
-			<?php //echo Custom_WPURP_Templates::output_tooltip(__('Share this recipe','foodiepro'),'above');
-				$share = do_shortcode('[social-sharing-buttons target="post" class="small bubble"]');
-				Tooltip::display( $share, 'above', 'left', 'transparent large');  
-			?>  
-		</div>				
+		</div>				 -->
 											
 	</div>
 	

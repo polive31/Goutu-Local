@@ -17,6 +17,37 @@ function sec( $text ) {
 
 
 /* =================================================================*/
+/* =    IMAGE OUTPUT
+/* =================================================================*/
+
+function custom_img( $dir, $url, $name ) {
+
+	ob_start();
+	?>
+
+	<picture id="cover-image">
+	
+	<?php
+	if (file_exists( $dir . $name . '.webp'))
+	echo '<source srcset="' . $url . $name . '.webp" ' . 'type="image/webp">';
+	if (file_exists( $dir . $name . '.jpg')) {
+		echo '<img src="' . $url . $name . '.jpg' . '">';
+	}
+	elseif (file_exists( $dir . $name . '.jpeg')) {
+		echo '<img src="' . $url . $name . '.jpeg' . '">';
+	}				
+	elseif (file_exists( $dir . $name . '.png')) {
+		echo '<img src="' . $url . $name . '.png' . '">';
+	}
+	?>
+	
+	</picture>
+
+	<?php 
+	return $html;
+}
+	
+/* =================================================================*/
 /* =              CUSTOM SCRIPTS HELPERS
 /* =================================================================*/
 

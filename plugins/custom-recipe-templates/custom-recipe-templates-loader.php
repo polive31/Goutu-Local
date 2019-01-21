@@ -19,7 +19,7 @@ add_action( 'plugins_loaded', 'Custom_WPURP_templates_init' );
 
 function Custom_WPURP_templates_init() {
 	
-	if ( class_exists('WPUltimateRecipe') ) {
+	if ( class_exists('WPUltimateRecipe') || class_exists('Custom_Gallery_Shortcode') && class_exists('Tooltip') ) {
 
 		/* Includes (contain actions & filters, class loaded at startup)
 		------------------------------------*/
@@ -49,16 +49,20 @@ function Custom_WPURP_templates_init() {
 	else {
 		add_action( 'admin_notices', 'wpur_custom_install_notice' );
 	}
-
-	function wpur_custom_install_notice() {
-		echo '<div id="message" class="error fade"><p style="line-height: 150%">';
-		_e('<strong>WPUR Custom Templates Plugin</strong></a> requires the WP Ultimate Recipe plugin to work. Please <a href="plugins.php">activate/install WPUR or deactivate this plugin </a>.');
-		echo '</p></div>';
-	}	
-
-
+	
 }
 
+
+function wpur_custom_install_notice() {
+	echo '<div id="message" class="error fade"><p style="line-height: 150%">';
+	_e('<strong>WPUR Custom Templates Plugin</strong></a> requires the following plugins to work. Please <a href="plugins.php">activate/install those plugins.</a>.');
+	echo '<ul>';
+	echo '<li>WP Ultimate Recipe</li>';
+	echo '<li>Custom Tooltip</li>';
+	echo '<li>Custom Image Gallery</li>';
+	echo '</ul>';
+	echo '</p></div>';
+}	
 
 
 

@@ -10,7 +10,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-class CustomPeepso {
+/* Set of actions & filters used to customize some Peepso functions
+*/
+
+class PeepsoCustomizations {
 
 	public static $PLUGIN_PATH;
 	public static $PLUGIN_URI;	
@@ -46,7 +49,7 @@ class CustomPeepso {
 		$PeepSoProfile=PeepSoProfile::get_instance();
 		if ( $PeepSoProfile->is_current_user() ) {
 			$me_id = get_current_user_id();
-			$me = PeepsoUser::get_instance( $user_id );
+			$me = PeepsoUser::get_instance( $me_id );
 			$myname=$me->get_firstname();
 			$msg = sprintf(__('What\'s new today, %s ?','foodiepro'),$myname);
 		}
@@ -62,4 +65,4 @@ class CustomPeepso {
 
 }
 
-new CustomPeepso();
+new PeepsoCustomizations();

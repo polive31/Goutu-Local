@@ -153,3 +153,11 @@ genesis_register_sidebar( array(
     'name'        => __( 'Post List Middle', 'foodiepro' ),
     'description' => __( 'This is the middle widget section of Post List pages.', 'foodiepro' ),
 ) );
+
+/* Nav Widget Areas
+----------------------------------------------------*/
+genesis_register_sidebar( array(
+    'id'          => 'mobile-nav-container',
+    'name'        => __( 'Mobile Nav Container', 'foodiepro' ),
+    'description' => __( 'This is the container on top of the slider mobile menu.', 'foodiepro' ),
+) );

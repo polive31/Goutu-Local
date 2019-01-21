@@ -47,9 +47,8 @@ class Peepso_About_Widget extends WP_Widget {
 
 		$user = PeepSoUser::get_instance(PeepSoProfileShortcode::get_instance()->get_view_user_id());
 
-		$args = array('post_status'=>'publish');
-
-		$user->profile_fields->load_fields($args);
+		$field_args = array('post_status'=>'publish');
+		$user->profile_fields->load_fields( $field_args );
 		$fields = $user->profile_fields->get_fields();
 		?>
 

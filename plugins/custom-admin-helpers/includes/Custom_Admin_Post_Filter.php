@@ -15,6 +15,8 @@ class CustomAdminPostFilter {
         add_filter( 'parse_query', array($this, 'add_posts_filter' ) );
     }
 
+    
+
     public function restrict_manage_posts(){
         $type = 'post';
         if (isset($_GET['post_type'])) {

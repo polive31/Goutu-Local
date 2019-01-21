@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: peepso-internal\n"
 "POT-Creation-Date: 2019-01-20 19:11+0100\n"
-"PO-Revision-Date: 2019-01-21 15:06+0100\n"
+"PO-Revision-Date: 2019-01-21 21:39+0100\n"
 "Last-Translator: alconost <alpha@alconost.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -908,7 +908,7 @@ msgstr "Modifier cet utilisateur"
 
 #: classes/admin.php:1595 peepso.php:3652
 msgid "Stream"
-msgstr "Mes Activités"
+msgstr "Activités"
 
 #: classes/admin.php:1638
 msgid "This week"
@@ -3810,10 +3810,8 @@ msgid "Denmark"
 msgstr ""
 
 #: classes/countries.php:68
-#, fuzzy
-#| msgid "About"
 msgid "Djibouti"
-msgstr "Mon Profil"
+msgstr "Djibouti"
 
 #: classes/countries.php:69
 msgid "Dominica"
@@ -5935,7 +5933,7 @@ msgstr "Modifications enregistrées avec succès."
 
 #: classes/profileshortcode.php:552 peepso.php:3657
 msgid "About"
-msgstr "Mon Profil"
+msgstr "Profil"
 
 #: classes/profileshortcode.php:560
 msgid "Notifications"

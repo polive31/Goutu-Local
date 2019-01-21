@@ -31,7 +31,8 @@ function check_peepso_active() {
 ------------------------------------------------------------*/
 function peepso_helpers_conditional_load() {
 	// Includes
-	require_once 'includes/CustomPeepso.php';
+	require_once 'includes/PeepsoCustomizations.php';
+	require_once 'includes/PeepsoHelpers.php';
 
 	// Shortcodes
 	require_once 'shortcodes/CustomPeepsoShortcodes.php';

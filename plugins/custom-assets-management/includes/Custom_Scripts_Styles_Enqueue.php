@@ -74,15 +74,13 @@ class CustomScriptsStylesEnqueue {
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
 
 		add_action( 'wp_enqueue_scripts', 		array($this, 'enqueue_if'), PHP_INT_MAX);
-		// add_action( 'wp_footer',			array($this, 'enqueue_if'), PHP_INT_MAX);
 		add_action( 'wp_print_footer_scripts',	array($this, 'enqueue_if'), 0);
 
 		add_filter( 'script_loader_tag', 	array($this, 'async_load_js'), PHP_INT_MAX, 3 );
 		add_filter( 'style_loader_tag', 	array($this, 'async_load_css'), PHP_INT_MAX, 4 );
 		add_filter( 'style_loader_tag', 	array($this, 'preload_css'), PHP_INT_MAX, 4 );
 
-		// Remove Google fonts loading
-		add_filter( 'foodie_pro_disable_google_fonts', '__return_true' );
+
 		// add_action( 'wp_print_styles', 		array($this, 'megamenu_dequeue_google_fonts'), 100 );
 
 		// //add_action('init', 'load_jquery_from_google');   */

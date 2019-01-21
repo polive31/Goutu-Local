@@ -218,11 +218,11 @@ function foodie_pro_includes() {
 	$includes_dir = trailingslashit( get_stylesheet_directory() ) . 'includes/';
 
 	// Load the customizer library.
-	require_once $includes_dir . 'vendor/customizer-library/customizer-library.php';
+	// require_once $includes_dir . 'vendor/customizer-library/customizer-library.php';
 
 	// Load all customizer files.
-	require_once $includes_dir . 'customizer/customizer-display.php';
-	require_once $includes_dir . 'customizer/customizer-settings.php';
+	// require_once $includes_dir . 'customizer/customizer-display.php';
+	// require_once $includes_dir . 'customizer/customizer-settings.php';
 
 	// Load everything in the includes root directory.
 	require_once $includes_dir . 'helper-functions.php';
@@ -246,6 +246,8 @@ function foodie_pro_includes() {
 /* =================================================================*/
 	add_action( 'wp_enqueue_scripts', 'enqueue_high_priority_assets', 10);
 	add_action( 'wp_enqueue_scripts', 'enqueue_low_priority_assets', 20);	
+	// Remove Google fonts loading
+	// add_filter( 'foodie_pro_disable_google_fonts', '__return_true' );
 	
 	function enqueue_high_priority_assets() {
 		/* Scripts enqueue
@@ -615,6 +617,28 @@ remove_action( 'genesis_entry_footer', 'genesis_entry_footer_markup_close', 15 )
 /* Hook widget areas 
 -----------------------------------------------------------------------------*/
 
+add_shortcode('widget-area','add_widget_area'); 
+function add_widget_area( $a ) {
+	$atts = shortcode_atts( array(
+		'hook' => '',
+		'id' => '',
+		'class' => '',
+	), $atts );
+
+	if ( empty($a['id']) ) return '';
+
+	ob_start();
+
+	genesis_widget_area( $a['id'], array(
+		'before' => '<div class="' . $a['id'] . ' ' . $a['class'] . '">',
+		'after'  => '</div>',
+	));		
+
+	$html = ob_get_contents(); 
+	ob_end_clean();
+	return $html;
+}
+
 add_action( 'genesis_after_content', 'add_after_content_area');
 function add_after_content_area() {
   //if ( is_page() ) {
@@ -625,8 +649,10 @@ function add_after_content_area() {
   //}     
 }
 
-add_filter('wp_nav_menu_items', 'add_main_nav_widget_area' ,10,1);
-function add_main_nav_widget_area( $html ) {
+
+add_filter('wp_nav_menu_items', 'add_main_nav_widget_area' , 10, 2);
+function add_main_nav_widget_area( $html, $args ) {
+	if ( $args->menu->name!='main_nav_fr' ) return $html;
 	ob_start();
 	genesis_widget_area( 'main-nav', array(
 		'before' => '<li class="mega-menu-item main-nav-widget-area">',

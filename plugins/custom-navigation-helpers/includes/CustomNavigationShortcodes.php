@@ -535,7 +535,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		$i = 0;
 		while ( isset($data[$i]) ) {
 			$html .= 'data-' . $data[$i] . '="' . $data[$i+1] . '" ';
-			$i++;
+			$i=$i+2;
 		}
 		return $html;
 	}

@@ -15,11 +15,11 @@ if ( !defined('ABSPATH') )
 	die('-1');
 
 
-add_action( 'plugins_loaded', 'Custom_WPURP_templates_init' ); 
+add_action( 'plugins_loaded', 'Custom_WPURP_templates_init', PHP_INT_MAX ); 
 
 function Custom_WPURP_templates_init() {
 	
-	if ( class_exists('WPUltimateRecipe') || class_exists('Custom_Gallery_Shortcode') && class_exists('Tooltip') ) {
+	if ( class_exists('WPUltimateRecipe') && class_exists('Custom_Gallery_Shortcode') && class_exists('Tooltip') ) {
 
 		/* Includes (contain actions & filters, class loaded at startup)
 		------------------------------------*/
@@ -61,7 +61,7 @@ function wpur_custom_install_notice() {
 	echo '<li>Custom Tooltip</li>';
 	echo '<li>Custom Image Gallery</li>';
 	echo '</ul>';
-	echo '</p></div>';
+	echo '</div>';
 }	
 
 

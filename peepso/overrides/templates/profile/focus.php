@@ -13,11 +13,7 @@
 	// }
 
 	/* Added PO 19/01/2019 */
-	// preg_match("/[^\/]+$/", $_SERVER['REQUEST_URI'], $matches);
-	// $current = ($matches[0]=='about')?'about':'stream';
-	
-	$current=strpos( $_SERVER['REQUEST_URI'], '/about' );
-	$current=$current?'about':'stream';
+	$current = PeepsoHelpers::get_nav_tab();
 	
 	/* Added PO 20/01/2019 to prevent small display on cover*/
 	// $is_profile_segment = isset($current) ? TRUE : FALSE;
@@ -127,7 +123,7 @@
 	<?php
 	if(!$is_profile_segment)
 	{
-		$current='stream';
+		// $current='stream';
 	}
 	?>
 

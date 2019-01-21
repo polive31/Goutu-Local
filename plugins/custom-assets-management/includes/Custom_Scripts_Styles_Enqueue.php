@@ -73,16 +73,12 @@ class CustomScriptsStylesEnqueue {
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
 
-		add_action( 'wp_enqueue_scripts', 	array($this, 'enqueue_high_priority_assets' ), 10);
-		add_action( 'wp_enqueue_scripts', 	array($this, 'enqueue_low_priority_assets' ), 20);
-
 		add_action( 'wp_enqueue_scripts', 		array($this, 'enqueue_if'), PHP_INT_MAX);
 		// add_action( 'wp_footer',			array($this, 'enqueue_if'), PHP_INT_MAX);
 		add_action( 'wp_print_footer_scripts',	array($this, 'enqueue_if'), 0);
 
 		add_filter( 'script_loader_tag', 	array($this, 'async_load_js'), PHP_INT_MAX, 3 );
 		add_filter( 'style_loader_tag', 	array($this, 'async_load_css'), PHP_INT_MAX, 4 );
-
 		add_filter( 'style_loader_tag', 	array($this, 'preload_css'), PHP_INT_MAX, 4 );
 
 		// Remove Google fonts loading
@@ -94,47 +90,7 @@ class CustomScriptsStylesEnqueue {
 	}
 
 
-	/*  SCRIPTS & STYLES TO BE ENQUEUED UNCONDITIONALLY
-	/* ----------------------------------------------------------------*/
 
-	public function enqueue_high_priority_assets() {
-		/* Scripts enqueue
-		--------------------------------------------------- */		
-		$js_url = CHILD_THEME_URL . '/assets/js/';
-		$js_path = CHILD_THEME_PATH . '/assets/js/';
-		
-		// .webp detection
-		custom_enqueue_script( 'custom-modernizr', $js_url, $js_path, 'modernizr-custom.js', array(), CHILD_THEME_VERSION );
-		// Add general purpose scripts.
-		custom_enqueue_script( 'foodie-pro-general', $js_url, $js_path, 'general.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
-		custom_enqueue_script( 'custom-js-helpers', $js_url, $js_path, 'custom_helpers.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
-		// custom_enqueue_script( 'one-signal', $js_uri, $js_path, 'one_signal.js', array(), CHILD_THEME_VERSION, true);
-
-		
-		/* Styles enqueue
-		--------------------------------------------------- */
-		$css_url = CHILD_THEME_URL . '/assets/css/';
-		$css_path = CHILD_THEME_PATH . '/assets/css/';
-
-		wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Oswald|Vollkorn:300,400', array(), CHILD_THEME_VERSION );
-		custom_enqueue_style( 'child-theme-fonts', $css_url, $css_path, 'fonts.css', array( 'foodie-pro-theme' ), CHILD_THEME_VERSION );
-	}
-
-	public function enqueue_low_priority_assets() {
-		$css_url = CHILD_THEME_URL . '/assets/css/';
-		$css_path = CHILD_THEME_PATH . '/assets/css/';
-
-		wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
-		
-		/* Theme stylesheet with varying name & version, forces cache busting at browser level
-		--------------------------------------------------- */
-		$color_theme_handler = 'color-theme-' . CHILD_COLOR_THEME;
-		custom_enqueue_style( $color_theme_handler , $css_url, $css_path, $color_theme_handler . '.css', array(), CHILD_COLOR_THEME . CHILD_THEME_VERSION );
-
-		/* Customized GDPR stylesheet 
-		--------------------------------------------------- */
-		custom_enqueue_style( 'custom-gdpr' , $css_url, $css_path, 'custom-gdpr-public.css', array(), CHILD_THEME_VERSION );
-	}
 
 	/*  LOAD CONDITIONALLY 
 	/* ----------------------------------------------------------------*/

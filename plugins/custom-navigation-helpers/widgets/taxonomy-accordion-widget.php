@@ -63,10 +63,14 @@ class Recipe_Taxonomy_Accordion extends WP_Widget {
 		else $current_menu_item=0;
 		// echo '<pre>' . 'current tax : ' . $current_menu_item . '</pre>';
 
-		if ( $displayed_user ) {
-			$user_id=bp_displayed_user_id();
+
+		// TODO COMPLETE THIS
+		if ( $displayed_user && class_exists('Peepso') ) {
+			$user_id = PeepSoProfileShortcode::get_instance()->get_view_user_id();
 			if ( empty($user_id) ) $displayed_user=false;
 		}
+		else
+			$displayed_user=false;
 
 		echo '<div id="accordion">';
 		// echo do_shortcode('[ct-terms-menu page_slug="plats" page_title="' . __('Latest recipes', 'foodiepro') . '" tax="course" title="' . __('Courses', 'foodiepro') . '" orderby="name" author="0" order="ASC" count="' . $show_count . '"]');

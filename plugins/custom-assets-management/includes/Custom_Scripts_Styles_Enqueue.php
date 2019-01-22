@@ -53,6 +53,7 @@ class CustomScriptsStylesEnqueue {
 			'popup-maker-site' 					=> array('false' => ''),
 			'wpba_front_end_styles' 			=> array('false' => ''),
 			'frontend-uploader' 				=> array('false' => ''),
+			'peepso-jquery-ui' 					=> array('false' => ''),
 		);
 
 

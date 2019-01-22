@@ -128,9 +128,12 @@
 	?>
 
 	<!-- Profile actions - mobile -->
-	<div class="ps-focus-actions-mobile"><?php $PeepSoProfile->profile_actions(); ?></div>
-
+	<div class="ps-focus__interactions profile-interactions profile-social ps-js-focus-interactions">
+		<?php $PeepSoProfile->interactions(); ?>
+	</div>
+	
 	<div class="ps-focus__footer">
+		<div class="ps-focus-actions-mobile"><?php $PeepSoProfile->profile_actions(); ?></div>
 		<div class="ps-focus__menu profile-interactions ps-js-focus-links">
 			<div class="ps-focus__menu-inner">
 				<?php echo $PeepSoProfile->profile_navigation(array('current'=>$current)); ?>
@@ -139,9 +142,6 @@
 			<div class="ps-focus__menu-shadow ps-focus__menu-shadow--right ps-js-aid-right"></div>
 		</div>
 
-		<div class="ps-focus__interactions profile-interactions profile-social ps-js-focus-interactions">
-			<?php $PeepSoProfile->interactions(); ?>
-		</div>
 	</div>
 
 	<div class="js-focus-actions">

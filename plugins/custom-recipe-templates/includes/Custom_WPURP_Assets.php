@@ -479,7 +479,7 @@ class Custom_WPURP_Assets {
 				$media = isset($style['media'])?$style['media']:'all';
 				// $version = self::CUSTOM_WPURP_TEMPLATES_VERSION;
 				$version = CHILD_THEME_VERSION;
-				custom_register_style( $handler, $url, $path, $file, $deps, $version, $media );
+				custom_register_style( $handler, $file, $url, $path, $deps, $version, $media );
 	  		}
 		}		
 	}
@@ -503,7 +503,7 @@ class Custom_WPURP_Assets {
 				$media = isset($style['media'])?$style['media']:'all';
 				// $version = self::CUSTOM_WPURP_TEMPLATES_VERSION;
 				$version = CHILD_THEME_VERSION;
-				custom_enqueue_style( $handler, $url, $path, $file, $deps, $version, $media );
+				custom_enqueue_style( $handler, $file, $url, $path, $deps, $version, $media );
 	  		}
 		}
 
@@ -519,7 +519,7 @@ class Custom_WPURP_Assets {
 				// $version = self::CUSTOM_WPURP_TEMPLATES_VERSION;
 				$version = CHILD_THEME_VERSION;
 				$footer = isset($script['footer'])?$script['footer']:false;
-				custom_enqueue_script( $handler, $url, $path, $file, $deps, $version, $footer );
+				custom_enqueue_script( $handler, $file, $url, $path, $deps, $version, $footer );
 
 				if (isset($script['data'])) {	
 					$data_name = $script['data']['name'];

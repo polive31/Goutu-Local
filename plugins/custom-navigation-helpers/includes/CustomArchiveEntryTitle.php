@@ -143,24 +143,24 @@ class CustomArchiveEntryTitle extends CustomNavigationHelpers {
 		$br_id=0; // Bottom Right
 		
 		if ($this->is_season($season)) {
-			$tags .= '<div class="overlay col-' . $season[0] . ' botright' . $br_id . '">' . $season_msg . '</div>';
+			$tags .= '<div class="tag-overlay col-' . $season[0] . ' botright' . $br_id . '">' . $season_msg . '</div>';
 			$br_id++;
 		}
 
 		if ( $this->is_veg($diet) ) {
 			//$tags .= '<div class="overlay" id="veg">' . $veg_msg . '</div>';
-			$tags .= '<div class="overlay topright' . $tr_id . '" id="veg" title="' . __('Vegetarian','foodiepro') . '">' . $veg_msg . '</div>';
+			$tags .= '<div class="tag-overlay topright' . $tr_id . '" id="veg" title="' . __('Vegetarian','foodiepro') . '">' . $veg_msg . '</div>';
 			$tr_id++;
 		}
 		
 		//print_r($occasion);
 		if ($this->is_fest($occasion)) {
-			$tags .= '<div class="overlay left' . $left_id . '" id="fest">' . $fest_msg . '</div>';
+			$tags .= '<div class="tag-overlay left' . $left_id . '" id="fest">' . $fest_msg . '</div>';
 			$left_id++;
 		}			
 		
 		if ( !is_null($origin) ) {
-			$tags .= '<div class="overlay left' . $left_id . '">' . $origin . '</div>';
+			$tags .= '<div class="tag-overlay left' . $left_id . '">' . $origin . '</div>';
 			$left_id++;		
 		}
 		

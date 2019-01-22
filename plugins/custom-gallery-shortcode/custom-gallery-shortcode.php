@@ -35,9 +35,7 @@ class Custom_Gallery_Shortcode {
 	}
 	
 	public function custom_gallery_stylesheet() {
-  		$uri = self::$PLUGIN_URI . 'assets/css/';
-  		$path = self::$PLUGIN_PATH . 'assets/css/';
-		custom_enqueue_style( 'custom-gallery', $uri, $path, 'custom-gallery.css', array(), CHILD_THEME_VERSION );				
+		custom_enqueue_style( 'custom-gallery', 'assets/css/custom-gallery.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );				
 	}
 	
 

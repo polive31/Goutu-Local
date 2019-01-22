@@ -30,18 +30,11 @@ class CustomScriptsStylesEnqueue {
 		);	
 
 	// Stylesheets to be replaced
-	const CSS_REPLACE = array(
-			'name-directory-style' 	=> 'name_directory.css',
-		);
+	private $css_replace;
 
 	// Stylesheets to be loaded conditionnally
 	private $css_if = array(
 			// 'custom-star-ratings' 				=> array('page' => 'blog-page'),
-			'bp-xprofile-custom-field-types' 	=> array('false' => ''),
-			'bp-admin-bar'						=> array('false' => ''),
-			'bp-child-css' 						=> array('page' => 'bp-page'),
-			'bp-mentions-css' 					=> array('page' => 'bp-page'),
-			'bppp-style' 						=> array('false' => ''),// Buddypress Progress Bar
 			'yarppRelatedCss' 					=> array('singular' => 'post recipe' ),
 			'image-lightbox-plugin'				=> array('singular' => 'post recipe' ),
 			'custom-lightbox'					=> array('singular' => 'post recipe' ),
@@ -53,7 +46,8 @@ class CustomScriptsStylesEnqueue {
 			'popup-maker-site' 					=> array('false' => ''),
 			'wpba_front_end_styles' 			=> array('false' => ''),
 			'frontend-uploader' 				=> array('false' => ''),
-			'peepso-jquery-ui' 					=> array('false' => ''),
+			'peepso-jquery-ui'					=> array('page' => 'social'),
+			'peepso-datepicker'					=> array('false' => '')
 		);
 
 
@@ -86,9 +80,25 @@ class CustomScriptsStylesEnqueue {
 
 		// //add_action('init', 'load_jquery_from_google');   */
 		add_filter( 'stylesheet_uri', 		array($this, 'enqueue_minified_theme_stylesheet'), 10, 1 );
+
+
+		$this->css_replace = array(
+			'name-directory-style' 	=> array(
+				'file' 	=> 'name_directory.css', 
+				'uri' 	=> get_stylesheet_directory_uri(), 
+				'path' 	=> get_stylesheet_directory(), 
+				'deps' 	=> array(), 
+				'footer'=> false
+			),
+			'peepso-jquery-ui' 		=> array(
+				'file'	=> 'datepicker.css', 
+				'uri'	=> get_stylesheet_directory_uri(), 
+				'path'	=> get_stylesheet_directory(), 
+				'deps'	=> array(), 
+				'footer'=> false
+		),
+	);
 	}
-
-
 
 
 	/*  LOAD CONDITIONALLY 
@@ -100,8 +110,19 @@ class CustomScriptsStylesEnqueue {
 			if (!$this->current_page_matches( $conditions ) ) {
 				remove_style($style);
 			}
-			else 
+			else {
+				if ( in_array($style, array_keys( $this->css_replace) ) ) {
+					remove_style($style);
+					custom_enqueue_style( $style, 
+										$this->css_replace[$style]['file'], 
+										$this->css_replace[$style]['path'],  
+										$this->css_replace[$style]['uri'], 
+										$this->css_replace[$style]['deps'],
+										$this->css_replace[$style]['footer']
+					);
+				} 
 				unset( $temp[$style] ); // When loop is run next time in the footer, only styles for which condition is true are present
+			}
 		}
 		$this->css_if = $temp;
 
@@ -114,7 +135,6 @@ class CustomScriptsStylesEnqueue {
 				unset( $temp[$script] );
 		}
 		$this->js_if = $temp;
-
 	}
 
 	public function current_page_matches( $conditions ) {
@@ -139,7 +159,7 @@ class CustomScriptsStylesEnqueue {
 					$thismet = is_singular( explode(' ', $value) );
 					break;
 			}
-			$met = $met&&$thismet;
+			$met = $met && $thismet;
 		}
 		return $met;
 	}
@@ -152,18 +172,13 @@ class CustomScriptsStylesEnqueue {
 				case 'home' :
 					$thismet = is_front_page();
 					break;	
-				case 'bp-page' :
-					if (!function_exists( 'bp_is_blog_page')) break;
-					$thismet = !bp_is_blog_page(); // buddypress page					
+				case 'social' :
+					$template = get_page_template();
+					$thismet = strpos($template, 'social') != false;										
 					break;
-				// case 'social-page' :
-				// 	// if (!function_exists( 'bp_is_blog_page')) break;
-				// 	$thismet = is_peepso_page(); // buddypress page
-				// 	// $thismet = !bp_is_blog_page(); // buddypress page
-				// 	break;
 				case 'blog-page' :
-					if (!function_exists( 'bp_is_blog_page')) break;
-					$thismet = bp_is_blog_page(); //  wordpress page
+					$template = get_page_template();
+					$thismet = strpos($template, 'social') == false;
 					break;					
 			}
 			$met = $met||$thismet;
@@ -239,3 +254,5 @@ class CustomScriptsStylesEnqueue {
 	}
 
 }
+
+new CustomScriptsStylesEnqueue();

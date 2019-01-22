@@ -107,7 +107,7 @@ class CustomPostTemplates {
 		if ( !is_singular( 'recipe' ) && !is_singular( 'post' ) ) return;
 
 		// $post_info = sprintf(__('Published on %s by <span id="username">%s</span>', 'foodiepro'), '[post_date]', '[bp-author profile="true"]');
-		$avatar = do_shortcode('[peepso-user-avatar  user="author" link="profile" wrap="span" wrapclass="entry-avatar"]');
+		$avatar = do_shortcode('[peepso-user-avatar user="author" link="profile" wraptag="span" wrapclass="entry-avatar"]');
 		$profile = do_shortcode('[peepso-user-field user="author" link="profile"]');
 		$post_info = sprintf(__('Published on %s by %s<span id="username">%s</span>', 'foodiepro'), '[post_date]', $avatar, $profile);
 		

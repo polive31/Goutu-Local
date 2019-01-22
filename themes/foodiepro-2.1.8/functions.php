@@ -252,39 +252,33 @@ function foodie_pro_includes() {
 	function enqueue_high_priority_assets() {
 		/* Scripts enqueue
 		--------------------------------------------------- */		
-		$js_url = CHILD_THEME_URL . '/assets/js/';
-		$js_path = CHILD_THEME_PATH . '/assets/js/';
 		
 		// .webp detection
-		custom_enqueue_script( 'custom-modernizr', $js_url, $js_path, 'modernizr-custom.js', array(), CHILD_THEME_VERSION );
+		custom_enqueue_script( 'custom-modernizr', '/assets/js/modernizr-custom.js', CHILD_THEME_URL, CHILD_THEME_PATH, array(), CHILD_THEME_VERSION );
 		// Add general purpose scripts.
-		custom_enqueue_script( 'foodie-pro-general', $js_url, $js_path, 'general.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
-		custom_enqueue_script( 'custom-js-helpers', $js_url, $js_path, 'custom_helpers.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
+		custom_enqueue_script( 'foodie-pro-general', '/assets/js/general.js', CHILD_THEME_URL, CHILD_THEME_PATH, array( 'jquery' ), CHILD_THEME_VERSION, true);
+		custom_enqueue_script( 'custom-js-helpers', '/assets/js/custom_helpers.js', CHILD_THEME_URL, CHILD_THEME_PATH, array( 'jquery' ), CHILD_THEME_VERSION, true);
 		// custom_enqueue_script( 'one-signal', $js_uri, $js_path, 'one_signal.js', array(), CHILD_THEME_VERSION, true);
 
 		/* Styles enqueue
 		--------------------------------------------------- */
-		$css_url = CHILD_THEME_URL . '/assets/css/';
-		$css_path = CHILD_THEME_PATH . '/assets/css/';
 
 		wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Oswald|Vollkorn:300,400', array(), CHILD_THEME_VERSION );
-		custom_enqueue_style( 'child-theme-fonts', $css_url, $css_path, 'fonts.css', array( 'foodie-pro-theme' ), CHILD_THEME_VERSION );
+		custom_enqueue_style( 'child-theme-fonts', '/assets/css/fonts.css', CHILD_THEME_URL, CHILD_THEME_PATH, array( 'foodie-pro-theme' ), CHILD_THEME_VERSION );
 	}
 
 	function enqueue_low_priority_assets() {
-		$css_url = CHILD_THEME_URL . '/assets/css/';
-		$css_path = CHILD_THEME_PATH . '/assets/css/';
 
 		wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); 
 		
 		/* Theme stylesheet with varying name & version, forces cache busting at browser level
 		--------------------------------------------------- */
 		$color_theme_handler = 'color-theme-' . CHILD_COLOR_THEME;
-		custom_enqueue_style( $color_theme_handler , $css_url, $css_path, $color_theme_handler . '.css', array(), CHILD_COLOR_THEME . CHILD_THEME_VERSION );
+		custom_enqueue_style( $color_theme_handler , '/assets/css/' . $color_theme_handler . '.css', CHILD_THEME_URL, CHILD_THEME_PATH,  array(), CHILD_COLOR_THEME . CHILD_THEME_VERSION );
 
 		/* Customized GDPR stylesheet 
 		--------------------------------------------------- */
-		custom_enqueue_style( 'custom-gdpr' , $css_url, $css_path, 'custom-gdpr-public.css', array(), CHILD_THEME_VERSION );
+		custom_enqueue_style( 'custom-gdpr' , '/assets/css/custom-gdpr-public.css', CHILD_THEME_URL, CHILD_THEME_PATH,  array(), CHILD_THEME_VERSION );
 	}
 
 /* =================================================================*/
@@ -619,11 +613,11 @@ remove_action( 'genesis_entry_footer', 'genesis_entry_footer_markup_close', 15 )
 
 add_shortcode('widget-area','add_widget_area'); 
 function add_widget_area( $a ) {
-	$atts = shortcode_atts( array(
+	$a = shortcode_atts( array(
 		'hook' => '',
 		'id' => '',
 		'class' => '',
-	), $atts );
+	), $a );
 
 	if ( empty($a['id']) ) return '';
 
@@ -641,18 +635,26 @@ function add_widget_area( $a ) {
 
 add_action( 'genesis_after_content', 'add_after_content_area');
 function add_after_content_area() {
-  //if ( is_page() ) {
+	$template = get_page_template();
+	if ( strpos($template, 'social') ) return;
   	genesis_widget_area( 'after-content', array(
 		'before' => '<div class="bottom after-content widget-area">',
 		'after'  => '</div>',
   	));
-  //}     
 }
 
 
 add_filter('wp_nav_menu_items', 'add_main_nav_widget_area' , 10, 2);
 function add_main_nav_widget_area( $html, $args ) {
-	if ( $args->menu->name!='main_nav_fr' ) return $html;
+
+	if ( isset($args->name) ) 
+		$name=$args->name;
+	elseif ( isset($args->menu->name) ) 
+		$name=$args->menu->name;
+	else return $html;
+
+	if ( $name!='main_nav_fr' ) return $html;
+
 	ob_start();
 	genesis_widget_area( 'main-nav', array(
 		'before' => '<li class="mega-menu-item main-nav-widget-area">',
@@ -711,77 +713,6 @@ function custom_search_text( $text ) {
     $text=__( 'Recipe, Ingredient, Keyword, Author...','foodiepro' );
     return $text;
 }
-
-/* Recent Posts Widget Extended
--------------------------------------------------------------------*/
-// Prevent redundant posts when several rpwe instances are called on the same page
-$rpwe_exclude_posts=array();
-add_action('rpwe_loop','rpwe_get_queried_posts');
-add_filter('rpwe_default_query_arguments','rpwe_exclude_posts');
-
-function rpwe_get_queried_posts( $post ) {
-	// echo $post->ID;
-	noglobal( 'collect', $post->ID);
-}
-
-function rpwe_exclude_posts( $query ) {
-	// echo '<br>IN FILTER FUNCTION <br>';
-	// echo '<br>$query before function : <br>';
-	// echo print_r($query);
-	$query = noglobal( 'exclude', '', $query);
-	// echo '<br>$query after function : <br>';
-	// echo print_r($query);
-	return $query;
-}
-
-function noglobal( $action, $postId='', $query=array() ) {
-	static $rpwe_queried_posts=array();
-	if ($action=='collect') {
-		// echo '<br>In RPWE LOOP ACTION ! <br>';
-		// echo $postId;
-		$rpwe_queried_posts[]=$postId;
-		// echo print_r($rpwe_queried_posts);
-		return;
-	}
-	else {
-		// echo '<br>In RPWE DEFAULT QUERY ARGS FILTER ! <br>';
-		// echo '$rpwe_queried_posts : <br>';
-		// echo print_r($rpwe_queried_posts);
-		// echo '<br>$query before merge : <br>';
-		// echo print_r($query);
-		if (isset($query['post__not_in']) && isset($rpwe_queried_posts)) {
-			$query['post__not_in'] = array_merge( $query['post__not_in'], $rpwe_queried_posts );	
-		} 
-		// echo '<pre>' . '$query after merge : ' . print_r($query) . '</pre>';
-		return $query;
-	}
-}
-
-// Add user rating to RPWE widget
-add_filter('rpwe_post_title', 'rpwe_add_rating', 10, 2);
-function rpwe_add_rating($title, $args ) {
-	$disp_rating = substr($args['cssID'],1,1);
-	////foodiepro_log( array('WPRPE Output add rating'=>$output) );
-	$output='';
-	if ( $disp_rating == '1') {
-		$output .= '<span class="entry-rating">';
-		$output .= do_shortcode('[display-star-rating display="minimal" category="global" markup="span"]');
-		$output .= do_shortcode('[like-count]');
-		$output .= '</span>';
-	}
-	return $title . $output;
-}
-
-
-/* Modify WP Recent Posts ordering, depending on the orderby field value */
-add_filter( 'rpwe_default_query_arguments', 'wprpe_orderby_rating' );
-function wprpe_orderby_rating( $args ) {
-	if ( $args['orderby'] == 'meta_value_num')
-		//$args['meta_key'] = 'user_rating_global';
-		$args['meta_key'] = 'user_rating_global';
-	return $args;
-}
-
 
 
 /* =================================================================*/

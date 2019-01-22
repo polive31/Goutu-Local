@@ -51,7 +51,7 @@ function custom_img( $dir, $url, $name ) {
 /* =              CUSTOM SCRIPTS HELPERS
 /* =================================================================*/
 
-function custom_register_script( $handler, $uri, $path, $file, $deps, $version=CHILD_THEME_VERSION, $footer=false ) {	
+function custom_register_script( $handler, $file, $uri=CHILD_THEME_URL, $path=CHILD_THEME_PATH, $deps=array(), $version=CHILD_THEME_VERSION, $footer=false ) {	
 	if ( !strpos($file, '.min.js') ) {
 		$minfile = str_replace( '.js', '.min.js', $file );
 		if (file_exists( $path . $minfile) && WP_MINIFY ) {	
@@ -61,7 +61,7 @@ function custom_register_script( $handler, $uri, $path, $file, $deps, $version=C
 	wp_register_script( $handler, $uri . $file, $deps, $version, $footer );
 }
 
-function custom_enqueue_script( $handler, $uri, $path, $file, $deps, $version=CHILD_THEME_VERSION, $footer=false ) {	
+function custom_enqueue_script( $handler, $file, $uri=CHILD_THEME_URL, $path=CHILD_THEME_PATH, $deps=array(), $version=CHILD_THEME_VERSION, $footer=false ) {	
 	if ( !strpos($file, '.min.js') ) {
 		$minfile = str_replace( '.js', '.min.js', $file );
 		if (file_exists( $path . $minfile) && WP_MINIFY ) {	
@@ -82,7 +82,7 @@ function remove_script($script) {
 /* =              CUSTOM STYLES HELPERS     
 /* =================================================================*/
 
-function custom_register_style( $handler, $uri, $path, $file, $deps=array(), $version=CHILD_THEME_VERSION, $media='all' ) {	
+function custom_register_style( $handler, $file, $uri=CHILD_THEME_URI, $path=CHILD_THEME_PATH, $deps=array(), $version=CHILD_THEME_VERSION, $media='all' ) {	
 	if ( !strpos($file, '.min.css') ) {
 		$minfile = str_replace( '.css', '.min.css', $file );
 		if (file_exists( $path . $minfile) && WP_MINIFY ) {	
@@ -92,7 +92,7 @@ function custom_register_style( $handler, $uri, $path, $file, $deps=array(), $ve
     wp_register_style( $handler, $uri . $file, $deps, $version, $media );
 }
 
-function custom_enqueue_style( $handler, $uri, $path, $file, $deps=array(), $version=CHILD_THEME_VERSION, $media='all' ) {	
+function custom_enqueue_style( $handler, $file, $uri=CHILD_THEME_URI, $path=CHILD_THEME_PATH, $deps=array(), $version=CHILD_THEME_VERSION, $media='all' ) {	
 	if ( !strpos($file, '.min.css') ) {
 		$minfile = str_replace( '.css', '.min.css', $file );
 		if (file_exists( $path . $minfile) && WP_MINIFY ) {	

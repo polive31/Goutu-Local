@@ -80,8 +80,8 @@
 
 					<div class="ps-avatar-change js-focus-avatar-option">
 						<a href="#" class="ps-js-focus-avatar-button">
-							<div class="overlay">
-								<div class="overlay-text"><i class="fa fa-camera"></i> <?= __('Update cover picture', 'foodiepro'); ?></div>
+							<div class="avatar-overlay">
+								<div class="avatar-overlay-text"><i class="fa fa-camera"></i> <?= __('Update cover picture', 'foodiepro'); ?></div>
 							</div>
 						</a>
 					</div>

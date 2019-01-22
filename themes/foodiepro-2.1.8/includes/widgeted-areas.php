@@ -123,8 +123,8 @@ genesis_register_sidebar( array(
     'description' => __( 'This is the widget section of buddypress pages.', 'foodiepro' ),
 ) );
 genesis_register_sidebar( array(
-    'id'          => 'social-bottom',
-    'name'        => __( 'Social Bottom', 'foodiepro' ),
+    'id'          => 'social-after-content',
+    'name'        => __( 'Social After Content', 'foodiepro' ),
     'description' => __( 'This goes just before the footer, and occupies the whole page width.', 'foodiepro' ),
 ) );
 

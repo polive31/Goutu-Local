@@ -43,15 +43,11 @@ class Tooltip {
 
 	public function enqueue_tooltip_assets() {
         // if (! is_single() ) return;
-		$uri = self::$PLUGIN_URI . '/assets/css/';
-  		$path = self::$PLUGIN_PATH . '/assets/css/';
 		// custom_enqueue_style( 'tooltip', $uri, $path, 'tooltip.css', array(), CHILD_THEME_VERSION );			
-		custom_register_style( 'tooltip', $uri, $path, 'tooltip.css', array(), CHILD_THEME_VERSION );			
+		custom_register_style( 'tooltip', '/assets/css/tooltip.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );			
 		  
-		$uri = self::$PLUGIN_URI . '/assets/js/';
-  		$path = self::$PLUGIN_PATH . '/assets/js/';
 		// custom_enqueue_script( 'tooltip', $uri, $path, 'tooltip.js', array(), CHILD_THEME_VERSION, true );			
-		custom_register_script( 'tooltip', $uri, $path, 'tooltip.js', array(), CHILD_THEME_VERSION, true );			
+		custom_register_script( 'tooltip', '/assets/js/tooltip.js', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION, true );			
 	}	
 
 

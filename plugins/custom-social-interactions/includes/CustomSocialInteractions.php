@@ -42,9 +42,9 @@ class Custom_Social_Interactions {
             // wp_enqueue_script( 'custom-post-like', self::$PLUGIN_URI . '/assets/js/social-like-post.js', array( 'jquery' ), CHILD_THEME_VERSION, false );
             custom_enqueue_script( 
                 'custom-post-like', 
-                self::$PLUGIN_URI . '/assets/js/', 
-                self::$PLUGIN_PATH . '/assets/js/', 
-                'social-like-post.js', 
+                '/assets/js/social-like-post.js', 
+                self::$PLUGIN_URI, 
+                self::$PLUGIN_PATH, 
                 array( 'jquery' ), 
                 CHILD_THEME_VERSION, 
                 false 

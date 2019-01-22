@@ -94,6 +94,9 @@ class Peepso_About_Widget extends WP_Widget {
 		if ( isset( $instance[ 'title' ] ) ) {
 			$title = $instance[ 'title' ];
 		}
+		else {
+			$title='';
+		}
 		/* Format : array( 
 			(int) field Id => (bool) field visibility
 			) */

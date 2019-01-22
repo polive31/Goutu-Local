@@ -38,7 +38,7 @@ class PeepsoProfileCompletionWidget extends WP_Widget {
 
 	
 	public function register_custom_stylesheet() {
-		custom_register_style( 'circular-progress-bar', self::$PLUGIN_URI, self::$PLUGIN_PATH, '/assets/css/circular-progress-bar.css', array(), CHILD_THEME_VERSION );	
+		custom_register_style( 'circular-progress-bar', '/assets/css/circular-progress-bar.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );	
 	}	
 
 	// display widget

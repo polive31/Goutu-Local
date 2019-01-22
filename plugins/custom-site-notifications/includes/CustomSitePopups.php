@@ -49,9 +49,9 @@ class CustomSitePopups {
     public function popups_styles_register() {
 		custom_register_style(
 			'custom-site-popups', 
-			self::$PLUGIN_URI . '/assets/css/', 
-			self::$PLUGIN_PATH . '/assets/css/', 
-			'custom_site_popups.css'
+			'/assets/css/custom_site_popups.css',
+			self::$PLUGIN_URI, 
+			self::$PLUGIN_PATH
 		);
     }
 	

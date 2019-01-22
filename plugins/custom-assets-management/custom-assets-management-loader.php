@@ -18,10 +18,7 @@ if ( !defined('ABSPATH') )
 /* Includes
 ------------------------------------*/
 require_once 'includes/Custom_Scripts_Styles_Enqueue.php';
-// require_once 'includes/Lazy_Load.php';
 
-new CustomScriptsStylesEnqueue();
-// new LazyLoad();
 
 
 

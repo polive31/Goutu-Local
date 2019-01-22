@@ -31,15 +31,11 @@ class CustomStarRatings {
 
 	/* Chargement des feuilles de style custom et polices */
 	public function enqueue_star_rating_style() {
-		$uri = self::$PLUGIN_URI . 'assets/';
-  		$path = self::$PLUGIN_PATH . 'assets/'; 
-		custom_enqueue_style( 'custom-star-rating', $uri, $path, 'custom-star-rating.css', array(), CHILD_THEME_VERSION );
+		custom_enqueue_style( 'custom-star-rating', 'assets/custom-star-rating.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );
 	}
 		
 	public function register_star_rating_style() {
-		$uri = self::$PLUGIN_URI . 'assets/';
-		$path = self::$PLUGIN_PATH . 'assets/'; 
-		custom_register_style( 'custom-star-rating', $uri, $path, 'custom-star-rating.css', array(), CHILD_THEME_VERSION );
+		custom_register_style( 'custom-star-rating', 'assets/custom-star-rating.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );
 	}
 
 

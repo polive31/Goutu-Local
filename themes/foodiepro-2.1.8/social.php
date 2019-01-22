@@ -14,7 +14,7 @@ remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
 
 function custom_social_genesis_meta() {
 	add_action( 'genesis_before_content_sidebar_wrap', 'foodiepro_social_before_content' );
-	add_action( 'genesis_after_content', 'foodiepro_social_bottom' );
+	add_action( 'genesis_after_content', 'foodiepro_social_after_content' );
 
 	// remove_action( 'genesis_loop', 'genesis_do_loop' );
 	
@@ -31,9 +31,9 @@ function foodiepro_social_before_content() {
 }
 
 
-function foodiepro_social_bottom() {
-	genesis_widget_area( 'social-bottom', array(
-	  'before' => '<div class="bottom after-content social-bottom widget-area">',
+function foodiepro_social_after_content() {
+	genesis_widget_area( 'social-after-content', array(
+	  'before' => '<div class="bottom after-content social-after-content widget-area">',
 	  'after'  => '</div>',
 	));
 }

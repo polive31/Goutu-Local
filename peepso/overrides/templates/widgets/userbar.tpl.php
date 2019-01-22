@@ -27,7 +27,7 @@ $position = $instance['content_position'];
 				
 			<div class="ps-widget--userbar__container">
 
-				<div class="name-usermenu-container"
+				<div class="name-usermenu-container">
 					<?php if(isset($instance['show_vip']) && 1 == intval($instance['show_vip'])) { ?>
 						<div class="ps-widget--userbar__item ps-widget--userbar__vip"><?php do_action('peepso_action_userbar_user_name_before', $user->get_id()); ?></div>
 						<?php } ?>

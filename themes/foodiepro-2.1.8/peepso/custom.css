@@ -26,10 +26,67 @@
 /* USERBAR
 -----------------------------------------------------------*/
 
-/* On desktop nav */
+/* Header Widget Area
+-----------------------------------------------------------*/
+.main-nav-widget-area .ps-widget--userbar.ps-widget--userbar--right.ps-widget--external {
+    font-size: 1.6rem;
+    font-family: Oswald;
+    font-weight: 400;
+    height: 40px;
+}
+
+.main-nav-widget-area .ps-dropdown--userbar,
+.main-nav-widget-area .ps-widget--userbar__name {
+    text-transform: uppercase;
+}
+
+.main-nav-widget-area .ps-widget--userbar__name,
+.main-nav-widget-area .ps-widget--userbar__avatar,
+.ps-widget--userbar__container,
+.ps-widget--userbar__logout,
+.name-usermenu-container {
+    display: inline-block;
+}
+
+
+.main-nav-widget-area .ps-widget--userbar__avatar {
+    width: 100px;
+    position: relative;
+    margin-left: 10px;
+}
+
+.main-nav-widget-area .ps-widget--userbar__avatar .ps-avatar {
+   max-width: 128px;
+}
+
+.main-nav-widget-area .ps-widget--userbar__avatar .ps-avatar img {
+    max-width: 128px;
+    max-height: 128px;
+    position:absolute;
+    bottom:-45px;
+}
+
+.main-nav-widget-area .ps-widget--userbar__notifications {
+    display: flex;
+    margin-right: 15px;
+}
+
+.main-nav-widget-area .ps-bubble--widget {
+    top: -6px;
+    right: -2px;
+}
+
+.main-nav-widget-area .ps-widget--userbar__logout i,
+.main-nav-widget-area .ps-bubble__wrapper i {
+    font-size:20px;
+}
+
 .widget_peepsowidgetuserbar a {
     color: #535353;
 }
+
+
+
 
 /* On mobile nav */
 #responsive-menu-pro-container .ps-widget--userbar {
@@ -248,8 +305,10 @@ span.ps-tooltip.ps-tooltip--online.ps-user__status.ps-icon-circle {
     position: absolute;
 }
 
+
 /* Nav Menu Items
 -----------------------------------------------------------*/
+
 
 .ps-focus__footer {
     padding-left: 150px;
@@ -275,7 +334,12 @@ span.ps-tooltip.ps-tooltip--online.ps-user__status.ps-icon-circle {
     /* line-height: 28px; */
 }
 
+.ps-focus__interactions {
+    float: right;
+}
+
 .ps-focus__interactions-item {
+    display: inline;
     font-family: var(--ps-font-family);
     font-size: 1.6rem;
 }
@@ -285,51 +349,6 @@ span.ps-tooltip.ps-tooltip--online.ps-user__status.ps-icon-circle {
 }
 
 
-/* Header Widget Area
------------------------------------------------------------*/
-.main-nav-widget-area .ps-widget--userbar.ps-widget--userbar--right.ps-widget--external {
-    font-size: 1.6rem;
-    font-family: Oswald;
-    font-weight: 400;
-    height: 40px;
-}
-
-.main-nav-widget-area .ps-dropdown--userbar,
-.main-nav-widget-area .ps-widget--userbar__name {
-    text-transform: uppercase;
-}
-
-.main-nav-widget-area .ps-widget--userbar__avatar {
-    width: 100px;
-    position: relative;
-    margin-left: 10px;
-}
-
-.main-nav-widget-area .ps-widget--userbar__avatar .ps-avatar {
-   max-width: 128px;
-}
-
-.main-nav-widget-area .ps-widget--userbar__avatar .ps-avatar img {
-    max-width: 128px;
-    max-height: 128px;
-    position:absolute;
-    bottom:-45px;
-}
-
-.main-nav-widget-area .ps-widget--userbar__notifications {
-    display: flex;
-    margin-right: 15px;
-}
-
-.main-nav-widget-area .ps-bubble--widget {
-    top: -6px;
-    right: -2px;
-}
-
-.main-nav-widget-area .ps-widget--userbar__logout i,
-.main-nav-widget-area .ps-bubble__wrapper i {
-    font-size:20px;
-}
 
 @media only screen and (max-width: 480px) {
 
@@ -396,11 +415,7 @@ span.ps-tooltip.ps-tooltip--online.ps-user__status.ps-icon-circle {
     .ps-dropdown__menu.ps-js-dropdown-menu a {
         margin: 5px;
         border-radius: 10px;
-    } 
-        
-    .ps-dropdown ps-dropdown--right ps-dropdown--userbar ps-js-dropdown {
-        
-    }    
+    }  
     
     .ps-focus-profile-options {
         border: none;

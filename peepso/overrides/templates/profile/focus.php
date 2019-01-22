@@ -102,7 +102,7 @@
 					//[peepso]_[action]_[WHICH_PLUGIN]_[WHERE]_[WHAT]_[BEFORE/AFTER]
 						do_action('peepso_action_render_user_name_before', $PeepSoUser->get_id());
 
-						echo $PeepSoUser->get_fullname();
+						echo ucfirst( $PeepSoUser->get_username() );
 
 						//[peepso]_[action]_[WHICH_PLUGIN]_[WHERE]_[WHAT]_[BEFORE/AFTER]
 						do_action('peepso_action_render_user_name_after', $PeepSoUser->get_id());

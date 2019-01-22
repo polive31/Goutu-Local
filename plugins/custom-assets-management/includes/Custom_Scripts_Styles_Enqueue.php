@@ -149,7 +149,10 @@ class CustomScriptsStylesEnqueue {
 					$thismet = $this->is_page_of_type( explode(' ', $value) );
 					break;												
 				case 'shortcode' :
-					$content = get_the_content();
+				// TODO SOLVE ISSUE HERE 
+				// Returns error
+					$post = get_post();
+					$content = $post->post_content;
 					$thismet = empty($content)?false:has_shortcode( $content, $value);
 					break;
 				case 'single' :

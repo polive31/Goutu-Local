@@ -4847,11 +4847,16 @@ Site Footer
 	
 	/* Grid widgets */
 	
-	.page-bottom .rpwe-block.grid-2col li,
 	.page-bottom .rpwe-block.grid-3col li,
-	.content .rpwe-block.grid-2col li,
+	.simple-grid.one-third,
 	.content .rpwe-block.grid-3col li {
   		width: calc(50% - 20px);;       
+	}
+
+	.page-bottom .rpwe-block.grid-2col li,
+	.simple-grid.one-half,
+	.content .rpwe-block.grid-2col li {
+  		width: calc(100% - 20px);;       
 	}
 
 /* Footer */

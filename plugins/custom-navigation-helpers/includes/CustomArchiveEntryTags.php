@@ -10,61 +10,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class CustomArchiveEntries extends CustomNavigationHelpers {
+/* Add tags as an overlay to each entry in an archive page
+-----------------------------------------------------------------------------*/
+
+
+class CustomArchiveEntryTags extends CustomArchiveEntries {
 
 
 	public function __construct() {
-		parent::__construct();
+		parent::__construct();	
+		add_filter( 'rpwe_in_thumbnail', array($this, 'rpwe_add_overlay'), 10, 2 );
 
-
-		add_filter( 'genesis_post_title_output', array($this, 'archive_rating' ), 1 );		
-
-		/* Customize archive pages */
-		add_filter( 'post_class', array($this, 'set_grid_columns'));
-		add_filter( 'genesis_before_entry', array($this, 'remove_entry_content') );
-		
-	}
-	
-	public function remove_entry_content() {
-		if ( is_archive() || is_search() ) {
-			remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
-			add_action( 'genesis_entry_header', 'genesis_do_post_image', 5 );
-
-			// Don't know why but 2 remove actions are needed to really remove the image from the entry content !
-			remove_action( 'genesis_entry_content', 'genesis_do_post_image', 8 );
-			remove_action( 'genesis_entry_content', 'genesis_do_post_image', 12 );
-		}
+		add_action( 'genesis_entry_header', array($this, 'do_post_title_before'), 1 );
+		add_action( 'genesis_entry_header', array($this, 'do_post_title_after') );
 	}
 
-	public function set_grid_columns( $classes ) {
-		// if ( is_archive() ) {
-		$classes = foodie_pro_grid_one_half($classes); 
-		// } 
-		return $classes;
-	}
-	
-		
-	/* Add rating to entry title
-	-----------------------------------------------------------------------------*/
-	public function archive_rating($title) {
-		/* Display start rating below entry */
-		if ( is_archive() || is_search() || is_tag() ) {
-				// Rating BEFORE entry title
-				// $title = do_shortcode('[display-star-rating category="global" display="minimal"]') . $title;
-				// Rating AFTER entry title
-				$title .= '<span class="entry-rating">';
-				$title .= do_shortcode('[display-star-rating category="global" display="minimal" markup="span"]');
-				$title .= do_shortcode('[like-count]');
-				$title .= '</span>';
-				//echo 'User rating global = ' . get_post_meta( get_the_ID(), 'user_rating_global', true );
-		};	
-		return $title;	
-	}	
 
-	/* Add tags to entry title 
-	-----------------------------------------------------------------------------*/
-
-	// Add overlay to RPWE widget
+	/* RPWE TAG FORMATTING
+	----------------------------------------------------------*/
 	public function rpwe_add_overlay($output, $args) {
 		$disp_overlay = substr($args['cssID'],3,1);
 		////foodiepro_log( array('WPRPE Output add rating'=>$output) );
@@ -75,6 +38,26 @@ class CustomArchiveEntries extends CustomNavigationHelpers {
 		}
 		return $output;
 	}
+
+
+	/* ENTRY TAG FORMATTING
+	----------------------------------------------------------*/
+
+	// Add custom opening div for post thumbnail title
+	public function do_post_title_before() {
+		// if ( is_tax() || is_search() || is_tag() || is_author() ) {
+		if ( is_archive() || is_search() ) {
+			echo '<div class="entry-header-overlay">';
+			echo $this->entry_tags();
+		}
+	}
+
+	// Add custom closing div for post thumbnail title
+	public function do_post_title_after() {
+		if ( is_tax() || is_search() || is_tag() ) {
+			echo '</div>';
+		}
+	}	
 
 	
 	public function entry_tags() {
@@ -106,11 +89,10 @@ class CustomArchiveEntries extends CustomNavigationHelpers {
 			$tags_html = $this->output_tags( $origin, $diet, $occasion, $season);
 		}		
 		elseif ( is_tag() ) {
-			$tags_html = $this->output_tags( $origin, $diet, $occasion, $season);
 		}
 		else 
-			$tags_html = '';		
-
+			$tags_html = $this->output_tags( $origin, $diet, $occasion, $season);
+			
 		return $tags_html;
 	}
 

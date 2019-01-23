@@ -108,8 +108,10 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 			$headline = get_term_meta( $this->query->term_id, 'headline', true );
 			if ( !empty($headline) ) 
 				return $headline;
-			else
-				return single_term_title( $msg, false);
+			else {
+				// Return the post type queried
+				return $this->query->label;
+			}
 		};
 	}
 

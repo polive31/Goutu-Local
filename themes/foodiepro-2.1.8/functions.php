@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'CHILD_THEME_NAME', 'Foodie Pro Theme' );
-define( 'CHILD_THEME_VERSION', '2.2.7' );
+define( 'CHILD_THEME_VERSION', '2.2.76' );
 define( 'CHILD_THEME_DEVELOPER', 'Shay Bocks' );
 define( 'CHILD_THEME_URL', get_stylesheet_directory_uri() );
 define( 'CHILD_THEME_PATH', get_stylesheet_directory() );
@@ -607,7 +607,6 @@ remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
 remove_action( 'genesis_entry_footer', 'genesis_entry_footer_markup_close', 15 );
 
 
-
 /* Hook widget areas 
 -----------------------------------------------------------------------------*/
 
@@ -692,7 +691,7 @@ function mailchimp_subscribe_form(){
 
 // Allow Text widgets to execute shortcodes
 add_filter( 'widget_text', 'shortcode_unautop');
-add_filter('widget_text', 'do_shortcode');
+add_filter( 'widget_text', 'do_shortcode');
 
 // Enable PHP in widgets
 add_filter('widget_text','execute_php',100);

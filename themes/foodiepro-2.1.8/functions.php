@@ -218,11 +218,11 @@ function foodie_pro_includes() {
 	$includes_dir = trailingslashit( get_stylesheet_directory() ) . 'includes/';
 
 	// Load the customizer library.
-	require_once $includes_dir . 'vendor/customizer-library/customizer-library.php';
+	// require_once $includes_dir . 'vendor/customizer-library/customizer-library.php';
 
 	// Load all customizer files.
-	require_once $includes_dir . 'customizer/customizer-display.php';
-	require_once $includes_dir . 'customizer/customizer-settings.php';
+	// require_once $includes_dir . 'customizer/customizer-display.php';
+	// require_once $includes_dir . 'customizer/customizer-settings.php';
 
 	// Load everything in the includes root directory.
 	require_once $includes_dir . 'helper-functions.php';

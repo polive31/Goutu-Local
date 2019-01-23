@@ -37,9 +37,9 @@ class CustomArchiveEntries extends CustomNavigationHelpers {
 	}
 
 	public function set_grid_columns( $classes ) {
-		// if ( is_archive() ) {
-		$classes = foodie_pro_grid_one_half($classes); 
-		// } 
+		if ( is_archive() || is_search() || is_tag() ) {
+			$classes = foodie_pro_grid_one_half($classes); 
+		} 
 		return $classes;
 	}
 	

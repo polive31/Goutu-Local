@@ -36,15 +36,8 @@ class CustomSocialButtons {
 
     public function enqueue_social_buttons_scripts_styles() {
 		global $post;
-		// if ( !has_shortcode( $post->post_content, 'social-sharing-buttons') ) return;
-
-   		$uri = self::$PLUGIN_URI . '/assets/js/';
-  		$path = self::$PLUGIN_PATH . '/assets/js/';  
-		custom_enqueue_script( 'social-buttons', $uri, $path, 'social_sharing_buttons.js', array( 'jquery' ), CHILD_THEME_VERSION, true );
-
-  		$uri = self::$PLUGIN_URI . '/assets/css/';
-  		$path = self::$PLUGIN_PATH . '/assets/css/';
-		custom_enqueue_style( 'social-buttons', $uri, $path, 'social_sharing_buttons.css', array(), CHILD_THEME_VERSION );	
+		custom_register_script( 'social-buttons', '/assets/js/social_sharing_buttons.js', self::$PLUGIN_URI, self::$PLUGIN_PATH,  array( 'jquery' ), CHILD_THEME_VERSION, true );
+		custom_register_style( 'social-buttons', '/assets/css/social_sharing_buttons.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );	
 	} 	
 	
 	public function get_sharing_buttons($target, $class, $networks) {

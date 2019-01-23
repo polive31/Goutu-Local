@@ -30,6 +30,8 @@ class CustomSocialButtonsShortcodes extends CustomSocialButtons {
 			'googleplus' => 'false', 
 	   	),$atts);
 	   
+		wp_enqueue_style('social-buttons');
+		wp_enqueue_script('social-buttons');
 	  
 		foreach (self::$networks as $id) {
 			$supported_networks[$id]=($atts[$id]==='true');

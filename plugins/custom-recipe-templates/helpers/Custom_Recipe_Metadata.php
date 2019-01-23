@@ -202,19 +202,20 @@ class Custom_Recipe_Metadata {
         }
 
         // Keywords
+        $keywords = '';
         $season = wp_get_post_terms( $recipe->ID(), 'season', array( 'fields' => 'names' ) );
         if( !is_wp_error( $season ) && isset( $season[0] ) ) {
-            $metadata['keywords'] = $season[0] . ',';
+            $keywords = $season[0] . ',';
         }
         $occasion = wp_get_post_terms( $recipe->ID(), 'occasion', array( 'fields' => 'names' ) );
         if( !is_wp_error( $occasion ) ) {
-            $metadata['keywords'] .= implode(',', $occasion) . ',';
+            $keywords .= implode(',', $occasion) . ',';
         }        
         $tag = wp_get_post_terms( $recipe->ID(), 'post_tag', array( 'fields' => 'names' ) );
         if( !is_wp_error( $tag ) ) {
-            $metadata['keywords'] .= implode(',',$tag);
+            $keywords .= implode(',',$tag);
         }         
-
+        $metadata['keywords'] = $keywords;
         // Allow external filtering of metadata
         return apply_filters( 'wpurp_custom_recipe_metadata', $metadata, $recipe );
     } 

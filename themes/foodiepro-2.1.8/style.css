@@ -3090,10 +3090,6 @@ nav.nav-primary .wrap {
 	opacity:0.8;
 }
 
-.rpwe-block + p {
-    display: none;
-}
-
 .rpwe-block img.avatar {
 	width:55px;
 }
@@ -3224,6 +3220,10 @@ a.more-link,
 	text-align: center;
 }
 
+.home .more-from-category a {
+	font-size: 1.4rem;
+}
+
 .more-from-category a {
 	margin:0 auto 0px; /* P.O. Original margin-bottom:40px; */
 }
@@ -3243,11 +3243,11 @@ a.more-link,
 }
 
 .more-from-category {
-	clear:both;
-	display:block;
-	float:none;
-	margin-top:20px;
-	text-align:center;
+    display: inline-block;
+    text-align: center;
+    margin-top: 25px;
+    text-align: center;
+    width: 100%;
 }
 
 /* p.more-from-category {

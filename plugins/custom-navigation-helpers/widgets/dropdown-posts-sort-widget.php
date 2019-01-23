@@ -29,9 +29,7 @@ public function widget( $args, $instance ) {
 	
 	/* Do not display in the case of a WPURP dropdown search widget result */
 	$url = $_SERVER["REQUEST_URI"];
-	$WPURP_search = strpos($url, 'wpurp-search');
-	if ($WPURP_search)
-		return '';
+	if (strpos($url, 'wpurp-search')) return '';
 	
 	$title = apply_filters( 'widget_title', $instance['title'] );
 	// before and after widget arguments are defined by themes

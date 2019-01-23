@@ -28,6 +28,36 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 		add_shortcode('seo-friendly-title', array($this,'get_seo_friendly_page_title')); 
 	}
 
+	public function get_post_type_archive_title() {
+		switch ($this->query->name) {
+			case 'recipe':
+				$title=__('All the recipes','foodiepro');
+				break;
+			case 'post':
+				$title=__('All the posts','foodiepro');
+				break;				
+			default:
+				$title=$this->query->label;
+				break;
+		}
+		return $title;
+	}
+
+	public function get_post_type_archive_intro_text() {
+		switch ($this->query->name) {
+			case 'recipe':
+				$intro_text=__('You will find here all the recipes, which you can further sort by date or evaluation.','foodiepro');
+				break;
+			case 'post':
+				$intro_text=__('You will find here all the posts, which you can further sort by date.','foodiepro');
+				break;				
+			default:
+				$intro_text='';
+				break;
+		}
+		return $intro_text;
+	}
+
 	public function custom_search_title_text() {	
 		// $url = $_SERVER["REQUEST_URI"];
 		// $WPURP_search = strpos($url, 'wpurp-search');
@@ -110,7 +140,7 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 				return $headline;
 			else {
 				// Return the post type queried
-				return $this->query->label;
+				return $this->get_post_type_archive_title();
 			}
 		};
 	}
@@ -123,6 +153,10 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 		if (empty($intro)) {
 			$parent = $this->query->parent;
 			$intro = get_term_meta( $this->query->parent, 'intro_text', true );
+		}	
+		
+		if (empty($intro)) {
+			$intro = $this->get_post_type_archive_intro_text();
 		}	
 			  
 		return do_shortcode($description . $intro);

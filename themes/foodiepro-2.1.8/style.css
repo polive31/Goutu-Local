@@ -2624,6 +2624,11 @@ span.edit-button {
 	padding: 10px 0px 40px 0px;	
 }
 
+.archive-description p {
+    padding-left: 20px;
+    margin-top: 30px;
+}
+
 .page-header-wrap {
 	display:inline;
 }

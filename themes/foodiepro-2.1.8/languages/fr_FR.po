@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-01-23 15:43+0100\n"
-"PO-Revision-Date: 2019-01-23 15:46+0100\n"
+"POT-Creation-Date: 2019-01-23 21:46+0100\n"
+"PO-Revision-Date: 2019-01-23 21:49+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -37,7 +37,7 @@ msgstr ""
 
 #: peepso/overrides/templates/photos/photos.php:47
 #: peepso/overrides/templates/videos/videos.php:7
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:69
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:67
 msgid "Newest first"
 msgstr "Les plus récentes"
 
@@ -246,7 +246,7 @@ msgid "by %s"
 msgstr "par %s"
 
 #: plugins/bp-custom.php:318
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:82
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:112
 #: plugins/custom-navigation-helpers/includes/RPWE_Customizations.php:96
 #, php-format
 msgctxt "consonant"
@@ -403,7 +403,7 @@ msgstr ""
 #: plugins/custom-buddypress-helpers/widgets/BP-my-friends-widget.php:108
 #: plugins/custom-buddypress-helpers/widgets/BP-welcome-widget.php:74
 #: plugins/custom-buddypress-helpers/widgets/BP-whats-new-widget.php:170
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:109
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:107
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:110
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:79
 #: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:103
@@ -424,7 +424,7 @@ msgstr ""
 #: plugins/custom-buddypress-helpers/widgets/BP-my-friends-widget.php:122
 #: plugins/custom-buddypress-helpers/widgets/BP-welcome-widget.php:78
 #: plugins/custom-buddypress-helpers/widgets/BP-whats-new-widget.php:174
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:113
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:111
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:119
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:83
 #: plugins/custom-peepso-helpers/widgets/PeepsoAboutWidget.php:116
@@ -989,62 +989,87 @@ msgstr "Publiez votre photo"
 msgid "Picture title"
 msgstr "Titre de l'image"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveEntries.php:122
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntries.php:127
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTags.php:109
 msgid "Seasonal"
 msgstr "De Saison"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveEntries.php:129
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntries.php:134
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTags.php:116
 msgid "Vegetarian"
 msgstr "Recette végétarienne"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveEntries.php:133
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntries.php:138
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTags.php:120
 msgid "Festive"
 msgstr "Fêtes"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:36
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:34
+msgid "All the recipes"
+msgstr "Toutes les recettes"
+
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:37
+msgid "All the posts"
+msgstr "Tous les articles"
+
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:49
+msgid ""
+"You will find here all the recipes, which you can further sort by date or "
+"evaluation."
+msgstr ""
+"Vous trouverez ici toutes les recettes du site. Vous pouvez les trier par "
+"date, nom, évaluation, etc...<br>Bonne recherche !"
+
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:52
+msgid "You will find here all the posts, which you can further sort by date."
+msgstr ""
+"Vous trouverez ici tous les articles du site. Vous pouvez les trier par "
+"date, nom, etc...<br>Bonne recherche !"
+
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:66
 msgid "Detailed Search Results"
 msgstr "Résultats de recherche détaillée"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:38
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:68
 #, php-format
 msgid "Search Results for:%s"
 msgstr "Résultats de recherche pour : %s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:54
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:84
 msgid "Visit Goutu.org"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:80
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:110
 #, php-format
 msgctxt "vowel"
 msgid "All posts from %s"
 msgstr "Toutes les publications d'%s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:91
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:121
 #, php-format
 msgctxt "vowel"
 msgid "All recipes containing %s"
 msgstr "Toutes les recettes à base d'%s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:93
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:123
 #, php-format
 msgctxt "consonant"
 msgid "All recipes containing %s"
 msgstr "Toutes les recettes à base de %s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:97
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:127
 #, php-format
 msgctxt "plural"
 msgid "All recipes from %s"
 msgstr "Toutes les recettes des %s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:99
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:129
 #, php-format
 msgctxt "vowel"
 msgid "All recipes from %s"
 msgstr "Toutes les recettes d'%s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:101
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:131
 #, php-format
 msgctxt "consonant"
 msgid "All recipes from %s"
@@ -1079,27 +1104,27 @@ msgstr ""
 msgid "Displays a dropdown list allowing to sort posts"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:41
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:39
 msgid "Sort"
 msgstr "Trier"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:64
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:62
 msgid "Select sort order..."
 msgstr "Trier les recettes par..."
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:65
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:63
 msgid "Title : ascending"
 msgstr "Titre : de A à Z"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:66
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:64
 msgid "Title : descending"
 msgstr "Titre : de Z à A"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:74
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:72
 msgid "Comment count"
 msgstr "Commentaires"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:78
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:76
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:67
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-ratings/templates/user_rating.php:34
 #: plugins/wp-ultimate-recipe-premium/premium/helpers/recipe_columns.php:25
@@ -2386,7 +2411,7 @@ msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr "Un problème ? Une question ? Contacte nous <a href=\"%s\">ici</a>"
 
 #: plugins/custom-site-notifications/includes/CustomSiteMails.php:88
-#: themes/foodiepro-2.1.8/functions.php:753
+#: themes/foodiepro-2.1.8/functions.php:752
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
@@ -2546,23 +2571,23 @@ msgstr "J'aime cet article"
 msgid "Do not like this post anymore"
 msgstr "Je n'aime plus cet article"
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:97
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:90
 msgid "Share on Facebook"
 msgstr "Partager sur Facebook"
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:119
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:112
 msgid "Share on Twitter"
 msgstr "Partager sur Twitter"
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:151
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:144
 msgid "Pin It"
 msgstr "Epingler sur Pinterest"
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:176
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:169
 msgid "Share by email"
 msgstr "Partager par courriel"
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:206
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:199
 msgid "Share on Whatsapp"
 msgstr "Partager sur Whatsapp"
 
@@ -9814,15 +9839,15 @@ msgstr "<strong>ERREUR</strong> : Utilisateur en attente d'approbation."
 msgid "author"
 msgstr "auteur"
 
-#: themes/foodiepro-2.1.8/functions.php:713
+#: themes/foodiepro-2.1.8/functions.php:712
 msgid "Recipe, Ingredient, Keyword, Author..."
 msgstr "Recette, ingrédient, mot-clé, auteur..."
 
-#: themes/foodiepro-2.1.8/functions.php:753
+#: themes/foodiepro-2.1.8/functions.php:752
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:753
+#: themes/foodiepro-2.1.8/functions.php:752
 msgid "Legal notice"
 msgstr "Mentions légales"
 
@@ -11796,9 +11821,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 
 #~ msgid "There was an error submitting the form."
 #~ msgstr "Certaines informations requises sont manquantes."
-
-#~ msgid "All posts"
-#~ msgstr "Tous les articles"
 
 #~ msgid "Goûtu charter"
 #~ msgstr "Charte Goûtu"

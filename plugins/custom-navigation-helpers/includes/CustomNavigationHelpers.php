@@ -56,9 +56,7 @@ class CustomNavigationHelpers {
 	public function enqueue_masonry_scripts() {
 	  	if ( is_archive() || is_search() ) {	
 			wp_enqueue_script( 'jquery-masonry' );
-			$js_uri = self::$PLUGIN_URI . '/assets/js/';
-			$js_path = self::$PLUGIN_PATH . '/assets/js/';
-			custom_enqueue_script( 'masonry-layout', $js_uri, $js_path, 'masonry-layout.js', array( 'jquery', 'jquery-masonry' ), CHILD_THEME_VERSION, true);
+			custom_enqueue_script( 'masonry-layout', '/assets/js/masonry-layout.js', self::$PLUGIN_URI, self::$PLUGIN_PATH, array( 'jquery', 'jquery-masonry' ), CHILD_THEME_VERSION, true);
 	  	};
 	}
 
@@ -171,7 +169,8 @@ class CustomNavigationHelpers {
     public static function orderby($tax) {
         if (!isset(self::TAXONOMY[$tax])) return;
         return self::TAXONOMY[$tax]['orderby'];
-    }  
+	}  
+		
 
 
 	/* Custom query variable for taxonomy filter
@@ -191,45 +190,5 @@ class CustomNavigationHelpers {
 		$last = strtolower($word[strlen($word)-1]);
 		return ($last=='s');	
 	}	
-	
-	protected function is_season($season) {
-		//get current month
-		$currentMonth=DATE("m");
-		 
-		if (empty($season)) return false;
-		
-		//retrieve season
-		if ($currentMonth>="03" && $currentMonth<="05")
-		  $currentSeason = "0";
-		elseif ($currentMonth>="06" && $currentMonth<="08")
-		  $currentSeason = "1";
-		elseif ($currentMonth>="09" && $currentMonth<="11")
-		  $currentSeason = "2";
-		else
-		  $currentSeason = "3";	
-		  
-		return ($season[0] == $currentSeason);
-	}
-	
-	protected function is_fest($occasion) {
-		
-		if (!isset($occasion)) return false;
-		
-		$currentMonth=DATE("m");
-		$needle = 'fetes';
-		
-		foreach ($occasion as $obj) {
-			if ($obj->slug == $needle) {
-				if ( $currentMonth==11 || $currentMonth==12 ) {
-					return true;
-				}
-			}
-		}
-	}
-	
-	protected function is_veg($diet) {
-		if (empty($diet)) return false;
-		return ($diet[0] == "0");
-	}
 
 }

@@ -173,7 +173,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 				$rating = $this->get_post_rating( $post_id , $id);
 			}
 
-			$rating=empty($rating)?0:$rating;
+			$rating=empty($rating)?0:(int)$rating;
 			$stars = floor($rating);
 			$half = ($rating-$stars) >= 0.5;
 			?>

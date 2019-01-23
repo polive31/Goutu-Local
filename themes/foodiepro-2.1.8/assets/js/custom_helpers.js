@@ -67,15 +67,32 @@ function sidebarHeightAdjustToContent() {
     console.log( "Sidebar height", sidebarHeight );
     console.log( "Allowed max height", contentHeight + shacExtraHeight );
     
-    while ( (sidebarHeight > contentHeight + shacExtraHeight) && (count < shacMaxWidgetRemove ) ) {
+    var searchAutoHideWidgets = shacSidebarClass + ' ' + shacElementToRemove + '.autohide';
+    
+    console.log('Widgets with autohide class', jQuery(searchAutoHideWidgets));
+    
+    var element = jQuery(searchAutoHideWidgets).last();
+    var prevElement;
+    
+    while ( (sidebarHeight > contentHeight + shacExtraHeight) && element.length>0/*&& (count < shacMaxWidgetRemove )*/ ) {
+ 
         console.log( "In adjust sidebar height loop" );
-        var element = shacSidebarClass + ' ' + shacElementToRemove + ':last-child';
-        // console.log( "Last widget in sidebar : ", jQuery(element) );
-        jQuery(element).remove();
-        sidebarHeight = jQuery(shacSidebarClass).outerHeight();
-        console.log("Removed one widget, new sidebar height is ", sidebarHeight );
-        count++;
-        // console.log( count );
+        console.log( "current element is : ", element );
+       
+        prevElement = element.prev();
+        if ( element.hasClass('autohide') ) {
+            console.log('Element has class autohide');
+            // console.log( "Last widget in sidebar : ", jQuery(element) );
+            element.remove();
+            sidebarHeight = jQuery(shacSidebarClass).outerHeight();
+            console.log("Removed one widget, new sidebar height is ", sidebarHeight );
+            // count++;
+        }
+        else {
+            console.log('Element does not have class autohide');
+        }
+        element = prevElement;
+        console.log( 'Setting current element to : ', element);
     };
     
     // console.log( "Out of while loop" );

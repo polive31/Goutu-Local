@@ -41,7 +41,7 @@
 		<?php wp_nonce_field('profile-photo', '_photononce'); ?>
 
 		<!-- Cover options dropdown -->
-		<div title="<?php _e('Cover Image Utilities', 'peepso-core'); ?>" class="ps-focus-options ps-dropdown ps-dropdown-focus ps-js-dropdown">
+		<div title="<?php _e('Cover Image Utilities', 'foodiepro'); ?>" class="ps-focus-options ps-dropdown ps-dropdown-focus ps-js-dropdown">
 			<a href="#" class="ps-dropdown__toggle ps-js-dropdown-toggle">
 				<span class="ps-icon-camera"></span>
 			</a>

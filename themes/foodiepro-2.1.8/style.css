@@ -2656,24 +2656,24 @@ span.edit-button {
   color: white;
 }
 
-.tag-overlay.col-0 {
+.tag-overlay.col-printemps {
 	color: #2fe803;
 	background: #f1ff2e;
 }
 
-.tag-overlay.col-1 {
+.tag-overlay.col-ete {
 	color: #e8ff36;
 	background: #ff1900;
 }
 
-.tag-overlay.col-2 {
+.tag-overlay.col-automne {
   color: #d06b20;
   background: #ffde35;
 }
 
-.tag-overlay.col-3 {
+.tag-overlay.col-hiver {
   color: #ffffff;
-  background: #a1ffd4;
+  background: rgba(134, 191, 186, 0.81);
 }
 
 .tag-overlay#fest::before {

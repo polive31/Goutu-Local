@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-01-20 17:55+0100\n"
-"PO-Revision-Date: 2019-01-20 17:57+0100\n"
+"POT-Creation-Date: 2019-01-23 15:43+0100\n"
+"PO-Revision-Date: 2019-01-23 15:46+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -13,6 +13,215 @@ msgstr ""
 "X-Generator: Poedit 2.2.1\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: peepso/overrides/templates/photos/photos.php:12
+#: peepso/overrides/templates/photos/photos.php:37
+msgid "Create Album"
+msgstr ""
+
+#: peepso/overrides/templates/photos/photos.php:21
+msgid "Photos"
+msgstr ""
+
+#: peepso/overrides/templates/photos/photos.php:22
+msgid "Albums"
+msgstr ""
+
+#: peepso/overrides/templates/photos/photos.php:29
+msgid "Recently added photos"
+msgstr ""
+
+#: peepso/overrides/templates/photos/photos.php:31
+msgid "Photo Albums"
+msgstr ""
+
+#: peepso/overrides/templates/photos/photos.php:47
+#: peepso/overrides/templates/videos/videos.php:7
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:69
+msgid "Newest first"
+msgstr "Les plus récentes"
+
+#: peepso/overrides/templates/photos/photos.php:48
+#: peepso/overrides/templates/videos/videos.php:8
+#, fuzzy
+#| msgid "Newest first"
+msgid "Oldest first"
+msgstr "Les plus récentes"
+
+#: peepso/overrides/templates/profile/focus.php:44
+msgid "Cover Image Utilities"
+msgstr "Modifier ma photo de couverture"
+
+#: peepso/overrides/templates/profile/focus.php:52
+#, fuzzy
+#| msgid "Duration"
+msgid "Reposition"
+msgstr "Durée"
+
+#: peepso/overrides/templates/profile/focus.php:56
+msgid "Modify"
+msgstr ""
+
+#: peepso/overrides/templates/profile/focus.php:64
+#: peepso/overrides/templates/profile/profile-about.php:150
+#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Favorite.php:132
+#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:184
+#: plugins/custom-star-rating/includes/CustomStarRatingsShortcodes.php:73
+#: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:79
+#: plugins/wp-ultimate-recipe-premium/core/vendor/vafpress/classes/shortcodegenerator.php:264
+#: themes/foodiepro-2.1.8/buddypress/activity/entry.php:128
+#: themes/foodiepro-2.1.8/buddypress/forums/index.php:205
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:69
+#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:259
+msgid "Cancel"
+msgstr "Annuler"
+
+#: peepso/overrides/templates/profile/focus.php:65
+#: peepso/overrides/templates/profile/profile-about.php:156
+#: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/templates/shopping-list.php:22
+#: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:159
+#: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:289
+#: themes/foodiepro-2.1.8/buddypress/members/single/settings/capabilities.php:29
+#, fuzzy
+#| msgid "Submit a name"
+msgid "Save"
+msgstr "Ajoutez un terme"
+
+#: peepso/overrides/templates/profile/focus.php:84
+#: themes/foodiepro-2.1.8/buddypress/members/single/cover-image-header.php:61
+msgid "Update cover picture"
+msgstr "Changer mon image d'en-tête"
+
+#: peepso/overrides/templates/profile/profile-about-account.php:32
+#, fuzzy
+#| msgid "All occasions"
+msgid "Your Account"
+msgstr "Toutes les occasions"
+
+#: peepso/overrides/templates/profile/profile-about-account.php:38
+#, fuzzy
+#| msgid ""
+#| "Fields marked with an asterisk (<span class=\"error\">*</span>) are "
+#| "mandatory."
+msgid ""
+"Fields marked with an asterisk (<span class=\"required-sign\">*</span>) are "
+"required."
+msgstr ""
+"Les champs marqués d'une astérisque (<span class=\"error\">*</span>) sont "
+"requis."
+
+#: peepso/overrides/templates/profile/profile-about-account.php:43
+#, fuzzy
+#| msgid "Profile empty !"
+msgid "Profile Deletion"
+msgstr "Profil vide !"
+
+#: peepso/overrides/templates/profile/profile-about-account.php:46
+msgid ""
+"Deleting your account will disable your profile and remove your name and "
+"photo from most things you've shared. Some information may still be visible "
+"to others, such as your name in their friends list and messages you sent."
+msgstr ""
+
+#: peepso/overrides/templates/profile/profile-about-account.php:53
+msgid "Export Your Community Data"
+msgstr ""
+
+#: peepso/overrides/templates/profile/profile-about-notifications.php:24
+msgid "Shortcuts"
+msgstr ""
+
+#: peepso/overrides/templates/profile/profile-about-notifications.php:25
+msgid "Quickly manage all your preferences at once"
+msgstr ""
+
+#: peepso/overrides/templates/profile/profile-about-notifications.php:29
+#, fuzzy
+#| msgid "Remove this instruction"
+msgid "Disable all e-mail notifications"
+msgstr "Retirer cette instruction"
+
+#: peepso/overrides/templates/profile/profile-about-notifications.php:32
+#, fuzzy
+#| msgid "Remove this instruction"
+msgid "Enable all e-mail notifications"
+msgstr "Retirer cette instruction"
+
+#: peepso/overrides/templates/profile/profile-about-notifications.php:35
+#, fuzzy
+#| msgid "Notifications"
+msgid "Disable all on-site notifications"
+msgstr "Notifications"
+
+#: peepso/overrides/templates/profile/profile-about-notifications.php:38
+#, fuzzy
+#| msgid "Notifications"
+msgid "Enable all on-site notifications"
+msgstr "Notifications"
+
+#: peepso/overrides/templates/profile/profile-about.php:120
+#, fuzzy
+#| msgid "Edit"
+msgid "Edit "
+msgstr "Modifier"
+
+#: peepso/overrides/templates/profile/profile-about.php:121
+#: plugins/custom-recipe-templates/templates/custom_submission_form.php:138
+#: plugins/custom-recipe-templates/templates/custom_submission_form.php:140
+#: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:111
+#: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_list.php:42
+#: plugins/wp-ultimate-recipe-premium/core/helpers/migration/3_10_2_keywords.php:24
+#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:37
+#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:38
+#: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:115
+#: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:162
+#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/custom-taxonomies.php:171
+#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/templates/page_list.php:42
+#: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/meal-planner.php:317
+#: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/meal-planner.php:318
+#: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:83
+#: plugins/wp-ultimate-recipe-premium/premium/addons/user-menus/user-menus.php:231
+#: plugins/wp-ultimate-recipe-premium/premium/addons/user-menus/user-menus.php:232
+#: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/post_type.php:22
+#: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/post_type.php:23
+msgid "Edit"
+msgstr "Modifier"
+
+#: peepso/overrides/templates/profile/profile-about.php:168
+#: plugins/custom-peepso-helpers/widgets/PeepsoAboutWidget.php:73
+msgid "Sorry, no data to show"
+msgstr ""
+
+#: peepso/overrides/templates/profile/profile.php:27
+#: peepso/overrides/templates/profile/profile.php:28
+#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:58
+#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:59
+#, fuzzy
+#| msgid "No recipes found."
+msgid "No posts found."
+msgstr "Aucune recette trouvée."
+
+#: peepso/overrides/templates/profile/profile.php:29
+#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:60
+msgid "Nothing more to show."
+msgstr ""
+
+#: peepso/overrides/templates/widgets/userbar.tpl.php:57
+msgid "Preferences"
+msgstr ""
+
+#: peepso/overrides/templates/widgets/userbar.tpl.php:63
+#: peepso/overrides/templates/widgets/userbar.tpl.php:111
+#: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:92
+#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:96
+msgid "Log Out"
+msgstr "Déconnexion"
+
+#: peepso/overrides/templates/widgets/userbar.tpl.php:121
+#, fuzzy
+#| msgid "Log In"
+msgid "Log in"
+msgstr "Connexion"
 
 #: plugins/bp-custom.php:205
 msgid "Display Profile"
@@ -31,12 +240,14 @@ msgid "Change Cover"
 msgstr "Image d'en-tête"
 
 #: plugins/bp-custom.php:282
+#: plugins/custom-navigation-helpers/includes/RPWE_Customizations.php:50
 #, php-format
 msgid "by %s"
 msgstr "par %s"
 
 #: plugins/bp-custom.php:318
 #: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:82
+#: plugins/custom-navigation-helpers/includes/RPWE_Customizations.php:96
 #, php-format
 msgctxt "consonant"
 msgid "All posts from %s"
@@ -193,7 +404,7 @@ msgstr ""
 #: plugins/custom-buddypress-helpers/widgets/BP-welcome-widget.php:74
 #: plugins/custom-buddypress-helpers/widgets/BP-whats-new-widget.php:170
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:109
-#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:106
+#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:110
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:79
 #: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:103
 #: plugins/custom-recipe-templates/widgets/custom_postlist_dropdown_widget.php:70
@@ -214,9 +425,9 @@ msgstr ""
 #: plugins/custom-buddypress-helpers/widgets/BP-welcome-widget.php:78
 #: plugins/custom-buddypress-helpers/widgets/BP-whats-new-widget.php:174
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:113
-#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:115
+#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:119
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:83
-#: plugins/custom-peepso-helpers/widgets/PeepsoAboutWidget.php:114
+#: plugins/custom-peepso-helpers/widgets/PeepsoAboutWidget.php:116
 #: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:86
 #: plugins/custom-peepso-helpers/widgets/PeepsoCoverImageHeader.php:84
 #: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:191
@@ -263,11 +474,6 @@ msgid ""
 "Show a Log In form to logged-out visitors, and a Log Out link to those who "
 "are logged in, with full resolution avatar."
 msgstr ""
-
-#: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:92
-#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:96
-msgid "Log Out"
-msgstr "Déconnexion"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:116
 #: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:123
@@ -767,33 +973,33 @@ msgstr ""
 msgid "Send Message"
 msgstr "Envoyer"
 
-#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:152
+#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:150
 msgid "You cooked this recipe ? Upload your own picture here"
 msgstr "Vous avez réalisé cette recette ? Publiez votre propre photo !"
 
-#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:152
+#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:150
 msgid "Add a picture"
 msgstr "Ajoutez votre photo"
 
-#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:161
+#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:159
 msgid "Upload your picture"
 msgstr "Publiez votre photo"
 
-#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:199
+#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:197
 msgid "Picture title"
 msgstr "Titre de l'image"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:134
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntries.php:122
 msgid "Seasonal"
 msgstr "De Saison"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:135
-msgid "Festive"
-msgstr "Fêtes"
-
-#: plugins/custom-navigation-helpers/includes/CustomArchiveEntryTitle.php:152
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntries.php:129
 msgid "Vegetarian"
 msgstr "Recette végétarienne"
+
+#: plugins/custom-navigation-helpers/includes/CustomArchiveEntries.php:133
+msgid "Festive"
+msgstr "Fêtes"
 
 #: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:36
 msgid "Detailed Search Results"
@@ -844,7 +1050,7 @@ msgctxt "consonant"
 msgid "All recipes from %s"
 msgstr "Toutes les recettes de %s"
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationHelpers.php:86
+#: plugins/custom-navigation-helpers/includes/CustomNavigationHelpers.php:84
 msgid "none"
 msgstr "aucun(e)"
 
@@ -860,7 +1066,7 @@ msgstr "Partager cet article"
 msgid "Choose..."
 msgstr "Choisir..."
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:404
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:403
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:59
 msgid "authors"
 msgstr "auteurs"
@@ -889,10 +1095,6 @@ msgstr "Titre : de A à Z"
 msgid "Title : descending"
 msgstr "Titre : de Z à A"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:69
-msgid "Newest first"
-msgstr "Les plus récentes"
-
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:74
 msgid "Comment count"
 msgstr "Commentaires"
@@ -916,43 +1118,43 @@ msgid ""
 "taxonomy terms"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:78
+#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:82
 #: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:68
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_options.php:2073
 msgid "Courses"
 msgstr "De l'apéritif au dessert"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:79
+#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:83
 msgid "Seasons"
 msgstr "Cuisine de saisons"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:80
+#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:84
 msgid "Occasions"
 msgstr "En toutes occasions"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:81
+#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:85
 msgid "World"
 msgstr "Cuisines du monde"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:82
+#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:86
 msgid "France"
 msgstr "Cuisines de régions"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:83
+#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:87
 msgid "Diets"
 msgstr "Régimes et diététique"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:84
+#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:88
 msgid "Ideas"
 msgstr "Inspirations Culinaires"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:120
+#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:124
 #, fuzzy
 #| msgid "Recipe notes"
 msgid "Show Recipe Count"
 msgstr "Notes"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:125
+#: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:129
 msgid "Limit Recipes to Current Displayed User"
 msgstr ""
 
@@ -972,19 +1174,25 @@ msgstr "régions"
 msgid "countries"
 msgstr "pays"
 
-#: plugins/custom-peepso-helpers/custom-peepso-helpers-loader.php:51
+#: plugins/custom-peepso-helpers/custom-peepso-helpers-loader.php:52
 msgid "<strong>Peepso Helpers</strong> requires the Peepso plugin to work."
 msgstr ""
 
-#: plugins/custom-peepso-helpers/includes/CustomPeepso.php:51
+#: plugins/custom-peepso-helpers/includes/PeepsoCustomizations.php:54
 #, php-format
 msgid "What's new today, %s ?"
 msgstr "Quoi de neuf aujourd'hui, %s ?"
 
-#: plugins/custom-peepso-helpers/includes/CustomPeepso.php:57
+#: plugins/custom-peepso-helpers/includes/PeepsoCustomizations.php:60
 #, php-format
 msgid "Post a message on %s's news feed..."
 msgstr "Publie un message sur le fil d'actualités de %s..."
+
+#: plugins/custom-peepso-helpers/includes/PeepsoHelpers.php:75
+#, fuzzy, php-format
+#| msgid "Update profile picture"
+msgid "Picture of %s"
+msgstr "Changer ma photo"
 
 #: plugins/custom-peepso-helpers/widgets/PeepsoAboutWidget.php:19
 #, fuzzy
@@ -996,11 +1204,7 @@ msgstr "Profil rempli !"
 msgid "Displays chosen details about a given user"
 msgstr ""
 
-#: plugins/custom-peepso-helpers/widgets/PeepsoAboutWidget.php:74
-msgid "Sorry, no data to show"
-msgstr ""
-
-#: plugins/custom-peepso-helpers/widgets/PeepsoAboutWidget.php:120
+#: plugins/custom-peepso-helpers/widgets/PeepsoAboutWidget.php:122
 msgid "Fields visibility :"
 msgstr ""
 
@@ -1010,17 +1214,6 @@ msgstr ""
 
 #: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:20
 msgid "Displays the filtered activity stream of a given user"
-msgstr ""
-
-#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:58
-#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:59
-#, fuzzy
-#| msgid "No recipes found."
-msgid "No posts found."
-msgstr "Aucune recette trouvée."
-
-#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:60
-msgid "Nothing more to show."
 msgstr ""
 
 #: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:91
@@ -1071,26 +1264,26 @@ msgstr "Lire plus"
 msgid "Published on %s by %s<span id=\"username\">%s</span>"
 msgstr "Publié le %s par %s<span id=\"username\">%s</span>"
 
-#: plugins/custom-post-templates/templates/post_toolbar.php:17
+#: plugins/custom-post-templates/templates/post_toolbar.php:23
 #: plugins/custom-recipe-templates/templates/custom-recipe-template.php:78
 #: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/templates/shopping-list.php:25
 msgid "Print"
 msgstr "Imprimer"
 
-#: plugins/custom-post-templates/templates/post_toolbar.php:20
+#: plugins/custom-post-templates/templates/post_toolbar.php:27
 msgid "Print this post"
 msgstr "Imprimer cet article"
 
-#: plugins/custom-post-templates/templates/post_toolbar.php:27
+#: plugins/custom-post-templates/templates/post_toolbar.php:38
 #: plugins/custom-recipe-templates/templates/custom-recipe-template.php:93
 msgid "Share"
 msgstr "Partager"
 
-#: plugins/custom-recipe-templates/custom-recipe-templates-loader.php:55
+#: plugins/custom-recipe-templates/custom-recipe-templates-loader.php:58
 msgid ""
-"<strong>WPUR Custom Templates Plugin</strong></a> requires the WP Ultimate "
-"Recipe plugin to work. Please <a href=\"plugins.php\">activate/install WPUR "
-"or deactivate this plugin </a>."
+"<strong>WPUR Custom Templates Plugin</strong></a> requires the following "
+"plugins to work. Please <a href=\"plugins.php\">activate/install those "
+"plugins.</a>."
 msgstr ""
 
 #: plugins/custom-recipe-templates/helpers/Custom_Recipe_Add_To_Shopping_List.php:33
@@ -1142,18 +1335,6 @@ msgstr "<strong>Recettes à essayer</strong>"
 #: plugins/custom-recipe-templates/helpers/Custom_Recipe_Favorite.php:131
 msgid "Add"
 msgstr "Ajouter"
-
-#: plugins/custom-recipe-templates/helpers/Custom_Recipe_Favorite.php:132
-#: plugins/custom-recipe-templates/includes/Custom_Recipe_Favorite.php:184
-#: plugins/custom-star-rating/includes/CustomStarRatingsShortcodes.php:73
-#: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:79
-#: plugins/wp-ultimate-recipe-premium/core/vendor/vafpress/classes/shortcodegenerator.php:264
-#: themes/foodiepro-2.1.8/buddypress/activity/entry.php:128
-#: themes/foodiepro-2.1.8/buddypress/forums/index.php:205
-#: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:69
-#: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:259
-msgid "Cancel"
-msgstr "Annuler"
 
 #: plugins/custom-recipe-templates/helpers/Custom_WPURP_Recipe.php:13
 #: plugins/custom-recipe-templates/templates/custom-recipe-print-template.php:35
@@ -1647,27 +1828,6 @@ msgstr ""
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:233
 msgid "Preview"
 msgstr "Aperçu"
-
-#: plugins/custom-recipe-templates/templates/custom_submission_form.php:138
-#: plugins/custom-recipe-templates/templates/custom_submission_form.php:140
-#: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:111
-#: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_list.php:42
-#: plugins/wp-ultimate-recipe-premium/core/helpers/migration/3_10_2_keywords.php:24
-#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:37
-#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:38
-#: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:115
-#: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:162
-#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/custom-taxonomies.php:171
-#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/templates/page_list.php:42
-#: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/meal-planner.php:317
-#: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/meal-planner.php:318
-#: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:83
-#: plugins/wp-ultimate-recipe-premium/premium/addons/user-menus/user-menus.php:231
-#: plugins/wp-ultimate-recipe-premium/premium/addons/user-menus/user-menus.php:232
-#: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/post_type.php:22
-#: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/post_type.php:23
-msgid "Edit"
-msgstr "Modifier"
 
 #: plugins/custom-recipe-templates/templates/custom_submission_form.php:145
 #: plugins/custom-recipe-templates/templates/custom_submission_form.php:147
@@ -2226,7 +2386,7 @@ msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr "Un problème ? Une question ? Contacte nous <a href=\"%s\">ici</a>"
 
 #: plugins/custom-site-notifications/includes/CustomSiteMails.php:88
-#: themes/foodiepro-2.1.8/functions.php:754
+#: themes/foodiepro-2.1.8/functions.php:753
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
@@ -2464,68 +2624,68 @@ msgstr ""
 msgid "(Edit)"
 msgstr "Modifier"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:53
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:49
 msgid "Dish"
 msgstr "Plat"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:54
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:50
 #, fuzzy
 #| msgid "eg. Preparation of the dough"
 msgid "Appreciation of the dish"
 msgstr "ex : Préparation de la pâte"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:55
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:51
 msgid "How did you like this dish ?"
 msgstr "Avez vous aimé ce plat ? "
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:57
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:83
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:53
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:79
 msgid "Disappointing"
 msgstr "Décevant"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:58
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:54
 msgid "Rather good"
 msgstr "Assez bon"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:59
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:85
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:55
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:81
 msgid "Good"
 msgstr "Bon"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:60
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:86
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:56
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:82
 msgid "Very good"
 msgstr "Très bon"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:61
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:57
 msgid "Delicious"
 msgstr "Délicieux"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:81
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:77
 msgid "Overall"
 msgstr "Global"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:84
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:80
 msgid "Average"
 msgstr "Moyen"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:87
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:83
 msgid "Fabulous"
 msgstr "Fabuleux"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:120
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:116
 msgid "Evaluations"
 msgstr "Evaluations"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:121
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:117
 msgid "Evaluation"
 msgstr "Evaluation"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:127
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:123
 msgid "rating"
 msgstr "evaluation"
 
-#: plugins/custom-star-rating/includes/CustomStarRatings.php:145
+#: plugins/custom-star-rating/includes/CustomStarRatings.php:141
 #, fuzzy
 #| msgid "No related posts."
 msgid "Not rated"
@@ -6987,15 +7147,6 @@ msgstr "Courses"
 msgid "Add Group"
 msgstr "Groupe"
 
-#: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/templates/shopping-list.php:22
-#: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:159
-#: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:289
-#: themes/foodiepro-2.1.8/buddypress/members/single/settings/capabilities.php:29
-#, fuzzy
-#| msgid "Submit a name"
-msgid "Save"
-msgstr "Ajoutez un terme"
-
 #: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/templates/view_meal_plan.php:14
 #, fuzzy
 #| msgid "Reply to Message"
@@ -9320,15 +9471,11 @@ msgid ""
 "and password you have just created."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/single/cover-image-header.php:61
-msgid "Update cover picture"
-msgstr "Changer mon image d'en-tête"
-
 #: themes/foodiepro-2.1.8/buddypress/members/single/cover-image-header.php:62
 msgid "Update profile picture"
 msgstr "Changer ma photo"
 
-#: themes/foodiepro-2.1.8/buddypress/members/single/cover-image-header.php:100
+#: themes/foodiepro-2.1.8/buddypress/members/single/cover-image-header.php:90
 msgid "The Blog Of "
 msgstr "Le blog de "
 
@@ -9631,51 +9778,51 @@ msgstr ""
 msgid "Save Settings"
 msgstr "Imprimer cette recette"
 
-#: themes/foodiepro-2.1.8/functions.php:336
+#: themes/foodiepro-2.1.8/functions.php:373
 #, fuzzy
 #| msgid "Username"
 msgid "Enter Username"
 msgstr "Pseudo"
 
-#: themes/foodiepro-2.1.8/functions.php:337
+#: themes/foodiepro-2.1.8/functions.php:374
 msgid "Enter Password"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:338
+#: themes/foodiepro-2.1.8/functions.php:375
 #, fuzzy
 #| msgid "Remember Me"
 msgid "Remember Login State"
 msgstr "Se souvenir de moi"
 
-#: themes/foodiepro-2.1.8/functions.php:339
+#: themes/foodiepro-2.1.8/functions.php:376
 #, fuzzy
 #| msgid "Log In"
 msgid "Please Log In"
 msgstr "Connexion"
 
-#: themes/foodiepro-2.1.8/functions.php:346
+#: themes/foodiepro-2.1.8/functions.php:383
 msgid "Goûtu.org - La Communauté des Gourmets"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:381
+#: themes/foodiepro-2.1.8/functions.php:418
 #, fuzzy, php-format
 #| msgid "<strong>ERROR</strong>: User pending approval."
 msgid "<strong>ERROR</strong>: User pending <a href=\"%s\">approval</a>."
 msgstr "<strong>ERREUR</strong> : Utilisateur en attente d'approbation."
 
-#: themes/foodiepro-2.1.8/functions.php:395
+#: themes/foodiepro-2.1.8/functions.php:432
 msgid "author"
 msgstr "auteur"
 
-#: themes/foodiepro-2.1.8/functions.php:643
+#: themes/foodiepro-2.1.8/functions.php:713
 msgid "Recipe, Ingredient, Keyword, Author..."
 msgstr "Recette, ingrédient, mot-clé, auteur..."
 
-#: themes/foodiepro-2.1.8/functions.php:754
+#: themes/foodiepro-2.1.8/functions.php:753
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:754
+#: themes/foodiepro-2.1.8/functions.php:753
 msgid "Legal notice"
 msgstr "Mentions légales"
 
@@ -10301,8 +10448,10 @@ msgid "This is the widget section of buddypress pages."
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:127
-msgid "Social Bottom"
-msgstr ""
+#, fuzzy
+#| msgid "Other Countries"
+msgid "Social After Content"
+msgstr "Autres pays"
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:128
 msgid "This goes just before the footer, and occupies the whole page width."
@@ -10340,6 +10489,14 @@ msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:154
 msgid "This is the middle widget section of Post List pages."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:161
+msgid "Mobile Nav Container"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:162
+msgid "This is the container on top of the slider mobile menu."
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:54

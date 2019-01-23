@@ -384,7 +384,6 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		), $atts );
 
 		$html = '';
-		$include = $atts['include'];
 		$exclude = $atts['exclude'];
 		$dropdown = $atts['dropdown'];
 		$index_title = $atts['index_title'];
@@ -479,27 +478,22 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 	------------------------------------------------------*/
 
 	public function get_permalink($atts, $content='') {
-		$a = shortcode_atts(array(
+		$atts = shortcode_atts(array(
 			'id' => '',
 			'class' => '',
 			'slug' => false,
 			'tax' => false,
-			'text' => '',  // html link is output if not empty
-			'data' => '', // "attr1 val1 attr2 val2  ..." separate with spaces 
-			'ga' => '', // ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue] ); separate by spaces
+			'text' => false,  // html link is output if not empty
+			'data' => false, // "attr1 val1 attr2 val2  ..." separate with spaces 
+			'ga' => false, // ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue] ); separate by spaces
 
 	    ), $atts);
-	
 
-		$class=$a['class'];
-		$id=$a['id'];
-		$tax=$a['tax'];
-		$slug=$a['slug'];
-		$text=esc_html($a['text']);
+		extract( $atts );
+		$text=$text?esc_html($text):'';
 		$content=esc_html($content);
-		$data=explode(' ', $a['data']);
-		$ga=explode(' ', $a['ga']);
-
+		$data=$data?explode(' ', $data):false;
+		$ga=$ga?explode(' ', $ga):false;
 	
 		if ($id) 
 			$url=get_permalink($id);
@@ -521,7 +515,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 	}
 
 	public function get_ga( $ga ) {
-		if (!$ga) return;
+		if ( !$ga || !is_array($ga) ) return;
 		$html = "ga('send', 'event' ";
 		foreach ( $ga as $field ) {
 			$html .= ",'$field' ";
@@ -529,8 +523,9 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		$html .= ");";
 		return $html;
 	}
-
+	
 	public function get_data( $data ) {
+		if ( !$data || ( count($data) % 2 != 0) ) return;
 		$html = ''; 
 		$i = 0;
 		while ( isset($data[$i]) ) {

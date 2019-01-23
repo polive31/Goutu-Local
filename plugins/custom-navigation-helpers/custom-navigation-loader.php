@@ -28,13 +28,13 @@ if ( !defined('ABSPATH') )
 
 require_once 'includes/CustomNavigationHelpers.php';
 require_once 'includes/CustomArchiveHeadline.php';
-require_once 'includes/CustomArchiveEntryTitle.php';
+require_once 'includes/CustomArchiveEntries.php';
 require_once 'includes/CustomNavigationShortcodes.php';
 require_once 'includes/RPWE_Customizations.php';
 
 // new CustomArchiveMeta();
 new CustomArchiveHeadline();
-new CustomArchiveEntryTitle();
+new CustomArchiveEntries();
 new CustomNavigationShortcodes();
 new RPWE_Customizations();
 

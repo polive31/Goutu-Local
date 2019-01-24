@@ -114,9 +114,9 @@
 					}
 				?>
 			</div>
-			<!-- <div class="ps-focus-actions">
-				<?php //$PeepSoProfile->profile_actions(); ?>
-			</div> -->
+			<div class="ps-focus-actions">
+				<?php $PeepSoProfile->profile_actions(); ?>
+			</div>
 		</div>
 	</div><!-- .js-focus-cover -->
 

@@ -483,6 +483,9 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 			'class' => '',
 			'slug' => false,
 			'tax' => false,
+			'user' => false, // current, view, any user ID
+			'user_page' => false, // current, view, any user ID
+			'user_tab' => false, // current, view, any user ID
 			'text' => false,  // html link is output if not empty
 			'data' => false, // "attr1 val1 attr2 val2  ..." separate with spaces 
 			'ga' => false, // ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue] ); separate by spaces
@@ -495,6 +498,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		$data=$data?explode(' ', $data):false;
 		$ga=$ga?explode(' ', $ga):false;
 	
+		$url='#';
 		if ($id) 
 			$url=get_permalink($id);
 		elseif ($tax)
@@ -502,6 +506,12 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		elseif ($slug) {
 			// $url=get_permalink(get_page_by_path($slug));			
 			$url=$this->get_page_by_slug($slug);			
+		}
+		elseif ($user){
+			if ( class_exists('PeepsoHelpers') ) {
+				$user = PeepsoHelpers::get_user( $user );
+				$url = PeepsoHelpers::get_url( $user, $user_page, $user_tab );
+			}
 		}
 		else {
 			// Current URL is supplied by default

@@ -169,6 +169,7 @@ a:active,
 a:hover {
 	outline:0;
 	/*text-decoration:underline;*/
+	color: #d7641d;
 }
 
 a.nolink {
@@ -868,7 +869,7 @@ textarea:focus {
 }
 
 a {
-	color:#010101;
+	color:#676767;
 	text-decoration:underline;
 }
 
@@ -3155,12 +3156,8 @@ nav.nav-primary .wrap {
 .entry-meta a,
 .post-info a,
 .post-meta a {
-	color:#999;
+	color:#757575;
 	text-decoration:none;
-}
-
-.entry-meta a:hover {
-	color:#010101;
 }
 
 #username {

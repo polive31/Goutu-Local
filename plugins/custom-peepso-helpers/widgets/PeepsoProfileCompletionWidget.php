@@ -143,8 +143,11 @@ class PeepsoProfileCompletionWidget extends WP_Widget {
 		$title = apply_filters( 'widget_title', $instance['title'] );
 
 		// add a textarea for long messages
-		$profile_url = do_shortcode('[menu-entry item="edit_profile" html="false"]');
-		$textarea = sprintf(__('<a href="%s">Fill-in your profile</a> to make yourself visible from other users.','foodiepro'),$profile_url);
+		$user = PeepsoHelpers::get_user('current');
+		$profile_url=PeepsoHelpers::get_url( $user, 'profile', 'about');
+
+		$textarea = sprintf(__('<a href="%s">Fill-in your profile</a> to make yourself visible from other users.','foodiepro'), $profile_url);
+
 
 		echo $args['before_widget'];
 

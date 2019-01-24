@@ -72,36 +72,6 @@ class CustomPeepsoShortcodes {
 		return $field;    	
 	}
 
-	public function get_page_url( $atts, $content ) {
-		if ( !is_user_logged_in() ) return;
-		 
-		$a = shortcode_atts( array(
-			'user' => 'current', // 'view', id of user
-			'type' => 'profile',// activity, members, account
-			'link' => 'no', //
-			'class' => '', //
-			'id' => '', //
-			'text' => '' //
-		), $atts );
-	
-		switch ( $a['user'] ) {
-			case 'current':
-				$out = PeepSo::get_page( $a['type'] );
-				break;
-			case 'view':
-				break;						
-			default:
-				break;
-		}
-
-		if ( $a['link']=='yes' ) {
-			$text = strip_tags( $a['text'] . $content);
-			$out = '<a class="" id="" href="' . $out . '">' . $text . '</a>';
-		}
-
-		return $out;
-	}
-
 }
 
 new CustomPeepsoShortcodes();

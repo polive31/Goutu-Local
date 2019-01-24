@@ -60,6 +60,21 @@ class PeepsoHelpers {
 		return $user;
 	}	
 
+	static function get_url( $user, $page, $tab ) {
+
+		switch ( $page ) {
+			case 'profile':
+				$url = $user->get_profileurl();
+				break;			
+			default :
+				$url = $user->get_profileurl();
+				break;
+		}
+		$url .= $tab;
+
+		return $url;
+	}	
+
 	static function get_avatar( $args ) {
 		$user='current';
 		$aclass='';

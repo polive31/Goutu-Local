@@ -15,11 +15,14 @@ if ( !defined('ABSPATH') )
 	die('-1');
 
 
-/* Includes
-------------------------------------*/
+/* Includes   */
 require_once 'includes/Custom_Post_Templates.php';
+// require_once 'includes/Custom_Post_Submission.php';
+// require_once 'includes/Custom_Post_List.php';
 
-new CustomPostTemplates();
+/* Shortcodes   */
+// require_once 'helpers/Custom_Post_Submission_Shortcodes.php';
+
 
 
 

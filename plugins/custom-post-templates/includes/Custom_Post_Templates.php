@@ -136,3 +136,5 @@ class CustomPostTemplates {
 
 
 }
+
+new CustomPostTemplates();

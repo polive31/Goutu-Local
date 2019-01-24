@@ -146,7 +146,7 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 	}
 
 	public function custom_archive_description( $description ) {
-		if ( !is_archive() ) return;
+		if ( !is_archive() && !is_tag() ) return;
 		// Check archive intro text field
 		$intro = get_term_meta( $this->query->term_id, 'intro_text', true );		  
 		// Check parent intro text field

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: peepso-internal\n"
 "POT-Creation-Date: 2019-01-20 19:11+0100\n"
-"PO-Revision-Date: 2019-01-23 15:41+0100\n"
+"PO-Revision-Date: 2019-01-24 10:25+0100\n"
 "Last-Translator: alconost <alpha@alconost.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -4706,7 +4706,7 @@ msgstr "liste de contrôle"
 
 #: classes/fields/fieldselectmulti.php:27
 msgid "Select as many as you like."
-msgstr ""
+msgstr "Choisissez parmi les options proposées."
 
 #: classes/fields/fieldselectsingle.php:19
 msgid "dropdown"
@@ -5619,21 +5619,17 @@ msgid "On-Site"
 msgstr "Sur le site"
 
 #: classes/profile.php:1379
-#, fuzzy
-#| msgid "Reset Password"
 msgid "Current Password"
-msgstr "Réinitialiser le mot de passe"
+msgstr "Mot de passe actuel"
 
 #: classes/profile.php:1380
 msgid "Enter your current password to change your account information"
-msgstr ""
+msgstr "Entrez votre mot de passe actuel afin de pouvoir modifier votre compte"
 
 #: classes/profile.php:1386 classes/profile.php:1395 classes/profile.php:1416
 #: classes/profile.php:1427 templates/profile/profile-about-account.php:35
-#, fuzzy
-#| msgid "Your community"
 msgid "Your Account"
-msgstr "Votre communauté"
+msgstr "Votre compte"
 
 #: classes/profile.php:1387 classes/profile.php:1396 classes/profile.php:1547
 #: classes/profile.php:1627 classes/profile.php:1707
@@ -5672,20 +5668,10 @@ msgid "Request your data."
 msgstr "Demandez vos données."
 
 #: classes/profile.php:1656
-#, fuzzy
-#| msgid "Export my Community information"
 msgid "Export my Community data"
-msgstr "Exporter mes informations de Communauté"
+msgstr "Exporter mes informations"
 
 #: classes/profile.php:1682
-#, fuzzy
-#| msgid ""
-#| "You can download a complete copy of all the information you have shared "
-#| "in this Community. This includes posts, messages, photos, videos, "
-#| "comments, etc.  The information will be compiled automatically and "
-#| "delivered to you in a machine-readable JSON format. Please bear in mind "
-#| "that depending on the amount of data that needs to be compiled, preparing "
-#| "your download might take a while."
 msgid ""
 "You can download a complete copy of all the data you have shared in this "
 "Community. This includes posts, messages, photos, videos, comments, etc.  "
@@ -5694,12 +5680,11 @@ msgid ""
 "data that needs to be compiled, preparing your download might take a while."
 msgstr ""
 "Vous pouvez télécharger une copie complète de toutes les informations que "
-"vous avez partagées dans cette Communauté. Cela comprend les publications, "
-"les messages, les photos, les vidéos, les commentaires, etc. Les "
-"informations seront automatiquement compilées et envoyées dans un format "
-"JSON lisible par machine. Veuillez garder à l'esprit que votre "
-"téléchargement peut prendre du temps en fonction de la quantité de données à "
-"compiler."
+"vous avez partagées sur Goûtu.org. Cela comprend les publications, les "
+"messages, les photos, les vidéos, les commentaires, etc. Les informations "
+"seront automatiquement compilées et envoyées dans un format JSON lisible par "
+"machine. Veuillez garder à l'esprit que votre téléchargement peut prendre du "
+"temps en fonction de la quantité de données à compiler."
 
 #: classes/profile.php:1686
 msgid "Your export is being prepared. We'll email you when it's ready."
@@ -8152,10 +8137,8 @@ msgstr ""
 "vous avez envoyés."
 
 #: templates/profile/profile-about-account.php:56
-#, fuzzy
-#| msgid "Export my Community information"
 msgid "Export Your Community Data"
-msgstr "Exporter mes informations de Communauté"
+msgstr "Exporter mes informations"
 
 #: templates/profile/profile-about-notifications.php:27
 msgid "Shortcuts"

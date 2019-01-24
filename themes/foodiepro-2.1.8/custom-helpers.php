@@ -52,6 +52,15 @@ function custom_img( $dir, $url, $name ) {
 /* =================================================================*/
 
 function custom_register_script( $handler, $file, $uri=CHILD_THEME_URL, $path=CHILD_THEME_PATH, $deps=array(), $version=CHILD_THEME_VERSION, $footer=false ) {	
+	if (is_array($file) ) {
+		$uri = CHILD_THEME_URL;
+		$path = CHILD_THEME_PATH;
+		$deps = array();
+		$version = CHILD_THEME_VERSION;
+		$footer = false;
+		extract($file);
+	}
+	
 	if ( !strpos($file, '.min.js') ) {
 		$minfile = str_replace( '.js', '.min.js', $file );
 		if (file_exists( $path . $minfile) && WP_MINIFY ) {	
@@ -62,6 +71,15 @@ function custom_register_script( $handler, $file, $uri=CHILD_THEME_URL, $path=CH
 }
 
 function custom_enqueue_script( $handler, $file, $uri=CHILD_THEME_URL, $path=CHILD_THEME_PATH, $deps=array(), $version=CHILD_THEME_VERSION, $footer=false ) {	
+	if (is_array($file) ) {
+		$uri = CHILD_THEME_URL;
+		$path = CHILD_THEME_PATH;
+		$deps = array();
+		$version = CHILD_THEME_VERSION;
+		$footer = false;
+		extract($file);
+	}
+
 	if ( !strpos($file, '.min.js') ) {
 		$minfile = str_replace( '.js', '.min.js', $file );
 		if (file_exists( $path . $minfile) && WP_MINIFY ) {	
@@ -82,7 +100,16 @@ function remove_script($script) {
 /* =              CUSTOM STYLES HELPERS     
 /* =================================================================*/
 
-function custom_register_style( $handler, $file, $uri=CHILD_THEME_URI, $path=CHILD_THEME_PATH, $deps=array(), $version=CHILD_THEME_VERSION, $media='all' ) {	
+function custom_register_style( $handler, $file, $uri=CHILD_THEME_URL, $path=CHILD_THEME_PATH, $deps=array(), $version=CHILD_THEME_VERSION, $media='all' ) {	
+	if (is_array($file) ) {
+		$uri = CHILD_THEME_URL;
+		$path = CHILD_THEME_PATH;
+		$deps = array();
+		$version = CHILD_THEME_VERSION;
+		$media = 'all';
+		extract($file);
+	}
+
 	if ( !strpos($file, '.min.css') ) {
 		$minfile = str_replace( '.css', '.min.css', $file );
 		if (file_exists( $path . $minfile) && WP_MINIFY ) {	
@@ -92,7 +119,16 @@ function custom_register_style( $handler, $file, $uri=CHILD_THEME_URI, $path=CHI
     wp_register_style( $handler, $uri . $file, $deps, $version, $media );
 }
 
-function custom_enqueue_style( $handler, $file, $uri=CHILD_THEME_URI, $path=CHILD_THEME_PATH, $deps=array(), $version=CHILD_THEME_VERSION, $media='all' ) {	
+function custom_enqueue_style( $handler, $file, $uri=CHILD_THEME_URL, $path=CHILD_THEME_PATH, $deps=array(), $version=CHILD_THEME_VERSION, $media='all' ) {	
+	if (is_array($file) ) {
+		$uri = CHILD_THEME_URL;
+		$path = CHILD_THEME_PATH;
+		$deps = array();
+		$version = CHILD_THEME_VERSION;
+		$media = 'all';
+		extract($file);
+	}
+	
 	if ( !strpos($file, '.min.css') ) {
 		$minfile = str_replace( '.css', '.min.css', $file );
 		if (file_exists( $path . $minfile) && WP_MINIFY ) {	

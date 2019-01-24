@@ -25,16 +25,30 @@ class CustomScriptsStylesEnqueue {
 
 	// Stylesheets to be preloaded
 	const PRELOAD_CSS = array(
-			'google-fonts',
-			'child-theme-fonts',
-		);	
-
-	// Stylesheets to be replaced
-	private $css_replace;
+		'google-fonts',
+		'child-theme-fonts',
+	);	
+	
+	/* Stylesheets to be replaced. 
+	IMPORTANT there must also be an entry for them in $css_if, otherwise they will not be considered
+	*/
+	private $css_replace = array(
+				'name-directory-style' 	=> array(
+					'file' 		=> '/assets/css/name_directory.css',  
+				),
+				/* Force stylesheet update by using CHILD_THEME_VERSION */
+				'peepso-custom' 	=> array(
+					'file' 		=> '/peepso/custom.css', 
+				),			
+				'peepso-jquery-ui' 		=> array(
+					'file'		=> '/assets/css/datepicker.css', 
+			),
+		);
 
 	// Stylesheets to be loaded conditionnally
 	private $css_if = array(
 			// 'custom-star-ratings' 				=> array('page' => 'blog-page'),
+			'peepso-custom'						=> array('true' => ''),
 			'yarppRelatedCss' 					=> array('singular' => 'post recipe' ),
 			'image-lightbox-plugin'				=> array('singular' => 'post recipe' ),
 			'custom-lightbox'					=> array('singular' => 'post recipe' ),
@@ -47,7 +61,7 @@ class CustomScriptsStylesEnqueue {
 			'wpba_front_end_styles' 			=> array('false' => ''),
 			'frontend-uploader' 				=> array('false' => ''),
 			'peepso-jquery-ui'					=> array('page' => 'social'),
-			'peepso-datepicker'					=> array('false' => '')
+			'peepso-datepicker'					=> array('false' => ''),
 		);
 
 
@@ -80,24 +94,6 @@ class CustomScriptsStylesEnqueue {
 
 		// //add_action('init', 'load_jquery_from_google');   */
 		add_filter( 'stylesheet_uri', 		array($this, 'enqueue_minified_theme_stylesheet'), 10, 1 );
-
-
-		$this->css_replace = array(
-			'name-directory-style' 	=> array(
-				'file' 	=> 'name_directory.css', 
-				'uri' 	=> get_stylesheet_directory_uri(), 
-				'path' 	=> get_stylesheet_directory(), 
-				'deps' 	=> array(), 
-				'footer'=> false
-			),
-			'peepso-jquery-ui' 		=> array(
-				'file'	=> 'datepicker.css', 
-				'uri'	=> get_stylesheet_directory_uri(), 
-				'path'	=> get_stylesheet_directory(), 
-				'deps'	=> array(), 
-				'footer'=> false
-		),
-	);
 	}
 
 
@@ -113,13 +109,7 @@ class CustomScriptsStylesEnqueue {
 			else {
 				if ( in_array($style, array_keys( $this->css_replace) ) ) {
 					remove_style($style);
-					custom_enqueue_style( $style, 
-										$this->css_replace[$style]['file'], 
-										$this->css_replace[$style]['path'],  
-										$this->css_replace[$style]['uri'], 
-										$this->css_replace[$style]['deps'],
-										$this->css_replace[$style]['footer']
-					);
+					custom_enqueue_style( $style, $this->css_replace[$style] );
 				} 
 				unset( $temp[$style] ); // When loop is run next time in the footer, only styles for which condition is true are present
 			}
@@ -142,7 +132,12 @@ class CustomScriptsStylesEnqueue {
 		foreach ($conditions as $type => $value) {
 			$thismet = true;
 			switch ($type) {
+				case 'true' :
+				case 'always' :
+					$thismet = true;
+					break;				
 				case 'false' :
+				case 'never' :
 					$thismet = false;
 					break;
 				case 'page' :

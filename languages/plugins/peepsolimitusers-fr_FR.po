@@ -1,0 +1,265 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: peepso-internal\n"
+"POT-Creation-Date: 2019-01-14 15:27+0700\n"
+"PO-Revision-Date: 2019-01-24 19:12+0100\n"
+"Last-Translator: alconost <alpha@alconost.com>\n"
+"Language-Team: French\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.2.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: limitusers.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Crowdin-Project: peepso-internal\n"
+"X-Crowdin-Language: fr\n"
+"X-Crowdin-File: peepsolimitusers.pot\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: classes/configsectionlimitusers.php:39
+msgid "Hide Users From Listings"
+msgstr "Cacher les listes de membres"
+
+#: classes/configsectionlimitusers.php:40
+msgid ""
+"Selected users will not show in any PeepSo user listing.<br/>Administrators "
+"will always see everyone."
+msgstr ""
+"Les utilisateurs sélectionnés ne verront aucune liste de membres de PeepSo. "
+"<br/> Les administrateurs peuvent voir tout le monde."
+
+#: classes/configsectionlimitusers.php:47
+msgid "Disable new posts"
+msgstr "Désactiver - la création des nouvelles publications"
+
+#: classes/configsectionlimitusers.php:48
+msgid ""
+"Selected users will not be able to create any new posts.<br/>That includes "
+"posting in groups."
+msgstr ""
+"Les utilisateurs sélectionnés ne seront pas en mesure de créer de nouvelles "
+"publications.<br/> Ceci est également valable au sein des groupes."
+
+#: classes/configsectionlimitusers.php:55
+msgid "Disable comments"
+msgstr "Désactiver les commentaires"
+
+#: classes/configsectionlimitusers.php:56
+msgid ""
+"Selected users will not be able to add any comments.<br/>That includes "
+"commenting in groups."
+msgstr ""
+"Les utilisateurs sélectionnés ne seront pas en mesure d'ajouter des "
+"commentaires.<br/> Ceci est également valable au sein des groupes."
+
+#: classes/configsectionlimitusers.php:67
+msgid "Friends - disable sending friend requests"
+msgstr "Amis - désactiver l’envoi des demandes d'ami"
+
+#: classes/configsectionlimitusers.php:68
+msgid ""
+"Selected users will not be able to send friend requests.<br/>They can "
+"receive and accept friend requests."
+msgstr ""
+"Les utilisateurs sélectionnés ne seront pas en mesure d'envoyer des demandes "
+"d'ami.<br/> Ils peuvent recevoir et accepter les demandes d'ami qu'ils "
+"reçoivent."
+
+#: classes/configsectionlimitusers.php:76
+msgid "Groups - disable groups"
+msgstr "Groupes - désactiver les groupes"
+
+#: classes/configsectionlimitusers.php:77
+msgid ""
+"Selected Users will be unable to create groups, join or be invited.<br/>They "
+"can manage groups created earlier."
+msgstr ""
+"Les utilisateurs sélectionnés ne seront pas en mesure de créer des groupes, "
+"de les rejoindre ou d'être invités. <br/> Ils peuvent administrer des "
+"groupes qui ont déjà été créés."
+
+#: classes/configsectionlimitusers.php:85
+msgid "Chat - disable starting new threads"
+msgstr "Chat - désactiver la possibilité de créer de nouvelles discussions"
+
+#: classes/configsectionlimitusers.php:86
+msgid ""
+"Selected users will not be able to create new message threads.<br/>They can "
+"still participate in existing threads."
+msgstr ""
+"Les utilisateurs sélectionnés ne seront pas en mesure de créer un nouveau "
+"fil de discussion.<br/> Ils peuvent cependant participer aux fils de "
+"discussion déjà existants."
+
+#: classes/configsectionlimitusers.php:94
+msgid "Photos - disable photo uploads"
+msgstr "Photos - désactiver les téléchargements de photos"
+
+#: classes/configsectionlimitusers.php:95
+msgid ""
+"Selected users will not be able to upload photos in posts and comments and "
+"create albums.<br/>They can change their avatar and cover."
+msgstr ""
+"Les utilisateurs sélectionnés ne seront pas en mesure de télécharger des "
+"photos dans leurs publications ni commenter ou encore créer des albums. <br/"
+"> Ils peuvent modifier leur photo de profil et leur photo de couverture."
+
+#: classes/configsectionlimitusers.php:103
+msgid "Polls - disable new polls"
+msgstr "Sondages - désactiver les nouveaux sondages"
+
+#: classes/configsectionlimitusers.php:104
+msgid "Selected users will not be able to create new polls.<br/>They can vote."
+msgstr ""
+"Les utilisateurs sélectionnés ne seront pas en mesure de créer des sondages."
+"</br> Ils peuvent voter."
+
+#: classes/configsectionlimitusers.php:112
+msgid "Videos - disable videos"
+msgstr "Vidéos - désactiver les vidéos"
+
+#: classes/configsectionlimitusers.php:113
+msgid ""
+"Selected users will not be able to embed videos in their posts.<br/>They can "
+"post video links."
+msgstr ""
+"Les utilisateurs sélectionnés ne seront pas en mesure d'intégrer des vidéos "
+"dans leurs publications.w<br/>Ils peuvent publier les liens des vidéos."
+
+#: classes/configsectionlimitusers.php:135
+msgid "Administrator can't be limited"
+msgstr "Un administrateur ne peut pas être limité"
+
+#: classes/configsectionlimitusers.php:148
+msgid "Based on profile completeness"
+msgstr "Basé sur l’intégralité du profil"
+
+#: classes/configsectionlimitusers.php:158
+msgid "-- no limit --"
+msgstr "--aucune limite--"
+
+#: classes/configsectionlimitusers.php:164
+msgid "Require"
+msgstr "Obligatoire"
+
+#: classes/configsectionlimitusers.php:170
+msgid "Based on avatar"
+msgstr "Basé sur la photo de profil"
+
+#: classes/widgets/widgetlimitusers.php:9
+msgid "PeepSo User Limits"
+msgstr "PeepSo \"Limites des utilisateurs\""
+
+#: classes/widgets/widgetlimitusers.php:10
+msgid "PeepSo User Limits Widget"
+msgstr "PeepSo widget \"Limites des utilisateurs\""
+
+#: classes/widgets/widgetlimitusers.php:65
+msgid "Your actions in the Community are limited."
+msgstr "Vos actions au sein de la communauté sont limitées."
+
+#: classes/widgets/widgetlimitusers.php:83
+msgid "Message:"
+msgstr "Message :"
+
+#: limitusers.php:141
+msgid "show on members page"
+msgstr "apparaître sur la page des membres"
+
+#: limitusers.php:142
+msgid "add new posts"
+msgstr "ajouter de nouvelles publications"
+
+#: limitusers.php:143
+msgid "comment on posts"
+msgstr "commenter les publications"
+
+#: limitusers.php:154
+msgid "send friend requests"
+msgstr "envoyer des demandes d'amitié"
+
+#: limitusers.php:160
+msgid "join &amp; create groups"
+msgstr "rejoindre &amp; créer des groupes"
+
+#: limitusers.php:166
+msgid "write new messages"
+msgstr "écrire des nouveaux messages"
+
+#: limitusers.php:172
+msgid "add photos"
+msgstr "ajouter des photos"
+
+#: limitusers.php:178
+msgid "add polls"
+msgstr "ajouter des sondages"
+
+#: limitusers.php:184
+msgid "add videos"
+msgstr "ajouter des vidéos"
+
+#: limitusers.php:364
+#, php-format
+msgid "The %s plugin requires the PeepSo plugin to be installed and activated."
+msgstr "Le plugin %s nécessite que le plugin PeepSo soit installé et activé."
+
+#: limitusers.php:366
+msgid "Get it now!"
+msgstr "Obtenez-le maintenant !"
+
+#: limitusers.php:413
+msgid "User Limits"
+msgstr "Limites de l’utilisateur"
+
+#: limitusers.php:416
+msgid "Configure which users to hide from the listings"
+msgstr "Configurer quels utilisateurs seront cachés dans les listes"
+
+#: limitusers.php:502
+msgid "You are currently not allowed to create new posts"
+msgstr "Vous n’êtes actuellement pas autorisé à créer de nouveaux publications"
+
+#: limitusers.php:520
+msgid "You are currently not allowed to create new comments"
+msgstr ""
+"Vous n’êtes actuellement pas autorisé à ajouter de nouveaux commentaires"
+
+#: templates/limitusers/debug-formatted.php:11
+msgid "Upload an avatar to:"
+msgstr "Télécharger une photo de profil de :"
+
+#: templates/limitusers/debug-formatted.php:25
+msgid "Complete your profile to at least:"
+msgstr "Complétez votre profil à au moins:"
+
+#: templates/limitusers/debug-formatted.php:29
+msgid "to"
+msgstr "afin de"
+
+#. Plugin Name of the plugin/theme
+msgid "PeepSo Extras: User Limits"
+msgstr "PeepSo Extras : Limites des utilisateurs"
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "https://peepso.com"
+msgstr "https://peepso.com"
+
+#. Description of the plugin/theme
+msgid ""
+"Limit user privileges and/or hide them from PeepSo user listings based on "
+"role and profile completeness"
+msgstr ""
+"Limiter les privilèges de l’utilisateur et/ou masquer de PeepSo les listes "
+"des membres basées sur le rôle et le remplissage du profil"
+
+#. Author of the plugin/theme
+msgid "PeepSo"
+msgstr ""

@@ -575,10 +575,42 @@ function add_pinterest_meta() {
 /* =              LAYOUT      
 /* =================================================================*/
 
-// Adds custom inline Javascript
-// to solve screen header width issue on chrome mobile displays 
-// add_action('wp_head','adjust_header_width');
-function adjust_header_width(){
+/* Additional layout with only secondary sidebar */
+
+add_action( 'init', 'foodiepro_alt_sidebar_layout' );
+function foodiepro_alt_sidebar_layout() {
+	 genesis_register_layout( 'content-alt-sidebar', array(
+		'label' => __('Content/Alt Sidebar', 'genesis'),
+		'img' => CHILD_THEME_URL . '/images/admin/gle_c-salt.gif'
+	) );
+}
+
+remove_action( 'genesis_after_content_sidebar_wrap', 'genesis_get_sidebar_alt' );
+add_action( 'genesis_after_content', 'genesis_get_sidebar_alt' );
+
+add_action( 'genesis_before_content', 'apply_content_alt_sidebar_layout' );
+function apply_content_alt_sidebar_layout() {
+    $site_layout = genesis_site_layout();
+    if ( 'content-alt-sidebar' == $site_layout ) {
+		// Remove the Primary Sidebar from the Primary Sidebar area.
+        remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
+		
+        // Remove the Secondary Sidebar from the Secondary Sidebar area.
+        add_action( 'genesis_sidebar_alt', 'genesis_do_sidebar_alt' );
+		
+        // // Place the Secondary Sidebar into the Primary Sidebar area.
+        // add_action( 'genesis_sidebar', 'genesis_do_sidebar_alt' );
+		
+        // // Place the Primary Sidebar into the Secondary Sidebar area.
+        // add_action( 'genesis_sidebar_alt', 'genesis_do_sidebar' );
+    }
+}
+
+
+/* Adds custom inline Javascript
+	to solve screen header width issue on chrome mobile displays */ 
+// add_action('wp_head','custom_inline_js');
+function custom_inline_js() {
 ?>
 <script>
 </script>

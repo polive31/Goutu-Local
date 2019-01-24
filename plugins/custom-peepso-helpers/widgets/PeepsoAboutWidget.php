@@ -91,6 +91,9 @@ class Peepso_About_Widget extends WP_Widget {
 	 * @param array $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
+
+		// if ( !is_user_logged_in() ) return;
+
 		if ( isset( $instance[ 'title' ] ) ) {
 			$title = $instance[ 'title' ];
 		}

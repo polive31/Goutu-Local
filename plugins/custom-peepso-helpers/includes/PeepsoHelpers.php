@@ -22,6 +22,7 @@ class PeepsoHelpers {
 		'friends',
 		'groups',
 		'photos',
+		'blogposts',
 		'media',
 	);
 

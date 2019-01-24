@@ -2,6 +2,72 @@
 /* GENERAL
 -----------------------------------------------------------*/
 
+
+/* Avatar */
+
+
+/* Force Square avatar on profile pages */
+.ps-avatar img, 
+.ps-avatar-stream img, 
+.ps-avatar-comment img, 
+.ps-avatar-focus img, 
+.ps-avatar--group {
+    -webkit-border-radius: initial;
+    -moz-border-radius: initial;
+    -o-border-radius: initial;
+    border-radius: initial;
+}
+
+.ps-comment-reply .ps-avatar img,
+.ps-widget--userbar__avatar .ps-avatar img {
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -o-border-radius: 100%;
+    border-radius: 100%;
+}
+
+
+.ps-avatar-focus {
+    width: 130px;
+    position: relative;
+    bottom: -72px;
+    float: left;
+}
+
+.ps-avatar-focus .ps-avatar-change {
+    height: 100%;
+    width: 100%;
+}
+
+.ps-avatar-focus img {
+    max-width: 130px!important;
+}
+
+
+.ps-user__status--focus:before {
+    border: none;
+    border-radius: initial;
+    box-shadow: none;
+}
+
+.avatar-overlay {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#ffffff00, #8282827d);
+    position: absolute;
+    bottom: 16px;
+}
+
+.avatar-overlay-text {
+    font-size: 17px;
+    font-family: Oswald;
+    color: white;
+    text-align: center;
+    bottom: 0;
+    position: absolute;
+}
+
+
 .ps-widget__members {
     margin-left: auto;
     margin-right: auto;
@@ -15,6 +81,11 @@
 }
 
 .ps-btn, .peepso .usp-pro .usp-submit, .peepso .button, .peepso input[type="submit"].button, .ps-btn:focus, .peepso .usp-pro .usp-submit:focus, .peepso .button:focus, .peepso input[type="submit"].button:focus, .active.ps-btn, .peepso .usp-pro .active.usp-submit, .peepso .active.button, .peepso input.active[type="submit"].button {
+}
+
+.ps-btn-small, 
+.ps-btn--small {
+    font-size: 14px;
 }
 
 .ps-btn:hover, .peepso .usp-pro .usp-submit:hover, .peepso .button:hover, .peepso input[type="submit"].button:hover, .ps-btn:focus, .peepso .usp-pro .usp-submit:focus, .peepso .button:focus, .peepso input[type="submit"].button:focus, .active.ps-btn, .peepso .usp-pro .active.usp-submit, .peepso .active.button, .peepso input.active[type="submit"].button {
@@ -176,10 +247,10 @@
 -----------------------------------------------------------*/
 
 .ps-postbox-tab-root .ps-postbox__menu-item {
-    border-bottom: 1px solid #ccc;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    background:#CCC;
+    border-bottom: 1px solid #d5d5d5;
+    border-left: 1px solid #d5d5d5;
+    border-right: 1px solid #d5d5d5;
+    background: #E1E1E1;
 }
 
 .ps-postbox-tab-root .ps-postbox__menu-item.active {
@@ -189,6 +260,19 @@
 
 /* ACTIVITY STREAM
 -----------------------------------------------------------*/
+
+.ps-commentbox-actions {
+    top: 5px;
+}
+
+.ps-comment-reply .ps-avatar {
+    position: relative; 
+}
+
+.ps-comment-reply .ps-avatar img {
+    position: absolute;
+    top: 2px;
+}
 
 .activity-stream-front {
     /* font-family: Oswald; */
@@ -248,8 +332,13 @@ nav.ps-stream-status-action.ps-stream-status-action span {
 }
 
 
+
 /* PROFILE
 -----------------------------------------------------------*/
+.ps-focus-cover.js-focus-cover {
+    font-family: Oswald, sans-serif;
+}
+
 .ps-focus-title {
     font-family: Vollkorn, serif;
     font-size: 3.5rem;
@@ -273,46 +362,6 @@ span.ps-tooltip.ps-tooltip--online.ps-user__status.ps-icon-circle {
     font-size: 21px;
 }
 
-/* Avatar */
-
-.ps-avatar-focus {
-    width: 130px;
-    position: relative;
-    bottom: -72px;
-    float: left;
-}
-
-.ps-avatar-focus .ps-avatar-change {
-    height: 100%;
-    width: 100%;
-}
-
-.ps-avatar-focus img {
-    max-width: 130px!important;
-}
-
-.ps-user__status--focus:before {
-    border: none;
-    border-radius: initial;
-    box-shadow: none;
-}
-
-.avatar-overlay {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(#ffffff00, #8282827d);
-    position: absolute;
-    bottom: 16px;
-}
-
-.avatar-overlay-text {
-    font-size: 17px;
-    font-family: Oswald;
-    color: white;
-    text-align: center;
-    bottom: 0;
-    position: absolute;
-}
 
 
 /* Nav Menu Items
@@ -358,8 +407,18 @@ span.ps-tooltip.ps-tooltip--online.ps-user__status.ps-icon-circle {
 }
 
 
+/* LOGIN / REGISTRATION
+--------------------------------------------------------------------------*/
+
+.peepso_custom_login_widget .login-widget-register-link {
+    float: right;
+    text-align: center;
+    width:auto;
+}
+
 
 @media only screen and (max-width: 480px) {
+
 
     /* PROFILE
     -------------------------------------------*/

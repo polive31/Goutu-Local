@@ -1007,7 +1007,8 @@ Structure and Layout
 	width:840px;
 }
 
-.content-sidebar-sidebar .content-sidebar-wrap {
+.content-sidebar-sidebar .content-sidebar-wrap,
+.content-alt-sidebar .content-sidebar-wrap {
 	float:left;
 }
 
@@ -1027,7 +1028,8 @@ Structure and Layout
 
 .content-sidebar .content,
 .content-sidebar-sidebar .content,
-.sidebar-content-sidebar .content {
+.sidebar-content-sidebar .content,
+.content-alt-sidebar .content {
 	float:left;
 }
 
@@ -1047,8 +1049,9 @@ Structure and Layout
 	width:100%;
 }
 
-/* Primary Sidebar */
+/* Sidebars content */
 
+.sidebar-secondary,
 .sidebar-primary {
 	float:right;
 	width:380px;
@@ -1067,22 +1070,18 @@ Structure and Layout
 	align-items:flex-start;
 }
 
+/* Sidebars positioning  */
+
 .sidebar-content .sidebar-primary,
 .sidebar-sidebar-content .sidebar-primary {
 	float:left;
 }
 
-
-/* Secondary Sidebar */
-
-.sidebar-secondary {
-	float:left;
-	width:200px; /* P.O. Original 160px */
-}
-
+.content-alt-sidebar .sidebar-secondary,
 .content-sidebar-sidebar .sidebar-secondary {
 	float:right;
 }
+
 
 /* Column Classes
 	Link:http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css

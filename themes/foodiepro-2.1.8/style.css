@@ -3780,6 +3780,36 @@ li.comment a {
 
 
 
+/* Gallery RPWE Style */
+.sidebar .rpwe-block .gallery ul { 
+	display:initial;
+}
+
+.sidebar .rpwe-block .gallery li, 
+.sidebar .gallery .rpwe-li {
+    display: inline-block;
+    /* float: none; */
+    /* margin: 0; */
+    border-bottom: none;
+    line-height: initial;
+    width: auto;
+    padding: 5px;
+}
+
+.sidebar .gallery .entry-header-overlay,
+.sidebar .gallery a.rpwe-img {
+	display:initial;
+	width:auto;
+}
+
+.sidebar .gallery a.rpwe-img img {
+	border-radius:5px;
+}
+
+.sidebar .gallery h3.rpwe-title {
+    display: none;
+}
+
 /* Footer Widgets
 ---------------------------------------------------------------------------------------------------- */
 

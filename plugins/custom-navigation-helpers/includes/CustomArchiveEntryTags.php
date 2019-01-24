@@ -46,7 +46,7 @@ class CustomArchiveEntryTags extends CustomArchiveEntries {
 	// Add custom opening div for post thumbnail title
 	public function do_post_title_before() {
 		// if ( is_tax() || is_search() || is_tag() || is_author() ) {
-		if ( is_archive() || is_search() ) {
+		if ( is_archive() || is_search() || is_tag() ) {
 			echo '<div class="entry-header-overlay">';
 			echo $this->entry_tags();
 		}
@@ -54,8 +54,8 @@ class CustomArchiveEntryTags extends CustomArchiveEntries {
 
 	// Add custom closing div for post thumbnail title
 	public function do_post_title_after() {
-		if ( is_tax() || is_search() || is_tag() ) {
-			echo '</div>';
+		if ( is_archive() || is_search() || is_tag() ) {
+			echo '</div><!-- end of entry-header-overlay -->';
 		}
 	}	
 

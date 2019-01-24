@@ -21,11 +21,11 @@ class CustomArchiveEntries extends CustomNavigationHelpers {
 
 		/* Customize archive pages */
 		add_filter( 'post_class', array($this, 'set_grid_columns'));
-		add_filter( 'genesis_before_entry', array($this, 'remove_entry_content') );
+		add_filter( 'genesis_before_entry', array($this, 'reorganize_entry_content') );
 		
 	}
 	
-	public function remove_entry_content() {
+	public function reorganize_entry_content() {
 		if ( is_archive() || is_search() ) {
 			remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 			add_action( 'genesis_entry_header', 'genesis_do_post_image', 5 );
@@ -33,6 +33,10 @@ class CustomArchiveEntries extends CustomNavigationHelpers {
 			// Don't know why but 2 remove actions are needed to really remove the image from the entry content !
 			remove_action( 'genesis_entry_content', 'genesis_do_post_image', 8 );
 			remove_action( 'genesis_entry_content', 'genesis_do_post_image', 12 );
+			
+			remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
+			add_action( 'genesis_before_entry_content', 'genesis_do_post_title' );
+
 		}
 	}
 

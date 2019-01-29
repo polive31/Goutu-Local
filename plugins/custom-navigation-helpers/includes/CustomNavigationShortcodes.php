@@ -557,17 +557,20 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 	/* Output registration page url
 	------------------------------------------------------*/
 
-	public function get_registration_page($atts, $content=null) {
+	public function get_registration_page($a, $content=null) {
 		$a = shortcode_atts(array(
-			'html' => true,
-			'text' => ""  // default value if none supplied
-	    ), $atts);
+			'text' => "",  // default value if none supplied
+			'method' => "peepso"  // 'wp'
+	    ), $a);
 		$html=$a['html'];
 		$text=esc_html($a['text']);
 		$content=esc_html($content);
-	    
-		$url=wp_registration_url();
-		if ($html) return '<a href=' . $url . '>' . $text . $content . '</a>';
+		
+		if ( $a['method']=='peepso' )
+			$url=PeepSo::get_page('register');
+		else
+			$url=wp_registration_url();
+		if (!empty($text) || !empty($content)) return '<a href=' . $url . '>' . $text . $content . '</a>';
 		else return $url;
 	}
 

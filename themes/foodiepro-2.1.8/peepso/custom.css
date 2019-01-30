@@ -455,7 +455,7 @@ span.ps-tooltip.ps-tooltip--online.ps-user__status.ps-icon-circle {
     } 
     
     .ps-focus__menu .ps-focus__menu-item:hover {
-        background:blue;
+        /* background:blue; */
     }
     
     .ps-focus__menu,

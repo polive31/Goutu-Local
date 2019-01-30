@@ -33,7 +33,7 @@ class CustomPeepsoShortcodes {
 	}
 	
 	
-	public function get_user_field( $atts ) {
+	public function get_user_field( $a ) {
 		if ( !class_exists('PeepsoHelpers') ) return '';
 		if ( !is_user_logged_in() ) return;
 		 
@@ -42,7 +42,7 @@ class CustomPeepsoShortcodes {
         	'field' => 'nicename',// pseudo, avatar, cover
 			'link' => 'profile', // 
 			'class' => '', // 
-		), $atts );
+		), $a );
 
 		$user = PeepsoHelpers::get_user( $a['user'] );
 

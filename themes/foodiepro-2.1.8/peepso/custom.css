@@ -231,15 +231,18 @@
 
 
 #responsive-menu-pro-container .ps-dropdown__menu {
-    background-color: #6d6d6d;
-    min-width: 130px;
+    /* background-color: #6d6d6d; */
+    background-color: #ffffff;
+    min-width: 150px;
     padding:10px;
 }
 
 #responsive-menu-pro-container .ps-dropdown__menu a {
-    font-family: sans-serif;
-    font-size:1.4rem;
+    font-family: Oswald, sans-serif;
+    font-size: 1.7rem;
     font-weight: normal;
+    padding: 5px;
+    color: #353535
 }
 
 
@@ -353,6 +356,12 @@ nav.ps-stream-status-action.ps-stream-status-action span {
     line-height: 4rem;
 }
 
+.ps-focus-profile-options a,
+.ps-btn.ps-btn-small {
+    height: 28px;
+    vertical-align: bottom;
+}
+
 .ps-focus-options>a {
     font-family: Oswald, sans-serif;
     font-size: 2.4rem;
@@ -425,9 +434,19 @@ span.ps-tooltip.ps-tooltip--online.ps-user__status.ps-icon-circle {
     .ps-focus__footer {
         padding-top: 56px;
         padding-left: 0px;
+        padding-top: 0px;
+        /* margin-top: 25px; */
         float: left;
         width: 100%;
-    }
+    }  
+    
+    .ps-focus-title {
+        position: absolute;
+        bottom: 0px;
+        left: 100px;
+        text-align: left;
+    }    
+
 
     .ps-focus__menu .ps-focus__menu-item,
     .ps-focus__menu .ps-focus__menu-item.current,
@@ -435,9 +454,14 @@ span.ps-tooltip.ps-tooltip--online.ps-user__status.ps-icon-circle {
         font-size: 20px;
     } 
     
+    .ps-focus__menu .ps-focus__menu-item:hover {
+        background:blue;
+    }
+    
     .ps-focus__menu,
     .ps-focus__menu-inner {
         height: auto;
+        border: 1px solid rgba(0,0,0,0.08);
     }  
         
     .ps-focus__menu-inner {
@@ -450,6 +474,7 @@ span.ps-tooltip.ps-tooltip--online.ps-user__status.ps-icon-circle {
 
     .ps-avatar-focus {
         width: 80px;
+        bottom: -50px;
     }    
 
     .ps-avatar-focus img {
@@ -500,10 +525,6 @@ span.ps-tooltip.ps-tooltip--online.ps-user__status.ps-icon-circle {
         font-size: 1.4rem;
     }
 
-    .ps-focus__footer {
-        padding-top: 0px;
-        margin-top: 10px;
-    }    
 
 }    
 

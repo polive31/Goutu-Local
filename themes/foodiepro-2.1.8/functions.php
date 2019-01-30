@@ -675,25 +675,40 @@ function add_after_content_area() {
 }
 
 
-add_filter('wp_nav_menu_items', 'add_main_nav_widget_area' , 10, 2);
-function add_main_nav_widget_area( $html, $args ) {
+/* Nav Menus Customization :
+ - Main nav gets a widgeted area "main-nav" on its last item
+ - Mobile nav gets an additional item containing a shortcode : [mobile-nav-bottom] => can be used to display a login/logout link for instance
+ */
 
-	if ( isset($args->name) ) 
+add_filter('wp_nav_menu_items', 'add_main_nav_widget_area' , 10, 2);
+
+function add_main_nav_widget_area( $html, $args ) {
+	if ( isset($args->name) && is_string($args->name) ) 
 		$name=$args->name;
-	elseif ( isset($args->menu->name) ) 
+	elseif ( is_string($args->menu) ) 
+		$name=$args->menu;
+	elseif ( is_string($args->menu->name) ) 
 		$name=$args->menu->name;
 	else return $html;
 
-	if ( $name!='main_nav_fr' ) return $html;
+	if ( $name=='main_nav_fr' )  {	
+		ob_start();
+		genesis_widget_area( 'main-nav', array(
+			'before' => '<li class="mega-menu-item main-nav-widget-area">',
+			'after'  => '</li>',
+		));
+		$html .= ob_get_contents(); 
+		ob_end_clean();
+	}
+	elseif ( $name=='mobile_nav_fr' && !is_user_logged_in() ) {
+		$html .= '<li class="menu-item menu-item-type-custom menu-item-object-custom responsive-menu-pro-item responsive-menu-pro-desktop-menu-col-auto">';
+		$html .= '<a href="' . wp_login_url() . '" class="responsive-menu-pro-item-link">';
+		$html .= '<i class="fa fa-user" aria-hidden="true"></i>';
+		$html .= __('Log In','foodiepro');
+		$html .= '</a>';
+		$html .= '</li>';
+	}
 
-	ob_start();
-	genesis_widget_area( 'main-nav', array(
-		'before' => '<li class="mega-menu-item main-nav-widget-area">',
-		'after'  => '</li>',
-	));
-
-	$html .= ob_get_contents(); 
-	ob_end_clean();
 	return $html;
 }
 

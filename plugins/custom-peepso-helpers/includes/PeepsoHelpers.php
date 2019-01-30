@@ -15,16 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	- Actions & filters...
 */
 
-class PeepsoHelpers {
+class PeepsoHelpers extends PeepsoCustomizations {
 
-	private static $TABS=array(
-		'about',
-		'friends',
-		'groups',
-		'photos',
-		'blogposts',
-		'media',
-	);
 
 	static function get_nav_tab() {
 		$current='stream';

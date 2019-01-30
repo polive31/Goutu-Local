@@ -66,7 +66,7 @@ $position = $instance['content_position'];
 					?>
 
 					<?php if(isset($instance['show_usermenu']) && 1 == intval($instance['show_usermenu'])) { ?>
-					<div class="ps-dropdown ps-dropdown--right ps-dropdown--userbar ps-js-dropdown">
+					<div class="ps-dropdown ps-dropdown--<?= $position; ?> ps-dropdown--userbar ps-js-dropdown">
 						<a href="#" class="ps-dropdown__toggle ps-js-dropdown-toggle">
 							<span class="dropdown-caret ps-icon-angle-down"></span>
 						</a>

@@ -562,7 +562,6 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 			'text' => "",  // default value if none supplied
 			'method' => "peepso"  // 'wp'
 	    ), $a);
-		$html=$a['html'];
 		$text=esc_html($a['text']);
 		$content=esc_html($content);
 		

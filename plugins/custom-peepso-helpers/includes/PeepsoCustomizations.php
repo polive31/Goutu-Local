@@ -17,6 +17,15 @@ class PeepsoCustomizations {
 
 	public static $PLUGIN_PATH;
 	public static $PLUGIN_URI;	
+
+	protected static $TABS=array(
+		'blogposts',
+		'about',
+		'friends',
+		'groups',
+		'photos',
+		'media',
+	);	
 	
 	public function __construct() {	
 		// IMPORTANT : use wp as a hook, otherwise the archive will not be set yet and errors will occur
@@ -28,10 +37,23 @@ class PeepsoCustomizations {
 		// add_action('wp_enqueue_scripts', array($this, 'enqueue_masonry_scripts'));
 
         // Filters the post meta information under the headline
-        add_filter( 'peepso_postbox_message', array($this, 'custom_postbox_message') );		
+        add_filter( 'peepso_postbox_message', 		array($this, 'custom_postbox_message') );		
+        // add_filter( 'peepso_navigation_profile', 	array($this, 'custom_profile_navigation') );		
 		
 	}
 
+
+	public function custom_profile_navigation( $links ) {
+		// if ( !is_user_logged_in() ) {
+		// 	unset( $links['about'] );
+		// 	$reordered=array();
+		// 	foreach ( self::$TABS as $tab ) {
+		// 		$reordered[$tab] = $links[$tab];
+		// 	}
+		// 	$links = $reordered;
+		// } 
+		// return $links;
+	}
 
 	public function custom_postbox_message( $msg ) {
 

@@ -100,6 +100,9 @@ class Tooltip {
 		// Default values
 		$action = 'hover';
 		$title = '';
+		$valign = 'top';
+		$halign = 'center';
+		$content = 	'';
 		$img = 	'';
 		$class = '';
 		$id = '';
@@ -114,7 +117,7 @@ class Tooltip {
 		$html.='<div class="wrap">';
 		$html.=$img?'<div class="tooltip-img"><img src="' . $img . '"></div>':'';
 		$html.=$title?'<h4 class="tooltip-title">' . $title . '</h4>':'';
-		$html.= $content;
+		$html.=$content;
 		if ($callout) {
 			$callout_uri = self::$PLUGIN_URI . 'assets/img/' . $callout . '/callout_'. $valign . '.png';
 			$html.= '<img class="tooltip-callout" data-no-lazy="1" src="' . $callout_uri . '">';

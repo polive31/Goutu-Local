@@ -9,7 +9,6 @@ class CustomScriptsStylesEnqueue {
 
 	// Scripts to be loaded asynchronously
 	const DEFER_JS = array(
-			'bp-confirm',
 			'skip-links',
 			'foodie-pro-general',
 			// 'one-signal'
@@ -20,7 +19,6 @@ class CustomScriptsStylesEnqueue {
 			'custom-gdpr',
 			'dashicons',
 			'bp-mentions-css',
-			'custom-lightbox',
 		);
 
 	// Stylesheets to be preloaded
@@ -50,7 +48,6 @@ class CustomScriptsStylesEnqueue {
 			// 'custom-star-ratings' 				=> array('page' => 'blog-page'),
 			'peepso-custom'						=> array('true' => ''),
 			'yarppRelatedCss' 					=> array('singular' => 'post recipe' ),
-			'image-lightbox-plugin'				=> array('singular' => 'post recipe' ),
 			'custom-lightbox'					=> array('singular' => 'post recipe' ),
 			'name-directory-style' 				=> array('shortcode' => 'namedirectory'),
 			'yarppWidgetCss' 					=> array('false' => ''),
@@ -89,10 +86,9 @@ class CustomScriptsStylesEnqueue {
 		add_filter( 'style_loader_tag', 	array($this, 'async_load_css'), PHP_INT_MAX, 4 );
 		add_filter( 'style_loader_tag', 	array($this, 'preload_css'), PHP_INT_MAX, 4 );
 
-
 		// add_action( 'wp_print_styles', 		array($this, 'megamenu_dequeue_google_fonts'), 100 );
+		// add_action('init', 'load_jquery_from_google'); 
 
-		// //add_action('init', 'load_jquery_from_google');   */
 		add_filter( 'stylesheet_uri', 		array($this, 'enqueue_minified_theme_stylesheet'), 10, 1 );
 	}
 
@@ -109,7 +105,9 @@ class CustomScriptsStylesEnqueue {
 			else {
 				if ( in_array($style, array_keys( $this->css_replace) ) ) {
 					remove_style($style);
-					custom_enqueue_style( $style, $this->css_replace[$style] );
+					$args = $this->css_replace[$style];
+					$args['handle'] = $style;
+					custom_enqueue_style( $args );
 				} 
 				unset( $temp[$style] ); // When loop is run next time in the footer, only styles for which condition is true are present
 			}
@@ -215,7 +213,6 @@ class CustomScriptsStylesEnqueue {
 		}
 		return $html;
 	} 	
-
 
 
 	/*  Making jQuery Google API  

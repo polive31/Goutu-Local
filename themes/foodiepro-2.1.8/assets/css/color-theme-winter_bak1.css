@@ -35,12 +35,12 @@
 .no-js body,
 .no-webp .home body,
 .no-webp body {
-	background:url("../../images/theme/background-winter/background-snow.jpg");	
+	background:url("../../images/theme/background-christmas/background-star.jpg");	
 }
 
 .webp .home body,
 .webp body {
-	background:url("../../images/theme/background-winter/background-snow.webp");	
+	background:url("../../images/theme/background-christmas/background-star.webp");	
 }
 
 

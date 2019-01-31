@@ -14,16 +14,12 @@ $position = $instance['content_position'];
 			if($instance['user_id'] > 0) {
 
 			$user  = $instance['user'];
-			?>
 
-				<?php
-					do_action('peepso_action_userbar_notifications_before', $user->get_id());
-
-					// Notifications
-					echo $instance['toolbar'];
-
-					do_action('peepso_action_userbar_notifications_after', $user->get_id());
-				?>			
+			// Notifications
+			do_action('peepso_action_userbar_notifications_before', $user->get_id());
+			echo $instance['toolbar'];
+			do_action('peepso_action_userbar_notifications_after', $user->get_id());
+			?>			
 				
 			<div class="ps-widget--userbar__container">
 

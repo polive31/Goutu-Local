@@ -20,20 +20,10 @@ class CustomStarRatings {
 
 		add_action('init', array( $this , 'hydrate' ));
 		add_filter( 'wpurp_register_ratings_taxonomy', array( $this, 'translate_ratings_taxonomy' ) );
-
-		//self::$s_ratingCats = self::$ratingCats;
-		//self::$s_ratingGlobal = self::$ratingGlobal;
-		//add_action( 'genesis_before_content', array($this,'display_debug_info') );
-
-		// add_action( 'wp_enqueue_scripts', array($this, 'enqueue_star_rating_style' ) );
 		add_action( 'wp_enqueue_scripts', array($this, 'register_star_rating_style') );
 	}
 
-	/* Chargement des feuilles de style custom et polices */
-	public function enqueue_star_rating_style() {
-		custom_enqueue_style( 'custom-star-rating', 'assets/custom-star-rating.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );
-	}
-		
+	/* Register stylesheet, will be enqueued in the shortcode itself  */
 	public function register_star_rating_style() {
 		custom_register_style( 'custom-star-rating', 'assets/custom-star-rating.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );
 	}

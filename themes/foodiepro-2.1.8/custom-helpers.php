@@ -51,42 +51,47 @@ function custom_img( $dir, $url, $name ) {
 /* =              CUSTOM SCRIPTS HELPERS
 /* =================================================================*/
 
-function custom_register_script( $handler, $file, $uri=CHILD_THEME_URL, $path=CHILD_THEME_PATH, $deps=array(), $version=CHILD_THEME_VERSION, $footer=false ) {	
-	if (is_array($file) ) {
+function custom_register_script( $handle, $file='', $uri=CHILD_THEME_URL, $dir=CHILD_THEME_PATH, $deps=array(), $version=CHILD_THEME_VERSION, $footer=false ) {	
+	if (is_array($handle) ) {
 		$uri = CHILD_THEME_URL;
-		$path = CHILD_THEME_PATH;
+		$dir = CHILD_THEME_PATH;
 		$deps = array();
 		$version = CHILD_THEME_VERSION;
 		$footer = false;
-		extract($file);
+		extract($handle);
 	}
 	
 	if ( !strpos($file, '.min.js') ) {
 		$minfile = str_replace( '.js', '.min.js', $file );
-		if (file_exists( $path . $minfile) && WP_MINIFY ) {	
+		if (file_exists( $dir . $minfile) && WP_MINIFY ) {	
 			$file=$minfile;
 		}
 	}
-	wp_register_script( $handler, $uri . $file, $deps, $version, $footer );
+	wp_register_script( $handle, $uri . $file, $deps, $version, $footer );
 }
 
-function custom_enqueue_script( $handler, $file, $uri=CHILD_THEME_URL, $path=CHILD_THEME_PATH, $deps=array(), $version=CHILD_THEME_VERSION, $footer=false ) {	
-	if (is_array($file) ) {
+function custom_enqueue_script( $handle, $file='', $uri=CHILD_THEME_URL, $dir=CHILD_THEME_PATH, $deps=array(), $version=CHILD_THEME_VERSION, $footer=false ) {	
+	if (is_array($handle) ) {
 		$uri = CHILD_THEME_URL;
-		$path = CHILD_THEME_PATH;
+		$dir = CHILD_THEME_PATH;
 		$deps = array();
 		$version = CHILD_THEME_VERSION;
 		$footer = false;
-		extract($file);
+		extract($handle);
 	}
-
+	
 	if ( !strpos($file, '.min.js') ) {
 		$minfile = str_replace( '.js', '.min.js', $file );
-		if (file_exists( $path . $minfile) && WP_MINIFY ) {	
+		if (file_exists( $dir . $minfile) && WP_MINIFY ) {	
 			$file=$minfile;
 		}
 	}
-	wp_enqueue_script( $handler, $uri . $file, $deps, $version, $footer );
+	wp_enqueue_script( $handle, $uri . $file, $deps, $version, $footer );
+	if ( isset($data) ) {
+		$name=$data['name'];
+		unset($data['name']);
+		wp_localize_script( $handle, $name, $data);
+	}
 }
 
 
@@ -100,42 +105,42 @@ function remove_script($script) {
 /* =              CUSTOM STYLES HELPERS     
 /* =================================================================*/
 
-function custom_register_style( $handler, $file, $uri=CHILD_THEME_URL, $path=CHILD_THEME_PATH, $deps=array(), $version=CHILD_THEME_VERSION, $media='all' ) {	
-	if (is_array($file) ) {
+function custom_register_style( $handle, $file='', $uri=CHILD_THEME_URL, $dir=CHILD_THEME_PATH, $deps=array(), $version=CHILD_THEME_VERSION, $media='all' ) {	
+	if (is_array($handle) ) {
 		$uri = CHILD_THEME_URL;
-		$path = CHILD_THEME_PATH;
+		$dir = CHILD_THEME_PATH;
 		$deps = array();
 		$version = CHILD_THEME_VERSION;
 		$media = 'all';
-		extract($file);
-	}
-
-	if ( !strpos($file, '.min.css') ) {
-		$minfile = str_replace( '.css', '.min.css', $file );
-		if (file_exists( $path . $minfile) && WP_MINIFY ) {	
-			$file=$minfile;
-		}
-	}
-    wp_register_style( $handler, $uri . $file, $deps, $version, $media );
-}
-
-function custom_enqueue_style( $handler, $file, $uri=CHILD_THEME_URL, $path=CHILD_THEME_PATH, $deps=array(), $version=CHILD_THEME_VERSION, $media='all' ) {	
-	if (is_array($file) ) {
-		$uri = CHILD_THEME_URL;
-		$path = CHILD_THEME_PATH;
-		$deps = array();
-		$version = CHILD_THEME_VERSION;
-		$media = 'all';
-		extract($file);
+		extract($handle);
 	}
 	
 	if ( !strpos($file, '.min.css') ) {
 		$minfile = str_replace( '.css', '.min.css', $file );
-		if (file_exists( $path . $minfile) && WP_MINIFY ) {	
+		if (file_exists( $dir . $minfile) && WP_MINIFY ) {	
 			$file=$minfile;
 		}
 	}
-    wp_enqueue_style( $handler, $uri . $file, $deps, $version, $media );	
+    wp_register_style( $handle, $uri . $file, $deps, $version, $media );
+}
+
+function custom_enqueue_style( $handle, $file='', $uri=CHILD_THEME_URL, $dir=CHILD_THEME_PATH, $deps=array(), $version=CHILD_THEME_VERSION, $media='all' ) {	
+	if (is_array($handle) ) {
+		$uri = CHILD_THEME_URL;
+		$dir = CHILD_THEME_PATH;
+		$deps = array();
+		$version = CHILD_THEME_VERSION;
+		$media = 'all';
+		extract($handle);
+	}
+	
+	if ( !strpos($file, '.min.css') ) {
+		$minfile = str_replace( '.css', '.min.css', $file );
+		if (file_exists( $dir . $minfile) && WP_MINIFY ) {	
+			$file=$minfile;
+		}
+	}
+    wp_enqueue_style( $handle, $uri . $file, $deps, $version, $media );	
 }
 
 
@@ -179,3 +184,5 @@ function url_exists($url) {
 	$headers = @get_headers($url);
 	return (strpos($headers[0],'404') === false);
 }
+
+

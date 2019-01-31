@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'CHILD_THEME_NAME', 'Foodie Pro Theme' );
-define( 'CHILD_THEME_VERSION', '2.2.84' );
+define( 'CHILD_THEME_VERSION', '2.2.85' );
 define( 'CHILD_THEME_DEVELOPER', 'Shay Bocks' );
 define( 'CHILD_THEME_URL', get_stylesheet_directory_uri() );
 define( 'CHILD_THEME_PATH', get_stylesheet_directory() );
@@ -680,9 +680,9 @@ function add_after_content_area() {
  - Mobile nav gets an additional item containing a shortcode : [mobile-nav-bottom] => can be used to display a login/logout link for instance
  */
 
-add_filter('wp_nav_menu_items', 'add_main_nav_widget_area' , 10, 2);
+add_filter('wp_nav_menu_items', 'custom_nav_menu_items' , 10, 2);
 
-function add_main_nav_widget_area( $html, $args ) {
+function custom_nav_menu_items( $html, $args ) {
 	if ( isset($args->name) && is_string($args->name) ) 
 		$name=$args->name;
 	elseif ( is_string($args->menu) ) 
@@ -700,11 +700,19 @@ function add_main_nav_widget_area( $html, $args ) {
 		$html .= ob_get_contents(); 
 		ob_end_clean();
 	}
-	elseif ( $name=='mobile_nav_fr' && !is_user_logged_in() ) {
+	elseif ( $name=='mobile_nav_fr' ) {
 		$html .= '<li class="menu-item menu-item-type-custom menu-item-object-custom responsive-menu-pro-item responsive-menu-pro-desktop-menu-col-auto">';
-		$html .= '<a href="' . wp_login_url() . '" class="responsive-menu-pro-item-link">';
-		$html .= '<i class="fa fa-user" aria-hidden="true"></i>';
-		$html .= __('Log In','foodiepro');
+		if ( is_user_logged_in() ) {
+			$html .= '<a href="' . wp_logout_url() . '" class="responsive-menu-pro-item-link">';
+			$html .= '<i class="fa ps-icon-off" aria-hidden="true"></i>';
+			$html .= __('Log Out','foodiepro');
+		}
+		else {
+			$html .= '<a href="' . wp_login_url() . '" class="responsive-menu-pro-item-link">';
+			$html .= '<i class="fa fa-user" aria-hidden="true"></i>';
+			$html .= __('Log In','foodiepro');
+
+		}
 		$html .= '</a>';
 		$html .= '</li>';
 	}

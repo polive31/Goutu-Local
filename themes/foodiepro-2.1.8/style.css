@@ -878,10 +878,6 @@ a img {
 	margin-bottom: 0px;
 }
 
-a:hover {
-	color:#111;
-}
-
 p {
 	margin:5px 0 15px;
 	padding:0;
@@ -3164,11 +3160,8 @@ nav.nav-primary .wrap {
 	margin-top:20px;
 }
 
-.entry-meta a,
-.post-info a,
-.post-meta a {
-	color:#757575;
-	text-decoration:none;
+.entry-meta a {
+	text-decoration: none;
 }
 
 #username {

@@ -165,11 +165,11 @@
 
 
 /* On mobile nav */
-#responsive-menu-pro-container .ps-widget--userbar {
+/* #responsive-menu-pro-container .ps-widget--userbar {
     display:flex;
     flex-direction: row-reverse;
     flex-wrap: wrap;
-}
+} */
 
 #responsive-menu-pro-container .ps-widget--userbar__notifications {
     width: 100%;

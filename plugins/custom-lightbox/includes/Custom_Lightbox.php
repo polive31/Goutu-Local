@@ -24,14 +24,34 @@ class CustomLightbox {
 	}
 
     public function enqueue_image_lightbox_scripts_styles() {
-        if (! is_single() ) return;
+		if (! is_single() ) return;
+		
+		$args=array(
+			'uri'		=> self::$PLUGIN_URI,
+			'dir'		=> self::$PLUGIN_PATH,
+			'deps'		=> array( 'jquery' ),
+			'version'	=> CHILD_THEME_VERSION,
+			'footer'	=> true,
+		);
 
-		custom_enqueue_script( 'image-lightbox-plugin', '/vendor/imagelightbox.js', self::$PLUGIN_URI, self::$PLUGIN_PATH, array( 'jquery' ), CHILD_THEME_VERSION, true );
-
-		custom_enqueue_script( 'custom-lightbox', '/assets/js/lightbox.js', self::$PLUGIN_URI, self::$PLUGIN_PATH, array( 'jquery' ), CHILD_THEME_VERSION, true );
-    	wp_enqueue_script( 'jquery-touch-punch', true );
-
-		custom_enqueue_style( 'custom-lightbox', self::$PLUGIN_URI, self::$PLUGIN_PATH, '/assets/css/lightbox.css', array(), CHILD_THEME_VERSION );	
+		// Enqueue scripts
+		$args['handle']= 'image-lightbox-plugin';
+		$args['file']= '/vendor/imagelightbox.js';
+		custom_enqueue_script( $args );
+		
+		$args['handle']= 'custom-lightbox';
+		$args['file']= '/assets/js/lightbox.js';
+		custom_enqueue_script( $args );
+		// custom_enqueue_script( 'custom-lightbox', '', self::$PLUGIN_URI, self::$PLUGIN_PATH, array( 'jquery' ), CHILD_THEME_VERSION, true );
+		
+		wp_enqueue_script( 'jquery-touch-punch', true );
+		
+		// Enqueue styles
+		$args['handle']= 'custom-lightbox';
+		$args['file']= '/assets/css/lightbox.css';
+		$args['deps']= array();
+		custom_enqueue_style( $args );
+		// custom_enqueue_style( 'custom-lightbox', '/assets/css/lightbox.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );	
 	}    
 
 }

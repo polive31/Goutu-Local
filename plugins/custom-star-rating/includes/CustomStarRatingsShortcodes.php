@@ -16,8 +16,6 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		// add_shortcode( 'add-comment-form', array($this,'add_comment_form_shortcode') );
 	}
 
-
-
 	/* Add Comment Form 
 	-----------------------------------------------*/
 	public function add_comment_form_shortcode() {

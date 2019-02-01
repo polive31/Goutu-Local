@@ -38,9 +38,9 @@ class CustomPeepsoShortcodes {
 		if ( !is_user_logged_in() ) return;
 		 
 		$a = shortcode_atts( array(
-        	'user' => 'current',// view, author, ID... 
+        	'user' 	=> 'current',// view, author, ID... 
         	'field' => 'nicename',// pseudo, avatar, cover
-			'link' => 'profile', // 
+			'link' 	=> 'profile', // 
 			'class' => '', // 
 		), $a );
 

@@ -78,9 +78,14 @@ class RPWE_Customizations {
 	}
 	
 	public function wprpe_query_displayed_user_posts( $args ) {
-		if ( !class_exists('Peepso') ) return '';
-		if ( $args['author']=='view_user' )  {
-			$args['author'] = PeepSoProfileShortcode::get_instance()->get_view_user_id();
+		switch ( $args['author'] ) {
+			case 'view_user':
+				if ( !class_exists('Peepso') ) return '';
+				$args['author'] = PeepSoProfileShortcode::get_instance()->get_view_user_id();
+				break;
+			case 'post_author':
+				$args['author'] = get_the_author_meta('ID');
+				break;
 		}
 		return $args;
 	}

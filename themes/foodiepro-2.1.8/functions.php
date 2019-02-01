@@ -411,15 +411,15 @@ function go_home() {
 /* Prevent new users (not yet approved) to log in */
 add_filter('wp_authenticate_user', 'block_new_users',10,1);
 function block_new_users ($user) {
-		$role=$user->roles[0];
+	$role=$user->roles[0];
     if ( $role=='pending' ) {
-    	//$approve_url=get_permalink(get_page_by_path('pending-approval'));
-    	$approve_url=get_permalink('10066');
+    	$approve_url=do_shortcode('[permalink slug="pending-approval"]');
+    	// $approve_url=get_permalink('10066');
     	$msg=sprintf(__( '<strong>ERROR</strong>: User pending <a href="%s">approval</a>.', 'foodiepro' ),$approve_url);
     	return new WP_Error( 'user_not_approved', $msg);
     }
-		else
-			return $user;
+	else
+		return $user;
 }
 
 /* =================================================================*/

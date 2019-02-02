@@ -3738,17 +3738,17 @@ li.comment a {
 	text-align: left;
 }
 
-.entry-header-meta {
+.sidebar .rpwe-block .entry-header-meta {
 	display: inline-block;
     vertical-align: top;
 	width:calc(100% - 70px);
 }
 
-.entry-header-meta .entry-rating {
+.sidebar .rpwe-block .entry-header-meta .entry-rating {
 	text-align: left;
 }
 
-.entry-header-meta .rating {
+.sidebar .rpwe-block .entry-header-meta .rating {
 	margin:0;
 }
 

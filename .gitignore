@@ -105,6 +105,7 @@ plugins/buddypress/bp-core/*
 !plugins/custom-php-debug/
 !plugins/custom-post-meta-inspector/
 !plugins/custom-post-templates/
+!plugins/custom-recent-post-widget/
 !plugins/recent-posts-widget-extended/
 !plugins/custom-recipe-templates/
 !plugins/custom-site-notifications/

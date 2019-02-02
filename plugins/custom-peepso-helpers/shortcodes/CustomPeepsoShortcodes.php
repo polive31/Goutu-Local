@@ -15,10 +15,7 @@ class CustomPeepsoShortcodes {
 		add_shortcode('peepso-page-url', array($this,'get_page_url'));
 	}
 
-
 	public function get_user_avatar_shortcode( $atts ) {
-		if ( !class_exists('PeepsoHelpers') ) return '';
-		
 		$atts = shortcode_atts( array(
 			'user' => 'current', // 'view', 'author', or ID
 	        'size' => '', //'full',
@@ -32,20 +29,16 @@ class CustomPeepsoShortcodes {
 		return $html;
 	}
 	
-	
-	public function get_user_field( $a ) {
-		if ( !class_exists('PeepsoHelpers') ) return '';
-		if ( !is_user_logged_in() ) return;
-		 
+	public function get_user_field( $a ) {	
 		$a = shortcode_atts( array(
-        	'user' 	=> 'current',// view, author, ID... 
+			'user' 	=> 'current',// view, author, ID... 
         	'field' => 'nicename',// pseudo, avatar, cover
 			'link' 	=> 'profile', // 
 			'class' => '', // 
 		), $a );
-
+		
 		$user = PeepsoHelpers::get_user( $a['user'] );
-
+		
 		$field = '';
 		switch ($a['field']) {
 			case "pseudo" :

@@ -3731,14 +3731,29 @@ li.comment a {
 
 .sidebar .entry-header-overlay,
 .sidebar a.rpwe-img {
-	display:table-cell;
+	display:inline-block;
+	vertical-align: middle;
 	width:70px;
 	padding:5px 0;
 	text-align: left;
 }
 
+.entry-header-meta {
+	display: inline-block;
+    vertical-align: top;
+	width:calc(100% - 70px);
+}
+
+.entry-header-meta .entry-rating {
+	text-align: left;
+}
+
+.entry-header-meta .rating {
+	margin:0;
+}
+
 .sidebar .rpwe-block h3 {
-    display:table-cell;
+    display:inline-block;
     padding: 5px 0;
     vertical-align: top;
     text-align: left;

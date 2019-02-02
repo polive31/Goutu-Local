@@ -39,10 +39,9 @@ class RPWE_Customizations {
 
 
 
-	public function rpwe_add_author($output, $args ) {
+	public function rpwe_add_author( $output, $args ) {
 		if ( !class_exists('Peepso') ) return '';
-		$disp_author = substr($args['cssID'],2,1);
-		if ( $disp_author == '1') {
+		if ( $args['display_author'] == '1') {
 			$user = PeepsoUser::get_instance( get_the_author_meta( 'ID' ) );
 			$name = $user->get_username();
 			$url = $user->get_profileurl();
@@ -53,45 +52,47 @@ class RPWE_Customizations {
 	}
 	
 	
-	public function wprpe_add_avatar($output, $args) {
+	public function wprpe_add_avatar( $output, $args ) {
 		if ( !class_exists('PeepsoHelpers') ) return '';
-		//PC::debug( array('WPRPE Output add gravatar'=>$output) );
-		$disp_avatar = substr($args['cssID'],0,1);
-		if ( $disp_avatar == '1') {
-
-			$user = PeepsoUser::get_instance( get_the_author_meta( 'ID' ) );
-			
+		if ( $args['display_avatar'] == '1') {
+			$user = PeepsoUser::get_instance( get_the_author_meta( 'ID' ) );			
 			$args = array(
 				'user' => 'author', // 'view', 'author', or ID
 				'size' => '', //'full',
 				'link' => 'profile',
 				'aclass' => 'auth-avatar',
 			);
-
-			$output = PeepsoHelpers::get_avatar( $args );
-			// $output .= '<a class="auth-avatar" href="' . $user->get_profileurl() . '" title="' . $user->get_username() . '">';
-			// $output .= $user->get_avatar( '45' );
-			// $output .= '</a>';
+			$output .= PeepsoHelpers::get_avatar( $args );
 		}
-
 		return $output;
 	}
 	
 	public function wprpe_query_displayed_user_posts( $args ) {
 		switch ( $args['author'] ) {
 			case 'view_user':
-				if ( !class_exists('Peepso') ) return '';
-				$args['author'] = PeepSoProfileShortcode::get_instance()->get_view_user_id();
-				break;
+			if ( !class_exists('Peepso') ) return '';
+			$args['author'] = PeepSoProfileShortcode::get_instance()->get_view_user_id();
+			break;
 			case 'post_author':
-				$args['author'] = get_the_author_meta('ID');
-				break;
+			$args['author'] = get_the_author_meta('ID');
+			break;
 		}
 		return $args;
 	}
 	
+	public function rpwe_add_rating( $title, $args ) {
+		$output = '';
+		if ( $args['display_rating'] == '1') {
+			$output .= '<span class="entry-rating">';
+			$output .= do_shortcode('[display-star-rating display="minimal" category="global" markup="span"]');
+			$output .= do_shortcode('[like-count]');
+			$output .= '</span>';
+		}
+		return $title . $output;
+	}
+
 	/* in social-after-content widgeted area  */
-	public function add_more_from_author_link($html,$args) {
+	public function add_more_from_author_link( $html, $args ) {
 		if ( !class_exists('Peepso') ) return '';
 		$user_id=PeepSoProfileShortcode::get_instance()->get_view_user_id();
 		$user = PeepsoUser::get_instance( $user_id );
@@ -129,17 +130,6 @@ class RPWE_Customizations {
 	}
 
 
-	public function rpwe_add_rating($title, $args ) {
-		$disp_rating = substr($args['cssID'],1,1);
-		$output='';
-		if ( $disp_rating == '1') {
-			$output .= '<span class="entry-rating">';
-			$output .= do_shortcode('[display-star-rating display="minimal" category="global" markup="span"]');
-			$output .= do_shortcode('[like-count]');
-			$output .= '</span>';
-		}
-		return $title . $output;
-	}
 
 	public function wprpe_orderby_rating( $args ) {
 		if ( $args['orderby'] == 'meta_value_num')

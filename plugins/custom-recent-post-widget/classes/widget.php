@@ -94,46 +94,49 @@ class Recent_Posts_Widget_Extended extends WP_Widget {
 			$types[] = 'post';
 		}
 
-		$instance                     = $old_instance;
-		$instance['title']            = sanitize_text_field( $new_instance['title'] );
-		$instance['title_url']        = esc_url_raw( $new_instance['title_url'] );
+		$instance                     	= $old_instance;
+		$instance['title']            	= sanitize_text_field( $new_instance['title'] );
+		$instance['title_url']        	= esc_url_raw( $new_instance['title_url'] );
 
-		$instance['ignore_sticky']    = isset( $new_instance['ignore_sticky'] ) ? (bool) $new_instance['ignore_sticky'] : 0;
-		$instance['exclude_current']  = isset( $new_instance['exclude_current'] ) ? (bool) $new_instance['exclude_current'] : 0;
-		$instance['limit']            = intval( $new_instance['limit'] );
-		$instance['offset']           = intval( $new_instance['offset'] );
-		$instance['order']            = stripslashes( $new_instance['order'] );
-		$instance['orderby']          = stripslashes( $new_instance['orderby'] );
-		$instance['post_type']        = $types;
-		$instance['post_status']      = stripslashes( $new_instance['post_status'] );
-		$instance['cat']              = $new_instance['cat'];
-		$instance['tag']              = $new_instance['tag'];
-		$instance['taxonomy']         = esc_attr( $new_instance['taxonomy'] );
+		$instance['ignore_sticky']    	= isset( $new_instance['ignore_sticky'] ) ? (bool) $new_instance['ignore_sticky'] : 0;
+		$instance['exclude_current']  	= isset( $new_instance['exclude_current'] ) ? (bool) $new_instance['exclude_current'] : 0;
+		$instance['limit']            	= intval( $new_instance['limit'] );
+		$instance['offset']           	= intval( $new_instance['offset'] );
+		$instance['order']            	= stripslashes( $new_instance['order'] );
+		$instance['orderby']          	= stripslashes( $new_instance['orderby'] );
+		$instance['post_type']        	= $types;
+		$instance['post_status']      	= stripslashes( $new_instance['post_status'] );
+		$instance['cat']              	= $new_instance['cat'];
+		$instance['tag']              	= $new_instance['tag'];
+		$instance['taxonomy']         	= esc_attr( $new_instance['taxonomy'] );
 		$instance['author']         	= esc_attr( $new_instance['author'] );
 		
-		$instance['link']          = isset( $new_instance['link'] ) ? (bool) $new_instance['link'] : false;
-		$instance['excerpt']          = isset( $new_instance['excerpt'] ) ? (bool) $new_instance['excerpt'] : false;
-		$instance['length']           = intval( $new_instance['length'] );
-		$instance['date']             = isset( $new_instance['date'] ) ? (bool) $new_instance['date'] : false;
-		$instance['date_relative']    = isset( $new_instance['date_relative'] ) ? (bool) $new_instance['date_relative'] : false;
-		$instance['date_modified']    = isset( $new_instance['date_modified'] ) ? (bool) $new_instance['date_modified'] : false;
-		$instance['readmore']         = isset( $new_instance['readmore'] ) ? (bool) $new_instance['readmore'] : false;
-		$instance['readmore_text']    = sanitize_text_field( $new_instance['readmore_text'] );
-		$instance['comment_count']    = isset( $new_instance['comment_count'] ) ? (bool) $new_instance['comment_count'] : false;
+		$instance['link']          		= isset( $new_instance['link'] ) ? (bool) $new_instance['link'] : false;
+		$instance['display_author']   	= isset( $new_instance['display_author'] ) ? (bool) $new_instance['display_author'] : false;
+		$instance['display_rating']   	= isset( $new_instance['display_rating'] ) ? (bool) $new_instance['display_rating'] : false;
+		$instance['display_avatar']   	= isset( $new_instance['display_avatar'] ) ? (bool) $new_instance['display_avatar'] : false;
+		$instance['excerpt']          	= isset( $new_instance['excerpt'] ) ? (bool) $new_instance['excerpt'] : false;
+		$instance['length']           	= intval( $new_instance['length'] );
+		$instance['date']             	= isset( $new_instance['date'] ) ? (bool) $new_instance['date'] : false;
+		$instance['date_relative']    	= isset( $new_instance['date_relative'] ) ? (bool) $new_instance['date_relative'] : false;
+		$instance['date_modified']    	= isset( $new_instance['date_modified'] ) ? (bool) $new_instance['date_modified'] : false;
+		$instance['readmore']         	= isset( $new_instance['readmore'] ) ? (bool) $new_instance['readmore'] : false;
+		$instance['readmore_text']    	= sanitize_text_field( $new_instance['readmore_text'] );
+		$instance['comment_count']    	= isset( $new_instance['comment_count'] ) ? (bool) $new_instance['comment_count'] : false;
 
 
-		$instance['thumb']            = isset( $new_instance['thumb'] ) ? (bool) $new_instance['thumb'] : false;
-		$instance['first_thumb_height']     = intval( $new_instance['first_thumb_height'] );
-		$instance['first_thumb_width']      = intval( $new_instance['first_thumb_width'] );
-		$instance['thumb_height']     = intval( $new_instance['thumb_height'] );
-		$instance['thumb_width']      = intval( $new_instance['thumb_width'] );
-		$instance['thumb_default']    = esc_url_raw( $new_instance['thumb_default'] );
-		$instance['thumb_align']      = esc_attr( $new_instance['thumb_align'] );
+		$instance['thumb']            	= isset( $new_instance['thumb'] ) ? (bool) $new_instance['thumb'] : false;
+		$instance['first_thumb_height']	= intval( $new_instance['first_thumb_height'] );
+		$instance['first_thumb_width']	= intval( $new_instance['first_thumb_width'] );
+		$instance['thumb_height']     	= intval( $new_instance['thumb_height'] );
+		$instance['thumb_width']      	= intval( $new_instance['thumb_width'] );
+		$instance['thumb_default']    	= esc_url_raw( $new_instance['thumb_default'] );
+		$instance['thumb_align']      	= esc_attr( $new_instance['thumb_align'] );
 
-		$instance['styles_default']   = isset( $new_instance['styles_default'] ) ? (bool) $new_instance['styles_default'] : false;
-		$instance['cssID']            = sanitize_html_class( $new_instance['cssID'] );
-		$instance['css_class']        = sanitize_html_class( $new_instance['css_class'] );
-		$instance['css']              = $new_instance['css'];
+		$instance['styles_default']   	= isset( $new_instance['styles_default'] ) ? (bool) $new_instance['styles_default'] : false;
+		$instance['cssID']            	= sanitize_html_class( $new_instance['cssID'] );
+		$instance['css_class']        	= sanitize_html_class( $new_instance['css_class'] );
+		$instance['css']              	= $new_instance['css'];
 
 		if ( current_user_can( 'unfiltered_html' ) ) {
 			$instance['before'] = $new_instance['before'];

@@ -22,42 +22,45 @@ function rpwe_get_default_args() {
 		'title'             => esc_attr__( 'Recent Posts', 'rpwe' ),
 		'title_url'         => '',
 
-		'limit'            => 5,
-		'offset'           => 0,
-		'order'            => 'DESC',
-		'orderby'          => 'date',
-		'cat'              => array(),
-		'tag'              => array(),
-		'taxonomy'         => '',
-		'post_type'        => array( 'post' ),
-		'post_status'      => 'publish',
-		'ignore_sticky'    => 1,
-		'exclude_current'  => 1,
-		'author'					 => '',
+		'limit'            	=> 5,
+		'offset'           	=> 0,
+		'order'            	=> 'DESC',
+		'orderby'          	=> 'date',
+		'cat'              	=> array(),
+		'tag'              	=> array(),
+		'taxonomy'         	=> '',
+		'post_type'        	=> array( 'post' ),
+		'post_status'      	=> 'publish',
+		'ignore_sticky'    	=> 1,
+		'exclude_current'  	=> 1,
+		'author'			=> '',
 
-		'excerpt'          => false,
-		'length'           => 10,
-		'link'             => true,
-		'thumb'            => true,
+		'excerpt'          	=> false,
+		'length'           	=> 10,
+		'link'             	=> true,
+		'display_author'	=> false,
+		'display_rating'	=> false,
+		'display_avatar'	=> false,
+		'thumb'            	=> true,
 		'first_thumb_height'     => 0,
 		'first_thumb_width'      => 0,		
-		'thumb_height'     => 45,
-		'thumb_width'      => 45,
-		'thumb_default'    => 'http://placehold.it/45x45/f0f0f0/ccc',
-		'thumb_align'      => 'rpwe-alignleft',
-		'date'             => true,
-		'date_relative'    => false,
-		'date_modified'    => false,
-		'readmore'         => false,
-		'readmore_text'    => __( 'Read More &raquo;', 'recent-posts-widget-extended' ),
-		'comment_count'    => false,
+		'thumb_height'     	=> 45,
+		'thumb_width'      	=> 45,
+		'thumb_default'    	=> 'http://placehold.it/45x45/f0f0f0/ccc',
+		'thumb_align'      	=> 'rpwe-alignleft',
+		'date'             	=> true,
+		'date_relative'    	=> false,
+		'date_modified'    	=> false,
+		'readmore'         	=> false,
+		'readmore_text'    	=> __( 'Read More &raquo;', 'recent-posts-widget-extended' ),
+		'comment_count'    	=> false,
 
-		'styles_default'   => true,
-		'css'              => $css_defaults,
-		'cssID'            => '',
-		'css_class'        => '',
-		'before'           => '',
-		'after'            => ''
+		'styles_default'   	=> true,
+		'css'              	=> $css_defaults,
+		'cssID'            	=> '',
+		'css_class'        	=> '',
+		'before'           	=> '',
+		'after'            	=> ''
 	);
 
 	// Allow plugins/themes developer to filter the default arguments.
@@ -153,64 +156,66 @@ function rpwe_get_recent_posts( $args = array() ) {
 						if ( has_post_thumbnail() ) :
 							$html .= '<div class="entry-header-overlay ' . $entry_class . '">';
 							$html .= '<a class="rpwe-img ' . $entry_class . '" href="' . $entry_url . '"  rel="bookmark">';
-								if ( $image ) :
-									$html .= '<img class="' . esc_attr( $args['thumb_align'] ) . ' rpwe-thumb" src="' . esc_url( $image ) . '" alt="' . esc_attr( get_the_title() ) . '">';
+							if ( $image ) :
+								$html .= '<img class="' . esc_attr( $args['thumb_align'] ) . ' rpwe-thumb" src="' . esc_url( $image ) . '" alt="' . esc_attr( get_the_title() ) . '">';
 								else :
 									$html .= get_the_post_thumbnail( get_the_ID(),
-										array( $args[$thumb_width], $args[$thumb_height] ),
-										array(
-											'class' => $args['thumb_align'] . ' rpwe-thumb the-post-thumbnail',
-											'alt'   => esc_attr( get_the_title() )
+									array( $args[$thumb_width], $args[$thumb_height] ),
+									array(
+										'class' => $args['thumb_align'] . ' rpwe-thumb the-post-thumbnail',
+										'alt'   => esc_attr( get_the_title() )
 										)
 									);
 								endif;
-							/* Added P.O. */
-							$html .= apply_filters( 'rpwe_in_thumbnail', '', $args);
-							// $html .= 'In the post thumbnail';
-							/* End P.O. */									
-							$html .= '</a>';
-							$html .= '</div>';
-
-						// If no post thumbnail found, check if Get The Image plugin exist and display the image.
-						elseif ( function_exists( 'get_the_image' ) ) :
-							$html .= get_the_image( array(
-								'height'        => (int) $args[$thumb_height],
-								'width'         => (int) $args[$thumb_width],
-								'image_class'   => esc_attr( $args['thumb_align'] ) . ' rpwe-thumb get-the-image',
-								'image_scan'    => true,
-								'echo'          => false,
-								'default_image' => esc_url( $args['thumb_default'] )
-							) );
-							// $html .= 'In the get the image';
-
-						// Display default image.
-						elseif ( ! empty( $args['thumb_default'] ) ) :
-							$html .= sprintf( '<a class="rpwe-img" href="%1$s" rel="bookmark"><img class="%2$s rpwe-thumb rpwe-default-thumb" src="%3$s" alt="%4$s" width="%5$s" height="%6$s"></a>',
-								$entry_url,
-								esc_attr( $args['thumb_align'] ),
-								esc_url( $args['thumb_default'] ),
-								esc_attr( get_the_title() ),
-								(int) $args['thumb_width'],
-								(int) $args[$thumb_height]
-							);
-							// $html .= 'In the default thumb';
-
-						endif;
-
-					endif;
-						
-
-					/* Added P.O. */ 
-					$html .= apply_filters( 'rpwe_after_thumbnail', '', $args);
-					/* End P.O. */
-
-					/* Added P.O. */
-					$title_meta = '';
-					$title_meta = apply_filters( 'rpwe_post_title_meta', $title_meta, $args);
-					$title_html = '<h3 class="rpwe-title"><a href="' . $entry_url . '" class="' . $entry_class . '" title="' . sprintf( esc_attr__( 'Permalink to %s', 'recent-posts-widget-extended' ), the_title_attribute( 'echo=0' ) ) . '" rel="bookmark">' . esc_attr( get_the_title() ) . '</a>' . $title_meta . '</h3>';
-					$title_html = apply_filters( 'rpwe_post_title', $title_html, $args);
-					$html .= $title_html;
-					/* End P.O. */
+								/* Added P.O. */
+								$html = apply_filters( 'rpwe_in_thumbnail', $html, $args);
+								// $html .= 'In the post thumbnail';
+								/* End P.O. */									
+								$html .= '</a>';
+								$html .= '</div>';
+								
+								// If no post thumbnail found, check if Get The Image plugin exist and display the image.
+								elseif ( function_exists( 'get_the_image' ) ) :
+									$html .= get_the_image( array(
+										'height'        => (int) $args[$thumb_height],
+										'width'         => (int) $args[$thumb_width],
+										'image_class'   => esc_attr( $args['thumb_align'] ) . ' rpwe-thumb get-the-image',
+										'image_scan'    => true,
+										'echo'          => false,
+										'default_image' => esc_url( $args['thumb_default'] )
+										) );
+										// $html .= 'In the get the image';
+										
+										// Display default image.
+										elseif ( ! empty( $args['thumb_default'] ) ) :
+											$html .= sprintf( '<a class="rpwe-img" href="%1$s" rel="bookmark"><img class="%2$s rpwe-thumb rpwe-default-thumb" src="%3$s" alt="%4$s" width="%5$s" height="%6$s"></a>',
+											$entry_url,
+											esc_attr( $args['thumb_align'] ),
+											esc_url( $args['thumb_default'] ),
+											esc_attr( get_the_title() ),
+											(int) $args['thumb_width'],
+											(int) $args[$thumb_height]
+										);
+										// $html .= 'In the default thumb';
+										
+									endif;
+									
+								endif;
+								
+								
+								/* Added P.O. */ 
+								$html = apply_filters( 'rpwe_after_thumbnail', $html, $args);
+								/* End P.O. */
+								
+								$html .= '<div class="entry-header-meta">';
+								/* Added P.O. */
+								$title_meta = '';
+								$title_meta = apply_filters( 'rpwe_post_title_meta', $title_meta, $args);
+								$title_html = '<h3 class="rpwe-title"><a href="' . $entry_url . '" class="' . $entry_class . '" title="' . sprintf( esc_attr__( 'Permalink to %s', 'recent-posts-widget-extended' ), the_title_attribute( 'echo=0' ) ) . '" rel="bookmark">' . esc_attr( get_the_title() ) . '</a>' . $title_meta . '</h3>';
+								$title_html = apply_filters( 'rpwe_post_title', $title_html, $args);
+								$html .= $title_html;
+								$html .= '</div>';
+								/* End P.O. */
 
 					/* Added P.O. */
 					do_action( 'rpwe_loop', get_post() );

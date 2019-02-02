@@ -48,7 +48,7 @@ td.rating-title {
 /* Star rating output
 --------------------------------------------- */
 
-span.entry-rating {
+.entry-rating {
     text-align: center;
     display: inline-block;
     width: 100%;

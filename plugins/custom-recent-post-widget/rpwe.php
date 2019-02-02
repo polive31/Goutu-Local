@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name:  Recent Posts Widget Extended
- * Plugin URI:   https://www.theme-junkie.com/plugins/recent-posts-widget-extended/
+ * Plugin Name:  Custom Recent Post Widget
+ * Plugin URI:   https://goutu.org
  * Description:  Enables advanced widget that gives you total control over the output of your site’s most recent Posts.
  * Version:      0.9.9.7
- * Author:       Satrya
- * Author URI:   https://www.theme-junkie.com/
- * Author Email: support@theme-junkie.com
- * Text Domain:  recent-posts-widget-extended
+ * Author:       Pascal Olive
+ * Author URI:   https://goutu.org
+ * Author Email: contact@goutu.org
+ * Text Domain:  custom-recent-post-widget
  * Domain Path:  /languages
  *
  * This program is free software; you can redistribute it and/or modify it under the terms of the GNU
@@ -20,10 +20,10 @@
  * You should have received a copy of the GNU General Public License along with this program; if not, write
  * to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  *
- * @package    Recent_Posts_Widget_Extended
- * @since      0.1
- * @author     Satrya
- * @copyright  Copyright (c) 2014, Satrya
+ * @package    Custom_Recent_Post_Widget
+ * @since      1.0
+ * @author     Pascal Olive
+ * @copyright  goutu.org
  * @license    http://www.gnu.org/licenses/gpl-2.0.html
  */
 

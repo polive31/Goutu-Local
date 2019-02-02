@@ -3029,15 +3029,16 @@ nav.nav-primary .wrap {
 	padding:0px 0; /* P.O. Original 20px 0 */
 }
 
+.home .site-header.nav-up .widget_search,
 .site-header .widget_search {
 	width:100%;
 	padding-right:20px;
-	padding-top: 24px;
+	padding-top: 10px;
 	margin:auto;
 }
 
 .home .site-header .widget_search {
-	padding-top: 0;
+	padding-top: 120px;
 }
 
 .search-form input {

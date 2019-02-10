@@ -3227,12 +3227,19 @@ a.more-link,
 	text-align: center;
 }
 
+.more-from-category a {
+	margin:0 auto; /* P.O. Original margin-bottom:40px; */
+}
+
 .home .more-from-category a {
 	font-size: 1.4rem;
 }
 
-.more-from-category a {
-	margin:0 auto 0px; /* P.O. Original margin-bottom:40px; */
+.sidebar .widget-wrap .more-from-category a {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    display: inline-block;
+    text-align: center;
 }
 
 .more-from-category a:after {

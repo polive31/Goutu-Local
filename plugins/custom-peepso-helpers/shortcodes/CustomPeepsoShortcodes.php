@@ -10,16 +10,14 @@ class CustomPeepsoShortcodes {
 
 	public function __construct() {
 		add_shortcode('peepso-user-avatar', array($this,'get_user_avatar_shortcode'));
-		add_shortcode('peepso-user-field', array($this,'get_user_field'));
-		// add_shortcode('peepso-user-icon', array($this,'get_user_icon'));
-		add_shortcode('peepso-page-url', array($this,'get_page_url'));
+		add_shortcode('peepso-user-field', array($this,'get_user_field_shortcode'));
 	}
 
 	public function get_user_avatar_shortcode( $atts ) {
 		$atts = shortcode_atts( array(
 			'user' => 'current', // 'view', 'author', or ID
 	        'size' => '', //'full',
-	        'link' => 'profile',
+	        'page' => 'profile',
 	        'aclass' => '', // 
 	        'wraptag' => '', // 'div', 'span'...
 	        'wrapclass' => '', //
@@ -29,40 +27,26 @@ class CustomPeepsoShortcodes {
 		return $html;
 	}
 	
-	public function get_user_field( $a ) {	
+	public function get_user_field_shortcode( $a, $content ) {	
 		$a = shortcode_atts( array(
-			'user' 	=> 'current',// view, author, ID... 
-        	'field' => 'nicename',// pseudo, avatar, cover
-			'link' 	=> 'profile', // 
-			'class' => '', // 
+			'user' 		=> 'current',	// view, author, ID... 
+        	'field' 	=> 'nicename',	// pseudo, avatar, cover
+			'page' 		=> 'profile', 	// archive
+			'subpage' 	=> '', 			// about, recipe, post... 
+			'class' => '', 				// 
 		), $a );
-		
-		$user = PeepsoHelpers::get_user( $a['user'] );
-		
-		$field = '';
-		switch ($a['field']) {
-			case "pseudo" :
-				$field=$user->get_username();
-				break;
-			case "firstname" : 
-				$field=$user->get_firstname();
-				break;
-			case "lastname" : 
-				$field=$user->get_lastname();
-				break;				
-			case "nicename" : 
-				$field=$user->get_nicename();
-				break;				
-			case "fullname" :
-				$field=$user->get_fullname();
-				break;						
-		}
 
-		if ( !empty($a['link']) ) {
-			$field = '<a class="' . $a['class'] . '" href="' . $user->get_profileurl() . '">' . $field . '</a>';
+		extract($a);
+		$content = empty($content)?'%s':esc_html($content);
+		
+		$user = PeepsoHelpers::get_user( $user );
+		$html = PeepsoHelpers::get_field( $user, $field );
+
+		if ( !empty($page) ) {
+			$html = '<a class="' . $class . '" href="' . PeepsoHelpers::get_url( $user, $page, $subpage ) . '">' . sprintf( $content, $html) . '</a>';
 		}	
 
-		return $field;    	
+		return $html;    	
 	}
 
 }

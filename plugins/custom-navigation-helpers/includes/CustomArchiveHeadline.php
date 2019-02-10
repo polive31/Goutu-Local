@@ -28,35 +28,9 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 		add_shortcode('seo-friendly-title', array($this,'get_seo_friendly_page_title')); 
 	}
 
-	public function get_post_type_archive_title() {
-		switch ($this->query->name) {
-			case 'recipe':
-				$title=__('All the recipes','foodiepro');
-				break;
-			case 'post':
-				$title=__('All the posts','foodiepro');
-				break;				
-			default:
-				$title=$this->query->label;
-				break;
-		}
-		return $title;
-	}
 
-	public function get_post_type_archive_intro_text() {
-		switch ($this->query->name) {
-			case 'recipe':
-				$intro_text=__('You will find here all the recipes, which you can further sort by date or evaluation.','foodiepro');
-				break;
-			case 'post':
-				$intro_text=__('You will find here all the posts, which you can further sort by date.','foodiepro');
-				break;				
-			default:
-				$intro_text='';
-				break;
-		}
-		return $intro_text;
-	}
+
+
 
 	public function custom_search_title_text() {	
 		// $url = $_SERVER["REQUEST_URI"];
@@ -75,7 +49,7 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 			), $atts );
 
 		if ( is_archive() )
-			$title = $this->custom_archive_title();
+			$title = $this->custom_archive_title( '' );
 		elseif ( is_search() )
 			$title = $this->custom_search_title_text();
 		elseif ( is_singular() ) 
@@ -89,11 +63,12 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 		return $title;
 	}
 
-	public function custom_archive_title() {
+	public function custom_archive_title( $headline ) {
 
 		$msg='';
 
 		$headline = get_term_meta( $this->query->term_id, 'headline', true );
+
 		if ( !empty($headline) ) 
 			return $headline;		
 		else {
@@ -103,33 +78,41 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 		}
 
 		if ( is_author() ) {
-			$term = $this->query->display_name;
-			// $term = get_query_var('author_name');
-
-			if ($this->initial_is_vowel($term)) 
-				return $msg . sprintf(_x('All posts from %s','vowel','foodiepro'), $term);
-			else 
-				return $msg . sprintf(_x('All posts from %s','consonant','foodiepro'), $term);			
+			$id=$this->queryvars['author'];
+			$user=PeepsoHelpers::get_user($id);
+			$name=PeepsoHelpers::get_field($user, "nicename");
+			$type=$this->queryvars['post_type'];
+			
+			$msg = $this->post_from_msg( $type, $name );
+			return $msg;
 		}
 		elseif ( is_tax() ) {
-			$term = $this->query->name;
-			$slug = $this->query->slug;
 			// $term = single_term_title('', false);
-
+			
 		    if ( is_tax('ingredient') ) {
-				if ($this->initial_is_vowel($term))
-					return $msg . sprintf(_x('All recipes containing %s','vowel','foodiepro'), $term);
+				$ingredient = $this->queryvars['ingredient'];
+				if ( initial_is_vowel($ingredient) )
+				$msg=sprintf(_x('All recipes containing %s','vowel','foodiepro'), $ingredient);
 				else 
-					return $msg . sprintf(_x('All recipes containing %s','consonant','foodiepro'), $term);			
+				$msg=sprintf(_x('All recipes containing %s','consonant','foodiepro'), $ingredient);			
+				return $msg;
 		    }
 		    if ( is_tax('cuisine') ) {
-				if ($this->is_plural($term)) 
-					return $msg . sprintf(_x('All recipes from %s','plural','foodiepro'), $term);
-				elseif ($this->initial_is_vowel($term)) 
-					return $msg . sprintf(_x('All recipes from %s','vowel','foodiepro'), $term);
-				else 
-					return $msg . sprintf(_x('All recipes from %s','consonant','foodiepro'), $term);
-		    }
+				$msg = $this->post_from_msg( 'recipe', $term);
+				return $msg;
+			}
+		    if ( is_tax('course') ) {
+				$course=$this->queryvars['course'];
+				if ($this->queryvars['season']) 
+					$term=$this->queryvars['season'];
+				elseif ( isset($_GET['author']) ) {
+					$user = get_user_by( 'slug', $_GET['author'] );
+					$user=PeepsoHelpers::get_user( $user->ID );
+					$term=PeepsoHelpers::get_field($user, "nicename");
+				}
+				$msg = $this->course_of_msg( $course, $term);
+				return $msg;
+		    }			
 			else 
 				return single_term_title( $msg, false);
 		}
@@ -140,9 +123,92 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 				return $headline;
 			else {
 				// Return the post type queried
-				return $this->get_post_type_archive_title();
+				return $this->get_post_type_archive_title( $this->queryvars['post_type'] );
 			}
 		};
+	}
+
+	public function get_post_type_archive_title( $post_type ) {
+		switch ($post_type) {
+			case 'recipe':
+				$title=__('All the recipes','foodiepro');
+				break;
+			case 'post':
+				$title=__('All the posts','foodiepro');
+				break;				
+		}
+		return $title;
+	}
+	
+
+	public function course_of_msg( $course, $context ) {
+		$html=array(
+			'masculine'		=> array(
+				'vowel' 	=> _x('All %s from %s','masculine-vowel','foodiepro'),
+				'consonant' => _x('All %s from %s','masculine-consonant','foodiepro'),	
+			),
+			'feminine'	=> array(
+				'vowel' 	=> _x('All %s from %s','feminine-vowel','foodiepro'),
+				'consonant' => _x('All %s from %s','feminine-consonant','foodiepro'),	
+			),
+		);
+		$gender_course = $this->gender($course);
+		$vowel_context = initial_is_vowel($context)?'vowel':'consonant';
+		$string = $html[$gender_course][$vowel_context];
+		$html = sprintf( $html[$gender_course][$vowel_context], $course, $context );
+
+		return $html;
+	}	
+
+	public function gender( $word ) {
+		$masculine = array(
+			'dessert',
+			'plat',
+			'aperitif',
+		);
+		$feminine = array(
+			'soupe',
+			'boisson',
+			'base',
+			'entree'
+		);
+		$word = remove_accents( $word );
+		if ( $word[-1]=='s') $word=substr($word, 0, -1);
+		
+		$out=false;
+		if ( in_array( $word, $masculine ) ) {
+			$out = 'masculine';
+		}
+		elseif ( in_array( $word, $feminine) ) {
+			$out = 'feminine';
+		}
+
+		return $out;
+	}
+
+	public function post_from_msg( $object, $origin ) {
+		$html=array(
+			'generic' 	=> array(
+				'plural' 	=> _x('All posts from %s','generic-plural','foodiepro'),
+				'vowel' 	=> _x('All posts from %s','generic-vowel','foodiepro'),
+				'consonant' => _x('All posts from %s','generic-consonant','foodiepro'),
+			),
+			'post'		=> array(
+				'plural' 	=> _x('All posts from %s','post-plural','foodiepro'),
+				'vowel' 	=> _x('All posts from %s','post-vowel','foodiepro'),
+				'consonant' => _x('All posts from %s','post-consonant','foodiepro'),	
+			),
+			'recipe'		=> array(
+				'plural' 	=> _x('All posts from %s','recipe-plural','foodiepro'),
+				'vowel' 	=> _x('All posts from %s','recipe-vowel','foodiepro'),
+				'consonant' => _x('All posts from %s','recipe-consonant','foodiepro'),	
+			),
+		);
+		if (!$object) $object='generic';
+		$context = $this->is_plural($origin)?'plural':(initial_is_vowel($origin)?'vowel':'consonant');
+		$html = sprintf( $html[$object][$context], $origin );
+
+		return $html;
 	}
 
 	public function custom_archive_description( $description ) {
@@ -155,13 +221,38 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 			$intro = get_term_meta( $this->query->parent, 'intro_text', true );
 		}	
 		
-		if (empty($intro)) {
-			$intro = $this->get_post_type_archive_intro_text();
+		if (empty($intro) ) {
+			if ( $this->queryvars['post_type'] ) {
+				$empty=true;
+				foreach ($this->queryvars as $term=>$var) {
+					if ( $term!='post_type' && $var) {
+						$empty=false;
+						break;
+					}
+				}
+				if ($empty) {
+					$intro = $this->get_post_type_archive_intro_text( $this->queryvars['post_type'] );
+				}
+			}
 		}	
 			  
 		return do_shortcode($description . $intro);
 	}	
 	
+	public function get_post_type_archive_intro_text( $post_type ) {
+		switch ($post_type) {
+			case 'recipe':
+				$intro_text=__('You will find here all the recipes, which you can further sort by date or evaluation.','foodiepro');
+				break;
+			case 'post':
+				$intro_text=__('You will find here all the posts, which you can further sort by date.','foodiepro');
+				break;				
+			default:
+				$intro_text='';
+				break;
+		}
+		return $intro_text;
+	}	
 
 
 }

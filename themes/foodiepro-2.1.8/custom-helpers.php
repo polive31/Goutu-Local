@@ -185,4 +185,16 @@ function url_exists($url) {
 	return (strpos($headers[0],'404') === false);
 }
 
+function initial_is_vowel( $expression ) {  
+	if (empty($expression)) return false;
+
+	$vowels = array('a','e','i','o','u');
+    $exceptions = array('huile','herbes','hiver');
+
+	$name = remove_accents( $expression );
+	$first_letter = $name[0];
+	$first_word = strtolower( explode(' ', trim($name))[0] );
+	return ( in_array($first_letter, $vowels) || in_array( $first_word, $exceptions) );
+} 
+
 

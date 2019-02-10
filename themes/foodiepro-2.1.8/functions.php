@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'CHILD_THEME_NAME', 'Foodie Pro Theme' );
-define( 'CHILD_THEME_VERSION', '2.2.88' );
+define( 'CHILD_THEME_VERSION', '2.2.89' );
 define( 'CHILD_THEME_DEVELOPER', 'Shay Bocks' );
 define( 'CHILD_THEME_URL', get_stylesheet_directory_uri() );
 define( 'CHILD_THEME_PATH', get_stylesheet_directory() );
@@ -24,6 +24,39 @@ define( 'CHILD_THEME_PATH', get_stylesheet_directory() );
 define( 'CHILD_COLOR_THEME', 'winter' ); // christmas, autumn, winter, summer
 
 define( 'PLUGINS_URL', plugins_url() );
+
+define( 'ALLOWED_TAGS', array(
+    'a' => array(
+        'href' => true,
+        'title' => true,
+    ),
+    'abbr' => array(
+        'title' => true,
+    ),
+    'acronym' => array(
+        'title' => true,
+    ),
+    'b' => array(),
+    'blockquote' => array(
+        'cite' => true,
+    ),
+    'cite' => array(),
+    'code' => array(),
+    'del' => array(
+        'datetime' => true,
+    ),
+    'em' => array(),
+	'i' => array(),
+    'p' => array(
+        'class' => true,
+    ),	
+    'q' => array(
+        'cite' => true,
+    ),
+    'strike' => array(),
+    'strong' => array(),
+	)
+);
 
 
 /* =================================================================*/
@@ -421,6 +454,13 @@ function block_new_users ($user) {
 	else
 		return $user;
 }
+
+/*
+ * Block certain email domains from registering
+ */
+ 
+
+
 
 /* =================================================================*/
 /* =              CUSTOM URLS     

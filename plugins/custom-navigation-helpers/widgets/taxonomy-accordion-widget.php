@@ -64,7 +64,7 @@ class Recipe_Taxonomy_Accordion extends WP_Widget {
 		// echo '<pre>' . 'current tax : ' . $current_menu_item . '</pre>';
 
 
-		// TODO COMPLETE THIS
+		// TODO COMPLETE THIS : LIMIT TO USER
 		if ( $displayed_user && class_exists('Peepso') ) {
 			$user_id = PeepSoProfileShortcode::get_instance()->get_view_user_id();
 			if ( empty($user_id) ) $displayed_user=false;

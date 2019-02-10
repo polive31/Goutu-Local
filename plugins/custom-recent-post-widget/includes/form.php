@@ -54,6 +54,13 @@
 		<textarea class="widefat" id="<?php echo $this->get_field_id( 'after' ); ?>" name="<?php echo $this->get_field_name( 'after' ); ?>" rows="5"><?php echo htmlspecialchars( stripslashes( $instance['after'] ) ); ?></textarea>
 	</p>
 
+	<p>
+		<input class="checkbox" type="checkbox" <?php checked( $instance['shortcode'], 1 ); ?> id="<?php echo $this->get_field_id( 'shortcode' ); ?>" name="<?php echo $this->get_field_name( 'shortcode' ); ?>" />
+		<label for="<?php echo $this->get_field_id( 'shortcode' ); ?>">
+			<?php _e( 'HTML contains shortcode ?', 'recent-posts-widget-extended' ); ?>
+		</label>
+	</p>	
+
 </div>
 
 <div class="rpwe-columns-3">

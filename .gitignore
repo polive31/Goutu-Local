@@ -104,10 +104,10 @@ plugins/buddypress/bp-core/*
 !plugins/custom-navigation-helpers/
 !plugins/custom-php-debug/
 !plugins/custom-post-meta-inspector/
-!plugins/custom-post-templates/
 !plugins/custom-recent-post-widget/
 !plugins/recent-posts-widget-extended/
-!plugins/custom-recipe-templates/
+!plugins/custom-post-management/
+!plugins/custom-recipe-management/
 !plugins/custom-site-notifications/
 !plugins/custom-social-interactions/
 !plugins/custom-social-sharing-buttons/

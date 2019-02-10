@@ -12,21 +12,35 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class CustomNavigationHelpers {
 	
+    const QUERY_VARS = array(
+        'post_type' , 
+		'author' 	,		
+        'ingredient', 
+        'course'    ,
+        'cuisine'   ,  
+        'season'    , 
+        'occasion'  , 
+        'diet'      , 
+        'difficult' ,
+        'category'  ,  
+        'post_tag'  , 
+	);
+	
     const TAXONOMY = array( 
-        'ingredient'    => array('hierarchical'=> false, 'multiselect'=> false, 'required'=> true, 'orderby'=> 'name'), 
-        'course'        => array('hierarchical'=> false, 'multiselect'=> false, 'required'=> true, 'orderby'=> 'description'), 
-        'cuisine'       => array('hierarchical'=> true , 'multiselect'=> false, 'required'=> false, 'orderby'=> 'name'), 
-        'season'        => array('hierarchical'=> false, 'multiselect'=> false, 'required'=> false, 'orderby'=> 'description'), 
-        'occasion'      => array('hierarchical'=> false, 'multiselect'=> true , 'required'=> true , 'orderby'=> 'description'), 
-        'diet'          => array('hierarchical'=> false, 'multiselect'=> true , 'required'=> false , 'orderby'=> 'description'), 
-        'difficult'     => array('hierarchical'=> false, 'multiselect'=> false, 'required'=> true, 'orderby'=> 'description'), 
-        'category'      => array('hierarchical'=> false, 'multiselect'=> false, 'required'=> false, 'orderby'=> 'name'), 
-        'post_tag'      => array('hierarchical'=> false, 'multiselect'=> true , 'required'=> false , 'orderby'=> 'name')
-    );
+        'ingredient'    => array('orderby'=> 'name'), 
+        'course'        => array('orderby'=> 'description'), 
+        'cuisine'       => array( 'orderby'=> 'name'), 
+        'season'        => array( 'orderby'=> 'description'), 
+        'occasion'      => array( 'orderby'=> 'description'), 
+        'diet'          => array( 'orderby'=> 'description'), 
+        'difficult'     => array('orderby'=> 'description'), 
+        'category'      => array( 'orderby'=> 'name'), 
+		'post_tag'      => array( 'orderby'=> 'name')
+	);	
 
-	protected static $vowels = array('a','e','i','o','u');
 	protected $orderby;
 	protected $query='';
+	protected $queryvars=array();
 	public static $PLUGIN_PATH;
 	public static $PLUGIN_URI;	
 	
@@ -51,6 +65,9 @@ class CustomNavigationHelpers {
 		// }
 		$this->query = get_queried_object();
 		$this->orderby = get_query_var('orderby','ASC');
+		foreach (self::QUERY_VARS as $var) {
+		$this->queryvars[$var] = get_query_var( $var, false);
+		}
 	}		
 
 	public function enqueue_masonry_scripts() {
@@ -60,49 +77,6 @@ class CustomNavigationHelpers {
 	  	};
 	}
 
-    public static function custom_categories_dropdown( $args, $options ) {
-        // $args = array( 'taxonomy' => 'course');
-        // This function generates a select dropdown list with option groups whenever
-        // the argument hierarchical is true, otherwise it renders the standard wp_dropdown_categories output 
-
-        if ( $args['hierarchical']==0 ) {   
-            $args['name']='recipe-' . $args['taxonomy'];
-            return wp_dropdown_categories( $args );
-        }
-
-        $getparents['orderby']=$args['orderby']; 
-        $getparents['taxonomy']=$args['taxonomy']; 
-        $getparents['hierarchical']=true; 
-        $getparents['depth']=1;
-        $getparents['parent']=0;
-        $parents = get_categories( $getparents );
-
-        $html = '<select lang="fr" name="recipe-' . $args['taxonomy'] . '"  id="recipe-' . $args['taxonomy'] . '" class="postform ' . $args['class'] . '" tabindex="-1">';
-        // echo '<pre>' . print_r( $terms ) . '</pre>';
-        if ($args['show_option_none'] != '') {
-                $html .= '<option value="" disabled selected>' . $options['labels']['singular_name'] . '</option>';
-                $html .= '<option class="" value="-1">' . __('none','foodiepro') . '</option>';                
-        }
-
-        foreach ($parents as $parent) {
-            $getchildren=$args;
-            $getchildren['depth']=0;
-            $getchildren['child_of']=$parent->term_id;
-            
-            $children = get_categories( $getchildren );
-            
-            $html.='<optgroup label="' . $parent->name . '">';
-            foreach ($children as $child) {
-                $html.='<option class="" value="' . $child->term_id . '">' . $child->name . '</option>';                
-            }
-            $html.='</optgroup>';
-        }
-        
-        $html .= '</select>';
-        return $html;
-    }    
-
-	
 	public function archive_filter_sort($query) {
 	  // Select any archive. For custom post type use: is_post_type_archive( $post_type )
 	  //if (is_archive() || is_search() ): => ne pas utiliser car r�sultats de recherche non relevants
@@ -151,20 +125,20 @@ class CustomNavigationHelpers {
 	---------------------------------------------------------------------------*/
 
 	// Taxonomy information
-    public static function is_multiselect($tax) {
-        if (!isset(self::TAXONOMY[$tax])) return;
-        return self::TAXONOMY[$tax]['multiselect'];
-    }
+    // public static function is_multiselect($tax) {
+    //     if (!isset(self::TAXONOMY[$tax])) return;
+    //     return self::TAXONOMY[$tax]['multiselect'];
+    // }
 
-    public static function is_hierarchical($tax) {
-        if (!isset(self::TAXONOMY[$tax])) return;
-        return self::TAXONOMY[$tax]['hierarchical'];
-    }
+    // public static function is_hierarchical($tax) {
+    //     if (!isset(self::TAXONOMY[$tax])) return;
+    //     return self::TAXONOMY[$tax]['hierarchical'];
+    // }
 
-    public static function is_required($tax) {
-        if (!isset(self::TAXONOMY[$tax])) return;
-        return self::TAXONOMY[$tax]['required'];
-    }
+    // public static function is_required($tax) {
+    //     if (!isset(self::TAXONOMY[$tax])) return;
+    //     return self::TAXONOMY[$tax]['required'];
+    // }
 
     public static function orderby($tax) {
         if (!isset(self::TAXONOMY[$tax])) return;
@@ -180,11 +154,6 @@ class CustomNavigationHelpers {
 	  $vars[] .= 'filter_term';
 	  return $vars;
 	}	
-
-	protected function initial_is_vowel($word) {
-		$first = strtolower($word[0]);
-		return in_array($first,self::$vowels);
-	}
 	
 	protected function is_plural($word) {
 		$last = strtolower($word[strlen($word)-1]);

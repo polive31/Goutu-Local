@@ -59,7 +59,6 @@ class Custom_Post_Management {
 		/* Hooks for CPM_Submission class
 		-----------------------------------------------------------------*/		
 		$CPM_Post_Submission = new CPM_Submission('post');
-		
 		/* POST_TYPE-DEPENDENT HOOKS (to be instanciated for each new post type)		
 		-----------------------------------------------------------------------------------------*/
 		add_filter( 'cpm_post_section', 						array( $CPM_Post_Submission, 'add_post_specific_section'), 15, 3 );	

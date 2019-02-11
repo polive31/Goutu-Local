@@ -1,6 +1,3 @@
-<div id="custom_post_submission_form" class="postbox">
-    <form id="new_post" name="new_post" method="post" action="" enctype="multipart/form-data">
-
         <input type="hidden" name="post_id" value="<?= $post_ID; ?>" />
         <div class="post-container post-title-container">      	
             <p>
@@ -38,9 +35,7 @@
                 <p>
                     <div class="taxonomy-select-spinner"><i class="fa fa-spinner fa-spin"></i></div>
                     <div class="taxonomy-select-boxes nodisplay">
+                    <?= $this->display_taxonomies( $post_ID, $required_fields ); ?>
+                    </div>
                 </p>
-                <?= $this->display_taxonomies( $post_ID, $required_fields ); ?>
         </div>
-
-    </form>
-</div>

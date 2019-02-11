@@ -26,7 +26,7 @@ class CPM_List {
             $view_title = 'title="' . __('Preview post', 'foodiepro') . '" ';
 
             $item = '<tr class="post-list-row ' . $post->post_status . '">';
-            $item .= '<td class="post-list-thumbnail"><a ' . $view_url . $view_title . '><img src="' . CPM_Assets::get_post_image_url( $post ) . '"></a></td>';
+            $item .= '<td class="post-list-thumbnail"><a ' . $view_url . $view_title . '><img src="' . get_the_post_thumbnail_url( $post->ID ,'mini-thumbnail') . '"></a></td>';
             $item .= '<td class="post-list-title"><a ' . $view_url . $view_title . '>' . $post->post_title . '</a></td>';
             
             // $favinfo = Custom_post_Favorite::is_favorite_post( $post->ID() );

@@ -109,6 +109,8 @@ class CRM_Submission {
         // Delete removed images 
         // (main image is already saved as part of CPM_Submission->submit() function )
         $this->instructions = get_post_meta( $post_id, 'recipe_instructions', true ); 
+
+        /* Empty instruction pictures */
         foreach ($this->instructions as $number=>$instruction) {
             $this->$instructions[$number]['image']='';
         }

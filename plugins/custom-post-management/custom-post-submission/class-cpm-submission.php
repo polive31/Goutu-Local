@@ -73,6 +73,10 @@ class CPM_Submission {
         $required = CPM_Assets::get_required( $this->post_type );
         $required_fields = array_keys($required);
         /* Standard submission form with title, image & taxonomies */
+
+        $output .= '<div id="custom_post_submission_form" class="postbox">';
+        $output .= '<form id="new_post" name="new_post" method="post" action="" enctype="multipart/form-data">';
+        
         ob_start();
         include( self::$PLUGIN_PATH . 'custom-post-submission/partials/custom_post_submission_form.php' );
         $output .= ob_get_contents();
@@ -83,9 +87,10 @@ class CPM_Submission {
         
         /* Add submission buttons */
         $buttons = array( 'preview', 'draft', 'publish');
-        $buttons_html = apply_filters( 'cpm_' . $this->post_type . '_submission_buttons', self::get_buttons( $buttons, $post_ID) );   
+        $output .= apply_filters( 'cpm_' . $this->post_type . '_submission_buttons', self::get_buttons( $buttons, $post_ID) );   
         
-        $output .= $buttons_html;
+        $output .= '</form>';
+        $output .= '</div>';
         
         return $output;
     }
@@ -197,7 +202,6 @@ class CPM_Submission {
             <?php
             $html .= ob_get_contents();
             ob_end_clean();
-
             
         }
         $html .= '</table>';
@@ -311,11 +315,11 @@ class CPM_Submission {
 
                 if( $updating_post->post_type == $this->post_type && $updating_post->post_status == 'auto-draft' ) {
                     $updating = true;
-                } elseif( $updating_post->post_type == $this->post_type && ($updating_post->post_author == get_current_user_id() || current_user_can('administrator') ) ) {
+                } 
+                elseif( $updating_post->post_type == $this->post_type && ($updating_post->post_author == get_current_user_id() || current_user_can('administrator') ) ) {
                     $updating = true;
                 }
             }
-
 
             $title = isset( $_POST['post_title'] ) ? $_POST['post_title'] : '';
             $_POST['post_title_check'] = $title;
@@ -345,16 +349,19 @@ class CPM_Submission {
             do_action( 'cpm_' . $this->post_type . '_submission_main', $post_id );
 
             // Check categorie and tags as well
-            foreach( CPM_Assets::get_taxonomies() as $taxonomy => $options ) {
-                $terms = isset( $_POST[ $this->post_type . '_'.$taxonomy] ) ? $_POST[$this->post_type . '_'.$taxonomy] : false;
+            $taxonomies = CPM_Assets::get_taxonomies( $this->post_type );
+            foreach( $taxonomies as $taxonomy => $options ) {
+                $terms = isset( $_POST[ $this->post_type . '_'. $taxonomy] ) ? $_POST[$this->post_type . '_'.$taxonomy] : false;
                 if( $terms ) {
                     if( !is_array( $terms ) ) {
                         $terms = array( intval( $terms ) );
                     } else {
                         $terms = array_map( 'intval', $terms );
                     }
-                    wp_set_object_terms( $post_id, $terms, $taxonomy );
                 }
+                else
+                    $terms = null;
+                wp_set_object_terms( $post_id, $terms, $taxonomy );
             }
 
             // Add featured image
@@ -364,7 +371,7 @@ class CPM_Submission {
                 if ( $file['name'] != '' )
                     $this->save_featured_image( $key, $post_id );
                 else
-                    $this->remove_featured_image( $key, $post_id );
+                    delete_post_thumbnail( $post_id );
             }
 
             // Check required fields
@@ -381,7 +388,6 @@ class CPM_Submission {
             }
 
             /* POST actions */
-            
             if ( isset( $_POST['edit'] ) ) {
                 $output = '';
                 $output .= '<p class="submitbox">' .CPM_Assets::get_label($this->post_type, 'edit1' ) . '</p>';
@@ -420,7 +426,6 @@ class CPM_Submission {
             }
 
             elseif ( isset( $_POST['publish'] ) ) {
-
                 // Protect the metadata added since the last post update, ie the instruction images
                 // Reason : otherwise they get deleted in wp_update_post 
                 $meta_backup = get_post_meta( $post_id, 'post_instructions', true );
@@ -439,11 +444,11 @@ class CPM_Submission {
 
                 // Success message
                 if ( current_user_can('administrator') ) 
-                    $successmsg = sprintf( CPM_Assets::get_slug('publish-user'), get_permalink($post_id) );
+                    $successmsg = sprintf( CPM_Assets::get_label($this->post_type, 'publish-admin'), get_permalink($post_id) );
                 else
-                    $successmsg = CPM_Assets::get_slug('publish-user');
+                    $successmsg = CPM_Assets::get_label($this->post_type, 'publish-user');
 
-                $url = do_shortcode('[permalink slug="' . CPM_Assets::get_slug('list') . '"]');
+                $url = do_shortcode('[permalink slug="' . CPM_Assets::get_slug( $this->post_type . '_' . 'list') . '"]');
                 $output = '<p class="successbox">' . $successmsg . '</p>';
                 $output .= '<span class="post-nav-link">' . sprintf( CPM_Assets::get_label($this->post_type, 'back' ), $url) . '</span>';
                 
@@ -463,25 +468,18 @@ class CPM_Submission {
                 do_action('wp_insert_post', 'wp_insert_post');
                 return $output;
             }
-            
             else {
-                
                 $output = '';
                 $output .= '<p class="submitbox">' . __( 'Unknown action.', 'foodiepro') . '</p>';
                 $url = do_shortcode('[permalink slug="' . CPM_Assets::get_slug( 'list' ) . '"]');
                 $output .= '<span class="post-nav-link">' . sprintf( CPM_Assets::get_label($this->post_type, 'back' ), $url) . '</span>';
                 
                 return $output;
-
             }     
             
         }
     }
 
-    public function remove_featured_image( $file_handler, $post_id, $img_type = 'featured' ) {
-        // delete_post_meta( $post_id, '_thumbnail_id' );
-        delete_post_thumbnail( $post_id, $attach_id );
-    }
 
     public function save_featured_image( $file_handler, $post_id ) {
         if ( $_FILES[$file_handler]['error'] !== UPLOAD_ERR_OK ) {
@@ -557,9 +555,9 @@ class CPM_Submission {
 ********************************************************************************/
 
     public function add_post_specific_section( $form, $post, $required_fields ) {
+        
         ob_start();
         ?>
-
         <input type="hidden" name="post_meta_box_nonce" value="<?= wp_create_nonce( 'post' ); ?>" />
         <div class="post-container post-general-container">
             <h4 id="headline-content"><?php _e( 'Post content', 'foodiepro' ); ?><?php if( in_array( 'post_content', $required_fields ) ) echo '<span class="required-field   ">*</span>'; ?></h4>
@@ -576,7 +574,6 @@ class CPM_Submission {
         </div>
 
         <?php
-            
         $form .= ob_get_contents();
         ob_end_clean();
         return $form;

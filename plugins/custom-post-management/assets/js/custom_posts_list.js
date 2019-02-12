@@ -7,9 +7,9 @@ jQuery(document).ready(function() {
         var button = jQuery(this);
         if(confirm(custom_posts_list.confirm_message + ' ' + button.data('title'))) {
             var data = {
-                action: 'csf_delete_post',
+                action: 'user_delete_post',
                 security: custom_posts_list.nonce,
-                recipe: button.data('id')
+                post: button.data('id')
             };
 
             jQuery.post(

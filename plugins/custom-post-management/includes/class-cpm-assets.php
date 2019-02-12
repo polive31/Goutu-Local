@@ -133,7 +133,7 @@ class CPM_Assets {
 					'name'			=> 'custom_post_submission_form',
 					'ajaxurl' 			=> admin_url( 'admin-ajax.php' ),
 					'nonce' 			=> wp_create_nonce( 'custom_post_submission_form' ),
-					'postid' 			=> get_the_ID(),
+					// 'postid' 			=> get_the_ID(),
 					'placeholder' 		=> self::$PLUGIN_URI . '/img/image_placeholder.png',
 					'fileTypes' 		=> self::ATTACHMENT_FORMATS,
 					'wrongFileType' 	=> sprintf(__('Authorized file formats are : %s','foodiepro'),implode(', ',self::ATTACHMENT_FORMATS)),

@@ -10,7 +10,7 @@ class CPM_List_Shortcodes {
         ), $atts );
     
         $post_type = $atts['post_type'];
-        $text = CPM_Assets::get_label( $post_type, 'button' );
+        $text = CPM_Assets::get_label( $post_type, 'new_button' );
         $text = esc_html( $text );
 
         $out = do_shortcode('[permalink slug="' . CPM_Assets::get_slug( $post_type . '_form') . '" class="black-button"]' . $text . '[/permalink]');

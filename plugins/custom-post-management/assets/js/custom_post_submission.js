@@ -1,6 +1,8 @@
 jQuery(document).ready(function() {
     /* Shortcode buttons
     --------------------------------------------------------------- */
+    postId = jQuery('#new_post input[name="post_id"]');
+
     tinymce.init({
         selector: '#post_content',
         theme: 'modern',
@@ -25,9 +27,10 @@ jQuery(document).ready(function() {
         images_upload_handler: function (blobInfo, success, failure) {
 
             var formData = new FormData();
-            formData.append('action', 'csf_tinymce_upload_image');
+            formData.append('action', 'cpm_tinymce_upload_image');
             formData.append('security', custom_post_submission_form.nonce);
-            formData.append('postid', custom_post_submission_form.postid);
+            // formData.append('postid', custom_post_submission_form.postid);
+            formData.append('postid', postId.val() );
             formData.append('file', blobInfo.blob(), blobInfo.filename());
 
             jQuery.ajax({
@@ -71,11 +74,28 @@ jQuery(document).ready(function() {
         Id = (Id !== null) ? Id : '';
         thisPreview = jQuery('#post_thumbnail_preview_' + Id);
         thisInput = jQuery('#post_thumbnail_input_' + Id);
+        postId = jQuery('#new_post input[name="post_id"]');
         console.log('thisPreview = ', thisPreview);
         console.log('thisInput = ', thisInput);
-        thisPreview.removeAttr('src');
-        thisPreview.parents('.thumbnail').addClass('nodisplay');
-        thisInput.val('');
+        
+        var data = {
+            action: 'cpm_remove_featured_image',
+            security: custom_post_submission_form.nonce,
+            // postid: custom_post_submission_form.postid
+            postid: postId.val()
+        };
+        
+        jQuery.post(
+            custom_post_submission_form.ajaxurl,
+            data,
+            function (response) {
+                console.log('Ajax call suceeded image removed !', response);
+                thisPreview.removeAttr('src');
+                thisPreview.parents('.thumbnail').addClass('nodisplay');
+                thisInput.val('');
+            }
+        );
+
     }); 
 
 });

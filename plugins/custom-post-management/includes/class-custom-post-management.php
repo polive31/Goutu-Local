@@ -62,11 +62,15 @@ class Custom_Post_Management {
 		/* POST_TYPE-DEPENDENT HOOKS (to be instanciated for each new post type)		
 		-----------------------------------------------------------------------------------------*/
 		add_filter( 'cpm_post_section', 						array( $CPM_Post_Submission, 'add_post_specific_section'), 15, 3 );	
-
+		
 		// Ajax callbacks for Custom Submission Form
-        add_action( 'wp_ajax_csf_tinymce_upload_image', 		array( $CPM_Post_Submission, 'ajax_tinymce_upload_image') );
-		add_action( 'wp_ajax_nopriv_csf_tinymce_upload_image', 	array( $CPM_Post_Submission, 'ajax_tinymce_upload_image') );
-		// Submission form customization
+        add_action( 'wp_ajax_cpm_remove_featured_image', 		array( $CPM_Post_Submission, 'ajax_remove_featured_image') );
+		add_action( 'wp_ajax_nopriv_cpm_remove_featured_image', array( $CPM_Post_Submission, 'ajax_remove_featured_image') );
+
+		add_action( 'wp_ajax_cpm_tinymce_upload_image', 		array( $CPM_Post_Submission, 'ajax_tinymce_upload_image') );
+		add_action( 'wp_ajax_nopriv_cpm_tinymce_upload_image', 	array( $CPM_Post_Submission, 'ajax_tinymce_upload_image') );
+
+		// Support of french language on dropdowns
 		add_filter( 'wp_dropdown_cats', 						array($CPM_Post_Submission, 'add_lang_to_select'));
 		
 

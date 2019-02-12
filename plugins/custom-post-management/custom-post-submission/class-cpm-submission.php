@@ -66,6 +66,7 @@ class CPM_Submission {
             );
             $post_ID = wp_insert_post( $post_draft );
         }
+
         $post = get_post( $post_ID );
 
         $output = $this->get_intro_text( $state );
@@ -370,8 +371,6 @@ class CPM_Submission {
                 $file=$_FILES[$key];
                 if ( $file['name'] != '' )
                     $this->save_featured_image( $key, $post_id );
-                else
-                    delete_post_thumbnail( $post_id );
             }
 
             // Check required fields
@@ -497,18 +496,24 @@ class CPM_Submission {
         
         return $attach_id;
     }
-
-
+    
+    
 /********************************************************************************
-*********************         AJAX CALLBACKS       ***************************
+ *********************         AJAX CALLBACKS       ***************************
 ********************************************************************************/
+    
+    public function ajax_remove_featured_image() {
+        $check = check_ajax_referer( 'custom_submission_form', 'security', false );
+        $post_id = intval( $_POST['postid'] );
+        $result = delete_post_thumbnail( $post_id );
+        die();
+    }
 
     public function ajax_tinymce_upload_image() {
         $check = check_ajax_referer( 'custom_submission_form', 'security', false );
 
         $post_id = intval( $_POST['postid'] );
 
-		
         reset ($_FILES);
         $temp = current($_FILES);
 		$file=key($_FILES);

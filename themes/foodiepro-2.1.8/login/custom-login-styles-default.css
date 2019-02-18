@@ -2,15 +2,24 @@
 Login Page
 ---------------------------------------------------------------------------------------------------- */
 
-
 body.login {
-  background-color:#FFFFFF;
-  /*background-image: url('home-bg.jpg');*/
-  /*background-repeat: no-repeat;
+  width:100%;
+  background-image: url('../images/theme/background-winter/background-snow.jpg');
+  background-repeat: repeat;
   background-attachment: fixed;
-  background-position: center;*/
+  background-position: center;
 }
 
+#login {
+  padding: 20px 30px;
+  margin: 8% auto auto auto;
+  background:#FFFFFF;
+  box-shadow: 0px 0px 9px 5px rgba(0, 0, 0, 0.17);
+}
+
+.login form {
+    box-shadow: initial;
+}
 
 .login h1 a {
   background-image: url('login-logo.png');
@@ -26,3 +35,13 @@ body.login {
 #nav > a:first-child {
 	color: #d76642;
 }
+
+
+/* Media queries */
+
+@media only screen and (max-width:420px) {
+  body.login {
+    background:#FFFFFF;
+  }
+}
+

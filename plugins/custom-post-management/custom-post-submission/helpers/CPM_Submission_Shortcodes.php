@@ -1,4 +1,3 @@
-
 <?php
 
 class CPM_Submission_Shortcodes {
@@ -21,7 +20,7 @@ class CPM_Submission_Shortcodes {
 
         $Form = new CPM_Submission( $post_type );
         
-        if( isset( $_POST['submitpost'] ) ) {            
+        if( isset( $_POST['submit' . $post_type] ) ) {            
             /* Submit post */
             $output .= $Form->submit();
         } 

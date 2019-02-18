@@ -124,7 +124,9 @@ class CPM_Submission {
             $output .= '<p>';
             $output .= '<span class="post-nav-link">' . sprintf( CPM_Assets::get_label($this->post_type, 'back' ), $url) . '</span>';
             $output .= '</p>';
-            break;    
+            break;   
+            default:
+            $output=''; 
         }
 
         return $output;
@@ -299,11 +301,11 @@ class CPM_Submission {
 
         if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) ) {
 
-            wp_verify_nonce( $_POST['submitpost'], 'post_submit' );
+            $valid = wp_verify_nonce( $_POST[ 'submit' . $this->post_type ], $this->post_type . '_submit' );
 
             // If guest, interrupt execution
-            if( !is_user_logged_in() ) {
-                echo __('You must be logged-in to access this page.', 'foodiepro');
+            if( !$valid || !is_user_logged_in() || !current_user_can('publish_posts') ) {
+                echo __('You are not authorized to access this page.', 'foodiepro');
                 return;
             }
 
@@ -327,7 +329,7 @@ class CPM_Submission {
 
             if( !$title ) $title = __( 'Untitled', 'foodiepro' );
 
-            $content = isset( $_POST['post_content'] ) ? $_POST['post_content'] : '';
+            $content = isset( $_POST[ $this->post_type . '_content'] ) ? $_POST[ $this->post_type . '_content'] : '';
 
             $post = array(
                 'post_title' => $title,
@@ -347,6 +349,14 @@ class CPM_Submission {
                 $post_id = wp_insert_post( $post, true );
             }
 
+            // Add featured image
+            $key = $this->post_type . '_thumbnail';
+            if ( isset($_FILES[$key]) ) {
+                $file=$_FILES[$key];
+                if ( $file['name'] != '' )
+                    $this->save_featured_image( $key, $post_id );
+            }            
+
             do_action( 'cpm_' . $this->post_type . '_submission_main', $post_id );
 
             // Check categorie and tags as well
@@ -365,17 +375,11 @@ class CPM_Submission {
                 wp_set_object_terms( $post_id, $terms, $taxonomy );
             }
 
-            // Add featured image
-            if ( isset($_FILES[$this->post_type . '_thumbnail'] ) ) {
-                $key = $this->post_type . '_thumbnail';
-                $file=$_FILES[$key];
-                if ( $file['name'] != '' )
-                    $this->save_featured_image( $key, $post_id );
-            }
 
             // Check required fields
             $errors = array();
-            foreach( CPM_Assets::get_required( $this->post_type ) as $field => $label ) {
+            $required = CPM_Assets::get_required( $this->post_type );
+            foreach( $required as $field => $label ) {
                 if( $field != $this->post_type . '_thumbnail' || !isset( $_FILES[$this->post_type . '_thumbnail'] ) ) {
                     if( !isset( $_POST[$field] ) || !$_POST[$field] || $_POST[$field]=='-1'  ) {
                         $errors[] = $label;
@@ -396,11 +400,10 @@ class CPM_Submission {
 
             elseif ( isset( $_POST['draft'] ) ) {
                 // Update post status
-                $args = array(
-                    'ID' => $post_id,
-                    'post_status' => 'draft',
-                );
-                wp_update_post( $args );
+                // Do not use wp_update_post which erases some recently added metadata
+                global $wpdb;
+                $wpdb->update( $wpdb->posts, array( 'post_status' => 'draft' ), array( 'ID' => $post_id ) );
+                clean_post_cache( $post_id );                
                 $output = $this->display( $post_id, 'draft' );
                 return $output;
 
@@ -410,7 +413,7 @@ class CPM_Submission {
                 $output = '';
 
                 if( count( $errors ) > 0 ) {
-                    $output .= '<div class="cpm-errors">';
+                    $output .= '<div class="errorbox">';
                     $output .= __( 'Please fill-in those required fields:', 'foodiepro' );
                     $output .= '<ul>';
                     foreach( $errors as $error ) {
@@ -419,27 +422,18 @@ class CPM_Submission {
                     $output .= '</ul>';
                     $output .= '</div>';
                 }
-                $output .= $this->submit( $post_id, array( 'preview', 'draft', 'publish' ) );
+                $output .= $this->display( $post_id, 'none' );
                 do_action('wp_insert_post', 'wp_insert_post');
                 return $output;
             }
 
             elseif ( isset( $_POST['publish'] ) ) {
-                // Protect the metadata added since the last post update, ie the instruction images
-                // Reason : otherwise they get deleted in wp_update_post 
-                $meta_backup = get_post_meta( $post_id, 'post_instructions', true );
-                
                 // Update post status
+                // Do not use wp_update_post which erases some recently added metadata
                 $status=current_user_can('administrator')?'publish':'pending';
-                $args = array(
-                    'ID' => $post_id,
-                    'post_status' => $status,
-                );
-                
-                wp_update_post( $args );
-
-                // Restore backuped metadata
-                update_post_meta( $post_id, 'post_instructions', $meta_backup );
+                global $wpdb;
+                $wpdb->update( $wpdb->posts, array( 'post_status' => $status ), array( 'ID' => $post_id ) );
+                clean_post_cache( $post_id );                  
 
                 // Success message
                 if ( current_user_can('administrator') ) 

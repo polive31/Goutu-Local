@@ -106,31 +106,18 @@ class CRM_Submission {
         $recipe->save();
 
         // Save ingredients & instruction images
-        // Delete removed images 
         // (main image is already saved as part of CPM_Submission->submit() function )
         $this->instructions = get_post_meta( $post_id, 'recipe_instructions', true ); 
-
-        /* Empty instruction pictures */
-        foreach ($this->instructions as $number=>$instruction) {
-            $this->$instructions[$number]['image']='';
-        }
 
         if( $_FILES ) {
             foreach( $_FILES as $key => $file ) {
                 if ( $file['name'] != '' ) {
-                    if( $key == 'ingredients_thumbnail' )
-                        $this->save_recipe_image( $key, $post_id, 'ingredients' );// Ingredients overview thumbnail
-                    else
-                        $this->save_recipe_image( $key, $post_id, 'instruction' );// Instruction step thumbnail
+                    $this->insert_attachment( $key, $post_id );
                 }
             }
         }
         update_post_meta( $post_id, 'recipe_instructions', $this->instructions );        
-    }
-
-    public function remove_attachment( $file_handler, $post_id ) {
-        delete_post_meta( $post_id, '_thumbnail_id' );
-    }
+    }    
 
     public function insert_attachment( $file_handler, $post_id ) {
         if ( $_FILES[$file_handler]['error'] !== UPLOAD_ERR_OK ) {
@@ -143,14 +130,17 @@ class CRM_Submission {
 
         $attach_id = media_handle_upload( $file_handler, $post_id );
 
-        if ( $img_type == 'ingredients' ) { // Ingredients image
+        if ( $file_handler == 'recipe_thumbnail' ) { // Featured Recipe image
+            set_post_thumbnail( $post_id, $attach_id );
+        }
+        elseif ( $file_handler == 'ingredients_thumbnail' ) { // Ingredients image
             update_post_meta( $post_id, '_ingredients_thumbnail_id', $attach_id );
         }            
         else { // Instructions image
             $number = explode( '_', $file_handler );
             $number = $number[2];
             /* Post meta update for instructions is handled in WPURP/helpers/recipe_save.php */
-            $this->instructions[$number]['image'] = $attach_id;
+            $this->instructions[$number]['image'] = strval($attach_id);
         }
 
         return $attach_id;
@@ -160,6 +150,25 @@ class CRM_Submission {
 /********************************************************************************
 ****                           AJAX CALLBACKS                          **********
 ********************************************************************************/
+    public function ajax_remove_instruction_image() {
+        $check = check_ajax_referer( 'custom_recipe_submission_form', 'security', false );
+        $post_id = intval( $_POST['postid'] );
+        $thumb_id = intval( $_POST['thumbid'] );
+        
+        if ($thumb_id==0) {
+            $result = delete_post_thumbnail( $post_id );
+        }
+        else {
+            $instructions = get_post_meta( $post_id, 'recipe_instructions', true ); 
+            if ( isset($instructions[$thumb_id]['image']) ) {
+                unset($instructions[$thumb_id]['image']);
+                update_post_meta( $post_id, 'recipe_instructions', $instructions );
+            }
+        }        
+
+        die();
+    }
+
     public function ajax_ingredient_preview() {
         if( ! check_ajax_referer( 'preview_ingredient', 'security', false ) ) {
             wp_send_json_error( array('msg' => 'Nonce not recognized'));

@@ -120,7 +120,7 @@ class PeepsoCustomLoginWidget extends WP_Widget {
 
 			<form name="login-form" id="login-widget-form<?php echo $this->instance;?>" class="login-form" action="<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>" method="post">
 				
-				<label for="login-widget-user-login"><?php _e( 'Username', 'foodiepro' ); ?></label>
+				<label for="login-widget-user-login"><?php _e( 'Email Address', 'foodiepro' ); ?></label>
 				<input type="text" name="log" id="login-widget-user-login<?php echo $this->instance;?>" class="input" value="" />
 
 				<label for="login-widget-user-pass"><?php _e( 'Password', 'foodiepro' ); ?></label>

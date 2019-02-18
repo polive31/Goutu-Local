@@ -48,12 +48,12 @@ class CRM_Assets {
 	
 	public function setup_CPM_required( $required ) {
 		$required['recipe']= array(
-			'recipe_title_check'	=> __('Recipe title.','foodiepro'),
-			'recipe_course' 		=> __('Recipe course.', 'foodiepro'),
-			'recipe_difficult' 		=> __('Recipe difficulty.', 'foodiepro'),
-			'recipe_ingredients' 	=> __('Ingredients.', 'foodiepro'),
-			'recipe_servings' 		=> __('Number of servings.', 'foodiepro'),
-			'recipe_prep_time' 		=> __('Preparation time.', 'foodiepro'),
+			'recipe_title_check'	=> __('Recipe Title','foodiepro'),
+			'recipe_course' 		=> __('Recipe Course', 'foodiepro'),
+			'recipe_difficult' 		=> __('Recipe Difficulty', 'foodiepro'),
+			'recipe_ingredients' 	=> __('Ingredients', 'foodiepro'),
+			'recipe_servings' 		=> __('Number of Servings', 'foodiepro'),
+			'recipe_prep_time' 		=> __('Preparation Time', 'foodiepro'),
 		);
 		return $required;
 	}	
@@ -124,7 +124,8 @@ class CRM_Assets {
 	
 	public function setup_CPM_recipe_labels( $labels ) {
 		$labels['recipe'] = array(
-			'button'		=> _x( 'New Post', 'recipe', 'foodiepro' ),
+			'edit_button'	=> _x( 'Edit Post', 'recipe', 'foodiepro' ),
+			'new_button'	=> _x( 'New Post', 'recipe', 'foodiepro' ),
 			'new1'			=> _x( 'Write your new post on this page.', 'recipe', 'foodiepro' ),
 			'new2'			=> _x( 'You can then choose to save it as draft, or to publish it. Once approved, it will be visible to others according to your visibility preferences.', 'recipe', 'foodiepro' ),
 			'edit1'			=> _x( 'Edit your existing post on this page.', 'recipe', 'foodiepro' ),
@@ -193,7 +194,6 @@ class CRM_Assets {
 		$scripts['cpm-list']['data']['confirm_message'] = _x( 'Are you sure you want to delete this post :', 'recipe', 'foodiepro' );
 		$scripts['cpm-list']['location'][]='recipe_list';
 
-		// $scripts['cpm-submission']['location'][]='recipe_form';
 		$scripts['cpm-select2-taxonomies']['location'][]='recipe_form';
 		$scripts['cpm-select2']['location'][]='recipe_form';
 		$scripts['cpm-select2-fr']['location'][]='recipe_form';
@@ -374,6 +374,8 @@ class CRM_Assets {
 			'footer' => true,
 			'data' => array(
 				'name' => 'custom_recipe_submission_form',
+				'ajaxurl' 	=> admin_url( 'admin-ajax.php' ),
+				'nonce' 	=> wp_create_nonce('custom_recipe_submission_form'),
 				'placeholder' => WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png',
 				'fileTypes' => self::ATTACHMENT_FORMATS,
 				'wrongFileType' => sprintf(__('Authorized file formats are : %s','foodiepro'),implode(', ',self::ATTACHMENT_FORMATS)),

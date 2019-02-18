@@ -251,6 +251,43 @@ jQuery(document).ready(function() {
         }
     });
 
+    // Remove Image 
+    jQuery("#custom_post_submission_form").on("click", ".recipe_remove_image_button ", function () {
+
+        console.log('Click on remove recipe image');
+        if (!confirm(custom_post_submission_form.deleteImage)) return;
+        var Id = jQuery(this).attr('id').match(/\d+/);
+        Id = (Id !== null) ? Id[0] : '';
+        thisPreview = jQuery('#recipe_thumbnail_preview_' + Id);
+        thisInput = jQuery('#recipet_thumbnail_input_' + Id);
+        postId = jQuery('#new_post input[name="post_id"]');
+        console.log('thisPreview = ', thisPreview);
+        console.log('thisInput = ', thisInput);
+        console.log('thumbid = ', Id);
+
+        var data = {
+            action: 'crm_remove_recipe_image',
+            security: custom_recipe_submission_form.nonce,
+            postid: postId.val(),
+            thumbid: Id
+        };
+
+        console.log('data : ', data);
+
+        jQuery.post(
+            custom_recipe_submission_form.ajaxurl,
+            data,
+            function (response) {
+                console.log('Ajax call suceeded image removed !', response);
+                thisPreview.removeAttr('src');
+                thisPreview.parents('.thumbnail').addClass('nodisplay');
+                thisInput.val('');
+            }
+        );
+
+    }); 
+
+
 
     /* Image management
     ---------------------------------------------------*/
@@ -266,23 +303,6 @@ jQuery(document).ready(function() {
         var Id = InstructionId.match(/\d+/);
         // console.log( "Changement sur l'input..." + Id );
         PreviewImage(Id);
-    });
-
-
-    // Remove Image 
-    jQuery("#custom_post_submission_form").on("click", ".recipe_remove_image_button", function() { 
-        console.log('Click on remove image');
-        if (!confirm(custom_recipe_submission_form.deleteImage)) return;
-        var Id = jQuery(this).attr('id').match(/\d+/);
-        Id = (Id!==null)?Id:'';
-        console.log('#recipe_thumbnail_preview_' + Id);
-        thisPreview = jQuery('#recipe_thumbnail_preview_' + Id);
-        thisInput = jQuery('#recipe_thumbnail_input_' + Id);
-        console.log('thisPreview = ', thisPreview);
-        console.log('thisInput = ', thisInput);
-        thisPreview.removeAttr('src');
-        thisPreview.parents('.thumbnail').addClass('nodisplay');
-        thisInput.val('');
     });
 
 
@@ -493,57 +513,51 @@ function addRecipeInstruction()
 
     new_instruction
         .insertAfter('#recipe-instructions tr:last')
-        .find('textarea').val('')
         .attr('name', function(index, name) {
+            if (name!=null)
             return name.replace(/(\d+)/, nbr_instructions);
         })
         .attr('id', function(index, id) {
+            if (id!=null)
             return id.replace(/(\d+)/, nbr_instructions);
         });
-
-    // new_instruction
-    //     .find('.recipe_instructions_add_image').removeClass('wpurp-hide')
 
     new_instruction
         .find('input')
         .val('')
+        .attr('name', function(index, name) {
+            if (name!=null)
+            return name.replace(/(\d+)/, nbr_instructions);
+        })
+        .attr('id', function(index, id) {
+            if (id!=null)
+            return id.replace(/(\d+)/, nbr_instructions);
+        });
+
+    new_instruction
+        .find('textarea')
+        .val('')
+        .attr('name', function (index, name) {
+            if (name != null)
+                return name.replace(/(\d+)/, nbr_instructions);
+        })
+        .attr('id', function (index, id) {
+            if (id != null)
+                return id.replace(/(\d+)/, nbr_instructions);
+        });   
+        
+    new_instruction
+        .find('.instruction-image > *')
+        .attr('id', function (index, id) {
+            if (id != null)
+                return id.replace(/(\d+)/, nbr_instructions);
+        });          
 
     new_instruction
         .find('.instruction-image')
         .addClass('nodisplay')
 
-        // Thumbnail file selector input
-    new_instruction
-        .find('.recipe_instructions_image')
-        .attr('name', function(index, name) {
-            return name.replace(/(\d+)/, nbr_instructions);
-        })
-        .attr('id', function(index, id) {
-            return id.replace(/(\d+)/, nbr_instructions);
-        }) 
-        .val(null);
-
-        // Thumbnail content
-    new_instruction
-        .find('.recipe_instructions_thumbnail')
-        .attr('id', function(index, id) {
-            return id.replace(/(\d+)/, nbr_instructions);
-        })
-        .attr('src', custom_recipe_submission_form.placeholder );                 
-
-        // instructions group
-    new_instruction
-        .find('.instructions_group')
-        .attr('name', function(index, name) {
-            return name.replace(/(\d+)/, nbr_instructions);
-        })
-        .attr('id', function(index, id) {
-            return id.replace(/(\d+)/, nbr_instructions);
-        });
-
-
     new_instruction.find('span.instructions-delete').show();
-    // addRecipeInstructionOnTab();
 
     jQuery('#recipe-instructions tr:last textarea').focus();
     calculateInstructionGroups();

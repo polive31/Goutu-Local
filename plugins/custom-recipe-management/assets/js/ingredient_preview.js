@@ -51,7 +51,8 @@ function isValid( id ) {
     var thisIngredient=getIngredientbyId(id);
     var inputField = thisIngredient.find('.name input');
     // console.log('In isValid, checking value for ' + inputField.attr('class') + ' ' + inputField.attr('id') , inputField.val());
-    if ( inputField.val().length == 0 ) isValid=false;
+    // if ( inputField.val().length == 0 ) isValid=false;
+    if ( inputField.val() == null ) isValid=false;
     // thisIngredient.children('input').each(function() {
     //     var inputField = jQuery(this);
     //     console.log('In isValid, checking value for ' + inputField.attr('class'), inputField.val());

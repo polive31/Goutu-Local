@@ -68,6 +68,7 @@ jQuery(document).ready(function() {
 
     // Remove Image 
     jQuery("#custom_post_submission_form").on("click", ".post_remove_image_button", function () {
+
         console.log('Click on remove image');
         if (!confirm(custom_post_submission_form.deleteImage)) return;
         var Id = jQuery(this).attr('id').match(/\d+/);
@@ -81,8 +82,8 @@ jQuery(document).ready(function() {
         var data = {
             action: 'cpm_remove_featured_image',
             security: custom_post_submission_form.nonce,
-            // postid: custom_post_submission_form.postid
-            postid: postId.val()
+            postid: postId.val(),
+            thumbid: Id
         };
         
         jQuery.post(

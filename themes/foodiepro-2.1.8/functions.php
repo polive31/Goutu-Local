@@ -84,6 +84,24 @@ function load_admin_stylesheet() {
 }
 
 
+/* Disable admin bar for all users except admin */
+add_action('after_setup_theme', 'remove_admin_bar');
+function remove_admin_bar() {
+	if (!current_user_can('administrator') && !is_admin())
+  	show_admin_bar(false); 
+}
+
+/* Disable dashboard for non admin */
+add_action( 'init', 'blockusers_init' );
+function blockusers_init() {
+	if ( is_admin() && ! current_user_can( 'administrator' ) && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
+		wp_redirect( home_url() );
+		exit;
+	}
+}
+
+
+
 /* =================================================================*/
 /* =              FOODIEPRO CHILD THEME SETUP
 /* =================================================================*/
@@ -388,10 +406,9 @@ function custom_favicon_links() {
 /* =================================================================*/
 
 /* Sets login page color theme */
-add_action('login_head', 'my_custom_login');
-function my_custom_login() {
-	//echo '<link rel="stylesheet" type="text/css" href="' . CHILD_THEME_URL . '/login/custom-login-styles-' . CHILD_COLOR_THEME . '.css" />';
-	echo '<link rel="stylesheet" type="text/css" href="' . CHILD_THEME_URL . '/login/custom-login-styles-default.css" />';
+add_action('login_enqueue_scripts', 'custom_login_style');
+function custom_login_style() {
+	custom_enqueue_style( 'custom-login', '/login/custom-login-styles-default.css');
 }
 
 /* Sets login page logo & url */
@@ -400,38 +417,51 @@ function my_login_logo_url() {
 	return get_bloginfo( 'url' );
 }
 
-add_filter( 'login_form_defaults', 'my_login_page' );
-function my_login_page() {
-	$defaults = array(
-		'label_username' => __('Enter Username', 'foodiepro'),
-		'label_password' => __('Enter Password', 'foodiepro'),
-		'label_remember' => __('Remember Login State', 'foodiepro'),
-		'label_log_in'   => __('Please Log In', 'foodiepro'),
-	);
-	return $defaults;
-}
-
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 function my_login_logo_url_title() {
 	$output = __('Goûtu.org - La Communauté des Gourmets', 'foodiepro');
 	return $output;
 }
 
-/* Disable admin bar for all users except admin */
-add_action('after_setup_theme', 'remove_admin_bar');
-function remove_admin_bar() {
-	if (!current_user_can('administrator') && !is_admin())
-  	show_admin_bar(false); 
+/* customize username label in any login form called by wp_login_form() function */
+add_filter( 'login_form_defaults', 'custom_wp_login_form' );
+function custom_wp_login_form() {
+	$args = array(
+		'label_username' => __('Enter Email Address', 'foodiepro'),
+		'label_password' => __('Enter Password', 'foodiepro'),
+		'label_remember' => __('Remember Login State', 'foodiepro'),
+		'label_log_in'   => __('Please Log In', 'foodiepro'),
+	);
+	return $args;
 }
 
-/* Disable dashboard for non admin */
-add_action( 'init', 'blockusers_init' );
-function blockusers_init() {
-	if ( is_admin() && ! current_user_can( 'administrator' ) && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
-		wp_redirect( home_url() );
-		exit;
-	}
+/* customize username label  in wp-login.php page */
+add_action( 'login_head', 'cc_login_username_label' );
+function cc_login_username_label() {
+	add_filter( 'gettext', 'cc_login_username_label_change', 20, 3 );
 }
+function cc_login_username_label_change( $translated_text, $text, $domain )  {
+	if ($text === 'Username or Email Address') {
+		$translated_text = __( 'Email Address', 'foodiepro' ); // Use WordPress's own translation of 'Username'
+	}
+	return $translated_text;
+}
+
+
+// Change login credentials to email address only
+remove_filter( 'authenticate', 'wp_authenticate_username_password', 20, 3 );
+add_filter( 'authenticate', 'my_authenticate_username_password', 20, 3 );
+function my_authenticate_username_password( $user, $username, $password ) {
+	if ( ! empty( $username ) ) {
+		if (!strpos( $username, '@' )) 
+			return new WP_Error( 'Invalid email address.', __( '<strong>ERROR</strong>: Invalid login. Please log in with your email address.', 'foodiepro') ); //returns nothing if not valid email
+		$user = get_user_by( 'email', $username );
+	}
+	if ( isset( $user->user_login, $user ) )
+		$username = $user->user_login;
+	return wp_authenticate_username_password( NULL, $username, $password );
+} 
+ 
 
 /* Redirect towards homepage on logout */
 add_action('wp_logout','go_home');
@@ -455,10 +485,6 @@ function block_new_users ($user) {
 		return $user;
 }
 
-/*
- * Block certain email domains from registering
- */
- 
 
 
 

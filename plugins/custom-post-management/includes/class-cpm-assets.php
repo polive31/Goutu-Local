@@ -187,9 +187,9 @@ class CPM_Assets {
 		
         $default_required = array(
 			'post'	=> array(
-				'post_title_check'  => __('Post Title.','foodiepro'),
-				'post_content'      => __('Post Content.', 'foodiepro'),
-				'post_category'		=> __('Post Category.', 'foodiepro'),// IMPORTANT for taxonomies, name here must be <post_type>_<taxonomy>
+				'post_title_check'  => __('Post Title','foodiepro'),
+				'post_content'      => __('Post Content', 'foodiepro'),
+				'post_category'		=> __('Post Category', 'foodiepro'),// IMPORTANT for taxonomies, name here must be <post_type>_<taxonomy>
 				// 'post_thumbnail'		=> __('Post Featured Image.', 'foodiepro'),
 				// 'post_post_tag'		=> __('Post Tag.', 'foodiepro'),//
 			),

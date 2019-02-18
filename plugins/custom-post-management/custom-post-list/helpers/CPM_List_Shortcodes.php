@@ -1,4 +1,3 @@
-
 <?php
 
 class CPM_List_Shortcodes {

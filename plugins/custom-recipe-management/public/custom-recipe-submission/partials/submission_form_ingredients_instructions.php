@@ -5,7 +5,7 @@
         <tr class="recipe-general-form-description">
             <td class="recipe-general-form-label"><label for="recipe_description"><?php _e('Description', 'foodiepro' ); ?><?php if( in_array( 'recipe_description', $required_fields ) ) echo '<span class="required-field">*</span>'; ?></label></td>
             <td class="recipe-general-form-field">
-               <textarea class="recipe-description" name="content" id="recipe_description" rows="4" placeholder="<?php echo __('Provide general information about this recipe', 'foodiepro');?>"><?php echo $recipe->output_description('form'); ?></textarea>
+               <textarea class="recipe-description" name="recipe_content" id="recipe_description" rows="4" placeholder="<?php echo __('Provide general information about this recipe', 'foodiepro');?>"><?php echo $recipe->output_description('form'); ?></textarea>
             </td>
         </tr>
         <tr class="recipe-general-form-servings">
@@ -351,7 +351,7 @@
                         <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail_input_<?php echo $i; ?>" value="" size="50" name="recipe_thumbnail_<?php echo $i; ?>" />
                     </div>
                 </td>
-                <td>
+                <td class="instruction-thumbnail">
                     <div class="instruction-image thumbnail <?php if( !$has_image ) { ?>nodisplay<?php };?>">
                         <img src="<?php echo $image; ?>" class="post_thumbnail" id="recipe_thumbnail_preview_<?php echo $i; ?>" />
                         <div class="recipe_remove_image_button" id="recipe_thumbnail_remove_<?php echo $i; ?>" title="<?php _e( 'Remove Image', 'foodiepro' ) ?>" /></div>
@@ -385,7 +385,7 @@
                         <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail_input_<?php echo $i; ?>" value="" size="50" name="recipe_thumbnail_<?php echo $i; ?>" />
                     </div>
                 </td>
-                <td>                    
+                <td class="instruction-thumbnail">                    
                     <div class="instruction-image thumbnail nodisplay">
                         <img src="<?php echo $image; ?>" class="post_thumbnail" id="recipe_thumbnail_preview_<?php echo $i; ?>" />
                         <div class="recipe_remove_image_button" id="recipe_thumbnail_remove_<?php echo $i; ?>" title="<?php _e( 'Remove Image', 'foodiepro' ) ?>" /></div>
@@ -411,7 +411,7 @@
 </div>
 
 <div class="post-container recipe-notes-container-nojs">
-    <h4 id="headline-notes"><?php _e( 'Recipe notes', 'foodiepro' ) ?></h4>
+    <h4 id="headline-notes"><?php _e( 'Recipe Notes', 'foodiepro' ) ?></h4>
         <p class="post-guidelines"><?php echo __('Provide any additional notes here, for instance side dishes, wine...','foodiepro'); ?></p>
 		<textarea name="recipe_notes" id="recipe_notes" rows="6" placeholder="<?php echo __('WHAT TO DRINK WITH THIS STRAWBERRY PIE : a sweet white wine','foodiepro');?>"><?php echo esc_html( $recipe->notes() ); ?></textarea>
 </div>

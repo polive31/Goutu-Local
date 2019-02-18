@@ -58,7 +58,11 @@ class Custom_Recipe_Management {
         // Specific recipe section in Custom Submission Form
         // Specific recipe submission actions
 		add_filter( 'cpm_recipe_section', 				    array( $Recipe_Submission, 'add_recipe_specific_section'), 15, 3 );	
-		add_action( 'cpm_recipe_submission_main', 	        array( $Recipe_Submission, 'recipe_submission_main'     ), 15, 3 );	
+        add_action( 'cpm_recipe_submission_main', 	        array( $Recipe_Submission, 'recipe_submission_main'     ), 15, 3 );	
+        
+        // Ajax callbacks for thumbnails removal
+        add_action( 'wp_ajax_crm_remove_recipe_image',      array( $Recipe_Submission, 'ajax_remove_instruction_image' ));
+        add_action( 'wp_ajax_crm_remove_recipe_image',      array( $Recipe_Submission, 'ajax_remove_instruction_image' ));          
         
         // Ajax callbacks for ingredient preview 
         add_action( 'wp_ajax_ingredient_preview',           array( $Recipe_Submission, 'ajax_ingredient_preview'    ));

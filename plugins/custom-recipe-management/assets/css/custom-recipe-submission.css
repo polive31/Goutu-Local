@@ -54,6 +54,10 @@ input {
     vertical-align: middle;
 }
 
+textarea {
+    resize: vertical;
+}
+
 table.recipe-form {
     float:left;
     clear:both;
@@ -185,8 +189,12 @@ td.ingredient-input.unit {
     width: 200px;
 }
 
-/* Ingredient Section 
+/* Instruction Section 
 ------------------------------------------------------- */
+
+td.instruction-thumbnail {
+    width: 150px;
+}
 
 #custom_post_submission_form .instruction-image {
     width: 150px;

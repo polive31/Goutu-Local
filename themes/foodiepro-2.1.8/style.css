@@ -1664,7 +1664,7 @@ img.alignright,
 
 /* Form Submission Messages
 --------------------------------------------------------------*/
-p.submitbox{
+.submitbox{
   background-color: #f5f5f5;
   padding: 10px;
   margin: 20px 0; 
@@ -1672,7 +1672,7 @@ p.submitbox{
 }
 
 
-p.successbox,
+.successbox,
 #message.updated {
 	clear: both;
 	display: block;
@@ -1680,7 +1680,7 @@ p.successbox,
 	margin: 0 0 30px 0;
 }
 
-p.successbox,
+.successbox,
 #message.updated p {
 	background-color: #efc;
 	color: #250;
@@ -1688,7 +1688,7 @@ p.successbox,
   font-weight: 400;	
 }
 
-p.errorbox,
+.errorbox,
 .wpurp-errors,
 #message.error p {
 	background-color: #fdc;

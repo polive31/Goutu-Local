@@ -10,10 +10,7 @@ class CPM_Submission_Shortcodes {
 
         if( !is_user_logged_in() ) {
             return '<p class="errorbox">' . __( 'Sorry, only registered users may submit recipes.', 'foodiepro' ) . '</p>';
-        }         
-
-        // wp_enqueue_style( 'csf-' . $post_type );
-        // wp_enqueue_script( 'csf-' . $post_type );        
+        }              
         
         $output = '';
         $user_id = get_current_user_id();
@@ -42,27 +39,4 @@ class CPM_Submission_Shortcodes {
         return $output;
     }
     
-    // public function custom_submission_form_new_shortcode( $atts ) {
-    //     $atts = shortcode_atts( array(
-    //         'post_type' => 'post', // 'post', 'recipe'
-    //     ), $atts );
-    //     extract( $atts );
-        
-    //     if( !is_user_logged_in() ) {
-    //         return '<p class="errorbox">' . __( 'Sorry, only registered users may submit recipes.', 'foodiepro' ) . '</p>';
-    //     } 
-    //     else {
-            
-    //         // wp_enqueue_style( 'csf-' . $post_type );
-    //         // wp_enqueue_script( 'csf-' . $post_type );   
-            
-    //         $Form = new CPM_Submission( $post_type );
-    //         if( isset( $_POST['submitpost'] ) ) {
-    //             return $Form->submit();
-    //         } 
-    //         else {
-    //             $output = $Form->display();
-    //         }
-    //     }
-    // }    
 }

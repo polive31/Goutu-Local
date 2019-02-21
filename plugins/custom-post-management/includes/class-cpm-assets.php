@@ -147,6 +147,7 @@ class CPM_Assets {
 		
 		$default_labels = array(
 			'post' => array(
+				'title'				=> _x( 'Post Title', 'post', 'foodiepro' ),
 				'edit_button'		=> _x( 'Edit Post', 'post', 'foodiepro' ),
 				'new_button'		=> _x( 'New Post', 'post', 'foodiepro' ),
 				'new1'				=> _x( 'Write your new post on this page.', 'post', 'foodiepro' ),
@@ -158,8 +159,9 @@ class CPM_Assets {
 				'back'				=> _x( 'Back to <a href="%s">my posts</a>.', 'post', 'foodiepro'),
 				'publish-admin'		=> _x( 'Dear administrator, this post is now <a href="%s">published</a>.', 'post', 'foodiepro' ),
 				'publish-user'		=> _x( 'Post submitted! Thank you, your post is now awaiting moderation.', 'post', 'foodiepro' ),
-				)
-			);
+				'required'			=> _x( 'In order for your post to be published, please fill-in those required fields:', 'post', 'foodiepro' ),
+			),
+		);
 		self::$labels = apply_filters( 'cpm_labels', $default_labels );		
 		
         $default_taxonomies=array(
@@ -187,7 +189,7 @@ class CPM_Assets {
 		
         $default_required = array(
 			'post'	=> array(
-				'post_title_check'  => __('Post Title','foodiepro'),
+				'post_title'  		=> __('Post Title','foodiepro'),
 				'post_content'      => __('Post Content', 'foodiepro'),
 				'post_category'		=> __('Post Category', 'foodiepro'),// IMPORTANT for taxonomies, name here must be <post_type>_<taxonomy>
 				// 'post_thumbnail'		=> __('Post Featured Image.', 'foodiepro'),

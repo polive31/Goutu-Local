@@ -134,9 +134,7 @@
             	</div>
             </td>
             <td class="group center-column delete-button">
-            	<!-- <div class="group center-column delete-button"> -->
                     <span class="ingredient-group-delete">&nbsp;</span>
-                <!-- </div> -->
             </td>
         </tr>
         <?php
@@ -160,13 +158,11 @@
                         <td colspan="5" class="group">
                             <div class="group-container">
                                 <span class="header"><?php _e( 'Ingredients Group', 'foodiepro' ); ?></span>
-                        		<span class="name" colspan="2"><input type="text" class="ingredient-group-label" value="<?php echo esc_attr( $ingredient['group'] ); ?>" /></span>
+                        		<span class="name"><input type="text" class="ingredient-group-label" value="<?php echo esc_attr( $ingredient['group'] ); ?>" /></span>
                         	</div>
                         </td>
                         <td class="group center-column delete-button">
-                        	<!-- <div > -->
-                        		<span class="ingredient-group-delete">&nbsp;</span>
-                            <!-- </div> -->
+                        	<span class="ingredient-group-delete">&nbsp;</span>
                         </td>
                     </tr>
                     <?php

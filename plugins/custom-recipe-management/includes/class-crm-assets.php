@@ -48,7 +48,7 @@ class CRM_Assets {
 	
 	public function setup_CPM_required( $required ) {
 		$required['recipe']= array(
-			'recipe_title_check'	=> __('Recipe Title','foodiepro'),
+			'recipe_title'			=> __('Recipe Title','foodiepro'),
 			'recipe_course' 		=> __('Recipe Course', 'foodiepro'),
 			'recipe_difficult' 		=> __('Recipe Difficulty', 'foodiepro'),
 			'recipe_ingredients' 	=> __('Ingredients', 'foodiepro'),
@@ -124,6 +124,7 @@ class CRM_Assets {
 	
 	public function setup_CPM_recipe_labels( $labels ) {
 		$labels['recipe'] = array(
+			'title'			=> _x( 'Post Title', 'recipe', 'foodiepro' ),
 			'edit_button'	=> _x( 'Edit Post', 'recipe', 'foodiepro' ),
 			'new_button'	=> _x( 'New Post', 'recipe', 'foodiepro' ),
 			'new1'			=> _x( 'Write your new post on this page.', 'recipe', 'foodiepro' ),
@@ -135,6 +136,7 @@ class CRM_Assets {
 			'back'			=> _x( 'Back to <a href="%s">my posts</a>.', 'recipe', 'foodiepro'),
 			'publish-admin'	=> _x( 'Dear administrator, this post is now <a href="%s">published</a>.', 'recipe', 'foodiepro' ),
 			'publish-user'	=> _x( 'Post submitted! Thank you, your post is now awaiting moderation.', 'recipe', 'foodiepro' ),
+			'required'		=> _x( 'In order for your post to be published, please fill-in those required fields:', 'recipe', 'foodiepro' ),
 		);
 		return $labels;
 	}

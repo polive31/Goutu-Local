@@ -11,7 +11,15 @@ jQuery(document).ready(function() {
 
     /* Auto adjust textarea height
     ---------------------------------------------------------------- */
-    jQuery('#recipe-instructions, #recipe-ingredients').on('input', 'textarea', function () {
+    /* On startup */
+    jQuery(function () {
+        jQuery('#recipe-instructions textarea').each(function () {
+            jQuery(this).height(jQuery(this)[0].scrollHeight);
+        });
+    });
+    
+    /* On input/textarea change */
+    jQuery('#recipe-instructions').on('input', 'textarea', function () {
         console.log('Auto adjust height on edit');
         jQuery(this).outerHeight(38).outerHeight(this.scrollHeight); // 38 or '1em' -min-height
     }); 

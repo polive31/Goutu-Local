@@ -324,9 +324,7 @@ class CPM_Submission {
                 }
             }
 
-            $title = isset( $_POST['post_title'] ) ? $_POST['post_title'] : '';
-            $_POST['post_title_check'] = $title;
-
+            $title = isset( $_POST[ $this->post_type . '_title'] ) ? $_POST[ $this->post_type . '_title'] : '';
             if( !$title ) $title = __( 'Untitled', 'foodiepro' );
 
             $content = isset( $_POST[ $this->post_type . '_content'] ) ? $_POST[ $this->post_type . '_content'] : '';
@@ -380,10 +378,19 @@ class CPM_Submission {
             $errors = array();
             $required = CPM_Assets::get_required( $this->post_type );
             foreach( $required as $field => $label ) {
-                if( $field != $this->post_type . '_thumbnail' || !isset( $_FILES[$this->post_type . '_thumbnail'] ) ) {
-                    if( !isset( $_POST[$field] ) || !$_POST[$field] || $_POST[$field]=='-1'  ) {
+                if ( $field != $this->post_type . '_thumbnail' || !isset( $_FILES[$this->post_type . '_thumbnail'] ) ) {
+                    if ( !isset($_POST[$field]) ) {
                         $errors[] = $label;
                     }
+                    elseif ( empty($_POST[$field]) || !$_POST[$field] || $_POST[$field]=='-1'  ) {
+                        $errors[] = $label;
+                    }
+                    elseif ( is_array($_POST[$field]) && count($_POST[$field])==1 ) {
+                        if ( !implode($_POST[$field][0]) ) {
+                            $errors[] = $label;
+                        }
+                    }
+
                 } 
                 elseif( !$_FILES[$this->post_type . '_thumbnail']['name'] && get_post_thumbnail_id( $post_id ) == 0 ) {
                     $errors[] = $label;
@@ -414,7 +421,7 @@ class CPM_Submission {
 
                 if( count( $errors ) > 0 ) {
                     $output .= '<div class="errorbox">';
-                    $output .= __( 'Please fill-in those required fields:', 'foodiepro' );
+                    $output .= CPM_Assets::get_label( $this->post_type, 'required' );
                     $output .= '<ul>';
                     foreach( $errors as $error ) {
                         $output .= '<li>' . $error . '</li>';

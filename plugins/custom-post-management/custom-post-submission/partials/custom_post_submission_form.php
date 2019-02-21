@@ -1,8 +1,8 @@
         <input type="hidden" name="post_id" value="<?= $post_ID; ?>" />
         <div class="post-container post-title-container">      	
             <p>
-                <h4 id="headline-title"><?php _e( 'Post Title', 'foodiepro' ); ?><?php if( in_array( $this->post_type . '_title_check', $required_fields ) ) echo '<span class="required-field">*</span>'; ?></h4>
-                <input type="text" id="post_title" value="<?= isset( $_POST['post_title'] ) ? $_POST['post_title'] : $post->post_title;  ?>" size="20" name="post_title" />
+                <h4 id="headline-title"><?= CPM_Assets::get_label($this->post_type, 'title'); ?><?php if( in_array( $this->post_type . '_title', $required_fields ) ) echo '<span class="required-field">*</span>'; ?></h4>
+                <input type="text" id="<?= $this->post_type; ?>_title" value="<?= isset( $_POST[ $this->post_type . '_title'] ) ? $_POST[ $this->post_type . '_title'] : $post->post_title;  ?>" size="20" name="<?= $this->post_type; ?>_title" />
             </p>
         </div>
 

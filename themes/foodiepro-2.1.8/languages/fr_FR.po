@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-02-18 23:45+0100\n"
-"PO-Revision-Date: 2019-02-18 23:48+0100\n"
+"POT-Creation-Date: 2019-02-21 22:38+0100\n"
+"PO-Revision-Date: 2019-02-21 22:39+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -1365,62 +1365,57 @@ msgstr ""
 msgid "No recipes found."
 msgstr "Aucune recette trouvée."
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:242
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:244
 msgid "none"
 msgstr "aucun(e)"
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:275
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:277
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/templates/public_recipe_form.php:135
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:388
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:233
 msgid "Preview"
 msgstr "Aperçu"
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:278
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:280
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-xml/templates/before_importing.php:17
 #: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:26
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:238
 msgid "Draft"
 msgstr "Enregistrer (brouillon)"
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:281
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:283
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-xml/templates/before_importing.php:18
 #: themes/foodiepro-2.1.8/plugins/frontier-post/frontier_post_form_standard.php:249
 msgid "Publish"
 msgstr "Publier"
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:306
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:308
 msgid "You are not authorized to access this page."
 msgstr "Vous n'êtes pas autorisé à accéder à cette page."
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:328
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:330
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-fdx/import-fdx.php:65
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-xml/import-xml.php:65
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:235
 msgid "Untitled"
 msgstr "Sans titre"
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:415
-#: plugins/custom-recipe-management/public/custom-recipe-submission/recipe-submission-process-deprecated.php:141
-msgid "Please fill-in those required fields:"
-msgstr "Merci de renseigner les informations suivantes :"
-
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:451
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:453
 #: plugins/custom-recipe-management/public/custom-recipe-submission/recipe-submission-process-deprecated.php:183
 #, php-format
 msgid "New user submission:%s"
 msgstr ""
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:464
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:466
 #: plugins/custom-recipe-management/public/custom-recipe-submission/recipe-submission-process-deprecated.php:198
 msgid "Unknown action."
 msgstr ""
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:560
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:562
 msgid "Post content"
 msgstr "Corps de l'article"
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:563
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:565
 #: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:6
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:16
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:43
@@ -1431,7 +1426,7 @@ msgstr "Corps de l'article"
 msgid "Description"
 msgstr ""
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:565
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:567
 msgid "Write your post here."
 msgstr ""
 "Ecrivez votre article ici. Vous pouvez joindre des liens et des images au "
@@ -1442,11 +1437,6 @@ msgstr ""
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:117
 msgid "Sorry, only registered users may submit recipes."
 msgstr ""
-
-#: plugins/custom-post-management/custom-post-submission/partials/custom_post_submission_form.php:4
-#: plugins/custom-post-management/includes/class-cpm-assets.php:190
-msgid "Post Title"
-msgstr "Titre de l'article"
 
 #: plugins/custom-post-management/custom-post-submission/partials/custom_post_submission_form.php:11
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_whitelist.php:269
@@ -1484,8 +1474,8 @@ msgstr ""
 "envie à vos visiteurs de le lire !"
 
 #: plugins/custom-post-management/custom-post-submission/partials/custom_post_submission_form.php:27
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:357
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:391
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:353
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:387
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:337
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:366
 msgid "Remove Image"
@@ -1526,40 +1516,45 @@ msgid "Are you sure you want to delete this post :"
 msgstr "Etes vous sûr de vouloir supprimer cette recette :"
 
 #: plugins/custom-post-management/includes/class-cpm-assets.php:139
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:381
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:383
 #, php-format
 msgid "Authorized file formats are : %s"
 msgstr "Les formats de fichier autorisés sont : %s"
 
 #: plugins/custom-post-management/includes/class-cpm-assets.php:141
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:383
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:385
 #, php-format
 msgid "The maximum file size is %s kB"
 msgstr "La taille du fichier doit être inférieure à %s Ko."
 
 #: plugins/custom-post-management/includes/class-cpm-assets.php:142
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:384
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:386
 msgid "Do you really want to delete this image ?"
 msgstr "Etes vous sûr de vouloir supprimer cette image ?"
 
 #: plugins/custom-post-management/includes/class-cpm-assets.php:150
+msgctxt "post"
+msgid "Post Title"
+msgstr "Titre de l'article"
+
+#: plugins/custom-post-management/includes/class-cpm-assets.php:151
 #, fuzzy
 #| msgid "Edit post"
 msgctxt "post"
 msgid "Edit Post"
 msgstr "Modifier l'article"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:151
+#: plugins/custom-post-management/includes/class-cpm-assets.php:152
 msgctxt "post"
 msgid "New Post"
 msgstr "Nouvel article"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:152
+#: plugins/custom-post-management/includes/class-cpm-assets.php:153
 msgctxt "post"
 msgid "Write your new post on this page."
 msgstr "Ecrivez votre nouvel article sur cette page."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:153
+#: plugins/custom-post-management/includes/class-cpm-assets.php:154
 msgctxt "post"
 msgid ""
 "You can then choose to save it as draft, or to publish it. Once approved, it "
@@ -1569,12 +1564,12 @@ msgstr ""
 "bien le publier. Dans ce cas, une fois approuvé, il sera visible du reste "
 "des utilisateurs."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:154
+#: plugins/custom-post-management/includes/class-cpm-assets.php:155
 msgctxt "post"
 msgid "Edit your existing post on this page."
 msgstr "Mettez à jour votre article sur cette page."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:155
+#: plugins/custom-post-management/includes/class-cpm-assets.php:156
 msgctxt "post"
 msgid ""
 "You can then choose to save it as draft, or to publish it. Once approved, it "
@@ -1584,12 +1579,12 @@ msgstr ""
 "bien le publier. Dans ce cas, une fois approuvé, il sera visible des autres "
 "utilisateurs."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:156
+#: plugins/custom-post-management/includes/class-cpm-assets.php:157
 msgctxt "post"
 msgid "Post saved as a draft."
 msgstr "Votre article a été sauvegardé en tant que brouillon."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:157
+#: plugins/custom-post-management/includes/class-cpm-assets.php:158
 msgctxt "post"
 msgid ""
 "It will not be visible on the site, but you can edit it at any time and "
@@ -1598,20 +1593,20 @@ msgstr ""
 "Il ne sera pas visible sur le site, mais vous pouvez le modifier à tout "
 "moment, et le publier plus tard."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:158
+#: plugins/custom-post-management/includes/class-cpm-assets.php:159
 #, php-format
 msgctxt "post"
 msgid "Back to <a href=\"%s\">my posts</a>."
 msgstr "Retour à <a href=\"%s\">mes articles</a>."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:159
+#: plugins/custom-post-management/includes/class-cpm-assets.php:160
 #, php-format
 msgctxt "post"
 msgid "Dear administrator, this post is now <a href=\"%s\">published</a>."
 msgstr ""
 "Cher administrateur, cet article est désormais <a href=\"%s\">publié</a>."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:160
+#: plugins/custom-post-management/includes/class-cpm-assets.php:161
 #, fuzzy
 #| msgid "Recipe submitted! Thank you, your recipe is now awaiting moderation."
 msgctxt "post"
@@ -1619,26 +1614,38 @@ msgid "Post submitted! Thank you, your post is now awaiting moderation."
 msgstr ""
 "Nous avons bien reçu votre recette ! Elle sera publiée après modération. "
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:173
+#: plugins/custom-post-management/includes/class-cpm-assets.php:162
+msgctxt "post"
+msgid ""
+"In order for your post to be published, please fill-in those required fields:"
+msgstr ""
+"Afin que votre article puisse être publié, merci de renseigner les "
+"informations suivantes :"
+
+#: plugins/custom-post-management/includes/class-cpm-assets.php:176
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_save.php:125
 #: plugins/wp-ultimate-recipe-premium/premium/helpers/recipe_columns.php:83
 msgid "Categories"
 msgstr "Catégories"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:181
+#: plugins/custom-post-management/includes/class-cpm-assets.php:184
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:68
 #: plugins/wp-ultimate-recipe-premium/core/helpers/migration/3_10_2_keywords.php:54
 #: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:70
 msgid "Keywords"
 msgstr "Mots-clés"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:191
+#: plugins/custom-post-management/includes/class-cpm-assets.php:193
+msgid "Post Title"
+msgstr "Titre de l'article"
+
+#: plugins/custom-post-management/includes/class-cpm-assets.php:194
 #, fuzzy
 #| msgid "Post content"
 msgid "Post Content"
 msgstr "Corps de l'article"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:192
+#: plugins/custom-post-management/includes/class-cpm-assets.php:195
 msgid "Post Category"
 msgstr "Catégorie de l'article"
 
@@ -1823,8 +1830,6 @@ msgid "Number of Servings"
 msgstr "Nombre de portions"
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:56
-#, fuzzy
-#| msgid "Preparation time."
 msgid "Preparation Time"
 msgstr "Durée de préparation"
 
@@ -1857,23 +1862,28 @@ msgid "Difficulty"
 msgstr "Difficulté"
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:127
+msgctxt "recipe"
+msgid "Post Title"
+msgstr "Titre de la recette"
+
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:128
 #, fuzzy
 #| msgid "Edit post"
 msgctxt "recipe"
 msgid "Edit Post"
 msgstr "Modifier l'article"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:128
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:129
 msgctxt "recipe"
 msgid "New Post"
 msgstr "Nouvelle Recette"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:129
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:130
 msgctxt "recipe"
 msgid "Write your new post on this page."
 msgstr "Ecrivez votre nouvelle recette sur cette page."
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:130
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:131
 msgctxt "recipe"
 msgid ""
 "You can then choose to save it as draft, or to publish it. Once approved, it "
@@ -1883,12 +1893,12 @@ msgstr ""
 "bien la publier. Dans ce cas, une fois approuvée, elle sera visible du reste "
 "des utilisateurs."
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:131
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:132
 msgctxt "recipe"
 msgid "Edit your existing post on this page."
 msgstr "Mettez à jour votre recette sur cette page."
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:132
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:133
 msgctxt "recipe"
 msgid ""
 "You can then choose to save it as draft, or to publish it. Once approved, it "
@@ -1898,12 +1908,12 @@ msgstr ""
 "bien de la publier. Dans ce cas, une fois approuvée, elle sera visible des "
 "autres utilisateurs."
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:133
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:134
 msgctxt "recipe"
 msgid "Post saved as a draft."
 msgstr "Votre recette a été sauvegardée en tant que brouillon."
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:134
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:135
 msgctxt "recipe"
 msgid ""
 "It will not be visible on the site, but you can edit it at any time and "
@@ -1912,20 +1922,20 @@ msgstr ""
 "Elle ne sera pas visible sur le site, mais vous pouvez la modifier à tout "
 "moment, et la publier plus tard."
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:135
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:136
 #, php-format
 msgctxt "recipe"
 msgid "Back to <a href=\"%s\">my posts</a>."
 msgstr "Retour à <a href=\"%s\">mes recettes</a>."
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:136
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:137
 #, php-format
 msgctxt "recipe"
 msgid "Dear administrator, this post is now <a href=\"%s\">published</a>."
 msgstr ""
 "Cher administrateur, cette recette est désormais <a href=\"%s\">publiée</a>."
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:137
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:138
 #, fuzzy
 #| msgid "Recipe submitted! Thank you, your recipe is now awaiting moderation."
 msgctxt "recipe"
@@ -1933,39 +1943,47 @@ msgid "Post submitted! Thank you, your post is now awaiting moderation."
 msgstr ""
 "Nous avons bien reçu votre recette ! Elle sera publiée après modération. "
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:194
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:139
+msgctxt "recipe"
+msgid ""
+"In order for your post to be published, please fill-in those required fields:"
+msgstr ""
+"Afin que votre recette puisse être publiée, merci de renseigner les "
+"informations suivantes :"
+
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:196
 #, fuzzy
 #| msgid "Are you sure you want to delete this recipe:"
 msgctxt "recipe"
 msgid "Are you sure you want to delete this post :"
 msgstr "Etes vous sûr de vouloir supprimer cette recette :"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:228
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:230
 #: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:81
 msgid "Print this Recipe"
 msgstr "Imprimer cette recette"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:255
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:257
 msgid "Read previous step"
 msgstr "Lire l'instruction précédente"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:256
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:258
 msgid "Read next step"
 msgstr "Lire l'instruction suivante"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:257
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:259
 msgid "Read this step again"
 msgstr "Lire à nouveau cette instruction"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:258
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:260
 msgid "Pause reading"
 msgstr "Mettre la lecture en pause"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:259
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:261
 msgid "Continue reading"
 msgstr "Continuer la lecture"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:260
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:262
 msgid "Stop reading and close player"
 msgstr "Arrêter la lecture et fermer le lecteur"
 
@@ -2066,9 +2084,9 @@ msgid "Servings"
 msgstr "Portions"
 
 #: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:14
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:188
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:219
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:220
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:184
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:215
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:216
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:144
 #: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/meal-planner.php:136
 #: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/meal-planner.php:281
@@ -2082,9 +2100,9 @@ msgstr "Quantité"
 #: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:24
 #: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:34
 #: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:43
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:191
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:223
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:224
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:187
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:219
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:220
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:79
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:50
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:145
@@ -2201,7 +2219,7 @@ msgstr ""
 
 #: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:116
 #: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:132
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:162
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:160
 msgid "Ingredients Group"
 msgstr "Groupe d'ingrédients"
 
@@ -2209,14 +2227,14 @@ msgstr "Groupe d'ingrédients"
 msgid "eg. For the dough"
 msgstr "ex : Pour la pâte"
 
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:180
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:214
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:176
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:210
 msgid "Move this ingredient"
 msgstr "Déplacer cet ingrédient"
 
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:195
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:227
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:228
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:191
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:223
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:224
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:80
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:51
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:146
@@ -2233,11 +2251,11 @@ msgstr "Déplacer cet ingrédient"
 msgid "Ingredient"
 msgstr "Ingrédient"
 
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:198
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:199
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:232
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:233
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:234
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:194
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:195
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:228
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:229
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:230
 #: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-print-template.php:83
 #: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:232
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:19
@@ -2254,22 +2272,22 @@ msgstr "Ingrédient"
 msgid "Notes"
 msgstr "Notes"
 
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:202
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:238
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:198
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:234
 msgid "Remove this ingredient"
 msgstr "Retirer cet ingrédient"
 
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:244
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:240
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:239
 msgid "Add an ingredient"
 msgstr "Nouvel ingrédient"
 
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:247
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:243
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:242
 msgid "Add an ingredient group"
 msgstr "Nouveau groupe d'ingrédients"
 
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:251
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:247
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:245
 msgid ""
 "<strong>Use the TAB key</strong> while adding ingredients, it will "
@@ -2280,7 +2298,7 @@ msgstr ""
 "apparaître une nouvelle ligne d'ingrédient. Ne vous souciez pas des lignes "
 "vides, elles seront ignorées."
 
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:258
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:254
 #: plugins/wp-ultimate-recipe-premium/core/addons/custom-templates/templates/general/title.php:49
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:18
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:88
@@ -2292,53 +2310,53 @@ msgstr ""
 msgid "Instructions"
 msgstr "Instructions principales"
 
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:264
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:280
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:305
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:260
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:276
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:301
 msgid "Instructions Group"
 msgstr "Groupe d'instructions"
 
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:265
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:261
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:258
 msgid "Main Instructions"
 msgstr "Instructions principales"
 
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:265
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:261
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:130
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:258
 msgid "(this label is not shown)"
 msgstr "(ce titre n'apparaît pas dans la recette) "
 
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:272
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:268
 msgid "eg. Preparation of the dough"
 msgstr "ex : Préparation de la pâte"
 
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:343
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:377
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:339
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:373
 msgid "Move this instruction"
 msgstr "Déplacer cette instruction"
 
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:346
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:380
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:342
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:376
 msgid "Enter the instructions for this recipe step"
 msgstr "Décrivez les instructions correspondant à cette étape de la recette..."
 
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:364
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:395
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:360
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:391
 msgid "Remove this instruction"
 msgstr "Retirer cette instruction"
 
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:402
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:398
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:376
 msgid "Add an instruction"
 msgstr "Nouvelle instruction"
 
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:405
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:401
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:379
 msgid "Add an instruction group"
 msgstr "Nouveau groupe d'instructions"
 
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:409
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:405
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:382
 msgid ""
 "<strong>Use the TAB key</strong> while adding instructions, it will "
@@ -2349,19 +2367,19 @@ msgstr ""
 "ligne d'instruction. Ne vous souciez pas des lignes vides, elles seront "
 "ignorées."
 
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:414
-#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:387
-msgid "Recipe notes"
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:410
+#: plugins/wp-ultimate-recipe-premium/core/addons/custom-templates/templates/general/title.php:51
+msgid "Recipe Notes"
 msgstr "Notes"
 
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:415
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:411
 msgid "Provide any additional notes here, for instance side dishes, wine..."
 msgstr ""
 "Entrez ici toutes les compléments d'information que vous souhaitez ajouter à "
 "cette recette, par exemple des suggestions d'accompagnements, un vin qui "
 "s'accordera avec ce plat…"
 
-#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:416
+#: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:412
 msgid "WHAT TO DRINK WITH THIS STRAWBERRY PIE : a sweet white wine"
 msgstr "QUE BOIRE AVEC CETTE TARTE AUX FRAISES ? Un Monbazillac bien frais."
 
@@ -2389,6 +2407,12 @@ msgstr ""
 #, php-format
 msgid "Back to <a href=\"%s\">my published recipes</a>"
 msgstr "Retour à <a href=\"%s\">mes recettes</a>"
+
+#: plugins/custom-recipe-management/public/custom-recipe-submission/recipe-submission-process-deprecated.php:141
+msgid "Please fill-in those required fields:"
+msgstr ""
+"Afin que votre article puisse être publié, merci de renseigner les "
+"informations suivantes :"
 
 #: plugins/custom-recipe-management/public/custom-recipe-submission/recipe-submission-process-deprecated.php:173
 #, php-format
@@ -3301,10 +3325,6 @@ msgstr "Imprimer cette recette"
 msgid "Units"
 msgstr "Unités"
 
-#: plugins/wp-ultimate-recipe-premium/core/addons/custom-templates/templates/general/title.php:51
-msgid "Recipe Notes"
-msgstr "Notes"
-
 #: plugins/wp-ultimate-recipe-premium/core/addons/custom-templates/templates/general/title.php:53
 msgid "Share this Recipe"
 msgstr "Partager cette recette"
@@ -3829,6 +3849,10 @@ msgstr "Illustration de cette étape"
 #| msgid "Add a picture"
 msgid "Add Image"
 msgstr "Ajoutez votre photo"
+
+#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:387
+msgid "Recipe notes"
+msgstr "Notes"
 
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:410
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_whitelist.php:286

@@ -54,7 +54,7 @@ class CRM_Recipe_Template {
         // Output JSON+LD metadata & rich snippets
         echo $this->json_ld_meta_output($recipe,'');
 
-        include( self::$_PluginPath . 'custom-recipe-template\partials\custom-recipe-template.php' );
+        include( self::$_PluginPath . 'custom-recipe-template/partials/custom-recipe-template.php' );
 
         $output = ob_get_contents();
         ob_end_clean();

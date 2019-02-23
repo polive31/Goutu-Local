@@ -42,6 +42,7 @@ class CRM_Assets {
 	********************************************************************************/		
 	public function setup_CPM_recipe_page_slugs( $slugs ) {
 		$slugs['recipe_list'] = 'publier-recettes';
+		$slugs['recipe_favorites'] = 'favoris-recettes';
 		$slugs['recipe_form'] = 'saisie-recette';
 		return $slugs;
 	}        
@@ -118,7 +119,6 @@ class CRM_Assets {
 				),
 			),										
 		);
-
 		return $taxonomies;
 	}	
 	
@@ -150,10 +150,11 @@ class CRM_Assets {
 		new Tooltip();
 		
 		// Reuse some default post styles
-		$styles['cpm-list']['location'][]			='recipe_list';
-		$styles['cpm-select2']['location'][]		='recipe_form';
-		$styles['cpm-submission-form']['location'][]='recipe_form';
-		$styles['post-font']['location'][]			='recipe';
+		$styles['cpm-list']['location'][]				= 'recipe_list';
+		$styles['cpm-list']['location'][]				= 'recipe_favorites';
+		$styles['cpm-select2']['location'][]			= 'recipe_form';
+		$styles['cpm-submission-form']['location'][]	= 'recipe_form';
+		$styles['post-font']['location'][]				= 'recipe';
 		
 		// Enqueue specific recipe styles
 		$styles['crm-recipe'] = array(
@@ -176,7 +177,6 @@ class CRM_Assets {
 			'dir' 		=> self::$PLUGIN_PATH . 'assets/css/',
 			'location' 	=> array('recipe_form'),
 		);		  
-				
 		return $styles;
 	}
 			

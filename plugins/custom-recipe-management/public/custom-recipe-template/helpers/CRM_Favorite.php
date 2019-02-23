@@ -35,7 +35,6 @@ class CRM_Favorite {
      
     }
     
-    
     public function add_query_vars_filter( $vars ) {
         $vars[] = "list";
         return $vars;
@@ -100,40 +99,7 @@ class CRM_Favorite {
         return $output;
     }
 
-    public function ajax_favorite_recipe() {
-        if( !is_user_logged_in() ) return false;
-
-        // Force strings translation
-        $this->__construct();
-        
-        if (check_ajax_referer( 'custom_favorite_recipe', 'security', false ) ) {
-            
-            $recipe_id = intval( $_POST['recipe_id'] );
-            $user_id = get_current_user_id();
-            
-            $choice=$_POST['choice'];
-            
-            foreach ($this->get_lists() as $list) {
-                $favorites = get_user_meta( $user_id, $this->get_meta_name($list), true );
-                $favorites = is_array( $favorites ) ? $favorites : array();
-                
-                if ( ($choice=='remove' || $choice != $list) && in_array( $recipe_id, $favorites ) ) {
-                    $key = array_search( $recipe_id, $favorites );
-                    unset( $favorites[$key ] );
-                } 
-                elseif ( $choice==$list ) {
-                    $favorites[] = $recipe_id;
-                }
-                update_user_meta( $user_id, $this->get_meta_name($list), $favorites );
-            }
-            $isfav = $this->is_favorite_recipe( $recipe_id );
-            $response['text'] = $this->get_field( $isfav[1], 'tooltip-in' );
-            $response['icon'] = $this->get_toolbar_icon('favorites-' . $isfav[1] );
-            echo json_encode( $response );
-            // echo $this->get_toolbar_icon('favorites-' . $isfav[1] );
-        }
-        die();
-    }
+ 
     
     public function get_favlist_form( $recipe_id ) {
         
@@ -253,5 +219,98 @@ class CRM_Favorite {
         return array( $is_fav, $fav_list );
     }    
 
+
+/********************************************************************************
+****                     FAVORITE LIST SHORTCODE                       **********
+********************************************************************************/    
+    public function favorite_recipes_shortcode( $atts, $content ) {
+        $atts = shortcode_atts( array(
+			// 'post_type' => 'post', // 'post', 'recipe'
+		), $atts );
+
+        if( !is_user_logged_in() ) return;
+        $user_id = get_current_user_id();
+
+        $PostList = new CPM_List( 'recipe' );
+
+        $lists = get_query_var( 'list', false );
+        if ($lists)
+            $lists = array( 0 => $lists );
+        else
+            $lists = $this->get_lists();
+            
+        $empty=true;
+        $output='';
+        foreach ($lists as $list) {
+            $favorites = get_user_meta( $user_id, $this->get_meta_name($list), true );
+            $favorites = is_array( $favorites ) ? $favorites : array();
+
+            $args = array(
+                'numberposts' => -1,
+                'category' => 0, 
+                'orderby' => 'date',
+                'order' => 'DESC', 
+                'include' => $favorites,
+                'exclude' => array(), 
+                'meta_key' => '',
+                'meta_value' =>'', 
+                'post_type' => 'recipe',
+                'post_status' => array( 'publish', 'private', 'pending', 'draft' ),
+                'suppress_filters' => true
+            );
+            $recipes = get_posts( $args );
+
+            // $recipes = empty( $favorites ) ? array() : WPUltimateRecipe::get()->query()->ids( $favorites )->order_by('name')->order('ASC')->get();
+
+            if( count( $favorites ) > 0 ) {
+                $empty=false;
+                $output .= $PostList->display( $recipes, false, $this->get_label($list) );
+            }
+        }
+        if ($empty)
+            $output .= '<div class="submitbox">' . __( "No recipes found.", 'foodiepro' ) . '</p>';
+        
+        return $output;
+    }    
+
+
+   
+/********************************************************************************
+****                           AJAX CALLBACKS                          **********
+********************************************************************************/
+    public function ajax_favorite_recipe() {
+        if( !is_user_logged_in() ) return false;
+
+        // Force strings translation
+        $this->__construct();
+        
+        if (check_ajax_referer( 'custom_favorite_recipe', 'security', false ) ) {
+            
+            $recipe_id = intval( $_POST['recipe_id'] );
+            $user_id = get_current_user_id();
+            
+            $choice=$_POST['choice'];
+            
+            foreach ($this->get_lists() as $list) {
+                $favorites = get_user_meta( $user_id, $this->get_meta_name($list), true );
+                $favorites = is_array( $favorites ) ? $favorites : array();
+                
+                if ( ($choice=='remove' || $choice != $list) && in_array( $recipe_id, $favorites ) ) {
+                    $key = array_search( $recipe_id, $favorites );
+                    unset( $favorites[$key ] );
+                } 
+                elseif ( $choice==$list ) {
+                    $favorites[] = $recipe_id;
+                }
+                update_user_meta( $user_id, $this->get_meta_name($list), $favorites );
+            }
+            $isfav = $this->is_favorite_recipe( $recipe_id );
+            $response['text'] = $this->get_field( $isfav[1], 'tooltip-in' );
+            $response['icon'] = $this->get_toolbar_icon('favorites-' . $isfav[1] );
+            echo json_encode( $response );
+            // echo $this->get_toolbar_icon('favorites-' . $isfav[1] );
+        }
+        die();
+    }
 
 }

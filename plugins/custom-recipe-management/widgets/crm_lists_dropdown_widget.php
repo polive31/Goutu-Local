@@ -5,15 +5,15 @@ if ( !defined('ABSPATH') )
 	die('-1');
 	
 
-class Custom_Postlist_Dropdown_Widget extends WP_Widget {
+class CRM_Lists_Dropdown_Widget extends WP_Widget {
 
     public function __construct()
     {
         parent::__construct(
-            'custom_postlist_dropdown_widget',
-            __( 'Custom Post List Dropdown Widget', 'foodiepro' ),
+            'CRM_Lists_Dropdown_Widget',
+            __( 'Recipe Lists Dropdown Widget', 'foodiepro' ),
             array(
-                'description' => __( 'Display a customizable dropdown list for sorting or filtering a post list.', 'foodiepro' )
+                'description' => __( 'Dropdown with cookbook recipes lists.', 'foodiepro' )
             )
         );
     }
@@ -87,7 +87,6 @@ class Custom_Postlist_Dropdown_Widget extends WP_Widget {
 } // Class wpb_widget ends here
 
 // Register and load the widget
-add_action( 'widgets_init', 'custom_postlist_dropdown_widget_init' );
-function custom_postlist_dropdown_widget_init() {
-    register_widget( 'custom_postlist_dropdown_widget' );
+function crm_lists_dropdown_widget_init() {
+    register_widget( 'CRM_Lists_Dropdown_Widget' );
 }

@@ -56,7 +56,7 @@ class CPM_List {
             }
             $item .= '</tr>';
  
-            $output .= apply_filters( 'csf_post_list_item', $item, $post );
+            $output .= apply_filters( 'cpm_post_list_item', $item, $post );
         }
         $output .= '</table>';
         return $output;

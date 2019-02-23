@@ -35,14 +35,15 @@ class Custom_Post_Template {
     	return $content;
 	}
 
-    //* Customize the entry meta in the entry header (requires HTML5 theme support)
-    public function custom_post_meta( $post_info ) {
-		if ( !is_singular( $this->post_type ) ) return;
+	//* Customize the entry meta in the entry header (requires HTML5 theme support)
+	public function custom_post_meta( $post_info ) {
+		if ( !is_singular() ) return;
 		
-		// $post_info = sprintf(__('Published on %s by <span id="username">%s</span>', 'foodiepro'), '[post_date]', '[bp-author profile="true"]');
 		$avatar = do_shortcode('[peepso-user-avatar user="author" page="profile" wraptag="span" wrapclass="entry-avatar"]');
 		$profile = do_shortcode('[peepso-user-field user="author" page="profile"]');
-		$post_info = sprintf(__('Published on %s by %s<span id="username">%s</span>', 'foodiepro'), '[post_date]', $avatar, $profile);
+		$date = do_shortcode('[post_date]');
+		// $post_info = sprintf(_x('Published on %s by %s<span id="username">%s</span>', $this->post_type, 'foodiepro'), $date, $avatar, $profile);
+		$post_info = sprintf(__('Published on %s by %s<span id="username">%s</span>', 'foodiepro'), $date, $avatar, $profile);
 		
 		/* Edit Post Button */
 		global $post;
@@ -54,7 +55,7 @@ class Custom_Post_Template {
 		}
 
 		return $post_info;
-    }
+  }
 	
 	public function add_post_type_toolbar_action() {
 		if ( !is_singular( $this->post_type) ) return;

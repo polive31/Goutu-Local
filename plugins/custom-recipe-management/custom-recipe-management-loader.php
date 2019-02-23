@@ -54,9 +54,8 @@ function CRM_init() {
 
 	/* Widgets
 	------------------------------------*/
-	// require_once 'widgets/custom_recipe_list_widget.php';
-	// require_once 'widgets/custom_nutrition_label_widget.php';
-	// require_once 'widgets/custom_postlist_dropdown_widget.php';
+	require_once 'widgets/crm_lists_dropdown_widget.php';
+	require_once 'widgets/crm_nutrition_label_widget.php';
 
 	/* Launch Plugin
 	------------------------------------*/	

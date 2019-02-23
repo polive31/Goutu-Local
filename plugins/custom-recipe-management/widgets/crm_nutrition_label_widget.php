@@ -10,8 +10,8 @@ class WPURP_Custom_Nutrition_Label_Widget extends WP_Widget {
     public function __construct()
     {
         parent::__construct(
-            'wpurp_nutrition_label_widget_custom',
-            __( 'WPURP Custom Nutrition Label', 'wp-ultimate-recipe' ),
+            'WPURP_Custom_Nutrition_Label_Widget',
+            __( 'WPURP Custom Nutrition Label', 'foodiepro' ),
             array(
                 'description' => __( 'Display the Nutrition Label of a recipe, if it is available.', 'wp-ultimate-recipe' )
             )
@@ -90,8 +90,6 @@ class WPURP_Custom_Nutrition_Label_Widget extends WP_Widget {
     }
 }
 
-add_action( 'widgets_init', 'nutrition_label_widget_init' );
-
-function nutrition_label_widget_init() {
-    return register_widget("WPURP_Custom_Nutrition_Label_Widget"); 
+function crm_nutrition_label_widget_init() {
+    return register_widget('WPURP_Custom_Nutrition_Label_Widget'); 
 }

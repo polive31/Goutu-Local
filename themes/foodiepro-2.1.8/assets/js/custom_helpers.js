@@ -1,6 +1,8 @@
 jQuery(document).ready(function()   {
 
-    sidebarHeightAdjustToContent();
+    jQuery(document).ajaxStop(function () {
+        // sidebarHeightAdjustToContent();
+    });
     
     /*  Minify header on scroll
     -------------------------------------*/

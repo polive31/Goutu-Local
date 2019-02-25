@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'CHILD_THEME_NAME', 'Foodie Pro Theme' );
-define( 'CHILD_THEME_VERSION', '2.2.89' );
+define( 'CHILD_THEME_VERSION', '2.2.90' );
 define( 'CHILD_THEME_DEVELOPER', 'Shay Bocks' );
 define( 'CHILD_THEME_URL', get_stylesheet_directory_uri() );
 define( 'CHILD_THEME_PATH', get_stylesheet_directory() );
@@ -485,7 +485,21 @@ function block_new_users ($user) {
 		return $user;
 }
 
-
+/* Disables autocomplete on password */
+// add_action('login_init', 'foodiepro_autocomplete_login_init');
+// function foodiepro_autocomplete_login_init()
+// {
+//     ob_start();
+// }
+ 
+// add_action('login_form', 'foodiepro_autocomplete_login_form');
+// function foodiepro_autocomplete_login_form()
+// {
+//     $content = ob_get_contents();
+//     ob_end_clean();
+//     $content = str_replace('type="password"', 'type="password" autocomplete="off"', $content);
+//     echo $content;
+// }
 
 
 /* =================================================================*/

@@ -42,7 +42,7 @@ class Custom_Recipe_Management {
         add_action( 'wp_ajax_custom_favorite_recipe',           array( $Favorite, 'ajax_favorite_recipe' ) );
         add_action( 'wp_ajax_nopriv_custom_favorite_recipe',    array( $Favorite, 'ajax_favorite_recipe' ) );
         
-        add_shortcode( 'crm-favorites-list',                     array( $Favorite, 'favorite_recipes_shortcode' ) );
+        add_shortcode( 'crm-favorites-list',                    array( $Favorite, 'favorite_recipes_shortcode' ) );
         
         add_filter( 'query_vars',                               array( $Favorite, 'add_query_vars_filter') );   
 

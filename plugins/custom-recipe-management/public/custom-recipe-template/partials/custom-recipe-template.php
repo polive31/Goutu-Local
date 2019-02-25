@@ -28,9 +28,9 @@
 						<div class="button-caption"><?php echo __('Rate','foodiepro'); ?></div>
 						</a>
 						<?php 
-						if( is_user_logged_in() ) 
+						if( is_user_logged_in() ) {
 							$args=array(
-								'content' 	=> __('Comment and rate this recipe','foodiepro'),
+								'content' => __('Comment and rate this recipe','foodiepro'),
 								'valign' 	=> 'above',
 								'halign'	=> 'left',
 							);
@@ -45,7 +45,8 @@
 								'title'		=> __('Rate this recipe','foodiepro'),
 								'img'		=> CHILD_THEME_URL . '/images/popup-icons/fiche_recette.png'
 							);
-            				Tooltip::display( $args );    
+							Tooltip::display( $args );    
+						}
 						?>
 					</div>	
 					

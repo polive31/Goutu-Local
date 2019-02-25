@@ -32,7 +32,7 @@ class Custom_Post_Management {
 		add_action( 'genesis_before_entry_content', array($Post_Template, 'add_post_type_toolbar_action'), 15);		
 
 		// Filters the post meta information, including post edit under the headline
-		add_filter( 'genesis_post_info', 			array($Post_Template, 'custom_post_meta'), 20 );
+		add_filter( 'genesis_post_info', 'Custom_Post_Template::custom_post_meta', 20 );
 
 		// Filters post thumbnail output in order to let lightbox plugin format them accordingly
 		add_filter( 'the_content', 					array($Post_Template, 'add_lightbox_link') );
@@ -50,9 +50,11 @@ class Custom_Post_Management {
 		
 		/* Hooks for CPM_Assets class
 		-----------------------------------------------------------------*/		
-		$CPM_Assets = new CPM_Assets();
-		add_action( 'wp', array($CPM_Assets,'hydrate'));
-		add_action( 'wp_enqueue_scripts', array( $CPM_Assets, 'scripts_styles_enqueue' ) );
+		// $CPM_Assets = new CPM_Assets();
+		// add_action( 'wp', 							array($CPM_Assets,'hydrate'));
+		// add_action( 'wp_enqueue_scripts', 			array($CPM_Assets, 'scripts_styles_enqueue' ) );
+		add_action( 'wp', 						'CPM_Assets::hydrate' );
+		add_action( 'wp_enqueue_scripts', 		'CPM_Assets::scripts_styles_enqueue' );
 
 
 		

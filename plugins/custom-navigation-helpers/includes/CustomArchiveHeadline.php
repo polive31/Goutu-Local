@@ -121,11 +121,13 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 			$headline = get_term_meta( $this->query->term_id, 'headline', true );
 			if ( !empty($headline) ) 
 				return $headline;
-			else {
+			elseif (isset( $this->queryvars['post_type'] ) ) {
 				// Return the post type queried
 				return $this->get_post_type_archive_title( $this->queryvars['post_type'] );
 			}
-		};
+			else 
+				return single_term_title( $msg, false);
+		}
 	}
 
 	public function get_post_type_archive_title( $post_type ) {
@@ -135,7 +137,9 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 				break;
 			case 'post':
 				$title=__('All the posts','foodiepro');
-				break;				
+				break;
+			default:
+				$title='';				
 		}
 		return $title;
 	}

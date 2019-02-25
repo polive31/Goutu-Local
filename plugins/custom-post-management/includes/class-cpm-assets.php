@@ -25,13 +25,15 @@ class CPM_Assets {
 	private static $enqueued_styles; 
 	private static $enqueued_scripts; 
 	
-	public function __construct() {	
+	public function __construct() {
+		// __construct is empty due to this class being used in a static way
+	}
+	
+	public static function hydrate() {
+		
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
-		// IMPORTANT : use wp as a hook, otherwise the archive will not be set yet and errors will occur
-	}
 
-	public function hydrate() {
 		$default_slugs = array(
 			'post_list'         => 'publier-articles',
             'post_form'         => 'saisie-article',
@@ -200,7 +202,7 @@ class CPM_Assets {
 	}
 
 
-	public function scripts_styles_enqueue() {
+	public static function scripts_styles_enqueue() {
 		foreach (self::$enqueued_styles as $handle => $style) {
 			$enqueue = false;
 			foreach ($style['location'] as $location) {
@@ -257,11 +259,16 @@ class CPM_Assets {
 		if ( !isset(self::$taxonomies[$post_type]) ) return '';
 		$tax = self::$taxonomies[$post_type];
 		if ($taxonomy) 
-			$tax = isset($tax[$taxonomy])?$tax[$taxonomy]:false;
+		$tax = isset($tax[$taxonomy])?$tax[$taxonomy]:false;
 		if ($field)
-			$tax = isset($tax[$field])?$tax[$field]:false;
+		$tax = isset($tax[$field])?$tax[$field]:false;
 		return $tax;
-	}		
+	}
+	
+    public static function get_post_types() {
+		$types = array_keys( self::$taxonomies );
+		return $types;
+	}	
 
     // public static function get_post_image_url( $post ) {
     //     $url = get_the_post_thumbnail_url( $post->ID ,'mini-thumbnail');

@@ -28,7 +28,7 @@ label.post-title,
   font-size:1.4rem;
 }   
 
-#custom_post_submission_form input#post_title[type="text"] {
+#custom_post_submission_form .post-title-container input {
   font-size: 2rem;
 }
 

@@ -36,8 +36,10 @@ class Custom_Post_Template {
 	}
 
 	//* Customize the entry meta in the entry header (requires HTML5 theme support)
-	public function custom_post_meta( $post_info ) {
-		if ( !is_singular() ) return;
+	public static function custom_post_meta( $post_info ) {
+		if ( !is_singular( CPM_Assets::get_post_types() ) ) return;
+
+		$post_type = get_post_type();
 		
 		$avatar = do_shortcode('[peepso-user-avatar user="author" page="profile" wraptag="span" wrapclass="entry-avatar"]');
 		$profile = do_shortcode('[peepso-user-field user="author" page="profile"]');
@@ -49,8 +51,8 @@ class Custom_Post_Template {
 		global $post;
 		$current_user = wp_get_current_user();
 		if ($post->post_author == $current_user->ID || current_user_can('administrator')) { 
-			$edit_url = 'href="' . get_permalink() . CPM_Assets::get_slug( $this->post_type . '_form') . '?edit-' . $this->post_type . '=' . $post->ID . '" ';
-			$edit_title = 'title="' . CPM_Assets::get_label( $this->post_type, 'edit_button'). '" ';
+			$edit_url = 'href="' . get_permalink() . CPM_Assets::get_slug( $post_type . '_form') . '?edit-' . $post_type . '=' . $post->ID . '" ';
+			$edit_title = 'title="' . CPM_Assets::get_label( $post_type, 'edit_button'). '" ';
 			$post_info .= '<span class="edit-button"><a ' . $edit_url . $edit_title . '><i class="fa fa-pencil-square-o"></i></a></span>';    
 		}
 

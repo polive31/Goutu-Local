@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: peepso-internal\n"
 "POT-Creation-Date: 2019-01-20 19:11+0100\n"
-"PO-Revision-Date: 2019-01-24 19:13+0100\n"
+"PO-Revision-Date: 2019-02-25 23:48+0100\n"
 "Last-Translator: alconost <alpha@alconost.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -4763,7 +4763,7 @@ msgstr "à partir de maintenant"
 
 #: classes/fields/fieldtextdate.php:88
 msgid "old"
-msgstr "vieux"
+msgstr ""
 
 #: classes/fields/fieldtextdate.php:107 classes/fields/fieldtextdate.php:136
 msgid "Set date"

@@ -43,9 +43,7 @@ class CPM_List {
      
                 $item .= '<td class="post-list-status">' . $statuses[ $post->post_status ] . '</td>';
                 $item .= '<td class="post-list-actions">';
-                    $item .= '<div class="post-edit" title="' . __('Edit post', 'foodiepro') . '">';
-                    $item .= '<a href="' . $edit_url . '" title="' . $edit_title . '"><i class="fa fa-pencil-square-o"></i></a>';
-                    $item .= '</div>';
+                    $item .= CPM_Assets::get_edit_button( $this->post_type, 'post-edit' );
                 
                     $item .= '<div class="post-delete" title="' . __('Delete post', 'foodiepro') . '"><i class="fa fa-trash csf-delete-post nodisplay" data-id="' . $post->ID . '" data-title="' . esc_attr( $post->post_title ) . '"></i></td>';
                     $item .= '</div>';

@@ -34,14 +34,13 @@ function CRM_init() {
 	------------------------------------*/
 	require_once 'public/custom-recipe-template/CRM_Recipe_Template.php';
 
-	require_once 'public/custom-recipe-template/helpers/CRM_Favorite.php';
 	require_once 'public/custom-recipe-template/helpers/CRM_Recipe_Shortcodes.php';
 	require_once 'public/custom-recipe-template/helpers/CRM_Recipe_Metadata.php';
 
-	// /* Custom Recipe List
+	// /* Custom Recipe Favorite
 	// ------------------------------------*/
-	// require_once 'public/custom-recipe-list/CRM_List.php';
-	// require_once 'public/custom-recipe-list/helpers/CRM_List_Shortcodes.php';		
+	require_once 'public/custom-recipe-favorite/class-crm-favorite.php';
+	require_once 'public/custom-recipe-favorite/class-crm-favorite-shortcodes.php';		
 
 	/* Custom Recipe Submission
 	------------------------------------*/
@@ -77,27 +76,6 @@ function CRM_init() {
 		Custom_Recipe_Management::get_instance();
 }
 
-// function foodiepro_check_dependencies( $plugin, $classes ) {
-// 	$message = '<div id="message" class="error fade"><p style="line-height: 150%">';
-// 	$message .= '<strong>' . $plugin . '</strong></a> requires the following plugins to work. Please <a href="plugins.php">activate/install those plugins.</a>.';
-// 	$message .= '<ul>';
-
-// 	$missing_class = false;
-// 	foreach ($classes as $class) {
-// 		if (!class_exists( $class )) {
-// 			$message .= '<li>' . $class . '</li>';
-// 			$missing_class = $missing_class || true;
-// 		}
-// 	}
-// 	$message .= '</ul>';
-// 	$message .= '</div>';
-
-// 	if ($missing_plugin) {
-// 		new foodiepro_admin_notice( $message );
-// 		die();
-// 	}
-
-// }
 
 class foodiepro_admin_notice {
     private $_message;

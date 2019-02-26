@@ -1,5 +1,5 @@
 <div class="share-buttons">
-	<?php echo do_shortcode('[social-sharing-buttons target="post" class="small bubble"]'); ?>
+	<?= do_shortcode('[social-sharing-buttons target="post" class="small bubble"]'); ?>
 </div>
 
 

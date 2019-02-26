@@ -11,7 +11,7 @@
 		</div>
 			
 		<div class="share-buttons">
-			<?php //echo do_shortcode('[social-sharing-buttons target="recipe" class="small bubble"]'); ?>
+			<?= do_shortcode('[social-sharing-buttons target="recipe" class="small bubble"]'); ?>
 		</div>
 
 			<!-- Function buttons  -->

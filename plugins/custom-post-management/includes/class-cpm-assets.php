@@ -37,7 +37,6 @@ class CPM_Assets {
 		$default_slugs = array(
 			'post_list'         => 'publier-articles',
             'post_form'         => 'saisie-article',
-            // 'post_edit'              => 'modifier-article'
         );
 		self::$slugs = apply_filters( 'cpm_page_slugs', $default_slugs );
 		
@@ -268,6 +267,19 @@ class CPM_Assets {
     public static function get_post_types() {
 		$types = array_keys( self::$taxonomies );
 		return $types;
+	}	
+
+    public static function get_edit_button( $post_type, $class='edit-button' ) {
+		global $post;
+		$out='';
+		$current_user = wp_get_current_user();
+		if ($post->post_author == $current_user->ID || current_user_can('administrator')) { 
+			$url =  do_shortcode('[permalink slug="' . CPM_Assets::get_slug( $post_type . '_form' ) . '"]');
+			$edit_url = 'href="' . $url . CPM_Assets::get_slug( $post_type . '_form') . '?edit-' . $post_type . '=' . $post->ID . '" ';
+			$edit_title = 'title="' . CPM_Assets::get_label( $post_type, 'edit_button'). '" ';
+			$out = '<span class="' . $class . '"><a ' . $edit_url . $edit_title . '><i class="fa fa-pencil-square-o"></i></a></span>';    
+		}
+		return $out;
 	}	
 
     // public static function get_post_image_url( $post ) {

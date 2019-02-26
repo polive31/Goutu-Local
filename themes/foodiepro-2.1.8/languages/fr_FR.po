@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-02-23 12:18+0100\n"
-"PO-Revision-Date: 2019-02-23 12:19+0100\n"
+"POT-Creation-Date: 2019-02-26 22:23+0100\n"
+"PO-Revision-Date: 2019-02-26 22:24+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -213,7 +213,7 @@ msgstr ""
 #: peepso/overrides/templates/widgets/userbar.tpl.php:107
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:92
 #: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:96
-#: themes/foodiepro-2.1.8/functions.php:774
+#: themes/foodiepro-2.1.8/functions.php:788
 msgid "Log Out"
 msgstr "Déconnexion"
 
@@ -490,7 +490,7 @@ msgstr "Se souvenir de moi"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:124
 #: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:131
-#: themes/foodiepro-2.1.8/functions.php:779
+#: themes/foodiepro-2.1.8/functions.php:793
 msgid "Log In"
 msgstr "Connexion"
 
@@ -592,29 +592,29 @@ msgid "Displays profile completion bar (requires Buddy Progress Bar plugin)"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-profile-completion-widget.php:44
-#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:228
+#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:167
 msgid "Widget Title"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-profile-completion-widget.php:49
-#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:233
+#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:172
 #, fuzzy
 #| msgid "Reply to Message"
 msgid "Message:"
 msgstr "Répondre au message"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-profile-completion-widget.php:105
-#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:133
+#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:71
 msgid "Profile completed !"
 msgstr "Profil rempli !"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-profile-completion-widget.php:106
-#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:134
+#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:72
 msgid "Profile empty !"
 msgstr "Profil vide !"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-profile-completion-widget.php:116
-#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:149
+#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:88
 #, php-format
 msgid ""
 "<a href=\"%s\">Fill-in your profile</a> to make yourself visible from other "
@@ -1027,93 +1027,93 @@ msgctxt "consonant"
 msgid "All recipes containing %s"
 msgstr "Toutes les recettes à base de %s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:134
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:136
 msgid "All the recipes"
 msgstr "Toutes les recettes"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:137
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:139
 msgid "All the posts"
 msgstr "Tous les articles"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:147
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:151
 #, php-format
 msgctxt "masculine-vowel"
 msgid "All %s from %s"
 msgstr "Tous les %s de l'%s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:148
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:152
 #, php-format
 msgctxt "masculine-consonant"
 msgid "All %s from %s"
 msgstr "Tous les %s de %s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:151
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:155
 #, php-format
 msgctxt "feminine-vowel"
 msgid "All %s from %s"
 msgstr "Toutes les %s de l'%s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:152
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:156
 #, php-format
 msgctxt "feminine-consonant"
 msgid "All %s from %s"
 msgstr "Toutes les %s de %s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:192
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:196
 #, php-format
 msgctxt "generic-plural"
 msgid "All posts from %s"
 msgstr "Toutes les publications des %s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:193
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:197
 #, php-format
 msgctxt "generic-vowel"
 msgid "All posts from %s"
 msgstr "Toutes les publications d'%s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:194
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:198
 #, php-format
 msgctxt "generic-consonant"
 msgid "All posts from %s"
 msgstr "Toutes les publications de %s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:197
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:201
 #, php-format
 msgctxt "post-plural"
 msgid "All posts from %s"
 msgstr "Tous les articles des %s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:198
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:202
 #, php-format
 msgctxt "post-vowel"
 msgid "All posts from %s"
 msgstr "Tous les articles d'%s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:199
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:203
 #, php-format
 msgctxt "post-consonant"
 msgid "All posts from %s"
 msgstr "Tous les articles de %s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:202
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:206
 #, php-format
 msgctxt "recipe-plural"
 msgid "All posts from %s"
 msgstr "Toutes les recettes des %s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:203
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:207
 #, php-format
 msgctxt "recipe-vowel"
 msgid "All posts from %s"
 msgstr "Toutes les recettes d'%s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:204
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:208
 #, php-format
 msgctxt "recipe-consonant"
 msgid "All posts from %s"
 msgstr "Toutes les recettes de %s"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:245
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:249
 msgid ""
 "You will find here all the recipes, which you can further sort by date or "
 "evaluation."
@@ -1124,7 +1124,7 @@ msgstr ""
 "catégorie, vous pouvez le faire à l'aide du navigateur de thèmes.<br>Bonne "
 "recherche !"
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:248
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:252
 msgid "You will find here all the posts, which you can further sort by date."
 msgstr ""
 "Vous trouverez ici tous les articles du site. <br>Vous pouvez les trier par "
@@ -1337,6 +1337,11 @@ msgstr "Profil rempli !"
 msgid "Displays profile completion bar"
 msgstr "Profil rempli !"
 
+#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:83
+#, php-format
+msgid "Keep it up, %s"
+msgstr "Encore un effort, %s..."
+
 #: plugins/custom-post-management/custom-post-list/CPM_List.php:26
 msgid "Preview post"
 msgstr "Aperçu de l'article"
@@ -1481,13 +1486,13 @@ msgstr "Etiquettes"
 msgid "Read More"
 msgstr "Lire plus"
 
-#: plugins/custom-post-management/custom-post-template/class-custom-post-template.php:46
+#: plugins/custom-post-management/custom-post-template/class-custom-post-template.php:48
 #, php-format
 msgid "Published on %s by %s<span id=\"username\">%s</span>"
 msgstr "Publié le %s par %s<span id=\"username\">%s</span>"
 
 #: plugins/custom-post-management/custom-post-template/partials/post_toolbar.php:23
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:77
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:78
 #: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/templates/shopping-list.php:25
 msgid "Print"
 msgstr "Imprimer"
@@ -1497,56 +1502,56 @@ msgid "Print this post"
 msgstr "Imprimer cet article"
 
 #: plugins/custom-post-management/custom-post-template/partials/post_toolbar.php:38
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:92
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:93
 msgid "Share"
 msgstr "Partager"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:90
+#: plugins/custom-post-management/includes/class-cpm-assets.php:92
 #, fuzzy
 #| msgid "Are you sure you want to delete this recipe:"
 msgid "Are you sure you want to delete this post :"
 msgstr "Etes vous sûr de vouloir supprimer cette recette :"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:139
+#: plugins/custom-post-management/includes/class-cpm-assets.php:141
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:383
 #, php-format
 msgid "Authorized file formats are : %s"
 msgstr "Les formats de fichier autorisés sont : %s"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:141
+#: plugins/custom-post-management/includes/class-cpm-assets.php:143
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:385
 #, php-format
 msgid "The maximum file size is %s kB"
 msgstr "La taille du fichier doit être inférieure à %s Ko."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:142
+#: plugins/custom-post-management/includes/class-cpm-assets.php:144
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:386
 msgid "Do you really want to delete this image ?"
 msgstr "Etes vous sûr de vouloir supprimer cette image ?"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:150
+#: plugins/custom-post-management/includes/class-cpm-assets.php:152
 msgctxt "post"
 msgid "Post Title"
 msgstr "Titre de l'article"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:151
+#: plugins/custom-post-management/includes/class-cpm-assets.php:153
 #, fuzzy
 #| msgid "Edit post"
 msgctxt "post"
 msgid "Edit Post"
 msgstr "Modifier l'article"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:152
+#: plugins/custom-post-management/includes/class-cpm-assets.php:154
 msgctxt "post"
 msgid "New Post"
 msgstr "Nouvel article"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:153
+#: plugins/custom-post-management/includes/class-cpm-assets.php:155
 msgctxt "post"
 msgid "Write your new post on this page."
 msgstr "Ecrivez votre nouvel article sur cette page."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:154
+#: plugins/custom-post-management/includes/class-cpm-assets.php:156
 msgctxt "post"
 msgid ""
 "You can then choose to save it as draft, or to publish it. Once approved, it "
@@ -1556,12 +1561,12 @@ msgstr ""
 "bien le publier. Dans ce cas, une fois approuvé, il sera visible du reste "
 "des utilisateurs."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:155
+#: plugins/custom-post-management/includes/class-cpm-assets.php:157
 msgctxt "post"
 msgid "Edit your existing post on this page."
 msgstr "Mettez à jour votre article sur cette page."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:156
+#: plugins/custom-post-management/includes/class-cpm-assets.php:158
 msgctxt "post"
 msgid ""
 "You can then choose to save it as draft, or to publish it. Once approved, it "
@@ -1571,12 +1576,12 @@ msgstr ""
 "bien le publier. Dans ce cas, une fois approuvé, il sera visible des autres "
 "utilisateurs."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:157
+#: plugins/custom-post-management/includes/class-cpm-assets.php:159
 msgctxt "post"
 msgid "Post saved as a draft."
 msgstr "Votre article a été sauvegardé en tant que brouillon."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:158
+#: plugins/custom-post-management/includes/class-cpm-assets.php:160
 msgctxt "post"
 msgid ""
 "It will not be visible on the site, but you can edit it at any time and "
@@ -1585,20 +1590,20 @@ msgstr ""
 "Il ne sera pas visible sur le site, mais vous pouvez le modifier à tout "
 "moment, et le publier plus tard."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:159
+#: plugins/custom-post-management/includes/class-cpm-assets.php:161
 #, php-format
 msgctxt "post"
 msgid "Back to <a href=\"%s\">my posts</a>."
 msgstr "Retour à <a href=\"%s\">mes articles</a>."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:160
+#: plugins/custom-post-management/includes/class-cpm-assets.php:162
 #, php-format
 msgctxt "post"
 msgid "Dear administrator, this post is now <a href=\"%s\">published</a>."
 msgstr ""
 "Cher administrateur, cet article est désormais <a href=\"%s\">publié</a>."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:161
+#: plugins/custom-post-management/includes/class-cpm-assets.php:163
 #, fuzzy
 #| msgid "Recipe submitted! Thank you, your recipe is now awaiting moderation."
 msgctxt "post"
@@ -1606,7 +1611,7 @@ msgid "Post submitted! Thank you, your post is now awaiting moderation."
 msgstr ""
 "Nous avons bien reçu votre recette ! Elle sera publiée après modération. "
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:162
+#: plugins/custom-post-management/includes/class-cpm-assets.php:164
 msgctxt "post"
 msgid ""
 "In order for your post to be published, please fill-in those required fields:"
@@ -1614,30 +1619,30 @@ msgstr ""
 "Afin que votre article puisse être publié, merci de renseigner les "
 "informations suivantes :"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:175
+#: plugins/custom-post-management/includes/class-cpm-assets.php:177
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_save.php:125
 #: plugins/wp-ultimate-recipe-premium/premium/helpers/recipe_columns.php:83
 msgid "Categories"
 msgstr "Catégories"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:183
+#: plugins/custom-post-management/includes/class-cpm-assets.php:185
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:69
 #: plugins/wp-ultimate-recipe-premium/core/helpers/migration/3_10_2_keywords.php:54
 #: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:70
 msgid "Keywords"
 msgstr "Mots-clés"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:192
+#: plugins/custom-post-management/includes/class-cpm-assets.php:194
 msgid "Post Title"
 msgstr "Titre de l'article"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:193
+#: plugins/custom-post-management/includes/class-cpm-assets.php:195
 #, fuzzy
 #| msgid "Post content"
 msgid "Post Content"
 msgstr "Corps de l'article"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:194
+#: plugins/custom-post-management/includes/class-cpm-assets.php:196
 msgid "Post Category"
 msgstr "Catégorie de l'article"
 
@@ -1847,7 +1852,7 @@ msgid "Occasion"
 msgstr "Occasion"
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:110
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:159
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:160
 msgid "Diet"
 msgstr "Régime"
 
@@ -1954,7 +1959,7 @@ msgid "Are you sure you want to delete this post :"
 msgstr "Etes vous sûr de vouloir supprimer cette recette :"
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:230
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:81
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:82
 msgid "Print this Recipe"
 msgstr "Imprimer cette recette"
 
@@ -2252,7 +2257,7 @@ msgstr "Ingrédient"
 #: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:229
 #: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:230
 #: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-print-template.php:83
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:232
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:233
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:19
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:49
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:81
@@ -2460,7 +2465,7 @@ msgid "reviews"
 msgstr "avis"
 
 #: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-print-template.php:28
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:178
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:179
 msgid "Serves"
 msgstr "Portions"
 
@@ -2476,28 +2481,28 @@ msgstr "Commenter et noter cette recette"
 msgid "Rate this recipe"
 msgstr "Evaluez cette recette"
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:108
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:109
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:137
 msgid "Read"
 msgstr "Lire"
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:112
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:113
 msgid "Read this recipe out loud"
 msgstr "Lire cette recette à haute voix"
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:152
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:153
 msgid "Origin"
 msgstr "Origine"
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:166
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:167
 msgid "Level"
 msgstr "Niveau"
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:181
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:182
 msgid "Decrease servings"
 msgstr "Réduire les quantités"
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:185
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:186
 msgid "Increase servings"
 msgstr "Augmenter les quantités"
 
@@ -2562,7 +2567,7 @@ msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr "Un problème ? Une question ? Contacte nous <a href=\"%s\">ici</a>"
 
 #: plugins/custom-site-notifications/includes/CustomSiteMails.php:88
-#: themes/foodiepro-2.1.8/functions.php:873
+#: themes/foodiepro-2.1.8/functions.php:887
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
@@ -10060,23 +10065,23 @@ msgstr ""
 "<strong>ERREUR</strong> : Utilisateur en attente d'<a href=\"%s"
 "\">approbation</a>."
 
-#: themes/foodiepro-2.1.8/functions.php:498
+#: themes/foodiepro-2.1.8/functions.php:512
 msgid "author"
 msgstr "auteur"
 
-#: themes/foodiepro-2.1.8/functions.php:649
+#: themes/foodiepro-2.1.8/functions.php:663
 msgid "Content/Alt Sidebar"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:833
+#: themes/foodiepro-2.1.8/functions.php:847
 msgid "Recipe, Ingredient, Keyword, Author..."
 msgstr "Recette, ingrédient, mot-clé, auteur..."
 
-#: themes/foodiepro-2.1.8/functions.php:873
+#: themes/foodiepro-2.1.8/functions.php:887
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:873
+#: themes/foodiepro-2.1.8/functions.php:887
 msgid "Legal notice"
 msgstr "Mentions légales"
 

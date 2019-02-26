@@ -44,17 +44,10 @@ class Custom_Post_Template {
 		$avatar = do_shortcode('[peepso-user-avatar user="author" page="profile" wraptag="span" wrapclass="entry-avatar"]');
 		$profile = do_shortcode('[peepso-user-field user="author" page="profile"]');
 		$date = do_shortcode('[post_date]');
-		// $post_info = sprintf(_x('Published on %s by %s<span id="username">%s</span>', $this->post_type, 'foodiepro'), $date, $avatar, $profile);
 		$post_info = sprintf(__('Published on %s by %s<span id="username">%s</span>', 'foodiepro'), $date, $avatar, $profile);
 		
 		/* Edit Post Button */
-		global $post;
-		$current_user = wp_get_current_user();
-		if ($post->post_author == $current_user->ID || current_user_can('administrator')) { 
-			$edit_url = 'href="' . get_permalink() . CPM_Assets::get_slug( $post_type . '_form') . '?edit-' . $post_type . '=' . $post->ID . '" ';
-			$edit_title = 'title="' . CPM_Assets::get_label( $post_type, 'edit_button'). '" ';
-			$post_info .= '<span class="edit-button"><a ' . $edit_url . $edit_title . '><i class="fa fa-pencil-square-o"></i></a></span>';    
-		}
+		$post_info .= CPM_Assets::get_edit_button( $post_type );
 
 		return $post_info;
   }

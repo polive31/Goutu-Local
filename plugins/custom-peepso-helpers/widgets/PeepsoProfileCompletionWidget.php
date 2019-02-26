@@ -64,69 +64,7 @@ class PeepsoProfileCompletionWidget extends WP_Widget {
 
 		$user_percent = $stats['completeness'];
 
-		// if( $can_edit ) {
-
-		// 	echo '<div class="ps-progress ps-completeness-info"';
-
-		// 	if( $stats['completeness'] >= 100 && $stats['missing_required'] <= 0) {
-		// 		echo ' style="display:none" ';
-		// 	}
-
-		// 	echo '>';
-
-		// 		echo '<div class="ps-progress-status ps-completeness-status ';
-
-		// 		if(1 === PeepSo::get_option('force_required_profile_fields',0) && $stats['filled_required'] < $stats['fields_required']) {
-		// 			echo 'ps-text--danger';
-		// 		}
-
-		// 		echo '"';
-
-		// 		if( $stats['completeness'] >= 100) {
-		// 			echo ' style="display:none" ';
-		// 		}
-
-		// 		echo '>' . $stats['completeness_message'];
-
-		// 		if(isset($stats['completeness_message_detail'])) {
-		// 			echo $stats['completeness_message_detail'];
-		// 		}
-
-		// 		do_action('peepso_action_render_profile_completeness_message_after', $stats);
-
-		// 		echo '</div>';
-
-		// 		echo '<div class="ps-progress-bar ps-completeness-bar" ';
-
-		// 		if( $stats['completeness'] >= 100) {
-		// 			echo ' style="display:none" ';
-		// 		}
-
-		// 		echo '><span style="width:' . $stats['completeness'] . '%;"></span>';
-
-		// 		echo "</div>";
-
-		// 		echo '<div class="ps-progress-message ps-missing-required-message" ';
-
-		// 		if( $stats['missing_required'] <= 0) {
-		// 			echo ' style="display:none" ';
-		// 		}
-
-		// 		echo '>';
-
-		// 			echo '<i class="ps-icon-warning-sign"></i> ' . $stats['missing_required_message'];
-
-		// 		echo '</div>';
-		// 	echo "</div>";
-		// }
-
-
 		$trigger_percent=(isset($instance['trigger_percent']))?$instance['trigger_percent']:'100';
-
-//		echo $trigger_percent;
-//		echo '<pre>';
-//		print_r($instance);
-//		echo '</pre>';
 
 		if ( ( (int)$user_percent >= (int)$trigger_percent ) && !($trigger_percent == 0) ) return;
 
@@ -140,10 +78,11 @@ class PeepsoProfileCompletionWidget extends WP_Widget {
 		extract( $args );
 
 		// widget title
-		$title = apply_filters( 'widget_title', $instance['title'] );
+		// $title = apply_filters( 'widget_title', $instance['title'] );
+		$user = PeepsoHelpers::get_user('current');
+		$title = empty($instance['title'])?sprintf(__('Keep it up, %s', 'foodiepro'), PeepsoHelpers::get_field($user, 'firstname') ):$instance['title'];
 
 		// add a textarea for long messages
-		$user = PeepsoHelpers::get_user('current');
 		$profile_url=PeepsoHelpers::get_url( $user, 'profile', 'about');
 
 		$textarea = sprintf(__('<a href="%s">Fill-in your profile</a> to make yourself visible from other users.','foodiepro'), $profile_url);

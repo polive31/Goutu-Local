@@ -409,6 +409,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 			
 		
 		$hierarchical=0;	
+		$child_of='';
 		$depth=0;	
 		// Output taxonomy and parent term			
 		if ($tax_slug == 'cuisine') { // $tax_slug will stay cuisine
@@ -419,9 +420,6 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		}
 		elseif ($tax_slug == 'ingredient') {
 			$hierarchical = 1; 
-		}
-		else {
-			$child_of='';
 		}
 		
 

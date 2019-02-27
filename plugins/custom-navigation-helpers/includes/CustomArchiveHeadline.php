@@ -29,9 +29,6 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 	}
 
 
-
-
-
 	public function custom_search_title_text() {	
 		// $url = $_SERVER["REQUEST_URI"];
 		// $WPURP_search = strpos($url, 'wpurp-search');
@@ -67,8 +64,8 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 
 		$msg='';
 
+		/* If a custom headline was set for this archive then return it */
 		$headline = get_term_meta( $this->query->term_id, 'headline', true );
-
 		if ( !empty($headline) ) 
 			return $headline;		
 		else {
@@ -77,6 +74,7 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 			if ( !empty($headline) ) return $headline;	
 		}
 
+		/* Check archive type */
 		if ( is_author() ) {
 			$id=$this->queryvars['author'];
 			$user=PeepsoHelpers::get_user($id);
@@ -86,36 +84,42 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 			$msg = $this->post_from_msg( $type, $name );
 			return $msg;
 		}
-		elseif ( is_tax() ) {
-			// $term = single_term_title('', false);
 			
-		    if ( is_tax('ingredient') ) {
-				$ingredient = $this->queryvars['ingredient'];
-				if ( initial_is_vowel($ingredient) )
+		elseif ( is_tax('ingredient') ) {
+			$ingredient = $this->queryvars['ingredient'];
+			if ( initial_is_vowel($ingredient) )
 				$msg=sprintf(_x('All recipes containing %s','vowel','foodiepro'), $ingredient);
-				else 
+			else 
 				$msg=sprintf(_x('All recipes containing %s','consonant','foodiepro'), $ingredient);			
-				return $msg;
-		    }
-		    if ( is_tax('cuisine') ) {
-				$msg = $this->post_from_msg( 'recipe', $term);
-				return $msg;
+			return $msg;
+		}
+		
+		elseif ( is_tax('cuisine') ) {
+			$msg = $this->post_from_msg( 'recipe', $term);
+			return $msg;
+		}
+				
+		elseif ( is_tax('course') ) {
+			$course=$this->queryvars['course'];
+			$term='';
+			if ($this->queryvars['season']) 
+				$term=$this->queryvars['season'];
+			elseif ( !empty($_GET['author']) ) {
+				$user = get_user_by( 'slug', $_GET['author'] );
+				$user=PeepsoHelpers::get_user( $user->ID );
+				$term=PeepsoHelpers::get_field($user, "nicename");
 			}
-		    if ( is_tax('course') ) {
-				$course=$this->queryvars['course'];
-				if ($this->queryvars['season']) 
-					$term=$this->queryvars['season'];
-				elseif ( isset($_GET['author']) ) {
-					$user = get_user_by( 'slug', $_GET['author'] );
-					$user=PeepsoHelpers::get_user( $user->ID );
-					$term=PeepsoHelpers::get_field($user, "nicename");
-				}
-				$msg = $this->course_of_msg( $course, $term);
-				return $msg;
-		    }			
 			else 
 				return single_term_title( $msg, false);
+				 
+			$msg = $this->course_of_msg( $course, $term);
+			return $msg;
+		}			
+			
+		elseif ( is_tax() || is_tag() ) { 
+				return single_term_title( $msg, false);
 		}
+
 		else {
 			// Check whether a specific archive headline was set in the backend
 			$headline = get_term_meta( $this->query->term_id, 'headline', true );
@@ -128,6 +132,7 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 			else 
 				return single_term_title( $msg, false);
 		}
+
 	}
 
 	public function get_post_type_archive_title( $post_type ) {
@@ -145,7 +150,7 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 	}
 	
 
-	public function course_of_msg( $course, $context ) {
+	public function course_of_msg( $course, $context='' ) {
 		$html=array(
 			'masculine'		=> array(
 				'vowel' 	=> _x('All %s from %s','masculine-vowel','foodiepro'),

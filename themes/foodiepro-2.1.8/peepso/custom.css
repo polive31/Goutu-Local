@@ -297,7 +297,9 @@
 }
 
 div#postbox-main {
-    box-shadow: #bbbbbb 4px 5px 17px 0px;
+    /* box-shadow: #bbbbbb 4px 5px 17px 0px; */
+    box-shadow:#bbbbbbc2 0px 0px 17px 3px;
+    margin: 0px 0 60px 0;
 }
 
 .ps-stream-header {

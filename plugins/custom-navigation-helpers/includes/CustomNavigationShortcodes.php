@@ -129,11 +129,6 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 	        'groupby' => ''
 	    ), $args );
 
-	    // $args = array(
-	    //     'taxonomy' => $attributes['taxonomy'],
-	    //     'orderby' => $attributes['orderby'],
-	    // );
-
 	    $terms = get_categories($args);
 	    
 	    $output = '';
@@ -358,7 +353,9 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		
 		foreach ( $tags as $tag ) {
 			$post_count = $count?' (' . $tag->count . ')':'';
-			$html .= '<li><a href="' .  get_tag_link($tag->term_id) . '">' . $tag->name . $post_count . '</a></li>';
+			$url = get_tag_link($tag->term_id);
+			$url = add_query_arg( 'post_type', 'recipe', $url );
+			$html .= '<li><a href="' . $url . '">' . $tag->name . $post_count . '</a></li>';
 		}	
 		
 		$html .= '</div></div>';

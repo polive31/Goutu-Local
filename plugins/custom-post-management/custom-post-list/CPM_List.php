@@ -34,24 +34,14 @@ class CPM_List {
             // $favicon = Custom_post_Favorite::get_icon( $favlist );
             
             if ($edit) {
-
-                $edit_url = apply_filters( 'cpm_edit_' . $this->post_type . '_url', get_permalink() . CPM_Assets::get_slug($this->post_type . '_form') . '?edit-' . $this->post_type . '=' . $post->ID);
-                $edit_url = $edit?$edit_url:$view_url;
-
-                $edit_title = apply_filters( 'cpm_edit_' . $this->post_type . '_title', __('Edit post', 'foodiepro') );
-                $edit_title = $edit?$edit_title:$view_title;
-     
                 $item .= '<td class="post-list-status">' . $statuses[ $post->post_status ] . '</td>';
                 $item .= '<td class="post-list-actions">';
                     $item .= CPM_Assets::get_edit_button( $this->post_type, 'post-edit' );
-                
                     $item .= '<div class="post-delete" title="' . __('Delete post', 'foodiepro') . '"><i class="fa fa-trash csf-delete-post nodisplay" data-id="' . $post->ID . '" data-title="' . esc_attr( $post->post_title ) . '"></i></td>';
                     $item .= '</div>';
                 $item .= '</td>';
             }
-            else {
-                // $item .= '<td class="post-list-list" title="' . Custom_post_Favorite::get_field( $favlist, 'label' ) . '">' . $favicon . '</td>';
-            }
+
             $item .= '</tr>';
  
             $output .= apply_filters( 'cpm_post_list_item', $item, $post );

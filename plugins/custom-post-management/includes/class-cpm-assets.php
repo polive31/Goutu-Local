@@ -274,10 +274,10 @@ class CPM_Assets {
 		$out='';
 		$current_user = wp_get_current_user();
 		if ($post->post_author == $current_user->ID || current_user_can('administrator')) { 
-			$post_url =  do_shortcode('[permalink slug="' . CPM_Assets::get_slug( $post_type . '_form' ) . '"]');
+			$post_url =  do_shortcode('[permalink slug="' . self::get_slug( $post_type . '_form' ) . '"]');
 			$edit_url = $post_url . '?edit-' . $post_type . '=' . $post->ID;
-			$edit_title = 'title="' . CPM_Assets::get_label( $post_type, 'edit_button'). '" ';
-			$out = '<span class="' . $class . '"><a href="' . $edit_url . $edit_title . '"><i class="fa fa-pencil-square-o"></i></a></span>';    
+			$edit_title = self::get_label( $post_type, 'edit_button');
+			$out = '<span class="' . $class . '"><a href="' . $edit_url . '" title="' . $edit_title . '"><i class="fa fa-pencil-square-o"></i></a></span>';    
 		}
 		return $out;
 	}	

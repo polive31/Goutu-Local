@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2019-02-26 22:23+0100\n"
-"PO-Revision-Date: 2019-02-27 23:52+0100\n"
+"PO-Revision-Date: 2019-02-28 00:16+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -1532,11 +1532,9 @@ msgid "Post Title"
 msgstr "Titre de l'article"
 
 #: plugins/custom-post-management/includes/class-cpm-assets.php:153
-#, fuzzy
-#| msgid "Edit post"
 msgctxt "post"
 msgid "Edit Post"
-msgstr "Modifier l'article"
+msgstr "Modifier cet article"
 
 #: plugins/custom-post-management/includes/class-cpm-assets.php:154
 msgctxt "post"
@@ -1864,11 +1862,9 @@ msgid "Post Title"
 msgstr "Titre de la recette"
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:128
-#, fuzzy
-#| msgid "Edit post"
 msgctxt "recipe"
 msgid "Edit Post"
-msgstr "Modifier l'article"
+msgstr "Modifier cette recette"
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:129
 msgctxt "recipe"

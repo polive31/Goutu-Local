@@ -84,7 +84,7 @@ class Custom_Social_Interactions {
 
         }
         else {
-            echo 'Nonce check failed';
+            // echo __('Please refresh the page before','foodiepro');
         }
 
         die();

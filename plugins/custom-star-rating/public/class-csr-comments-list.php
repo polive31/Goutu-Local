@@ -6,26 +6,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class CustomCommentsList {
+class CSR_Comments_List {
 	
-	public function __construct() {
-		add_action( 'genesis_before_content', array($this,'custom_genesis_list_comments') );
-		/* Add anchor to comments section title	*/
-		add_filter('genesis_title_comments', array($this,'add_comments_title_markup'), 15, 1 );
-		/* Remove comment form unless it's a comment reply page */
-		add_action( 'genesis_comment_form', array($this,'remove_recipe_comments_form'), 0 );
-		/* Disable logged in / logged out link */
-		add_filter( 'comment_form_defaults', array($this,'change_comment_form_defaults') );
-		/* Customize comment section title */
-		add_filter('genesis_title_comments', array($this,'custom_comment_text') );
-		/* Customize navigation links */
-		add_filter('genesis_prev_comments_link_text', array($this,'custom_comments_prev_link_text') );
-		add_filter('genesis_next_comments_link_text', array($this,'custom_comments_next_link_text') );
-		/* Disable url input box in comment form unlogged users */
-		add_filter('comment_form_default_fields', array($this,'customize_comment_form') );
-	}
-
-
+	
 	public function remove_recipe_comments_form() {
 		if ( is_singular( 'recipe' ) ) {
 			$url = $_SERVER["REQUEST_URI"];
@@ -74,7 +57,7 @@ class CustomCommentsList {
 		 Replace comment list with one including ratings
 	-------------------------------------------------------*/
 	public function custom_genesis_list_comments() {
-		if ( is_singular( CustomStarRatings::rated_post_types() ) ) {
+		if ( is_singular( CSR_ASsets::post_types() ) ) {
 			remove_action( 'genesis_list_comments', 'genesis_default_list_comments' );
 			add_action( 'genesis_list_comments', array($this,'custom_star_rating_list_comments') );
 		}
@@ -128,7 +111,7 @@ class CustomCommentsList {
 		  	</div>
 		      
 				<div class="comment-rating">
-		  		<?php echo do_shortcode('[display-star-rating source="comment"]');?>         
+		  		<?= do_shortcode('[display-star-rating category="all" source="comment"]');?>         
 				</div>
 
 				<div class="comment-content">
@@ -146,7 +129,7 @@ class CustomCommentsList {
 				<?php do_action( 'genesis_after_comment' );?>
 				
 		  </div>
-		  <!-- Pas </li> pour commentaires imbriqués -->
+		  <!-- Pas </li> pour commentaires imbriquï¿½s -->
   
 	<?php
 	}

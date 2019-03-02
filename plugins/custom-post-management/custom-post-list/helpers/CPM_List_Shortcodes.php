@@ -51,7 +51,6 @@ class CPM_List_Shortcodes {
             $posts = get_posts( $args );
 
             if( count( $posts ) !== 0 ) {
-
                 $List = new CPM_List( $post_type );
                 $output .= $content?$content:'<p>' . __('Here is the list of the posts that you created, and their status. You can choose to edit them, change their visibility, or delete them.', 'foodiepro') . '</p>';
                 $output .= $List->display( $posts, true );

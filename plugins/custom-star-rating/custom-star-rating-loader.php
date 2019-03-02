@@ -17,19 +17,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-//*************************************************************************
-//**               INITIALIZATION
-//*************************************************************************
+/*************************************************************************/
+/************               INITIALIZATION		         *****************/
+/*************************************************************************/
 
-require 'includes/CustomStarRatings.php';
-require 'includes/CustomStarRatingsMeta.php';
-require 'includes/CustomStarRatingsShortcodes.php';
-require 'includes/CustomCommentsList.php';
+require 'includes/class-custom-star-rating.php';
 
-new CustomStarRatings();
-new CustomStarRatingsMeta();
-new CustomStarRatingsShortcodes();
-new CustomCommentsList();
+require 'public/class-csr-assets.php';
+require 'public/class-csr-comments-list.php';
+require 'public/class-csr-meta.php';
+require 'public/class-csr-shortcodes.php';
+
 	
 /* Chargement du text domain */
 function custom_star_rating_load_textdomain() {
@@ -37,5 +35,8 @@ function custom_star_rating_load_textdomain() {
 }
 add_action('plugins_loaded', 'custom_star_rating_load_textdomain');
 
-
-?>
+/* Start plugin */
+add_action( 'wp_loaded', 'csr_start_plugin' );
+function csr_start_plugin() {
+	new Custom_Star_Rating();
+}

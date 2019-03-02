@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2019-02-26 22:23+0100\n"
-"PO-Revision-Date: 2019-02-28 00:16+0100\n"
+"PO-Revision-Date: 2019-02-28 00:27+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -1599,12 +1599,10 @@ msgstr ""
 "Cher administrateur, cet article est désormais <a href=\"%s\">publié</a>."
 
 #: plugins/custom-post-management/includes/class-cpm-assets.php:163
-#, fuzzy
-#| msgid "Recipe submitted! Thank you, your recipe is now awaiting moderation."
 msgctxt "post"
 msgid "Post submitted! Thank you, your post is now awaiting moderation."
 msgstr ""
-"Nous avons bien reçu votre recette ! Elle sera publiée après modération. "
+"Nous avons bien reçu votre recette ! Elle sera publiée après modération."
 
 #: plugins/custom-post-management/includes/class-cpm-assets.php:164
 msgctxt "post"
@@ -1929,12 +1927,10 @@ msgstr ""
 "Cher administrateur, cette recette est désormais <a href=\"%s\">publiée</a>."
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:138
-#, fuzzy
-#| msgid "Recipe submitted! Thank you, your recipe is now awaiting moderation."
 msgctxt "recipe"
 msgid "Post submitted! Thank you, your post is now awaiting moderation."
 msgstr ""
-"Nous avons bien reçu votre recette ! Elle sera publiée après modération. "
+"Nous avons bien reçu votre recette ! Elle sera publiée après modération."
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:139
 msgctxt "recipe"

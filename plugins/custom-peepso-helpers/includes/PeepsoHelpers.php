@@ -78,7 +78,6 @@ class PeepsoHelpers extends PeepsoCustomizations {
 	}
 
 	static function get_url( $user, $page='profile', $subpage='' ) {
-
 		switch ( $page ) {
 			case 'archive':
 				$url = get_site_url();
@@ -92,7 +91,6 @@ class PeepsoHelpers extends PeepsoCustomizations {
 				$url .= $subpage;
 				break;			
 		}
-
 		return $url;
 	}	
 

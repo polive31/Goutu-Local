@@ -30,7 +30,7 @@ class CustomSiteMails {
 		/* Event hooks
 		--------------------------------------------------------------*/
 		add_action( 'pending_to_publish',  							array($this, 'published_post_notification'), 10, 1 );
-		add_action( 'bp_core_activated_user', 						array($this, 'welcome_user_notification'), 10, 3 );
+		// add_action( 'bp_core_activated_user', 						array($this, 'welcome_user_notification'), 10, 3 );
 
 
 		/* Mail Customizations
@@ -119,7 +119,8 @@ class CustomSiteMails {
 		    $content = sprintf( $content, get_permalink($post), $post->post_title);
 		    $content = wpautop( $content );
 
-		    $content1 = sprintf( $content1, bp_core_get_user_domain( $post->post_author ));
+			$user = PeepsoHelpers::get_user( 'author' );
+		    $content1 = sprintf( $content1, PeepsoHelpers::get_url( $user ) );
 		    $content1 = wpautop( $content1 );
 
 		    $img_url = get_the_post_thumbnail_url($post, 'post-thumbnail');

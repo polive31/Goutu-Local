@@ -5,39 +5,31 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
-	
-	public function __construct() {
-		parent::__construct();
-		
-		add_shortcode( 'json-ld-rating', 			array( $this, 'display_json_ld_rating') );
-		add_shortcode( 'comment-rating-form', array( $this, 'display_comment_form_with_rating') );
-		add_shortcode( 'display-star-rating', array( $this, 'display_star_rating_shortcode') );
-		// add_shortcode( 'add-comment-form', array($this,'add_comment_form_shortcode') );
-	}
+class CSR_Shortcodes {
+
 
 	/* Add Comment Form 
 	-----------------------------------------------*/
-	public function add_comment_form_shortcode() {
-	//		$comments_args = array( 
-	//			'title_reply' => __( '', 'genesis' ), 
-	//      'comment_field'=>'<p class="comment-form-comment"></p>', 
-	//		);
+	// public function add_comment_form_shortcode() {
+	// //		$comments_args = array( 
+	// //			'title_reply' => __( '', 'genesis' ), 
+	// //      'comment_field'=>'<p class="comment-form-comment"></p>', 
+	// //		);
 
-		wp_enqueue_style('custom-star-rating');
+	// 	wp_enqueue_style('custom-star-rating');
 
-		$comment_args='';
-	    ob_start();
-	    comment_form($comment_args);
-	    $cform = ob_get_contents();
-	    ob_end_clean();
-	    return $cform;
-	}
+	// 	$comment_args='';
+	//     ob_start();
+	//     comment_form($comment_args);
+	//     $cform = ob_get_contents();
+	//     ob_end_clean();
+	//     return $cform;
+	// }
 
 
 	/* Rating in string (not graphical) format for json encode
 	-----------------------------------------------*/
-	public function display_json_ld_rating($atts) {
+	public function display_json_ld_rating_shortcode($atts) {
 		$a = shortcode_atts( array(
 			'category' => 'global', //any rating category...
 		), $atts );
@@ -61,7 +53,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 
 	/* Comment form with rating input shortcode
 	-----------------------------------------------*/
-	public function display_comment_form_with_rating() {
+	public function display_comment_form_with_rating_shortcode() {
 		$args = array (
 			'title_reply' => '', //Default: __( 'Leave a Reply� )
 			'label_submit' => __( 'Send', 'custom-star-rating' ), //default=�Post Comment�
@@ -88,7 +80,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		$a = shortcode_atts( array(
 			'source' => 'post', //comment
 			'display' => 'normal', //minimal = only stars, normal = caption + stars, full = with votes
-			'category' => 'all',  // which rating(s) is(are) to be displayed : "all", "global", "rating", "clarity"...
+			'category' => 'global',  // which rating(s) is(are) to be displayed : "all", "global", "rating", "clarity"...
 			'markup' => 'table',  // span, list...
 		), $atts );
 		
@@ -97,6 +89,8 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		$display_style = $a['display'];
 		$comment_rating = ( $a['source'] == 'comment');
 		
+
+		/* Define markup */
 		if ($a['markup']=='table') {
 			$otag = '<table class="ratings-table" id="rating">'; // main opening tag
 			$ctag = '</table>'; // mai opening tag
@@ -122,16 +116,13 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 			$cctag = '</span>'; // cell closing tag
 		}
 
-		//if (!$comment_rating) $this->dbg('In POST rating display shortcode','');
-		//if ($comment_rating) $this->dbg('In COMMENT rating display shortcode','');
-
 		// Setup categories to be displayed
-		if ( $a['category']=='all' ) $display_cats=self::$ratingCats;	
-		elseif ( $a['category']=='global' ) $display_cats=self::$ratingGlobal;				
+		if ( $a['category']=='all' ) $display_cats=CSR_Assets::rating_cats();	
+		elseif ( $a['category']=='global' ) $display_cats=CSR_Assets::rating_cats('global');				
 		else {
 			$shortcode_cats = explode(' ', $a['category']);
 			foreach ($shortcode_cats as $key) {
-				$display_cats[$key]=self::$ratingCats[$key];	
+				$display_cats[$key]=CSR_Assets::rating_cats($key);	
 			}
 		}
 
@@ -141,57 +132,46 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		}
 		else { // Rating in post meta
 			$post_id = get_the_id();
-			if ($display_style == 'full') { // displays number of votes
-				$ratings = get_post_meta( $post_id , 'user_ratings' );
-			}
 		}
 
 		ob_start();
 	
 		?>
-		<?php echo $otag; ?>
+		<?= $otag; ?>
 		<?php
+
 		foreach ($display_cats as $id=>$cat) {
 			
 			if ( $comment_rating ) {
-				$rating=$this->get_comment_rating($comment_id,$id);
+				$rating=CSR_Meta::get_comment_rating($comment_id, $id);
 			}
-			elseif ($display_style == 'full') { // displays number of votes
-				if ( $id=='global' ) {
-					$rating = $this->get_post_rating( $post_id , 'global');
-					$votes = count($ratings);
-				}
-				else {
-					$stats=$this->get_post_stats($ratings,$id);
-					$rating=$stats['rating'];
-					$votes=$stats['votes'];
-				}
-			}
-			else {
-				$rating = $this->get_post_rating( $post_id , $id);
+			else { 
+				$rating = CSR_Meta::get_post_rating( $post_id, $id );
+				if ($display_style == 'full')  // displays number of votes
+					$votes = CSR_Meta::get_votes_count( $post_id, $id );
 			}
 
-			$rating=empty($rating)?0:(int)$rating;
+			$rating = empty($rating)?0:$rating;
 			$stars = floor($rating);
-			$half = ($rating-$stars) >= 0.5;
+			$half = ((int)$rating-$stars) >= 0.5;
 			?>
 			<?= $rotag;?>
 			<?php
 			if ( ! ( $comment_rating && $rating==0 ) ) { // Don't show empty ratings in comments 	
 				if ( $display_style!='minimal' ) {
 				?>
-				<?= $cotag;?> class="rating-category" title="<?php echo __($cat['legend'], 'custom-star-rating')?>"><?php echo __($cat['title'], 'custom-star-rating')?>
+				<?= $cotag;?> class="rating-category" title="<?= $cat['legend']; ?>"><?= $cat['title']; ?>
 				<?= $cctag;?>
 				<?php
 				}?>
-				<?= $cotag;?> class="rating" title="<?php echo $rating?> : <?php echo $this->rating_caption($rating,$id)?>">
-				<a class="pum-trigger" id="recipe-review"><?php echo $this->output_stars($stars, $half)?></a>
+				<?= $cotag;?> class="rating" title="<?= $rating?> : <?= CSR_Assets::get_rating_caption($rating,$id); ?>">
+				<a class="pum-trigger" id="recipe-review"><?= $this->output_stars($stars, $half); ?></a>
 				<?= $cctag;?>
 			<?php
 			}
 			if ( $display_style=='full' && !empty( $votes ) ) {
 				$rating_plural=sprintf(_n('%s review','%s reviews',$votes,'custom-star-rating'), $votes); ?>
-				<?= $cotag;?> class="rating-details"><a href="#comments-section"><?php echo $rating_plural ?></a><?= $cctag;?> 
+				<?= $cotag;?> class="rating-details"><a href="#comments-section"><?= $rating_plural ?></a><?= $cctag;?> 
 			<?php 
 			}?>
 			<?= $rctag;?>
@@ -204,47 +184,17 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 			//}
 
 		$html = ob_get_contents();
-	  	ob_end_clean();	
+	  ob_end_clean();	
 
 		return $html;
 	}
+
+
+	/*************************************************************
+	 * ************       DISPLAY HELPERS         ****************
+	 *************************************************************/
 	
-	
-	/* Output stars
-	-------------------------------------------------------------*/
-	public function output_stars_simple($stars, $half) {
-		$html = '';
-		for ($i = 1; $i <= $stars; $i++) {
-			$html .= '<i class="fa fa-star"></i>';
-		}
-		for ($i = $stars+1; $i <= 5; $i++) {
-			if ( ($i == ($stars+1) ) && $half ) {
-				$html .= '<i class="fa fa-star-half-o"></i>';
-			}
-			else {
-				$html .= '<i class="fa fa-star-o"></i>';
-			}
-		}
-		return $html;
-	}
-	
-		/* Output stars stacked
-	-------------------------------------------------------------*/
-	public function output_stars_table($stars, $half) {
-		$html = '';
-		for ($i = 1; $i <= $stars; $i++) {
-			$html .= '<span class="fa-stack full"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>';
-		}
-		for ($i = $stars+1; $i <= 5; $i++) {
-			if ( ($i == ($stars+1) ) && $half ) {
-				$html .= '<span class="fa-stack full"><i class="fa fa-star-half-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>';
-			}
-			else {
-				$html .= '<span class="fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>';
-			}
-		}
-		return $html;
-	}
+
 	
 		/* Output stars div
 	-------------------------------------------------------------*/
@@ -264,23 +214,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		return $html;
 	}
 	
-		/* Output stars FI
-	-------------------------------------------------------------*/
-	public function output_stars_png($stars, $half) {
-		$html = '';
-		for ($i = 1; $i <= $stars; $i++) {
-			$html .= '<i class="fi fi-star fi-on"></i>';
-		}
-		for ($i = $stars+1; $i <= 5; $i++) {
-			if ( ($i == ($stars+1) ) && $half ) {
-				$html .= '<i class="fi"><i class="fi fi-star fi-half fi-on"></i><i class="fi fi-star fi-half fi-off"></i></i>';
-			}
-			else {
-				$html .= '<i class="fi fi-star fi-off"></i>';
-			}
-		}
-		return $html;
-	}
+
 
 	/* Custom Comment Form 
 	------------------------------------------------------------ */
@@ -291,11 +225,11 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		<div>
 			<table class="ratings-table">			
 			<?php
-			foreach (self::$ratingCats as $id => $cat) {?>
+			foreach (CSR_Assets::rating_cats() as $id => $cat) {?>
 	
 			<tr>
-				<td align="left" class="rating-title"><?php echo __($cat['question'],'custom-star-rating');?></td>
-				<td align="left"><?php echo $this->output_rating_form( $id );?></td>
+				<td align="left" class="rating-title"><?= $cat['question'];?></td>
+				<td align="left"><?= $this->output_rating_form( $id );?></td>
 			</tr>
 			
 			<?php
@@ -304,7 +238,7 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 		</div>
 		
 		<div class="comment-reply">
-		<label for="comment"><?php echo __('Add a comment','custom-star-rating' );?></label>
+		<label for="comment"><?= __('Add a comment','custom-star-rating' );?></label>
 		<textarea id="comment" name="comment" cols="50" rows="6" aria-required="true"></textarea>
 		</div>
 
@@ -317,22 +251,80 @@ class CustomStarRatingsShortcodes extends CustomStarRatingsMeta {
 	}
 
 	public function output_rating_form( $id ) {
-		
 		$html= '<div class="rating-wrapper" id="star-rating-form">';
 		$html.='<input type="radio" class="rating-input" id="rating-input-' . $id . '-5" name="rating-' . $id . '" value="5"/>';
-		$html.='<label for="rating-input-' . $id . '-5" class="rating-star" title="' . $this->rating_caption(5, $id) . '"></label>';
+		$html.='<label for="rating-input-' . $id . '-5" class="rating-star" title="' . CSR_Assets::get_rating_caption(5, $id) . '"></label>';
 		$html.='<input type="radio" class="rating-input" id="rating-input-' . $id . '-4" name="rating-' . $id . '" value="4"/>';
-		$html.='<label for="rating-input-' . $id . '-4" class="rating-star" title="' . $this->rating_caption(4, $id) . '"></label>';
+		$html.='<label for="rating-input-' . $id . '-4" class="rating-star" title="' . CSR_Assets::get_rating_caption(4, $id) . '"></label>';
 		$html.='<input type="radio" class="rating-input" id="rating-input-' . $id . '-3" name="rating-' . $id . '" value="3"/>';
-		$html.='<label for="rating-input-' . $id . '-3" class="rating-star" title="' . $this->rating_caption(3, $id) . '"></label>';
+		$html.='<label for="rating-input-' . $id . '-3" class="rating-star" title="' . CSR_Assets::get_rating_caption(3, $id) . '"></label>';
 		$html.='<input type="radio" class="rating-input" id="rating-input-' . $id . '-2" name="rating-' . $id . '" value="2"/>';
-		$html.='<label for="rating-input-' . $id . '-2" class="rating-star" title="' . $this->rating_caption(2, $id) . '"></label>';
+		$html.='<label for="rating-input-' . $id . '-2" class="rating-star" title="' . CSR_Assets::get_rating_caption(2, $id) . '"></label>';
 		$html.='<input type="radio" class="rating-input" id="rating-input-' . $id . '-1" name="rating-' . $id . '" value="1"/>';
-		$html.='<label for="rating-input-' . $id . '-1" class="rating-star" title="' . $this->rating_caption(1, $id) . '"></label>';
+		$html.='<label for="rating-input-' . $id . '-1" class="rating-star" title="' . CSR_Assets::get_rating_caption(1, $id) . '"></label>';
 		$html.='</div>';
 	  
 	  return $html;
 		
 	}
 
+	
+	/*************************************************************
+	 * ************       DEPRECATED         ****************
+	 *************************************************************/
+	
+
+
+		// /* Output stars
+	// -------------------------------------------------------------*/
+	// public function output_stars_simple($stars, $half) {
+	// 	$html = '';
+	// 	for ($i = 1; $i <= $stars; $i++) {
+	// 		$html .= '<i class="fa fa-star"></i>';
+	// 	}
+	// 	for ($i = $stars+1; $i <= 5; $i++) {
+	// 		if ( ($i == ($stars+1) ) && $half ) {
+	// 			$html .= '<i class="fa fa-star-half-o"></i>';
+	// 		}
+	// 		else {
+	// 			$html .= '<i class="fa fa-star-o"></i>';
+	// 		}
+	// 	}
+	// 	return $html;
+	// }
+	
+	// 	/* Output stars stacked
+	// -------------------------------------------------------------*/
+	// public function output_stars_table($stars, $half) {
+	// 	$html = '';
+	// 	for ($i = 1; $i <= $stars; $i++) {
+	// 		$html .= '<span class="fa-stack full"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>';
+	// 	}
+	// 	for ($i = $stars+1; $i <= 5; $i++) {
+	// 		if ( ($i == ($stars+1) ) && $half ) {
+	// 			$html .= '<span class="fa-stack full"><i class="fa fa-star-half-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>';
+	// 		}
+	// 		else {
+	// 			$html .= '<span class="fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>';
+	// 		}
+	// 	}
+	// 	return $html;
+	// }
+	// 	/* Output stars FI
+	// -------------------------------------------------------------*/
+	// public function output_stars_png($stars, $half) {
+	// 	$html = '';
+	// 	for ($i = 1; $i <= $stars; $i++) {
+	// 		$html .= '<i class="fi fi-star fi-on"></i>';
+	// 	}
+	// 	for ($i = $stars+1; $i <= 5; $i++) {
+	// 		if ( ($i == ($stars+1) ) && $half ) {
+	// 			$html .= '<i class="fi"><i class="fi fi-star fi-half fi-on"></i><i class="fi fi-star fi-half fi-off"></i></i>';
+	// 		}
+	// 		else {
+	// 			$html .= '<i class="fi fi-star fi-off"></i>';
+	// 		}
+	// 	}
+	// 	return $html;
+	// }
 }

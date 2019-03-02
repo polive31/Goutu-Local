@@ -269,8 +269,7 @@ class CPM_Assets {
 		return $types;
 	}	
 
-    public static function get_edit_button( $post_type, $class='edit-button' ) {
-		global $post;
+    public static function get_edit_button( $post, $post_type, $class='edit-button' ) {
 		$out='';
 		$current_user = wp_get_current_user();
 		if ($post->post_author == $current_user->ID || current_user_can('administrator')) { 

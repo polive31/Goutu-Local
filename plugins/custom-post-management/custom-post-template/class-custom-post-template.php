@@ -47,7 +47,7 @@ class Custom_Post_Template {
 		$post_info = sprintf(__('Published on %s by %s<span id="username">%s</span>', 'foodiepro'), $date, $avatar, $profile);
 		
 		/* Edit Post Button */
-		$post_info .= CPM_Assets::get_edit_button( $post_type );
+		$post_info .= CPM_Assets::get_edit_button( get_post(), $post_type );
 
 		return $post_info;
   }

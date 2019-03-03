@@ -88,8 +88,6 @@ class CustomArchiveEntryTags extends CustomArchiveEntries {
 		elseif ( is_tax('ingredient') ) {
 			$tags_html = $this->output_tags( $origin, $diet, $occasion, $season);
 		}		
-		elseif ( is_tag() ) {
-		}
 		else 
 			$tags_html = $this->output_tags( $origin, $diet, $occasion, $season);
 			

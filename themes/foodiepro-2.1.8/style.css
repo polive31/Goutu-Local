@@ -144,7 +144,7 @@ template,
 .desktop-nodisplay,
 .recipes-top,
 .blogs-top {
-	display:none;
+	display:none!important;
 }
 
 .transparent {

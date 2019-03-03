@@ -1,13 +1,18 @@
 jQuery(document).ready(function() {
 
-    jQuery('.csf-delete-post').removeClass('nodisplay');
+    // console.log( 'In custom posts list. js');
 
-    jQuery('.csf-delete-post').on('click', function() {
+    jQuery('.cpm-delete-post').removeClass('nodisplay');
+
+    jQuery('.cpm-delete-post').on('click', function() {
         // console.log('Click on recipe delete !');
         var button = jQuery(this);
+
+        console.log('Closest row is : ', button.closest('tr.post-list-row') );
+
         if(confirm(custom_posts_list.confirm_message + ' ' + button.data('title'))) {
             var data = {
-                action: 'user_delete_post',
+                action: 'cpm_delete_post',
                 security: custom_posts_list.nonce,
                 post: button.data('id')
             };
@@ -17,7 +22,7 @@ jQuery(document).ready(function() {
                 data,
                 function(response){
                     console.log(  response );
-                    button.closest('tr.recipe-list-row').remove();
+                    button.closest('tr.post-list-row').remove();
                 }
             );
         }

@@ -81,8 +81,8 @@ class Custom_Post_Management {
 		-----------------------------------------------------------------*/			
 		$CPM_Post_List = new CPM_List('post');
 		// Ajax callbacks for custom Post List
-        add_action( 'wp_ajax_csf_delete_post', array( $CPM_Post_List, 'ajax_user_delete_post') );
-		add_action( 'wp_ajax_nopriv_csf_delete_post', array( $CPM_Post_List, 'ajax_user_delete_post') );
+        add_action( 'wp_ajax_cpm_delete_post', 					array( $CPM_Post_List, 'ajax_user_delete_post') );
+		add_action( 'wp_ajax_nopriv_cpm_delete_post', 			array( $CPM_Post_List, 'ajax_user_delete_post') );
 		
 
 		

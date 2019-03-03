@@ -138,9 +138,9 @@ class CRM_Assets {
 			'publish-user'		=> _x( 'Post submitted! Thank you, your post is now awaiting moderation.', 'recipe', 'foodiepro' ),
 			'required'			=> _x( 'In order for your post to be published, please fill-in those required fields:', 'recipe', 'foodiepro' ),
 			'noposts'			=> _x( 'You have no posts yet.', 'recipe', 'foodiepro'),
-			'published_title'	=> _x('Your post just got published !', 'recipe', 'foodiepro'),
-			'published_content'	=> _x('Greetings, your post <a href="%s">%s</a> just got published !', 'recipe', 'foodiepro'),
-			'published_content1'=> _x('It is visible on the website, and appears on <a href="%s">your blog</a>.', 'recipe','foodiepro'),		
+			'mail_title'		=> _x('Your post just got published !', 'recipe', 'foodiepro'),
+			'mail_content'		=> _x('Greetings, your post <a href="%s">%s</a> just got published !', 'recipe', 'foodiepro'),
+			'mail_content1'		=> _x('It is visible on the website, and appears on <a href="%s">your blog</a>.', 'recipe','foodiepro'),
 		);
 		return $labels;
 	}

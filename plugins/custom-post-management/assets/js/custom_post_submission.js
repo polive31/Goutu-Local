@@ -1,4 +1,7 @@
 jQuery(document).ready(function() {
+
+    // console.log( 'In post submission.js');
+
     /* Shortcode buttons
     --------------------------------------------------------------- */
     postId = jQuery('#new_post input[name="post_id"]');

@@ -91,7 +91,7 @@ class CPM_Assets {
 					'name'				=> 'custom_posts_list',
 					'ajaxurl' 			=> admin_url( 'admin-ajax.php' ),
 					'nonce' 			=> wp_create_nonce( 'custom_posts_list' ),
-					'confirm_message' 	=> __( 'Are you sure you want to delete this post :', 'foodiepro' ),
+					'confirm_message' 	=> _x( 'Are you sure you want to delete this post :', 'post', 'foodiepro' )
 					)
 				),
 			'cpm-submission'		=> array(
@@ -165,9 +165,9 @@ class CPM_Assets {
 				'publish-user'		=> _x( 'Post submitted! Thank you, your post is now awaiting moderation.', 'post', 'foodiepro' ),
 				'required'			=> _x( 'In order for your post to be published, please fill-in those required fields:', 'post', 'foodiepro' ),
 				'noposts'			=> _x('You have no posts yet.', 'post', 'foodiepro'),
-		    	'published_title'	=> _x('Your post just got published !', 'post', 'foodiepro'),
-		    	'published_content'	=> _x('Greetings, your post <a href="%s">%s</a> just got published !', 'post', 'foodiepro'),
-		    	'published_content1'=> _x('It is visible on the website, and appears on <a href="%s">your blog</a>.', 'post','foodiepro'),				
+		    	'mail_title'		=> _x('Your post just got published !', 'post', 'foodiepro'),
+		    	'mail_content'		=> _x('Greetings, your post <a href="%s">%s</a> just got published !', 'post', 'foodiepro'),
+				'mail_content1'		=> _x('It is visible on the website, and appears on <a href="%s">your blog</a>.', 'post','foodiepro'),		
 			),
 		);
 		self::$labels = apply_filters( 'cpm_labels', $default_labels );		

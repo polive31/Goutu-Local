@@ -41,7 +41,7 @@ class CPM_List {
                 $item .= '<td class="post-list-status">' . $statuses[ $post->post_status ] . '</td>';
                 $item .= '<td class="post-list-actions">';
                     $item .= CPM_Assets::get_edit_button( $post, $this->post_type, 'post-edit' );
-                    $item .= '<div class="post-delete" title="' . __('Delete post', 'foodiepro') . '"><i class="fa fa-trash csf-delete-post nodisplay" data-id="' . $post->ID . '" data-title="' . esc_attr( $post->post_title ) . '"></i></td>';
+                    $item .= '<div class="post-delete" title="' . __('Delete post', 'foodiepro') . '"><i class="fa fa-trash cpm-delete-post nodisplay" data-id="' . $post->ID . '" data-title="' . esc_attr( $post->post_title ) . '"></i></td>';
                     $item .= '</div>';
                 $item .= '</td>';
             }
@@ -61,13 +61,13 @@ class CPM_List {
 
         if( ! is_user_logged_in() ) die();
 
-        if(check_ajax_referer( 'custom_user_submissions_list', 'security', false ) ) {
+        if(check_ajax_referer( 'custom_posts_list', 'security', false ) ) {
             global $user_ID;
 
             $post_id = intval( $_POST['post'] );
             $post = get_post( $post_id );
 
-            if( $post->post_type == 'post' && $post->post_author == $user_ID ) {
+            if( $post->post_author == $user_ID ) {
                 wp_delete_post( $post_id );
                 wp_send_json_success( 'post deleted !');
             }

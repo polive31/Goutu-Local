@@ -80,13 +80,10 @@ class CustomSiteMails {
 
 	public function published_post_notification_callback( $post ) {	
 
-		// $subject = __('Your recipe just got published !','foodiepro');
 		$Assets = new CPM_Assets(); 
-		$subject = CPM_Assets::get_label( $post->post_type, 'published_title');
-		// $content = __('Greetings, your recipe <a href="%s">%s</a> just got published !', 'foodiepro');
-		$content = CPM_Assets::get_label( $post->post_type, 'published_content');
-		// $content1 = _x('It is visible on the website, and appears on <a href="%s">your blog</a>.', 'it=recipe','foodiepro');
-		$content1 = CPM_Assets::get_label( $post->post_type, 'published_content1');
+		$subject = CPM_Assets::get_label( $post->post_type, 'mail_title');
+		$content = CPM_Assets::get_label( $post->post_type, 'mail_content');
+		$content1 = CPM_Assets::get_label( $post->post_type, 'mail_content1');
 
 		$title = $post->post_title;
 			

@@ -27,6 +27,9 @@ class CPM_Assets {
 	
 	public function __construct() {
 		// __construct is empty due to this class being used in a static way
+		// However the hydrate function is called within constructor to allow constants to be populated 
+		// in the case of ajax calls & post submissions where the main plugin class is not created 
+		self::hydrate();
 	}
 	
 	public static function hydrate() {

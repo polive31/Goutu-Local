@@ -43,5 +43,23 @@
         "workspaceRoot": null,
         "workspacePath": null,
         "id": "avyGHbWEn6BDojKC"
+    },
+    {
+        "type": "Directory",
+        "name": "d:\\local_websites\\Goutu_Main\\wp-content\\plugins\\custom-peepso-helpers",
+        "parent_id": null,
+        "fsPath": "d:\\local_websites\\Goutu_Main\\wp-content\\plugins\\custom-peepso-helpers",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "HVjmfXPduBGvhlx8"
+    },
+    {
+        "type": "Directory",
+        "name": "d:\\local_websites\\Goutu_Main\\wp-content\\plugins\\custom-site-notifications",
+        "parent_id": null,
+        "fsPath": "d:\\local_websites\\Goutu_Main\\wp-content\\plugins\\custom-site-notifications",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "l7WhXrZFJmwjPadu"
     }
 ]

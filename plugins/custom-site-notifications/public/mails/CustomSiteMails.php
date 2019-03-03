@@ -17,28 +17,12 @@ class CustomSiteMails {
 	// const CONTACT_EMAIL = "contact@goutu.org";
 	const PROVIDER = 'mailchimp';
 
+	/* $target argument is used by the [custom-functions-debug] debug shortcode in functions.php */
 	public function __construct( $target='production' ) {	
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
-
+		$this->headers[] = 'Bcc: ' . get_bloginfo('admin_email');
 		$this->target = $target;
-		add_action('init',array($this,'hydrate'));
-
-
-		if ($target == 'debug') return; // Do not add any actions or filters if in debug mode
-
-		/* Event hooks
-		--------------------------------------------------------------*/
-		add_action( 'pending_to_publish',  							array($this, 'published_post_notification'), 10, 1 );
-		// add_action( 'bp_core_activated_user', 						array($this, 'welcome_user_notification'), 10, 3 );
-
-
-		/* Mail Customizations
-		--------------------------------------------------------------*/
-		add_filter ( 'wp_mail_content_type', array($this, 'html_mail_content_type'));
-		add_filter ( 'wp_mail_from', array($this, 'contact_address'));
-		add_filter ( 'wp_mail_from_name', array($this, 'site_name'));
-		// add_filter( 'bp_core_signup_send_validation_email_message', array($this, 'custom_activation_link'), 10, 3 );
 	}
 
 	public function site_name( $from_name='' ) {
@@ -57,7 +41,6 @@ class CustomSiteMails {
 
 	public function hydrate() {
 		// $this->headers[] = 'From: ' . get_bloginfo('name') . ' <' . self::CONTACT_EMAIL . '>';
-		$this->headers[] = 'Bcc: ' . get_bloginfo('admin_email');
 	}
 
 	public function headers() {
@@ -91,22 +74,19 @@ class CustomSiteMails {
 	public function unsubscribe( $user ) {
 		$unsubscribe = __('Want to change how you receive these emails?','foodiepro');
 		$unsubscribe1 = __('You can <a href="%s">update your preferences</a> on %s.','foodiepro');
-		$unsubscribe1 = sprintf( $unsubscribe1, CustomSocialHelpers::url('edit_profile', $user ), get_bloginfo());
+		$unsubscribe1 = sprintf( $unsubscribe1, PeepsoHelpers::get_url( $user ), get_bloginfo());
 		return $unsubscribe . '<br>' . $unsubscribe1;
 	}			
 
-	public function published_post_notification( $post ) {	
+	public function published_post_notification_callback( $post ) {	
 
-		if ($post->post_type == 'recipe') {	
-		    $subject = __('Your recipe just got published !','foodiepro');
-		    $content = __('Greetings, your recipe <a href="%s">%s</a> just got published !', 'foodiepro');
-		    $content1 = _x('It is visible on the website, and appears on <a href="%s">your blog</a>.', 'it=recipe','foodiepro');
-		}
-		else {	
-		    $subject = __('Your post just got published !','foodiepro');
-		    $content = __('Greetings, your post <a href="%s">%s</a> just got published !', 'foodiepro');
-		    $content1 = _x('It is visible on the website, and appears on <a href="%s">your blog</a>.', 'it=post','foodiepro');
-		}
+		// $subject = __('Your recipe just got published !','foodiepro');
+		$Assets = new CPM_Assets(); 
+		$subject = CPM_Assets::get_label( $post->post_type, 'published_title');
+		// $content = __('Greetings, your recipe <a href="%s">%s</a> just got published !', 'foodiepro');
+		$content = CPM_Assets::get_label( $post->post_type, 'published_content');
+		// $content1 = _x('It is visible on the website, and appears on <a href="%s">your blog</a>.', 'it=recipe','foodiepro');
+		$content1 = CPM_Assets::get_label( $post->post_type, 'published_content1');
 
 		$title = $post->post_title;
 			
@@ -116,11 +96,11 @@ class CustomSiteMails {
 			$author = ucfirst(get_the_author_meta('display_name', $post->post_author));
 			$headline = wpautop(sprintf($this->hello(), $author));
 
-		    $content = sprintf( $content, get_permalink($post), $post->post_title);
+		    $content = sprintf( $content, get_permalink($post), $title);
 		    $content = wpautop( $content );
 
-			$user = PeepsoHelpers::get_user( 'author' );
-		    $content1 = sprintf( $content1, PeepsoHelpers::get_url( $user ) );
+			$user = PeepsoHelpers::get_user( $post->post_author );
+		    $content1 = sprintf( $content1, PeepsoHelpers::get_url( $user, 'profile', 'blogposts' ) );
 		    $content1 = wpautop( $content1 );
 
 		    $img_url = get_the_post_thumbnail_url($post, 'post-thumbnail');
@@ -128,7 +108,7 @@ class CustomSiteMails {
 		    $signature = $this->signature();
 		    $contact = $this->contact();
 		    $copyright = $this->copyright();
-		    $unsubscribe = $this->unsubscribe( $post->post_author );
+		    $unsubscribe = $this->unsubscribe( $user );
 		    $facebook_url = CustomSocialButtons::facebookURL($post);
 		    $twitter_url = CustomSocialButtons::twitterURL($post);
 		    $pinterest_url = CustomSocialButtons::pinterestURL($post);
@@ -171,7 +151,7 @@ class CustomSiteMails {
 	}
 
 	public function populate_template( $data, $template, $tag='%%' ) {
-		$path = self::$PLUGIN_PATH . 'templates/' . $template . '.php';
+		$path = self::$PLUGIN_PATH . 'mails/partials/' . $template . '.php';
 		$html = file_get_contents( $path );
 		if (preg_match_all("/$tag(.*?)$tag/i", $html, $m)) {
 		    foreach ($m[1] as $i => $varname) {
@@ -197,8 +177,6 @@ class CustomSiteMails {
 	    //get site name
 		$to = $user->user_email;
 
-		//
-		
 
 		if( $to ) {
 			$name = ucfirst($user->display_name);
@@ -263,7 +241,7 @@ class CustomSiteMails {
 	    $activation_key = $wpdb->get_var($sql);
 		
 
-		$msg = sprintf( __('JHey Toto, thanks for registering ! To complete the activation of your account, go to the following link and click on the "Activate" button: %s. If the "Activation Key" field is empty, copy and paste the following into the field : <strong>%s</strong> ', 'foodiepro'), $activation_url, $activation_key);
+		$msg = sprintf( __('Hey Toto, thanks for registering ! To complete the activation of your account, go to the following link and click on the "Activate" button: %s. If the "Activation Key" field is empty, copy and paste the following into the field : <strong>%s</strong> ', 'foodiepro'), $activation_url, $activation_key);
 	    $msg .= sprintf( __("After successful activation, you can log in using your username (%1\$s) along with password you choose during registration process.", 'foodiepro'), $username);
 	    return $msg;
 	}

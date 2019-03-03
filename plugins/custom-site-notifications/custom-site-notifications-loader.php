@@ -15,11 +15,9 @@ if ( !defined('ABSPATH') )
 	die('-1');
 	
 
-require_once 'includes/CustomSiteMails.php';
-require_once 'includes/CustomSitePopups.php';
-
-new CustomSiteMails();
-new CustomSitePopups();
+require_once 'includes/class-custom-site-notifications.php';
+require_once 'public/mails/CustomSiteMails.php';
+require_once 'public/popups/CustomSitePopups.php';
 
 
-
+new CustomSiteNotifications();

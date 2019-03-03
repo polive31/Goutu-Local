@@ -36,14 +36,6 @@ class CustomSitePopups {
 	public function __construct() {	
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
-
-		/* Actions */
-		// The following action is used whenever the popup has to be placed selectively depending on the post type
-		add_action( 'wp', array( $this, 'create_popup_actions') );
-		// The following action allows to instatiate the popup on any page
-		add_action( 'genesis_before_content', array( $this, 'add_join_us_popup') );
-        add_action( 'wp_enqueue_scripts', array( $this, 'popups_styles_register' ) );
-
 	}
 
     public function popups_styles_register() {

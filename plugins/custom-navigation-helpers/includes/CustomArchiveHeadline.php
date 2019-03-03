@@ -71,7 +71,7 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 			$headline = get_term_meta( $parent, 'headline', true );
 		}
 		if ( !empty($headline) ) {
-			$msg = do_shortcode( '[wp_custom_image_category]' ) . $headline;
+			$msg = '<span class="archive-image">' . do_shortcode( '[wp_custom_image_category]' ) . '</span>' . $headline;
 			return $msg;
 		}		
 

@@ -1535,6 +1535,13 @@ img.alignright,
 	font-size: 150%;
 }
 
+.archive-title .archive-image {
+    max-width: 200px;
+    display: inline-block;
+		vertical-align: middle;
+		margin-right:10px;
+}
+
 /* ## Screen reader text
 --------------------------------------------- */
 

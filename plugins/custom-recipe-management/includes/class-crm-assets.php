@@ -124,19 +124,23 @@ class CRM_Assets {
 	
 	public function setup_CPM_recipe_labels( $labels ) {
 		$labels['recipe'] = array(
-			'title'			=> _x( 'Post Title', 'recipe', 'foodiepro' ),
-			'edit_button'	=> _x( 'Edit Post', 'recipe', 'foodiepro' ),
-			'new_button'	=> _x( 'New Post', 'recipe', 'foodiepro' ),
-			'new1'			=> _x( 'Write your new post on this page.', 'recipe', 'foodiepro' ),
-			'new2'			=> _x( 'You can then choose to save it as draft, or to publish it. Once approved, it will be visible to others according to your visibility preferences.', 'recipe', 'foodiepro' ),
-			'edit1'			=> _x( 'Edit your existing post on this page.', 'recipe', 'foodiepro' ),
-			'edit2' 		=> _x( 'You can then choose to save it as draft, or to publish it. Once approved, it wil be visible to others according to your visibility preferences.', 'recipe', 'foodiepro' ),
-			'draft1'		=> _x( 'Post saved as a draft.','recipe', 'foodiepro'),
-			'draft2'		=> _x( 'It will not be visible on the site, but you can edit it at any time and submit it later.','recipe','foodiepro'),
-			'back'			=> _x( 'Back to <a href="%s">my posts</a>.', 'recipe', 'foodiepro'),
-			'publish-admin'	=> _x( 'Dear administrator, this post is now <a href="%s">published</a>.', 'recipe', 'foodiepro' ),
-			'publish-user'	=> _x( 'Post submitted! Thank you, your post is now awaiting moderation.', 'recipe', 'foodiepro' ),
-			'required'		=> _x( 'In order for your post to be published, please fill-in those required fields:', 'recipe', 'foodiepro' ),
+			'title'				=> _x( 'Post Title', 'recipe', 'foodiepro' ),
+			'edit_button'		=> _x( 'Edit Post', 'recipe', 'foodiepro' ),
+			'new_button'		=> _x( 'New Post', 'recipe', 'foodiepro' ),
+			'new1'				=> _x( 'Write your new post on this page.', 'recipe', 'foodiepro' ),
+			'new2'				=> _x( 'You can then choose to save it as draft, or to publish it. Once approved, it will be visible to others according to your visibility preferences.', 'recipe', 'foodiepro' ),
+			'edit1'				=> _x( 'Edit your existing post on this page.', 'recipe', 'foodiepro' ),
+			'edit2' 			=> _x( 'You can then choose to save it as draft, or to publish it. Once approved, it wil be visible to others according to your visibility preferences.', 'recipe', 'foodiepro' ),
+			'draft1'			=> _x( 'Post saved as a draft.','recipe', 'foodiepro'),
+			'draft2'			=> _x( 'It will not be visible on the site, but you can edit it at any time and submit it later.','recipe','foodiepro'),
+			'back'				=> _x( 'Back to <a href="%s">my posts</a>.', 'recipe', 'foodiepro'),
+			'publish-admin'		=> _x( 'Dear administrator, this post is now <a href="%s">published</a>.', 'recipe', 'foodiepro' ),
+			'publish-user'		=> _x( 'Post submitted! Thank you, your post is now awaiting moderation.', 'recipe', 'foodiepro' ),
+			'required'			=> _x( 'In order for your post to be published, please fill-in those required fields:', 'recipe', 'foodiepro' ),
+			'noposts'			=> _x( 'You have no posts yet.', 'recipe', 'foodiepro'),
+			'published_title'	=> _x('Your post just got published !', 'recipe', 'foodiepro'),
+			'published_content'	=> _x('Greetings, your post <a href="%s">%s</a> just got published !', 'recipe', 'foodiepro'),
+			'published_content1'=> _x('It is visible on the website, and appears on <a href="%s">your blog</a>.', 'recipe','foodiepro'),		
 		);
 		return $labels;
 	}

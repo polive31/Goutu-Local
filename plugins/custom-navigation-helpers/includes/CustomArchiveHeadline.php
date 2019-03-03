@@ -66,13 +66,14 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 
 		/* If a custom headline was set for this archive then return it */
 		$headline = get_term_meta( $this->query->term_id, 'headline', true );
-		if ( !empty($headline) ) 
-			return $headline;		
-		else {
+		if ( empty($headline) ) {
 			$parent = $this->query->parent;
 			$headline = get_term_meta( $parent, 'headline', true );
-			if ( !empty($headline) ) return $headline;	
 		}
+		if ( !empty($headline) ) {
+			$msg = do_shortcode( '[wp_custom_image_category]' ) . $headline;
+			return $msg;
+		}		
 
 		/* Check archive type */
 		if ( is_author() ) {
@@ -82,7 +83,6 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 			$type=$this->queryvars['post_type'];
 			
 			$msg = $this->post_from_msg( $type, $name );
-			return $msg;
 		}
 			
 		elseif ( is_tax('ingredient') ) {
@@ -90,48 +90,50 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 			if ( initial_is_vowel($ingredient) )
 				$msg=sprintf(_x('All recipes containing %s','vowel','foodiepro'), $ingredient);
 			else 
-				$msg=sprintf(_x('All recipes containing %s','consonant','foodiepro'), $ingredient);			
-			return $msg;
+				$msg=sprintf(_x('All recipes containing %s','consonant','foodiepro'), $ingredient);		
 		}
 		
 		elseif ( is_tax('cuisine') ) {
 			$msg = $this->post_from_msg( 'recipe', $term);
-			return $msg;
 		}
-				
+		
 		elseif ( is_tax('course') ) {
 			$course=$this->queryvars['course'];
 			$term='';
-			if ($this->queryvars['season']) 
+
+			if ($this->queryvars['season']) {
 				$term=$this->queryvars['season'];
+				$msg = $this->course_of_msg( $course, $term);
+			}
 			elseif ( !empty($_GET['author']) ) {
 				$user = get_user_by( 'slug', $_GET['author'] );
 				$user=PeepsoHelpers::get_user( $user->ID );
 				$term=PeepsoHelpers::get_field($user, "nicename");
+				$msg = $this->course_of_msg( $course, $term);
 			}
 			else 
-				return single_term_title( $msg, false);
-				 
-			$msg = $this->course_of_msg( $course, $term);
-			return $msg;
+				$msg = single_term_title( '', false);
 		}			
-			
+		
 		elseif ( is_tax() || is_tag() ) { 
-				return single_term_title( $msg, false);
+			$msg = single_term_title( '', false);
 		}
 
 		else {
 			// Check whether a specific archive headline was set in the backend
 			$headline = get_term_meta( $this->query->term_id, 'headline', true );
 			if ( !empty($headline) ) 
-				return $headline;
+				$msg = $headline;
 			elseif (isset( $this->queryvars['post_type'] ) ) {
 				// Return the post type queried
-				return $this->get_post_type_archive_title( $this->queryvars['post_type'] );
+				$msg = $this->get_post_type_archive_title( $this->queryvars['post_type'] );
 			}
 			else 
-				return single_term_title( $msg, false);
+				$msg = single_term_title( '', false);
 		}
+
+		$msg = '<span class="archive-image">' . do_shortcode( '[wp_custom_image_category]' ) . '</span>' . $msg;
+		return $msg;
 
 	}
 

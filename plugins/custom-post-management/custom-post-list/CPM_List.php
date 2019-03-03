@@ -14,6 +14,11 @@ class CPM_List {
     public function display( $posts, $edit=false, $title='' ) {
         $output = '';
 
+        if ( count($posts) == 0 ) {
+            $output = get_label( $this->post_type, 'noposts' );
+            return $output;
+        }
+
         $output .= '<h3>' . $title . '</h3>';
 
         $output .= '<table class="custom-post-list">';
@@ -21,7 +26,6 @@ class CPM_List {
         $statuses = get_post_statuses();
         
         foreach ( $posts as $post ) {
- 
             $view_url = 'href="' . get_permalink( $post->ID ) . '" ';
             $view_title = 'title="' . __('Preview post', 'foodiepro') . '" ';
 

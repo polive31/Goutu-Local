@@ -12,8 +12,10 @@ class CPM_List_Shortcodes {
         $text = CPM_Assets::get_label( $post_type, 'new_button' );
         $text = esc_html( $text );
 
-        $out = do_shortcode('[permalink slug="' . CPM_Assets::get_slug( $post_type . '_form') . '" class="black-button"]' . $text . '[/permalink]');
-
+        $out = '<div>';
+        $out .= do_shortcode('[permalink slug="' . CPM_Assets::get_slug( $post_type . '_form') . '" class="black-button"]' . $text . '[/permalink]');
+        $out .= '</div>';
+        
         return $out;
     }
 
@@ -55,6 +57,9 @@ class CPM_List_Shortcodes {
                 $output .= $content?$content:'<p>' . __('Here is the list of the posts that you created, and their status. You can choose to edit them, change their visibility, or delete them.', 'foodiepro') . '</p>';
                 $output .= $List->display( $posts, true );
             }
+            else 
+                $output .= CPM_Assets::get_label( $post_type, 'noposts' );
+
         }
         return $output;
     }  

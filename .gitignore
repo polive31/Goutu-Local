@@ -113,7 +113,5 @@ plugins/buddypress/bp-core/*
 !plugins/custom-social-sharing-buttons/
 !plugins/custom-star-rating/
 !plugins/custom-tooltip/
-#!plugins/frontier-post/
-#plugins/frontier-post/*
-#!plugins/frontier-post/language/*FR.*
+!plugins/wpcustom-category-image/
 #!plugins/wp-ultimate-recipe-premium/

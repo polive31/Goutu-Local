@@ -55,7 +55,7 @@ class CRM_Favorite_Shortcodes {
             }
         }
         if ($empty)
-            $output .= '<div class="submitbox">' . __( "No recipes found.", 'foodiepro' ) . '</p>';
+            $output .= '<div class="submitbox">' . __( "No recipes found.", 'foodiepro' ) . '</div>';
         
         return $output;
     }    

@@ -116,7 +116,6 @@ class CRM_Favorite {
         foreach ( $this->get_lists( false ) as $list) {
             $fav=$this->is_favorite_recipe( $recipe_id, $list );
             $isfav=$isfav || $fav[0];
-
             ?>
             <li class="favlist-item <?= $list; ?> <?= $fav[0]?'isfav':''; ?>" id="<?= $list; ?>" >
                 <span class="favorite-icon"><?= $this->get_icon( $list ) ?></span>

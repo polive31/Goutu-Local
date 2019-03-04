@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2019-03-03 15:08+0100\n"
-"PO-Revision-Date: 2019-03-03 15:09+0100\n"
+"PO-Revision-Date: 2019-03-03 19:19+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -1588,8 +1588,7 @@ msgstr ""
 #: plugins/custom-post-management/includes/class-cpm-assets.php:165
 msgctxt "post"
 msgid "Post submitted! Thank you, your post is now awaiting moderation."
-msgstr ""
-"Nous avons bien reçu votre recette ! Elle sera publiée après modération."
+msgstr "Nous avons bien reçu votre article ! Il sera publié après modération."
 
 #: plugins/custom-post-management/includes/class-cpm-assets.php:166
 msgctxt "post"

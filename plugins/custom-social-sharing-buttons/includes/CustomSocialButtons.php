@@ -100,16 +100,22 @@ class CustomSocialButtons {
 	}	
 	
 	public static function getTwitterButton( $target, $class ) {
-		if ($target=='site') 
+		if ($target=='site') {
 			$url=get_site_url(null,'','https');
-		else
+			$title = get_bloginfo('name') . ' - ' . get_bloginfo('description');
+		}
+		else {
 			$url=get_permalink();
+			$title = get_the_title();	
+		}
 		// $url=esc_html($url);
 
 		// SEO Friendly current page title
-		$title = do_shortcode('[seo-friendly-title]');		
+		// $title = do_shortcode('[seo-friendly-title]');	
+		
+		$html = '<li class="cssb share-icons ' . $class . '" id="twitter"><a ' . self::$onClick . ' class="cssb-link cssb-twitter" href="'. self::getTwitterURL($url,$title) .'" target="_blank" title="' . __('Share on Twitter','foodiepro') . '"></a></li>';	
+		return $html;
 	
-		return '<li class="cssb share-icons ' . $class . '" id="twitter"><a ' . self::$onClick . ' class="cssb-link cssb-twitter" href="'. self::getTwitterURL($url,$title) .'" target="_blank" title="' . __('Share on Twitter','foodiepro') . '"> </a></li>';	
 	}
 
 	public static function getTwitterURL( $url, $title ) {
@@ -128,18 +134,18 @@ class CustomSocialButtons {
 		$thumb = array( do_shortcode('[site-logo]') );			
 		if ($target=='site') {
 			$url=get_site_url(null,'','https');
+			$title = get_bloginfo('name') . ' - ' . get_bloginfo('description');
 		}
 		else {
 			global $post;
 			$url=get_permalink();
+			$title = get_the_title();	
 			$thumb_id = get_post_thumbnail_id( $post->ID, 'full' );
 			if ( $thumb_id )
 				$thumb = wp_get_attachment_image_src( $thumb_id );
 		}
-		// $url=esc_html($url);
-
 		// SEO Friendly current page title
-		$title = do_shortcode('[seo-friendly-title]');
+		// $title = do_shortcode('[seo-friendly-title]');
 
 		return '<li class="cssb share-icons ' . $class . '" id="pinterest"><a ' . self::$onClick . ' class="cssb-link cssb-pinterest" href="' . self::getPinterestURL($url,$title,$thumb) . '" data-pin-custom="true" target="_blank" title="' . __('Pin It','foodiepro') . '"> </a></li>';
 	}

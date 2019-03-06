@@ -7,9 +7,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class CustomSitePopups {
 
-	public static $PLUGIN_PATH;
-	public static $PLUGIN_URI;
-
 	// const CONTACT_NAME = "Goutu.org";
 	// const CONTACT_EMAIL = "contact@goutu.org";
 	
@@ -33,22 +30,11 @@ class CustomSitePopups {
 		)
 	);
 
-	public function __construct() {	
-		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
-		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
-	}
-
-    public function popups_styles_register() {
-		custom_register_style(
-			'custom-site-popups', 
-			'/assets/css/custom_site_popups.css',
-			self::$PLUGIN_URI, 
-			self::$PLUGIN_PATH
-		);
-    }
+	// public function __construct() {	
+	// }
 	
 	public function create_popup_actions() {
-		if ( is_user_logged_in() ) return;
+		// if ( is_user_logged_in() ) return;
 		foreach (self::POST_TYPES as $type => $params) {
 			if ( is_singular($type) ) {
 				$hook=$params[0];
@@ -62,7 +48,7 @@ class CustomSitePopups {
 	}
 	
 	public function add_join_us_popup() {
-		if ( is_user_logged_in() ) return;
+		// if ( is_user_logged_in() ) return;
 		wp_enqueue_style('custom-site-popups');
 		$args=array(
 			'content' 	=> $this->get_join_us_form(),

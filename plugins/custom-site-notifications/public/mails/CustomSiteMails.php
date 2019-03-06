@@ -7,9 +7,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class CustomSiteMails {
 
-	public static $PLUGIN_PATH;
-	public static $PLUGIN_URI;
-
 	private $headers=array();
 	private $target;
 
@@ -19,8 +16,6 @@ class CustomSiteMails {
 
 	/* $target argument is used by the [custom-functions-debug] debug shortcode in functions.php */
 	public function __construct( $target='production' ) {	
-		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
-		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
 		$this->headers[] = 'Bcc: ' . get_bloginfo('admin_email');
 		$this->target = $target;
 	}

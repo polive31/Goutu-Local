@@ -633,11 +633,11 @@ function wpseo_uppercase_title( $title ) {
 }
 
 // Populate SEO meta if empty
-add_filter('wpseo_metadesc', 'populate_metadesc');
-function populate_metadesc( $text ) {
+add_filter('wpseo_metadesc', 'foodiepro_populate_metadesc');
+function foodiepro_populate_metadesc( $text ) {
 	if (empty($text)) {
 		if (is_single()) {
-			$text = get_the_excerpt( get_post() );
+			$text = get_the_excerpt();
 		} 
 	}
 	return $text;

@@ -32,6 +32,8 @@ public function is_region( $obj ) {
 
 // Creating widget front-end
 public function widget( $args, $instance ) {
+	if ( !is_archive() && !is_search() ) return;
+
 	global $wp;
 		
 	$title = apply_filters( 'widget_title', $instance['title'] );
@@ -47,17 +49,23 @@ public function widget( $args, $instance ) {
 		
 		// Widget title
 		$obj = get_queried_object();
-		$author = isset($obj->data->user_login);	
-		$tax = $author?'author':get_taxonomy($obj->taxonomy);
-		if ($obj->taxonomy=='cuisine') {
-			if ( $this->is_region($obj) )
-				$tax = __('regions','foodiepro');
-			else 
-				$tax = __('countries','foodiepro');
+		$author = isset($obj->data->user_login);
+		
+		if ($author) {
+			$title = __('authors','foodiepro');
 		}
-		else
-			$tax=$author?__('authors','foodiepro'):$tax->label;
-		echo $args['before_title'] . $tax . $args['after_title'];
+		elseif ($obj->taxonomy=='cuisine') {
+			if ( $this->is_region($obj) )
+				$title = __('regions','foodiepro');
+			else 
+				$title = __('countries','foodiepro');
+		}
+		else {
+			$tax = get_taxonomy($obj->taxonomy);
+			$title = $tax->label;
+		}
+			
+		echo $args['before_title'] . $title . $args['after_title'];
 		// echo $args['before_title'] . __('Filter', 'foodiepro') . $args['after_title'];
 
 		// Dropdown display

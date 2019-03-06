@@ -18,24 +18,19 @@ class Custom_Gallery_Shortcode {
 
 	public static $PLUGIN_PATH;
 	public static $PLUGIN_URI;	
-
-	const SHORTCODE_NAME='custom-gallery';
 	
 	public function __construct() {	
 		self::$PLUGIN_PATH = plugin_dir_path( __FILE__ );
 		self::$PLUGIN_URI = plugin_dir_url( __FILE__ );	
 	
 		add_filter( 'use_default_gallery_style', '__return_false' );
-		
 		// Load stylesheet, with fallback in case the class is called at enqueue_styles hook level
-		add_action( 'wp_enqueue_scripts', array($this, 'custom_gallery_stylesheet') );
-		$this->custom_gallery_stylesheet();
-
-		add_shortcode( self::SHORTCODE_NAME, array($this,'custom_gallery_shortcode') );
+		add_action( 'wp_enqueue_scripts', 	array( $this, 'custom_gallery_stylesheet'	) );
+		add_shortcode( 'custom-gallery', 	array( $this, 'custom_gallery_shortcode'	) );
 	}
 	
 	public function custom_gallery_stylesheet() {
-		custom_enqueue_style( 'custom-gallery', 'assets/css/custom-gallery.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );				
+		custom_register_style( 'custom-gallery', 'assets/css/custom-gallery.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );				
 	}
 	
 
@@ -71,6 +66,8 @@ class Custom_Gallery_Shortcode {
 
 		static $instance = 0;
 		$instance++;
+
+		custom_enqueue_style( 'custom-gallery' );				
 
 		if ( ! empty( $attr['ids'] ) ) {
 			// 'ids' is explicitly ordered, unless you specify otherwise.
@@ -119,7 +116,6 @@ class Custom_Gallery_Shortcode {
 		/* $selector = "gallery-{$instance}"; original */
 		
 		/* Retrieve attachments */
-	   
 		if ( ! empty( $atts['include'] ) ) {
 			$_attachments = get_posts( array( 'include' => $atts['include'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
 

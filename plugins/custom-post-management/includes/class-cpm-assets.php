@@ -212,9 +212,10 @@ class CPM_Assets {
 		foreach (self::$enqueued_styles as $handle => $style) {
 			$enqueue = false;
 			foreach ($style['location'] as $location) {
-				// $singular = is_singular($location);
-				// $page = is_page( self::get_slug($location) );
-				if ( is_page( self::get_slug($location) )  || is_singular($location) ) {
+				$singular = is_singular($location);
+				$slug = self::get_slug($location);
+				$page = empty($slug)?false:is_page( $slug );
+				if ( $page || $singular ) {
 					$enqueue=true;
 					break;
 				}
@@ -229,7 +230,10 @@ class CPM_Assets {
 		foreach (self::$enqueued_scripts as $handle => $script) {
 			$enqueue = false;
 			foreach ($script['location'] as $location) {
-				if ( is_page( self::get_slug($location)) || is_singular($location) ) {
+				$singular = is_singular($location);
+				$slug = self::get_slug($location);
+				$page = empty($slug)?false:is_page( $slug );
+				if ( $page || $singular ) {
 					$enqueue=true;
 					break;
 				}
@@ -247,17 +251,17 @@ class CPM_Assets {
 	*********************         GETTERS / SETTERS       ***************************
 	********************************************************************************/
     public static function get_slug( $action ) {
-		if ( !isset(self::$slugs[$action]) ) return '';
+		if ( !isset(self::$slugs[$action]) ) return false;
         return self::$slugs[$action];
 	}
 
     public static function get_label( $post_type, $id ) {
-		if ( !isset(self::$labels[$post_type][$id]) ) return '';
+		if ( !isset(self::$labels[$post_type][$id]) ) return false;
         return self::$labels[$post_type][$id];
 	}	
 
     public static function get_required( $post_type ) {
-		if ( !isset(self::$required[$post_type]) ) return '';
+		if ( !isset(self::$required[$post_type]) ) return false;
         return self::$required[$post_type];
 	}	
 

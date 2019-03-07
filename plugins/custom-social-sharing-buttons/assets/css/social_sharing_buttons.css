@@ -58,52 +58,59 @@
 	display:none;
 }
 
-.plugin #providers .provider#provider_facebook,
-#facebook {
+.cssb.share-icons a {
+	background-image:url('../img/icons.png');
+	background-size: cover;
+}
+
+.cssb.share-icons#facebook {
 	background-color: #3c5b9b;
 }
 
-.plugin #providers .provider .button,
-#facebook a {
-	background-image:url('../img/facebook.png');
+.cssb.share-icons#facebook a {
+	background-position-x: 0;
 }
 
-#twitter {
+.cssb.share-icons#twitter {
 	background-color:#2daae1;
 }
 
-#twitter a {
-	background-image:url('../img/twitter.png');
+.cssb.share-icons.small#twitter a {
+	background-position-x: -30px;
+}
+.cssb.share-icons.medium#twitter a {
+	background-position-x: -48px;
 }
 
-#googleplus {
-	background-color:#2daae1;
-}
-
-#googleplus a {
-	background-image:url('../img/google_plus.png');
-}
-
-#mailto {
+.cssb.share-icons#mailto {
 	background-color:#c0c0c0;
 }
 
-#mailto a {
-	background-image:url('../img/mail.png');
+.cssb.share-icons.small#mailto a {
+	background-position-x: -60px;
+}
+.cssb.share-icons.medium#mailto a {
+	background-position-x: -96px;
 }
 
-#pinterest {
+.cssb.share-icons#pinterest {
 	background-color:#cb2027;
 }
 
-#pinterest a {
-	background-image:url('../img/pinterest.png');
+.cssb.share-icons.small#pinterest a {
+	background-position-x: -90px;
+}
+.cssb.share-icons.medium#pinterest a {
+	background-position-x: -144px;
 }
 
-#whatsapp {
+.cssb.share-icons#whatsapp {
 	background-color:#2fb741;
 }
 
-#whatsapp a {
-	background-image:url('../img/whatsapp.png');
+.cssb.share-icons.small#whatsapp a {
+	background-position-x: -120px;
+}
+.cssb.share-icons.medium#whatsapp a {
+	background-position-x: -192px;
 }

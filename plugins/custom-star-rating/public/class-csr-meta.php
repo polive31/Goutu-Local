@@ -52,21 +52,36 @@ class CSR_Meta {
 
 
 	/* Update comment callback
-	-------------------------------------------------------------*/ 	
-	public function update_comment_post_meta($comment_id,$comment_approved,$comment) {
-		$post_id = $comment['comment_post_ID'];									
+	-------------------------------------------------------------*/ 
+	public function comment_status_change_callback( $new_status, $old_status, $comment ) {
+		$post_id = $comment->comment_post_ID;									
+		if ($new_status=='approved') {
+			/* Update post meta with the new rating values per category */
+			$this->update_post_meta_user_rating( $post_id );
+		}
+		elseif ($new_status=='trash') {
+			$this->delete_comment_meta_user_rating( $comment_id );
+			$this->update_post_meta_user_rating( $post_id );
+		}
+		elseif ($new_status=='unapproved' || $new_status=='spam') {							
+			$this->update_post_meta_user_rating( $post_id );
+		}		
+	}
+	
+		
+	public function update_comment_post_meta( $comment_id, $comment_approved, $comment ) {
+		$post_id = $comment['comment_post_ID'];
 		$current_post_type = get_post_type( $post_id );
-
 		/* CSR_Assets::post_types() cannot be called statically because we are in a submit callback
 		and the CSR_Assets::hydrate function will not be called in this case */ 
 		$Rating_Assets = new CSR_Assets();
 		if (in_array( $current_post_type, $Rating_Assets->post_types() )) {
 			/* Update comment meta and get corresponding rating */
 			$new_rating = $this->update_comment_meta_user_rating( $comment_id );
-			/* Update post meta with the new rating and get updated ratings table */
-			// $user_ratings = $this->update_post_meta_user_ratings( $post_id, $new_rating);
-			/* Update post meta with the new rating values per category */
-			$this->update_post_meta_user_rating( $post_id );
+			/* Update post meta with the new rating and get updated ratings table */ 
+			if ($comment_approved===1) {
+				$this->update_post_meta_user_rating( $post_id );
+			}
 		}
 	}
 
@@ -75,7 +90,9 @@ class CSR_Meta {
 	-------------------------------------------------------------*/ 	
 	public function update_comment_meta_user_rating( $comment_id ) {
 		$user_rating = array();		
-		foreach (CSR_Assets::rating_cats() as $cat=>$values) {
+		$Assets = new CSR_Assets();
+		
+		foreach ($Assets->rating_cats() as $cat=>$values) {
 			if ( isset( $_POST[ 'rating-' . $cat ] ) )  {
 				$rating_form_value = $_POST[ 'rating-' . $cat ];
 				//otherwise let the cell empty, important for stats function
@@ -86,13 +103,23 @@ class CSR_Meta {
 		return $user_rating;
 	}
 	
+	public function delete_comment_meta_user_rating( $comment_id ) {
+		$Assets = new CSR_Assets();
+
+		foreach ($Assets->rating_cats() as $cat=>$values) {
+			delete_comment_meta($comment_id, 'user_rating_' . $cat );
+		}		
+	}
 	
 	/* Update "user_rating" post meta for each rating category
 	-------------------------------------------------------------*/ 	
 	public function update_post_meta_user_rating( $post_id ) {								
 		$ratings=array();
 		$count=array();
-		$cats=CSR_Assets::rating_cats();
+
+		$Assets = new CSR_Assets();
+		$cats=$Assets->rating_cats();
+
 		$votes=0;
 		
 		$args = array(

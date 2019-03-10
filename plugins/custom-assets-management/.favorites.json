@@ -70,5 +70,14 @@
         "workspaceRoot": null,
         "workspacePath": null,
         "id": "3lojXwPZuFc6hVz9"
+    },
+    {
+        "type": "Directory",
+        "name": "d:\\local_websites\\Goutu_Main\\wp-content\\plugins\\custom-star-rating",
+        "parent_id": null,
+        "fsPath": "d:\\local_websites\\Goutu_Main\\wp-content\\plugins\\custom-star-rating",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "yuWxincmkoXep4ON"
     }
 ]

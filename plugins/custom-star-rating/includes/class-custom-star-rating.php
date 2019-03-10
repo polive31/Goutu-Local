@@ -27,6 +27,8 @@ class Custom_Star_Rating {
         -----------------------------------------------------------------*/		
         $Meta = new CSR_Meta();
         add_action( 'comment_post',                             array( $Meta, 'update_comment_post_meta'), 10, 3 );
+		add_action( 'edit_comment',                             array( $Meta, 'update_comment_post_meta'), 10, 3 );
+		add_action( 'transition_comment_status',                array( $Meta, 'comment_status_change_callback'), 10, 3 );	
 		add_action( 'save_post',                                array( $Meta, 'add_default_rating' ) );
         
 		

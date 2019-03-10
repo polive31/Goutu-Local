@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-03-03 15:08+0100\n"
+"POT-Creation-Date: 2019-03-10 15:24+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -84,7 +84,7 @@ msgstr ""
 #: peepso/overrides/templates/profile/focus.php:64
 #: peepso/overrides/templates/profile/profile-about.php:150
 #: plugins/custom-recipe-management/public/custom-recipe-favorite/class-crm-favorite.php:137
-#: plugins/custom-star-rating/public/class-csr-shortcodes.php:63
+#: plugins/custom-star-rating/public/class-csr-shortcodes.php:65
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:79
 #: plugins/wp-ultimate-recipe-premium/core/vendor/vafpress/classes/shortcodegenerator.php:264
 #: themes/foodiepro-2.1.8/buddypress/activity/entry.php:128
@@ -382,7 +382,7 @@ msgstr ""
 #: plugins/custom-buddypress-helpers/widgets/BP-whats-new-widget.php:170
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:107
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:110
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:79
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:87
 #: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:103
 #: plugins/custom-recipe-management/widgets/crm_lists_dropdown_widget.php:70
 #: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:47
@@ -403,7 +403,7 @@ msgstr ""
 #: plugins/custom-buddypress-helpers/widgets/BP-whats-new-widget.php:174
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:111
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:119
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:83
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:91
 #: plugins/custom-peepso-helpers/widgets/PeepsoAboutWidget.php:119
 #: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:86
 #: plugins/custom-peepso-helpers/widgets/PeepsoCoverImageHeader.php:84
@@ -892,19 +892,19 @@ msgstr ""
 msgid "Send Message"
 msgstr ""
 
-#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:150
+#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:146
 msgid "You cooked this recipe ? Upload your own picture here"
 msgstr ""
 
-#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:150
+#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:146
 msgid "Add a picture"
 msgstr ""
 
-#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:159
+#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:155
 msgid "Upload your picture"
 msgstr ""
 
-#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:197
+#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:193
 msgid "Picture title"
 msgstr ""
 
@@ -1057,7 +1057,7 @@ msgid "Choose..."
 msgstr ""
 
 #: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:400
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:59
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:55
 msgid "authors"
 msgstr ""
 
@@ -1154,11 +1154,11 @@ msgstr ""
 msgid "Displays a dropdown list allowing to navigate between taxonomy terms"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:54
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:59
 msgid "regions"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:56
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:61
 msgid "countries"
 msgstr ""
 
@@ -1373,7 +1373,7 @@ msgid "Published on %s by %s<span id=\"username\">%s</span>"
 msgstr ""
 
 #: plugins/custom-post-management/custom-post-template/partials/post_toolbar.php:23
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:78
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:80
 #: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/templates/shopping-list.php:25
 msgid "Print"
 msgstr ""
@@ -1383,7 +1383,7 @@ msgid "Print this post"
 msgstr ""
 
 #: plugins/custom-post-management/custom-post-template/partials/post_toolbar.php:38
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:93
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:95
 msgid "Share"
 msgstr ""
 
@@ -1727,7 +1727,7 @@ msgid "Occasion"
 msgstr ""
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:110
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:160
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:162
 msgid "Diet"
 msgstr ""
 
@@ -1839,7 +1839,7 @@ msgid "Are you sure you want to delete this post :"
 msgstr ""
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:234
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:82
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:84
 msgid "Print this Recipe"
 msgstr ""
 
@@ -2169,7 +2169,7 @@ msgstr ""
 #: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:229
 #: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:230
 #: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-print-template.php:83
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:233
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:235
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:19
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:49
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:81
@@ -2322,44 +2322,44 @@ msgid "reviews"
 msgstr ""
 
 #: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-print-template.php:28
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:179
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:181
 msgid "Serves"
 msgstr ""
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:28
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:30
 msgid "Rate"
 msgstr ""
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:33
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:35
 msgid "Comment and rate this recipe"
 msgstr ""
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:45
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:47
 msgid "Rate this recipe"
 msgstr ""
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:109
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:111
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:137
 msgid "Read"
 msgstr ""
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:113
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:115
 msgid "Read this recipe out loud"
 msgstr ""
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:153
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:155
 msgid "Origin"
 msgstr ""
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:167
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:169
 msgid "Level"
 msgstr ""
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:182
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:184
 msgid "Decrease servings"
 msgstr ""
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:186
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:188
 msgid "Increase servings"
 msgstr ""
 
@@ -2404,71 +2404,71 @@ msgstr ""
 msgid "Serving Size"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:55
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:50
 #, php-format
 msgid "Hello %s,"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:59
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:54
 #, php-format
 msgid "The <a href=\"%s\">Goûtu.org</a> Team."
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:65
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:60
 #, php-format
 msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:71
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:66
 #: themes/foodiepro-2.1.8/functions.php:887
 msgid "All rights reserved"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:75
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:70
 msgid "Want to change how you receive these emails?"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:76
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:71
 #, php-format
 msgid "You can <a href=\"%s\">update your preferences</a> on %s."
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:128
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:208
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:123
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:206
 msgid "Share this recipe on Facebook"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:130
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:210
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:125
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:208
 msgid "Share this recipe on Twitter"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:132
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:212
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:127
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:210
 msgid "Share this recipe on Pinterest"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:134
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:214
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:129
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:212
 msgid "Share this recipe by email"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:136
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:216
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:131
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:214
 msgid "Share this recipe on Whatsapp"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:171
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:166
 msgid "Welcome to Goûtu.org !"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:172
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:167
 msgid ""
 "Greetings, you have successfully activated your account, and we are glad to "
 "count you as one of our members !"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:244
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:242
 #, php-format
 msgid ""
 "Hey Toto, thanks for registering ! To complete the activation of your account, "
@@ -2477,42 +2477,42 @@ msgid ""
 "field : <strong>%s</strong> "
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:245
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:243
 #, php-format
 msgid ""
 "After successful activation, you can log in using your username (%1$s) along "
 "with password you choose during registration process."
 msgstr ""
 
-#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:80
+#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:66
 msgid "Becoming a member allows you to : "
 msgstr ""
 
-#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:84
+#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:70
 msgid "Store your favorite recipes in your cookbook,"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:85
+#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:71
 msgid "Publish your own recipes and posts,"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:86
+#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:72
 msgid "Create your personal profile and exchange with other members,"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:91
+#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:77
 msgid "Comment and rate recipes"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:92
+#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:78
 msgid "Subscribe to other members and access their private recipes,"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:93
+#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:79
 msgid "And many more other benefits..."
 msgstr ""
 
-#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:97
+#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:83
 msgid "Register"
 msgstr ""
 
@@ -2546,19 +2546,19 @@ msgstr ""
 msgid "Share on Facebook"
 msgstr ""
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:112
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:116
 msgid "Share on Twitter"
 msgstr ""
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:144
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:150
 msgid "Pin It"
 msgstr ""
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:169
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:175
 msgid "Share by email"
 msgstr ""
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:199
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:205
 msgid "Share on Whatsapp"
 msgstr ""
 
@@ -2671,21 +2671,27 @@ msgid "(Edit)"
 msgstr ""
 
 #: plugins/custom-star-rating/public/class-csr-shortcodes.php:59
+msgid ""
+"Your name and mail address are required for authentification of your comment."
+"<br>Your mail address will not be published."
+msgstr ""
+
+#: plugins/custom-star-rating/public/class-csr-shortcodes.php:61
 msgid "Send"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-shortcodes.php:62
+#: plugins/custom-star-rating/public/class-csr-shortcodes.php:64
 msgid "Reply Title"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-shortcodes.php:173
+#: plugins/custom-star-rating/public/class-csr-shortcodes.php:175
 #, php-format
 msgid "%s review"
 msgid_plural "%s reviews"
 msgstr[0] ""
 msgstr[1] ""
 
-#: plugins/custom-star-rating/public/class-csr-shortcodes.php:241
+#: plugins/custom-star-rating/public/class-csr-shortcodes.php:243
 msgid "Add a comment"
 msgstr ""
 

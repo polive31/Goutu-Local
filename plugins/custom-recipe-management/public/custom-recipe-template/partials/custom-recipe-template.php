@@ -19,16 +19,18 @@
 					<div class="recipe-buttons">
 
 					<!-- Recipe Rate Button -->
-					<div class="recipe-button alignleft <?php echo is_user_logged_in()?'tooltip-onhover':'disabled';?>" id="rate">
+					<!-- <div class="recipe-button alignleft <?php echo is_user_logged_in()?'tooltip-onhover':'disabled';?>" id="rate"> -->
+					<div class="recipe-button alignleft tooltip-onhover" id="rate">
 						<?php
-						$ga = WP_MINIFY?is_user_logged_in()?'':"ga('send','event','join-us','click','recipe-rate', 0)":'';
+						// $ga = WP_MINIFY?is_user_logged_in()?'':"ga('send','event','join-us','click','recipe-rate', 0)":'';
 						// echo $ga;
 						?>
-						<a href="<?php echo is_user_logged_in()?'#':'/connexion';?>" class="recipe-review-button tooltip-onclick" data-tooltip-id="<?php echo is_user_logged_in()?'':'join_us';?>" onClick="<?= $ga ?>">
+						<!-- <a href="<?php //echo is_user_logged_in()?'#':'/connexion';?>" class="recipe-review-button tooltip-onclick" data-tooltip-id="<?php //echo is_user_logged_in()?'':'join_us';?>" onClick="<?php //echo $ga ?>"> -->
+						<a href="#" data-tooltip-id="" class="recipe-review-button tooltip-onclick" onClick="">
 						<div class="button-caption"><?php echo __('Rate','foodiepro'); ?></div>
 						</a>
 						<?php 
-						if( is_user_logged_in() ) {
+						// if( is_user_logged_in() ) {
 							$args=array(
 								'content' => __('Comment and rate this recipe','foodiepro'),
 								'valign' 	=> 'above',
@@ -46,7 +48,7 @@
 								'img'		=> CHILD_THEME_URL . '/images/popup-icons/fiche_recette.png'
 							);
 							Tooltip::display( $args );    
-						}
+						// }
 						?>
 					</div>	
 					

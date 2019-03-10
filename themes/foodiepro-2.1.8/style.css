@@ -3574,6 +3574,18 @@ li.comment a {
 	font-size: 11px;
 }
 
+.comment-form input[type="text"], 
+.comment-form input[type="email"] {
+    width: 250px;
+    /* float: right; */
+}
+
+p.comment-notes {
+    white-space: normal;
+		line-height: normal;
+		text-align:left;
+}
+
 /* Comments in Popup */
 
 .pum-container .comment-respond {

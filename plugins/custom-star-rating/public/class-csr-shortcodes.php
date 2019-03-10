@@ -54,7 +54,11 @@ class CSR_Shortcodes {
 	/* Comment form with rating input shortcode
 	-----------------------------------------------*/
 	public function display_comment_form_with_rating_shortcode() {
+		$comment_notes = is_user_logged_in()?'':'<p class="comment-notes">' . __('Your name and mail address are required for authentification of your comment.<br>Your mail address will not be published.', 'foodiepro') . '</p>';
+
 		$args = array (
+			'comment_notes_before' => '',
+			'comment_notes_after' => $comment_notes,
 			'title_reply' => '', //Default: __( 'Leave a Reply� )
 			'label_submit' => __( 'Send', 'custom-star-rating' ), //default=�Post Comment�
 			'comment_field' => $this->output_evaluation_form(), 

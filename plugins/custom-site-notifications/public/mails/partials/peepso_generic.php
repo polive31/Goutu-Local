@@ -603,7 +603,7 @@
                             <td class="mcnImageContent" valign="top" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; text-align:center;">
                                 
                                     
-                                        <img align="center" alt="{sitename}" src="%%LOGO%%" width="358" style="max-width:358px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
+                                        <img align="center" alt="{sitename}" src="{siteurl}/wp-content/plugins/custom-site-notifications/assets/img/logo.png" width="358" style="max-width:358px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
                                     
                                 
                             </td>

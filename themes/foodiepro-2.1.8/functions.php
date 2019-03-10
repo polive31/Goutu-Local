@@ -514,6 +514,16 @@ function custom_author_base() {
 }
 
 /* =================================================================*/
+/* =              COMMENTS
+/* =================================================================*/
+
+/* Allows logged-in users to submit comments without manual moderation */
+add_filter( 'pre_comment_approved', 'foodiepro_approve_loggedin_users' );
+function foodiepro_approve_loggedin_users( $approved ) {
+    return is_user_logged_in() ? 1 : $approved;
+}
+
+/* =================================================================*/
 /* =              SECURITY
 /* =================================================================*/
 // Remove meta generator to hide WP version, commented out since already covered in WP security

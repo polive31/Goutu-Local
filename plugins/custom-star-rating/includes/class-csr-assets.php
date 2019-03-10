@@ -16,6 +16,9 @@ class CSR_Assets {
 
 
 	public function __construct() {
+		/* Allows to access the class's functions from a submission or ajax callback
+		In this case, the main class is not created, so the only way is to create a new CSR_Assets instance
+		in order to force the hydrate */
 		self::hydrate();
 	}
 	
@@ -26,7 +29,7 @@ class CSR_Assets {
 	
 	
 	// Initialize all strings needing a translation (doesn't work in __construct)
-	static function hydrate() {
+	public static function hydrate() {
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
 		

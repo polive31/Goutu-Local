@@ -95,7 +95,9 @@ class CustomSiteMails {
 		    $content1 = sprintf( $content1, PeepsoHelpers::get_url( $user, 'profile', 'blogposts' ) );
 		    $content1 = wpautop( $content1 );
 
-		    $img_url = get_the_post_thumbnail_url($post, 'post-thumbnail');
+			$img_url = get_the_post_thumbnail_url($post, 'post-thumbnail');
+			
+			$logo = CSN_Assets::plugin_url() . 'assets/img/logo.png';
 
 		    $signature = $this->signature();
 		    $contact = $this->contact();
@@ -108,23 +110,24 @@ class CustomSiteMails {
 		    $whatsapp_url = CustomSocialButtons::whatsappURL($post, $post->post_type);
 
 		    $data = array(
-		    	'title' => $title,
-		    	'headline' => $headline,
-		    	'content' => $content . $content1,
-		    	'signature' => $signature,
-		    	'contact' => $contact,
-		    	'image_url' => $img_url,
-		    	'copyright' => $copyright,
-		    	'unsubscribe' => $unsubscribe,
-		    	'facebook_url' => $facebook_url,
+		    	'title' 		=> $title,
+		    	'headline' 		=> $headline,
+		    	'content' 		=> $content . $content1,
+		    	'signature' 	=> $signature,
+				'contact' 		=> $contact,
+				'logo'			=> $logo,
+		    	'image_url' 	=> $img_url,
+		    	'copyright' 	=> $copyright,
+		    	'unsubscribe' 	=> $unsubscribe,
+		    	'facebook_url' 	=> $facebook_url,
 		    	'facebook_text' => __('Share this recipe on Facebook','foodiepro'),
-		    	'twitter_url' => $twitter_url,
-		    	'twitter_text' => __('Share this recipe on Twitter','foodiepro'),
+		    	'twitter_url' 	=> $twitter_url,
+		    	'twitter_text' 	=> __('Share this recipe on Twitter','foodiepro'),
 		    	'pinterest_url' => $pinterest_url,
-		    	'pinterest_text' => __('Share this recipe on Pinterest','foodiepro'),
-		    	'mail_url' => $mail_url,
-		    	'mail_text' => __('Share this recipe by email','foodiepro'),
-		    	'whatsapp_url' => $whatsapp_url,
+		    	'pinterest_text'=> __('Share this recipe on Pinterest','foodiepro'),
+		    	'mail_url' 		=> $mail_url,
+		    	'mail_text' 	=> __('Share this recipe by email','foodiepro'),
+		    	'whatsapp_url' 	=> $whatsapp_url,
 		    	'whatsapp_text' => __('Share this recipe on Whatsapp','foodiepro'),		    	
 		    );
 		    $message = $this->populate_template($data, self::PROVIDER.'_generic' );
@@ -143,7 +146,7 @@ class CustomSiteMails {
 	}
 
 	public function populate_template( $data, $template, $tag='%%' ) {
-		$path = self::$PLUGIN_PATH . 'mails/partials/' . $template . '.php';
+		$path = CSN_Assets::plugin_path() . 'public/mails/partials/' . $template . '.php';
 		$html = file_get_contents( $path );
 		if (preg_match_all("/$tag(.*?)$tag/i", $html, $m)) {
 		    foreach ($m[1] as $i => $varname) {
@@ -177,6 +180,8 @@ class CustomSiteMails {
 		    $content = sprintf( $content, get_permalink($post), $post->post_title);
 		    $content = wpautop( $content );
 
+			$logo = CSN_Assets::plugin_url() . 'assets/img/logo.png';
+
 		    $signature = $this->signature();
 		    $contact = $this->contact();
 		    $copyright = $this->copyright();
@@ -188,23 +193,24 @@ class CustomSiteMails {
 		    $whatsapp_url = CustomSocialButtons::whatsappURL($post, $post->post_type);
 
 		    $data = array(
-		    	'title' => $title,
-		    	'headline' => $headline,
-		    	'content' => $content . $content1,
-		    	'signature' => $signature,
-		    	'contact' => $contact,
-		    	'image_url' => '',
-		    	'copyright' => $copyright,
-		    	'unsubscribe' => $unsubscribe,
-		    	'facebook_url' => $facebook_url,
+		    	'title' 		=> $title,
+		    	'headline' 		=> $headline,
+		    	'content' 		=> $content . $content1,
+		    	'signature' 	=> $signature,
+		    	'contact' 		=> $contact,
+		    	'logo' 			=> $logo,
+		    	'image_url' 	=> '',
+		    	'copyright' 	=> $copyright,
+		    	'unsubscribe' 	=> $unsubscribe,
+		    	'facebook_url' 	=> $facebook_url,
 		    	'facebook_text' => __('Share this recipe on Facebook','foodiepro'),
-		    	'twitter_url' => $twitter_url,
-		    	'twitter_text' => __('Share this recipe on Twitter','foodiepro'),
+		    	'twitter_url' 	=> $twitter_url,
+		    	'twitter_text' 	=> __('Share this recipe on Twitter','foodiepro'),
 		    	'pinterest_url' => $pinterest_url,
-		    	'pinterest_text' => __('Share this recipe on Pinterest','foodiepro'),
-		    	'mail_url' => $mail_url,
-		    	'mail_text' => __('Share this recipe by email','foodiepro'),
-		    	'whatsapp_url' => $whatsapp_url,
+		    	'pinterest_text'=> __('Share this recipe on Pinterest','foodiepro'),
+		    	'mail_url' 		=> $mail_url,
+		    	'mail_text' 	=> __('Share this recipe by email','foodiepro'),
+		    	'whatsapp_url' 	=> $whatsapp_url,
 		    	'whatsapp_text' => __('Share this recipe on Whatsapp','foodiepro'),		    	
 		    );
 		    $message = $this->populate_template($data, self::PROVIDER.'_generic' );

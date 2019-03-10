@@ -524,12 +524,12 @@ function custom_author_base() {
 /* =================================================================*/
 
 // add_action( 'wp', 'display_trace');
-function display_trace() {
-	if ( class_exists( 'PHP_Debug' ) ) {
-		$debug = new PHP_Debug();
-		$debug->trace('WP PHP Debug plugin activated');
-	}
-}
+// function display_trace() {
+// 	if ( class_exists( 'PHP_Debug' ) ) {
+// 		$debug = new PHP_Debug();
+// 		$debug->trace('WP PHP Debug plugin activated');
+// 	}
+// }
 
 function php_log($msg, $var=false, $type='DEBUG', $color='blue') {
 	if ( class_exists( 'PHP_Debug' ) ) {

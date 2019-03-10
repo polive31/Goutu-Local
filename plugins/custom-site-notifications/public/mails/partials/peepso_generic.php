@@ -13,7 +13,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>%%TITLE%%</title>
+        <title>{sitename}</title>
         
     <style type="text/css">
     p{
@@ -603,7 +603,7 @@
                             <td class="mcnImageContent" valign="top" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; text-align:center;">
                                 
                                     
-                                        <img align="center" alt="" src="%%LOGO%%" width="358" style="max-width:358px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
+                                        <img align="center" alt="{sitename}" src="%%LOGO%%" width="358" style="max-width:358px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
                                     
                                 
                             </td>
@@ -640,19 +640,11 @@
                 
 
 <table align="left" border="0" cellpadding="0" cellspacing="0" class="mcnCaptionBottomContent">
-    <tbody><tr>
-        <td class="mcnCaptionBottomImageContent" align="center" valign="top" style="padding:0 9px 9px 9px;">
-        
-            <img alt="%%TITLE%%" src="%%IMAGE_URL%%" width="300" style="max-width:300px;" class="mcnImage">
-        
-        </td>
-    </tr>
+    <tbody>
     <tr>
         <td class="mcnTextContent" valign="top" style="padding:0 9px 0 9px;" width="564">
-            <h1>%%HEADLINE%%</h1>
 
-<p>%%CONTENT%%<br>
-%%SIGNATURE%%</p>
+<p>{email_contents}</p>
 
         </td>
     </tr>
@@ -700,7 +692,7 @@
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            %%CONTACT%%
+                            <a href="{siteurl}">{sitename}</a>
                         </td>
                     </tr>
                 </tbody></table>
@@ -735,169 +727,6 @@
     </tbody>
 </table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowBlock" style="min-width:100%;">
     <tbody class="mcnFollowBlockOuter">
-        <tr>
-            <td align="center" valign="top" style="padding:9px" class="mcnFollowBlockInner">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentContainer" style="min-width:100%;">
-    <tbody><tr>
-        <td align="center" style="padding-left:9px;padding-right:9px;">
-            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width: 100%;background-color: #FFFFFF;" class="mcnFollowContent">
-                <tbody><tr>
-                    <td align="center" valign="top" style="padding-top:9px; padding-right:9px; padding-left:9px;">
-                        <table align="center" border="0" cellpadding="0" cellspacing="0">
-                            <tbody><tr>
-                                <td align="center" valign="top">
-                                    <!--[if mso]>
-                                    <table align="center" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                    <![endif]-->
-                                    
-                                        <!--[if mso]>
-                                        <td align="center" valign="top">
-                                        <![endif]-->
-                                        
-                                        
-                                            <table align="left" border="0" cellpadding="0" cellspacing="0" style="display:inline;">
-                                                <tbody><tr>
-                                                    <td valign="top" style="padding-right:10px; padding-bottom:9px;" class="mcnFollowContentItemContainer">
-                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentItem">
-                                                            <tbody><tr>
-                                                                <td align="left" valign="middle" style="padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:9px;">
-                                                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="">
-                                                                        <tbody><tr>
-                                                                            
-                                                                                <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
-                                                                                    <a href="%%TWITTER_URL%%" title="%%TWITTER_TEXT%%" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-twitter-48.png" style="display:block;" height="24" width="24" class=""></a>
-                                                                                </td>
-                                                                            
-                                                                            
-                                                                        </tr>
-                                                                    </tbody></table>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody></table>
-                                                    </td>
-                                                </tr>
-                                            </tbody></table>
-                                        
-                                        <!--[if mso]>
-                                        </td>
-                                        <![endif]-->
-                                    
-                                        <!--[if mso]>
-                                        <td align="center" valign="top">
-                                        <![endif]-->
-                                        
-                                        
-                                            <table align="left" border="0" cellpadding="0" cellspacing="0" style="display:inline;">
-                                                <tbody><tr>
-                                                    <td valign="top" style="padding-right:10px; padding-bottom:9px;" class="mcnFollowContentItemContainer">
-                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentItem">
-                                                            <tbody><tr>
-                                                                <td align="left" valign="middle" style="padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:9px;">
-                                                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="">
-                                                                        <tbody><tr>
-                                                                            
-                                                                                <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
-                                                                                    <a href="%%FACEBOOK_URL%%" title="%%FACEBOOK_TEXT%%" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-facebook-48.png" style="display:block;" height="24" width="24" class=""></a>
-                                                                                </td>
-                                                                            
-                                                                            
-                                                                        </tr>
-                                                                    </tbody></table>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody></table>
-                                                    </td>
-                                                </tr>
-                                            </tbody></table>
-                                        
-                                        <!--[if mso]>
-                                        </td>
-                                        <![endif]-->
-                                    
-                                        <!--[if mso]>
-                                        <td align="center" valign="top">
-                                        <![endif]-->
-                                        
-                                        
-                                            <table align="left" border="0" cellpadding="0" cellspacing="0" style="display:inline;">
-                                                <tbody><tr>
-                                                    <td valign="top" style="padding-right:10px; padding-bottom:9px;" class="mcnFollowContentItemContainer">
-                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentItem">
-                                                            <tbody><tr>
-                                                                <td align="left" valign="middle" style="padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:9px;">
-                                                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="">
-                                                                        <tbody><tr>
-                                                                            
-                                                                                <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
-                                                                                    <a href="%%PINTEREST_URL%%" title="%%PINTEREST_TEXT%%" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-pinterest-48.png" style="display:block;" height="24" width="24" class=""></a>
-                                                                                </td>
-                                                                            
-                                                                            
-                                                                        </tr>
-                                                                    </tbody></table>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody></table>
-                                                    </td>
-                                                </tr>
-                                            </tbody></table>
-                                        
-                                        <!--[if mso]>
-                                        </td>
-                                        <![endif]-->
-                                    
-                                        <!--[if mso]>
-                                        <td align="center" valign="top">
-                                        <![endif]-->
-                                        
-                                        
-                                            <table align="left" border="0" cellpadding="0" cellspacing="0" style="display:inline;">
-                                                <tbody><tr>
-                                                    <td valign="top" style="padding-right:0; padding-bottom:9px;" class="mcnFollowContentItemContainer">
-                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentItem">
-                                                            <tbody><tr>
-                                                                <td align="left" valign="middle" style="padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:9px;">
-                                                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="">
-                                                                        <tbody><tr>
-                                                                            
-                                                                                <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
-                                                                                    <a href="mailto:%%MAIL_URL%%" title="%%MAIL_TEXT%%" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-forwardtofriend-48.png" style="display:block;" height="24" width="24" class=""></a>
-                                                                                </td>
-                                                                            
-                                                                            
-                                                                        </tr>
-                                                                    </tbody></table>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody></table>
-                                                    </td>
-                                                </tr>
-                                            </tbody></table>
-                                        
-                                        <!--[if mso]>
-                                        </td>
-                                        <![endif]-->
-                                    
-                                    <!--[if mso]>
-                                    </tr>
-                                    </table>
-                                    <![endif]-->
-                                </td>
-                            </tr>
-                        </tbody></table>
-                    </td>
-                </tr>
-            </tbody></table>
-        </td>
-    </tr>
-</tbody></table>
-
-            </td>
-        </tr>
-    </tbody>
-</table></td>
-                            </tr>
                             <tr>
                                 <td valign="top" id="templateFooter"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
     <tbody class="mcnTextBlockOuter">
@@ -915,10 +744,11 @@
                     <tbody><tr>
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-                        
-                            <em>Copyright © %%COPYRIGHT%%.</em><br>
-<br>
-%%UNSUBSCRIBE%%
+                            Cet email a été envoyé à {currentuserfullname} ({useremail}).
+                            <br>
+                            Si vous ne souhaitez pas recevoir les e-mails de {sitename}, vous pouvez gérer vos préférences <a href="{unsubscribeurl}">ici</a>.
+                            <br>
+                            <em>Copyright ©{year} {sitename}.</em>
                         </td>
                     </tr>
                 </tbody></table>

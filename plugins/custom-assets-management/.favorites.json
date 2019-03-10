@@ -61,5 +61,14 @@
         "workspaceRoot": null,
         "workspacePath": null,
         "id": "l7WhXrZFJmwjPadu"
+    },
+    {
+        "type": "Directory",
+        "name": "d:\\local_websites\\Goutu_Main\\wp-content\\themes\\foodiepro-2.1.8",
+        "parent_id": null,
+        "fsPath": "d:\\local_websites\\Goutu_Main\\wp-content\\themes\\foodiepro-2.1.8",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "3lojXwPZuFc6hVz9"
     }
 ]

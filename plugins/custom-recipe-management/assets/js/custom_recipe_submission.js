@@ -475,18 +475,21 @@ function updateIngredientIndex()
     });
 }
 
-function addRecipeIngredient( currentIngredient )
-{
+function addRecipeIngredient( currentIngredient ) {
+
+    console.log( 'In addrecipeIngredient' );
+
     var nbr_ingredients = jQuery('#recipe-ingredients tr.ingredient').length;
     var last_row = jQuery('#recipe-ingredients tr:last');
-    if ( currentIngredient ) 
-        last_row = currentIngredient;
+    var last_ingredient = jQuery('#recipe-ingredients tr.ingredient:last');
 
-    // last_ingredient.find('input').attr('placeholder','');
-    // var last_ingredient = jQuery('#recipe-ingredients tr.ingredient:last');
-    
-    // var clone_ingredient = last_ingredient.clone(true);
-    var clone_ingredient = last_row.clone(true);
+    console.log( 'last row : ', last_row);
+    console.log( 'last ingredient : ', last_ingredient);
+
+    if ( currentIngredient ) 
+        last_ingredient = currentIngredient;
+
+    var clone_ingredient = last_ingredient.clone(true);
 
     // console.log("In add recipe ingredient");
     // console.log("Content of preview in new row : " + clone_ingredient.find('td.ingredient-preview').html());

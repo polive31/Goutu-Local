@@ -11,11 +11,10 @@ class CustomAdminPostFilter {
     const META_KEY ='ingredient_note';
 
     public function __construct() { 
-        add_action( 'restrict_manage_posts', array($this,'restrict_manage_posts') );
-        add_filter( 'parse_query', array($this, 'add_posts_filter' ) );
+        add_action( 'restrict_manage_posts',    array($this, 'restrict_manage_posts')   );
+        add_filter( 'parse_query',              array($this, 'add_posts_filter' )       );
+        add_action( 'admin_bar_menu',           array($this, 'add_toolbar_items'), 999  );
     }
-
-    
 
     public function restrict_manage_posts(){
         $type = 'post';
@@ -63,5 +62,18 @@ class CustomAdminPostFilter {
             $query->query_vars['meta_value'] = $_GET['ADMIN_FILTER_FIELD_VALUE'];
         }
     }
+
+
+    public function add_toolbar_items($wp_admin_bar) {
+        $menu_id = 'foodiepro';
+
+        
+        
+        $wp_admin_bar->add_menu(array('id' => $menu_id, 'title' => 'Foodiepro', 'href' => '/'));
+        $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Manage Users'), 'id' => 'foodiepro_users', 'href' => get_site_url( null, '/wp-admin/users.php'), 'meta' => array('target' => '_blank')));
+        // $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Drafts'), 'id' => 'dwb-drafts', 'href' => 'edit.php?post_status=draft&post_type=post'));
+    }
+
+
 
 }

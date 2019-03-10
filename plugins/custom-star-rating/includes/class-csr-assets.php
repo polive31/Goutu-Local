@@ -12,9 +12,8 @@ class CSR_Assets {
 	private static $ratingGlobal;
 
 	private static $PLUGIN_PATH;
-	private static $PLUGIN_URI;		
-
-
+	private static $PLUGIN_URI;	
+	
 	public function __construct() {
 		/* Allows to access the class's functions from a submission or ajax callback
 		In this case, the main class is not created, so the only way is to create a new CSR_Assets instance
@@ -32,7 +31,6 @@ class CSR_Assets {
 	public static function hydrate() {
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
-		
 		self::$ratedPostTypes = array( 'recipe' );
 
 		self::$ratingCats = array( 

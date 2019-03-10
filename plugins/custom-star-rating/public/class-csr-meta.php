@@ -41,7 +41,10 @@ class CSR_Meta {
 	/* Add ratings default value (required for proper sorting in archives)
 	-------------------------------------------------------------*/ 
 	public function add_default_rating() {
-		 if ( is_singular( CSR_Assets::post_types() ) && (! wp_is_post_revision( $post->ID )) ) {
+
+		$Assets = new CSR_Assets();
+
+		if ( is_singular( $Assets->post_types() ) && (! wp_is_post_revision( $post->ID )) ) {
 			foreach (self::$ratingCats as $slug=>$values) {
 				$this->update_post_meta($post->ID, 'user_rating_' . $slug, '0');
 			}
@@ -74,8 +77,8 @@ class CSR_Meta {
 		$current_post_type = get_post_type( $post_id );
 		/* CSR_Assets::post_types() cannot be called statically because we are in a submit callback
 		and the CSR_Assets::hydrate function will not be called in this case */ 
-		$Rating_Assets = new CSR_Assets();
-		if (in_array( $current_post_type, $Rating_Assets->post_types() )) {
+		$Assets = new CSR_Assets();
+		if (in_array( $current_post_type, $Assets->post_types() )) {
 			/* Update comment meta and get corresponding rating */
 			$new_rating = $this->update_comment_meta_user_rating( $comment_id );
 			/* Update post meta with the new rating and get updated ratings table */ 

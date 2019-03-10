@@ -486,8 +486,10 @@ function addRecipeIngredient( currentIngredient ) {
     console.log( 'last row : ', last_row);
     console.log( 'last ingredient : ', last_ingredient);
 
-    if ( currentIngredient ) 
+    if ( currentIngredient ) {
+        last_row = currentIngredient;
         last_ingredient = currentIngredient;
+    }
 
     var clone_ingredient = last_ingredient.clone(true);
 

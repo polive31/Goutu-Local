@@ -182,11 +182,19 @@ tr.ingredient.saved td.ingredient-preview {
 }
 
 td.ingredient-input.qty {
-    width: 100px;
+    min-width: 50px;
 }
 
 td.ingredient-input.unit {
-    width: 200px;
+    min-width: 100px;
+}
+
+td.ingredient-input.name {
+    min-width: 200px;
+}
+
+td.ingredient-input.notes {
+    min-width: 300px;
 }
 
 /* Instruction Section 

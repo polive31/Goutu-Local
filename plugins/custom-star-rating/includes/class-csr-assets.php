@@ -11,8 +11,8 @@ class CSR_Assets {
 	private static $ratingCats;
 	private static $ratingGlobal;
 
-	private static $PLUGIN_PATH;
-	private static $PLUGIN_URI;	
+	private static $Plugin_path;
+	private static $Plugin_uri;	
 	
 	public function __construct() {
 		/* Allows to access the class's functions from a submission or ajax callback
@@ -22,15 +22,28 @@ class CSR_Assets {
 	}
 	
 	/* Register stylesheet, will be enqueued in the shortcode itself  */
-	static function register_star_rating_style() {
-		custom_register_style( 'custom-star-rating', 'assets/custom-star-rating.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );
+	public static function register_star_rating_assets() {
+		custom_register_style( 	'custom-star-rating', 'assets/css/custom-star-rating.css', self::$Plugin_uri, self::$Plugin_path, array(), CHILD_THEME_VERSION );
+		$args=array(
+			'handle'	=> 'custom-star-rating',
+			'file' 		=> 'assets/js/custom-star-rating.js',
+			'uri' 		=> self::$Plugin_uri,
+			'path' 		=> self::$Plugin_path,
+			'footer' 	=> true,
+			'deps' 		=> array(),
+			'data' 		=> array(
+				'name'			=> 'csr',
+				'emptyComment' 	=> __('Please enter a text before submitting your comment.', 'foodiepro'),
+			)
+		);
+		custom_register_script( $args );
 	}
 	
 	
 	// Initialize all strings needing a translation (doesn't work in __construct)
 	public static function hydrate() {
-		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
-		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
+		self::$Plugin_path = plugin_dir_path( dirname( __FILE__ ) );
+		self::$Plugin_uri = plugin_dir_url( dirname( __FILE__ ) );
 		self::$ratedPostTypes = array( 'recipe' );
 
 		self::$ratingCats = array( 

@@ -20,7 +20,7 @@ class Custom_Star_Rating {
 		-----------------------------------------------------------------*/		
 		add_action( 'wp',                                       'CSR_Assets::hydrate' );
 		add_filter( 'wpurp_register_ratings_taxonomy',          'CSR_Assets::translate_ratings_taxonomy' );
-        add_action( 'wp_enqueue_scripts',                       'CSR_Assets::register_star_rating_style' );	
+        add_action( 'wp_enqueue_scripts',                       'CSR_Assets::register_star_rating_assets' );	
                 
 
         /* Hooks for CSR_Meta class
@@ -37,18 +37,18 @@ class Custom_Star_Rating {
         $CommentList = new CSR_Comments_List();
         add_action( 'genesis_before_content',                   array( $CommentList,'custom_genesis_list_comments') );
 		/* Add anchor to comments section title	*/ 
-		add_filter('genesis_title_comments',                    array( $CommentList,'add_comments_title_markup'), 15, 1 );
+		add_filter( 'genesis_title_comments',                   array( $CommentList,'add_comments_title_markup'), 15, 1 );
 		/* Remove comment form unless it's a comment reply page */ 
 		add_action( 'genesis_comment_form',                     array( $CommentList,'remove_recipe_comments_form'), 0 );
 		/* Disable logged in / logged out link */ 
 		add_filter( 'comment_form_defaults',                    array( $CommentList,'change_comment_form_defaults') );
 		/* Customize comment section title */ 
-		add_filter('genesis_title_comments',                    array( $CommentList,'custom_comment_text') );
+		add_filter( 'genesis_title_comments',                   array( $CommentList,'custom_comment_text') );
 		/* Customize navigation links */ 
-		add_filter('genesis_prev_comments_link_text',           array( $CommentList,'custom_comments_prev_link_text') );
-		add_filter('genesis_next_comments_link_text',           array( $CommentList,'custom_comments_next_link_text') );
+		add_filter( 'genesis_prev_comments_link_text',          array( $CommentList,'custom_comments_prev_link_text') );
+		add_filter( 'genesis_next_comments_link_text',          array( $CommentList,'custom_comments_next_link_text') );
 		/* Disable url input box in comment form unlogged users */ 
-        add_filter('comment_form_default_fields',               array( $CommentList,'customize_comment_form') );
+        add_filter( 'comment_form_default_fields',				array( $CommentList,'customize_comment_form') );
         
         
 		

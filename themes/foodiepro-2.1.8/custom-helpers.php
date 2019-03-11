@@ -51,7 +51,7 @@ function custom_img( $dir, $url, $name ) {
 /* =              CUSTOM SCRIPTS HELPERS
 /* =================================================================*/
 
-function custom_register_script( $handle, $file='', $uri=CHILD_THEME_URL, $dir=CHILD_THEME_PATH, $deps=array(), $version=CHILD_THEME_VERSION, $footer=false ) {	
+function custom_register_script( $handle, $file='', $uri=CHILD_THEME_URL, $dir=CHILD_THEME_PATH, $deps=array(), $version=CHILD_THEME_VERSION, $footer=false, $data=array() ) {	
 	if (is_array($handle) ) {
 		$uri = CHILD_THEME_URL;
 		$dir = CHILD_THEME_PATH;
@@ -68,6 +68,12 @@ function custom_register_script( $handle, $file='', $uri=CHILD_THEME_URL, $dir=C
 		}
 	}
 	wp_register_script( $handle, $uri . $file, $deps, $version, $footer );
+
+	if ( !empty($data) ) {
+		$name=$data['name'];
+		unset($data['name']);
+		wp_localize_script( $handle, $name, $data);
+	}
 }
 
 function custom_enqueue_script( $handle, $file='', $uri=CHILD_THEME_URL, $dir=CHILD_THEME_PATH, $deps=array(), $version=CHILD_THEME_VERSION, $footer=false ) {	
@@ -87,11 +93,12 @@ function custom_enqueue_script( $handle, $file='', $uri=CHILD_THEME_URL, $dir=CH
 		}
 	}
 	wp_enqueue_script( $handle, $uri . $file, $deps, $version, $footer );
-	if ( isset($data) ) {
+
+	if ( !empty($data) ) {
 		$name=$data['name'];
 		unset($data['name']);
 		wp_localize_script( $handle, $name, $data);
-	}
+	}	
 }
 
 

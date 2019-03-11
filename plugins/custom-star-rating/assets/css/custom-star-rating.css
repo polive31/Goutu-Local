@@ -41,7 +41,7 @@ td.rating-title {
 		display: block;
 		width: 24px;
 		height: 24px;
-		background: url('../images/rating-star.png') -24px 0/48px 24px no-repeat;
+		background: url('../../images/rating-star.png') -24px 0/48px 24px no-repeat;
 }
 
 

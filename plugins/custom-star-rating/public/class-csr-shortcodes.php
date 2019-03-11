@@ -69,6 +69,7 @@ class CSR_Shortcodes {
 		);
 			
 		wp_enqueue_style('custom-star-rating');
+		wp_enqueue_script('custom-star-rating');
 		ob_start();
 		//display_rating_form();
 		comment_form($args);

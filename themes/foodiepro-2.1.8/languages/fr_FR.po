@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-03-10 15:22+0100\n"
-"PO-Revision-Date: 2019-03-10 15:25+0100\n"
+"POT-Creation-Date: 2019-03-11 22:58+0100\n"
+"PO-Revision-Date: 2019-03-11 23:00+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -67,7 +67,7 @@ msgstr ""
 #: peepso/overrides/templates/profile/focus.php:64
 #: peepso/overrides/templates/profile/profile-about.php:150
 #: plugins/custom-recipe-management/public/custom-recipe-favorite/class-crm-favorite.php:137
-#: plugins/custom-star-rating/public/class-csr-shortcodes.php:65
+#: plugins/custom-star-rating/public/class-csr-shortcodes.php:67
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:79
 #: plugins/wp-ultimate-recipe-premium/core/vendor/vafpress/classes/shortcodegenerator.php:264
 #: themes/foodiepro-2.1.8/buddypress/activity/entry.php:128
@@ -212,7 +212,7 @@ msgstr ""
 #: peepso/overrides/templates/widgets/userbar.tpl.php:107
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:92
 #: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:96
-#: themes/foodiepro-2.1.8/functions.php:788
+#: themes/foodiepro-2.1.8/functions.php:798
 msgid "Log Out"
 msgstr "Déconnexion"
 
@@ -488,7 +488,7 @@ msgstr "Se souvenir de moi"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:124
 #: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:131
-#: themes/foodiepro-2.1.8/functions.php:793
+#: themes/foodiepro-2.1.8/functions.php:803
 msgid "Log In"
 msgstr "Connexion"
 
@@ -2588,7 +2588,7 @@ msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr "Un problème ? Une question ? Contacte nous <a href=\"%s\">ici</a>"
 
 #: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:66
-#: themes/foodiepro-2.1.8/functions.php:887
+#: themes/foodiepro-2.1.8/functions.php:897
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
@@ -2744,68 +2744,72 @@ msgstr "Voir la conversation"
 msgid "Displays share buttons of selected social networks"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-assets.php:38
+#: plugins/custom-star-rating/includes/class-csr-assets.php:36
+msgid "Please enter a text before submitting your comment."
+msgstr "Veuillez entrer un texte avant de soumettre votre commentaire."
+
+#: plugins/custom-star-rating/includes/class-csr-assets.php:52
 msgid "Dish"
 msgstr "Plat"
 
-#: plugins/custom-star-rating/public/class-csr-assets.php:39
+#: plugins/custom-star-rating/includes/class-csr-assets.php:53
 #, fuzzy
 #| msgid "eg. Preparation of the dough"
 msgid "Appreciation of the dish"
 msgstr "ex : Préparation de la pâte"
 
-#: plugins/custom-star-rating/public/class-csr-assets.php:40
+#: plugins/custom-star-rating/includes/class-csr-assets.php:54
 msgid "How did you like this dish ?"
 msgstr "Avez vous aimé ce plat ? "
 
-#: plugins/custom-star-rating/public/class-csr-assets.php:42
-#: plugins/custom-star-rating/public/class-csr-assets.php:53
+#: plugins/custom-star-rating/includes/class-csr-assets.php:56
+#: plugins/custom-star-rating/includes/class-csr-assets.php:67
 msgid "Disappointing"
 msgstr "Décevant"
 
-#: plugins/custom-star-rating/public/class-csr-assets.php:43
-#: plugins/custom-star-rating/public/class-csr-assets.php:54
+#: plugins/custom-star-rating/includes/class-csr-assets.php:57
+#: plugins/custom-star-rating/includes/class-csr-assets.php:68
 msgid "Average"
 msgstr "Moyen"
 
-#: plugins/custom-star-rating/public/class-csr-assets.php:44
-#: plugins/custom-star-rating/public/class-csr-assets.php:55
+#: plugins/custom-star-rating/includes/class-csr-assets.php:58
+#: plugins/custom-star-rating/includes/class-csr-assets.php:69
 msgid "Good"
 msgstr "Bon"
 
-#: plugins/custom-star-rating/public/class-csr-assets.php:45
-#: plugins/custom-star-rating/public/class-csr-assets.php:56
+#: plugins/custom-star-rating/includes/class-csr-assets.php:59
+#: plugins/custom-star-rating/includes/class-csr-assets.php:70
 msgid "Very good"
 msgstr "Très bon"
 
-#: plugins/custom-star-rating/public/class-csr-assets.php:46
-#: plugins/custom-star-rating/public/class-csr-assets.php:57
+#: plugins/custom-star-rating/includes/class-csr-assets.php:60
+#: plugins/custom-star-rating/includes/class-csr-assets.php:71
 msgid "Delicious"
 msgstr "Délicieux"
 
-#: plugins/custom-star-rating/public/class-csr-assets.php:50
+#: plugins/custom-star-rating/includes/class-csr-assets.php:64
 msgid "Overall"
 msgstr "Global"
 
-#: plugins/custom-star-rating/public/class-csr-assets.php:51
+#: plugins/custom-star-rating/includes/class-csr-assets.php:65
 #, fuzzy
 #| msgid "eg. Preparation of the dough"
 msgid "Global appreciation of the dish"
 msgstr "ex : Préparation de la pâte"
 
-#: plugins/custom-star-rating/public/class-csr-assets.php:83
+#: plugins/custom-star-rating/includes/class-csr-assets.php:97
 msgid "Evaluations"
 msgstr "Evaluations"
 
-#: plugins/custom-star-rating/public/class-csr-assets.php:84
+#: plugins/custom-star-rating/includes/class-csr-assets.php:98
 msgid "Evaluation"
 msgstr "Evaluation"
 
-#: plugins/custom-star-rating/public/class-csr-assets.php:90
+#: plugins/custom-star-rating/includes/class-csr-assets.php:104
 msgid "rating"
 msgstr "evaluation"
 
-#: plugins/custom-star-rating/public/class-csr-assets.php:128
+#: plugins/custom-star-rating/includes/class-csr-assets.php:142
 #, fuzzy
 #| msgid "No related posts."
 msgid "Not rated"
@@ -2858,7 +2862,7 @@ msgstr ""
 msgid "(Edit)"
 msgstr "Modifier"
 
-#: plugins/custom-star-rating/public/class-csr-shortcodes.php:59
+#: plugins/custom-star-rating/public/class-csr-shortcodes.php:57
 msgid ""
 "Your name and mail address are required for authentification of your comment."
 "<br>Your mail address will not be published."
@@ -2866,15 +2870,15 @@ msgstr ""
 "Vos nom et adresse mail sont nécessaires pour authentifier votre commentaire."
 "<br>Votre adresse mail ne sera pas publiée."
 
-#: plugins/custom-star-rating/public/class-csr-shortcodes.php:61
+#: plugins/custom-star-rating/public/class-csr-shortcodes.php:63
 msgid "Send"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-shortcodes.php:64
+#: plugins/custom-star-rating/public/class-csr-shortcodes.php:66
 msgid "Reply Title"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-shortcodes.php:175
+#: plugins/custom-star-rating/public/class-csr-shortcodes.php:178
 #, fuzzy, php-format
 #| msgid "review"
 msgid "%s review"
@@ -2882,7 +2886,7 @@ msgid_plural "%s reviews"
 msgstr[0] "avis"
 msgstr[1] "avis"
 
-#: plugins/custom-star-rating/public/class-csr-shortcodes.php:243
+#: plugins/custom-star-rating/public/class-csr-shortcodes.php:246
 #, fuzzy
 #| msgid "Add a picture"
 msgid "Add a comment"
@@ -10058,19 +10062,19 @@ msgstr ""
 msgid "author"
 msgstr "auteur"
 
-#: themes/foodiepro-2.1.8/functions.php:663
+#: themes/foodiepro-2.1.8/functions.php:673
 msgid "Content/Alt Sidebar"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:847
+#: themes/foodiepro-2.1.8/functions.php:857
 msgid "Recipe, Ingredient, Keyword, Author..."
 msgstr "Recette, ingrédient, mot-clé, auteur..."
 
-#: themes/foodiepro-2.1.8/functions.php:887
+#: themes/foodiepro-2.1.8/functions.php:897
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:887
+#: themes/foodiepro-2.1.8/functions.php:897
 msgid "Legal notice"
 msgstr "Mentions légales"
 

@@ -142,10 +142,15 @@ class CustomScriptsStylesEnqueue {
 					$thismet = $this->is_page_of_type( explode(' ', $value) );
 					break;												
 				case 'shortcode' :
-				// TODO SOLVE ISSUE HERE 
-				// Returns error
-					$post = get_post();
-					$content = $post->post_content;
+					$content='';
+					if ( is_singular() ) {
+						$post = get_post();
+						$content = $post->post_content;
+					}
+					elseif ( is_archive() ) {
+						$term_id = get_queried_object_id();
+						$content = get_term_meta( $term_id, 'intro_text', true );
+					}
 					$thismet = empty($content)?false:has_shortcode( $content, $value);
 					break;
 				case 'single' :

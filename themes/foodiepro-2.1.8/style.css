@@ -2561,13 +2561,17 @@ span.edit-button {
 .archive-description,
 .page header.entry-header,
 .single header.entry-header {
-    display: inline-block;
+	display: inline-block;
 	padding: 10px 0px 40px 0px;	
 }
 
 .archive-description p {
     padding-left: 20px;
     margin-top: 30px;
+}
+ 
+.archive-description li {
+	list-style-position: inside;
 }
 
 .page-header-wrap {

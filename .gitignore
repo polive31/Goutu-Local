@@ -117,3 +117,4 @@ plugins/buddypress/bp-core/*
 #!plugins/wp-ultimate-recipe-premium/
 *.json
 *.json
+*.json

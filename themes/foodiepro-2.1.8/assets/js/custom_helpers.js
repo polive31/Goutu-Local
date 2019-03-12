@@ -1,8 +1,8 @@
 jQuery(document).ready(function()   {
 
-    jQuery(document).ajaxStop(function () {
+    // jQuery(document).ajaxStop(function () {
         // sidebarHeightAdjustToContent();
-    });
+    // });
     
     /*  Minify header on scroll
     -------------------------------------*/
@@ -10,6 +10,7 @@ jQuery(document).ready(function()   {
     var didScroll = "no";
     var count = 0;
 
+    jQuery("header.site-header").css({ "position": "fixed"});;
     setContainerTopMargin( true );
     hintAlreadyRead=getCookie('menuHint');
     if (hintAlreadyRead=="" || hintAlreadyRead=="false") {
@@ -129,7 +130,7 @@ function actionsOnScroll() {
 
 
 function setContainerTopMargin( scrollTop ) {
-    var height = jQuery( "header" ).outerHeight();
+    var height = jQuery( "header.site-header" ).outerHeight();
     var htmlMargin = parseInt(jQuery("html").css("margin-top"));
     topMargin = height - htmlMargin + 10;
     // console.log( "height = " + height )

@@ -896,10 +896,11 @@ Structure and Layout
 --------------------------------------------- */
 
 .site-container {
-	margin:0 auto;
+	margin:10px auto;
 	/*max-width:1060px;*/
 	max-width:1140px;
 	padding:0 20px 30px 20px;
+	/* transition: margin-top 1s; */
 }
 
 .site-inner {
@@ -2809,7 +2810,7 @@ Site Header
 
 
 .foodie-pro .site-header {
-  position:fixed;
+  /* position:fixed; */
   top:0;
 	transition: top 0.2s ease-in-out;  
  	z-index: 99999;  

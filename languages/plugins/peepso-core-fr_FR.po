@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: peepso-internal\n"
 "POT-Creation-Date: 2019-03-11 21:46+0100\n"
-"PO-Revision-Date: 2019-03-11 21:48+0100\n"
+"PO-Revision-Date: 2019-03-11 23:27+0100\n"
 "Last-Translator: alconost <alpha@alconost.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -6113,7 +6113,7 @@ msgstr "Entrez votre adresse e-mail."
 
 #: classes/register.php:84
 msgid "Verify Email"
-msgstr "Confirmation de l'adresse mail"
+msgstr "Confirmez votre adresse mail"
 
 #: classes/register.php:85
 msgid "Please re-enter your email address"
@@ -6135,7 +6135,7 @@ msgstr "Entrez votre mot de passe souhaité"
 
 #: classes/register.php:107
 msgid "Verify Password"
-msgstr "Vérifiez votre mot de passe"
+msgstr "Confirmez votre mot de passe"
 
 #: classes/register.php:108 templates/general/reset-password.php:48
 msgid "Please re-enter your password"

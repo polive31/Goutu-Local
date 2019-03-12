@@ -352,7 +352,7 @@
                         <img src="<?php echo $image; ?>" class="post_thumbnail" id="recipe_thumbnail_preview_<?php echo $i; ?>" />
                         <div class="recipe_remove_image_button" id="recipe_thumbnail_remove_<?php echo $i; ?>" title="<?php _e( 'Remove Image', 'foodiepro' ) ?>" /></div>
                         <!-- This input stores the attachment handler within the post, for meta save -->
-                        <input type="hidden" value="<?= $has_image?$instruction['image']:''; ?>" name="recipe_instructions[<?php echo $i; ?>][image]" /><br/>
+                        <input type="hidden" class="instruction_thumbnail" value="<?= $has_image?$instruction['image']:''; ?>" name="recipe_instructions[<?php echo $i; ?>][image]" /><br/>
                       
                     </div>
                 </td>

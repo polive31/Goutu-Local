@@ -15,15 +15,11 @@ class Tooltip {
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
 
 		// Scripts & styles enqueue
-		// add_action('wp_enqueue_scripts', array($this, 'enqueue_easing_script'));
-		add_action('wp_enqueue_scripts', array($this, 'enqueue_tooltip_assets') );
-		
+		add_action( 'wp_enqueue_scripts', 	array($this, 'register_tooltip_assets') );
 		// Overlay support
-		add_action('genesis_after',array($this, 'add_overlay_markup') );
-
+		add_action( 'genesis_after',		array($this, 'add_overlay_markup') );
 		// Shortcodes
-		add_shortcode('tooltip', array($this,'output_tooltip_shortcode')); 
-
+		add_shortcode( 'tooltip', 			array($this, 'output_tooltip_shortcode') ); 
 	}
 
 	public function add_overlay_markup() {
@@ -31,8 +27,8 @@ class Tooltip {
 		if ($once) return;
 		$once=true;
 		?>
-		<!-- <div class="tooltip-overlay" style="display:none"></div>;  -->
-		<div class="tooltip-overlay nodisplay"></div>; 
+		<!-- Overlay markup for Tooltip plugin  -->
+		<div class="tooltip-overlay nodisplay"></div>
 		<?php  
 	}
 
@@ -41,16 +37,10 @@ class Tooltip {
 	// 	wp_enqueue_script( 'jquery-easing', self::$PLUGIN_URI . '/vendor/easing/jQuery_Easing.min.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
 	// }
 
-	public function enqueue_tooltip_assets() {
-        // if (! is_single() ) return;
-		// custom_enqueue_style( 'tooltip', $uri, $path, 'tooltip.css', array(), CHILD_THEME_VERSION );			
-		custom_register_style( 'tooltip', '/assets/css/tooltip.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );			
-		  
-		// custom_enqueue_script( 'tooltip', $uri, $path, 'tooltip.js', array(), CHILD_THEME_VERSION, true );			
+	public function register_tooltip_assets() {		
+		custom_register_style( 'tooltip', '/assets/css/tooltip.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );				
 		custom_register_script( 'tooltip', '/assets/js/tooltip.js', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION, true );			
 	}	
-
-
 
 	/* =================================================================*/
 	/* = TOOLTIP SHORTCODE    
@@ -113,7 +103,7 @@ class Tooltip {
 		wp_enqueue_script('tooltip');
 		wp_enqueue_style('tooltip');
 		
-		$html ='<div class="tooltip-content ' . $valign . ' ' . $halign . ' ' . $class . ' ' . $action . '" id="' . $id . '">';
+		$html ='<div class="tooltip-content ' . $valign . ' ' . $halign . ' ' . $class . ' ' . $action . '" id="' . $id . '" style="display: none;">';
 		$html.='<div class="wrap">';
 		$html.=$img?'<div class="tooltip-img"><img src="' . $img . '"></div>':'';
 		$html.=$title?'<h4 class="tooltip-title">' . $title . '</h4>':'';
@@ -129,10 +119,9 @@ class Tooltip {
 	}
 
 	
-	/* =================================================================*/
-	/* DISPLAY 
-	   Displays Tooltip Content    
-	/* =================================================================*/
+	/* 	=================================================================
+	   		Displays Tooltip Content Function   
+		=================================================================*/
 	public static function display( $args) {
 		echo self::getContent( $args );
 	}

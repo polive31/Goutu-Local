@@ -10,45 +10,47 @@ class CustomSitePopups {
 	// const CONTACT_NAME = "Goutu.org";
 	// const CONTACT_EMAIL = "contact@goutu.org";
 	
-	/* POST_TYPES provides :
+	/* POPUPS provides :
 		- the list of supported post types
 		- the location (hook) where to place the popup
 		- which popup(s) to display for this post type
 	*/
-	const POST_TYPES = array(
-		'post'	=> array(
-			'genesis_before_content',
+	const POPUPS = array(
+		'add_join_us_popup'	=> array(
 			array( 
-				'add_join_us_popup',
+				'hook_name'	=> 'genesis_before_content',
+				'locations' => 'home', // post-post
+			),
+			array( 
+				'hook_name'	=> 'wpurp_in_container',
+				'locations' => 'post-recipe',
 			)
-		),		
-		'recipe'=> array(
-			'wpurp_in_container',
-			array(
-				'add_join_us_popup',
-			)
-		)
+		),
 	);
-
-	// public function __construct() {	
-	// }
 	
 	public function create_popup_actions() {
-		// if ( is_user_logged_in() ) return;
-		foreach (self::POST_TYPES as $type => $params) {
-			if ( is_singular($type) ) {
-				$hook=$params[0];
-				$popups=$params[1];
-				foreach ($popups as $callback) {
-					add_action( $hook, array($this, $callback ) );
+		foreach (self::POPUPS as $callback => $hooks) {
+			foreach ($hooks as $hook ) {
+				$locations = explode( ' ', $hook['locations']);
+				foreach ($locations as $location) {
+					$type = substr( $location, 0, 4);
+					$value = substr( $location, 5);
+
+					$is_post = $type=='post' && is_singular($value);
+					$is_page = $type=='page' && is_page($value);
+					$is_home = $type =='home' && ( is_home() || is_front_page() );
+					if ( $is_post || $is_page || $is_home ) {
+						add_action( $hook['hook_name'], array( $this, $callback ) );
+					}
 				}
-				break;
 			}
 		}
 	}
 	
 	public function add_join_us_popup() {
-		// if ( is_user_logged_in() ) return;
+		/* This popoup is reserved to unregistered users */
+		if ( is_user_logged_in() ) return;
+
 		wp_enqueue_style('custom-site-popups');
 		$args=array(
 			'content' 	=> $this->get_join_us_form(),
@@ -60,7 +62,6 @@ class CustomSitePopups {
 	}
 
 	public function get_join_us_form( $class='' ) {
-
 		$html='<div class="form">';
 		$html.='<div class="full">';
 		$html.='<div class="textbox"><h4>' . __('Becoming a member allows you to : ','foodiepro') . '</h4></div>';

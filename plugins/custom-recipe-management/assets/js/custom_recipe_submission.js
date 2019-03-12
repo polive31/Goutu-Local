@@ -582,6 +582,11 @@ function updateInstructionIndex()
 {
     jQuery('#recipe-instructions tr.instruction').each(function(i) {
         jQuery(this)
+            .attr('id', function(index, id) {
+                return id.replace(/(\d+)/, i);
+            });
+            
+        jQuery(this)
             .find('textarea')
             .attr('name', function(index, name) {
                 return name.replace(/(\d+)/, i);
@@ -594,6 +599,27 @@ function updateInstructionIndex()
             .find('.recipe_instructions_image')
             .attr('name', function(index, name) {
                 return name.replace(/(\d+)/, i);
+            })
+            .attr('id', function(index, id) {
+                return id.replace(/(\d+)/, i);
+            });
+
+        jQuery(this)
+            .find('.instruction_thumbnail')
+            .attr('name', function(index, name) {
+                return name.replace(/(\d+)/, i);
+            });
+
+        jQuery(this)
+            .find('.post_thumbnail')
+            .attr('id', function(index, id) {
+                return id.replace(/(\d+)/, i);
+            });
+
+        jQuery(this)
+            .find('.recipe_remove_image_button')
+            .attr('id', function(index, id) {
+                return id.replace(/(\d+)/, i);
             });
 
         jQuery(this)

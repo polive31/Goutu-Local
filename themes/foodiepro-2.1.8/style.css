@@ -2563,7 +2563,7 @@ span.edit-button {
 .page header.entry-header,
 .single header.entry-header {
 	display: inline-block;
-	padding: 10px 0px;	
+	padding: 10px 0px 20px 0px;	
 }
 
 .archive-description p {

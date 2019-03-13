@@ -2563,7 +2563,7 @@ span.edit-button {
 .page header.entry-header,
 .single header.entry-header {
 	display: inline-block;
-	padding: 10px 0px 40px 0px;	
+	padding: 10px 0px;	
 }
 
 .archive-description p {
@@ -2588,7 +2588,7 @@ span.edit-button {
 .entry-header-image {
 	box-sizing:border-box;
 	margin-right:15px;
-	width:150px;
+	/* width:150px; */
 	/* width:auto; */
 	display:inline-block;
 	vertical-align: middle;

@@ -16,8 +16,8 @@ class CustomGoogleRecaptcha {
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
 		
-		add_action('wp_enqueue_scripts', array($this, 'register_recaptcha_script'));
-		add_shortcode('g-recaptcha', array($this,'display_google_recaptcha')); 
+		add_action('wp_enqueue_scripts', 	array( $this, 'register_recaptcha_script'));
+		add_shortcode('g-recaptcha', 			array( $this, 'display_google_recaptcha')); 
 	}
 
 	public function register_recaptcha_script() {
@@ -34,24 +34,24 @@ class CustomGoogleRecaptcha {
 
 	public function verify() {
 		$retries=4;
-		if(isset($_POST['g-recaptcha-response'])){
-			$captcha=$_POST['g-recaptcha-response'];
+		if(isset($_POST['g-recaptcha-response'])) {
+				$captcha=$_POST['g-recaptcha-response'];
 	    }
-        if(!$captcha){
-          return 'missing';
-        }
-        do {	
-	        $ip = $_SERVER['REMOTE_ADDR'];
-	        $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=". self::$PRIVATE_KEY ."&response=".$captcha."&remoteip=".$ip);
-	        $responseKeys = json_decode($response,true);
-	        if(intval($responseKeys["success"]) !== 1) {
-	          $result ='success';
-	        } else {
-	          $result = 'fail';
-	        }
-	        --$retries;
-        } while ($result=='fail' && $retries>0);
-        return $result;
+		if(!$captcha){
+			return 'missing';
+		}
+		do {	
+			$ip = $_SERVER['REMOTE_ADDR'];
+			$response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=". self::$PRIVATE_KEY ."&response=".$captcha."&remoteip=".$ip);
+			$responseKeys = json_decode($response,true);
+			if(intval($responseKeys["success"]) !== 1) {
+				$result ='success';
+			} else {
+				$result = 'fail';
+			}
+			--$retries;
+		} while ($result=='fail' && $retries>0);
+		return $result;
 	}
 
 

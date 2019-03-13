@@ -95,12 +95,8 @@ class CustomContactFormShortcode extends CustomContactForm {
 
 			// Check Captcha
 			if ($gCaptcha) {
-				// echo 'Captcha verify : ' . $gCaptcha->verify();
-				// echo 'Captcha verify : ' . $gCaptcha->verify();
-				// echo 'Captcha verify : ' . $gCaptcha->verify();
 				$captchaError = ($gCaptcha->verify() != 'success');
-				// echo  'Captcha error : ' . $captchaError;
-				}
+			}
 			else {
 				$captchaError = !( CustomContactForm::pdscaptcha($_POST) );
 			}

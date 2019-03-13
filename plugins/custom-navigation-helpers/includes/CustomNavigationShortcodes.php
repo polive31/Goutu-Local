@@ -214,30 +214,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
   //       return $html;
   //   }
 
-	
-	/* =================================================================*/
-	/* = HOME/LOGIN PAGE LINK SHORTCODE    
-	/* =================================================================*/
 
-	public function display_wordpress_page_link( $atts ) {
-		$atts = shortcode_atts( array(
-			'target' => 'home', // home, login
-			'markup' => 'full', // url, full
-			'text' => '',
-			), $atts );
-
-		if ($atts['target'] == 'home')
-			$url = get_home_url();
-		elseif ($atts['target'] == 'login') 
-			$url = wp_login_url();
-
-		if ($atts['markup'] == 'full') {
-			$html .= '<a href="' .  $url . '">' . $atts['text'] . '</a>';
-			return $html;
-		}
-		else 
-			return $url;
-	}
 
 	/* =================================================================*/
 	/* = TAXONOMIES LIST SHORTCODE     
@@ -474,16 +451,17 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 
 	public function get_permalink($atts, $content='') {
 		$atts = shortcode_atts(array(
-			'id' => '',
+			'id' 	=> '',
 			'class' => '',
-			'slug' => false,
-			'tax' => false,
-			'user' => false, // current, view, any user ID
+			'slug' 	=> false,
+			'tax' 	=> false,
+			'wp' 	=> false, // home, login
+			'user' 	=> false, // current, view, any user ID
 			'user_page' => false, // current, view, any user ID
 			'user_tab' => false, // current, view, any user ID
-			'text' => false,  // html link is output if not empty
-			'data' => false, // "attr1 val1 attr2 val2  ..." separate with spaces 
-			'ga' => false, // ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue] ); separate by spaces
+			'text' 	=> false,  // html link is output if not empty
+			'data' 	=> false, // "attr1 val1 attr2 val2  ..." separate with spaces 
+			'ga' 	=> false, // ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue] ); separate by spaces
 
 	    ), $atts);
 
@@ -508,6 +486,12 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 				$url = PeepsoHelpers::get_url( $user, $user_page, $user_tab );
 			}
 		}
+		elseif ($wp) {
+			if ( $wp=='home' ) 
+				$url = get_home_url();
+			elseif ( $wp=='login' ) 
+				$url = wp_login_url();
+		}
 		else {
 			// Current URL is supplied by default
 			$url=$_SERVER['REQUEST_URI'];			
@@ -519,6 +503,11 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 			return $url;
 	}
 
+
+	/* =================================================================*/
+	/* = PERMALINK HELPERS
+	/* =================================================================*/
+	
 	public function get_ga( $ga ) {
 		if ( !$ga || !is_array($ga) ) return;
 		$html = "ga('send', 'event' ";

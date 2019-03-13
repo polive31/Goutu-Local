@@ -115,6 +115,3 @@ plugins/buddypress/bp-core/*
 !plugins/custom-tooltip/
 !plugins/wpcustom-category-image/
 #!plugins/wp-ultimate-recipe-premium/
-*.json
-*.json
-*.json

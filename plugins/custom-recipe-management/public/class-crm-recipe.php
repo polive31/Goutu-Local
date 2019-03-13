@@ -92,19 +92,19 @@ class CRM_Recipe extends WPURP_Recipe {
     public function get_days( $type ) {
         $meta = "recipe_{$type}_time";
         $minutes = $this->meta( $meta );
-        return floor($minutes/24/60);
+        return floor((int)$minutes/24/60);
     }
 
     public function get_hours( $type ) {
         $meta = "recipe_{$type}_time";
         $minutes = $this->meta( $meta );
-        return floor($minutes%1440/60);
+        return floor((int)$minutes%1440/60);
     }    
 
     public function get_minutes( $type ) {
         $meta = "recipe_{$type}_time";
         $minutes = $this->meta( $meta );
-        return $minutes%60;
+        return (int)$minutes%60;
     }
 
     public function get_time( $days, $hours, $minutes ) {

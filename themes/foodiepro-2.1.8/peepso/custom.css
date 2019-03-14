@@ -358,7 +358,7 @@ h1.blog-title {
     line-height:initial;
     background: linear-gradient(#23232361, #ffffff00);
     text-align: center;
-    z-index:1;
+    /* z-index:1; */
     text-shadow: 0 0 3px rgba( 0, 0, 0, 0.8 );  
 }
 

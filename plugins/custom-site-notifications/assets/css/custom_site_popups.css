@@ -1,7 +1,7 @@
 #join_us, 
 #join_us .wrap {
     max-width: 858px;
-    height: 507px;
+    /* height: 507px; */
     font-family:Oswald, sans-serif;
 }
 
@@ -113,7 +113,7 @@
 }
 
 #join_us li.blogs:before {
-    background-image:url('../img/blogs.png');
+    background-image:url('../img/private_recipes.png');
     width: 70px;
     margin: 0 25px;
 }
@@ -159,7 +159,7 @@
 ---------------------------------------------------*/
 
 @media only screen and (max-width:570px) {
-
+    
     .tooltip-content.modal#join_us {
         position: absolute;
         top:auto;
@@ -179,21 +179,25 @@
     
     #join_us li.icon:after,
     #join_us li.icon:before {
-        width: 70px;
+        width: 55px;
         max-height: 30px;
     }
     
     #join_us li.profile:before {
         width: 36px;
     }
-
-     #join_us li.pan:after {
-        width: 80px;
+    
+    #join_us li.pan:after {
+        width: 50px;
     }
     
     #join_us .column {
         padding-top:0px;
         width:100%;
+    }
+
+    #join_us .column#group2 {
+        text-align: initial;
     }
     
     #join_us .textbox {

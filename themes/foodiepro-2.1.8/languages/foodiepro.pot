@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-03-11 22:58+0100\n"
+"POT-Creation-Date: 2019-03-14 01:52+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -792,51 +792,51 @@ msgstr ""
 msgid "You must accept the privacy notice for this form to be submitted."
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:108
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:104
 #: plugins/custom-contact-form/templates/contact-form.php:91
 msgid "Please complete the captcha verification."
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:133
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:129
 #: plugins/custom-contact-form/templates/contact-form.php:116
 #, php-format
 msgid "%s : Contact request from %s"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:157
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:153
 #: plugins/custom-contact-form/templates/contact-form.php:139
 msgid "Home page"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:160
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:156
 #: plugins/custom-contact-form/templates/contact-form.php:142
 #, php-format
 msgid "Thanks %s,"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:162
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:158
 #: plugins/custom-contact-form/templates/contact-form.php:144
 msgid "Your message was sent, we will answer you shortly."
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:165
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:161
 #: plugins/custom-contact-form/templates/contact-form.php:147
 #, php-format
 msgid "Back to %s"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:172
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:168
 #: plugins/custom-contact-form/templates/contact-form.php:155
 msgid "Please provide the required information."
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:185
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:181
 #: plugins/custom-contact-form/templates/contact-form.php:162
 msgid ""
 "Fields marked with an asterisk (<span class=\"error\">*</span>) are mandatory."
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:188
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:184
 #: plugins/custom-contact-form/templates/contact-form.php:165
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:114
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_form.php:13
@@ -862,31 +862,31 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:204
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:200
 #: plugins/custom-contact-form/templates/contact-form.php:181
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:33
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:59
 msgid "Subject"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:213
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:209
 #: plugins/custom-contact-form/templates/contact-form.php:190
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:36
 msgid "Message"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:235
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:231
 #: plugins/custom-contact-form/templates/contact-form.php:212
 msgid "Send a copy of this email to yourself"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:238
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:234
 #: plugins/custom-contact-form/templates/contact-form.php:215
 msgid ""
 "I accept that the data entered on this form is stored on the present website."
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:244
+#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:240
 #: plugins/custom-contact-form/templates/contact-form.php:221
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:51
 msgid "Send Message"
@@ -1034,13 +1034,13 @@ msgctxt "recipe-consonant"
 msgid "All posts from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:258
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:262
 msgid ""
 "You will find here all the recipes, which you can further sort by date or "
 "evaluation."
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:261
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:265
 msgid "You will find here all the posts, which you can further sort by date."
 msgstr ""
 
@@ -1052,11 +1052,11 @@ msgstr ""
 msgid "Share this post"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:380
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:357
 msgid "Choose..."
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:400
+#: plugins/custom-navigation-helpers/includes/CustomNavigationShortcodes.php:377
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:55
 msgid "authors"
 msgstr ""
@@ -1583,50 +1583,62 @@ msgid "OSX"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:13
+#: plugins/custom-recipe-management/public/class-crm-ingredient.php:50
 msgid "January"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:14
+#: plugins/custom-recipe-management/public/class-crm-ingredient.php:51
 msgid "February"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:15
+#: plugins/custom-recipe-management/public/class-crm-ingredient.php:52
 msgid "March"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:16
+#: plugins/custom-recipe-management/public/class-crm-ingredient.php:53
 msgid "April"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:17
+#: plugins/custom-recipe-management/public/class-crm-ingredient.php:54
 msgid "May"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:18
+#: plugins/custom-recipe-management/public/class-crm-ingredient.php:55
 msgid "June"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:19
+#: plugins/custom-recipe-management/public/class-crm-ingredient.php:56
 msgid "July"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:20
+#: plugins/custom-recipe-management/public/class-crm-ingredient.php:57
 msgid "August"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:21
+#: plugins/custom-recipe-management/public/class-crm-ingredient.php:58
 msgid "September"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:22
+#: plugins/custom-recipe-management/public/class-crm-ingredient.php:59
 msgid "October"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:23
+#: plugins/custom-recipe-management/public/class-crm-ingredient.php:60
 msgid "November"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:24
+#: plugins/custom-recipe-management/public/class-crm-ingredient.php:61
 msgid "December"
 msgstr ""
 
@@ -1867,12 +1879,12 @@ msgstr ""
 msgid "Stop reading and close player"
 msgstr ""
 
-#: plugins/custom-recipe-management/public/class-crm-ingredient.php:110
+#: plugins/custom-recipe-management/public/class-crm-ingredient.php:154
 msgctxt "vowel"
 msgid "of "
 msgstr ""
 
-#: plugins/custom-recipe-management/public/class-crm-ingredient.php:112
+#: plugins/custom-recipe-management/public/class-crm-ingredient.php:156
 msgctxt "consonant"
 msgid "of "
 msgstr ""
@@ -2484,35 +2496,35 @@ msgid ""
 "with password you choose during registration process."
 msgstr ""
 
-#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:66
+#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:67
 msgid "Becoming a member allows you to : "
 msgstr ""
 
-#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:70
+#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:71
 msgid "Store your favorite recipes in your cookbook,"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:71
+#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:72
 msgid "Publish your own recipes and posts,"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:72
+#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:73
 msgid "Create your personal profile and exchange with other members,"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:77
+#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:78
 msgid "Comment and rate recipes"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:78
+#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:79
 msgid "Subscribe to other members and access their private recipes,"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:79
+#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:80
 msgid "And many more other benefits..."
 msgstr ""
 
-#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:83
+#: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:84
 msgid "Register"
 msgstr ""
 
@@ -2574,64 +2586,72 @@ msgstr ""
 msgid "Please enter a text before submitting your comment."
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:52
-msgid "Dish"
+#: plugins/custom-star-rating/includes/class-csr-assets.php:37
+msgid "Please provide your name before submitting your comment."
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:53
-msgid "Appreciation of the dish"
+#: plugins/custom-star-rating/includes/class-csr-assets.php:38
+msgid "Please provide a valid email adress before submitting your comment."
 msgstr ""
 
 #: plugins/custom-star-rating/includes/class-csr-assets.php:54
-msgid "How did you like this dish ?"
+msgid "Dish"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/class-csr-assets.php:55
+msgid "Appreciation of the dish"
 msgstr ""
 
 #: plugins/custom-star-rating/includes/class-csr-assets.php:56
-#: plugins/custom-star-rating/includes/class-csr-assets.php:67
-msgid "Disappointing"
-msgstr ""
-
-#: plugins/custom-star-rating/includes/class-csr-assets.php:57
-#: plugins/custom-star-rating/includes/class-csr-assets.php:68
-msgid "Average"
+msgid "How did you like this dish ?"
 msgstr ""
 
 #: plugins/custom-star-rating/includes/class-csr-assets.php:58
 #: plugins/custom-star-rating/includes/class-csr-assets.php:69
-msgid "Good"
+msgid "Disappointing"
 msgstr ""
 
 #: plugins/custom-star-rating/includes/class-csr-assets.php:59
 #: plugins/custom-star-rating/includes/class-csr-assets.php:70
-msgid "Very good"
+msgid "Average"
 msgstr ""
 
 #: plugins/custom-star-rating/includes/class-csr-assets.php:60
 #: plugins/custom-star-rating/includes/class-csr-assets.php:71
+msgid "Good"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/class-csr-assets.php:61
+#: plugins/custom-star-rating/includes/class-csr-assets.php:72
+msgid "Very good"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/class-csr-assets.php:62
+#: plugins/custom-star-rating/includes/class-csr-assets.php:73
 msgid "Delicious"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:64
+#: plugins/custom-star-rating/includes/class-csr-assets.php:66
 msgid "Overall"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:65
+#: plugins/custom-star-rating/includes/class-csr-assets.php:67
 msgid "Global appreciation of the dish"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:97
+#: plugins/custom-star-rating/includes/class-csr-assets.php:99
 msgid "Evaluations"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:98
+#: plugins/custom-star-rating/includes/class-csr-assets.php:100
 msgid "Evaluation"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:104
+#: plugins/custom-star-rating/includes/class-csr-assets.php:106
 msgid "rating"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:142
+#: plugins/custom-star-rating/includes/class-csr-assets.php:144
 msgid "Not rated"
 msgstr ""
 
@@ -2688,14 +2708,19 @@ msgstr ""
 msgid "Reply Title"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-shortcodes.php:178
+#: plugins/custom-star-rating/public/class-csr-shortcodes.php:92
+#: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/templates/public_recipe_form.php:137
+msgid "Submit"
+msgstr ""
+
+#: plugins/custom-star-rating/public/class-csr-shortcodes.php:197
 #, php-format
 msgid "%s review"
 msgid_plural "%s reviews"
 msgstr[0] ""
 msgstr[1] ""
 
-#: plugins/custom-star-rating/public/class-csr-shortcodes.php:246
+#: plugins/custom-star-rating/public/class-csr-shortcodes.php:265
 msgid "Add a comment"
 msgstr ""
 
@@ -6881,10 +6906,6 @@ msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/templates/public_recipe_form.php:34
 msgid "Remove Featured Image"
-msgstr ""
-
-#: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/templates/public_recipe_form.php:137
-msgid "Submit"
 msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:65

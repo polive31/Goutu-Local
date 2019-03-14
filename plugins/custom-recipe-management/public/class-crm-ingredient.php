@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class CRM_Ingredient {
 
-    public static $UNITS = array(); 
+    private static $MONTHS = array();
 
     const UNITS_LIST = array(
         array('g'     		, 'g'),
@@ -45,8 +45,26 @@ class CRM_Ingredient {
     );      	
 
 
+    public function __construct() {	
+        self::$MONTHS = array(
+            __('January','foodiepro'),
+            __('February','foodiepro'),
+            __('March','foodiepro'),
+            __('April','foodiepro'),
+            __('May','foodiepro'),
+            __('June','foodiepro'),
+            __('July','foodiepro'),
+            __('August','foodiepro'),
+            __('September','foodiepro'),
+            __('October','foodiepro'),
+            __('November','foodiepro'),
+            __('December','foodiepro')
+        );		
+            }
 
-	/* INGREDIENT */
+	/* =================================================================*/
+	/* = SHORTCODES
+	/* =================================================================*/
 	
     public function display_ingredient_shortcode( $options ) {
         $options = shortcode_atts( array(
@@ -61,6 +79,32 @@ class CRM_Ingredient {
         return self::display( $options );
     }
 
+    public function display_ingredient_months_shortcode( $atts ) {
+        $atts = shortcode_atts( array(
+            'slug' => 0,
+            'currentmonth' => false, // displays an arrow showing the current month 
+        ), $atts );
+
+        $ingredient = $atts['slug'];
+        
+        $ingredient_meta = get_option( "taxonomy_$ingredient" ); 
+        $i=1;
+        foreach ( self::$MONTHS as $month ) {
+            $checked = isset( $ingredient_meta['month'][$i] );
+
+            // Display the table cells
+
+            $i++;
+        }
+
+        $html = '';
+
+        return $html;
+    }    
+
+	/* =================================================================*/
+	/* = HELPERS
+	/* =================================================================*/    
 
     public static function get_units( $plural ) {
         $column=$plural?1:0;

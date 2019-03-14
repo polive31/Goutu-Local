@@ -11,7 +11,7 @@ class CustomScriptsStylesEnqueue {
 	const DEFER_JS = array(
 			'skip-links',
 			'foodie-pro-general',
-			// 'one-signal'
+			'grecaptcha-invisible'
 		);
 
 	// Stylesheets to be loaded asynchronously
@@ -31,17 +31,17 @@ class CustomScriptsStylesEnqueue {
 	IMPORTANT there must also be an entry for them in $css_if, otherwise they will not be considered
 	*/
 	private $css_replace = array(
-				'name-directory-style' 	=> array(
-					'file' 		=> '/assets/css/name_directory.css',  
-				),
-				/* Force stylesheet update by using CHILD_THEME_VERSION */
-				'peepso-custom' 	=> array(
-					'file' 		=> '/peepso/custom.css', 
-				),			
-				'peepso-jquery-ui' 		=> array(
-					'file'		=> '/assets/css/datepicker.css', 
+			'name-directory-style' 	=> array(
+				'file' 		=> '/assets/css/name_directory.css',  
 			),
-		);
+			/* Force stylesheet update by using CHILD_THEME_VERSION */
+			'peepso-custom' 	=> array(
+				'file' 		=> '/peepso/custom.css', 
+			),			
+			'peepso-jquery-ui' 		=> array(
+				'file'		=> '/assets/css/datepicker.css', 
+		),
+	);
 
 	// Stylesheets to be loaded conditionnally
 	private $css_if = array(

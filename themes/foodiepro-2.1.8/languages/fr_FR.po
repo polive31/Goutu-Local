@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-03-14 01:52+0100\n"
-"PO-Revision-Date: 2019-03-14 01:53+0100\n"
+"POT-Creation-Date: 2019-03-15 00:46+0100\n"
+"PO-Revision-Date: 2019-03-15 00:47+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -50,21 +50,21 @@ msgstr ""
 msgid "Photo Albums"
 msgstr ""
 
-#: peepso/overrides/templates/profile/focus.php:44
+#: peepso/overrides/templates/profile/focus.php:55
 msgid "Cover Image Utilities"
 msgstr "Modifier ma photo de couverture"
 
-#: peepso/overrides/templates/profile/focus.php:52
+#: peepso/overrides/templates/profile/focus.php:63
 #, fuzzy
 #| msgid "Duration"
 msgid "Reposition"
 msgstr "Durée"
 
-#: peepso/overrides/templates/profile/focus.php:56
+#: peepso/overrides/templates/profile/focus.php:67
 msgid "Modify"
 msgstr ""
 
-#: peepso/overrides/templates/profile/focus.php:64
+#: peepso/overrides/templates/profile/focus.php:75
 #: peepso/overrides/templates/profile/profile-about.php:150
 #: plugins/custom-recipe-management/public/custom-recipe-favorite/class-crm-favorite.php:137
 #: plugins/custom-star-rating/public/class-csr-shortcodes.php:67
@@ -76,7 +76,7 @@ msgstr ""
 msgid "Cancel"
 msgstr "Annuler"
 
-#: peepso/overrides/templates/profile/focus.php:65
+#: peepso/overrides/templates/profile/focus.php:76
 #: peepso/overrides/templates/profile/profile-about.php:156
 #: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/templates/shopping-list.php:22
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:159
@@ -87,10 +87,15 @@ msgstr "Annuler"
 msgid "Save"
 msgstr "Ajoutez un terme"
 
-#: peepso/overrides/templates/profile/focus.php:84
+#: peepso/overrides/templates/profile/focus.php:95
 #: themes/foodiepro-2.1.8/buddypress/members/single/cover-image-header.php:61
 msgid "Update cover picture"
 msgstr "Changer mon image d'en-tête"
+
+#: peepso/overrides/templates/profile/focus.php:121
+#, php-format
+msgid "%s's Blog"
+msgstr "Le Blog de %s"
 
 #: peepso/overrides/templates/profile/profile-about-account.php:32
 #, fuzzy
@@ -1259,7 +1264,7 @@ msgstr "Quoi de neuf aujourd'hui, %s ?"
 msgid "Post a message on %s's news feed..."
 msgstr "Publie un message sur le fil d'actualités de %s..."
 
-#: plugins/custom-peepso-helpers/includes/PeepsoHelpers.php:109
+#: plugins/custom-peepso-helpers/includes/PeepsoHelpers.php:113
 #, fuzzy, php-format
 #| msgid "Update profile picture"
 msgid "Picture of %s"
@@ -2900,12 +2905,13 @@ msgstr ""
 msgid "Reply Title"
 msgstr ""
 
+#: plugins/custom-star-rating/public/class-csr-shortcodes.php:89
 #: plugins/custom-star-rating/public/class-csr-shortcodes.php:92
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/templates/public_recipe_form.php:137
 msgid "Submit"
 msgstr "Publier"
 
-#: plugins/custom-star-rating/public/class-csr-shortcodes.php:197
+#: plugins/custom-star-rating/public/class-csr-shortcodes.php:195
 #, fuzzy, php-format
 #| msgid "review"
 msgid "%s review"
@@ -2913,7 +2919,7 @@ msgid_plural "%s reviews"
 msgstr[0] "avis"
 msgstr[1] "avis"
 
-#: plugins/custom-star-rating/public/class-csr-shortcodes.php:265
+#: plugins/custom-star-rating/public/class-csr-shortcodes.php:263
 #, fuzzy
 #| msgid "Add a picture"
 msgid "Add a comment"

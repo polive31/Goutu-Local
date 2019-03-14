@@ -40,6 +40,17 @@
 
 		<?php wp_nonce_field('profile-photo', '_photononce'); ?>
 
+		<!-- Blog Title -->
+		<?php
+		$field_args = array('post_status'=>'publish');
+		$PeepSoUser->profile_fields->load_fields( $field_args );
+		$fields = $PeepSoUser->profile_fields->get_fields();
+		
+		$blog_title = PeepsoHelpers::get_profile_field( $fields, 'blog_title');
+		if ($blog_title) {?>
+			<h1 class="blog-title"><?= $blog_title; ?></h1>
+		<?php } ?>		
+
 		<!-- Cover options dropdown -->
 		<div title="<?php _e('Cover Image Utilities', 'foodiepro'); ?>" class="ps-focus-options ps-dropdown ps-dropdown-focus ps-js-dropdown">
 			<a href="#" class="ps-dropdown__toggle ps-js-dropdown-toggle">
@@ -89,20 +100,27 @@
 				<!-- Online status -->
 				<?php if($PeepSoUser->get_online_status()) { ?><?php PeepSoTemplate::exec_template('profile', 'online', array('PeepSoUser'=>$PeepSoUser, 'class'=>'ps-user__status--focus')); ?><?php } ?>
 			</div>
+
+				
+			<!-- User Name  -->
 			<div class="ps-focus-title">
 				<?php
 					if(!$is_profile_segment || 1 == PeepSo::get_option('always_full_cover', 0)) {
 						echo '<div class="ps-focus__before-title">', do_action('peepso_profile_cover_full_before_name', $PeepSoUser->get_id()), '</div>';
 					}
 				?>
-				<!-- <span data-hover-card="<?php echo $PeepSoUser->get_id() ?>"> -->
+				<!-- <span data-hover-card="<?php //echo $PeepSoUser->get_id() ?>"> -->
 				<!-- Online status -->
 				<?php if($PeepSoUser->get_online_status()) { ?><?php PeepSoTemplate::exec_template('profile', 'online', array('PeepSoUser'=>$PeepSoUser)); ?><?php } ?>
 					<?php
+							
 					//[peepso]_[action]_[WHICH_PLUGIN]_[WHERE]_[WHAT]_[BEFORE/AFTER]
 						do_action('peepso_action_render_user_name_before', $PeepSoUser->get_id());
 
-						echo ucfirst( $PeepSoUser->get_username() );
+						if ($blog_title)
+							echo sprintf( __("%s's Blog",'foodiepro'), $PeepSoUser->get_username() );
+						else	
+							echo ucfirst( $PeepSoUser->get_username() );
 
 						//[peepso]_[action]_[WHICH_PLUGIN]_[WHERE]_[WHAT]_[BEFORE/AFTER]
 						do_action('peepso_action_render_user_name_after', $PeepSoUser->get_id());

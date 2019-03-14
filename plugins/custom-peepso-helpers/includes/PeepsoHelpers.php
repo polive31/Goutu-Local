@@ -17,6 +17,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class PeepsoHelpers extends PeepsoCustomizations {
 
+	const PROFILE_FIELDS = array(
+		'blog_title'	=> 'Titre de votre Blog',
+	);
+
 
 	static function get_nav_tab() {
 		$current='stream';
@@ -117,6 +121,17 @@ class PeepsoHelpers extends PeepsoCustomizations {
 		}
 
 		return $html;
+	}
+
+	static function get_profile_field( $fields, $handle ) {
+		$value = false;
+		foreach ($fields as $key=>$field) {
+			if ($field->title==self::PROFILE_FIELDS[$handle] && !empty($field->value)) {
+				$value = $field->render(false);
+				break;
+			}
+		}
+		return $value;
 	}
 
 

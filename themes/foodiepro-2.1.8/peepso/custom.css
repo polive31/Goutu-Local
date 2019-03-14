@@ -345,6 +345,23 @@ nav.ps-stream-status-action.ps-stream-status-action span {
     font-family: Oswald, sans-serif;
 }
 
+h1.blog-title {
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 100%;
+    margin:0;
+    padding: 10px 0 40px 0;
+    color: #FFF;
+    font-size:70px;
+    font-weight:normal;
+    line-height:initial;
+    background: linear-gradient(#23232361, #ffffff00);
+    text-align: center;
+    z-index:1;
+    text-shadow: 0 0 3px rgba( 0, 0, 0, 0.8 );  
+}
+
 .ps-focus-title {
     font-family: Vollkorn, serif;
     font-size: 3.5rem;

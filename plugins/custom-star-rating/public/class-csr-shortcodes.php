@@ -81,20 +81,18 @@ class CSR_Shortcodes {
 	}
 
 	public function add_comment_recaptcha( $submit_button, $args ) {
-		if ( is_user_logged_in() || !class_exists( CustomGoogleRecaptcha ) ) return $submit_button;
 
-		$class='g-recaptcha';
-		$key = CustomGoogleRecaptcha::v3key();
-		$comment_form_id='respond';
+		if ( !is_user_logged_in() && class_exists( 'CustomGoogleRecaptcha' ) ) {
+			$class='g-recaptcha';
+			$key = CustomGoogleRecaptcha::v3key();
+			$callback = 'csrOnSubmit';
+			$submit_button = '<button class="' . $class . '" data-sitekey="' . $key . '" data-callback="' . $callback . '">' . __('Submit','foodiepro') . '</button>';
+		}	
+		else {
+			$submit_button = '<input name="submit" type="submit" id="submit" class="submit" value="' . __('Submit','foodiepro') . '">';
+		}
 
-		ob_start();
-		?>
-		<button class="<?= $class ?>" data-sitekey="<?= $key ?>" data-callback="csrOnSubmit"><?= __('Submit','foodiepro'); ?></button>
-		<?php
-		$html = ob_get_contents();
-		ob_end_clean();
-
-		return $html;
+		return $submit_button;
 	}
 
 	

@@ -81,7 +81,7 @@ class CSR_Shortcodes {
 	}
 
 	public function add_comment_recaptcha( $submit_button, $args ) {
-		if ( is_user_logged_in() ) return;
+		if ( is_user_logged_in() || !class_exists( CustomGoogleRecaptcha ) ) return $submit_button;
 
 		$class='g-recaptcha';
 		$key = CustomGoogleRecaptcha::v3key();

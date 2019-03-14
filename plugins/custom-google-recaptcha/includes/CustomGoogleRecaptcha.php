@@ -7,10 +7,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class CustomGoogleRecaptcha {
 
-	public static $PLUGIN_PATH;
-	public static $PLUGIN_URI;
-	public static $PUBLIC_KEY='6LeIb84SAAAAALIrAdEQoV5GUsuc5WzMfP4Z5ctc';
-	public static $PRIVATE_KEY='6LeIb84SAAAAACusroz8joX8TCl1NUXL2xWDlzM8';
+	private static $PLUGIN_PATH;
+	private static $PLUGIN_URI;
+	private static $PUBLIC_KEY='6LeIb84SAAAAALIrAdEQoV5GUsuc5WzMfP4Z5ctc';
+	private static $PRIVATE_KEY='6LeIb84SAAAAACusroz8joX8TCl1NUXL2xWDlzM8';
+
+	private static $PUBLIC_KEY_V3='6LfwhZcUAAAAAJdkyxyIFAbH6nVrcBK2wWZL_6yw';
+	private static $PRIVATE_KEY_V3='6LfwhZcUAAAAADKVon8qpKgrVgfX-tukxpljO81O';
 
 	public function __construct() {	
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
@@ -63,7 +66,15 @@ class CustomGoogleRecaptcha {
     	?>
         <div class="g-recaptcha <?php echo $classes; ?>" data-sitekey="<?php echo self::$PUBLIC_KEY; ?>"></div>
         <?php
-    }	
+	}	
+	
+	/* =================================================================*/
+	/* = GETTERS
+	/* =================================================================*/	
+
+	public static function v3key($private=false) {
+		return $private?self::$PRIVATE_KEY_V3:self::$PUBLIC_KEY_V3;
+	}
 
 
 }

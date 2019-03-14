@@ -67,15 +67,34 @@ class CSR_Shortcodes {
 			'cancel_reply_link' => __( 'Cancel', 'custom-star-rating' ), //Default: __( �Cancel reply� )
 			'rating_cats' => 'all',  //Default: "id1 id2..."
 		);
-			
+
 		wp_enqueue_style('custom-star-rating');
 		wp_enqueue_script('custom-star-rating');
+		wp_enqueue_script('grecaptcha-invisible', 'https://www.google.com/recaptcha/api.js');
+
 		ob_start();
 		//display_rating_form();
 		comment_form($args);
 		$cr_form = ob_get_contents();
 		ob_end_clean();
 		return $cr_form;
+	}
+
+	public function add_comment_recaptcha( $submit_button, $args ) {
+		if ( is_user_logged_in() ) return;
+
+		$class='g-recaptcha';
+		$key = CustomGoogleRecaptcha::v3key();
+		$comment_form_id='respond';
+
+		ob_start();
+		?>
+		<button class="<?= $class ?>" data-sitekey="<?= $key ?>" data-callback="csrOnSubmit"><?= __('Submit','foodiepro'); ?></button>
+		<?php
+		$html = ob_get_contents();
+		ob_end_clean();
+
+		return $html;
 	}
 
 	

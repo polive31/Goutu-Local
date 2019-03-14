@@ -34,6 +34,8 @@ class CSR_Assets {
 			'data' 		=> array(
 				'name'			=> 'csr',
 				'emptyComment' 	=> __('Please enter a text before submitting your comment.', 'foodiepro'),
+				'emptyAuthor' 	=> __('Please provide your name before submitting your comment.', 'foodiepro'),
+				'invalidEmail' 	=> __('Please provide a valid email adress before submitting your comment.', 'foodiepro'),
 			)
 		);
 		custom_register_script( $args );

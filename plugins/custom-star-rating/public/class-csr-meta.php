@@ -53,7 +53,6 @@ class CSR_Meta {
 	}
 
 
-
 	/* Update comment callback
 	-------------------------------------------------------------*/ 
 	public function comment_status_change_callback( $new_status, $old_status, $comment ) {

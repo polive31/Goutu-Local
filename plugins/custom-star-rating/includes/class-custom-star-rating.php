@@ -55,9 +55,10 @@ class Custom_Star_Rating {
 		/* Hooks for CSR_Shortcodes class
 		-----------------------------------------------------------------*/		
         $Shortcode = new CSR_Shortcodes();
-		add_shortcode( 'comment-rating-form',                   array( $Shortcode, 'display_comment_form_with_rating_shortcode') );
-        add_shortcode( 'json-ld-rating', 			            array( $Shortcode, 'display_json_ld_rating_shortcode') );
-		add_shortcode( 'display-star-rating',                   array( $Shortcode, 'display_star_rating_shortcode') );
+		add_shortcode( 	'comment-rating-form',                 	array( $Shortcode, 'display_comment_form_with_rating_shortcode') );
+        add_shortcode( 	'json-ld-rating', 			            array( $Shortcode, 'display_json_ld_rating_shortcode') );
+		add_shortcode( 	'display-star-rating',                  array( $Shortcode, 'display_star_rating_shortcode') );
+		add_filter( 	'comment_form_submit_button',			array( $Shortcode, 'add_comment_recaptcha'), 15, 2 );
 
 
 

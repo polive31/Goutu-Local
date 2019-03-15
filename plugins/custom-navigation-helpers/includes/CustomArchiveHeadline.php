@@ -250,7 +250,7 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 		}	
 
 		if ( is_tax('ingredient') ) {
-			$intro .= '<br>' . '[ingredient-months]';
+			// $intro .= '<br>' . '[ingredient-months]';
 		}
 			  
 		return do_shortcode($description . $intro);

@@ -46,14 +46,15 @@ class Custom_Recipe_Management {
         $Favorite_Shortcodes = new CRM_Favorite_Shortcodes();
         add_shortcode( 'crm-favorites-list',                    array( $Favorite_Shortcodes, 'favorite_recipes_shortcode' ) );
         
-
-
+        
+        
+        
         /* Hooks for CRM_Submission
         ------------------------------------------------------------- */
         // Create specific hooks for recipe submission
         $Recipe_Submission_Hooks = new CPM_Submission( 'recipe' );
         $Recipe_Submission = new CRM_Submission();
-
+        
         // Specific recipe section in Custom Submission Form
         // Specific recipe submission actions
 		add_filter( 'cpm_recipe_section', 				    array( $Recipe_Submission, 'add_recipe_specific_section'), 15, 3 );	
@@ -66,23 +67,31 @@ class Custom_Recipe_Management {
         // Ajax callbacks for ingredient preview 
         add_action( 'wp_ajax_ingredient_preview',           array( $Recipe_Submission, 'ajax_ingredient_preview'    ));
         add_action( 'wp_ajax_nopriv_ingredient_preview',    array( $Recipe_Submission, 'ajax_ingredient_preview'    ));  
-
+        
         // Ajax Callbacks for Autocomplete jquery plugin 
         add_action('wp_ajax_nopriv_get_tax_terms',          array( $Recipe_Submission, 'ajax_custom_get_tax_terms'  ));
         add_action('wp_ajax_get_tax_terms',                 array( $Recipe_Submission, 'ajax_custom_get_tax_terms'  ));    
-
-
+        
+        
         
         /* Hooks for Custom_Ingredient_Meta
         ------------------------------------------------------------- */
         $Ingredient_Meta = new Custom_Ingredient_Meta();
 		add_action( 'admin_init',                   array( $Ingredient_Meta, 'hydrate'                          ));
+		add_action( 'init',                         array( $Ingredient_Meta, 'hydrate'                          ));
 		add_action( 'ingredient_add_form_fields',   array( $Ingredient_Meta, 'callback_admin_add_months_field'  ), 10, 2 );
 		add_action( 'ingredient_edit_form_fields',  array( $Ingredient_Meta, 'callback_ingredient_edit_fields'  ), 10, 2 );
 		add_action( 'edited_ingredient',            array( $Ingredient_Meta, 'callback_admin_save_meta'         ), 10, 2 );  
         add_action( 'create_ingredient',            array( $Ingredient_Meta, 'callback_admin_save_meta'         ), 10, 2 );
         
+        /* Hooks for CRM_Ingredient
+        ------------------------------------------------------------- */
+        $Ingredient = new CRM_Ingredient();
 
+        add_shortcode( 'ingredient',                array( $Ingredient, 'display_ingredient_shortcode'         ), 10, 2 );
+        add_shortcode( 'ingredient-months',         array( $Ingredient, 'display_ingredient_months_shortcode'  ), 10, 2 );
+        
+        
         /* Hooks for CRM Widgets
         ------------------------------------------------------------- */
         add_action( 'widgets_init', 'crm_lists_dropdown_widget_init' );

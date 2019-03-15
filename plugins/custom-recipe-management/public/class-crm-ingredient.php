@@ -45,22 +45,8 @@ class CRM_Ingredient {
     );      	
 
 
-    public function __construct() {	
-        self::$MONTHS = array(
-            __('January','foodiepro'),
-            __('February','foodiepro'),
-            __('March','foodiepro'),
-            __('April','foodiepro'),
-            __('May','foodiepro'),
-            __('June','foodiepro'),
-            __('July','foodiepro'),
-            __('August','foodiepro'),
-            __('September','foodiepro'),
-            __('October','foodiepro'),
-            __('November','foodiepro'),
-            __('December','foodiepro')
-        );		
-            }
+    // public function __construct() {		
+    //         }
 
 	/* =================================================================*/
 	/* = SHORTCODES
@@ -81,15 +67,25 @@ class CRM_Ingredient {
 
     public function display_ingredient_months_shortcode( $atts ) {
         $atts = shortcode_atts( array(
-            'slug' => 0,
+            'slug' => false,
             'currentmonth' => false, // displays an arrow showing the current month 
         ), $atts );
 
-        $ingredient = $atts['slug'];
+        if ($atts['slug']) {
+            $ingredient = $atts['slug'];
+        }
+        elseif (is_tax('ingredient')) {
+            $ingredient = get_queried_object()->slug;
+        }
+        else
+            return false;
         
         $ingredient_meta = get_option( "taxonomy_$ingredient" ); 
+        if ( empty($ingredient_meta['month']) ) return 'No period found for this ingredient';
+
+        $html = '';
         $i=1;
-        foreach ( self::$MONTHS as $month ) {
+        foreach ( Custom_Ingredient_Meta::$MONTHS as $month ) {
             $checked = isset( $ingredient_meta['month'][$i] );
 
             // Display the table cells
@@ -97,7 +93,6 @@ class CRM_Ingredient {
             $i++;
         }
 
-        $html = '';
 
         return $html;
     }    

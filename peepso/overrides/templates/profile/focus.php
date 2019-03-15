@@ -35,11 +35,6 @@
 		</div>
 
 		<div class="js-focus-gradient" data-cover-context="profile" data-cover-type="cover"></div>
-
-		<?php if ($PeepSoProfile->can_edit() && (!$is_profile_segment || 1 == PeepSo::get_option('always_full_cover', 0))) { ?>
-
-		<?php wp_nonce_field('profile-photo', '_photononce'); ?>
-
 		<!-- Blog Title -->
 		<?php
 		$field_args = array('post_status'=>'publish');
@@ -50,6 +45,11 @@
 		if ($blog_title) {?>
 			<h1 class="blog-title"><?= $blog_title; ?></h1>
 		<?php } ?>		
+
+		<?php if ($PeepSoProfile->can_edit() && (!$is_profile_segment || 1 == PeepSo::get_option('always_full_cover', 0))) { ?>
+
+		<?php wp_nonce_field('profile-photo', '_photononce'); ?>
+
 
 		<!-- Cover options dropdown -->
 		<div title="<?php _e('Cover Image Utilities', 'foodiepro'); ?>" class="ps-focus-options ps-dropdown ps-dropdown-focus ps-js-dropdown">

@@ -470,6 +470,10 @@ span.ps-tooltip.ps-tooltip--online.ps-user__status.ps-icon-circle {
 
     /* PROFILE
     -------------------------------------------*/
+    h1.blog-title {
+        font-size:4rem;
+    }
+
     .ps-focus__footer {
         padding-top: 56px;
         padding-left: 0px;
@@ -480,10 +484,13 @@ span.ps-tooltip.ps-tooltip--online.ps-user__status.ps-icon-circle {
     }  
     
     .ps-focus-title {
+        font-size: 2.8rem;
         position: absolute;
-        bottom: 0px;
-        left: 100px;
-        text-align: left;
+        bottom: 8px;
+        left: 95px;
+        text-align: center;
+        line-height: 2.8rem;
+        width: 70%;
     }    
 
 

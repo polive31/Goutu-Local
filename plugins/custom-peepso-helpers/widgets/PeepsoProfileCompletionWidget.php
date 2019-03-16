@@ -62,7 +62,7 @@ class PeepsoProfileCompletionWidget extends WP_Widget {
 
 		$stats = $user->profile_fields->profile_fields_stats;
 
-		$user_percent = $stats['completeness'];
+		$user_percent = empty($stats['completeness'])?0:$stats['completeness'];
 
 		$trigger_percent=(isset($instance['trigger_percent']))?$instance['trigger_percent']:'100';
 
@@ -98,26 +98,24 @@ class PeepsoProfileCompletionWidget extends WP_Widget {
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
 
-			if( empty( $user_percent ) || $user_percent == 0 ) {
-				echo '<p class="aligncenter">'. $profile_empty .'</p>';
-			}
-
-			if(  $user_percent == 100 && $award )  {
+		// if ( empty( $user_percent ) || $user_percent == 0 ) {
+		// 	echo '<p class="aligncenter">'. $profile_empty .'</p>';
+		// 	echo '<p class="wp_widget_plugin_textarea">' . $textarea . '</p>';
+		// }
+		// elseif (  $user_percent == 100 ) {
+		if (  $user_percent == 100 ) {
+			if ( $award )
 				echo '<div class="bppp-congrats"><span class="dashicons dashicons-awards"></span>' . $profile_completed . '</div>';
-			} 
-			elseif ( $user_percent == 100 && !$award ) {
+			else
 				echo  '<div class="bppp-congrats">' . $profile_completed . '</div>';
-			}
-
-			if( $user_percent > 0 && $user_percent !=100 ) {
-				$this->display_circular_progress_bar($user_percent);					
-				echo '<p class="wp_widget_plugin_textarea">' . $textarea . '</p>';
-			}
+		}
+		elseif ( $user_percent > 0 ) {
+			$this->display_circular_progress_bar($user_percent);					
+			echo '<p class="wp_widget_plugin_textarea">' . $textarea . '</p>';
+		}
 			
 		echo '</div>';
-
 		echo $args['after_widget'];
-
 
 	}
 	

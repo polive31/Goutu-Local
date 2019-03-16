@@ -2,9 +2,45 @@
 /* GENERAL
 -----------------------------------------------------------*/
 
+/* Fonts  */
+
+.peepso h1, h2, h3, h4, h5, h6 {
+    /* font-family: Oswald, sans-serif!important; */
+    padding-bottom:20px;
+}
+
+.peepso p {
+    font-size:14px;
+}
+
+.ps-dropdown__menu {
+    font-family: Oswald, sans-serif;
+} 
+
+
+/* Buttons */
+
+.peepso .ps-btn,
+.ps-btn-primary {
+    background: #a7a7a7 !important;
+    border-radius: 5px!important;
+    color: white!important;
+}
+
+.ps-btn:hover, .peepso .usp-pro .usp-submit:hover, .peepso .button:hover, .peepso input[type="submit"].button:hover, .ps-btn:focus, .peepso .usp-pro .usp-submit:focus, .peepso .button:focus, .peepso input[type="submit"].button:focus, .active.ps-btn, .peepso .usp-pro .active.usp-submit, .peepso .active.button, .peepso input.active[type="submit"].button {
+    transition:all 500ms ease-in-out;
+    background: #757575 !important;
+}
+
+
+.ps-btn-small, 
+.ps-btn--small {
+    font-size: 14px;
+}
+
+
 
 /* Avatar */
-
 
 /* Force Square avatar on profile pages */
 .ps-avatar img, 
@@ -80,22 +116,8 @@
     width: 100%;
 }
 
-.ps-btn, .peepso .usp-pro .usp-submit, .peepso .button, .peepso input[type="submit"].button, .ps-btn:focus, .peepso .usp-pro .usp-submit:focus, .peepso .button:focus, .peepso input[type="submit"].button:focus, .active.ps-btn, .peepso .usp-pro .active.usp-submit, .peepso .active.button, .peepso input.active[type="submit"].button {
-}
 
-.ps-btn-small, 
-.ps-btn--small {
-    font-size: 14px;
-}
-
-.ps-btn:hover, .peepso .usp-pro .usp-submit:hover, .peepso .button:hover, .peepso input[type="submit"].button:hover, .ps-btn:focus, .peepso .usp-pro .usp-submit:focus, .peepso .button:focus, .peepso input[type="submit"].button:focus, .active.ps-btn, .peepso .usp-pro .active.usp-submit, .peepso .active.button, .peepso input.active[type="submit"].button {
-    transition:all 500ms ease-in-out;
-    background-color: #9ae7ff !important;
-}
-
-.ps-dropdown__menu {
-    font-family: Oswald, sans-serif;
-}  
+ 
 
 /* USERBAR
 -----------------------------------------------------------*/

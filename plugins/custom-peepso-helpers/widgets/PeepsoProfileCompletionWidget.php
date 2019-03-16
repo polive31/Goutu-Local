@@ -84,9 +84,7 @@ class PeepsoProfileCompletionWidget extends WP_Widget {
 
 		// add a textarea for long messages
 		$profile_url=PeepsoHelpers::get_url( $user, 'profile', 'about');
-
 		$textarea = sprintf(__('<a href="%s">Fill-in your profile</a> to make yourself visible from other users.','foodiepro'), $profile_url);
-
 
 		echo $args['before_widget'];
 
@@ -109,7 +107,7 @@ class PeepsoProfileCompletionWidget extends WP_Widget {
 			else
 				echo  '<div class="bppp-congrats">' . $profile_completed . '</div>';
 		}
-		elseif ( $user_percent > 0 ) {
+		elseif ( $user_percent >= 0 ) {
 			$this->display_circular_progress_bar($user_percent);					
 			echo '<p class="wp_widget_plugin_textarea">' . $textarea . '</p>';
 		}

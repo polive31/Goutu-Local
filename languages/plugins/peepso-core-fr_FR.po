@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: peepso-internal\n"
 "POT-Creation-Date: 2019-03-11 21:46+0100\n"
-"PO-Revision-Date: 2019-03-11 23:27+0100\n"
+"PO-Revision-Date: 2019-03-16 12:47+0100\n"
 "Last-Translator: alconost <alpha@alconost.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -5929,10 +5929,8 @@ msgid "That email address is already in use."
 msgstr "Cette adresse e-mail est déjà utilisée"
 
 #: classes/profilefieldsajax.php:186 classes/registershortcode.php:179
-#, fuzzy
-#| msgid "The passwords you submitted do not match."
 msgid "The emails you submitted do not match."
-msgstr "Les mots de passe ne correspondent pas."
+msgstr "Les adresses mail ne correspondent pas."
 
 #: classes/profilefieldsajax.php:198 classes/registershortcode.php:185
 msgid "The passwords you submitted do not match."

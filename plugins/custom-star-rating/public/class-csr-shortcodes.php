@@ -261,7 +261,7 @@ class CSR_Shortcodes {
 		
 		<div class="comment-reply">
 		<label for="comment"><?= __('Add a comment','custom-star-rating' );?></label>
-		<textarea id="comment" name="comment" cols="50" rows="6" aria-required="true"></textarea>
+		<textarea id="comment" name="comment" cols="50" rows="4" aria-required="true"></textarea>
 		</div>
 
 	<?php

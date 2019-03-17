@@ -65,81 +65,78 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 		$msg='';
 
 		/* If a custom headline was set for this archive then return it */
-		$headline = get_term_meta( $this->query->term_id, 'headline', true );
-		if ( empty($headline) ) {
-			$parent = $this->query->parent;
-			$headline = get_term_meta( $parent, 'headline', true );
+		if ( get_class($this->query)=='WP_Post_Type' ) {
+			// Return the post type queried
+			$msg = $this->get_post_type_archive_title( $this->queryvars['post_type'] );			
 		}
-		if ( !empty($headline) ) {
-			$msg = '<span class="archive-image">' . do_shortcode( '[wp_custom_image_category]' ) . '</span>' . $headline;
-			return $msg;
-		}		
-
-		/* Check archive type */
-		if ( is_author() ) {
-			$id=$this->queryvars['author'];
-			$user=PeepsoHelpers::get_user($id);
-			$name=PeepsoHelpers::get_field($user, "nicename");
-			$type=$this->queryvars['post_type'];
-			
-			$msg = $this->post_from_msg( $type, $name );
-		}
-			
-		elseif ( is_tax('ingredient') ) {
-			$ingredient = $this->queryvars['ingredient'];
-			if ( initial_is_vowel($ingredient) )
-				$msg=sprintf(_x('All recipes containing %s','vowel','foodiepro'), $ingredient);
-			else 
-				$msg=sprintf(_x('All recipes containing %s','consonant','foodiepro'), $ingredient);		
-		}
-		
-		elseif ( is_tax('cuisine') ) {
-			$msg = $this->post_from_msg( 'recipe', $term);
-		}
-		
-		elseif ( is_tax('course') ) {
-			$course=$this->queryvars['course'];
-			$term='';
-
-			if ($this->queryvars['season']) {
-				$term=$this->queryvars['season'];
-				$msg = $this->course_of_msg( $course, $term);
-			}
-			elseif ( !empty($_GET['author']) ) {
-				$user = get_user_by( 'slug', $_GET['author'] );
-				$user=PeepsoHelpers::get_user( $user->ID );
-				$term=PeepsoHelpers::get_field($user, "nicename");
-				$msg = $this->course_of_msg( $course, $term);
-			}
-			else 
-				$msg = single_term_title( '', false);
-		}			
-		
-		elseif ( is_tax() || is_tag() ) { 
-			$msg = single_term_title( '', false);
-		}
-
 		else {
-			// Check whether a specific archive headline was set in the backend
 			$headline = get_term_meta( $this->query->term_id, 'headline', true );
-			if ( !empty($headline) ) 
-				$msg = $headline;
-			elseif (isset( $this->queryvars['post_type'] ) ) {
-				// Return the post type queried
-				$msg = $this->get_post_type_archive_title( $this->queryvars['post_type'] );
+			if ( empty($headline) ) {
+				$parent = $this->query->parent;
+				$headline = get_term_meta( $parent, 'headline', true );
 			}
-			else 
+			if ( !empty($headline) ) {
+				$msg = '<span class="archive-image">' . do_shortcode( '[wp_custom_image_category]' ) . '</span>' . $headline;
+				return $msg;
+			}		
+			
+			/* Check archive type */
+			if ( is_author() ) {
+				$id=$this->queryvars['author'];
+				$user=PeepsoHelpers::get_user($id);
+				$name=PeepsoHelpers::get_field($user, "nicename");
+				$type=$this->queryvars['post_type'];
+				
+				$msg = $this->post_from_msg( $type, $name );
+			}
+			
+			elseif ( is_tax('ingredient') ) {
+				$ingredient = $this->queryvars['ingredient'];
+				if ( initial_is_vowel($ingredient) )
+				$msg=sprintf(_x('All recipes containing %s','vowel','foodiepro'), $ingredient);
+				else 
+				$msg=sprintf(_x('All recipes containing %s','consonant','foodiepro'), $ingredient);		
+			}
+			
+			elseif ( is_tax('cuisine') ) {
+				$msg = $this->post_from_msg( 'recipe', $term);
+			}
+			
+			elseif ( is_tax('course') ) {
+				$course=$this->queryvars['course'];
+				$term='';
+				
+				if ($this->queryvars['season']) {
+					$term=$this->queryvars['season'];
+					$msg = $this->course_of_msg( $course, $term);
+				}
+				elseif ( !empty($_GET['author']) ) {
+					$user = get_user_by( 'slug', $_GET['author'] );
+					$user=PeepsoHelpers::get_user( $user->ID );
+					$term=PeepsoHelpers::get_field($user, "nicename");
+					$msg = $this->course_of_msg( $course, $term);
+				}
+				else 
 				$msg = single_term_title( '', false);
+			}			
+			
+			elseif ( is_tax() || is_tag() ) { 
+				$msg = single_term_title( '', false);
+			}
+			
+			else {
+				$msg = single_term_title( '', false);
+			}
 		}
-
-		$msg = '<span class="archive-image">' . do_shortcode( '[wp_custom_image_category]' ) . '</span>' . $msg;
-		return $msg;
-
-	}
-
-	public function get_post_type_archive_title( $post_type ) {
-		switch ($post_type) {
-			case 'recipe':
+			
+			$msg = '<span class="archive-image">' . do_shortcode( '[wp_custom_image_category]' ) . '</span>' . $msg;
+			return $msg;
+			
+		}
+		
+		public function get_post_type_archive_title( $post_type ) {
+			switch ($post_type) {
+				case 'recipe':
 				$title=__('All the recipes','foodiepro');
 				break;
 			case 'post':
@@ -224,31 +221,38 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 
 	public function custom_archive_description( $description ) {
 		if ( !is_archive() && !is_tag() ) return;
-		// Check archive intro text field
-		$intro = get_term_meta( $this->query->term_id, 'intro_text', true );
-
-		if (empty($intro)) {
-			// Check parent intro text field
-			$parent = $this->query->parent;
-			$intro = get_term_meta( $this->query->parent, 'intro_text', true );
-		}	
 		
-		if (empty($intro) ) {
-			// Check post type
-			if ( $this->queryvars['post_type'] ) {
-				$empty=true;
-				foreach ($this->queryvars as $term=>$var) {
-					if ( $term!='post_type' && $var) {
-						$empty=false;
-						break;
-					}
-				}
-				if ($empty) {
-					$intro = $this->get_post_type_archive_intro_text( $this->queryvars['post_type'] );
+		/* Retrieve maybe archive term */
+		if ( get_class($this->query)=='WP_Post_Type' ) {
+			$empty=true;
+			foreach ($this->queryvars as $term=>$var) {
+				if ( $term!='post_type' && $var) {
+					$empty=false;
+					break;
 				}
 			}
+		}
+		else {
+			$empty=false;
+			$term = $this->query->term_id;
+		}
+		
+		/* Return the updated archive description  */
+		if ($empty) {
+			/* No taxonomy term found, then get default post type archive description */
+			$intro = $this->get_post_type_archive_intro_text( $this->queryvars['post_type'] );
+		}
+		else {
+			// Check archive intro text field
+			$intro = get_term_meta( $term, 'intro_text', true );
+			if (empty($intro)) {
+				// Check parent intro text field
+				$parent = $this->query->parent;
+				$intro = get_term_meta( $this->query->parent, 'intro_text', true );
+			}
 		}	
-
+			
+			
 		if ( is_tax('ingredient') ) {
 			// $intro .= '<br>' . '[ingredient-months]';
 		}

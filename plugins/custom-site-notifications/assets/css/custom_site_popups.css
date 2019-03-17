@@ -166,11 +166,17 @@
     }
     
     #join_us .wrap {
-        padding:0;
-        background: rgb(255, 195, 152);
-        overflow-y: scroll;
+        padding: 0;
+        /* background: rgba(171, 121, 86, 0.21); */
+        position: fixed;
+        top: 60px;
+        left: 0;
     }
-    
+
+    #join_us .textbox {
+        /* background: rgb(255, 255, 255);     */
+    }
+
     #join_us h4 {
         font-size: 17px;
         line-height: 21px;

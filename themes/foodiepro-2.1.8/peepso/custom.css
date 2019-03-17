@@ -27,6 +27,11 @@
     color: white!important;
 }
 
+/* Highlight save button */
+.peepso .ps-btn.ps-js-btn-save {
+    background: #5d5d5d!important;
+}
+
 .ps-btn:hover, .peepso .usp-pro .usp-submit:hover, .peepso .button:hover, .peepso input[type="submit"].button:hover, .ps-btn:focus, .peepso .usp-pro .usp-submit:focus, .peepso .button:focus, .peepso input[type="submit"].button:focus, .active.ps-btn, .peepso .usp-pro .active.usp-submit, .peepso .active.button, .peepso input.active[type="submit"].button {
     transition:all 500ms ease-in-out;
     background: #757575 !important;
@@ -174,7 +179,7 @@
 
 .main-nav-widget-area .ps-widget--userbar__logout i,
 .main-nav-widget-area .ps-bubble__wrapper i {
-    font-size:20px;
+    font-size:2rem;
 }
 
 .widget_peepsowidgetuserbar a {
@@ -186,7 +191,64 @@
 }
 
 
-/* On mobile nav */
+/*-----------------------------------------------------------
+------      USERBAR ON MOBILE MENU
+-----------------------------------------------------------*/
+
+
+/* Fonts
+-------------------------------------------------*/
+
+
+#responsive-menu-pro-container .ps-popover-footer a,
+#responsive-menu-pro-container .ps-notification__desc,
+#responsive-menu-pro-container .ps-notification__status {
+    font-size:1.6rem;
+}
+
+#responsive-menu-pro-container .ps-widget--userbar__container  {
+    font-size:2rem;
+}
+
+#responsive-menu-pro-container .ps-popover-footer a {
+    width:100%!important;
+}
+
+.ps-dropdown__menu.ps-js-dropdown-menu a {
+    font-size:1.4rem;
+}
+
+.ps-stream-user {
+    font-size: 1.6rem;
+}
+
+.activity-stream-front span {
+    font-size: 1.5rem;
+}
+
+.ps-tagging-textarea, .ps-tagging-beautifier {
+    font-size: 1.4rem !important;
+    line-height: 1.8rem !important;
+}
+
+nav.ps-stream-status-action.ps-stream-status-action span {
+    font-weight: normal;
+}
+
+.ps-reaction-likes, 
+.ps-stream-status, 
+.cstream-reactions {
+    font-size: 1.4rem;
+}
+
+#responsive-menu-pro-container .mega-menu-toggle a {
+    font-size: 2rem;
+}
+
+
+/* Notification Icons 
+---------------------------------------------------------------*/
+
 /* #responsive-menu-pro-container .ps-widget--userbar {
     display:flex;
     flex-direction: row-reverse;
@@ -221,14 +283,22 @@
     margin-left:10px;
 }
 
+#responsive-menu-pro-container .ps-dropdown--userbar.ps-js-dropdown {
+    display: none;
+}
+
+/* Notification Content
+---------------------------------------------------------------*/
+
 #responsive-menu-pro-container .mobile-nav-container a,
 #responsive-menu-pro-container .mobile-nav-container .ps-user-name {
     color:#ffffff;
-    font-size: 2rem;
 }
 
-#responsive-menu-pro-container .mega-menu-toggle a {
-    font-size: 2rem;
+.ps-popover-footer {
+    text-align: left;
+    background: #EFEFEF;
+    padding: 10px 0!important;
 }
 
 #responsive-menu-pro-container .ps-widget--userbar__avatar {
@@ -332,32 +402,6 @@ div#postbox-main {
     /* font-family: sans-serif; */
 } 
 
-.ps-dropdown__menu.ps-js-dropdown-menu a {
-    font-size:1.4rem;
-}
-
-.ps-stream-user {
-    font-size: 1.6rem;
-}
-
-.activity-stream-front span {
-    font-size: 1.5rem;
-}
-
-.ps-tagging-textarea, .ps-tagging-beautifier {
-    font-size: 1.4rem !important;
-    line-height: 1.8rem !important;
-}
-
-nav.ps-stream-status-action.ps-stream-status-action span {
-    font-weight: normal;
-}
-
-.ps-reaction-likes, 
-.ps-stream-status, 
-.cstream-reactions {
-    font-size: 1.4rem;
-}
 
 
 

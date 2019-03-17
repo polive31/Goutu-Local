@@ -3516,7 +3516,7 @@ input#author,
 input#email,
 input#url {
 	color:#333;
-	font-size: 16px;
+	resize: vertical;
 }
 
 .comment-intro {

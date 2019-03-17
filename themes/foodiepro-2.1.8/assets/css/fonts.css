@@ -119,8 +119,15 @@ a.comment-reply-link,
 	padding: 7px 10px;	
 }
 
+.comment-reply textarea,
+input#author,
+input#email,
+input#url {
+	font-size: 1.6rem;
+}
+
 .entry-meta i.fa {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 #signup_submit {

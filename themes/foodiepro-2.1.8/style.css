@@ -2796,7 +2796,7 @@ ul.text-image-list img.alignleft {
 /* Ingredient archive : months display */
 
 table.ingredient-months {
-	width: 100%;
+	/* width: 100%; */
 	border-spacing: 10px;
 	border-collapse: separate;
 }

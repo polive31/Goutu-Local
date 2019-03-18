@@ -91,7 +91,7 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 			}
 			
 			elseif ( is_tax('ingredient') ) {
-				$ingredient = $this->queryvars['ingredient'];
+				$ingredient = $this->query->name;
 				if ( initial_is_vowel($ingredient) )
 				$msg=sprintf(_x('All recipes containing %s','vowel','foodiepro'), $ingredient);
 				else 

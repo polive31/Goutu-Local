@@ -459,6 +459,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 			'user' 	=> false, // current, view, any user ID
 			'user_page' => false, // current, view, any user ID
 			'user_tab' => false, // current, view, any user ID
+			'peepso' => false, // members
 			'text' 	=> false,  // html link is output if not empty
 			'data' 	=> false, // "attr1 val1 attr2 val2  ..." separate with spaces 
 			'ga' 	=> false, // ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue] ); separate by spaces
@@ -491,6 +492,11 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 				$url = get_home_url();
 			elseif ( $wp=='login' ) 
 				$url = wp_login_url();
+		}
+		elseif ($peepso) {
+			if ($peepso=='members') {
+				$url = PeepSo::get_page('members');
+			}
 		}
 		else {
 			// Current URL is supplied by default

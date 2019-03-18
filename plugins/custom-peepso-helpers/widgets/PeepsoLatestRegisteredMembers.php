@@ -86,7 +86,7 @@ class CustomPeepsoLatestRegisteredMembers extends WP_Widget {
 		echo '<div class="clear"></div>';	
 		
 		if (is_user_logged_in()) {
-			echo '<p class="more-from-category">' . do_shortcode('[permalink slug="gourmets" text="' . __('All the members','foodiepro') . '"]') . '</p>';	
+			echo '<p class="more-from-category">' . do_shortcode('[permalink peepso="members" text="' . __('All the members','foodiepro') . '"]') . '</p>';	
 		}
 
 		echo $args['after_widget'];

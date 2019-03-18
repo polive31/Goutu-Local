@@ -2793,6 +2793,25 @@ ul.text-image-list img.alignleft {
 	margin-bottom:auto;
 }
 
+/* Ingredient archive : months display */
+
+table.ingredient-months {
+	width: 100%;
+	border-spacing: 10px;
+	border-collapse: separate;
+}
+
+.ingredient-months td {
+	font-family: monospace;
+	min-width: 50px;
+	text-align: center;
+	padding: 10px 0;
+	background-color: #dcd6ca;
+}
+.ingredient-months td.available {
+	background-color: #e1ff80;
+}
+
 /* Themes widget on archive, blogs & recipes top 
 ----------------------------------------------------*/
 

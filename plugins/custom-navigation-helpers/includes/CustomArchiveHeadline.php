@@ -252,12 +252,11 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 			}
 		}	
 			
-			
 		if ( is_tax('ingredient') ) {
-			// $intro .= '<br>' . '[ingredient-months]';
+			$intro .= '<br>' . do_shortcode('[ingredient-months id="' . $this->query->term_id . '"]');
 		}
 			  
-		return do_shortcode($description . $intro);
+		return $description . $intro;
 	}	
 	
 	public function get_post_type_archive_intro_text( $post_type ) {

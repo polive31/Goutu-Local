@@ -612,6 +612,10 @@ span.ps-tooltip.ps-tooltip--online.ps-user__status.ps-icon-circle {
         flex-grow: initial;
         margin: 0;
     }    
+
+    .avatar-overlay-text {
+        font-size: 15px;
+    }    
     
     .ps-focus-actions-mobile a,
     .ps-focus-profile-options.ps-js-dropdown .ps-btn {

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-03-15 00:46+0100\n"
+"POT-Creation-Date: 2019-03-18 01:07+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -34,6 +34,21 @@ msgstr ""
 "X-Poedit-SearchPath-12: plugins/custom-post-management\n"
 "X-Poedit-SearchPath-13: plugins/custom-recipe-management\n"
 "X-Poedit-SearchPath-14: peepso\n"
+
+#: peepso/overrides/templates/activity/activity.php:51
+#: peepso/overrides/templates/activity/activity.php:52
+#: peepso/overrides/templates/profile/profile.php:27
+#: peepso/overrides/templates/profile/profile.php:28
+#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:58
+#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:59
+msgid "No posts found."
+msgstr ""
+
+#: peepso/overrides/templates/activity/activity.php:53
+#: peepso/overrides/templates/profile/profile.php:29
+#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:60
+msgid "Nothing more to show."
+msgstr ""
 
 #: peepso/overrides/templates/blogposts/blogposts.php:19
 #: peepso/overrides/templates/photos/photos.php:47
@@ -188,18 +203,6 @@ msgstr ""
 #: peepso/overrides/templates/profile/profile-about.php:168
 #: plugins/custom-peepso-helpers/widgets/PeepsoAboutWidget.php:73
 msgid "Sorry, no data to show"
-msgstr ""
-
-#: peepso/overrides/templates/profile/profile.php:27
-#: peepso/overrides/templates/profile/profile.php:28
-#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:58
-#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:59
-msgid "No posts found."
-msgstr ""
-
-#: peepso/overrides/templates/profile/profile.php:29
-#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:60
-msgid "Nothing more to show."
 msgstr ""
 
 #: peepso/overrides/templates/widgets/userbar.tpl.php:53
@@ -565,12 +568,12 @@ msgid "Displays profile completion bar (requires Buddy Progress Bar plugin)"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-profile-completion-widget.php:44
-#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:167
+#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:163
 msgid "Widget Title"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-profile-completion-widget.php:49
-#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:172
+#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:168
 msgid "Message:"
 msgstr ""
 
@@ -585,7 +588,7 @@ msgid "Profile empty !"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-profile-completion-widget.php:116
-#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:88
+#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:87
 #, php-format
 msgid ""
 "<a href=\"%s\">Fill-in your profile</a> to make yourself visible from other "
@@ -941,111 +944,111 @@ msgstr ""
 msgid "Visit Goutu.org"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:91
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:96
 #, php-format
 msgctxt "vowel"
 msgid "All recipes containing %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:93
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:98
 #, php-format
 msgctxt "consonant"
 msgid "All recipes containing %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:143
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:140
 msgid "All the recipes"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:146
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:143
 msgid "All the posts"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:158
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:155
 #, php-format
 msgctxt "masculine-vowel"
 msgid "All %s from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:159
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:156
 #, php-format
 msgctxt "masculine-consonant"
 msgid "All %s from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:162
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:159
 #, php-format
 msgctxt "feminine-vowel"
 msgid "All %s from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:163
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:160
 #, php-format
 msgctxt "feminine-consonant"
 msgid "All %s from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:203
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:200
 #, php-format
 msgctxt "generic-plural"
 msgid "All posts from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:204
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:201
 #, php-format
 msgctxt "generic-vowel"
 msgid "All posts from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:205
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:202
 #, php-format
 msgctxt "generic-consonant"
 msgid "All posts from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:208
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:205
 #, php-format
 msgctxt "post-plural"
 msgid "All posts from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:209
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:206
 #, php-format
 msgctxt "post-vowel"
 msgid "All posts from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:210
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:207
 #, php-format
 msgctxt "post-consonant"
 msgid "All posts from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:213
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:210
 #, php-format
 msgctxt "recipe-plural"
 msgid "All posts from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:214
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:211
 #, php-format
 msgctxt "recipe-vowel"
 msgid "All posts from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:215
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:212
 #, php-format
 msgctxt "recipe-consonant"
 msgid "All posts from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:262
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:265
 msgid ""
 "You will find here all the recipes, which you can further sort by date or "
 "evaluation."
 msgstr ""
 
-#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:265
+#: plugins/custom-navigation-helpers/includes/CustomArchiveHeadline.php:268
 msgid "You will find here all the posts, which you can further sort by date."
 msgstr ""
 
@@ -1588,62 +1591,50 @@ msgid "OSX"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:13
-#: plugins/custom-recipe-management/public/class-crm-ingredient.php:50
 msgid "January"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:14
-#: plugins/custom-recipe-management/public/class-crm-ingredient.php:51
 msgid "February"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:15
-#: plugins/custom-recipe-management/public/class-crm-ingredient.php:52
 msgid "March"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:16
-#: plugins/custom-recipe-management/public/class-crm-ingredient.php:53
 msgid "April"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:17
-#: plugins/custom-recipe-management/public/class-crm-ingredient.php:54
 msgid "May"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:18
-#: plugins/custom-recipe-management/public/class-crm-ingredient.php:55
 msgid "June"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:19
-#: plugins/custom-recipe-management/public/class-crm-ingredient.php:56
 msgid "July"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:20
-#: plugins/custom-recipe-management/public/class-crm-ingredient.php:57
 msgid "August"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:21
-#: plugins/custom-recipe-management/public/class-crm-ingredient.php:58
 msgid "September"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:22
-#: plugins/custom-recipe-management/public/class-crm-ingredient.php:59
 msgid "October"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:23
-#: plugins/custom-recipe-management/public/class-crm-ingredient.php:60
 msgid "November"
 msgstr ""
 
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:24
-#: plugins/custom-recipe-management/public/class-crm-ingredient.php:61
 msgid "December"
 msgstr ""
 
@@ -1884,12 +1875,16 @@ msgstr ""
 msgid "Stop reading and close player"
 msgstr ""
 
-#: plugins/custom-recipe-management/public/class-crm-ingredient.php:154
+#: plugins/custom-recipe-management/public/class-crm-ingredient.php:86
+msgid "Harvest Period"
+msgstr ""
+
+#: plugins/custom-recipe-management/public/class-crm-ingredient.php:153
 msgctxt "vowel"
 msgid "of "
 msgstr ""
 
-#: plugins/custom-recipe-management/public/class-crm-ingredient.php:156
+#: plugins/custom-recipe-management/public/class-crm-ingredient.php:155
 msgctxt "consonant"
 msgid "of "
 msgstr ""

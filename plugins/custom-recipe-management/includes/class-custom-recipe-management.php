@@ -78,7 +78,7 @@ class Custom_Recipe_Management {
         ------------------------------------------------------------- */
         $Ingredient_Meta = new Custom_Ingredient_Meta();
 		add_action( 'admin_init',                   array( $Ingredient_Meta, 'hydrate'                          ));
-		add_action( 'init',                         array( $Ingredient_Meta, 'hydrate'                          ));
+		add_action( 'wp',                           array( $Ingredient_Meta, 'hydrate'                          ));
 		add_action( 'ingredient_add_form_fields',   array( $Ingredient_Meta, 'callback_admin_add_months_field'  ), 10, 2 );
 		add_action( 'ingredient_edit_form_fields',  array( $Ingredient_Meta, 'callback_ingredient_edit_fields'  ), 10, 2 );
 		add_action( 'edited_ingredient',            array( $Ingredient_Meta, 'callback_admin_save_meta'         ), 10, 2 );  

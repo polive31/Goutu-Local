@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: peepso-internal\n"
 "POT-Creation-Date: 2019-03-11 21:46+0100\n"
-"PO-Revision-Date: 2019-03-16 12:47+0100\n"
+"PO-Revision-Date: 2019-03-17 23:10+0100\n"
 "Last-Translator: alconost <alpha@alconost.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -7018,7 +7018,7 @@ msgstr "Vous n’avez pas encore d’ami"
 #: peepso.php:4985
 #, php-format
 msgid "%s has no blog posts yet"
-msgstr ""
+msgstr "%s n'a pas encore publié sur son blog."
 
 #: peepso.php:5377
 #, fuzzy

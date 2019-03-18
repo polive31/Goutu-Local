@@ -67,12 +67,12 @@ class CRM_Ingredient {
 
     public function display_ingredient_months_shortcode( $atts ) {
         $atts = shortcode_atts( array(
-            'slug' => false,
+            'id' => false,
             'currentmonth' => false, // displays an arrow showing the current month 
         ), $atts );
 
-        if ($atts['slug']) {
-            $ingredient = $atts['slug'];
+        if ($atts['id']) {
+            $ingredient = $atts['id'];
         }
         elseif (is_tax('ingredient')) {
             $ingredient = get_queried_object()->slug;
@@ -81,17 +81,21 @@ class CRM_Ingredient {
             return false;
         
         $ingredient_meta = get_option( "taxonomy_$ingredient" ); 
-        if ( empty($ingredient_meta['month']) ) return 'No period found for this ingredient';
+        if ( empty($ingredient_meta['month']) ) return '';
 
-        $html = '';
+        $html = '<h2>' . __('Harvest Period','foodiepro') . '</h2>';
+        $html .= '<table class="ingredient-months">';
+        $html .= '<tr>';
         $i=1;
-        foreach ( Custom_Ingredient_Meta::$MONTHS as $month ) {
-            $checked = isset( $ingredient_meta['month'][$i] );
 
-            // Display the table cells
-
+        $months = Custom_Ingredient_Meta::$MONTHS;
+        foreach (  $months as $month ) {
+            $available = isset( $ingredient_meta['month'][$i] )?'available':'';
+            $html .= '<td class="' . $available . '" title="' . $month . '">' . $month[0] . '</td>';
             $i++;
         }
+        $html .= '</tr>';
+        $html .= '</table>';
 
 
         return $html;

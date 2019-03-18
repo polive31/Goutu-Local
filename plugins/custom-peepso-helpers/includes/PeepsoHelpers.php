@@ -93,7 +93,8 @@ class PeepsoHelpers extends PeepsoCustomizations {
 			case 'profile':
 				$url = $user->get_profileurl();
 				$url .= $subpage;
-				break;			
+				break;	
+							
 		}
 		return $url;
 	}	

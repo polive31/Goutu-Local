@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-03-18 01:07+0100\n"
-"PO-Revision-Date: 2019-03-18 01:09+0100\n"
+"POT-Creation-Date: 2019-03-19 00:21+0100\n"
+"PO-Revision-Date: 2019-03-19 00:22+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -411,7 +411,7 @@ msgstr ""
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:107
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:110
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:87
-#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:103
+#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:107
 #: plugins/custom-recipe-management/widgets/crm_lists_dropdown_widget.php:70
 #: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:47
 msgid "New title"
@@ -436,7 +436,7 @@ msgstr ""
 #: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:86
 #: plugins/custom-peepso-helpers/widgets/PeepsoCoverImageHeader.php:84
 #: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:191
-#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:112
+#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:116
 #: plugins/custom-recipe-management/widgets/crm_lists_dropdown_widget.php:74
 #: plugins/custom-recipe-management/widgets/crm_nutrition_label_widget.php:60
 #: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:51
@@ -523,7 +523,7 @@ msgstr "Evaluez cette recette"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-latest-registered-members-widget.php:120
 #: plugins/custom-buddypress-helpers/widgets/BP-my-friends-widget.php:128
-#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:118
+#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:122
 msgid "Number of users to show"
 msgstr ""
 
@@ -1267,7 +1267,7 @@ msgstr "Quoi de neuf aujourd'hui, %s ?"
 msgid "Post a message on %s's news feed..."
 msgstr "Publie un message sur le fil d'actualités de %s..."
 
-#: plugins/custom-peepso-helpers/includes/PeepsoHelpers.php:113
+#: plugins/custom-peepso-helpers/includes/PeepsoHelpers.php:114
 #, fuzzy, php-format
 #| msgid "Update profile picture"
 msgid "Picture of %s"
@@ -1327,6 +1327,10 @@ msgstr "Adresse mail"
 #| msgid "Evaluate this recipe"
 msgid "(Peepso) Latest registered members"
 msgstr "Evaluez cette recette"
+
+#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:89
+msgid "All the members"
+msgstr "Tous les gourmets"
 
 #: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:28
 #, fuzzy

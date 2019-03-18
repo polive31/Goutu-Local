@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-03-18 01:07+0100\n"
+"POT-Creation-Date: 2019-03-19 00:21+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -391,7 +391,7 @@ msgstr ""
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:107
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:110
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:87
-#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:103
+#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:107
 #: plugins/custom-recipe-management/widgets/crm_lists_dropdown_widget.php:70
 #: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:47
 msgid "New title"
@@ -416,7 +416,7 @@ msgstr ""
 #: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:86
 #: plugins/custom-peepso-helpers/widgets/PeepsoCoverImageHeader.php:84
 #: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:191
-#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:112
+#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:116
 #: plugins/custom-recipe-management/widgets/crm_lists_dropdown_widget.php:74
 #: plugins/custom-recipe-management/widgets/crm_nutrition_label_widget.php:60
 #: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:51
@@ -501,7 +501,7 @@ msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-latest-registered-members-widget.php:120
 #: plugins/custom-buddypress-helpers/widgets/BP-my-friends-widget.php:128
-#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:118
+#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:122
 msgid "Number of users to show"
 msgstr ""
 
@@ -1184,7 +1184,7 @@ msgstr ""
 msgid "Post a message on %s's news feed..."
 msgstr ""
 
-#: plugins/custom-peepso-helpers/includes/PeepsoHelpers.php:113
+#: plugins/custom-peepso-helpers/includes/PeepsoHelpers.php:114
 #, php-format
 msgid "Picture of %s"
 msgstr ""
@@ -1234,6 +1234,10 @@ msgstr ""
 
 #: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:28
 msgid "(Peepso) Latest registered members"
+msgstr ""
+
+#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:89
+msgid "All the members"
 msgstr ""
 
 #: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:28

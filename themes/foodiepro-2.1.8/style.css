@@ -4850,6 +4850,16 @@ Site Footer
 
 @media only screen and (max-width:420px) {
 
+
+	table.ingredient-months {
+		border-spacing: 5px;
+	}
+
+	.ingredient-months td {
+		min-width: initial;
+		padding: 5px;
+	}	
+
 	.nextend-arrow {
 		visibility: hidden!important;		
 	}	

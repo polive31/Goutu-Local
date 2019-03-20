@@ -59,47 +59,6 @@ define( 'ALLOWED_TAGS', array(
 );
 
 
-/* =================================================================*/
-/* =              ADMIN
-/* =================================================================*/
-
-/**
- * Show all parents, regardless of post status.
- *
- * @param   array  $args  Original get_pages() $args.
- *
- * @return  array  $args  Args set to also include posts with pending, draft, and private status.
- */
-add_filter( 'page_attributes_dropdown_pages_args', 'my_slug_show_all_parents' );
-add_filter( 'quick_edit_dropdown_pages_args', 'my_slug_show_all_parents' );
-function my_slug_show_all_parents( $args ) {
-	$args['post_status'] = array( 'publish', 'pending', 'draft', 'private' );
-	return $args;
-}
-
-/* Chargement des feuilles de style admin */
-add_action( 'wp_admin_enqueue_scripts', 'load_admin_stylesheet' );
-function load_admin_stylesheet() {
-	wp_enqueue_style( 'admin-css', CHILD_THEME_URL . '/assets/css/admin.css', array(), CHILD_THEME_VERSION );		
-}
-
-
-/* Disable admin bar for all users except admin */
-add_action('after_setup_theme', 'remove_admin_bar');
-function remove_admin_bar() {
-	if (!current_user_can('administrator') && !is_admin())
-  	show_admin_bar(false); 
-}
-
-/* Disable dashboard for non admin */
-add_action( 'init', 'blockusers_init' );
-function blockusers_init() {
-	if ( is_admin() && ! current_user_can( 'administrator' ) && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
-		wp_redirect( home_url() );
-		exit;
-	}
-}
-
 
 
 /* =================================================================*/
@@ -603,6 +562,33 @@ function foodiepro_record_scripts_styles() {
     }
 }
 
+
+/* =================================================================*/
+/* =              MAIL
+/* =================================================================*/
+
+/**
+ * This function will connect wp_mail to your authenticated
+ * SMTP server. This improves reliability of wp_mail, and 
+ * avoids many potential problems.
+ *
+ * For instructions on the use of this script, see:
+ * https://www.butlerblog.com/2013/12/12/easy-smtp-email-wordpress-wp_mail/
+ * 
+ * Values are constants set in wp-config.php
+ */
+// add_action( 'phpmailer_init', 'send_smtp_email' );
+function send_smtp_email( $phpmailer ) {
+	$phpmailer->isSMTP();
+	$phpmailer->Host       = SMTP_HOST;
+	$phpmailer->SMTPAuth   = SMTP_AUTH;
+	$phpmailer->Port       = SMTP_PORT;
+	$phpmailer->Username   = SMTP_USER;
+	$phpmailer->Password   = SMTP_PASS;
+	$phpmailer->SMTPSecure = SMTP_SECURE;
+	$phpmailer->From       = SMTP_FROM;
+	$phpmailer->FromName   = SMTP_NAME;
+}
 
 
 /* =================================================================*/

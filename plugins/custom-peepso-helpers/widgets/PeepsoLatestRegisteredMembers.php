@@ -50,8 +50,8 @@ class CustomPeepsoLatestRegisteredMembers extends WP_Widget {
 		$query_args = array(
 			// 'blog_id'      => $GLOBALS['blog_id'],
 			// 'role'         => '',
-			// 'role__in'     => array(),
-			'role__not_in' => array('administrator','pending'),
+			'role__in'     => array( 'author', 'contributor' ),
+			// 'role__not_in' => array('administrator','editor','pending'),
 			// 'meta_key'     => 'registered',
 			// 'meta_value'   => '',
 			// 'meta_compare' => '',

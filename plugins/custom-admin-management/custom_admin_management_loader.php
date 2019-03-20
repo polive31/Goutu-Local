@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Custom Admin Helpers
+Plugin Name: Custom Admin Management
 Plugin URI: http://goutu.org/
 Description: Custom utilities for admin area
 Version: 1.0
@@ -15,7 +15,8 @@ if ( !defined('ABSPATH') )
 	die('-1');
 	
 	
-	
-require_once 'includes/Custom_Admin_Post_Filter.php';
-// new CustomArchiveMeta();
-new CustomAdminPostFilter();
+require_once 'includes/class-custom-admin-management.php';
+require_once 'admin/class-cam-admin-helpers.php';
+require_once 'admin/class-cam-post-filter.php';
+
+new Custom_Admin_Management();

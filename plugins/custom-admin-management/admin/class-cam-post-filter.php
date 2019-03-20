@@ -5,16 +5,10 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-class CustomAdminPostFilter {
+class CAM_Post_Filter {
 
     const POST_TYPE ='recipe';
     const META_KEY ='ingredient_note';
-
-    public function __construct() { 
-        add_action( 'restrict_manage_posts',    array($this, 'restrict_manage_posts')   );
-        add_filter( 'parse_query',              array($this, 'add_posts_filter' )       );
-        add_action( 'admin_bar_menu',           array($this, 'add_toolbar_items'), 999  );
-    }
 
     public function restrict_manage_posts(){
         $type = 'post';

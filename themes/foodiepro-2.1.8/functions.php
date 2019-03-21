@@ -435,7 +435,7 @@ add_filter('wp_authenticate_user', 'block_new_users',10,1);
 function block_new_users ($user) {
 	$role=$user->roles[0];
     if ( $role=='pending' ) {
-    	$approve_url=do_shortcode('[permalink slug="pending-approval"]');
+    	$approve_url=do_shortcode('[permalink slug="attente-approbation"]');
     	// $approve_url=get_permalink('10066');
     	$msg=sprintf(__( '<strong>ERROR</strong>: User pending <a href="%s">approval</a>.', 'foodiepro' ),$approve_url);
     	return new WP_Error( 'user_not_approved', $msg);
@@ -444,21 +444,6 @@ function block_new_users ($user) {
 		return $user;
 }
 
-/* Disables autocomplete on password */
-// add_action('login_init', 'foodiepro_autocomplete_login_init');
-// function foodiepro_autocomplete_login_init()
-// {
-//     ob_start();
-// }
- 
-// add_action('login_form', 'foodiepro_autocomplete_login_form');
-// function foodiepro_autocomplete_login_form()
-// {
-//     $content = ob_get_contents();
-//     ob_end_clean();
-//     $content = str_replace('type="password"', 'type="password" autocomplete="off"', $content);
-//     echo $content;
-// }
 
 
 /* =================================================================*/

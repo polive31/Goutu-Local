@@ -488,6 +488,39 @@ function foodiepro_approve_loggedin_users( $approved ) {
 // Remove meta generator to hide WP version, commented out since already covered in WP security
 // remove_action('wp_head', 'wp_generator');
 
+
+add_action( 'register_post', 'foodiepro_custom_user_login_id' );
+
+function foodiepro_custom_user_login_id($sanitized_user_login, $user_email, $errors) {
+
+    // base of user_login, change it according to ur needs
+    $ulogin = generateRandomString(8);
+
+    // make user_login unique so WP will not return error
+    $check = username_exists($ulogin);
+    if (!empty($check)) {
+        $suffix = 2;
+        while (!empty($check)) {
+            $alt_ulogin = $ulogin . '-' . $suffix;
+            $check = username_exists($alt_ulogin);
+            $suffix++;
+        }
+        $ulogin = $alt_ulogin;
+    }
+
+    $sanitized_user_login = $ulogin;
+}
+
+function generateRandomString($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+
 /* =================================================================*/
 /* =             PHP DEBUG   
 /* =================================================================*/

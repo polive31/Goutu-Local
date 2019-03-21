@@ -81,6 +81,8 @@ themes/foodiepro-2.1.8/backups/*
 themes/foodiepro-2.1.8/images/Backup/*
 
 plugins/*
+!plugins/random-user-ids/
+
 !plugins/custom-admin-management/
 !plugins/custom-admin-page-navigation/
 !plugins/custom-assets-management/

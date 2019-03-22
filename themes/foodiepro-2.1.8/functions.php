@@ -470,6 +470,23 @@ function foodiepro_approve_loggedin_users( $approved ) {
 /* =================================================================*/
 /* =              SECURITY
 /* =================================================================*/
+
+/* Add nicename column to users table */
+add_filter('manage_users_columns', 'add_user_nicename_column');
+function add_user_nicename_column($columns) {
+    $columns['user_nicename'] = 'User Nicename';
+    return $columns;
+}
+ 
+add_action('manage_users_custom_column',  'show_user_nicename_column_content', 10, 3);
+function show_user_nicename_column_content($value, $column_name, $user_id) {
+    $user = get_userdata( $user_id );
+	if ( 'user_nicename' == $column_name )
+		$value = $user->user_nicename;
+    return $value;
+}
+
+
 // Remove meta generator to hide WP version, commented out since already covered in WP security
 // remove_action('wp_head', 'wp_generator');
 

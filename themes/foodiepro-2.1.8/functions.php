@@ -491,7 +491,7 @@ function show_user_nicename_column_content($value, $column_name, $user_id) {
 // remove_action('wp_head', 'wp_generator');
 
 
-add_filter( 'pre_user_login', 'foodiepro_custom_user_login_id' );
+// add_filter( 'pre_user_login', 'foodiepro_custom_user_login_id' );
 function foodiepro_custom_user_login_id( $sanitized_user_login ) {
 
 	/* Check if user login is same as user nicename */
@@ -543,13 +543,10 @@ function generateRandomString($length = 10) {
 }
 
 /**
- * New user registrations should have display_name set 
- * to 'firstname lastname'. This is best used on the
- * 'user_register' action.
- *
+ * Set the display name and nickname values to user nicename
  * @param int $user_id The user ID
  */
-add_action( 'user_register', 'set_default_display_name' );
+// add_action( 'user_register', 'set_default_display_name' );
 function set_default_display_name( $user_id ) {
   $user = get_userdata( $user_id );
   $name = $user->user_nicename;

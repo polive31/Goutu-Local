@@ -21,7 +21,7 @@ if ( ! function_exists( 'dfx_random_user_id_get_max_id' ) ) {
 		// Javascript MAX_SAFE_INTEGER = 9007199254740991
 		// so we define the maximum ID to be one bit shorter
 
-		return apply_filters( 'dfx_random_user_id_max_id', floor(( ( 9007199254740991 + 1 ) / 2 ) - 1 ));
+		return apply_filters( 'dfx_random_user_id_max_id', ( ( PHP_INT_MAX + 1 ) / 2 ) - 1 );
 	}
 }
 

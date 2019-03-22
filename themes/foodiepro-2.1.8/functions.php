@@ -431,7 +431,7 @@ function go_home() {
 
 
 /* Prevent new users (not yet approved) to log in */
-add_filter('wp_authenticate_user', 'block_new_users',10,1);
+// add_filter('wp_authenticate_user', 'block_new_users',10,1);
 function block_new_users ($user) {
 	$role=$user->roles[0];
     if ( $role=='pending' ) {
@@ -474,36 +474,74 @@ function foodiepro_approve_loggedin_users( $approved ) {
 // remove_action('wp_head', 'wp_generator');
 
 
-add_action( 'register_post', 'foodiepro_custom_user_login_id' );
+add_filter( 'pre_user_login', 'foodiepro_custom_user_login_id' );
+function foodiepro_custom_user_login_id( $sanitized_user_login ) {
 
-function foodiepro_custom_user_login_id($sanitized_user_login, $user_email, $errors) {
+	/* Check if user login is same as user nicename */
+	$id = get_user_by( 'login', $sanitized_user_login );
+	$needs_update = false;
+	if ($id) {
+		$uinfo = get_userdata($id);
+    	$ulogin = $uinfo->user_login;
+		$unice = $uinfo->user_nicename;
+		if ( $ulogin == $unice ) {
+			$needs_update=true;
+		}
+	} 
+	else
+		$needs_update = true;
 
+	if (!$needs_update ) return $sanitized_user_login;
+	
     // base of user_login, change it according to ur needs
-    $ulogin = generateRandomString(8);
+    $ulogin = generateRandomString(10);
 
     // make user_login unique so WP will not return error
     $check = username_exists($ulogin);
     if (!empty($check)) {
-        $suffix = 2;
+        $suffix = 1;
         while (!empty($check)) {
-            $alt_ulogin = $ulogin . '-' . $suffix;
+            $alt_ulogin = $ulogin . $suffix;
             $check = username_exists($alt_ulogin);
             $suffix++;
         }
         $ulogin = $alt_ulogin;
     }
 
-    $sanitized_user_login = $ulogin;
+	return $ulogin;
 }
 
 function generateRandomString($length = 10) {
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) {
+    $letters = 'abcdefghijklmnopqrstuvwxyz';
+	$digits = '0123456789';
+	$characters = $letters . $digits;
+    $lettersLength = strlen($letters);
+	$charactersLength = strlen($characters);
+	
+	$randomString = $letters[rand(0, $lettersLength - 1)];
+    for ($i = 1; $i < $length; $i++) {
         $randomString .= $characters[rand(0, $charactersLength - 1)];
     }
     return $randomString;
+}
+
+/**
+ * New user registrations should have display_name set 
+ * to 'firstname lastname'. This is best used on the
+ * 'user_register' action.
+ *
+ * @param int $user_id The user ID
+ */
+add_action( 'user_register', 'set_default_display_name' );
+function set_default_display_name( $user_id ) {
+  $user = get_userdata( $user_id );
+  $name = $user->user_nicename;
+  $args = array(
+    'ID'           => $user_id,
+    'display_name' => $name,
+    'nickname'     => $name
+  );
+  wp_update_user( $args );
 }
 
 /* =================================================================*/

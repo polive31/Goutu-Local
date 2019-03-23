@@ -399,7 +399,7 @@ function custom_wp_login_form() {
 /* Redirect register url towards peepso register page */
 add_filter( 'register_url', 'custom_register_url' );
 function custom_register_url( $register_url ) {
-    $register_url = do_shortcode('[permalink slug="register"]');
+    $register_url = do_shortcode('[permalink slug="inscription"]');
     return $register_url;
 }
 

@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'CHILD_THEME_NAME', 'Foodie Pro Theme' );
-define( 'CHILD_THEME_VERSION', '2.3.14' );
+define( 'CHILD_THEME_VERSION', '2.3.15' );
 define( 'CHILD_THEME_DEVELOPER', 'Shay Bocks' );
 define( 'CHILD_THEME_URL', get_stylesheet_directory_uri() );
 define( 'CHILD_THEME_PATH', get_stylesheet_directory() );
@@ -368,6 +368,8 @@ function custom_favicon_links() {
 add_action('login_enqueue_scripts', 'custom_login_style');
 function custom_login_style() {
 	custom_enqueue_style( 'custom-login', '/login/custom-login-styles-default.css');
+	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Oswald', array(), CHILD_THEME_VERSION );
+
 }
 
 /* Sets login page logo & url */
@@ -394,7 +396,15 @@ function custom_wp_login_form() {
 	return $args;
 }
 
-/* customize username label  in wp-login.php page */
+/* Redirect register url towards peepso register page */
+add_filter( 'register_url', 'custom_register_url' );
+function custom_register_url( $register_url ) {
+    $register_url = do_shortcode('[permalink slug="register"]');
+    return $register_url;
+}
+
+/* customize username label in wp-login.php page 
+  Indeed login_form_defaults filter isn't active */
 add_action( 'login_head', 'cc_login_username_label' );
 function cc_login_username_label() {
 	add_filter( 'gettext', 'cc_login_username_label_change', 20, 3 );
@@ -403,9 +413,11 @@ function cc_login_username_label_change( $translated_text, $text, $domain )  {
 	if ($text === 'Username or Email Address') {
 		$translated_text = __( 'Email Address', 'foodiepro' ); // Use WordPress's own translation of 'Username'
 	}
+	elseif ($text === 'Register') {
+		$translated_text = __( 'Not yet a member ? <br> Register here !', 'foodiepro' ); // Use WordPress's own translation of 'Username'
+	}
 	return $translated_text;
 }
-
 
 // Change login credentials to email address only
 remove_filter( 'authenticate', 'wp_authenticate_username_password', 20, 3 );
@@ -432,17 +444,20 @@ function go_home() {
 
 /* Prevent new users (not yet approved) to log in */
 // add_filter('wp_authenticate_user', 'block_new_users',10,1);
-function block_new_users ($user) {
-	$role=$user->roles[0];
-    if ( $role=='pending' ) {
-    	$approve_url=do_shortcode('[permalink slug="attente-approbation"]');
-    	// $approve_url=get_permalink('10066');
-    	$msg=sprintf(__( '<strong>ERROR</strong>: User pending <a href="%s">approval</a>.', 'foodiepro' ),$approve_url);
-    	return new WP_Error( 'user_not_approved', $msg);
-    }
-	else
-		return $user;
-}
+/* IMPORTANT DO NOT USE WITH PEEPSO OTHERWISE IT WILL CONFLICT WITH THE ACTIVATION PROCESS !!!
+PEEPSO ALREADY IMPLEMENTS A MANUAL USER VERIFICATION BY ADMINISTRATOR SO THIS MAKES
+THIS FUNCTION USELESS & CONFLICTING */
+// function block_new_users ($user) {
+// 	$role=$user->roles[0];
+//     if ( $role=='pending' ) {
+//     	$approve_url=do_shortcode('[permalink slug="attente-approbation"]');
+//     	// $approve_url=get_permalink('10066');
+//     	$msg=sprintf(__( '<strong>ERROR</strong>: User pending <a href="%s">approval</a>.', 'foodiepro' ),$approve_url);
+//     	return new WP_Error( 'user_not_approved', $msg);
+//     }
+// 	else
+// 		return $user;
+// }
 
 
 
@@ -491,39 +506,16 @@ function show_user_nicename_column_content($value, $column_name, $user_id) {
 // remove_action('wp_head', 'wp_generator');
 
 
-// add_filter( 'pre_user_login', 'foodiepro_custom_user_login_id' );
+add_filter( 'pre_user_login', 'foodiepro_custom_user_login_id' );
 function foodiepro_custom_user_login_id( $sanitized_user_login ) {
-
-	/* Check if user login is same as user nicename */
-	$id = get_user_by( 'login', $sanitized_user_login );
-	$needs_update = false;
-	if ($id) {
-		$uinfo = get_userdata($id);
-    	$ulogin = $uinfo->user_login;
-		$unice = $uinfo->user_nicename;
-		if ( $ulogin == $unice ) {
-			$needs_update=true;
-		}
-	} 
-	else
-		$needs_update = true;
-
-	if (!$needs_update ) return $sanitized_user_login;
+	/* Check if new user creation or user update */
+	$update = get_user_by( 'login', $sanitized_user_login )?true:false;
+	if ($update ) return $sanitized_user_login;
 	
-    // base of user_login, change it according to ur needs
-    $ulogin = generateRandomString(10);
-
-    // make user_login unique so WP will not return error
-    $check = username_exists($ulogin);
-    if (!empty($check)) {
-        $suffix = 1;
-        while (!empty($check)) {
-            $alt_ulogin = $ulogin . $suffix;
-            $check = username_exists($alt_ulogin);
-            $suffix++;
-        }
-        $ulogin = $alt_ulogin;
-    }
+	do {
+		$ulogin = generateRandomString(10);
+		$check = username_exists($ulogin);
+	} while ($check);
 
 	return $ulogin;
 }
@@ -542,11 +534,14 @@ function generateRandomString($length = 10) {
     return $randomString;
 }
 
+
+
 /**
  * Set the display name and nickname values to user nicename
  * @param int $user_id The user ID
  */
-// add_action( 'user_register', 'set_default_display_name' );
+
+add_action( 'user_register', 'set_default_display_name' );
 function set_default_display_name( $user_id ) {
   $user = get_userdata( $user_id );
   $name = $user->user_nicename;

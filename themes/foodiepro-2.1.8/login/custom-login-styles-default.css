@@ -33,7 +33,18 @@ body.login {
 }
 
 #nav > a:first-child {
-	color: #d76642;
+  display: inline-block;
+  font-family: Oswald,sans-serif;
+  color: #676767;
+  text-decoration: underline;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+#nav > a:first-child:hover {
+  color: #d76642;
+  text-decoration: none;
 }
 
 
@@ -43,5 +54,10 @@ body.login {
   body.login {
     background:#FFFFFF;
   }
+
+  #login {
+    box-shadow: none;
+  }
+
 }
 

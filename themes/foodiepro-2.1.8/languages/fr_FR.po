@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-03-19 00:21+0100\n"
-"PO-Revision-Date: 2019-03-19 00:22+0100\n"
+"POT-Creation-Date: 2019-03-23 11:00+0100\n"
+"PO-Revision-Date: 2019-03-23 11:00+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -220,7 +220,7 @@ msgstr ""
 #: peepso/overrides/templates/widgets/userbar.tpl.php:107
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:92
 #: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:96
-#: themes/foodiepro-2.1.8/functions.php:798
+#: themes/foodiepro-2.1.8/functions.php:866
 msgid "Log Out"
 msgstr "Déconnexion"
 
@@ -496,7 +496,7 @@ msgstr "Se souvenir de moi"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:124
 #: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:131
-#: themes/foodiepro-2.1.8/functions.php:803
+#: themes/foodiepro-2.1.8/functions.php:871
 msgid "Log In"
 msgstr "Connexion"
 
@@ -507,6 +507,7 @@ msgstr "Aller sur la page d'inscription"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:128
 #: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:135
+#: themes/foodiepro-2.1.8/functions.php:417
 msgid "Not yet a member ? <br> Register here !"
 msgstr "Pas encore membre ?<br> Inscris-toi !"
 
@@ -1318,7 +1319,7 @@ msgstr "Modifier mon profil"
 
 #: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:123
 #: themes/foodiepro-2.1.8/buddypress/members/register.php:92
-#: themes/foodiepro-2.1.8/functions.php:445
+#: themes/foodiepro-2.1.8/functions.php:414
 msgid "Email Address"
 msgstr "Adresse mail"
 
@@ -2604,7 +2605,7 @@ msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr "Un problème ? Une question ? Contacte nous <a href=\"%s\">ici</a>"
 
 #: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:66
-#: themes/foodiepro-2.1.8/functions.php:897
+#: themes/foodiepro-2.1.8/functions.php:965
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
@@ -10046,63 +10047,63 @@ msgstr ""
 msgid "Save Settings"
 msgstr "Imprimer cette recette"
 
-#: themes/foodiepro-2.1.8/functions.php:422
+#: themes/foodiepro-2.1.8/functions.php:383
 msgid "Goûtu.org - La Communauté des Gourmets"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:430
+#: themes/foodiepro-2.1.8/functions.php:391
 #, fuzzy
 #| msgid "Email Address"
 msgid "Enter Email Address"
 msgstr "Adresse mail"
 
-#: themes/foodiepro-2.1.8/functions.php:431
+#: themes/foodiepro-2.1.8/functions.php:392
 msgid "Enter Password"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:432
+#: themes/foodiepro-2.1.8/functions.php:393
 #, fuzzy
 #| msgid "Remember Me"
 msgid "Remember Login State"
 msgstr "Se souvenir de moi"
 
-#: themes/foodiepro-2.1.8/functions.php:433
+#: themes/foodiepro-2.1.8/functions.php:394
 #, fuzzy
 #| msgid "Log In"
 msgid "Please Log In"
 msgstr "Connexion"
 
-#: themes/foodiepro-2.1.8/functions.php:457
+#: themes/foodiepro-2.1.8/functions.php:428
 msgid ""
 "<strong>ERROR</strong>: Invalid login. Please log in with your email address."
 msgstr ""
 "<strong>ERREUR</strong>: Identifiant invalide. Merci de vous connecter avec "
 "votre adresse mail."
 
-#: themes/foodiepro-2.1.8/functions.php:481
+#: themes/foodiepro-2.1.8/functions.php:452
 #, php-format
 msgid "<strong>ERROR</strong>: User pending <a href=\"%s\">approval</a>."
 msgstr ""
 "<strong>ERREUR</strong> : Utilisateur en attente d'<a href=\"%s"
 "\">approbation</a>."
 
-#: themes/foodiepro-2.1.8/functions.php:512
+#: themes/foodiepro-2.1.8/functions.php:468
 msgid "author"
 msgstr "auteur"
 
-#: themes/foodiepro-2.1.8/functions.php:673
+#: themes/foodiepro-2.1.8/functions.php:741
 msgid "Content/Alt Sidebar"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:857
+#: themes/foodiepro-2.1.8/functions.php:925
 msgid "Recipe, Ingredient, Keyword, Author..."
 msgstr "Recette, ingrédient, mot-clé, auteur..."
 
-#: themes/foodiepro-2.1.8/functions.php:897
+#: themes/foodiepro-2.1.8/functions.php:965
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:897
+#: themes/foodiepro-2.1.8/functions.php:965
 msgid "Legal notice"
 msgstr "Mentions légales"
 

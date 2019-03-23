@@ -15,16 +15,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 	- Actions & filters...
 */
 
-class PeepsoHelpers extends PeepsoCustomizations {
+class PeepsoHelpers  {
 
 	const PROFILE_FIELDS = array(
 		'blog_title'	=> 'Titre de votre Blog',
 	);
 
 
+	const TABS=array(
+		'blogposts',
+		'about',
+		'friends',
+		'groups',
+		'photos',
+		'media',
+	);	
+		
+
 	static function get_nav_tab() {
 		$current='stream';
-		foreach (self::$TABS as $tab) {
+		foreach (self::TABS as $tab) {
 			$match=strpos( $_SERVER['REQUEST_URI'], '/' . $tab );
 			if ($match) {
 				$current=$tab;

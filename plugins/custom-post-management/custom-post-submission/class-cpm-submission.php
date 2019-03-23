@@ -156,6 +156,7 @@ class CPM_Submission {
             $args['exclude'] = isset($options['exclude'])?$options['exclude']:'';
             $args['exclude_tree'] = isset($options['exclude_tree'])?$options['exclude_tree']:'';
             $args['orderby'] = $options['orderby'];
+            $args['child_of'] = $options['child_of'];
 
             $dropdowns[$taxonomy] = array(
                 'label' => $options['labels']['singular_name'],

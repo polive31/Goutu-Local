@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-03-23 11:00+0100\n"
-"PO-Revision-Date: 2019-03-23 14:56+0100\n"
+"POT-Creation-Date: 2019-03-23 21:39+0100\n"
+"PO-Revision-Date: 2019-03-23 21:39+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -220,7 +220,7 @@ msgstr ""
 #: peepso/overrides/templates/widgets/userbar.tpl.php:107
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:92
 #: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:96
-#: themes/foodiepro-2.1.8/functions.php:866
+#: themes/foodiepro-2.1.8/functions.php:849
 msgid "Log Out"
 msgstr "Déconnexion"
 
@@ -496,7 +496,7 @@ msgstr "Se souvenir de moi"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:124
 #: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:131
-#: themes/foodiepro-2.1.8/functions.php:871
+#: themes/foodiepro-2.1.8/functions.php:854
 msgid "Log In"
 msgstr "Connexion"
 
@@ -1254,21 +1254,25 @@ msgstr "régions"
 msgid "countries"
 msgstr "pays"
 
-#: plugins/custom-peepso-helpers/custom-peepso-helpers-loader.php:52
+#: plugins/custom-peepso-helpers/custom-peepso-overrides-loader.php:55
 msgid "<strong>Peepso Helpers</strong> requires the Peepso plugin to work."
 msgstr ""
 
-#: plugins/custom-peepso-helpers/includes/PeepsoCustomizations.php:76
+#: plugins/custom-peepso-helpers/public/class-cpo-customizations.php:34
 #, php-format
 msgid "What's new today, %s ?"
 msgstr "Quoi de neuf aujourd'hui, %s ?"
 
-#: plugins/custom-peepso-helpers/includes/PeepsoCustomizations.php:82
+#: plugins/custom-peepso-helpers/public/class-cpo-customizations.php:40
 #, php-format
 msgid "Post a message on %s's news feed..."
 msgstr "Publie un message sur le fil d'actualités de %s..."
 
-#: plugins/custom-peepso-helpers/includes/PeepsoHelpers.php:114
+#: plugins/custom-peepso-helpers/public/class-cpo-customizations.php:118
+msgid "wrote a new recipe"
+msgstr "a publié une nouvelle recette"
+
+#: plugins/custom-peepso-helpers/public/class-cpo-helpers.php:124
 #, fuzzy, php-format
 #| msgid "Update profile picture"
 msgid "Picture of %s"
@@ -1367,52 +1371,52 @@ msgstr ""
 "publication. Vous pouvez toujours modifier leur contenu, leur visibilité "
 "(privé, amis, groupes, public), ou bien aussi les supprimer."
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:244
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:245
 msgid "none"
 msgstr "aucun(e)"
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:277
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:278
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/templates/public_recipe_form.php:135
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:388
 msgid "Preview"
 msgstr "Aperçu"
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:280
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:281
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-xml/templates/before_importing.php:17
 #: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:26
 msgid "Draft"
 msgstr "Enregistrer (brouillon)"
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:283
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:284
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-xml/templates/before_importing.php:18
 msgid "Publish"
 msgstr "Publier"
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:308
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:309
 msgid "You are not authorized to access this page."
 msgstr "Vous n'êtes pas autorisé à accéder à cette page."
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:328
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:329
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-fdx/import-fdx.php:65
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-xml/import-xml.php:65
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:235
 msgid "Untitled"
 msgstr "Sans titre"
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:460
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:461
 #, php-format
 msgid "New user submission:%s"
 msgstr ""
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:473
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:474
 msgid "Unknown action."
 msgstr ""
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:569
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:570
 msgid "Post content"
 msgstr "Corps de l'article"
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:572
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:573
 #: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:6
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:16
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:43
@@ -1423,7 +1427,7 @@ msgstr "Corps de l'article"
 msgid "Description"
 msgstr ""
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:574
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:575
 msgid "Write your post here."
 msgstr ""
 "Ecrivez votre article ici. Vous pouvez joindre des liens et des images au "
@@ -1635,30 +1639,30 @@ msgid ""
 msgstr ""
 "Il est visible sur le site, et apparaît sur <a href=\"%s\">ton blog</a>."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:183
+#: plugins/custom-post-management/includes/class-cpm-assets.php:184
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_save.php:125
 #: plugins/wp-ultimate-recipe-premium/premium/helpers/recipe_columns.php:83
 msgid "Categories"
 msgstr "Catégories"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:191
+#: plugins/custom-post-management/includes/class-cpm-assets.php:192
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:69
 #: plugins/wp-ultimate-recipe-premium/core/helpers/migration/3_10_2_keywords.php:54
 #: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:70
 msgid "Keywords"
 msgstr "Mots-clés"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:200
+#: plugins/custom-post-management/includes/class-cpm-assets.php:201
 msgid "Post Title"
 msgstr "Titre de l'article"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:201
+#: plugins/custom-post-management/includes/class-cpm-assets.php:202
 #, fuzzy
 #| msgid "Post content"
 msgid "Post Content"
 msgstr "Corps de l'article"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:202
+#: plugins/custom-post-management/includes/class-cpm-assets.php:203
 msgid "Post Category"
 msgstr "Catégorie de l'article"
 
@@ -2605,7 +2609,7 @@ msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr "Un problème ? Une question ? Contacte nous <a href=\"%s\">ici</a>"
 
 #: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:66
-#: themes/foodiepro-2.1.8/functions.php:965
+#: themes/foodiepro-2.1.8/functions.php:948
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
@@ -10080,30 +10084,23 @@ msgstr ""
 "<strong>ERREUR</strong>: Identifiant invalide. Merci de vous connecter avec "
 "votre adresse mail."
 
-#: themes/foodiepro-2.1.8/functions.php:452
-#, php-format
-msgid "<strong>ERROR</strong>: User pending <a href=\"%s\">approval</a>."
-msgstr ""
-"<strong>ERREUR</strong> : Utilisateur en attente d'<a href=\"%s"
-"\">approbation</a>."
-
-#: themes/foodiepro-2.1.8/functions.php:468
+#: themes/foodiepro-2.1.8/functions.php:471
 msgid "author"
 msgstr "auteur"
 
-#: themes/foodiepro-2.1.8/functions.php:741
+#: themes/foodiepro-2.1.8/functions.php:724
 msgid "Content/Alt Sidebar"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:925
+#: themes/foodiepro-2.1.8/functions.php:908
 msgid "Recipe, Ingredient, Keyword, Author..."
 msgstr "Recette, ingrédient, mot-clé, auteur..."
 
-#: themes/foodiepro-2.1.8/functions.php:965
+#: themes/foodiepro-2.1.8/functions.php:948
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:965
+#: themes/foodiepro-2.1.8/functions.php:948
 msgid "Legal notice"
 msgstr "Mentions légales"
 
@@ -11656,6 +11653,11 @@ msgstr "Ces recettes pourraient également vous intéresser..."
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
 
+#~ msgid "<strong>ERROR</strong>: User pending <a href=\"%s\">approval</a>."
+#~ msgstr ""
+#~ "<strong>ERREUR</strong> : Utilisateur en attente d'<a href=\"%s"
+#~ "\">approbation</a>."
+
 #~ msgid "Your recipe just got published !"
 #~ msgstr "Ta recette est publiée !"
 
@@ -11801,9 +11803,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 #~ msgctxt "vowel"
 #~ msgid "All posts from %s"
 #~ msgstr "Toutes les publications d'%s"
-
-#~ msgid "Write a new article"
-#~ msgstr "Rédiger un article"
 
 #~ msgid "Favorites"
 #~ msgstr "Favoris"

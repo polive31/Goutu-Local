@@ -6,12 +6,7 @@ if ( !defined('ABSPATH') )
 	die('-1');
 
 	
-class CustomPeepsoShortcodes {
-
-	public function __construct() {
-		add_shortcode('peepso-user-avatar', array($this,'get_user_avatar_shortcode'));
-		add_shortcode('peepso-user-field', array($this,'get_user_field_shortcode'));
-	}
+class CPO_Shortcodes {
 
 	public function get_user_avatar_shortcode( $atts ) {
 		$atts = shortcode_atts( array(
@@ -50,5 +45,3 @@ class CustomPeepsoShortcodes {
 	}
 
 }
-
-new CustomPeepsoShortcodes();

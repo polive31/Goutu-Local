@@ -176,9 +176,10 @@ class CPM_Assets {
 			'post'	=> array(
 				'category' => array(
 					'multiselect' 	=> false,
-					'exclude' 		=> array('9543'),
-					'exclude_tree' 	=> array('10021'),
-					'orderby' 		=> 'name',
+					'child_of'		=> 9987,
+					'exclude' 		=> array(),
+					'exclude_tree' 	=> array(),
+					'orderby' 		=> 'description',
 					'labels'		=> array(
 						'singular_name'=>__( 'Categories', 'foodiepro' ),
 					),

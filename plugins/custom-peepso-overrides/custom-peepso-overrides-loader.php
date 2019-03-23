@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: Custom Peepso Helpers
+Plugin Name: Custom Peepso Overrides
 Plugin URI: http://goutu.org/
-Description: Custom shortcodes & widgets for Peepso plugin
+Description: Custom filters, shortcodes, helpers & widgets for Peepso plugin
 Version: 1.0
 Author: Pascal Olive
 Author URI: http://goutu.org
@@ -31,11 +31,12 @@ function check_peepso_active() {
 ------------------------------------------------------------*/
 function peepso_helpers_conditional_load() {
 	// Includes
-	require_once 'includes/PeepsoCustomizations.php';
-	require_once 'includes/PeepsoHelpers.php';
-
-	// Shortcodes
-	require_once 'shortcodes/CustomPeepsoShortcodes.php';
+	require_once 'includes/class-custom-peepso-overrides.php';
+	
+	// Public
+	require_once 'public/class-cpo-customizations.php';
+	require_once 'public/class-cpo-helpers.php';
+	require_once 'public/class-cpo-shortcodes.php';
 
 	// Widgets
 	require_once 'widgets/PeepsoCoverImageHeader.php';
@@ -44,6 +45,8 @@ function peepso_helpers_conditional_load() {
 	require_once 'widgets/PeepsoActivityStreamWidget.php';
 	require_once 'widgets/PeepsoProfileCompletionWidget.php';
 	require_once 'widgets/PeepsoAboutWidget.php';
+
+	new Custom_Peepso_Overrides();
 
 }
 

@@ -118,9 +118,9 @@
 						do_action('peepso_action_render_user_name_before', $PeepSoUser->get_id());
 
 						if ($blog_title)
-							echo sprintf( __("%s's Blog",'foodiepro'), $PeepSoUser->get_username() );
+							echo sprintf( __("%s's Blog",'foodiepro'), ucfirst($PeepSoUser->get_nicename()) );
 						else	
-							echo ucfirst( $PeepSoUser->get_username() );
+							echo ucfirst( $PeepSoUser->get_nicename() );
 
 						//[peepso]_[action]_[WHICH_PLUGIN]_[WHERE]_[WHAT]_[BEFORE/AFTER]
 						do_action('peepso_action_render_user_name_after', $PeepSoUser->get_id());

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2019-03-23 11:00+0100\n"
-"PO-Revision-Date: 2019-03-23 11:00+0100\n"
+"PO-Revision-Date: 2019-03-23 14:56+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -112,7 +112,7 @@ msgstr "Changer mon image d'en-tête"
 #: peepso/overrides/templates/profile/focus.php:121
 #, php-format
 msgid "%s's Blog"
-msgstr "Le Blog de %s"
+msgstr "Le blog de %s"
 
 #: peepso/overrides/templates/profile/profile-about-account.php:32
 #, fuzzy

@@ -64,87 +64,82 @@ class CustomArchiveHeadline extends CustomNavigationHelpers {
 
 		$msg='';
 
+		$headline = get_term_meta( $this->query->term_id, 'headline', true );
+		if ( empty($headline) ) {
+			$parent = $this->query->parent;
+			$headline = get_term_meta( $parent, 'headline', true );
+		}
+		if ( !empty($headline) ) {
+			$msg = '<span class="archive-image">' . do_shortcode( '[wp_custom_image_category]' ) . '</span>' . $headline;
+			return $msg;
+		}		
+		
+		/* Check archive type */
+		if ( !empty( $this->queryvars['author'] ) ) {
+			$id=$this->queryvars['author'];
+			$user=get_userdata( $id );
+			$name=$user->user_nicename;
+			$type=$this->queryvars['post_type'];
+
+			$msg = $this->post_from_msg( $type, $name );
+		}
+		elseif ( !empty( $this->queryvars['author_name'] ) ) {
+			$name=$this->queryvars['author_name'];
+			$type=$this->queryvars['post_type'];
+			
+			$msg = $this->post_from_msg( $type, $name );
+		}			
+		elseif ( is_tax('ingredient') ) {
+			$ingredient = $this->query->name;
+			if ( initial_is_vowel($ingredient) )
+			$msg=sprintf(_x('All recipes containing %s','vowel','foodiepro'), $ingredient);
+			else 
+			$msg=sprintf(_x('All recipes containing %s','consonant','foodiepro'), $ingredient);		
+		}
+		
+		elseif ( is_tax('cuisine') ) {
+			$msg = $this->post_from_msg( 'recipe', $term);
+		}
+		
+		elseif ( is_tax('course') ) {
+			$course=$this->queryvars['course'];
+			$term='';
+			
+			if ($this->queryvars['season']) {
+				$term=$this->queryvars['season'];
+				$msg = $this->course_of_msg( $course, $term);
+			}
+			elseif ( !empty($_GET['author']) ) {
+				$user = get_user_by( 'slug', $_GET['author'] );
+				$user=PeepsoHelpers::get_user( $user->ID );
+				$term=PeepsoHelpers::get_field($user, "nicename");
+				$msg = $this->course_of_msg( $course, $term);
+			}
+			else 
+			$msg = single_term_title( '', false);
+		}			
+		elseif ( is_tax() || is_tag() ) { 
+			$msg = single_term_title( '', false);
+		}
 		/* If a custom headline was set for this archive then return it */
-		if ( get_class($this->query)=='WP_Post_Type' ) {
+		elseif ( get_class($this->query)=='WP_Post_Type' ) {
 			// Return the post type queried
 			$msg = $this->get_post_type_archive_title( $this->queryvars['post_type'] );			
 		}
 		else {
-			$headline = get_term_meta( $this->query->term_id, 'headline', true );
-			if ( empty($headline) ) {
-				$parent = $this->query->parent;
-				$headline = get_term_meta( $parent, 'headline', true );
-			}
-			if ( !empty($headline) ) {
-				$msg = '<span class="archive-image">' . do_shortcode( '[wp_custom_image_category]' ) . '</span>' . $headline;
-				return $msg;
-			}		
-			
-			/* Check archive type */
-			if ( is_author() ) {
-				$id=$this->queryvars['author'];
-				$user=PeepsoHelpers::get_user($id);
-				$name=PeepsoHelpers::get_field($user, "nicename");
-				$type=$this->queryvars['post_type'];
-				
-				$msg = $this->post_from_msg( $type, $name );
-			}
-			
-			elseif ( is_tax('ingredient') ) {
-				$ingredient = $this->query->name;
-				if ( initial_is_vowel($ingredient) )
-				$msg=sprintf(_x('All recipes containing %s','vowel','foodiepro'), $ingredient);
-				else 
-				$msg=sprintf(_x('All recipes containing %s','consonant','foodiepro'), $ingredient);		
-			}
-			
-			elseif ( is_tax('cuisine') ) {
-				$msg = $this->post_from_msg( 'recipe', $term);
-			}
-			
-			elseif ( is_tax('course') ) {
-				$course=$this->queryvars['course'];
-				$term='';
-				
-				if ($this->queryvars['season']) {
-					$term=$this->queryvars['season'];
-					$msg = $this->course_of_msg( $course, $term);
-				}
-				elseif ( !empty($_GET['author']) ) {
-					$user = get_user_by( 'slug', $_GET['author'] );
-					$user=PeepsoHelpers::get_user( $user->ID );
-					$term=PeepsoHelpers::get_field($user, "nicename");
-					$msg = $this->course_of_msg( $course, $term);
-				}
-				else 
-				$msg = single_term_title( '', false);
-			}			
-			
-			elseif ( is_tax() || is_tag() ) { 
-				$msg = single_term_title( '', false);
-			}
-			
-			else {
-				$msg = single_term_title( '', false);
-			}
+			$msg = single_term_title( '', false);
 		}
-			
-			$msg = '<span class="archive-image">' . do_shortcode( '[wp_custom_image_category]' ) . '</span>' . $msg;
-			return $msg;
-			
-		}
+		$msg = '<span class="archive-image">' . do_shortcode( '[wp_custom_image_category]' ) . '</span>' . $msg;
+		return $msg;	
+	}
 		
-		public function get_post_type_archive_title( $post_type ) {
-			switch ($post_type) {
-				case 'recipe':
-				$title=__('All the recipes','foodiepro');
-				break;
-			case 'post':
-				$title=__('All the posts','foodiepro');
-				break;
-			default:
-				$title='';				
-		}
+	public function get_post_type_archive_title( $post_type ) {
+		if ($post_type=='recipe')
+			$title=__('All the recipes','foodiepro');
+		elseif ($post_type=='post')
+			$title=__('All the posts','foodiepro');
+		else
+			$title='';				
 		return $title;
 	}
 	

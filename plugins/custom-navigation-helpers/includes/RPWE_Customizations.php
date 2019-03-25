@@ -21,7 +21,7 @@ class RPWE_Customizations {
 		add_filter( 'rpwe_default_query_arguments', array($this, 'wprpe_query_displayed_user_posts') );
 		
 		/* Workaround for shortcodes in rpwe "after" html not executing */ 
-		add_filter( 'rpwe_markup', array($this, 'add_more_from_author_link'),15, 2 );
+		// add_filter( 'rpwe_markup', array($this, 'add_more_from_author_link'),15, 2 );
 		
 		/* Prevent redundant posts when several rpwe instances are called on the same page */
 		add_action('rpwe_loop', array($this, 'rpwe_get_queried_posts') );
@@ -36,8 +36,6 @@ class RPWE_Customizations {
 		add_filter( 'rpwe_default_query_arguments', array($this, 'wprpe_orderby_rating' ) );
 		
 	}
-
-
 
 	public function rpwe_add_author( $output, $args ) {
 		if ( !class_exists('Peepso') ) return '';
@@ -67,15 +65,17 @@ class RPWE_Customizations {
 		return $output;
 	}
 	
+	// Filter the author rpwe argument to allow dynamic value here (post's author, current user, view user...)
 	public function wprpe_query_displayed_user_posts( $args ) {
-		switch ( $args['author'] ) {
-			case 'view_user':
-			if ( !class_exists('Peepso') ) return '';
+		$author = $args['author'];
+		if ( $author=='view_user' && class_exists('Peepso') ) {
 			$args['author'] = PeepSoProfileShortcode::get_instance()->get_view_user_id();
-			break;
-			case 'post_author':
+		}
+		elseif ('post_author'==$author) {
 			$args['author'] = get_the_author_meta('ID');
-			break;
+		}
+		elseif ('current_user'==$author) {
+			$args['author'] = get_current_user_id();
 		}
 		return $args;
 	}
@@ -89,20 +89,6 @@ class RPWE_Customizations {
 			$output .= '</span>';
 		}
 		return $title . $output;
-	}
-
-	/* in social-after-content widgeted area  */
-	public function add_more_from_author_link( $html, $args ) {
-		if ( !class_exists('Peepso') ) return '';
-		$user_id=PeepSoProfileShortcode::get_instance()->get_view_user_id();
-		$user = PeepsoUser::get_instance( $user_id );
-		$name=$user->get_username();	
-		if ($args['author']=='bp_member') {
-			$html.='<p class="more-from-category">'; 
-			$html.='<a href="' . get_author_posts_url($user_id) . '">' . sprintf(_x('All posts from %s','consonant','foodiepro'), $name) . '</a>';
-			$html.='</p>';
-		}
-		return $html;
 	}
 
 	// $rpwe_exclude_posts=array();

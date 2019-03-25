@@ -1,4 +1,4 @@
-<?php
+	<?php
 /**
  * Various functions used by the plugin.
  *
@@ -294,14 +294,14 @@ function rpwe_get_posts( $args = array() ) {
 
 	// Query arguments.
 	$query = array(
-		'offset'              => $args['offset'],
-		'posts_per_page'      => $args['limit'],
-		'orderby'             => $args['orderby'],
-		'order'               => $args['order'],
-		'post_type'           => $args['post_type'],
-		'post_status'         => $args['post_status'],
-		'ignore_sticky_posts' => $args['ignore_sticky'],
-		'author' => $args['author'],
+		'offset'              	=> $args['offset'],
+		'posts_per_page'      	=> $args['limit'],
+		'orderby'             	=> $args['orderby'],
+		'order'               	=> $args['order'],
+		'post_type'           	=> $args['post_type'],
+		'post_status'         	=> $args['post_status'],
+		'ignore_sticky_posts' 	=> $args['ignore_sticky'],
+		'author' 				=> $args['author'],
 	);
 
 	// Exclude current post

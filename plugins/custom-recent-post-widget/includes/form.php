@@ -179,7 +179,7 @@
 			<?php _e( 'Limit to Author', 'recent-posts-widget-extended' ); ?>
 		</label>
 		<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'author' ); ?>" name="<?php echo $this->get_field_name( 'author' ); ?>" value="<?php echo esc_attr( $instance['author'] ); ?>" />
-		<small><?php _e( 'Ex: 1, view_user, post_author ...', 'rpwe' );?></small>
+		<small><?php _e( 'Ex: 24, current_user, view_user, post_author ...', 'rpwe' );?></small>
 	</p>	
 	
 

@@ -97,7 +97,7 @@ class PeepsoHelpers  {
 				$url = get_site_url();
 				if ( !empty($subpage) )
 					$url = add_query_arg( 'post_type', $subpage, $url);
-				$url = add_query_arg( 'author', $user->get_id(), $url);
+				$url = add_query_arg( 'author_name', $user->get_nicename(), $url);
 				break;	
 
 			case 'profile':
@@ -121,7 +121,7 @@ class PeepsoHelpers  {
 		$user = self::get_user( $user );
 		if (!$user) return;
 
-		$html = '<img class="avatar user-' . $user->get_id() . '-avatar" src="' . $user->get_avatar( $size ) . '" alt="' . sprintf( __('Picture of %s','foodiepro') , ucfirst($user->get_username()) ) . '">';
+		$html = '<img class="avatar" src="' . $user->get_avatar( $size ) . '" alt="' . sprintf( __('Picture of %s','foodiepro') , ucfirst($user->get_username()) ) . '">';
 		
 		if ( !empty($link) ) {
 			$html = '<a class="' . $aclass . '" href="' . self::get_url($user, 'profile') . '">' . $html . '</a>';

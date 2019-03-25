@@ -446,21 +446,24 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 	}
 
 
-	/* Output permalink of a given post id
+	/* Output permalink of any page
 	------------------------------------------------------*/
 
 	public function get_permalink($atts, $content='') {
 		$atts = shortcode_atts(array(
+			/* Source parameters */
 			'id' 	=> '',
-			'class' => '',
 			'slug' 	=> false,
 			'tax' 	=> false,
 			'wp' 	=> false, // home, login
-			'user' 	=> false, // current, view, any user ID
-			'user_page' => false, // current, view, any user ID
-			'user_tab' => false, // current, view, any user ID
+			'user' 	=> false, // current, view, author, any user ID
 			'peepso' => false, // members
+			/* Display parameters */
+			'class' => '',
+			'display' => false, // archive, profile
+			'type' => false, // post type : post, recipe OR peepso profile tab : about, activity...
 			'text' 	=> false,  // html link is output if not empty
+			/* Google Analytics parameters */
 			'data' 	=> false, // "attr1 val1 attr2 val2  ..." separate with spaces 
 			'ga' 	=> false, // ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue] ); separate by spaces
 
@@ -473,18 +476,45 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		$ga=$ga?explode(' ', $ga):false;
 	
 		$url='#';
-		if ($id) 
+		$token=''; /* Replacement token for display text */
+		if ($id) {
 			$url=get_permalink($id);
-		elseif ($tax)
-			$url=get_term_link((string) $slug, (string) $tax);			
+		}
+		elseif ($tax) {
+			if (!empty($slug))
+				$url=get_term_link((string) $slug, (string) $tax);			
+		}
 		elseif ($slug) {
 			// $url=get_permalink(get_page_by_path($slug));			
 			$url=$this->get_page_by_slug($slug);			
 		}
-		elseif ($user){
-			if ( class_exists('PeepsoHelpers') ) {
-				$user = PeepsoHelpers::get_user( $user );
-				$url = PeepsoHelpers::get_url( $user, $user_page, $user_tab );
+		elseif ($user) {
+			// Define user 
+			if ($user=='current') {
+				$user_id = get_current_user_id();
+			}
+			elseif ($user=='author') {
+				$user_id = get_the_author_meta('ID');
+			}
+			elseif ($user=='view' && class_exists('Peepso') ) {
+				$user_id = PeepSoProfileShortcode::get_instance()->get_view_user_id();
+			}
+			else {
+				$user_id = $user;
+			}
+			// Define display url 
+			if ($display=='archive') {
+				$url = get_site_url();
+				$user = get_user_by('id', $user_id);
+				$token = $user->data->user_nicename;
+				$url = add_query_arg( 'author_name', $token , $url);
+				if ( !empty($type) )
+					$url = add_query_arg( 'post_type', $type, $url);
+			}
+			elseif ( $display=='profile' && class_exists('Peepso') ) {
+				$peepso_user = PeepsoUser::get_instance( $user_id );
+				$url = PeepsoHelpers::get_url( $peepso_user, $display, $type );
+				$token = $peepso_user->get_nicename();
 			}
 		}
 		elseif ($wp) {
@@ -494,7 +524,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 				$url = wp_login_url();
 		}
 		elseif ($peepso) {
-			if ($peepso=='members') {
+			if ($peepso=='members'  && class_exists('Peepso') ) {
 				$url = PeepSo::get_page('members');
 			}
 		}
@@ -504,7 +534,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 		}
 
 		if ( $content || $text ) 
-			return '<a class="' . $class . '" id="' . $id . '" ' . $this->get_data( $data ) . ' href="' . $url . '" onclik="' . $this->get_ga( $ga ) . '">' . $text . $content . '</a>';
+			return '<a class="' . $class . '" id="' . $id . '" ' . $this->get_data( $data ) . ' href="' . $url . '" onclik="' . $this->get_ga( $ga ) . '">' . sprintf( $text . $content, $token ) . '</a>';
 		else 
 			return $url;
 	}

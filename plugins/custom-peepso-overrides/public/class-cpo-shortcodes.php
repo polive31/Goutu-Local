@@ -26,8 +26,8 @@ class CPO_Shortcodes {
 		$a = shortcode_atts( array(
 			'user' 		=> 'current',	// view, author, ID... 
         	'field' 	=> 'nicename',	// pseudo, avatar, cover
-			'page' 		=> 'profile', 	// archive
-			'subpage' 	=> '', 			// about, recipe, post... 
+			'page' 		=> 'profile', 	// 
+			'subpage' 	=> '', 			// about
 			'class' => '', 				// 
 		), $a );
 

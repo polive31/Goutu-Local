@@ -81,10 +81,10 @@ class CustomSiteMails {
 
 		$Assets = new CPM_Assets(); 
 		$subject = CPM_Assets::get_label( $post->post_type, 'comment_publish_title');
-		$content = CPM_Assets::get_label( $post->post_type, 'comment_publish_content');
+		$content_original = CPM_Assets::get_label( $post->post_type, 'comment_publish_content');
 
 		$subject = sprintf( $subject, ucfirst($comment_author));
-		$content = sprintf( $content, ucfirst($comment_author), get_permalink($post), $post->post_title);
+		$content = sprintf( $content_original, ucfirst($comment_author), get_permalink($post), $post->post_title);
 
 		$to = get_the_author_meta('user_email', $post->post_author);
 	
@@ -107,6 +107,15 @@ class CustomSiteMails {
 		$user = PeepsoHelpers::get_user( $post->post_author );
 		$message = $this->populate_template($data, $user, self::PROVIDER.'_generic' );
 		$this->send_mail( $to, $subject, $message );
+
+		/* Send Peepso notification */
+
+		$MODULE_ID = 1;
+		$author_id = $post->post_author;
+		$owner_id = $commentdata['user_ID'];
+		$notification_msg = sprintf( _x('commented your post <a href="%s">%s</a>', 'post', 'foodiepro'), get_permalink($post), $post->post_title);
+		$note = new PeepSoNotifications();
+		$note->add_notification( $owner_id, $author_id, $notification_msg, 'user_comment', $MODULE_ID, $post_id);
 	}
 
 

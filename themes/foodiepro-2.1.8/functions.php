@@ -462,7 +462,7 @@ THIS FUNCTION USELESS & CONFLICTING */
 
 
 /* =================================================================*/
-/* =              CUSTOM URLS     
+/* =              REWRITE RULES 
 /* =================================================================*/
 
 add_action('init', 'custom_author_base');
@@ -471,6 +471,18 @@ function custom_author_base() {
     $author_slug = __('author', 'foodiepro'); // the new slug name
     $wp_rewrite->author_base = $author_slug;
 }
+
+// add_action('generate_rewrite_rules', 'generate_author_rewrite_rules');
+// function generate_author_rewrite_rules() {
+// 	global $wp_rewrite;
+// 	$new_rules = array(
+// 	"writer/([^/]+)/?" => "index.php?author_name=".$wp_rewrite->preg_index(1),
+// 	"writer/([^/]+)/page/?([0-9]{1,})/?" => "index.php?author_name=".$wp_rewrite->preg_index(1)."&paged=".$wp_rewrite->preg_index(2),
+// 	"writer/([^/]+)/(feed|rdf|rss|rss2|atom)/?" => "index.php?author_name=".$wp_rewrite->preg_index(1)."&feed=".$wp_rewrite->preg_index(2),
+// 	"writer/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?" => "index.php?author_name=".$wp_rewrite->preg_index(1)."&feed=".$wp_rewrite->preg_index(2)
+// 	);
+// 	$wp_rewrite->rules = $new_rules + $wp_rewrite->rules;
+// }
 
 /* =================================================================*/
 /* =              COMMENTS

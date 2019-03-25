@@ -151,27 +151,29 @@ class CPM_Assets {
 		
 		$default_labels = array(
 			'post' => array(
-				'title'				=> _x( 'Post Title', 'post', 'foodiepro' ),
-				'edit_button'		=> _x( 'Edit Post', 'post', 'foodiepro' ),
-				'new_button'		=> _x( 'New Post', 'post', 'foodiepro' ),
-				'new1'				=> _x( 'Write your new post on this page.', 'post', 'foodiepro' ),
-                'new2'				=> _x( 'You can then choose to save it as draft, or to publish it. Once approved, it will be visible to others according to your visibility preferences.', 'post', 'foodiepro' ),
-				'edit1'				=> _x( 'Edit your existing post on this page.', 'post', 'foodiepro' ),
-                'edit2' 			=> _x( 'You can then choose to save it as draft, or to publish it. Once approved, it wil be visible to others according to your visibility preferences.', 'post', 'foodiepro' ),
-				'draft1'			=> _x( 'Post saved as a draft.','post', 'foodiepro'),
-				'draft2'			=> _x( 'It will not be visible on the site, but you can edit it at any time and submit it later.','post','foodiepro'),
-				'back'				=> _x( 'Back to <a href="%s">my posts</a>.', 'post', 'foodiepro'),
-				'publish-admin'		=> _x( 'Dear administrator, this post is now <a href="%s">published</a>.', 'post', 'foodiepro' ),
-				'publish-user'		=> _x( 'Post submitted! Thank you, your post is now awaiting moderation.', 'post', 'foodiepro' ),
-				'required'			=> _x( 'In order for your post to be published, please fill-in those required fields:', 'post', 'foodiepro' ),
-				'noposts'			=> _x('You have no posts yet.', 'post', 'foodiepro'),
-		    	'mail_title'		=> _x('Your post just got published !', 'post', 'foodiepro'),
-		    	'mail_content'		=> _x('Greetings, your post <a href="%s">%s</a> just got published !', 'post', 'foodiepro'),
-				'mail_content1'		=> _x('It is visible on the website, and appears on <a href="%s">your blog</a>.', 'post','foodiepro'),		
+				'title'						=> _x( 'Post Title', 'post', 'foodiepro' ),
+				'edit_button'				=> _x( 'Edit Post', 'post', 'foodiepro' ),
+				'new_button'				=> _x( 'New Post', 'post', 'foodiepro' ),
+				'new1'						=> _x( 'Write your new post on this page.', 'post', 'foodiepro' ),
+                'new2'						=> _x( 'You can then choose to save it as draft, or to publish it. Once approved, it will be visible to others according to your visibility preferences.', 'post', 'foodiepro' ),
+				'edit1'						=> _x( 'Edit your existing post on this page.', 'post', 'foodiepro' ),
+                'edit2' 					=> _x( 'You can then choose to save it as draft, or to publish it. Once approved, it wil be visible to others according to your visibility preferences.', 'post', 'foodiepro' ),
+				'draft1'					=> _x( 'Post saved as a draft.','post', 'foodiepro'),
+				'draft2'					=> _x( 'It will not be visible on the site, but you can edit it at any time and submit it later.','post','foodiepro'),
+				'back'						=> _x( 'Back to <a href="%s">my posts</a>.', 'post', 'foodiepro'),
+				'publish-admin'				=> _x( 'Dear administrator, this post is now <a href="%s">published</a>.', 'post', 'foodiepro' ),
+				'publish-user'				=> _x( 'Post submitted! Thank you, your post is now awaiting moderation.', 'post', 'foodiepro' ),
+				'required'					=> _x( 'In order for your post to be published, please fill-in those required fields:', 'post', 'foodiepro' ),
+				'noposts'					=> _x( 'You have no posts yet.', 'post', 'foodiepro'),
+		    	'post_publish_title'		=> _x( 'Your post just got published !', 'post', 'foodiepro'),
+		    	'post_publish_content'		=> _x( 'Greetings, your post <a href="%s">%s</a> just got published !', 'post', 'foodiepro'),
+				'post_publish_content1' 	=> _x( 'It is visible on the website, and appears on <a href="%s">your blog</a>.', 'post','foodiepro'),	
+		    	'comment_publish_title'		=> _x( '%s commented one of your posts', 'post', 'foodiepro'),
+		    	'comment_publish_content'	=> _x( '%s added a comment to your post <a href="%s">%s</a> :', 'post', 'foodiepro'),
 			),
 		);
 		self::$labels = apply_filters( 'cpm_labels', $default_labels );		
-		
+
         $default_taxonomies=array(
 			'post'	=> array(
 				'category' => array(

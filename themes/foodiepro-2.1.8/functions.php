@@ -482,6 +482,14 @@ function foodiepro_approve_loggedin_users( $approved ) {
     return is_user_logged_in() ? 1 : $approved;
 }
 
+// Seems to be added by default in Wordpress/Genesis
+// add_action( 'comment_form_before', 'foodiepro_enqueue_comment_reply_script' );
+function foodiepro_enqueue_comment_reply_script() {
+    if ( get_option( 'thread_comments' ) ) {
+        wp_enqueue_script( 'comment_reply' );
+    }
+}
+
 /* =================================================================*/
 /* =              SECURITY
 /* =================================================================*/

@@ -35,7 +35,7 @@ function peepso_helpers_conditional_load() {
 	
 	// Public
 	require_once 'public/class-cpo-customizations.php';
-	require_once 'public/class-cpo-helpers.php';
+	require_once 'public/class-peepso-helpers.php';
 	require_once 'public/class-cpo-shortcodes.php';
 
 	// Widgets
@@ -55,5 +55,6 @@ function peepso_helpers_install_notice() {
 	_e('<strong>Peepso Helpers</strong> requires the Peepso plugin to work.');
 	echo '</p></div>';
 }
+
 
 

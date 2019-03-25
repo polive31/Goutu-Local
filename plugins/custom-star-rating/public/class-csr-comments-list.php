@@ -8,6 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class CSR_Comments_List {
 	
+
 	
 	public function remove_recipe_comments_form() {
 		if ( is_singular( 'recipe' ) ) {
@@ -18,6 +19,11 @@ class CSR_Comments_List {
 		}
 	}
 
+
+	/* ****************************************************************
+										CUSTOM COMMENTS LIST	
+	****************************************************************/
+		
 	public function custom_comment_text() {
 		$title = __('Comments','genesis');
 		return ('<h3>' . $title . '</h3>');
@@ -32,19 +38,6 @@ class CSR_Comments_List {
 	public function custom_comments_next_link_text() {
 		$text = __('Next comments','foodiepro');
 		return $text;
-	}
-
-	public function customize_comment_form($fields) { 
-	  unset($fields['url']);
-	  return $fields;
-	}
-
-	public function change_comment_form_defaults( $defaults ) {
-	  $defaults['logged_in_as'] = '';
-	  $defaults['id_form'] = 'respond';
-	  $defaults['title_reply_to'] = __('Your answer here','foodiepro');
-	  $defaults['comment_field'] = '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>';
-	  return $defaults;
 	}
 
 	public function add_comments_title_markup($html) {

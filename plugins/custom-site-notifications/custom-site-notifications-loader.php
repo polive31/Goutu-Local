@@ -22,4 +22,8 @@ require_once 'public/mails/CustomSiteMails.php';
 require_once 'public/popups/CustomSitePopups.php';
 
 
-new CustomSiteNotifications();
+/* Start plugin */
+add_action( 'wp_loaded', 'csn_start_plugin' );
+function csn_start_plugin() {
+	new CustomSiteNotifications();
+}

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-03-23 21:39+0100\n"
+"POT-Creation-Date: 2019-03-25 00:16+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -30,23 +30,23 @@ msgstr ""
 "X-Poedit-SearchPath-8: plugins/custom-star-rating\n"
 "X-Poedit-SearchPath-9: plugins/custom-site-notifications\n"
 "X-Poedit-SearchPath-10: plugins/custom-social-sharing-buttons\n"
-"X-Poedit-SearchPath-11: plugins/custom-peepso-helpers\n"
-"X-Poedit-SearchPath-12: plugins/custom-post-management\n"
-"X-Poedit-SearchPath-13: plugins/custom-recipe-management\n"
-"X-Poedit-SearchPath-14: peepso\n"
+"X-Poedit-SearchPath-11: plugins/custom-post-management\n"
+"X-Poedit-SearchPath-12: plugins/custom-recipe-management\n"
+"X-Poedit-SearchPath-13: peepso\n"
+"X-Poedit-SearchPath-14: plugins/custom-peepso-overrides\n"
 
 #: peepso/overrides/templates/activity/activity.php:51
 #: peepso/overrides/templates/activity/activity.php:52
 #: peepso/overrides/templates/profile/profile.php:27
 #: peepso/overrides/templates/profile/profile.php:28
-#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:58
-#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:59
+#: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:58
+#: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:59
 msgid "No posts found."
 msgstr ""
 
 #: peepso/overrides/templates/activity/activity.php:53
 #: peepso/overrides/templates/profile/profile.php:29
-#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:60
+#: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:60
 msgid "Nothing more to show."
 msgstr ""
 
@@ -201,7 +201,7 @@ msgid "Edit"
 msgstr ""
 
 #: peepso/overrides/templates/profile/profile-about.php:168
-#: plugins/custom-peepso-helpers/widgets/PeepsoAboutWidget.php:73
+#: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:73
 msgid "Sorry, no data to show"
 msgstr ""
 
@@ -212,7 +212,7 @@ msgstr ""
 #: peepso/overrides/templates/widgets/userbar.tpl.php:59
 #: peepso/overrides/templates/widgets/userbar.tpl.php:107
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:92
-#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:96
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:96
 #: themes/foodiepro-2.1.8/functions.php:849
 msgid "Log Out"
 msgstr ""
@@ -391,7 +391,7 @@ msgstr ""
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:107
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:110
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:87
-#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:107
+#: plugins/custom-peepso-overrides/widgets/PeepsoLatestRegisteredMembers.php:107
 #: plugins/custom-recipe-management/widgets/crm_lists_dropdown_widget.php:70
 #: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:47
 msgid "New title"
@@ -412,11 +412,11 @@ msgstr ""
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:111
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:119
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:91
-#: plugins/custom-peepso-helpers/widgets/PeepsoAboutWidget.php:119
-#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:86
-#: plugins/custom-peepso-helpers/widgets/PeepsoCoverImageHeader.php:84
-#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:191
-#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:116
+#: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:119
+#: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:86
+#: plugins/custom-peepso-overrides/widgets/PeepsoCoverImageHeader.php:84
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:191
+#: plugins/custom-peepso-overrides/widgets/PeepsoLatestRegisteredMembers.php:116
 #: plugins/custom-recipe-management/widgets/crm_lists_dropdown_widget.php:74
 #: plugins/custom-recipe-management/widgets/crm_nutrition_label_widget.php:60
 #: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:51
@@ -443,7 +443,7 @@ msgid "(Buddypress) Member Cover Image Header"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-cover-image-header.php:28
-#: plugins/custom-peepso-helpers/widgets/PeepsoCoverImageHeader.php:20
+#: plugins/custom-peepso-overrides/widgets/PeepsoCoverImageHeader.php:20
 msgid "Displays the cover image header of the current displayed user"
 msgstr ""
 
@@ -453,7 +453,7 @@ msgid "(BuddyPress) Custom Log In"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:40
-#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:33
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:33
 msgid ""
 "Show a Log In form to logged-out visitors, and a Log Out link to those who are "
 "logged in, with full resolution avatar."
@@ -465,28 +465,28 @@ msgid "Username"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:119
-#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:126
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:126
 msgid "Password"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:122
-#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:129
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:129
 msgid "Remember Me"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:124
-#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:131
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:131
 #: themes/foodiepro-2.1.8/functions.php:854
 msgid "Log In"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:128
-#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:135
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:135
 msgid "Register for a new account"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:128
-#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:135
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:135
 #: themes/foodiepro-2.1.8/functions.php:417
 msgid "Not yet a member ? <br> Register here !"
 msgstr ""
@@ -496,13 +496,13 @@ msgid "(Buddypress) Custom latest registered members"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-latest-registered-members-widget.php:29
-#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:30
+#: plugins/custom-peepso-overrides/widgets/PeepsoLatestRegisteredMembers.php:30
 msgid "Displays latest registered members"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-latest-registered-members-widget.php:120
 #: plugins/custom-buddypress-helpers/widgets/BP-my-friends-widget.php:128
-#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:122
+#: plugins/custom-peepso-overrides/widgets/PeepsoLatestRegisteredMembers.php:122
 msgid "Number of users to show"
 msgstr ""
 
@@ -569,27 +569,27 @@ msgid "Displays profile completion bar (requires Buddy Progress Bar plugin)"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-profile-completion-widget.php:44
-#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:163
+#: plugins/custom-peepso-overrides/widgets/PeepsoProfileCompletionWidget.php:163
 msgid "Widget Title"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-profile-completion-widget.php:49
-#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:168
+#: plugins/custom-peepso-overrides/widgets/PeepsoProfileCompletionWidget.php:168
 msgid "Message:"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-profile-completion-widget.php:105
-#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:71
+#: plugins/custom-peepso-overrides/widgets/PeepsoProfileCompletionWidget.php:71
 msgid "Profile completed !"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-profile-completion-widget.php:106
-#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:72
+#: plugins/custom-peepso-overrides/widgets/PeepsoProfileCompletionWidget.php:72
 msgid "Profile empty !"
 msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-profile-completion-widget.php:116
-#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:87
+#: plugins/custom-peepso-overrides/widgets/PeepsoProfileCompletionWidget.php:87
 #, php-format
 msgid ""
 "<a href=\"%s\">Fill-in your profile</a> to make yourself visible from other "
@@ -1171,89 +1171,89 @@ msgstr ""
 msgid "countries"
 msgstr ""
 
-#: plugins/custom-peepso-helpers/custom-peepso-overrides-loader.php:55
+#: plugins/custom-peepso-overrides/custom-peepso-overrides-loader.php:55
 msgid "<strong>Peepso Helpers</strong> requires the Peepso plugin to work."
 msgstr ""
 
-#: plugins/custom-peepso-helpers/public/class-cpo-customizations.php:34
+#: plugins/custom-peepso-overrides/public/class-cpo-customizations.php:29
 #, php-format
 msgid "What's new today, %s ?"
 msgstr ""
 
-#: plugins/custom-peepso-helpers/public/class-cpo-customizations.php:40
+#: plugins/custom-peepso-overrides/public/class-cpo-customizations.php:35
 #, php-format
 msgid "Post a message on %s's news feed..."
 msgstr ""
 
-#: plugins/custom-peepso-helpers/public/class-cpo-customizations.php:118
+#: plugins/custom-peepso-overrides/public/class-cpo-customizations.php:113
 msgid "wrote a new recipe"
 msgstr ""
 
-#: plugins/custom-peepso-helpers/public/class-cpo-helpers.php:124
+#: plugins/custom-peepso-overrides/public/class-peepso-helpers.php:124
 #, php-format
 msgid "Picture of %s"
 msgstr ""
 
-#: plugins/custom-peepso-helpers/widgets/PeepsoAboutWidget.php:19
+#: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:19
 msgid "(Peepso) Peepso Profile Details"
 msgstr ""
 
-#: plugins/custom-peepso-helpers/widgets/PeepsoAboutWidget.php:20
+#: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:20
 msgid "Displays chosen details about a given user"
 msgstr ""
 
-#: plugins/custom-peepso-helpers/widgets/PeepsoAboutWidget.php:125
+#: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:125
 msgid "Fields visibility :"
 msgstr ""
 
-#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:19
+#: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:19
 msgid "(Peepso) Configurable Activity Stream"
 msgstr ""
 
-#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:20
+#: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:20
 msgid "Displays the filtered activity stream of a given user"
 msgstr ""
 
-#: plugins/custom-peepso-helpers/widgets/PeepsoActivityStreamWidget.php:91
+#: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:91
 msgid "Number of items to display"
 msgstr ""
 
-#: plugins/custom-peepso-helpers/widgets/PeepsoCoverImageHeader.php:19
+#: plugins/custom-peepso-overrides/widgets/PeepsoCoverImageHeader.php:19
 msgid "(Peepso) Member Cover Image Header"
 msgstr ""
 
-#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:31
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:31
 msgctxt "Title of the login widget"
 msgid "(Peepso) Custom Log In"
 msgstr ""
 
-#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:90
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:90
 msgid "Edit my profile"
 msgstr ""
 
-#: plugins/custom-peepso-helpers/widgets/PeepsoCustomLoginWidget.php:123
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:123
 #: themes/foodiepro-2.1.8/buddypress/members/register.php:92
 #: themes/foodiepro-2.1.8/functions.php:414
 msgid "Email Address"
 msgstr ""
 
-#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:28
+#: plugins/custom-peepso-overrides/widgets/PeepsoLatestRegisteredMembers.php:28
 msgid "(Peepso) Latest registered members"
 msgstr ""
 
-#: plugins/custom-peepso-helpers/widgets/PeepsoLatestRegisteredMembers.php:89
+#: plugins/custom-peepso-overrides/widgets/PeepsoLatestRegisteredMembers.php:89
 msgid "All the members"
 msgstr ""
 
-#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:28
+#: plugins/custom-peepso-overrides/widgets/PeepsoProfileCompletionWidget.php:28
 msgid "(Peepso) Profile completion"
 msgstr ""
 
-#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:29
+#: plugins/custom-peepso-overrides/widgets/PeepsoProfileCompletionWidget.php:29
 msgid "Displays profile completion bar"
 msgstr ""
 
-#: plugins/custom-peepso-helpers/widgets/PeepsoProfileCompletionWidget.php:83
+#: plugins/custom-peepso-overrides/widgets/PeepsoProfileCompletionWidget.php:83
 #, php-format
 msgid "Keep it up, %s"
 msgstr ""
@@ -1410,19 +1410,19 @@ msgid "Are you sure you want to delete this post :"
 msgstr ""
 
 #: plugins/custom-post-management/includes/class-cpm-assets.php:143
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:387
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:389
 #, php-format
 msgid "Authorized file formats are : %s"
 msgstr ""
 
 #: plugins/custom-post-management/includes/class-cpm-assets.php:145
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:389
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:391
 #, php-format
 msgid "The maximum file size is %s kB"
 msgstr ""
 
 #: plugins/custom-post-management/includes/class-cpm-assets.php:146
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:390
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:392
 msgid "Do you really want to delete this image ?"
 msgstr ""
 
@@ -1523,28 +1523,40 @@ msgid ""
 "It is visible on the website, and appears on <a href=\"%s\">your blog</a>."
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:184
+#: plugins/custom-post-management/includes/class-cpm-assets.php:171
+#, php-format
+msgctxt "post"
+msgid "%s commented one of your posts"
+msgstr ""
+
+#: plugins/custom-post-management/includes/class-cpm-assets.php:172
+#, php-format
+msgctxt "post"
+msgid "%s added a comment to your post <a href=\"%s\">%s</a> :"
+msgstr ""
+
+#: plugins/custom-post-management/includes/class-cpm-assets.php:186
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_save.php:125
 #: plugins/wp-ultimate-recipe-premium/premium/helpers/recipe_columns.php:83
 msgid "Categories"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:192
+#: plugins/custom-post-management/includes/class-cpm-assets.php:194
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:69
 #: plugins/wp-ultimate-recipe-premium/core/helpers/migration/3_10_2_keywords.php:54
 #: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:70
 msgid "Keywords"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:201
+#: plugins/custom-post-management/includes/class-cpm-assets.php:203
 msgid "Post Title"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:202
+#: plugins/custom-post-management/includes/class-cpm-assets.php:204
 msgid "Post Content"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:203
+#: plugins/custom-post-management/includes/class-cpm-assets.php:205
 msgid "Post Category"
 msgstr ""
 
@@ -1850,37 +1862,49 @@ msgid ""
 "It is visible on the website, and appears on <a href=\"%s\">your blog</a>."
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:200
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:144
+#, php-format
+msgctxt "recipe"
+msgid "%s commented one of your posts"
+msgstr ""
+
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:145
+#, php-format
+msgctxt "recipe"
+msgid "%s added a comment to your post <a href=\"%s\">%s</a> :"
+msgstr ""
+
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:202
 msgctxt "recipe"
 msgid "Are you sure you want to delete this post :"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:234
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:236
 #: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:84
 msgid "Print this Recipe"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:261
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:263
 msgid "Read previous step"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:262
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:264
 msgid "Read next step"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:263
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:265
 msgid "Read this step again"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:264
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:266
 msgid "Pause reading"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:265
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:267
 msgid "Continue reading"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:266
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:268
 msgid "Stop reading and close player"
 msgstr ""
 
@@ -2425,84 +2449,53 @@ msgstr ""
 msgid "Serving Size"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:50
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:153
+msgid "Share this recipe on Facebook"
+msgstr ""
+
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:155
+msgid "Share this recipe on Twitter"
+msgstr ""
+
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:157
+msgid "Share this recipe on Pinterest"
+msgstr ""
+
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:159
+msgid "Share this recipe by email"
+msgstr ""
+
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:161
+msgid "Share this recipe on Whatsapp"
+msgstr ""
+
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:193
 #, php-format
 msgid "Hello %s,"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:54
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:197
 #, php-format
 msgid "The <a href=\"%s\">Goûtu.org</a> Team."
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:60
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:203
 #, php-format
 msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:66
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:209
 #: themes/foodiepro-2.1.8/functions.php:948
 msgid "All rights reserved"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:70
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:213
 msgid "Want to change how you receive these emails?"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:71
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:214
 #, php-format
 msgid "You can <a href=\"%s\">update your preferences</a> on %s."
-msgstr ""
-
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:123
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:206
-msgid "Share this recipe on Facebook"
-msgstr ""
-
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:125
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:208
-msgid "Share this recipe on Twitter"
-msgstr ""
-
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:127
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:210
-msgid "Share this recipe on Pinterest"
-msgstr ""
-
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:129
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:212
-msgid "Share this recipe by email"
-msgstr ""
-
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:131
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:214
-msgid "Share this recipe on Whatsapp"
-msgstr ""
-
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:166
-msgid "Welcome to Goûtu.org !"
-msgstr ""
-
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:167
-msgid ""
-"Greetings, you have successfully activated your account, and we are glad to "
-"count you as one of our members !"
-msgstr ""
-
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:242
-#, php-format
-msgid ""
-"Hey Toto, thanks for registering ! To complete the activation of your account, "
-"go to the following link and click on the \"Activate\" button: %s. If the "
-"\"Activation Key\" field is empty, copy and paste the following into the "
-"field : <strong>%s</strong> "
-msgstr ""
-
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:243
-#, php-format
-msgid ""
-"After successful activation, you can log in using your username (%1$s) along "
-"with password you choose during registration process."
 msgstr ""
 
 #: plugins/custom-site-notifications/public/popups/CustomSitePopups.php:67

@@ -25,8 +25,8 @@ require 'includes/class-custom-star-rating.php';
 require 'includes/class-csr-assets.php';
 
 require 'public/class-csr-comments-list.php';
-require 'public/class-csr-meta.php';
-require 'public/class-csr-shortcodes.php';
+require 'public/class-csr-rating.php';
+require 'public/class-csr-form.php';
 
 	
 /* Chargement du text domain */

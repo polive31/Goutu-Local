@@ -34,18 +34,19 @@ class CustomScriptsStylesEnqueue {
 			'name-directory-style' 	=> array(
 				'file' 		=> '/assets/css/name_directory.css',  
 			),
-			/* Force stylesheet update by using CHILD_THEME_VERSION */
-			'peepso-custom' 	=> array(
-				'file' 		=> '/peepso/custom.css', 
-			),			
+			/* Force Peepso custom stylesheet update by using CHILD_THEME_VERSION */
+			// 'peepso-custom' 	=> array(
+			// 	'file' 		=> '/peepso/custom.css', 
+			// ),			
 			'peepso-jquery-ui' 		=> array(
 				'file'		=> '/assets/css/datepicker.css', 
-		),
+			),
 	);
 
 	// Stylesheets to be loaded conditionnally
 	private $css_if = array(
 			// 'custom-star-ratings' 				=> array('page' => 'blog-page'),
+			// 'peepso'							=> array('page' => 'social'),
 			'peepso-custom'						=> array('true' => ''),
 			'yarppRelatedCss' 					=> array('singular' => 'post recipe' ),
 			'custom-lightbox'					=> array('singular' => 'post recipe' ),

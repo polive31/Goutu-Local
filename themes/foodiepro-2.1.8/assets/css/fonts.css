@@ -109,6 +109,7 @@ select,
 textarea, 
 ul.wpuf-form li .wpuf-fields a.file-selector, 
 a.comment-reply-link,
+a#cancel-comment-reply-link,
 .frontier-list-item-content#frontier-post-actions a,
 .wp-caption-text,
 .site-description,
@@ -117,6 +118,11 @@ a.comment-reply-link,
 	font-family: sans-serif;
 	font-weight: 400;
 	padding: 7px 10px;	
+}
+
+a.comment-reply-link,
+a#cancel-comment-reply-link {
+    font-size: 1.2rem;
 }
 
 .comment-reply textarea,

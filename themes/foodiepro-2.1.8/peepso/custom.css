@@ -43,6 +43,11 @@
     font-size: 14px;
 }
 
+/* Warnings */
+.ps-alert-warning {
+    background-color: #ff6e6e;
+    font-size: 1.6rem;
+}
 
 
 /* Avatar */

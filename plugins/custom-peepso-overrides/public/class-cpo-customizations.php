@@ -20,11 +20,6 @@ class CPO_Customizations {
 		// return $links;
 	// }
 
-	public function blogposts_custom_post_types( $post_types ) {
-		$post_types[]='recipe';
-		return $post_types;
-	}
-
 	public function custom_postbox_message( $msg ) {		
 		$PeepSoProfile=PeepSoProfile::get_instance();
 		if ( $PeepSoProfile->is_current_user() ) {
@@ -52,8 +47,8 @@ class CPO_Customizations {
      * @param WP_Post 	$post
      * @return bool (FALSE - posting, post type disabled/blacklisted, TRUE - success, NULL - already added)
      */
+    
     function blogposts_publish_recipe( $ID, $post ) {
-
         // is this a regular post?
 		if( 'recipe' != $post->post_type )			               							{	return( FALSE );	}
 

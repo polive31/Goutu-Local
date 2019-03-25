@@ -643,8 +643,10 @@
     <tbody><tr>
         <td class="mcnCaptionBottomImageContent" align="center" valign="top" style="padding:0 9px 9px 9px;">
         
-            <img alt="%%TITLE%%" src="%%IMAGE_URL%%" width="300" style="max-width:300px;" class="mcnImage">
-        
+            <?php if (!empty( '%%IMAGE_URL%%' )) { ?>
+              <img alt="%%TITLE%%" src="%%IMAGE_URL%%" width="300" style="max-width:300px;" class="mcnImage">
+            <?php } ?>  
+
         </td>
     </tr>
     <tr>
@@ -657,10 +659,6 @@
         </td>
     </tr>
 </tbody></table>
-
-
-
-
 
             </td>
         </tr>

@@ -77,7 +77,12 @@ class CustomSiteMails {
 		$post_id = $commentdata['comment_post_ID'];
 		$post = get_post( $post_id );
 
-		$comment_author = $commentdata['comment_author'];
+		if ( !empty($commentdata['user_ID'])) {
+			$user= get_userdata( $commentdata['user_ID'] );
+			$comment_author = $user->user_nicename;
+		}
+		else
+			$comment_author = $commentdata['comment_author'];
 
 		$Assets = new CPM_Assets(); 
 		$subject = CPM_Assets::get_label( $post->post_type, 'comment_publish_title');

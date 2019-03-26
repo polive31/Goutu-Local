@@ -42,7 +42,7 @@ class Custom_Post_Template {
 		$post_type = get_post_type();
 		
 		$avatar = do_shortcode('[peepso-user-avatar user="author" page="profile" wraptag="span" wrapclass="entry-avatar"]');
-		$profile = do_shortcode('[peepso-user-field user="author" page="profile"]');
+		$profile = do_shortcode('[permalink user="author" display="profile"]%s[/permalink]');
 		$date = do_shortcode('[post_date]');
 		$post_info = sprintf(__('Published on %s by %s<span id="username">%s</span>', 'foodiepro'), $date, $avatar, $profile);
 		

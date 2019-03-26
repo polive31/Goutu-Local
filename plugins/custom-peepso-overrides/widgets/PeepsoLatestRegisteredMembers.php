@@ -76,8 +76,8 @@ class CustomPeepsoLatestRegisteredMembers extends WP_Widget {
 		foreach ($users as $user) {
 			echo '<div class="ps-widget__members-item">';
 			$peepsoUser = PeepSoUser::get_instance( $user->ID );
-			echo '<a class="ps-avatar ps-avatar--' . $size . '" href="' . $peepsoUser->get_profileurl() . '" title="' . ucfirst( $peepsoUser->get_username() ) . '">';
-			echo '<img class="ps-name-tips" id="square" src="' . $peepsoUser->get_avatar( $size ) . '" alt="' . $peepsoUser->get_username() . '">';
+			echo '<a class="ps-avatar ps-avatar--' . $size . '" href="' . $peepsoUser->get_profileurl() . '" title="' . ucfirst( $peepsoUser->get_nicename() ) . '">';
+			echo '<img class="ps-name-tips" id="square" src="' . $peepsoUser->get_avatar( $size ) . '" alt="' . $peepsoUser->get_nicename() . '">';
 			echo '</a>';
 			echo '</div>';
 		}

@@ -507,13 +507,15 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 				$url = get_site_url();
 				$user = get_user_by('id', $user_id);
 				$token = $user->data->user_nicename;
+				
 				$url = add_query_arg( 'author_name', $token , $url);
 				if ( !empty($type) )
 					$url = add_query_arg( 'post_type', $type, $url);
 			}
 			elseif ( $display=='profile' && class_exists('Peepso') ) {
 				$peepso_user = PeepsoUser::get_instance( $user_id );
-				$url = PeepsoHelpers::get_url( $peepso_user, $display, $type );
+				$url = $peepso_user->get_profileurl();
+				$url .= $type;
 				$token = $peepso_user->get_nicename();
 			}
 		}

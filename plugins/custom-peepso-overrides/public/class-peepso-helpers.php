@@ -70,7 +70,7 @@ class PeepsoHelpers  {
 	static function get_field( $user, $field ) {
 		switch ($field) {
 			case "pseudo" :
-				$html=$user->get_username();
+				$html=$user->get_nicename();
 				break;
 			case "firstname" : 
 				$html=$user->get_firstname();

@@ -22,7 +22,7 @@ class Custom_Peepso_Overrides {
 
 		$Shortcodes = new CPO_Shortcodes();
 		add_shortcode('peepso-user-avatar', 			array($Shortcodes,'get_user_avatar_shortcode'));
-		add_shortcode('peepso-user-field', 				array($Shortcodes,'get_user_field_shortcode'));
+		// add_shortcode('peepso-user-field', 				array($Shortcodes,'get_user_field_shortcode'));
 
 	}
 

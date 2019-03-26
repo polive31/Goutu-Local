@@ -41,7 +41,7 @@ class RPWE_Customizations {
 		if ( !class_exists('Peepso') ) return '';
 		if ( $args['display_author'] == '1') {
 			$user = PeepsoUser::get_instance( get_the_author_meta( 'ID' ) );
-			$name = $user->get_username();
+			$name = $user->get_nicename();
 			$url = $user->get_profileurl();
 			$link = '<a href="' . $url . '">' . $name . '</a>';
 			$output .= '<span class="rpwe-author">' . sprintf(__('by %s','foodiepro'), $link ) . '</span>';

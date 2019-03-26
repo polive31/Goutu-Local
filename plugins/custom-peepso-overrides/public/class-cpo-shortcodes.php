@@ -22,26 +22,26 @@ class CPO_Shortcodes {
 		return $html;
 	}
 	
-	public function get_user_field_shortcode( $a, $content ) {	
-		$a = shortcode_atts( array(
-			'user' 		=> 'current',	// view, author, ID... 
-        	'field' 	=> 'nicename',	// pseudo, avatar, cover
-			'page' 		=> 'profile', 	// 
-			'subpage' 	=> '', 			// about
-			'class' => '', 				// 
-		), $a );
+	// public function get_user_field_shortcode( $a, $content ) {	
+	// 	$a = shortcode_atts( array(
+	// 		'user' 		=> 'current',	// view, author, ID... 
+    //     	'field' 	=> 'nicename',	// pseudo, avatar, cover
+	// 		'page' 		=> 'profile', 	// 
+	// 		'subpage' 	=> '', 			// about
+	// 		'class' => '', 				// 
+	// 	), $a );
 
-		extract($a);
-		$content = empty($content)?'%s':esc_html($content);
+	// 	extract($a);
+	// 	$content = empty($content)?'%s':esc_html($content);
 		
-		$user = PeepsoHelpers::get_user( $user );
-		$html = PeepsoHelpers::get_field( $user, $field );
+	// 	$user = PeepsoHelpers::get_user( $user );
+	// 	$html = PeepsoHelpers::get_field( $user, $field );
 
-		if ( !empty($page) ) {
-			$html = '<a class="' . $class . '" href="' . PeepsoHelpers::get_url( $user, $page, $subpage ) . '">' . sprintf( $content, $html) . '</a>';
-		}	
+	// 	if ( !empty($page) ) {
+	// 		$html = '<a class="' . $class . '" href="' . PeepsoHelpers::get_url( $user, $page, $subpage ) . '">' . sprintf( $content, $html) . '</a>';
+	// 	}	
 
-		return $html;    	
-	}
+	// 	return $html;    	
+	// }
 
 }

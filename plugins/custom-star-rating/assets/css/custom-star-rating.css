@@ -54,14 +54,6 @@ td.rating-title {
     width: 100%;
 }
 
-span.like-count {
-    font-family: sans-serif;
-    font-size: 1.6rem;
-    color: #bababa;
-    vertical-align: top;
-    display: inline-block;
-    letter-spacing: 2px;
-}
 
 /* Rating table formatting
 --------------------------------*/

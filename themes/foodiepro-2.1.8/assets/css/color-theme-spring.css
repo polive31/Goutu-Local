@@ -18,7 +18,7 @@
 .no-js .home .site-header,
 .no-webp .home .site-header {
 	/*background-image:url("../../images/theme/background-spring/background-l.jpg"),url("../../images/theme/background-spring/background-r.jpg");*/
-	background-image:url("../../images/theme/header-spring.jpg");
+	background-image:url("../../images/theme/header-classic.jpg");
 	background-size:cover;
 }
 
@@ -26,7 +26,7 @@
 .webp .site-header,
 .webp .home .site-header {
 	/*background-image:url("../../images/theme/background-spring/background-l.webp"),url("../../images/theme/background-spring/background-r.webp");*/
-	background-image:url("../../images/theme/header-spring.webp");
+	background-image:url("../../images/theme/header-classic.webp");
 	background-size:cover;
 }
 

@@ -27,7 +27,7 @@ class Custom_Social_Interactions_Shortcodes extends Custom_Social_Interactions {
 		$count = $this->like_count($post_id);
 
 		if ($a['icon']) {
-			$html = '<span class="like-count" title="' . sprintf( _n( '%s like', '%s likes', $count, 'foodiepro'), $count) . '"><i class="fa fa-thumbs-o-up">' . $count . '</i></span>';
+			$html = '<span class="like-count ' . ($count==0?'nolike':'') . '" title="' . sprintf( _n( '%s like', '%s likes', $count, 'foodiepro'), $count) . '"><i class="fa fa-thumbs-o-up">' . $count . '</i></span>';
 		}
 		else {
 			$html = sprintf( _n( '%s like', '%s likes', $count, 'foodiepro'), $count);

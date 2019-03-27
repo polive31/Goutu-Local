@@ -2373,18 +2373,6 @@ a.wpurp-recipe-print:before {
 	content:"\f02f"; /* fa-print */
 }
 
-a.custom-recipe-favorite:before {
-	/*content:"\f08a"; /* fa-heart-o */
-	/*content:"\f097"; /* fa-bookmark-o */
-}
-
-a.custom-recipe-favorite.is-favorite:before {
-	/*content:"\f004"; /* fa-heart */
-	/*content:"\f02e"; /* fa-bookmark */
-}
-
-
-
 a.social-like-post:before {
 	content:"\f087"; /* fa-thumbs-o-up */
 }
@@ -2392,6 +2380,20 @@ a.social-like-post:before {
 a.social-like-post.is-liked:before {
 	content:"\f164"; /* fa-thumbs-up */
 }
+
+.like-count {
+	font-family: sans-serif;
+	font-size: 1.6rem;
+	color: #525252;
+	vertical-align: top;
+	display: inline-block;
+	letter-spacing: 2px;
+}
+
+.like-count.nolike {
+	color: #bababa;
+}
+
 
 a.wpurp-recipe-add-to-shopping-list:before {
 	content:"\f07a"; /* fa-cart */ 

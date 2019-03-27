@@ -13,7 +13,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>%%TITLE%%</title>
+        <title><?=$title?></title>
         
     <style type="text/css">
     p{
@@ -603,7 +603,7 @@
                             <td class="mcnImageContent" valign="top" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; text-align:center;">
                                 
                                     
-                                        <img align="center" alt="" src="%%LOGO%%" width="358" style="max-width:358px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
+                                        <img align="center" alt="" src="<?=$logo?>" width="358" style="max-width:358px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
                                     
                                 
                             </td>
@@ -643,18 +643,18 @@
     <tbody><tr>
         <td class="mcnCaptionBottomImageContent" align="center" valign="top" style="padding:0 9px 9px 9px;">
         
-            <?php if (!empty( '%%IMAGE_URL%%' )) { ?>
-              <img alt="%%TITLE%%" src="%%IMAGE_URL%%" width="300" style="max-width:300px;" class="mcnImage">
+            <?php if ( $image_url ) { ?>
+              <img alt="<?=$title?>" src="<?=$image_url?>" width="300" style="max-width:300px;" class="mcnImage">
             <?php } ?>  
 
         </td>
     </tr>
     <tr>
         <td class="mcnTextContent" valign="top" style="padding:0 9px 0 9px;" width="564">
-            <h1>%%HEADLINE%%</h1>
+            <h1><?=$headline?></h1>
 
-<p>%%CONTENT%%<br>
-%%SIGNATURE%%</p>
+<p><?=$content?><br>
+<?=$signature?></p>
 
         </td>
     </tr>
@@ -698,7 +698,7 @@
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            %%CONTACT%%
+                            <?=$contact?>
                         </td>
                     </tr>
                 </tbody></table>
@@ -764,7 +764,7 @@
                                                                         <tbody><tr>
                                                                             
                                                                                 <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
-                                                                                    <a href="%%TWITTER_URL%%" title="%%TWITTER_TEXT%%" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-twitter-48.png" style="display:block;" height="24" width="24" class=""></a>
+                                                                                    <a href="<?=$twitter_url?>" title="<?=$twitter_text?>" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-twitter-48.png" style="display:block;" height="24" width="24" class=""></a>
                                                                                 </td>
                                                                             
                                                                             
@@ -796,7 +796,7 @@
                                                                         <tbody><tr>
                                                                             
                                                                                 <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
-                                                                                    <a href="%%FACEBOOK_URL%%" title="%%FACEBOOK_TEXT%%" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-facebook-48.png" style="display:block;" height="24" width="24" class=""></a>
+                                                                                    <a href="<?=$facebook_url?>" title="<?=$facebook_text?>" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-facebook-48.png" style="display:block;" height="24" width="24" class=""></a>
                                                                                 </td>
                                                                             
                                                                             
@@ -828,7 +828,7 @@
                                                                         <tbody><tr>
                                                                             
                                                                                 <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
-                                                                                    <a href="%%PINTEREST_URL%%" title="%%PINTEREST_TEXT%%" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-pinterest-48.png" style="display:block;" height="24" width="24" class=""></a>
+                                                                                    <a href="<?=$pinterest_url?>" title="<?=$pinterest_text?>" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-pinterest-48.png" style="display:block;" height="24" width="24" class=""></a>
                                                                                 </td>
                                                                             
                                                                             
@@ -860,7 +860,7 @@
                                                                         <tbody><tr>
                                                                             
                                                                                 <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
-                                                                                    <a href="mailto:%%MAIL_URL%%" title="%%MAIL_TEXT%%" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-forwardtofriend-48.png" style="display:block;" height="24" width="24" class=""></a>
+                                                                                    <a href="mailto:<?=$mail_url?>" title="<?=$mail_text?>" target="_blank"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/color-forwardtofriend-48.png" style="display:block;" height="24" width="24" class=""></a>
                                                                                 </td>
                                                                             
                                                                             
@@ -914,9 +914,9 @@
                         
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                         
-                            <em>Copyright © %%COPYRIGHT%%.</em><br>
+                            <em>Copyright © <?=$copyright?>.</em><br>
 <br>
-%%UNSUBSCRIBE%%
+<?=$unsubscribe?>
                         </td>
                     </tr>
                 </tbody></table>

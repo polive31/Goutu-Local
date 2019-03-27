@@ -105,7 +105,7 @@ class CustomSiteMails {
 		$data = array(
 			'title' 		=> $post->post_title,
 			'headline' 		=> $headline,
-			'image_url' 	=> $img_url,					    	
+			'image_url' 	=> false,					    	
 			'content' 		=> $content,
 		);
 
@@ -144,7 +144,8 @@ class CustomSiteMails {
 
 
 	public function populate_template( $data, $user, $template ) {
-		$logo = CSN_Assets::plugin_url() . 'assets/img/logo.png';
+		// $logo = CSN_Assets::plugin_url() . 'assets/img/logo.png';
+		$logo = CHILD_THEME_URL . '/images/theme/logo-white/logo_360_150.png';
 
 		$facebook_url = CustomSocialButtons::facebookURL($post);
 		$twitter_url = CustomSocialButtons::twitterURL($post);
@@ -157,35 +158,30 @@ class CustomSiteMails {
 		$copyright = $this->copyright();
 		$unsubscribe = $this->unsubscribe( $user );		
 
-		$default = array(
-			'contact' 		=> $contact,
-			'signature' 	=> $signature,
-			'logo'			=> $logo,
-			'copyright' 	=> $copyright,
-			'unsubscribe' 	=> $unsubscribe,
-			'facebook_url' 	=> $facebook_url,
-			'facebook_text' => __('Share this recipe on Facebook','foodiepro'),
-			'twitter_url' 	=> $twitter_url,
-			'twitter_text' 	=> __('Share this recipe on Twitter','foodiepro'),
-			'pinterest_url' => $pinterest_url,
-			'pinterest_text'=> __('Share this recipe on Pinterest','foodiepro'),
-			'mail_url' 		=> $mail_url,
-			'mail_text' 	=> __('Share this recipe by email','foodiepro'),
-			'whatsapp_url' 	=> $whatsapp_url,
-			'whatsapp_text' => __('Share this recipe on Whatsapp','foodiepro'),	
-		);
+		$facebook_text 	= __('Share this recipe on Facebook','foodiepro');
+		$twitter_text 	= __('Share this recipe on Twitter','foodiepro');
+		$pinterest_text = __('Share this recipe on Pinterest','foodiepro');
+		$mail_text 		= __('Share this recipe by email','foodiepro');
+		$whatsapp_text 	= __('Share this recipe on Whatsapp','foodiepro');
 
-		$data = array_merge( $data, $default);
+		extract($data);
 
 		$path = CSN_Assets::plugin_path() . 'public/mails/partials/' . $template . '.php';
-		$html = file_get_contents( $path );
-		$pattern = '/' . self::TAG . '(.*?)' . self::TAG . '/i';
-		// if (preg_match_all("/$tag(.*?)$tag/i", $html, $m)) {
-		if (preg_match_all($pattern, $html, $m)) {
-		    foreach ($m[1] as $i => $varname) {
-		        $html = str_replace($m[0][$i], sprintf('%s', $data[strtolower($varname)]), $html);
-		    }
-		}
+		// $html = file_get_contents( $path );
+
+        ob_start();
+        include( $path );
+        $html .= ob_get_contents();
+        ob_end_clean();
+
+
+		// $pattern = '/' . self::TAG . '(.*?)' . self::TAG . '/i';
+		// // if (preg_match_all("/$tag(.*?)$tag/i", $html, $m)) {
+		// if (preg_match_all($pattern, $html, $m)) {
+		//     foreach ($m[1] as $i => $varname) {
+		//         $html = str_replace($m[0][$i], sprintf('%s', $data[strtolower($varname)]), $html);
+		//     }
+		// }
 		// return do_shortcode($html);
 		return $html;
 	}

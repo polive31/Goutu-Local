@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2019-03-25 00:16+0100\n"
-"PO-Revision-Date: 2019-03-26 01:08+0100\n"
+"PO-Revision-Date: 2019-03-31 22:50+0200\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -2051,7 +2051,7 @@ msgstr "Arrêter la lecture et fermer le lecteur"
 
 #: plugins/custom-recipe-management/public/class-crm-ingredient.php:86
 msgid "Harvest Period"
-msgstr "Période de récolte"
+msgstr "Période de consommation idéale"
 
 #: plugins/custom-recipe-management/public/class-crm-ingredient.php:153
 msgctxt "vowel"

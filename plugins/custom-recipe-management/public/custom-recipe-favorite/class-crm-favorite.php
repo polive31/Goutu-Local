@@ -87,7 +87,7 @@ class CRM_Favorite {
             'callout'	=> false,
             'class'		=> 'favorites-form',
             'title'		=> __('Add to my cookbook', 'foodiepro'), 
-            'img'		=> CHILD_THEME_URL . '/images/page-icons/mon_carnet.png'
+            'img'		=> CHILD_THEME_URL . '/images/popup-icons/cookbook.png'
         );
         Tooltip::display( $args ); 
         }

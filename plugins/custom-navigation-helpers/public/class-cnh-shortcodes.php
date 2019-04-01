@@ -5,47 +5,13 @@
 if ( !defined('ABSPATH') )
 	die('-1');
 	
-class CustomNavigationShortcodes extends CustomNavigationHelpers {
+class CNH_Shortcodes {
 	
-	public function __construct() {
-		parent::__construct();
-		
-		// Navigation shortcodes
-		// add_shortcode('index-link', array($this,'add_index_link')); 
-		// add_shortcode('tooltip', array($this,'output_tooltip')); 
-		add_shortcode('ct-terms-menu', array($this,'list_taxonomy_terms')); 
-		add_shortcode('tags-menu', array($this,'list_tags')); 
-		add_shortcode('ct-terms', array($this,'list_terms_taxonomy'));
-		// add_shortcode('ct-dropdown', array($this,'custom_categories_dropdown_shortcode'));
-		add_shortcode('share-title', array($this,'display_share_title')); 
-		add_shortcode('wp-page-link', array($this,'display_wordpress_page_link') );	
-		add_shortcode('taxonomy-terms', array($this,'simple_list_taxonomy_terms'));	
-		
-		// Admin shortcodes
-		add_shortcode('post-count', array($this,'get_post_count'));
-		
-		// Add link shortcodes
-		add_shortcode('permalink', array($this,'get_permalink'));
-		add_shortcode('glossary', array($this,'search_glossary') );	
-		add_shortcode('search', array($this,'search_posts') );
-		add_shortcode('registration', array($this,'get_registration_page')); 
-
-		// Social shortcodes
-		add_shortcode('site-logo', array($this, 'get_site_logo_path'));
-
-		// Misc 	
-		add_shortcode('if', array($this,'display_conditionnally') );	
-		add_shortcode('debug', array($this,'show_debug_html') );	
-	
-	}
-
-
     public function get_site_logo_path( $atts ) {
     	$url = get_stylesheet_directory_uri();
     	$url = $url . '\images\fb-app-icon-512x512.png';
 		return $url;    	
     }
-
 	
 	/* Pending Posts Count
 	--------------------------------------------- */	
@@ -265,7 +231,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 			'author' => 0,		
 			// 'author' => $atts['author'],		
 			'hide_empty' => true,		
-			'orderby' => self::orderby($tax),
+			'orderby' => CNH_Assets::get_orderby($tax),
 			'order'   => 'ASC'
 		) );
 		
@@ -404,7 +370,7 @@ class CustomNavigationShortcodes extends CustomNavigationHelpers {
 			'hierarchical'		=> $hierarchical,
 			'depth' 			=> $depth,
 			'exclude' 			=> $exclude,
-			'orderby' 			=> self::orderby($tax_slug),
+			'orderby' 			=> CNH_Assets::get_orderby($tax_slug),
 			'echo' 				=> false,
 			'role__not_in'		=> array('administrator','pending'),
 			'show'				=> 'user_login'

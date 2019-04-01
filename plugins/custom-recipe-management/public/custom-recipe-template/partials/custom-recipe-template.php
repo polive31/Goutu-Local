@@ -19,7 +19,7 @@
 					<div class="recipe-buttons">
 
 					<!-- Recipe Rate Button -->
-					<!-- <div class="recipe-button alignleft <?php echo is_user_logged_in()?'tooltip-onhover':'disabled';?>" id="rate"> -->
+					<!-- <div class="recipe-button alignleft <?php //echo is_user_logged_in()?'tooltip-onhover':'disabled';?>" id="rate"> -->
 					<div class="recipe-button alignleft tooltip-onhover" id="rate">
 						<?php
 						// $ga = WP_MINIFY?is_user_logged_in()?'':"ga('send','event','join-us','click','recipe-rate', 0)":'';
@@ -38,7 +38,8 @@
 							);
 							Tooltip::display( $args );  
 							$args=array(
-								'content' 	=> do_shortcode('[comment-rating-form]'),
+								'content' => do_shortcode('[comment-rating-form]'),
+								'id'			=> 'recipe_rating_form',
 								'valign' 	=> 'above',
 								'halign'	=> 'left',
 								'action'	=> 'click',
@@ -145,7 +146,10 @@
 				<div class="info-container">
 					
 					<div class="label-container">
-						<?php echo do_shortcode('[display-star-rating display="full"]');?>
+					<?php $tooltip_id=is_user_logged_in()?'recipe_rating_form':'join_us'; ?>
+						<a href="#" data-tooltip-id="<?= $tooltip_id; ?>" class="tooltip-onclick" onClick="">
+							<?php echo do_shortcode('[display-star-rating display="full"]');?>
+						</a>
 					</div>
 
 					<?php

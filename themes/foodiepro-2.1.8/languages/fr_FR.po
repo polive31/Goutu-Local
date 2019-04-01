@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2019-03-25 00:16+0100\n"
-"PO-Revision-Date: 2019-03-31 22:50+0200\n"
+"PO-Revision-Date: 2019-04-02 00:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -2545,7 +2545,7 @@ msgstr "Commenter et noter cette recette"
 
 #: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:47
 msgid "Rate this recipe"
-msgstr "Evaluez cette recette"
+msgstr "Evaluer cette recette"
 
 #: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:111
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:137

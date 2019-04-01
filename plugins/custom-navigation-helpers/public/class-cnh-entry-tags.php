@@ -14,30 +14,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 -----------------------------------------------------------------------------*/
 
 
-class CustomArchiveEntryTags extends CustomArchiveEntries {
-
+class CNH_Entry_Tags {
 
 	public function __construct() {
-		parent::__construct();	
-		add_filter( 'rpwe_in_thumbnail', array($this, 'rpwe_add_overlay'), 10, 2 );
 
-		add_action( 'genesis_entry_header', array($this, 'do_post_title_before'), 1 );
-		add_action( 'genesis_entry_header', array($this, 'do_post_title_after') );
 	}
 
 
 	/* RPWE TAG FORMATTING
 	----------------------------------------------------------*/
-	public function rpwe_add_overlay($output, $args) {
-		$disp_overlay = substr($args['cssID'],3,1);
-		////foodiepro_log( array('WPRPE Output add rating'=>$output) );
-		if ( $disp_overlay == '1') {
-			$post_id = get_the_ID();
-			$origin = $this->get_post_term( $post_id, 'cuisine', 'names');
-			$output .= $this->output_tags( $origin, null, null, null);
-		}
-		return $output;
-	}
+	// public function rpwe_add_overlay($output, $args) {
+	// 	$disp_overlay = substr($args['cssID'],3,1);
+	// 	////foodiepro_log( array('WPRPE Output add rating'=>$output) );
+	// 	if ( $disp_overlay == '1') {
+	// 		$post_id = get_the_ID();
+	// 		$origin = $this->get_post_term( $post_id, 'cuisine', 'names');
+	// 		$output .= $this->output_tags( $origin, null, null, null);
+	// 	}
+	// 	return $output;
+	// }
 
 
 	/* ENTRY TAG FORMATTING

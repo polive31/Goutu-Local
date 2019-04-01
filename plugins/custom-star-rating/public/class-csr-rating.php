@@ -367,6 +367,23 @@ class CSR_Rating {
 	}
 	
 
+	/* ===========================================================================
+	/* ===================         ARCHIVE              =======================
+	/* =========================================================================== */
+
+	public function sort_entries_by_rating($query) {
+		// Select any archive. For custom post type use: is_post_type_archive( $post_type )
+		//if (is_archive() || is_search() ): => ne pas utiliser car r�sultats de recherche non relevants
+	  	if ( !is_post_type_archive( CSR_Assets::post_types() ) ) return;
+		$order=get_query_var('orderby', ASC);
+		if ($order=='rating') {
+			$query->set( 'orderby', 'meta_value_num' );
+			$query->set( 'meta_key', 'user_rating_global' );
+			$query->set( 'order', 'DESC' );
+		}
+		
+	}		
+
 
 	/* ===========================================================================
 	/* ===================         DEPRECATED              =======================

@@ -16,7 +16,7 @@ class Custom_Star_Rating {
 
 	public function __construct() {	
 
-		/* Hooks for CSR_Assets class
+		/* Hooks for CSR_Assets class (static)
 		-----------------------------------------------------------------*/		
 		add_action( 'wp',                                       'CSR_Assets::hydrate' );
 		add_filter( 'wpurp_register_ratings_taxonomy',          'CSR_Assets::translate_ratings_taxonomy' );
@@ -27,10 +27,12 @@ class Custom_Star_Rating {
         -----------------------------------------------------------------*/		
         $Rating = new CSR_Rating();
         add_shortcode( 'json-ld-rating', 			            array( $Rating, 'display_json_ld_rating_shortcode') );
-		add_shortcode( 'display-star-rating',                  array( $Rating, 'display_star_rating_shortcode') );
+		add_shortcode( 'display-star-rating',                  	array( $Rating, 'display_star_rating_shortcode') );
         add_action( 'comment_post',                             array( $Rating, 'update_comment_post_meta'), 10, 3 );
 		add_action( 'transition_comment_status',                array( $Rating, 'comment_status_change_callback'), 10, 3 );	
 		add_action( 'save_post',                                array( $Rating, 'add_default_rating' ) );
+		/* Support order by rating archives */
+		add_action( 'pre_get_posts',                            array( $Rating, 'sort_entries_by_rating' ) );
         
 		
 		/* Hooks for CSR_Comments_List class

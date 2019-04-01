@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2019-03-25 00:16+0100\n"
-"PO-Revision-Date: 2019-04-02 00:36+0200\n"
+"PO-Revision-Date: 2019-04-02 00:54+0200\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -1649,7 +1649,7 @@ msgstr "%s a commenté un de tes articles"
 #, php-format
 msgctxt "post"
 msgid "%s added a comment to your post <a href=\"%s\">%s</a> :"
-msgstr "%s a commenté ton article <a href=\"%s\">%s</a> :"
+msgstr "%s a commenté ton article <a href=\"%s\">%s</a>."
 
 #: plugins/custom-post-management/includes/class-cpm-assets.php:186
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_save.php:125
@@ -2013,7 +2013,7 @@ msgstr "%s a commenté une de tes recettes"
 #, php-format
 msgctxt "recipe"
 msgid "%s added a comment to your post <a href=\"%s\">%s</a> :"
-msgstr "%s a commenté ta recette <a href=\"%s\">%s</a> :"
+msgstr "%s a commenté ta recette <a href=\"%s\">%s</a>."
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:202
 msgctxt "recipe"

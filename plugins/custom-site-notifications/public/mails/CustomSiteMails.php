@@ -16,17 +16,17 @@ class CustomSiteMails {
 	const TAG = '%%';
 
 	/* $target argument is used by the [custom-functions-debug] debug shortcode in functions.php */
-	public function __construct( $target='production' ) {	
+	public function __construct( $target='production' ) {
 		$this->headers[] = 'Bcc: ' . get_bloginfo('admin_email');
 		$this->target = $target;
 	}
 
 	/* *****************************************************************
 						CALLBACKS
-	********************************************************************/	
+	********************************************************************/
 
-	public function published_post_notification_callback( $post ) {	
-		$Assets = new CPM_Assets(); 
+	public function published_post_notification_callback( $post ) {
+		$Assets = new CPM_Assets();
 		$subject = CPM_Assets::get_label( $post->post_type, 'post_publish_title');
 		$content = CPM_Assets::get_label( $post->post_type, 'post_publish_content');
 		$content1 = CPM_Assets::get_label( $post->post_type, 'post_publish_content1');
@@ -50,29 +50,29 @@ class CustomSiteMails {
 		$data = array(
 			'title' 		=> $post->post_title,
 			'headline' 		=> $headline,
-			'image_url' 	=> $img_url,					    	
+			'image_url' 	=> $img_url,
 			'content' 		=> $content . $content1,
 		);
-		
+
 		$message = $this->populate_template($data, $user, self::PROVIDER.'_generic' );
 		$this->send_mail( $to, $subject, $message );
 	}
-	
+
 	public function insert_comment_callback( $comment_ID, $comment_approved, $commentdata) {
 		if ($comment_approved) {
 			$this->send_comment_publish_mail( $commentdata );
 		}
 	}
 
-	public function transition_comment_callback( $new_status, $old_status, $comment ) {	
+	public function transition_comment_callback( $new_status, $old_status, $comment ) {
 		if ($new_status!='approved') return;
 
 		$commentdata = (array)$comment;
 		$this->send_comment_publish_mail( $commentdata);
 
-	}	
-	
-	
+	}
+
+
 	public function send_comment_publish_mail( $commentdata ) {
 		$post_id = $commentdata['comment_post_ID'];
 		$post = get_post( $post_id );
@@ -84,7 +84,7 @@ class CustomSiteMails {
 		else
 			$comment_author = $commentdata['comment_author'];
 
-		$Assets = new CPM_Assets(); 
+		$Assets = new CPM_Assets();
 		$subject = CPM_Assets::get_label( $post->post_type, 'comment_publish_title');
 		$content_original = CPM_Assets::get_label( $post->post_type, 'comment_publish_content');
 
@@ -92,20 +92,20 @@ class CustomSiteMails {
 		$content = sprintf( $content_original, ucfirst($comment_author), get_permalink($post), $post->post_title);
 
 		$to = get_the_author_meta('user_email', $post->post_author);
-	
+
 		if ( !$to ) return false;
-	
+
 		$to_name = ucfirst(get_the_author_meta('display_name', $post->post_author));
 		$headline = wpautop(sprintf($this->hello(), $to_name));
-	
+
 		$content = sprintf( $content, get_permalink($post), $post->post_title);
 		$content = wpautop( $content );
-		$content .= wpautop( '<div style="padding:5px;background:#f1f1f1;font-family:serif;font-style:italic;">' . $commentdata['comment_content'] . '</div>');
-	
+		// $content .= wpautop( '<div style="padding:5px;background:#f1f1f1;font-family:serif;font-style:italic;">' . $commentdata['comment_content'] . '</div>');
+
 		$data = array(
 			'title' 		=> $post->post_title,
 			'headline' 		=> $headline,
-			'image_url' 	=> false,					    	
+			'image_url' 	=> false,
 			'content' 		=> $content,
 		);
 
@@ -124,12 +124,12 @@ class CustomSiteMails {
 	}
 
 
-	
+
 	/* *****************************************************************
 								HELPERS
-	********************************************************************/	
+	********************************************************************/
 
-	public function send_mail( $to, $subject, $message ) {	
+	public function send_mail( $to, $subject, $message ) {
 		$headers = $this->headers();
 		if ( $this->target == 'debug' ) {
 			echo "From name : " . $this->site_name() . " <br>";
@@ -138,9 +138,9 @@ class CustomSiteMails {
 			echo "Subject : $subject<br>";
 			echo "Message : $message<br>";
 		}
-		else 
+		else
 			wp_mail( $to, $subject, $message, $headers );
-	}	
+	}
 
 
 	public function populate_template( $data, $user, $template ) {
@@ -151,12 +151,12 @@ class CustomSiteMails {
 		$twitter_url = CustomSocialButtons::twitterURL($post);
 		$pinterest_url = CustomSocialButtons::pinterestURL($post);
 		$mail_url = CustomSocialButtons::mailURL($post, $post->post_type);
-		$whatsapp_url = CustomSocialButtons::whatsappURL($post, $post->post_type);		
+		$whatsapp_url = CustomSocialButtons::whatsappURL($post, $post->post_type);
 
 		$signature = $this->signature();
 		$contact = $this->contact();
 		$copyright = $this->copyright();
-		$unsubscribe = $this->unsubscribe( $user );		
+		$unsubscribe = $this->unsubscribe( $user );
 
 		$facebook_text 	= __('Share this recipe on Facebook','foodiepro');
 		$twitter_text 	= __('Share this recipe on Twitter','foodiepro');
@@ -188,7 +188,7 @@ class CustomSiteMails {
 
 
 	/* *****************************************************************
-							GETTERS 
+							GETTERS
 	********************************************************************/
 
 	public function headers() {
@@ -213,18 +213,18 @@ class CustomSiteMails {
 		$contact =  __('Any problem or question ? Contact us <a href="%s">here</a>','foodiepro');
 		$contact = sprintf($contact, 'mailto:' . $this->contact_address() );
 		return wpautop($contact);
-	}	
+	}
 
 	public function copyright() {
 		return do_shortcode('[footer_copyright before="' . __('All rights reserved','foodiepro') . ' " first="2015"]');
-	}	
+	}
 
 	public function unsubscribe( $user ) {
 		$unsubscribe = __('Want to change how you receive these emails?','foodiepro');
 		$unsubscribe1 = __('You can <a href="%s">update your preferences</a> on %s.','foodiepro');
 		$unsubscribe1 = sprintf( $unsubscribe1, PeepsoHelpers::get_url( $user, 'profile', 'about' ), get_bloginfo());
 		return $unsubscribe . '<br>' . $unsubscribe1;
-	}			
+	}
 
 	public function site_name( $from_name='' ) {
 		$from_name = get_bloginfo( 'name' );

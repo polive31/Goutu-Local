@@ -1,20 +1,20 @@
-<?php 
+<?php
 
 
 // Block direct requests
 if ( !defined('ABSPATH') )
 	die('-1');
-	
+
 class CNH_Shortcodes {
-	
+
     public function get_site_logo_path( $atts ) {
     	$url = get_stylesheet_directory_uri();
     	$url = $url . '\images\fb-app-icon-512x512.png';
-		return $url;    	
+		return $url;
     }
-	
+
 	/* Pending Posts Count
-	--------------------------------------------- */	
+	--------------------------------------------- */
 	public function get_post_count( $atts ) {
 		//Let's not loose time if user doesn't have the rights
 		if( !current_user_can('editor') && !current_user_can('administrator') ) return;
@@ -24,7 +24,7 @@ class CNH_Shortcodes {
 	        'type' => 'post', //recipe
 	        'category_name' => '', //recipe
 		), $atts );
-		
+
 		$status = explode(' ', $atts['status']);
 
 		$args = array(
@@ -37,17 +37,17 @@ class CNH_Shortcodes {
 		);
 
 		$posts = get_posts( $args );
-		$html = (count($posts)>0)?'<span class="post-count-indicator">('.count($posts).')</span>':''; 
+		$html = (count($posts)>0)?'<span class="post-count-indicator">('.count($posts).')</span>':'';
 
 		return $html;
 	}
 
-	
+
 	/* Share Title Output
-	--------------------------------------------- */		
+	--------------------------------------------- */
 	public function display_share_title() {
 		if (is_singular()) {
-			if (is_singular('recipe')) 
+			if (is_singular('recipe'))
 				$msg=__('Share this recipe','foodiepro');
 			else
 				$msg=__('Share this post','foodiepro');
@@ -63,7 +63,7 @@ class CNH_Shortcodes {
 		$atts = shortcode_atts( array(
 			'user' => '', //logged-in, logged-out
 		), $atts );
-		
+
 		$display=true;
 		$user=$atts['user'];
 
@@ -71,7 +71,7 @@ class CNH_Shortcodes {
 			$display=$display && !is_user_logged_in();
 		elseif ( $user=='logged-in' )
 			$display=$display && is_user_logged_in();
-		
+
 		return $display?$content:'';
 	}
 
@@ -82,7 +82,7 @@ class CNH_Shortcodes {
 	/* =================================================================*/
 	public function show_debug_html( $atts, $content ) {
 		return WP_DEBUG?$content:'';
-	}	
+	}
 
 
 	/* =================================================================*/
@@ -96,7 +96,7 @@ class CNH_Shortcodes {
 	    ), $args );
 
 	    $terms = get_categories($args);
-	    
+
 	    $output = '';
 
 	    // Exit if there are no terms
@@ -125,16 +125,17 @@ class CNH_Shortcodes {
 	public function search_glossary( $atts, $content ) {
 		$atts = shortcode_atts( array(
 			'glossaryslug' => 'lexique-de-cuisine',
-			'searchkey' => 'name-directory-search-value', 
+			'searchkey' => 'name-directory-search-value',
 			'term' => '',
 			), $atts );
 
+		$term = $atts['term'];
 		$glossary_url = $this->get_page_by_slug($atts['glossaryslug']);
 		if ($term)
 			$html=add_query_arg( $atts['searchkey'], strip_tags($term), $glossary_url);
 		else
 			$html=add_query_arg( $atts['searchkey'], strip_tags($content), $glossary_url);
-			
+
 		$html='<a href="' . $html . '">' . $content . '</a>';
 
 		return $html;
@@ -152,38 +153,38 @@ class CNH_Shortcodes {
 		$html='<a href="' . $html . '">' . $content . '</a>';
 
 		return $html;
-	}	
+	}
 
 	/* =================================================================*/
-	/* = DISPLAY TOOLTIP SHORTCODE    
+	/* = DISPLAY TOOLTIP SHORTCODE
 	/* =================================================================*/
 
   //   public function output_tooltip( $atts ) {
   //       // $path = self::$_PluginPath . 'assets/img/callout_'. $position . '.png';
 		// $atts = shortcode_atts( array(
-		// 	'text' => '', 
+		// 	'text' => '',
 		// 	'pos' => 'top',
 		// 	), $atts );
 
-		// $content = $atts['text']; 
-		// $position = $atts['pos']; 
+		// $content = $atts['text'];
+		// $position = $atts['pos'];
 
   //       $uri = plugin_dir_url( dirname( __FILE__ ) ) . 'assets/img/callout_'. $position . '.png';
-    
+
   //       $html ='<div class="tooltip-content">';
   //       $html.='<div class="wrap">';
   //       $html.= $content;
   //       $html.='<img class="callout" data-no-lazy="1" src="' . $uri . '">';
   //       $html.='</div>';
   //       $html.='</div>';
-        
+
   //       return $html;
   //   }
 
 
 
 	/* =================================================================*/
-	/* = TAXONOMIES LIST SHORTCODE     
+	/* = TAXONOMIES LIST SHORTCODE
 	/* =================================================================*/
 
 	public function list_taxonomy_terms( $atts ) {
@@ -206,19 +207,19 @@ class CNH_Shortcodes {
 		$count = $atts['count']=='true';
 		$tax = $atts['tax'];
 		$html = '<div class="tax-container">';
-			
+
 		if ( empty($atts['title']) ) {
 			$tax_details = get_taxonomy( $tax );
 			$title = $tax_details->labels->name;
 		}
-		else 
+		else
 			$title = $atts['title'];
 
 		$page_link = '';
 		if ($atts['page_slug'] != '') {
 			$page_url = $this->get_permalink(array('slug'=>$atts['page_slug']));
 			$page_link .= '<li class="accordion-page-link"><a href="' . $page_url . '">' . $atts['page_title'] . '</a></li>';
-		}	
+		}
 
 		$html .= '<h3>' . $title . '</h3>';
 
@@ -228,13 +229,13 @@ class CNH_Shortcodes {
 			'taxonomy' => $tax,
 			'exclude' => $atts['exclude'],
 			'parent' => $atts['parent'],
-			'author' => 0,		
-			// 'author' => $atts['author'],		
-			'hide_empty' => true,		
+			'author' => 0,
+			// 'author' => $atts['author'],
+			'hide_empty' => true,
 			'orderby' => CNH_Assets::get_orderby($tax),
 			'order'   => 'ASC'
 		) );
-		
+
 
 		$html .= ($atts['page_order']=='first')?$page_link:'';
 		foreach ( $terms as $term ) {
@@ -243,7 +244,7 @@ class CNH_Shortcodes {
 				if ( $drill ) {
 					$subterms = get_categories( array(
 						'taxonomy' => $tax,
-						'parent' => $term->term_id,		
+						'parent' => $term->term_id,
 					) );
 					// echo '<pre>' . $term->name . '</pre>';
 					foreach ($subterms as $subterm) {
@@ -255,8 +256,8 @@ class CNH_Shortcodes {
 				$post_count = ' (' . $post_count . ')';
 			}
 			$html .= '<li><a href="' . get_term_link( $term, $tax ) . '">' . $term->name . $post_count . '</a></li>';
-		}	
-		
+		}
+
 		$html .= ($atts['page_order']=='last')?$page_link:'';
 		$html .= '</div></div>';
 
@@ -264,7 +265,7 @@ class CNH_Shortcodes {
 	}
 
 	/* =================================================================*/
-	/* = TAGS LIST SHORTCODE     
+	/* = TAGS LIST SHORTCODE
 	/* =================================================================*/
 
 	public function list_tags( $atts ) {
@@ -289,27 +290,27 @@ class CNH_Shortcodes {
 			// see req_clauses filter above
 			'tags_post_type' => $atts['post_type'],
 			'hide_empty' => true,
-			'exclude' => $atts['exclude'],		
+			'exclude' => $atts['exclude'],
 			'orderby' => 'name',
 			'order'   => 'ASC'
 		) );
-		
+
 		foreach ( $tags as $tag ) {
 			$post_count = $count?' (' . $tag->count . ')':'';
 			$url = get_tag_link($tag->term_id);
 			$url = add_query_arg( 'post_type', 'recipe', $url );
 			$html .= '<li><a href="' . $url . '">' . $tag->name . $post_count . '</a></li>';
-		}	
-		
+		}
+
 		$html .= '</div></div>';
 
 		return $html;
 	}
-	
+
 
 
 	/* =================================================================*/
-	/* = TAXONOMY LIST SHORTCODE     
+	/* = TAXONOMY LIST SHORTCODE
 	/* =================================================================*/
 
 	public function list_terms_taxonomy( $atts ) {
@@ -329,12 +330,12 @@ class CNH_Shortcodes {
 		$index_title = $atts['index_title'];
 		$index_path = $atts['index_path'];
 		$option_none_msg = $atts['option_none_msg'];
-		
+
 		/* arguments for function wp_list_categories
 		------------------------------------------------------------------------*/
 		// Source taxonomy
 		$all_url='#';
-		
+
 		$obj = get_queried_object();
 		$author = isset($obj->data->user_login);
 		//print_r( $obj );
@@ -343,15 +344,15 @@ class CNH_Shortcodes {
 		$tax = $author?__('authors', 'foodiepro'):get_taxonomy($tax_slug);
 		//echo $tax;
 		//$term_name = $obj->name;
-		$term_slug = $author?$obj->user_login:$obj->slug;		
+		$term_slug = $author?$obj->user_login:$obj->slug;
 		//echo $term_slug;
 		//echo sprintf( '$tax_slug = %s <br>', $tax_slug);
-			
-		
-		$hierarchical=0;	
+
+
+		$hierarchical=0;
 		$child_of='';
-		$depth=0;	
-		// Output taxonomy and parent term			
+		$depth=0;
+		// Output taxonomy and parent term
 		if ($tax_slug == 'cuisine') { // $tax_slug will stay cuisine
 			if ($obj->parent != 0) // term has a parent => either country or region archive
 				$child_of = $obj->parent; // wp_list_categories will use parent to filter
@@ -359,12 +360,12 @@ class CNH_Shortcodes {
 				$child_of = $obj->term_id; // wp_list_categories will use current term to filter
 		}
 		elseif ($tax_slug == 'ingredient') {
-			$hierarchical = 1; 
+			$hierarchical = 1;
 		}
-		
+
 
 		// Arguments for wp_dropdown_categories	/ wp_dropdown_users
-		$args = array( 
+		$args = array(
 			'taxonomy'			=> $tax_slug,
 			'child_of'			=> $child_of,
 			'hierarchical'		=> $hierarchical,
@@ -375,12 +376,12 @@ class CNH_Shortcodes {
 			'role__not_in'		=> array('administrator','pending'),
 			'show'				=> 'user_login'
 		);
-		
-		
-		if ($dropdown=='true') {	
+
+
+		if ($dropdown=='true') {
 			$dropdown_id = $tax_slug . ++$dropdown_cnt;
 
-			
+
 			$html = '<label class="screen-reader-text" for="' . esc_attr( $dropdown_id ) . '"> . $label . </label>';
 
 			$args['show_option_none'] = $option_none_msg;
@@ -392,19 +393,19 @@ class CNH_Shortcodes {
 			$args['name'] = $dropdown_id;
 			$args['class'] = 'dropdown-select';
 			$args['value_field'] = 'slug';
-			
+
 			$html .= $author?wp_dropdown_users( $args ):wp_dropdown_categories( $args );
 			$html .= $this->get_dropdown_js($dropdown_id, $tax_slug, $all_url);
 		}
 		else {
 
 		 	$html = '<ul class="menu" id="accordion">';
-		 	// wrap it in unordered list 
-			$html .= wp_list_categories($args);	
-			if ($index_title!='') {		
+		 	// wrap it in unordered list
+			$html .= wp_list_categories($args);
+			if ($index_title!='') {
 				$html .= '<li class="ct-index-url"> <a class="back-link" href="' . site_url($index_path) . '">' . $index_title . '</a></li>';
 			}
-		 
+
 		 	$html .= '</ul>';
 		}
 		//  Return the output
@@ -430,7 +431,7 @@ class CNH_Shortcodes {
 			'type' => false, // post type : post, recipe OR peepso profile tab : about, activity...
 			'text' 	=> false,  // html link is output if not empty
 			/* Google Analytics parameters */
-			'data' 	=> false, // "attr1 val1 attr2 val2  ..." separate with spaces 
+			'data' 	=> false, // "attr1 val1 attr2 val2  ..." separate with spaces
 			'ga' 	=> false, // ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue] ); separate by spaces
 
 	    ), $atts);
@@ -440,7 +441,7 @@ class CNH_Shortcodes {
 		$content=esc_html($content);
 		$data=$data?explode(' ', $data):false;
 		$ga=$ga?explode(' ', $ga):false;
-	
+
 		$url='#';
 		$token=''; /* Replacement token for display text */
 		if ($id) {
@@ -448,14 +449,14 @@ class CNH_Shortcodes {
 		}
 		elseif ($tax) {
 			if (!empty($slug))
-				$url=get_term_link((string) $slug, (string) $tax);			
+				$url=get_term_link((string) $slug, (string) $tax);
 		}
 		elseif ($slug) {
-			// $url=get_permalink(get_page_by_path($slug));			
-			$url=$this->get_page_by_slug($slug);			
+			// $url=get_permalink(get_page_by_path($slug));
+			$url=$this->get_page_by_slug($slug);
 		}
 		elseif ($user) {
-			// Define user 
+			// Define user
 			if ($user=='current') {
 				$user_id = get_current_user_id();
 			}
@@ -468,12 +469,12 @@ class CNH_Shortcodes {
 			else {
 				$user_id = $user;
 			}
-			// Define display url 
+			// Define display url
 			if ($display=='archive') {
 				$url = get_site_url();
 				$user = get_user_by('id', $user_id);
 				$token = $user->data->user_nicename;
-				
+
 				$url = add_query_arg( 'author_name', $token , $url);
 				if ( !empty($type) )
 					$url = add_query_arg( 'post_type', $type, $url);
@@ -486,9 +487,9 @@ class CNH_Shortcodes {
 			}
 		}
 		elseif ($wp) {
-			if ( $wp=='home' ) 
+			if ( $wp=='home' )
 				$url = get_home_url();
-			elseif ( $wp=='login' ) 
+			elseif ( $wp=='login' )
 				$url = wp_login_url();
 		}
 		elseif ($peepso) {
@@ -498,12 +499,12 @@ class CNH_Shortcodes {
 		}
 		else {
 			// Current URL is supplied by default
-			$url=$_SERVER['REQUEST_URI'];			
+			$url=$_SERVER['REQUEST_URI'];
 		}
 
-		if ( $content || $text ) 
+		if ( $content || $text )
 			return '<a class="' . $class . '" id="' . $id . '" ' . $this->get_data( $data ) . ' href="' . $url . '" onclik="' . $this->get_ga( $ga ) . '">' . sprintf( $text . $content, $token ) . '</a>';
-		else 
+		else
 			return $url;
 	}
 
@@ -511,7 +512,7 @@ class CNH_Shortcodes {
 	/* =================================================================*/
 	/* = PERMALINK HELPERS
 	/* =================================================================*/
-	
+
 	public function get_ga( $ga ) {
 		if ( !$ga || !is_array($ga) ) return;
 		$html = "ga('send', 'event' ";
@@ -521,10 +522,10 @@ class CNH_Shortcodes {
 		$html .= ");";
 		return $html;
 	}
-	
+
 	public function get_data( $data ) {
 		if ( !$data || ( count($data) % 2 != 0) ) return;
-		$html = ''; 
+		$html = '';
 		$i = 0;
 		while ( isset($data[$i]) ) {
 			$html .= 'data-' . $data[$i] . '="' . $data[$i+1] . '" ';
@@ -533,12 +534,12 @@ class CNH_Shortcodes {
 		return $html;
 	}
 
-	public function get_page_by_slug($page_slug ) { 
-		global $wpdb; 
-		$page = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND post_status = 'publish'", $page_slug ) ); 
-		if ( $page ) 
-		    return get_permalink($page); 
-		return null; 
+	public function get_page_by_slug($page_slug ) {
+		global $wpdb;
+		$page = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND post_status = 'publish'", $page_slug ) );
+		if ( $page )
+		    return get_permalink($page);
+		return null;
   	}
 
 
@@ -552,7 +553,7 @@ class CNH_Shortcodes {
 	    ), $a);
 		$text=esc_html($a['text']);
 		$content=esc_html($content);
-		
+
 		if ( $a['method']=='peepso' )
 			$url=PeepSo::get_page('register');
 		else
@@ -565,7 +566,7 @@ class CNH_Shortcodes {
 	public function get_dropdown_js($id, $tax_slug, $all_url) {
 		ob_start();
 		?>
-		
+
 		<script type='text/javascript'>
 			/* <![CDATA[ */
 			(function() {
@@ -579,7 +580,7 @@ class CNH_Shortcodes {
 			})();
 			/* ]]> */
 		</script>
-		
+
 		<?php
 		$js = ob_get_contents();
 		ob_end_clean();
@@ -590,6 +591,3 @@ class CNH_Shortcodes {
 
 
 }
-
-
-

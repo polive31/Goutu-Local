@@ -19,23 +19,24 @@ class CNH_RPWE_Customizations {
 		}
 		return $output;
 	}
-	
-	
+
+
 	public function wprpe_add_avatar( $output, $args ) {
 		if ( !class_exists('PeepsoHelpers') ) return '';
 		if ( $args['display_avatar'] == '1') {
-			$user = PeepsoUser::get_instance( get_the_author_meta( 'ID' ) );			
+			$user = PeepsoUser::get_instance( get_the_author_meta( 'ID' ) );
 			$args = array(
-				'user' => 'author', // 'view', 'author', or ID
-				'size' => '', //'full',
-				'link' => 'profile',
-				'aclass' => 'auth-avatar',
+				'user' 		=> 'author', // 'view', 'author', or ID
+				'size' 		=> '', //'full',
+				'link' 		=> 'profile',
+				'title' 	=> __('by %s','foodiepro'),
+				'aclass' 	=> 'auth-avatar',
 			);
 			$output .= PeepsoHelpers::get_avatar( $args );
 		}
 		return $output;
 	}
-	
+
 	// Filter the author rpwe argument to allow dynamic value here (post's author, current user, view user...)
 	public function wprpe_query_displayed_user_posts( $args ) {
 		$author = $args['author'];
@@ -50,7 +51,7 @@ class CNH_RPWE_Customizations {
 		}
 		return $args;
 	}
-	
+
 	public function rpwe_add_rating( $title, $args ) {
 		$output = '';
 		if ( $args['display_rating'] == '1') {
@@ -80,8 +81,8 @@ class CNH_RPWE_Customizations {
 		}
 		else {
 			if (isset($query['post__not_in']) && isset($rpwe_queried_posts)) {
-				$query['post__not_in'] = array_merge( $query['post__not_in'], $rpwe_queried_posts );	
-			} 
+				$query['post__not_in'] = array_merge( $query['post__not_in'], $rpwe_queried_posts );
+			}
 			return $query;
 		}
 	}
@@ -108,14 +109,3 @@ class CNH_RPWE_Customizations {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-

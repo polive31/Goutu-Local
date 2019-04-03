@@ -29,8 +29,8 @@ class PeepsoHelpers  {
 		'groups',
 		'photos',
 		'media',
-	);	
-		
+	);
+
 
 	static function get_nav_tab() {
 		$current='stream';
@@ -57,7 +57,7 @@ class PeepsoHelpers  {
 				break;
 			case 'author':
 				$user_id = get_the_author_meta('ID');
-				break;				
+				break;
 			default :
 				$user_id = $user_type;
 				break;
@@ -65,28 +65,28 @@ class PeepsoHelpers  {
 		$user = $user_id?PeepsoUser::get_instance( $user_id ):false;
 
 		return $user;
-	}	
+	}
 
 	static function get_field( $user, $field ) {
 		switch ($field) {
 			case "pseudo" :
 				$html=$user->get_nicename();
 				break;
-			case "firstname" : 
+			case "firstname" :
 				$html=$user->get_firstname();
 				break;
-			case "lastname" : 
+			case "lastname" :
 				$html=$user->get_lastname();
-				break;				
-			case "nicename" : 
+				break;
+			case "nicename" :
 				$html=$user->get_nicename();
-				break;				
+				break;
 			case "fullname" :
 				$html=$user->get_fullname();
 				break;
 			default :
 				$html='';
-				break;						
+				break;
 		}
 		return $html;
 	}
@@ -98,16 +98,16 @@ class PeepsoHelpers  {
 				if ( !empty($subpage) )
 					$url = add_query_arg( 'post_type', $subpage, $url);
 				$url = add_query_arg( 'author_name', $user->get_nicename(), $url);
-				break;	
+				break;
 
 			case 'profile':
 				$url = $user->get_profileurl();
 				$url .= $subpage;
-				break;	
-							
+				break;
+
 		}
 		return $url;
-	}	
+	}
 
 	static function get_avatar( $args ) {
 		$user='current';
@@ -116,17 +116,18 @@ class PeepsoHelpers  {
 		$wrapclass='';
 		$link='profile';
 		$size='full';
+		$title='';
 		extract( $args );
 
 		$user = self::get_user( $user );
 		if (!$user) return;
 
-		$html = '<img class="avatar" src="' . $user->get_avatar( $size ) . '" alt="' . sprintf( __('Picture of %s','foodiepro') , ucfirst($user->get_username()) ) . '">';
-		
+		$html = '<img class="avatar" src="' . $user->get_avatar( $size ) . '" alt="' . sprintf( __('Picture of %s','foodiepro') , ucfirst($user->get_nicename()) ) . '">';
+
 		if ( !empty($link) ) {
-			$html = '<a class="' . $aclass . '" href="' . self::get_url($user, 'profile') . '">' . $html . '</a>';
+			$html = '<a class="' . $aclass . '" href="' . self::get_url($user, 'profile') . '" title="' . sprintf( $title , ucfirst($user->get_nicename()) ) . '">' . $html . '</a>';
 		}
-		
+
 		if ( !empty($wraptag) ) {
 			$html = '<' . $wraptag . ' class="' . $wrapclass . '">' . $html . '</' . $wraptag . '>';
 		}

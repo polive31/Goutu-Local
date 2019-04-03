@@ -3292,10 +3292,16 @@ img.post-image.entry-image,
 	/* border-radius: 10px; */
 }
 
+
 .content img.rpwe-thumb {
 	margin:0;
 	object-fit: cover;
 	flex:1;
+}
+
+.after-content img.rpwe-thumb {
+	height: 200px;
+	object-fit: cover;
 }
 
 .page-bottom img.rpwe-thumb {

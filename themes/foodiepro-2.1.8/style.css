@@ -74,6 +74,13 @@
 
 */
 
+/*
+VARIABLES
+---------------------------------------------------------------------------------------------------- */
+:root {
+  --content-width-screen:1170px;
+}
+
 
 /*
 HTML5 Reset
@@ -901,7 +908,8 @@ Structure and Layout
 .site-container {
 	margin:10px auto;
 	/*max-width:1060px;*/
-	max-width:1140px;
+	/* max-width:1140px; */
+	max-width: var(--content-width-screen);
 	padding:0 20px 30px 20px;
 	/* transition: margin-top 1s; */
 }
@@ -2883,7 +2891,8 @@ Site Header
   padding: 0 20px 0px 20px;
   margin: 0 auto;
   /*max-width: 1060px;*/
-  max-width: 1140px;
+  /* max-width: 1140px; */
+  max-width: var(--content-width-screen);
 }
 
 

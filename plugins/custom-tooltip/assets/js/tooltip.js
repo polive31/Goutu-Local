@@ -17,15 +17,6 @@ Tooltip class has the following methods :
     - closeAll => closes all tooltips
 */
 
-
-Tooltip.defaultContainer = "body";
-Tooltip.containerObj = jQuery(Tooltip.defaultContainer);
-// Class to search for in order to define the container for all tooltips on the page
-// Reverts to the one defined above by default
-Tooltip.containerClass = ".tooltips-container";
-Tooltip.overlayObj = jQuery('.tooltip-overlay');
-
-
 jQuery(document).ready(function () {
     console.log('In tooltip.js');
 
@@ -59,6 +50,7 @@ jQuery(document).ready(function () {
 
 
 class Tooltip {
+/* See constants under the class definition */
 
     constructor( trigger ) {
         // Pass the jquery object into the class, then all jQuery methods can be applied to it
@@ -163,3 +155,11 @@ class Tooltip {
     }
 
 }
+
+
+Tooltip.defaultContainer = "body";
+Tooltip.containerObj = jQuery(Tooltip.defaultContainer);
+// Class to search for in order to define the container for all tooltips on the page
+// Reverts to the one defined above by default
+Tooltip.containerClass = ".tooltips-container";
+Tooltip.overlayObj = jQuery('.tooltip-overlay');

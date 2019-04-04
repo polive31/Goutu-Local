@@ -78,7 +78,9 @@
 VARIABLES
 ---------------------------------------------------------------------------------------------------- */
 :root {
-  --content-width-screen:1170px;
+  --content-sidebar-width-screen:1170px;
+  --content-width-screen:710px;
+  --sidebar-width-screen:410px;
 }
 
 
@@ -908,8 +910,8 @@ Structure and Layout
 .site-container {
 	margin:10px auto;
 	/*max-width:1060px;*/
-	/* max-width:1140px; */
-	max-width: var(--content-width-screen);
+	max-width:1170px;
+	max-width: var(--content-sidebar-width-screen);
 	padding:0 20px 30px 20px;
 	/* transition: margin-top 1s; */
 }
@@ -956,7 +958,8 @@ Structure and Layout
 .content {
 	min-height: 700px;
 	float:right;
-	width:680px;
+	width:710px;
+	width:var(--content-width-screen);
 }
 	/* Workaround for cookie notice appearing on pages with few content (ex : contact form submitted) */
 
@@ -989,6 +992,7 @@ Structure and Layout
 .sidebar-primary {
 	float:right;
 	width:380px;
+	width:var(--sidebar-width-screen);
 	display:-webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
 	display:-moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
 	display:-ms-flexbox;      /* TWEENER - IE 10 */
@@ -2892,7 +2896,7 @@ Site Header
   margin: 0 auto;
   /*max-width: 1060px;*/
   /* max-width: 1140px; */
-  max-width: var(--content-width-screen);
+  max-width: var(--content-sidebar-width-screen);
 }
 
 

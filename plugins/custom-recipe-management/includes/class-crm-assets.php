@@ -6,12 +6,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class CRM_Assets {
-	
+
 	const ATTACHMENT_FORMATS = array('jpg','jpeg','png');
 	const MAX_ATTACHMENT_SIZE_KB = 500;
 
-	private static $PLUGIN_URI;	
-	private static $PLUGIN_PATH;	
+	private static $PLUGIN_URI;
+	private static $PLUGIN_PATH;
 
 
 	public function __construct() {
@@ -24,29 +24,28 @@ class CRM_Assets {
 ****                DISABLE WPURP ENQUEUE                        **********
 ********************************************************************************/
 	public function enqueue_wpurp_css( $css_enqueue ) {
-		if ( is_admin() ) 
+		if ( is_admin() )
 		return $css_enqueue;
-		else 
+		else
 		return array();
 	}
-	
+
 	public function enqueue_wpurp_js( $js_enqueue ) {
-		if ( is_admin() ) 
+		if ( is_admin() )
 		return $js_enqueue;
-		else 
 		return array();
-	}	
-	
+	}
+
 	/********************************************************************************
 	****               ADD RECIPE POST TYPE FIELDS TO CPM_Assets                 ****
-	********************************************************************************/		
+	********************************************************************************/
 	public function setup_CPM_recipe_page_slugs( $slugs ) {
 		$slugs['recipe_list'] = 'publier-recettes';
 		$slugs['recipe_favorites'] = 'favoris-recettes';
 		$slugs['recipe_form'] = 'saisie-recette';
 		return $slugs;
-	}        
-	
+	}
+
 	public function setup_CPM_required( $required ) {
 		$required['recipe']= array(
 			'recipe_title'			=> __('Recipe Title','foodiepro'),
@@ -57,10 +56,10 @@ class CRM_Assets {
 			'recipe_prep_time' 		=> __('Preparation Time', 'foodiepro'),
 		);
 		return $required;
-	}	
-	
+	}
+
 	public function setup_CPM_taxonomies( $taxonomies ) {
-		$taxonomies['recipe'] = array(    
+		$taxonomies['recipe'] = array(
 			'post_tag' => array(
 				'multiselect' => true,
 				'orderby' 	=> 'name',
@@ -93,7 +92,7 @@ class CRM_Assets {
 				'labels'	=> array(
 					'singular_name'=>__( 'Season', 'foodiepro' ),
 				),
-			),		
+			),
 			'occasion' => array(
 				'multiselect' 	=> true,
 				'orderby' 		=> 'description',
@@ -101,7 +100,7 @@ class CRM_Assets {
 				'labels'	=> array(
 					'singular_name'=>__( 'Occasion', 'foodiepro' ),
 				),
-			),	
+			),
 			'diet' => array(
 				'multiselect' 	=> true,
 				'orderby' 		=> 'description',
@@ -109,7 +108,7 @@ class CRM_Assets {
 				'labels'	=> array(
 					'singular_name'=>__( 'Diet', 'foodiepro' ),
 				),
-			),	
+			),
 			'difficult' => array(
 				'multiselect' 	=> false,
 				'orderby' 		=> 'description',
@@ -117,11 +116,11 @@ class CRM_Assets {
 				'labels'	=> array(
 					'singular_name'=>__( 'Difficulty', 'foodiepro' ),
 				),
-			),										
+			),
 		);
 		return $taxonomies;
-	}	
-	
+	}
+
 	public function setup_CPM_recipe_labels( $labels ) {
 		$labels['recipe'] = array(
 			'title'						=> _x( 'Post Title', 'recipe', 'foodiepro' ),
@@ -140,28 +139,28 @@ class CRM_Assets {
 			'noposts'					=> _x( 'You have no posts yet.', 'recipe', 'foodiepro'),
 			'post_publish_title'		=> _x( 'Your post just got published !', 'recipe', 'foodiepro'),
 			'post_publish_content'		=> _x( 'Greetings, your post <a href="%s">%s</a> just got published !', 'recipe', 'foodiepro'),
-			'post_publish_content1' 	=> _x( 'It is visible on the website, and appears on <a href="%s">your blog</a>.', 'recipe','foodiepro'),	
+			'post_publish_content1' 	=> _x( 'It is visible on the website, and appears on <a href="%s">your blog</a>.', 'recipe','foodiepro'),
 			'comment_publish_title'		=> _x( '%s commented one of your posts', 'recipe', 'foodiepro'),
 			'comment_publish_content'	=> _x( '%s added a comment to your post <a href="%s">%s</a> :', 'recipe', 'foodiepro'),
 		);
 		return $labels;
 	}
-	
+
 	/********************************************************************************
 	****                ADD ENQUEUED SCRIPTS & STYLES TO CPM_Assets                    **********
-	********************************************************************************/		
+	********************************************************************************/
 	public function setup_CPM_recipe_styles( $styles ) {
 		// Enables custom gallery shortcode & stylesheet loading
 		new Custom_Gallery_Shortcode();
 		new Tooltip();
-		
+
 		// Reuse some default post styles
 		$styles['cpm-list']['location'][]				= 'recipe_list';
 		$styles['cpm-list']['location'][]				= 'recipe_favorites';
 		$styles['cpm-select2']['location'][]			= 'recipe_form';
 		$styles['cpm-submission-form']['location'][]	= 'recipe_form';
 		$styles['post-font']['location'][]				= 'recipe';
-		
+
 		// Enqueue specific recipe styles
 		$styles['crm-recipe'] = array(
 			'file' 		=> 'assets/css/custom-recipe.css',
@@ -176,19 +175,19 @@ class CRM_Assets {
 			'dir' 		=> self::$PLUGIN_PATH . 'vendor/autocomplete/',
 			'location' 	=> array('recipe_form'),
 		);
-				
+
 		$styles['crm-form'] = array(
 			'file' 		=> 'custom-recipe-submission.css',
 			'uri' 		=> self::$PLUGIN_URI . 'assets/css/',
 			'dir' 		=> self::$PLUGIN_PATH . 'assets/css/',
 			'location' 	=> array('recipe_form'),
-		);		  
+		);
 		return $styles;
 	}
-			
-			
-	public function setup_CPM_recipe_scripts( $scripts ) {	
-			
+
+
+	public function setup_CPM_recipe_scripts( $scripts ) {
+
 		$pause = '<i class="fa fa-pause" aria-hidden="true"></i>';
 		$play = '<i class="fa fa-play" aria-hidden="true"></i>';
 		$close = '<i class="fa fa-times" aria-hidden="true"></i>';
@@ -216,7 +215,7 @@ class CRM_Assets {
 			'footer' 	=> true,
 			'location' 	=> array('recipe'),
 		);
-		
+
 		$scripts['crm-print_button'] = array (
 			'file' 		=> 'print_button.js',
 			'uri'		=> self::$PLUGIN_URI . 'assets/js/',
@@ -238,7 +237,7 @@ class CRM_Assets {
 			),
 			'location' 	=> array('recipe'),
 		);
-		
+
 		$scripts['crm-voice'] = array (
 			'file' 			=> 'custom_text_to_speech.js',
 			'uri' 			=> self::$PLUGIN_URI . '/assets/js/',
@@ -266,16 +265,16 @@ class CRM_Assets {
 					'pause' => __('Pause reading','foodiepro'),
 					'play' 	=> __('Continue reading','foodiepro'),
 					'stop' 	=> __('Stop reading and close player','foodiepro'),
-				),							
+				),
 			),
 			'location' 		=> array('recipe'),
 		);
-			
+
 		$scripts['crm-responsive-voice'] = array (
 			'uri' 		=> 'https://code.responsivevoice.org/responsivevoice.js',
 			'footer' 	=> true,
-			'location' 	=> array('recipe'),					
-		);								
+			'location' 	=> array('recipe'),
+		);
 
 		$scripts['crm-timer'] = array (
 			'file' 		=> 'timer.js',
@@ -295,7 +294,7 @@ class CRM_Assets {
 			),
 			'location' 	=> array('recipe'),
 		);
-			
+
 		$scripts['crm-adjustable-servings'] = array (
 			'file' 		=> 'custom_adjustable_servings.js',
 			'uri' 		=> self::$PLUGIN_URI . 'assets/js/',
@@ -313,7 +312,7 @@ class CRM_Assets {
 			),
 			'location' 	=> array('recipe'),
 		);
-		
+
 		$scripts['crm-favorite-recipe'] = array (
 			'file' 		=> 'custom_favorite_recipe.js',
 			'uri' 		=> self::$PLUGIN_URI . 'assets/js/',
@@ -329,8 +328,8 @@ class CRM_Assets {
 				'nonce' 	=> wp_create_nonce( 'custom_favorite_recipe' ),
 			),
 			'location' 	=> array('recipe'),
-		);	  
-			
+		);
+
 		$scripts['crm-autocomplete'] = array (
 			'file' 		=> 'jquery.auto-complete.js',
 			'uri' 		=> self::$PLUGIN_URI . 'vendor/autocomplete/',
@@ -340,7 +339,7 @@ class CRM_Assets {
 			),
 			'location' 	=> array('recipe_form'),
 		);
-			
+
 		$scripts['crm-unit-suggestion'] = array (
 			'file' => 'ingredient_unit_suggestion.js',
 			'uri' => self::$PLUGIN_URI . 'assets/js/',
@@ -352,7 +351,7 @@ class CRM_Assets {
 			'footer' => true,
 			'location' 	=> array('recipe_form'),
 		);
-			
+
 		$scripts['crm-ingredient-preview'] = array (
 			'file' => 'ingredient_preview.js',
 			'uri' => self::$PLUGIN_URI . 'assets/js/',
@@ -366,10 +365,10 @@ class CRM_Assets {
 				'name' 		=> 'ingredient_preview',
 				'ajaxurl' 	=> admin_url( 'admin-ajax.php' ),
 				'nonce' 	=> wp_create_nonce('preview_ingredient'),
-			),		                
+			),
 			'location' 	=> array('recipe_form'),
-		);	
-		
+		);
+
 		$scripts['crm-submission'] = array (
 			'file' => 'custom_recipe_submission.js',
 			'uri' => self::$PLUGIN_URI . 'assets/js/',
@@ -390,10 +389,12 @@ class CRM_Assets {
 				'maxFileSize' => self::MAX_ATTACHMENT_SIZE_KB,
 				'fileTooBig' => sprintf(__('The maximum file size is %s kB','foodiepro'), self::MAX_ATTACHMENT_SIZE_KB),
 				'deleteImage' => __('Do you really want to delete this image ?','foodiepro'),
-			),					
+				'deleteIngredient' => __('Do you really want to delete this ingredient ?','foodiepro'),
+				'deleteInstruction' => __('Do you really want to delete this instruction ?','foodiepro'),
+			),
 			'location' 	=> array('recipe_form'),
-		);            	
-		
+		);
+
 		return $scripts;
 	}
 

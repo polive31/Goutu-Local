@@ -17,12 +17,12 @@ jQuery(document).ready(function() {
             jQuery(this).height(jQuery(this)[0].scrollHeight);
         });
     });
-    
+
     /* On input/textarea change */
     jQuery('#recipe-instructions').on('input', 'textarea', function () {
         console.log('Auto adjust height on edit');
         jQuery(this).outerHeight(38).outerHeight(this.scrollHeight); // 38 or '1em' -min-height
-    }); 
+    });
 
 
     /* Shortcode buttons
@@ -45,7 +45,7 @@ jQuery(document).ready(function() {
             tinyMCE.execCommand('mceInsertContent', false, text);
         }
     }
-  
+
 
     tinymce.init({
         selector: '#recipe_description, #recipe_notes',
@@ -78,11 +78,11 @@ jQuery(document).ready(function() {
 
     //     tinyMCE.activeEditor.execCommand('mceInsertContent', 0, shortcode);
     //     tinyMCE.activeEditor.windowManager.close();
-    // });     
+    // });
 
 
  /* Ingredient and Instruction Submission (from WPURP)
----------------------------------------------------------------- */   
+---------------------------------------------------------------- */
 
     /*
      * Do not allow removal of first ingredient/instruction
@@ -143,7 +143,7 @@ jQuery(document).ready(function() {
     jQuery('#recipe-ingredients tbody').sortable({
         opacity: 0.6,
         revert: true,
-        cursor: 'move',
+        cursor: 'grabbing',
         handle: '.sort-handle',
         update: function() {
             // addRecipeIngredientOnTab();
@@ -153,6 +153,7 @@ jQuery(document).ready(function() {
     });
 
     jQuery('.ingredients-delete').on('click', function(){
+        if (!confirm(custom_recipe_submission_form.deleteIngredient)) return;
         jQuery(this).parents('tr').remove();
         // addRecipeIngredientOnTab();
         updateIngredientIndex();
@@ -180,7 +181,7 @@ jQuery(document).ready(function() {
             if ( isLastIngredient( currentRow ) ) {
                 // console.log("Found keypress on tr::last .ingredient_notes !!!");
                 addRecipeIngredient( currentRow );
-            } 
+            }
             else {
                 console.log('ingredient.next.focus');
                 currentRow.next().focus();
@@ -201,17 +202,17 @@ jQuery(document).ready(function() {
                 inputs[idx + 1].select();
             }
         }
-    });    
+    });
 
     jQuery('#recipe-ingredients .ingredients_amount').on('keydown',function(e) {
         // console.log("Keypress detected on ingredients amount !");
-        
+
         var keyCode = e.keyCode || e.which;
         // var last_id = jQuery('#recipe-ingredients tr:last').attr('id');
         var current_ingredient = jQuery(this).closest('tr.ingredient');
         var current_id = current_ingredient.attr('id');
         console.log ("Current ingredient : " + current_id);
-        
+
         if (keyCode == 9 && e.shiftKey == true) {
             e.preventDefault()
             // console.log("Keypress shift !");
@@ -228,7 +229,7 @@ jQuery(document).ready(function() {
     jQuery('#recipe-instructions tbody').sortable({
         opacity: 0.6,
         revert: true,
-        cursor: 'move',
+        cursor: 'grabbing',
         handle: '.sort-handle',
         update: function() {
             // addRecipeInstructionOnTab();
@@ -238,6 +239,7 @@ jQuery(document).ready(function() {
     });
 
     jQuery('.instructions-delete').on('click', function(){
+        if (!confirm(custom_recipe_submission_form.deleteInstruction)) return;
         jQuery(this).parents('tr').remove();
         // addRecipeInstructionOnTab();
         updateInstructionIndex();
@@ -252,18 +254,18 @@ jQuery(document).ready(function() {
     jQuery('#recipe-instructions .instruction:last-of-type .instruction-text').on('keydown',function(e) {
         // console.log("Found keypress on .ingredient_notes !!!");
         var keyCode = e.keyCode || e.which;
-      
+
         if (keyCode == 9 && e.shiftKey == false) {
             e.preventDefault();
             addRecipeInstruction();
         }
     });
 
-    // Remove Image 
+    // Remove Image
     jQuery("#custom_post_submission_form").on("click", ".recipe_remove_image_button ", function () {
 
         console.log('Click on remove recipe image');
-        if (!confirm(custom_post_submission_form.deleteImage)) return;
+        if (!confirm(custom_recipe_submission_form.deleteImage)) return;
         var Id = jQuery(this).attr('id').match(/\d+/);
         Id = (Id !== null) ? Id[0] : '';
         thisPreview = jQuery('#recipe_thumbnail_preview_' + Id);
@@ -293,20 +295,20 @@ jQuery(document).ready(function() {
             }
         );
 
-    }); 
+    });
 
 
 
     /* Image management
     ---------------------------------------------------*/
 
-    // Recipe Featured Image 
-    jQuery("#custom_post_submission_form").on("change", "input.post_thumbnail_image", function () { 
+    // Recipe Featured Image
+    jQuery("#custom_post_submission_form").on("change", "input.post_thumbnail_image", function () {
         PreviewImage('');
     });
 
-    // Instruction Step Image 
-    jQuery("#custom_post_submission_form").on("change", "input.recipe_instructions_image", function() { 
+    // Instruction Step Image
+    jQuery("#custom_post_submission_form").on("change", "input.recipe_instructions_image", function() {
         var InstructionId = jQuery(this).attr("id");
         var Id = InstructionId.match(/\d+/);
         // console.log( "Changement sur l'input..." + Id );
@@ -333,7 +335,7 @@ function isLastIngredient( thisRow ) {
 }
 
 
-function PreviewImage(id) { 
+function PreviewImage(id) {
     console.log('Entering PreviewImage');
     var fileInput = document.getElementById("recipe_thumbnail_input_" + id);
 
@@ -355,11 +357,11 @@ function PreviewImage(id) {
                 oFReader.onload = function (oFREvent) {
                     document.getElementById("recipe_thumbnail_preview_" + id ).src = oFREvent.target.result;
                     jQuery("#recipe_thumbnail_preview_" + id).parent(".thumbnail").removeClass('nodisplay');
-                }    
+                }
             }
             else {
                 jQuery(fileInput).val('');
-                alert(custom_recipe_submission_form.fileTooBig);   
+                alert(custom_recipe_submission_form.fileTooBig);
             }
         }
         else {
@@ -505,7 +507,7 @@ function addRecipeIngredient( currentIngredient ) {
         })
         .attr('id', function(index, id) {
             return id.replace(/(\d+)/, nbr_ingredients);
-        })     
+        })
         .closest('tr.ingredient')
         .attr('id', function(index, id) {
             return id.replace(/(\d+)/, nbr_ingredients);
@@ -517,7 +519,7 @@ function addRecipeIngredient( currentIngredient ) {
 
     jQuery('#recipe-ingredients tr:last .ingredients_amount').focus();
     calculateIngredientGroups();
-}  
+}
 
 function addRecipeInstruction()
 {
@@ -557,14 +559,14 @@ function addRecipeInstruction()
         .attr('id', function (index, id) {
             if (id != null)
                 return id.replace(/(\d+)/, nbr_instructions);
-        });   
-        
+        });
+
     new_instruction
         .find('.instruction-image > *')
         .attr('id', function (index, id) {
             if (id != null)
                 return id.replace(/(\d+)/, nbr_instructions);
-        });          
+        });
 
     new_instruction
         .find('.instruction-image')
@@ -575,7 +577,7 @@ function addRecipeInstruction()
     jQuery('#recipe-instructions tr:last textarea').focus();
     calculateInstructionGroups();
 
-}  
+}
 
 
 function updateInstructionIndex()
@@ -585,7 +587,7 @@ function updateInstructionIndex()
             .attr('id', function(index, id) {
                 return id.replace(/(\d+)/, i);
             });
-            
+
         jQuery(this)
             .find('textarea')
             .attr('name', function(index, name) {

@@ -2,9 +2,9 @@
 
  #ingredients-add-box,
  #ingredients-add-group-box {
-  font-family: sans-serif;  
+  font-family: sans-serif;
   font-size: 1.3rem;
-  color: #616161;    
+  color: #616161;
 }
 
 span.header {
@@ -16,10 +16,10 @@ span.header {
     vertical-align: middle;
 }
 
-#ingredients-add-box, 
-#ingredients-add-group-box, 
-input.recipe_instructions_image, 
-input.recipe_thumbnail_image, 
+#ingredients-add-box,
+#ingredients-add-group-box,
+input.recipe_instructions_image,
+input.recipe_thumbnail_image,
 label.add-image-button {
     font-family: sans-serif;
     font-size: 13px;
@@ -47,7 +47,7 @@ h4#headline-notes:before {
 }
 
 
-/* Common 
+/* Common
 ------------------------------------------------------- */
 textarea,
 input {
@@ -81,9 +81,9 @@ table.recipe-form {
     padding: 10px;
 }
 
-span.ingredient-group-delete:before, 
-span.ingredients-delete:before, 
-span.instruction-group-delete:before, 
+span.ingredient-group-delete:before,
+span.ingredients-delete:before,
+span.instruction-group-delete:before,
 span.instructions-delete:before {
     content: "\f014";
     font-family: FontAwesome;
@@ -95,6 +95,7 @@ span.instructions-delete:before {
 tr td.sort-handle.ui-sortable-handle {
     cursor: -webkit-grab;
     cursor: -moz-grab;
+    cursor: grab;
     text-align: center;
 }
 
@@ -118,10 +119,10 @@ td.sort-handle.ui-sortable-handle:hover {
     border-radius: 50%;
     transition: background-color 200ms ease-in-out;
 }
-  
+
 .recipe_remove_image_button:after {
     display: inline-block;
-    position: absolute;    
+    position: absolute;
     vertical-align: middle;
     text-align: center;
     width: 20px;
@@ -138,7 +139,7 @@ td.sort-handle.ui-sortable-handle:hover {
 }
 
 
-/* General Section 
+/* General Section
 ------------------------------------------------------- */
 .recipe-general-form-field input {
     width:auto;
@@ -150,7 +151,7 @@ td.recipe-general-form-label {
 }
 
 
-/* Ingredient Section 
+/* Ingredient Section
 ------------------------------------------------------- */
 .group-container {
     display: inline-block;
@@ -167,16 +168,16 @@ tr.ingredient td {
     padding: 0 10px;
 }
 
-tr.ingredient.edit td.ingredient-preview, 
-tr.ingredient.new td.ingredient-preview, 
-tr.ingredient.saved td.ingredient-input, 
+tr.ingredient.edit td.ingredient-preview,
+tr.ingredient.new td.ingredient-preview,
+tr.ingredient.saved td.ingredient-input,
 tr.ingredient.saved td.spinner {
     display: none;
 }
 
-tr.ingredient.edit td.ingredient-input, 
-tr.ingredient.edit td.spinner, 
-tr.ingredient.new td.ingredient-input, 
+tr.ingredient.edit td.ingredient-input,
+tr.ingredient.edit td.spinner,
+tr.ingredient.new td.ingredient-input,
 tr.ingredient.saved td.ingredient-preview {
     display: table-cell;
 }
@@ -197,7 +198,7 @@ td.ingredient-input.notes {
     min-width: 300px;
 }
 
-/* Instruction Section 
+/* Instruction Section
 ------------------------------------------------------- */
 
 td.instruction-thumbnail {
@@ -217,17 +218,17 @@ td.instruction-thumbnail {
 --------------------------------------------*/
 
 /* Smartphone */
-@media only screen 
+@media only screen
   and (max-width:870px) {
-    
+
   #wpurp_user_submission_form {
     background-color: initial;
     padding: 0;
-  } 
+  }
 
   #wpurp_user_submission_form table {
     table-layout: fixed;
-  }   
+  }
 
    span.header,
    span.name,
@@ -235,7 +236,7 @@ td.instruction-thumbnail {
    .ingredient-group-label,
    span {
     margin:0;
-  }  
+  }
 
   .group-container {
     width: calc(100% - 45px);
@@ -244,7 +245,7 @@ td.instruction-thumbnail {
   .post-guidelines {
     float: left;
   }
-  
+
   span.time-input {
     float: left;
   }
@@ -258,18 +259,18 @@ td.instruction-thumbnail {
     margin: 0;
     padding: 0;
   }
-    
+
   table#recipe-ingredients {
-    border-collapse:separate; 
+    border-collapse:separate;
     border-spacing: 0 20px;
-  } 
-  
-  
+  }
+
+
   td.recipe-general-form-field {
     float: left;
     width: 100%;
-  } 
-  
+  }
+
   #recipe-ingredients td,
   #recipe-instructions td {
     display:block;
@@ -279,21 +280,21 @@ td.instruction-thumbnail {
   tr.instruction td {
     padding:0;
   }
-  
+
   #recipe-ingredients tr.ingredient td.ingredient-input {
     float:left;
     width: 100%;
   }
-  
+
   #recipe-ingredients tr.ingredient td.ingredient-input.name {
     width: calc(100% - 30px);
   }
-  
+
   #recipe-ingredients td.spinner {
     float:right;
     width: 30px;
   }
-  
+
   td.recipe-general-form-label {
     float: left;
   }
@@ -301,18 +302,18 @@ td.instruction-thumbnail {
   #recipe-instructions td.sort-handle,
   #recipe-ingredients td.sort-handle {
     float:left;
-  }  
+  }
 
   #recipe-instructions td.delete-button,
   #recipe-ingredients td.delete-button {
     float:right;
-  }  
+  }
 
   #recipe-instructions td.instruction-content,
   #recipe-ingredients td.ingredient-preview {
     float:left;
     width:calc(100% - 70px);
-  } 
+  }
 
   .instruction-buttons:before {
     display: none;
@@ -367,5 +368,5 @@ td.instruction-thumbnail {
     width:calc(100% - 30px);
 }
 
-  
+
 }

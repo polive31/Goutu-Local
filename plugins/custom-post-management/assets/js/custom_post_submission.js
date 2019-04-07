@@ -1,6 +1,24 @@
-jQuery(document).ready(function() {
+/* Prevent loosing data when closing the page
+---------------------------------------------------------------- */
+var formSubmitting = false;
+jQuery(window).bind('beforeunload', function (e) {
+    console.log('before unload listener setup');
+    if (formSubmitting) {
+        console.log('Detected form submission, so no warning');
+        return undefined;
+    }
+    return true;
+});
 
+
+jQuery(document).ready(function() {
     // console.log( 'In post submission.js');
+
+    jQuery("#new_post").submit(function () {
+        console.log('Form submission, set formSubmitting to true');
+        formSubmitting = true;
+    });
+
 
     /* Shortcode buttons
     --------------------------------------------------------------- */
@@ -44,8 +62,8 @@ jQuery(document).ready(function() {
                 type: 'POST',
                 data: formData,
                 async: true,
-                cache: false,      
-                processData: false,           
+                cache: false,
+                processData: false,
                 contentType: false,
                 dataType: 'json',
                 // enctype: 'multipart/form-data',
@@ -53,23 +71,23 @@ jQuery(document).ready(function() {
                     console.log('Image Upload Success !!! ');
                     console.log('Location is : ', json.location);
                     success(json.location);
-                }                
+                }
             });
 
         }
-     
+
     });
 
     /* Image management
     ---------------------------------------------------*/
 
-    // Post Featured Image 
-    jQuery("#custom_post_submission_form").on("change", "input.post_thumbnail_image", function() { 
+    // Post Featured Image
+    jQuery("#custom_post_submission_form").on("change", "input.post_thumbnail_image", function() {
         console.log('Change on featured image input detected')
         PreviewImage('');
     });
 
-    // Remove Image 
+    // Remove Image
     jQuery("#custom_post_submission_form").on("click", ".post_remove_image_button", function () {
 
         console.log('Click on remove image');
@@ -81,14 +99,14 @@ jQuery(document).ready(function() {
         postId = jQuery('#new_post input[name="post_id"]');
         console.log('thisPreview = ', thisPreview);
         console.log('thisInput = ', thisInput);
-        
+
         var data = {
             action: 'cpm_remove_featured_image',
             security: custom_post_submission_form.nonce,
             postid: postId.val(),
             thumbid: Id
         };
-        
+
         jQuery.post(
             custom_post_submission_form.ajaxurl,
             data,
@@ -100,15 +118,15 @@ jQuery(document).ready(function() {
             }
         );
 
-    }); 
+    });
 
 });
 
 
 /* Functions Library
 ----------------------------------------------------- */
-    
-function PreviewImage(id) { 
+
+function PreviewImage(id) {
     console.log('Entering PreviewImage');
     var fileInput = document.getElementById("post_thumbnail_input_" + id);
 
@@ -133,11 +151,11 @@ function PreviewImage(id) {
                     document.getElementById("post_thumbnail_preview_" + id ).src = oFREvent.target.result;
                     jQuery("#post_thumbnail_preview_" + id).parent(".thumbnail").removeClass('nodisplay');
                     // jQuery("#recipe_instruction_" + id +" .instruction-image" ).removeClass('nodisplay');
-                }    
+                }
             }
             else {
                 jQuery(fileInput).val('');
-                alert(custom_post_submission_form.fileTooBig);   
+                alert(custom_post_submission_form.fileTooBig);
             }
         }
         else {
@@ -157,6 +175,3 @@ function addButtonToEditor(text) {
         tinyMCE.execCommand('mceInsertContent', false, text);
     }
 };
-
-
-

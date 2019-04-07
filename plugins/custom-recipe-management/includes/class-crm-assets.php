@@ -33,6 +33,7 @@ class CRM_Assets {
 	public function enqueue_wpurp_js( $js_enqueue ) {
 		if ( is_admin() )
 		return $js_enqueue;
+		else
 		return array();
 	}
 

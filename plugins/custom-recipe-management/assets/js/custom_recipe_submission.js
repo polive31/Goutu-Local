@@ -1,4 +1,21 @@
+/* Prevent loosing data when closing the page
+---------------------------------------------------------------- */
+var formSubmitting = false;
+jQuery(window).bind('beforeunload', function (e) {
+    console.log('before unload listener setup');
+    if (formSubmitting) {
+        console.log( 'Detected form submission, so no warning');
+        return undefined;
+    }
+    return true;
+});
+
 jQuery(document).ready(function() {
+
+    jQuery("#new_post").submit(function () {
+        console.log( 'Form submission, set formSubmitting to true');
+        formSubmitting = true;
+    });
 
 
     /* Autoselect "numeric" inputs on focux

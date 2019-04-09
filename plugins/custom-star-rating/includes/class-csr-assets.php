@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -6,21 +6,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class CSR_Assets {
-	
+
 	private static $ratedPostTypes;
 	private static $ratingCats;
 	private static $ratingGlobal;
 
 	private static $Plugin_path;
-	private static $Plugin_uri;	
-	
+	private static $Plugin_uri;
+
 	public function __construct() {
 		/* Allows to access the class's functions from a submission or ajax callback
 		In this case, the main class is not created, so the only way is to create a new CSR_Assets instance
 		in order to force the hydrate */
 		self::hydrate();
 	}
-	
+
 	/* Register stylesheet, will be enqueued in the shortcode itself  */
 	public static function register_star_rating_assets() {
 		custom_register_style( 	'custom-star-rating', 'assets/css/custom-star-rating.css', self::$Plugin_uri, self::$Plugin_path, array(), CHILD_THEME_VERSION );
@@ -40,15 +40,23 @@ class CSR_Assets {
 		);
 		custom_register_script( $args );
 	}
-	
-	
+
+	public static function enqueue_comment_reply_script() {
+		if ( get_option( 'thread_comments' ) && is_singular() ) {
+			// wp_enqueue_script( 'comment_reply' );
+			wp_enqueue_script( 'comment_reply', get_site_url() . 'wp-includes/js/comment-reply.min.js', array(), false, true );
+		}
+	}
+
+
+
 	// Initialize all strings needing a translation (doesn't work in __construct)
 	public static function hydrate() {
 		self::$Plugin_path = plugin_dir_path( dirname( __FILE__ ) );
 		self::$Plugin_uri = plugin_dir_url( dirname( __FILE__ ) );
 		self::$ratedPostTypes = array( 'recipe' );
 
-		self::$ratingCats = array( 
+		self::$ratingCats = array(
 			'rating' => array (
 				'weight' => 2,
 				'title'=> __('Dish','custom-star-rating','custom-star-rating'),
@@ -60,7 +68,7 @@ class CSR_Assets {
 					__('Good','custom-star-rating'),
 					__('Very good','custom-star-rating'),
 					__('Delicious','custom-star-rating'),
-					)	
+					)
 				),
 				'global'=>array (
 					'title'=> __('Overall','custom-star-rating'),
@@ -71,7 +79,7 @@ class CSR_Assets {
 					__('Good','custom-star-rating'),
 					__('Very good','custom-star-rating'),
 					__('Delicious','custom-star-rating'),
-				)	
+				)
 			),
 			/*
 			'clarity' => array(
@@ -85,7 +93,7 @@ class CSR_Assets {
 					__('Rather clear','custom-star-rating'),
 					__('Very clear','custom-star-rating'),
 					__('Crystal clear even for kitchen dummies','custom-star-rating'),
-					)	
+					)
 				),*/
 		);
 	}
@@ -94,7 +102,7 @@ class CSR_Assets {
 
 
 	/* Translate ratings taxonomy from WPURP
-	--------------------------------------------------------------*/	
+	--------------------------------------------------------------*/
     static function translate_ratings_taxonomy( $args ) {
         $name = __( 'Evaluations', 'foodiepro' );
         $singular = __( 'Evaluation', 'foodiepro' );
@@ -106,11 +114,11 @@ class CSR_Assets {
         $args['rewrite'] = array('slug'=>__('rating','foodiepro'),'with_front' => false);
 
         return $args;
-    }	
-	
+    }
+
 
 	/* Get Rated Post Types
-	------------------------------------------------------------*/	
+	------------------------------------------------------------*/
 	public static function post_types() {
 		return self::$ratedPostTypes;
 	}
@@ -118,7 +126,7 @@ class CSR_Assets {
 	/* Get Rating Categories
 		- $cat_ids = 'all', 'global', <catN>, array(<cat2>, <cat5>, ...)
 		- $global = false, true => only valid with 'all'
-	------------------------------------------------------------*/	
+	------------------------------------------------------------*/
 	public static function rating_cats( $cat_ids='all', $global=false ) {
 		$cats=array();
 		if ($cat_ids=='all') {
@@ -135,8 +143,8 @@ class CSR_Assets {
 
 		return $cats;
 	}
-	
-	
+
+
 	/* Get Rating caption
 	------------------------------------------------------------*/
 	public static function get_rating_caption($val, $cat) {
@@ -144,11 +152,10 @@ class CSR_Assets {
 		if ($val==0) return __('Not rated','custom-star-rating');
 		$val=floor($val-1);
 		if ( isset( self::$ratingCats[$cat]['caption'] ) ) {
-			$caption = self::$ratingCats[$cat]['caption'][$val]; 
+			$caption = self::$ratingCats[$cat]['caption'][$val];
 			return $caption;
 		}
 
 	}
-	
-}
 
+}

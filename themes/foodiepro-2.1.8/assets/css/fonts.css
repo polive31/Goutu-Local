@@ -1,18 +1,18 @@
 
 
-/* FONTS 
+/* FONTS
 --------------------------------------------- */
 
 /*@font-face {
-  font-family: "Amatic SC";  
-  src: url('assets/fonts/lucie-mandragore/lucie-mandragore.ttf');  
-  font-weight: normal;  
+  font-family: "Amatic SC";
+  src: url('assets/fonts/lucie-mandragore/lucie-mandragore.ttf');
+  font-weight: normal;
 }*/
 
 /*Root font size for rem unit, set relative to the navigators font size
-62,5% of 16px => 10px*/
+62,5% of 1.6rem => 10px*/
 html {
-	font-size: 62.5%; 
+	font-size: 62.5%;
 }
 
 body {
@@ -20,19 +20,19 @@ body {
 	font-size : 1.8rem;
 	color:#333;
 	font-weight:300;
-	line-height:1.625;	
-	-webkit-font-smoothing: antialiased;	
+	line-height:1.625;
+	-webkit-font-smoothing: antialiased;
 }
 
 body #register-page {
 	font-size: 1.6rem;
-	max-width: 780px;    
+	max-width: 780px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: "Amatic SC";	
+	font-family: "Amatic SC";
 }
- 
+
 
 h1 {
 	font-size: 6rem;
@@ -63,7 +63,7 @@ h6 {
 }
 
 /*.legal h1, .legal h2, .legal h3, .legal h4, .legal h5, .legal h6 {
-	font-family: "Oswald";	
+	font-family: "Oswald";
 }
 
 .legal h1 {
@@ -95,19 +95,24 @@ h6 {
 
 .button,
 a.button,
-a.black-button, 
-.widget.back ul li a {
+a.black-button,
+.widget.back ul li a,
+.comment-respond {
 	font-family: Oswald;
-	font-size: 16px;
-	padding: 7px 10px;	
+	font-size: 1.6rem;
+	padding: 7px 10px;
+}
+
+.comment-respond {
+	font-size: 1.7rem;
 }
 
 button,
 input,
 optgroup,
 select,
-textarea, 
-ul.wpuf-form li .wpuf-fields a.file-selector, 
+textarea,
+ul.wpuf-form li .wpuf-fields a.file-selector,
 a.comment-reply-link,
 a#cancel-comment-reply-link,
 .frontier-list-item-content#frontier-post-actions a,
@@ -117,12 +122,12 @@ a#cancel-comment-reply-link,
 .post-meta {
 	font-family: sans-serif;
 	font-weight: 400;
-	padding: 7px 10px;	
+	padding: 7px 10px;
 }
 
 a.comment-reply-link,
 a#cancel-comment-reply-link {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 .comment-reply textarea,
@@ -146,7 +151,7 @@ input#url {
 }
 
 span.bp_counter,
-.search-form input, 
+.search-form input,
 .author-box-title {
 	font-family:"Vollkorn","Helvetica Neue",sans-serif;
 }
@@ -188,7 +193,7 @@ h2.user-nicename {
 /* Recipes & ingredients */
 .single h3 {
   	font-size: 3rem;
-	font-weight: bold;  
+	font-weight: bold;
 }
 
 .entry-header-overlay .tag-overlay {
@@ -213,18 +218,18 @@ h3.rpwe-title a {
 	text-decoration: none;
 	text-transform:capitalize !important;
 	font-weight: normal;
-	font-size: 1.8rem;	
+	font-size: 1.8rem;
 }
 
-h2.entry-title, .wpupg-post-title, 
-.sidebar .widget-wrap li a, 
-.sidebar .widget-wrap li h3 a, 
+h2.entry-title, .wpupg-post-title,
+.sidebar .widget-wrap li a,
+.sidebar .widget-wrap li h3 a,
 .sidebar .widget-wrap a {
   font-size: 1.7rem;
 }
 
 .featured-content h2.entry-title a {
-  font-size: 16px;
+  font-size: 1.6rem;
   text-decoration:none;
 }
 
@@ -273,18 +278,18 @@ h2.entry-title, .wpupg-post-title,
 	font-size: 5rem;
 	color:#222;
 	font-weight:bold;
-	text-transform:none;  
+	text-transform:none;
 }
 
 .title-big-font .widgettitle {
 	font-size: 5rem;
 }
 
-.recipes-top .widgettitle, 
+.recipes-top .widgettitle,
 .blogs-top .widgettitle,
 .archives-top .widgettitle {
-	font-family:"Vollkorn", sans-serif;	
-	font-size: 1.1rem; 
+	font-family:"Vollkorn", sans-serif;
+	font-size: 1.1rem;
 	margin-bottom:0;
 	font-weight:normal;
 }
@@ -322,21 +327,21 @@ h2.entry-title, .wpupg-post-title,
 
 
 /* Smartphone */
-@media only screen 
+@media only screen
 	and (max-width:870px) {
 
-	.page h1.entry-title, 
-	h1.archive-title, 
+	.page h1.entry-title,
+	h1.archive-title,
 	h1.entry-title {
 		/*text-align: center;*/
 		font-size: 4.5rem;
 		line-height: 4rem;
-	}		
-	
+	}
+
 	.title-big-font .widgettitle,
 	.elegant .widgettitle {
     	font-size: 2.8rem;
 		line-height: 4.5rem;
-	}	
-	
+	}
+
 }

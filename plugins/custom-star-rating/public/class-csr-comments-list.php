@@ -7,23 +7,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class CSR_Comments_List {
-	
 
-	
-	public function remove_recipe_comments_form() {
-		if ( is_singular( 'recipe' ) ) {
-			$url = $_SERVER["REQUEST_URI"];
-			$is_comment_reply = strpos($url, 'replytocom');
-			if ( ! $is_comment_reply )
-				remove_action( 'genesis_comment_form', 'genesis_do_comment_form' );
-		}
-	}
+
+
+	// public function remove_recipe_comments_form() {
+	// 	if ( is_singular( 'recipe' ) ) {
+	// 		$url = $_SERVER["REQUEST_URI"];
+	// 		$is_comment_reply = strpos($url, 'replytocom');
+	// 		if ( ! $is_comment_reply )
+	// 			remove_action( 'genesis_comment_form', 'genesis_do_comment_form' );
+	// 	}
+	// }
 
 
 	/* ****************************************************************
-										CUSTOM COMMENTS LIST	
+											CUSTOM COMMENTS LIST
 	****************************************************************/
-		
+
 	public function custom_comment_text() {
 		$title = __('Comments','genesis');
 		return ('<h3>' . $title . '</h3>');
@@ -55,8 +55,8 @@ class CSR_Comments_List {
 			add_action( 'genesis_list_comments', array($this,'custom_star_rating_list_comments') );
 		}
 	}
-	
-	
+
+
 	public function custom_star_rating_list_comments() {
 		$args = array(
 	    'type'          => 'comment',
@@ -64,30 +64,33 @@ class CSR_Comments_List {
 	    'callback'      => array($this,'custom_star_rating_comment_list'),
 	    //'per_page' 			=> '2',
 		);
-		$args = apply_filters( 'genesis_comment_list_args', $args );		
+		$args = apply_filters( 'genesis_comment_list_args', $args );
 		wp_list_comments( $args );
 	}
 
 
 	/* Custom Comment Template */
 	public function custom_star_rating_comment_list($comment, $args, $depth) {
-		
-		  $GLOBALS['comment'] = $comment; 
+
+		  $GLOBALS['comment'] = $comment;
 		  ?>
 		  <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
 			<div class="comment-item">
 		    <?php do_action( 'genesis_before_comment' ); ?>
-		    
+
 		  	<div class="comment-intro">
 		        <div class="comment-author">
 		        	<div class="comment-avatar">
-		            <?php echo get_avatar($comment,$size='48'); ?>
+								<!-- <?php //echo get_avatar($comment,$size='48'); ?> -->
+							<?php
+								echo PeepsoHelpers::get_comment_author_avatar($comment);
+							?>
 		        	</div>
-		            <?php 
+		            <?php
 		            if ( $depth=='1' )
-		            	printf(__('%s says:', 'custom-star-rating'), get_comment_author_link());
-		            else 
-		            	printf(__('%s responds:', 'custom-star-rating'), get_comment_author_link()); ?>
+		            	printf(__('%s says:', 'custom-star-rating'), PeepsoHelpers::get_comment_author_link($comment));
+		            else
+		            	printf(__('%s responds:', 'custom-star-rating'), PeepsoHelpers::get_comment_author_link($comment)); ?>
 		        </div>
 
 		        <?php if ($comment->comment_approved == '0') : ?>
@@ -102,9 +105,9 @@ class CSR_Comments_List {
 		        </div>
 
 		  	</div>
-		      
+
 				<div class="comment-rating">
-		  		<?= do_shortcode('[display-star-rating category="all" source="comment"]');?>         
+		  		<?= do_shortcode('[display-star-rating category="all" source="comment"]');?>
 				</div>
 
 				<div class="comment-content">
@@ -114,26 +117,26 @@ class CSR_Comments_List {
 		    <div class="comment-reply">
 		        <?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
 		    </div>
-		    
+
 				<div class="comment-edit">
 		    	<?php edit_comment_link(__('(Edit)'),'  ','') ?>
 				</div>
-				
+
 				<?php do_action( 'genesis_after_comment' );?>
-				
+
 		  </div>
 		  <!-- Pas </li> pour commentaires imbriqu�s -->
-  
+
 	<?php
 	}
 
-	
+
 	/* Change the comment reply link to display our own comment form */
 	//add_filter('comment_reply_link', 'remove_nofollow', 420, 4);
 	public function remove_nofollow($link, $args, $comment, $post){
 	  return str_replace("rel='nofollow'", "", $link);
 	}
 
-	
-	
+
+
 }

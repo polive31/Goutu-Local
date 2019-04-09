@@ -9,71 +9,70 @@ class CustomScriptsStylesEnqueue {
 
 	// Scripts to be loaded asynchronously
 	const DEFER_JS = array(
-			'skip-links',
-			'foodie-pro-general',
-			'grecaptcha-invisible'
-		);
+		'skip-links',
+		'foodie-pro-general',
+		'grecaptcha-invisible'
+	);
 
 	// Stylesheets to be loaded asynchronously
 	const DEFER_CSS = array(
-			'custom-gdpr',
-			'dashicons',
-			'bp-mentions-css',
-		);
+		'custom-gdpr',
+		'dashicons',
+		'bp-mentions-css',
+	);
 
 	// Stylesheets to be preloaded
 	const PRELOAD_CSS = array(
 		'google-fonts',
 		'child-theme-fonts',
-	);	
-	
-	/* Stylesheets to be replaced. 
-	IMPORTANT there must also be an entry for them in $css_if, otherwise they will not be considered
-	*/
+	);
+
+	/* Stylesheets to be replaced.
+	IMPORTANT there must also be an entry for them in $css_if, otherwise they will not be considered */
 	private $css_replace = array(
-			'name-directory-style' 	=> array(
-				'file' 		=> '/assets/css/name_directory.css',  
-			),
-			/* Force Peepso custom stylesheet update by using CHILD_THEME_VERSION */
-			// 'peepso-custom' 	=> array(
-			// 	'file' 		=> '/peepso/custom.css', 
-			// ),			
-			'peepso-jquery-ui' 		=> array(
-				'file'		=> '/assets/css/datepicker.css', 
-			),
+		'name-directory-style' 	=> array(
+			'file' 		=> '/assets/css/name_directory.css',
+		),
+		/* Force Peepso custom stylesheet update by using CHILD_THEME_VERSION */
+		// 'peepso-custom' 	=> array(
+		// 	'file' 		=> '/peepso/custom.css',
+		// ),
+		'peepso-jquery-ui' 		=> array(
+			'file'		=> '/assets/css/datepicker.css',
+		),
 	);
 
 	// Stylesheets to be loaded conditionnally
 	private $css_if = array(
-			// 'custom-star-ratings' 				=> array('page' => 'blog-page'),
-			// 'peepso'							=> array('page' => 'social'),
-			'peepso-custom'						=> array('true' => ''),
-			'yarppRelatedCss' 					=> array('singular' => 'post recipe' ),
-			'custom-lightbox'					=> array('singular' => 'post recipe' ),
-			'name-directory-style' 				=> array('shortcode' => 'namedirectory'),
-			'yarppWidgetCss' 					=> array('false' => ''),
-			'megamenu-fontawesome' 				=> array('false' => ''),
-			'megamenu-google-fonts' 			=> array('false' => ''),
-			'megamenu-genericons' 				=> array('false' => ''),
-			'popup-maker-site' 					=> array('false' => ''),
-			'wpba_front_end_styles' 			=> array('false' => ''),
-			'frontend-uploader' 				=> array('false' => ''),
-			'peepso-jquery-ui'					=> array('page' => 'social'),
-			'peepso-datepicker'					=> array('false' => ''),
-		);
+		// 'custom-star-ratings' 				=> array('page' => 'blog-page'),
+		// 'peepso'							=> array('page' => 'social'),
+		'peepso-custom'						=> array('true' => ''),
+		'yarppRelatedCss' 					=> array('singular' => 'post recipe' ),
+		'custom-lightbox'					=> array('singular' => 'post recipe' ),
+		'name-directory-style' 				=> array('shortcode' => 'namedirectory'),
+		'yarppWidgetCss' 					=> array('false' => ''),
+		'megamenu-fontawesome' 				=> array('false' => ''),
+		'megamenu-google-fonts' 			=> array('false' => ''),
+		'megamenu-genericons' 				=> array('false' => ''),
+		'popup-maker-site' 					=> array('false' => ''),
+		'wpba_front_end_styles' 			=> array('false' => ''),
+		'frontend-uploader' 				=> array('false' => ''),
+		'peepso-jquery-ui'					=> array('page' => 'social'),
+		'peepso-datepicker'					=> array('false' => ''),
+	);
 
 
 	// Scripts to be loaded conditionnally
 	private $js_if = array(
-			'bp-child-js'						=> array('page' => 'bp-page'),
-			'bp-mentions'						=> array('page' => 'bp-page'),
-			'bp-confirm'						=> array('page' => 'bp-page'),
-			'bp-widget-members'					=> array('page' => 'home bp-page'),
-		);
+		'bp-child-js'						=> array('page' => 'bp-page'),
+		'bp-mentions'						=> array('page' => 'bp-page'),
+		'bp-confirm'						=> array('page' => 'bp-page'),
+		'bp-widget-members'					=> array('page' => 'home bp-page'),
+	);
 
 	// Plugin path & url properties
 	public static $PLUGIN_PATH;
-	public static $PLUGIN_URI;	
+	public static $PLUGIN_URI;
 
 
 	public function __construct() {
@@ -88,15 +87,14 @@ class CustomScriptsStylesEnqueue {
 		add_filter( 'style_loader_tag', 	array($this, 'preload_css'), PHP_INT_MAX, 4 );
 
 		// add_action( 'wp_print_styles', 		array($this, 'megamenu_dequeue_google_fonts'), 100 );
-		// add_action('init', 'load_jquery_from_google'); 
+		// add_action('init', 'load_jquery_from_google');
 
 		add_filter( 'stylesheet_uri', 		array($this, 'enqueue_minified_theme_stylesheet'), 10, 1 );
 	}
 
 
-	/*  LOAD CONDITIONALLY 
+	/*  LOAD CONDITIONALLY
 	/* ----------------------------------------------------------------*/
-
 	public function enqueue_if() {
 		$temp = $this->css_if;
 		foreach ($this->css_if as $style => $conditions ) {
@@ -109,7 +107,7 @@ class CustomScriptsStylesEnqueue {
 					$args = $this->css_replace[$style];
 					$args['handle'] = $style;
 					custom_enqueue_style( $args );
-				} 
+				}
 				unset( $temp[$style] ); // When loop is run next time in the footer, only styles for which condition is true are present
 			}
 		}
@@ -119,7 +117,7 @@ class CustomScriptsStylesEnqueue {
 		foreach ($this->js_if as $script => $conditions ) {
 			if (!$this->current_page_matches( $conditions ) ) {
 				remove_script($script);
-			} 
+			}
 			else
 				unset( $temp[$script] );
 		}
@@ -134,14 +132,14 @@ class CustomScriptsStylesEnqueue {
 				case 'true' :
 				case 'always' :
 					$thismet = true;
-					break;				
+					break;
 				case 'false' :
 				case 'never' :
 					$thismet = false;
 					break;
 				case 'page' :
 					$thismet = $this->is_page_of_type( explode(' ', $value) );
-					break;												
+					break;
 				case 'shortcode' :
 					$content='';
 					if ( is_singular() ) {
@@ -170,18 +168,18 @@ class CustomScriptsStylesEnqueue {
 		$met = false;
 		foreach ($types as $type) {
 			$thismet = false;
-			switch ($type) {											
+			switch ($type) {
 				case 'home' :
 					$thismet = is_front_page();
-					break;	
+					break;
 				case 'social' :
 					$template = get_page_template();
-					$thismet = strpos($template, 'social') != false;										
+					$thismet = strpos($template, 'social') != false;
 					break;
 				case 'blog-page' :
 					$template = get_page_template();
 					$thismet = strpos($template, 'social') == false;
-					break;					
+					break;
 			}
 			$met = $met||$thismet;
 		}
@@ -192,24 +190,24 @@ class CustomScriptsStylesEnqueue {
 	/*  ASYNC STYLE & SCRIPTS LOADING
 	/* ----------------------------------------------------------------*/
 
-	public function async_load_js( $html, $handle, $src ) { 
+	public function async_load_js( $html, $handle, $src ) {
 		if ( is_admin() ) return $html;
 		if ( in_array($handle, self::DEFER_JS ) ) {
 		  $html='<script src="' . $src . '" async type="text/javascript"></script>' . "\n";
 		}
 		return $html;
-	} 
+	}
 
 
-	public function async_load_css( $html, $handle, $href, $media ) { 
+	public function async_load_css( $html, $handle, $href, $media ) {
 		if ( is_admin() ) return $html;
 		if ( in_array($handle, self::DEFER_CSS ) ) {
 			$html = '<link rel="stylesheet" href="' . $href . '" media="async" onload="if(media!=\'all\')media=\'all\'"><noscript><link rel="stylesheet" href="css.css"></noscript>' . "\n";
 		}
 		return $html;
-	} 
+	}
 
-	public function preload_css( $html, $handle, $href, $media ) { 
+	public function preload_css( $html, $handle, $href, $media ) {
 		if ( is_admin() ) return $html;
 		if ( in_array($handle, self::PRELOAD_CSS ) ) {
 			$search = "/rel=\"(.*?)\"/i";
@@ -218,10 +216,10 @@ class CustomScriptsStylesEnqueue {
 			$html = preg_replace($search, $replace, $html);
 		}
 		return $html;
-	} 	
+	}
 
 
-	/*  Making jQuery Google API  
+	/*  Making jQuery Google API
 	--------------------------------------------------------*/
 	public function load_jquery_from_google() {
 		if (!is_admin()) {
@@ -242,7 +240,7 @@ class CustomScriptsStylesEnqueue {
 	public function enqueue_minified_theme_stylesheet( $default_stylesheet_uri ) {
 		$path_parts = pathinfo( $default_stylesheet_uri );
 		$file = $path_parts['basename'];
-		$min_file = str_replace( '.css', '.min.css', $file ); 
+		$min_file = str_replace( '.css', '.min.css', $file );
 		$min_file_path = CHILD_THEME_PATH . '/' . $min_file;
 		// echo '<pre>' . "Default stylesheet URI : {$default_stylesheet_uri}" . '</pre>';
 		// echo '<pre>' . "Min file : {$min_file}" . '</pre>';
@@ -250,7 +248,7 @@ class CustomScriptsStylesEnqueue {
 
 		if ( file_exists( $min_file_path ) && WP_MINIFY ) {
 			$default_stylesheet_uri = CHILD_THEME_URL . '/' . $min_file;
-		} 
+		}
 		return $default_stylesheet_uri;
 	}
 

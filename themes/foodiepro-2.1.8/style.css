@@ -3031,12 +3031,12 @@ nav.nav-primary .wrap {
 
 
 .site-header .widget-area {
+	/* display:inline-block; */
 	float:right;
 	text-align:right;
 	margin:auto;
 	width:400px; /* P.O. Original 720px */
 	/*height:130px;  P.O. Original empty */
-	display:inline-block;
 }
 
 .header-image .site-header .widget-area {
@@ -3663,10 +3663,22 @@ li.comment a {
     /* float: right; */
 }
 
+p.comment-form-author,
+p.comment-form-email {
+    display: table-row;
+}
+
+.comment-form-email input,
+.comment-form-email label,
+.comment-form-author input,
+.comment-form-author label {
+  display: table-cell;
+}
+
 p.comment-notes {
-    white-space: normal;
-		line-height: normal;
-		text-align:left;
+	white-space: normal;
+	line-height: normal;
+	text-align:left;
 }
 
 /* Comments in Popup */

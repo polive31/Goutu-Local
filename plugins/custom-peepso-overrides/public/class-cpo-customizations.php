@@ -16,11 +16,11 @@ class CPO_Customizations {
 		// 		$reordered[$tab] = $links[$tab];
 		// 	}
 		// 	$links = $reordered;
-		// } 
+		// }
 		// return $links;
 	// }
 
-	public function custom_postbox_message( $msg ) {		
+	public function custom_postbox_message( $msg ) {
 		$PeepSoProfile=PeepSoProfile::get_instance();
 		if ( $PeepSoProfile->is_current_user() ) {
 			$me_id = get_current_user_id();
@@ -34,12 +34,11 @@ class CPO_Customizations {
 			$username=$user->get_firstname();
 			$msg = sprintf(__('Post a message on %s\'s news feed...','foodiepro'), $username);
 		}
-		
+
 		return $msg;
 	}
 
     /* * * ACTIVITY STREAM * * */
-
     /**
      * create an Activity Stream item when a new post is published
      *
@@ -47,7 +46,7 @@ class CPO_Customizations {
      * @param WP_Post 	$post
      * @return bool (FALSE - posting, post type disabled/blacklisted, TRUE - success, NULL - already added)
      */
-    
+
     function blogposts_publish_recipe( $ID, $post ) {
         // is this a regular post?
 		if( 'recipe' != $post->post_type )			               							{	return( FALSE );	}
@@ -101,10 +100,10 @@ class CPO_Customizations {
 
         return TRUE;
 	}
-	
+
 
 	public function publish_recipe_activity_stream_action($action, $post) {
-		
+
 		if (Peepso::BLOGPOSTS_MODULE_ID == intval($post->act_module_id)) {
 			$content = strip_tags(get_post_field('post_content', $post, 'raw'));
 			if ($target_post = json_decode($content)) {
@@ -112,12 +111,12 @@ class CPO_Customizations {
 				if ($wp_post->post_type != 'recipe' ) return ( $action );
 				$action = __('wrote a new recipe','foodiepro');
 				if(1==PeepSo::get_option('blogposts_activity_title_after_action_text',0)) {
-					$action .= sprintf(' : <a class="ps-blogposts-action-title" href="%s">%s</a>', get_the_permalink($wp_post->ID), $wp_post->post_title);		
+					$action .= sprintf(' : <a class="ps-blogposts-action-title" href="%s">%s</a>', get_the_permalink($wp_post->ID), $wp_post->post_title);
 				}
 			}
 		}
 
-        return ($action);		
+        return ($action);
 	}
 
 

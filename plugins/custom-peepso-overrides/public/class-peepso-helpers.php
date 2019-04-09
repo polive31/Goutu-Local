@@ -99,12 +99,10 @@ class PeepsoHelpers  {
 					$url = add_query_arg( 'post_type', $subpage, $url);
 				$url = add_query_arg( 'author_name', $user->get_nicename(), $url);
 				break;
-
 			case 'profile':
 				$url = $user->get_profileurl();
 				$url .= $subpage;
 				break;
-
 		}
 		return $url;
 	}
@@ -119,10 +117,12 @@ class PeepsoHelpers  {
 		$title='';
 		extract( $args );
 
+		$size=($size=='full')?'':'48';
+
 		$user = self::get_user( $user );
 		if (!$user) return;
 
-		$html = '<img class="avatar" src="' . $user->get_avatar( $size ) . '" alt="' . sprintf( __('Picture of %s','foodiepro') , ucfirst($user->get_nicename()) ) . '">';
+		$html = '<img class="avatar" src="' . $user->get_avatar() . '" alt="' . sprintf( __('Picture of %s','foodiepro') , ucfirst($user->get_nicename()) ) . '" width="' . $size . '" height="' . $size . '">';
 
 		if ( !empty($link) ) {
 			$html = '<a class="' . $aclass . '" href="' . self::get_url($user, 'profile') . '" title="' . sprintf( $title , ucfirst($user->get_nicename()) ) . '">' . $html . '</a>';
@@ -135,6 +135,7 @@ class PeepsoHelpers  {
 		return $html;
 	}
 
+
 	static function get_profile_field( $fields, $handle ) {
 		$value = false;
 		foreach ($fields as $key=>$field) {
@@ -146,6 +147,34 @@ class PeepsoHelpers  {
 		return $value;
 	}
 
+	static function get_comment_author_avatar( $comment ) {
+		if ( !empty($comment->user_id) ) {
+			$user = $comment->user_id;
+			$size = 'small';
+			$html = self::get_avatar( array (
+					'user' => $user,
+					'size' => $size
+				) );
+		}
+		else {
+			$html = get_avatar( $comment->comment_author_email, $size = '48', CHILD_THEME_URL . '/images/social/avatars/user-neutral-thumb.png', $comment->comment_author );
+			if (!$html) {
+				$html = '<img class="avatar" src="' . CHILD_THEME_URL . '/images/social/avatars/user-neutral-thumb.png' . '" width="48" height="48">';
+			}
+		}
+		return $html;
+	}
+
+	static function get_comment_author_link( $comment ) {
+		if ( !empty($comment->user_id) ) {
+			$user = self::get_user( $comment->user_id );
+			$html = '<a href="' . self::get_url($user, 'profile') . '">' . ucfirst( self::get_field($user, 'nicename') ) . '</a>';
+		}
+		else {
+			$html = $comment->comment_author;
+		}
+		return $html;
+	}
 
 
 }

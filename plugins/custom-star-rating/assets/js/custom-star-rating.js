@@ -1,41 +1,51 @@
+var currentInstance = 0;
+
 jQuery(document).ready(function () {
 
-    jQuery('.rating-form').on('submit', 'form', function (e) {
-        console.log('On form submit');
-        
-        commentForm = jQuery(this).closest('form');
+    // jQuery(document).on('submit', '.comment-form', function (e) {
+
+    jQuery(document).on('click', 'form.comment-form #submit', function (e) {
+        e.preventDefault();
+        // e.stopPropagation();
+        console.log('Click on comment form submit !!!');
+
+        commentForm = jQuery(this).closest('form.comment-form');
         console.log( 'Comment form is ', commentForm );
-        
-        commentText = commentForm.find('textarea#comment');
-        console.log( 'Comment text is ', commentText );
 
-        commentAuthor = commentForm.find('input#author');
-        console.log('Author name is ', commentAuthor);
+        commentText = commentForm.find('textarea');
+        console.log( 'Comment text val is ', commentText.val() );
 
-        commentEmail = commentForm.find('input#email');
-        console.log('Email address is ', commentEmail.val());        
-        
+        commentAuthor = commentForm.find('input.author');
+        console.log('Author name val is ', commentAuthor.val() );
+
+        commentEmail = commentForm.find('input.email');
+        console.log('Email address val is ', commentEmail.val() );
+
         if (!commentText.val().length) {
             alert( csr.emptyComment );
-            e.preventDefault();
-            e.stopPropagation();
         }
-        else if (!commentAuthor.val().length) {
+        else if (commentAuthor.length && !commentAuthor.val().length) {
             alert(csr.emptyAuthor);
-            e.preventDefault();
-            e.stopPropagation();
-        }        
-        else if (!csrValidateEmail(commentEmail.val())) {
+        }
+        else if (commentEmail.length && (!commentEmail.val().length || !csrValidateEmail( commentEmail.val() )) ) {
             alert( csr.invalidEmail );
-            e.preventDefault();
-            e.stopPropagation();
         }
         else {
             console.log('Submit the form');
-        }  
+            currentInstance = jQuery(this).data("instance");
+            console.log('Form instance is ', currentInstance);
+            /* Check if recaptcha present */
+            check = jQuery(this).prev();
+            if ( check.attr('id')=='recaptcha') {
+                console.log('Recaptcha found, executing callback');
+                grecaptcha.execute();
+            }
+            else {
+                console.log('No Recaptcha found, submitting form directly');
+                commentForm.submit();
+            }
+        }
     });
-
-
 });
 
 function csrValidateEmail($email) {
@@ -44,8 +54,11 @@ function csrValidateEmail($email) {
 }
 
 function csrOnSubmit(token) {
-    console.log('Click on comment submit !!!');
-    form = jQuery('.rating-form form.comment-form');
+    console.log('in csrOnSubmit, recapatcha successful !!!');
+    form = jQuery('form#foodiepro_comment' + currentInstance);
+    // formId = "foodiepro_comment" + currentInstance;
+    // console.log('Form ID is : ', formId);
+    // form = document.getElementById(formId);
     console.log('Form is : ', form);
     form.submit();
 }

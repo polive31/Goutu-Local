@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'CHILD_THEME_NAME', 'Foodie Pro Theme' );
-define( 'CHILD_THEME_VERSION', '2.3.24' );
+define( 'CHILD_THEME_VERSION', '2.3.25' );
 define( 'CHILD_THEME_DEVELOPER', 'Shay Bocks' );
 define( 'CHILD_THEME_URL', get_stylesheet_directory_uri() );
 define( 'CHILD_THEME_PATH', get_stylesheet_directory() );
@@ -319,6 +319,7 @@ add_filter( 'body_class', 'foodie_pro_add_body_class' );
 function foodie_pro_add_body_class( $classes ) {
 	$classes[] = 'foodie-pro';
 	$classes[] = 'no-js';
+	$classes[] = 'color-theme-' . CHILD_COLOR_THEME;
 	return $classes;
 }
 
@@ -364,12 +365,18 @@ function custom_favicon_links() {
 /* =              CUSTOM LOGIN                                     =*/
 /* =================================================================*/
 
+/* Add color theme body class to login page */
+add_filter( 'login_body_class', 'foodiepro_login_classes' );
+function foodiepro_login_classes( $classes ) {
+	$classes[] = 'color-theme-' . CHILD_COLOR_THEME;
+	return $classes;
+}
+
 /* Sets login page color theme */
 add_action('login_enqueue_scripts', 'custom_login_style');
 function custom_login_style() {
 	custom_enqueue_style( 'custom-login', '/login/custom-login-styles-default.css');
 	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Oswald', array(), CHILD_THEME_VERSION );
-
 }
 
 /* Sets login page logo & url */
@@ -399,7 +406,7 @@ function custom_wp_login_form() {
 /* Redirect register url towards peepso register page */
 add_filter( 'register_url', 'custom_register_url' );
 function custom_register_url( $register_url ) {
-    $register_url = do_shortcode('[permalink slug="inscription"]');
+    $register_url = do_shortcode('[permalink peepso="register"]');
     return $register_url;
 }
 
@@ -494,13 +501,6 @@ function foodiepro_approve_loggedin_users( $approved ) {
     return is_user_logged_in() ? 1 : $approved;
 }
 
-// Seems to be added by default in Wordpress/Genesis
-// add_action( 'comment_form_before', 'foodiepro_enqueue_comment_reply_script' );
-function foodiepro_enqueue_comment_reply_script() {
-    if ( get_option( 'thread_comments' ) ) {
-        wp_enqueue_script( 'comment_reply' );
-    }
-}
 
 /* =================================================================*/
 /* =              SECURITY

@@ -8,15 +8,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class CSR_Comments_List {
 
+	// private $respondId = 'custom_respond';
 
+	public function move_recipe_comments_form() {
+		if ( is_singular( 'recipe' ) ) {
+			// $url = $_SERVER["REQUEST_URI"];
+			// $is_comment_reply = strpos($url, 'replytocom');
+			// if ( ! $is_comment_reply )
+			remove_action( 'genesis_comment_form', 'genesis_do_comment_form' );
+			// add_action( 'genesis_list_comments', 'genesis_do_comment_form' , 5 );
+			add_action( 'genesis_before_comments', 'genesis_do_comment_form' );
+		}
+	}
 
-	// public function remove_recipe_comments_form() {
-	// 	if ( is_singular( 'recipe' ) ) {
-	// 		$url = $_SERVER["REQUEST_URI"];
-	// 		$is_comment_reply = strpos($url, 'replytocom');
-	// 		if ( ! $is_comment_reply )
-	// 			remove_action( 'genesis_comment_form', 'genesis_do_comment_form' );
-	// 	}
+	// public function comment_form_wrap_begin() {
+	// 	echo '<div id="' . $this->respondId . '">';
+	// }
+
+	// public function comment_form_wrap_end() {
+	// 	echo '</div>';
 	// }
 
 
@@ -59,9 +69,11 @@ class CSR_Comments_List {
 
 	public function custom_star_rating_list_comments() {
 		$args = array(
-	    'type'          => 'comment',
-	    'avatar_size'   => 50,
-	    'callback'      => array($this,'custom_star_rating_comment_list'),
+	    'type'          		=> 'comment',
+	    'avatar_size'   		=> 50,
+			'callback'      		=> array($this,'custom_star_rating_comment_list'),
+			// 'style'							=> 'ul',
+			// 'reverse_children'	=> false
 	    //'per_page' 			=> '2',
 		);
 		$args = apply_filters( 'genesis_comment_list_args', $args );
@@ -74,7 +86,7 @@ class CSR_Comments_List {
 
 		  $GLOBALS['comment'] = $comment;
 		  ?>
-		  <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
+		  <li <?php comment_class(); ?> id="comment-<?php comment_ID() ?>">
 			<div class="comment-item">
 		    <?php do_action( 'genesis_before_comment' ); ?>
 
@@ -115,7 +127,14 @@ class CSR_Comments_List {
 				</div>
 
 		    <div class="comment-reply">
-		        <?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+						<?php
+						$args = array_merge( $args, array(
+							'depth' 			=> $depth,
+							'max_depth' 	=> $args['max_depth'],
+							// 'respond_id'	=> $this->respondId,
+						));
+						comment_reply_link($args);
+						?>
 		    </div>
 
 				<div class="comment-edit">

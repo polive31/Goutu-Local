@@ -422,9 +422,9 @@ class CNH_Shortcodes {
 			'id' 	=> '',
 			'slug' 	=> false,
 			'tax' 	=> false,
-			'wp' 	=> false, // home, login
+			'wp' 	=> false, // home, login, register
 			'user' 	=> false, // current, view, author, any user ID
-			'peepso' => false, // members
+			'peepso' => false, // members, register
 			/* Display parameters */
 			'class' => '',
 			'display' => false, // archive, profile
@@ -491,10 +491,16 @@ class CNH_Shortcodes {
 				$url = get_home_url();
 			elseif ( $wp=='login' )
 				$url = wp_login_url();
+			elseif ( $wp=='register' )
+				$url = wp_registration_url();
 		}
 		elseif ($peepso) {
-			if ($peepso=='members'  && class_exists('Peepso') ) {
+			if (!class_exists('Peepso')) return;
+			if ($peepso=='members' ) {
 				$url = PeepSo::get_page('members');
+			}
+			elseif ($peepso=='register') {
+				$url= PeepSo::get_page('register');
 			}
 		}
 		else {
@@ -546,21 +552,21 @@ class CNH_Shortcodes {
 	/* Output registration page url
 	------------------------------------------------------*/
 
-	public function get_registration_page($a, $content=null) {
-		$a = shortcode_atts(array(
-			'text' => "",  // default value if none supplied
-			'method' => "peepso"  // 'wp'
-	    ), $a);
-		$text=esc_html($a['text']);
-		$content=esc_html($content);
+	// public function get_registration_page($a, $content=null) {
+	// 	$a = shortcode_atts(array(
+	// 		'text' => "",  // default value if none supplied
+	// 		'method' => "peepso"  // 'wp'
+	//     ), $a);
+	// 	$text=esc_html($a['text']);
+	// 	$content=esc_html($content);
 
-		if ( $a['method']=='peepso' )
-			$url=PeepSo::get_page('register');
-		else
-			$url=wp_registration_url();
-		if (!empty($text) || !empty($content)) return '<a href=' . $url . '>' . $text . $content . '</a>';
-		else return $url;
-	}
+	// 	if ( $a['method']=='peepso' )
+	// 		$url=PeepSo::get_page('register');
+	// 	else
+	// 		$url=wp_registration_url();
+	// 	if (!empty($text) || !empty($content)) return '<a href=' . $url . '>' . $text . $content . '</a>';
+	// 	else return $url;
+	// }
 
 
 	public function get_dropdown_js($id, $tax_slug, $all_url) {

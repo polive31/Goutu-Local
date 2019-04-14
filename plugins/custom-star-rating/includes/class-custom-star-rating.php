@@ -21,7 +21,6 @@ class Custom_Star_Rating {
 		add_action( 'wp',                                       'CSR_Assets::hydrate' );
 		add_filter( 'wpurp_register_ratings_taxonomy',          'CSR_Assets::translate_ratings_taxonomy' );
         add_action( 'wp_enqueue_scripts',                       'CSR_Assets::register_star_rating_assets' );
-        add_action( 'wp_enqueue_scripts',                       'CSR_Assets::enqueue_comment_reply_script' );
 
         /* Hooks for CSR_Rating class
         -----------------------------------------------------------------*/
@@ -44,7 +43,11 @@ class Custom_Star_Rating {
 		/* Add anchor to comments section title	*/
 		add_filter( 'genesis_title_comments',                   array( $CommentList,'add_comments_title_markup'), 15, 1 );
 		/* Remove comment form unless it's a comment reply page */
-		// add_action( 'genesis_comment_form',                     array( $CommentList,'remove_recipe_comments_form'), 0 );
+		add_action( 'genesis_before_comments',                     array( $CommentList,'move_recipe_comments_form'), 0 );
+		/* wrap the standard comment form into an id for comment_reply.js script to use this one instead of the rating one */
+		// add_action( 'genesis_before_comment_form',              array( $CommentList,'comment_form_wrap_begin') );
+		// add_action( 'genesis_after_comment_form',              	array( $CommentList,'comment_form_wrap_end') );
+
 		/* Customize comment section title */
 		add_filter( 'genesis_title_comments',                   array( $CommentList,'custom_comment_text') );
 		/* Customize navigation links */
@@ -56,7 +59,7 @@ class Custom_Star_Rating {
 		/* Hooks for CSR_Form class
 		-----------------------------------------------------------------*/
         $CommentForm = new CSR_Form();
-		add_shortcode( 	'comment-rating-form',                 	array( $CommentForm, 'display_comment_form_with_rating_shortcode') );
+		add_shortcode( 'comment-rating-form',                 	array( $CommentForm, 'display_comment_form_with_rating_shortcode') );
 		/* Disable logged in / logged out link */
 		add_filter( 'comment_form_defaults',                    array( $CommentForm, 'change_comment_form_defaults') );
 		/* Disable url input box in comment form unlogged users */

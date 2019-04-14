@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: custom-star-rating\n"
 "POT-Creation-Date: 2019-03-25 00:51+0100\n"
-"PO-Revision-Date: 2019-03-25 00:52+0100\n"
+"PO-Revision-Date: 2019-04-13 00:29+0200\n"
 "Last-Translator: \n"
 "Language-Team: goutu.org <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -99,7 +99,7 @@ msgstr "Plus de commentaires"
 #: public/class-csr-comments-list.php:88
 #, php-format
 msgid "%s says:"
-msgstr "De la part de %s"
+msgstr "Commentaire de %s"
 
 #: public/class-csr-comments-list.php:90
 #, php-format

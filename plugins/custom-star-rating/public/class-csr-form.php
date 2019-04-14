@@ -7,6 +7,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class CSR_Form {
 
+	protected static $_PluginPath;
+	protected static $_PluginUri;
+
+	public function __construct() {
+		self::$_PluginUri = plugin_dir_url( dirname( __FILE__ ) );
+		self::$_PluginPath = plugin_dir_path( dirname( __FILE__ ) );
+	}
+
 	/* CALLBACKS
 	-----------------------------------------------*/
 
@@ -58,33 +66,45 @@ class CSR_Form {
 		$comment_notes = is_user_logged_in()?'':'<p class="comment-notes">' . __('Your name and mail address are required for authentification of your comment.<br>Your mail address will not be published.', 'foodiepro') . '</p>';
 
 		$args = array (
-			'comment_notes_before' => '',
-			'comment_notes_after' => $comment_notes,
-			'title_reply' => '', //Default: __( 'Leave a Reply� )
-			'label_submit' => __( 'Send', 'custom-star-rating' ), //default=�Post Comment�
-			'comment_field' => $this->output_evaluation_form(),
-			'logged_in_as' => '', //Default: __( 'Leave a Reply to %s� )
-			'title_reply_to' => __( 'Leave a Reply to %s', 'custom-star-rating' ), //Default: __( 'Leave a Reply to %s� )
-			'cancel_reply_link' => __( 'Cancel', 'custom-star-rating' ), //Default: __( �Cancel reply� )
-			'rating_cats' => 'all',  //Default: "id1 id2..."
+			'comment_notes_before' 	=> '',
+			'comment_notes_after' 	=> $comment_notes,
+			'title_reply' 					=> '', //Default: __( 'Leave a Reply� )
+			'label_submit' 					=> __( 'Send', 'custom-star-rating' ), //default=�Post Comment�
+			'comment_field' 				=> $this->output_evaluation_form(),
+			'logged_in_as' 					=> '', //Default: __( 'Leave a Reply to %s� )
+			'title_reply_to' 				=> __( 'Leave a Reply to %s', 'custom-star-rating' ), //Default: __( 'Leave a Reply to %s� )
+			'cancel_reply_link' 		=> __( 'Cancel', 'custom-star-rating' ), //Default: __( �Cancel reply� )
+			'rating_cats' 					=> 'all',  //Default: "id1 id2..."
 		);
 
 		wp_enqueue_style('custom-star-rating');
 		wp_enqueue_script('custom-star-rating');
 		wp_enqueue_script('grecaptcha-invisible', 'https://www.google.com/recaptcha/api.js');
 
-		ob_start();
-		//display_rating_form();
-		comment_form($args);
-		$cr_form = ob_get_contents();
-		ob_end_clean();
+		$cr_form = $this->custom_popup_comment_form($args);
+
 		return $cr_form;
 	}
 
-
-
-
 	/* Custom Comment Form
+	------------------------------------------------------------ */
+	/*
+	comment_form() function modified with :
+		- <div> wrapper id is custom_respond (in order to be "invisible" to comment-reply.js script)
+		- cancel button removed (in order not to conflict with the main form in the comments list )
+		- comment_parent div removed below reply button (in order not to conflict with the main form in the comments list )
+	*/
+	public function custom_popup_comment_form($args) {
+
+		ob_start();
+		include( self::$_PluginPath . 'public/partials/comment-template.php' );
+        $output = ob_get_contents();
+		ob_end_clean();
+
+		return $output;
+	}
+
+	/* Rating Form
 	------------------------------------------------------------ */
 	public function output_evaluation_form() {
 
@@ -106,8 +126,8 @@ class CSR_Form {
 		</div>
 
 		<div class="comment-reply">
-		<label for="comment"><?= __('Add a comment','custom-star-rating' );?></label>
-		<textarea id="comment" name="comment" cols="50" rows="4" aria-required="true"></textarea>
+			<label for="comment"><?= __('Add a comment','custom-star-rating' );?></label>
+			<textarea id="comment" name="comment" cols="50" rows="4" aria-required="true"></textarea>
 		</div>
 
 	<?php

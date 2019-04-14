@@ -41,12 +41,12 @@ class CSR_Assets {
 		custom_register_script( $args );
 	}
 
-	public static function enqueue_comment_reply_script() {
-		if ( get_option( 'thread_comments' ) && is_singular() ) {
-			// wp_enqueue_script( 'comment_reply' );
-			wp_enqueue_script( 'comment_reply', get_site_url() . 'wp-includes/js/comment-reply.min.js', array(), false, true );
-		}
-	}
+	// public static function enqueue_comment_reply_script() {
+	// 	if ( get_option( 'thread_comments' ) && is_singular() ) {
+	// 		// wp_enqueue_script( 'comment_reply' );
+	// 		// wp_enqueue_script( 'comment_reply', get_site_url() . '/wp-includes/js/comment-reply.min.js', array(), false, true );
+	// 	}
+	// }
 
 
 

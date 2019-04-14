@@ -4,10 +4,19 @@ Login Page
 
 body.login {
   width:100%;
-  background-image: url('../images/theme/background-winter/background-snow.jpg');
   background-repeat: repeat;
   background-attachment: fixed;
   background-position: center;
+}
+
+body.login.color-theme-winter {
+  background-image: url('../images/theme/background-winter/background-snow.jpg');
+}
+
+body.login.color-theme-spring {
+	background-color: white;
+	background-image: linear-gradient(90deg, rgba(217, 230, 206, 0.5) 50%, transparent 50%), linear-gradient(rgba(232, 238, 210, 0.5) 50%, transparent 50%);
+	background-size: 30px 30px;
 }
 
 #login {
@@ -25,7 +34,7 @@ body.login {
   background-image: url('login-logo.png');
   background-repeat:no-repeat;
   background-size:100px 100px;
-	background-position: center;  
+	background-position: center;
   width:150px;
   height:150px;
 	border-radius : 50%;
@@ -60,4 +69,3 @@ body.login {
   }
 
 }
-

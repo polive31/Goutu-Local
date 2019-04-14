@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-04-07 17:08+0200\n"
-"PO-Revision-Date: 2019-04-07 17:10+0200\n"
+"POT-Creation-Date: 2019-04-14 13:40+0200\n"
+"PO-Revision-Date: 2019-04-14 13:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -84,7 +84,7 @@ msgstr ""
 #: peepso/overrides/templates/profile/focus.php:75
 #: peepso/overrides/templates/profile/profile-about.php:150
 #: plugins/custom-recipe-management/public/custom-recipe-favorite/class-crm-favorite.php:137
-#: plugins/custom-star-rating/public/class-csr-form.php:41
+#: plugins/custom-star-rating/public/class-csr-form.php:76
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:79
 #: plugins/wp-ultimate-recipe-premium/core/vendor/vafpress/classes/shortcodegenerator.php:264
 #: themes/foodiepro-2.1.8/buddypress/activity/entry.php:128
@@ -507,7 +507,7 @@ msgstr "Aller sur la page d'inscription"
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:128
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:135
-#: themes/foodiepro-2.1.8/functions.php:417
+#: themes/foodiepro-2.1.8/functions.php:424
 msgid "Not yet a member ? <br> Register here !"
 msgstr "Pas encore membre ?<br> Inscris-toi !"
 
@@ -922,6 +922,7 @@ msgstr ""
 
 #: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:184
 #: plugins/custom-contact-form/templates/contact-form.php:165
+#: plugins/custom-star-rating/public/partials/comment-template.php:32
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:114
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_form.php:13
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_list.php:15
@@ -1271,7 +1272,7 @@ msgstr "Quoi de neuf aujourd'hui, %s ?"
 msgid "Post a message on %s's news feed..."
 msgstr "Publie un message sur le fil d'actualités de %s..."
 
-#: plugins/custom-peepso-overrides/public/class-cpo-customizations.php:113
+#: plugins/custom-peepso-overrides/public/class-cpo-customizations.php:112
 msgid "wrote a new recipe"
 msgstr "a publié une nouvelle recette"
 
@@ -1326,7 +1327,7 @@ msgstr "Modifier mon profil"
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:123
 #: themes/foodiepro-2.1.8/buddypress/members/register.php:92
-#: themes/foodiepro-2.1.8/functions.php:414
+#: themes/foodiepro-2.1.8/functions.php:421
 msgid "Email Address"
 msgstr "Adresse mail"
 
@@ -2628,63 +2629,82 @@ msgstr ""
 msgid "Serving Size"
 msgstr "Portions"
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:121
-#, fuzzy, php-format
-#| msgctxt "post"
-#| msgid "%s added a comment to your post <a href=\"%s\">%s</a> :"
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:142
+#, php-format
 msgctxt "post"
-msgid "commented your post <a href=\"%s\">%s</a>"
-msgstr "%s a commenté ton article <a href=\"%s\">%s</a>."
+msgid "commented your post %s."
+msgstr "a commenté ton article %s."
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:161
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:158
+#, php-format
+msgid "%s answered one of your comments"
+msgstr "%s a répondu à l'un de tes commentaires"
+
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:159
+#, php-format
+msgid "%s answered your comment on post <a href=\"%s\">%s</a>."
+msgstr "%s a répondu à ton commentaire sur l'article <a href=\"%s\">%s</a>."
+
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:192
+#, php-format
+msgctxt "post"
+msgid "answered your comment on post %s."
+msgstr "a répondu à ton commentaire sur l'article %s."
+
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:230
 msgid "Share this recipe on Facebook"
 msgstr "Partager cette recette sur Facebook"
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:162
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:231
 msgid "Share this recipe on Twitter"
 msgstr "Partager cette recette sur Twitter"
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:163
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:232
 msgid "Share this recipe on Pinterest"
 msgstr "Partager cette recette sur Pinterest"
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:164
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:233
 #, fuzzy
 #| msgid "Share this recipe"
 msgid "Share this recipe by email"
 msgstr "Partager sur les réseaux sociaux"
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:165
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:234
 #, fuzzy
 #| msgid "Share this recipe on Pinterest"
 msgid "Share this recipe on Whatsapp"
 msgstr "Partager cette recette sur Pinterest"
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:203
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:272
 #, php-format
 msgid "Hello %s,"
 msgstr "Bonjour %s,"
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:207
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:276
+#, php-format
+msgid "<a href=\"%s\">Log yourself in</a> to respond."
+msgstr "<a href=\"%s\">Connecte-toi </a> pour lui répondre."
+
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:282
 #, php-format
 msgid "The <a href=\"%s\">Goûtu.org</a> Team."
 msgstr "L'équipe <a href=\"%s\">Goûtu.org</a>."
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:213
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:288
 #, php-format
 msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr "Un problème ? Une question ? Contacte nous <a href=\"%s\">ici</a>"
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:219
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:294
 #: themes/foodiepro-2.1.8/functions.php:968
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:223
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:301
 msgid "Want to change how you receive these emails?"
 msgstr "Tu ne souhaites plus recevoir ces courriels ?"
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:224
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:302
 #, php-format
 msgid "You can <a href=\"%s\">update your preferences</a> on %s."
 msgstr "Tu peux <a href=\"%s\">mettre à jour tes préférences</a> sur %s."
@@ -2791,121 +2811,126 @@ msgstr ""
 "Veuillez fournir une adresse mail valide avant de soumettre votre "
 "commentaire."
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:54
+#: plugins/custom-star-rating/includes/class-csr-assets.php:62
 msgid "Dish"
 msgstr "Plat"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:55
+#: plugins/custom-star-rating/includes/class-csr-assets.php:63
 #, fuzzy
 #| msgid "eg. Preparation of the dough"
 msgid "Appreciation of the dish"
 msgstr "ex : Préparation de la pâte"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:56
+#: plugins/custom-star-rating/includes/class-csr-assets.php:64
 msgid "How did you like this dish ?"
 msgstr "Avez vous aimé ce plat ? "
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:58
-#: plugins/custom-star-rating/includes/class-csr-assets.php:69
+#: plugins/custom-star-rating/includes/class-csr-assets.php:66
+#: plugins/custom-star-rating/includes/class-csr-assets.php:77
 msgid "Disappointing"
 msgstr "Décevant"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:59
-#: plugins/custom-star-rating/includes/class-csr-assets.php:70
+#: plugins/custom-star-rating/includes/class-csr-assets.php:67
+#: plugins/custom-star-rating/includes/class-csr-assets.php:78
 msgid "Average"
 msgstr "Moyen"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:60
-#: plugins/custom-star-rating/includes/class-csr-assets.php:71
+#: plugins/custom-star-rating/includes/class-csr-assets.php:68
+#: plugins/custom-star-rating/includes/class-csr-assets.php:79
 msgid "Good"
 msgstr "Bon"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:61
-#: plugins/custom-star-rating/includes/class-csr-assets.php:72
+#: plugins/custom-star-rating/includes/class-csr-assets.php:69
+#: plugins/custom-star-rating/includes/class-csr-assets.php:80
 msgid "Very good"
 msgstr "Très bon"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:62
-#: plugins/custom-star-rating/includes/class-csr-assets.php:73
+#: plugins/custom-star-rating/includes/class-csr-assets.php:70
+#: plugins/custom-star-rating/includes/class-csr-assets.php:81
 msgid "Delicious"
 msgstr "Délicieux"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:66
+#: plugins/custom-star-rating/includes/class-csr-assets.php:74
 msgid "Overall"
 msgstr "Global"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:67
+#: plugins/custom-star-rating/includes/class-csr-assets.php:75
 #, fuzzy
 #| msgid "eg. Preparation of the dough"
 msgid "Global appreciation of the dish"
 msgstr "ex : Préparation de la pâte"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:99
+#: plugins/custom-star-rating/includes/class-csr-assets.php:107
 msgid "Evaluations"
 msgstr "Evaluations"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:100
+#: plugins/custom-star-rating/includes/class-csr-assets.php:108
 msgid "Evaluation"
 msgstr "Evaluation"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:106
+#: plugins/custom-star-rating/includes/class-csr-assets.php:114
 msgid "rating"
 msgstr "evaluation"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:144
+#: plugins/custom-star-rating/includes/class-csr-assets.php:152
 #, fuzzy
 #| msgid "No related posts."
 msgid "Not rated"
 msgstr "Pas d'articles similaires."
 
-#: plugins/custom-star-rating/public/class-csr-comments-list.php:28
+#: plugins/custom-star-rating/public/class-csr-comments-list.php:38
 #, fuzzy
 #| msgid "Comment"
 msgid "Comments"
 msgstr "Ajouter un commentaire"
 
-#: plugins/custom-star-rating/public/class-csr-comments-list.php:34
+#: plugins/custom-star-rating/public/class-csr-comments-list.php:44
 #, fuzzy
 #| msgid "Previous Feeds"
 msgid "Previous comments"
 msgstr "Nouvelles précédentes"
 
-#: plugins/custom-star-rating/public/class-csr-comments-list.php:39
+#: plugins/custom-star-rating/public/class-csr-comments-list.php:49
 #, fuzzy
 #| msgid "Comment"
 msgid "Next comments"
 msgstr "Ajouter un commentaire"
 
-#: plugins/custom-star-rating/public/class-csr-comments-list.php:88
+#: plugins/custom-star-rating/public/class-csr-comments-list.php:103
 #, php-format
 msgid "%s says:"
 msgstr "%s dit :"
 
-#: plugins/custom-star-rating/public/class-csr-comments-list.php:90
+#: plugins/custom-star-rating/public/class-csr-comments-list.php:105
 #, php-format
 msgid "%s responds:"
 msgstr "%s répond :"
 
-#: plugins/custom-star-rating/public/class-csr-comments-list.php:94
+#: plugins/custom-star-rating/public/class-csr-comments-list.php:109
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-comments-list.php:100
+#: plugins/custom-star-rating/public/class-csr-comments-list.php:115
 #, php-format
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-comments-list.php:119
+#: plugins/custom-star-rating/public/class-csr-comments-list.php:141
 #, fuzzy
 #| msgid "Edit"
 msgid "(Edit)"
 msgstr "Modifier"
 
-#: plugins/custom-star-rating/public/class-csr-form.php:21
+#: plugins/custom-star-rating/public/class-csr-form.php:37
 msgid "Your answer here"
 msgstr "Entrez votre réponse ci-dessous"
 
-#: plugins/custom-star-rating/public/class-csr-form.php:31
+#: plugins/custom-star-rating/public/class-csr-form.php:55
+#: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/templates/public_recipe_form.php:137
+msgid "Submit"
+msgstr "Publier"
+
+#: plugins/custom-star-rating/public/class-csr-form.php:66
 msgid ""
 "Your name and mail address are required for authentification of your comment."
 "<br>Your mail address will not be published."
@@ -2913,22 +2938,17 @@ msgstr ""
 "Vos nom et adresse mail sont nécessaires pour authentifier votre commentaire."
 "<br>Votre adresse mail ne sera pas publiée."
 
-#: plugins/custom-star-rating/public/class-csr-form.php:37
+#: plugins/custom-star-rating/public/class-csr-form.php:72
 msgid "Send"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:40
+#: plugins/custom-star-rating/public/class-csr-form.php:75
+#: plugins/custom-star-rating/public/partials/comment-template.php:89
 #, php-format
 msgid "Leave a Reply to %s"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:63
-#: plugins/custom-star-rating/public/class-csr-form.php:66
-#: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/templates/public_recipe_form.php:137
-msgid "Submit"
-msgstr "Publier"
-
-#: plugins/custom-star-rating/public/class-csr-form.php:96
+#: plugins/custom-star-rating/public/class-csr-form.php:129
 #, fuzzy
 #| msgid "Add a picture"
 msgid "Add a comment"
@@ -2941,6 +2961,76 @@ msgid "%s review"
 msgid_plural "%s reviews"
 msgstr[0] "avis"
 msgstr[1] "avis"
+
+#: plugins/custom-star-rating/public/partials/comment-template.php:34
+#, fuzzy
+#| msgid "Email Address"
+msgid "Email"
+msgstr "Adresse mail"
+
+#: plugins/custom-star-rating/public/partials/comment-template.php:36
+#: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:53
+msgid "Website"
+msgstr ""
+
+#: plugins/custom-star-rating/public/partials/comment-template.php:43
+msgid ""
+"Save my name, email, and website in this browser for the next time I comment."
+msgstr ""
+
+#: plugins/custom-star-rating/public/partials/comment-template.php:51
+#, fuzzy, php-format
+#| msgid "Required fields"
+msgid "Required fields are marked %s"
+msgstr "Informations requises"
+
+#: plugins/custom-star-rating/public/partials/comment-template.php:63
+#, fuzzy
+#| msgid "Comment"
+msgctxt "noun"
+msgid "Comment"
+msgstr "Ajouter un commentaire"
+
+#: plugins/custom-star-rating/public/partials/comment-template.php:67
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr ""
+
+#: plugins/custom-star-rating/public/partials/comment-template.php:73
+#, php-format
+msgid ""
+"<a href=\"%1$s\" aria-label=\"%2$s\">Logged in as %3$s</a>. <a href=\"%4$s"
+"\">Log out?</a>"
+msgstr ""
+
+#: plugins/custom-star-rating/public/partials/comment-template.php:76
+#, php-format
+msgid "Logged in as %s. Edit your profile."
+msgstr ""
+
+#: plugins/custom-star-rating/public/partials/comment-template.php:80
+#, fuzzy
+#| msgid "Your recipe just got published !"
+msgid "Your email address will not be published."
+msgstr "Ta recette est publiée !"
+
+#: plugins/custom-star-rating/public/partials/comment-template.php:88
+#, fuzzy
+#| msgid "Send a Reply"
+msgid "Leave a Reply"
+msgstr "Envoyer une répondre"
+
+#: plugins/custom-star-rating/public/partials/comment-template.php:94
+#, fuzzy
+#| msgid "Cancel"
+msgid "Cancel reply"
+msgstr "Annuler"
+
+#: plugins/custom-star-rating/public/partials/comment-template.php:95
+#, fuzzy
+#| msgid "Post content"
+msgid "Post Comment"
+msgstr "Corps de l'article"
 
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:45
 #: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/custom-taxonomies.php:64
@@ -9975,10 +10065,6 @@ msgstr "Mon Profil"
 msgid "About Me"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:53
-msgid "Website"
-msgstr ""
-
 #: themes/foodiepro-2.1.8/buddypress/members/single/profile/profile-wp.php:62
 msgid "Jabber"
 msgstr ""
@@ -10064,40 +10150,40 @@ msgstr ""
 msgid "Save Settings"
 msgstr "Imprimer cette recette"
 
-#: themes/foodiepro-2.1.8/functions.php:383
+#: themes/foodiepro-2.1.8/functions.php:390
 msgid "Goûtu.org - La Communauté des Gourmets"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:391
+#: themes/foodiepro-2.1.8/functions.php:398
 #, fuzzy
 #| msgid "Email Address"
 msgid "Enter Email Address"
 msgstr "Adresse mail"
 
-#: themes/foodiepro-2.1.8/functions.php:392
+#: themes/foodiepro-2.1.8/functions.php:399
 msgid "Enter Password"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:393
+#: themes/foodiepro-2.1.8/functions.php:400
 #, fuzzy
 #| msgid "Remember Me"
 msgid "Remember Login State"
 msgstr "Se souvenir de moi"
 
-#: themes/foodiepro-2.1.8/functions.php:394
+#: themes/foodiepro-2.1.8/functions.php:401
 #, fuzzy
 #| msgid "Log In"
 msgid "Please Log In"
 msgstr "Connexion"
 
-#: themes/foodiepro-2.1.8/functions.php:428
+#: themes/foodiepro-2.1.8/functions.php:435
 msgid ""
 "<strong>ERROR</strong>: Invalid login. Please log in with your email address."
 msgstr ""
 "<strong>ERREUR</strong>: Identifiant invalide. Merci de vous connecter avec "
 "votre adresse mail."
 
-#: themes/foodiepro-2.1.8/functions.php:471
+#: themes/foodiepro-2.1.8/functions.php:478
 msgid "author"
 msgstr "auteur"
 
@@ -11666,13 +11752,20 @@ msgstr "Ces recettes pourraient également vous intéresser..."
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
 
+#, fuzzy
+#~| msgctxt "post"
+#~| msgid "%s added a comment to your post <a href=\"%s\">%s</a> :"
+#~ msgctxt "post"
+#~ msgid "commented your post <a href=\"%s\">%s</a>"
+#~ msgstr "%s a commenté ton article <a href=\"%s\">%s</a>."
+
+#~ msgid "<a href=\"%s\">Log yourself in</a> to respond to it."
+#~ msgstr "<a href=\"%s\">Connecte-toi </a> afin d'y répondre."
+
 #~ msgid "<strong>ERROR</strong>: User pending <a href=\"%s\">approval</a>."
 #~ msgstr ""
 #~ "<strong>ERREUR</strong> : Utilisateur en attente d'<a href=\"%s"
 #~ "\">approbation</a>."
-
-#~ msgid "Your recipe just got published !"
-#~ msgstr "Ta recette est publiée !"
 
 #~ msgid "Greetings, your recipe <a href=\"%s\">%s</a> just got published !"
 #~ msgstr ""
@@ -11885,11 +11978,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 #~| msgid "Username"
 #~ msgid "Username: %s"
 #~ msgstr "Pseudo"
-
-#, fuzzy
-#~| msgid "Email Address"
-#~ msgid "E-mail: %s"
-#~ msgstr "Adresse mail"
 
 #~ msgid ""
 #~ "Thanks for confirming your email address!<br>Your account is now pending "
@@ -12212,9 +12300,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 
 #~ msgid "Sort recipes"
 #~ msgstr "Classer les recettes"
-
-#~ msgid "Required fields"
-#~ msgstr "Informations requises"
 
 #~ msgid "<strong>ERROR</strong>: User pending "
 #~ msgstr "<strong> ERREUR</strong>: Utilisateur en attente d'"

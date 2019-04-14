@@ -9,7 +9,7 @@ class CustomSitePopups {
 
 	// const CONTACT_NAME = "Goutu.org";
 	// const CONTACT_EMAIL = "contact@goutu.org";
-	
+
 	/* POPUPS provides :
 		- the list of supported post types
 		- the location (hook) where to place the popup
@@ -17,17 +17,17 @@ class CustomSitePopups {
 	*/
 	const POPUPS = array(
 		'add_join_us_popup'	=> array(
-			array( 
+			array(
 				'hook_name'	=> 'genesis_before_content',
 				'locations' => 'home', // post-post
 			),
-			array( 
+			array(
 				'hook_name'	=> 'wpurp_in_container',
 				'locations' => 'post-recipe',
 			)
 		),
 	);
-	
+
 	public function create_popup_actions() {
 		foreach (self::POPUPS as $callback => $hooks) {
 			foreach ($hooks as $hook ) {
@@ -46,7 +46,7 @@ class CustomSitePopups {
 			}
 		}
 	}
-	
+
 	public function add_join_us_popup() {
 		/* This popoup is reserved to unregistered users */
 		if ( is_user_logged_in() ) return;
@@ -58,7 +58,7 @@ class CustomSitePopups {
 			'id'		=> 'join_us',
 			'class'		=> 'join-us modal',
 		);
-		Tooltip::display( $args ); 
+		Tooltip::display( $args );
 	}
 
 	public function get_join_us_form( $class='' ) {
@@ -81,11 +81,11 @@ class CustomSitePopups {
 			$html.='</ul>';
 			$html.='</div>';
 			$html.='<div class="full">';
-				$html.='<div class="register-button">' . do_shortcode('[registration]' . __('Register','foodiepro') . '[/registration]') . '</div>';
+				$html.='<div class="register-button">' . do_shortcode('[permalink peepso="register"]' . __('Register','foodiepro') . '[/permalink]') . '</div>';
 				// $html.='<p>' . __('Registration is simple and free !','foodiepro') . '</p>';
 			$html.='</div>';
 		$html.='</div>';
-		
+
 		return $html;
 
 	}

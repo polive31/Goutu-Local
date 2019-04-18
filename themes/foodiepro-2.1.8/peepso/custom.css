@@ -15,7 +15,7 @@
 
 .ps-dropdown__menu {
     font-family: Oswald, sans-serif;
-} 
+}
 
 
 /* Buttons */
@@ -38,7 +38,7 @@
 }
 
 
-.ps-btn-small, 
+.ps-btn-small,
 .ps-btn--small {
     font-size: 14px;
 }
@@ -53,10 +53,10 @@
 /* Avatar */
 
 /* Force Square avatar on profile pages */
-.ps-avatar img, 
-.ps-avatar-stream img, 
-.ps-avatar-comment img, 
-.ps-avatar-focus img, 
+.ps-avatar img,
+.ps-avatar-stream img,
+.ps-avatar-comment img,
+.ps-avatar-focus img,
 .ps-avatar--group {
     -webkit-border-radius: initial;
     -moz-border-radius: initial;
@@ -127,7 +127,7 @@
 }
 
 
- 
+
 
 /* USERBAR
 -----------------------------------------------------------*/
@@ -221,7 +221,7 @@
 }
 
 .ps-comment-reply .ps-avatar {
-    position: relative; 
+    position: relative;
 }
 
 .ps-comment-reply .ps-avatar img {
@@ -247,6 +247,14 @@
     color: #333;
 }
 
+.ps-stream-body .wp-embedded-content {
+    width: 100%;
+}
+
+.wp-embed-share {
+    display: none;
+}
+
 div#postbox-main {
     /* box-shadow: #bbbbbb 4px 5px 17px 0px; */
     box-shadow:#bbbbbbc2 0px 0px 17px 3px;
@@ -259,7 +267,7 @@ div#postbox-main {
 
 .ps-dropdown__menu.ps-js-dropdown-menu {
     /* font-family: sans-serif; */
-} 
+}
 
 
 
@@ -284,7 +292,7 @@ h1.blog-title {
     background: linear-gradient(#23232361, #ffffff00);
     text-align: center;
     /* z-index:1; */
-    text-shadow: 0 0 3px rgba( 0, 0, 0, 0.8 );  
+    text-shadow: 0 0 3px rgba( 0, 0, 0, 0.8 );
 }
 
 .ps-focus-title {
@@ -439,8 +447,8 @@ nav.ps-stream-status-action.ps-stream-status-action span {
     font-weight: normal;
 }
 
-.ps-reaction-likes, 
-.ps-stream-status, 
+.ps-reaction-likes,
+.ps-stream-status,
 .cstream-reactions {
     font-size: 1.4rem;
 }
@@ -450,7 +458,7 @@ nav.ps-stream-status-action.ps-stream-status-action span {
 }
 
 
-/* Notification Icons 
+/* Notification Icons
 ---------------------------------------------------------------*/
 
 /* #responsive-menu-pro-container .ps-widget--userbar {
@@ -573,8 +581,8 @@ nav.ps-stream-status-action.ps-stream-status-action span {
         /* margin-top: 25px; */
         float: left;
         width: 100%;
-    }  
-    
+    }
+
     .ps-focus-title {
         font-size: 2.8rem;
         position: absolute;
@@ -583,79 +591,79 @@ nav.ps-stream-status-action.ps-stream-status-action span {
         text-align: center;
         line-height: 2.8rem;
         width: 70%;
-    }    
+    }
 
 
     .ps-focus__menu .ps-focus__menu-item,
     .ps-focus__menu .ps-focus__menu-item.current,
     .ps-focus__menu .ps-focus__menu-item:hover {
         font-size: 20px;
-    } 
-    
+    }
+
     .ps-focus__menu .ps-focus__menu-item:hover {
         /* background:blue; */
     }
-    
+
     .ps-focus__menu,
     .ps-focus__menu-inner {
         height: auto;
         border: 1px solid rgba(0,0,0,0.08);
-    }  
-        
+    }
+
     .ps-focus__menu-inner {
         flex-wrap: wrap;
-    } 
-        
+    }
+
     .ps-focus__menu .ps-focus__menu-item {
         width: 33%;
-    }  
+    }
 
     .ps-avatar-focus {
         width: 80px;
         bottom: -50px;
-    }    
+    }
 
     .ps-avatar-focus img {
         max-width: 80px!important;
-    }    
+    }
 
     .ps-focus-actions-mobile {
         background: white;
         padding: 10px 0;
         font-family: sans-serif;
-    }   
-    
+    }
+
     .ps-focus-actions-mobile>* {
         flex-grow: initial;
         margin: 0;
-    }    
+    }
 
     .avatar-overlay-text {
         font-size: 15px;
-    }    
-    
+    }
+
     .ps-focus-actions-mobile a,
     .ps-focus-profile-options.ps-js-dropdown .ps-btn {
         display: inline-block;
         text-align:right;
         background:white!important;
         border:1px solid #CCC!important;
-    }  
+    }
 
     .ps-dropdown__menu {
         background-color: #9ae7ff;
         box-shadow: #8c8c8cfc 5px 4px 7px 0px;
-    }    
+    }
 
     .ps-dropdown__menu.ps-js-dropdown-menu a {
         margin: 5px;
         border-radius: 10px;
-    }  
-    
+    }
+
     .ps-focus-profile-options {
         border: none;
-    }    
-    
+    }
+
     .ps-focus__interactions {
         float: right;
         border:none;
@@ -668,5 +676,4 @@ nav.ps-stream-status-action.ps-stream-status-action span {
     }
 
 
-}    
-
+}

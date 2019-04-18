@@ -2,7 +2,18 @@
 $PeepSoFriends = PeepSoFriends::get_instance();
 echo $args['before_widget'];
 // $owner = PeepSoUser::get_instance($instance['user_id']);
-$owner = PeepSoUser::get_instance($instance['view_user_id']);
+// $owner = PeepSoUser::get_instance($instance['view_user_id']);
+$owner_id = PeepSoProfileShortcode::get_instance()->get_view_user_id();
+$owner = PeepSoUser::get_instance($owner_id);
+
+if (!array_key_exists('search_args', $instance)) {
+	$instance['search_args'] = array(
+		'number' => $instance['limit'],
+	);
+}
+
+$friendsModel = PeepSoFriendsModel::get_instance();
+$instance['list'] = $friendsModel->get_friends($owner_id, $instance['search_args']);
 
 ?>
 

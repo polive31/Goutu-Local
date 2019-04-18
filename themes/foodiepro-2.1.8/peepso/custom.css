@@ -398,6 +398,14 @@ span.ps-tooltip.ps-tooltip--online.ps-user__status.ps-icon-circle {
 }
 
 
+/*-----------------------------------------------------------
+                        WIDGETS
+-----------------------------------------------------------*/
+
+.ps-widget__friends {
+    justify-content: center;
+}
+
 
 /*-----------------------------------------------------------
 ------      USERBAR ON MOBILE MENU

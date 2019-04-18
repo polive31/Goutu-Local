@@ -15,6 +15,8 @@ if (!array_key_exists('search_args', $instance)) {
 $friendsModel = PeepSoFriendsModel::get_instance();
 $instance['list'] = $friendsModel->get_friends($owner_id, $instance['search_args']);
 
+if ( !count($instance['list']) ) return;
+
 ?>
 
 <div class="ps-widget__wrapper<?php echo $instance['class_suffix'];?> ps-widget<?php echo $instance['class_suffix'];?>">

@@ -7,7 +7,7 @@
  * @copyright   Copyright (c) 2014, Shay Bocks
  * @license     GPL-2.0+
  * @link        http://www.shaybocks.com/foodie-pro/
- * @since       1.0.1
+	* @since       1.0.1
  */
 
 // Exit if accessed directly.
@@ -891,6 +891,23 @@ function custom_nav_menu_items( $html, $args ) {
 // 		));
 // 	}
 // }
+
+
+/* =================================================================*/
+/* =              EMBEDDED POSTS
+/* =================================================================*/
+
+
+add_filter( 'embed_thumbnail_image_size', 'foodiepro_embed_thumbnail_size');
+add_filter( 'embed_thumbnail_image_shape', 'foodiepro_embed_thumbnail_shape');
+
+function foodiepro_embed_thumbnail_size() {
+	return 'square-thumbnail';
+}
+
+function foodiepro_embed_thumbnail_shape() {
+	return 'square';
+}
 
 
 /* =================================================================*/

@@ -1,7 +1,5 @@
 <div class="peepso ps-page-profile">
 
-TOTOOOOOOO
-
 	<section id="mainbody" class="ps-page-unstyled">
 		<section id="component" role="article" class="ps-clearfix">
 

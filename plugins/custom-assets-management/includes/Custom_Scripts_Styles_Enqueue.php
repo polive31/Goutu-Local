@@ -82,7 +82,6 @@ class CustomScriptsStylesEnqueue {
 		'peepso-resize'						=> array('page' => 'social'),
 		'peepsolocation-js'					=> array('page' => 'social'),
 		'peepso-time'						=> array('page' => 'social'),
-		'peepso-friends'					=> array('page' => 'social'),
 		'peepso-groups'						=> array('page' => 'social'),
 		'peepso-groups-group'				=> array('page' => 'social'),
 		'peepso-groups-group'				=> array('page' => 'social'),
@@ -103,8 +102,6 @@ class CustomScriptsStylesEnqueue {
 														'page' => 'home'),
 		'peepso-activitystream'				=> array(	'page' => 'social',
 														'page' => 'home'),
-		'peepso-activity'					=> array(	'page' => 'social',
-														'page' => 'home'),
 		'peepsovideos'						=> array(	'page' => 'social',
 														'page' => 'home'),
 		'peepso-postbox'					=> array(	'page' => 'social',
@@ -113,10 +110,13 @@ class CustomScriptsStylesEnqueue {
 														'page' => 'home'),
 		'peepso-comment'					=> array(	'page' => 'social',
 														'page' => 'home'),
+		'peepso-photos'						=> array(	'page' => 'social',
+														'page' => 'home'),
+		'peepso-moods'						=> array(	'page' => 'social',
+														'page' => 'home'),
 		'peepso-markdown'					=> array('false' => ''),
 		'peepso-modal-comments'				=> array('false' => ''),
 		'peepso-friends-shortcode'			=> array('false' => ''),
-		'peepso-moods'						=> array('false' => ''),
 	);
 
 	// Plugin path & url properties

@@ -48,6 +48,8 @@ class CustomScriptsStylesEnqueue {
 			// 'custom-star-ratings' 				=> array('page' => 'blog-page'),
 			// 'peepso'							=> array('page' => 'social'),
 			'peepso-custom'						=> array('true' => ''),
+			'news-style'						=> array('page' => 'home'),
+			'newsletter'						=> array('page' => 'home'),
 			'peepso-appearance-avatars-circle'	=> array(	'page' => 'social',
 															'page' => 'home'),
 			'peepso-blogposts-dynamic'			=> array(	'page' => 'social',
@@ -69,6 +71,7 @@ class CustomScriptsStylesEnqueue {
 			'peepso-markdown'					=> array('false' => ''),
 			'lazysizes-fadein-style'			=> array('false' => ''),
 			'lazysizes-spinner-style'			=> array('false' => ''),
+			'wp-block-library'					=> array('false' => ''),
 		);
 
 
@@ -84,6 +87,12 @@ class CustomScriptsStylesEnqueue {
 		'peepso-groups-group'				=> array('page' => 'social'),
 		'peepso-groups-group'				=> array('page' => 'social'),
 		'peepso-blogposts'					=> array('page' => 'social'),
+		'peepso-hammer'						=> array(	'page' => 'social',
+														'page' => 'home'),
+		'peepso-crop'						=> array(	'page' => 'social',
+														'page' => 'home'),
+		'wp-embed'							=> array(	'page' => 'social',
+														'page' => 'home'),
 		'peepso-avatar'						=> array(	'page' => 'social',
 														'page' => 'home'),
 		'peepso-avatar-dialog'				=> array(	'page' => 'social',

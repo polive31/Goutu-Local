@@ -11,7 +11,8 @@ class CustomScriptsStylesEnqueue {
 	const DEFER_JS = array(
 		'skip-links',
 		'foodie-pro-general',
-		'grecaptcha-invisible'
+		'grecaptcha-invisible',
+		'newscript',
 	);
 
 	// Stylesheets to be loaded asynchronously
@@ -35,39 +36,78 @@ class CustomScriptsStylesEnqueue {
 		),
 		/* Force Peepso custom stylesheet update by using CHILD_THEME_VERSION */
 		// 'peepso-custom' 	=> array(
-		// 	'file' 		=> '/peepso/custom.css',
-		// ),
-		'peepso-jquery-ui' 		=> array(
-			'file'		=> '/assets/css/datepicker.css',
-		),
-	);
+			// 	'file' 		=> '/peepso/custom.css',
+			// ),
+			'peepso-jquery-ui' 		=> array(
+				'file'		=> '/assets/css/datepicker.css',
+			),
+		);
 
-	// Stylesheets to be loaded conditionnally
-	private $css_if = array(
-		// 'custom-star-ratings' 				=> array('page' => 'blog-page'),
-		// 'peepso'							=> array('page' => 'social'),
-		'peepso-custom'						=> array('true' => ''),
-		'yarppRelatedCss' 					=> array('singular' => 'post recipe' ),
-		'custom-lightbox'					=> array('singular' => 'post recipe' ),
-		'name-directory-style' 				=> array('shortcode' => 'namedirectory'),
-		'yarppWidgetCss' 					=> array('false' => ''),
-		'megamenu-fontawesome' 				=> array('false' => ''),
-		'megamenu-google-fonts' 			=> array('false' => ''),
-		'megamenu-genericons' 				=> array('false' => ''),
-		'popup-maker-site' 					=> array('false' => ''),
-		'wpba_front_end_styles' 			=> array('false' => ''),
-		'frontend-uploader' 				=> array('false' => ''),
-		'peepso-jquery-ui'					=> array('page' => 'social'),
-		'peepso-datepicker'					=> array('false' => ''),
-	);
+		// Stylesheets to be loaded conditionnally
+		private $css_if = array(
+			// 'custom-star-ratings' 				=> array('page' => 'blog-page'),
+			// 'peepso'							=> array('page' => 'social'),
+			'peepso-custom'						=> array('true' => ''),
+			'peepso-appearance-avatars-circle'	=> array(	'page' => 'social',
+															'page' => 'home'),
+			'peepso-blogposts-dynamic'			=> array(	'page' => 'social',
+															'page' => 'home'),
+			'peepso-fileupload'					=> array(	'page' => 'social',
+															'page' => 'home'),
+			'yarppRelatedCss' 					=> array('singular' => 'post recipe' ),
+			'custom-lightbox'					=> array('singular' => 'post recipe' ),
+			'name-directory-style' 				=> array('shortcode' => 'namedirectory'),
+			'yarppWidgetCss' 					=> array('false' => ''),
+			'megamenu-fontawesome' 				=> array('false' => ''),
+			'megamenu-google-fonts' 			=> array('false' => ''),
+			'megamenu-genericons' 				=> array('false' => ''),
+			'popup-maker-site' 					=> array('false' => ''),
+			'wpba_front_end_styles' 			=> array('false' => ''),
+			'frontend-uploader' 				=> array('false' => ''),
+			'peepso-jquery-ui'					=> array('page' => 'social'),
+			'peepso-datepicker'					=> array('false' => ''),
+			'peepso-markdown'					=> array('false' => ''),
+			'lazysizes-fadein-style'			=> array('false' => ''),
+			'lazysizes-spinner-style'			=> array('false' => ''),
+		);
 
 
 	// Scripts to be loaded conditionnally
 	private $js_if = array(
-		'bp-child-js'						=> array('page' => 'bp-page'),
-		'bp-mentions'						=> array('page' => 'bp-page'),
-		'bp-confirm'						=> array('page' => 'bp-page'),
-		'bp-widget-members'					=> array('page' => 'home bp-page'),
+		'newscript'							=> array('page' => 'home'),
+		'newsletter-subscription'			=> array('page' => 'home'),
+		'peepso-resize'						=> array('page' => 'social'),
+		'peepsolocation-js'					=> array('page' => 'social'),
+		'peepso-time'						=> array('page' => 'social'),
+		'peepso-friends'					=> array('page' => 'social'),
+		'peepso-groups'						=> array('page' => 'social'),
+		'peepso-groups-group'				=> array('page' => 'social'),
+		'peepso-groups-group'				=> array('page' => 'social'),
+		'peepso-blogposts'					=> array('page' => 'social'),
+		'peepso-avatar'						=> array(	'page' => 'social',
+														'page' => 'home'),
+		'peepso-avatar-dialog'				=> array(	'page' => 'social',
+														'page' => 'home'),
+		'peepso-bundle'						=> array(	'page' => 'social',
+														'page' => 'home'),
+		'peepso-fileupload'					=> array(	'page' => 'social',
+														'page' => 'home'),
+		'peepso-activitystream'				=> array(	'page' => 'social',
+														'page' => 'home'),
+		'peepso-activity'					=> array(	'page' => 'social',
+														'page' => 'home'),
+		'peepsovideos'						=> array(	'page' => 'social',
+														'page' => 'home'),
+		'peepso-postbox'					=> array(	'page' => 'social',
+														'page' => 'home'),
+		'peepso-posttabs'					=> array(	'page' => 'social',
+														'page' => 'home'),
+		'peepso-comment'					=> array(	'page' => 'social',
+														'page' => 'home'),
+		'peepso-markdown'					=> array('false' => ''),
+		'peepso-modal-comments'				=> array('false' => ''),
+		'peepso-friends-shortcode'			=> array('false' => ''),
+		'peepso-moods'						=> array('false' => ''),
 	);
 
 	// Plugin path & url properties

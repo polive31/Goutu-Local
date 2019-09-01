@@ -1,15 +1,15 @@
-		<!-- Class .wpurp-container important for adjustable servings javascript -->	
+		<!-- Class .wpurp-container important for adjustable servings javascript -->
 		<div class="recipe wpurp-container tooltips-container" id="wpurp-container-recipe-<?php echo $recipe->ID(); ?>" data-id="<?php echo $recipe->ID(); ?>" data-permalink="<?php echo $recipe->link(); ?>" data-servings-original="<?php echo $recipe->servings_normalized(); ?>">
-		
-		<?php 
+
+		<?php
 		do_action( 'wpurp_in_container' );
 		?>
-		
+
 		<!-- Recipe description -->
 		<div class="recipe-container" id="intro">
-			<?php echo $recipe->output_description();?>	
+			<?php echo $recipe->output_description();?>
 		</div>
-			
+
 		<div class="share-buttons">
 			<?= do_shortcode('[social-sharing-buttons target="recipe" class="small bubble"]'); ?>
 		</div>
@@ -29,14 +29,14 @@
 						<a href="#" data-tooltip-id="" class="recipe-review-button tooltip-onclick" onClick="">
 						<div class="button-caption"><?php echo __('Rate','foodiepro'); ?></div>
 						</a>
-						<?php 
+						<?php
 						// if( is_user_logged_in() ) {
 							$args=array(
 								'content' => __('Comment and rate this recipe','foodiepro'),
 								'valign' 	=> 'above',
 								'halign'	=> 'left',
 							);
-							Tooltip::display( $args );  
+							Tooltip::display( $args );
 							$args=array(
 								'content' => do_shortcode('[comment-rating-form]'),
 								'id'			=> 'recipe_rating_form',
@@ -48,24 +48,24 @@
 								'title'		=> __('Rate this recipe','foodiepro'),
 								'img'		=> CHILD_THEME_URL . '/images/popup-icons/fiche_recette.png'
 							);
-							Tooltip::display( $args );    
+							Tooltip::display( $args );
 						// }
 						?>
-					</div>	
-					
+					</div>
+
 					<!-- Recipe Add to Cart Button -->
 	<!-- 				<div class="recipe-button alignleft tooltip tooltip-above tooltip-left" id="shopping">
-					<?php 
-						// $shopping_list = new Custom_Recipe_Add_To_Shopping_List( is_user_logged_in() );  
+					<?php
+						// $shopping_list = new Custom_Recipe_Add_To_Shopping_List( is_user_logged_in() );
 						// echo $shopping_list->output( $recipe );?>
-					</div>	 -->			
-					
+					</div>	 -->
+
 					<!-- Add To Favorites Button -->
 					<div class="recipe-button alignleft <?php echo is_user_logged_in()?'tooltip-onhover':'disabled';?>" id="favorite">
 					<?php
 						$favorite_recipe = new CRM_Favorite();
 						echo $favorite_recipe->output( $recipe );?>
-					</div>			
+					</div>
 
 					<!-- Like Button -->
 					<div class="recipe-button alignleft tooltip-onhover" id="like">
@@ -74,27 +74,27 @@
 						$recipe_like->display();
 						?>
 					</div>
-					
+
 					<!-- Recipe Print Button -->
 					<div class="recipe-button alignright tooltip-onhover" id="print">
 						<a class="wpurp-recipe-print recipe-print-button" href="<?php echo $recipe->link_print(); ?>" target="_blank">
 							<div class="button-caption"><?php echo __('Print', 'foodiepro'); ?></div>
 						</a>
-						<?php 
+						<?php
 						$args=array(
 							'content' 	=> __('Print this Recipe','foodiepro'),
 							'valign' 	=> 'above',
 							'halign'	=> 'right',
 						);
-						Tooltip::display( $args );  
-						?>	
-					</div>	
-					
+						Tooltip::display( $args );
+						?>
+					</div>
+
 					<!-- Recipe Share Button -->
 					<!-- <div class="recipe-button alignright tooltip" id="share">
 						<a class="recipe-share-button" id="recipe-share" cursor-style="pointer">
 							<div class="button-caption"><?php echo __('Share','foodiepro'); ?></div>
-						</a> 
+						</a>
 						<?php //echo Custom_WPURP_Templates::output_tooltip(__('Share this recipe','foodiepro'),'above');
 					$args=array(
 						// 'content' 	=>  do_shortcode('[social-sharing-buttons target="recipe" class="small bubble"]'),
@@ -102,49 +102,49 @@
 						'halign'	=> 'left',
 						'class'		=> 'transparent large'
 					);
-					Tooltip::display( $args ); 
-						?>  
+					Tooltip::display( $args );
+						?>
 					</div>				 -->
-					
+
 					<!-- Recipe Read Button -->
 					<div class="recipe-button alignright tooltip-onhover" id="read">
 						<a class="recipe-read-button" onClick="<?= is_user_logged_in()?'':"ga('send','event','recipe-read','click','', 0)"; ?>"/>
 								<div class="button-caption"><?php echo __('Read', 'foodiepro'); ?></div>
 						</a>
-						<?php 
+						<?php
 						$args=array(
 							'content' 	=>  __('Read this recipe out loud','foodiepro'),
 							'valign' 	=> 'above',
 							'halign'	=> 'center',
 						);
-						Tooltip::display( $args ); 						 
-						?>	
-					</div>	
+						Tooltip::display( $args );
+						?>
+					</div>
 
 				</div>
 
-			<?php  
+			<?php
 
 			?>
 
-				
+
 			</div>
 
 			<!-- Image + recipe info -->
 			<div class="recipe-container"  id="image">
-				
+
 				<div class="image-container">
 					<div class="clearfix">
 					  	<!-- <a href="<?php echo $recipe->featured_image_url('full');?>" id="lightbox"> -->
 					  	<a href="<?php echo get_the_post_thumbnail_url( $this->post_ID,'full');?>" id="lightbox">
-							<!-- <img src="<?php echo $recipe->featured_image_url('vertical-thumbnail');?>" alt="<?php echo $imgAlt;?>"> -->
+							<!-- <img src="<?= $recipe->featured_image_url('vertical-thumbnail');?>" alt="<?= $imgAlt;?>" -->
 							<img src="<?php echo get_the_post_thumbnail_url( $this->post_ID,'vertical-thumbnail');?>" alt="<?php echo $imgAlt;?>">
 						</a>
 					</div>
 				</div>
-			
+
 				<div class="info-container">
-					
+
 					<div class="label-container">
 					<?php $tooltip_id=is_user_logged_in()?'recipe_rating_form':'join_us'; ?>
 						<a href="#" data-tooltip-id="<?= $tooltip_id; ?>" class="tooltip-onclick" onClick="">
@@ -154,26 +154,26 @@
 
 					<?php
 						// Origin
-					  $terms = get_the_term_list( $this->post_ID, 'cuisine', '', ', ', '' ); 
+					  $terms = get_the_term_list( $this->post_ID, 'cuisine', '', ', ', '' );
 						if ($terms!='') {
 							$html = '<div class="label-container" id="tag"><div class="recipe-label">' . __('Origin','foodiepro') . '</div>' . $terms . '</div>';
 							echo $html;
-						}		
-						
+						}
+
 						// Diet
-					  $terms = get_the_term_list( $this->post_ID, 'diet', '', ', ', '' ); 
+					  $terms = get_the_term_list( $this->post_ID, 'diet', '', ', ', '' );
 						if ($terms!='') {
 							$html = '<div class="label-container" id="tag"><div class="recipe-label">' . __('Diet','foodiepro') . '</div>' . $terms . '</div>';
 							echo $html;
-						}	
-						
+						}
+
 						// Difficulty
-					  $terms = get_the_term_list( $this->post_ID, 'difficult', '', '', '' ); 
+					  $terms = get_the_term_list( $this->post_ID, 'difficult', '', '', '' );
 						if ($terms!='') {
 							$html = '<div class="label-container" id="tag"><div class="recipe-label">' . __('Level','foodiepro') . '</div>' . $terms . '</div>';
 							echo $html;
-						}			
-					
+						}
+
 						// Servings
 						$terms = $recipe->servings_normalized();
 						if ($terms!='') {
@@ -185,7 +185,7 @@
 								<div class="recipe-label"><?= __('Serves','foodiepro'); ?></div>
 								<table class="recipe-input">
 									<tr>
-										<td class="fa qty" id="dec" title="<?= __('Decrease servings','foodiepro'); ?>">&nbsp;</td> 
+										<td class="fa qty" id="dec" title="<?= __('Decrease servings','foodiepro'); ?>">&nbsp;</td>
 										<td class="input">
 											<input type="number" min="1" class="adjust-recipe-servings" data-original="<?= $recipe->servings_normalized(); ?>" data-start-servings="<?= $recipe->servings_normalized(); ?>" value="<?= $recipe->servings_normalized(); ?>"/>
 										</td>
@@ -193,21 +193,21 @@
 									</tr>
 								</table>
 							</div>
-							<?php 
+							<?php
 					        $html .= ob_get_contents();
 					        ob_end_clean();
 
 							echo $html;
 						}
-				
+
 				// Times
-				echo $recipe->output_time( 'prep' );				
+				echo $recipe->output_time( 'prep' );
 				echo $recipe->output_time( 'cook' );
 				echo $recipe->output_time( 'passive' );
 
-			?>					
-				</div>		
-				
+			?>
+				</div>
+
 			</div>
 
 			<!-- Gallerie -->
@@ -216,11 +216,11 @@
 					[custom-gallery size="mini-thumbnail" columns="4" gallery-id="joined-pics"]
 				</div>
 			</div>
-			
+
 			<!-- Ingredients + Instructions -->
 			<div class="recipe-container" id="main">
-				
-				<div class="ingredients-container"> 
+
+				<div class="ingredients-container">
 					<?php
 					// Method "with custom function"
 						echo $this->custom_ingredients_list($recipe,'');
@@ -231,7 +231,7 @@
 						echo $this->custom_instructions_list($recipe,'');
 				?>
 			</div>
-			
+
 			<div class="recipe-container"  id="general">
 				<?php
 				$test = $recipe->notes();
@@ -242,5 +242,5 @@
 					}
 				?>
 			</div>
-			
+
 		</div>

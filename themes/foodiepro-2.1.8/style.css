@@ -3468,6 +3468,10 @@ h1.entry-title::first-letter {
 	margin:0 1px;
 }
 
+.pagination li.active {
+    background: #dedede;
+}
+
 li.pagination-next,
 li.pagination-previous {
 	border:0 !important;

@@ -21,7 +21,7 @@ define( 'CHILD_THEME_DEVELOPER', 'Shay Bocks' );
 define( 'CHILD_THEME_URL', get_stylesheet_directory_uri() );
 define( 'CHILD_THEME_PATH', get_stylesheet_directory() );
 
-define( 'CHILD_COLOR_THEME', 'spring' ); // christmas, autumn, winter, summer
+define( 'CHILD_COLOR_THEME', 'autumn' ); // christmas, autumn, winter, summer
 
 define( 'PLUGINS_URL', plugins_url() );
 

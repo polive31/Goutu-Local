@@ -976,7 +976,7 @@ function add_page_icon() {
 
 
 //* Change the credits text
-add_filter('genesis_footer_creds_text', 'sp_footer_creds_filter');
+add_filter('genesis_pre_get_option_footer_text', 'sp_footer_creds_filter');
 function sp_footer_creds_filter( $credits ) {
 
 	ob_start();

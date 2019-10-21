@@ -1,6 +1,6 @@
 jQuery(document).ready(function() {
 
-/* Ingredient Suggestions 
+/* Ingredient Suggestions
 ---------------------------------------------------------------- */
     jQuery(document).on('input', '.ingredients_name', function(){
         autoSuggestIngredient( jQuery(this) );
@@ -15,7 +15,7 @@ jQuery(document).ready(function() {
     });
 
 
-/* Ingredient Unit Suggestions 
+/* Ingredient Unit Suggestions
 ---------------------------------------------------------------- */
     jQuery(document).on('input', '.ingredients_unit', function(){
         autoSuggestUnit( jQuery(this) );
@@ -26,7 +26,7 @@ jQuery(document).ready(function() {
 // function isPlural( amount, unit ) {
 //     var plural = (amount > 1) || (unit != '') || (amount=='' && unit=='');
 //     return plural;
-// } 
+// }
 
 function autoSuggestIngredient( thisInput ) {
     // console.log('In autoSuggestIngredient');
@@ -38,7 +38,7 @@ function autoSuggestIngredient( thisInput ) {
     spinnerHTML = thisInput.closest("td").next().children('.ajax-indicator');
     spinnerHTML.css('visibility','hidden');
     // console.log(spinnerHTML);
-    
+
     jQuery( thisInput ).autoComplete({
         minChars: 3,
         delay : 200,
@@ -59,7 +59,12 @@ function autoSuggestIngredient( thisInput ) {
                 // complete: function() {
                 // }
             });
-        }
+        },
+        // renderItem: function(item, search) {
+        //     search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+        //     var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
+        //     return '<div class="autocomplete-suggestion" data-val="' + item + '">'+ item.replace(re, "<b>$1</b>") + '</div>';
+        // }
     });
 };
 
@@ -71,7 +76,7 @@ function autoSuggestUnit( thisInput ) {
     qty=thisInput.parents('tr.ingredient').find('td.qty input').val();
     console.log('Qty = ' + qty);
     // console.log( term );
-    jQuery( thisInput ).autoComplete({ 
+    jQuery( thisInput ).autoComplete({
         minChars: 1,
         source: function(term, suggest){
             term = term.toLowerCase();
@@ -86,6 +91,6 @@ function autoSuggestUnit( thisInput ) {
             for (i=0; i<choices.length; i++)
                 if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
             suggest(matches);
-        }    
+        }
     })
 }

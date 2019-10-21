@@ -11,13 +11,13 @@ class CRM_Submission {
     const RECIPE_NEW_SLUG = 'nouvelle-recette';
     const RECIPE_EDIT_SLUG = 'modifier-recette';
 
-    protected static $_PluginDir;  
-    protected static $_PluginUrl;  
-    protected static $_UploadPath; 
+    protected static $_PluginDir;
+    protected static $_PluginUrl;
+    protected static $_UploadPath;
 
-    protected static $required_fields; 
-    protected static $required_fields_labels; 
-    
+    protected static $required_fields;
+    protected static $required_fields_labels;
+
     // public function __construct( $name = 'user-submissions' ) {
     public function __construct() {
         self::$_PluginDir = plugin_dir_path( dirname( __FILE__ ) );
@@ -39,7 +39,7 @@ class CRM_Submission {
         include( self::$_PluginDir . 'custom-recipe-submission/partials/submission_form_ingredients_instructions.php' );
         $form .= ob_get_contents();
         ob_end_clean();
-        
+
         return $form;
     }
 
@@ -52,7 +52,7 @@ class CRM_Submission {
 
     // Returns list of excluded categories
     public function excluded_terms($tax) {
-        $exclude='';    
+        $exclude='';
         if ($tax=='category') {
             $exclude = WPUltimateRecipe::option( 'user_submission_hide_category_terms', array() );
             $exclude = implode( ',', $exclude );
@@ -61,18 +61,18 @@ class CRM_Submission {
     }
 
     public function add_button_bar( $form, $recipe ) {
-        
-        // HTML for Helper Buttons 
+
+        // HTML for Helper Buttons
         ob_start();
         ?>
         <div class="wpurp-user-submissions button-area">
-        
+
         <!-- Recipe Timer Button -->
         <input class="user-submissions-button" id="add-timer" type="button" value="<?php _e('Format as Duration','foodiepro'); ?>" />
         <input class="user-submissions-button" id="add-ingredient" type="button" value="<?php _e('Format as Ingredient','foodiepro'); ?>" />
-        
+
         <script type="text/javascript">
-        jQuery(document).ready(function() { 
+        jQuery(document).ready(function() {
             console.log("In Buttons Script !");
             jQuery('.user-submissions-button').on('click', function() {
                 console.log("Button Click Detected !");
@@ -80,7 +80,7 @@ class CRM_Submission {
                 if (buttonType=="timer") {
                 console.log("Add Recipe Timer");
                 }
-                else 
+                else
                 console.log("Add Ingredient");
         });
     });
@@ -92,7 +92,7 @@ class CRM_Submission {
       ob_end_clean();
 
         $html .= $form;
-        
+
         return $html;
     }
 
@@ -107,7 +107,7 @@ class CRM_Submission {
 
         // Save ingredients & instruction images
         // (main image is already saved as part of CPM_Submission->submit() function )
-        $this->instructions = get_post_meta( $post_id, 'recipe_instructions', true ); 
+        $this->instructions = get_post_meta( $post_id, 'recipe_instructions', true );
 
         if( $_FILES ) {
             foreach( $_FILES as $key => $file ) {
@@ -116,8 +116,8 @@ class CRM_Submission {
                 }
             }
         }
-        update_post_meta( $post_id, 'recipe_instructions', $this->instructions );        
-    }    
+        update_post_meta( $post_id, 'recipe_instructions', $this->instructions );
+    }
 
     public function insert_attachment( $file_handler, $post_id ) {
         if ( $_FILES[$file_handler]['error'] !== UPLOAD_ERR_OK ) {
@@ -135,7 +135,7 @@ class CRM_Submission {
         }
         elseif ( $file_handler == 'ingredients_thumbnail' ) { // Ingredients image
             update_post_meta( $post_id, '_ingredients_thumbnail_id', $attach_id );
-        }            
+        }
         else { // Instructions image
             $number = explode( '_', $file_handler );
             $number = $number[2];
@@ -144,7 +144,7 @@ class CRM_Submission {
         }
 
         return $attach_id;
-    }    
+    }
 
 
 /********************************************************************************
@@ -154,17 +154,17 @@ class CRM_Submission {
         $check = check_ajax_referer( 'custom_recipe_submission_form', 'security', false );
         $post_id = intval( $_POST['postid'] );
         $thumb_id = intval( $_POST['thumbid'] );
-        
+
         if ($thumb_id==0) {
             $result = delete_post_thumbnail( $post_id );
         }
         else {
-            $instructions = get_post_meta( $post_id, 'recipe_instructions', true ); 
+            $instructions = get_post_meta( $post_id, 'recipe_instructions', true );
             if ( isset($instructions[$thumb_id]['image']) ) {
                 unset($instructions[$thumb_id]['image']);
                 update_post_meta( $post_id, 'recipe_instructions', $instructions );
             }
-        }        
+        }
 
         die();
     }
@@ -188,7 +188,7 @@ class CRM_Submission {
         // }
         if ( empty($_POST['ingredient']) ) {
              wp_send_json_error( array('msg' => 'No ingredient name provided'));
-            die();          
+            die();
         }
         $args=array(
             'amount' => '',
@@ -197,7 +197,7 @@ class CRM_Submission {
             'notes' => ''
         );
         foreach ($args as $key => $value ) {
-            if( isset( $_POST[$key] ) )            
+            if( isset( $_POST[$key] ) )
                 $args[$key] = $_POST[$key];
         }
         $args['links']='no';
@@ -212,7 +212,7 @@ class CRM_Submission {
         if ( !is_user_logged_in() ) die();
         if ( ! isset( $_GET['tax'] ) ) die();
         if ( ! isset( $_GET['keys'] ) ) die();
-        
+
         $taxonomy = $_GET['tax'];
         $keys = $_GET['keys'];
         // $plural = isset($_GET['plural'])?$_GET['plural']:false;
@@ -226,11 +226,12 @@ class CRM_Submission {
         //copy the terms to a simple array
         $suggestions = array();
         foreach( $terms as $term )
-            $suggestions[] = addslashes($term->name);
-            
+        // $suggestions[] = addslashes($term->name);
+            $suggestions[] = htmlspecialchars($term->name);
+
         echo json_encode($suggestions); //encode into JSON format and output
-     
-        die(); //stop "0" from being output     
+
+        die(); //stop "0" from being output
     }
 
 

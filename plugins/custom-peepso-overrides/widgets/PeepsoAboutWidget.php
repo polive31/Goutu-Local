@@ -6,7 +6,7 @@ if ( !defined('ABSPATH') )
 
 add_action( 'widgets_init', function(){
      register_widget( 'Peepso_About_Widget' );
-});	
+});
 
 class Peepso_About_Widget extends WP_Widget {
 
@@ -31,19 +31,22 @@ class Peepso_About_Widget extends WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
 	public function widget( $args, $instance ) {
-	
+
+		/* Hide widget if not on user profile page */
+		if ( empty(PeepsoHelpers::get_user( 'view' ) ) ) return;
+
      	echo $args['before_widget'];
-		
+
 		if ( ! empty( $instance['title'] ) ) {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
-		}	
+		}
 		if ( ! empty( $instance['fields'] ) ) {
 			$visible=$instance['fields'];
 		}
-		else 
+		else
 			$visible=array();
 
-		// Widget content starts 
+		// Widget content starts
 
 		$user = PeepSoUser::get_instance(PeepSoProfileShortcode::get_instance()->get_view_user_id());
 
@@ -68,18 +71,18 @@ class Peepso_About_Widget extends WP_Widget {
 					<?php
 					}
 				}
-			} 
+			}
 			else {
 				echo __('Sorry, no data to show', 'peepso-core');
 			}
 			?>
 		</div> <!--end row -->
-					
+
 		<?php
 		// Widget content ends
 
 		echo '<div class="clear"></div>';
-		
+
 		echo $args['after_widget'];
 	}
 
@@ -100,15 +103,15 @@ class Peepso_About_Widget extends WP_Widget {
 		else {
 			$title='';
 		}
-		/* Format : array( 
+		/* Format : array(
 			(int) field Id => (bool) field visibility
 			) */
 		if ( isset( $instance[ 'fields' ] ) ) {
 			$is_visible = $instance[ 'fields' ];
 		}
-		else 
+		else
 			$is_visible = array();
-		
+
 		$user_admin = PeepSoUser::get_instance( get_current_user_id() );
 		$args = array('post_status'=>'publish');
 		$user_admin->profile_fields->load_fields($args);
@@ -116,15 +119,15 @@ class Peepso_About_Widget extends WP_Widget {
 
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
-		
+
 		<p>
 			<fieldset>
-			<legend for="<?php echo $this->get_field_id( 'fields' ); ?>"><?php _e( 'Fields visibility :' ); ?></label> 
-			<?php 
-			
+			<legend for="<?php echo $this->get_field_id( 'fields' ); ?>"><?php _e( 'Fields visibility :' ); ?></label>
+			<?php
+
 			foreach ($fields as $field) {
 				if ( isset($is_visible[$field->id]) )
 					$checked = $is_visible[$field->id];
@@ -136,9 +139,9 @@ class Peepso_About_Widget extends WP_Widget {
 				<input type='checkbox' <?= $checked; ?>  id="field_<?= $field->id; ?>" name="<?php echo $this->get_field_name( 'fields' ); ?>[<?= $field->id; ?>]" value="checked">
 				<label for="field_<?= $field->id; ?>"> <?= $field->title; ?> </label>
 				</p>
-				<?php	
+				<?php
 			}
-			
+
 			?>
 			</fieldset>
 		</p>
@@ -159,7 +162,7 @@ class Peepso_About_Widget extends WP_Widget {
 		$instance = array();
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 
-		if ( isset ( $new_instance['fields'] ) ) {	
+		if ( isset ( $new_instance['fields'] ) ) {
 			foreach ( $new_instance['fields'] as $key => $value ) {
 				$instance['fields'][$key] = ( ! empty( $value ) ) ? strip_tags( $value ) : '';
 			}
@@ -168,4 +171,4 @@ class Peepso_About_Widget extends WP_Widget {
 		return $instance;
 	}
 
-} 
+}

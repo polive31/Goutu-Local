@@ -21,7 +21,6 @@ class PeepsoHelpers  {
 		'blog_title'	=> 'Titre de votre Blog',
 	);
 
-
 	const TABS=array(
 		'blogposts',
 		'about',
@@ -30,7 +29,6 @@ class PeepsoHelpers  {
 		'photos',
 		'media',
 	);
-
 
 	static function get_nav_tab() {
 		$current='stream';
@@ -43,7 +41,6 @@ class PeepsoHelpers  {
 		}
 		return $current;
 	}
-
 
 	static function get_user( $user_type ) {
 		$user_id=false;

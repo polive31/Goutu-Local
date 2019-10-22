@@ -9751,7 +9751,7 @@ msgid "Social Content"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:123
-msgid "This is the widget section of buddypress pages."
+msgid " pages."
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:127

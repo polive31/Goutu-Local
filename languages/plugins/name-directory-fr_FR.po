@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Name Directory - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-02-02 20:38:20+0000\n"
+"PO-Revision-Date: 2019-08-02 17:11:48+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,47 +11,147 @@ msgstr ""
 "Language: fr\n"
 "Project-Id-Version: Plugins - Name Directory - Stable (latest release)\n"
 
-#: shortcode.php:36
+#: admin_general_settings.php:67
+msgid "Editing"
+msgstr "En cours d'édition"
+
+#: admin_general_settings.php:74
+msgid "Use visual editor"
+msgstr "Utiliser l'éditeur visuel"
+
+#: admin_general_settings.php:155
+msgid "Enable the simple visual editor for editing the description of names in a directory."
+msgstr "Activer l'éditeur visuel simplifié pour éditer la description dans un repertoire."
+
+#: admin_general_settings.php:145
+msgid "This settings controls which editor you are using in the Name Directory admin"
+msgstr "Ces réglages contrôlent quel éditeur vous utiliserez dans l'administration de Name Directory"
+
+#: admin.php:878
+msgid "Next step"
+msgstr "Étape suivante"
+
+#: admin.php:854
+msgid "Loading the import page..."
+msgstr "Chargement de la page d'importation..."
+
+#: admin.php:33
+msgid "Quick import"
+msgstr "Importation rapide"
+
+#: admin.php:32
+msgid "Quick import into new directory"
+msgstr "Importer rapidement dans un nouveau répertoire"
+
+#: admin.php:820
+msgid "Import names into a new directory"
+msgstr "Importer les noms dans un nouveau répertoire"
+
+#: admin.php:864
+msgid "What would be the title of your new directory to import items into?"
+msgstr "Quel doit être le titre de votre nouveau répertoire, où vous importerez vos nouvelles références? "
+
+#. Author URI of the plugin
+msgid "https://jeroenpeters.dev"
+msgstr "https://jeroenpeters.dev"
+
+#. Plugin URI of the plugin
+msgid "https://jeroenpeters.dev/wordpress-plugin-name-directory/"
+msgstr "https://jeroenpeters.dev/wordpress-plugin-name-directory/"
+
+#: helpers.php:459
+msgid "Message from Name Directory plugin:"
+msgstr "Message de l'extension: "
+
+#: helpers.php:460
+msgid "The \"mb_string\" extension of PHP is not installed, which means that there is no support for non-latin characters. If you are not familiar with what this means, it would not be a problem."
+msgstr "L'extension \"mb_string\" de votre PHP n'est pas installée, cela veut dire que les caractères non-latins ne sont pas compatibles. Si vous ne savez pas ce que cela veut dire, ça ne posera pas de problème."
+
+#: admin_general_settings.php:227
+msgid "Donate"
+msgstr "Donation"
+
+#: admin_general_settings.php:210
+msgid "Have an idea? Let me know!"
+msgstr "Une idée? Dites-le nous!"
+
+#: admin_general_settings.php:214
+msgid "Do you want to ask a question?"
+msgstr "Vous souhaitez poser une question?"
+
+#: admin_general_settings.php:218
+msgid "Rate/review this plugin"
+msgstr "Noter/évaluer l'extension"
+
+#: admin_general_settings.php:231
+msgid "If you like the plugin, would you please consider donating a small amount of money to pay for the license of my programming editor? Or for a good cup of coffee"
+msgstr "Si vous aimez l'extension, pouvez considerer faire don d'un petit montant pour financer ma licence de programmeur d'extension? Ou une bonne tasse de café. "
+
+#: admin_general_settings.php:206
+msgid "Help translate this plugin"
+msgstr "Aider à traduire ce plugin."
+
+#: admin_general_settings.php:202
+msgid "Frequently Asked Questions"
+msgstr "Foire aux questions"
+
+#: admin_general_settings.php:197
+msgid "I am honored that you are using my software. Here are a few handy quicklinks."
+msgstr "Je suis honoré que vous utilisiez mon logiciel. Voilà quelques liens rapides."
+
+#: admin_general_settings.php:195
+msgid "Thank you for using Name Directory!"
+msgstr "Merci d'utiliser Name Directory !"
+
+#: admin.php:762
+msgid "ID"
+msgstr "ID"
+
+#: admin.php:419
+msgid "movies"
+msgstr "films"
+
+#: shortcode.php:82
 msgid "Back to %s directory"
 msgstr "Retour au répertoire %s"
 
-#: shortcode.php:37
+#: shortcode.php:83
 msgid "Fill in at least a %s"
 msgstr "Remplir au moins un %s"
 
-#: admin.php:418
+#: admin.php:423
 msgid "Name term (singular)"
 msgstr "Nom du terme (singulier)"
 
-#: shortcode.php:246
+#: shortcode.php:292
 msgid "Submit a %s"
 msgstr "Envoyer un %s"
 
-#: admin.php:419
+#: admin.php:424
 msgid "The singular term for \"names\", i.e. movie"
 msgstr "Le singulier du terme « nom », ex : film"
 
-#: admin.php:410
+#: admin.php:415
 msgid "Alternative (plural) term for \"names\", i.e. movies"
 msgstr "Terme alternatif (pluriel) du « nom », ex : films"
 
-#: admin.php:413
+#: admin.php:418
 msgid "If you provide an alternative term for name, your website will display:"
 msgstr "Si vous fournissez un autre terme pour le nom, votre site web affichera :"
 
-#: admin.php:409
+#: admin.php:414
 msgid "Name term"
 msgstr "Nom du terme"
 
-#: admin.php:415
+#: admin.php:420
 msgid "When left blank, the word \"names\" will be displayed."
 msgstr "Si vide, le mot « noms » va être affiché."
 
-#: admin_general_settings.php:130
+#: admin_general_settings.php:160
 msgid "All entries in Name Directories can be included in the WordPress Search results. When a name is matched, WordPress search will display the page containing the directory in the search results."
 msgstr "Toutes les entrées dans Name Directories peuvent être incluses dans les résultats de la recherche WordPress. Lorsqu’un nom est trouvé, la recherche WordPress affichera la page contenant le répertoire dans les résultats de la recherche."
 
-#: admin_general_settings.php:90
+#: admin_general_settings.php:105
 msgid "Enable wildcard search"
 msgstr "Activer la recherche avec caractères génériques"
 
@@ -59,87 +159,75 @@ msgstr "Activer la recherche avec caractères génériques"
 msgid "General settings"
 msgstr "Réglages généraux"
 
-#: admin_general_settings.php:118
+#: admin_general_settings.php:133
 msgid "Name Directory can also be embedded in the search functionality which WordPress offers out of the box. This page allows you to control these settings."
 msgstr "Name Directory peut également être intégré dans la fonctionnalité de recherche standard de WordPress. Cette page vous permet de contrôler ces réglages."
 
-#: admin_general_settings.php:82
+#: admin.php:363 admin_general_settings.php:97
 msgid "Search in description"
 msgstr "Rechercher dans la description"
 
-#: shortcode.php:323
+#: shortcode.php:369
 msgid "There are %d %s in this directory beginning with the letter %s."
 msgstr "Il y a %d %s dans ce répertoire commençant par la lettre %s."
 
-#: shortcode.php:299 admin.php:725
+#: shortcode.php:345 admin.php:742
 msgid "There are %d %s in this directory containing the search term %s."
 msgstr "Il y a %d %s dans ce répertoire contenant le terme de recherche %s."
 
-#: shortcode.php:288 admin.php:414
+#: shortcode.php:334 admin.php:419
 msgid "There are currently %d %s in this directory"
 msgstr "Il y a actuellement %d %s dans ce répertoire"
 
-#: admin_general_settings.php:140
+#: admin_general_settings.php:170
 msgid "This enables WordPress to partially match names. A search for \"bird\" will also return \"birdcage\"."
 msgstr "Ceci permet à WordPress de faire correspondre partiellement les noms. Une recherche pour « oiseau » retournera également « cage à oiseaux »."
 
-#: admin_general_settings.php:135
+#: admin_general_settings.php:165
 msgid "This will allow WordPress to search in the descriptions too."
 msgstr "Ceci permettra à WordPress de rechercher aussi dans les descriptions."
 
-#: admin_general_settings.php:74
+#: admin_general_settings.php:89
 msgid "Include in sitewide search"
 msgstr "Inclure dans la recherche à l’échelle du site"
 
-#: admin_general_settings.php:120
+#: admin_general_settings.php:135
 msgid "Please note, these settings are for the <em>site-wide</em> search results! Name Directory also has a built-in search engine to search within a directory. Those settings can be controlled in the specific directory settings."
 msgstr "Veuillez noter que ces réglages s’appliquent aux résultats de recherche <em>sur l’ensemble du site</em> ! Name Directory dispose également d’un moteur de recherche intégré pour effectuer des recherches dans un répertoire. Ces réglages peuvent être contrôlés dans les réglages spécifiques du répertoire."
 
-#: shortcode.php:312
+#: shortcode.php:358
 msgid "Showing %d most recent %s in this directory"
 msgstr "Afficher les %d %s les plus récents dans ce répertoire"
 
-#: helpers.php:384
-msgid "Name Directory has been updated."
-msgstr "Name Directory a été mis à jour."
-
-#: admin.php:486 admin.php:527
+#: admin.php:491 admin.php:532
 msgid "Refresh now"
 msgstr "Rafraîchir maintenant"
 
-#: admin.php:392
+#: admin.php:397
 msgid "The number of (vertical) columns to display the names in"
 msgstr "Le nombre de colonnes (verticales) pour afficher les noms en"
 
-#: helpers.php:385
-msgid "You can now find Name Directory directly in your Admin menu!"
-msgstr "Name Directory est désormais accessible dans votre menu d’administration !"
-
-#. Author URI of the plugin
-msgid "http://jeroen.in"
-msgstr "http://jeroen.in"
-
-#: admin.php:257
+#: admin.php:1138
 msgid "Are you sure you want to delete this name directory?"
 msgstr "Confirmez-vous la suppression de ce répertoire de noms ?"
 
-#: shortcode.php:424
+#: shortcode.php:435
 msgid "Show less"
 msgstr "Afficher moins"
 
-#: shortcode.php:420
+#: shortcode.php:431
 msgid "Show more"
 msgstr "Afficher plus"
 
-#: admin.php:877
+#: admin.php:991
 msgid "There were %d names that produces errors with the WordPress database on import"
 msgstr "Il y a %d noms qui renvoient des erreurs avec la base de données WordPress lors de l’importation"
 
-#: admin.php:386
+#: admin.php:391
 msgid "Limit amount of words in description"
 msgstr "Limiter le nombre de mots dans la description"
 
-#: admin.php:355
+#: admin.php:356
 msgid "Show the name of the submitter"
 msgstr "Afficher le nom de la personne qui soumet"
 
@@ -147,557 +235,549 @@ msgstr "Afficher le nom de la personne qui soumet"
 msgid "A Name Directory, i.e. for animal names or to create a glossary. Visitors can add, search or just browse all names."
 msgstr "Un Annuaire/Répertoire de noms, par exemple comme pour les noms d’animaux. Les visiteurs peuvent ajouter, rechercher ou simplement parcourir tous les noms."
 
-#: admin.php:387
+#: admin.php:392
 msgid "Display a \"read-more\" link on the website if the description exceeds X characters."
 msgstr "Afficher un lien « lire la suite » sur le site si la description dépasse X caractères."
 
-#: admin.php:351
+#: admin.php:352
 msgid "Visitors can submit suggestions"
 msgstr "Les visiteurs peuvent envoyer des suggestions"
 
-#: admin.php:980
+#: admin.php:1101
 msgid "If you encounter problems (or it does not export) in Internet Explorer or Microsoft Edge, please try another browser."
 msgstr "Si vous rencontrez des problèmes (ou l’export ne fonctionne pas) dans Internet Explorer ou Microsoft Edge, veuillez essayer un autre navigateur."
 
-#: admin.php:979
+#: admin.php:1100
 msgid "Name Directory Export works best in Mozilla Firefox, Google Chrome and Internet Explorer 10+."
 msgstr "Name Directory Export fonctionne mieux sous Mozilla Firefox, Google Chrome et Internet Explorer 10+."
 
-#: admin.php:214 admin.php:988
+#: admin.php:239 admin.php:1109
 msgid "Export"
 msgstr "Exporter"
 
-#: admin.php:985
+#: admin.php:1106
 msgid "Export directory %s"
 msgstr "Exporter le répertoire %s"
 
-#: admin.php:987
+#: admin.php:1108
 msgid "Click the Export button to download a .csv file with the contents of your directory."
 msgstr "Cliquez sur le bouton Exporter pour télécharger un fichier.csv contenant le contenu de votre répertoire."
 
-#: admin.php:214
+#: admin.php:239
 msgid "Download the contents of this directory as a .csv file"
 msgstr "Télécharger les contenus de ce répertoire dans un fichier .csv"
 
-#: admin.php:374
+#: admin.php:379
 msgid "Jump to Name Directory when searching"
 msgstr "Aller à Name Directory lors de la recherche"
 
-#: admin.php:375
+#: admin.php:380
 msgid "On the front-end, jump to the Name Directory search box. Particularly useful if you have Name Directory on a long page or onepage websites"
 msgstr "Sur l’interface publique, passez à la recherche Name Directory. Particulièrement utile si vous avez un répertoire de noms sur une longue page ou sur une page web d’une page."
 
-#: helpers.php:371 admin.php:331
+#: admin.php:332 admin.php:871 helpers.php:444
 msgid "Title"
 msgstr "Titre"
 
-#: helpers.php:373
+#: helpers.php:446
 msgid "Entries"
 msgstr "Entrées"
 
-#: helpers.php:374 admin.php:644 admin.php:743
+#: admin.php:660 admin.php:760 helpers.php:447
 msgid "Published"
 msgstr "Publié"
 
-#: helpers.php:375
+#: helpers.php:448
 msgid "Unpublished"
 msgstr "Non publié"
 
-#: admin_general_settings.php:38 admin.php:212
+#: admin.php:237 admin_general_settings.php:38
 msgid "Settings"
 msgstr "Réglages"
 
-#: admin.php:213
+#: admin.php:238
 msgid "Import"
 msgstr "Importer"
 
-#: admin.php:215
+#: admin.php:240
 msgid "Shortcode"
 msgstr "Code court"
 
-#: admin.php:302
+#: admin.php:303
 msgid "Create"
 msgstr "Créer"
 
-#: shortcode.php:41 helpers.php:284 admin.php:335 admin.php:638 admin.php:741
+#: shortcode.php:87 admin.php:336 admin.php:644 admin.php:758 helpers.php:356
 msgid "Description"
 msgstr "Description"
 
-#: admin.php:342
+#: admin.php:343
 msgid "Show title"
 msgstr "Afficher le titre"
 
-#: admin_general_settings.php:148 helpers.php:63 helpers.php:320 admin.php:647
+#: admin.php:663 helpers.php:91 helpers.php:392 admin_general_settings.php:178
 msgid "Yes"
 msgstr "Oui"
 
-#: admin_general_settings.php:149 helpers.php:66 helpers.php:328 admin.php:383
-#: admin.php:388 admin.php:655
+#: admin.php:388 admin.php:393 admin.php:671 helpers.php:94 helpers.php:400
+#: admin_general_settings.php:179
 msgid "No"
 msgstr "Non"
 
-#: admin.php:366
+#: admin.php:371
 msgid "Show all names by default"
 msgstr "Afficher tous les noms par défaut"
 
-#: admin.php:391
+#: admin.php:396
 msgid "Number of columns"
 msgstr "Nombre de colonnes"
 
-#: admin.php:429
+#: admin.php:434
 msgid "Cancel"
 msgstr "Annuler"
 
-#: admin.php:744
+#: admin.php:761
 msgid "Manage"
 msgstr "Gérer"
 
-#: admin.php:945
+#: admin.php:1065
 msgid "Back to %s"
 msgstr "Retour à %s"
 
-#: shortcode.php:42
+#: shortcode.php:88
 msgid "Your name"
 msgstr "Votre nom"
 
-#: shortcode.php:302 admin.php:727
+#: shortcode.php:348 admin.php:744
 msgid "Clear results"
 msgstr "Effacer les résultats"
-
-#. Plugin URI of the plugin
-msgid "http://www.jeroen.in"
-msgstr "http://www.jeroen.in"
 
 #. Author of the plugin
 msgid "Jeroen Peters"
 msgstr "Jeroen Peters"
 
-#: admin.php:39 admin.php:279 admin.php:452 admin.php:794 admin.php:958
+#: admin.php:47 admin.php:280 admin.php:457 admin.php:897 admin.php:1078
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Vous ne disposez pas des droits suffisants pour accéder à cette page"
 
-#: admin.php:130
+#: admin.php:143
 msgid "Directory %s updated."
 msgstr "Répertoire %s mis à jour."
 
-#: admin.php:167
+#: admin.php:186
 msgid "name directory"
 msgstr "nom du répertoire"
 
-#: admin.php:167
+#: admin.php:186
 msgid "name directories"
 msgstr "répertoire de noms"
 
-#: admin.php:24 admin.php:25 admin.php:101
+#: admin.php:25 admin.php:26 admin.php:113
 msgid "Add directory"
 msgstr "Ajouter un répertoire"
 
-#: admin.php:211 admin.php:590
+#: admin.php:236 admin.php:596
 msgid "Add name"
 msgstr "Ajouter un nom"
 
-#: admin.php:346
+#: admin.php:347
 msgid "Show description"
 msgstr "Afficher la description"
 
-#: admin.php:362
+#: admin.php:367
 msgid "Show line between names"
 msgstr "Afficher une ligne entre les noms"
 
-#: admin.php:358
+#: admin.php:359
 msgid "Show search form"
 msgstr "Afficher le formulaire de recherche"
 
-#: admin.php:381
+#: admin.php:386
 msgid "Show most recent names"
 msgstr "Afficher les noms les plus récents"
 
-#: admin.php:674 admin.php:882
+#: admin.php:690 admin.php:996
 msgid "all"
 msgstr "tous"
 
-#: shortcode.php:29 helpers.php:283 admin.php:634 admin.php:740
+#: shortcode.php:75 admin.php:640 admin.php:757 helpers.php:355
 msgid "Name"
 msgstr "Nom"
 
-#: admin.php:589
+#: admin.php:595
 msgid "Add a new name"
 msgstr "Ajouter un nouveau nom"
 
-#: helpers.php:285 admin.php:659
+#: admin.php:675 helpers.php:357
 msgid "Submitted by"
 msgstr "Proposé par"
 
-#: admin.php:884
+#: admin.php:998
 msgid "Ignored %s names, because they were duplicate (already in the directory)"
 msgstr "%s noms ignorés, doublons (ils sont déjà dans le répertoire)"
 
-#: admin.php:905
+#: admin.php:1019
 msgid "Import names for %s"
 msgstr "Importer des noms pour %s"
 
-#: admin.php:927
+#: admin.php:1038
 msgid "Use an online File Convertor"
 msgstr "Utilisez un convertisseur de fichiers en ligne"
 
-#: shortcode.php:164
+#: shortcode.php:210
 msgid "All"
 msgstr "Tous"
 
-#: shortcode.php:165
+#: shortcode.php:211
 msgid "Latest"
 msgstr "Le dernier"
 
-#: admin_general_settings.php:67 shortcode.php:274 admin.php:711 admin.php:712
+#: shortcode.php:320 admin.php:728 admin.php:729 admin_general_settings.php:82
 msgid "Search"
 msgstr "Rechercher"
 
-#: shortcode.php:284
+#: shortcode.php:330
 msgid "There are currently %d names in this directory"
 msgstr "Il y a actuellement %d noms dans ce répertoire"
 
-#: shortcode.php:30
+#: shortcode.php:76
 msgid "Back to name directory"
 msgstr "Retour au répertoire des noms"
 
-#: admin.php:304
+#: admin.php:305
 msgid "Complete the form below to create a new name directory."
 msgstr "Remplissez le formulaire ci-dessous pour créer un nouveau répertoire de noms."
 
-#: admin.php:216 admin.php:773
+#: admin.php:241 admin.php:791
 msgid "Delete"
 msgstr "Effacer"
 
-#: admin.php:161
+#: admin.php:175 admin.php:851
 msgid "Directory %s created."
 msgstr "Répertoire %s créé."
 
-#: admin.php:772
+#: admin.php:790
 msgid "Edit"
 msgstr "Modifier"
 
-#: admin.php:584
+#: admin.php:590
 msgid "Edit a name"
 msgstr "Modifier un nom"
 
-#: admin.php:211
+#: admin.php:236
 msgid "Go to the add-name-form on the Manage page"
 msgstr "Accédez au formulaire Ajouter nom sur la page Gérer"
 
-#: admin.php:210
+#: admin.php:235
 msgid "Manage names"
 msgstr "Gérer les noms"
 
-#: admin.php:576
+#: admin.php:582
 msgid "Manage names for %s"
 msgstr "Gérer les noms pour %s"
 
-#: admin.php:464
+#: admin.php:469
 msgid "Name %s deleted"
 msgstr "Nom %s supprimé"
 
-#: admin.php:484 admin.php:492
+#: admin.php:489 admin.php:497
 msgid "Name %s updated"
 msgstr "Nom %s mis à jour"
 
 #. Plugin Name of the plugin
-#: admin_general_settings.php:38 admin_general_settings.php:67 admin.php:14
-#: admin.php:15
+#: admin.php:15 admin.php:16 admin_general_settings.php:38
+#: admin_general_settings.php:67 admin_general_settings.php:82
 msgid "Name Directory"
 msgstr "Name Directory"
 
-#: admin.php:100
+#: admin.php:112
 msgid "Name Directory management"
 msgstr "Gestion de Name Directory"
 
-#: admin.php:88
+#: admin.php:100
 msgid "Name directory %s and all entries deleted"
 msgstr "Name Directory %s et toutes les entrées supprimées"
 
-#: admin.php:525 admin.php:533
+#: admin.php:530 admin.php:538
 msgid "New name %s added"
 msgstr "Nouveau nom %s ajouté"
 
-#: admin.php:218
+#: admin.php:243
 msgid "Number of names in this directory"
 msgstr "Nombre de noms dans ce répertoire"
 
-#: admin.php:916
+#: admin.php:1030
 msgid "Please check out %s first and ensure your file is formatted the same."
 msgstr "Veuillez vérifier avant %s et assurez-vous que votre fichier est formaté de la même manière."
 
-#: helpers.php:287
+#: helpers.php:359
 msgid "Please login to your WordPress admin to review and accept the submission."
 msgstr "Veuillez vous connecter à votre administration WordPress pour examiner et accepter la soumission."
 
-#: admin.php:585
+#: admin.php:591
 msgid "Save name"
 msgstr "Enregistrer le nom"
 
-#: admin.php:742
+#: admin.php:759
 msgid "Submitter"
 msgstr "Envoyé par"
 
-#: shortcode.php:80
+#: shortcode.php:126
 msgid "Thank you for your submission! It will be reviewed shortly."
 msgstr "Merci pour votre contribution ! Elle sera examinée sous peu."
 
-#: admin.php:485 admin.php:526
+#: admin.php:490 admin.php:531
 msgid "Will be visible when the page is refreshed."
 msgstr "Sera visible lorsque la page est actualisée."
 
-#: admin.php:170
+#: admin.php:189
 msgid "You currently have %d %s."
 msgstr "Vous avez actuellement %d %s."
 
-#: shortcode.php:319
+#: shortcode.php:365
 msgid "There are %d names in this directory beginning with the letter %s."
 msgstr "Il existe %d noms dans ce répertoire qui commencent par la lettre %s."
 
-#: admin.php:889
+#: admin.php:1003
 msgid "please check your .csv-file"
 msgstr "veuillez vérifier votre fichier .csv"
 
-#: admin.php:312
+#: admin.php:313
 msgid "You are editing the name, description and settings of directory %s"
 msgstr "Vous modifiez le nom, la description et les réglages du répertoire %s"
 
-#: admin.php:909
+#: admin.php:1023
 msgid "Use the upload form below to upload a .csv-file containing all of your names (in the first column), description and submitter are optional."
 msgstr "Utilisez le formulaire ci-dessous pour téléverser un fichier .csv contenant tous vos noms (dans la première colonne), la description et le créateur sont facultatifs."
 
-#: admin.php:941
+#: admin.php:1061
 msgid "Upload your .csv-file"
 msgstr "Téléverser votre fichier .csv"
 
-#: admin.php:234
+#: admin.php:257
 msgid "To show your directory on your website, use the shortcode on the right."
 msgstr "Pour afficher votre répertoire sur votre site, utilisez le code court à droite."
 
-#: helpers.php:286
+#: helpers.php:358
 msgid "This new submission does not have the published status."
 msgstr "Cette nouvelle proposition n’a pas le statut publié."
 
-#: admin.php:315 admin.php:596
+#: admin.php:316 admin.php:602
 msgid "Back to the directory overview"
 msgstr "Retour à l’aperçu du répertoire"
 
-#: admin.php:866
+#: admin.php:980
 msgid "Could not import any names into Name Directory"
 msgstr "Impossible d’importer des noms dans Name Directory"
 
-#: admin.php:215
+#: admin.php:240
 msgid "Show the copy-paste shortcode for this directory"
 msgstr "Afficher le copié-collé du code court de ce répertoire"
 
-#: admin.php:370
+#: admin.php:375
 msgid "Show all letters on index"
 msgstr "Afficher toutes les lettres sur l’index"
 
-#: admin.php:310
+#: admin.php:311
 msgid "Edit name directory"
 msgstr "Modifier le nom du répertoire"
 
-#: shortcode.php:40
+#: shortcode.php:86
 msgid "Required"
 msgstr "Nécessaire"
 
-#: admin.php:931
+#: admin.php:1049
 msgid "plugin support forums"
 msgstr "forums de support de l’extension"
 
-#: admin.php:301 admin.php:303
+#: admin.php:302 admin.php:304
 msgid "Create new name directory"
 msgstr "Créer un nouveau répertoire de noms"
 
-#: admin.php:913
+#: admin.php:1027
 msgid "Fields are comma-separated"
 msgstr "Les champs sont séparés par des virgules"
 
-#: admin.php:912
+#: admin.php:1026
 msgid "Fields are encapsulated by double quotes"
 msgstr "Les champs sont encapsulés par des guillemets doubles"
 
-#: admin.php:382
+#: admin.php:387
 msgid "If No, frontend will not show 'Latest' option."
 msgstr "Si Non, l’interface publique n’affichera pas l’option « Dernier »."
 
-#: admin.php:929
+#: admin.php:1047
 msgid "If everything else fails, you can always ask a question at the %s."
 msgstr "Si tout le reste échoue, vous pouvez toujours poser une question sur les %s."
 
-#: admin.php:371
+#: admin.php:376
 msgid "If no, just A B D E are shown if there are no entries starting with C"
 msgstr "Si non, seuls A B D E sont affichés s’il n’y a pas d’entrées commençant par C"
 
-#: admin.php:915
+#: admin.php:1035
 msgid "If uploading or importing fails, these are your options"
 msgstr "Si le téléversement ou l’importation échoue, vos options sont les suivantes"
 
-#: admin.php:910
+#: admin.php:1024
 msgid "If you saved it from Excel or OpenOffice, please ensure that:"
 msgstr "Si vous l’avez enregistré avec Excel ou OpenOffice, veuillez vous assurer que :"
 
-#: admin.php:236
+#: admin.php:259
 msgid "If you want to start with a specific character, like \"J\", use [namedirectory dir=\"X\" start_with=\"j\"]."
 msgstr "Si vous voulez commencer par un caractère spécifique, comme « J », utilisez [namedirectory dir=\"X\" start_with=\"j\"]."
 
-#: admin.php:860
+#: admin.php:974
 msgid "Imported %d entries in this directory"
 msgstr "%d entrées importées dans ce répertoire"
 
-#: helpers.php:280
+#: helpers.php:352
 msgid "New submission for Name Directory"
 msgstr "Nouvelle soumission pour Name Directory"
 
-#: admin.php:640
+#: admin.php:656
 msgid "Please be careful!"
 msgstr "Faites attention !"
 
-#: shortcode.php:273
+#: shortcode.php:318
 msgid "Search for..."
 msgstr "Rechercher…"
 
-#: shortcode.php:87
+#: shortcode.php:133
 msgid "Something must have gone terribly wrong. Would you please try it again?"
 msgstr "Quelque chose a dû mal tourner. Pouvez-vous réessayer ?"
 
-#: shortcode.php:59
+#: shortcode.php:105
 msgid "Sorry, %s was already on the list so your submission was not sent."
 msgstr "Désolé, %s est déjà dans la liste, votre proposition n’a pas été prise en compte."
 
-#: helpers.php:282
+#: helpers.php:354
 msgid "There was a new submission to the Name Directory on %s at %s"
 msgstr "Il y a eu une nouvelle soumission à Name Directory sur %s à %s"
 
-#: admin.php:675
+#: admin.php:691
 msgid "published"
 msgstr "publié"
 
-#: admin.php:918
+#: admin.php:1032
 msgid "the example import file"
 msgstr "le fichier d’importation de démo"
 
-#: admin.php:676
+#: admin.php:692
 msgid "unpublished"
 msgstr "non publié"
 
-#: shortcode.php:384 shortcode.php:491
+#: shortcode.php:54
 msgid "Submitted by:"
 msgstr "Proposé par :"
 
-#: shortcode.php:335
+#: shortcode.php:381
 msgid "Please select a letter from the index (above) to see entries"
 msgstr "Veuillez sélectionner une lettre de l’index (ci-dessus) pour voir les entrées"
 
-#: shortcode.php:331
+#: shortcode.php:377 shortcode.php:464
 msgid "There are no entries in this directory at the moment"
 msgstr "Aucune entrée dans ce répertoire pour le moment"
 
-#: shortcode.php:308
+#: shortcode.php:354
 msgid "Showing %d most recent names in this directory"
 msgstr "Afficher les noms les plus récents de %d dans ce répertoire"
 
-#: shortcode.php:295 admin.php:721
+#: shortcode.php:341 admin.php:738
 msgid "There are %d names in this directory containing the search term %s."
 msgstr "Il y a %d noms dans ce répertoire contenant le terme de recherche %s."
 
-#: shortcode.php:242
+#: shortcode.php:288
 msgid "Submit a name"
 msgstr "Envoyer un nom"
 
-#: shortcode.php:43
+#: shortcode.php:89
 msgid "Submit"
 msgstr "Envoyer"
 
-#: helpers.php:281
+#: helpers.php:353
 msgid "Howdy,"
 msgstr "Bonjour,"
 
-#: admin.php:947 admin.php:989
+#: admin.php:1067 admin.php:1110
 msgid "Go to Name Directory Overview"
 msgstr "Aller à l’aperçu de Name Directory"
 
-#: admin.php:937
-msgid "Name Directory Import requires PHP 5.3, you seem to have in older version. Importing names will not work for your website."
-msgstr "Name Directory Import nécessite PHP 5.3, vous semblez avoir une version plus ancienne. L’importation de noms ne fonctionnera pas pour votre site Web."
-
-#: admin.php:911
+#: admin.php:1025
 msgid "There is a header row (this contains the column names, the first row will NOT be imported)"
 msgstr "Il y a une ligne d’en-tête (elle contient les noms des colonnes, la première ligne ne sera PAS importée)"
 
-#: admin.php:641
+#: admin.php:657
 msgid "HTML markup is allowed and will we printed on your website and in the WordPress admin."
 msgstr "Le balisage HTML est autorisé et sera affiché sur votre site web et dans l’administration de WordPress."
 
-#: admin.php:624
+#: admin.php:630
 msgid "Show the full form, which allows you to enter a description and submitter"
 msgstr "Afficher le formulaire complet, ce qui peemet de saisir une description et un nom d’auteur"
 
-#: admin.php:622
+#: admin.php:628
 msgid "Quick add view"
 msgstr "Vue partielle"
 
-#: admin.php:626
+#: admin.php:632
 msgid "Full add view"
 msgstr "Vue complète"
 
-#: admin.php:620
+#: admin.php:626
 msgid "Show the compact form, showing only the name, always published)"
 msgstr "Afficher le formulaire compact, affichant uniquement le nom, toujours publié"
 
-#: admin.php:770
+#: admin.php:788
 msgid "Toggle published status"
 msgstr "Permuter l’état publié"
 
-#: admin.php:752
+#: admin.php:770
 msgid "Currently, there are no names in this directory.."
 msgstr "Actuellement, il n’y a aucun nom dans ce répertoire…"
 
-#: shortcode.php:31 admin.php:540 admin.php:545
+#: shortcode.php:77 admin.php:545 admin.php:550
 msgid "Please fill in at least a name"
 msgstr "Veuillez saisir au moins un nom"
 
-#: admin.php:503
+#: admin.php:508
 msgid "Name %s was already on the list, so it was not added"
 msgstr "Le nom %s est déjà présent dans la liste, il n’a pas été ajouté"
 
-#: admin.php:367
+#: admin.php:372
 msgid "If no, user HAS to use the index before entries are shown"
 msgstr "Si non, l’utilisateur DOIT utiliser les index avant que les entrées ne soient affichées"
 
-#: admin.php:354
+#: admin.php:355
 msgid "Submitter name"
 msgstr "Auteur de la proposition"
 
-#: admin.php:350
+#: admin.php:351
 msgid "Submit form"
 msgstr "Envoyer le formulaire"
 
-#: admin.php:309
+#: admin.php:310
 msgid "Save Changes"
 msgstr "Enregistrer les modifications"
 
-#: admin.php:308
+#: admin.php:309
 msgid "Edit this directory"
 msgstr "Modifier ce répertoire"
 
-#: admin.php:235
+#: admin.php:258
 msgid "Copy the code and paste it in a post or in a page."
 msgstr "Copiez le code et collez-le dans une publication ou dans une page."
 
-#: admin.php:216
+#: admin.php:241
 msgid "Permanently remove this name directory"
 msgstr "Retirer définitivement ce répertoire de noms"
 
-#: admin.php:213
+#: admin.php:238
 msgid "Import entries for this directory by uploading a .csv file"
 msgstr "Importer des entrées pour ce répertoire en téléversant un fichier .csv"
 
-#: admin.php:212
+#: admin.php:237
 msgid "Edit name, description and appearance settings"
 msgstr "Modifier les réglages de nom, de description, et d’apparence"
 
-#: admin.php:210
+#: admin.php:235
 msgid "Add, edit and remove names"
 msgstr "Ajouter, modifier et retirer des noms"

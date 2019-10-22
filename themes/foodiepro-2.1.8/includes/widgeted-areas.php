@@ -120,7 +120,7 @@ genesis_register_sidebar( array(
 genesis_register_sidebar( array(
     'id'          => 'social-content',
     'name'        => __( 'Social Content', 'foodiepro' ),
-    'description' => __( 'This is the widget section of buddypress pages.', 'foodiepro' ),
+    'description' => __( 'This is the widget section of social pages.', 'foodiepro' ),
 ) );
 genesis_register_sidebar( array(
     'id'          => 'social-after-content',

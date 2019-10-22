@@ -33,7 +33,7 @@ class Peepso_About_Widget extends WP_Widget {
 	public function widget( $args, $instance ) {
 
 		/* Hide widget if not on user profile page */
-		if ( empty(PeepsoHelpers::get_user( 'view' ) ) ) return;
+		if ( (PeepsoHelpers::get_user('view')==PeepsoHelpers::get_user('current')) ) return;
 
      	echo $args['before_widget'];
 

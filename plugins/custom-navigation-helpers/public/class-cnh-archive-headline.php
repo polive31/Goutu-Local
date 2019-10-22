@@ -12,16 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class CNH_Archive_Headline {
 
-	public function custom_search_title_text() {
-		// $url = $_SERVER["REQUEST_URI"];
-		// $WPURP_search = strpos($url, 'wpurp-search');
-		// if ( $WPURP_search!==false )
-		if ( isset( $_GET['wpurp-search'] ) )
-			return __('Detailed Search Results', 'foodiepro');
-		else
-			return sprintf( __('Search Results for:%s', 'foodiepro'), get_search_query());
-	}
-
 	public function get_seo_friendly_page_title( $atts ) {
 		$atts = shortcode_atts( array(
 			'url' => 'true',
@@ -46,6 +36,7 @@ class CNH_Archive_Headline {
 		$query=get_queried_object();
 		$msg='';
 
+		/* Check whether archive headline is defined for this term */
 		$headline = get_term_meta( $query->term_id, 'headline', true );
 		/* Display parent headline if exists */
 		// if ( empty($headline) ) {
@@ -72,7 +63,7 @@ class CNH_Archive_Headline {
 
 			$msg = $this->post_from_msg( $type, $name );
 		}
-		elseif ( is_tax('ingredient') ) {
+		elseif ( $query->taxonomy=='ingredient' ) {
 			$ingredient = $query->name;
 			if ( initial_is_vowel($ingredient) )
 			$msg=sprintf(_x('All recipes containing %s','vowel','foodiepro'), $ingredient);
@@ -80,11 +71,11 @@ class CNH_Archive_Headline {
 			$msg=sprintf(_x('All recipes containing %s','consonant','foodiepro'), $ingredient);
 		}
 
-		elseif ( is_tax('cuisine') ) {
-			$msg = $this->post_from_msg( 'recipe', $term);
+		elseif ( $query->taxonomy=='cuisine' ) {
+			$msg = $this->post_from_msg( 'recipe', $query->name);
 		}
 
-		elseif ( is_tax('course') ) {
+		elseif ( $query->taxonomy=='course' ) {
 			$course=get_query_var('course',false);
 			$term='';
 
@@ -114,6 +105,16 @@ class CNH_Archive_Headline {
 		}
 		$msg = '<span class="archive-image">' . do_shortcode( '[wp_custom_image_category]' ) . '</span>' . $msg;
 		return $msg;
+	}
+
+	public function custom_search_title_text() {
+		// $url = $_SERVER["REQUEST_URI"];
+		// $WPURP_search = strpos($url, 'wpurp-search');
+		// if ( $WPURP_search!==false )
+		if ( isset( $_GET['wpurp-search'] ) )
+			return __('Detailed Search Results', 'foodiepro');
+		else
+			return sprintf( __('Search Results for:%s', 'foodiepro'), get_search_query());
 	}
 
 	public function get_post_type_archive_title( $post_type ) {

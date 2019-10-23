@@ -135,4 +135,5 @@ class RPW_Extended {
 	}
 
 }
+
 new RPW_Extended;

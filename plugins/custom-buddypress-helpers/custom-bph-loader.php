@@ -13,11 +13,11 @@ License: GPL
 // Block direct requests
 if ( !defined('ABSPATH') )
 	die('-1');
-
-
+	
+	
 define( 'CBPH_PLUGIN_VERSION', '1.1.0' );
-
-
+	
+	
 /* Main
 ------------------------------------------------------------*/
 if ( class_exists( 'BuddyPress' ) ) {
@@ -27,7 +27,7 @@ if ( class_exists( 'BuddyPress' ) ) {
 }
 
 
-/* Support functions
+/* Support functions 
 ------------------------------------------------------------*/
 function bp_social_helpers_load() {
 	// Includes
@@ -61,6 +61,7 @@ function bp_social_helpers_missing_plugin() {
 	$class = 'notice notice-error';
 	$message = 'The customized profile completion widget requires the <a href="https://fr.wordpress.org/plugins/buddy-progress-bar/">Buddy Progress Bar</a> plugin to be installed.';
 
-	//printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
-	echo '<div class="notice notice-error"><p>' . $message . '</p></div>';
+	//printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
+	echo '<div class="notice notice-error"><p>' . $message . '</p></div>'; 
 }
+

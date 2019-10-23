@@ -84,7 +84,7 @@ class Custom_Post_Meta_Inspector
 
 
 		<p>
-			<?php
+			<?php 
 				$hook_name = 'wp_insert_post';
 				global $wp_filter;
 				$vardump=print_r( $wp_filter[$hook_name], true );
@@ -117,7 +117,7 @@ class Custom_Post_Meta_Inspector
 			<tr>
 			<td class="key-column"><?php echo esc_html( $key ); ?></td>
 			<?php
-				$i=0;
+				$i=0; 
 				foreach( $values as $value ) : ?>
 			<?php
 				// $value = unserialize( $value );
@@ -127,12 +127,12 @@ class Custom_Post_Meta_Inspector
 				<!-- <td class="value-column"><?php if( $toggled ) echo $toggle_el; ?><pre <?php if( $toggled ) echo ' style="display: none;"'; ?>><?php echo esc_html( $value ); ?></pre></td> -->
 				<!-- <td class="value-column"><pre><?php echo esc_html( $i . ' => ' . $value ); ?></pre></td> -->
 				<td class="value-column"><pre><?php echo esc_html( $value ); ?></pre></td>
-			<?php
+			<?php 
 				if (++$i == self::MAX_COLUMNS) {?>
 					</tr>
 					<tr>
 						<td class="key-column"><?php echo esc_html( $key ) . ' (cont\'d)'; ?></td>
-			<?php
+			<?php 
 					$i=0;
 					};
 				endforeach; ?>

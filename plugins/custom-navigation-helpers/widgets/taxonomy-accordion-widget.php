@@ -5,17 +5,17 @@ if ( !defined('ABSPATH') )
 	die('-1');
 
 
-// Creating the widget
+// Creating the widget 
 class Recipe_Taxonomy_Accordion extends WP_Widget {
 
 	function __construct() {
 		parent::__construct(
 			// Base ID of your widget
-			'Recipe_Taxonomy_Accordion',
+			'Recipe_Taxonomy_Accordion', 
 			// Widget name will appear in UI
-			__('Recipe Taxonomies Accordion widget', 'foodiepro'),
+			__('Recipe Taxonomies Accordion widget', 'foodiepro'), 
 			// Widget description
-			array( 'description' => __( 'Displays a accordion-style list allowing to navigate between chosen recipe taxonomy terms', 'foodiepro' ), )
+			array( 'description' => __( 'Displays a accordion-style list allowing to navigate between chosen recipe taxonomy terms', 'foodiepro' ), ) 
 		);
 		//enqueue CSS and JS on frontend only if widget is active.
 		add_action('wp_enqueue_scripts', array($this, 'load_scripts'));
@@ -31,15 +31,15 @@ class Recipe_Taxonomy_Accordion extends WP_Widget {
 	// Creating widget front-end
 	public function widget( $args, $instance ) {
 		global $wp;
-
+			
 		$title = apply_filters( 'widget_title', $instance['title'] );
 
 		$show_count = $instance['show_count']?'true':'false';
 		$displayed_user = $instance['displayed_user'];
-
+			
 		// before and after widget arguments are defined by themes
 		echo $args['before_widget'];
-
+		
 		// Widget code starts
 
 		$obj = get_queried_object();
@@ -85,7 +85,7 @@ class Recipe_Taxonomy_Accordion extends WP_Widget {
 		echo do_shortcode('[ct-terms-menu tax="cuisine" parent="0" drill="true" exclude="9996" title="' . __('World', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
 		echo do_shortcode('[ct-terms-menu tax="cuisine" parent="9996" title="' . __('France', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
 		echo do_shortcode('[ct-terms-menu tax="diet" title="' . __('Diets', 'foodiepro') . '" orderby="description" order="ASC" count="' . $show_count . '"]');
-		echo do_shortcode('[tags-menu post_type="recipe" title="' . __('Ideas', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
+		echo do_shortcode('[tags-menu post_type="recipe" title="' . __('Ideas', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');	
 		echo '</div>';
 
 
@@ -101,10 +101,10 @@ class Recipe_Taxonomy_Accordion extends WP_Widget {
 		// Output end
 		echo $args['after_widget'];
 	}
-
-	// Widget Backend
+			
+	// Widget Backend 
 	public function form( $instance ) {
-		if ( isset( $instance[ 'title' ] ) )
+		if ( isset( $instance[ 'title' ] ) ) 
 			$title = $instance[ 'title' ];
 		else
 			$title = __( 'New title', 'foodiepro' );
@@ -112,11 +112,11 @@ class Recipe_Taxonomy_Accordion extends WP_Widget {
 			else $show_count = false;
 		if ( isset( $instance[ 'displayed_user' ] ) ) $displayed_user = $instance[ 'displayed_user' ];
 			else $displayed_user = false;
-
+			
 	// Widget admin form
 	?>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'foodiepro' ); ?></label>
+		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'foodiepro' ); ?></label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
 
@@ -128,15 +128,15 @@ class Recipe_Taxonomy_Accordion extends WP_Widget {
 		<p>
 		    <label for="<?php echo $this->get_field_id( 'displayed_user' ); ?>"><?php _e( 'Limit Recipes to Current Displayed User', 'foodiepro' ); ?></label>
 		    <input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id( 'displayed_user' ); ?>" name="<?php echo $this->get_field_name( 'displayed_user' ); ?>" <?php checked( $instance[ 'displayed_user' ], 'on' ); ?>  >
-		</p>
-	<?php
+		</p>	
+	<?php 
 	}
-
+		
 	// Updating widget replacing old instances with new
 	public function update( $new_instance, $old_instance ) {
 	$instance = array();
 	$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-	$instance['show_count'] = $new_instance['show_count'];
+	$instance['show_count'] = $new_instance['show_count'];        
 	$instance['displayed_user'] = $new_instance['displayed_user'];
 	return $instance;
 	}
@@ -148,3 +148,6 @@ add_action( 'widgets_init', 'wpb_load_widget_accordion_taxonomy' );
 function wpb_load_widget_accordion_taxonomy() {
 	register_widget( 'Recipe_Taxonomy_Accordion' );
 }
+
+
+

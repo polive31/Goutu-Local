@@ -135,7 +135,7 @@
 					image = $( '<img ' + options.selector + ' />' )
 					.attr({
 						'src':target.attr( 'href' ),
-						'data-id':targets.index(target)
+						'data-id':targets.index(target)	
 					})
 					.on( 'load', function()
 					{
@@ -214,7 +214,7 @@
 						{
 							target = targets.eq( targets.index( target ) - ( swipeDiff < 0 ? 1 : -1 ) );
 							if( !target.length ) target = targets.eq( swipeDiff < 0 ? targets.length : 0 );
-							loadImage( swipeDiff > 0 ? 'right' : 'left' );
+							loadImage( swipeDiff > 0 ? 'right' : 'left' );	
 						}
 						else
 						{

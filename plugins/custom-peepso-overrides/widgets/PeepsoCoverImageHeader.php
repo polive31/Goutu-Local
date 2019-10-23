@@ -6,7 +6,7 @@ if ( !defined('ABSPATH') )
 
 add_action( 'widgets_init', function(){
      register_widget( 'Peepso_Cover_Image_Header' );
-});
+});	
 
 class Peepso_Cover_Image_Header extends WP_Widget {
 
@@ -31,40 +31,40 @@ class Peepso_Cover_Image_Header extends WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
 	public function widget( $args, $instance ) {
-
+	
      	echo $args['before_widget'];
-
+		
 		// if ( ! empty( $instance['title'] ) ) {
 		// 	echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
-		// }
+		// }	
 
 
-		// Widget content starts
+		// Widget content starts 
 		// $edit_my_profile_slug = Peepso::get_option('page_profile');
 		// $view_member_profile_slug = Peepso::get_option('page_profile');
 
 		?>
 
-
+		
 		<div id="cProfileWrapper" class="ps-clearfix">
-			<?php
+			<?php 
 
 				$shortcode = PeepSoProfileShortcode::get_instance();
 	            $shortcode->set_page('profile');
 				$current_view_user = $shortcode->get_view_user_id();
-
+				
 				$PeepSoProfile = PeepSoProfile::get_instance();
 				$PeepSoProfile->init( $current_view_user );
 
 				PeepSoTemplate::exec_template('profile', 'focus');
 			?>
         </div>
-
+					
 		<?php
 		// Widget content ends
 
 		echo '<div class="clear"></div>';
-
+		
 		echo $args['after_widget'];
 	}
 
@@ -81,10 +81,10 @@ class Peepso_Cover_Image_Header extends WP_Widget {
 		}
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
-		<?php
+		<?php 
 	}
 
 	/**
@@ -104,4 +104,4 @@ class Peepso_Cover_Image_Header extends WP_Widget {
 		return $instance;
 	}
 
-}
+} 

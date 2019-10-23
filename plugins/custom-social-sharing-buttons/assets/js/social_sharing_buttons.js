@@ -1,12 +1,12 @@
 jQuery(document).ready(function() {
-
+		
 	console.log('In social sharing buttons script');
 
 	jQuery('.share-icons#whatsapp a').on('click', function(){
 
 		var body=encodeURIComponent( jQuery(this).data('body') );
 		var post_url=encodeURIComponent( jQuery(this).data('url') );
-
+		
 
 		console.log('Click on Whatsapp share detected !');
 

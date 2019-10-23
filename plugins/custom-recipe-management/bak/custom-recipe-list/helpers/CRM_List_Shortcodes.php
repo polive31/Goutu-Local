@@ -12,7 +12,7 @@ class CRM_List_Shortcodes extends CRM_List {
 
     public function __construct() {
         // parent::__construct();
-
+   
     }
 
    public function submissions_current_user_list_shortcode() {
@@ -32,7 +32,7 @@ class CRM_List_Shortcodes extends CRM_List {
             }
         }
         return $output;
-    }
+    }  
 
     public function favorite_recipes_shortcode( $atts ) {
         $atts = shortcode_atts( array(
@@ -41,7 +41,7 @@ class CRM_List_Shortcodes extends CRM_List {
 
         if( !is_user_logged_in() ) return;
         $user_id = get_current_user_id();
-
+        
         wp_enqueue_style( 'custom-post-list' );
 
         $Favs = new Custom_recipe_Favorite();
@@ -68,7 +68,7 @@ class CRM_List_Shortcodes extends CRM_List {
         }
         if ($empty)
             $output .= '<div class="submitbox">' . __( "No recipes found.", 'foodiepro' ) . '</p>';
-
+        
         return $output;
     }
 

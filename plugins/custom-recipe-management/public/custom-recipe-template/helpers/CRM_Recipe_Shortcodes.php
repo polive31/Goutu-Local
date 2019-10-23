@@ -7,14 +7,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class CRM_Recipe_Shortcodes  {
 
-    public static $id;
-
+    public static $id;    
+    
     public function __construct() {
-        self::$id=0;
+        self::$id=0; 
     }
 
     public function add_tts_button( $atts, $content = "" ) {
-
+        
         if (!function_exists('RV_clean_text')) return $content;
 
         static $button_id = 0;
@@ -124,6 +124,6 @@ class CRM_Recipe_Shortcodes  {
         $timer .= '</span></a>';
 
         return $timer;
-    }
+    } 
 
 }

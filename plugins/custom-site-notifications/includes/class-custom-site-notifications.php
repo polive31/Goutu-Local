@@ -8,12 +8,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 class CustomSiteNotifications {
-
-	public function __construct() {
+	
+	public function __construct() {	
 
 		$Enqueue = new CSN_Public();
-        add_action( 'wp_enqueue_scripts', 		array( $Enqueue, 'popups_styles_register' ) );
-
+        add_action( 'wp_enqueue_scripts', 		array( $Enqueue, 'popups_styles_register' ) );		
+		
 		$Mails = new CustomSiteMails();
 		/* Event hooks */
 		add_action( 'pending_to_publish',  			array( $Mails, 'published_post_notification_callback'), 10, 1 );

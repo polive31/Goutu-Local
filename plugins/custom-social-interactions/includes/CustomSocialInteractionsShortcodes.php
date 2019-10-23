@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -13,15 +13,15 @@ class Custom_Social_Interactions_Shortcodes extends Custom_Social_Interactions {
 
 	public function like_count_shortcode( $atts ) {
 		$a = shortcode_atts( array(
-			'post' => 'current', // defaults to current post otherwise post id given in this attribute
+			'post' => 'current', // defaults to current post otherwise post id given in this attribute 
 			'tag' => 'span',
 			'class' => 'like-count',
 			'icon' => true,
-		), $atts );
+		), $atts );		
 
 		if ($a['post'] == 'current')
 			$post_id=get_the_id();
-		else
+		else 
 			$post_id=intval($a['post']);
 
 		$count = $this->like_count($post_id);
@@ -34,7 +34,7 @@ class Custom_Social_Interactions_Shortcodes extends Custom_Social_Interactions {
 			$html = '<' . $a['tag'] . ' class="' . $a['class'] . '">' . $html . '</' . $a['tag'] . '>';
 		}
 
-		return $html;
+		return $html; 
 	}
 
 }

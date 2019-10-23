@@ -26,7 +26,7 @@ table.custom-recipe-list a {
   cursor: pointer;
   width: 30px;
   transition: font-size 0.2s ease-in-out;
-  font-size: 2.2rem;
+  font-size: 2.2rem;   
 }
 
 .recipe-list-actions .fa:hover {
@@ -54,7 +54,7 @@ tr.recipe-list-row:hover {
 
 td.recipe-list-title {
     font-family: Oswald, sans-serif;
-     font-size: 2rem;
+     font-size: 2rem; 
 }
 
 td.recipe-list-thumbnail {
@@ -66,5 +66,6 @@ td.recipe-list-thumbnail {
 td.recipe-list-thumbnail img {
     margin: 0;
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: middle;  
 }
+

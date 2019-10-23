@@ -13,8 +13,8 @@ License: GPL
 // Block direct requests
 if ( !defined('ABSPATH') )
 	die('-1');
-
-
+	
+	
 /* Main
 ------------------------------------------------------------*/
 add_action('plugins_loaded','check_peepso_active');
@@ -27,12 +27,12 @@ function check_peepso_active() {
 }
 
 
-/* Support functions
+/* Support functions 
 ------------------------------------------------------------*/
 function peepso_helpers_conditional_load() {
 	// Includes
 	require_once 'includes/class-custom-peepso-overrides.php';
-
+	
 	// Public
 	require_once 'public/class-cpo-customizations.php';
 	require_once 'public/class-peepso-helpers.php';
@@ -55,3 +55,6 @@ function peepso_helpers_install_notice() {
 	_e('<strong>Peepso Helpers</strong> requires the Peepso plugin to work.');
 	echo '</p></div>';
 }
+
+
+

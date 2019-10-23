@@ -8,21 +8,21 @@
 }
 
 .share-icons {
-	-webkit-filter: grayscale(80%);
-	filter: grayscale(80%);
+	-webkit-filter: grayscale(80%);  
+	filter: grayscale(80%);	
 	opacity:1;
 }
 
 .share-icons.bubble {
-	-webkit-filter: grayscale(60%);
-	filter: grayscale(60%);
+	-webkit-filter: grayscale(60%);  
+	filter: grayscale(60%);	
 	opacity:1;
 }
 
 .share-icons:hover {
-	-webkit-filter: none;
+	-webkit-filter: none;  
 	filter: none;
-	cursor:pointer;
+	cursor:pointer;	
 }
 
 .share-icons a {
@@ -51,7 +51,7 @@
 	padding:6px;
 }
 
-/* Social login plugin
+/* Social login plugin 
 -----------------------------------*/
 
 .plugin#social_login .footer {

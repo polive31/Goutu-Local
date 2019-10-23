@@ -5,9 +5,9 @@ class CPM_List_Shortcodes {
     public function new_post_button( $atts ) {
         $atts = shortcode_atts( array(
             'post_type' => 'post', // 'post', 'recipe'
-            'text' => '',
+            'text' => '', 
         ), $atts );
-
+    
         $post_type = $atts['post_type'];
         $text = CPM_Assets::get_label( $post_type, 'new_button' );
         $text = esc_html( $text );
@@ -15,7 +15,7 @@ class CPM_List_Shortcodes {
         $out = '<div>';
         $out .= do_shortcode('[permalink slug="' . CPM_Assets::get_slug( $post_type . '_form') . '" class="black-button"]' . $text . '[/permalink]');
         $out .= '</div>';
-
+        
         return $out;
     }
 
@@ -34,17 +34,17 @@ class CPM_List_Shortcodes {
         // wp_enqueue_script( 'csf-list' );
 
         if( $author !== 0 ) {
-
+ 
             $args = array(
                 'author' => $author,
                 'numberposts' => -1,
-                'category' => 0,
+                'category' => 0, 
                 'orderby' => 'date',
-                'order' => 'DESC',
+                'order' => 'DESC', 
                 'include' => array(),
-                'exclude' => array(),
+                'exclude' => array(), 
                 'meta_key' => '',
-                'meta_value' =>'',
+                'meta_value' =>'', 
                 'post_type' => $post_type,
                 'post_status' => array( 'publish', 'private', 'pending', 'draft' ),
                 'suppress_filters' => true
@@ -57,11 +57,14 @@ class CPM_List_Shortcodes {
                 $output .= $content?$content:'<p>' . __('Here is the list of the posts that you created, and their status. You can choose to edit them, change their visibility, or delete them.', 'foodiepro') . '</p>';
                 $output .= $List->display( $posts, true );
             }
-            else
+            else 
                 $output .= CPM_Assets::get_label( $post_type, 'noposts' );
 
         }
         return $output;
-    }
+    }  
+
+
+
 
 }

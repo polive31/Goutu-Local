@@ -17,10 +17,10 @@ class BP_Custom_Registration {
 		// $this->bp_register_set_full_layout();
 		// add_action( 'wp', array($this, 'bp_register_set_full_layout' ) );
 		// add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
-
+		
 		add_action( 'bp_before_registration_submit_buttons', array($this, 'add_privacy_statement'), 11 );
 		add_action( 'bp_signup_validate', array($this, 'add_signup_validate') );
-
+		
 	}
 
 

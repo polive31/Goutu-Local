@@ -18,7 +18,7 @@ jQuery(document).ready(function() {
             };
 
             jQuery.post(
-                custom_posts_list.ajaxurl,
+                custom_posts_list.ajaxurl, 
                 data,
                 function(response){
                     console.log(  response );
@@ -26,6 +26,6 @@ jQuery(document).ready(function() {
                 }
             );
         }
-    });
+    });    
 
 });

@@ -6,7 +6,7 @@ if ( !defined('ABSPATH') )
 
 add_action( 'widgets_init', function(){
      register_widget( 'Peepso_Activity_Stream' );
-});
+});	
 
 class Peepso_Activity_Stream extends WP_Widget {
 
@@ -31,9 +31,9 @@ class Peepso_Activity_Stream extends WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
 	public function widget( $args, $instance ) {
-
+	
 		 echo $args['before_widget'];
-		?>
+		?>	 
 		<!-- Widget begins -->
 
 		<?php
@@ -66,7 +66,7 @@ class Peepso_Activity_Stream extends WP_Widget {
 		// Widget content ends
 
 		echo '<div class="clear"></div>';
-
+		
 		echo $args['after_widget'];
 	}
 
@@ -83,7 +83,7 @@ class Peepso_Activity_Stream extends WP_Widget {
 		}
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
 
@@ -91,7 +91,7 @@ class Peepso_Activity_Stream extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Number of items to display', 'foodiepro' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" type="number" step="1" min="-1" value="<?php echo (int)( $instance['limit'] ); ?>" />
 		</p>
-		<?php
+		<?php 
 	}
 
 	/**
@@ -112,4 +112,4 @@ class Peepso_Activity_Stream extends WP_Widget {
 		return $instance;
 	}
 
-}
+} 

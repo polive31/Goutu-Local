@@ -4,7 +4,7 @@ Plugin Name: Custom Gallery Shortcode
 Plugin URI: wwww.goutu.org
 Description: Provides customized gallery shortcode
 Version: 1.0
-Author: Pascal Olive
+Author: Pascal Olive 
 Author URI: www.goutu.org
 License: GPL
 */
@@ -13,26 +13,26 @@ License: GPL
 if ( !defined('ABSPATH') )
 	die('-1');
 
-
+	
 class Custom_Gallery_Shortcode {
 
 	public static $PLUGIN_PATH;
-	public static $PLUGIN_URI;
-
-	public function __construct() {
+	public static $PLUGIN_URI;	
+	
+	public function __construct() {	
 		self::$PLUGIN_PATH = plugin_dir_path( __FILE__ );
-		self::$PLUGIN_URI = plugin_dir_url( __FILE__ );
-
+		self::$PLUGIN_URI = plugin_dir_url( __FILE__ );	
+	
 		add_filter( 'use_default_gallery_style', '__return_false' );
 		// Load stylesheet, with fallback in case the class is called at enqueue_styles hook level
 		add_action( 'wp_enqueue_scripts', 	array( $this, 'custom_gallery_stylesheet'	) );
 		add_shortcode( 'custom-gallery', 	array( $this, 'custom_gallery_shortcode'	) );
 	}
-
+	
 	public function custom_gallery_stylesheet() {
-		custom_register_style( 'custom-gallery', 'assets/css/custom-gallery.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );
+		custom_register_style( 'custom-gallery', 'assets/css/custom-gallery.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );				
 	}
-
+	
 
 	/**
 	 * Builds the Gallery shortcode output.
@@ -67,7 +67,7 @@ class Custom_Gallery_Shortcode {
 		static $instance = 0;
 		$instance++;
 
-		custom_enqueue_style( 'custom-gallery' );
+		custom_enqueue_style( 'custom-gallery' );				
 
 		if ( ! empty( $attr['ids'] ) ) {
 			// 'ids' is explicitly ordered, unless you specify otherwise.
@@ -110,11 +110,11 @@ class Custom_Gallery_Shortcode {
 
 		$id = intval( $atts['id'] );
 		$gallery_id = $atts['gallery-id'];
-
+		
 		/* CSS style output */
 		$selector = $gallery_id;
 		/* $selector = "gallery-{$instance}"; original */
-
+		
 		/* Retrieve attachments */
 		if ( ! empty( $atts['include'] ) ) {
 			$_attachments = get_posts( array( 'include' => $atts['include'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
@@ -133,7 +133,7 @@ class Custom_Gallery_Shortcode {
 		/* Gallery content output */
 		$button_id = is_user_logged_in() ? 'upload-picture' : '';
 		$size_class = sanitize_html_class( $atts['size'] );
-
+		
 		$gallery_style = '';
 		$gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-size-{$size_class}'>";
 		$output .= apply_filters( 'gallery_style', $gallery_style . $gallery_div );
@@ -155,11 +155,11 @@ class Custom_Gallery_Shortcode {
 					'title'		=> __('Upload your picture','foodiepro'),
 					'img'		=> CHILD_THEME_URL . '/images/popup-icons/add_pic.png'
 				);
-				Tooltip::display( $args );
-			}
+				Tooltip::display( $args ); 
+			} 
 		?>
 		</div>
-
+		
 		<?php
 		if ( !empty( $attachments ) ) {
 		// Loop through gallery pictures
@@ -173,10 +173,10 @@ class Custom_Gallery_Shortcode {
 						<a href="<?= $url; ?>" id="lightbox"><?= $image; ?></a>
 					</div>
 				</div>
-			<?php }
+			<?php } 
 		}
-		?>
-
+		?>	
+		
 		</div>
 		<?php
 		$output .= ob_get_contents();
@@ -194,8 +194,21 @@ class Custom_Gallery_Shortcode {
 			[input type="file" name="photo" id="ug_photo" class="required" description=""]
 			[input type="submit" class="btn" value="Envoyer"]
 			[/fu-upload-form]');
-
+		
 		return $html;
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

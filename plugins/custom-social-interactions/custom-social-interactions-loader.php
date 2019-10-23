@@ -13,11 +13,11 @@ License: GPL
 // Block direct requests
 if ( !defined('ABSPATH') )
 	die('-1');
-
-
+	
+	
 define( 'CSI_PLUGIN_VERSION', '1.1.0' );
-
-
+	
+	
 /* Main
 ------------------------------------------------------------*/
 require_once 'includes/CustomSocialInteractions.php';

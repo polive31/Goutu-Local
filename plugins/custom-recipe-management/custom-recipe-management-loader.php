@@ -14,8 +14,8 @@ if ( !defined('ABSPATH') )
 die('-1');
 
 
-// add_action( 'plugins_loaded', 'CRM_init', PHP_INT_MAX );
-add_action( 'wp_loaded', 'CRM_init' );
+// add_action( 'plugins_loaded', 'CRM_init', PHP_INT_MAX ); 
+add_action( 'wp_loaded', 'CRM_init' ); 
 
 
 function CRM_init() {
@@ -40,7 +40,7 @@ function CRM_init() {
 	// /* Custom Recipe Favorite
 	// ------------------------------------*/
 	require_once 'public/custom-recipe-favorite/class-crm-favorite.php';
-	require_once 'public/custom-recipe-favorite/class-crm-favorite-shortcodes.php';
+	require_once 'public/custom-recipe-favorite/class-crm-favorite-shortcodes.php';		
 
 	/* Custom Recipe Submission
 	------------------------------------*/
@@ -49,7 +49,7 @@ function CRM_init() {
 	/*
 	* 			ADMIN CLASSES
 	------------------------------------*/
-	require_once 'admin/class-custom-ingredient-meta.php';
+	require_once 'admin/class-custom-ingredient-meta.php';	
 
 	/* Widgets
 	------------------------------------*/
@@ -57,7 +57,7 @@ function CRM_init() {
 	require_once 'widgets/crm_nutrition_label_widget.php';
 
 	/* Launch Plugin
-	------------------------------------*/
+	------------------------------------*/	
 	$dependencies = array(
 		'WPUltimateRecipe',
 		'Custom_Gallery_Shortcode',
@@ -72,7 +72,7 @@ function CRM_init() {
 			new foodiepro_admin_notice( $message );
 		}
 	}
-	if (!$plugin_missing)
+	if (!$plugin_missing) 
 		Custom_Recipe_Management::get_instance();
 }
 
@@ -87,3 +87,4 @@ class foodiepro_admin_notice {
         printf( $this->_message );
     }
 }
+

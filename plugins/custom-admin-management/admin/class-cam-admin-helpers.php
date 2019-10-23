@@ -23,14 +23,14 @@ class CAM_Admin_Helpers {
     /* Chargement des feuilles de style admin */
 
     function load_admin_stylesheet() {
-        wp_enqueue_style( 'admin-css', CHILD_THEME_URL . '/assets/css/admin.css', array(), CHILD_THEME_VERSION );
+        wp_enqueue_style( 'admin-css', CHILD_THEME_URL . '/assets/css/admin.css', array(), CHILD_THEME_VERSION );		
     }
 
 
     /* Disable admin bar for all users except admin */
     function remove_admin_bar() {
         if (!current_user_can('administrator') && !is_admin())
-        show_admin_bar(false);
+        show_admin_bar(false); 
     }
 
     /* Disable dashboard for non admin */

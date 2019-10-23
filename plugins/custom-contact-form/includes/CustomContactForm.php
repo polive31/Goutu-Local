@@ -11,14 +11,14 @@ class CustomContactForm {
 	public static $CCF_URI;
 	public static $CONTACT_EMAIL;
 
-	public function __construct() {
+	public function __construct() {	
 		add_action('init', array($this, 'ccf_create_contact_post_type'), 10);
 		// add_filter ('theme_page_templates', array($this,'add_ccf_template'));
 		// add_filter ('template_include', array($this, 'redirect_ccf_template'));
-
+		
 		// Create options page
-		add_action('admin_menu', array($this, 'add_ccf_options'));
-
+		add_action('admin_menu', array($this, 'add_ccf_options'));	
+	
 		self::$CCF_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$CCF_URI = plugin_dir_url( dirname( __FILE__ ) );
 	}
@@ -37,7 +37,7 @@ class CustomContactForm {
 	            <?php wp_nonce_field('update-options') ?>
 	            <p><strong>Contact Email</strong><br />
 	                <input type="text" name="contact_email" size="45" value="<?php echo get_option('contact_email'); ?>" />
-	            </p>
+	            </p>            
 	            <p><input type="submit" name="Submit" value="<?= __('Save Options','foodiepro') ?>" /></p>
 	            <input type="hidden" name="action" value="update" />
 	            <input type="hidden" name="page_options" value="contact_email" />
@@ -107,13 +107,13 @@ class CustomContactForm {
 			'rewrite'             => $rewrite,
 			'capability_type'     => 'page',
 		);
-		register_post_type('contact', $args);
+		register_post_type('contact', $args);	
 	}
 
 
 	/*pds_captcha.php - un captcha mathématique
 	bidouillé par passeurs de savoirs<br>
-	plus d'infos sur
+	plus d'infos sur 
 	http://passeurs-de-savoirs.fr/lab/lab2015/captcha-math.php
 	*/
 	public function pdscaptcha($step) {
@@ -156,7 +156,7 @@ class CustomContactForm {
 			foreach (str_split(utf8_decode($operation)) as $obj) {
 				$o .= "&#".ord($obj).";";
 			}
-
+			    
 			$html='<p><label for="reponsecap">' . $msg;
 			$html.= '<span class="mathquestion">' . $o . '</span></label>';
 			$html.= '<input type="text" name="reponsecap" value="" />';
@@ -175,3 +175,4 @@ class CustomContactForm {
 	}
 
 }
+

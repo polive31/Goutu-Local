@@ -60,7 +60,7 @@
                     <span class="post-guidelines"> <?php _e( 'minutes', 'foodiepro' ); ?></span>
                 </span>
             </td>
-        </tr>
+        </tr>        
          <tr class="recipe-general-form-cook-time">
             <td class="recipe-general-form-label"><label for="recipe_cook_time"><?php _e( 'Cook Time', 'foodiepro' ); ?><?php if( in_array( 'recipe_cook_time', $required_fields ) ) echo '<span class="required-field">*</span>'; ?></label></td>
             <td class="recipe-general-form-field">
@@ -77,7 +77,7 @@
                     <span class="post-guidelines"> <?php _e( 'minutes', 'foodiepro' ); ?></span>
                 </span>
             </td>
-        </tr>
+        </tr>  
          <tr class="recipe-general-form-passive-time">
             <td class="recipe-general-form-label"><label for="recipe_passive_time"><?php _e( 'Passive Time', 'foodiepro' ); ?><?php if( in_array( 'recipe_passive_time', $required_fields ) ) echo '<span class="required-field">*</span>'; ?></label></td>
             <td class="recipe-general-form-field">
@@ -94,7 +94,7 @@
                     <span class="post-guidelines"> <?php _e( 'minutes', 'foodiepro' ); ?></span>
                 </span>
             </td>
-        </tr>
+        </tr>           
     <?php if( !isset( $wpurp_user_submission ) ) { ?>
         <tr>
             <td class="recipe-general-form-label">&nbsp;</td>
@@ -182,16 +182,16 @@
                     </td>
                     <td class="ingredient-input qty">
                         <input type="text" name="recipe_ingredients[<?php echo $i; ?>][amount]" class="ingredients_amount" id="ingredients_amount_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['amount'] ); ?>"  placeholder="<?php _e( 'Quantity', 'foodiepro' ); ?>"  /></td>
-
+                    
                     <td class="ingredient-input unit">
                         <input type="text" name="recipe_ingredients[<?php echo $i; ?>][unit]" class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['unit'] ); ?>" placeholder="<?php _e( 'Unit', 'foodiepro' );?>" />
                     </td>
-
+                    
                     <td class="ingredient-input name">
                         <input type="text"   name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['ingredient'] ); ?>" placeholder="<?php _e( 'Ingredient', 'foodiepro' ); ?>"  /></td><td class="spinner"><i id="spinner-ingredients_<?php echo $i; ?>" class="ajax-indicator fa fa-refresh fa-spin"></i></td>
-
+                    
                     <td class="ingredient-input notes">
-                        <textarea rows="1" col="20" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" placeholder="<?php _e( 'Notes', 'foodiepro' ); ?>"><?php echo esc_attr( $ingredient['notes'] ); ?></textarea>
+                        <textarea rows="1" col="20" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" placeholder="<?php _e( 'Notes', 'foodiepro' ); ?>"><?php echo esc_attr( $ingredient['notes'] ); ?></textarea> 
                        <!--  <input type="text" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['notes'] ); ?>" placeholder="<?php _e( 'Notes', 'foodiepro' ); ?>" /> -->
                         <input type="hidden" name="recipe_ingredients[<?php echo $i; ?>][group]" class="ingredients_group" id="ingredient_group_<?php echo $i; ?>" value="<?php echo esc_attr( $ingredient['group'] ); ?>" />
                     </td>
@@ -285,14 +285,14 @@
                 </tr>
                 <?php
     $i = 0;
-
+    
     if( $instructions ) {
-
+        
         foreach( $instructions as $instruction ) {
             if( !isset( $instruction['group'] ) ) {
                 $instruction['group'] = '';
             }
-
+            
             if( $instruction['group'] != $previous_group )
             { ?>
                     <tr class="instruction-group">
@@ -312,7 +312,7 @@
                     $previous_group = $instruction['group'];
                 }
 
-
+                
             $has_image = false;
             if( !isset( $instruction['image'] ) ) {
                 // $instruction['image'] = '';
@@ -331,10 +331,10 @@
                     }
                     //echo '<pre>' . "Has image = true !" . '</pre>';
                 }
-
-                ?>
+                
+                ?> 
             <!-- Existing Instructions Section -->
-
+            
             <tr class="instruction ui-sortable" id="recipe_instruction_<?php echo $i; ?>">
                 <td class="sort-handle" title="<?php echo __('Move this instruction', 'foodiepro');?>"><span><img src="<?php echo WPUltimateRecipe::get()->coreUrl; ?>/img/arrows.png" width="18" height="16" ></span></td>
                 <td class="instruction-content">
@@ -353,7 +353,7 @@
                         <div class="recipe_remove_image_button" id="recipe_thumbnail_remove_<?php echo $i; ?>" title="<?php _e( 'Remove Image', 'foodiepro' ) ?>" /></div>
                         <!-- This input stores the attachment handler within the post, for meta save -->
                         <input type="hidden" class="instruction_thumbnail" value="<?= $has_image?$instruction['image']:''; ?>" name="recipe_instructions[<?php echo $i; ?>][image]" /><br/>
-
+                      
                     </div>
                 </td>
 
@@ -381,7 +381,7 @@
                         <input class="recipe_instructions_image button" type="file" id="recipe_thumbnail_input_<?php echo $i; ?>" value="" size="50" name="recipe_thumbnail_<?php echo $i; ?>" />
                     </div>
                 </td>
-                <td class="instruction-thumbnail">
+                <td class="instruction-thumbnail">                    
                     <div class="instruction-image thumbnail nodisplay">
                         <img src="<?php echo $image; ?>" class="post_thumbnail" id="recipe_thumbnail_preview_<?php echo $i; ?>" />
                         <div class="recipe_remove_image_button" id="recipe_thumbnail_remove_<?php echo $i; ?>" title="<?php _e( 'Remove Image', 'foodiepro' ) ?>" /></div>

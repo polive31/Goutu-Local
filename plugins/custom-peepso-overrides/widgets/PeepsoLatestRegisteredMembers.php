@@ -12,7 +12,7 @@ if ( !defined('ABSPATH') )
 
 add_action( 'widgets_init', function(){
      register_widget( 'CustomPeepsoLatestRegisteredMembers' );
-});
+});	
 
 /**
  * Adds Peepso Latest widget.
@@ -26,7 +26,7 @@ class CustomPeepsoLatestRegisteredMembers extends WP_Widget {
 		parent::__construct(
 			'custom_peepso_latest', // Base ID
 			__('(Peepso) Latest registered members', 'foodiepro'), // Name
-			array(
+			array( 
 				'description' => __( 'Displays latest registered members', 'foodiepro' ),
 			) // Args
 		);
@@ -41,7 +41,7 @@ class CustomPeepsoLatestRegisteredMembers extends WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
 	public function widget( $args, $instance ) {
-
+	
      	echo $args['before_widget'];
 		if ( ! empty( $instance['title'] ) ) {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
@@ -56,7 +56,7 @@ class CustomPeepsoLatestRegisteredMembers extends WP_Widget {
 			// 'meta_value'   => '',
 			// 'meta_compare' => '',
 			// 'meta_query'   => array(),
-			// 'date_query'   => array(),
+			// 'date_query'   => array(),        
 			// 'include'      => array(),
 			// 'exclude'      => array(),
 			'orderby'      => 'ID',
@@ -67,7 +67,7 @@ class CustomPeepsoLatestRegisteredMembers extends WP_Widget {
 			// 'count_total'  => false,
 			// 'fields'       => 'all',
 			// 'who'          => '',
-		 );
+		 ); 
 		$users = get_users( $query_args );
 		// echo $instance['limit'];
 		$size = 'full';
@@ -83,10 +83,10 @@ class CustomPeepsoLatestRegisteredMembers extends WP_Widget {
 		}
 		echo '</div>';
 
-		echo '<div class="clear"></div>';
-
+		echo '<div class="clear"></div>';	
+		
 		if (is_user_logged_in()) {
-			echo '<p class="more-from-category">' . do_shortcode('[permalink peepso="members" text="' . __('All the members','foodiepro') . '"]') . '</p>';
+			echo '<p class="more-from-category">' . do_shortcode('[permalink peepso="members" text="' . __('All the members','foodiepro') . '"]') . '</p>';	
 		}
 
 		echo $args['after_widget'];
@@ -100,30 +100,30 @@ class CustomPeepsoLatestRegisteredMembers extends WP_Widget {
 	 * @param array $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
-
-		if ( isset( $instance[ 'title' ] ) )
+		
+		if ( isset( $instance[ 'title' ] ) ) 
 			$title = $instance[ 'title' ];
-		else
+		else 
 			$title = __( 'New title', 'text_domain' );
-
-		if ( isset( $instance[ 'limit' ] ) )
+		
+		if ( isset( $instance[ 'limit' ] ) ) 
 			$limit = $instance[ 'limit' ];
-		else
+		else 
 			$limit = 8;
-
+		
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
-
+		
 		<p>
 			<label for="<?php echo $this->get_field_id( 'limit' ); ?>">
 				<?php _e( 'Number of users to show', 'foodiepro' ); ?>
 			</label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" type="number" step="1" min="-1" value="<?php echo (int)( $instance['limit'] ); ?>" />
 		</p>
-		<?php
+		<?php 
 	}
 
 	/**
@@ -145,3 +145,4 @@ class CustomPeepsoLatestRegisteredMembers extends WP_Widget {
 	}
 
 } // class Peepso_Latest
+

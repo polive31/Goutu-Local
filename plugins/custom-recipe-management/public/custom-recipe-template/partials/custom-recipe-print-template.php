@@ -1,5 +1,5 @@
 <div class="recipe wpurp-container">
-<!-- Class .wpurp-container important for adjustable servings javascript -->
+<!-- Class .wpurp-container important for adjustable servings javascript -->	
 
 <div class="recipe-container">
 
@@ -9,55 +9,55 @@
 			$rating = output_recipe_rating( $post_ID ); ?>
 			<div class="label-container">
 				<div class="rating" id="stars-<?php echo $rating['stars'];?>"></div>
-				<?php
+				<?php 
 				if ( $rating['votes']!=0 ) {
-					$rating_plural=$rating['votes']==1?__('review','foodiepro'):__('reviews','foodiepro');
-					echo '<div class="rating-details">(' . $rating['votes'] . ' ' . $rating_plural . ')</div>'; //. ' | ' . __('Rate this recipe','foodiepro') .
+					$rating_plural=$rating['votes']==1?__('review','foodiepro'):__('reviews','foodiepro'); 
+					echo '<div class="rating-details">(' . $rating['votes'] . ' ' . $rating_plural . ')</div>'; //. ' | ' . __('Rate this recipe','foodiepro') . 
 				}
 				//else {
 					//echo '<div class="rating-details">' . __('Be the first to rate this recipe !','foodiepro') . '</div>';
 				//}
 				?>
 			</div>
-
+		
 		<?php
-
+		
 			// Servings
 			$test = $recipe->servings_normalized();
 			if ($test!='') {
 				$html = '<div class="label-container"><div id="servings" class="recipe-label">' . __('Serves','foodiepro') . '</div><input type="number" min="1" class="adjust-recipe-servings" data-original="' . $recipe->servings_normalized() . '" data-start-servings="' . $recipe->servings_normalized() . '" value="' . $recipe->servings_normalized() . '"/> ' . $recipe->servings_type() . '</div>';
 				echo $html;
 			}
-
+			
 			// Prep time
 			$test = $recipe->prep_time();
 			if ($test!='') {
 				$html = '<div class="label-container"><div id="prep" class="recipe-label">' . __('Preparation','foodiepro') . '</div>' . $test . ' ' . $recipe->prep_time_text() . '</div>';
 				echo $html;
 			}
-
+			
 			// Prep time
 			$test = $recipe->cook_time();
 			if ($test!='') {
 				$html= '<div class="label-container"><div id="cook" class="recipe-label">' . __('Cooking','foodiepro') . '</div>' . $test . ' ' . $recipe->cook_time_text() . '</div>';
 				echo $html;
 				}
-
+			
 			$test = $recipe->passive_time();
 			if ($test!='') {
 				$html = '<div class="label-container"><div id="wait" class="recipe-label">' . __('Wait','foodiepro') . '</div>' . $test . ' ' . $recipe->passive_time_text() . '</div>';
-				echo $html;
+				echo $html;					
 			}
 		?>
-
-
-	</div>
-
+		
+		
+	</div>		
+	
 </div>
 
 <div class="recipe-container">
-
-	<div class="ingredients-container">
+	
+	<div class="ingredients-container"> 
 		<?php
 		// Method "with custom function"
 			echo custom_ingredients_list($recipe,'');

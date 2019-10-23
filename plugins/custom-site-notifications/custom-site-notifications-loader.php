@@ -13,7 +13,7 @@ License: GPL
 // Block direct requests
 if ( !defined('ABSPATH') )
 	die('-1');
-
+	
 
 require_once 'includes/class-custom-site-notifications.php';
 require_once 'includes/class-csn-assets.php';

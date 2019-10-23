@@ -13,9 +13,9 @@ if ( !defined('ABSPATH') )
 
 add_action( 'widgets_init', function(){
      register_widget( 'PeepsoCustomLoginWidget' );
-});
-
-
+});	 
+ 
+ 
 class PeepsoCustomLoginWidget extends WP_Widget {
 
 	private $instance=0;
@@ -61,19 +61,19 @@ class PeepsoCustomLoginWidget extends WP_Widget {
 		 */
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 		echo $args['before_widget'];
-		echo $args['before_title'] . esc_html( $title ) . $args['after_title'];
-
-
+		echo $args['before_title'] . esc_html( $title ) . $args['after_title']; 
+		
+		
 		?>
 
 
-		<?php if ( is_user_logged_in() ) :
-
+		<?php if ( is_user_logged_in() ) : 
+			
 			$user_id = get_current_user_id();
 			$user = PeepsoUser::get_instance( $user_id );
 			$url = Peepso::get_page(  'profile' );
 			$home = home_url();
-
+			
 			echo '<div class="wrap" id="logged-in">';?>
 
 			<?php
@@ -102,11 +102,11 @@ class PeepsoCustomLoginWidget extends WP_Widget {
 			 *
 			 * @since 1.9.0
 			 */
-			do_action( 'after_login_widget_loggedin' );
+			do_action( 'after_login_widget_loggedin' ); 
 			echo '</div>';?>
 
-		<?php else :
-
+		<?php else : 
+			
 			$disable_registration = intval(PeepSo::get_option('site_registration_disabled', 0));
 			echo '<div class="wrap" id="logged-out">';?>
 
@@ -119,7 +119,7 @@ class PeepsoCustomLoginWidget extends WP_Widget {
 			do_action( 'before_login_widget_loggedout' ); ?>
 
 			<form name="login-form" id="login-widget-form<?php echo $this->instance;?>" class="login-form" action="<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>" method="post">
-
+				
 				<label for="login-widget-user-login"><?php _e( 'Email Address', 'foodiepro' ); ?></label>
 				<input type="text" name="log" id="login-widget-user-login<?php echo $this->instance;?>" class="input" value="" />
 
@@ -152,12 +152,12 @@ class PeepsoCustomLoginWidget extends WP_Widget {
 			 *
 			 * @since 1.9.0
 			 */
-			do_action( 'after_login_widget_loggedout' );
+			do_action( 'after_login_widget_loggedout' ); 
 			echo '</div>';?>
-
-
+			
+		 
 		<?php endif;
-
+		
 		echo $args['after_widget'];
 	}
 	/**

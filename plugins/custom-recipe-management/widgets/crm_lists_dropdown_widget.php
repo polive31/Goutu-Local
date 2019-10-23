@@ -3,7 +3,7 @@
 // Block direct requests
 if ( !defined('ABSPATH') )
 	die('-1');
-
+	
 
 class CRM_Lists_Dropdown_Widget extends WP_Widget {
 
@@ -29,7 +29,7 @@ class CRM_Lists_Dropdown_Widget extends WP_Widget {
         $lists = get_query_var( 'list', false );
 
         ?>
-
+        
         <label class="screen-reader-text" for="sort_dropdown"><?php echo $title;?></label>
         <!-- <div class="dropdown-select"> -->
         <select name="sort_dropdown" id="sort_dropdown" class="dropdown-select postform">
@@ -38,9 +38,9 @@ class CRM_Lists_Dropdown_Widget extends WP_Widget {
         <option class="level-0" <?= $lists=='favorites'?'selected':''; ?> value="?list=favorites"><?php echo __('My favorite recipes', 'foodiepro');?></option>
         <option class="level-0" <?= $lists=='wishlist'?'selected':''; ?>  value="?list=wishlist"><?php echo __('Recipes in my wishlist', 'foodiepro');?></option>
 
-        </select>
+        </select> 
 
-
+        
         <script type="text/javascript">
             /* <![CDATA[ */
             (function() {
@@ -55,28 +55,28 @@ class CRM_Lists_Dropdown_Widget extends WP_Widget {
             })();
             /* ]]> */
         </script>
-
+    
     <?php
 	// Output end
 	echo $args['after_widget'];
     }
 
-
-    // Widget Backend
+        
+    // Widget Backend 
     public function form( $instance ) {
-        if ( isset( $instance[ 'title' ] ) )
+        if ( isset( $instance[ 'title' ] ) ) 
             $title = $instance[ 'title' ];
         else
             $title = __( 'New title', 'foodiepro' );
     // Widget admin form
     ?>
         <p>
-        <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+        <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
         <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
         </p>
-    <?php
+    <?php 
     }
-
+        
     // Updating widget replacing old instances with new
     public function update( $new_instance, $old_instance ) {
         $instance = array();

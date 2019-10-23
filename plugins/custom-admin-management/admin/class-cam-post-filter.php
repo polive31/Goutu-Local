@@ -21,7 +21,7 @@ class CAM_Post_Filter {
             //change this to the list of values you want to show
             //in 'label' => 'value' format
             $values = array(
-                'label' => 'value',
+                'label' => 'value', 
                 'label1' => 'value1',
                 'label2' => 'value2',
             );
@@ -66,4 +66,7 @@ class CAM_Post_Filter {
         $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Peepso'), 'id' => 'foodiepro_peepso', 'href' => get_site_url( null, 'wp-admin/admin.php?page=peepso'), 'meta' => array('target' => '_blank')));
         // $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Drafts'), 'id' => 'dwb-drafts', 'href' => 'edit.php?post_status=draft&post_type=post'));
     }
+
+
+
 }

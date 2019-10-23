@@ -48,21 +48,21 @@ function batch_manage_meta($atts) {
 		'value' => '0',//can be scalar or array of space-separated $key/$value pairs
 		'cmd' => 'read',//add, replace, delete, rename
 	), $atts );
-	
+
 	static $script_id; // allows several shortcodes on the same page
 	++$script_id;
-	
+
 	$script_name = 'ManageMeta';
 
 	echo "<h3>BATCH MANAGE META SHORTCODE#" . $script_id . "</h3>";
-	
+
 	$jsargs= create_ajax_arg_array($a, $script_name, $script_id);
-	
-	wp_enqueue_script( 'ajax_call_batch_manage' );	
+
+	wp_enqueue_script( 'ajax_call_batch_manage' );
 	wp_localize_script( 'ajax_call_batch_manage', 'script' . $script_name . $script_id , $jsargs );
-	
+
 	echo batch_manage_form($script_id, $script_name, $a['cmd']);
-	
+
 }
 
 
@@ -83,16 +83,16 @@ function batch_delete_comments($atts) {
 
 	static $script_id; // allows several shortcodes on the same page
 	++$script_id;
-	
+
 	$script_name = 'DeleteComment';
-	
+
 	echo "<h3>BATCH DELETE COMMENTS SHORTCODE#" . $script_id . "</h3>";
 
 	$jsargs= create_ajax_arg_array($a, $script_name, $script_id);
-	
-	wp_enqueue_script( 'ajax_call_batch_manage' );	
+
+	wp_enqueue_script( 'ajax_call_batch_manage' );
 	wp_localize_script( 'ajax_call_batch_manage', 'script' . $script_name . $script_id , $jsargs );
-	
+
 	echo batch_manage_form($script_id, $script_name, 'delete');
 
 }
@@ -111,23 +111,19 @@ function batch_migrate_ratings($atts) {
 		'include' => '',
 	), $atts );
 	$a['cmd']='migrate';
-		
+
 	static $script_id; // allows several shortcodes on the same page
 	++$script_id;
-	
+
 	$script_name = 'MigrateRatings';
 
 	echo "<h3>BATCH MIGRATE RATINGS SHORTCODE#" . $script_id . "</h3>";
-	
+
 	$jsargs= create_ajax_arg_array($a, $script_name, $script_id);
-	
-	wp_enqueue_script( 'ajax_call_batch_manage' );	
+
+	wp_enqueue_script( 'ajax_call_batch_manage' );
 	wp_localize_script( 'ajax_call_batch_manage', 'script' . $script_name . $script_id , $jsargs );
-	
+
 	echo batch_manage_form($script_id, $script_name, $a['cmd']);
-	
+
 }
-
-
-
-

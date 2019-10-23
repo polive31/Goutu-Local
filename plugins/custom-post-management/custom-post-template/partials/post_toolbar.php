@@ -5,9 +5,9 @@
 
 <!-- Function buttons  -->
 <div class="post-top">
-		
-	
-	<div class="toolbar-buttons">		
+
+
+	<div class="toolbar-buttons">
 
 		<!-- Like Button -->
 		<div class="toolbar-button tooltip-onhover alignleft" id="like">
@@ -15,7 +15,7 @@
 			$post_like = new Custom_Social_Like_Post( 'post' );
 			$post_like->display('above','left');
 		?>
-		</div>		
+		</div>
 
 		<!-- Post Print Button -->
 		<div class="toolbar-button tooltip-onhover alignright" id="print">
@@ -28,17 +28,17 @@
 				'valign' => 'above',
 				'halign' => 'right',
 			);
-			Tooltip::display($args);  
-			?> 
-		</div>	
+			Tooltip::display($args);
+			?>
+		</div>
 
 		<!-- Post Share Button -->
 		<!-- <div class="toolbar-button tooltip-onhover alignright" id="share">
 			<a class="post-share-button" id="post-share" cursor-style="pointer">
 			<div class="button-caption"><?php echo __('Share','foodiepro'); ?></div>
-			</a> 
+			</a>
 		</div>				 -->
-											
+
 	</div>
-	
+
 </div>

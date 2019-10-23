@@ -13,17 +13,17 @@
 *
 * @param array $args {
 *   Parameters for class constructor. Allows to adapt the submission services to a given Custom Post Type
-*   @param  string  $type   Post type. Default 'post'. Accepts 'recipe', or any other existing CPT.  
+*   @param  string  $type   Post type. Default 'post'. Accepts 'recipe', or any other existing CPT.
 * }
 *
 */
 class CPM_Submission {
 
-    private static $PLUGIN_URI;  
-    private static $PLUGIN_PATH;  
-    private static $UPLOAD_PATH; 
- 
-    private $post_type;  
+    private static $PLUGIN_URI;
+    private static $PLUGIN_PATH;
+    private static $UPLOAD_PATH;
+
+    private $post_type;
 
 
     public function __construct( $type ) {
@@ -46,7 +46,7 @@ class CPM_Submission {
     // Set the language for select2 dropdown script
     public function add_lang_to_select($output){
         return str_replace('<select','<select lang="fr"',$output);
-    }    
+    }
 
 
 /********************************************************************************
@@ -77,27 +77,27 @@ class CPM_Submission {
 
         $output .= '<div id="custom_post_submission_form" class="postbox">';
         $output .= '<form id="new_post" name="new_post" method="post" action="" enctype="multipart/form-data">';
-        
+
         ob_start();
         include( self::$PLUGIN_PATH . 'custom-post-submission/partials/custom_post_submission_form.php' );
         $output .= ob_get_contents();
         ob_end_clean();
-        
+
         /* Possibility of adding a specific post type section there */
         $output = apply_filters( 'cpm_' . $this->post_type . '_section', $output, $post, $required_fields );
-        
+
         /* Add submission buttons */
         $buttons = array( 'preview', 'draft', 'publish');
-        $output .= apply_filters( 'cpm_' . $this->post_type . '_submission_buttons', self::get_buttons( $buttons, $post_ID) );   
-        
+        $output .= apply_filters( 'cpm_' . $this->post_type . '_submission_buttons', self::get_buttons( $buttons, $post_ID) );
+
         $output .= '</form>';
         $output .= '</div>';
-        
+
         return $output;
     }
 
     public function get_intro_text( $state ) {
-        
+
         /* Intro text output */
         switch ($state) {
             case 'new' :
@@ -124,20 +124,20 @@ class CPM_Submission {
             $output .= '<p>';
             $output .= '<span class="post-nav-link">' . sprintf( CPM_Assets::get_label($this->post_type, 'back' ), $url) . '</span>';
             $output .= '</p>';
-            break;   
+            break;
             default:
-            $output=''; 
+            $output='';
         }
 
         return $output;
     }
-    
-    
+
+
     public function display_taxonomies( $post_ID, $required_fields ) {
 
         $taxonomies = CPM_Assets::get_taxonomies( $this->post_type );
         $dropdowns = array();
-        
+
         // General dropdown arguments
         $args = array(
             'echo' => 0,
@@ -169,7 +169,7 @@ class CPM_Submission {
         // -----------------------------------------------------------
         $html = '<table>';
         foreach( $dropdowns as $taxonomy => $dropdown ) {
-    
+
             // Multiselect
             if( $taxonomies[$taxonomy]['multiselect'] ) {
                 preg_match( "/<select[^>]+>/i", $dropdown['markup'], $dropdown_match );
@@ -191,22 +191,22 @@ class CPM_Submission {
             <tr class="post-general-form-<?= $taxonomy; ?>">
             <td class="post-general-form-label">
                 <label for="<?= $taxonomy; ?>">
-                    <?php   
+                    <?php
                         echo $taxonomies[$taxonomy]['labels']['singular_name'];
-                        if( in_array( $this->post_type . '_' . $taxonomy, $required_fields ) ) 
-                            echo '<span class="required-field">*</span>'; 
+                        if( in_array( $this->post_type . '_' . $taxonomy, $required_fields ) )
+                            echo '<span class="required-field">*</span>';
                     ?>
                 </label>
             </td>
             <td class="post-general-form-field">
                 <?= $dropdown['markup']; ?>
                 </td>
-            </tr>    
-            
+            </tr>
+
             <?php
             $html .= ob_get_contents();
             ob_end_clean();
-            
+
         }
         $html .= '</table>';
         echo $html;
@@ -215,11 +215,11 @@ class CPM_Submission {
     public static function get_dropdown( $args, $options, $post_type ) {
         // $args = array( 'taxonomy' => 'course');
         // This function generates a select dropdown list with option groups whenever
-        // the argument hierarchical is true, otherwise it renders the standard wp_dropdown_categories output 
+        // the argument hierarchical is true, otherwise it renders the standard wp_dropdown_categories output
 
         $select_name = $post_type . '_' . $args['taxonomy'];
 
-        if ( $args['hierarchical']==0 ) {   
+        if ( $args['hierarchical']==0 ) {
             if ( $args['taxonomy']=='post_tag' ) {
                 // New clause "tags_post_type" added to the WP_Query function
                 // see req_clauses filter above
@@ -231,9 +231,9 @@ class CPM_Submission {
         }
 
 
-        $getparents['orderby']=$args['orderby']; 
-        $getparents['taxonomy']=$args['taxonomy']; 
-        $getparents['hierarchical']=true; 
+        $getparents['orderby']=$args['orderby'];
+        $getparents['taxonomy']=$args['taxonomy'];
+        $getparents['hierarchical']=true;
         $getparents['depth']=1;
         $getparents['parent']=0;
         $parents = get_categories( $getparents );
@@ -242,26 +242,26 @@ class CPM_Submission {
         // echo '<pre>' . print_r( $terms ) . '</pre>';
         if ($args['show_option_none'] != '') {
                 $html .= '<option value="" disabled selected>' . $options['labels']['singular_name'] . '</option>';
-                $html .= '<option class="" value="-1">' . __('none','foodiepro') . '</option>';                
+                $html .= '<option class="" value="-1">' . __('none','foodiepro') . '</option>';
         }
 
         foreach ($parents as $parent) {
             $getchildren=$args;
             $getchildren['depth']=0;
             $getchildren['child_of']=$parent->term_id;
-            
+
             $children = get_categories( $getchildren );
-            
+
             $html.='<optgroup label="' . $parent->name . '">';
             foreach ($children as $child) {
-                $html.='<option class="" value="' . $child->term_id . '">' . $child->name . '</option>';                
+                $html.='<option class="" value="' . $child->term_id . '">' . $child->name . '</option>';
             }
             $html.='</optgroup>';
         }
-        
+
         $html .= '</select>';
         return $html;
-    }    
+    }
 
 
 /********************************************************************************
@@ -274,25 +274,25 @@ class CPM_Submission {
             <div id="post-form-buttons">
             <?php if (in_array('preview', $buttons)) {;
                 $url = get_preview_post_link( $post_ID );
-                ?>    
+                ?>
                 <a href="<?= $url; ?>" class="black-button"><?php _e( 'Preview', 'foodiepro' ); ?></a>
-            <?php }; ?>        
-            <?php if (in_array('draft', $buttons)) {;?>    
+            <?php }; ?>
+            <?php if (in_array('draft', $buttons)) {;?>
             <input type="submit" value="<?php _e( 'Draft', 'foodiepro' ); ?>" id="draft" name="draft" />
             <?php }; ?>
-            <?php if (in_array('publish', $buttons)) {;?>    
+            <?php if (in_array('publish', $buttons)) {;?>
             <input type="submit" value="<?php _e( 'Publish', 'foodiepro' ); ?>" id="publish" name="publish" />
             <?php }; ?>
             </div>
             <input type="hidden" name="action" value="post" />
-            <?= wp_nonce_field( $this->post_type . '_submit', 'submit' . $this->post_type ); ?>    
+            <?= wp_nonce_field( $this->post_type . '_submit', 'submit' . $this->post_type ); ?>
         <?php
 
         $html = ob_get_contents();
         ob_end_clean();
 
         return $html;
-    }    
+    }
 
 /********************************************************************************
 ****               SUBMISSION PROCESS MANAGEMENT                       **********
@@ -319,7 +319,7 @@ class CPM_Submission {
 
                 if( $updating_post->post_type == $this->post_type && $updating_post->post_status == 'auto-draft' ) {
                     $updating = true;
-                } 
+                }
                 elseif( $updating_post->post_type == $this->post_type && ($updating_post->post_author == get_current_user_id() || current_user_can('administrator') ) ) {
                     $updating = true;
                 }
@@ -343,7 +343,7 @@ class CPM_Submission {
                 $post['post_status'] = $updating_post->post_status;
                 wp_update_post( $post );
                 $post_id = $updating_id;
-            } 
+            }
             else {
                 $post_id = wp_insert_post( $post, true );
             }
@@ -354,7 +354,7 @@ class CPM_Submission {
                 $file=$_FILES[$key];
                 if ( $file['name'] != '' )
                     $this->save_featured_image( $key, $post_id );
-            }            
+            }
 
             do_action( 'cpm_' . $this->post_type . '_submission_main', $post_id );
 
@@ -392,7 +392,7 @@ class CPM_Submission {
                         }
                     }
 
-                } 
+                }
                 elseif( !$_FILES[$this->post_type . '_thumbnail']['name'] && get_post_thumbnail_id( $post_id ) == 0 ) {
                     $errors[] = $label;
                 }
@@ -404,18 +404,18 @@ class CPM_Submission {
                 $output .= '<p class="submitbox">' .CPM_Assets::get_label($this->post_type, 'edit1' ) . '</p>';
                 $output .= $this->submit( $post_id, array( 'preview', 'draft', 'publish' ) );
                 return $output;
-            }            
+            }
 
             elseif ( isset( $_POST['draft'] ) ) {
                 // Update post status
                 // Do not use wp_update_post which erases some recently added metadata
                 global $wpdb;
                 $wpdb->update( $wpdb->posts, array( 'post_status' => 'draft' ), array( 'ID' => $post_id ) );
-                clean_post_cache( $post_id );                
+                clean_post_cache( $post_id );
                 $output = $this->display( $post_id, 'draft' );
                 return $output;
 
-            } 
+            }
 
             elseif ( count( $errors ) > 0 ) {
                 $output = '';
@@ -441,10 +441,10 @@ class CPM_Submission {
                 $status=current_user_can('administrator')?'publish':'pending';
                 global $wpdb;
                 $wpdb->update( $wpdb->posts, array( 'post_status' => $status ), array( 'ID' => $post_id ) );
-                clean_post_cache( $post_id );                  
+                clean_post_cache( $post_id );
 
                 // Success message
-                if ( current_user_can('administrator') ) 
+                if ( current_user_can('administrator') )
                     $successmsg = sprintf( CPM_Assets::get_label($this->post_type, 'publish-admin'), get_permalink($post_id) );
                 else
                     $successmsg = CPM_Assets::get_label($this->post_type, 'publish-user');
@@ -452,20 +452,20 @@ class CPM_Submission {
                 $url = do_shortcode('[permalink slug="' . CPM_Assets::get_slug( $this->post_type . '_' . 'list') . '"]');
                 $output = '<p class="successbox">' . $successmsg . '</p>';
                 $output .= '<span class="post-nav-link">' . sprintf( CPM_Assets::get_label($this->post_type, 'back' ), $url) . '</span>';
-                
+
                 // Send notification email to administrator
                 $to = get_option( 'admin_email' );
                 if( $to ) {
                     $edit_link = admin_url( 'post.php?action=edit&post=' . $post_id );
-                    
+
                     $subject = sprintf( __('New user submission:%s', 'foodiepro'), $title );
                     $message = 'A new ' . $this->post_type . ' has been submitted on your website.';
                     $message .= "\r\n\r\n";
                     $message .= 'Edit this post: ' . $edit_link;
-                    
+
                     wp_mail( $to, $subject, $message );
                 }
-                
+
                 do_action('wp_insert_post', 'wp_insert_post');
                 return $output;
             }
@@ -474,10 +474,10 @@ class CPM_Submission {
                 $output .= '<p class="submitbox">' . __( 'Unknown action.', 'foodiepro') . '</p>';
                 $url = do_shortcode('[permalink slug="' . CPM_Assets::get_slug( 'list' ) . '"]');
                 $output .= '<span class="post-nav-link">' . sprintf( CPM_Assets::get_label($this->post_type, 'back' ), $url) . '</span>';
-                
+
                 return $output;
-            }     
-            
+            }
+
         }
     }
 
@@ -492,18 +492,18 @@ class CPM_Submission {
         require_once( ABSPATH . 'wp-admin/includes/media.php' );
 
         $attach_id = media_handle_upload( $file_handler, $post_id );
-        
+
         // update_post_meta( $post_id, '_thumbnail_id', $attach_id );
         set_post_thumbnail( $post_id, $attach_id );
-        
+
         return $attach_id;
     }
-    
-    
+
+
 /********************************************************************************
  *********************         AJAX CALLBACKS       ***************************
 ********************************************************************************/
-    
+
     public function ajax_remove_featured_image() {
         $check = check_ajax_referer( 'custom_submission_form', 'security', false );
         $post_id = intval( $_POST['postid'] );
@@ -525,23 +525,23 @@ class CPM_Submission {
             header("HTTP/1.1 500 Server Error");
             return;
         }
-		
+
 		// Sanitize input
         if (preg_match("/([^\w\s\d\-_~,;:\[\]\(\).])|([\.]{2,})/", $temp['name'])) {
 			header("HTTP/1.1 400 Invalid file name.");
             return;
         }
-		
+
         // Verify extension
         if (!in_array(strtolower(pathinfo($temp['name'], PATHINFO_EXTENSION)), array("gif", "jpg", "png"))) {
 			header("HTTP/1.1 400 Invalid extension.");
             return;
         }
-		
+
 		//require the needed files
 		require_once(ABSPATH . "wp-admin" . '/includes/image.php');
 		require_once(ABSPATH . "wp-admin" . '/includes/file.php');
-		require_once(ABSPATH . "wp-admin" . '/includes/media.php'); 
+		require_once(ABSPATH . "wp-admin" . '/includes/media.php');
         $attach_id = media_handle_upload( $file, $post_id );
 
 		// Respond to the successful upload with JSON.
@@ -552,17 +552,17 @@ class CPM_Submission {
 		);
 
 		echo json_encode( $response );
-		
+
 		die();
-    
-    }	
-    
+
+    }
+
 /********************************************************************************
 *********************         SPECIFIC POST HOOKS       *************************
 ********************************************************************************/
 
     public function add_post_specific_section( $form, $post, $required_fields ) {
-        
+
         ob_start();
         ?>
         <input type="hidden" name="post_meta_box_nonce" value="<?= wp_create_nonce( 'post' ); ?>" />

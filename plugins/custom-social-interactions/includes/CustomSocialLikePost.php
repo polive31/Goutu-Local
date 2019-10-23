@@ -23,21 +23,21 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
 
         // if( is_user_logged_in() ) {
         //     $link_class .= ' logged-in';
-        // } 
+        // }
         // else {
         //     $link_id='join-us';
         //     $link_url = '/connexion';
         // }
-        
+
         if ($this->post_type=='recipe') {
             $tooltip_like = __('Like this recipe','foodiepro');
             $tooltip_dislike = __('Do not like this recipe anymore','foodiepro');
         }
         else {
             $tooltip_like = __('Like this post','foodiepro');
-            $tooltip_dislike = __('Do not like this post anymore','foodiepro');           
-        } 
-                
+            $tooltip_dislike = __('Do not like this post anymore','foodiepro');
+        }
+
         if( $this->is_liked_post( $post_id ) ) {
             $link_class .= ' is-liked';
             $tooltip=$tooltip_dislike;
@@ -47,12 +47,12 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
             $tooltip=$tooltip_like;
             $tooltip_alt=$tooltip_dislike;
         }
-                
+
         $tooltip='<div class="toggle">' . $tooltip . '</div>';
         $tooltip_alt='<div class="toggle" style="display:none">' . $tooltip_alt . '</div>';
-                
+
         // $output = $this->before_output();
-        
+
         ob_start();
         $ga = "ga('send','event','like','click','" . $this->post_type . "', 0)";
         // echo $ga;
@@ -61,22 +61,22 @@ class Custom_Social_Like_Post extends Custom_Social_Interactions {
             ?>
                 <a href="<?php echo $link_url;?>" onClick="<?= $ga;?>" id="<?php echo $link_id;?>" class="<?php echo $link_class; ?>" data-post-id="<?php echo $post_id; ?>">
                 <div class="button-caption">
-                    <?php 
+                    <?php
                     $count_likes = $this->like_count( $post_id );
                     echo sprintf( _n( '%s like', '%s likes', $count_likes, 'foodiepro'), $count_likes);
-                    ?>     
+                    ?>
                 </div>
                 </a>
 
-            <?php 
+            <?php
             $args=array(
                 'content'   => $tooltip . $tooltip_alt,
                 'valign'    => $vertical,
                 'halign'    => $horizontal,
             );
-            Tooltip::display( $args ); 
+            Tooltip::display( $args );
 
-        
+
         $output = ob_get_contents();
         ob_end_clean();
 

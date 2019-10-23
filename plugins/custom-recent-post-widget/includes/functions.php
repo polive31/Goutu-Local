@@ -1,4 +1,4 @@
-	<?php
+<?php
 /**
  * Various functions used by the plugin.
  *
@@ -43,7 +43,7 @@ function rpwe_get_default_args() {
 		'display_avatar'	=> false,
 		'thumb'            	=> true,
 		'first_thumb_height'     => 0,
-		'first_thumb_width'      => 0,		
+		'first_thumb_width'      => 0,
 		'thumb_height'     	=> 45,
 		'thumb_width'      	=> 45,
 		'thumb_default'    	=> 'http://placehold.it/45x45/f0f0f0/ccc',
@@ -105,13 +105,13 @@ function rpwe_get_recent_posts( $args = array() ) {
 		rpwe_custom_styles();
 	}
 
-	// Initialize first_thumb_width/height 
+	// Initialize first_thumb_width/height
 	$args['first_thumb_width']=$args['first_thumb_width']?$args['first_thumb_width']:$args['thumb_width'];
 	$args['first_thumb_height']=$args['first_thumb_height']?$args['first_thumb_height']:$args['thumb_height'];
 
 	// Link display
 	$link = isset($args['link'])?(bool)$args['link']:false;
-	$entry_class = $link?'':'nolink';	
+	$entry_class = $link?'':'nolink';
 
 	// If the default style is disabled then use the custom css if it's not empty.
 	if ( $args['styles_default'] === false && ! empty( $args['css'] ) ) {
@@ -135,7 +135,7 @@ function rpwe_get_recent_posts( $args = array() ) {
 					// Thumbnails
 					$thumb_id = get_post_thumbnail_id(); // Get the featured image id.
 					$img_url  = wp_get_attachment_url( $thumb_id ); // Get img URL.
-					$entry_url = $link?esc_url( get_permalink() ):'#';	
+					$entry_url = $link?esc_url( get_permalink() ):'#';
 
 					$thumb_width = $first?'first_thumb_width':'thumb_width';
 					$thumb_height = $first?'first_thumb_height':'thumb_height';
@@ -171,10 +171,10 @@ function rpwe_get_recent_posts( $args = array() ) {
 								/* Added P.O. */
 								$html = apply_filters( 'rpwe_in_thumbnail', $html, $args);
 								// $html .= 'In the post thumbnail';
-								/* End P.O. */									
+								/* End P.O. */
 								$html .= '</a>';
 								$html .= '</div>';
-								
+
 								// If no post thumbnail found, check if Get The Image plugin exist and display the image.
 								elseif ( function_exists( 'get_the_image' ) ) :
 									$html .= get_the_image( array(
@@ -186,7 +186,7 @@ function rpwe_get_recent_posts( $args = array() ) {
 										'default_image' => esc_url( $args['thumb_default'] )
 										) );
 										// $html .= 'In the get the image';
-										
+
 										// Display default image.
 										elseif ( ! empty( $args['thumb_default'] ) ) :
 											$html .= sprintf( '<a class="rpwe-img" href="%1$s" rel="bookmark"><img class="%2$s rpwe-thumb rpwe-default-thumb" src="%3$s" alt="%4$s" width="%5$s" height="%6$s"></a>',
@@ -198,16 +198,16 @@ function rpwe_get_recent_posts( $args = array() ) {
 											(int) $args[$thumb_height]
 										);
 										// $html .= 'In the default thumb';
-										
+
 									endif;
-									
+
 								endif;
-								
-								
-								/* Added P.O. */ 
+
+
+								/* Added P.O. */
 								$html = apply_filters( 'rpwe_after_thumbnail', $html, $args);
 								/* End P.O. */
-								
+
 								$html .= '<div class="entry-header-meta">';
 								/* Added P.O. */
 								$title_meta = '';
@@ -274,8 +274,8 @@ function rpwe_get_recent_posts( $args = array() ) {
 	// Return the  posts markup.
 	// return wp_kses_post( $args['before'] ) . apply_filters( 'rpwe_markup', $html, $args ) . wp_kses_post( do_shortcode($args['after']) );
 	if ($args['shortcode']) {
-		$args['before']=do_shortcode( $args['before'] ); 
-		$args['after'] =do_shortcode( $args['after']  ); 
+		$args['before']=do_shortcode( $args['before'] );
+		$args['after'] =do_shortcode( $args['after']  );
 	}
 	return wp_kses( $args['before'], ALLOWED_TAGS ) . apply_filters( 'rpwe_markup', $html, $args ) . wp_kses( $args['after'], ALLOWED_TAGS );
 

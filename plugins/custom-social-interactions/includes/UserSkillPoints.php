@@ -11,10 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 class UserSkillPoints {
-	
+
 	protected $points;
-	
-	public function __construct() {	
+
+	public function __construct() {
 		add_action( 'updated_user_meta', 'increment_author_level', 10, 4 );
 	}
 

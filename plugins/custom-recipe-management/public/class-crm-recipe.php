@@ -6,14 +6,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class CRM_Recipe extends WPURP_Recipe {
-  
+
     private static $title;
 
     public function __construct( $post ) {
-        parent::__construct( $post );   
+        parent::__construct( $post );
         // This class is called "on demand" depending on user actions
         // therefore actions are not effective in the constructor context
-        // as a consequence hydrate is done in the constructor itself 
+        // as a consequence hydrate is done in the constructor itself
         self::$title = array(
             'prep' => __('Preparation','foodiepro'),
             'cook' => __('Cooking','foodiepro'),
@@ -43,7 +43,7 @@ class CRM_Recipe extends WPURP_Recipe {
     }
 
     // Description output in json meta
-    // In this case, we output the description based on either scheme : description meta 
+    // In this case, we output the description based on either scheme : description meta
     // or as part of the post's content (new scheme)
     public function description_meta() {
         $description = '';
@@ -58,7 +58,7 @@ class CRM_Recipe extends WPURP_Recipe {
     }
 
     // Description output in recipe display
-    // In this case, we don't output the description whenever it is already saved 
+    // In this case, we don't output the description whenever it is already saved
     // within the post's content (new scheme)
     // however if the target is the submission form, then the content is output
     public function output_description( $target='post' ) {
@@ -99,7 +99,7 @@ class CRM_Recipe extends WPURP_Recipe {
         $meta = "recipe_{$type}_time";
         $minutes = $this->meta( $meta );
         return floor((int)$minutes%1440/60);
-    }    
+    }
 
     public function get_minutes( $type ) {
         $meta = "recipe_{$type}_time";
@@ -121,20 +121,20 @@ class CRM_Recipe extends WPURP_Recipe {
         }
         else {
             $meta_name = "recipe_{$type}_time";
-            $minutes = $this->meta( $meta_name );        
+            $minutes = $this->meta( $meta_name );
 
             if ($minutes) {
                 $days = floor($minutes / 1440);
                 $minutes = $minutes % 1440;
 
                 $hours = floor($minutes / 60);
-                $minutes = $minutes % 60;    
+                $minutes = $minutes % 60;
 
                 $meta = sprintf('P%dDT%dH%dM', $days, $hours, $minutes);
             }
         }
         return $meta;
-    } 
+    }
 
     public function get_title( $type ) {
         $title = isset(self::$title[$type])?self::$title[$type]:'';
@@ -160,8 +160,8 @@ class CRM_Recipe extends WPURP_Recipe {
             if ( !empty($this->get_hours($type)) ) {
                 $html .= sprintf(_n('%s hour ', '%s hours ', $this->get_hours($type), 'foodiepro'), $this->get_hours($type));
                 $html .= empty($this->get_minutes($type))?'':sprintf('%02d', $this->get_minutes($type));
-            } 
-            else {                
+            }
+            else {
                 $html .= empty($this->get_minutes($type))?'':sprintf(_n('%s minute','%s minutes',$this->get_minutes($type),'foodiepro'),$this->get_minutes($type));
             }
             if ( empty($html) ) return '';

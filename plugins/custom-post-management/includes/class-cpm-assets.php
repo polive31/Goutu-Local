@@ -16,24 +16,24 @@ class CPM_Assets {
 	const MAX_ATTACHMENT_SIZE_KB = 500;
 
 	public static $PLUGIN_PATH;
-	public static $PLUGIN_URI;	
+	public static $PLUGIN_URI;
 
-	private static $slugs; 
-	private static $labels; 
-	private static $required; 
-	private static $taxonomies; 
-	private static $enqueued_styles; 
-	private static $enqueued_scripts; 
-	
+	private static $slugs;
+	private static $labels;
+	private static $required;
+	private static $taxonomies;
+	private static $enqueued_styles;
+	private static $enqueued_scripts;
+
 	public function __construct() {
 		// __construct is empty due to this class being used in a static way
-		// However the hydrate function is called within constructor to allow constants to be populated 
-		// in the case of ajax calls & post submissions where the main plugin class is not created 
+		// However the hydrate function is called within constructor to allow constants to be populated
+		// in the case of ajax calls & post submissions where the main plugin class is not created
 		self::hydrate();
 	}
-	
+
 	public static function hydrate() {
-		
+
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
 
@@ -42,49 +42,49 @@ class CPM_Assets {
             'post_form'         => 'saisie-article',
         );
 		self::$slugs = apply_filters( 'cpm_page_slugs', $default_slugs );
-		
+
 		/* Location can be either a key of the self::$slugs array, or a post type */
 		$default_enqueued_styles = array(
 			'cpm-list'	=> array(
-				'file'				=> 'assets/css/custom_posts_list.css', 
-				'uri'				=> self::$PLUGIN_URI, 
-				'dir'				=> self::$PLUGIN_PATH, 
+				'file'				=> 'assets/css/custom_posts_list.css',
+				'uri'				=> self::$PLUGIN_URI,
+				'dir'				=> self::$PLUGIN_PATH,
 				'location'			=> array('post_list')
 			),
 			// 'cpm-post'	=> array(
-			// 	'file'				=> 'assets/css/custom-submission-form.css', 
-			// 	'uri'				=> self::$PLUGIN_URI, 
-			// 	'dir'				=> self::$PLUGIN_PATH, 
+			// 	'file'				=> 'assets/css/custom-submission-form.css',
+			// 	'uri'				=> self::$PLUGIN_URI,
+			// 	'dir'				=> self::$PLUGIN_PATH,
 			// 	'deps'				=> array('post-font'),
 			// 	'location'			=> array('post')
-			// ),			
+			// ),
 			'cpm-submission-form'	=> array(
-				'file'				=> 'assets/css/custom-submission-form.css', 
-				'uri'				=> self::$PLUGIN_URI, 
-				'dir'				=> self::$PLUGIN_PATH, 
+				'file'				=> 'assets/css/custom-submission-form.css',
+				'uri'				=> self::$PLUGIN_URI,
+				'dir'				=> self::$PLUGIN_PATH,
 				'deps'				=> array('cpm-select2'),
 				'location'			=> array('post_form')
 			),
 			'cpm-select2'	=> array(
-				'file'				=> 'vendor/select2/css/select2.min.css', 
-				'uri'				=> self::$PLUGIN_URI, 
-				'dir'				=> self::$PLUGIN_PATH, 
+				'file'				=> 'vendor/select2/css/select2.min.css',
+				'uri'				=> self::$PLUGIN_URI,
+				'dir'				=> self::$PLUGIN_PATH,
 				'location'			=> array('post_form')
 			),
 			'post-font'		=> array(
-				'handle'			=> 'post-font', 
-				'uri'				=> '//fonts.googleapis.com/css?family=Cabin', 
+				'handle'			=> 'post-font',
+				'uri'				=> '//fonts.googleapis.com/css?family=Cabin',
 				'location'			=> array('post')
 				)
 			);
 			self::$enqueued_styles = apply_filters( 'cpm_enqueued_styles', $default_enqueued_styles );
-			
+
 			$default_enqueued_scripts = array(
 			'cpm-list'		=> array(
-				'file'				=> 'assets/js/custom_posts_list.js', 
-				'uri'				=> self::$PLUGIN_URI, 
-				'dir'				=> self::$PLUGIN_PATH, 
-				'deps'				=> array( 'jquery' ), 
+				'file'				=> 'assets/js/custom_posts_list.js',
+				'uri'				=> self::$PLUGIN_URI,
+				'dir'				=> self::$PLUGIN_PATH,
+				'deps'				=> array( 'jquery' ),
 				'footer'			=> true,
 				'location'			=> array('post_list'),
 				'data' 				=> array(
@@ -95,42 +95,42 @@ class CPM_Assets {
 					)
 				),
 			'cpm-submission'		=> array(
-				'file'				=> 'assets/js/custom_post_submission.js', 
-				'uri'				=> self::$PLUGIN_URI, 
-				'dir'				=> self::$PLUGIN_PATH, 
+				'file'				=> 'assets/js/custom_post_submission.js',
+				'uri'				=> self::$PLUGIN_URI,
+				'dir'				=> self::$PLUGIN_PATH,
 				'deps'				=> array('cpm-tinymce', 'cpm-select2-taxonomies', 'jquery' ),
 				'footer'			=> true,
 				'location'			=> array('post_form'),
 			),
 			'cpm-select2-taxonomies'=> array(
-				'file'				=> 'assets/js/select2_taxonomies.js', 
-				'uri'				=> self::$PLUGIN_URI, 
-				'dir'				=> self::$PLUGIN_PATH, 
-				'deps'				=> array( 'jquery', 'cpm-select2' ),  
-				'footer'			=> true, 
+				'file'				=> 'assets/js/select2_taxonomies.js',
+				'uri'				=> self::$PLUGIN_URI,
+				'dir'				=> self::$PLUGIN_PATH,
+				'deps'				=> array( 'jquery', 'cpm-select2' ),
+				'footer'			=> true,
 				'location'			=> array('post_form'),
 			),
 			'cpm-select2'		=> array(
-				'file'				=> 'vendor/select2/js/select2.min.js', 
-				'uri'				=> self::$PLUGIN_URI, 
-				'dir'				=> self::$PLUGIN_PATH, 
+				'file'				=> 'vendor/select2/js/select2.min.js',
+				'uri'				=> self::$PLUGIN_URI,
+				'dir'				=> self::$PLUGIN_PATH,
 				'deps'				=> array( 'jquery' ),
-				'footer'			=> true, 
+				'footer'			=> true,
 				'location'			=> array('post_form'),
 			),
 			'cpm-select2-fr'	=> array(
-				'file'				=> 'vendor/select2/js/i18n/fr.js', 
-				'uri'				=> self::$PLUGIN_URI, 
-				'dir'				=> self::$PLUGIN_PATH, 
+				'file'				=> 'vendor/select2/js/i18n/fr.js',
+				'uri'				=> self::$PLUGIN_URI,
+				'dir'				=> self::$PLUGIN_PATH,
 				'deps'				=> array( 'cpm-select2' ),
-				'footer'			=> true, 
+				'footer'			=> true,
 				'location'			=> array('post_form'),
 			),
 			'cpm-tinymce'		=> array(
-				'file'				=> 'vendor/tinymce/tinymce.min.js', 
-				'uri'				=> self::$PLUGIN_URI, 
-				'dir'				=> self::$PLUGIN_PATH, 
-				'deps'				=> array( 'jquery' ), 
+				'file'				=> 'vendor/tinymce/tinymce.min.js',
+				'uri'				=> self::$PLUGIN_URI,
+				'dir'				=> self::$PLUGIN_PATH,
+				'deps'				=> array( 'jquery' ),
 				'footer'			=> true,
 				'location'			=> array('post_form'),
 				'data'				=> array(
@@ -148,7 +148,7 @@ class CPM_Assets {
 			),
 		);
 		self::$enqueued_scripts = apply_filters( 'cpm_enqueued_scripts', $default_enqueued_scripts );
-		
+
 		$default_labels = array(
 			'post' => array(
 				'title'						=> _x( 'Post Title', 'post', 'foodiepro' ),
@@ -167,12 +167,12 @@ class CPM_Assets {
 				'noposts'					=> _x( 'You have no posts yet.', 'post', 'foodiepro'),
 		    	'post_publish_title'		=> _x( 'Your post just got published !', 'post', 'foodiepro'),
 		    	'post_publish_content'		=> _x( 'Greetings, your post <a href="%s">%s</a> just got published !', 'post', 'foodiepro'),
-				'post_publish_content1' 	=> _x( 'It is visible on the website, and appears on <a href="%s">your blog</a>.', 'post','foodiepro'),	
+				'post_publish_content1' 	=> _x( 'It is visible on the website, and appears on <a href="%s">your blog</a>.', 'post','foodiepro'),
 		    	'comment_publish_title'		=> _x( '%s commented one of your posts', 'post', 'foodiepro'),
 		    	'comment_publish_content'	=> _x( '%s added a comment to your post <a href="%s">%s</a> :', 'post', 'foodiepro'),
 			),
 		);
-		self::$labels = apply_filters( 'cpm_labels', $default_labels );		
+		self::$labels = apply_filters( 'cpm_labels', $default_labels );
 
         $default_taxonomies=array(
 			'post'	=> array(
@@ -185,7 +185,7 @@ class CPM_Assets {
 					'labels'		=> array(
 						'singular_name'=>__( 'Categories', 'foodiepro' ),
 					),
-				),         
+				),
 				'post_tag' => array(
 					'multiselect' => true,
 					'exclude' => '',
@@ -196,8 +196,8 @@ class CPM_Assets {
 				),
 			),
         );
-		self::$taxonomies = apply_filters( 'cpm_taxonomies', $default_taxonomies );		
-		
+		self::$taxonomies = apply_filters( 'cpm_taxonomies', $default_taxonomies );
+
         $default_required = array(
 			'post'	=> array(
 				'post_title'  		=> __('Post Title','foodiepro'),
@@ -206,7 +206,7 @@ class CPM_Assets {
 				// 'post_thumbnail'		=> __('Post Featured Image.', 'foodiepro'),
 				// 'post_post_tag'		=> __('Post Tag.', 'foodiepro'),//
 			),
-        );    
+        );
         self::$required = apply_filters( 'cpm_required', $default_required );
 	}
 
@@ -222,14 +222,14 @@ class CPM_Assets {
 					$enqueue=true;
 					break;
 				}
-			} 
+			}
 			if ($enqueue) {
 				$args=$style;
 				$args['handle']=$handle;
 				custom_enqueue_style( $args );
 			}
 		}
-		
+
 		foreach (self::$enqueued_scripts as $handle => $script) {
 			$enqueue = false;
 			foreach ($script['location'] as $location) {
@@ -240,7 +240,7 @@ class CPM_Assets {
 					$enqueue=true;
 					break;
 				}
-			} 
+			}
 			if ($enqueue) {
 				$args=$script;
 				$args['handle']=$handle;
@@ -249,7 +249,7 @@ class CPM_Assets {
 		}
 	}
 
-	
+
 	/********************************************************************************
 	*********************         GETTERS / SETTERS       ***************************
 	********************************************************************************/
@@ -261,45 +261,45 @@ class CPM_Assets {
     public static function get_label( $post_type, $id ) {
 		if ( !isset(self::$labels[$post_type][$id]) ) return false;
         return self::$labels[$post_type][$id];
-	}	
+	}
 
     public static function get_required( $post_type ) {
 		if ( !isset(self::$required[$post_type]) ) return false;
         return self::$required[$post_type];
-	}	
+	}
 
     public static function get_taxonomies( $post_type, $taxonomy=false, $field=false ) {
 		if ( !isset(self::$taxonomies[$post_type]) ) return '';
 		$tax = self::$taxonomies[$post_type];
-		if ($taxonomy) 
+		if ($taxonomy)
 		$tax = isset($tax[$taxonomy])?$tax[$taxonomy]:false;
 		if ($field)
 		$tax = isset($tax[$field])?$tax[$field]:false;
 		return $tax;
 	}
-	
+
     public static function get_post_types() {
 		$types = array_keys( self::$taxonomies );
 		return $types;
-	}	
+	}
 
     public static function get_edit_button( $post, $post_type, $class='edit-button' ) {
 		$out='';
 		$current_user = wp_get_current_user();
-		if ($post->post_author == $current_user->ID || current_user_can('administrator')) { 
+		if ($post->post_author == $current_user->ID || current_user_can('administrator')) {
 			$post_url =  do_shortcode('[permalink slug="' . self::get_slug( $post_type . '_form' ) . '"]');
 			$edit_url = $post_url . '?edit-' . $post_type . '=' . $post->ID;
 			$edit_title = self::get_label( $post_type, 'edit_button');
-			$out = '<span class="' . $class . '"><a href="' . $edit_url . '" title="' . $edit_title . '"><i class="fa fa-pencil-square-o"></i></a></span>';    
+			$out = '<span class="' . $class . '"><a href="' . $edit_url . '" title="' . $edit_title . '"><i class="fa fa-pencil-square-o"></i></a></span>';
 		}
 		return $out;
-	}	
+	}
 
     // public static function get_post_image_url( $post ) {
     //     $url = get_the_post_thumbnail_url( $post->ID ,'mini-thumbnail');
     //     return $url;
 	// }
-	
+
 
 
 

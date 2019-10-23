@@ -15,22 +15,22 @@ class CustomGoogleRecaptcha {
 	private static $PUBLIC_KEY_V3='6LfwhZcUAAAAAJdkyxyIFAbH6nVrcBK2wWZL_6yw';
 	private static $PRIVATE_KEY_V3='6LfwhZcUAAAAADKVon8qpKgrVgfX-tukxpljO81O';
 
-	public function __construct() {	
+	public function __construct() {
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
-		
+
 		add_action('wp_enqueue_scripts', 	array( $this, 'register_recaptcha_script'));
-		add_shortcode('g-recaptcha', 			array( $this, 'display_google_recaptcha')); 
+		add_shortcode('g-recaptcha', 			array( $this, 'display_google_recaptcha'));
 	}
 
 	public function register_recaptcha_script() {
 		// $js_uri = self::$PLUGIN_URI . '/assets/js/';
 		// $js_path = self::$PLUGIN_PATH . '/assets/js/';
 		// custom_enqueue_script( 'g-recaptcha', $js_uri, $js_path, 'contact-form.js', array(), CHILD_THEME_VERSION, true);
-		
+
 		wp_register_script( 'g-recaptcha', 'https://www.google.com/recaptcha/api.js', array(), '1.0.0' );
 	}
-	
+
 	public static function enqueue_scripts() {
 		wp_enqueue_script( 'g-recaptcha' );
 	}
@@ -43,7 +43,7 @@ class CustomGoogleRecaptcha {
 		if(!$captcha){
 			return 'missing';
 		}
-		do {	
+		do {
 			$ip = $_SERVER['REMOTE_ADDR'];
 			$response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=". self::$PRIVATE_KEY ."&response=".$captcha."&remoteip=".$ip);
 			$responseKeys = json_decode($response,true);
@@ -59,18 +59,18 @@ class CustomGoogleRecaptcha {
 
 
 	/* =================================================================*/
-	/* = DISPLAY GOOGLE RECAPTCHA   
+	/* = DISPLAY GOOGLE RECAPTCHA
 	/* =================================================================*/
 
     public function display( $classes='' ) {
     	?>
         <div class="g-recaptcha <?php echo $classes; ?>" data-sitekey="<?php echo self::$PUBLIC_KEY; ?>"></div>
         <?php
-	}	
-	
+	}
+
 	/* =================================================================*/
 	/* = GETTERS
-	/* =================================================================*/	
+	/* =================================================================*/
 
 	public static function v3key($private=false) {
 		return $private?self::$PRIVATE_KEY_V3:self::$PUBLIC_KEY_V3;
@@ -80,4 +80,3 @@ class CustomGoogleRecaptcha {
 }
 
 new CustomGoogleRecaptcha();
-

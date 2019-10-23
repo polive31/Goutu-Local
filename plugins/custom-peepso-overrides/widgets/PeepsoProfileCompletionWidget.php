@@ -6,7 +6,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 add_action( 'widgets_init', 'peepso_profile_completion_widget_init' );
 
 function peepso_profile_completion_widget_init() {
-	return register_widget( "PeepsoProfileCompletionWidget" );	
+	return register_widget( "PeepsoProfileCompletionWidget" );
 }
 
 /**
@@ -33,13 +33,13 @@ class PeepsoProfileCompletionWidget extends WP_Widget {
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
 
 		add_action('wp_enqueue_scripts', array($this,'register_custom_stylesheet'));
-		
+
     }
 
-	
+
 	public function register_custom_stylesheet() {
-		custom_register_style( 'circular-progress-bar', '/assets/css/circular-progress-bar.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );	
-	}	
+		custom_register_style( 'circular-progress-bar', '/assets/css/circular-progress-bar.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );
+	}
 
 	// display widget
 	public function widget( $args, $instance ) {
@@ -51,7 +51,7 @@ class PeepsoProfileCompletionWidget extends WP_Widget {
 		/* PROFILE COMPLETION CALCULATION
 		------------------------------------------------------*/
 		$user = PeepSoUser::get_instance(PeepSoProfileShortcode::get_instance()->get_view_user_id());
-		
+
 		$can_edit = FALSE;
 		if($user->get_id() == get_current_user_id() || current_user_can('edit_users')) {
 			$can_edit = TRUE;
@@ -73,7 +73,7 @@ class PeepsoProfileCompletionWidget extends WP_Widget {
 		$award = false;
 
 
-		/* WIDGET OUTPUT 
+		/* WIDGET OUTPUT
 		------------------------------------------------------*/
 		extract( $args );
 
@@ -108,15 +108,15 @@ class PeepsoProfileCompletionWidget extends WP_Widget {
 				echo  '<div class="bppp-congrats">' . $profile_completed . '</div>';
 		}
 		elseif ( $user_percent >= 0 ) {
-			$this->display_circular_progress_bar($user_percent);					
+			$this->display_circular_progress_bar($user_percent);
 			echo '<p class="wp_widget_plugin_textarea">' . $textarea . '</p>';
 		}
-			
+
 		echo '</div>';
 		echo $args['after_widget'];
 
 	}
-	
+
 
 	public function display_circular_progress_bar($user_percent) {
 		$over50 = ($user_percent>50)?'over50':'';?>
@@ -140,9 +140,9 @@ class PeepsoProfileCompletionWidget extends WP_Widget {
 			<div class="bppp-stat-percent"><?php echo $user_percent;?>%</div>
 		</div>
 		<?php
-	}	
-	
-	
+	}
+
+
 	// widget form creation
 	function form( $instance ) {
 
@@ -151,7 +151,7 @@ class PeepsoProfileCompletionWidget extends WP_Widget {
 		$title = esc_attr( $instance['title'] );
 		$textarea = esc_textarea( $instance['textarea'] );
 		$trigger_percent = esc_textarea( $instance['trigger_percent'] );
-	} 
+	}
 	else {
 		$title = '';
 		$textarea = '';
@@ -194,9 +194,6 @@ class PeepsoProfileCompletionWidget extends WP_Widget {
 		$instance['textarea'] = strip_tags( $new_instance['textarea'] );
 		$instance['trigger_percent'] = strip_tags( $new_instance['trigger_percent'] );
 	return $instance;
-	}	
-	
+	}
+
 }
-
-
-

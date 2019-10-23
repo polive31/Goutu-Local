@@ -12,7 +12,7 @@ jQuery(document).ready(function(){
 
         var button = jQuery(this);
                 var tooltip=button.parent().find('div.toggle');
-                
+
                 if(button.hasClass('is-liked')) {
                     // Activate shopping list button
                     button.removeClass('is-liked');
@@ -22,7 +22,7 @@ jQuery(document).ready(function(){
                 }
                 tooltip.toggle();
                 //console.log('Tooltip %0', tooltip);
-                
+
                 // Prep ajax call
         var postId = button.data('post-id');
         // console.log('post ID :'+ postId);
@@ -44,8 +44,8 @@ jQuery(document).ready(function(){
             },
             error : function( request, error ) {
                 console.log( 'Failure' );
-            }            
-        });        
+            }
+        });
 
     });
 

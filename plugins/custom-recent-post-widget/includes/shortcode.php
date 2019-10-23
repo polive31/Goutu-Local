@@ -23,5 +23,3 @@ function rpwe_shortcode( $atts, $content ) {
 	return rpwe_get_recent_posts( $args );
 }
 add_shortcode( 'rpwe', 'rpwe_shortcode' );
-
-

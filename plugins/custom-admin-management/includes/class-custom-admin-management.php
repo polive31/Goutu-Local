@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 class Custom_Admin_Management {
-    
+
 	public function __construct() {
 
         $Helpers = new CAM_Admin_Helpers();
@@ -18,12 +18,12 @@ class Custom_Admin_Management {
         add_action( 'init',                                     array($Helpers, 'blockusers_init' ));
 
         /* Hooks for Custom_Admin_Post_Filter
-        ------------------------------------------------------------- */        
+        ------------------------------------------------------------- */
         $Filter = new CAM_Post_Filter();
         add_action( 'restrict_manage_posts',    array($Filter, 'restrict_manage_posts')   );
         add_filter( 'parse_query',              array($Filter, 'add_posts_filter' )       );
         add_action( 'admin_bar_menu',           array($Filter, 'add_toolbar_items'), 999  );
-        
+
     }
 
     public static function get_instance() {
@@ -32,6 +32,5 @@ class Custom_Admin_Management {
         }
         return self::$instance;
     }
-	
-}
 
+}

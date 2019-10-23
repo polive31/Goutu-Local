@@ -11,7 +11,7 @@ class CustomSocialButtons {
 	protected static $onClick = 'onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=250,width=600\');return false;"';
 
 	protected static $networks = array(
-			'facebook', 
+			'facebook',
 			'twitter',
 			'googleplus',
 			'whatsapp',
@@ -23,11 +23,11 @@ class CustomSocialButtons {
 		);
 
 	public static $PLUGIN_PATH;
-	public static $PLUGIN_URI;	
+	public static $PLUGIN_URI;
 
 	const LINEBREAK = '%0D%0A%0D%0A';
-	
-	public function __construct() {	
+
+	public function __construct() {
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
 
@@ -37,17 +37,17 @@ class CustomSocialButtons {
     public function enqueue_social_buttons_scripts_styles() {
 		global $post;
 		custom_register_script( 'social-buttons', '/assets/js/social_sharing_buttons.js', self::$PLUGIN_URI, self::$PLUGIN_PATH,  array( 'jquery' ), CHILD_THEME_VERSION, true );
-		custom_register_style( 'social-buttons', '/assets/css/social_sharing_buttons.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );	
-	} 	
-	
+		custom_register_style( 'social-buttons', '/assets/css/social_sharing_buttons.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );
+	}
+
 	public function get_sharing_buttons($target, $class, $networks) {
 		global $post;
 
 		$html = '<ul class="cssb share-icons">';
 
-		if ($networks['facebook']) 
+		if ($networks['facebook'])
 			$html = self::getFacebookButton($target, $class);
-			
+
 		if ($networks['twitter'])
 			$html .= self::getTwitterButton($target, $class);
 
@@ -58,20 +58,20 @@ class CustomSocialButtons {
 			$html .= self::getPinterestButton( $target, $class);
 
 		if ($networks['whatsapp'])
-			$html .= self::getWhatsappButton($target, $class); 
+			$html .= self::getWhatsappButton($target, $class);
 
-		if ($networks['linkedin']) {	
+		if ($networks['linkedin']) {
 			$url = 'https://www.linkedin.com/shareArticle?mini=true&url='.$url.'&amp;title='.$title;
 			$html .= '<li class="cssb share-icons ' . $class . '" id="linkedin"><a ' . self::$onClick . ' class="cssb-link cssb-linkedin" href="'.$url.'" target="_blank" title="LinkedIn">&nbsp;</a></li>';
 		}
 
-		if ($networks['buffer']) {	
+		if ($networks['buffer']) {
 			$url = 'https://bufferapp.com/add?url='.$url.'&amp;text='.$title;
 			$html .= '<li class="cssb share-icons ' . $class . '" id="buffer"><a ' . self::$onClick . ' class="cssb-link cssb-buffer" href="'.$url.'" target="_blank" title="Buffer">&nbsp;</a></li>';
 		}
 
 		$html .= '</ul>';
-		
+
 		return $html;
 
 	}
@@ -82,13 +82,13 @@ class CustomSocialButtons {
 	}
 
 	public static function getFacebookButton( $target, $class ) {
-		if ($target=='site') 
+		if ($target=='site')
 			$url=get_site_url(null,'','https');
 		else
 			$url=get_permalink();
 
 		return '<li class="cssb share-icons ' . $class . '" id="facebook"><a ' . self::$onClick . ' class="cssb-link cssb-facebook" href="'. self::getFacebookURL($url) . '" target="_blank" title="' . __('Share on Facebook','foodiepro') . '"> </a></li>';
-	}	
+	}
 
 	public static function getFacebookURL( $url ) {
 		return 'https://www.facebook.com/sharer/sharer.php?u='.$url;
@@ -97,8 +97,8 @@ class CustomSocialButtons {
 	// Twitter Functions
 	public static function twitterURL( $post ) {
 		return self::getTwitterURL( get_permalink($post), $post->post_title );
-	}	
-	
+	}
+
 	public static function getTwitterButton( $target, $class ) {
 		if ($target=='site') {
 			$url=get_site_url(null,'','https');
@@ -106,16 +106,16 @@ class CustomSocialButtons {
 		}
 		else {
 			$url=get_permalink();
-			$title = get_the_title();	
+			$title = get_the_title();
 		}
 		// $url=esc_html($url);
 
 		// SEO Friendly current page title
-		// $title = do_shortcode('[seo-friendly-title]');	
-		
-		$html = '<li class="cssb share-icons ' . $class . '" id="twitter"><a ' . self::$onClick . ' class="cssb-link cssb-twitter" href="'. self::getTwitterURL($url,$title) .'" target="_blank" title="' . __('Share on Twitter','foodiepro') . '"></a></li>';	
+		// $title = do_shortcode('[seo-friendly-title]');
+
+		$html = '<li class="cssb share-icons ' . $class . '" id="twitter"><a ' . self::$onClick . ' class="cssb-link cssb-twitter" href="'. self::getTwitterURL($url,$title) .'" target="_blank" title="' . __('Share on Twitter','foodiepro') . '"></a></li>';
 		return $html;
-	
+
 	}
 
 	public static function getTwitterURL( $url, $title ) {
@@ -127,11 +127,11 @@ class CustomSocialButtons {
 	public static function pinterestURL( $post ) {
 		$thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'square-thumbnail' );
 		return self::getPinterestURL( get_permalink($post), $post->post_title, $thumb );
-	}	
+	}
 
 	public static function getPinterestButton($target, $class ) {
 
-		$thumb = array( do_shortcode('[site-logo]') );			
+		$thumb = array( do_shortcode('[site-logo]') );
 		if ($target=='site') {
 			$url=get_site_url(null,'','https');
 			$title = get_bloginfo('name') . ' - ' . get_bloginfo('description');
@@ -139,7 +139,7 @@ class CustomSocialButtons {
 		else {
 			global $post;
 			$url=get_permalink();
-			$title = get_the_title();	
+			$title = get_the_title();
 			$thumb_id = get_post_thumbnail_id( $post->ID, 'full' );
 			if ( $thumb_id )
 				$thumb = wp_get_attachment_image_src( $thumb_id );
@@ -167,7 +167,7 @@ class CustomSocialButtons {
 			global $post;
 			$fields = self::getPostFields($post, $target, 'find');
 		}
-		else 
+		else
 			$fields = self::getSiteFields();
 
 		$url = self::getMailURL( $fields );
@@ -189,7 +189,7 @@ class CustomSocialButtons {
 		$fields = self::getPostFields($post, $target);
 		$url = 'whatsapp://send?text=' . $fields['body'] . ' ' . $fields['post-url'];
 		return $url;
-	}	
+	}
 
 
 	/* From shortcode button => current post
@@ -199,13 +199,13 @@ class CustomSocialButtons {
 			global $post;
 			$fields = self::getPostFields($post, $target, 'find');
 		}
-		else 
+		else
 			$fields = self::getSiteFields();
 
-		$button =  '<li class="cssb share-icons ' . $class . '" id="whatsapp"><a class="cssb-link cssb-whatsapp" data-body="' . $fields['body'] . '" data-url="' . $fields['post-url'] . '" title="' . __('Share on Whatsapp','foodiepro') . '" rel="noopener nofollow"> </a></li>';	
+		$button =  '<li class="cssb share-icons ' . $class . '" id="whatsapp"><a class="cssb-link cssb-whatsapp" data-body="' . $fields['body'] . '" data-url="' . $fields['post-url'] . '" title="' . __('Share on Whatsapp','foodiepro') . '" rel="noopener nofollow"> </a></li>';
 
 		return $button;
-	}	
+	}
 
 
 	/* 	GENERAL FUNCTIONS
@@ -226,15 +226,15 @@ class CustomSocialButtons {
 		$body = 'Bonjour,
 
 		Je te propose de découvrir Goûtu.org (' . $url . '), un site de partage autour des thèmes de la Cuisine et de l\'Alimentation.
-		
+
 		Tu pourras y découvrir des idéees de recettes, trouver des informations sur les différents ingrédients, et apprendre de nouvelles techniques et tours de main.
-		
-		Sur ton espace personnel, ton carnet de recettes permet de toujours garder sous la main tes recettes préférées, mais tu pourras aussi ajouter tes propres recettes et articles. Tu peux ainsi créer un véritable blog culinaire en toute simplicité, et partager ton actualité et tes publications avec le plus grand nombre. 
-		
+
+		Sur ton espace personnel, ton carnet de recettes permet de toujours garder sous la main tes recettes préférées, mais tu pourras aussi ajouter tes propres recettes et articles. Tu peux ainsi créer un véritable blog culinaire en toute simplicité, et partager ton actualité et tes publications avec le plus grand nombre.
+
 		Rejoins-nous, l\'inscription est rapide et gratuite.
-		
+
 		A bientôt sur la communauté des Gourmets !
-		
+
 		L\'équipe Goûtu.org';
 
 		return array('subject' => $subject, 'body' => $body, 'post-url' => $url);
@@ -256,8 +256,8 @@ class CustomSocialButtons {
 		$url  = get_permalink($post);
 
 		$body = 'Bonjour,
-				J\'ai' . $myaction . $thispost . ', et voudrais ' . $it . ' partager avec toi.';			
+				J\'ai' . $myaction . $thispost . ', et voudrais ' . $it . ' partager avec toi.';
 
 		return array('subject' => $subject, 'body' => $body, 'post-url' => $url);
-	}		
+	}
 }

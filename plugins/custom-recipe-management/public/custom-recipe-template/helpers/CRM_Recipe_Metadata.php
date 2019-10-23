@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -12,7 +12,7 @@ class Custom_Recipe_Metadata {
         if( is_feed() ) {
             return '';
         }
-        
+
         $metadata = $this->get_metadata_array( $recipe );
         $metadata = $this->sanitize_metadata( $metadata );
         return '<script type="application/ld+json">' . json_encode( $metadata ) . '</script>';
@@ -58,7 +58,7 @@ class Custom_Recipe_Metadata {
         // Rating
 				//$metadata['aggregateRating'] = do_shortcode('[json-ld-rating]');
 				$rating_stats = explode(' ', do_shortcode('[json-ld-rating]') );
-        
+
         if ( isset($rating_stats) && $rating_stats[1]!=0) {
 	        $metadata['aggregateRating'] = array(
 	            '@type' => 'AggregateRating',
@@ -178,7 +178,7 @@ class Custom_Recipe_Metadata {
                         'text'  => $instruction['description']
                     );
                     $metadata_key++;
-                } 
+                }
             }
 
             $metadata['recipeInstructions'] = $metadata_instructions;
@@ -195,7 +195,7 @@ class Custom_Recipe_Metadata {
         if( !is_wp_error( $cuisines ) && isset( $cuisines[0] ) ) {
             $metadata['recipeCuisine'] = $cuisines[0];
         }
-        
+
         $diets = wp_get_post_terms( $recipe->ID(), 'diet', array( 'fields' => 'names' ) );
         if( !is_wp_error( $diets ) && isset( $diets[0] ) ) {
             $metadata['suitableForDiet'] = $diets[0];
@@ -210,14 +210,14 @@ class Custom_Recipe_Metadata {
         $occasion = wp_get_post_terms( $recipe->ID(), 'occasion', array( 'fields' => 'names' ) );
         if( !is_wp_error( $occasion ) ) {
             $keywords .= implode(',', $occasion) . ',';
-        }        
+        }
         $tag = wp_get_post_terms( $recipe->ID(), 'post_tag', array( 'fields' => 'names' ) );
         if( !is_wp_error( $tag ) ) {
             $keywords .= implode(',',$tag);
-        }         
+        }
         $metadata['keywords'] = $keywords;
         // Allow external filtering of metadata
         return apply_filters( 'wpurp_custom_recipe_metadata', $metadata, $recipe );
-    } 
-    
+    }
+
 }

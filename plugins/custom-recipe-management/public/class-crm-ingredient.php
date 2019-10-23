@@ -17,45 +17,45 @@ class CRM_Ingredient {
         array('l'     		, 'l'),
         array('cuillère à café'   , 'cuillerées à café'),
         array('cuillère à soupe'  , 'cuillerées à soupe'),
-        array('bâton' 		, 'bâtons'), 
-        array('boîte'   	, 'boîtes'), 
-        array('bol'   		, 'bols'), 
+        array('bâton' 		, 'bâtons'),
+        array('boîte'   	, 'boîtes'),
+        array('bol'   		, 'bols'),
         array('botte'   	, 'bottes'),
         array('bouquet'   	, 'bouquets'),
-        array('brin'   		, 'brins'), 
+        array('brin'   		, 'brins'),
         array('branche'   	, 'branches'),
-        array('bulbe'   	, 'bulbes'), 
-        array('cube' 		, 'cubes'), 
-        array('capsule' 	, 'capsules'), 
+        array('bulbe'   	, 'bulbes'),
+        array('cube' 		, 'cubes'),
+        array('capsule' 	, 'capsules'),
         array('doigt'		, 'doigts'),
         array('feuille' 	, 'feuilles'),
         array('filet'   	, 'filets'),
-        array('goutte'		, 'gouttes'), 
+        array('goutte'		, 'gouttes'),
         array('gousse' 		, 'gousses'),
-        array('noix'   		, 'noix'), 
+        array('noix'   		, 'noix'),
         array('pavé' 		, 'pavés'),
         array('pincée' 		, 'pincées'),
-        array('poignée'		, 'poignées'), 
-        array('sachet'		, 'sachets'), 
+        array('poignée'		, 'poignées'),
+        array('sachet'		, 'sachets'),
         array('tasse'   	, 'tasses'),
         array('tige'   		, 'tiges'),
         array('tubercule'   , 'tubercules'),
-        array('tranche'   	, 'tranches'), 
-        array('verre'   	, 'verres'), 		
-    );      	
+        array('tranche'   	, 'tranches'),
+        array('verre'   	, 'verres'),
+    );
 
 
-    // public function __construct() {		
+    // public function __construct() {
     //         }
 
 	/* =================================================================*/
 	/* = SHORTCODES
 	/* =================================================================*/
-	
+
     public function display_ingredient_shortcode( $options ) {
         $options = shortcode_atts( array(
-            'amount' => '', 
-            'amount_normalized' => '', 
+            'amount' => '',
+            'amount_normalized' => '',
             'unit' => '',
             'ingredient' => '',
             'notes' => '',
@@ -68,7 +68,7 @@ class CRM_Ingredient {
     public function display_ingredient_months_shortcode( $atts ) {
         $atts = shortcode_atts( array(
             'id' => false,
-            'currentmonth' => false, // displays an arrow showing the current month 
+            'currentmonth' => false, // displays an arrow showing the current month
         ), $atts );
 
         if ($atts['id']) {
@@ -79,8 +79,8 @@ class CRM_Ingredient {
         }
         else
             return false;
-        
-        $ingredient_meta = get_option( "taxonomy_$ingredient" ); 
+
+        $ingredient_meta = get_option( "taxonomy_$ingredient" );
         if ( empty($ingredient_meta['month']) ) return '';
 
         $html = '<h2>' . __('Harvest Period','foodiepro') . '</h2>';
@@ -99,16 +99,16 @@ class CRM_Ingredient {
 
 
         return $html;
-    }    
+    }
 
 	/* =================================================================*/
 	/* = HELPERS
-	/* =================================================================*/    
+	/* =================================================================*/
 
     public static function get_units( $plural ) {
         $column=$plural?1:0;
         return array_column(self::UNITS_LIST,$column);
-        // echo '<pre>' . print_r( self::$UNITS ) . '</pre>'; 
+        // echo '<pre>' . print_r( self::$UNITS ) . '</pre>';
     }
 
     public static function output_unit( $name, $amount ) {
@@ -120,7 +120,7 @@ class CRM_Ingredient {
     public static function display( $args ) {
         if ( empty($args['ingredient']) ) return false;
         $out = '';
-        
+
         // amount
         $fraction = strpos($args['amount'], '/') === false ? false : true;
         $amount_normalized=isset($args['amount_normalized'])?$args['amount_normalized']:$args['amount'];
@@ -128,14 +128,14 @@ class CRM_Ingredient {
         // UNIT
         $unit = self::output_unit($args['unit'], $amount_normalized);
 
-        // OUTPUT FIRST PART 
+        // OUTPUT FIRST PART
         $out .= '<span class="recipe-ingredient-quantity-unit"><span class="wpurp-recipe-ingredient-quantity recipe-ingredient-quantity" data-normalized="'. $amount_normalized .'" data-fraction="'.$fraction.'" data-original="'.$args['amount'].'">'.$args['amount'].' </span>';
         $out .= '<span class="wpurp-recipe-ingredient-unit recipe-ingredient-unit" data-original="'. $unit .'">'.$unit.'</span></span>';
 
 
         // INGREDIENT TAXONOMY TERM DATA
         $taxonomy = get_term_by('name', $args['ingredient'], 'ingredient');
-        
+
         $plural=false;
         // $isplural=false;
 
@@ -151,14 +151,14 @@ class CRM_Ingredient {
         if ($unit != '') {
 	        if ( initial_is_vowel($args['ingredient']) )
 	            $out .= _x('of ','vowel','foodiepro');
-	        else 
-	            $out .= _x('of ','consonant','foodiepro');                  
+	        else
+	            $out .= _x('of ','consonant','foodiepro');
         }
 
         $ingredient_links = WPUltimateRecipe::option('recipe_ingredient_links', 'archive_custom');
 
         $closing_tag = '';
-		
+
 
 		$hide_link = $taxonomy_slug? WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'hide_link' ) == '1':true;
 
@@ -181,7 +181,7 @@ class CRM_Ingredient {
 	                $out .= '<a href="'.get_term_link( $taxonomy_slug, 'ingredient' ).'">';
 	                $closing_tag = '</a>';
 	            }
-            }   
+            }
         }
 
         $out .= ($plural && self::is_plural( $amount_normalized, $unit)) ? $plural : $args['ingredient'];
@@ -194,7 +194,7 @@ class CRM_Ingredient {
         }
 
         return $out;
-    }    	
+    }
 
     public static function is_plural( $amount, $unit ) {
     	$plural = $amount > 1 || $unit != '' || (empty($amount) && empty($unit));

@@ -1,6 +1,6 @@
 jQuery(document).ready(function() {
 
-/* Taxonomy selection fields 
+/* Taxonomy selection fields
 ---------------------------------------------------------------- */
     // Activate select2WPURP
     // jQuery('#wpurp_user_submission_form select[multiple]').select2wpurp({
@@ -22,7 +22,7 @@ jQuery(document).ready(function() {
         allowClear: false,
         templateSelection: formatItem,
         // closeOnSelect: false,
-    }); 
+    });
 
     readonlyBoxes.next('.select2').addClass("readonly");
 
@@ -31,7 +31,7 @@ jQuery(document).ready(function() {
         dropdownAutoWidth: false,
         // minimumInputLength: 3,
         allowClear: false,
-        templateSelection: formatItem,        
+        templateSelection: formatItem,
     });
 
     function formatItem(data, container) {
@@ -53,7 +53,7 @@ jQuery(document).ready(function() {
     //     jQuery('.select2-search input').not(".post_tag").prop('focus',false);
     // });
 
-// Hide loading indicator once select2 is started 
+// Hide loading indicator once select2 is started
     jQuery('.taxonomy-select-boxes').removeClass('nodisplay');
     jQuery('.taxonomy-select-spinner').addClass('nodisplay');
 

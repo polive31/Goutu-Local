@@ -1,5 +1,5 @@
         <input type="hidden" name="post_id" value="<?= $post_ID; ?>" />
-        <div class="post-container post-title-container">      	
+        <div class="post-container post-title-container">
             <p>
                 <h4 id="headline-title"><?= CPM_Assets::get_label($this->post_type, 'title'); ?><?php if( in_array( $this->post_type . '_title', $required_fields ) ) echo '<span class="required-field">*</span>'; ?></h4>
                 <input type="text" id="<?= $this->post_type; ?>_title" value="<?= isset( $_POST[ $this->post_type . '_title'] ) ? $_POST[ $this->post_type . '_title'] : $post->post_title;  ?>" size="20" name="<?= $this->post_type; ?>_title" />
@@ -15,11 +15,11 @@
             </p>
         </div>
 <?php } ?>
-        <div class="post-container post-image-container">     	
-            <?php 
+        <div class="post-container post-image-container">
+            <?php
             // $image_url = CPM_Assets::get_post_image_url( $post );
             $image_url = get_the_post_thumbnail_url( $post->ID ,'mini-thumbnail');;
-            ?> 
+            ?>
             <h4 id="headline-image"><?php _e( 'Featured image', 'foodiepro' ); ?><?php if( in_array( $this->post_type . '_thumbnail', $required_fields ) ) echo '<span class="required-field">*</span>'; ?></h4>
             <p class="post-guidelines"><?= __('Add here your best picture for this post, in order to attract visitors !', 'foodiepro'); ?></p>
             <div class="post-image thumbnail <?php if( !$image_url ) { ?>nodisplay<?php };?>">

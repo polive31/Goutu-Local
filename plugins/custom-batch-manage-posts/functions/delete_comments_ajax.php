@@ -15,13 +15,13 @@ if ( !defined('ABSPATH') )
 /* =               BATCH DELETE COMMENTS
 /* =================================================================*/
 function ajax_batch_delete_comments() {
-	
+
 	echo '<p>In Batch Delete Comments function...</p>';
-	
+
 	$post_type=	get_ajax_arg('post-type');
 	$include=	get_ajax_arg('include');
 	$cmd=	get_ajax_arg('cmd');
-	
+
 	if ( !(is_secure('DeleteComment' . $cmd) ) ) exit;
 
 	$deleted_count='0';
@@ -43,18 +43,14 @@ function ajax_batch_delete_comments() {
 			}
 
 		}
-		
+
 	}
-	
+
 	else {
 		echo "Please provide post IDs or 'all' for deletion to take place";
-	} 
-	
+	}
+
 	echo sprintf('Delete comments operation completed, %s comments deleted',$deleted_count);
 	echo "<br>";
 
 }
-
-?>
-
-

@@ -5,14 +5,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/* Provides a custom template for WPURP recipes using 
+/* Provides a custom template for WPURP recipes using
     the corresponding WPURP filters
 */
 
 class CRM_Recipe_Template {
 
-	protected static $_PluginPath;	
-	protected static $_PluginUri;	
+	protected static $_PluginPath;
+	protected static $_PluginUri;
 	// public static $logged_in;
 
 	private $post_ID;
@@ -22,7 +22,7 @@ class CRM_Recipe_Template {
 		self::$_PluginPath = plugin_dir_path( dirname( __FILE__ ) );
 	}
 
-    
+
     public function print_recipe( $content, $recipe ) {
         $post_ID = get_the_ID();
 
@@ -50,7 +50,7 @@ class CRM_Recipe_Template {
             $imgAlt=$recipe->title();
 
         ob_start();
-        
+
         // Output JSON+LD metadata & rich snippets
         echo $this->json_ld_meta_output($recipe,'');
 
@@ -78,10 +78,10 @@ class CRM_Recipe_Template {
 
     public function custom_ingredients_list( $recipe, $args ) {
         $out = '';
-        $previous_group = '';       
+        $previous_group = '';
         $first_group = true;
         //$out .= '<ul class="wpurp-recipe-ingredients">';
-        
+
         foreach( $recipe->ingredients() as $ingredient ) {
 
             if( WPUltimateRecipe::option( 'ignore_ingredient_ids', '' ) != '1' && isset( $ingredient['ingredient_id'] ) ) {
@@ -91,7 +91,7 @@ class CRM_Recipe_Template {
                 }
             }
 
-            if( $ingredient['group'] != $previous_group || $first_group ) { //removed isset($ingredient['group'] ) && 
+            if( $ingredient['group'] != $previous_group || $first_group ) { //removed isset($ingredient['group'] ) &&
                 $out .= $first_group ? '' : '</ul>';
                 $out .= '<ul class="wpurp-recipe-ingredients">';
                 $out .= '<li class="ingredient-group">' . $ingredient['group'] . '</li>';
@@ -116,7 +116,7 @@ class CRM_Recipe_Template {
         ?>
         <script>
 			jQuery(document).ready(function(){
-			// console.log('Inline ingredient checkbox');	
+			// console.log('Inline ingredient checkbox');
 				jQuery(document).on('click', '.wpurp-recipe-ingredient .checkbox', function(e) {
 					// console.log('Click on ingredient checkbox detected !');
 					e.preventDefault();
@@ -127,24 +127,24 @@ class CRM_Recipe_Template {
         </script>
         <?php
         $out .= ob_get_contents();
-        ob_end_clean();       
-        
+        ob_end_clean();
+
         return $out;
     }
-            
+
     public function custom_instructions_list( $recipe, $args ) {
         $out = '';
         $previous_group = '';
         $instructions = $recipe->instructions();
-        
+
         $out .= '<ul class="wpurp-recipe-instruction-container">';
         $first_group = true;
-        
+
         for( $i = 0; $i < count($instructions); $i++ ) {
-                    
+
             $instruction = $instructions[$i];
             $first_inst = false;
-                    
+
             if( $instruction['group'] != $previous_group ) { /* Entering new instruction group */
                 $first_inst = true;
                 $out .= $first_group ? '' : '</ul>';
@@ -161,12 +161,12 @@ class CRM_Recipe_Template {
 
             $out .= '<li class="wpurp-recipe-instruction ' . $style . '" id="wpurp_recipe_instruction' . $i . '">';
             //$out .= '<div' . $meta . '>'.$instruction['description'].'</div>';
-			
-			
+
+
 			// $out .= $instruction['description'];
 			$out .= $this->get_bullet($i) . '</span><span class="recipe-instruction-text">' . $instruction['description'] . '</span>';
 			// $out .= '<span class="recipe-instruction-bullet">' . ($i+1) . '</span>[tts]' . $instruction['description'] . '[/tts]';
-			
+
 
             if( !empty($instruction['image']) ) {
                 $thumb = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
@@ -194,7 +194,7 @@ class CRM_Recipe_Template {
 
         return $out;
 	}
-	
+
 	public function get_bullet( $id ) {
 		ob_start();
 		?>
@@ -208,11 +208,5 @@ class CRM_Recipe_Template {
 		ob_end_clean();
 		return $html;
     }
-    
 
-
-    
-	
 }
-
-

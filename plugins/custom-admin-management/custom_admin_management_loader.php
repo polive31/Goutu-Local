@@ -13,8 +13,8 @@ License: GPL
 // Block direct requests
 if ( !defined('ABSPATH') )
 	die('-1');
-	
-	
+
+
 require_once 'includes/class-custom-admin-management.php';
 require_once 'admin/class-cam-admin-helpers.php';
 require_once 'admin/class-cam-post-filter.php';

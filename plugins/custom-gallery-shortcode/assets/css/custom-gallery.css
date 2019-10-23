@@ -19,10 +19,10 @@
 
 #joined-pics .add-picture-button,
 #joined-pics .gallery-item {
-	display: inline-block;	
+	display: inline-block;
 	vertical-align:top;
 	margin: 0!important;
-	padding: 0px; 
+	padding: 0px;
 }
 
 #joined-pics .gallery-icon {
@@ -33,12 +33,12 @@
 #joined-pics .add-picture-button button {
 	width: 75px;
 	height: 75px;
-	margin: 0px;  
+	margin: 0px;
 	padding: 5px!important;
 	text-transform:uppercase;
 	text-align:center;
 	font-family: "Lato",sans-serif;
-	font-size: 10px;	
+	font-size: 10px;
 	line-height: 14px;
 }
 

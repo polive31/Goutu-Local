@@ -59,7 +59,7 @@
 		<label for="<?php echo $this->get_field_id( 'shortcode' ); ?>">
 			<?php _e( 'HTML contains shortcode ?', 'recent-posts-widget-extended' ); ?>
 		</label>
-	</p>	
+	</p>
 
 </div>
 
@@ -180,8 +180,8 @@
 		</label>
 		<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'author' ); ?>" name="<?php echo $this->get_field_name( 'author' ); ?>" value="<?php echo esc_attr( $instance['author'] ); ?>" />
 		<small><?php _e( 'Ex: 24, current_user, view_user, post_author ...', 'rpwe' );?></small>
-	</p>	
-	
+	</p>
+
 
 </div>
 
@@ -207,7 +207,7 @@
 		<label for="<?php echo $this->get_field_id( 'link' ); ?>">
 			<?php _e( 'Display Link', 'recent-posts-widget-extended' ); ?>
 		</label>
-	</p>	
+	</p>
 
 	<p>
 		<input id="<?php echo $this->get_field_id( 'display_author' ); ?>" name="<?php echo $this->get_field_name( 'display_author' ); ?>" type="checkbox" <?php checked( $instance['display_author'] ); ?> />
@@ -221,14 +221,14 @@
 		<label for="<?php echo $this->get_field_id( 'display_avatar' ); ?>">
 			<?php _e( 'Display Author Avatar', 'recent-posts-widget-extended' ); ?>
 		</label>
-	</p>		
+	</p>
 
 	<p>
 		<input id="<?php echo $this->get_field_id( 'display_rating' ); ?>" name="<?php echo $this->get_field_name( 'display_rating' ); ?>" type="checkbox" <?php checked( $instance['display_rating'] ); ?> />
 		<label for="<?php echo $this->get_field_id( 'display_rating' ); ?>">
 			<?php _e( 'Display Post Rating', 'recent-posts-widget-extended' ); ?>
 		</label>
-	</p>	
+	</p>
 
 	<?php if ( current_theme_supports( 'post-thumbnails' ) ) { ?>
 
@@ -298,7 +298,7 @@
 		</label>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'readmore_text' ); ?>" name="<?php echo $this->get_field_name( 'readmore_text' ); ?>" type="text" value="<?php echo strip_tags( $instance['readmore_text'] ); ?>" />
 	</p>
-	
+
 	<p>
 		<input id="<?php echo $this->get_field_id( 'comment_count' ); ?>" name="<?php echo $this->get_field_name( 'comment_count' ); ?>" type="checkbox" <?php checked( $instance['comment_count'] ); ?> />
 		<label for="<?php echo $this->get_field_id( 'comment_count' ); ?>">
@@ -312,21 +312,21 @@
 			<?php _e( 'Display Date', 'recent-posts-widget-extended' ); ?>
 		</label>
 	</p>
-	
+
 	<p>
 		<input id="<?php echo $this->get_field_id( 'date_modified' ); ?>" name="<?php echo $this->get_field_name( 'date_modified' ); ?>" type="checkbox" <?php checked( $instance['date_modified'] ); ?> />
 		<label for="<?php echo $this->get_field_id( 'date_modified' ); ?>">
 			<?php _e( 'Display Modification Date', 'recent-posts-widget-extended' ); ?>
 		</label>
 	</p>
-	
+
 	<p>
 		<input id="<?php echo $this->get_field_id( 'date_relative' ); ?>" name="<?php echo $this->get_field_name( 'date_relative' ); ?>" type="checkbox" <?php checked( $instance['date_relative'] ); ?> />
 		<label for="<?php echo $this->get_field_id( 'date_relative' ); ?>">
 			<?php _e( 'Use Relative Date. eg: 5 days ago', 'recent-posts-widget-extended' ); ?>
 		</label>
 	</p>
-	
+
 
 </div>
 

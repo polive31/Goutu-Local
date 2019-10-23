@@ -69,7 +69,7 @@ class CustomSitePopups {
 			$html.='<div class="column ' . $class . '" id="group1">';
 			$html.='<ul>';
 			$html.='<li class="icon cookbook textbox left"><span>' . __('Store your favorite recipes in your cookbook,','foodiepro') . '</span></li>';
-			$html.='<li class="icon pan textbox right"><span>' . __('Publish your own recipes and posts,','foodiepro') . '</span></li>';
+			$html.='<li class="icon pen textbox right"><span>' . __('Publish your own recipes and posts,','foodiepro') . '</span></li>';
 			$html.='<li class="icon profile textbox left"><span>' . __('Create your personal profile and exchange with other members,','foodiepro') . '</span></li>';
 			$html.='</ul>';
 			$html.='</div>';
@@ -77,7 +77,7 @@ class CustomSitePopups {
 			$html.='<ul>';
 			$html.='<li class="icon rate textbox right"><span>' . __('Comment and rate recipes','foodiepro') . '</span></li>';
 			$html.='<li class="icon blogs textbox left"><span>' . __('Subscribe to other members and access their private recipes,','foodiepro') . '</span></li>';
-			$html.='<li class="icon more textbox right"><span>' . __('And many more other benefits...','foodiepro') . '</span></li>';
+			$html.='<li class="icon more textbox right"><span>' . __('And many more features to come...','foodiepro') . '</span></li>';
 			$html.='</ul>';
 			$html.='</div>';
 			$html.='<div class="full">';

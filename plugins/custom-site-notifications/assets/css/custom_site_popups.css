@@ -1,4 +1,4 @@
-#join_us, 
+#join_us,
 #join_us .wrap {
     max-width: 858px;
     /* height: 507px; */
@@ -43,6 +43,7 @@
     font-size: 20px;
     font-weight:normal;
     line-height: 26px;
+    text-align: left;
     /* text-shadow: none; */
 }
 
@@ -79,7 +80,7 @@
     background-position: center;
     text-align:left;
 }
-    
+
 #join_us li.icon.right:after {
     text-align:right;
 }
@@ -95,7 +96,7 @@
     width: 90px;
 }
 
-#join_us li.pen:before {
+#join_us li.pen:after {
     background-image:url('../img/publish.png');
 }
 
@@ -108,7 +109,8 @@
 }
 
 #join_us li.rate:after {
-    background-image:url('../img/rate.png');
+    /* background-image:url('../img/rate.png'); */
+    background-image:url('../img/stars.png');
     width: 68px;
 }
 
@@ -155,16 +157,16 @@
 }
 
 
-/* MEDIA QUERIES 
+/* MEDIA QUERIES
 ---------------------------------------------------*/
 
 @media only screen and (max-width:570px) {
-    
+
     .tooltip-content.modal#join_us {
         position: absolute;
         top:auto;
     }
-    
+
     #join_us .wrap {
         padding: 0;
         /* background: rgba(171, 121, 86, 0.21); */
@@ -181,22 +183,22 @@
         font-size: 17px;
         line-height: 21px;
         margin: 14px 0;
-    }   
-    
+    }
+
     #join_us li.icon:after,
     #join_us li.icon:before {
         width: 55px;
         max-height: 30px;
     }
-    
+
     #join_us li.profile:before {
         width: 36px;
     }
-    
+
     #join_us li.pan:after {
         width: 50px;
     }
-    
+
     #join_us .column {
         padding-top:0px;
         width:100%;
@@ -205,7 +207,7 @@
     #join_us .column#group2 {
         text-align: initial;
     }
-    
+
     #join_us .textbox {
         font-size: 18px;
     }
@@ -213,23 +215,23 @@
     #join_us ul {
         margin: 0;
     }
-    
+
     #join_us ul li {
         margin: 5px;
         padding: 7px 10px;
         min-height:auto;
     }
-    
+
     #join_us li:first-child {
         margin-top: 0;
     }
-    
+
     #join_us li.blogs {
         text-align: left;
     }
-    
+
     #join_us .register-button a {
         background:#ff7800;
     }
-    
+
 }

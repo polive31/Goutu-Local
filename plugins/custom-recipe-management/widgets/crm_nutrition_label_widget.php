@@ -3,7 +3,7 @@
 // Block direct requests
 if ( !defined('ABSPATH') )
 	die('-1');
-	
+
 
 class WPURP_Custom_Nutrition_Label_Widget extends WP_Widget {
 
@@ -91,5 +91,5 @@ class WPURP_Custom_Nutrition_Label_Widget extends WP_Widget {
 }
 
 function crm_nutrition_label_widget_init() {
-    return register_widget('WPURP_Custom_Nutrition_Label_Widget'); 
+    return register_widget('WPURP_Custom_Nutrition_Label_Widget');
 }

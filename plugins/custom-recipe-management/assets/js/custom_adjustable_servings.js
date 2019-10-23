@@ -10,7 +10,7 @@ jQuery(document).ready(function() {
         event.stopPropagation();
         return false;
     };
-    
+
     // Custom increase & decrease quantity buttons
     jQuery(document).on("click", "#servings .qty", function() {
       // console.log("Portion ajustment button click");
@@ -32,7 +32,7 @@ jQuery(document).ready(function() {
       }
       $input.val(newVal);
       $input.trigger("change");
-    });    
+    });
 
     // console.log("In custom adjustable servings !");
 
@@ -89,7 +89,7 @@ wpurp_adjustable_servings.updateShortcode = function(recipe, servings_new) {
                 .data('original_quantity', quantity_element.text())
                 .data('unit_quantity', quantity);
         }
-        
+
         // Adjust quantity.
         if(servings_new == servings_original) {
             quantity_element.text(quantity_element.data('original_quantity'));
@@ -106,7 +106,7 @@ wpurp_adjustable_servings.updateShortcode = function(recipe, servings_new) {
 wpurp_adjustable_servings.parse_quantity = function(sQuantity) {
     // Use . for decimals
     sQuantity = sQuantity.replace(',', '.');
-        
+
     // Replace fraction characters with equivalent
     var fractionsRegex = /(\u00BC|\u00BD|\u00BE|\u2150|\u2151|\u2152|\u2153|\u2154|\u2155|\u2156|\u2157|\u2158|\u2159|\u215A|\u215B|\u215C|\u215D|\u215E)/;
     var fractionsMap = {
@@ -144,7 +144,7 @@ wpurp_adjustable_servings.parse_quantity = function(sQuantity) {
                 }
 
                 quantity += part_quantity;
-            }			
+            }
         }
     }
 
@@ -213,4 +213,3 @@ wpurp_adjustable_servings.toFixed = function(amount, fraction)
 
     return formatted;
 }
-

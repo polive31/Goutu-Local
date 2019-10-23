@@ -24,7 +24,7 @@ class CPM_List {
         $output .= '<table class="custom-post-list">';
 
         $statuses = get_post_statuses();
-        
+
         foreach ( $posts as $post ) {
             $view_url = 'href="' . get_permalink( $post->ID ) . '" ';
             $view_title = 'title="' . __('Preview post', 'foodiepro') . '" ';
@@ -32,11 +32,11 @@ class CPM_List {
             $item = '<tr class="post-list-row ' . $post->post_status . '">';
             $item .= '<td class="post-list-thumbnail"><a ' . $view_url . $view_title . '><img src="' . get_the_post_thumbnail_url( $post->ID ,'mini-thumbnail') . '"></a></td>';
             $item .= '<td class="post-list-title"><a ' . $view_url . $view_title . '>' . $post->post_title . '</a></td>';
-            
+
             // $favinfo = Custom_post_Favorite::is_favorite_post( $post->ID() );
             // $favlist = $favinfo[1];
             // $favicon = Custom_post_Favorite::get_icon( $favlist );
-            
+
             if ($edit) {
                 $item .= '<td class="post-list-status">' . $statuses[ $post->post_status ] . '</td>';
                 $item .= '<td class="post-list-actions">';
@@ -47,15 +47,15 @@ class CPM_List {
             }
 
             $item .= '</tr>';
- 
+
             $output .= apply_filters( 'cpm_post_list_item', $item, $post );
         }
         $output .= '</table>';
         return $output;
-    }  
+    }
 
 
-    /* AJAX CALLS 
+    /* AJAX CALLS
     -----------------------------------------------------------*/
     public function ajax_user_delete_post() {
 

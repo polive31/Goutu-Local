@@ -20,9 +20,9 @@ if ( !defined('ABSPATH') )
 
 add_action( 'widgets_init', function(){
      register_widget( 'BP_Custom_Login_Widget' );
-});	 
- 
- 
+});
+
+
 class BP_Custom_Login_Widget extends WP_Widget {
 
 	private $instance=0;
@@ -70,7 +70,7 @@ class BP_Custom_Login_Widget extends WP_Widget {
 		echo $args['before_widget'];
 		echo $args['before_title'] . esc_html( $title ) . $args['after_title']; ?>
 
-		<?php if ( is_user_logged_in() ) : 
+		<?php if ( is_user_logged_in() ) :
 			echo '<div class="wrap" id="logged-in">';?>
 
 			<?php
@@ -98,10 +98,10 @@ class BP_Custom_Login_Widget extends WP_Widget {
 			 *
 			 * @since 1.9.0
 			 */
-			do_action( 'bp_after_login_widget_loggedin' ); 
+			do_action( 'bp_after_login_widget_loggedin' );
 			echo '</div>';?>
 
-		<?php else : 
+		<?php else :
 			echo '<div class="wrap" id="logged-out">';?>
 
 			<?php
@@ -145,12 +145,12 @@ class BP_Custom_Login_Widget extends WP_Widget {
 			 *
 			 * @since 1.9.0
 			 */
-			do_action( 'bp_after_login_widget_loggedout' ); 
+			do_action( 'bp_after_login_widget_loggedout' );
 			echo '</div>';?>
-			
-		 
+
+
 		<?php endif;
-		
+
 		echo $args['after_widget'];
 	}
 	/**

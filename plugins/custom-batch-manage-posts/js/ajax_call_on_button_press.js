@@ -1,29 +1,29 @@
 jQuery(document).ready(function(){
-	
-	//alert('JSCRIPT lancé !');
-	
+
+	//alert('JSCRIPT lancï¿½ !');
+
   jQuery('input[type="submit"]').click(function(){
   	var ScriptName = jQuery(this).data('name');
   	var ScriptInst = jQuery(this).data('instance');
-  	
-		
-  	// Récupération des données de WPLocalize propres au shortcode sélectionné
+
+
+  	// Rï¿½cupï¿½ration des donnï¿½es de WPLocalize propres au shortcode sï¿½lectionnï¿½
 		var WPLocalizeVar = window['script' + ScriptName + ScriptInst];
 		var ShortcodeArgs = jQuery.parseJSON( WPLocalizeVar.data );
 		var AjaxURL = WPLocalizeVar.url;
 		var AjaxNonce = WPLocalizeVar.nonce;
-		
+
 		console.log('Lancement du script = '  + 'script' + ScriptName + ScriptInst);
 		console.log('Arguments du script JS = %0', WPLocalizeVar);
 		console.log('Arguments du shortcode = %0', ShortcodeArgs);
 		console.log('URL de la page = ' + AjaxURL);
 		//console.log('Nonce = '  + AjaxNonce);
-		
+
 		if (ShortcodeArgs['cmd'] == 'delete') {
 			deletionOK = confirm('This action will delete posts content !');
 			if ( ! deletionOK ) return;
 		}
-		
+
 		jQuery('div#resp' + ScriptName + ScriptInst).html( 'Ajax call launched...' );
 
 		jQuery.post(
@@ -40,6 +40,6 @@ jQuery(document).ready(function(){
 			//console.log( response );
 			jQuery('div#resp' + ScriptName + ScriptInst).html( response );
 		});
-		
+
   });
 });

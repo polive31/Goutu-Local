@@ -9,32 +9,32 @@ Author URI: http://goutu.org
 if ( !defined('ABSPATH') )
 	die('-1');
 
-	
+
 /* =================================================================*/
 /* =               BATCH UPDATE POST META
 /* =================================================================*/
 
 function ajax_batch_manage_meta() {
-		
-		
-	// Shortcode parameters display	
-	
+
+
+	// Shortcode parameters display
+
 	$key = get_ajax_arg('key');
 	$new_key = get_ajax_arg('new-key');
 	$post_type = get_ajax_arg('post-type');
 	$include = get_ajax_arg('include',__('Limit to posts'));
 	$value = get_ajax_arg('value');
 	$cmd = get_ajax_arg('cmd');
-	
+
 	if ( !(is_secure('ManageMeta' . $cmd) ) ) exit;
-			
+
 	if ( is_array($value) )
 		$value = extractKeyValuePairs( $value );
 	else
 		$value = $a['value'];
 
 	//PC:debug( array('$value after explode : '=>$value) );
-		
+
 	echo "<p>Batch Manage Meta script started...</p>";
 
 	//$post_type_object = get_post_type_object($post_type);

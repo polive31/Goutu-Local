@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -25,7 +25,7 @@ class CRM_Favorite_Shortcodes {
             $lists = array( 0 => $lists );
         else
             $lists = CRM_Favorite::get_lists();
-            
+
         $empty=true;
         $output='';
         foreach ($lists as $list) {
@@ -34,13 +34,13 @@ class CRM_Favorite_Shortcodes {
 
             $args = array(
                 'numberposts' => -1,
-                'category' => 0, 
+                'category' => 0,
                 'orderby' => 'date',
-                'order' => 'DESC', 
+                'order' => 'DESC',
                 'include' => $favorites,
-                'exclude' => array(), 
+                'exclude' => array(),
                 'meta_key' => '',
-                'meta_value' =>'', 
+                'meta_value' =>'',
                 'post_type' => 'recipe',
                 'post_status' => array( 'publish', 'private', 'pending', 'draft' ),
                 'suppress_filters' => true
@@ -56,9 +56,9 @@ class CRM_Favorite_Shortcodes {
         }
         if ($empty)
             $output .= '<div class="submitbox">' . __( "No recipes found.", 'foodiepro' ) . '</div>';
-        
+
         return $output;
-    }    
+    }
 
 
 

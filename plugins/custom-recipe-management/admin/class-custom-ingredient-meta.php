@@ -22,13 +22,13 @@ class Custom_Ingredient_Meta {
 			__('October','foodiepro'),
 			__('November','foodiepro'),
 			__('December','foodiepro')
-		);		
+		);
 	}
 
 	public function callback_ingredient_edit_fields($term) {
 		$t_id = $term->term_id;
 		// retrieve the existing value(s) for this meta field. This returns an array
-		$ingredient_meta = get_option( "taxonomy_$t_id" ); 
+		$ingredient_meta = get_option( "taxonomy_$t_id" );
 		$this->admin_edit_months_field($term, $ingredient_meta);
 		// $this->admin_edit_isplural_field($term, $ingredient_meta);
 	}
@@ -42,10 +42,10 @@ class Custom_Ingredient_Meta {
 		<label for="wpurp_taxonomy_metadata_ingredient_months"><?php echo __('Months','foodiepro');?></label>
 		<td>
 			<table>
-				<tr>		
+				<tr>
 				<?php
 				$i=1;
-				foreach (self::$MONTHS as $month) {	
+				foreach (self::$MONTHS as $month) {
 					$checked = isset($ingredient_meta['month'][$i]);
 					?>
 					<td>
@@ -77,7 +77,7 @@ class Custom_Ingredient_Meta {
 		<!-- <tr> -->
 		<?php
 		$i=1;
-		foreach (self::$MONTHS as $month) {	
+		foreach (self::$MONTHS as $month) {
 		// echo '<pre>' . print_r(self::$MONTHS) . '</pre>';
 			// echo '<pre>' . print_r($month) . '<br></pre>';
 			?>
@@ -107,12 +107,12 @@ class Custom_Ingredient_Meta {
 			// Save the option array.
 			update_option( "taxonomy_$term_id", $this->ingredient_meta );
 		}
-	}  
+	}
 
 	public function update_month() {
 		$i=1;
 		foreach ( self::$MONTHS as $month ) {
-			if ( isset ( $_POST['wpurp_taxonomy_metadata_ingredient']['month'][$i] ) ) 
+			if ( isset ( $_POST['wpurp_taxonomy_metadata_ingredient']['month'][$i] ) )
 				$this->ingredient_meta['month'][$i] = $_POST['wpurp_taxonomy_metadata_ingredient']['month'][$i];
 			elseif ( isset($this->ingredient_meta['month'][$i]) )
 				unset($this->ingredient_meta['month'][$i]);

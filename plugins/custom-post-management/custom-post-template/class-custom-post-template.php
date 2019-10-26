@@ -26,6 +26,21 @@ class Custom_Post_Template {
 		return '...</p><p><a class="more-link" href="' . get_permalink() . '">' . __( 'Read More', 'foodiepro' ) . ' &raquo;</a></p>';
 	}
 
+	public function add_featured_image($content) {
+		$image = genesis_get_image( array( // more options here -> genesis/lib/functions/image.php
+				'format'  => 'html',
+				'size'    => 'large',// add in your image size large, medium or thumbnail - for custom see the post
+				'context' => '',
+				'attr'    => array ( 'class' => 'aligncenter' ), // set a default WP image class
+			) );
+		if ( is_singular( 'post' )) {
+			if ( $image ) {
+				$content = sprintf( '<div class="featured-image-class">%s</div>', $image ) . $content; // wraps the featured image in a div with css class you can control
+			}
+		}
+		return $content;
+	}
+
 	public function add_lightbox_link($content) {
 		if ( !is_singular( $this->post_type ) ) return $content;
 
@@ -56,6 +71,7 @@ class Custom_Post_Template {
 		if ( !is_singular( $this->post_type) ) return;
 		do_action( 'cpm_' . $this->post_type . '_toolbar', null);
 	}
+
 
 
 	/* Default callbacks for 'post' type

@@ -31,11 +31,15 @@ class Custom_Post_Management {
 		// Create a dynamic hook for toolbar
 		add_action( 'genesis_before_entry_content', array($Post_Template, 'add_post_type_toolbar_action'), 15);
 
+
 		// Filters the post meta information, including post edit under the headline
 		add_filter( 'genesis_post_info', 'Custom_Post_Template::custom_post_meta', 20 );
 
+		// Add featured image to the post
+		add_filter( 'the_content', 					array($Post_Template, 'add_featured_image'), 1);
+
 		// Filters post thumbnail output in order to let lightbox plugin format them accordingly
-		add_filter( 'the_content', 					array($Post_Template, 'add_lightbox_link') );
+		add_filter( 'the_content', 					array($Post_Template, 'add_lightbox_link'), 15 );
 
 		/* Remove private/protected title mention */
 		add_filter( 'private_title_format', 		array($Post_Template, 'title_format') );

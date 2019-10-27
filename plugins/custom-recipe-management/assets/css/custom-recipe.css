@@ -23,7 +23,7 @@
 
 .recipe-container#image {
     position: relative;
-    height: var(--recipe-image-heigth);
+    /* height: var(--recipe-image-heigth); */
 }
 
 li.ingredient-group,
@@ -53,11 +53,11 @@ span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
 .image-container {
 	/* min-width:300px;
 	max-width:50%; */
-	/* float:left; */
+	float:left;
 	padding:0px;
 	z-index: 0;
-	position: absolute;
-	height: var(--recipe-image-heigth);
+	/* position: absolute; */
+	/* height: var(--recipe-image-heigth); */
 	width: 100%;
 }
 
@@ -69,6 +69,7 @@ span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
 .image-container img {
 	width:100%;
 	max-height:var(--recipe-image-heigth);
+	/* height:var(--recipe-image-heigth); */
 	float:left;
 	object-fit:cover;
 	object-position: 0 0;

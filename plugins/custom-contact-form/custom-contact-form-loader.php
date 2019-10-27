@@ -14,9 +14,15 @@ License: GPL
 if ( !defined('ABSPATH') )
 	die('-1');
 
-require_once 'includes/CustomContactForm.php';
-require_once 'includes/CustomContactFormShortcode.php';
+require_once 'includes/class-custom-contact-form.php';
+require_once 'admin/class-ccf-admin.php';
+require_once 'public/class-ccf-public.php';
 
-new CustomContactForm();
-new CustomContactFormShortcode();
 
+/* Start plugin */
+/* IMPORTANT : since the contacts post type is created at the init hook, the plugin's startup hook must be fired before ! */
+add_action('after_setup_theme', 'ccf_start_plugin');
+function ccf_start_plugin()
+{
+	new Custom_Contact_Form();
+}

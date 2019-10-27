@@ -127,7 +127,7 @@ span.favorite-icon {
 	z-index: 9999;
 	position: absolute;
 	right: 0;
-	bottom: 0;
+	/* bottom: 0; */
 	/* max-width:50%; */
 	/* height: var(--recipe-image-heigth); */
 	/* padding: 50px 0px; */
@@ -137,6 +137,7 @@ span.favorite-icon {
 
 	/* background: linear-gradient(90deg, #ffffff85, white); */
 	background: #ffffffa3;
+	border: 1px solid #d0d0d0;
 	color: #484848;
 	font-size: 1.8rem;
 	font-weight: bold;

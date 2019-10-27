@@ -99,12 +99,12 @@ td.rating-category {
 	min-width: 60px;
 }
 
-/* Rating stars formatting 
+/* Rating stars formatting
 -----------------------------------------*/
 
 
 /* Font Icons Rating icons */
-/* 
+/*
 i.fi {
 	display:inline-block;
 	width:20px;
@@ -193,13 +193,13 @@ i.fi.fi-half.fi-off {
 	color:#f5a241;
 }
 #rating i.fa.fa-star-o {
-	color:#d3d3d3;
+	color:#6f6f6f;
 }
 #rating .full i.fa.fa-star-o {
 	color:#f18b14;
 }
 
-/* MEDIA QUERIES 
+/* MEDIA QUERIES
 ---------------------------------------------------*/
 
 @media only screen and (max-width:570px) {

@@ -184,7 +184,9 @@ class CRM_Ingredient {
             }
         }
 
+        $out .= '<span id="ingredient_name_root">';
         $out .= ($plural && self::is_plural( $amount_normalized, $unit)) ? $plural : $args['ingredient'];
+        $out .= '</span>';
         $out .= $closing_tag;
         $out .= '</span>';
 

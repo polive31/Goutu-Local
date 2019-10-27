@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-10-24 00:40+0200\n"
-"PO-Revision-Date: 2019-10-24 00:44+0200\n"
+"POT-Creation-Date: 2019-10-27 21:03+0100\n"
+"PO-Revision-Date: 2019-10-27 21:03+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -680,51 +680,51 @@ msgstr "Exprimez vous, %s !"
 msgid "Post in"
 msgstr "Commentaires"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:41
+#: plugins/custom-contact-form/admin/class-ccf-admin.php:23
 #, fuzzy
 #| msgid "Print this Recipe"
 msgid "Save Options"
 msgstr "Imprimer cette recette"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:66
+#: plugins/custom-contact-form/admin/class-ccf-admin.php:34
 #, fuzzy
 #| msgid "Contact us"
 msgctxt "Post Type General Name"
 msgid "Contact Requests"
 msgstr "Contactez-nous"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:67
+#: plugins/custom-contact-form/admin/class-ccf-admin.php:35
 #, fuzzy
 #| msgid "Contact us"
 msgctxt "Post Type Singular Name"
 msgid "Contact Request"
 msgstr "Contactez-nous"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:68
-#: plugins/custom-contact-form/includes/CustomContactForm.php:69
-#: plugins/custom-contact-form/includes/CustomContactForm.php:90
+#: plugins/custom-contact-form/admin/class-ccf-admin.php:36
+#: plugins/custom-contact-form/admin/class-ccf-admin.php:37
+#: plugins/custom-contact-form/admin/class-ccf-admin.php:58
 #, fuzzy
 #| msgid "Contact us"
 msgid "Contacts"
 msgstr "Contactez-nous"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:70
+#: plugins/custom-contact-form/admin/class-ccf-admin.php:38
 msgid "Parent Item:"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:71
+#: plugins/custom-contact-form/admin/class-ccf-admin.php:39
 #, fuzzy
 #| msgid "All diets"
 msgid "All Items"
 msgstr "Tous les régimes"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:72
+#: plugins/custom-contact-form/admin/class-ccf-admin.php:40
 #, fuzzy
 #| msgid "View recipe"
 msgid "Add New Item"
 msgstr "Voir la recette"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:73
+#: plugins/custom-contact-form/admin/class-ccf-admin.php:41
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:113
 #: plugins/wp-ultimate-recipe-premium/core/helpers/migration/3_10_2_keywords.php:26
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:35
@@ -745,58 +745,113 @@ msgstr "Voir la recette"
 msgid "Add New"
 msgstr "Ajoutez votre photo"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:74
+#: plugins/custom-contact-form/admin/class-ccf-admin.php:42
 #, fuzzy
 #| msgid "View recipe"
 msgid "New Item"
 msgstr "Voir la recette"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:75
+#: plugins/custom-contact-form/admin/class-ccf-admin.php:43
 #, fuzzy
 #| msgid "Edit"
 msgid "Edit Item"
 msgstr "Modifier"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:76
+#: plugins/custom-contact-form/admin/class-ccf-admin.php:44
 #, fuzzy
 #| msgid "Edit"
 msgid "Update Item"
 msgstr "Modifier"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:77
+#: plugins/custom-contact-form/admin/class-ccf-admin.php:45
 #, fuzzy
 #| msgid "View recipe"
 msgid "View Item"
 msgstr "Voir la recette"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:78
+#: plugins/custom-contact-form/admin/class-ccf-admin.php:46
 #, fuzzy
 #| msgid "Search"
 msgid "Search Item"
 msgstr "Rechercher"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:79
+#: plugins/custom-contact-form/admin/class-ccf-admin.php:47
 msgid "Not found"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:80
+#: plugins/custom-contact-form/admin/class-ccf-admin.php:48
 msgid "Not found in Trash"
 msgstr ""
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:83
+#: plugins/custom-contact-form/admin/class-ccf-admin.php:51
 #, fuzzy
 #| msgid "Contact us"
 msgctxt "contact"
 msgid "contact"
 msgstr "Contactez-nous"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:89
+#: plugins/custom-contact-form/admin/class-ccf-admin.php:57
 #, fuzzy
 #| msgid "Contact us"
 msgid "contact"
 msgstr "Contactez-nous"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:121
+#: plugins/custom-contact-form/public/class-ccf-public.php:52
+msgid "You forgot to enter your name."
+msgstr "Merci de renseigner votre nom."
+
+#: plugins/custom-contact-form/public/class-ccf-public.php:66
+msgid "You forgot to enter your email address."
+msgstr "Merci de renseigner votre adresse mail."
+
+#: plugins/custom-contact-form/public/class-ccf-public.php:69
+msgid "You entered an invalid email address."
+msgstr "Cette adresse mail est invalide."
+
+#: plugins/custom-contact-form/public/class-ccf-public.php:76
+msgid "You forgot to enter your comments."
+msgstr "Merci de renseigner votre message."
+
+#: plugins/custom-contact-form/public/class-ccf-public.php:83
+msgid "You must accept the privacy notice for this form to be submitted."
+msgstr ""
+"Merci de donner votre accord, afin que ce formulaire puisse être envoyé."
+
+#: plugins/custom-contact-form/public/class-ccf-public.php:94
+msgid "Please complete the captcha verification."
+msgstr "Merci de remplir la vérification anti-spam."
+
+#: plugins/custom-contact-form/public/class-ccf-public.php:119
+#, fuzzy, php-format
+#| msgid "Contact us"
+msgid "%s : Contact request from %s"
+msgstr "Contactez-nous"
+
+#: plugins/custom-contact-form/public/class-ccf-public.php:143
+msgid "Home page"
+msgstr "l'accueil."
+
+#: plugins/custom-contact-form/public/class-ccf-public.php:146
+#, php-format
+msgid "Thanks %s,"
+msgstr "Merci %s,"
+
+#: plugins/custom-contact-form/public/class-ccf-public.php:149
+msgid "Your message was sent, we will answer you shortly."
+msgstr ""
+"Votre message nous a été transmis, nous vous répondrons dans les plus brefs "
+"délais."
+
+#: plugins/custom-contact-form/public/class-ccf-public.php:152
+#, php-format
+msgid "Back to %s"
+msgstr "Retour à %s"
+
+#: plugins/custom-contact-form/public/class-ccf-public.php:159
+msgid "Please provide the required information."
+msgstr "Merci de renseigner les informations manquantes."
+
+#: plugins/custom-contact-form/public/class-ccf-public.php:178
 msgid ""
 "For security reasons, and to avoid spam, please solve the following "
 "operation : "
@@ -804,127 +859,59 @@ msgstr ""
 "Pour raisons de sécurité, et afin d'éviter le spam, merci de résoudre "
 "l'opération suivante : "
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:124
+#: plugins/custom-contact-form/public/class-ccf-public.php:181
 msgid "zero"
 msgstr "zéro"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:125
+#: plugins/custom-contact-form/public/class-ccf-public.php:182
 msgid "one"
 msgstr "un"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:126
+#: plugins/custom-contact-form/public/class-ccf-public.php:183
 msgid "two"
 msgstr "deux"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:127
+#: plugins/custom-contact-form/public/class-ccf-public.php:184
 msgid "three"
 msgstr "trois"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:128
+#: plugins/custom-contact-form/public/class-ccf-public.php:185
 msgid "four"
 msgstr "quatre"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:129
+#: plugins/custom-contact-form/public/class-ccf-public.php:186
 msgid "five"
 msgstr "cinq"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:130
+#: plugins/custom-contact-form/public/class-ccf-public.php:187
 msgid "six"
 msgstr "six"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:131
+#: plugins/custom-contact-form/public/class-ccf-public.php:188
 msgid "seven"
 msgstr "sept"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:132
+#: plugins/custom-contact-form/public/class-ccf-public.php:189
 msgid "eight"
 msgstr "huit"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:133
+#: plugins/custom-contact-form/public/class-ccf-public.php:190
 msgid "nine"
 msgstr "neuf"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:134
+#: plugins/custom-contact-form/public/class-ccf-public.php:191
 msgid "ten"
 msgstr "dix"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:135
+#: plugins/custom-contact-form/public/class-ccf-public.php:192
 msgid "eleven"
 msgstr "onze"
 
-#: plugins/custom-contact-form/includes/CustomContactForm.php:136
+#: plugins/custom-contact-form/public/class-ccf-public.php:193
 msgid "twelve"
 msgstr "douze"
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:61
-#: plugins/custom-contact-form/templates/contact-form.php:44
-msgid "You forgot to enter your name."
-msgstr "Merci de renseigner votre nom."
-
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:75
-#: plugins/custom-contact-form/templates/contact-form.php:58
-msgid "You forgot to enter your email address."
-msgstr "Merci de renseigner votre adresse mail."
-
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:78
-#: plugins/custom-contact-form/templates/contact-form.php:61
-msgid "You entered an invalid email address."
-msgstr "Cette adresse mail est invalide."
-
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:85
-#: plugins/custom-contact-form/templates/contact-form.php:68
-msgid "You forgot to enter your comments."
-msgstr "Merci de renseigner votre message."
-
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:92
-#: plugins/custom-contact-form/templates/contact-form.php:75
-msgid "You must accept the privacy notice for this form to be submitted."
-msgstr ""
-"Merci de donner votre accord, afin que ce formulaire puisse être envoyé."
-
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:104
-#: plugins/custom-contact-form/templates/contact-form.php:91
-msgid "Please complete the captcha verification."
-msgstr "Merci de remplir la vérification anti-spam."
-
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:129
-#: plugins/custom-contact-form/templates/contact-form.php:116
-#, fuzzy, php-format
-#| msgid "Contact us"
-msgid "%s : Contact request from %s"
-msgstr "Contactez-nous"
-
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:153
-#: plugins/custom-contact-form/templates/contact-form.php:139
-msgid "Home page"
-msgstr "l'accueil."
-
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:156
-#: plugins/custom-contact-form/templates/contact-form.php:142
-#, php-format
-msgid "Thanks %s,"
-msgstr "Merci %s,"
-
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:158
-#: plugins/custom-contact-form/templates/contact-form.php:144
-msgid "Your message was sent, we will answer you shortly."
-msgstr ""
-"Votre message nous a été transmis, nous vous répondrons dans les plus brefs "
-"délais."
-
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:161
-#: plugins/custom-contact-form/templates/contact-form.php:147
-#, php-format
-msgid "Back to %s"
-msgstr "Retour à %s"
-
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:168
-#: plugins/custom-contact-form/templates/contact-form.php:155
-msgid "Please provide the required information."
-msgstr "Merci de renseigner les informations manquantes."
-
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:181
-#: plugins/custom-contact-form/templates/contact-form.php:162
+#: plugins/custom-contact-form/templates/contact-form.php:6
 msgid ""
 "Fields marked with an asterisk (<span class=\"error\">*</span>) are "
 "mandatory."
@@ -932,8 +919,7 @@ msgstr ""
 "Les champs marqués d'une astérisque (<span class=\"error\">*</span>) sont "
 "requis."
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:184
-#: plugins/custom-contact-form/templates/contact-form.php:165
+#: plugins/custom-contact-form/templates/contact-form.php:9
 #: plugins/custom-star-rating/public/partials/comment-template.php:32
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:114
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_form.php:13
@@ -959,34 +945,29 @@ msgstr ""
 msgid "Name"
 msgstr "Nom"
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:200
-#: plugins/custom-contact-form/templates/contact-form.php:181
+#: plugins/custom-contact-form/templates/contact-form.php:27
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:33
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:59
 msgid "Subject"
 msgstr "Sujet"
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:209
-#: plugins/custom-contact-form/templates/contact-form.php:190
+#: plugins/custom-contact-form/templates/contact-form.php:36
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:36
 msgid "Message"
 msgstr "Message"
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:231
-#: plugins/custom-contact-form/templates/contact-form.php:212
+#: plugins/custom-contact-form/templates/contact-form.php:63
 msgid "Send a copy of this email to yourself"
 msgstr "Je souhaite recevoir une copie de ce message."
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:234
-#: plugins/custom-contact-form/templates/contact-form.php:215
+#: plugins/custom-contact-form/templates/contact-form.php:66
 msgid ""
 "I accept that the data entered on this form is stored on the present website."
 msgstr ""
 "J'accepte que les informations contenues dans ce formulaire soient stockées "
 "sur ce site web."
 
-#: plugins/custom-contact-form/includes/CustomContactFormShortcode.php:240
-#: plugins/custom-contact-form/templates/contact-form.php:221
+#: plugins/custom-contact-form/templates/contact-form.php:72
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/compose.php:51
 msgid "Send Message"
 msgstr "Envoyer"
@@ -1284,7 +1265,7 @@ msgstr "Quoi de neuf aujourd'hui, %s ?"
 msgid "Post a message on %s's news feed..."
 msgstr "Publie un message sur le fil d'actualités de %s..."
 
-#: plugins/custom-peepso-overrides/public/class-cpo-customizations.php:112
+#: plugins/custom-peepso-overrides/public/class-cpo-customizations.php:114
 msgid "wrote a new recipe"
 msgstr "a publié une nouvelle recette"
 
@@ -1504,13 +1485,13 @@ msgstr "Etiquettes"
 msgid "Read More"
 msgstr "Lire plus"
 
-#: plugins/custom-post-management/custom-post-template/class-custom-post-template.php:47
+#: plugins/custom-post-management/custom-post-template/class-custom-post-template.php:62
 #, php-format
 msgid "Published on %s by %s<span id=\"username\">%s</span>"
 msgstr "Publié le %s par %s<span id=\"username\">%s</span>"
 
 #: plugins/custom-post-management/custom-post-template/partials/post_toolbar.php:23
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:81
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:86
 #: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/templates/shopping-list.php:25
 msgid "Print"
 msgstr "Imprimer"
@@ -1520,7 +1501,7 @@ msgid "Print this post"
 msgstr "Imprimer cet article"
 
 #: plugins/custom-post-management/custom-post-template/partials/post_toolbar.php:38
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:96
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:101
 msgid "Share"
 msgstr "Partager"
 
@@ -1900,7 +1881,7 @@ msgid "Occasion"
 msgstr "Occasion"
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:110
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:165
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:171
 msgid "Diet"
 msgstr "Régime"
 
@@ -2037,7 +2018,7 @@ msgid "Are you sure you want to delete this post :"
 msgstr "Etes vous sûr de vouloir supprimer cette recette :"
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:236
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:85
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:90
 msgid "Print this Recipe"
 msgstr "Imprimer cette recette"
 
@@ -2391,7 +2372,7 @@ msgstr "Ingrédient"
 #: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:229
 #: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:230
 #: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-print-template.php:83
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:238
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:242
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:19
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:49
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:81
@@ -2555,44 +2536,47 @@ msgid "reviews"
 msgstr "avis"
 
 #: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-print-template.php:28
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:184
 msgid "Serves"
 msgstr "Portions"
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:30
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:34
 msgid "Rate"
 msgstr "Evaluer"
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:35
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:39
 msgid "Comment and rate this recipe"
 msgstr "Commenter et noter cette recette"
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:48
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:52
 msgid "Rate this recipe"
 msgstr "Evaluer cette recette"
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:112
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:117
 #: themes/foodiepro-2.1.8/buddypress/members/single/messages/messages-loop.php:137
 msgid "Read"
 msgstr "Lire"
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:116
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:121
 msgid "Read this recipe out loud"
 msgstr "Lire cette recette à haute voix"
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:158
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:164
 msgid "Origin"
 msgstr "Origine"
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:172
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:178
 msgid "Level"
 msgstr "Niveau"
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:187
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:211
+msgid "For "
+msgstr "Pour "
+
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:214
 msgid "Decrease servings"
 msgstr "Réduire les quantités"
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:191
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:218
 msgid "Increase servings"
 msgstr "Augmenter les quantités"
 
@@ -2753,7 +2737,7 @@ msgstr "… et bien plus à venir !"
 msgid "Register"
 msgstr "Je m'inscris"
 
-#: plugins/custom-social-interactions/includes/CustomSocialInteractions.php:81
+#: plugins/custom-social-interactions/includes/CustomSocialInteractions.php:80
 #: plugins/custom-social-interactions/includes/CustomSocialInteractionsShortcodes.php:30
 #: plugins/custom-social-interactions/includes/CustomSocialInteractionsShortcodes.php:33
 #: plugins/custom-social-interactions/includes/CustomSocialLikePost.php:66
@@ -2966,13 +2950,17 @@ msgstr ""
 msgid "Add a comment"
 msgstr "Ajoutez votre photo"
 
-#: plugins/custom-star-rating/public/class-csr-rating.php:332
+#: plugins/custom-star-rating/public/class-csr-rating.php:338
 #, fuzzy, php-format
 #| msgid "review"
 msgid "%s review"
 msgid_plural "%s reviews"
 msgstr[0] "avis"
 msgstr[1] "avis"
+
+#: plugins/custom-star-rating/public/class-csr-rating.php:342
+msgid "Evaluate me !"
+msgstr "Evaluez moi !"
 
 #: plugins/custom-star-rating/public/partials/comment-template.php:34
 #, fuzzy

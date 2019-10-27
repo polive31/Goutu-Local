@@ -40,7 +40,7 @@ jQuery(document).ready(function() {
         var servings_input = jQuery(this);
 
         console.log('In adjust recipe servings keyup change');
-        var amounts = servings_input.parents('.wpurp-container').find('.wpurp-recipe-ingredient-quantity');
+        var amounts = servings_input.parents('.ingredients-container').find('.recipe-ingredient-quantity');
         var servings_original = parseFloat(servings_input.data('original'));
         var servings_new = servings_input.val();
 
@@ -57,7 +57,6 @@ jQuery(document).ready(function() {
 
     jQuery(document).on('blur', '.adjust-recipe-servings', function(e) {
         var servings_input = jQuery(this);
-
         var servings_new = servings_input.val();
 
         if(isNaN(servings_new) || servings_new <= 0){
@@ -153,6 +152,7 @@ wpurp_adjustable_servings.parse_quantity = function(sQuantity) {
 
 wpurp_adjustable_servings.updateAmounts = function(amounts, servings_original, servings_new)
 {
+    console.log( "In updateAmounts" );
     amounts.each(function() {
         var amount = parseFloat(jQuery(this).data('normalized'));
         var fraction = jQuery(this).data('fraction');
@@ -169,6 +169,19 @@ wpurp_adjustable_servings.updateAmounts = function(amounts, servings_original, s
                 var new_amount = servings_new * amount/servings_original;
                 var new_amount_text = wpurp_adjustable_servings.toFixed(new_amount, fraction);
                 jQuery(this).text(new_amount_text + ' ');
+
+                // console.log( "Current object ", jQuery(this).html() );
+                // console.log( "new_amount = ", new_amount );
+                ingredientUnit = jQuery(this).next().html();
+                // console.log("unit = ", ingredientUnit );
+                if ((new_amount >= 2) && !ingredientUnit.length ) {
+                    // console.log( "Ingredient name needs to be updated ! " );
+                    ingredientNameContainer = jQuery(this).parents('.wpurp-recipe-ingredient').find('.recipe-ingredient-name');
+                    ingredientNameRoot = jQuery(this).parents('.wpurp-recipe-ingredient').find('#ingredient_name_root');
+                    // console.log("Plural = ", ingredientNameContainer.data('plural') );
+                    // console.log("Root name = ", ingredientNameRoot.html() );
+                    ingredientNameRoot.html( ingredientNameContainer.data('plural') );
+                }
             }
         }
     });

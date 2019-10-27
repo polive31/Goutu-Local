@@ -11,7 +11,7 @@ class CustomContactFormShortcode extends CustomContactForm {
 
 	public function __construct() {
 		// add_action( 'wp_enqueue_scripts', array($this, 'enqueue_contact_scripts' ) );
-		add_shortcode( 'custom-contact-form', array($this, 'output_contact_form' ) );
+		add_shortcode( 'custom-contact-form', array($this, 'ccf_shortcode' ) );
 	}
 
 	// public function enqueue_contact_scripts() {
@@ -22,32 +22,28 @@ class CustomContactFormShortcode extends CustomContactForm {
 	// 	// $js_path = CCF_PATH . '/assets/js/';
 	// 	// custom_enqueue_script( 'contact-form', $js_uri, $js_path, 'contact-form.js', array( 'jquery' ), CHILD_THEME_VERSION, true);
 
-	// 	if (class_exists('CustomGoogleRecaptcha'))
-	// 		new CustomGoogleRecaptcha(); // makes sure that the related plugin assets are loaded
-
 	// }
 
-	public function output_contact_form ( $atts ) {
+	public function ccf_shortcode( $atts ) {
 		$atts = shortcode_atts( array(
 	        // 'arg' => 'value',
 	    ), $atts );
 
-		// wp_enqueue_script( 'g-recaptcha' );
-		CustomGoogleRecaptcha::enqueue_scripts();
+		if (class_exists('Custom_Google_Recaptcha')) {
+			$gCaptcha = new CGR_Public();
+			$gCaptcha->enqueue_scripts();
+		}
+		else
+			$gCaptcha = false;
 
 	    ob_start();
-	    $this->ccf_output_form();
+	    $this->ccf_output_form($gCaptcha);
 	    $out = ob_get_contents();
 	    ob_clean();
 	    return $out;
     }
 
-	public function ccf_output_form() {
-
-		if (class_exists('CustomGoogleRecaptcha'))
-			$gCaptcha = new CustomGoogleRecaptcha();
-		else
-			$gCaptcha = false;
+	public function ccf_output_form($gCaptcha) {
 
 		$hasError = false;
 		$captchaError = false;
@@ -150,7 +146,7 @@ class CustomContactFormShortcode extends CustomContactForm {
 
 		// FORM DISPLAY
 		if (isset($emailSent) && $emailSent == true) {
-			$homelink = do_shortcode('[wp-page-link target="home" text="' . __('Home page', 'foodiepro') . '"]');
+			$homelink = do_shortcode('[permalink wp="home" text="' . __('Home page', 'foodiepro') . '"]');
 				?>
 				<p class="successbox">
 					<?php echo sprintf( __('Thanks %s,','foodiepro'), $name); ?><br>

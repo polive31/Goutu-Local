@@ -38,9 +38,11 @@ class CPO_Customizations {
 		return $msg;
 	}
 
-    /* * * ACTIVITY STREAM * * */
-    /**
-     * create an Activity Stream item when a new post is published
+    /*****************************************************************************/
+    /******************        ACTIVITY STREAM        ****************************/
+    /*****************************************************************************/
+
+     /* create an Activity Stream item when a new post is published
      *
      * @param int 		$ID
      * @param WP_Post 	$post
@@ -118,6 +120,14 @@ class CPO_Customizations {
 
         return ($action);
 	}
+
+     /* create an Activity Stream item when a post is liked
+     *
+     * @param int 		$ID
+     * @param WP_Post 	$post
+     * @return bool (FALSE - posting, post type disabled/blacklisted, TRUE - success, NULL - already added)
+     */
+
 
 
 }

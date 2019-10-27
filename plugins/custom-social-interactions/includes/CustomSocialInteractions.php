@@ -35,28 +35,27 @@ class Custom_Social_Interactions {
         echo '<pre>' . 'Current user : ' . $userid . '</pre>';
         // echo '<pre>' . print_r( $usermeta) . '</pre>';
         echo '<pre>' . print_r( $postmeta) . '</pre>';
-    }    
+    }
 
     public function social_like_post_script() {
         if (! is_single() ) return;
             // wp_enqueue_script( 'custom-post-like', self::$PLUGIN_URI . '/assets/js/social-like-post.js', array( 'jquery' ), CHILD_THEME_VERSION, false );
-            custom_enqueue_script( 
-                'custom-post-like', 
-                '/assets/js/social-like-post.js', 
-                self::$PLUGIN_URI, 
-                self::$PLUGIN_PATH, 
-                array( 'jquery' ), 
-                CHILD_THEME_VERSION, 
-                false 
+            custom_enqueue_script(
+                'custom-post-like',
+                '/assets/js/social-like-post.js',
+                self::$PLUGIN_URI,
+                self::$PLUGIN_PATH,
+                array( 'jquery' ),
+                CHILD_THEME_VERSION,
+                false
             );
-            wp_localize_script( 'custom-post-like', 'custom_post_like', array( 
+            wp_localize_script( 'custom-post-like', 'custom_post_like', array(
                     'ajaxurl' => admin_url( 'admin-ajax.php' ),
                     'nonce' => wp_create_nonce( 'custom_post_like' ))
         );
     }
 
     public function ajax_like_post() {
-        
         if(check_ajax_referer( 'custom_post_like', 'security', false ) ) {
             // echo 'Ajax security OK';
             $post_id = $_POST['post_id'];
@@ -106,7 +105,7 @@ class Custom_Social_Interactions {
         $liking_users = is_array( $liking_users ) ? $liking_users : array();
 
         return count( $liking_users );
-    } 
+    }
 
 
     /* Get the user ip (from WP Beginner)
@@ -115,16 +114,16 @@ class Custom_Social_Interactions {
         if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
             //check ip from share internet
             $ip = $_SERVER['HTTP_CLIENT_IP'];
-        } 
+        }
         elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
             //to check ip is pass from proxy
             $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        } 
+        }
         else {
             $ip = $_SERVER['REMOTE_ADDR'];
         }
         return apply_filters( 'wpb_get_ip', $ip );
-    }    
+    }
 
 }
 

@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 class WPSSM_Admin {
-	
+
 	use Utilities;
 
  	/* Class arguments */
@@ -22,36 +22,36 @@ class WPSSM_Admin {
 	private $optimize;
 	private $javasync;
 	private $sizes;
-	
+
 	/* Local class attributes */
-	private $page; 	
-		
-	/* Objects */ 																									
-	protected $Assets;														
-	protected $Output;														
+	private $page;
+
+	/* Objects */
+	protected $Assets;
+	protected $Output;
 
 	public function __construct( $args ) {
-		//PHP_Debug::trace('*** In WPSSM_Admin __construct ***' );		
-  	$this->args = $args;									
-  	$this->hydrate_args( $args );		
-	}														
-														
+		//PHP_Debug::trace('*** In WPSSM_Admin __construct ***' );
+  	$this->args = $args;
+  	$this->hydrate_args( $args );
+	}
+
 	public function init_admin_cb() {
-		//PHP_Debug::trace( 'In WPSSM_Admin init_admin_cb()' );								
+		//PHP_Debug::trace( 'In WPSSM_Admin init_admin_cb()' );
 		if ( !is_admin() ) return;
-		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-assets.php' ;				
-		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-assets-display.php' ;		
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-output.php' ;	
-	
-		$this->Assets = 	new WPSSM_Assets_Display( $this->args );									
+		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-options-assets.php' ;
+		require_once plugin_dir_path( dirname(__FILE__) ) . 'assets/class-wpssm-assets-display.php' ;
+		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wpssm-admin-output.php' ;
+
+		$this->Assets = 	new WPSSM_Assets_Display( $this->args );
 		$this->Output = 	new WPSSM_Admin_Output( $this->Assets, 	$this->args);
 
-		// Initialize options settings 
+		// Initialize options settings
 		$this->page = $this->get_page_structure( $this->get_tab() );
 
 		// Prepare assets to display
-		//PHP_Debug::trace('In WPSSM_Admin init_admin(), $this->get_tab()', $this->get_tab() );	
-		$this->init_settings( $this->page );						
+		//PHP_Debug::trace('In WPSSM_Admin init_admin(), $this->get_tab()', $this->get_tab() );
+		$this->init_settings( $this->page );
 	}
 
 	public function get_page_structure( $tab ) {
@@ -59,7 +59,7 @@ class WPSSM_Admin {
 					'slug'=>'general_settings_page',
 					'sections'=> array(
 							array(
-							'slug'=>'general_settings_section', 
+							'slug'=>'general_settings_section',
 							'title'=>'General Settings Section',
 							'fields' => array(
 										'record' => array(
@@ -71,16 +71,16 @@ class WPSSM_Admin {
 													'slug' => 'wpssm_optimize',
 													'title' => 'Optimize scripts & styles in frontend',
 													'callback' => array($this->Output,'toggle_switch_optimize_cb'),
-													),	
+													),
 										'javasync' => array(
 													'slug' => 'wpssm_javasync',
 													'title' => 'Allow improved asynchronous loading of scripts via javascript',
 													'callback' => array($this->Output,'toggle_switch_javasync_cb'),
-													),	
+													),
 										),
 							),
 							array(
-							'slug'=>'general_info_section', 
+							'slug'=>'general_info_section',
 							'title'=>'General Information',
 							'fields' => array(
 										'pages' => array(
@@ -89,17 +89,17 @@ class WPSSM_Admin {
 													'label_for' => 'wpssm-recorded-pages',
 													'class' => 'foldable',
 													'callback' => array($this->Output,'pages_list'),
-													),	
+													),
 										),
 							),
 					),
 		);
-									
+
 		if ( $tab == 'scripts' ) return array(
 					'slug'=>'enqueued_scripts_page',
 					'sections'=> array(
 								array(
-								'slug'=>'enqueued_scripts_section', 
+								'slug'=>'enqueued_scripts_section',
 								'title'=>'Enqueued Scripts Section',
 								'fields' => array(
 											'header' => array(
@@ -133,17 +133,17 @@ class WPSSM_Admin {
 														'label_for' => 'wpssm-enqueued-scripts',
 														'class' => 'foldable',
 														'callback' => array($this->Output, 'disabled_items_list'),
-														),											
+														),
 											)
 								)
 					),
 		);
-	
-		if ( $tab == 'styles' ) return array(		
+
+		if ( $tab == 'styles' ) return array(
 					'slug'=>'enqueued_styles_page',
 					'sections'=> array(
 								array(
-								'slug'=>'enqueued_styles_section', 
+								'slug'=>'enqueued_styles_section',
 								'title'=>'Enqueued Styles Section',
 								'fields' => array(
 											'header' => array(
@@ -177,11 +177,11 @@ class WPSSM_Admin {
 														'label_for' => 'wpssm-disabled-styles',
 														'class' => 'foldable',
 														'callback' => array($this->Output, 'disabled_items_list'),
-														),											
+														),
 											),
 								),
 					),
-		);				
+		);
 	}
 
 
@@ -190,7 +190,7 @@ class WPSSM_Admin {
 ----------------------------------------------------------*/
 
 	public function add_plugin_menu_option_cb() {
-		//PHP_Debug::trace('In add_plugin_menu_option_cb');								
+		//PHP_Debug::trace('In add_plugin_menu_option_cb');
 		$page_id = add_submenu_page(
       $this->plugin_submenu,
       'WP Scripts & Styles Manager',
@@ -199,11 +199,11 @@ class WPSSM_Admin {
       $this->plugin_name,
       array($this, 'output_options_page_cb' )
 	    );
-	  /* Add hook for admin notice display on page load */  
+	  /* Add hook for admin notice display on page load */
 		add_action( "load-$page_id", 								array( $this, 'load_option_page_cb' ) );
 		add_action( "admin_print_scripts-$page_id", array( $this, 'enqueue_admin_scripts_cb' ) );
 	}
-	
+
 	public function load_option_page_cb() {
 		//PHP_Debug::trace('In load_option_page_cb function');
 		if (isset ( $_GET['msg'] ) )
@@ -214,11 +214,11 @@ class WPSSM_Admin {
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wpssm-admin.css', array(), $this->plugin_version, 'all' );
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wpssm-admin.js', array( 'jquery' ), $this->plugin_version, false );
 	}
-		
+
 
 /* SETTINGS INIT FOR OPTION PAGES
 ----------------------------------------------------------*/
-	
+
 	public function init_settings( $page ) {
 			//PHP_Debug::trace('In WPSSM_Admin init_settings');
 			//PHP_Debug::trace('=> $this->settings_pages_structure[$this->get_tab()]', $page);
@@ -230,7 +230,7 @@ class WPSSM_Admin {
 	        $section['title'],
 	        array($this->Output,'section_headline'),
 	        $page['slug']
-	    	);	
+	    	);
     		foreach ($section['fields'] as $field => $settings) {
     			//PHP_Debug::trace('register loop - fields', array($field => $settings));
     			register_setting($section['slug'], $settings['slug']);
@@ -247,14 +247,14 @@ class WPSSM_Admin {
 			        $settings['callback'],
 			        $page['slug'],
 			        $section['slug'],
-			        array( 
+			        array(
 			        	'label_for' => $label,
 			        	'class' => $class)
-				  );	    			
-		    }      
-	    } 	
-	}	
-	
+				  );
+		    }
+	    }
+	}
+
 /* OPTIONS PAGE OUTPUT CALLBACKS
 ----------------------------------------------------------------*/
 	public function output_options_page_cb() {
@@ -264,4 +264,3 @@ class WPSSM_Admin {
 
 
 }
-

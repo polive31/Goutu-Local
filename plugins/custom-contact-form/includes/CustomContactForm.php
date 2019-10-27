@@ -24,9 +24,8 @@ class CustomContactForm {
 	}
 
 
-
 	public function add_ccf_options() {
-		add_options_page('Custom Contact Form', 'Custom Contact Form', 'manage_options', 'functions', array($this, 'ccf_options'));
+		add_options_page('Custom Contact Form', 'Custom Contact Form', 'manage_options', 'ccf_options', array($this, 'ccf_options'));
 	}
 
 	public function ccf_options() {

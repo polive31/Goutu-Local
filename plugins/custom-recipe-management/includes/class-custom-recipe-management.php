@@ -31,9 +31,12 @@ class Custom_Recipe_Management {
         /* Hooks for Recipe output
         ------------------------------------------------------------- */
         $Recipe_Template = new CRM_Recipe_Template();
-        /* Override WPURP output (includes toolbar, therefore no need for cpm_recipe_toolbar action) */
-        add_filter( 'wpurp_output_recipe',          array($Recipe_Template,'display_recipe'), 10, 2 );
-        add_filter( 'wpurp_output_recipe_print',    array($Recipe_Template,'print_recipe'), 10, 2 );
+        add_filter( 'wpurp_output_recipe_print',        array($Recipe_Template, 'print_recipe'), 10, 2 );
+        /* Method 1 : Filter WPURP output (includes toolbar, therefore no need for cpm_recipe_toolbar action) */
+        add_filter( 'wpurp_output_recipe',              array($Recipe_Template,'display_recipe'), 10, 2 );
+        /* Method 2 (BETA - Issue with printing) : Override WPURP output (includes toolbar, therefore no need for cpm_recipe_toolbar action) */
+        // add_filter( 'wpurp_recipe_content_loop_check',  array($Recipe_Template, 'disable_wpurp_rendering'));
+        // add_filter( 'the_content',                      array($Recipe_Template, 'display_recipe_from_scratch'), 10, 2 );
 
 
         /* Hooks for CRM_Favorite
@@ -45,8 +48,6 @@ class Custom_Recipe_Management {
 
         $Favorite_Shortcodes = new CRM_Favorite_Shortcodes();
         add_shortcode( 'crm-favorites-list',                    array( $Favorite_Shortcodes, 'favorite_recipes_shortcode' ) );
-
-
 
 
         /* Hooks for CRM_Submission

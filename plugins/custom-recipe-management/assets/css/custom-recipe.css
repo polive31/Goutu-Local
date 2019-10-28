@@ -68,7 +68,7 @@ span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
 
 .image-container img {
 	width:100%;
-	max-height:var(--recipe-image-heigth);
+	/* max-height:var(--recipe-image-heigth); */
 	/* height:var(--recipe-image-heigth); */
 	float:left;
 	object-fit:cover;
@@ -137,8 +137,8 @@ span.favorite-icon {
     border-radius: 5px;
 
 	/* background: linear-gradient(90deg, #ffffff85, white); */
-	background: #ffffffa3;
-	border: 1px solid #d0d0d0;
+	background: rgba(255, 255, 255, 0.64);
+	/* border: 1px solid #d0d0d0; */
 	color: #484848;
 	font-size: 1.8rem;
 	font-weight: bold;
@@ -147,6 +147,10 @@ span.favorite-icon {
 	-webkit-user-select: none;  /* Chrome all / Safari all */
 	-moz-user-select: none;     /* Firefox all */
 	-ms-user-select: none;      /* IE 10+ */
+}
+
+.info-container #rating i.fa.fa-star-o {
+    color: #6f6f6f;
 }
 
 

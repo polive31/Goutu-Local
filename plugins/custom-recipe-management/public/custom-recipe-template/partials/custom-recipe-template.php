@@ -143,7 +143,7 @@
 						<?php //discarded $recipe->featured_image_url('vertical-thumbnail'); and used get_the_post_thumbnail_url native wordpress method instead
 						?>
 						<a href="<?php echo get_the_post_thumbnail_url($this->post_ID, 'full'); ?>" id="lightbox">
-							<img src="<?php echo get_the_post_thumbnail_url($this->post_ID, 'horizontal-thumbnail'); ?>" alt="<?php echo $imgAlt; ?>">
+							<img src="<?php echo get_the_post_thumbnail_url($this->post_ID, 'vertical-thumbnail'); ?>" alt="<?php echo $imgAlt; ?>">
 						</a>
 					</div>
 				</div>

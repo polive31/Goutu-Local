@@ -72,7 +72,7 @@
 <div class="recipe-container">
 	<?php
 	// Related Posts
-	rp4wp_children();
+	// rp4wp_children();
 	?>
 </div>
 

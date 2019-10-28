@@ -209,4 +209,64 @@ class CRM_Recipe_Template {
 		return $html;
     }
 
+
+/* Method 2 functions (BETA)
+-----------------------------------------------------------------------------------*/
+
+    public function disable_wpurp_rendering()
+    {
+        return true;
+    }
+
+
+    public function display_recipe_from_scratch($content)
+    {
+
+        if (get_post_type() == 'recipe' ) {
+
+            $content .= "In display_recipe_from_scratch !";
+
+            remove_filter('the_content', array($this, 'display_recipe_from_scratch'), 10);
+
+            $recipe = new WPURP_Recipe(get_post());
+
+            if (!post_password_required() && (is_single() || WPUltimateRecipe::option('recipe_archive_display', 'full') == 'full' || (is_feed() && WPUltimateRecipe::option('recipe_rss_feed_display', 'full') == 'full'))) {
+                $taxonomies = WPUltimateRecipe::get()->tags();
+                unset($taxonomies['ingredient']);
+
+                $type = is_feed() ? 'feed' : 'recipe';
+
+                if (!is_single() && WPUltimateRecipe::option('recipe_archive_use_custom_template', '0') == '1') {
+                    $template = WPUltimateRecipe::option('recipe_archive_recipe_template', '70');
+                } else {
+                    $template = 'default';
+                }
+
+                // $recipe_box = apply_filters('wpurp_output_recipe', $recipe->output_string($type, $template), $recipe);
+                $recipe_box = $this->display_recipe('', $recipe);
+
+                if (strpos($content, '[recipe]') !== false) {
+                    $content = str_replace('[recipe]', $recipe_box, $content);
+                } else if (preg_match("/<!--\s*nextpage.*-->/", $recipe->post_content(), $out)) {
+                    // Add metadata if there is a 'nextpage' tag and there wasn't a '[recipe]' tag on this specific page
+                    $content .= $recipe->output_string('metadata');
+                } else if (is_single() || !preg_match("/<!--\s*more.*-->/", $recipe->post_content(), $out)) {
+                    // Add recipe box to the end of single pages or excerpts (unless there's a 'more' tag
+                    $content .= $recipe_box;
+                }
+            } else {
+                $content = str_replace('[recipe]', '', $content); // Remove shortcode from excerpt
+                $content = $this->excerpt_filter($content);
+            }
+
+            // Remove searchable part
+            $content = preg_replace("/\[wpurp-searchable-recipe\][^\[]*\[\/wpurp-searchable-recipe\]/", "", $content);
+
+            add_filter('the_content', array($this, 'display_recipe_from_scratch'), 10);
+        }
+
+        return $content;
+    }
+
+
 }

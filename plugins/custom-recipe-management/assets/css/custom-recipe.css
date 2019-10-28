@@ -55,7 +55,7 @@ span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
 	max-width:50%; */
 	float:left;
 	padding:0px;
-	z-index: 0;
+	/* z-index: 0; */
 	/* position: absolute; */
 	/* height: var(--recipe-image-heigth); */
 	width: 100%;
@@ -618,7 +618,10 @@ span#wpurp-timer-remaining {
 		width:100%;
 		margin-bottom:20px;
 		float:left;
-		padding-left: 10px;
+		/* padding-left: 10px; */
+		position: initial;
+		margin: 10px 0;
+		border: none;
 	}
 
 	#custom-reader-container.open {

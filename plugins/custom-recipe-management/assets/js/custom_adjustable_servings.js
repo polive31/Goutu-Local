@@ -174,13 +174,20 @@ wpurp_adjustable_servings.updateAmounts = function(amounts, servings_original, s
                 // console.log( "new_amount = ", new_amount );
                 ingredientUnit = jQuery(this).next().html();
                 // console.log("unit = ", ingredientUnit );
-                if ((new_amount >= 2) && !ingredientUnit.length ) {
+                if ( !ingredientUnit.length ) {
                     // console.log( "Ingredient name needs to be updated ! " );
                     ingredientNameContainer = jQuery(this).parents('.wpurp-recipe-ingredient').find('.recipe-ingredient-name');
                     ingredientNameRoot = jQuery(this).parents('.wpurp-recipe-ingredient').find('#ingredient_name_root');
                     // console.log("Plural = ", ingredientNameContainer.data('plural') );
                     // console.log("Root name = ", ingredientNameRoot.html() );
-                    ingredientNameRoot.html( ingredientNameContainer.data('plural') );
+                    if (new_amount >= 2) {
+                        if ( ingredientNameContainer.data('plural').length )
+                            ingredientNameRoot.html( ingredientNameContainer.data('plural') );
+                    }
+                    else {
+                        if ( ingredientNameContainer.data('singular').length )
+                            ingredientNameRoot.html( ingredientNameContainer.data('singular') );
+                    }
                 }
             }
         }

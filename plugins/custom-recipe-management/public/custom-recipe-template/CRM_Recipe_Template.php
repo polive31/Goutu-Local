@@ -229,8 +229,6 @@ class CRM_Recipe_Template {
 
         if (get_post_type() == 'recipe' ) {
 
-            $content .= "In display_recipe_from_scratch !";
-
             remove_filter('the_content', array($this, 'display_recipe_from_scratch'), 10);
 
             $recipe = new WPURP_Recipe(get_post());

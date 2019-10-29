@@ -222,6 +222,11 @@ class CRM_Recipe_Template {
     public function display_recipe_from_scratch($content)
     {
 
+        $api_request = defined('REST_REQUEST');
+        if ( !$api_request && !is_feed() && !in_the_loop() || !is_main_query() ) {
+            return $content;
+        }
+
         if (get_post_type() == 'recipe' ) {
 
             $content .= "In display_recipe_from_scratch !";

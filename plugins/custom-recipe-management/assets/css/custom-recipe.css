@@ -398,16 +398,21 @@ li.wpurp-recipe-instruction {
 .recipe-instruction-bullet {
 	display: inline-block;
     background: #f8f8f8;
-    /* color: #616161; */
-    color: #939393;
-    width: 50px;
+    margin-right: 10px;
+	color: #939393;
+    text-align: center;
+	border : none;
+
+    width: 35px;
+    height: 35px;
+    font-size: 24px;
+    line-height: 28px;
+    /* width: 50px;
     height: 50px;
     margin-right: 10px;
-    text-align: center;
-	font-size: 35px;
-	border : none;
+    font-size: 35px;
+    line-height: 45px; */
     /* border-bottom: 2px solid #CCC; */
-    line-height: 45px;
 	border-radius: 50%;
 	position:relative;
 	border: 2px solid transparent;
@@ -433,20 +438,20 @@ li.wpurp-recipe-instruction {
 }
 
 #r1 {
-	width: 54px;
-	height: 54px;
-	top:-4px;
-	left:-4px;
-	/* border-color: red; */
-	animation-delay: 200ms;
+    width: 40px;
+    height: 40px;
+    top: -4px;
+    left: -4px;
+    /* border-color: red; */
+    animation-delay: 200ms;
 }
 
 #r2 {
-	width: 58px;
-	height: 58px;
-	top:-6px;
-	left:-6px;
-	animation-delay: 400ms;
+    width: 45px;
+    height: 45px;
+    top: -7px;
+    left: -7px;
+    animation-delay: 400ms;
 }
 
 .recipe-instruction-bullet.read {

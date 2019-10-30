@@ -1,6 +1,7 @@
 /* Prevent loosing data when closing the page
 ---------------------------------------------------------------- */
 var formSubmitting = false;
+
 jQuery(window).bind('beforeunload', function (e) {
     console.log('before unload listener setup');
     if (formSubmitting) {

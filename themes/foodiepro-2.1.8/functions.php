@@ -264,7 +264,6 @@ function foodie_pro_includes() {
 	function enqueue_high_priority_assets() {
 		/* Scripts enqueue
 		--------------------------------------------------- */
-
 		// .webp detection
 		custom_enqueue_script( 'custom-modernizr', '/assets/js/modernizr-custom.js', CHILD_THEME_URL, CHILD_THEME_PATH, array(), CHILD_THEME_VERSION );
 		// Add general purpose scripts.
@@ -274,8 +273,8 @@ function foodie_pro_includes() {
 
 		/* Styles enqueue
 		--------------------------------------------------- */
-
-		wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Oswald|Vollkorn:300,400', array(), CHILD_THEME_VERSION );
+		wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Varela+Round|Amatic+SC:400,700|Oswald|Vollkorn:300,400', array(), CHILD_THEME_VERSION );
+		// wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Oswald|Vollkorn:300,400', array(), CHILD_THEME_VERSION );
 		// wp_enqueue_script( 'typekit', '//use.typekit.net/hen2swu.js', array(), '1.0.0' );
 		custom_enqueue_style( 'child-theme-fonts', '/assets/css/fonts.css', CHILD_THEME_URL, CHILD_THEME_PATH, array( 'foodie-pro-theme' ), CHILD_THEME_VERSION );
 	}

@@ -722,10 +722,6 @@ p.wp_widget_plugin_textarea {
 
 /* Tag Cloud
 --------------------------------------- */
-.tagcloud a {
-  font-family:"Oswald",cursive !important;
-}
-
 .widget_wpurp_recipe_search_widget select {
 	font-size: 15px;
 	font-variant: all-small-caps;
@@ -2073,7 +2069,8 @@ a#swipebox-close:hover {
 .tax-container {
     margin-bottom: 10px;
     /*background: #ebebeb;*/
-    background: #e6e5e2;
+	/* background: #e6e5e2; */
+	background: #f1f1f1;
     padding: 5px 20px;
     border-radius: 20px;
 }
@@ -2088,7 +2085,6 @@ h3.ui-accordion-header:focus {
 #accordion h3 {
 	padding: 0;
     margin: 0;
-    font-size: 26px;
 }
 
 .ui-icon {
@@ -2114,11 +2110,6 @@ span.ui-icon.ui-icon-triangle-1-s:before {
     content: "\f078";
 }
 
-#accordion .subnav a {
-    /*padding: 0 36px;*/
-    /*font-variant: small-caps;*/
-    font-size: 1.6rem;
-}
 
 
 /* Genesis eNews Extended

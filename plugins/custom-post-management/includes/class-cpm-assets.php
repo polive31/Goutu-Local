@@ -160,7 +160,7 @@ class CPM_Assets {
                 'edit2' 					=> _x( 'You can then choose to save it as draft, or to publish it. Once approved, it wil be visible to others according to your visibility preferences.', 'post', 'foodiepro' ),
 				'draft1'					=> _x( 'Post saved as a draft.','post', 'foodiepro'),
 				'draft2'					=> _x( 'It will not be visible on the site, but you can edit it at any time and submit it later.','post','foodiepro'),
-				'back'						=> _x( 'Back to <a href="%s">my posts</a>.', 'post', 'foodiepro'),
+				'back'						=> _x( 'Back to <a href="%s" onclick="formSubmitting=true;">my posts</a>.', 'post', 'foodiepro'),
 				'publish-admin'				=> _x( 'Dear administrator, this post is now <a href="%s">published</a>.', 'post', 'foodiepro' ),
 				'publish-user'				=> _x( 'Post submitted! Thank you, your post is now awaiting moderation.', 'post', 'foodiepro' ),
 				'required'					=> _x( 'In order for your post to be published, please fill-in those required fields:', 'post', 'foodiepro' ),

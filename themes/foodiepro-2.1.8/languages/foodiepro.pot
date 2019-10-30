@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-10-27 21:03+0100\n"
+"POT-Creation-Date: 2019-10-31 00:17+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -221,7 +221,7 @@ msgstr ""
 #: peepso/overrides/templates/widgets/userbar.tpl.php:107
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:92
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:96
-#: themes/foodiepro-2.1.8/functions.php:869
+#: themes/foodiepro-2.1.8/functions.php:877
 msgid "Log Out"
 msgstr ""
 
@@ -484,7 +484,7 @@ msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:124
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:131
-#: themes/foodiepro-2.1.8/functions.php:874
+#: themes/foodiepro-2.1.8/functions.php:882
 msgid "Log In"
 msgstr ""
 
@@ -495,7 +495,7 @@ msgstr ""
 
 #: plugins/custom-buddypress-helpers/widgets/BP-custom-login-widget.php:128
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:135
-#: themes/foodiepro-2.1.8/functions.php:424
+#: themes/foodiepro-2.1.8/functions.php:432
 msgid "Not yet a member ? <br> Register here !"
 msgstr ""
 
@@ -1226,7 +1226,7 @@ msgstr ""
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:123
 #: themes/foodiepro-2.1.8/buddypress/members/register.php:92
-#: themes/foodiepro-2.1.8/functions.php:421
+#: themes/foodiepro-2.1.8/functions.php:429
 msgid "Email Address"
 msgstr ""
 
@@ -1297,20 +1297,20 @@ msgstr ""
 msgid "Untitled"
 msgstr ""
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:461
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:463
 #, php-format
 msgid "New user submission:%s"
 msgstr ""
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:474
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:476
 msgid "Unknown action."
 msgstr ""
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:570
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:572
 msgid "Post content"
 msgstr ""
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:573
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:575
 #: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:6
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:16
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:43
@@ -1321,7 +1321,7 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:575
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:577
 msgid "Write your post here."
 msgstr ""
 
@@ -1473,7 +1473,7 @@ msgstr ""
 #: plugins/custom-post-management/includes/class-cpm-assets.php:163
 #, php-format
 msgctxt "post"
-msgid "Back to <a href=\"%s\">my posts</a>."
+msgid "Back to <a href=\"%s\" onclick=\"formSubmitting=true;\">my posts</a>."
 msgstr ""
 
 #: plugins/custom-post-management/includes/class-cpm-assets.php:164
@@ -1812,13 +1812,15 @@ msgstr ""
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:136
 #, php-format
 msgctxt "recipe"
-msgid "Back to <a href=\"%s\">my posts</a>."
+msgid "Back to <a href=\"%s\" onclick=\"formSubmitting=true;\">my posts</a>."
 msgstr ""
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:137
 #, php-format
 msgctxt "recipe"
-msgid "Dear administrator, this post is now <a href=\"%s\">published</a>."
+msgid ""
+"Dear administrator, this post is now <a href=\"%s\" onclick="
+"\"formSubmitting=true;\">published</a>."
 msgstr ""
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:138
@@ -2516,7 +2518,7 @@ msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr ""
 
 #: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:294
-#: themes/foodiepro-2.1.8/functions.php:985
+#: themes/foodiepro-2.1.8/functions.php:993
 msgid "All rights reserved"
 msgstr ""
 
@@ -9113,48 +9115,48 @@ msgstr ""
 msgid "Save Settings"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:390
+#: themes/foodiepro-2.1.8/functions.php:398
 msgid "Goûtu.org - La Communauté des Gourmets"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:398
+#: themes/foodiepro-2.1.8/functions.php:406
 msgid "Enter Email Address"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:399
+#: themes/foodiepro-2.1.8/functions.php:407
 msgid "Enter Password"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:400
+#: themes/foodiepro-2.1.8/functions.php:408
 msgid "Remember Login State"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:401
+#: themes/foodiepro-2.1.8/functions.php:409
 msgid "Please Log In"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:435
+#: themes/foodiepro-2.1.8/functions.php:443
 msgid ""
 "<strong>ERROR</strong>: Invalid login. Please log in with your email address."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:478
+#: themes/foodiepro-2.1.8/functions.php:486
 msgid "author"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:744
+#: themes/foodiepro-2.1.8/functions.php:752
 msgid "Content/Alt Sidebar"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:945
+#: themes/foodiepro-2.1.8/functions.php:953
 msgid "Recipe, Ingredient, Keyword, Author..."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:985
+#: themes/foodiepro-2.1.8/functions.php:993
 msgid "Contact us"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:985
+#: themes/foodiepro-2.1.8/functions.php:993
 msgid "Legal notice"
 msgstr ""
 

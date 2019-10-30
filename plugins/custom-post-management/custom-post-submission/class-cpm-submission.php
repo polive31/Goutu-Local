@@ -412,7 +412,9 @@ class CPM_Submission {
                 global $wpdb;
                 $wpdb->update( $wpdb->posts, array( 'post_status' => 'draft' ), array( 'ID' => $post_id ) );
                 clean_post_cache( $post_id );
-                $output = $this->display( $post_id, 'draft' );
+                // $output = $this->display( $post_id, 'draft' );
+                // $output = '';
+                $output = $this->get_intro_text('draft');
                 return $output;
 
             }

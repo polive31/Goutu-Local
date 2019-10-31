@@ -32,7 +32,7 @@ body #register-page {
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: "Amatic SC";
-	/* font-family: 'Varela Round', sans-serif; */
+	/* font-family: 'Nunito', sans-serif; */
 }
 
 
@@ -233,7 +233,7 @@ h2.entry-title, .wpupg-post-title,
 
 
 .widgettitle {
-	/* font-family:"Varela Round", sans-serif; */
+	/* font-family:"Nunito", sans-serif; */
 	font-family:'Amatic SC', cursive;
 	font-weight:bold;
 }
@@ -248,7 +248,7 @@ h2.entry-title, .wpupg-post-title,
 
 .elegant .widgettitle {
 	/*font-family:"Delius Swash Caps", cursive;*/
-	/* font-family:"Varela Round", sans-serif; */
+	/* font-family:"Nunito", sans-serif; */
 	font-family:"Amatic SC", cursive;
 	font-size: 5rem;
 	color:#222;
@@ -271,15 +271,17 @@ h2.entry-title, .wpupg-post-title,
 
 /* Specific Widget fonts */
 #accordion h3 {
-	font-family: 'Varela Round';
+	/* font-family: 'Nunito'; */
+	font-family: 'Nunito';
 	font-size:1.8rem;
 	line-height: 3.5rem;
 	text-transform: initial;
 }
 
 #accordion .subnav a {
-	font-family: 'Varela Round';
+	font-family: 'Nunito';
 	font-size: 1.6rem;
+	letter-spacing: 1px;
 	color:#4e4e4e;
 }
 
@@ -290,12 +292,12 @@ h2.entry-title, .wpupg-post-title,
 
 .tagcloud a {
   /* font-family:"Oswald",cursive !important; */
-  font-family:"Varela Round",cursive !important;
+  font-family:"Nunito",cursive !important;
 }
 
 
 .more-from-category {
-	font-family: 'Varela Round', sans-serif;
+	font-family: 'Nunito', sans-serif;
 }
 
 .home .more-from-category a {

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-10-31 00:17+0100\n"
-"PO-Revision-Date: 2019-10-31 00:19+0100\n"
+"POT-Creation-Date: 2019-10-31 08:54+0100\n"
+"PO-Revision-Date: 2019-10-31 08:59+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -1368,52 +1368,52 @@ msgstr ""
 "publication. Vous pouvez toujours modifier leur contenu, leur visibilité "
 "(privé, amis, groupes, public), ou bien aussi les supprimer."
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:245
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:250
 msgid "none"
 msgstr "aucun(e)"
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:278
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:284
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/templates/public_recipe_form.php:135
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:388
 msgid "Preview"
 msgstr "Aperçu"
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:281
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:287
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-xml/templates/before_importing.php:17
 #: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:26
 msgid "Draft"
 msgstr "Enregistrer (brouillon)"
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:284
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:290
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-xml/templates/before_importing.php:18
 msgid "Publish"
 msgstr "Publier"
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:309
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:316
 msgid "You are not authorized to access this page."
 msgstr "Vous n'êtes pas autorisé à accéder à cette page."
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:329
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:335
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-fdx/import-fdx.php:65
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-xml/import-xml.php:65
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:235
 msgid "Untitled"
 msgstr "Sans titre"
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:463
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:457
 #, php-format
 msgid "New user submission:%s"
 msgstr ""
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:476
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:469
 msgid "Unknown action."
 msgstr ""
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:572
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:579
 msgid "Post content"
 msgstr "Corps de l'article"
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:575
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:582
 #: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:6
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:16
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:43
@@ -1424,7 +1424,7 @@ msgstr "Corps de l'article"
 msgid "Description"
 msgstr ""
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:577
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:584
 msgid "Write your post here."
 msgstr ""
 "Ecrivez votre article ici. Vous pouvez joindre des liens et des images au "
@@ -1589,9 +1589,8 @@ msgstr ""
 #: plugins/custom-post-management/includes/class-cpm-assets.php:163
 #, php-format
 msgctxt "post"
-msgid "Back to <a href=\"%s\" onclick=\"formSubmitting=true;\">my posts</a>."
-msgstr ""
-"Retour à <a href=\"%s\" onclick=\"formSubmitting=true;\">mes articles</a>."
+msgid "Back to <a href=\"%s\">my posts</a>."
+msgstr "Retour à <a href=\"%s\">mes recettes</a>"
 
 #: plugins/custom-post-management/includes/class-cpm-assets.php:164
 #, php-format
@@ -1953,18 +1952,13 @@ msgstr ""
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:136
 #, php-format
 msgctxt "recipe"
-msgid "Back to <a href=\"%s\" onclick=\"formSubmitting=true;\">my posts</a>."
-msgstr ""
-"Retour à <a href=\"%s\" onclick=\"formSubmitting=true;\">mes recettes</a>."
+msgid "Back to <a href=\"%s\">my posts</a>."
+msgstr "Retour à <a href=\"%s\">mes recettes</a>"
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:137
-#, fuzzy, php-format
-#| msgctxt "recipe"
-#| msgid "Dear administrator, this post is now <a href=\"%s\">published</a>."
+#, php-format
 msgctxt "recipe"
-msgid ""
-"Dear administrator, this post is now <a href=\"%s\" onclick="
-"\"formSubmitting=true;\">published</a>."
+msgid "Dear administrator, this post is now <a href=\"%s\">published</a>."
 msgstr ""
 "Cher administrateur, cette recette est désormais <a href=\"%s\">publiée</a>."
 
@@ -2631,82 +2625,82 @@ msgstr ""
 msgid "Serving Size"
 msgstr "Portions"
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:142
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:144
 #, php-format
 msgctxt "post"
 msgid "commented your post %s."
 msgstr "a commenté ton article %s."
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:158
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:160
 #, php-format
 msgid "%s answered one of your comments"
 msgstr "%s a répondu à l'un de tes commentaires"
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:159
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:161
 #, php-format
 msgid "%s answered your comment on post <a href=\"%s\">%s</a>."
 msgstr "%s a répondu à ton commentaire sur l'article <a href=\"%s\">%s</a>."
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:192
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:194
 #, php-format
 msgctxt "post"
 msgid "answered your comment on post %s."
 msgstr "a répondu à ton commentaire sur l'article %s."
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:230
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:232
 msgid "Share this recipe on Facebook"
 msgstr "Partager cette recette sur Facebook"
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:231
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:233
 msgid "Share this recipe on Twitter"
 msgstr "Partager cette recette sur Twitter"
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:232
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:234
 msgid "Share this recipe on Pinterest"
 msgstr "Partager cette recette sur Pinterest"
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:233
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:235
 #, fuzzy
 #| msgid "Share this recipe"
 msgid "Share this recipe by email"
 msgstr "Partager sur les réseaux sociaux"
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:234
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:236
 #, fuzzy
 #| msgid "Share this recipe on Pinterest"
 msgid "Share this recipe on Whatsapp"
 msgstr "Partager cette recette sur Pinterest"
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:272
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:274
 #, php-format
 msgid "Hello %s,"
 msgstr "Bonjour %s,"
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:276
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:278
 #, php-format
 msgid "<a href=\"%s\">Log yourself in</a> to respond."
 msgstr "<a href=\"%s\">Connecte-toi </a> pour lui répondre."
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:282
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:284
 #, php-format
 msgid "The <a href=\"%s\">Goûtu.org</a> Team."
 msgstr "L'équipe <a href=\"%s\">Goûtu.org</a>."
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:288
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:290
 #, php-format
 msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr "Un problème ? Une question ? Contacte nous <a href=\"%s\">ici</a>"
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:294
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:296
 #: themes/foodiepro-2.1.8/functions.php:993
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:301
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:303
 msgid "Want to change how you receive these emails?"
 msgstr "Tu ne souhaites plus recevoir ces courriels ?"
 
-#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:302
+#: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:304
 #, php-format
 msgid "You can <a href=\"%s\">update your preferences</a> on %s."
 msgstr "Tu peux <a href=\"%s\">mettre à jour tes préférences</a> sur %s."
@@ -11758,6 +11752,31 @@ msgstr "Ces recettes pourraient également vous intéresser..."
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
 
+#, php-format
+#~ msgctxt "post"
+#~ msgid ""
+#~ "Back to <a href=\"%s\" onclick=\"formSubmitting=true;\">my posts</a>."
+#~ msgstr ""
+#~ "Retour à <a href=\"%s\" onclick=\"formSubmitting=true;\">mes articles</a>."
+
+#, php-format
+#~ msgctxt "recipe"
+#~ msgid ""
+#~ "Back to <a href=\"%s\" onclick=\"formSubmitting=true;\">my posts</a>."
+#~ msgstr ""
+#~ "Retour à <a href=\"%s\" onclick=\"formSubmitting=true;\">mes recettes</a>."
+
+#, fuzzy, php-format
+#~| msgctxt "recipe"
+#~| msgid "Dear administrator, this post is now <a href=\"%s\">published</a>."
+#~ msgctxt "recipe"
+#~ msgid ""
+#~ "Dear administrator, this post is now <a href=\"%s\" onclick="
+#~ "\"formSubmitting=true;\">published</a>."
+#~ msgstr ""
+#~ "Cher administrateur, cette recette est désormais <a href=\"%s\">publiée</"
+#~ "a>."
+
 #, fuzzy
 #~| msgctxt "post"
 #~| msgid "%s added a comment to your post <a href=\"%s\">%s</a> :"
@@ -11847,9 +11866,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 #~ "Votre recette est enregistrée en tant que brouillon. Elle ne sera pas "
 #~ "visible sur le site, mais vous pouvez la modifier à tout moment, et la "
 #~ "publier plus tard."
-
-#~ msgid "Back to <a href=\"%s\">my published recipes</a>"
-#~ msgstr "Retour à <a href=\"%s\">mes recettes</a>"
 
 #~ msgid "Please fill-in those required fields:"
 #~ msgstr ""

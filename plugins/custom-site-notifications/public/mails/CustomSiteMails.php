@@ -54,6 +54,8 @@ class CustomSiteMails {
 		$content1 = CPM_Assets::get_label( $post->post_type, 'post_publish_content1');
 
 		$to_id = $post->post_author;
+		$user= PeepsoHelpers::get_user( $to_id );
+
 		$to = get_the_author_meta('user_email', $to_id);
 
 		if ( !$to ) return false;

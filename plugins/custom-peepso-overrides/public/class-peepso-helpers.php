@@ -42,10 +42,10 @@ class PeepsoHelpers  {
 		return $current;
 	}
 
-	static function get_user( $user_type ) {
+	static function get_user( $user_type_or_id ) {
 		$user_id=false;
 
-		switch ( $user_type ) {
+		switch ($user_type_or_id ) {
 			case 'current':
 				$user_id = get_current_user_id();
 				break;
@@ -56,7 +56,7 @@ class PeepsoHelpers  {
 				$user_id = get_the_author_meta('ID');
 				break;
 			default :
-				$user_id = $user_type;
+				$user_id = $user_type_or_id;
 				break;
 		}
 		$user = $user_id?PeepsoUser::get_instance( $user_id ):false;

@@ -1,6 +1,7 @@
 /* Prevent loosing data when closing the page
 ---------------------------------------------------------------- */
 var formSubmitting = false;
+// Add onclick="formSubmitting=true;" to any link on your page to bypass the alert message
 
 jQuery(window).bind('beforeunload', function (e) {
     console.log('before unload listener setup');

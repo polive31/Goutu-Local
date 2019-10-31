@@ -169,8 +169,7 @@ h2.user-nicename {
 }
 
 .entry-header-overlay .tag-overlay {
-	/* font-family: 'Amatic SC'; */
-	font-family: 'Varela Round', sans-serif;
+	font-family: 'Amatic SC';
 	text-transform: capitalize;
 	font-size: 2.2rem;
 	line-height: 3rem;
@@ -292,6 +291,15 @@ h2.entry-title, .wpupg-post-title,
 .tagcloud a {
   /* font-family:"Oswald",cursive !important; */
   font-family:"Varela Round",cursive !important;
+}
+
+
+.more-from-category {
+	font-family: 'Varela Round', sans-serif;
+}
+
+.home .more-from-category a {
+	font-size: 1.4rem;
 }
 
 /* Footer fonts */

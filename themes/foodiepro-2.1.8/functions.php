@@ -593,67 +593,67 @@ function set_default_display_name( $user_id ) {
 // 	}
 // }
 
-function php_log($msg, $var=false, $type='DEBUG', $color='blue') {
-	if ( class_exists( 'PHP_Debug' ) ) {
-		PHP_Debug::log($msg, $var=false, $type='DEBUG', $color='blue');
-	}
-}
+// function php_log($msg, $var=false, $type='DEBUG', $color='blue') {
+// 	if ( class_exists( 'PHP_Debug' ) ) {
+// 		PHP_Debug::log($msg, $var=false, $type='DEBUG', $color='blue');
+// 	}
+// }
 
-add_shortcode('custom-functions-debug', 'foodiepro_debug_shortcode');
-function foodiepro_debug_shortcode($args) {
-	$args = shortcode_atts( array(
-        'class' 	=> 'CustomSiteMails',
-        'function' 	=> 'published_post_notification_callback',
-        'paramtype' => 'post',
-        'paramval' 	=> '7504'
-    ), $args );
+// add_shortcode('custom-functions-debug', 'foodiepro_debug_shortcode');
+// function foodiepro_debug_shortcode($args) {
+// 	$args = shortcode_atts( array(
+//         'class' 	=> 'CustomSiteMails',
+//         'function' 	=> 'published_post_notification_callback',
+//         'paramtype' => 'post',
+//         'paramval' 	=> '7504'
+//     ), $args );
 
-    $class=$args['class'];
-    $function=$args['function'];
+//     $class=$args['class'];
+//     $function=$args['function'];
 
-    switch ( $args['paramtype'] ) {
-		case 'post' :
-			$param1 = get_post( $args['paramval'] );
-			break;
-	}
+//     switch ( $args['paramtype'] ) {
+// 		case 'post' :
+// 			$param1 = get_post( $args['paramval'] );
+// 			break;
+// 	}
 
-    $instance = new $class('debug');
-    $html = $instance->$function( $param1 );
+//     $instance = new $class('debug');
+//     $html = $instance->$function( $param1 );
 
-}
+// }
 
 
 /* SCRIPTS AND STYLES DEBUG */
 
 // add_action( 'wp_footer', 'foodiepro_record_scripts_styles',PHP_INT_MAX );
-function foodiepro_record_scripts_styles() {
-	if( !is_admin() && is_user_logged_in() && current_user_can( 'manage_options' )) {
-		// Print Scripts
-		global $wp_scripts;
-		echo '<table align="center" style="color:#777;font-family:sans-serif;font-size:14px;width:100%;margin:20px">';
-		echo '<th colspan="2" style="margin: 0px 3%; border: 1px solid #eee; padding: 10px;background-color: #ffffff;">Scripts</th>';
-		foreach( $wp_scripts->queue as $handle ) {
-			echo '<tr style="margin: 0px 3%; border: 1px solid #eee; padding: 10px;background-color: #ffffff;">';
-			echo '<td style="padding:5px 10px">' . $handle . '</td>';
-			echo '<td>' . $wp_scripts->registered[$handle]->src . '</td>';
-			echo '</tr>';
-			echo '</div>';
-		}
-		echo '</table>';
+// function foodiepro_record_scripts_styles() {
+// 	if( !is_admin() && is_user_logged_in() && current_user_can( 'manage_options' )) {
+// 		// Print Scripts
+// 		global $wp_scripts;
+// 		echo '<table align="center" style="color:#777;font-family:sans-serif;font-size:14px;width:100%;margin:20px">';
+// 		echo '<th colspan="2" style="margin: 0px 3%; border: 1px solid #eee; padding: 10px;background-color: #ffffff;">Scripts</th>';
+// 		foreach( $wp_scripts->queue as $handle ) {
+// 			echo '<tr style="margin: 0px 3%; border: 1px solid #eee; padding: 10px;background-color: #ffffff;">';
+// 			echo '<td style="padding:5px 10px">' . $handle . '</td>';
+// 			echo '<td>' . $wp_scripts->registered[$handle]->src . '</td>';
+// 			echo '</tr>';
+// 			echo '</div>';
+// 		}
+// 		echo '</table>';
 
-        // Print Styles
-        global $wp_styles;
-		echo '<table align="center" style="color:#777;font-family:sans-serif;font-size:14px;width:100%;margin:20px">';
-		echo '<th colspan="2" style="margin: 0px 3%; border: 1px solid #eee; padding: 10px;background-color: #ffffff;">Styles</th>';
-		foreach( $wp_styles->queue as $handle ) {
-			echo '<tr style="margin: 0px 3%; border: 1px solid #eee; padding: 10px;background-color: #ffffff;">';
-			echo '<td style="padding:5px 10px">' . $handle . '</td>';
-			echo '<td>' . $wp_styles->registered[$handle]->src . '</td>';
-			echo '</tr>';
-			echo '</div>';
-        }
-    }
-}
+//         // Print Styles
+//         global $wp_styles;
+// 		echo '<table align="center" style="color:#777;font-family:sans-serif;font-size:14px;width:100%;margin:20px">';
+// 		echo '<th colspan="2" style="margin: 0px 3%; border: 1px solid #eee; padding: 10px;background-color: #ffffff;">Styles</th>';
+// 		foreach( $wp_styles->queue as $handle ) {
+// 			echo '<tr style="margin: 0px 3%; border: 1px solid #eee; padding: 10px;background-color: #ffffff;">';
+// 			echo '<td style="padding:5px 10px">' . $handle . '</td>';
+// 			echo '<td>' . $wp_styles->registered[$handle]->src . '</td>';
+// 			echo '</tr>';
+// 			echo '</div>';
+//         }
+//     }
+// }
 
 
 /* =================================================================*/
@@ -739,6 +739,14 @@ function foodiepro_populate_metadesc( $text ) {
 function add_pinterest_meta() {
 	echo '<meta name="p:domain_verify" content="c4a191084b3f5ef29b9df4a1a9f05aab"/>';
 }
+
+
+/* =================================================================*/
+/* =              FORMATTING
+/* =================================================================*/
+// remove_filter('the_content', 'wpautop');
+// add_filter('the_content', 'wpautop', 99);
+// add_filter('the_content', 'shortcode_unautop', 15);
 
 /* =================================================================*/
 /* =              LAYOUT

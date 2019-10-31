@@ -391,6 +391,15 @@ li.wpurp-recipe-instruction {
 	text-align:justify;
 }
 
+.instruction-step-image {
+    text-align: center;
+}
+
+.instruction-step-image img {
+    border: 1px solid #b5b5b5;
+    padding: 5px;
+}
+
 
 /* Recipe instruction bullet formatting
 ---------------------------------------*/

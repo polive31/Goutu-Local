@@ -1748,8 +1748,7 @@ form[role="search"] {
 }*/
 
 .content .rpwe_widget .widget-wrap {
-	margin-bottom:10px;
-	/*padding:10px;*/
+	margin-bottom:50px;
 	padding:0px;
 }
 
@@ -3229,10 +3228,10 @@ a.more-link,
 .next-post {
 	color:#010101;
 	display:table;
-	font-size: 1.1rem; /* P.O. Original 13px */
+	font-size: 1.1rem;
 	font-weight:600;
 	letter-spacing:2px;
-	padding:3px 8px;
+	padding: 8px 15px;
 	text-decoration:none;
 	text-transform:uppercase;
 	border-radius: 5px;
@@ -3243,9 +3242,6 @@ a.more-link,
 	margin:0 auto; /* P.O. Original margin-bottom:40px; */
 }
 
-.home .more-from-category a {
-	font-size: 1.4rem;
-}
 
 .sidebar .widget-wrap .more-from-category a {
     font-size: 1.2rem;
@@ -3271,7 +3267,7 @@ a.more-link,
 .more-from-category {
     display: inline-block;
     text-align: center;
-    margin-top: 25px;
+    /* margin-top: 25px; */
     text-align: center;
     width: 100%;
 }

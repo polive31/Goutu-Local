@@ -235,15 +235,16 @@
 				?>
 			</div>
 
-			<div class="recipe-container" id="general">
-				<?php
-				$test = $recipe->notes();
-				if ($test != '') {
+			<?php
+			$test = $recipe->notes();
+			if ($test != '') {
+			?>
+				<div class="recipe-container" id="general">
 					$html = '<h3>' . __('Notes', 'foodiepro') . '</h3>';
 					$html .= '<div class="label-container">' . $test . '</div>';
 					echo $html;
-				}
-				?>
-			</div>
+				</div>
+			<?php }
+			?>
 
 		</div>

@@ -236,13 +236,12 @@
 			</div>
 
 			<?php
-			$test = $recipe->notes();
-			if ($test != '') {
+
+			if ( !empty( $recipe->notes() ) ) {
 			?>
 				<div class="recipe-container" id="general">
-					$html = '<h3>' . __('Notes', 'foodiepro') . '</h3>';
-					$html .= '<div class="label-container">' . $test . '</div>';
-					echo $html;
+					<h3> <?=__('Notes', 'foodiepro');?> </h3>
+					<div class="label-container"><?= $recipe->notes() ?></div>
 				</div>
 			<?php }
 			?>

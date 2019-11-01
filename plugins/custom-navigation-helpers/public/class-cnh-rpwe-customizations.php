@@ -93,7 +93,7 @@ class CNH_RPWE_Customizations {
 		////foodiepro_log( array('WPRPE Output add rating'=>$output) );
 		if ( $disp_overlay == '1') {
 			$post_id = get_the_ID();
-			$origin = $this->get_post_term( $post_id, 'cuisine', 'names');
+			$origin = wp_get_post_terms( $post_id, 'cuisine' );
 			$output .= $this->output_tags( $origin, null, null, null);
 		}
 		return $output;

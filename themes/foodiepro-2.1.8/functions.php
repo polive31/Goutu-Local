@@ -745,7 +745,7 @@ function add_pinterest_meta() {
 /* =              FORMATTING
 /* =================================================================*/
 // remove_filter('the_content', 'wpautop');
-// add_filter('the_content', 'wpautop', 99);
+// add_filter('the_content', 'wpautop', 12); // 11 is the priority of do_shortcode
 // add_filter('the_content', 'shortcode_unautop', 15);
 
 /* =================================================================*/

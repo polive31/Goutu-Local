@@ -274,8 +274,10 @@ function rpwe_get_recent_posts( $args = array() ) {
 	// Return the  posts markup.
 	// return wp_kses_post( $args['before'] ) . apply_filters( 'rpwe_markup', $html, $args ) . wp_kses_post( do_shortcode($args['after']) );
 	if ($args['shortcode']) {
-		$args['before']=do_shortcode( $args['before'] );
-		$args['after'] =do_shortcode( $args['after']  );
+		// $args['before']= do_shortcode(shortcode_unautop( $args['before'] ));
+		// $args['after'] = do_shortcode(shortcode_unautop( $args['after'] ));
+		$args['before']= do_shortcode( $args['before'] );
+		$args['after'] = do_shortcode( $args['after'] );
 	}
 	return wp_kses( $args['before'], ALLOWED_TAGS ) . apply_filters( 'rpwe_markup', $html, $args ) . wp_kses( $args['after'], ALLOWED_TAGS );
 

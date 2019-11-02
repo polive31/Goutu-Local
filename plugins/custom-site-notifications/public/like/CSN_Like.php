@@ -121,7 +121,8 @@ class CSN_Like
             $count = count($liking_users);
             echo sprintf(_n('%s like', '%s likes', $count, 'foodiepro'), $count);
             update_post_meta($post_id, 'liking_users', $liking_users);
-            do_action('after_post_like_meta_update', $user_id, $post_id);
+            do_action('csn_after_post_like', $user_id, $post_id);
+
         } else {
             // echo __('Please refresh the page before','foodiepro');
         }
@@ -164,7 +165,6 @@ class CSN_Like
         );
     }
 
-
     public static function is_liked_post($post_id)
     {
         $user_id = is_user_logged_in() ? get_current_user_id() : self::get_user_ip();
@@ -200,7 +200,6 @@ class CSN_Like
         }
         return apply_filters('wpb_get_ip', $ip);
     }
-
 
     /* SHORTCODE
     ----------------------------------------------------------------------*/

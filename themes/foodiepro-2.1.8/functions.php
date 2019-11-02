@@ -958,10 +958,17 @@ function execute_php($html){
 -------------------------------------------------------------------*/
 add_filter( 'genesis_search_text', 'custom_search_text' );
 function custom_search_text( $text ) {
-    $text=__( 'Recipe, Ingredient, Keyword, Author...','foodiepro' );
+	$text=__( 'Recipe, Ingredient, Keyword, Author...','foodiepro' );
     return $text;
 }
 
+/* WP Fastest Cache
+-------------------------------------------------------------------*/
+add_action( 'csn_after_post_like', 'foodiepro_clear_cache', 15, 2);
+function foodiepro_clear_cache($user_id,$post_id) {
+	// echo "TOTOOOOO0";
+	wpfc_clear_post_cache_by_id($post_id);
+}
 
 /* =================================================================*/
 /* =               PAGES

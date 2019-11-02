@@ -103,9 +103,13 @@ class CPO_Customizations {
         return TRUE;
 	}
 
-
+     /* create an Activity Stream item when a recipe is published
+     *
+     * @param string 	$action
+     * @param WP_Post 	$post
+     * @return bool (FALSE - posting, post type disabled/blacklisted, TRUE - success, NULL - already added)
+     */
 	public function publish_recipe_activity_stream_action($action, $post) {
-
 		if (Peepso::BLOGPOSTS_MODULE_ID == intval($post->act_module_id)) {
 			$content = strip_tags(get_post_field('post_content', $post, 'raw'));
 			if ($target_post = json_decode($content)) {
@@ -117,7 +121,6 @@ class CPO_Customizations {
 				}
 			}
 		}
-
         return ($action);
 	}
 

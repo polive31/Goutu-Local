@@ -15,10 +15,8 @@ class Custom_Recipe_Management {
         ------------------------------------------------------------- */
         $Assets = new CRM_Assets();
         /* Disable WPURP scripts & style enqueue */
-        add_filter ( 'wpurp_assets_js',     array($Assets,'enqueue_wpurp_js'), 15, 1 );
-        add_filter ( 'wpurp_assets_css',    array($Assets,'enqueue_wpurp_css'), 15, 1 );
-
-
+        add_filter ( 'wpurp_assets_js',     array( $Assets,'enqueue_wpurp_js'), 20, 1 );
+        add_filter ( 'wpurp_assets_css',    array( $Assets,'enqueue_wpurp_css'), 20, 1 );
         /* recipe setup filters for CPM  */
         add_filter( 'cpm_page_slugs',       array( $Assets, 'setup_CPM_recipe_page_slugs') );
         add_filter( 'cpm_labels',           array( $Assets, 'setup_CPM_recipe_labels'    ) );

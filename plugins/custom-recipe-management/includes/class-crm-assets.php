@@ -21,20 +21,20 @@ class CRM_Assets {
 
 
 /********************************************************************************
-****                DISABLE WPURP ENQUEUE                        **********
+****                DISABLE WPURP ENQUEUE IN FRONT-END                        ***
 ********************************************************************************/
 	public function enqueue_wpurp_css( $css_enqueue ) {
 		if ( is_admin() )
-		return $css_enqueue;
+			return $css_enqueue;
 		else
-		return array();
+			return array();
 	}
 
 	public function enqueue_wpurp_js( $js_enqueue ) {
 		if ( is_admin() )
-		return $js_enqueue;
+			return $js_enqueue;
 		else
-		return array();
+			return array();
 	}
 
 	/********************************************************************************

@@ -1,8 +1,3 @@
-<div class="share-buttons">
-	<?= do_shortcode('[social-sharing-buttons target="post" class="small bubble"]'); ?>
-</div>
-
-
 <!-- Function buttons  -->
 <div class="post-top">
 
@@ -12,7 +7,7 @@
 		<!-- Like Button -->
 		<div class="toolbar-button tooltip-onhover alignleft" id="like">
 		<?php
-			$post_like = new Custom_Social_Like_Post( 'post' );
+			$post_like = new CSN_Like( 'post' );
 			$post_like->display('above','left');
 		?>
 		</div>

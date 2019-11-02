@@ -2316,6 +2316,28 @@ span.ui-icon.ui-icon-triangle-1-s:before {
 
 /* TOOLBAR BUTTONS  */
 
+.share-buttons {
+	float:right;
+	padding: 10px 0;
+}
+
+.share-buttons span {
+    display: inline-block;
+    vertical-align: middle;
+    font-family: Oswald,sans-serif;
+    font-size: 2rem;
+    font-weight: normal;
+    font-variant: small-caps;
+	text-transform: initial;
+	padding-right: 10px;
+	color: #555555;
+}
+
+.share-buttons li {
+    display: inline-block;
+    vertical-align: middle;
+}
+
 .button-caption {
 	font-family: Oswald;
 	font-size: 20px;
@@ -3170,6 +3192,10 @@ nav.nav-primary .wrap {
 	font-size: 1.3rem;
 	font-style:italic;
 	margin-top:20px;
+}
+
+.entry-meta {
+	float:left;
 }
 
 .entry-meta a {

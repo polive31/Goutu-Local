@@ -29,6 +29,16 @@ class CustomSiteNotifications {
 		$Popups = new CustomSitePopups();
 		// The following action allows to instantiate the popups selectively depending on the post type & page
 		add_action( 'wp', 						array( $Popups, 'create_popup_actions') );
+
+		$Like = new CSN_Like();
+		// Assets
+		add_action('wp_enqueue_scripts', 		array($Like, 'enqueue_scripts'));
+		// Ajax
+		add_action('wp_ajax_like_post', 		array($Like, 'ajax_like_post'));
+		add_action('wp_ajax_nopriv_like_post', 	array($Like, 'ajax_like_post'));
+		// Shortcodes
+		add_shortcode('like-count', 			array($Like, 'like_count_shortcode'));
+
 	}
 
 

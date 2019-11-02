@@ -142,7 +142,7 @@ h1.entry-title {
 	font-size: 5.5rem;
 	line-height: 5rem;
 	letter-spacing:2px;
-	display: inline;
+	/* display: inline; */
 	text-align: left;
 	font-variant:small-caps;
 	text-decoration: none;

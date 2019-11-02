@@ -57,8 +57,8 @@ class Custom_Post_Management {
 		// $CPM_Assets = new CPM_Assets();
 		// add_action( 'wp', 							array($CPM_Assets,'hydrate'));
 		// add_action( 'wp_enqueue_scripts', 			array($CPM_Assets, 'scripts_styles_enqueue' ) );
-		add_action( 'wp', 						'CPM_Assets::hydrate' );
-		add_action( 'wp_enqueue_scripts', 		'CPM_Assets::scripts_styles_enqueue' );
+		add_action( 'wp', 							'CPM_Assets::hydrate' );
+		add_action( 'wp_enqueue_scripts', 			'CPM_Assets::scripts_styles_enqueue' );
 
 
 

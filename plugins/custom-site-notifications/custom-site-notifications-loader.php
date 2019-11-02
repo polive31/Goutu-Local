@@ -17,9 +17,12 @@ if ( !defined('ABSPATH') )
 
 require_once 'includes/class-custom-site-notifications.php';
 require_once 'includes/class-csn-assets.php';
+
 require_once 'public/class-csn-public.php';
 require_once 'public/mails/CustomSiteMails.php';
 require_once 'public/popups/CustomSitePopups.php';
+require_once 'public/like/CSN_Like.php';
+
 
 
 /* Start plugin */

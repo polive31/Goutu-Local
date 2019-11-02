@@ -64,6 +64,10 @@ class Custom_Post_Template {
 		/* Edit Post Button */
 		$post_info .= CPM_Assets::get_edit_button( get_post(), $post_type );
 
+		$post_info .= '<div class="share-buttons">';
+		$post_info .= '<span>' . __('Share on ', 'foodiepro') . '</span>' . do_shortcode('[social-sharing-buttons target="recipe" class="small bubble"]');
+		$post_info .= '</div>';
+
 		return $post_info;
   }
 

@@ -7,18 +7,18 @@ if (!defined('ABSPATH')) {
 
 class CGR_Public {
 
-    private $V2_PUBLIC_KEY;
-    private $V2_PRIVATE_KEY;
-    private $V3_PUBLIC_KEY;
-    private $V3_PRIVATE_KEY;
+    private static $V2_PUBLIC_KEY;
+    private static $V2_PRIVATE_KEY;
+    private static $V3_PUBLIC_KEY;
+    private static $V3_PRIVATE_KEY;
 
     public function __construct()
     {
         $options = get_option('cgr_keys_array');
-        $this->V2_PUBLIC_KEY = $options['v2_public'];
-        $this->V2_PRIVATE_KEY = $options['v2_private'];
-        $this->V3_PUBLIC_KEY = $options['v3_public'];
-        $this->V3_PRIVATE_KEY = $options['v3_private'];
+        self::$V2_PUBLIC_KEY = $options['v2_public'];
+        self::$V2_PRIVATE_KEY = $options['v2_private'];
+        self::$V3_PUBLIC_KEY = $options['v3_public'];
+        self::$V3_PRIVATE_KEY = $options['v3_private'];
     }
 
     /* =================================================================*/
@@ -26,7 +26,7 @@ class CGR_Public {
     /* =================================================================*/
     public function display($classes = '') {
         ?>
-        <div class="g-recaptcha <?php echo $classes; ?>" data-sitekey="<?php echo $this->v2key('public'); ?>"></div>
+        <div class="g-recaptcha <?php echo $classes; ?>" data-sitekey="<?php echo self::v2key('public'); ?>"></div>
         <?php
     }
 
@@ -43,7 +43,8 @@ class CGR_Public {
         }
         do {
             $ip = $_SERVER['REMOTE_ADDR'];
-            $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . $this->v2key('private') . "&response=" . $captcha . "&remoteip=" . $ip);
+            $filename = "https://www.google.com/recaptcha/api/siteverify?secret=" . self::v2key('private') . "&response=" . $captcha . "&remoteip=" . $ip;
+            $response = file_get_contents($filename);
             $responseKeys = json_decode($response, true);
             if (intval($responseKeys["success"]) !== 1) {
                 $result = 'success';
@@ -58,15 +59,14 @@ class CGR_Public {
     /* =================================================================*/
     /* = GETTERS
 	/* =================================================================*/
-
-    public function v2key( $type='public') {
+    public static function v2key( $type='public') {
         // return ($type=='private') ? get_option('cgr_keys_array[v2_private]') : get_option('cgr_keys_array[v2_public]');
-        return ($type=='private') ? $this->V2_PRIVATE_KEY : $this->V2_PUBLIC_KEY;
+        return ($type=='private') ? self::$V2_PRIVATE_KEY : self::$V2_PUBLIC_KEY;
     }
 
-    public function v3key( $type='public' ) {
+    public static function v3key( $type='public' ) {
         // return ($type=='private') ? get_option('cgr_keys_array[v3_private]') : get_option('cgr_keys_array[v3_public]');
-        return ($type=='private') ? $this->V3_PRIVATE_KEY : $this->V3_PUBLIC_KEY;
+        return ($type=='private') ? self::$V3_PRIVATE_KEY : self::$V3_PUBLIC_KEY;
     }
 
     /* =================================================================*/

@@ -9,6 +9,7 @@ class CSR_Form {
 
 	protected static $_PluginPath;
 	protected static $_PluginUri;
+	protected $captchaError;
 
 	public function __construct() {
 		self::$_PluginUri = plugin_dir_url( dirname( __FILE__ ) );
@@ -41,13 +42,27 @@ class CSR_Form {
 		return $defaults;
 	}
 
+
+	/* RECAPTCHA
+	-----------------------------------------------*/
+
+	public function display_recaptcha_error() {
+		if (isset($_GET['captcha']) && $_GET['captcha'] == 'missing') {
+			echo '<div class="errorbox">' . __('ERROR : CAPTCHA should not be empty', 'foodiepro') . '</div>';
+		} elseif (isset($_GET['captcha']) && $_GET['captcha'] == 'failed') {
+			echo '<div class="errorbox">' . __('ERROR : CAPTCHA response was incorrect', 'foodiepro') . '</div>';
+		}
+	}
+
 	public function add_comment_recaptcha( $submit_button, $args ) {
 		static $instance=0;
 		$submit_button='';
 		// if ( false ) {
-		if ( !is_user_logged_in() && class_exists( 'CustomGoogleRecaptcha' ) ) {
-			$key = CustomGoogleRecaptcha::v3key();
-			$submit_button = '<div id="recaptcha" class="g-recaptcha" data-sitekey="' . $key . '" data-callback="csrOnSubmit" data-size="invisible"></div>';
+		if ( !is_user_logged_in() && class_exists('Custom_Google_Recaptcha' ) ) {
+			$gCaptcha = new CGR_Public();
+			$gCaptcha->enqueue_scripts();
+			$key = CGR_Public::v2key();
+			$submit_button = '<div id="recaptcha" class="g-recaptcha" data-sitekey="' . $key . '"></div>';
 			// $submit_button = '<button name="submit" id="submit" data-instance="' . $instance . '" class="' . $class . '" data-sitekey="' . $key . '" data-callback="' . $callback . '">' . __('Submit','foodiepro') . '</button>';
 		}
 		// else {
@@ -58,10 +73,46 @@ class CSR_Form {
 		return $submit_button;
 	}
 
+	/**
+	 * Verify the captcha answer */
+	public function validate_captcha_field($commentdata)
+	{
+		// Check Captcha0
+		if (!is_user_logged_in() && class_exists('Custom_Google_Recaptcha') ) {
+			$gCaptcha = new CGR_Public();
+			$this->captchaError = $gCaptcha->verify();
+		}
+		return $commentdata;
+	}
+
+	/**
+	 * Add query string to the comment redirect location
+	 *
+	 * @param $location string location to redirect to after comment
+	 * @param $comment object comment object
+	 *
+	 * @return string
+	 */
+	function redirect_fail_captcha_comment($location, $comment)
+	{
+		if (!empty($this->captchaError) && ($this->captchaError!='success') ) {
+			$args = array('comment-id' => $comment->comment_ID);
+			$args['captcha'] = $this->captchaError;
+			$location = add_query_arg($args, $location);
+		}
+		return $location;
+	}
+
+	/** Delete comment that fail the captcha test. */
+	function delete_failed_captcha_comment()
+	{
+		if (isset($_GET['comment-id']) && !empty($_GET['comment-id'])) {
+			wp_delete_comment(absint($_GET['comment-id']));
+		}
+	}
 
 	/* SHORTCODES
 	-----------------------------------------------*/
-
 	public function display_comment_form_with_rating_shortcode() {
 		$comment_notes = is_user_logged_in()?'':'<p class="comment-notes">' . __('Your name and mail address are required for authentification of your comment.<br>Your mail address will not be published.', 'foodiepro') . '</p>';
 
@@ -95,7 +146,6 @@ class CSR_Form {
 		- comment_parent div removed below reply button (in order not to conflict with the main form in the comments list )
 	*/
 	public function custom_popup_comment_form($args) {
-
 		ob_start();
 		include( self::$_PluginPath . 'public/partials/comment-template.php' );
         $output = ob_get_contents();

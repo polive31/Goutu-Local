@@ -65,10 +65,18 @@ class Custom_Star_Rating {
 		/* Disable url input box in comment form unlogged users */
 		add_filter( 'comment_form_default_fields',				array( $CommentForm, 'customize_comment_form') );
 
+		// displays issue message if recaptcha failed
+		add_action('comment_form_top', 						array( $CommentForm, 'display_recaptcha_error') );
+		// adds the captcha to the WordPress form
 		add_filter( 'comment_form_submit_button',				array( $CommentForm, 'add_comment_recaptcha'), 15, 2 );
-
-
-
+		// delete comment that fail the captcha challenge
+		add_action( 'wp_head', 									array( $CommentForm, 'delete_failed_captcha_comment'));
+		// authenticate the captcha answer
+		add_filter( 'preprocess_comment', 						array( $CommentForm, 'validate_captcha_field'));
+		// redirect location for comment
+		add_filter( 'comment_post_redirect', 					array( $CommentForm, 'redirect_fail_captcha_comment'), 10, 2);
 	}
+
+
 
 }

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-11-02 13:54+0100\n"
+"POT-Creation-Date: 2019-11-03 01:05+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -96,7 +96,7 @@ msgstr ""
 #: peepso/overrides/templates/profile/focus.php:75
 #: peepso/overrides/templates/profile/profile-about.php:150
 #: plugins/custom-recipe-management/public/custom-recipe-favorite/class-crm-favorite.php:137
-#: plugins/custom-star-rating/public/class-csr-form.php:76
+#: plugins/custom-star-rating/public/class-csr-form.php:127
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:79
 #: plugins/wp-ultimate-recipe-premium/core/vendor/vafpress/classes/shortcodegenerator.php:264
 #: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:69
@@ -1054,17 +1054,21 @@ msgstr ""
 msgid "Published on %s by %s<span id=\"username\">%s</span>"
 msgstr ""
 
-#: plugins/custom-post-management/custom-post-template/partials/post_toolbar.php:22
+#: plugins/custom-post-management/custom-post-template/class-custom-post-template.php:68
+msgid "Share on "
+msgstr ""
+
+#: plugins/custom-post-management/custom-post-template/partials/post_toolbar.php:18
 #: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-toolbar.php:70
 #: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/templates/shopping-list.php:25
 msgid "Print"
 msgstr ""
 
-#: plugins/custom-post-management/custom-post-template/partials/post_toolbar.php:26
+#: plugins/custom-post-management/custom-post-template/partials/post_toolbar.php:22
 msgid "Print this post"
 msgstr ""
 
-#: plugins/custom-post-management/custom-post-template/partials/post_toolbar.php:37
+#: plugins/custom-post-management/custom-post-template/partials/post_toolbar.php:33
 #: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-toolbar.php:85
 msgid "Share"
 msgstr ""
@@ -1421,7 +1425,7 @@ msgid "Occasion"
 msgstr ""
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:110
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:55
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:51
 msgid "Diet"
 msgstr ""
 
@@ -1887,7 +1891,7 @@ msgstr ""
 #: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:229
 #: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:230
 #: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-print-template.php:83
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:127
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:123
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:19
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:49
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:81
@@ -2043,27 +2047,23 @@ msgstr ""
 msgid "Serves"
 msgstr ""
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:5
-msgid "Share on "
-msgstr ""
-
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:48
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:44
 msgid "Origin"
 msgstr ""
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:62
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:58
 msgid "Level"
 msgstr ""
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:95
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:91
 msgid "For "
 msgstr ""
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:98
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:94
 msgid "Decrease servings"
 msgstr ""
 
-#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:102
+#: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:98
 msgid "Increase servings"
 msgstr ""
 
@@ -2163,8 +2163,8 @@ msgstr ""
 
 #: plugins/custom-site-notifications/public/like/CSN_Like.php:68
 #: plugins/custom-site-notifications/public/like/CSN_Like.php:122
-#: plugins/custom-site-notifications/public/like/CSN_Like.php:224
-#: plugins/custom-site-notifications/public/like/CSN_Like.php:226
+#: plugins/custom-site-notifications/public/like/CSN_Like.php:223
+#: plugins/custom-site-notifications/public/like/CSN_Like.php:225
 #, php-format
 msgid "%s like"
 msgid_plural "%s likes"
@@ -2234,7 +2234,7 @@ msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr ""
 
 #: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:296
-#: themes/foodiepro-2.1.8/functions.php:1001
+#: themes/foodiepro-2.1.8/functions.php:1008
 msgid "All rights reserved"
 msgstr ""
 
@@ -2279,23 +2279,23 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:90
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:92
 msgid "Share on Facebook"
 msgstr ""
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:116
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:118
 msgid "Share on Twitter"
 msgstr ""
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:150
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:152
 msgid "Pin It"
 msgstr ""
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:175
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:177
 msgid "Share by email"
 msgstr ""
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:205
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:207
 msgid "Share on Whatsapp"
 msgstr ""
 
@@ -2415,32 +2415,40 @@ msgstr ""
 msgid "(Edit)"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:37
+#: plugins/custom-star-rating/public/class-csr-form.php:38
 msgid "Your answer here"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:55
+#: plugins/custom-star-rating/public/class-csr-form.php:51
+msgid "ERROR : CAPTCHA should not be empty"
+msgstr ""
+
+#: plugins/custom-star-rating/public/class-csr-form.php:53
+msgid "ERROR : CAPTCHA response was incorrect"
+msgstr ""
+
+#: plugins/custom-star-rating/public/class-csr-form.php:70
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/templates/public_recipe_form.php:137
 msgid "Submit"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:66
+#: plugins/custom-star-rating/public/class-csr-form.php:117
 msgid ""
 "Your name and mail address are required for authentification of your comment."
 "<br>Your mail address will not be published."
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:72
+#: plugins/custom-star-rating/public/class-csr-form.php:123
 msgid "Send"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:75
+#: plugins/custom-star-rating/public/class-csr-form.php:126
 #: plugins/custom-star-rating/public/partials/comment-template.php:89
 #, php-format
 msgid "Leave a Reply to %s"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:129
+#: plugins/custom-star-rating/public/class-csr-form.php:179
 msgid "Add a comment"
 msgstr ""
 
@@ -7735,11 +7743,11 @@ msgstr ""
 msgid "Recipe, Ingredient, Keyword, Author..."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:1001
+#: themes/foodiepro-2.1.8/functions.php:1008
 msgid "Contact us"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:1001
+#: themes/foodiepro-2.1.8/functions.php:1008
 msgid "Legal notice"
 msgstr ""
 

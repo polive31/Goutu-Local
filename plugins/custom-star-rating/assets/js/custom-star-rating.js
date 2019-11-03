@@ -53,12 +53,12 @@ function csrValidateEmail($email) {
     return emailReg.test($email);
 }
 
-function csrOnSubmit(token) {
-    console.log('in csrOnSubmit, recapatcha successful !!!');
-    form = jQuery('form#foodiepro_comment' + currentInstance);
-    // formId = "foodiepro_comment" + currentInstance;
-    // console.log('Form ID is : ', formId);
-    // form = document.getElementById(formId);
-    console.log('Form is : ', form);
-    form.submit();
-}
+// function csrOnSubmit(token) {
+//     console.log('in csrOnSubmit, recapatcha successful !!!');
+//     form = jQuery('form#foodiepro_comment' + currentInstance);
+//     // formId = "foodiepro_comment" + currentInstance;
+//     // console.log('Form ID is : ', formId);
+//     // form = document.getElementById(formId);
+//     console.log('Form is : ', form);
+//     form.submit();
+// }

@@ -2,23 +2,26 @@ var currentInstance = 0;
 
 jQuery(document).ready(function () {
 
+    console.log('In custom star rating JS');
     // jQuery(document).on('submit', '.comment-form', function (e) {
 
-    jQuery(document).on('click', 'form.comment-form #submit', function (e) {
+    jQuery(document).on('click', 'form.comment-form .submit', function (e) {
         e.preventDefault();
         // e.stopPropagation();
         console.log('Click on comment form submit !!!');
 
         commentForm = jQuery(this).closest('form.comment-form');
-        console.log( 'Comment form is ', commentForm );
-
         commentText = commentForm.find('textarea');
-        console.log( 'Comment text val is ', commentText.val() );
-
         commentAuthor = commentForm.find('input.author');
-        console.log('Author name val is ', commentAuthor.val() );
-
         commentEmail = commentForm.find('input.email');
+        recaptcha = commentForm.find('.g-recaptcha');
+        currentInstance = jQuery(this).data("instance");
+
+        console.log( 'Comment form is ', commentForm );
+        console.log('Recaptcha is ', recaptcha);
+        console.log('Form instance is ', currentInstance);
+        console.log( 'Comment text val is ', commentText.val() );
+        console.log('Author name val is ', commentAuthor.val() );
         console.log('Email address val is ', commentEmail.val() );
 
         if (!commentText.val().length) {
@@ -32,18 +35,16 @@ jQuery(document).ready(function () {
         }
         else {
             console.log('Submit the form');
-            currentInstance = jQuery(this).data("instance");
-            console.log('Form instance is ', currentInstance);
             /* Check if recaptcha present */
-            check = jQuery(this).prev();
-            if ( check.attr('id')=='recaptcha') {
-                console.log('Recaptcha found, executing callback');
-                grecaptcha.execute();
-            }
-            else {
-                console.log('No Recaptcha found, submitting form directly');
+
+            // if (recaptcha.length) {
+            //     console.log('Recaptcha found, running challenge');
+            //     grecaptcha.execute();
+            // }
+            // else {
+            //     console.log('No Recaptcha found, submitting form directly');
                 commentForm.submit();
-            }
+            // }
         }
     });
 });
@@ -53,12 +54,12 @@ function csrValidateEmail($email) {
     return emailReg.test($email);
 }
 
-// function csrOnSubmit(token) {
-//     console.log('in csrOnSubmit, recapatcha successful !!!');
-//     form = jQuery('form#foodiepro_comment' + currentInstance);
-//     // formId = "foodiepro_comment" + currentInstance;
-//     // console.log('Form ID is : ', formId);
-//     // form = document.getElementById(formId);
-//     console.log('Form is : ', form);
-//     form.submit();
-// }
+function csrOnSubmit(token) {
+    console.log('in csrOnSubmit, recaptcha successful !!!');
+    form = jQuery('form#foodiepro_comment' + currentInstance);
+    // formId = "foodiepro_comment" + currentInstance;
+    // console.log('Form ID is : ', formId);
+    // form = document.getElementById(formId);
+    console.log('Form is : ', form);
+    form.submit();
+}

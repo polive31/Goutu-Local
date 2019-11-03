@@ -9,19 +9,19 @@ class CSR_Form {
 
 	protected static $_PluginPath;
 	protected static $_PluginUri;
+	protected static $instance;
 	protected $captchaError;
 
 	public function __construct() {
 		self::$_PluginUri = plugin_dir_url( dirname( __FILE__ ) );
 		self::$_PluginPath = plugin_dir_path( dirname( __FILE__ ) );
+		self::$instance = 0;
 	}
 
-	/* CALLBACKS
+	/* COMMENT FORM FILTERS (COMMON TO ALL COMMENT FORMS ON THE POST)
 	-----------------------------------------------*/
-
 	public function customize_comment_form($fields) {
 		static $instance=0;
-
 		unset($fields['url']);
 		$fields['author'] = '<p class="comment-form-author"><label for="author">Nom <span class="required">*</span></label> <input class="author" id="author_' . $instance . '" name="author" type="text" value="" size="30" maxlength="245" required="required" /></p>';
 		$fields['email']  = '<p class="comment-form-email"><label for="email">Adresse de messagerie <span class="required">*</span></label> <input class="email" id="email_' . $instance . '" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" required="required" /></p>';
@@ -34,6 +34,7 @@ class CSR_Form {
 		static $instance=0;
 
 		$defaults['logged_in_as'] = '';
+		// $defaults['title_reply'] = $defaults['title_reply'];
 		$defaults['id_form'] = 'foodiepro_comment' . $instance;
 		$defaults['title_reply_to'] = __('Your answer here','foodiepro');
 		$defaults['comment_field'] = '<p class="comment-form-comment"><textarea id="comment_' . $instance . '" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>';
@@ -45,71 +46,56 @@ class CSR_Form {
 
 	/* RECAPTCHA
 	-----------------------------------------------*/
-
-	public function display_recaptcha_error() {
-		if (isset($_GET['captcha']) && $_GET['captcha'] == 'missing') {
-			echo '<div class="errorbox">' . __('ERROR : CAPTCHA should not be empty', 'foodiepro') . '</div>';
-		} elseif (isset($_GET['captcha']) && $_GET['captcha'] == 'failed') {
-			echo '<div class="errorbox">' . __('ERROR : CAPTCHA response was incorrect', 'foodiepro') . '</div>';
+	public function rating_form_add_recaptcha($submit_button, $args) {
+		$recaptcha = '';
+		if ( !is_user_logged_in() && class_exists('Custom_Google_Recaptcha' ) ) {
+			CGR_Public::enqueue_scripts();
+			if ( isset($_POST['captcha']) && ($_POST['captcha']!='success') ) {
+				$recaptcha .= '<p class="error">' . __( '<strong>ERROR</strong>: please complete the CAPTCHA verification.', 'foodiepro' ) . '</p>';
+			}
+			// Invisible not working yet
+			// $recaptcha = CGR_Public::display( '', 'recaptcha' . self::$instance, 'invisible', 'csrOnSubmit' );
+			$recaptcha .= CGR_Public::display( '', 'recaptcha' . self::$instance, 'normal', '' );
+			self::$instance++;
 		}
+		return $recaptcha . $this->get_submit_button_html();
 	}
 
-	public function add_comment_recaptcha( $submit_button, $args ) {
-		static $instance=0;
-		$submit_button='';
-		// if ( false ) {
+	public function comment_form_add_recaptcha($submit_button, $args) {
+		$recaptcha = '';
 		if ( !is_user_logged_in() && class_exists('Custom_Google_Recaptcha' ) ) {
-			$gCaptcha = new CGR_Public();
-			$gCaptcha->enqueue_scripts();
-			$key = CGR_Public::v2key();
-			$submit_button = '<div id="recaptcha" class="g-recaptcha" data-sitekey="' . $key . '"></div>';
-			// $submit_button = '<button name="submit" id="submit" data-instance="' . $instance . '" class="' . $class . '" data-sitekey="' . $key . '" data-callback="' . $callback . '">' . __('Submit','foodiepro') . '</button>';
+			if ( isset($_GET['captcha']) && ($_GET['captcha']!='success') ) {
+				$recaptcha .= '<p class="error">' . __( '<strong>ERROR</strong>: please complete the CAPTCHA verification.', 'foodiepro' ) . '</p>';
+			}
+			$recaptcha .= CGR_Public::display( '', 'recaptcha' . self::$instance, 'normal', '' );
+			self::$instance++;
 		}
-		// else {
-		// $submit_button .= '<input name="submit" type="submit" id="submit" data-loggedin="' . is_user_logged_in() . '" data-instance="' . $instance . '" class="submit" value="' . __('Submit','foodiepro') . '">';
-		$submit_button .= '<input name="submit' . $instance . '" type="submit" id="submit' . $instance . '" data-instance="' . $instance . '" class="submit" value="' . __('Submit','foodiepro') . '">';
-		// }
-		$instance++;
+		return $recaptcha . $this->get_submit_button_html();
+	}
+
+	public function get_submit_button_html() {
+		$submit_button .= '<input name="submit' . self::$instance . '" type="submit" id="submit' . self::$instance . '" data-instance="' . self::$instance . '" class="submit" value="' . __('Submit','foodiepro') . '">';
 		return $submit_button;
 	}
 
-	/**
-	 * Verify the captcha answer */
-	public function validate_captcha_field($commentdata)
+	public function verify_comment_recaptcha( $commentdata )
 	{
-		// Check Captcha0
-		if (!is_user_logged_in() && class_exists('Custom_Google_Recaptcha') ) {
-			$gCaptcha = new CGR_Public();
-			$this->captchaError = $gCaptcha->verify();
+		$captchaResult = CGR_Public::verify();
+		if ( $captchaResult=='success' )
+			return $commentdata;
+		else {
+			// wp_die( __( '<strong>ERROR</strong>: please complete the CAPTCHA verification.', 'foodiepro' ) );
+			$url = get_permalink( $commentdata['comment_post_ID'] );
+			$args = array(
+				'comment-id' 	=> $commentdata['comment_ID'],
+				'captcha'		=> $captchaResult
+			);
+			$url = add_query_arg($args, $url) . '#respond';
+			wp_redirect($url);
+			exit;
 		}
-		return $commentdata;
 	}
 
-	/**
-	 * Add query string to the comment redirect location
-	 *
-	 * @param $location string location to redirect to after comment
-	 * @param $comment object comment object
-	 *
-	 * @return string
-	 */
-	function redirect_fail_captcha_comment($location, $comment)
-	{
-		if (!empty($this->captchaError) && ($this->captchaError!='success') ) {
-			$args = array('comment-id' => $comment->comment_ID);
-			$args['captcha'] = $this->captchaError;
-			$location = add_query_arg($args, $location);
-		}
-		return $location;
-	}
-
-	/** Delete comment that fail the captcha test. */
-	function delete_failed_captcha_comment()
-	{
-		if (isset($_GET['comment-id']) && !empty($_GET['comment-id'])) {
-			wp_delete_comment(absint($_GET['comment-id']));
-		}
-	}
 
 	/* SHORTCODES
 	-----------------------------------------------*/
@@ -119,44 +105,29 @@ class CSR_Form {
 		$args = array (
 			'comment_notes_before' 	=> '',
 			'comment_notes_after' 	=> $comment_notes,
-			'title_reply' 					=> '', //Default: __( 'Leave a Reply� )
-			'label_submit' 					=> __( 'Send', 'custom-star-rating' ), //default=�Post Comment�
-			'comment_field' 				=> $this->output_evaluation_form(),
-			'logged_in_as' 					=> '', //Default: __( 'Leave a Reply to %s� )
-			'title_reply_to' 				=> __( 'Leave a Reply to %s', 'custom-star-rating' ), //Default: __( 'Leave a Reply to %s� )
-			'cancel_reply_link' 		=> __( 'Cancel', 'custom-star-rating' ), //Default: __( �Cancel reply� )
-			'rating_cats' 					=> 'all',  //Default: "id1 id2..."
+			'title_reply' 			=> '', //Default: __( 'Leave a Reply� )
+			'label_submit' 			=> __( 'Send', 'custom-star-rating' ), //default=�Post Comment�
+			'comment_field' 		=> $this->output_rating_form(),
+			'logged_in_as' 			=> '', //Default: __( 'Leave a Reply to %s� )
+			'title_reply_to' 		=> __( 'Leave a Reply to %s', 'custom-star-rating' ), //Default: __( 'Leave a Reply to %s� )
+			'cancel_reply_link' 	=> __( 'Cancel', 'custom-star-rating' ), //Default: __( �Cancel reply� )
+			'rating_cats' 			=> 'all',  //Default: "id1 id2..."
 		);
 
 		wp_enqueue_style('custom-star-rating');
 		wp_enqueue_script('custom-star-rating');
-		wp_enqueue_script('grecaptcha-invisible', 'https://www.google.com/recaptcha/api.js');
 
-		$cr_form = $this->custom_popup_comment_form($args);
+		ob_start();
+		include( self::$_PluginPath . 'public/partials/comment-form-template.php' );
+		$cr_form = ob_get_contents();
+		ob_end_clean();
 
 		return $cr_form;
 	}
 
-	/* Custom Comment Form
-	------------------------------------------------------------ */
-	/*
-	comment_form() function modified with :
-		- <div> wrapper id is custom_respond (in order to be "invisible" to comment-reply.js script)
-		- cancel button removed (in order not to conflict with the main form in the comments list )
-		- comment_parent div removed below reply button (in order not to conflict with the main form in the comments list )
-	*/
-	public function custom_popup_comment_form($args) {
-		ob_start();
-		include( self::$_PluginPath . 'public/partials/comment-template.php' );
-        $output = ob_get_contents();
-		ob_end_clean();
-
-		return $output;
-	}
-
 	/* Rating Form
 	------------------------------------------------------------ */
-	public function output_evaluation_form() {
+	public function output_rating_form() {
 
 		ob_start();?>
 
@@ -167,7 +138,7 @@ class CSR_Form {
 
 			<tr>
 				<td align="left" class="rating-title"><?= $cat['question'];?></td>
-				<td align="left"><?= $this->output_rating_form( $id );?></td>
+				<td align="left"><?= $this->get_category_rating( $id );?></td>
 			</tr>
 
 			<?php
@@ -187,7 +158,7 @@ class CSR_Form {
 		return $rating_form;
 	}
 
-	public function output_rating_form( $id ) {
+	public function get_category_rating( $id ) {
 		$html= '<div class="rating-wrapper" id="star-rating-form">';
 		$html.='<input type="radio" class="rating-input" id="rating-input-' . $id . '-5" name="rating-' . $id . '" value="5"/>';
 		$html.='<label for="rating-input-' . $id . '-5" class="rating-star" title="' . CSR_Assets::get_rating_caption(5, $id) . '"></label>';
@@ -263,5 +234,53 @@ class CSR_Form {
 	// 		}
 	// 	}
 	// 	return $html;
+	// }
+
+/* RECAPTCHA
+----------------------------------------------------------*/
+
+	// public function display_recaptcha_error() {
+	// 	if (isset($_GET['captcha']) && $_GET['captcha'] == 'missing') {
+	// 		echo '<div class="errorbox">' . __('ERROR : CAPTCHA should not be empty', 'foodiepro') . '</div>';
+	// 	} elseif (isset($_GET['captcha']) && $_GET['captcha'] == 'failed') {
+	// 		echo '<div class="errorbox">' . __('ERROR : CAPTCHA response was incorrect', 'foodiepro') . '</div>';
+	// 	}
+	// }
+
+		// /**
+	//  * Verify the captcha answer */
+	// public function validate_captcha_field($commentdata)
+	// {
+	// 	// Check Captcha0
+	// 	if (!is_user_logged_in() && class_exists('Custom_Google_Recaptcha') ) {
+	// 		$this->captchaError = CGR_Public::verify();
+	// 	}
+	// 	return $commentdata;
+	// }
+
+	// /**
+	//  * Add query string to the comment redirect location
+	//  *
+	//  * @param $location string location to redirect to after comment
+	//  * @param $comment object comment object
+	//  *
+	//  * @return string
+	//  */
+	// function redirect_fail_captcha_comment($location, $comment)
+	// {
+	// 	if (!empty($this->captchaError) && ($this->captchaError!='success') ) {
+	// 		$args = array('comment-id' => $comment->comment_ID);
+	// 		$args['captcha'] = $this->captchaError;
+	// 		$location = add_query_arg($args, $location);
+	// 	}
+	// 	return $location;
+	// }
+
+	// /** Delete comment that fail the captcha test. */
+	// function delete_failed_captcha_comment()
+	// {
+	// 	if (isset($_GET['comment-id']) && !empty($_GET['comment-id'])) {
+	// 		wp_delete_comment(absint($_GET['comment-id']));
+	// 	}
 	// }
 }

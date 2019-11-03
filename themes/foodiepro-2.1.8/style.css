@@ -1638,7 +1638,7 @@ img.alignright,
 	background-color: #efc;
 	color: #250;
 	font-size: 1.6rem;
-  font-weight: 400;
+	font-weight: 400;
 }
 
 .errorbox,
@@ -1649,8 +1649,9 @@ img.alignright,
 	color: #800;
 	padding:10px;
 	margin: 0 0 30px 0;
+	font-family: Oswald, sans-serif;
 	font-size: 1.6rem;
-  font-weight: 300;
+  	font-weight: 300;
 }
 
 .wpurp-errors li {
@@ -1990,6 +1991,11 @@ form[role="search"] {
 
 /* Plugins
 -------------------------------------------------------- */
+
+/* Google Recaptcha */
+.g-recaptcha {
+    margin: 10px 0;
+}
 
 
 /* Lazysizes  */
@@ -2495,8 +2501,11 @@ a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
 	max-width:400px;
 }
 
-span.error {
+p.error,
+span.error,
+span.required {
 	color:red;
+	font-family: Oswald, sans-serif;
 }
 
 label.requiredField:after {

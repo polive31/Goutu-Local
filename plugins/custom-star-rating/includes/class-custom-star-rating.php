@@ -37,13 +37,12 @@ class Custom_Star_Rating {
 		/* Hooks for CSR_Comments_List class
 		-----------------------------------------------------------------*/
         $CommentList = new CSR_Comments_List();
-
 		/* Customize comment list	*/
 		add_action( 'genesis_before_content',                   array( $CommentList,'custom_genesis_list_comments') );
 		/* Add anchor to comments section title	*/
 		add_filter( 'genesis_title_comments',                   array( $CommentList,'add_comments_title_markup'), 15, 1 );
 		/* Remove comment form unless it's a comment reply page */
-		add_action( 'genesis_before_comments',                     array( $CommentList,'move_recipe_comments_form'), 0 );
+		add_action( 'genesis_before_comments',                 	array( $CommentList,'move_comments_form'), 0 );
 		/* wrap the standard comment form into an id for comment_reply.js script to use this one instead of the rating one */
 		// add_action( 'genesis_before_comment_form',              array( $CommentList,'comment_form_wrap_begin') );
 		// add_action( 'genesis_after_comment_form',              	array( $CommentList,'comment_form_wrap_end') );
@@ -59,22 +58,26 @@ class Custom_Star_Rating {
 		/* Hooks for CSR_Form class
 		-----------------------------------------------------------------*/
         $CommentForm = new CSR_Form();
-		add_shortcode( 'comment-rating-form',                 	array( $CommentForm, 'display_comment_form_with_rating_shortcode') );
+		add_shortcode('comment-rating-form',                 	array( $CommentForm, 'display_comment_form_with_rating_shortcode') );
 		/* Disable logged in / logged out link */
 		add_filter( 'comment_form_defaults',                    array( $CommentForm, 'change_comment_form_defaults') );
 		/* Disable url input box in comment form unlogged users */
 		add_filter( 'comment_form_default_fields',				array( $CommentForm, 'customize_comment_form') );
-
-		// displays issue message if recaptcha failed
-		add_action('comment_form_top', 						array( $CommentForm, 'display_recaptcha_error') );
 		// adds the captcha to the WordPress form
-		add_filter( 'comment_form_submit_button',				array( $CommentForm, 'add_comment_recaptcha'), 15, 2 );
+		add_filter( 'rating_form_submit_button',				array( $CommentForm, 'rating_form_add_recaptcha'), 15, 2 );
+		add_filter( 'comment_form_submit_button',				array( $CommentForm, 'comment_form_add_recaptcha'), 15, 2 );
+		// Server side recaptcha verification
+		add_filter( 'preprocess_comment', 						array($CommentForm, 'verify_comment_recaptcha'), 1, 1);
+
+		/* DEPRECATED */
+		// displays issue message if recaptcha failed
+		// add_action('comment_form_top', 						array( $CommentForm, 'display_recaptcha_error') );
 		// delete comment that fail the captcha challenge
-		add_action( 'wp_head', 									array( $CommentForm, 'delete_failed_captcha_comment'));
+		// add_action( 'wp_head', 									array( $CommentForm, 'delete_failed_captcha_comment'));
 		// authenticate the captcha answer
-		add_filter( 'preprocess_comment', 						array( $CommentForm, 'validate_captcha_field'));
+		// add_filter( 'preprocess_comment', 						array( $CommentForm, 'validate_captcha_field'));
 		// redirect location for comment
-		add_filter( 'comment_post_redirect', 					array( $CommentForm, 'redirect_fail_captcha_comment'), 10, 2);
+		// add_filter( 'comment_post_redirect', 					array( $CommentForm, 'redirect_fail_captcha_comment'), 10, 2);
 	}
 
 

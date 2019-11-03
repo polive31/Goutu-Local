@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-11-03 01:05+0100\n"
+"POT-Creation-Date: 2019-11-03 23:18+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -96,7 +96,7 @@ msgstr ""
 #: peepso/overrides/templates/profile/focus.php:75
 #: peepso/overrides/templates/profile/profile-about.php:150
 #: plugins/custom-recipe-management/public/custom-recipe-favorite/class-crm-favorite.php:137
-#: plugins/custom-star-rating/public/class-csr-form.php:127
+#: plugins/custom-star-rating/public/class-csr-form.php:96
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:79
 #: plugins/wp-ultimate-recipe-premium/core/vendor/vafpress/classes/shortcodegenerator.php:264
 #: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:69
@@ -309,113 +309,55 @@ msgstr ""
 msgid "contact"
 msgstr ""
 
-#: plugins/custom-contact-form/public/class-ccf-public.php:52
+#: plugins/custom-contact-form/public/class-ccf-public.php:62
 msgid "You forgot to enter your name."
 msgstr ""
 
-#: plugins/custom-contact-form/public/class-ccf-public.php:66
+#: plugins/custom-contact-form/public/class-ccf-public.php:76
 msgid "You forgot to enter your email address."
 msgstr ""
 
-#: plugins/custom-contact-form/public/class-ccf-public.php:69
+#: plugins/custom-contact-form/public/class-ccf-public.php:79
 msgid "You entered an invalid email address."
 msgstr ""
 
-#: plugins/custom-contact-form/public/class-ccf-public.php:76
+#: plugins/custom-contact-form/public/class-ccf-public.php:86
 msgid "You forgot to enter your comments."
 msgstr ""
 
-#: plugins/custom-contact-form/public/class-ccf-public.php:83
+#: plugins/custom-contact-form/public/class-ccf-public.php:93
 msgid "You must accept the privacy notice for this form to be submitted."
 msgstr ""
 
-#: plugins/custom-contact-form/public/class-ccf-public.php:94
+#: plugins/custom-contact-form/public/class-ccf-public.php:106
 msgid "Please complete the captcha verification."
 msgstr ""
 
-#: plugins/custom-contact-form/public/class-ccf-public.php:119
+#: plugins/custom-contact-form/public/class-ccf-public.php:131
 #, php-format
 msgid "%s : Contact request from %s"
 msgstr ""
 
-#: plugins/custom-contact-form/public/class-ccf-public.php:143
+#: plugins/custom-contact-form/public/class-ccf-public.php:155
 msgid "Home page"
 msgstr ""
 
-#: plugins/custom-contact-form/public/class-ccf-public.php:146
+#: plugins/custom-contact-form/public/class-ccf-public.php:158
 #, php-format
 msgid "Thanks %s,"
 msgstr ""
 
-#: plugins/custom-contact-form/public/class-ccf-public.php:149
+#: plugins/custom-contact-form/public/class-ccf-public.php:161
 msgid "Your message was sent, we will answer you shortly."
 msgstr ""
 
-#: plugins/custom-contact-form/public/class-ccf-public.php:152
+#: plugins/custom-contact-form/public/class-ccf-public.php:164
 #, php-format
 msgid "Back to %s"
 msgstr ""
 
-#: plugins/custom-contact-form/public/class-ccf-public.php:159
+#: plugins/custom-contact-form/public/class-ccf-public.php:171
 msgid "Please provide the required information."
-msgstr ""
-
-#: plugins/custom-contact-form/public/class-ccf-public.php:178
-msgid ""
-"For security reasons, and to avoid spam, please solve the following "
-"operation : "
-msgstr ""
-
-#: plugins/custom-contact-form/public/class-ccf-public.php:181
-msgid "zero"
-msgstr ""
-
-#: plugins/custom-contact-form/public/class-ccf-public.php:182
-msgid "one"
-msgstr ""
-
-#: plugins/custom-contact-form/public/class-ccf-public.php:183
-msgid "two"
-msgstr ""
-
-#: plugins/custom-contact-form/public/class-ccf-public.php:184
-msgid "three"
-msgstr ""
-
-#: plugins/custom-contact-form/public/class-ccf-public.php:185
-msgid "four"
-msgstr ""
-
-#: plugins/custom-contact-form/public/class-ccf-public.php:186
-msgid "five"
-msgstr ""
-
-#: plugins/custom-contact-form/public/class-ccf-public.php:187
-msgid "six"
-msgstr ""
-
-#: plugins/custom-contact-form/public/class-ccf-public.php:188
-msgid "seven"
-msgstr ""
-
-#: plugins/custom-contact-form/public/class-ccf-public.php:189
-msgid "eight"
-msgstr ""
-
-#: plugins/custom-contact-form/public/class-ccf-public.php:190
-msgid "nine"
-msgstr ""
-
-#: plugins/custom-contact-form/public/class-ccf-public.php:191
-msgid "ten"
-msgstr ""
-
-#: plugins/custom-contact-form/public/class-ccf-public.php:192
-msgid "eleven"
-msgstr ""
-
-#: plugins/custom-contact-form/public/class-ccf-public.php:193
-msgid "twelve"
 msgstr ""
 
 #: plugins/custom-contact-form/templates/contact-form.php:6
@@ -424,7 +366,7 @@ msgid ""
 msgstr ""
 
 #: plugins/custom-contact-form/templates/contact-form.php:9
-#: plugins/custom-star-rating/public/partials/comment-template.php:32
+#: plugins/custom-star-rating/public/partials/comment-form-template.php:41
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:114
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_form.php:13
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_list.php:15
@@ -456,16 +398,16 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:63
-msgid "Send a copy of this email to yourself"
-msgstr ""
-
-#: plugins/custom-contact-form/templates/contact-form.php:66
+#: plugins/custom-contact-form/templates/contact-form.php:72
 msgid ""
 "I accept that the data entered on this form is stored on the present website."
 msgstr ""
 
-#: plugins/custom-contact-form/templates/contact-form.php:72
+#: plugins/custom-contact-form/templates/contact-form.php:77
+msgid "Send a copy of this email to yourself"
+msgstr ""
+
+#: plugins/custom-contact-form/templates/contact-form.php:81
 msgid "Send Message"
 msgstr ""
 
@@ -2319,64 +2261,64 @@ msgstr ""
 msgid "Please provide a valid email adress before submitting your comment."
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:62
+#: plugins/custom-star-rating/includes/class-csr-assets.php:63
 msgid "Dish"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:63
+#: plugins/custom-star-rating/includes/class-csr-assets.php:64
 msgid "Appreciation of the dish"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:64
+#: plugins/custom-star-rating/includes/class-csr-assets.php:65
 msgid "How did you like this dish ?"
-msgstr ""
-
-#: plugins/custom-star-rating/includes/class-csr-assets.php:66
-#: plugins/custom-star-rating/includes/class-csr-assets.php:77
-msgid "Disappointing"
 msgstr ""
 
 #: plugins/custom-star-rating/includes/class-csr-assets.php:67
 #: plugins/custom-star-rating/includes/class-csr-assets.php:78
-msgid "Average"
+msgid "Disappointing"
 msgstr ""
 
 #: plugins/custom-star-rating/includes/class-csr-assets.php:68
 #: plugins/custom-star-rating/includes/class-csr-assets.php:79
-msgid "Good"
+msgid "Average"
 msgstr ""
 
 #: plugins/custom-star-rating/includes/class-csr-assets.php:69
 #: plugins/custom-star-rating/includes/class-csr-assets.php:80
-msgid "Very good"
+msgid "Good"
 msgstr ""
 
 #: plugins/custom-star-rating/includes/class-csr-assets.php:70
 #: plugins/custom-star-rating/includes/class-csr-assets.php:81
+msgid "Very good"
+msgstr ""
+
+#: plugins/custom-star-rating/includes/class-csr-assets.php:71
+#: plugins/custom-star-rating/includes/class-csr-assets.php:82
 msgid "Delicious"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:74
+#: plugins/custom-star-rating/includes/class-csr-assets.php:75
 msgid "Overall"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:75
+#: plugins/custom-star-rating/includes/class-csr-assets.php:76
 msgid "Global appreciation of the dish"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:107
+#: plugins/custom-star-rating/includes/class-csr-assets.php:108
 msgid "Evaluations"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:108
+#: plugins/custom-star-rating/includes/class-csr-assets.php:109
 msgid "Evaluation"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:114
+#: plugins/custom-star-rating/includes/class-csr-assets.php:115
 msgid "rating"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:152
+#: plugins/custom-star-rating/includes/class-csr-assets.php:153
 msgid "Not rated"
 msgstr ""
 
@@ -2415,16 +2357,8 @@ msgstr ""
 msgid "(Edit)"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:38
+#: plugins/custom-star-rating/public/class-csr-form.php:40
 msgid "Your answer here"
-msgstr ""
-
-#: plugins/custom-star-rating/public/class-csr-form.php:51
-msgid "ERROR : CAPTCHA should not be empty"
-msgstr ""
-
-#: plugins/custom-star-rating/public/class-csr-form.php:53
-msgid "ERROR : CAPTCHA response was incorrect"
 msgstr ""
 
 #: plugins/custom-star-rating/public/class-csr-form.php:70
@@ -2432,23 +2366,28 @@ msgstr ""
 msgid "Submit"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:117
+#: plugins/custom-star-rating/public/class-csr-form.php:79
+msgid "<strong>ERROR</strong>: please complete the CAPTCHA verification."
+msgstr ""
+
+#: plugins/custom-star-rating/public/class-csr-form.php:86
 msgid ""
 "Your name and mail address are required for authentification of your comment."
 "<br>Your mail address will not be published."
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:123
+#: plugins/custom-star-rating/public/class-csr-form.php:92
 msgid "Send"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:126
-#: plugins/custom-star-rating/public/partials/comment-template.php:89
+#: plugins/custom-star-rating/public/class-csr-form.php:95
+#: plugins/custom-star-rating/public/partials/comment-form-template.php:98
 #, php-format
 msgid "Leave a Reply to %s"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:179
+#: plugins/custom-star-rating/public/class-csr-form.php:135
+#: plugins/custom-star-rating/public/partials/rating-form-template.php:17
 msgid "Add a comment"
 msgstr ""
 
@@ -2463,59 +2402,59 @@ msgstr[1] ""
 msgid "Evaluate me !"
 msgstr ""
 
-#: plugins/custom-star-rating/public/partials/comment-template.php:34
+#: plugins/custom-star-rating/public/partials/comment-form-template.php:43
 msgid "Email"
 msgstr ""
 
-#: plugins/custom-star-rating/public/partials/comment-template.php:36
+#: plugins/custom-star-rating/public/partials/comment-form-template.php:45
 msgid "Website"
 msgstr ""
 
-#: plugins/custom-star-rating/public/partials/comment-template.php:43
+#: plugins/custom-star-rating/public/partials/comment-form-template.php:52
 msgid ""
 "Save my name, email, and website in this browser for the next time I comment."
 msgstr ""
 
-#: plugins/custom-star-rating/public/partials/comment-template.php:51
+#: plugins/custom-star-rating/public/partials/comment-form-template.php:60
 #, php-format
 msgid "Required fields are marked %s"
 msgstr ""
 
-#: plugins/custom-star-rating/public/partials/comment-template.php:63
+#: plugins/custom-star-rating/public/partials/comment-form-template.php:72
 msgctxt "noun"
 msgid "Comment"
 msgstr ""
 
-#: plugins/custom-star-rating/public/partials/comment-template.php:67
+#: plugins/custom-star-rating/public/partials/comment-form-template.php:76
 #, php-format
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
 msgstr ""
 
-#: plugins/custom-star-rating/public/partials/comment-template.php:73
+#: plugins/custom-star-rating/public/partials/comment-form-template.php:82
 #, php-format
 msgid ""
 "<a href=\"%1$s\" aria-label=\"%2$s\">Logged in as %3$s</a>. <a href=\"%4$s"
 "\">Log out?</a>"
 msgstr ""
 
-#: plugins/custom-star-rating/public/partials/comment-template.php:76
+#: plugins/custom-star-rating/public/partials/comment-form-template.php:85
 #, php-format
 msgid "Logged in as %s. Edit your profile."
 msgstr ""
 
-#: plugins/custom-star-rating/public/partials/comment-template.php:80
+#: plugins/custom-star-rating/public/partials/comment-form-template.php:89
 msgid "Your email address will not be published."
 msgstr ""
 
-#: plugins/custom-star-rating/public/partials/comment-template.php:88
+#: plugins/custom-star-rating/public/partials/comment-form-template.php:97
 msgid "Leave a Reply"
 msgstr ""
 
-#: plugins/custom-star-rating/public/partials/comment-template.php:94
+#: plugins/custom-star-rating/public/partials/comment-form-template.php:103
 msgid "Cancel reply"
 msgstr ""
 
-#: plugins/custom-star-rating/public/partials/comment-template.php:95
+#: plugins/custom-star-rating/public/partials/comment-form-template.php:104
 msgid "Post Comment"
 msgstr ""
 

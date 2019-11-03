@@ -22,13 +22,11 @@ jQuery(document).ready(function() {
 			});
 			var formInput = jQuery(this).serialize();
 			jQuery.post(jQuery(this).attr('action'),formInput, function(data){
-				jQuery('form#contactForm').slideUp("fast", function() {				   
+				jQuery('form#contactForm').slideUp("fast", function() {
 					jQuery(this).before('<p class="thanks"><strong>Merci!</strong> Your email was successfully sent. I check my email all the time, so I should be in touch soon.</p>');
 				});
 			});
 		}
-		
 		return false;
-		
 	});
 });

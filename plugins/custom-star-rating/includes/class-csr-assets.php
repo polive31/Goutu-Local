@@ -39,6 +39,7 @@ class CSR_Assets {
 			)
 		);
 		custom_register_script( $args );
+		wp_enqueue_script('grecaptcha-invisible', 'https://www.google.com/recaptcha/api.js');
 	}
 
 	// public static function enqueue_comment_reply_script() {

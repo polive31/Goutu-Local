@@ -10,8 +10,8 @@ class CSR_Comments_List {
 
 	// private $respondId = 'custom_respond';
 
-	public function move_recipe_comments_form() {
-		if ( is_singular( 'recipe' ) ) {
+	public function move_comments_form() {
+		if ( is_singular( '' ) ) {
 			// $url = $_SERVER["REQUEST_URI"];
 			// $is_comment_reply = strpos($url, 'replytocom');
 			// if ( ! $is_comment_reply )

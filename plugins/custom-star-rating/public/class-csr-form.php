@@ -58,7 +58,7 @@ class CSR_Form {
 			$recaptcha .= CGR_Public::display( '', 'recaptcha' . self::$instance, 'normal', '' );
 			self::$instance++;
 		}
-		return $recaptcha . $this->get_submit_button_html();
+		return $this->get_submit_button_html($recaptcha);
 	}
 
 	public function comment_form_add_recaptcha($submit_button, $args) {
@@ -70,12 +70,12 @@ class CSR_Form {
 			$recaptcha .= CGR_Public::display( '', 'recaptcha' . self::$instance, 'normal', '' );
 			self::$instance++;
 		}
-		return $recaptcha . $this->get_submit_button_html();
+		return $this->get_submit_button_html($recaptcha);
 	}
 
-	public function get_submit_button_html() {
-		$submit_button .= '<input name="submit' . self::$instance . '" type="submit" id="submit' . self::$instance . '" data-instance="' . self::$instance . '" class="submit" value="' . __('Submit','foodiepro') . '">';
-		return $submit_button;
+	public function get_submit_button_html($recaptcha) {
+		$submit_button = '<input name="submit' . self::$instance . '" type="submit" id="submit' . self::$instance . '" data-instance="' . self::$instance . '" class="submit" value="' . __('Submit','foodiepro') . '">';
+		return $recaptcha . $submit_button;
 	}
 
 	public function verify_comment_recaptcha( $commentdata )

@@ -2,14 +2,17 @@
 # This file is distributed under the same license as the Plugins - Name Directory - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-08-02 17:11:48+0000\n"
+"PO-Revision-Date: 2019-11-04 23:31+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: GlotPress/2.4.0-alpha\n"
+"X-Generator: Poedit 2.2.4\n"
 "Language: fr\n"
 "Project-Id-Version: Plugins - Name Directory - Stable (latest release)\n"
+"POT-Creation-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
 
 #: admin_general_settings.php:67
 msgid "Editing"
@@ -125,7 +128,7 @@ msgstr "Nom du terme (singulier)"
 
 #: shortcode.php:292
 msgid "Submit a %s"
-msgstr "Envoyer un %s"
+msgstr "Soumettre un %s"
 
 #: admin.php:424
 msgid "The singular term for \"names\", i.e. movie"
@@ -688,7 +691,7 @@ msgstr "Il y a %d noms dans ce répertoire contenant le terme de recherche %s."
 
 #: shortcode.php:288
 msgid "Submit a name"
-msgstr "Envoyer un nom"
+msgstr "Soumettre un nom"
 
 #: shortcode.php:89
 msgid "Submit"

@@ -17,14 +17,4 @@ if ( !defined('ABSPATH') )
 
 /* Includes
 ------------------------------------*/
-require_once 'includes/Custom_Scripts_Styles_Enqueue.php';
-
-
-
-
-
-
-
-
-
-
+require_once 'includes/class-custom-assets-management.php';

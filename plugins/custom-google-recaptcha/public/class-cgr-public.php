@@ -91,19 +91,19 @@ class CGR_Public
     /* =================================================================*/
     /* = Assets management
     /* =================================================================*/
-            public function register_recaptcha_script()
-            {
-                wp_register_script('g-recaptcha', 'https://www.google.com/recaptcha/api.js', array(), '1.0.0');
-            }
+    public function register_recaptcha_script()
+    {
+        wp_register_script('g-recaptcha', 'https://www.google.com/recaptcha/api.js', array(), '1.0.0');
+    }
 
-            // This function is to be called by any form needing the ccf captcha
-            public static function enqueue_scripts()
-            {
-                wp_enqueue_script('g-recaptcha');
-            }
+    // This function is to be called by any form needing the ccf captcha
+    public static function enqueue_scripts()
+    {
+        wp_enqueue_script('g-recaptcha');
+    }
 
-            /* =================================================================*/
-            /* = Assets management
+    /* =================================================================*/
+    /* = Assets management
     /* =================================================================*/
             /*pds_captcha.php - un captcha mathématique bidouillé par passeurs de savoirs<br>
 	plus d'infos sur http://passeurs-de-savoirs.fr/lab/lab2015/captcha-math.php

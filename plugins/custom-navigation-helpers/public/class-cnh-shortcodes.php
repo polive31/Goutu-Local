@@ -126,17 +126,24 @@ class CNH_Shortcodes {
 		$atts = shortcode_atts( array(
 			'glossaryslug' => 'lexique-de-cuisine',
 			'searchkey' => 'name-directory-search-value',
+			'dir' => '2',
 			'term' => '',
-			), $atts );
+		), $atts );
 
-		$term = $atts['term'];
+		$term = !empty($atts['term'])? $atts['term']:$content;
 		$glossary_url = $this->get_page_by_slug($atts['glossaryslug']);
-		if ($term)
-			$html=add_query_arg( $atts['searchkey'], strip_tags($term), $glossary_url);
-		else
-			$html=add_query_arg( $atts['searchkey'], strip_tags($content), $glossary_url);
+		$url=add_query_arg(
+			array(
+				$atts['searchkey'] 	=> strip_tags($term),
+				'dir'				=> $atts['dir'],
+			),
+			$glossary_url
+		);
 
-		$html='<a href="' . $html . '">' . $content . '</a>';
+		// if ( get_page_by_path($url,'post') )
+			$html='<a href="' . $url . '">' . $content . '</a>';
+		// else
+		// 	$html=$content;
 
 		return $html;
 	}

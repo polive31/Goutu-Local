@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class CustomScriptsStylesEnqueue {
+class Custom_Assets_Management {
 
 	// Scripts to be loaded asynchronously
 	const DEFER_JS = array(
@@ -276,4 +276,4 @@ class CustomScriptsStylesEnqueue {
 
 }
 
-new CustomScriptsStylesEnqueue();
+new Custom_Assets_Management();

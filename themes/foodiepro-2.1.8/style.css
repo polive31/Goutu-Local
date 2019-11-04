@@ -1992,6 +1992,11 @@ form[role="search"] {
 /* Plugins
 -------------------------------------------------------- */
 
+/* Name Directory */
+.name_directory_index a {
+    font-family: Oswald, sans-serif;
+}
+
 /* Google Recaptcha */
 .g-recaptcha {
     margin: 10px 0;

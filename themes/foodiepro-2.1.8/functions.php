@@ -995,8 +995,10 @@ function custom_search_text( $text ) {
 -------------------------------------------------------------------*/
 add_action( 'csn_after_post_like', 'foodiepro_clear_cache', 15, 2);
 function foodiepro_clear_cache($user_id,$post_id) {
-	// echo "TOTOOOOO0";
-	wpfc_clear_post_cache_by_id($post_id);
+	// Flushes the cache in the case of WP Faster Cache installed
+	if (function_exists('wpfc_clear_post_cache_by_id')) {
+		wpfc_clear_post_cache_by_id($post_id);
+	}
 }
 
 /* =================================================================*/

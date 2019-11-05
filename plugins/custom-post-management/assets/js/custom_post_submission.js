@@ -35,6 +35,7 @@ jQuery(document).ready(function() {
         toolbar: 'undo redo | styleselect | bold italic underline | link image | alignleft aligncenter alignright | bullist | searchreplace',
         plugins: 'autoresize link spellchecker searchreplace placeholder lists image',
         autoresize_bottom_margin : 20,
+        remove_linebreaks : false,
         placeholder_attrs : {style: {
                 position: 'absolute',
                 top:'5px',

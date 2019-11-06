@@ -67,6 +67,10 @@ class PeepsoHelpers  {
 	static function get_field( $user, $field ) {
 		switch ($field) {
 			case "pseudo" :
+				// username is now randomized and kept secret for security reasons
+				$html=$user->get_nicename();
+				break;
+			case "nicename" :
 				$html=$user->get_nicename();
 				break;
 			case "firstname" :
@@ -74,9 +78,6 @@ class PeepsoHelpers  {
 				break;
 			case "lastname" :
 				$html=$user->get_lastname();
-				break;
-			case "nicename" :
-				$html=$user->get_nicename();
 				break;
 			case "fullname" :
 				$html=$user->get_fullname();

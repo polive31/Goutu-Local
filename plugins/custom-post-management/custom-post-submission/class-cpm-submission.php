@@ -332,8 +332,12 @@ class CPM_Submission
                     }
 
                     $title = isset($_POST[$this->post_type . '_title']) ? $_POST[$this->post_type . '_title'] : '';
-                    if (!$title) $title = __('Untitled', 'foodiepro');
-
+                    if (!$title) {
+                        $title = __('Untitled', 'foodiepro');
+                    }
+                    else {
+                        $title = sanitize_text_field($title);
+                    }
                     $content = isset($_POST[$this->post_type . '_content']) ? $_POST[$this->post_type . '_content'] : '';
 
                     $post = array(

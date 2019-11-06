@@ -2,7 +2,7 @@
         <div class="post-container post-title-container">
             <p>
                 <h4 id="headline-title"><?= CPM_Assets::get_label($this->post_type, 'title'); ?><?php if( in_array( $this->post_type . '_title', $required_fields ) ) echo '<span class="required-field">*</span>'; ?></h4>
-                <input type="text" id="<?= $this->post_type; ?>_title" value="<?= isset( $_POST[ $this->post_type . '_title'] ) ? $_POST[ $this->post_type . '_title'] : $post->post_title;  ?>" size="20" name="<?= $this->post_type; ?>_title" />
+                <input type="text" id="<?= $this->post_type; ?>_title" value="<?= isset( $_POST[ $this->post_type . '_title'] ) ? $_POST[ $this->post_type . '_title'] : esc_html($post->post_title);  ?>" size="20" name="<?= $this->post_type; ?>_title" />
             </p>
         </div>
 
@@ -11,7 +11,7 @@
             <!-- <label for="post-author"><?php _e( 'Your name', 'foodiepro' ); ?><?php if( in_array( 'post-author', $required_fields ) ) echo '<span class="required-field">*</span>'; ?></label><br /> -->
             <h4 id="headline-author"><?php _e( 'Author', 'foodiepro' ); ?><?php if( in_array( 'post-author', $required_fields ) ) echo '<span class="required-field">*</span>'; ?></h4>
             <p>
-                <input type="text" id="post-author" value="<?= isset( $_POST['post-author'] ) ? $_POST['post-author'] : $post->post_author;  ?>" size="50" name="post-author" />
+                <input type="text" id="post-author" value="<?= isset( $_POST['post-author'] ) ? $_POST['post-author'] : esc_html($post->post_author);  ?>" size="50" name="post-author" />
             </p>
         </div>
 <?php } ?>

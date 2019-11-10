@@ -13,6 +13,7 @@ class Custom_Peepso_Overrides {
 		// Adds author avatar and link to profile, to post meta information under the post headline
 		add_filter( 'peepso_postbox_message', 			array($Customizations, 'custom_postbox_message') );
 		add_filter( 'peepso_blogposts_post_types', 		array($Customizations, 'blogposts_custom_post_types') );
+		add_filter( 'peepso_register_form_fields', 		array($Customizations, 'register_terms_and_conditions') );
 
 		/* Integrate recipe post type to Peepso activity stream (blogposts module)  */
 		add_action( 'publish_recipe', 					array($Customizations, 'blogposts_publish_recipe'), 1, 2 );

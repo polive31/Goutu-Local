@@ -132,5 +132,18 @@ class CPO_Customizations {
      */
 
 
+    public function register_terms_and_conditions( $fields ) {
+        $terms = do_shortcode( '[permalink slug="mentions-legales"]'. __('Legal notice', 'foodiepro') . '[/permalink]' );
+        $fields['terms']=array(
+            'label' => sprintf(__('I agree to the %s.', 'peepso-core'), $terms ),
+            'type' => 'checkbox',
+            'required' => 1,
+            'row_wrapper_class' => 'ps-form__row--checkbox',
+            'value' => 1
+        );
+        return $fields;
+    }
+
+
 
 }

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2019-11-03 23:18+0100\n"
-"PO-Revision-Date: 2019-11-03 23:18+0100\n"
+"PO-Revision-Date: 2019-11-10 14:38+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -1186,7 +1186,7 @@ msgstr ""
 #, php-format
 msgctxt "post"
 msgid "Back to <a href=\"%s\">my posts</a>."
-msgstr "Retour à <a href=\"%s\">mes recettes</a>"
+msgstr "Retour à <a href=\"%s\">mes articles</a>"
 
 #: plugins/custom-post-management/includes/class-cpm-assets.php:164
 #, php-format

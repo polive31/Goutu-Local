@@ -98,14 +98,14 @@ class Custom_Gallery_Shortcode {
 
 		$html5 = current_theme_supports( 'html5', 'gallery' );
 		$atts = shortcode_atts( array(
-			'order'      => 'ASC',
-			'orderby'    => 'menu_order ID',
-			'gallery-id' => '',
-			'id'         => $post ? $post->ID : 0,
-			'size'       => 'thumbnail',
-			'include'    => '',
-			'exclude'    => '',
-			'link'       => ''
+			'order'      	=> 'ASC',
+			'orderby'    	=> 'menu_order ID',
+			'gallery-id' 	=> '',
+			'id'         	=> $post ? $post->ID : 0,
+			'size'       	=> 'thumbnail',
+			'include'    	=> '',
+			'exclude'    	=> '',
+			'link'       	=> ''
 		), $attr, 'gallery' );
 
 		$id = intval( $atts['id'] );
@@ -126,8 +126,9 @@ class Custom_Gallery_Shortcode {
 		} elseif ( ! empty( $atts['exclude'] ) ) {
 			$attachments = get_children( array( 'post_parent' => $id, 'exclude' => $atts['exclude'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
 		} else {
-			$attachments = get_children( array( 'post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
+				$attachments = get_children( array( 'post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
 		}
+		$attachments = apply_filters( 'cgs_media', $attachments, $id );
 
 
 		/* Gallery content output */

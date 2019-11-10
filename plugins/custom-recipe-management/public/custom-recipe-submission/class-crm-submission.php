@@ -139,8 +139,9 @@ class CRM_Submission {
         else { // Instructions image
             $number = explode( '_', $file_handler );
             $number = $number[2];
-            /* Post meta update for instructions is handled in WPURP/helpers/recipe_save.php */
+            /* Post meta update for instructions is handled in WPURP/core/helpers/recipe_save.php */
             $this->instructions[$number]['image'] = strval($attach_id);
+            // add_post_meta( $post_id, '_instructions_thumbnail_id', $attach_id);
         }
 
         return $attach_id;
@@ -161,8 +162,9 @@ class CRM_Submission {
         else {
             $instructions = get_post_meta( $post_id, 'recipe_instructions', true );
             if ( isset($instructions[$thumb_id]['image']) ) {
+                delete_post_meta($post_id, '_instructions_thumbnail_id', $instructions[$thumb_id]['image']);
                 unset($instructions[$thumb_id]['image']);
-                update_post_meta( $post_id, 'recipe_instructions', $instructions );
+                // update_post_meta( $post_id, 'recipe_instructions', $instructions );
             }
         }
 

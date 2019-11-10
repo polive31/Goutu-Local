@@ -271,24 +271,45 @@ class CRM_Recipe_Template {
         return $content;
     }
 
-/* CALLBACKS
------------------------------------------------------------------------------------*/
-    public function fetch_gallery_images( $attachments, $post_id ) {
+    /* CALLBACKS
+	-----------------------------------------------------------------------------------*/
+    public function fetch_gallery_images($attachments, $post_id)
+    {
         $attachment_ids = get_post_meta($post_id, '_post_image_gallery', true);
         $attachments = array();
-        foreach ($attachment_ids as $id) {
-            if ( get_post_status( $id) =='publish') {
-                $attachments[$id]=get_post($id);
-            };
+        if (!empty($attachment_ids)) {
+            foreach ($attachment_ids as $id) {
+                if (get_post_status($id) == 'publish') {
+                    $attachments[$id] = get_post($id);
+                };
+            }
         }
         return $attachments;
     }
 
-    public function tag_uploaded_recipe_images($media_ids, $success, $post_id ) {
-        if ( (get_post_type( $post_id )!= 'recipe') || !$success ) return;
+    public function tag_uploaded_images($media_ids, $success, $post_id)
+    {
+        if (!(in_array(get_post_type($post_id), array('post', 'recipe'))) || !$success) return;
         $existing_ids = get_post_meta($post_id, '_post_image_gallery', true);
-        $media_ids = array_merge( $existing_ids, $media_ids);
-        update_post_meta( $post_id, '_post_image_gallery', $media_ids, 0);
+
+        //Set attachment title if exists
+        foreach ($media_ids as $media_id) {
+            $title = get_post_meta($media_id, 'fu_title', true);
+            if (!empty($title)) {
+                $media_post = array(
+                    'ID'           => $media_id,
+                    'post_title'   => $title,
+                );
+                wp_update_post($media_post);
+            }
+        }
+
+        if (!empty($existing_ids)) {
+            $media_ids = array_merge($existing_ids, $media_ids);
+        }
+        if (!empty($media_ids)) {
+            update_post_meta($post_id, '_post_image_gallery', $media_ids, 0);
+        }
     }
 
 }

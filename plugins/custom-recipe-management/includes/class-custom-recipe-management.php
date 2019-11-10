@@ -36,8 +36,8 @@ class Custom_Recipe_Management {
         add_filter( 'wpurp_recipe_content_loop_check',  array($Recipe_Template, 'disable_wpurp_rendering'));
         add_filter( 'the_content',                      array($Recipe_Template, 'display_recipe_from_scratch'), 10, 2 );
         /* Filter gallery shortcode to remove instructions images */
-        add_filter( 'cgs_media',                        array($Recipe_Template, 'fetch_gallery_images'), 10, 2 );
-        add_action( 'fu_after_upload',                   array($Recipe_Template, 'tag_uploaded_recipe_images'), 10, 3 );
+        add_action('fu_after_upload',       array($Recipe_Template, 'tag_uploaded_images'), 10, 3);
+        add_filter('cgs_media',             array($Recipe_Template, 'fetch_gallery_images'), 10, 2);
 
 
         /* Hooks for CRM_Favorite

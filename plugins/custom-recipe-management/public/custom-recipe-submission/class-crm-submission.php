@@ -141,7 +141,6 @@ class CRM_Submission {
             $number = $number[2];
             /* Post meta update for instructions is handled in WPURP/core/helpers/recipe_save.php */
             $this->instructions[$number]['image'] = strval($attach_id);
-            // add_post_meta( $post_id, '_instructions_thumbnail_id', $attach_id);
         }
 
         return $attach_id;
@@ -164,7 +163,6 @@ class CRM_Submission {
             if ( isset($instructions[$thumb_id]['image']) ) {
                 delete_post_meta($post_id, '_instructions_thumbnail_id', $instructions[$thumb_id]['image']);
                 unset($instructions[$thumb_id]['image']);
-                // update_post_meta( $post_id, 'recipe_instructions', $instructions );
             }
         }
 

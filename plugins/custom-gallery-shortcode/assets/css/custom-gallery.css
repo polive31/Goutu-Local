@@ -46,12 +46,14 @@
 }
 
 #joined-pics .add-picture-button button {
-    background: #656565;
-    color: #ffffff;
+	background: #f1f0ef;
+    color: #797979;
+    /* border: 2px solid #c1c1c1; */
 }
 
 #joined-pics .add-picture-button button:hover {
-	background: #808080;
+	background: #9b9b9b;
+	color: #FFF;
 	/* color:rgb(34, 34, 34); */
   	transition: all 1s ease-in-out;
 }

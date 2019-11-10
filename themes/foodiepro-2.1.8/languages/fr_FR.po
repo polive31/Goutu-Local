@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2019-11-10 17:35+0100\n"
-"PO-Revision-Date: 2019-11-10 17:37+0100\n"
+"PO-Revision-Date: 2019-11-10 23:15+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -470,7 +470,7 @@ msgstr "Vous avez réalisé cette recette ? Publiez votre propre photo !"
 
 #: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:152
 msgid "Add a picture"
-msgstr "Ajoutez vos photos !"
+msgstr "Ajoutez vos photos"
 
 #: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:161
 msgid "Upload your picture"

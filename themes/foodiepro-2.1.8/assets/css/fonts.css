@@ -142,7 +142,6 @@ h1.entry-title {
 	font-size: 5.5rem;
 	line-height: 5rem;
 	letter-spacing:2px;
-	display: inline;
 	text-align: left;
 	font-variant:small-caps;
 	text-decoration: none;
@@ -150,6 +149,12 @@ h1.entry-title {
 	vertical-align: middle;
 	font-weight:normal;
 }
+
+h1.archive-title {
+	display: inline;
+}
+
+
 
 .archive h2 { /* Subtitle */
 	/* font-size: 4.5rem; */

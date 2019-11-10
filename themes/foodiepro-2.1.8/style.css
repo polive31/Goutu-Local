@@ -1598,6 +1598,18 @@ img.alignright,
 	/*content:url(images/deco-icons/laurel-o-r.png);*/
 }
 
+/* Widget Borders
+--------------------------------------------- */
+
+.widget.border1 {
+	border:30px solid transparent;
+	border-image:url(images/deco-icons/border1.png);
+	border-image-slice: 60;
+	border-image-outset: 10px;
+}
+
+
+
 /* Archive title
 --------------------------------------------- */
 

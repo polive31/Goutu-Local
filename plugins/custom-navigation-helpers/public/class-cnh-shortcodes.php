@@ -72,7 +72,7 @@ class CNH_Shortcodes {
 		elseif ( $user=='logged-in' )
 			$display=$display && is_user_logged_in();
 
-		return $display?$content:'';
+		return $display?do_shortcode($content):'';
 	}
 
 

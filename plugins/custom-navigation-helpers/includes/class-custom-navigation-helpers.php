@@ -17,16 +17,19 @@ class Custom_Navigation_Helpers {
 		$Assets = new CNH_Assets();
 		add_action( 'wp_enqueue_scripts', 				array($Assets, 'enqueue_masonry_scripts'));
 
+
 		$Entries = new CNH_Archive_Entries();
 		add_filter( 'genesis_post_title_output', 		array($Entries, 'archive_rating' ), 1 );
 		/* Customize archive pages */
 		add_filter( 'post_class', 						array($Entries, 'set_grid_columns'));
 		add_filter( 'genesis_before_entry', 			array($Entries, 'reorganize_entry_content') );
 
+
 		$Tags = new CNH_Tags_Overlay();
 		add_filter( 'rpwe_in_thumbnail', 				array($Tags, 'rpwe_add_overlay'), 10, 2 );
 		add_action( 'genesis_entry_header', 			array($Tags, 'do_post_title_before'), 1 );
 		add_action( 'genesis_entry_header', 			array($Tags, 'do_post_title_after') );
+
 
 		$Headline = new CNH_Archive_Headline();
 		// Headline text

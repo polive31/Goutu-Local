@@ -3324,11 +3324,11 @@ a.more-link,
   text-align:left;
 }
 
-img.post-image.entry-image,
+/* img.post-image.entry-image,
 .content img.rpwe-thumb,
 .after-content img.rpwe-thumb {
-	/* border-radius: 10px; */
-}
+	border-radius: 10px;
+} */
 
 
 .content img.rpwe-thumb {

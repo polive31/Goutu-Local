@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-11-03 23:18+0100\n"
-"PO-Revision-Date: 2019-11-10 14:38+0100\n"
+"POT-Creation-Date: 2019-11-10 17:35+0100\n"
+"PO-Revision-Date: 2019-11-10 17:37+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -84,7 +84,7 @@ msgstr ""
 #: peepso/overrides/templates/profile/focus.php:75
 #: peepso/overrides/templates/profile/profile-about.php:150
 #: plugins/custom-recipe-management/public/custom-recipe-favorite/class-crm-favorite.php:137
-#: plugins/custom-star-rating/public/class-csr-form.php:96
+#: plugins/custom-star-rating/public/class-csr-form.php:113
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:79
 #: plugins/wp-ultimate-recipe-premium/core/vendor/vafpress/classes/shortcodegenerator.php:264
 #: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:69
@@ -227,7 +227,7 @@ msgstr ""
 #: peepso/overrides/templates/widgets/userbar.tpl.php:59
 #: peepso/overrides/templates/widgets/userbar.tpl.php:107
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:96
-#: themes/foodiepro-2.1.8/functions.php:885
+#: themes/foodiepro-2.1.8/functions.php:914
 msgid "Log Out"
 msgstr "Déconnexion"
 
@@ -464,19 +464,19 @@ msgstr "Je souhaite recevoir une copie de ce message."
 msgid "Send Message"
 msgstr "Envoyer"
 
-#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:146
+#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:152
 msgid "You cooked this recipe ? Upload your own picture here"
 msgstr "Vous avez réalisé cette recette ? Publiez votre propre photo !"
 
-#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:146
+#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:152
 msgid "Add a picture"
-msgstr "Ajoutez votre photo"
+msgstr "Ajoutez vos photos !"
 
-#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:155
+#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:161
 msgid "Upload your picture"
 msgstr "Publiez votre photo"
 
-#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:193
+#: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:201
 msgid "Picture title"
 msgstr "Titre de l'image"
 
@@ -637,11 +637,11 @@ msgstr "Partager sur les réseaux sociaux"
 msgid "Share this post"
 msgstr "Partager cet article"
 
-#: plugins/custom-navigation-helpers/public/class-cnh-shortcodes.php:324
+#: plugins/custom-navigation-helpers/public/class-cnh-shortcodes.php:331
 msgid "Choose..."
 msgstr "Choisir..."
 
-#: plugins/custom-navigation-helpers/public/class-cnh-shortcodes.php:344
+#: plugins/custom-navigation-helpers/public/class-cnh-shortcodes.php:351
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:55
 msgid "authors"
 msgstr "auteurs"
@@ -793,7 +793,7 @@ msgstr "Publie un message sur le fil d'actualités de %s..."
 msgid "wrote a new recipe"
 msgstr "a publié une nouvelle recette"
 
-#: plugins/custom-peepso-overrides/public/class-peepso-helpers.php:122
+#: plugins/custom-peepso-overrides/public/class-peepso-helpers.php:123
 #, fuzzy, php-format
 #| msgid "Update profile picture"
 msgid "Picture of %s"
@@ -866,7 +866,7 @@ msgid "Remember Me"
 msgstr "Se souvenir de moi"
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:131
-#: themes/foodiepro-2.1.8/functions.php:890
+#: themes/foodiepro-2.1.8/functions.php:919
 msgid "Log In"
 msgstr "Connexion"
 
@@ -985,27 +985,27 @@ msgstr "Publier"
 msgid "You are not authorized to access this page."
 msgstr "Vous n'êtes pas autorisé à accéder à cette page."
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:335
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:336
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-fdx/import-fdx.php:65
 #: plugins/wp-ultimate-recipe-premium/premium/addons/import-xml/import-xml.php:65
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/user-submissions.php:235
 msgid "Untitled"
 msgstr "Sans titre"
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:458
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:462
 #, php-format
 msgid "New user submission:%s"
 msgstr ""
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:470
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:474
 msgid "Unknown action."
 msgstr ""
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:580
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:584
 msgid "Post content"
 msgstr "Corps de l'article"
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:583
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:587
 #: plugins/custom-recipe-management/public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:6
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:16
 #: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/import_text.php:43
@@ -1016,7 +1016,7 @@ msgstr "Corps de l'article"
 msgid "Description"
 msgstr ""
 
-#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:585
+#: plugins/custom-post-management/custom-post-submission/class-cpm-submission.php:589
 msgid "Write your post here."
 msgstr ""
 "Ecrivez votre article ici. Vous pouvez joindre des liens et des images au "
@@ -2330,7 +2330,7 @@ msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr "Un problème ? Une question ? Contacte nous <a href=\"%s\">ici</a>"
 
 #: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:296
-#: themes/foodiepro-2.1.8/functions.php:1008
+#: themes/foodiepro-2.1.8/functions.php:1039
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
@@ -2529,20 +2529,21 @@ msgstr ""
 msgid "(Edit)"
 msgstr "Modifier"
 
-#: plugins/custom-star-rating/public/class-csr-form.php:40
+#: plugins/custom-star-rating/public/class-csr-form.php:39
 msgid "Your answer here"
 msgstr "Entrez votre réponse ci-dessous"
 
-#: plugins/custom-star-rating/public/class-csr-form.php:70
+#: plugins/custom-star-rating/public/class-csr-form.php:54
+#: plugins/custom-star-rating/public/class-csr-form.php:68
+msgid "<strong>ERROR</strong>: please complete the CAPTCHA verification."
+msgstr "<strong>ERREUR</strong> : Merci d'effectuer la vérification anti-spam."
+
+#: plugins/custom-star-rating/public/class-csr-form.php:77
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/templates/public_recipe_form.php:137
 msgid "Submit"
 msgstr "Publier"
 
-#: plugins/custom-star-rating/public/class-csr-form.php:79
-msgid "<strong>ERROR</strong>: please complete the CAPTCHA verification."
-msgstr "<strong>ERREUR</strong> : Merci d'effectuer la vérification anti-spam."
-
-#: plugins/custom-star-rating/public/class-csr-form.php:86
+#: plugins/custom-star-rating/public/class-csr-form.php:103
 msgid ""
 "Your name and mail address are required for authentification of your comment."
 "<br>Your mail address will not be published."
@@ -2550,17 +2551,17 @@ msgstr ""
 "Vos nom et adresse mail sont nécessaires pour authentifier votre commentaire."
 "<br>Votre adresse mail ne sera pas publiée."
 
-#: plugins/custom-star-rating/public/class-csr-form.php:92
+#: plugins/custom-star-rating/public/class-csr-form.php:109
 msgid "Send"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:95
+#: plugins/custom-star-rating/public/class-csr-form.php:112
 #: plugins/custom-star-rating/public/partials/comment-form-template.php:98
 #, php-format
 msgid "Leave a Reply to %s"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:135
+#: plugins/custom-star-rating/public/class-csr-form.php:150
 #: plugins/custom-star-rating/public/partials/rating-form-template.php:17
 #, fuzzy
 #| msgid "Add a picture"
@@ -3466,10 +3467,8 @@ msgstr "Illustration de cette étape"
 
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:336
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:365
-#, fuzzy
-#| msgid "Add a picture"
 msgid "Add Image"
-msgstr "Ajoutez votre photo"
+msgstr "Ajoutez une photo"
 
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:387
 msgid "Recipe notes"
@@ -8547,19 +8546,19 @@ msgstr ""
 msgid "author"
 msgstr "auteur"
 
-#: themes/foodiepro-2.1.8/functions.php:760
+#: themes/foodiepro-2.1.8/functions.php:789
 msgid "Content/Alt Sidebar"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:961
+#: themes/foodiepro-2.1.8/functions.php:990
 msgid "Recipe, Ingredient, Keyword, Author..."
 msgstr "Recette, ingrédient, mot-clé, auteur..."
 
-#: themes/foodiepro-2.1.8/functions.php:1008
+#: themes/foodiepro-2.1.8/functions.php:1039
 msgid "Contact us"
 msgstr "Contactez-nous"
 
-#: themes/foodiepro-2.1.8/functions.php:1008
+#: themes/foodiepro-2.1.8/functions.php:1039
 msgid "Legal notice"
 msgstr "Mentions légales"
 

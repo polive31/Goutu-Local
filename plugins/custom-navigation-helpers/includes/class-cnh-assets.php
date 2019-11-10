@@ -37,13 +37,18 @@ class CNH_Assets {
 	public static $PLUGIN_PATH;
 	public static $PLUGIN_URI;
 
+    public function __construct()
+    {
+        self::$PLUGIN_PATH = plugin_dir_path(dirname(__FILE__));
+        self::$PLUGIN_URI = plugin_dir_url(dirname(__FILE__));
+    }
 
 	/* Class attributes initialization
 	--------------------------------------------- */
 	public function enqueue_masonry_scripts() {
 	  	if ( is_archive() || is_search() ) {
 			wp_enqueue_script( 'jquery-masonry' );
-			custom_enqueue_script( 'masonry-layout', '/assets/js/masonry-layout.js', self::$PLUGIN_URI, self::$PLUGIN_PATH, array( 'jquery', 'jquery-masonry' ), CHILD_THEME_VERSION, true);
+			custom_enqueue_script( 'cnh-masonry-layout', '/assets/js/masonry-layout.js', self::$PLUGIN_URI, self::$PLUGIN_PATH, array( 'jquery', 'jquery-masonry' ), CHILD_THEME_VERSION, true);
 	  	};
 	}
 

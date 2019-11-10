@@ -37,18 +37,28 @@
 	padding: 5px!important;
 	text-transform:uppercase;
 	text-align:center;
-	font-family: "Lato",sans-serif;
-	font-size: 10px;
-	line-height: 14px;
-	font-weight: bold;
+	font-family: "Cabin",sans-serif;
+	/* font-size: 10px;
+	line-height: 14px; */
+	font-size: 13px;
+    line-height: 16px;
+	/* font-weight: bold; */
+}
+
+#joined-pics .add-picture-button button {
+    background: #656565;
+    color: #ffffff;
 }
 
 #joined-pics .add-picture-button button:hover {
-	color:#000;
+	background: #808080;
+	/* color:rgb(34, 34, 34); */
+  	transition: all 1s ease-in-out;
 }
 
 #joined-pics .add-picture-button button:before {
 	/* content:"\f067"; Plus */
 	content:"+"; /* Plus */
 	display:block;
+	font-size: 20px;
 }

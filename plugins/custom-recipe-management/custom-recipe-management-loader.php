@@ -23,6 +23,7 @@ function CRM_init() {
 	------------------------------------*/
 	require_once 'includes/class-custom-recipe-management.php';
 	require_once 'includes/class-crm-assets.php';
+	require_once 'includes/class-crm-helpers.php';
 
 	/*
 	* 			PUBLIC CLASSES

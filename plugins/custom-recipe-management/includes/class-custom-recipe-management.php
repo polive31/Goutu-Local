@@ -92,6 +92,7 @@ class Custom_Recipe_Management {
 
         add_shortcode( 'ingredient',                array( $Ingredient, 'display_ingredient_shortcode'         ), 10, 2 );
         add_shortcode( 'ingredient-months',         array( $Ingredient, 'display_ingredient_months_shortcode'  ), 10, 2 );
+		add_filter('ctlw_meta_query_args',          array( $Ingredient, 'query_current_month_ingredients'), 15, 3 );
 
 
         /* Hooks for CRM Widgets

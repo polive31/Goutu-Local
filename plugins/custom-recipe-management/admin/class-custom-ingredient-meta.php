@@ -28,14 +28,13 @@ class Custom_Ingredient_Meta {
 	public function callback_ingredient_edit_fields($term) {
 		$t_id = $term->term_id;
 		// retrieve the existing value(s) for this meta field. This returns an array
-		$ingredient_meta = get_option( "taxonomy_$t_id" );
-		$this->admin_edit_months_field($term, $ingredient_meta);
-		// $this->admin_edit_isplural_field($term, $ingredient_meta);
-	}
+		// $ingredient_meta = get_option( "taxonomy_$t_id" );
+		// New method since Wordpress 4.4
 
+		//valid months are coded as array of their numbers. Ex : array(1, 12) for january and december
+		$ingredient_months = get_term_meta( $t_id, 'month', true );
+		if (!is_array( $ingredient_months )) $ingredient_months=array();
 
-	// Edit term page
-	public function admin_edit_months_field($term, $ingredient_meta) {
 	 	?>
 	 	<tr class="form-field">
 		<th scope="row" valign="top">
@@ -46,7 +45,8 @@ class Custom_Ingredient_Meta {
 				<?php
 				$i=1;
 				foreach (self::$MONTHS as $month) {
-					$checked = isset($ingredient_meta['month'][$i]);
+					// $checked = isset($ingredient_months[$i]);
+					$checked = in_array( $i, $ingredient_months);
 					?>
 					<td>
 					<div class="form-field">
@@ -65,8 +65,8 @@ class Custom_Ingredient_Meta {
 		</tr>
 
 		<?php
+		// $this->admin_edit_isplural_field($term, $ingredient_meta);
 	}
-
 
 	// Add term page
 	public function callback_admin_add_months_field() {
@@ -97,26 +97,38 @@ class Custom_Ingredient_Meta {
 	}
 
 
-	// Save extra taxonomy fields callback function.
-	public function callback_admin_save_meta( $term_id ) {
-		if ( isset( $_POST['wpurp_taxonomy_metadata_ingredient'] ) ) {
-			// $t_id = $term_id;
-			$this->ingredient_meta = get_option( "taxonomy_$term_id" );
-			$this->update_month();
+	// DEPRECATED Save extra taxonomy fields callback function.
+	// public function callback_admin_save_meta_bak( $term_id ) {
+	// 	if ( isset( $_POST['wpurp_taxonomy_metadata_ingredient'] ) ) {
+	// 		$this->ingredient_meta = get_option( "taxonomy_$term_id" );
+	// 		$this->update_month();
 
+	// 		// Save the option array.
+	// 		update_option( "taxonomy_$term_id", $this->ingredient_meta );
+	// 	}
+	// }
+
+	/* New version using term meta as introduced in Wordpress 4.4 */
+	public function callback_admin_save_meta($term_id)
+	{
+		if (isset($_POST['wpurp_taxonomy_metadata_ingredient'])) {
+
+			$months = get_term_meta( $term_id, 'month', true );
+			if (!is_array($months)) $months=array();
+
+			$i=1;
+			foreach ( self::$MONTHS as $month ) {
+				if ( isset ( $_POST['wpurp_taxonomy_metadata_ingredient']['month'][$i] ) )
+					$months[] = $i;
+				elseif (($key = array_search($i, $months)) !== false) {
+					unset($months[$key]);
+				}
+				$i++;
+			}
+
+			$this->ingredient_meta['month']=$months;
 			// Save the option array.
-			update_option( "taxonomy_$term_id", $this->ingredient_meta );
-		}
-	}
-
-	public function update_month() {
-		$i=1;
-		foreach ( self::$MONTHS as $month ) {
-			if ( isset ( $_POST['wpurp_taxonomy_metadata_ingredient']['month'][$i] ) )
-				$this->ingredient_meta['month'][$i] = $_POST['wpurp_taxonomy_metadata_ingredient']['month'][$i];
-			elseif ( isset($this->ingredient_meta['month'][$i]) )
-				unset($this->ingredient_meta['month'][$i]);
-			$i++;
+			update_term_meta( $term_id, 'month', $this->ingredient_meta['month']);
 		}
 	}
 

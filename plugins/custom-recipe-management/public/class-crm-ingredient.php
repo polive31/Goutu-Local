@@ -72,16 +72,16 @@ class CRM_Ingredient {
         ), $atts );
 
         if ($atts['id']) {
-            $ingredient = $atts['id'];
+            $ingredient_id = $atts['id'];
         }
         elseif (is_tax('ingredient')) {
-            $ingredient = get_queried_object()->slug;
+            $ingredient_id = get_queried_object()->slug;
         }
         else
             return false;
 
-        $ingredient_meta = get_option( "taxonomy_$ingredient" );
-        if ( empty($ingredient_meta['month']) ) return '';
+        $ingredient_months = get_term_meta($ingredient_id, 'month', true );
+        if ( empty($ingredient_months) ) return '';
 
         $html = '<h2>' . __('Harvest Period','foodiepro') . '</h2>';
         $html .= '<table class="ingredient-months">';
@@ -90,14 +90,12 @@ class CRM_Ingredient {
 
         $months = Custom_Ingredient_Meta::$MONTHS;
         foreach (  $months as $month ) {
-            $available = isset( $ingredient_meta['month'][$i] )?'available':'';
+            $available = in_array( $i, $ingredient_months )?'available':'';
             $html .= '<td class="' . $available . '" title="' . $month . '">' . $month[0] . '</td>';
             $i++;
         }
         $html .= '</tr>';
         $html .= '</table>';
-
-
         return $html;
     }
 
@@ -204,5 +202,15 @@ class CRM_Ingredient {
     }
 
 
+	/* =================================================================*/
+	/* = CALLBACKS
+	/* =================================================================*/
+    public function query_current_month_ingredients( $args, $instance) {
+        $args['meta_query'] = array(
+                'key'     => 'mykey',     // Adjust to your needs!
+                'value'   => 'myvalue',   // Adjust to your needs!
+                'compare' => '=',         // Default
+        );
+    }
 
 }

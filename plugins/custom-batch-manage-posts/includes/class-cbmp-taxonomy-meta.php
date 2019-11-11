@@ -81,7 +81,7 @@ class CBMP_Taxonomy_Meta {
 			echo sprintf('Check term %s <br>', $term->name);
 			$id = $term->term_id;
 			$option = get_option("taxonomy_$id");
-			if ( is_array( $option['month'] ) ) {
+			if ( isset($option['month']) && is_array( $option['month'] ) ) {
 				echo sprintf('<span style="color:red">Legacy month found for term %s </span><br>', $term->name);
 				echo '<pre>' . print_r( $option, true ) . '</pre>';
 				echo 'Checking term meta for new month definition...<br>';

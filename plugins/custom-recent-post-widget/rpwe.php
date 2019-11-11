@@ -77,6 +77,9 @@ class RPW_Extended {
 		define( 'RPWE_INCLUDES', RPWE_DIR . trailingslashit( 'includes' ) );
 
 		// Set the constant path to the includes directory.
+		define('RPWE_PARTIALS', RPWE_DIR . trailingslashit('partials'));
+
+		// Set the constant path to the includes directory.
 		define( 'RPWE_CLASS', RPWE_DIR . trailingslashit( 'classes' ) );
 
 		// Set the constant path to the assets directory.

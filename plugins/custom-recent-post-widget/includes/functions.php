@@ -126,160 +126,29 @@ function rpwe_get_recent_posts( $args = array() ) {
 	if ( $posts->have_posts() ) :
 
 		// Recent posts wrapper
-		$html = '<div ' . ( ! empty( $args['cssID'] ) ? 'id="' . sanitize_html_class( $args['cssID'] ) . '"' : '' ) . ' class="rpwe-block ' . ( ! empty( $args['css_class'] ) ? '' . sanitize_html_class( $args['css_class'] ) . '' : '' ) . '">';
-
-			$html .= '<ul class="rpwe-ul">';
-
-				while ( $posts->have_posts() ) : $posts->the_post();
-
-					// Thumbnails
-					$thumb_id = get_post_thumbnail_id(); // Get the featured image id.
-					$img_url  = wp_get_attachment_url( $thumb_id ); // Get img URL.
-					$entry_url = $link?esc_url( get_permalink() ):'#';
-
-					$thumb_width = $first?'first_thumb_width':'thumb_width';
-					$thumb_height = $first?'first_thumb_height':'thumb_height';
-					// $html .= '<br>$width : ' . $thumb_width;
-					// $html .= '<br>$args[$width] : ' . $args[$thumb_width];
-					// $html .= '<br>$height : ' . $thumb_height;
-					// $html .= '<br>$args[$height] : ' . $args[$thumb_height];
-
-					// Display the image url and crop using the resizer.
-					$image    = rpwe_resize( $img_url, $args[$thumb_width], $args[$thumb_height], true );
-
-					// Start recent posts markup.
-					$html .= '<li class="rpwe-li rpwe-clearfix ' . (($first)?'rpwe-first':'') . '">';
-					$first = false;
-
-					if ( $args['thumb'] ) :
-
-						// Check if post has post thumbnail.
-						if ( has_post_thumbnail() ) :
-							$html .= '<div class="entry-header-overlay ' . $entry_class . '">';
-							$html .= '<a class="rpwe-img ' . $entry_class . '" href="' . $entry_url . '"  rel="bookmark">';
-							if ( $image ) :
-								$html .= '<img class="' . esc_attr( $args['thumb_align'] ) . ' rpwe-thumb" src="' . esc_url( $image ) . '" alt="' . esc_attr( get_the_title() ) . '">';
-								else :
-									$html .= get_the_post_thumbnail( get_the_ID(),
-									array( $args[$thumb_width], $args[$thumb_height] ),
-									array(
-										'class' => $args['thumb_align'] . ' rpwe-thumb the-post-thumbnail',
-										'alt'   => esc_attr( get_the_title() )
-										)
-									);
-								endif;
-								/* Added P.O. */
-								$html = apply_filters( 'rpwe_in_thumbnail', $html, $args);
-								// $html .= 'In the post thumbnail';
-								/* End P.O. */
-								$html .= '</a>';
-								$html .= '</div>';
-
-								// If no post thumbnail found, check if Get The Image plugin exist and display the image.
-								elseif ( function_exists( 'get_the_image' ) ) :
-									$html .= get_the_image( array(
-										'height'        => (int) $args[$thumb_height],
-										'width'         => (int) $args[$thumb_width],
-										'image_class'   => esc_attr( $args['thumb_align'] ) . ' rpwe-thumb get-the-image',
-										'image_scan'    => true,
-										'echo'          => false,
-										'default_image' => esc_url( $args['thumb_default'] )
-										) );
-										// $html .= 'In the get the image';
-
-										// Display default image.
-										elseif ( ! empty( $args['thumb_default'] ) ) :
-											$html .= sprintf( '<a class="rpwe-img" href="%1$s" rel="bookmark"><img class="%2$s rpwe-thumb rpwe-default-thumb" src="%3$s" alt="%4$s" width="%5$s" height="%6$s"></a>',
-											$entry_url,
-											esc_attr( $args['thumb_align'] ),
-											esc_url( $args['thumb_default'] ),
-											esc_attr( get_the_title() ),
-											(int) $args['thumb_width'],
-											(int) $args[$thumb_height]
-										);
-										// $html .= 'In the default thumb';
-
-									endif;
-
-								endif;
-
-
-								/* Added P.O. */
-								$html = apply_filters( 'rpwe_after_thumbnail', $html, $args);
-								/* End P.O. */
-
-								$html .= '<div class="entry-header-meta">';
-								/* Added P.O. */
-								$title_meta = '';
-								$title_meta = apply_filters( 'rpwe_post_title_meta', $title_meta, $args);
-								$title_html = '<h3 class="rpwe-title"><a href="' . $entry_url . '" class="' . $entry_class . '" title="' . sprintf( esc_attr__( 'Permalink to %s', 'recent-posts-widget-extended' ), the_title_attribute( 'echo=0' ) ) . '" rel="bookmark">' . esc_attr( get_the_title() ) . '</a>' . $title_meta . '</h3>';
-								$title_html = apply_filters( 'rpwe_post_title', $title_html, $args);
-								$html .= $title_html;
-								$html .= '</div>';
-								/* End P.O. */
-
-					/* Added P.O. */
-					do_action( 'rpwe_loop', get_post() );
-					/* End P.O. */
-
-
-					if ( $args['date'] ) :
-						$date = get_the_date();
-						if ( $args['date_relative'] ) :
-							$date = sprintf( __( '%s ago', 'recent-posts-widget-extended' ), human_time_diff( get_the_date( 'U' ), current_time( 'timestamp' ) ) );
-						endif;
-						$html .= '<time class="rpwe-time published" datetime="' . esc_html( get_the_date( 'c' ) ) . '">' . esc_html( $date ) . '</time>';
-					elseif ( $args['date_modified'] ) : // if both date functions are provided, we use date to be backwards compatible
-						$date = get_the_modified_date();
-						if ( $args['date_relative'] ) :
-							$date = sprintf( __( '%s ago', 'recent-posts-widget-extended' ), human_time_diff( get_the_modified_date( 'U' ), current_time( 'timestamp' ) ) );
-						endif;
-						$html .= '<time class="rpwe-time modfied" datetime="' . esc_html( get_the_modified_date( 'c' ) ) . '">' . esc_html( $date ) . '</time>';
-					endif;
-
-					if ( $args['comment_count'] ) :
-						if ( get_comments_number() == 0 ) {
-								$comments = __( 'No Comments', 'recent-posts-widget-extended' );
-							} elseif ( get_comments_number() > 1 ) {
-								$comments = sprintf( __( '%s Comments', 'recent-posts-widget-extended' ), get_comments_number() );
-							} else {
-								$comments = __( '1 Comment', 'recent-posts-widget-extended' );
-							}
-						$html .= '<a class="rpwe-comment comment-count" href="' . get_comments_link() . '">' . $comments . '</a>';
-					endif;
-
-					if ( $args['excerpt'] ) :
-						$html .= '<div class="rpwe-summary">';
-							$html .= wp_trim_words( apply_filters( 'rpwe_excerpt', get_the_excerpt() ), $args['length'], ' &hellip;' );
-							if ( $args['readmore'] ) :
-								$html .= '<a href="' . esc_url( get_permalink() ) . '" class="more-link">' . $args['readmore_text'] . '</a>';
-							endif;
-						$html .= '</div>';
-					endif;
-
-					$html .= '</li>';
-
-				endwhile;
-
-			$html .= '</ul>';
-
+		$html = '<div ' . (!empty($args['cssID']) ? 'id="' . sanitize_html_class($args['cssID']) . '"' : '') . ' class="rpwe-block ' . (!empty($args['css_class']) ? '' . sanitize_html_class($args['css_class']) . '' : '') . '">';
+		$html .= '<ul class="rpwe-ul">';
+		while ($posts->have_posts()) : $posts->the_post();
+			include(RPWE_PARTIALS . 'items-list.php');
+		endwhile;
+		$html .= '</ul>';
 		$html .= '</div>';
 
-	// Restore original Post Data.
-	wp_reset_postdata();
+		// Restore original Post Data.
+		wp_reset_postdata();
 
-	// Allow devs to hook in stuff after the loop.
-	do_action( 'rpwe_after_loop' );
+		// Allow devs to hook in stuff after the loop.
+		do_action( 'rpwe_after_loop' );
 
-	// Return the  posts markup.
-	// return wp_kses_post( $args['before'] ) . apply_filters( 'rpwe_markup', $html, $args ) . wp_kses_post( do_shortcode($args['after']) );
-	if ($args['shortcode']) {
-		// $args['before']= do_shortcode(shortcode_unautop( $args['before'] ));
-		// $args['after'] = do_shortcode(shortcode_unautop( $args['after'] ));
-		$args['before']= do_shortcode( $args['before'] );
-		$args['after'] = do_shortcode( $args['after'] );
-	}
-	return wp_kses( $args['before'], ALLOWED_TAGS ) . apply_filters( 'rpwe_markup', $html, $args ) . wp_kses( $args['after'], ALLOWED_TAGS );
+		// Return the  posts markup.
+		// return wp_kses_post( $args['before'] ) . apply_filters( 'rpwe_markup', $html, $args ) . wp_kses_post( do_shortcode($args['after']) );
+		if ($args['shortcode']) {
+			// $args['before']= do_shortcode(shortcode_unautop( $args['before'] ));
+			// $args['after'] = do_shortcode(shortcode_unautop( $args['after'] ));
+			$args['before']= do_shortcode( $args['before'] );
+			$args['after'] = do_shortcode( $args['after'] );
+		}
+		return wp_kses( $args['before'], ALLOWED_TAGS ) . apply_filters( 'rpwe_markup', $html, $args ) . wp_kses( $args['after'], ALLOWED_TAGS );
 
 	endif;
 

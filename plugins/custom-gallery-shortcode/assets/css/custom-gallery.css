@@ -64,3 +64,7 @@
 	display:block;
 	font-size: 20px;
 }
+
+#joined-pics .ugc-inner-wrapper h2 {
+    display: none;
+}

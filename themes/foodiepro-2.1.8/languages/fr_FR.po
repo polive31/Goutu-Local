@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2019-11-11 00:34+0100\n"
-"PO-Revision-Date: 2019-11-11 01:09+0100\n"
+"PO-Revision-Date: 2019-11-11 02:17+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -474,7 +474,7 @@ msgstr "Ajoutez vos photos"
 
 #: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:161
 msgid "Upload your picture"
-msgstr "Publiez votre photo"
+msgstr "Ma photo"
 
 #: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:201
 msgid "Picture title"
@@ -1738,7 +1738,7 @@ msgstr "Carnet"
 
 #: plugins/custom-recipe-management/public/custom-recipe-favorite/class-crm-favorite.php:89
 msgid "Add to my cookbook"
-msgstr "Ajouter à mon carnet"
+msgstr "Dans mon carnet"
 
 #: plugins/custom-recipe-management/public/custom-recipe-favorite/class-crm-favorite.php:112
 msgid "Choose a list :"
@@ -2169,7 +2169,7 @@ msgstr "Commenter et noter cette recette"
 
 #: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-toolbar.php:36
 msgid "Rate this recipe"
-msgstr "Evaluez cette recette"
+msgstr "Mon avis"
 
 #: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-toolbar.php:101
 msgid "Read"
@@ -8687,8 +8687,6 @@ msgid "Display The Entry Info?"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/customizer/customizer-settings.php:190
-#, fuzzy
-#| msgid "Evaluate this recipe"
 msgid "Display The Content?"
 msgstr "Evaluez cette recette"
 

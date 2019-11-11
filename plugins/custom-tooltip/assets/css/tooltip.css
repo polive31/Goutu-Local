@@ -40,12 +40,12 @@
 
 
 .tooltip-content .wrap {
-	font-size: 1.6rem;
 	padding: 7px 20px 5px 20px;
-	color:#111;
-	border:1px solid #737373;
+	color:#4e4e4e;
+	/* border:1px solid #737373; */
 	background:#f5f5f5;
-	line-height: 16px;
+	font-size: 1.7rem;
+	line-height: Erem;
 	font-family: 'Oswald', sans-serif;
 	border-radius:4px;
 	box-shadow: 5px 5px 8px #CCC;
@@ -80,8 +80,11 @@
 }
 
 h4.tooltip-title {
+	font-family: Oswald, sans-serif;
 	display: inline;
 	vertical-align: middle;
+	text-transform: initial;
+	font-variant: initial;
     margin-left: 10px;
 }
 
@@ -102,7 +105,14 @@ h4.tooltip-title {
 	border-radius:0px;
 }
 
+.tooltip-content.big-font .wrap {
+	font-size: 2rem;
+	color:#5a5a5a;
+}
+
+
 .tooltip-content.fancy .wrap {
+	border:4px solid #737373;
 	border-color:#d25300;
 	/* background:#f9efe9; */
 	background:#f1e9e4;
@@ -111,16 +121,12 @@ h4.tooltip-title {
 }
 
 .modal h4.tooltip-title {
-	font-family: Oswald, sans-serif;
-    text-transform: initial;
-    font-variant: small-caps;
 	font-size: 40px;
 	color: #737373;
 }
 
 .fancy h4.tooltip-title {
 	color: #866855;
-	font-variant: initial;
 }
 
 .tooltip-content.yellow .wrap {

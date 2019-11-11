@@ -146,10 +146,10 @@ h1.entry-title {
 	font-weight:normal;
 }
 
+.page h1.entry-title,
 h1.archive-title {
 	display: inline;
 }
-
 
 
 .archive h2 { /* Subtitle */

@@ -27,12 +27,12 @@
 			Tooltip::display($args);
 			$args = array(
 				'content' => do_shortcode('[comment-rating-form]'),
-				'id'			=> 'recipe_rating_form',
+				'id'		=> 'recipe_rating_form',
 				'valign' 	=> 'above',
 				'halign'	=> 'left',
 				'action'	=> 'click',
 				'callout'	=> false,
-				'class'		=> 'rating-form modal',
+				'class'		=> 'rating-form modal fancy',
 				'title'		=> __('Rate this recipe', 'foodiepro'),
 				'img'		=> CHILD_THEME_URL . '/images/popup-icons/fiche_recette.png'
 			);

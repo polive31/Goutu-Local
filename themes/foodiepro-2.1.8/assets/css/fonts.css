@@ -71,13 +71,9 @@ a.black-button,
 .widget.back ul li a,
 .comment-respond {
 	font-family: Oswald;
-	font-size: 1.6rem;
 	padding: 7px 10px;
 }
 
-.comment-respond {
-	font-size: 1.7rem;
-}
 
 button,
 input,

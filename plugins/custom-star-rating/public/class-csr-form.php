@@ -1,27 +1,30 @@
 <?php
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit;
 }
 
-class CSR_Form {
+class CSR_Form
+{
 
 	protected static $_PluginPath;
 	protected static $_PluginUri;
 	protected static $instance;
 	protected $captchaError;
 
-	public function __construct() {
-		self::$_PluginUri = plugin_dir_url( dirname( __FILE__ ) );
-		self::$_PluginPath = plugin_dir_path( dirname( __FILE__ ) );
+	public function __construct()
+	{
+		self::$_PluginUri = plugin_dir_url(dirname(__FILE__));
+		self::$_PluginPath = plugin_dir_path(dirname(__FILE__));
 		self::$instance = 0;
 	}
 
 	/* COMMENT FORM FILTERS (COMMON TO ALL COMMENT FORMS ON THE POST)
 	-----------------------------------------------*/
-	public function customize_comment_form($fields) {
-		static $instance=0;
+	public function customize_comment_form($fields)
+	{
+		static $instance = 0;
 		unset($fields['url']);
 		$fields['author'] = '<p class="comment-form-author"><label for="author">Nom <span class="required">*</span></label> <input class="author" id="author_' . $instance . '" name="author" type="text" value="" size="30" maxlength="245" required="required" /></p>';
 		$fields['email']  = '<p class="comment-form-email"><label for="email">Adresse de messagerie <span class="required">*</span></label> <input class="email" id="email_' . $instance . '" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" required="required" /></p>';
@@ -30,13 +33,14 @@ class CSR_Form {
 		return $fields;
 	}
 
-	public function change_comment_form_defaults( $defaults ) {
-		static $instance=0;
+	public function change_comment_form_defaults($defaults)
+	{
+		static $instance = 0;
 
 		$defaults['logged_in_as'] = '';
-		// $defaults['title_reply'] = $defaults['title_reply'];
+		$defaults['title_reply'] = __('Leave a comment', 'foodiepro');
 		$defaults['id_form'] = 'foodiepro_comment' . $instance;
-		$defaults['title_reply_to'] = __('Your answer here','foodiepro');
+		$defaults['title_reply_to'] = __('Your answer here', 'foodiepro');
 		$defaults['comment_field'] = '<p class="comment-form-comment"><textarea id="comment_' . $instance . '" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>';
 
 		$instance++;
@@ -46,46 +50,49 @@ class CSR_Form {
 
 	/* RECAPTCHA
 	-----------------------------------------------*/
-	public function rating_form_add_recaptcha($submit_button, $args) {
+	public function rating_form_add_recaptcha($submit_button, $args)
+	{
 		$recaptcha = '';
-		if ( !is_user_logged_in() && class_exists('Custom_Google_Recaptcha' ) ) {
+		if (!is_user_logged_in() && class_exists('Custom_Google_Recaptcha')) {
 			CGR_Public::enqueue_scripts();
-			if ( isset($_POST['captcha']) && ($_POST['captcha']!='success') ) {
-				$recaptcha .= '<p class="error">' . __( '<strong>ERROR</strong>: please complete the CAPTCHA verification.', 'foodiepro' ) . '</p>';
+			if (isset($_POST['captcha']) && ($_POST['captcha'] != 'success')) {
+				$recaptcha .= '<p class="error">' . __('<strong>ERROR</strong>: please complete the CAPTCHA verification.', 'foodiepro') . '</p>';
 			}
 			// Invisible not working yet
 			// $recaptcha = CGR_Public::display( '', 'recaptcha' . self::$instance, 'invisible', 'csrOnSubmit' );
-			$recaptcha .= CGR_Public::display( '', 'recaptcha' . self::$instance, 'normal', '' );
+			$recaptcha .= CGR_Public::display('', 'recaptcha' . self::$instance, 'normal', '');
 			self::$instance++;
 		}
 		return $this->get_submit_button_html($recaptcha);
 	}
 
-	public function comment_form_add_recaptcha($submit_button, $args) {
+	public function comment_form_add_recaptcha($submit_button, $args)
+	{
 		$recaptcha = '';
-		if ( !is_user_logged_in() && class_exists('Custom_Google_Recaptcha' ) ) {
-			if ( isset($_GET['captcha']) && ($_GET['captcha']!='success') ) {
-				$recaptcha .= '<p class="error">' . __( '<strong>ERROR</strong>: please complete the CAPTCHA verification.', 'foodiepro' ) . '</p>';
+		if (!is_user_logged_in() && class_exists('Custom_Google_Recaptcha')) {
+			if (isset($_GET['captcha']) && ($_GET['captcha'] != 'success')) {
+				$recaptcha .= '<p class="error">' . __('<strong>ERROR</strong>: please complete the CAPTCHA verification.', 'foodiepro') . '</p>';
 			}
-			$recaptcha .= CGR_Public::display( '', 'recaptcha' . self::$instance, 'normal', '' );
+			$recaptcha .= CGR_Public::display('', 'recaptcha' . self::$instance, 'normal', '');
 			self::$instance++;
 		}
 		return $this->get_submit_button_html($recaptcha);
 	}
 
-	public function get_submit_button_html($recaptcha) {
-		$submit_button = '<input name="submit' . self::$instance . '" type="submit" id="submit' . self::$instance . '" data-instance="' . self::$instance . '" class="submit" value="' . __('Submit','foodiepro') . '">';
+	public function get_submit_button_html($recaptcha)
+	{
+		$submit_button = '<input name="submit' . self::$instance . '" type="submit" id="submit' . self::$instance . '" data-instance="' . self::$instance . '" class="submit" value="' . __('Submit', 'foodiepro') . '">';
 		return $recaptcha . $submit_button;
 	}
 
-	public function verify_comment_recaptcha( $commentdata )
+	public function verify_comment_recaptcha($commentdata)
 	{
 		$captchaResult = CGR_Public::verify();
-		if ( $captchaResult=='success' )
+		if ($captchaResult == 'success')
 			return $commentdata;
 		else {
 			// wp_die( __( '<strong>ERROR</strong>: please complete the CAPTCHA verification.', 'foodiepro' ) );
-			$url = get_permalink( $commentdata['comment_post_ID'] );
+			$url = get_permalink($commentdata['comment_post_ID']);
 			$args = array(
 				'comment-id' 	=> $commentdata['comment_ID'],
 				'captcha'		=> $captchaResult
@@ -99,18 +106,19 @@ class CSR_Form {
 
 	/* SHORTCODES
 	-----------------------------------------------*/
-	public function display_comment_form_with_rating_shortcode() {
-		$comment_notes = is_user_logged_in()?'':'<p class="comment-notes">' . __('Your name and mail address are required for authentification of your comment.<br>Your mail address will not be published.', 'foodiepro') . '</p>';
+	public function display_comment_form_with_rating_shortcode()
+	{
+		$comment_notes = is_user_logged_in() ? '' : '<p class="comment-notes">' . __('Your name and mail address are required for authentification of your comment.<br>Your mail address will not be published.', 'foodiepro') . '</p>';
 
-		$args = array (
+		$args = array(
 			'comment_notes_before' 	=> '',
 			'comment_notes_after' 	=> $comment_notes,
 			'title_reply' 			=> '', //Default: __( 'Leave a Reply� )
-			'label_submit' 			=> __( 'Send', 'custom-star-rating' ), //default=�Post Comment�
+			'label_submit' 			=> __('Send', 'custom-star-rating'), //default=�Post Comment�
 			'comment_field' 		=> $this->output_rating_form(),
 			'logged_in_as' 			=> '', //Default: __( 'Leave a Reply to %s� )
-			'title_reply_to' 		=> __( 'Leave a Reply to %s', 'custom-star-rating' ), //Default: __( 'Leave a Reply to %s� )
-			'cancel_reply_link' 	=> __( 'Cancel', 'custom-star-rating' ), //Default: __( �Cancel reply� )
+			'title_reply_to' 		=> __('Leave a Reply to %s', 'custom-star-rating'), //Default: __( 'Leave a Reply to %s� )
+			'cancel_reply_link' 	=> __('Cancel', 'custom-star-rating'), //Default: __( �Cancel reply� )
 			'rating_cats' 			=> 'all',  //Default: "id1 id2..."
 		);
 
@@ -118,7 +126,7 @@ class CSR_Form {
 		wp_enqueue_script('custom-star-rating');
 
 		ob_start();
-		include( self::$_PluginPath . 'public/partials/comment-form-template.php' );
+		include(self::$_PluginPath . 'public/partials/comment-form-template.php');
 		$cr_form = ob_get_contents();
 		ob_end_clean();
 
@@ -127,53 +135,58 @@ class CSR_Form {
 
 	/* Rating Form
 	------------------------------------------------------------ */
-	public function output_rating_form() {
+	public function output_rating_form()
+	{
 
-		ob_start();?>
+		ob_start(); ?>
 
 		<div>
 			<table class="ratings-table">
-			<?php
-			foreach (CSR_Assets::rating_cats() as $id => $cat) {?>
+				<?php
+						foreach (CSR_Assets::rating_cats() as $id => $cat) { ?>
 
-			<tr>
-				<td align="left" class="rating-title"><?= $cat['question'];?></td>
-				<td align="left"><?= $this->get_category_rating( $id );?></td>
-			</tr>
+					<tr>
+						<td align="left" class="rating-title">
+							<div class="rating-wrapper">
+								<?= $cat['question']; ?>
+							</div>
+						</td>
+						<td align="left"><?= $this->get_category_rating($id); ?></td>
+					</tr>
 
-			<?php
-			}?>
+				<?php
+						} ?>
 			</table>
 		</div>
 
 		<div class="comment-reply">
-			<label for="comment"><?= __('Add a comment','custom-star-rating' );?></label>
+			<label for="comment"><?= __('Add a comment', 'custom-star-rating'); ?></label>
 			<textarea id="comment" name="comment" cols="50" rows="4" aria-required="true"></textarea>
 		</div>
 
-	<?php
+<?php
 		$rating_form = ob_get_contents();
 		ob_end_clean();
 
 		return $rating_form;
 	}
 
-	public function get_category_rating( $id ) {
-		$html= '<div class="rating-wrapper" id="star-rating-form">';
-		$html.='<input type="radio" class="rating-input" id="rating-input-' . $id . '-5" name="rating-' . $id . '" value="5"/>';
-		$html.='<label for="rating-input-' . $id . '-5" class="rating-star" title="' . CSR_Assets::get_rating_caption(5, $id) . '"></label>';
-		$html.='<input type="radio" class="rating-input" id="rating-input-' . $id . '-4" name="rating-' . $id . '" value="4"/>';
-		$html.='<label for="rating-input-' . $id . '-4" class="rating-star" title="' . CSR_Assets::get_rating_caption(4, $id) . '"></label>';
-		$html.='<input type="radio" class="rating-input" id="rating-input-' . $id . '-3" name="rating-' . $id . '" value="3"/>';
-		$html.='<label for="rating-input-' . $id . '-3" class="rating-star" title="' . CSR_Assets::get_rating_caption(3, $id) . '"></label>';
-		$html.='<input type="radio" class="rating-input" id="rating-input-' . $id . '-2" name="rating-' . $id . '" value="2"/>';
-		$html.='<label for="rating-input-' . $id . '-2" class="rating-star" title="' . CSR_Assets::get_rating_caption(2, $id) . '"></label>';
-		$html.='<input type="radio" class="rating-input" id="rating-input-' . $id . '-1" name="rating-' . $id . '" value="1"/>';
-		$html.='<label for="rating-input-' . $id . '-1" class="rating-star" title="' . CSR_Assets::get_rating_caption(1, $id) . '"></label>';
-		$html.='</div>';
+	public function get_category_rating($id)
+	{
+		$html = '<div class="rating-wrapper" id="star-rating-form">';
+		$html .= '<input type="radio" class="rating-input" id="rating-input-' . $id . '-5" name="rating-' . $id . '" value="5"/>';
+		$html .= '<label for="rating-input-' . $id . '-5" class="rating-star" title="' . CSR_Assets::get_rating_caption(5, $id) . '"></label>';
+		$html .= '<input type="radio" class="rating-input" id="rating-input-' . $id . '-4" name="rating-' . $id . '" value="4"/>';
+		$html .= '<label for="rating-input-' . $id . '-4" class="rating-star" title="' . CSR_Assets::get_rating_caption(4, $id) . '"></label>';
+		$html .= '<input type="radio" class="rating-input" id="rating-input-' . $id . '-3" name="rating-' . $id . '" value="3"/>';
+		$html .= '<label for="rating-input-' . $id . '-3" class="rating-star" title="' . CSR_Assets::get_rating_caption(3, $id) . '"></label>';
+		$html .= '<input type="radio" class="rating-input" id="rating-input-' . $id . '-2" name="rating-' . $id . '" value="2"/>';
+		$html .= '<label for="rating-input-' . $id . '-2" class="rating-star" title="' . CSR_Assets::get_rating_caption(2, $id) . '"></label>';
+		$html .= '<input type="radio" class="rating-input" id="rating-input-' . $id . '-1" name="rating-' . $id . '" value="1"/>';
+		$html .= '<label for="rating-input-' . $id . '-1" class="rating-star" title="' . CSR_Assets::get_rating_caption(1, $id) . '"></label>';
+		$html .= '</div>';
 
-	  return $html;
-
+		return $html;
 	}
 
 
@@ -183,7 +196,7 @@ class CSR_Form {
 
 
 
-		// /* Output stars
+	// /* Output stars
 	// -------------------------------------------------------------*/
 	// public function output_stars_simple($stars, $half) {
 	// 	$html = '';
@@ -236,7 +249,7 @@ class CSR_Form {
 	// 	return $html;
 	// }
 
-/* RECAPTCHA
+	/* RECAPTCHA
 ----------------------------------------------------------*/
 
 	// public function display_recaptcha_error() {
@@ -247,7 +260,7 @@ class CSR_Form {
 	// 	}
 	// }
 
-		// /**
+	// /**
 	//  * Verify the captcha answer */
 	// public function validate_captcha_field($commentdata)
 	// {

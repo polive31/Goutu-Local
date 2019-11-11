@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-11-10 17:35+0100\n"
+"POT-Creation-Date: 2019-11-11 00:34+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -427,24 +427,6 @@ msgstr ""
 msgid "Picture title"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-entries.php:107
-#: plugins/custom-navigation-helpers/public/class-cnh-entry-tags.php:102
-#: plugins/custom-navigation-helpers/public/class-cnh-tags-overlay.php:92
-msgid "Seasonal"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-entries.php:114
-#: plugins/custom-navigation-helpers/public/class-cnh-entry-tags.php:109
-#: plugins/custom-navigation-helpers/public/class-cnh-tags-overlay.php:99
-msgid "Vegetarian"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-entries.php:118
-#: plugins/custom-navigation-helpers/public/class-cnh-entry-tags.php:113
-#: plugins/custom-navigation-helpers/public/class-cnh-tags-overlay.php:103
-msgid "Festive"
-msgstr ""
-
 #: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:27
 msgid "Visit Goutu.org"
 msgstr ""
@@ -587,6 +569,18 @@ msgstr ""
 #: plugins/custom-navigation-helpers/public/class-cnh-shortcodes.php:351
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:55
 msgid "authors"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-tags-overlay.php:92
+msgid "Seasonal"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-tags-overlay.php:99
+msgid "Vegetarian"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-tags-overlay.php:103
+msgid "Festive"
 msgstr ""
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:18
@@ -732,6 +726,16 @@ msgstr ""
 
 #: plugins/custom-peepso-overrides/public/class-cpo-customizations.php:118
 msgid "wrote a new recipe"
+msgstr ""
+
+#: plugins/custom-peepso-overrides/public/class-cpo-customizations.php:136
+#: themes/foodiepro-2.1.8/functions.php:1039
+msgid "Legal notice"
+msgstr ""
+
+#: plugins/custom-peepso-overrides/public/class-cpo-customizations.php:138
+#, php-format
+msgid "I agree to the %s."
 msgstr ""
 
 #: plugins/custom-peepso-overrides/public/class-peepso-helpers.php:123
@@ -2355,6 +2359,10 @@ msgstr ""
 
 #: plugins/custom-star-rating/public/class-csr-comments-list.php:141
 msgid "(Edit)"
+msgstr ""
+
+#: plugins/custom-star-rating/public/class-csr-form.php:37
+msgid "Leave a comment"
 msgstr ""
 
 #: plugins/custom-star-rating/public/class-csr-form.php:39
@@ -7685,10 +7693,6 @@ msgstr ""
 
 #: themes/foodiepro-2.1.8/functions.php:1039
 msgid "Contact us"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/functions.php:1039
-msgid "Legal notice"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/admin/functions.php:61

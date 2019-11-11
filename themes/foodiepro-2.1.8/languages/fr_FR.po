@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-11-10 17:35+0100\n"
-"PO-Revision-Date: 2019-11-10 23:15+0100\n"
+"POT-Creation-Date: 2019-11-11 00:34+0100\n"
+"PO-Revision-Date: 2019-11-11 01:09+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -478,25 +478,7 @@ msgstr "Publiez votre photo"
 
 #: plugins/custom-gallery-shortcode/custom-gallery-shortcode.php:201
 msgid "Picture title"
-msgstr "Titre de l'image"
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-entries.php:107
-#: plugins/custom-navigation-helpers/public/class-cnh-entry-tags.php:102
-#: plugins/custom-navigation-helpers/public/class-cnh-tags-overlay.php:92
-msgid "Seasonal"
-msgstr "De Saison"
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-entries.php:114
-#: plugins/custom-navigation-helpers/public/class-cnh-entry-tags.php:109
-#: plugins/custom-navigation-helpers/public/class-cnh-tags-overlay.php:99
-msgid "Vegetarian"
-msgstr "Recette végétarienne"
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-entries.php:118
-#: plugins/custom-navigation-helpers/public/class-cnh-entry-tags.php:113
-#: plugins/custom-navigation-helpers/public/class-cnh-tags-overlay.php:103
-msgid "Festive"
-msgstr "Fêtes"
+msgstr "Titre"
 
 #: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:27
 msgid "Visit Goutu.org"
@@ -646,6 +628,18 @@ msgstr "Choisir..."
 msgid "authors"
 msgstr "auteurs"
 
+#: plugins/custom-navigation-helpers/public/class-cnh-tags-overlay.php:92
+msgid "Seasonal"
+msgstr "De Saison"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-tags-overlay.php:99
+msgid "Vegetarian"
+msgstr "Recette végétarienne"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-tags-overlay.php:103
+msgid "Festive"
+msgstr "Fêtes"
+
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:18
 msgid "Dropdown Posts Sort Widget"
 msgstr ""
@@ -792,6 +786,16 @@ msgstr "Publie un message sur le fil d'actualités de %s..."
 #: plugins/custom-peepso-overrides/public/class-cpo-customizations.php:118
 msgid "wrote a new recipe"
 msgstr "a publié une nouvelle recette"
+
+#: plugins/custom-peepso-overrides/public/class-cpo-customizations.php:136
+#: themes/foodiepro-2.1.8/functions.php:1039
+msgid "Legal notice"
+msgstr "Mentions légales"
+
+#: plugins/custom-peepso-overrides/public/class-cpo-customizations.php:138
+#, php-format
+msgid "I agree to the %s."
+msgstr ""
 
 #: plugins/custom-peepso-overrides/public/class-peepso-helpers.php:123
 #, fuzzy, php-format
@@ -2165,7 +2169,7 @@ msgstr "Commenter et noter cette recette"
 
 #: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-toolbar.php:36
 msgid "Rate this recipe"
-msgstr "Evaluer cette recette"
+msgstr "Evaluez cette recette"
 
 #: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-toolbar.php:101
 msgid "Read"
@@ -2528,6 +2532,10 @@ msgstr ""
 #| msgid "Edit"
 msgid "(Edit)"
 msgstr "Modifier"
+
+#: plugins/custom-star-rating/public/class-csr-form.php:37
+msgid "Leave a comment"
+msgstr "Qu'en pensez vous ?"
 
 #: plugins/custom-star-rating/public/class-csr-form.php:39
 msgid "Your answer here"
@@ -8557,10 +8565,6 @@ msgstr "Recette, ingrédient, mot-clé, auteur..."
 #: themes/foodiepro-2.1.8/functions.php:1039
 msgid "Contact us"
 msgstr "Contactez-nous"
-
-#: themes/foodiepro-2.1.8/functions.php:1039
-msgid "Legal notice"
-msgstr "Mentions légales"
 
 #: themes/foodiepro-2.1.8/includes/admin/functions.php:61
 #: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:333

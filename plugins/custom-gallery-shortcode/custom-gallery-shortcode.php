@@ -157,7 +157,7 @@ class Custom_Gallery_Shortcode
 							'valign' 	=> 'above',
 							'halign'	=> 'left',
 							'action'	=> 'click',
-							'class'		=> 'fu-form modal',
+							'class'		=> 'fu-form modal fancy',
 							'title'		=> __('Upload your picture', 'foodiepro'),
 							'img'		=> CHILD_THEME_URL . '/images/popup-icons/add_pic.png'
 						);

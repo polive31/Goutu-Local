@@ -4,7 +4,7 @@
 /* Star rating input */
 
 td.rating-title {
-	font-size: 16px;
+	/* font-size: 16px; */
 	padding:5px 0;
 }
 
@@ -15,9 +15,9 @@ td.rating-title {
 }
 
 .rating-wrapper {
-    margin-left: 10px;
+    margin-right: 10px;
     display: inline-block;
-    vertical-align: top;
+    vertical-align: middle;
 }
 
 .rating-input {

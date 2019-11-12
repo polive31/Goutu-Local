@@ -156,6 +156,7 @@ h1.archive-title {
 	/* font-size: 4.5rem; */
 	margin: 0px 0 0 0;
 	font-weight:bold;
+	padding-top: 20px;
 }
 
 h2.user-nicename {
@@ -172,7 +173,7 @@ h2.user-nicename {
 .entry-header-overlay .tag-overlay {
 	font-family: 'Amatic SC';
 	text-transform: capitalize;
-	font-size: 3.5rem;
+	font-size: 2.7rem;
 	line-height: 3rem;
 	font-weight: bold;
 }
@@ -354,4 +355,11 @@ h2.entry-title, .wpupg-post-title,
 		line-height: 4.5rem;
 	}
 
+}
+
+@media only screen
+	and (max-width:420px) {
+	body {
+		line-height: 1.325;
+	}
 }

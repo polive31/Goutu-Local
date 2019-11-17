@@ -1095,7 +1095,9 @@ function custom_inline_js()
 
 		[footer_copyright before="<?= __('All rights reserved', 'foodiepro'); ?>" first="2015"] &middot; <a href="\">Goutu.org</a> &middot; [permalink slug="contact"]<?= __('Contact us', 'foodiepro') ?>[/permalink] &middot; [permalink slug="mentions-legales"]<?= __('Legal notice', 'foodiepro') ?>[/permalink] &middot; [footer_loginout]
 
-		<a href="https://seal.beyondsecurity.com/vulnerability-scanner-verification/goutu.org"><img src="https://seal.beyondsecurity.com/verification-images/goutu.org/vulnerability-scanner-2.gif" alt="Website Security Test" border="0"></a>
+		<a target="_blank" href="https://seal.beyondsecurity.com/vulnerability-scanner-verification/goutu.org">
+			<img src="https://seal.beyondsecurity.com/verification-images/goutu.org/vulnerability-scanner-8.gif" alt="Vulnerability Scanner" border="0" />
+		</a>
 
 	<?php
 

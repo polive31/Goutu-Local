@@ -2067,6 +2067,10 @@ form[role="search"] {
     font-family: Oswald, sans-serif;
 }
 
+.name_directory_name_box strong {
+    font-size: 50px;
+}
+
 /* Google Recaptcha */
 .g-recaptcha {
     margin: 10px 0;

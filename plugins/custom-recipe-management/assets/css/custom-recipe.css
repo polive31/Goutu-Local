@@ -370,6 +370,10 @@ li.recipe-ingredient-unit {
 	padding-left: 3px;
 }
 
+span.recipe-ingredient-quantity::after {
+    content: " ";
+}
+
 
 /* Instructions */
 .recipe-instruction-group {

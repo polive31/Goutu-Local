@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2019-11-11 00:34+0100\n"
-"PO-Revision-Date: 2019-11-11 02:17+0100\n"
+"PO-Revision-Date: 2020-01-06 21:36+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -2535,7 +2535,7 @@ msgstr "Modifier"
 
 #: plugins/custom-star-rating/public/class-csr-form.php:37
 msgid "Leave a comment"
-msgstr "Qu'en pensez vous ?"
+msgstr "Donnez votre avis"
 
 #: plugins/custom-star-rating/public/class-csr-form.php:39
 msgid "Your answer here"

@@ -14,7 +14,7 @@
 
 	/* Added PO 19/01/2019 */
 	$current = PeepsoHelpers::get_nav_tab();
-	
+
 	/* Added PO 20/01/2019 to prevent small display on cover*/
 	// $is_profile_segment = isset($current) ? TRUE : FALSE;
 	$is_profile_segment = FALSE;
@@ -37,14 +37,11 @@
 		<div class="js-focus-gradient" data-cover-context="profile" data-cover-type="cover"></div>
 		<!-- Blog Title -->
 		<?php
-		$field_args = array('post_status'=>'publish');
-		$PeepSoUser->profile_fields->load_fields( $field_args );
-		$fields = $PeepSoUser->profile_fields->get_fields();
-		
-		$blog_title = PeepsoHelpers::get_profile_field( $fields, 'blog_title');
+
+		$blog_title = PeepsoHelpers::get_profile_field( $PeepSoUser, 'blog_title');
 		if ($blog_title) {?>
 			<h1 class="blog-title"><?= $blog_title; ?></h1>
-		<?php } ?>		
+		<?php } ?>
 
 		<?php if ($PeepSoProfile->can_edit() && (!$is_profile_segment || 1 == PeepSo::get_option('always_full_cover', 0))) { ?>
 
@@ -101,7 +98,7 @@
 				<?php if($PeepSoUser->get_online_status()) { ?><?php PeepSoTemplate::exec_template('profile', 'online', array('PeepSoUser'=>$PeepSoUser, 'class'=>'ps-user__status--focus')); ?><?php } ?>
 			</div>
 
-				
+
 			<!-- User Name  -->
 			<div class="ps-focus-title">
 				<?php
@@ -113,13 +110,13 @@
 				<!-- Online status -->
 				<?php if($PeepSoUser->get_online_status()) { ?><?php PeepSoTemplate::exec_template('profile', 'online', array('PeepSoUser'=>$PeepSoUser)); ?><?php } ?>
 					<?php
-							
+
 					//[peepso]_[action]_[WHICH_PLUGIN]_[WHERE]_[WHAT]_[BEFORE/AFTER]
 						do_action('peepso_action_render_user_name_before', $PeepSoUser->get_id());
 
 						if ($blog_title)
 							echo sprintf( __("%s's Blog",'foodiepro'), ucfirst($PeepSoUser->get_nicename()) );
-						else	
+						else
 							echo ucfirst( $PeepSoUser->get_nicename() );
 
 						//[peepso]_[action]_[WHICH_PLUGIN]_[WHERE]_[WHAT]_[BEFORE/AFTER]
@@ -149,7 +146,7 @@
 	<div class="ps-focus__interactions profile-interactions profile-social ps-js-focus-interactions">
 		<?php $PeepSoProfile->interactions(); ?>
 	</div>
-	
+
 	<div class="ps-focus__footer">
 		<div class="ps-focus-actions-mobile"><?php $PeepSoProfile->profile_actions(); ?></div>
 		<div class="ps-focus__menu profile-interactions ps-js-focus-links">

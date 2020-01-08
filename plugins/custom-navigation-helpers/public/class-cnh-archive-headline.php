@@ -17,69 +17,142 @@ class CNH_Archive_Headline {
 			'url' => 'true',
 			), $atts );
 
-		if ( is_archive() )
+			if ( is_archive() )
 			$title = $this->custom_archive_title( '' );
-		elseif ( is_search() )
+			elseif ( is_search() )
 			$title = $this->custom_search_title_text();
-		elseif ( is_singular() )
+			elseif ( is_singular() )
 			$title = get_the_title();
-		else
+			else
 			$title = __('Visit Goutu.org', 'foodiepro');
 
-		if ($atts['url']=='true')
-				$title = str_replace( ' ', '%20', $title);
+			if ($atts['url']=='true')
+			$title = str_replace( ' ', '%20', $title);
 
-		return $title;
-	}
+			return $title;
+		}
 
 	public function custom_archive_title( $headline ) {
-		$query=get_queried_object();
-		$msg='';
+		return $this->custom_archive_intro( 'title', $headline);
+	}
 
-		/* Check whether archive headline is defined for this term */
-		$headline = get_term_meta( $query->term_id, 'headline', true );
-		/* Display parent headline if exists */
-		// if ( empty($headline) ) {
-		// 	$parent = $query->parent;
-		// 	$headline = get_term_meta( $parent, 'headline', true );
-		// }
-		if ( !empty($headline) ) {
-			$msg = '<span class="archive-image">' . do_shortcode( '[wp_custom_image_category]' ) . '</span>' . $headline;
-			return $msg;
+	public function custom_archive_description( $description ) {
+		return $this->custom_archive_intro( 'description', $description);
+	}
+
+	public function custom_archive_intro( $type, $default ) {
+		$output=$default;
+
+		if (is_author()) {
+			if ($type == 'title') {
+				$id = get_query_var('author', false);
+				$user = get_userdata($id);
+				$name = $user->user_nicename;
+				$type = get_query_var('post_type', false);
+				$output = $this->post_from_msg($type, $name);
+			}
+			else {
+				if (class_exists('PeepsoHelpers')) {
+					$id = get_query_var('author', false);
+					// $user=get_userdata( $id );
+					$args = array(
+						'user' 		=> $id,
+						'size' 		=> '120',
+						'link' 		=> 'profile',
+						'title' 	=> __('%s', 'foodiepro'),
+						'aclass' 	=> 'archive-avatar',
+					);
+					$output = PeepsoHelpers::get_avatar($args) . $output;
+					$output .= PeepsoHelpers::get_profile_field($id, 'user_bio');
+				}
+			}
 		}
 
-		/* Check archive type */
-		if ( !empty(get_query_var('author',false)) ) {
-			$id=get_query_var('author',false);
-			$user=get_userdata( $id );
-			$name=$user->user_nicename;
-			$type=get_query_var('post_type',false);
-
-			$msg = $this->post_from_msg( $type, $name );
-		}
-		elseif ( !empty(( get_query_var('author_name',false) )) ) {
-			$name=get_query_var('author_name',false);
-			$type=get_query_var('post_type',false);
-
-			$msg = $this->post_from_msg( $type, $name );
-		}
-		elseif ( $query->taxonomy=='ingredient' ) {
-			$ingredient = $query->name;
-			if ( initial_is_vowel($ingredient) )
-			$msg=sprintf(_x('All recipes containing %s','vowel','foodiepro'), $ingredient);
-			else
-			$msg=sprintf(_x('All recipes containing %s','consonant','foodiepro'), $ingredient);
+		elseif (is_archive() || is_tag()) {
+			$query = get_queried_object();
+			if ($type == 'title') {
+				$output = $this->get_archive_title( $query );
+				$output = '<span class="archive-image">' . do_shortcode('[wp_custom_image_category]') . '</span>' . $output;
+			}
+			else {
+				$output = $this->get_archive_description( $query );
+			}
 		}
 
-		elseif ( $query->taxonomy=='cuisine' ) {
-			$msg = $this->post_from_msg( 'recipe', $query->name);
+		else {
+			// If no particular archive, just post type, return the title and descriptions for the post type queried
+			if ($type == 'title') {
+				$output = $this->get_post_type_archive_title(get_query_var('post_type', false));
+			}
+			else {
+				$output .= $this->get_post_type_archive_intro_text(get_query_var('post_type', false));
+			}
 		}
 
-		elseif ( $query->taxonomy=='course' ) {
-			$course=get_query_var('course',false);
-			$term='';
+		//Format and output
+		if ($type=='description') {
+			$output = do_shortcode($output);
+			$output = wpautop($output, true);
+		}
+		return $output;
+	}
 
-			if (get_query_var('season',false) ) {
+	public function get_archive_description($query) {
+		$term = $query->term_id;
+		/* Return the updated archive description  */
+		// Check archive intro text field
+		$intro = get_term_meta($term, 'intro_text', true);
+		if (empty($intro)) {
+			// Check parent intro text field
+			$parent = $query->parent;
+			$intro = get_term_meta($query->parent, 'intro_text', true);
+		}
+		// For ingredient archive, we add the months table if available for this ingredient
+		if (is_tax('ingredient')) {
+			$intro .= '<br>' . do_shortcode('[ingredient-months id="' . $term . '"]');
+		}
+		return $intro;
+	}
+
+	public function get_post_type_archive_intro_text($post_type) {
+		switch ($post_type) {
+			case 'recipe':
+				$intro_text = __('You will find here all the recipes, which you can further sort by date or evaluation.', 'foodiepro');
+				break;
+			case 'post':
+				$intro_text = __('You will find here all the posts, which you can further sort by date.', 'foodiepro');
+				break;
+			default:
+				$intro_text = '';
+				break;
+		}
+		return $intro_text;
+	}
+
+	public function get_archive_title($query) {
+			// Check first for existing custom headline defined for the taxonomy
+			$headline = get_term_meta($query->term_id, 'headline', true);
+			if (!empty($headline))
+			$msg = '<span class="archive-image">' . do_shortcode('[wp_custom_image_category]') . '</span>' . $headline;
+
+			// If custom headline not found, generate a title based on the archive type
+			elseif ( $query->taxonomy=='ingredient' ) {
+				$ingredient = $query->name;
+				if ( initial_is_vowel($ingredient) )
+				$msg=sprintf(_x('All recipes containing %s','vowel','foodiepro'), $ingredient);
+				else
+				$msg=sprintf(_x('All recipes containing %s','consonant','foodiepro'), $ingredient);
+			}
+
+			elseif ( $query->taxonomy=='cuisine' ) {
+				$msg = $this->post_from_msg( 'recipe', $query->name);
+			}
+
+			elseif ( $query->taxonomy=='course' ) {
+				$course=get_query_var('course',false);
+				$term='';
+
+				if (get_query_var('season',false) ) {
 				$term=get_query_var('season',false);
 				$msg = $this->course_of_msg( $course, $term);
 			}
@@ -90,20 +163,15 @@ class CNH_Archive_Headline {
 				$msg = $this->course_of_msg( $course, $term);
 			}
 			else
-				$msg = single_term_title( '', false);
+			$msg = single_term_title( '', false);
 		}
 		elseif ( is_tax() || is_tag() ) {
 			$msg = single_term_title( '', false);
-		}
-		/* If a custom headline was set for this archive then return it */
-		elseif ( get_class($query)=='WP_Post_Type' ) {
-			// Return the post type queried
-			$msg = $this->get_post_type_archive_title( get_query_var('post_type',false) );
+			/* If a custom headline was set for this archive then return it */
 		}
 		else {
 			$msg = single_term_title( '', false);
 		}
-		$msg = '<span class="archive-image">' . do_shortcode( '[wp_custom_image_category]' ) . '</span>' . $msg;
 		return $msg;
 	}
 
@@ -197,63 +265,6 @@ class CNH_Archive_Headline {
 
 		return $html;
 	}
-
-	public function custom_archive_description( $description ) {
-		if ( !is_archive() && !is_tag() ) return;
-		$query = get_queried_object();
-
-		/* Retrieve maybe archive term */
-		if ( get_class($query)=='WP_Post_Type' ) {
-			$empty=true;
-			foreach (CNH_Assets::get_queryvars() as $var) {
-				if ( $term!='post_type' && get_query_var($var,false) ) {
-					$empty=false;
-					break;
-				}
-			}
-		}
-		else {
-			$empty=false;
-			$term = $query->term_id;
-		}
-
-		/* Return the updated archive description  */
-		if ($empty) {
-			/* No taxonomy term found, then get default post type archive description */
-			$intro = $this->get_post_type_archive_intro_text( get_query_var('post_type',false) );
-		}
-		else {
-			// Check archive intro text field
-			$intro = get_term_meta( $term, 'intro_text', true );
-			if (empty($intro)) {
-				// Check parent intro text field
-				$parent = $query->parent;
-				$intro = get_term_meta( $query->parent, 'intro_text', true );
-			}
-		}
-
-		if ( is_tax('ingredient') ) {
-			$intro .= '<br>' . do_shortcode('[ingredient-months id="' . $query->term_id . '"]');
-		}
-
-		return $description . $intro;
-	}
-
-	public function get_post_type_archive_intro_text( $post_type ) {
-		switch ($post_type) {
-			case 'recipe':
-				$intro_text=__('You will find here all the recipes, which you can further sort by date or evaluation.','foodiepro');
-				break;
-			case 'post':
-				$intro_text=__('You will find here all the posts, which you can further sort by date.','foodiepro');
-				break;
-			default:
-				$intro_text='';
-				break;
-		}
-		return $intro_text;
-	}
-
 
 
 // HELPËRS

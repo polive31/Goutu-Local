@@ -16,7 +16,7 @@ class Peepso_About_Widget extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 			'Peepso_About_Widget', // Base ID
-			__('(Peepso) Peepso Profile Details', 'text_domain'), // Name
+			__('(Custom) Peepso Profile Details', 'text_domain'), // Name
 			array( 'description' => __( 'Displays chosen details about a given user', 'text_domain' ), ) // Args
 		);
 	}

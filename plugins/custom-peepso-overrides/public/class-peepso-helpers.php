@@ -19,6 +19,7 @@ class PeepsoHelpers  {
 
 	const PROFILE_FIELDS = array(
 		'blog_title'	=> 'Titre de votre Blog',
+		'user_bio'	=> 'Ma Bio',
 	);
 
 	const TABS=array(
@@ -115,7 +116,7 @@ class PeepsoHelpers  {
 		$title='';
 		extract( $args );
 
-		$size=($size=='full')?'':'48';
+		$size=($size=='full')?'':$size;
 
 		$user = self::get_user( $user );
 		if (!$user) return;
@@ -134,7 +135,16 @@ class PeepsoHelpers  {
 	}
 
 
-	static function get_profile_field( $fields, $handle ) {
+	static function get_profile_field( $user_type_or_id, $handle ) {
+
+		$user = is_object($user_type_or_id)?$user_type_or_id:self::get_user( $user_type_or_id );
+
+		$field_args = array('post_status' => 'publish');
+		if (empty($field_args)) return;
+
+		$user->profile_fields->load_fields($field_args);
+		$fields = $user->profile_fields->get_fields();
+
 		$value = false;
 		foreach ($fields as $key=>$field) {
 			if ($field->title==self::PROFILE_FIELDS[$handle] && !empty($field->value)) {

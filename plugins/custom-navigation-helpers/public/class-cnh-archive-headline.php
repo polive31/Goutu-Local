@@ -50,6 +50,18 @@ class CNH_Archive_Headline {
 				$name = $user->user_nicename;
 				$type = get_query_var('post_type', false);
 				$output = $this->post_from_msg($type, $name);
+				if (class_exists('PeepsoHelpers')) {
+					$id = get_query_var('author', false);
+					// $user=get_userdata( $id );
+					$args = array(
+						'user' 		=> $id,
+						'size' 		=> '150',
+						'link' 		=> 'profile',
+						'title' 	=> __('%s', 'foodiepro'),
+						'aclass' 	=> 'archive-avatar',
+					);
+					$output = PeepsoHelpers::get_avatar($args) . $output;
+				}
 			}
 			else {
 				if (class_exists('PeepsoHelpers')) {
@@ -62,7 +74,6 @@ class CNH_Archive_Headline {
 						'title' 	=> __('%s', 'foodiepro'),
 						'aclass' 	=> 'archive-avatar',
 					);
-					$output = PeepsoHelpers::get_avatar($args) . $output;
 					$output .= PeepsoHelpers::get_profile_field($id, 'user_bio');
 				}
 			}
@@ -133,7 +144,7 @@ class CNH_Archive_Headline {
 			// Check first for existing custom headline defined for the taxonomy
 			$headline = get_term_meta($query->term_id, 'headline', true);
 			if (!empty($headline))
-			$msg = '<span class="archive-image">' . do_shortcode('[wp_custom_image_category]') . '</span>' . $headline;
+				$msg = $headline;
 
 			// If custom headline not found, generate a title based on the archive type
 			elseif ( $query->taxonomy=='ingredient' ) {

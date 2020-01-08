@@ -4,12 +4,12 @@
 		<section id="component" role="article" class="ps-clearfix">
 
 			<?php
+            // Limit to connected users
             if(get_current_user_id()) {
-
-                // Check if user shown corresponds to the current user
-                // if ($view_user_id == get_current_user_id()) {
+                // only show all friends of the current connected user
+                if ($view_user_id == get_current_user_id()) {
                     PeepSoTemplate::exec_template('friends', 'submenu', array('current'=>'friends'));
-                // }
+                }
 
                 ?>
                 <div class="ps-clearfix mb-20"></div>

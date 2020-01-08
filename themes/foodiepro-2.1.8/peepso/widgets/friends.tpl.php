@@ -3,7 +3,17 @@ $PeepSoFriends = PeepSoFriends::get_instance();
 echo $args['before_widget'];
 // $owner = PeepSoUser::get_instance($instance['user_id']);
 // $owner = PeepSoUser::get_instance($instance['view_user_id']);
+
+// If on profile page, get instance of user ID whose profile is showing
 $owner_id = PeepSoProfileShortcode::get_instance()->get_view_user_id();
+
+// If not on a profile page, get id of currently logged-in user :
+if ( empty( $owner_id ) ) {
+	if ( is_user_logged_in() ) {
+		$owner_id = get_current_user_id();
+	}
+	else return;
+}
 $owner = PeepSoUser::get_instance($owner_id);
 
 if (!array_key_exists('search_args', $instance)) {
@@ -18,6 +28,7 @@ $instance['list'] = $friendsModel->get_friends($owner_id, $instance['search_args
 if ( !count($instance['list']) ) return;
 
 ?>
+
 
 <div class="ps-widget__wrapper<?php echo $instance['class_suffix'];?> ps-widget<?php echo $instance['class_suffix'];?>">
 	<div class="ps-widget__header<?php echo $instance['class_suffix'];?>">

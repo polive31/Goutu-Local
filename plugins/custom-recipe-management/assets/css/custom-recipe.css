@@ -263,10 +263,10 @@ table.recipe-input {
   /*transform: translateY(2px);*/
 }
 
-.fa.qty#dec {
+/* .fa.qty#dec {
 }
 .fa.qty#inc {
-}
+} */
 
 .fa.qty:before {
     display: inline-block;

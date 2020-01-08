@@ -3240,6 +3240,8 @@ nav.nav-primary .wrap {
 	margin-top:10px;
 	margin-bottom: 0;  */
 	margin : 0;
+	max-width: 48px;
+	max-height: 48px;
 }
 
 .entry-content .attachment a,

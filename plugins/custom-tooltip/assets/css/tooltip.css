@@ -76,16 +76,16 @@
 .tooltip-img {
 	display:inline-block;
 	vertical-align: middle;
-	width: 80px;
+	/* width: 80px; */
 }
 
 h4.tooltip-title {
-	font-family: Oswald, sans-serif;
-	display: inline;
+	font-family: Vollkorn, sans-serif;
+	display:inline-block;
 	vertical-align: middle;
 	text-transform: initial;
 	font-variant: initial;
-    margin-left: 10px;
+    margin-left: 15px;
 }
 
 .tooltip-callout {
@@ -111,22 +111,22 @@ h4.tooltip-title {
 }
 
 .tooltip-content.fancy .wrap {
-	border:4px solid #737373;
-	border-color:#d25300;
-	/* background:#f9efe9; */
-	background:#f1e9e4;
-	color : #866855;
-	/* border-image:   linear-gradient(45deg, grey 25%, yellow 25%, yellow 50%,red 50%, red 75%, teal 75%) 5; */
+    background: #f5ebe4;
+    color: #776559;
+    border: none;
+    box-shadow: 1px 1px 8px 6px #909090;
 }
 
 
+
 .modal h4.tooltip-title {
-	font-size: 40px;
+	font-size: 4rem;
+	text-transform: uppercase;
 	color: #737373;
 }
 
 .fancy h4.tooltip-title {
-	color: #866855;
+	color: #c7b9af;
 }
 
 .tooltip-content.yellow .wrap {

@@ -34,7 +34,7 @@
 				'callout'	=> false,
 				'class'		=> 'rating-form modal fancy',
 				'title'		=> __('Rate this recipe', 'foodiepro'),
-				'img'		=> CHILD_THEME_URL . '/images/popup-icons/fiche_recette.png'
+				'img'		=> CHILD_THEME_URL . '/images/popup-icons/goutumetre.png'
 			);
 			Tooltip::display($args);
 			// }

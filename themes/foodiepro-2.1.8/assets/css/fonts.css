@@ -326,9 +326,15 @@ h2.entry-title, .wpupg-post-title,
 	color:#555;
 }
 
-.footer-widget-area .login-widget-more-links,
 .widget .login-form label {
 	font-size : 1.5rem;
+}
+
+.login-widget-more-links {
+	font-size: 1.5rem;
+	line-height: 1.9rem;
+	font-family: Oswald,sans-serif;
+	font-weight: 400;
 }
 
 #whats-new-submit.loading:before {

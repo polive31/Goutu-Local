@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: custom-star-rating\n"
-"POT-Creation-Date: 2019-11-11 01:03+0100\n"
-"PO-Revision-Date: 2019-11-11 01:07+0100\n"
+"POT-Creation-Date: 2020-01-10 03:00+0100\n"
+"PO-Revision-Date: 2020-01-10 03:01+0100\n"
 "Last-Translator: \n"
 "Language-Team: goutu.org <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -16,158 +16,157 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: includes/class-csr-assets.php:36
+#: includes/class-csr-assets.php:45
 msgid "Please enter a text before submitting your comment."
 msgstr ""
 
-#: includes/class-csr-assets.php:37
+#: includes/class-csr-assets.php:46
 msgid "Please provide your name before submitting your comment."
 msgstr ""
 
-#: includes/class-csr-assets.php:38
+#: includes/class-csr-assets.php:47
 msgid "Please provide a valid email adress before submitting your comment."
 msgstr ""
 
-#: includes/class-csr-assets.php:63
+#: includes/class-csr-assets.php:81
 msgid "Dish"
 msgstr "Appréciation"
 
-#: includes/class-csr-assets.php:64
+#: includes/class-csr-assets.php:82
 msgid "Appreciation of the dish"
 msgstr "Appréciation du plat"
 
-#: includes/class-csr-assets.php:65
+#: includes/class-csr-assets.php:83
 msgid "How did you like this dish ?"
-msgstr "Comment avez-vous trouvé ce plat ?"
+msgstr "Appréciation globale"
 
-#: includes/class-csr-assets.php:67 includes/class-csr-assets.php:78
+#: includes/class-csr-assets.php:85 includes/class-csr-assets.php:96
 msgid "Disappointing"
 msgstr "Décevant"
 
-#: includes/class-csr-assets.php:68 includes/class-csr-assets.php:79
+#: includes/class-csr-assets.php:86 includes/class-csr-assets.php:97
 msgid "Average"
 msgstr "Moyen"
 
-#: includes/class-csr-assets.php:69 includes/class-csr-assets.php:80
+#: includes/class-csr-assets.php:87 includes/class-csr-assets.php:98
 msgid "Good"
 msgstr "Bon"
 
-#: includes/class-csr-assets.php:70 includes/class-csr-assets.php:81
+#: includes/class-csr-assets.php:88 includes/class-csr-assets.php:99
 msgid "Very good"
 msgstr "Très bon"
 
-#: includes/class-csr-assets.php:71 includes/class-csr-assets.php:82
+#: includes/class-csr-assets.php:89 includes/class-csr-assets.php:100
 msgid "Delicious"
-msgstr "Délicieux !"
+msgstr "Divin !"
 
-#: includes/class-csr-assets.php:75
+#: includes/class-csr-assets.php:93
 msgid "Overall"
 msgstr "Global"
 
-#: includes/class-csr-assets.php:76
+#: includes/class-csr-assets.php:94
 msgid "Global appreciation of the dish"
 msgstr "Appréciation globale du plat"
 
-#: includes/class-csr-assets.php:108
+#: includes/class-csr-assets.php:126
 msgid "Evaluations"
 msgstr ""
 
-#: includes/class-csr-assets.php:109
+#: includes/class-csr-assets.php:127
 msgid "Evaluation"
 msgstr ""
 
-#: includes/class-csr-assets.php:115
+#: includes/class-csr-assets.php:133
 msgid "rating"
 msgstr ""
 
-#: includes/class-csr-assets.php:153
+#: includes/class-csr-assets.php:171
 msgid "Not rated"
 msgstr "Pas encore évalué"
 
-#: public/class-csr-comments-list.php:38
+#: public/class-csr-comments-list.php:41
 msgid "Comments"
 msgstr "Commentaires"
 
-#: public/class-csr-comments-list.php:44
+#: public/class-csr-comments-list.php:57
 msgid "Previous comments"
 msgstr ""
 
-#: public/class-csr-comments-list.php:49
+#: public/class-csr-comments-list.php:63
 msgid "Next comments"
 msgstr "Plus de commentaires"
 
-#: public/class-csr-comments-list.php:103
+#: public/class-csr-comments-list.php:124
 #, php-format
 msgid "%s says:"
 msgstr "Commentaire de %s"
 
-#: public/class-csr-comments-list.php:105
+#: public/class-csr-comments-list.php:126
 #, php-format
 msgid "%s responds:"
 msgstr "Réponse de %s"
 
-#: public/class-csr-comments-list.php:109
+#: public/class-csr-comments-list.php:130
 msgid "Your comment is awaiting moderation."
 msgstr "Votre commentaire est en attente de modération."
 
-#: public/class-csr-comments-list.php:115
+#: public/class-csr-comments-list.php:136
 #, php-format
 msgid "%1$s at %2$s"
 msgstr "Le %1$s à %2$s"
 
-#: public/class-csr-comments-list.php:141
+#: public/class-csr-comments-list.php:162
 msgid "(Edit)"
 msgstr ""
 
-#: public/class-csr-form.php:41
+#: public/class-csr-form.php:43
 #, fuzzy
 #| msgid "Add a comment"
-msgid "Leave a comment"
+msgid "Leave a comment on this recipe"
 msgstr "Commentez cette recette"
 
-#: public/class-csr-form.php:43
-msgid "Your answer here"
-msgstr ""
+#: public/class-csr-form.php:46
+#, fuzzy
+#| msgid "Add a comment"
+msgid "Leave a comment on this post"
+msgstr "Commentez cette recette"
 
-#: public/class-csr-form.php:59 public/class-csr-form.php:74
+#: public/class-csr-form.php:47
+#, fuzzy, php-format
+#| msgid "Leave a Reply to %s"
+msgid "Leave a reply to %s"
+msgstr "Laissez une réponse à %s"
+
+#: public/class-csr-form.php:76 public/class-csr-form.php:91
 msgid "<strong>ERROR</strong>: please complete the CAPTCHA verification."
 msgstr ""
 
-#: public/class-csr-form.php:84
+#: public/class-csr-form.php:102
 msgid "Submit"
 msgstr ""
 
-#: public/class-csr-form.php:111
+#: public/class-csr-form.php:130
 msgid ""
 "Your name and mail address are required for authentification of your comment."
 "<br>Your mail address will not be published."
 msgstr ""
 
-#: public/class-csr-form.php:117
+#: public/class-csr-form.php:136
 msgid "Send"
 msgstr "Envoyer"
 
-#: public/class-csr-form.php:120 public/partials/comment-form-template.php:98
-#, php-format
-msgid "Leave a Reply to %s"
-msgstr "Laissez une réponse à %s"
+#: public/class-csr-form.php:180
+msgid "Provide details"
+msgstr "Donnez quelques explications"
 
-#: public/class-csr-form.php:121
-msgid "Cancel"
-msgstr "Annuler"
-
-#: public/class-csr-form.php:163 public/partials/rating-form-template.php:17
-msgid "Add a comment"
-msgstr "Commentaires"
-
-#: public/class-csr-rating.php:338
+#: public/class-csr-rating.php:337
 #, php-format
 msgid "%s review"
 msgid_plural "%s reviews"
 msgstr[0] "%s avis"
 msgstr[1] "%s avis"
 
-#: public/class-csr-rating.php:342
+#: public/class-csr-rating.php:341
 msgid "Evaluate me !"
 msgstr ""
 
@@ -226,17 +225,26 @@ msgstr ""
 msgid "Leave a Reply"
 msgstr "Laissez une réponse à %s"
 
-#: public/partials/comment-form-template.php:103
-#, fuzzy
-#| msgid "Cancel"
-msgid "Cancel reply"
-msgstr "Annuler"
-
-#: public/partials/comment-form-template.php:104
+#: public/partials/comment-form-template.php:100
 #, fuzzy
 #| msgid "Comments"
 msgid "Post Comment"
 msgstr "Commentaires"
+
+#~ msgid "Cancel"
+#~ msgstr "Annuler"
+
+#~ msgid "Add a comment"
+#~ msgstr "Commentaires"
+
+#, php-format
+#~ msgid "Leave a Reply to %s"
+#~ msgstr "Laissez une réponse à %s"
+
+#, fuzzy
+#~| msgid "Cancel"
+#~ msgid "Cancel reply"
+#~ msgstr "Annuler"
 
 #~ msgid "Rather good"
 #~ msgstr "Assez bon"

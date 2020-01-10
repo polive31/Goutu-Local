@@ -4513,7 +4513,7 @@ div.activity-comments form div.ac-reply-content a {
 /* Custom Login Widget
 --------------------------------------------------------------*/
 .login-form-inner {
-    margin: 10px;
+	margin: 10px;
 }
 
 .login-form-inner label {
@@ -4522,12 +4522,20 @@ div.activity-comments form div.ac-reply-content a {
 }
 
 .login-widget-more-links {
-    float: right;
+	float: right;
     width:50%;
 }
 
 .login-widget-more-links a {
-    text-decoration: underline;
+	text-decoration: underline;
+}
+
+.login-widget-more-links span {
+	display: inline-block;
+	width: 170px;
+	vertical-align: middle;
+	text-align: center;
+	padding: 0;
 }
 
 .footer-widgets .widget_custom_login_widget div#logged-in {
@@ -4547,19 +4555,8 @@ div.activity-comments form div.ac-reply-content a {
 	display: block;
 }
 
-span.login-widget-register-link {
-    font-size: 1.5rem;
-    line-height: 1.9rem;
-    font-family: Oswald,sans-serif;
-    font-weight: 400;
-    display: inline-block;
-    width: 170px;
-    vertical-align: middle;
-    text-align: center;
-    padding: 0;
-}
 
-/* Custom Custom Login in Footer
+/* Custom Login in Footer
 --------------------------------------------- */
 
 .login-widget-user-link a:hover {

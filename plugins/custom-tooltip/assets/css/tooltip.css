@@ -216,6 +216,11 @@ h4.tooltip-title {
 		font-size: 1.8rem;
 	}
 
+
+	.post,
+	.recipe {
+		position:relative;
+	}
 	.toolbar-button,
 	.recipe-button {
 		position: initial;

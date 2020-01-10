@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2019-11-11 00:34+0100\n"
+"POT-Creation-Date: 2020-01-10 09:55+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_x:1,2c;esc_attr_e;_n:1,2\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;esc_attr_e;_n:1,2;esc_html_e;esc_html__\n"
 "X-Textdomain-Support: yes\n"
 "Language: en_US\n"
 "X-Poedit-SearchPath-0: themes/foodiepro-2.1.8\n"
@@ -31,195 +31,6 @@ msgstr ""
 "X-Poedit-SearchPath-9: plugins/custom-recipe-management\n"
 "X-Poedit-SearchPath-10: peepso\n"
 "X-Poedit-SearchPath-11: plugins/custom-peepso-overrides\n"
-
-#: peepso/overrides/templates/activity/activity.php:51
-#: peepso/overrides/templates/activity/activity.php:52
-#: peepso/overrides/templates/profile/profile.php:27
-#: peepso/overrides/templates/profile/profile.php:28
-#: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:58
-#: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:59
-msgid "No posts found."
-msgstr ""
-
-#: peepso/overrides/templates/activity/activity.php:53
-#: peepso/overrides/templates/profile/profile.php:29
-#: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:60
-msgid "Nothing more to show."
-msgstr ""
-
-#: peepso/overrides/templates/blogposts/blogposts.php:19
-#: peepso/overrides/templates/photos/photos.php:47
-#: peepso/overrides/templates/videos/videos.php:7
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:67
-msgid "Newest first"
-msgstr ""
-
-#: peepso/overrides/templates/blogposts/blogposts.php:20
-#: peepso/overrides/templates/photos/photos.php:48
-#: peepso/overrides/templates/videos/videos.php:8
-msgid "Oldest first"
-msgstr ""
-
-#: peepso/overrides/templates/photos/photos.php:12
-#: peepso/overrides/templates/photos/photos.php:37
-msgid "Create Album"
-msgstr ""
-
-#: peepso/overrides/templates/photos/photos.php:21
-msgid "Photos"
-msgstr ""
-
-#: peepso/overrides/templates/photos/photos.php:22
-msgid "Albums"
-msgstr ""
-
-#: peepso/overrides/templates/photos/photos.php:29
-msgid "Recently added photos"
-msgstr ""
-
-#: peepso/overrides/templates/photos/photos.php:31
-msgid "Photo Albums"
-msgstr ""
-
-#: peepso/overrides/templates/profile/focus.php:55
-msgid "Cover Image Utilities"
-msgstr ""
-
-#: peepso/overrides/templates/profile/focus.php:63
-msgid "Reposition"
-msgstr ""
-
-#: peepso/overrides/templates/profile/focus.php:67
-msgid "Modify"
-msgstr ""
-
-#: peepso/overrides/templates/profile/focus.php:75
-#: peepso/overrides/templates/profile/profile-about.php:150
-#: plugins/custom-recipe-management/public/custom-recipe-favorite/class-crm-favorite.php:137
-#: plugins/custom-star-rating/public/class-csr-form.php:113
-#: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:79
-#: plugins/wp-ultimate-recipe-premium/core/vendor/vafpress/classes/shortcodegenerator.php:264
-#: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:69
-msgid "Cancel"
-msgstr ""
-
-#: peepso/overrides/templates/profile/focus.php:76
-#: peepso/overrides/templates/profile/profile-about.php:156
-#: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/templates/shopping-list.php:22
-#: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:159
-#: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:289
-msgid "Save"
-msgstr ""
-
-#: peepso/overrides/templates/profile/focus.php:95
-msgid "Update cover picture"
-msgstr ""
-
-#: peepso/overrides/templates/profile/focus.php:121
-#, php-format
-msgid "%s's Blog"
-msgstr ""
-
-#: peepso/overrides/templates/profile/profile-about-account.php:32
-msgid "Your Account"
-msgstr ""
-
-#: peepso/overrides/templates/profile/profile-about-account.php:38
-msgid ""
-"Fields marked with an asterisk (<span class=\"required-sign\">*</span>) are "
-"required."
-msgstr ""
-
-#: peepso/overrides/templates/profile/profile-about-account.php:43
-msgid "Profile Deletion"
-msgstr ""
-
-#: peepso/overrides/templates/profile/profile-about-account.php:46
-msgid ""
-"Deleting your account will disable your profile and remove your name and photo "
-"from most things you've shared. Some information may still be visible to "
-"others, such as your name in their friends list and messages you sent."
-msgstr ""
-
-#: peepso/overrides/templates/profile/profile-about-account.php:53
-msgid "Export Your Community Data"
-msgstr ""
-
-#: peepso/overrides/templates/profile/profile-about-notifications.php:24
-msgid "Shortcuts"
-msgstr ""
-
-#: peepso/overrides/templates/profile/profile-about-notifications.php:25
-msgid "Quickly manage all your preferences at once"
-msgstr ""
-
-#: peepso/overrides/templates/profile/profile-about-notifications.php:29
-msgid "Disable all e-mail notifications"
-msgstr ""
-
-#: peepso/overrides/templates/profile/profile-about-notifications.php:32
-msgid "Enable all e-mail notifications"
-msgstr ""
-
-#: peepso/overrides/templates/profile/profile-about-notifications.php:35
-msgid "Disable all on-site notifications"
-msgstr ""
-
-#: peepso/overrides/templates/profile/profile-about-notifications.php:38
-msgid "Enable all on-site notifications"
-msgstr ""
-
-#: peepso/overrides/templates/profile/profile-about.php:120
-msgid "Edit "
-msgstr ""
-
-#: peepso/overrides/templates/profile/profile-about.php:121
-#: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:111
-#: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_list.php:42
-#: plugins/wp-ultimate-recipe-premium/core/helpers/migration/3_10_2_keywords.php:24
-#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:37
-#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:38
-#: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:115
-#: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:162
-#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/custom-taxonomies.php:171
-#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/templates/page_list.php:42
-#: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/meal-planner.php:317
-#: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/meal-planner.php:318
-#: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:83
-#: plugins/wp-ultimate-recipe-premium/premium/addons/user-menus/user-menus.php:231
-#: plugins/wp-ultimate-recipe-premium/premium/addons/user-menus/user-menus.php:232
-#: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/post_type.php:22
-#: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/post_type.php:23
-msgid "Edit"
-msgstr ""
-
-#: peepso/overrides/templates/profile/profile-about.php:168
-#: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:76
-msgid "Sorry, no data to show"
-msgstr ""
-
-#: peepso/overrides/templates/widgets/friends.tpl.php:62
-msgid "View All"
-msgstr ""
-
-#: peepso/overrides/templates/widgets/friends.tpl.php:70
-msgid "No friends"
-msgstr ""
-
-#: peepso/overrides/templates/widgets/userbar.tpl.php:53
-msgid "Preferences"
-msgstr ""
-
-#: peepso/overrides/templates/widgets/userbar.tpl.php:59
-#: peepso/overrides/templates/widgets/userbar.tpl.php:107
-#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:96
-#: themes/foodiepro-2.1.8/functions.php:914
-msgid "Log Out"
-msgstr ""
-
-#: peepso/overrides/templates/widgets/userbar.tpl.php:117
-msgid "Log in"
-msgstr ""
 
 #: plugins/custom-contact-form/admin/class-ccf-admin.php:23
 msgid "Save Options"
@@ -383,6 +194,8 @@ msgstr ""
 #: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:42
 #: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:42
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/booking-fields.php:12
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event-editor.php:33
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:13
 #: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:62
 #: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:43
 #: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:54
@@ -431,121 +244,127 @@ msgstr ""
 msgid "Visit Goutu.org"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:69
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:60
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:74
 #, php-format
-msgctxt "vowel"
-msgid "All recipes containing %s"
+msgid "%s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:71
-#, php-format
-msgctxt "consonant"
-msgid "All recipes containing %s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:115
-msgid "Detailed Search Results"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:117
-#, php-format
-msgid "Search Results for:%s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:122
-msgid "All the recipes"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:124
-msgid "All the posts"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:134
-#, php-format
-msgctxt "masculine-vowel"
-msgid "All %s from %s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:135
-#, php-format
-msgctxt "masculine-consonant"
-msgid "All %s from %s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:138
-#, php-format
-msgctxt "feminine-vowel"
-msgid "All %s from %s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:139
-#, php-format
-msgctxt "feminine-consonant"
-msgid "All %s from %s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:179
-#, php-format
-msgctxt "generic-plural"
-msgid "All posts from %s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:180
-#, php-format
-msgctxt "generic-vowel"
-msgid "All posts from %s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:181
-#, php-format
-msgctxt "generic-consonant"
-msgid "All posts from %s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:184
-#, php-format
-msgctxt "post-plural"
-msgid "All posts from %s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:185
-#, php-format
-msgctxt "post-vowel"
-msgid "All posts from %s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:186
-#, php-format
-msgctxt "post-consonant"
-msgid "All posts from %s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:189
-#, php-format
-msgctxt "recipe-plural"
-msgid "All posts from %s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:190
-#, php-format
-msgctxt "recipe-vowel"
-msgid "All posts from %s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:191
-#, php-format
-msgctxt "recipe-consonant"
-msgid "All posts from %s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:245
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:131
 msgid ""
 "You will find here all the recipes, which you can further sort by date or "
 "evaluation."
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:248
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:134
 msgid "You will find here all the posts, which you can further sort by date."
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:153
+#, php-format
+msgctxt "vowel"
+msgid "All recipes containing %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:155
+#, php-format
+msgctxt "consonant"
+msgid "All recipes containing %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:194
+msgid "Detailed Search Results"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:196
+#, php-format
+msgid "Search Results for:%s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:201
+msgid "All the recipes"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:203
+msgid "All the posts"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:213
+#, php-format
+msgctxt "masculine-vowel"
+msgid "All %s from %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:214
+#, php-format
+msgctxt "masculine-consonant"
+msgid "All %s from %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:217
+#, php-format
+msgctxt "feminine-vowel"
+msgid "All %s from %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:218
+#, php-format
+msgctxt "feminine-consonant"
+msgid "All %s from %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:258
+#, php-format
+msgctxt "generic-plural"
+msgid "All posts from %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:259
+#, php-format
+msgctxt "generic-vowel"
+msgid "All posts from %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:260
+#, php-format
+msgctxt "generic-consonant"
+msgid "All posts from %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:263
+#, php-format
+msgctxt "post-plural"
+msgid "All posts from %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:264
+#, php-format
+msgctxt "post-vowel"
+msgid "All posts from %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:265
+#, php-format
+msgctxt "post-consonant"
+msgid "All posts from %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:268
+#, php-format
+msgctxt "recipe-plural"
+msgid "All posts from %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:269
+#, php-format
+msgctxt "recipe-vowel"
+msgid "All posts from %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:270
+#, php-format
+msgctxt "recipe-consonant"
+msgid "All posts from %s"
 msgstr ""
 
 #: plugins/custom-navigation-helpers/public/class-cnh-rpwe-customizations.php:18
@@ -607,6 +426,13 @@ msgstr ""
 msgid "Title : descending"
 msgstr ""
 
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:67
+#: themes/foodiepro-2.1.8/peepso/blogposts/blogposts.php:19
+#: themes/foodiepro-2.1.8/peepso/photos/photos.php:47
+#: themes/foodiepro-2.1.8/peepso/videos/videos.php:7
+msgid "Newest first"
+msgstr ""
+
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:72
 msgid "Comment count"
 msgstr ""
@@ -635,7 +461,7 @@ msgstr ""
 #: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:122
 #: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:86
 #: plugins/custom-peepso-overrides/widgets/PeepsoCoverImageHeader.php:84
-#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:191
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:199
 #: plugins/custom-peepso-overrides/widgets/PeepsoLatestRegisteredMembers.php:116
 #: plugins/custom-recipe-management/widgets/crm_lists_dropdown_widget.php:74
 #: plugins/custom-recipe-management/widgets/crm_nutrition_label_widget.php:60
@@ -729,7 +555,7 @@ msgid "wrote a new recipe"
 msgstr ""
 
 #: plugins/custom-peepso-overrides/public/class-cpo-customizations.php:136
-#: themes/foodiepro-2.1.8/functions.php:1039
+#: themes/foodiepro-2.1.8/functions.php:1094
 msgid "Legal notice"
 msgstr ""
 
@@ -738,17 +564,22 @@ msgstr ""
 msgid "I agree to the %s."
 msgstr ""
 
-#: plugins/custom-peepso-overrides/public/class-peepso-helpers.php:123
+#: plugins/custom-peepso-overrides/public/class-peepso-helpers.php:124
 #, php-format
 msgid "Picture of %s"
 msgstr ""
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:19
-msgid "(Peepso) Peepso Profile Details"
+msgid "(Custom) Peepso Profile Details"
 msgstr ""
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:20
 msgid "Displays chosen details about a given user"
+msgstr ""
+
+#: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:76
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about.php:168
+msgid "Sorry, no data to show"
 msgstr ""
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:128
@@ -763,6 +594,21 @@ msgstr ""
 msgid "Displays the filtered activity stream of a given user"
 msgstr ""
 
+#: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:58
+#: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:59
+#: themes/foodiepro-2.1.8/peepso/activity/activity.php:51
+#: themes/foodiepro-2.1.8/peepso/activity/activity.php:52
+#: themes/foodiepro-2.1.8/peepso/profile/profile.php:27
+#: themes/foodiepro-2.1.8/peepso/profile/profile.php:28
+msgid "No posts found."
+msgstr ""
+
+#: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:60
+#: themes/foodiepro-2.1.8/peepso/activity/activity.php:53
+#: themes/foodiepro-2.1.8/peepso/profile/profile.php:29
+msgid "Nothing more to show."
+msgstr ""
+
 #: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:91
 msgid "Number of items to display"
 msgstr ""
@@ -775,46 +621,64 @@ msgstr ""
 msgid "Displays the cover image header of the current displayed user"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:31
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:33
 msgctxt "Title of the login widget"
 msgid "(Peepso) Custom Log In"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:33
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:35
 msgid ""
 "Show a Log In form to logged-out visitors, and a Log Out link to those who are "
 "logged in, with full resolution avatar."
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:90
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:93
 msgid "Edit my profile"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:123
-#: themes/foodiepro-2.1.8/functions.php:429
-msgid "Email Address"
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:99
+#: themes/foodiepro-2.1.8/functions.php:954
+#: themes/foodiepro-2.1.8/peepso/widgets/userbar.tpl.php:59
+#: themes/foodiepro-2.1.8/peepso/widgets/userbar.tpl.php:107
+msgid "Log Out"
 msgstr ""
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:126
-msgid "Password"
+#: themes/foodiepro-2.1.8/functions.php:450
+msgid "Email Address"
 msgstr ""
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:129
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/login.php:14
+msgid "Password"
+msgstr ""
+
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:132
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/login.php:19
 msgid "Remember Me"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:131
-#: themes/foodiepro-2.1.8/functions.php:919
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:134
+#: themes/foodiepro-2.1.8/functions.php:958
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/login.php:18
 msgid "Log In"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:135
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:138
 msgid "Register for a new account"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:135
-#: themes/foodiepro-2.1.8/functions.php:432
-msgid "Not yet a member ? <br> Register here !"
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:138
+#: themes/foodiepro-2.1.8/functions.php:452
+msgid "Not yet a member ?"
+msgstr ""
+
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:142
+msgid "Reset your password"
+msgstr ""
+
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:142
+msgid "Forgot Password ?"
 msgstr ""
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoLatestRegisteredMembers.php:28
@@ -936,6 +800,7 @@ msgstr ""
 #: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_form.php:61
 #: plugins/wp-ultimate-recipe-premium/core/helpers/vafpress/vafpress_menu_whitelist.php:270
 #: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/meta_boxes/meta_box_data_source_terms.php:33
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:17
 msgid "Description"
 msgstr ""
 
@@ -1274,7 +1139,7 @@ msgstr ""
 msgid "December"
 msgstr ""
 
-#: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:42
+#: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:41
 #: plugins/custom-recipe-management/admin/class-custom-ingredient-meta.php:75
 msgid "Months"
 msgstr ""
@@ -1531,16 +1396,16 @@ msgstr ""
 msgid "Do you really want to delete this instruction ?"
 msgstr ""
 
-#: plugins/custom-recipe-management/public/class-crm-ingredient.php:86
+#: plugins/custom-recipe-management/public/class-crm-ingredient.php:87
 msgid "Harvest Period"
 msgstr ""
 
-#: plugins/custom-recipe-management/public/class-crm-ingredient.php:153
+#: plugins/custom-recipe-management/public/class-crm-ingredient.php:152
 msgctxt "vowel"
 msgid "of "
 msgstr ""
 
-#: plugins/custom-recipe-management/public/class-crm-ingredient.php:155
+#: plugins/custom-recipe-management/public/class-crm-ingredient.php:154
 msgctxt "consonant"
 msgid "of "
 msgstr ""
@@ -1623,6 +1488,15 @@ msgstr ""
 
 #: plugins/custom-recipe-management/public/custom-recipe-favorite/class-crm-favorite.php:136
 msgid "OK"
+msgstr ""
+
+#: plugins/custom-recipe-management/public/custom-recipe-favorite/class-crm-favorite.php:137
+#: plugins/wp-ultimate-recipe-premium/core/addons/import-text/templates/meta_box.php:79
+#: plugins/wp-ultimate-recipe-premium/core/vendor/vafpress/classes/shortcodegenerator.php:264
+#: themes/foodiepro-2.1.8/peepso/profile/focus.php:72
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about.php:150
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:69
+msgid "Cancel"
 msgstr ""
 
 #: plugins/custom-recipe-management/public/custom-recipe-submission/class-crm-submission.php:71
@@ -2180,7 +2054,7 @@ msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr ""
 
 #: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:296
-#: themes/foodiepro-2.1.8/functions.php:1039
+#: themes/foodiepro-2.1.8/functions.php:1094
 msgid "All rights reserved"
 msgstr ""
 
@@ -2253,165 +2127,164 @@ msgstr ""
 msgid "Displays share buttons of selected social networks"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:36
+#: plugins/custom-star-rating/includes/class-csr-assets.php:45
 msgid "Please enter a text before submitting your comment."
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:37
+#: plugins/custom-star-rating/includes/class-csr-assets.php:46
 msgid "Please provide your name before submitting your comment."
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:38
+#: plugins/custom-star-rating/includes/class-csr-assets.php:47
 msgid "Please provide a valid email adress before submitting your comment."
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:63
+#: plugins/custom-star-rating/includes/class-csr-assets.php:81
 msgid "Dish"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:64
+#: plugins/custom-star-rating/includes/class-csr-assets.php:82
 msgid "Appreciation of the dish"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:65
+#: plugins/custom-star-rating/includes/class-csr-assets.php:83
 msgid "How did you like this dish ?"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:67
-#: plugins/custom-star-rating/includes/class-csr-assets.php:78
+#: plugins/custom-star-rating/includes/class-csr-assets.php:85
+#: plugins/custom-star-rating/includes/class-csr-assets.php:96
 msgid "Disappointing"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:68
-#: plugins/custom-star-rating/includes/class-csr-assets.php:79
+#: plugins/custom-star-rating/includes/class-csr-assets.php:86
+#: plugins/custom-star-rating/includes/class-csr-assets.php:97
 msgid "Average"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:69
-#: plugins/custom-star-rating/includes/class-csr-assets.php:80
+#: plugins/custom-star-rating/includes/class-csr-assets.php:87
+#: plugins/custom-star-rating/includes/class-csr-assets.php:98
 msgid "Good"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:70
-#: plugins/custom-star-rating/includes/class-csr-assets.php:81
+#: plugins/custom-star-rating/includes/class-csr-assets.php:88
+#: plugins/custom-star-rating/includes/class-csr-assets.php:99
 msgid "Very good"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:71
-#: plugins/custom-star-rating/includes/class-csr-assets.php:82
+#: plugins/custom-star-rating/includes/class-csr-assets.php:89
+#: plugins/custom-star-rating/includes/class-csr-assets.php:100
 msgid "Delicious"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:75
+#: plugins/custom-star-rating/includes/class-csr-assets.php:93
 msgid "Overall"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:76
+#: plugins/custom-star-rating/includes/class-csr-assets.php:94
 msgid "Global appreciation of the dish"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:108
+#: plugins/custom-star-rating/includes/class-csr-assets.php:126
 msgid "Evaluations"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:109
+#: plugins/custom-star-rating/includes/class-csr-assets.php:127
 msgid "Evaluation"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:115
+#: plugins/custom-star-rating/includes/class-csr-assets.php:133
 msgid "rating"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:153
+#: plugins/custom-star-rating/includes/class-csr-assets.php:171
 msgid "Not rated"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-comments-list.php:38
+#: plugins/custom-star-rating/public/class-csr-comments-list.php:41
 msgid "Comments"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-comments-list.php:44
+#: plugins/custom-star-rating/public/class-csr-comments-list.php:57
 msgid "Previous comments"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-comments-list.php:49
+#: plugins/custom-star-rating/public/class-csr-comments-list.php:63
 msgid "Next comments"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-comments-list.php:103
+#: plugins/custom-star-rating/public/class-csr-comments-list.php:124
 #, php-format
 msgid "%s says:"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-comments-list.php:105
+#: plugins/custom-star-rating/public/class-csr-comments-list.php:126
 #, php-format
 msgid "%s responds:"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-comments-list.php:109
+#: plugins/custom-star-rating/public/class-csr-comments-list.php:130
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-comments-list.php:115
+#: plugins/custom-star-rating/public/class-csr-comments-list.php:136
 #, php-format
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-comments-list.php:141
+#: plugins/custom-star-rating/public/class-csr-comments-list.php:162
 msgid "(Edit)"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:37
-msgid "Leave a comment"
+#: plugins/custom-star-rating/public/class-csr-form.php:43
+msgid "Leave a comment on this recipe"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:39
-msgid "Your answer here"
+#: plugins/custom-star-rating/public/class-csr-form.php:46
+msgid "Leave a comment on this post"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:54
-#: plugins/custom-star-rating/public/class-csr-form.php:68
+#: plugins/custom-star-rating/public/class-csr-form.php:47
+#, php-format
+msgid "Leave a reply to %s"
+msgstr ""
+
+#: plugins/custom-star-rating/public/class-csr-form.php:76
+#: plugins/custom-star-rating/public/class-csr-form.php:91
 msgid "<strong>ERROR</strong>: please complete the CAPTCHA verification."
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:77
+#: plugins/custom-star-rating/public/class-csr-form.php:102
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/templates/public_recipe_form.php:137
 msgid "Submit"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:103
+#: plugins/custom-star-rating/public/class-csr-form.php:130
 msgid ""
 "Your name and mail address are required for authentification of your comment."
 "<br>Your mail address will not be published."
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:109
+#: plugins/custom-star-rating/public/class-csr-form.php:136
 msgid "Send"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:112
-#: plugins/custom-star-rating/public/partials/comment-form-template.php:98
-#, php-format
-msgid "Leave a Reply to %s"
+#: plugins/custom-star-rating/public/class-csr-form.php:180
+msgid "Provide details"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:150
-#: plugins/custom-star-rating/public/partials/rating-form-template.php:17
-msgid "Add a comment"
-msgstr ""
-
-#: plugins/custom-star-rating/public/class-csr-rating.php:338
+#: plugins/custom-star-rating/public/class-csr-rating.php:337
 #, php-format
 msgid "%s review"
 msgid_plural "%s reviews"
 msgstr[0] ""
 msgstr[1] ""
 
-#: plugins/custom-star-rating/public/class-csr-rating.php:342
+#: plugins/custom-star-rating/public/class-csr-rating.php:341
 msgid "Evaluate me !"
 msgstr ""
 
 #: plugins/custom-star-rating/public/partials/comment-form-template.php:43
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event-editor.php:37
 msgid "Email"
 msgstr ""
 
@@ -2459,11 +2332,7 @@ msgstr ""
 msgid "Leave a Reply"
 msgstr ""
 
-#: plugins/custom-star-rating/public/partials/comment-form-template.php:103
-msgid "Cancel reply"
-msgstr ""
-
-#: plugins/custom-star-rating/public/partials/comment-form-template.php:104
+#: plugins/custom-star-rating/public/partials/comment-form-template.php:100
 msgid "Post Comment"
 msgstr ""
 
@@ -2518,6 +2387,27 @@ msgstr ""
 #: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/models/grid.php:120
 #: themes/foodiepro-2.1.8/includes/vendor/customizer-library/extensions/fonts.php:125
 msgid "All"
+msgstr ""
+
+#: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:111
+#: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/templates/page_list.php:42
+#: plugins/wp-ultimate-recipe-premium/core/helpers/migration/3_10_2_keywords.php:24
+#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:37
+#: plugins/wp-ultimate-recipe-premium/core/helpers/recipe_post_type.php:38
+#: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:115
+#: plugins/wp-ultimate-recipe-premium/core/helpers/taxonomies.php:162
+#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/custom-taxonomies.php:171
+#: plugins/wp-ultimate-recipe-premium/premium/addons/custom-taxonomies/templates/page_list.php:42
+#: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/meal-planner.php:317
+#: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/meal-planner.php:318
+#: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:83
+#: plugins/wp-ultimate-recipe-premium/premium/addons/user-menus/user-menus.php:231
+#: plugins/wp-ultimate-recipe-premium/premium/addons/user-menus/user-menus.php:232
+#: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/post_type.php:22
+#: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/post_type.php:23
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about.php:121
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:64
+msgid "Edit"
 msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/core/addons/basic-custom-taxonomies/basic-custom-taxonomies.php:112
@@ -3247,6 +3137,7 @@ msgstr ""
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-menus/user-menus.php:235
 #: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/post_type.php:25
 #: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/post_type.php:26
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:76
 msgid "View"
 msgstr ""
 
@@ -5914,6 +5805,7 @@ msgstr ""
 #: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:101
 #: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:95
 #: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:132
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:66
 #: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:113
 #: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:147
 msgid "Delete"
@@ -6390,6 +6282,14 @@ msgstr ""
 msgid "Add Group"
 msgstr ""
 
+#: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/templates/shopping-list.php:22
+#: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:159
+#: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:289
+#: themes/foodiepro-2.1.8/peepso/profile/focus.php:73
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about.php:156
+msgid "Save"
+msgstr ""
+
 #: plugins/wp-ultimate-recipe-premium/premium/addons/meal-planner/templates/view_meal_plan.php:14
 msgid "View Meal Planner"
 msgstr ""
@@ -6523,6 +6423,7 @@ msgid "Data for 1 serving:"
 msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/premium/addons/nutritional-information/templates/settings.php:290
+#: themes/foodiepro-2.1.8/peepso/activity/comment-modal-attachment.php:104
 msgid "Clear"
 msgstr ""
 
@@ -7137,6 +7038,7 @@ msgid "Link to"
 msgstr ""
 
 #: plugins/wp-ultimate-recipe-premium/premium/vendor/wp-ultimate-post-grid-premium/core/helpers/meta_boxes/meta_box_grid.php:33
+#: themes/foodiepro-2.1.8/peepso/activity/comment-modal-attachment.php:105
 msgid "Post"
 msgstr ""
 
@@ -7654,44 +7556,45 @@ msgid ""
 "version 2. You won't lose any settings or recipes when deactivating."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:398
+#: themes/foodiepro-2.1.8/functions.php:415
 msgid "Goûtu.org - La Communauté des Gourmets"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:406
+#: themes/foodiepro-2.1.8/functions.php:424
 msgid "Enter Email Address"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:407
+#: themes/foodiepro-2.1.8/functions.php:425
 msgid "Enter Password"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:408
+#: themes/foodiepro-2.1.8/functions.php:426
 msgid "Remember Login State"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:409
+#: themes/foodiepro-2.1.8/functions.php:427
 msgid "Please Log In"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:443
+#: themes/foodiepro-2.1.8/functions.php:464
 msgid ""
-"<strong>ERROR</strong>: Invalid login. Please log in with your email address."
+"<strong>ERROR</strong>: Invalid login. Please make sure to use your EMAIL "
+"ADDRESS to log-in."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:486
+#: themes/foodiepro-2.1.8/functions.php:509
 msgid "author"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:789
+#: themes/foodiepro-2.1.8/functions.php:825
 msgid "Content/Alt Sidebar"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:990
+#: themes/foodiepro-2.1.8/functions.php:1042
 msgid "Recipe, Ingredient, Keyword, Author..."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:1039
+#: themes/foodiepro-2.1.8/functions.php:1094
 msgid "Contact us"
 msgstr ""
 
@@ -7954,6 +7857,38 @@ msgstr ""
 msgid "Please contact the administrator of this site for help."
 msgstr ""
 
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:521
+msgid "Update Required"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:635
+msgid "Set the parent_slug config variable instead."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:828
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:3438
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:935
+msgid ""
+"The remote plugin package does not contain a folder with the desired slug and "
+"renaming did not work."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:935
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:938
+msgid ""
+"Please contact the plugin provider and ask them to package their plugin "
+"according to the WordPress guidelines."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:938
+msgid ""
+"The remote plugin package consists of more than one file, but the files are "
+"not packaged in a folder."
+msgstr ""
+
 #: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:1881
 #, php-format
 msgctxt "%s = version number"
@@ -8086,6 +8021,10 @@ msgctxt "%2$s = plugin name in screen reader markup"
 msgid "Activate %2$s"
 msgstr ""
 
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2570
+msgid "Upgrade message from the plugin author:"
+msgstr ""
+
 #: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2603
 msgid "Install"
 msgstr ""
@@ -8108,6 +8047,14 @@ msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2683
 msgid "No plugins are available to be updated at this time."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2788
+msgid "No plugins were selected to be activated. No action taken."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:2814
+msgid "No plugins are available to be activated at this time."
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:3028
@@ -8140,6 +8087,16 @@ msgstr ""
 msgid "%1$s installed and activated successfully."
 msgstr ""
 
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:3370
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:3376
+msgid "Show Details"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:3370
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:3376
+msgid "Hide Details"
+msgstr ""
+
 #: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:3371
 msgid "All installations and activations have been completed."
 msgstr ""
@@ -8153,6 +8110,11 @@ msgstr ""
 msgid ""
 "The installation process is starting. This process may take a while on some "
 "hosts, so please be patient."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:3376
+#, php-format
+msgid "%1$s installed successfully."
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/vendor/class-tgm-plugin-activation.php:3377
@@ -8491,6 +8453,127 @@ msgstr ""
 msgid "Link Text"
 msgstr ""
 
+#: themes/foodiepro-2.1.8/peepso/activity/comment-modal-attachment.php:90
+msgid "Write a comment..."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/blogposts/blogposts.php:20
+#: themes/foodiepro-2.1.8/peepso/photos/photos.php:48
+#: themes/foodiepro-2.1.8/peepso/videos/videos.php:8
+msgid "Oldest first"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/photos/photos.php:12
+#: themes/foodiepro-2.1.8/peepso/photos/photos.php:37
+msgid "Create Album"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/photos/photos.php:21
+msgid "Photos"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/photos/photos.php:22
+msgid "Albums"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/photos/photos.php:29
+msgid "Recently added photos"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/photos/photos.php:31
+msgid "Photo Albums"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/focus.php:52
+msgid "Cover Image Utilities"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/focus.php:60
+msgid "Reposition"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/focus.php:64
+msgid "Modify"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/focus.php:92
+msgid "Update cover picture"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/focus.php:118
+#, php-format
+msgid "%s's Blog"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-account.php:32
+msgid "Your Account"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-account.php:38
+msgid ""
+"Fields marked with an asterisk (<span class=\"required-sign\">*</span>) are "
+"required."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-account.php:43
+msgid "Profile Deletion"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-account.php:46
+msgid ""
+"Deleting your account will disable your profile and remove your name and photo "
+"from most things you've shared. Some information may still be visible to "
+"others, such as your name in their friends list and messages you sent."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-account.php:53
+msgid "Export Your Community Data"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:24
+msgid "Shortcuts"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:25
+msgid "Quickly manage all your preferences at once"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:29
+msgid "Disable all e-mail notifications"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:32
+msgid "Enable all e-mail notifications"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:35
+msgid "Disable all on-site notifications"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:38
+msgid "Enable all on-site notifications"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about.php:120
+msgid "Edit "
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/widgets/friends.tpl.php:73
+msgid "View All"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/widgets/friends.tpl.php:81
+msgid "No friends"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/widgets/userbar.tpl.php:53
+msgid "Preferences"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/widgets/userbar.tpl.php:117
+msgid "Log in"
+msgstr ""
+
 #: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:29
 #: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:30
 #: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/profile.php:22
@@ -8499,6 +8582,7 @@ msgstr ""
 
 #: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:43
 #: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:44
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location-editor.php:32
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/location-editor.php:65
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/location-editor.php:67
 #: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:64
@@ -8513,11 +8597,13 @@ msgstr ""
 
 #: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:92
 #: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:86
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:104
 msgid "Bookings"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:93
 #: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/my-group-events.php:87
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/events.php:105
 #: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:44
 msgid "Booked"
 msgstr ""
@@ -8533,6 +8619,10 @@ msgstr ""
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/event-editor.php:111
 #: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:39
 msgid "Event"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:106
+msgid "Duplicate"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/plugins/events-manager/buddypress/group-events.php:127
@@ -8574,6 +8664,8 @@ msgstr ""
 
 #: themes/foodiepro-2.1.8/plugins/events-manager/emails/bookingsummary.php:15
 #: themes/foodiepro-2.1.8/plugins/events-manager/emails/bookingtickets.php:9
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:20
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:34
 msgid "Price"
 msgstr ""
 
@@ -8611,6 +8703,26 @@ msgstr ""
 msgid "Comment"
 msgstr ""
 
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/login.php:8
+msgid "Log in if you already have an account with us."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/login.php:10
+msgid "Username"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/login.php:34
+msgid "Sign Up"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/login.php:38
+msgid "Password Lost and Found"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/login.php:38
+msgid "Lost your password?"
+msgstr ""
+
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/ticket-single.php:37
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/tickets-list.php:45
 msgid "N/A"
@@ -8618,8 +8730,54 @@ msgstr ""
 
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/event-editor.php:12
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/location-editor.php:11
+msgid "Unauthorized Access"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event-editor.php:12
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location-editor.php:11
 #, php-format
 msgid "You do not have the rights to manage this %s."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event-editor.php:30
+msgid "Your Details"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event-editor.php:44
+msgid "Event Name"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event-editor.php:48
+msgid "The event name. Example: Birthday party"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event-editor.php:52
+msgid "When"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event-editor.php:66
+msgid "Where"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event-editor.php:72
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location-editor.php:37
+msgid "Details"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event-editor.php:80
+msgid "Details about the event."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event-editor.php:80
+msgid "HTML allowed."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event-editor.php:90
+msgid "Event Image"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event-editor.php:98
+msgid "Bookings/Registration"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/event-editor.php:109
@@ -8698,9 +8856,20 @@ msgstr ""
 msgid "Enter a maximum number of spaces (required)."
 msgstr ""
 
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:22
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:27
+#: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:41
+msgid "Spaces"
+msgstr ""
+
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:28
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:33
 msgid "Leave either blank for no upper/lower limit."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:30
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:35
+msgid "spaces per booking"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:39
@@ -8708,6 +8877,18 @@ msgstr ""
 msgid ""
 "Add a start or end date (or both) to impose time constraints on ticket "
 "availability. Leave either blank for no upper/lower limit."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:40
+msgid "Available from"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:48
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:67
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:84
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:89
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:143
+msgid "day(s)"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:50
@@ -8721,31 +8902,147 @@ msgctxt "before or after"
 msgid "%s the event starts"
 msgstr ""
 
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:59
+msgid "Available until"
+msgstr ""
+
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:79
 msgid ""
 "If checked every booking must select one or the minimum number of this ticket."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:79
+msgid "Required?"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:84
+msgid "Available for"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:86
 msgid "Everyone"
 msgstr ""
 
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:87
+msgid "Logged In Users"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:88
+msgid "Guest Users"
+msgstr ""
+
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:92
 msgid "Restrict to"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:107
+msgid "Show Advanced Options"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings-ticket-form.php:107
+msgid "Hide Advanced Options"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:7
 msgid "Enable registration for this event"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:84
-#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:89
-#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:143
-msgid "day(s)"
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:21
+msgid "Ticket Options"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:28
+msgid "Tickets"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:29
+msgid ""
+"You can have single or multiple tickets, where certain tickets become "
+"available under certain conditions, e.g. early bookings, group discounts, "
+"maximum bookings per ticket, etc."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:29
+msgid "Basic HTML is allowed in ticket labels and descriptions."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:33
+msgid "Ticket Name"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:35
+msgid "Min/Max"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:36
+msgid "Start/End"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:37
+msgid "Avail. Spaces"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:38
+msgid "Booked Spaces"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:45
+msgid "Add new ticket"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:68
+msgid "View Bookings"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:73
+msgid "Free"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:105
+msgid "Close Ticket Editor"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:122
+msgid "Event Options"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:124
+msgid "Total Spaces"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:126
+msgid ""
+"Individual tickets with remaining spaces will not be available if total "
+"booking spaces reach this limit. Leave blank for no limit."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:129
+msgid "Maximum Spaces Per Booking"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:131
+msgid ""
+"If set, the total number of spaces for a single booking to this event cannot "
+"exceed this amount."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:131
+msgid "Leave blank for no limit."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:134
+msgid "Booking Cut-Off Date"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:148
 msgid "at"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/bookings.php:152
+msgid ""
+"This is the definite date after which bookings will be closed for this event, "
+"regardless of individual ticket settings above. Default value will be the "
+"event start date."
 msgstr ""
 
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/event/categories-public.php:13
@@ -8998,6 +9295,26 @@ msgstr ""
 msgid "location"
 msgstr ""
 
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location-editor.php:25
+msgid "Location Name"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location-editor.php:29
+msgid "The name of the location"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location-editor.php:44
+msgid "Details about the location."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location-editor.php:44
+msgid "HTML Allowed."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/plugins/events-manager/forms/location-editor.php:52
+msgid "Location Image"
+msgstr ""
+
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/location/attributes.php:43
 #, php-format
 msgid ""
@@ -9093,6 +9410,10 @@ msgstr ""
 msgid "Country"
 msgstr ""
 
+#: themes/foodiepro-2.1.8/plugins/events-manager/tables/locations.php:88
+msgid "No locations have been inserted yet!"
+msgstr ""
+
 #: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:13
 #: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:18
 #, php-format
@@ -9105,11 +9426,6 @@ msgstr ""
 
 #: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:26
 msgid "Phone number"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:27
-#: themes/foodiepro-2.1.8/plugins/events-manager/templates/my-bookings.php:41
-msgid "Spaces"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/plugins/events-manager/templates/bookings-event-printable.php:49

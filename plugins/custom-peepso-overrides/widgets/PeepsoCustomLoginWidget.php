@@ -1,7 +1,7 @@
 <?php
 
 // Block direct requests
-if ( !defined('ABSPATH') )
+if (!defined('ABSPATH'))
 	die('-1');
 
 
@@ -11,26 +11,28 @@ if ( !defined('ABSPATH') )
 /* =================================================================*/
 
 
-add_action( 'widgets_init', function(){
-     register_widget( 'PeepsoCustomLoginWidget' );
+add_action('widgets_init', function () {
+	register_widget('PeepsoCustomLoginWidget');
 });
 
 
-class PeepsoCustomLoginWidget extends WP_Widget {
+class PeepsoCustomLoginWidget extends WP_Widget
+{
 
-	private $instance=0;
+	private $instance = 0;
 
 	/**
 	 * Constructor method.
 	 *
 	 * @since 1.9.0
 	 */
-	public function __construct() {
+	public function __construct()
+	{
 		parent::__construct(
 			false,
-			_x( '(Peepso) Custom Log In', 'Title of the login widget', 'foodiepro' ),
+			_x('(Peepso) Custom Log In', 'Title of the login widget', 'foodiepro'),
 			array(
-				'description'                 => __( 'Show a Log In form to logged-out visitors, and a Log Out link to those who are logged in, with full resolution avatar.', 'foodiepro' ),
+				'description'                 => __('Show a Log In form to logged-out visitors, and a Log Out link to those who are logged in, with full resolution avatar.', 'foodiepro'),
 				'classname'                   => 'widget_custom_login_widget peepso_custom_login_widget widget',
 				'customize_selective_refresh' => true,
 			)
@@ -46,9 +48,10 @@ class PeepsoCustomLoginWidget extends WP_Widget {
 	 * @param array $args     Widget arguments.
 	 * @param array $instance Widget settings, as saved by the user.
 	 */
-	public function widget( $args, $instance ) {
+	public function widget($args, $instance)
+	{
 		++$this->instance;
-		$title = isset( $instance['title'] ) ? $instance['title'] : '';
+		$title = isset($instance['title']) ? $instance['title'] : '';
 		/**
 		 * Filters the title of the Login widget.
 		 *
@@ -59,22 +62,22 @@ class PeepsoCustomLoginWidget extends WP_Widget {
 		 * @param array  $instance The settings for the particular instance of the widget.
 		 * @param string $id_base  Root ID for all widgets of this type.
 		 */
-		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
+		$title = apply_filters('widget_title', $title, $instance, $this->id_base);
 		echo $args['before_widget'];
-		echo $args['before_title'] . esc_html( $title ) . $args['after_title'];
+		echo $args['before_title'] . esc_html($title) . $args['after_title'];
 
 
-		?>
+?>
 
 
-		<?php if ( is_user_logged_in() ) :
+		<?php if (is_user_logged_in()) :
 
 			$user_id = get_current_user_id();
-			$user = PeepsoUser::get_instance( $user_id );
-			$url = Peepso::get_page(  'profile' );
+			$user = PeepsoUser::get_instance($user_id);
+			$url = Peepso::get_page('profile');
 			$home = home_url();
 
-			echo '<div class="wrap" id="logged-in">';?>
+			echo '<div class="wrap" id="logged-in">'; ?>
 
 			<?php
 			/**
@@ -82,18 +85,18 @@ class PeepsoCustomLoginWidget extends WP_Widget {
 			 *
 			 * @since 1.9.0
 			 */
-			do_action( 'before_login_widget_loggedin' ); ?>
+			do_action('before_login_widget_loggedin'); ?>
 
 			<div class="login-widget-user-avatar">
 				<a href="<?php echo $url; ?>">
-					<?php $field = $user->get_avatar( 'full' ); ?>
-					<img class="avatar" title="<?= __('Edit my profile','foodiepro');?>" src="<?= $field;?>">
+					<?php $field = $user->get_avatar('full'); ?>
+					<img class="avatar" title="<?= __('Edit my profile', 'foodiepro'); ?>" src="<?= $field; ?>">
 				</a>
 			</div>
 
 			<div class="login-widget-user-links">
-				<div class="login-widget-user-link"><a class="" href="<?= Peepso::get_page(  $url );?>"><?= $user->get_firstname();?></a></div>
-				<div class="login-widget-user-logout"><a class="logout" href="<?php echo wp_logout_url( $home ); ?>"><?php _e( 'Log Out', 'foodiepro' ); ?></a></div>
+				<div class="login-widget-user-link"><a class="" href="<?= Peepso::get_page($url); ?>"><?= $user->get_firstname(); ?></a></div>
+				<div class="login-widget-user-logout"><a class="logout" href="<?php echo wp_logout_url($home); ?>"><?php _e('Log Out', 'foodiepro'); ?></a></div>
 			</div>
 
 			<?php
@@ -102,13 +105,13 @@ class PeepsoCustomLoginWidget extends WP_Widget {
 			 *
 			 * @since 1.9.0
 			 */
-			do_action( 'after_login_widget_loggedin' );
-			echo '</div>';?>
+			do_action('after_login_widget_loggedin');
+			echo '</div>'; ?>
 
 		<?php else :
 
 			$disable_registration = intval(PeepSo::get_option('site_registration_disabled', 0));
-			echo '<div class="wrap" id="logged-out">';?>
+			echo '<div class="wrap" id="logged-out">'; ?>
 
 			<?php
 			/**
@@ -116,25 +119,28 @@ class PeepsoCustomLoginWidget extends WP_Widget {
 			 *
 			 * @since 1.9.0
 			 */
-			do_action( 'before_login_widget_loggedout' ); ?>
+			do_action('before_login_widget_loggedout'); ?>
 
-			<form name="login-form" id="login-widget-form<?php echo $this->instance;?>" class="login-form" action="<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>" method="post">
+			<form name="login-form" id="login-widget-form<?php echo $this->instance; ?>" class="login-form" action="<?php echo esc_url(site_url('wp-login.php', 'login_post')); ?>" method="post">
 
-				<label for="login-widget-user-login"><?php _e( 'Email Address', 'foodiepro' ); ?></label>
-				<input type="text" name="log" id="login-widget-user-login<?php echo $this->instance;?>" class="input" value="" />
+				<div class="login-form-inner">
+					<label for="login-widget-user-login"><?php _e('Email Address', 'foodiepro'); ?></label>
+					<input type="text" name="log" id="login-widget-user-login<?php echo $this->instance; ?>" class="input" value="" />
 
-				<label for="login-widget-user-pass"><?php _e( 'Password', 'foodiepro' ); ?></label>
-				<input type="password" name="pwd" id="login-widget-user-pass<?php echo $this->instance;?>" class="input" value="" />
+					<label for="login-widget-user-pass"><?php _e('Password', 'foodiepro'); ?></label>
+					<input type="password" name="pwd" id="login-widget-user-pass<?php echo $this->instance; ?>" class="input" value="" />
 
-				<div class="forgetmenot"><label for="login-widget-rememberme<?php echo $this->instance;?>"><input name="rememberme" type="checkbox" id="login-widget-rememberme<?php echo $this->instance;?>" value="forever" /> <?php _e( 'Remember Me', 'foodiepro' ); ?></label></div>
+					<div class="forgetmenot"><label for="login-widget-rememberme<?php echo $this->instance; ?>"><input name="rememberme" type="checkbox" id="login-widget-rememberme<?php echo $this->instance; ?>" value="forever" /> <?php _e('Remember Me', 'foodiepro'); ?></label></div>
+				</div>
 
-				<input type="submit" name="wp-submit" class="login-widget-submit" id="login-widget-submit<?php echo $this->instance;?>" value="<?php esc_attr_e( 'Log In', 'foodiepro' ); ?>" />
+				<input type="submit" name="wp-submit" class="login-widget-submit" id="login-widget-submit<?php echo $this->instance; ?>" value="<?php esc_attr_e('Log In', 'foodiepro'); ?>" />
 
-				<?php if ( $disable_registration === 0 ) : ?>
-
-					<span class="login-widget-register-link"><a href="<?php echo PeepSo::get_page('register'); ?>" title="<?php esc_attr_e( 'Register for a new account', 'foodiepro' ); ?>"><?php echo sec( __( 'Not yet a member ? <br> Register here !', 'foodiepro' ) ); ?></a></span>
-
-				<?php endif; ?>
+				<div class="login-widget-more-links">
+					<?php if ($disable_registration === 0) : ?>
+						<span><a href="<?php echo PeepSo::get_page('register'); ?>" title="<?php esc_attr_e('Register for a new account', 'foodiepro'); ?>"><?php echo esc_html_e('Not yet a member ?', 'foodiepro'); ?></a></span>
+					<?php endif; ?>
+					<span><a href="<?php echo wp_lostpassword_url(home_url()); ?>" title="<?php esc_attr_e('Reset your password', 'foodiepro'); ?>"> <?php echo esc_html_e('Forgot Password ?', 'foodiepro'); ?></a></span>
+				</div>
 
 				<?php
 				/**
@@ -142,7 +148,7 @@ class PeepsoCustomLoginWidget extends WP_Widget {
 				 *
 				 * @since 2.4.0
 				 */
-				do_action( 'login_widget_form' ); ?>
+				do_action('login_widget_form'); ?>
 
 			</form>
 
@@ -152,8 +158,8 @@ class PeepsoCustomLoginWidget extends WP_Widget {
 			 *
 			 * @since 1.9.0
 			 */
-			do_action( 'after_login_widget_loggedout' );
-			echo '</div>';?>
+			do_action('after_login_widget_loggedout');
+			echo '</div>'; ?>
 
 
 		<?php endif;
@@ -169,9 +175,10 @@ class PeepsoCustomLoginWidget extends WP_Widget {
 	 * @param array $old_instance The old instance options.
 	 * @return array $instance The parsed options to be saved.
 	 */
-	public function update( $new_instance, $old_instance ) {
+	public function update($new_instance, $old_instance)
+	{
 		$instance             = $old_instance;
-		$instance['title']    = isset( $new_instance['title'] ) ? strip_tags( $new_instance['title'] ) : '';
+		$instance['title']    = isset($new_instance['title']) ? strip_tags($new_instance['title']) : '';
 		return $instance;
 	}
 	/**
@@ -182,17 +189,18 @@ class PeepsoCustomLoginWidget extends WP_Widget {
 	 * @param array $instance Settings for this widget.
 	 * @return void
 	 */
-	public function form( $instance = array() ) {
-		$settings = wp_parse_args( $instance, array(
+	public function form($instance = array())
+	{
+		$settings = wp_parse_args($instance, array(
 			'title' => '',
-		) ); ?>
+		)); ?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'foodiepro' ); ?>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $settings['title'] ); ?>" /></label>
+			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'foodiepro'); ?>
+				<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($settings['title']); ?>" /></label>
 		</p>
 
-		<?php
+<?php
 	}
 }
 

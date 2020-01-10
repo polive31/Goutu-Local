@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 }
 
 define('CHILD_THEME_NAME', 'Foodie Pro Theme');
-define('CHILD_THEME_VERSION', '2.3.51');
+define('CHILD_THEME_VERSION', '2.3.52');
 define('CHILD_THEME_DEVELOPER', 'Shay Bocks');
 define('CHILD_THEME_URL', get_stylesheet_directory_uri());
 define('CHILD_THEME_PATH', get_stylesheet_directory());
@@ -447,9 +447,9 @@ function cc_login_username_label()
 function cc_login_username_label_change($translated_text, $text, $domain)
 {
 	if ($text === 'Username or Email Address') {
-		$translated_text = __('Email Address', 'foodiepro'); // Use WordPress's own translation of 'Username'
+		$translated_text = esc_html__('Email Address', 'foodiepro'); // Use WordPress's own translation of 'Username'
 	} elseif ($text === 'Register') {
-		$translated_text = __('Not yet a member ? <br> Register here !', 'foodiepro'); // Use WordPress's own translation of 'Username'
+		$translated_text = esc_html__('Not yet a member ?', 'foodiepro'); // Use WordPress's own translation of 'Username'
 	}
 	return $translated_text;
 }
@@ -461,7 +461,7 @@ function my_authenticate_username_password($user, $username, $password)
 {
 	if (!empty($username)) {
 		if (!strpos($username, '@'))
-			return new WP_Error('Invalid email address.', __('<strong>ERROR</strong>: Invalid login. Please log in with your email address.', 'foodiepro')); //returns nothing if not valid email
+			return new WP_Error('Invalid email address.', esc_html__('<strong>ERROR</strong>: Invalid login. Please make sure to use your EMAIL ADDRESS to log-in.', 'foodiepro')); //returns nothing if not valid email
 		$user = get_user_by('email', $username);
 	}
 	if (isset($user->user_login, $user))

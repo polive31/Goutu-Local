@@ -282,7 +282,7 @@ textarea,
 a.button,
 a.black-button,
 ul.wpuf-form li .wpuf-fields a.file-selector,
-a.comment-reply-link,
+a.custom-reply-link,
 a#cancel-comment-reply-link,
 .frontier-list-item-content#frontier-post-actions a {
 	border-radius:3px;  /* P.O. custom */
@@ -352,7 +352,7 @@ input[type="submit"],
 a.button,
 a.black-button,
 h2 a.button,
-a.comment-reply-link,
+a.custom-reply-link,
 a#cancel-comment-reply-link,
 ul.wpuf-form li .wpuf-fields a.file-selector,
 .frontier-list-item-content#frontier-post-actions a,
@@ -379,7 +379,7 @@ input[type="checkbox"], input[type="radio"] {
 .button:hover,
 a.button:hover,
 a.black-button:hover,
-a.comment-reply-link:hover,
+a.custom-reply-link:hover,
 a#cancel-comment-reply-link:hover,
 ul.wpuf-form li .wpuf-fields a.file-selector:hover,
 ul.wpuf-form .wpuf-submit input[type="submit"]:hover,
@@ -3235,6 +3235,7 @@ nav.nav-primary .wrap {
 /* Entries
 --------------------------------------------- */
 
+.comment-avatar img,
 .entry-avatar img {
 /*	margin-right:10px;
 	margin-top:10px;
@@ -3794,6 +3795,8 @@ p.comment-notes {
 	white-space: normal;
 	line-height: normal;
 	text-align:left;
+	font-family: sans-serif;
+    font-size: 1.6rem;
 }
 
 /* Comments in Popup */
@@ -4507,23 +4510,18 @@ div.activity-comments form div.ac-reply-content a {
 }
 
 
-/* BP Login Widget
+/* Custom Login Widget
 --------------------------------------------------------------*/
-.mega-sub-menu #bp-login-widget-form {
-  padding: 0 20px 0 0px;
+.login-form-inner {
+    margin: 10px;
 }
 
-.widget .login-form .login-widget-submit {
-	margin-right: 10px;
+.login-widget-more-links {
+    float: right;
+    width:50%;
 }
 
-/*.bp-login-widget-form {
-	width: 300px;
-	margin-left: auto;
-	margin-right: auto;
-	font-size: 14px;
-}
-*/
+
 .footer-widgets .widget_custom_login_widget div#logged-in {
 	margin-top:30px;
 	display:-webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
@@ -4537,15 +4535,8 @@ div.activity-comments form div.ac-reply-content a {
 	/*justify-content:center;*/
 }
 
-.widget .forgetmenot {
-    margin: 10px 0;
-}
-
 .widget .login-form label {
 	display: block;
-	margin: 10px 0 0 5px;
-	margin-top:8px;
-	margin-bottom:4px;
 }
 
 span.login-widget-register-link {
@@ -4560,7 +4551,7 @@ span.login-widget-register-link {
     padding: 0;
 }
 
-/* BP Custom Login in Footer
+/* Custom Custom Login in Footer
 --------------------------------------------- */
 
 .login-widget-user-link a:hover {

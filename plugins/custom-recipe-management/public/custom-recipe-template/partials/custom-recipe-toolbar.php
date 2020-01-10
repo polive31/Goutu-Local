@@ -32,7 +32,8 @@
 				'halign'	=> 'left',
 				'action'	=> 'click',
 				'callout'	=> false,
-				'class'		=> 'rating-form modal fancy',
+				// 'class'		=> 'rating-form modal fancy',
+				'class'		=> 'rating-form modal big-font uppercase',
 				'title'		=> __('Rate this recipe', 'foodiepro'),
 				'img'		=> CHILD_THEME_URL . '/images/popup-icons/goutumetre.png'
 			);

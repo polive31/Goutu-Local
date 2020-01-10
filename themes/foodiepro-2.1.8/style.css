@@ -3694,8 +3694,12 @@ input#url {
 
 .comment-respond {
 	margin-top: 20px;
-  float: left;
-  width: 100%;
+	float: left;
+	width: 100%;
+}
+
+.tooltip-content .comment-respond {
+	margin-top: 0;
 }
 
 .comment-list li,
@@ -3797,16 +3801,6 @@ p.comment-notes {
 	text-align:left;
 	font-family: sans-serif;
     font-size: 1.6rem;
-}
-
-/* Comments in Popup */
-
-.pum-container .comment-respond {
-	margin-top:0;
-}
-
-.pum-container h3#reply-title {
-	display:none;
 }
 
 

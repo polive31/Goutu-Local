@@ -85,7 +85,7 @@ class CRM_Favorite {
             'halign'	=> 'center',
             'action'	=> 'click',
             'callout'	=> false,
-            'class'		=> 'favorites-form big-font',
+            'class'		=> 'favorites-form uppercase',
             'title'		=> __('Add to my cookbook', 'foodiepro'),
             'img'		=> CHILD_THEME_URL . '/images/popup-icons/cookbook.png'
         );

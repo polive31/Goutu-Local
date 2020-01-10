@@ -4516,11 +4516,19 @@ div.activity-comments form div.ac-reply-content a {
     margin: 10px;
 }
 
+.login-form-inner label {
+	display: block;
+	margin-top: 10px;
+}
+
 .login-widget-more-links {
     float: right;
     width:50%;
 }
 
+.login-widget-more-links a {
+    text-decoration: underline;
+}
 
 .footer-widgets .widget_custom_login_widget div#logged-in {
 	margin-top:30px;

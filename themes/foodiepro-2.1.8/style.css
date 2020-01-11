@@ -282,7 +282,7 @@ textarea,
 a.button,
 a.black-button,
 ul.wpuf-form li .wpuf-fields a.file-selector,
-a.custom-reply-link,
+a.comment-reply-link,
 a#cancel-comment-reply-link,
 .frontier-list-item-content#frontier-post-actions a {
 	border-radius:3px;  /* P.O. custom */
@@ -352,7 +352,7 @@ input[type="submit"],
 a.button,
 a.black-button,
 h2 a.button,
-a.custom-reply-link,
+a.comment-reply-link,
 a#cancel-comment-reply-link,
 ul.wpuf-form li .wpuf-fields a.file-selector,
 .frontier-list-item-content#frontier-post-actions a,
@@ -379,7 +379,7 @@ input[type="checkbox"], input[type="radio"] {
 .button:hover,
 a.button:hover,
 a.black-button:hover,
-a.custom-reply-link:hover,
+a.comment-reply-link:hover,
 a#cancel-comment-reply-link:hover,
 ul.wpuf-form li .wpuf-fields a.file-selector:hover,
 ul.wpuf-form .wpuf-submit input[type="submit"]:hover,
@@ -3679,9 +3679,15 @@ input#url {
 }
 
 .comment-intro {
-  min-width: 300px;
-  float: left;
-  font-style: italic;
+	min-width: 300px;
+	float: left;
+	font-style: italic;
+}
+
+.comment-intro,
+header.comment-header {
+	position: relative;
+	width: 100%;
 }
 
 .comment-author a {
@@ -3689,7 +3695,10 @@ input#url {
 }
 
 .comment-rating {
-	float:right;
+	/* float:right; */
+	position:absolute;
+	top:0;
+	right:0;
 }
 
 .comment-respond {
@@ -3729,7 +3738,7 @@ li.comment a {
 
 .comment-meta {
 	margin-top:0px;
-	float:left;
+	/* float:left; */
 }
 
 .comment-edit{
@@ -3741,10 +3750,10 @@ li.comment a {
 	margin-top:0px;
 	float:left;
 	clear:both;
-  width: 100%;
-  padding: 0 0 0 5px;
-  color:#000;
-  /*background-color: #ffedd0;*/
+	width: 100%;
+	padding: 0 0 0 5px;
+	color:#000;
+	/*background-color: #ffedd0;*/
 }
 
 

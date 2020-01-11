@@ -81,7 +81,7 @@ optgroup,
 select,
 textarea,
 ul.wpuf-form li .wpuf-fields a.file-selector,
-a.custom-reply-link,
+a.comment-reply-link,
 a#cancel-comment-reply-link,
 .frontier-list-item-content#frontier-post-actions a,
 .wp-caption-text,
@@ -93,7 +93,7 @@ a#cancel-comment-reply-link,
 	padding: 7px 10px;
 }
 
-a.custom-reply-link,
+a.comment-reply-link,
 a#cancel-comment-reply-link {
   font-size: 1.2rem;
 }

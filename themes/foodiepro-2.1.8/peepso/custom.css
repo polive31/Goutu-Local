@@ -1,5 +1,5 @@
 
-/* GENERAL
+/* GENERAL FORMATTING ELEMENTS
 -----------------------------------------------------------*/
 
 /* Fonts  */
@@ -10,7 +10,7 @@
 }
 
 .peepso p {
-    font-size:14px;
+    font-size:1.6rem;
 }
 
 .ps-dropdown__menu {
@@ -49,6 +49,14 @@
     font-size: 1.6rem;
 }
 
+/* Page */
+.peepso {
+    margin-top: 40px;
+}
+
+.ps-page {
+    border: none;
+}
 
 /* Avatar */
 

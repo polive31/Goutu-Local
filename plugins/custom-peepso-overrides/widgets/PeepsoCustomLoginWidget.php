@@ -139,13 +139,13 @@ class PeepsoCustomLoginWidget extends WP_Widget
 					<?php if ($disable_registration === 0) : ?>
 						<span><a href="<?php echo PeepSo::get_page('register'); ?>" title="<?php esc_attr_e('Register for a new account', 'foodiepro'); ?>"><?php echo esc_html_e('Not yet a member ?', 'foodiepro'); ?></a></span>
 					<?php endif; ?>
-					<span><a href="<?php echo wp_lostpassword_url(home_url()); ?>" title="<?php esc_attr_e('Reset your password', 'foodiepro'); ?>"> <?php echo esc_html_e('Forgot Password ?', 'foodiepro'); ?></a></span>
+					<span><a href="<?php echo PeepSo::get_page('recover'); /*wp_lostpassword_url(home_url());*/?>" title="<?php esc_attr_e('Reset your password', 'foodiepro'); ?>"> <?php echo esc_html_e('Forgot Password ?', 'foodiepro'); ?></a></span>
 				</div>
 
 				<?php
 				/**
 				 * Fires inside the display of the login widget form.
-				 *
+
 				 * @since 2.4.0
 				 */
 				do_action('login_widget_form'); ?>

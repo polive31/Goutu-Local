@@ -13,7 +13,7 @@ Tooltip class has the following methods :
     - updateTrigger => updates the content of the trigger : change an icon, ...
 
 * For all tooltips (static methods) :
-    - aTooltipOpen => checks whether a given tooltip is open
+    - anyOpen => checks whether any tooltip is opened
     - closeAll => closes all tooltips
 */
 
@@ -54,12 +54,12 @@ class Tooltip {
 
     constructor( trigger ) {
         // Pass the jquery object into the class, then all jQuery methods can be applied to it
-        console.log('In constructor, trigger is ', trigger);
+        // console.log('In constructor, trigger is ', trigger);
         this.trigger = jQuery(trigger);
-        console.log('In constructor, this.trigger is ', this.trigger);
+        // console.log('In constructor, this.trigger is ', this.trigger);
 
         var contentId = this.trigger.data("tooltip-id");
-        console.log('In constructor, contentId is ', contentId);
+        // console.log('In constructor, contentId is ', contentId);
 
         if (contentId) {
             this.content = jQuery('#'+contentId);
@@ -67,7 +67,7 @@ class Tooltip {
         else {
             this.content = this.trigger.siblings('.tooltip-content.click');
         }
-        console.log('In constructor, this.content is ', this.content);
+        // console.log('In constructor, this.content is ', this.content);
     }
 
     static initContainer() {
@@ -86,7 +86,7 @@ class Tooltip {
         console.log('In toggle Visibility !, for jQuery object ', this.content );
         // console.log('In toggle Popup !, for object ', this);
         // console.log('The corresponding jQuery object is : ', this.content );
-        if (Tooltip.aTooltipOpen() && !this.isOpen()) {
+        if (Tooltip.anyOpen() && !this.isOpen()) {
             console.log('Other open tooltip detected, closing');
             Tooltip.closeAll();
         }
@@ -149,7 +149,7 @@ class Tooltip {
 
     }
 
-    static aTooltipOpen() {
+    static anyOpen() {
         console.log('A tooltip is open ?', Tooltip.containerObj.hasClass('tooltip-open') );
         return Tooltip.containerObj.hasClass('tooltip-open');
     }

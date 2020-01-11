@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 }
 
 define('CHILD_THEME_NAME', 'Foodie Pro Theme');
-define('CHILD_THEME_VERSION', '2.3.58');
+define('CHILD_THEME_VERSION', '2.3.59');
 define('CHILD_THEME_DEVELOPER', 'Shay Bocks');
 define('CHILD_THEME_URL', get_stylesheet_directory_uri());
 define('CHILD_THEME_PATH', get_stylesheet_directory());
@@ -478,15 +478,15 @@ function go_home()
 	exit;
 }
 
-add_filter('login_redirect', 'redirect_and_flush_cache_on_login');
-function redirect_and_flush_cache_on_login()
-{
-	// $clear_cache_path = '?action=wpfastestcache&type=clearcache&token=' . WPFC_CLEAR_CACHE_URL_TOKEN;
-	// $url = home_url($clear_cache_path);
-	$home_ID = get_option('page_on_front');
-	wpfc_clear_post_cache_by_id($home_ID);
-	return home_url();
-}
+// add_filter('login_redirect', 'redirect_and_flush_cache_on_login', 10, 2);
+// function redirect_and_flush_cache_on_login($redirect_final, $redirect_initial)
+// {
+// 	// $clear_cache_path = '?action=wpfastestcache&type=clearcache&token=' . WPFC_CLEAR_CACHE_URL_TOKEN;
+// 	// $url = home_url($clear_cache_path);
+// 	// $home_ID = get_option('page_on_front');
+// 	// wpfc_clear_post_cache_by_id($home_ID);
+// 	return home_url();
+// }
 
 
 /* Prevent new users (not yet approved) to log in */

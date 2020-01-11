@@ -98,6 +98,7 @@ plugins/buddypress/bp-core/*
 !plugins/custom-batch-manage-posts/
 !plugins/custom-buddypress-helpers/
 !plugins/custom-peepso-overrides/
+!plugins/custom-comment-management/
 !plugins/custom-contact-form/
 !plugins/custom-js-css-optimization/
 !plugins/custom-gallery-shortcode/

@@ -2857,7 +2857,6 @@ ul.text-image-list img.alignleft {
 --------------------------------------------- */
 
 /* Top section commons */
-
 .top, .bottom {
 	float:left;
 	padding:10px;
@@ -2868,6 +2867,10 @@ ul.text-image-list img.alignleft {
 
 .top.before-content {
     margin-bottom: 0px;
+}
+
+.top.before-content.contact {
+    margin-bottom: 20px;
 }
 
 .bottom {

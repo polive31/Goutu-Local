@@ -105,7 +105,7 @@ genesis_register_sidebar( array(
 	'description'	=> __( 'This is the last section after content and sidebars.', 'foodiepro' ),
 ) );
 
-/* Social (Buddypress) widgeted areas
+/* Community widgeted areas
 ----------------------------------------------------*/
 genesis_register_sidebar( array(
 	'id'			=> 'social-before-content',
@@ -126,6 +126,14 @@ genesis_register_sidebar( array(
     'id'          => 'social-after-content',
     'name'        => __( 'Social After Content', 'foodiepro' ),
     'description' => __( 'This goes just before the footer, and occupies the whole page width.', 'foodiepro' ),
+) );
+
+/* Contact widgeted areas
+----------------------------------------------------*/
+genesis_register_sidebar( array(
+	'id'          => 'contact-before-content',
+	'name'        => __( 'Contact Before Content', 'foodiepro' ),
+	'description' => __( 'This goes just before the content, and occupies the whole page width.', 'foodiepro' ),
 ) );
 
 /* Archive pages widgeted areas

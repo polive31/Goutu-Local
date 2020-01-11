@@ -17,7 +17,7 @@ function custom_social_genesis_meta() {
 	add_action( 'genesis_after_content', 'foodiepro_social_after_content' );
 
 	// remove_action( 'genesis_loop', 'genesis_do_loop' );
-	
+
 	remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
 	add_action( 'genesis_sidebar', 'foodiepro_do_social_sidebar' );
 }
@@ -25,9 +25,9 @@ function custom_social_genesis_meta() {
 
 function foodiepro_social_before_content() {
 	genesis_widget_area( 'social-before-content', array(
-	   'before' => '<div class="top before-content widget-area" id="buddypress">',
+	   'before' => '<div class="top before-content widget-area social" id="">',
 	   'after'  => '</div>',
-	));  
+	));
 }
 
 

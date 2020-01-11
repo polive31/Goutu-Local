@@ -481,9 +481,11 @@ function go_home()
 add_filter('login_redirect', 'redirect_and_flush_cache_on_login');
 function redirect_and_flush_cache_on_login()
 {
-	$clear_cache_path = '?action=wpfastestcache&type=clearcache&token=' . WPFC_CLEAR_CACHE_URL_TOKEN;
-	$url = home_url($clear_cache_path);
-	return $url;
+	// $clear_cache_path = '?action=wpfastestcache&type=clearcache&token=' . WPFC_CLEAR_CACHE_URL_TOKEN;
+	// $url = home_url($clear_cache_path);
+	$home_ID = get_option('page_on_front');
+	wpfc_clear_post_cache_by_id($home_ID);
+	return home_url();
 }
 
 

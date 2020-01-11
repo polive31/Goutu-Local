@@ -7,7 +7,7 @@ Version: 1.0
 Author: Pascal Olive
 Author URI: http://goutu.org
 License: GPL
-Text Domain: custom-star-rating
+Text Domain: foodiepro
 Domain Path: ./lang
 */
 
@@ -24,16 +24,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 require 'includes/class-custom-star-rating.php';
 require 'includes/class-csr-assets.php';
 
-require 'public/class-csr-comments-list.php';
 require 'public/class-csr-rating.php';
 require 'public/class-csr-form.php';
 
-	
+
 /* Chargement du text domain */
-function custom_star_rating_load_textdomain() {
-	load_plugin_textdomain( 'custom-star-rating', false, 'custom-star-rating/lang/' );
-}
-add_action('plugins_loaded', 'custom_star_rating_load_textdomain');
+// function custom_star_rating_load_textdomain() {
+// 	load_plugin_textdomain( 'custom-star-rating', false, 'custom-star-rating/lang/' );
+// }
+// add_action('plugins_loaded', 'custom_star_rating_load_textdomain');
 
 /* Start plugin */
 add_action( 'wp_loaded', 'csr_start_plugin' );

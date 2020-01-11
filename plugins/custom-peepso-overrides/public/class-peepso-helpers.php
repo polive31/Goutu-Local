@@ -155,34 +155,6 @@ class PeepsoHelpers  {
 		return $value;
 	}
 
-	static function get_comment_author_avatar( $comment ) {
-		if ( !empty($comment->user_id) ) {
-			$user = $comment->user_id;
-			$size = 'small';
-			$html = self::get_avatar( array (
-					'user' => $user,
-					'size' => $size
-				) );
-		}
-		else {
-			$html = get_avatar( $comment->comment_author_email, $size = '48', CHILD_THEME_URL . '/images/social/avatars/user-neutral-thumb.png', $comment->comment_author );
-			if (!$html) {
-				$html = '<img class="avatar" src="' . CHILD_THEME_URL . '/images/social/avatars/user-neutral-thumb.png' . '" width="48" height="48">';
-			}
-		}
-		return $html;
-	}
-
-	static function get_comment_author_link( $comment ) {
-		if ( !empty($comment->user_id) ) {
-			$user = self::get_user( $comment->user_id );
-			$html = '<a href="' . self::get_url($user, 'profile') . '">' . ucfirst( self::get_field($user, 'nicename') ) . '</a>';
-		}
-		else {
-			$html = $comment->comment_author;
-		}
-		return $html;
-	}
 
 
 }

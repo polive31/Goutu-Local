@@ -19,4 +19,9 @@ require_once 'includes/class-custom-admin-management.php';
 require_once 'admin/class-cam-admin-helpers.php';
 require_once 'admin/class-cam-post-filter.php';
 
-new Custom_Admin_Management();
+
+// add_action( 'wp_loaded', 'custom_admin_manamement_start');
+
+// function custom_admin_manamement_start() {
+	new Custom_Admin_Management();
+// }

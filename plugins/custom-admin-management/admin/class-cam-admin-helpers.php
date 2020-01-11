@@ -15,30 +15,42 @@ class CAM_Admin_Helpers {
      * @return  array  $args  Args set to also include posts with pending, draft, and private status.
      */
 
-    function my_slug_show_all_parents( $args ) {
+    public function my_slug_show_all_parents( $args ) {
         $args['post_status'] = array( 'publish', 'pending', 'draft', 'private' );
         return $args;
     }
 
     /* Chargement des feuilles de style admin */
 
-    function load_admin_stylesheet() {
+    public function load_admin_stylesheet() {
         wp_enqueue_style( 'admin-css', CHILD_THEME_URL . '/assets/css/admin.css', array(), CHILD_THEME_VERSION );
     }
 
 
     /* Disable admin bar for all users except admin */
-    function remove_admin_bar() {
+    public function remove_admin_bar() {
         if (!current_user_can('administrator') && !is_admin())
         show_admin_bar(false);
     }
 
     /* Disable dashboard for non admin */
-    function blockusers_init() {
+    public function blockusers_init() {
         if ( is_admin() && !current_user_can('edit_others_pages') && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
             wp_redirect( home_url() );
             exit;
         }
     }
+
+    // public function prevent_plugin_update_conflicts($value) {
+    //     // Syntax is 'plugin-folder-name/plugin-file-name.php'
+    //     $plugins = array(
+    //         'custom-comment-management' => 'custom_comment_management_loader.php',
+    //     );
+    //     foreach ($plugins as $name => $file) {
+    //         if( isset( $value->response[$name . '/' . $file] ) )
+    //             unset( $value->response[$name . '/' . $file] );
+    //     }
+    //     return $value;
+    // }
 
 }

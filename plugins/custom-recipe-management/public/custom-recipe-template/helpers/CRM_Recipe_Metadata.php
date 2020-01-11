@@ -56,15 +56,19 @@ class Custom_Recipe_Metadata {
 
 
         // Rating
-				//$metadata['aggregateRating'] = do_shortcode('[json-ld-rating]');
-				$rating_stats = explode(' ', do_shortcode('[json-ld-rating]') );
+        if (class_exists('CSR_Rating'))
+            $rating_stats = CSR_Rating::get_post_stats($post_id);
+        else
+            $rating_stats = false;
 
-        if ( isset($rating_stats) && $rating_stats[1]!=0) {
-	        $metadata['aggregateRating'] = array(
-	            '@type' => 'AggregateRating',
-	            'ratingValue' => $rating_stats[0],
-	            'ratingCount' => $rating_stats[1],
-	        );
+        if ($rating_stats) {
+            if ($rating_stats['rating'] ) {
+                $metadata['aggregateRating'] = array(
+                    '@type' => 'AggregateRating',
+                    'ratingValue' => $rating_stats['rating'],
+                    'ratingCount' => $rating_stats['votes'],
+                );
+            }
         }
 
         // Times

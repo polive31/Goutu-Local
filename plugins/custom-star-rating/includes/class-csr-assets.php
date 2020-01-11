@@ -22,24 +22,17 @@ class CSR_Assets {
 	}
 
 	/* Register stylesheet, will be enqueued in the shortcode itself  */
-	public static function register_star_rating_assets() {
-		custom_register_style( 	'custom-star-rating', 'assets/css/custom-star-rating.css', self::$Plugin_uri, self::$Plugin_path, array(), CHILD_THEME_VERSION );
-		$args=array(
+	public static function register_csr_assets() {
+		$args = array(
 			'handle'	=> 'custom-star-rating',
-			'file' 		=> 'assets/js/custom-star-rating.js',
+			'file' 		=> 'assets/css/custom-star-rating.css',
 			'uri' 		=> self::$Plugin_uri,
 			'path' 		=> self::$Plugin_path,
-			'footer' 	=> true,
 			'deps' 		=> array(),
-			'data' 		=> array(
-				'name'			=> 'csr',
-				'emptyComment' 	=> __('Please enter a text before submitting your comment.', 'foodiepro'),
-				'emptyAuthor' 	=> __('Please provide your name before submitting your comment.', 'foodiepro'),
-				'invalidEmail' 	=> __('Please provide a valid email adress before submitting your comment.', 'foodiepro'),
-			)
+			'version' 	=> CHILD_THEME_VERSION,
 		);
-		custom_register_script( $args );
-		wp_enqueue_script('grecaptcha-invisible', 'https://www.google.com/recaptcha/api.js');
+		custom_register_style( $args );
+
 	}
 
 	// public static function enqueue_comment_reply_script() {
@@ -48,8 +41,6 @@ class CSR_Assets {
 	// 		// wp_enqueue_script( 'comment_reply', get_site_url() . '/wp-includes/js/comment-reply.min.js', array(), false, true );
 	// 	}
 	// }
-
-
 
 	// Initialize all strings needing a translation (doesn't work in __construct)
 	public static function hydrate() {
@@ -60,42 +51,56 @@ class CSR_Assets {
 		self::$ratingCats = array(
 			'rating' => array (
 				'weight' => 2,
-				'title'=> __('Dish','custom-star-rating','custom-star-rating'),
-				'legend'=> __('Appreciation of the dish','custom-star-rating'),
-				'question'=> __('How did you like this dish ?','custom-star-rating'),
+				'title'=> __('Dish','foodiepro'),
+				'legend'=> __('Appreciation of the dish','foodiepro'),
+				'question'=> __('How did you like this dish ?','foodiepro'),
 				'caption' => array(
-					__('Disappointing','custom-star-rating'),
-					__('Average','custom-star-rating'),
-					__('Good','custom-star-rating'),
-					__('Very good','custom-star-rating'),
-					__('Delicious','custom-star-rating'),
+					__('Disappointing','foodiepro'),
+					__('Average','foodiepro'),
+					__('Good','foodiepro'),
+					__('Very good','foodiepro'),
+					__('Delicious','foodiepro'),
 					)
 				),
 				'global'=>array (
-					'title'=> __('Overall','custom-star-rating'),
-					'legend'=> __('Global appreciation of the dish','custom-star-rating'),
+					'title'=> __('Overall','foodiepro'),
+					'legend'=> __('Global appreciation of the dish','foodiepro'),
 					'caption' => array(
-					__('Disappointing','custom-star-rating'),
-					__('Average','custom-star-rating'),
-					__('Good','custom-star-rating'),
-					__('Very good','custom-star-rating'),
-					__('Delicious','custom-star-rating'),
+					__('Disappointing','foodiepro'),
+					__('Average','foodiepro'),
+					__('Good','foodiepro'),
+					__('Very good','foodiepro'),
+					__('Delicious','foodiepro'),
 				)
 			),
 			/*
+			'difficulty' => array(
+				'weight' => 1,
+				'title'=> __('Recipe difficulty','foodiepro'),
+				'legend'=> __('Complexity of the recipe'),
+				'question'=> __('How difficult was the recipe to realize ?','foodiepro'),
+				'caption' => array(
+					__('Elementary','foodiepro'),
+					__('Easy','foodiepro'),
+					__('Tedious','foodiepro'),
+					__('Complicated','foodiepro'),
+					__('Difficult','foodiepro'),
+					)
+				),
 			'clarity' => array(
 				'weight' => 1,
-				'title'=> __('Recipe','custom-star-rating'),
+				'title'=> __('Recipe clarity','foodiepro'),
 				'legend'=> __('Clarity of the recipe'),
-				'question'=> __('How clear was the recipe ?','custom-star-rating'),
+				'question'=> __('How clear was the recipe ?','foodiepro'),
 				'caption' => array(
-					__('Confusing','custom-star-rating'),
-					__('Not so clear','custom-star-rating'),
-					__('Rather clear','custom-star-rating'),
-					__('Very clear','custom-star-rating'),
-					__('Crystal clear even for kitchen dummies','custom-star-rating'),
+					__('Confusing','foodiepro'),
+					__('Not so clear','foodiepro'),
+					__('Rather clear','foodiepro'),
+					__('Very clear','foodiepro'),
+					__('Crystal clear even for kitchen dummies','foodiepro'),
 					)
 				),*/
+
 		);
 	}
 
@@ -104,18 +109,18 @@ class CSR_Assets {
 
 	/* Translate ratings taxonomy from WPURP
 	--------------------------------------------------------------*/
-    static function translate_ratings_taxonomy( $args ) {
-        $name = __( 'Evaluations', 'foodiepro' );
-        $singular = __( 'Evaluation', 'foodiepro' );
+    // static function translate_ratings_taxonomy( $args ) {
+    //     $name = __( 'Evaluations', 'foodiepro' );
+    //     $singular = __( 'Evaluation', 'foodiepro' );
 
-        $name_lower = strtolower($name);
+    //     $name_lower = strtolower($name);
 
-        $args['labels']['name'] = $name;
-        $args['labels']['singular_name'] = $singular;
-        $args['rewrite'] = array('slug'=>__('rating','foodiepro'),'with_front' => false);
+    //     $args['labels']['name'] = $name;
+    //     $args['labels']['singular_name'] = $singular;
+    //     $args['rewrite'] = array('slug'=>__('rating','foodiepro'),'with_front' => false);
 
-        return $args;
-    }
+    //     return $args;
+    // }
 
 
 	/* Get Rated Post Types
@@ -150,7 +155,7 @@ class CSR_Assets {
 	------------------------------------------------------------*/
 	public static function get_rating_caption($val, $cat) {
 		//$val = intval($rating_val);
-		if ($val==0) return __('Not rated','custom-star-rating');
+		if ($val==0) return __('Not rated','foodiepro');
 		$val=floor($val-1);
 		if ( isset( self::$ratingCats[$cat]['caption'] ) ) {
 			$caption = self::$ratingCats[$cat]['caption'][$val];

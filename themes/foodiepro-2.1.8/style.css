@@ -1633,6 +1633,11 @@ a.archive-avatar {
     display: inline-block;
     vertical-align: middle;
     padding: 0 20px;
+	max-width: 160px;
+}
+
+a.archive-avatar img {
+    margin-bottom: 0;
 }
 
 /* ## Screen reader text
@@ -3714,6 +3719,10 @@ header.comment-header {
 	margin-top: 0;
 }
 
+ul.children {
+	padding-left:30px;
+}
+
 .comment-list li,
 .ping-list li {
 	border-top: 1px dotted #999;
@@ -3727,8 +3736,9 @@ header.comment-header {
 }
 
 li.comment {
-	float: left;
-  clear: both;
+	float: right;
+    clear: both;
+    width: 100%;
 }
 
 li.comment.depth-1 {
@@ -5005,6 +5015,17 @@ Site Footer
 
 @media only screen and (max-width:420px) {
 
+	.comment-rating {
+		position: initial;
+	}
+
+	ul.children {
+		padding-left:10px;
+	}
+
+	a.archive-avatar {
+    	max-width: 120px;
+	}
 
 	.entry-content ul.text-image-list  {
 		width:100%;

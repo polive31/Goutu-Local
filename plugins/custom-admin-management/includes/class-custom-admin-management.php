@@ -16,6 +16,7 @@ class Custom_Admin_Management {
         add_action( 'wp_admin_enqueue_scripts',                 array($Helpers, 'load_admin_stylesheet' ));
         add_action( 'after_setup_theme',                        array($Helpers, 'remove_admin_bar'));
         add_action( 'init',                                     array($Helpers, 'blockusers_init' ));
+        // add_action( 'admin_init',                               array($Helpers, 'prevent_plugin_update_conflicts'));
 
         /* Hooks for Custom_Admin_Post_Filter
         ------------------------------------------------------------- */
@@ -26,11 +27,13 @@ class Custom_Admin_Management {
 
     }
 
-    public static function get_instance() {
-        if (NULL===self::$instance) {
-            self::$instance = new self;
-        }
-        return self::$instance;
-    }
+    // public static function get_instance() {
+    //     if (NULL===self::$instance) {
+    //         self::$instance = new self;
+    //     }
+    //     return self::$instance;
+    // }
+
+
 
 }

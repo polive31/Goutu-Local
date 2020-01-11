@@ -9,35 +9,6 @@ if (!defined('ABSPATH')) {
 class CSR_Rating
 {
 
-
-	/* ===========================================================================
-	/* ===================         SHORTCODES           =========================
-	/* ===========================================================================
-
-	/* Rating in string (not graphical) format for json encode
-	-----------------------------------------------*/
-	public function display_json_ld_rating_shortcode($atts)
-	{
-		$a = shortcode_atts(array(
-			'category' => 'global', //any rating category...
-		), $atts);
-
-		$post_id = get_the_id();
-
-		$ratings = get_post_meta($post_id, 'user_ratings');
-		$votes = count($ratings);
-
-		$rating = get_post_meta($post_id, 'user_rating_' . $a['category'], true);
-
-		//		$ratings_cat = array_column($ratings, $a['category']);
-		//		if ( isset($ratings_cat) )
-		//			$stats = $this->get_rating_stats( $ratings_cat );
-		//$stats = implode(' ', $stats);
-
-		$stats = $rating . ' ' . $votes;
-		return $stats;
-	}
-
 	/* ===========================================================================
 	/* ===================         META UPDATE           =========================
 	/* ===========================================================================
@@ -67,16 +38,15 @@ class CSR_Rating
 	/* New post submission callback
 	/* Add ratings default value (required for proper sorting in archives)
 	-------------------------------------------------------------*/
-	public function add_default_rating()
+	public function add_default_rating($post_ID)
 	{
-
 		$Assets = new CSR_Assets();
 
-		if (is_singular($Assets->post_types()) && (!wp_is_post_revision($post->ID))) {
-			foreach (self::$ratingCats as $slug => $values) {
-				$this->update_post_meta($post->ID, 'user_rating_' . $slug, '0');
+		if (is_singular($Assets->post_types()) && (!wp_is_post_revision($post_ID))) {
+			foreach ($Assets::$ratingCats as $slug => $values) {
+				update_post_meta($post_ID, 'user_rating_' . $slug, '0');
 			}
-			$this->update_post_meta($post->ID, 'user_rating_global', '0');
+			update_post_meta($post_ID, 'user_rating_global', '0');
 		}
 	}
 
@@ -90,9 +60,9 @@ class CSR_Rating
 			/* Update post meta with the new rating values per category */
 			$this->update_post_meta_user_rating($post_id);
 		} elseif ($new_status == 'trash') {
-			$this->delete_comment_meta_user_rating($comment_id);
+			$this->delete_comment_meta_user_rating($comment->comment_ID);
 			$this->update_post_meta_user_rating($post_id);
-		} elseif ($new_status == 'unapproved' || $new_status == 'spam') {
+		} else { // spam, unapproved
 			$this->update_post_meta_user_rating($post_id);
 		}
 	}
@@ -193,6 +163,21 @@ class CSR_Rating
 	/* ===================         GETTERS              =======================
 	/* ===========================================================================
 
+	/* Get post rating & votes
+	-----------------------------------------------*/
+	public static function get_post_stats($post_id, $category = 'global')
+	{
+		// $post_id = get_the_id();
+
+		$ratings = get_post_meta($post_id, 'user_ratings');
+		$votes = count($ratings);
+
+		$rating = get_post_meta($post_id, 'user_rating_' . $category, true);
+
+		$stats = array('rating' => $rating, 'votes' => $votes);
+		return $stats;
+	}
+
 	/* Get Comment Rating
 	------------------------------------------------------------*/
 	static function get_comment_rating($comment_id, $cat_id)
@@ -200,23 +185,6 @@ class CSR_Rating
 		$rating = get_comment_meta($comment_id, 'user_rating_' . $cat_id, true);
 		return $rating;
 	}
-
-	/* Get Post Rating
-	------------------------------------------------------------*/
-	static function get_post_rating($post_id, $cat_id = 'global')
-	{
-		$rating = get_post_meta($post_id, 'user_rating_' . $cat_id, true);
-		return $rating;
-	}
-
-	/* Get Votes Count
-	------------------------------------------------------------*/
-	static function get_votes_count($post_id, $cat_id = 'global')
-	{
-		$rating = get_post_meta($post_id, 'user_votes_' . $cat_id, true);
-		return $rating;
-	}
-
 
 
 
@@ -241,7 +209,32 @@ class CSR_Rating
 	 * ************       RATING DISPLAY          ****************
 	 *************************************************************/
 
-	/* Output star rating shortcode
+	public function display_rating_in_comments_list($value, $post_type)
+	{
+		if ( !in_array($post_type, CSR_Assets::post_types()) ) return;
+		?>
+		<div class="comment-rating">
+			<!--//echo do_shortcode('[display-star-rating category="all" source="comment"]'); -->
+			<?= $this->get_star_rating_markup(array(
+						'category' => 'all',
+						'source' => 'comment',
+						'display' => 'normal',
+						'markup' => 'table'
+					)); ?>
+		</div>
+		<div class="comment-meta">
+			<div class="comment-date">
+				<a href="<?php echo htmlspecialchars(get_comment_link(get_comment_ID())) ?>">
+					<?php printf(__('%1$s at %2$s', 'foodiepro'), get_comment_date(),  get_comment_time()) ?>
+				</a>
+			</div>
+		</div>
+	<?php
+		return false;
+	}
+
+
+	/* Output star rating shortcode callback
 	---------------------------------------------*/
 	public function display_star_rating_shortcode($atts)
 	{
@@ -252,6 +245,11 @@ class CSR_Rating
 			'markup' => 'table',  // span, list...
 		), $atts);
 
+		return $this->get_star_rating_markup($a);
+	}
+
+	/* Function separate from shortcode callback allows for being called from within the class directly */
+	public function get_star_rating_markup($a) {
 		wp_enqueue_style('custom-star-rating');
 
 		$display_style = $a['display'];
@@ -301,51 +299,52 @@ class CSR_Rating
 
 		ob_start();
 
-		?>
+	?>
 		<?= $otag; ?>
 		<?php
 
-				foreach ($display_cats as $id => $cat) {
+		foreach ($display_cats as $id => $cat) {
 
-					if ($comment_rating) {
-						$rating = self::get_comment_rating($comment_id, $id);
-					} else {
-						$rating = self::get_post_rating($post_id, $id);
-						if ($display_style == 'full')  // displays number of votes
-							$votes = self::get_votes_count($post_id, $id);
-					}
+			if ($comment_rating) {
+				$rating = self::get_comment_rating($comment_id, $id);
+			} else {
+				$stats = self::get_post_stats($post_id, $id);
+				$rating=$stats['rating'];
+				if ($display_style == 'full')  // displays number of votes
+					$votes=$stats['votes'];
+			}
 
-					$rating = empty($rating) ? 0 : $rating;
-					$stars = floor($rating);
-					$half = ((int) $rating - $stars) >= 0.5;
-					?>
+			$rating = empty($rating) ? 0 : $rating;
+			$stars = floor($rating);
+			$half = ((int) $rating - $stars) >= 0.5;
+		?>
 			<?= $rotag; ?>
 			<?php
-						if (!($comment_rating && $rating == 0)) { // Don't show empty ratings in comments
-							if ($display_style != 'minimal') {
-								?>
+			if (!($comment_rating && $rating == 0)) { // Don't show empty ratings in comments
+				if ($display_style != 'minimal') {
+			?>
 					<?= $cotag; ?> class="rating-category" title="<?= $cat['legend']; ?>"><?= $cat['title']; ?>
 					<?= $cctag; ?>
 				<?php
-								} ?>
+				} ?>
 				<?= $cotag; ?> class="rating" title="<?= $rating ?> : <?= CSR_Assets::get_rating_caption($rating, $id); ?>">
 				<a class="pum-trigger" id="recipe-review"><?= $this->output_stars($stars, $half); ?></a>
 				<?= $cctag; ?>
 				<?php
-							}
-							if ($display_style == 'full') {
-								if (!empty($votes)) {
-									$rating_plural = sprintf(_n('%s review', '%s reviews', $votes, 'custom-star-rating'), $votes); ?>
+			}
+			if ($display_style == 'full') {
+				if (!empty($votes)) {
+					$rating_plural = sprintf(_n('%s review', '%s reviews', $votes, 'custom-star-rating'), $votes); ?>
 					<?= $cotag; ?> class="rating-details"><a href="#comments-section"><?= $rating_plural ?></a><?= $cctag; ?>
 				<?php
-								} else { ?>
+				} else { ?>
 					<?= $cotag; ?> class="rating-details pum-trigger"><a href="#recipe-review"><?= __('Evaluate me !', 'foodiepro') ?></a><?= $cctag; ?>
 			<?php
-							}
-						} ?>
+				}
+			} ?>
 			<?= $rctag; ?>
 		<?php
-				} ?>
+		} ?>
 		<?= $ctag; ?>
 <?php
 		//else {

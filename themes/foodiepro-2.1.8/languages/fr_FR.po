@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2020-01-11 00:42+0100\n"
-"PO-Revision-Date: 2020-01-11 00:49+0100\n"
+"PO-Revision-Date: 2020-01-12 00:25+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -49,12 +49,12 @@ msgstr "Ajouter un commentaire"
 #: plugins/custom-comment-management/public/class-ccm-comments-list.php:105
 #, php-format
 msgid "%s says:"
-msgstr "Commentaire de %s"
+msgstr "%s"
 
 #: plugins/custom-comment-management/public/class-ccm-comments-list.php:107
 #, php-format
 msgid "%s responds:"
-msgstr "%s répond :"
+msgstr "%s"
 
 #: plugins/custom-comment-management/public/class-ccm-comments-list.php:111
 msgid "Your comment is awaiting moderation."

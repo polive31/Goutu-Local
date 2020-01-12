@@ -104,7 +104,7 @@ class CRM_Recipe_Template {
             $out .= '<li class="wpurp-recipe-ingredient"' . $meta . '>';
 
             // $out .= '<input type="checkbox" name="ingredient-check">&nbsp;</input>';
-            $out .= '<span class="checkbox">&nbsp;</span>';
+            $out .= '<span class="fa-before" id="checkbox">&nbsp;</span>';
 
             $ingredient['links'] = 'yes';
             $out .= CRM_Ingredient::display( $ingredient );
@@ -117,7 +117,7 @@ class CRM_Recipe_Template {
         <script>
 			jQuery(document).ready(function(){
 			// console.log('Inline ingredient checkbox');
-				jQuery(document).on('click', '.wpurp-recipe-ingredient .checkbox', function(e) {
+				jQuery(document).on('click', '.wpurp-recipe-ingredient  #checkbox', function(e) {
 					// console.log('Click on ingredient checkbox detected !');
 					e.preventDefault();
 					e.stopPropagation();

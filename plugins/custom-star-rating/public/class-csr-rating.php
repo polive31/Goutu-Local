@@ -334,7 +334,7 @@ class CSR_Rating
 			}
 			if ($display_style == 'full') {
 				if (!empty($votes)) {
-					$rating_plural = sprintf(_n('%s review', '%s reviews', $votes, 'custom-star-rating'), $votes); ?>
+					$rating_plural = sprintf(_n('%s review', '%s reviews', $votes, 'foodiepro'), $votes); ?>
 					<?= $cotag; ?> class="rating-details"><a href="#comments-section"><?= $rating_plural ?></a><?= $cctag; ?>
 				<?php
 				} else { ?>
@@ -363,13 +363,13 @@ class CSR_Rating
 	{
 		$html = '';
 		for ($i = 1; $i <= $stars; $i++) {
-			$html .= '<div class="fa-stack full"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></div>';
+			$html .= '<div class="fa-stack full"><i class="fas fa-star fa-stack-1x"></i><i class="far fa-star fa-stack-1x"></i></div>';
 		}
 		for ($i = $stars + 1; $i <= 5; $i++) {
 			if (($i == ($stars + 1)) && $half) {
-				$html .= '<div class="fa-stack full"><i class="fa fa-star-half-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></div>';
+				$html .= '<div class="fa-stack full"><i class="far fa-star-half fa-stack-1x"></i><i class="far fa-star fa-stack-1x"></i></div>';
 			} else {
-				$html .= '<div class="fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></div>';
+				$html .= '<div class="fa-stack null"><i class="far fa-star fa-stack-1x"></i></div>';
 			}
 		}
 		return $html;

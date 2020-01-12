@@ -1,11 +1,11 @@
 <!-- Recipe Toolbar  -->
 <div class="recipe-top">
-	<div class="recipe-buttons">
+	<div class="toolbar-buttons">
 
 		<!-- Recipe Rate Button -->
-		<!-- <div class="recipe-button alignleft <?php //echo is_user_logged_in()?'tooltip-onhover':'disabled';
+		<!-- <div class="toolbar-button alignleft <?php //echo is_user_logged_in()?'tooltip-onhover':'disabled';
 													?>" id="rate"> -->
-		<div class="recipe-button alignleft tooltip-onhover" id="rate">
+		<div class="toolbar-button alignleft tooltip-onhover fa-before" id="rate">
 			<?php
 			// $ga = WP_MINIFY?is_user_logged_in()?'':"ga('send','event','join-us','click','recipe-rate', 0)":'';
 			// echo $ga;
@@ -43,7 +43,7 @@
 		</div>
 
 		<!-- Recipe Add to Cart Button -->
-		<!-- 				<div class="recipe-button alignleft tooltip tooltip-above tooltip-left" id="shopping">
+		<!-- 				<div class="toolbar-button alignleft tooltip tooltip-above tooltip-left" id="shopping">
 		<?php
 		// $shopping_list = new Custom_Recipe_Add_To_Shopping_List( is_user_logged_in() );
 		// echo $shopping_list->output( $recipe );
@@ -51,14 +51,14 @@
 		</div>	 -->
 
 		<!-- Add To Favorites Button -->
-		<div class="recipe-button alignleft <?php echo is_user_logged_in() ? 'tooltip-onhover' : 'disabled'; ?>" id="favorite">
+		<div class="toolbar-button alignleft <?php echo is_user_logged_in() ? 'tooltip-onhover' : 'disabled'; ?>" id="favorite">
 			<?php
 			$favorite_recipe = new CRM_Favorite();
 			echo $favorite_recipe->output($recipe); ?>
 		</div>
 
 		<!-- Like Button -->
-		<div class="recipe-button alignleft tooltip-onhover" id="like">
+		<div class="toolbar-button alignleft tooltip-onhover" id="like">
 			<?php
 			$recipe_like = new CSN_Like('recipe');
 			$recipe_like->display();
@@ -66,7 +66,7 @@
 		</div>
 
 		<!-- Recipe Print Button -->
-		<div class="recipe-button alignright tooltip-onhover" id="print">
+		<div class="toolbar-button alignright tooltip-onhover" id="print">
 			<a class="wpurp-recipe-print recipe-print-button" href="<?php echo $recipe->link_print(); ?>" target="_blank">
 				<div class="button-caption"><?php echo __('Print', 'foodiepro'); ?></div>
 			</a>
@@ -81,7 +81,7 @@
 		</div>
 
 		<!-- Recipe Share Button -->
-		<!-- <div class="recipe-button alignright tooltip" id="share">
+		<!-- <div class="toolbar-button alignright tooltip" id="share">
 			<a class="recipe-share-button" id="recipe-share" cursor-style="pointer">
 				<div class="button-caption"><?php echo __('Share', 'foodiepro'); ?></div>
 			</a>
@@ -97,7 +97,7 @@
 		</div>				 -->
 
 		<!-- Recipe Read Button -->
-		<div class="recipe-button alignright tooltip-onhover" id="read">
+		<div class="toolbar-button alignright tooltip-onhover" id="read">
 			<a class="recipe-read-button" onClick="<?= is_user_logged_in() ? '' : "ga('send','event','recipe-read','click','', 0)"; ?>" />
 			<div class="button-caption"><?php echo __('Read', 'foodiepro'); ?></div>
 			</a>

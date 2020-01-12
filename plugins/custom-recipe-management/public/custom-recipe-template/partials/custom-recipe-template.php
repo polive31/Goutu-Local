@@ -41,21 +41,21 @@
 					// Origin
 					$terms = get_the_term_list($this->post_ID, 'cuisine', '', ', ', '');
 					if ($terms != '') {
-						$html = '<div class="label-container" id="tag"><div class="recipe-label">' . __('Origin', 'foodiepro') . '</div>' . $terms . '</div>';
+						$html = '<div class="label-container" id="tag"><div class="recipe-label fa-before">' . __('Origin', 'foodiepro') . '</div>' . $terms . '</div>';
 						echo $html;
 					}
 
 					// Diet
 					$terms = get_the_term_list($this->post_ID, 'diet', '', ', ', '');
 					if ($terms != '') {
-						$html = '<div class="label-container" id="tag"><div class="recipe-label">' . __('Diet', 'foodiepro') . '</div>' . $terms . '</div>';
+						$html = '<div class="label-container" id="tag"><div class="recipe-label fa-before">' . __('Diet', 'foodiepro') . '</div>' . $terms . '</div>';
 						echo $html;
 					}
 
 					// Difficulty
 					$terms = get_the_term_list($this->post_ID, 'difficult', '', '', '');
 					if ($terms != '') {
-						$html = '<div class="label-container" id="tag"><div class="recipe-label">' . __('Level', 'foodiepro') . '</div>' . $terms . '</div>';
+						$html = '<div class="label-container" id="tag"><div class="recipe-label fa-before">' . __('Level', 'foodiepro') . '</div>' . $terms . '</div>';
 						echo $html;
 					}
 

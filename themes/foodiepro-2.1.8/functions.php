@@ -310,7 +310,8 @@ function typekit_inline()
 function enqueue_low_priority_assets()
 {
 
-	wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+	// wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+	// wp_enqueue_script('font-awesome-5', 'https://kit.fontawesome.com/e61ef10a3b.js');
 
 	/* Theme stylesheet with varying name & version, forces cache busting at browser level
 		--------------------------------------------------- */

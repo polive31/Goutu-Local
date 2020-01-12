@@ -19,7 +19,7 @@ class CNH_Tags_Overlay {
 		if ( $disp_overlay == '1') {
 			$post_id = get_the_ID();
 			$origin = wp_get_post_terms( $post_id, 'cuisine' );
-			$output .= $this->output_tags( $origin, null, null, null);
+			$output .= self::output_tags( $origin, null, null, null);
 		}
 		return $output;
 	}
@@ -33,7 +33,7 @@ class CNH_Tags_Overlay {
 		// if ( is_tax() || is_search() || is_tag() || is_author() ) {
 		if ( is_archive() || is_search() || is_tag() ) {
 			echo '<div class="entry-header-overlay">';
-			echo $this->entry_tags();
+			echo self::entry_tags();
 		}
 	}
 
@@ -56,31 +56,31 @@ class CNH_Tags_Overlay {
 		$season = wp_get_post_terms( $post_id, 'season' );
 
 		if ( is_tax('cuisine') || is_author() ) {
-			$tags_html = $this->output_tags( $origin, $diet, '', $season);
+			$tags_html = self::output_tags( $origin, $diet, '', $season);
 		}
 		elseif ( is_tax('course') || is_search() || is_tax('difficult') ) {
-			$tags_html = $this->output_tags( $origin, $diet, $occasion, $season);
+			$tags_html = self::output_tags( $origin, $diet, $occasion, $season);
 		}
 		elseif ( is_tax('diet') ) {
-			$tags_html = $this->output_tags( $origin, null, $occasion, $season);
+			$tags_html = self::output_tags( $origin, null, $occasion, $season);
 		}
 		elseif ( is_tax('season') ) {
-			$tags_html = $this->output_tags( null, $diet, $occasion, null);
+			$tags_html = self::output_tags( null, $diet, $occasion, null);
 		}
 		elseif ( is_tax('occasion') ) {
-			$tags_html = $this->output_tags( $origin, $diet, null, $season);
+			$tags_html = self::output_tags( $origin, $diet, null, $season);
 		}
 		elseif ( is_tax('ingredient') ) {
-			$tags_html = $this->output_tags( $origin, $diet, $occasion, $season);
+			$tags_html = self::output_tags( $origin, $diet, $occasion, $season);
 		}
 		else
-			$tags_html = $this->output_tags( $origin, $diet, $occasion, $season);
+			$tags_html = self::output_tags( $origin, $diet, $occasion, $season);
 
 		return $tags_html;
 	}
 
 
-	public function output_tags( $origin, $diet, $occasion, $season) {
+	public static function output_tags( $origin, $diet, $occasion, $season) {
 		$tags = '';
 
 		$left_id=0;
@@ -88,43 +88,43 @@ class CNH_Tags_Overlay {
 		$br_id=0; // Bottom Right
 
 
-		if ( $this->get_season($season) == $this->current_season() ) {
+		if ( self::get_season($season) == self::current_season() ) {
 			$season_msg = __('Seasonal', 'foodiepro');
-			$tags .= '<div class="tag-overlay col-' . $this->get_season( $season ) . ' botright' . $br_id++ . '">' . $season_msg . '</div>';
+			$tags .= '<div class="tag-overlay col-' . self::get_season( $season ) . ' botright' . $br_id++ . '">' . $season_msg . '</div>';
 		}
 
-		if ( $this->is_veg($diet) ) {
+		if ( self::is_veg($diet) ) {
 			$veg_msg = '<i class="fa fa-leaf" aria-hidden="true"></i>';
 			//$tags .= '<div class="overlay" id="veg">' . $veg_msg . '</div>';
 			$tags .= '<div class="tag-overlay topright' . $tr_id++ . '" id="veg" title="' . __('Vegetarian','foodiepro') . '">' . $veg_msg . '</div>';
 		}
 
-		if ( $this->is_fest($occasion) ) {
+		if ( self::is_fest($occasion) ) {
 			$fest_msg = __('Festive', 'foodiepro');
 			$tags .= '<div class="tag-overlay left' . $left_id++ . '" id="fest">' . $fest_msg . '</div>';
 		}
 
-		if ( $this->get_origin($origin) != false ) {
-			$tags .= '<div class="tag-overlay left' . $left_id++ . '">' . $this->get_origin($origin) . '</div>';
+		if ( self::get_origin($origin) != false ) {
+			$tags .= '<div class="tag-overlay left' . $left_id++ . '">' . self::get_origin($origin) . '</div>';
 			$left_id++;
 		}
 
 		return $tags;
 	}
 
-	protected function get_origin( $terms ) {
+	public static function get_origin( $terms ) {
 		if ( empty($terms) || !$terms ) return false;
 		$origin = $terms[0]->name;
 		return empty($origin)?false:$origin;
 	}
 
-	protected function get_season( $terms ) {
+	public static function get_season( $terms ) {
 		if ( empty($terms) || !$terms ) return false;
 		$season_id = $terms[0]->slug;
 		return $season_id;
 	}
 
-	protected function current_season() {
+	public static function current_season() {
 		//get current month
 		$currentMonth=DATE("m");
 		//retrieve season
@@ -141,7 +141,7 @@ class CNH_Tags_Overlay {
 	}
 
 
-	protected function is_fest( $terms ) {
+	public static function is_fest( $terms ) {
 
 		if ( empty($terms) || !$terms ) return false;
 
@@ -157,7 +157,7 @@ class CNH_Tags_Overlay {
 		}
 	}
 
-	protected function is_veg($terms) {
+	public static function is_veg($terms) {
 		if ( empty($terms) || !$terms ) return false;
 		$isveg = $terms[0]->slug == 'vegetarien';
 		return $isveg;

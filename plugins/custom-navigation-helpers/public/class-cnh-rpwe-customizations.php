@@ -94,7 +94,7 @@ class CNH_RPWE_Customizations {
 		if ( $disp_overlay == '1') {
 			$post_id = get_the_ID();
 			$origin = wp_get_post_terms( $post_id, 'cuisine' );
-			$output .= $this->output_tags( $origin, null, null, null);
+			$output .= CNH_Tags_Overlay::output_tags( $origin, null, null, null);
 		}
 		return $output;
 	}

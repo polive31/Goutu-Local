@@ -4,14 +4,14 @@
 /* Star rating input */
 
 td.rating-title {
-	/* font-size: 16px; */
-	padding:5px 0;
+    /* font-size: 16px; */
+    padding: 5px 0;
 }
 
 .form-submit {
-	display:block;
-	float:left;
-	clear:left;
+    display: block;
+    float: left;
+    clear: left;
 }
 
 .rating-wrapper {
@@ -21,27 +21,27 @@ td.rating-title {
 }
 
 .rating-input {
-		display:none;
+    display: none;
 }
 
 .rating-star:hover,
-.rating-star:hover ~ .rating-star {
-		background-position: 0 0;
+.rating-star:hover~.rating-star {
+    background-position: 0 0;
 }
 
 .rating-wrapper:hover .rating-star:hover,
-.rating-wrapper:hover .rating-star:hover ~ .rating-star,
-.rating-input:checked ~ .rating-star {
+.rating-wrapper:hover .rating-star:hover~.rating-star,
+.rating-input:checked~.rating-star {
     background-position: 0 0;
 }
 
 .rating-star,
 .rating-wrapper:hover .rating-star {
-		float: right;
-		display: block;
-		width: 24px;
-		height: 24px;
-		background: url('../../images/rating-star.png') -24px 0/48px 24px no-repeat;
+    float: right;
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url('../../images/rating-star.png') -24px 0/48px 24px no-repeat;
 }
 
 
@@ -59,154 +59,102 @@ td.rating-title {
 --------------------------------*/
 
 table.ratings-table {
-	display: inline-block;
-	text-align: center;
-	vertical-align: middle;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .ratings-table tr {
-	line-height: 3rem;
+    line-height: 3rem;
 }
 
 /* Rating column  */
 
 td.rating {
-	min-width:120px;
+    min-width: 120px;
 }
+
 .comment td.rating {
-	width:90px;
+    width: 90px;
 }
 
 /* Category column  */
 
 td.rating-category {
-	padding:0 10px 0 0;
-	font-style:italic;
-	text-align: left;
-	display:none;
+    padding: 0 10px 0 0;
+    font-style: italic;
+    text-align: left;
+    display: none;
 }
 
 .rating-label {
-  font-size: 1.8rem;
+    font-size: 1.8rem;
 }
 
 /* Votes column */
 
 .rating-details {
-	font-size: 1.3rem;
-	color:#666;
-	padding:0 0 0 10px;
-	min-width: 60px;
+    font-size: 1.5rem;
+    color: #666;
+    padding: 0 0 0 20px;
+    min-width: 60px;
 }
 
 /* Rating stars formatting
 -----------------------------------------*/
 
+/* Default rating formatting  */
 
-/* Font Icons Rating icons */
-/*
-i.fi {
-	display:inline-block;
-	width:20px;
-	height:23px;
-	margin:6px 2px 0 1px
+.ratings-table i.fas.fa-star,
+.ratings-table i.fas.fa-star-half {
+    color: #f5a241;
 }
 
-.activity-list i.fi {
-	width:33px;
-	height:25px;
+.ratings-table .null i.far.fa-star {
+    /* color:#6f6f6f; */
+    color: #d3d3d3;
 }
 
-.recipe i.fi {
-	width:24px;
-	height:28px;
-	margin:6px 2px 0 0;
+.ratings-table .full i.far.fa-star {
+    color: #f18b14;
 }
 
-i.fi.fi-star {
-	background:url("images/rating-icons/rating-hat.png") no-repeat;
-	background-size:cover;
+.ratings-table {
+    font-size: 1.6rem;
 }
 
-i.fi.fi-glove {
-	background:url("images/social-icons/glove.png") no-repeat;
-	background-size:cover;
+.ratings-table .fa-stack {
+    width: 17px;
 }
 
-i.fi.fi-half {
-	width:50%;
-	margin:0;
+
+/* Rating in recipe */
+.recipe-container .ratings-table {
+    font-size: 1.8rem;
+    margin: 0 5px;
 }
 
-i.fi.fi-on {
-	background-position:0 0;
+.recipe-container .ratings-table .fa-stack {
+    width: 20px;
 }
 
-i.fi.fi-off {
-	background-position: 100% 0;
+.recipe-container .ratings-table .null i.far.fa-star {
+    color: #6f6f6f;
 }
 
-.activity-list i.fi.fi-off {
-	background-position: 50% 0;
-}
 
-.activity-list i.fi.fi-on:hover,
-.activity-list i.fi.fi-off:hover {
-	background-position: 100% 0;
-}
-
-i.fi.fi-off:hover {
-	background-position: 200% 0;
-}
-
-i.fi.fi-half.fi-off {
-	background-position: 100% 0;
-} */
-
-/* Rating star size */
-
-.rating {
-  font-size: 1.8rem;
-  margin: 0 5px;
-}
-.comment .rating {
-  font-size: 16px;
-}
-
-/* Stars spacing */
-#rating .fa-stack {
-  width: 17px!important;
-  height: 20px!important;
-  line-height: 18px!important;
-}
-
-.comment .fa-stack {
-  height: 16px!important;
-	width: 16px!important;
-  line-height: 16px!important;
-}
+/* Rating in comments */
 
 /* Icons colors */
 
-#rating i.fa.fa-star,
-#rating i.fa.fa-star-half-o {
-	color:#f5a241;
-}
-#rating i.fa.fa-star-o {
-	/* color:#6f6f6f; */
-	color:#d3d3d3;
-}
-#rating .full i.fa.fa-star-o {
-	color:#f18b14;
-}
 
 /* MEDIA QUERIES
 ---------------------------------------------------*/
 
 @media only screen and (max-width:570px) {
 
-	.ratings-table td {
-		float: left;
-	}
+    .ratings-table td {
+        float: left;
+    }
 
 }

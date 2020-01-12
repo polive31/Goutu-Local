@@ -34,6 +34,9 @@ class Custom_Assets_Management {
 		'name-directory-style' 	=> array(
 			'file' 		=> '/assets/css/name_directory.css',
 		),
+		'megamenu' 		=> array(
+			'file' 		=> '/assets/css/max-mega-menu.css',
+		),
 		/* Force Peepso custom stylesheet update by using CHILD_THEME_VERSION */
 		// 'peepso-custom' 	=> array(
 			// 	'file' 		=> '/peepso/custom.css',
@@ -52,6 +55,7 @@ class Custom_Assets_Management {
 		'custom-lightbox'					=> array('singular' => 'post recipe'),
 		'name-directory-style' 				=> array('shortcode' => 'namedirectory'),
 		'yarppWidgetCss' 					=> array('false' => ''),
+		'megamenu' 							=> array('true' => ''),
 		'megamenu-fontawesome' 				=> array('false' => ''),
 		'megamenu-google-fonts' 			=> array('false' => ''),
 		'megamenu-genericons' 				=> array('false' => ''),
@@ -63,15 +67,17 @@ class Custom_Assets_Management {
 		'lazysizes-fadein-style'			=> array('false' => ''),
 		'lazysizes-spinner-style'			=> array('false' => ''),
 		//Peepso
-		'peepso'							=> array('page' => 'social home'),
 		'peepso-custom'						=> array('true' => ''),
+		'peepso'							=> array('page' => 'social'),
 		'peepso-moods'						=> array('page' => 'social'),
 		'peepso-appearance-avatars-circle'	=> array('page' => 'social home'),
 		'peepso-blogposts-dynamic'			=> array('page' => 'social home'),
-		'peepso-fileupload'					=> array('page' => 'social home'),
+		'peepso-fileupload'					=> array('page' => 'social'),
 		'peepso-jquery-ui'					=> array('page' => 'social'),
 		'peepso-datepicker'					=> array('false' => ''),
 		'peepso-markdown'					=> array('false' => ''),
+		// Fonts & icons
+		// 'dashicons'							=> array('admin' => ''),
 	);
 
 
@@ -123,7 +129,7 @@ class Custom_Assets_Management {
 	public function enqueue_if() {
 		$temp = $this->css_if;
 		foreach ($this->css_if as $style => $conditions ) {
-			if (!$this->current_page_matches( $conditions ) ) {
+			if (!$this->match_all( $conditions ) ) {
 				remove_style($style);
 			}
 			else {
@@ -140,7 +146,7 @@ class Custom_Assets_Management {
 
 		$temp = $this->js_if;
 		foreach ($this->js_if as $script => $conditions ) {
-			if (!$this->current_page_matches( $conditions ) ) {
+			if (!$this->match_all( $conditions ) ) {
 				remove_script($script);
 			}
 			else
@@ -149,17 +155,15 @@ class Custom_Assets_Management {
 		$this->js_if = $temp;
 	}
 
-	public function current_page_matches( $conditions ) {
+	public function match_all( $conditions ) {
 		$met = true;
 		foreach ($conditions as $type => $value) {
 			$thismet = true;
 			switch ($type) {
 				case 'true' :
-				case 'always' :
 					$thismet = true;
 					break;
 				case 'false' :
-				case 'never' :
 					$thismet = false;
 					break;
 				case 'page' :
@@ -183,7 +187,13 @@ class Custom_Assets_Management {
 				case 'singular' :
 					$thismet = is_singular( explode(' ', $value) );
 					break;
-			}
+				case 'logged-in':
+					$thismet = is_user_logged_in();
+					break;
+				case 'admin':
+					$thismet = current_user_can( 'manage_options' );
+					break;
+				}
 			$met = $met && $thismet;
 		}
 		return $met;

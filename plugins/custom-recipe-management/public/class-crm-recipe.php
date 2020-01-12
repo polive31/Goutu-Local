@@ -167,7 +167,7 @@ class CRM_Recipe extends WPURP_Recipe {
             if ( empty($html) ) return '';
         }
 
-        $html = '<div class="label-container" id="' . $type . '"><div class="recipe-label">' . $this->get_title($type) . '</div>' . $html;
+        $html = '<div class="label-container" id="' . $type . '"><div class="recipe-label fa-before">' . $this->get_title($type) . '</div>' . $html;
         $html .= '</div>';
         return $html;
     }

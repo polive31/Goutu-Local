@@ -16,12 +16,18 @@ tr.form-field.term-description-wrap {
 	width: 100%;
 }
 
-/* Category Admin Page 
+/* Category Admin Page
 ---------------------------------------------------*/
 .form-ingredient-month {
     display: inline-block;
 }
 
+/* Plugins
+---------------------------------------------------*/
+/* Custom Color Theme plugin */
+.cct-path input {
+	width: 100%;
+}
 
 /* Media Queries
 ---------------------------------------------------*/

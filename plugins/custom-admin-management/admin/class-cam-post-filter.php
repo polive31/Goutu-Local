@@ -64,6 +64,7 @@ class CAM_Post_Filter {
         $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Users'), 'id' => 'foodiepro_users', 'href' => get_site_url( null, 'wp-admin/users.php'), 'meta' => array('target' => '_blank')));
         $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Ingredients'), 'id' => 'foodiepro_ingredients', 'href' => get_site_url( null, 'wp-admin/edit-tags.php?taxonomy=ingredient&post_type=recipe'), 'meta' => array('target' => '_blank')));
         $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Peepso'), 'id' => 'foodiepro_peepso', 'href' => get_site_url( null, 'wp-admin/admin.php?page=peepso'), 'meta' => array('target' => '_blank')));
+        $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Plugins'), 'id' => 'foodiepro_plugins', 'href' => get_site_url( null, 'wp-admin/plugins.php'), 'meta' => array('target' => '_blank')));
         // $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Drafts'), 'id' => 'dwb-drafts', 'href' => 'edit.php?post_status=draft&post_type=post'));
     }
 }

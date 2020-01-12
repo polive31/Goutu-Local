@@ -22,7 +22,15 @@ define('CHILD_THEME_DEVELOPER', 'Shay Bocks');
 define('CHILD_THEME_URL', get_stylesheet_directory_uri());
 define('CHILD_THEME_PATH', get_stylesheet_directory());
 
-define('CHILD_COLOR_THEME', 'winter'); // christmas, autumn, winter, summer
+define('CHILD_COLOR_THEME', foodiepro_get_color_theme()); // christmas, autumn, winter, summer
+
+function foodiepro_get_color_theme() {
+	$cct_options = get_option('cct_options', array('color'=>'default'));
+	if ( $cct_options ) {
+		$color=!empty($cct_options['color'])?$cct_options['color']:'default';
+	}
+	return $color;
+}
 
 define('PLUGINS_URL', plugins_url());
 
@@ -303,7 +311,7 @@ function enqueue_low_priority_assets()
 	/* Theme stylesheet with varying name & version, forces cache busting at browser level
 		--------------------------------------------------- */
 	$color_theme_handler = 'color-theme-' . CHILD_COLOR_THEME;
-	custom_enqueue_style($color_theme_handler, '/assets/css/' . $color_theme_handler . '.css', CHILD_THEME_URL, CHILD_THEME_PATH,  array(), CHILD_COLOR_THEME . CHILD_THEME_VERSION);
+	custom_enqueue_style($color_theme_handler, '/assets/css/color/' . $color_theme_handler . '.css', CHILD_THEME_URL, CHILD_THEME_PATH,  array(), CHILD_COLOR_THEME . CHILD_THEME_VERSION);
 
 	/* Customized GDPR stylesheet
 		--------------------------------------------------- */

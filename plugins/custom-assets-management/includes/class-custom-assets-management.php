@@ -46,13 +46,8 @@ class Custom_Assets_Management {
 	// Stylesheets to be loaded conditionnally
 	private $css_if = array(
 		// 'custom-star-ratings' 				=> array('page' => 'blog-page'),
-		// 'peepso'							=> array('page' => 'social'),
-		'peepso-custom'						=> array('true' => ''),
 		'news-style'						=> array('page' => 'home'),
 		'newsletter'						=> array('page' => 'home'),
-		'peepso-appearance-avatars-circle'	=> array('page' => 'social home'),
-		'peepso-blogposts-dynamic'			=> array('page' => 'social home'),
-		'peepso-fileupload'					=> array('page' => 'social home'),
 		'yarppRelatedCss' 					=> array('singular' => 'post recipe'),
 		'custom-lightbox'					=> array('singular' => 'post recipe'),
 		'name-directory-style' 				=> array('shortcode' => 'namedirectory'),
@@ -63,12 +58,20 @@ class Custom_Assets_Management {
 		'popup-maker-site' 					=> array('false' => ''),
 		'wpba_front_end_styles' 			=> array('false' => ''),
 		'frontend-uploader' 				=> array('false' => ''),
+		'wp-block-library'					=> array('false' => ''),
+		// Lazysizes
+		'lazysizes-fadein-style'			=> array('false' => ''),
+		'lazysizes-spinner-style'			=> array('false' => ''),
+		//Peepso
+		'peepso'							=> array('page' => 'social home'),
+		'peepso-custom'						=> array('true' => ''),
+		'peepso-moods'						=> array('page' => 'social'),
+		'peepso-appearance-avatars-circle'	=> array('page' => 'social home'),
+		'peepso-blogposts-dynamic'			=> array('page' => 'social home'),
+		'peepso-fileupload'					=> array('page' => 'social home'),
 		'peepso-jquery-ui'					=> array('page' => 'social'),
 		'peepso-datepicker'					=> array('false' => ''),
 		'peepso-markdown'					=> array('false' => ''),
-		'lazysizes-fadein-style'			=> array('false' => ''),
-		'lazysizes-spinner-style'			=> array('false' => ''),
-		'wp-block-library'					=> array('false' => ''),
 	);
 
 

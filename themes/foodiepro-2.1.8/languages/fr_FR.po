@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2020-01-11 00:42+0100\n"
-"PO-Revision-Date: 2020-01-12 00:25+0100\n"
+"PO-Revision-Date: 2020-01-12 00:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -2457,10 +2457,8 @@ msgid "Global appreciation of the dish"
 msgstr "ex : Préparation de la pâte"
 
 #: plugins/custom-star-rating/includes/class-csr-assets.php:157
-#, fuzzy
-#| msgid "No related posts."
 msgid "Not rated"
-msgstr "Pas d'articles similaires."
+msgstr "Pas d'évaluation"
 
 #: plugins/custom-star-rating/public/class-csr-form.php:25
 msgid ""
@@ -2479,12 +2477,11 @@ msgid "Provide details"
 msgstr "Partagez quelques détails"
 
 #: plugins/custom-star-rating/public/class-csr-rating.php:337
-#, fuzzy, php-format
-#| msgid "review"
+#, php-format
 msgid "%s review"
 msgid_plural "%s reviews"
-msgstr[0] "avis"
-msgstr[1] "avis"
+msgstr[0] "%s avis"
+msgstr[1] "%s avis"
 
 #: plugins/custom-star-rating/public/class-csr-rating.php:341
 msgid "Evaluate me !"

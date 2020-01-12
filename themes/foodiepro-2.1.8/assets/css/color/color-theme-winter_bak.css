@@ -1,38 +1,38 @@
-/* Color theme :  White (default) 
+/* Color theme :  White (default)
 --------------------------------------------- */
 
 .site-header {
 	background-position:top left, top right;
 	background-repeat:no-repeat;
-	background-color: #ffffff;	
+	background-color: #ffffff;
 }
 
 .home .site-header {
 	background-position: 10px 10px, right 10px top 10px;
 	background-repeat:no-repeat;
-	background-color: #ffffff;	
+	background-color: #ffffff;
 }
 
 .no-js .site-header,
 .no-webp .site-header,
 .no-js .home .site-header,
 .no-webp .home .site-header {
-	background-image:url("../../images/theme/background-winter/background-l.jpg"),url("../../images/theme/background-winter/background-r.jpg");
+	background-image:url("../../../images/theme/background-winter/background-l.jpg"),url("../../../images/theme/background-winter/background-r.jpg");
 }
 
 
 .webp .site-header,
 .webp .home .site-header {
-	background-image:url("../../images/theme/background-winter/background-l.webp"),url("../../images/theme/background-winter/background-r.webp");
+	background-image:url("../../../images/theme/background-winter/background-l.webp"),url("../../../images/theme/background-winter/background-r.webp");
 }
 
 /*.no-js .site-header,
 .no-webp .site-header {
-	background-image:url("../../images/theme/background-winter/background-l-small.jpg"),url("../../images/theme/background-winter/background-r-small.jpg");
+	background-image:url("../../../images/theme/background-winter/background-l-small.jpg"),url("../../../images/theme/background-winter/background-r-small.jpg");
 }
 */
 /*.webp .site-header {
-	background-image:url("../../images/theme/background-winter/background-l-small.webp"),url("../../images/theme/background-winter/background-r-small.webp");
+	background-image:url("../../../images/theme/background-winter/background-l-small.webp"),url("../../../images/theme/background-winter/background-r-small.webp");
 }
 */
 .foodie-pro .header-inner {
@@ -44,7 +44,7 @@ body {
 	/*background-color:rgba(224, 224, 224, 0.34);*/
 	background-color: white;
 	/*background-image: linear-gradient(90deg, rgba(213, 188, 188, 0.5) 50%, transparent 50%), linear-gradient(rgba(236, 210, 210, 0.5) 50%, transparent 50%);
-	background-size: 50px 50px;*/	
+	background-size: 50px 50px;*/
 	background-image: linear-gradient(90deg, rgba(205, 199, 199, 0.5) 50%, transparent 50%), linear-gradient(rgba(242, 226, 226, 0.5) 50%, transparent 50%);
     background-size: 30px 30px;
 }
@@ -52,27 +52,27 @@ body {
 .site-container {
 	background-color:#FFF;
 /*  background-color: rgba(255, 255, 255, 0.7);
-  background-image: url("../../images/container/bedge-grunge-beige.png");*/
+  background-image: url("../../../images/container/bedge-grunge-beige.png");*/
 }
 
 .no-js .site-title a,
 .no-webp .site-title a {
-	background:url("../../images/theme/logo-white/logo_320_100.png") no-repeat center;
+	background:url("../../../images/theme/logo-white/logo_320_100.png") no-repeat center;
 }
 
 .webp .site-title a {
-	background:url("../../images/theme/logo-white/logo_320_100.webp") no-repeat center;
+	background:url("../../../images/theme/logo-white/logo_320_100.webp") no-repeat center;
 }
 
 .no-js .home-page .site-title a,
 .no-webp .home-page .site-title a {
-	/*background:url("../../images/theme/logo-white/logo_530_230.png") no-repeat center;*/
-	background:url("../../images/theme/logo-white/logo_360_150.png") no-repeat center;
+	/*background:url("../../../images/theme/logo-white/logo_530_230.png") no-repeat center;*/
+	background:url("../../../images/theme/logo-white/logo_360_150.png") no-repeat center;
 }
 
 .webp .home-page .site-title a {
-	/*background:url("../../images/theme/logo-white/logo_530_230.png") no-repeat center;*/
-	background:url("../../images/theme/logo-white/logo_360_150.webp") no-repeat center;
+	/*background:url("../../../images/theme/logo-white/logo_530_230.png") no-repeat center;*/
+	background:url("../../../images/theme/logo-white/logo_360_150.webp") no-repeat center;
 }
 
 h1.entry-title,
@@ -101,7 +101,7 @@ a.more-link:hover,
 	transition: all 0.2s ease-in-out;
 }
 
-.recipes-top, 
+.recipes-top,
 .blogs-top,
 .archives-top {
   border-bottom: 1px dotted #555;
@@ -126,7 +126,7 @@ textarea,
 	background-color:#fefefe;/* background-color important, pas background car conflit avec autre setting plus loin*/
 }
 
-/* STAR RATING 
+/* STAR RATING
 -------------------------------------------------------*/
 /* Icons colors */
 
@@ -142,7 +142,7 @@ i.fa.fa-star-o {
 }
 
 
-/* WIDGETS 
+/* WIDGETS
 -------------------------------------------------------*/
 
 input, select, textarea,
@@ -152,7 +152,7 @@ input, select, textarea,
 }
 
 .widget.back ul li:hover {
-	background-color:#fafafa;	
+	background-color:#fafafa;
 }
 
 /* Profile Completion Widget */
@@ -225,15 +225,15 @@ input, select, textarea,
 
 .widget.bubbles ul li {
   border: 1px dashed #ddd;
-  box-shadow: 0 0 0 3px #fff, 0 0 0 5px #ddd;	
-	background: #FFF;  
+  box-shadow: 0 0 0 3px #fff, 0 0 0 5px #ddd;
+	background: #FFF;
 }
 
 /* RECIPES & POSTS
 --------------------------------------------*/
 #joined-pics .add-picture-button button {
 	background:#ececec;
-	color:#787878;	
+	color:#787878;
 }
 
 .ingredients-container {
@@ -249,7 +249,7 @@ li.comment {
 }
 
 
-/* ARCHIVES 
+/* ARCHIVES
 --------------------------------------------*/
 
 .archive-pagination li {
@@ -257,7 +257,7 @@ li.comment {
 }
 
 
-/* MISC 
+/* MISC
 --------------------------------------------*/
 
 .frontier-list-item {
@@ -265,11 +265,11 @@ li.comment {
 }
 
 
-/* MEDIA QUERIES 
+/* MEDIA QUERIES
 --------------------------------------------*
 
 /* Background */
-@media only screen 
+@media only screen
 	and (max-width:1080px) {
 
 
@@ -278,75 +278,75 @@ li.comment {
 
 /* Smartphone */
 
-@media only screen 
+@media only screen
 	and (max-width:980px) {
-		
+
 	body,
 	body.home,
 	.site-container {
-		/*background:url("../../images/background/background-l-small.jpg") no-repeat top left;*/
+		/*background:url("../../../images/background/background-l-small.jpg") no-repeat top left;*/
 		background:none;
-	}		
-	
-	.site-title a { 
-	 	background: url("../../images/theme/logo-white/logo_320_100.png") center left no-repeat; 	
 	}
-			
+
+	.site-title a {
+	 	background: url("../../../images/theme/logo-white/logo_320_100.png") center left no-repeat;
+	}
+
 	.home .site-title a {
-    background: url("../../images/theme/logo-white/logo_360_150.png") no-repeat;
+    background: url("../../../images/theme/logo-white/logo_360_150.png") no-repeat;
 		background-position: center;
-	}	
+	}
 
 }
 
 
 /* Medium screens */
 
-@media only screen 
+@media only screen
 	and (max-width:720px) {
 
 	.site-title a {
-		background:url("../../images/theme/logo-white/logo_160_40.png") no-repeat left;
+		background:url("../../../images/theme/logo-white/logo_160_40.png") no-repeat left;
 		background-size:contain;
-	} 
+	}
 
 	.home .site-title a {
-		background:url("../../images/theme/logo-white/logo_360_150.png") no-repeat center;
-	} 
-	
+		background:url("../../../images/theme/logo-white/logo_360_150.png") no-repeat center;
+	}
+
 	.entry-header,
 	.site-header,
 	#mega-menu-wrap-secondary,
 	.widget.bubbles {
-		background-color:rgba(255, 255, 255, 0.7);	
-	}	
-	
+		background-color:rgba(255, 255, 255, 0.7);
+	}
+
 }
 
 /* Retina smartphone */
-@media only screen 
+@media only screen
 	and (max-width:720px)
   and (-webkit-min-device-pixel-ratio:2) {
- 
+
 	.site-title a {
-		background:url("../../images/theme/logo-white/logo_320_100.png") no-repeat left;
+		background:url("../../../images/theme/logo-white/logo_320_100.png") no-repeat left;
 		background-size:contain;
-	} 	
-	
+	}
+
 	.home .site-title a {
-		background:url("../../images/theme/logo-white/logo_720_300.png") no-repeat center;
-	} 		
+		background:url("../../../images/theme/logo-white/logo_720_300.png") no-repeat center;
+	}
 
 }
 
 
 /* Small screens */
-@media only screen 
+@media only screen
 	and (max-width:420px) {
-	
+
 	.home .site-title a {
     background-size: contain;
-	}	
+	}
 
-	
+
 }

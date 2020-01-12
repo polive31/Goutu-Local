@@ -22,12 +22,16 @@ define('CHILD_THEME_DEVELOPER', 'Shay Bocks');
 define('CHILD_THEME_URL', get_stylesheet_directory_uri());
 define('CHILD_THEME_PATH', get_stylesheet_directory());
 
+define('DEFAULT_CHILD_COLOR_THEME', 'spring');
 define('CHILD_COLOR_THEME', foodiepro_get_color_theme()); // christmas, autumn, winter, summer
 
 function foodiepro_get_color_theme() {
 	$cct_options = get_option('cct_options', array('color'=>'default'));
 	if ( $cct_options ) {
-		$color=!empty($cct_options['color'])?$cct_options['color']:'default';
+		$color=!empty($cct_options['color'])?$cct_options['color']: DEFAULT_CHILD_COLOR_THEME;
+	}
+	else {
+		$color=DEFAULT_CHILD_COLOR_THEME;
 	}
 	return $color;
 }

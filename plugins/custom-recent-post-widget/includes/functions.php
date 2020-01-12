@@ -206,7 +206,7 @@ function rpwe_get_posts($args = array())
 	 */
 	if (!empty($args['taxonomy'])) {
 
-		parse_str($args['taxonomy'], $taxes);
+		parse_str(html_entity_decode($args['taxonomy']), $taxes);
 
 		$operator  = 'IN';
 		$tax_query = array();

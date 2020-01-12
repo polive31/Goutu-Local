@@ -61,9 +61,6 @@
 		</label>
 	</p>
 
-</div>
-
-<div class="rpwe-columns-3">
 
 	<p>
 		<input class="checkbox" type="checkbox" <?php checked( $instance['ignore_sticky'], 1 ); ?> id="<?php echo $this->get_field_id( 'ignore_sticky' ); ?>" name="<?php echo $this->get_field_name( 'ignore_sticky' ); ?>" />
@@ -74,26 +71,30 @@
 
 	<p>
 		<input class="checkbox" type="checkbox" <?php checked( $instance['exclude_current'], 1 ); ?> id="<?php echo $this->get_field_id( 'exclude_current' ); ?>" name="<?php echo $this->get_field_name( 'exclude_current' ); ?>" />
-		<label for="<?php echo $this->get_field_id( 'exclude_current' ); ?>">
-			<?php _e( 'Exclude current post', 'recent-posts-widget-extended' ); ?>
-		</label>
-	</p>
+	<label for="<?php echo $this->get_field_id( 'exclude_current' ); ?>">
+		<?php _e( 'Exclude current post', 'recent-posts-widget-extended' ); ?>
+	</label>
+</p>
 
-	<div class="rpwe-multiple-check-form">
-		<label>
-			<?php _e( 'Post Types', 'recent-posts-widget-extended' ); ?>
-		</label>
-		<ul>
-			<?php foreach ( get_post_types( array( 'public' => true ), 'objects' ) as $type ) : ?>
-				<li>
-					<input type="checkbox" value="<?php echo esc_attr( $type->name ); ?>" id="<?php echo $this->get_field_id( 'post_type' ) . '-' . $type->name; ?>" name="<?php echo $this->get_field_name( 'post_type' ); ?>[]" <?php checked( is_array( $instance['post_type'] ) && in_array( $type->name, $instance['post_type'] ) ); ?> />
-					<label for="<?php echo $this->get_field_id( 'post_type' ) . '-' . $type->name; ?>">
-						<?php echo esc_html( $type->labels->name ); ?>
-					</label>
-				</li>
+<div class="rpwe-multiple-check-form">
+	<label>
+		<?php _e( 'Post Types', 'recent-posts-widget-extended' ); ?>
+	</label>
+	<ul>
+		<?php foreach ( get_post_types( array( 'public' => true ), 'objects' ) as $type ) : ?>
+			<li>
+				<input type="checkbox" value="<?php echo esc_attr( $type->name ); ?>" id="<?php echo $this->get_field_id( 'post_type' ) . '-' . $type->name; ?>" name="<?php echo $this->get_field_name( 'post_type' ); ?>[]" <?php checked( is_array( $instance['post_type'] ) && in_array( $type->name, $instance['post_type'] ) ); ?> />
+				<label for="<?php echo $this->get_field_id( 'post_type' ) . '-' . $type->name; ?>">
+					<?php echo esc_html( $type->labels->name ); ?>
+				</label>
+			</li>
 			<?php endforeach; ?>
 		</ul>
 	</div>
+
+</div>
+
+<div class="rpwe-columns-3">
 
 	<p>
 		<label for="<?php echo $this->get_field_id( 'post_status' ); ?>">
@@ -135,7 +136,7 @@
 
 	<div class="rpwe-multiple-check-form">
 		<label>
-			<?php _e( 'Limit to Category', 'recent-posts-widget-extended' ); ?>
+			<?php _e( 'Limit to Categories', 'recent-posts-widget-extended' ); ?>
 		</label>
 		<ul>
 			<?php foreach ( rpwe_cats_list() as $category ) : ?>
@@ -151,7 +152,7 @@
 
 	<div class="rpwe-multiple-check-form">
 		<label>
-			<?php _e( 'Limit to Tag', 'recent-posts-widget-extended' ); ?>
+			<?php _e( 'Limit to Tags', 'recent-posts-widget-extended' ); ?>
 		</label>
 		<ul>
 			<?php foreach ( rpwe_tags_list() as $post_tag ) : ?>
@@ -167,10 +168,10 @@
 
 	<p>
 		<label for="<?php echo $this->get_field_id( 'taxonomy' ); ?>">
-			<?php _e( 'Limit to Taxonomy', 'recent-posts-widget-extended' ); ?>
+			<?php _e( 'Limit to Taxonomy Terms', 'recent-posts-widget-extended' ); ?>
 		</label>
 		<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'taxonomy' ); ?>" name="<?php echo $this->get_field_name( 'taxonomy' ); ?>" value="<?php echo esc_attr( $instance['taxonomy'] ); ?>" />
-		<small><?php _e( 'Ex: category=1,2,4&amp;post_tag=6,12', 'rpwe' );?><br />
+		<small><?php _e( 'Ex: category=1,2,4&amp;post_tag=6,12. Use tax=-id to exclude a term.', 'rpwe' );?><br />
 		<?php _e( 'Available: ', 'rpwe' ); echo implode( ', ', get_taxonomies( array( 'public' => true ) ) ); ?></small>
 	</p>
 

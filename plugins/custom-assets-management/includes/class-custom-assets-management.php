@@ -38,9 +38,9 @@ class Custom_Assets_Management {
 			'file' 		=> '/assets/css/max-mega-menu.css',
 		),
 		/* Force Peepso custom stylesheet update by using CHILD_THEME_VERSION */
-		// 'peepso-custom' 	=> array(
-			// 	'file' 		=> '/peepso/custom.css',
-			// ),
+		'peepso-custom' 	=> array(
+			'file' 		=> '/assets/css/peepso.css',
+		),
 		'peepso-jquery-ui' 		=> array(
 			'file'		=> '/assets/css/datepicker.css',
 		),

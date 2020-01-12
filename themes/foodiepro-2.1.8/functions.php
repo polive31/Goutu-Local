@@ -23,10 +23,10 @@ define('CHILD_THEME_URL', get_stylesheet_directory_uri());
 define('CHILD_THEME_PATH', get_stylesheet_directory());
 
 define('DEFAULT_CHILD_COLOR_THEME', 'spring');
-define('CHILD_COLOR_THEME', foodiepro_get_color_theme()); // christmas, autumn, winter, summer
+define('CHILD_COLOR_THEME', foodiepro_get_color_theme());
 
 function foodiepro_get_color_theme() {
-	$cct_options = get_option('cct_options', array('color'=>'default'));
+	$cct_options = get_option('cct_options');
 	if ( $cct_options ) {
 		$color=!empty($cct_options['color'])?$cct_options['color']: DEFAULT_CHILD_COLOR_THEME;
 	}

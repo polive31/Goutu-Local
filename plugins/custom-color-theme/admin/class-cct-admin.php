@@ -25,7 +25,8 @@ class CCT_Admin
 
     public function add_cct_options_page()
     {
-        add_options_page('Custom Color Theme', 'Custom Color Theme', 'manage_options', 'cct-options', array($this, 'cct_options'));
+        // add_options_page('Custom Color Theme', 'Custom Color Theme', 'manage_options', 'cct-options', array($this, 'cct_options'), 60);
+        add_submenu_page('themes.php','Custom Color Theme', 'Custom Color Theme', 'manage_options', 'cct-options', array($this, 'cct_options'));
     }
 
     public function register_cct_settings()

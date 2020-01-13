@@ -8,8 +8,8 @@ if (!defined('ABSPATH')) {
 
 class CCT_Admin
 {
-    const PREFIX= 'color-theme-';
-    const DEFAULT_COLOR_THEME='spring';
+    const PREFIX = 'color-theme-';
+    const DEFAULT_COLOR_THEME = 'spring';
     private $options;
 
     public function __construct()
@@ -21,12 +21,28 @@ class CCT_Admin
         if (empty($this->options['path'])) {
             $this->options['path'] = get_stylesheet_directory() . '/assets/css/color/';
         }
+        if (empty($this->options['reload'])) {
+            $this->options['reload'] = '0';
+        }
+    }
+
+    /* Admin notice */
+    public function maybe_display_admin_notice()
+    {
+        if ($this->options['reload']=='1') {
+            add_action('admin_notices', array($this, 'force_reload_activated_admin_notice'));
+        }
+    }
+    public function force_reload_activated_admin_notice() {
+        echo '<div id="message" class="error fade"><p style="line-height: 150%">';
+        _e('<strong>Stylesheet Forced Reload is activated within Custom Color Theme plugin</strong> This reduces the page load speed for your users.');
+        echo '</p></div>';
     }
 
     public function add_cct_options_page()
     {
         // add_options_page('Custom Color Theme', 'Custom Color Theme', 'manage_options', 'cct-options', array($this, 'cct_options'), 60);
-        add_submenu_page('themes.php','Custom Color Theme', 'Custom Color Theme', 'manage_options', 'cct-options', array($this, 'cct_options'));
+        add_submenu_page('themes.php', 'Custom Color Theme', 'Custom Color Theme', 'manage_options', 'cct-options', array($this, 'cct_options'));
     }
 
     public function register_cct_settings()
@@ -58,6 +74,15 @@ class CCT_Admin
         );
 
         add_settings_field(
+            'cct_reload_field',
+            __('Reload all stylesheets', 'foodiepro'),
+            array($this, 'cct_reload_field_render'),
+            'cct_settings_group',
+            'cct_general_settings',
+            array('class' => 'cct-reload')
+        );
+
+        add_settings_field(
             'cct_color_theme_select_field',
             __('Current Color Theme', 'foodiepro'),
             array($this, 'cct_color_theme_select_field_render'),
@@ -73,24 +98,28 @@ class CCT_Admin
         echo __('These are the general settings for the Custom Color Theme selection plugin.', 'wordpress');
     }
 
-    public function cct_color_settings_cb()
-    {
-        echo __('These are the color settings for the Custom Color Theme selection plugin.', 'wordpress');
-    }
 
 
     public function cct_path_field_render()
     {
-?>
+        ?>
         <input type='text' name='cct_options[path]' value='<?php echo $this->options['path']; ?>'>
-    <?php
+        <?php
     }
 
-    public function cct_color_theme_select_field_render_bak()
+    public function cct_reload_field_render()
     {
-    ?>
-        <input type='text' name='cct_options[color]' value='<?php echo $this->options['color']; ?>'>
-    <?php
+        ?>
+        <select class="widefat" id="" name="cct_options[reload]";">
+            <option value="1" <?php selected($this->options['reload'], '1'); ?>><?= __('Yes', 'foodiepro');; ?></option>
+            <option value="0" <?php selected($this->options['reload'], '0'); ?>><?= __('No', 'foodiepro');  ?></option>
+        </select>
+        <?php
+    }
+
+    public function cct_color_settings_cb()
+    {
+        echo __('These are the color settings for the Custom Color Theme selection plugin.', 'wordpress');
     }
 
     public function cct_color_theme_select_field_render()
@@ -102,11 +131,11 @@ class CCT_Admin
             foreach ($stylesheets as $stylesheet) {
                 $info = pathinfo($stylesheet);
                 if ($info['extension'] == 'css' && !strpos($info['basename'], '.min.css')) {
-                    $color=str_replace( self::PREFIX, '', $info['filename']);
+                    $color = str_replace(self::PREFIX, '', $info['filename']);
             ?>
                     <option value="<?= $color; ?>" <?php selected($this->options['color'], $color); ?>><?= $color; ?></option>
             <?php
-                   // echo $info['basename'] . '<br>';
+                    // echo $info['basename'] . '<br>';
                 }
             } ?>
         </select>

@@ -17,6 +17,7 @@ class Custom_Color_Theme {
         $Admin = new CCT_Admin();
         add_action('admin_menu',            array($Admin, 'add_cct_options_page'));
         add_action('admin_init',            array($Admin, 'register_cct_settings'));
+        add_action('admin_init',            array($Admin, 'maybe_display_admin_notice'));
 
     }
 }

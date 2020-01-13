@@ -17,8 +17,9 @@ if (!defined('ABSPATH')) {
 }
 
 define('CHILD_THEME_NAME', 'Foodie Pro Theme');
-define('CHILD_THEME_VERSION', '2.3.63');
-define('CHILD_THEME_DEVELOPER', 'Shay Bocks');
+define('CHILD_THEME_DEVELOPER', 'Shay Bocks/Pascal Olive');
+define('CHILD_THEME_OPTIONS', get_option('cct_options'));
+define('CHILD_THEME_VERSION', ((bool)CHILD_THEME_OPTIONS['reload'])?time():'2.3.63');
 define('CHILD_THEME_URL', get_stylesheet_directory_uri());
 define('CHILD_THEME_PATH', get_stylesheet_directory());
 
@@ -26,9 +27,9 @@ define('DEFAULT_CHILD_COLOR_THEME', 'spring');
 define('CHILD_COLOR_THEME', foodiepro_get_color_theme());
 
 function foodiepro_get_color_theme() {
-	$cct_options = get_option('cct_options');
-	if ( $cct_options ) {
-		$color=!empty($cct_options['color'])?$cct_options['color']: DEFAULT_CHILD_COLOR_THEME;
+	// $cct_options = get_option('cct_options');
+	if (CHILD_THEME_OPTIONS ) {
+		$color=!empty(CHILD_THEME_OPTIONS['color'])? CHILD_THEME_OPTIONS['color']: DEFAULT_CHILD_COLOR_THEME;
 	}
 	else {
 		$color=DEFAULT_CHILD_COLOR_THEME;
@@ -880,10 +881,10 @@ function apply_content_alt_sidebar_layout()
 function custom_inline_js()
 {
 	?>
-		<script>
-		</script>
+	<script>
+	</script>
 	<?php
-	}
+}
 
 	//* Reposition the primary navigation menu within header
 	remove_action('genesis_after_header', 'genesis_do_subnav');

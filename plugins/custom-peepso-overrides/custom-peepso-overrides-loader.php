@@ -17,19 +17,19 @@ if ( !defined('ABSPATH') )
 
 /* Main
 ------------------------------------------------------------*/
-add_action('plugins_loaded','check_peepso_active');
-function check_peepso_active() {
+add_action('plugins_loaded','cpo_check_peepso_active');
+function cpo_check_peepso_active() {
 	if ( class_exists( 'PeepSo' ) ) {
-		peepso_helpers_conditional_load();
+		cpo_peepso_helpers_conditional_load();
 	} else {
-		add_action( 'admin_notices', 'peepso_helpers_install_notice' );
+		add_action( 'admin_notices', 'cpo_peepso_helpers_install_notice' );
 	}
 }
 
 
 /* Support functions
 ------------------------------------------------------------*/
-function peepso_helpers_conditional_load() {
+function cpo_peepso_helpers_conditional_load() {
 	// Includes
 	require_once 'includes/class-custom-peepso-overrides.php';
 
@@ -50,7 +50,7 @@ function peepso_helpers_conditional_load() {
 
 }
 
-function peepso_helpers_install_notice() {
+function cpo_peepso_helpers_install_notice() {
 	echo '<div id="message" class="error fade"><p style="line-height: 150%">';
 	_e('<strong>Peepso Helpers</strong> requires the Peepso plugin to work.');
 	echo '</p></div>';

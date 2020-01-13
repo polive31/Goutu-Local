@@ -4397,7 +4397,7 @@
 
 #mega-menu-wrap-secondary .mega-menu-toggle .mega-toggle-block-1 a img,
 #mega-menu-wrap-secondary .mega-menu-toggle #mega-toggle-block-1 a img {
-  max-height: 75%;
+  max-height: 45px;
   top: -3px;
   margin: 0;
   position: relative;

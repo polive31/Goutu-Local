@@ -4395,6 +4395,11 @@
   /* The height is needed to constrain the sticky menu */
 }
 
+/* Prevent issue of logo taking the whole screen width and causing hamburger menu to disappear */
+a.mega-menu-logo {
+  max-width: fit-content;
+}
+
 #mega-menu-wrap-secondary .mega-menu-toggle .mega-toggle-block-1 a img,
 #mega-menu-wrap-secondary .mega-menu-toggle #mega-toggle-block-1 a img {
   max-height: 45px;

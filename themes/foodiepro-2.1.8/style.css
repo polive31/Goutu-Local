@@ -2468,6 +2468,9 @@ a.post-read-button:before,
 a.recipe-read-button:before {
 	content:"\f028"; /* fa-sound */
 }
+a.custom-recipe-favorite:before {
+	content:"\f02d"; /* fa-sound */
+}
 
 a.post-share-button:before,
 a.recipe-share-button:before {

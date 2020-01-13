@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 }
 
 define('CHILD_THEME_NAME', 'Foodie Pro Theme');
-define('CHILD_THEME_VERSION', '2.3.62');
+define('CHILD_THEME_VERSION', '2.3.63');
 define('CHILD_THEME_DEVELOPER', 'Shay Bocks');
 define('CHILD_THEME_URL', get_stylesheet_directory_uri());
 define('CHILD_THEME_PATH', get_stylesheet_directory());
@@ -328,8 +328,8 @@ function enqueue_low_priority_assets()
 /* =================================================================*/
 
 //Child Theme Language override
-define('GENESIS_LANGUAGES_DIR', STYLESHEETPATH . '/languages/genesis');
-define('GENESIS_LANGUAGES_URL', STYLESHEETPATH . '/languages/genesis');
+// define('GENESIS_LANGUAGES_DIR', STYLESHEETPATH . '/languages/genesis');
+// define('GENESIS_LANGUAGES_URL', STYLESHEETPATH . '/languages/genesis');
 
 /**
  * Load Genesis
@@ -525,11 +525,12 @@ THIS FUNCTION USELESS & CONFLICTING */
 /* =              REWRITE RULES
 /* =================================================================*/
 
-add_action('init', 'custom_author_base');
+// add_action('init', 'custom_author_base');
 function custom_author_base()
 {
 	global $wp_rewrite;
-	$author_slug = __('author', 'foodiepro'); // the new slug name
+	// IMPORTANT : don't try to translate as we are in functions.php, or declare it within the paths
+	$author_slug = 'auteur'; // the new slug name
 	$wp_rewrite->author_base = $author_slug;
 }
 

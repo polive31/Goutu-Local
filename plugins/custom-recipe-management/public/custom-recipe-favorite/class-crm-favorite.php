@@ -16,13 +16,13 @@ class CRM_Favorite {
         self::$FAVLISTS=array(
             'favorites' => array(
                 'meta' => 'wpurp_favorites',
-                'icon' => '<i class="fa fa-heart"></i>',
+                'icon' => '<i class="fas fa-heart"></i>',
                 'label' => __('My favorite recipes','foodiepro'),
                 'tooltip-in' => __('In my <a href="%s">favorites</a>','foodiepro'),
             ),
             'wishlist' => array(
                 'meta' => 'wpurp_favorites_wishlist',
-                'icon' => '<i class="fa fa-thumb-tack"></i>',
+                'icon' => '<i class="fas fa-thumbtack"></i>',
                 'label' => __('Recipes wish list','foodiepro'),
                 'tooltip-in' => __('In my <a href="%s">wishlist</a>','foodiepro'),
             ),
@@ -67,7 +67,7 @@ class CRM_Favorite {
         ob_start();
         ?>
             <a href="<?= $link_url;?>" class="<?= $this->class_id; ?>" data-recipe-id="<?= $recipe->ID(); ?>" data-tooltip-id="<?php echo is_user_logged_in()?'':'join_us';?>" onClick="<?= $onclick; ?>" >
-            <span class="button-icon" id="favorites"><?= $this->get_toolbar_icon('favorites-' . $isfav[1] ); ?></span>
+            <!-- <span class="button-icon" id="favorites"><?php // echo $this->get_toolbar_icon('favorites-' . $isfav[1] ); ?></span> -->
             <div class="button-caption"><?= __('Cookbook','foodiepro'); ?></div>
             </a>
         <?php

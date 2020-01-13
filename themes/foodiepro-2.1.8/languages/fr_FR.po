@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2020-01-11 00:42+0100\n"
-"PO-Revision-Date: 2020-01-12 00:51+0100\n"
+"POT-Creation-Date: 2020-01-12 22:32+0100\n"
+"PO-Revision-Date: 2020-01-12 22:33+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -34,39 +34,39 @@ msgstr ""
 msgid "Comments"
 msgstr "Ajouter un commentaire"
 
-#: plugins/custom-comment-management/public/class-ccm-comments-list.php:37
+#: plugins/custom-comment-management/public/class-ccm-comments-list.php:28
 #, fuzzy
 #| msgid "Previous Feeds"
 msgid "Previous comments"
 msgstr "Nouvelles précédentes"
 
-#: plugins/custom-comment-management/public/class-ccm-comments-list.php:43
+#: plugins/custom-comment-management/public/class-ccm-comments-list.php:34
 #, fuzzy
 #| msgid "Comment"
 msgid "Next comments"
 msgstr "Ajouter un commentaire"
 
-#: plugins/custom-comment-management/public/class-ccm-comments-list.php:105
+#: plugins/custom-comment-management/public/class-ccm-comments-list.php:92
 #, php-format
 msgid "%s says:"
 msgstr "%s"
 
-#: plugins/custom-comment-management/public/class-ccm-comments-list.php:107
+#: plugins/custom-comment-management/public/class-ccm-comments-list.php:94
 #, php-format
 msgid "%s responds:"
 msgstr "%s"
 
-#: plugins/custom-comment-management/public/class-ccm-comments-list.php:111
+#: plugins/custom-comment-management/public/class-ccm-comments-list.php:98
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: plugins/custom-comment-management/public/class-ccm-comments-list.php:125
+#: plugins/custom-comment-management/public/class-ccm-comments-list.php:112
 #: plugins/custom-star-rating/public/class-csr-rating.php:228
 #, php-format
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: plugins/custom-comment-management/public/class-ccm-comments-list.php:152
+#: plugins/custom-comment-management/public/class-ccm-comments-list.php:139
 #, fuzzy
 #| msgid "Edit"
 msgid "(Edit)"
@@ -91,6 +91,7 @@ msgstr "<strong>ERREUR</strong> : Merci d'effectuer la vérification anti-spam."
 
 #: plugins/custom-comment-management/public/class-ccm-form.php:86
 #: plugins/wp-ultimate-recipe-premium/premium/addons/user-submissions/templates/public_recipe_form.php:137
+#: themes/foodiepro-2.1.8/peepso/general/recover-password.php:37
 msgid "Submit"
 msgstr "Publier"
 
@@ -628,7 +629,7 @@ msgstr "Les plus populaires"
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:107
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:110
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:87
-#: plugins/custom-peepso-overrides/widgets/PeepsoLatestRegisteredMembers.php:107
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:119
 #: plugins/custom-recipe-management/widgets/crm_lists_dropdown_widget.php:70
 #: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:47
 msgid "New title"
@@ -641,7 +642,7 @@ msgstr ""
 #: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:86
 #: plugins/custom-peepso-overrides/widgets/PeepsoCoverImageHeader.php:84
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:199
-#: plugins/custom-peepso-overrides/widgets/PeepsoLatestRegisteredMembers.php:116
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:148
 #: plugins/custom-recipe-management/widgets/crm_lists_dropdown_widget.php:74
 #: plugins/custom-recipe-management/widgets/crm_nutrition_label_widget.php:60
 #: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:51
@@ -736,7 +737,7 @@ msgid "wrote a new recipe"
 msgstr "a publié une nouvelle recette"
 
 #: plugins/custom-peepso-overrides/public/class-cpo-customizations.php:136
-#: themes/foodiepro-2.1.8/functions.php:1094
+#: themes/foodiepro-2.1.8/functions.php:1117
 msgid "Legal notice"
 msgstr "Mentions légales"
 
@@ -827,14 +828,14 @@ msgid "Edit my profile"
 msgstr "Modifier mon profil"
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:99
-#: themes/foodiepro-2.1.8/functions.php:954
+#: themes/foodiepro-2.1.8/functions.php:977
 #: themes/foodiepro-2.1.8/peepso/widgets/userbar.tpl.php:59
 #: themes/foodiepro-2.1.8/peepso/widgets/userbar.tpl.php:107
 msgid "Log Out"
 msgstr "Déconnexion"
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:127
-#: themes/foodiepro-2.1.8/functions.php:450
+#: themes/foodiepro-2.1.8/functions.php:463
 msgid "Email Address"
 msgstr "Adresse mail"
 
@@ -849,7 +850,7 @@ msgid "Remember Me"
 msgstr "Se souvenir de moi"
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:136
-#: themes/foodiepro-2.1.8/functions.php:958
+#: themes/foodiepro-2.1.8/functions.php:981
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/login.php:18
 msgid "Log In"
 msgstr "Connexion"
@@ -859,7 +860,7 @@ msgid "Register for a new account"
 msgstr "Aller sur la page d'inscription"
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:140
-#: themes/foodiepro-2.1.8/functions.php:452
+#: themes/foodiepro-2.1.8/functions.php:465
 msgid "Not yet a member ?"
 msgstr "Pas encore membre ?"
 
@@ -871,23 +872,39 @@ msgstr ""
 msgid "Forgot Password ?"
 msgstr "Mot de passe oublié ?"
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoLatestRegisteredMembers.php:28
-#, fuzzy
-#| msgid "Evaluate this recipe"
-msgid "(Peepso) Latest registered members"
-msgstr "Evaluez cette recette"
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:30
+msgid "(Peepso) Configurable Members Widget"
+msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoLatestRegisteredMembers.php:30
-#, fuzzy
-#| msgid "Evaluate this recipe"
-msgid "Displays latest registered members"
-msgstr "Evaluez cette recette"
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:32
+msgid "Displays a list of members according to different criteria and markups"
+msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoLatestRegisteredMembers.php:89
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:100
 msgid "All the members"
 msgstr "Tous les gourmets"
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoLatestRegisteredMembers.php:122
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:154
+msgid "Query"
+msgstr ""
+
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:157
+#, fuzzy
+#| msgid "Newest first"
+msgid "Latest Registered"
+msgstr "Les plus récentes"
+
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:158
+#, fuzzy
+#| msgid "My Friends"
+msgid "Friends"
+msgstr "Mes amis"
+
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:164
+msgid "Thumbnail size"
+msgstr ""
+
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:177
 msgid "Number of users to show"
 msgstr ""
 
@@ -2332,7 +2349,7 @@ msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr "Un problème ? Une question ? Contacte nous <a href=\"%s\">ici</a>"
 
 #: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:296
-#: themes/foodiepro-2.1.8/functions.php:1094
+#: themes/foodiepro-2.1.8/functions.php:1117
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
@@ -2456,7 +2473,7 @@ msgstr "Global"
 msgid "Global appreciation of the dish"
 msgstr "ex : Préparation de la pâte"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:157
+#: plugins/custom-star-rating/includes/class-csr-assets.php:158
 msgid "Not rated"
 msgstr "Pas d'évaluation"
 
@@ -8380,33 +8397,33 @@ msgid ""
 "since version 2. You won't lose any settings or recipes when deactivating."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:415
+#: themes/foodiepro-2.1.8/functions.php:428
 msgid "Goûtu.org - La Communauté des Gourmets"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:424
+#: themes/foodiepro-2.1.8/functions.php:437
 #, fuzzy
 #| msgid "Email Address"
 msgid "Enter Email Address"
 msgstr "Adresse mail"
 
-#: themes/foodiepro-2.1.8/functions.php:425
+#: themes/foodiepro-2.1.8/functions.php:438
 msgid "Enter Password"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:426
+#: themes/foodiepro-2.1.8/functions.php:439
 #, fuzzy
 #| msgid "Remember Me"
 msgid "Remember Login State"
 msgstr "Se souvenir de moi"
 
-#: themes/foodiepro-2.1.8/functions.php:427
+#: themes/foodiepro-2.1.8/functions.php:440
 #, fuzzy
 #| msgid "Log In"
 msgid "Please Log In"
 msgstr "Connexion"
 
-#: themes/foodiepro-2.1.8/functions.php:464
+#: themes/foodiepro-2.1.8/functions.php:477
 msgid ""
 "<strong>ERROR</strong>: Invalid login. Please make sure to use your EMAIL "
 "ADDRESS to log-in."
@@ -8414,19 +8431,19 @@ msgstr ""
 "<strong>ERREUR</strong>: Identifiant invalide. Merci de vérifier que vous "
 "utilisez bien email advotre ADRESSE MAIL pour vous connecter."
 
-#: themes/foodiepro-2.1.8/functions.php:509
+#: themes/foodiepro-2.1.8/functions.php:532
 msgid "author"
 msgstr "auteur"
 
-#: themes/foodiepro-2.1.8/functions.php:825
+#: themes/foodiepro-2.1.8/functions.php:848
 msgid "Content/Alt Sidebar"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:1042
+#: themes/foodiepro-2.1.8/functions.php:1065
 msgid "Recipe, Ingredient, Keyword, Author..."
 msgstr "Recette, ingrédient, mot-clé, auteur..."
 
-#: themes/foodiepro-2.1.8/functions.php:1094
+#: themes/foodiepro-2.1.8/functions.php:1117
 msgid "Contact us"
 msgstr "Contactez-nous"
 
@@ -9129,44 +9146,54 @@ msgid "This goes just before the footer, and occupies the whole page width."
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:135
+#, fuzzy
+#| msgid "Other Countries"
+msgid "Contact Before Content"
+msgstr "Autres pays"
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:136
+msgid "This goes just before the content, and occupies the whole page width."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:143
 msgid "Archives Top"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:136
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:144
 msgid "This is the top widget section of archived pages."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:140
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:148
 msgid "Archives Bottom"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:141
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:149
 msgid "This is the bottom widget section of archived pages."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:148
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:156
 #, fuzzy
 #| msgid "Comment count"
 msgid "Post List Top"
 msgstr "Commentaires"
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:149
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:157
 msgid "This is the top widget section of Post List pages."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:153
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:161
 msgid "Post List Middle"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:154
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:162
 msgid "This is the middle widget section of Post List pages."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:161
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:169
 msgid "Mobile Nav Container"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:162
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:170
 msgid "This is the container on top of the slider mobile menu."
 msgstr ""
 
@@ -9349,6 +9376,35 @@ msgstr ""
 #| msgid "Newest first"
 msgid "Oldest first"
 msgstr "Les plus récentes"
+
+#: themes/foodiepro-2.1.8/peepso/general/recover-password.php:10
+msgid "Confirm Password Recovery"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/general/recover-password.php:14
+msgid ""
+"Please enter the email address for your account. A verification code will be "
+"sent to you. Once you have received the verification code, you will be able "
+"to choose a new password for your account."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/general/recover-password.php:27
+#, fuzzy
+#| msgid "Email Address"
+msgid "Email Address:"
+msgstr "Adresse mail"
+
+#: themes/foodiepro-2.1.8/peepso/general/recover-password.php:31
+#, fuzzy
+#| msgid "Email Address"
+msgid "Email address"
+msgstr "Adresse mail"
+
+#: themes/foodiepro-2.1.8/peepso/general/recover-password.php:42
+#, fuzzy
+#| msgid "Back to %s"
+msgid "Back to Home"
+msgstr "Retour à %s"
 
 #: themes/foodiepro-2.1.8/peepso/photos/photos.php:12
 #: themes/foodiepro-2.1.8/peepso/photos/photos.php:37
@@ -10471,6 +10527,16 @@ msgstr "Ces recettes pourraient également vous intéresser..."
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
 
+#, fuzzy
+#~| msgid "Evaluate this recipe"
+#~ msgid "(Peepso) Latest registered members"
+#~ msgstr "Evaluez cette recette"
+
+#, fuzzy
+#~| msgid "Evaluate this recipe"
+#~ msgid "Displays latest registered members"
+#~ msgstr "Evaluez cette recette"
+
 #~ msgid "Evaluations"
 #~ msgstr "Evaluations"
 
@@ -10652,9 +10718,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 #, fuzzy
 #~| msgid "My Friends"
 #~ msgid "(Buddypress) My Friends"
-#~ msgstr "Mes amis"
-
-#~ msgid "My Friends"
 #~ msgstr "Mes amis"
 
 #, php-format
@@ -10967,11 +11030,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 #~| msgid "Please provide the required information."
 #~ msgid "Please provide a valid activation key."
 #~ msgstr "Merci de renseigner les informations manquantes."
-
-#, fuzzy
-#~| msgid "Newest first"
-#~ msgid "Newest Registered"
-#~ msgstr "Les plus récentes"
 
 #~ msgid ""
 #~ "Just fill in the fields below, and we'll get a new account set up for you "

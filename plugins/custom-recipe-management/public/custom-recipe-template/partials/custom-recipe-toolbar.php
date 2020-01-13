@@ -51,7 +51,7 @@
 		</div>	 -->
 
 		<!-- Add To Favorites Button -->
-		<div class="toolbar-button alignleft <?php echo is_user_logged_in() ? 'tooltip-onhover' : 'disabled'; ?>" id="favorite">
+		<div class="toolbar-button alignleft fa-before  <?php echo is_user_logged_in() ? 'tooltip-onhover' : 'disabled'; ?>" id="favorite">
 			<?php
 			$favorite_recipe = new CRM_Favorite();
 			echo $favorite_recipe->output($recipe); ?>

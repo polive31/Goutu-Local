@@ -39,9 +39,6 @@ class Custom_Navigation_Helpers {
 		add_filter( 'genesis_term_intro_text_output', 	'wpautop' );
 		add_filter( 'genesis_archive_description_text', array($Headline,'custom_archive_description') );
 		// add_filter( 'genesis_term_intro_text_output', 'wpautop' );
-		// Page title text
-		// remove_filter('wp_title','genesis_default_title', 10, 3);
-		// add_filter('wp_title', 'custom_archive_title', 10, 3);
 		// Shortcode
 		add_shortcode('seo-friendly-title', 			array($Headline,'get_seo_friendly_page_title'));
 

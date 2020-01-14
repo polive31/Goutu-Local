@@ -365,6 +365,10 @@ body {
     content: '\f303';
 }
 
+.ps-icon-search:before {
+    content: '\f002';
+}
+
 .ps-icon-globe:before {
     /* content:'\e852'; */
     content: '\f57d';

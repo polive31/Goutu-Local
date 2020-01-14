@@ -160,251 +160,255 @@ span.bp_counter,
 .toolbar-button a:before,
 [class^="ps-icon-"]:before,
 [class*=" ps-icon-"]:before {
-	font-weight: 900;
+    font-weight: 900;
 }
 
-    .ui-icon:before {
-        font-size: 1.4rem;
-        color: #8f8f8f;
-        vertical-align: middle;
-    }
+.ui-icon:before {
+    font-size: 1.4rem;
+    color: #8f8f8f;
+    vertical-align: middle;
+}
 
 
-    /* HEADINGS */
-    h1.archive-title,
-    h1.entry-title {
-        font-size: 5.5rem;
-        line-height: 5rem;
-        letter-spacing: 2px;
-        text-align: left;
-        font-variant: small-caps;
-        text-decoration: none;
-        text-transform: capitalize;
-        vertical-align: middle;
-        font-weight: normal;
-    }
+/* HEADINGS */
+h1.archive-title,
+h1.entry-title {
+    font-size: 5.5rem;
+    line-height: 5rem;
+    letter-spacing: 2px;
+    text-align: left;
+    font-variant: small-caps;
+    text-decoration: none;
+    text-transform: capitalize;
+    vertical-align: middle;
+    font-weight: normal;
+}
+
+.page h1.entry-title,
+h1.archive-title {
+    display: inline;
+}
+
+
+.archive h2 {
+    /* Subtitle */
+    /* font-size: 4.5rem; */
+    margin: 0px 0 0 0;
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+h2.user-nicename {
+    font-family: Vollkorn, sans-serif;
+    font-weight: 100;
+}
+
+/* Recipes & ingredients */
+.single h3 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.entry-header-overlay .tag-overlay {
+    font-family: 'Amatic SC';
+    text-transform: capitalize;
+    font-size: 2.7rem;
+    line-height: 3rem;
+    font-weight: bold;
+}
+
+.entry-header-overlay .tag-overlay#veg {
+    font-family: 'FontAwesome';
+    font-size: 2.2rem;
+    line-height: 3rem;
+    font-weight: bold;
+}
+
+.archive h2.entry-title a,
+.search h2.entry-title a,
+h3.rpwe-title a {
+    font-family: "Oswald", sans-serif;
+    text-decoration: none;
+    text-transform: capitalize !important;
+    font-weight: normal;
+    font-size: 1.8rem;
+}
+
+h2.entry-title,
+.wpupg-post-title,
+.sidebar .widget-wrap li a,
+.sidebar .widget-wrap li h3 a,
+.sidebar .widget-wrap a {
+    font-size: 1.7rem;
+}
+
+.featured-content h2.entry-title a {
+    font-size: 1.6rem;
+    text-decoration: none;
+}
+
+/* Post Meta  */
+
+#username a {
+    font-family: Oswald, sans-serif;
+    font-size: 19px;
+    font-style: initial;
+    vertical-align: middle;
+    padding: 0 5px;
+}
+
+
+/* Responsive menu fonts */
+#responsive-menu-pro-container .user_name {
+    font-family: "Oswald", sans-serif;
+    font-size: 3rem;
+    color: #f3f3f3;
+    padding: 20px;
+}
+
+/*Text sizes */
+.text-big-font {
+    font-size: 1.8rem;
+}
+
+/* Widgets Fonts  */
+
+
+.widgettitle {
+    /* font-family:"Cabin", sans-serif; */
+    font-family: 'Amatic SC', cursive;
+    font-weight: bold;
+}
+
+.fancy .widgettitle {
+    font-family: "Ruge Boogie", cursive;
+    font-size: 60px;
+    font-weight: normal;
+    text-transform: none;
+    color: #222;
+}
+
+.elegant .widgettitle {
+    /*font-family:"Delius Swash Caps", cursive;*/
+    /* font-family:"Cabin", sans-serif; */
+    font-family: "Amatic SC", cursive;
+    font-size: 5rem;
+    color: #222;
+    font-weight: bold;
+    text-transform: none;
+}
+
+.title-big-font .widgettitle {
+    font-size: 5rem;
+}
+
+.recipes-top .widgettitle,
+.blogs-top .widgettitle,
+.archives-top .widgettitle {
+    font-family: "Vollkorn", sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
+/* Specific Widget fonts */
+.widget_newsletterwidget label {
+    font-family: Oswald, sans-serif;
+}
+
+#accordion h3 {
+    font-family: 'Cabin';
+    font-size: 1.8rem;
+    line-height: 3.5rem;
+    text-transform: initial;
+}
+
+#accordion .subnav a {
+    font-family: 'Cabin';
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    color: #4e4e4e;
+}
+
+#accordion .subnav a:hover {
+    color: #d7641d;
+}
+
+
+.tagcloud a {
+    /* font-family:"Oswald",cursive !important; */
+    font-family: "Cabin", cursive !important;
+}
+
+
+.more-from-category {
+    font-family: 'Cabin', sans-serif;
+}
+
+.home .more-from-category a {
+    font-size: 1.4rem;
+}
+
+/* Footer fonts */
+
+.footer-widgets,
+.footer-widgets .widgettitle {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.footer-widgets .widgettitle {
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 1.3rem;
+    color: #555;
+}
+
+.login-widget-user-link a {
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 2.4rem;
+    color: #555;
+}
+
+.widget .login-form label {
+    font-size: 1.5rem;
+}
+
+.login-widget-more-links {
+    font-size: 1.5rem;
+    line-height: 1.9rem;
+    font-family: Oswald, sans-serif;
+    font-weight: 400;
+}
+
+#whats-new-submit.loading:before {
+    content: "\f110";
+    font-family: FontAwesome;
+    font-size: 2rem;
+}
+
+
+/* Smartphone */
+@media only screen and (max-width:870px) {
 
     .page h1.entry-title,
-    h1.archive-title {
-        display: inline;
+    h1.archive-title,
+    h1.entry-title {
+        /*text-align: center;*/
+        font-size: 4.5rem;
+        line-height: 4rem;
     }
 
-
-    .archive h2 {
-        /* Subtitle */
-        /* font-size: 4.5rem; */
-        margin: 0px 0 0 0;
-        font-weight: bold;
-        padding-top: 20px;
-    }
-
-    h2.user-nicename {
-        font-family: Vollkorn, sans-serif;
-        font-weight: 100;
-    }
-
-    /* Recipes & ingredients */
-    .single h3 {
-        font-size: 3rem;
-        font-weight: bold;
-    }
-
-    .entry-header-overlay .tag-overlay {
-        font-family: 'Amatic SC';
-        text-transform: capitalize;
-        font-size: 2.7rem;
-        line-height: 3rem;
-        font-weight: bold;
-    }
-
-    .entry-header-overlay .tag-overlay#veg {
-        font-family: 'FontAwesome';
-        font-size: 2.2rem;
-        line-height: 3rem;
-        font-weight: bold;
-    }
-
-    .archive h2.entry-title a,
-    .search h2.entry-title a,
-    h3.rpwe-title a {
-        font-family: "Oswald", sans-serif;
-        text-decoration: none;
-        text-transform: capitalize !important;
-        font-weight: normal;
-        font-size: 1.8rem;
-    }
-
-    h2.entry-title,
-    .wpupg-post-title,
-    .sidebar .widget-wrap li a,
-    .sidebar .widget-wrap li h3 a,
-    .sidebar .widget-wrap a {
-        font-size: 1.7rem;
-    }
-
-    .featured-content h2.entry-title a {
-        font-size: 1.6rem;
-        text-decoration: none;
-    }
-
-    /* Post Meta  */
-
-    #username a {
-        font-family: Oswald, sans-serif;
-        font-size: 19px;
-        font-style: initial;
-        vertical-align: middle;
-        padding: 0 5px;
-    }
-
-
-    /* Responsive menu fonts */
-    #responsive-menu-pro-container .user_name {
-        font-family: "Oswald", sans-serif;
-        font-size: 3rem;
-        color: #f3f3f3;
-        padding: 20px;
-    }
-
-    /*Text sizes */
-    .text-big-font {
-        font-size: 1.8rem;
-    }
-
-    /* Widgets Fonts  */
-
-
-    .widgettitle {
-        /* font-family:"Cabin", sans-serif; */
-        font-family: 'Amatic SC', cursive;
-        font-weight: bold;
-    }
-
-    .fancy .widgettitle {
-        font-family: "Ruge Boogie", cursive;
-        font-size: 60px;
-        font-weight: normal;
-        text-transform: none;
-        color: #222;
-    }
-
+    .title-big-font .widgettitle,
     .elegant .widgettitle {
-        /*font-family:"Delius Swash Caps", cursive;*/
-        /* font-family:"Cabin", sans-serif; */
-        font-family: "Amatic SC", cursive;
-        font-size: 5rem;
-        color: #222;
-        font-weight: bold;
-        text-transform: none;
+        font-size: 2.8rem;
+        line-height: 4.5rem;
     }
 
-    .title-big-font .widgettitle {
-        font-size: 5rem;
+}
+
+@media only screen and (max-width:420px) {
+    body {
+        line-height: 1.325;
     }
-
-    .recipes-top .widgettitle,
-    .blogs-top .widgettitle,
-    .archives-top .widgettitle {
-        font-family: "Vollkorn", sans-serif;
-        font-size: 1.1rem;
-        margin-bottom: 0;
-        font-weight: normal;
-    }
-
-    /* Specific Widget fonts */
-    #accordion h3 {
-        font-family: 'Cabin';
-        font-size: 1.8rem;
-        line-height: 3.5rem;
-        text-transform: initial;
-    }
-
-    #accordion .subnav a {
-        font-family: 'Cabin';
-        font-size: 1.6rem;
-        letter-spacing: 1px;
-        color: #4e4e4e;
-    }
-
-    #accordion .subnav a:hover {
-        color: #d7641d;
-    }
-
-
-    .tagcloud a {
-        /* font-family:"Oswald",cursive !important; */
-        font-family: "Cabin", cursive !important;
-    }
-
-
-    .more-from-category {
-        font-family: 'Cabin', sans-serif;
-    }
-
-    .home .more-from-category a {
-        font-size: 1.4rem;
-    }
-
-    /* Footer fonts */
-
-    .footer-widgets,
-    .footer-widgets .widgettitle {
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .footer-widgets .widgettitle {
-        text-transform: uppercase;
-        font-weight: 300;
-        font-size: 1.3rem;
-        color: #555;
-    }
-
-    .login-widget-user-link a {
-        text-transform: uppercase;
-        font-weight: normal;
-        font-size: 2.4rem;
-        color: #555;
-    }
-
-    .widget .login-form label {
-        font-size: 1.5rem;
-    }
-
-    .login-widget-more-links {
-        font-size: 1.5rem;
-        line-height: 1.9rem;
-        font-family: Oswald, sans-serif;
-        font-weight: 400;
-    }
-
-    #whats-new-submit.loading:before {
-        content: "\f110";
-        font-family: FontAwesome;
-        font-size: 2rem;
-    }
-
-
-    /* Smartphone */
-    @media only screen and (max-width:870px) {
-
-        .page h1.entry-title,
-        h1.archive-title,
-        h1.entry-title {
-            /*text-align: center;*/
-            font-size: 4.5rem;
-            line-height: 4rem;
-        }
-
-        .title-big-font .widgettitle,
-        .elegant .widgettitle {
-            font-size: 2.8rem;
-            line-height: 4.5rem;
-        }
-
-    }
-
-    @media only screen and (max-width:420px) {
-        body {
-            line-height: 1.325;
-        }
-    }
+}

@@ -86,7 +86,7 @@ public function widget( $args, $instance ) {
 			function onDropDownChange() {
 				var choice = dropdown.options[dropdown.selectedIndex].value;
 				if ( choice != "none" ) {
-					location.href="<?= esc_url( home_url(add_query_arg(array(),$wp->request)) ); ?>?"+choice;
+					location.href="<?= esc_url( home_url(add_query_arg(array(),$wp->request)) ); ?>"+choice;
 				}
 			}
 			dropdown.onchange=onDropDownChange;

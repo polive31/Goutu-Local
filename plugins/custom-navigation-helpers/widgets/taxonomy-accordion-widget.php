@@ -108,10 +108,14 @@ class Recipe_Taxonomy_Accordion extends WP_Widget {
 			$title = $instance[ 'title' ];
 		else
 			$title = __( 'New title', 'foodiepro' );
-		if ( isset( $instance[ 'show_count' ] ) ) $show_count = $instance[ 'show_count' ];
-			else $show_count = false;
-		if ( isset( $instance[ 'displayed_user' ] ) ) $displayed_user = $instance[ 'displayed_user' ];
-			else $displayed_user = false;
+		if ( isset( $instance[ 'show_count' ] ) )
+			$show_count = $instance[ 'show_count' ];
+			else
+			$show_count = false;
+		if ( isset( $instance[ 'displayed_user' ] ) )
+			$displayed_user = $instance[ 'displayed_user' ];
+			else
+			$displayed_user = false;
 
 	// Widget admin form
 	?>
@@ -122,12 +126,12 @@ class Recipe_Taxonomy_Accordion extends WP_Widget {
 
 		<p>
 		    <label for="<?php echo $this->get_field_id( 'show_count' ); ?>"><?php _e( 'Show Recipe Count', 'foodiepro' ); ?></label>
-		    <input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id( 'show_count' ); ?>" name="<?php echo $this->get_field_name( 'show_count' ); ?>" <?php checked( $instance[ 'show_count' ], 'on' ); ?>  >
+		    <input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id( 'show_count' ); ?>" name="<?php echo $this->get_field_name( 'show_count' ); ?>" <?php checked( $show_count, 'on' ); ?>  >
 		</p>
 
 		<p>
 		    <label for="<?php echo $this->get_field_id( 'displayed_user' ); ?>"><?php _e( 'Limit Recipes to Current Displayed User', 'foodiepro' ); ?></label>
-		    <input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id( 'displayed_user' ); ?>" name="<?php echo $this->get_field_name( 'displayed_user' ); ?>" <?php checked( $instance[ 'displayed_user' ], 'on' ); ?>  >
+		    <input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id( 'displayed_user' ); ?>" name="<?php echo $this->get_field_name( 'displayed_user' ); ?>" <?php checked( $displayed_user, 'on' ); ?>  >
 		</p>
 	<?php
 	}

@@ -153,6 +153,7 @@ class CPM_Assets {
 			'post' => array(
 				'title'						=> _x( 'Post Title', 'post', 'foodiepro' ),
 				'edit_button'				=> _x( 'Edit Post', 'post', 'foodiepro' ),
+				'delete_button'				=> _x( 'Delete Post', 'post', 'foodiepro' ),
 				'new_button'				=> _x( 'New Post', 'post', 'foodiepro' ),
 				'new1'						=> _x( 'Write your new post on this page.', 'post', 'foodiepro' ),
                 'new2'						=> _x( 'You can then choose to save it as draft, or to publish it. Once approved, it will be visible to others according to your visibility preferences.', 'post', 'foodiepro' ),
@@ -290,8 +291,18 @@ class CPM_Assets {
 			$post_url =  do_shortcode('[permalink slug="' . self::get_slug( $post_type . '_form' ) . '"]');
 			$edit_url = $post_url . '?edit-' . $post_type . '=' . $post->ID;
 			$edit_title = self::get_label( $post_type, 'edit_button');
-			$out = '<span class="' . $class . '"><a href="' . $edit_url . '" title="' . $edit_title . '"><i class="fa fa-pencil-square-o"></i></a></span>';
+			$out = '<span class="' . $class . '"><a href="' . $edit_url . '" title="' . $edit_title . '"><i class="fas fa-edit"></i></a></span>';
 		}
+		return $out;
+	}
+
+	public static function get_delete_button($post, $post_type, $class = 'delete-button')
+	{
+		$out = '<span class="'. $class . '" title="' . self::get_label($post_type, 'delete_button') . '">';
+		$out .= '<a href="#">';
+		$out .= '<i class="fas fa-trash cpm-delete-post nodisplay" data-id="' . $post->ID . '" data-title="' . esc_attr($post->post_title) . '"></i>';
+		$out .= '</a>';
+		$out .= '</span>';
 		return $out;
 	}
 

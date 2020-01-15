@@ -15,7 +15,7 @@ class CPM_List {
         $output = '';
 
         if ( count($posts) == 0 ) {
-            $output = get_label( $this->post_type, 'noposts' );
+            $output = CPM_Assets::get_label( $this->post_type, 'noposts' );
             return $output;
         }
 
@@ -41,8 +41,7 @@ class CPM_List {
                 $item .= '<td class="post-list-status">' . $statuses[ $post->post_status ] . '</td>';
                 $item .= '<td class="post-list-actions">';
                     $item .= CPM_Assets::get_edit_button( $post, $this->post_type, 'post-edit' );
-                    $item .= '<div class="post-delete" title="' . __('Delete post', 'foodiepro') . '"><i class="fa fa-trash cpm-delete-post nodisplay" data-id="' . $post->ID . '" data-title="' . esc_attr( $post->post_title ) . '"></i></td>';
-                    $item .= '</div>';
+                    $item .= CPM_Assets::get_delete_button( $post, $this->post_type, 'post-delete' );
                 $item .= '</td>';
             }
 

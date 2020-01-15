@@ -126,6 +126,7 @@ class CRM_Assets {
 		$labels['recipe'] = array(
 			'title'						=> _x( 'Post Title', 'recipe', 'foodiepro' ),
 			'edit_button'				=> _x( 'Edit Post', 'recipe', 'foodiepro' ),
+			'delete_button'				=> _x( 'Delete Post', 'recipe', 'foodiepro' ),
 			'new_button'				=> _x( 'New Post', 'recipe', 'foodiepro' ),
 			'new1'						=> _x( 'Write your new post on this page.', 'recipe', 'foodiepro' ),
 			'new2'						=> _x( 'You can then choose to save it as draft, or to publish it. Once approved, it will be visible to others according to your visibility preferences.', 'recipe', 'foodiepro' ),

@@ -722,6 +722,18 @@ h3 {
 /* Widgets
 ----------------------------------------------------------------------*/
 
+/* Newsletter Widget
+-----------------------------------------------------------*/
+.tnp-field.tnp-field-button {
+    text-align: center;
+    margin: 10px 0;
+}
+
+input.tnp-submit {
+    width: 100%;
+}
+
+
 /* More about me sidebar box widget
 -----------------------------------------------------------*/
 .profile-field-container {
@@ -4246,9 +4258,9 @@ form#whats-new-form textarea {
     line-height: 1.4;
 }
 
-body.no-js form#whats-new-form textarea {
+/* body.no-js form#whats-new-form textarea {
     height: 50px;
-}
+} */
 
 form#whats-new-form #whats-new-options select {
     max-width: 200px;
@@ -4266,9 +4278,9 @@ form#whats-new-form #whats-new-submit {
     display: table;
 }
 
-body.no-js #whats-new-options {
+/* body.no-js #whats-new-options {
     height: auto;
-}
+} */
 
 textarea#whats-new {
     resize: none;
@@ -5204,7 +5216,7 @@ Site Footer
 
     .archive-title .archive-image {
         max-width: initial;
-		width:100%;
+        width: 100%;
     }
 
     .comment-rating {

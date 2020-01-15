@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 define('CHILD_THEME_NAME', 'Foodie Pro Theme');
 define('CHILD_THEME_DEVELOPER', 'Shay Bocks/Pascal Olive');
 define('CHILD_THEME_OPTIONS', get_option('cct_options'));
-define('CHILD_THEME_VERSION', ((bool)CHILD_THEME_OPTIONS['reload'])?time():'2.3.63');
+define('CHILD_THEME_VERSION', ((bool)CHILD_THEME_OPTIONS['reload'])?time():'2.3.64');
 define('CHILD_THEME_URL', get_stylesheet_directory_uri());
 define('CHILD_THEME_PATH', get_stylesheet_directory());
 
@@ -287,7 +287,7 @@ function enqueue_high_priority_assets()
 	/* Scripts enqueue
 		--------------------------------------------------- */
 	// .webp detection
-	custom_enqueue_script('custom-modernizr', '/assets/js/modernizr-custom.js', CHILD_THEME_URL, CHILD_THEME_PATH, array(), CHILD_THEME_VERSION);
+	// custom_enqueue_script('custom-modernizr', '/assets/js/modernizr-custom.js', CHILD_THEME_URL, CHILD_THEME_PATH, array(), CHILD_THEME_VERSION);
 	// Add general purpose scripts.
 	custom_enqueue_script('foodie-pro-general', '/assets/js/general.js', CHILD_THEME_URL, CHILD_THEME_PATH, array('jquery'), CHILD_THEME_VERSION, true);
 	custom_enqueue_script('custom-js-helpers', '/assets/js/custom_helpers.js', CHILD_THEME_URL, CHILD_THEME_PATH, array('jquery'), CHILD_THEME_VERSION, true);

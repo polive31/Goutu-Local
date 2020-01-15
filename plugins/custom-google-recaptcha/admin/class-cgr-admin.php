@@ -82,33 +82,33 @@ class CGR_Admin
     public function cgr_settings_field_v2_public_render()
     {
         $options = get_option('cgr_keys_array');
-        ?>
+?>
         <input type='text' name='cgr_keys_array[v2_public]' value='<?php echo $options['v2_public']; ?>'>
     <?php
-        }
+    }
 
     public function cgr_settings_field_v2_private_render()
     {
         $options = get_option('cgr_keys_array');
-        ?>
-    <input type='text' name='cgr_keys_array[v2_private]' value='<?php echo $options['v2_private']; ?>'>
-<?php
+    ?>
+        <input type='text' name='cgr_keys_array[v2_private]' value='<?php echo $options['v2_private']; ?>'>
+    <?php
     }
 
     public function cgr_settings_field_v3_private_render()
     {
         $options = get_option('cgr_keys_array');
-        ?>
-    <input type='text' name='cgr_keys_array[v3_private]' value='<?php echo $options['v3_private']; ?>'>
-<?php
+    ?>
+        <input type='text' name='cgr_keys_array[v3_private]' value='<?php echo $options['v3_private']; ?>'>
+    <?php
     }
 
     public function cgr_settings_field_v3_public_render()
     {
         $options = get_option('cgr_keys_array');
-        ?>
-    <input type='text' name='cgr_keys_array[v3_public]' value='<?php echo $options['v3_public']; ?>'>
-<?php
+    ?>
+        <input type='text' name='cgr_keys_array[v3_public]' value='<?php echo $options['v3_public']; ?>'>
+    <?php
     }
 
 
@@ -116,18 +116,19 @@ class CGR_Admin
     /* FORM */
     public function cgr_options()
     {
-        ?>
-    <div class="wrap">
-        <h2>Custom Google Recaptcha Options</h2>
-        <form method="post" action="options.php">
+    ?>
+        <div class="wrap">
+            <h2>Custom Google Recaptcha Options</h2>
+            <p> You can create your recaptcha keys on <a href="https://www.google.com/recaptcha/admin" target="_blank"> Google Recapatcha Admin page</a></p>
+            <form method="post" action="options.php">
 
-            <?php settings_fields('cgr_settings_group'); ?>
-            <?php do_settings_sections('cgr_settings_group'); ?>
+                <?php settings_fields('cgr_settings_group'); ?>
+                <?php do_settings_sections('cgr_settings_group'); ?>
 
-            <?php submit_button(__('Save Options', 'foodiepro')) ?>
+                <?php submit_button(__('Save Options', 'foodiepro')) ?>
 
-        </form>
-    </div>
-    <?php
+            </form>
+        </div>
+<?php
     }
 }

@@ -9,7 +9,9 @@ if (!defined('ABSPATH')) {
 class CCT_Admin
 {
     const PREFIX = 'color-theme-';
+    const LOGIN_PREFIX = 'custom-login-styles-';
     const DEFAULT_COLOR_THEME = 'spring';
+    const DEFAULT_LOGIN_COLOR_THEME = 'spring';
     private $options;
 
     public function __construct()
@@ -18,8 +20,14 @@ class CCT_Admin
         if (empty($this->options['color'])) {
             $this->options['color'] = self::DEFAULT_COLOR_THEME;
         }
+        if (empty($this->options['login-color'])) {
+            $this->options['login-color'] = self::DEFAULT_LOGIN_COLOR_THEME;
+        }
         if (empty($this->options['path'])) {
             $this->options['path'] = get_stylesheet_directory() . '/assets/css/color/';
+        }
+        if (empty($this->options['login-path'])) {
+            $this->options['login-path'] = get_stylesheet_directory() . '/login/';
         }
         if (empty($this->options['reload'])) {
             $this->options['reload'] = '0';
@@ -29,11 +37,12 @@ class CCT_Admin
     /* Admin notice */
     public function maybe_display_admin_notice()
     {
-        if ($this->options['reload']=='1') {
+        if ($this->options['reload'] == '1') {
             add_action('admin_notices', array($this, 'force_reload_activated_admin_notice'));
         }
     }
-    public function force_reload_activated_admin_notice() {
+    public function force_reload_activated_admin_notice()
+    {
         echo '<div id="message" class="error fade"><p style="line-height: 150%">';
         _e('<strong>Stylesheet Forced Reload is activated within Custom Color Theme plugin</strong> This reduces the page load speed for your users.');
         echo '</p></div>';
@@ -74,6 +83,15 @@ class CCT_Admin
         );
 
         add_settings_field(
+            'cct_login_path_field',
+            __('Path to the login color themes', 'foodiepro'),
+            array($this, 'cct_login_path_field_render'),
+            'cct_settings_group',
+            'cct_general_settings',
+            array('class' => 'cct-path')
+        );
+
+        add_settings_field(
             'cct_reload_field',
             __('Reload all stylesheets', 'foodiepro'),
             array($this, 'cct_reload_field_render'),
@@ -86,6 +104,14 @@ class CCT_Admin
             'cct_color_theme_select_field',
             __('Current Color Theme', 'foodiepro'),
             array($this, 'cct_color_theme_select_field_render'),
+            'cct_settings_group',
+            'cct_color_settings'
+        );
+
+        add_settings_field(
+            'cct_login_color_theme_select_field',
+            __('Current Login Color Theme', 'foodiepro'),
+            array($this, 'cct_login_color_theme_select_field_render'),
             'cct_settings_group',
             'cct_color_settings'
         );
@@ -102,19 +128,26 @@ class CCT_Admin
 
     public function cct_path_field_render()
     {
-        ?>
+?>
         <input type='text' name='cct_options[path]' value='<?php echo $this->options['path']; ?>'>
-        <?php
+    <?php
+    }
+
+    public function cct_login_path_field_render()
+    {
+    ?>
+        <input type='text' name='cct_options[login-path]' value='<?php echo $this->options['login-path']; ?>'>
+    <?php
     }
 
     public function cct_reload_field_render()
     {
-        ?>
-        <select class="widefat" id="" name="cct_options[reload]";">
+    ?>
+        <select class="widefat" id="" name="cct_options[reload]" ;">
             <option value="1" <?php selected($this->options['reload'], '1'); ?>><?= __('Yes', 'foodiepro');; ?></option>
             <option value="0" <?php selected($this->options['reload'], '0'); ?>><?= __('No', 'foodiepro');  ?></option>
         </select>
-        <?php
+    <?php
     }
 
     public function cct_color_settings_cb()
@@ -134,6 +167,26 @@ class CCT_Admin
                     $color = str_replace(self::PREFIX, '', $info['filename']);
             ?>
                     <option value="<?= $color; ?>" <?php selected($this->options['color'], $color); ?>><?= $color; ?></option>
+            <?php
+                    // echo $info['basename'] . '<br>';
+                }
+            } ?>
+        </select>
+    <?php
+    }
+
+    public function cct_login_color_theme_select_field_render()
+    {
+    ?>
+        <select class="widefat" id="" name="cct_options[login-color]" style="width:100%;">
+            <?php
+            $stylesheets = list_files($this->options['login-path'], 1, array());
+            foreach ($stylesheets as $stylesheet) {
+                $info = pathinfo($stylesheet);
+                if ($info['extension'] == 'css' && !strpos($info['basename'], '.min.css')) {
+                    $color = str_replace(self::LOGIN_PREFIX, '', $info['filename']);
+            ?>
+                    <option value="<?= $color; ?>" <?php selected($this->options['login-color'], $color); ?>><?= $color; ?></option>
             <?php
                     // echo $info['basename'] . '<br>';
                 }

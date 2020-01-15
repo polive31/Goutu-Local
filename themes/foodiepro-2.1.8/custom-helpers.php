@@ -11,9 +11,9 @@ if (!defined('ABSPATH')) {
 /* =================================================================*/
 
 // Secures translation strings outputs, while allowing some html attributes to be displayed
-function sec($text)
+function esc($text)
 {
-	return wp_kses($text, array('br' => array()));
+	return wp_kses($text, ALLOWED_TAGS);
 }
 
 

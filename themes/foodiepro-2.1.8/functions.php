@@ -22,23 +22,38 @@ define('CHILD_THEME_OPTIONS', get_option('cct_options'));
 define('CHILD_THEME_VERSION', ((bool)CHILD_THEME_OPTIONS['reload'])?time():'2.3.64');
 define('CHILD_THEME_URL', get_stylesheet_directory_uri());
 define('CHILD_THEME_PATH', get_stylesheet_directory());
-
 define('DEFAULT_CHILD_COLOR_THEME', 'spring');
+define('DEFAULT_LOGIN_COLOR_THEME', 'spring');
 define('CHILD_COLOR_THEME', foodiepro_get_color_theme());
+define('LOGIN_COLOR_THEME', foodiepro_get_login_color_theme());
 
 function foodiepro_get_color_theme() {
 	// $cct_options = get_option('cct_options');
 	if (CHILD_THEME_OPTIONS ) {
 		$color=!empty(CHILD_THEME_OPTIONS['color'])? CHILD_THEME_OPTIONS['color']: DEFAULT_CHILD_COLOR_THEME;
+		$login_color=!empty(CHILD_THEME_OPTIONS['color'])? CHILD_THEME_OPTIONS['color']: DEFAULT_CHILD_COLOR_THEME;
 	}
 	else {
 		$color=DEFAULT_CHILD_COLOR_THEME;
+		$login_color=DEFAULT_LOGIN_COLOR_THEME;
 	}
 	return $color;
 }
 
+function foodiepro_get_login_color_theme()
+{
+	// $cct_options = get_option('cct_options');
+	if (CHILD_THEME_OPTIONS) {
+		$login_color = !empty(CHILD_THEME_OPTIONS['login-color']) ? CHILD_THEME_OPTIONS['login-color'] : DEFAULT_LOGIN_COLOR_THEME;
+	} else {
+		$login_color = DEFAULT_LOGIN_COLOR_THEME;
+	}
+	return $login_color;
+}
+
 define('PLUGINS_URL', plugins_url());
 
+// This constant is configuring the sec() function, in custom-helpers.php
 define(
 	'ALLOWED_TAGS',
 	array(
@@ -53,6 +68,7 @@ define(
 			'title' => true,
 		),
 		'b' => array(),
+		'br' => array(),
 		'blockquote' => array(
 			'cite' => true,
 		),
@@ -404,7 +420,7 @@ function custom_favicon_links()
 add_filter('login_body_class', 'foodiepro_login_classes');
 function foodiepro_login_classes($classes)
 {
-	$classes[] = 'color-theme-' . CHILD_COLOR_THEME;
+	$classes[] = 'login_color-theme-' . LOGIN_COLOR_THEME;
 	return $classes;
 }
 
@@ -412,7 +428,8 @@ function foodiepro_login_classes($classes)
 add_action('login_enqueue_scripts', 'custom_login_style');
 function custom_login_style()
 {
-	custom_enqueue_style('custom-login', '/login/custom-login-styles-default.css');
+	$theme_css = 'custom-login-styles-' . LOGIN_COLOR_THEME . '.css';
+	custom_enqueue_style('custom-login', '/login/' . $theme_css);
 	wp_enqueue_style('google-fonts', '//fonts.googleapis.com/css?family=Oswald', array(), CHILD_THEME_VERSION);
 }
 
@@ -461,9 +478,9 @@ function cc_login_username_label()
 function cc_login_username_label_change($translated_text, $text, $domain)
 {
 	if ($text === 'Username or Email Address') {
-		$translated_text = esc_html__('Email Address', 'foodiepro'); // Use WordPress's own translation of 'Username'
+		$translated_text = esc(__('Email Address', 'foodiepro')); // Use WordPress's own translation of 'Username'
 	} elseif ($text === 'Register') {
-		$translated_text = esc_html__('Not yet a member ?', 'foodiepro'); // Use WordPress's own translation of 'Username'
+		$translated_text = esc(__('Not yet a member ?', 'foodiepro')); // Use WordPress's own translation of 'Username'
 	}
 	return $translated_text;
 }
@@ -475,7 +492,7 @@ function my_authenticate_username_password($user, $username, $password)
 {
 	if (!empty($username)) {
 		if (!strpos($username, '@'))
-			return new WP_Error('Invalid email address.', esc_html__('<strong>ERROR</strong>: Invalid login. Please make sure to use your EMAIL ADDRESS to log-in.', 'foodiepro')); //returns nothing if not valid email
+			return new WP_Error('Invalid email address.', esc(__('<strong>ERROR</strong>: Invalid login. Please make sure to use your EMAIL ADDRESS to log-in.', 'foodiepro'))); //returns nothing if not valid email
 		$user = get_user_by('email', $username);
 	}
 	if (isset($user->user_login, $user))

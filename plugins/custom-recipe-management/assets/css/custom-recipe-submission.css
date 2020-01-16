@@ -81,19 +81,6 @@ table.recipe-form {
   padding: 10px;
 }
 
-.delete-button span.fa-before:before {
-  content: "\f2ed";
-  /* trash regular */
-  color: #585858;
-  font-weight: 400;
-  font-size: 20px;
-  padding: 10px;
-}
-
-.delete-button span.fa-before:hover:before {
-  color: #d7641d;
-  font-weight: 900;
-}
 
 /* Sortable handle */
 tr td.sort-handle.ui-sortable-handle {

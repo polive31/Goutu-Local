@@ -266,6 +266,23 @@ td.post-general-form-label {
 
 
 /* Buttons */
+
+.delete-button span.fa-before:before {
+  content: "\f2ed";
+  /* trash regular */
+  color: #585858;
+  font-weight: 400;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.delete-button span.fa-before:hover:before {
+  color: #d7641d;
+  font-weight: 900;
+}
+
+
+
 #post-form-buttons {
   display: inline-block;
   padding: 20px;

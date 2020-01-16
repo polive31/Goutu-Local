@@ -300,7 +300,7 @@ class CPM_Assets {
 	{
 		$out = '<span class="'. $class . '" title="' . self::get_label($post_type, 'delete_button') . '">';
 		$out .= '<a href="#">';
-		$out .= '<i class="fas fa-trash cpm-delete-post nodisplay" data-id="' . $post->ID . '" data-title="' . esc_attr($post->post_title) . '"></i>';
+		$out .= '<i class="far fa-trash-alt cpm-delete-post nodisplay" data-id="' . $post->ID . '" data-title="' . esc_attr($post->post_title) . '"></i>';
 		$out .= '</a>';
 		$out .= '</span>';
 		return $out;

@@ -21,6 +21,7 @@ class CCM_Assets {
 
 	/* Register stylesheet, will be enqueued in the shortcode itself  */
 	public static function enqueue_ccm_assets() {
+		if (!is_single()) return;
 		wp_enqueue_script('grecaptcha-invisible', 'https://www.google.com/recaptcha/api.js');
 
 		/* Script for JS-based comment form validation and recaptcha result processing */

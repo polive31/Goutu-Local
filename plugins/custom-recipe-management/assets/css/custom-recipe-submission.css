@@ -75,13 +75,6 @@ table.recipe-form {
 
 /* Buttons
 ------------------------------------------------------- */
-.delete-button {
-  width: 30px;
-  cursor: pointer;
-  padding: 10px;
-}
-
-
 /* Sortable handle */
 tr td.sort-handle.ui-sortable-handle {
   cursor: -webkit-grab;
@@ -208,7 +201,7 @@ td.instruction-thumbnail {
 /* MEDIA QUERIES
 --------------------------------------------*/
 
-/* Smartphone */
+/* Tablet */
 @media only screen and (max-width:870px) {
 
   #wpurp_user_submission_form {
@@ -233,130 +226,140 @@ td.instruction-thumbnail {
   }
 
   .post-guidelines {
-    float: left;
+    vertical-align: middle;
+    display: inline-block;
   }
 
-  span.time-input {
-    float: left;
+span.time-input {
+  float: left;
+}
+
+.instruction-text {
+  width: 100%;
+  clear: both;
+}
+
+.instruction-image {
+  margin: 0;
+  padding: 0;
+}
+
+table#recipe-ingredients {
+  border-collapse: separate;
+  border-spacing: 0 20px;
+}
+
+
+td.recipe-general-form-field {
+  float: left;
+  width: 100%;
+}
+
+#recipe-ingredients td,
+#recipe-instructions td {
+  display: block;
+  text-align: left;
+}
+
+tr.instruction td {
+  padding: 0;
+}
+
+#recipe-ingredients tr.ingredient td.ingredient-input {
+  float: left;
+  width: 100%;
+}
+
+#recipe-ingredients tr.ingredient td.ingredient-input.name {
+  width: calc(100% - 30px);
+}
+
+#recipe-ingredients td.spinner {
+  float: right;
+  width: 30px;
+}
+
+td.recipe-general-form-label {
+  float: left;
+}
+
+#recipe-instructions td.sort-handle,
+#recipe-ingredients td.sort-handle {
+  float: left;
+}
+
+#recipe-instructions td.delete-button,
+#recipe-ingredients td.delete-button {
+  float: right;
+}
+
+#recipe-instructions td.instruction-content,
+#recipe-ingredients td.ingredient-preview {
+  float: left;
+  /* width: calc(100% - 70px); */
+}
+
+.instruction-buttons:before {
+  display: none;
+}
+
+#recipe-ingredients tr.ingredient.saved td.ingredient-input,
+#recipe-ingredients tr.ingredient.new td.ingredient-preview,
+#recipe-ingredients tr.ingredient.edit td.ingredient-preview,
+#recipe-ingredients tr.ingredient.saved td.spinner {
+  display: none;
+}
+
+#recipe-ingredients tr.ingredient.saved td.ingredient-preview,
+#recipe-ingredients tr.ingredient.new td.ingredient-input,
+#recipe-ingredients tr.ingredient.edit td.ingredient-input,
+#recipe-ingredients tr.ingredient.new td.spinner,
+#recipe-ingredients tr.ingredient.edit td.spinner {
+  display: block;
+}
+
+/*Recipe Submit Buttons*/
+.recipe-form-buttons {
+  float: left;
+  padding: 0;
+  text-align: left;
+}
+
+.recipe-submit-buttons span.formbutton {
+  padding: 7px 5px;
+  margin: 5px;
+  font-size: 14px;
+}
+
+#wpurp_user_submission_form input:before {
+  padding: 0;
+}
+
+
+/*SELECTION BOXES*/
+
+/*Prevent display of keyboard on smartphone*/
+.readonly input.select2-search__field {
+  /* display: none; */
+}
+
+.recipe-tags-container {
+  padding-right: 20px;
+}
+
+.taxonomy-select-boxes select,
+.select2-container {
+  width: calc(100% - 30px);
+}
+
+/* Smartphone */
+@media only screen and (max-width:420px) {
+
+  .recipe-general-form-field input {
+    width: 45%;
+    /* padding: 10px 0; */
   }
 
-  .instruction-text {
-    width: 100%;
-    clear: both;
-  }
-
-  .instruction-image {
-    margin: 0;
-    padding: 0;
-  }
-
-  table#recipe-ingredients {
-    border-collapse: separate;
-    border-spacing: 0 20px;
-  }
-
-
-  td.recipe-general-form-field {
-    float: left;
-    width: 100%;
-  }
-
-  #recipe-ingredients td,
-  #recipe-instructions td {
-    display: block;
-    text-align: left;
-  }
-
-  tr.instruction td {
-    padding: 0;
-  }
-
-  #recipe-ingredients tr.ingredient td.ingredient-input {
-    float: left;
-    width: 100%;
-  }
-
-  #recipe-ingredients tr.ingredient td.ingredient-input.name {
-    width: calc(100% - 30px);
-  }
-
-  #recipe-ingredients td.spinner {
-    float: right;
-    width: 30px;
-  }
-
-  td.recipe-general-form-label {
-    float: left;
-  }
-
-  #recipe-instructions td.sort-handle,
-  #recipe-ingredients td.sort-handle {
-    float: left;
-  }
-
-  #recipe-instructions td.delete-button,
-  #recipe-ingredients td.delete-button {
-    float: right;
-  }
-
-  #recipe-instructions td.instruction-content,
-  #recipe-ingredients td.ingredient-preview {
-    float: left;
-    width: calc(100% - 70px);
-  }
-
-  .instruction-buttons:before {
-    display: none;
-  }
-
-  #recipe-ingredients tr.ingredient.saved td.ingredient-input,
-  #recipe-ingredients tr.ingredient.new td.ingredient-preview,
-  #recipe-ingredients tr.ingredient.edit td.ingredient-preview,
-  #recipe-ingredients tr.ingredient.saved td.spinner {
-    display: none;
-  }
-
-  #recipe-ingredients tr.ingredient.saved td.ingredient-preview,
-  #recipe-ingredients tr.ingredient.new td.ingredient-input,
-  #recipe-ingredients tr.ingredient.edit td.ingredient-input,
-  #recipe-ingredients tr.ingredient.new td.spinner,
-  #recipe-ingredients tr.ingredient.edit td.spinner {
-    display: block;
-  }
-
-  /*Recipe Submit Buttons*/
-  .recipe-form-buttons {
-    float: left;
-    padding: 0;
-    text-align: left;
-  }
-
-  .recipe-submit-buttons span.formbutton {
-    padding: 7px 5px;
-    margin: 5px;
-    font-size: 14px;
-  }
-
-  #wpurp_user_submission_form input:before {
-    padding: 0;
-  }
-
-
-  /*SELECTION BOXES*/
-
-  /*Prevent display of keyboard on smartphone*/
-  .readonly input.select2-search__field {
-    /* display: none; */
-  }
-
-  .recipe-tags-container {
-    padding-right: 20px;
-  }
-
-  .taxonomy-select-boxes select,
-  .select2-container {
-    width: calc(100% - 30px);
-  }
-
+}
 
 }

@@ -5214,8 +5214,21 @@ Site Footer
 
 @media only screen and (max-width:420px) {
 
-    .archive-title .archive-image {
+    .archive-description,
+    .page header.entry-header,
+    .single header.entry-header {
+        padding: 0;
+    }
+
+    .entry-header-image {
+        margin-right: 0;
+    }
+
+    /* .archive-title .archive-image {
         max-width: initial;
+        width: 100%;
+    } */
+    /* .entry-header-image {
         width: 100%;
     }
 
@@ -5255,9 +5268,7 @@ Site Footer
         visibility: hidden !important;
     }
 
-    .entry-header-image {
-        width: 100%;
-    }
+ */
 
     .entry-header-overlay .tag-overlay {
         font-size: 25px;

@@ -395,7 +395,7 @@ h2.entry-title,
     h1.archive-title,
     h1.entry-title {
         /*text-align: center;*/
-        font-size: 4.5rem;
+        font-size: 4rem;
         line-height: 4rem;
     }
 
@@ -411,4 +411,10 @@ h2.entry-title,
     body {
         line-height: 1.325;
     }
+
+    .post-list-actions span {
+        font-size: 2.3rem;
+        line-height: 3.2rem;
+    }
+
 }

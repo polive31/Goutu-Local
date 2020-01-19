@@ -312,4 +312,34 @@ class CRM_Recipe_Template {
         }
     }
 
+    public function excerpt_filter($content)
+    {
+        $ignore_query = !in_the_loop() || !is_main_query();
+        if (apply_filters('wpurp_recipe_content_loop_check', $ignore_query)) {
+            return $content;
+        }
+
+        if (get_post_type() == 'recipe') {
+            remove_filter('get_the_excerpt', array($this, 'excerpt_filter'), 10);
+
+            $recipe = new WPURP_Recipe(get_post());
+            $excerpt = $recipe->excerpt();
+
+            $post_content = $recipe->post_content();
+            $post_content = trim(preg_replace("/\[wpurp-searchable-recipe\][^\[]*\[\/wpurp-searchable-recipe\]/", "", $post_content));
+
+            if ($post_content == '' && empty($excerpt)) {
+                $content = $recipe->description();
+            } else if ($content == '') {
+                $content = get_the_excerpt();
+            }
+
+            $content = apply_filters('wpurp_output_recipe_excerpt', $content, $recipe);
+
+            add_filter('get_the_excerpt', array($this, 'excerpt_filter'), 10);
+        }
+
+        return $content;
+    }
+
 }

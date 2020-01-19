@@ -33,7 +33,7 @@
         <div class="post-container post-tags-container">
                 <h4 id="headline-tags"><?php _e( 'Post Tags', 'foodiepro' ) ?></h4>
                 <p>
-                    <div class="taxonomy-select-spinner"><i class="fa fa-spinner fa-spin"></i></div>
+                    <div class="taxonomy-select-spinner"><i class="fas fa-spinner fa-spin"></i></div>
                     <div class="taxonomy-select-boxes nodisplay">
                     <?= $this->display_taxonomies( $post_ID, $required_fields ); ?>
                     </div>

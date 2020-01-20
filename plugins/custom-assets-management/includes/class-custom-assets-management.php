@@ -20,12 +20,14 @@ class Custom_Assets_Management {
 		'custom-gdpr',
 		'dashicons',
 		'bp-mentions-css',
+		'google-fonts',
+		'child-theme-fonts',
 	);
 
 	// Stylesheets to be preloaded
 	const PRELOAD_CSS = array(
-		'google-fonts',
-		'child-theme-fonts',
+		// 'google-fonts',
+		// 'child-theme-fonts',
 	);
 
 	/* Stylesheets to be replaced.

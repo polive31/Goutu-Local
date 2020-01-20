@@ -5,6 +5,31 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 
+/* =================================================================*/
+/* =              Custom admin notice
+/* =================================================================*/
+class foodiepro_admin_notice
+{
+	private $_message;
+	public function __construct($message)
+	{
+		$this->_message = $message;
+		add_action('admin_notices', array($this, 'render'));
+	}
+	public function render()
+	{
+		//notice-error, notice-warning, notice-success, or notice-info
+		ob_start();
+?>
+		<div class="notice notice-error is-dismissible">
+			<p><?= $this->_message ?></p>
+		</div>
+	<?php
+		$html = ob_get_contents();
+		ob_end_clean();
+		echo $html;
+	}
+}
 
 /* =================================================================*/
 /* =              SECURITY
@@ -28,11 +53,11 @@ function picture($url, $id = '', $class = '')
 	$image = pathinfo($url);
 	$basename = $image['basename'];
 	$extension = $image['extension'];
-	$srcext = ($extension=='jpg'|| $extension == 'jpeg')?'jpeg':$extension;
+	$srcext = ($extension == 'jpg' || $extension == 'jpeg') ? 'jpeg' : $extension;
 	$dirname = $image['dirname'];
 
 	ob_start();
-?>
+	?>
 
 	<picture id="<?= $id; ?>" class="<?= $class; ?>">
 		<source srcset="<?= $dirname . $basename . '.webp'; ?>" type="image/webp">

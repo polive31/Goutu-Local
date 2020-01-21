@@ -3,7 +3,7 @@ jQuery(document).ready(function()   {
     // jQuery(document).ajaxStop(function () {
         // sidebarHeightAdjustToContent();
     // });
-    
+
     /*  Minify header on scroll
     -------------------------------------*/
     var hintAlreadyRead="false";
@@ -16,7 +16,7 @@ jQuery(document).ready(function()   {
     if (hintAlreadyRead=="" || hintAlreadyRead=="false") {
         setCookie('menuHint','true',30);
         // console.log("Set Cookie to true and remove class nodisplay");
-        jQuery('.mobile-menu-hint-container').removeClass('nodisplay');       
+        jQuery('.mobile-menu-hint-container').removeClass('nodisplay');
     }
     // else console.log("Cookie=True => do not show hint");
 
@@ -36,16 +36,16 @@ jQuery(document).ready(function()   {
             didScroll = "last";
         }
         else if (didScroll == "last") {
-            // Allows for the css transition to be completed before computing the margin again 
+            // Allows for the css transition to be completed before computing the margin again
             setContainerTopMargin();
             didScroll = "stop";
-        }    
+        }
         else if (didScroll == "no" && count <= 4) {
             count++;
             // console.log( "count = " + count);
         }
     }, 250);
-    
+
 });
 
 
@@ -56,7 +56,7 @@ function sidebarHeightAdjustToContent() {
 
     // console.log( "In sidebarHeightAdjustToContent" );
 
-    // Variables for Sidebar height adjust to content (shac) 
+    // Variables for Sidebar height adjust to content (shac)
     var shacContentClass = ".site-inner .content";
     var shacSidebarClass = ".sidebar.widget-area";
     var shacElementToRemove = "section";
@@ -67,19 +67,19 @@ function sidebarHeightAdjustToContent() {
     // console.log( "Content height", contentHeight );
     // console.log( "Sidebar height", sidebarHeight );
     // console.log( "Allowed max height", contentHeight + shacExtraHeight );
-    
+
     var searchAutoHideWidgets = shacSidebarClass + ' ' + shacElementToRemove + '.autohide';
-    
+
     // console.log('Widgets with autohide class', jQuery(searchAutoHideWidgets));
-    
+
     var element = jQuery(searchAutoHideWidgets).last();
     var prevElement;
-    
+
     while ( (sidebarHeight > contentHeight + shacExtraHeight) && element.length>0/*&& (count < shacMaxWidgetRemove )*/ ) {
- 
+
         // console.log( "In adjust sidebar height loop" );
         // console.log( "current element is : ", element );
-       
+
         prevElement = element.prev();
         if ( element.hasClass('autohide') ) {
             // console.log('Element has class autohide');
@@ -93,7 +93,7 @@ function sidebarHeightAdjustToContent() {
         element = prevElement;
         // console.log( 'Setting current element to : ', element);
     };
-    
+
     // console.log( "Out of while loop" );
 }
 
@@ -139,7 +139,7 @@ function setContainerTopMargin( scrollTop ) {
     if ( scrollTop ) {
         jQuery(window).scrollTop(0);
         // console.log( "Scroll Position = " + jQuery(window).scrollTop() );
-    }    
+    }
     jQuery(".site-container").css("margin-top", topMargin);
 
 }

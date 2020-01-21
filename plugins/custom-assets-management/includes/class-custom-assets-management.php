@@ -89,6 +89,13 @@ class Custom_Assets_Management {
 	private $js_if = array(
 		'newscript'								=> array('page' => 'home'),
 		'newsletter-subscription'				=> array('page' => 'home'),
+		'wp-embed'								=> array('page' => 'social home'),
+		//Megamenu
+		'megamenu'								=> array('mobile' => false),
+		'megamenu-pro'							=> array('mobile' => false),
+		'hoverIntent'							=> array('mobile' => false),
+		'hoverintent-js'						=> array('mobile' => false),
+		//Peepso
 		'peepso-resize'							=> array('page' => 'social'),
 		'peepsolocation-js'						=> array('page' => 'social'),
 		'peepso-time'							=> array('page' => 'social'),
@@ -96,7 +103,6 @@ class Custom_Assets_Management {
 		'peepso-groups-group'					=> array('page' => 'social'),
 		'peepso-groups-group'					=> array('page' => 'social'),
 		'peepso-blogposts'						=> array('page' => 'social'),
-		'wp-embed'								=> array('page' => 'social home'),
 		'peepsovideos'							=> array('page' => 'social home'),
 		'peepso-photos'							=> array('page' => 'social home'),
 		'peepso-moods'							=> array('page' => 'social home'),

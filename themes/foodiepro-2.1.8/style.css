@@ -5110,7 +5110,8 @@ Site Footer
 
     .home .site-header,
     .site-header {
-        background: none !important;
+        background: rgba(255, 255, 255, 0.93);
+        /* background: none !important; */
     }
 
     .home .elegant .widgettitle {

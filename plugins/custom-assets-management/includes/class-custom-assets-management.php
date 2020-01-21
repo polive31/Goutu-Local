@@ -49,6 +49,7 @@ class Custom_Assets_Management {
 	// Stylesheets to be loaded conditionnally
 	private $css_if = array(
 		// 'custom-star-ratings' 				=> array('page' => 'blog-page'),
+		'foodiepro-color-theme'				=> array('mobile' => false),
 		'news-style'						=> array('page' => 'home'),
 		'newsletter'						=> array('page' => 'home'),
 		'yarppRelatedCss' 					=> array('singular' => 'post recipe'),
@@ -86,22 +87,23 @@ class Custom_Assets_Management {
 
 	// Scripts to be loaded conditionnally
 	private $js_if = array(
-		'newscript'							=> array('page' => 'home'),
-		'newsletter-subscription'			=> array('page' => 'home'),
-		'peepso-resize'						=> array('page' => 'social'),
-		'peepsolocation-js'					=> array('page' => 'social'),
-		'peepso-time'						=> array('page' => 'social'),
-		'peepso-groups'						=> array('page' => 'social'),
-		'peepso-groups-group'				=> array('page' => 'social'),
-		'peepso-groups-group'				=> array('page' => 'social'),
-		'peepso-blogposts'					=> array('page' => 'social'),
-		'wp-embed'							=> array('page' => 'social home'),
-		'peepsovideos'						=> array('page' => 'social home'),
-		'peepso-photos'						=> array('page' => 'social home'),
-		'peepso-moods'						=> array('page' => 'social home'),
-		'peepso-markdown'					=> array('false' => ''),
-		'peepso-modal-comments'				=> array('false' => ''),
-		'peepso-friends-shortcode'			=> array('false' => ''),
+		'newscript'								=> array('page' => 'home'),
+		'newsletter-subscription'				=> array('page' => 'home'),
+		'peepso-resize'							=> array('page' => 'social'),
+		'peepsolocation-js'						=> array('page' => 'social'),
+		'peepso-time'							=> array('page' => 'social'),
+		'peepso-groups'							=> array('page' => 'social'),
+		'peepso-groups-group'					=> array('page' => 'social'),
+		'peepso-groups-group'					=> array('page' => 'social'),
+		'peepso-blogposts'						=> array('page' => 'social'),
+		'wp-embed'								=> array('page' => 'social home'),
+		'peepsovideos'							=> array('page' => 'social home'),
+		'peepso-photos'							=> array('page' => 'social home'),
+		'peepso-moods'							=> array('page' => 'social home'),
+		'peepso-markdown'						=> array('false' => ''),
+		'peepso-modal-comments'					=> array('false' => ''),
+		'peepso-friends-shortcode'				=> array('false' => ''),
+		'responsive-menu-pro-jquery-touchswipe'	=> array('mobile' => true),
 	);
 
 	// Plugin path & url properties
@@ -191,10 +193,13 @@ class Custom_Assets_Management {
 					$thismet = is_singular( explode(' ', $value) );
 					break;
 				case 'logged-in':
-					$thismet = is_user_logged_in();
+					$thismet = (bool)$value?is_user_logged_in():!is_user_logged_in();
 					break;
 				case 'admin':
 					$thismet = current_user_can( 'manage_options' );
+					break;
+				case 'mobile':
+					$thismet = (bool)$value?wp_is_mobile():!wp_is_mobile();
 					break;
 				}
 			$met = $met && $thismet;

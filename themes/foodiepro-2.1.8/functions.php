@@ -335,7 +335,7 @@ function enqueue_low_priority_assets()
 	/* Theme stylesheet with varying name & version, forces cache busting at browser level
 		--------------------------------------------------- */
 	$color_theme_handler = 'color-theme-' . CHILD_COLOR_THEME;
-	custom_enqueue_style($color_theme_handler, '/assets/css/color/' . $color_theme_handler . '.css', CHILD_THEME_URL, CHILD_THEME_PATH,  array(), CHILD_COLOR_THEME . CHILD_THEME_VERSION);
+	custom_enqueue_style('foodiepro-color-theme', '/assets/css/color/' . $color_theme_handler . '.css', CHILD_THEME_URL, CHILD_THEME_PATH,  array(), CHILD_COLOR_THEME . CHILD_THEME_VERSION);
 
 	/* Customized GDPR stylesheet
 		--------------------------------------------------- */

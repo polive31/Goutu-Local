@@ -109,7 +109,7 @@ class Custom_Assets_Management {
 		'peepso-markdown'						=> array('false' => ''),
 		'peepso-modal-comments'					=> array('false' => ''),
 		'peepso-friends-shortcode'				=> array('false' => ''),
-		'responsive-menu-pro-jquery-touchswipe'	=> array('mobile' => true),
+		// 'responsive-menu-pro-jquery-touchswipe'	=> array('mobile' => true), => Issue on Chrome don't use !!!
 	);
 
 	// Plugin path & url properties

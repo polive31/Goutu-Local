@@ -1708,8 +1708,33 @@ a.archive-avatar img {
     margin-bottom: 0;
 }
 
+.search .archives-top {
+    padding: 0;
+    margin-left: 20px;
+}
+
+.search .archives-top .widget {
+    padding-left: 0px;
+}
+
+.search .archives-top .widget_text {
+    padding-top: 15px;
+}
+
+.search .archives-top .textwidget,
+.search .archives-top .textwidget h3 {
+    padding: 0;
+    margin: 0;
+}
+
+.search-top .widgettitle,
+.search .archives-top .textwidget h3 {
+    font-size: 2rem;
+    font-weight: normal;
+    font-family: 'Vollkorn', sans-serif;
+}
+
 .search-top .widgettitle {
-    font-size:2.5rem;
     text-align: left;
     padding: 0;
     margin: 0;

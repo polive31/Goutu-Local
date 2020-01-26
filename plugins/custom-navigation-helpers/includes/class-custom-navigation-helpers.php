@@ -15,8 +15,13 @@ class Custom_Navigation_Helpers {
 	public function __construct() {
 
 		$Assets = new CNH_Assets();
-		add_action( 'wp_enqueue_scripts', 				array($Assets, 'enqueue_masonry_scripts'));
+		add_action( 'wp_enqueue_scripts', 				array($Assets, 'enqueue_cnh_scripts'));
 
+
+		/* Archive structured data are already output by the masonry JS plugin  */
+		// $Data = new CNH_Structured_Data();
+		// add_action('genesis_entry_header', 				array($Data, 'populate_entry_metadata'));
+		// add_action('genesis_after_loop', 				array($Data, 'output_metadata'));
 
 		$Entries = new CNH_Archive_Entries();
 		add_filter( 'genesis_post_title_output', 		array($Entries, 'archive_rating' ), 1 );

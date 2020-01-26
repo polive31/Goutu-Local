@@ -2856,6 +2856,10 @@ span.edit-button {
     padding: 10px 0px 20px 0px;
 }
 
+.search-description {
+    padding-bottom:40px;
+}
+
 .archive-description p {
     margin-top: 10px;
 }

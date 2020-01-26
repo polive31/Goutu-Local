@@ -83,7 +83,7 @@ class CNH_Archive_Headline {
 			$query = get_queried_object();
 			if ($type == 'title') {
 				$output = $this->get_archive_title( $query );
-				$output = '<span class="archive-image">' . CNH_Assets::get_term_image('', 'horizontal-thumbnail') . '</span>' . $output;
+				$output = '<span class="archive-image">' . CNH_Assets::get_term_image('', 'thumbnail') . '</span>' . $output;
 			}
 			else {
 				$output = $this->get_archive_description( $query );

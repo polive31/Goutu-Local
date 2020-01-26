@@ -572,6 +572,7 @@ body {
     width: 320px;
     font-family: "Helvetica", Arial, sans-serif;
     background-color: #fff;
+    padding: 10px;
 }
 
 @media only screen and (min-width: 992px) {
@@ -608,12 +609,13 @@ body {
 }
 
 .ps-popover-footer>a {
-    display: block;
     padding: 8.5px;
     font-size: 13px;
     line-height: 1.2;
     background: #EFEFEF;
     color: #424242 !important;
+    text-align: center;
+    height: 50px;
 }
 
 .ps-popover-footer>a:hover,

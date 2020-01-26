@@ -83,7 +83,7 @@ class CNH_Archive_Headline {
 			$query = get_queried_object();
 			if ($type == 'title') {
 				$output = $this->get_archive_title( $query );
-				$output = '<span class="archive-image">' . do_shortcode('[wp_custom_image_category]') . '</span>' . $output;
+				$output = '<span class="archive-image">' . CNH_Assets::get_term_image('', 'horizontal-thumbnail') . '</span>' . $output;
 			}
 			else {
 				$output = $this->get_archive_description( $query );
@@ -193,7 +193,7 @@ class CNH_Archive_Headline {
 		if ( isset( $_GET['wpurp-search'] ) )
 			return __('Detailed Search Results', 'foodiepro');
 		else
-			return sprintf( __('Search Results for:%s', 'foodiepro'), get_search_query());
+			return sprintf( __('Search Results for %s', 'foodiepro'), get_search_query());
 	}
 
 	public function get_post_type_archive_title( $post_type ) {

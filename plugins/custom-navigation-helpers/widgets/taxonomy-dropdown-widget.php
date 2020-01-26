@@ -103,7 +103,7 @@ return $instance;
 } // Class wpb_widget ends here
 
 // Register and load the widget
-add_action( 'widgets_init', 'wpb_load_widget_taxonomy' );
-function wpb_load_widget_taxonomy() {
+add_action( 'widgets_init', 'cnh_load_taxonomy_dropdown_widget' );
+function cnh_load_taxonomy_dropdown_widget() {
 	register_widget( 'taxonomy_navigation_widget' );
 }

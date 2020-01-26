@@ -1700,6 +1700,34 @@ a.archive-avatar img {
     margin-bottom: 0;
 }
 
+/* Search Top section
+------------------------------------------------ */
+
+.top.search-top {
+    padding-left: 20px;
+    margin-bottom: 0;
+}
+
+.search-top .widgettitle {
+    font-size:2.5rem;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px dotted #8a8a8a;
+}
+
+ul.related-terms li {
+    display: inline-block;
+    margin-right: 40px;
+    width: 100px;
+    vertical-align: top;
+}
+
+.taxonomy-search-image {
+    max-width: 150px;
+}
+
+
 /* ## Screen reader text
 --------------------------------------------- */
 

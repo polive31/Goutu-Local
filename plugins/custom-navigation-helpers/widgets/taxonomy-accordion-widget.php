@@ -148,7 +148,7 @@ class Recipe_Taxonomy_Accordion extends WP_Widget {
 } // Class wpb_widget ends here
 
 // Register and load the widget
-add_action( 'widgets_init', 'wpb_load_widget_accordion_taxonomy' );
-function wpb_load_widget_accordion_taxonomy() {
+add_action( 'widgets_init', 'cnh_load_taxonomy_accordion_widget' );
+function cnh_load_taxonomy_accordion_widget() {
 	register_widget( 'Recipe_Taxonomy_Accordion' );
 }

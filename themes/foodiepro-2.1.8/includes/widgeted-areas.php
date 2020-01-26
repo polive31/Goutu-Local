@@ -149,6 +149,15 @@ genesis_register_sidebar( array(
     'description' => __( 'This is the bottom widget section of archived pages.', 'foodiepro' ),
 ) );
 
+/* Search pages widgeted areas
+----------------------------------------------------*/
+genesis_register_sidebar(array(
+	'id'          => 'search-top',
+	'name'        => __('Search Top', 'foodiepro'),
+	'description' => __('This is the top widget section of search pages.', 'foodiepro'),
+));
+
+
 /* Post List pages widgeted areas
 ----------------------------------------------------*/
 genesis_register_sidebar( array(

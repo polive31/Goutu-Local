@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2020-01-17 00:12+0100\n"
+"POT-Creation-Date: 2020-01-26 21:35+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -387,118 +387,119 @@ msgstr ""
 msgid "%s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:131
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:132
 msgid ""
 "You will find here all the recipes, which you can further sort by date or "
 "evaluation."
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:134
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:135
 msgid "You will find here all the posts, which you can further sort by date."
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:153
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:154
 #, php-format
 msgctxt "vowel"
 msgid "All recipes containing %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:155
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:156
 #, php-format
 msgctxt "consonant"
 msgid "All recipes containing %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:194
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:195
 msgid "Detailed Search Results"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:196
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:197
+#: themes/foodiepro-2.1.8/search.php:28
 #, php-format
-msgid "Search Results for:%s"
+msgid "Search Results for %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:201
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:202
 msgid "All the recipes"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:203
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:204
 msgid "All the posts"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:213
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:214
 #, php-format
 msgctxt "masculine-vowel"
 msgid "All %s from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:214
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:215
 #, php-format
 msgctxt "masculine-consonant"
 msgid "All %s from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:217
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:218
 #, php-format
 msgctxt "feminine-vowel"
 msgid "All %s from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:218
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:219
 #, php-format
 msgctxt "feminine-consonant"
 msgid "All %s from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:258
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:259
 #, php-format
 msgctxt "generic-plural"
 msgid "All posts from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:259
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:260
 #, php-format
 msgctxt "generic-vowel"
 msgid "All posts from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:260
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:261
 #, php-format
 msgctxt "generic-consonant"
 msgid "All posts from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:263
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:264
 #, php-format
 msgctxt "post-plural"
 msgid "All posts from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:264
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:265
 #, php-format
 msgctxt "post-vowel"
 msgid "All posts from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:265
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:266
 #, php-format
 msgctxt "post-consonant"
 msgid "All posts from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:268
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:269
 #, php-format
 msgctxt "recipe-plural"
 msgid "All posts from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:269
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:270
 #, php-format
 msgctxt "recipe-vowel"
 msgid "All posts from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:270
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:271
 #, php-format
 msgctxt "recipe-consonant"
 msgid "All posts from %s"
@@ -586,6 +587,7 @@ msgstr ""
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:107
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:110
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:87
+#: plugins/custom-navigation-helpers/widgets/taxonomy-search-widget.php:88
 #: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:119
 #: plugins/custom-recipe-management/widgets/crm_lists_dropdown_widget.php:70
 #: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:47
@@ -595,6 +597,7 @@ msgstr ""
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:111
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:123
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:91
+#: plugins/custom-navigation-helpers/widgets/taxonomy-search-widget.php:92
 #: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:122
 #: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:86
 #: plugins/custom-peepso-overrides/widgets/PeepsoCoverImageHeader.php:86
@@ -673,6 +676,14 @@ msgstr ""
 msgid "countries"
 msgstr ""
 
+#: plugins/custom-navigation-helpers/widgets/taxonomy-search-widget.php:18
+msgid "Taxonomy Search widget"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/taxonomy-search-widget.php:21
+msgid "Displays taxonomy terms corresponding to the current search terms"
+msgstr ""
+
 #: plugins/custom-peepso-overrides/custom-peepso-overrides-loader.php:55
 msgid "<strong>Peepso Helpers</strong> requires the Peepso plugin to work."
 msgstr ""
@@ -692,7 +703,7 @@ msgid "wrote a new recipe"
 msgstr ""
 
 #: plugins/custom-peepso-overrides/public/class-cpo-customizations.php:136
-#: themes/foodiepro-2.1.8/functions.php:1136
+#: themes/foodiepro-2.1.8/functions.php:1149
 msgid "Legal notice"
 msgstr ""
 
@@ -774,14 +785,14 @@ msgid "Edit my profile"
 msgstr ""
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:99
-#: themes/foodiepro-2.1.8/functions.php:996
+#: themes/foodiepro-2.1.8/functions.php:998
 #: themes/foodiepro-2.1.8/peepso/widgets/userbar.tpl.php:59
 #: themes/foodiepro-2.1.8/peepso/widgets/userbar.tpl.php:107
 msgid "Log Out"
 msgstr ""
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:127
-#: themes/foodiepro-2.1.8/functions.php:481
+#: themes/foodiepro-2.1.8/functions.php:483
 msgid "Email Address"
 msgstr ""
 
@@ -796,7 +807,7 @@ msgid "Remember Me"
 msgstr ""
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:136
-#: themes/foodiepro-2.1.8/functions.php:1000
+#: themes/foodiepro-2.1.8/functions.php:1002
 #: themes/foodiepro-2.1.8/plugins/events-manager/forms/bookingform/login.php:18
 msgid "Log In"
 msgstr ""
@@ -806,7 +817,7 @@ msgid "Register for a new account"
 msgstr ""
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:140
-#: themes/foodiepro-2.1.8/functions.php:483
+#: themes/foodiepro-2.1.8/functions.php:485
 msgid "Not yet a member ?"
 msgstr ""
 
@@ -2198,7 +2209,7 @@ msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr ""
 
 #: plugins/custom-site-notifications/public/mails/CustomSiteMails.php:296
-#: themes/foodiepro-2.1.8/functions.php:1136
+#: themes/foodiepro-2.1.8/functions.php:1149
 msgid "All rights reserved"
 msgstr ""
 
@@ -7563,41 +7574,41 @@ msgid ""
 "version 2. You won't lose any settings or recipes when deactivating."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:446
+#: themes/foodiepro-2.1.8/functions.php:448
 msgid "Goûtu.org - La Communauté des Gourmets"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:455
+#: themes/foodiepro-2.1.8/functions.php:457
 msgid "Enter Email Address"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:456
+#: themes/foodiepro-2.1.8/functions.php:458
 msgid "Enter Password"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:457
+#: themes/foodiepro-2.1.8/functions.php:459
 msgid "Remember Login State"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:458
+#: themes/foodiepro-2.1.8/functions.php:460
 msgid "Please Log In"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:495
+#: themes/foodiepro-2.1.8/functions.php:497
 msgid ""
 "<strong>ERROR</strong>: Invalid login. Please make sure to use your EMAIL "
 "ADDRESS to log-in."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:867
+#: themes/foodiepro-2.1.8/functions.php:869
 msgid "Content/Alt Sidebar"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:1084
+#: themes/foodiepro-2.1.8/functions.php:1097
 msgid "Recipe, Ingredient, Keyword, Author..."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:1136
+#: themes/foodiepro-2.1.8/functions.php:1149
 msgid "Contact us"
 msgstr ""
 
@@ -8289,26 +8300,34 @@ msgid "This is the bottom widget section of archived pages."
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:156
-msgid "Post List Top"
+msgid "Search Top"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgeted-areas.php:157
+msgid "This is the top widget section of search pages."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:165
+msgid "Post List Top"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:166
 msgid "This is the top widget section of Post List pages."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:161
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:170
 msgid "Post List Middle"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:162
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:171
 msgid "This is the middle widget section of Post List pages."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:169
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:178
 msgid "Mobile Nav Container"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:170
+#: themes/foodiepro-2.1.8/includes/widgeted-areas.php:179
 msgid "This is the container on top of the slider mobile menu."
 msgstr ""
 
@@ -9478,10 +9497,6 @@ msgstr ""
 
 #: themes/foodiepro-2.1.8/plugins/events-manager/templates/search/geo.php:13
 msgid "If this is incorrect, click cancel and try a more specific address."
-msgstr ""
-
-#: themes/foodiepro-2.1.8/search.php:27
-msgid "Search Results for:"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/yarpp-template-goutu.php:18

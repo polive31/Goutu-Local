@@ -134,12 +134,13 @@ function foodie_pro_theme_setup()
 	$content_width = apply_filters('content_width', 610, 610, 980);
 
 	//* Add new featured image sizes.
-	add_image_size('horizontal-thumbnail', 680, 450, true);
-	add_image_size('vertical-thumbnail', 680, 900, true);
-	add_image_size('recipe-thumbnail', 750, 600, true);
-	add_image_size('medium-thumbnail', 450, 450, true);
-	add_image_size('square-thumbnail', 320, 320, true);
-	add_image_size('mini-thumbnail', 75, 75, true);
+	add_image_size('horizontal-thumbnail', 680, 450, false);
+	add_image_size('vertical-thumbnail', 680, 900, false);
+	add_image_size('recipe-thumbnail', 750, 600, false);
+	add_image_size('medium-thumbnail', 450, 450, false);
+	add_image_size('square-thumbnail', 320, 320, false);
+	add_image_size('small-thumbnail', 100, 100, false);
+	add_image_size('mini-thumbnail', 75, 75, false);
 	// Standard WP sizes are :
 	// 'thumbnail' => 200x200
 

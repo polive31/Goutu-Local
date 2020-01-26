@@ -32,11 +32,13 @@ require_once 'includes/class-cnh-assets.php';
 require_once 'public/class-cnh-archive-entries.php';
 require_once 'public/class-cnh-archive-headline.php';
 require_once 'public/class-cnh-tags-overlay.php';
+// require_once 'public/class-cnh-structured-data.php';
 require_once 'public/class-cnh-shortcodes.php';
 require_once 'public/class-cnh-rpwe-customizations.php';
 
 require_once 'widgets/dropdown-posts-sort-widget.php';
 require_once 'widgets/taxonomy-dropdown-widget.php';
+require_once 'widgets/taxonomy-search-widget.php';
 require_once 'widgets/taxonomy-accordion-widget.php';
 
 new Custom_Navigation_Helpers();

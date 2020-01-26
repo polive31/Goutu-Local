@@ -51,7 +51,7 @@ function picture($url, $id = '', $class = '')
 	/* Generates a picture tag including .webp format, based the specified original image file (jpg, png, or other non-webp standard format) url */
 
 	$image = pathinfo($url);
-	$basename = $image['basename'];
+	$filename = $image['filename'];
 	$extension = $image['extension'];
 	$srcext = ($extension == 'jpg' || $extension == 'jpeg') ? 'jpeg' : $extension;
 	$dirname = $image['dirname'];
@@ -60,9 +60,9 @@ function picture($url, $id = '', $class = '')
 	?>
 
 	<picture id="<?= $id; ?>" class="<?= $class; ?>">
-		<source srcset="<?= $dirname . $basename . '.webp'; ?>" type="image/webp">
-		<source srcset="<?= $dirname . $basename . '.' . $extension; ?>" type="image/<?= $srcext ?>">
-		<img src="<?= $dirname . $basename . '.' . $extension; ?>">
+		<source srcset="<?= trailingslashit($dirname) . $filename . '.webp'; ?>" type="image/webp">
+		<source srcset="<?= trailingslashit($dirname) . $filename . '.' . $extension; ?>" type="image/<?= $srcext ?>">
+		<img src="<?= trailingslashit($dirname) . $filename . '.' . $extension; ?>">
 	</picture>
 
 <?php

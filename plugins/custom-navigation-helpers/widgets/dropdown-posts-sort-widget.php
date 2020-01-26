@@ -123,7 +123,7 @@ return $instance;
 } // Class wpb_widget ends here
 
 // Register and load the widget
-add_action( 'widgets_init', 'wpb_load_widget' );
-function wpb_load_widget() {
+add_action( 'widgets_init', 'cnh_load_dropdown_posts_sort_widget' );
+function cnh_load_dropdown_posts_sort_widget() {
 	register_widget( 'dropdown_posts_sort_widget' );
 }

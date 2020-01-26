@@ -63,8 +63,7 @@
 
 h1.entry-title,
 .entry-title a,
-.sidebar .widgettitle a,
-.widgettitle {
+.sidebar .widgettitle a {
     /*color:#5d5d5d;*/
     color: #444;
 }

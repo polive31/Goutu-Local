@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 define('CHILD_THEME_NAME', 'Foodie Pro Theme');
 define('CHILD_THEME_DEVELOPER', 'Shay Bocks/Pascal Olive');
 define('CHILD_THEME_OPTIONS', get_option('cct_options'));
-define('CHILD_THEME_VERSION', ((bool)CHILD_THEME_OPTIONS['reload'])?time():'2.3.68');
+define('CHILD_THEME_VERSION', ((bool)CHILD_THEME_OPTIONS['reload'])?time():'2.3.69');
 define('CHILD_THEME_URL', get_stylesheet_directory_uri());
 define('CHILD_THEME_PATH', get_stylesheet_directory());
 define('DEFAULT_CHILD_COLOR_THEME', 'spring');
@@ -1039,9 +1039,20 @@ function custom_inline_js()
 	}
 
 
-	/* =================================================================*/
-	/* =              WIDGETS / PLUGINS
 /* =================================================================*/
+/* =              WIDGETS / PLUGINS
+/* =================================================================*/
+
+// Force textdomain for wordfence
+// add_filter('load_textdomain_mofile', 'foodiepro_override_mofile_path', 10, 2);
+function foodiepro_override_mofile_path($mofile, $domain)
+{
+	if ('wordfence' == $domain) {
+		$mofile = WP_LANG_DIR . '/plugins/' . basename($mofile);
+	}
+	return $mofile;
+}
+
 
 	//* Adds Mailchimp newsletter subscribe form
 	//add_action('wp_head','mailchimp_subscribe_form');

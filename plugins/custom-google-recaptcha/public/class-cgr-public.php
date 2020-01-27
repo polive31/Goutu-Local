@@ -27,7 +27,7 @@ class CGR_Public
     /* =================================================================*/
     /* = DISPLAY GOOGLE RECAPTCHA
     /* =================================================================*/
-    public function display($classes = '', $id='', $size = 'normal', $js_callback='', $version=2)
+    public static function display($classes = '', $id='', $size = 'normal', $js_callback='', $version=2)
     {
         if ($version==2)
             $key = self::v2key('public');

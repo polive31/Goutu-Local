@@ -373,8 +373,7 @@ h2 a.button,
 a.comment-reply-link,
 a#cancel-comment-reply-link,
 ul.wpuf-form li .wpuf-fields a.file-selector,
-.frontier-list-item-content#frontier-post-actions a,
-#buddypress a.button {
+.frontier-list-item-content#frontier-post-actions a {
     color: #fff;
     /* P.O. Origin  inherit */
     text-transform: uppercase;
@@ -1703,14 +1702,9 @@ a.archive-avatar img {
 /* Search Top section
 ------------------------------------------------ */
 
+.search .archives-top,
 .top.search-top {
-    padding-left: 20px;
-    margin-bottom: 0;
-}
-
-.search .archives-top {
     padding: 0;
-    margin-left: 20px;
 }
 
 .search .archives-top .widget {
@@ -2857,7 +2851,7 @@ span.edit-button {
 }
 
 .search-description {
-    padding-bottom:40px;
+    padding-bottom: 40px;
 }
 
 .archive-description p {
@@ -4938,8 +4932,11 @@ Site Footer
         width: 720px;
     }
 
-    .content,
-    #buddypress #item-body {
+    .content-sidebar-wrap {
+        padding: 20px;
+    }
+
+    .content {
         width: 620px;
     }
 

@@ -37,7 +37,7 @@ class Taxonomy_Search_Widget extends WP_Widget {
 			'taxonomy'		=> $tax,
 			// 'name' 			=> $search_term,
 			// name__like too complex to handle, since it displays multiple children difficult to filter
-			'name__like' 	=> $search_term,
+			'name__like' 	=> strtolower($search_term),
 		);
 		$query_terms = get_terms( $query_args );
 		$related_terms=array();

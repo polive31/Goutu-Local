@@ -32,18 +32,20 @@ class Taxonomy_Search_Widget extends WP_Widget {
 		echo $args['before_widget'];
 
 		$tax = 'ingredient';
-		$search_term = get_search_query();
+		$search_term = strtolower(get_search_query());
 		$query_args = array(
 			'taxonomy'		=> $tax,
+			'hide_empty'	=> false,
 			// 'name' 			=> $search_term,
 			// name__like too complex to handle, since it displays multiple children difficult to filter
-			'name__like' 	=> strtolower($search_term),
+			'name__like' 	=> $search_term,
 		);
 		$query_terms = get_terms( $query_args );
 		$related_terms=array();
 		foreach ($query_terms as $term) {
-			$pos= strpos($term->name, $search_term . ' ');
-			if (($term->name==$search_term) || ($pos===0)) {
+			$term_name = strtolower($term->name);
+			$pos=strpos($term_name, $search_term . ' ');
+			if (($term_name==$search_term) || ($pos===0)) {
 				$related_terms[]=$term;
 			}
 		}

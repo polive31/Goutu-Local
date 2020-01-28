@@ -86,20 +86,6 @@ a.more-link:hover,
     transition: all 0.2s ease-in-out;
 }
 
-.recipes-top,
-.blogs-top,
-.archives-top {
-    border-bottom: 1px dotted #555;
-}
-
-.archives-bottom {
-    border-top: 1px dashed #555;
-}
-
-.footer-widgets {
-    background-color: #f8f8f8 !important;
-    border: 1px dashed #555;
-}
 
 /* Text area specific formatting */
 input[type="text"],

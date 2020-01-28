@@ -32,7 +32,7 @@ class Taxonomy_Search_Widget extends WP_Widget {
 		echo $args['before_widget'];
 
 		$tax = 'ingredient';
-		$search_term = strtolower(get_search_query());
+		$search_term = get_search_query();
 		$query_args = array(
 			'taxonomy'		=> $tax,
 			'hide_empty'	=> false,
@@ -41,11 +41,15 @@ class Taxonomy_Search_Widget extends WP_Widget {
 			'name__like' 	=> $search_term,
 		);
 		$query_terms = get_terms( $query_args );
+
+		$from="éêèëâôçû'-_";
+		$to  ="eeeeaocu   ";
+		$search_term=strtr($search_term, $from, $to);
+
 		$related_terms=array();
 		foreach ($query_terms as $term) {
-			$term_name = strtolower($term->name);
-			$pos=strpos($term_name, $search_term . ' ');
-			if (($term_name==$search_term) || ($pos===0)) {
+			$term_name=strtr($term->name,$from, $to);
+			if ( $this->foundWord($term_name, $search_term) ||  $this->foundWord($term_name, $search_term . 's')) {
 				$related_terms[]=$term;
 			}
 		}
@@ -79,6 +83,11 @@ class Taxonomy_Search_Widget extends WP_Widget {
 
 		// Output end
 		echo $args['after_widget'];
+	}
+
+	public function foundWord($haystack, $needle){
+		$pattern = "/\b($needle)\b/i";
+		return preg_match($pattern, $haystack);
 	}
 
 	// Widget Backend

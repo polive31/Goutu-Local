@@ -1671,15 +1671,25 @@ img.alignright,
 
 /* Archive title
 --------------------------------------------- */
+.recipes-top,
+.blogs-top,
+.archives-top {
+    border-bottom: 1px dotted #555;
+}
+
+.archives-bottom {
+    border-top: 1px dashed #555;
+}
+
 
 .archive-title {
     margin-bottom: 22px;
-    padding-left: 20px;
+    /* padding-left: 20px; */
 }
 
-.archive-title:first-letter {
+/* .archive-title:first-letter {
     font-size: 150%;
-}
+} */
 
 .archive-title .archive-image {
     max-width: 200px;
@@ -4206,10 +4216,9 @@ p.comment-notes {
     clear: both;
 }
 
-.frontier-post .footer-widgets {
-    max-width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+.footer-widgets {
+    background-color: #f8f8f8 !important;
+    border: 1px dashed #555;
 }
 
 .footer-widgets-1,

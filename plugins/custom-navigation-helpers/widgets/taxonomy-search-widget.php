@@ -34,9 +34,7 @@ class Taxonomy_Search_Widget extends WP_Widget {
 		$tax = 'ingredient';
 
 		$search_term = get_search_query();
-		$from="éêèëâôçû'-_";
-		$to  ="eeeeaocu   ";
-		$search_term=strtr($search_term, $from, $to);
+		$search_term = $this->remove_accents($search_term);
 
 		$query_args = array(
 			'taxonomy'		=> $tax,
@@ -49,7 +47,7 @@ class Taxonomy_Search_Widget extends WP_Widget {
 
 		$related_terms=array();
 		foreach ($query_terms as $term) {
-			$term_name=strtr($term->name,$from, $to);
+			$term_name=$this->remove_accents($term->name);
 			if ( $this->foundWord($term_name, $search_term) ||  $this->foundWord($term_name, $search_term . 's')) {
 				$related_terms[]=$term;
 			}
@@ -84,6 +82,12 @@ class Taxonomy_Search_Widget extends WP_Widget {
 
 		// Output end
 		echo $args['after_widget'];
+	}
+	public function remove_accents($word) {
+		$from = "éêèëâôçû'";
+		$to  = "eeeeaocu ";
+		$word = trim(strtr($word, $from, $to));
+		return $word;
 	}
 
 	public function foundWord($haystack, $needle){

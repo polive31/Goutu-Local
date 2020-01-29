@@ -397,7 +397,16 @@ h2.entry-title,
     h1.entry-title {
         /*text-align: center;*/
         font-size: 5rem;
-        line-height: 4rem;
+        line-height: auto;
+    }
+
+    a img {
+        margin-bottom: 10px;
+    }
+
+    .search .archives-top,
+    .top.search-top {
+        margin-top: 20px;
     }
 
     .title-big-font .widgettitle,

@@ -30,6 +30,7 @@ function rpwe_get_default_args()
 		'orderby'          	=> 'date',
 		'cat'              	=> array(),
 		'tag'              	=> array(),
+		'tax-overlay'   	=> array(),
 		'taxonomy'         	=> '',
 		'post_type'        	=> array('post'),
 		'post_status'      	=> 'publish',

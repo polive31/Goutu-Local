@@ -31,6 +31,23 @@ function rpwe_tags_list() {
 }
 
 /**
+ * Display list of taxonomies for widget.
+ *
+ * @since  0.9.9.1
+ */
+function rpwe_tax_list()
+{
+
+	// Get the taxonomies
+	$tax=array('category');
+
+	// Allow dev to filter the arguments
+	$tax = apply_filters('rpwe_overlay_tax_list', $tax);
+
+	return $tax;
+}
+
+/**
  * Display list of categories for widget.
  *
  * @since  0.9.9.1

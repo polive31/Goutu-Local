@@ -10,21 +10,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class CNH_Tags_Overlay {
 
-
-	/* RPWE TAG FORMATTING
-	----------------------------------------------------------*/
-	public function rpwe_add_overlay($output, $args) {
-		$disp_overlay = substr($args['cssID'],3,1);
-		////foodiepro_log( array('WPRPE Output add rating'=>$output) );
-		if ( $disp_overlay == '1') {
-			$post_id = get_the_ID();
-			$origin = wp_get_post_terms( $post_id, 'cuisine' );
-			$output .= self::output_tags( $origin, null, null, null);
-		}
-		return $output;
-	}
-
-
 	/* ENTRY TAG FORMATTING
 	----------------------------------------------------------*/
 

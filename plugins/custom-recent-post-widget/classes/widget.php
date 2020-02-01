@@ -108,6 +108,7 @@ class Recent_Posts_Widget_Extended extends WP_Widget {
 		$instance['post_status']      	= stripslashes( $new_instance['post_status'] );
 		$instance['cat']              	= $new_instance['cat'];
 		$instance['tag']              	= $new_instance['tag'];
+		$instance['tax-overlay']        = $new_instance['tax-overlay'];
 		$instance['taxonomy']         	= esc_attr( $new_instance['taxonomy'] );
 		$instance['author']         	= esc_attr( $new_instance['author'] );
 

@@ -215,7 +215,7 @@ class CPM_Submission
                     }
                     $html .= '</table>';
                     echo $html;
-                }
+    }
 
                 public static function get_dropdown($args, $options, $post_type)
                 {

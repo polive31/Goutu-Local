@@ -87,15 +87,25 @@ class CNH_RPWE_Customizations {
 		}
 	}
 
+
+	// Customize taxonomies list in the "display overlay" widget form's option list
+	public function rpwe_custom_overlay_tax_list($args) {
+		$list = get_object_taxonomies('recipe');
+		return $list;
+	}
+
 	// Add overlay to RPWE widget
 	public function rpwe_add_overlay($output, $args) {
-		$disp_overlay = substr($args['cssID'],3,1);
-		////foodiepro_log( array('WPRPE Output add rating'=>$output) );
-		if ( $disp_overlay == '1') {
-			$post_id = get_the_ID();
-			$origin = wp_get_post_terms( $post_id, 'cuisine' );
-			$output .= CNH_Tags_Overlay::output_tags( $origin, null, null, null);
-		}
+		$post_id = get_the_ID();
+		$overlay_tax_list = $args['tax-overlay'];
+		if (!is_array($overlay_tax_list))
+			$overlay_tax_list=explode(' ', $overlay_tax_list);
+
+		$origin 	= in_array('cuisine', $overlay_tax_list)?wp_get_post_terms( $post_id, 'cuisine' ):'';
+		$season 	= in_array('season', $overlay_tax_list)?wp_get_post_terms( $post_id, 'season' ):'';
+		$occasion 	= in_array('occasion', $overlay_tax_list)?wp_get_post_terms( $post_id, 'occasion' ):'';
+		$diet 		= in_array('diet', $overlay_tax_list)?wp_get_post_terms( $post_id, 'diet' ):'';
+		$output .= CNH_Tags_Overlay::output_tags( $origin, $diet, $occasion, $season);
 		return $output;
 	}
 

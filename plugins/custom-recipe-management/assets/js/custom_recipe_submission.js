@@ -12,6 +12,8 @@ jQuery(window).bind('beforeunload', function (e) {
 
 jQuery(document).ready(function() {
 
+    console.log('In custom recipe subhmission script');
+
     jQuery("#new_post").submit(function () {
         console.log( 'Form submission, set formSubmitting to true');
         formSubmitting = true;

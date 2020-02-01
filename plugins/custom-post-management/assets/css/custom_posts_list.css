@@ -10,10 +10,9 @@ table.custom-post-list a {
     text-decoration: none;
 }
 
-.post-list-actions div {
-    display: inline-block;
-    text-align: center;
-    /* vertical-align: text-bottom; */
+.post-list-actions span {
+  margin-left: 10px;
+  font-size: 2.2rem;
 }
 
 .post-list-actions .fa {

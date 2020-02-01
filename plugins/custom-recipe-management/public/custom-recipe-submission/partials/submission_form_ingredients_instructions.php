@@ -189,7 +189,7 @@
 
                         <td class="ingredient-input name">
                             <input type="text" name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" value="<?php echo esc_attr($ingredient['ingredient']); ?>" placeholder="<?php _e('Ingredient', 'foodiepro'); ?>" /></td>
-                        <td class="spinner"><i id="spinner-ingredients_<?php echo $i; ?>" class="ajax-indicator fa fa-refresh fa-spin"></i></td>
+                        <td class="spinner"><?= foodiepro_get_icon('spinner-arrows', 'spinner-ingredients_' . $i, 'ajax-indicator'); ?></td>
 
                         <td class="ingredient-input notes">
                             <textarea rows="1" col="20" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" placeholder="<?php _e('Notes', 'foodiepro'); ?>"><?php echo esc_attr($ingredient['notes']); ?></textarea>
@@ -225,8 +225,7 @@
                 <td class='ingredient-input name'>
                     <!-- <span class="mobile-display"><?php _e('Ingredient', 'foodiepro'); ?></span> -->
                     <input type="text" name="recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" placeholder="<?php _e('Ingredient', 'foodiepro'); ?>" /></td>
-                <td class="spinner"><i id="spinner-ingredients_<?php echo $i; ?>" class="ajax-indicator fa fa-refresh fa-spin"></i>
-                </td>
+                <td class="spinner"><?= foodiepro_get_icon('spinner-arrows', 'spinner-ingredients_' . $i, 'ajax-indicator'); ?></td>
                 <!-- Ingredient Notes -->
                 <td class='ingredient-input notes'>
                     <!-- <span class="mobile-display"><?php _e('Notes', 'foodiepro'); ?></span> -->

@@ -43,8 +43,31 @@ function esc($text)
 
 
 /* =================================================================*/
-/* =    IMAGE OUTPUT
+/* =    IMAGE & ICON OUTPUT
 /* =================================================================*/
+
+function foodiepro_get_icon_class($slug) {
+	switch ($slug) {
+		case 'spinner-arrows':
+			$class = 'fas fa-sync fa-spin';
+			break;
+		case 'spinner-dots':
+			$class='fas fa-spinner fa-spin';
+			break;
+		case 'arrows-updown':
+			$class="fas fa-arrows-alt-v";
+		break;
+		default:
+			$class='';
+	}
+	return $class;
+}
+
+function foodiepro_get_icon($slug, $id='', $additional_classes='')
+{
+	$html = '<i class="' . foodiepro_get_icon_class($slug) . ' ' . $additional_classes . '" id="' . $id . '"></i>';
+	return $html;
+}
 
 function picture($url, $id = '', $class = '')
 {

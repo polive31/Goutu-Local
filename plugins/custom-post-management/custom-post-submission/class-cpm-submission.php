@@ -91,7 +91,8 @@ class CPM_Submission
 
         /* Add submission buttons */
         $buttons = array('preview', 'draft', 'publish');
-        $output .= apply_filters('cpm_' . $this->post_type . '_submission_buttons', self::get_buttons($buttons, $post_ID));
+        $buttons_html = $this->get_buttons($buttons, $post_ID);
+        $output .= apply_filters('cpm_' . $this->post_type . '_submission_buttons', $buttons_html);
 
         $output .= '</form>';
         $output .= '</div>';
@@ -269,33 +270,26 @@ class CPM_Submission
                 }
 
 
-                /********************************************************************************
-                 ********************* OUTPUT  FUNCTIONS      ***************************
-                 ********************************************************************************/
+            /********************************************************************************
+             ********************* OUTPUT  FUNCTIONS      ***************************
+                ********************************************************************************/
 
-                public function get_buttons($buttons, $post_ID)
-                {
-                    ob_start();
-                    ?>
-            <div id="post-form-buttons">
-                <?php if (in_array('preview', $buttons)) {;
-                            $url = get_preview_post_link($post_ID);
-                            ?>
-                    <a href="<?= $url; ?>" class="black-button"><?php _e('Preview', 'foodiepro'); ?></a>
-                <?php }; ?>
-                <?php if (in_array('draft', $buttons)) {; ?>
-                    <input type="submit" value="<?php _e('Draft', 'foodiepro'); ?>" id="draft" name="draft" />
-                <?php }; ?>
-                <?php if (in_array('publish', $buttons)) {; ?>
-                    <input type="submit" value="<?php _e('Publish', 'foodiepro'); ?>" id="publish" name="publish" />
-                <?php }; ?>
-            </div>
-            <input type="hidden" name="action" value="post" />
-            <?= wp_nonce_field($this->post_type . '_submit', 'submit' . $this->post_type); ?>
-        <?php
-
-                $html = ob_get_contents();
-                ob_end_clean();
+            public function get_buttons($buttons, $post_ID)
+            {
+                $html = '<div id="post-form-buttons">';
+                if (in_array('preview', $buttons)) {
+                    $url = get_preview_post_link($post_ID);
+                    $html .= '<a href="' . $url . '" class="black-button">' . __('Preview', 'foodiepro') . '</a>';
+                }
+                if (in_array('draft', $buttons)) {
+                    $html .= '<input type="submit" value="' . __('Draft', 'foodiepro') . '" id="draft" name="draft" />';
+                }
+                if (in_array('publish', $buttons)) {
+                    $html .= '<input type="submit" value="' . __('Publish', 'foodiepro') . '" id="publish" name="publish" />';
+                }
+                $html .= '</div>';
+                $html .= '<input type="hidden" name="action" value="post" />';
+                $html .= wp_nonce_field($this->post_type . '_submit', 'submit' . $this->post_type);
 
                 return $html;
             }

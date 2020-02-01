@@ -339,9 +339,9 @@ td.recipe-general-form-label {
 /*SELECTION BOXES*/
 
 /*Prevent display of keyboard on smartphone*/
-.readonly input.select2-search__field {
-  /* display: none; */
-}
+/* .readonly input.select2-search__field {
+  display: none;
+} */
 
 .recipe-tags-container {
   padding-right: 20px;

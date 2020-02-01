@@ -152,17 +152,17 @@ tr.ingredient td {
   padding: 0 10px;
 }
 
-tr.ingredient.edit td.ingredient-preview,
-tr.ingredient.new td.ingredient-preview,
-tr.ingredient.saved td.ingredient-input,
-tr.ingredient.saved td.spinner {
+.ingredient.edit .ingredient-preview,
+.ingredient.new .ingredient-preview,
+.ingredient.saved .ingredient-input,
+.ingredient.saved .spinner {
   display: none;
 }
 
-tr.ingredient.edit td.ingredient-input,
-tr.ingredient.edit td.spinner,
-tr.ingredient.new td.ingredient-input,
-tr.ingredient.saved td.ingredient-preview {
+.ingredient.edit .ingredient-input,
+.ingredient.edit .spinner,
+.ingredient.new .ingredient-input,
+.ingredient.saved .ingredient-preview {
   display: table-cell;
 }
 

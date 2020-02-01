@@ -4,7 +4,7 @@ var xhr_ingredient=[];
 
 jQuery(document).ready(function() {
 
-/* Ingredient Preview 
+/* Ingredient Preview
 ---------------------------------------------------------------- */
 
     jQuery('#recipe-ingredients').on('focusin','tr.ingredient',function() {
@@ -21,7 +21,7 @@ jQuery(document).ready(function() {
         var rowId;
 
         // console.log('in blur event', previousRowId);
-        
+
         setTimeout(function() {
             console.log('after timeout variables are : ',previousRowId,currentRowId);
             // if (currentRowId==-1) {
@@ -57,7 +57,7 @@ function isValid( id ) {
     //     var inputField = jQuery(this);
     //     console.log('In isValid, checking value for ' + inputField.attr('class'), inputField.val());
     //     if (inputField.val() == "") isValid = false;
-    // });  
+    // });
     console.log('Is Valid = ' + isValid);
     return isValid;
 }
@@ -74,15 +74,15 @@ function displayIngredientPreview( thisIngredientId ) {
 
         // console.log('XHR_Ingredient[thisIngredientId] : ', xhr_ingredient[thisIngredientId]);
 
-        // Check whenever there is an ongoing ajax call on this ingredient 
-        try { 
-            xhr_ingredient[thisIngredientId].abort(); 
+        // Check whenever there is an ongoing ajax call on this ingredient
+        try {
+            xhr_ingredient[thisIngredientId].abort();
             console.log("%c Aborting previous ajax call for " + thisIngredientId, 'background: #ccc; color: blue');
-        } 
+        }
         catch(e){
             console.log("%c No previous ajax call for " + thisIngredientId, 'background: #ccc; color: blue');
         }
-        
+
         console.log("%c Ajax call launched", 'background: #ccc; color: blue');
         console.log("Ajaxurl", ingredient_preview.ajaxurl );
 
@@ -98,7 +98,7 @@ function displayIngredientPreview( thisIngredientId ) {
                 unit : thisIngredient.find('.ingredients_unit').val(),
                 ingredient : thisIngredient.find('.ingredients_name').val(),
                 notes : thisIngredient.find('.ingredients_notes').val(),
-            }, 
+            },
             success : function( response ) {
                 if( response.success ){
                     console.log( "Ajax ingredient preview success for " + thisIngredientId);
@@ -112,14 +112,14 @@ function displayIngredientPreview( thisIngredientId ) {
                     // console.log( 'Apply css changes to : ', thisIngredient );
                     thisIngredient.removeClass('edit new');
                     thisIngredient.addClass('saved');
-                    // Last check in order to secure that there is no focus on this ingredient 
+                    // Last check in order to secure that there is no focus on this ingredient
                     // if (thisIngredient.children(':focus').length == 0) {
                 // }
                 // else {
                 //     console.log('%c Current ingredient child has focus ! No change...','background:red;color:black');
                     jQuery('#recipe-ingredients').off('focusin','tr.ingredient', false);
-                    jQuery('#recipe-ingredients').off('blur','tr.ingredient', false);                    
-                } 
+                    jQuery('#recipe-ingredients').off('blur','tr.ingredient', false);
+                }
                 else {
                     console.log( 'Error on Ajax call processing : ' + response.data.msg );
                 }
@@ -129,5 +129,4 @@ function displayIngredientPreview( thisIngredientId ) {
             }
         });
 
-}    
-
+}

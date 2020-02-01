@@ -31,7 +31,6 @@ class Custom_Navigation_Helpers {
 
 
 		$Tags = new CNH_Tags_Overlay();
-		add_filter( 'rpwe_in_thumbnail', 				array($Tags, 'rpwe_add_overlay'), 10, 2 );
 		add_action( 'genesis_entry_header', 			array($Tags, 'do_post_title_before'), 1 );
 		add_action( 'genesis_entry_header', 			array($Tags, 'do_post_title_after') );
 
@@ -48,6 +47,10 @@ class Custom_Navigation_Helpers {
 		add_shortcode('seo-friendly-title', 			array($Headline,'get_seo_friendly_page_title'));
 
 		$RPWE = new CNH_RPWE_Customizations();
+		// Customize taxonomies list in the "display overlay" form option list
+		add_filter('rpwe_overlay_tax_list', 			array($RPWE, 'rpwe_custom_overlay_tax_list'));
+		// Add overlay over rpwe thumbnails
+		add_filter( 'rpwe_in_thumbnail', 				array($RPWE, 'rpwe_add_overlay'), 10, 2 );
 		// Add post author to RPWE  widget
 		add_filter('rpwe_post_title_meta', 				array($RPWE, 'rpwe_add_author'), 10, 2);
 		/* Modify WP Recent Posts extended output, depending on the css ID field value */

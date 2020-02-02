@@ -378,7 +378,7 @@ function PreviewImage(id) {
                     document.getElementById("recipe_thumbnail_preview_" + id ).src = oFREvent.target.result;
                     console.log('New image source = ', oFREvent.target.result);
                     jQuery("#recipe_thumbnail_preview_" + id).parent(".thumbnail").removeClass('nodisplay');
-                    jQuery("#recipe_thumbnail_preview_" + id).parent(".thumbnail").addClass('skip-lazy');
+                    jQuery("#recipe_thumbnail_preview_" + id).addClass('skip-lazy');
                 }
             }
             else {

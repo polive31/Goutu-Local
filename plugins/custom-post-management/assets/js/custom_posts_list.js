@@ -11,6 +11,8 @@ jQuery(document).ready(function() {
         console.log('Closest row is : ', button.closest('tr.post-list-row') );
 
         if(confirm(custom_posts_list.confirm_message + ' ' + button.data('title'))) {
+
+            console.log('Post id is : ', button.data('id') );
             var data = {
                 action: 'cpm_delete_post',
                 security: custom_posts_list.nonce,

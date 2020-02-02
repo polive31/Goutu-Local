@@ -291,17 +291,23 @@ class CPM_Assets {
 			$post_url =  do_shortcode('[permalink slug="' . self::get_slug( $post_type . '_form' ) . '"]');
 			$edit_url = $post_url . '?edit-' . $post_type . '=' . $post->ID;
 			$edit_title = self::get_label( $post_type, 'edit_button');
-			$out = '<span class="' . $class . '"><a href="' . $edit_url . '" title="' . $edit_title . '"><i class="fas fa-edit"></i></a></span>';
+			// $out = '<span class="' . $class . '"><a href="' . $edit_url . '">' . foodiepro_get_icon('edit', '', $class, $edit_title) . '</a></span>';
+			$out = foodiepro_get_icon_link($edit_url, 'edit', '', $class, $edit_title);
 		}
 		return $out;
 	}
 
 	public static function get_delete_button($post, $post_type, $class = 'delete-button')
 	{
-		$out = '<span class="'. $class . '" title="' . self::get_label($post_type, 'delete_button') . '">';
-		$out .= '<a href="#">';
-		$out .= '<i class="far fa-trash-alt cpm-delete-post nodisplay" data-id="' . $post->ID . '" data-title="' . esc_attr($post->post_title) . '"></i>';
-		$out .= '</a>';
+		$out = '<span class="'. $class . '">';
+		// $out .= '<a href="#">';
+		$data=array(
+			'id'	=> $post->ID,
+			'title'	=> esc_attr($post->post_title)
+		);
+		$out .= foodiepro_get_icon_link('#', 'delete', '', 'cpm-delete-post nodisplay', self::get_label($post_type, 'delete_button'), $data);
+		// $out .= '<i class="far fa-trash-alt " data-id="' . $post->ID . '" data-title="' . esc_attr($post->post_title) . '"></i>';
+		// $out .= '</a>';
 		$out .= '</span>';
 		return $out;
 	}

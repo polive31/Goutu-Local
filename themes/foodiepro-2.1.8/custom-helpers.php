@@ -51,6 +51,9 @@ function foodiepro_get_icon_class($slug) {
 		case 'delete':
 			$class = 'far fa-trash-alt';
 			break;
+		case 'edit':
+			$class = 'fas fa-edit';
+			break;
 		case 'spinner-arrows':
 			$class = 'fas fa-sync fa-spin';
 			break;
@@ -69,6 +72,16 @@ function foodiepro_get_icon_class($slug) {
 function foodiepro_get_icon($slug, $id='', $class='', $title='')
 {
 	$html = '<i class="' . foodiepro_get_icon_class($slug) . ' ' . $class . '" id="' . $id . '" title="' . $title . '"></i>';
+	return $html;
+}
+
+function foodiepro_get_icon_link($url, $slug, $id = '', $class = '', $title = '', $data=array() )
+{
+	$html = '<a href="' . $url . '" id="' . $id . '" class="' . $class . '" ';
+	foreach ($data as $key=>$value) {
+		$html .= 'data-' . $key . '="' . $value . '" ';
+	}
+	$html .=  '">' . foodiepro_get_icon($slug, '', '', $title) . '</a>';
 	return $html;
 }
 

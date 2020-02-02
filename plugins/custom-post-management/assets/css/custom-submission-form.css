@@ -274,19 +274,16 @@ td.post-general-form-label {
   padding: 10px;
 }
 
-.delete-button span.fa-before:before {
+/* .delete-button span.fa-before:before {
   content: "\f2ed";
-  /* trash regular */
   color: #585858;
   font-weight: 400;
   font-size: 20px;
-  /* padding: 10px; */
-}
+} */
 
 
-.delete-button span.fa-before:hover:before {
+.delete-button:hover {
   color: #d7641d;
-  font-weight: 900;
 }
 
 

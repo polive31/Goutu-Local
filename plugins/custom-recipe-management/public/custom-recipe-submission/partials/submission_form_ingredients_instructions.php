@@ -127,14 +127,14 @@
         </tr>
         <tbody>
             <tr class="ingredient-group-stub">
-                <td colspan="6" class="group">
+                <td class="group center-column delete-button">
+                    <?= foodiepro_get_icon('delete', '', 'ingredient-group-delete', __('Remove this ingredient group headline', 'foodiepro')); ?>
+                </td>
+                <td colspan="3" class="group">
                     <div class="group-container">
                         <span class="header"><?php _e('Ingredients Group', 'foodiepro'); ?></span>
                         <span class="name"><input type="text" class="ingredient-group-label" /></span>
                     </div>
-                </td>
-                <td class="group center-column delete-button">
-                    <span class="ingredient-group-delete fa-before" title="<?php echo __('Remove this ingredient group headline', 'foodiepro'); ?>">&nbsp;</span>
                 </td>
             </tr>
             <?php
@@ -155,14 +155,14 @@
 
                     if ($ingredient['group'] != $previous_group) { ?>
                         <tr class="ingredient-group">
-                            <td colspan="5" class="group">
+                            <td class="group center-column delete-button">
+                                <?= foodiepro_get_icon('delete', '', 'ingredient-group-delete', __('Remove this ingredient group headline', 'foodiepro')); ?>
+                            </td>
+                            <td colspan="3" class="group">
                                 <div class="group-container">
                                     <span class="header"><?php _e('Ingredients Group', 'foodiepro'); ?></span>
                                     <span class="name"><input type="text" class="ingredient-group-label" value="<?php echo esc_attr($ingredient['group']); ?>" /></span>
                                 </div>
-                            </td>
-                            <td class="group center-column delete-button">
-                                <span class="ingredient-group-delete fa-before" title="<?php echo __('Remove this ingredient group headline', 'foodiepro'); ?>">&nbsp;</span>
                             </td>
                         </tr>
                     <?php
@@ -196,7 +196,8 @@
                             <!--  <input type="text" name="recipe_ingredients[<?php echo $i; ?>][notes]" class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" value="<?php echo esc_attr($ingredient['notes']); ?>" placeholder="<?php _e('Notes', 'foodiepro'); ?>" /> -->
                             <input type="hidden" name="recipe_ingredients[<?php echo $i; ?>][group]" class="ingredients_group" id="ingredient_group_<?php echo $i; ?>" value="<?php echo esc_attr($ingredient['group']); ?>" />
                         </td>
-                        <td class="delete-button" colspan="1"><span class="ingredients-delete fa-before" title="<?php echo __('Remove this ingredient', 'foodiepro'); ?>">&nbsp;</span>
+                        <td class="delete-button" colspan="1">
+                            <?= foodiepro_get_icon('delete', '', 'ingredients-delete', __('Remove this ingredient', 'foodiepro')); ?>
                         </td>
                     </tr>
             <?php
@@ -234,7 +235,9 @@
                     <input type="hidden" name="recipe_ingredients[<?php echo $i; ?>][group]" class="ingredients_group" id="ingredient_group_<?php echo $i; ?>" value="" />
                 </td>
                 <!-- Delete button -->
-                <td class="delete-button" colspan="1"><span class="ingredients-delete fa-before" title="<?php echo __('Remove this ingredient', 'foodiepro'); ?>">&nbsp;</span></td>
+                <td class="delete-button" colspan="1">
+                    <?= foodiepro_get_icon('delete', '', 'ingredients-delete', __('Remove this ingredient', 'foodiepro')); ?>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -274,16 +277,14 @@
         </thead>
         <tbody>
             <tr class="instruction-group-stub">
+                <td class="group center-column delete-button">
+                    <?= foodiepro_get_icon('delete', '', 'instruction-group-delete', __('Remove this instruction group headline', 'foodiepro')); ?>
+                </td>
                 <td colspan="3" class="group">
                     <div class="group-container">
                         <span class="header"><?php _e('Instructions Group', 'foodiepro'); ?></span>
                         <span class="name"><input type="text" class="instruction-group-label" /></span>
                     </div>
-                </td>
-                <td class="group center-column delete-button">
-                    <!-- <div class="group center-column delete-button"> -->
-                    <span class="instruction-group-delete fa-before" title="<?php echo __('Remove this instruction group headline', 'foodiepro'); ?>">&nbsp;</span>
-                    <!-- </div> -->
                 </td>
             </tr>
             <?php
@@ -298,16 +299,14 @@
 
                     if ($instruction['group'] != $previous_group) { ?>
                         <tr class="instruction-group">
+                            <td class="group center-column delete-button">
+                                <?= foodiepro_get_icon('delete', '', 'instruction-group-delete', __('Remove this instruction group headline', 'foodiepro')); ?>
+                            </td>
                             <td colspan="3" class="group">
                                 <div class="group-container">
                                     <span class="header"><?php _e('Instructions Group', 'foodiepro'); ?></span>
                                     <span class="name"><input type="text" class="instruction-group-label" value="<?php echo esc_attr($instruction['group']); ?>" /></span>
                                 </div>
-                            </td>
-                            <td class="group center-column delete-button">
-                                <!-- <div class="group center-column delete-button"> -->
-                                <span class="instruction-group-delete fa-before" title="<?php echo __('Remove this instruction group headline', 'foodiepro'); ?>">&nbsp;</span>
-                                <!-- </div> -->
                             </td>
                         </tr>
                     <?php
@@ -354,12 +353,12 @@
                             </div>
                             <!-- This input stores the attachment handler within the post, for meta save -->
                             <input type="hidden" class="instruction_thumbnail" value="<?= $has_image ? $instruction['image'] : ''; ?>" name="recipe_instructions[<?php echo $i; ?>][image]" /><br />
+                        </td>
 
-</div>
-</td>
-
-<td class="delete-button" colspan="1"><span class="instructions-delete fa-before" title="<?php echo __('Remove this instruction', 'foodiepro'); ?>">&nbsp;</span></td>
-</tr>
+                <td class="delete-button" colspan="1">
+                    <?= foodiepro_get_icon('delete', '', 'instructions-delete', __('Remove this instruction', 'foodiepro')); ?>
+                </td>
+    </tr>
 <?php
                     $i++;
                 }
@@ -387,9 +386,10 @@
             <div class="recipe_remove_image_button" id="recipe_thumbnail_remove_<?php echo $i; ?>" title="<?php _e('Remove Image', 'foodiepro') ?>" />
         </div>
         <input type="hidden" value="" name="recipe_instructions[<?php echo $i; ?>][image]" /><br />
-        </div>
     </td>
-    <td class="delete-button" colspan="1"><span class="instructions-delete fa-before" title="<?php echo __('Remove this instruction', 'foodiepro'); ?>">&nbsp;</span></td>
+    <td class="delete-button" colspan="1">
+        <?= foodiepro_get_icon('delete', '', 'instructions-delete', __('Remove this instruction', 'foodiepro')); ?>
+    </td>
 </tr>
 </tbody>
 </table>

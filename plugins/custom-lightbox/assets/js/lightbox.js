@@ -71,13 +71,13 @@ jQuery(document).ready(function() {
     // ARROWS
 
     var arrowsOn = function( selector ) {
-        console.log('In arrows On ');
+        // console.log('In arrows On ');
 
         // var $scope = jQuery.uniqueSort( jQuery( selector ) );
         var $scope = jQuery( selector );
 
-        console.log('Scope : ', $scope );
-        console.log('Total nb objects in scope : ', $scope.length);
+        // console.log('Scope : ', $scope );
+        // console.log('Total nb objects in scope : ', $scope.length);
 
         if ($scope.length == 1) return;
 
@@ -92,17 +92,17 @@ jQuery(document).ready(function() {
                 // $current = jQuery( selector + '[href="' + jQuery( '#imagelightbox' ).attr( 'src' ) + '"]' ),
             var index   = jQuery( '#imagelightbox' ).data('id');
 
-            console.log('Image courante : ', jQuery( '#imagelightbox' ).attr( 'src' ));
-            console.log('Index image courante : ', index);
+            // console.log('Image courante : ', jQuery( '#imagelightbox' ).attr( 'src' ));
+            // console.log('Index image courante : ', index);
 
             if( $this.hasClass( 'imagelightbox-arrow-left' ) ) {
-                console.log( 'Click on left arrow');
+                // console.log( 'Click on left arrow');
                 index = index - 1;
                 if( !$scope.eq( index ).length )
                     index = jQuery( selector ).length; //Go back to the last image in the scope
             }
             else {
-                console.log( 'Click on right arrow');
+                // console.log( 'Click on right arrow');
                 index = index + 1;
                 if( !$scope.eq( index ).length )
                     index = 0; //Go back to the first image in the scope

@@ -62,7 +62,13 @@ function foodiepro_get_icon_class($slug) {
 			break;
 		case 'arrows-updown':
 			$class="fas fa-arrows-alt-v";
-		break;
+			break;
+		case 'chevron-left':
+			$class = "fas fa-chevron-left";
+			break;
+		case 'chevron-right':
+			$class = "fas fa-chevron-right";
+			break;
 		default:
 			$class='';
 	}

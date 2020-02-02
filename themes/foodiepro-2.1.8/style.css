@@ -1957,8 +1957,8 @@ form[role="search"] {
 
 .sidebar .widget.themes ul li:before {
   /* .sidebar important */
-  font-family: FontAwesome;
-  content: "\f054";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   content: "\f101";
   font-size: 12px;
   padding-right: 10px;
@@ -2152,9 +2152,10 @@ a#swipebox-close:hover {
 }
 
 #swipebox-close::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   content: "\f00d";
   font-size: 40px;
-  font-family: fontAwesome;
 }
 
 /* Taxonomies/Tags Accordion menu

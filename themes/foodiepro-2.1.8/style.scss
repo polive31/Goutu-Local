@@ -81,6 +81,7 @@ $content-sidebar-width-screen: 1170px;
 $content-width-screen: 710px;
 $sidebar-width-screen: 410px;
 
+$icon-font: 'Font Awesome 5 Free';
 
 /*
 HTML5 Reset
@@ -2081,8 +2082,9 @@ form[role="search"] {
 
 .sidebar .widget.themes ul li:before {
     /* .sidebar important */
-    font-family: FontAwesome;
-    content: "\f054";
+    font-family: $icon-font;
+    font-weight:900;
+    // content: "\f054";
     content: "\f101";
     font-size: 12px;
     padding-right: 10px;
@@ -2303,9 +2305,10 @@ a#swipebox-close:hover {
 }
 
 #swipebox-close::before {
+    font-family: $icon-font;
+    font-weight:900;
     content: "\f00d";
     font-size: 40px;
-    font-family: fontAwesome;
 }
 
 

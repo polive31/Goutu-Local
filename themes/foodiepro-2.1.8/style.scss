@@ -2227,19 +2227,19 @@ form[role="search"] {
 
 
 /* Lazysizes  */
-.lazyload,
-.lazyloading {
-    opacity: 0
-}
+// .lazyload,
+// .lazyloading {
+//     opacity: 0
+// }
 
-.lazyloaded {
-    transition: opacity 0.3s;
-    opacity: 1
-}
+// .lazyloaded {
+//     transition: opacity 0.3s;
+//     opacity: 1
+// }
 
-.lazyloading {
-    background: #f7f7f7 url(images/loading.gif) no-repeat center
-}
+// .lazyloading {
+//     background: #f7f7f7 url(images/loading.gif) no-repeat center
+// }
 
 
 /* Custom news scroller  */

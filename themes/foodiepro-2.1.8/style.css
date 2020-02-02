@@ -2091,21 +2091,6 @@ form[role="search"] {
 }
 
 /* Lazysizes  */
-.lazyload,
-.lazyloading {
-  opacity: 0;
-}
-
-.lazyloaded {
-  -webkit-transition: opacity 0.3s;
-  transition: opacity 0.3s;
-  opacity: 1;
-}
-
-.lazyloading {
-  background: #f7f7f7 url(images/loading.gif) no-repeat center;
-}
-
 /* Custom news scroller  */
 .newsscroller_title {
   font-family: Oswald, sans-serif;

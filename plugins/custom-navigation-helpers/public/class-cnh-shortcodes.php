@@ -480,8 +480,8 @@ class CNH_Shortcodes {
 			if ($display=='archive') {
 				$url = get_site_url();
 				$user = get_user_by('id', $user_id);
+				if (!$user) return;
 				$token = $user->data->user_nicename;
-
 				$url = add_query_arg( 'author_name', $token , $url);
 				if ( !empty($type) )
 					$url = add_query_arg( 'post_type', $type, $url);

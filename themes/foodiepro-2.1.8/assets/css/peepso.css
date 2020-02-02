@@ -257,8 +257,19 @@ body {
     cursor: pointer;
 }
 
+.ps-icon-caret-right:before {
+    content: '\f0da'; /* <i class="fas fa-caret-right"></i> */
+}
+
+.ps-icon-plus:before {
+    content: '\f3e5'; /* <i class="fas fa-reply"></i> */
+}
+
+.ps-icon-eye-off:before {
+    content: '\f070'; /* <i class="fas fa-eye-slash"></i> */
+}
+
 .ps-icon-caret-down:before {
-    /* content: '\f0dd'; */
     content: '\f0d7';
 }
 
@@ -266,7 +277,6 @@ body {
     /* font-family: 'peepso';
     content: '\e804'; */
     content: '\f08d';
-
 }
 
 .ps-icon-move-down:before {

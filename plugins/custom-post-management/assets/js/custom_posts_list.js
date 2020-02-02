@@ -8,11 +8,11 @@ jQuery(document).ready(function() {
         // console.log('Click on recipe delete !');
         var button = jQuery(this);
 
-        console.log('Closest row is : ', button.closest('tr.post-list-row') );
+        // console.log('Closest row is : ', button.closest('tr.post-list-row') );
 
         if(confirm(custom_posts_list.confirm_message + ' ' + button.data('title'))) {
 
-            console.log('Post id is : ', button.data('id') );
+            // console.log('Post id is : ', button.data('id') );
             var data = {
                 action: 'cpm_delete_post',
                 security: custom_posts_list.nonce,
@@ -23,7 +23,7 @@ jQuery(document).ready(function() {
                 custom_posts_list.ajaxurl,
                 data,
                 function(response){
-                    console.log(  response );
+                    // console.log(  response );
                     button.closest('tr.post-list-row').remove();
                 }
             );

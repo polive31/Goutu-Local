@@ -10,7 +10,7 @@ table.custom-post-list a {
     text-decoration: none;
 }
 
-.post-list-actions span {
+.post-list-actions a {
   margin-left: 10px;
   font-size: 2.2rem;
 }

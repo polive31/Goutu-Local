@@ -478,13 +478,13 @@ class CNH_Shortcodes {
 			}
 			// Define display url
 			if ($display=='archive') {
-				$url = get_site_url();
 				$user = get_user_by('id', $user_id);
 				if (!$user) return;
 				$token = $user->data->user_nicename;
-				$url = add_query_arg( foodiepro_get_author_base(), $token , $url);
-				if ( !empty($type) )
-					$url = add_query_arg( 'post_type', $type, $url);
+				$url = get_site_url( null, foodiepro_get_author_base() . '/' . $token);
+				// $url = add_query_arg( foodiepro_get_author_base(), $token , $url);
+				// if ( !empty($type) )
+				// 	$url = add_query_arg( 'post_type', $type, $url);
 			}
 			elseif ( $display=='profile' && class_exists('Peepso') ) {
 				$peepso_user = PeepsoUser::get_instance( $user_id );

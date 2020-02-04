@@ -1355,6 +1355,64 @@ nav.ps-stream-status-action.ps-stream-status-action span {
   color: #353535;
 }
 
+/*-----------------------------------------------------------
+  REGISTRATION FORM
+-----------------------------------------------------------*/
+.ps-form__label {
+  font-family: Oswald, sans-serif;
+}
+
+.ps-form--register select,
+.ps-form--register input,
+.ps-form--register #username{
+  max-width: 400px;
+  padding:10px;
+}
+
+.ps-form__row.ps-form__row--half {
+  padding: 20px 0;
+  width: 50%;
+  display: inline-block;
+}
+
+span.required-sign {
+  color: red;
+}
+
+.ps-form__row--checkbox .ps-form__field {
+    display: inline-block;
+    padding-left: 20px;
+}
+
+.ps-form__field-desc.lbl-descript {
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+.ps-form__row.ps-form__row--checkbox {
+    display: inline-block;
+    width: 100%;
+    margin: 40px 0 10px 0;
+    text-align: left;
+    /* border: 1px solid #e0e0e0; */
+    /* padding: 10px; */
+    /* border-radius: 10px; */
+}
+
+.ps-form__row.submitel {
+    text-align: center;
+    margin: 40px 0;
+}
+
+button.ps-btn.ps-btn-primary {
+    font-family: Oswald, sans-serif;
+    font-size: 2rem;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    width: 200px;
+}
+
 @media only screen and (max-width: 480px) {
   /* PROFILE
     -------------------------------------------*/

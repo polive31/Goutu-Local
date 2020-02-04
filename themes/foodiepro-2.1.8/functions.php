@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 define('CHILD_THEME_NAME', 'Foodie Pro Theme');
 define('CHILD_THEME_DEVELOPER', 'Shay Bocks/Pascal Olive');
 define('CHILD_THEME_OPTIONS', get_option('cct_options'));
-define('CHILD_THEME_VERSION', ((bool)CHILD_THEME_OPTIONS['reload'])?time():'2.3.8');
+define('CHILD_THEME_VERSION', ((bool)CHILD_THEME_OPTIONS['reload'])?time():'2.3.80');
 define('CHILD_THEME_URL', get_stylesheet_directory_uri());
 define('CHILD_THEME_PATH', get_stylesheet_directory());
 define('DEFAULT_CHILD_COLOR_THEME', 'spring');
@@ -31,11 +31,9 @@ function foodiepro_get_color_theme() {
 	// $cct_options = get_option('cct_options');
 	if (CHILD_THEME_OPTIONS ) {
 		$color=!empty(CHILD_THEME_OPTIONS['color'])? CHILD_THEME_OPTIONS['color']: DEFAULT_CHILD_COLOR_THEME;
-		$login_color=!empty(CHILD_THEME_OPTIONS['color'])? CHILD_THEME_OPTIONS['color']: DEFAULT_CHILD_COLOR_THEME;
 	}
 	else {
 		$color=DEFAULT_CHILD_COLOR_THEME;
-		$login_color=DEFAULT_LOGIN_COLOR_THEME;
 	}
 	return $color;
 }

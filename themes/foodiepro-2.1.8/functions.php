@@ -627,8 +627,6 @@ function generateRandomString($length = 10)
 	return $randomString;
 }
 
-
-
 /**
  * Set the display name and nickname values to user nicename
  * @param int $user_id The user ID

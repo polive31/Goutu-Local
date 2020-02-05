@@ -79,7 +79,7 @@ class CNH_Archive_Headline {
 			}
 		}
 
-		elseif (is_archive() || is_tag()) {
+		elseif ((is_archive() || is_tag()) && !is_post_type_archive())  {
 			$query = get_queried_object();
 			if ($type == 'title') {
 				$output = $this->get_archive_title( $query );
@@ -91,7 +91,7 @@ class CNH_Archive_Headline {
 		}
 
 		else {
-			// If no particular archive, just post type, return the title and descriptions for the post type queried
+			// If post type, return the title and descriptions for the post type queried
 			if ($type == 'title') {
 				$output = $this->get_post_type_archive_title(get_query_var('post_type', false));
 			}

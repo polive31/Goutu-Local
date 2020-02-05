@@ -24,6 +24,7 @@ parent::__construct(
 
 
 public function is_region( $obj ) {
+	if (!isset($obj->slug)) return;
 	if ($obj->slug=='france') return true;
 	$parent = get_term_by('id',$obj->parent,'cuisine');
 	return ($parent->slug=='france');
@@ -49,18 +50,18 @@ public function widget( $args, $instance ) {
 
 		// Widget title
 		$obj = get_queried_object();
-		$author = isset($obj->data->user_login);
+		// $author = isset($obj->data->user_login);
 
-		if ($author) {
+		if (is_author()) {
 			$title = __('authors','foodiepro');
 		}
-		elseif ($obj->taxonomy=='cuisine') {
+		elseif (is_tax('cuisine')) {
 			if ( $this->is_region($obj) )
 				$title = __('regions','foodiepro');
 			else
 				$title = __('countries','foodiepro');
 		}
-		else {
+		elseif (is_tax()) {
 			$tax = get_taxonomy($obj->taxonomy);
 			$title = $tax->label;
 		}

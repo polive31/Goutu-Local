@@ -323,7 +323,7 @@ class CNH_Shortcodes {
 	public function list_terms_taxonomy( $atts ) {
 		static $dropdown_cnt;
 		$atts = shortcode_atts( array(
-			'taxonomies' => '',
+			'taxonomy' => 'course',//author, cuisine...
 			'dropdown' => 'false',
 			'exclude' => '',
 			'index_title' => '',
@@ -332,6 +332,7 @@ class CNH_Shortcodes {
 		), $atts );
 
 		$html = '';
+		$tax_slug = $atts['taxonomy'];
 		$exclude = $atts['exclude'];
 		$dropdown = $atts['dropdown'];
 		$index_title = $atts['index_title'];
@@ -342,19 +343,6 @@ class CNH_Shortcodes {
 		------------------------------------------------------------------------*/
 		// Source taxonomy
 		$all_url='#';
-
-		$obj = get_queried_object();
-		$author = isset($obj->data->user_login);
-		//print_r( $obj );
-		$tax_slug = $author?'author':$obj->taxonomy;
-		//echo $tax_slug;
-		$tax = $author?__('authors', 'foodiepro'):get_taxonomy($tax_slug);
-		//echo $tax;
-		//$term_name = $obj->name;
-		$term_slug = $author?$obj->user_login:$obj->slug;
-		//echo $term_slug;
-		//echo sprintf( '$tax_slug = %s <br>', $tax_slug);
-
 
 		$hierarchical=0;
 		$child_of='';
@@ -401,7 +389,7 @@ class CNH_Shortcodes {
 			$args['class'] = 'dropdown-select';
 			$args['value_field'] = 'slug';
 
-			$html .= $author?wp_dropdown_users( $args ):wp_dropdown_categories( $args );
+			$html .= ($tax_slug=='author')?wp_dropdown_users( $args ):wp_dropdown_categories( $args );
 			$html .= $this->get_dropdown_js($dropdown_id, $tax_slug, $all_url);
 		}
 		else {

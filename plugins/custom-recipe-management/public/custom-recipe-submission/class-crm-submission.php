@@ -124,16 +124,26 @@ class CRM_Submission {
             return;
         }
 
+        // Recipe thumbnail is already taken into account in cpm_submission plugin
+        if ($file_handler == 'recipe_thumbnail') return;
+
         require_once( ABSPATH . 'wp-admin/includes/image.php' );
         require_once( ABSPATH . 'wp-admin/includes/file.php' );
         require_once( ABSPATH . 'wp-admin/includes/media.php' );
 
-        $attach_id = media_handle_upload( $file_handler, $post_id );
+        $title = get_the_title($post_id);
+        $post_data = array(
+            'post_title'     => $title,
+        );
 
-        if ( $file_handler == 'recipe_thumbnail' ) { // Featured Recipe image
-            set_post_thumbnail( $post_id, $attach_id );
-        }
-        elseif ( $file_handler == 'ingredients_thumbnail' ) { // Ingredients image
+        $attach_id = media_handle_upload( $file_handler, $post_id, $post_data );
+        update_post_meta($attach_id, '_wp_attachment_image_alt', $title);
+
+        // if ( $file_handler == 'recipe_thumbnail' ) { // Featured Recipe image
+        //     set_post_thumbnail( $post_id, $attach_id );
+        // }
+
+        if ( $file_handler == 'ingredients_thumbnail' ) { // Ingredients image
             update_post_meta( $post_id, '_ingredients_thumbnail_id', $attach_id );
         }
         else { // Instructions image

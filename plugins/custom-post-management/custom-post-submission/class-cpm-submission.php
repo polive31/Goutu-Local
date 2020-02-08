@@ -497,7 +497,12 @@ class CPM_Submission
                 require_once(ABSPATH . 'wp-admin/includes/file.php');
                 require_once(ABSPATH . 'wp-admin/includes/media.php');
 
-                $attach_id = media_handle_upload($file_handler, $post_id);
+                $title = get_the_title($post_id);
+                $post_data = array(
+                    'post_title'     => $title,
+                );
+                $attach_id = media_handle_upload($file_handler, $post_id, $post_data);
+                update_post_meta($attach_id, '_wp_attachment_image_alt', $title);
 
                 // update_post_meta( $post_id, '_thumbnail_id', $attach_id );
                 set_post_thumbnail($post_id, $attach_id);

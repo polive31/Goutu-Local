@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2020-02-08 12:31+0100\n"
-"PO-Revision-Date: 2020-02-08 12:32+0100\n"
+"POT-Creation-Date: 2020-02-08 13:13+0100\n"
+"PO-Revision-Date: 2020-02-08 13:15+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -624,7 +624,7 @@ msgstr "Les plus populaires"
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:107
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:110
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:76
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:78
 #: plugins/custom-navigation-helpers/widgets/taxonomy-search-widget.php:103
 #: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:119
 #: plugins/custom-recipe-management/widgets/crm_lists_dropdown_widget.php:70
@@ -634,7 +634,7 @@ msgstr ""
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:111
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:123
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:84
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:86
 #: plugins/custom-navigation-helpers/widgets/taxonomy-search-widget.php:107
 #: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:122
 #: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:86
@@ -719,33 +719,33 @@ msgstr "Plat"
 msgid "Origin"
 msgstr "Origine"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:27
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:29
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:110
 #: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:51
 msgid "Diet"
 msgstr "Régime"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:28
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:30
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:94
 msgid "Season"
 msgstr "Saison"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:29
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:31
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:102
 msgid "Occasion"
 msgstr "Occasion"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:30
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:32
 #, fuzzy
 #| msgid "Categories"
 msgid "Categorie"
 msgstr "Catégories"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:47
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:49
 msgid "Filter by "
 msgstr "Filtrer par "
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:90
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:92
 #, fuzzy
 #| msgid "Filter recipes"
 msgid "Dropdown taxonomy"
@@ -2208,8 +2208,8 @@ msgid "Serving Size"
 msgstr "Portions"
 
 #: plugins/custom-site-notifications/public/like/CSN_Like.php:37
-msgid "Like this recipe"
-msgstr "J'aime cette recette"
+msgid "I cooked and liked this recipe"
+msgstr "J'ai cuisiné et apprécié cette recette"
 
 #: plugins/custom-site-notifications/public/like/CSN_Like.php:38
 msgid "Do not like this recipe anymore"
@@ -2223,10 +2223,18 @@ msgstr "J'aime cet article"
 msgid "Do not like this post anymore"
 msgstr "Je n'aime plus cet article"
 
-#: plugins/custom-site-notifications/public/like/CSN_Like.php:68
-#: plugins/custom-site-notifications/public/like/CSN_Like.php:122
-#: plugins/custom-site-notifications/public/like/CSN_Like.php:223
-#: plugins/custom-site-notifications/public/like/CSN_Like.php:225
+#: plugins/custom-site-notifications/public/like/CSN_Like.php:69
+#: plugins/custom-site-notifications/public/like/CSN_Like.php:126
+#, php-format
+msgid "%s cooked"
+msgid_plural "%s cooked"
+msgstr[0] "%s a cuisiné"
+msgstr[1] "%s ont cuisiné"
+
+#: plugins/custom-site-notifications/public/like/CSN_Like.php:71
+#: plugins/custom-site-notifications/public/like/CSN_Like.php:128
+#: plugins/custom-site-notifications/public/like/CSN_Like.php:230
+#: plugins/custom-site-notifications/public/like/CSN_Like.php:232
 #, php-format
 msgid "%s like"
 msgid_plural "%s likes"
@@ -10504,6 +10512,9 @@ msgstr "Ces recettes pourraient également vous intéresser..."
 #: themes/foodiepro-2.1.8/yarpp-template-goutu.php:20
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
+
+#~ msgid "Like this recipe"
+#~ msgstr "J'ai cuisiné ce plat"
 
 #~ msgid "authors"
 #~ msgstr "auteurs"

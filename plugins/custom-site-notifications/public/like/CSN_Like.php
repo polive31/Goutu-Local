@@ -34,7 +34,7 @@ class CSN_Like
         // }
 
         if ($this->post_type == 'recipe') {
-            $tooltip_like = __('Like this recipe', 'foodiepro');
+            $tooltip_like = __('I cooked and liked this recipe', 'foodiepro');
             $tooltip_dislike = __('Do not like this recipe anymore', 'foodiepro');
         } else {
             $tooltip_like = __('Like this post', 'foodiepro');
@@ -65,7 +65,10 @@ class CSN_Like
             <div class="button-caption">
                 <?php
                         $count_likes = $this->like_count($post_id);
-                        echo sprintf(_n('%s like', '%s likes', $count_likes, 'foodiepro'), $count_likes);
+                        if ($this->post_type=='recipe')
+                            echo sprintf(_n('%s cooked', '%s cooked', $count_likes, 'foodiepro'), $count_likes);
+                        else
+                            echo sprintf(_n('%s like', '%s likes', $count_likes, 'foodiepro'), $count_likes);
                         ?>
             </div>
         </a>
@@ -119,7 +122,11 @@ class CSN_Like
             }
 
             $count = count($liking_users);
-            echo sprintf(_n('%s like', '%s likes', $count, 'foodiepro'), $count);
+            if (get_post_type($post_id) == 'recipe')
+                echo sprintf(_n('%s cooked', '%s cooked', $count, 'foodiepro'), $count);
+            else
+                echo sprintf(_n('%s like', '%s likes', $count, 'foodiepro'), $count);
+                // echo sprintf(__('%s cooked', 'foodiepro'), $count);
             update_post_meta($post_id, 'liking_users', $liking_users);
             do_action('csn_after_post_like', $user_id, $post_id);
 

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2020-02-08 12:31+0100\n"
+"POT-Creation-Date: 2020-02-08 13:13+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -582,7 +582,7 @@ msgstr ""
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:107
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:110
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:76
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:78
 #: plugins/custom-navigation-helpers/widgets/taxonomy-search-widget.php:103
 #: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:119
 #: plugins/custom-recipe-management/widgets/crm_lists_dropdown_widget.php:70
@@ -592,7 +592,7 @@ msgstr ""
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:111
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:123
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:84
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:86
 #: plugins/custom-navigation-helpers/widgets/taxonomy-search-widget.php:107
 #: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:122
 #: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:86
@@ -675,31 +675,31 @@ msgstr ""
 msgid "Origin"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:27
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:29
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:110
 #: plugins/custom-recipe-management/public/custom-recipe-template/partials/custom-recipe-template.php:51
 msgid "Diet"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:28
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:30
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:94
 msgid "Season"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:29
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:31
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:102
 msgid "Occasion"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:30
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:32
 msgid "Categorie"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:47
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:49
 msgid "Filter by "
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:90
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:92
 msgid "Dropdown taxonomy"
 msgstr ""
 
@@ -2075,7 +2075,7 @@ msgid "Serving Size"
 msgstr ""
 
 #: plugins/custom-site-notifications/public/like/CSN_Like.php:37
-msgid "Like this recipe"
+msgid "I cooked and liked this recipe"
 msgstr ""
 
 #: plugins/custom-site-notifications/public/like/CSN_Like.php:38
@@ -2090,10 +2090,18 @@ msgstr ""
 msgid "Do not like this post anymore"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/like/CSN_Like.php:68
-#: plugins/custom-site-notifications/public/like/CSN_Like.php:122
-#: plugins/custom-site-notifications/public/like/CSN_Like.php:223
-#: plugins/custom-site-notifications/public/like/CSN_Like.php:225
+#: plugins/custom-site-notifications/public/like/CSN_Like.php:69
+#: plugins/custom-site-notifications/public/like/CSN_Like.php:126
+#, php-format
+msgid "%s cooked"
+msgid_plural "%s cooked"
+msgstr[0] ""
+msgstr[1] ""
+
+#: plugins/custom-site-notifications/public/like/CSN_Like.php:71
+#: plugins/custom-site-notifications/public/like/CSN_Like.php:128
+#: plugins/custom-site-notifications/public/like/CSN_Like.php:230
+#: plugins/custom-site-notifications/public/like/CSN_Like.php:232
 #, php-format
 msgid "%s like"
 msgid_plural "%s likes"

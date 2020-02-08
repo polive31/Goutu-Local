@@ -64,12 +64,9 @@ class CSN_Like
         <a href="<?php echo $link_url; ?>" onClick="<?= $ga; ?>" id="<?php echo $link_id; ?>" class="<?php echo $link_class; ?>" data-post-id="<?php echo $post_id; ?>">
             <div class="button-caption">
                 <?php
-                        $count_likes = $this->like_count($post_id);
-                        if ($this->post_type=='recipe')
-                            echo sprintf(_n('%s cooked', '%s cooked', $count_likes, 'foodiepro'), $count_likes);
-                        else
-                            echo sprintf(_n('%s like', '%s likes', $count_likes, 'foodiepro'), $count_likes);
-                        ?>
+                    $count_likes = $this->like_count($post_id);
+                    $this->display_like($count_likes,$this->post_type);
+                ?>
             </div>
         </a>
 
@@ -122,11 +119,8 @@ class CSN_Like
             }
 
             $count = count($liking_users);
-            if (get_post_type($post_id) == 'recipe')
-                echo sprintf(_n('%s cooked', '%s cooked', $count, 'foodiepro'), $count);
-            else
-                echo sprintf(_n('%s like', '%s likes', $count, 'foodiepro'), $count);
-                // echo sprintf(__('%s cooked', 'foodiepro'), $count);
+            $this->display_like($count, get_post_type($post_id));
+            // echo sprintf(__('%s cooked', 'foodiepro'), $count);
             update_post_meta($post_id, 'liking_users', $liking_users);
             do_action('csn_after_post_like', $user_id, $post_id);
 
@@ -138,6 +132,21 @@ class CSN_Like
 
     /* HELPERS
     ----------------------------------------------------------------------*/
+    public function display_like($count, $post_type) {
+        if ($count==0) {
+            if ($post_type == 'recipe')
+                echo __('I cooked it', 'foodiepro');
+            else
+                echo __('I like', 'foodiepro');
+        }
+        else {
+            if ($post_type == 'recipe')
+                echo sprintf(_n('%s cooked', '%s cooked', $count, 'foodiepro'), $count);
+            else
+                echo sprintf(_n('%s like', '%s likes', $count, 'foodiepro'), $count);
+        }
+    }
+
     public function display_debug_information()
     {
         $userid = get_current_user_id();

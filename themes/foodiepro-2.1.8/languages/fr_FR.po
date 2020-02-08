@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2020-02-08 13:13+0100\n"
-"PO-Revision-Date: 2020-02-08 13:15+0100\n"
+"POT-Creation-Date: 2020-02-08 13:57+0100\n"
+"PO-Revision-Date: 2020-02-08 14:05+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -2223,18 +2223,24 @@ msgstr "J'aime cet article"
 msgid "Do not like this post anymore"
 msgstr "Je n'aime plus cet article"
 
-#: plugins/custom-site-notifications/public/like/CSN_Like.php:69
-#: plugins/custom-site-notifications/public/like/CSN_Like.php:126
+#: plugins/custom-site-notifications/public/like/CSN_Like.php:138
+msgid "I cooked it"
+msgstr "Je l'ai cuisiné"
+
+#: plugins/custom-site-notifications/public/like/CSN_Like.php:140
+msgid "I like"
+msgstr "J'aime"
+
+#: plugins/custom-site-notifications/public/like/CSN_Like.php:144
 #, php-format
 msgid "%s cooked"
 msgid_plural "%s cooked"
 msgstr[0] "%s a cuisiné"
 msgstr[1] "%s ont cuisiné"
 
-#: plugins/custom-site-notifications/public/like/CSN_Like.php:71
-#: plugins/custom-site-notifications/public/like/CSN_Like.php:128
-#: plugins/custom-site-notifications/public/like/CSN_Like.php:230
-#: plugins/custom-site-notifications/public/like/CSN_Like.php:232
+#: plugins/custom-site-notifications/public/like/CSN_Like.php:146
+#: plugins/custom-site-notifications/public/like/CSN_Like.php:239
+#: plugins/custom-site-notifications/public/like/CSN_Like.php:241
 #, php-format
 msgid "%s like"
 msgid_plural "%s likes"

@@ -61,9 +61,6 @@ peepso/*
 !peepso/overrides/
 peepso/plugins/*
 
-!mu-plugins/
-!plugins/
-
 !languages/
 languages/*
 !languages/buddypress*
@@ -80,6 +77,8 @@ themes/*
 themes/foodiepro-2.1.8/backups/*
 themes/foodiepro-2.1.8/images/Backup/*
 
+mu-plugins/*
+
 plugins/*
 !plugins/random-user-ids/
 !plugins/custom-admin-management/
@@ -88,12 +87,6 @@ plugins/*
 !plugins/search-everything/
 plugins/search-everything/*
 !plugins/search-everything/search-everything.php
-!plugins/buddypress/
-plugins/buddypress/*
-!plugins/buddypress/bp-core/
-plugins/buddypress/bp-core/*
-!plugins/buddypress/bp-core/bp-core-attachments.php
-!plugins/bp-custom.php
 !plugins/wp-scripts-styles-manager/
 !plugins/custom-batch-manage-posts/
 !plugins/custom-buddypress-helpers/
@@ -107,7 +100,6 @@ plugins/buddypress/bp-core/*
 !plugins/custom-google-recaptcha/
 !plugins/custom-lightbox/
 !plugins/custom-navigation-helpers/
-!plugins/custom-php-debug/
 !plugins/custom-post-meta-inspector/
 !plugins/custom-recent-post-widget/
 !plugins/recent-posts-widget-extended/

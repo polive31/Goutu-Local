@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 define('CHILD_THEME_NAME', 'Foodie Pro Theme');
 define('CHILD_THEME_DEVELOPER', 'Shay Bocks/Pascal Olive');
 define('CHILD_THEME_OPTIONS', get_option('cct_options'));
-define('CHILD_THEME_VERSION', ((bool)CHILD_THEME_OPTIONS['reload'])?time():'2.3.80');
+define('CHILD_THEME_VERSION', ((bool)CHILD_THEME_OPTIONS['reload'])?time():'2.3.81');
 define('CHILD_THEME_URL', get_stylesheet_directory_uri());
 define('CHILD_THEME_PATH', get_stylesheet_directory());
 define('DEFAULT_CHILD_COLOR_THEME', 'spring');
@@ -441,10 +441,10 @@ function my_login_logo_url()
 	return get_bloginfo('url');
 }
 
-add_filter('login_headertitle', 'my_login_logo_url_title');
+add_filter('login_headertext ', 'my_login_logo_url_title');
 function my_login_logo_url_title()
 {
-	$output = __('Goûtu.org - La Communauté des Gourmets', 'foodiepro');
+	$output = get_bloginfo('name') . '-' . get_bloginfo('description');
 	return $output;
 }
 
@@ -762,18 +762,18 @@ function themed_wp_die_handler($message, $title = '', $args = array())
  * Values are constants set in wp-config.php
  */
 // add_action( 'phpmailer_init', 'send_smtp_email' );
-function send_smtp_email($phpmailer)
-{
-	$phpmailer->isSMTP();
-	$phpmailer->Host       = SMTP_HOST;
-	$phpmailer->SMTPAuth   = SMTP_AUTH;
-	$phpmailer->Port       = SMTP_PORT;
-	$phpmailer->Username   = SMTP_USER;
-	$phpmailer->Password   = SMTP_PASS;
-	$phpmailer->SMTPSecure = SMTP_SECURE;
-	$phpmailer->From       = SMTP_FROM;
-	$phpmailer->FromName   = SMTP_NAME;
-}
+// function send_smtp_email($phpmailer)
+// {
+// 	$phpmailer->isSMTP();
+// 	$phpmailer->Host       = SMTP_HOST;
+// 	$phpmailer->SMTPAuth   = SMTP_AUTH;
+// 	$phpmailer->Port       = SMTP_PORT;
+// 	$phpmailer->Username   = SMTP_USER;
+// 	$phpmailer->Password   = SMTP_PASS;
+// 	$phpmailer->SMTPSecure = SMTP_SECURE;
+// 	$phpmailer->From       = SMTP_FROM;
+// 	$phpmailer->FromName   = SMTP_NAME;
+// }
 
 
 /* =================================================================*/
@@ -1089,14 +1089,14 @@ function foodiepro_override_mofile_path($mofile, $domain)
 
 	/* WP Fastest Cache
 -------------------------------------------------------------------*/
-	add_action('csn_after_post_like', 'foodiepro_clear_cache', 15, 2);
-	function foodiepro_clear_cache($user_id, $post_id)
-	{
-		// Flushes the cache in the case of WP Faster Cache installed
-		if (function_exists('wpfc_clear_post_cache_by_id')) {
-			wpfc_clear_post_cache_by_id($post_id);
-		}
-	}
+	// add_action('csn_after_post_like', 'foodiepro_clear_cache', 15, 2);
+	// function foodiepro_clear_cache($user_id, $post_id)
+	// {
+	// 	// Flushes the cache in the case of WP Faster Cache installed
+	// 	if (function_exists('wpfc_clear_post_cache_by_id')) {
+	// 		wpfc_clear_post_cache_by_id($post_id);
+	// 	}
+	// }
 
 	/* =================================================================*/
 	/* =               PAGES

@@ -4,6 +4,10 @@ tr.form-field.term-description-wrap {
     /*display: none;*/
 }
 
+.widget .full-width {
+    width: 100%;
+}
+
 .foodie-pro-widget-box {
 	background: #fafafa;
 	border: 1px solid #e5e5e5;

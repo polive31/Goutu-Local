@@ -348,16 +348,15 @@ class CNH_Shortcodes {
 		$child_of='';
 		$depth=0;
 		// Output taxonomy and parent term
-		if ($tax_slug == 'cuisine') { // $tax_slug will stay cuisine
-			if ($obj->parent != 0) // term has a parent => either country or region archive
-				$child_of = $obj->parent; // wp_list_categories will use parent to filter
-			else // term has no parent => either continent or france
-				$child_of = $obj->term_id; // wp_list_categories will use current term to filter
-		}
-		elseif ($tax_slug == 'ingredient') {
+		// if ($tax_slug == 'cuisine') { // $tax_slug will stay cuisine
+		// 	if ($obj->parent != 0) // term has a parent => either country or region archive
+		// 		$child_of = $obj->parent; // wp_list_categories will use parent to filter
+		// 	else // term has no parent => either continent or france
+		// 		$child_of = $obj->term_id; // wp_list_categories will use current term to filter
+		// }
+		if ($tax_slug == 'ingredient') {
 			$hierarchical = 1;
 		}
-
 
 		// Arguments for wp_dropdown_categories	/ wp_dropdown_users
 		$args = array(
@@ -375,7 +374,6 @@ class CNH_Shortcodes {
 
 		if ($dropdown=='true') {
 			$dropdown_id = $tax_slug . ++$dropdown_cnt;
-
 
 			$html = '<label class="screen-reader-text" for="' . esc_attr( $dropdown_id ) . '"> . $label . </label>';
 

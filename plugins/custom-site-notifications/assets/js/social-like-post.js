@@ -6,29 +6,29 @@ jQuery(document).ready(function(){
     // });
 
     jQuery(document).on('click', '.social-like-post', function(e) {
-        console.log('Click on like detected !');
+        // console.log('Click on like detected !');
 
-        console.log( 'ajaxurl = ' + custom_post_like.ajaxurl );
-        console.log( 'ajaxnonce = ' + custom_post_like.nonce );
+        // console.log( 'ajaxurl = ' + custom_post_like.ajaxurl );
+        // console.log( 'ajaxnonce = ' + custom_post_like.nonce );
 
         e.preventDefault();
         e.stopPropagation();
 
         var button = jQuery(this);
-                var tooltip=button.parent().find('div.toggle');
+        var tooltip=button.parent().find('div.toggle');
 
-                if(button.hasClass('is-liked')) {
-                    button.removeClass('is-liked');
-                }
-                else {
-                    button.addClass('is-liked');
-                }
-                tooltip.toggle();
-                console.log('Tooltip %0', tooltip);
+        if(button.hasClass('is-liked')) {
+            button.removeClass('is-liked');
+        }
+        else {
+            button.addClass('is-liked');
+        }
+        tooltip.toggle();
+        // console.log('Tooltip %0', tooltip);
 
-                // Prep ajax call
+        // Prep ajax call
         var postId = button.data('post-id');
-        console.log('post ID :'+ postId);
+        // console.log('post ID :'+ postId);
 
         var data = {
           action: 'like_post',

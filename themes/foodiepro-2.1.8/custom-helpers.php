@@ -31,6 +31,21 @@ class foodiepro_admin_notice
 	}
 }
 
+/* =================================================================*/
+/* =              DYNAMIC TEMPLATE
+/* =================================================================*/
+
+function foodiepro_replace_token($html, $token, $data) {
+	$pattern = '/' . $token . '(.*?)' . $token . '/i';
+	// if (preg_match_all("/$tag(.*?)$tag/i", $html, $m)) {
+	if (preg_match_all($pattern, $html, $m)) {
+		foreach ($m[1] as $i => $varname) {
+			$html = str_replace($m[0][$i], sprintf('%s', $data[strtolower($varname)]), $html);
+		}
+	}
+	return $html;
+}
+
 
 /* =================================================================*/
 /* =              PERMALINKS

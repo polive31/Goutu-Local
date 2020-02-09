@@ -84,6 +84,7 @@ class Custom_Navigation_Helpers {
 		add_shortcode('post-count', 					array($Shortcodes, 'get_post_count'));
 
 		// Add link shortcodes
+		add_shortcode('user', 							array($Shortcodes, 'get_user'));
 		add_shortcode('permalink', 						array($Shortcodes, 'get_permalink'));
 		add_shortcode('glossary', 						array($Shortcodes, 'search_glossary') );
 		add_shortcode('search', 						array($Shortcodes, 'search_posts') );

@@ -113,7 +113,7 @@ class CCF_Public
 					'post_title' => $subject,
 					'post_type' => 'contact',
 					'post_content' => $comments,
-					'post_status' => 'pending'
+					'post_status' => 'publish'
 				);
 				$post_id = wp_insert_post($args);
 

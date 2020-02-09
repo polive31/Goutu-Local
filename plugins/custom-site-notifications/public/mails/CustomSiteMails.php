@@ -78,7 +78,7 @@ class CustomSiteMails {
 			'content' 		=> $content . $content1,
 		);
 
-		$message = $this->populate_template($data, $to_id, self::PROVIDER.'_generic' );
+		$message = self::populate_template($data, $to_id );
 		$this->send_mail( $to, $subject, $message );
 	}
 
@@ -133,7 +133,7 @@ class CustomSiteMails {
 			'content' 		=> $content,
 		);
 
-		$message = $this->populate_template($data, $to_id, self::PROVIDER.'_generic' );
+		$message = self::populate_template($data, $to_id );
 		$this->send_mail( $to, $subject, $message );
 
 		/* Send Peepso notification */
@@ -183,7 +183,7 @@ class CustomSiteMails {
 			'content' 		=> $content,
 		);
 
-		$message = $this->populate_template($data, $to_id, self::PROVIDER.'_generic' );
+		$message = self::populate_template($data, $to_id );
 		$this->send_mail( $to, $subject, $message );
 
 		/* Send Peepso notification */
@@ -214,7 +214,7 @@ class CustomSiteMails {
 	}
 
 
-	public function populate_template( $data, $user_id, $template ) {
+	public static function populate_template( $data, $user_id, $template=self::PROVIDER.'_generic' ) {
 		// $logo = CSN_Assets::plugin_url() . 'assets/img/logo.png';
 		$logo = CHILD_THEME_URL . '/images/theme/logo-white/logo_360_150.png';
 
@@ -224,10 +224,10 @@ class CustomSiteMails {
 		$mail_url = CustomSocialButtons::mailURL($post, $post->post_type);
 		$whatsapp_url = CustomSocialButtons::whatsappURL($post, $post->post_type);
 
-		$signature = $this->signature();
-		$contact = $this->contact();
-		$copyright = $this->copyright();
-		$unsubscribe = $this->unsubscribe( $user_id );
+		$signature = self::signature();
+		$contact = self::contact();
+		$copyright = self::copyright();
+		$unsubscribe = self::unsubscribe( $user_id );
 
 		$facebook_text 	= __('Share this recipe on Facebook','foodiepro');
 		$twitter_text 	= __('Share this recipe on Twitter','foodiepro');
@@ -280,23 +280,23 @@ class CustomSiteMails {
 		return $out;
 	}
 
-	public function signature() {
+	public static function signature() {
 		$signature =  __('The <a href="%s">Goûtu.org</a> Team.','foodiepro');
 		$signature = sprintf($signature,get_bloginfo('url'));
 		return wpautop($signature);
 	}
 
-	public function contact() {
+	public static function contact() {
 		$contact =  __('Any problem or question ? Contact us <a href="%s">here</a>','foodiepro');
-		$contact = sprintf($contact, 'mailto:' . $this->contact_address() );
+		$contact = sprintf($contact, 'mailto:' . self::contact_address() );
 		return wpautop($contact);
 	}
 
-	public function copyright() {
+	public static function copyright() {
 		return do_shortcode('[footer_copyright before="' . __('All rights reserved','foodiepro') . ' " first="2015"]');
 	}
 
-	public function unsubscribe( $user_id ) {
+	public static function unsubscribe( $user_id ) {
 		if ( empty($user_id) || !class_exists('PeepsoHelpers') ) return '';
 		$user = PeepsoHelpers::get_user( $user_id );
 
@@ -306,12 +306,12 @@ class CustomSiteMails {
 		return $unsubscribe . '<br>' . $unsubscribe1;
 	}
 
-	public function site_name( $from_name='' ) {
+	public static function site_name( $from_name='' ) {
 		$from_name = get_bloginfo( 'name' );
 	    return $from_name;
 	}
 
-	public function contact_address( $from_address='' ) {
+	public static function contact_address( $from_address='' ) {
 		$domain = strtolower( $_SERVER['SERVER_NAME'] );
 		if ( substr( $domain, 0, 4 ) == 'www.' ) {
 			$domain = substr( $domain, 4 );

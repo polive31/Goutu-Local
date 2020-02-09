@@ -49,7 +49,7 @@ class CNH_Assets {
 	  	if ( is_archive() || is_search() ) {
 			wp_enqueue_script( 'jquery-masonry' );
 			custom_enqueue_script( 'cnh-masonry-layout', '/assets/js/masonry-layout.js', self::$PLUGIN_URI, self::$PLUGIN_PATH, array( 'jquery', 'jquery-masonry' ), CHILD_THEME_VERSION, true);
-			custom_enqueue_script( 'cnh-infinite-scroll', '/assets/js/infinite-scroll.js', self::$PLUGIN_URI, self::$PLUGIN_PATH, array( 'jquery' ), CHILD_THEME_VERSION, true);
+			// custom_enqueue_script( 'cnh-infinite-scroll', '/assets/js/infinite-scroll.js', self::$PLUGIN_URI, self::$PLUGIN_PATH, array( 'jquery' ), CHILD_THEME_VERSION, true);
 	  	};
     }
 
@@ -65,7 +65,7 @@ class CNH_Assets {
         return self::QUERY_VARS;
 	}
 
-    public static function get_term_image($term=null, $size = 'full', $class = '', $src = false, $tax='ingredient')
+    public static function get_term_image($term=null, $size = 'full', $class = '', $imgclass='', $fallback_url='')
     {
         $html='';
         if (class_exists('WPCustomCategoryImage')) {
@@ -75,13 +75,17 @@ class CNH_Assets {
                 'size'       => $size,
                 'term_id'    => $id,
                 'alt'        => $name,
-                'onlysrc'    => (bool) $src,
+                'class'      => $imgclass,
+                'onlysrc'    => false,
 
             );
             $html = WPCustomCategoryImage::get_category_image($atts);
         }
         if (empty($html)) {
-            $url= self::$PLUGIN_URI . '/assets/img/fallback-' . $tax . '.png';
+            if (empty($fallback_url))
+                $url= self::$PLUGIN_URI . '/assets/img/fallback-ingredient.png';
+            else
+                $url= $fallback_url;
             $html=picture($url);
         }
         $html = "<div class='$class'>$html</div>";

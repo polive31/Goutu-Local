@@ -65,7 +65,7 @@ class Taxonomy_Search_Widget extends WP_Widget {
 				echo '<li>';
 				$link =  get_term_link( $term, $tax );
 				echo '<div class="entry-header-overlay">';
-				$image = CNH_Assets::get_term_image($term, 'small-thumbnail', 'taxonomy-search-image');
+				$image = CNH_Assets::get_term_image($term, 'small-thumbnail', 'taxonomy-search-image', 'skip-lazy');
 				$image_html = sprintf('<span class="archive-image">%s</span>', $image  );
 				echo sprintf('<a href="%1$s" title="%2$s">%3$s</a>', $link, ucfirst($term->name), $image_html) ;
 				echo "</div>";

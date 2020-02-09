@@ -71,7 +71,8 @@ class WPCustomCategoryImage
         $params = array_merge(array(
             'size'    => 'full',
             'term_id' => null,
-            'alt'     => null
+            'alt'     => null,
+            'class'   => null
         ), $atts);
 
         $term_id = $params['term_id'];
@@ -92,7 +93,8 @@ class WPCustomCategoryImage
         $attachment_alt  = trim(strip_tags($attachment_meta));
 
         $attr = array(
-            'alt'=> (is_null($params['alt']) ?  $attachment_alt : $params['alt'])
+            'alt'=> (is_null($params['alt']) ?  $attachment_alt : $params['alt']),
+            'class'=> (is_null($params['class']) ?  '' : $params['class'])
         );
 
         if ($onlysrc) {

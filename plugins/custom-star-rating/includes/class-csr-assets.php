@@ -32,7 +32,6 @@ class CSR_Assets {
 			'version' 	=> CHILD_THEME_VERSION,
 		);
 		custom_register_style( $args );
-
 	}
 
 	// public static function enqueue_comment_reply_script() {

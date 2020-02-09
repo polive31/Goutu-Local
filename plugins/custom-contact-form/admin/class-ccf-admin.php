@@ -40,7 +40,7 @@ class CCF_Admin
 				<input type="hidden" name="page_options" value="contact_email" />
 			</form>
 		</div>
-		<?php
+	<?php
 	}
 
 	public function enqueue_ccf_admin_js()
@@ -108,8 +108,8 @@ class CCF_Admin
 	{
 		/* Property */
 		$labels = array(
-			'name'                => _x('Contact Requests', 'Post Type General Name', 'textdomain'),
-			'singular_name'       => _x('Contact Request', 'Post Type Singular Name', 'textdomain'),
+			'name'                => _x('Contact Forms', 'Post Type General Name', 'textdomain'),
+			'singular_name'       => _x('Contact Form', 'Post Type Singular Name', 'textdomain'),
 			'menu_name'           => __('Contacts', 'textdomain'),
 			'name_admin_bar'      => __('Contacts', 'textdomain'),
 			'parent_item_colon'   => __('Parent Item:', 'textdomain'),
@@ -165,36 +165,87 @@ class CCF_Admin
 
 	/* Custom Columns */
 	// Add the custom columns to the book post type:
-	// add_filter( 'manage_book_posts_columns', 'set_custom_edit_book_columns' );
-	public function set_custom_edit_book_columns($columns)
+	//
+	public function set_contact_forms_columns($columns)
 	{
-		unset($columns['author']);
-		$columns['book_author'] = __('Author', 'your_text_domain');
-		$columns['publisher'] = __('Publisher', 'your_text_domain');
+		unset($columns['thumb']);
+		$columns['contact-type'] = __('Contact Type', 'foodiepro');
+		$columns['requester'] = __('Requester', 'foodiepro');
 
 		return $columns;
 	}
 
 	// Add the data to the custom columns for the book post type:
-	// add_action( 'manage_book_posts_custom_column' , 'custom_book_column', 10, 2 );
-	public function custom_book_column($column, $post_id)
+	//
+	public function contact_define_columns($column, $post_id)
 	{
 		switch ($column) {
 
-			case 'book_author':
-				$terms = get_the_term_list($post_id, 'book_author', '', ',', '');
-				if (is_string($terms))
-					echo $terms;
+			case 'contact-type':
+				// $terms = get_the_term_list($post_id, 'book_author', '', ',', '');
+				$email = get_post_meta($post_id, 'ccf_email', true);
+				if (empty($email))
+					echo __('Template', 'foodiepro');
 				else
-					_e('Unable to get author(s)', 'your_text_domain');
+					// _e('Unable to get contact types(s)', 'your_text_domain');
+					echo __('Request', 'foodiepro');
 				break;
 
-			case 'publisher':
-				echo get_post_meta($post_id, 'publisher', true);
+			case 'requester':
+				echo get_post_meta($post_id, 'ccf_name', true);
 				break;
 		}
 	}
 
+
+	/* ADMIN MENU LAYOUT */
+
+	public function add_ccf_submenus()
+	{
+		add_submenu_page('edit.php?post_type=contact', 'Contact : Requests', 'All Requests', 'manage_options', 'edit.php?contact_type=template&post_type=contact');
+		add_submenu_page('edit.php?post_type=contact', 'Contact : Templates', 'All Templates', 'manage_options', 'edit.php?contact_type=request&post_type=contact');
+	}
+
+	public function add_ccf_queryvars($qvars)
+	{
+		$qvars[] = 'contact_type';
+		return $qvars;
+	}
+
+	public function customize_ccf_post_query($query)
+	{
+		global $pagenow;
+		// Get the post type
+		$post_type = isset($_GET['post_type']) ? $_GET['post_type'] : '';
+		$contact_type = isset($_GET['contact_type']) ? $_GET['contact_type'] : '';
+		if (is_admin() && $pagenow == 'edit.php' && $post_type == 'contact') {
+			if ($contact_type == 'template') {
+				$query->query_vars['meta_key'] = 'ccf_email';
+				$query->query_vars['meta_value'] = '@';
+				$query->query_vars['meta_compare'] = 'LIKE';
+			} elseif ($contact_type == 'request') {
+				$query->query_vars['meta_key'] = 'ccf_email';
+				$query->query_vars['meta_value'] = 'null';
+				$query->query_vars['meta_compare'] = 'NOT EXISTS';
+			}
+		}
+	}
+
+
+	public function restrict_events_by_meta($q)
+	{
+		if (
+			$q->is_main_query()
+			&& is_admin()
+			&& 'event' == $q->get('post_type')
+			&& isset($_GET['meta_key'])
+			&& isset($_GET['meta_value'])
+		) {
+			$q->set('meta_key', $_GET['meta_key']);
+			$q->set('meta_value', $_GET['meta_value']);
+			$q->set('orderby', 'meta_key');
+		}
+	}
 
 	/* Custom Meta Box in Contact Form edit screen */
 	/* One meta box for sending contact form */
@@ -207,12 +258,6 @@ class CCF_Admin
 			__('Available replacement tokens', 'foodiepro'),
 			array($this, 'tokens_legend_callback')
 		);
-	}
-
-	public function tokens_legend_callback() {
-		?>
-		<p>%%firstname%%</p>
-		<?php
 	}
 
 	public function send_mail_meta_box()
@@ -231,6 +276,39 @@ class CCF_Admin
 			__('Request author', 'foodiepro'),
 			array($this, 'request_author_meta_box_callback')
 		);
+	}
+
+	public function mail_history_meta_box()
+	{
+		add_meta_box(
+			'mail_history',
+			__('Mail History', 'foodiepro'),
+			array($this, 'mail_history_meta_box_callback')
+		);
+	}
+
+	/* META BOXES CALLBACKS */
+	public function mail_history_meta_box_callback()
+	{
+		$sentmails=get_post_meta( $this->post_id, '_mail_sent_to');
+		$html = '';
+		echo '<ul>';
+
+		foreach($sentmails as $mail) {
+			$user_id = $mail['user_id'];
+			$recipient = get_user_by('id', $user_id);
+			$date = $mail['date'];
+			$html = '<li><strong>' . $date . '</strong> : <span>' . $recipient->data->user_nicename .  '</span></li>' . $html;
+		}
+		echo $html;
+		echo '</ul>';
+	}
+
+	public function tokens_legend_callback()
+	{
+	?>
+		<p>%%firstname%%</p>
+		<?php
 	}
 
 	public function send_mail_meta_box_callback()
@@ -252,7 +330,7 @@ class CCF_Admin
 					</label>
 					<br>
 					<select class="full-width" id="" name="userid">
-						<option value="" selected disabled hidden><?= __('Choose a recipient','foodiepro') ;?></option>
+						<option value="" selected disabled hidden><?= __('Choose a recipient', 'foodiepro'); ?></option>
 						<?php foreach ($users as $user) { ?>
 							<option value="<?= $user->ID; ?>"><?= $user->data->user_nicename ?></option>
 						<?php } ?>
@@ -265,7 +343,7 @@ class CCF_Admin
 				</p>
 				<button id="ccf_send_mail_submit"><?php _e('Send Mail', 'foodiepro'); ?></button>
 			</div>
-<?php
+		<?php
 		} else {
 			echo __('Your contact post must be published prior to sending mail', 'foodiepro');
 		}
@@ -273,10 +351,14 @@ class CCF_Admin
 
 	public function request_author_meta_box_callback()
 	{
+		if (empty($this->requester_name) && empty($this->requester_email)) {
+			echo __('Not available on a template page', 'foodiepro');
+			return;
+		}
 
-		if (empty($this->requester_name) && empty($this->requester_email)) return;
 		echo sprintf(__('<p><strong>Requester name : </strong>%s</p>', 'foodiepro'), $this->requester_name);
 		echo sprintf(__('<p><strong>Requester email : </strong>%s</p>', 'foodiepro'), $this->requester_email);
+		echo sprintf(__('<p><strong>Requester received on : </strong>%s</p>', 'foodiepro'), get_the_date('d-m-Y', $this->post_id));
 	}
 
 
@@ -290,7 +372,7 @@ class CCF_Admin
 		$user_id = $_POST['user_id'];
 		$subject = $_POST['subject'];
 
-		$user = get_user_by('id',$user_id);
+		$user = get_user_by('id', $user_id);
 		$peepso_user = PeepsoHelpers::get_user($user_id);
 		$to_name = PeepsoHelpers::get_field($peepso_user, 'firstname');
 		$to_email = $user->data->user_email;
@@ -301,6 +383,7 @@ class CCF_Admin
 		if ($to_email) {
 
 			$headers = 'From: ' . $email . "\r\n" . 'Reply-To: ' . $email . "\r\n";
+			$headers .= 'Bcc: ' . get_bloginfo('admin_email');
 
 			$data = array(
 				'title' 		=> '',
@@ -309,7 +392,7 @@ class CCF_Admin
 				'content' 		=> $message,
 			);
 			$message = CustomSiteMails::populate_template($data, $user_id);
-			$message = foodiepro_replace_token( $message, '%%', array('firstname'=>$to_name) );
+			$message = foodiepro_replace_token($message, '%%', array('firstname' => $to_name));
 
 			wp_mail($to_email, $subject, $message, $headers);
 			$emailSent = true;
@@ -320,5 +403,50 @@ class CCF_Admin
 			$result = add_post_meta($post_id, '_mail_sent_to', $maildata);
 			echo "Send message successfully";
 		}
+	}
+
+
+
+	/* DEPRECATED */
+	function contacts_filter_restrict_posts()
+	{
+
+		global $wpdb;
+		$result = $wpdb->get_results("SELECT DISTINCT meta_value FROM " . $wpdb->prefix . "postmeta WHERE meta_key='contact_type'");
+		echo '<select name="template">';
+		echo '<option value="">All Contact Forms</option>';
+		?>
+		<option value="template" <?php if (isset($_GET['contact_type']) && ($_GET['contact_type'] == 'template')) {
+										echo 'selected="selected"';
+									} ?>><?php echo 'Template' ?></option>
+		<option value="request" <?php if (isset($_GET['contact_type']) && ($_GET['contact_type'] == 'request')) {
+									echo 'selected="selected"';
+								} ?>><?php echo 'Request' ?></option>
+<?php
+		echo '</select>';
+	}
+
+	public function contact_sortby($columns)
+	{
+		$columns['contact-type'] = 'contact-type';
+		$columns['requester'] = 'requester';
+		return $columns;
+	}
+
+	public function contact_orderby($vars)
+	{
+		if (isset($vars['orderby']) && 'contact-type' == $vars['orderby']) {
+			$vars = array_merge($vars, array(
+				'meta_key' => 'ccf_email',
+				'orderby' => 'meta_value'
+			));
+		}
+		if (isset($vars['orderby']) && 'requester' == $vars['orderby']) {
+			$vars = array_merge($vars, array(
+				'meta_key' => 'ccf_name',
+				'orderby' => 'meta_value'
+			));
+		}
+		return $vars;
 	}
 }

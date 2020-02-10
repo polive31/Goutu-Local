@@ -77,8 +77,9 @@ themes/*
 themes/foodiepro-2.1.8/backups/*
 themes/foodiepro-2.1.8/images/Backup/*
 
-mu-plugins/*
+mu-plugins/
 
+!plugins
 plugins/*
 !plugins/wpcustom-category-image/
 !plugins/random-user-ids/
@@ -111,4 +112,3 @@ plugins/search-everything/*
 !plugins/custom-social-sharing-buttons/
 !plugins/custom-star-rating/
 !plugins/custom-tooltip/
-#!plugins/wp-ultimate-recipe-premium/

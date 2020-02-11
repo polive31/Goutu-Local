@@ -180,7 +180,7 @@ class WPCustomCategoryImage
 
     private function asset_url($file)
     {
-        return plugins_url($file, __FILE__);
+        return plugins_url('assets/' . $file, dirname(__FILE__));
     }
 
     public function save_image($term_id)

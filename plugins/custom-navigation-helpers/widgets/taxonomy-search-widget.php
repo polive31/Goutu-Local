@@ -84,9 +84,19 @@ class Taxonomy_Search_Widget extends WP_Widget {
 		echo $args['after_widget'];
 	}
 	public function remove_accents($word) {
-		$from = "éêèëâôçû'";
-		$to  = "eeeeaocu ";
-		$word = trim(strtr($word, $from, $to));
+		$from = "éêèëâôçû";
+		$to  =  "eeeeaocu";
+		$trans=array(
+			"é"=>"e",
+			"è"=>"e",
+			"ê"=>"e",
+			"â"=>"a",
+			"à"=>"a",
+			"ô"=>"o",
+			"'"=>" ",
+		);
+		// $word = strtr($word, $from, $to));
+		$word = strtr($word, $trans);
 		return $word;
 	}
 

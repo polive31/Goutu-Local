@@ -28,10 +28,11 @@ tr.form-field.term-description-wrap {
 
 /* Plugins
 ---------------------------------------------------*/
-/* Custom Color Theme plugin */
+/* Custom Color Theme */
 .cct-path input {
 	width: 100%;
 }
+
 
 /* Media Queries
 ---------------------------------------------------*/

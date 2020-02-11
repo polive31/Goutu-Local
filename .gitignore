@@ -81,7 +81,7 @@ mu-plugins/
 
 !plugins
 plugins/*
-!plugins/wpcustom-category-image/
+!plugins/custom-category-image/
 !plugins/random-user-ids/
 !plugins/custom-admin-management/
 !plugins/custom-admin-page-navigation/

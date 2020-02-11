@@ -290,11 +290,11 @@ class CCF_Admin
 	/* META BOXES CALLBACKS */
 	public function mail_history_meta_box_callback()
 	{
-		$sentmails=get_post_meta( $this->post_id, '_mail_sent_to');
+		$sentmails = get_post_meta($this->post_id, '_mail_sent_to');
 		$html = '';
 		echo '<ul>';
 
-		foreach($sentmails as $mail) {
+		foreach ($sentmails as $mail) {
 			$user_id = $mail['user_id'];
 			$recipient = get_user_by('id', $user_id);
 			$date = $mail['date'];
@@ -341,7 +341,7 @@ class CCF_Admin
 					<label for="headline"><?php _e('Email headline', 'foodiepro'); ?></label>
 					<input type="text" name="headline">
 				</p>
-				<button id="ccf_send_mail_submit"><?php _e('Send Mail', 'foodiepro'); ?></button>
+				<button class="button button-primary button-large" id=" ccf_send_mail_submit"><?php _e('Send Mail', 'foodiepro'); ?></button>
 			</div>
 		<?php
 		} else {

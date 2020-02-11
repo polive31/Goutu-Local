@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: WPCustom Category Image
+ * Plugin Name: Custom Category Image
  * Version: 2.1.13
  * Plugin URI: https:/goutu.org
  * Text Domain: wpcustom-category-image
@@ -14,7 +14,7 @@
 define('WPCCI_WP_VERSION',      get_bloginfo('version'));
 define('WPCCI_WP_MIN_VERSION',  3.5);
 define('WPCCI_MIN_PHP_VERSION', '5.3.0');
-define('WPCCI_PATH_BASE',       plugin_dir_path(__FILE__));
+define('WPCCI_PATH_BASE',       trailingslashit(plugin_dir_path(__FILE__)) . 'includes/');
 define('WPCCI_PATH_TEMPLATES',  WPCCI_PATH_BASE . 'templates/');
 
 function wpcustomcategoryimage_textdomain()
@@ -23,7 +23,7 @@ function wpcustomcategoryimage_textdomain()
 }
 
 include_once WPCCI_PATH_BASE . 'helpers.php';
-include_once WPCCI_PATH_BASE . 'WPCustomCategoryImage.php';
+include_once WPCCI_PATH_BASE . 'class-custom-category-image.php';
 
 add_action('init', array('WPCustomCategoryImage', 'initialize'));
 add_action('plugins_loaded', 'wpcustomcategoryimage_textdomain');

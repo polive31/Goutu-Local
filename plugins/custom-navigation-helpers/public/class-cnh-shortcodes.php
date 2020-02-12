@@ -421,7 +421,7 @@ class CNH_Shortcodes {
 			/* Display parameters */
 			'class' => '',
 			'display' => false, // archive, profile
-			'type' => false, // post type : post, recipe OR peepso profile tab : about, activity...
+			'type' => 'post', // post type : post, recipe OR peepso profile tab : about, activity...
 			'text' 	=> false,  // html link is output if not empty
 			/* Google Analytics parameters */
 			'data' 	=> false, // "attr1 val1 attr2 val2  ..." separate with spaces
@@ -434,6 +434,7 @@ class CNH_Shortcodes {
 		$content=esc_html($content);
 		$data=$data?explode(' ', $data):false;
 		$ga=$ga?explode(' ', $ga):false;
+		$rel='';
 
 		$url='#';
 		$token=''; /* Replacement token for display text */
@@ -467,10 +468,10 @@ class CNH_Shortcodes {
 				$user = get_user_by('id', $user_id);
 				if (!$user) return;
 				$token = $user->data->user_nicename;
-				$url = get_site_url( null, foodiepro_get_author_base() . '/' . $token);
-				// $url = add_query_arg( foodiepro_get_author_base(), $token , $url);
-				// if ( !empty($type) )
-				// 	$url = add_query_arg( 'post_type', $type, $url);
+				// $url = get_site_url( null, foodiepro_get_author_base() . '/' . $token);
+				$url = get_author_posts_url($user_id, $token);
+				$url = esc_url(add_query_arg('post_type', $type, $url));
+				$rel='author';
 			}
 			elseif ( $display=='profile' && class_exists('Peepso') ) {
 				$peepso_user = PeepsoUser::get_instance( $user_id );
@@ -502,7 +503,7 @@ class CNH_Shortcodes {
 		}
 
 		if ( $content || $text )
-			return '<a class="' . $class . '" id="' . $id . '" ' . $this->get_data( $data ) . ' href="' . $url . '" onclik="' . $this->get_ga( $ga ) . '">' . sprintf( $text . $content, $token ) . '</a>';
+			return '<a class="' . $class . '" rel="' . $rel . '" id="' . $id . '" ' . $this->get_data( $data ) . ' href="' . $url . '" onclik="' . $this->get_ga( $ga ) . '">' . sprintf( $text . $content, $token ) . '</a>';
 		else
 			return $url;
 	}

@@ -263,6 +263,10 @@ body {
     cursor: pointer;
 }
 
+.ps-icon-map-marker:before {
+    content: '\f3c5'; /* <i class="fas fa-map-marker-alt"></i> */
+}
+
 .ps-icon-caret-right:before {
     content: '\f0da'; /* <i class="fas fa-caret-right"></i> */
 }

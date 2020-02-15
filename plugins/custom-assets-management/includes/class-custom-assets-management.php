@@ -222,8 +222,10 @@ class Custom_Assets_Management {
 					$thismet = is_front_page();
 					break;
 				case 'social' :
+					$url = $_SERVER["REQUEST_URI"];
+					$thismet = strpos($url, 'communaute') !== false;
 					$template = get_page_template();
-					$thismet = strpos($template, 'social') != false;
+					$thismet = $thismet || (strpos($template, 'social') !== false);
 					break;
 				case 'blog-page' :
 					$template = get_page_template();

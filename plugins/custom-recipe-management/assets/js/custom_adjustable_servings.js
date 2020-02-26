@@ -59,7 +59,7 @@ jQuery(document).ready(function() {
         var servings_input = jQuery(this);
         var servings_new = servings_input.val();
 
-        if(isNaN(servings_new) || servings_new <= 0){
+        if( isNaN(servings_new) || servings_new <= 0){
             servings_new = 1;
         }
 
@@ -172,8 +172,9 @@ wpurp_adjustable_servings.updateAmounts = function(amounts, servings_original, s
 
                 // console.log( "Current object ", jQuery(this).html() );
                 // console.log( "new_amount = ", new_amount );
-                ingredientUnit = jQuery(this).next().html();
+                ingredientUnit = jQuery(this).next();
                 // console.log("unit = ", ingredientUnit );
+
                 if ( !ingredientUnit.length ) {
                     // console.log( "Ingredient name needs to be updated ! " );
                     ingredientNameContainer = jQuery(this).parents('.wpurp-recipe-ingredient').find('.recipe-ingredient-name');
@@ -182,13 +183,14 @@ wpurp_adjustable_servings.updateAmounts = function(amounts, servings_original, s
                     // console.log("Root name = ", ingredientNameRoot.html() );
                     if (new_amount >= 2) {
                         if ( ingredientNameContainer.data('plural').length )
-                            ingredientNameRoot.html( ingredientNameContainer.data('plural') );
+                        ingredientNameRoot.html( ingredientNameContainer.data('plural') );
                     }
                     else {
                         if ( ingredientNameContainer.data('singular').length )
-                            ingredientNameRoot.html( ingredientNameContainer.data('singular') );
+                        ingredientNameRoot.html( ingredientNameContainer.data('singular') );
                     }
                 }
+
             }
         }
     });

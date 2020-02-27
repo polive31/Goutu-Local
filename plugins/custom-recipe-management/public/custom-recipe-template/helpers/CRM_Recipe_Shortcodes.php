@@ -23,7 +23,7 @@ class CRM_Recipe_Shortcodes  {
         $cleantext = RV_clean_text($content);
         extract(shortcode_atts(array(
             'voice'          => 'French Female',
-            'title'          => __('Read out loud','foodiepro'),
+            'title'          => __('Read out loud','crm'),
             'buttontext'     => '',
             'buttonposition' => 'before'
         ), $atts));
@@ -116,9 +116,9 @@ class CRM_Recipe_Shortcodes  {
         $seconds = $seconds + (60 * $minutes) + (60 * 60 * $hours);
         if ( $seconds <= 0 ) return $content;
 
-        // $msg = sprintf(__('Timer started for %s','foodiepro'), self::$id);
+        // $msg = sprintf(__('Timer started for %s','crm'), self::$id);
 
-        $timer = '<a href="#" class="wpurp-timer-link" title="' . __( 'Click to Start Timer', 'foodiepro' ) . '">';
+        $timer = '<a href="#" class="wpurp-timer-link" title="' . __( 'Click to Start Timer', 'crm' ) . '">';
         $timer .= '<span class="wpurp-timer" data-seconds="' . esc_attr( $seconds ) . '">';
         $timer .= $content;
         $timer .= '</span></a>';

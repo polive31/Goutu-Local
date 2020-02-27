@@ -11,7 +11,7 @@ class WPURP_Custom_Nutrition_Label_Widget extends WP_Widget {
     {
         parent::__construct(
             'WPURP_Custom_Nutrition_Label_Widget',
-            __( 'WPURP Custom Nutrition Label', 'foodiepro' ),
+            __( 'WPURP Custom Nutrition Label', 'crm' ),
             array(
                 'description' => __( 'Display the Nutrition Label of a recipe, if it is available.', 'wp-ultimate-recipe' )
             )

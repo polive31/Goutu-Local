@@ -11,9 +11,9 @@ class CRM_Lists_Dropdown_Widget extends WP_Widget {
     {
         parent::__construct(
             'CRM_Lists_Dropdown_Widget',
-            __( 'Recipe Lists Dropdown Widget', 'foodiepro' ),
+            __( 'Recipe Lists Dropdown Widget', 'crm' ),
             array(
-                'description' => __( 'Dropdown with cookbook recipes lists.', 'foodiepro' )
+                'description' => __( 'Dropdown with cookbook recipes lists.', 'crm' )
             )
         );
     }
@@ -34,9 +34,9 @@ class CRM_Lists_Dropdown_Widget extends WP_Widget {
         <!-- <div class="dropdown-select"> -->
         <select name="sort_dropdown" id="sort_dropdown" class="dropdown-select postform">
 
-        <option value="none" class="separator"><?php echo __('Filter your favorite recipes...', 'foodiepro');?></option>
-        <option class="level-0" <?= $lists=='favorites'?'selected':''; ?> value="?list=favorites"><?php echo __('My favorite recipes', 'foodiepro');?></option>
-        <option class="level-0" <?= $lists=='wishlist'?'selected':''; ?>  value="?list=wishlist"><?php echo __('Recipes in my wishlist', 'foodiepro');?></option>
+        <option value="none" class="separator"><?php echo __('Filter your favorite recipes...', 'crm');?></option>
+        <option class="level-0" <?= $lists=='favorites'?'selected':''; ?> value="?list=favorites"><?php echo __('My favorite recipes', 'crm');?></option>
+        <option class="level-0" <?= $lists=='wishlist'?'selected':''; ?>  value="?list=wishlist"><?php echo __('Recipes in my wishlist', 'crm');?></option>
 
         </select>
 
@@ -67,7 +67,7 @@ class CRM_Lists_Dropdown_Widget extends WP_Widget {
         if ( isset( $instance[ 'title' ] ) )
             $title = $instance[ 'title' ];
         else
-            $title = __( 'New title', 'foodiepro' );
+            $title = __( 'New title', 'crm' );
     // Widget admin form
     ?>
         <p>

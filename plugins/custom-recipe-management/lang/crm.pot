@@ -1,0 +1,931 @@
+# Copyright (C) 2016 Shay Bocks
+# This file is distributed under the GPL-2.0+.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Foodie Pro Theme 2.1.7\n"
+"Report-Msgid-Bugs-To: http://shaybocks.com/\n"
+"POT-Creation-Date: 2020-02-27 22:53+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Shay Bocks (http://shaybocks.com)\n"
+"Language-Team: Shay Bocks (http://shaybocks.com)\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;esc_attr_e;_n:1,2;esc_html_e;esc_html__\n"
+"X-Textdomain-Support: yes\n"
+"Language: en_US\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SearchPathExcluded-1: *.css\n"
+
+#: admin/class-crm-ingredient-month.php:15
+msgid "January"
+msgstr ""
+
+#: admin/class-crm-ingredient-month.php:16
+msgid "February"
+msgstr ""
+
+#: admin/class-crm-ingredient-month.php:17
+msgid "March"
+msgstr ""
+
+#: admin/class-crm-ingredient-month.php:18
+msgid "April"
+msgstr ""
+
+#: admin/class-crm-ingredient-month.php:19
+msgid "May"
+msgstr ""
+
+#: admin/class-crm-ingredient-month.php:20
+msgid "June"
+msgstr ""
+
+#: admin/class-crm-ingredient-month.php:21
+msgid "July"
+msgstr ""
+
+#: admin/class-crm-ingredient-month.php:22
+msgid "August"
+msgstr ""
+
+#: admin/class-crm-ingredient-month.php:23
+msgid "September"
+msgstr ""
+
+#: admin/class-crm-ingredient-month.php:24
+msgid "October"
+msgstr ""
+
+#: admin/class-crm-ingredient-month.php:25
+msgid "November"
+msgstr ""
+
+#: admin/class-crm-ingredient-month.php:26
+msgid "December"
+msgstr ""
+
+#: admin/class-crm-ingredient-month.php:44
+#: admin/class-crm-ingredient-month.php:79
+msgid "Months"
+msgstr ""
+
+#: admin/class-crm-ingredient-month.php:65
+#: admin/class-crm-ingredient-month.php:99
+msgid "Check the months when this ingredient is available"
+msgstr ""
+
+#: admin/crm-ingredient-metadata.php:9 admin/crm-ingredient-metadata.php:41
+msgid "Plural"
+msgstr ""
+
+#: admin/crm-ingredient-metadata.php:10
+msgid "Optional plural version of this ingredient."
+msgstr ""
+
+#: admin/crm-ingredient-metadata.php:14 admin/crm-ingredient-metadata.php:42
+#: admin/crm-taxonomies.php:33
+msgid "Link"
+msgstr ""
+
+#: admin/crm-ingredient-metadata.php:15
+msgid "Send your visitors to a specific link when clicking on an ingredient."
+msgstr ""
+
+#: admin/crm-ingredient-metadata.php:19
+msgid "Nofollow link"
+msgstr ""
+
+#: admin/crm-ingredient-metadata.php:20
+msgid "Always use nofollow for this ingredient."
+msgstr ""
+
+#: admin/crm-ingredient-metadata.php:24
+msgid "Hide link"
+msgstr ""
+
+#: admin/crm-ingredient-metadata.php:25
+msgid "Don't use a link in the ingredients list for this ingredient."
+msgstr ""
+
+#: admin/crm-ingredient-metadata.php:29
+msgid "Group"
+msgstr ""
+
+#: admin/crm-ingredient-metadata.php:30
+msgid "Use this to group ingredients in the shopping list."
+msgstr ""
+
+#: admin/crm-ingredient-metadata.php:31
+msgid "Vegetables"
+msgstr ""
+
+#: admin/crm-recipe-post-type.php:17
+msgid "Recipes"
+msgstr ""
+
+#: admin/crm-recipe-post-type.php:18 widgets/crm_nutrition_label_widget.php:64
+msgid "Recipe"
+msgstr ""
+
+#: admin/crm-recipe-post-type.php:29 admin/crm-recipe-post-type.php:30
+#: admin/crm-taxonomies.php:63
+msgid "Add New"
+msgstr ""
+
+#: admin/crm-recipe-post-type.php:31 admin/crm-recipe-post-type.php:32
+#: admin/crm-taxonomies.php:61
+msgid "Edit"
+msgstr ""
+
+#: admin/crm-recipe-post-type.php:33 admin/crm-taxonomies.php:64
+msgid "New"
+msgstr ""
+
+#: admin/crm-recipe-post-type.php:34 admin/crm-recipe-post-type.php:35
+msgid "View"
+msgstr ""
+
+#: admin/crm-recipe-post-type.php:36 admin/crm-taxonomies.php:58
+msgid "Search"
+msgstr ""
+
+#: admin/crm-recipe-post-type.php:37 admin/crm-recipe-post-type.php:38
+#: admin/crm-taxonomies.php:68
+msgid "No"
+msgstr ""
+
+#: admin/crm-recipe-post-type.php:37 admin/crm-taxonomies.php:68
+msgid "found."
+msgstr ""
+
+#: admin/crm-recipe-post-type.php:38
+msgid "found in trash."
+msgstr ""
+
+#: admin/crm-recipe-post-type.php:39
+msgid "Parent"
+msgstr ""
+
+#: admin/crm-taxonomies.php:34
+msgid "Send your visitors to a specific link when clicking on an term."
+msgstr ""
+
+#: admin/crm-taxonomies.php:59
+msgid "Popular"
+msgstr ""
+
+#: admin/crm-taxonomies.php:60
+msgid "All"
+msgstr ""
+
+#: admin/crm-taxonomies.php:62
+msgid "Update"
+msgstr ""
+
+#: admin/crm-taxonomies.php:64
+msgid "Name"
+msgstr ""
+
+#: admin/crm-taxonomies.php:65
+msgid "Separate "
+msgstr ""
+
+#: admin/crm-taxonomies.php:65
+msgid " with commas"
+msgstr ""
+
+#: admin/crm-taxonomies.php:66
+msgid "Add or remove"
+msgstr ""
+
+#: admin/crm-taxonomies.php:67
+msgid "Choose from the most used"
+msgstr ""
+
+#: includes/class-crm-assets.php:46 includes/class-crm-assets.php:72
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:110
+msgid "Ingredients"
+msgstr ""
+
+#: includes/class-crm-assets.php:46
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:191
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:227
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:228
+msgid "Ingredient"
+msgstr ""
+
+#: includes/class-crm-assets.php:47 includes/class-crm-assets.php:94
+msgid "Course"
+msgstr ""
+
+#: includes/class-crm-assets.php:47
+msgid "Courses"
+msgstr ""
+
+#: includes/class-crm-assets.php:48 includes/class-crm-assets.php:119
+msgid "Occasion"
+msgstr ""
+
+#: includes/class-crm-assets.php:48
+msgid "Occasions"
+msgstr ""
+
+#: includes/class-crm-assets.php:49 includes/class-crm-assets.php:103
+msgid "Cuisine"
+msgstr ""
+
+#: includes/class-crm-assets.php:49
+msgid "Cuisines"
+msgstr ""
+
+#: includes/class-crm-assets.php:50 includes/class-crm-assets.php:127
+#: public/custom-recipe-template/partials/recipe-template.php:51
+msgid "Diet"
+msgstr ""
+
+#: includes/class-crm-assets.php:50
+msgid "Diets"
+msgstr ""
+
+#: includes/class-crm-assets.php:51 includes/class-crm-assets.php:111
+msgid "Season"
+msgstr ""
+
+#: includes/class-crm-assets.php:51
+msgid "Seasons"
+msgstr ""
+
+#: includes/class-crm-assets.php:52
+#: public/custom-recipe-template/partials/recipe-template.php:58
+msgid "Level"
+msgstr ""
+
+#: includes/class-crm-assets.php:52
+msgid "Levels"
+msgstr ""
+
+#: includes/class-crm-assets.php:69
+msgid "Recipe Title"
+msgstr ""
+
+#: includes/class-crm-assets.php:70
+msgid "Recipe Course"
+msgstr ""
+
+#: includes/class-crm-assets.php:71
+msgid "Recipe Difficulty"
+msgstr ""
+
+#: includes/class-crm-assets.php:73
+msgid "Number of Servings"
+msgstr ""
+
+#: includes/class-crm-assets.php:74
+msgid "Preparation Time"
+msgstr ""
+
+#: includes/class-crm-assets.php:86
+msgid "Keywords"
+msgstr ""
+
+#: includes/class-crm-assets.php:135
+msgid "Difficulty"
+msgstr ""
+
+#: includes/class-crm-assets.php:144
+msgctxt "recipe"
+msgid "Post Title"
+msgstr ""
+
+#: includes/class-crm-assets.php:145
+msgctxt "recipe"
+msgid "Edit Post"
+msgstr ""
+
+#: includes/class-crm-assets.php:146
+msgctxt "recipe"
+msgid "Delete Post"
+msgstr ""
+
+#: includes/class-crm-assets.php:147
+msgctxt "recipe"
+msgid "New Post"
+msgstr ""
+
+#: includes/class-crm-assets.php:148
+msgctxt "recipe"
+msgid "Write your new post on this page."
+msgstr ""
+
+#: includes/class-crm-assets.php:149
+msgctxt "recipe"
+msgid ""
+"You can then choose to save it as draft, or to publish it. Once approved, it "
+"will be visible to others according to your visibility preferences."
+msgstr ""
+
+#: includes/class-crm-assets.php:150
+msgctxt "recipe"
+msgid "Edit your existing post on this page."
+msgstr ""
+
+#: includes/class-crm-assets.php:151
+msgctxt "recipe"
+msgid ""
+"You can then choose to save it as draft, or to publish it. Once approved, it "
+"wil be visible to others according to your visibility preferences."
+msgstr ""
+
+#: includes/class-crm-assets.php:152
+msgctxt "recipe"
+msgid "Post saved as a draft."
+msgstr ""
+
+#: includes/class-crm-assets.php:153
+msgctxt "recipe"
+msgid ""
+"It will not be visible on the site, but you can edit it at any time and submit "
+"it later."
+msgstr ""
+
+#: includes/class-crm-assets.php:154
+#, php-format
+msgctxt "recipe"
+msgid "Back to <a href=\"%s\">my posts</a>."
+msgstr ""
+
+#: includes/class-crm-assets.php:155
+#, php-format
+msgctxt "recipe"
+msgid "Dear administrator, this post is now <a href=\"%s\">published</a>."
+msgstr ""
+
+#: includes/class-crm-assets.php:156
+msgctxt "recipe"
+msgid "Post submitted! Thank you, your post is now awaiting moderation."
+msgstr ""
+
+#: includes/class-crm-assets.php:157
+msgctxt "recipe"
+msgid ""
+"In order for your post to be published, please fill-in those required fields:"
+msgstr ""
+
+#: includes/class-crm-assets.php:158
+msgctxt "recipe"
+msgid "You have no posts yet."
+msgstr ""
+
+#: includes/class-crm-assets.php:159
+msgctxt "recipe"
+msgid "Your post just got published !"
+msgstr ""
+
+#: includes/class-crm-assets.php:160
+#, php-format
+msgctxt "recipe"
+msgid "Greetings, your post <a href=\"%s\">%s</a> just got published !"
+msgstr ""
+
+#: includes/class-crm-assets.php:161
+#, php-format
+msgctxt "recipe"
+msgid ""
+"It is visible on the website, and appears on <a href=\"%s\">your blog</a>."
+msgstr ""
+
+#: includes/class-crm-assets.php:162
+#, php-format
+msgctxt "recipe"
+msgid "%s commented one of your posts"
+msgstr ""
+
+#: includes/class-crm-assets.php:163
+#, php-format
+msgctxt "recipe"
+msgid "%s added a comment to your post <a href=\"%s\">%s</a> :"
+msgstr ""
+
+#: includes/class-crm-assets.php:220
+msgctxt "recipe"
+msgid "Are you sure you want to delete this post :"
+msgstr ""
+
+#: includes/class-crm-assets.php:254
+#: public/custom-recipe-template/partials/recipe-toolbar.php:75
+msgid "Print this Recipe"
+msgstr ""
+
+#: includes/class-crm-assets.php:281
+msgid "Read previous step"
+msgstr ""
+
+#: includes/class-crm-assets.php:282
+msgid "Read next step"
+msgstr ""
+
+#: includes/class-crm-assets.php:283
+msgid "Read this step again"
+msgstr ""
+
+#: includes/class-crm-assets.php:284
+msgid "Pause reading"
+msgstr ""
+
+#: includes/class-crm-assets.php:285
+msgid "Continue reading"
+msgstr ""
+
+#: includes/class-crm-assets.php:286
+msgid "Stop reading and close player"
+msgstr ""
+
+#: includes/class-crm-assets.php:407
+#, php-format
+msgid "Authorized file formats are : %s"
+msgstr ""
+
+#: includes/class-crm-assets.php:409
+#, php-format
+msgid "The maximum file size is %s kB"
+msgstr ""
+
+#: includes/class-crm-assets.php:410
+msgid "Do you really want to delete this image ?"
+msgstr ""
+
+#: includes/class-crm-assets.php:411
+msgid "Do you really want to delete this ingredient ?"
+msgstr ""
+
+#: includes/class-crm-assets.php:412
+msgid "Do you really want to delete this instruction ?"
+msgstr ""
+
+#: public/custom-recipe-favorite/class-crm-favorite-shortcodes.php:58
+msgid "No recipes found."
+msgstr ""
+
+#: public/custom-recipe-favorite/class-crm-favorite.php:20
+#: widgets/crm_lists_dropdown_widget.php:38
+msgid "My favorite recipes"
+msgstr ""
+
+#: public/custom-recipe-favorite/class-crm-favorite.php:21
+#, php-format
+msgid "In my <a href=\"%s\">favorites</a>"
+msgstr ""
+
+#: public/custom-recipe-favorite/class-crm-favorite.php:26
+msgid "Recipes wish list"
+msgstr ""
+
+#: public/custom-recipe-favorite/class-crm-favorite.php:27
+#, php-format
+msgid "In my <a href=\"%s\">wishlist</a>"
+msgstr ""
+
+#: public/custom-recipe-favorite/class-crm-favorite.php:31
+msgid "Remove from favorites"
+msgstr ""
+
+#: public/custom-recipe-favorite/class-crm-favorite.php:32
+#, php-format
+msgid "Add to my <a href=\"%s\">favorites</a>"
+msgstr ""
+
+#: public/custom-recipe-favorite/class-crm-favorite.php:71
+msgid "Cookbook"
+msgstr ""
+
+#: public/custom-recipe-favorite/class-crm-favorite.php:89
+msgid "Add to my cookbook"
+msgstr ""
+
+#: public/custom-recipe-favorite/class-crm-favorite.php:112
+msgid "Choose a list :"
+msgstr ""
+
+#: public/custom-recipe-favorite/class-crm-favorite.php:136
+msgid "OK"
+msgstr ""
+
+#: public/custom-recipe-favorite/class-crm-favorite.php:137
+msgid "Cancel"
+msgstr ""
+
+#: public/custom-recipe-post-type/class-crm-ingredient.php:85
+msgid "Harvest Period"
+msgstr ""
+
+#: public/custom-recipe-post-type/class-crm-ingredient.php:150
+msgctxt "vowel"
+msgid "of "
+msgstr ""
+
+#: public/custom-recipe-post-type/class-crm-ingredient.php:152
+msgctxt "consonant"
+msgid "of "
+msgstr ""
+
+#: public/custom-recipe-post-type/class-crm-recipe.php:18
+#: public/custom-recipe-template/partials/recipe-print-template.php:35
+msgid "Preparation"
+msgstr ""
+
+#: public/custom-recipe-post-type/class-crm-recipe.php:19
+#: public/custom-recipe-template/partials/recipe-print-template.php:42
+msgid "Cooking"
+msgstr ""
+
+#: public/custom-recipe-post-type/class-crm-recipe.php:20
+#: public/custom-recipe-template/partials/recipe-print-template.php:48
+msgid "Wait"
+msgstr ""
+
+#: public/custom-recipe-post-type/class-crm-recipe.php:158
+#, php-format
+msgid "%s day "
+msgid_plural "%s days "
+msgstr[0] ""
+msgstr[1] ""
+
+#: public/custom-recipe-post-type/class-crm-recipe.php:161
+#, php-format
+msgid "%s hour "
+msgid_plural "%s hours "
+msgstr[0] ""
+msgstr[1] ""
+
+#: public/custom-recipe-post-type/class-crm-recipe.php:165
+#, php-format
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: public/custom-recipe-post-type/class-wpurp-recipe.php:143
+msgid "minute"
+msgstr ""
+
+#: public/custom-recipe-post-type/class-wpurp-recipe.php:144
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:60
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:77
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:94
+msgid "minutes"
+msgstr ""
+
+#: public/custom-recipe-post-type/class-wpurp-recipe.php:148
+msgid "hour"
+msgstr ""
+
+#: public/custom-recipe-post-type/class-wpurp-recipe.php:149
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:56
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:73
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:90
+msgid "hours"
+msgstr ""
+
+#: public/custom-recipe-submission/class-crm-submission.php:71
+msgid "Format as Duration"
+msgstr ""
+
+#: public/custom-recipe-submission/class-crm-submission.php:72
+msgid "Format as Ingredient"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:3
+msgid "General"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:6
+msgid "Description"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:8
+msgid "Provide general information about this recipe"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:12
+msgid "Servings"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:14
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:184
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:217
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:218
+msgid "Quantity"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:15
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:24
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:34
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:43
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:187
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:222
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:223
+msgid "Unit"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:16
+msgid "(e.g. 2 people, 3 loafs, ...)"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:21
+msgid "Prep Time (legacy)"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:25
+msgid "(e.g. 20 minutes, 1-2 hours, ...)"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:31
+msgid "Cook Time (legacy)"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:40
+msgid "Passive Time (legacy)"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:48
+msgid "Prep Time"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:52
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:69
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:86
+msgid "days"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:65
+msgid "Cook Time"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:82
+msgid "Passive Time"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:102
+msgid ""
+"Don't forget that you can tag your recipe with <strong>Courses</strong> and "
+"<strong>Cuisines</strong> by using the boxes on the right. Use the "
+"<strong>featured image</strong> if you want a photo of the finished dish."
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:116
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:135
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:163
+msgid "Ingredients Group"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:123
+msgid "eg. For the dough"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:131
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:159
+msgid "Remove this ingredient group headline"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:176
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:211
+msgid "Move this ingredient"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:195
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:196
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:232
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:233
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:234
+#: public/custom-recipe-template/partials/recipe-print-template.php:83
+#: public/custom-recipe-template/partials/recipe-template.php:123
+msgid "Notes"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:200
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:239
+msgid "Remove this ingredient"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:246
+msgid "Add an ingredient"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:249
+msgid "Add an ingredient group"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:253
+msgid ""
+"<strong>Use the TAB key</strong> while adding ingredients, it will "
+"automatically create new fields. <strong>Don't worry about empty lines</"
+"strong>, these will be ignored."
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:260
+msgid "Instructions"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:266
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:285
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:307
+msgid "Instructions Group"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:267
+msgid "Main Instructions"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:267
+msgid "(this label is not shown)"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:274
+msgid "eg. Preparation of the dough"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:281
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:303
+msgid "Remove this instruction group headline"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:338
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:372
+msgid "Move this instruction"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:341
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:375
+msgid "Enter the instructions for this recipe step"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:352
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:386
+msgid "Remove Image"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:359
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:391
+msgid "Remove this instruction"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:399
+msgid "Add an instruction"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:402
+msgid "Add an instruction group"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:406
+msgid ""
+"<strong>Use the TAB key</strong> while adding instructions, it will "
+"automatically create new fields. <strong>Don't worry about empty lines</"
+"strong>, these will be ignored."
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:411
+msgid "Recipe Notes"
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:412
+msgid "Provide any additional notes here, for instance side dishes, wine..."
+msgstr ""
+
+#: public/custom-recipe-submission/partials/submission_form_ingredients_instructions.php:413
+msgid "WHAT TO DRINK WITH THIS STRAWBERRY PIE : a sweet white wine"
+msgstr ""
+
+#: public/custom-recipe-template/class-crm-recipe-template.php:205
+msgid "Read this step aloud"
+msgstr ""
+
+#: public/custom-recipe-template/helpers/CRM_Recipe_Shortcodes.php:26
+msgid "Read out loud"
+msgstr ""
+
+#: public/custom-recipe-template/helpers/CRM_Recipe_Shortcodes.php:121
+msgid "Click to Start Timer"
+msgstr ""
+
+#: public/custom-recipe-template/helpers/CRM_ShoppingList.php:33
+#, php-format
+msgid "In my <a href=\"%s\">shopping list</a>"
+msgstr ""
+
+#: public/custom-recipe-template/helpers/CRM_ShoppingList.php:34
+#, php-format
+msgid "Add to my <a href=\"%s\">shopping list</a>"
+msgstr ""
+
+#: public/custom-recipe-template/helpers/CRM_ShoppingList.php:61
+msgid "Add to Shopping List"
+msgstr ""
+
+#: public/custom-recipe-template/partials/recipe-print-template.php:14
+msgid "review"
+msgstr ""
+
+#: public/custom-recipe-template/partials/recipe-print-template.php:14
+msgid "reviews"
+msgstr ""
+
+#: public/custom-recipe-template/partials/recipe-print-template.php:28
+msgid "Serves"
+msgstr ""
+
+#: public/custom-recipe-template/partials/recipe-template.php:44
+msgid "Origin"
+msgstr ""
+
+#: public/custom-recipe-template/partials/recipe-template.php:91
+msgid "For "
+msgstr ""
+
+#: public/custom-recipe-template/partials/recipe-template.php:94
+msgid "Decrease servings"
+msgstr ""
+
+#: public/custom-recipe-template/partials/recipe-template.php:98
+msgid "Increase servings"
+msgstr ""
+
+#: public/custom-recipe-template/partials/recipe-toolbar.php:18
+msgid "Rate"
+msgstr ""
+
+#: public/custom-recipe-template/partials/recipe-toolbar.php:23
+msgid "Comment and rate this recipe"
+msgstr ""
+
+#: public/custom-recipe-template/partials/recipe-toolbar.php:37
+msgid "Rate this recipe"
+msgstr ""
+
+#: public/custom-recipe-template/partials/recipe-toolbar.php:71
+msgid "Print"
+msgstr ""
+
+#: public/custom-recipe-template/partials/recipe-toolbar.php:86
+msgid "Share"
+msgstr ""
+
+#: public/custom-recipe-template/partials/recipe-toolbar.php:102
+msgid "Read"
+msgstr ""
+
+#: public/custom-recipe-template/partials/recipe-toolbar.php:106
+msgid "Read this recipe out loud"
+msgstr ""
+
+#: widgets/crm_lists_dropdown_widget.php:14
+msgid "Recipe Lists Dropdown Widget"
+msgstr ""
+
+#: widgets/crm_lists_dropdown_widget.php:16
+msgid "Dropdown with cookbook recipes lists."
+msgstr ""
+
+#: widgets/crm_lists_dropdown_widget.php:37
+msgid "Filter your favorite recipes..."
+msgstr ""
+
+#: widgets/crm_lists_dropdown_widget.php:39
+msgid "Recipes in my wishlist"
+msgstr ""
+
+#: widgets/crm_lists_dropdown_widget.php:70
+msgid "New title"
+msgstr ""
+
+#: widgets/crm_lists_dropdown_widget.php:74
+#: widgets/crm_nutrition_label_widget.php:60
+msgid "Title:"
+msgstr ""
+
+#: widgets/crm_nutrition_label_widget.php:14
+msgid "WPURP Custom Nutrition Label"
+msgstr ""
+
+#: widgets/crm_nutrition_label_widget.php:16
+msgid "Display the Nutrition Label of a recipe, if it is available."
+msgstr ""
+
+#: widgets/crm_nutrition_label_widget.php:51
+msgid "Nutrition Label"
+msgstr ""
+
+#: widgets/crm_nutrition_label_widget.php:66
+msgid "Recipe shown on recipe page"
+msgstr ""
+
+#: widgets/crm_nutrition_label_widget.php:76
+msgid "Serving Size"
+msgstr ""

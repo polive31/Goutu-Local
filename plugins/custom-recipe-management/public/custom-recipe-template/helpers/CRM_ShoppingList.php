@@ -30,8 +30,8 @@ class CRM_ShoppingList extends WPURP_Template_Block {
 			$classes[] = 'logged-in';
 			$menu_link = do_shortcode('[permalink slug="liste-courses"]');
 		}
-        $tooltip_in=sprintf(__('In my <a href="%s">shopping list</a>','foodiepro'),$menu_link);
-        $tooltip_add=sprintf(__('Add to my <a href="%s">shopping list</a>','foodiepro'),$menu_link);
+        $tooltip_in=sprintf(__('In my <a href="%s">shopping list</a>','crm'),$menu_link);
+        $tooltip_add=sprintf(__('Add to my <a href="%s">shopping list</a>','crm'),$menu_link);
 
         $shopping_list_recipes = array();
         if( isset( $_COOKIE['WPURP_Shopping_List_Recipes_v2'] ) ) {
@@ -58,7 +58,7 @@ class CRM_ShoppingList extends WPURP_Template_Block {
         ob_start();?>
 
 				<a href="#"<?php echo $this->style(); ?> <?php echo $link_id;?> data-recipe-id="<?php echo $recipe->ID(); ?>">
-				<div class="button-caption"><?php echo __('Add to Shopping List','foodiepro'); ?></div>
+				<div class="button-caption"><?php echo __('Add to Shopping List','crm'); ?></div>
 				</a>
                 [tooltip text='<?php echo $tooltip . $tooltip_alt;?>' pos="top"]
 

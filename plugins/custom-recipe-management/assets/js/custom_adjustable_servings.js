@@ -170,23 +170,24 @@ wpurp_adjustable_servings.updateAmounts = function(amounts, servings_original, s
                 var new_amount_text = wpurp_adjustable_servings.toFixed(new_amount, fraction);
                 jQuery(this).text(new_amount_text + ' ');
 
-                // console.log( "Current object ", jQuery(this).html() );
-                // console.log( "new_amount = ", new_amount );
-                ingredientUnit = jQuery(this).next();
-                // console.log("unit = ", ingredientUnit );
+                console.log( "Current object ", jQuery(this).html() );
+                console.log( "new_amount = ", new_amount );
+                ingredientUnit = jQuery(this).next().text();
+                console.log("unit = ", ingredientUnit );
+                console.log("unit length = ", ingredientUnit.length );
 
                 if ( !ingredientUnit.length ) {
-                    // console.log( "Ingredient name needs to be updated ! " );
+                    console.log( "Ingredient name needs to be updated ! " );
                     ingredientNameContainer = jQuery(this).parents('.wpurp-recipe-ingredient').find('.recipe-ingredient-name');
                     ingredientNameRoot = jQuery(this).parents('.wpurp-recipe-ingredient').find('#ingredient_name_root');
-                    // console.log("Plural = ", ingredientNameContainer.data('plural') );
-                    // console.log("Root name = ", ingredientNameRoot.html() );
+                    console.log("Plural = ", ingredientNameContainer.data('plural') );
+                    console.log("Root name = ", ingredientNameRoot.html() );
                     if (new_amount >= 2) {
-                        if ( ingredientNameContainer.data('plural').length )
+                        if ( ingredientNameContainer.data('plural') )
                         ingredientNameRoot.html( ingredientNameContainer.data('plural') );
                     }
                     else {
-                        if ( ingredientNameContainer.data('singular').length )
+                        if ( ingredientNameContainer.data('singular') )
                         ingredientNameRoot.html( ingredientNameContainer.data('singular') );
                     }
                 }

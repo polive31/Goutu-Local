@@ -152,7 +152,7 @@ wpurp_adjustable_servings.parse_quantity = function(sQuantity) {
 
 wpurp_adjustable_servings.updateAmounts = function(amounts, servings_original, servings_new)
 {
-    console.log( "In updateAmounts" );
+    // console.log( "In updateAmounts" );
     amounts.each(function() {
         var amount = parseFloat(jQuery(this).data('normalized'));
         var fraction = jQuery(this).data('fraction');
@@ -170,18 +170,18 @@ wpurp_adjustable_servings.updateAmounts = function(amounts, servings_original, s
                 var new_amount_text = wpurp_adjustable_servings.toFixed(new_amount, fraction);
                 jQuery(this).text(new_amount_text + ' ');
 
-                console.log( "Current object ", jQuery(this).html() );
-                console.log( "new_amount = ", new_amount );
+                // console.log( "Current object ", jQuery(this).html() );
+                // console.log( "new_amount = ", new_amount );
                 ingredientUnit = jQuery(this).next().text();
-                console.log("unit = ", ingredientUnit );
-                console.log("unit length = ", ingredientUnit.length );
+                // console.log("unit = ", ingredientUnit );
+                // console.log("unit length = ", ingredientUnit.length );
 
                 if ( !ingredientUnit.length ) {
-                    console.log( "Ingredient name needs to be updated ! " );
+                    // console.log( "Ingredient name needs to be updated ! " );
                     ingredientNameContainer = jQuery(this).parents('.wpurp-recipe-ingredient').find('.recipe-ingredient-name');
                     ingredientNameRoot = jQuery(this).parents('.wpurp-recipe-ingredient').find('#ingredient_name_root');
-                    console.log("Plural = ", ingredientNameContainer.data('plural') );
-                    console.log("Root name = ", ingredientNameRoot.html() );
+                    // console.log("Plural = ", ingredientNameContainer.data('plural') );
+                    // console.log("Root name = ", ingredientNameRoot.html() );
                     if (new_amount >= 2) {
                         if ( ingredientNameContainer.data('plural') )
                         ingredientNameRoot.html( ingredientNameContainer.data('plural') );

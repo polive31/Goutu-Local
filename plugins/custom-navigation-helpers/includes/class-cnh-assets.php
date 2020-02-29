@@ -63,9 +63,14 @@ class CNH_Assets {
 
     public static function get_queryvars() {
         return self::QUERY_VARS;
-	}
+    }
 
-    public static function get_term_image($term=null, $size = 'full', $class = '', $imgclass='', $fallback_url='')
+    public static function get_fallback_img( $tax ) {
+        $url= self::$PLUGIN_URI . '/assets/img/fallback-' . $tax . '.png';
+        return $url;
+    }
+
+    public static function get_term_image($term=null, $size = 'full', $class = '', $imgclass='', $fallback_img=false)
     {
         $html='';
         if (class_exists('WPCustomCategoryImage')) {
@@ -82,11 +87,8 @@ class CNH_Assets {
             $html = WPCustomCategoryImage::get_category_image($atts);
         }
         if (empty($html)) {
-            if (empty($fallback_url))
-                $url= self::$PLUGIN_URI . '/assets/img/fallback-ingredient.png';
-            else
-                $url= $fallback_url;
-            $html=picture($url);
+            if ( $fallback_img )
+                $html=picture($fallback_img);
         }
         $html = "<div class='$class'>$html</div>";
         return $html;

@@ -79,7 +79,7 @@ class CNH_Archive_Headline {
 			}
 		}
 
-		elseif ((is_archive() || is_tag()) && !is_post_type_archive())  {
+		elseif ( is_archive() || is_tag() )  {
 			$query = get_queried_object();
 			if ($type == 'title') {
 				$output = $this->get_archive_title( $query );

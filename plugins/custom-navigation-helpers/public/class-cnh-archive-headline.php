@@ -49,7 +49,7 @@ class CNH_Archive_Headline {
 				$user = get_userdata($id);
 				$name = $user->user_nicename;
 				$type = get_query_var('post_type', false);
-				$output = $this->post_from_msg($type, $name);
+				$output = $this->get_post_type_archive_title($type, $name);
 				if (class_exists('PeepsoHelpers')) {
 					$id = get_query_var('author', false);
 					// $user=get_userdata( $id );
@@ -109,20 +109,23 @@ class CNH_Archive_Headline {
 	}
 
 	public function get_archive_description($query) {
-		$term = $query->term_id;
-		/* Return the updated archive description  */
-		// Check archive intro text field
-		$intro = get_term_meta($term, 'intro_text', true);
-		if (empty($intro)) {
-			// Check parent intro text field
-			$parent = $query->parent;
-			$intro = get_term_meta($query->parent, 'intro_text', true);
+		$text='';
+		if (is_tax() || is_tag()) {
+			$term = $query->term_id;
+			/* Return the updated archive description  */
+			// Check archive intro text field
+			$text = get_term_meta($term, 'intro_text', true);
+			if (empty($text) ) {
+				// Check parent intro text field
+				$parent = $query->parent;
+				$text = get_term_meta($parent, 'intro_text', true);
+			}
+			// For ingredient archive, we add the months table if available for this ingredient
+			if (is_tax('ingredient')) {
+				$text .= '<br>' . do_shortcode('[ingredient-months id="' . $term . '"]');
+			}
 		}
-		// For ingredient archive, we add the months table if available for this ingredient
-		if (is_tax('ingredient')) {
-			$intro .= '<br>' . do_shortcode('[ingredient-months id="' . $term . '"]');
-		}
-		return $intro;
+		return $text;
 	}
 
 	public function get_post_type_archive_intro_text($post_type) {
@@ -141,48 +144,51 @@ class CNH_Archive_Headline {
 	}
 
 	public function get_archive_title($query) {
+		if ( is_tax() || is_tag() ) {
 			// Check first for existing custom headline defined for the taxonomy
 			$headline = get_term_meta($query->term_id, 'headline', true);
-			if (!empty($headline))
-				$msg = $headline;
+			if (!empty($headline)) return $headline;
 
 			// If custom headline not found, generate a title based on the archive type
-			elseif ( $query->taxonomy=='ingredient' ) {
+			if ( $query->taxonomy=='ingredient' ) {
 				$ingredient = $query->name;
 				if ( initial_is_vowel($ingredient) )
 				$msg=sprintf(_x('All recipes containing %s','vowel','foodiepro'), $ingredient);
 				else
 				$msg=sprintf(_x('All recipes containing %s','consonant','foodiepro'), $ingredient);
 			}
-
 			elseif ( $query->taxonomy=='cuisine' ) {
-				$msg = $this->post_from_msg( 'recipe', $query->name);
+				$msg = $this->get_post_type_archive_title( 'recipe', $query->name);
 			}
-
 			elseif ( $query->taxonomy=='course' ) {
 				$course=get_query_var('course',false);
 				$term='';
-
 				if (get_query_var('season',false) ) {
-				$term=get_query_var('season',false);
-				$msg = $this->course_of_msg( $course, $term);
-			}
-			elseif ( !empty($_GET['author']) ) {
-				$user = get_user_by( 'slug', $_GET['author'] );
-				$user=PeepsoHelpers::get_user( $user->ID );
-				$term=PeepsoHelpers::get_field($user, "nicename");
-				$msg = $this->course_of_msg( $course, $term);
+					$term=get_query_var('season',false);
+				}
+				elseif ( !empty($_GET['author']) ) {
+					$user = get_user_by( 'slug', $_GET['author'] );
+					$user=PeepsoHelpers::get_user( $user->ID );
+					$term=PeepsoHelpers::get_field($user, "nicename");
+				}
+				$msg = $this->get_course_archive_title( $course, $term);
 			}
 			else
-			$msg = single_term_title( '', false);
+				$msg = single_term_title('', false);
 		}
-		elseif ( is_tax() || is_tag() ) {
-			$msg = single_term_title( '', false);
-			/* If a custom headline was set for this archive then return it */
+		elseif (is_post_type_archive()) {
+			$post_type = get_queried_object()->name;
+			$term='';
+			if (!empty($_GET['author'])) {
+				$user = get_user_by('slug', $_GET['author']);
+				$user = PeepsoHelpers::get_user($user->ID);
+				$term = PeepsoHelpers::get_field($user, "nicename");
+			}
+			$msg = $this->get_post_type_archive_title($post_type, $term);
 		}
-		else {
-			$msg = single_term_title( '', false);
-		}
+		else
+			$msg = single_term_title('', false);
+
 		return $msg;
 	}
 
@@ -196,34 +202,48 @@ class CNH_Archive_Headline {
 			return sprintf( __('Search Results for %s', 'foodiepro'), get_search_query());
 	}
 
-	public function get_post_type_archive_title( $post_type ) {
-		if ($post_type=='recipe')
-			$title=__('All the recipes','foodiepro');
-		elseif ($post_type=='post')
-			$title=__('All the posts','foodiepro');
-		else
-			$title='';
+	public function get_post_type_archive_title( $post_type, $subject='' ) {
+
+		$html = array(
+			'recipe' => array(
+				'vowel' 	=> _x('All recipes from %s', 'vowel','foodiepro'),
+				'consonant' => _x('All recipes from %s', 'consonant','foodiepro'),
+				'none'		=> __('All the recipes','foodiepro'),
+			),
+			'post' => array(
+				'vowel' 	=> _x('All posts from %s', 'vowel','foodiepro'),
+				'consonant' => _x('All posts from %s', 'consonant','foodiepro'),
+				'none'		=> __('All the posts','foodiepro'),
+			)
+		);
+
+		$post_type=empty($post_type)?'post':$post_type;
+		$context = foodiepro_check_initial($subject);
+		$string = $html[$post_type][$context];
+		$title = sprintf($string, $subject);
 		return $title;
 	}
 
 
-	public function course_of_msg( $course, $context='' ) {
+	public function get_course_archive_title( $course, $subject='' ) {
+		// Subject can be either season or author
 		$html=array(
 			'masculine'		=> array(
 				'vowel' 	=> _x('All %s from %s','masculine-vowel','foodiepro'),
 				'consonant' => _x('All %s from %s','masculine-consonant','foodiepro'),
+				'none' 		=> _x('All %s', 'masculine','foodiepro'),
 			),
 			'feminine'	=> array(
 				'vowel' 	=> _x('All %s from %s','feminine-vowel','foodiepro'),
 				'consonant' => _x('All %s from %s','feminine-consonant','foodiepro'),
+				'none' 		=> _x('All %s','feminine','foodiepro'),
 			),
 		);
-		$gender_course = $this->gender($course);
-		$vowel_context = initial_is_vowel($context)?'vowel':'consonant';
-		$string = $html[$gender_course][$vowel_context];
-		$html = sprintf( $html[$gender_course][$vowel_context], $course, $context );
-
-		return $html;
+		$gender = $this->gender($course);
+		$context = foodiepro_check_initial($subject);
+		$string = $html[$gender][$context];
+		$title = sprintf( $string, $course, $subject );
+		return $title;
 	}
 
 	public function gender( $word ) {
@@ -236,7 +256,7 @@ class CNH_Archive_Headline {
 			'soupe',
 			'boisson',
 			'base',
-			'entree'
+			'entree',
 		);
 		$word = remove_accents( $word );
 		if ( $word[-1]=='s') $word=substr($word, 0, -1);
@@ -252,36 +272,5 @@ class CNH_Archive_Headline {
 		return $out;
 	}
 
-	public function post_from_msg( $object, $origin ) {
-		$html=array(
-			'generic' 	=> array(
-				'plural' 	=> _x('All posts from %s','generic-plural','foodiepro'),
-				'vowel' 	=> _x('All posts from %s','generic-vowel','foodiepro'),
-				'consonant' => _x('All posts from %s','generic-consonant','foodiepro'),
-			),
-			'post'		=> array(
-				'plural' 	=> _x('All posts from %s','post-plural','foodiepro'),
-				'vowel' 	=> _x('All posts from %s','post-vowel','foodiepro'),
-				'consonant' => _x('All posts from %s','post-consonant','foodiepro'),
-			),
-			'recipe'		=> array(
-				'plural' 	=> _x('All posts from %s','recipe-plural','foodiepro'),
-				'vowel' 	=> _x('All posts from %s','recipe-vowel','foodiepro'),
-				'consonant' => _x('All posts from %s','recipe-consonant','foodiepro'),
-			),
-		);
-		if (!$object) $object='generic';
-		$context = $this->is_plural($origin)?'plural':(initial_is_vowel($origin)?'vowel':'consonant');
-		$html = sprintf( $html[$object][$context], $origin );
-
-		return $html;
-	}
-
-
-// HELPËRS
-	protected function is_plural($word) {
-		$last = strtolower($word[strlen($word)-1]);
-		return ($last=='s');
-	}
 
 }

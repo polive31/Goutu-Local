@@ -80,8 +80,10 @@ class WPCustomCategoryImage
         $size    = $params['size'];
 
         if (!$term_id) {
-            $term    = get_queried_object();
-            $term_id = $term->term_id;
+            if ( is_tax() || is_tag() ) {
+                $term    = get_queried_object();
+                $term_id = $term->term_id;
+            }
         }
 
         if (!$term_id) {

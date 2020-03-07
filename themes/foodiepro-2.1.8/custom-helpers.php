@@ -70,14 +70,32 @@ function esc($text)
 /* =================================================================*/
 /* =    IMAGE & ICON OUTPUT
 /* =================================================================*/
+function foodiepro_get_icon_link($url, $slug, $id = '', $class = '', $title = '', $data = array())
+{
+	$html = '<a href="' . $url . '" id="' . $id . '" class="' . $class . '" ';
+	foreach ($data as $key => $value) {
+		$html .= 'data-' . $key . '="' . $value . '" ';
+	}
+	$html .=  '>' . foodiepro_get_icon($slug, '', $title) . '</a>';
+	return $html;
+}
+
+function foodiepro_get_icon($main, $class='', $id='', $title='')
+{
+	if ($main=='remove') {
+		$html ='✘';
+	}
+	else {
+		$html = '<i class="' . foodiepro_get_icon_class($main) . ' ' . $class . '" id="' . $id . '" title="' . $title . '"></i>';
+	}
+	return $html;
+}
+
 
 function foodiepro_get_icon_class($slug) {
 	switch ($slug) {
 		case 'delete':
 			$class = 'far fa-trash-alt';
-			break;
-		case 'edit':
-			$class = 'fas fa-edit';
 			break;
 		case 'spinner-arrows':
 			$class = 'fas fa-sync fa-spin';
@@ -94,27 +112,22 @@ function foodiepro_get_icon_class($slug) {
 		case 'chevron-right':
 			$class = "fas fa-chevron-right";
 			break;
+		case 'liked':
+			$class = "fas fa-thumbs-up";
+			break;
+		case 'like':
+			$class = "far fa-thumbs-up";
+			break;
+		case 'read':
+			$class = "fas fa-volume-up";
+			break;
 		default:
-			$class='';
+			$class= 'fas fa-' . $slug;//heart, book, thumbtack, edit, print
 	}
 	return $class;
 }
 
-function foodiepro_get_icon($slug, $id='', $class='', $title='')
-{
-	$html = '<i class="' . foodiepro_get_icon_class($slug) . ' ' . $class . '" id="' . $id . '" title="' . $title . '"></i>';
-	return $html;
-}
 
-function foodiepro_get_icon_link($url, $slug, $id = '', $class = '', $title = '', $data=array() )
-{
-	$html = '<a href="' . $url . '" id="' . $id . '" class="' . $class . '" ';
-	foreach ($data as $key=>$value) {
-		$html .= 'data-' . $key . '="' . $value . '" ';
-	}
-	$html .=  '>' . foodiepro_get_icon($slug, '', '', $title) . '</a>';
-	return $html;
-}
 
 function picture($url, $id = '', $class = '')
 {
@@ -302,4 +315,18 @@ function initial_is_vowel($expression)
 	$first_letter = strtolower($name[0]);
 	$first_word = strtolower(explode(' ', trim($name))[0]);
 	return (in_array($first_letter, $vowels) || in_array($first_word, $exceptions));
+}
+
+function foodiepro_check_initial($expression) {
+	if (empty($expression)) return 'none';
+	if (initial_is_vowel($expression))
+		$type = 'vowel';
+	else
+		$type = 'consonant';
+	return $type;
+}
+
+function foodiepro_is_plural($word) {
+	$last = strtolower($word[strlen($word)-1]);
+	return ($last=='s');
 }

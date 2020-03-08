@@ -42,9 +42,9 @@ li.ingredient-group,
     font-family: Oswald, sans-serif;
 }
 
-span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
+.recipe-ingredient-notes {
     font-style: italic;
-    font-size: 15px;
+    color: #9c9c9c;
 }
 
 
@@ -149,7 +149,7 @@ span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
     float: left;
 }
 
-.wpurp-recipe-instruction-container {
+.recipe-instruction-container {
     padding-top: 0;
 }
 
@@ -176,6 +176,7 @@ span.wpurp-recipe-ingredient-notes.recipe-ingredient-notes {
     display: inline-block;
     vertical-align: bottom;
 }
+
 
 #servings .fa-before:before {
     content: "\f0f5";

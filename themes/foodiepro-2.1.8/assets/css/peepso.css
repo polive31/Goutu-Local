@@ -301,6 +301,10 @@ body {
   content: '\f073';
 }
 
+.ps-icon-lock:before {
+  content: '\f023';
+}
+
 .ps-icon-angle-down:before {
   /* content:'\e818'; */
   content: '\f078';

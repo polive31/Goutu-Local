@@ -131,15 +131,17 @@ span.bp_counter,
 
 .ui-icon:before,
 .fa-before:before,
-.toolbar-button a:before,
 [class^='fa-']:before,
 [class^='fa']:before,
+[class^='fa-']:after,
+[class^='fa']:after,
 [class^="ps-icon-"]:before,
 [class*=" ps-icon-"]:before {
   font-family: "Font Awesome 5 Free";
   font-style: normal;
-  speak: none;
+  font-weight: 900;
   display: inline-block;
+  position: relative;
   text-decoration: inherit;
   width: 1em;
   margin-right: .2em;
@@ -153,18 +155,9 @@ span.bp_counter,
   -moz-osx-font-smoothing: grayscale;
 }
 
-.ui-icon:before,
-.fa-before:before,
-.toolbar-button a:before,
-[class^="ps-icon-"]:before,
-[class*=" ps-icon-"]:before {
-  font-weight: 900;
-}
-
-.ui-icon:before {
-  font-size: 1.4rem;
-  color: #8f8f8f;
-  vertical-align: middle;
+[class^='fa-']:after,
+[class^='fa']:after {
+  position: absolute;
 }
 
 /* HEADINGS */

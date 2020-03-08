@@ -76,7 +76,7 @@ function foodiepro_get_icon_link($url, $slug, $id = '', $class = '', $title = ''
 	foreach ($data as $key => $value) {
 		$html .= 'data-' . $key . '="' . $value . '" ';
 	}
-	$html .=  '>' . foodiepro_get_icon($slug, '', $title) . '</a>';
+	$html .=  '>' . foodiepro_get_icon($slug, '', '', $title) . '</a>';
 	return $html;
 }
 

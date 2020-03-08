@@ -8,9 +8,53 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Custom_Recipe_Management {
 
-    protected static $instance;
+    protected static $instance = NULL;
+
+    public static function get_instance()
+    {
+        if (NULL === self::$instance) {
+            self::$instance = new self;
+        }
+        return self::$instance;
+    }
 
 	public function __construct() {
+
+
+        /* Hooks for CRM_Recipe_Post_Type
+        ------------------------------------------------------------- */
+        $Recipe_CPT = new CRM_Recipe_Post_Type();
+        add_action('init',                  array($Recipe_CPT, 'register_recipe_post_type'), 2);
+        add_filter('post_class',            array($Recipe_CPT, 'recipe_post_class'));
+        // add_filter('post_type_link',        array($Recipe_CPT, 'remove_recipe_slug'), 10, 3);
+        // add_action('pre_get_posts',         array($Recipe_CPT, 'remove_recipe_slug_in_parse_request'));
+
+        /* Hooks for CRM_Taxonomies */
+        // In order for the slug setting to operate, the taxonomies must be registered before the custom post type
+        $Recipe_Taxonomies = new CRM_Taxonomies();
+        add_action('init',                  array($Recipe_Taxonomies, 'register'), 1);
+
+
+        /* Hooks for CRM notices
+        ------------------------------------------------------------- */
+        $Notices = new CRM_Notices();
+        add_action('admin_init',            array($Notices, 'wpurp_hide_notice'));
+        add_action('admin_notices',         array($Notices, 'wpurp_admin_notices'));
+
+        /* Hooks for recipe taxonomies Metadata
+        ------------------------------------------------------------- */
+        $Ingredient_MetaData = new CRM_Ingredient_Metadata();
+
+        $Ingredient_Meta = new CRM_Ingredient_Month();
+        add_action('admin_init',                   array($Ingredient_Meta, 'hydrate'));
+        add_action('wp',                           array($Ingredient_Meta, 'hydrate'));
+        add_action('ingredient_add_form_fields',   array($Ingredient_Meta, 'callback_admin_add_months_field'), 10, 2);
+        add_action('ingredient_edit_form_fields',  array($Ingredient_Meta, 'callback_ingredient_edit_fields'), 10, 2);
+        add_action('edited_ingredient',            array($Ingredient_Meta, 'callback_admin_save_meta'), 10, 2);
+        add_action('create_ingredient',            array($Ingredient_Meta, 'callback_admin_save_meta'), 10, 2);
+
+
+
         /* Hooks for CRM_Assets
         ------------------------------------------------------------- */
         $Assets = new CRM_Assets();
@@ -28,16 +72,14 @@ class Custom_Recipe_Management {
 
         /* Hooks for Recipe output
         ------------------------------------------------------------- */
-        $Recipe_Template = new CRM_Recipe_Template();
-        add_filter( 'wpurp_output_recipe_print',        array($Recipe_Template, 'print_recipe'), 10, 2 );
-        /* Method 1 : Filter WPURP output (includes toolbar, therefore no need for cpm_recipe_toolbar action) */
-        // add_filter( 'wpurp_output_recipe',              array($Recipe_Template,'display_recipe'), 10, 2 );
-        /* Method 2 (BETA - Issue with printing) : Override WPURP output (includes toolbar, therefore no need for cpm_recipe_toolbar action) */
-        add_filter( 'wpurp_recipe_content_loop_check',  array($Recipe_Template, 'disable_wpurp_rendering'));
-        add_filter( 'the_content',                      array($Recipe_Template, 'display_recipe_from_scratch'), 10, 2 );
+        $Output = new CRM_Output();
+        add_filter( 'wpurp_output_recipe_print',array($Output, 'print_recipe'), 10, 2 );
+
+        // add_filter( 'wpurp_recipe_content_loop_check',  array($Recipe_Display, 'disable_wpurp_rendering'));
+        add_filter( 'the_content',              array($Output, 'display_recipe_from_scratch'), 10, 2 );
         /* Filter gallery shortcode to remove instructions images */
-        add_action('fu_after_upload',       array($Recipe_Template, 'tag_uploaded_images'), 10, 3);
-        add_filter('cgs_media',             array($Recipe_Template, 'fetch_gallery_images'), 10, 2);
+        add_action('fu_after_upload',           array($Output, 'tag_uploaded_images'), 10, 3);
+        add_filter('cgs_media',                 array($Output, 'fetch_gallery_images'), 10, 2);
 
 
         /* Hooks for CRM_Favorite
@@ -46,10 +88,14 @@ class Custom_Recipe_Management {
         add_action( 'wp_ajax_custom_favorite_recipe',           array( $Favorite, 'ajax_favorite_recipe' ) );
         add_action( 'wp_ajax_nopriv_custom_favorite_recipe',    array( $Favorite, 'ajax_favorite_recipe' ) );
         add_filter( 'query_vars',                               array( $Favorite, 'add_query_vars_filter') );
+        add_shortcode( 'crm-favorites-list',                    array( $Favorite, 'favorite_recipes_shortcode' ) );
 
-        $Favorite_Shortcodes = new CRM_Favorite_Shortcodes();
-        add_shortcode( 'crm-favorites-list',                    array( $Favorite_Shortcodes, 'favorite_recipes_shortcode' ) );
-
+        /* Hooks for CRM_Print
+        ------------------------------------------------------------- */
+        $Print = new CRM_Print();
+        add_action('init',                                      array($Print, 'endpoint'));
+        add_action('init',                                      array($Print, 'print_page'));
+        add_action('template_redirect',                         array($Print, 'redirect'));
 
         /* Hooks for CRM_Submission
         ------------------------------------------------------------- */
@@ -74,26 +120,26 @@ class Custom_Recipe_Management {
         add_action('wp_ajax_nopriv_get_tax_terms',          array( $Recipe_Submission, 'ajax_custom_get_tax_terms'  ));
         add_action('wp_ajax_get_tax_terms',                 array( $Recipe_Submission, 'ajax_custom_get_tax_terms'  ));
 
-
-
-        /* Hooks for Custom_Ingredient_Meta
+        /* Hooks for CRM_Recipe_Save
         ------------------------------------------------------------- */
-        $Ingredient_Meta = new Custom_Ingredient_Meta();
-		add_action( 'admin_init',                   array( $Ingredient_Meta, 'hydrate'                          ));
-		add_action( 'wp',                           array( $Ingredient_Meta, 'hydrate'                          ));
-		add_action( 'ingredient_add_form_fields',   array( $Ingredient_Meta, 'callback_admin_add_months_field'  ), 10, 2 );
-		add_action( 'ingredient_edit_form_fields',  array( $Ingredient_Meta, 'callback_ingredient_edit_fields'  ), 10, 2 );
-		add_action( 'edited_ingredient',            array( $Ingredient_Meta, 'callback_admin_save_meta'         ), 10, 2 );
-        add_action( 'create_ingredient',            array( $Ingredient_Meta, 'callback_admin_save_meta'         ), 10, 2 );
+        $Save = new CRM_Recipe_Save();
+        add_filter('wp_insert_post_empty_content',          array($Save, 'check_empty'), 10, 2);
+        add_action('save_post',                             array($Save, 'save'), 10, 2);
 
         /* Hooks for CRM_Ingredient
         ------------------------------------------------------------- */
         $Ingredient = new CRM_Ingredient();
-
         add_shortcode( 'ingredient',                array( $Ingredient, 'display_ingredient_shortcode'         ), 10, 2 );
         add_shortcode( 'ingredient-months',         array( $Ingredient, 'display_ingredient_months_shortcode'  ), 10, 2 );
 		add_filter('ctlw_meta_query_args',          array( $Ingredient, 'query_current_month_ingredients'), 15, 3 );
 
+
+
+        /* Hooks for CRM Shortcodes
+        ------------------------------------------------------------- */
+        $Shortcodes = new CRM_Recipe_Shortcodes();
+        add_shortcode('recipe',                     array($Shortcodes, 'recipe_shortcode'));
+        add_shortcode('recipe-timer',               array($Shortcodes, 'timer_shortcode'));
 
         /* Hooks for CRM Widgets
         ------------------------------------------------------------- */
@@ -103,11 +149,6 @@ class Custom_Recipe_Management {
 
     }
 
-    public static function get_instance() {
-        if (NULL===self::$instance) {
-            self::$instance = new self;
-        }
-        return self::$instance;
-    }
+
 
 }

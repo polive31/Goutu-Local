@@ -20,21 +20,22 @@ class CRM_Assets {
 	}
 
 
-/********************************************************************************
-****                DISABLE WPURP ENQUEUE IN FRONT-END                        ***
-********************************************************************************/
-	public function enqueue_wpurp_css( $css_enqueue ) {
-		if ( is_admin() )
-			return $css_enqueue;
-		else
-			return array();
-	}
 
-	public function enqueue_wpurp_js( $js_enqueue ) {
-		if ( is_admin() )
-			return $js_enqueue;
-		else
-			return array();
+	/********************************************************************************
+	 ****                SETUP TAXONOMIES LIST                        ***
+	 ********************************************************************************/
+
+	public static function get_taxonomies() {
+		$taxonomies = array(
+			'ingredient'	=> array( __('Ingredients', 'crm'), __('Ingredient', 'crm')),
+            'course'    	=> array( __('Courses', 'crm'),  	__('Course', 'crm')),
+            'occasion'  	=> array( __('Occasions', 'crm'),  	__('Occasion', 'crm')),
+            'cuisine'   	=> array( __('Cuisines', 'crm'),  	__('Cuisine', 'crm')),
+            'diet'      	=> array( __('Diets', 'crm'),  		__('Diet', 'crm')),
+            'season'    	=> array( __('Seasons', 'crm'),  	__('Season', 'crm')),
+            'difficult'   	=> array( __('Levels', 'crm'),  	__('Level', 'crm')),
+		);
+		return $taxonomies;
 	}
 
 	/********************************************************************************
@@ -44,17 +45,18 @@ class CRM_Assets {
 		$slugs['recipe_list'] = 'publier-recettes';
 		$slugs['recipe_favorites'] = 'favoris-recettes';
 		$slugs['recipe_form'] = 'saisie-recette';
+		$slugs['recipe_print'] = __('print', 'crm');
 		return $slugs;
 	}
 
 	public function setup_CPM_required( $required ) {
 		$required['recipe']= array(
-			'recipe_title'			=> __('Recipe Title','foodiepro'),
-			'recipe_course' 		=> __('Recipe Course', 'foodiepro'),
-			'recipe_difficult' 		=> __('Recipe Difficulty', 'foodiepro'),
-			'recipe_ingredients' 	=> __('Ingredients', 'foodiepro'),
-			'recipe_servings' 		=> __('Number of Servings', 'foodiepro'),
-			'recipe_prep_time' 		=> __('Preparation Time', 'foodiepro'),
+			'recipe_title'			=> __('Recipe Title','crm'),
+			'recipe_course' 		=> __('Recipe Course', 'crm'),
+			'recipe_difficult' 		=> __('Recipe Difficulty', 'crm'),
+			'recipe_ingredients' 	=> __('Ingredients', 'crm'),
+			'recipe_servings' 		=> __('Number of Servings', 'crm'),
+			'recipe_prep_time' 		=> __('Preparation Time', 'crm'),
 		);
 		return $required;
 	}
@@ -66,7 +68,7 @@ class CRM_Assets {
 				'orderby' 	=> 'name',
 				'required'	=> false,
 				'labels'	=>array(
-					'singular_name'=>__( 'Keywords', 'foodiepro' ),
+					'singular_name'=>__( 'Keywords', 'crm' ),
 				),
 			),
 			'course' => array(
@@ -74,7 +76,7 @@ class CRM_Assets {
 				'orderby' 	=> 'description',
 				'required'	=> true,
 				'labels'	=> array(
-					'singular_name'=>__( 'Course', 'foodiepro' ),
+					'singular_name'=>__( 'Course', 'crm' ),
 				),
 			),
 			'cuisine' => array(
@@ -83,7 +85,7 @@ class CRM_Assets {
 				'hierarchical'	=> true,
 				'required'		=> false,
 				'labels'	=> array(
-					'singular_name'=>__( 'Cuisine', 'foodiepro' ),
+					'singular_name'=>__( 'Cuisine', 'crm' ),
 				),
 			),
 			'season' => array(
@@ -91,7 +93,7 @@ class CRM_Assets {
 				'orderby' 		=> 'description',
 				'required'		=> false,
 				'labels'	=> array(
-					'singular_name'=>__( 'Season', 'foodiepro' ),
+					'singular_name'=>__( 'Season', 'crm' ),
 				),
 			),
 			'occasion' => array(
@@ -99,7 +101,7 @@ class CRM_Assets {
 				'orderby' 		=> 'description',
 				'required'		=> false,
 				'labels'	=> array(
-					'singular_name'=>__( 'Occasion', 'foodiepro' ),
+					'singular_name'=>__( 'Occasion', 'crm' ),
 				),
 			),
 			'diet' => array(
@@ -107,7 +109,7 @@ class CRM_Assets {
 				'orderby' 		=> 'description',
 				'required'		=> false,
 				'labels'	=> array(
-					'singular_name'=>__( 'Diet', 'foodiepro' ),
+					'singular_name'=>__( 'Diet', 'crm' ),
 				),
 			),
 			'difficult' => array(
@@ -115,7 +117,7 @@ class CRM_Assets {
 				'orderby' 		=> 'description',
 				'required'		=> true,
 				'labels'	=> array(
-					'singular_name'=>__( 'Difficulty', 'foodiepro' ),
+					'singular_name'=>__( 'Difficulty', 'crm' ),
 				),
 			),
 		);
@@ -124,26 +126,26 @@ class CRM_Assets {
 
 	public function setup_CPM_recipe_labels( $labels ) {
 		$labels['recipe'] = array(
-			'title'						=> _x( 'Post Title', 'recipe', 'foodiepro' ),
-			'edit_button'				=> _x( 'Edit Post', 'recipe', 'foodiepro' ),
-			'delete_button'				=> _x( 'Delete Post', 'recipe', 'foodiepro' ),
-			'new_button'				=> _x( 'New Post', 'recipe', 'foodiepro' ),
-			'new1'						=> _x( 'Write your new post on this page.', 'recipe', 'foodiepro' ),
-			'new2'						=> _x( 'You can then choose to save it as draft, or to publish it. Once approved, it will be visible to others according to your visibility preferences.', 'recipe', 'foodiepro' ),
-			'edit1'						=> _x( 'Edit your existing post on this page.', 'recipe', 'foodiepro' ),
-			'edit2' 					=> _x( 'You can then choose to save it as draft, or to publish it. Once approved, it wil be visible to others according to your visibility preferences.', 'recipe', 'foodiepro' ),
-			'draft1'					=> _x( 'Post saved as a draft.','recipe', 'foodiepro'),
-			'draft2'					=> _x( 'It will not be visible on the site, but you can edit it at any time and submit it later.','recipe','foodiepro'),
-			'back'						=> _x( 'Back to <a href="%s">my posts</a>.', 'recipe', 'foodiepro'),
-			'publish-admin'				=> _x( 'Dear administrator, this post is now <a href="%s">published</a>.', 'recipe', 'foodiepro' ),
-			'publish-user'				=> _x( 'Post submitted! Thank you, your post is now awaiting moderation.', 'recipe', 'foodiepro' ),
-			'required'					=> _x( 'In order for your post to be published, please fill-in those required fields:', 'recipe', 'foodiepro' ),
-			'noposts'					=> _x( 'You have no posts yet.', 'recipe', 'foodiepro'),
-			'post_publish_title'		=> _x( 'Your post just got published !', 'recipe', 'foodiepro'),
-			'post_publish_content'		=> _x( 'Greetings, your post <a href="%s">%s</a> just got published !', 'recipe', 'foodiepro'),
-			'post_publish_content1' 	=> _x( 'It is visible on the website, and appears on <a href="%s">your blog</a>.', 'recipe','foodiepro'),
-			'comment_publish_title'		=> _x( '%s commented one of your posts', 'recipe', 'foodiepro'),
-			'comment_publish_content'	=> _x( '%s added a comment to your post <a href="%s">%s</a> :', 'recipe', 'foodiepro'),
+			'title'						=> _x( 'Post Title', 'recipe', 'crm' ),
+			'edit_button'				=> _x( 'Edit Post', 'recipe', 'crm' ),
+			'delete_button'				=> _x( 'Delete Post', 'recipe', 'crm' ),
+			'new_button'				=> _x( 'New Post', 'recipe', 'crm' ),
+			'new1'						=> _x( 'Write your new post on this page.', 'recipe', 'crm' ),
+			'new2'						=> _x( 'You can then choose to save it as draft, or to publish it. Once approved, it will be visible to others according to your visibility preferences.', 'recipe', 'crm' ),
+			'edit1'						=> _x( 'Edit your existing post on this page.', 'recipe', 'crm' ),
+			'edit2' 					=> _x( 'You can then choose to save it as draft, or to publish it. Once approved, it wil be visible to others according to your visibility preferences.', 'recipe', 'crm' ),
+			'draft1'					=> _x( 'Post saved as <a href="%s">a draft</a>.','recipe', 'crm'),
+			'draft2'					=> _x( 'It will not be visible on the site, but you can edit it at any time and submit it later.','recipe','crm'),
+			'back'						=> _x( 'Back to <a href="%s">my posts</a>.', 'recipe', 'crm'),
+			'publish-admin'				=> _x( 'Dear administrator, this post is now <a href="%s">published</a>.', 'recipe', 'crm' ),
+			'publish-user'				=> _x( 'Post submitted! Thank you, your post is now awaiting moderation.', 'recipe', 'crm' ),
+			'required'					=> _x( 'In order for your post to be published, please fill-in those required fields:', 'recipe', 'crm' ),
+			'noposts'					=> _x( 'You have no posts yet.', 'recipe', 'crm'),
+			'post_publish_title'		=> _x( 'Your post just got published !', 'recipe', 'crm'),
+			'post_publish_content'		=> _x( 'Greetings, your post <a href="%s">%s</a> just got published !', 'recipe', 'crm'),
+			'post_publish_content1' 	=> _x( 'It is visible on the website, and appears on <a href="%s">your blog</a>.', 'recipe','crm'),
+			'comment_publish_title'		=> _x( '%s commented one of your posts', 'recipe', 'crm'),
+			'comment_publish_content'	=> _x( '%s added a comment to your post <a href="%s">%s</a> :', 'recipe', 'crm'),
 		);
 		return $labels;
 	}
@@ -164,6 +166,14 @@ class CRM_Assets {
 		$styles['post-font']['location'][]				= 'recipe';
 
 		// Enqueue specific recipe styles
+		$styles['crm-recipe-print'] = array(
+			'file' 		=> 'assets/css/custom-recipe-print.css',
+			'uri' 		=> self::$PLUGIN_URI,
+			'dir' 		=> self::$PLUGIN_PATH,
+			'location' 	=> array('recipe_print'),
+		);
+
+
 		$styles['crm-recipe'] = array(
 			'file' 		=> 'assets/css/custom-recipe.css',
 			'uri' 		=> self::$PLUGIN_URI,
@@ -190,17 +200,17 @@ class CRM_Assets {
 
 	public function setup_CPM_recipe_scripts( $scripts ) {
 
-		$pause = '<i class="fa fa-pause" aria-hidden="true"></i>';
-		$play = '<i class="fa fa-play" aria-hidden="true"></i>';
-		$close = '<i class="fa fa-times" aria-hidden="true"></i>';
-		$stop = '<i class="fa fa-stop" aria-hidden="true"></i>';
-		$repeat = '<i class="fa fa-repeat" aria-hidden="true"></i>';
-		$prev = '<i class="fa fa-step-backward" aria-hidden="true"></i>';
-		$next = '<i class="fa fa-step-forward" aria-hidden="true"></i>';
+		$pause = '<i class="fas fa-pause" aria-hidden="true"></i>';
+		$play = '<i class="fas fa-play" aria-hidden="true"></i>';
+		$close = '<i class="fas fa-times" aria-hidden="true"></i>';
+		$stop = '<i class="fas fa-stop" aria-hidden="true"></i>';
+		$repeat = '<i class="fas fa-redo-alt" aria-hidden="true"></i>';
+		$prev = '<i class="fas fa-step-backward" aria-hidden="true"></i>';
+		$next = '<i class="fas fa-step-forward" aria-hidden="true"></i>';
 
 
 		// Reuse some default post scripts
-		$scripts['cpm-list']['data']['confirm_message'] = _x( 'Are you sure you want to delete this post :', 'recipe', 'foodiepro' );
+		$scripts['cpm-list']['data']['confirm_message'] = _x( 'Are you sure you want to delete this post :', 'recipe', 'crm' );
 		$scripts['cpm-list']['location'][]='recipe_list';
 
 		$scripts['cpm-select2-taxonomies']['location'][]='recipe_form';
@@ -218,27 +228,27 @@ class CRM_Assets {
 			'location' 	=> array('recipe'),
 		);
 
-		$scripts['crm-print_button'] = array (
-			'file' 		=> 'print_button.js',
-			'uri'		=> self::$PLUGIN_URI . 'assets/js/',
-			'dir' 		=> self::$PLUGIN_PATH . 'assets/js/',
-			'deps' 		=> array(
-				'jquery',
-			),
-			'footer' 	=> true,
-			'data' 		=> array(
-				'name' 		=> 'wpurp_print',
-				'ajaxurl' 	=> WPUltimateRecipe::get()->helper('ajax')->url(),
-				'nonce' 	=> wp_create_nonce( 'wpurp_print' ),
-				// 'custom_print_css_url' => get_stylesheet_directory_uri() . '/assets/css/custom-recipe-print.css',
-				'custom_print_css_url' => self::$PLUGIN_URI . '/assets/css/custom-recipe-print.css',
-				'coreUrl' 	=> WPUltimateRecipe::get()->coreUrl,
-				'premiumUrl'=> WPUltimateRecipe::is_premium_active() ? WPUltimateRecipePremium::get()->premiumUrl : false,
-				'title' 	=> __('Print this Recipe','foodiepro'),
-				'permalinks'=> get_option('permalink_structure'),
-			),
-			'location' 	=> array('recipe'),
-		);
+		// $scripts['crm-print_button'] = array (
+		// 	'file' 		=> 'print_button.js',
+		// 	'uri'		=> self::$PLUGIN_URI . 'assets/js/',
+		// 	'dir' 		=> self::$PLUGIN_PATH . 'assets/js/',
+		// 	'deps' 		=> array(
+		// 		'jquery',
+		// 	),
+		// 	'footer' 	=> true,
+		// 	'data' 		=> array(
+		// 		'name' 		=> 'wpurp_print',
+		// 		// 'ajaxurl' 	=> WPUltimateRecipe::get()->helper('ajax')->url(),
+		// 		'nonce' 	=> wp_create_nonce( 'wpurp_print' ),
+		// 		// 'custom_print_css_url' => get_stylesheet_directory_uri() . '/assets/css/custom-recipe-print.css',
+		// 		'custom_print_css_url' => self::$PLUGIN_URI . '/assets/css/custom-recipe-print.css',
+		// 		// 'coreUrl' 	=> WPUltimateRecipe::get()->coreUrl,
+		// 		// 'premiumUrl'=> WPUltimateRecipe::is_premium_active() ? WPUltimateRecipePremium::get()->premiumUrl : false,
+		// 		'title' 	=> __('Print this Recipe','crm'),
+		// 		'permalinks'=> get_option('permalink_structure'),
+		// 	),
+		// 	'location' 	=> array('recipe'),
+		// );
 
 		$scripts['crm-voice'] = array (
 			'file' 			=> 'custom_text_to_speech.js',
@@ -261,12 +271,12 @@ class CRM_Assets {
 					'stop' 	=> $stop,
 				),
 				'title' => array(
-					'prev' 	=> __('Read previous step','foodiepro'),
-					'next' 	=> __('Read next step','foodiepro'),
-					'repeat' => __('Read this step again','foodiepro'),
-					'pause' => __('Pause reading','foodiepro'),
-					'play' 	=> __('Continue reading','foodiepro'),
-					'stop' 	=> __('Stop reading and close player','foodiepro'),
+					'prev' 	=> __('Read previous step','crm'),
+					'next' 	=> __('Read next step','crm'),
+					'repeat' => __('Read this step again','crm'),
+					'pause' => __('Pause reading','crm'),
+					'play' 	=> __('Continue reading','crm'),
+					'stop' 	=> __('Stop reading and close player','crm'),
 				),
 			),
 			'location' 		=> array('recipe'),
@@ -385,14 +395,16 @@ class CRM_Assets {
 				'name' => 'custom_recipe_submission_form',
 				'ajaxurl' 	=> admin_url( 'admin-ajax.php' ),
 				'nonce' 	=> wp_create_nonce('custom_recipe_submission_form'),
-				'placeholder' => WPUltimateRecipe::get()->coreUrl . '/img/image_placeholder.png',
+				'placeholder' => self::$PLUGIN_URI . 'img/camera.png',
 				'fileTypes' => self::ATTACHMENT_FORMATS,
-				'wrongFileType' => sprintf(__('Authorized file formats are : %s','foodiepro'),implode(', ',self::ATTACHMENT_FORMATS)),
+				'wrongFileType' => sprintf(__('Authorized file formats are : %s','crm'),implode(', ',self::ATTACHMENT_FORMATS)),
 				'maxFileSize' => self::MAX_ATTACHMENT_SIZE_KB,
-				'fileTooBig' => sprintf(__('The maximum file size is %s kB','foodiepro'), self::MAX_ATTACHMENT_SIZE_KB),
-				'deleteImage' => __('Do you really want to delete this image ?','foodiepro'),
-				'deleteIngredient' => __('Do you really want to delete this ingredient ?','foodiepro'),
-				'deleteInstruction' => __('Do you really want to delete this instruction ?','foodiepro'),
+				'fileTooBig' => sprintf(__('The maximum file size is %s kB','crm'), self::MAX_ATTACHMENT_SIZE_KB),
+				'deleteImage' => __('Do you really want to delete this image ?','crm'),
+				'deleteIngredient' => __('Do you really want to delete this ingredient ?','crm'),
+				'deleteInstruction' => __('Do you really want to delete this instruction ?','crm'),
+				'deleteInstructionGroup' => __('Do you really want to delete this group ?\n(Instructions below will be preserved)','crm'),
+				'deleteIngredientGroup' => __('Do you really want to delete this group ?\n(Ingredients below will be preserved)','crm'),
 			),
 			'location' 	=> array('recipe_form'),
 		);

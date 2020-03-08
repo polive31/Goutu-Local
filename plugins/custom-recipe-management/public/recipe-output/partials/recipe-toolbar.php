@@ -5,7 +5,7 @@
 		<!-- Recipe Rate Button -->
 		<!-- <div class="toolbar-button alignleft <?php //echo is_user_logged_in()?'tooltip-onhover':'disabled';
 													?>" id="rate"> -->
-		<div class="toolbar-button alignleft tooltip-onhover fa-before" id="rate">
+		<div class="toolbar-button alignleft tooltip-onhover " id="rate">
 			<?php
 			// $ga = WP_MINIFY?is_user_logged_in()?'':"ga('send','event','join-us','click','recipe-rate', 0)":'';
 			// echo $ga;
@@ -15,12 +15,13 @@
 																								?>" onClick="<?php //echo $ga
 																												?>"> -->
 			<a href="#" data-tooltip-id="" class="recipe-review-button tooltip-onclick" onClick="">
-				<div class="button-caption"><?php echo __('Rate', 'foodiepro'); ?></div>
+				<?= foodiepro_get_icon('edit');?>
+				<div class="button-caption"><?php echo __('Rate', 'crm'); ?></div>
 			</a>
 			<?php
 			// if( is_user_logged_in() ) {
 			$args = array(
-				'content' => __('Comment and rate this recipe', 'foodiepro'),
+				'content' => __('Comment and rate this recipe', 'crm'),
 				'valign' 	=> 'above',
 				'halign'	=> 'left',
 			);
@@ -34,7 +35,7 @@
 				'callout'	=> false,
 				// 'class'		=> 'rating-form modal fancy',
 				'class'		=> 'rating-form modal big-font uppercase',
-				'title'		=> __('Rate this recipe', 'foodiepro'),
+				'title'		=> __('Rate this recipe', 'crm'),
 				'img'		=> CHILD_THEME_URL . '/images/popup-icons/goutumetre.png'
 			);
 			Tooltip::display($args);
@@ -44,17 +45,17 @@
 
 		<!-- Recipe Add to Cart Button -->
 		<!-- 				<div class="toolbar-button alignleft tooltip tooltip-above tooltip-left" id="shopping">
-		<?php
+			<?php
 		// $shopping_list = new Custom_Recipe_Add_To_Shopping_List( is_user_logged_in() );
 		// echo $shopping_list->output( $recipe );
 		?>
 		</div>	 -->
 
 		<!-- Add To Favorites Button -->
-		<div class="toolbar-button alignleft fa-before  <?php echo is_user_logged_in() ? 'tooltip-onhover' : 'disabled'; ?>" id="favorite">
+		<div class="toolbar-button alignleft <?php echo is_user_logged_in() ? 'tooltip-onhover' : 'disabled'; ?>" id="favorite">
 			<?php
 			$favorite_recipe = new CRM_Favorite();
-			echo $favorite_recipe->output($recipe); ?>
+			echo $favorite_recipe->output_button($recipe); ?>
 		</div>
 
 		<!-- Like Button -->
@@ -68,11 +69,12 @@
 		<!-- Recipe Print Button -->
 		<div class="toolbar-button alignright tooltip-onhover" id="print">
 			<a class="wpurp-recipe-print recipe-print-button" href="<?php echo $recipe->link_print(); ?>" target="_blank">
-				<div class="button-caption"><?php echo __('Print', 'foodiepro'); ?></div>
+				<?= foodiepro_get_icon('print');?>
+				<div class="button-caption"><?php echo __('Print', 'crm'); ?></div>
 			</a>
 			<?php
 			$args = array(
-				'content' 	=> __('Print this Recipe', 'foodiepro'),
+				'content' 	=> __('Print this Recipe', 'crm'),
 				'valign' 	=> 'above',
 				'halign'	=> 'right',
 			);
@@ -83,9 +85,9 @@
 		<!-- Recipe Share Button -->
 		<!-- <div class="toolbar-button alignright tooltip" id="share">
 			<a class="recipe-share-button" id="recipe-share" cursor-style="pointer">
-				<div class="button-caption"><?php echo __('Share', 'foodiepro'); ?></div>
+				<div class="button-caption"><?php echo __('Share', 'crm'); ?></div>
 			</a>
-			<?php //echo Custom_WPURP_Templates::output_tooltip(__('Share this recipe','foodiepro'),'above');
+			<?php //echo Custom_WPURP_Templates::output_tooltip(__('Share this recipe','crm'),'above');
 			$args = array(
 				// 'content' 	=>  do_shortcode('[social-sharing-buttons target="recipe" class="small bubble"]'),
 				'valign' 	=> 'above',
@@ -99,11 +101,12 @@
 		<!-- Recipe Read Button -->
 		<div class="toolbar-button alignright tooltip-onhover" id="read">
 			<a class="recipe-read-button" onClick="<?= is_user_logged_in() ? '' : "ga('send','event','recipe-read','click','', 0)"; ?>" />
-			<div class="button-caption"><?php echo __('Read', 'foodiepro'); ?></div>
+				<?= foodiepro_get_icon('read');?>
+				<div class="button-caption"><?php echo __('Read', 'crm'); ?></div>
 			</a>
 			<?php
 			$args = array(
-				'content' 	=>  __('Read this recipe out loud', 'foodiepro'),
+				'content' 	=>  __('Read this recipe out loud', 'crm'),
 				'valign' 	=> 'above',
 				'halign'	=> 'center',
 			);

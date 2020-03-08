@@ -15,9 +15,9 @@ class CRM_Recipe extends WPURP_Recipe {
         // therefore actions are not effective in the constructor context
         // as a consequence hydrate is done in the constructor itself
         self::$title = array(
-            'prep' => __('Preparation','foodiepro'),
-            'cook' => __('Cooking','foodiepro'),
-            'passive' => __('Wait','foodiepro'),
+            'prep' => __('Preparation','crm'),
+            'cook' => __('Cooking','crm'),
+            'passive' => __('Wait','crm'),
         );
 
     }
@@ -151,24 +151,22 @@ class CRM_Recipe extends WPURP_Recipe {
         if ( !empty( $legacy_time_text ) )  {
             $get_legacy_time = "{$type}_time";
             $legacy_time = $this->$get_legacy_time();
-            $html .= $legacy_time . ' ' . $legacy_time_text;
+            $html = $legacy_time . ' ' . $legacy_time_text;
         }
         else {
             if ( !empty($this->get_days($type)) ) {
-                $html .= sprintf(_n('%s day ', '%s days ', $this->get_days($type), 'foodiepro'), $this->get_days($type));
+                $html = sprintf(_n('%s day ', '%s days ', $this->get_days($type), 'crm'), $this->get_days($type));
             }
             if ( !empty($this->get_hours($type)) ) {
-                $html .= sprintf(_n('%s hour ', '%s hours ', $this->get_hours($type), 'foodiepro'), $this->get_hours($type));
+                $html .= sprintf(_n('%s hour ', '%s hours ', $this->get_hours($type), 'crm'), $this->get_hours($type));
                 $html .= empty($this->get_minutes($type))?'':sprintf('%02d', $this->get_minutes($type));
             }
             else {
-                $html .= empty($this->get_minutes($type))?'':sprintf(_n('%s minute','%s minutes',$this->get_minutes($type),'foodiepro'),$this->get_minutes($type));
+                $html .= empty($this->get_minutes($type))?'':sprintf(_n('%s minute','%s minutes',$this->get_minutes($type),'crm'),$this->get_minutes($type));
             }
-            if ( empty($html) ) return '';
         }
 
-        $html = '<div class="label-container" id="' . $type . '"><div class="recipe-label fa-before">' . $this->get_title($type) . '</div>' . $html;
-        $html .= '</div>';
+        if ( empty($html) ) $html=false;
         return $html;
     }
 

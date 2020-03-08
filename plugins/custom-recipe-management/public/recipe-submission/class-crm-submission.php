@@ -36,7 +36,7 @@ class CRM_Submission {
         $wpurp_user_submission = true;
 
         ob_start();
-        include( self::$_PluginDir . 'custom-recipe-submission/partials/submission_form_ingredients_instructions.php' );
+        include( self::$_PluginDir . 'recipe-submission/partials/submission_form_ingredients_instructions.php' );
         $form .= ob_get_contents();
         ob_end_clean();
 
@@ -68,8 +68,8 @@ class CRM_Submission {
         <div class="wpurp-user-submissions button-area">
 
         <!-- Recipe Timer Button -->
-        <input class="user-submissions-button" id="add-timer" type="button" value="<?php _e('Format as Duration','foodiepro'); ?>" />
-        <input class="user-submissions-button" id="add-ingredient" type="button" value="<?php _e('Format as Ingredient','foodiepro'); ?>" />
+        <input class="user-submissions-button" id="add-timer" type="button" value="<?php _e('Format as Duration','crm'); ?>" />
+        <input class="user-submissions-button" id="add-ingredient" type="button" value="<?php _e('Format as Ingredient','crm'); ?>" />
 
         <script type="text/javascript">
         jQuery(document).ready(function() {
@@ -105,10 +105,9 @@ class CRM_Submission {
         $recipe=new CRM_Recipe( $post_id );
         $recipe->save();
 
-        // Save ingredients & instruction images
+        // Save instruction images
         // (main image is already saved as part of CPM_Submission->submit() function )
         $this->instructions = get_post_meta( $post_id, 'recipe_instructions', true );
-
         if( $_FILES ) {
             foreach( $_FILES as $key => $file ) {
                 if ( $file['name'] != '' ) {

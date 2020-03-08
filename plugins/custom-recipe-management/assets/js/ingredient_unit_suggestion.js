@@ -8,7 +8,7 @@ jQuery(document).ready(function() {
 
     jQuery('input.ingredients_name').focusout(function(){
         // console.log('In ingredient focusout');
-        spinnerHTML = jQuery(this).closest("td").next().children('.ajax-indicator');
+        spinnerHTML = jQuery(this).closest("td").next().children('#ajax-indicator');
         // console.log(spinnerHTML);
         spinnerHTML.css('visibility','hidden');
         try { xhr.abort(); } catch(e){}
@@ -35,9 +35,10 @@ function autoSuggestIngredient( thisInput ) {
     tax = 'ingredient';
     // console.log(term);
 
-    spinnerHTML = thisInput.closest("td").next().children('.ajax-indicator');
+    spinnerHTML = thisInput.closest("td").next().children('#ajax-indicator');
+    console.log('spinnerHTML content', spinnerHTML.html() );
+
     spinnerHTML.css('visibility','hidden');
-    // console.log(spinnerHTML);
 
     jQuery( thisInput ).autoComplete({
         minChars: 3,

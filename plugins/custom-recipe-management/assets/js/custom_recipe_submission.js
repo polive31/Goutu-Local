@@ -104,11 +104,6 @@ jQuery(document).ready(function() {
  /* Ingredient and Instruction Submission (from WPURP)
 ---------------------------------------------------------------- */
 
-    /*
-     * Do not allow removal of first ingredient/instruction
-     */
-    // jQuery('#recipe-ingredients tr.ingredient:first').find('span.ingredients-delete').hide();
-    // jQuery('#recipe-instructions tr.instruction:first').find('span.instructions-delete').hide();
 
     /*
      * Ingredient Groups
@@ -132,6 +127,7 @@ jQuery(document).ready(function() {
 
 
     jQuery('.ingredient-group-delete').on('click', function(){
+        if (!confirm(custom_recipe_submission_form.deleteIngredientGroup)) return;
         jQuery(this).parents('tr').remove();
         calculateIngredientGroups();
     });
@@ -259,6 +255,7 @@ jQuery(document).ready(function() {
     });
 
     jQuery('.instructions-delete').on('click', function(){
+        console.log('Click on instructions delete !');
         if (!confirm(custom_recipe_submission_form.deleteInstruction)) return;
         jQuery(this).parents('tr').remove();
         // addRecipeInstructionOnTab();
@@ -452,8 +449,8 @@ function addRecipeInstructionGroup()
 }
 
 jQuery('.instruction-group-delete').on('click', function(){
+    if (!confirm(custom_recipe_submission_form.deleteInstructionGroup)) return;
     jQuery(this).parents('tr').remove();
-
     calculateInstructionGroups();
 });
 

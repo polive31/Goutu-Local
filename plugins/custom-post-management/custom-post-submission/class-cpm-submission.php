@@ -72,7 +72,7 @@ class CPM_Submission
 
         $post = get_post($post_ID);
 
-        $output = $this->get_intro_text($state);
+        $output = $this->get_intro_text($state, $post_ID);
 
         $required = CPM_Assets::get_required($this->post_type);
         $required_fields = array_keys($required);
@@ -100,7 +100,7 @@ class CPM_Submission
         return $output;
     }
 
-    public function get_intro_text($state)
+    public function get_intro_text($state, $post_ID=false)
     {
 
         /* Intro text output */
@@ -121,7 +121,7 @@ class CPM_Submission
                 break;
             case 'draft':
                 $output = '<p class="submitbox">';
-                $output .= CPM_Assets::get_label($this->post_type, 'draft1');
+                $output .= sprintf(CPM_Assets::get_label($this->post_type, 'draft1'), get_permalink($post_ID) );
                 $output .= '<br>';
                 $output .= CPM_Assets::get_label($this->post_type, 'draft2');
                 $output .= '</p>';
@@ -410,7 +410,7 @@ class CPM_Submission
                         clean_post_cache($post_id);
                         // $output = $this->display( $post_id, 'draft' );
                         // $output = '';
-                        $output = $this->get_intro_text('draft');
+                        $output = $this->get_intro_text('draft', $post_id);
                         $output .= $this->js_alert_disable();
                         return $output;
                     } elseif (count($errors) > 0) {

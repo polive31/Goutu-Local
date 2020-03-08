@@ -17,10 +17,10 @@ jQuery(document).ready(function(){
 
 
 function addToFavoritesUpdate( list_item ) {
-  console.log('In addToFavorites Update');
+  // console.log('In addToFavorites Update');
   var tooltipButton = jQuery(list_item).parents('.tooltip-content').siblings('.tooltip-onclick');
   var listChoice = list_item.attr("id");
-  console.log('Chosen option is ', listChoice );
+  // console.log('Chosen option is ', listChoice );
 
   // closeTooltip( tooltipForm );
   Tooltip.closeAll();
@@ -42,28 +42,22 @@ function addToFavoritesUpdate( list_item ) {
     data,
     function(response) {
       // console.log('Add to Favorites AJAX call completed');
-      // console.log('Response : ' + response.text);
-      // console.log('Icon : ' + response.icon);
-      // tooltipButton.children('.button-icon').html( response.icon );
+      // console.log('Response list : ' + response.list);
+      // console.log('Response tooltip : ' + response.tooltip);
+      // console.log( 'Tooltip button', tooltipButton.html());
 
-
-      // Update button icon
-      tooltipButton.children('.button-icon').html( response.icon );
-      // Update button tooltip on hover
-      tooltipButton.siblings('.tooltip-content.hover').children('.wrap').html( response.text );
-
+      // Update button id & tooltip text
+      tooltipButton.attr( 'id', response.list );
+      tooltipButton.siblings('.tooltip-content.hover').children('.wrap').html( response.tooltip );
       tooltip = new Tooltip( tooltipButton.siblings('.tooltip-content.hover') );
 
-      // Update selected list in favorites list form
+      // Update form
       list_item.addClass('isfav');
       list_item.siblings().removeClass('isfav');
-      // Update selected list in favorites list form
       if ( listChoice=='remove' ) {
-        console.log('Updating remove display : listchoice = remove detected');
         list_item.addClass('nodisplay');
       }
       else {
-        console.log('Updating remove display : listchoice != remove detected');
         list_item.siblings('#remove').removeClass('nodisplay');
       }
 

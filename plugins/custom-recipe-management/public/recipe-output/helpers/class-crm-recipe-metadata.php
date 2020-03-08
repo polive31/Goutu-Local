@@ -83,51 +83,51 @@ class Custom_Recipe_Metadata {
         }
 
         // Nutrition
-        if( WPUltimateRecipe::is_addon_active( 'nutritional-information' ) ) {
-            $nutritional = $recipe->nutritional();
-            $nutritional_units = WPUltimateRecipe::addon( 'nutritional-information' )->fields;
-            $nutritional_units['unsaturated_fat'] = 'g';
+        // if( WPUltimateRecipe::is_addon_active( 'nutritional-information' ) ) {
+            // $nutritional = $recipe->nutritional();
+            // $nutritional_units = WPUltimateRecipe::addon( 'nutritional-information' )->fields;
+            // $nutritional_units['unsaturated_fat'] = 'g';
 
-            $mapping = array(
-                'calories' => 'calories',
-                'fat' => 'fatContent',
-                'saturated_fat' => 'saturatedFatContent',
-                'unsaturated_fat' => 'unsaturatedFatContent',
-                'trans_fat' => 'transFatContent',
-                'carbohydrate' => 'carbohydrateContent',
-                'sugar' => 'sugarContent',
-                'fiber' => 'fiberContent',
-                'protein' => 'proteinContent',
-                'cholesterol' => 'cholesterolContent',
-                'sodium' => 'sodiumContent',
-            );
+            // $mapping = array(
+            //     'calories' => 'calories',
+            //     'fat' => 'fatContent',
+            //     'saturated_fat' => 'saturatedFatContent',
+            //     'unsaturated_fat' => 'unsaturatedFatContent',
+            //     'trans_fat' => 'transFatContent',
+            //     'carbohydrate' => 'carbohydrateContent',
+            //     'sugar' => 'sugarContent',
+            //     'fiber' => 'fiberContent',
+            //     'protein' => 'proteinContent',
+            //     'cholesterol' => 'cholesterolContent',
+            //     'sodium' => 'sodiumContent',
+            // );
 
-            // Unsaturated Fat = mono + poly
-            if( isset( $nutritional['monounsaturated_fat'] ) && $nutritional['monounsaturated_fat'] !== '' ) {
-                $nutritional['unsaturated_fat'] = floatval( $nutritional['monounsaturated_fat'] );
-            }
+            // // Unsaturated Fat = mono + poly
+            // if( isset( $nutritional['monounsaturated_fat'] ) && $nutritional['monounsaturated_fat'] !== '' ) {
+            //     $nutritional['unsaturated_fat'] = floatval( $nutritional['monounsaturated_fat'] );
+            // }
 
-            if( isset( $nutritional['polyunsaturated_fat'] ) && $nutritional['polyunsaturated_fat'] !== '' ) {
-                $mono = isset( $nutritional['unsaturated_fat'] ) ? $nutritional['unsaturated_fat'] : 0;
-                $nutritional['unsaturated_fat'] = $mono + floatval( $nutritional['polyunsaturated_fat'] );
-            }
+            // if( isset( $nutritional['polyunsaturated_fat'] ) && $nutritional['polyunsaturated_fat'] !== '' ) {
+            //     $mono = isset( $nutritional['unsaturated_fat'] ) ? $nutritional['unsaturated_fat'] : 0;
+            //     $nutritional['unsaturated_fat'] = $mono + floatval( $nutritional['polyunsaturated_fat'] );
+            // }
 
-            // Get metadata
-            $metadata_nutrition = array(
-                '@type' => 'NutritionInformation',
-                'servingSize' => '1 serving',
-            );
+            // // Get metadata
+            // $metadata_nutrition = array(
+            //     '@type' => 'NutritionInformation',
+            //     'servingSize' => '1 serving',
+            // );
 
-            foreach( $mapping as $field => $meta_field ) {
-                if( isset( $nutritional[$field] ) && $nutritional[$field] !== '' ) {
-                    $metadata_nutrition[$meta_field] = floatval( $nutritional[$field] ) . ' ' . $nutritional_units[$field];
-                }
-            }
+            // foreach( $mapping as $field => $meta_field ) {
+            //     if( isset( $nutritional[$field] ) && $nutritional[$field] !== '' ) {
+            //         $metadata_nutrition[$meta_field] = floatval( $nutritional[$field] ) . ' ' . $nutritional_units[$field];
+            //     }
+            // }
 
-            if( count( $metadata_nutrition ) > 2 ) {
-                $metadata['nutrition'] = $metadata_nutrition;
-            }
-        }
+            // if( count( $metadata_nutrition ) > 2 ) {
+            //     $metadata['nutrition'] = $metadata_nutrition;
+            // }
+        // }
 
 
         // Ingredients

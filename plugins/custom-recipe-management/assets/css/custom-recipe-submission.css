@@ -182,6 +182,10 @@ td.ingredient-input.notes {
   min-width: 300px;
 }
 
+#ajax-indicator {
+  visibility: hidden;
+}
+
 /* Instruction Section
 ------------------------------------------------------- */
 

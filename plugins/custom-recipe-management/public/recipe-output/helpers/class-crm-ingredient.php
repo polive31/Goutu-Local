@@ -6,8 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class CRM_Ingredient {
 
-    private static $MONTHS = array();
-
     const UNITS_LIST = array(
         array('g'               , 'g'),
         array('kg'              , 'kg'),
@@ -46,9 +44,6 @@ class CRM_Ingredient {
     );
 
 
-    // public function __construct() {
-    //         }
-
 	/* =================================================================*/
 	/* = SHORTCODES
 	/* =================================================================*/
@@ -84,12 +79,12 @@ class CRM_Ingredient {
         $ingredient_months = get_term_meta($ingredient_id, 'month', true );
         if ( empty($ingredient_months) ) return '';
 
-        $html = '<h2>' . __('Harvest Period','foodiepro') . '</h2>';
+        $html = '<h2>' . __('Harvest Period','crm') . '</h2>';
         $html .= '<table class="ingredient-months">';
         $html .= '<tr>';
         $i=1;
 
-        $months = Custom_Ingredient_Meta::$MONTHS;
+        $months = CRM_Ingredient_Month::$MONTHS;
         foreach (  $months as $month ) {
             $available = in_array( $i, $ingredient_months )?'available':'';
             $html .= '<td class="' . $available . '" title="' . $month . '">' . $month[0] . '</td>';
@@ -116,7 +111,7 @@ class CRM_Ingredient {
         return ($amount > 1)?$plural:$name;
     }
 
-    public static function display( $args ) {
+    public static function display( $args, $target='screen' ) {
         if ( empty($args['ingredient']) ) return false;
         $out = '';
 
@@ -128,8 +123,8 @@ class CRM_Ingredient {
         $unit = self::output_unit($args['unit'], $amount_normalized);
 
         // OUTPUT FIRST PART
-        $out .= '<span class="recipe-ingredient-quantity-unit"><span class="wpurp-recipe-ingredient-quantity recipe-ingredient-quantity" data-normalized="'. $amount_normalized .'" data-fraction="'.$fraction.'" data-original="'.$args['amount'].'">'.$args['amount'].' </span>';
-        $out .= '<span class="wpurp-recipe-ingredient-unit recipe-ingredient-unit" data-original="'. $unit .'">'.$unit.'</span></span>';
+        $out .= '<span class="recipe-ingredient-quantity-unit"><span class="recipe-ingredient-quantity" data-normalized="'. $amount_normalized .'" data-fraction="'.$fraction.'" data-original="'.$args['amount'].'">'.$args['amount'].' </span>';
+        $out .= '<span class="recipe-ingredient-unit" data-original="'. $unit .'">'.$unit.'</span></span>';
 
 
         // INGREDIENT TAXONOMY TERM DATA
@@ -138,45 +133,35 @@ class CRM_Ingredient {
         $plural=false;
         // $isplural=false;
 
-		$taxonomy_slug = ($taxonomy && is_object( $taxonomy )) ? $taxonomy->slug : false;
+        $taxonomy_slug = ($taxonomy && is_object( $taxonomy )) ? $taxonomy->slug : false;
 		$plural = $taxonomy_slug?WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'plural' ):'';
 		$plural = is_array( $plural ) ? false : $plural;
 
 
         $plural_data = $plural ? ' data-singular="' . esc_attr( $args['ingredient'] ) . '" data-plural="' . esc_attr( $plural ) . '"' : '';
-        $out .= ' <span class="wpurp-recipe-ingredient-name recipe-ingredient-name"' . $plural_data . '>';
+        $out .= ' <span class="recipe-ingredient-name"' . $plural_data . '>';
 
         // INGREDIENT "OF"
         if ($unit != '') {
 	        if ( initial_is_vowel($args['ingredient']) )
-	            $out .= _x('of ','vowel','foodiepro');
+	            $out .= _x('of ','vowel','crm');
 	        else
-	            $out .= _x('of ','consonant','foodiepro');
+	            $out .= _x('of ','consonant','crm');
         }
-
-        $ingredient_links = WPUltimateRecipe::option('recipe_ingredient_links', 'archive_custom');
 
         $closing_tag = '';
 
+        $hide_link_meta =  WPURP_Taxonomy_MetaData::get('ingredient', $taxonomy_slug, 'hide_link') == '1';
+		$hide_link = $taxonomy_slug?$hide_link_meta:true;
 
-		$hide_link = $taxonomy_slug? WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'hide_link' ) == '1':true;
-
-        if ( !empty( $taxonomy ) && $ingredient_links != 'disabled' && !$hide_link) {
-
-            if( $ingredient_links == 'archive_custom' || $ingredient_links == 'custom' ) {
-                $custom_link = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'link' );
-            } else {
-                $custom_link = false;
-            }
-
+        if ( !empty( $taxonomy ) && !$hide_link && !$target='print') {
+            $custom_link = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'link' );
             if( isset($args['links']) &&  ($args['links'] == 'yes') ) {
 	            if( $custom_link !== false && $custom_link !== '' ) {
-	                $nofollow = WPUltimateRecipe::option( 'recipe_ingredient_custom_links_nofollow', '0' ) == '1' ? ' rel="nofollow"' : '';
-
-	            	$out .= '<a href="'.$custom_link.'" class="custom-ingredient-link" target="'.WPUltimateRecipe::option( 'recipe_ingredient_custom_links_target', '_blank' ).'"' . $nofollow . '>';
+	                $nofollow = '';
+	            	$out .= '<a href="' . $custom_link . '" class="custom-ingredient-link" target="_blank"' . $nofollow . '>';
 	            	$closing_tag = '</a>';
-
-	            } else if( $ingredient_links != 'custom' ) {
+	            } else {
 	                $out .= '<a href="'.get_term_link( $taxonomy_slug, 'ingredient' ).'">';
 	                $closing_tag = '</a>';
 	            }
@@ -191,7 +176,7 @@ class CRM_Ingredient {
 
         // INGREDIENT "NOTES"
         if ( ! empty($args['notes']) )  {
-            $out .= ' <span class="wpurp-recipe-ingredient-notes recipe-ingredient-notes">'.$args['notes'].'</span>';
+            $out .= ' <span class="recipe-ingredient-notes">'.$args['notes'].'</span>';
         }
 
         return $out;

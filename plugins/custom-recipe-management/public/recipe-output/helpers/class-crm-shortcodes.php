@@ -1,3 +1,4 @@
+
 <?php
 
 // Exit if accessed directly.
@@ -78,7 +79,7 @@ class CRM_Recipe_Shortcodes  {
             $recipe_post = get_post( intval( $options['id'] ) );
         }
 
-        if( !is_null( $recipe_post ) && $recipe_post->post_type == 'recipe' && ( !is_feed() || WPUltimateRecipe::option( 'recipe_rss_feed_shortcode', '1' ) == '1' ) ) {
+        if( !is_null( $recipe_post ) && $recipe_post->post_type == 'recipe' && ( !is_feed() )) {
 
             if( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) {
                 $type = 'amp';
@@ -88,7 +89,8 @@ class CRM_Recipe_Shortcodes  {
                 $template = is_feed() ? null : $options['template'];
             }
 
-            $output = $this->display_recipe( '', $recipe_post );
+            $render = new CRM_Output();
+            $output = $render->screen( '', $recipe_post );
 
         }
         else
@@ -99,31 +101,31 @@ class CRM_Recipe_Shortcodes  {
         return do_shortcode( $output );
     }
 
-
-    public function custom_recipe_timer( $atts, $content ) {
-        self::$id++;
-
-        $atts = shortcode_atts( array(
+    public function timer_shortcode($atts, $content)
+    {
+        $atts = shortcode_atts(array(
             'seconds' => '0',
             'minutes' => '0',
             'hours' => '0',
-        ), $atts );
+        ), $atts);
 
-        $seconds = intval( $atts['seconds'] );
-        $minutes = intval( $atts['minutes'] );
-        $hours = intval( $atts['hours'] );
+        $seconds = intval($atts['seconds']);
+        $minutes = intval($atts['minutes']);
+        $hours = intval($atts['hours']);
 
         $seconds = $seconds + (60 * $minutes) + (60 * 60 * $hours);
-        if ( $seconds <= 0 ) return $content;
 
-        // $msg = sprintf(__('Timer started for %s','crm'), self::$id);
+        if ($seconds > 0) {
+            $timer = '<a href="#" class="wpurp-timer-link" title="' . __('Click to Start Timer', 'crm') . '">';
+            $timer .= '<span class="wpurp-timer" data-seconds="' . esc_attr($seconds) . '">';
+            $timer .= $content;
+            $timer .= '</span></a>';
 
-        $timer = '<a href="#" class="wpurp-timer-link" title="' . __( 'Click to Start Timer', 'crm' ) . '">';
-        $timer .= '<span class="wpurp-timer" data-seconds="' . esc_attr( $seconds ) . '">';
-        $timer .= $content;
-        $timer .= '</span></a>';
-
-        return $timer;
+            return $timer;
+        } else {
+            return $content;
+        }
     }
+
 
 }

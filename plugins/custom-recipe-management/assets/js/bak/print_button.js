@@ -46,6 +46,9 @@ jQuery(document).ready(function() {
 
     jQuery(document).on('click', '.wpurp-recipe-print-button, .wpurp-print-recipe-shortcode', function(e) {
         // RecipeId only present when using old way
+
+        console.log('In print_button.js, click on recipe print !');
+
         var recipeId = jQuery(this).data('recipe-id');
         if(recipeId) {
             e.preventDefault();

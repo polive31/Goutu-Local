@@ -34,7 +34,8 @@ class CRM_Lists_Dropdown_Widget extends WP_Widget {
         <!-- <div class="dropdown-select"> -->
         <select name="sort_dropdown" id="sort_dropdown" class="dropdown-select postform">
 
-        <option value="none" class="separator"><?php echo __('Filter your favorite recipes...', 'crm');?></option>
+        <!-- <option value="none" class="separator"><?php echo __('Filter your favorite recipes...', 'crm');?></option> -->
+        <option class="level-0" <?= $lists==''?'selected':''; ?> value=""><?php echo __('All cookbook recipes', 'crm');?></option>
         <option class="level-0" <?= $lists=='favorites'?'selected':''; ?> value="?list=favorites"><?php echo __('My favorite recipes', 'crm');?></option>
         <option class="level-0" <?= $lists=='wishlist'?'selected':''; ?>  value="?list=wishlist"><?php echo __('Recipes in my wishlist', 'crm');?></option>
 
@@ -48,7 +49,7 @@ class CRM_Lists_Dropdown_Widget extends WP_Widget {
                 function onDropDownChange() {
                     var choice = dropdown.options[dropdown.selectedIndex].value;
                     if ( choice != "none" ) {
-                        location.href="<?= esc_url( strtok($_SERVER["REQUEST_URI"], '?') ); ?>?"+encodeURI(choice);
+                        location.href="<?= esc_url( strtok($_SERVER["REQUEST_URI"], '?') ); ?>"+encodeURI(choice);
                     }
                 }
                 dropdown.onchange=onDropDownChange;

@@ -2454,49 +2454,22 @@ span.ui-icon.ui-icon-triangle-1-s:before {
   cursor: pointer;
 }
 
-a.post-read-button:before,
-a.recipe-read-button:before {
-  content: "\f028";
-  /* fa-sound */
+i.overlayed-icon:after {
+  color: red;
+  left: 10px;
+  top: 0px;
 }
 
-a.custom-recipe-favorite:before {
-  content: "\f02d";
-  /* fa-sound */
+#favorites i.overlayed-icon:after {
+  content: "\f004";
 }
 
-a.post-share-button:before,
-a.recipe-share-button:before {
-  content: "\f1e0";
-  /* fa-alt-share */
-}
-
-a.post-review-button:before,
-a.recipe-review-button:before {
-  content: "\f044";
-  /* fa-pencil-square-o */
-}
-
-a.post-print-button:before,
-a.wpurp-recipe-print:before {
-  content: "\f02f";
-  /* fa-print */
-}
-
-.toolbar-button a.social-like-post:before {
-  /*content:"\f087"; /* fa-thumbs-o-up */
-  content: "\f164";
-  /* fa-thumbs-o-up */
-  font-weight: 400;
-}
-
-.toolbar-button a.social-like-post.is-liked:before {
-  font-weight: 900;
-  /*content:"\f164"; /* fa-thumbs-up */
+#wishlist i.overlayed-icon:after {
+  content: "\f08d";
 }
 
 .like-count {
-  font-family: sans-serif;
+  font-family: Oswald, sans-serif;
   font-size: 1.8rem;
   color: #525252;
   display: inline-block;
@@ -2508,16 +2481,6 @@ a.wpurp-recipe-print:before {
 .like-count.nolike {
   color: #bababa;
   /* color: #746f6f; */
-}
-
-a.wpurp-recipe-add-to-shopping-list:before {
-  content: "\f07a";
-  /* fa-cart */
-}
-
-a.wpurp-recipe-add-to-shopping-list.in-shopping-list:before {
-  content: "\f218";
-  /* fa-cart-plus */
 }
 
 .button-caption {

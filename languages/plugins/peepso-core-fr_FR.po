@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: peepso-internal\n"
 "POT-Creation-Date: 2020-02-13 15:57+0700\n"
-"PO-Revision-Date: 2020-03-08 10:31+0100\n"
+"PO-Revision-Date: 2020-03-08 14:16+0100\n"
 "Last-Translator: alconost <alpha@alconost.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -1123,10 +1123,8 @@ msgid ""
 msgstr ""
 
 #: classes/adminconfigreactions.php:15
-#, fuzzy
-#| msgid "New User Registration"
 msgid "New reaction"
-msgstr "Inscription d'un nouvel utilisateur"
+msgstr "Nouvelle réaction"
 
 #: classes/adminconfigreactions.php:17
 #: templates/reactions/admin_reactions_buttons.php:18
@@ -3575,18 +3573,13 @@ msgid "Maintenance cron"
 msgstr "Maintenance & débogage"
 
 #: classes/configsectionpostbox.php:239
-#, fuzzy
-#| msgid "minute"
-#| msgid_plural "minutes"
 msgid "minutes"
-msgstr "minute"
+msgstr "minutes"
 
 #: classes/configsectionpostbox.php:240 classes/configsectionpostbox.php:259
 #: classes/configsectionpostbox.php:305 classes/configsectionpostbox.php:324
-#, fuzzy
-#| msgid "default"
 msgid "(default)"
-msgstr "par défaut"
+msgstr "(par défaut)"
 
 #: classes/configsectionpostbox.php:245
 msgid ""
@@ -3655,11 +3648,9 @@ msgid "Allow non-alphanumeric hashtags"
 msgstr ""
 
 #: classes/configsectionpostbox.php:304
-#, fuzzy
-#| msgid "characters"
 msgid "character"
 msgid_plural "characters"
-msgstr[0] "caractères"
+msgstr[0] "caractère"
 msgstr[1] "caractères"
 
 #: classes/configsectionpostbox.php:310
@@ -5751,16 +5742,12 @@ msgid "Profile Fields"
 msgstr "Champs de profil"
 
 #: classes/manage.php:66 classes/manage.php:68 install/activate.php:344
-#, fuzzy
-#| msgid "Actions"
 msgid "Reactions"
-msgstr "Actions"
+msgstr "Réactions"
 
 #: classes/manage.php:79 classes/manage.php:81
-#, fuzzy
-#| msgid "Failed Login Attempts"
 msgid "Login Attempts"
-msgstr "Tentatives de connexion infructueuses"
+msgstr "Tentatives de connexion"
 
 #: classes/manage.php:91 classes/manage.php:93
 #, fuzzy
@@ -5989,10 +5976,8 @@ msgid "You will not receive any e-mail notifications"
 msgstr "Désactiver toutes les notifications par e-mail"
 
 #: classes/notificationsintensity.php:35
-#, fuzzy
-#| msgid "hours"
 msgid "hour"
-msgstr "heures"
+msgstr "heure"
 
 #: classes/postbox.php:34
 #, php-format
@@ -8182,11 +8167,9 @@ msgid "Remember Me"
 msgstr "Se souvenir de moi"
 
 #: templates/general/login.php:56 templates/widgets/login.tpl.php:152
-#, fuzzy
-#| msgid "Register"
 msgctxt "Registration link in login panel"
 msgid "Register"
-msgstr "S’inscrire"
+msgstr "Inscrivez-vous"
 
 #: templates/general/login.php:62 templates/widgets/login.tpl.php:92
 #: templates/widgets/login.tpl.php:158 templates/widgets/me.tpl.php:257

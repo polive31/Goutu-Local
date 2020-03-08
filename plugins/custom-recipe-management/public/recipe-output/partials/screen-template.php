@@ -41,30 +41,30 @@
 					// Origin
 					$terms = get_the_term_list($this->post_ID, 'cuisine', '', ', ', '');
 					if ($terms != '') {
-						$html = '<div class="label-container" id="tag"><div class="recipe-label fa-before">' . __('Origin', 'crm') . '</div>' . $terms . '</div>';
+						$html = '<div class="label-container tag"><div class="recipe-label">' . foodiepro_get_icon('tag') . __('Origin', 'crm') . '</div>' . $terms . '</div>';
 						echo $html;
 					}
 
 					// Diet
 					$terms = get_the_term_list($this->post_ID, 'diet', '', ', ', '');
 					if ($terms != '') {
-						$html = '<div class="label-container" id="tag"><div class="recipe-label fa-before">' . __('Diet', 'crm') . '</div>' . $terms . '</div>';
+						$html = '<div class="label-container tag"><div class="recipe-label">' . foodiepro_get_icon('tag') . __('Diet', 'crm') . '</div>' . $terms . '</div>';
 						echo $html;
 					}
 
 					// Difficulty
 					$terms = get_the_term_list($this->post_ID, 'difficult', '', '', '');
 					if ($terms != '') {
-						$html = '<div class="label-container" id="tag"><div class="recipe-label fa-before">' . __('Level', 'crm') . '</div>' . $terms . '</div>';
+						$html = '<div class="label-container tag"><div class="recipe-label">' . foodiepro_get_icon('tag') . __('Level', 'crm') . '</div>' . $terms . '</div>';
 						echo $html;
 					}
 
 					// Durations
 					$prep_time = $recipe->output_time('prep');
 					if ($prep_time) {?>
-						<div class="label-container" id="prep">
-							<div class="recipe-label fa-before">
-								<?= $recipe->get_title('prep'); ?>
+						<div class="label-container prep-time">
+							<div class="recipe-label">
+								<?= foodiepro_get_icon('hand') . $recipe->get_title('prep'); ?>
 							</div>
 								<?= $prep_time; ?>
 						</div>
@@ -72,9 +72,9 @@
 
 					$cook_time = $recipe->output_time('cook');
 					if ($cook_time) {?>
-						<div class="label-container" id="cook">
-							<div class="recipe-label fa-before">
-								<?= $recipe->get_title('cook'); ?>
+						<div class="label-container cook-time">
+							<div class="recipe-label">
+								<?= foodiepro_get_icon('hourglass-half') . $recipe->get_title('cook'); ?>
 							</div>
 								<?= $cook_time; ?>
 						</div>
@@ -82,9 +82,9 @@
 
 					$wait_time = $recipe->output_time('passive');
 					if ($wait_time) {?>
-						<div class="label-container" id="passive">
-							<div class="recipe-label fa-before">
-								<?= $recipe->get_title('passive'); ?>
+						<div class="label-container passive-time">
+							<div class="recipe-label">
+								<?= foodiepro_get_icon('pause') . $recipe->get_title('passive'); ?>
 							</div>
 								<?= $wait_time; ?>
 						</div>
@@ -117,11 +117,15 @@
 							<span class=""><?= __('For ', 'crm'); ?></span>
 							<table class="recipe-input">
 								<tr>
-									<td class="fa qty" id="dec" title="<?= __('Decrease servings', 'crm'); ?>">&nbsp;</td>
+									<td class="fa qty" id="dec" title="<?= __('Decrease servings', 'crm'); ?>">
+										<?= foodiepro_get_icon('minus-circle', 'servings-button'); ?>
+									</td>
 									<td class="input">
 										<input type="number" min="1" class="adjust-recipe-servings" data-original="<?= $recipe->servings_normalized(); ?>" data-start-servings="<?= $recipe->servings_normalized(); ?>" value="<?= $recipe->servings_normalized(); ?>" />
 									</td>
-									<td class="fa qty" id="inc" title="<?= __('Increase servings', 'crm'); ?>">&nbsp;</td>
+									<td class="fa qty" id="inc" title="<?= __('Increase servings', 'crm'); ?>">
+										<?= foodiepro_get_icon('plus-circle', 'servings-button'); ?>
+									</td>
 								</tr>
 							</table>
 							<span><?php echo $recipe->servings_type(); ?></span>

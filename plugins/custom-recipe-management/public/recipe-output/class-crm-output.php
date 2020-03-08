@@ -115,13 +115,9 @@ class CRM_Output {
             $meta = '';
 
             $out .= '<li class="wpurp-recipe-ingredient"' . $meta . '>';
-
-            // $out .= '<input type="checkbox" name="ingredient-check">&nbsp;</input>';
-            $out .= '<span class="fa-before" id="checkbox">&nbsp;</span>';
-
+            $out .= foodiepro_get_icon('checkbox', 'ingredient-checkbox');
             $ingredient['links'] = 'yes';
-            $out .= CRM_Ingredient::display( $ingredient, 'print' );
-
+            $out .= CRM_Ingredient::display( $ingredient );
             $out .= '</li>';
         }
         //$out .= '</ul>';
@@ -130,11 +126,11 @@ class CRM_Output {
         <script>
 			jQuery(document).ready(function(){
 			// console.log('Inline ingredient checkbox');
-				jQuery(document).on('click', '.wpurp-recipe-ingredient  #checkbox', function(e) {
+				jQuery(document).on('click', '.wpurp-recipe-ingredient  .ingredient-checkbox', function(e) {
 					// console.log('Click on ingredient checkbox detected !');
 					e.preventDefault();
 					e.stopPropagation();
-					jQuery(this).toggleClass('clicked');
+					jQuery(this).toggleClass('checked');
 				});
 			});
         </script>
@@ -348,6 +344,21 @@ class CRM_Output {
         }
 
         return $content;
+    }
+
+
+
+    /* --------------------------------------------------------------------------------------------
+                                GETTERS
+     --------------------------------------------------------------------------------------------*/
+
+    public function get_icon($icon, $class='svg-icon', $id='', $tag='div') {
+        $img_path = self::$_PluginPath . 'assets/img/icons/';
+        $html = file_get_contents($img_path . $icon . '.svg');
+
+        if ($html===false) return '';
+        $html = '<' . $tag . ' class="' . $class . '" id="' . $id . '">' . $html . '</' . $tag . '>';
+        return $html;
     }
 
 }

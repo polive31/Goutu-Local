@@ -113,6 +113,7 @@ class CRM_Ingredient {
 
     public static function display( $args, $target='screen' ) {
         if ( empty($args['ingredient']) ) return false;
+
         $out = '';
 
         // amount
@@ -154,7 +155,7 @@ class CRM_Ingredient {
         $hide_link_meta =  WPURP_Taxonomy_MetaData::get('ingredient', $taxonomy_slug, 'hide_link') == '1';
 		$hide_link = $taxonomy_slug?$hide_link_meta:true;
 
-        if ( !empty( $taxonomy ) && !$hide_link && !$target='print') {
+        if ( !empty( $taxonomy ) && !$hide_link && $target!='print') {
             $custom_link = WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy_slug, 'link' );
             if( isset($args['links']) &&  ($args['links'] == 'yes') ) {
 	            if( $custom_link !== false && $custom_link !== '' ) {

@@ -82,11 +82,12 @@ function foodiepro_get_icon_link($url, $slug, $id = '', $class = '', $title = ''
 
 function foodiepro_get_icon($main, $class='', $id='', $title='')
 {
-	if ($main=='remove') {
-		$html ='✘';
-	}
-	else {
-		$html = '<i class="' . foodiepro_get_icon_class($main) . ' ' . $class . '" id="' . $id . '" title="' . $title . '"></i>';
+	switch ($main) {
+		case 'remove':
+			$html ='✘';
+			break;
+		default :
+			$html = '<i class="' . foodiepro_get_icon_class($main) . ' ' . $class . '" id="' . $id . '" title="' . $title . '"></i>';
 	}
 	return $html;
 }
@@ -94,8 +95,14 @@ function foodiepro_get_icon($main, $class='', $id='', $title='')
 
 function foodiepro_get_icon_class($slug) {
 	switch ($slug) {
+		case 'checkbox':
+			$class = 'far fa-square';
+			break;
 		case 'delete':
 			$class = 'far fa-trash-alt';
+			break;
+		case 'hand':
+			$class = 'far fa-hand-paper';
 			break;
 		case 'spinner-arrows':
 			$class = 'fas fa-sync fa-spin';
@@ -105,12 +112,6 @@ function foodiepro_get_icon_class($slug) {
 			break;
 		case 'arrows-updown':
 			$class="fas fa-arrows-alt-v";
-			break;
-		case 'chevron-left':
-			$class = "fas fa-chevron-left";
-			break;
-		case 'chevron-right':
-			$class = "fas fa-chevron-right";
 			break;
 		case 'liked':
 			$class = "fas fa-thumbs-up";
@@ -122,7 +123,7 @@ function foodiepro_get_icon_class($slug) {
 			$class = "fas fa-volume-up";
 			break;
 		default:
-			$class= 'fas fa-' . $slug;//heart, book, thumbtack, edit, print
+			$class= 'fas fa-' . $slug;//heart, book, thumbtack, edit, print, chevron-right, chevron-left, tag
 	}
 	return $class;
 }

@@ -3,7 +3,7 @@
     <h4 id="headline-general"><?php _e('General', 'crm'); ?></h4>
     <table class="recipe-form" id="recipe-general-form">
         <tr class="recipe-general-form-description">
-            <td class="recipe-general-form-label"><label for="recipe_description"><?php _e('Description', 'crm'); ?><?php if (in_array('recipe_description', $required_fields)) echo '<span class="required-field">*</span>'; ?></label></td>
+            <td class="recipe-general-form-label"><label for="recipe_description"><?php _e('Description', 'crm'); ?><?php if (in_array('recipe_content', $required_fields)) echo '<span class="required-field">*</span>'; ?></label></td>
             <td class="recipe-general-form-field">
                 <textarea class="recipe-description" name="recipe_content" id="recipe_description" rows="4" placeholder="<?php echo __('Provide general information about this recipe', 'crm'); ?>"><?php echo $recipe->output_description('form'); ?></textarea>
             </td>
@@ -243,10 +243,10 @@
     </table>
     <div class="buttons-box">
         <div class="button" id="ingredients-add-box">
-            <a href="#" id="ingredients-add" class="fa-before"><?php _e('Add an ingredient', 'crm'); ?></a>
+            <a href="#" id="ingredients-add"><?= foodiepro_get_icon('plus-circle') . __('Add an ingredient', 'crm'); ?></a>
         </div>
         <div class="button" id="ingredients-add-group-box">
-            <a href="#" id="ingredients-add-group" class="fa-before"><?php _e('Add an ingredient group', 'crm'); ?></a>
+            <a href="#" id="ingredients-add-group"><?= foodiepro_get_icon('plus-circle') . __('Add an ingredient group', 'crm'); ?></a>
         </div>
     </div>
     <p class="post-guidelines">
@@ -397,10 +397,10 @@
 
     <div class="buttons-box">
         <div class="button" id="ingredients-add-box">
-            <a href="#" id="instructions-add" class="fa-before"><?php _e('Add an instruction', 'crm'); ?></a>
+            <a href="#" id="instructions-add"><?= foodiepro_get_icon('plus-circle') . __('Add an instruction', 'crm'); ?></a>
         </div>
         <div class="button" id="ingredients-add-group-box">
-            <a href="#" id="instructions-add-group" class="fa-before"><?php _e('Add an instruction group', 'crm'); ?></a>
+            <a href="#" id="instructions-add-group"><?= foodiepro_get_icon('plus-circle') . __('Add an instruction group', 'crm'); ?></a>
         </div>
     </div>
     <p class="post-guidelines">

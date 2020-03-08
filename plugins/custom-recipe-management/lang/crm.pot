@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2020-03-08 11:53+0100\n"
+"POT-Creation-Date: 2020-03-08 23:49+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -216,7 +216,7 @@ msgstr ""
 msgid "other notices ignored"
 msgstr ""
 
-#: includes/class-crm-assets.php:30 includes/class-crm-assets.php:57
+#: includes/class-crm-assets.php:30 includes/class-crm-assets.php:58
 #: public/recipe-output/partials/print-template.php:66
 #: public/recipe-submission/partials/submission_form_ingredients_instructions.php:110
 msgid "Ingredients"
@@ -233,7 +233,7 @@ msgstr ""
 msgid "Courses"
 msgstr ""
 
-#: includes/class-crm-assets.php:31 includes/class-crm-assets.php:79
+#: includes/class-crm-assets.php:31 includes/class-crm-assets.php:80
 msgid "Course"
 msgstr ""
 
@@ -241,7 +241,7 @@ msgstr ""
 msgid "Occasions"
 msgstr ""
 
-#: includes/class-crm-assets.php:32 includes/class-crm-assets.php:104
+#: includes/class-crm-assets.php:32 includes/class-crm-assets.php:105
 msgid "Occasion"
 msgstr ""
 
@@ -249,7 +249,7 @@ msgstr ""
 msgid "Cuisines"
 msgstr ""
 
-#: includes/class-crm-assets.php:33 includes/class-crm-assets.php:88
+#: includes/class-crm-assets.php:33 includes/class-crm-assets.php:89
 msgid "Cuisine"
 msgstr ""
 
@@ -257,7 +257,7 @@ msgstr ""
 msgid "Diets"
 msgstr ""
 
-#: includes/class-crm-assets.php:34 includes/class-crm-assets.php:112
+#: includes/class-crm-assets.php:34 includes/class-crm-assets.php:113
 #: public/recipe-output/partials/screen-template.php:51
 msgid "Diet"
 msgstr ""
@@ -266,7 +266,7 @@ msgstr ""
 msgid "Seasons"
 msgstr ""
 
-#: includes/class-crm-assets.php:35 includes/class-crm-assets.php:96
+#: includes/class-crm-assets.php:35 includes/class-crm-assets.php:97
 msgid "Season"
 msgstr ""
 
@@ -290,208 +290,212 @@ msgid "Recipe Title"
 msgstr ""
 
 #: includes/class-crm-assets.php:55
-msgid "Recipe Course"
+msgid "Recipe Description"
 msgstr ""
 
 #: includes/class-crm-assets.php:56
+msgid "Recipe Course"
+msgstr ""
+
+#: includes/class-crm-assets.php:57
 msgid "Recipe Difficulty"
 msgstr ""
 
-#: includes/class-crm-assets.php:58
+#: includes/class-crm-assets.php:59
 msgid "Number of Servings"
 msgstr ""
 
-#: includes/class-crm-assets.php:59
+#: includes/class-crm-assets.php:60
 msgid "Preparation Time"
 msgstr ""
 
-#: includes/class-crm-assets.php:71
+#: includes/class-crm-assets.php:72
 msgid "Keywords"
 msgstr ""
 
-#: includes/class-crm-assets.php:120
+#: includes/class-crm-assets.php:121
 msgid "Difficulty"
-msgstr ""
-
-#: includes/class-crm-assets.php:129
-msgctxt "recipe"
-msgid "Post Title"
 msgstr ""
 
 #: includes/class-crm-assets.php:130
 msgctxt "recipe"
-msgid "Edit Post"
+msgid "Post Title"
 msgstr ""
 
 #: includes/class-crm-assets.php:131
 msgctxt "recipe"
-msgid "Delete Post"
+msgid "Edit Post"
 msgstr ""
 
 #: includes/class-crm-assets.php:132
 msgctxt "recipe"
-msgid "New Post"
+msgid "Delete Post"
 msgstr ""
 
 #: includes/class-crm-assets.php:133
 msgctxt "recipe"
-msgid "Write your new post on this page."
+msgid "New Post"
 msgstr ""
 
 #: includes/class-crm-assets.php:134
+msgctxt "recipe"
+msgid "Write your new post on this page."
+msgstr ""
+
+#: includes/class-crm-assets.php:135
 msgctxt "recipe"
 msgid ""
 "You can then choose to save it as draft, or to publish it. Once approved, it "
 "will be visible to others according to your visibility preferences."
 msgstr ""
 
-#: includes/class-crm-assets.php:135
+#: includes/class-crm-assets.php:136
 msgctxt "recipe"
 msgid "Edit your existing post on this page."
 msgstr ""
 
-#: includes/class-crm-assets.php:136
+#: includes/class-crm-assets.php:137
 msgctxt "recipe"
 msgid ""
 "You can then choose to save it as draft, or to publish it. Once approved, it "
 "wil be visible to others according to your visibility preferences."
 msgstr ""
 
-#: includes/class-crm-assets.php:137
+#: includes/class-crm-assets.php:138
 #, php-format
 msgctxt "recipe"
 msgid "Post saved as <a href=\"%s\">a draft</a>."
 msgstr ""
 
-#: includes/class-crm-assets.php:138
+#: includes/class-crm-assets.php:139
 msgctxt "recipe"
 msgid ""
 "It will not be visible on the site, but you can edit it at any time and submit "
 "it later."
 msgstr ""
 
-#: includes/class-crm-assets.php:139
+#: includes/class-crm-assets.php:140
 #, php-format
 msgctxt "recipe"
 msgid "Back to <a href=\"%s\">my posts</a>."
 msgstr ""
 
-#: includes/class-crm-assets.php:140
+#: includes/class-crm-assets.php:141
 #, php-format
 msgctxt "recipe"
 msgid "Dear administrator, this post is now <a href=\"%s\">published</a>."
 msgstr ""
 
-#: includes/class-crm-assets.php:141
+#: includes/class-crm-assets.php:142
 msgctxt "recipe"
 msgid "Post submitted! Thank you, your post is now awaiting moderation."
 msgstr ""
 
-#: includes/class-crm-assets.php:142
+#: includes/class-crm-assets.php:143
 msgctxt "recipe"
 msgid ""
 "In order for your post to be published, please fill-in those required fields:"
 msgstr ""
 
-#: includes/class-crm-assets.php:143
+#: includes/class-crm-assets.php:144
 msgctxt "recipe"
 msgid "You have no posts yet."
 msgstr ""
 
-#: includes/class-crm-assets.php:144
+#: includes/class-crm-assets.php:145
 msgctxt "recipe"
 msgid "Your post just got published !"
 msgstr ""
 
-#: includes/class-crm-assets.php:145
+#: includes/class-crm-assets.php:146
 #, php-format
 msgctxt "recipe"
 msgid "Greetings, your post <a href=\"%s\">%s</a> just got published !"
 msgstr ""
 
-#: includes/class-crm-assets.php:146
+#: includes/class-crm-assets.php:147
 #, php-format
 msgctxt "recipe"
 msgid ""
 "It is visible on the website, and appears on <a href=\"%s\">your blog</a>."
 msgstr ""
 
-#: includes/class-crm-assets.php:147
+#: includes/class-crm-assets.php:148
 #, php-format
 msgctxt "recipe"
 msgid "%s commented one of your posts"
 msgstr ""
 
-#: includes/class-crm-assets.php:148
+#: includes/class-crm-assets.php:149
 #, php-format
 msgctxt "recipe"
 msgid "%s added a comment to your post <a href=\"%s\">%s</a> :"
 msgstr ""
 
-#: includes/class-crm-assets.php:213
+#: includes/class-crm-assets.php:214
 msgctxt "recipe"
 msgid "Are you sure you want to delete this post :"
 msgstr ""
 
-#: includes/class-crm-assets.php:274
+#: includes/class-crm-assets.php:275
 msgid "Read previous step"
 msgstr ""
 
-#: includes/class-crm-assets.php:275
+#: includes/class-crm-assets.php:276
 msgid "Read next step"
 msgstr ""
 
-#: includes/class-crm-assets.php:276
+#: includes/class-crm-assets.php:277
 msgid "Read this step again"
 msgstr ""
 
-#: includes/class-crm-assets.php:277
+#: includes/class-crm-assets.php:278
 msgid "Pause reading"
 msgstr ""
 
-#: includes/class-crm-assets.php:278
+#: includes/class-crm-assets.php:279
 msgid "Continue reading"
 msgstr ""
 
-#: includes/class-crm-assets.php:279
+#: includes/class-crm-assets.php:280
 msgid "Stop reading and close player"
 msgstr ""
 
-#: includes/class-crm-assets.php:400
+#: includes/class-crm-assets.php:401
 #, php-format
 msgid "Authorized file formats are : %s"
 msgstr ""
 
-#: includes/class-crm-assets.php:402
+#: includes/class-crm-assets.php:403
 #, php-format
 msgid "The maximum file size is %s kB"
 msgstr ""
 
-#: includes/class-crm-assets.php:403
+#: includes/class-crm-assets.php:404
 msgid "Do you really want to delete this image ?"
 msgstr ""
 
-#: includes/class-crm-assets.php:404
+#: includes/class-crm-assets.php:405
 msgid "Do you really want to delete this ingredient ?"
 msgstr ""
 
-#: includes/class-crm-assets.php:405
+#: includes/class-crm-assets.php:406
 msgid "Do you really want to delete this instruction ?"
 msgstr ""
 
-#: includes/class-crm-assets.php:406
+#: includes/class-crm-assets.php:407
 msgid ""
 "Do you really want to delete this group ?\\n(Instructions below will be "
 "preserved)"
 msgstr ""
 
-#: includes/class-crm-assets.php:407
+#: includes/class-crm-assets.php:408
 msgid ""
 "Do you really want to delete this group ?\\n(Ingredients below will be "
 "preserved)"
 msgstr ""
 
-#: public/recipe-output/class-crm-output.php:220
+#: public/recipe-output/class-crm-output.php:216
 msgid "Read this step aloud"
 msgstr ""
 
@@ -544,12 +548,12 @@ msgstr ""
 msgid "Harvest Period"
 msgstr ""
 
-#: public/recipe-output/helpers/class-crm-ingredient.php:147
+#: public/recipe-output/helpers/class-crm-ingredient.php:148
 msgctxt "vowel"
 msgid "of "
 msgstr ""
 
-#: public/recipe-output/helpers/class-crm-ingredient.php:149
+#: public/recipe-output/helpers/class-crm-ingredient.php:150
 msgctxt "consonant"
 msgid "of "
 msgstr ""
@@ -572,11 +576,11 @@ msgstr ""
 msgid "Add to Shopping List"
 msgstr ""
 
-#: public/recipe-output/helpers/class-crm-shortcodes.php:27
+#: public/recipe-output/helpers/class-crm-shortcodes.php:26
 msgid "Read out loud"
 msgstr ""
 
-#: public/recipe-output/helpers/class-crm-shortcodes.php:119
+#: public/recipe-output/helpers/class-crm-shortcodes.php:118
 msgid "Click to Start Timer"
 msgstr ""
 
@@ -605,7 +609,7 @@ msgid "Instructions"
 msgstr ""
 
 #: public/recipe-output/partials/print-template.php:81
-#: public/recipe-output/partials/screen-template.php:149
+#: public/recipe-output/partials/screen-template.php:153
 #: public/recipe-submission/partials/submission_form_ingredients_instructions.php:195
 #: public/recipe-submission/partials/submission_form_ingredients_instructions.php:196
 #: public/recipe-submission/partials/submission_form_ingredients_instructions.php:232
@@ -658,7 +662,7 @@ msgstr ""
 msgid "Decrease servings"
 msgstr ""
 
-#: public/recipe-output/partials/screen-template.php:124
+#: public/recipe-output/partials/screen-template.php:126
 msgid "Increase servings"
 msgstr ""
 

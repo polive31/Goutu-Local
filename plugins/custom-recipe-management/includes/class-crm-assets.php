@@ -52,6 +52,7 @@ class CRM_Assets {
 	public function setup_CPM_required( $required ) {
 		$required['recipe']= array(
 			'recipe_title'			=> __('Recipe Title','crm'),
+			'recipe_content'		=> __('Recipe Description','crm'),
 			'recipe_course' 		=> __('Recipe Course', 'crm'),
 			'recipe_difficult' 		=> __('Recipe Difficulty', 'crm'),
 			'recipe_ingredients' 	=> __('Ingredients', 'crm'),

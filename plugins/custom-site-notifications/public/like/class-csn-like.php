@@ -96,7 +96,7 @@ class CSN_Like
 
 
 
-            /* AJAX CALLBACKS
+            /* AJAX CALLBACK
             ----------------------------------------------------------------------*/
 
             public function ajax_like_post()
@@ -125,6 +125,7 @@ class CSN_Like
                     $this->display_like($count, get_post_type($post_id));
                     // echo sprintf(__('%s cooked', 'foodiepro'), $count);
                     update_post_meta($post_id, 'liking_users', $liking_users);
+                    update_post_meta($post_id, 'like_count', $count);
                     do_action('csn_after_post_like', $user_id, $post_id);
                 } else {
                     // echo __('Please refresh the page before','foodiepro');
@@ -253,7 +254,7 @@ class CSN_Like
         public function add_default_like_count($post_ID)
         {
             if (!wp_is_post_revision($post_ID)) {
-                add_post_meta($post_ID, 'like_count', '0');
+                update_post_meta($post_ID, 'like_count', '0');
             }
         }
 

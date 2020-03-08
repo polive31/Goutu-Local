@@ -274,19 +274,9 @@ td.post-general-form-label {
   padding: 10px;
 }
 
-/* .delete-button span.fa-before:before {
-  content: "\f2ed";
-  color: #585858;
-  font-weight: 400;
-  font-size: 20px;
-} */
-
-
 .delete-button:hover {
   color: #d7641d;
 }
-
-
 
 #post-form-buttons {
   display: inline-block;
@@ -295,53 +285,6 @@ td.post-general-form-label {
   width: 100%;
   text-align: right;
 }
-/*
-#post-form-buttons .formbutton {
-  display: inline-block;
-  cursor: pointer;
-  padding: 0px 10px;
-  margin: 10px;
-  background-color: #505050;
-  color: #FFF;
-  font-size: 16px;
-  border-radius: 10px;
-  transition: background-color 0.5s ease-in-out;
-}
-
-#post-form-buttons .formbutton:before {
-  font-size: 26px;
-  padding: 0 5px;
-  vertical-align: middle;
-}
-
-#post-form-buttons .formbutton span {
-  text-transform: uppercase;
-  padding: 5px 10px;
-  background: transparent;
-  color: #FFF;
-  font-family: Oswald, sans-serif;
-  vertical-align: middle;
-}
-
-#post-form-buttons .formbutton:hover {
-  background-color: #000;
-}
-
-#post-form-buttons .formbutton#draft:before {
-  content: "\f0c7";
-}
-
-#post-form-buttons .formbutton#publish:before {
-  content: "\f0ee";
-}
-
-#post-form-buttons .formbutton#preview:before {
-  content: "\f002";
-}
-
-#post-form-buttons .formbutton#edit:before {
-  content: "\f044";
-} */
 
 .buttons-box {
   float: left;
@@ -357,26 +300,13 @@ td.post-general-form-label {
   transition: background-color ease-in-out 0.5s;
 }
 
-label.add-image-button {
-  margin: 2px;
-}
-
-
 input.post_thumbnail_image:hover {
   background-color: #7b7b7b;
   color: #ffffff !important;
 }
 
-label.add-image-button:hover,
 .button:hover {
   background-color: #b2b2b2;
-
-}
-
-label.add-image-button:before,
-.button a:before {
-  content: "\f055";
-  padding: 0 10px;
 }
 
 #custom_post_submission_form a.black-button {

@@ -56,7 +56,7 @@ class CRM_Favorite
             $link_url = '#';
             $this->class_id .= ' logged-in';
             $onclick = "";
-            $favorites_link = do_shortcode('[permalink slug="' . self::$FAVSLUG . '"]');
+            $favorites_link = do_shortcode('[permalink slug="' . self::$FAVSLUG . '" target="_blank"]');
         }
 
         $favlist = $this->getfav($recipe->ID());

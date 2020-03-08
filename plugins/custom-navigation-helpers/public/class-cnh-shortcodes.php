@@ -418,11 +418,14 @@ class CNH_Shortcodes {
 			'wp' 	=> false, // home, login, register
 			'user' 	=> false, // current, view, author, any user ID
 			'peepso' => false, // members, register
+
 			/* Display parameters */
 			'class' => '',
 			'display' => false, // archive, profile
 			'type' => 'post', // post type : post, recipe OR peepso profile tab : about, activity...
 			'text' 	=> false,  // html link is output if not empty
+			'target' 	=> '',  // link target
+
 			/* Google Analytics parameters */
 			'data' 	=> false, // "attr1 val1 attr2 val2  ..." separate with spaces
 			'ga' 	=> false, // ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue] ); separate by spaces
@@ -503,7 +506,7 @@ class CNH_Shortcodes {
 		}
 
 		if ( $content || $text )
-			return '<a class="' . $class . '" rel="' . $rel . '" id="' . $id . '" ' . $this->get_data( $data ) . ' href="' . $url . '" onclik="' . $this->get_ga( $ga ) . '">' . sprintf( $text . $content, $token ) . '</a>';
+			return '<a class="' . $class . '" rel="' . $rel . '" id="' . $id . '" ' . $this->get_data( $data ) . ' href="' . $url . '" target="' . $target . '" onclik="' . $this->get_ga( $ga ) . '">' . sprintf( $text . $content, $token ) . '</a>';
 		else
 			return $url;
 	}

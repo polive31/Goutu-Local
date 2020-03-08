@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2020-03-08 11:53+0100\n"
-"PO-Revision-Date: 2020-03-08 11:55+0100\n"
+"PO-Revision-Date: 2020-03-08 13:02+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -521,17 +521,17 @@ msgstr "Retirer de mon carnet"
 #: public/recipe-output/helpers/class-crm-favorite.php:34
 #, php-format
 msgid "In my <a href=\"%s\">favorites</a>"
-msgstr "Dans mes <a href=\"%s\">recettes favorites</a>"
+msgstr "Dans mes <a href=\"%s\" target=\"_blank\">recettes favorites</a>"
 
 #: public/recipe-output/helpers/class-crm-favorite.php:35
 #, php-format
 msgid "In my <a href=\"%s\">wishlist</a>"
-msgstr "Dans mes <a href=\"%s\">recettes à essayer</a>"
+msgstr "Dans mes <a href=\"%s\" target=\"_blank\">recettes à essayer</a>"
 
 #: public/recipe-output/helpers/class-crm-favorite.php:36
 #, php-format
 msgid "Add to my <a href=\"%s\">favorites</a>"
-msgstr "Ajouter à mon <a href=\"%s\">carnet</a>"
+msgstr "Ajouter à mon <a href=\"%s\" target=\"_blank\">carnet</a>"
 
 #: public/recipe-output/helpers/class-crm-favorite.php:73
 msgid "Cookbook"

@@ -315,7 +315,7 @@ class CRM_Assets {
 			'deps' 		=> array(
 				'jquery',
 				'crm-fraction',
-				'crm-print_button',
+				// 'crm-print_button',
 			),
 			'data' 		=> array(
 				'name' 				=> 'wpurp_servings',

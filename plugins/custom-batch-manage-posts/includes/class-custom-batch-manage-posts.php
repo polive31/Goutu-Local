@@ -18,10 +18,10 @@ class Custom_Batch_Manage_Posts
 		add_action('wp_enqueue_scripts',		array( $Public, 'init_scripts'));
 
 
-		// $Post_Meta = new CBMP_Post_Meta();
-		// add_action("wp_ajax_ManageMeta", 			array($Post_Meta, "ajax_batch_manage_meta"));
-		// add_action("wp_ajax_nopriv_ManageMeta", 		array($Post_Meta, "ajax_batch_manage_meta"));
-		// add_shortcode('batch-manage-meta', 			array($Post_Meta, 'batch_manage_meta_shortcode'));
+		$Post_Meta = new CBMP_Post_Meta();
+		add_action("wp_ajax_ManageMeta", 				array($Post_Meta, "ajax_batch_manage_meta"));
+		add_action("wp_ajax_nopriv_ManageMeta", 		array($Post_Meta, "ajax_batch_manage_meta"));
+		add_shortcode('batch-manage-post-meta', 		array($Post_Meta, 'batch_manage_meta_shortcode'));
 
 		$Tax_Meta = new CBMP_Taxonomy_Meta();
 		add_action("wp_ajax_ManageTaxMeta", 			array($Tax_Meta, "ajax_batch_manage_tax_meta"));

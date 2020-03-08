@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2020-03-07 20:07+0100\n"
-"PO-Revision-Date: 2020-03-07 20:07+0100\n"
+"POT-Creation-Date: 2020-03-08 21:07+0100\n"
+"PO-Revision-Date: 2020-03-08 21:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -627,38 +627,42 @@ msgstr ""
 msgid "Displays a dropdown list allowing to sort posts"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:39
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:37
 msgid "Sort"
 msgstr "Trier"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:62
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:61
 msgid "Select sort order..."
 msgstr "Trier les recettes par..."
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:63
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:62
 msgid "Title : ascending"
 msgstr "Titre : de A à Z"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:64
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:63
 msgid "Title : descending"
 msgstr "Titre : de Z à A"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:67
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:66
 #: themes/foodiepro-2.1.8/peepso/blogposts/blogposts.php:19
 #: themes/foodiepro-2.1.8/peepso/photos/photos.php:47
 #: themes/foodiepro-2.1.8/peepso/videos/videos.php:7
 msgid "Newest first"
 msgstr "Les plus récentes"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:72
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:71
 msgid "Comment count"
 msgstr "Commentaires"
 
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:75
+msgid "Best rated"
+msgstr "Les mieux notées"
+
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:76
-msgid "Rating"
+msgid "Most liked"
 msgstr "Les plus populaires"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:107
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:109
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:110
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:78
 #: plugins/custom-navigation-helpers/widgets/taxonomy-search-widget.php:113
@@ -668,7 +672,7 @@ msgstr "Les plus populaires"
 msgid "New title"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:111
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:113
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:123
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:86
 #: plugins/custom-navigation-helpers/widgets/taxonomy-search-widget.php:117
@@ -1135,16 +1139,16 @@ msgstr "Publié le %s par %s<span id=\"username\">%s</span>"
 msgid "Share on "
 msgstr " "
 
-#: plugins/custom-post-management/custom-post-template/partials/post_toolbar.php:18
+#: plugins/custom-post-management/custom-post-template/partials/post_toolbar.php:19
 #: plugins/custom-recipe-management/public/recipe-output/partials/recipe-toolbar.php:73
 msgid "Print"
 msgstr "Imprimer"
 
-#: plugins/custom-post-management/custom-post-template/partials/post_toolbar.php:22
+#: plugins/custom-post-management/custom-post-template/partials/post_toolbar.php:23
 msgid "Print this post"
 msgstr "Imprimer cet article"
 
-#: plugins/custom-post-management/custom-post-template/partials/post_toolbar.php:33
+#: plugins/custom-post-management/custom-post-template/partials/post_toolbar.php:34
 #: plugins/custom-recipe-management/public/recipe-output/partials/recipe-toolbar.php:88
 msgid "Share"
 msgstr "Partager"
@@ -1526,6 +1530,10 @@ msgstr "Plat"
 msgid "Choose from the most used"
 msgstr ""
 
+#: plugins/custom-recipe-management/admin/helpers/class-crm-notices.php:34
+msgid "other notices ignored"
+msgstr ""
+
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:30
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:57
 #: plugins/custom-recipe-management/public/recipe-output/partials/print-template.php:66
@@ -1764,6 +1772,22 @@ msgstr "Etes-vous sûr de vouloir supprimer cet ingrédient ?"
 msgid "Do you really want to delete this instruction ?"
 msgstr "Etes-vous sûr de vouloir supprimer cette instruction ?"
 
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:406
+#, fuzzy
+#| msgid "Do you really want to delete this instruction ?"
+msgid ""
+"Do you really want to delete this group ?\\n(Instructions below will be "
+"preserved)"
+msgstr "Etes-vous sûr de vouloir supprimer cette instruction ?"
+
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:407
+#, fuzzy
+#| msgid "Do you really want to delete this ingredient ?"
+msgid ""
+"Do you really want to delete this group ?\\n(Ingredients below will be "
+"preserved)"
+msgstr "Etes-vous sûr de vouloir supprimer cet ingrédient ?"
+
 #: plugins/custom-recipe-management/public/recipe-output/class-crm-output.php:216
 msgid "Read this step aloud"
 msgstr "Lire cette instruction à haute voix"
@@ -1819,12 +1843,12 @@ msgstr "Aucune recette trouvée."
 msgid "Harvest Period"
 msgstr "Période de consommation idéale"
 
-#: plugins/custom-recipe-management/public/recipe-output/helpers/class-crm-ingredient.php:147
+#: plugins/custom-recipe-management/public/recipe-output/helpers/class-crm-ingredient.php:148
 msgctxt "vowel"
 msgid "of "
 msgstr "d'"
 
-#: plugins/custom-recipe-management/public/recipe-output/helpers/class-crm-ingredient.php:149
+#: plugins/custom-recipe-management/public/recipe-output/helpers/class-crm-ingredient.php:150
 msgctxt "consonant"
 msgid "of "
 msgstr "de "
@@ -1849,11 +1873,11 @@ msgstr "Ajouter à ma <a href=\"%s\">liste de courses</a>"
 msgid "Add to Shopping List"
 msgstr "Courses"
 
-#: plugins/custom-recipe-management/public/recipe-output/helpers/class-crm-shortcodes.php:27
+#: plugins/custom-recipe-management/public/recipe-output/helpers/class-crm-shortcodes.php:26
 msgid "Read out loud"
 msgstr "Lire à haute voix"
 
-#: plugins/custom-recipe-management/public/recipe-output/helpers/class-crm-shortcodes.php:119
+#: plugins/custom-recipe-management/public/recipe-output/helpers/class-crm-shortcodes.php:118
 msgid "Click to Start Timer"
 msgstr "Cliquez pour lancer le minuteur"
 
@@ -1884,7 +1908,7 @@ msgid "Instructions"
 msgstr "Instructions principales"
 
 #: plugins/custom-recipe-management/public/recipe-output/partials/print-template.php:81
-#: plugins/custom-recipe-management/public/recipe-output/partials/screen-template.php:149
+#: plugins/custom-recipe-management/public/recipe-output/partials/screen-template.php:153
 #: plugins/custom-recipe-management/public/recipe-submission/partials/submission_form_ingredients_instructions.php:195
 #: plugins/custom-recipe-management/public/recipe-submission/partials/submission_form_ingredients_instructions.php:196
 #: plugins/custom-recipe-management/public/recipe-submission/partials/submission_form_ingredients_instructions.php:232
@@ -1925,7 +1949,7 @@ msgstr "Pour "
 msgid "Decrease servings"
 msgstr "Réduire les quantités"
 
-#: plugins/custom-recipe-management/public/recipe-output/partials/screen-template.php:124
+#: plugins/custom-recipe-management/public/recipe-output/partials/screen-template.php:126
 msgid "Increase servings"
 msgstr "Augmenter les quantités"
 
@@ -1989,6 +2013,20 @@ msgstr "Ingrédients principaux"
 #| msgid "Main Ingredients"
 msgid "Format as Ingredient"
 msgstr "Ingrédients principaux"
+
+#: plugins/custom-recipe-management/public/recipe-submission/helpers/class-crm-recipe-save.php:101
+msgid "star"
+msgstr ""
+
+#: plugins/custom-recipe-management/public/recipe-submission/helpers/class-crm-recipe-save.php:101
+msgid "stars"
+msgstr ""
+
+#: plugins/custom-recipe-management/public/recipe-submission/helpers/class-crm-recipe-save.php:111
+#, fuzzy
+#| msgid "Personal data"
+msgid "Update the Nutritional Information"
+msgstr "Données personnelles"
 
 #: plugins/custom-recipe-management/public/recipe-submission/partials/submission_form_ingredients_instructions.php:3
 msgid "General"
@@ -3737,6 +3775,9 @@ msgstr "Ces recettes pourraient également vous intéresser..."
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
 
+#~ msgid "Rating"
+#~ msgstr "Les plus populaires"
+
 #, php-format
 #~ msgctxt "generic-plural"
 #~ msgid "All posts from %s"
@@ -4020,11 +4061,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 #~| msgid "Related Recipes"
 #~ msgid "Add Recipe Box"
 #~ msgstr "Ces recettes pourraient également vous intéresser..."
-
-#, fuzzy
-#~| msgid "Personal data"
-#~ msgid "Update the Nutritional Information"
-#~ msgstr "Données personnelles"
 
 #, fuzzy
 #~| msgid "Related Recipes"

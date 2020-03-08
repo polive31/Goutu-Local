@@ -29,13 +29,11 @@ public function widget( $args, $instance ) {
 
 	/* Do not display in the case of a WPURP dropdown search widget result */
 	$url = $_SERVER["REQUEST_URI"];
-	if (strpos($url, 'wpurp-search')) return '';
 
 	$title = apply_filters( 'widget_title', $instance['title'] );
 	// before and after widget arguments are defined by themes
 	echo $args['before_widget'];
 	//if ( ! empty( $title ) )
-	$search_term='';
 	echo $args['before_title'] . __('Sort', 'foodiepro') . $args['after_title'];
 	// if ( is_tax() )
 	// 	echo $args['before_title'] . __('Sort recipes', 'foodiepro') . $args['after_title'];
@@ -45,10 +43,11 @@ public function widget( $args, $instance ) {
 	// 	echo $args['before_title'] . __('Sort results', 'foodiepro') . $args['after_title'];
 	// Start of widget code
 	// else {
+	$search_term='?';
 	if ( is_search() ) {
-		$search_term = get_search_query();
-		if ( !empty( $search_term ) )
-			$search_term = 's=' . $search_term . '&';
+		$squery = get_search_query();
+		if ( !empty($squery ) )
+			$search_term .= 's=' . $squery . '&';
 	}
 
 	$orderby = get_query_var( 'orderby', false );
@@ -60,22 +59,23 @@ public function widget( $args, $instance ) {
 	<!-- <div class="dropdown-select"> -->
 	<select name="sort_dropdown" id="sort_dropdown" class="dropdown-select postform">
 	<option value="none" class="separator"><?php echo __('Select sort order...', 'foodiepro');?></option>
-	<option class="level-0" <?= ($orderby=='title'&&$order=='ASC')?'selected':''; ?> value="?<?php echo $search_term;?>orderby=title&order=ASC"><?php echo __('Title : ascending', 'foodiepro');?></option>
-	<option class="level-0" <?= ($orderby=='title'&&$order=='DESC')?'selected':''; ?> value="?<?php echo $search_term;?>orderby=title&order=DESC"><?php echo __('Title : descending', 'foodiepro');?></option>
-	<!-- <option class="level-0" value="' . $search_prefix . 'orderby=author_name">'. __('Author', 'foodiepro') . '</option> -->
-	<!-- <option class="level-0 separator" value="author&order=ASC">'. __('Author : descending', 'foodiepro') . '</option> -->
-	<option class="level-0" <?= ($orderby=='date'&&$order=='DESC')?'selected':''; ?> value="?<?php echo $search_term;?>orderby=date&order=DESC"><?php echo __('Newest first', 'foodiepro');?></option>
-	<!-- <option disabled>───────────</option>-->
-	<!-- <option class="level-0 last" value="meta_value_num&order=DESC&meta_key=recipe_user_ratings_rating">'. __('Rating', 'foodiepro') . '</option>-->
 	<?php
 	if ( is_category() ) {?>
 		<option class="level-0 last" <?= ($orderby=='comment_count'&&$order=='DESC')?'selected':''; ?> value="<?php echo $search_term;?>orderby=comment_count&order=DESC"><?php echo __('Comment count', 'foodiepro');?></option>
 	<?php
 	}
-	else {?>
-		<option class="level-0 last" <?= ($orderby=='rating')?'selected':''; ?> value="<?php echo $search_term;?>orderby=rating"><?php echo __('Rating', 'foodiepro');?></option>'
+	else {//not a post so rating is applicable?>
+		<option class="level-0 last" <?= ($orderby=='rating')?'selected':''; ?> value="<?php echo $search_term;?>orderby=rating"><?php echo __('Best rated', 'foodiepro');?></option>'
+		<option class="level-0 last" <?= ($orderby=='like-count')?'selected':''; ?> value="<?php echo $search_term;?>orderby=like-count"><?php echo __('Most liked', 'foodiepro');?></option>'
 	<?php
 	}?>
+	<option class="level-0" <?= ($orderby=='title'&&$order=='ASC')?'selected':''; ?> value="<?php echo $search_term;?>orderby=title&order=ASC"><?php echo __('Title : ascending', 'foodiepro');?></option>
+	<option class="level-0" <?= ($orderby=='title'&&$order=='DESC')?'selected':''; ?> value="<?php echo $search_term;?>orderby=title&order=DESC"><?php echo __('Title : descending', 'foodiepro');?></option>
+	<!-- <option class="level-0" value="' . $search_prefix . 'orderby=author_name">'. __('Author', 'foodiepro') . '</option> -->
+	<!-- <option class="level-0 separator" value="author&order=ASC">'. __('Author : descending', 'foodiepro') . '</option> -->
+	<option class="level-0" <?= ($orderby=='date'&&$order=='DESC')?'selected':''; ?> value="<?php echo $search_term;?>orderby=date&order=DESC"><?php echo __('Newest first', 'foodiepro');?></option>
+	<!-- <option disabled>───────────</option>-->
+	<!-- <option class="level-0 last" value="meta_value_num&order=DESC&meta_key=recipe_user_ratings_rating">'. __('Rating', 'foodiepro') . '</option>-->
 	</select>
 	<!-- </div> -->
 
@@ -84,8 +84,10 @@ public function widget( $args, $instance ) {
 		(function() {
 			var dropdown=document.getElementById("sort_dropdown");
 			function onDropDownChange() {
+				console.log( 'Change detected on post sort dropdown !');
 				var choice = dropdown.options[dropdown.selectedIndex].value;
 				if ( choice != "none" ) {
+					console.log( 'Choice = ' + choice);
 					location.href="<?= esc_url( home_url(add_query_arg(array(),$wp->request)) ); ?>"+choice;
 				}
 			}

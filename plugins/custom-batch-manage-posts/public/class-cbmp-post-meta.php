@@ -16,11 +16,12 @@ class CBMP_Post_Meta {
 	public function batch_manage_meta_shortcode($atts)
 	{
 		$a = shortcode_atts(array(
-			'post-type' => 'recipe',
-			'tax' 		=> 'ingredient',
-			'key' 		=> 'month',
+			'post-type' => '',
+			'key' 		=> '',
+			'new-key' 	=> '',
 			'include' 	=> '', // tax term ids to include
-			'cmd' 		=> 'migrate', //add, replace, delete, rename
+			'post-count'=> '', // max post number to process
+			'cmd' 		=> 'read', //add, update, delete, rename
 		), $atts);
 
 		static $script_id; // allows several shortcodes on the same page
@@ -30,29 +31,31 @@ class CBMP_Post_Meta {
 
 		echo "<h3>BATCH MANAGE META SHORTCODE#" . $script_id . "</h3>";
 
-		$jsargs = create_ajax_arg_array($a, $script_name, $script_id);
+		$jsargs = CBMP_Helpers::create_ajax_arg_array($a, $script_name, $script_id);
 
 		wp_enqueue_script('ajax_call_batch_manage');
 		wp_localize_script('ajax_call_batch_manage', 'script' . $script_name . $script_id, $jsargs);
 
-		echo batch_manage_form($script_id, $script_name, $a['cmd']);
+		echo CBMP_Helpers::batch_manage_form($script_id, $script_name, $a['cmd']);
 	}
 
 
 	public function ajax_batch_manage_meta() {
 		// Shortcode parameters display
 
-		$key = get_ajax_arg('key');
-		$new_key = get_ajax_arg('new-key');
-		$post_type = get_ajax_arg('post-type');
-		$include = get_ajax_arg('include',__('Limit to posts'));
-		$value = get_ajax_arg('value');
-		$cmd = get_ajax_arg('cmd');
+		$key = CBMP_Helpers::get_ajax_arg('key');
+		$new_key = CBMP_Helpers::get_ajax_arg('new-key');
+		$post_type = CBMP_Helpers::get_ajax_arg('post-type');
+		$post_count = CBMP_Helpers::get_ajax_arg('post-count');
+		if (!$post_count) $post_count='';
+		$include = CBMP_Helpers::get_ajax_arg('include',__('Limit to posts'));
+		$value = CBMP_Helpers::get_ajax_arg('value');
+		$cmd = CBMP_Helpers::get_ajax_arg('cmd');
 
-		if ( !(is_secure('ManageMeta' . $cmd) ) ) exit;
+		if ( !(CBMP_Helpers::is_secure('ManageMeta' . $cmd) ) ) exit;
 
 		if ( is_array($value) )
-			$value = extractKeyValuePairs( $value );
+			$value = CBMP_Helpers::extractKeyValuePairs( $value );
 		// else
 		// 	$value = $a['value'];
 
@@ -69,7 +72,7 @@ class CBMP_Post_Meta {
 		}
 		$include = ($include=='all')?'':$include;
 
-		$posts = get_posts(array('include'=>$include, 'post_type'=> $post_type, 'post_status'=> 'publish', 'suppress_filters' => false, 'posts_per_page'=>-1));
+		$posts = get_posts(array('include'=>$include, 'post_type'=> $post_type, 'posts_per_page' => $post_count, 'post_status'=> 'publish', 'suppress_filters' => false, 'posts_per_page'=>-1));
 
 		foreach ($posts as $post) {
 
@@ -90,11 +93,16 @@ class CBMP_Post_Meta {
 						echo sprintf("Key %s not found in %s. Updated %s to '0'.",$key, $post->post_title, $new_key);
 					}
 						$new_value = get_post_meta($post->ID, $new_key, True);
-						PC::debug(array('Value for renamed key' => $new_value));
+						// PC::debug(array('Value for renamed key' => $new_value));
 					break;
-				case 'replace':
+				case 'update':
 					update_post_meta($post->ID, $key, $value);
 					echo sprintf("%s updated to %s in %s",$key,$value,$post->post_title) . "<br>"; //Prints updated after ran.
+					break;
+				case 'addcount':
+					$liking_users = is_array($meta_value)?count($meta_value):0;
+					echo sprintf("%s liking users in %s", $liking_users, $post->post_title) . "<br>"; //Prints updated after ran.
+					add_post_meta($post->ID, 'like_count', $liking_users, true);
 					break;
 				case 'delete':
 					echo sprintf("%s value for post %s : ",$key,$post->post_title); //Prints updated after ran.

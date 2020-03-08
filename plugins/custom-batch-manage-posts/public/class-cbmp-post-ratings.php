@@ -27,26 +27,26 @@ class CBMP_Post_Ratings {
 
 		echo "<h3>BATCH MIGRATE RATINGS SHORTCODE#" . $script_id . "</h3>";
 
-		$jsargs = create_ajax_arg_array($a, $script_name, $script_id);
+		$jsargs = CBMP_Helpers::create_ajax_arg_array($a, $script_name, $script_id);
 
 		wp_enqueue_script('ajax_call_batch_manage');
 		wp_localize_script('ajax_call_batch_manage', 'script' . $script_name . $script_id, $jsargs);
 
-		echo batch_manage_form($script_id, $script_name, $a['cmd']);
+		echo CBMP_Helpers::batch_manage_form($script_id, $script_name, $a['cmd']);
 	}
 
 	public function ajax_migrate_ratings() {
 
-		PC::debug( array('In AJAX MIGRATE RATINGS') );
+		// PC::debug( array('In AJAX MIGRATE RATINGS') );
 		echo "<p>Batch Migrate Ratings script started...</p>";
 
-		$post_type = get_ajax_arg('post-type');
-		$include = get_ajax_arg('include',__('Limit to posts','batch-manage-posts'));
+		$post_type = CBMP_Helpers::get_ajax_arg('post-type');
+		$include = CBMP_Helpers::get_ajax_arg('include',__('Limit to posts','batch-manage-posts'));
 
-		if ( !(is_secure('MigrateRatings' . 'migrate') ) ) exit;
+		if ( !(CBMP_Helpers::is_secure('MigrateRatings' . 'migrate') ) ) exit;
 
 
-		PC::debug( array('Nonce check PASSED') );
+		// PC::debug( array('Nonce check PASSED') );
 		//PC:debug( array('$value after explode : '=>$value) );
 
 
@@ -67,8 +67,8 @@ class CBMP_Post_Ratings {
 			if ( !empty($user_ratings) ) {
 				delete_post_meta($post->ID, 'user_ratings', '');
 
-				PC::debug( array('$Post title : '=> $post->post_title ) );
-				PC::debug( array('$user_ratings : '=> $user_ratings) );
+				// PC::debug( array('$Post title : '=> $post->post_title ) );
+				// PC::debug( array('$user_ratings : '=> $user_ratings) );
 
 				echo sprintf("Post : %s",$post->post_title);
 				echo "<br>";

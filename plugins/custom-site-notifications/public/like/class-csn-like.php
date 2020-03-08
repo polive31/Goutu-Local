@@ -162,88 +162,117 @@ class CSN_Like
 
             public function enqueue_scripts()
             {
-                if (!is_single()) return;
-                // wp_enqueue_script( 'custom-post-like', self::$PLUGIN_URI . '/assets/js/social-like-post.js', array( 'jquery' ), CHILD_THEME_VERSION, false );
-                custom_enqueue_script(
-                    'custom-post-like',
-                    'assets/js/social-like-post.js',
-                    CSN_Assets::plugin_url(),
-                    CSN_Assets::plugin_path(),
-                    array('jquery'),
-                    CHILD_THEME_VERSION,
-                    false
+            if (!is_single()) return;
+            // wp_enqueue_script( 'custom-post-like', self::$PLUGIN_URI . '/assets/js/social-like-post.js', array( 'jquery' ), CHILD_THEME_VERSION, false );
+            custom_enqueue_script(
+                'custom-post-like',
+                'assets/js/social-like-post.js',
+                CSN_Assets::plugin_url(),
+                CSN_Assets::plugin_path(),
+                array('jquery'),
+                CHILD_THEME_VERSION,
+                false
+            );
+            wp_localize_script(
+                'custom-post-like',
+                'custom_post_like',
+                array(
+                    'ajaxurl' => admin_url('admin-ajax.php'),
+                    'nonce' => wp_create_nonce('custom_post_like')
+                    )
                 );
-                wp_localize_script(
-                    'custom-post-like',
-                    'custom_post_like',
-                    array(
-                        'ajaxurl' => admin_url('admin-ajax.php'),
-                        'nonce' => wp_create_nonce('custom_post_like')
-                        )
-                    );
-                }
-
-                public static function is_liked_post($post_id)
-                {
-                    $user_id = is_user_logged_in() ? get_current_user_id() : self::get_user_ip();
-
-                    $liking_users = get_post_meta($post_id, 'liking_users', true);
-                    $liking_users = is_array($liking_users) ? $liking_users : array();
-
-                    return in_array($user_id, $liking_users);
-                }
-
-                public static function like_count($post_id)
-                {
-                    if (is_null($post_id)) return false;
-
-                    $liking_users = get_post_meta($post_id, 'liking_users', true);
-                    $liking_users = is_array($liking_users) ? $liking_users : array();
-
-                    return count($liking_users);
-                }
-
-                /* Get the user ip (from WP Beginner)
-                -------------------------------------------------------------*/
-                public static function get_user_ip()
-                {
-                    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-                        //check ip from share internet
-                        $ip = $_SERVER['HTTP_CLIENT_IP'];
-                    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-                        //to check ip is pass from proxy
-                        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-                    } else {
-                        $ip = $_SERVER['REMOTE_ADDR'];
-                    }
-                    return apply_filters('wpb_get_ip', $ip);
-                }
-
-                /* SHORTCODE
-                ----------------------------------------------------------------------*/
-                public function like_count_shortcode($atts)
-                {
-                    $a = shortcode_atts(array(
-                        'post'     => 'current', // defaults to current post otherwise post id given in this attribute
-                        'tag'     => 'span',
-                        'class' => 'like-count',
-                        'icon'     => true,
-                    ), $atts);
-
-                    if ($a['post'] == 'current')
-                    $post_id = get_the_id();
-                    else
-                    $post_id = intval($a['post']);
-
-                    $count = $this->like_count($post_id);
-
-                    if ($a['icon']) {
-                        $html = '<span class="like-count ' . ($count == 0 ? 'nolike' : '') . '" title="' . sprintf(_n('%s like', '%s likes', $count, 'foodiepro'), $count) . '"><i class="far fa-thumbs-up"></i>' . $count . '</span>';
-                    } else {
-                        $html = sprintf(_n('%s like', '%s likes', $count, 'foodiepro'), $count);
-                        $html = '<' . $a['tag'] . ' class="' . $a['class'] . '">' . $html . '</' . $a['tag'] . '>';
-                    }
-
-                    return $html;
-                }
             }
+
+            public static function is_liked_post($post_id)
+            {
+                $user_id = is_user_logged_in() ? get_current_user_id() : self::get_user_ip();
+
+                $liking_users = get_post_meta($post_id, 'liking_users', true);
+                $liking_users = is_array($liking_users) ? $liking_users : array();
+
+                return in_array($user_id, $liking_users);
+            }
+
+            public static function like_count($post_id)
+            {
+                if (is_null($post_id)) return false;
+
+                $liking_users = get_post_meta($post_id, 'liking_users', true);
+                $liking_users = is_array($liking_users) ? $liking_users : array();
+
+                return count($liking_users);
+            }
+
+            /* Get the user ip (from WP Beginner)
+            -------------------------------------------------------------*/
+            public static function get_user_ip()
+            {
+                if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+                    //check ip from share internet
+                    $ip = $_SERVER['HTTP_CLIENT_IP'];
+                } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+                    //to check ip is pass from proxy
+                    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+                } else {
+                    $ip = $_SERVER['REMOTE_ADDR'];
+                }
+                return apply_filters('wpb_get_ip', $ip);
+            }
+
+            /* SHORTCODE
+            ----------------------------------------------------------------------*/
+            public function like_count_shortcode($atts)
+            {
+                $a = shortcode_atts(array(
+                    'post'     => 'current', // defaults to current post otherwise post id given in this attribute
+                    'tag'     => 'span',
+                    'class' => 'like-count',
+                    'icon'     => true,
+                ), $atts);
+
+                if ($a['post'] == 'current')
+                $post_id = get_the_id();
+                else
+                $post_id = intval($a['post']);
+
+                $count = $this->like_count($post_id);
+
+                if ($a['icon']) {
+                    $html = '<span class="like-count ' . ($count == 0 ? 'nolike' : '') . '" title="' . sprintf(_n('%s like', '%s likes', $count, 'foodiepro'), $count) . '"><i class="far fa-thumbs-up"></i>' . $count . '</span>';
+                } else {
+                    $html = sprintf(_n('%s like', '%s likes', $count, 'foodiepro'), $count);
+                    $html = '<' . $a['tag'] . ' class="' . $a['class'] . '">' . $html . '</' . $a['tag'] . '>';
+                }
+
+                return $html;
+            }
+
+        /* New post submission callback
+        /* Add ratings default value (required for proper sorting in archives)
+        -------------------------------------------------------------*/
+        public function add_default_like_count($post_ID)
+        {
+            if (!wp_is_post_revision($post_ID)) {
+                add_post_meta($post_ID, 'like_count', '0');
+            }
+        }
+
+        /* ===========================================================================
+        /* ===================         ARCHIVE              =======================
+        /* =========================================================================== */
+
+        public function sort_entries_by_like_count($query)
+        {
+            // Select any archive. For custom post type use: is_post_type_archive( $post_type )
+            //if (is_archive() || is_search() ): => ne pas utiliser car r�sultats de recherche non relevants
+
+            $order = get_query_var('orderby', false);
+
+            if (($order == 'like-count')) {
+                $query->set('orderby', 'meta_value_num');
+                $query->set('meta_key', 'like_count');
+                $query->set('order', 'DESC');
+            }
+        }
+
+}

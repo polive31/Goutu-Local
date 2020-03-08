@@ -226,6 +226,7 @@ class CNH_Archive_Headline {
 
 
 	public function get_course_archive_title( $course, $subject='' ) {
+		$course = str_replace('-',' ', $course);
 		// Subject can be either season or author
 		$html=array(
 			'masculine'		=> array(
@@ -239,19 +240,14 @@ class CNH_Archive_Headline {
 				'none' 		=> _x('All %s','feminine','foodiepro'),
 			),
 		);
-		$gender = $this->gender($course);
+		$gender = $this->course_gender($course);
 		$context = foodiepro_check_initial($subject);
 		$string = $html[$gender][$context];
 		$title = sprintf( $string, $course, $subject );
 		return $title;
 	}
 
-	public function gender( $word ) {
-		$masculine = array(
-			'dessert',
-			'plat',
-			'aperitif',
-		);
+	public function course_gender( $word ) {
 		$feminine = array(
 			'soupe',
 			'boisson',
@@ -261,11 +257,8 @@ class CNH_Archive_Headline {
 		$word = remove_accents( $word );
 		if ( $word[-1]=='s') $word=substr($word, 0, -1);
 
-		$out=false;
-		if ( in_array( $word, $masculine ) ) {
-			$out = 'masculine';
-		}
-		elseif ( in_array( $word, $feminine) ) {
+		$out='masculine';
+		if ( in_array( $word, $feminine) ) {
 			$out = 'feminine';
 		}
 

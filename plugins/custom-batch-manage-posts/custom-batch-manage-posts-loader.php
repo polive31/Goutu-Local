@@ -25,9 +25,9 @@ require 'includes/class-custom-batch-manage-posts.php';
 require 'public/class-cbmp-public.php';
 require 'helpers/class-cbmp-helpers.php';
 // require 'includes/class-cbmp-comments.php';
-// require 'includes/class-cbmp-post-meta.php';
 // require 'includes/class-cbmp-post-ratings.php';
-require 'includes/class-cbmp-taxonomy-meta.php';
+require 'public/class-cbmp-post-meta.php';
+require 'public/class-cbmp-taxonomy-meta.php';
 
 
 /* Start plugin */

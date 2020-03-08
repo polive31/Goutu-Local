@@ -132,12 +132,12 @@
 						echo $html;
 					}
 					// Method "with custom function"
-					echo $this->custom_ingredients_list($recipe, '');
+					echo $this->custom_ingredients_list($recipe);
 					?>
 				</div>
 
 				<?php
-				echo $this->custom_instructions_list($recipe, '');
+				echo $this->custom_instructions_list($recipe);
 				?>
 			</div>
 

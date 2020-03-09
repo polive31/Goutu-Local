@@ -121,18 +121,14 @@ class CNH_Tags_Overlay {
 		  $currentSeason = "automne";
 		else
 		  $currentSeason = "hiver";
-
 		return $currentSeason;
 	}
 
 
 	public static function is_fest( $terms ) {
-
 		if ( empty($terms) || !$terms ) return false;
-
 		$currentMonth=DATE("m");
 		$slug = 'fetes';
-
 		foreach ($terms as $term) {
 			if ($term->slug == $slug) {
 				if ( $currentMonth==11 || $currentMonth==12 ) {
@@ -140,12 +136,15 @@ class CNH_Tags_Overlay {
 				}
 			}
 		}
+		return false;
 	}
 
 	public static function is_veg($terms) {
-		if ( empty($terms) || !$terms ) return false;
-		$isveg = $terms[0]->slug == 'vegetarien';
-		return $isveg;
+		if ( !is_array($terms) || empty($terms) || !$terms ) return false;
+		foreach ($terms as $term) {
+			if ($term->slug == 'vegetarien') return true;
+		}
+		return false;
 	}
 
 

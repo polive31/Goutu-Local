@@ -568,15 +568,27 @@ class CNH_Shortcodes {
 
 	public function get_dropdown_js($id, $tax_slug, $all_url) {
 		ob_start();
-		?>
 
+		global $wp;
+
+		$search_term = '?';
+		if (is_search()) {
+			$squery = get_search_query();
+			if (!empty($squery))
+				$search_term .= 's=' . $squery . '&';
+		}
+
+		$orderby = get_query_var('orderby', false);
+		$order = get_query_var('order', false);
+
+		?>
 		<script type='text/javascript'>
 			/* <![CDATA[ */
 			(function() {
 				var dropdown_<?= $id;?> = document.getElementById( "<?= esc_js( $id );?>" );
 				function on_<?= $id; ?>_Change() {
 					var choice = dropdown_<?= $id;?>.options[ dropdown_<?= $id;?>.selectedIndex ].value;
-					if ( choice !="none" ) {location.href = "<?= home_url() . '/?' . $tax_slug; ?>=" + choice};
+					if ( choice !="none" ) {location.href = "<?= esc_url(home_url(add_query_arg(array(), $wp->request))) . $search_term . $tax_slug . '='; ?>=" + choice};
 					if ( choice =="0" ) {location.href = "<?= $all_url; ?>"};
 				}
 				dropdown_<?= $id;?>.onchange = on_<?= $id;?>_Change;

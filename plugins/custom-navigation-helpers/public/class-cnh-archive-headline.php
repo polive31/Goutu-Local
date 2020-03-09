@@ -166,6 +166,9 @@ class CNH_Archive_Headline {
 				if (get_query_var('season',false) ) {
 					$term=get_query_var('season',false);
 				}
+				// elseif (get_query_var('diet', false)) {
+				// 	$term = sprintf(__('for a %s diet','crm'), get_query_var('diet', false));
+				// }
 				elseif ( !empty($_GET['author']) ) {
 					$user = get_user_by( 'slug', $_GET['author'] );
 					$user=PeepsoHelpers::get_user( $user->ID );

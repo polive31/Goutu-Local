@@ -76,6 +76,7 @@ class Taxonomy_Navigation_Widget extends WP_Widget
 			$title = $instance['title'];
 		else
 			$title = __('New title', 'foodiepro');
+
 		if (isset($instance['tax-list']))
 			$selected_tax = $instance['tax-list'];
 		else

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2020-03-08 21:07+0100\n"
+"POT-Creation-Date: 2020-03-09 09:31+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -449,82 +449,120 @@ msgctxt "consonant"
 msgid "All recipes containing %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:200
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:205
 msgid "Detailed Search Results"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:202
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:207
 #: themes/foodiepro-2.1.8/search.php:28
 #, php-format
 msgid "Search Results for %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:209
-#, php-format
-msgctxt "vowel"
-msgid "All recipes from %s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:210
-#, php-format
-msgctxt "consonant"
-msgid "All recipes from %s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:211
-msgid "All the recipes"
-msgstr ""
-
 #: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:214
 #, php-format
 msgctxt "vowel"
-msgid "All posts from %s"
+msgid "All recipes from %s"
 msgstr ""
 
 #: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:215
 #, php-format
 msgctxt "consonant"
-msgid "All posts from %s"
+msgid "All recipes from %s"
 msgstr ""
 
 #: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:216
+msgid "All the recipes"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:219
+#, php-format
+msgctxt "vowel"
+msgid "All posts from %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:220
+#, php-format
+msgctxt "consonant"
+msgid "All posts from %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:221
 msgid "All the posts"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:232
-#, php-format
-msgctxt "masculine-vowel"
-msgid "All %s from %s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:233
-#, php-format
-msgctxt "masculine-consonant"
-msgid "All %s from %s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:234
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:235
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:281
 #, php-format
 msgctxt "masculine"
 msgid "All %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:237
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:236
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:286
+#, php-format
+msgctxt "feminine"
+msgid "All %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:247
+#, php-format
+msgctxt "vowel"
+msgid "from %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:248
+#, php-format
+msgctxt "consonant"
+msgid "from %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:261
+#, php-format
+msgctxt "vegetarien"
+msgid "for %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:262
+#, php-format
+msgctxt "leger"
+msgid "for %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:263
+#, php-format
+msgctxt "sportif"
+msgid "for %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:264
+#, php-format
+msgctxt "sans-gluten"
+msgid "for %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:279
+#, php-format
+msgctxt "masculine-vowel"
+msgid "All %s from %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:280
+#, php-format
+msgctxt "masculine-consonant"
+msgid "All %s from %s"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:284
 #, php-format
 msgctxt "feminine-vowel"
 msgid "All %s from %s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:238
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:285
 #, php-format
 msgctxt "feminine-consonant"
 msgid "All %s from %s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:239
-#, php-format
-msgctxt "feminine"
-msgid "All %s"
 msgstr ""
 
 #: plugins/custom-navigation-helpers/public/class-cnh-rpwe-customizations.php:18
@@ -573,31 +611,31 @@ msgstr ""
 msgid "Select sort order..."
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:62
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:64
+msgid "Comment count"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:68
+msgid "Best rated"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:69
+msgid "Most liked"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:72
 msgid "Title : ascending"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:63
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:73
 msgid "Title : descending"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:66
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:76
 #: themes/foodiepro-2.1.8/peepso/blogposts/blogposts.php:19
 #: themes/foodiepro-2.1.8/peepso/photos/photos.php:47
 #: themes/foodiepro-2.1.8/peepso/videos/videos.php:7
 msgid "Newest first"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:71
-msgid "Comment count"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:75
-msgid "Best rated"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:76
-msgid "Most liked"
 msgstr ""
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:109
@@ -612,7 +650,7 @@ msgstr ""
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:113
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:123
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:86
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:87
 #: plugins/custom-navigation-helpers/widgets/taxonomy-search-widget.php:117
 #: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:122
 #: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:86
@@ -685,7 +723,7 @@ msgstr ""
 
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:25
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:31
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:79
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:80
 msgid "Course"
 msgstr ""
 
@@ -696,20 +734,20 @@ msgstr ""
 
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:29
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:34
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:112
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:113
 #: plugins/custom-recipe-management/public/recipe-output/partials/screen-template.php:51
 msgid "Diet"
 msgstr ""
 
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:30
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:35
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:96
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:97
 msgid "Season"
 msgstr ""
 
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:31
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:32
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:104
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:105
 msgid "Occasion"
 msgstr ""
 
@@ -721,7 +759,7 @@ msgstr ""
 msgid "Filter by "
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:92
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:93
 msgid "Dropdown taxonomy"
 msgstr ""
 
@@ -1062,19 +1100,19 @@ msgid "Are you sure you want to delete this post :"
 msgstr ""
 
 #: plugins/custom-post-management/includes/class-cpm-assets.php:143
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:400
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:401
 #, php-format
 msgid "Authorized file formats are : %s"
 msgstr ""
 
 #: plugins/custom-post-management/includes/class-cpm-assets.php:145
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:402
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:403
 #, php-format
 msgid "The maximum file size is %s kB"
 msgstr ""
 
 #: plugins/custom-post-management/includes/class-cpm-assets.php:146
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:403
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:404
 msgid "Do you really want to delete this image ?"
 msgstr ""
 
@@ -1198,7 +1236,7 @@ msgid "Categories"
 msgstr ""
 
 #: plugins/custom-post-management/includes/class-cpm-assets.php:195
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:71
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:72
 msgid "Keywords"
 msgstr ""
 
@@ -1409,7 +1447,7 @@ msgid "other notices ignored"
 msgstr ""
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:30
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:57
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:58
 #: plugins/custom-recipe-management/public/recipe-output/partials/print-template.php:66
 #: plugins/custom-recipe-management/public/recipe-submission/partials/submission_form_ingredients_instructions.php:110
 msgid "Ingredients"
@@ -1427,7 +1465,7 @@ msgid "Cuisines"
 msgstr ""
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:33
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:88
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:89
 msgid "Cuisine"
 msgstr ""
 
@@ -1451,184 +1489,188 @@ msgid "Recipe Title"
 msgstr ""
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:55
-msgid "Recipe Course"
+msgid "Recipe Description"
 msgstr ""
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:56
+msgid "Recipe Course"
+msgstr ""
+
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:57
 msgid "Recipe Difficulty"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:58
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:59
 msgid "Number of Servings"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:59
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:60
 msgid "Preparation Time"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:120
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:121
 msgid "Difficulty"
-msgstr ""
-
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:129
-msgctxt "recipe"
-msgid "Post Title"
 msgstr ""
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:130
 msgctxt "recipe"
-msgid "Edit Post"
+msgid "Post Title"
 msgstr ""
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:131
 msgctxt "recipe"
-msgid "Delete Post"
+msgid "Edit Post"
 msgstr ""
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:132
 msgctxt "recipe"
-msgid "New Post"
+msgid "Delete Post"
 msgstr ""
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:133
 msgctxt "recipe"
-msgid "Write your new post on this page."
+msgid "New Post"
 msgstr ""
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:134
+msgctxt "recipe"
+msgid "Write your new post on this page."
+msgstr ""
+
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:135
 msgctxt "recipe"
 msgid ""
 "You can then choose to save it as draft, or to publish it. Once approved, it "
 "will be visible to others according to your visibility preferences."
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:135
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:136
 msgctxt "recipe"
 msgid "Edit your existing post on this page."
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:136
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:137
 msgctxt "recipe"
 msgid ""
 "You can then choose to save it as draft, or to publish it. Once approved, it "
 "wil be visible to others according to your visibility preferences."
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:137
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:138
 #, php-format
 msgctxt "recipe"
 msgid "Post saved as <a href=\"%s\">a draft</a>."
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:138
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:139
 msgctxt "recipe"
 msgid ""
 "It will not be visible on the site, but you can edit it at any time and submit "
 "it later."
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:139
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:140
 #, php-format
 msgctxt "recipe"
 msgid "Back to <a href=\"%s\">my posts</a>."
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:140
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:141
 #, php-format
 msgctxt "recipe"
 msgid "Dear administrator, this post is now <a href=\"%s\">published</a>."
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:141
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:142
 msgctxt "recipe"
 msgid "Post submitted! Thank you, your post is now awaiting moderation."
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:142
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:143
 msgctxt "recipe"
 msgid ""
 "In order for your post to be published, please fill-in those required fields:"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:143
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:144
 msgctxt "recipe"
 msgid "You have no posts yet."
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:144
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:145
 msgctxt "recipe"
 msgid "Your post just got published !"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:145
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:146
 #, php-format
 msgctxt "recipe"
 msgid "Greetings, your post <a href=\"%s\">%s</a> just got published !"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:146
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:147
 #, php-format
 msgctxt "recipe"
 msgid ""
 "It is visible on the website, and appears on <a href=\"%s\">your blog</a>."
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:147
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:148
 #, php-format
 msgctxt "recipe"
 msgid "%s commented one of your posts"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:148
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:149
 #, php-format
 msgctxt "recipe"
 msgid "%s added a comment to your post <a href=\"%s\">%s</a> :"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:213
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:214
 msgctxt "recipe"
 msgid "Are you sure you want to delete this post :"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:274
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:275
 msgid "Read previous step"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:275
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:276
 msgid "Read next step"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:276
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:277
 msgid "Read this step again"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:277
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:278
 msgid "Pause reading"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:278
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:279
 msgid "Continue reading"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:279
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:280
 msgid "Stop reading and close player"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:404
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:405
 msgid "Do you really want to delete this ingredient ?"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:405
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:406
 msgid "Do you really want to delete this instruction ?"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:406
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:407
 msgid ""
 "Do you really want to delete this group ?\\n(Instructions below will be "
 "preserved)"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:407
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:408
 msgid ""
 "Do you really want to delete this group ?\\n(Ingredients below will be "
 "preserved)"
@@ -2087,24 +2129,24 @@ msgstr ""
 msgid "Do not like this post anymore"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/like/class-csn-like.php:141
+#: plugins/custom-site-notifications/public/like/class-csn-like.php:142
 msgid "I cooked it"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/like/class-csn-like.php:143
+#: plugins/custom-site-notifications/public/like/class-csn-like.php:144
 msgid "I like"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/like/class-csn-like.php:146
+#: plugins/custom-site-notifications/public/like/class-csn-like.php:147
 #, php-format
 msgid "%s cooked"
 msgid_plural "%s cooked"
 msgstr[0] ""
 msgstr[1] ""
 
-#: plugins/custom-site-notifications/public/like/class-csn-like.php:148
-#: plugins/custom-site-notifications/public/like/class-csn-like.php:241
-#: plugins/custom-site-notifications/public/like/class-csn-like.php:243
+#: plugins/custom-site-notifications/public/like/class-csn-like.php:149
+#: plugins/custom-site-notifications/public/like/class-csn-like.php:242
+#: plugins/custom-site-notifications/public/like/class-csn-like.php:244
 #, php-format
 msgid "%s like"
 msgid_plural "%s likes"

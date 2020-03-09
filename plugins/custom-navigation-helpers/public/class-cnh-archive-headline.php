@@ -162,19 +162,21 @@ class CNH_Archive_Headline {
 			}
 			elseif ( $query->taxonomy=='course' ) {
 				$course=get_query_var('course',false);
-				$term='';
+				$msg = $this->get_course_headline($course);
 				if (get_query_var('season',false) ) {
 					$term=get_query_var('season',false);
+					$msg .= ' ' . $this->get_of_season_author_title($term);
 				}
-				// elseif (get_query_var('diet', false)) {
-				// 	$term = sprintf(__('for a %s diet','crm'), get_query_var('diet', false));
-				// }
+				elseif (get_query_var('diet', false)) {
+					$term = get_query_var('diet', false);
+					$msg .= ' ' . $this->get_for_diet($term);
+				}
 				elseif ( !empty($_GET['author']) ) {
 					$user = get_user_by( 'slug', $_GET['author'] );
 					$user=PeepsoHelpers::get_user( $user->ID );
 					$term=PeepsoHelpers::get_field($user, "nicename");
+					$msg .= ' ' . $this->get_of_season_author_title($term);
 				}
-				$msg = $this->get_course_archive_title( $course, $term);
 			}
 			else
 				$msg = single_term_title('', false);
@@ -227,6 +229,47 @@ class CNH_Archive_Headline {
 		return $title;
 	}
 
+	public function get_course_headline( $course ) {
+		$course = str_replace('-',' ', $course);
+		$html=array(
+			'masculine'	=> _x('All %s','masculine','foodiepro'),
+			'feminine'	=> _x('All %s','feminine','foodiepro'),
+		);
+		$gender = $this->course_gender($course);
+		$string = $html[$gender];
+		$title = sprintf($string, $course);
+		return $title;
+	}
+
+	public function get_of_season_author_title($object) {
+		// Object can be either season or author
+		$html = array(
+			'vowel'		=> _x('from %s', 'vowel', 'foodiepro'),
+			'consonant'	=> _x('from %s', 'consonant', 'foodiepro'),
+		);
+		$context = foodiepro_check_initial($object);
+		$string = $html[$context];
+		$title = sprintf($string, $object);
+		return $title;
+	}
+
+	public function get_for_diet($diet)
+	{
+		return '';
+		// Object can be either season or author
+		$html = array(
+			'vegetarien'	=> 	_x('for %s', 'vegetarien', 'foodiepro'),
+			'leger'			=> 	_x('for %s', 'leger', 'foodiepro'),
+			'sportif'		=> 	_x('for %s', 'sportif', 'foodiepro'),
+			'sans-gluten'	=> 	_x('for %s', 'sans-gluten', 'foodiepro'),
+		);
+		// $keys=array_keys($html,$diet);
+		// $is_key=in_array($diet,$keys);
+		// if ($missing) return '';
+		$string = isset($html[$diet])?$html[$diet]:'';
+		$title = sprintf($string, $diet);
+		return $title;
+	}
 
 	public function get_course_archive_title( $course, $subject='' ) {
 		$course = str_replace('-',' ', $course);

@@ -588,7 +588,7 @@ class CNH_Shortcodes {
 				var dropdown_<?= $id;?> = document.getElementById( "<?= esc_js( $id );?>" );
 				function on_<?= $id; ?>_Change() {
 					var choice = dropdown_<?= $id;?>.options[ dropdown_<?= $id;?>.selectedIndex ].value;
-					if ( choice !="none" ) {location.href = "<?= esc_url(home_url(add_query_arg(array(), $wp->request))) . $search_term . $tax_slug . '='; ?>=" + choice};
+					if ( choice !="none" ) {location.href = "<?= esc_url(home_url(add_query_arg(array(), $wp->request))) . $search_term . $tax_slug; ?>=" + choice};
 					if ( choice =="0" ) {location.href = "<?= $all_url; ?>"};
 				}
 				dropdown_<?= $id;?>.onchange = on_<?= $id;?>_Change;

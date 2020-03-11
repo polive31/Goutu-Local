@@ -7,18 +7,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class CSR_Assets {
 
-	private static $ratedPostTypes;
-	private static $ratingCats;
-	private static $ratingGlobal;
+	const RATED_POST_TYPES = array( 'recipe', 'menu' );
 
-	private static $Plugin_path;
-	private static $Plugin_uri;
+	private static $ratingCats;
 
 	public function __construct() {
 		/* Allows to access the class's functions from a submission or ajax callback
-		In this case, the main class is not created, so the only way is to create a new CSR_Assets instance
+		In this case, the Custom_Star_Rating class is not created, so the only way is to create a new CSR_Assets instance
 		in order to force the hydrate */
 		self::hydrate();
+	}
+
+	public static function Plugin_path() {
+		return  plugin_dir_path( dirname( __FILE__ ) );
+	}
+
+	public static function Plugin_uri() {
+		return  plugin_dir_url( dirname( __FILE__ ) );
 	}
 
 	/* Register stylesheet, will be enqueued in the shortcode itself  */
@@ -26,8 +31,8 @@ class CSR_Assets {
 		$args = array(
 			'handle'	=> 'custom-star-rating',
 			'file' 		=> 'assets/css/custom-star-rating.css',
-			'uri' 		=> self::$Plugin_uri,
-			'path' 		=> self::$Plugin_path,
+			'uri' 		=> self::Plugin_uri(),
+			'path' 		=> self::Plugin_path(),
 			'deps' 		=> array(),
 			'version' 	=> CHILD_THEME_VERSION,
 		);
@@ -43,10 +48,6 @@ class CSR_Assets {
 
 	// Initialize all strings needing a translation (doesn't work in __construct)
 	public static function hydrate() {
-		self::$Plugin_path = plugin_dir_path( dirname( __FILE__ ) );
-		self::$Plugin_uri = plugin_dir_url( dirname( __FILE__ ) );
-		self::$ratedPostTypes = array( 'recipe' );
-
 		self::$ratingCats = array(
 			'rating' => array (
 				'weight' => 2,
@@ -104,28 +105,10 @@ class CSR_Assets {
 	}
 
 
-
-
-	/* Translate ratings taxonomy from WPURP
-	--------------------------------------------------------------*/
-    // static function translate_ratings_taxonomy( $args ) {
-    //     $name = __( 'Evaluations', 'foodiepro' );
-    //     $singular = __( 'Evaluation', 'foodiepro' );
-
-    //     $name_lower = strtolower($name);
-
-    //     $args['labels']['name'] = $name;
-    //     $args['labels']['singular_name'] = $singular;
-    //     $args['rewrite'] = array('slug'=>__('rating','foodiepro'),'with_front' => false);
-
-    //     return $args;
-    // }
-
-
 	/* Get Rated Post Types
 	------------------------------------------------------------*/
 	public static function post_types() {
-		return self::$ratedPostTypes;
+		return self::RATED_POST_TYPES;
 	}
 
 	/* Get Rating Categories
@@ -135,15 +118,18 @@ class CSR_Assets {
 	public static function rating_cats( $cat_ids='all', $global=false ) {
 		$cats=array();
 		if ($cat_ids=='all') {
+			// Return all rating categories
 			$cats = self::$ratingCats;
 			if ( !$global ) unset( $cats['global'] );
 		}
 		elseif ( is_array($cat_ids) ) {
+			// Return a selection of rating categories
 			foreach ( $cat_ids as $id ) {
 				$cats[$id]=self::$ratingCats[$id];
 			}
 		}
 		else
+			// Return one rating category
 			$cats[$cat_ids]=self::$ratingCats[$cat_ids];
 
 		return $cats;

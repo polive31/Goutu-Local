@@ -10,6 +10,12 @@ class CSN_Like
     // private $logged_in;
     private $post_type;
 
+    const LIKED_POST_TYPES=array(
+        'post',
+        'recipe',
+        'menu'
+    );
+
     public function __construct($type = 'post')
     {
         $this->post_type = $type;
@@ -251,9 +257,9 @@ class CSN_Like
         /* New post submission callback
         /* Add ratings default value (required for proper sorting in archives)
         -------------------------------------------------------------*/
-        public function add_default_like_count($post_ID)
+        public static function add_default_like_count($post_ID)
         {
-            if (!wp_is_post_revision($post_ID)) {
+            if (!wp_is_post_revision($post_ID) && (in_array(get_post_type(), self::LIKED_POST_TYPES) )) {
                 update_post_meta($post_ID, 'like_count', '0');
             }
         }

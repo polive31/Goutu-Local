@@ -40,13 +40,19 @@ class CSR_Rating
 	-------------------------------------------------------------*/
 	public function add_default_rating($post_ID)
 	{
+		/* IMPORTANT : hook activated during post submission, therefore the main Custom_Star_Rating class
+		is not created and a new CSR_Assets instance needs to be created in order
+		to trigger the rating cats hydrate
+		-------------------------------------------------------------------------*/
 		$Assets = new CSR_Assets();
 
-		if (is_singular($Assets->post_types()) && (!wp_is_post_revision($post_ID))) {
-			foreach ($Assets::$ratingCats as $slug => $values) {
+		$ratedTypes = $Assets->post_types();
+		$is_rated_type = in_array(get_post_type(), $ratedTypes);
+
+		if ( $is_rated_type && (!wp_is_post_revision($post_ID))) {
+			foreach ($Assets->rating_cats('all',true) as $slug => $value) {
 				update_post_meta($post_ID, 'user_rating_' . $slug, '0');
 			}
-			update_post_meta($post_ID, 'user_rating_global', '0');
 		}
 	}
 

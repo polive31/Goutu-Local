@@ -204,6 +204,10 @@ h2.user-nicename {
   font-size: 2.7rem;
   line-height: 3rem;
   font-weight: bold;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .entry-header-overlay .tag-overlay#veg {
@@ -256,6 +260,13 @@ h2.entry-title,
 /*Text sizes */
 .text-big-font {
   font-size: 1.8rem;
+}
+
+/* PLUGIN Fonts */
+/* GDPR COOKIE CONSENT
+----------------------------------------------*/
+#cookie-law-info-bar span {
+  font-family: Oswald, sans-serif;
 }
 
 /* Widgets Fonts  */

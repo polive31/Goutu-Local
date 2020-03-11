@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2020-03-09 09:31+0100\n"
-"PO-Revision-Date: 2020-03-09 09:33+0100\n"
+"POT-Creation-Date: 2020-03-11 01:01+0100\n"
+"PO-Revision-Date: 2020-03-11 09:21+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -475,17 +475,228 @@ msgstr "Ma photo"
 msgid "Picture title"
 msgstr "Titre"
 
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:23
+#, php-format
+msgctxt "feminine"
+msgid "All %s"
+msgstr "Toutes les %s"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:24
+#, php-format
+msgctxt "masculine"
+msgid "All %s"
+msgstr "Tous les %s"
+
 #: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:27
+#, php-format
+msgctxt "vowel"
+msgid "%s containing %s"
+msgstr "%s à base d'%s"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:28
+#, php-format
+msgctxt "consonant"
+msgid "%s containing %s"
+msgstr "%s à base de %s"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:31
+#, php-format
+msgctxt "vowel"
+msgid "%s of %s"
+msgstr "%s d'%s"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:32
+#, php-format
+msgctxt "consonant"
+msgid "%s of %s"
+msgstr "%s de %s"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:35
+#, php-format
+msgctxt "vowel"
+msgid "%s from %s"
+msgstr "%s d'%s"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:36
+#, php-format
+msgctxt "consonant"
+msgid "%s from %s"
+msgstr "%s de %s"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:39
+#, php-format
+msgctxt "vowel"
+msgid "%s for %s"
+msgstr "%s %s"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:40
+#, php-format
+msgctxt "consonant"
+msgid "%s for %s"
+msgstr "%s pour un %s"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:43
+#, php-format
+msgctxt "masculine"
+msgid "All vegetarian %s"
+msgstr "Tous les %s végétariens"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:44
+#, php-format
+msgctxt "feminine"
+msgid "All vegetarian %s"
+msgstr "Toutes les %s végétariennes"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:47
+#, php-format
+msgctxt "masculine"
+msgid "All light %s"
+msgstr "Tous les %s légers"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:48
+#, php-format
+msgctxt "feminine"
+msgid "All light %s"
+msgstr "Toutes les %s légères"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:51
+#, php-format
+msgctxt "masculine"
+msgid "All gluten-free %s"
+msgstr "Tous les %s sans gluten"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:52
+#, php-format
+msgctxt "feminine"
+msgid "All gluten-free %s"
+msgstr "Toutes les %s sans gluten"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:55
+#, php-format
+msgctxt "masculine"
+msgid "All %s for weight gain"
+msgstr "Tous les %s pour la prise de masse"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:56
+#, php-format
+msgctxt "feminine"
+msgid "All %s for weight gain"
+msgstr "Toutes les %s pour la prise de masse"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:59
+#, php-format
+msgctxt "masculine"
+msgid "All spring %s"
+msgstr "Tous les %s de printemps"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:60
+#, php-format
+msgctxt "feminine"
+msgid "All spring %s"
+msgstr "Toutes les %s de printemps"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:63
+#, php-format
+msgctxt "masculine"
+msgid "All summer %s"
+msgstr "Tous les %s d'été"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:64
+#, php-format
+msgctxt "feminine"
+msgid "All summer %s"
+msgstr "Toutes les %s d'été"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:67
+#, php-format
+msgctxt "masculine"
+msgid "All autumn %s"
+msgstr "Tous les %s d'automne"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:68
+#, php-format
+msgctxt "feminine"
+msgid "All autumn %s"
+msgstr "Toutes les %s d'automne"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:71
+#, php-format
+msgctxt "masculine"
+msgid "All winter %s"
+msgstr "Tous les %s d'hiver"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:72
+#, php-format
+msgctxt "feminine"
+msgid "All winter %s"
+msgstr "Toutes les %s d'hiver"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:75
+#, php-format
+msgctxt "masculine"
+msgid "All evident %s"
+msgstr "Tous les %s élémentaires"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:76
+#, php-format
+msgctxt "feminine"
+msgid "All evident %s"
+msgstr "Toutes les %s élémentaires"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:79
+#, php-format
+msgctxt "masculine"
+msgid "All simple %s"
+msgstr "Tous les %s faciles"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:80
+#, php-format
+msgctxt "feminine"
+msgid "All simple %s"
+msgstr "Toutes les %s faciles"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:83
+#, php-format
+msgctxt "masculine"
+msgid "All complicated %s"
+msgstr "Tous les %s compliqués"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:84
+#, php-format
+msgctxt "feminine"
+msgid "All complicated %s"
+msgstr "Toutes les %s compliquées"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:87
+#, php-format
+msgctxt "masculine"
+msgid "All difficult %s"
+msgstr "Tous les %s difficiles"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:88
+#, php-format
+msgctxt "feminine"
+msgid "All difficult %s"
+msgstr "Toutes les %s difficiles"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:105
 msgid "Visit Goutu.org"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:60
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:74
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:124
 #, php-format
 msgid "%s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:134
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:182
+msgid "recipes"
+msgstr "recettes"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:186
+msgid "posts"
+msgstr "articles"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:266
 msgid ""
 "You will find here all the recipes, which you can further sort by date or "
 "evaluation."
@@ -493,139 +704,21 @@ msgstr ""
 "Vous trouverez ici toutes les recettes publiées dans cette catégorie, que "
 "vous pouvez trier par date, ordre alphabétique et évaluation."
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:137
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:269
 msgid "You will find here all the posts, which you can further sort by date."
 msgstr ""
 "Vous trouverez ici tous les articles du site. <br>Vous pouvez les trier par "
 "date et ordre alphabétique."
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:156
-#, php-format
-msgctxt "vowel"
-msgid "All recipes containing %s"
-msgstr "Toutes les recettes à base d'%s"
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:158
-#, php-format
-msgctxt "consonant"
-msgid "All recipes containing %s"
-msgstr "Toutes les recettes à base de %s"
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:205
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:315
 msgid "Detailed Search Results"
 msgstr "Résultats de recherche détaillée"
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:207
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:317
 #: themes/foodiepro-2.1.8/search.php:28
 #, php-format
 msgid "Search Results for %s"
 msgstr "Résultats de recherche pour %s"
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:214
-#, php-format
-msgctxt "vowel"
-msgid "All recipes from %s"
-msgstr "Toutes les recettes d'%s"
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:215
-#, php-format
-msgctxt "consonant"
-msgid "All recipes from %s"
-msgstr "Toutes les recettes de %s"
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:216
-msgid "All the recipes"
-msgstr "Toutes les recettes"
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:219
-#, php-format
-msgctxt "vowel"
-msgid "All posts from %s"
-msgstr "Toutes les publications d'%s"
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:220
-#, php-format
-msgctxt "consonant"
-msgid "All posts from %s"
-msgstr "Toutes les publications de %s"
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:221
-msgid "All the posts"
-msgstr "Tous les articles"
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:235
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:281
-#, php-format
-msgctxt "masculine"
-msgid "All %s"
-msgstr "Tous les %s"
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:236
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:286
-#, php-format
-msgctxt "feminine"
-msgid "All %s"
-msgstr "Toutes les %s"
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:247
-#, php-format
-msgctxt "vowel"
-msgid "from %s"
-msgstr "d'%s"
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:248
-#, php-format
-msgctxt "consonant"
-msgid "from %s"
-msgstr "de %s"
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:261
-#, php-format
-msgctxt "vegetarien"
-msgid "for %s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:262
-#, php-format
-msgctxt "leger"
-msgid "for %s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:263
-#, php-format
-msgctxt "sportif"
-msgid "for %s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:264
-#, php-format
-msgctxt "sans-gluten"
-msgid "for %s"
-msgstr ""
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:279
-#, php-format
-msgctxt "masculine-vowel"
-msgid "All %s from %s"
-msgstr "Tous les %s de l'%s"
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:280
-#, php-format
-msgctxt "masculine-consonant"
-msgid "All %s from %s"
-msgstr "Tous les %s de %s"
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:284
-#, php-format
-msgctxt "feminine-vowel"
-msgid "All %s from %s"
-msgstr "Toutes les %s de l'%s"
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:285
-#, php-format
-msgctxt "feminine-consonant"
-msgid "All %s from %s"
-msgstr "Toutes les %s de %s"
 
 #: plugins/custom-navigation-helpers/public/class-cnh-rpwe-customizations.php:18
 #: plugins/custom-navigation-helpers/public/class-cnh-rpwe-customizations.php:32
@@ -702,7 +795,7 @@ msgstr "Les plus récentes"
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:109
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:110
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:78
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:83
 #: plugins/custom-navigation-helpers/widgets/taxonomy-search-widget.php:113
 #: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:119
 #: plugins/custom-recipe-management/widgets/crm_lists_dropdown_widget.php:71
@@ -712,7 +805,7 @@ msgstr ""
 
 #: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:113
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:123
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:87
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:92
 #: plugins/custom-navigation-helpers/widgets/taxonomy-search-widget.php:117
 #: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:122
 #: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:86
@@ -786,46 +879,55 @@ msgid "Displays a dropdown list allowing to navigate between taxonomy terms"
 msgstr ""
 
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:25
+msgid "Automatic"
+msgstr ""
+
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:26
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:31
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:80
 msgid "Course"
 msgstr "Plat"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:26
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:27
 #: plugins/custom-recipe-management/public/recipe-output/partials/screen-template.php:44
 msgid "Origin"
 msgstr "Origine"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:29
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:28
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:34
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:113
 #: plugins/custom-recipe-management/public/recipe-output/partials/screen-template.php:51
 msgid "Diet"
 msgstr "Régime"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:30
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:29
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:35
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:97
 msgid "Season"
 msgstr "Saison"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:31
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:30
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:32
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:105
 msgid "Occasion"
 msgstr "Occasion"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:32
-#, fuzzy
-#| msgid "Categories"
-msgid "Categorie"
-msgstr "Catégories"
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:31
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:356
+msgid "Category"
+msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:49
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:32
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:36
+#: plugins/custom-recipe-management/public/recipe-output/partials/screen-template.php:58
+msgid "Level"
+msgstr "Niveau"
+
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:61
 msgid "Filter by "
 msgstr "Filtrer par "
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:93
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:98
 #, fuzzy
 #| msgid "Filter recipes"
 msgid "Dropdown taxonomy"
@@ -868,10 +970,9 @@ msgid "I agree to the %s."
 msgstr ""
 
 #: plugins/custom-peepso-overrides/public/class-peepso-helpers.php:124
-#, fuzzy, php-format
-#| msgid "Update profile picture"
+#, php-format
 msgid "Picture of %s"
-msgstr "Changer ma photo"
+msgstr "Photo de %s"
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:19
 #, fuzzy
@@ -1606,11 +1707,6 @@ msgstr "Origine"
 msgid "Levels"
 msgstr "Niveau"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:36
-#: plugins/custom-recipe-management/public/recipe-output/partials/screen-template.php:58
-msgid "Level"
-msgstr "Niveau"
-
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:48
 #: plugins/custom-recipe-management/public/recipe-output/helpers/class-crm-print.php:14
 #: plugins/custom-recipe-management/public/recipe-post-type/class-wpurp-recipe.php:289
@@ -1700,12 +1796,11 @@ msgstr ""
 "autres utilisateurs."
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:138
-#, fuzzy, php-format
-#| msgctxt "recipe"
-#| msgid "Post saved as a draft."
+#, php-format
 msgctxt "recipe"
 msgid "Post saved as <a href=\"%s\">a draft</a>."
-msgstr "Votre recette a été sauvegardée en tant que brouillon."
+msgstr ""
+"Votre recette a été sauvegardée en tant que <a href=\"%s\">brouillon</a>."
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:139
 msgctxt "recipe"
@@ -3438,10 +3533,6 @@ msgstr ""
 msgid "Grid Columns"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:356
-msgid "Category"
-msgstr ""
-
 #: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:363
 #, fuzzy
 #| msgid "All courses"
@@ -3818,6 +3909,66 @@ msgstr "Ces recettes pourraient également vous intéresser..."
 #: themes/foodiepro-2.1.8/yarpp-template-goutu.php:20
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
+
+#, fuzzy
+#~| msgid "Categories"
+#~ msgid "Categorie"
+#~ msgstr "Catégories"
+
+#, fuzzy, php-format
+#~| msgctxt "masculine"
+#~| msgid "All %s"
+#~ msgctxt "consonant"
+#~ msgid "All %s"
+#~ msgstr "Tous les %s"
+
+#, php-format
+#~ msgctxt "vowel"
+#~ msgid "All recipes from %s"
+#~ msgstr "Toutes les recettes d'%s"
+
+#, php-format
+#~ msgctxt "consonant"
+#~ msgid "All recipes from %s"
+#~ msgstr "Toutes les recettes de %s"
+
+#, php-format
+#~ msgctxt "vowel"
+#~ msgid "All posts from %s"
+#~ msgstr "Toutes les publications d'%s"
+
+#, php-format
+#~ msgctxt "consonant"
+#~ msgid "All posts from %s"
+#~ msgstr "Toutes les publications de %s"
+
+#~ msgid "All the posts"
+#~ msgstr "Tous les articles"
+
+#, php-format
+#~ msgctxt "vowel"
+#~ msgid "from %s"
+#~ msgstr "d'%s"
+
+#, php-format
+#~ msgctxt "consonant"
+#~ msgid "from %s"
+#~ msgstr "de %s"
+
+#, php-format
+#~ msgctxt "masculine-consonant"
+#~ msgid "All %s from %s"
+#~ msgstr "Tous les %s de %s"
+
+#, php-format
+#~ msgctxt "feminine-vowel"
+#~ msgid "All %s from %s"
+#~ msgstr "Toutes les %s de l'%s"
+
+#, php-format
+#~ msgctxt "feminine-consonant"
+#~ msgid "All %s from %s"
+#~ msgstr "Toutes les %s de %s"
 
 #~ msgid "Rating"
 #~ msgstr "Les plus populaires"
@@ -5467,11 +5618,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 
 #, fuzzy
 #~| msgid "All posts"
-#~ msgid "posts"
-#~ msgstr "Tous les articles"
-
-#, fuzzy
-#~| msgid "All posts"
 #~ msgid "Initial posts"
 #~ msgstr "Tous les articles"
 
@@ -6023,10 +6169,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 #~ msgid "(Buddypress) My Friends"
 #~ msgstr "Mes amis"
 
-#, php-format
-#~ msgid "Friends of %s"
-#~ msgstr "Les amis de %s"
-
 #~ msgid "Make new friends"
 #~ msgstr "Faites vous de nouveaux amis"
 
@@ -6056,11 +6198,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 
 #~ msgid "Show conversation"
 #~ msgstr "Voir la conversation"
-
-#, fuzzy, php-format
-#~| msgid "All diets"
-#~ msgid "All Members %s"
-#~ msgstr "Tous les régimes"
 
 #, fuzzy, php-format
 #~| msgid "My Friends"
@@ -6104,11 +6241,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 
 #, fuzzy, php-format
 #~| msgid "All diets"
-#~ msgid "All Sites %s"
-#~ msgstr "Tous les régimes"
-
-#, fuzzy, php-format
-#~| msgid "All diets"
 #~ msgid "My Sites %s"
 #~ msgstr "Tous les régimes"
 
@@ -6125,11 +6257,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 #, fuzzy
 #~| msgid "All posts"
 #~ msgid "Posts"
-#~ msgstr "Tous les articles"
-
-#, fuzzy, php-format
-#~| msgid "All posts"
-#~ msgid "All Topics %s"
 #~ msgstr "Tous les articles"
 
 #, fuzzy, php-format

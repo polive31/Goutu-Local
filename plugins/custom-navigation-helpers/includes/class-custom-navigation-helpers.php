@@ -36,8 +36,9 @@ class Custom_Navigation_Helpers {
 
 
 		$Headline = new CNH_Archive_Headline();
+		add_filter( 'init', 							array($Headline,'hydrate') );
 		// Headline text
-		add_filter( 'genesis_archive_title_text', 		array($Headline,'custom_archive_title') );
+		add_filter( 'genesis_archive_title_text', 		array($Headline,'get_archive_title') );
 		add_filter( 'genesis_search_title_text', 		array($Headline,'custom_search_title_text') );
 		// Intro text
 		add_filter( 'genesis_term_intro_text_output', 	'wpautop' );

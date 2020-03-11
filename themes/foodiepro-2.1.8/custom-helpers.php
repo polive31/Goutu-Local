@@ -130,7 +130,7 @@ function foodiepro_get_icon_class($slug) {
 
 
 
-function picture($url, $id = '', $class = '')
+function foodiepro_picture($url, $id = '', $class = '')
 {
 	/* Generates a picture tag including .webp format, based the specified original image file (jpg, png, or other non-webp standard format) url */
 
@@ -154,6 +154,34 @@ function picture($url, $id = '', $class = '')
 	ob_end_clean();
 	return $html;
 }
+
+
+function foodiepro_get_term_image($term=null, $size = 'full', $class = '', $imgclass='', $fallback_url=false, $fallback_html=false)
+{
+	$html='';
+	if (class_exists('WPCustomCategoryImage')) {
+		$id=is_object($term)?$term->term_id:null;
+		$name=is_object($term)?$term->name:null;
+		$atts = array(
+			'size'       => $size,
+			'term_id'    => $id,
+			'alt'        => $name,
+			'class'      => $imgclass,
+			'onlysrc'    => false,
+
+		);
+		$html = WPCustomCategoryImage::get_category_image($atts);
+	}
+	if (empty($html)) {
+		if ( $fallback_url )
+			$html=foodiepro_picture($fallback_url);
+		elseif ( $fallback_html )
+			$html=$fallback_html;
+		}
+	$html = "<div class='$class'>$html</div>";
+	return $html;
+}
+
 
 /* =================================================================*/
 /* =              CUSTOM SCRIPTS HELPERS

@@ -79,7 +79,9 @@ class CNH_Tags_Overlay {
 		}
 
 		if ( self::is_veg($diet) ) {
-			$veg_msg = '<i class="fa fa-leaf" aria-hidden="true"></i>';
+			// $veg_msg = foodiepro_get_icon('leaf', '', '', __('Vegetarian', 'foodiepro') );
+			// $veg_msg = foodiepro_get_icon('carrot', '', '', __('Vegetarian', 'foodiepro') );
+			$veg_msg = foodiepro_get_icon('pepper-hot', '', '', __('Vegetarian', 'foodiepro') );
 			//$tags .= '<div class="overlay" id="veg">' . $veg_msg . '</div>';
 			$tags .= '<div class="tag-overlay topright' . $tr_id++ . '" id="veg" title="' . __('Vegetarian','foodiepro') . '">' . $veg_msg . '</div>';
 		}

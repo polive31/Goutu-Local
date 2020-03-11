@@ -70,28 +70,6 @@ class CNH_Assets {
         return $url;
     }
 
-    public static function get_term_image($term=null, $size = 'full', $class = '', $imgclass='', $fallback_img=false)
-    {
-        $html='';
-        if (class_exists('WPCustomCategoryImage')) {
-            $id=is_object($term)?$term->term_id:null;
-            $name=is_object($term)?$term->name:null;
-            $atts = array(
-                'size'       => $size,
-                'term_id'    => $id,
-                'alt'        => $name,
-                'class'      => $imgclass,
-                'onlysrc'    => false,
 
-            );
-            $html = WPCustomCategoryImage::get_category_image($atts);
-        }
-        if (empty($html)) {
-            if ( $fallback_img )
-                $html=picture($fallback_img);
-        }
-        $html = "<div class='$class'>$html</div>";
-        return $html;
-    }
 
 }

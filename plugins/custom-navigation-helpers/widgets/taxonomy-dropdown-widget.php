@@ -23,14 +23,15 @@ class Taxonomy_Navigation_Widget extends WP_Widget
 		);
 		self::$TAX_LIST = array(
 			'course' 	=> __('Course', 'foodiepro'),
+			'ingredient'=> __('Ingredient', 'foodiepro'),
 			'cuisine' 	=> __('Origin', 'foodiepro'),
-			// 'country' 	=> __('Country', 'foodiepro'),
-			// 'region' 	=> __('Region', 'foodiepro'),
 			'diet' 		=> __('Diet', 'foodiepro'),
 			'season' 	=> __('Season', 'foodiepro'),
 			'occasion' 	=> __('Occasion', 'foodiepro'),
-			'category'	=> __('Categorie', 'foodiepro'),
+			'category'	=> __('Category', 'foodiepro'),
+			'difficult'	=> __('Level', 'foodiepro'),
 		);
+
 	}
 
 
@@ -43,6 +44,26 @@ class Taxonomy_Navigation_Widget extends WP_Widget
 
 		$title = apply_filters('widget_title', $instance['title']);
 		$selected_tax = apply_filters('cnh_taxonomies_dropdown', $instance['tax-list']);
+
+		if ($instance['tax-list']=='auto') {
+			if ( is_author() || is_post_type_archive('recipe')) {
+				$selected_tax = 'course';
+			}
+			elseif (is_tax() ) {
+				$qvars=array_keys($wp->query_vars);
+				$selected_tax = 'difficult';
+				foreach( $this->get_tax_list() as $slug => $name) {
+					if (($slug != 'course') && (in_array($slug, $qvars))) {
+						$selected_tax = 'course';
+					}
+				}
+			}
+			elseif ( is_tag() ) {
+				$selected_tax = 'difficult';
+			}
+		}
+
+
 		if ($title=='') {
 			$tax_name = $this->get_tax_name($selected_tax);
 			// $title=$tax_name;
@@ -51,13 +72,6 @@ class Taxonomy_Navigation_Widget extends WP_Widget
 
 		// before and after widget arguments are defined by themes
 		echo $args['before_widget'];
-
-		/* Do not display in the case of a search query or WPURP dropdown search widget result */
-		$WPURP_search = strpos($_SERVER["REQUEST_URI"], 'wpurp-search');
-		if ($WPURP_search) {
-			echo '&nbsp;';
-			return;
-		}
 
 		// Widget title
 		echo $args['before_title'] . $title . $args['after_title'];
@@ -94,6 +108,7 @@ class Taxonomy_Navigation_Widget extends WP_Widget
 			</label>
 			<br>
 			<select class="full-width" id="<?php echo $this->get_field_id('tax-list'); ?>" name="<?php echo $this->get_field_name('tax-list'); ?>">
+				<option value="<?= 'auto' ?>" <?php selected($selected_tax, 'auto'); ?>><?= __('Automatic', 'foodiepro'); ?></option>
 				<?php foreach ($this->get_tax_list() as $tax => $name) : ?>
 					<option value="<?= $tax;?>" <?php selected($selected_tax, $tax); ?>><?= $name ?></option>
 				<?php endforeach; ?>

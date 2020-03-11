@@ -31,10 +31,11 @@ class CustomSiteNotifications {
 		add_action( 'wp', 						array( $Popups, 'create_popup_actions') );
 
 		$Like = new CSN_Like();
+		// Default value on save post (allows for sorting by like count)
+		add_action('save_post',                 array('CSN_Like', 'add_default_like_count'));
 		// Assets
 		add_action('wp_enqueue_scripts', 		array($Like, 'enqueue_scripts'));
-		// Default value on save post (allows for sorting by like count)
-		add_action('save_post',                 array($Like, 'add_default_like_count'));
+		// Sorting by like count
 		add_action('pre_get_posts',             array($Like, 'sort_entries_by_like_count'));
 		// Ajax
 		add_action('wp_ajax_like_post', 		array($Like, 'ajax_like_post'));

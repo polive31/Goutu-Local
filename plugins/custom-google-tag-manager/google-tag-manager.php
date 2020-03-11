@@ -1,6 +1,3 @@
-/* =================================================================*/
-/* = GOOGLE TAG MANAGER =*/
-/* =================================================================*/
 <?php
 
 /*
@@ -21,7 +18,7 @@ if (!defined('ABSPATH'))
 
 /* Add html with genesis actions
 --------------------------------------------------------------------*/
-//add_action('wp_head','add_gtm_container_head');
+add_action('wp_head','add_gtm_container_head');
 function add_gtm_container_head()
 {
 ?>
@@ -46,7 +43,7 @@ function add_gtm_container_head()
 <?php
 }
 
-//add_action( 'genesis_before', 'add_gtm_container_body' );
+add_action( 'genesis_before', 'add_gtm_container_body' );
 function add_gtm_container_body()
 {
 ?>

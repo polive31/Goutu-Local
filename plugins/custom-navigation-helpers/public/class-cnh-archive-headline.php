@@ -143,6 +143,7 @@ class CNH_Archive_Headline {
 
 	public function get_archive_title() {
 
+
 		if ( is_tax() || is_author() || is_post_type_archive() ) {
 			$subject_slug = get_query_var('course',false);
 			if ($subject_slug) {
@@ -176,10 +177,16 @@ class CNH_Archive_Headline {
 			}
 			elseif (get_query_var('cuisine',false)) {
 				$origin_slug = get_query_var('cuisine',false);
-				$origin= $this->get_term_name($origin_slug,'cuisine');
-				$initial=foodiepro_check_initial($origin);
-				$title=sprintf($this->trans['from'][$initial], $title, $origin);
 				$term = get_term_by('slug', $origin_slug, 'cuisine');
+				$origin_headline = get_term_meta($term->term_id, 'headline', true);
+				if ($origin_headline) {
+					$title=sprintf('%s %s', $title, $origin_headline);
+				}
+				else {
+					$origin= $this->get_term_name($origin_slug,'cuisine');
+					$initial=foodiepro_check_initial($origin);
+					$title=sprintf($this->trans['from'][$initial], $title, $origin);
+				}
 				$term_image = foodiepro_get_term_image($term, 'thumbnail', '', '', '', $term_image);
 			}
 			elseif (get_query_var('season', false)) {

@@ -17,6 +17,7 @@ if ( !defined('ABSPATH') )
 
 require_once 'includes/class-custom-admin-management.php';
 require_once 'admin/class-cam-admin-helpers.php';
+require_once 'admin/class-cam-tax-columns.php';
 require_once 'admin/class-cam-post-filter.php';
 
 

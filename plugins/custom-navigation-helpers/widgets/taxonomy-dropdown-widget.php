@@ -53,7 +53,7 @@ class Taxonomy_Navigation_Widget extends WP_Widget
 				$qvars=array_keys($wp->query_vars);
 				$selected_tax = 'difficult';
 				foreach( $this->get_tax_list() as $slug => $name) {
-					if (($slug != 'course') && (in_array($slug, $qvars))) {
+					if ((!in_array($slug,array('course',$selected_tax))) && (in_array($slug, $qvars))) {
 						$selected_tax = 'course';
 					}
 				}

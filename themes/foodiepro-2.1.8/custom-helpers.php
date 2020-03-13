@@ -156,22 +156,30 @@ function foodiepro_picture($url, $id = '', $class = '')
 }
 
 
-function foodiepro_get_term_image($term=null, $size = 'full', $class = '', $imgclass='', $fallback_url=false, $fallback_html=false)
+function foodiepro_get_term_image($term=false, $size = 'full', $class = '', $imgclass='', $fallback_url=false, $fallback_html=false)
 {
 	$html='';
 	if (class_exists('WPCustomCategoryImage')) {
-		$id=is_object($term)?$term->term_id:null;
-		$name=is_object($term)?$term->name:null;
+		$id=is_object($term)?$term->term_id:false;
+		$name=is_object($term)?$term->name:false;
 		$atts = array(
 			'size'       => $size,
 			'term_id'    => $id,
 			'alt'        => $name,
 			'class'      => $imgclass,
 			'onlysrc'    => false,
-
 		);
 		$html = WPCustomCategoryImage::get_category_image($atts);
 	}
+	if (empty($html) && $id) {
+		$parent_term=get_term_by('id',$term->parent,$term->taxonomy);
+		if ($parent_term) {
+			$atts['term_id']=$parent_term->term_id;
+			$atts['alt']= $parent_term->name;
+			$html = WPCustomCategoryImage::get_category_image($atts);
+		}
+	}
+
 	if (empty($html)) {
 		if ( $fallback_url )
 			$html=foodiepro_picture($fallback_url);

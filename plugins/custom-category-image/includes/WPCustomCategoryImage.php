@@ -71,9 +71,9 @@ class WPCustomCategoryImage
     {
         $params = array_merge(array(
             'size'    => 'full',
-            'term_id' => null,
-            'alt'     => null,
-            'class'   => null
+            'term_id' => false,
+            'alt'     => false,
+            'class'   => false
         ), $atts);
 
         $term_id = $params['term_id'];
@@ -91,13 +91,12 @@ class WPCustomCategoryImage
         }
 
         $attachment_id   = get_option('categoryimage_'.$term_id);
-
         $attachment_meta = get_post_meta($attachment_id, '_wp_attachment_image_alt', true);
         $attachment_alt  = trim(strip_tags($attachment_meta));
 
         $attr = array(
-            'alt'=> (is_null($params['alt']) ?  $attachment_alt : $params['alt']),
-            'class'=> (is_null($params['class']) ?  '' : $params['class'])
+            'alt'=> ($params['alt'] ?  $attachment_alt : $params['alt']),
+            'class'=> ($params['class'] ?  '' : $params['class'])
         );
 
         if ($onlysrc) {
@@ -105,7 +104,8 @@ class WPCustomCategoryImage
             return is_array($src) ? $src[0] : null;
         }
 
-        return wp_get_attachment_image($attachment_id, $size, false, $attr);
+        $img = wp_get_attachment_image($attachment_id, $size, false, $attr);
+        return $img;
     }
 
     public function show_admin_notice()

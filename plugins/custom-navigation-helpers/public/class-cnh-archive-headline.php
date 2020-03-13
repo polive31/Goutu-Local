@@ -143,8 +143,11 @@ class CNH_Archive_Headline {
 
 	public function get_archive_title() {
 
-
-		if ( is_tax() || is_author() || is_post_type_archive() ) {
+		if (is_tag()) {
+			$title = single_term_title('', false);
+			$term_image = foodiepro_get_term_image('', 'thumbnail');
+		}
+		elseif ( is_tax() || is_author() || is_post_type_archive() ) {
 			$subject_slug = get_query_var('course',false);
 			if ($subject_slug) {
 				$subject = $this->get_term_name($subject_slug,'course');

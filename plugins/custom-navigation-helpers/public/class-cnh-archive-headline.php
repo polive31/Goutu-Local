@@ -144,7 +144,14 @@ class CNH_Archive_Headline {
 	public function get_archive_title() {
 
 		if (is_tag()) {
-			$title = single_term_title('', false);
+			$term_id = get_queried_object_id();
+			$tag_headline = get_term_meta($term_id, 'headline', true);
+			if ($tag_headline) {
+				$title = $tag_headline;
+			}
+			else {
+				$title = single_term_title('', false);
+			}
 			$term_image = foodiepro_get_term_image('', 'thumbnail');
 		}
 		elseif ( is_tax() || is_author() || is_post_type_archive() ) {
@@ -209,7 +216,6 @@ class CNH_Archive_Headline {
 			}
 			elseif (get_query_var('difficult', false)) {
 				$difficult_slug = get_query_var('difficult',false);
-				// $difficult = get_query_var($difficult_slug,'difficult');
 				if (isset($this->trans[$difficult_slug]))
 				$title = sprintf($this->trans[$difficult_slug][$subject_gender], $subject);
 				$term = get_term_by('slug', $difficult_slug, 'difficult');
@@ -220,11 +226,10 @@ class CNH_Archive_Headline {
 				if (isset($this->trans[$diet_slug]))
 				$title=sprintf($this->trans[$diet_slug][$subject_gender], $subject);
 				$term = get_term_by('slug', $diet_slug, 'diet');
-				$image = foodiepro_get_term_image($term, 'thumbnail', '', '', '', $term_image);
+				$term_image = foodiepro_get_term_image($term, 'thumbnail', '', '', '', $term_image);
 			}
 			elseif (get_query_var('author', false)) {
 				$author = get_query_var('author');
-				// $user=get_userdata( $id );
 				$user = PeepsoHelpers::get_user($author);
 				$author_nicename = PeepsoHelpers::get_field($user, "nicename");
 				$initial = foodiepro_check_initial($author_nicename);

@@ -90,25 +90,19 @@ class CNH_Archive_Headline {
 		);
 	}
 
-	public function get_seo_friendly_page_title( $atts ) {
-		$atts = shortcode_atts( array(
-			'url' => 'true',
-			), $atts );
+	public function get_seo_friendly_page_title($title_parts ) {
+		if (is_archive())
+			$title = $this->get_archive_title(false);
+		elseif (is_search())
+			$title = $this->custom_search_title_text();
+		elseif (is_singular())
+			$title = get_the_title();
+		else
+			$title = __('Visit Goutu.org', 'foodiepro');
 
-			if ( is_archive() )
-				$title = $this->get_archive_title();
-			elseif ( is_search() )
-				$title = $this->custom_search_title_text();
-			elseif ( is_singular() )
-				$title = get_the_title();
-			else
-				$title = __('Visit Goutu.org', 'foodiepro');
-
-			if ($atts['url']=='true')
-			$title = str_replace( ' ', '%20', $title);
-
-			return $title;
-		}
+		$title_parts['title'] = ucwords($title);
+		return $title_parts;
+	}
 
 	public function custom_archive_description( $description ) {
 		$output = '';
@@ -116,14 +110,6 @@ class CNH_Archive_Headline {
 		if (is_author()) {
 			if (class_exists('PeepsoHelpers')) {
 				$id = get_query_var('author', false);
-				// $user=get_userdata( $id );
-				// $args = array(
-				// 	'user' 		=> $id,
-				// 	'size' 		=> '120',
-				// 	'link' 		=> 'profile',
-				// 	'title' 	=> __('%s', 'foodiepro'),
-				// 	'aclass' 	=> 'archive-avatar',
-				// );
 				$output = PeepsoHelpers::get_profile_field($id, 'user_bio');
 			}
 		} elseif (is_archive() || is_tag()) {
@@ -141,7 +127,7 @@ class CNH_Archive_Headline {
 		return $output;
 	}
 
-	public function get_archive_title() {
+	public function get_archive_title($display_img=true) {
 
 		if (is_tag()) {
 			$term_id = get_queried_object_id();
@@ -249,7 +235,9 @@ class CNH_Archive_Headline {
 			$term_image = foodiepro_get_term_image('', 'thumbnail');
 		}
 
-		$title = '<span class="archive-image">' . $term_image . '</span>' . $title;
+		if ($display_img)
+			$title = '<span class="archive-image">' . $term_image . '</span>' . $title;
+
 		return $title;
 	}
 

@@ -61,6 +61,12 @@ class Taxonomy_Navigation_Widget extends WP_Widget
 			elseif ( is_tag() ) {
 				$selected_tax = 'difficult';
 			}
+			elseif (is_search()) {
+				return;
+			}
+			else {
+				$selected_tax = 'course';
+			}
 		}
 
 

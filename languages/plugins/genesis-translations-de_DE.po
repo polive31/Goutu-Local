@@ -1,0 +1,2157 @@
+# Translation of Plugins - Genesis Translations - Stable (latest release) in German
+# This file is distributed under the same license as the Plugins - Genesis Translations - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-12-27 20:11:15+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: de\n"
+"Project-Id-Version: Plugins - Genesis Translations - Stable (latest release)\n"
+
+#. Author of the plugin/theme
+msgid "ThemeMix, Remkus de Vries"
+msgstr "ThemeMix, Remkus de Vries"
+
+#: translate.php:521
+msgid "and"
+msgstr "und"
+
+#: translate.php:520
+msgctxt "time difference"
+msgid "%s second"
+msgid_plural "%s seconds"
+msgstr[0] "%s Sekunde"
+msgstr[1] "%s Sekunden"
+
+#: translate.php:519
+msgctxt "time difference"
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] "%s Minute"
+msgstr[1] "%s Minuten"
+
+#: translate.php:518
+msgctxt "time difference"
+msgid "%s hour"
+msgid_plural "%s hours"
+msgstr[0] "%s Stunde"
+msgstr[1] "%s Stunden"
+
+#: translate.php:517
+msgctxt "time difference"
+msgid "%s day"
+msgid_plural "%s days"
+msgstr[0] "%s Tag"
+msgstr[1] "%s Tagen"
+
+#: translate.php:516
+msgctxt "time difference"
+msgid "%s week"
+msgid_plural "%s weeks"
+msgstr[0] "%s Woche"
+msgstr[1] "%s Woche"
+
+#: translate.php:515
+msgctxt "time difference"
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] "%s Monat"
+msgstr[1] "%s Monate"
+
+#: translate.php:514
+msgctxt "time difference"
+msgid "%s year"
+msgid_plural "%s years"
+msgstr[0] "%s Jahr"
+msgstr[1] "%s Jahre"
+
+#: translate.php:513
+msgid "seconds"
+msgstr "Sekunden"
+
+#: translate.php:512
+msgid "Blog"
+msgstr "Blog"
+
+#: translate.php:511
+msgid "http://www.studiopress.com/"
+msgstr "http://www.studiopress.com/"
+
+#: translate.php:510
+msgid "StudioPress"
+msgstr "StudioPress"
+
+#: translate.php:508
+msgid "http://my.studiopress.com/themes/genesis/"
+msgstr "http://my.studiopress.com/themes/genesis/"
+
+#: translate.php:507
+msgid "Genesis"
+msgstr "Genesis"
+
+#: translate.php:506
+msgid "Search Results for:"
+msgstr "Suchergebnisse für:"
+
+#: translate.php:505
+msgid "Show Author Archive Link?"
+msgstr "Autoren-Archiv-Link anzeigen?"
+
+#: translate.php:504
+msgid "Extended page link text"
+msgstr "Linktext für weiterführende Seite"
+
+#: translate.php:502
+msgid "Custom Text Content"
+msgstr "Benutzerdefinierter Textinhalt"
+
+#: translate.php:501
+msgid "Custom Text (below)"
+msgstr "Freier Text (siehe unten)"
+
+#: translate.php:500
+msgid "Author Bio"
+msgstr "Autor-Biografie"
+
+#: translate.php:499
+msgid "Select which text you would like to use as the author description"
+msgstr "Wähle den Text, den Du als Autor-Beschreibung verwenden möchtest"
+
+#: translate.php:498
+msgid "Extra Large"
+msgstr "Extra groß"
+
+#: translate.php:497
+msgid "Large"
+msgstr "Groß"
+
+#: translate.php:496
+msgid "Medium"
+msgstr "Mittelgroß"
+
+#: translate.php:495
+msgid "Small"
+msgstr "Klein"
+
+#: translate.php:493
+msgid "View My Blog Posts"
+msgstr "Meine Blog-Beiträge anschauen"
+
+#: translate.php:492
+msgid "Genesis - User Profile"
+msgstr "Genesis - Benutzerprofil"
+
+#: translate.php:491
+msgid "Displays user profile block with Gravatar"
+msgstr "Zeigt Benutzerprofile mit Gravatar an"
+
+#: translate.php:490
+msgid "Read More"
+msgstr "Weiterlesen"
+
+#: translate.php:489
+msgid "Link Text"
+msgstr "Link-Text"
+
+#: translate.php:488
+msgid "Show Category Archive Link"
+msgstr "Kategorie-Archiv-Link anzeigen"
+
+#: translate.php:486
+msgid "More Text (if applicable)"
+msgstr "Mehr-Text (falls vorhanden)"
+
+#: translate.php:485
+msgid "No Content"
+msgstr "Kein Inhalt"
+
+#: translate.php:484
+msgid "Show Content Limit"
+msgstr "Inhaltslimit anzeigen"
+
+#: translate.php:483
+msgid "Show Excerpt"
+msgstr "Auszug anzeigen"
+
+#: translate.php:482
+msgid "Show Content"
+msgstr "Inhalt anzeigen"
+
+#: translate.php:481
+msgid "Content Type"
+msgstr "Inhaltstyp"
+
+#: translate.php:480
+msgid "Content Post Info"
+msgstr "Inhalts-Beitragsinfo"
+
+#: translate.php:479
+msgid "Show Post Info"
+msgstr "Beitrags-Info anzeigen (Byline)"
+
+#: translate.php:478
+msgid "Show Post Title"
+msgstr "Titel des Beitrags anzeigen"
+
+#: translate.php:477
+msgid "Gravatar Alignment"
+msgstr "Gravatar-Ausrichtung"
+
+#: translate.php:476
+msgid "Extra Large (125px)"
+msgstr "Extra Large (125px) - extragroß"
+
+#: translate.php:475
+msgid "Large (85px)"
+msgstr "Large (85px) - groß"
+
+#: translate.php:474
+msgid "Medium (65px)"
+msgstr "Medium (65px) - mittel"
+
+#: translate.php:473
+msgid "Small (45px)"
+msgstr "Small (45px) - klein"
+
+#: translate.php:472
+msgid "Gravatar Size"
+msgstr "Gravatar-Größe"
+
+#: translate.php:471
+msgid "Show Author Gravatar"
+msgstr "Autor-Gravatar anzeigen"
+
+#: translate.php:470
+msgid "Exclude Sticky Posts?"
+msgstr "Fixierte Beiträge ausschließen?"
+
+#: translate.php:469
+msgid "Exclude Previously Displayed Posts?"
+msgstr "Zuvor angezeigte Beiträge ausschließen?"
+
+#: translate.php:468
+msgid "Ascending (1, 2, 3)"
+msgstr "Aufsteigend (1, 2, 3)"
+
+#: translate.php:467
+msgid "Descending (3, 2, 1)"
+msgstr "Absteigend (3, 2, 1)"
+
+#: translate.php:466
+msgid "Sort Order"
+msgstr "Sortierung"
+
+#: translate.php:465
+msgid "Random"
+msgstr "Zufallsauswahl"
+
+#: translate.php:464
+msgid "Comment Count"
+msgstr "Anzahl Kommentare"
+
+#: translate.php:463
+msgid "ID"
+msgstr "ID"
+
+#: translate.php:462
+msgid "Parent"
+msgstr "Übergeordn."
+
+#: translate.php:461
+msgid "Date"
+msgstr "Datum"
+
+#: translate.php:460
+msgid "Order By"
+msgstr "Sortieren nach"
+
+#: translate.php:459
+msgid "Number of Posts to Offset"
+msgstr "Offset (Abstand) für Beitragsanzeige"
+
+#: translate.php:458
+msgid "Number of Posts to Show"
+msgstr "Anzahl der anzuzeigenden Beiträge"
+
+#: translate.php:457
+msgid "Category"
+msgstr "Kategorie"
+
+#: translate.php:456
+msgid "Genesis - Featured Posts"
+msgstr "Genesis - Featured Beiträge"
+
+#: translate.php:455
+msgid "Displays featured posts with thumbnails"
+msgstr "Zeigt \"Featured\"-Beiträge mit Thumbnails"
+
+#: translate.php:454
+msgid "More Posts from this Category"
+msgstr "Mehr Beiträge aus dieser Kategorie?"
+
+#: translate.php:453
+msgid "[Read More...]"
+msgstr "[Weiterlesen...]"
+
+#: translate.php:452
+msgid "By"
+msgstr "von"
+
+#: translate.php:451
+msgid "More Text"
+msgstr "Mehr-Text"
+
+#: translate.php:450
+msgid "Content Character Limit"
+msgstr "Maximale Zeichenanzahl"
+
+#: translate.php:449
+msgid "Show Page Content"
+msgstr "Seiteninhalt anzeigen"
+
+#: translate.php:448
+msgid "Show Page Title"
+msgstr "Seitentitel anzeigen"
+
+#: translate.php:447
+msgid "Center"
+msgstr "Zentriert"
+
+#: translate.php:446
+msgid "Image Alignment"
+msgstr "Bildausrichtung"
+
+#: translate.php:445
+msgid "Image Size"
+msgstr "Bildgröße"
+
+#: translate.php:444
+msgid "Show Featured Image"
+msgstr "Featured-Bild anzeigen"
+
+#: translate.php:443
+msgid "Page"
+msgstr "Seite"
+
+#: translate.php:442
+msgid "Title"
+msgstr "Titel"
+
+#: translate.php:441
+msgid "(no title)"
+msgstr "(kein Titel)"
+
+#: translate.php:440
+msgid "Genesis - Featured Page"
+msgstr "Genesis - Featured Seite"
+
+#: translate.php:439
+msgid "Displays featured page with thumbnails"
+msgstr "Zeigt \"Featured\"-Beiträge mit Thumbnails"
+
+#: translate.php:437
+msgid "Secondary Sidebar Widget Area"
+msgstr "Zweite Sidebar Widget-Area (Secondary)"
+
+#: translate.php:436
+msgid "Primary Sidebar Widget Area"
+msgstr "Erste Sidebar Widget-Area (Primary)"
+
+#: translate.php:435
+msgid "Search"
+msgstr "Suche"
+
+#: translate.php:434
+msgid "Search this website"
+msgstr "Webseite durchsuchen"
+
+#: translate.php:433
+msgid "Current page"
+msgstr "Aktuelle Seite"
+
+#: translate.php:432
+msgid "Page "
+msgstr "Seite"
+
+#: translate.php:431
+msgid "Next Page"
+msgstr "Nächste Seite"
+
+#: translate.php:430
+msgid "Previous Page"
+msgstr "Vorherige Seite"
+
+#: translate.php:429
+msgid "About"
+msgstr "Über"
+
+#: translate.php:428
+msgid "Sorry, no content matched your criteria."
+msgstr "Es wurden keine Inhalte gefunden, welche Deinen Kriterien entsprechen."
+
+#: translate.php:427
+msgid "[Read more...]"
+msgstr "[Weiterlesen...]"
+
+#: translate.php:426
+msgid "Comments"
+msgstr "Kommentare"
+
+#: translate.php:425
+msgid "Posts"
+msgstr "Beiträge"
+
+#: translate.php:424
+msgid "Read more"
+msgstr "Weiterlesen"
+
+#: translate.php:423
+msgid "Skip links"
+msgstr "Sprunganker-Links"
+
+#: translate.php:422
+msgid "Skip to footer"
+msgstr "Zur Fußzeile springen"
+
+#: translate.php:421
+msgid "Skip to secondary sidebar"
+msgstr "Zur Zweit-Sidebar springen"
+
+#: translate.php:420
+msgid "Skip to primary sidebar"
+msgstr "Zur Haupt-Sidebar springen"
+
+#: translate.php:419
+msgid "Skip to content"
+msgstr "Zum Inhalt springen"
+
+#: translate.php:418
+msgid "Skip to primary navigation"
+msgstr "Zur Hauptnavigation springen"
+
+#: translate.php:417
+msgid "on"
+msgstr "An"
+
+#: translate.php:416
+msgid "Copyright"
+msgstr "Urheberrecht"
+
+#: translate.php:415
+msgid "Speak Your Mind"
+msgstr "Deine Meinung ist uns wichtig"
+
+#: translate.php:414
+msgid "Website"
+msgstr "Webseite"
+
+#: translate.php:413
+msgid "Email"
+msgstr "E-Mail"
+
+#: translate.php:412
+msgid "Name"
+msgstr "Name"
+
+#: translate.php:411
+msgid "at"
+msgstr "um"
+
+#: translate.php:410
+msgid "Your comment is awaiting moderation."
+msgstr "Dein Kommentar muss noch moderiert werden."
+
+#: translate.php:409
+msgid "%1$s at %2$s"
+msgstr "%1$s um %2$s"
+
+#: translate.php:408
+msgid "says"
+msgstr "meint"
+
+#: translate.php:407
+msgid "<cite class=\"fn\">%s</cite> <span class=\"says\">%s:</span>"
+msgstr "<cite class=\"fn\">%s</cite> <span class=\"says\">%s:</span>"
+
+#: translate.php:406
+msgid "<h3>Trackbacks</h3>"
+msgstr "<h3>Trackbacks/ Pingbacks</h3>"
+
+#: translate.php:405
+msgid "<h3>Comments</h3>"
+msgstr "<h3>Kommentare</h3>"
+
+#: translate.php:404
+msgid "(Edit)"
+msgstr "(Bearbeiten)"
+
+#: translate.php:403
+msgid "Filed Under: "
+msgstr "Kategorie: "
+
+#: translate.php:402
+msgid "Tagged With: "
+msgstr "Stichworte: "
+
+#: translate.php:401
+msgid "Leave a Comment"
+msgstr "Kommentar verfassen"
+
+#: translate.php:400
+msgid "1 Comment"
+msgstr "1 Kommentar"
+
+#: translate.php:399
+msgid "% Comments"
+msgstr "% Kommentare"
+
+#: translate.php:398
+msgid "ago"
+msgstr "vor"
+
+#: translate.php:397
+msgid "Log out"
+msgstr "Abmelden"
+
+#: translate.php:396
+msgid "Log in"
+msgstr "Anmelden"
+
+#: translate.php:395
+msgid "by"
+msgstr "von"
+
+#: translate.php:394
+msgid "Return to top of page"
+msgstr "Nach oben"
+
+#: translate.php:393
+msgid "Are you sure you want to reset?"
+msgstr "Bist Du sicher, dass Du die Einstellungen zurücksetzen möchtest?"
+
+#: translate.php:391
+msgid "The changes you made will be lost if you navigate away from this page."
+msgstr "Die Veränderungen, die Du hier vornimmst, werden verlorengehen, wenn Du diese Seite verlässt."
+
+#: translate.php:390
+msgid "Select / Deselect All"
+msgstr "Alles auswählen / nicht auswählen"
+
+#: translate.php:389
+msgid "Secondary Navigation Menu"
+msgstr "Zweit-Navigations-Menü"
+
+#: translate.php:388
+msgid "Primary Navigation Menu"
+msgstr "Haupt-Navigations-Menü"
+
+#: translate.php:387
+msgid "Widgets in this widget area will display after single entries."
+msgstr "Widgets in diesem Widgetbereich werden nach dem Inhalt von Einzelbeiträgen angezeigt."
+
+#: translate.php:386
+msgid "After Entry"
+msgstr "Nach Beitragsinhalt"
+
+#: translate.php:385
+msgid "Footer %d widget area."
+msgstr "%d. Widget-Bereich in der Fußzeile (Footer)."
+
+#: translate.php:384
+msgid "Footer %d"
+msgstr "Fußzeile (Footer) %d"
+
+#: translate.php:380
+msgid "Header Right"
+msgstr "Kopfzeile rechts"
+
+#: translate.php:379
+msgid "Header Left"
+msgstr "Kopfzeile links"
+
+#: translate.php:377
+msgid "Genesis %s is available for %s"
+msgstr "Genesis %s ist verfügbar zum %s"
+
+#: translate.php:375
+msgid "Click here to complete the upgrade"
+msgstr "Klicke hier, um die Aktualisierung abzuschließen"
+
+#: translate.php:373
+msgid "Dismiss"
+msgstr "Ausblenden"
+
+#: translate.php:371
+msgid "Main navigation"
+msgstr "Hauptnavigation"
+
+#: translate.php:370
+msgid "Secondary Sidebar"
+msgstr "Zweit-Sidebar (Secondary)"
+
+#: translate.php:369
+msgid "Primary Sidebar"
+msgstr "Haupt-Sidebar (Primary)"
+
+#: translate.php:368
+msgid "No Label Selected"
+msgstr "Kein Label ausgewählt"
+
+#: translate.php:367
+msgid "Secondary Sidebar, Content, Primary Sidebar"
+msgstr "Zweit-Sidebar, Inhalt, Haupt-Sidebar"
+
+#: translate.php:366
+msgid "Secondary Sidebar, Primary Sidebar, Content"
+msgstr "Zweit-Sidebar, Haupt-Sidebar, Inhalt"
+
+#: translate.php:365
+msgid "Content, Primary Sidebar, Secondary Sidebar"
+msgstr "Inhalt, Haupt-Sidebar, Zweit-Sidebar"
+
+#: translate.php:364
+msgid "Primary Sidebar, Content"
+msgstr "Haupt-Sidebar, Inhalt"
+
+#: translate.php:363
+msgid "Content, Primary Sidebar"
+msgstr "Inhalt, Haupt-Sidebar"
+
+#: translate.php:362
+msgid "Recent Posts:"
+msgstr "Neueste Beiträge:"
+
+#: translate.php:361
+msgid "Monthly:"
+msgstr "Monatlich:"
+
+#: translate.php:360
+msgid "Authors:"
+msgstr "Autoren:"
+
+#: translate.php:359
+msgid "Categories:"
+msgstr "Kategorien:"
+
+#: translate.php:358
+msgid "Pages:"
+msgstr "Seiten:"
+
+#: translate.php:357
+msgid "about "
+msgstr "Über"
+
+#: translate.php:356
+msgid "decimal or hexidecimal entities"
+msgstr "dezimale oder hexadezimale Entitäten"
+
+#: translate.php:355
+msgid "data in style sheet files"
+msgstr "Daten in Stylesheet-Dateien"
+
+#: translate.php:353
+msgid "Genesis database upgraded."
+msgstr "Die Genesis-Datenbank wurde aktualisiert."
+
+#: translate.php:352
+msgid "Not found: "
+msgstr "Nicht gefunden: "
+
+#: translate.php:351
+msgid "Search for "
+msgstr "Suche nach "
+
+#: translate.php:350
+msgid "Archives for "
+msgstr "Archiv für "
+
+#: translate.php:349
+msgid "You are here: "
+msgstr "Aktuelle Seite: "
+
+#: translate.php:348
+msgid " <span aria-label=\"breadcrumb separator\">/</span> "
+msgstr " <span aria-label=\"breadcrumb separator\">/</span> "
+
+#: translate.php:347
+msgid "Home"
+msgstr "Start"
+
+#: translate.php:345
+msgid "Go to SEO Settings &rarr;"
+msgstr "Zu den SEO-Einstellungen &rarr;</a><br /><br /><h4>Hinweis des Übersetzers:</h4><br />Das Bereitstellen und regelmäßige Aktualisieren dieser deutschen Übersetzungen &ndash; durch David Decker DECKERWEB seit 2010 &ndash; kostet Zeit und Geld. Wenn Du diesen Dienst für die Anwender-Community unterstützen willst, freue ich mich über jede Spende! <em>&mdash; Danke, David Decker</em><br /><strong>&rarr; <a href=\"http://deckerweb.de/sprachdateien/spenden/\" target=\"_new\">Deine Spende für Genesis-Übersetzungen</a></strong><a>"
+
+#: translate.php:344
+msgid "Go to Theme Settings &rarr;"
+msgstr "Zu den Theme-Einstellungen &rarr;"
+
+#: translate.php:343
+msgid "Contributor"
+msgstr "Entwickler (Community)"
+
+#: translate.php:342
+msgid "Contributors"
+msgstr "Mitwirkende"
+
+#: translate.php:341
+msgid "Lead Developer"
+msgstr "Leitender Entwickler"
+
+#: translate.php:340
+msgid "Project Leads"
+msgstr "Leitende Entwickler/ Herausgeber"
+
+#: translate.php:338
+msgid "WordPress Feature Compatibility"
+msgstr "Kompatibilität mit WordPress-Funktionen"
+
+#: translate.php:336
+msgid "Schema.org Microdata Improvements"
+msgstr "Verbesserungen bei Schema.org Mikrodaten"
+
+#: translate.php:334
+msgid "Accessibility"
+msgstr "Barrierefreiheit"
+
+#: translate.php:333
+msgid "What&#8217;s New"
+msgstr "Was neu ist"
+
+#: translate.php:332
+msgid "Congratulations! You're now running Genesis %s."
+msgstr "Glückwunsch! Deine Webseite läuft jetzt mit Genesis, Version %s."
+
+#: translate.php:331
+msgid "Welcome to Genesis %s"
+msgstr "Willkommen bei Genesis Version %s"
+
+#: translate.php:330
+msgid "Author Archive SEO Settings"
+msgstr "Autorenarchiv SEO-Einstellungen"
+
+#: translate.php:329
+msgid "Enable Author Box on this User's Archives?"
+msgstr "Autoren-Box bei Archivübersichten dieses Benutzers aktivieren?"
+
+#: translate.php:328
+msgid "Enable Author Box on this User's Posts?"
+msgstr "Autoren-Box bei Beiträgen dieses Benutzers aktivieren?"
+
+#: translate.php:327
+msgid "Author Box"
+msgstr "Autoren-Box"
+
+#: translate.php:326
+msgid "This text will be the first paragraph, and display on the first page"
+msgstr "Dieser Text wird der erste Absatz sein und auf der ersten Seite angezeigt werden"
+
+#: translate.php:325
+msgid "Custom Description Text"
+msgstr "Nutzerspezifischer Beschreibungstext"
+
+#: translate.php:324
+msgid "Will display in the %s tag at the top of the first page"
+msgstr "Wird angezeigt beim %s-Stichwort, zu Beginn der ersten Seite"
+
+#: translate.php:323
+msgid "Custom Archive Headline"
+msgstr "Nutzerspezifische Archivseiten-Überschrift"
+
+#: translate.php:322
+msgid "These settings apply to this author's archive pages."
+msgstr "Diese Einstellungen werden auf die Archivübersichtsseiten dieses Benutzers angewendet."
+
+#: translate.php:321
+msgid "Author Archive Settings"
+msgstr "Autorenarchiv-Einstellungen"
+
+#: translate.php:320
+msgid "Enable Import/Export Submenu?"
+msgstr "Import-/ Export-Untermenü aktivieren?"
+
+#: translate.php:319
+msgid "Enable SEO Settings Submenu?"
+msgstr "SEO-Einstellungen Untermenü aktivieren?"
+
+#: translate.php:318
+msgid "Enable Genesis Admin Menu?"
+msgstr "Genesis Administratoren-Menüs aktivieren?"
+
+#: translate.php:317
+msgid "Genesis Admin Menus"
+msgstr "Genesis Administratoren-Menüs"
+
+#: translate.php:316
+msgid "User Permissions"
+msgstr "Benutzer-Berechtigungen"
+
+#: translate.php:315
+msgid "Google+"
+msgstr "Google+"
+
+#: translate.php:314
+msgid "Footer Scripts"
+msgstr "Fußzeilen-Skripte"
+
+#: translate.php:312
+msgid "Header Scripts"
+msgstr "Kopfzeilen-Skripte"
+
+#: translate.php:311
+msgid "Posts per Page"
+msgstr "Beiträge pro Seite"
+
+#: translate.php:310
+msgid "Category IDs, comma separated - 1,2,3 for example"
+msgstr "Kategorie-IDs, kommagetrennt - z.B. 1,2,3"
+
+#: translate.php:309
+msgid "Exclude Categories"
+msgstr "Kategorien ausschließen"
+
+#: translate.php:308
+msgid "All Categories"
+msgstr "Alle Kategorien"
+
+#: translate.php:307
+msgid "Display which category:"
+msgstr "Welche Kategorien sollen angezeigt werden:"
+
+#: translate.php:306
+msgid "Display Category"
+msgstr "Angezeigte Kategorie"
+
+#: translate.php:304
+msgid "Entry Pagination"
+msgstr "Beitragspaginierung"
+
+#: translate.php:303
+msgid "Image Alignment:"
+msgstr "Bildausrichtung:"
+
+#: translate.php:302
+msgid "Image Size:"
+msgstr "Bildgröße:"
+
+#: translate.php:301
+msgid "Include the Featured Image?"
+msgstr "Featured-Bild einschließen?"
+
+#: translate.php:300
+msgid "Featured Image"
+msgstr "Empfohlenes Bild"
+
+#: translate.php:299
+msgid "characters"
+msgstr "Zeichen"
+
+#: translate.php:298
+msgid "Limit content to"
+msgstr "Inhalt begrenzen auf"
+
+#: translate.php:297
+msgid "Entry excerpts"
+msgstr "Beitragstextauszüge"
+
+#: translate.php:296
+msgid "Entry content"
+msgstr "Beitragsinhalt"
+
+#: translate.php:295
+msgid "Display"
+msgstr "Anzeige"
+
+#: translate.php:294
+msgid "Enable Trackbacks"
+msgstr "Trackbacks aktivieren"
+
+#: translate.php:293
+msgid "on pages?"
+msgstr "auf Seiten?"
+
+#: translate.php:292
+msgid "on posts?"
+msgstr "in Beiträgen?"
+
+#: translate.php:291
+msgid "Enable Comments"
+msgstr "Kommentare aktivieren"
+
+#: translate.php:290
+msgid "Attachment/Media"
+msgstr "Anhang/ Medien"
+
+#: translate.php:289
+msgid "404 Page"
+msgstr "404-Fehlerseiten"
+
+#: translate.php:288
+msgid "Archives"
+msgstr "Archiv-Seiten"
+
+#: translate.php:287
+msgid "Pages"
+msgstr "Seiten"
+
+#: translate.php:286
+msgid "Single Posts"
+msgstr "Einzelne Beiträge"
+
+#: translate.php:285
+msgid "Homepage"
+msgstr "Homepage"
+
+#: translate.php:284
+msgid "Posts Page"
+msgstr "Blog/ Beitragsseite"
+
+#: translate.php:283
+msgid "Front Page"
+msgstr "Startseite"
+
+#: translate.php:282
+msgid "Enable Breadcrumbs on:"
+msgstr "Breadcrumbs aktivieren:"
+
+#: translate.php:281
+msgid "Twitter Link Text:"
+msgstr "Twitter Link-Text (Bezeichnung)"
+
+#: translate.php:280
+msgid "Enter Twitter ID:"
+msgstr "Twitter-ID eingeben (Nutzername)"
+
+#: translate.php:279
+msgid "Twitter link"
+msgstr "Twitter-Link"
+
+#: translate.php:278
+msgid "Search form"
+msgstr "Suchformular"
+
+#: translate.php:277
+msgid "RSS feed links"
+msgstr "RSS-Feed-Links"
+
+#: translate.php:276
+msgid "Today's date"
+msgstr "Das heutige Datum"
+
+#: translate.php:275
+msgid "None"
+msgstr "Keine"
+
+#: translate.php:273
+msgid "Primary Navigation Extras"
+msgstr "'Extras auf rechter Seite' für die Haupt-Navigation werden direkt auf der rechten Seite beim Hauptmenü angezeigt."
+
+#: translate.php:272
+msgid "Load Superfish Script?"
+msgstr "'Superfish'-Skript laden? (JavaScript für elegante Aufklappmenüs)"
+
+#: translate.php:271
+msgid "Superfish"
+msgstr "Superfish"
+
+#: translate.php:270
+msgid "Dynamic text"
+msgstr "Dynamischer Text"
+
+#: translate.php:268
+msgid "Redirect Custom Comments Feed?"
+msgstr "Kommentarfeed-Weiterleitung?"
+
+#: translate.php:267
+msgid "Enter your custom comments feed URL:"
+msgstr "Benutzerspezifische Kommentar-Feed-URL (Adresse) eingeben:"
+
+#: translate.php:266
+msgid "Redirect Custom Feed?"
+msgstr "Zu benutzerdefiniertem Feed weiterleiten?"
+
+#: translate.php:265
+msgid "Enter your custom feed URL:"
+msgstr "Benutzerspezifische Feed-URL (Adresse) eingeben:"
+
+#: translate.php:263
+msgid "Color Style:"
+msgstr "Farbschema:"
+
+#: translate.php:261
+msgid "Email address"
+msgstr "E-Mail-Adresse"
+
+#: translate.php:260
+msgid "Enable Automatic Updates"
+msgstr "Automatische Aktualisierungen zulassen"
+
+#: translate.php:259
+msgid "Updates"
+msgstr "Updates"
+
+#: translate.php:257
+msgid "Released:"
+msgstr "Veröffentlicht am:"
+
+#: translate.php:256
+msgid "Version"
+msgstr "Version:"
+
+#: translate.php:255
+msgid "Blog Page Template"
+msgstr "Blog Seitenvorlage (Template)"
+
+#: translate.php:254
+msgid "Color Style"
+msgstr "Farbschema"
+
+#: translate.php:253
+msgid "Home Pages"
+msgstr "Startseiten-Info"
+
+#: translate.php:245
+msgid "Most Genesis child themes include a custom home page."
+msgstr "Die meisten offiziellen Genesis Child Themes kommen mit einer angepassten Startseite (Homepage)."
+
+#: translate.php:244
+msgid "How Home Pages Work"
+msgstr "Wie Startseiten (Homepages) funktionieren"
+
+#: translate.php:242
+msgid "Header and Footer Scripts"
+msgstr "Header- und Footer-Scripte"
+
+#: translate.php:237
+msgid "Blog Page"
+msgstr "Blog Seitenvorlage (Template)"
+
+#: translate.php:221
+msgid "Today's date displays the current date"
+msgstr "<em>Das heutige Datum</em> zeigt das aktuelle Datum an."
+
+#: translate.php:219
+msgid "Navigation"
+msgstr "Navigation (Menüs)"
+
+#: translate.php:216
+msgid "Header"
+msgstr "Kopfzeile (Header)"
+
+#: translate.php:212
+msgid "Default Layout"
+msgstr "Standard-Layout"
+
+#: translate.php:208
+msgid "Custom Feeds"
+msgstr "Nutzerspezifische Feeds"
+
+#: translate.php:203
+msgid "Information"
+msgstr "Information"
+
+#: translate.php:201
+msgid "Follow me on Twitter"
+msgstr "Folge mir auf Twitter"
+
+#: translate.php:200
+msgid "Choose Layout"
+msgstr "Layout auswählen"
+
+#: translate.php:199
+msgid "Apply %s to this archive?"
+msgstr "%s zu diesem Archiv hinzufügen?"
+
+#: translate.php:198
+msgid "Robots Meta"
+msgstr "Robots Meta"
+
+#: translate.php:197
+msgid "Apply %s to your site?"
+msgstr "%s für Deine Seite aktivieren?"
+
+#: translate.php:196
+msgid "Directories"
+msgstr "Verzeichnisse"
+
+#: translate.php:195
+msgid "Apply %s to Entire Site?"
+msgstr "%s auf der ganzen Seite aktivieren?"
+
+#: translate.php:194
+msgid "Archiving"
+msgstr "Archivierung"
+
+#: translate.php:193
+msgid "Apply %s to Search Archives?"
+msgstr "%s für Such-Seiten/ -Archive aktivieren?"
+
+#: translate.php:192
+msgid "Apply %s to Date Archives?"
+msgstr "%s für Datumsbasierte Archive aktivieren?"
+
+#: translate.php:191
+msgid "Apply %s to Author Archives?"
+msgstr "%s für Autoren-Archive aktivieren?"
+
+#: translate.php:190
+msgid "Apply %s to Tag Archives?"
+msgstr "%s für Stichwort-Archive (Tags) aktivieren?"
+
+#: translate.php:189
+msgid "Apply %s to Category Archives?"
+msgstr "%s für Kategorie-Archive aktivieren?"
+
+#: translate.php:188
+msgid "Indexing"
+msgstr "Indexierung"
+
+#: translate.php:186
+msgid "Include Shortlink tag?"
+msgstr "Kurz-URL Tag hinzufügen?"
+
+#: translate.php:185
+msgid "Shortlink Tag"
+msgstr "Kurz-URL Tag (Shortlink):"
+
+#: translate.php:184
+msgid "Include Windows Live Writer Support Tag?"
+msgstr "Windows Live Writer (WLW) Support Tag hinzufügen?"
+
+#: translate.php:183
+msgid "Windows Live Writer"
+msgstr "Windows Live Writer"
+
+#: translate.php:182
+msgid "Adjacent Posts %s link tags"
+msgstr "%s Link Tags der benachbarten Beiträge"
+
+#: translate.php:181
+msgid "Relationship Link Tags"
+msgstr "Beziehungs-Link-Tags:"
+
+#: translate.php:179
+msgid "Apply %s to the homepage?"
+msgstr "%s der Webseite zuweisen?"
+
+#: translate.php:178
+msgid "Keywords are generally ignored by Search Engines."
+msgstr "Schlüsselwörter (Keywords) werden allgemein ignoriert von Suchmaschinen."
+
+#: translate.php:177
+msgid "Meta Keywords:"
+msgstr "Meta-Schlüsselwörter:"
+
+#: translate.php:175
+msgid "Meta Description:"
+msgstr "Metabeschreibung:"
+
+#: translate.php:174
+msgid "Add site description (tagline) to %s on home page?"
+msgstr "Webseiten-Beschreibung (Slogan) zum %s auf der Startseite hinzufügen?"
+
+#: translate.php:172
+msgid "Document Title:"
+msgstr "Dokumententitel:"
+
+#: translate.php:171
+msgid "I'll manually wrap my own text on the homepage"
+msgstr "Ich werde meinen eigenen Text auf der Homepage einbinden."
+
+#: translate.php:170
+msgid "Site Description (Tagline)"
+msgstr "Webseiten-Beschreibung (Slogan)"
+
+#: translate.php:169
+msgid "Site Title"
+msgstr "Seitentitel"
+
+#: translate.php:168
+msgid "Primary Title %s"
+msgstr "Haupt-Titel %s"
+
+#: translate.php:167
+msgid "Determines which side the added title text will go on."
+msgstr "Legt fest, auf welche Seite der hinzugefügte Text angefügt wird."
+
+#: translate.php:166
+msgid "Additions on right"
+msgstr "Zusätze auf rechter Seite"
+
+#: translate.php:165
+msgid "Additions on left"
+msgstr "Zusätze auf linker Seite"
+
+#: translate.php:164
+msgid "Document Title Order"
+msgstr "Titelreihenfolge des Dokuments"
+
+#: translate.php:162
+msgid "Document Title Separator:"
+msgstr "Dokumententitel Trennzeichen:"
+
+#: translate.php:161
+msgid "Add site name to %s on inner pages?"
+msgstr "Webseiten-Titel/ -Name zum %s auf den Unterseiten hinzufügen?"
+
+#: translate.php:160
+msgid "Use semantic HTML5 page and section headings throughout site?"
+msgstr "Semantische HTML5 Seiten- und Sektionsüberschriften für die Webseite verwenden?"
+
+#: translate.php:159
+msgid "Section Headings"
+msgstr "Sektionsüberschriften"
+
+#: translate.php:158
+msgid "Sitewide Settings"
+msgstr "Webseiten-weite Einstellungen"
+
+#: translate.php:152
+msgid "Document Head Settings"
+msgstr "Dokumenten-Kopf-Einstellungen"
+
+#: translate.php:145
+msgid "Homepage Settings"
+msgstr "Startseite-Einstellungen"
+
+#: translate.php:140
+msgid "Doctitle Settings"
+msgstr "Dokumententitel-Einstellungen"
+
+#: translate.php:139
+msgid "Below you'll find a few succinct notes on the options for each box:"
+msgstr "Im Folgenden findest Du ein paar kurze Erläuterungen zu den Optionen für jede Box:"
+
+#: translate.php:134
+msgid "Error saving settings."
+msgstr "Fehler beim Speichern der Einstellungen."
+
+#: translate.php:133
+msgid "Settings reset."
+msgstr "Einstellungen zurückgesetzt."
+
+#: translate.php:132
+msgid "Settings saved."
+msgstr "Einstellungen gespeichert."
+
+#: translate.php:131
+msgid "Reset Settings"
+msgstr "Einstellungen zurücksetzen"
+
+#: translate.php:130
+msgid "Save Settings"
+msgstr "Einstellungen speichern"
+
+#: translate.php:129
+msgid "Genesis - SEO Settings"
+msgstr "Genesis - SEO Einstellungen"
+
+#: translate.php:128
+msgid "Custom Post Class"
+msgstr "Benutzerdefinierte Beitrags-CSS-Klasse"
+
+#: translate.php:126
+msgid "Page-specific Scripts"
+msgstr "Seiten-spezifische Skripte"
+
+#: translate.php:125
+msgid "Scripts"
+msgstr "Skripte"
+
+#: translate.php:124
+msgid "Apply %s to this post/page"
+msgstr "%s diesen Beiträgen/ Seiten zuweisen"
+
+#: translate.php:123
+msgid "Robots Meta Settings"
+msgstr "Robots Meta-Einstellungen"
+
+#: translate.php:122
+msgid "Custom Redirect URL"
+msgstr "Benutzerdefinierte Umleitungs-URL"
+
+#: translate.php:121
+msgid "Custom Canonical URL"
+msgstr "Individuelle Canonical URL"
+
+#: translate.php:120
+msgid "Read more about"
+msgstr "Mehr dazu erfahren"
+
+#: translate.php:119
+msgid "Canonical URL"
+msgstr "Kanonische URL"
+
+#: translate.php:118
+msgid "Characters Used: %s"
+msgstr "Bis jetzt benutzte Zeichenanzahl: %s"
+
+#: translate.php:117
+msgid "Document Title"
+msgstr "Dokumenten-Titel"
+
+#: translate.php:116
+msgid "Theme SEO Settings"
+msgstr "Theme SEO-Einstellungen"
+
+#: translate.php:115
+msgid "No export options available."
+msgstr "Keine Export-Einstellungen verfügbar."
+
+#: translate.php:114
+msgid "Theme Settings"
+msgstr "Theme-Einstellungen"
+
+#: translate.php:113
+msgid "There was a problem importing your settings. Please try again."
+msgstr "Es gab ein Problem beim Importieren Deiner Einstellungen. Bitte versuche es noch einmal."
+
+#: translate.php:112
+msgid "Settings successfully imported."
+msgstr "Einstellungen erfolgreich importiert."
+
+#: translate.php:111
+msgid "Download Export File"
+msgstr "Export-Datei herunterladen"
+
+#: translate.php:108
+msgid "Export Genesis Settings File"
+msgstr "Genesis Einstellungen-Datei exportieren"
+
+#: translate.php:107
+msgid "Upload File and Import"
+msgstr "Datei hochladen und importieren"
+
+#: translate.php:106
+msgid "Upload File (Maximum Size: %s): "
+msgstr "Datei hochladen (Maximalgröße: %s):"
+
+#: translate.php:105
+msgid "Choose the file from your computer and click \"Upload file and Import\""
+msgstr "Wähle die Datei von Deinem Computer und klicke \"Hochladen und importieren\""
+
+#: translate.php:104
+msgid "Upload the data file (%s) from your computer and we'll import your settings."
+msgstr "Lade die Daten (%s) von Deinem Rechner hoch und wir werden Deine Einstellungen importieren."
+
+#: translate.php:103
+msgid "Import Genesis Settings File"
+msgstr "Genesis Einstellungen-Datei importieren"
+
+#: translate.php:102
+msgid "Genesis Tutorials"
+msgstr "Genesis Anleitungen (Tutorials) (Engl.)"
+
+#: translate.php:101
+msgid "Genesis Snippets"
+msgstr "Genesis Codeschnipsel (Engl.)"
+
+#: translate.php:100
+msgid "Link opens in a new window."
+msgstr "Link öffnet in neuem Tab/ Fenster."
+
+#: translate.php:99
+msgid "Get Support"
+msgstr "Support erhalten (Engl.)"
+
+#: translate.php:98
+msgid "For more information:"
+msgstr "Für weitere Informationen:"
+
+#: translate.php:97
+msgid "JSON"
+msgstr "JSON"
+
+#: translate.php:96
+msgid "JavaScript Object Notation"
+msgstr "JavaScript Object Notation"
+
+#: translate.php:94
+msgid "Export"
+msgstr "Exportieren"
+
+#: translate.php:93
+msgid "This cannot be undone"
+msgstr "Dies kann nicht rückgängig gemacht werden!"
+
+#: translate.php:90
+msgid "Import"
+msgstr "importieren"
+
+#: translate.php:87
+msgid "This allows you to import or export Genesis Settings."
+msgstr "Dies erlaubt es Dir, die Genesis Einstellungen zu exportieren und importieren."
+
+#: translate.php:86
+msgid "Import/Export"
+msgstr "Import/ Export"
+
+#: translate.php:85
+msgid "Genesis - Import/Export"
+msgstr "Genesis - Import/ Export"
+
+#: translate.php:84
+msgid "Numeric"
+msgstr "Numerisch"
+
+#: translate.php:83
+msgid "Previous / Next"
+msgstr "Zurück / Weiter"
+
+#: translate.php:82
+msgid "Post Navigation Type"
+msgstr "Art der Beitragsnavigation"
+
+#: translate.php:81
+msgid "Right"
+msgstr "Rechts"
+
+#: translate.php:80
+msgid "Left"
+msgstr "Links"
+
+#: translate.php:79
+msgid "- None -"
+msgstr "- Keine -"
+
+#: translate.php:78
+msgid "Featured image alignment"
+msgstr "Ausrichtung des ausgewählten Bildes"
+
+#: translate.php:77
+msgid "Featured image size"
+msgstr "Größe des ausgewählten Bildes"
+
+#: translate.php:76
+msgid "Display the featured image?"
+msgstr "Das ausgewählte Bild anzeigen?"
+
+#: translate.php:75
+msgid "Limit content to how many characters? (0 for no limit)"
+msgstr "Inhalt begrenzen auf wieviele Zeichen? (0 für keine Begrenzung)"
+
+#: translate.php:74
+msgid "Display post excerpts"
+msgstr "Nur Textauszüge anzeigen"
+
+#: translate.php:73
+msgid "Display post content"
+msgstr "Inhalt des Beitrags anzeigen"
+
+#: translate.php:72
+msgid "Select one of the following"
+msgstr "Wähle eine der folgenden Möglichkeiten"
+
+#: translate.php:70
+msgid "Content Archives"
+msgstr "Inhaltsarchive"
+
+#: translate.php:69
+msgid "Enable Trackbacks on Pages?"
+msgstr "Trackbacks für Seiten aktivieren?"
+
+#: translate.php:68
+msgid "Enable Trackbacks on Posts?"
+msgstr "Trackbacks für Beiträge aktivieren?"
+
+#: translate.php:67
+msgid "Enable Comments on Pages?"
+msgstr "Kommentare für Seiten aktivieren?"
+
+#: translate.php:66
+msgid "Enable Comments on Posts?"
+msgstr "Kommentare für Beiträge aktivieren?"
+
+#: translate.php:65
+msgid "Comments and Trackbacks"
+msgstr "Kommentare und Trackbacks"
+
+#: translate.php:64
+msgid "Breadcrumbs on Attachment/Media"
+msgstr "Breadcrumbs auf Seiten für Anhänge/ Medien"
+
+#: translate.php:63
+msgid "Breadcrumbs on 404 Page"
+msgstr "Breadcrumbs bei der 404-Fehlerseite"
+
+#: translate.php:62
+msgid "Breadcrumbs on Archives"
+msgstr "Breadcrumbs bei Inhaltsarchiven"
+
+#: translate.php:61
+msgid "Breadcrumbs on Pages"
+msgstr "Breadcrumbs auf Seiten"
+
+#: translate.php:60
+msgid "Breadcrumbs on Single Posts"
+msgstr "Breadcrumbs bei Einzelbeiträgen"
+
+#: translate.php:59
+msgid "Breadcrumbs on Posts Page"
+msgstr "Breadcrumbs auf der Beiträge-Seite"
+
+#: translate.php:58
+msgid "Breadcrumbs on Front Page"
+msgstr "Breadcrumbs auf der Startseite"
+
+#: translate.php:57
+msgid "Breadcrumbs on Homepage"
+msgstr "Breadcrumbs auf der Startseite"
+
+#: translate.php:56
+msgid "Breadcrumbs"
+msgstr "Breadcrumbs"
+
+#: translate.php:55
+msgid "Select Default Layout"
+msgstr "Standardlayout auswählen"
+
+#: translate.php:54
+msgid "Site Layout"
+msgstr "Webseiten-Layout"
+
+#: translate.php:53
+msgid "Default"
+msgstr "Standard"
+
+#: translate.php:52
+msgid "Select Color Style"
+msgstr "Farbstil auswählen"
+
+#: translate.php:51
+msgid "Color Scheme"
+msgstr "Farbschema"
+
+#: translate.php:50
+msgid "Image logo"
+msgstr "Bild als Logo"
+
+#: translate.php:49
+msgid "Dynamic Text"
+msgstr "Dynamischer Text"
+
+#: translate.php:48
+msgid "Use for site title/logo:"
+msgstr "Verwende für Webseitentitel/ -Logo:"
+
+#: translate.php:47
+msgid "When extending Genesis_Customizer_Base, you must create a register method."
+msgstr "Wenn die Klasse Genesis_Customizer_Base erweitert wird, musst Du eine Methode registrieren."
+
+#: translate.php:45
+msgid "These options can be extended or limited by the child theme."
+msgstr "Diese Optionen können von Child Themes sowie Plugins erweitert oder beschränkt werden."
+
+#: translate.php:44
+msgid "Full Width Content"
+msgstr "Inhalt in voller Breite"
+
+#: translate.php:43
+msgid "Sidebar Sidebar Content"
+msgstr "Sidebar-Sidebar-Inhalt"
+
+#: translate.php:42
+msgid "Content Sidebar Sidebar"
+msgstr "Inhalt-Sidebar-Sidebar"
+
+#: translate.php:41
+msgid "Sidebar Content Sidebar"
+msgstr "Sidebar-Inhalt-Sidebar"
+
+#: translate.php:40
+msgid "Sidebar Content"
+msgstr "Sidebar-Inhalt"
+
+#: translate.php:39
+msgid "Content Sidebar"
+msgstr "Inhalt-Sidebar"
+
+#: translate.php:32
+msgid "The Archive Headline sets the title seen on the archive page"
+msgstr "Die Archiv-Überschrift legt den Seitentitel fest, welcher auf der Archivseite erscheint."
+
+#: translate.php:31
+msgid "Custom Body Class"
+msgstr "Benutzerdefinierte Body-CSS-Klasse"
+
+#: translate.php:30
+msgid "Default Layout set in <a href=\"%s\">Theme Settings</a>"
+msgstr "Standard-Layout, eingestellt in den <a href=\"%s\">Theme-Einstellungen</a>"
+
+#: translate.php:29
+msgid "Select Layout"
+msgstr "Layout auswählen"
+
+#: translate.php:28
+msgid "Apply %s to this archive"
+msgstr "%s diesem Archiv zuweisen"
+
+#: translate.php:27
+msgid "Robots Meta Tags:"
+msgstr "Robots Meta-Tags:"
+
+#: translate.php:26
+msgid "Comma separated list"
+msgstr "Kommagetrennte Liste"
+
+#: translate.php:25
+msgid "Meta Keywords"
+msgstr "Meta Schlüsselwörter"
+
+#: translate.php:24
+msgid "Meta Description"
+msgstr "Meta Beschreibung"
+
+#: translate.php:23
+msgid "Custom Document Title"
+msgstr "Individueller Dokumenten-Titel"
+
+#: translate.php:22
+msgid "Leave empty if you do not want to display any intro text."
+msgstr "Leer lassen, wenn Du keinen Einführungstext anzeigen willst."
+
+#: translate.php:21
+msgid "Archive Intro Text"
+msgstr "Archiv-Einführungstext"
+
+#: translate.php:20
+msgid "Leave empty if you do not want to display a headline."
+msgstr "Leer lassen, wenn Du keine Überschrift anzeigen willst."
+
+#: translate.php:19
+msgid "Archive Headline"
+msgstr "Archivüberschrift"
+
+#: translate.php:18
+msgid "View the <a href=\"%s\">%s archive</a>."
+msgstr "Das <a href=\"%s\">%s Archiv</a> ansehen."
+
+#: translate.php:17
+msgid "Layout Settings"
+msgstr "Layout-Einstellungen"
+
+#: translate.php:16
+msgid "SEO Settings"
+msgstr "SEO-Einstellungen"
+
+#: translate.php:15
+msgid "Archive"
+msgstr "Archiv"
+
+#: translate.php:14
+msgid "Archive Settings"
+msgstr "Archiv-Einstellungen"
+
+#: translate.php:13
+msgid "Reader Interactions"
+msgstr "Leser-Interaktionen"
+
+#: translate.php:12
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "Dieser Beitrag ist durch ein Passwort geschützt. Gib das Kennwort ein, um die Kommentare zu sehen."
+
+#: translate.php:11
+msgid "Sitemap"
+msgstr "Sitemap"
+
+#: translate.php:8
+msgid "Not found, error 404"
+msgstr "Inhalt nicht gefunden, Fehler 404 (Systemmeldung)"
+
+#: i18n-module.php:195
+msgid "Translation of %s"
+msgstr "Übersetzung von %s"
+
+#: i18n-module.php:174
+msgid "You're using the Genesis Framework in a language we don't support yet. We'd love for %2$s to be translated in that language too, but unfortunately, it isn't right now. <h3>You can change that!</h3> Visit %4$s to help translate it, or if you need instructions, visit our <a target=\"_blank\" href=\"https://thmmx.link/gtpage/\">tutorial here</a>."
+msgstr "Du benutzt das Genesis Framework in einer Sprache die wir noch nicht unterstützen. Wir würden uns freuen wenn %2$s auch in diese Sprache übersetzt wird, aber leider ist es das im Moment nicht. <h3>Du kannst das ändern!</h3> Besuche %4$s um bei der Übersetzung zu helfen, falls du Hilfe benötigst nutze unser <a target=\"_blank\" href=\"https://thmmx.link/gtpage/\">Tutorial</a>."
+
+#: i18n-module.php:172
+msgid "You're using WordPress in %1$s. While %2$s has been translated to %1$s for %3$d%%, it's not been shipped with the plugin yet. You can help! Visit %4$s to help complete the translation!"
+msgstr "Du benutzt WordPress in %1$s. %2$s wurde für %1$s mit %3$d%% übersetzt,aber wurde bisher nicht mit dem Plugin ausgeliefert. Du kannst helfen! Besuche%4$s um uns zu helfen die Übersetzung zu vervollständigen!"
+
+#: i18n-module.php:170
+msgid "As you can see, there is a translation of this plugin in %1$s. This translation is currently %3$d%% complete. We need your help to make it complete and to fix any errors. If you would like to help, please visit %4$s!"
+msgstr "Wie du sehen kannst gibt es eine Übersetzung des Plugins in %1$s. Diese Übersetzung ist momentan zu %3$d%% vollständig. Wir brauchen deine Hilfe um sie zu vervollständigen und alle Errors zu beseitigen. Falls du helfen möchtest besuche %4$s!"
+
+#: admin-page.php:38
+msgid "Please visit <a target=\"_blank\" href=\"https://thmmx.link/gtpage/\">our Knowledge Base</a> for instruction on how to help."
+msgstr "Besuche <a target=\"_blank\" href=\"https://thmmx.link/gtpage/\">unsere Knowledge Base</a> um zu erfahren wie du helfen kannst."
+
+#: admin-page.php:37
+msgid "<strong>You can help!</strong> Please take the time to translate this plugin which includes all the strings for the Genesis Framework. We have a tutorial available for anyone wanting to contribute translating the Genesis Framework."
+msgstr "<strong>Du kannst helfen!</strong> Bitte nehme dir die Zeit und übersetzte dieses Plugin, es enthält alle übersetzbaren Textbausteine des Genesis Frameworks. Wir haben ein Tutorial für jeden vorbereitet der zu der Übersetzung des Genesis Frameworks beitragen möchte."
+
+#: admin-page.php:36
+msgid "Genesis Translations will soon rely on the same mechanism used to provide and update WordPress's core, plugins and themes translations files."
+msgstr "Genesis Translations wird bald die selben Mechanismen nutzen, die auch für die Bereitstellung und Updates des WordPress's core, der Plugins und der Theme Übersetzungsdateien genutzt werden."
+
+#: admin-page.php:16
+msgid "Translations"
+msgstr "Übersetzungen"
+
+#: admin-page.php:15 admin-page.php:33
+msgid "Genesis Translations by ThemeMix"
+msgstr "Genesis Übersetzung"
+
+#. Author URI of the plugin/theme
+msgid "https://thememix.com/"
+msgstr "https://thememix.com/"
+
+#: translate.php:509
+msgid "The industry standard for Premium WordPress Themes. Please do not modify this style sheet, as it might get overridden in updates."
+msgstr "Der Industriestandard für Premium WordPress Themes. Bitte bearbeite dieses Stylesheet NICHT, da es bei Aktualisierungen überschrieben wird."
+
+#: translate.php:503
+msgid "Choose your extended \"About Me\" page from the list below. This will be the page linked to at the end of the about me section."
+msgstr "Wähle Deine \"Über mich\"-Seite aus der Liste unten aus, auf die am Ende des Abschnitts \"über mich\" verlinkt wird."
+
+#: translate.php:494
+msgid "Select a user. The email address for this account will be used to pull the Gravatar image."
+msgstr "Wähle einen Benutzer. Die E-Mail-Adresse für dieses Konto wird für die Anzeige des Gravatar-Bildes verwendet."
+
+#: translate.php:487
+msgid "To display an unordered list of more posts from this category, please fill out the information below"
+msgstr "Um eine ungeordnete Liste aus dieser Kategorie anzuzeigen, fülle bitte die unten angegebenen Informationen aus"
+
+#: translate.php:438
+msgid "This is the %s. You can add content to this area by visiting your <a href=\"%s\">Widgets Panel</a> and adding new widgets to this area."
+msgstr "Dies ist die %s. Du kannst Inhalte hinzufügen, indem Dein Dein <a href=\"%s\">Widgets Panel</a> besuchst und neue Widgets zu diesem Bereich hinzufügst."
+
+#: translate.php:392
+msgid "Updating Genesis will overwrite the current installed version of Genesis. Are you sure you want to update?. \"Cancel\" to stop, \"OK\" to update."
+msgstr "Eine Aktualisierung von Genesis überschreibt die aktuell installierte Genesis-Version. Bist Du sicher, dass Du die Aktualisierung starten möchtest? \"Abbrechen\", um den Vorgang zu stoppen, oder \"OK\", um die Aktualisierung zu beginnen."
+
+#: translate.php:383
+msgid "This is the secondary sidebar if you are using a three column site layout option."
+msgstr "Dies ist die zweite Sidebar Widget-Area (Secondary). Du kannst Inhalte hinzufügen, indem Du Dein <a href=\"%s\">Widgets Panel</a> besuchst und neue Widgets zu diesem Bereich hinzufügst."
+
+#: translate.php:382
+msgid "This is the primary sidebar if you are using a two or three column site layout option."
+msgstr "Dies ist die erste Sidebar Widget-Area (Primary). Du kannst Inhalte hinzufügen, indem Du Dein <a href=\"%s\">Widgets Panel</a> besuchst und neue Widgets zu diesem Bereich hinzufügst."
+
+#: translate.php:381
+msgid "This is the header widget area. It typically appears next to the site title or logo. This widget area is not suitable to display every type of widget, and works best with a custom menu, a search form, or possibly a text widget."
+msgstr "Dies ist der Kopfzeilen-Widgetbereich (Header). Typischerweise erscheint er neben dem Titel bzw. Logo der Webseite. Dieser Widgetbereich ist nicht für jede Art von Widget bzw. Inhalt geeignet. Am besten bewährt haben sich individuelle Menüs, ein Suchformular, oder ein kleines Textwidget."
+
+#: translate.php:378
+msgid "Genesis %s is now available. We have provided 1-click updates for this theme, so please log into your dashboard and update at your earliest convenience."
+msgstr "Genesis %s ist jetzt verfügbar. Wir haben die 1-Klick-Updates in dieses Theme integriert. Melde Dich bitte im Dashboard an, um künftig Aktualisierungen einfach durchführen zu können."
+
+#: translate.php:376
+msgid "Genesis %s is available. <a href=\"%s\" %s>Check out what's new</a> or <a href=\"%s\" %s>update now.</a>"
+msgstr "Genesis %s ist verfügbar. <a href=\"%s\" %s>Schaue, was neu ist</a> oder <a href=\"%s\" %s>aktualisiere jetzt</a>."
+
+#: translate.php:374
+msgid "Congratulations, you are now rocking Genesis %s! <a href=\"%s\">See what's new in %s</a>."
+msgstr "Glückwunsch, Du rockst jetzt mit Genesis Versiin %s! <a href=\"%s\">Erfahre, was neu ist in %s</a>."
+
+#: translate.php:372
+msgid "Have you tried our Scribe content marketing software? Do research, content and website optimization, and relationship building without leaving WordPress. <strong>Genesis owners save big when using the special link on the special page we've created just for you</strong>. <a href=\"%s\" target=\"_blank\">Click here for more info on Scribe<span class=\"screen-reader-text\">. %s</span></a>."
+msgstr "Hast Du schon unsere Scribe Inhaltsvermarktungs-Software ausprobiert? Damit kannst Du Recherche, Inhaltsoptimierung und das Bauen von Inhalts-/ Link-Beziehungen erledigen, ohne den WordPress-Adminbereich verlassen zu müssen. <strong>Genesis-Benutzer sparen sehr viel: Wenn Du den besonderen Link auf der Extra-Seite verwendest - nur für Dich</strong>. <a href=\"%s\" target=\"_blank\">Klicke hier für weitere Informationen zu Scribe<span class=\"screen-reader-text\">. %s</span></a>. "
+
+#: translate.php:354
+msgid "The argument, \\\"context\\\", has been replaced with \\\"theme_location\\\" in the $args array."
+msgstr "Das Argument  \\\"context\\\" wurde in dem Array $args mit \\\"theme_location\\\" ersetzt."
+
+#: translate.php:346
+msgid "You cannot use %s to create two menus in the same subclass. Please use separate subclasses for each menu."
+msgstr "Du kannst %s nicht verwenden, um zwei Menüs in derselben Unterklasse (subclass) zu erstellen. Bitte benutze getrennte Unterklassen (subclasses) für jedes Menü."
+
+#: translate.php:339
+msgid "WordPress recently included support for generated title tags, as well as adding support for uploading a custom site icon, and now Genesis is compatible with both new features."
+msgstr "WordPress hat kürzlich Unterstützung für generierte Titel-Tags hinzufügt, sowie ebenfalls für das Hochladen eines Webseiten-Icons bzw. Logos. Genesis ist jetzt voll kompatibel mit diesen Funktionen."
+
+#: translate.php:337
+msgid "Genesis continues to improve its implementation of Schema.org microdata in our markup, now including breadcrumb microdata."
+msgstr "Genesis verbessert weiter die Implementation von Schema.org-Mikrodaten im Markup, jetzt einschließlich des Bereiches für Breadcrumbs-Navigation (Brotkrümel-Navigation)."
+
+#: translate.php:335
+msgid "Child themes now have the ability to turn on accessibility features like special text for screen readers, accessible search forms, consistent page and section headings, skip links, and an accessible drop-down navigation menu."
+msgstr "Child Themes haben jetzt die Möglichkeit, Barrierefreiheits-Funktionen anzuschalten, wie etwa besonderen Text für Screenreader, barrierearme Suchformulare, konsistente Seiten und Sektions-Überschriften, Sprunganker-Links sowie ein verbessertes Dropdown-Navigationsmenü."
+
+#: translate.php:313
+msgid "This code will output immediately before the closing %s tag in the document source."
+msgstr "Die in eingefügten Skripte werden unmittelbar vor dem schließenden %s-Tag ausgeführt."
+
+#: translate.php:305
+msgid "These settings apply to any page given the \"Blog\" page template, not the homepage or post archive pages."
+msgstr "Diese Einstellungen greifen für jede Seite, der die \"Blog\"-Seitenvorlage (Template) zugewiesen wurde. Für die Homepage (Startseite) oder Inhaltsarchive haben diese Einstellungen hier keine Relevanz!"
+
+#: translate.php:274
+msgid "In order to view the Primary navigation menu settings, you must build a <a href=\"%s\">custom menu</a>, then assign it to the Primary Menu Location."
+msgstr "Damit Du die Einstellungen für die Haupt-Navigation (Primary Navigation Menu) verwenden kannst, musst Du ein <a href=\"%s\">benutzerdefiniertes Menü</a> in WordPress erstellen und es dann dem Menüanzeigeort 'Haupt-Navigation (Primary)' zuweisen."
+
+#: translate.php:269
+msgid "If your custom feed(s) are not handled by Feedblitz or Feedburner, do not use the redirect options."
+msgstr "Falls Deine benutzerdefinierten Feeds nicht über die Dienste Feedblitz oder Feedburner verwaltet werden, dann verwende diese Weiterleitungsoptionen bitte nicht."
+
+#: translate.php:264
+msgid "Please select the color style from the drop down list and save your settings."
+msgstr "Bitte wähle das Farbschema aus dem Aufklappmenü und speichere Deine Einstellungen."
+
+#: translate.php:262
+msgid "If you provide an email address above, you will be notified via email when a new version of Genesis is available."
+msgstr "Wenn Du eine E-Mail-Adresse im obigen Feld angibst, wirst Du benachrichtigt, sobald eine neue Version von Genesis verfügbar ist."
+
+#: translate.php:258
+msgid "This can be helpful for diagnosing problems with your theme when seeking assistance in the <a href=\"%s\" target=\"_blank\">support forums</a>."
+msgstr "Dies kann hilfreich sein für die Diagnose von Problemen, wenn Du auf der Suche nach Unterstützung (Support) in den <a href=\"%s\" target=\"_blank\">Foren</a> bist."
+
+#: translate.php:252
+msgid "This setup is preferred because it makes it easier to show a blog on the front page (no need to rename the home.php file) and does not have the confusion of no content on the home page when the theme is initially installed."
+msgstr "Diese letzte Art wird bevorzugt, denn dadurch wird es viel einfacher einen Blog auf der Startseite anzuzeigen (keine Erfordernis die Datei <code>home.php</code> umzubenennen). Außerdem wird so die Verwirrung vermieden, wenn Situationen auftreten, wo kein Inhalt auf der Startseite erscheint, wenn das Theme erstmalig installiert wird."
+
+#: translate.php:251
+msgid "The third type of home page is the new dynamic home page. This is common on the newest child themes. It will show your latest posts in a blog type listing unless you put widgets into the home page sidebars."
+msgstr "Die dritte Art von Startseite ist die 'neue dynamische Startseite'. Dies ist gängig bei den neuesten Child Themes. Dabei werden standardmäßig die neusten Beiträge angezeigt. Es sei denn, Du hast <em>aktive Widgets</em> in den speziellen Widget-Bereichen für die Startseite (Homepage) platziert. In diesem Falle wird automatisch die Startseite widgetisiert angezeigt."
+
+#: translate.php:250
+msgid "Another common home page is the \"blog\" type home page, which is common to most of the free child themes. This shows your latest posts and requires no additional setup."
+msgstr "Eine weitere beliebte Startseiten-Art ist eine \"Blog\"-Homepage. Diese erlebst Du bei den meisten freien Child Themes. Dabei werden die neuesten Beiträge angezeigt - ohne irgendwelche zusätzlichen Einrichtungen durch Dich."
+
+#: translate.php:249
+msgid "If your theme uses a custom home page and you want to show the latest posts in a blog format, do not use the blog template. Instead, you need to rename the home.php file to home-old.php instead."
+msgstr "Falls Dein Child Theme eine angepasste Startseite verwendet und Du willst die neuesten Beiträge in einem Blog-Format anzeigen, dann verwende bitte nicht die 'Blog' Seitenvorlage (Template). Benenne stattdessen in Deinem Child Theme Ordner die Datei <code>home.php</code> um in <code>home_original.php</code>."
+
+#: translate.php:248
+msgid "Child themes that include this type of home page typically include additional theme-specific tutorials which can be accessed via a sticky post at the top of that child theme support forum."
+msgstr "(Offizielle) Chld Themes, welche diese Art von Startseite enthalten, bringen meist zusätzliche Child Theme-spezifische Anleitungen (Tutorials) mit, welche über die Webseite my.studiopress.com verfügbar sind. &mdash; Bei Drittanbieter-Child Themes wende Dich bitte an den Support des jeweiligen Herausgebers."
+
+#: translate.php:247
+msgid "This home page is typically setup via widgets in the sidebars for the home page. This can be accessed via the Widgets menu item under Appearance."
+msgstr "Diese Startseite ist typischerweise eingerichtet via Widgets über die speziellen Widget-Bereiche für die Startseite (Homepage). Dies kann alles über das linke \"Widgets\"-Menü unter \"Design\" verwaltet werden."
+
+#: translate.php:246
+msgid "To use this type of home page, make sure your latest posts are set to show on the front page. You can setup a page with the Blog page template to show a blog style list of your latest posts on another page."
+msgstr "Um diese Art von Startseite zu verwenden, stelle bitte sicher, dass Deine neuesten Beiträge auf der Startseite angezeigt werden. Du kannst eine Seite anlegen, welcher die 'Blog' Seitenvorlage (Template) zugewiesen wurde, um eine Liste Deiner neuesten Beiträge im Blog-Format auf einer anderen Seite anzuzeigen."
+
+#: translate.php:243
+msgid "This provides you with two fields that will output to the %1$s element of your site and just before the %2$s tag. These will appear on every page of the site and are a great way to add analytic code and other scripts. You cannot use PHP in these fields. If you need to use PHP then you should look into the Genesis Simple Hooks plugin."
+msgstr "Dabei werden Dir zwei Felder angeboten, die das %1$s-Element auf Deiner Webseite ausgeben und dies genau vor dem %2$s-Tag. Diese erscheinen dann auf jeder Seite der Webseite und sind gut geeignet für Tracking-Codes und andere Skripte. PHP-Code kann in diesen Feldern nicht ausgeführt werden! Dafür solltest Du Dich besser an Deinen Webmaster wenden oder ggf. das Genesis Simple Hooks Plugin verwenden, welches eine bestimmte Bandbreite abdeckt."
+
+#: translate.php:241
+msgid "You can find more on this feature in the <a href=\"%s\" target=\"_blank\">How to Add a Post Category Page tutorial.</a>"
+msgstr "Du kannst mehr über diese Funktion erfahren in der Anleitung <a href=\"%s\" target=\"_blank\">How to Add a Post Category Page (Wie Du eine Beitrags-Kategorieseite hinzufügst)</a> (Engl.)."
+
+#: translate.php:240
+msgid "There are some special features of the Blog Template that allow you to specify which category to show on each page using the template, which is helpful if you have a \"News\" category (or something else) that you want to display separately."
+msgstr "Es gibt einige besondere Funktionen der 'Blog' Seitenvorlage (Template), die es Dir erlauben, welche Kategorie Du anzeigst auf jeder Seite, welches dieses Template verwendet. Dies ist hilfreich, um beispielsweise eine Kategorie \"Nachrichten\" (oder beliebige andere Kategorie) getrennt auf einer Seite auszugeben."
+
+#: translate.php:239
+msgid "In the General Settings you can select a specific category to display from the drop down menu, and exclude categories by ID, or even select how many posts you'd like to display on this page."
+msgstr "In den Allgemeinen Einstellungen kannst Du eine spezifische Kategorie aus dem Aufklappmenü auswählen, sowie auch Kategorien nach deren ID ausschließen. Außerdem ist es möglich die Anzahl der anzuzeigenden Beiträge einzustellen."
+
+#: translate.php:238
+msgid "This works with the Blog Template, which is a page template that shows your latest posts. It's what people see when they land on your homepage."
+msgstr "Dies funktioniert mit der 'Blog' Seitenvorlage (Template), welches eine Seitenvorlage ist, die Deine neuesten Beiträge anzeigt (Aktuellste oben). Das sehen die Besucher in der Regel, wenn diese Deine Startseite aufrufen."
+
+#: translate.php:236
+msgid "Post Navigation Technique allows you to select one of three navigation methods."
+msgstr "Die Einstellung \"Text für Navigatoren\" erlaubt es Dir aus drei verschiedenen Navigationsmethoden auszuwählen."
+
+#: translate.php:235
+msgid "The 'Image Size' list is populated by the available image sizes defined in the theme."
+msgstr "Die Liste der 'Bildgrößen' wird erzeugt aus den verfügbaren Bildgrößen folgender Quellen: aktives Child Theme, von WordPress selbst, sowie Plugins"
+
+#: translate.php:234
+msgid "This option should not be used with the post content unless the content is limited to avoid duplicate images."
+msgstr "Diese Option sollte nicht mit der Einstellung (kompletten) 'Inhalt des Beitrages anzeigen' verwendet werden, es sei denn, dass die Zeichenbegrenzung (Limit) verwendet wird. Andererseits würde es zur doppelten Anzeige der Bilder kommen &hellip;"
+
+#: translate.php:233
+msgid "The 'Include post image?' setting allows you to show a thumbnail of the first attached image or currently set featured image."
+msgstr "Die Einstellung \"Featured-Bild einschließen?\" erlaubt es Dir, ein Vorschaubild des zuerst hochgeladenen Bildes eines Beitrages oder das entsprechende Artikelbild (Featured Image, falls gesetzt) anzuzeigen."
+
+#: translate.php:232
+msgid "The Display post excerpt setting will display the first 55 words of the post after also stripping any included HTML or the manual/custom excerpt added in the post edit screen."
+msgstr "Die Einstellung \"Nur Textauszüge anzeigen\" wird entweder automatisiert die ersten 55 Worte (!) des Beitrages anzeigen (auch nachdem alle HTML Tags entfernt wurden!) oder andererseits den eigenen Textauszug des entsprechenden Beitrags, falls manuell festgelegt."
+
+#: translate.php:231
+msgid "It may also be coupled with the second field \"Limit content to [___] characters\" to limit the content to a specific number of letters or spaces. This will strip any HTML, but allows for more precise and easily changed lengths than the excerpt."
+msgstr "Dies kann auch kombiniert werden mit der zweiten Möglichkeit \"Inhalt begrenzen auf [__] Zeichen\", um den Inhalt auf eine spezifische Länge zu stutzen. Dabei wird jedoch jedes HTML Markup entfernt. Dennoch ist dies nützlich, um genauer und einfacher die Textauszugslänge festlegen zu können!"
+
+#: translate.php:230
+msgid "The first option allows you to display the post content or the post excerpt. The Display post content setting will display the entire post including HTML code up to the <!--more--> tag if used (this is HTML for the comment tag that is not displayed in the browser)."
+msgstr "Die erste Option erlaubt Dir die Anzeige des Beitrags-/ Seiteninhaltes oder des kurzen Textauszugs (Excerpt). Die Einstellung 'Inhalt des Beitrages' wird den gesamten Beitrag inklusive HTML-Code bis zum <code><!--more--></code> (falls vorhanden; wird aber nicht im Browser dargestellt) anzeigen."
+
+#: translate.php:229
+msgid "Archives include any pages using the blog template, category pages, tag pages, date archive, author archives, and the latest posts if there is no custom home page."
+msgstr "Inhaltsarchive betreffen alle Seiten, welche die 'Blog'-Seitenvorlage verwenden, sowie Archivseiten von Kategorien, Schlagwörtern, Datumsbereichen, Autoren sowie die neuesten Beiträge, falls Du keine angepasste Startseite verwendest."
+
+#: translate.php:228
+msgid "In the Genesis Theme Settings you may change the site wide Content Archives options to control what displays in the site's Archives."
+msgstr "In den Genesis Theme-Einstellungen kannst Du die Webseiten-weiten Inhaltsarchiv-Optionen festlegen, um zu kontrollieren, was angezeigt wird."
+
+#: translate.php:227
+msgid "If you enable comments or trackbacks here, it can be disabled on an individual post or page. If you disable here, they cannot be enabled on an individual post or page."
+msgstr "Falls Du Kommentare oder Trackbacks/ Pingbacks hier aktivierst, können diese dennoch pro einzelnem Beitrag bzw. einzelner Seite deaktiviert werden. Wenn Du diese hier aber deaktivierst, können sie pro Beitrag bzw. Seite <em>nicht</em> einzeln aktiviert werden."
+
+#: translate.php:226
+msgid "This allows a site wide decision on whether comments and trackbacks (notifications when someone links to your page) are enabled for posts and pages."
+msgstr "Dies erlaubt eine Webseiten-weite Entscheidung, ob Kommentare und Trackbacks/ Pingbacks (Benachrichtungen, wenn jemand auf einen Beitrag/ eine Seite verlinkt), für Beiträge bzw. Seiten aktiviert sein sollen oder nicht."
+
+#: translate.php:225
+msgid "This box lets you define where the \"Breadcrumbs\" display. The Breadcrumb is the navigation tool that displays where a visitor is on the site at any given moment."
+msgstr "Diese Box lässt Dich die Anzeige der Breadcrumbs (Brotkrümel-Navigation) bestimmen. Die Breadcrumbs sind ein Navigationswerkzeug - mit SEO-Relevanz - welches anzeigt, wo ein Besucher der Webseite sich gerade befindet."
+
+#: translate.php:224
+msgid "Twitter link displays a link to your Twitter profile, as indicated in Twitter ID setting. Enter only your user name in this setting."
+msgstr "<em>Twitter-Link</em> zeigt einen Link zu Deinem Twitter-Kanal an, so, wie bei der Twitter-ID-Einstellung angegeben. Gib nur Deinen Benutzernamen (= @-Handle) bei Twitter in dieser Einstellung an."
+
+#: translate.php:223
+msgid "Search form displays a small search form utilizing the WordPress search functionality."
+msgstr "<em>Suchformular</em> zeigt ein Suchformular an, gekoppelt an die standardmäßige WordPress-Suchfunktionalität."
+
+#: translate.php:222
+msgid "RSS feed link displays a link to the RSS feed for your site that a reader can use to subscribe to your site using the feedreader of their choice."
+msgstr "<em>RSS-Feed-Links</em> zeigt einen Link zum RSS-Feed Deiner Webseite an, den ein Leser dann abonnieren kann - mit einem Feedreader seiner Wahl."
+
+#: translate.php:220
+msgid "The Primary Navigation Extras typically display on the right side of your Primary Navigation menu."
+msgstr "'Extras auf rechter Seite' für die Haupt-Navigation werden direkt auf der rechten Seite beim Hauptmenü angezeigt."
+
+#: translate.php:218
+msgid "The <strong>Image logo</strong> option will use a logo image file in the header instead of the site's title and description. This setting adds a .header-image class to your site, allowing you to specify the header image in your child theme's style.css. By default, the logo can be saved as logo.png and saved to the images folder of your child theme."
+msgstr "Die Option <strong>Bild als Logo</strong> wird eine Logo-Bilddatei in der Kopfzeile verwenden, statt dem Webseiten-Titel/ -Name und der Webseiten-Beschreibung. Diese Einstellung fügt Deiner Webseite eine <code>.header-image</code> CSS-Klasse hinzu. Damit kannst Du das Kopfzeilen-Bild in der <code>style.css</code> Stildatei Deines Child Themes referenzieren. Standardmäßig kann das Logo als Datei <code>logo.png</code> gespeichert und in den Unterordner <code>/images/</code> Deines aktiven Child Themes hochgeladen werden (via FTP)."
+
+#: translate.php:217
+msgid "The <strong>Dynamic text</strong> option will use the Site Title and Site Description from your site's settings in your header."
+msgstr "Die Option <strong>Dynamischer Text</strong> wird den Webseiten-Titel/ -Name und die Webseiten-Beschreibung (von den 'Allgemeinen Einstellungen' Deiner Webseite) für die Kopfzeile verwenden."
+
+#: translate.php:215
+msgid "This layout can also be overridden in the post/page/term layout options on each post/page/term."
+msgstr "Dieses Standard-Layout kann durch die Einstellungen pro Beitrag/ pro Seite/ pro Taxonomie überschrieben werden.<br /><br /><em>Hinweis: Weitere Layout-Einstellungen für besondere Bereiche sind mit dem <a href=\"http://wordpress.org/plugins/genesis-layout-extras/\" target=\"_new\">Plugin 'Genesis Layout Extras'</a> möglich.</em>"
+
+#: translate.php:214
+msgid "These options can be extended or limited by the child theme. Additionally, many of the child themes do not allow different layouts on the home page as they have been designed for a specific home page layout."
+msgstr "Diese Optionen können von Child Themes oder Plugins erweitert oder beschränkt werden. Weiterhin solltest Du beachten, dass viele Child Themes keine verschiedenen Layouts für die Startseite erlauben, da diese oft mit einem spezifischen, festgelegten Layout designed wurden."
+
+#: translate.php:213
+msgid "This lets you select the default layout for your entire site. On most of the child themes you'll see these options:"
+msgstr "Damit kannst Du ein Standard-Layout für Deine gesamte Webseite festlegen. Bei den meisten Child Themes wirst Du diese Optionen zur Auswahl vorfinden:"
+
+#: translate.php:211
+msgid "By checking the \"Redirect Feed\" box, all traffic to default feed links will be redirected to the Feedburner link instead."
+msgstr "Indem das Kontrollkästchen \"Feed umleiten (Redirect)?\" aktiviert wird, werden alle Aufrufe der Standard-Feed-Links direkt zum entsprechenden Feedburner-Link umgeleitet."
+
+#: translate.php:210
+msgid "By filling in the feed links calling for the main site feed, it will display as a link to Feedburner."
+msgstr "Indem Du die Feed-Links ausfüllst, und den Feed der Webseite aufrufst, wird der Link zu Feedburner angezeigt."
+
+#: translate.php:209
+msgid "If you use Feedburner to handle your rss feed(s) you can use this function to set your site's native feed to redirect to your Feedburner feed."
+msgstr "Wenn Du den Feedburner-Dienst (von Google) verwendest, um Deine RSS-Feeds zu verwalten, kannst Du diese Funktion verwenden, um den nativen RSS-Feed Deiner Webseite direkt zum Feedburner-Feed umzuleiten."
+
+#: translate.php:207
+msgid "If you provide an email address and select to notify that email address when the update is available, your site will email you when the update can be performed.No, updates only affect files being updated."
+msgstr "Wenn Du eine E-Mail-Adresse angibst, und die Benachrichtigung aktivierst, wenn eine Aktualisierung vorliegt, wird Deine Webseite Dich via E-Mail informieren, dass Aktualisierungen durchgeführt werden können. (Hinweis: Es werden bei solchen Aktualisierungen nur die Basis-Dateien des Genesis Frameworks aktualisiert, NICHT das Child Theme!)"
+
+#: translate.php:206
+msgid "This does not mean the updates happen automatically without your permission; it will just notify you that an update is available. You must select it to perform the update."
+msgstr "Dies bedeutet nicht, dass die Aktualisierungen automatisch ohne Dein Einverständnis ablaufen; es erfolgt lediglich eine Benachrichtigung, dass eine Aktualisierung vorliegt. Du musst dann auswählen, dass Du die Aktualisierung tatsächlich durchführen möchtest."
+
+#: translate.php:205
+msgid "Normally, this should be unchecked. You can also set to enable automatic updates."
+msgstr "Standardmäßig wird dies nicht aktiviert sein. Du kannst ebenso automatische Aktualisierungen aktivieren."
+
+#: translate.php:204
+msgid "The information box allows you to see the current Genesis theme information and display if desired."
+msgstr "Die Informations-Box zeigt die Informationen zur aktuellen Version des Frameworks an und Benachrichtigungen für Aktualisierungen."
+
+#: translate.php:202
+msgid "Your Theme Settings provides control over how the theme works. You will be able to control a lot of common and even advanced features from this menu. Some child themes may add additional menu items to this list, including the ability to select different color schemes or set theme specific features such as a slider. Each of the boxes can be collapsed by clicking the box header and expanded by doing the same. They can also be dragged into any order you desire or even hidden by clicking on \"Screen Options\" in the top right of the screen and \"unchecking\" the boxes you do not want to see. Below you'll find the items common to every child theme &#x02026;"
+msgstr "Deine Theme-Einstellungen bieten Dir die Kontrolle darüber, wie das Theme funktioniert. Du kannst viele bekannte und einige erweiterte Funktionen von diesem Menü aus verwalten. Einige Child Themes können weitere Menüeinträge in dieser Liste hinzufügen. Damit können zum Beispiel verschiedene Farbschemen oder Funktionen für Slider gesteuert werden. Jede dieser Boxen kann ein- und ausgeklappt werden, indem auf die Kopfzeile der Box geklickt wird. Zudem können die Boxen via Ziehen und Ablegen neu angeordnet werden. Weiterhin kann über den Button \"Ansicht anpassen\" am rechten, oberen Rand eingestellt werden, welche Boxen überhaupt angezeigt werden - oder eben nicht. Unten finden Sie die Elemente, die jedes Genesis Child Theme standardmäßig anbietet &#x02026;"
+
+#: translate.php:187
+msgid "<span class=\"genesis-admin-note\">Note:</span> The shortlink tag might have some use for 3rd party service discoverability, but it has no <abbr title=\"Search engine optimization\">SEO</abbr> value whatsoever."
+msgstr "<span class=\"genesis-admin-note\">Hinweis:</span> Der Kurz-URL Tag kann eine Bedeutung für Drittanbieter-Dienste haben, hat jedoch keine Relevanz für <abbr title=\"Search engine optimization\">SEO</abbr> oder darüber hinaus."
+
+#: translate.php:180
+msgid "By default, WordPress places several tags in your document %1$s. Most of these tags are completely unnecessary, and provide no <abbr title=\\\"Search engine optimization\\\">SEO</abbr> value whatsoever; they just make your site slower to load. Choose which tags you would like included in your document %1$s. If you do not know what something is, leave it unchecked."
+msgstr ""
+"Standardmäßig, platziert WordPress mehrere Tags in deinem Dokument %1$s. \n"
+"Die meisten dieser Tags sind jedoch vollkommen überflüssig und tragen nicht zur <abbr title=\\\"Search engine optimization\\\">SEO</abbr> bei. Sie machen deine Seite lediglich langsamer. Suche dir die Tags aus, die du in deinem Dokument haben willst. Wenn du nicht weißt was etwas bedeutet, lasse es demarkiert."
+
+#: translate.php:176
+msgid "The meta description can be used to determine the text used under the title on search engine results pages."
+msgstr "Die META-Beschreibung wird in der Regel dazu verwendet, um auf den Ergebnisseiten von Suchmaschinen den Text unterhalb des Titels zu festzulegen."
+
+#: translate.php:173
+msgid "If you leave the document title field blank, your site&#8217;s title will be used instead."
+msgstr "Wenn Du den Dokumententitel frei lässt, wird stattdessen Dein Webseiten-/ Projekttitel verwendet."
+
+#: translate.php:163
+msgid "If the title consists of two parts (original title and optional addition), then the separator will go in between them."
+msgstr "Wenn der Dokumententitel aus zwei Zeilen besteht (Titel und angefügter Text), wird das Trennzeichen dazwischen eingefügt."
+
+#: translate.php:157
+msgid "For most sites either the home page or blog page (using the blog template) will serve as this index which is why the default is not to index categories, tags, authors, dates, or searches."
+msgstr "Für die meisten Webseiten dient in der Regel die Startseite oder die Blog-Seite (mit der Blog-Seitenvorlage) als dieser Index. Daher ist der Standard auch so gesetzt, dass die Inhaltsarchive für Kategorien, Schlagwörter, Autoren, Datumsbereiche oder Suchanfragen nicht indexiert werden."
+
+#: translate.php:156
+msgid "At least one archive should be indexed, but indexing multiple archives will typically result in a duplicate content penalization (multiple pages with identical content look manipulative to search engines)."
+msgstr "Zumindest eine Inhaltsarchiv-Seite sollte indexiert werden. Doch die Indexierung mehrerer Inhaltsarchiv-Seiten wird typischerweise zu Abstrafungen aufgrund von doppelten Inhalten (Duplicate Content) führen (mehrere Seiten mit identischem inhaltlichen Erscheinungsbild sehen für Suchmaschinen wie Manipulationsversuche aus)."
+
+#: translate.php:155
+msgid "Noarchive and noindex are explained in the home settings. Here you can select what other parts of the site to apply these options to."
+msgstr "<code>noarchive</code> und <code>noindex</code> werden erklärt in den Startseiten-Einstellungen. Hier kannst Du auswählen, für welche anderen Teile der Webseite diese Optionen gelten sollen."
+
+#: translate.php:154
+msgid "You can also add support for Windows Live Writer if you use software that supports this and include a shortlink tag if this is required by any third party service."
+msgstr "Du kannst auch Unterstützung für die Windows-spezifische Software 'Windows Live Writer' (WLW) aktivieren, falls Du diese oder Dritt-Software, welche WLW unterstützt, verwendest. Dies wird einen Shortlink-Tag einfügen, sollte dies von einem Dritt-Anbieter-Service benötigt werden."
+
+#: translate.php:153
+msgid "The Relationship Link Tags are tags added by WordPress that currently have no SEO value but slow your site load down. They're disabled by default, but if you have a specific need&#8212;for a plugin or other non typical use&#8212;then you can enable as needed here."
+msgstr "Die Linkbeziehungs-Tags sind Tags, welche von WordPress selbst hinzugefügt werden, aber derzeit keinen Wert für SEO haben. Sie können jedoch die Ladezeit der Seite leicht erhöhen. Sie sind standardmäßig deaktiviert, doch falls Du Bedarf für ein bestimmtes Plugin oder untypischen Praxiseinsatz hast, dann kannst Du diese hier natürlich auch aktivieren."
+
+#: translate.php:151
+msgid "The Homepage Robots Meta Tags tell search engines how to handle the homepage. Noindex means not to index the page at all, and it will not appear in search results. Nofollow means do not follow any links from this page and noarchive tells them not to make an archive copy of the page."
+msgstr "Die Robots Meta-Tags der Startseite teilen Suchmaschinen mit, wie mit der Startseite zu verfahren ist. <code>noindex</code> bedeutet, dass diese Seite nicht indexiert werden und sie nicht in Suchergebnissen soll. <code>nofollow</code> bedeutet, dass Links von dieser Seite nicht gefolgt werden soll. <code>noarchive</code> bedeutet, dass von dieser Seite keine Archivversion angelegt werden soll."
+
+#: translate.php:150
+msgid "The home META description and keywords fill in the meta tags for the home page. The META description is the short text blurb that appear in search engine results."
+msgstr "Die META-Beschreibung der Startseite und die -Schlüsselwörter (falls verwendet) füllen die sogenannten Meta-Tags für die Startseite aus. Die META-Beschreibung ist der kurze Textblock, der prägnant den Inhalt zusammenfasst und in Ergebnissen von Suchmaschinen erscheint."
+
+#: translate.php:149
+msgid "The home doctitle sets what will appear within the %1$s tags (unseen in the browser) for the home page."
+msgstr "Die Dokumententitel für die Startseite legt fest, was zwischen den %1$s-Tags erscheint (wird im Browser nicht angezeigt)."
+
+#: translate.php:148
+msgid "To add custom text you'll have to either edit a php file, or use a text widget on a widget enabled homepage."
+msgstr "Um eigenen Text zu verwenden, musst Du entweder eine PHP-Datei anpassen, ein Textwidget verwenden oder eine Widgetisierte Startseite verwenden (letzteres bieten viele Child Themes bereits)."
+
+#: translate.php:147
+msgid "You can also specify if the Site Title, Description, or your own custom text should be wrapped in an &lt;h1&gt; tag (the primary heading in HTML)."
+msgstr "Du kannst ebenso angeben, ob der Webseiten-Titel/ -Name, die Beschreibung, oder Dein eigener Text in &lt;h1&gt; Tags ausgegeben wird (Überschrift der höchsten Kategorie in HTML)."
+
+#: translate.php:146
+msgid "These are the homepage specific SEO settings. Note: these settings will not apply if a static page is set as the front page. If you're using a static WordPress page as your hompage, you'll need to set the SEO settings on that particular page."
+msgstr "Dies sind die spezifischen SEO Einstellungen für die Startseite. <em>Hinweis:</em> Diese Einstellungen werden nicht verwendet, sollten Du eine statische WordPress-Seite als Startseite verwendest. Falls Du solch eine statische WordPress-Seite als Deine Startseite verwendest, musst Du die SEO Einstellungen dort tätigen."
+
+#: translate.php:144
+msgid "The <strong>Doctitle Separator</strong> is the character that will go between the title and appended text."
+msgstr "Das <strong>Dokumententitel Trennzeichen</strong> ist das Zeichen, welches zwischen dem Titel und dem angefügten Text erscheint."
+
+#: translate.php:143
+msgid "<strong>Doctitle Append Location</strong> determines which side of the title to add the previously mentioned items."
+msgstr "<strong>Platzierung von Zusätzen zum Dokumententitel</strong> legt fest auf welcher Seite des Titels die zuvor gennanten Elemente angefügt werden."
+
+#: translate.php:142
+msgid "<strong>Append Site Name</strong> will put the site name from the General Settings after the title on inner page."
+msgstr "<strong>Webseiten-Titel/ -Name</strong> wird den Webseiten-Titel/ -Name von Deinen 'Allgemeinen Einstellungen' nach dem Titel bei (Unter-) Seiten anfügen."
+
+#: translate.php:141
+msgid "<strong>Append Site Description</strong> will insert the site description from your General Settings after the title on your home page."
+msgstr "<strong>Webseiten-Beschreibung (Slogan) anfügen</strong> wird die Webseiten-Beschreibung von Deinen 'Allgemeinen Einstellungen' nach dem Titel auf Deiner Startseite anfügen."
+
+#: translate.php:138
+msgid "Each page, post, and term will have its own SEO settings as well. The default settings are recommended for most users. If you wish to adjust your SEO settings, the boxes include internal descriptions."
+msgstr "Jede Seite, jeder Beitrag (Artikel) bzw. jeder Taxonomie-Term (Kategorie, Schlagwort, etc.) hat eigene SEO Einstellungen. Die Standardeinstellungen werden für die meisten Benutzer empfohlen. Wenn Du Deine SEO Einstellungen anpassen willst, enthalten die entsprechenden Boxen dann weitere Erklärungen."
+
+#: translate.php:137
+msgid "If you see the menu, then opening that menu item will let you set the General SEO settings for your site."
+msgstr "Falls Du das Menü siehst, dann erhältst Du darüber die allgemeinen SEO Optionen für Deine Webseite."
+
+#: translate.php:136
+msgid "If you don’t see an SEO Settings sub menu, then you probably have another SEO plugin active."
+msgstr "Falls Du kein Untermenü 'SEO Einstellungen' bei <em>Genesis</em> siehst, dann hast Du höchstwahrscheinlich ein SEO Plugin aktiviert."
+
+#: translate.php:135
+msgid "Genesis SEO (search engine optimization) is polite, and will disable itself when most popular SEO plugins (e.g., All-in-One SEO, WordPress SEO, etc.) are active."
+msgstr "Genesis SEO (engl. Abkürzung - Suchmaschinenoptimierung) ist höflich und deaktiviert sich automatisch, falls eines der populären SEO Plugins für WordPress aktiv ist (z.B. All In One SEO, WordPress SEO von Yoast etc.)."
+
+#: translate.php:127
+msgid "Suitable for custom tracking, conversion or other page-specific script. Must include %s tags."
+msgstr "Hilfreich für benutzerdefiniertes Tracking, Konversionen oder andere Seiten-spezifische Skripte. Muss %s Tags einschließen."
+
+#: translate.php:110
+msgid "Once you have saved the download file, you can use the import function on another site to import this data."
+msgstr "Wenn Du einmal die Einstellungen-Datei erzeugt und gesichert hast, kannst Du die Importfunktion bei einer anderen (Genesis-) Webseite verwenden, um diese Daten zu importieren."
+
+#: translate.php:109
+msgid "When you click the button below, Genesis will generate a data file (%s) for you to save to your computer."
+msgstr "Wenn Du den Button hier darunter klickst, wird Genesis eine Daten-Datei (%s) für Dich erzeugen, die Du auf Deinem Rechner abspeichern kannst."
+
+#: translate.php:95
+msgid "You can export your Genesis-related settings to back them up, or copy them to another site. Child themes and plugins may add their own checkboxes to the list. The settings are exported in %s format."
+msgstr "Du kannst Deine Genesis-spezifischen Einstellungen exportieren, um eine Sicherung anzulegen oder um sie zu einer anderen (Genesis-betriebenen) Webseite zu migrieren. Child Themes sowie Plugins können ihre eigenen Einstellungen via Extra-Kontrollkästchen zur Liste hinzufügen. Die Einstellungen werden im %s-Format exportiert.<br ><br /><em>Tipp: Für Genesis-spezifische Plugins ist das <a href=\"http://wordpress.org/plugins/genesis-extra-settings-transporter/\" target=\"_new\">'Genesis Extra Settings Transporter' Plugin</a> kostenfrei erhältlich! Es fügt die Einstellungen von zahlreichen offiziellen und Drittanbieter-Plugins dem Genesis-Exporter hinzu.</em>"
+
+#: translate.php:92
+msgid "Once you upload an import file, it will automatically overwrite your existing settings."
+msgstr "Wird einmal eine Importdatei hochgeladen, wird diese automatisch Deine bestehenden Einstellungen überschreiben."
+
+#: translate.php:91
+msgid "You can import a file you've previously exported. The file name will start with %s followed by one or more strings indicating which settings it contains, finally followed by the date and time it was exported."
+msgstr "Du kannst eine Datei importieren, die Du vorher exportiert hast. Der Dateiname wird mit %s beginnen, gefolgt von einem oder mehreren Codes, welche die Einstellungen kennzeichnen, die noch mit enthalten sind. Danach wird noch das Datum und die Zeit des Exports angefügt."
+
+#: translate.php:89
+msgid "It also does not include other settings for plugins, widgets, or post/page/term/user specific settings."
+msgstr "Andere Einstellungen für Plugins, Widgets oder Nutzer-spezifische Einstellungen (bei Beiträgen, Seiten, etc.) sind dort ebenso nicht enthalten. &mdash; <em>Tipp: Für Genesis-spezifische Plugins ist das <a href=\"http://wordpress.org/plugins/genesis-extra-settings-transporter/\" target=\"_new\">'Genesis Extra Settings Transporter' Plugin</a> kostenfrei erhältlich!</em>"
+
+#: translate.php:88
+msgid "This is specific to Genesis settings and does not includes posts, pages, or images, which is what the built-in WordPress import/export menu does."
+msgstr "Dies ist spezifisch für Genesis Einstellungen und schließt Beiträge, Seiten oder Bilder nicht ein. Für diese genannten Dinge, verwenden Sie einfach die in WordPress eingebaute Import-/ Exportfunktion (Menü 'Werkzeuge')."
+
+#: translate.php:71
+msgid "These options will affect any blog listings page, including archive, author, blog, category, search, and tag pages."
+msgstr "Diese Archiv-Optionen beeinflussen alle Blogauflistungen Deiner Webseite, einschließlich der Archiv-, Blog-, Kategorien-, Such- und Tag-Seiten."
+
+#: translate.php:46
+msgid "The Custom Body Class adds a class to the body tag in the HTML to allow CSS modification exclusively for this post type's archive page."
+msgstr "Die 'Benutzerdefinierte Body-CSS-Klasse' fügt dem Body-Tag eine CSS-Klasse hinzu, welche Stilmodifikationen via CSS speziell für diese Seite ermöglicht.<br /><br /><em>Hinweis: Weitere Layout-Einstellungen für besondere Bereiche sind mit dem <a href=\"http://wordpress.org/plugins/genesis-layout-extras/\" target=\"_new\">Plugin 'Genesis Layout Extras'</a> möglich.</em>"
+
+#: translate.php:38
+msgid "This lets you select the layout for the archive page. On most of the child themes you'll see these options:"
+msgstr "Damit kannst Du ein Layout für die Archivseite festlegen. Bei den meisten Child Themes wirst Du diese Optionen zur Auswahl vorfinden:"
+
+#: translate.php:37
+msgid "The Robots Meta Tags tell search engines how to handle the archive page. Noindex means not to index the page at all, and it will not appear in search results. Nofollow means do not follow any links from this page and noarchive tells them not to make an archive copy of the page."
+msgstr "Die Robots Meta-Tags teilen Suchmaschinen mit, wie mit der Archivseite zu verfahren ist. <code>noindex</code> bedeutet, dass diese Seite nicht indexiert werden und sie nicht in Suchergebnissen erscheinen soll. <code>nofollow</code> bedeutet, dass Links von dieser Seite nicht gefolgt werden soll. <code>noarchive</code> bedeutet, dass von dieser Seite keine Archivversion angelegt werden soll."
+
+#: translate.php:36
+msgid "Most search engines do not use Keywords at this time or give them very little consideration; however, it's worth using in case keywords are given greater consideration in the future and also to help guide your content. If the content doesn’t match with your targeted key words, then you may need to consider your content more carefully."
+msgstr "Die meisten gängigen Suchmaschinen verwenden (schon lange) <em>keine</em> Schlüsselwörter (Keywords) mehr oder schenken ihnen nur sehr wenig Beachtung. Wie auch immer, es kann sinnvoll sein, sie dennoch zu verwenden, da sie eventuell in der Bedeutung wieder steigen könnten oder sie auch dabei helfen, Deine Inhalte zu leiten. Wenn der Inhalt nicht mit Deinen Ziel-Schlüsselwörtern übereinstimmt, dann solltest Du Deinen Inhalt sorgfältiger auswählen."
+
+#: translate.php:35
+msgid ""
+"The Meta description and keywords fill in the meta tags for the archive page. The Meta description is the short text blurb that appear in search engine results.\n"
+" "
+msgstr "Die META-Beschreibung und -Schlüsselwörter (Keywords) füllen die sogenannten Meta-Tags für die Archivseite aus. Die META-Beschreibung ist der kurze Textblock, der prägnant den Inhalt zusammenfasst und in Ergebnissen von Suchmaschinen erscheint. "
+
+#: translate.php:34
+msgid "The Custom Document Title sets the page title as seen in browsers and search engines. "
+msgstr "Der 'Individuelle Dokumententitel' legt den Archiv-Seitentitel fest, der in Browsern und Suchmaschinen angezeigt wird. "
+
+#: translate.php:33
+msgid "The Archive Intro Text sets the text before the archive entries to introduce the content to the viewer."
+msgstr "Der Archiv-Einführungstext legt den Text vor den Archiv-Einträgen/ -Inhalten fest, um die Inhalte dem Betrachter besser vorzustellen."
+
+#: translate.php:10
+msgid "The page you are looking for no longer exists. Perhaps you can return back to the site's <a href=\"%s\">homepage</a> and see if you can find what you are looking for. Or, you can try finding it with the information below."
+msgstr "Die von Dir gesuchte Seite existiert nicht mehr. Möglicherweise findest Du die gesuchten Inhalte, indem Du zur <a href=\"%s\">Startseite</a> zurückgehst. Vielleicht findest Du auch hier Deine gesuchten Informationen:"
+
+#: translate.php:9
+msgid "The page you are looking for no longer exists. Perhaps you can return back to the site's <a href=\"%s\">homepage</a> and see if you can find what you are looking for. Or, you can try finding it by using the search form below."
+msgstr "Die von Dir gesuchte Seite existiert nicht mehr. Möglicherweise findest Du Deine gesuchten Inhalte, indem Du zur <a href=\"%s\">Startseite</a> zurückgehst. Vielleicht findest Du auch hier Deine gesuchten Informationen:"
+
+#. Description of the plugin/theme
+msgid "This plugin translates the Genesis Framework into one of the available languages."
+msgstr "Dieses Plugin übersetzt das Genesis Framework in eine andere Sprache"
+
+#. Plugin URI of the plugin/theme
+msgid "https://thememix.com/plugins/genesis-translations/"
+msgstr "https://thememix.com/plugins/genesis-translations/"
+
+#. Plugin Name of the plugin/theme
+msgid "Genesis Translations"
+msgstr "Genesis Translations"
+
+#: genesis-translations.php:68
+msgid "Uhm, the thing of it is, you kinda need the %1$sGenesis Framework %2$s%3$s or greater for these translations to make any sense."
+msgstr "Uhm, das Ding ist, du brauchst das %1$sGenesis Framework %2$s%3$s oder neuer damit die Übersetzungen überhaupt Sinn ergibt."
+
+#: genesis-translations.php:62
+msgid "Whoa.. the translation this plugin only works, really, when you have installed the %1$sGenesis Framework%2$s"
+msgstr "Puh... die Übersetzung des Plugins funktioniert erst richtig, wenn du das %1$sGenesis Framework%2$s installiert hast."

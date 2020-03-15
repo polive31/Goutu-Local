@@ -1,0 +1,1105 @@
+# Translation of Plugins - WordPress Popular Posts - Stable (latest release) in German
+# This file is distributed under the same license as the Plugins - WordPress Popular Posts - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-09-21 08:48:39+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: de\n"
+"Project-Id-Version: Plugins - WordPress Popular Posts - Stable (latest release)\n"
+
+#: admin/partials/admin.php:602
+msgid "WPP can cache the popular list for a specified amount of time. Recommended for large / high traffic sites"
+msgstr "WPP kann die Liste populärer Beiträge für eine bestimmte Zeitdauer zwischenspeichern. Empfohlen für sehr große oder vielbesuchte Websites."
+
+#: admin/partials/admin.php:594
+msgid "Data Caching"
+msgstr "Zwischenspeichern der Daten"
+
+#: includes/class-wordpress-popular-posts-rest-controller.php:496
+msgid "Sets the Sampling Rate."
+msgstr "Legt die Stichprobenrate fest."
+
+#: includes/class-wordpress-popular-posts-rest-controller.php:489
+msgid "Enables Data Sampling."
+msgstr "Aktiviert die stichprobenartige Erfassung der Daten."
+
+#: includes/class-wordpress-popular-posts-rest-controller.php:482
+msgid "The post / page ID."
+msgstr "Die ID des Beitrags oder der Seite."
+
+#: includes/class-wordpress-popular-posts-rest-controller.php:476
+msgid "Security nonce."
+msgstr "Nonce zur Sicherheit."
+
+#: includes/class-wordpress-popular-posts-rest-controller.php:448
+msgid "Taxonomy IDs, separated by comma (prefix a minus sign to exclude)."
+msgstr "Taxonomie-IDs, getrennt durch Komma (setze ein Minus-Zeichen vor die ID, um diese auszuschließen)."
+
+#: includes/class-wordpress-popular-posts-rest-controller.php:440
+msgid "Include posts in a specified taxonomy."
+msgstr "Schließe Beiträge einer aufgeführten Taxonomie ein."
+
+#: includes/class-wordpress-popular-posts-rest-controller.php:424
+msgid "Specifies the number of time units of the custom time range."
+msgstr "Legt die Anzahl der Zeiteinheiten des individuellen Zeitraums fest."
+
+#: includes/class-wordpress-popular-posts-rest-controller.php:416
+msgid "Specifies the time unit of the custom time range."
+msgstr "Legt die Zeiteinheit des individuellen Zeitraums fest."
+
+#: includes/class-wordpress-popular-posts-rest-controller.php:400
+msgid "Set the sorting option of the popular posts."
+msgstr "Lege das Sortierkriterium der populären Beiträge fest."
+
+#: includes/class-wordpress-popular-posts-rest-controller.php:392
+msgid "An offset point for the collection."
+msgstr "Der Ausgangspunkt für die Sammlung."
+
+#: includes/class-wordpress-popular-posts-rest-controller.php:384
+msgid "Retrieve the most popular entries published within the specified time range."
+msgstr "Rufe die populärsten Einträge auf, die während des festgelegten Zeitraums veröffentlicht wurden."
+
+#: includes/class-wordpress-popular-posts-rest-controller.php:376
+msgid "The maximum number of popular posts to return."
+msgstr "Die maximale Anzahl populärer Beiträge, die zurückgegeben werden sollen."
+
+#: includes/class-wordpress-popular-posts-rest-controller.php:369
+msgid "Return popular posts from specified custom post type(s)."
+msgstr "Gib populäre Beiträge des/der angegebenen individuellen Inhaltstypen zurück."
+
+#: admin/partials/admin.php:492
+msgid "This image will be displayed when no thumbnail is available"
+msgstr "Dieses Bild wird angezeigt, wenn kein Vorschaubild zur Verfügung steht."
+
+#: admin/partials/admin.php:490
+msgid "Change thumbnail"
+msgstr "Vorschaubild ändern"
+
+#: admin/partials/admin.php:368
+msgid "Hall of Fame"
+msgstr "Ehrenhalle"
+
+#: admin/partials/admin.php:367
+msgid "Trending now"
+msgstr "Aktuell im Trend"
+
+#: admin/partials/admin.php:366
+msgid "Most commented"
+msgstr "Die meisten Kommentare"
+
+#: admin/partials/admin.php:365
+msgid "Most viewed"
+msgstr "Am meisten angesehen"
+
+#: admin/partials/admin.php:346
+msgid "Today"
+msgstr "Heute"
+
+#: admin/class-wordpress-popular-posts-admin.php:231
+msgid "Use this image"
+msgstr "Dieses Bild benutzen"
+
+#: admin/class-wordpress-popular-posts-admin.php:165
+msgid "1 view in the last hour"
+msgid_plural "%s views in the last hour"
+msgstr[0] "1 Aufruf in der letzten Stunde"
+msgstr[1] "%s Aufrufe in der letzten Stunde"
+
+#: admin/partials/admin.php:950
+msgid "returns the default stats tags"
+msgstr "Gibt die Standard-Statistik-Tags zurück"
+
+#: admin/partials/admin.php:950
+msgid "returns the post/page ID"
+msgstr "Gibt die Beitrags-/Seiten-ID zurück"
+
+#: admin/partials/admin.php:950
+msgid "returns linked post/page title"
+msgstr "Gibt den verlinkten Titel der Seite/des Beitrags zurück"
+
+#: admin/partials/admin.php:576
+msgid "Data older than the specified time frame will be automatically discarded"
+msgstr "Daten, die älter als der angegebene Zeitraum sind, werden automatisch verworfen"
+
+#: admin/partials/admin.php:802
+msgid "If set, WordPress Popular Posts will retrieve all entries that belong to the specified category ID(s). If a minus sign is used, entries associated to the category will be excluded instead."
+msgstr "Wenn gesetzt, wird WordPress Popular Posts alle Einträge abrufen, die zu der/den angegebenen Kategorie-ID(s) gehören. Wenn ein Minus-Zeichen benutzt wird, werden die Einträge aus dieser Kategorie stattdessen ausgeschlossen."
+
+#. Description of the plugin/theme
+msgid "A highly customizable widget that displays the most popular posts on your blog."
+msgstr "Ein hochgradig anpassbares Widget, das die populärsten Beiträge auf deinem Blog anzeigt."
+
+#: includes/widget-form.php:154
+msgid "Display taxonomy"
+msgstr "Taxonomie anzeigen"
+
+#: includes/widget-form.php:146
+msgid "Relative"
+msgstr "Relativ"
+
+#: includes/widget-form.php:75
+msgid "Author ID(s)"
+msgstr "Autoren-ID(s)"
+
+#: includes/widget-form.php:69
+msgid "Taxonomy IDs, separated by comma (prefix a minus sign to exclude)"
+msgstr "Taxonomie-IDs, getrennt durch Komma (setze ein Minus-Zeichen vor die ID, um diese auszuschließen)"
+
+#: includes/widget-form.php:56
+msgid "Taxonomy"
+msgstr "Taxonomie"
+
+#: admin/partials/admin.php:350 includes/widget-form.php:34
+msgid "Custom"
+msgstr "Individuell"
+
+#: includes/class-wordpress-popular-posts-widget.php:92
+msgid "Error: cannot ajaxify WordPress Popular Posts on this theme. It's missing the <em>id</em> attribute on before_widget (see <a href=\"%s\" target=\"_blank\" rel=\"nofollow\">register_sidebar</a> for more)"
+msgstr "Fehler: AJAX kann für WordPress Popular Posts bei diesem Theme nicht verwendet werden. Es fehlt das <em>id</em>-Attribut bei before_widget (Siehe <a href=\"%s\" target=\"_blank\" rel=\"nofollow\">register_sidebar</a> für weitere Informationen)"
+
+#: includes/class-wordpress-popular-posts-output.php:773
+msgid "posted %s"
+msgstr "Veröffentlicht %s"
+
+#: includes/class-wordpress-popular-posts-output.php:519
+msgid "%s ago"
+msgstr "vor %s"
+
+#: admin/partials/admin.php:950
+msgid "returns linked taxonomy names, requires stats_taxonomy=1"
+msgstr "Gibt verlinkte Taxonomie-Namen zurück, erfordert stats_taxonomy=1"
+
+#: admin/partials/admin.php:950
+msgid "returns thumbnail url, requires thumbnail_width & thumbnail_height"
+msgstr "Gibt die URL des Vorschaubildes zurück, erfordert thumbnail_width und thumbnail_height"
+
+#: admin/partials/admin.php:928
+msgid "If set, WordPress Popular Posts will display the taxonomies associated to each entry"
+msgstr "Wenn gesetzt, zeigt WordPress Popular Posts die damit verbundenen Taxonomien zu jeden Beitrag an"
+
+#: admin/partials/admin.php:921
+msgid "If set, WordPress Popular Posts will display the categories associated to each entry"
+msgstr "Wenn gesetzt, zeigt WordPress Popular Posts die damit verbundenen Kategorien zu jedem Beitrag an"
+
+#: admin/partials/admin.php:893
+msgid "If set, WordPress Popular Posts will show how many views each popular post has got during the specified time range"
+msgstr "Wenn gesetzt, zeigt WordPress Popular Posts an, wie oft jeder populäre Beitrag innerhalb des angegebenen Zeitraums aufgerufen wurde"
+
+#: admin/partials/admin.php:809
+msgid "If set, WordPress Popular Posts will filter posts by a given taxonomy."
+msgstr "Wenn gesetzt, filtert WordPress Popular Posts Beiträge nach der angegebenen Taxonomie."
+
+#: admin/partials/admin.php:767
+msgid "Especifies the time unit of the custom time range"
+msgstr "Legt die Zeiteinheit des individuellen Zeitraums fest"
+
+#: admin/partials/admin.php:760
+msgid "Especifies the number of time units of the custom time range"
+msgstr "Legt die Anzahl der Zeiteinheiten des individuellen Zeitraums fest."
+
+#: admin/partials/admin.php:728 admin/partials/admin.php:735
+#: admin/partials/admin.php:742 admin/partials/admin.php:749
+#: admin/partials/admin.php:756 admin/partials/admin.php:763
+#: admin/partials/admin.php:770 admin/partials/admin.php:777
+#: admin/partials/admin.php:784 admin/partials/admin.php:791
+#: admin/partials/admin.php:798 admin/partials/admin.php:805
+#: admin/partials/admin.php:812 admin/partials/admin.php:819
+#: admin/partials/admin.php:826 admin/partials/admin.php:833
+#: admin/partials/admin.php:840 admin/partials/admin.php:847
+#: admin/partials/admin.php:854 admin/partials/admin.php:861
+#: admin/partials/admin.php:868 admin/partials/admin.php:875
+#: admin/partials/admin.php:882 admin/partials/admin.php:889
+#: admin/partials/admin.php:896 admin/partials/admin.php:903
+#: admin/partials/admin.php:910 admin/partials/admin.php:917
+#: admin/partials/admin.php:924 admin/partials/admin.php:931
+#: admin/partials/admin.php:938 admin/partials/admin.php:945
+#: admin/partials/admin.php:952
+msgid "With the [wpp] shortcode:"
+msgstr "Mit dem Shortcode [wpp]:"
+
+#: admin/partials/admin.php:728 admin/partials/admin.php:735
+#: admin/partials/admin.php:742 admin/partials/admin.php:749
+#: admin/partials/admin.php:756 admin/partials/admin.php:763
+#: admin/partials/admin.php:770 admin/partials/admin.php:777
+#: admin/partials/admin.php:784 admin/partials/admin.php:791
+#: admin/partials/admin.php:798 admin/partials/admin.php:805
+#: admin/partials/admin.php:812 admin/partials/admin.php:819
+#: admin/partials/admin.php:826 admin/partials/admin.php:833
+#: admin/partials/admin.php:840 admin/partials/admin.php:847
+#: admin/partials/admin.php:854 admin/partials/admin.php:861
+#: admin/partials/admin.php:868 admin/partials/admin.php:875
+#: admin/partials/admin.php:882 admin/partials/admin.php:889
+#: admin/partials/admin.php:896 admin/partials/admin.php:903
+#: admin/partials/admin.php:910 admin/partials/admin.php:917
+#: admin/partials/admin.php:924 admin/partials/admin.php:931
+#: admin/partials/admin.php:938 admin/partials/admin.php:945
+#: admin/partials/admin.php:952
+msgid "With wpp_get_mostpopular():"
+msgstr "Mit der Funktion wpp_get_mostpopular():"
+
+#: admin/partials/admin.php:354
+msgid "Err... A nice little chart is supposed to be here, instead you are seeing this because your browser is too old. <br /> Please <a href=\"%s\" target=\"_blank\">get a better browser</a>."
+msgstr "Eigentlich sollte hier ein schickes kleines Diagramm sein, aber stattdessen siehst du diese Meldung, weil dein Webbrowser zu alt ist. <br /> Bitte <a href=\"%s\" target=\"_blank\">verwende einen besseren Webbrowser</a>."
+
+#: admin/partials/admin.php:324
+msgid "Select a date..."
+msgstr "Wähle ein Datum aus..."
+
+#: admin/partials/admin.php:308
+msgid "Date Range"
+msgstr "Zeitraum"
+
+#: admin/partials/admin.php:307
+msgid "Custom Time Range"
+msgstr "Individueller Zeitraum"
+
+#: admin/partials/admin.php:294 admin/partials/admin.php:334
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: admin/partials/admin.php:253
+msgid "Menu"
+msgstr "Menü"
+
+#: admin/class-wordpress-popular-posts-admin.php:1078
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: admin/class-wordpress-popular-posts-admin.php:872
+#: admin/class-wordpress-popular-posts-admin.php:1010
+#: admin/partials/admin.php:423 admin/partials/admin.php:470
+msgid "Looks like traffic to your site is a little light right now. <br />Spread the word and come back later!"
+msgstr "Sieht so aus, als hat deine Website im Moment nur wenige Besuche. <br />Mache sie bekannter, und komm später zurück!"
+
+#: admin/class-wordpress-popular-posts-admin.php:861
+#: admin/class-wordpress-popular-posts-admin.php:999
+#: admin/partials/admin.php:412 admin/partials/admin.php:459
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: admin/class-wordpress-popular-posts-admin.php:861
+#: admin/class-wordpress-popular-posts-admin.php:999
+#: admin/partials/admin.php:412 admin/partials/admin.php:459
+msgid "View"
+msgstr "Aufruf"
+
+#: admin/class-wordpress-popular-posts-admin.php:694
+msgid "Views"
+msgstr "Aufrufe"
+
+#: admin/class-wordpress-popular-posts-admin.php:274
+msgid "<p><strong>For more information:</strong></p><ul><li><a href=\"%1$s\">Documentation</a></li><li><a href=\"%2$s\">Support</a></li></ul>"
+msgstr "<p><strong>Für mehr Informationen:</strong></p><ul><li><a href=\"%1$s\">Dokumentation</a></li><li><a href=\"%2$s\">Unterstützung (Support)</a></li></ul>"
+
+#: admin/class-wordpress-popular-posts-admin.php:256
+msgid "Like this plugin?"
+msgstr "Gefällt dir dieses Plugin?"
+
+#: admin/class-wordpress-popular-posts-admin.php:250
+msgid "Welcome to WordPress Popular Posts' Dashboard! In this screen you will find statistics on what's popular on your site, tools to further tweak WPP to your needs, and more!"
+msgstr "Willkommen zum WordPress Popular Posts-Dashboard. In dieser Ansicht findest du Statistiken darüber, was auf deiner Website populär ist, Werkzeuge, um WPP weiter an deine Bedürfnisse anzupassen, und mehr! "
+
+#: admin/class-wordpress-popular-posts-admin.php:249
+msgid "Overview"
+msgstr "Überblick"
+
+#: admin/partials/admin.php:501
+msgid "First attachment"
+msgstr "Erster Anhang"
+
+#. Author URI of the plugin/theme
+msgid "https://cabrerahector.com/"
+msgstr "http://cabrerahector.com"
+
+#. Author of the plugin/theme
+msgid "Hector Cabrera"
+msgstr "Hector Cabrera"
+
+#. Plugin URI of the plugin/theme
+msgid "https://wordpress.org/plugins/wordpress-popular-posts/"
+msgstr "https://de.wordpress.org/plugins/wordpress-popular-posts/"
+
+#. Plugin Name of the plugin/theme
+msgid "WordPress Popular Posts"
+msgstr "WordPress Popular Posts"
+
+#: includes/class-wordpress-popular-posts-output.php:782
+msgid "under %s"
+msgstr "in %s"
+
+#: includes/class-wordpress-popular-posts-output.php:773
+msgid "posted on %s"
+msgstr "veröffentlicht am %s"
+
+#: includes/class-wordpress-popular-posts-output.php:767
+msgid "by %s"
+msgstr "von %s"
+
+#: admin/class-wordpress-popular-posts-admin.php:658
+#: admin/class-wordpress-popular-posts-admin.php:860
+#: admin/partials/admin.php:411 admin/partials/admin.php:458
+#: includes/class-wordpress-popular-posts-output.php:744
+msgid "1 view"
+msgid_plural "%s views"
+msgstr[0] "1 Aufruf"
+msgstr[1] "%s Aufrufe"
+
+#: includes/class-wordpress-popular-posts-output.php:738
+msgid "1 view per day"
+msgid_plural "%s views per day"
+msgstr[0] "1 Aufruf pro Tag"
+msgstr[1] "%s Aufrufe pro Tag"
+
+#: admin/class-wordpress-popular-posts-admin.php:658
+#: admin/class-wordpress-popular-posts-admin.php:998
+#: admin/partials/admin.php:411 admin/partials/admin.php:458
+#: includes/class-wordpress-popular-posts-output.php:725
+msgid "1 comment"
+msgid_plural "%s comments"
+msgstr[0] "1 Kommentar"
+msgstr[1] "%s Kommentare"
+
+#: includes/class-wordpress-popular-posts-output.php:128
+msgid "Sorry. No data so far."
+msgstr "Noch keine Daten vorhanden."
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: admin/partials/admin.php:228
+msgid "The thumbnail cache is already empty!"
+msgstr "Der Vorschaubild-Zwischenspeicher ist bereits leer!"
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: admin/partials/admin.php:224
+msgid "Success! All files have been deleted!"
+msgstr "Erfolg! Alle Daten wurden gelöscht!"
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: admin/partials/admin.php:159 admin/partials/admin.php:198
+#: admin/partials/admin.php:236
+msgid "Sorry, you do not have enough permissions to do this. Please contact the site administrator for support."
+msgstr "Du hast nicht die erforderlichen Rechte um das zu tun. Bitte wende dich an den Administrator für weitere Hilfe."
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: admin/partials/admin.php:155 admin/partials/admin.php:163
+#: admin/partials/admin.php:194 admin/partials/admin.php:202
+#: admin/partials/admin.php:232 admin/partials/admin.php:240
+msgid "Invalid action."
+msgstr "Ungültige Aktion."
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: admin/partials/admin.php:190
+msgid "Error: one or both data tables are missing."
+msgstr "Fehler: Eine oder beide Tabellen fehlen."
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: admin/partials/admin.php:186
+msgid "Success! All data have been cleared!"
+msgstr "Erfolg: Alle Daten wurden gelöscht!"
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: admin/partials/admin.php:151
+msgid "Error: cache table does not exist."
+msgstr "Fehler: Cache-Tabelle ist nicht vorhanden."
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: admin/partials/admin.php:147
+msgid "Success! The cache table has been cleared!"
+msgstr "Erfolg: Die Cache-Tabelle wurde geleert!"
+
+#: includes/class-wordpress-popular-posts-activator.php:162
+msgid "Your WordPress version is too old. WordPress Popular Posts requires at least WordPress version %1$s to function correctly. Please update your blog via Dashboard &gt; Update."
+msgstr "Deine WordPress-Version ist zu alt. Das Plugin WordPress Popular Posts benötigt mindestens Version %1$s. Bitte aktualisiere WordPress via Dashboard &gt; Aktualisieren."
+
+#: includes/class-wordpress-popular-posts-activator.php:155
+msgid "Your PHP installation is too old. WordPress Popular Posts requires at least PHP version %1$s to function correctly. Please contact your hosting provider and ask them to upgrade PHP to %1$s or higher."
+msgstr "Deine PHP-Version ist zu alt. Das Plugin\"WordPress Popular Posts\" benötigt mindestens PHP-Version %1$s für die einwandfreie Funktion. Bitte nehme Kontakt mit deinem Hosting-Provider auf und bitte ihn, PHP auf v%1$s oder höher zu aktualisieren."
+
+#: includes/class-wordpress-popular-posts-widget.php:21
+msgid "The most Popular Posts on your blog."
+msgstr "Die beliebtesten Beiträge deines Blogs."
+
+#: includes/widget-form.php:186
+msgid "Post HTML Markup"
+msgstr "Zeige HTML-Code"
+
+#: includes/widget-form.php:183
+msgid "Before / after Popular Posts"
+msgstr "Vor / nach Beliebte Beiträge:"
+
+#: includes/widget-form.php:180
+msgid "Before / after title"
+msgstr "Vor / nach dem Titel:"
+
+#: includes/widget-form.php:177
+msgid "Use custom HTML Markup"
+msgstr "Verwende nutzerdefinierten HTML-Code"
+
+#: includes/widget-form.php:175
+msgid "HTML Markup settings"
+msgstr "Einstellungen des HTML-Codes"
+
+#: includes/widget-form.php:147
+msgid "WordPress Date Format"
+msgstr "Datumsformat WordPress"
+
+#: includes/widget-form.php:144
+msgid "Date Format"
+msgstr "Datumsformat"
+
+#: includes/widget-form.php:141
+msgid "Display date"
+msgstr "Zeige Datum"
+
+#: includes/widget-form.php:139
+msgid "Display author"
+msgstr "Zeige Autor"
+
+#: includes/widget-form.php:137
+msgid "Display views"
+msgstr "Zeige Aufrufe"
+
+#: includes/widget-form.php:135
+msgid "Display comment count"
+msgstr "Zeige Anzahl Kommentare"
+
+#: includes/widget-form.php:133
+msgid "Stats Tag settings"
+msgstr "Einstellungen des Statistik-Tags"
+
+#: includes/widget-form.php:126
+msgid "Height"
+msgstr "Höhe:"
+
+#: includes/widget-form.php:123
+msgid "Width"
+msgstr "Breite:"
+
+#: includes/widget-form.php:121
+msgid "Set size manually"
+msgstr "Größe manuell festlegen"
+
+#: includes/widget-form.php:109
+msgid "Use predefined size"
+msgstr "Vorgegebene Größe verwenden"
+
+#: includes/widget-form.php:106
+msgid "Display post thumbnail"
+msgstr "Zeige Vorschaubild"
+
+#: includes/widget-form.php:100
+msgid "Excerpt length"
+msgstr "Länge des Auszugs:"
+
+#: includes/widget-form.php:99
+msgid "Keep text format and links"
+msgstr "Behalte Textformat und Links bei"
+
+#: includes/widget-form.php:96
+msgid "Display post excerpt"
+msgstr "Zeige Auszug"
+
+#: includes/widget-form.php:93 includes/widget-form.php:103
+msgid "words"
+msgstr "Wörter"
+
+#: includes/widget-form.php:92 includes/widget-form.php:102
+msgid "characters"
+msgstr "Buchstaben"
+
+#: includes/widget-form.php:91
+msgid "Shorten title to"
+msgstr "Kürze den Titel auf"
+
+#: includes/widget-form.php:88
+msgid "Shorten title"
+msgstr "Kürze den Titel"
+
+#: includes/widget-form.php:85
+msgid "Display post rating"
+msgstr "Zeige Bewertung"
+
+#: includes/widget-form.php:81
+msgid "Posts settings"
+msgstr "Einstellungen für Beiträge"
+
+#: includes/widget-form.php:53
+msgid "Post ID(s) to exclude"
+msgstr "Post-ID(s), die ausgeschlossen werden"
+
+#: includes/widget-form.php:50
+msgid "Post type(s)"
+msgstr "Post-Type(s):"
+
+#: includes/widget-form.php:28
+msgid "Time Range"
+msgstr "Zeitspanne:"
+
+#: includes/widget-form.php:26
+msgid "Filters"
+msgstr "Filter:"
+
+#: includes/widget-form.php:19
+msgid "Avg. daily views"
+msgstr "Durchschn. tägl. Aufrufe"
+
+#: includes/widget-form.php:18
+msgid "Total views"
+msgstr "Zahl der Aufrufe"
+
+#: admin/class-wordpress-popular-posts-admin.php:690
+#: includes/widget-form.php:17
+msgid "Comments"
+msgstr "Kommentaren"
+
+#: includes/widget-form.php:15
+msgid "Sort posts by"
+msgstr "Sortiere Beiträge nach:"
+
+#: includes/widget-form.php:10
+msgid "posts"
+msgstr "Beiträge"
+
+#: includes/widget-form.php:9
+msgid "Show up to"
+msgstr "Zeige bis zu:"
+
+#: includes/widget-form.php:3
+msgid "Title"
+msgstr "Titel:"
+
+#: admin/class-wordpress-popular-posts-admin.php:265
+msgid "You can <a href=\"%s\" target=\"_blank\">leave a review</a>, too!"
+msgstr "Du kannst außerdem <a href=\"%s\" target=\"_blank\">eine Bewertung hinterlassen!</a>"
+
+#: admin/class-wordpress-popular-posts-admin.php:258
+msgid "Each donation motivates me to keep releasing free stuff for the WordPress community!"
+msgstr "Jede Spende motiviert mich, der WordPress-Gemeinschaft nützliches Zeugs weiterhin kostenlos zur Verfügung zu stellen!"
+
+#: admin/partials/admin.php:886
+msgid "If set, WordPress Popular Posts will show how many comments each popular post has got during the specified time range"
+msgstr "Falls aktiviert, zeigt WordPress Popular Posts an, wie viele Kommentare jeder beliebte Beitrag in der eingestellten Zeitspanne erhalten hat."
+
+#: admin/partials/admin.php:950
+msgid "returns post/page date, requires stats_date=1"
+msgstr "Gibt das Datum der Seite/des Beitrags zurück, erfordert stats_date=1"
+
+#: admin/partials/admin.php:950
+msgid "returns comments count only, no text, requires stats_comments=1"
+msgstr "gibt nur die Anzahl der Kommentare zurück, ohne Text, erfordert stats_comment=1"
+
+#: admin/partials/admin.php:950
+msgid "returns views count only, no text"
+msgstr "gibt nur die Anzahl der Aufrufe zurück, ohne Text"
+
+#: admin/partials/admin.php:950
+msgid "returns linked category name, requires stats_category=1"
+msgstr "gibt den verlinkten Kategorien-Namen zurück, erfordert stats_category=1"
+
+#: admin/partials/admin.php:950
+msgid "returns linked author name, requires stats_author=1"
+msgstr "gibt den verlinkten Autoren-Namen zurück, erfordert stats_author=1"
+
+#: admin/partials/admin.php:950
+msgid "returns post/page title, no link"
+msgstr "gibt den Titel des Beitrags/der Seite zurück, ohne Link"
+
+#: admin/partials/admin.php:950
+msgid "returns the URL of the post/page"
+msgstr "gibt die URL des Beitrags/der Seite zurück"
+
+#: admin/partials/admin.php:950
+msgid "returns post/page current rating as an integer, requires WP-PostRatings installed and enabled"
+msgstr "gibt die aktuelle Bewertung des Beitrags/der Seite zurück, erfordert das installierte und aktivierte Plugin WP-PostRatings"
+
+#: admin/partials/admin.php:950
+msgid "returns post/page current rating, requires WP-PostRatings installed and enabled"
+msgstr "zeigt die aktuelle Bewertung des Beitrags/der Seite an, erfordert das installierte und aktivierte Plugin WP-PostRatings"
+
+#: admin/partials/admin.php:950
+msgid "returns post/page excerpt, and requires excerpt_length to be greater than 0"
+msgstr "gibt den Textauszug des Beitrags/der Seite zurück, erfordert excerpt_length größer als 0"
+
+#: admin/partials/admin.php:950
+msgid "returns thumbnail image without linking to post/page, requires thumbnail_width & thumbnail_height"
+msgstr "Gibt das Vorschaubild zurück, ohne den Beitrag/die Seite zu verlinken, erfordert thumbnail_width & thumbnail_height"
+
+#: admin/partials/admin.php:950
+msgid "returns thumbnail linked to post/page, requires thumbnail_width & thumbnail_height"
+msgstr "Gibt das zum Beitrag/zur Seite verlinkte Vorschaubild zurück, erfordert thumbnail_width & thumbnail_height"
+
+#: admin/partials/admin.php:950
+msgid "Available Content Tags"
+msgstr "Verfügbare Content-Tags"
+
+#: admin/partials/admin.php:950
+msgid "Text string, custom HTML"
+msgstr "Zeichenkette, benutzerdefiniertes HTML"
+
+#: admin/partials/admin.php:949
+msgid "Sets the HTML structure of each post"
+msgstr "Setzt die HTML-Struktur jeden Beitrags"
+
+#: admin/partials/admin.php:942
+msgid "Sets the closing tag for the listing"
+msgstr "Bestimmt das schließende Tag der Auflistung"
+
+#: admin/partials/admin.php:935
+msgid "Sets the opening tag for the listing"
+msgstr "Bestimmt das öffnende Tag der Auflistung"
+
+#: admin/partials/admin.php:914
+msgid "Sets the date format"
+msgstr "Bestimmt das Datumsformat"
+
+#: admin/partials/admin.php:907
+msgid "If set, WordPress Popular Posts will display the date when each popular post on the list was published"
+msgstr "Falls gesetzt, zeigt WordPress Popular Posts das Veröffentlichungsdatum jeden Beitrags in der Liste an."
+
+#: admin/partials/admin.php:900
+msgid "If set, WordPress Popular Posts will show who published each popular post on the list"
+msgstr "Falls gesetzt, zeigt WordPress Popular Posts an, wer welchen Beitrag veröffentlicht hat."
+
+#: admin/partials/admin.php:879
+msgid "If set, and if the WP-PostRatings plugin is installed and enabled on your blog, WordPress Popular Posts will show how your visitors are rating your entries"
+msgstr "Falls gesetzt und wenn das Plugin WP-PostRatings in Deinem Blog läuft, zeigt WordPress Popular Posts die Bewertungen der Nutzer an."
+
+#: admin/partials/admin.php:872
+msgid "If set, and if your current server configuration allows it, you will be able to display thumbnails of your posts. This attribute sets the height for thumbnails"
+msgstr "Falls gesetzt und es die aktuelle Server-Konfiguration erlaubt, ist dir die Anzeige von Vorschaubildern deiner Beiträge möglich. Dieses Attribut bestimmt die Höhe der Vorschaubilder."
+
+#: admin/partials/admin.php:865
+msgid "If set, and if your current server configuration allows it, you will be able to display thumbnails of your posts. This attribute sets the width for thumbnails"
+msgstr "Falls gesetzt und es die aktuelle Server-Konfiguration erlaubt, ist dir die Anzeige von Vorschaubildern deiner Beiträge möglich. Dieses Attribut bestimmt die Breite der Vorschaubilder."
+
+#: admin/partials/admin.php:858
+msgid "If set to 1, WordPress Popular Posts will shorten the excerpt to \"n\" words instead of characters"
+msgstr "Falls gesetzt, kürzt WordPress Popular Posts jeden Auszug, wenn möglich, auf \"n\" Wörter anstatt Zeichen."
+
+#: admin/partials/admin.php:851
+msgid "If set, WordPress Popular Posts will maintaing all styling tags (strong, italic, etc) and hyperlinks found in the excerpt"
+msgstr "Falls gesetzt, behält WordPress Popular Posts die formatierenden Tags (fett, kursiv usw.) und die Links im Auszug bei."
+
+#: admin/partials/admin.php:844
+msgid "If set, WordPress Popular Posts will build and include an excerpt of \"n\" characters long from the content of each post listed as popular"
+msgstr "Falls gesetzt, zeigt WordPress Popular Posts einen Auszug von \"n\" Buchstaben Länge bei jedem Beitrag an."
+
+#: admin/partials/admin.php:837
+msgid "If set to 1, WordPress Popular Posts will shorten each post title to \"n\" words instead of characters"
+msgstr "Falls gesetzt, kürzt WordPress Popular Posts jeden Titel, wenn möglich, auf \"n\" Wörter anstatt Zeichen."
+
+#: admin/partials/admin.php:830
+msgid "If set, WordPress Popular Posts will shorten each post title to \"n\" characters whenever possible"
+msgstr "Falls gesetzt, kürzt WordPress Popular Posts jeden Titel, wenn möglich, auf \"n\" Zeichen."
+
+#: admin/partials/admin.php:823
+msgid "If set, WordPress Popular Posts will retrieve all entries created by specified author(s) ID(s)."
+msgstr "Falls gesetzt, wird WordPress Popular Posts alle Einträge anhand angegebener Autor(en)-ID(s) ausgeben."
+
+#: admin/partials/admin.php:816
+msgid "If set, WordPress Popular Posts will retrieve all entries that belong to the specified term ID(s). If a minus sign is used, entries associated to the term(s) will be excluded instead."
+msgstr "Falls gesetzt, ruft WordPress Popular Posts alle Einträge, die den angegebenen Kategorie-IDs zugeordnet sind, ab. Ein Minus-Zeichen vor der ID schließt die Beiträge dieser Kategorie aus."
+
+#: admin/partials/admin.php:795
+msgid "If set, WordPress Popular Posts will exclude the specified post(s) ID(s) form the listing."
+msgstr "Falls gesetzt, zeigt WordPress Popular Posts die Beiträge und Seiten anhand ihrer angegebener ID(s) in der Liste nicht an."
+
+#: admin/partials/admin.php:788
+msgid "Defines the type of posts to show on the listing"
+msgstr "Bestimmt die Art der Dokumente, die aufgelistet werden"
+
+#: admin/partials/admin.php:782
+msgid "(for average views per day)"
+msgstr "(für durchschn. Aufrufe pro Tag)"
+
+#: admin/partials/admin.php:781
+msgid "Sets the sorting option of the popular posts"
+msgstr "Bestimmt die Auswahl der Reihenfolge der beliebten Beiträge"
+
+#: admin/partials/admin.php:774
+msgid "Tells WordPress Popular Posts to retrieve the most popular entries published within the time range specified by you"
+msgstr "Weist WordPress Popular Posts an, die beliebtesten Beiträge innerhalt der eingestellten Zeitspanne anzuzeigen."
+
+#: admin/partials/admin.php:753
+msgid "Tells WordPress Popular Posts to retrieve the most popular entries within the time range specified by you"
+msgstr "Weist WordPress Popular Posts an, die beliebtesten Beiträge innerhalt der eingestellten Zeitspanne anzuzeigen."
+
+#: admin/partials/admin.php:747 admin/partials/admin.php:761
+#: admin/partials/admin.php:831 admin/partials/admin.php:845
+#: admin/partials/admin.php:866 admin/partials/admin.php:873
+msgid "Positive integer"
+msgstr "Positive Ganzzahl"
+
+#: admin/partials/admin.php:746
+msgid "Sets the maximum number of popular posts to be shown on the listing"
+msgstr "Bestimmt die maximale Anzahl der beliebten Beiträge in der Auflistung"
+
+#: admin/partials/admin.php:739
+msgid "Set the closing tag for the heading of the list"
+msgstr "Bestimmt den schließenden Tag der Listenüberschrift"
+
+#: admin/partials/admin.php:732
+msgid "Set the opening tag for the heading of the list"
+msgstr "Bestimmt den öffnenden Tag der Listenüberschrift"
+
+#: admin/partials/admin.php:727 admin/partials/admin.php:797
+#: admin/partials/admin.php:804 admin/partials/admin.php:811
+#: admin/partials/admin.php:818 admin/partials/admin.php:825
+msgid "None"
+msgstr "nichts"
+
+#: admin/partials/admin.php:726 admin/partials/admin.php:733
+#: admin/partials/admin.php:740 admin/partials/admin.php:789
+#: admin/partials/admin.php:796 admin/partials/admin.php:803
+#: admin/partials/admin.php:810 admin/partials/admin.php:817
+#: admin/partials/admin.php:824 admin/partials/admin.php:915
+#: admin/partials/admin.php:936 admin/partials/admin.php:943
+msgid "Text string"
+msgstr "Zeichenkette"
+
+#: admin/partials/admin.php:725
+msgid "Sets a heading for the list"
+msgstr "Bestimmt die Überschrift der Liste"
+
+#: admin/partials/admin.php:719
+msgid "Example"
+msgstr "Beispiel"
+
+#: admin/partials/admin.php:718
+msgid "Defaults to"
+msgstr "Voreinstellung"
+
+#: admin/partials/admin.php:717
+msgid "Possible values"
+msgstr "Erlaubte Werte"
+
+#: admin/partials/admin.php:716
+msgid "What it does "
+msgstr "Was es macht"
+
+#: admin/partials/admin.php:715
+msgid "Parameter"
+msgstr "Parameter"
+
+#: admin/partials/admin.php:705
+msgid "With the following parameters you can customize the popular posts list when using either the <a href=\"%1$s\">wpp_get_mostpopular() template tag</a> or the <a href=\"%2$s\">[wpp] shortcode</a>."
+msgstr "Mit den folgenden Parametern kannst du die Liste populärer Beiträge anpassen, wenn du entweder das <a href=\"%1$s\">Template-Tag wpp_get_mostpopular()</a> oder den <a href=\"%2$s\"> Shortcode [wpp]</a> verwendest."
+
+#: admin/partials/admin.php:698
+msgid "Use this button to manually clear entries from all WPP data tables"
+msgstr "Nutze diese Schaltfläche, um alle Einträge in der Datentabelle von Wordpress Popular Posts zu löschen."
+
+#: admin/partials/admin.php:698
+msgid "Clear all data"
+msgstr "Alle Daten löschen"
+
+#: admin/partials/admin.php:697
+msgid "Use this button to manually clear entries from WPP cache only"
+msgstr "Nutze diese Schaltfläche, um die Cache-Tabelle von Wordpress Popular Posts zu leeren."
+
+#: admin/partials/admin.php:697
+msgid "Empty cache"
+msgstr "Cache leeren"
+
+#: admin/partials/admin.php:696
+msgid "WordPress Popular Posts maintains data in two separate tables: one for storing the most popular entries on a daily basis (from now on, \"cache\"), and another one to keep the All-time data (from now on, \"historical data\" or just \"data\"). If for some reason you need to clear the cache table, or even both historical and cache tables, please use the buttons below to do so."
+msgstr "WordPress Popular Posts speichert Daten in zwei getrennten Tabellen: eine für die beliebtesten Beiträge der letzten 30 Tage (auch: \"Cache-Tabelle\"), und die andere für die Allzeit-Daten (auch \"historische Daten\" oder einfach \"Datentabelle\"). Solltest du aus verschiedenen Gründen die Cache-Tabelle leeren wollen oder sowohl die Datentabelle als auch die Cache-Tabelle, nutze die folgenden Schaltflächen."
+
+#: admin/partials/admin.php:677
+msgid "By default, the plugin includes a stylesheet called wpp.css which you can use to style your popular posts listing. If you wish to use your own stylesheet or do not want it to have it included in the header section of your site, use this."
+msgstr "Als Voreinstellung schließt dieses Plugin eine Stylesheet-Datei wpp.css ein. Du kannst mit ihr die Auflistung beliebter Beiträge gestalten. Falls du dein eigenes Stylesheet verwenden oder die wpp.css nicht im HEAD-Abschnitt einbinden willst, deaktiviere die Einbindung."
+
+#: admin/partials/admin.php:670
+msgid "Use plugin's stylesheet"
+msgstr "Stylesheet des Plugins benutzen"
+
+#: admin/partials/admin.php:664
+msgid "New tab/window"
+msgstr "Neuem Tab/Fenster"
+
+#: admin/partials/admin.php:663
+msgid "Current window"
+msgstr "aktuellem Fenster"
+
+#: admin/partials/admin.php:660
+msgid "Open links in"
+msgstr "Links öffnen in"
+
+#: admin/partials/admin.php:655
+msgid "Miscellaneous"
+msgstr "Sonstiges"
+
+#: admin/partials/admin.php:638
+msgid "A sampling rate of %d is recommended for large / high traffic sites. For lower traffic sites, you should lower the value"
+msgstr "Eine Stichprobenrate von %d wird für sehr große oder vielbesuchte Websites empfohlen. Für Websites mit weniger Besuchern verwende einen niedrigeren Wert."
+
+#: admin/partials/admin.php:634
+msgid "Sample Rate"
+msgstr "Stichprobenrate"
+
+#: admin/partials/admin.php:630
+msgid "By default, WordPress Popular Posts stores in database every single visit your site receives. For small / medium sites this is generally OK, but on large / high traffic sites the constant writing to the database may have an impact on performance. With <a href=\"%1$s\" target=\"_blank\">data sampling</a>, WordPress Popular Posts will store only a subset of your traffic and report on the tendencies detected in that sample set (for more, <a href=\"%2$s\" target=\"_blank\">please read here</a>)"
+msgstr "Normalerweise speichert WordPress Popular Posts jeden einzelnen Besuch auf Ihrer Website in der Datenbank. Für kleine oder mittelgroße Websites ist das im Allgemeinen in Ordnung, aber auf großen oder vielbesuchten Websites kann das konstante Schreiben in die Datenbank einen Einfluss auf die Leistung der Website haben. Mit <a href=\"%1$s\" target=\"_blank\">Stichprobenartiger Erfassung</a> speichert WordPress Popular Posts nur einen Teil der Zugriffe. Der Bericht enthält dann Tendenzen, die aus der Stichprobe abgeleitet werden (für mehr Informationen <a href=\"%2$s\" target=\"_blank\">lies bitte hier</a>)"
+
+#: admin/partials/admin.php:622
+msgid "Data Sampling"
+msgstr "Stichprobemartige Erfassung"
+
+#: admin/partials/admin.php:618
+msgid "Really? That long?"
+msgstr "Wirklich? So lang?"
+
+#: admin/partials/admin.php:615
+msgid "Year(s)"
+msgstr "Jahr(e)"
+
+#: admin/partials/admin.php:614
+msgid "Month(s)"
+msgstr "Monat(e)"
+
+#: admin/partials/admin.php:613
+msgid "Week(s)"
+msgstr "Woche(n)"
+
+#: admin/partials/admin.php:318 admin/partials/admin.php:612
+#: includes/widget-form.php:43
+msgid "Day(s)"
+msgstr "Tag(e)"
+
+#: admin/partials/admin.php:317 admin/partials/admin.php:611
+#: includes/widget-form.php:42
+msgid "Hour(s)"
+msgstr "Stunde(n)"
+
+#: admin/partials/admin.php:316 admin/partials/admin.php:610
+#: includes/widget-form.php:41
+msgid "Minute(s)"
+msgstr "Minute(n)"
+
+#: admin/partials/admin.php:606
+msgid "Refresh cache every"
+msgstr "Auffrischen des Zwischenspeichers alle"
+
+#: admin/partials/admin.php:598
+msgid "Enable caching"
+msgstr "Zwischenspeichern aktivieren"
+
+#: admin/partials/admin.php:597
+msgid "Never cache"
+msgstr "Niemals zwischenspeichern"
+
+#: admin/partials/admin.php:594 admin/partials/admin.php:622
+#: includes/widget-form.php:3 includes/widget-form.php:50
+#: includes/widget-form.php:56 includes/widget-form.php:75
+#: includes/widget-form.php:85 includes/widget-form.php:177
+msgid "What is this?"
+msgstr "Was ist das?"
+
+#: admin/partials/admin.php:590
+msgid "If you are using a caching plugin such as WP Super Cache, enabling this feature will keep the popular list from being cached by it"
+msgstr "Falls du ein Cache-Plugin wie z. B. WP Super Cache verwendest, verhindert das Aktivieren, dass die Liste nicht gecachet wird und stets aktuell ist."
+
+#: admin/partials/admin.php:582
+msgid "Ajaxify widget"
+msgstr "Widget via Ajax"
+
+#: admin/partials/admin.php:574
+msgid "day(s)"
+msgstr "Tag(e)"
+
+#: admin/partials/admin.php:571
+msgid "Keep data for"
+msgstr "Behalte Daten für"
+
+#: admin/partials/admin.php:567
+msgid "Log limit"
+msgstr "Protokollierung einschränken"
+
+#: admin/partials/admin.php:561
+msgid "Everyone"
+msgstr "von jedem"
+
+#: admin/partials/admin.php:560
+msgid "Logged-in users only"
+msgstr "nur von eingeloggten Benutzern"
+
+#: admin/partials/admin.php:559
+msgid "Visitors only"
+msgstr "von jedem außer eingeloggten Benutzern"
+
+#: admin/partials/admin.php:556
+msgid "Log views from"
+msgstr "Erfasse Aufrufe"
+
+#: admin/partials/admin.php:551
+msgid "Data"
+msgstr "Daten"
+
+#: admin/partials/admin.php:531
+msgid "Use this button to clear WPP's thumbnails cache"
+msgstr "Nutze diese Schaltfläche, um die Zwischenspeicher-Tabelle von WPP zu leeren."
+
+#: admin/partials/admin.php:530
+msgid "Empty image cache"
+msgstr "Bilder-Zwischenspeicher leeren"
+
+#: admin/partials/admin.php:570 admin/partials/admin.php:585
+#: admin/partials/admin.php:625 admin/partials/admin.php:674
+msgid "Disabled"
+msgstr "Deaktiviert"
+
+#: admin/partials/admin.php:586 admin/partials/admin.php:626
+#: admin/partials/admin.php:673
+msgid "Enabled"
+msgstr "Aktiviert"
+
+#: admin/partials/admin.php:519
+msgid "Yes"
+msgstr "Ja"
+
+#: admin/partials/admin.php:518
+msgid "No, I will upload my own thumbnail"
+msgstr "Nein, ich lade mein eigenes Vorschaubild hoch"
+
+#: admin/partials/admin.php:515
+msgid "Resize image from Custom field?"
+msgstr "Bild aus benutzerdefiniertem Feld skalieren?"
+
+#: admin/partials/admin.php:509
+msgid "Custom field name"
+msgstr "Name des benutzerdefiniertes Feldes"
+
+#: admin/partials/admin.php:505
+msgid "Tell WordPress Popular Posts where it should get thumbnails from"
+msgstr "Stelle die Quelle der Vorschaubilder für WordPress Popular Posts ein"
+
+#: admin/partials/admin.php:502
+msgid "Custom field"
+msgstr "Benutzerdefiniertes Feld"
+
+#: admin/partials/admin.php:500
+msgid "First image on post"
+msgstr "Erstes Bild im Beitrag"
+
+#: admin/partials/admin.php:499
+msgid "Featured image"
+msgstr "Beitragsbild"
+
+#: admin/partials/admin.php:496
+msgid "Pick image from"
+msgstr "Wähle Bildquelle"
+
+#: admin/partials/admin.php:485
+msgid "Default thumbnail"
+msgstr "Standardvorschaubild"
+
+#: admin/partials/admin.php:480
+msgid "Thumbnails"
+msgstr "Vorschaubilder"
+
+#: includes/widget-form.php:33
+msgid "All-time"
+msgstr "Allzeithoch"
+
+#: admin/partials/admin.php:349 includes/widget-form.php:32
+msgid "Last 30 days"
+msgstr "Letzte 30 Tage"
+
+#: admin/partials/admin.php:348 includes/widget-form.php:31
+msgid "Last 7 days"
+msgstr "Letzte 7 Tage"
+
+#: admin/partials/admin.php:347 includes/widget-form.php:30
+msgid "Last 24 hours"
+msgstr "Letzte 24 Stunden"
+
+#: admin/partials/admin.php:287 includes/widget-form.php:48
+msgid "Display only posts published within the selected Time Range"
+msgstr "Zeige nur Beiträge an, die innerhalb des angegebenen Zeitraums veröffentlicht wurden"
+
+#: admin/partials/admin.php:293 admin/partials/admin.php:331
+#: admin/partials/admin.php:540 admin/partials/admin.php:644
+#: admin/partials/admin.php:683
+msgid "Apply"
+msgstr "Anwenden"
+
+#: admin/partials/admin.php:284
+msgid "Limit"
+msgstr "Max. aufzulistende Einträge:"
+
+#: admin/partials/admin.php:281
+msgid "Post type"
+msgstr "Post-Type"
+
+#: admin/partials/admin.php:8 admin/partials/admin.php:256
+msgid "Parameters"
+msgstr "Parameter"
+
+#: admin/partials/admin.php:7 admin/partials/admin.php:255
+msgid "Tools"
+msgstr "Werkzeuge"
+
+#: admin/partials/admin.php:6 admin/partials/admin.php:254
+msgid "Stats"
+msgstr "Statistiken"
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: admin/partials/admin.php:213
+msgid "This operation will delete all cached thumbnails and cannot be undone."
+msgstr "Alle Einträge im Zwischenspeicher werden unwiderruflich gelöscht."
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: admin/partials/admin.php:174
+msgid "This operation will delete all stored info from WordPress Popular Posts' data tables and cannot be undone."
+msgstr "Alle gespeicherten Daten von WordPress Popular Posts werden gelöscht und können nicht wieder hergestellt werden."
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: admin/partials/admin.php:135 admin/partials/admin.php:174
+#: admin/partials/admin.php:213
+msgid "Do you want to continue?"
+msgstr "Möchtest du fortfahren?"
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: admin/partials/admin.php:135
+msgid "This operation will delete all entries from WordPress Popular Posts' cache table and cannot be undone."
+msgstr "Alle Einträge im Zwischenspeicher werden unwiderruflich gelöscht."
+
+#: admin/partials/admin.php:120
+msgid "Any changes made to WPP's default stylesheet will be lost after every plugin update. In order to prevent this from happening, please copy the wpp.css file (located at wp-content/plugins/wordpress-popular-posts/style) into your theme's directory"
+msgstr "Alle Änderungen an den Standard-Stylesheets von WPP werden bei jedem Update des Plugins überschrieben. Um das zu verhindern, kopiere bitte die Datei wpp.css (im Verzeichnis wp-content/plugins/wordpress-popular-posts/style) in das Verzeichnis deines Themes"
+
+#: admin/partials/admin.php:62
+msgid "Please provide the name of your custom field."
+msgstr "Gebe einen Namen für das benutzerdefinierte Feld an."
+
+#: admin/partials/admin.php:33 admin/partials/admin.php:48
+#: admin/partials/admin.php:71 admin/partials/admin.php:112
+msgid "Settings saved."
+msgstr "Die Einstellungen wurden gespeichert."

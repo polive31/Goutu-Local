@@ -1,0 +1,394 @@
+# Translation of Plugins - WP Retina 2x - Stable (latest release) in French (France)
+# This file is distributed under the same license as the Plugins - WP Retina 2x - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-05-11 13:08:21+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: fr\n"
+"Project-Id-Version: Plugins - WP Retina 2x - Stable (latest release)\n"
+
+#: wr2x_admin.php:385
+msgid "<label>Force Retina + Logging</label><br /><small>Displays retina and creates a <a href=\""
+msgstr "<label>Forcer Retina + Logging</label><br /><small>Affiche retina et créé un <a href=\""
+
+#: ajax.php:359 ajax.php:421
+msgid "Error: "
+msgstr "Erreur :"
+
+#: wr2x_admin.php:417
+msgid "<label>Enabled</label><br /><small>Retina images will not be loaded until the visitor gets close to them. HTML will be rewritten and the lazysizes script will be also loaded. The result will be a <b>faster website</b> for everyone, that consumes less bandwidth.</small>"
+msgstr "<label>Activé</label><br /><small>Les images retina ne seront pas chargées tant que les utilisateur ne les auront pas atteintes. Le HTML sera réécrit et le script lazysizes sera également chargé. Il en résultera un  <b>site web plus rapide</b> pour tout le monde, et consommant moins de bande passante.</small>"
+
+#: wr2x_admin.php:408
+msgid "<label>Enable</label><br /><small>With PictureFill, <b>src</b> tags are replaced by <b>src-set</b> tags, but Google might fail to reference those images. This option will keep the SRC for SEO purpose, but that will force the download of two images (standard, then retina) by the browsers. Please use the <b>Lazy Retina</b> option below as it avoid this to happen (as well as making it loading lazily).</small>"
+msgstr "<label>Activé</label><br /><small>Avec PictureFill, les attributs <b>src</b> sont remplacés par une balise <b>src-set</b>, mais Google peut échouer à référencer ces images. Cette option va conserver SRC dans un objectif de SEO, mais cela va forcer le téléchargement de deux images (standard, puis <i>retina</i>) par les navigateurs. Veuillez utiliser l’option <b>Lazy Retina</b> ci-dessous, qui empêche que cela ne se produise. (en plus de produire un chargement différé).</small>"
+
+#: wr2x_admin.php:317
+msgid "The selected sizes will <b>not</b> have their retina equivalent generated. It is recommended to disable the sizes for which <i>Normal</i> superior to 1200."
+msgstr "Les tailles sélectionnées <b>n’auront pas</b> leur équivalent <i>retina</i> généré. Il est recommandé de désactiver les tailles pour lesquelles <i>normal</i> dépasse 1200."
+
+#: wr2x_admin.php:132
+msgid "<br /><br />Disable Responsive"
+msgstr "<br /><br />responsive désactivé"
+
+#: wr2x_admin.php:119
+msgid "Regenerate Thumbnails"
+msgstr "Régénérer les miniatures"
+
+#: ajax.php:28
+msgid "Invalid API request."
+msgstr "Demande de clé API invalide."
+
+#: dashboard.php:199
+msgid "Based on your <i>image sizes</i> settings, the full-size images should be uploaded at a resolution of at least <b>%d×%d</b> for the plugin to be able generate the <b>%d retina images</b>. Please note that it vares depending on your needs for each image (you will need to discuss this with your developer)."
+msgstr "Basé sur vos réglages de <i>tailles d’image</i>, les images taille réelle devraient être téléversées à une résolution d’au moins <b>%dx%d</b> pour que l’extension génère <b>l’image retina %d</b>. Veuillez noter que cela dépend de vos besoins pour chaque image (vous devrez en discuter avec votre développeur)."
+
+#: common/admin.php:230
+msgid "<label>Force</label><br /><small>Updates and licenses checks are usually made without checking SSL certificates and it is actually fine this way. But if you are intransigent when it comes to SSL matters, this option will force it.</small>"
+msgstr "<label>Forcer</label><br /><small>Les mises à jour et les vérifications de licences sont généralement faites sans vérification des certificats SSL et c'est finalement bien comme ça. Mais si vous êtes intransigeants en matière de SSL, cette option forcera la vérification.</small>"
+
+#: common/admin.php:222
+msgid "<label>Hide <b>Meow Apps</b> Menu</label><br /><small>Hide Meow Apps menu and all its components, for a cleaner admin. This option will be reset if a new Meow Apps plugin is installed. <b>Once activated, an option will be added in your General settings to display it again.</b></small>"
+msgstr "<label>Masquer<b>Les Applications Meow</b> Menu</label><br /><small>Masquer le menu des Applications Meow et tous ses composants, pour une administration plus propre. Cette option sera réinitialisée si une nouvelle extension de Meow est installée. <b>Une fois activée, une option sera ajoutée dans vos Paramètres Généraux pour l'afficher à nouveau.</b></small>"
+
+#: wr2x_admin.php:34
+msgid "JetPack's <b>Photon</b> module breaks features built in WP Retina 2x (as Photos moves the files away). A common and better alternative to Photon is to use <a href='http://tracking.maxcdn.com/c/97349/3982/378'>MaxCDN</a> (very popular), CloudFlare or Fastly."
+msgstr "Le module <b>Photon</b> de JetPack casse les fonctionnalités mises en place dans WP Retina 2x (comme Photos qui déplace les fichiers). Une alternative plus commune et meilleure à Photon est d'utiliser <a href='http://tracking.maxcdn.com/c/97349/3982/378'>MaxCDN</a> (très populaire), CloudFlare ou Fastly."
+
+#. Description of the plugin
+msgid "Make your website look beautiful and crisp on modern displays by creating + displaying retina images."
+msgstr "Rendez votre site beau et net sur les écrans modernes en créant et en affichant des images retina."
+
+#: wr2x_admin.php:458
+msgid "<label>Hide</label><br /><small>Hide information about Pro version.</small>"
+msgstr "<label>Masquer</label><br /><small>Masquer l'information à propos de la version Pro.</small>"
+
+#: wr2x_admin.php:175
+msgid "Pro Information"
+msgstr "Information Pro"
+
+#: common/admin.php:348
+msgid "Meow Apps is run by Jordy Meow, a photographer and software developer living in Japan (and taking <a target=\"_blank\" href=\"http://offbeatjapan.org\">a lot of photos</a>). Meow Apps is a suite of plugins focusing on photography, imaging, optimization and it teams up with the best players in the community (other themes and plugins developers). For more information, please check <a href=\"http://meowapps.com\" target=\"_blank\">Meow Apps</a>."
+msgstr "Meow Apps est conçu par Jordy Meow, un photographe et développeur de logiciels vivant au Japon (et prenant <a target=\"_blank\" href=\"http://offbeatjapan.org\">beaucoup de photos</a>). Meow Apps est une suite d'extensions dédiées à la photographie, à l'image, l'optimisation et qui s'associe avec les meilleurs de la communauté (autres développeurs de thèmes et d'extension). Pour plus d'information, veuillez vérifier sur <a href=\"http://meowapps.com\" target=\"_blank\">Meow Apps</a>."
+
+#: wr2x_admin.php:377
+msgid "<br /><small>Sets image compression quality on a 1-100% scale as an integer (1-100). Default is 90. Only for JPG.</small>"
+msgstr "<br /><small>Collection d'images de qualité pour une compression sur une échelle de 1 à 100 % sous forme d’entier (1-100). La valeur par défaut est 90. Uniquement pour les images JPG.</small>"
+
+#: wr2x_admin.php:172
+msgid "Retina Dashboard"
+msgstr "Tableau de bord Retina"
+
+#: wr2x_admin.php:169
+msgid "Retina Column"
+msgstr "Colonne Retina"
+
+#: wr2x_admin.php:128
+msgid "Debug"
+msgstr "Débogage"
+
+#: wr2x_admin.php:125
+msgid "Over HTTP Check"
+msgstr "Vérification de HTTP en cours"
+
+#: wr2x_admin.php:135
+msgid "Custom CDN Domain"
+msgstr "Domaine CDN personnalisé"
+
+#: wr2x_admin.php:122
+msgid "Disable Medium Large"
+msgstr "Désactiver les Medium Large"
+
+#: wr2x_admin.php:95
+msgid "Retina Quality"
+msgstr "Qualité Retina"
+
+#: wr2x_admin.php:89
+msgid "Full Size Retina"
+msgstr "Retina plein écran"
+
+#: dashboard.php:164
+msgid "Bulk Generate (Thumbnails & Retina)"
+msgstr "Génération en bloc (Miniatures et Retina)"
+
+#: dashboard.php:161
+msgid "Bulk Delete (Retina Only)"
+msgstr "Suppression en bloc (Retina uniquement)"
+
+#: wr2x_admin.php:426
+msgid "<label>Disable</label><br /><small>Only <a href=\"http://caniuse.com/#feat=srcset\" target=\"_blank\">the browsers with src-set support</a> will display Retina images. You can also choose this if you want to load the Picturefill Polyfill script manually or if it is already loaded by your theme.</small>"
+msgstr "<label>Désactiver</label> < br > < small> > seulement <a href=\"http://caniuse.com/#feat=srcset\" target=\"_blank\"> les navigateurs supportant le set de src</a> affichera les images Retina. Vous pouvez également choisir cela si vous voulez charger manuellement le script Picturefill Polyfill ou si il est déjà chargé par votre thème.</small>< br / >"
+
+#: wr2x_admin.php:434
+msgid "<label>Retina-ize</label><br /><small>In your HTML, inline CSS Background will be replaced by the Retina version of the image.</small>"
+msgstr "<label>Retina-ize</label> < br > <small>dans votre code HTML, inline CSS Background sera remplacé par la version Retina de l’image.</small>< br />"
+
+#: wr2x_admin.php:442
+msgid "<label>Hide</label><br /><small>Hide the <i>Retina Column</i> in the Media Library.</small>"
+msgstr "<label>Cacher</label> <br /> <small>Masquer la <i>Colonne Retina</i> dans la Médiathèque.</small>"
+
+#: wr2x_admin.php:450
+msgid "<label>Hide</label><br /><small>Disable <i>Retina Dashboard</i> menu and tools.</small>"
+msgstr "<label>Cacher</label> < br / > <small>Désactiver <i>le Tableau de bord Retina</i> menu et outils.</small>"
+
+#: wr2x_admin.php:400
+msgid "<label>Enable</label><br /><small>Normally, the plugin checks if the Retina files exists through your filesystem. With this option, it will check using HTTP requests, that will enable Retina on exotic WordPress installs and also for images hosted on different servers.</small>"
+msgstr "<label>Activer</label><br /><small>Normalement, l'extension vérifie si les fichiers Retina existent dans votre système de fichiers. Avec cette option, il vérifiera en utilisant des requêtes HTTP, ce qui activera le Retina sur des installations WordPress exotiques ainsi que pour des images hébergées sur différents serveurs.</small>"
+
+#: wr2x_admin.php:232
+msgid "This plugin works out of the box, the default settings are the best for most installs. However, you should have a look at the <a target=\"_blank\" href=\"https://meowapps.com/wp-retina-2x/tutorial/\">tutorial</a>."
+msgstr "Cette extension fonctionne de manière indépendante, les paramètres par défaut sont les meilleurs pour la plupart des installations. Toutefois, vous devriez jeter un oeil sur le <a target=\"_blank\" href=\"https://meowapps.com/wp-retina-2x/tutorial/\"> tutoriel</a>."
+
+#: wr2x_admin.php:201 wr2x_admin.php:209
+msgid "HTML Rewrite"
+msgstr "Réécriture HTML"
+
+#: common/admin.php:190 common/admin.php:191
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+#: common/admin.php:214
+msgid "<label>Hide</label><br /><small>Doesn't display the ads.</small>"
+msgstr "<label>Masquer</label><br /><small>N'affiche pas les publicités.</small>"
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://meowapps.com"
+msgstr "http://meowapps.com"
+
+#: dashboard.php:227
+msgid "<b>Only Pro users have access to the features of this dashboard.</b> As a standard user, the dashboard allow you to Bulk Generate, Bulk Delete and access the Retina Logs. If you wish to stay a standard user and never see this dashboard aver again, you can hide it in the settings.<br /><br />The Pro version of the plugin allows you to <b>replace directly an image already uploaded in the Media Library</b> by a simple drag & drop, upload a <b>retina image for a full-size image</b>, use <b>lazy-loading</b> to load your images (for better performance) and, more importantly, <b>supports the developer</b> :)<br /><br /><a class=\"button-primary\" href=\"https://store.meowapps.com/wp-retina-2x/\" target=\"_blank\">Get WP Retina 2x Pro</a>"
+msgstr "<b>Seuls les utilisateurs Pro ont accès aux fonctionnalités de ce tableau de bord.</b> Comme pour un utilisateur standard, le tableau de bord vous permettra de générer en bloc, de supprimer en bloc et d'accéder aux journaux de Retina. Si vous souhaitez rester un utilisateur standard et ne jamais voir ce tableau de bord encore une fois, vous pouvez le masquer dans les paramètres. <br /><br /> La version Pro de l’exctension vous permet de <b>remplacer directement une image déjà téléchargée dans la bibliothèque média</b> par un simple glisser & déposer, téléchargez une <b>image Retina pour une image plein écran</b>, utilisez le <b>chargement différé</b> pour charger vos images (pour une meilleure performance) et , plus important encore, <b>prend en charge le développeur</b>  :) La clé de série pour le Pro doit être insérée dans vos paramètres > Retina > onglet Pro Merci :) <br /> <br /> <a class=\"button-primary\" href=\"http://meowapps.com/wp-retina-2x/\" target=\"_blank\"> Obtenir la clé de série pour le Pro</a>"
+
+#: wr2x_admin.php:207
+msgid "Responsive Images"
+msgstr "Images Responsive"
+
+#: wr2x_admin.php:362
+msgid "In all cases (including \"None\"), Retina support will be added to the Responsive Images. Check the <a target=\"_blank\" href=\"https://meowapps.com/wp-retina-2x-methods\" />Retina Methods</a> page if you want to know more about those methods."
+msgstr "Dans tous les cas (y compris « Sans »), le support Retina s’ajoutera aux Images Responsive. Vérifiez la page <a target=\"_blank\" href=\"http://meowapps.com/wp-retina-2x/retina-methods/\"> Méthodes Retina</a> si vous voulez en savoir plus sur ces méthodes."
+
+#: dashboard.php:26
+msgid "Ignore is a Pro feature."
+msgstr "Ignorer est une fonctionnalité Pro."
+
+#: core.php:530
+msgid "PRO VERSION ONLY"
+msgstr "VERSION PRO SEULEMENT"
+
+#. Author of the plugin
+msgid "Jordy Meow"
+msgstr "Jordy Meow"
+
+#. Plugin Name of the plugin
+msgid "WP Retina 2x"
+msgstr "WP Retina 2x"
+
+#: wr2x_admin.php:392
+msgid "<br /><small>If not empty, your site domain will be replaced with this CDN domain (PictureFill and HTML Rewrite only).</small>"
+msgstr "< br / > <small>Si non vide, votre nom de domaine du site sera remplacé par ce domaine CDN (PictureFill et HTML réécriture seulement).</small>"
+
+#: wr2x_admin.php:199
+msgid "None"
+msgstr "Aucune"
+
+#: wr2x_admin.php:203
+msgid "Retina.js"
+msgstr "Retina.js"
+
+#: wr2x_admin.php:86
+msgid "Method"
+msgstr "Méthode"
+
+#: wr2x_admin.php:116
+msgid "Auto Generate"
+msgstr "Auto-Génération"
+
+#: wr2x_admin.php:83
+msgid "Disabled Sizes"
+msgstr "Tailles désactivées"
+
+#: wr2x_admin.php:221
+msgid "The permalinks are not enabled. They need to be enabled in order to use the server-side method."
+msgstr "Les permaliens ne sont pas activés. Ils doivent être activés afin d'utiliser la méthode côté serveur."
+
+#: wr2x_admin.php:217
+msgid "By the way, you are using a <b>WordPress Multi-Site installation</b>! You must edit your .htaccess manually and add '<b>RewriteRule ^(wp-content/.+\\.(png|gif|jpg|jpeg|bmp|PNG|GIF|JPG|JPEG|BMP)) wp-content/plugins/wp-retina-2x/wr2x_image.php?ms=true&file=$1 [L]</b>' as the first RewriteRule if you want the server-side to work."
+msgstr "Par ailleurs,vous avez une <b>installation WordPress Multi-Site</b> ! Vous devez éditer votre .htaccess manuellement et rajouter '<b>RewriteRule ^(wp-content/.+\\.(png|gif|jpg|jpeg|bmp|PNG|GIF|JPG|JPEG|BMP)) wp-content/plugins/wp-retina-2x/wr2x_image.php?ms=true&file=$1 [L]</b>' en tant que première RewriteRule si vous voulez que la méthode Client side serveur fonctionne."
+
+#: wr2x_admin.php:214
+msgid "By the way, you are using a <b>WordPress Multi-Site installation</b>! You must edit your .htaccess manually and add '<b>RewriteRule ^files/(.+) wp-content/plugins/wp-retina-2x/wr2x_image.php?ms=true&file=$1 [L]</b>' as the first RewriteRule if you want the server-side to work."
+msgstr "Vous avez une <b>installation Multi-Site de WordPress</b> ! Vous devez éditer votre .htaccess manuellement et rajouter '<b>RewriteRule ^files/(.+.(?:jpe?g|gif|png)) wp-content/plugins/wp-retina-2x/wr2x_image.php?ms=true&file=$1 [L]</b>' en tant que première RewriteRule si vous voulez que le Client side fonctionne."
+
+#: wr2x_admin.php:205
+msgid "PictureFill"
+msgstr "PictureFill"
+
+#: wr2x_admin.php:199 wr2x_admin.php:201 wr2x_admin.php:203 wr2x_admin.php:205
+#: wr2x_admin.php:207 wr2x_admin.php:209
+msgid "Current method:"
+msgstr "Méthode utilisée :"
+
+#: dashboard.php:299
+msgid "DETAILS"
+msgstr "DETAILS"
+
+#: dashboard.php:298
+msgid "IGNORE"
+msgstr "IGNORER"
+
+#: dashboard.php:269
+msgid "Full-Size Retina<br/><b>Upload</b>"
+msgstr "Full-Size Retina<br/><b>Téléverser</b>"
+
+#: dashboard.php:268
+msgid "Full-Size Retina"
+msgstr "Retina plein écran"
+
+#: dashboard.php:267
+msgid "Full-Size<br/><b>Replace</b>"
+msgstr "Plein écran<br/><b>Remplacer</b>"
+
+#: dashboard.php:266
+msgid "Media Sizes<br />Retina-ized"
+msgstr "Tailles des Media <br />Retina-ized"
+
+#: dashboard.php:265
+msgid "Base image"
+msgstr "Image de base"
+
+#: dashboard.php:250 dashboard.php:255
+msgid "Ignored"
+msgstr "Ignorés"
+
+#: dashboard.php:249 dashboard.php:254
+msgid "Issues"
+msgstr "Problèmes"
+
+#: dashboard.php:245
+msgid "All"
+msgstr "Tous"
+
+#: dashboard.php:206
+msgid "The <a target=\"_blank\" href=\"%s/wp-retina-2x.log\">log file</a> is available. You can also <a href=\"?page=wp-retina-2x&view=issues&clearlogs=true\">clear</a> it."
+msgstr "Le <a target=\"_blank\" href=\"%s/wp-retina-2x.log\">fichier de log</a> est disponible. Vous pouvez aussi <a href=\"?page=wp-retina-2x&view=issues&clearlogs=true\">le nettoyer</a>."
+
+#: dashboard.php:202
+msgid "Your PHP configuration allows uploads of <b>%dMB</b> maximum."
+msgstr "Votre configuration PHP permet des téléchargements de <b>%d Mo</b> maximum."
+
+#: dashboard.php:201
+msgid "You can upload or replace the images by drag & drop."
+msgstr "Vous pouvez télécharger ou remplacer les images par glisser & déposer."
+
+#: dashboard.php:200
+msgid "You <b>also need</b> to upload a retina image for the Full-Size image (might be <b>%d×%d</b>)."
+msgstr "Vous avez <b>aussi besoin</b> de téléverser un image retina pour l’image Full-Size (pourrait être <b>%d×%d</b>)."
+
+#: dashboard.php:175
+msgid "The logs have been cleared."
+msgstr "Les logs ont été supprimés."
+
+#: dashboard.php:147
+msgid "Refresh"
+msgstr "Rafraîchir"
+
+#: dashboard.php:15
+msgid "Retina %s"
+msgstr "Retina %s"
+
+#: dashboard.php:14
+msgid "Retina images"
+msgstr "Images Retina"
+
+#: ajax.php:490
+msgid "Replaced successfully."
+msgstr "Remplacé avec succès."
+
+#: ajax.php:367
+msgid "Uploaded successfully."
+msgstr "Téléversement réussi."
+
+#: ajax.php:300
+msgid "You cannot use this file (wrong extension? wrong type?)."
+msgstr "Vous ne pouvez pas utiliser ce fichier (mauvaise extension ou type ?)."
+
+#: ajax.php:289
+msgid "The file is not an image or the upload went wrong."
+msgstr "Ce fichier n'est pas une image ou alors il y a eu un problème durant le téléversement."
+
+#: ajax.php:44
+msgid "You do not have permission to upload files."
+msgstr "Vous n'avez pas le droit de téléverser des fichiers."
+
+#: ajax.php:271
+msgid "Retina files generated."
+msgstr "Les fichiers Retina ont été générés."
+
+#: ajax.php:207
+msgid "Details retrieved."
+msgstr "Détails récupérés."
+
+#: ajax.php:181
+msgid "Retina files deleted."
+msgstr "Les fichiers Retina ont été supprimés."
+
+#: ajax.php:145
+msgid "Full retina file deleted."
+msgstr "Fichier complet Retina supprimé."
+
+#: ajax.php:121 ajax.php:159 ajax.php:195 ajax.php:221
+msgid "The attachment ID is missing."
+msgstr "L’ID de la pièce jointe est manquant."
+
+#: dashboard.php:296 media-library.php:26 core.php:1227
+msgid "GENERATE"
+msgstr "GÉNÉRER"
+
+#: core.php:1226
+msgid "Nothing to do ;)"
+msgstr "Rien à faire ;)"
+
+#: core.php:1225
+msgid "Wait..."
+msgstr "Patientez..."
+
+#: core.php:1224
+msgid "<a href='?page=wp-retina-2x&view=issues&refresh=true'>Refresh</a> this page."
+msgstr "<a href='?page=wp-retina-2x&view=issues&refresh=true'> Actualiser</a> cette page."
+
+#: core.php:615
+msgid "This size is ignored by your retina settings."
+msgstr "Cette taille est ignorée par vos paramètres Retina."
+
+#: core.php:610
+msgid "The standard image normally created by WordPress is missing."
+msgstr "L’image standard normalement créée par WordPress est manquante."
+
+#: core.php:605
+msgid "The retina image can be created. Please use the 'GENERATE' button."
+msgstr "L’image retina peut être créée. Merci d’utiliser le bouton 'GÉNÉRER'."
+
+#: core.php:595
+msgid "The Full-Size image is too small (<b>%dx%d</b>) and this size cannot be generated.<br />Please upload an image of at least <b>%dx%d</b>."
+msgstr "L’image plein écran est trop petite (<b>% dx % d</b>) et cette taille ne peut pas être générée. < br / > Merci de téléverser une image d’au moins <b>% dx % d</b>."
+
+#: core.php:591
+msgid "The retina version of the Full-Size image is missing.<br />Full Size Retina has been checked in the Settings and this image is therefore required.<br />Please drag & drop an image of at least <b>%dx%d</b> in the <b>Full-Size Retina Upload</b> column."
+msgstr "La version Retina de l’image plein écran est manquante. < br / > La taille plein écran Retina a été vérifié dans les paramètres et cette image est par conséquent nécessaire. < br / > s’il vous plaît glisser & déposer une image d’au moins <b>% dx %d)</b> dans la colonne <b>Téléverser une image Retina plein écran</b>."
+
+#: core.php:573
+msgid "The image size '%s' could not be found. You probably changed your image sizes but this specific image was not re-build. This is not related to the retina plugin. You should probably use a plugin to re-generate the missing metadata and images."
+msgstr "La taille de l’image « %s » est introuvable. Vous avez probablement modifié vos tailles d’image, mais cette image spécifique n’était pas re-construire. Ce n’est pas lié a l’extension Retina. Vous devriez probablement utiliser une extension pour re-générer les métadonnées et les images manquantes."
+
+#: core.php:569
+msgid "The metadata is broken! This is not related to the retina plugin. You should probably use a plugin to re-generate the missing metadata and images."
+msgstr "Les métadonnées sont cassées ! Ce n’est pas lié au plugin Retina. Vous devriez probablement utiliser une extension pour re-générer les métadonnées et les images manquantes."
+
+#: core.php:489
+msgid "N/A"
+msgstr "N/A"

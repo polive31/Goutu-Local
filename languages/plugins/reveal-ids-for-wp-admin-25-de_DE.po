@@ -1,0 +1,87 @@
+# Translation of Plugins - Reveal IDs - Development (trunk) in German
+# This file is distributed under the same license as the Plugins - Reveal IDs - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-12-29 02:28:11+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: de\n"
+"Project-Id-Version: Plugins - Reveal IDs - Development (trunk)\n"
+
+#. Author URI of the plugin/theme
+msgid "https://www.schloebe.de/"
+msgstr "https://www.schloebe.de/"
+
+#. Author of the plugin/theme
+msgid "Oliver Schl&ouml;be"
+msgstr "Oliver Schl&ouml;be"
+
+#. Description of the plugin/theme
+msgid "Reveals hidden IDs in Admin interface that have been removed with WordPress 2.5 (formerly known as Entry IDs in Manage Posts/Pages View for WP 2.5). See <a href=\"options-general.php?page=reveal-ids-for-wp-admin-25/reveal-ids-for-wp-admin-25.php\">options page</a> for information."
+msgstr "Zeigt die versteckten IDs in der Backend-Umgebung wieder an. Diese wurden mit WordPress 2.5 (früher bekannt als Entry IDs in der Beitrags/Seiten-Ansicht von WP 2.5). Gehe zur <a href=\"options-general.php?page=reveal-ids-for-wp-admin-25/reveal-ids-for-wp-admin-25.php\">Einstellungsseite</a> für weitere Informationen."
+
+#. Plugin URI of the plugin/theme
+msgid "https://www.schloebe.de/wordpress/reveal-ids-for-wp-admin-25-plugin/"
+msgstr "https://www.schloebe.de/wordpress/reveal-ids-for-wp-admin-25-plugin/"
+
+#: reveal-ids-for-wp-admin-25.php:400
+msgid "<strong>Reveal IDs</strong> 1.3.0 and above require at least WordPress 3.0! If you're still using a WP version prior to 3.0, please <a href='%s'>use Reveal IDs version 1.2.7</a>! Consider updating to the latest WP version for your own safety!"
+msgstr "<strong>Reveal IDs</strong> in der Version 1.3.0 und höher benötigt mindestens WordPress 3.0! Wenn du WordPress älter als Version 3.0 nutzt, <a href='%s'>verwende bitte Reveal IDs in der Version 1.2.7!</a>. Aktualisiere auf die aktuellste WP-Version zu deiner eigenen Sicherheit!"
+
+#: reveal-ids-for-wp-admin-25.php:378
+msgid "All options to enable/disable the display of IDs have been removed in version 1.3.0! If you would like to hide the ID column on a specific panel, just remove it in the options panel."
+msgstr "Alle Optionen, um die ID-Anzeige zu de-/aktivieren, wurden in Version 1.3.0 entfernt! Wenn du die ID-Spalte ausblenden möchtest, kannst du dies über das Options-Menü oben rechts auf jeder Seite tun."
+
+#: reveal-ids-for-wp-admin-25.php:373
+msgid "Help"
+msgstr "Hilfe"
+
+#: reveal-ids-for-wp-admin-25.php:365
+msgid "More plugins at: <a class=\"button rbutton\" href=\"http://www.schloebe.de/portfolio/\" target=\"_blank\">www.schloebe.de</a>"
+msgstr "Weitere Plugins auf: <a class=\"button rbutton\" href=\"http://www.schloebe.de/portfolio/\" target=\"_blank\">www.schloebe.de</a>"
+
+#: reveal-ids-for-wp-admin-25.php:352
+msgid "Show other plugins by this author inline &raquo;"
+msgstr "Weitere Plugins dieses Autors anzeigen &raquo;"
+
+#: reveal-ids-for-wp-admin-25.php:351
+msgid "You may also be interested in some of my other plugins:"
+msgstr "Es könnte dich ebenfalls einige meiner anderen Plugins interessieren:"
+
+#: reveal-ids-for-wp-admin-25.php:346
+msgid "More of my WordPress plugins"
+msgstr "Meine weiteren WordPress-Plugins"
+
+#. #-#-#-#-#  reveal-ids-for-wp-admin-25-code.pot (Reveal IDs 1.5.2)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: reveal-ids-for-wp-admin-25.php:322 reveal-ids-for-wp-admin-25.php:324
+#: reveal-ids-for-wp-admin-25.php:340
+msgid "Reveal IDs"
+msgstr "Reveal IDs"
+
+#: reveal-ids-for-wp-admin-25.php:217 reveal-ids-for-wp-admin-25.php:229
+msgid "ID"
+msgstr "ID"
+
+#: reveal-ids-for-wp-admin-25.php:217
+msgid "Enhanced by Reveal IDs Plugin"
+msgstr "Erweitert durch das Reveal IDs-Plugin"
+
+#: authorplugins.inc.php:35
+msgid "Author"
+msgstr "Autor"
+
+#: authorplugins.inc.php:35
+msgid "Version"
+msgstr "Version"
+
+#: authorplugins.inc.php:35
+msgid "plugin"
+msgstr "Plugin"
+
+#: authorplugins.inc.php:32
+msgid "Visit plugin homepage"
+msgstr "Plugin-Startseite besuchen"

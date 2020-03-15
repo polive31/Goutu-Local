@@ -1,0 +1,78 @@
+# Translation of Plugins - WPS Hide Login - Stable (latest release) in Lithuanian
+# This file is distributed under the same license as the Plugins - WPS Hide Login - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-07-28 12:40:11+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: lt\n"
+"Project-Id-Version: Plugins - WPS Hide Login - Stable (latest release)\n"
+
+#: wps-hide-login.php:396 wps-hide-login.php:405
+msgid "This has been disabled"
+msgstr "Išjungta"
+
+#. Author of the plugin/theme
+msgid "Remy Perona for WPServeur"
+msgstr "Remy Perona iš WPServeur"
+
+#. Description of the plugin/theme
+msgid "Protect your website by changing the login URL and preventing access to wp-login.php page and wp-admin directory while not logged-in"
+msgstr "Apsaugokite savo tinklalapį, pakeisdami prisijungimo nuorodą ir neprisijungusiems vartotojams uždrausdami prieigą prie wp-login.php bei wp-admin katalogo."
+
+#: wps-hide-login.php:345 wps-hide-login.php:349
+msgid "Settings"
+msgstr "Nustatymai"
+
+#. Author URI of the plugin/theme
+msgid "http://profiles.wordpress.org/tabrisrp/"
+msgstr "http://profiles.wordpress.org/tabrisrp/"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/Tabrisrp/wps-hide-login"
+msgstr "https://github.com/Tabrisrp/wps-hide-login"
+
+#: wps-hide-login.php:365
+msgid "This feature is not enabled."
+msgstr "Ši funkcija neįjungta."
+
+#: wps-hide-login.php:334
+msgid "Your login page is now here: <strong><a href=\"%1$s\">%2$s</a></strong>. Bookmark this page!"
+msgstr "Jūsų prisijungimo puslapis dabar yra čia: <strong><a href=\"%1$s\">%2$s</a></strong>. Išsisaugokite šią nuorodą!"
+
+#: wps-hide-login.php:301
+msgid "To set a networkwide default, go to <a href=\"%s\">Network Settings</a>."
+msgstr "Norėdami nustatyti visame tinkle, eikite į <a href=\"%s\">Tinklo nustatymus</a>."
+
+#: wps-hide-login.php:254
+msgid "Login url"
+msgstr "Prisijungimo nuoroda"
+
+#: wps-hide-login.php:220
+msgid "Networkwide default"
+msgstr "Numatyta tinkle"
+
+#: wps-hide-login.php:217 wps-hide-login.php:293
+msgid "Need help? Try the <a href=\"%1$s\" target=\"_blank\">support forum</a>. This plugin is kindly brought to you by <a href=\"%2$s\" target=\"_blank\">WPServeur</a>."
+msgstr "Reikia pagalbos? Parašykite <a href=\"%1$s\" target=\"_blank\">pagalbos forume</a>. Įskiepį kuria <a href=\"%2$s\" target=\"_blank\">WPServeur</a>."
+
+#: wps-hide-login.php:216
+msgid "This option allows you to set a networkwide default, which can be overridden by individual sites. Simply go to to the site’s permalink settings to change the url."
+msgstr "Čia galite pasirinkti numatytąjį nustatymą visame tinkle, kurį galės pakeisti atskirų tinklalapių administratoriai. Paprasčiausiai reikės nueiti į tinklalapio nuorodų struktūros nustatymus ir pakeisti nuorodą."
+
+#: wps-hide-login.php:199
+msgid "WPS Hide Login could not be activated because you already have Rename wp-login.php active. Please uninstall rename wp-login.php to use WPS Hide Login"
+msgstr "Įskiepis WPS Hide Login negali būti įjungtas, nes Jūsų tinklalapyje jau veikia Rename wp-login.php. Prašome išjungti jį ir tuomet galėsite naudoti WPS Hide Login"
+
+#. #-#-#-#-#  wps-hide-login-code.pot (WPS Hide Login 1.2.2)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: wps-hide-login.php:193 wps-hide-login.php:215
+msgid "WPS Hide Login"
+msgstr "WPS Hide Login"
+
+#: wps-hide-login.php:193
+msgid "Please upgrade to the latest version of WordPress to activate"
+msgstr "Norėdami įjungti, atnaujinkite WordPress iki naujausios versijos."

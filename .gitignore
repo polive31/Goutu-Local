@@ -63,13 +63,6 @@ peepso/plugins/*
 
 !languages/
 languages/*
-!languages/buddypress*
-languages/continents*
-!languages/plugins/
-languages/plugins/*
-!languages/plugins/name-directory-fr*
-!languages/plugins/peepso*
-languages/themes/*
 
 !themes/
 themes/*

@@ -1,0 +1,233 @@
+# Translation of Plugins - Enable Media Replace - Stable (latest release) in Italian
+# This file is distributed under the same license as the Plugins - Enable Media Replace - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-03-10 14:35:26+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: it\n"
+"Project-Id-Version: Plugins - Enable Media Replace - Stable (latest release)\n"
+
+#: views/popup.php:203
+msgid "Custom Date"
+msgstr "Data personalizzata"
+
+#: views/popup.php:199
+msgid "Set a Custom Date"
+msgstr "Imposta una data personalizzata"
+
+#: views/popup.php:198
+msgid "Keep the date %s(%s)%s"
+msgstr "Mantieni la data %s(%s)%s"
+
+#: views/popup.php:197
+msgid "Replace the date"
+msgstr "Sostituisci la data"
+
+#: views/popup.php:195
+msgid "When replacing the media, do you want to:"
+msgstr "Quando sostituisci i media, vuoi:"
+
+#: views/popup.php:188
+msgid "Date Options"
+msgstr "Opzioni data"
+
+#: views/popup.php:150
+msgid "Replacement Options"
+msgstr "Opzioni sostituzione"
+
+#: views/popup.php:123
+msgid "Replacement file type doesn't seem to be allowed by WordPress. This might cause unexpected issues"
+msgstr "Il tipo del file sostitutivo sembra non essere consentito da WordPress. Questo potrebbe causare problemi imprevisti"
+
+#: views/popup.php:121
+msgid "Replacement file is not the same filetype. This might cause unexpected issues"
+msgstr "Il file sostitutivo non è dello stesso tipo. Questo potrebbe causare problemi imprevedibili"
+
+#: views/popup.php:118
+msgid "%s f %s exceeds the maximum upload size for this site."
+msgstr "%s f %s supera la dimensione massima di caricamento per questo sito."
+
+#: views/popup.php:117
+msgid "Maximum file size: <strong>%s</strong>"
+msgstr "Dimensione massima file: <strong>%s</strong>. "
+
+#: views/popup.php:81
+msgid "Choose Replacement Media"
+msgstr "Scegli media sostitutivo"
+
+#: views/upload.php:141
+msgid "File successfully replaced"
+msgstr "File sostituito correttamente"
+
+#: views/upload.php:136
+msgid "File Upload seems to have failed. No files were returned by system"
+msgstr "Il caricamento del file sembra fallito. Nessun file è stato ricevuto dal sistema"
+
+#: views/upload.php:64
+msgid "Invalid Custom Date. Please custom date values (%s)"
+msgstr "Data personalizzata non valida. Inserisci i valori delle date (%s)"
+
+#: build/shortpixel/log/src/DebugItem.php:35
+msgid "[Data]"
+msgstr "[Dati]"
+
+#: popup.php:121 views/popup.php:216
+msgid "Cancel"
+msgstr "Annulla"
+
+#: popup.php:120 views/popup.php:215
+msgid "Upload"
+msgstr "Carica"
+
+#: popup.php:111 views/popup.php:181
+msgid "Please note that if you upload a new image, only embeds/links of the original size image will be replaced in your posts."
+msgstr "Si prega di notare che se si carica una nuova immagine, verranno sostituiti nei tuoi post solo i riferimenti incorporati delle dimensioni dell'immagine originale ."
+
+#: popup.php:110 views/popup.php:179
+msgid "Note: If you check this option, the name and type of the file you are about to upload will replace the old file. All links pointing to the current file (%s) will be updated to point to the new file name."
+msgstr "Nota: se selezioni questa opzione, il nome e il tipo del file che stai per caricare sostituiranno il file precedente. Tutti i link che puntano al file corrente (%s) saranno aggiornati per puntare al nuovo file."
+
+#: popup.php:109 views/popup.php:176
+msgid "Replace the file, use new file name and update all links"
+msgstr "Sostituire il file, usare il nome del nuovo file ed aggiornare tutti i collegamenti"
+
+#: popup.php:105 views/popup.php:165
+msgid "Note: This option requires you to upload a file of the same type (%s) as the one you are replacing. The name of the attachment will stay the same (%s) no matter what the file you upload is called."
+msgstr "Nota: questa opzione richiede il caricamento di un file dello stesso tipo (%s) di quello che si sta sostituendo. Il nome dell'allegato rimarrà lo stesso (%s) indipendentemente da come si chiama il file caricato."
+
+#: popup.php:104 views/popup.php:161
+msgid "Just replace the file"
+msgstr "Sostituire semplicemente il file"
+
+#: popup.php:102
+msgid "Select media replacement type:"
+msgstr "Seleziona il tipo di sostituzione:"
+
+#: popup.php:89 views/popup.php:116
+msgid "Choose a file to upload from your computer"
+msgstr "Seleziona un file da caricare dal tuo computer"
+
+#: popup.php:78 views/popup.php:105
+msgid "Get more Google love by compressing your site's images! Check out how much ShortPixel can save your site and get +50% credits when signing up as an Enable Media Replace user! Forever!"
+msgstr "Migliora i tuoi risultati su Google grazie all'ottimizzazione delle immagini del tuo sito! Controlla quanto puoi risparmiare con ShortPixel ed in qualità di utente di Enable Media Replace puoi ottenere il 50% di crediti in più quando ti registri! Per sempre!"
+
+#: popup.php:69 views/popup.php:96
+msgid "Optimize your images with ShortPixel, get +50% credits!"
+msgstr "Ottimizza le tue immagini con ShortPixel, ottieni il 50% dei crediti in più!"
+
+#: popup.php:63 views/popup.php:90
+msgid "NOTE: You are about to replace the media file \"%s\". There is no undo. Think about it!"
+msgstr "NOTA: Stai per sostituire il file media \"%s\". Non sarà possibile annullare. Pensaci bene!"
+
+#: popup.php:44 views/popup.php:68
+msgid "Replace Media Upload"
+msgstr "Caricamento file sostitutivo"
+
+#: classes/emr-plugin.php:364
+msgid "Revised"
+msgstr "Revisionato"
+
+#: classes/emr-plugin.php:360
+msgid "M j, Y @ H:i"
+msgstr "j M Y @ H:i"
+
+#: classes/emr-plugin.php:247
+msgid "Original"
+msgstr "Originale"
+
+#: classes/emr-plugin.php:235
+msgid "Thumbnails were not generated"
+msgstr "Le miniature non sono state generate"
+
+#: classes/emr-plugin.php:225 classes/emr-plugin.php:280
+msgid "To replace the current file, click the link and upload a replacement."
+msgstr "Per sostituire il file corrente, clicca il link e carica un file sostitutivo."
+
+#: classes/emr-plugin.php:225 classes/emr-plugin.php:280
+msgid "Upload a new file"
+msgstr "Carica un nuovo file"
+
+#: classes/emr-plugin.php:81 classes/emr-plugin.php:278
+#: classes/emr-plugin.php:311
+msgid "Replace media"
+msgstr "Sostituisci media"
+
+#: classes/emr-plugin.php:68
+msgid "Replaced Thumbnails Preview"
+msgstr "Anteprima delle miniature sostituite"
+
+#: classes/emr-plugin.php:56
+msgid "Replace Media"
+msgstr "Sostituisci media"
+
+#: classes/replacer.php:428
+msgid "There was an issue with updating your image URLS: Search and replace have different amount of values. Aborting updating thumbnails"
+msgstr "Si è verificato un problema durante l'aggiornamento degli URL dell'immagine: il numero di valori da cercare e da sostituire risulta differente. L'aggiornamento delle miniature è stato annullato"
+
+#: classes/replacer.php:343
+msgid "Fail Safe :: Source Location returned empty string. Not replacing content"
+msgstr "Errore non critico :: La posizione sorgente ha restituito una stringa vuota. Contenuto non sostituito"
+
+#: classes/replacer.php:336
+msgid "Fail Safe :: Source Location seems to be a directory."
+msgstr "Errore non critico :: La posizione sorgente sembra una directory."
+
+#: classes/replacer.php:116
+msgid "The uploaded file could not be moved to %1$s. This is most likely an issue with permissions, or upload failed."
+msgstr "Il file caricato non può essere spostato su %1$s. Molto probabilmente si tratta di un problema di permessi o di caricamento fallito."
+
+#: classes/replacer.php:102
+msgid "Target File could not be set. The source file might not be there. In case of search and replace, a filter might prevent this"
+msgstr "Non è stato possibile impostare il file di destinazione. Il file sorgente potrebbe non essere disponibile. In caso di ricerca e sostituzione, un filtro potrebbe prevenire l'operazione"
+
+#: upload.php:230 views/upload.php:104
+msgid "File type does not meet security guidelines. Try another."
+msgstr "Il tipo di file non rispetta le restrizioni di sicurezza. Riprova con un altro tipo."
+
+#: upload.php:37
+msgid "The file %1$s can not be deleted by the web server, most likely because the permissions on the file are wrong."
+msgstr "Il file %1$s non può essere cancellato dal web server, probabilmente perché le autorizzazioni per il file sono sbagliate."
+
+#: upload.php:6 popup.php:17 views/upload.php:11 views/popup.php:23
+msgid "You do not have permission to upload files."
+msgstr "Non hai sufficienti permessi per caricare file."
+
+#: notice.php:11 popup.php:82 views/notice.php:11 views/popup.php:109
+msgid "More info"
+msgstr "Maggiori informazioni"
+
+#: notice.php:8 views/notice.php:8
+msgid "<a href=\"https://shortpixel.com/wp/af/VKG6LYN28044\" target=\"_blank\">ShortPixel</a> is an image optimization plugin and if you have it activated, upon replacing an image in Enable Media Replace, the image will be also automatically optimized."
+msgstr "<a href=\"https://shortpixel.com/wp/af/VKG6LYN28044\" target=\"_blank\">ShortPixel</a> è un plugin per l'ottimizzazione delle immagini e se è attivo durante la sostituzione di una immagine con Enable Media Replace, l'immagine sarà anche automaticamente ottimizzata."
+
+#: notice.php:6 views/notice.php:6
+msgid "Enable Media Replace is now compatible with ShortPixel!"
+msgstr "Enable Media Replace è ora compatibile con ShortPixel!"
+
+#: notice.php:2 views/notice.php:2
+msgid "Dismiss"
+msgstr "Ignora"
+
+#. Author URI of the plugin
+msgid "https://shortpixel.com"
+msgstr "https://shortpixel.com"
+
+#. Author of the plugin
+msgid "ShortPixel"
+msgstr "ShortPixel"
+
+#. Description of the plugin
+msgid "Enable replacing media files by uploading a new file in the \"Edit Media\" section of the WordPress Media Library."
+msgstr "Abilita la sostituzione dei file multimediali caricando un nuovo file nella sezione \"Modifica media\" della Libreria media di WordPress."
+
+#. Plugin URI of the plugin
+msgid "https://wordpress.org/plugins/enable-media-replace/"
+msgstr "https://wordpress.org/plugins/enable-media-replace/"
+
+#. Plugin Name of the plugin
+msgid "Enable Media Replace"
+msgstr "Enable Media Replace"

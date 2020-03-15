@@ -1,0 +1,29 @@
+# Translation of Plugins - Font Awesome - Stable (latest release) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - Font Awesome - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-06-14 22:44:05+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - Font Awesome - Stable (latest release)\n"
+
+#. Author URI of the plugin
+msgid "https://fontawesome.com/"
+msgstr "https://fontawesome.com/"
+
+#. Plugin Name of the plugin
+#. Author of the plugin
+msgid "Font Awesome"
+msgstr "Font Awesome"
+
+#. Plugin URI of the plugin
+msgid "https://fontawesome.com/how-to-use/on-the-web/using-with/wordpress"
+msgstr "https://fontawesome.com/how-to-use/on-the-web/using-with/wordpress"
+
+#. Description of the plugin
+msgid "Adds Font Awesome 5 icons to your WordPress site. Supports Font Awesome Pro. Resolves conflicts across many plugins or themes that use Font Awesome."
+msgstr "Añade iconos de Font Awesome 5 a tu sitio WordPress. Es compatible con Font Awesome Pro. Resuelve conflictos entre plugins y temas que usan Font Awesome."

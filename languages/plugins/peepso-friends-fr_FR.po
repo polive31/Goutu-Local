@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: peepso-internal\n"
-"POT-Creation-Date: 2019-10-14 06:36+0700\n"
-"PO-Revision-Date: 2019-11-01 21:50+0100\n"
+"POT-Creation-Date: 2020-02-13 16:01+0700\n"
+"PO-Revision-Date: 2020-03-15 13:15+0100\n"
 "Last-Translator: alconost <alpha@alconost.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.3\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: peepsofriends.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -24,7 +24,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
 #: classes/friendsajax.php:60 classes/friendsajax.php:95
-#: classes/friendsajax.php:154 classes/friendsajax.php:205
+#: classes/friendsajax.php:154 classes/friendsajax.php:211
 msgid "Notice"
 msgstr "Remarque"
 
@@ -40,24 +40,24 @@ msgstr "Annuler la demande en amitié"
 msgid "Friend Request Accepted"
 msgstr "Demande d’ami acceptée"
 
-#: classes/friendsajax.php:206
+#: classes/friendsajax.php:212
 msgid "Friend Removed"
 msgstr "Ami supprimé"
 
-#: classes/friendsajax.php:227 templates/friends/pending.php:33
+#: classes/friendsajax.php:233 templates/friends/pending.php:33
 msgid "You currently have no friend requests"
 msgstr "Vous n’avez actuellement aucune demande d’amitié"
 
-#: classes/friendsajax.php:287
+#: classes/friendsajax.php:293
 msgid "You have no friends yet"
 msgstr "Vous n’avez pas encore d’ami"
 
-#: classes/friendsajax.php:287
+#: classes/friendsajax.php:293
 #, php-format
 msgid "%s has no friends yet"
 msgstr "%s n’a pas encore d’ami"
 
-#: classes/friendsajax.php:332 classes/widgets/widgetmutualfriends.php:107
+#: classes/friendsajax.php:338 classes/widgets/widgetmutualfriends.php:107
 msgid "Mutual Friends"
 msgstr "Amis en commun"
 
@@ -103,7 +103,7 @@ msgid "You do not have enough permissions."
 msgstr "Vous ne disposez pas de suffisamment d’autorisations."
 
 #: classes/friendsrequests.php:282 classes/friendsshortcode.php:135
-#: peepsofriends.php:803
+#: peepsofriends.php:794
 msgid " mutual friend"
 msgid_plural " mutual friends"
 msgstr[0] " Ami en commun"
@@ -191,105 +191,105 @@ msgstr "PeepSo Amis en commun"
 msgid "PeepSo Mutual Friends Widget"
 msgstr "PeepSo Amis en commun Widget"
 
-#: install/activate.php:80 peepsofriends.php:734 peepsofriends.php:823
-#: peepsofriends.php:851 templates/friends/submenu.php:6
+#: install/activate.php:80 peepsofriends.php:725 peepsofriends.php:814
+#: peepsofriends.php:842 templates/friends/submenu.php:6
 msgid "Friends"
 msgstr "Amis"
 
-#: install/activate.php:85 peepsofriends.php:336
+#: install/activate.php:85 peepsofriends.php:334
 msgid "Friend Requests"
 msgstr "Demandes d’amis"
 
-#: peepsofriends.php:271
+#: peepsofriends.php:269
 #, php-format
 msgid "The %s plugin requires the PeepSo plugin to be installed and activated."
 msgstr "Le plugin %s nécessite que le plugin PeepSo soit installé et activé."
 
-#: peepsofriends.php:273
+#: peepsofriends.php:271
 msgid "Get it now!"
 msgstr "Obtenez-le maintenant!"
 
-#: peepsofriends.php:409
+#: peepsofriends.php:407
 msgid "Friends Only"
 msgstr "Seulement les amis"
 
-#: peepsofriends.php:487 peepsofriends.php:489
+#: peepsofriends.php:483 peepsofriends.php:485
 msgid "Remove Friend"
 msgstr "Retirer de mes amis"
 
-#: peepsofriends.php:488
+#: peepsofriends.php:484
 msgid "Are you sure?"
 msgstr "Êtes-vous sûr ?"
 
-#: peepsofriends.php:490
+#: peepsofriends.php:486
 msgid "Cancel"
 msgstr "Annuler"
 
-#: peepsofriends.php:512 peepsofriends.php:521
+#: peepsofriends.php:506 peepsofriends.php:515
 msgid "Friend"
 msgstr "Ami(e)"
 
-#: peepsofriends.php:517
+#: peepsofriends.php:511
 msgid "Remove friend"
 msgstr "Retirer de mes amis"
 
-#: peepsofriends.php:520
+#: peepsofriends.php:514
 msgid "Unfriend"
 msgstr "Retirer de mes amis"
 
-#: peepsofriends.php:532 peepsofriends.php:537
+#: peepsofriends.php:526 peepsofriends.php:531
 msgid "Cancel Friend Request"
 msgstr "Annuler la demande"
 
-#: peepsofriends.php:547
+#: peepsofriends.php:541
 msgid "Accept"
 msgstr "Accepter"
 
-#: peepsofriends.php:552
+#: peepsofriends.php:546
 msgid "Accept Request"
 msgstr "Demande acceptée"
 
-#: peepsofriends.php:558
+#: peepsofriends.php:552
 msgid "Reject"
 msgstr "Refuser"
 
-#: peepsofriends.php:563
+#: peepsofriends.php:557
 msgid "Reject Request"
 msgstr "Demande rejetée"
 
-#: peepsofriends.php:573
+#: peepsofriends.php:567
 msgid "Add as Friend"
 msgstr "Ajouter comme ami(e)"
 
-#: peepsofriends.php:578
+#: peepsofriends.php:572
 msgid "Add as your friend"
 msgstr "Ajouter comme ami(e)"
 
-#: peepsofriends.php:593
+#: peepsofriends.php:587
 msgid "Not following"
 msgstr "Non suivi"
 
-#: peepsofriends.php:594
+#: peepsofriends.php:588
 msgid "Click to follow this user"
 msgstr "Cliquez ici pour suivre cet utilisateur"
 
-#: peepsofriends.php:598
+#: peepsofriends.php:592
 msgid "Start following"
 msgstr "Commencer à suivre"
 
-#: peepsofriends.php:602
+#: peepsofriends.php:596
 msgid "Following"
 msgstr "Suivre"
 
-#: peepsofriends.php:603
+#: peepsofriends.php:597
 msgid "Click to unfollow this user"
 msgstr "Cliquez ici pour ne plus suivre cet utilisateur"
 
-#: peepsofriends.php:606
+#: peepsofriends.php:600
 msgid "Stop following"
 msgstr "Cesser de suivre"
 
-#: peepsofriends.php:737
+#: peepsofriends.php:728
 msgid "Someone sent me a Friend Request"
 msgstr "Quelqu'un m’a envoyé une demande en amitié"
 

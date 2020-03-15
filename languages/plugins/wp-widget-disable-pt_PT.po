@@ -1,0 +1,143 @@
+# Translation of Plugins - WP Widget Disable - Stable (latest release) in Portuguese (Portugal)
+# This file is distributed under the same license as the Plugins - WP Widget Disable - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-01-12 14:00:30+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: pt\n"
+"Project-Id-Version: Plugins - WP Widget Disable - Stable (latest release)\n"
+
+#. translators: 1: widget name, 2: widget ID
+#: classes/class-wp-widget-disable.php:596
+msgctxt "dashboard widget"
+msgid "%1$s (%2$s)"
+msgstr "%1$s (%2$s)"
+
+#. translators: 1: widget name, 2: widget class
+#: classes/class-wp-widget-disable.php:527
+msgctxt "sidebar widget"
+msgid "%1$s (%2$s)"
+msgstr "%1$s (%2$s)"
+
+#. Plugin URI of the plugin/theme
+msgid "https://required.com/services/wordpress-plugins/wp-widget-disable/"
+msgstr "https://required.com/services/wordpress-plugins/wp-widget-disable/"
+
+#: classes/class-wp-widget-disable.php:536
+#: classes/class-wp-widget-disable.php:605
+msgid "Deselect all"
+msgstr "Desseleccionar todos"
+
+#: classes/class-wp-widget-disable.php:350
+#: classes/class-wp-widget-disable.php:403
+msgid "Settings saved."
+msgstr "Definições guardadas."
+
+#. Author URI of the plugin/theme
+msgid "https://required.com"
+msgstr "https://required.com"
+
+#. Author of the plugin/theme
+msgid "required"
+msgstr "required"
+
+#. Description of the plugin/theme
+msgid "Disable Sidebar and Dashboard Widgets with an easy to use interface. Simply use the checkboxes provided under <strong>Appearance -> Disable Widgets</strong> and select the Widgets you'd like to hide."
+msgstr "Desactive widgets das barras laterais e do painel com uma interface simples e prática. Utilize as caixas de selecção em <strong>Apresentação -> Desactivar widgets</strong> e seleccione os widgets que pretende esconder."
+
+#. Plugin Name of the plugin/theme
+msgid "WP Widget Disable"
+msgstr "WP Widget Disable"
+
+#. translators: %s: welcome_panel
+#: classes/class-wp-widget-disable.php:582
+msgid "Welcome panel (%s)"
+msgstr "Painel de boas-vindas (%s)"
+
+#: classes/class-wp-widget-disable.php:567
+msgid "Oops, we could not retrieve the dashboard widgets! Maybe there is another plugin already managing them?"
+msgstr "Ups, não foi possível obter os widgets do painel! Existirá algum outro plugin a fazer esta gestão?"
+
+#: classes/class-wp-widget-disable.php:535
+#: classes/class-wp-widget-disable.php:604
+msgid "Select all"
+msgstr "Seleccionar todos"
+
+#: classes/class-wp-widget-disable.php:512
+msgid "Oops, we could not retrieve the sidebar widgets! Maybe there is another plugin already managing them?"
+msgstr "Ups, não foi possível obter os widgets das barras laterais! Existirá algum outro plugin a fazer esta gestão?"
+
+#: classes/class-wp-widget-disable.php:492 views/admin.php:35
+msgid "Dashboard Widgets"
+msgstr "Widgets do painel"
+
+#: classes/class-wp-widget-disable.php:484
+msgid "Choose the dashboard widgets you would like to disable."
+msgstr "Escolha quais os widgets do painel que pretende desactivar."
+
+#: classes/class-wp-widget-disable.php:481
+msgid "Disable Dashboard Widgets"
+msgstr "Desactivar widgets do painel"
+
+#: classes/class-wp-widget-disable.php:467 views/admin.php:31
+msgid "Sidebar Widgets"
+msgstr "Widgets das barras laterais"
+
+#: classes/class-wp-widget-disable.php:459
+msgid "Choose the sidebar widgets you would like to disable. Note that developers can still display widgets using PHP."
+msgstr "Escolha quais os widgets das barras laterais que pretende desactivar. Atenção que os programadores poderão ainda assim mostrar widgets através de PHP."
+
+#: classes/class-wp-widget-disable.php:456
+msgid "Disable Sidebar Widgets"
+msgstr "Desactivar widgets das barras laterais"
+
+#. translators: %d: number of disabled widgets
+#: classes/class-wp-widget-disable.php:422
+msgid "Settings saved. %d dashboard widget disabled."
+msgid_plural "Settings saved. %d dashboard widgets disabled."
+msgstr[0] "Definições guardadas. Foi desactivado %d widget do painel."
+msgstr[1] "Definições guardadas. Foram desactivados %d widgets do painel."
+
+#: classes/class-wp-widget-disable.php:418
+msgid "Settings saved. One dashboard widget disabled."
+msgstr "Definições guardadas. Foi desactivado um widget do painel."
+
+#: classes/class-wp-widget-disable.php:405
+msgid "All dashboard widgets are enabled again."
+msgstr "Todos os widgets do painel foram activados de novo."
+
+#. translators: %d: number of disabled widgets
+#: classes/class-wp-widget-disable.php:369
+msgid "Settings saved. %d sidebar widget disabled."
+msgid_plural "Settings saved. %d sidebar widgets disabled."
+msgstr[0] "Definições guardadas. Foi desactivado %d widget das barras laterais."
+msgstr[1] "Definições guardadas. Foram desactivados %d widgets das barras laterais."
+
+#: classes/class-wp-widget-disable.php:365
+msgid "Settings saved. One sidebar widget disabled."
+msgstr "Definições guardadas. Foi desactivado um widget das barras laterais."
+
+#: classes/class-wp-widget-disable.php:352
+msgid "All sidebar widgets are enabled again."
+msgstr "Todos os widgets das barras laterais foram activados de novo."
+
+#. translators: %s: required
+#: classes/class-wp-widget-disable.php:203
+msgid "WP Widget Disable is brought to you by %s. We &hearts; WordPress."
+msgstr "O WP Widget Disable é desenvolvido por %s. Nós &hearts; WordPress."
+
+#: classes/class-wp-widget-disable.php:182
+msgid "Settings"
+msgstr "Definições"
+
+#: classes/class-wp-widget-disable.php:137
+msgid "Disable Widgets"
+msgstr "Desactivar widgets"
+
+#: classes/class-wp-widget-disable.php:136
+msgid "Disable Sidebar and Dashboard Widgets"
+msgstr "Desactivar widgets das barras laterais e do painel"

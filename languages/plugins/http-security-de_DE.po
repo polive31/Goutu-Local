@@ -1,0 +1,234 @@
+# Translation of Plugins - HTTP headers to improve web site security - Stable (latest release) in German
+# This file is distributed under the same license as the Plugins - HTTP headers to improve web site security - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-01-05 11:19:10+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: de\n"
+"Project-Id-Version: Plugins - HTTP headers to improve web site security - Stable (latest release)\n"
+
+#: include/settings-feature-policy-options.php:14
+msgid "Enable Feature Policy"
+msgstr "Feature Policy aktivieren"
+
+#: include/settings.php:46
+msgid "HTTP Security"
+msgstr "HTTP Security"
+
+#: include/settings-htaccess.php:7 include/settings-general-options.php:7
+#: include/settings-feature-policy-options.php:7
+#: include/settings-csp-options.php:7
+msgid "Feature Policy"
+msgstr "Feature Policy"
+
+#: include/settings-feature-policy-options.php:8
+msgid "The HTTP Feature-Policy header provides a mechanism to allow and deny the use of browser features in its own frame, and in iframes that it embeds. For a complete description of these parameters, please refer to: <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy\" rel=\"noopener\">Feature-Policy</a> on the Mozilla Developer Network."
+msgstr "Der HTTP-Feature-Policy-Header bietet einen Mechanismus, um die Verwendung von Browser-Features in seinem eigenen Frame und in eingebetteten iframes zuzulassen und zu verbieten. Eine vollständige Beschreibung dieser Parameter findest du unter: <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy\" rel=\"noopener\">Feature-Policy</a> im Mozilla Developer Network."
+
+#: include/settings-htaccess.php:14
+msgid "Disable header rewriting"
+msgstr "Deaktivierung der Neuschreiben des Headers"
+
+#: include/settings-htaccess.php:9
+msgid "Make sure to save the settings for the latest version."
+msgstr "Stelle sicher, daß Du die Einstellungen für die neueste Version speicherst."
+
+#: include/settings-htaccess.php:8
+msgid "Some cache plug-ins rewrite the HTTP headers. In this case, you may need to have to insert the following content in your .htaccess file. If so, please disable the rewriting of the HTTP headers."
+msgstr "Einige Cache-Plug-Ins überschreiben die HTTP-Header. In diesem Fall musst Du möglicherweise den folgenden Inhalt in deine .htaccess-Datei einfügen. Wenn ja, deaktiviere das Umschreiben der HTTP-Header."
+
+#: include/settings-htaccess.php:7 include/settings-general-options.php:7
+#: include/settings-feature-policy-options.php:7
+#: include/settings-csp-options.php:7
+msgid ".htaccess (beta)"
+msgstr ".htaccess (beta)"
+
+#: include/settings.php:8 include/settings.php:13
+msgid "HTTP Security Network Options"
+msgstr "HTTP Security Netz Optionnen"
+
+#: include/settings.php:15
+msgid "Values of the following options from the main site will be set as default for newly created sites."
+msgstr "Die Werte der folgenden Optionen von der Haupt Website werden als Standard für neu erstellte Websites festgelegt."
+
+#: include/settings.php:35
+msgid "You still have an administrator account with the user name security <strong>admin</strong>. This is a major security flaw, you should consider renaming this account."
+msgstr "Du hast weiterhin ein Administratorkonto mit dem Benutzernamen <strong>admin</strong>. Dies ist ein schwerwiegender Sicherheitsfehler. Du solltest sollten dieses Konto umbenennen."
+
+#: include/settings.php:20 include/settings-general-options.php:16
+msgid "HSTS"
+msgstr "HSTS"
+
+#: include/settings-general-options.php:23
+msgid "Expect-CT"
+msgstr "Expect-CT"
+
+#: include/settings-general-options.php:24
+msgid "Enable Expect-CT"
+msgstr "Expect-CT aktivieren"
+
+#: include/settings-general-options.php:40
+msgid "Other options"
+msgstr "Weitere Optionen"
+
+#: include/settings-general-options.php:28
+msgid "X-frame-options"
+msgstr "X-frame-Optionen"
+
+#: include/settings-general-options.php:26
+msgid "Enforce"
+msgstr "Erzwingen"
+
+#: include/settings-general-options.php:26
+msgid "Report URI:"
+msgstr "Report URI:"
+
+#. Plugin Name of the plugin
+msgid "HTTP headers to improve web site security"
+msgstr "HTTP-Header zur Verbesserung der Webseiten-Sicherheit"
+
+#. Description of the plugin
+msgid "Use your HTTP header to improve security of your web site"
+msgstr "Verwende deinen HTTP-Header um die Sicherheit deiner Website zu verbessern"
+
+#: include/settings-general-options.php:37
+#: include/settings-general-options.php:38
+msgid "Referrer policy"
+msgstr "Referrer-Politik"
+
+#: include/settings-csp-options.php:39
+msgid "Other directives"
+msgstr "Weitere Richtlinien"
+
+#: include/settings-htaccess.php:7 include/settings-general-options.php:7
+#: include/settings-feature-policy-options.php:7
+#: include/settings-csp-options.php:7
+msgid "CSP options"
+msgstr "CSP-Optionen"
+
+#: include/settings-htaccess.php:7 include/settings-general-options.php:7
+#: include/settings-feature-policy-options.php:7
+#: include/settings-csp-options.php:7
+msgid "General options"
+msgstr "Allgemeine Optionen"
+
+#: include/settings-csp-options.php:30
+msgid "Document directives"
+msgstr "Dokumentenrichtlinien"
+
+#: include/settings-csp-options.php:35
+msgid "Navigation directives"
+msgstr "Navigationsrichtlinien"
+
+#: include/settings-csp-options.php:16
+msgid "Fetch directives"
+msgstr "Holen-Richtlinien"
+
+#: include/settings-csp-options.php:8
+msgid "For a complete description of these parameters, please refer to: <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy\" rel=\"noopener\">Content-Security-Policy</a> on the Mozilla Developer Network."
+msgstr "Eine vollständige Beschreibung dieser Parameter findest Du unter: <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy\" rel=\"noopener\">Content-Security-Politik</a> auf dem Mozilla Developer Network."
+
+#: include/settings.php:22 include/settings-general-options.php:18
+#: include/settings-general-options.php:26
+msgid "recommended"
+msgstr "empfohlen"
+
+#: include/settings-csp-options.php:14
+msgid "Enable Content Security Policy"
+msgstr "Aktiviere die Inhaltssicherheitsrichtlinie (Content Security Policy)"
+
+#: include/settings-csp-options.php:14
+msgid "Report only"
+msgstr "Nur melden"
+
+#: include/settings.php:21 include/settings-general-options.php:17
+msgid "Force HTTPS protocol"
+msgstr "HTTPS-Protokoll erzwingen"
+
+#: include/settings.php:25 include/settings-general-options.php:21
+msgid "You are not running HTTPS."
+msgstr "Du laüfst nicht HTTPS."
+
+#: include/settings.php:77
+msgid "You still have an administrator account with the user name <strong>admin</strong>. This is a major security flaw, you should consider renaming this account."
+msgstr "Du hast noch ein Administratorkonto mit dem Benutzernamen <strong>admin</strong>. Dies ist ein wichtiger Sicherheitsfehler, Du solltest erwägen, dieses Konto umzunennen."
+
+#: include/settings-general-options.php:9
+msgid "For more information about these security hacks, please make sure to read my article about <a href=\"https://www.carlconrad.net/en/2016/11/18/secure-website-http-headers-instructions/\" target=\"_blank\" rel=\"noopener\">how to improve your website security with HTTP header instructions</a>."
+msgstr "Für weitere Informationen über diese Sicherheits-Hacks, bitte lese meinen Artikel über <a href=\"https://www.carlconrad.net/en/2016/11/18/secure-website-http-headers-instructions/\" target=\"_blank\" rel=\"noopener\">how to improve your website security with HTTP header instructions</a>."
+
+#: include/settings.php:22 include/settings-general-options.php:18
+#: include/settings-general-options.php:26
+msgid "seconds"
+msgstr "Sekunden"
+
+#: include/settings.php:22 include/settings-general-options.php:18
+#: include/settings-general-options.php:26
+msgid "one day"
+msgstr "ein Tag"
+
+#: include/settings.php:22 include/settings-general-options.php:18
+#: include/settings-general-options.php:26
+msgid "one year"
+msgstr "ein Jahr"
+
+#: include/settings.php:30 include/settings-general-options.php:47
+msgid "Remove WordPress version information from header"
+msgstr "Entfernen von WordPress-Versionsinformationen aus dem Header"
+
+#: include/settings.php:28 include/settings-general-options.php:45
+msgid "Remove PHP version information from HTTP header"
+msgstr "Entfernen von PHP-Versionsinformationen aus dem Header"
+
+#: include/settings.php:22 include/settings-general-options.php:18
+msgid "Include subdomains"
+msgstr "Subdomains einschließen"
+
+#: include/settings.php:14 include/settings.php:58
+msgid "The HTTP protocol provides various header instructions allowing simple improvement of your web site security. As usual, make sure to run full tests on your web site as some options may result in some features stop working."
+msgstr "Das HTTP-Protokoll bietet verschiedene Header-Anweisungen, die eine einfache Verbesserung deine Website-Sicherheit ermöglichen. Wie üblich, stelle sicher, daß Du vollständige Tests auf deine Website ausführst, da einige Optionen dazu führen können, daß einige Funktionen nicht mehr funktionieren."
+
+#: include/settings.php:47 include/settings.php:56
+msgid "HTTP Security Options"
+msgstr "HTTP-Sicherheitsoptionen"
+
+#: include/settings.php:22 include/settings-general-options.php:18
+#: include/settings-general-options.php:26
+msgid "Max age:"
+msgstr "Max age:"
+
+#: include/settings-general-options.php:41
+msgid "Force XSS protection"
+msgstr "XSS Schutz Zwingen"
+
+#: include/settings-general-options.php:43
+msgid "Disable content sniffing"
+msgstr "Content Sniffing Deaktivieren"
+
+#: include/settings-general-options.php:29
+msgid "Manage display in remote frames"
+msgstr "Verwalten der Anzeige in Remote-Frames"
+
+#: include/settings.php:22 include/settings-general-options.php:18
+msgid "Submit domain preload to browsers"
+msgstr "Domain-Vorladung auf Browser übertragen"
+
+#: include/settings.php:22 include/settings-general-options.php:18
+msgid "Preload"
+msgstr "Vorladung"
+
+#. Author of the plugin
+msgid "Carl Conrad"
+msgstr "Carl Conrad"
+
+#. Author URI of the plugin
+msgid "https://carlconrad.net"
+msgstr "https://carlconrad.net"
+
+#: include/settings.php:52
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Du hast keine ausreichenden Berechtigungen um auf diese Seite zuzugreifen."

@@ -1,0 +1,899 @@
+# Translation of Stable (latest release) in Dutch
+# This file is distributed under the same license as the Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-05-03 13:41:45+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
+"Project-Id-Version: Stable (latest release)\n"
+
+#: views/admin.php:765
+msgid "About WordPress Popular Posts %s"
+msgstr "Over Wordpress Popular Posts %s"
+
+#: views/admin.php:766
+msgid "This version includes the following changes"
+msgstr "In deze versie zijn de volgende wijzigingen doorgevoerd "
+
+#: views/admin.php:779
+msgid "Do you like this plugin?"
+msgstr "Gebruik je deze plugin graag?"
+
+#: views/admin.php:786
+msgid "Each donation motivates me to keep releasing free stuff for the WordPress community!"
+msgstr "Een donatie stimuleert me om freeware te blijven maken voor de WordPress gemeenschap!"
+
+#: views/admin.php:787
+msgid "You can <a href=\"%s\" target=\"_blank\">leave a review</a>, too!"
+msgstr "Ook prima als je <a href=\"%s\" target=\"_blank\">een review</a> schrijft!"
+
+#: views/admin.php:793
+msgid "Need help?"
+msgstr "Hulp nodig?"
+
+#: views/admin.php:794
+msgid "Visit <a href=\"%s\" target=\"_blank\">the forum</a> for support, questions and feedback."
+msgstr "Bezoek <a href=\"%s\" target=\"_blank\">het forum</a> voor ondersteuning, vragen en commentaar."
+
+#: views/admin.php:795
+msgid "Let's make this plugin even better!"
+msgstr "Help me deze plugin nog beter te maken."
+
+#: views/form.php:2
+msgid "Title"
+msgstr "Titel"
+
+#: views/form.php:7
+msgid "Show up to"
+msgstr "Toon tot aan"
+
+#: views/form.php:8
+msgid "posts"
+msgstr "berichten"
+
+#: views/form.php:12
+msgid "Sort posts by"
+msgstr "Sorteer berichten op"
+
+#: views/form.php:14
+msgid "Comments"
+msgstr "Reacties"
+
+#: views/form.php:15
+msgid "Total views"
+msgstr "Totaal aantal weergaven"
+
+#: views/form.php:16
+msgid "Avg. daily views"
+msgstr "Gemiddeld aantal dagelijkse weergaven"
+
+#: views/form.php:22
+msgid "Filters"
+msgstr "Filters"
+
+#: views/form.php:24
+msgid "Time Range"
+msgstr "Periode"
+
+#: views/form.php:34
+msgid "Post type(s)"
+msgstr "Bericht type(s)"
+
+#: views/form.php:37
+msgid "Post(s) ID(s) to exclude"
+msgstr "Uit te sluiten bericht(en) ID('s)"
+
+#: views/form.php:40
+msgid "Category(ies) ID(s)"
+msgstr "Categorie ID('s)"
+
+#: views/form.php:43
+msgid "Author(s) ID(s)"
+msgstr "Auteur(s) ID('s)"
+
+#: views/form.php:48
+msgid "Posts settings"
+msgstr "Bericht instellingen"
+
+#: views/form.php:52
+msgid "Display post rating"
+msgstr "Toon beoordeling van bericht"
+
+#: views/form.php:55
+msgid "Shorten title"
+msgstr "Verkort de titel"
+
+#: views/form.php:58
+msgid "Shorten title to"
+msgstr "Verkort de titel tot"
+
+#: views/form.php:59 views/form.php:69
+msgid "characters"
+msgstr "tekens"
+
+#: views/form.php:60 views/form.php:70
+msgid "words"
+msgstr "woorden"
+
+#: views/form.php:63
+msgid "Display post excerpt"
+msgstr "Toon berichtsamenvatting"
+
+#: views/form.php:66
+msgid "Keep text format and links"
+msgstr "Behoud opmaak en links"
+
+#: views/form.php:67
+msgid "Excerpt length"
+msgstr "Lengte samenvatting"
+
+#: views/form.php:73
+msgid "Display post thumbnail"
+msgstr "Toon berichtminiatuur"
+
+#: views/form.php:76
+msgid "Use predefined size"
+msgstr "Gebruik vooraf ingestelde afmetingen"
+
+#: views/form.php:88
+msgid "Set size manually"
+msgstr "Stel zelf afmetingen in"
+
+#: views/form.php:90
+msgid "Width"
+msgstr "Breedte"
+
+#: views/form.php:93
+msgid "Height"
+msgstr "Hoogte"
+
+#: views/form.php:99
+msgid "Stats Tag settings"
+msgstr "Instellingen van Stats Tag"
+
+#: views/form.php:101
+msgid "Display comment count"
+msgstr "Toon aantal reacties"
+
+#: views/form.php:103
+msgid "Display views"
+msgstr "Toon aantal weergaven"
+
+#: views/form.php:105
+msgid "Display author"
+msgstr "Toon auteur"
+
+#: views/form.php:107
+msgid "Display date"
+msgstr "Toon datum"
+
+#: views/form.php:110
+msgid "Date Format"
+msgstr "Datum formaat"
+
+#: views/form.php:112
+msgid "WordPress Date Format"
+msgstr "WordPress datum weergave"
+
+#: views/form.php:119
+msgid "Display category"
+msgstr "Toon categorie"
+
+#: views/form.php:123
+msgid "HTML Markup settings"
+msgstr "Instellingen HTML opmaak"
+
+#: views/form.php:125
+msgid "Use custom HTML Markup"
+msgstr "Gebruik eigen HTML opmaak"
+
+#: views/form.php:128
+msgid "Before / after title"
+msgstr "Voor / na titel"
+
+#: views/form.php:131
+msgid "Before / after Popular Posts"
+msgstr "Voor / na Popular Posts"
+
+#: views/form.php:134
+msgid "Post HTML Markup"
+msgstr "HTML opmaak bericht "
+
+#: wordpress-popular-posts.php:304
+msgid "The most Popular Posts on your blog."
+msgstr "Meest populaire berichten op je blog"
+
+#: wordpress-popular-posts.php:484
+msgid "Error: cannot ajaxify WordPress Popular Posts on this theme. It's missing the <em>id</em> attribute on before_widget (see <a href=\"http://codex.wordpress.org/Function_Reference/register_sidebar\" target=\"_blank\" rel=\"nofollow\">register_sidebar</a> for more)."
+msgstr "Fout: kan WordPress Popular Posts niet onder Ajax laten draaien met dit thema. Het <em>id</em> attribuut ontbreekt bij before_widget (lees meer op <a href=\"http://codex.wordpress.org/Function_Reference/register_sidebar\" target=\"_blank\" rel=\"nofollow\">register_sidebar</a>)."
+
+#: wordpress-popular-posts.php:730
+msgid "Upload"
+msgstr "Upload"
+
+#: wordpress-popular-posts.php:1106
+msgid "Your PHP installation is too old. WordPress Popular Posts requires at least PHP version %1$s to function correctly. Please contact your hosting provider and ask them to upgrade PHP to %1$s or higher."
+msgstr "Let op. Je gebruikt een te oude versie van PHP. WordPress Popular Posts vereist minimaal PHP versie %1$s om goed te kunnen werken. Neem contact op met je hosting provider en vraag ze om PHP te upgraden naar versie %1$s of hoger."
+
+#: wordpress-popular-posts.php:1113
+msgid "Your WordPress version is too old. WordPress Popular Posts requires at least WordPress version %1$s to function correctly. Please update your blog via Dashboard &gt; Update."
+msgstr "Let op. Je gebruikt een verouderde versie van WordPress. WordPress Popular Posts vereist minimaal WordPress versie %1$s om goed te kunnen werken. Upgrade jouw versie via  Dashboard &gt; Update."
+
+#: wordpress-popular-posts.php:1138
+msgid "<div class=\"error\"><p>%1$s</p><p><i>%2$s</i> has been <strong>deactivated</strong>.</p></div>"
+msgstr "<div class=\"error\"><p>%1$s</p><p><i>%2$s</i> is <strong>gedeactiveerd</strong>.</p></div>"
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: views/admin.php:128
+msgid "Success! The cache table has been cleared!"
+msgstr "Gelukt. De cache is geleegd. "
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: views/admin.php:132
+msgid "Error: cache table does not exist."
+msgstr "Fout: de tabel met cache gegevens is niet gevonden"
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: views/admin.php:160
+msgid "Success! All data have been cleared!"
+msgstr "Gelukt. Alle (historische) gegevens zijn verwijderd."
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: views/admin.php:164
+msgid "Error: one or both data tables are missing."
+msgstr "Fout: één of beide tabellen met gegevens ontbreken."
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: views/admin.php:136 views/admin.php:144 views/admin.php:168
+#: views/admin.php:176 views/admin.php:200 views/admin.php:208
+msgid "Invalid action."
+msgstr "Ongeldige actie."
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: views/admin.php:140 views/admin.php:172 views/admin.php:204
+msgid "Sorry, you do not have enough permissions to do this. Please contact the site administrator for support."
+msgstr "Sorry, je hebt onvoldoende rechten om deze actie te verrichten. Vraag hulp aan de sitebeheerder."
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: views/admin.php:192
+msgid "Success! All files have been deleted!"
+msgstr "Gelukt. Alle bestanden zijn verwijderd."
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: views/admin.php:196
+msgid "The thumbnail cache is already empty!"
+msgstr "De cache met miniaturen is al leeg."
+
+#: wordpress-popular-posts.php:1861
+msgid "Sorry. No data so far."
+msgstr "Sorry. Nog geen gegevens beschikbaar."
+
+#: wordpress-popular-posts.php:2388
+msgid "1 comment"
+msgid_plural "%s comments"
+msgstr[0] "1 reactie"
+msgstr[1] "%s reacties"
+
+#: wordpress-popular-posts.php:2400
+msgid "1 view per day"
+msgid_plural "%s views per day"
+msgstr[0] "1 weergave per dag"
+msgstr[1] "%s weergaven per dag"
+
+#: wordpress-popular-posts.php:2406
+msgid "1 view"
+msgid_plural "%s views"
+msgstr[0] "1 weergave"
+msgstr[1] "%s weergaven"
+
+#: wordpress-popular-posts.php:2429
+msgid "by %s"
+msgstr "door %s"
+
+#: wordpress-popular-posts.php:2435
+msgid "posted on %s"
+msgstr "gepubliceerd op %s"
+
+#: wordpress-popular-posts.php:2443
+msgid "under %s"
+msgstr "in %s"
+
+#. Plugin Name of the plugin/theme
+msgid "WordPress Popular Posts"
+msgstr "WordPress Popular Posts"
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/wordpress-popular-posts"
+msgstr "http://wordpress.org/extend/plugins/wordpress-popular-posts"
+
+#. Description of the plugin/theme
+msgid "WordPress Popular Posts is a highly customizable widget that displays the most popular posts on your blog"
+msgstr "WordPress Popular Posts laat in een widget de meeste bekeken berichten op je blog zien. Je kunt veel zaken naar eigen wens inregelen."
+
+#. Author of the plugin/theme
+msgid "Hector Cabrera"
+msgstr "Hector Cabrera"
+
+#. Author URI of the plugin/theme
+msgid "http://cabrerahector.com"
+msgstr "http://cabrerahector.com"
+
+#: views/admin.php:28 views/admin.php:43 views/admin.php:63 views/admin.php:99
+msgid "Settings saved."
+msgstr "Instellingen opgeslagen."
+
+#: views/admin.php:54
+msgid "Please provide the name of your custom field."
+msgstr "Geef de naam op van je aangepaste veld."
+
+#: views/admin.php:107
+msgid "Any changes made to WPP's default stylesheet will be lost after every plugin update. In order to prevent this from happening, please copy the wpp.css file (located at wp-content/plugins/wordpress-popular-posts/style) into your theme's directory"
+msgstr "Aanpassingen aan de stylesheet van WPP gaan verloren na een update van de plugin. Kopieer - om dit te voorkomen - het bestand wpp.css naar de folder van je theme. Het bestand vind je in wp-content/plugins/wordpress-popular-posts/style/."
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: views/admin.php:122
+msgid "This operation will delete all entries from WordPress Popular Posts' cache table and cannot be undone."
+msgstr "Deze actie verwijdert alle gegevens in de cache van WordPress Popular Posts. Ze kan niet ongedaan worden gemaakt."
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: views/admin.php:122 views/admin.php:154 views/admin.php:186
+msgid "Do you want to continue?"
+msgstr "Wil je doorgaan?"
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: views/admin.php:154
+msgid "This operation will delete all stored info from WordPress Popular Posts' data tables and cannot be undone."
+msgstr "Deze actie verwijdert alle gegevens in de databasetabellen van WordPress Popular Posts. Ze kan niet ongedaan worden gemaakt."
+
+#. translators: Special characters (such as accents) must be replaced with
+#. Javascript Octal codes (eg. \341 is the Octal code for small a with acute
+#. accent)
+#: views/admin.php:186
+msgid "This operation will delete all cached thumbnails and cannot be undone."
+msgstr "Deze actie verwijdert alle miniaturen in de cache van WordPress Popular Posts. Ze kan niet ongedaan worden gemaakt."
+
+#: views/admin.php:244
+msgid "Stats"
+msgstr "Statistieken"
+
+#: views/admin.php:245
+msgid "Tools"
+msgstr "Gereedschappen"
+
+#: views/admin.php:246
+msgid "Parameters"
+msgstr "Parameters"
+
+#: views/admin.php:247
+msgid "About"
+msgstr "Over deze plugin"
+
+#: views/admin.php:258
+msgid "Click on each tab to see what are the most popular entries on your blog in the last 24 hours, this week, last 30 days or all time since WordPress Popular Posts was installed."
+msgstr "Klik op 1 van de tabbladen en zie wat de meest weergegeven berichten/pagina's van je site waren in de afgelopen 24 uur, deze week, de laatste 30 dagen of sinds je WPP installeerde."
+
+#: views/admin.php:264
+msgid "Order by comments"
+msgstr "Sorteer op aantal reacties"
+
+#: views/admin.php:265
+msgid "Order by views"
+msgstr "Sorteer op aantal weergaven"
+
+#: views/admin.php:266
+msgid "Order by avg. daily views"
+msgstr "Sorteer op gemiddeld aantal dagelijkse weergaven"
+
+#: views/admin.php:268
+msgid "Post type"
+msgstr "Berichttype"
+
+#: views/admin.php:269
+msgid "Limit"
+msgstr "Limiet"
+
+#: views/admin.php:271 views/admin.php:379 views/admin.php:483
+#: views/admin.php:522
+msgid "Apply"
+msgstr "Pas toe"
+
+#: views/admin.php:274 views/form.php:32
+msgid "Display only posts published within the selected Time Range"
+msgstr "Toon alleen berichten uit de geselecteerde periode"
+
+#: views/admin.php:283 views/form.php:26
+msgid "Last 24 hours"
+msgstr "Laatste 24 uur"
+
+#: views/admin.php:284 views/form.php:27
+msgid "Last 7 days"
+msgstr "Laatste 7 dagen"
+
+#: views/admin.php:285 views/form.php:28
+msgid "Last 30 days"
+msgstr "Laatste 30 dagen"
+
+#: views/admin.php:286 views/form.php:29
+msgid "All-time"
+msgstr "Tot nu toe"
+
+#: views/admin.php:308
+msgid "Thumbnails"
+msgstr "Miniaturen"
+
+#: views/admin.php:313
+msgid "Default thumbnail"
+msgstr "Standaard miniatuur"
+
+#: views/admin.php:318
+msgid "Upload thumbnail"
+msgstr "Miniatuur uploaden"
+
+#: views/admin.php:320
+msgid "How-to: upload (or select) an image, set Size to Full and click on Upload. After it's done, hit on Apply to save changes"
+msgstr "Tip: upload (of selecteer) een afbeelding, kies 'Volledig' als formaat en kies Upload. Als dit gebeurd is, klik je op 'Pas toe' om de wijzigingen op te slaan"
+
+#: views/admin.php:324
+msgid "Pick image from"
+msgstr "Kies een afbeelding uit"
+
+#: views/admin.php:327
+msgid "Featured image"
+msgstr "Uitgelichte afbeelding"
+
+#: views/admin.php:328
+msgid "First image on post"
+msgstr "Eerste afbeelding in bericht of pagina"
+
+#: views/admin.php:330
+msgid "Custom field"
+msgstr "Aangepast veld"
+
+#: views/admin.php:333
+msgid "Tell WordPress Popular Posts where it should get thumbnails from"
+msgstr "Geef aan waar WordPress Popular Posts miniaturen kan vinden"
+
+#: views/admin.php:337
+msgid "Custom field name"
+msgstr "Naam van het aangepaste veld"
+
+#: views/admin.php:343
+msgid "Resize image from Custom field?"
+msgstr "Formaat van afbeelding uit het aangepaste veld aanpassen? "
+
+#: views/admin.php:346
+msgid "No, I will upload my own thumbnail"
+msgstr "Nee, ik upload zelf een miniatuur"
+
+#: views/admin.php:347
+msgid "Yes"
+msgstr "Ja"
+
+#: views/admin.php:352
+msgid "Responsive support"
+msgstr "Ondersteuning voor alle schermformaten"
+
+#: views/admin.php:355 views/admin.php:425 views/admin.php:465
+#: views/admin.php:512
+msgid "Enabled"
+msgstr "Ingeschakeld"
+
+#: views/admin.php:356 views/admin.php:409 views/admin.php:424
+#: views/admin.php:464 views/admin.php:513
+msgid "Disabled"
+msgstr "Uitgeschakeld"
+
+#: views/admin.php:359
+msgid "If enabled, WordPress Popular Posts will strip height and width attributes out of thumbnails' image tags"
+msgstr "Indien ingeschakeld, zal WordPress Popular Posts de gegevens over de hoogte en breedte van miniaturen weglaten"
+
+#: views/admin.php:369
+msgid "Empty image cache"
+msgstr "Verwijder tijdelijk opgeslagen afbeeldingen"
+
+#: views/admin.php:370
+msgid "Use this button to clear WPP's thumbnails cache"
+msgstr "Om de tijdelijke opslag van WPP miniaturen leeg te maken"
+
+#: views/admin.php:390
+msgid "Data"
+msgstr "Gegevens"
+
+#: views/admin.php:395
+msgid "Log views from"
+msgstr "Registreer weergaven aan"
+
+#: views/admin.php:398
+msgid "Visitors only"
+msgstr "Enkel bezoekers"
+
+#: views/admin.php:399
+msgid "Logged-in users only"
+msgstr "Enkel ingelogde gebruikers"
+
+#: views/admin.php:400
+msgid "Everyone"
+msgstr "Iedereen"
+
+#: views/admin.php:406
+msgid "Log limit"
+msgstr "Bewaartermijn"
+
+#: views/admin.php:410
+msgid "Keep data for"
+msgstr "Bewaar gegevens over"
+
+#: views/admin.php:413
+msgid "day(s)"
+msgstr "dagen"
+
+#: views/admin.php:415
+msgid "Data from entries that haven't been viewed within the specified time frame will be automatically discarded"
+msgstr "Gegevens over berichten/pagina's die in deze periode niet zijn bekeken, worden genegeerd."
+
+#: views/admin.php:421
+msgid "Ajaxify widget"
+msgstr "Gebruik widget met Ajax"
+
+#: views/admin.php:429
+msgid "If you are using a caching plugin such as WP Super Cache, enabling this feature will keep the popular list from being cached by it"
+msgstr "Voorkomt caching van de lijst meest weergegeven berichten, indien je een caching plugin gebruikt, zoals WP Super Cache"
+
+#: views/admin.php:433
+msgid "WPP Cache Expiry Policy"
+msgstr "WPP cache beleid"
+
+#: views/admin.php:433 views/admin.php:461 views/form.php:2 views/form.php:34
+#: views/form.php:40 views/form.php:43 views/form.php:52 views/form.php:125
+msgid "What is this?"
+msgstr "Wat is dit?"
+
+#: views/admin.php:436
+msgid "Never cache"
+msgstr "Bewaar nooit"
+
+#: views/admin.php:437
+msgid "Enable caching"
+msgstr "Sta tijdelijk opslaan toe"
+
+#: views/admin.php:441
+msgid "Sets WPP's cache expiration time. WPP can cache the popular list for a specified amount of time. Recommended for large / high traffic sites"
+msgstr "Hiermee stel je in hoe lang WPP tijdelijk de gegevens over de meest weergegeven berichten bewaart. Aanbevolen voor omvangrijke en drukbezochte sites"
+
+#: views/admin.php:445
+msgid "Refresh cache every"
+msgstr "Leeg de tijdelijke opslag elke"
+
+#: views/admin.php:449
+msgid "Minute(s)"
+msgstr "Minuten"
+
+#: views/admin.php:450
+msgid "Hour(s)"
+msgstr "Uur"
+
+#: views/admin.php:451
+msgid "Day(s)"
+msgstr "Dag(en)"
+
+#: views/admin.php:452
+msgid "Week(s)"
+msgstr "Weken"
+
+#: views/admin.php:453
+msgid "Month(s)"
+msgstr "Maand(en)"
+
+#: views/admin.php:454
+msgid "Year(s)"
+msgstr "Jaar"
+
+#: views/admin.php:457
+msgid "Really? That long?"
+msgstr "Werkelijk? Zo lang?"
+
+#: views/admin.php:461
+msgid "Data Sampling"
+msgstr "Steekproefsgewijs"
+
+#: views/admin.php:469
+msgid "By default, WordPress Popular Posts stores in database every single visit your site receives. For small / medium sites this is generally OK, but on large / high traffic sites the constant writing to the database may have an impact on performance. With <a href=\"%1$s\" target=\"_blank\">data sampling</a>, WordPress Popular Posts will store only a subset of your traffic and report on the tendencies detected in that sample set (for more, <a href=\"%2$s\" target=\"_blank\">please read here</a>)"
+msgstr "Standaard registreert WordPress Popular Posts elk bezoek aan je site. Voor kleine en middelgrote sites is dit geen enkel probleem. Bij omvangrijke en drukbezochte sites kan dit een weerslag hebben op de performance. Door <a href=\"%1$s\" target=\"_blank\">steekproefsgewijs</a> gegevens te registreren, zal WordPress Popular Posts de tendens weergeven, gebaseerd op deze gegevens  (, <a href=\"%2$s\" target=\"_blank\">lees hier meer</a>)"
+
+#: views/admin.php:473
+msgid "Sample Rate"
+msgstr "Steekproef percentage"
+
+#: views/admin.php:477
+msgid "A sampling rate of %d is recommended for large / high traffic sites. For lower traffic sites, you should lower the value"
+msgstr "Een steekproef percentage van %d wordt aanbevolen voor omvangrijke en drukbezochte sites. Kies een lagere waarde als je site minder druk wordt bezocht."
+
+#: views/admin.php:494
+msgid "Miscellaneous"
+msgstr "Diversen"
+
+#: views/admin.php:499
+msgid "Open links in"
+msgstr "Open links in"
+
+#: views/admin.php:502
+msgid "Current window"
+msgstr "Huidige venster"
+
+#: views/admin.php:503
+msgid "New tab/window"
+msgstr "Nieuw tabblad/venster"
+
+#: views/admin.php:509
+msgid "Use plugin's stylesheet"
+msgstr "Gebruik de stylesheet van de plugin"
+
+#: views/admin.php:516
+msgid "By default, the plugin includes a stylesheet called wpp.css which you can use to style your popular posts listing. If you wish to use your own stylesheet or do not want it to have it included in the header section of your site, use this."
+msgstr "Met de stylesheet van de plugin (wpp.css) kun je de weergave van de lijst met meest bezochte berichten zelf aanpassen. Schakel deze optie uit als je de stylesheet van je site wil toepassen."
+
+#: views/admin.php:535
+msgid "WordPress Popular Posts maintains data in two separate tables: one for storing the most popular entries on a daily basis (from now on, \"cache\"), and another one to keep the All-time data (from now on, \"historical data\" or just \"data\"). If for some reason you need to clear the cache table, or even both historical and cache tables, please use the buttons below to do so."
+msgstr "WordPress Popular Posts slaat z'n gegevens op in 2 tabellen: de ene voor gegevens op een dagelijkse basis (\"cache\") en de andere voor de gegevens vanaf het moment van installatie (\"historische gegevens\"). Mocht je de cache of zelfs de cache en alle gegevens willen verwijderen, gebruik dan onderstaande knoppen."
+
+#: views/admin.php:536
+msgid "Empty cache"
+msgstr "Leeg de cache"
+
+#: views/admin.php:536
+msgid "Use this button to manually clear entries from WPP cache only"
+msgstr "Om alleen de cache van WPP te legen"
+
+#: views/admin.php:537
+msgid "Clear all data"
+msgstr "Verwijder alle gegevens"
+
+#: views/admin.php:537
+msgid "Use this button to manually clear entries from all WPP data tables"
+msgstr "Om alle gegevens (cache + historische gegevens) te verwijderen"
+
+#: views/admin.php:544
+msgid "With the following parameters you can customize the popular posts list when using either the <a href=\"%1$s\">wpp_get_mostpopular() template tag</a> or the <a href=\"%2$s\">[wpp] shortcode</a>."
+msgstr "Met de volgende parameters kun je de lijst met meest weergegeven berichten naar eigen smaak aanpassen. Zowel bij gebruik van de <a href=\"%1$s\">wpp_get_most_popular() template tag</a> als de <a href=\"%2$s\">[wpp] shortcode</a>."
+
+#: views/admin.php:552
+msgid "Parameter"
+msgstr "Parameter"
+
+#: views/admin.php:553
+msgid "What it does "
+msgstr "Werking"
+
+#: views/admin.php:554
+msgid "Possible values"
+msgstr "Toegestane waarden"
+
+#: views/admin.php:555
+msgid "Defaults to"
+msgstr "Standaard instelling"
+
+#: views/admin.php:556
+msgid "Example"
+msgstr "Voorbeeld"
+
+#: views/admin.php:562
+msgid "Sets a heading for the list"
+msgstr "Stel de titel van de lijst in"
+
+#: views/admin.php:563 views/admin.php:570 views/admin.php:577
+#: views/admin.php:612 views/admin.php:619 views/admin.php:626
+#: views/admin.php:633 views/admin.php:724 views/admin.php:738
+#: views/admin.php:745
+msgid "Text string"
+msgstr "Tekst"
+
+#: views/admin.php:564 views/admin.php:620 views/admin.php:627
+#: views/admin.php:634
+msgid "None"
+msgstr "Geen"
+
+#: views/admin.php:569
+msgid "Set the opening tag for the heading of the list"
+msgstr "Stel de openingstag in voor de titel"
+
+#: views/admin.php:576
+msgid "Set the closing tag for the heading of the list"
+msgstr "Stel de afsluitende tag in voor de titel"
+
+#: views/admin.php:583
+msgid "Sets the maximum number of popular posts to be shown on the listing"
+msgstr "Stel het (maximum) aantal weer te geven berichten in"
+
+#: views/admin.php:584 views/admin.php:640 views/admin.php:654
+#: views/admin.php:675 views/admin.php:682
+msgid "Positive integer"
+msgstr "Geheel positief getal"
+
+#: views/admin.php:590
+msgid "Tells WordPress Popular Posts to retrieve the most popular entries within the time range specified by you"
+msgstr "Stel de periode in waaruit de meest weergegeven berichten getoond moeten worden"
+
+#: views/admin.php:597
+msgid "Tells WordPress Popular Posts to retrieve the most popular entries published within the time range specified by you"
+msgstr "Stel de periode in waarin de te tonen meest weergegeven berichten zijn gepubliceerd"
+
+#: views/admin.php:604
+msgid "Sets the sorting option of the popular posts"
+msgstr "Bepaalt de sorteervolgorde"
+
+#: views/admin.php:605
+msgid "(for average views per day)"
+msgstr "(gemiddeld aantal bezoeken per dag)"
+
+#: views/admin.php:611
+msgid "Defines the type of posts to show on the listing"
+msgstr "Bepaalt het berichttype waarop de lijst betrekking heeft"
+
+#: views/admin.php:618
+msgid "If set, WordPress Popular Posts will exclude the specified post(s) ID(s) form the listing."
+msgstr "Sluit bepaalde berichten uit op basis van hun ID"
+
+#: views/admin.php:625
+msgid "If set, WordPress Popular Posts will retrieve all entries that belong to the specified category(ies) ID(s). If a minus sign is used, the category(ies) will be excluded instead."
+msgstr "Neem alleen berichten op uit de opgegeven categorie(ën). Sluit een categorie uit door een minus-teken voor het ID te zetten."
+
+#: views/admin.php:632
+msgid "If set, WordPress Popular Posts will retrieve all entries created by specified author(s) ID(s)."
+msgstr "Neem alleen berichten op van de opgegeven auteur(s) ID(s)."
+
+#: views/admin.php:639
+msgid "If set, WordPress Popular Posts will shorten each post title to \"n\" characters whenever possible"
+msgstr "Beperk de berichttitel - waar mogelijk - tot n tekens"
+
+#: views/admin.php:646
+msgid "If set to 1, WordPress Popular Posts will shorten each post title to \"n\" words instead of characters"
+msgstr "Indien ingesteld op 1 (true), wordt de berichttitel ingekort tot n woorden in plaats van tekens"
+
+#: views/admin.php:653
+msgid "If set, WordPress Popular Posts will build and include an excerpt of \"n\" characters long from the content of each post listed as popular"
+msgstr "Indien ingesteld, dan maakt WordPress Popular Posts een samenvatting van n tekens en toont deze bij het bericht in de lijst"
+
+#: views/admin.php:660
+msgid "If set, WordPress Popular Posts will maintaing all styling tags (strong, italic, etc) and hyperlinks found in the excerpt"
+msgstr "Indien ingesteld, dan handhaaft WordPress Popular Posts de opmaak (vet, cursief, etc) die het aantrof in de samenvatting"
+
+#: views/admin.php:667
+msgid "If set to 1, WordPress Popular Posts will shorten the excerpt to \"n\" words instead of characters"
+msgstr "Indien ingesteld op 1 (true), dan wordt de samenvatting n woorden in plaats van n tekens lang"
+
+#: views/admin.php:674
+msgid "If set, and if your current server configuration allows it, you will be able to display thumbnails of your posts. This attribute sets the width for thumbnails"
+msgstr "Indien ingesteld en ondersteund door je server configuratie, dan kun je miniaturen bij je berichten in de lijst tonen. Met dit attribuut stel je de breedte in"
+
+#: views/admin.php:681
+msgid "If set, and if your current server configuration allows it, you will be able to display thumbnails of your posts. This attribute sets the height for thumbnails"
+msgstr "Indien ingesteld en ondersteund door je server configuratie, dan kun je miniaturen bij je berichten in de lijst tonen. Met dit attribuut stel je de hoogte in"
+
+#: views/admin.php:688
+msgid "If set, and if the WP-PostRatings plugin is installed and enabled on your blog, WordPress Popular Posts will show how your visitors are rating your entries"
+msgstr "Indien ingesteld en als de WP-PostRatings plugin is geïnstalleerd, dan laat WordPress Popular Posts zien hoe je bezoekers je berichten hebben beoordeeld."
+
+#: views/admin.php:695
+msgid "If set, WordPress Popular Posts will show how many comments each popular post has got until now"
+msgstr "Indien ingesteld, dan toont WordPress Popular Posts hoeveel reacties er zijn op elk bericht in de lijst "
+
+#: views/admin.php:702
+msgid "If set, WordPress Popular Posts will show how many views each popular post has got since it was installed"
+msgstr "Indien ingesteld, dan toont WordPress Popular Posts hoe vaak een bericht in de lijst is weergegeven sinds de installatie"
+
+#: views/admin.php:709
+msgid "If set, WordPress Popular Posts will show who published each popular post on the list"
+msgstr "Indien ingesteld, dan toont WordPress Popular Posts de auteur bij het bericht in de lijst"
+
+#: views/admin.php:716
+msgid "If set, WordPress Popular Posts will display the date when each popular post on the list was published"
+msgstr "Indien ingesteld, dan toont WordPress Popular Posts de datum waarop het bericht in de lijst werd gepubliceerd."
+
+#: views/admin.php:723
+msgid "Sets the date format"
+msgstr "Bepaalt de datum weergave"
+
+#: views/admin.php:730
+msgid "If set, WordPress Popular Posts will display the category"
+msgstr "Indien ingesteld, dan wordt de categorie getoond"
+
+#: views/admin.php:737
+msgid "Sets the opening tag for the listing"
+msgstr "Stel de openingstag in voor de lijst"
+
+#: views/admin.php:744
+msgid "Sets the closing tag for the listing"
+msgstr "Stel de afsluitende tag in voor de lijst"
+
+#: views/admin.php:751
+msgid "Sets the HTML structure of each post"
+msgstr "Hiermee bepaal je de HTML-structuur van de berichten in de lijst"
+
+#: views/admin.php:752
+msgid "Text string, custom HTML"
+msgstr "Tekst, HTML"
+
+#: views/admin.php:752
+msgid "Available Content Tags"
+msgstr "Beschikbare tags"
+
+#: views/admin.php:752
+msgid "displays thumbnail linked to post/page, requires thumbnail_width & thumbnail_height"
+msgstr "displays thumbnail linked to post/page, requires thumbnail_width & thumbnail_height"
+
+#: views/admin.php:752
+msgid "displays thumbnail image without linking to post/page, requires thumbnail_width & thumbnail_height"
+msgstr "toont miniatuur zonder te linken naar bijbehorend(e) bericht / pagina, vereist thumbnail_width & thumbnail_height"
+
+#: views/admin.php:752
+msgid "displays linked post/page title"
+msgstr "toont  de titel van bijbehorend(e) bericht / pagina als link"
+
+#: views/admin.php:752
+msgid "displays post/page excerpt, and requires excerpt_length to be greater than 0"
+msgstr "toont samenvatting van bijbehorend(e) bericht / pagina, vereist excerpt_length > 0"
+
+#: views/admin.php:752
+msgid "displays the default stats tags"
+msgstr "toont de standaard gegevens tags"
+
+#: views/admin.php:752
+msgid "displays post/page current rating, requires WP-PostRatings installed and enabled"
+msgstr "toont de beoordeling van bijbehorend(e) bericht / pagina, indien WP-PostRatings actief is"
+
+#: views/admin.php:752
+msgid "displays post/page current rating as an integer, requires WP-PostRatings installed and enabled"
+msgstr "toont de beoordeling van bijbehorend(e) bericht / pagina in de vorm van een geheel getal, indien WP-PostRatings actief is"
+
+#: views/admin.php:752
+msgid "outputs the URL of the post/page"
+msgstr "geeft de URL van bijbehorend(e) bericht / pagina"
+
+#: views/admin.php:752
+msgid "displays post/page title, no link"
+msgstr "toont de titel van bijbehorend(e) bericht / pagina, zonder ernaar te linken"
+
+#: views/admin.php:752
+msgid "displays linked author name, requires stats_author=1"
+msgstr "toont de auteur van bijbehorend(e) bericht / pagina als link, indien stats_author=1"
+
+#: views/admin.php:752
+msgid "displays linked category name, requires stats_category=1"
+msgstr "toont de categorie van bijbehorend(e) bericht / pagina als link, indien stats_category=1"
+
+#: views/admin.php:752
+msgid "displays views count only, no text"
+msgstr "toont aantal weergaven, zonder tekst"
+
+#: views/admin.php:752
+msgid "displays comments count only, no text, requires stats_comments=1"
+msgstr "toont aantal reacties, zonder tekst, indien stats_comments=1"
+
+#: views/admin.php:752
+msgid "displays post/page date, requires stats_date=1"
+msgstr "toont de datum van publicatie van bijbehorend(e) bericht / pagina, indien stats_date=1"

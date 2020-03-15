@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2020-03-11 01:01+0100\n"
-"PO-Revision-Date: 2020-03-11 09:21+0100\n"
+"POT-Creation-Date: 2020-03-15 01:17+0100\n"
+"PO-Revision-Date: 2020-03-15 01:22+0100\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -61,7 +61,7 @@ msgid "Your comment is awaiting moderation."
 msgstr ""
 
 #: plugins/custom-comment-management/public/class-ccm-comments-list.php:112
-#: plugins/custom-star-rating/public/class-csr-rating.php:228
+#: plugins/custom-star-rating/public/class-csr-rating.php:234
 #, php-format
 msgid "%1$s at %2$s"
 msgstr ""
@@ -679,24 +679,24 @@ msgctxt "feminine"
 msgid "All difficult %s"
 msgstr "Toutes les %s difficiles"
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:105
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:101
 msgid "Visit Goutu.org"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:124
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:156
+msgid "recipes"
+msgstr "recettes"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:160
+msgid "posts"
+msgstr "articles"
+
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:227
 #, php-format
 msgid "%s"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:182
-msgid "recipes"
-msgstr "recettes"
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:186
-msgid "posts"
-msgstr "articles"
-
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:266
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:270
 msgid ""
 "You will find here all the recipes, which you can further sort by date or "
 "evaluation."
@@ -704,17 +704,17 @@ msgstr ""
 "Vous trouverez ici toutes les recettes publiées dans cette catégorie, que "
 "vous pouvez trier par date, ordre alphabétique et évaluation."
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:269
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:273
 msgid "You will find here all the posts, which you can further sort by date."
 msgstr ""
 "Vous trouverez ici tous les articles du site. <br>Vous pouvez les trier par "
 "date et ordre alphabétique."
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:315
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:319
 msgid "Detailed Search Results"
 msgstr "Résultats de recherche détaillée"
 
-#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:317
+#: plugins/custom-navigation-helpers/public/class-cnh-archive-headline.php:321
 #: themes/foodiepro-2.1.8/search.php:28
 #, php-format
 msgid "Search Results for %s"
@@ -734,7 +734,7 @@ msgstr "Partager sur les réseaux sociaux"
 msgid "Share this post"
 msgstr "Partager cet article"
 
-#: plugins/custom-navigation-helpers/public/class-cnh-shortcodes.php:331
+#: plugins/custom-navigation-helpers/public/class-cnh-shortcodes.php:332
 msgid "Choose..."
 msgstr "Choisir..."
 
@@ -743,59 +743,60 @@ msgid "Seasonal"
 msgstr "De Saison"
 
 #: plugins/custom-navigation-helpers/public/class-cnh-tags-overlay.php:84
+#: plugins/custom-navigation-helpers/public/class-cnh-tags-overlay.php:86
 msgid "Vegetarian"
 msgstr "Recette végétarienne"
 
-#: plugins/custom-navigation-helpers/public/class-cnh-tags-overlay.php:88
+#: plugins/custom-navigation-helpers/public/class-cnh-tags-overlay.php:90
 msgid "Festive"
 msgstr "Fêtes"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:18
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:20
 msgid "Dropdown Posts Sort Widget"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:21
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:23
 msgid "Displays a dropdown list allowing to sort posts"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:37
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:39
 msgid "Sort"
 msgstr "Trier"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:61
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:50
 msgid "Select sort order..."
 msgstr "Trier les recettes par..."
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:64
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:53
 msgid "Comment count"
 msgstr "Commentaires"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:68
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:57
 msgid "Best rated"
 msgstr "Les mieux notées"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:69
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:58
 msgid "Most liked"
 msgstr "Les plus populaires"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:72
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:61
 msgid "Title : ascending"
 msgstr "Titre : de A à Z"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:73
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:62
 msgid "Title : descending"
 msgstr "Titre : de Z à A"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:76
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:63
 #: themes/foodiepro-2.1.8/peepso/blogposts/blogposts.php:19
 #: themes/foodiepro-2.1.8/peepso/photos/photos.php:47
 #: themes/foodiepro-2.1.8/peepso/videos/videos.php:7
 msgid "Newest first"
 msgstr "Les plus récentes"
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:109
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:124
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:110
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:83
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:110
 #: plugins/custom-navigation-helpers/widgets/taxonomy-search-widget.php:113
 #: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:119
 #: plugins/custom-recipe-management/widgets/crm_lists_dropdown_widget.php:71
@@ -803,9 +804,9 @@ msgstr "Les plus récentes"
 msgid "New title"
 msgstr ""
 
-#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:113
+#: plugins/custom-navigation-helpers/widgets/dropdown-posts-sort-widget.php:128
 #: plugins/custom-navigation-helpers/widgets/taxonomy-accordion-widget.php:123
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:92
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:119
 #: plugins/custom-navigation-helpers/widgets/taxonomy-search-widget.php:117
 #: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:122
 #: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:86
@@ -879,59 +880,46 @@ msgid "Displays a dropdown list allowing to navigate between taxonomy terms"
 msgstr ""
 
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:25
-msgid "Automatic"
-msgstr ""
+msgid "Filter by course"
+msgstr "Filtrer par plat"
 
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:26
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:31
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:80
-msgid "Course"
-msgstr "Plat"
+msgid "Filter by ingredient"
+msgstr "Filtrer par ingrédient"
 
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:27
-#: plugins/custom-recipe-management/public/recipe-output/partials/screen-template.php:44
-msgid "Origin"
-msgstr "Origine"
+msgid "Filter by country"
+msgstr "Filtrer par pays"
 
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:28
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:34
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:113
-#: plugins/custom-recipe-management/public/recipe-output/partials/screen-template.php:51
-msgid "Diet"
-msgstr "Régime"
+msgid "Filter by diet"
+msgstr "Filtrer par régime"
 
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:29
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:35
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:97
-msgid "Season"
-msgstr "Saison"
+msgid "Filter by season"
+msgstr "Filtrer par saison"
 
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:30
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:32
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:105
-msgid "Occasion"
-msgstr "Occasion"
+msgid "Filter by occasion"
+msgstr "Filtrer par occasion"
 
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:31
-#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:356
-msgid "Category"
-msgstr ""
+msgid "Filter by category"
+msgstr "Filtrer par catégorie"
 
 #: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:32
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:36
-#: plugins/custom-recipe-management/public/recipe-output/partials/screen-template.php:58
-msgid "Level"
-msgstr "Niveau"
+msgid "Filter by level"
+msgstr "Filtrer par difficulté"
 
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:61
-msgid "Filter by "
-msgstr "Filtrer par "
-
-#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:98
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:125
 #, fuzzy
 #| msgid "Filter recipes"
 msgid "Dropdown taxonomy"
 msgstr "Filtrer les recettes"
+
+#: plugins/custom-navigation-helpers/widgets/taxonomy-dropdown-widget.php:129
+msgid "Automatic"
+msgstr ""
 
 #: plugins/custom-navigation-helpers/widgets/taxonomy-search-widget.php:18
 msgid "Taxonomy Search widget"
@@ -1689,6 +1677,16 @@ msgstr "Ingrédient"
 msgid "Ingredient"
 msgstr "Ingrédient"
 
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:31
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:80
+msgid "Course"
+msgstr "Plat"
+
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:32
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:105
+msgid "Occasion"
+msgstr "Occasion"
+
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:33
 #, fuzzy
 #| msgctxt "plural"
@@ -1701,10 +1699,26 @@ msgstr "Cuisine des %s"
 msgid "Cuisine"
 msgstr "Origine"
 
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:34
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:113
+#: plugins/custom-recipe-management/public/recipe-output/partials/screen-template.php:51
+msgid "Diet"
+msgstr "Régime"
+
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:35
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:97
+msgid "Season"
+msgstr "Saison"
+
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:36
 #, fuzzy
 #| msgid "Level"
 msgid "Levels"
+msgstr "Niveau"
+
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:36
+#: plugins/custom-recipe-management/public/recipe-output/partials/screen-template.php:58
+msgid "Level"
 msgstr "Niveau"
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:48
@@ -2080,6 +2094,10 @@ msgstr "Lire"
 msgid "Read this recipe out loud"
 msgstr "Lire cette recette à haute voix"
 
+#: plugins/custom-recipe-management/public/recipe-output/partials/screen-template.php:44
+msgid "Origin"
+msgstr "Origine"
+
 #: plugins/custom-recipe-management/public/recipe-output/partials/screen-template.php:117
 msgid "For "
 msgstr "Pour "
@@ -2411,40 +2429,40 @@ msgstr "Etiquettes"
 msgid "Serving Size"
 msgstr "Portions"
 
-#: plugins/custom-site-notifications/public/like/class-csn-like.php:38
+#: plugins/custom-site-notifications/public/like/class-csn-like.php:44
 msgid "I cooked and liked this recipe"
 msgstr "J'ai cuisiné et apprécié cette recette"
 
-#: plugins/custom-site-notifications/public/like/class-csn-like.php:39
+#: plugins/custom-site-notifications/public/like/class-csn-like.php:45
 msgid "Do not like this recipe anymore"
 msgstr "Je n'aime plus cette recette"
 
-#: plugins/custom-site-notifications/public/like/class-csn-like.php:41
+#: plugins/custom-site-notifications/public/like/class-csn-like.php:47
 msgid "Like this post"
 msgstr "J'aime cet article"
 
-#: plugins/custom-site-notifications/public/like/class-csn-like.php:42
+#: plugins/custom-site-notifications/public/like/class-csn-like.php:48
 msgid "Do not like this post anymore"
 msgstr "Je n'aime plus cet article"
 
-#: plugins/custom-site-notifications/public/like/class-csn-like.php:142
+#: plugins/custom-site-notifications/public/like/class-csn-like.php:148
 msgid "I cooked it"
 msgstr "Je l'ai cuisiné"
 
-#: plugins/custom-site-notifications/public/like/class-csn-like.php:144
+#: plugins/custom-site-notifications/public/like/class-csn-like.php:150
 msgid "I like"
 msgstr "J'aime"
 
-#: plugins/custom-site-notifications/public/like/class-csn-like.php:147
+#: plugins/custom-site-notifications/public/like/class-csn-like.php:153
 #, php-format
 msgid "%s cooked"
 msgid_plural "%s cooked"
 msgstr[0] "%s a cuisiné"
 msgstr[1] "%s ont cuisiné"
 
-#: plugins/custom-site-notifications/public/like/class-csn-like.php:149
-#: plugins/custom-site-notifications/public/like/class-csn-like.php:242
-#: plugins/custom-site-notifications/public/like/class-csn-like.php:244
+#: plugins/custom-site-notifications/public/like/class-csn-like.php:155
+#: plugins/custom-site-notifications/public/like/class-csn-like.php:248
+#: plugins/custom-site-notifications/public/like/class-csn-like.php:250
 #, php-format
 msgid "%s like"
 msgid_plural "%s likes"
@@ -2593,56 +2611,56 @@ msgstr "Voir la conversation"
 msgid "Displays share buttons of selected social networks"
 msgstr ""
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:53
+#: plugins/custom-star-rating/includes/class-csr-assets.php:54
 msgid "Dish"
 msgstr "Plat"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:54
+#: plugins/custom-star-rating/includes/class-csr-assets.php:55
 #, fuzzy
 #| msgid "eg. Preparation of the dough"
 msgid "Appreciation of the dish"
 msgstr "ex : Préparation de la pâte"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:55
+#: plugins/custom-star-rating/includes/class-csr-assets.php:56
 msgid "How did you like this dish ?"
 msgstr "Avez vous aimé ce plat ? "
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:57
-#: plugins/custom-star-rating/includes/class-csr-assets.php:68
+#: plugins/custom-star-rating/includes/class-csr-assets.php:58
+#: plugins/custom-star-rating/includes/class-csr-assets.php:69
 msgid "Disappointing"
 msgstr "Pas Goûtu"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:58
-#: plugins/custom-star-rating/includes/class-csr-assets.php:69
+#: plugins/custom-star-rating/includes/class-csr-assets.php:59
+#: plugins/custom-star-rating/includes/class-csr-assets.php:70
 msgid "Average"
 msgstr "Assez Goûtu"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:59
-#: plugins/custom-star-rating/includes/class-csr-assets.php:70
+#: plugins/custom-star-rating/includes/class-csr-assets.php:60
+#: plugins/custom-star-rating/includes/class-csr-assets.php:71
 msgid "Good"
 msgstr "Plutôt Goûtu"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:60
-#: plugins/custom-star-rating/includes/class-csr-assets.php:71
+#: plugins/custom-star-rating/includes/class-csr-assets.php:61
+#: plugins/custom-star-rating/includes/class-csr-assets.php:72
 msgid "Very good"
 msgstr "Carrément Goûtu"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:61
-#: plugins/custom-star-rating/includes/class-csr-assets.php:72
+#: plugins/custom-star-rating/includes/class-csr-assets.php:62
+#: plugins/custom-star-rating/includes/class-csr-assets.php:73
 msgid "Delicious"
 msgstr "Divinement Goûtu !"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:65
+#: plugins/custom-star-rating/includes/class-csr-assets.php:66
 msgid "Overall"
 msgstr "Global"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:66
+#: plugins/custom-star-rating/includes/class-csr-assets.php:67
 #, fuzzy
 #| msgid "eg. Preparation of the dough"
 msgid "Global appreciation of the dish"
 msgstr "ex : Préparation de la pâte"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:157
+#: plugins/custom-star-rating/includes/class-csr-assets.php:143
 msgid "Not rated"
 msgstr "Pas d'évaluation"
 
@@ -2662,14 +2680,14 @@ msgstr ""
 msgid "Provide details"
 msgstr "Partagez quelques détails"
 
-#: plugins/custom-star-rating/public/class-csr-rating.php:337
+#: plugins/custom-star-rating/public/class-csr-rating.php:343
 #, php-format
 msgid "%s review"
 msgid_plural "%s reviews"
 msgstr[0] "%s avis"
 msgstr[1] "%s avis"
 
-#: plugins/custom-star-rating/public/class-csr-rating.php:341
+#: plugins/custom-star-rating/public/class-csr-rating.php:347
 msgid "Evaluate me !"
 msgstr "Evaluez moi !"
 
@@ -3531,6 +3549,10 @@ msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:341
 msgid "Grid Columns"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:356
+msgid "Category"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:363
@@ -7176,17 +7198,11 @@ msgstr "Ces articles pourraient également vous intéresser..."
 #~ msgid "Other countries"
 #~ msgstr "Autres pays"
 
-#~ msgid "Filter by origin"
-#~ msgstr "Filtrer par provenance"
-
 #~ msgid "All seasons"
 #~ msgstr "Toutes les saisons"
 
 #~ msgid "All levels"
 #~ msgstr "Tous les niveaux de difficulté"
-
-#~ msgid "Filter by country"
-#~ msgstr "Filtrer par pays"
 
 #~ msgid "All blogs"
 #~ msgstr "Tous les blogs"

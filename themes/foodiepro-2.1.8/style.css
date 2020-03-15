@@ -3135,6 +3135,11 @@ nav.nav-primary .wrap {
   text-decoration: none;
 }
 
+.entry-meta .edit-button {
+  font-size: 2rem;
+  vertical-align: middle;
+}
+
 #username {
   text-transform: capitalize;
   display: inline-block;

@@ -18,6 +18,7 @@ td.rating-title {
     margin-right: 10px;
     display: inline-block;
     vertical-align: middle;
+    font-size: 2rem;
 }
 
 .rating-input {

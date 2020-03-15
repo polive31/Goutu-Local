@@ -76,7 +76,7 @@ mu-plugins/
 plugins/*
 !plugins/custom-category-image/
 !plugins/random-user-ids/
-!plugins/custom-admin-management/
+!plugins/custom-admin-helpers/
 !plugins/custom-admin-page-navigation/
 !plugins/custom-assets-management/
 !plugins/search-everything/
@@ -84,17 +84,15 @@ plugins/search-everything/*
 !plugins/search-everything/search-everything.php
 !plugins/wp-scripts-styles-manager/
 !plugins/custom-batch-manage-posts/
-!plugins/custom-buddypress-helpers/
 !plugins/custom-peepso-overrides/
 !plugins/custom-comment-management/
 !plugins/custom-color-theme/
 !plugins/custom-contact-form/
-!plugins/custom-js-css-optimization/
 !plugins/custom-gallery-shortcode/
 !plugins/custom-google-tag-manager/
 !plugins/custom-google-recaptcha/
 !plugins/custom-lightbox/
-!plugins/custom-navigation-helpers/
+!plugins/custom-archive-management/
 !plugins/custom-post-meta-inspector/
 !plugins/custom-recent-post-widget/
 !plugins/recent-posts-widget-extended/

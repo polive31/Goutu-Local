@@ -18,14 +18,6 @@ if ( !defined('ABSPATH') )
 
 /* Main
 ------------------------------------------------------------*/
-
-//if (! class_exists( 'PHP_Debug')) {
-//	class PHP_Debug {
-//		public function log( $msg, $var=false) {}
-//		public function trace( $msg, $var=false) {}
-//	}
-//}
-
 require_once 'includes/class-custom-archive-management.php';
 require_once 'includes/class-cnh-assets.php';
 
@@ -39,10 +31,8 @@ require_once 'widgets/taxonomy-dropdown-widget.php';
 require_once 'widgets/taxonomy-search-widget.php';
 require_once 'widgets/taxonomy-accordion-widget.php';
 
-
-// TODO REDISPATCH TOWARDS OTHER PLUGINS/THEME UTILITIES
-require_once 'public/class-cnh-shortcodes.php';
-require_once 'public/class-cnh-rpwe-customizations.php';
-
-
-new Custom_Archive_Management();
+add_action('plugins_loaded', 'custom_archive_management_start');
+function custom_archive_management_start()
+{
+	new Custom_Archive_Management();
+}

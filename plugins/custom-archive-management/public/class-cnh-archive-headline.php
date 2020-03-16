@@ -1,10 +1,5 @@
 <?php
 
-/* Archive Headline customization
-   Inherits from CustomArchive
---------------------------------------------*/
-
-
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

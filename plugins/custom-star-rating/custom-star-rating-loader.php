@@ -21,11 +21,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 /************               INITIALIZATION		         *****************/
 /*************************************************************************/
 
-require 'includes/class-custom-star-rating.php';
-require 'includes/class-csr-assets.php';
+require_once 'includes/class-custom-star-rating.php';
+require_once 'includes/class-csr-assets.php';
 
-require 'public/class-csr-rating.php';
-require 'public/class-csr-form.php';
+require_once 'public/class-csr-rating.php';
+require_once 'public/class-csr-form.php';
 
 
 /* Chargement du text domain */

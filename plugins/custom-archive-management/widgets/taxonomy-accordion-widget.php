@@ -73,19 +73,57 @@ class Recipe_Taxonomy_Accordion extends WP_Widget {
 			$displayed_user=false;
 
 		echo '<div id="accordion">';
-		// echo do_shortcode('[ct-terms-menu page_slug="plats" page_title="' . __('Latest recipes', 'foodiepro') . '" tax="course" title="' . __('Courses', 'foodiepro') . '" orderby="name" author="0" order="ASC" count="' . $show_count . '"]');
-		// echo do_shortcode('[ct-terms-menu  page_slug="saisons" page_title="' . __('Latest recipes', 'foodiepro') . '" tax="season" title="' . __('Seasons', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
-		// echo do_shortcode('[ct-terms-menu  page_slug="occasions" page_title="' . __('Latest recipes', 'foodiepro') . '" tax="occasion" title="' . __('Occasions', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
-		// echo do_shortcode('[ct-terms-menu  page_slug="monde" page_title="' . __('Latest recipes', 'foodiepro') . '" tax="cuisine" parent="0" drill="true" exclude="9996" title="' . __('World', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
-		// echo do_shortcode('[ct-terms-menu  page_slug="regions" page_title="' . __('Latest recipes', 'foodiepro') . '" tax="cuisine" parent="9996" title="' . __('France', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
-		// echo do_shortcode('[ct-terms-menu  page_slug="regimes" page_title="' . __('Latest recipes', 'foodiepro') . '" tax="diet" title="' . __('Diets', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
-		echo do_shortcode('[ct-terms-menu tax="course" title="' . __('Courses', 'foodiepro') . '" orderby="description" author="0" order="ASC" count="' . $show_count . '"]');
-		echo do_shortcode('[ct-terms-menu tax="season" title="' . __('Seasons', 'foodiepro') . '" orderby="description" order="ASC" count="' . $show_count . '"]');
-		echo do_shortcode('[ct-terms-menu tax="occasion" title="' . __('Occasions', 'foodiepro') . '" orderby="description" order="ASC" count="' . $show_count . '"]');
-		echo do_shortcode('[ct-terms-menu tax="cuisine" parent="0" drill="true" exclude="9996" title="' . __('World', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
-		echo do_shortcode('[ct-terms-menu tax="cuisine" parent="9996" title="' . __('France', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
-		echo do_shortcode('[ct-terms-menu tax="diet" title="' . __('Diets', 'foodiepro') . '" orderby="description" order="ASC" count="' . $show_count . '"]');
-		echo do_shortcode('[tags-menu post_type="recipe" title="' . __('Ideas', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
+		// echo do_shortcode('[ct-terms-menu tax="course" title="' . __('Courses', 'foodiepro') . '" orderby="description" author="0" order="ASC" count="' . $show_count . '"]');
+		// echo do_shortcode('[ct-terms-menu tax="season" title="' . __('Seasons', 'foodiepro') . '" orderby="description" order="ASC" count="' . $show_count . '"]');
+		// echo do_shortcode('[ct-terms-menu tax="occasion" title="' . __('Occasions', 'foodiepro') . '" orderby="description" order="ASC" count="' . $show_count . '"]');
+		// echo do_shortcode('[ct-terms-menu tax="cuisine" parent="0" drill="true" exclude="9996" title="' . __('World', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
+		// echo do_shortcode('[ct-terms-menu tax="cuisine" parent="9996" title="' . __('France', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
+		echo $this->list_taxonomy_terms(array(
+			'tax' => 'course',
+			'count' => $show_count,
+			'title' => __('Courses', 'foodiepro'),
+		));
+
+		echo $this->list_taxonomy_terms(array(
+			'tax' => 'season',
+			'count' => $show_count,
+			'title' => __('Seasons', 'foodiepro'),
+		));
+
+		echo $this->list_taxonomy_terms(array(
+			'tax' => 'occasion',
+			'count' => $show_count,
+			'title' => __('Occasions', 'foodiepro'),
+		));
+
+		echo $this->list_taxonomy_terms(array(
+			'tax' => 'cuisine',
+			'parent'	=> '0',
+			'exclude'	=> '9996',
+			'drill'		=> true,
+			'count' => $show_count,
+			'title' => __('World', 'foodiepro'),
+		));
+
+		echo $this->list_taxonomy_terms(array(
+			'tax' => 'cuisine',
+			'parent'	=> '9996',
+			'count' => $show_count,
+			'title' => __('France','foodiepro'),
+		));
+
+		echo $this->list_taxonomy_terms(array(
+			'tax'=>'diet',
+			'title' => __('Diets','foodiepro'),
+			'count'=> $show_count,
+		));
+		// echo do_shortcode('[tags-menu post_type="recipe" title="' . __('Ideas', 'foodiepro') . '" orderby="name" order="ASC" count="' . $show_count . '"]');
+		echo $this->list_tags(array(
+			'post_type'	=> 'recipe',
+			'title' 	=> __('Ideas', 'foodiepro'),
+			'count' 	=> $show_count,
+		));
+
 		echo '</div>';
 
 
@@ -101,6 +139,97 @@ class Recipe_Taxonomy_Accordion extends WP_Widget {
 		// Output end
 		echo $args['after_widget'];
 	}
+
+	public function list_tags($atts)
+	{
+		$count = $atts['count'];
+		$title = $atts['title'];
+		$type = $atts['post_type'];
+		$tags = get_tags(array(
+			// New clause "tags_post_type" added to the WP_Query function
+			// see req_clauses filter
+			'tags_post_type' => $type,
+			'hide_empty' => true,
+			'orderby' => 'name',
+			'order'   => 'ASC'
+		));
+
+		$html = '<div class="tax-container">';
+		$html .= '<h3>' . $title . '</h3>';
+		$html .= '<div class="subnav" id="tags" style="display:none">';
+
+		foreach ($tags as $tag) {
+			$post_count = $count ? ' (' . $tag->count . ')' : '';
+			$url = get_tag_link($tag->term_id);
+			$url = add_query_arg('post_type', 'recipe', $url);
+			$html .= '<li><a href="' . $url . '">' . $tag->name . $post_count . '</a></li>';
+		}
+		$html .= '</div></div>';
+		return $html;
+	}
+
+	/* =================================================================*/
+	/* = TAXONOMIES LIST SHORTCODE
+	/* =================================================================*/
+
+	public function list_taxonomy_terms($atts)
+	{
+
+		if (!empty($atts['tax']))
+			$tax = $atts['tax'];
+		else
+			return;
+		$drill = isset($atts['drill'])? $atts['drill']:false;
+		$count = isset($atts['count'])? $atts['count']:false;
+		$exclude = isset($atts['exclude'])? $atts['exclude']:'';
+		$parent = isset($atts['parent'])? $atts['parent']:'';
+		$page_order = isset($atts['page_order'])? $atts['page_order']:'last';
+
+		if (empty($atts['title'])) {
+			$tax_details = get_taxonomy($tax);
+			$title = $tax_details->labels->name;
+		} else
+			$title = $atts['title'];
+
+		$html = '<div class="tax-container">';
+		$html .= '<h3>' . $title . '</h3>';
+		$html .= '<div class="subnav" id="' . $tax . '" style="display:none">';
+
+		$terms = get_categories(array(
+			'taxonomy' => $tax,
+			'exclude' => $exclude,
+			'parent' => $parent,
+			'author' => 0,
+			'hide_empty' => true,
+			'orderby' => CNH_Assets::get_orderby($tax),
+			'order'   => 'ASC'
+		));
+
+		foreach ($terms as $term) {
+			$post_count = 0;
+			if ($count) {
+				if ($drill) {
+					$subterms = get_categories(array(
+						'taxonomy' => $tax,
+						'parent' => $term->term_id,
+					));
+					// echo '<pre>' . $term->name . '</pre>';
+					foreach ($subterms as $subterm) {
+						// echo '<pre>' . print_r($subterm) . '</pre>';
+						$post_count += (int) $subterm->count;
+					}
+				}
+				$post_count += (int) $term->count;
+				$post_count = ' (' . $post_count . ')';
+			}
+			$html .= '<li><a href="' . get_term_link($term, $tax) . '">' . $term->name . $post_count . '</a></li>';
+		}
+
+		$html .= '</div></div>';
+
+		return $html;
+	}
+
 
 	// Widget Backend
 	public function form( $instance ) {

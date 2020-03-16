@@ -16,10 +16,12 @@ if ( !defined('ABSPATH') )
 
 
 require_once 'includes/class-custom-admin-helpers.php';
+
 require_once 'admin/class-cam-assets.php';
 require_once 'admin/class-cam-tax-columns.php';
 require_once 'admin/class-cam-post-filter.php';
 
+require_once 'public/class-cah-shortcodes.php';
 
 add_action('plugins_loaded', 'custom_admin_helpers_start');
 

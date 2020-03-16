@@ -29,6 +29,10 @@ class Custom_Admin_Helpers {
         add_filter( 'parse_query',              array($Filter, 'add_posts_filter' )       );
         add_action( 'admin_bar_menu',           array($Filter, 'add_toolbar_items'), 999  );
 
+        // Admin shortcodes
+        $Shortcodes = new CAH_Shortcodes();
+        add_shortcode('post-count',             array($Shortcodes, 'get_post_count'));
+
     }
 
     // public static function get_instance() {

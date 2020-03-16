@@ -282,6 +282,7 @@ function foodie_pro_includes()
 
 	// P.O. Load the custom helpers
 	require_once trailingslashit(CHILD_THEME_PATH) . 'custom-helpers.php';
+	require_once trailingslashit(CHILD_THEME_PATH) . 'custom-shortcodes.php';
 
 	// End here if we're not in the admin panel.
 	if (is_admin()) {

@@ -1,12 +1,11 @@
 <?php
 
-
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class CNH_RPWE_Customizations {
+class RPWE_Customizations {
 
 	public function rpwe_add_author( $output, $args ) {
 		if ( !class_exists('Peepso') ) return '';
@@ -19,7 +18,6 @@ class CNH_RPWE_Customizations {
 		}
 		return $output;
 	}
-
 
 	public function wprpe_add_avatar( $output, $args ) {
 		if ( !class_exists('PeepsoHelpers') ) return '';
@@ -115,7 +113,6 @@ class CNH_RPWE_Customizations {
 			$args['meta_key'] = 'user_rating_global';
 		return $args;
 	}
-
 
 
 }

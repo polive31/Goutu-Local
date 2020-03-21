@@ -47,7 +47,7 @@ function foodiepro_glossary_search( $atts, $content ) {
 		'term' => '',
 	), $atts );
 	$term = !empty($atts['term'])? $atts['term']:$content;
-	$glossary_url = $this->get_page_by_slug($atts['glossaryslug']);
+	$glossary_url = foodiepro_get_page_by_slug($atts['glossaryslug']);
 	$url=add_query_arg(
 		array(
 			$atts['searchkey'] 	=> strip_tags($term),
@@ -73,8 +73,8 @@ function foodiepro_search_posts( $atts, $content ) {
 /* =================================================================*/
 /* = PERMALINK SHORTCODE
 /* =================================================================*/
-add_shortcode('permalink', 'foodiepro_get_permalink');
-function foodiepro_get_permalink($atts, $content='') {
+add_shortcode('permalink', 'foodiepro_get_permalink_shortcode');
+function foodiepro_get_permalink_shortcode($atts, $content='') {
 	$atts = shortcode_atts(array(
 		/* Source parameters */
 		'id' 	=> '',
@@ -96,6 +96,10 @@ function foodiepro_get_permalink($atts, $content='') {
 		'ga' 	=> false, // ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue] ); separate by spaces
 
 	), $atts);
+
+	return foodiepro_get_permalink($atts, $content);
+}
+function foodiepro_get_permalink( $atts, $content='' ) {
 
 	extract( $atts );
 	$text=$text?esc_html($text):'';

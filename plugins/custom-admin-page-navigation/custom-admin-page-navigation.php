@@ -53,14 +53,14 @@ if( !class_exists( "capn_Quick_Page_Navigation" ) ) {
 			}
 
 			// Admin Bar Menu
-			add_action( 'admin_bar_menu', array( $this, 'capn_add_admin_bar_wp_menu' ), 555 );
+			add_action('admin_bar_menu', array( $this, 'capn_add_admin_bar_wp_menu' ), 555 );
     		add_action('admin_enqueue_scripts', array( $this, 'capn_common_scripts' ), 555 );
     		add_action('wp_enqueue_scripts', array( $this, 'capn_common_scripts' ), 555 );
 		}
 
 		function capn_common_scripts() {
-			wp_enqueue_style('sqpn-common', plugins_url('/assets/css/sqpn-common.css', __FILE__), array() );
-			wp_enqueue_script('sqpn-common', plugins_url('/assets/js/sqpn-common.js', __FILE__), array('jquery'), '', true);
+			wp_enqueue_style('sqpn-common', plugins_url('/assets/css/sqpn-common.css', __FILE__), array(), CHILD_THEME_VERSION );
+			wp_enqueue_script('sqpn-common', plugins_url('/assets/js/sqpn-common.js', __FILE__), array('jquery'), CHILD_THEME_VERSION, true);
 		}
 
 		function capn_add_admin_bar_wp_menu( $wp_admin_bar ) {

@@ -170,7 +170,7 @@ class Recent_Posts_Widget_Extended extends WP_Widget {
 		extract( $instance );
 
 		// Loads the widget form.
-		include( RPWE_INCLUDES . 'form.php' );
+		include( RPWE_ADMIN . 'form.php' );
 
 	}
 

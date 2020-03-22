@@ -44,18 +44,6 @@
             $html .= '</a>';
             $html .= '</div>';
 
-        // If no post thumbnail found, check if Get The Image plugin exist and display the image.
-        elseif (function_exists('get_the_image')) :
-            $html .= get_the_image(array(
-                'height'        => (int) $args[$thumb_height],
-                'width'         => (int) $args[$thumb_width],
-                'image_class'   => esc_attr($args['thumb_align']) . ' rpwe-thumb get-the-image',
-                'image_scan'    => true,
-                'echo'          => false,
-                'default_image' => esc_url($args['thumb_default'])
-            ));
-        // $html .= 'In the get the image';
-
         // Display default image.
         elseif (!empty($args['thumb_default'])) :
             $html .= sprintf(

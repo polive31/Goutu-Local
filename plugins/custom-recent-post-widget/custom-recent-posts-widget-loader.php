@@ -54,11 +54,15 @@ function custom_recent_posts_constants() {
 	// Set the constant path to the plugin directory URI.
 	define( 'RPWE_URI', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 	// Set the constant path to the includes directory.
-	define('RPWE_PARTIALS', RPWE_DIR . trailingslashit('partials'));
+	define( 'RPWE_PARTIALS', RPWE_DIR . trailingslashit('public/partials'));
 	// Set the constant path to the includes directory.
 	define( 'RPWE_CLASS', RPWE_DIR . trailingslashit( 'classes' ) );
 	// Set the constant path to the assets directory.
-	define( 'RPWE_ASSETS', RPWE_URI . trailingslashit( 'assets' ) );
+	define( 'RPWE_ASSETS', RPWE_DIR . trailingslashit( 'assets' ) );
+	// Set the constant path to the includes directory.
+	define( 'RPWE_INCLUDES', RPWE_DIR . trailingslashit('includes'));
+	// Set the constant path to the admin directory.
+	define( 'RPWE_ADMIN', RPWE_DIR . trailingslashit('admin'));
 }
 
 // Internationalize the text strings used.

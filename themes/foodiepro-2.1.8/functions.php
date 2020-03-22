@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 define('CHILD_THEME_NAME', 'Foodie Pro Theme');
 define('CHILD_THEME_DEVELOPER', 'Shay Bocks/Pascal Olive');
 define('CHILD_THEME_OPTIONS', get_option('cct_options'));
-define('CHILD_THEME_VERSION', ((bool)CHILD_THEME_OPTIONS['reload'])?time():'2.3.89');
+define('CHILD_THEME_VERSION', ((bool)CHILD_THEME_OPTIONS['reload'])?time():'2.3.90');
 define('CHILD_THEME_URL', get_stylesheet_directory_uri());
 define('CHILD_THEME_PATH', get_stylesheet_directory());
 define('DEFAULT_CHILD_COLOR_THEME', 'spring');
@@ -776,6 +776,18 @@ function themed_wp_die_handler($message, $title = '', $args = array())
 // 	$phpmailer->FromName   = SMTP_NAME;
 // }
 
+/* =================================================================*/
+/* =              REMOVE ADMIN FROM USER SEARCH RESULTS
+/* =================================================================*/
+add_action('pre_get_users', 'foodiepro_hide_admin');
+function foodiepro_hide_admin($query) {
+	if ( isset($query->query_vars) && !is_admin() ) {
+		$role_not_in = $query->query_vars['role__not_in'];
+		if (!in_array('admin', $role_not_in)) {
+			array_push($query->query_vars['role__not_in'], 'administrator');
+		}
+	};
+}
 
 /* =================================================================*/
 /* =              CUSTOM QUERIES
@@ -999,17 +1011,6 @@ function custom_inline_js()
 	}
 
 
-	// add_action( 'genesis_after_content_sidebar_wrap', 'add_post_bottom_area');
-	// function add_post_bottom_area() {
-	// 	if ( is_single() ) {
-	// 	  genesis_widget_area( 'post-bottom', array(
-	// 	      'before' => '<div class="post-bottom widget-area page-bottom">',
-	// 	      'after'  => '</div>',
-	// 		));
-	// 	}
-	// }
-
-
 	/* =================================================================*/
 	/* =              EMBEDDED POSTS
 /* =================================================================*/
@@ -1105,7 +1106,6 @@ function foodiepro_override_mofile_path($mofile, $domain)
 
 	//* Add icon before page title
 	add_action('genesis_entry_header', 'add_page_icon', 7);
-
 	function add_page_icon()
 	{
 		if (is_page()) {

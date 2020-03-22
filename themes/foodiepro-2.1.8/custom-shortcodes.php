@@ -15,6 +15,36 @@ function foodiepro_get_site_logo_path( $atts ) {
 	return $url;
 }
 
+
+/* =================================================================*/
+/* = WIDGET AREA CONTROL SHORTCODE
+/* =================================================================*/
+add_shortcode('widget_area', 'foodiepro_widget_area_shortcode');
+/**
+ * Display widget area with shortcode.
+ *
+ * @since  1.0.0
+ *
+ * @return string
+ */
+function foodiepro_widget_area_shortcode($atts)
+{
+	$atts = shortcode_atts(
+		array(
+			'id' 	=> '',
+			'class' => '',
+		),
+		$atts,
+		'widget_area'
+	);
+	ob_start();
+	genesis_widget_area($atts['id'], array(
+		'before' => '<div class="' . $atts['class'] . ' widget-area"><div class="wrap">',
+		'after'  => '</div></div>',
+	));
+	return ob_get_clean();
+}
+
 /* =================================================================*/
 /* = IF SHORTCODE
 /* =================================================================*/
@@ -28,9 +58,9 @@ function foodiepro_display_if( $atts, $content ) {
 	$user=$atts['user'];
 
 	if ( $user=='logged-out' )
-		$display=$display && !is_user_logged_in();
+	$display=$display && !is_user_logged_in();
 	elseif ( $user=='logged-in' )
-		$display=$display && is_user_logged_in();
+	$display=$display && is_user_logged_in();
 
 	return $display?do_shortcode($content):'';
 }
@@ -63,7 +93,7 @@ add_shortcode('search', 'foodiepro_search_posts');
 function foodiepro_search_posts( $atts, $content ) {
 	$atts = shortcode_atts( array(
 		'searchkey' => 's',
-		), $atts );
+	), $atts );
 	$html=add_query_arg( $atts['searchkey'], $content, get_site_url());
 	$html='<a href="' . $html . '">' . $content . '</a>';
 	return $html;
@@ -83,6 +113,7 @@ function foodiepro_get_permalink_shortcode($atts, $content='') {
 		'wp' 	=> false, // home, login, register
 		'user' 	=> false, // current, view, author, any user ID
 		'peepso' => false, // members, register
+		'google' => false, // search query
 
 		/* Display parameters */
 		'class' => '',
@@ -100,28 +131,34 @@ function foodiepro_get_permalink_shortcode($atts, $content='') {
 	return foodiepro_get_permalink($atts, $content);
 }
 function foodiepro_get_permalink( $atts, $content='' ) {
-
 	extract( $atts );
-	$text=$text?esc_html($text):'';
-	$content=esc_html($content);
-	$data=$data?explode(' ', $data):false;
-	$ga=$ga?explode(' ', $ga):false;
-	$rel='';
+	$id=empty($id)?'':$id;
+	$rel=empty($rel)?'':$rel;
+	$target=empty($target)?'':$target;
+	$google=empty($google)?'':$google;
+	$text=empty($text)?'':esc_html($text);
+	$content= empty($content) ? '' : esc_html($content);
+	$data=empty($data)?false:explode(' ', $data);
+	$ga=empty($ga)?false:explode(' ', $ga);
 
 	$url='#';
 	$token=''; /* Replacement token for display text */
-	if ($id) {
+	if (!empty($id)) {
 		$url=get_permalink($id);
 	}
-	elseif ($tax) {
+	elseif (!empty($tax)) {
 		if (!empty($slug))
-			$url=get_term_link((string) $slug, (string) $tax);
+		$url=get_term_link((string) $slug, (string) $tax);
 	}
-	elseif ($slug) {
+	elseif (!empty($slug)) {
 		// $url=get_permalink(get_page_by_path($slug));
 		$url=foodiepro_get_page_by_slug($slug);
 	}
-	elseif ($user) {
+	elseif (!empty($google)) {
+		// $url=get_permalink(get_page_by_path($slug));
+		$url = 'https://www.google.com/search?q=' . urlencode(remove_accents($google));
+	}
+	elseif (!empty($user)) {
 		// Define user
 		if ($user=='current') {
 			$user_id = get_current_user_id();
@@ -152,15 +189,15 @@ function foodiepro_get_permalink( $atts, $content='' ) {
 			$token = $peepso_user->get_nicename();
 		}
 	}
-	elseif ($wp) {
+	elseif (!empty($wp)) {
 		if ( $wp=='home' )
-			$url = get_home_url();
+		$url = get_home_url();
 		elseif ( $wp=='login' )
-			$url = wp_login_url();
+		$url = wp_login_url();
 		elseif ( $wp=='register' )
-			$url = wp_registration_url();
+		$url = wp_registration_url();
 	}
-	elseif ($peepso) {
+	elseif (!empty($peepso)) {
 		if (!class_exists('Peepso')) return;
 		if ($peepso=='members' ) {
 			$url = PeepSo::get_page('members');
@@ -209,7 +246,7 @@ function foodiepro_get_page_by_slug($page_slug ) {
 	global $wpdb;
 	$page = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND post_status = 'publish'", $page_slug ) );
 	if ( $page )
-		return get_permalink($page);
+	return get_permalink($page);
 	return null;
 }
 

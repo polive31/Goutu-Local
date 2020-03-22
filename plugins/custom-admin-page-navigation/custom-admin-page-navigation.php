@@ -26,9 +26,6 @@ if( !class_exists( "capn_Quick_Page_Navigation" ) ) {
 
 			// Check User and Add Menu
 			add_action( 'init', array( $this, 'capn_check_user' ) );
-
-			// Equeue Beaver Builder CSS & JS if Exist
-			add_action('wp_enqueue_scripts', array( $this, 'capn_bb_css_js' ) );
 		}
 
 		// Plugin Deactivation
@@ -57,16 +54,8 @@ if( !class_exists( "capn_Quick_Page_Navigation" ) ) {
 
 			// Admin Bar Menu
 			add_action( 'admin_bar_menu', array( $this, 'capn_add_admin_bar_wp_menu' ), 555 );
-    		add_action( 'admin_bar_menu', array( $this, 'capn_add_admin_bar_bb_menu' ), 556 );
     		add_action('admin_enqueue_scripts', array( $this, 'capn_common_scripts' ), 555 );
     		add_action('wp_enqueue_scripts', array( $this, 'capn_common_scripts' ), 555 );
-		}
-
-		function capn_bb_css_js() {
-			if ( class_exists( 'FLBuilder' ) && FLBuilderModel::is_builder_active() ) {
-				wp_enqueue_style('sqpn-bb', plugins_url('/assets/css/sqpn-bb.css', __FILE__), array() );
-				wp_enqueue_script('sqpn-bb', plugins_url('/assets/js/sqpn-bb.js', __FILE__), array('jquery'), '', true);
-			}
 		}
 
 		function capn_common_scripts() {
@@ -109,6 +98,7 @@ if( !class_exists( "capn_Quick_Page_Navigation" ) ) {
 				'sort_column' => 'menu_order',
 				'parent' => $parent,
 				'post_type' => 'page',
+				'post_status' => array('draft','publish', 'private', 'pending'),
 			);
 			$pages = get_pages($options);
 
@@ -116,7 +106,8 @@ if( !class_exists( "capn_Quick_Page_Navigation" ) ) {
 			foreach ($pages as $page) {
 				$id 	= $page->ID;
 				$title 	= $page->post_title;
-				$url  	= get_page_link( $id ).'?fl_builder';
+				$status 	= $page->post_status;
+				$url  	= get_page_link( $id );
 
 //				echo "<pre>";
 //				var_dump( $id );
@@ -136,7 +127,7 @@ if( !class_exists( "capn_Quick_Page_Navigation" ) ) {
 			    		'title' 	=> $title, // title/menu text to display
 			    		'href' 		=> admin_url( '/post.php?post=' . $id . '&action=edit'),
 			    		'meta' 		=> array(
-			    		    'class' => 'sqpn-wp-pages-sub-menu',
+			    		    'class' => 'sqpn-bb-pages-sub-menu' . ' status-' . $status,
 			    		)
 			    	)
 			    );
@@ -146,83 +137,6 @@ if( !class_exists( "capn_Quick_Page_Navigation" ) ) {
 			}
 		}
 
-		function capn_add_admin_bar_bb_menu( $wp_admin_bar ) {
-
-			global $wp;
-
-			// Cheeck if beaver builder is active
-			if ( !class_exists( 'FLBuilder' ) ) {
-			return;
-			}
-
-			$current_url  = ( isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == 'on' ) ? 'https://'.$_SERVER["SERVER_NAME"] :  'http://'.$_SERVER["SERVER_NAME"];
-		  	$current_url .= ( $_SERVER["SERVER_PORT"] !== 80 ) ? ":".$_SERVER["SERVER_PORT"] : "";
-		  	$current_url .= $_SERVER["REQUEST_URI"];
-
-		  	//var_dump( $current_url );
-
-			$pos = strpos($current_url, 'wp-admin');
-			if ($pos === false){
-				$current_url = $current_url . '?fl_builder';
-			}else{
-				$current_url = '';
-			}
-
-			//var_dump( $ )
-			$wp_admin_bar->add_node(
-				array(
-		    		'id' => 'capn_bb_pages', // an unique id (required)
-		    		'title' => 'Pages In BB', // title/menu text to display
-		    		'href' => $current_url, // target url of this menu item
-		    		'meta' => array(
-		    		    'class' => 'sqpn-bb-pages-menu',
-		    		)
-		    	)
-		    );
-
-			$wp_admin_bar->add_node(
-				array(
-		    		'parent'	=> 'capn_bb_pages',
-		    		'id' 		=> 'search_capn_bb_sub_pages', // an unique id (required)
-		    		'title' 	=> '<input type="text" class="sqpn-search-input sqpn-bb-search-page" placeholder="Search Page" data-type="bb"/>', // title/menu text to display
-		    		/*'href' 		=> '#', // target url of this menu item*/
-		    		'meta' 		=> array(
-		    		    'class' => 'sqpn-search-input-group sqpn-bb-pages-search',
-		    		)
-		    	)
-		    );
-
-		    $options = array(
-				'sort_column' => 'menu_order',
-				'parent' => 0,
-				'post_type' => 'page',
-			);
-			$pages = get_pages($options);
-
-			foreach ($pages as $page) {
-				$id 	= $page->ID;
-				$title 	= $page->post_title;
-				$url  	= get_page_link( $id ).'?fl_builder';
-				/*echo "<pre>";
-				var_dump( $id );
-				var_dump( $title );
-				var_dump( $url );
-				echo "</pre>";*/
-
-				$wp_admin_bar->add_node(
-					array(
-			    		'parent'	=> 'capn_bb_pages',
-			    		'id' 		=> $id.'_capn_bb_sub_pages', // an unique id (required)
-			    		'title' 	=> $title, // title/menu text to display
-			    		'href' 		=> $url, // target url of this menu item
-			    		'meta' 		=> array(
-			    		    'class' => 'sqpn-bb-pages-sub-menu',
-			    		)
-			    	)
-			    );
-				//var_dump( $page );
-			}
-		}
 	}
 	new capn_Quick_Page_Navigation();
 }

@@ -16,3 +16,19 @@
     width: 100%;
     padding: 3px;
 }
+
+#wp-admin-bar-capn_wp_pages .sqpn-wp-pages-search {
+    margin : 10px 0;
+}
+
+#wp-admin-bar-capn_wp_pages .status-draft {
+    background-color:orange;
+}
+
+#wp-admin-bar-capn_wp_pages .status-pending {
+    background-color:pink;
+}
+
+#wp-admin-bar-capn_wp_pages .status-private {
+    background-color:rgb(200, 199, 199);
+}

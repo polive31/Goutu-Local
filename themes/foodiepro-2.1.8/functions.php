@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 define('CHILD_THEME_NAME', 'Foodie Pro Theme');
 define('CHILD_THEME_DEVELOPER', 'Shay Bocks/Pascal Olive');
 define('CHILD_THEME_OPTIONS', get_option('cct_options'));
-define('CHILD_THEME_VERSION', ((bool)CHILD_THEME_OPTIONS['reload'])?time():'2.3.91');
+define('CHILD_THEME_VERSION', ((bool)CHILD_THEME_OPTIONS['reload'])?time():'2.3.92');
 define('CHILD_THEME_URL', get_stylesheet_directory_uri());
 define('CHILD_THEME_PATH', get_stylesheet_directory());
 define('DEFAULT_CHILD_COLOR_THEME', 'spring');
@@ -509,6 +509,28 @@ function go_home()
 {
 	wp_redirect(home_url());
 	exit;
+}
+
+/* Redirect towards register page on private page if not loggued-in */
+add_action('template_redirect', 'foodiepro_redirect_private_content', 9);
+function foodiepro_redirect_private_content()
+{
+	if (is_user_logged_in()) return;
+	global $wp_query, $wpdb;
+	if (is_404()) {
+		$current_query = $wpdb->get_row($wp_query->request);
+		if ('private' == $current_query->post_status) {
+			wp_redirect(
+				foodiepro_get_permalink(
+					array(
+						'slug'	=> 'connexion',
+						// 'peepso'	=> 'register',
+					)
+				)
+			);
+			exit;
+		}
+	}
 }
 
 // add_filter('login_redirect', 'redirect_and_flush_cache_on_login', 10, 2);

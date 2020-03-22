@@ -37,7 +37,7 @@ class CSN_Like
             // }
             // else {
                 //     $link_id='join-us';
-                //     $link_url = '/connexion';
+                //     $link_url =  foodiepro_get_permalink(array('slug' => 'connexion'));
                 // }
 
                 if ($this->post_type == 'recipe') {

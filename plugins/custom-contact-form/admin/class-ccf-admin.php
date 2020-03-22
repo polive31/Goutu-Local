@@ -369,6 +369,8 @@ class CCF_Admin
 		check_ajax_referer('_ccf_send_mail_nonce', 'security');
 
 		$post_id = $_POST['post_id'];
+		$post = get_post($post_id);
+
 		$user_id = $_POST['user_id'];
 		$subject = $_POST['subject'];
 
@@ -391,7 +393,7 @@ class CCF_Admin
 				'image_url' 	=> false,
 				'content' 		=> $message,
 			);
-			$message = CustomSiteMails::populate_template($data, $user_id);
+			$message = CustomSiteMails::populate_template($data, $user_id, $post);
 			$message = foodiepro_replace_token($message, '%%', array('firstname' => $to_name));
 
 			wp_mail($to_email, $subject, $message, $headers);

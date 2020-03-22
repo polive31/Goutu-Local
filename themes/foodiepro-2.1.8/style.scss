@@ -83,6 +83,12 @@ $sidebar-width-screen: 410px;
 
 $icon-font: 'Font Awesome 5 Free';
 
+$images-path: 'images/';
+
+$header-height-max : 300px;
+$header-height-normal : 200px;
+$header-height-min : 100px;
+
 /*
 HTML5 Reset
 ---------------------------------------------------------------------------------------------------- */
@@ -383,8 +389,7 @@ ul.wpuf-form li .wpuf-fields a.file-selector,
 
 a.black-button {
     color: #fff !important;
-    /* P.O. Origin  inherit */
-    margin-top: 10px;
+    margin: 10px 0;
     display: inline-block;
 }
 
@@ -1014,6 +1019,36 @@ Structure and Layout
 .wrap {
     display: block;
     margin: 0 auto;
+}
+
+/* Site header
+IMPORTANT : DO NOT REMOVE SINCE COLOR THEMES ARE NOT LOADED ON SMARTPHONE !!!
+------------------------------------------------------------------------------- */
+.header-inner {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.site-title a {
+    background: url("images/theme/logo-svg/logo-path.svg") no-repeat left;
+}
+
+.home .site-title a {
+    background: url("images/theme/logo-svg/logo-text-compact-path.svg") no-repeat center;
+    background-position: center;
+}
+
+.site-title a {
+    background: url("images/theme/logo-svg/logo-path.svg") no-repeat left;
+}
+
+.home .site-title a {
+    background: url("images/theme/logo-svg/logo-text-compact-path.svg") no-repeat center;
+    background-position: center;
+}
+
+.home .nav-up .site-title a,
+.site-title a {
+    background: url("images/theme/logo-svg/logo-path.svg") no-repeat center;
 }
 
 /* Column Widths and Positions
@@ -3028,7 +3063,7 @@ Site Header
 --------------------------------------------- */
 .home .header-widget-area {
     width: 400px;
-    height: 300px;
+    height: $header-height-max;
     -webkit-transition: height 0.2s ease-in-out;
     /* Safari */
     transition: height 0.2s ease-in-out;
@@ -3052,7 +3087,7 @@ Site Header
 .home .site-title,
 .home .site-title a {
     width: 450px;
-    height: 300px;
+    height: $header-height-max;
     padding: 0 20px;
 }
 
@@ -3060,11 +3095,11 @@ Site Header
 .home .nav-up .site-title,
 .home .nav-up .site-title a {
     width: 300px;
-    height: 100px;
+    height: $header-height-min;
 }
 
 .home .nav-up .header-widget-area {
-    height: 100px;
+    height: $header-height-min;
 }
 
 
@@ -4276,6 +4311,19 @@ Site Footer
 
 }
 
+@media only screen and (max-height:800px) {
+    .home .header-widget-area {
+        height: $header-height-normal;
+    }
+
+    .home .title-area,
+    .home .site-title,
+    .home .site-title a {
+        height: $header-height-normal;
+    }
+
+}
+
 
 @media only screen and (max-width:1139px) {
 
@@ -4292,7 +4340,7 @@ Site Footer
     }
 
     .content-sidebar-wrap {
-        padding: 20px;
+        padding: 10px;
     }
 
     .content {
@@ -4413,7 +4461,6 @@ Site Footer
 }
 
 @media only screen and (max-width:980px) {
-
     .after-content {
         display: initial;
     }
@@ -4550,6 +4597,15 @@ Site Footer
     .page h1.entry-title {
         /* margin-top: 22px; */
         display: inline;
+    }
+
+    #responsive-menu-pro-container,
+    #responsive-menu-pro-container:before,
+    #responsive-menu-pro-container:after,
+    #responsive-menu-pro-container *,
+    #responsive-menu-pro-container *:before,
+    #responsive-menu-pro-container *:after {
+        padding: 1px;
     }
 
 }

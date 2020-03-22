@@ -358,8 +358,7 @@ ul.wpuf-form li .wpuf-fields a.file-selector,
 
 a.black-button {
   color: #fff !important;
-  /* P.O. Origin  inherit */
-  margin-top: 10px;
+  margin: 10px 0;
   display: inline-block;
 }
 
@@ -952,6 +951,36 @@ Structure and Layout
 .wrap {
   display: block;
   margin: 0 auto;
+}
+
+/* Site header
+IMPORTANT : DO NOT REMOVE SINCE COLOR THEMES ARE NOT LOADED ON SMARTPHONE !!!
+------------------------------------------------------------------------------- */
+.header-inner {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.site-title a {
+  background: url("images/theme/logo-svg/logo-path.svg") no-repeat left;
+}
+
+.home .site-title a {
+  background: url("images/theme/logo-svg/logo-text-compact-path.svg") no-repeat center;
+  background-position: center;
+}
+
+.site-title a {
+  background: url("images/theme/logo-svg/logo-path.svg") no-repeat left;
+}
+
+.home .site-title a {
+  background: url("images/theme/logo-svg/logo-text-compact-path.svg") no-repeat center;
+  background-position: center;
+}
+
+.home .nav-up .site-title a,
+.site-title a {
+  background: url("images/theme/logo-svg/logo-path.svg") no-repeat center;
 }
 
 /* Column Widths and Positions
@@ -4062,6 +4091,17 @@ Site Footer
   }
 }
 
+@media only screen and (max-height: 800px) {
+  .home .header-widget-area {
+    height: 200px;
+  }
+  .home .title-area,
+  .home .site-title,
+  .home .site-title a {
+    height: 200px;
+  }
+}
+
 @media only screen and (max-width: 1139px) {
   .site-inner,
   .wrap {
@@ -4074,7 +4114,7 @@ Site Footer
     width: 720px;
   }
   .content-sidebar-wrap {
-    padding: 20px;
+    padding: 10px;
   }
   .content {
     width: 620px;
@@ -4289,6 +4329,14 @@ Site Footer
   .page h1.entry-title {
     /* margin-top: 22px; */
     display: inline;
+  }
+  #responsive-menu-pro-container,
+  #responsive-menu-pro-container:before,
+  #responsive-menu-pro-container:after,
+  #responsive-menu-pro-container *,
+  #responsive-menu-pro-container *:before,
+  #responsive-menu-pro-container *:after {
+    padding: 1px;
   }
 }
 

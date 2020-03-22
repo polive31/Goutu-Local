@@ -112,14 +112,14 @@ function foodiepro_get_permalink_shortcode($atts, $content='') {
 		'tax' 	=> false,
 		'wp' 	=> false, // home, login, register
 		'user' 	=> false, // current, view, author, any user ID
-		'peepso' => false, // members, register
-		'google' => false, // search query
+		'peepso' => '', // members, register
+		'google' => '', // search query
 
 		/* Display parameters */
 		'class' => '',
 		'display' => false, // archive, profile
 		'type' => 'post', // post type : post, recipe OR peepso profile tab : about, activity...
-		'text' 	=> false,  // html link is output if not empty
+		'text' 	=> '',  // html link is output if not empty
 		'target' 	=> '',  // link target
 
 		/* Google Analytics parameters */
@@ -130,19 +130,51 @@ function foodiepro_get_permalink_shortcode($atts, $content='') {
 
 	return foodiepro_get_permalink($atts, $content);
 }
+
+/**
+ * foodiepro_get_permalink
+ *
+ * @param  mixed $atts array of :
+ *
+ * 	    Input parameters
+ * *	'id' 		=> ''
+ * *	'slug' 		=> false
+ * *	'tax' 		=> false
+ * *	'wp' 		=> false (home, login, register)
+ * *	'user' 		=> false (current, view, author, any user ID)
+ * *	'peepso' 	=> false (members, register)
+ * *	'google' 	=> false (search terms separated by spaces)
+ *
+ *		Display parameters
+ * *	'class' 	=> ''
+ * *	'display' 	=> false (archive, profile)
+ * *	'type' 		=> 'post'(post type : post, recipe OR peepso profile tab : about, activity...)
+ * *	'text' 		=> false (html link is output if not empty)
+ * *	'target' 	=> ''	 ('_blank' for new tab)
+ *
+ *		Google Analytics parameters
+ * *	'data' 		=> false ("attr1 val1 attr2 val2  ..." separate with spaces)
+ * *	'ga' 		=> false (ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue] ); separate by spaces)
+ *
+ * @param  mixed $content
+ * @return void
+ */
 function foodiepro_get_permalink( $atts, $content='' ) {
+
+	// Initialize optional display variables which won't be tested prior to be used
+	$rel='';
+	$id='';
+	$class='';
+	$target='';
+	$token=''; /* Replacement token for display text */
+
 	extract( $atts );
-	$id=empty($id)?'':$id;
-	$rel=empty($rel)?'':$rel;
-	$target=empty($target)?'':$target;
-	$google=empty($google)?'':$google;
-	$text=empty($text)?'':esc_html($text);
-	$content= empty($content) ? '' : esc_html($content);
+	$text=esc_html($text);
+	$content= esc_html($content);
 	$data=empty($data)?false:explode(' ', $data);
 	$ga=empty($ga)?false:explode(' ', $ga);
 
 	$url='#';
-	$token=''; /* Replacement token for display text */
 	if (!empty($id)) {
 		$url=get_permalink($id);
 	}
@@ -244,7 +276,7 @@ function foodiepro_get_data( $data ) {
 
 function foodiepro_get_page_by_slug($page_slug ) {
 	global $wpdb;
-	$page = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND post_status = 'publish'", $page_slug ) );
+	$page = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND (post_status = 'publish' OR post_status = 'private')", $page_slug ) );
 	if ( $page )
 	return get_permalink($page);
 	return null;

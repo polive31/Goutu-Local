@@ -78,7 +78,7 @@ class CustomSiteMails {
 			'content' 		=> $content . $content1,
 		);
 
-		$message = self::populate_template($data, $to_id );
+		$message = self::populate_template($data, $to_id, $post );
 		$this->send_mail( $to, $subject, $message );
 	}
 
@@ -133,7 +133,7 @@ class CustomSiteMails {
 			'content' 		=> $content,
 		);
 
-		$message = self::populate_template($data, $to_id );
+		$message = self::populate_template($data, $to_id, $post );
 		$this->send_mail( $to, $subject, $message );
 
 		/* Send Peepso notification */
@@ -159,10 +159,11 @@ class CustomSiteMails {
 
 		$subject = __( '%s answered one of your comments', 'foodiepro');
 		$content = __( '%s answered your comment on post <a href="%s">%s</a>.', 'foodiepro');
+		$login = __( 'You must <a href="%s">log-in</a>.', 'foodiepro');
 
 		$subject = sprintf( $subject, ucfirst($response_author));
 		$content = sprintf( $content, ucfirst($response_author), get_permalink($post), $post->post_title);
-		$connect = sprintf( $connect, do_shortcode('[permalink wp="login"]') );
+		$login = sprintf($login, do_shortcode('[permalink wp="login"]') );
 		$content = $content . '<br>' . $this->connect() . '</br>';
 
 		$parent = get_comment( $responsedata['parent_ID']);
@@ -183,7 +184,7 @@ class CustomSiteMails {
 			'content' 		=> $content,
 		);
 
-		$message = self::populate_template($data, $to_id );
+		$message = self::populate_template($data, $to_id, $post );
 		$this->send_mail( $to, $subject, $message );
 
 		/* Send Peepso notification */
@@ -214,7 +215,7 @@ class CustomSiteMails {
 	}
 
 
-	public static function populate_template( $data, $user_id, $template=self::PROVIDER.'_generic' ) {
+	public static function populate_template( $data, $user_id, $post, $template=self::PROVIDER.'_generic' ) {
 		// $logo = CSN_Assets::plugin_url() . 'assets/img/logo.png';
 		$logo = CHILD_THEME_URL . '/images/theme/logo-white/logo_360_150.png';
 

@@ -18,7 +18,7 @@ class Taxonomy_Dropdown_Widget extends WP_Widget
 			// Base ID of your widget
 			'taxonomy_dropdown_widget',
 			// Widget name will appear in UI
-			__('Taxonomy Dropdown widget', 'foodiepro'),
+			__('Dropdown Taxonomy Widget', 'foodiepro'),
 			// Widget description
 			array('description' => __('Displays a dropdown list allowing to navigate between taxonomy terms', 'foodiepro'))
 		);
@@ -103,13 +103,6 @@ class Taxonomy_Dropdown_Widget extends WP_Widget
 
 	public function get_dropdown_js($id) {
 		ob_start();
-
-		// $search_term = '?';
-		// if (is_search()) {
-		// 	$squery = get_search_query();
-		// 	if (!empty($squery))
-		// 		$search_term .= 's=' . $squery . '&';
-		// }
 
 		?>
 		<script type='text/javascript'>

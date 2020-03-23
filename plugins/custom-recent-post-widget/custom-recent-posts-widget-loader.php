@@ -58,7 +58,7 @@ function custom_recent_posts_constants() {
 	// Set the constant path to the includes directory.
 	define( 'RPWE_CLASS', RPWE_DIR . trailingslashit( 'classes' ) );
 	// Set the constant path to the assets directory.
-	define( 'RPWE_ASSETS', RPWE_DIR . trailingslashit( 'assets' ) );
+	define( 'RPWE_ASSETS', RPWE_URI . trailingslashit( 'assets' ) );
 	// Set the constant path to the includes directory.
 	define( 'RPWE_INCLUDES', RPWE_DIR . trailingslashit('includes'));
 	// Set the constant path to the admin directory.

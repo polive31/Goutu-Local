@@ -76,33 +76,23 @@ class Dropdown_Posts_Sort_Widget extends WP_Widget
 					queryArgs = jQuery.parseJSON(choice);
 					console.log('Query Args = ', queryArgs);
 
-					currentLocation = jQuery(location).attr('href');
+					var currentLocation = jQuery(location).attr('href');
 					console.log('Current Location = ' + currentLocation);
-					newLocation = currentLocation;
+					var newLocation = currentLocation;
 
 					if (typeof queryArgs['orderby'] !== 'undefined') {
 						console.log('Orderby = ' + queryArgs['orderby']);
-						newLocation = updateQueryStringParameter(newLocation, 'orderby', queryArgs['orderby'])
+						newLocation = foodieproUpdateQueryStringParameter(newLocation, 'orderby', queryArgs['orderby'])
 						console.log('New Location = ' + newLocation);
 					}
 					if (typeof queryArgs['order'] !== 'undefined') {
 						console.log('Order = ' + queryArgs['order']);
-						newLocation = updateQueryStringParameter(newLocation, 'order', queryArgs['order'])
+						newLocation = foodieproUpdateQueryStringParameter(newLocation, 'order', queryArgs['order'])
 						console.log('New Location = ' + newLocation);
 					}
 
 					location.href = newLocation;
 
-				}
-
-				function updateQueryStringParameter(uri, key, value) {
-					var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
-					var separator = uri.indexOf('?') !== -1 ? "&" : "?";
-					if (uri.match(re)) {
-						return uri.replace(re, '$1' + key + "=" + value + '$2');
-					} else {
-						return uri + separator + key + "=" + value;
-					}
 				}
 
 				dropdown.onchange = onDropDownChange;

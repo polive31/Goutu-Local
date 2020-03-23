@@ -6,8 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class Custom_Recent_Posts_Widget {
 
 	public function __construct() {
-
-
 		// Load the admin style.
 		add_action( 'admin_enqueue_scripts', 			array( &$this, 'admin_style' ) );
 		// Register widget.

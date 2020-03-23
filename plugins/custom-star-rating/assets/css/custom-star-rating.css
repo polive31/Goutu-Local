@@ -1,10 +1,11 @@
 /* CUSTOM RATING STARS PLUGIN
 --------------------------------------------- */
 
+
 /* Star rating input */
 
-td.rating-title {
-    /* font-size: 16px; */
+.ratings-table {
+    font-size: 1.8rem;
     padding: 5px 0;
 }
 
@@ -14,11 +15,15 @@ td.rating-title {
     clear: left;
 }
 
-.rating-wrapper {
+label.rating-cat {
     margin-right: 10px;
     display: inline-block;
     vertical-align: middle;
-    font-size: 2rem;
+}
+
+.rating-stars {
+    display:inline-block;
+    vertical-align: middle;
 }
 
 .rating-input {
@@ -30,14 +35,14 @@ td.rating-title {
     background-position: 0 0;
 }
 
-.rating-wrapper:hover .rating-star:hover,
-.rating-wrapper:hover .rating-star:hover~.rating-star,
+.rating-label:hover .rating-star:hover,
+.rating-label:hover .rating-star:hover~.rating-star,
 .rating-input:checked~.rating-star {
     background-position: 0 0;
 }
 
 .rating-star,
-.rating-wrapper:hover .rating-star {
+.rating-label:hover .rating-star {
     float: right;
     display: block;
     width: 24px;
@@ -88,9 +93,6 @@ td.rating-category {
     display: none;
 }
 
-.rating-label {
-    font-size: 1.8rem;
-}
 
 /* Votes column */
 
@@ -144,7 +146,12 @@ td.rating-category {
 }
 
 
-/* Rating in comments */
+
+/* Rating Form */
+#comment_rating_form label {
+    font-size: 2rem;
+}
+
 
 /* Icons colors */
 
@@ -153,6 +160,15 @@ td.rating-category {
 ---------------------------------------------------*/
 
 @media only screen and (max-width:570px) {
+
+    .rating-stars {
+        float:left;
+        margin:5px 0;
+    }
+
+    #comment_rating_form label {
+        font-size: 1.8rem;
+    }
 
 
 }

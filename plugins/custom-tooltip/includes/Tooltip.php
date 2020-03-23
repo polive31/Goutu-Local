@@ -111,7 +111,7 @@ class Tooltip {
 		$html.=$content;
 		if ($callout) {
 			$callout_uri = self::$PLUGIN_URI . 'assets/img/' . $callout . '/callout_'. $valign . '.png';
-			$html.= '<img class="tooltip-callout" data-no-lazy="1" src="' . $callout_uri . '">';
+			$html.= '<img class="tooltip-callout" data-skip-lazy src="' . $callout_uri . '">';
 		}
 		$html.='</div>';
 		$html.='</div>';

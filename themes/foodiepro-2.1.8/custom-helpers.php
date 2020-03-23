@@ -35,7 +35,8 @@ class foodiepro_admin_notice
 /* =              DYNAMIC TEMPLATE
 /* =================================================================*/
 
-function foodiepro_replace_token($html, $token, $data) {
+function foodiepro_replace_token($html, $token, $data)
+{
 	$pattern = '/' . $token . '(.*?)' . $token . '/i';
 	// if (preg_match_all("/$tag(.*?)$tag/i", $html, $m)) {
 	if (preg_match_all($pattern, $html, $m)) {
@@ -80,20 +81,21 @@ function foodiepro_get_icon_link($url, $slug, $id = '', $class = '', $title = ''
 	return $html;
 }
 
-function foodiepro_get_icon($main, $class='', $id='', $title='')
+function foodiepro_get_icon($main, $class = '', $id = '', $title = '')
 {
 	switch ($main) {
 		case 'remove':
-			$html ='✘';
+			$html = '✘';
 			break;
-		default :
+		default:
 			$html = '<i class="' . foodiepro_get_icon_class($main) . ' ' . $class . '" id="' . $id . '" title="' . $title . '"></i>';
 	}
 	return $html;
 }
 
 
-function foodiepro_get_icon_class($slug) {
+function foodiepro_get_icon_class($slug)
+{
 	switch ($slug) {
 		case 'checkbox':
 			$class = 'far fa-square';
@@ -108,10 +110,10 @@ function foodiepro_get_icon_class($slug) {
 			$class = 'fas fa-sync fa-spin';
 			break;
 		case 'spinner-dots':
-			$class='fas fa-spinner fa-spin';
+			$class = 'fas fa-spinner fa-spin';
 			break;
 		case 'arrows-updown':
-			$class="fas fa-arrows-alt-v";
+			$class = "fas fa-arrows-alt-v";
 			break;
 		case 'liked':
 			$class = "fas fa-thumbs-up";
@@ -123,30 +125,37 @@ function foodiepro_get_icon_class($slug) {
 			$class = "fas fa-volume-up";
 			break;
 		default:
-			$class= 'fas fa-' . $slug;//heart, book, thumbtack, edit, print, chevron-right, chevron-left, tag
+			$class = 'fas fa-' . $slug; //heart, book, thumbtack, edit, print, chevron-right, chevron-left, tag
 	}
 	return $class;
 }
 
-
-
-function foodiepro_picture($url, $id = '', $class = '')
+/**
+ * foodiepro_picture
+ *
+ * @param  mixed $url
+ * @param  mixed $id
+ * @param  mixed $class
+ * @param  mixed $lazy if true then image will be lazyloaded
+ * @return void
+ */
+function foodiepro_picture($url, $id = '', $class = '', $lazy = true)
 {
 	/* Generates a picture tag including .webp format, based the specified original image file (jpg, png, or other non-webp standard format) url */
-
 	$image = pathinfo($url);
 	$filename = $image['filename'];
 	$extension = $image['extension'];
 	$srcext = ($extension == 'jpg' || $extension == 'jpeg') ? 'jpeg' : $extension;
 	$dirname = $image['dirname'];
+	$nolazy_markup = $lazy ? '' : 'data-skip-lazy';
 
 	ob_start();
 	?>
 
-	<picture id="<?= $id; ?>" class="<?= $class; ?>">
+	<picture id="<?= $id; ?>" class="<?= $class; ?>" <?= $nolazy_markup; ?>>
 		<source srcset="<?= trailingslashit($dirname) . $filename . '.webp'; ?>" type="image/webp">
 		<source srcset="<?= trailingslashit($dirname) . $filename . '.' . $extension; ?>" type="image/<?= $srcext ?>">
-		<img src="<?= trailingslashit($dirname) . $filename . '.' . $extension; ?>">
+		<img <?= $nolazy_markup; ?> src="<?= trailingslashit($dirname) . $filename . '.' . $extension; ?>">
 	</picture>
 
 <?php
@@ -156,12 +165,12 @@ function foodiepro_picture($url, $id = '', $class = '')
 }
 
 
-function foodiepro_get_term_image($term=false, $size = 'full', $class = '', $imgclass='', $fallback_url=false, $fallback_html=false)
+function foodiepro_get_term_image($term = false, $size = 'full', $class = '', $imgclass = '', $fallback_url = false, $fallback_html = false)
 {
-	$html='';
+	$html = '';
 	if (class_exists('WPCustomCategoryImage')) {
-		$id=is_object($term)?$term->term_id:false;
-		$name=is_object($term)?$term->name:false;
+		$id = is_object($term) ? $term->term_id : false;
+		$name = is_object($term) ? $term->name : false;
 		$atts = array(
 			'size'       => $size,
 			'term_id'    => $id,
@@ -172,20 +181,20 @@ function foodiepro_get_term_image($term=false, $size = 'full', $class = '', $img
 		$html = WPCustomCategoryImage::get_category_image($atts);
 	}
 	if (empty($html) && $id) {
-		$parent_term=get_term_by('id',$term->parent,$term->taxonomy);
+		$parent_term = get_term_by('id', $term->parent, $term->taxonomy);
 		if ($parent_term) {
-			$atts['term_id']=$parent_term->term_id;
-			$atts['alt']= $parent_term->name;
+			$atts['term_id'] = $parent_term->term_id;
+			$atts['alt'] = $parent_term->name;
 			$html = WPCustomCategoryImage::get_category_image($atts);
 		}
 	}
 
 	if (empty($html)) {
-		if ( $fallback_url )
-			$html=foodiepro_picture($fallback_url);
-		elseif ( $fallback_html )
-			$html=$fallback_html;
-		}
+		if ($fallback_url)
+			$html = foodiepro_picture($fallback_url);
+		elseif ($fallback_html)
+			$html = $fallback_html;
+	}
 	$html = "<div class='$class'>$html</div>";
 	return $html;
 }
@@ -354,7 +363,8 @@ function initial_is_vowel($expression)
 	return (in_array($first_letter, $vowels) || in_array($first_word, $exceptions));
 }
 
-function foodiepro_check_initial($expression) {
+function foodiepro_check_initial($expression)
+{
 	if (empty($expression)) return 'none';
 	if (initial_is_vowel($expression))
 		$type = 'vowel';
@@ -363,7 +373,8 @@ function foodiepro_check_initial($expression) {
 	return $type;
 }
 
-function foodiepro_is_plural($word) {
-	$last = strtolower($word[strlen($word)-1]);
-	return ($last=='s');
+function foodiepro_is_plural($word)
+{
+	$last = strtolower($word[strlen($word) - 1]);
+	return ($last == 's');
 }

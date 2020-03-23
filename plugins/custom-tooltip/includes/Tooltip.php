@@ -106,12 +106,12 @@ class Tooltip {
 		$display = ($action=='hover')?'':'display:none';
 		$html ='<div class="tooltip-content ' . $valign . ' ' . $halign . ' ' . $class . ' ' . $action . '" id="' . $id . '" style="' . $display . '">';
 		$html.='<div class="wrap">';
-		$html.=$img?'<div class="tooltip-img"><img src="' . $img . '"></div>':'';
+		$html.=$img? '<div class="tooltip-img"><img data-skip-lazy src="' . $img . '"></div>':'';
 		$html.=$title?'<h4 class="tooltip-title">' . $title . '</h4>':'';
 		$html.=$content;
 		if ($callout) {
 			$callout_uri = self::$PLUGIN_URI . 'assets/img/' . $callout . '/callout_'. $valign . '.png';
-			$html.= '<img class="tooltip-callout skip-lazy" data-skip-lazy src="' . $callout_uri . '">';
+			$html.= '<img class="tooltip-callout" data-skip-lazy src="' . $callout_uri . '">';
 		}
 		$html.='</div>';
 		$html.='</div>';

@@ -2677,10 +2677,16 @@ label.requiredField:after {
 /* Home Page
 --------------------------------------------- */
 // Fonts
-.home .content h1.entry-title {
-    margin-top : 80px;
+.home .content h1.entry-title,
+.home .content h2.entry-title {
     color: #222;
     font-size: 5rem;
+    font-weight: bold;
+}
+
+.home .content .page header.entry-header {
+    display: inline-block;
+    margin-top : 60px;
     text-align: center;
 }
 

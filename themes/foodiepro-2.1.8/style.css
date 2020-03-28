@@ -1328,6 +1328,7 @@ Common Classes
   float: left;
 }
 
+picture.avatar,
 img.avatar,
 .avatar,
 .content .rpwe-block a.auth-avatar,
@@ -1337,6 +1338,7 @@ img.avatar,
   vertical-align: middle;
 }
 
+picture.avatar#square,
 img.avatar#square,
 .avatar#square {
   border-radius: 0;
@@ -1367,6 +1369,9 @@ img.avatar#square,
   margin-top: -65px;
 }
 
+.page-bottom .rpwe-block picture.avatar,
+.after-content .rpwe-block picture.avatar,
+.content .rpwe-block picture.avatar,
 .page-bottom .rpwe-block img.avatar,
 .after-content .rpwe-block img.avatar,
 .content .rpwe-block img.avatar {
@@ -1376,6 +1381,8 @@ img.avatar#square,
   margin: auto;
 }
 
+.page-bottom .rpwe-block picture.avatar,
+.after-content .rpwe-block picture.avatar,
 .page-bottom .rpwe-block img.avatar,
 .after-content .rpwe-block img.avatar {
   width: 60px;
@@ -2512,6 +2519,17 @@ label.requiredField:after {
 ---------------------------------------------------------------------------------------------------- */
 /* Home Page
 --------------------------------------------- */
+.home .content h2.entry-title {
+  margin-top: 80px;
+  color: #222;
+  font-size: 5rem;
+  text-align: center;
+}
+
+.home .content .entry-content p {
+  text-align: center;
+}
+
 .home-top {
   /*margin: 20px 0 0 0;*/
   /*max-width:680px;*/
@@ -3099,6 +3117,7 @@ nav.nav-primary .wrap {
   opacity: 0.8;
 }
 
+.rpwe-block picture.avatar,
 .rpwe-block img.avatar {
   width: 55px;
 }

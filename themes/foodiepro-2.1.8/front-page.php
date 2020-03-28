@@ -19,38 +19,57 @@ add_action( 'genesis_meta', 'foodie_pro_home_genesis_meta' );
 function foodie_pro_home_genesis_meta() {
 	if ( is_active_sidebar( 'home-top' ) || is_active_sidebar( 'home-middle' ) || is_active_sidebar( 'home-bottom' ) ) {
 		// Remove the default Genesis loop.
-		remove_action( 'genesis_loop', 'genesis_do_loop' );
+		// remove_action( 'genesis_loop', 'genesis_do_loop' );
 		// Add a custom loop for the home page.
-		add_action( 'genesis_loop', 'foodie_pro_home_loop_helper' );
-		// add_action( 'genesis_after_content_sidebar_wrap', 'foodie_pro_home_bottom' );
+		// add_action( 'genesis_loop', 'foodie_pro_home_loop_helper' );
+		add_action( 'genesis_before_loop', 'foodiepro_front_page_top' );
+		add_action( 'genesis_after_loop', 'foodiepro_front_page_bottom' );
 	}
 }
 
-/**
- * Display the home page widgeted sections.
- *
- * @since 1.0.0
- */
-function foodie_pro_home_loop_helper() {
+// /**
+//  * Display the home page widgeted sections.
+//  *
+//  * @since 1.0.0
+//  */
+// function foodie_pro_home_loop_helper() {
+// 	// Add the home top section if it has content.
+// 	genesis_widget_area( 'home-top', array(
+// 		'before' => '<div class="widget-area home-top">',
+// 		'after'  => '</div> <!-- end .home-top -->',
+// 	) );
+
+// 	// Add the home middle section if it has content.
+// 	genesis_widget_area( 'home-middle', array(
+// 		'before' => '<div class="widget-area home-middle">',
+// 		'after'  => '</div> <!-- end .home-middle -->',
+// 	) );
+
+// 	// Add the home bottom section if it has content.
+// 	genesis_widget_area( 'home-bottom', array(
+// 		'before' => '<div class="widget-area home-bottom page-bottom">',
+// 		'after'  => '</div> <!-- end .home-bottom -->',
+// 	) );
+
+// }
+
+function foodiepro_front_page_top()
+{
 	// Add the home top section if it has content.
-	genesis_widget_area( 'home-top', array(
+	genesis_widget_area('home-top', array(
 		'before' => '<div class="widget-area home-top">',
 		'after'  => '</div> <!-- end .home-top -->',
-	) );
-
-	// Add the home middle section if it has content.
-	genesis_widget_area( 'home-middle', array(
-		'before' => '<div class="widget-area home-middle">',
-		'after'  => '</div> <!-- end .home-middle -->',
-	) );
-
-	// Add the home bottom section if it has content.
-	genesis_widget_area( 'home-bottom', array(
-		'before' => '<div class="widget-area home-bottom page-bottom">',
-		'after'  => '</div> <!-- end .home-bottom -->',
-	) );
+	));
 
 }
 
+function foodiepro_front_page_bottom()
+{
+	// Add the home bottom section if it has content.
+	genesis_widget_area('home-bottom', array(
+		'before' => '<div class="widget-area home-bottom page-bottom">',
+		'after'  => '</div> <!-- end .home-bottom -->',
+	));
+}
 
 genesis();

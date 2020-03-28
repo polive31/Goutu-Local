@@ -89,11 +89,11 @@ genesis_register_sidebar( array(
 	'name'			=> __( 'Home Top', 'foodiepro' ),
 	'description'	=> __( 'This is the home top section.', 'foodiepro' ),
 ) );
-genesis_register_sidebar( array(
-	'id'			=> 'home-middle',
-	'name'			=> __( 'Home Middle', 'foodiepro' ),
-	'description'	=> __( 'This is the home middle section.', 'foodiepro' ),
-) );
+// genesis_register_sidebar( array(
+// 	'id'			=> 'home-middle',
+// 	'name'			=> __( 'Home Middle', 'foodiepro' ),
+// 	'description'	=> __( 'This is the home middle section.', 'foodiepro' ),
+// ) );
 genesis_register_sidebar( array(
 	'id'			=> 'home-bottom',
 	'name'			=> __( 'Home Bottom', 'foodiepro' ),
@@ -165,11 +165,7 @@ genesis_register_sidebar( array(
     'name'        => __( 'Post List Top', 'foodiepro' ),
     'description' => __( 'This is the top widget section of Post List pages.', 'foodiepro' ),
 ) );
-genesis_register_sidebar( array(
-    'id'          => 'post-list-middle',
-    'name'        => __( 'Post List Middle', 'foodiepro' ),
-    'description' => __( 'This is the middle widget section of Post List pages.', 'foodiepro' ),
-) );
+
 
 /* Nav Widget Areas
 ----------------------------------------------------*/

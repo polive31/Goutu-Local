@@ -95,21 +95,50 @@ class Custom_Assets_Management {
 		'megamenu-pro'							=> array('mobile' => false),
 		'hoverIntent'							=> array('mobile' => false),
 		'hoverintent-js'						=> array('mobile' => false),
+		// jQuery
+		// 'jquery-ui-datepicker'				=> CRITICAL FOR PEEPSO NOTIFICATIONS & MENUS,
 		//Peepso
+
+		// PEEPSO CRITICAL SCRIPTS
+		// 'peepso-friends'						=> array('page' => 'social'),
+		// 'peepso-bundle'						=> array('page' => 'social'),
+			// 'peepso-elements'						=> array('page' => 'social'),
+			// 'peepso-modules'						=> array('page' => 'social'),
+			// 'peepso-notification'						=> array('page' => 'social'),
+			// 'peepso-sections'						=> array('page' => 'social'),
+			// 'peepso-datepicker'					=> array('page' => 'social'),
+			// 'peepso-avatar'				=> array('page' => 'social'),
+				// 'peepso-fileupload'						=> array('page' => 'social'),
+			// 'peepso-avatar-dialog'				=> array('page' => 'social'),
+				// 'peepso-crop'						=> array('page' => 'social'),
+					//'peepso-hammer'							=> array('page' => 'social'),
+
+		'peepso-member'							=> array('page' => 'social'),
+		'peepso-comment'						=> array('page' => 'social'),
+		'peepso-activity'						=> array('page' => 'social'),
+		'peepso-activitystream'					=> array('page' => 'social'),
+		'peepsotags'							=> array('page' => 'social'),
+		'peepsoreactions'						=> array('page' => 'social'),
+		'peepso-hashtags'						=> array('page' => 'social'),
 		'peepso-resize'							=> array('page' => 'social'),
 		'peepsolocation-js'						=> array('page' => 'social'),
 		'peepso-time'							=> array('page' => 'social'),
 		'peepso-groups'							=> array('page' => 'social'),
 		'peepso-groups-group'					=> array('page' => 'social'),
 		'peepso-groups-group'					=> array('page' => 'social'),
+		'peepso-page-autoload'					=> array('page' => 'social'),
 		'peepso-blogposts'						=> array('page' => 'social'),
-		'peepsovideos'							=> array('page' => 'social home'),
-		'peepso-photos'							=> array('page' => 'social home'),
-		'peepso-moods'							=> array('page' => 'social home'),
+		'peepsovideos'							=> array('page' => 'social'),
+		'peepso-photos'							=> array('page' => 'social'),
+		'peepso-moods'							=> array('page' => 'social'),
+		'peepso-resize'							=> array('page' => 'social'),
+		'peepso-profile'						=> array('page' => 'social'),
+		// 'peepso-friends'						=> CRITICAL FOR PEEPSO NOTIFICATIONS & MENUS,
 		'peepso-markdown'						=> array('false' => ''),
 		'peepso-modal-comments'					=> array('false' => ''),
 		'peepso-friends-shortcode'				=> array('false' => ''),
-		// 'responsive-menu-pro-jquery-touchswipe'	=> array('mobile' => true), => Issue on Chrome don't use !!!
+		// 'responsive-menu-pro-jquery-touchswipe'	=> array('mobile' => true), // Smart Slider lost
+		'responsive-menu-pro-noscroll'			=> array('mobile' => true), //
 	);
 
 	// Plugin path & url properties
@@ -179,6 +208,9 @@ class Custom_Assets_Management {
 					break;
 				case 'page' :
 					$thismet = $this->is_page_of_type( explode(' ', $value) );
+					break;
+				case 'notpage':
+					$thismet = !$this->is_page_of_type(explode(' ', $value));
 					break;
 				case 'shortcode' :
 					$content='';

@@ -54,13 +54,13 @@ if( !class_exists( "capn_Quick_Page_Navigation" ) ) {
 
 			// Admin Bar Menu
 			add_action('admin_bar_menu', array( $this, 'capn_add_admin_bar_wp_menu' ), 555 );
-    		add_action('admin_enqueue_scripts', array( $this, 'capn_common_scripts' ), 555 );
-    		add_action('wp_enqueue_scripts', array( $this, 'capn_common_scripts' ), 555 );
+    		// add_action('admin_enqueue_scripts', array( $this, 'capn_common_scripts' ), 555 );
+    		// add_action('wp_enqueue_scripts', array( $this, 'capn_common_scripts' ), 555 );
 		}
 
 		function capn_common_scripts() {
-			wp_enqueue_style('sqpn-common', plugins_url('/assets/css/sqpn-common.css', __FILE__), array(), CHILD_THEME_VERSION );
-			wp_enqueue_script('sqpn-common', plugins_url('/assets/js/sqpn-common.js', __FILE__), array('jquery'), CHILD_THEME_VERSION, true);
+			wp_enqueue_style('custom-ap-navigation-common', plugins_url('/assets/css/sqpn-common.css', __FILE__), array(), CHILD_THEME_VERSION );
+			wp_enqueue_script('custom-ap-navigation-common', plugins_url('/assets/js/sqpn-common.js', __FILE__), array('jquery'), CHILD_THEME_VERSION, true);
 		}
 
 		function capn_add_admin_bar_wp_menu( $wp_admin_bar ) {
@@ -76,17 +76,17 @@ if( !class_exists( "capn_Quick_Page_Navigation" ) ) {
 		    	)
 		    );
 
-		    $wp_admin_bar->add_node(
-				array(
-		    		'parent'	=> 'capn_wp_pages',
-		    		'id' 		=> 'search_capn_wp_sub_pages', // an unique id (required)
-		    		'title' 	=> '<input type="text" class="sqpn-search-input sqpn-wp-search-page" placeholder="Search Page" data-type="wp"/>',
-		    		/*'href' 		=> '#', // target url of this menu item*/
-		    		'meta' 		=> array(
-		    		    'class' => 'sqpn-search-input-group sqpn-wp-pages-search',
-		    		)
-		    	)
-		    );
+		    // $wp_admin_bar->add_node(
+			// 	array(
+		    // 		'parent'	=> 'capn_wp_pages',
+		    // 		'id' 		=> 'search_capn_wp_sub_pages', // an unique id (required)
+		    // 		'title' 	=> '<input type="text" class="sqpn-search-input sqpn-wp-search-page" placeholder="Search Page" data-type="wp"/>',
+		    // 		/*'href' 		=> '#', // target url of this menu item*/
+		    // 		'meta' 		=> array(
+		    // 		    'class' => 'sqpn-search-input-group sqpn-wp-pages-search',
+		    // 		)
+		    // 	)
+		    // );
 
 			$this->capn_add_pages_to_menu($wp_admin_bar, 3, 0);
 		}

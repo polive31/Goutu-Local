@@ -18,3 +18,11 @@ if ( !defined('ABSPATH') )
 /* Includes
 ------------------------------------*/
 require_once 'includes/class-custom-assets-management.php';
+require_once 'includes/class-casm-assets.php';
+require_once 'includes/class-casm-enqueue.php';
+
+add_action('plugins_loaded', 'casm_start_plugin');
+
+function casm_start_plugin() {
+	new Custom_Assets_Management();
+}

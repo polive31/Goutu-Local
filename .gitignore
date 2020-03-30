@@ -18,6 +18,8 @@ $RECYCLE.BIN/
 *.lnk
 *.bak
 
+*bak/
+
 # =========================
 # Operating System Files
 # =========================

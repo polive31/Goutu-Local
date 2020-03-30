@@ -29,8 +29,10 @@ class CAM_Assets {
 
     /* Disable admin bar for all users except admin */
     public function remove_admin_bar() {
-        if (!current_user_can('administrator') && !is_admin())
-        show_admin_bar(false);
+        if (WP_ALWAYS_SHOW_ADMIN_BAR)
+            return true;
+        elseif (!current_user_can('administrator') && !is_admin())
+            return false;
     }
 
     /* Disable dashboard for non admin */

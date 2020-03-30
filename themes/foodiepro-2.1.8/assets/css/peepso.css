@@ -116,8 +116,11 @@ body {
 }
 
 .ps-notification,
+.ps-popover-error,
 #wpadminbar .ps-notification {
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 10px;
+  font-size: 13px;
 }
 
 .ps-notification small,
@@ -125,6 +128,7 @@ body {
   font-size: 10px;
 }
 
+.ps-comment-item,
 .ps-notification__inside,
 #wpadminbar a.ps-notification__inside {
   display: -webkit-box;
@@ -138,6 +142,7 @@ body {
   line-height: 1.2;
 }
 
+.ps-comment-body,
 .ps-notification__body,
 #wpadminbar .ps-notification__body {
   padding-left: 10px;
@@ -258,9 +263,44 @@ body {
   cursor: pointer;
 }
 
+.ps-icon-menu:before {
+  content: '\f0c9';
+  /* <i class="fas fa-bars"></i> */
+}
+
+.ps-icon-minus-sign:before {
+  content: '\f2f5';
+  /* <i class="fas fa-sign-out-alt"></i> */
+}
+
+.ps-icon-bell-alt:before {
+  content: '\f1f6';
+  /* <i class="fas fa-bell-slash"></i> */
+}
+
+.ps-icon-user-add:before {
+  content: '\f234';
+  /* <i class="fas fa-user-plus"></i> */
+}
+
+.ps-conversation__actions .ps-icon-remove:before {
+  content: '\f506';
+  /* <i class="fas fa-user-slash"></i> */
+}
+
+.ps-icon-remove:before {
+  content: '\f00d';
+  /* <i class="fas fa-times"></i> */
+}
+
 .ps-icon-map-marker:before {
   content: '\f3c5';
   /* <i class="fas fa-map-marker-alt"></i> */
+}
+
+.ps-icon-caret-left:before {
+  content: '\f0d9';
+  /* <i class="fas fa-caret-left"></i> */
 }
 
 .ps-icon-caret-right:before {
@@ -299,10 +339,6 @@ body {
 
 .ps-icon-calendar:before {
   content: '\f073';
-}
-
-.ps-icon-lock:before {
-  content: '\f023';
 }
 
 .ps-icon-angle-down:before {
@@ -563,6 +599,7 @@ body {
   max-height: 100%;
 }
 
+.ps-avatar-comment,
 .ps-avatar--notification {
   max-width: 32px;
 }
@@ -605,7 +642,6 @@ body {
 
 @media only screen and (max-width: 480px) {
   .ps-popover {
-    left: 0 !important;
     width: 100%;
   }
 }
@@ -638,7 +674,6 @@ body {
   background: #EFEFEF;
   color: #424242 !important;
   text-align: center;
-  height: 50px;
 }
 
 .ps-popover-footer > a:hover,
@@ -865,6 +900,7 @@ h6 {
 
 /* Avatar */
 /* Force Square avatar on profile pages */
+img.cavatar,
 .ps-avatar img,
 .ps-avatar-stream img,
 .ps-avatar-comment img,
@@ -873,6 +909,7 @@ h6 {
   border-radius: initial;
 }
 
+/* Force round avatar on userbar and comments */
 .ps-comment-reply .ps-avatar img,
 .ps-widget--userbar__avatar .ps-avatar img {
   border-radius: 100%;
@@ -1275,6 +1312,8 @@ nav.ps-stream-status-action.ps-stream-status-action span {
 #responsive-menu-pro-container .ps-popover.app-box {
   width: 90%;
   white-space: normal;
+  border: 1px dotted #848484;
+  padding: 5px;
 }
 
 #responsive-menu-pro-container .ps-widget--userbar__container {
@@ -1455,6 +1494,17 @@ nav.ps-stream-status-action.ps-stream-status-action span {
   .ps-focus__interactions-item {
     display: inline-block;
     font-size: 1.4rem;
+  }
+  #responsive-menu-pro-container .ps-popover-footer a,
+  #responsive-menu-pro-container .ps-notification__desc,
+  #responsive-menu-pro-container .ps-notification__status {
+    font-size: 1.3rem;
+  }
+  span.ps-notification__status {
+    display: inline-block;
+  }
+  .ps-notification {
+    padding: 5px !important;
   }
 }
 /*# sourceMappingURL=peepso.css.map */

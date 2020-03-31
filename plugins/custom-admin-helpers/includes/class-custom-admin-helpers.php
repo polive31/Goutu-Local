@@ -22,8 +22,8 @@ class Custom_Admin_Helpers {
         // add_action( 'admin_init',                               array($Helpers, 'prevent_plugin_update_conflicts'));
 
         // ADMIN BAR MANAGEMENT
-        add_action('after_setup_theme',                           array($Assets, 'admin_bar_visibility'));
-        // add_action( 'show_admin_bar',                           array($Assets, 'remove_admin_bar'));
+        add_action( 'after_setup_theme',                        array($Assets, 'remove_admin_bar'));
+        add_action( 'show_admin_bar',                           array($Assets, 'show_admin_bar'));
 
         /* Hooks for Custom_Admin_Post_Filter
         ------------------------------------------------------------- */

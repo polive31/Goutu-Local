@@ -31,11 +31,9 @@ class CAM_Assets {
     public function admin_bar_visibility() {
         if (WP_ALWAYS_SHOW_ADMIN_BAR) {
             show_admin_bar(true);
-            return true;
         }
-        if ( !(current_user_can('administrator') || is_admin()) ) {
+        elseif ( !(current_user_can('administrator') || is_admin()) ) {
             show_admin_bar(false);
-            return false;
         }
     }
 

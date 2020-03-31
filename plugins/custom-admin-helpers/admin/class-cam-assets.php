@@ -29,7 +29,7 @@ class CAM_Assets {
 
     /* Disable admin bar for all users except admin */
     public function admin_bar_visibility() {
-        if (WP_ALWAYS_SHOW_ADMIN_BAR) {
+        if (WP_ALWAYS_SHOW_ADMIN_BAR===true) {
             show_admin_bar(true);
         }
         elseif ( !(current_user_can('administrator') || is_admin()) ) {

@@ -17,20 +17,13 @@ class CAH_Adminbar
         }
         switch ( CAH_Assets::get_option('adminbar_visibility') ) {
             case "admin":
-                if ( current_user_can('administrator') )
-                    show_admin_bar(true);
-                else
+                if ( !current_user_can('administrator') )
                     show_admin_bar(false);
             break;
             case "loggedin":
                 if ( !is_user_logged_in() )
                     show_admin_bar(false);
-                else
-                    show_admin_bar(true);
                 break;
-            case "all":
-                show_admin_bar(true);
-            break;
         }
 
     }

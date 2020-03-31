@@ -28,25 +28,8 @@ class CASM_Assets {
 		'child-theme-fonts',
 	);
 
-	/* Stylesheets to be replaced.
-	IMPORTANT there must also be an entry for them in $css_if, otherwise they will not be considered */
-	const CSS_REPLACE = array(
-		'name-directory-style' 	=> array(
-			'file' 		=> '/assets/css/name_directory.css',
-		),
-		'megamenu' 		=> array(
-			'file' 		=> '/assets/css/max-mega-menu.css',
-		),
-		/* Force Peepso custom stylesheet update by using CHILD_THEME_VERSION */
-		'peepso-custom' 	=> array(
-			'file' 		=> '/assets/css/peepso.css',
-		),
-		'peepso-jquery-ui' 		=> array(
-			'file'		=> '/assets/css/datepicker.css',
-		),
-	);
 
-	// Stylesheets to be loaded conditionnally
+	// Stylesheets to be loaded conditionnally & replaced if needed
 	const CSS_IF = array(
 		// 'custom-star-ratings' 				=> array('page' => 'blog-page'),
 		'foodiepro-color-theme'				=> array('mobile' => false),
@@ -54,9 +37,15 @@ class CASM_Assets {
 		'newsletter'						=> array('page' => 'home'),
 		'yarppRelatedCss' 					=> array('singular' => 'post recipe'),
 		'custom-lightbox'					=> array('singular' => 'post recipe'),
-		'name-directory-style' 				=> array('shortcode' => 'namedirectory'),
+		'name-directory-style' 				=> array(	'shortcode' => 'namedirectory',
+														'replace' => array(
+															'file' 		=> '/assets/css/name_directory.css',
+														)),
 		'yarppWidgetCss' 					=> array('false' => ''),
-		'megamenu' 							=> array('true' => ''),
+		'megamenu' 							=> array(	'true' => '',
+														'replace' => array(
+															'file' 		=> '/assets/css/max-mega-menu.css',
+														)),
 		'megamenu-fontawesome' 				=> array('false' => ''),
 		'megamenu-google-fonts' 			=> array('false' => ''),
 		'megamenu-genericons' 				=> array('false' => ''),
@@ -68,7 +57,15 @@ class CASM_Assets {
 		'lazysizes-fadein-style'			=> array('false' => ''),
 		'lazysizes-spinner-style'			=> array('false' => ''),
 		//Peepso
-		'peepso-custom'						=> array('true' => ''),
+		'peepso-custom'						=> array(	'true' => '',
+														'replace' => array(
+															'file' 		=> '/assets/css/peepso.css',
+													)),
+		'peepso-datepicker'					=> array(
+														'true' => '',
+														'replace' => array(
+															'file' 		=> '/assets/css/datepicker.css',
+													)),
 		'peepso*'							=> array('page' => 'social'),
 		// Fonts & icons
 		// 'dashicons'							=> array('admin' => true),
@@ -194,16 +191,5 @@ class CASM_Assets {
 		return $preloaded;
 	}
 
-	public static function is_replaced($style)
-	{
-		$replaced = in_array($style, array_keys(self::CSS_REPLACE));
-		return $replaced;
-	}
-
-	public static function get_replacement($style) {
-		$args = self::CSS_REPLACE[$style];
-		$args['handle'] = $style;
-		return $args;
-	}
 
 }

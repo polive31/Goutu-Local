@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class CAM_Tax_Columns
+class CAH_Tax_Columns
 {
     public function add_archive_headline_column( $columns ) {
         $columns['archive-headline'] = __( 'Archive Headline' );

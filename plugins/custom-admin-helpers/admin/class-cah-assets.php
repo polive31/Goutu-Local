@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-class CAM_Assets {
+class CAH_Assets {
     /**
      * Show all parents, regardless of post status.
      *
@@ -14,6 +14,27 @@ class CAM_Assets {
      *
      * @return  array  $args  Args set to also include posts with pending, draft, and private status.
      */
+
+
+    private static $options;
+
+    public function __construct() {
+        self::$options = get_option('foodiepro');
+    }
+
+    public static function get_option( $index='' ) {
+        if (empty($index))
+            return self::$options;
+        elseif (isset(self::$options[$index]))
+            return self::$options[$index];
+        else {
+            return false;
+        }
+    }
+
+    public static function set_option( $index, $value ) {
+        self::$options[$index]=$value;
+    }
 
     public function my_slug_show_all_parents( $args ) {
         $args['post_status'] = array( 'publish', 'pending', 'draft', 'private' );
@@ -27,25 +48,6 @@ class CAM_Assets {
     }
 
 
-    /* Disable admin bar for all users except admin */
-    public function remove_admin_bar() {
-        if ( !(current_user_can('administrator') || is_admin()) ) {
-            show_admin_bar(false);
-        }
-    }
-
-    public function show_admin_bar() {
-        if (WP_ALWAYS_SHOW_ADMIN_BAR===true)
-            return true;
-    }
-
-    /* Disable dashboard for non admin */
-    public function blockusers_init() {
-        if ( is_admin() && !current_user_can('edit_others_pages') && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
-            wp_redirect( home_url() );
-            exit;
-        }
-    }
 
     // public function prevent_plugin_update_conflicts($value) {
     //     // Syntax is 'plugin-folder-name/plugin-file-name.php'

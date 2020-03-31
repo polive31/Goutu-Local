@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-class CAM_Post_Filter {
+class CAH_Post_Filter {
 
     const POST_TYPE ='recipe';
     const META_KEY ='ingredient_note';

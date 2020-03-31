@@ -27,13 +27,13 @@ class CASM_Enqueue {
 	/* ----------------------------------------------------------------*/
 	public function build_styles_lists()
 	{
-
 		$inspected_styles = CASM_Assets::css_if();
 		foreach ($inspected_styles as $style => $conditions) {
 			if ($this->match_all($conditions)) {
-				if ( CASM_Assets::is_replaced($style) ) {
+				if ( isset($conditions['replace']) ) {
 					foodiepro_remove_style($style);
-					$args=CASM_Assets::get_replacement($style);
+					$args=$conditions['replace'];
+					$args['handle']=$style;
 					foodiepro_enqueue_style($args);
 				}
 				// All conditions are fulfilled, therefore style(s) will be enqueued, and won't be examined in footer again
@@ -49,7 +49,6 @@ class CASM_Enqueue {
 
 	public function build_scripts_lists()
 	{
-
 		$inspected_scripts = CASM_Assets::js_if();
 		foreach ($inspected_scripts as $script => $conditions) {
 			if ($this->match_all($conditions)) {

@@ -10,7 +10,7 @@ class Custom_Admin_Helpers {
 
 	public function __construct() {
 
-        $Columns = new CAM_Tax_Columns();
+        $Columns = new CAH_Tax_Columns();
         add_filter( 'manage_edit-cuisine_columns',              array($Columns, 'add_archive_headline_column'));
         add_action( 'manage_cuisine_custom_column',             array($Columns, 'populate_archive_headline_column'), 10, 3);
 

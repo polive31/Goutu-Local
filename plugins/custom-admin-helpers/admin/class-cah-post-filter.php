@@ -57,16 +57,4 @@ class CAH_Post_Filter {
         }
     }
 
-
-    public function add_toolbar_items($wp_admin_bar) {
-        $menu_id = 'foodiepro';
-        $wp_admin_bar->add_menu(array('id' => $menu_id, 'title' => 'Foodiepro', 'href' => '/'));
-        $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Users'), 'id' => 'foodiepro_users', 'href' => get_site_url( null, 'wp-admin/users.php'), 'meta' => array('target' => '_blank')));
-        $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Ingredients'), 'id' => 'foodiepro_ingredients', 'href' => get_site_url( null, 'wp-admin/edit-tags.php?taxonomy=ingredient&post_type=recipe'), 'meta' => array('target' => '_blank')));
-        $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Peepso'), 'id' => 'foodiepro_peepso', 'href' => get_site_url( null, 'wp-admin/admin.php?page=peepso'), 'meta' => array('target' => '_blank')));
-        $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Plugins'), 'id' => 'foodiepro_plugins', 'href' => get_site_url( null, 'wp-admin/plugins.php'), 'meta' => array('target' => '_blank')));
-        $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Color Theme'), 'id' => 'foodiepro_colortheme', 'href' => get_site_url( null, 'wp-admin/themes.php?page=cct-options'), 'meta' => array('target' => '_blank')));
-        $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Contact Forms'), 'id' => 'foodiepro_contactforms', 'href' => get_site_url( null, 'wp-admin/edit.php?post_type=contact'), 'meta' => array('target' => '_blank')));
-        // $wp_admin_bar->add_menu(array('parent' => $menu_id, 'title' => __('Drafts'), 'id' => 'dwb-drafts', 'href' => 'edit.php?post_status=draft&post_type=post'));
-    }
 }

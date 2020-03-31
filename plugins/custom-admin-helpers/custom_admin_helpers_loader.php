@@ -22,8 +22,7 @@ require_once 'admin/class-cah-foodiepro-settings.php';
 require_once 'admin/class-cah-tax-columns.php';
 require_once 'admin/class-cah-post-filter.php';
 
-require_once 'public/class-cah-shortcodes.php';
-require_once 'public/class-cah-customizations.php';
+require_once 'public/class-cah-adminbar.php';
 
 add_action('plugins_loaded', 'custom_admin_helpers_start');
 

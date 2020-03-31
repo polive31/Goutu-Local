@@ -36,10 +36,10 @@ class CAH_Assets {
         self::$options[$index]=$value;
     }
 
-    public function my_slug_show_all_parents( $args ) {
-        $args['post_status'] = array( 'publish', 'pending', 'draft', 'private' );
-        return $args;
-    }
+    // public function my_slug_show_all_parents( $args ) {
+    //     $args['post_status'] = array( 'publish', 'pending', 'draft', 'private' );
+    //     return $args;
+    // }
 
     /* Chargement des feuilles de style admin */
 
@@ -47,18 +47,5 @@ class CAH_Assets {
         wp_enqueue_style( 'admin-css', CHILD_THEME_URL . '/assets/css/admin.css', array(), CHILD_THEME_VERSION );
     }
 
-
-
-    // public function prevent_plugin_update_conflicts($value) {
-    //     // Syntax is 'plugin-folder-name/plugin-file-name.php'
-    //     $plugins = array(
-    //         'custom-comment-management' => 'custom_comment_management_loader.php',
-    //     );
-    //     foreach ($plugins as $name => $file) {
-    //         if( isset( $value->response[$name . '/' . $file] ) )
-    //             unset( $value->response[$name . '/' . $file] );
-    //     }
-    //     return $value;
-    // }
 
 }

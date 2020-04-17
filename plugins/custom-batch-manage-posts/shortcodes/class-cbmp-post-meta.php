@@ -12,6 +12,8 @@ if ( !defined('ABSPATH') )
 
 class CBMP_Post_Meta {
 
+	private $action = 'ManageMeta';
+
 	/* Batch update user_ratings_ratings custom field */
 	public function batch_manage_meta_shortcode($atts)
 	{
@@ -27,21 +29,23 @@ class CBMP_Post_Meta {
 		static $script_id; // allows several shortcodes on the same page
 		++$script_id;
 
-		$script_name = 'ManageMeta';
+		$html = "<h3>BATCH MANAGE META SHORTCODE#" . $script_id . "</h3>";
+		$html .= CBMP_Helpers::show_params($a);
 
-		echo "<h3>BATCH MANAGE META SHORTCODE#" . $script_id . "</h3>";
-
-		$jsargs = CBMP_Helpers::create_ajax_arg_array($a, $script_name, $script_id);
+		$jsargs = CBMP_Helpers::get_ajax_arg_array($a, $this->action);
 
 		wp_enqueue_script('ajax_call_batch_manage');
-		wp_localize_script('ajax_call_batch_manage', 'script' . $script_name . $script_id, $jsargs);
+		wp_localize_script('ajax_call_batch_manage', 'script' . $this->action . $script_id, $jsargs);
 
-		echo CBMP_Helpers::batch_manage_form($script_id, $script_name, $a['cmd']);
+		$html .= CBMP_Helpers::get_submit_button($script_id, $this->action, $a['cmd']);
+		return $html;
 	}
 
 
 	public function ajax_batch_manage_meta() {
-		// Shortcode parameters display
+		$cmd = CBMP_Helpers::get_ajax_arg('cmd');
+		if ( !(CBMP_Helpers::is_secure($this->action . $cmd) ) ) exit;
+
 
 		$key = CBMP_Helpers::get_ajax_arg('key');
 		$new_key = CBMP_Helpers::get_ajax_arg('new-key');
@@ -50,9 +54,7 @@ class CBMP_Post_Meta {
 		if (!$post_count) $post_count='';
 		$include = CBMP_Helpers::get_ajax_arg('include',__('Limit to posts'));
 		$value = CBMP_Helpers::get_ajax_arg('value');
-		$cmd = CBMP_Helpers::get_ajax_arg('cmd');
 
-		if ( !(CBMP_Helpers::is_secure('ManageMeta' . $cmd) ) ) exit;
 
 		if ( is_array($value) )
 			$value = CBMP_Helpers::extractKeyValuePairs( $value );

@@ -21,13 +21,17 @@ if ( !defined('ABSPATH') )
 /* =================================================================*/
 
 require 'includes/class-custom-batch-manage-posts.php';
+
 // require 'admin/class-cbmp-admin.php';
+
 require 'public/class-cbmp-public.php';
 require 'helpers/class-cbmp-helpers.php';
-// require 'includes/class-cbmp-comments.php';
-// require 'includes/class-cbmp-post-ratings.php';
-require 'public/class-cbmp-post-meta.php';
-require 'public/class-cbmp-taxonomy-meta.php';
+
+// require 'shortcodes/class-cbmp-comments.php';
+// require 'shortcodes/class-cbmp-post-ratings.php';
+require 'shortcodes/class-cbmp-post-content.php';
+require 'shortcodes/class-cbmp-post-meta.php';
+require 'shortcodes/class-cbmp-taxonomy-meta.php';
 
 
 /* Start plugin */

@@ -12,6 +12,8 @@ if ( !defined('ABSPATH') )
 
 class CBMP_Taxonomy_Meta {
 
+	private $action = 'ManageTaxMeta';
+
 	/* Batch update user_ratings_ratings custom field */
 	public function batch_manage_taxonomy_meta_shortcode($atts)
 	{
@@ -27,20 +29,22 @@ class CBMP_Taxonomy_Meta {
 		static $script_id; // allows several shortcodes on the same page
 		++$script_id;
 
-		$script_name = 'ManageTaxMeta';
+		$html = "<h3>BATCH MANAGE TAXONOMY META SHORTCODE#" . $script_id . "</h3>";
+		$html .= CBMP_Helpers::show_params($a);
 
-		echo "<h3>BATCH MANAGE TAXONOMY META SHORTCODE#" . $script_id . "</h3>";
-
-		$jsargs = CBMP_Helpers::create_ajax_arg_array($a, $script_name, $script_id);
+		$jsargs = CBMP_Helpers::get_ajax_arg_array($a, $this->action);
 
 		wp_enqueue_script('ajax_call_batch_manage');
-		wp_localize_script('ajax_call_batch_manage', 'script' . $script_name . $script_id, $jsargs);
+		wp_localize_script('ajax_call_batch_manage', 'script' . $this->action . $script_id, $jsargs);
 
-		echo CBMP_Helpers::batch_manage_form($script_id, $script_name, $a['cmd']);
+		$html .= CBMP_Helpers::get_submit_button($script_id, $this->action, $a['cmd']);
+		return $html;
 	}
 
 
 	public function ajax_batch_manage_tax_meta() {
+		$cmd = CBMP_Helpers::get_ajax_arg('cmd');
+		if ( !(CBMP_Helpers::is_secure($this->action . $cmd) ) ) exit;
 
 		// Shortcode parameters display
 		$tax = CBMP_Helpers::get_ajax_arg('tax');
@@ -48,9 +52,7 @@ class CBMP_Taxonomy_Meta {
 		$limit = (int) CBMP_Helpers::get_ajax_arg('limit');
 		$include = CBMP_Helpers::get_ajax_arg('include',__('Limit to terms'));
 		$exclude = CBMP_Helpers::get_ajax_arg('exclude',__('Exclude terms'));
-		$cmd = CBMP_Helpers::get_ajax_arg('cmd');
 
-		if ( !(CBMP_Helpers::is_secure('ManageTaxMeta' . $cmd) ) ) exit;
 
 		echo "<p>Batch Manage Taxonomy Meta script started...</p>";
 

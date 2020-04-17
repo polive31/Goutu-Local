@@ -11,6 +11,8 @@ if ( !defined('ABSPATH') )
 
 class CBMP_Post_Ratings {
 
+	private $action = 'MigrateRatings';
+
 	/* Batch update user_ratings_ratings custom field */
 	public function batch_migrate_ratings_shortcode($atts)
 	{
@@ -23,19 +25,20 @@ class CBMP_Post_Ratings {
 		static $script_id; // allows several shortcodes on the same page
 		++$script_id;
 
-		$script_name = 'MigrateRatings';
+		$html = "<h3>BATCH MIGRATE RATINGS SHORTCODE#" . $script_id . "</h3>";
+		$html .= CBMP_Helpers::show_params($a);
 
-		echo "<h3>BATCH MIGRATE RATINGS SHORTCODE#" . $script_id . "</h3>";
-
-		$jsargs = CBMP_Helpers::create_ajax_arg_array($a, $script_name, $script_id);
+		$jsargs = CBMP_Helpers::get_ajax_arg_array($a, $this->action);
 
 		wp_enqueue_script('ajax_call_batch_manage');
-		wp_localize_script('ajax_call_batch_manage', 'script' . $script_name . $script_id, $jsargs);
+		wp_localize_script('ajax_call_batch_manage', 'script' . $this->action . $script_id, $jsargs);
 
-		echo CBMP_Helpers::batch_manage_form($script_id, $script_name, $a['cmd']);
+		$html .= CBMP_Helpers::get_submit_button($script_id, $this->action, $a['cmd']);
+		return $html;
 	}
 
 	public function ajax_migrate_ratings() {
+		if ( !(CBMP_Helpers::is_secure($this->action . 'migrate') ) ) exit;
 
 		// PC::debug( array('In AJAX MIGRATE RATINGS') );
 		echo "<p>Batch Migrate Ratings script started...</p>";
@@ -43,7 +46,6 @@ class CBMP_Post_Ratings {
 		$post_type = CBMP_Helpers::get_ajax_arg('post-type');
 		$include = CBMP_Helpers::get_ajax_arg('include',__('Limit to posts','batch-manage-posts'));
 
-		if ( !(CBMP_Helpers::is_secure('MigrateRatings' . 'migrate') ) ) exit;
 
 
 		// PC::debug( array('Nonce check PASSED') );
@@ -84,12 +86,10 @@ class CBMP_Post_Ratings {
 					$user = $user_rating['user'];
 					$rating = $user_rating['rating'];
 					add_post_meta($post->ID, 'user_ratings', $user_rating);
-					PC::debug( array('$user_rating : '=> $user_rating) );
 					$rating_global += $rating;
 				}
 
-				PC::debug( array('$rating_global : '=> $rating_global ) );
-				PC::debug( array('count : '=> count($user_ratings) ) );
+
 				$rating_global = $rating_global/count($user_ratings);
 				update_post_meta($post->ID, 'user_rating_rating', $rating_global);
 				update_post_meta($post->ID, 'user_rating_global', $rating_global);

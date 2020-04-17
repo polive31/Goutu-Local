@@ -12,6 +12,8 @@ if ( !defined('ABSPATH') )
 
 class CBMP_Comments {
 
+	private $action = 'DeleteComment';
+
 	/* Batch update user_ratings_ratings custom field */
 	public function batch_delete_comments_shortcode($atts)
 	{
@@ -24,28 +26,28 @@ class CBMP_Comments {
 		static $script_id; // allows several shortcodes on the same page
 		++$script_id;
 
-		$script_name = 'DeleteComment';
+		$html = "<h3>BATCH DELETE COMMENTS SHORTCODE#" . $script_id . "</h3>";
+		$html .= CBMP_Helpers::show_params($a);
 
-		echo "<h3>BATCH DELETE COMMENTS SHORTCODE#" . $script_id . "</h3>";
-
-		$jsargs = create_ajax_arg_array($a, $script_name, $script_id);
+		$jsargs = CBMP_Helpers::get_ajax_arg_array($a, $this->action);
 
 		wp_enqueue_script('ajax_call_batch_manage');
-		wp_localize_script('ajax_call_batch_manage', 'script' . $script_name . $script_id, $jsargs);
+		wp_localize_script('ajax_call_batch_manage', 'script' . $this->action . $script_id, $jsargs);
 
-		echo batch_manage_form($script_id, $script_name, 'delete');
+		$html .= CBMP_Helpers::get_submit_button($script_id, $this->action, 'delete');
+		return $html;
 	}
 
 
 	public function ajax_batch_delete_comments() {
+		$cmd=CBMP_Helpers::get_ajax_arg('cmd');
+		if ( !(CBMP_Helpers::is_secure( $this->action . $cmd) ) ) exit;
 
 		echo '<p>In Batch Delete Comments function...</p>';
 
-		$post_type=	get_ajax_arg('post-type');
-		$include=	get_ajax_arg('include');
-		$cmd=	get_ajax_arg('cmd');
+		$post_type=	CBMP_Helpers::get_ajax_arg('post-type');
+		$include=	CBMP_Helpers::get_ajax_arg('include');
 
-		if ( !(is_secure('DeleteComment' . $cmd) ) ) exit;
 
 		$deleted_count='0';
 

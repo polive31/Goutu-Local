@@ -17,7 +17,7 @@ jQuery(document).ready(function(){
 		console.log('Arguments du script JS = %0', WPLocalizeVar);
 		console.log('Arguments du shortcode = %0', ShortcodeArgs);
 		console.log('URL de la page = ' + AjaxURL);
-		//console.log('Nonce = '  + AjaxNonce);
+		console.log('Nonce = '  + AjaxNonce);
 
 		if (ShortcodeArgs['cmd'] == 'delete') {
 			deletionOK = confirm('This action will delete posts content !');

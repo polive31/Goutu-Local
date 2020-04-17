@@ -52,19 +52,21 @@ class CBMP_Post_Content {
 		$post_type = CBMP_Helpers::get_ajax_arg('post-type');
 		$post_count = CBMP_Helpers::get_ajax_arg('post-count', '', false);
 
-		$include = CBMP_Helpers::get_ajax_arg('include', __('Limit to posts'));
-		$include = ($include=='all')?'':$include;
-
+		// Check find/replace parameters
 		$key = CBMP_Helpers::get_ajax_arg('key');
 		$search = CBMP_Helpers::get_ajax_arg('search');
 		$replace = CBMP_Helpers::get_ajax_arg('replace');
 
-		echo "<p>Batch Manage Post Content script started...</p>";
-
+		// Check include
+		$include = CBMP_Helpers::get_ajax_arg('include', __('Limit to posts'));
 		if ( $cmd=='update' && empty($include) ) {
 			echo "Please provide post IDs or 'all' for deletion to take place";
 			die();
 		}
+		$include = ($include=='all')?'':$include;
+
+		// Start processing
+		echo "<p>Batch Manage Post Content script started...</p>";
 
 		$posts = get_posts(array(
 			'post_type'			=> $post_type,

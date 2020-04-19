@@ -83,9 +83,9 @@ add_filter('gettext', 'cc_login_username_label_change', 20, 3);
 function cc_login_username_label_change($translated_text, $text, $domain)
 {
 if ($text === 'Username or Email Address') {
-$translated_text = esc(__('Email Address', 'foodiepro')); // Use WordPress's own translation of 'Username'
+$translated_text = foodiepro_esc(__('Email Address', 'foodiepro')); // Use WordPress's own translation of 'Username'
 } elseif ($text === 'Register') {
-$translated_text = esc(__('Not yet a member ?', 'foodiepro')); // Use WordPress's own translation of 'Username'
+$translated_text = foodiepro_esc(__('Not yet a member ?', 'foodiepro')); // Use WordPress's own translation of 'Username'
 }
 return $translated_text;
 }
@@ -97,7 +97,7 @@ function my_authenticate_username_password($user, $username, $password)
 {
 if (!empty($username)) {
 if (!strpos($username, '@'))
-return new WP_Error('Invalid email address.', esc(__('<strong>ERROR</strong>: Invalid login. Please make sure to use your EMAIL ADDRESS to log-in.', 'foodiepro'))); //returns nothing if not valid email
+return new WP_Error('Invalid email address.', foodiepro_esc(__('<strong>ERROR</strong>: Invalid login. Please make sure to use your EMAIL ADDRESS to log-in.', 'foodiepro'))); //returns nothing if not valid email
 $user = get_user_by('email', $username);
 }
 if (isset($user->user_login, $user))

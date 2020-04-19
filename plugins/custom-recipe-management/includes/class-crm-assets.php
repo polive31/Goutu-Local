@@ -10,6 +10,10 @@ class CRM_Assets {
 	const ATTACHMENT_FORMATS = array('jpg','jpeg','png');
 	const MAX_ATTACHMENT_SIZE_KB = 500;
 
+	// Used both on recipe display and also to output the step URL as metadata
+	const RECIPE_STEP_ID_ROOT = 'wpurp_recipe_instruction';
+	const RECIPE_THUMB_INPUT = 'recipe_thumbnail';
+
 	private static $PLUGIN_URI;
 	private static $PLUGIN_PATH;
 
@@ -19,7 +23,12 @@ class CRM_Assets {
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
 	}
 
-
+	/* PRINT URL KEYWORD
+	---------------------------------------------------------------------------*/
+	public static function keyword() {
+		$keyword = urlencode(__('print', 'crm'));
+		return $keyword;
+	}
 
 	/********************************************************************************
 	 ****                SETUP TAXONOMIES LIST                        ***
@@ -41,23 +50,59 @@ class CRM_Assets {
 	/********************************************************************************
 	****               ADD RECIPE POST TYPE FIELDS TO CPM_Assets                 ****
 	********************************************************************************/
+	public function setup_CPM_recipe_fallback_image( $fallbacks )
+	{
+		$fallbacks['recipe']=trailingslashit(self::$PLUGIN_URI).'assets/img/fallback.jpg';
+		return $fallbacks;
+	}
+
+
 	public function setup_CPM_recipe_page_slugs( $slugs ) {
-		$slugs['recipe_list'] = 'publier-recettes';
-		$slugs['recipe_favorites'] = 'favoris-recettes';
-		$slugs['recipe_form'] = 'saisie-recette';
-		$slugs['recipe_print'] = __('print', 'crm');
+		$slugs['recipe'] = array(
+			'recipe_list' 		=> 'publier-recettes',
+			'recipe_favorites' 	=> 'favoris-recettes',
+			'recipe_form' 		=> 'saisie-recette',
+			'recipe_print' 		=> __('print', 'crm'),
+		);
 		return $slugs;
+	}
+
+	public function setup_CPM_post_status( $statuses ) {
+		$statuses['recipe'] = array(
+			'all'		=> array(
+				'label'			=> _x('All my posts', 'recipe', 'crm'),
+				'description'	=> '',
+			),
+			'restored'	=> array(
+				'label'			=> _x('Restored', 'recipe', 'crm'),
+				'description'	=> _x('Those posts have been automatically kept but not saved as drafts. You can delete them if you don\'t need them.', 'recipe', 'crm'),
+			),
+			'pending'	=> array(
+				'label'			=> _x('Pending', 'recipe', 'crm'),
+				'description'	=> _x('Those posts have been submitted and pending administrator\'s approval.', 'recipe', 'crm'),
+			),
+			'draft'		=> array(
+				'label'			=> _x('Draft', 'recipe', 'crm'),
+				'description'	=> _x('Those posts are in preparation, and not yet submitted.', 'recipe', 'crm'),
+			),
+			'publish'	=> array(
+				'label'			=> _x('Public', 'recipe', 'crm'),
+				'description'	=> _x('Those posts have been approved by the administrator. They are visible on the website, according to your visibility preferences.', 'recipe', 'crm'),
+			),
+		);
+		return $statuses;
 	}
 
 	public function setup_CPM_required( $required ) {
 		$required['recipe']= array(
-			'recipe_title'			=> __('Recipe Title','crm'),
-			'recipe_content'		=> __('Recipe Description','crm'),
-			'recipe_course' 		=> __('Recipe Course', 'crm'),
-			'recipe_difficult' 		=> __('Recipe Difficulty', 'crm'),
-			'recipe_ingredients' 	=> __('Ingredients', 'crm'),
-			'recipe_servings' 		=> __('Number of Servings', 'crm'),
-			'recipe_prep_time' 		=> __('Preparation Time', 'crm'),
+			'post_title'				=> __('Recipe Title','crm'),
+			'post_content'				=> __('Recipe Description','crm'),
+			'recipe_image_attachment'	=> __('Recipe Featured Image','crm'),
+			'recipe_course' 			=> __('Recipe Course', 'crm'),
+			'recipe_difficult' 			=> __('Recipe Difficulty', 'crm'),
+			'recipe_ingredients' 		=> __('Ingredients', 'crm'),
+			'recipe_servings' 			=> __('Number of Servings', 'crm'),
+			'recipe_prep_time' 			=> __('Preparation Time', 'crm'),
 		);
 		return $required;
 	}
@@ -128,9 +173,13 @@ class CRM_Assets {
 	public function setup_CPM_recipe_labels( $labels ) {
 		$labels['recipe'] = array(
 			'title'						=> _x( 'Post Title', 'recipe', 'crm' ),
+			'cook_time'					=> __( 'Cook Time', 'crm' ),
+			'prep_time'					=> __( 'Prep Time', 'crm' ),
+			'passive_time'				=> __( 'Passive Time', 'crm' ),
 			'edit_button'				=> _x( 'Edit Post', 'recipe', 'crm' ),
 			'delete_button'				=> _x( 'Delete Post', 'recipe', 'crm' ),
 			'new_button'				=> _x( 'New Post', 'recipe', 'crm' ),
+			'featured_image'			=> _x('Add here your best picture for this post !', 'recipe', 'crm'),
 			'new1'						=> _x( 'Write your new post on this page.', 'recipe', 'crm' ),
 			'new2'						=> _x( 'You can then choose to save it as draft, or to publish it. Once approved, it will be visible to others according to your visibility preferences.', 'recipe', 'crm' ),
 			'edit1'						=> _x( 'Edit your existing post on this page.', 'recipe', 'crm' ),
@@ -147,6 +196,9 @@ class CRM_Assets {
 			'post_publish_content1' 	=> _x( 'It is visible on the website, and appears on <a href="%s">your blog</a>.', 'recipe','crm'),
 			'comment_publish_title'		=> _x( '%s commented one of your posts', 'recipe', 'crm'),
 			'comment_publish_content'	=> _x( '%s added a comment to your post <a href="%s">%s</a> :', 'recipe', 'crm'),
+			'not_like'					=> _x('liked your post %s', 'recipe', 'crm'),
+			'not_comment'				=> _x('commented your post %s', 'recipe', 'crm'),
+			'not_comment_respond'		=> _x('answered your comment on post %s', 'recipe', 'crm'),
 		);
 		return $labels;
 	}
@@ -173,7 +225,6 @@ class CRM_Assets {
 			'dir' 		=> self::$PLUGIN_PATH,
 			'location' 	=> array('recipe_print'),
 		);
-
 
 		$styles['crm-recipe'] = array(
 			'file' 		=> 'assets/css/custom-recipe.css',
@@ -214,6 +265,13 @@ class CRM_Assets {
 		$scripts['cpm-list']['data']['confirm_message'] = _x( 'Are you sure you want to delete this post :', 'recipe', 'crm' );
 		$scripts['cpm-list']['location'][]='recipe_list';
 
+		$scripts['cpm-submission']['location'][] = 'recipe_form';
+
+		$scripts['crm-autosave']= $scripts['cpm-autosave'];
+		$scripts['crm-autosave']['data']['post_type']='recipe';
+		$scripts['crm-autosave']['data']['nonce']=wp_create_nonce('custom_recipe_autosave');
+		$scripts['crm-autosave']['location']=array('recipe_form');
+
 		$scripts['cpm-select2-taxonomies']['location'][]='recipe_form';
 		$scripts['cpm-select2']['location'][]='recipe_form';
 		$scripts['cpm-select2-fr']['location'][]='recipe_form';
@@ -228,28 +286,6 @@ class CRM_Assets {
 			'footer' 	=> true,
 			'location' 	=> array('recipe'),
 		);
-
-		// $scripts['crm-print_button'] = array (
-		// 	'file' 		=> 'print_button.js',
-		// 	'uri'		=> self::$PLUGIN_URI . 'assets/js/',
-		// 	'dir' 		=> self::$PLUGIN_PATH . 'assets/js/',
-		// 	'deps' 		=> array(
-		// 		'jquery',
-		// 	),
-		// 	'footer' 	=> true,
-		// 	'data' 		=> array(
-		// 		'name' 		=> 'wpurp_print',
-		// 		// 'ajaxurl' 	=> WPUltimateRecipe::get()->helper('ajax')->url(),
-		// 		'nonce' 	=> wp_create_nonce( 'wpurp_print' ),
-		// 		// 'custom_print_css_url' => get_stylesheet_directory_uri() . '/assets/css/custom-recipe-print.css',
-		// 		'custom_print_css_url' => self::$PLUGIN_URI . '/assets/css/custom-recipe-print.css',
-		// 		// 'coreUrl' 	=> WPUltimateRecipe::get()->coreUrl,
-		// 		// 'premiumUrl'=> WPUltimateRecipe::is_premium_active() ? WPUltimateRecipePremium::get()->premiumUrl : false,
-		// 		'title' 	=> __('Print this Recipe','crm'),
-		// 		'permalinks'=> get_option('permalink_structure'),
-		// 	),
-		// 	'location' 	=> array('recipe'),
-		// );
 
 		$scripts['crm-voice'] = array (
 			'file' 			=> 'custom_text_to_speech.js',
@@ -308,8 +344,8 @@ class CRM_Assets {
 			'location' 	=> array('recipe'),
 		);
 
-		$scripts['crm-adjustable-servings'] = array (
-			'file' 		=> 'custom_adjustable_servings.js',
+		$scripts['crm-recipe-helpers'] = array (
+			'file' 		=> 'recipe_helpers.js',
 			'uri' 		=> self::$PLUGIN_URI . 'assets/js/',
 			'dir' 		=> self::$PLUGIN_PATH . 'assets/js/',
 			'footer' 	=> true,
@@ -349,6 +385,11 @@ class CRM_Assets {
 			'dir' 		=> self::$PLUGIN_PATH . 'vendor/autocomplete/',
 			'deps' 		=> array(
 				'jquery',
+			),
+			'data' => array(
+				'name' 		=> 'ingredient_autocomplete',
+				'ajaxurl' 	=> admin_url( 'admin-ajax.php' ),
+				'nonce' 	=> wp_create_nonce('ingredient_name_suggestion'),
 			),
 			'location' 	=> array('recipe_form'),
 		);
@@ -393,24 +434,41 @@ class CRM_Assets {
 			),
 			'footer' => true,
 			'data' => array(
-				'name' => 'custom_recipe_submission_form',
-				'ajaxurl' 	=> admin_url( 'admin-ajax.php' ),
-				'nonce' 	=> wp_create_nonce('custom_recipe_submission_form'),
-				'placeholder' => self::$PLUGIN_URI . 'img/camera.png',
-				'fileTypes' => self::ATTACHMENT_FORMATS,
-				'wrongFileType' => sprintf(__('Authorized file formats are : %s','crm'),implode(', ',self::ATTACHMENT_FORMATS)),
-				'maxFileSize' => self::MAX_ATTACHMENT_SIZE_KB,
-				'fileTooBig' => sprintf(__('The maximum file size is %s kB','crm'), self::MAX_ATTACHMENT_SIZE_KB),
-				'deleteImage' => __('Do you really want to delete this image ?','crm'),
-				'deleteIngredient' => __('Do you really want to delete this ingredient ?','crm'),
-				'deleteInstruction' => __('Do you really want to delete this instruction ?','crm'),
-				'deleteInstructionGroup' => __('Do you really want to delete this group ?\n(Instructions below will be preserved)','crm'),
-				'deleteIngredientGroup' => __('Do you really want to delete this group ?\n(Ingredients below will be preserved)','crm'),
+				'name' 						=> 'custom_recipe_submission_form',
+				'ajaxurl' 					=> admin_url( 'admin-ajax.php' ),
+				'nonce' 					=> wp_create_nonce('custom_recipe_submission_form'),
+				'deleteIngredient' 			=> __('Do you really want to delete this ingredient ?','crm'),
+				'deleteInstruction' 		=> __('Do you really want to delete this instruction ?','crm'),
+				'deleteInstructionGroup' 	=> __('Do you really want to delete this group ?\n(Instructions below will be preserved)','crm'),
+				'deleteIngredientGroup' 	=> __('Do you really want to delete this group ?\n(Ingredients below will be preserved)','crm'),
+				'deleteImageFirst' 			=> __('Please remove the image prior to removing this instruction.','crm'),
 			),
 			'location' 	=> array('recipe_form'),
 		);
 
 		return $scripts;
+	}
+
+
+	/* TEMPLATES
+	---------------------------------------------------------------------- */
+	public static function echo_template_part( $slug, $name=false, $args=array() ) {
+		extract($args);
+
+		$templates_path = trailingslashit(self::$PLUGIN_PATH) . 'templates/';
+		$template = 'template-' . $slug;
+		$template .= $name ? '-' . $name : '';
+		$template .= '.php';
+		include( $templates_path . $template );
+	}
+
+	public static function get_template_part($slug, $name = false, $args = array())
+	{
+		ob_start();
+		self::echo_template_part( $slug, $name, $args );
+		$html = ob_get_contents();
+		ob_end_clean();
+		return $html;
 	}
 
 }

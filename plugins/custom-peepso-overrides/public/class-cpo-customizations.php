@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class CPO_Customizations {
 
-	// public function custom_profile_navigation( $links ) {
+	public function custom_profile_navigation( $links ) {
 		// if ( !is_user_logged_in() ) {
 		// 	unset( $links['about'] );
 		// 	$reordered=array();
@@ -16,9 +16,19 @@ class CPO_Customizations {
 		// 		$reordered[$tab] = $links[$tab];
 		// 	}
 		// 	$links = $reordered;
-		// }
-		// return $links;
-	// }
+        // }
+        $currentprofile = PeepsoHelpers::is_current_user_profile();
+        if (is_user_logged_in() && $currentprofile ) {
+            $links['messages']=array(
+                'href'  => 'messages',
+                'label' => 'Messages',
+                'icon'  => 'ps-icon-envelope-alt',
+            );
+            $links['stream']['label'] = __('My activities','foodiepro');
+        }
+
+		return $links;
+    }
 
 	public function custom_postbox_message( $msg ) {
 		$PeepSoProfile=PeepSoProfile::get_instance();
@@ -37,6 +47,55 @@ class CPO_Customizations {
 
 		return $msg;
 	}
+
+    /*****************************************************************************/
+    /******************            AVATAR             ****************************/
+    /*****************************************************************************/
+    public function pre_get_avatar_cb($dummy, $id_or_email, $args) {
+        $avatar='';
+        if ( is_object($id_or_email) && get_class($id_or_email)=='WP_Comment') {
+            $comment=$id_or_email;
+            $id_or_email=$comment->user_id;
+        }
+        if (class_exists('PeepsoHelpers')) {
+            $params=array(
+                'user'	=> $id_or_email,
+                'imgclass'	=> 'avatar',
+                'size'      => $args['size'],
+                'alt'      => $args['alt'],
+            );
+            $avatar = PeepsoHelpers::get_avatar($params);
+        }
+        return $avatar;
+    }
+
+    // public function get_avatar_cb($avatar, $id_or_email, $size, $default, $alt, $args)
+    // {
+    //     if (is_object($id_or_email) && get_class($id_or_email) == 'WP_Comment') {
+    //         $comment = $id_or_email;
+    //         $id_or_email = $comment->user_id;
+    //     }
+    //     if (class_exists('PeepsoHelpers')) {
+    //         $args = array(
+    //             'user'    => $id_or_email,
+    //             'imgclass'    => 'avatar',
+    //         );
+    //         $avatar = PeepsoHelpers::get_avatar($args);
+    //     }
+    //     return $avatar;
+    // }
+
+    /*****************************************************************************/
+    /******************        NOTIFICATION LINKS        *************************/
+    /*****************************************************************************/
+    public function custom_peepso_notification_link($link, $note_data) {
+        $link = false;
+        if ( !empty($note_data['not_external_id']) && (strpos($note_data['not_type'],'foodiepro_')!==false) && ($note_data['not_external_id']!="0") ) {
+            $link = get_permalink( $note_data['not_external_id'] );
+        }
+        return $link;
+    }
+
 
     /*****************************************************************************/
     /******************        ACTIVITY STREAM        ****************************/

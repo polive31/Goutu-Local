@@ -6,25 +6,3 @@ body {
   background-image: linear-gradient(90deg, rgba(216, 198, 172, 0.4) 50%, transparent 50%), linear-gradient(rgba(255, 185, 108, 0.39) 50%, transparent 50%);
   background-size: 30px 30px;
 }
-
-#login {
-  width: 320px;
-  margin: 8% auto;
-  padding: 30px;
-  border-radius: 10px;
-  background-color: white;
-  box-shadow: 5px 5px 5px #b7b7b7;
-}
-
-.login form {
-  border: none;
-  box-shadow: none;
-}
-
-.login h1 a {
-  background-image: url('login-logo.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 100px;
-  height: 100px;
-}

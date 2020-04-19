@@ -57,7 +57,7 @@ class CCF_Admin
 		// Enqueue scripts
 		$args['handle'] = 'ccf-admin';
 		$args['file'] = 'assets/js/ccf-admin.js';
-		custom_enqueue_script($args);
+		foodiepro_enqueue_script($args);
 
 		wp_localize_script(
 			'ccf-admin',

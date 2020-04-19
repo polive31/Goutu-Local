@@ -107,147 +107,30 @@ add_shortcode('permalink', 'foodiepro_get_permalink_shortcode');
 function foodiepro_get_permalink_shortcode($atts, $content='') {
 	$atts = shortcode_atts(array(
 		/* Source parameters */
-		'id' 	=> '',
-		'slug' 	=> false,
-		'tax' 	=> false,
-		'wp' 	=> false, // home, login, register
-		'user' 	=> false, // current, view, author, any user ID
-		'peepso' => '', // members, register
-		'google' => '', // search query
+		'id' 		=> '',
+		'slug' 		=> false,
+		'tax' 		=> false,
+		'wp' 		=> false, // home, login, register
+		'user' 		=> false, // current, view, author, any user ID
+		'community' => '', // members, register
+		'google' 	=> '', // search query
 
 		/* Display parameters */
-		'class' => '',
-		'display' => false, // archive, profile
-		'type' => 'post', // post type : post, recipe OR peepso profile tab : about, activity...
-		'text' 	=> '',  // html link is output if not empty
+		'class'	 	=> '',
+		'display' 	=> false, // archive, profile
+		'type' 		=> 'post', // post type : post, recipe OR peepso profile tab : about, activity, friends...
+		'text' 		=> '',  // html link is output if not empty
 		'target' 	=> '',  // link target
 
 		/* Google Analytics parameters */
-		'data' 	=> false, // "attr1 val1 attr2 val2  ..." separate with spaces
-		'ga' 	=> false, // ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue] ); separate by spaces
-
+		'data' 		=> false, // "attr1 val1 attr2 val2  ..." separate with spaces
+		'ga' 		=> false, // ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue] ); separate by spaces
 	), $atts);
+	$atts['text']= $atts['text']. $content;
 
-	return foodiepro_get_permalink($atts, $content);
+	return foodiepro_get_permalink($atts);
 }
 
-/**
- * foodiepro_get_permalink
- *
- * @param  mixed $atts array of :
- *
- * 	    Input parameters
- * *	'id' 		=> ''
- * *	'slug' 		=> false
- * *	'tax' 		=> false
- * *	'wp' 		=> false (home, login, register)
- * *	'user' 		=> false (current, view, author, any user ID)
- * *	'peepso' 	=> false (members, register)
- * *	'google' 	=> false (search terms separated by spaces)
- *
- *		Display parameters
- * *	'class' 	=> ''
- * *	'display' 	=> false (archive, profile)
- * *	'type' 		=> 'post'(post type : post, recipe OR peepso profile tab : about, activity...)
- * *	'text' 		=> false (html link is output if not empty)
- * *	'target' 	=> ''	 ('_blank' for new tab)
- *
- *		Google Analytics parameters
- * *	'data' 		=> false ("attr1 val1 attr2 val2  ..." separate with spaces)
- * *	'ga' 		=> false (ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue] ); separate by spaces)
- *
- * @param  mixed $content
- * @return void
- */
-function foodiepro_get_permalink( $atts, $content='' ) {
-
-	// Initialize optional display variables which won't be tested prior to be used
-	$rel='';
-	$id='';
-	$class='';
-	$target='';
-	$token=''; /* Replacement token for display text */
-
-	extract( $atts );
-	$text=esc_html($text);
-	$content= esc_html($content);
-	$data=empty($data)?false:explode(' ', $data);
-	$ga=empty($ga)?false:explode(' ', $ga);
-
-	$url='#';
-	if (!empty($id)) {
-		$url=get_permalink($id);
-	}
-	elseif (!empty($tax)) {
-		if (!empty($slug))
-		$url=get_term_link((string) $slug, (string) $tax);
-	}
-	elseif (!empty($slug)) {
-		// $url=get_permalink(get_page_by_path($slug));
-		$url=foodiepro_get_page_by_slug($slug);
-	}
-	elseif (!empty($google)) {
-		// $url=get_permalink(get_page_by_path($slug));
-		$url = 'https://www.google.com/search?q=' . urlencode(remove_accents($google));
-	}
-	elseif (!empty($user)) {
-		// Define user
-		if ($user=='current') {
-			$user_id = get_current_user_id();
-		}
-		elseif ($user=='author') {
-			$user_id = get_the_author_meta('ID');
-		}
-		elseif ($user=='view' && class_exists('Peepso') ) {
-			$user_id = PeepSoProfileShortcode::get_instance()->get_view_user_id();
-		}
-		else {
-			$user_id = $user;
-		}
-		// Define display url
-		if ($display=='archive') {
-			$user = get_user_by('id', $user_id);
-			if (!$user) return;
-			$token = $user->data->user_nicename;
-			// $url = get_site_url( null, foodiepro_get_author_base() . '/' . $token);
-			$url = get_author_posts_url($user_id, $token);
-			$url = esc_url(add_query_arg('post_type', $type, $url));
-			$rel='author';
-		}
-		elseif ( $display=='profile' && class_exists('Peepso') ) {
-			$peepso_user = PeepsoUser::get_instance( $user_id );
-			$url = $peepso_user->get_profileurl();
-			$url .= $type;
-			$token = $peepso_user->get_nicename();
-		}
-	}
-	elseif (!empty($wp)) {
-		if ( $wp=='home' )
-		$url = get_home_url();
-		elseif ( $wp=='login' )
-		$url = wp_login_url();
-		elseif ( $wp=='register' )
-		$url = wp_registration_url();
-	}
-	elseif (!empty($peepso)) {
-		if (!class_exists('Peepso')) return;
-		if ($peepso=='members' ) {
-			$url = PeepSo::get_page('members');
-		}
-		elseif ($peepso=='register') {
-			$url= PeepSo::get_page('register');
-		}
-	}
-	else {
-		// Current URL is supplied by default
-		$url=$_SERVER['REQUEST_URI'];
-	}
-
-	if ( $content || $text )
-		return '<a class="' . $class . '" rel="' . $rel . '" id="' . $id . '" ' . foodiepro_get_data( $data ) . ' href="' . $url . '" target="' . $target . '" onclik="' . foodiepro_get_ga( $ga ) . '">' . sprintf( $text . $content, $token ) . '</a>';
-	else
-		return $url;
-}
 
 /* =================================================================*/
 /* = PERMALINK HELPERS
@@ -289,4 +172,31 @@ function foodiepro_get_page_by_slug($page_slug ) {
 add_shortcode('debug', 'foodiepro_show_debug_html');
 function foodiepro_show_debug_html( $atts, $content ) {
 	return WP_DEBUG?$content:'';
+}
+
+
+/* =================================================================*/
+/* = POST COUNT SHORTCODE
+/* =================================================================*/
+add_shortcode('post-count', 'foodiepro_get_post_count');
+function foodiepro_get_post_count( $atts ) {
+	//Let's not loose time if user doesn't have the rights
+	if( !current_user_can('editor') && !current_user_can('administrator') ) return;
+
+	$atts = shortcode_atts( array(
+		'status' => 'pending', //draft, publish, auto-draft, private, separated by " "
+		'type' => 'post', //recipe
+	), $atts );
+
+	$post_type=$atts['type'];
+	$status=$atts['status'];
+
+	if ( !in_array($status, get_post_statuses() )) return;
+
+	$count = wp_count_posts($post_type );
+	if (isset($count->$status)) {
+		$html = ($count->$status>0)?'<span class="post-count-indicator">('.$count->$status.')</span>':'';
+	}
+
+	return $html;
 }

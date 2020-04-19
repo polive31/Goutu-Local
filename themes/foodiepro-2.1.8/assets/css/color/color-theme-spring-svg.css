@@ -78,12 +78,6 @@ h1.entry-title,
     border-bottom: 1px solid #ccc;
 }
 
-.img-menu a .menu-title span,
-a.more-link,
-.more-from-category a {
-    background: #f5f5f5;
-}
-
 .img-menu:hover a .menu-title span,
 a.more-link:hover,
 .more-from-category a:hover {

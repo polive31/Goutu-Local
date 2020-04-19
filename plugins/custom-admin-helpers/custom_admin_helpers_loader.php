@@ -27,5 +27,6 @@ require_once 'public/class-cah-adminbar.php';
 add_action('plugins_loaded', 'custom_admin_helpers_start');
 
 function custom_admin_helpers_start() {
-	new Custom_Admin_Helpers();
+	Custom_Admin_Helpers::get_instance();
+	// new Custom_Admin_Helpers();
 }

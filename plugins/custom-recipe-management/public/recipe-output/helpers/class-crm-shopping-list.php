@@ -24,7 +24,7 @@ class CRM_ShoppingList extends WPURP_Template_Block {
 
         if( !$this->logged_in ) {
         	$link_id='id="join-us"';
-					$menu_link = '/connexion';
+					$menu_link =  foodiepro_get_permalink(array('slug' => 'connexion'));
         }
 		else {
 			$classes[] = 'logged-in';

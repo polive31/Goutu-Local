@@ -114,9 +114,8 @@ class CBMP_Post_Content {
 						echo sprintf("Post update successful, content is now : %s \n", $content);
 					}
 					else {
-						echo 'Post update FAILED';
+						echo "Post update FAILED \n";
 					}
-					echo "<br>";
 				break;
 			} // End switch
 			$i++;

@@ -19,14 +19,14 @@ require_once 'includes/class-custom-site-notifications.php';
 require_once 'includes/class-csn-assets.php';
 
 require_once 'public/class-csn-public.php';
-require_once 'public/mails/CustomSiteMails.php';
-require_once 'public/popups/CustomSitePopups.php';
-require_once 'public/like/class-csn-like.php';
+require_once 'public/mails/class-csn-mails.php';
+require_once 'public/popups/class-csn-popups.php';
+require_once 'public/notifications/class-csn-notifications.php';
 
 
 
 /* Start plugin */
 add_action( 'wp_loaded', 'csn_start_plugin' );
 function csn_start_plugin() {
-	new CustomSiteNotifications();
+	new Custom_Site_Notifications();
 }

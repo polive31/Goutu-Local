@@ -1,8 +1,16 @@
+/* Deactivate all console logs
+-------------------------------------*/
+if ( (typeof 'foodiepro_options' != "undefined") && (!foodiepro_options.showlogs) ) {
+    console.log = function() {}
+    console.table = function() {}
+}
+
 jQuery(document).ready(function()   {
 
     // jQuery(document).ajaxStop(function () {
         // sidebarHeightAdjustToContent();
     // });
+
 
     /*  Minify header on scroll
     -------------------------------------*/

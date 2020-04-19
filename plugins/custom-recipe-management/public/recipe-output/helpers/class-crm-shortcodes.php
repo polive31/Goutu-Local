@@ -88,7 +88,7 @@ class CRM_Recipe_Shortcodes  {
                 $template = is_feed() ? null : $options['template'];
             }
 
-            $render = new CRM_Output();
+            $render = new CRM_Template();
             $output = $render->screen( '', $recipe_post );
 
         }

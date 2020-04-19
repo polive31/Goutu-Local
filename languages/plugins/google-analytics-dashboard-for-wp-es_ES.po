@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Google Analytics Dashboard for WP by ExactMetrics (formerly GADWP) - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-02-26 08:09:03+0000\n"
+"PO-Revision-Date: 2020-04-12 12:29:47+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -4824,7 +4824,7 @@ msgstr "Seguimiento de comercio electrónico"
 
 #: languages/vue.php:765
 msgid "Ecommerce"
-msgstr "Ecommerce"
+msgstr "Comercio electrónico"
 
 #: languages/vue.php:200
 msgid "Custom Dimensions"

@@ -11,24 +11,27 @@ jQuery(document).ready(function() {
 
     // Activate select2
     // jQuery("select[multiple]").select2({
-    var readonlyBoxes = jQuery(".taxonomy-select-boxes select").not(".post_tag");
 
+    // Read-only boxes : only mouse / touch interaction allowed
+    var readonlyBoxes = jQuery(".taxonomy-select-boxes select").not(".multiselect");
     console.log( 'Here are the selected readonly boxes : ', readonlyBoxes );
-
     readonlyBoxes.select2({
         width: 'style',
         dropdownAutoWidth: false,
         minimumResultsForSearch: -1,
         allowClear: false,
+        selectOnClose: true,
         templateSelection: formatItem,
         // closeOnSelect: false,
     });
-
     readonlyBoxes.next('.select2').addClass("readonly");
 
-    jQuery(".taxonomy-select-boxes select.post_tag").select2({
-        width: 'style',
+    // Read/write boxes : keyboard search allowed
+    jQuery(".taxonomy-select-boxes select.multiselect").select2({
+        // width: 'style',
+        width: 'resolve',
         dropdownAutoWidth: false,
+        selectOnClose: true,
         // minimumInputLength: 3,
         allowClear: false,
         templateSelection: formatItem,
@@ -44,11 +47,12 @@ jQuery(document).ready(function() {
     }
 
 // Disable search option on some dropdowns
-    // jQuery('.taxonomy-select-boxes .select2.readonly').on('select2:opening select2:closing', function( event ) {
+// jQuery(".select2.readonly .select2-search input").prop("readonly", true);
+
+// jQuery('.taxonomy-select-boxes .select2.readonly').on('select2:opening select2:closing', function( event ) {
     //     var $searchfield = jQuery(this).parent().find('.select2-search__field');
     //     $searchfield.prop('disabled', true);
     // });
-    jQuery(".select2.readonly .select2-search input").prop("readonly", true);
     // jQuery(".select2, .select2-multiple").not(".post_tag").on('select2:open', function (e) {
     //     jQuery('.select2-search input').not(".post_tag").prop('focus',false);
     // });

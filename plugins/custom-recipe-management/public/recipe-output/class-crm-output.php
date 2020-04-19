@@ -1,282 +1,125 @@
 <?php
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+if (!defined('ABSPATH')) {
+    exit;
 }
 
-/* Provides a custom template for WPURP recipes using
-    the corresponding WPURP filters
-*/
 
-class CRM_Output {
+class CRM_Output
+{
 
-	protected static $_PluginPath;
-	protected static $_PluginUri;
-	// public static $logged_in;
+    protected static $_PluginPath;
+    protected static $_PluginUri;
+    // public static $logged_in;
 
-	private $post_ID;
+    private $post_ID;
+    private $recipe;
 
-	public function __construct() {
-		self::$_PluginUri = plugin_dir_url( dirname( __DIR__ ) );
-		self::$_PluginPath = plugin_dir_path( dirname( __DIR__ ) );
-	}
+    public function __construct()
+    {
+        self::$_PluginUri = plugin_dir_url(dirname(__DIR__));
+        self::$_PluginPath = plugin_dir_path(dirname(__DIR__));
 
+        define('EP_RECIPE', 524288); // 2^19
+    }
 
-    public function print( $content, $recipe ) {
+    /* PRINT OUTPUT FUNCTIONS
+    -------------------------------------------------------------------------*/
+
+    /**
+     * Defines a URL rewrite endpoint for "virtual" recipe print pages
+     *
+     * @return void
+     */
+    public function endpoint()
+    {
+        add_rewrite_endpoint( CRM_Assets::keyword(), EP_RECIPE);
+    }
+
+    /**
+     * Callback for 'template_redirect' hook, allowing to route the output to the desired template
+     *
+     * @return void
+     */
+    public function redirect()
+    {
+        $print = get_query_var( CRM_Assets::keyword(), false);
+        if ($print !== false) {
+            $post = get_post();
+            $recipe = new CRM_Recipe($post);
+            $this->print_recipe($recipe, $print);
+            exit();
+        }
+    }
+
+    /**
+     * Output recipe according to print template
+     *
+     * @param  mixed $recipe
+     * @param  mixed $parameters
+     * @return void
+     */
+    public function print_recipe($recipe, $parameters)
+    {
+        // Get Serving Size
+        preg_match("/[0-9\.,]+/", $parameters, $servings);
+        $servings = empty($servings) ? 0.0 : floatval(str_replace(',', '.', $servings[0]));
+
+        if ($servings < 1) {
+            $servings = $recipe->servings_normalized();
+        }
+
         if (isset($recipe->ID))
             $recipe = new CRM_Recipe($recipe->ID);
         else
             $recipe = new CRM_Recipe($recipe->ID());
 
-        ob_start();
         $js_uri = self::$_PluginUri . 'assets/js/print_page.js';
         $stylesheet_uri = self::$_PluginUri . 'assets/css/custom-recipe-print.css';
-        include( __DIR__ . '/partials/print-template.php' );
-        $output = ob_get_contents();
-        ob_end_clean();
 
-        return $output;
-    }
+        $args=compact('recipe','js_uri','stylesheet_uri','servings');
+        CRM_Assets::echo_template_part( 'print', false, $args);
 
-    public function stripout_images( $content ) {
-        $content = preg_replace("/<img[^>]+\>/i", " ", $content);
-        $content = str_replace(']]>', ']]>', $content);
-        return $content;
-    }
-
-    public function screen( $content, $recipe ) {
-        if ( isset($recipe->ID ) )
-            $recipe = new CRM_Recipe( $recipe->ID );
-        else
-            $recipe = new CRM_Recipe( $recipe->ID() );
-
-
-        $imgID = $recipe->featured_image();
-        $imgAlt = get_post_meta($imgID,'_wp_attachment_image_alt', true);
-        if (empty($imgAlt))
-            // $imgAlt=sprintf(__('Recipe of %s', 'crm'), $recipe->title());
-            $imgAlt=$recipe->title();
-
-        ob_start();
-
-        // Output JSON+LD metadata & rich snippets
-        echo $this->json_ld_meta_output($recipe,'');
-
-        // include( __DIR__ . 'custom-recipe-output/partials/recipe-template.php' );
-        include( __DIR__ . '/partials/screen-template.php' );
-
-        $output = ob_get_contents();
-        ob_end_clean();
-
-        return $output;
     }
 
 
-    public function json_ld_meta_output( $recipe, $args ) {
-        $Custom_Metadata = new Custom_Recipe_Metadata();
-        // $metadata = in_array( WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ), array( 'json', 'json-inline' ) ) ? $Custom_Metadata->get_metadata( $recipe ) : '';
-        $metadata = $Custom_Metadata->get_metadata( $recipe );
 
-        ob_start();
-        echo $metadata;
-        $output = ob_get_contents();
-        ob_end_clean();
-
-        return $output;
-    }
-
-    public function custom_ingredients_list( $recipe, $target='screen' ) {
-        $out = '';
-        $previous_group = '';
-        $first_group = true;
-        //$out .= '<ul class="wpurp-recipe-ingredients">';
-
-        if (!$recipe->ingredients()) return '';
-
-        foreach( $recipe->ingredients() as $ingredient ) {
-
-            // if( WPUltimateRecipe::option( 'ignore_ingredient_ids', '' ) != '1' && isset( $ingredient['ingredient_id'] ) ) {
-                $term = get_term( $ingredient['ingredient_id'], 'ingredient' );
-                if ( $term !== null && !is_wp_error( $term ) ) {
-                    $ingredient['ingredient'] = $term->name;
-                }
-            // }
-
-            if( $ingredient['group'] != $previous_group || $first_group ) { //removed isset($ingredient['group'] ) &&
-                $out .= $first_group ? '' : '</ul>';
-                $out .= '<ul class="wpurp-recipe-ingredients">';
-                $out .= '<li class="ingredient-group">' . $ingredient['group'] . '</li>';
-                $previous_group = $ingredient['group'];
-                $first_group = false;
-            }
-
-            // $meta = WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ) != 'json' && $args['template_type'] == 'recipe' && $args['desktop'] ? ' itemprop="recipeIngredient"' : '';
-            $meta = '';
-
-            $out .= '<li class="wpurp-recipe-ingredient"' . $meta . '>';
-            $out .= foodiepro_get_icon('checkbox', 'ingredient-checkbox');
-            $ingredient['links'] = 'yes';
-            $out .= CRM_Ingredient::display( $ingredient );
-            $out .= '</li>';
-        }
-        //$out .= '</ul>';
-        ob_start();
-        ?>
-        <script>
-			jQuery(document).ready(function(){
-			// console.log('Inline ingredient checkbox');
-				jQuery(document).on('click', '.wpurp-recipe-ingredient  .ingredient-checkbox', function(e) {
-					// console.log('Click on ingredient checkbox detected !');
-					e.preventDefault();
-					e.stopPropagation();
-					jQuery(this).toggleClass('checked');
-				});
-			});
-        </script>
-        <?php
-        $out .= ob_get_contents();
-        ob_end_clean();
-
-        return $out;
-    }
-
-    public function custom_instructions_list( $recipe, $target = 'screen' ) {
-        $out = '';
-        $previous_group = '';
-        $instructions = $recipe->instructions();
-
-        if (!$instructions) return '';
-
-        $out .= '<ul class="wpurp-recipe-instruction-container">';
-        $first_group = true;
-
-        for( $i = 0; $i < count($instructions); $i++ ) {
-
-            $instruction = $instructions[$i];
-            $first_inst = false;
-
-            if( $instruction['group'] != $previous_group ) { /* Entering new instruction group */
-                $first_inst = true;
-                $out .= $first_group ? '' : '</ul>';
-                $out .= '<div class="wpurp-recipe-instruction-group recipe-instruction-group">' . $instruction['group'] . '</div>';
-                $out .= '<ul class="wpurp-recipe-instructions">';
-                $previous_group = $instruction['group'];
-                $first_group = false;
-            }
-
-            $style = $first_inst ? ' li-first' : '';
-            $style .= !isset( $instructions[$i+1] ) || $instruction['group'] != $instructions[$i+1]['group'] ? ' li-last' : '';
-
-            // $meta = WPUltimateRecipe::option( 'recipe_metadata_type', 'json-inline' ) != 'json' && $args['template_type'] == 'recipe' && $args['desktop'] ? ' itemprop="recipeInstructions"' : '';
-
-            $out .= '<li class="wpurp-recipe-instruction ' . $style . '" id="wpurp_recipe_instruction' . $i . '">';
-            //$out .= '<div' . $meta . '>'.$instruction['description'].'</div>';
-
-
-            if ($target!='print') {
-                $out .= $this->get_bullet($i);
-            }
-			$out .= '<span class="recipe-instruction-text">' . $instruction['description'] . '</span>';
-
-
-            if( !empty($instruction['image']) && ($target=="screen") ) {
-                $thumb = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
-                $thumb_url = $thumb['0'];
-
-                $full_img = wp_get_attachment_image_src( $instruction['image'], 'full' );
-                $full_img_url = $full_img['0'];
-
-                // $title_tag = WPUltimateRecipe::option( 'recipe_instruction_images_title', 'attachment' ) == 'attachment' ? esc_attr( get_the_title( $instruction['image'] ) ) : esc_attr( $instruction['description'] );
-                // $alt_tag = WPUltimateRecipe::option( 'recipe_instruction_images_alt', 'attachment' ) == 'attachment' ? esc_attr( get_post_meta( $instruction['image'], '_wp_attachment_image_alt', true ) ) : esc_attr( $instruction['description'] );
-
-                $title_tag = esc_attr(get_the_title($instruction['image']));
-                $alt_tag = esc_attr(get_post_meta($instruction['image'], '_wp_attachment_image_alt', true));
-
-                // if( WPUltimateRecipe::option( 'recipe_images_clickable', '0' ) == 1 ) {
-                    $out .= '<div class="instruction-step-image">';
-                    $out .= '<a href="' . $full_img_url . '" id="lightbox" title="' . $title_tag . '">';
-                    $out .= '<img src="' . $thumb_url . '" alt="' . $alt_tag . '" title="' . $title_tag . '"' . '/>';
-                    $out .= '</a></div>';
-                // } else {
-                //     $out .= '<div class="instruction-step-image"><img src="' . $thumb_url . '" alt="' . $alt_tag . '" title="' . $title_tag . '"' . '/></div>';
-                // }
-            }
-
-            $out .= '</li>';
-        }
-            $out .= '</ul>';
-
-        return do_shortcode($out);
-	}
-
-	public function get_bullet( $id ) {
-		ob_start();
-		?>
-		<div class="recipe-instruction-bullet" title="<?= __('Read this step aloud','crm'); ?>" id="recipe-instruction-bullet<?= $id; ?>">
-			<?= $id+1;?>
-			<div id="r1" class="ring"></div>
-			<div id="r2" class="ring"></div>
-		</div>
-		<?php
-		$html = ob_get_contents();
-		ob_end_clean();
-		return $html;
-    }
-
-
-    // public function disable_wpurp_rendering()
-    // {
-    //     return true;
-    // }
-
-
-    public function display_recipe_from_scratch($content)
+    /* SCREEN OUTPUT FUNCTIONS
+    -------------------------------------------------------------------------*/
+    /**
+     * Output recipe according to screen template
+     *
+     * @return void
+     */
+    public function screen()
     {
-
-        $api_request = defined('REST_REQUEST');
-        if ( !$api_request && !is_feed() && !in_the_loop() || !is_main_query() ) {
-            return $content;
-        }
-
-        if (get_post_type() == 'recipe' ) {
-
-            remove_filter('the_content', array($this, 'display_recipe_from_scratch'), 10);
-
-            $recipe = new WPURP_Recipe(get_post());
-
-            // if (!post_password_required() && (is_single() || WPUltimateRecipe::option('recipe_archive_display', 'full') == 'full' || (is_feed() && WPUltimateRecipe::option('recipe_rss_feed_display', 'full') == 'full'))) {
-                $taxonomies = array_keys( CRM_ASsets::get_taxonomies() );
-                unset($taxonomies['ingredient']);
-
-                // $recipe_box = apply_filters('wpurp_output_recipe', $recipe->output_string($type, $template), $recipe);
-                $recipe_box = $this->screen('', $recipe);
-
-                if (strpos($content, '[recipe]') !== false) {
-                    $content = str_replace('[recipe]', $recipe_box, $content);
-                } else if (preg_match("/<!--\s*nextpage.*-->/", $recipe->post_content(), $out)) {
-                    // Add metadata if there is a 'nextpage' tag and there wasn't a '[recipe]' tag on this specific page
-                    $content .= $recipe->output_string('metadata');
-                } else if (is_single() || !preg_match("/<!--\s*more.*-->/", $recipe->post_content(), $out)) {
-                    // Add recipe box to the end of single pages or excerpts (unless there's a 'more' tag
-                    $content .= $recipe_box;
-                }
-            // } else {
-            //     $content = str_replace('[recipe]', '', $content); // Remove shortcode from excerpt
-            //     $content = $this->excerpt_filter($content);
-            // }
-
-            // Remove searchable part
-            $content = preg_replace("/\[wpurp-searchable-recipe\][^\[]*\[\/wpurp-searchable-recipe\]/", "", $content);
-
-            add_filter('the_content', array($this, 'display_recipe_from_scratch'), 10);
-        }
-
-        return $content;
+        $recipe = new CRM_Recipe();
+        $args = compact('recipe');
+        CRM_Assets::echo_template_part('screen', false, $args);
     }
+
 
     /* CALLBACKS
 	-----------------------------------------------------------------------------------*/
+    /**
+     * Replace post content with recipe custom post type content
+     *
+     * @return void
+     */
+    public function do_recipe_content() {
+        if ( !is_singular('recipe') ) return;
+        remove_action('genesis_entry_content',      'genesis_do_post_content');
+        add_action('genesis_entry_content',         array($this, 'screen'));
+    }
+
+    /**
+     * fetch_gallery_images
+     *
+     * @param  mixed $attachments
+     * @param  mixed $post_id
+     * @return void
+     */
     public function fetch_gallery_images($attachments, $post_id)
     {
         $attachment_ids = get_post_meta($post_id, '_post_image_gallery', true);
@@ -291,6 +134,14 @@ class CRM_Output {
         return $attachments;
     }
 
+    /**
+     * tag_uploaded_images
+     *
+     * @param  mixed $media_ids
+     * @param  mixed $success
+     * @param  mixed $post_id
+     * @return void
+     */
     public function tag_uploaded_images($media_ids, $success, $post_id)
     {
         if (!(in_array(get_post_type($post_id), array('post', 'recipe'))) || !$success) return;
@@ -316,49 +167,37 @@ class CRM_Output {
         }
     }
 
-    public function excerpt_filter($content)
+
+    /* GETTERS
+     --------------------------------------------------------------------------------------------*/
+
+    public function get_icon($icon, $class = 'svg-icon', $id = '', $tag = 'div')
     {
-        $ignore_query = !in_the_loop() || !is_main_query();
-        if (apply_filters('wpurp_recipe_content_loop_check', $ignore_query)) {
-            return $content;
-        }
+        $img_path = self::$_PluginPath . 'assets/img/icons/';
+        $html = file_get_contents($img_path . $icon . '.svg');
 
-        if (get_post_type() == 'recipe') {
-            remove_filter('get_the_excerpt', array($this, 'excerpt_filter'), 10);
+        if ($html === false) return '';
+        $html = '<' . $tag . ' class="' . $class . '" id="' . $id . '">' . $html . '</' . $tag . '>';
+        return $html;
+    }
 
-            $recipe = new WPURP_Recipe(get_post());
-            $excerpt = $recipe->excerpt();
 
-            $post_content = $recipe->post_content();
-            $post_content = trim(preg_replace("/\[wpurp-searchable-recipe\][^\[]*\[\/wpurp-searchable-recipe\]/", "", $post_content));
-
-            if ($post_content == '' && empty($excerpt)) {
-                $content = $recipe->description();
-            } else if ($content == '') {
-                $content = get_the_excerpt();
-            }
-
-            $content = apply_filters('wpurp_output_recipe_excerpt', $content, $recipe);
-
-            add_filter('get_the_excerpt', array($this, 'excerpt_filter'), 10);
-        }
-
+    /* HELPERS
+     --------------------------------------------------------------------------------------------*/
+    /**
+     * This function is used in print template, to remove image tags from the output
+     *
+     * @param  mixed $content
+     * @return void
+     */
+    public static function stripout_images($content)
+    {
+        $content = preg_replace("/<img[^>]+\>/i", " ", $content);
+        $content = str_replace(']]>', ']]>', $content);
         return $content;
     }
 
 
 
-    /* --------------------------------------------------------------------------------------------
-                                GETTERS
-     --------------------------------------------------------------------------------------------*/
-
-    public function get_icon($icon, $class='svg-icon', $id='', $tag='div') {
-        $img_path = self::$_PluginPath . 'assets/img/icons/';
-        $html = file_get_contents($img_path . $icon . '.svg');
-
-        if ($html===false) return '';
-        $html = '<' . $tag . ' class="' . $class . '" id="' . $id . '">' . $html . '</' . $tag . '>';
-        return $html;
-    }
 
 }

@@ -21,14 +21,15 @@ class RPWE_Customizations {
 
 	public function wprpe_add_avatar( $output, $args ) {
 		if ( !class_exists('PeepsoHelpers') ) return '';
+
 		if ( $args['display_avatar'] == '1') {
-			$user = PeepsoUser::get_instance( get_the_author_meta( 'ID' ) );
+			// $user = PeepsoUser::get_instance( get_the_author_meta( 'ID' ) );
 			$args = array(
-				'user' 		=> 'author', // 'view', 'author', or ID
-				'size' 		=> '', //'full',
+				'user' 		=> 'author',
+				'size' 		=> 'small',
 				'link' 		=> 'profile',
-				'title' 	=> __('by %s','foodiepro'),
 				'aclass' 	=> 'auth-avatar',
+				'imgclass' 	=> 'avatar',
 			);
 			$output .= PeepsoHelpers::get_avatar( $args );
 		}
@@ -36,15 +37,17 @@ class RPWE_Customizations {
 	}
 
 	// Filter the author rpwe argument to allow dynamic value here (post's author, current user, view user...)
-	public function wprpe_query_displayed_user_posts( $args ) {
+	public function wprpe_query_user_posts( $args ) {
 		$author = $args['author'];
 		if ( $author=='view_user' && class_exists('Peepso') ) {
 			$args['author'] = PeepSoProfileShortcode::get_instance()->get_view_user_id();
+			if ($args['author']==0) return false;
 		}
 		elseif ('post_author'==$author) {
 			$args['author'] = get_the_author_meta('ID');
 		}
 		elseif ('current_user'==$author) {
+			if (!is_user_logged_in()) return false;
 			$args['author'] = get_current_user_id();
 		}
 		return $args;
@@ -54,8 +57,8 @@ class RPWE_Customizations {
 		$output = '';
 		if ( $args['display_rating'] == '1') {
 			$output .= '<span class="entry-rating">';
-			$output .= do_shortcode('[display-star-rating display="minimal" category="global" markup="span"]');
-			$output .= do_shortcode('[like-count]');
+			$output .= class_exists('CSR_Rating')?CSR_Rating::render('entry', false):'';
+			$output .= class_exists('CPM_Like')? CPM_Like::get_like_count():'';
 			$output .= '</span>';
 		}
 		return $title . $output;

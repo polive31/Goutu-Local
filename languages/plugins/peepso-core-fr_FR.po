@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: peepso-internal\n"
 "POT-Creation-Date: 2020-02-13 15:57+0700\n"
-"PO-Revision-Date: 2020-03-08 16:18+0100\n"
+"PO-Revision-Date: 2020-03-29 16:45+0200\n"
 "Last-Translator: alconost <alpha@alconost.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -6122,7 +6122,7 @@ msgstr "Mettre à jour les informations"
 
 #: classes/profile.php:1060
 msgid "Redirect to about page"
-msgstr "Rediriger vers une page"
+msgstr "Aller sur ma page de profil"
 
 #: classes/profile.php:1106
 msgid "Share this Profile"

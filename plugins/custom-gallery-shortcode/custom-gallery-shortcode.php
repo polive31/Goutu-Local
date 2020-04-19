@@ -34,7 +34,7 @@ class Custom_Gallery_Shortcode
 
 	public function custom_gallery_stylesheet()
 	{
-		custom_register_style('custom-gallery', 'assets/css/custom-gallery.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION);
+		foodiepro_register_style('custom-gallery', 'assets/css/custom-gallery.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION);
 	}
 
 
@@ -72,7 +72,7 @@ class Custom_Gallery_Shortcode
 		static $instance = 0;
 		$instance++;
 
-		custom_enqueue_style('custom-gallery');
+		foodiepro_enqueue_style( 'custom-gallery' );
 
 		if (!empty($attr['ids'])) {
 			// 'ids' is explicitly ordered, unless you specify otherwise.
@@ -157,9 +157,10 @@ class Custom_Gallery_Shortcode
 							'valign' 	=> 'above',
 							'halign'	=> 'left',
 							'action'	=> 'click',
-							'class'		=> 'fu-form modal fancy',
+							'class'		=> 'fu-form modal',
 							'title'		=> __('Upload your picture', 'foodiepro'),
-							'img'		=> CHILD_THEME_URL . '/images/popup-icons/add_pic.png'
+							'img'		=> CHILD_THEME_URL . '/images/popup-icons/camera_small.png',
+							'imgdir'	=> CHILD_THEME_PATH . '/images/popup-icons/'
 						);
 						Tooltip::display($args);
 					}

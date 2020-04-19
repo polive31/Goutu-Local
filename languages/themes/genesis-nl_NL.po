@@ -1,33 +1,33 @@
-# Translation of Genesis Framework - Genesis 3.2 in Dutch
-# This file is distributed under the same license as the Genesis Framework - Genesis 3.2 package.
+# Translation of Genesis Framework - Genesis 3.3 in Dutch
+# This file is distributed under the same license as the Genesis Framework - Genesis 3.3 package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-02-06 09:24:03+0000\n"
+"PO-Revision-Date: 2020-03-29 10:39:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: GlotPress/2.3.1\n"
 "Language: nl\n"
-"Project-Id-Version: Genesis Framework - Genesis 3.2\n"
+"Project-Id-Version: Genesis Framework - Genesis 3.3\n"
 
-#: lib/structure/post.php:1038
+#: lib/structure/post.php:1041
 msgid "<span class=\"screen-reader-text\">Go to</span> Next Page"
 msgstr "<span class=\"screen-reader-text\">Ga naar</span> Volgende Pagina"
 
-#: lib/structure/post.php:991 lib/structure/post.php:1024
+#: lib/structure/post.php:994 lib/structure/post.php:1027
 msgid "Interim pages omitted"
 msgstr "Interim pagina's zijn weggelaten"
 
-#: lib/structure/post.php:976
+#: lib/structure/post.php:979
 msgid "<span class=\"screen-reader-text\">Go to</span> Previous Page"
 msgstr "<span class=\"screen-reader-text\">Ga naar</span> Vorige Pagina"
 
-#: lib/structure/post.php:969
+#: lib/structure/post.php:963
 msgid "Pagination"
 msgstr "Paginering"
 
-#: lib/structure/post.php:966
+#: lib/structure/post.php:973
 msgid "Go to page"
 msgstr "Ga naar pagina"
 
@@ -86,7 +86,7 @@ msgstr "Dit filter wordt niet meer ondersteund. Je kunt de footer tekst nu aanpa
 msgid "Skip to main content"
 msgstr "Door naar de hoofd inhoud"
 
-#: lib/structure/comments.php:176
+#: lib/structure/comments.php:174
 msgid "Trackbacks"
 msgstr "Trackbacks"
 
@@ -252,11 +252,11 @@ msgstr "Widgets panel"
 msgid "This is the %1$s. You can add content to this area by visiting your %2$s and adding new widgets to this area."
 msgstr "Dit is de %1$s. Je kunt content aan die gedeelte toevoegen door naar je %2$s te gaan en nieuwe widgets toe te voegen aan dit gedeelte. "
 
-#: lib/structure/post.php:813
+#: lib/structure/post.php:815
 msgid "Use `genesis_get_author_box()` instead."
 msgstr "Gebruik `genesis_get_author_box()` hier in plaats van."
 
-#: lib/structure/post.php:810
+#: lib/structure/post.php:812
 msgid "The default is true, so remove the second argument."
 msgstr "De standaard is true, dus verwijder het tweede argument."
 
@@ -369,11 +369,11 @@ msgstr "Kijk wat er nieuw is"
 msgid "Genesis %1$s is available. %2$s or %3$s."
 msgstr "Genesis %1$s is beschikbaar. %2$s of %3$s."
 
-#: lib/functions/layout.php:576
+#: lib/functions/layout.php:583
 msgid "Use `genesis_get_structural_wrap()` instead."
 msgstr "Gebruik `genesis_get_structural_wrap()` hier in plaats van."
 
-#: lib/functions/layout.php:573
+#: lib/functions/layout.php:580
 msgid "The default is true, so remove the third argument."
 msgstr "De standaard is true, dus verwijder je derde argument."
 
@@ -398,11 +398,11 @@ msgstr "In het veld Meta-trefwoorden kan een lijst van trefwoorden, gescheiden d
 msgid "Text entered in the Meta Description field is used as the short page description under the title on search engine results pages."
 msgstr "Tekst in het veld Meta-beschrijving wordt gebruikt als de korte paginabeschrijving onder de titel op de pagina's met zoekmachineresultaten."
 
-#: lib/structure/post.php:1093
+#: lib/structure/post.php:1096
 msgid "Next Post:"
 msgstr "Volgend bericht:"
 
-#: lib/structure/post.php:1080
+#: lib/structure/post.php:1083
 msgid "Previous Post:"
 msgstr "Vorig bericht:"
 
@@ -945,7 +945,7 @@ msgstr "Error tijdens het opslaan van instellingen."
 msgid "Custom Text Content"
 msgstr "Aangepaste tekst content"
 
-#: lib/init.php:132
+#: lib/init.php:161
 msgid "Secondary Navigation Menu"
 msgstr "Secondary Navigation Menu"
 
@@ -1095,7 +1095,7 @@ msgid "Comments and Trackbacks"
 msgstr "Reacties en Trackbacks"
 
 #: lib/views/help/genesis-layout.php:15 lib/js/build/layout-toggle.js:10
-#: lib/js/editor/layout-toggle.js:38
+#: lib/js/editor/layout-toggle.js:40
 msgid "Default Layout"
 msgstr "Standaard lay-out"
 
@@ -1127,13 +1127,13 @@ msgstr "Kies het bestand van je computer en klik op \"Upload bestand en importer
 msgid "Default"
 msgstr "Standaard"
 
-#: lib/structure/post.php:886 lib/structure/post.php:1039
+#: lib/structure/post.php:888 lib/structure/post.php:1042
 msgid "Next Page"
-msgstr "Volgende pagina"
+msgstr "Volgende"
 
-#: lib/structure/post.php:885 lib/structure/post.php:977
+#: lib/structure/post.php:887 lib/structure/post.php:980
 msgid "Previous Page"
-msgstr "Vorige pagina"
+msgstr "Vorige"
 
 #: lib/shortcodes/post.php:45 lib/shortcodes/post.php:121
 msgid "ago"
@@ -1567,7 +1567,7 @@ msgstr "Door"
 msgid "[Read more...]"
 msgstr "[Lees meer...]"
 
-#: lib/functions/deprecated.php:810 lib/structure/comments.php:76
+#: lib/functions/deprecated.php:810 lib/structure/comments.php:75
 msgid "Comments"
 msgstr "Reacties"
 
@@ -1575,7 +1575,7 @@ msgstr "Reacties"
 msgid "Posts"
 msgstr "Artikelen"
 
-#: lib/init.php:131
+#: lib/init.php:160
 msgid "Primary Navigation Menu"
 msgstr "Primary Navigation Menu"
 
@@ -1585,20 +1585,20 @@ msgstr "Primary Navigation Menu"
 msgid "Copyright"
 msgstr "Copyright"
 
-#: lib/structure/comments.php:416
+#: lib/structure/comments.php:414
 msgid "Your comment is awaiting moderation."
 msgstr "Je reactie wacht op moderatie."
 
 #. translators: 1: A date, 2: A time.
-#: lib/structure/comments.php:369
+#: lib/structure/comments.php:367
 msgid "%1$s at %2$s"
 msgstr "%1$s om %2$s"
 
-#: lib/structure/comments.php:325
+#: lib/structure/comments.php:323
 msgid "says"
 msgstr "zegt"
 
-#: lib/shortcodes/post.php:573 lib/structure/comments.php:400
+#: lib/shortcodes/post.php:573 lib/structure/comments.php:398
 #: lib/structure/post.php:495
 msgid "(Edit)"
 msgstr "(Bewerken)"
@@ -2366,7 +2366,7 @@ msgstr "Als je de Genesis_Customizer_Base uit breidt moet je een register method
 
 #: lib/views/meta-boxes/genesis-cpt-archives-layout-settings.php:20
 #: lib/views/meta-boxes/genesis-inpost-layout-box.php:24
-#: lib/js/build/layout-toggle.js:10 lib/js/editor/layout-toggle.js:60
+#: lib/js/build/layout-toggle.js:10 lib/js/editor/layout-toggle.js:62
 msgid "Select Layout"
 msgstr "Kies Layout"
 
@@ -2451,7 +2451,7 @@ msgstr "Centreer"
 msgid "(no title)"
 msgstr "(geen titel)"
 
-#: lib/structure/post.php:1005
+#: lib/structure/post.php:1008
 msgid "Current page"
 msgstr "Huidige pagina"
 

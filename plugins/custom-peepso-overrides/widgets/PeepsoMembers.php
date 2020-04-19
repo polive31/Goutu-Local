@@ -46,61 +46,227 @@ class CustomPeepsoMembers extends WP_Widget
 	{
 
 		echo $args['before_widget'];
-		if (!empty($instance['title'])) {
-			echo $args['before_title'] . apply_filters('widget_title', $instance['title']) . $args['after_title'];
-		}
 
-		$query = (!empty($instance['query']))? $instance['query']:'latest';
+		$query = (!empty($instance['query'])) ? $instance['query'] : 'latest';
+		$allow_empty = (isset($instance['allow_empty'])) ? !empty($instance['allow_empty']) && is_user_logged_in() : false;
+
+		$mutual = (isset($instance['mutual'])) ? !empty($instance['mutual']) : true;
+		$mutual = $mutual && is_user_logged_in();
+
 		// $size = (!empty($instance['thumbnail']))? $instance['thumbnail']:'full';
 		$size = 'full';
+		$link = false;
 
-		if ($query=='latest') {
+		if ($query == 'latest') {
+
+			if (!empty($instance['title'])) {
+				echo $args['before_title'] . apply_filters('widget_title', $instance['title']) . $args['after_title'];
+			}
+
 			$query_args = array(
-				// 'blog_id'      => $GLOBALS['blog_id'],
-				// 'role'         => '',
 				'role__in'     => array('author', 'contributor'),
-				// 'role__not_in' => array('administrator','editor','pending'),
-				// 'meta_key'     => 'registered',
-				// 'meta_value'   => '',
-				// 'meta_compare' => '',
-				// 'meta_query'   => array(),
-				// 'date_query'   => array(),
-				// 'include'      => array(),
-				// 'exclude'      => array(),
 				'orderby'      => 'ID',
 				'order'        => 'DESC',
-				// 'offset'       => '',
-				// 'search'       => '',
 				'number'       => $instance['limit'],
-				// 'count_total'  => false,
-				// 'fields'       => 'all',
-				// 'who'          => '',
 			);
 			$users = get_users($query_args);
-		}
-		else {
-			$users = array();
-		}
+			$link = foodiepro_get_permalink(array(
+				'community'	=> 'members',
+				'text'	=>  __('All the members', 'foodiepro'),
+			));
+		} elseif ( foodiepro_contains($query, 'friends') ) {
+
+			// Don't display widget if some conditions aren't met
+			if ( !is_user_logged_in() && foodiepro_contains($query, 'current') )
+				return;
 
 
-		echo '<div class="ps-widget__members">';
-		foreach ($users as $user) {
-			echo '<div class="ps-widget__members-item">';
-			$peepsoUser = PeepSoUser::get_instance($user->ID);
-			echo '<a class="ps-avatar ps-avatar--' . $size . '" href="' . $peepsoUser->get_profileurl() . '" title="' . ucfirst($peepsoUser->get_nicename()) . '">';
-			echo '<img class="ps-name-tips" id="square" src="' . $peepsoUser->get_avatar($size) . '" alt="' . $peepsoUser->get_nicename() . '">';
-			echo '</a>';
-			echo '</div>';
-		}
-		echo '</div>';
 
-		echo '<div class="clear"></div>';
+			$display_params = $this->get_friends_display_params($query, $instance, $mutual);
 
-		if (is_user_logged_in()) {
-			echo '<p class="more-from-category">' . do_shortcode('[permalink peepso="members" text="' . __('All the members', 'foodiepro') . '"]') . '</p>';
-		}
+			if ($display_params['count'] == 0) {
+				if ($allow_empty ) {
+					echo $args['before_title'] . apply_filters('widget_title', sprintf($instance['title'], $display_params['username'])) . $args['after_title'];
+					echo '<p class="aligncenter">' . $display_params['nofriends'] . '</p>';
+					return;
+				}
+				else
+					return;
+			}
+			echo $args['before_title'] . apply_filters('widget_title', sprintf($instance['title'], $display_params['username'])) . $args['after_title'];
+
+			$users = $display_params['users'];
+
+		} else
+			return;
+
+
+?>
+		<div class="ps-widget__members">
+			<?php
+
+			foreach ($users as $user) {
+				if (isset($user->ID))
+					$user_ID = $user->ID;
+				elseif ( isset($user['friendID']) )
+					$user_ID = $user['friendID'];
+				elseif ( is_numeric($user))
+					$user_ID=$user;
+				else
+					return '';
+
+
+				$peepsoUser = PeepSoUser::get_instance($user_ID);
+
+
+			?>
+				<div class="ps-widget__members-item">
+					<a class="ps-avatar ps-avatar--<?= $size; ?>" href="<?= $peepsoUser->get_profileurl(); ?>" title="<?= ucfirst($peepsoUser->get_nicename()); ?>">
+						<?= PeepsoHelpers::get_avatar(array(
+							'user'		=> $peepsoUser,
+							'imgclass'	=> 'ps-name-tips',
+							'imgid'		=> 'square',
+							'link'		=> 'profile',
+							'size'		=> 'small',
+							'title'		=> ucfirst($peepsoUser->get_nicename()),
+						)); ?>
+					</a>
+				</div>
+			<?php } ?>
+		</div>
+		<div class="clear"></div>
+		<?php
+
+		if ($link) { ?>
+			<p class="more-from-category"><?= $link; ?></p>
+		<?php }
 
 		echo $args['after_widget'];
+	}
+
+	public function get_friends_display_params($query, &$instance, $mutual)
+	{
+		// Params template
+		$params = array(
+			'users'		=> array(),
+			'username'	=> '',
+			'morelink'	=> false,
+			'nofriends'	=> false,
+			'count'	=> 0,
+		);
+
+		$PeepSoFriends = PeepSoFriends::get_instance();
+
+		/* Check if showing My Friends */
+		if ( foodiepro_contains($query, 'current') || ( foodiepro_contains($query, 'auto') && ( PeepsoHelpers::is_current_user_profile() || is_front_page() ) ) && is_user_logged_in() ) {
+			$owner_id = get_current_user_id();
+
+			/* Morelink
+			----------------------------------------*/
+			$params['morelink'] = foodiepro_get_permalink(array(
+				'user'		=> $owner_id,
+				'display'	=> 'profile',
+				'type'		=> 'friends',
+				'text'		=>  __('All my friends', 'foodiepro'),
+			));
+
+			/* Username
+			----------------------------------------*/
+			$params['username'] = '';
+
+			/* Title
+			----------------------------------------*/
+			if (empty($instance['title'])) {
+				$instance['title'] = __('Friends of mine', 'foodiepro');
+			}
+
+			/* No friends label
+			----------------------------------------*/
+			$permalink_args = array(
+				'peepso'	=> 'members',
+				'text'		=> __('make new connections', 'foodiepro'),
+			);
+			$params['nofriends'] = sprintf(__('No friend yet, <u>%s</u>', 'foodiepro'), foodiepro_get_permalink($permalink_args));
+
+			/* Friends count
+			----------------------------------------*/
+			$params['count'] = $PeepSoFriends->get_num_friends($owner_id);
+
+			/* Users
+			----------------------------------------*/
+			$friendsModel = PeepSoFriendsModel::get_instance();
+			$search_args = array(
+				'number' => $instance['limit'],
+			);
+			$params['users'] = $friendsModel->get_friends($owner_id, $search_args);
+
+		} else { // viewed or author, nearly the same so treated together
+
+			if ( foodiepro_contains($query, 'viewed|auto') &&  PeepSoProfileShortcode::get_instance()->get_view_user_id())
+				$owner_id = PeepSoProfileShortcode::get_instance()->get_view_user_id();
+			elseif ( preg_match('(author|auto)', $query) && ( is_single() || is_author() ) ) {
+				$owner_id = get_the_author_meta('ID');
+				if ( $owner_id==get_current_user_id() )
+					return false;
+			}
+			else
+				return false;
+			if (!$owner_id) return false;
+
+			/* Username
+			----------------------------------------*/
+			$user = PeepsoHelpers::get_user($owner_id);
+			if (!is_object($user)) return false;
+			$params['username'] = ucfirst(PeepsoHelpers::get_field($user, 'nicename'));
+
+			/* Title
+			----------------------------------------*/
+			if (empty($instance['title'])) {
+				$instance['title'] = $mutual ? __('Mutual Friends with %s', 'foodiepro') : __('%s\'s Friends', 'foodiepro');
+			}
+
+			/* Morelink
+			----------------------------------------*/
+			$text = $mutual ? __('All %s\'s friends', 'foodiepro') : __('All mutual friends', 'foodiepro');
+
+			if (is_user_logged_in()) {
+				$params['morelink'] = foodiepro_get_permalink(array(
+					'user'		=> $owner_id,
+					'display'	=> 'profile',
+					'type'		=> 'friends',
+					'text'		=>  $text,
+				));
+			}
+
+			/* No friends label
+			----------------------------------------*/
+			$permalink_args = array(
+				'community'	=> 'members',
+				'text'		=> __('make new connections', 'foodiepro'),
+			);
+			if ($mutual)
+				$params['nofriends'] = sprintf(__('No mutual friends yet with %s, <u>%s</u>', 'foodiepro'), $params['username'], foodiepro_get_permalink($permalink_args));
+			else
+				$params['nofriends'] = sprintf(__('%s doesn\'t have any friend yet', 'foodiepro'), $params['username']);
+
+			/* Users
+			----------------------------------------*/
+			$friendsModel = PeepSoFriendsModel::get_instance();
+			$search_args = array(
+				'number' => $instance['limit'],
+			);
+			if ($mutual)
+				$params['users'] = $friendsModel->get_mutual_friends(get_current_user_id(), $owner_id, $search_args);
+			else
+				$params['users'] = $friendsModel->get_friends($owner_id, $search_args);
+
+			/* Friends count
+			----------------------------------------*/
+			// $params['count'] = $PeepSoFriends->get_num_friends($owner_id);
+			$params['count'] = count($params['users']);
+		}
+
+		return $params;
 	}
 
 	/**
@@ -116,12 +282,22 @@ class CustomPeepsoMembers extends WP_Widget
 		if (isset($instance['title']))
 			$title = $instance['title'];
 		else
-			$title = __('New title', 'text_domain');
+		$title = __('New title', 'text_domain');
 
 		if (isset($instance['query']))
-			$query = $instance['query'];
+		$query = $instance['query'];
 		else
 			$query = 'latest';
+
+		if (isset($instance['mutual']))
+			$mutual = $instance['mutual'];
+		else
+			$mutual = 'on';
+
+		if (isset($instance['allow_empty']))
+			$allow_empty = $instance['allow_empty'];
+		else
+			$allow_empty = '';
 
 		if (isset($instance['thumbnail']))
 			$thumbnail = $instance['thumbnail'];
@@ -143,7 +319,7 @@ class CustomPeepsoMembers extends WP_Widget
 		// else
 		// 	$height = 80;
 
-?>
+		?>
 		<p>
 			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>">
@@ -155,8 +331,21 @@ class CustomPeepsoMembers extends WP_Widget
 			</label>
 			<select class="widefat" id="<?php echo $this->get_field_id('query'); ?>" name="<?php echo $this->get_field_name('query'); ?>" style="width:100%;">
 				<option value="latest" <?php selected($query, 'latest'); ?>><?php _e('Latest Registered', 'foodiepro') ?></option>
-				<option value="friends" <?php selected($query, 'friends'); ?>><?php _e('Friends', 'foodiepro') ?></option>
+				<option value="friends-auto" <?php selected($query, 'friends-auto'); ?>><?php _e('Friends (automatic)', 'foodiepro') ?></option>
+				<option value="friends-current" <?php selected($query, 'friends-current'); ?>><?php _e('Friends (from logged-in user)', 'foodiepro') ?></option>
+				<option value="friends-viewed" <?php selected($query, 'friends-viewed'); ?>><?php _e('Friends (from viewed member profile)', 'foodiepro') ?></option>
+				<option value="friends-author" <?php selected($query, 'friends-author'); ?>><?php _e('Friends (from post author)', 'foodiepro') ?></option>
 			</select>
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id('allow_empty'); ?>"><?php _e('Display if no friends found ?', 'foodiepro'); ?></label>
+			<input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id('allow_empty'); ?>" name="<?php echo $this->get_field_name('allow_empty'); ?>" <?php checked($allow_empty, 'on'); ?>>
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id('mutual'); ?>"><?php _e('Limit to mutual friends ?', 'foodiepro'); ?></label>
+			<input class="checkbox" type="checkbox" id="<?php echo $this->get_field_id('mutual'); ?>" name="<?php echo $this->get_field_name('mutual'); ?>" <?php checked($mutual, 'on'); ?>>
 		</p>
 
 		<p>
@@ -164,9 +353,9 @@ class CustomPeepsoMembers extends WP_Widget
 				<?php _e('Thumbnail size', 'foodiepro'); ?>
 			</label>
 			<select class="widefat" id="<?php echo $this->get_field_id('thumbnail'); ?>" name="<?php echo $this->get_field_name('thumbnail'); ?>" style="width:100%;">
-			<?php
+				<?php
 				$default_image_sizes = $this->get_image_sizes();
-				foreach ( $default_image_sizes as $name => $values ) { ?>
+				foreach ($default_image_sizes as $name => $values) { ?>
 					<option value="<?= $name; ?>" <?php selected($thumbnail, $name); ?>><?= $name . ' (' . $values['width'] . 'x' . $values['height'] . ')'; ?></option>
 				<?php } ?>
 			</select>
@@ -211,6 +400,8 @@ class CustomPeepsoMembers extends WP_Widget
 		$instance['limit'] = (!empty($new_instance['limit'])) ? strip_tags($new_instance['limit']) : '';
 		$instance['query'] = (!empty($new_instance['query'])) ? strip_tags($new_instance['query']) : '';
 		$instance['thumbnail'] = (!empty($new_instance['thumbnail'])) ? strip_tags($new_instance['thumbnail']) : '';
+		$instance['mutual'] = (!empty($new_instance['mutual'])) ? strip_tags($new_instance['mutual']) : '';
+		$instance['allow_empty'] = (!empty($new_instance['allow_empty'])) ? strip_tags($new_instance['allow_empty']) : '';
 		// $instance['width'] = (!empty($new_instance['width'])) ? strip_tags($new_instance['width']) : '';
 		// $instance['height'] = (!empty($new_instance['height'])) ? strip_tags($new_instance['height']) : '';
 

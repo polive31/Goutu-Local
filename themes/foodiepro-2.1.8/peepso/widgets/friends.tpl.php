@@ -50,12 +50,17 @@ if ( !count($instance['list']) ) return;
 						<div class="ps-avatar ps-avatar--full">
 							<?php
 							$friend = PeepSoUser::get_instance($friend);
-							printf('<a href="%s"><img alt="%s avatar" title="%s" src="%s" class="ps-name-tips"></a>',
-								$friend->get_profileurl(),
-								$friend->get_fullname(),
-								$friend->get_fullname(),
-								$friend->get_avatar()
-							);
+							// printf('<a href="%s"><img alt="%s avatar" title="%s" src="%s" class="ps-name-tips"></a>',
+							// 	$friend->get_profileurl(),
+							// 	$friend->get_fullname(),
+							// 	$friend->get_fullname(),
+							// 	$friend->get_avatar()
+							// );
+							// PeepsoHelpers::get_avatar(array(
+							// 	'link' 	=> 'profile',
+							// 	'user'	=> $friend->user_id,
+							// 	'title'	=> $friend->get_fullname(),
+							// ));
 							?>
 						</div>
 					</div>

@@ -36,7 +36,9 @@ class Custom_Contact_Form {
 
 
 		$Public=new CCF_Public();
-		add_shortcode('custom-contact-form', array($Public, 'ccf_shortcode'));
+		add_shortcode('custom-contact-form', 				array($Public, 'ccf_shortcode'));
+		add_action('admin_post_ccf_submit', 				array($Public, 'ccf_submission_process'));
+		add_action('admin_post_nopriv_ccf_submit', 			array($Public, 'ccf_submission_process'));
 	}
 
 }

@@ -13,7 +13,8 @@ class CAH_Options
     const DEFAULT_COLOR_THEME = 'spring';
     const DEFAULT_LOGIN_COLOR_THEME = 'spring';
 
-    public function hydrate() {
+    public function hydrate()
+    {
         if (!CAH_Assets::get_option('color')) {
             CAH_Assets::set_option('color', self::DEFAULT_COLOR_THEME);
         }
@@ -32,12 +33,15 @@ class CAH_Options
         if (!CAH_Assets::get_option('adminbar_visibility')) {
             CAH_Assets::set_option('adminbar_visibility', 'admin'); // wp, loggedin, all
         }
+        if (!CAH_Assets::get_option('show-console-logs')) {
+            CAH_Assets::set_option('show-console-logs', '0'); // '1' or '0'
+        }
     }
 
     /* Admin notice */
     public function maybe_display_admin_notice()
     {
-        if ( CAH_Assets::get_option('reload') == '1') {
+        if (CAH_Assets::get_option('reload') == '1') {
             add_action('admin_notices', array($this, 'force_reload_activated_admin_notice'));
         }
     }
@@ -129,6 +133,15 @@ class CAH_Options
             'cah_adminbar_general_settings',
             array('class' => 'cah-adminbar')
         );
+
+        add_settings_field(
+            'cah_showlog_field',
+            __('Javascript Console Logs Visibility', 'foodiepro'),
+            array($this, 'cah_showlog_field_cb'),
+            'cah_adminbar_settings_group',
+            'cah_adminbar_general_settings',
+            array('class' => 'cah-adminbar')
+        );
     }
 
     /* DEBUG SETTINGS CALLBACKS */
@@ -150,9 +163,15 @@ class CAH_Options
     <?php
     }
 
+    public function cah_showlog_field_cb()
+    {
+    ?>
+        <input type='checkbox' name='foodiepro[show-console-logs]' value='1' <?php checked(CAH_Assets::get_option('show-console-logs')); ?>'>
+    <?php
+    }
+
 
     // CUSTOM COLOR THEME CALLBACKS
-
     public function cct_general_settings_cb()
     {
         echo __('These are the Custom Color Theme settings.', 'foodiepro');

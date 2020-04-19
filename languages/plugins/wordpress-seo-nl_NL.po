@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Yoast SEO - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-03-03 21:58:29+0000\n"
+"PO-Revision-Date: 2020-04-13 16:01:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,6 +35,21 @@ msgstr ""
 msgid "Your site can be found by search engines"
 msgstr "Je site kan door zoekmachines worden gevonden"
 
+#. translators: %1$s: Expands to 'Ryte'.
+#: inc/health-check-ryte.php:177
+msgid "%1$s cannot determine whether your site can be found by search engines"
+msgstr "%1$s kan niet bepalen of je site gevonden kan worden door zoekmachines"
+
+#. translators: %1$s: Opening tag of the link to the Yoast knowledge base,
+#. %2$s: Link closing tag.
+#: inc/health-check-ryte.php:160
+msgid "%1$sRead more about troubleshooting search engine visibility.%2$s"
+msgstr "%1$sLees meer over zoekmachine zichtbaarheid problemen op te lossen.%2$s"
+
+#: inc/health-check-ryte.php:147
+msgid "Your site cannot be found by search engines"
+msgstr "Je site kan niet gevonden worden door zoekmachines"
+
 #. translators: 1: The Ryte response raw error code, if any. 2: The error
 #. message. 3: The WordPress error code, if any.
 #: inc/health-check-ryte.php:123
@@ -53,8 +68,8 @@ msgstr "%1$sDit werd gemeld door de %2$s plugin%3$s"
 msgid "%1$sGo to the Discussion Settings page%2$s"
 msgstr "%1$sGa naar de discussie-instellingenpagina%2$s"
 
-#: admin/views/class-view-utils.php:91
 #: admin/views/tabs/metas/paper-content/post_type/post-type.php:26
+#: admin/views/class-view-utils.php:91
 msgid "Date in Google Preview"
 msgstr "Datum in Google Preview"
 
@@ -70,7 +85,7 @@ msgstr "Bekijk als:"
 msgid "Desktop result"
 msgstr "Desktop resultaat"
 
-#: languages/yoast-seo-js.php:515 languages/wordpress-seojs.php:33
+#: languages/wordpress-seojs.php:33 languages/yoast-seo-js.php:515
 msgid "Google preview"
 msgstr "Google preview"
 
@@ -84,7 +99,7 @@ msgstr "Als je geavanceerde <code>meta</code> robots instellingen voor deze pagi
 
 #. translators: 1: link to Firefox website; 2: link to Chrome website; 3: link
 #. to Edge website; 4: link close tag.
-#: admin/taxonomy/class-taxonomy.php:103 admin/metabox/class-metabox.php:127
+#: admin/metabox/class-metabox.php:127 admin/taxonomy/class-taxonomy.php:103
 msgid "The browser you are currently using is unfortunately rather dated. Since we strive to give you the best experience possible, we no longer support this browser. Instead, please use %1$sFirefox%4$s, %2$sChrome%4$s or %3$sMicrosoft Edge%4$s."
 msgstr "De browser die je momenteel gebruikt, is helaas nogal gedateerd. Omdat we ernaar streven je de best mogelijke ervaring te bieden, ondersteunen we deze browser niet meer. Gebruik in plaats daarvan %1$sFirefox%4$s, %2$sChrome%4$s or %3$sMicrosoft Edge%4$s."
 
@@ -418,26 +433,26 @@ msgstr "Kies of je site een organisatie vertegenwoordigt of een persoon."
 msgid "Knowledge Graph & Schema.org"
 msgstr "Knowledge Graph & Schema.org"
 
-#: admin/views/tabs/social/accounts.php:93
+#: admin/views/tabs/social/accounts.php:101
 msgid "Organization social profiles"
 msgstr "Sociale profielen van de organisatie"
 
 #. translators: 1: link tag to the relevant WPSEO admin page; 2: link close
 #. tag.
-#: admin/views/tabs/social/accounts.php:80
+#: admin/views/tabs/social/accounts.php:88
 msgid "To make your site represent a Company or Organization go to %1$sSearch Appearance%2$s and set Organization or Person to \"Organization\"."
 msgstr "Om je site een Bedrijf of Organisatie te laten representeren, ga je naar %1$sZoekweergave%2$s en kies je bij Bedrijf of Persoon voor \"Bedrijf\"."
 
 #. translators: 1: link to edit user page.
-#: admin/views/tabs/social/accounts.php:74
+#: admin/views/tabs/social/accounts.php:82
 msgid "To change the social accounts used for your site, update the details for %1$s."
 msgstr "Om de sociale accounts die je gebruikt voor je site te veranderen, werk je de gegevens voor %1$s bij."
 
-#: admin/views/tabs/social/accounts.php:67
+#: admin/views/tabs/social/accounts.php:75
 msgid "That means that the form and information below is disabled, and not used."
 msgstr "Dat betekent dat het formulier en de informatie hieronder zijn uitgeschakeld en niet worden gebruikt."
 
-#: admin/views/tabs/social/accounts.php:65
+#: admin/views/tabs/social/accounts.php:73
 msgid "Your website is currently configured to represent a Person"
 msgstr "Je website is momenteel geconfigureerd om een persoon te vertegenwoordigen"
 
@@ -498,7 +513,7 @@ msgstr "SoundCloud-profiel-URL"
 msgid "MySpace profile URL"
 msgstr "MySpace-profiel-URL"
 
-#: frontend/schema/class-schema-article.php:162
+#: frontend/schema/class-schema-article.php:166
 msgid "Uncategorized"
 msgstr "Ongecategoriseerd"
 
@@ -544,7 +559,7 @@ msgid "Instagram profile URL"
 msgstr "Instagram profiel URL"
 
 #: admin/config-ui/fields/class-field-profile-url-wikipedia.php:19
-#: admin/views/tabs/social/accounts.php:57
+#: admin/views/tabs/social/accounts.php:64
 msgid "Wikipedia URL"
 msgstr "Wikipedia-URL"
 
@@ -858,7 +873,7 @@ msgstr "%3$sEerder gebruikte keyphrase%5$s: Je hebt de volgende keyphrase %1$sé
 
 #: languages/yoast-seo-js.php:449
 msgid "%1$sPreviously used keyphrase%2$s: You've not used this keyphrase before, very good."
-msgstr "%1$sEerder gebruikt keyphrase%2$s: Je hebt dit keyphrase nog niet eerder gebruikt, heel goed."
+msgstr "%1$sEerder gebruikt keyphrase%2$s: Je hebt deze keyphrase nog niet eerder gebruikt, heel goed."
 
 #. Translators: %1$s and %2$s open links to an articles about stopwords, %3$s
 #. closes the links
@@ -1355,7 +1370,7 @@ msgstr "Sta controle toe"
 msgid "This tab allows you to selectively disable %s features for all sites in the network. By default all features are enabled, which allows site admins to choose for themselves if they want to toggle a feature on or off for their site. When you disable a feature here, site admins will not be able to use that feature at all."
 msgstr "Deze tab laat je selectief bepaalde %s functionaliteit uitzetten voor alle sites in het netwerk. Standaard staan alle functies aan, wat site admins toestaat zelf te bepalen welke functies ze aan of uit willen zetten voor hun site. Wanneer je hier een functie uitzet, zullen site admins die functie helemaal niet kunnen gebruiken."
 
-#: admin/views/sidebar.php:29 languages/wordpress-seojs.php:113
+#: languages/wordpress-seojs.php:113 admin/views/sidebar.php:29
 msgid "Rank better with synonyms & related keyphrases"
 msgstr "Scoor beter met synoniemen en verwante keyphrases"
 
@@ -1393,7 +1408,7 @@ msgstr "Keyphrase:"
 msgid "%1$s video"
 msgstr "%1$s video"
 
-#: admin/class-yoast-form.php:771
+#: admin/class-yoast-form.php:793
 msgid "This feature has been disabled by the network admin."
 msgstr "Deze optie is uitgeschakeld door de netwerk admin."
 
@@ -1405,20 +1420,20 @@ msgstr "Focus keyphrase niet ingesteld."
 msgid "Multiple keyphrases"
 msgstr "Meerdere keyphrases"
 
-#: admin/taxonomy/class-taxonomy-fields-presenter.php:127
-#: admin/class-yoast-form.php:575 admin/metabox/class-metabox.php:636
+#: admin/metabox/class-metabox.php:643
+#: admin/taxonomy/class-taxonomy-fields-presenter.php:129
+#: admin/class-yoast-form.php:585
 msgid "Clear Image"
 msgstr "Haal afbeelding weg"
 
 #. translators: %s expands to 'Yoast SEO Premium'.
 #. translators: %s expands to Yoast SEO Premium
-#: admin/class-add-keyword-modal.php:38
-#: admin/watchers/class-slug-change-watcher.php:223
-#: admin/class-premium-upsell-admin-block.php:67
+#: languages/wordpress-seojs.php:89 admin/class-multiple-keywords-modal.php:38
+#: admin/formatter/class-metabox-formatter.php:213
 #: admin/class-keyword-synonyms-modal.php:38
-#: admin/class-multiple-keywords-modal.php:38
-#: admin/formatter/class-metabox-formatter.php:213 admin/views/sidebar.php:46
-#: admin/class-premium-popup.php:81 languages/wordpress-seojs.php:89
+#: admin/class-premium-upsell-admin-block.php:67
+#: admin/class-premium-popup.php:81 admin/class-add-keyword-modal.php:38
+#: admin/watchers/class-slug-change-watcher.php:223 admin/views/sidebar.php:46
 msgid "Get %s"
 msgstr "Koop %s"
 
@@ -1563,11 +1578,10 @@ msgstr "Frequently Asked Questions"
 
 #. translators: %s expands to a 'Yoast SEO Premium' text linked to the
 #. yoast.com website.
-#: admin/class-add-keyword-modal.php:26
-#: admin/class-keyword-synonyms-modal.php:26
-#: admin/class-multiple-keywords-modal.php:26
+#: languages/wordpress-seojs.php:147 admin/class-multiple-keywords-modal.php:26
 #: admin/formatter/class-metabox-formatter.php:201
-#: languages/wordpress-seojs.php:147
+#: admin/class-keyword-synonyms-modal.php:26
+#: admin/class-add-keyword-modal.php:26
 msgid "Great news: you can, with %s!"
 msgstr "Goed nieuws: dat kan, met %s!"
 
@@ -1791,12 +1805,12 @@ msgstr "Optimaliseer de SEO van je webwinkel en verkoop meer producten!"
 msgid "Add synonyms"
 msgstr "Synoniemen toevoegen"
 
-#: admin/class-keyword-synonyms-modal.php:23 languages/wordpress-seojs.php:107
+#: languages/wordpress-seojs.php:107 admin/class-keyword-synonyms-modal.php:23
 msgid "Would you like to add keyphrase synonyms?"
 msgstr "Wil je keyphrase synoniemen toevoegen?"
 
-#: admin/class-add-keyword-modal.php:23
 #: admin/formatter/class-metabox-formatter.php:198
+#: admin/class-add-keyword-modal.php:23
 msgid "Would you like to add more than one keyphrase?"
 msgstr "Wil je meer dan een keyphrase toevoegen?"
 
@@ -1983,10 +1997,10 @@ msgstr "Je hebt zojuist een %1$s naar de prullenbak verplaatst."
 msgid "Breadcrumb settings for %s archive"
 msgstr "Broodkruimel-instellingen voor %s-archief"
 
-#. translators: %s is the plural version of the post type's name.
 #. translators: %s expands to the post type name.
-#: admin/views/tabs/metas/paper-content/post-type-content.php:32
+#. translators: %s is the plural version of the post type's name.
 #: admin/views/tabs/metas/paper-content/post_type/woocommerce-shop-page.php:23
+#: admin/views/tabs/metas/paper-content/post-type-content.php:32
 msgid "Settings for %s archive"
 msgstr "Instellingen voor %s archief"
 
@@ -2170,8 +2184,8 @@ msgstr "%s data succesvol geïmporteerd."
 msgid "%s data not found."
 msgstr "%s data niet gevonden."
 
-#: admin/class-premium-upsell-admin-block.php:58 admin/views/sidebar.php:38
 #: languages/wordpress-seojs.php:129
+#: admin/class-premium-upsell-admin-block.php:58 admin/views/sidebar.php:38
 msgid "24/7 email support"
 msgstr "24/7 e-mail ondersteuning"
 
@@ -2264,8 +2278,8 @@ msgstr "Wanneer je media upload (bijvoorbeeld een afbeelding of video) in WordPr
 msgid "Learn more about the Media and attachment URLs setting"
 msgstr "Kom meer te weten over de media en attachment url's instelling"
 
-#: admin/views/tabs/metas/paper-content/general/title-separator.php:12
 #: admin/views/tabs/social/facebook.php:35
+#: admin/views/tabs/metas/paper-content/general/title-separator.php:12
 msgid "Learn more about the title separator setting"
 msgstr "Leer meer over de titel scheidingsteken instelling"
 
@@ -2360,14 +2374,14 @@ msgstr "Je kan de vakken hieronder gebruiken om te verifiëren met de verschille
 msgid "Learn more about the Webmaster Tools verification"
 msgstr "Kom meer te weten over de Webmaster Tools verificatie"
 
-#: admin/views/tabs/dashboard/features.php:52 languages/yoast-components.php:66
-#: deprecated/class-recalibration-beta.php:61
+#: languages/yoast-components.php:66 deprecated/class-recalibration-beta.php:61
+#: admin/views/tabs/dashboard/features.php:52
 msgid "On"
 msgstr "Aan"
 
 #. translators: %s expands to a feature's name
-#: admin/views/tabs/network/features.php:45
 #: admin/views/tabs/dashboard/features.php:45
+#: admin/views/tabs/network/features.php:45
 msgid "Help on: %s"
 msgstr "Hulp bij: %s"
 
@@ -2376,9 +2390,9 @@ msgstr "Hulp bij: %s"
 msgid "%1$s comes with a lot of features. You can enable / disable some of them below. Clicking the question mark gives more information about the feature."
 msgstr "%1$s wordt geleverd met veel functies. Je kunt sommige hiervan hieronder inschakelen / uitschakelen. Klik op het vraagteken voor meer informatie over de functie."
 
+#: languages/yoast-components.php:69 deprecated/class-recalibration-beta.php:62
+#: admin/views/tabs/dashboard/features.php:53
 #: admin/views/class-yoast-feature-toggles.php:142
-#: admin/views/tabs/dashboard/features.php:53 languages/yoast-components.php:69
-#: deprecated/class-recalibration-beta.php:62
 msgid "Off"
 msgstr "Uit"
 
@@ -2429,7 +2443,7 @@ msgstr "Het niet in de zoekresultaten tonen van %1$s betekent technisch gezien d
 
 #. translators: %1$s expands to the taxonomy name %2$s expands to the current
 #. taxonomy index value
-#: admin/taxonomy/class-taxonomy-settings-fields.php:71
+#: admin/taxonomy/class-taxonomy-settings-fields.php:72
 msgid "%2$s (current default for %1$s)"
 msgstr "%2$s (huidige standaard voor %1$s)"
 
@@ -2451,10 +2465,10 @@ msgstr "Moeten zoekmachines links volgen op deze %1$s?"
 msgid "Default for %2$s, currently: %1$s"
 msgstr "Standaard voor %2$s, momenteel: %1$s"
 
-#. translators: %s = taxonomy name.
 #. translators: %s expands to the post type name.
-#: admin/taxonomy/class-taxonomy-settings-fields.php:40
+#. translators: %s = taxonomy name.
 #: admin/metabox/class-metabox.php:148
+#: admin/taxonomy/class-taxonomy-settings-fields.php:40
 msgid "Allow search engines to show this %s in search results?"
 msgstr "Sta zoekmachines toe om deze %s te tonen in zoekresultaten?"
 
@@ -2478,7 +2492,7 @@ msgstr "Zichtbaarheid in zoekmachines"
 
 #. translators: %s expands to an indexable object's name, like a post type or
 #. taxonomy
-#: admin/class-yoast-form.php:715
+#: admin/class-yoast-form.php:725
 msgid "Show %s in search results?"
 msgstr "Toon %s in zoekresultaten?"
 
@@ -2491,8 +2505,8 @@ msgstr "Schakel %1$s's XML-sitemap in of uit"
 msgid "Enable this feature if you want Twitter to display a preview with images and a text excerpt when a link to your site is shared."
 msgstr "Zet deze functionaliteit aan als je wilt dat Twitter een preview met afbeeldingen en een samenvatting van de tekst toont als een link naar je site wordt gedeeld."
 
-#: admin/views/class-yoast-feature-toggles.php:72
 #: languages/wordpress-seojs.php:101
+#: admin/views/class-yoast-feature-toggles.php:72
 msgid "SEO analysis"
 msgstr "SEO-analyse"
 
@@ -2500,8 +2514,8 @@ msgstr "SEO-analyse"
 msgid "The text link counter helps you improve your site structure."
 msgstr "De tekstlinkteller helpt je om de structuur van je website te verbeteren."
 
-#: admin/formatter/class-metabox-formatter.php:178
 #: languages/yoast-components.php:20
+#: admin/formatter/class-metabox-formatter.php:178
 msgid "Good results"
 msgstr "Goede resultaten"
 
@@ -2574,8 +2588,8 @@ msgstr "https://yoa.st/1uj"
 msgid "Latest blog posts on %1$s"
 msgstr "De laatste blogberichten op %1$s"
 
-#: admin/formatter/class-metabox-formatter.php:182
 #: languages/yoast-components.php:8
+#: admin/formatter/class-metabox-formatter.php:182
 msgid "Remove highlight from the text"
 msgstr "Markering uit de tekst verwijderen"
 
@@ -2601,23 +2615,23 @@ msgstr "De taal van je site is ingesteld op {language}. Neem contact op met de b
 msgid "Your site language is set to %s. "
 msgstr "De taal van je site in ingesteld op %s."
 
-#: admin/formatter/class-metabox-formatter.php:181
 #: languages/yoast-components.php:11
+#: admin/formatter/class-metabox-formatter.php:181
 msgid "Highlight this result in the text"
 msgstr "Markeer dit resultaat in de tekst"
 
-#: admin/formatter/class-metabox-formatter.php:177
 #: languages/yoast-components.php:17
+#: admin/formatter/class-metabox-formatter.php:177
 msgid "Considerations"
 msgstr "Overwegingen"
 
-#: admin/formatter/class-metabox-formatter.php:174
 #: languages/yoast-components.php:23
+#: admin/formatter/class-metabox-formatter.php:174
 msgid "Errors"
 msgstr "Fouten"
 
-#: admin/formatter/class-metabox-formatter.php:173
 #: languages/yoast-components.php:60
+#: admin/formatter/class-metabox-formatter.php:173
 msgid "Change language"
 msgstr "Wijzig taal"
 
@@ -2711,15 +2725,15 @@ msgstr "Beheer je %s-abonnement in MyYoast"
 msgid "Mark the most important %1$s as 'cornerstone content' to improve your site structure. %2$sLearn more about cornerstone content%3$s."
 msgstr "Markeer de meest belangrlijke %1$s als 'cornerstone content' om jouw sitestructuur te verbeteren. %2$sLeer meer over cornerstone content%3$s."
 
-#: admin/class-add-keyword-modal.php:42
-#: admin/watchers/class-slug-change-watcher.php:224
-#: admin/class-premium-upsell-admin-block.php:68
-#: admin/class-keyword-synonyms-modal.php:42
+#: languages/yoast-components.php:138
 #: admin/class-multiple-keywords-modal.php:42
 #: admin/formatter/class-metabox-formatter.php:184
-#: admin/formatter/class-metabox-formatter.php:217 admin/views/licenses.php:111
-#: admin/class-premium-popup.php:82 admin/class-admin-utils.php:78
-#: languages/yoast-components.php:138
+#: admin/formatter/class-metabox-formatter.php:217
+#: admin/class-admin-utils.php:78 admin/class-keyword-synonyms-modal.php:42
+#: admin/class-premium-upsell-admin-block.php:68
+#: admin/class-premium-popup.php:82 admin/class-add-keyword-modal.php:42
+#: admin/watchers/class-slug-change-watcher.php:224
+#: admin/views/licenses.php:111
 msgid "(Opens in a new browser tab)"
 msgstr "(Opent in een nieuwe browsertab)"
 
@@ -2935,11 +2949,10 @@ msgid "Readability score"
 msgstr "Leesbaarheidsscore"
 
 #. translators: %s expands to 'Yoast SEO Premium'.
-#: admin/class-add-keyword-modal.php:32
-#: admin/class-keyword-synonyms-modal.php:32
-#: admin/class-multiple-keywords-modal.php:32
+#: languages/wordpress-seojs.php:137 admin/class-multiple-keywords-modal.php:32
 #: admin/formatter/class-metabox-formatter.php:207
-#: languages/wordpress-seojs.php:137
+#: admin/class-keyword-synonyms-modal.php:32
+#: admin/class-add-keyword-modal.php:32
 msgid "Other benefits of %s for you:"
 msgstr "Andere voordelen van %s voor jou:"
 
@@ -2947,9 +2960,9 @@ msgstr "Andere voordelen van %s voor jou:"
 msgid "Scroll to see the preview content."
 msgstr "Scrol om de voorbeeldinhoud te zien."
 
+#: languages/wordpress-seojs.php:11
 #: admin/filters/class-cornerstone-filter.php:87
 #: admin/views/class-yoast-feature-toggles.php:88
-#: languages/wordpress-seojs.php:11
 msgid "Cornerstone content"
 msgstr "Cornerstone content"
 
@@ -2986,8 +2999,8 @@ msgstr "We hebben gedetecteerd dat je de configuratiehulp nog niet hebt afgerond
 msgid "The configuration wizard helps you to easily configure your site to have the optimal SEO settings."
 msgstr "De configuratiehulp helpt je om gemakkelijk de optimale SEO-instellingen voor je site in te stellen."
 
-#: admin/class-premium-upsell-admin-block.php:56
 #: languages/wordpress-seojs.php:121
+#: admin/class-premium-upsell-admin-block.php:56
 msgid "Superfast internal linking suggestions"
 msgstr "Supersnelle interne linksuggesties"
 
@@ -2995,15 +3008,14 @@ msgstr "Supersnelle interne linksuggesties"
 msgid "Great news: you can, with %1$s!"
 msgstr "Fantastisch nieuws: jij kan het met %1$s!"
 
-#: admin/class-yoast-form.php:132 admin/class-yoast-form.php:137
+#: admin/class-yoast-form.php:137 admin/class-yoast-form.php:142
 msgid "Save changes"
 msgstr "Wijzigingen opslaan"
 
-#: admin/class-add-keyword-modal.php:41
-#: admin/class-keyword-synonyms-modal.php:41
-#: admin/class-multiple-keywords-modal.php:41
+#: languages/wordpress-seojs.php:141 admin/class-multiple-keywords-modal.php:41
 #: admin/formatter/class-metabox-formatter.php:216
-#: admin/class-premium-popup.php:88 languages/wordpress-seojs.php:141
+#: admin/class-keyword-synonyms-modal.php:41 admin/class-premium-popup.php:88
+#: admin/class-add-keyword-modal.php:41
 msgid "1 year free support and updates included!"
 msgstr "1 jaar gratis ondersteuning en updates inbegrepen!"
 
@@ -3022,8 +3034,8 @@ msgstr "%1$sSocial media preview%2$s: Facebook & Twitter"
 msgid "%1$sNo more dead links%2$s: easy redirect manager"
 msgstr "%1$sGeen dode links meer%2$s: eenvoudige redirect manager"
 
-#: admin/class-premium-upsell-admin-block.php:59 admin/views/sidebar.php:39
 #: languages/wordpress-seojs.php:133
+#: admin/class-premium-upsell-admin-block.php:59 admin/views/sidebar.php:39
 msgid "No ads!"
 msgstr "Geen advertenties!"
 
@@ -3171,8 +3183,8 @@ msgstr "Markeringen in de tekst verwijderen"
 msgid "Mark this result in the text"
 msgstr "Dit resultaat markeren in de text"
 
-#: admin/formatter/class-metabox-formatter.php:183
 #: languages/yoast-seo-js.php:491 languages/yoast-components.php:5
+#: admin/formatter/class-metabox-formatter.php:183
 msgid "Marks are disabled in current view"
 msgstr "Markeringen zijn uitgeschakeld in de huidige weergave"
 
@@ -3212,7 +3224,7 @@ msgstr "Meld je aan!"
 msgid "Name"
 msgstr "Naam"
 
-#: languages/yoast-seo-js.php:542 languages/wordpress-seojs.php:150
+#: languages/wordpress-seojs.php:150 languages/yoast-seo-js.php:542
 msgid "Please provide a meta description by editing the snippet below."
 msgstr "Voeg een meta-omschrijving toe door de onderstaande snippet te bewerken."
 
@@ -3236,8 +3248,8 @@ msgstr "Voorbeeld van de meta omschrijving"
 msgid "A problem occurred when saving the current step, {{link}}please file a bug report{{/link}} describing what step you are on and which changes you want to make (if any)."
 msgstr "De huidige stap kon niet opgeslagen worden, {{link}}verstuur een foutrapport{{/link}} met een beschrijving bij welke stap het mis gaat en welke wijziging je wil maken (indien van toepassing)."
 
-#: admin/config-ui/class-configuration-page.php:142
 #: languages/yoast-components.php:123
+#: admin/config-ui/class-configuration-page.php:142
 msgid "Close the Wizard"
 msgstr "De hulp sluiten"
 
@@ -3322,14 +3334,14 @@ msgstr "Toolbar-menu"
 msgid "%1$s will check weekly if your site is still indexable by search engines and %2$s will notify you when this is not the case."
 msgstr "%1$s zal wekelijks controleren of je site nog geïndexeerd kan worden door zoekmachines en %2$s stuurt je een bericht als dit niet het geval is."
 
+#: admin/pages/network.php:19 admin/pages/dashboard.php:48
+#: admin/views/tabs/dashboard/features.php:19
 #: admin/views/tabs/network/features.php:19
-#: admin/views/tabs/dashboard/features.php:19 admin/pages/dashboard.php:48
-#: admin/pages/network.php:19
 msgid "Features"
 msgstr "Functies"
 
-#: admin/metabox/class-metabox.php:143 languages/yoast-seo-js.php:503
-#: languages/yoast-components.php:160
+#: languages/yoast-seo-js.php:503 languages/yoast-components.php:160
+#: admin/metabox/class-metabox.php:143
 msgid "SEO title"
 msgstr "SEO-titel"
 
@@ -3409,21 +3421,21 @@ msgstr "Kies het symbool dat je als titelscheidingsteken wilt gebruiken.Dit word
 msgid "The name of the person"
 msgstr "De naam van de persoon"
 
+#: admin/metabox/class-metabox.php:155 admin/metabox/class-metabox.php:160
 #: admin/config-ui/fields/class-field-choice-post-type.php:35
 #: admin/config-ui/fields/class-field-multiple-authors.php:24
-#: admin/taxonomy/class-taxonomy-settings-fields.php:73
 #: admin/views/tabs/metas/paper-content/media-content.php:20
-#: admin/class-yoast-form.php:707 admin/metabox/class-metabox.php:155
-#: admin/metabox/class-metabox.php:160
+#: admin/taxonomy/class-taxonomy-settings-fields.php:74
+#: admin/class-yoast-form.php:717
 msgid "No"
 msgstr "Nee"
 
+#: admin/metabox/class-metabox.php:154 admin/metabox/class-metabox.php:159
 #: admin/config-ui/fields/class-field-choice-post-type.php:34
 #: admin/config-ui/fields/class-field-multiple-authors.php:23
-#: admin/taxonomy/class-taxonomy-settings-fields.php:72
 #: admin/views/tabs/metas/paper-content/media-content.php:19
-#: admin/class-yoast-form.php:706 admin/metabox/class-metabox.php:154
-#: admin/metabox/class-metabox.php:159
+#: admin/taxonomy/class-taxonomy-settings-fields.php:73
+#: admin/class-yoast-form.php:716
 msgid "Yes"
 msgstr "Ja"
 
@@ -3641,16 +3653,17 @@ msgstr "Leesbaarheidsanalyse uitschakelen"
 msgid "Removes the readability analysis section from the metabox and disables all readability-related suggestions."
 msgstr "Verwijdert de leesbaarheidsanalyse-sectie uit de metabox en schakelt alle suggesties met betrekking tot leesbaarheid uit."
 
-#: admin/views/class-yoast-feature-toggles.php:80
 #: languages/wordpress-seojs.php:84
+#: admin/views/class-yoast-feature-toggles.php:80
 msgid "Readability analysis"
 msgstr "Leesbaarheidsanalyse"
 
+#: languages/yoast-seo-js.php:474
 #: admin/formatter/class-metabox-formatter.php:96
 #: admin/formatter/class-metabox-formatter.php:126
 #: admin/statistics/class-statistics-service.php:217
-#: languages/yoast-seo-js.php:474 inc/class-wpseo-rank.php:140
-#: inc/class-wpseo-rank.php:163 inc/class-wpseo-rank.php:195
+#: inc/class-wpseo-rank.php:140 inc/class-wpseo-rank.php:163
+#: inc/class-wpseo-rank.php:195
 msgid "Needs improvement"
 msgstr "Heeft verbetering nodig"
 
@@ -3659,8 +3672,8 @@ msgstr "Heeft verbetering nodig"
 msgid "Readability"
 msgstr "Leesbaarheid"
 
-#: admin/formatter/class-metabox-formatter.php:176
 #: languages/yoast-components.php:14
+#: admin/formatter/class-metabox-formatter.php:176
 msgid "Improvements"
 msgstr "Verbeteringen"
 
@@ -3676,8 +3689,9 @@ msgstr "Goed gedaan! We konden geen serieuze SEO-problemen vinden."
 msgid "We have detected the following issues that affect the SEO of your site."
 msgstr "We hebben de volgende problemen ontdekt die invloed hebben op de SEO van je website."
 
+#: languages/yoast-components.php:26
 #: admin/formatter/class-metabox-formatter.php:175
-#: admin/views/partial-alerts-errors.php:20 languages/yoast-components.php:26
+#: admin/views/partial-alerts-errors.php:20
 msgid "Problems"
 msgstr "Problemen"
 
@@ -3803,21 +3817,21 @@ msgstr "Term is ingesteld op noindex"
 msgid "Author archives"
 msgstr "Auteursarchieven"
 
-#: admin/class-yoast-form.php:737
+#: admin/class-yoast-form.php:747
 msgid "Show"
 msgstr "Tonen"
 
 #: admin/views/tabs/metas/paper-content/author-archive-settings.php:13
 #: admin/views/tabs/metas/paper-content/taxonomy-content.php:19
 #: admin/views/tabs/metas/paper-content/date-archives-settings.php:13
-#: admin/class-yoast-form.php:322
+#: admin/class-yoast-form.php:327
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
 #: admin/views/tabs/metas/paper-content/author-archive-settings.php:14
 #: admin/views/tabs/metas/paper-content/taxonomy-content.php:19
 #: admin/views/tabs/metas/paper-content/date-archives-settings.php:14
-#: admin/class-yoast-form.php:322
+#: admin/class-yoast-form.php:327
 msgid "Disabled"
 msgstr "Uitgeschakeld"
 
@@ -4025,11 +4039,12 @@ msgstr "Archieven voor"
 msgid "Error 404: Page not found"
 msgstr "404-fout: pagina niet gevonden"
 
+#: languages/yoast-seo-js.php:488
 #: admin/formatter/class-metabox-formatter.php:110
 #: admin/formatter/class-metabox-formatter.php:140
 #: admin/statistics/class-statistics-service.php:227
-#: languages/yoast-seo-js.php:488 inc/class-wpseo-rank.php:142
-#: inc/class-wpseo-rank.php:173 inc/class-wpseo-rank.php:205
+#: inc/class-wpseo-rank.php:142 inc/class-wpseo-rank.php:173
+#: inc/class-wpseo-rank.php:205
 msgid "Good"
 msgstr "Goed"
 
@@ -4209,15 +4224,15 @@ msgstr "%1$s-instellingen"
 msgid "Export your %1$s settings"
 msgstr "De %1$s-instellingen exporteren"
 
-#: admin/class-export.php:61 admin/views/tabs/tool/wpseo-import.php:25
+#: admin/class-export.php:61 admin/views/tool-import-export.php:85
+#: admin/views/tabs/tool/wpseo-import.php:25
 #: admin/views/tabs/tool/wpseo-import.php:45
-#: admin/views/tool-import-export.php:85
 msgid "Import settings"
 msgstr "Instellingen importeren"
 
+#: admin/views/tool-import-export.php:91
 #: admin/views/tabs/tool/import-seo.php:18
 #: admin/views/tabs/tool/import-seo.php:49
-#: admin/views/tool-import-export.php:91
 msgid "Import from other SEO plugins"
 msgstr "Vanuit andere SEO-plugins importeren"
 
@@ -4394,8 +4409,9 @@ msgstr "Standaardinstellingen"
 msgid "Copy home meta description"
 msgstr "Kopieer home meta-omschrijving"
 
+#: admin/views/tabs/social/facebook.php:44
 #: admin/views/tabs/metas/paper-content/rss-content.php:31
-#: admin/views/tabs/social/facebook.php:44 admin/views/tool-bulk-editor.php:111
+#: admin/views/tool-bulk-editor.php:111
 msgid "Description"
 msgstr "Omschrijving"
 
@@ -4417,32 +4433,32 @@ msgid "Add Open Graph meta data"
 msgstr "'Open Graph'-metadata toevoegen"
 
 #: admin/config-ui/fields/class-field-profile-url-youtube.php:19
-#: admin/views/tabs/social/accounts.php:53
+#: admin/views/tabs/social/accounts.php:59
 msgid "YouTube URL"
 msgstr "YouTube-URL"
 
 #: admin/config-ui/fields/class-field-profile-url-pinterest.php:19
-#: admin/views/tabs/social/accounts.php:49
+#: admin/views/tabs/social/accounts.php:54
 msgid "Pinterest URL"
 msgstr "Pinterest-URL"
 
 #: admin/config-ui/fields/class-field-profile-url-myspace.php:19
-#: admin/views/tabs/social/accounts.php:45
+#: admin/views/tabs/social/accounts.php:49
 msgid "MySpace URL"
 msgstr "MySpace-URL"
 
 #: admin/config-ui/fields/class-field-profile-url-linkedin.php:19
-#: admin/views/tabs/social/accounts.php:41
+#: admin/views/tabs/social/accounts.php:44
 msgid "LinkedIn URL"
 msgstr "LinkedIn-URL"
 
 #: admin/config-ui/fields/class-field-profile-url-instagram.php:19
-#: admin/views/tabs/social/accounts.php:37
+#: admin/views/tabs/social/accounts.php:39
 msgid "Instagram URL"
 msgstr "Instagram-URL"
 
 #: admin/config-ui/fields/class-field-profile-url-twitter.php:19
-#: admin/views/tabs/social/accounts.php:33
+#: admin/views/tabs/social/accounts.php:34
 msgid "Twitter Username"
 msgstr "Twitter-gebruikersnaam"
 
@@ -4564,19 +4580,19 @@ msgstr "Datum-archieven"
 msgid "author archives"
 msgstr "Auteur-archieven"
 
-#: admin/views/tabs/social/facebook.php:43 admin/views/tool-bulk-editor.php:109
-#: languages/wordpress-seojs.php:320 inc/class-wpseo-replace-vars.php:1280
+#: languages/wordpress-seojs.php:320 admin/views/tabs/social/facebook.php:43
+#: admin/views/tool-bulk-editor.php:109 inc/class-wpseo-replace-vars.php:1280
 msgid "Title"
 msgstr "Titel"
 
 #. translators: %1$s expands to Yoast SEO
-#: admin/views/class-view-utils.php:97
 #: admin/views/tabs/metas/paper-content/taxonomy-content.php:52
 #: admin/views/tabs/metas/paper-content/post_type/post-type.php:32
+#: admin/views/class-view-utils.php:97
 msgid "%1$s Meta Box"
 msgstr "%1$s-metabox"
 
-#: admin/class-yoast-form.php:738
+#: admin/class-yoast-form.php:748
 msgid "Hide"
 msgstr "Verbergen"
 
@@ -4696,8 +4712,9 @@ msgstr "%s deactiveren"
 msgid "The %1$s plugin might cause issues when used in conjunction with %2$s."
 msgstr "De plugin %1$s veroorzaakt mogelijk problemen als deze in combinatie met %2$s wordt gebruikt."
 
-#: admin/taxonomy/class-taxonomy-fields-presenter.php:121
-#: admin/class-yoast-form.php:568 admin/metabox/class-metabox.php:631
+#: admin/metabox/class-metabox.php:638
+#: admin/taxonomy/class-taxonomy-fields-presenter.php:123
+#: admin/class-yoast-form.php:578
 msgid "Upload Image"
 msgstr "Afbeelding uploaden"
 
@@ -4746,8 +4763,8 @@ msgstr "Vorige"
 msgid "Next"
 msgstr "Volgende"
 
-#: admin/google_search_console/views/gsc-redirect-nopremium.php:27
 #: languages/wordpress-seojs.php:49 languages/yoast-components.php:120
+#: admin/google_search_console/views/gsc-redirect-nopremium.php:27
 msgid "Close"
 msgstr "Sluiten"
 
@@ -4789,17 +4806,19 @@ msgstr "Omschrijving %s"
 msgid "%s Title"
 msgstr "Titel %s"
 
-#: admin/taxonomy/class-taxonomy-metabox.php:182
+#: admin/pages/social.php:20
 #: admin/taxonomy/class-taxonomy-social-fields.php:122
+#: admin/taxonomy/class-taxonomy-metabox.php:182
 #: admin/class-social-admin.php:43 admin/class-social-admin.php:102
-#: admin/class-social-admin.php:174 admin/pages/social.php:20
+#: admin/class-social-admin.php:174
 msgid "Twitter"
 msgstr "Twitter"
 
-#: admin/taxonomy/class-taxonomy-metabox.php:181
+#: admin/pages/social.php:19
 #: admin/taxonomy/class-taxonomy-social-fields.php:121
+#: admin/taxonomy/class-taxonomy-metabox.php:181
 #: admin/class-social-admin.php:42 admin/class-social-admin.php:94
-#: admin/class-social-admin.php:171 admin/pages/social.php:19
+#: admin/class-social-admin.php:171
 msgid "Facebook"
 msgstr "Facebook"
 
@@ -4847,11 +4866,12 @@ msgstr "Probeer kortere zinnen te maken om de leesbaarheid te verbeteren."
 msgid "fairly difficult"
 msgstr "redelijk moeilijk"
 
+#: languages/yoast-seo-js.php:481
 #: admin/formatter/class-metabox-formatter.php:103
 #: admin/formatter/class-metabox-formatter.php:133
 #: admin/statistics/class-statistics-service.php:222
-#: languages/yoast-seo-js.php:481 inc/class-wpseo-rank.php:141
-#: inc/class-wpseo-rank.php:168 inc/class-wpseo-rank.php:200
+#: inc/class-wpseo-rank.php:141 inc/class-wpseo-rank.php:168
+#: inc/class-wpseo-rank.php:200
 msgid "OK"
 msgstr "OK"
 
@@ -4875,11 +4895,11 @@ msgstr "Meta-omschrijving"
 msgid "All SEO Scores"
 msgstr "Alle SEO-scores"
 
-#: admin/metabox/class-metabox.php:881
+#: admin/metabox/class-metabox.php:888
 msgid "SEO issue: The featured image should be at least 200 by 200 pixels to be picked up by Facebook and other social media sites."
 msgstr "SEO probleem: De uitgelichte afbeelding moet minimaal 200x200 pixels groot zijn om te worden gebruikt door Facebook en andere sociale media."
 
-#: admin/taxonomy/class-taxonomy.php:290 admin/metabox/class-metabox.php:278
+#: admin/metabox/class-metabox.php:278 admin/taxonomy/class-taxonomy.php:290
 msgid "(no parent)"
 msgstr "(geen hoofd)"
 
@@ -4900,8 +4920,8 @@ msgstr "301-doorsturen"
 msgid "The canonical URL that this page should point to. Leave empty to default to permalink. %1$sCross domain canonical%2$s supported too."
 msgstr "De canonieke URL waar deze pagina naar moet verwijzen; laat dit leeg om naar de eigen permalink te verwijzen. %1$sCross domain canonical%2$s wordt ook ondersteund."
 
-#: admin/taxonomy/class-taxonomy-settings-fields.php:53
 #: admin/metabox/class-metabox.php:171
+#: admin/taxonomy/class-taxonomy-settings-fields.php:53
 msgid "Canonical URL"
 msgstr "Canonieke URL"
 
@@ -4909,8 +4929,8 @@ msgstr "Canonieke URL"
 msgid "Title to use for this page in breadcrumb paths"
 msgstr "Titels die voor deze pagina gebruikt worden in het kruimelpad"
 
-#: admin/taxonomy/class-taxonomy-settings-fields.php:46
 #: admin/metabox/class-metabox.php:168
+#: admin/taxonomy/class-taxonomy-settings-fields.php:46
 msgid "Breadcrumbs Title"
 msgstr "Kruimelpadtitel"
 
@@ -4940,8 +4960,8 @@ msgstr "Meta Robots geavanceerd"
 msgid "Warning: even though you can set the meta robots setting here, the entire site is set to noindex in the sitewide privacy settings, so these settings won't have an effect."
 msgstr "Waarschuwing: hoewel hier de 'metarobots'-instelling geregeld kan worden, heeft dit geen effect, aangezien de hele site op 'noindex' is ingesteld in de privacy-instellingen van de site."
 
-#: admin/metabox/class-metabox.php:145 languages/yoast-seo-js.php:509
-#: languages/yoast-components.php:164
+#: languages/yoast-seo-js.php:509 languages/yoast-components.php:164
+#: admin/metabox/class-metabox.php:145
 msgid "Meta description"
 msgstr "Meta-omschrijving"
 
@@ -4990,8 +5010,8 @@ msgstr "Scheidingsteken voor kruimelpad: "
 msgid "%s Breadcrumbs"
 msgstr "%s-kruimelpad"
 
-#: admin/taxonomy/class-taxonomy.php:182 admin/class-config.php:110
-#: admin/metabox/class-metabox.php:893
+#: admin/metabox/class-metabox.php:900 admin/class-config.php:110
+#: admin/taxonomy/class-taxonomy.php:182
 msgid "Use Image"
 msgstr "Afbeelding gebruiken"
 
@@ -5073,7 +5093,7 @@ msgstr "Facebookprofiel-URL"
 msgid "Twitter username (without @)"
 msgstr "Twitter-gebruikersnaam (zonder @)"
 
-#: admin/class-admin.php:242 languages/wordpress-seojs.php:159
+#: languages/wordpress-seojs.php:159 admin/class-admin.php:242
 msgid "FAQ"
 msgstr "FAQ"
 
@@ -5081,7 +5101,7 @@ msgstr "FAQ"
 msgid "Premium Support"
 msgstr "Premium support"
 
-#: admin/class-admin.php:228 languages/wordpress-seojs.php:233
+#: languages/wordpress-seojs.php:233 admin/class-admin.php:228
 msgid "Settings"
 msgstr "Instellingen"
 
@@ -5104,8 +5124,8 @@ msgid "Edit Files"
 msgstr "Bestanden bewerken"
 
 #: admin/menu/class-admin-menu.php:85
-#: admin/menu/class-network-admin-menu.php:56 admin/pages/network.php:18
-#: admin/pages/metas.php:18
+#: admin/menu/class-network-admin-menu.php:56 admin/pages/metas.php:18
+#: admin/pages/network.php:18
 msgid "General"
 msgstr "Algemeen"
 
@@ -5121,8 +5141,8 @@ msgstr "Search Console"
 msgid "Tools"
 msgstr "Extra"
 
-#: admin/taxonomy/class-taxonomy-metabox.php:139
 #: admin/metabox/class-metabox.php:395
+#: admin/taxonomy/class-taxonomy-metabox.php:139
 msgid "Advanced"
 msgstr "Geavanceerd"
 
@@ -5130,16 +5150,16 @@ msgstr "Geavanceerd"
 msgid "XML sitemaps"
 msgstr "XML-sitemaps"
 
+#: admin/menu/class-admin-menu.php:92
 #: admin/taxonomy/class-taxonomy-metabox.php:186
-#: admin/menu/class-admin-menu.php:92 admin/class-social-admin.php:108
+#: admin/class-social-admin.php:108
 msgid "Social"
 msgstr "Sociaal"
 
-#: frontend/class-frontend.php:1208
-#: admin/taxonomy/class-taxonomy-metabox.php:127
-#: admin/menu/class-admin-menu.php:38
+#: frontend/class-frontend.php:1208 admin/menu/class-admin-menu.php:38
 #: admin/menu/class-network-admin-menu.php:35
-#: admin/metabox/class-metabox.php:386 inc/health-check.php:173
+#: admin/metabox/class-metabox.php:386
+#: admin/taxonomy/class-taxonomy-metabox.php:127 inc/health-check.php:173
 #: inc/class-wpseo-admin-bar-menu.php:467
 msgid "SEO"
 msgstr "SEO"

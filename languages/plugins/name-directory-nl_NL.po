@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Name Directory - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-03-07 19:09:01+0000\n"
+"PO-Revision-Date: 2020-04-19 07:01:57+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,23 +11,43 @@ msgstr ""
 "Language: nl\n"
 "Project-Id-Version: Plugins - Name Directory - Stable (latest release)\n"
 
-#: admin.php:1144
+#: admin_general_settings.php:183
+msgid "Normally, you cannot use a name more than once in a directory. If you want to do this, enable this setting."
+msgstr "Normaalgesproken kun je een naam maar 1 keer per lijst gebruiken, zodat deze uniek is. Als je een naam meerdere keren wilt kunnen gebruiken binnen één lijst, zet deze optie dan aan."
+
+#: admin_general_settings.php:113
+msgid "Disable duplicate protection"
+msgstr "Schakel dubbeling-bescherming uit"
+
+#: shortcode.php:346
+msgid "There are currently %d %s in this directory containing the search term %s."
+msgstr "Er zijn %d %s in deze lijst die de zoekterm %s bevatten."
+
+#: shortcode.php:344
+msgid "There is currently %d %s in this directory containing the search term %s."
+msgstr "Er is %d %s in deze lijst die de zoekterm %s bevat."
+
+#: shortcode.php:332
+msgid "There is currently %d %s in this directory"
+msgstr "Er is momenteel %d %s in deze lijst"
+
+#: admin.php:1157
 msgid "Use special import option (use only when importing has failed before and if you are using non-latin characters)"
 msgstr "Gebruik speciale import optie (vink dit alleen aan als je al eens geïmporteerd hebt maar dit mislukt is, en je letters gebruikt die niet in ons standaard alfabet zitten)"
 
-#: admin.php:1143
+#: admin.php:1156
 msgid "Remove all the entries of this directory before starting the import"
 msgstr "Verwijder alle namen uit deze namenlijst voordat het bestand geïmporteerd wordt"
 
-#: admin.php:1054
+#: admin.php:1067
 msgid "Please make sure you include all the steps you did to create the file you are trying to import."
 msgstr "Wees er zeker van dat je alle stappen hebt uitgevoerd voordat je het bestand probeert te importeren."
 
-#: admin.php:1037
+#: admin.php:1050
 msgid "One of the best ways to verify if your file has the right format is opening it in a plain text editor, like Windows Notepad, Geany, SublimeText or Notepad++."
 msgstr "Één van de beste manier om te controleren of je bestand goed is opgeslagen, is door het te openen in een simpele tekstverwerker zoals Windows Notepad, Geany, SublimeText of Notepad++."
 
-#: admin.php:1032
+#: admin.php:1045
 msgid "If such an option presents itself, save as UTF-8 (not ANSI)"
 msgstr "Als de optie gegeven wordt: sla het bestand op als UTF-8 (niet als ANSI)"
 
@@ -35,11 +55,11 @@ msgstr "Als de optie gegeven wordt: sla het bestand op als UTF-8 (niet als ANSI)
 msgid "If yes, searches will be performed in the name and the description. If no, it will search in the names only"
 msgstr "Zo ja, dan zal er bij een zoekopdracht worden gezocht op zowel de naam als de beschrijving. Zo nee, dan zal er alleen op de naam gezocht worden."
 
-#: admin_general_settings.php:155
+#: admin_general_settings.php:163
 msgid "Enable the simple visual editor for editing the description of names in a directory."
 msgstr "Activeer een simpele visuele editor voor het toevoegen of bewerken van namen in de Namenlijst."
 
-#: admin_general_settings.php:145
+#: admin_general_settings.php:153
 msgid "This settings controls which editor you are using in the Name Directory admin"
 msgstr "Deze instelling bepaalt welke editor je gebruikt in het beheergedeelte van de Namenlijst"
 
@@ -51,19 +71,19 @@ msgstr "Gebruik een visuele editor"
 msgid "Editing"
 msgstr "Bewerken"
 
-#: admin.php:882
+#: admin.php:895
 msgid "Next step"
 msgstr "Volgende stap"
 
-#: admin.php:868
+#: admin.php:881
 msgid "What would be the title of your new directory to import items into?"
 msgstr "Wat mag de titel van de nieuw te maken lijst worden om data in te importeren?"
 
-#: admin.php:858
+#: admin.php:871
 msgid "Loading the import page..."
 msgstr "Bezig met laden van de import pagina..."
 
-#: admin.php:824
+#: admin.php:837
 msgid "Import names into a new directory"
 msgstr "Importeer namen in een nieuwe lijst"
 
@@ -75,11 +95,11 @@ msgstr "Snelle import"
 msgid "Quick import into new directory"
 msgstr "Snel importeren in een nieuwe lijst"
 
-#: helpers.php:460
+#: helpers.php:465
 msgid "The \"mb_string\" extension of PHP is not installed, which means that there is no support for non-latin characters. If you are not familiar with what this means, it would not be a problem."
 msgstr "De \"mb_string\" extensie van PHP is niet geïnstalleerd, wat betekent dat er geen ondersteuning is voor niet-latijnse letters (zoals Cyrillisch). Als je niet weet wat dit betekent, dan is het waarschijnlijk geen probleem."
 
-#: helpers.php:459
+#: helpers.php:464
 msgid "Message from Name Directory plugin:"
 msgstr "Bericht van de Namenlijst plugin:"
 
@@ -91,43 +111,43 @@ msgstr "https://jeroenpeters.dev"
 msgid "https://jeroenpeters.dev/wordpress-plugin-name-directory/"
 msgstr "https://jeroenpeters.dev/wordpress-plugin-name-directory/"
 
-#: admin_general_settings.php:231
+#: admin_general_settings.php:244
 msgid "If you like the plugin, would you please consider donating a small amount of money to pay for the license of my programming editor? Or for a good cup of coffee"
 msgstr "Als je deze plugin leuk en/of nuttig vindt, wil je dan een kleine donatie doen? Daarmee betaal ik de licenties voor de code-editor. Of natuurlijk voor een lekker bakkie koffie"
 
-#: admin_general_settings.php:227
+#: admin_general_settings.php:240
 msgid "Donate"
 msgstr "Doneren"
 
-#: admin_general_settings.php:218
+#: admin_general_settings.php:231
 msgid "Rate/review this plugin"
 msgstr "Beoordeel/review deze plugin"
 
-#: admin_general_settings.php:214
+#: admin_general_settings.php:227
 msgid "Do you want to ask a question?"
 msgstr "Wil je een vraag stellen?"
 
-#: admin_general_settings.php:210
+#: admin_general_settings.php:223
 msgid "Have an idea? Let me know!"
 msgstr "Heb je een idee? Laat het me weten!"
 
-#: admin_general_settings.php:206
+#: admin_general_settings.php:219
 msgid "Help translate this plugin"
 msgstr "Help bij het vertalen van deze plugin"
 
-#: admin_general_settings.php:202
+#: admin_general_settings.php:215
 msgid "Frequently Asked Questions"
 msgstr "Veelgestelde vragen"
 
-#: admin_general_settings.php:197
+#: admin_general_settings.php:210
 msgid "I am honored that you are using my software. Here are a few handy quicklinks."
 msgstr "Ik ben vereerd dat je mijn software gebruikt, dankjewel! Hier zijn nog wat handige links."
 
-#: admin_general_settings.php:195
+#: admin_general_settings.php:208
 msgid "Thank you for using Name Directory!"
 msgstr "Bedankt voor het gebruiken van de Namenlijst plugin!"
 
-#: admin.php:766
+#: admin.php:779
 msgid "ID"
 msgstr "ID"
 
@@ -171,15 +191,15 @@ msgstr "Alternatieve (meervoud) term voor \"namen\", bijv.: films"
 msgid "Name term"
 msgstr "Onderwerp van de lijst (term)"
 
-#: shortcode.php:369
-msgid "There are %d %s in this directory beginning with the letter %s."
+#: shortcode.php:368
+msgid "There are currently %d %s in this directory beginning with the letter %s."
 msgstr "Er zijn %d %s in deze lijst die beginnen met de letter %s."
 
-#: shortcode.php:358
+#: shortcode.php:357
 msgid "Showing %d most recent %s in this directory"
 msgstr "Toont de %d meest recente %s van deze lijst"
 
-#: shortcode.php:345 admin.php:746
+#: admin.php:759
 msgid "There are %d %s in this directory containing the search term %s."
 msgstr "Er zijn %d %s in deze lijst die de zoekterm %s bevatten."
 
@@ -187,23 +207,23 @@ msgstr "Er zijn %d %s in deze lijst die de zoekterm %s bevatten."
 msgid "There are currently %d %s in this directory"
 msgstr "Er staan momenteel %d %s in deze lijst"
 
-#: admin_general_settings.php:170
+#: admin_general_settings.php:178
 msgid "This enables WordPress to partially match names. A search for \"bird\" will also return \"birdcage\"."
 msgstr "Als je dit inschakelt, zal WordPress ook gedeeltelijk zoeken. Zoek je op \"vogel\", krijg je ook \"vogelkooi\" als resultaat."
 
-#: admin_general_settings.php:165
+#: admin_general_settings.php:173
 msgid "This will allow WordPress to search in the descriptions too."
 msgstr "Als je dit inschakelt zal WordPress ook zoeken in de beschrijvingen van de namen."
 
-#: admin_general_settings.php:160
+#: admin_general_settings.php:168
 msgid "All entries in Name Directories can be included in the WordPress Search results. When a name is matched, WordPress search will display the page containing the directory in the search results."
 msgstr "Alle namen uit de Namenlijst kunnen ook worden opgenomen in de WordPress Zoekresulaten. Als er een naam gevonden wordt, zal WordPress de pagina waarop de Namenlijst staat toevoegen aan de zoekresultaten."
 
-#: admin_general_settings.php:135
+#: admin_general_settings.php:143
 msgid "Please note, these settings are for the <em>site-wide</em> search results! Name Directory also has a built-in search engine to search within a directory. Those settings can be controlled in the specific directory settings."
 msgstr "Let er op dat deze instellingen bedoeld zijn voor de <em>site-brede</em> zoekresultaten (van WordPress zelf). De Namenlijst heeft ook een ingebouwde zoekmachine om te zoeken binnen een lijst. Dat kun je instellen per Namenlijst."
 
-#: admin_general_settings.php:133
+#: admin_general_settings.php:141
 msgid "Name Directory can also be embedded in the search functionality which WordPress offers out of the box. This page allows you to control these settings."
 msgstr "Namen uit de Namenlijst kunnen ook worden toegevoegd aan de zoekfunctionaliteit die standaard in WordPress zit. Op deze pagina kun je de instellingen hiervoor beheren."
 
@@ -223,7 +243,7 @@ msgstr "Opnemen in site-brede zoekresultaten"
 msgid "General settings"
 msgstr "Algemene instellingen"
 
-#: admin.php:495 admin.php:536
+#: admin.php:502 admin.php:549
 msgid "Refresh now"
 msgstr "Nu vernieuwen"
 
@@ -231,7 +251,7 @@ msgstr "Nu vernieuwen"
 msgid "The number of (vertical) columns to display the names in"
 msgstr "Het aantal (verticale) kolommen waarin de namen getoond moeten worden."
 
-#: admin.php:1142
+#: admin.php:1155
 msgid "Are you sure you want to delete this name directory?"
 msgstr "Weet je zeker dat je deze namenlijst wilt verwijderen?"
 
@@ -247,7 +267,7 @@ msgstr "Toon minder"
 msgid "Show more"
 msgstr "Toon meer"
 
-#: admin.php:995
+#: admin.php:1008
 msgid "There were %d names that produces errors with the WordPress database on import"
 msgstr "Er waren %d namen die fouten gaven bij het importeren naar de WordPress database"
 
@@ -267,23 +287,23 @@ msgstr "Bezoekers kunnen suggesties insturen"
 msgid "Show the name of the submitter"
 msgstr "Toon de naam van de inzender"
 
-#: admin.php:1105
+#: admin.php:1118
 msgid "If you encounter problems (or it does not export) in Internet Explorer or Microsoft Edge, please try another browser."
 msgstr "Als je problemen ervaart (of er komt geen export) in Internet Explorer of Microsoft Edge, probeer dan een ander browser."
 
-#: admin.php:1104
+#: admin.php:1117
 msgid "Name Directory Export works best in Mozilla Firefox, Google Chrome and Internet Explorer 10+."
 msgstr "De Namenlijst Export functie werkt het beste met Mozilla Firefox, Google Chrome en Internet Explorer 10+."
 
-#: admin.php:1112
+#: admin.php:1125
 msgid "Click the Export button to download a .csv file with the contents of your directory."
 msgstr "Klik op de knop Exporteren om een .csv-bestand te downloaden met de inhoud van je namenlijst."
 
-#: admin.php:1110
+#: admin.php:1123
 msgid "Export directory %s"
 msgstr "Exporteer namenlijst %s"
 
-#: admin.php:243 admin.php:1113
+#: admin.php:243 admin.php:1126
 msgid "Export"
 msgstr "Exporteren"
 
@@ -315,27 +335,27 @@ msgstr "Kies alsjeblieft een beginletter uit de index (hierboven) om namen te zi
 msgid "There are no entries in this directory at the moment"
 msgstr "Er staan op dit moment geen items in deze lijst"
 
-#: shortcode.php:365
+#: shortcode.php:363
 msgid "There are %d names in this directory beginning with the letter %s."
 msgstr "Er staan %d namen op deze lijst die beginnen met %s."
 
-#: shortcode.php:354
+#: shortcode.php:355
 msgid "Showing %d most recent names in this directory"
 msgstr "Toont de %d laatst toegevoegde namen in deze lijst"
 
-#: shortcode.php:348 admin.php:748
+#: shortcode.php:350 admin.php:761
 msgid "Clear results"
 msgstr "Zoekresultaat wissen"
 
-#: shortcode.php:341 admin.php:742
+#: shortcode.php:341 admin.php:755
 msgid "There are %d names in this directory containing the search term %s."
 msgstr "Er staan %d namen op deze lijst met de zoekterm %s."
 
-#: shortcode.php:330
+#: shortcode.php:329
 msgid "There are currently %d names in this directory"
 msgstr "Er staan momenteel %d namen op deze lijst"
 
-#: shortcode.php:320 admin.php:732 admin.php:733 admin_general_settings.php:82
+#: shortcode.php:320 admin.php:745 admin.php:746 admin_general_settings.php:82
 msgid "Search"
 msgstr "Zoeken"
 
@@ -383,207 +403,207 @@ msgstr "Naam"
 msgid "Required"
 msgstr "Verplicht"
 
-#: helpers.php:359
+#: helpers.php:364
 msgid "Please login to your WordPress admin to review and accept the submission."
 msgstr "Log in op je WordPress admin om de nieuwe inzending te bekijken en te accepteren."
 
-#: helpers.php:358
+#: helpers.php:363
 msgid "This new submission does not have the published status."
 msgstr "Deze nieuwe inzending wordt standaard verborgen."
 
-#: helpers.php:354
+#: helpers.php:359
 msgid "There was a new submission to the Name Directory on %s at %s"
 msgstr "Er is een nieuwe inzending op de Namenlijst van %s op %s"
 
-#: helpers.php:353
+#: helpers.php:358
 msgid "Howdy,"
 msgstr "Hallootjes,"
 
-#: helpers.php:352
+#: helpers.php:357
 msgid "New submission for Name Directory"
 msgstr "Nieuwe inzending voor je Namenlijst"
 
-#: admin.php:1071 admin.php:1114
+#: admin.php:1084 admin.php:1127
 msgid "Go to Name Directory Overview"
 msgstr "Ga naar het namenlijst overzicht"
 
-#: admin.php:1069
+#: admin.php:1082
 msgid "Back to %s"
 msgstr "Terug naar %s"
 
-#: admin.php:1065
+#: admin.php:1078
 msgid "Upload your .csv-file"
 msgstr "Upload je .csv-bestand"
 
-#: admin.php:1061
+#: admin.php:1074
 msgid "Name Directory Import requires at least PHP 5.3, you seem to have an older version. Importing names will not work for your website."
 msgstr "Namenlijst Import vereist minimaal PHP 5.3, het ziet er naar uit dat jouw PHP versie ouder is. Het importeren van namen werkt daarom niet op jouw website."
 
-#: admin.php:1053
+#: admin.php:1066
 msgid "plugin support forums"
 msgstr "plugin ondersteuning forums"
 
-#: admin.php:1051
+#: admin.php:1064
 msgid "If everything else fails, you can always ask a question at the %s."
 msgstr "Als er niets anders meer opzit, kun je altijd hulp vragen op de %s."
 
-#: admin.php:1042
+#: admin.php:1055
 msgid "Use an online File Convertor"
 msgstr "Gebruik een online Bestandsconverter"
 
-#: admin.php:1036
+#: admin.php:1049
 msgid "the example import file"
 msgstr "het voorbeeldbestand voor de import"
 
-#: admin.php:1034
+#: admin.php:1047
 msgid "Please check out %s first and ensure your file is formatted the same."
 msgstr "Bekijk eerst %s en verzeker jezelf ervan dat je bestand hetzelfde is opgeslagen."
 
-#: admin.php:1039
+#: admin.php:1052
 msgid "If uploading or importing fails, these are your options"
 msgstr "Als het uploaden of importeren mislukt, dan zijn dit je opties:"
 
-#: admin.php:1031
+#: admin.php:1044
 msgid "Fields are comma-separated"
 msgstr "Velden zijn gescheiden met een komma"
 
-#: admin.php:1030
+#: admin.php:1043
 msgid "Fields are encapsulated by double quotes"
 msgstr "Er staan dubbele quotes om de velden heen"
 
-#: admin.php:1029
+#: admin.php:1042
 msgid "There is a header row (this contains the column names, the first row will NOT be imported)"
 msgstr "Er een header-rij is (die aangeeft welke kolomnamen er zijn, deze rij wordt NIET geïmporteerd)"
 
-#: admin.php:1028
+#: admin.php:1041
 msgid "If you saved it from Excel or OpenOffice, please ensure that:"
 msgstr "Als je het bestand vanuit Excel of OpenOffice hebt opgeslagen, wees er dan zeker van dat:"
 
-#: admin.php:1027
+#: admin.php:1040
 msgid "Use the upload form below to upload a .csv-file containing all of your names (in the first column), description and submitter are optional."
 msgstr "Gebruik het uploadformulier hieronder om een .csv-bestand te importeren met alle namen (in de eerste kolom), beschrijving en indiener zijn optioneel."
 
-#: admin.php:1023
+#: admin.php:1036
 msgid "Import names for %s"
 msgstr "Importeer namen voor %s"
 
-#: admin.php:1007
+#: admin.php:1020
 msgid "please check your .csv-file"
 msgstr "controleer alsjeblieft je .csv-bestand"
 
-#: admin.php:1002
+#: admin.php:1015
 msgid "Ignored %s names, because they were duplicate (already in the directory)"
 msgstr "Er zijn %s namen genegeerd omdat ze dubbel waren (ze bestonden al op de lijst)"
 
-#: admin.php:984
+#: admin.php:997
 msgid "Could not import any names into Name Directory"
 msgstr "Kon geen enkele naam importeren in Namenlijst"
 
-#: admin.php:978
+#: admin.php:991
 msgid "Imported %d entries in this directory"
 msgstr "Er zijn %d namen geïmporteerd in deze lijst"
 
-#: admin.php:679 helpers.php:357
+#: admin.php:692 helpers.php:362
 msgid "Submitted by"
 msgstr "Toegevoegd door"
 
-#: admin.php:661
+#: admin.php:674
 msgid "HTML markup is allowed and will we printed on your website and in the WordPress admin."
 msgstr "Het gebruik van HTML is toegestaan en zal op je website en in de WordPress admin te zien zijn."
 
-#: admin.php:660
+#: admin.php:673
 msgid "Please be careful!"
 msgstr "Let goed op!"
 
-#: admin.php:636
+#: admin.php:649
 msgid "Full add view"
 msgstr "Volledige weergave"
 
-#: admin.php:634
+#: admin.php:647
 msgid "Show the full form, which allows you to enter a description and submitter"
 msgstr "Volledig formulier weergeven, waarbij alle velden getoond worden"
 
-#: admin.php:632
+#: admin.php:645
 msgid "Quick add view"
 msgstr "Compacte weergave"
 
-#: admin.php:630
+#: admin.php:643
 msgid "Show the compact form, showing only the name, always published)"
 msgstr "Toon het compacte formulier, waar je alleen een naam hoeft toe te voegen (die direct op de site getoond wordt)"
 
-#: admin.php:599
+#: admin.php:612
 msgid "Add a new name"
 msgstr "Nieuwe naam toevoegen"
 
-#: admin.php:595
+#: admin.php:608
 msgid "Save name"
 msgstr "Naam opslaan"
 
-#: admin.php:594
+#: admin.php:607
 msgid "Edit a name"
 msgstr "Naam bewerken"
 
-#: admin.php:794
+#: admin.php:807
 msgid "Edit"
 msgstr "Bewerk"
 
-#: admin.php:792
+#: admin.php:805
 msgid "Toggle published status"
 msgstr "Verander zichtbaarheid status (van Ja naar Nee en andersom)"
 
-#: admin.php:774
+#: admin.php:787
 msgid "Currently, there are no names in this directory.."
 msgstr "Er staan op dit moment geen namen op deze namenlijst.."
 
-#: admin.php:765
+#: admin.php:778
 msgid "Manage"
 msgstr "Beheren"
 
-#: admin.php:763
+#: admin.php:776
 msgid "Submitter"
 msgstr "Indiener"
 
-#: shortcode.php:75 admin.php:644 admin.php:761 helpers.php:355
+#: shortcode.php:75 admin.php:657 admin.php:774 helpers.php:360
 msgid "Name"
 msgstr "Naam"
 
-#: admin.php:696
+#: admin.php:709
 msgid "unpublished"
 msgstr "verborgen"
 
-#: admin.php:695
+#: admin.php:708
 msgid "published"
 msgstr "gepubliceerd"
 
-#: admin.php:694 admin.php:1000
+#: admin.php:707 admin.php:1013
 msgid "all"
 msgstr "Alles"
 
-#: admin.php:586
+#: admin.php:599
 msgid "Manage names for %s"
 msgstr "Namen beheren voor %s"
 
-#: shortcode.php:77 admin.php:549 admin.php:554
+#: shortcode.php:77 admin.php:562 admin.php:567
 msgid "Please fill in at least a name"
 msgstr "Vul tenminste een naam in"
 
-#: admin.php:494 admin.php:535
+#: admin.php:501 admin.php:548
 msgid "Will be visible when the page is refreshed."
 msgstr "Zal getoond wordt als je de pagina vernieuwd."
 
-#: admin.php:534 admin.php:542
+#: admin.php:547 admin.php:555
 msgid "New name %s added"
 msgstr "Nieuwe naam %s toegevoegd"
 
-#: admin.php:512
+#: admin.php:519
 msgid "Name %s was already on the list, so it was not added"
 msgstr "De naam %s stond al op de lijst, dus deze is niet nogmaals toegevoegd"
 
-#: admin.php:493 admin.php:501
+#: admin.php:500 admin.php:508
 msgid "Name %s updated"
 msgstr "Naam %s bijgewerkt"
 
-#: admin.php:473
+#: admin.php:474
 msgid "Name %s deleted"
 msgstr "Naam %s verwijderd"
 
@@ -639,12 +659,12 @@ msgstr "Suggesties"
 msgid "Show description"
 msgstr "Beschrijving tonen"
 
-#: admin.php:392 admin.php:397 admin.php:675 helpers.php:94 helpers.php:400
-#: admin_general_settings.php:179
+#: admin.php:392 admin.php:397 admin.php:688 helpers.php:94 helpers.php:405
+#: admin_general_settings.php:192
 msgid "No"
 msgstr "Nee"
 
-#: admin.php:667 helpers.php:91 helpers.php:392 admin_general_settings.php:178
+#: admin.php:680 helpers.php:91 helpers.php:397 admin_general_settings.php:191
 msgid "Yes"
 msgstr "Ja"
 
@@ -652,11 +672,11 @@ msgstr "Ja"
 msgid "Show title"
 msgstr "Titel tonen"
 
-#: shortcode.php:87 admin.php:340 admin.php:648 admin.php:762 helpers.php:356
+#: shortcode.php:87 admin.php:340 admin.php:661 admin.php:775 helpers.php:361
 msgid "Description"
 msgstr "Beschrijving"
 
-#: admin.php:320 admin.php:606
+#: admin.php:320 admin.php:619
 msgid "Back to the directory overview"
 msgstr "Terug naar het namenlijst overzicht"
 
@@ -704,7 +724,7 @@ msgstr "Om je namenlijst op de website te tonen gebruik je de shortcode hier rec
 msgid "Number of names in this directory"
 msgstr "Aantal namen op deze namenlijst"
 
-#: admin.php:245 admin.php:795
+#: admin.php:245 admin.php:808
 msgid "Delete"
 msgstr "Verwijder"
 
@@ -736,7 +756,7 @@ msgstr "Instellingen"
 msgid "Edit name, description and appearance settings"
 msgstr "Bewerk naam, beschrijving en layout instellingen"
 
-#: admin.php:240 admin.php:600
+#: admin.php:240 admin.php:613
 msgid "Add name"
 msgstr "Naam toevoegen"
 
@@ -752,19 +772,19 @@ msgstr "Namen beheren"
 msgid "Add, edit and remove names"
 msgstr "Toevoegen, bewerken en verwijderen van namen"
 
-#: helpers.php:448
+#: helpers.php:453
 msgid "Unpublished"
 msgstr "Verborgen"
 
-#: admin.php:664 admin.php:764 helpers.php:447
+#: admin.php:677 admin.php:777 helpers.php:452
 msgid "Published"
 msgstr "Zichtbaar"
 
-#: helpers.php:446
+#: helpers.php:451
 msgid "Entries"
 msgstr "Namen"
 
-#: admin.php:336 admin.php:875 helpers.php:444
+#: admin.php:336 admin.php:888 helpers.php:449
 msgid "Title"
 msgstr "Titel"
 
@@ -780,7 +800,7 @@ msgstr "namenlijsten"
 msgid "name directory"
 msgstr "namenlijst"
 
-#: admin.php:175 admin.php:855
+#: admin.php:175 admin.php:868
 msgid "Directory %s created."
 msgstr "Namenlijst %s toegevoegd."
 
@@ -800,7 +820,7 @@ msgstr "Namenlijsten beheer"
 msgid "Name directory %s and all entries deleted"
 msgstr "Namenlijst %s en alle bijbehorende namen zijn verwijderd"
 
-#: admin.php:47 admin.php:284 admin.php:461 admin.php:901 admin.php:1082
+#: admin.php:47 admin.php:284 admin.php:461 admin.php:914 admin.php:1095
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Je hebt niet de juiste rechten om deze pagina te bekijken."
 

@@ -1,19 +1,7 @@
 <?php
 
     // Thumbnails
-    $thumb_id = get_post_thumbnail_id(); // Get the featured image id.
-    $img_url  = wp_get_attachment_url($thumb_id); // Get img URL.
     $entry_url = $link ? esc_url(get_permalink()) : '#';
-
-    $thumb_width = $first ? 'first_thumb_width' : 'thumb_width';
-    $thumb_height = $first ? 'first_thumb_height' : 'thumb_height';
-    // $html .= '<br>$width : ' . $thumb_width;
-    // $html .= '<br>$args[$width] : ' . $args[$thumb_width];
-    // $html .= '<br>$height : ' . $thumb_height;
-    // $html .= '<br>$args[$height] : ' . $args[$thumb_height];
-
-    // Display the image url and crop using the resizer.
-    $image    = rpwe_resize($img_url, $args[$thumb_width], $args[$thumb_height], true);
 
     // Start recent posts markup.
     $html .= '<li class="rpwe-li rpwe-clearfix ' . (($first) ? 'rpwe-first' : '') . '">';
@@ -21,6 +9,12 @@
 
     if ($args['thumb']) :
 
+        $thumb_width = $first ? 'first_thumb_width' : 'thumb_width';
+        $thumb_height = $first ? 'first_thumb_height' : 'thumb_height';
+        $thumb_id = get_post_thumbnail_id(); // Get the featured image id.
+        $img_url  = wp_get_attachment_url($thumb_id); // Get img URL.
+        // Display the image url and crop using the resizer.
+        $image    = rpwe_resize($img_url, $args[$thumb_width], $args[$thumb_height], true);
         // Check if post has post thumbnail.
         if (has_post_thumbnail()) :
             $html .= '<div class="entry-header-overlay ' . $entry_class . '">';

@@ -19,15 +19,15 @@ $position = $instance['content_position'];
 			do_action('peepso_action_userbar_notifications_before', $user->get_id());
 			echo $instance['toolbar'];
 			do_action('peepso_action_userbar_notifications_after', $user->get_id());
-			?>			
-				
+			?>
+
 			<div class="ps-widget--userbar__container">
 
 				<div class="name-usermenu-container">
 					<?php if(isset($instance['show_vip']) && 1 == intval($instance['show_vip'])) { ?>
 						<div class="ps-widget--userbar__item ps-widget--userbar__vip"><?php do_action('peepso_action_userbar_user_name_before', $user->get_id()); ?></div>
 						<?php } ?>
-											
+
 						<?php if(isset($instance['show_name']) && 1 == intval($instance['show_name'])) { ?>
 							<!-- Name, edit profile -->
 						<div class="ps-widget--userbar__item ps-widget--userbar__name">
@@ -76,18 +76,15 @@ $position = $instance['content_position'];
 
 									$class = isset($link['class']) ? $link['class'] : '' ;
 
-									$href = $user->get_profileurl(). $link['href'];
-									if('http' == substr(strtolower($link['href']), 0,4)) {
-										$href = $link['href'];
-									}
-
+									// PO 29/03/2020
+									$href = PeepsoHelpers::get_nav_url($user, $id, $link['href']);
 									echo '<a href="' . $href . '" class="' . $class . '"><span class="' . $link['icon'] . '"></span> ' . $link['label'] . '</a>';
 								}
 							?>
 						</div>
 					</div>
 
-				</div> <!-- Name & usermenu container -->			
+				</div> <!-- Name & usermenu container -->
 
 				<?php } ?>
 
@@ -96,9 +93,18 @@ $position = $instance['content_position'];
 				<?php if(isset($instance['show_avatar']) && 1 == intval($instance['show_avatar'])) { ?>
 				<!-- Avatar -->
 				<div class="ps-widget--userbar__item ps-widget--userbar__avatar">
-					<a class="ps-avatar" href="<?php echo $user->get_profileurl();?>">
-						<img class="avatar" alt="<?php echo $user->get_fullname();?> avatar" title="<?php echo $user->get_profileurl();?>" src="<?php echo $user->get_avatar();?>">
-					</a>
+					<?php
+					$params=array(
+						'user'		=> 'current',
+						'aclass'	=> 'ps-avatar',
+						'link'		=> 'profile',
+						'imgclass'	=> 'avatar',
+						'alt'		=> $user->get_fullname(),
+						'title'		=> $user->get_profileurl(),
+						'size'		=> 'medium',
+					);
+					echo PeepsoHelpers::get_avatar($params);
+					?>
 				</div>
 				<?php } ?>
 
@@ -109,7 +115,7 @@ $position = $instance['content_position'];
 				<?php } ?>
 
 			</div>
-				
+
 
 		<?php
 		} else {

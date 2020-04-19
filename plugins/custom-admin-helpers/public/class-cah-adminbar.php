@@ -11,32 +11,42 @@ class CAH_Adminbar
 
     /* Disable admin bar for all users except admin */
     public function admin_bar_visibility() {
-        if (is_admin()) {
-            show_admin_bar(true);
-            return;
-        }
         switch ( CAH_Assets::get_option('adminbar_visibility') ) {
             case "admin":
-                if ( !current_user_can('administrator') )
+                if ( !current_user_can('administrator') && !is_admin() )
                     show_admin_bar(false);
-            break;
+                break;
             case "loggedin":
-                if ( !is_user_logged_in() )
+                if ( !is_user_logged_in() && !is_admin() )
                     show_admin_bar(false);
+                break;
+            case "all":
+                show_admin_bar(true);
                 break;
         }
 
     }
 
-    public function show_admin_bar_unlogged_users() {
-        if (CAH_Assets::get_option('adminbar_visibility') == "all") {
-            return true;
+    public function filter_admin_bar_visibility($show) {
+        switch (CAH_Assets::get_option('adminbar_visibility')) {
+            case "admin":
+                if (!current_user_can('administrator') && !is_admin())
+                    $show=false;
+                break;
+            case "loggedin":
+                if (!is_user_logged_in())
+                    $show=false;
+                break;
+            case "all":
+                $show=true;
+                break;
         }
+        return $show;
     }
 
     /* Disable dashboard for non admin */
     public function blockusers_init() {
-        if ( is_admin() && !current_user_can('edit_others_pages') && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
+        if ( is_admin() && !current_user_can('edit_others_pages') && !( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
             wp_redirect( home_url() );
             exit;
         }

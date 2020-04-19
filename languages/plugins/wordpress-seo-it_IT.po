@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Yoast SEO - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-03-03 10:17:56+0000\n"
+"PO-Revision-Date: 2020-03-17 09:43:01+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,7 +18,7 @@ msgstr "Ottimo! Hai attivato il plugin (i plugin) premium e stai ottenendo gli a
 #. translators: %1$s expands to 'my.yoast.com'.
 #: inc/health-check-curl-version.php:72
 msgid "Your site can connect to %1$s"
-msgstr "Il tuo sito non riesce a connettersi a %1$s"
+msgstr "Connessione a %1$s"
 
 #. translators: %1$s Emphasis open tag, %2$s: Emphasis close tag, %3$s Link
 #. start tag to the Yoast knowledge base, %4$s Link closing tag.
@@ -144,7 +144,7 @@ msgstr "Hai usato il nome degli articoli e delle pagine nel loro URL."
 
 #: inc/health-check-postname-permalink.php:25
 msgid "Your permalink structure includes the post name"
-msgstr "La struttura del permalink include il nome dell'articolo"
+msgstr "La struttura del permalink include il nome dell’articolo"
 
 #: admin/ryte/class-ryte-request.php:89
 msgid "The request to Ryte returned an error."
@@ -543,26 +543,26 @@ msgstr "Scegli se il sito rappresenta un'Organizzazione o una Persona."
 msgid "Knowledge Graph & Schema.org"
 msgstr "Knowledge Graph e Schema.org"
 
-#: admin/views/tabs/social/accounts.php:93
+#: admin/views/tabs/social/accounts.php:101
 msgid "Organization social profiles"
 msgstr "Profili sui social network per l'Organizzazione"
 
 #. translators: 1: link tag to the relevant WPSEO admin page; 2: link close
 #. tag.
-#: admin/views/tabs/social/accounts.php:80
+#: admin/views/tabs/social/accounts.php:88
 msgid "To make your site represent a Company or Organization go to %1$sSearch Appearance%2$s and set Organization or Person to \"Organization\"."
 msgstr "Per impostare se il sito rappresenta un'Organizzazione o una Persona vai a %1$sAspetto della ricerca%2$s e imposta Organizzazione o Persona nel campo \"Organizzazione\"."
 
 #. translators: 1: link to edit user page.
-#: admin/views/tabs/social/accounts.php:74
+#: admin/views/tabs/social/accounts.php:82
 msgid "To change the social accounts used for your site, update the details for %1$s."
 msgstr "Per cambiare l'account dei social network usati per il sito, aggiorna i dettagli in %1$s."
 
-#: admin/views/tabs/social/accounts.php:67
+#: admin/views/tabs/social/accounts.php:75
 msgid "That means that the form and information below is disabled, and not used."
 msgstr "Ciò significa che il modulo e le informazioni sotto sono disattivate e non usate."
 
-#: admin/views/tabs/social/accounts.php:65
+#: admin/views/tabs/social/accounts.php:73
 msgid "Your website is currently configured to represent a Person"
 msgstr "Il tuo sito web e attualmente configurato per rappresentare una Persona"
 
@@ -623,7 +623,7 @@ msgstr "URL del profilo SoundCloud"
 msgid "MySpace profile URL"
 msgstr "URL del profilo MySpace"
 
-#: frontend/schema/class-schema-article.php:162
+#: frontend/schema/class-schema-article.php:166
 msgid "Uncategorized"
 msgstr "Senza categoria"
 
@@ -669,7 +669,7 @@ msgid "Instagram profile URL"
 msgstr "URL del profilo Instagram "
 
 #: admin/config-ui/fields/class-field-profile-url-wikipedia.php:19
-#: admin/views/tabs/social/accounts.php:57
+#: admin/views/tabs/social/accounts.php:64
 msgid "Wikipedia URL"
 msgstr "URL di Wikipedia "
 
@@ -1518,7 +1518,7 @@ msgstr "Frase chiave:"
 msgid "%1$s video"
 msgstr "video %1$s"
 
-#: admin/class-yoast-form.php:771
+#: admin/class-yoast-form.php:793
 msgid "This feature has been disabled by the network admin."
 msgstr "Questa funzionalità è stata disattivata dall'amministratore del network."
 
@@ -1530,8 +1530,8 @@ msgstr "La frase chiave non è stata impostata."
 msgid "Multiple keyphrases"
 msgstr "Frasi chiave multiple"
 
-#: admin/taxonomy/class-taxonomy-fields-presenter.php:127
-#: admin/class-yoast-form.php:575 admin/metabox/class-metabox.php:636
+#: admin/taxonomy/class-taxonomy-fields-presenter.php:129
+#: admin/class-yoast-form.php:585 admin/metabox/class-metabox.php:643
 msgid "Clear Image"
 msgstr "Cancella l'immagine"
 
@@ -2554,7 +2554,7 @@ msgstr "La mancata visualizzazione di %1$s nei risultati di ricerca significa te
 
 #. translators: %1$s expands to the taxonomy name %2$s expands to the current
 #. taxonomy index value
-#: admin/taxonomy/class-taxonomy-settings-fields.php:71
+#: admin/taxonomy/class-taxonomy-settings-fields.php:72
 msgid "%2$s (current default for %1$s)"
 msgstr "%2$s (impostazione corrente predefinita per %1$s)"
 
@@ -2603,7 +2603,7 @@ msgstr "Visibilità nei motori di ricerca"
 
 #. translators: %s expands to an indexable object's name, like a post type or
 #. taxonomy
-#: admin/class-yoast-form.php:715
+#: admin/class-yoast-form.php:725
 msgid "Show %s in search results?"
 msgstr "Vuoi mostrare %s nei risultati di ricerca?"
 
@@ -2670,7 +2670,7 @@ msgstr "Scopri come il contatore di link di testo può migliorare la stategia SE
 #. translators: %s: Ryte
 #: admin/views/class-yoast-feature-toggles.php:115
 msgid "%s integration"
-msgstr "%s integrazione"
+msgstr "Integrazione con %s"
 
 #. translators: %s: Ryte
 #: admin/views/class-yoast-feature-toggles.php:124
@@ -3105,7 +3105,7 @@ msgstr "Suggerimenti super veloci di link interni"
 msgid "Great news: you can, with %1$s!"
 msgstr "Novità importante: puoi con %1$s! "
 
-#: admin/class-yoast-form.php:132 admin/class-yoast-form.php:137
+#: admin/class-yoast-form.php:137 admin/class-yoast-form.php:142
 msgid "Save changes"
 msgstr "Salva le modifiche"
 
@@ -3521,18 +3521,18 @@ msgstr "Il nome della persona"
 
 #: admin/config-ui/fields/class-field-choice-post-type.php:35
 #: admin/config-ui/fields/class-field-multiple-authors.php:24
-#: admin/taxonomy/class-taxonomy-settings-fields.php:73
+#: admin/taxonomy/class-taxonomy-settings-fields.php:74
 #: admin/views/tabs/metas/paper-content/media-content.php:20
-#: admin/class-yoast-form.php:707 admin/metabox/class-metabox.php:155
+#: admin/class-yoast-form.php:717 admin/metabox/class-metabox.php:155
 #: admin/metabox/class-metabox.php:160
 msgid "No"
 msgstr "No"
 
 #: admin/config-ui/fields/class-field-choice-post-type.php:34
 #: admin/config-ui/fields/class-field-multiple-authors.php:23
-#: admin/taxonomy/class-taxonomy-settings-fields.php:72
+#: admin/taxonomy/class-taxonomy-settings-fields.php:73
 #: admin/views/tabs/metas/paper-content/media-content.php:19
-#: admin/class-yoast-form.php:706 admin/metabox/class-metabox.php:154
+#: admin/class-yoast-form.php:716 admin/metabox/class-metabox.php:154
 #: admin/metabox/class-metabox.php:159
 msgid "Yes"
 msgstr "Si"
@@ -3913,21 +3913,21 @@ msgstr "Il termine è impostato su noidex."
 msgid "Author archives"
 msgstr "Archivi autore"
 
-#: admin/class-yoast-form.php:737
+#: admin/class-yoast-form.php:747
 msgid "Show"
 msgstr "Visualizza"
 
 #: admin/views/tabs/metas/paper-content/author-archive-settings.php:13
 #: admin/views/tabs/metas/paper-content/taxonomy-content.php:19
 #: admin/views/tabs/metas/paper-content/date-archives-settings.php:13
-#: admin/class-yoast-form.php:322
+#: admin/class-yoast-form.php:327
 msgid "Enabled"
 msgstr "Abilitato"
 
 #: admin/views/tabs/metas/paper-content/author-archive-settings.php:14
 #: admin/views/tabs/metas/paper-content/taxonomy-content.php:19
 #: admin/views/tabs/metas/paper-content/date-archives-settings.php:14
-#: admin/class-yoast-form.php:322
+#: admin/class-yoast-form.php:327
 msgid "Disabled"
 msgstr "Disabilitato"
 
@@ -4527,32 +4527,32 @@ msgid "Add Open Graph meta data"
 msgstr "Aggiungi meta dati Open Graph"
 
 #: admin/config-ui/fields/class-field-profile-url-youtube.php:19
-#: admin/views/tabs/social/accounts.php:53
+#: admin/views/tabs/social/accounts.php:59
 msgid "YouTube URL"
 msgstr "URL di YouTube"
 
 #: admin/config-ui/fields/class-field-profile-url-pinterest.php:19
-#: admin/views/tabs/social/accounts.php:49
+#: admin/views/tabs/social/accounts.php:54
 msgid "Pinterest URL"
 msgstr "URL di Pinterest"
 
 #: admin/config-ui/fields/class-field-profile-url-myspace.php:19
-#: admin/views/tabs/social/accounts.php:45
+#: admin/views/tabs/social/accounts.php:49
 msgid "MySpace URL"
 msgstr "URL di MySpace"
 
 #: admin/config-ui/fields/class-field-profile-url-linkedin.php:19
-#: admin/views/tabs/social/accounts.php:41
+#: admin/views/tabs/social/accounts.php:44
 msgid "LinkedIn URL"
 msgstr "URL di LinkedIn"
 
 #: admin/config-ui/fields/class-field-profile-url-instagram.php:19
-#: admin/views/tabs/social/accounts.php:37
+#: admin/views/tabs/social/accounts.php:39
 msgid "Instagram URL"
 msgstr "URL di Instagram"
 
 #: admin/config-ui/fields/class-field-profile-url-twitter.php:19
-#: admin/views/tabs/social/accounts.php:33
+#: admin/views/tabs/social/accounts.php:34
 msgid "Twitter Username"
 msgstr "Nome utente Twitter"
 
@@ -4686,7 +4686,7 @@ msgstr "Titolo"
 msgid "%1$s Meta Box"
 msgstr "Meta Box %1$s"
 
-#: admin/class-yoast-form.php:738
+#: admin/class-yoast-form.php:748
 msgid "Hide"
 msgstr "Nascondi"
 
@@ -4806,8 +4806,8 @@ msgstr "Disattivare %s"
 msgid "The %1$s plugin might cause issues when used in conjunction with %2$s."
 msgstr "I plugin %1$s potrebbero causare problemi quando utilizzati in combinazione con %2$s."
 
-#: admin/taxonomy/class-taxonomy-fields-presenter.php:121
-#: admin/class-yoast-form.php:568 admin/metabox/class-metabox.php:631
+#: admin/taxonomy/class-taxonomy-fields-presenter.php:123
+#: admin/class-yoast-form.php:578 admin/metabox/class-metabox.php:638
 msgid "Upload Image"
 msgstr "Carica immagine"
 
@@ -4985,7 +4985,7 @@ msgstr "Desc. meta"
 msgid "All SEO Scores"
 msgstr "Tutti i punteggi SEO"
 
-#: admin/metabox/class-metabox.php:881
+#: admin/metabox/class-metabox.php:888
 msgid "SEO issue: The featured image should be at least 200 by 200 pixels to be picked up by Facebook and other social media sites."
 msgstr "Problema SEO: l'immagine in evidenza deve avere una dimensione di almeno 200 per 200 pixel per poter essere utilizzata da Facebook e altri social media."
 
@@ -5101,7 +5101,7 @@ msgid "%s Breadcrumbs"
 msgstr "%s Breadcrumb"
 
 #: admin/taxonomy/class-taxonomy.php:182 admin/class-config.php:110
-#: admin/metabox/class-metabox.php:893
+#: admin/metabox/class-metabox.php:900
 msgid "Use Image"
 msgstr "Usa immagine"
 

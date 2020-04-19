@@ -7,6 +7,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 class Custom_Admin_Helpers {
+    protected static $instance = NULL;
+
+    public static function get_instance()
+    {
+        if (NULL === self::$instance) {
+            self::$instance = new self;
+        }
+        return self::$instance;
+    }
 
 	public function __construct() {
 
@@ -33,8 +42,9 @@ class Custom_Admin_Helpers {
         add_action('admin_init',            array($Options, 'maybe_display_admin_notice'));
 
         $Adminbar = new CAH_Adminbar();
-        add_action( 'after_setup_theme',    array($Adminbar, 'admin_bar_visibility'));
-        add_action( 'show_admin_bar',       array($Adminbar, 'show_admin_bar_unlogged_users'));
+        // add_action( 'after_setup_theme',    array($Adminbar, 'admin_bar_visibility'));
+        add_action( 'show_admin_bar',       array($Adminbar, 'filter_admin_bar_visibility'));
+
         add_action( 'init',                 array($Adminbar, 'blockusers_init' ));
         add_action( 'admin_bar_menu',       array($Adminbar, 'add_toolbar_items'), 999  );
 

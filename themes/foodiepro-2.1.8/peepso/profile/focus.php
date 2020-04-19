@@ -13,13 +13,13 @@
 	// }
 
 	/* Added PO 19/01/2019 */
-	$current = PeepsoHelpers::get_nav_tab();
+	$current = PeepsoHelpers::current_nav_tab();
 
 	/* Added PO 20/01/2019 to prevent small display on cover*/
 	// $is_profile_segment = isset($current) ? TRUE : FALSE;
 	$is_profile_segment = FALSE;
 ?>
-<div class="ps-focus js-focus <?php if($is_profile_segment && 0 == PeepSo::get_option('always_full_cover', 0)) { echo 'ps-focus-mini'; } ?> ps-js-focus ps-js-focus--<?php echo $PeepSoUser->get_id() ?>">
+<div class="ps-focus js-focus  <?php if($is_profile_segment && 0 == PeepSo::get_option('always_full_cover', 0)) { echo 'ps-focus-mini'; } ?> ps-js-focus ps-js-focus--<?php echo $PeepSoUser->get_id() ?>">
 	<div class="ps-focus-cover js-focus-cover ">
 		<div class="ps-focus-image">
 			<img id="<?php echo $PeepSoUser->get_id(); ?>"
@@ -27,7 +27,7 @@
 				class="focusbox-image cover-image <?php echo $cover_class; ?>"
 				src="<?php echo $PeepSoUser->get_cover(); ?>"
 				alt="<?php echo $PeepSoUser->get_fullname(); ?> cover photo"
-				style="<?php echo $PeepSoUser->get_cover_position(); ?>"
+				style="<?php //echo $PeepSoUser->get_cover_position(); ?>"
 			/>
 		</div>
 
@@ -148,7 +148,9 @@
 	</div>
 
 	<div class="ps-focus__footer">
-		<div class="ps-focus-actions-mobile"><?php $PeepSoProfile->profile_actions(); ?></div>
+
+		<!-- <div class="ps-focus-actions-mobile"><?php //$PeepSoProfile->profile_actions(); ?></div> -->
+
 		<div class="ps-focus__menu profile-interactions ps-js-focus-links">
 			<div class="ps-focus__menu-inner">
 				<?php echo $PeepSoProfile->profile_navigation(array('current'=>$current)); ?>

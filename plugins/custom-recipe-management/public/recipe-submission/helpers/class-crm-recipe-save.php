@@ -1,183 +1,168 @@
 <?php
 
-class CRM_Recipe_Save {
+class CRM_Recipe_Save extends CRM_Recipe {
 
-    public function __construct()
-    {
+    // private $recipe;
+    private $post;
+
+    public function __construct($post) {
+        parent::__construct($post);
+        $this->post = $post;
     }
 
-    public function check_empty( $empty, $post_data ) {
-        if ( 'recipe' === $post_data['post_type'] ) {
-            $empty = false;
-        }
-        return $empty;
-    }
 
     /**
-     * Handles saving of recipes
+     * Main function allowing to save all recipe specific post meta
+     *
+     * @return void
      */
-    public function save( $id, $post )
+    public function save_recipe_meta()
     {
-        if( $post->post_type == 'recipe' )
+        $this->convert_durations_before_save();
+
+        $fields = $this->fields();
+        foreach ( $fields as $field )
         {
-            if ( !isset( $_POST['recipe_meta_box_nonce'] ) || !wp_verify_nonce( $_POST['recipe_meta_box_nonce'], 'recipe' ) )
+            $old = $this->get( $field );
+
+            $new = null;
+            if (isset($_POST[$field]) ) {
+                if ( $this->format($field) == 'scalar' ) {
+                    if ( $this->input_type($field) == 'text' )
+                        $new = sanitize_text_field( $_POST[$field] );
+                    else
+                        $new = wp_kses_post( $_POST[$field] );
+                }
+                else {
+                    // array fields are processed in dedicated functions below
+                    $new = $_POST[$field];
+                }
+            }
+
+            // Field specific adjustments
+            if( isset( $new ) && $field == 'recipe_ingredients' )
+                $new = $this->process_ingredients($new);
+            elseif( isset( $new ) && $field == 'recipe_instructions' )
+                $new = $this->process_instructions($old, $new);
+            elseif( isset( $new ) && $field == 'recipe_servings' )
+                $this->set( 'recipe_servings_normalized', $this->normalize_servings($new));
+
+            // Update or delete meta data if changed
+            if ( isset( $new ) && $new != $old )
             {
-                return $id;
-            }
-
-            $recipe = new WPURP_Recipe( $post );
-
-            $fields = $recipe->fields();
-
-            // Make sure the recipe_title meta is present
-            if( !isset( $_POST['recipe_title'] ) ) {
-                $_POST['recipe_title'] = $recipe->title();
-            } else if( $_POST['recipe_title'] == '' ) {
-                $_POST['recipe_title'] = $post->post_title;
-            }
-
-            // TODO Refactor saving of fields
-            foreach ( $fields as $field )
-            {
-                $old = get_post_meta( $recipe->ID(), $field, true );
-                $new = isset( $_POST[$field] ) ? $_POST[$field] : null;
-
-                // Field specific adjustments
-                if( isset( $new ) && $field == 'recipe_ingredients' )
-                {
-                    $ingredients = array();
-                    $non_empty_ingredients = array();
-
-                    foreach( $new as $ingredient ) {
-                        if( trim( $ingredient['ingredient'] ) != '' )
-                        {
-                            $term = term_exists( $ingredient['ingredient'], 'ingredient' );
-
-                            if ( $term === 0 || $term === null ) {
-                                $term = wp_insert_term( $ingredient['ingredient'], 'ingredient' );
-                            }
-
-                            if( is_wp_error( $term ) ) {
-                                if( isset( $term->error_data['term_exists'] ) ) {
-                                    $term_id = intval( $term->error_data['term_exists'] );
-                                } else {
-                                    var_dump( $term );
-                                }
-                            } else {
-                                $term_id = intval( $term['term_id'] );
-                            }
-
-                            $ingredient['ingredient_id'] = $term_id;
-                            $ingredients[] = $term_id;
-
-                            $ingredient['amount_normalized'] = $this->normalize_amount( $ingredient['amount'] );
-
-                            $non_empty_ingredients[] = $ingredient;
-                        }
-                    }
-
-                    wp_set_post_terms( $recipe->ID(), $ingredients, 'ingredient' );
-                    $new = $non_empty_ingredients;
-                }
-                elseif( isset( $new ) && $field == 'recipe_instructions' )
-                {
-                    $non_empty_instructions = array();
-
-                    foreach( $new as $instruction ) {
-                        if( $instruction['description'] != '' || ( isset( $instruction['image'] ) && $instruction['image'] != '' ) )
-                        {
-                            $non_empty_instructions[] = $instruction;
-                        }
-                    }
-
-                    $new = $non_empty_instructions;
-                }
-                elseif( isset( $new ) && $field == 'recipe_servings' )
-                {
-                    update_post_meta( $recipe->ID(), 'recipe_servings_normalized', $this->normalize_servings( $new ) );
-                }
-                elseif( isset( $new ) && $field == 'recipe_rating' )
-                {
-                    $term_name = intval( $new ) == 1 ? $new .' '. __( 'star', 'wp-ultimate-recipe' ) : $new .' '. __( 'stars', 'wp-ultimate-recipe' );
-                    wp_set_post_terms( $recipe->ID(), $term_name, 'rating' );
-                }
-
-                // Update or delete meta data if changed
-                if ( isset( $new ) && $new != $old )
-                {
-                    update_post_meta( $recipe->ID(), $field, $new );
-
-                    if( $field == 'recipe_ingredients' ) {
-                        $notice = '<strong>' . $_POST['recipe_title'] . ':</strong> <a href="'.admin_url( 'edit.php?post_type=recipe&page=wpurp_nutritional_information&limit_by_recipe=' . $recipe->ID() ).'">'. __( 'Update the Nutritional Information', 'wp-ultimate-recipe') .'</a>';
-                        CRM_Notices::add_admin_notice( $notice );
-                    }
-                }
-                elseif ( $new == '' && $old )
-                {
-                    delete_post_meta( $recipe->ID(), $field, $old );
+                $this->set( $field, $new );
+                if( $field == 'recipe_ingredients' ) {
+                    $notice = '<strong>' . $this->post->post_title . ':</strong> <a href="'.admin_url( 'edit.php?post_type=recipe&page=wpurp_nutritional_information&limit_by_recipe=' . $this->ID() ).'">'. __( 'Update the Nutritional Information', 'wp-ultimate-recipe') .'</a>';
+                    CRM_Notices::add_admin_notice( $notice );
                 }
             }
+            elseif ( $new == '' && $old )
+                $this->delete( $field, $old);
 
-            // $this->update_recipe_terms( $recipe->ID() );
         }
+
+    }
+
+
+    /* SAVE FIELD FUNCTIONS
+    -----------------------------------------------------------------*/
+
+    /**
+     * process_instructions
+     *
+     * @param  mixed $old
+     * @param  mixed $new
+     * @return void
+     */
+    public function process_instructions($old, $new)
+    {
+        $non_empty_instructions = array();
+        foreach ($new as $instruction) {
+            if ( !empty( trim($instruction['description']) ) || !empty( trim($instruction['image']) ) ) {
+                $instruction['group']= sanitize_text_field($instruction['group']);
+                $instruction['description']=sanitize_textarea_field($instruction['description']);
+                $non_empty_instructions[] = $instruction;
+            }
+        }
+        return $non_empty_instructions;
     }
 
     /**
-     * Save a list of the recipe terms so we can load the Recipe Grid faster
+     * Ingredients names are saved as terms since they belong to the "ingredient" taxonomy
+     * BUT ingredients data for the recipe (name, amount, unit, notes) are also saved as post meta
+     *
+     * @param  mixed $new
+     * @return void
      */
-    // public function update_recipe_terms( $recipe_id )
-    // {
-    //     $taxonomies = WPUltimateRecipe::get()->tags();
-    //     $taxonomies['category'] = array( 'labels' => array( 'name' => __( 'Categories', 'wp-ultimate-recipe' ) ) );
-    //     $taxonomies['post_tag'] = array( 'labels' => array( 'name' => __( 'Tags', 'wp-ultimate-recipe' ) ) );
+    public function process_ingredients($new)
+    {
+        $ingredients = array();
+        $non_empty_ingredients = array();
 
-    //     $recipe_terms = array();
-    //     $recipe_terms_with_parents = array();
-    //     foreach( $taxonomies as $taxonomy => $options ) {
-    //         $terms = wp_get_post_terms( $recipe_id, $taxonomy );
+        foreach ($new as $ingredient) {
+            if (trim($ingredient['ingredient']) != '') {
+                $term = term_exists($ingredient['ingredient'], 'ingredient');
 
-    //         $recipe_terms[$taxonomy] = array(0);
-    //         $recipe_terms_with_parents[$taxonomy] = array(0);
+                if ( empty($term) ) {
+                    $term = wp_insert_term( sanitize_title($ingredient['ingredient']) , 'ingredient');
+                }
 
-    //         $parents = array();
+                if (is_wp_error($term)) {
+                    if (isset($term->error_data['term_exists'])) {
+                        $term_id = intval($term->error_data['term_exists']);
+                    } else {
+                        var_dump($term);
+                    }
+                } else {
+                    $term_id = intval($term['term_id']);
+                }
 
-    //         foreach( $terms as $term ) {
-    //             $recipe_terms[$taxonomy][] = $term->term_id;
-    //             $recipe_terms_with_parents[$taxonomy][] = $term->term_id;
+                $ingredient['ingredient_id'] = $term_id;
+                $ingredients[] = $term_id;
 
-    //             if( $term->parent != 0 ) {
-    //                 $parents[] = $term->parent;
-    //             }
-    //         }
+                $ingredient['amount_normalized'] = CRM_Ingredient::normalize_amount($ingredient['amount']);
 
-    //         // Get term parents as well
-    //         while( count( $parents ) > 0 )
-    //         {
-    //             $children = $parents;
-    //             $parents = array();
+                $ingredient['group']= sanitize_text_field($ingredient['group']);
+                $ingredient['unit']=sanitize_text_field($ingredient['unit']);
+                $ingredient['notes']=sanitize_textarea_field($ingredient['notes']);
+                $non_empty_ingredients[] = $ingredient;
+            }
+        }
+        wp_set_post_terms($this->ID(), $ingredients, 'ingredient');
+        return $non_empty_ingredients;
+    }
 
-    //             foreach( $children as $child ) {
-    //                 $term = get_term( $child, $taxonomy );
+    /**
+     * Updates $_POST inputs 'recipe_cook_time', 'recipe_prep_time', and 'recipe_passive_time'
+     * based on the days, hours, minutes input fields
+     *
+     * @return void
+     */
+    public function convert_durations_before_save()
+    {
+        $types = array('prep', 'cook', 'passive');
+        foreach ($types as $type) {
+            $field = "recipe_{$type}_time";
+            $days = isset($_POST["{$field}_days"]) ? (int) $_POST["{$field}_days"] : 0;
+            $hours = isset($_POST["{$field}_hours"]) ? (int) $_POST["{$field}_hours"] : 0;
+            $minutes = isset($_POST["{$field}_minutes"]) ? (int) $_POST["{$field}_minutes"] : 0;
+            $time = $this->time($days, $hours, $minutes);
+            if ( !empty($time) ) {
+                $_POST[$field] = $time;
+            }
+        }
+    }
 
-    //                 $recipe_terms_with_parents[$taxonomy][] = $term->term_id;
 
-    //                 if( $term->parent != 0 ) {
-    //                     $parents[] = $term->parent;
-    //                 }
-    //             }
-    //         }
-    //     }
-
-    //     update_post_meta( $recipe_id, 'recipe_terms', $recipe_terms );
-    //     update_post_meta( $recipe_id, 'recipe_terms_with_parents', $recipe_terms_with_parents );
-    // }
+    /* HELPERS
+    -------------------------------------------------------------------------------------*/
 
     /**
      * Get normalized servings
      */
     public function normalize_servings( $servings )
     {
-        $amount = $this->normalize_amount( $servings );
+        $amount = CRM_Ingredient::normalize_amount( $servings );
 
         if( $amount == 0 ) {
             $amount = 4;
@@ -186,116 +171,7 @@ class CRM_Recipe_Save {
         return $amount;
     }
 
-    /**
-     * Get normalized amount. 0 if not a valid amount.
-     *
-     * @param $amount       Amount to be normalized
-     * @return int
-     */
-    public function normalize_amount( $amount )
-    {
-        if( is_null($amount) || trim($amount) == '' ) {
-            return 0;
-        }
 
-        // Replace unicode fractions
-        $unicode_map = array(
-            '00BC' => ' 1/4', '00BD' => ' 1/2', '00BE' => ' 3/4', '2150' => ' 1/7',
-            '2151' => ' 1/9', '2152' => ' 1/10', '2153' => ' 1/3', '2154' => ' 2/3',
-            '2155' => ' 1/5', '2156' => ' 2/5', '2157' => ' 3/5', '2158' => ' 4/5',
-            '2159' => ' 1/6', '215A' => ' 5/6', '215B' => ' 1/8', '215C' => ' 3/8',
-            '215D' => ' 5/8', '215E' => ' 7/8'
-        );
 
-        foreach( $unicode_map as $unicode => $normal ) {
-            $amount = preg_replace( '/\x{' . $unicode . '}/u', $normal, $amount );
-        }
 
-        // Treat " to " as a dash for ranges
-        $amount = str_ireplace( ' to ', '-', $amount );
-
-        $amount = preg_replace( "/[^\d\.\/\,\s-–—]/", "", $amount ); // Only keep digits, comma, point, forward slash, space and dashes
-
-        // Replace en and em dash with a normal dash
-        $amount = str_replace( '–', '-', $amount );
-        $amount = str_replace( '—', '-', $amount );
-
-        // if( WPUltimateRecipe::option( 'recipe_adjustable_servings_hyphen', '1' ) != '1' ) {
-            // $amount = str_replace( '-', ' ', $amount );
-        // }
-
-        // Only take first part if we have a dash (e.g. 1-2 cups)
-        $parts = explode( '-', $amount );
-        $amount = $parts[0];
-
-        // If spaces treat as separate amounts to be added (e.g. 2 1/2 cups = 2 + 1/2)
-        $parts = explode( ' ', $amount );
-
-        $float = 0.0;
-        foreach( $parts as $amount ) {
-            $separator = $this->find_separator( $amount );
-
-            switch ($separator) {
-                case '/':
-                    $amount = str_replace( '.','', $amount );
-                    $amount = str_replace( ',','', $amount );
-                    $parts = explode( '/', $amount );
-
-                    $denominator = floatval($parts[1]);
-                    if( $denominator == 0 ) {
-                        $denominator = 1;
-                    }
-
-                    $float += floatval($parts[0]) / $denominator;
-                    break;
-                case '.':
-                    $amount = str_replace( ',','', $amount );
-                    $float += floatval($amount);
-                    break;
-                case ',':
-                    $amount = str_replace( '.','', $amount );
-                    $amount = str_replace( ',','.', $amount );
-                    $float += floatval($amount);
-                    break;
-                default:
-                    $float += floatval($amount);
-            }
-        }
-
-        return $float;
-    }
-
-    /**
-     * Pick a separator for the amount
-     * Examples:
-     * 1/2 => /
-     * 1.123,42 => ,
-     * 1,123.42 => .
-     *
-     * @param $string
-     * @return string
-     */
-    private function find_separator( $string )
-    {
-        $slash = strrpos($string, '/');
-        $point = strrpos($string, '.');
-        $comma = strrpos($string, ',');
-
-        if( $slash ) {
-            return '/';
-        }
-        else {
-            if( !$point && !$comma ) {
-                return '';
-            } else if( !$point && $comma ) {
-                return ',';
-            } else if( $point && !$comma ) {
-                return '.';
-            } else if( $point > $comma ) {
-                return '.';
-            } else {
-                return ',';
-            }
-        }
-    }
 }

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WordPress Popular Posts - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-02-16 07:54:39+0000\n"
+"PO-Revision-Date: 2020-03-31 12:38:30+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,10 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: es\n"
 "Project-Id-Version: Plugins - WordPress Popular Posts - Stable (latest release)\n"
+
+#: src/Admin/admin-page.php:878
+msgid "similar to text_title, sanitized for use in title/alt attributes"
+msgstr "similar a `text_title`, saneado para su uso en los atributos `title` y `alt`"
 
 #: src/Admin/Admin.php:1367
 msgid "<strong>WordPress Popular Posts:</strong> It seems your site is popular (great!) You may want to check <a href=\"%s\">these suggestions</a> to make sure your website's performance stays up to par."
@@ -43,7 +47,7 @@ msgstr "devuelve el número encontrado de entradas populares"
 msgid "View more"
 msgstr "Ver más"
 
-#: src/Rest/Controller.php:303
+#: src/Rest/Controller.php:304
 msgid "Invalid Widget Instance ID"
 msgstr "ID de instancia del widget no válido"
 
@@ -55,25 +59,25 @@ msgstr "No"
 msgid "Lazy load"
 msgstr "Carga diferida"
 
-#: src/Output.php:702 src/Admin/Admin.php:699 src/Admin/Admin.php:1090
-#: src/Admin/Admin.php:1092
+#: src/Admin/Admin.php:699 src/Admin/Admin.php:1090 src/Admin/Admin.php:1092
+#: src/Output.php:705
 msgid "%s comment"
 msgid_plural "%s comments"
 msgstr[0] "%s comentario"
 msgstr[1] "%s comentarios"
 
-#: src/Output.php:719 src/Admin/Admin.php:699 src/Admin/Admin.php:1088
-#: src/Admin/Admin.php:1092
+#: src/Admin/Admin.php:699 src/Admin/Admin.php:1088 src/Admin/Admin.php:1092
+#: src/Output.php:722
 msgid "%s view"
 msgid_plural "%s views"
 msgstr[0] "%s vista"
 msgstr[1] "%s vistas"
 
-#: src/Rest/Controller.php:527
+#: src/Rest/Controller.php:501
 msgid "Include popular posts from author ID(s)."
 msgstr "Incluir entradas populares a partir del/los ID(s) de autor."
 
-#: src/Rest/Controller.php:503
+#: src/Rest/Controller.php:477
 msgid "Post IDs to exclude from the listing."
 msgstr "IDs de entradas a excluir del listado."
 
@@ -85,59 +89,59 @@ msgstr "WPP puede almacenar en cache la lista de entradas populares por un tiemp
 msgid "Data Caching"
 msgstr "Caché de datos"
 
-#: src/Rest/Controller.php:568
+#: src/Rest/Controller.php:542
 msgid "Sets the Sampling Rate."
 msgstr "Configura la frecuencia de muestreo."
 
-#: src/Rest/Controller.php:561
+#: src/Rest/Controller.php:535
 msgid "Enables Data Sampling."
 msgstr "Habilita el muestreo de datos."
 
-#: src/Rest/Controller.php:554
+#: src/Rest/Controller.php:528
 msgid "The post / page ID."
 msgstr "El ID de la entrada / página."
 
-#: src/Rest/Controller.php:548
+#: src/Rest/Controller.php:522
 msgid "Security nonce."
 msgstr "Nonce de seguridad."
 
-#: src/Rest/Controller.php:519
+#: src/Rest/Controller.php:493
 msgid "Taxonomy IDs, separated by comma (prefix a minus sign to exclude)."
 msgstr "IDs de las taxonomías, separadas por coma (agrega un signo negativo para excluir)."
 
-#: src/Rest/Controller.php:511
+#: src/Rest/Controller.php:485
 msgid "Include posts in a specified taxonomy."
 msgstr "Incluye entradas que pertenezcan a la taxonomía especificada."
 
-#: src/Rest/Controller.php:495
+#: src/Rest/Controller.php:469
 msgid "Specifies the number of time units of the custom time range."
 msgstr "Especifica el número de unidades de tiempo del rango de tiempo personalizado."
 
-#: src/Rest/Controller.php:487
+#: src/Rest/Controller.php:461
 msgid "Specifies the time unit of the custom time range."
 msgstr "Especifica la unidad de tiempo del rango de tiempo personalizado."
 
-#: src/Rest/Controller.php:479
+#: src/Rest/Controller.php:453
 msgid "Return popular posts from a specified time range."
 msgstr "Devuelve entradas de un rango de tiempo especificado."
 
-#: src/Rest/Controller.php:471
+#: src/Rest/Controller.php:445
 msgid "Set the sorting option of the popular posts."
 msgstr "Configura la opción de ordenamiento de las entradas populares."
 
-#: src/Rest/Controller.php:463
+#: src/Rest/Controller.php:437
 msgid "An offset point for the collection."
 msgstr "Punto de offset de la colección."
 
-#: src/Rest/Controller.php:455
+#: src/Rest/Controller.php:429
 msgid "Retrieve the most popular entries published within the specified time range."
 msgstr "Obtiene las entradas más populares publicadas en el rango de tiempo especificado."
 
-#: src/Rest/Controller.php:447
+#: src/Rest/Controller.php:421
 msgid "The maximum number of popular posts to return."
 msgstr "La cantidad máxima de entradas populares que devolver."
 
-#: src/Rest/Controller.php:440
+#: src/Rest/Controller.php:414
 msgid "Return popular posts from specified custom post type(s)."
 msgstr "Devuelve entradas populares de tipo(s) de contenido específico(s)."
 
@@ -233,7 +237,7 @@ msgstr "Personalizado"
 msgid "Error: cannot ajaxify WordPress Popular Posts on this sidebar. It's missing the <em>id</em> attribute on before_widget (see <a href=\"%s\" target=\"_blank\" rel=\"nofollow\">register_sidebar</a> for more)"
 msgstr "Error: no es posible aplicar Ajax a WordPress Popular Posts en esta barra lateral. Falta el atributo <em>id</em> en `before_widget` (ver <a href=\"%s\" target=\"_blank\" rel=\"nofollow\">`register_sidebar`</a> para más detalles)"
 
-#: src/Output.php:748
+#: src/Output.php:751
 msgid "posted %s"
 msgstr "publicado %s"
 
@@ -389,19 +393,19 @@ msgstr "https://wordpress.org/plugins/wordpress-popular-posts/"
 msgid "WordPress Popular Posts"
 msgstr "WordPress Popular Posts"
 
-#: src/Output.php:756
+#: src/Output.php:759
 msgid "under %s"
 msgstr "bajo %s"
 
-#: src/Output.php:748
+#: src/Output.php:751
 msgid "posted on %s"
 msgstr "publicado el %s"
 
-#: src/Output.php:742
+#: src/Output.php:745
 msgid "by %s"
 msgstr "por %s"
 
-#: src/Output.php:713
+#: src/Output.php:716
 msgid "%s view per day"
 msgid_plural "%s views per day"
 msgstr[0] "%s vista por día"

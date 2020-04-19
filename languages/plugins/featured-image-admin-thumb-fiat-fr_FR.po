@@ -1,0 +1,47 @@
+# Translation of Plugins - Featured Image Admin Thumb - Stable (latest release) in French (France)
+# This file is distributed under the same license as the Plugins - Featured Image Admin Thumb - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-04-11 16:08:35+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: fr\n"
+"Project-Id-Version: Plugins - Featured Image Admin Thumb - Stable (latest release)\n"
+
+#: admin/class-featured-image-admin-thumb-admin.php:240
+#: admin/class-featured-image-admin-thumb-admin.php:397
+msgid "Thumb"
+msgstr "Miniature"
+
+#. Author of the plugin
+msgid "Sean Hayes"
+msgstr "Sean Hayes"
+
+#. Description of the plugin
+msgid "Adds inline thumbnail image to admin columns for All Post/post types view (where supported). Click to easily set/change the featured image for that content."
+msgstr "Ajoutez une miniature en ligne aux colonnes d’administration pour toutes les vues des types de publication (lorsque cela est possible). Cliquez pour définir / modifier l’image mise en avant pour ce contenu."
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://www.seanhayes.biz"
+msgstr "https://www.seanhayes.biz"
+
+#. Plugin Name of the plugin
+msgid "Featured Image Admin Thumb"
+msgstr "Featured Image Admin Thumb"
+
+#: admin/class-featured-image-admin-thumb-admin.php:351
+msgid "Set %s featured image"
+msgstr "Définir %s en tant qu’image mise en avant"
+
+#: admin/class-featured-image-admin-thumb-admin.php:74
+#: admin/class-featured-image-admin-thumb-admin.php:200
+msgid "Change featured image"
+msgstr "Changer l’image mise en avant"
+
+#: admin/class-featured-image-admin-thumb-admin.php:199
+msgid "Use as thumbnail"
+msgstr "Utiliser comme miniature"

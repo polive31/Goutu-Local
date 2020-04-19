@@ -33,7 +33,9 @@ jQuery(document).ready(function() {
             //     });
             // }
             if (previousRowId != currentRowId)  {
-                if ( isValid(previousRowId) ) displayIngredientPreview(previousRowId);
+                if ( isValid(previousRowId) ) {
+                    displayIngredientPreview(previousRowId);
+                }
             }
         }, 100);
     });
@@ -67,66 +69,63 @@ function getIngredientbyId( id ) {
 }
 
 function displayIngredientPreview( thisIngredientId ) {
+    console.log("%c Display Ingredient Preview on " + thisIngredientId, 'background: #ccc; color: blue');
+    var thisIngredient=getIngredientbyId(thisIngredientId);
+    var recipeId = jQuery('#submit_post_id').val();
+    // var $ingredientFields = thisIngredient.find('input, textarea');
+    // console.log('Ingredient fields = ', $ingredientFields);
+    var ingredientName = thisIngredient.find('.ingredient-input.name input').val();
+    console.log('%c Ingredient name = ' + ingredientName, 'background: #ccc; color: blue');
 
-        console.log("%c Display Ingredient Preview on " + thisIngredientId, 'background: #ccc; color: blue');
+    if (ingredientName=='') {
+        console.log('%c Exit...', 'background: #ccc; color: blue');
+        return;
+    }
 
-        var thisIngredient=getIngredientbyId(thisIngredientId);
+    var ingredientData = thisIngredient.find('input, textarea').serialize();
+    console.table('Ingredient data = ', ingredientData);
 
-        // console.log('XHR_Ingredient[thisIngredientId] : ', xhr_ingredient[thisIngredientId]);
+    // console.log('XHR_Ingredient[thisIngredientId] : ', xhr_ingredient[thisIngredientId]);
+    // Check whenever there is an ongoing ajax call on this ingredient
+    try {
+        xhr_ingredient[thisIngredientId].abort();
+        console.log("%c Aborting previous ajax call for " + thisIngredientId, 'background: #ccc; color: blue');
+    }
+    catch(e){
+        console.log("%c No previous ajax call for " + thisIngredientId, 'background: #ccc; color: blue');
+    }
+    console.log("%c Ajax call launched", 'background: #ccc; color: blue');
+    console.log("%c Recipe ID=" + recipeId, 'background: #ccc; color: blue' );
 
-        // Check whenever there is an ongoing ajax call on this ingredient
-        try {
-            xhr_ingredient[thisIngredientId].abort();
-            console.log("%c Aborting previous ajax call for " + thisIngredientId, 'background: #ccc; color: blue');
-        }
-        catch(e){
-            console.log("%c No previous ajax call for " + thisIngredientId, 'background: #ccc; color: blue');
-        }
+    var data = {
+        action: 'ingredient_preview',
+        security: ingredient_preview.nonce,
+        recipe_id: recipeId,
+        ingredient_data: ingredientData,
+    };
 
-        console.log("%c Ajax call launched", 'background: #ccc; color: blue');
-        console.log("Ajaxurl", ingredient_preview.ajaxurl );
-
-
-        xhr_ingredient[thisIngredientId]=jQuery.ajax({
-            url : ingredient_preview.ajaxurl,
-            method : 'POST',
-            data : {
-                action : 'ingredient_preview',
-                security : ingredient_preview.nonce,
-                // ingredient_id : thisIngredientId,
-                amount : thisIngredient.find('.ingredients_amount').val(),
-                unit : thisIngredient.find('.ingredients_unit').val(),
-                ingredient : thisIngredient.find('.ingredients_name').val(),
-                notes : thisIngredient.find('.ingredients_notes').val(),
-            },
-            success : function( response ) {
-                if( response.success ){
-                    console.log( "Ajax ingredient preview success for " + thisIngredientId);
-                    console.log( "Ingredient is " + thisIngredient);
-                    // console.log( 'Response is : ' + response.data.msg );
-                    var target = thisIngredient.find('td.ingredient-preview');
-                    // console.log( 'Apply changes to : ', target );
-                    jQuery('#recipe-ingredients').on('focusin','tr.ingredient', false);
-                    jQuery('#recipe-ingredients').on('blur','tr.ingredient', false);
-                    target.html( response.data.msg );
-                    // console.log( 'Apply css changes to : ', thisIngredient );
-                    thisIngredient.removeClass('edit new');
-                    thisIngredient.addClass('saved');
-                    // Last check in order to secure that there is no focus on this ingredient
-                    // if (thisIngredient.children(':focus').length == 0) {
-                // }
-                // else {
-                //     console.log('%c Current ingredient child has focus ! No change...','background:red;color:black');
-                    jQuery('#recipe-ingredients').off('focusin','tr.ingredient', false);
-                    jQuery('#recipe-ingredients').off('blur','tr.ingredient', false);
-                }
-                else {
-                    console.log( 'Error on Ajax call processing : ' + response.data.msg );
-                }
-            },
-            error : function( response ) {
-                console.log( 'Ajax call failed : ' + response.msg );
+    xhr_ingredient[thisIngredientId]=jQuery.post(
+        ingredient_preview.ajaxurl,
+        data,
+        function( response ) {
+            if( response.success ){
+                console.log("%c Ajax ingredient preview success for " + thisIngredientId, 'background: #ccc; color: blue');
+                console.log("%c Response is " + response.data.msg, 'background: #ccc; color: blue');
+                var target = thisIngredient.find('td.ingredient-preview');
+                jQuery('#recipe-ingredients').on('focusin','tr.ingredient', false);
+                jQuery('#recipe-ingredients').on('blur','tr.ingredient', false);
+                target.html( response.data.msg );
+                thisIngredient.removeClass('edit new');
+                thisIngredient.addClass('saved');
+                jQuery('#recipe-ingredients').off('focusin','tr.ingredient', false);
+                jQuery('#recipe-ingredients').off('blur','tr.ingredient', false);
             }
-        });
+            else {
+                // console.log( 'Error on Ajax call processing : ' );
+                console.log('%c Error on Ajax call processing : ' + response.data.msg, 'background: #ccc; color: blue' );
+            }
+        },
+
+    );
 
 }

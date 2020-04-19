@@ -37,7 +37,7 @@ class CRM_Favorite
         );
     }
 
-    public function add_query_vars_filter($vars)
+    public function add_list_query_var($vars)
     {
         $vars[] = "list";
         return $vars;
@@ -48,9 +48,9 @@ class CRM_Favorite
 
         if (!is_user_logged_in()) {
             $link_id = 'id="join_us"';
-            $link_url = '/connexion';
+            $link_url = foodiepro_get_permalink(array('slug' => 'connexion'));
             $onclick = "ga('send','event','join-us','click','recipe-favorite', 0);";
-            $favorites_link = '/connexion';
+            $favorites_link = foodiepro_get_permalink(array('slug' => 'connexion'));
         } else {
             $link_id = '';
             $link_url = '#';
@@ -76,20 +76,21 @@ class CRM_Favorite
 
         if (is_user_logged_in()) {
             $args = array(
-                'content'     => $tooltip,
-                'valign'     => 'above',
+                'content'   => $tooltip,
+                'valign'    => 'above',
                 'halign'    => 'center',
             );
             Tooltip::display($args);
             $args = array(
-                'content'     => $this->output_form($recipe->ID()),
-                'valign'     => 'above',
+                'content'   => $this->output_form($recipe->ID()),
+                'valign'    => 'above',
                 'halign'    => 'center',
                 'action'    => 'click',
-                'callout'    => false,
-                'class'        => 'favorites-form uppercase',
-                'title'        => __('Add to my cookbook', 'crm'),
-                'img'        => CHILD_THEME_URL . '/images/popup-icons/cookbook.png'
+                'callout'   => false,
+                'class'     => 'favorites-form uppercase',
+                'title'     => __('Add to my cookbook', 'crm'),
+                'img'       => CHILD_THEME_URL . '/images/popup-icons/cookbook-small.png',
+                'imgdir'    => CHILD_THEME_PATH . '/images/popup-icons/'
             );
             Tooltip::display($args);
         }
@@ -149,6 +150,34 @@ class CRM_Favorite
         return $html;
     }
 
+
+    /* DROPDOWN WIDGET FILTER
+    -----------------------------------------------------------*/
+    public function cpm_list_dropdown_widget_args_cb($args, $page_slug)
+    {
+        if ($page_slug == CPM_Assets::get_slug('recipe', 'recipe_favorites')) {
+            $args=array(
+                'title' => __('My lists', 'crm'),
+                'queryvar' => 'list',
+                'options'   => array(
+                    'all'       => array(
+                        'label' => __('All cookbook recipes', 'crm'),
+                        'description' => '',
+                    ),
+                    'favorites' => array(
+                        'label'         => __('My favorite recipes', 'crm'),
+                        'description'   => __('Recipes you have already cooked and appreciate.', 'crm'),
+                    ),
+                    'wishlist'  => array(
+                        'label'         => __('Recipes in my wishlist', 'crm'),
+                        'description'   => __('Recipes you are interested in, but didn\'t cook yet', 'crm'),
+                    ),
+                )
+            );
+        }
+        return $args;
+    }
+
     /********************************************************************************
      ****                           GETTERS                                **********
      ********************************************************************************/
@@ -164,11 +193,13 @@ class CRM_Favorite
 
     public static function get_label($list)
     {
+        if (!isset(self::$FAVLISTS[$list]['label'])) return false;
         return self::$FAVLISTS[$list]['label'];
     }
 
     public static function get_tooltip($state, $link='')
     {
+        if (!isset(self::$TOOLTIPS[$state])) return false;
         return sprintf(self::$TOOLTIPS[$state],$link);
     }
 
@@ -183,6 +214,7 @@ class CRM_Favorite
 
     public static function get_meta_name($list)
     {
+        if (!isset(self::$FAVLISTS[$list]['meta'])) return false;
         return self::$FAVLISTS[$list]['meta'];
     }
 

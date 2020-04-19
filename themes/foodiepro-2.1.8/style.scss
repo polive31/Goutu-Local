@@ -899,10 +899,6 @@ a {
     text-decoration: underline;
 }
 
-a img {
-    margin-bottom: 20px;
-}
-
 .sidebar a img {
     margin-bottom: 0px;
 }
@@ -968,14 +964,14 @@ cite {
 /* Objects
 --------------------------------------------- */
 
-embed,
-iframe,
-img,
-object,
-video,
-.wp-caption {
-    max-width: 100%;
-}
+// embed,
+// iframe,
+// img,
+// object,
+// video,
+// .wp-caption {
+//     max-width: 100%;
+// }
 
 img {
     height: auto;
@@ -1077,8 +1073,7 @@ IMPORTANT : DO NOT REMOVE SINCE COLOR THEMES ARE NOT LOADED ON SMARTPHONE !!!
 .content {
     min-height: 700px;
     float: right;
-    width: 710px;
-    width: var($content-width-screen);
+    width: $content-width-screen;
 }
 
 /* Workaround for cookie notice appearing on pages with few content (ex : contact form submitted) */
@@ -1410,14 +1405,11 @@ Common Classes
 
 /* WordPress Avatars
 --------------------------------------------- */
-
 .avatar {
     float: left;
 }
 
-picture.avatar,
 img.avatar,
-.avatar,
 .content .rpwe-block a.auth-avatar,
 .content .featured-post .avatar {
     -webkit-border-radius: 50%;
@@ -1425,9 +1417,10 @@ img.avatar,
     border-radius: 50%;
     -khtml-border-radius: 50%;
     vertical-align: middle;
+    padding: 3px;
+    background: #fff;
 }
 
-picture.avatar#square,
 img.avatar#square,
 .avatar#square {
     border-radius: 0;
@@ -1440,7 +1433,7 @@ img.avatar#square,
 .content .rpwe-block a.auth-avatar {
     margin-right: auto;
     margin-left: auto;
-    margin-top: -40px;
+    margin-top: -50px;
     z-index: 1000;
     /* Prevents the post url to override the profile url */
     display: -webkit-box;
@@ -1453,31 +1446,6 @@ img.avatar#square,
     /* NEW - Chrome */
     display: flex;
     /* NEW, Spec - Opera 12.1, Firefox 20+ */
-}
-
-.page-bottom .rpwe-block a.auth-avatar,
-.after-content .rpwe-block a.auth-avatar {
-    margin-top: -65px;
-}
-
-.page-bottom .rpwe-block picture.avatar,
-.after-content .rpwe-block picture.avatar,
-.content .rpwe-block picture.avatar,
-.page-bottom .rpwe-block img.avatar,
-.after-content .rpwe-block img.avatar,
-.content .rpwe-block img.avatar {
-    border: 3px solid #ffffff;
-    width: 55px;
-    height: 55px;
-    margin: auto;
-}
-
-.page-bottom .rpwe-block picture.avatar,
-.after-content .rpwe-block picture.avatar,
-.page-bottom .rpwe-block img.avatar,
-.after-content .rpwe-block img.avatar {
-    width: 60px;
-    height: 60px;
 }
 
 /* WordPress misc
@@ -1732,7 +1700,7 @@ img.alignright,
 } */
 
 .archive-title .archive-image {
-    max-width: 200px;
+    // max-width: 200px;
     display: inline-block;
     vertical-align: middle;
     margin-right: 10px;
@@ -1742,11 +1710,12 @@ a.archive-avatar {
     display: inline-block;
     vertical-align: middle;
     padding: 0 20px;
-    max-width: 160px;
+    // max-width: 160px;
 }
 
 a.archive-avatar img {
     margin-bottom: 0;
+    max-width: 200px;
 }
 
 /* Search Top section
@@ -2253,6 +2222,58 @@ form[role="search"] {
 /* Plugins
 -------------------------------------------------------- */
 
+/* Custom Star Rating */
+
+
+span.entry-rating {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+}
+
+.rating a {
+    text-decoration: none;
+}
+
+/* Rating stars formatting
+-----------------------------------------*/
+.ratings-table i.fas.fa-star,
+.ratings-table i.fas.fa-star-half {
+    color: #f5a241;
+}
+
+.ratings-table .null i.far.fa-star {
+    /* color:#6f6f6f; */
+    color: #d3d3d3;
+}
+
+.ratings-table .full i.far.fa-star {
+    color: #f18b14;
+}
+
+.ratings-table {
+    font-size: 1.6rem;
+}
+
+.ratings-table .fa-stack {
+    width: 17px;
+}
+
+/* Comments */
+.comment .ratings-table .fa-stack {
+    width: 15px;
+}
+
+.comment .ratings-table {
+    font-size: 1.4rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+}
+
+
 
 
 /* Name Directory */
@@ -2682,6 +2703,7 @@ label.requiredField:after {
     color: #222;
     font-size: 5rem;
     font-weight: bold;
+    line-height: inherit;
 }
 
 .home .content .page header.entry-header {
@@ -3068,7 +3090,7 @@ Site Header
     /* position:fixed; */
     top: 0;
     transition: top 0.2s ease-in-out;
-    z-index: 99999;
+    z-index: 5000; //IMPORTANT 9999 hides admin toolbar !!!
     margin: 0;
     padding: 0;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -3316,24 +3338,16 @@ nav.nav-primary .wrap {
     opacity: 0.8;
 }
 
-.rpwe-block picture.avatar,
-.rpwe-block img.avatar {
-    width: 55px;
-}
-
 
 
 /* Entries
 --------------------------------------------- */
-
+.comment-author picture,
+.entry-avatar picture,
 .comment-avatar img,
 .entry-avatar img {
-    /*	margin-right:10px;
-	margin-top:10px;
-	margin-bottom: 0;  */
     margin: 0;
-    max-width: 48px;
-    max-height: 48px;
+    border-radius:100%;
 }
 
 .entry-content .attachment a,
@@ -3457,6 +3471,11 @@ a.more-link,
     /* P.O. Original margin-bottom:40px; */
 }
 
+.img-menu a .menu-title span,
+a.more-link,
+.more-from-category a {
+    background: #f5f5f5;
+}
 
 .sidebar .widget-wrap .more-from-category a {
     font-size: 1.2rem;
@@ -3798,10 +3817,19 @@ input#url {
 header.comment-header {
     position: relative;
     width: 100%;
+    font-style: italic;
 }
 
 .comment-author a {
-    font-weight: bold;
+    font-weight: normal;
+}
+
+.comment-author-name {
+    text-transform: capitalize;
+}
+
+time.comment-time {
+    font-size: 1.2rem;
 }
 
 .comment-rating {
@@ -3810,6 +3838,14 @@ header.comment-header {
     top: 0;
     right: 0;
 }
+
+
+/* Rating Form */
+#comment_rating_form label {
+    font-size: 2rem;
+}
+
+
 
 .comment-respond {
     margin-top: 20px;
@@ -3874,6 +3910,7 @@ li.comment a {
 
 .entry-comments .comment-author {
     margin: 0;
+    display: block;
 }
 
 .comment-reply input[type="email"],
@@ -3887,7 +3924,7 @@ li.comment a {
 }
 
 .comment .avatar {
-    margin: 0 16px 22px 0;
+    margin: 0 5px 5px 0;
 }
 
 .form-allowed-tags {
@@ -4648,6 +4685,10 @@ Site Footer
 }
 
 @media only screen and (max-width:720px) {
+
+    .content {
+        min-height: initial;
+    }
 
     li.rpwe-li.rpwe-clearfix.rpwe-first {
         width: 100% !important;

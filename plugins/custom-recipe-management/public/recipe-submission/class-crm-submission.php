@@ -28,38 +28,8 @@ class CRM_Submission {
 
 
 
-/********************************************************************************
-****           RECIPE SUBMISSION FORM CUSTOMIZATION                          *****
-********************************************************************************/
-    public function add_recipe_specific_section( $form, $post, $required_fields=array() ) {
-        $recipe = new CRM_Recipe( $post->ID );
-        $wpurp_user_submission = true;
-
-        ob_start();
-        include( self::$_PluginDir . 'recipe-submission/partials/submission_form_ingredients_instructions.php' );
-        $form .= ob_get_contents();
-        ob_end_clean();
-
-        return $form;
-    }
-
-
-
-/********************************************************************************
-***                FUNCTIONS USED IN USER SUBMISSION FORM                     ***
-********************************************************************************/
-
-
-    // Returns list of excluded categories
-    public function excluded_terms($tax) {
-        $exclude='';
-        if ($tax=='category') {
-            $exclude = WPUltimateRecipe::option( 'user_submission_hide_category_terms', array() );
-            $exclude = implode( ',', $exclude );
-        }
-        return $exclude;
-    }
-
+/* SUBMISSION FORM
+--------------------------------------------------------------------------------------*/
     public function add_button_bar( $form, $recipe ) {
 
         // HTML for Helper Buttons
@@ -96,128 +66,169 @@ class CRM_Submission {
         return $html;
     }
 
-/********************************************************************************
-***                CALLBACKS FOR RECIPE SUBMISSION                            ***
-********************************************************************************/
-    public function recipe_submission_main( $post_id ) {
-        // Save all extended recipe meta and set time fields (the standard WPURP meta
-        // are already saved thanks to a callback in WPURP plugin)
-        $recipe=new CRM_Recipe( $post_id );
-        $recipe->save();
+/* CPM CALLBACKS
+--------------------------------------------------------------------------------------*/
+    public function cpm_recipe_section_cb($post, $required_fields = array())
+    {
+        $recipe = new CRM_Recipe($post->ID);
+        /* Ingredient group is an hidden input
+        For debugging purposes it can be made visible by setting the following variables */
+        $group_input_class = ''; // Debug value='debug', Production value=''
+        $group_input_type = 'hidden'; // Debug value='text', Production value='hidden'
 
-        // Save instruction images
-        // (main image is already saved as part of CPM_Submission->submit() function )
-        $this->instructions = get_post_meta( $post_id, 'recipe_instructions', true );
-        if( $_FILES ) {
-            foreach( $_FILES as $key => $file ) {
-                if ( $file['name'] != '' ) {
-                    $this->insert_attachment( $key, $post_id );
-                }
+        $args=compact( 'recipe', 'group_input_class', 'group_input_type', 'required_fields' );
+
+        $form = CRM_Assets::get_template_part( 'form', false, $args );
+
+        return $form;
+    }
+
+
+    /**
+     * cpm_recipe_submission_main_cb
+     *CPM standard post data are already saved in the main CPM Submission class :
+     * * post title
+     * * post content
+     * * post thumbnail
+     * * post taxonomies (tags for post, for recipe : course, season, cuisine, diet )
+     *
+     * @param  mixed $post_id
+     * @return void
+     */
+    public function save_recipe_meta($post_id)
+    {
+        $post = get_post($post_id);
+        $recipe = new CRM_Recipe_Save($post);
+        $recipe->save_recipe_meta();
+    }
+
+/* AJAX CALLBACKS
+--------------------------------------------------------------------------------------*/
+    /**
+     * ajax_upload_recipe_image
+     *
+     * Takes care of attaching the image to the recipe post
+     * It doesn't treat the "recipe_instruction" metadata
+     * which will be handled at post submission
+     *
+     * @return void
+     */
+    public function ajax_upload_recipe_image()
+    {
+        if (!check_ajax_referer('custom_post_submission_form', 'security', false)) {
+            echo('Nonce not recognized');
+            die();
+        }
+        $post_id = intval($_POST['postId']);
+
+        $alt = get_the_title($post_id);
+        if (empty($alt) && isset($_POST['imageAlt'])) {
+            $alt = $_POST['imageAlt'];
+        };
+
+        $featured = $_POST['thumbId']=='featured';
+
+        if (!$featured) {
+            $thumb_id = intval($_POST['thumbId']);
+            $alt .= ' - Instruction ' . $thumb_id;
+        }
+
+        $attach_id = CPM_Save::insert_attachment('file', $post_id, $alt);
+        if (!$attach_id) {
+            echo('Image upload failed : insert attachment');
+            die();
+        }
+
+
+        if( $featured ) {
+            $result = set_post_thumbnail($post_id, $attach_id);
+            if (!$result) {
+                echo ('Image upload failed : set post thumbnail');
+                die();
             }
-        }
-        update_post_meta( $post_id, 'recipe_instructions', $this->instructions );
-    }
-
-    public function insert_attachment( $file_handler, $post_id ) {
-        if ( $_FILES[$file_handler]['error'] !== UPLOAD_ERR_OK ) {
-            return;
-        }
-
-        // Recipe thumbnail is already taken into account in cpm_submission plugin
-        if ($file_handler == 'recipe_thumbnail') return;
-
-        require_once( ABSPATH . 'wp-admin/includes/image.php' );
-        require_once( ABSPATH . 'wp-admin/includes/file.php' );
-        require_once( ABSPATH . 'wp-admin/includes/media.php' );
-
-        $title = get_the_title($post_id);
-        $post_data = array(
-            'post_title'     => $title,
-        );
-
-        $attach_id = media_handle_upload( $file_handler, $post_id, $post_data );
-        update_post_meta($attach_id, '_wp_attachment_image_alt', $title);
-
-        // if ( $file_handler == 'recipe_thumbnail' ) { // Featured Recipe image
-        //     set_post_thumbnail( $post_id, $attach_id );
-        // }
-
-        if ( $file_handler == 'ingredients_thumbnail' ) { // Ingredients image
-            update_post_meta( $post_id, '_ingredients_thumbnail_id', $attach_id );
-        }
-        else { // Instructions image
-            $number = explode( '_', $file_handler );
-            $number = $number[2];
-            /* Post meta update for instructions is handled in WPURP/core/helpers/recipe_save.php */
-            $this->instructions[$number]['image'] = strval($attach_id);
-        }
-
-        return $attach_id;
-    }
-
-
-/********************************************************************************
-****                           AJAX CALLBACKS                          **********
-********************************************************************************/
-    public function ajax_remove_instruction_image() {
-        $check = check_ajax_referer( 'custom_recipe_submission_form', 'security', false );
-        $post_id = intval( $_POST['postid'] );
-        $thumb_id = intval( $_POST['thumbid'] );
-
-        if ($thumb_id==0) {
-            $result = delete_post_thumbnail( $post_id );
         }
         else {
-            $instructions = get_post_meta( $post_id, 'recipe_instructions', true );
-            if ( isset($instructions[$thumb_id]['image']) ) {
-                delete_post_meta($post_id, '_instructions_thumbnail_id', $instructions[$thumb_id]['image']);
-                unset($instructions[$thumb_id]['image']);
+            /* It is necessary to update the instruction meta now, in case the form
+                is refreshed prior to an autosave or submission */
+            $result = CRM_Recipe::add_instruction_image( $post_id, $thumb_id, $attach_id);
+            if (!$result) {
+                echo ('Image upload failed : update instruction#' . $thumb_id . ' meta');
+                die();
             }
         }
 
+        $size=$featured?'square-thumbnail':'thumbnail';
+        $image = wp_get_attachment_image_src($attach_id, $size);
+        if ($image) {
+            $response=array(
+                'src'   => $image[0],
+                'attachId' => $attach_id,
+            );
+            wp_send_json_success($response);
+        }
+
+        echo('Image upload failed : get attachment image');
         die();
     }
 
-    public function ajax_ingredient_preview() {
-        if( ! check_ajax_referer( 'preview_ingredient', 'security', false ) ) {
-            wp_send_json_error( array('msg' => 'Nonce not recognized'));
+
+    /**
+     * ajax_remove_instruction_image
+     *
+     * Takes care of detaching the image from the recipe post
+     * It doesn't treat the "recipe_instruction" metadata
+     * which will be handled at post submission
+     *
+     * @return void
+     */
+    public function ajax_remove_instruction_image()
+    {
+        if (!check_ajax_referer('custom_post_submission_form', 'security', false)) {
+            echo ('Nonce not recognized');
             die();
         }
-        if (! is_user_logged_in()) {
-            wp_send_json_error( array('msg' => 'User not logged-in'));
+
+        $featured = $_POST['thumbId'] == 'featured';
+        $post_id = intval($_POST['postId']);
+
+        if ($featured) {
+            $attach_id = get_post_thumbnail_id($post_id);
+            if (empty($attach_id)) {
+                echo ('Image remove failed : get post thumbnail id not found');
+                die();
+            }
+        }
+        else {
+            $thumb_id = intval($_POST['thumbId']);
+            $attach_id = intval($_POST['attachId']);
+            /* It is necessary to update the instruction meta now, in case the form
+                is refreshed prior to an autosave or submission */
+            $result = CRM_Recipe::delete_instruction_image( $post_id, $thumb_id);
+            if (!$result) {
+                echo ('Image remove failed : update instruction#' . $thumb_id . ' meta');
+                die();
+            }
+        }
+
+
+        $result = wp_delete_attachment($attach_id);
+        if (empty($result)) {
+            echo ('Image remove failed : delete attachment');
             die();
         }
-        // if( isset($_POST['ingredient_id'] ) ) {
-        //     $id= $_POST['ingredient_id'];
-        //     // echo $id;
-        // }
-        // else {
-        //     wp_send_json_error( array('msg' => 'No ingredient id provided'));
-        //     die();
-        // }
-        if ( empty($_POST['ingredient']) ) {
-             wp_send_json_error( array('msg' => 'No ingredient name provided'));
-            die();
-        }
-        $args=array(
-            'amount' => '',
-            'unit'  => '',
-            'ingredient' => '',
-            'notes' => ''
-        );
-        foreach ($args as $key => $value ) {
-            if( isset( $_POST[$key] ) )
-                $args[$key] = $_POST[$key];
-        }
-        $args['links']='no';
-        $ingredient_preview = CRM_Ingredient::display( $args );
-        wp_send_json_success( array('msg' => $ingredient_preview) );
-        die();
+
+        wp_send_json_success($result);
     }
 
+
+    /**
+     * ajax_custom_get_tax_terms
+     *
+     * Callback for autocomplete ajax utility
+     *
+     * @return void
+     */
     public function ajax_custom_get_tax_terms() {
-        // global $wpdb; //get access to the WordPress database object variable
-
         if ( !is_user_logged_in() ) die();
         if ( ! isset( $_GET['tax'] ) ) die();
         if ( ! isset( $_GET['keys'] ) ) die();
@@ -230,16 +241,15 @@ class CRM_Submission {
             'taxonomy' => $taxonomy,
             'name__like' => $keys,
             'hide_empty' => false,
-        ) );
+            ) );
 
-        //copy the terms to a simple array
+            //copy the terms to a simple array
         $suggestions = array();
         foreach( $terms as $term )
-        // $suggestions[] = addslashes($term->name);
             $suggestions[] = htmlspecialchars($term->name);
+        // $suggestions[] = addslashes($term->name);
 
         echo json_encode($suggestions); //encode into JSON format and output
-
         die(); //stop "0" from being output
     }
 

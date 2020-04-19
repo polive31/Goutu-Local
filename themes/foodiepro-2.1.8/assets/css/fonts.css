@@ -147,6 +147,7 @@ span.bp_counter,
   text-align: center;
   font-variant: normal;
   text-transform: none;
+  vertical-align: middle;
   /* line-height:1em; */
   margin-left: .2em;
   margin-bottom: .2em;

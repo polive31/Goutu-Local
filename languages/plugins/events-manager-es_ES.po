@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Events Manager - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-02-23 11:10:19+0000\n"
+"PO-Revision-Date: 2020-04-04 12:44:12+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -5387,11 +5387,6 @@ msgstr "Borrar"
 msgid "No cancelled bookings."
 msgstr "No hay reservas canceladas."
 
-#: classes/em-bookings-table.php:640 admin/bookings/em-person.php:118
-#: admin/bookings/em-confirmed.php:114
-msgid "Unapprove"
-msgstr "Desaprobar"
-
 #: classes/em-bookings-table.php:632 classes/em-bookings-table.php:641
 #: admin/bookings/em-pending.php:133 admin/bookings/em-person.php:124
 #: admin/bookings/em-confirmed.php:116
@@ -6404,10 +6399,6 @@ msgstr "Desinstalar/Resetear"
 msgid "Use the buttons below to uninstall Events Manager completely from your system or reset Events Manager to original settings and keep your event data."
 msgstr "Utiliza los siguientes botones para desinstalar completamente Events Manager de tu sistema o resetearlo a la configuración original y mantener los datos de tus eventos."
 
-#: admin/em-options.php:956
-msgid "Reset"
-msgstr "Resetear"
-
 #: admin/settings/tabs/general.php:203 admin/settings/tabs/general.php:282
 #: admin/em-options.php:790
 msgid "Advanced"
@@ -6513,3 +6504,12 @@ msgstr "El servidor SMTP. Por lo general, corresponde a «localhost». Si utiliz
 #: admin/em-admin.php:40 admin/em-admin.php:247 em-install.php:1067
 msgid "Settings"
 msgstr "Ajustes"
+
+#: classes/em-bookings-table.php:640 admin/bookings/em-person.php:118
+#: admin/bookings/em-confirmed.php:114
+msgid "Unapprove"
+msgstr "Rechazar"
+
+#: admin/em-options.php:956
+msgid "Reset"
+msgstr "Restablecer"

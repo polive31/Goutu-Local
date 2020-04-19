@@ -263,6 +263,28 @@ body {
   cursor: pointer;
 }
 
+.ps-icon-user2:before {
+  content: '\f500';
+  /* <i class="fas fa-user-friends"></i> */
+}
+
+.ps-icon-bookmark:before {
+  content: '\f02e';
+  /* <i class="fas fa-bookmark"></i> */
+}
+
+.ps-icon-bookmark-empty:before {
+  font-weight: 400;
+  content: '\f02e';
+  /* <i class="far fa-bookmark"></i> */
+}
+
+.ps-icon-bookmark-empty:before {
+  font-weight: 400;
+  content: '\f02e';
+  /* <i class="far fa-bookmark"></i> */
+}
+
 .ps-icon-menu:before {
   content: '\f0c9';
   /* <i class="fas fa-bars"></i> */
@@ -393,8 +415,8 @@ body {
 }
 
 .ps-icon-users:before {
-  /* content:'\e845'; */
-  content: '\f500';
+  content: '\f0c0';
+  /* <i class="fas fa-users"></i> */
 }
 
 .ps-icon-off:before {
@@ -632,6 +654,11 @@ body {
   font-family: "Helvetica", Arial, sans-serif;
   background-color: #fff;
   padding: 10px;
+}
+
+.ps-popover-actions {
+  position: absolute;
+  right: 0;
 }
 
 @media only screen and (min-width: 992px) {
@@ -1106,14 +1133,18 @@ div#postbox-main {
   padding: 12px;
 }
 
-.ps-dropdown__menu.ps-js-dropdown-menu {
-  /* font-family: sans-serif; */
-}
-
+/* font-family: sans-serif; */
 /* PROFILE
 -----------------------------------------------------------*/
 .ps-focus-cover.js-focus-cover {
   font-family: Oswald, sans-serif;
+}
+
+.ps-focus-cover:before {
+  display: block;
+  content: "";
+  height: 0;
+  padding-top: 340px;
 }
 
 h1.blog-title {
@@ -1384,7 +1415,7 @@ nav.ps-stream-status-action.ps-stream-status-action span {
 }
 
 #responsive-menu-pro-container .ps-bubble--widget {
-  top: -9px;
+  top: 0px;
   right: -3px;
 }
 

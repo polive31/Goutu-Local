@@ -17,10 +17,13 @@ class Custom_Archive_Management {
 		$Assets = new CNH_Assets();
 		add_action( 'wp_enqueue_scripts', 				array($Assets, 'enqueue_cnh_scripts'));
 
-		/* Archive structured data are already output by the masonry JS plugin  */
-		// $Data = new CNH_Structured_Data();
-		// add_action('genesis_entry_header', 				array($Data, 'populate_entry_metadata'));
-		// add_action('genesis_after_loop', 				array($Data, 'output_metadata'));
+		/* Archive Metadata rendering */
+		$Provide_Meta = new CNH_Archive_Meta();
+		add_action('genesis_entry_header', 				array($Provide_Meta, 	'add_entry_to_items'));
+		add_filter('csd_enqueue_archive_meta',       	array($Provide_Meta,	'enqueue_archive_meta'));
+		$Archive_Meta = CSD_Meta::get_instance('archive');
+		add_action('wp_footer',   						array($Archive_Meta, 	'render'));
+
 
 		$Entries = new CNH_Archive_Entries();
 		add_filter( 'genesis_post_title_output', 		array($Entries, 'archive_rating' ), 1 );
@@ -37,7 +40,7 @@ class Custom_Archive_Management {
 		$Headline = new CNH_Archive_Headline();
 		add_filter( 'init', 							array($Headline, 'hydrate') );
 		// Headline text
-		add_filter( 'genesis_archive_title_text', 		array($Headline, 'get_archive_title') );
+		add_filter( 'genesis_archive_title_text', 		array($Headline, 'custom_archive_title') );
 		add_filter( 'genesis_search_title_text', 		array($Headline, 'custom_search_title_text') );
 		// Intro text
 		add_filter( 'genesis_term_intro_text_output', 	'wpautop' );

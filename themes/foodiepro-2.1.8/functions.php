@@ -18,8 +18,8 @@ if (!defined('ABSPATH')) {
 
 define('CHILD_THEME_NAME', 'Foodie Pro Theme');
 define('CHILD_THEME_DEVELOPER', 'Shay Bocks/Pascal Olive');
-define('CHILD_THEME_OPTIONS', get_option('cct_options'));
-define('CHILD_THEME_VERSION', ((bool)CHILD_THEME_OPTIONS['reload'])?time():'2.3.96');
+define('CHILD_THEME_OPTIONS', get_option('foodiepro'));
+define('CHILD_THEME_VERSION', ((bool)CHILD_THEME_OPTIONS['reload'])?time():'2.3.98');
 define('CHILD_THEME_URL', get_stylesheet_directory_uri());
 define('CHILD_THEME_PATH', get_stylesheet_directory());
 define('DEFAULT_CHILD_COLOR_THEME', 'spring');
@@ -27,8 +27,17 @@ define('DEFAULT_LOGIN_COLOR_THEME', 'spring');
 define('CHILD_COLOR_THEME', foodiepro_get_color_theme());
 define('LOGIN_COLOR_THEME', foodiepro_get_login_color_theme());
 
+function foodiepro_get_showlog()
+{
+	if (CHILD_THEME_OPTIONS) {
+		$showlog = !empty(CHILD_THEME_OPTIONS['show-console-logs']);
+	} else {
+		$showlog = false;
+	}
+	return $showlog;
+}
+
 function foodiepro_get_color_theme() {
-	// $cct_options = get_option('cct_options');
 	if (CHILD_THEME_OPTIONS ) {
 		$color=!empty(CHILD_THEME_OPTIONS['color'])? CHILD_THEME_OPTIONS['color']: DEFAULT_CHILD_COLOR_THEME;
 	}
@@ -40,7 +49,6 @@ function foodiepro_get_color_theme() {
 
 function foodiepro_get_login_color_theme()
 {
-	// $cct_options = get_option('cct_options');
 	if (CHILD_THEME_OPTIONS) {
 		$login_color = !empty(CHILD_THEME_OPTIONS['login-color']) ? CHILD_THEME_OPTIONS['login-color'] : DEFAULT_LOGIN_COLOR_THEME;
 	} else {
@@ -50,43 +58,6 @@ function foodiepro_get_login_color_theme()
 }
 
 define('PLUGINS_URL', plugins_url());
-
-// This constant is configuring the sec() function, in custom-helpers.php
-define(
-	'ALLOWED_TAGS',
-	array(
-		'a' => array(
-			'href' => true,
-			'title' => true,
-		),
-		'abbr' => array(
-			'title' => true,
-		),
-		'acronym' => array(
-			'title' => true,
-		),
-		'b' => array(),
-		'br' => array(),
-		'blockquote' => array(
-			'cite' => true,
-		),
-		'cite' => array(),
-		'code' => array(),
-		'del' => array(
-			'datetime' => true,
-		),
-		'em' => array(),
-		'i' => array(),
-		'p' => array(
-			'class' => true,
-		),
-		'q' => array(
-			'cite' => true,
-		),
-		'strike' => array(),
-		'strong' => array(),
-	)
-);
 
 
 /* =================================================================*/
@@ -167,17 +138,6 @@ function foodie_pro_theme_setup()
 	add_action('genesis_before', 'genesis_do_header');
 	add_action('genesis_before', 'custom_header_markup_close', 15);
 
-	// Custom Body wrap
-	// add_action( 'genesis_before', 'custom_body_markup_open', 15 );
-	// add_action( 'wp_footer', 'custom_body_markup_close', 15 );
-
-	// function custom_body_markup_open() {
-	// 	echo '<div class="body-wrap">';
-	// }
-
-	// function custom_body_markup_close() {
-	// 	echo '</div>';
-	// }
 
 	//New Header functions
 	function custom_header_markup_open()
@@ -283,6 +243,7 @@ function foodie_pro_includes()
 	// P.O. Load the custom helpers
 	require_once trailingslashit(CHILD_THEME_PATH) . 'custom-helpers.php';
 	require_once trailingslashit(CHILD_THEME_PATH) . 'custom-shortcodes.php';
+	require_once trailingslashit(CHILD_THEME_PATH) . '/login/custom-login.php';
 
 	// End here if we're not in the admin panel.
 	if (is_admin()) {
@@ -305,18 +266,20 @@ function enqueue_high_priority_assets()
 	/* Scripts enqueue
 		--------------------------------------------------- */
 	// .webp detection
-	custom_enqueue_script('custom-modernizr', '/assets/js/modernizr-custom.js', CHILD_THEME_URL, CHILD_THEME_PATH, array(), CHILD_THEME_VERSION);
+	foodiepro_enqueue_script('custom-modernizr', '/assets/js/modernizr-custom.js', CHILD_THEME_URL, CHILD_THEME_PATH, array(), CHILD_THEME_VERSION);
 	// Add general purpose scripts.
-	custom_enqueue_script('foodie-pro-general', '/assets/js/general.js', CHILD_THEME_URL, CHILD_THEME_PATH, array('jquery'), CHILD_THEME_VERSION, true);
-	custom_enqueue_script('custom-js-helpers', '/assets/js/custom_helpers.js', CHILD_THEME_URL, CHILD_THEME_PATH, array('jquery'), CHILD_THEME_VERSION, true);
-	// custom_enqueue_script( 'one-signal', $js_uri, $js_path, 'one_signal.js', array(), CHILD_THEME_VERSION, true);
+	foodiepro_enqueue_script('foodie-pro-general', '/assets/js/general.js', CHILD_THEME_URL, CHILD_THEME_PATH, array('jquery'), CHILD_THEME_VERSION, true);
+	foodiepro_enqueue_script('custom-js-helpers', '/assets/js/custom_helpers.js', CHILD_THEME_URL, CHILD_THEME_PATH, array('jquery'), CHILD_THEME_VERSION, true);
+	$showlog = foodiepro_get_showlog();
+	wp_localize_script('custom-js-helpers', 'foodiepro_options', array('showlogs'=> $showlog));
+	// foodiepro_enqueue_script( 'one-signal', $js_uri, $js_path, 'one_signal.js', array(), CHILD_THEME_VERSION, true);
 
 	/* Styles enqueue
 		--------------------------------------------------- */
 	wp_enqueue_style('google-fonts', '//fonts.googleapis.com/css?family=Cabin|Amatic+SC:400,700|Oswald|Vollkorn:300,400', array(), CHILD_THEME_VERSION);
 	// wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Oswald|Vollkorn:300,400', array(), CHILD_THEME_VERSION );
 	// wp_enqueue_script( 'typekit', '//use.typekit.net/hen2swu.js', array(), '1.0.0' );
-	custom_enqueue_style('child-theme-fonts', '/assets/css/fonts.css', CHILD_THEME_URL, CHILD_THEME_PATH, array('foodie-pro-theme'), CHILD_THEME_VERSION);
+	foodiepro_enqueue_style('child-theme-fonts', '/assets/css/fonts.css', CHILD_THEME_URL, CHILD_THEME_PATH, array('foodie-pro-theme'), CHILD_THEME_VERSION);
 }
 
 function typekit_inline()
@@ -335,11 +298,8 @@ function enqueue_low_priority_assets()
 	/* Theme stylesheet with varying name & version, forces cache busting at browser level
 		--------------------------------------------------- */
 	$color_theme_handler = 'color-theme-' . CHILD_COLOR_THEME;
-	custom_enqueue_style('foodiepro-color-theme', '/assets/css/color/' . $color_theme_handler . '.css', CHILD_THEME_URL, CHILD_THEME_PATH,  array(), CHILD_COLOR_THEME . CHILD_THEME_VERSION);
+	foodiepro_enqueue_style('foodiepro-color-theme', '/assets/css/color/' . $color_theme_handler . '.css', CHILD_THEME_URL, CHILD_THEME_PATH,  array(), CHILD_COLOR_THEME . CHILD_THEME_VERSION);
 
-	/* Customized GDPR stylesheet
-		--------------------------------------------------- */
-	custom_enqueue_style('custom-gdpr', '/assets/css/custom-gdpr-public.css', CHILD_THEME_URL, CHILD_THEME_PATH,  array(), CHILD_THEME_VERSION);
 }
 
 /* =================================================================*/
@@ -372,6 +332,9 @@ function foodie_pro_add_body_class($classes)
 	$classes[] = 'foodie-pro';
 	$classes[] = 'no-js';
 	$classes[] = 'color-theme-' . CHILD_COLOR_THEME;
+	if ( is_single() ) {
+		$classes[] = 'status-' . get_post_status();
+	}
 	return $classes;
 }
 
@@ -412,155 +375,6 @@ function custom_favicon_links()
 	echo sprintf('<meta name="msapplication-TileImage" content="%s/ms-icon-144x144.png">', $path);
 	echo sprintf('<meta name="theme-color" content="#ffffff">', $path);
 }
-
-
-/* =================================================================*/
-/* =              CUSTOM LOGIN                                     =*/
-/* =================================================================*/
-
-/* Add color theme body class to login page */
-add_filter('login_body_class', 'foodiepro_login_classes');
-function foodiepro_login_classes($classes)
-{
-	$classes[] = 'login_color-theme-' . LOGIN_COLOR_THEME;
-	return $classes;
-}
-
-/* Sets login page color theme */
-add_action('login_enqueue_scripts', 'custom_login_style');
-function custom_login_style()
-{
-	$theme_css = 'custom-login-styles-' . LOGIN_COLOR_THEME . '.css';
-	custom_enqueue_style('custom-login', '/login/' . $theme_css);
-	wp_enqueue_style('google-fonts', '//fonts.googleapis.com/css?family=Oswald', array(), CHILD_THEME_VERSION);
-}
-
-/* Sets login page logo & url */
-add_filter('login_headerurl', 'my_login_logo_url');
-function my_login_logo_url()
-{
-	return get_bloginfo('url');
-}
-
-add_filter('login_headertext ', 'my_login_logo_url_title');
-function my_login_logo_url_title()
-{
-	$output = get_bloginfo('name') . '-' . get_bloginfo('description');
-	return $output;
-}
-
-/* customize username label in any login form called by wp_login_form() function */
-add_filter('login_form_defaults', 'custom_wp_login_form');
-function custom_wp_login_form()
-{
-	$args = array(
-		'label_username' => __('Enter Email Address', 'foodiepro'),
-		'label_password' => __('Enter Password', 'foodiepro'),
-		'label_remember' => __('Remember Login State', 'foodiepro'),
-		'label_log_in'   => __('Please Log In', 'foodiepro'),
-	);
-	return $args;
-}
-
-/* Redirect register url towards peepso register page */
-add_filter('register_url', 'custom_register_url');
-function custom_register_url($register_url)
-{
-	$register_url = do_shortcode('[permalink peepso="register"]');
-	return $register_url;
-}
-
-/* customize username label in wp-login.php page
-  Indeed login_form_defaults filter isn't active */
-add_action('login_head', 'cc_login_username_label');
-function cc_login_username_label()
-{
-	add_filter('gettext', 'cc_login_username_label_change', 20, 3);
-}
-function cc_login_username_label_change($translated_text, $text, $domain)
-{
-	if ($text === 'Username or Email Address') {
-		$translated_text = esc(__('Email Address', 'foodiepro')); // Use WordPress's own translation of 'Username'
-	} elseif ($text === 'Register') {
-		$translated_text = esc(__('Not yet a member ?', 'foodiepro')); // Use WordPress's own translation of 'Username'
-	}
-	return $translated_text;
-}
-
-// Change login credentials to email address only
-remove_filter('authenticate', 'wp_authenticate_username_password', 20, 3);
-add_filter('authenticate', 'my_authenticate_username_password', 20, 3);
-function my_authenticate_username_password($user, $username, $password)
-{
-	if (!empty($username)) {
-		if (!strpos($username, '@'))
-			return new WP_Error('Invalid email address.', esc(__('<strong>ERROR</strong>: Invalid login. Please make sure to use your EMAIL ADDRESS to log-in.', 'foodiepro'))); //returns nothing if not valid email
-		$user = get_user_by('email', $username);
-	}
-	if (isset($user->user_login, $user))
-		$username = $user->user_login;
-	return wp_authenticate_username_password(NULL, $username, $password);
-}
-
-
-/* Redirect towards homepage on logout */
-add_action('wp_logout', 'go_home');
-function go_home()
-{
-	wp_redirect(home_url());
-	exit;
-}
-
-/* Redirect towards register page on private page if not loggued-in */
-add_action('template_redirect', 'foodiepro_redirect_private_content', 9);
-function foodiepro_redirect_private_content()
-{
-	global $wp_query, $wpdb;
-	if (is_404()) {
-		$current_query = $wpdb->get_row($wp_query->request);
-		if ( isset($current_query->post_status) && ('private' == $current_query->post_status)) {
-			wp_redirect(
-				foodiepro_get_permalink(
-					array(
-						'slug'	=> 'connexion',
-						// 'peepso'	=> 'register',
-					)
-				)
-			);
-			exit;
-		}
-	}
-}
-
-// add_filter('login_redirect', 'redirect_and_flush_cache_on_login', 10, 2);
-// function redirect_and_flush_cache_on_login($redirect_final, $redirect_initial)
-// {
-// 	// $clear_cache_path = '?action=wpfastestcache&type=clearcache&token=' . WPFC_CLEAR_CACHE_URL_TOKEN;
-// 	// $url = home_url($clear_cache_path);
-// 	// $home_ID = get_option('page_on_front');
-// 	// wpfc_clear_post_cache_by_id($home_ID);
-// 	return home_url();
-// }
-
-
-/* Prevent new users (not yet approved) to log in */
-// add_filter('wp_authenticate_user', 'block_new_users',10,1);
-/* IMPORTANT DO NOT USE WITH PEEPSO OTHERWISE IT WILL CONFLICT WITH THE ACTIVATION PROCESS !!!
-PEEPSO ALREADY IMPLEMENTS A MANUAL USER VERIFICATION BY ADMINISTRATOR SO THIS MAKES
-THIS FUNCTION USELESS & CONFLICTING */
-// function block_new_users ($user) {
-// 	$role=$user->roles[0];
-//     if ( $role=='pending' ) {
-//     	$approve_url=do_shortcode('[permalink slug="attente-approbation"]');
-//     	// $approve_url=get_permalink('10066');
-//     	$msg=sprintf(__( '<strong>ERROR</strong>: User pending <a href="%s">approval</a>.', 'foodiepro' ),$approve_url);
-//     	return new WP_Error( 'user_not_approved', $msg);
-//     }
-// 	else
-// 		return $user;
-// }
-
-
 
 /* =================================================================*/
 /* =              REWRITE RULES
@@ -692,81 +506,6 @@ function themed_wp_die_handler($message, $title = '', $args = array())
 	require_once get_stylesheet_directory() . '/wp-die.php';
 	die();
 }
-
-
-/* =================================================================*/
-/* =             PHP DEBUG
-/* =================================================================*/
-
-// add_action( 'wp', 'display_trace');
-// function display_trace() {
-// 	if ( class_exists( 'PHP_Debug' ) ) {
-// 		$debug = new PHP_Debug();
-// 		$debug->trace('WP PHP Debug plugin activated');
-// 	}
-// }
-
-// function php_log($msg, $var=false, $type='DEBUG', $color='blue') {
-// 	if ( class_exists( 'PHP_Debug' ) ) {
-// 		PHP_Debug::log($msg, $var=false, $type='DEBUG', $color='blue');
-// 	}
-// }
-
-// add_shortcode('custom-functions-debug', 'foodiepro_debug_shortcode');
-// function foodiepro_debug_shortcode($args) {
-// 	$args = shortcode_atts( array(
-//         'class' 	=> 'CustomSiteMails',
-//         'function' 	=> 'published_post_notification_callback',
-//         'paramtype' => 'post',
-//         'paramval' 	=> '7504'
-//     ), $args );
-
-//     $class=$args['class'];
-//     $function=$args['function'];
-
-//     switch ( $args['paramtype'] ) {
-// 		case 'post' :
-// 			$param1 = get_post( $args['paramval'] );
-// 			break;
-// 	}
-
-//     $instance = new $class('debug');
-//     $html = $instance->$function( $param1 );
-
-// }
-
-
-/* SCRIPTS AND STYLES DEBUG */
-
-// add_action( 'wp_footer', 'foodiepro_record_scripts_styles',PHP_INT_MAX );
-// function foodiepro_record_scripts_styles() {
-// 	if( !is_admin() && is_user_logged_in() && current_user_can( 'manage_options' )) {
-// 		// Print Scripts
-// 		global $wp_scripts;
-// 		echo '<table align="center" style="color:#777;font-family:sans-serif;font-size:14px;width:100%;margin:20px">';
-// 		echo '<th colspan="2" style="margin: 0px 3%; border: 1px solid #eee; padding: 10px;background-color: #ffffff;">Scripts</th>';
-// 		foreach( $wp_scripts->queue as $handle ) {
-// 			echo '<tr style="margin: 0px 3%; border: 1px solid #eee; padding: 10px;background-color: #ffffff;">';
-// 			echo '<td style="padding:5px 10px">' . $handle . '</td>';
-// 			echo '<td>' . $wp_scripts->registered[$handle]->src . '</td>';
-// 			echo '</tr>';
-// 			echo '</div>';
-// 		}
-// 		echo '</table>';
-
-//         // Print Styles
-//         global $wp_styles;
-// 		echo '<table align="center" style="color:#777;font-family:sans-serif;font-size:14px;width:100%;margin:20px">';
-// 		echo '<th colspan="2" style="margin: 0px 3%; border: 1px solid #eee; padding: 10px;background-color: #ffffff;">Styles</th>';
-// 		foreach( $wp_styles->queue as $handle ) {
-// 			echo '<tr style="margin: 0px 3%; border: 1px solid #eee; padding: 10px;background-color: #ffffff;">';
-// 			echo '<td style="padding:5px 10px">' . $handle . '</td>';
-// 			echo '<td>' . $wp_styles->registered[$handle]->src . '</td>';
-// 			echo '</tr>';
-// 			echo '</div>';
-//         }
-//     }
-// }
 
 
 /* =================================================================*/

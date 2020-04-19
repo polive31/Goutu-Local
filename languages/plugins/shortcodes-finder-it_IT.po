@@ -1,0 +1,227 @@
+# Translation of Plugins - Shortcodes Finder - Stable (latest release) in Italian
+# This file is distributed under the same license as the Plugins - Shortcodes Finder - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-01-05 01:23:56+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: it\n"
+"Project-Id-Version: Plugins - Shortcodes Finder - Stable (latest release)\n"
+
+#: admin/partials/shortcodes-finder-admin-display.php:542
+msgid "Save settings"
+msgstr "Salva le impostazioni"
+
+#: admin/partials/shortcodes-finder-admin-display.php:477
+msgid "Dismiss this notice."
+msgstr "Ignora questa notifica."
+
+#: admin/partials/shortcodes-finder-admin-display.php:475
+msgid "Saving Error."
+msgstr "Errore nel salvataggio."
+
+#: admin/partials/shortcodes-finder-admin-display.php:475
+msgid "Settings saved."
+msgstr "Impostazioni salvate."
+
+#: admin/partials/shortcodes-finder-admin-display.php:51
+#: admin/partials/shortcodes-finder-admin-display.php:489
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: admin/partials/shortcodes-finder-admin-display.php:515
+msgid "Disable existing shortcodes"
+msgstr "Disabilita gli shortcode esistenti"
+
+#: admin/partials/shortcodes-finder-admin-display.php:500
+msgid "Disable unused/orphan shortcodes"
+msgstr "Disabilita gli shortcode inutilizzati/orfani"
+
+#: admin/partials/shortcodes-finder-admin-display.php:217
+#: admin/partials/shortcodes-finder-admin-display.php:306
+msgid "Progress"
+msgstr "Avanzamento"
+
+#: admin/partials/shortcodes-finder-admin-display.php:201
+#: admin/partials/shortcodes-finder-admin-display.php:290
+msgid "Pages"
+msgstr "Pagine"
+
+#: admin/partials/shortcodes-finder-admin-display.php:199
+msgid "Search shortcodes into:"
+msgstr "Cerca shortcode in:"
+
+#: admin/partials/shortcodes-finder-admin-display.php:200
+#: admin/partials/shortcodes-finder-admin-display.php:289
+msgid "Posts"
+msgstr "Articoli"
+
+#: admin/partials/shortcodes-finder-admin-display.php:288
+msgid "Search unused shortcodes into:"
+msgstr "Cerca shortcode inutilizzati in:"
+
+#: admin/partials/shortcodes-finder-admin-display.php:120
+msgid "Note: The process may be slow if you search all shortcodes in a website with a lot of contents."
+msgstr "Attenzione: La ricerca potrebbe essere lenta se si cercano tutti gli shortcode in un sito web con molti contenuti."
+
+#: admin/partials/shortcodes-finder-admin-display.php:108
+msgid "All"
+msgstr "Tutto"
+
+#: admin/partials/shortcodes-finder-admin-display.php:106
+msgid "Shortcode to search:"
+msgstr "Shortcode da cercare:"
+
+#: admin/partials/shortcodes-finder-admin-display.php:114
+msgid "Search"
+msgstr "Cerca"
+
+#: admin/partials/shortcodes-finder-admin-display.php:413
+msgid "Copy to clipboard"
+msgstr "Copia negli appunti"
+
+#: admin/partials/shortcodes-finder-admin-display.php:404
+msgid "Shortcode copied to clipboard"
+msgstr "Shortcode copiato negli appunti"
+
+#: admin/partials/shortcodes-finder-admin-display.php:395
+msgid "Test it"
+msgstr "Provalo"
+
+#. Plugin URI of the plugin
+msgid "https://www.scribit.it/internet-web/wordpress/plugin-shortcodes-finder/"
+msgstr "https://www.scribit.it/internet-web/wordpress/plugin-shortcodes-finder/"
+
+#. Description of the plugin
+msgid "Shortcodes finder helps you to find and test every shortcode present in your Wordpress site posts, pages and custom type contents."
+msgstr "Shortcodes finder ti aiuta a trovare e provare gli shortcode presenti nei contenuti del tuo sito WordPress, che siano articoli, pagine o contenuti personalizzati."
+
+#: admin/partials/shortcodes-finder-admin-display.php:282
+msgid "Note: Results may be incomplete or may contain false positives."
+msgstr "Attenzione: I risultati potrebbero essere incompleti o contenere falsi positivi."
+
+#: admin/partials/shortcodes-finder-admin-display.php:281
+msgid "Find the shortcodes in your site, coming from deleted or deactivated plugins and themes."
+msgstr "Trova gli shortcode nel tuo sito derivanti da plugin e temi cancellati o disattivati."
+
+#: admin/partials/shortcodes-finder-admin-display.php:141
+msgid "No shortcodes found"
+msgstr "Nessuno shortcode trovato"
+
+#: admin/partials/shortcodes-finder-admin-display.php:45
+msgid "Find unused Shortcodes"
+msgstr "Trova gli shortcode inutilizzati"
+
+#: admin/partials/shortcodes-finder-admin-display.php:193
+msgid "Find all shortcodes in your site, divided by posts, pages and other custom types."
+msgstr "Trova tutti gli shortcode nel tuo sito, divisi per articoli, pagine e altri contenuti personalizzati."
+
+#: admin/partials/shortcodes-finder-admin-display.php:98
+msgid "Find all occurrences of each shortcodes in your site."
+msgstr "Trova tutte le occorrenze di ogni shortcode presente nel tuo sito."
+
+#: admin/partials/shortcodes-finder-admin-display.php:126
+msgid "Page"
+msgstr "Pagina"
+
+#: admin/partials/shortcodes-finder-admin-display.php:125
+msgid "Post"
+msgstr "Articolo"
+
+#: admin/partials/shortcodes-finder-admin-display.php:42
+msgid "Find by Content"
+msgstr "Trova per contenuto"
+
+#. Author URI of the plugin
+msgid "https://www.scribit.it/"
+msgstr "https://www.scribit.it/"
+
+#. Author of the plugin
+msgid "Scribit"
+msgstr "Scribit"
+
+#: shortcodes-finder.php:95
+msgid "Shortcodes Finder is powered by"
+msgstr "Shortcodes Finder è sviluppato da"
+
+#: admin/partials/shortcodes-finder-admin-display.php:417
+msgid "Test result"
+msgstr "Risultati del test"
+
+#: admin/partials/shortcodes-finder-admin-display.php:402
+msgid "Shortcode code"
+msgstr "Codice shortcode"
+
+#: admin/partials/shortcodes-finder-admin-display.php:390
+msgid "Insert content (optional)"
+msgstr "Inserisci il contenuto (facoltativo)"
+
+#: admin/partials/shortcodes-finder-admin-display.php:386
+msgid "Insert parameters string (optional)"
+msgstr "Inserisci i parametri (facoltativo)"
+
+#: admin/partials/shortcodes-finder-admin-display.php:371
+msgid "All the shortcodes provided by your installed themes and plugins are listed here. Select one of these and, if expected, insert some options or content texts."
+msgstr "Tutti gli shortcode forniti dai tuoi temi e plugin sono elencati qui. Selezionane uno e, se previsto, inserisci le relative opzioni o contenuti."
+
+#: admin/partials/shortcodes-finder-admin-display.php:573
+msgid "CONTACT US"
+msgstr "CONTATTACI"
+
+#: admin/partials/shortcodes-finder-admin-display.php:568
+msgid "DONATE WITH PAYPAL"
+msgstr "DONA CON PAYPAL"
+
+#: admin/partials/shortcodes-finder-admin-display.php:562
+msgid "WRITE A PLUGIN REVIEW"
+msgstr "SCRIVI UNA RECENSIONE DEL PLUGIN"
+
+#: admin/partials/shortcodes-finder-admin-display.php:560
+msgid "If you like our plugin please feel free to give us 5 stars :)"
+msgstr "Se ti piace il nostro plugin sentiti libero di darci 5 stelle :)"
+
+#: admin/partials/shortcodes-finder-admin-display.php:158
+#: admin/partials/shortcodes-finder-admin-display.php:247
+#: admin/partials/shortcodes-finder-admin-display.php:345
+msgid "Edit post"
+msgstr "Modifica articolo"
+
+#: admin/partials/shortcodes-finder-admin-display.php:54
+msgid "About"
+msgstr "Informazioni"
+
+#. Plugin Name of the plugin
+#: admin/class-shortcodes-finder-admin.php:130
+#: admin/class-shortcodes-finder-admin.php:131
+#: admin/partials/shortcodes-finder-admin-display.php:34
+msgid "Shortcodes Finder"
+msgstr "Shortcodes Finder"
+
+#: admin/partials/shortcodes-finder-admin-display.php:48
+#: admin/partials/shortcodes-finder-admin-display.php:164
+#: admin/partials/shortcodes-finder-admin-display.php:253
+msgid "Test Shortcode"
+msgstr "Testa lo shortcode"
+
+#: admin/partials/shortcodes-finder-admin-display.php:39
+msgid "Find by Shortcode"
+msgstr "Trova per shortcode"
+
+#: shortcodes-finder.php:81
+msgid "Find Shortcodes"
+msgstr "Trova shortcode"
+
+#: admin/partials/shortcodes-finder-admin-display.php:378
+msgid "Select a Shortcode"
+msgstr "Seleziona uno shortcode"
+
+#: admin/partials/shortcodes-finder-admin-display.php:572
+msgid "If you want some information about our Company"
+msgstr "Se vuoi informazioni sulla nostra azienda"
+
+#: admin/partials/shortcodes-finder-admin-display.php:566
+msgid "If you want to help us to improve our service please Donate a coffe"
+msgstr "Se vuoi aiutarci a migliorare i nostri servizi offrici un caffè"

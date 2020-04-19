@@ -19,7 +19,7 @@ die('-1');
 // add_action( 'plugins_loaded', 'CRM_init', PHP_INT_MAX );
 add_action('plugins_loaded', 'crm_load_textdomain');
 // add_action('init', 'CRM_init' );
-add_action('after_setup_theme', 'CRM_init' );
+add_action('plugins_loaded', 'CRM_init' );
 
 
 /* Chargement du text domain */
@@ -63,27 +63,22 @@ function CRM_init() {
 
 		/* 		PUBLIC CLASSES
 		------------------------------------*/
-
 		/* Custom Recipe Post Type and associated Taxonomies
 		------------------------------------*/
-		require_once 'public/recipe-post-type/class-wpurp-recipe.php';
+		// require_once 'public/recipe-post-type/class-wpurp-recipe.php';
 		require_once 'public/recipe-post-type/class-crm-recipe.php';
-
+		require_once 'public/recipe-post-type/class-crm-ingredient.php';
 
 		/* Custom Recipe Template
 		------------------------------------*/
 		require_once 'public/recipe-output/class-crm-output.php';
-
-		require_once 'public/recipe-output/helpers/class-crm-ingredient.php';
+		require_once 'public/recipe-output/helpers/class-crm-recipe-meta.php';
 		require_once 'public/recipe-output/helpers/class-crm-shortcodes.php';
-		require_once 'public/recipe-output/helpers/class-crm-recipe-metadata.php';
 		require_once 'public/recipe-output/helpers/class-crm-favorite.php';
-		require_once 'public/recipe-output/helpers/class-crm-print.php';
 
 		/* Custom Recipe Submission
 		------------------------------------*/
 		require_once 'public/recipe-submission/class-crm-submission.php';
-
 		require_once 'public/recipe-submission/helpers/class-crm-recipe-save.php';
 
 		/* ADMIN CLASSES
@@ -95,15 +90,11 @@ function CRM_init() {
 		require_once 'admin/class-crm-taxonomies.php';
 
 		require_once 'admin/helpers/class-crm-notices.php';
-
 		// require_once 'vendor/taxonomy-metadata/Taxonomy_MetaData.php';
-
 
 		/* Widgets
 		------------------------------------*/
-		require_once 'widgets/crm_lists_dropdown_widget.php';
 		require_once 'widgets/crm_nutrition_label_widget.php';
-
 
 		/* Create class using the Singleton method */
 		Custom_Recipe_Management::get_instance();

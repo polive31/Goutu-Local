@@ -17,32 +17,141 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class PeepsoHelpers  {
 
-	const PROFILE_FIELDS = array(
-		'blog_title'	=> 'Titre de votre Blog',
-		'user_bio'	=> 'Ma Bio',
-	);
 
-	const TABS=array(
-		'blogposts',
-		'about',
-		'friends',
-		'groups',
-		'photos',
-		'media',
-	);
+	/**
+	 * get_avatar
+	 *
+	 * @param  mixed $args array
+	 * * user => 'current', 'view, 'author', <user_id> or PeepsoUser object
+	 * * aclass => link class
+	 * * imgclass => image class
+	 * * wraptag => wrapper html tag
+	 * * wrapclass => wrapper css class
+	 * * link => 'profile', ''
+	 * * size => 'small', 'medium', 'full' or integer size in pixels
+	 * * title => link title
+	 * @return void
+	 */
+	static function get_avatar($args)
+	{
+		$user = 'current';
+		$aclass = '';
+		$imgclass = '';
+		$imgid = '';
+		$wraptag = '';
+		$wrapclass = '';
+		$link = true;
+		$size = 'small';
+		// $title= __('by %s', 'foodiepro');
+		$title = '%s';
+		extract($args);
 
-	static function get_nav_tab() {
-		$current='stream';
-		foreach (self::TABS as $tab) {
-			$match=strpos( $_SERVER['REQUEST_URI'], '/' . $tab );
+
+		$suffix = CPO_Assets::get_avatar_suffix( $size );
+
+		if (!is_object($user))
+			$user = self::get_user($user);
+
+		if (is_object($user)) {
+			$src = $user->get_avatar( $suffix );
+			$dir = $user->get_image_dir();
+			$alt = sprintf(__('Picture of %s', 'foodiepro'), $user->get_nicename());
+		} else {
+			$src = CHILD_THEME_URL . '/images/social/avatars/user-neutral-thumb.png';
+			$dir = CHILD_THEME_PATH . '/images/social/avatars/';
+			$alt = __('User picture', 'foodiepro');
+			$link = false;
+		}
+
+		$html = foodiepro_get_picture(array(
+			'src' 		=> $src,
+			'dir' 		=> $dir,
+			'class'		=> $imgclass,
+			'id'		=> $imgid,
+			'alt' 		=> $alt,
+			'width' 	=> $size,
+			'height'	=> $size,
+		));
+
+		if ($link) {
+			$html = '<a class="' . $aclass . '" href="' . foodiepro_get_permalink(array('user' => $user->get_id(), 'display' => 'profile')) . '" title="' . sprintf($title, ucfirst($user->get_nicename())) . '">' . $html . '</a>';
+		}
+
+		if (!empty($wraptag)) {
+			$html = '<' . $wraptag . ' class="' . $wrapclass . '">' . $html . '</' . $wraptag . '>';
+		}
+
+		return $html;
+	}
+
+
+	public static function current_nav_tab()
+	{
+		$user_id = get_current_user_id();
+		$links = array('_user_id' => $user_id);
+		$links = apply_filters('peepso_navigation_profile', $links);
+
+		$current = 'stream';
+		// foreach (self::TABS as $tab) {
+		foreach ($links as $tab => $params) {
+			$slug=isset($params['href'])? $params['href']:$tab;
+			$match = foodiepro_contains($_SERVER['REQUEST_URI'], '/' . $slug);
 			if ($match) {
-				$current=$tab;
+				$current = $tab;
 				break;
 			}
 		}
 		return $current;
 	}
 
+	/**
+	 * is_current_user_profile
+	 *
+	 * @return void
+	 */
+	public static function is_current_user_profile() {
+		if (!is_user_logged_in()) return false;
+
+		$current_url = home_url($_SERVER['REQUEST_URI']);
+		$messages_url = Peepso::get_page('messages');
+
+		if ( foodiepro_contains($current_url, $messages_url) )
+			return true;
+
+		$user=self::get_user('current');
+		$profile_url=$user->get_profileurl();
+		$is_profile =  foodiepro_contains($current_url, $profile_url);
+
+		return $is_profile;
+	}
+
+	public static function get_nav_url($user, $link_id, $slug) {
+		if (!is_user_logged_in()) return get_home_url();
+		if (!is_object($user)) return get_home_url();
+
+		if ($link_id == 'messages')
+			$url = Peepso::get_page('messages');
+		else
+			$url = $user->get_profileurl() . $slug;
+
+		if ('http' != substr($url, 0, 4)) {
+			$url = $user->get_profileurl();
+		}
+
+		return $url;
+	}
+
+	/**
+	 * get_user
+	 *
+	 * @param  mixed $user_type_or_id
+	 * *
+	 * * 'current'
+	 * * 'view'
+	 * * 'author'
+	 * * <user_id>
+	 * @return void
+	 */
 	static function get_user( $user_type_or_id ) {
 		$user_id=false;
 
@@ -90,49 +199,6 @@ class PeepsoHelpers  {
 		return $html;
 	}
 
-	static function get_url( $user, $page='profile', $subpage='' ) {
-		switch ( $page ) {
-			case 'archive':
-				$url = get_site_url();
-				if ( !empty($subpage) )
-					$url = add_query_arg( 'post_type', $subpage, $url);
-				$url = add_query_arg( 'author_name', $user->get_nicename(), $url);
-				break;
-			case 'profile':
-				$url = $user->get_profileurl();
-				$url .= $subpage;
-				break;
-		}
-		return $url;
-	}
-
-	static function get_avatar( $args ) {
-		$user='current';
-		$aclass='';
-		$wraptag='';
-		$wrapclass='';
-		$link='profile';
-		$size='full';
-		$title='';
-		extract( $args );
-
-		$size=($size=='full')?'':$size;
-
-		$user = self::get_user( $user );
-		if (!$user) return;
-
-		$html = '<img class="avatar" src="' . $user->get_avatar() . '" alt="' . sprintf( __('Picture of %s','foodiepro') , ucfirst($user->get_nicename()) ) . '" width="' . $size . '" height="' . $size . '">';
-
-		if ( !empty($link) ) {
-			$html = '<a class="' . $aclass . '" href="' . self::get_url($user, 'profile') . '" title="' . sprintf( $title , ucfirst($user->get_nicename()) ) . '">' . $html . '</a>';
-		}
-
-		if ( !empty($wraptag) ) {
-			$html = '<' . $wraptag . ' class="' . $wrapclass . '">' . $html . '</' . $wraptag . '>';
-		}
-
-		return $html;
-	}
 
 
 	static function get_profile_field( $user_type_or_id, $handle ) {
@@ -147,12 +213,18 @@ class PeepsoHelpers  {
 
 		$value = false;
 		foreach ($fields as $key=>$field) {
-			if ($field->title==self::PROFILE_FIELDS[$handle] && !empty($field->value)) {
+			if ($field->title==CPO_Assets::get_profile_field($handle) && !empty($field->value)) {
 				$value = $field->render(false);
 				break;
 			}
 		}
 		return $value;
+	}
+
+
+	public static function send_notification($from_id, $to_id, $msg, $action, $post_id) {
+		if (!is_user_logged_in()) return;
+
 	}
 
 

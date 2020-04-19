@@ -17,23 +17,29 @@ class Custom_Comment_Management {
 		-----------------------------------------------------------------*/
         $Assets = new CCM_Assets();
 		add_action( 'wp_enqueue_scripts',                       'CCM_Assets::enqueue_ccm_assets' );
-		add_action( 'wp_loaded', 								'CCM_Assets::remove_comment_reply_script');
+		// add_action( 'wp_loaded', 								'CCM_Assets::remove_comment_reply_script');
 
 
 		/* Hooks for CCM_Comments_List class
 		-----------------------------------------------------------------*/
-        $CommentList = new CCM_Comments_List();
-		/* Use custom, li-based comment list	*/
-		add_action( 'genesis_before_content',                   array( $CommentList,'custom_genesis_list_comments') );
+		$CommentList = new CCM_Comments_List();
+
+
+		add_filter('edit_comment_link',                   		array( $CommentList, 'remove_comment_link') );
 
 		/* Add anchor to comments section title	*/
-		add_filter( 'genesis_title_comments',                   array( $CommentList,'add_comments_title_markup'), 15, 1 );
+		add_filter( 'genesis_title_comments',                   array( $CommentList, 'add_comments_title_markup'), 15, 1 );
+
+		/* Customize comment item */
+		add_filter( 'comment_author_says_text', 				array( $CommentList, 'custom_comment_author_says'));
+		add_filter( 'genesis_show_comment_date', 				array( $CommentList, 'custom_comment_date'));
+		add_filter( 'get_comment_author', 						array( $CommentList, 'add_comment_author_link'), 10, 3);
 
 		/* Move comment form on top of the comments list */
 		add_action( 'genesis_before_comments',                 	array( $CommentList,'move_comments_form'), 0 );
 
 		/* Customize comment section title */
-		add_filter( 'genesis_title_comments',                   array( $CommentList,'custom_comment_text') );
+		// add_filter( 'genesis_title_comments',                   array( $CommentList,'custom_comment_text') );
 
 		/* Customize navigation links */
 		add_filter( 'genesis_prev_comments_link_text',          array( $CommentList,'custom_comments_prev_link_text') );

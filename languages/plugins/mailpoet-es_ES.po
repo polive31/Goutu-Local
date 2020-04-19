@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - MailPoet &#8211; emails and newsletters in WordPress - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-02-19 10:03:14+0000\n"
+"PO-Revision-Date: 2020-04-14 17:28:41+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,530 +11,1245 @@ msgstr ""
 "Language: es\n"
 "Project-Id-Version: Plugins - MailPoet &#8211; emails and newsletters in WordPress - Stable (latest release)\n"
 
-#: lib/Cron/Workers/StatsNotifications/Worker.php:105
-msgctxt "newsletter open rate, click rate and unsubscribe rate"
-msgid "%1$s%% opens, %2$s%% clicks, %3$s%% unsubscribes in a nutshell."
-msgstr "En resumen, %1$s%% aperturas, %2$s%% clics, %3$s%% bajas de suscriptores."
+#: lib/Config/ServicesChecker.php:45
+msgid "Purchase a key"
+msgstr "Comprar una clave"
 
-#: lib/Cron/Workers/StatsNotifications/Worker.php:74
+#: lib/Config/ServicesChecker.php:40
+msgid "Your key to send with MailPoet is invalid."
+msgstr "Tu clave para enviar con MailPoet no es válida."
+
+#: lib/Config/ServicesChecker.php:39
+msgid "All sending is currently paused!"
+msgstr "¡Todos los envíos están pausados en este momento!"
+
+#: lib/API/JSON/v1/Settings.php:101
+msgid "Can’t use this email yet! Please authorize it first."
+msgstr "¡No puedes usar este correo electrónico todavía! Por favor, autorízalo primero."
+
+#: lib/API/JSON/v1/Settings.php:92
+msgid "No email address specified."
+msgstr "No se ha especificado una dirección de correo electrónico."
+
+#: lib/Util/Notices/UnauthorizedEmailNotice.php:64
+#: lib/Util/Notices/UnauthorizedEmailInNewslettersNotice.php:66
+msgid "Fix this!"
+msgstr "¡Corrige esto!"
+
+#: lib/PostEditorBlocks/SubscriptionFormBlock.php:60
+msgid "Select a MailPoet form"
+msgstr "Elige un formulario de MailPoet"
+
+#: lib/PostEditorBlocks/SubscriptionFormBlock.php:62
+msgid "MailPoet Subscription Form"
+msgstr "Formulario de suscripción de Mailpoet"
+
+#: mailpoet.php:65
+msgid "MailPoet requires PHP version 7.0 or newer (7.3 recommended). You are running version [version]."
+msgstr "MailPoet necesita la versión 7.0 o superior (se recomienda 7.3). Tienes la versión [version]."
+
+#: mailpoet.php:68
+msgid "Please read our [link]instructions[/link] on how to upgrade your site."
+msgstr "Por favor, lee las [link]instrucciones[/link] sobre cómo mejorar tu sitio."
+
+#: mailpoet.php:76
+msgid "If you can’t upgrade the PHP version, [link]install this version[/link] of MailPoet. Remember not to update MailPoet ever again!"
+msgstr "Si no puedes mejorar la versión de PHP, [link]instala esta versión[/link]de MailPoet. ¡Recuerda no actualizar MailPoet nunca más!"
+
+#: lib/API/JSON/v1/Premium.php:67
+msgid "Error when activating MailPoet Premium plugin."
+msgstr "Error al activar el plugin MailPoet Premium."
+
+#: lib/API/JSON/v1/Premium.php:40 lib/API/JSON/v1/Premium.php:62
+msgid "Premium key is not valid."
+msgstr "La clave de Premim no es válida."
+
+#: lib/API/JSON/v1/Premium.php:48 lib/API/JSON/v1/Premium.php:54
+msgid "Error when installing MailPoet Premium plugin."
+msgstr "Error al instalar el plugin MailPoet Premium."
+
+#: lib/API/JSON/v1/Services.php:137
+msgid "Your key is not valid for the MailPoet Sending Service"
+msgstr "Tu clave del servicio de envío de MailPoet no es válida"
+
+#: lib/API/JSON/v1/Services.php:202
+msgid "Your key is not valid for MailPoet Premium"
+msgstr "Tu clave de MailPoet Premium no es válida"
+
+#: lib/API/JSON/v1/SendingQueue.php:35 lib/API/JSON/v1/SendingQueue.php:152
+#: lib/API/JSON/v1/Newsletters.php:302
+msgid "Subscribers limit reached."
+msgstr "Se ha alcanzado el límite de suscriptores."
+
+#: lib/AdminPages/Pages/OldSettings.php:99
+#: lib/AdminPages/Pages/Settings.php:101
+msgctxt "Notice in Settings when WooCommerce is not enabled"
+msgid "You need to have WooCommerce active to access the MailPoet email customizer for WooCommerce."
+msgstr "Tienes que tener activado WooCommerce para acceder al personalizador de correos electrónicos de WooCoomerce de MailPoet."
+
+#: lib/API/JSON/v1/SendingTaskSubscribers.php:99
+msgid "Newsletter not found!"
+msgstr "¡No se ha encontrado el boletín!"
+
+#: lib/WooCommerce/TransactionalEmails.php:51
+msgid "New Order: #{order_number}"
+msgstr "Nuevo pedido: #{order_number}"
+
+#: lib/WooCommerce/TransactionalEmails.php:59
+msgid "Thanks for shopping with us"
+msgstr "Gracias por la compra"
+
+#: lib/WooCommerce/TransactionalEmails.php:63
+msgid "A note has been added to your order"
+msgstr "Se ha añadido una nota a tu pedido"
+
+#: lib/Form/Widget.php:144
+msgctxt "fallback for forms without a name in a form list"
+msgid "no name"
+msgstr "sin nombre"
+
+#: lib/WooCommerce/TransactionalEmails.php:161
+msgctxt "Default footer text for a WooCommerce transactional email"
+msgid "Footer text"
+msgstr "Texto del pie de página"
+
+#: lib/Util/Notices/BlackFridayNotice.php:31
+msgid "MailPoet Black Friday: 33% discount on all our plans!"
+msgstr "Black Friday de MailPoet: ¡Descuento del 33% en todos nuestros planes!"
+
+#: lib/Util/Notices/BlackFridayNotice.php:32
+msgid "Signup to a yearly plan today and get 4 months for free."
+msgstr "Apúntate hoy al plan anual y consigue 4 meses gratis."
+
+#: lib/Util/Notices/BlackFridayNotice.php:34
+msgid "Buy Now"
+msgstr "Comprar ahora"
+
+#: lib/WooCommerce/TransactionalEmails.php:55
+msgid "Thank you for your order"
+msgstr "Gracias por tu pedido"
+
+#: lib/API/JSON/v1/DynamicSegments.php:113
+msgid "Please select an email."
+msgstr "Por favor, selecciona un correo electrónico."
+
+#: lib/API/JSON/v1/AutomaticEmails.php:33
+#: lib/API/JSON/v1/AutomaticEmails.php:58
+msgid "Improperly formatted request."
+msgstr "Petición con formato incorrecto."
+
+#: lib/API/JSON/v1/AutomaticEmails.php:46
+msgid "Automatic email event filter does not exist."
+msgstr "El filtro de evento de correo electrónico automático no existe."
+
+#: lib/API/JSON/v1/AutomaticEmails.php:70
+msgid "Automatic email event does not exist."
+msgstr "El evento de correo electrónico automático no existe."
+
+#: lib/API/JSON/v1/DynamicSegments.php:62
+#: lib/API/JSON/v1/DynamicSegments.php:128
+#: lib/API/JSON/v1/DynamicSegments.php:151
+#: lib/API/JSON/v1/DynamicSegments.php:174
+msgid "Missing mandatory argument `id`."
+msgstr "Falta el argumento obligarorio `id`."
+
+#: lib/API/JSON/v1/DynamicSegments.php:78
+#: lib/API/JSON/v1/DynamicSegments.php:141
+#: lib/API/JSON/v1/DynamicSegments.php:164
+#: lib/API/JSON/v1/DynamicSegments.php:184
+msgid "This segment does not exist."
+msgstr "Este segmento no existe."
+
+#: lib/API/JSON/v1/DynamicSegments.php:105
+msgid "Segment type is missing."
+msgstr "Falta el tipo de segmento."
+
+#: lib/API/JSON/v1/DynamicSegments.php:107
+msgid "Segment type is unknown."
+msgstr "El tipo de segmento es desconocido."
+
+#: lib/API/JSON/v1/DynamicSegments.php:109
+msgid "Please select user role."
+msgstr "Por favor, selecciona el rol de usuario."
+
+#: lib/API/JSON/v1/DynamicSegments.php:111
+msgid "Please select email action."
+msgstr "Por favor, selecciona la acción del correo electrónico."
+
+#: lib/API/JSON/v1/DynamicSegments.php:115
+msgid "Please select category."
+msgstr "Por favor, selecciona la categoría."
+
+#: lib/API/JSON/v1/DynamicSegments.php:117
+msgid "Please select product."
+msgstr "Por favor, selecciona el producto."
+
+#: lib/API/JSON/v1/DynamicSegments.php:119
+msgid "An error occurred while saving data."
+msgstr "Ocurrió un error al guardar los datos."
+
+#: lib/AutomaticEmails/WooCommerce/Events/PurchasedInCategory.php:43
+msgid "Email sent when a customer buys a product in category: %s"
+msgstr "Correo enviado cuando un cliente compra un producto de la categoría %s"
+
+#: lib/AutomaticEmails/WooCommerce/Events/PurchasedInCategory.php:44
+msgid "Email sent when a customer buys a product in categories: %s"
+msgstr "Correo enviado cuando un cliente compra un producto de las categorías %s"
+
+#: lib/AutomaticEmails/WooCommerce/Events/PurchasedProduct.php:64
+msgid "Email sent when a customer buys product: %s"
+msgstr "Correo enviado cuando un cliente compra el producto %s"
+
+#: lib/AutomaticEmails/WooCommerce/Events/PurchasedProduct.php:65
+msgid "Email sent when a customer buys products: %s"
+msgstr "Correo enviado cuando un cliente compra los productos %s"
+
+#: lib/AutomaticEmails/WooCommerce/Events/PurchasedProduct.php:71
+msgid "Start typing to search for products..."
+msgstr "Empieza a escribir para buscar productos..."
+
+#: lib/AutomaticEmails/WooCommerce/Events/PurchasedInCategory.php:41
+msgctxt "This is the name of a type for automatic email for ecommerce. Those emails are sent automatically every time a customer buys for the first time a product in a given category"
+msgid "Purchased In This Category"
+msgstr "Comprado en esta categoría"
+
+#: lib/AutomaticEmails/WooCommerce/Events/PurchasedInCategory.php:50
+msgctxt "Search input for product category (ecommerce)"
+msgid "Start typing to search for categories…"
+msgstr "Escribe aquí para buscar las categorías..."
+
+#: lib/AutomaticEmails/WooCommerce/Events/FirstPurchase.php:78
+msgid "Order date"
+msgstr "Fecha del pedido"
+
+#: lib/AutomaticEmails/WooCommerce/Events/FirstPurchase.php:74
+msgid "Order amount"
+msgstr "Cantidad del pedido"
+
+#: lib/AutomaticEmails/WooCommerce/Events/AbandonedCart.php:67
+msgid "week(s) later"
+msgstr "semana(s) después"
+
+#: lib/AutomaticEmails/WooCommerce/Events/AbandonedCart.php:63
+msgid "day(s) later"
+msgstr "día(s) después"
+
+#: lib/AutomaticEmails/WooCommerce/Events/AbandonedCart.php:59
+msgid "hour(s) later"
+msgstr "hora(s) después"
+
+#: lib/Config/Menu.php:276 lib/Config/Menu.php:277
+msgid "Segments"
+msgstr "Segmentos"
+
+#: lib/AutomaticEmails/AutomaticEmails.php:148
+msgid "%s automatic email group is misconfigured."
+msgstr "%s grupos de correo electrónico automático están mal configurados."
+
+#: lib/AutomaticEmails/WooCommerce/WooCommerce.php:107
+#: lib/AutomaticEmails/AutomaticEmails.php:149
+msgid "Please contact our technical support for assistance."
+msgstr "Por favor, contacta con nuestro soporte técnico para tener asistencia."
+
+#: lib/AutomaticEmails/WooCommerce/Events/AbandonedCart.php:47
+msgid "Send an email to logged-in visitors who have items in their shopping carts but left your website without checking out. Can convert up to 5% of abandoned carts."
+msgstr "Envía un correo electrónico a visitantes conectados que tienen elementos en el carrito de la compra pero que abandona sin comprar. Puede convertir a más del 5% de los carritos abandonados."
+
+#: lib/AutomaticEmails/WooCommerce/Events/AbandonedCart.php:74
+msgid "We recommend setting up 3 abandoned cart emails. Here’s why."
+msgstr "Recomendamos la creación de 3 correos para carritos abandonados. Aquí te contamos por qué."
+
+#: lib/AutomaticEmails/WooCommerce/Events/FirstPurchase.php:67
+msgid "Email sent when a customer makes their first purchase."
+msgstr "Correo enviado cuando un cliente hace su primera compra."
+
+#: lib/AutomaticEmails/WooCommerce/WooCommerce.php:63
+msgid "WooCommerce is required"
+msgstr "Se necesita WooCommerce"
+
+#: lib/AutomaticEmails/WooCommerce/WooCommerce.php:106
+msgid "WooCommerce %s event is misconfigured."
+msgstr "El evento %s de WooCommerce está mal configurado."
+
+#: lib/AutomaticEmails/WooCommerce/Events/AbandonedCart.php:46
+msgctxt "This is the name of a type of automatic email for ecommerce. Those emails are sent automatically when a customer adds product to his shopping cart but never complete the checkout process."
+msgid "Abandoned Shopping Cart"
+msgstr "Carrito de la compra abandonado"
+
+#: lib/AutomaticEmails/WooCommerce/Events/AbandonedCart.php:48
+msgctxt "Description of Abandoned Shopping Cart email"
+msgid "Email sent when a customer abandons his cart."
+msgstr "Correo enviado cuando un cliente abandona su carrito."
+
+#: lib/AutomaticEmails/WooCommerce/Events/AbandonedCart.php:55
+msgctxt "This is a trigger setting. It means that we will send an automatic email to a visitor 30 minutes after this visitor had left the website."
+msgid "30 minutes after last page loaded"
+msgstr "30 minutos después de la última página cargada"
+
+#: lib/API/JSON/API.php:181
+msgid "HTTP request method not allowed."
+msgstr "Método de solicitud HTTP no permitido."
+
+#: lib/Models/Newsletter.php:364
+msgid "This is an empty email without any content and it cannot be sent. Please update [link]the email[/link]."
+msgstr "Este correo electrónico está vacío, sin contenido, y no puede ser enviado. Por favor, actualiza [link]el correo electrónico[/link]."
+
+#: lib/API/JSON/v1/Services.php:79
+msgid "SPF check has failed."
+msgstr "La revisión SPF ha fallado."
+
+#: lib/API/JSON/v1/Subscribers.php:297
+msgid "Please fill in the CAPTCHA."
+msgstr "Por favor, rellena el CAPTCHA."
+
+#: lib/Subscription/CaptchaRenderer.php:135
+msgid "The characters you entered did not match the CAPTCHA image. Please try again with this new image."
+msgstr "Los caracteres que has introducido no coinciden con la imagen del CAPTCHA. Por favor, inténtalo de nuevo con esta nueva imagen."
+
+#: lib/Config/Populator.php:353
+msgid "Newsletter mailing list"
+msgstr "Lista de correos del boletín"
+
+#: lib/Config/PopulatorData/Templates/NewsletterBlank13Column.php:167
+msgid "This template..."
+msgstr "Esta plantilla..."
+
+#: lib/Config/PopulatorData/Templates/NewsletterBlank13Column.php:186
+msgid "... has a..."
+msgstr "... tiene un..."
+
+#: lib/Config/PopulatorData/Templates/NewsletterBlank13Column.php:205
+msgid "3-column layout."
+msgstr "... diseño a 3 columnas."
+
+#: lib/Config/PrivacyPolicy.php:48
+msgid "MailPoet creates and stores two cookies if you are using WooCommerce and MailPoet together. Those cookies are:"
+msgstr "MailPoet crea y guarda dos cookies si utilizas WooCommerce y MailPoet juntos. Estas cookies son:"
+
+#: lib/Config/PrivacyPolicy.php:51 lib/Config/PrivacyPolicy.php:58
+msgid "Cookie name: %s"
+msgstr "Nombre de la cookie: %s"
+
+#: lib/Config/PrivacyPolicy.php:53 lib/Config/PrivacyPolicy.php:60
+msgid "Cookie expiry: %s days."
+msgstr "Caducidad de las cookies: %s días."
+
+#: lib/Config/PrivacyPolicy.php:55
+msgid "Cookie description: The purpose of this cookie is to track which newsletter sent from your website has acquired a click-through and a subsequent purchase in your WooCommerce store."
+msgstr "Descripción de la cookie: El propósito de esta cookie es el seguimiento de qué boletín enviado por tu web ha recibido un clic y una compra posterior en tu tienda de WooCommerce."
+
+#: lib/Config/PrivacyPolicy.php:62
+msgid "Cookie description: The purpose of this cookie is to track a user that has abandoned their cart in your WooCommerce store to then be able to send them an abandoned cart newsletter from MailPoet."
+msgstr "Descripción de la cookie: El propósito de esta cookie es el seguimiento de los usuarios que han abandonado su carrito en tu tienda de WooCommerce, para que sea posible enviarles un boletín de carritos abandonados de MailPoet."
+
+#: lib/Config/PrivacyPolicy.php:65
+msgid "Note: User must be opted-in and a confirmed subscriber."
+msgstr "Nota: Al usuario debe darse la posibilidad de aceptar y ser un suscriptor confirmado."
+
+#: lib/Settings/SettingsController.php:72
+msgid ""
+"Hello,\n"
+"\n"
+"Welcome to our newsletter!\n"
+"\n"
+"Please confirm your subscription to our list by clicking the link below: \n"
+"\n"
+"[activation_link]I confirm my subscription![/activation_link]\n"
+"\n"
+"Thank you,\n"
+"\n"
+"The Team"
+msgstr ""
+"Hola,\n"
+"\n"
+"¡Bienvenido a nuestro boletín!\n"
+"\n"
+"Por favor, confirma tu suscripción a nuestra lista haciendo clic en el siguiente enlace: \n"
+"\n"
+"[activation_link]¡Confirmo mi suscripción![/activation_link]\n"
+"\n"
+"Gracias,\n"
+"\n"
+"El equipo"
+
+#: lib/Config/Populator.php:285
+msgctxt "default email opt-in message displayed on checkout page for ecommerce websites"
+msgid "I would like to receive exclusive emails with discounts and product information"
+msgstr "Me gustaría recibir correos electrónicos exclusivos con descuentos e información de productos"
+
+#: lib/Config/PopulatorData/Templates/NewsletterBlank12Column.php:167
+#: lib/Config/PopulatorData/Templates/NewsletterBlank121Column.php:167
+msgid "This template has..."
+msgstr "Esta plantilla tiene..."
+
+#: lib/Config/PopulatorData/Templates/NewsletterBlank12Column.php:186
+#: lib/Config/PopulatorData/Templates/NewsletterBlank121Column.php:186
+msgid "... a 2-column layout."
+msgstr "... un diseño a 2 columnas."
+
+#: lib/Subscription/Throttling.php:71
+msgid "%d seconds"
+msgstr "%d segundos"
+
+#: lib/Subscription/Throttling.php:70
+msgid "%d minutes"
+msgstr "%d minutos"
+
+#: lib/Subscription/Throttling.php:69
+msgid "%d hours"
+msgstr "%d horas"
+
+#: lib/API/JSON/v1/Subscribers.php:331
+msgid "Please regenerate the CAPTCHA."
+msgstr "Por favor, regenera el CAPTCHA."
+
+#: lib/API/JSON/v1/Subscribers.php:338
+msgid "The characters entered do not match with the previous CAPTCHA."
+msgstr "Los caracteres introducidos no coinciden con el CAPTCHA anterior."
+
+#: lib/Cron/Workers/StatsNotifications/AutomatedEmails.php:106
+msgid "Your monthly stats are in!"
+msgstr "¡Ya están tus estadísticas mensuales!"
+
+#: lib/Subscription/CaptchaRenderer.php:44
+msgid "Confirm you’re not a robot"
+msgstr "Confirma que no eres un robot"
+
+#: lib/Subscription/CaptchaRenderer.php:54
+msgid "Type in the characters you see in the picture above:"
+msgstr "Escribes los caracteres que veas en la siguiente imagen:"
+
+#: lib/Subscription/CaptchaRenderer.php:68
+msgid "Subscribe"
+msgstr "Suscríbete"
+
+#: lib/Subscription/CaptchaRenderer.php:117
+msgid "Click to refresh the captcha"
+msgstr "Haz clic para recargar el captcha"
+
+#: lib/Twig/Functions.php:275 lib/Twig/Functions.php:285
+msgid "EXCELLENT"
+msgstr "EXCELENTE"
+
+#: lib/Twig/Functions.php:277 lib/Twig/Functions.php:287
+msgid "GOOD"
+msgstr "BIEN"
+
+#: lib/Twig/Functions.php:279 lib/Twig/Functions.php:289
+msgid "BAD"
+msgstr "MAL"
+
+#: lib/Cron/Workers/StatsNotifications/Worker.php:176
+msgid "Manage subscription link"
+msgstr "Enlace para gestionar suscripción"
+
+#: lib/Mailer/Methods/ErrorMappers/MailPoetMapper.php:115
+msgid "The MailPoet Sending Service has stopped sending your emails for one of the following reasons:"
+msgstr "El servicio de envío de MailPoet ha parado de enviar tus correos por alguna de las siguientes razones:"
+
+#: lib/Mailer/Methods/ErrorMappers/MailPoetMapper.php:118
+msgid "You may have reached the subscriber limit of your plan. [link]Manage your subscriptions[/link]."
+msgstr "Has superado el límite de suscriptores de tu plan. [link]Gestiona tus suscripciones[/link]."
+
+#: lib/Mailer/Methods/ErrorMappers/MailPoetMapper.php:127
+msgid "You may have had a poor deliverability rate. Please [link]contact our support team[/link] to resolve the issue."
+msgstr "Tienes una mala tasa de entrega. Por favor, [link]contacta con nuestro equipo de soporte[/link] para resolver el problema."
+
+#: lib/Subscribers/ConfirmationEmailMailer.php:102
+#: lib/Subscribers/ConfirmationEmailMailer.php:111
+msgid "Something went wrong with your subscription. Please contact the website owner."
+msgstr "Algo va mal con tu suscripción. Por favor, contacta con el dueño del sitio."
+
+#: lib/Models/ScheduledTaskSubscriber.php:104
+msgctxt "status when a newsletter has been sent"
+msgid "Sent"
+msgstr "Enviado"
+
+#: lib/API/JSON/v1/Newsletters.php:142 lib/API/JSON/v1/Newsletters.php:169
+#: lib/API/JSON/v1/Newsletters.php:311 lib/API/JSON/v1/Newsletters.php:359
+#: lib/API/JSON/v1/Newsletters.php:378 lib/API/JSON/v1/Newsletters.php:391
+#: lib/API/JSON/v1/Newsletters.php:420 lib/API/JSON/v1/Newsletters.php:451
+#: lib/API/JSON/v1/Newsletters.php:522
+msgid "This email does not exist."
+msgstr "Este correo no existe."
+
+#: lib/API/JSON/v1/SendingTaskSubscribers.php:56
+msgid "This email has not been sent yet."
+msgstr "Este correo no se ha enviado todavía."
+
+#: lib/API/JSON/v1/SendingTaskSubscribers.php:93
+msgid "Failed sending task not found!"
+msgstr "¡Se ha producido un fallo! ¡No se ha encontrado la tarea de envío!"
+
+#: lib/Util/Notices/InactiveSubscribersNotice.php:52
+msgid "Go to the Advanced Settings"
+msgstr "Ir a los ajustes avanzados"
+
+#: lib/Util/Notices/InactiveSubscribersNotice.php:55
+msgid "Good news! MailPoet won’t send emails to your %s inactive subscribers. This is a standard practice to maintain good deliverability and open rates. But if you want to disable it, you can do so in settings. [link]Read more.[/link]"
+msgstr "¡Buenas noticias! MailPoet no enviará correos electrónicos a tus %s suscriptores inactivos. Esta es una práctica estándar para mantener una buena tasa de entrega y apertura. Pero si quieres desactivarlo, puedes hacerlo en los ajustes. [link]Leer más. [/link]"
+
+#: lib/Models/ScheduledTaskSubscriber.php:109
+msgctxt "status when the sending of a newsletter has failed"
+msgid "Failed"
+msgstr "Falló"
+
+#: lib/Models/ScheduledTaskSubscriber.php:114
+msgctxt "status when the sending of a newsletter has not been processed"
+msgid "Unprocessed"
+msgstr "No procesado"
+
+#: lib/Util/Notices/UnauthorizedEmailInNewslettersNotice.php:56
+msgctxt "%s will be replaced by a newsletter subject"
+msgid "Update the from address of %s"
+msgstr "Actualizar la dirección de remitente de %s"
+
+#: lib/Util/Notices/UnauthorizedEmailInNewslettersNotice.php:49
+msgid "<b>Your automatic emails have been paused</b> because some email addresses haven’t been authorized yet."
+msgstr "<b>Tus correos electrónicos automáticos han sido pausados</b>, ya que algunas direcciones de correo electrónico todavía no han sido autorizadas."
+
+#: lib/CustomFields/ApiDataSanitizer.php:37
+msgid "Mandatory argument \"%s\" is missing"
+msgstr "Falta el argumento obligatorio \"%s\""
+
+#: lib/CustomFields/ApiDataSanitizer.php:40
+msgid "Mandatory argument \"%s\" has to be string"
+msgstr "El argumento obligatorio \"%s\" debe ser una cadena"
+
+#: lib/CustomFields/ApiDataSanitizer.php:46
+msgid "Params has to be array"
+msgstr "El parámetro debe ser un array"
+
+#: lib/CustomFields/ApiDataSanitizer.php:91
+msgid "Invalid type \"%s\""
+msgstr "Tipo \"%s\" no válido"
+
+#: lib/CustomFields/ApiDataSanitizer.php:100
+msgid "Validate parameter is not valid"
+msgstr "El parámetro de validación no es válido"
+
+#: lib/CustomFields/ApiDataSanitizer.php:107
+msgid "You need to pass exactly one value for checkbox"
+msgstr "Necesitas pasar exactamente un único valor para la casilla de verificación"
+
+#: lib/CustomFields/ApiDataSanitizer.php:126
+msgid "Invalid date_format for year_month_day"
+msgstr "date_format no válido para year_month_day"
+
+#: lib/CustomFields/ApiDataSanitizer.php:132
+msgid "Invalid date_format for year_month"
+msgstr "date_format no válido para year_month"
+
+#: lib/CustomFields/ApiDataSanitizer.php:146
+msgid "Invalid value for date_type"
+msgstr "Valor no válido para date_type"
+
+#: lib/CustomFields/ApiDataSanitizer.php:156
+msgid "You need to pass some values for this type"
+msgstr "Necesitas pasar algunos valores para este tipo"
+
+#: lib/CustomFields/ApiDataSanitizer.php:167
+msgid "Value cannot be empty"
+msgstr "El valor no puede estar vacío"
+
+#: lib/Models/Form.php:136 lib/Models/Form.php:143
+msgid "You’ve been successfully subscribed to our newsletter!"
+msgstr "¡Te ha suscrito correctamente a nuestro boletín!"
+
+#: lib/Util/Notices/UnauthorizedEmailNotice.php:56
+msgctxt "Please reuse the current translation of “Default sender”"
+msgid "Update my Default sender email address"
+msgstr "Actualizar mi dirección de correo electrónico envío por defecto"
+
+#: lib/Util/Notices/UnauthorizedEmailNotice.php:46
+msgctxt "Email addresses have to be authorized to be used to send emails. %s will be replaced by an email address."
+msgid "<b>Sending all of your emails has been paused</b> because your email address %s hasn’t been authorized yet.</b>"
+msgstr "<b>El envío de todos los correos electrónicos ha sido pausado</b> porque tu dirección de correo electrónico %s no ha sido autorizada todavía.</b>"
+
+#: lib/Config/AccessControl.php:74
+msgid "Manage features"
+msgstr "Gestionar características"
+
+#: lib/Config/Menu.php:363 lib/Config/Menu.php:364
+msgid "Track WooCommerce revenues with cookies"
+msgstr "Seguimiento de los ingresos de WooCommerce con cookies"
+
+#: lib/Config/Populator.php:284
+msgctxt "default email opt-in message displayed on checkout page for ecommerce websites"
+msgid "Yes, I would like to be added to your mailing list"
+msgstr "Sí, me gustaría que me añadieras a tu lista de correo"
+
+#: lib/Config/Menu.php:350 lib/Config/Menu.php:351
+msgid "WooCommerce List Import"
+msgstr "Importar la lista de WooCommerce"
+
+#: lib/Util/Notices/PHPVersionWarnings.php:28
+msgid "Your website is running on PHP %s which MailPoet does not officially support. Read our [link]simple PHP upgrade guide[/link] or let MailPoet’s support team upgrade it for you."
+msgstr "Tu sitio web ejecuta PHP %s a la que MailPoet no da soporte oficial. Lee nuestra [link]guía simple de actualización de PHP[/link] o deja que el equipo de soporte haga la actualización por ti."
+
+#: lib/Util/Notices/PHPVersionWarnings.php:30
+msgid "[link]Yes, I want MailPoet to help me upgrade for free[/link]"
+msgstr "[link]Sí, quiero que MailPoet me ayude a actualizarlo gratis[/link]"
+
+#: lib/Models/Subscriber.php:267 lib/Subscription/Pages.php:428
+msgid "Inactive"
+msgstr "Inactivo"
+
+#: lib/API/MP/v1/API.php:356
+msgid "Failed to add list"
+msgstr "Fallo al añadir lista"
+
+#: lib/Config/PopulatorData/Templates/Photography.php:20
+msgid "Photography"
+msgstr "Fotografía"
+
+#: lib/Config/PopulatorData/Templates/Synagogue.php:20
+msgid "Synagogue"
+msgstr "Sinagoga"
+
+#: lib/Config/PopulatorData/Templates/Birds.php:20
+msgid "Birds"
+msgstr "Pájaros"
+
+#: lib/Config/PopulatorData/Templates/JazzClub.php:20
+msgid "Jazz Club"
+msgstr "Club de Jazz"
+
+#: lib/Config/PopulatorData/Templates/Poet.php:20
+msgid "Poet"
+msgstr "Poeta"
+
+#: lib/Config/PopulatorData/Templates/Guitarist.php:20
+msgid "Guitarist"
+msgstr "Guitarrista"
+
+#: lib/Config/PopulatorData/Templates/Painter.php:20
+msgid "Painter"
+msgstr "Pintor"
+
+#: lib/Config/PopulatorData/Templates/BuddhistTemple.php:20
+msgid "Buddhist Temple"
+msgstr "Templo budista"
+
+#: lib/Config/PopulatorData/Templates/FashionBlog.php:20
+msgid "Fashion Blog"
+msgstr "Blog de moda"
+
+#: lib/Config/PopulatorData/Templates/FashionBlogA.php:22
+msgid "Women Fashion Store"
+msgstr "Tienda de moda femenina"
+
+#: lib/Config/PopulatorData/Templates/FashionShop.php:22
+msgid "Kids Shop"
+msgstr "Tienda infantil"
+
+#: lib/Config/PopulatorData/Templates/LifestyleBlogA.php:22
+msgid "Makeup Blog"
+msgstr "Blog de maquillaje"
+
+#: lib/Config/PopulatorData/Templates/LifestyleBlogB.php:22
+msgid "Lifestyle Blog"
+msgstr "Blog de estilo de vida"
+
+#: lib/Config/PopulatorData/Templates/Mosque.php:20
+msgid "Mosque"
+msgstr "Mezquita"
+
+#: lib/Config/PopulatorData/Templates/Motor.php:20
+msgid "Motor"
+msgstr "Motor"
+
+#: lib/Config/PopulatorData/Templates/RockBand.php:20
+msgid "Rock Band"
+msgstr "Banda de rock"
+
+#: lib/Config/PopulatorData/Templates/Vlogger.php:20
+msgid "Vlogger"
+msgstr "Vlogger"
+
+#: lib/Config/PopulatorData/Templates/WineCity.php:21
+msgid "Wine City (with coupon)"
+msgstr "Ciudad del vino (con cupón)"
+
+#: lib/API/JSON/v1/UserFlags.php:32
+msgid "You have not specified any user flags to be saved."
+msgstr "No has especificado ninguna bandera de usuario para guardar."
+
+#: lib/Mailer/Methods/ErrorMappers/MailPoetMapper.php:98
+msgid "The MailPoet Sending Service did not send your latest email because the address %s is not yet authorized."
+msgstr "El servicio de envíos de MailPoet no ha enviado tu último correo electrónico porque la dirección %s no ha sido autorizada."
+
+#: lib/Mailer/Methods/ErrorMappers/MailPoetMapper.php:98
+msgid "Unknown address"
+msgstr "Dirección desconocida"
+
+#: lib/Mailer/Methods/ErrorMappers/MailPoetMapper.php:101
+msgid "[link]Authorize your email in your account now.[/link]"
+msgstr "[link]Autoriza tu correo electrónico en tu cuenta ahora.[/link]"
+
+#: lib/Mailer/Methods/ErrorMappers/MailPoetMapper.php:109
+msgid "Resume sending"
+msgstr "Reanudar el envío"
+
+#: lib/Config/PopulatorData/Templates/BrandingAgencyNews.php:21
+msgid "Branding Agency News"
+msgstr "Noticias de agencias de branding"
+
+#: lib/Config/PopulatorData/Templates/CityLocalNews.php:21
+msgid "City News"
+msgstr "Noticias locales"
+
+#: lib/Config/PopulatorData/Templates/College.php:21
+msgid "College"
+msgstr "Universidad"
+
+#: lib/Config/PopulatorData/Templates/ComputerRepair.php:21
+msgid "Computer Repair"
+msgstr "Reparación de ordenadores"
+
+#: lib/Config/PopulatorData/Templates/Engineering.php:21
+msgid "Engineering"
+msgstr "Ingeniería"
+
+#: lib/Config/PopulatorData/Templates/FarmersMarket.php:21
+msgid "Farmers Market"
+msgstr "Mercado ganadero"
+
+#: lib/Config/PopulatorData/Templates/HealthyFoodBlog.php:21
+msgid "Healthy Food Blog"
+msgstr "Blog de comida saludable"
+
+#: lib/Config/PopulatorData/Templates/PrimarySchool.php:21
+msgid "Primary School"
+msgstr "Colegio"
+
+#: lib/Config/PopulatorData/Templates/RenewableEnergy.php:21
+msgid "Renewable Energy"
+msgstr "Energía renovable"
+
+#: lib/Config/PopulatorData/Templates/Software.php:21
+msgid "Software"
+msgstr "Software"
+
+#: lib/Config/PopulatorData/Templates/WordPressTheme.php:21
+msgid "WordPress Theme"
+msgstr "Tema de WordPress"
+
+#: lib/Models/Segment.php:177
+msgid "WooCommerce Customers"
+msgstr "Clientes de WooCommerce"
+
+#: lib/Models/Segment.php:179
+msgid "This list contains all of your WooCommerce customers."
+msgstr "Esta lista contiene todos tus clientes de WooCommerce."
+
+#: lib/Subscribers/ImportExport/Import/MailChimp.php:139
+msgid "Unknown MailChimp error."
+msgstr "Error desconocido de MailChimp."
+
+#: lib/Cron/Workers/StatsNotifications/Worker.php:124
 msgctxt "title of an automatic email containing statistics (newsletter open rate, click rate, etc)"
 msgid "Stats for email %s"
 msgstr "Estadísticas del correo electrónico %s"
 
-#: lib/Subscribers/ImportExport/Import/MailChimp.php:130
-msgid "Unknown MailChimp error."
-msgstr "Error desconocido de MailChimp."
+#: lib/Cron/Workers/StatsNotifications/Worker.php:142
+msgctxt "newsletter open rate, click rate and unsubscribe rate"
+msgid "%1$s%% opens, %2$s%% clicks, %3$s%% unsubscribes in a nutshell."
+msgstr "En resumen, %1$s%% aperturas, %2$s%% clics, %3$s%% bajas de suscriptores."
 
-#: lib/Models/Segment.php:144
-msgid "This list contains all of your WooCommerce customers."
-msgstr "Esta lista contiene todos tus clientes de WooCommerce."
-
-#: lib/Models/Segment.php:142
-msgid "WooCommerce Customers"
-msgstr "Clientes de WooCommerce"
-
-#: lib/Config/PopulatorData/Templates/LifestyleBlogB.php:21
-msgid "Lifestyle Blog - B"
-msgstr "Blog de estilo de vida - B"
-
-#: lib/Config/PopulatorData/Templates/FlowersWithCoupon.php:21
-msgid "Flowers (with coupon)"
-msgstr "Floristería (con cupones)"
-
-#: lib/Config/PopulatorData/Templates/LifestyleBlogA.php:21
-msgid "Lifestyle Blog - A"
-msgstr "Blog de estilo de vida - A"
-
-#: lib/Config/PopulatorData/Templates/FashionShop.php:21
-msgid "Fashion Shop"
-msgstr "Tienda de moda"
-
-#: lib/Config/PopulatorData/Templates/NewspaperTraditional.php:21
-msgid "Newspaper Traditional"
-msgstr "Periódico tradicional"
-
-#: lib/Config/PopulatorData/Templates/ClearNews.php:21
-msgid "Clear News"
-msgstr "Noticias claras"
-
-#: lib/Config/PopulatorData/Templates/IndustryConference.php:21
-msgid "Industry Conference"
-msgstr "Conferencia profesional"
-
-#: lib/Config/PopulatorData/Templates/BookStoreWithCoupon.php:21
+#: lib/Config/PopulatorData/Templates/BookStoreWithCoupon.php:22
 msgid "Book store (with coupon)"
 msgstr "Librería (con cupones)"
 
-#: lib/Config/PopulatorData/Templates/FashionBlogA.php:21
-msgid "Fashion Blog - A"
-msgstr "Blog de moda - A"
+#: lib/Config/PopulatorData/Templates/ClearNews.php:22
+msgid "Clear News"
+msgstr "Noticias claras"
 
-#: lib/Util/Notices/PHPVersionWarnings.php:25
-msgid "Your website is running on PHP %s which will not be supported by WordPress starting in April 2019. Read our [link]simple PHP upgrade guide[/link] or let MailPoet's support team upgrade it for you for free."
-msgstr "Tu sitio web funciona con la versión %s de  PHP, con la que WordPress dejará de ser compatible a partir de abril de 2019. Lee nuestra [link]guía simple para actualizar PHP[/link] o deja que el equipo de soporte de MailPoet lo actualice por ti gratis."
+#: lib/Config/PopulatorData/Templates/FlowersWithCoupon.php:22
+msgid "Flowers (with coupon)"
+msgstr "Floristería (con cupones)"
 
-#: lib/Cron/Workers/SendingQueue/Tasks/Newsletter.php:115
+#: lib/Config/PopulatorData/Templates/IndustryConference.php:22
+msgid "Industry Conference"
+msgstr "Conferencia profesional"
+
+#: lib/Config/PopulatorData/Templates/NewspaperTraditional.php:22
+msgid "Newspaper Traditional"
+msgstr "Periódico tradicional"
+
+#: lib/Cron/Workers/SendingQueue/Tasks/Newsletter.php:153
 msgid "No subject"
 msgstr "Sin asunto"
 
-#: lib/Mailer/Methods/ErrorMappers/MailPoetMapper.php:125
-msgid "You currently are not permitted to send any emails with MailPoet Sending Service, which may have happened due to poor deliverability. Please [link]contact our support team[/link] to resolve the issue."
-msgstr "No tienes permisos para enviar ningún correo electrónico con el servicio de envío de MailPoet, lo que podría deberse a una pobre capacidad de entrega. Por favor, [link]contacta con nuestro equipo de soporte[/link] para resolver el problema."
+#: lib/Config/PopulatorData/DefaultForm.php:29
+#: lib/Config/PopulatorData/DefaultForm.php:33
+msgctxt "Form label"
+msgid "First name"
+msgstr "Nombre"
 
+#: lib/Config/PopulatorData/DefaultForm.php:38
 #: lib/Config/PopulatorData/DefaultForm.php:42
-msgid "We keep your data private and share your data only with third parties that make this service possible. <a href=\"\">Read our Privacy Policy.</a>"
-msgstr "Mantenenos tus datos en privados y solo los compartimos con los terceros que hacen posible este servicios. <a href=\"\">Lee nuestra política de privacidad.</a>"
+msgctxt "Form label"
+msgid "Email"
+msgstr "Correo electrónico"
 
-#: lib/Util/Notices/DiscountsAnnouncement.php:37
-msgid ""
-"<h3>Save on MailPoet Premium for a limited time. Discounts up to 50%</h3>\n"
-"          <p>Our annual sale is a good opportunity to get more detailed stats & great email deliverability. Don’t miss out!</p>\n"
-"        [link]Visit the MailPoet Premium page[/link]"
-msgstr ""
-"<h3>Ahorra en MailPoet Premium durante un tiempo limitado. Descuentos de hasta un 50%.</h3>\n"
-"          <p>Nuestras ofertas anuales son una gran oportunidad para tener estadísticas detalladas y una mejor capacidad de entrega de correo electrónico. ¡No te las pierdas!</p>\n"
-"        [link]Visita la página de MailPoet Premium[/link]"
+#: lib/Config/PopulatorData/DefaultForm.php:47
+msgctxt "Form label"
+msgid "Submit"
+msgstr "Enviar"
 
-#: lib/Subscribers/NewSubscriberNotificationMailer.php:112
+#: lib/Config/PopulatorData/DefaultForm.php:51
+msgctxt "Form label"
+msgid "Subscribe!"
+msgstr "¡Suscríbete!"
+
+#: lib/Config/PopulatorData/DefaultForm.php:22
+msgctxt "default name of form (GDPR friendly) to capture emails"
+msgid "My First Form"
+msgstr "MI primer formulario"
+
+#: lib/Subscribers/NewSubscriberNotificationMailer.php:94
 msgid "New subscriber to %s"
 msgstr "Nuevo suscriptor a %s"
 
-#: lib/Mailer/MailerError.php:96
+#: lib/Mailer/MailerError.php:94
 msgid "Unprocessed subscriber:"
 msgstr "Suscriptor no procesado:"
 
-#: lib/Util/Notices/AfterMigrationNotice.php:36
-msgid "Congrats! You’re progressing well so far. Complete your upgrade thanks to this [link]checklist[/link]."
-msgstr "¡Enhorabuena! Vas muy bien hasta ahora. Completa la mejora con esta [link]lista de comprobación[/link]."
-
-#: lib/Subscribers/ImportExport/PersonalDataExporters/NewsletterClicksExporter.php:48
-msgid "URL"
-msgstr "URL"
-
-#: lib/Config/PopulatorData/Templates/WineCity.php:18
-msgid "Wine City"
-msgstr "Ciudad del vino"
-
-#: lib/Config/PopulatorData/Templates/WideStoryLayout.php:18
-msgid "Wide Story Layout"
-msgstr "Diseño ancho para historias"
-
-#: lib/Config/PopulatorData/Templates/Sunglasses.php:18
-msgid "Sunglasses"
-msgstr "Gafas de sol"
-
-#: lib/Config/PopulatorData/Templates/RssSimpleNews.php:18
-msgid "Stripped RSS Style Layout"
-msgstr "Diseño estilo RSS limpio"
-
-#: lib/Config/PopulatorData/Templates/RetroComputingMagazine.php:18
-msgid "Retro Computing Magazine"
-msgstr "Revista de ordenadores retro"
-
-#: lib/Config/PopulatorData/Templates/Retro.php:21
-msgid "Retro"
-msgstr "Retro"
-
-#: lib/Config/PopulatorData/Templates/RealEstate.php:21
-msgid "Real Estate"
-msgstr "Inmobiliaria"
-
-#: lib/Config/PopulatorData/Templates/Phone.php:21
-msgid "New Phone Purchase"
-msgstr "Compra de un nuevo teléfono"
-
-#: lib/Config/PopulatorData/Templates/NotSoMedium.php:21
-msgid "One Full Post In An Email"
-msgstr "Una entrada completa en un correo electrónico"
-
-#: lib/Config/PopulatorData/Templates/Music.php:18
-msgid "Music"
-msgstr "Música"
-
-#: lib/Config/PopulatorData/Templates/ModularStyleStories.php:21
-msgid "Modular Style Stories"
-msgstr "Historias de estilo modular"
-
-#: lib/Config/PopulatorData/Templates/Minimal.php:21
-msgid "Minimal"
-msgstr "Minimalista"
-
-#: lib/Config/PopulatorData/Templates/KidsClothing.php:21
-msgid "Kids Clothing"
-msgstr "Ropa infantil"
-
-#: lib/Config/PopulatorData/Templates/Hotels.php:21
-msgid "Hotels"
-msgstr "Hoteles"
-
-#: lib/Config/PopulatorData/Templates/GiftWelcome.php:21
-msgid "Gift Welcome"
-msgstr "Regalos de bienvenida"
-
-#: lib/Config/PopulatorData/Templates/Fitness.php:21
-msgid "Fitness"
-msgstr "Ejercicio"
-
-#: lib/Config/PopulatorData/Templates/FashionStore.php:21
-msgid "Fashion Store"
-msgstr "Tienda de moda"
-
-#: lib/Config/PopulatorData/Templates/Drone.php:21
-msgid "Drone"
-msgstr "Dron"
-
-#: lib/Config/PopulatorData/Templates/DogFood.php:21
-msgid "Dog Food"
-msgstr "Comida de perros"
-
-#: lib/Config/PopulatorData/Templates/Coffee.php:21
-msgid "Coffee"
-msgstr "Café"
-
-#: lib/Config/PopulatorData/Templates/Charity.php:21
-msgid "Charity"
-msgstr "ONG"
-
-#: lib/Config/PopulatorData/Templates/Avocado.php:21
+#: lib/Config/PopulatorData/Templates/Avocado.php:22
 msgid "Avocado"
 msgstr "Aguacate"
 
-#: lib/Mailer/Methods/ErrorMappers/MailPoetMapper.php:78
+#: lib/Config/PopulatorData/Templates/Charity.php:22
+msgid "Charity"
+msgstr "ONG"
+
+#: lib/Config/PopulatorData/Templates/Coffee.php:22
+msgid "Coffee"
+msgstr "Café"
+
+#: lib/Config/PopulatorData/Templates/DogFood.php:22
+msgid "Dog Food"
+msgstr "Comida de perros"
+
+#: lib/Config/PopulatorData/Templates/Drone.php:22
+msgid "Drone"
+msgstr "Dron"
+
+#: lib/Config/PopulatorData/Templates/FashionStore.php:22
+msgid "Fashion Store"
+msgstr "Tienda de moda"
+
+#: lib/Config/PopulatorData/Templates/Fitness.php:22
+msgid "Fitness"
+msgstr "Ejercicio"
+
+#: lib/Config/PopulatorData/Templates/GiftWelcome.php:22
+msgid "Gift Welcome"
+msgstr "Regalos de bienvenida"
+
+#: lib/Config/PopulatorData/Templates/Hotels.php:22
+msgid "Hotels"
+msgstr "Hoteles"
+
+#: lib/Config/PopulatorData/Templates/KidsClothing.php:22
+msgid "Kids Clothing"
+msgstr "Ropa infantil"
+
+#: lib/Config/PopulatorData/Templates/Minimal.php:22
+msgid "Minimal"
+msgstr "Minimalista"
+
+#: lib/Config/PopulatorData/Templates/ModularStyleStories.php:22
+msgid "Modular Style Stories"
+msgstr "Historias de estilo modular"
+
+#: lib/Config/PopulatorData/Templates/Music.php:21
+msgid "Music"
+msgstr "Música"
+
+#: lib/Config/PopulatorData/Templates/NotSoMedium.php:22
+msgid "One Full Post In An Email"
+msgstr "Una entrada completa en un correo electrónico"
+
+#: lib/Config/PopulatorData/Templates/Phone.php:22
+msgid "New Phone Purchase"
+msgstr "Compra de un nuevo teléfono"
+
+#: lib/Config/PopulatorData/Templates/RealEstate.php:22
+msgid "Real Estate"
+msgstr "Inmobiliaria"
+
+#: lib/Config/PopulatorData/Templates/Retro.php:22
+msgid "Retro"
+msgstr "Retro"
+
+#: lib/Config/PopulatorData/Templates/RetroComputingMagazine.php:21
+msgid "Retro Computing Magazine"
+msgstr "Revista de ordenadores retro"
+
+#: lib/Config/PopulatorData/Templates/RssSimpleNews.php:21
+msgid "Stripped RSS Style Layout"
+msgstr "Diseño estilo RSS limpio"
+
+#: lib/Config/PopulatorData/Templates/Sunglasses.php:21
+msgid "Sunglasses"
+msgstr "Gafas de sol"
+
+#: lib/Config/PopulatorData/Templates/WideStoryLayout.php:21
+msgid "Wide Story Layout"
+msgstr "Diseño ancho para historias"
+
+#: lib/Mailer/Methods/ErrorMappers/MailPoetMapper.php:81
 msgid "Invalid MSS response format."
 msgstr "Formato de respuesta MSS no válido."
 
-#: mailpoet.php:67
-msgid "MailPoet requires PHP version 5.6 or newer (version 7.2 recommended). Please read our [link]instructions[/link] on how to upgrade your site."
-msgstr "MailPoet necesita la versió 5.6 o superior de PHP (se recomienda la versión 7.2). Por favor, lee nuestras [link]instrucciones[/link] sobre cómo actualizar tu sitio."
+#: lib/Subscribers/ImportExport/PersonalDataExporters/NewsletterClicksExporter.php:52
+msgid "URL"
+msgstr "URL"
 
-#: lib/Config/Menu.php:333 lib/Config/Menu.php:334
+#: lib/Util/Notices/AfterMigrationNotice.php:39
+msgid "Congrats! You’re progressing well so far. Complete your upgrade thanks to this [link]checklist[/link]."
+msgstr "¡Enhorabuena! Vas muy bien hasta ahora. Completa la mejora con esta [link]lista de comprobación[/link]."
+
+#: lib/Config/Menu.php:337 lib/Config/Menu.php:338
 msgid "Welcome Wizard"
 msgstr "Asistente de bienvenida"
 
-#: lib/Mailer/Methods/ErrorMappers/MailPoetMapper.php:42
-msgid "Error while sending."
-msgstr "Error al enviar"
-
-#: lib/Mailer/Methods/ErrorMappers/MailPoetMapper.php:55
-msgid "Email service is temporarily not available, please try again in a few minutes."
-msgstr "El servicio de correo electrónico no está disponible de manera temporal, por favor, inténtalo de nuevo en pocos minutos."
-
-#: lib/Mailer/Methods/ErrorMappers/MailPoetMapper.php:38
+#: lib/Mailer/Methods/ErrorMappers/MailPoetMapper.php:41
 msgid "JSON input is not an array"
 msgstr "La entrada de JSON no es un array"
 
-#: lib/API/JSON/v1/Services.php:78
+#: lib/Mailer/Methods/ErrorMappers/MailPoetMapper.php:58
+msgid "Email service is temporarily not available, please try again in a few minutes."
+msgstr "El servicio de correo electrónico no está disponible de manera temporal, por favor, inténtalo de nuevo en pocos minutos."
+
+#: lib/Mailer/Methods/ErrorMappers/MailPoetMapper.php:45
+msgid "Error while sending."
+msgstr "Error al enviar."
+
+#: lib/API/JSON/v1/Services.php:147
 msgid "Note that it doesn't work on localhost."
 msgstr "Esto no funcionará en localhost."
 
-#: lib/Config/Menu.php:693
-msgid "Let MailPoet send an email to customers who purchase a specific product."
-msgstr "Haz que MailPoet envíe un correo electónico a los clientes que compren un producto determinado."
-
-#: lib/Config/Menu.php:692
-msgid "Purchased This Product"
-msgstr "Ha comprado este producto"
-
-#: lib/Config/Menu.php:687
-msgid "Let MailPoet send an email to customers who purchase a product from a specific category."
-msgstr "Haz que MailPoet envíe un correo electrónico a los clientes que compren un producto de una categoría determinada."
-
-#: lib/Config/Menu.php:686
-msgid "Purchased In This Category"
-msgstr "Comprado en esta categoría"
-
-#: lib/Config/Menu.php:678
-msgid "Let MailPoet send an email to customers who make their first purchase."
-msgstr "Haz que MailPoet envíe un correo electrónico a los clientes que hagan su primera compra."
-
-#: lib/Config/Menu.php:677
-msgid "First Purchase"
-msgstr "Primera compra"
-
-#: lib/Config/Menu.php:671
-msgid "Smart to have"
-msgstr "Conviene tener"
-
-#: lib/Config/Menu.php:668
-msgid "Let MailPoet send an email to customers who have spent a certain amount to thank them, possibly with a coupon."
-msgstr "Haz que MailPoet envíe un correo electónico a los clientes que han gastado una determinada cantidad para agradecérselo. A ser posible, con un cupón."
-
-#: lib/Config/Menu.php:667
-msgid "Big Spender"
-msgstr "Gran cliente"
-
-#: lib/Config/Menu.php:661 lib/Config/Menu.php:680
-msgid "Must-have"
-msgstr "Obligatorio"
-
-#: lib/Config/Menu.php:658
-msgid "Send an email to logged-in visitors who have items in their shopping carts but left your website without checking out. Can convert up to 5% of abandoned carts."
-msgstr "Envía un correo electrónico a visitantes conectados que tienen elementos en el carrito de la compra pero que abandona sin comprar. Puede convertir a más del 5% de los carritos abandonados."
-
-#: lib/Config/Menu.php:657
+#: lib/AdminPages/Pages/Newsletters.php:163
 msgid "Abandoned Shopping Cart"
 msgstr "Carrito de la compra abandonado"
 
-#: lib/Config/Menu.php:653
-msgid "Automatically send an email when there is a new WooCommerce product, order and some other action takes place."
-msgstr "Envía un correo electrónico automáticamente cuando hay un nuevo producto, pedido o se producen  otras acciones de WooCommerce."
+#: lib/AdminPages/Pages/Newsletters.php:173
+#: lib/AutomaticEmails/WooCommerce/Events/FirstPurchase.php:65
+msgid "First Purchase"
+msgstr "Primera compra"
 
-#: lib/Config/Menu.php:652
+#: lib/AdminPages/Pages/Newsletters.php:158
+#: lib/AutomaticEmails/WooCommerce/WooCommerce.php:55
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
-#: lib/API/JSON/v1/Subscribers.php:135
+#: lib/AdminPages/Pages/Newsletters.php:182
+msgid "Purchased In This Category"
+msgstr "Comprado en esta categoría"
+
+#: lib/AdminPages/Pages/Newsletters.php:159
+#: lib/AutomaticEmails/WooCommerce/WooCommerce.php:56
+msgid "Automatically send an email when there is a new WooCommerce product, order and some other action takes place."
+msgstr "Envía un correo electrónico automáticamente cuando hay un nuevo producto, pedido o se producen  otras acciones de WooCommerce."
+
+#: lib/AdminPages/Pages/Newsletters.php:167
+#: lib/AdminPages/Pages/Newsletters.php:176
+#: lib/AutomaticEmails/WooCommerce/Events/AbandonedCart.php:50
+#: lib/AutomaticEmails/WooCommerce/Events/FirstPurchase.php:69
+msgid "Must-have"
+msgstr "Obligatorio"
+
+#: lib/AdminPages/Pages/Newsletters.php:174
+#: lib/AutomaticEmails/WooCommerce/Events/FirstPurchase.php:66
+msgid "Let MailPoet send an email to customers who make their first purchase."
+msgstr "Haz que MailPoet envíe un correo electrónico a los clientes que hagan su primera compra."
+
+#: lib/AdminPages/Pages/Newsletters.php:183
+#: lib/AutomaticEmails/WooCommerce/Events/PurchasedInCategory.php:42
+msgid "Let MailPoet send an email to customers who purchase a product from a specific category."
+msgstr "Haz que MailPoet envíe un correo electrónico a los clientes que compren un producto de una categoría determinada."
+
+#: lib/AdminPages/Pages/Newsletters.php:189
+#: lib/AutomaticEmails/WooCommerce/Events/PurchasedProduct.php:63
+msgid "Let MailPoet send an email to customers who purchase a specific product."
+msgstr "Haz que MailPoet envíe un correo electónico a los clientes que compren un producto determinado."
+
+#: lib/AdminPages/Pages/Newsletters.php:164
+msgid "Send an email to identified visitors who have items in their shopping carts but left your website without checking out. Can convert up to 20% of abandoned carts."
+msgstr "Envía un correo electrónico a los visitantes identificados que tienen artículos en sus carrito de la compra que se han ido de tu web antes de realizar el pedido. Puede convertir hasta un 20% de los carritos abandonados."
+
+#: lib/AdminPages/Pages/Newsletters.php:188
+#: lib/AutomaticEmails/WooCommerce/Events/PurchasedProduct.php:62
+msgid "Purchased This Product"
+msgstr "Comprado un producto"
+
+#: lib/API/JSON/v1/Subscribers.php:304
 msgid "Please check the CAPTCHA."
 msgstr "Por favor, comprueba el CAPTCHA."
 
-#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:105
+#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:108
 msgid "Unknown"
 msgstr "Desconocido"
 
-#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:103
-msgid "Imported by the administrator"
-msgstr "Importado por el administrador"
-
-#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:101
+#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:104
 msgid "Created by the administrator"
 msgstr "Creado por el administrador"
 
-#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:99
-msgid "Added by a 3rd party via MailPoet 3 API"
-msgstr "Añadido por un servicio de terceros a través de la API de MailPoet 3"
+#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:106
+msgid "Imported by the administrator"
+msgstr "Importado por el administrador"
 
-#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:97
-msgid "Subscription via a MailPoet subscription form"
-msgstr "Suscripción a través de un formulario de suscripción de MailPoet"
-
-#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:95
-msgid "Subscriber information synchronized via WP user sync"
-msgstr "Información del suscriptor sincronizada a través de la sincronización de usuario de WP"
-
-#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:76
+#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:79
 msgid "Subscriber's subscription source"
 msgstr "Origen de la suscripción del suscriptor"
 
-#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:61
-msgid "Created at"
-msgstr "Creado a las"
+#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:98
+msgid "Subscriber information synchronized via WP user sync"
+msgstr "Información del suscriptor sincronizada a través de la sincronización de usuario de WP"
 
-#: lib/Subscribers/ImportExport/PersonalDataExporters/NewslettersExporter.php:63
+#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:100
+msgid "Subscription via a MailPoet subscription form"
+msgstr "Suscripción a través de un formulario de suscripción de MailPoet"
+
+#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:102
+msgid "Added by a 3rd party via MailPoet 3 API"
+msgstr "Añadido por un servicio de terceros a través de la API de MailPoet 3"
+
+#: lib/Subscribers/ImportExport/PersonalDataExporters/NewslettersExporter.php:67
 msgid "No"
 msgstr "No"
 
-#: lib/Subscribers/ImportExport/PersonalDataExporters/NewslettersExporter.php:57
-msgid "Opened at"
-msgstr "Abierto a las"
-
-#: lib/Subscribers/ImportExport/PersonalDataExporters/NewslettersExporter.php:53
-#: lib/Subscribers/ImportExport/PersonalDataExporters/NewslettersExporter.php:62
-msgid "Opened"
-msgstr "Abiertos"
-
-#: lib/Subscribers/ImportExport/PersonalDataExporters/NewsletterClicksExporter.php:53
-msgid "MailPoet Emails Clicks"
-msgstr "Clics en correos electrónicos de MailPoet"
-
-#: lib/Subscribers/ImportExport/PersonalDataExporters/NewsletterClicksExporter.php:44
-msgid "Timestamp of the click event"
-msgstr "Marca de tiempo del evento clic"
-
-#: lib/Config/PrivacyPolicy.php:38
-msgid "No identifiable information is otherwise tracked outside this website except for the email address."
-msgstr "No monitorizamos ninguna otra información que te identifique fuera de este sitio excepto tu dirección de correo electrónico."
-
-#: lib/Config/PrivacyPolicy.php:32
-msgid "This website can send emails through the [link]MailPoet sending service[/link]. This service allows us to track opens and clicks on our emails. We use this information to improve the content of our newsletters."
-msgstr "Esta web puede enviar correos a través del [link]servicio de envíos de MailPoet[/link]. Este servicio nos permite monitorizar las aperturas y clics en nuestros correos. Utilizamos esta información para mejorar el contenido de nuestros boletines."
-
-#: lib/Config/PrivacyPolicy.php:28
-msgid "To send you emails, we use the name and email address you provide us. Our site also logs the IP address you used when you signed up for the service to prevent abuse of the system."
-msgstr "Para enviarte correos, utilizamos el nombre y la dirección de correo electrónico que nos diste. Nuestro sitio también registra la dirección IP que utilizaste cuando te registraste en el servicio para prevenir el abuso del sistema."
-
-#: lib/Config/PrivacyPolicy.php:25
-msgid "We will only send you emails which you have signed up to receive, or which pertain to the services we provided to you."
-msgstr "Sólo te enviaremos correos de los que te hayas apuntado para recibir, o que atañen a los servicios que te ofrecemos."
-
-#: lib/Config/PrivacyPolicy.php:22
-msgid "If you have subscribed to our newsletter or if you are a member of our website (you can log in) or if you have purchased on our website, there is a good chance you will receive emails from us."
-msgstr "Si te has suscrito a nuestro boletín o si eres un miembro de nuestro sitio (puedes conectarte) o si has comprado en nuestro sitio, hay bastantes posibilidades de que recibas correos electrónicos de nuestra parte."
-
-#: lib/Config/PrivacyPolicy.php:19
-msgid "MailPoet newsletter & emails"
-msgstr "Boletines y correos electrónicos de MailPoet"
-
-#: lib/Config/PersonalDataExporters.php:46
-msgid "MailPoet Email Clicks"
-msgstr "Clics en correos electrónicos de MailPoet"
-
-#: lib/Config/PersonalDataErasers.php:16
+#: lib/Config/PersonalDataErasers.php:18
 msgid "MailPoet Subscribers"
 msgstr "Suscriptores de MailPoet"
 
-#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:56
-msgid "Confirmed IP"
-msgstr "IP confirmada"
+#: lib/Subscribers/ImportExport/PersonalDataExporters/NewsletterClicksExporter.php:48
+msgid "Timestamp of the click event"
+msgstr "Marca de tiempo del evento clic"
 
-#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:50
-msgid "Subscribed IP"
-msgstr "IP suscrita"
+#: lib/Config/PersonalDataExporters.php:48
+msgid "MailPoet Email Clicks"
+msgstr "Clics en correos electrónicos de MailPoet"
 
-#: lib/Subscribers/ImportExport/PersonalDataExporters/SegmentsExporter.php:45
-msgid "MailPoet Mailing Lists"
-msgstr "Listas de correo de MailPoet"
+#: lib/Config/PrivacyPolicy.php:22
+msgid "MailPoet newsletter & emails"
+msgstr "Boletines y correos electrónicos de MailPoet"
 
-#: lib/Subscribers/ImportExport/PersonalDataExporters/SegmentsExporter.php:40
-msgid "Timestamp of the subscription (or last change of the subscription status)"
-msgstr "Marca de tiempo de la suscripción (o del último cambio del estado de la suscripción)"
+#: lib/Config/PrivacyPolicy.php:25
+msgid "If you have subscribed to our newsletter or if you are a member of our website (you can log in) or if you have purchased on our website, there is a good chance you will receive emails from us."
+msgstr "Si te has suscrito a nuestro boletín o si eres un miembro de nuestro sitio (puedes conectarte) o si has comprado en nuestro sitio, hay bastantes posibilidades de que recibas correos electrónicos de nuestra parte."
 
-#: lib/Subscribers/ImportExport/PersonalDataExporters/SegmentsExporter.php:36
-msgid "Subscription status"
-msgstr "Estado de la suscripción"
+#: lib/Config/PrivacyPolicy.php:28
+msgid "We will only send you emails which you have signed up to receive, or which pertain to the services we provided to you."
+msgstr "Sólo te enviaremos correos de los que te hayas apuntado para recibir, o que atañen a los servicios que te ofrecemos."
 
-#: lib/Subscribers/ImportExport/PersonalDataExporters/SegmentsExporter.php:32
-msgid "List name"
-msgstr "Nombre de la lista"
+#: lib/Config/PrivacyPolicy.php:31
+msgid "To send you emails, we use the name and email address you provide us. Our site also logs the IP address you used when you signed up for the service to prevent abuse of the system."
+msgstr "Para enviarte correos, utilizamos el nombre y la dirección de correo electrónico que nos diste. Nuestro sitio también registra la dirección IP que utilizaste cuando te registraste en el servicio para prevenir el abuso del sistema."
 
-#: lib/Subscribers/ImportExport/PersonalDataExporters/NewslettersExporter.php:80
-msgid "MailPoet Emails Sent"
-msgstr "Correos electrónicos enviados de MailPoet"
+#: lib/Config/PrivacyPolicy.php:35
+msgid "This website can send emails through the [link]MailPoet sending service[/link]. This service allows us to track opens and clicks on our emails. We use this information to improve the content of our newsletters."
+msgstr "Esta web puede enviar correos a través del [link]servicio de envíos de MailPoet[/link]. Este servicio nos permite monitorizar las aperturas y clics en nuestros correos. Utilizamos esta información para mejorar el contenido de nuestros boletines."
 
-#: lib/Subscribers/ImportExport/PersonalDataExporters/NewslettersExporter.php:68
-msgid "Email preview"
-msgstr "Vista previa del correo"
+#: lib/Config/PrivacyPolicy.php:41
+msgid "No identifiable information is otherwise tracked outside this website except for the email address."
+msgstr "No monitorizamos ninguna otra información que te identifique fuera de este sitio excepto tu dirección de correo electrónico."
 
-#: lib/Subscribers/ImportExport/PersonalDataExporters/NewslettersExporter.php:48
-msgid "Sent at"
-msgstr "Enviado a las"
+#: lib/Subscribers/ImportExport/PersonalDataExporters/NewsletterClicksExporter.php:57
+msgid "MailPoet Emails Clicks"
+msgstr "Clics en correos electrónicos de MailPoet"
 
-#: lib/Subscribers/ImportExport/PersonalDataExporters/NewsletterClicksExporter.php:40
-#: lib/Subscribers/ImportExport/PersonalDataExporters/NewslettersExporter.php:44
-msgid "Email subject"
-msgstr "Asunto del correo"
+#: lib/Subscribers/ImportExport/PersonalDataExporters/NewslettersExporter.php:57
+#: lib/Subscribers/ImportExport/PersonalDataExporters/NewslettersExporter.php:66
+msgid "Opened"
+msgstr "Abiertos"
 
-#: lib/Config/PersonalDataExporters.php:38
-msgid "MailPoet Emails"
-msgstr "Correos electrónicos de MailPoet"
+#: lib/Subscribers/ImportExport/PersonalDataExporters/NewslettersExporter.php:61
+msgid "Opened at"
+msgstr "Abierto a las"
 
-#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:22
-#: lib/Config/PersonalDataExporters.php:30
-msgid "MailPoet Subscriber Data"
-msgstr "Datos de suscriptores de MailPoet"
+#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:64
+msgid "Created at"
+msgstr "Creado a las"
 
-#: lib/Config/PersonalDataExporters.php:22
+#: lib/Config/PersonalDataExporters.php:24
 msgid "MailPoet Lists"
 msgstr "Listas de MailPoet"
 
-#: lib/Cron/Workers/SendingQueue/Migration.php:60
+#: lib/Config/PersonalDataExporters.php:40
+msgid "MailPoet Emails"
+msgstr "Correos electrónicos de MailPoet"
+
+#: lib/Subscribers/ImportExport/PersonalDataExporters/SegmentsExporter.php:35
+msgid "List name"
+msgstr "Nombre de la lista"
+
+#: lib/Subscribers/ImportExport/PersonalDataExporters/SegmentsExporter.php:48
+msgid "MailPoet Mailing Lists"
+msgstr "Listas de correo de MailPoet"
+
+#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:25
+#: lib/Config/PersonalDataExporters.php:32
+msgid "MailPoet Subscriber Data"
+msgstr "Datos de suscriptores de MailPoet"
+
+#: lib/Subscribers/ImportExport/PersonalDataExporters/NewsletterClicksExporter.php:44
+#: lib/Subscribers/ImportExport/PersonalDataExporters/NewslettersExporter.php:48
+msgid "Email subject"
+msgstr "Asunto del correo"
+
+#: lib/Subscribers/ImportExport/PersonalDataExporters/NewslettersExporter.php:52
+msgid "Sent at"
+msgstr "Enviado a las"
+
+#: lib/Subscribers/ImportExport/PersonalDataExporters/NewslettersExporter.php:72
+msgid "Email preview"
+msgstr "Vista previa del correo"
+
+#: lib/Subscribers/ImportExport/PersonalDataExporters/NewslettersExporter.php:81
+msgid "MailPoet Emails Sent"
+msgstr "Correos electrónicos enviados de MailPoet"
+
+#: lib/Subscribers/ImportExport/PersonalDataExporters/SegmentsExporter.php:39
+msgid "Subscription status"
+msgstr "Estado de la suscripción"
+
+#: lib/Subscribers/ImportExport/PersonalDataExporters/SegmentsExporter.php:43
+msgid "Timestamp of the subscription (or last change of the subscription status)"
+msgstr "Marca de tiempo de la suscripción (o del último cambio del estado de la suscripción)"
+
+#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:53
+msgid "Subscribed IP"
+msgstr "IP suscrita"
+
+#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:59
+msgid "Confirmed IP"
+msgstr "IP confirmada"
+
+#: lib/Cron/Workers/SendingQueue/Migration.php:62
 msgid "Your sending queue data is being migrated to allow better performance, sending is paused while the migration is in progress and will resume automatically upon completion. This may take a few minutes."
 msgstr "Tus datos de cola de envío se están migrando para permitir un mejor rendimiento, el envío está pausado mientras la migración está en proceso y continuará automáticamente cuando se complete. Esto puede llevar unos minutos."
 
-#: lib/Subscribers/ImportExport/ImportExportFactory.php:56
+#: lib/Subscribers/ImportExport/ImportExportFactory.php:61
 msgid "IP address"
 msgstr "Dirección IP"
 
-#: lib/API/JSON/v1/Subscribers.php:149 lib/API/JSON/v1/Subscribers.php:155
+#: lib/Subscribers/ImportExport/ImportExportFactory.php:60
+msgctxt "Subscription status"
+msgid "Global status"
+msgstr "Estado global"
+
+#: lib/Subscribers/ImportExport/ImportExportFactory.php:59
+msgctxt "Subscription status"
+msgid "List status"
+msgstr "Estado de la lista"
+
+#: lib/API/JSON/v1/Subscribers.php:318 lib/API/JSON/v1/Subscribers.php:324
 msgid "Error while validating the CAPTCHA."
 msgstr "Error al validar el CAPTCHA."
 
-#: lib/Subscription/Pages.php:433
-msgid "Link to subscription management page is only available to mailing lists subscribers."
-msgstr "El enlace de la página de gestión de suscripción sólo está disponible a los suscriptores de las listas de correo."
-
-#: lib/Subscription/Pages.php:249
+#: lib/Subscription/Pages.php:324
 msgid "Subscription management form is only available to mailing lists subscribers."
 msgstr "El formulario de gestión de suscripción sólo está disponible a los suscriptores de las listas de correo."
 
-#: mailpoet.php:56
+#: lib/Subscription/Pages.php:522
+msgid "Link to subscription management page is only available to mailing lists subscribers."
+msgstr "El enlace de la página de gestión de suscripción sólo está disponible a los suscriptores de las listas de correo."
+
+#: mailpoet.php:57
 msgid "MailPoet plugin requires WordPress version 4.6 or newer. Please read our [link]instructions[/link] on how to resolve this issue."
 msgstr "El plugin MailPoet necesita WordPress 4.6 o superior. Por favor lee las [link]instrucciones[/link] para resolver este problema."
 
-#: lib/API/MP/v1/API.php:74 lib/API/MP/v1/API.php:128
+#: lib/API/MP/v1/API.php:126 lib/API/MP/v1/API.php:201
 msgid "At least one segment ID is required."
 msgstr "Se necesita, al menos, un ID de segmento."
 
-#: lib/API/MP/v1/API.php:255
-msgid "This list already exists."
-msgstr "Ya existe esta lista."
+#: lib/API/MP/v1/API.php:161 lib/API/MP/v1/API.php:233
+msgid "List with ID %s does not exist."
+msgid_plural "Lists with IDs %s do not exist."
+msgstr[0] "La lista con ID %s no existe."
+msgstr[1] "Las listas con los IDs %s no existen."
 
-#: lib/API/MP/v1/API.php:248
+#: lib/API/MP/v1/API.php:326
 msgid "List name is required."
 msgstr "El nombre de la lista es obligatorio."
 
-#: lib/Form/Block/Base.php:29
+#: lib/API/MP/v1/API.php:334
+msgid "This list already exists."
+msgstr "Ya existe esta lista."
+
+#: lib/Form/Block/BlockRendererHelper.php:49
 msgid "This field is required."
-msgstr "Este campo es obligatorio"
+msgstr "Este campo es obligatorio."
 
-#: lib/API/JSON/v1/Subscribers.php:189
-msgid "You need to wait %d seconds before subscribing again."
-msgstr "Tienes que esperar %d segundos antes de suscriberte de nuevo."
-
-#: lib/API/JSON/API.php:88
+#: lib/API/JSON/API.php:101
 msgid "Sorry, but we couldn't connect to the MailPoet server. Please refresh the web page and try again."
-msgstr "Lo siento, no pudimos conectar con el servidor de MailPoet. Por favor, recarga la página e inténtalo de nuevo"
+msgstr "Lo siento, no hemos podido conectar con el servidor de MailPoet. Por favor, recarga la página e inténtalo de nuevo."
 
-#: lib/Config/AccessControl.php:68
+#: lib/Config/AccessControl.php:78
 msgid "Manage segments"
 msgstr "Gestionar segmentos"
 
-#: lib/Config/AccessControl.php:67
+#: lib/Config/AccessControl.php:77
 msgid "Manage forms"
 msgstr "Gestionar formularios"
 
-#: lib/Config/AccessControl.php:66
-msgid "Manage subscribers"
-msgstr "Gestionar suscriptores"
-
-#: lib/Config/AccessControl.php:65
-msgid "Manage emails"
-msgstr "Gestionar correo electrónico"
-
-#: lib/Config/AccessControl.php:64
-msgid "Manage settings"
-msgstr "Ajustes de gestión"
-
-#: lib/Config/AccessControl.php:63
+#: lib/Config/AccessControl.php:72
 msgid "Admin menu item"
 msgstr "Elemento del menú de administración"
 
-#: lib/Config/MP2Migrator.php:259
-msgid "Import stopped by user"
-msgstr "Importación interrumpida por el usuario"
+#: lib/Config/AccessControl.php:76
+msgid "Manage subscribers"
+msgstr "Gestionar suscriptores"
 
-#: lib/Config/MP2Migrator.php:196
-msgid "End import"
-msgstr "Finalizar importación"
+#: lib/Config/AccessControl.php:73
+msgid "Manage settings"
+msgstr "Ajustes de gestión"
 
-#: lib/Config/MP2Migrator.php:191
-msgid "Import complete"
-msgstr "Importación completada"
+#: lib/Config/AccessControl.php:75
+msgid "Manage emails"
+msgstr "Gestionar correo electrónico"
 
-#: lib/Config/MP2Migrator.php:172
+#: lib/Config/MP2Migrator.php:181
 msgid "Start import"
 msgstr "Comenzar la importación"
 
-#: lib/API/JSON/API.php:163
-msgid "Invalid API endpoint method."
-msgstr "Método de conexión de API no válido"
+#: lib/Config/MP2Migrator.php:200
+msgid "Import complete"
+msgstr "Importación completada"
 
-#: lib/Config/Initializer.php:97
+#: lib/Config/MP2Migrator.php:205
+msgid "End import"
+msgstr "Finalizar importación"
+
+#: lib/Config/MP2Migrator.php:267
+msgid "Import stopped by user"
+msgstr "Importación interrumpida por el usuario"
+
+#: lib/API/JSON/API.php:177
+msgid "Invalid API endpoint method."
+msgstr "Método de punto de conexión de API no válido."
+
+#: lib/Config/Initializer.php:124
 msgid "Unable to connect to the database (the database is unable to open a file or folder), the connection is likely not configured correctly. Please read our [link] Knowledge Base article [/link] for steps how to resolve it."
 msgstr "No fue posible conectar con la base de datos (la base de datos no ha podido abrir el archivo o la carpeta), la conexión probablemente no está configurada correctamente. Por favor, lee nuestro [link] artículo en la base de conocimiento [/link]  para conocer lo pasos sobre cómo resolverlo."
 
-#: lib/Form/Renderer.php:50
+#: lib/Form/Renderer.php:75
 msgid "Please leave this field empty"
 msgstr "Por favor, deja este campo vacío"
 
-#: lib/Config/ServicesChecker.php:85
+#: lib/Config/ServicesChecker.php:87
 msgid "[link1]Register[/link1] your copy of the MailPoet Premium plugin to receive access to automatic upgrades and support. Need a license key? [link2]Purchase one now.[/link2]"
 msgstr "[link1]Registra[/link1] tu copia del plugin de MailPoet Premium para tener acceso a las actualizaciones automáticas y a soporte. ¿Necesitas una clave de licencia? [link2]Compra una aquí ahora.[/link2]"
 
-#: lib/API/JSON/v1/Services.php:71
-msgid "Your MailPoet Sending Service key is already used on another site."
-msgstr "Tu clave de servicios de envío de MailPoet ya se está usando en otro sitio"
+#: lib/API/JSON/v1/Services.php:140
+msgid "Your MailPoet Sending Service key is already used on another site"
+msgstr "Tu clave del servicio de envío de MailPoet ya se está utlizando en otro sitio"
 
-#: lib/API/JSON/v1/Subscribers.php:129
+#: lib/API/JSON/v1/Subscribers.php:182
 msgid "Please leave the first field empty."
 msgstr "Por favor, deja el primer campo vacío."
 
@@ -546,906 +1261,1062 @@ msgstr "Crear y enviar boletines, publica notificaciones y correos de bienvenida
 msgid "MailPoet 3 (New)"
 msgstr "MailPoet 3 (Nuevo)"
 
-#: lib/Models/SendingQueue.php:39
+#: lib/Models/SendingQueue.php:41
 msgid "Rendered newsletter body is invalid!"
 msgstr "¡El renderizado del cuerpo del boletín de correo no es válido!"
 
-#: lib/Cron/Workers/SendingQueue/Tasks/Newsletter.php:189
+#: lib/Cron/Workers/SendingQueue/Tasks/Newsletter.php:231
 msgid "There was an error processing your newsletter during sending. If possible, please contact us and report this issue."
 msgstr "Hubo un error al procesar la lista de correo durante el envío. Si es posible, ponte en contacto con nosotros y repórtanos este problema."
 
-#: lib/Config/MP2Migrator.php:1091
+#: lib/Config/MP2Migrator.php:1101
 msgid "Settings imported"
 msgstr "Ajustes importados"
 
-#: lib/API/JSON/v1/Services.php:159
+#: lib/API/JSON/v1/Services.php:230
+msgid "Service unavailable"
+msgstr "Servicio no disponible"
+
+#: lib/API/JSON/v1/Services.php:236
 msgctxt "Error code (inside parentheses)"
 msgid "code: %s"
 msgstr "código: %s"
 
-#: lib/API/JSON/v1/Services.php:156
+#: lib/API/JSON/v1/Services.php:233
 msgid "Contact your hosting support to check the connection between your host and https://bridge.mailpoet.com"
 msgstr "Contacta con el soporte de tu alojamiento para comprobar la conexión entre el servidor y https://bridge.mailpoet.com"
 
-#: lib/API/JSON/v1/Services.php:153
-msgid "Service unavailable"
-msgstr "Servicio no disponible"
-
-#: lib/Form/Widget.php:134
-msgid "An error has happened while performing a request, please try again later."
-msgstr "Hubo un error al ejecutar la petición. Por favor, inténtalo de nuevo."
-
-#: lib/Config/PopulatorData/Templates/YogaStudio.php:18
-msgid "Yoga Studio"
-msgstr "Estudio de yoga"
-
-#: lib/Config/PopulatorData/Templates/WorldCup.php:18
-msgid "World Cup"
-msgstr "Copa del mundo"
-
-#: lib/Config/PopulatorData/Templates/TakeAHike.php:18
-msgid "Take a Hike"
-msgstr "Date una vuelta"
-
-#: lib/Config/PopulatorData/Templates/Shoes.php:18
+#: lib/Config/PopulatorData/Templates/Shoes.php:21
 msgid "Shoes"
 msgstr "Zapatos"
 
-#: lib/Config/PopulatorData/Templates/ScienceWeekly.php:18
-msgid "Science Weekly"
-msgstr "Science Weekly"
-
-#: lib/Config/PopulatorData/Templates/PieceOfCake.php:21
-msgid "Piece of cake"
-msgstr "Trozo de tarta"
-
-#: lib/Config/PopulatorData/Templates/NewsDay.php:21
-msgid "News Day"
-msgstr "News Day"
-
-#: lib/Config/PopulatorData/Templates/FoodBox.php:21
-msgid "Welcome to FoodBox"
-msgstr "Bienvenido a FoodBox"
-
-#: lib/Config/PopulatorData/Templates/FestivalEvent.php:21
-msgid "Festival Event"
-msgstr "Festival"
-
-#: lib/Config/PopulatorData/Templates/Faith.php:21
-msgid "Faith"
-msgstr "Faith"
-
-#: lib/Config/PopulatorData/Templates/AppWelcome.php:21
-msgid "App Welcome"
-msgstr "Apps bienvenidas"
-
-#: lib/Config/Menu.php:306 lib/Config/Menu.php:307
+#: lib/Config/Menu.php:310 lib/Config/Menu.php:311
 msgid "Help"
 msgstr "Ayuda"
 
-#: lib/Config/MP2Migrator.php:829
-msgid "%d form imported"
-msgid_plural "%d forms imported"
-msgstr[0] "%d  formulario importado"
-msgstr[1] "%d formularios importados"
-
-#: lib/Config/MP2Migrator.php:810
-msgid "Importing forms..."
-msgstr "Importando formularios..."
-
-#: lib/Config/MP2Migrator.php:306
+#: lib/Config/MP2Migrator.php:314
 msgid "%d form"
 msgid_plural "%d forms"
 msgstr[0] "%d formulario"
 msgstr[1] "%d formularios"
 
-#: mailpoet.php:82
-msgid "MailPoet plugin cannot run under Microsoft's Internet Information Services (IIS) web server. We recommend that you use a web server powered by Apache or NGINX."
-msgstr "El plugin MailPoet no funciona con Microsoft's Internet Information Services (IIS) web server. Te recomendamos que uses un servidor web que corra sobre Apache o NGINX."
+#: lib/Config/MP2Migrator.php:818
+msgid "Importing forms..."
+msgstr "Importando formularios..."
 
-#: lib/Config/PluginActivatedHook.php:15
-msgid "We noticed that you're using an unsupported environment. While MailPoet might work within a MultiSite environment, we don’t support it."
-msgstr "Hemos detectado que está utilizando un entorno no compatible. Aunque MailPoet puede funcionar en un entorno MultiSitio, no damos soporte."
+#: lib/Config/PopulatorData/Templates/NewsDay.php:22
+msgid "News Day"
+msgstr "News Day"
 
-#: lib/Config/Menu.php:359
-msgid "Migration"
-msgstr "Migración"
+#: lib/Config/PopulatorData/Templates/Faith.php:22
+msgid "Faith"
+msgstr "Faith"
 
-#: lib/Config/MP2Migrator.php:582
+#: lib/Config/MP2Migrator.php:837
+msgid "%d form imported"
+msgid_plural "%d forms imported"
+msgstr[0] "%d  formulario importado"
+msgstr[1] "%d formularios importados"
+
+#: lib/Config/PopulatorData/Templates/AppWelcome.php:22
+msgid "App Welcome"
+msgstr "Apps bienvenidas"
+
+#: lib/Config/PopulatorData/Templates/FestivalEvent.php:22
+msgid "Festival Event"
+msgstr "Festival"
+
+#: lib/Config/PopulatorData/Templates/FoodBox.php:22
+msgid "Welcome to FoodBox"
+msgstr "Bienvenido a FoodBox"
+
+#: lib/Config/PopulatorData/Templates/PieceOfCake.php:22
+msgid "Piece of cake"
+msgstr "Trozo de tarta"
+
+#: lib/Config/PopulatorData/Templates/ScienceWeekly.php:21
+msgid "Science Weekly"
+msgstr "Science Weekly"
+
+#: lib/Config/PopulatorData/Templates/TakeAHike.php:21
+msgid "Take a Hike"
+msgstr "Date una vuelta"
+
+#: lib/Config/PopulatorData/Templates/WorldCup.php:21
+msgid "World Cup"
+msgstr "Copa del mundo"
+
+#: lib/Config/PopulatorData/Templates/YogaStudio.php:21
+msgid "Yoga Studio"
+msgstr "Estudio de yoga"
+
+#: lib/Form/AssetsController.php:83
+msgid "An error has happened while performing a request, please try again later."
+msgstr "Hubo un error al ejecutar la petición. Por favor, inténtalo de nuevo."
+
+#: lib/Config/MP2Migrator.php:590
 msgid "%d subscriber imported"
 msgid_plural "%d subscribers imported"
 msgstr[0] "%d suscriptor importado"
 msgstr[1] "%d suscriptores importados"
 
-#: lib/Config/MP2Migrator.php:560
-msgid "Importing subscribers..."
-msgstr "Importando suscriptores..."
+#: lib/Config/Menu.php:389
+msgid "Migration"
+msgstr "Migración"
 
-#: lib/Config/MP2Migrator.php:422
-msgid "%d custom field imported"
-msgid_plural "%d custom fields imported"
-msgstr[0] "%d campo personalizado importado"
-msgstr[1] "%d campos personalizados importados"
-
-#: lib/Config/MP2Migrator.php:412
-msgid "Importing custom fields..."
-msgstr "Importando campos personalizados..."
-
-#: lib/Config/MP2Migrator.php:344
-msgid "%d segment imported"
-msgid_plural "%d segments imported"
-msgstr[0] "%d segmento importado"
-msgstr[1] "%d segmentos importados"
-
-#: lib/Config/MP2Migrator.php:323
-msgid "Importing segments..."
-msgstr "Importando segmentos..."
-
-#: lib/Config/MP2Migrator.php:301
+#: lib/Config/MP2Migrator.php:309
 msgid "%d subscriber"
 msgid_plural "%d subscribers"
 msgstr[0] "%d suscriptor"
 msgstr[1] "%d suscriptores"
 
-#: lib/Config/MP2Migrator.php:296
+#: lib/Config/MP2Migrator.php:568
+msgid "Importing subscribers..."
+msgstr "Importando suscriptores..."
+
+#: lib/Config/MP2Migrator.php:331
+msgid "Importing segments..."
+msgstr "Importando segmentos..."
+
+#: lib/Config/MP2Migrator.php:420
+msgid "Importing custom fields..."
+msgstr "Importando campos personalizados..."
+
+#: lib/Config/MP2Migrator.php:352
+msgid "%d segment imported"
+msgid_plural "%d segments imported"
+msgstr[0] "%d segmento importado"
+msgstr[1] "%d segmentos importados"
+
+#: lib/Config/MP2Migrator.php:430
+msgid "%d custom field imported"
+msgid_plural "%d custom fields imported"
+msgstr[0] "%d campo personalizado importado"
+msgstr[1] "%d campos personalizados importados"
+
+#: lib/Config/MP2Migrator.php:229
+msgid "MailPoet data erased"
+msgstr "Datos de MailPoet borrados"
+
+#: lib/Config/MP2Migrator.php:304
 msgid "%d subscribers list"
 msgid_plural "%d subscribers lists"
 msgstr[0] "%d lista de suscriptores"
 msgstr[1] "%d listas de suscriptores"
 
-#: lib/Config/MP2Migrator.php:291
+#: lib/Config/PluginActivatedHook.php:19
+msgid "We noticed that you're using an unsupported environment. While MailPoet might work within a MultiSite environment, we don’t support it."
+msgstr "Hemos detectado que está utilizando un entorno no compatible. Aunque MailPoet puede funcionar en un entorno MultiSitio, no damos soporte."
+
+#: mailpoet.php:96
+msgid "MailPoet plugin cannot run under Microsoft's Internet Information Services (IIS) web server. We recommend that you use a web server powered by Apache or NGINX."
+msgstr "El plugin MailPoet no funciona con Microsoft's Internet Information Services (IIS) web server. Te recomendamos que uses un servidor web que corra sobre Apache o NGINX."
+
+#: lib/Config/MP2Migrator.php:299
 msgid "MailPoet 2 data found:"
-msgstr "Datos de MailPoet 2 encontrados:"
+msgstr "MailPoet 2 datos encontrados:"
 
-#: lib/Config/MP2Migrator.php:221
-msgid "MailPoet data erased"
-msgstr "Datos de MailPoet borrados"
-
-#: lib/Subscribers/ImportExport/Import/Import.php:92
-msgid "No valid subscribers were found."
-msgstr "No se encontraron suscriptores válidos."
-
-#: lib/Config/Menu.php:320 lib/Config/Menu.php:321
+#: lib/Config/Menu.php:324 lib/Config/Menu.php:325
 msgid "Premium"
 msgstr "Premium"
 
-#: lib/API/JSON/v1/Services.php:133
-msgid "Your Premium key is invalid."
-msgstr "Tu clave Premium no es válida."
+#: lib/Subscribers/ImportExport/Import/Import.php:80
+msgid "No valid subscribers were found."
+msgstr "No se encontraron suscriptores válidos."
 
-#: lib/API/JSON/v1/Services.php:115
-msgid "Your Premium key expires on %s."
-msgstr "Tu clave Premium caduca el %s."
-
-#: lib/API/JSON/v1/Services.php:75
-msgid "Error validating MailPoet Sending Service key, please try again later (%s)."
-msgstr "Error al validar la clave del servicio de envío de MailPoet, por favor, inténtalo más tarde(%s)."
-
-#: lib/API/JSON/v1/Services.php:68
-msgid "Your MailPoet Sending Service key is invalid."
-msgstr "Tu clave de servicio de envío no es válida."
-
-#: lib/API/JSON/v1/Services.php:53
+#: lib/API/JSON/v1/Services.php:122
 msgid "Your MailPoet Sending Service key expires on %s!"
 msgstr "¡Tu clave de servicio de envío caduca el %s!"
 
-#: lib/API/JSON/v1/Services.php:50
-msgid "Your MailPoet Sending Service key has been successfully validated."
-msgstr "Tu clave de servicio de envío de MailPoet se ha validado satisfactoriamente."
+#: lib/API/JSON/v1/Services.php:144
+msgid "Error validating MailPoet Sending Service key, please try again later (%s)."
+msgstr "Error al validar la clave del servicio de envío de MailPoet, por favor, inténtalo más tarde(%s)."
 
-#: lib/API/MP/v1/API.php:190
+#: lib/API/JSON/v1/Services.php:119
+msgid "Your MailPoet Sending Service key has been successfully validated"
+msgstr "Tu clave del servicio de envío de MailPoet ha sido validada con éxito"
+
+#: lib/API/JSON/v1/Services.php:184
+msgid "Your Premium key expires on %s"
+msgstr "Tu clave Premium caduca el %s"
+
+#: lib/API/MP/v1/API.php:264
 msgid "This subscriber already exists."
 msgstr "Este suscriptor ya existe."
 
-#: lib/API/MP/v1/API.php:183
+#: lib/API/MP/v1/API.php:256
 msgid "Subscriber email address is required."
 msgstr "Se requiere la dirección de correo electrónico del suscriptor."
 
-#: lib/API/API.php:16
+#: lib/API/API.php:22
 msgid "Invalid API version."
 msgstr "Versión de API no válida."
 
-#: lib/Config/ServicesChecker.php:108
-msgid "Your License Key for MailPoet is expiring! Don't forget to [link]renew your license[/link] by %s to keep enjoying automatic updates and Premium support."
-msgstr "¡Tu clave de licencia de MailPoet está caducando! No te olvides [link]renovar tu licencia[/link] antes del %s para seguir disfrutando de actualizaciones automáticas y soporte premium."
-
-#: lib/API/JSON/v1/Services.php:141
+#: lib/API/JSON/v1/Services.php:210
 msgid "Error validating Premium key, please try again later (%s)"
 msgstr "Error al validar la clave Premium. Por favor, prueba de nuevo más tarde (%s)"
 
-#: lib/API/JSON/v1/Services.php:136
-msgid "Your Premium key is already used on another site."
-msgstr "Tu clave Premium ya se está usando en otro sitio"
+#: lib/Config/ServicesChecker.php:110
+msgid "Your License Key for MailPoet is expiring! Don't forget to [link]renew your license[/link] by %s to keep enjoying automatic updates and Premium support."
+msgstr "¡Tu clave de licencia de MailPoet está caducando! No te olvides [link]renovar tu licencia[/link] antes del %s para seguir disfrutando de actualizaciones automáticas y soporte premium."
 
-#: lib/API/JSON/v1/Services.php:112
-msgid "Your Premium key has been successfully validated."
-msgstr "Tu clave Premium ha sido validada satisfactoriamente."
+#: lib/API/JSON/v1/Services.php:181
+msgid "Your Premium key has been successfully validated"
+msgstr "Tu clave Premium se ha validado con éxito"
 
-#: lib/Config/RequirementsChecker.php:106
-msgid "MailPoet requires an XML PHP extension. Please read our [link]instructions[/link] on how to resolve this issue."
-msgstr "Mailpoet necesita la extensión de PHP XML. Por favor, lee nuestras [link]instrucciones[/link] sobre cómo resolver este problema."
+#: lib/API/JSON/v1/Services.php:205
+msgid "Your Premium key is already used on another site"
+msgstr "Tu clave Premium ya está siendo utlizada en otro sitio"
 
-#: lib/Config/RequirementsChecker.php:89
-msgid "MailPoet requires a PDO_MYSQL PHP extension. Please read our [link]instructions[/link] on how to resolve this issue."
-msgstr "Mailpoet necesita la extensión de PHP PDO_MYSQL. Por favor, lee nuestras [link]instrucciones[/link] sobre cómo resolver este problema."
-
-#: lib/API/JSON/API.php:158
-msgid "Invalid API endpoint."
-msgstr "Endpoint de API no válido."
-
-#: lib/API/JSON/API.php:115
+#: lib/API/JSON/API.php:129
 msgid "Invalid API request."
 msgstr "Petición de API no válida."
 
-#: lib/Subscribers/ImportExport/Import/Import.php:71
+#: lib/Config/RequirementsChecker.php:76
+msgid "MailPoet requires a PDO_MYSQL PHP extension. Please read our [link]instructions[/link] on how to resolve this issue."
+msgstr "Mailpoet necesita la extensión de PHP PDO_MYSQL. Por favor, lee nuestras [link]instrucciones[/link] sobre cómo resolver este problema."
+
+#: lib/Config/RequirementsChecker.php:93
+msgid "MailPoet requires an XML PHP extension. Please read our [link]instructions[/link] on how to resolve this issue."
+msgstr "Mailpoet necesita la extensión de PHP XML. Por favor, lee nuestras [link]instrucciones[/link] sobre cómo resolver este problema."
+
+#: lib/API/JSON/API.php:172
+msgid "Invalid API endpoint."
+msgstr "Punto de conexión de API no válido."
+
+#: lib/Subscribers/ImportExport/Import/Import.php:72
 msgid "Missing or invalid import data."
 msgstr "Datos de importación no encontrados o no válidos."
 
-#: lib/Mailer/MailerError.php:98
+#: lib/Mailer/MailerError.php:96
 msgid "Unprocessed subscribers:"
 msgstr "Suscriptores no procesados:"
 
-#: lib/Mailer/Methods/ErrorMappers/MailPoetMapper.php:25
-msgid "MailPoet API key is invalid!"
-msgstr "¡Tu clave de API de MailPoet no es válida!"
-
-#: lib/Config/ServicesChecker.php:55
-msgid "Your newsletters are awesome! Don't forget to [link]upgrade your MailPoet email plan[/link] by %s to keep sending them to your subscribers."
-msgstr "¡Tus boletines son fantásticos! No olvides [link]mejorar tu plan de correos electrónicos de MailPoet[/link] de %s para enviarlos a tus suscriptores. "
-
-#: lib/Config/ServicesChecker.php:41
-msgid "All sending is currently paused! Your key to send with MailPoet is invalid. [link]Visit MailPoet.com to purchase a key[/link]"
-msgstr "¡Todos los envíos se han pausado! La clave para enviar con MailPoet no es válida. [link]Visita MailPoet.com para comprar una clave[/link]"
-
-#: lib/API/JSON/v1/Services.php:33 lib/API/JSON/v1/Services.php:95
+#: lib/API/JSON/v1/Services.php:92 lib/API/JSON/v1/Services.php:164
 msgid "Please specify a key."
 msgstr "Por favor, especifica una clave."
 
-#: lib/Subscribers/ImportExport/Export/Export.php:57
-msgid "The export file could not be saved on the server."
-msgstr "No se pudo guardar el archivo de exportación en el servidor"
+#: lib/Mailer/Methods/ErrorMappers/MailPoetMapper.php:28
+msgid "MailPoet API key is invalid!"
+msgstr "¡Tu clave de API de MailPoet no es válida!"
 
-#: lib/API/JSON/v1/Subscribers.php:124
+#: lib/Config/ServicesChecker.php:57
+msgid "Your newsletters are awesome! Don't forget to [link]upgrade your MailPoet email plan[/link] by %s to keep sending them to your subscribers."
+msgstr "¡Tus boletines son fantásticos! No olvides [link]mejorar tu plan de correos electrónicos de MailPoet[/link] %s para seguir enviándoselos a tus suscriptores."
+
+#: lib/Subscribers/ImportExport/Export/Export.php:70
+msgid "The export file could not be saved on the server."
+msgstr "No se ha podido guardar el archivo de exportación en el servidor."
+
+#: lib/API/JSON/v1/Subscribers.php:177
 msgid "Please specify a valid form ID."
 msgstr "Por favor, especifica un ID de formulario válido."
 
-#: lib/Models/Newsletter.php:496
+#: lib/Models/Newsletter.php:535
 msgid "Deleted list"
-msgstr "Lista eliminada"
+msgstr "Eliminar lista"
 
-#: lib/Config/RequirementsChecker.php:129
-msgid "MailPoet has detected a dependency conflict (%s) with another plugin (%s), which may cause unexpected behavior. Please disable the offending plugin to fix this issue."
-msgstr "MailPoet ha detectado un conflicto de dependencias (%s) con otro plugin (%s), lo que puede provocar un comportamiento inesperado. Por favor, desactiva el plugin infractor para solucionar este problema."
-
-#: lib/Config/RequirementsChecker.php:118
+#: lib/Config/RequirementsChecker.php:105
 msgid "A MailPoet dependency (%s) does not appear to be loaded correctly, thus MailPoet will not work correctly. Please reinstall the plugin."
 msgstr "Una de las dependencias de MailPoet (%s) no parece estar cargado correctamente, por lo que MailPoet no funcionará correctamente. Por favor, vuelve a instalar el plugin."
 
-#: lib/Mailer/Methods/ErrorMappers/PHPMailMapper.php:22
-#: lib/Mailer/Methods/ErrorMappers/AmazonSESMapper.php:27
-#: lib/Mailer/Methods/ErrorMappers/SMTPMapper.php:35
-#: lib/Mailer/Methods/ErrorMappers/SendGridMapper.php:14
-msgid "%s has returned an unknown error."
-msgstr "%s ha devuelto un error desconocido."
+#: lib/Config/RequirementsChecker.php:116
+msgid "MailPoet has detected a dependency conflict (%s) with another plugin (%s), which may cause unexpected behavior. Please disable the offending plugin to fix this issue."
+msgstr "MailPoet ha detectado un conflicto de dependencias (%s) con otro plugin (%s), lo que puede provocar un comportamiento inesperado. Por favor, desactiva el plugin infractor para solucionar este problema."
 
-#: lib/Mailer/MailerLog.php:58
-msgid "Sending is waiting to be retried."
-msgstr "El envío está a la espera de ser procesado de nuevo."
-
-#: lib/Mailer/MailerLog.php:54
-msgid "Sending has been paused."
-msgstr "El envío se ha pausado."
-
-#: lib/API/JSON/v1/Newsletters.php:395 lib/API/JSON/v1/Mailer.php:34
+#: lib/API/JSON/v1/Newsletters.php:503 lib/API/JSON/v1/Mailer.php:64
 msgid "The email could not be sent: %s"
 msgstr "El correo electrónico no pudo se enviado:%s"
 
-#: lib/Models/Subscriber.php:254 lib/Subscription/Pages.php:338
+#: lib/Mailer/MailerLog.php:56
+msgid "Sending has been paused."
+msgstr "El envío se ha pausado."
+
+#: lib/Mailer/MailerLog.php:60
+msgid "Sending is waiting to be retried."
+msgstr "El envío está a la espera de ser procesado de nuevo."
+
+#: lib/Mailer/Methods/ErrorMappers/PHPMailMapper.php:30
+#: lib/Mailer/Methods/ErrorMappers/BlacklistErrorMapperTrait.php:14
+#: lib/Mailer/Methods/ErrorMappers/AmazonSESMapper.php:36
+#: lib/Mailer/Methods/ErrorMappers/SMTPMapper.php:44
+#: lib/Mailer/Methods/ErrorMappers/SendGridMapper.php:22
+msgid "%s has returned an unknown error."
+msgstr "%s ha devuelto un error desconocido."
+
+#: lib/Models/Subscriber.php:272 lib/Subscription/Pages.php:416
 msgid "Bounced"
 msgstr "Rebotados"
 
-#: mailpoet.php:96
-msgid "MailPoet cannot start because it is missing core files. Please reinstall the plugin."
-msgstr "MailPoet no se puede iniciar porque faltan archivos del núcleo. Por favor, vuelva a instalar el plugin."
-
-#: lib/Config/RequirementsChecker.php:68
+#: lib/Config/RequirementsChecker.php:55
 msgid "MailPoet requires write permissions inside the /wp-content/uploads folder. Please read our [link]instructions[/link] on how to resolve this issue."
 msgstr "Mailpoet necesita permisos de escritura en la carpeta /wp-content/uploads. Por favor, lee las [link]instrucciones[/link] sobre cómo resolver esta incidencia."
 
-#: lib/API/JSON/v1/Subscribers.php:177
+#: mailpoet.php:110
+msgid "MailPoet cannot start because it is missing core files. Please reinstall the plugin."
+msgstr "MailPoet no se puede iniciar porque faltan archivos del núcleo. Por favor, vuelva a instalar el plugin."
+
+#: lib/API/JSON/v1/Subscribers.php:220
 msgid "Please select a list."
 msgstr "Por favor, selecciona una lista."
 
-#: lib/Config/Renderer.php:115
+#: lib/Config/Renderer.php:110
 msgid "Failed to render template \"%s\". Please ensure the template cache folder \"%s\" exists and has write permissions. Terminated with error: \"%s\""
 msgstr "No se pudo generar la plantilla \"%s\". Asegúrate de que la carpeta de caché de la plantilla \"%s\" existe y tiene permisos de escritura. Terminó con el error: \"%s\""
 
-#: lib/Form/Util/Export.php:89
-msgid "END Scripts"
-msgstr "Scripts END"
+#: lib/API/JSON/v1/Subscribers.php:241
+msgid "You need to wait %s before subscribing again."
+msgstr "Tienes que esperar esperar %s antes de suscribirte de nuevo."
 
-#: lib/Form/Util/Export.php:57
+#: lib/Form/Util/Export.php:62
 msgid "BEGIN Scripts: you should place them in the header of your theme"
 msgstr "BEGIN Scripts: Debes colocarlos en la cabecera de tu tema"
 
-#: lib/Config/PopulatorData/Templates/WelcomeBlank12Column.php:194
+#: lib/Form/Util/Export.php:94
+msgid "END Scripts"
+msgstr "Scripts END"
+
+#: lib/Config/PopulatorData/Templates/WelcomeBlank12Column.php:195
 msgid "<h3>What's Next?</h3>"
 msgstr "<h3>¿Y ahora qué?</h3>"
 
-#: lib/Config/PopulatorData/Templates/NewsletterBlank13Column.php:185
-msgid "<h3>... has a... </h3>"
-msgstr "<h3>... tiene una... </h3>"
+#: lib/Twig/Functions.php:171
+msgid "every hour"
+msgstr "cada hora"
 
-#: lib/Config/PopulatorData/Templates/NewsletterBlank13Column.php:166
-msgid "<h3>This template... </h3>"
-msgstr "<h3> Esta plantilla ... </h3>"
+#: lib/Twig/Functions.php:169
+msgid "every minute"
+msgstr "cada minuto"
+
+#: lib/Subscription/Pages.php:458
+msgid "Save"
+msgstr "Guardar"
+
+#: lib/Subscribers/ImportExport/ImportExportFactory.php:131
+msgid "User fields"
+msgstr "Campos de usuario"
+
+#: lib/Subscribers/ImportExport/ImportExportFactory.php:125
+msgid "System fields"
+msgstr "Campos del sistema"
+
+#: lib/Subscribers/ImportExport/ImportExportFactory.php:121
+msgid "Actions"
+msgstr "Acciones"
+
+#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:47
+#: lib/Subscription/Pages.php:396
+msgid "Status"
+msgstr "Estado"
+
+#: lib/Subscribers/ImportExport/ImportExportFactory.php:52
+#: lib/API/MP/v1/API.php:65 lib/Subscription/Pages.php:377
+msgid "First name"
+msgstr "Nombre"
+
+#: lib/Subscribers/ImportExport/Export/Export.php:98
+msgid "List"
+msgstr "Lista"
+
+#: lib/Settings/Pages.php:18 lib/Settings/Pages.php:19
+#: lib/Settings/Pages.php:43 lib/Subscription/Pages.php:194
+msgid "MailPoet Page"
+msgstr "Página de MailPoet"
+
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:83
+msgid "Links"
+msgstr "Enlaces"
+
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:75
+msgid "Full name of current month"
+msgstr "Nombre completo del mes actual"
+
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:71
+msgid "Current month number"
+msgstr "Número del mes actual"
+
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:57
+msgid "Date"
+msgstr "Fecha"
+
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:33
+msgid "Total Number of Subscribers"
+msgstr "Número total de suscriptores"
+
+#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:39
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:21
+msgid "Last Name"
+msgstr "Apellidos"
+
+#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:35
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:17
+msgid "First Name"
+msgstr "Nombre"
+
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:15
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:112
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:113
+msgid "Subscriber"
+msgstr "Suscriptor"
+
+#: lib/Newsletter/Listing/NewsletterListingRepository.php:160
+#: lib/Models/Newsletter.php:930
+msgid "Active"
+msgstr "Activo"
+
+#: lib/Newsletter/Listing/NewsletterListingRepository.php:128
+#: lib/Newsletter/Listing/NewsletterListingRepository.php:143
+#: lib/Models/Newsletter.php:884 lib/Models/Newsletter.php:905
+msgid "Sending"
+msgstr "Enviando"
+
+#: lib/Newsletter/Listing/NewsletterListingRepository.php:123
+#: lib/Models/Newsletter.php:876
+msgid "Scheduled"
+msgstr "Programado"
+
+#: lib/Newsletter/Listing/NewsletterListingRepository.php:118
+#: lib/Models/Newsletter.php:868
+msgid "Draft"
+msgstr "Borrador"
+
+#: lib/Newsletter/Listing/NewsletterListingRepository.php:63
+#: lib/Models/Subscriber.php:164 lib/Models/Newsletter.php:754
+msgid "All Lists"
+msgstr "Todas las listas"
+
+#: lib/Newsletter/Listing/NewsletterListingRepository.php:174
+#: lib/Models/Subscriber.php:277 lib/Models/Newsletter.php:954
+#: lib/Models/Segment.php:232 lib/Models/Form.php:118
+#: lib/Models/DynamicSegment.php:77
+msgid "Trash"
+msgstr "Papelera"
+
+#: lib/Form/Widget.php:130
+msgid "Title:"
+msgstr "Título:"
+
+#: lib/Form/Block/Date.php:103
+msgid "December"
+msgstr "Diciembre"
+
+#: lib/Form/Block/Date.php:103
+msgid "November"
+msgstr "Noviembre"
+
+#: lib/Form/Block/Date.php:103
+msgid "October"
+msgstr "Octubre"
+
+#: lib/Form/Block/Date.php:102
+msgid "September"
+msgstr "Septiembre"
+
+#: lib/Form/Block/Date.php:102
+msgid "August"
+msgstr "Agosto"
+
+#: lib/Form/Block/Date.php:102
+msgid "July"
+msgstr "Julio"
+
+#: lib/Form/Block/Date.php:102
+msgid "June"
+msgstr "Junio"
+
+#: lib/Form/Block/Date.php:102
+msgid "May"
+msgstr "Mayo"
+
+#: lib/Form/Block/Date.php:101
+msgid "April"
+msgstr "Abril"
+
+#: lib/Form/Block/Date.php:101
+msgid "March"
+msgstr "Marzo"
+
+#: lib/Form/Block/Date.php:101
+msgid "February"
+msgstr "Febrero"
+
+#: lib/Form/Block/Date.php:85
+msgid "Year, month"
+msgstr "Año, mes"
+
+#: lib/Form/Block/Date.php:84
+msgid "Year, month, day"
+msgstr "Año, mes, día"
+
+#: lib/Form/Block/Date.php:71 lib/Form/Block/Date.php:87
+#: lib/Form/Block/Date.php:154
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:79
+msgid "Year"
+msgstr "Año"
+
+#: lib/Form/Block/Date.php:63 lib/Form/Block/Date.php:124
+msgid "Month"
+msgstr "Mes"
+
+#: lib/Config/PopulatorData/Templates/WelcomeBlank12Column.php:176
+msgid "<h3>Our Most Popular Posts</h3>"
+msgstr "<h3>Nuestras entradas más populares</h3>"
+
+#: lib/Config/PopulatorData/Templates/PostNotificationsBlank1Column.php:177
+msgid "Read the post"
+msgstr "Leer la entrada"
+
+#: lib/Config/PopulatorData/Templates/PostNotificationsBlank1Column.php:170
+msgid "Author:"
+msgstr "Autor:"
+
+#: lib/Config/Populator.php:348
+msgid "My First List"
+msgstr "Mi primera lista"
+
+#. Author of the plugin
+#: lib/Config/Menu.php:504 lib/Config/PrivacyPolicy.php:15
+#: lib/Config/Capabilities.php:80
+msgid "MailPoet"
+msgstr "MailPoet"
+
+#: lib/Config/Menu.php:376 lib/Config/Menu.php:377
+msgid "Update"
+msgstr "Actualizar"
+
+#: lib/Config/Menu.php:238 lib/Config/Menu.php:239
+msgid "Export"
+msgstr "Exportar"
+
+#: lib/Config/Menu.php:225 lib/Config/Menu.php:226
+msgid "Import"
+msgstr "Importar"
+
+#: lib/Config/Menu.php:251 lib/Config/Menu.php:252
+msgid "Lists"
+msgstr "Listas"
+
+#: lib/Config/Menu.php:200 lib/Config/Menu.php:201
+msgid "Subscribers"
+msgstr "Suscriptores"
+
+#: lib/Config/Menu.php:154 lib/Config/Menu.php:155
+msgid "Forms"
+msgstr "Formularios"
+
+#: lib/Config/Menu.php:129
+msgctxt "newsletters per page (screen options)"
+msgid "Number of newsletters per page"
+msgstr "Número de boletines por página"
+
+#: lib/API/MP/v1/API.php:138 lib/API/MP/v1/API.php:213
+#: lib/API/JSON/v1/Segments.php:48 lib/API/JSON/v1/Segments.php:103
+#: lib/API/JSON/v1/Segments.php:121 lib/API/JSON/v1/Segments.php:134
+#: lib/API/JSON/v1/Segments.php:162
+msgid "This list does not exist."
+msgid_plural "These lists do not exist."
+msgstr[0] "Esta lista no existe."
+msgstr[1] ""
+
+#: lib/API/JSON/v1/Newsletters.php:402 lib/API/JSON/v1/Segments.php:145
+#: lib/API/JSON/v1/Forms.php:271
+msgid "Copy of %s"
+msgstr "Copia de %s"
+
+#: lib/Form/FormFactory.php:31
+msgid "Submit"
+msgstr "Enviar"
+
+#: lib/Twig/Functions.php:170
+msgid "every %1$d minutes"
+msgstr "cada %1$d minutos"
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
 msgid "http://www.mailpoet.com"
 msgstr "http://www.mailpoet.com"
 
-#: lib/WP/Notice.php:31
-msgid "MailPoet Error:"
-msgstr "Error de Mailpoet:"
-
-#: lib/Twig/Functions.php:131
-msgid "every %1$d hours"
-msgstr "Cada %1$d horas"
-
-#: lib/Twig/Functions.php:130
-msgid "every hour"
-msgstr "cada hora"
-
-#: lib/Twig/Functions.php:129
-msgid "every %1$d minutes"
-msgstr "cada %1$d minutos"
-
-#: lib/Twig/Functions.php:128
-msgid "every minute"
-msgstr "cada minuto"
-
-#: lib/Subscription/Registration.php:26 lib/Subscription/Comment.php:40
-msgid "Yes, please add me to your mailing list."
-msgstr "Sí, agrégame a tu lista de correos, por favor."
-
-#: lib/Subscription/Pages.php:425
-msgid "Accidentally unsubscribed?"
-msgstr "¿Te has dado accidentalmente de baja?"
-
-#: lib/Subscription/Pages.php:411
-msgid "Need to change your email address? Unsubscribe here, then simply sign up again."
-msgstr "¿Necesitas cambiar tu dirección de correo electrónico? Date de baja aquí y, a continuación, sólo tienes que registrarte de nuevo."
-
-#: lib/Subscription/Pages.php:405
-msgid "[link]Log in to your account[/link] to update your email."
-msgstr "[link]Accede a tu cuenta[/link] para actualizar tu correo electrónico."
-
-#: lib/Subscription/Pages.php:399
-msgid "[link]Edit your profile[/link] to update your email."
-msgstr "[link]Edita tu perfil [/link] para actualizar tu correo electrónico."
-
-#: lib/Subscription/Pages.php:369
-msgid "Save"
-msgstr "Guardar"
-
-#: lib/Subscription/Pages.php:361
-msgid "Your lists"
-msgstr "Tus listas"
-
-#: lib/Subscription/Pages.php:232
-msgid "Yup, we've added you to our email list. You'll hear from us shortly."
-msgstr "Sí, te hemos añadido correctamente a la lista de correo. Tendrás noticias nuestras muy pronto."
-
-#: lib/Subscription/Pages.php:226
-msgid "You are now unsubscribed."
-msgstr "Ya no estás suscrito"
-
-#: lib/Subscription/Pages.php:220 lib/Subscription/Pages.php:439
-msgid "Manage your subscription"
-msgstr "Gestionar tu suscripción"
-
-#: lib/Subscription/Pages.php:207
-msgid "You are now subscribed!"
-msgstr "¡Ya estás suscrito!"
-
-#: lib/Subscription/Pages.php:198 lib/Subscription/Pages.php:210
-msgid "You have subscribed to: %s"
-msgstr "Te has suscrito a: %s"
-
-#: lib/Subscription/Pages.php:154
-msgid "Your email address doesn't appear in our lists anymore. Sign up again or contact us if this appears to be a mistake."
-msgstr "Su dirección de correo electrónico ya no aparece en nuestras listas. Inscríbete de nuevo o contacta con nosotros si se ha producido por error."
-
-#: lib/Subscription/Pages.php:124
-msgid "Hmmm... we don't have a record of you."
-msgstr "Hmmm ... no tenemos ningún registro tuyo-"
-
-#: lib/Subscribers/ImportExport/ImportExportFactory.php:126
-msgid "User fields"
-msgstr "Campos de usuario"
-
-#: lib/Subscribers/ImportExport/ImportExportFactory.php:120
-msgid "System fields"
-msgstr "Campos del sistema"
-
-#: lib/Subscribers/ImportExport/ImportExportFactory.php:116
-msgid "Actions"
-msgstr "Acciones"
-
-#: lib/Subscribers/ImportExport/ImportExportFactory.php:111
-msgid "Deselect all..."
-msgstr "Deseleccionar todo"
-
-#: lib/Subscribers/ImportExport/ImportExportFactory.php:107
-msgid "Select all..."
-msgstr "Seleccionar todos"
-
-#: lib/Subscribers/ImportExport/ImportExportFactory.php:101
-msgid "Create new field..."
-msgstr "Crear nuevo campo"
-
-#: lib/Subscribers/ImportExport/ImportExportFactory.php:97
-msgid "Ignore field..."
-msgstr "Ignorar campo ..."
-
-#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:44
-#: lib/Subscription/Pages.php:318
-msgid "Status"
-msgstr "Estado"
-
-#: lib/Subscribers/ImportExport/ImportExportFactory.php:48
-#: lib/API/MP/v1/API.php:51 lib/Subscription/Pages.php:308
-msgid "Last name"
-msgstr "Apellido"
-
-#: lib/Subscribers/ImportExport/ImportExportFactory.php:47
-#: lib/API/MP/v1/API.php:47 lib/Subscription/Pages.php:299
-msgid "First name"
-msgstr "Nombre"
-
-#: lib/Subscribers/ImportExport/ImportExportFactory.php:34
-msgid "Not In List"
-msgstr "No en la lista"
-
-#: lib/Subscribers/ImportExport/Import/MailChimp.php:148
-msgid "Did not find any valid lists."
-msgstr "No se ha encontrado ninguna lista válida."
-
-#: lib/Subscribers/ImportExport/Import/MailChimp.php:145
-msgid "Did not find any active subscribers."
-msgstr "No se encontró ningún suscriptor activo."
-
-#: lib/Subscribers/ImportExport/Import/MailChimp.php:142
-msgid "The information received from MailChimp is too large for processing. Please limit the number of lists!"
-msgstr "La información recibida de MailChimp es demasiado grande para su procesamiento. Por favor, ¡limita el número de listas!"
-
-#: lib/Subscribers/ImportExport/Import/MailChimp.php:139
-msgid "The selected lists do not have matching columns (headers)."
-msgstr "Las listas seleccionadas no tienen que columnas emparejadas (cabeceras)."
-
-#: lib/Subscribers/ImportExport/Import/MailChimp.php:136
-msgid "Could not connect to your MailChimp account."
-msgstr "No se pudo conectar a la cuenta de MailChimp."
-
-#: lib/Subscribers/ImportExport/Import/MailChimp.php:133
-msgid "Invalid API Key."
-msgstr "Clave API no válida"
-
-#: lib/Subscribers/ImportExport/Import/Import.php:133
-msgid "Unable to save imported subscribers."
-msgstr "No fue posible guardar los suscriptores importados."
-
-#: lib/Subscribers/ImportExport/Export/DefaultSubscribersGetter.php:58
-msgid "Not In Segment"
-msgstr "No en el segmento"
-
-#: lib/Subscribers/ImportExport/Export/Export.php:84
-msgid "List"
-msgstr "Lista"
-
-#: lib/Subscribers/ImportExport/Export/Export.php:60
-msgid "Export requires a ZIP extension to be installed on the host."
-msgstr "Exportación requiere una extensión ZIP para ser instalado en el alojamiento."
-
-#: lib/Settings/Pages.php:13 lib/Settings/Pages.php:14
-#: lib/Settings/Pages.php:38 lib/Subscription/Pages.php:128
-msgid "MailPoet Page"
-msgstr "Página de MailPoet"
-
-#: lib/Router/Router.php:52
-msgid "Invalid router endpoint action"
-msgstr "Acción de router endpoint no válida"
-
-#: lib/Router/Router.php:46
-msgid "Invalid router endpoint"
-msgstr "Router endpoint no válido"
-
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:98
-msgid "View in browser link"
-msgstr "Visualizar en el navegador"
-
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:90
-msgid "Edit subscription page link"
-msgstr "Enlace a la página \"Editar suscripción\""
-
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:82
-msgid "Unsubscribe link"
-msgstr "Enlace para darse de baja"
-
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:80
-msgid "Links"
-msgstr "Enlaces"
-
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:72
-msgid "Full name of current month"
-msgstr "Nombre completo del mes actual"
-
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:68
-msgid "Current month number"
-msgstr "Número del mes actual"
-
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:64
-msgid "Full name of current day"
-msgstr "Nombre completo del dia actual "
-
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:60
-msgid "Current day of the month in ordinal form, i.e. 2nd, 3rd, 4th, etc."
-msgstr "El día actual del mes en forma ordinal, es decir, 2º, 3º, 4º, etc."
-
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:56
-msgid "Current day of the month number"
-msgstr "Número del dia del mes en curso"
-
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:54
-msgid "Date"
-msgstr "Fecha"
-
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:50
-msgid "Issue Number"
-msgstr "Número del problema"
-
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:46
-msgid "Most Recent Post Title"
-msgstr "Título de Publicaciones Recientes:"
-
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:42
-msgid "Total Number of Posts or Pages"
-msgstr "Número total de entradas o páginas"
-
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:40
-msgid "Post Notifications"
-msgstr "Avisos de publicaciones"
-
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:36
-msgid "Newsletter Subject"
-msgstr "Asunto del Boletín"
-
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:30
-msgid "Total Number of Subscribers"
-msgstr "Número total de suscriptores"
-
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:26
-msgid "WordPress User Display Name"
-msgstr "Mostrar nombre público del usuario"
-
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:22
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:25
 msgid "Email Address"
 msgstr "Dirección de correo electrónico"
 
-#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:36
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:18
-msgid "Last Name"
-msgstr "Apellidos"
+#: lib/Subscription/Pages.php:494
+msgid "[link]Log in to your account[/link] to update your email."
+msgstr "[link]Accede a tu cuenta[/link] para actualizar tu correo electrónico."
 
-#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:32
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:14
-msgid "First Name"
-msgstr "Nombre"
+#: lib/Subscription/Pages.php:272 lib/Subscription/Pages.php:284
+msgid "You have subscribed to: %s"
+msgstr "Te has suscrito a: %s"
 
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:12
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:109
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:110
-msgid "Subscriber"
-msgstr "Suscriptor"
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:45
+msgid "Total Number of Posts or Pages"
+msgstr "Número total de entradas o páginas"
 
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:102
-msgid "View in your browser"
-msgstr "Ver en tu navegador"
-
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:94
-msgid "Manage subscription"
-msgstr "Gestionar suscripción"
-
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:86
-msgid "Unsubscribe"
-msgstr "Darse de baja"
-
-#: lib/Newsletter/Editor/PostContentManager.php:97
+#: lib/Newsletter/Editor/PostContentManager.php:129
 msgid "Click here to view media."
 msgstr "Haz clic aquí para ver los medios."
 
-#: lib/Models/Subscriber.php:249 lib/Subscription/Pages.php:330
-msgid "Unsubscribed"
-msgstr "Dados de baja"
-
-#: lib/Models/Subscriber.php:244
-msgid "Unconfirmed"
-msgstr "No confirmados"
-
-#: lib/Models/Subscriber.php:239 lib/Subscription/Pages.php:322
-msgid "Subscribed"
-msgstr "Suscritos"
-
-#: lib/Models/Subscriber.php:178
+#: lib/Models/Subscriber.php:172
 msgid "Subscribers without a list (%s)"
 msgstr "Suscriptores sin lista (%s)"
 
-#: lib/Models/Subscriber.php:48
-msgid "Your email address is invalid!"
-msgstr "¡Correo electrónico no válido!"
-
-#: lib/Models/Subscriber.php:47
-msgid "Please enter your email address"
-msgstr "Por favor, escribe tu dirección de correo electrónico"
-
-#: lib/Settings/SettingsController.php:59
-msgid ""
-"Hello,\n"
-"\n"
-"Welcome to our newsletter!\n"
-"\n"
-"Please confirm your subscription to the list(s): [lists_to_confirm] by clicking the link below: \n"
-"\n"
-"[activation_link]Click here to confirm your subscription.[/activation_link]\n"
-"\n"
-"Thank you,\n"
-"\n"
-"The Team"
-msgstr ""
-"Hola,\n"
-"\n"
-"¡Bienvenido a nuestro boletín!\n"
-"\n"
-"Por favor, confirma tu suscripción al/los boletín/es: [lists_to_confirm] haciendo clic en el siguiente enlace:\n"
-"\n"
-"[activation_link]Haz clic aquí para confirmar tu suscripción.[/activation_link]\n"
-"\n"
-"Gracias,\n"
-"\n"
-"El equipo"
-
-#: lib/Settings/SettingsController.php:58
-msgid "Confirm your subscription to %1$s"
-msgstr "Confirma tu suscripción a %1$s"
-
-#: lib/Models/Segment.php:229
-msgid "Not in a List"
-msgstr "En ninguna lista"
-
-#: lib/Models/Segment.php:126
-msgid "This list contains all of your WordPress users."
-msgstr "Esta lista contiene todos los usuarios de WordPress."
-
-#: lib/Models/Segment.php:124
-msgid "WordPress Users"
-msgstr "Usuarios de WordPress"
-
-#: lib/Models/NewsletterTemplate.php:29
-msgid "The template body cannot be empty."
-msgstr "El cuerpo de la plantilla no puede estar vacío."
-
-#: lib/Models/NewsletterOptionField.php:16
-msgid "Please specify a newsletter type."
-msgstr "Por favor, especifica un tipo de boletín."
-
-#: lib/Models/Newsletter.php:843
-msgid "Not active"
-msgstr "Inactivo"
-
-#: lib/Models/Newsletter.php:835
-msgid "Active"
-msgstr "Activo"
-
-#: lib/Models/Newsletter.php:820
+#: lib/Newsletter/Listing/NewsletterListingRepository.php:133
+#: lib/Newsletter/Listing/NewsletterListingRepository.php:148
+#: lib/Models/Newsletter.php:892 lib/Models/Newsletter.php:914
 msgid "Sent"
 msgstr "Enviado"
 
-#: lib/Models/Newsletter.php:812
-msgid "Sending"
-msgstr "Enviando"
-
-#: lib/Models/Newsletter.php:804
-msgid "Scheduled"
-msgstr "Programado"
-
-#: lib/Models/Newsletter.php:796
-msgid "Draft"
-msgstr "Borrador"
-
-#: lib/Models/Subscriber.php:170 lib/Models/Newsletter.php:680
-msgid "All Lists"
-msgstr "Todas las listas"
-
-#: lib/Models/Model.php:219
-msgid "Another record already exists. Please specify a different \"%1$s\"."
-msgstr "Ua existe otro registro. Por favor, especifica un \"%1$s\" diferente."
-
-#: lib/Models/Subscriber.php:259 lib/Models/Newsletter.php:855
-#: lib/Models/Segment.php:166 lib/Models/Form.php:110
-msgid "Trash"
-msgstr "Papelera"
-
-#: lib/Models/Subscriber.php:234 lib/Models/Newsletter.php:784
-#: lib/Models/Segment.php:161 lib/Models/Form.php:105
-msgid "All"
-msgstr "Todos"
-
-#: lib/Models/CustomField.php:29 lib/Models/Newsletter.php:54
+#: lib/Models/CustomField.php:32 lib/Models/Newsletter.php:70
 msgid "Please specify a type."
 msgstr "Por favor, especifica un tipo."
 
-#: lib/Models/NewsletterOptionField.php:13 lib/Models/CustomField.php:26
-#: lib/Models/Setting.php:25 lib/Models/NewsletterTemplate.php:26
-#: lib/Models/Segment.php:25 lib/Models/Form.php:21
+#: lib/Models/NewsletterOptionField.php:21 lib/Models/CustomField.php:29
+#: lib/Models/Segment.php:32
 msgid "Please specify a name."
 msgstr "Por favor, especifica un nombre."
 
-#: lib/Mailer/Methods/AmazonSES.php:50
-msgid "Unsupported Amazon SES region"
-msgstr "No se da soporte a la región de Amazon SES"
+#: lib/Models/NewsletterOptionField.php:24
+msgid "Please specify a newsletter type."
+msgstr "Por favor, especifica un tipo de boletín."
 
-#: lib/Mailer/MailerLog.php:66
-msgid "Sending frequency limit has been reached."
-msgstr "El límite de frecuencia de envío ha sido alcanzado."
-
-#: lib/Mailer/Mailer.php:121
-msgid "Sender name and email are not configured."
-msgstr "El nombre del remitente y el correo electrónico no están configurados."
-
-#: lib/Mailer/Mailer.php:104
-msgid "Mailer is not configured."
-msgstr "Mailer no está configurado."
-
-#: lib/Mailer/Mailer.php:95
-msgid "Mailing method does not exist."
-msgstr "No hay método envío de correo."
-
-#: lib/Form/Widget.php:188
-msgid "Subscribe to Our Newsletter"
-msgstr "Suscríbete a nuestro Boletín"
-
-#: lib/Form/Widget.php:29
-msgid "Add a newsletter subscription form"
-msgstr "Añade un formulario para la suscripción al boletín"
-
-#: lib/Form/Widget.php:28
-msgid "MailPoet 3 Form"
-msgstr "Formulario de MailPoet 3"
-
-#: lib/Form/Block/Date.php:127
-msgid "December"
-msgstr "Diciembre"
-
-#: lib/Form/Block/Date.php:127
-msgid "November"
-msgstr "Noviembre"
-
-#: lib/Form/Block/Date.php:127
-msgid "October"
-msgstr "Octubre"
-
-#: lib/Form/Block/Date.php:126
-msgid "September"
-msgstr "Septiembre"
-
-#: lib/Form/Block/Date.php:126
-msgid "August"
-msgstr "Agosto"
-
-#: lib/Form/Block/Date.php:126
-msgid "July"
-msgstr "Julio"
-
-#: lib/Form/Block/Date.php:126
-msgid "June"
-msgstr "Junio"
-
-#: lib/Form/Block/Date.php:126
-msgid "May"
-msgstr "Mayo"
-
-#: lib/Form/Block/Date.php:125
-msgid "April"
-msgstr "Abril"
-
-#: lib/Form/Block/Date.php:125
-msgid "March"
-msgstr "Marzo"
-
-#: lib/Form/Block/Date.php:125
-msgid "February"
-msgstr "Febrero"
-
-#: lib/Form/Block/Date.php:125
+#: lib/Form/Block/Date.php:101
 msgid "January"
 msgstr "Enero"
 
-#: lib/Form/Block/Date.php:111
-msgid "Month (January, February,...)"
-msgstr "Mes (enero, febrero...)"
-
-#: lib/Form/Block/Date.php:110
-msgid "Year, month"
-msgstr "Año, mes"
-
-#: lib/Form/Block/Date.php:109
-msgid "Year, month, day"
-msgstr "Año, mes, día"
-
-#: lib/Form/Block/Date.php:96 lib/Form/Block/Date.php:112
-#: lib/Form/Block/Date.php:174
-#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:76
-msgid "Year"
-msgstr "Año"
-
-#: lib/Form/Block/Date.php:94
+#: lib/Form/Block/Date.php:69
 msgid "Please select a year"
 msgstr "Por favor, selecciona un año"
 
-#: lib/Form/Block/Date.php:87 lib/Form/Block/Date.php:144
-msgid "Month"
-msgstr "Mes"
-
-#: lib/Form/Block/Date.php:85
+#: lib/Form/Block/Date.php:61
 msgid "Please select a month"
 msgstr "Por favor, selecciona un mes"
 
-#: lib/Form/Block/Date.php:78 lib/Form/Block/Date.php:200
-msgid "Day"
-msgstr "Diario"
+#: lib/Form/Block/BlockRendererHelper.php:44
+msgid "Please select a list"
+msgstr "Por favor, selecciona una lista"
 
-#: lib/Form/Block/Date.php:76
+#: lib/Form/Block/Date.php:53
 msgid "Please select a day"
 msgstr "Por favor, selecciona un día"
 
-#: lib/Form/Block/Base.php:44
-msgid "Please select at least one option"
-msgstr "Por favor, selecciona, al menos, una opción"
+#: lib/Config/Menu.php:167
+msgctxt "forms per page (screen options)"
+msgid "Number of forms per page"
+msgstr "Número de formularios por página"
 
-#: lib/Form/Block/Base.php:35
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:39
+msgid "Newsletter Subject"
+msgstr "Asunto del Boletín"
+
+#: lib/Config/Menu.php:297 lib/Config/Menu.php:298 lib/Config/Menu.php:412
+msgid "Settings"
+msgstr "Ajustes"
+
+#: lib/Config/PopulatorData/Templates/WelcomeBlank12Column.php:203
+msgid "Read up!"
+msgstr "¡Lee!"
+
+#: lib/API/JSON/v1/Newsletters.php:459
+msgid "Please specify receiver information."
+msgstr "Por favor, especifica la información del receptor."
+
+#: lib/Form/Block/BlockRendererHelper.php:55
 msgid "Please specify a valid phone number"
 msgstr "Por favor, especifica un número de teléfono válido"
 
-#: lib/Form/Block/Base.php:17
-msgid "Please specify a valid email address."
-msgstr "Por favor, especifica una dirección de correo electrónico válida."
+#: lib/API/JSON/v1/Forms.php:143
+msgid "New form"
+msgstr "Nuevo formulario"
 
-#: lib/Cron/DaemonHttpRunner.php:41
-msgid "Daemon does not exist."
-msgstr "El demonio no existe."
+#: lib/API/JSON/v1/Forms.php:68 lib/API/JSON/v1/Forms.php:137
+#: lib/API/JSON/v1/Forms.php:229 lib/API/JSON/v1/Forms.php:247
+#: lib/API/JSON/v1/Forms.php:261 lib/API/JSON/v1/Forms.php:290
+msgid "This form does not exist."
+msgstr "Este formulario no existe."
 
-#: lib/Cron/DaemonHttpRunner.php:38
-msgid "Invalid or missing request data."
-msgstr "Solicitados datos no válidos o perdidos."
+#: lib/API/JSON/v1/CustomFields.php:51 lib/API/JSON/v1/CustomFields.php:74
+msgid "This custom field does not exist."
+msgstr "Este campo personalizado no existe."
 
-#: lib/Cron/CronHelper.php:191
-msgid "Maximum execution time has been reached."
-msgstr "Se ha superado el tiempo máximo de ejecución."
+#: lib/Subscription/Pages.php:450
+msgid "Your lists"
+msgstr "Tus listas"
 
-#: lib/Cron/CronHelper.php:185
-msgid "Site URL is unreachable."
-msgstr "No se puede acceder a la URL del sitio."
+#: lib/Config/PopulatorData/Templates/PostNotificationsBlank1Column.php:172
+msgid "Categories:"
+msgstr "Categorías:"
 
-#: lib/Config/Shortcodes.php:136
-msgid "Preview in a new tab"
-msgstr "Vista preliminar en una nueva pestaña"
+#: lib/Settings/SettingsController.php:71
+msgid "Confirm your subscription to %1$s"
+msgstr "Confirma tu suscripción a %1$s"
 
-#: lib/Config/Shortcodes.php:97
-msgid "Oops! There are no newsletters to display."
-msgstr "¡Ups! No hay boletines que mostrar."
+#: lib/Config/PopulatorData/Templates/WelcomeBlank1Column.php:117
+#: lib/Config/PopulatorData/Templates/WelcomeBlank12Column.php:117
+#: lib/Config/PopulatorData/Templates/NewsletterBlank12Column.php:117
+#: lib/Config/PopulatorData/Templates/SimpleText.php:76
+#: lib/Config/PopulatorData/Templates/NewsletterBlank1Column.php:117
+#: lib/Config/PopulatorData/Templates/NewsletterBlank121Column.php:117
+#: lib/Config/PopulatorData/Templates/NewsletterBlank13Column.php:117
+msgid "Fake logo"
+msgstr "Logo falso"
 
-#: lib/Config/PopulatorData/Templates/WelcomeBlank1Column.php:128
+#: lib/Config/PopulatorData/Templates/SimpleText.php:123
+msgid "It's time to take action!"
+msgstr "¡Es hora de actuar!"
+
+#: lib/Form/Widget.php:30
+msgid "MailPoet 3 Form"
+msgstr "Formulario de MailPoet 3"
+
+#: lib/Config/Menu.php:141 lib/Newsletter/Shortcodes/ShortcodesHelper.php:37
+msgid "Newsletter"
+msgstr "Boletín"
+
+#: lib/Config/PopulatorData/Templates/SimpleText.php:26
+msgid "Simple Text"
+msgstr "Texto simple"
+
+#: lib/API/MP/v1/API.php:132 lib/API/MP/v1/API.php:207
+#: lib/API/MP/v1/API.php:366 lib/API/JSON/v1/Subscribers.php:110
+#: lib/API/JSON/v1/Subscribers.php:423 lib/API/JSON/v1/Subscribers.php:441
+#: lib/API/JSON/v1/Subscribers.php:454 lib/API/JSON/v1/Subscribers.php:469
+msgid "This subscriber does not exist."
+msgstr "Este suscriptor no existe."
+
+#: lib/Subscribers/ImportExport/Export/DefaultSubscribersGetter.php:61
+msgid "Not In Segment"
+msgstr "No en el segmento"
+
+#: lib/API/JSON/v1/SendingQueue.php:100
+msgid "There are no subscribers in that list!"
+msgstr "¡No hay suscriptores en esa lista!"
+
+#: lib/API/JSON/Endpoint.php:42
+msgid "Invalid request parameters"
+msgstr "Parámetros solicitados no válidos"
+
+#: lib/Form/FormFactory.php:18 lib/Form/FormFactory.php:21
+#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:43
+#: lib/Subscribers/ImportExport/ImportExportFactory.php:51
+#: lib/API/MP/v1/API.php:57 lib/Subscription/Pages.php:480
+msgid "Email"
+msgstr "Correo Electrónico"
+
+#: lib/Form/FormFactory.php:34
+msgid "Subscribe!"
+msgstr "¡Suscríbete!"
+
+#: lib/Models/Form.php:134 lib/Models/Form.php:142 lib/Models/Form.php:144
+msgid "Check your inbox or spam folder to confirm your subscription."
+msgstr "Revisa tu bandeja de entrada o la carpeta de spam para confirmar tu suscripción."
+
+#: lib/API/JSON/v1/SendingQueue.php:48 lib/API/JSON/v1/SendingQueue.php:144
+#: lib/API/JSON/v1/SendingQueue.php:175
+msgid "This newsletter does not exist."
+msgstr "Ese boletín no existe."
+
+#: lib/API/JSON/v1/Newsletters.php:296
+msgid "You need to specify a status."
+msgstr "Necesitas un estado específico."
+
+#: lib/API/JSON/v1/Newsletters.php:428
+msgid "Newsletter data is missing."
+msgstr "Se perdieron los datos del boletín."
+
+#: lib/API/JSON/v1/SendingQueue.php:70
+msgid "This newsletter is already being sent."
+msgstr "Este boletín ya se ha enviado."
+
+#: lib/API/JSON/v1/SendingQueue.php:134 lib/API/JSON/v1/SendingQueue.php:165
+msgid "This newsletter has not been sent yet."
+msgstr "Este boletín no se ha enviado todavía."
+
+#: lib/API/JSON/v1/Settings.php:68
+msgid "You have not specified any settings to be saved."
+msgstr "No has especificado ningún ajuste para ser guardado."
+
+#: lib/Config/Hooks.php:344
+msgid "MailPoet Newsletter"
+msgstr "Boletín de MailPoet"
+
+#: lib/Config/Menu.php:116 lib/Config/Menu.php:117
+msgid "Emails"
+msgstr "Correos electrónicos"
+
+#: lib/Config/Menu.php:142
+msgid "Newsletter Editor"
+msgstr "Editor de boletín"
+
+#: lib/Config/Menu.php:179 lib/Config/Menu.php:180
+msgid "Form Editor"
+msgstr "Editor de formulario"
+
+#: lib/AdminPages/Pages/Newsletters.php:113
+msgid "In any WordPress role"
+msgstr "En cualquier rol de WordPress"
+
+#: lib/Config/Populator.php:350
+msgid "This list is automatically created when you install MailPoet."
+msgstr "Esta lista se crea automáticamente al instalar MailPoet."
+
+#: lib/Config/PopulatorData/Templates/NewsletterBlank121Column.php:26
+msgid "Newsletter: Blank 1:2:1 Column"
+msgstr "Boletín: En blanco. Columnas 1:2:1"
+
+#: lib/Config/PopulatorData/Templates/NewsletterBlank121Column.php:129
+msgid ""
+"<h1 style=\"text-align: center;\"><strong>Let's Get Started!</strong></h1>\n"
+"<p>It's time to design your newsletter! In the right sidebar, you'll find four menu items that will help you customize your newsletter:</p>\n"
+"<ol>\n"
+"<li>Content</li>\n"
+"<li>Columns</li>\n"
+"<li>Styles</li>\n"
+"<li>Preview</li>\n"
+"</ol>"
+msgstr ""
+"<h1 style=\"text-align: center;\"><strong>¡Empecemos!</strong></h1>\n"
+"<p>Es hora de diseñar tu boletín de noticias. En la barra lateral derecha tienes cuatro elementos de menú que te ayudarán a personalizar tu boletín de noticias:</p>\n"
+"<ol>\n"
+"<li>Contenido</li>\n"
+"<li>Columnas</li>\n"
+"<li>Estilos</li>\n"
+"<li>Vista previa</li>\n"
+"</ol>"
+
+#: lib/Config/PopulatorData/Templates/NewsletterBlank121Column.php:171
+msgid ""
+"<p>In the right sidebar, you can add layout blocks to your email:</p>\n"
+"<ul>\n"
+"<li>1 column</li>\n"
+"<li>2 columns</li>\n"
+"<li>3 columns</li>\n"
+"</ul>"
+msgstr ""
+"<p>Puedes añadir a tu correo electrónico bloques de diseño en la barra lateral derecha:</p>\n"
+"<ul>\n"
+"<li>1 columna</li>\n"
+"<li>2 columnas</li>\n"
+"<li> 3 columnas </li>\n"
+"</ul>"
+
+#: lib/Config/PopulatorData/Templates/NewsletterBlank121Column.php:250
+msgid ""
+"<h3 style=\"text-align: center;\"><span style=\"font-weight: 600;\">Let's end with a single column. </span></h3>\n"
+"<p style=\"line-height: 25.6px;\">In the right sidebar, you can add these layout blocks to your email:</p>\n"
+"<p style=\"line-height: 25.6px;\"></p>\n"
+"<ul style=\"line-height: 25.6px;\">\n"
+"<li>1 column</li>\n"
+"<li>2 columns</li>\n"
+"<li>3 columns</li>\n"
+"</ul>"
+msgstr ""
+"<h3 style=\"text-align: center;\"><span style=\"font-weight: 600;\">Vamos a terminar con una columna simple.</span></h3>\n"
+"<p style=\"line-height: 25.6px;\">En la barra lateral derecha vamos a añadir estos bloques de diseño en tu correo electrónico:</p>\n"
+"<p style=\"line-height: 25.6px;\"></p>\n"
+"<ul style=\"line-height: 25.6px;\">\n"
+"<li>1 columna</li>\n"
+"<li>2 columnas</li>\n"
+"<li>3 columnas</li>\n"
+"</ul>"
+
+#: lib/Config/PopulatorData/Templates/NewsletterBlank12Column.php:26
+msgid "Newsletter: Blank 1:2 Column"
+msgstr "Boletín: En blanco. Columnas 1:2"
+
+#: lib/Config/PopulatorData/Templates/NewsletterBlank12Column.php:129
+msgid ""
+"<h1 style=\"text-align: center;\"><strong>Let's Get Started!</strong></h1>\n"
+"<p>&nbsp;</p>\n"
+"<p>It's time to design your newsletter! In the right sidebar, you'll find 4 menu items that will help you customize your newsletter:</p>\n"
+"<ol>\n"
+"<li>Content</li>\n"
+"<li>Columns</li>\n"
+"<li>Styles</li>\n"
+"<li>Preview</li>\n"
+"</ol>"
+msgstr ""
+"<h1 style=\"text-align: center;\"><strong>¡Comencemos!</strong></h1>\n"
+"<p>&nbsp;</p>\n"
+"<p>¡Es hora de diseñar tu boletín! En la barra lateral derecha, encontrarás 4 elementos de menú que te ayudarán a personalizar tu boletín:</p>\n"
+"<ol>\n"
+"<li>Contenido</li>\n"
+"<li>Columnas</li>\n"
+"<li>Estilos</li>\n"
+"<li>Vista previa</li>\n"
+"</ol>"
+
+#: lib/Config/PopulatorData/Templates/NewsletterBlank12Column.php:171
+msgid ""
+"<p>In the right sidebar, you can add these layout blocks to your email:</p>\n"
+"<ul>\n"
+"<li>1 column</li>\n"
+"<li>2 columns</li>\n"
+"<li>3 columns</li>\n"
+"</ul>"
+msgstr ""
+"<p>Puedes añadir a tu correo electrónico bloques de diseño en la barra lateral derecha:</p>\n"
+"<ul>\n"
+"<li>1 columna</li>\n"
+"<li>2 columnas</li>\n"
+"<li>3 columnas </li>\n"
+"</ul>"
+
+#: lib/Config/PopulatorData/Templates/NewsletterBlank12Column.php:190
+msgid "<p><span style=\"line-height: 25.6px;\">You can change a layout's background color by clicking on the settings icon on the right edge of the Designer. Simply hover over this area to see the Settings (gear) icon.</span></p>"
+msgstr "<p> <span style=\"line-height: 25.6px;\">Puede cambiar el color de fondo de un diseño haciendo clic en el icono de configuración del borde derecho del Diseñador. Simplemente coloque el cursor sobre esa área para ver el icono Configuración (engranaje).</span></p>"
+
+#: lib/Config/PopulatorData/Templates/WelcomeBlank1Column.php:203
+#: lib/Config/PopulatorData/Templates/WelcomeBlank12Column.php:294
+#: lib/Config/PopulatorData/Templates/NewsletterBlank12Column.php:264
+#: lib/Config/PopulatorData/Templates/SimpleText.php:148
+#: lib/Config/PopulatorData/Templates/NewsletterBlank1Column.php:203
+#: lib/Config/PopulatorData/Templates/NewsletterBlank121Column.php:324
+#: lib/Config/PopulatorData/Templates/PostNotificationsBlank1Column.php:290
+#: lib/Config/PopulatorData/Templates/NewsletterBlank13Column.php:287
+msgid "<p><a href=\"[link:subscription_unsubscribe_url]\">Unsubscribe</a> | <a href=\"[link:subscription_manage_url]\">Manage your subscription</a><br />Add your postal address here!</p>"
+msgstr "<p><a href=\"[link:subscription_unsubscribe_url]\">Darse de baja</a> | <a href=\"[link:subscription_manage_url]\">Gestionar suscripción</a><br />¡Añade tu dirección postal aquí!</p>"
+
+#: lib/Config/PopulatorData/Templates/NewsletterBlank13Column.php:26
+msgid "Newsletter: Blank 1:3 Column"
+msgstr "Boletín: En blanco. Columnas 1:3"
+
+#: lib/Config/PopulatorData/Templates/NewsletterBlank13Column.php:129
+msgid ""
+"<h1 style=\"text-align: center;\"><strong>Let's Get Started! </strong></h1>\n"
+"<p>&nbsp;</p>\n"
+"<p>It's time to design your newsletter! In the right sidebar, you'll find four menu items that will help you customize your newsletter:</p>\n"
+"<ol>\n"
+"<li>Content</li>\n"
+"<li>Columns</li>\n"
+"<li>Styles</li>\n"
+"<li>Preview</li>\n"
+"</ol>"
+msgstr ""
+"<h1 style=\"text-align: center;\"><strong>¡Comencemos! </strong></h1>\n"
+"<p>&nbsp;</p>\n"
+"<p>¡Es hora de diseñar tu boletín! En la barra lateral derecha, encontrarás 4 elementos de menú que te ayudarán a personalizar tu boletín:</p>\n"
+"<ol>\n"
+"<li>Contenido</li>\n"
+"<li>Columnas</li>\n"
+"<li>Estilos</li>\n"
+"<li>Vista previa</li>\n"
+"</ol>"
+
+#: lib/Config/PopulatorData/Templates/NewsletterBlank13Column.php:190
+msgid ""
+"<p>You have the choice of:</p>\n"
+"<ul>\n"
+"<li>1 column</li>\n"
+"<li>2 columns</li>\n"
+"<li>3 columns</li>\n"
+"</ul>"
+msgstr ""
+"<p>Tienes las opciones:</p>\n"
+"<ul>\n"
+"<li>1 columna</li>\n"
+"<li>2 columnas</li>\n"
+"<li>3 columnas</li>\n"
+"</ul>"
+
+#: lib/Config/PopulatorData/Templates/NewsletterBlank1Column.php:26
+msgid "Newsletter: Blank 1 Column"
+msgstr "Boletín: En blanco 1 columna"
+
+#: lib/Config/PopulatorData/Templates/NewsletterBlank1Column.php:129
+msgid ""
+"<h1 style=\"text-align: center;\"><strong>Let's Get Started! </strong></h1>\n"
+"<p>&nbsp;</p>\n"
+"<p>It's time to design your newsletter! In the right sidebar, you'll find 4 menu items that will help you customize your newsletter:</p>\n"
+"<ol>\n"
+"<li>Content</li>\n"
+"<li>Columns</li>\n"
+"<li>Styles</li>\n"
+"<li>Preview</li>\n"
+"</ol>"
+msgstr ""
+"<h1 style=\"text-align: center;\"><strong>¡Comencemos! </strong></h1>\n"
+"<p>&nbsp;</p>\n"
+"<p>¡Es hora de diseñar tu boletín! En la barra lateral derecha, encontrarás 4 elementos de menú que te ayudarán a personalizar tu boletín:</p>\n"
+"<ol>\n"
+"<li>Contenido</li>\n"
+"<li>Columnas</li>\n"
+"<li>Estilos</li>\n"
+"<li>Vista previa</li>\n"
+"</ol>"
+
+#: lib/Config/PopulatorData/Templates/PostNotificationsBlank1Column.php:129
+msgid ""
+"<h1 style=\"text-align: center;\"><strong>Check Out Our New Blog Posts! </strong></h1>\n"
+"<p>&nbsp;</p>\n"
+"<p>MailPoet can <span style=\"line-height: 1.6em; background-color: inherit;\"><em>automatically</em> </span><span style=\"line-height: 1.6em; background-color: inherit;\">send your new blog posts to your subscribers.</span></p>\n"
+"<p><span style=\"line-height: 1.6em; background-color: inherit;\"></span></p>\n"
+"<p><span style=\"line-height: 1.6em; background-color: inherit;\">Below, you'll find three recent posts, which are displayed automatically, thanks to the <em>Automatic Latest Content</em> widget, which can be found in the right sidebar, under <em>Content</em>.</span></p>\n"
+"<p><span style=\"line-height: 1.6em; background-color: inherit;\"></span></p>\n"
+"<p><span style=\"line-height: 1.6em; background-color: inherit;\">To edit the settings and styles of your post, simply click on a post below.</span></p>"
+msgstr ""
+"<h1 style=\"text-align: center;\"><strong>Lee nuestra nueva entrada del blog </strong></h1>\n"
+"<p>&nbsp;</p>\n"
+"<p>MailPoet puede <span style=\"line-height: 1.6em; background-color: inherit;\"><em>automaticamente</em> </span><span style=\"line-height: 1.6em; background-color: inherit;\">enviar las nuevas entradas de tu blog a tus suscriptores.</span></p>\n"
+"<p><span style=\"line-height: 1.6em; background-color: inherit;\"></span></p>\n"
+"<p><span style=\"line-height: 1.6em; background-color: inherit;\">Aquí abajo verás las tres entradas más recientes, que se muestran automáticamente, gracias al widget de <em>último contenido automático</em> que se encuentra en la barra lateral derecha, en <em>Contenido</em>.</span></p>\n"
+"<p><span style=\"line-height: 1.6em; background-color: inherit;\"></span></p>\n"
+"<p><span style=\"line-height: 1.6em; background-color: inherit;\">Para editar los ajustes y estilos de tu entrada, sólo tienes que hacer clic en la entrada de abajo.</span></p>"
+
+#: lib/Config/PopulatorData/Templates/SimpleText.php:88
+msgid ""
+"<p style=\"text-align: left;\">Hi [subscriber:firstname | default:subscriber],</p>\n"
+"<p style=\"text-align: left;\"></p>\n"
+"<p style=\"text-align: left;\">In MailPoet, you can write emails in plain text, just like in a regular email. This can make your email newsletters more personal and attention-grabbing.</p>\n"
+"<p style=\"text-align: left;\"></p>\n"
+"<p style=\"text-align: left;\">Is this too simple? You can still style your text with basic formatting, like <strong>bold</strong> or <em>italics.</em></p>\n"
+"<p style=\"text-align: left;\"></p>\n"
+"<p style=\"text-align: left;\">Finally, you can also add a call-to-action button between 2 blocks of text, like this:</p>"
+msgstr ""
+"<p style=\"text-align: left;\">Hola[subscriber:firstname | default:subscriber],</p>\n"
+"<p style=\"text-align: left;\"></p>\n"
+"<p style=\"text-align: left;\">En MailPoet, puedes escribir correos electrónicos en texto plano, igual que en correo electrónico normal. Esto lo hace más personal y captan más la atención.</p>\n"
+"<p style=\"text-align: left;\"></p>\n"
+"<p style=\"text-align: left;\">¿Tan fácil? Puedes seguir utilizando estilos básicos de texto, como <strong>negrita</strong> o <em>cursiva.</em></p>\n"
+"<p style=\"text-align: left;\"></p>\n"
+"<p style=\"text-align: left;\">Para terminar, también puedes poner un botón de llamada a la acción entre dos bloques de texto, como aquí:</p>"
+
+#: lib/Config/PopulatorData/Templates/SimpleText.php:144
+msgid ""
+"<p>Thanks for reading. See you soon!</p>\n"
+"<p>&nbsp;</p>\n"
+"<p><strong><em>The MailPoet Team</em></strong></p>"
+msgstr ""
+"<p>Gracias por leer. ¡Nos vemos pronto!</p>\n"
+"<p>&nbsp;</p>\n"
+"<p><strong><em>El equipo de MailPoet</em></strong></p>"
+
+#: lib/Config/PopulatorData/Templates/WelcomeBlank12Column.php:26
+msgid "Welcome Email: Blank 1:2 Column"
+msgstr "Correo electrónico de bienvenida: En blanco. Columnas 1:2"
+
+#: lib/Config/PopulatorData/Templates/WelcomeBlank12Column.php:129
+msgid ""
+"<h1 style=\"text-align: center;\"><strong>Hi, new subscriber!</strong></h1>\n"
+"<p>&nbsp;</p>\n"
+"<p>[subscriber:firstname | default:Subscriber],</p>\n"
+"<p>&nbsp;</p>\n"
+"<p>You recently joined our list and we'd like to give you a warm welcome!</p>"
+msgstr ""
+"<h1 style=\"text-align: center;\"><strong>¡Hola, nuevo suscriptor!</strong></h1>\n"
+"<p>&nbsp;</p>\n"
+"<p>[subscriber:firstname | default:Subscriber],</p>\n"
+"<p>&nbsp;</p>\n"
+"<p>¡Hace poco que te has unido a nuestra lista y queremos darte una cálida bienvenida!</p>"
+
+#: lib/Config/PopulatorData/Templates/WelcomeBlank12Column.php:199
+msgid "<p>Add a single button to your newsletter in order to have one clear call-to-action, which will increase your click rates.</p>"
+msgstr "<p>Añadir un botón para su boletín de noticias con el fin de tener una clara llamada a la acción, lo que aumentará sus tasas de clic.</p>"
+
+#: lib/Config/PopulatorData/Templates/WelcomeBlank1Column.php:26
+msgid "Welcome Email: Blank 1 Column"
+msgstr "Correo electrónico de bienvenida: En blanco. 1 Columna"
+
+#: lib/Config/PopulatorData/Templates/WelcomeBlank1Column.php:129
 msgid ""
 "<h1 style=\"text-align: center;\"><strong>Hi, new subscriber!</strong></h1>\n"
 "<p>&nbsp;</p>\n"
@@ -1473,19 +2344,343 @@ msgstr ""
 "<li><a href=\"http://www.mailpoet.com/just-sit-write-advice-motivation-ernest-hemingway/\">Sólo siéntate y escribe &ndash; consejo sobre motivación de Ernest Hemingway</a></li>\n"
 "</ol>"
 
-#: lib/Config/PopulatorData/Templates/WelcomeBlank1Column.php:25
-msgid "Welcome Email: Blank 1 Column"
-msgstr "Correo electrónico de bienvenida: En blanco. 1 Columna"
+#: lib/Config/Shortcodes.php:106
+msgid "Oops! There are no newsletters to display."
+msgstr "¡Ups! No hay boletines que mostrar."
 
-#: lib/Config/PopulatorData/Templates/WelcomeBlank12Column.php:202
-msgid "Read up!"
-msgstr "¡Lee!"
+#: lib/Config/Shortcodes.php:140
+msgid "Preview in a new tab"
+msgstr "Vista preliminar en una nueva pestaña"
 
-#: lib/Config/PopulatorData/Templates/WelcomeBlank12Column.php:198
-msgid "<p>Add a single button to your newsletter in order to have one clear call-to-action, which will increase your click rates.</p>"
-msgstr "<p>Añadir un botón para su boletín de noticias con el fin de tener una clara llamada a la acción, lo que aumentará sus tasas de clic.</p>"
+#: lib/Cron/CronHelper.php:203
+msgid "Site URL is unreachable."
+msgstr "No se puede acceder a la URL del sitio."
 
-#: lib/Config/PopulatorData/Templates/WelcomeBlank12Column.php:179
+#: lib/Cron/CronHelper.php:209
+msgid "Maximum execution time has been reached."
+msgstr "Se ha superado el tiempo máximo de ejecución."
+
+#: lib/Cron/DaemonHttpRunner.php:60
+msgid "Invalid or missing request data."
+msgstr "Solicitados datos no válidos o perdidos."
+
+#: lib/Form/Block/BlockRendererHelper.php:36
+msgid "Please specify a valid email address."
+msgstr "Por favor, especifica una dirección de correo electrónico válida."
+
+#: lib/Form/Block/BlockRendererHelper.php:64
+msgid "Please select at least one option"
+msgstr "Por favor, selecciona, al menos, una opción"
+
+#: lib/Form/Block/Date.php:86
+msgid "Month (January, February,...)"
+msgstr "Mes (enero, febrero...)"
+
+#: lib/Form/Widget.php:31
+msgid "Add a newsletter subscription form"
+msgstr "Añade un formulario para la suscripción al boletín"
+
+#: lib/Form/Widget.php:115
+msgid "Subscribe to Our Newsletter"
+msgstr "Suscríbete a nuestro Boletín"
+
+#: lib/Mailer/Mailer.php:114
+msgid "Mailing method does not exist."
+msgstr "No hay método envío de correo."
+
+#: lib/Mailer/Mailer.php:122
+msgid "Mailer is not configured."
+msgstr "Mailer no está configurado."
+
+#: lib/Mailer/Mailer.php:130
+msgid "Sender name and email are not configured."
+msgstr "El nombre del remitente y el correo electrónico no están configurados."
+
+#: lib/Mailer/MailerLog.php:68
+msgid "Sending frequency limit has been reached."
+msgstr "El límite de frecuencia de envío ha sido alcanzado."
+
+#: lib/Mailer/Methods/AmazonSES.php:60
+msgid "Unsupported Amazon SES region"
+msgstr "No se da soporte a la región de Amazon SES"
+
+#: lib/Newsletter/Listing/NewsletterListingRepository.php:107
+#: lib/Models/Subscriber.php:247 lib/Models/Newsletter.php:856
+#: lib/Models/Segment.php:227 lib/Models/Form.php:113
+#: lib/Models/ScheduledTaskSubscriber.php:99 lib/Models/DynamicSegment.php:72
+msgid "All"
+msgstr "Todos"
+
+#: lib/Models/Model.php:243
+msgid "Another record already exists. Please specify a different \"%1$s\"."
+msgstr "Ua existe otro registro. Por favor, especifica un \"%1$s\" diferente."
+
+#: lib/Models/Segment.php:161
+msgid "This list contains all of your WordPress users."
+msgstr "Esta lista contiene todos los usuarios de WordPress."
+
+#: lib/Models/Segment.php:295
+msgid "Not in a List"
+msgstr "En ninguna lista"
+
+#: lib/Models/Subscriber.php:56
+msgid "Please enter your email address"
+msgstr "Por favor, escribe tu dirección de correo electrónico"
+
+#: lib/Models/Subscriber.php:257
+msgid "Unconfirmed"
+msgstr "No confirmados"
+
+#: lib/Models/Subscriber.php:262 lib/Subscription/Pages.php:408
+msgid "Unsubscribed"
+msgstr "Dados de baja"
+
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:29
+msgid "WordPress User Display Name"
+msgstr "Mostrar nombre público del usuario"
+
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:59
+msgid "Current day of the month number"
+msgstr "Número del dia del mes en curso"
+
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:63
+msgid "Current day of the month in ordinal form, i.e. 2nd, 3rd, 4th, etc."
+msgstr "El día actual del mes en forma ordinal, es decir, 2º, 3º, 4º, etc."
+
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:85
+#: lib/Cron/Workers/StatsNotifications/Worker.php:175
+msgid "Unsubscribe link"
+msgstr "Enlace para darse de baja"
+
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:93
+msgid "Edit subscription page link"
+msgstr "Enlace a la página \"Editar suscripción\""
+
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:97
+msgid "Manage subscription"
+msgstr "Gestionar suscripción"
+
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:101
+#: lib/Cron/Workers/StatsNotifications/Worker.php:177
+msgid "View in browser link"
+msgstr "Visualizar en el navegador"
+
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:105
+msgid "View in your browser"
+msgstr "Ver en tu navegador"
+
+#: lib/Router/Router.php:47
+msgid "Invalid router endpoint"
+msgstr "Router endpoint no válido"
+
+#: lib/Router/Router.php:53
+msgid "Invalid router endpoint action"
+msgstr "Acción de router endpoint no válida"
+
+#: lib/Subscribers/ImportExport/Export/Export.php:73
+msgid "Export requires a ZIP extension to be installed on the host."
+msgstr "Exportación requiere una extensión ZIP para ser instalado en el alojamiento."
+
+#: lib/Subscribers/ImportExport/Import/Import.php:122
+msgid "Unable to save imported subscribers."
+msgstr "No fue posible guardar los suscriptores importados."
+
+#: lib/Subscribers/ImportExport/Import/MailChimp.php:145
+msgid "Could not connect to your MailChimp account."
+msgstr "No se pudo conectar a la cuenta de MailChimp."
+
+#: lib/Subscribers/ImportExport/Import/MailChimp.php:148
+msgid "The selected lists do not have matching columns (headers)."
+msgstr "Las listas seleccionadas no tienen que columnas emparejadas (cabeceras)."
+
+#: lib/Subscribers/ImportExport/Import/MailChimp.php:151
+msgid "The information received from MailChimp is too large for processing. Please limit the number of lists!"
+msgstr "La información recibida de MailChimp es demasiado grande para su procesamiento. Por favor, ¡limita el número de listas!"
+
+#: lib/Subscribers/ImportExport/Import/MailChimp.php:154
+msgid "Did not find any active subscribers."
+msgstr "No se encontró ningún suscriptor activo."
+
+#: lib/Subscribers/ImportExport/Import/MailChimp.php:157
+msgid "Did not find any valid lists."
+msgstr "No se ha encontrado ninguna lista válida."
+
+#: lib/Subscribers/ImportExport/ImportExportFactory.php:38
+msgid "Not In List"
+msgstr "No en la lista"
+
+#: lib/Subscribers/ImportExport/ImportExportFactory.php:102
+msgid "Ignore field..."
+msgstr "Ignorar campo ..."
+
+#: lib/Subscription/Registration.php:31 lib/Subscription/Comment.php:43
+msgid "Yes, please add me to your mailing list."
+msgstr "Sí, agrégame a tu lista de correos, por favor."
+
+#: lib/Subscription/Pages.php:221
+msgid "Your email address doesn't appear in our lists anymore. Sign up again or contact us if this appears to be a mistake."
+msgstr "Su dirección de correo electrónico ya no aparece en nuestras listas. Inscríbete de nuevo o contacta con nosotros si se ha producido por error."
+
+#: lib/Subscription/Pages.php:281
+msgid "You are now subscribed!"
+msgstr "¡Ya estás suscrito!"
+
+#: lib/Subscription/Pages.php:294 lib/Subscription/Pages.php:528
+msgid "Manage your subscription"
+msgstr "Gestionar tu suscripción"
+
+#: lib/Subscription/Pages.php:306
+msgid "Yup, we've added you to our email list. You'll hear from us shortly."
+msgstr "Sí, te hemos añadido correctamente a la lista de correo. Tendrás noticias nuestras muy pronto."
+
+#: lib/Subscription/Pages.php:488
+msgid "[link]Edit your profile[/link] to update your email."
+msgstr "[link]Edita tu perfil [/link] para actualizar tu correo electrónico."
+
+#: lib/Subscription/Pages.php:500
+msgid "Need to change your email address? Unsubscribe here, then simply sign up again."
+msgstr "¿Necesitas cambiar tu dirección de correo electrónico? Date de baja aquí y, a continuación, sólo tienes que registrarte de nuevo."
+
+#: lib/Subscription/Pages.php:514
+msgid "Accidentally unsubscribed?"
+msgstr "¿Te has dado accidentalmente de baja?"
+
+#: lib/WP/Notice.php:39
+msgid "MailPoet Error:"
+msgstr "Error de Mailpoet:"
+
+#: lib/Config/Menu.php:213
+msgctxt "subscribers per page (screen options)"
+msgid "Number of subscribers per page"
+msgstr "Número de abonados por página"
+
+#: lib/Config/Menu.php:264 lib/Config/Menu.php:289
+msgctxt "segments per page (screen options)"
+msgid "Number of segments per page"
+msgstr "Número de segmentos por página"
+
+#: lib/Newsletter/Listing/NewsletterListingRepository.php:165
+#: lib/Models/Newsletter.php:938
+msgid "Not active"
+msgstr "Inactivo"
+
+#: lib/Models/Segment.php:159
+msgid "WordPress Users"
+msgstr "Usuarios de WordPress"
+
+#: lib/Models/Subscriber.php:57
+msgid "Your email address is invalid!"
+msgstr "¡Correo electrónico no válido!"
+
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:43
+msgid "Post Notifications"
+msgstr "Avisos de publicaciones"
+
+#: lib/API/JSON/API.php:192 lib/Router/Router.php:56
+msgid "You do not have the required permissions."
+msgstr "No tienes los permisos necesarios."
+
+#: lib/API/JSON/ErrorResponse.php:26 lib/API/JSON/Endpoint.php:33
+msgid "An unknown error occurred."
+msgstr "Se ha producido un error desconocido."
+
+#: lib/API/JSON/v1/NewsletterTemplates.php:45
+#: lib/API/JSON/v1/NewsletterTemplates.php:80
+msgid "This template does not exist."
+msgstr "Esta plantilla no existe."
+
+#: lib/Subscribers/ImportExport/ImportExportFactory.php:53
+#: lib/API/MP/v1/API.php:73 lib/Subscription/Pages.php:386
+msgid "Last name"
+msgstr "Apellido"
+
+#: lib/Config/PopulatorData/Templates/WelcomeBlank1Column.php:65
+#: lib/Config/PopulatorData/Templates/WelcomeBlank12Column.php:65
+#: lib/Config/PopulatorData/Templates/NewsletterBlank12Column.php:65
+#: lib/Config/PopulatorData/Templates/NewsletterBlank1Column.php:65
+#: lib/Config/PopulatorData/Templates/NewsletterBlank121Column.php:65
+#: lib/Config/PopulatorData/Templates/PostNotificationsBlank1Column.php:65
+#: lib/Config/PopulatorData/Templates/NewsletterBlank13Column.php:65
+msgid "<a href=\"[link:newsletter_view_in_browser_url]\">View this in your browser.</a>"
+msgstr "<a href=\"[link:newsletter_view_in_browser_url]\">Ver esto en tu navegador.</a>"
+
+#: lib/Config/PopulatorData/Templates/NewsletterBlank121Column.php:190
+msgid "You can change a layout's background color by clicking on the settings icon on the right edge of the Designer. Simply hover over this area to see the Settings (gear) icon."
+msgstr "Puedes cambiar el color de fondo de un diseño haciendo clic en el icono de ajustes en el borde derecho del diseñador. Simplemente coloca el cursor sobre esta área para ver el icono de Ajustes (engranaje)."
+
+#: lib/Config/PopulatorData/Templates/NewsletterBlank13Column.php:171
+msgid "In the right sidebar, you can add layout blocks to your newsletter."
+msgstr "Puedes añadir bloques de estructura a tu boletín en la barra lateral derecha."
+
+#: lib/Config/PopulatorData/Templates/NewsletterBlank13Column.php:209
+msgid "You can add as many layout blocks as you want!"
+msgstr "¡Puedes añadir tantos diseños como quieras!"
+
+#: lib/Config/PopulatorData/Templates/PostNotificationsBlank1Column.php:26
+msgid "Post Notifications: Blank 1 Column"
+msgstr "Avisos de publicación: En blanco. 1 Columna"
+
+#: lib/Cron/DaemonHttpRunner.php:63
+msgid "Daemon does not exist."
+msgstr "No existe Daemon."
+
+#: lib/Form/Block/Date.php:55 lib/Form/Block/Date.php:180
+msgid "Day"
+msgstr "Diario"
+
+#: lib/Form/Widget.php:151 lib/PostEditorBlocks/SubscriptionFormBlock.php:61
+msgid "Create a new form"
+msgstr "Crear un nuevo formulario"
+
+#: lib/Models/Subscriber.php:252 lib/Subscription/Pages.php:400
+msgid "Subscribed"
+msgstr "Suscrito"
+
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:49
+msgid "Most Recent Post Title"
+msgstr "Título de la última publicación"
+
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:53
+msgid "Issue Number"
+msgstr "Número de Tema"
+
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:67
+msgid "Full name of current day"
+msgstr "Nombre completo del día actual"
+
+#: lib/Newsletter/Shortcodes/ShortcodesHelper.php:89
+msgid "Unsubscribe"
+msgstr "Darse de Baja"
+
+#: lib/Subscribers/ImportExport/Import/MailChimp.php:142
+msgid "Invalid API Key."
+msgstr "Clave de API no válida."
+
+#: lib/Subscribers/ImportExport/ImportExportFactory.php:106
+msgid "Create new field..."
+msgstr "Crear nuevo campo…"
+
+#: lib/Subscribers/ImportExport/ImportExportFactory.php:112
+msgid "Select all..."
+msgstr "Seleccionar todo…"
+
+#: lib/Subscribers/ImportExport/ImportExportFactory.php:116
+msgid "Deselect all..."
+msgstr "Deseleccionar todo…"
+
+#: lib/Subscription/Pages.php:190
+msgid "Hmmm... we don't have a record of you."
+msgstr "Hmmm... no tenemos ningún registro tuyo."
+
+#: lib/Subscription/Pages.php:300
+msgid "You are now unsubscribed."
+msgstr "Ya no estás suscrito."
+
+#: lib/Twig/Functions.php:172
+msgid "every %1$d hours"
+msgstr "cada %1$d horas"
+
+#: lib/Config/PopulatorData/Templates/WelcomeBlank12Column.php:180
 msgid ""
 "<ul>\n"
 "<li><a href=\"http://www.mailpoet.com/the-importance-of-focus-when-writing/\">The Importance of Focus When Writing</a></li>\n"
@@ -1495,506 +2690,6 @@ msgid ""
 msgstr ""
 "<ul>\n"
 "<li><a href=\"http://www.mailpoet.com/the-importance-of-focus-when-writing/\">La importancia de centrarse al escribir</a></li>\n"
-"<li><a href=\"http://www.mailpoet.com/write-great-subject-line/\">¿Cómo escribir un gran titular</a></li>\n"
+"<li><a href=\"http://www.mailpoet.com/write-great-subject-line/“>¿Cómo escribir un gran titular</a></li>\n"
 "<li><a href=\"http://www.mailpoet.com/just-sit-write-advice-motivation-ernest-hemingway/\">Sólo siéntate y escribe &ndash; Consejos de Ernest Hemingway sobre motivación</a></li>\n"
 "</ul>"
-
-#: lib/Config/PopulatorData/Templates/WelcomeBlank12Column.php:175
-msgid "<h3>Our Most Popular Posts</h3>"
-msgstr "<h3>Nuestras entradas más populares</h3>"
-
-#: lib/Config/PopulatorData/Templates/WelcomeBlank12Column.php:128
-msgid ""
-"<h1 style=\"text-align: center;\"><strong>Hi, new subscriber!</strong></h1>\n"
-"<p>&nbsp;</p>\n"
-"<p>[subscriber:firstname | default:Subscriber],</p>\n"
-"<p>&nbsp;</p>\n"
-"<p>You recently joined our list and we'd like to give you a warm welcome!</p>"
-msgstr ""
-"<h1 style=\"text-align: center;\"><strong>¡Hola, nuevo suscriptor!</strong></h1>\n"
-"<p>&nbsp;</p>\n"
-"<p>[subscriber:firstname | default:Subscriber],</p>\n"
-"<p>&nbsp;</p>\n"
-"<p>¡Hace poco que te has unido a nuestra lista y queremos darte una cálida bienvenida!</p>"
-
-#: lib/Config/PopulatorData/Templates/WelcomeBlank12Column.php:25
-msgid "Welcome Email: Blank 1:2 Column"
-msgstr "Correo electrónico de bienvenida: En blanco. Columnas 1:2"
-
-#: lib/Config/PopulatorData/Templates/SimpleText.php:143
-msgid ""
-"<p>Thanks for reading. See you soon!</p>\n"
-"<p>&nbsp;</p>\n"
-"<p><strong><em>The MailPoet Team</em></strong></p>"
-msgstr ""
-"<p>Gracias por leer. ¡Nos vemos pronto!</p>\n"
-"<p>&nbsp;</p>\n"
-"<p><strong><em>El equipo de MailPoet</em></strong></p>"
-
-#: lib/Config/PopulatorData/Templates/SimpleText.php:122
-msgid "It's time to take action!"
-msgstr "¡Es hora de actuar!"
-
-#: lib/Config/PopulatorData/Templates/SimpleText.php:87
-msgid ""
-"<p style=\"text-align: left;\">Hi [subscriber:firstname | default:subscriber],</p>\n"
-"<p style=\"text-align: left;\"></p>\n"
-"<p style=\"text-align: left;\">In MailPoet, you can write emails in plain text, just like in a regular email. This can make your email newsletters more personal and attention-grabbing.</p>\n"
-"<p style=\"text-align: left;\"></p>\n"
-"<p style=\"text-align: left;\">Is this too simple? You can still style your text with basic formatting, like <strong>bold</strong> or <em>italics.</em></p>\n"
-"<p style=\"text-align: left;\"></p>\n"
-"<p style=\"text-align: left;\">Finally, you can also add a call-to-action button between 2 blocks of text, like this:</p>"
-msgstr ""
-"<p style=\"text-align: left;\">Hola[subscriber:firstname | default:subscriber],</p>\n"
-"<p style=\"text-align: left;\"></p>\n"
-"<p style=\"text-align: left;\">En MailPoet, puedes escribir correos electrónicos en texto plano, igual que en correo electrónico normal. Esto lo hace más personal y captan más la atención.</p>\n"
-"<p style=\"text-align: left;\"></p>\n"
-"<p style=\"text-align: left;\">¿Tan fácil? Puedes seguir utilizando estilos básicos de texto, como <strong>negrita</strong> o <em>cursiva.</em></p>\n"
-"<p style=\"text-align: left;\"></p>\n"
-"<p style=\"text-align: left;\">Para terminar, también puedes poner un botón de llamada a la acción entre dos bloques de texto, como aquí:</p>"
-
-#: lib/Config/PopulatorData/Templates/SimpleText.php:25
-msgid "Simple Text"
-msgstr "Texto simple"
-
-#: lib/Config/PopulatorData/Templates/PostNotificationsBlank1Column.php:176
-msgid "Read the post"
-msgstr "Leer la entrada"
-
-#: lib/Config/PopulatorData/Templates/PostNotificationsBlank1Column.php:171
-msgid "Categories:"
-msgstr "Categorías:"
-
-#: lib/Config/PopulatorData/Templates/PostNotificationsBlank1Column.php:169
-msgid "Author:"
-msgstr "Autor:"
-
-#: lib/Config/PopulatorData/Templates/PostNotificationsBlank1Column.php:128
-msgid ""
-"<h1 style=\"text-align: center;\"><strong>Check Out Our New Blog Posts! </strong></h1>\n"
-"<p>&nbsp;</p>\n"
-"<p>MailPoet can <span style=\"line-height: 1.6em; background-color: inherit;\"><em>automatically</em> </span><span style=\"line-height: 1.6em; background-color: inherit;\">send your new blog posts to your subscribers.</span></p>\n"
-"<p><span style=\"line-height: 1.6em; background-color: inherit;\"></span></p>\n"
-"<p><span style=\"line-height: 1.6em; background-color: inherit;\">Below, you'll find three recent posts, which are displayed automatically, thanks to the <em>Automatic Latest Content</em> widget, which can be found in the right sidebar, under <em>Content</em>.</span></p>\n"
-"<p><span style=\"line-height: 1.6em; background-color: inherit;\"></span></p>\n"
-"<p><span style=\"line-height: 1.6em; background-color: inherit;\">To edit the settings and styles of your post, simply click on a post below.</span></p>"
-msgstr ""
-"<h1 style=\"text-align: center;\"><strong>Lee nuestra nueva entrada del blog </strong></h1>\n"
-"<p>&nbsp;</p>\n"
-"<p>MailPoet puede <span style=\"line-height: 1.6em; background-color: inherit;\"><em>automaticamente</em> </span><span style=\"line-height: 1.6em; background-color: inherit;\">enviar las nuevas entradas de tu blog a tus suscriptores.</span></p>\n"
-"<p><span style=\"line-height: 1.6em; background-color: inherit;\"></span></p>\n"
-"<p><span style=\"line-height: 1.6em; background-color: inherit;\">Aquí abajo verás las tres entradas más recientes, que se muestran automáticamente, gracias al widget de <em>último contenido automático</em> que se encuentra en la barra lateral derecha, en <em>Contenido</em>.</span></p>\n"
-"<p><span style=\"line-height: 1.6em; background-color: inherit;\"></span></p>\n"
-"<p><span style=\"line-height: 1.6em; background-color: inherit;\">Para editar los ajustes y estilos de tu entrada, sólo tienes que hacer clic en la entrada de abajo.</span></p>"
-
-#: lib/Config/PopulatorData/Templates/PostNotificationsBlank1Column.php:25
-msgid "Post Notifications: Blank 1 Column"
-msgstr "Notificaciones de publicación: En blanco. 1 Columna"
-
-#: lib/Config/PopulatorData/Templates/NewsletterBlank1Column.php:128
-msgid ""
-"<h1 style=\"text-align: center;\"><strong>Let's Get Started! </strong></h1>\n"
-"<p>&nbsp;</p>\n"
-"<p>It's time to design your newsletter! In the right sidebar, you'll find 4 menu items that will help you customize your newsletter:</p>\n"
-"<ol>\n"
-"<li>Content</li>\n"
-"<li>Columns</li>\n"
-"<li>Styles</li>\n"
-"<li>Preview</li>\n"
-"</ol>"
-msgstr ""
-"<h1 style=\"text-align: center;\"><strong>¡Comencemos! </strong></h1>\n"
-"<p>&nbsp;</p>\n"
-"<p>¡Es hora de diseñar tu boletín! En la barra lateral derecha, encontrarás 4 elementos de menú que te ayudarán a personalizar tu boletín:</p>\n"
-"<ol>\n"
-"<li>Contenido</li>\n"
-"<li>Columnas</li>\n"
-"<li>Estilos</li>\n"
-"<li>Vista previa</li>\n"
-"</ol>"
-
-#: lib/Config/PopulatorData/Templates/NewsletterBlank1Column.php:25
-msgid "Newsletter: Blank 1 Column"
-msgstr "Boletín: En blanco 1 columna"
-
-#: lib/Config/PopulatorData/Templates/NewsletterBlank13Column.php:208
-msgid "<p>You can add as many layout blocks as you want!</p>"
-msgstr "<p>¡Puedes añadir tantos bloques de diseño como quieras! </p>"
-
-#: lib/Config/PopulatorData/Templates/NewsletterBlank13Column.php:204
-msgid "<h3>3-column layout.</h3>"
-msgstr "<h3>diseño de 3 columnas.</h3>"
-
-#: lib/Config/PopulatorData/Templates/NewsletterBlank13Column.php:189
-msgid ""
-"<p>You have the choice of:</p>\n"
-"<ul>\n"
-"<li>1 column</li>\n"
-"<li>2 columns</li>\n"
-"<li>3 columns</li>\n"
-"</ul>"
-msgstr ""
-"<p>Tienes las opciones:</p>\n"
-"<ul>\n"
-"<li>1 columna</li>\n"
-"<li>2 columnas</li>\n"
-"<li>3 columnas</li>\n"
-"</ul>"
-
-#: lib/Config/PopulatorData/Templates/NewsletterBlank13Column.php:170
-msgid "<p>In the right sidebar, you can add layout blocks to your newsletter.</p>"
-msgstr "<p>Puedes añadir a tu correo electrónico bloques de diseño en la barra lateral derecha.</p>"
-
-#: lib/Config/PopulatorData/Templates/NewsletterBlank13Column.php:128
-msgid ""
-"<h1 style=\"text-align: center;\"><strong>Let's Get Started! </strong></h1>\n"
-"<p>&nbsp;</p>\n"
-"<p>It's time to design your newsletter! In the right sidebar, you'll find four menu items that will help you customize your newsletter:</p>\n"
-"<ol>\n"
-"<li>Content</li>\n"
-"<li>Columns</li>\n"
-"<li>Styles</li>\n"
-"<li>Preview</li>\n"
-"</ol>"
-msgstr ""
-"<h1 style=\"text-align: center;\"><strong>¡Comencemos! </strong></h1>\n"
-"<p>&nbsp;</p>\n"
-"<p>¡Es hora de diseñar tu boletín! En la barra lateral derecha, encontrarás 4 elementos de menú que te ayudarán a personalizar tu boletín:</p>\n"
-"<ol>\n"
-"<li>Contenido</li>\n"
-"<li>Columnas</li>\n"
-"<li>Estilos</li>\n"
-"<li>Vista previa</li>\n"
-"</ol>"
-
-#: lib/Config/PopulatorData/Templates/NewsletterBlank13Column.php:25
-msgid "Newsletter: Blank 1:3 Column"
-msgstr "Boletín: En blanco. Columnas 1:3"
-
-#: lib/Config/PopulatorData/Templates/NewsletterBlank12Column.php:189
-msgid "<p><span style=\"line-height: 25.6px;\">You can change a layout's background color by clicking on the settings icon on the right edge of the Designer. Simply hover over this area to see the Settings (gear) icon.</span></p>"
-msgstr "<p> <span style=\"line-height: 25.6px;\">Puede cambiar el color de fondo de un diseño haciendo clic en el icono de configuración del borde derecho del Diseñador. Simplemente coloque el cursor sobre esa área para ver el icono Configuración (engranaje).</span></p>"
-
-#: lib/Config/PopulatorData/Templates/NewsletterBlank12Column.php:170
-msgid ""
-"<p>In the right sidebar, you can add these layout blocks to your email:</p>\n"
-"<ul>\n"
-"<li>1 column</li>\n"
-"<li>2 columns</li>\n"
-"<li>3 columns</li>\n"
-"</ul>"
-msgstr ""
-"<p>Puedes añadir a tu correo electrónico bloques de diseño en la barra lateral derecha:</p>\n"
-"<ul>\n"
-"<li>1 columna</li>\n"
-"<li>2 columnas</li>\n"
-"<li>3 columnas </li>\n"
-"</ul>"
-
-#: lib/Config/PopulatorData/Templates/NewsletterBlank12Column.php:128
-msgid ""
-"<h1 style=\"text-align: center;\"><strong>Let's Get Started!</strong></h1>\n"
-"<p>&nbsp;</p>\n"
-"<p>It's time to design your newsletter! In the right sidebar, you'll find 4 menu items that will help you customize your newsletter:</p>\n"
-"<ol>\n"
-"<li>Content</li>\n"
-"<li>Columns</li>\n"
-"<li>Styles</li>\n"
-"<li>Preview</li>\n"
-"</ol>"
-msgstr ""
-"<h1 style=\"text-align: center;\"><strong>¡Comencemos!</strong></h1>\n"
-"<p>&nbsp;</p>\n"
-"<p>¡Es hora de diseñar tu boletín! En la barra lateral derecha, encontrarás 4 elementos de menú que te ayudarán a personalizar tu boletín:</p>\n"
-"<ol>\n"
-"<li>Contenido</li>\n"
-"<li>Columnas</li>\n"
-"<li>Estilos</li>\n"
-"<li>Vista previa</li>\n"
-"</ol>"
-
-#: lib/Config/PopulatorData/Templates/NewsletterBlank12Column.php:116
-msgid "Fake Logo"
-msgstr "Logo falso"
-
-#: lib/Config/PopulatorData/Templates/NewsletterBlank12Column.php:25
-msgid "Newsletter: Blank 1:2 Column"
-msgstr "Boletín: En blanco. Columnas 1:2"
-
-#: lib/Config/PopulatorData/Templates/WelcomeBlank1Column.php:202
-#: lib/Config/PopulatorData/Templates/WelcomeBlank12Column.php:293
-#: lib/Config/PopulatorData/Templates/NewsletterBlank12Column.php:263
-#: lib/Config/PopulatorData/Templates/SimpleText.php:147
-#: lib/Config/PopulatorData/Templates/NewsletterBlank1Column.php:202
-#: lib/Config/PopulatorData/Templates/NewsletterBlank121Column.php:323
-#: lib/Config/PopulatorData/Templates/PostNotificationsBlank1Column.php:289
-#: lib/Config/PopulatorData/Templates/NewsletterBlank13Column.php:286
-msgid "<p><a href=\"[link:subscription_unsubscribe_url]\">Unsubscribe</a> | <a href=\"[link:subscription_manage_url]\">Manage your subscription</a><br />Add your postal address here!</p>"
-msgstr "<p><a href=\"[link:subscription_unsubscribe_url]\">Darse de baja</a> | <a href=\"[link:subscription_manage_url]\">Gestionar suscripción</a><br />¡Añade tu dirección postal aquí!</p>"
-
-#: lib/Config/PopulatorData/Templates/NewsletterBlank121Column.php:249
-msgid ""
-"<h3 style=\"text-align: center;\"><span style=\"font-weight: 600;\">Let's end with a single column. </span></h3>\n"
-"<p style=\"line-height: 25.6px;\">In the right sidebar, you can add these layout blocks to your email:</p>\n"
-"<p style=\"line-height: 25.6px;\"></p>\n"
-"<ul style=\"line-height: 25.6px;\">\n"
-"<li>1 column</li>\n"
-"<li>2 columns</li>\n"
-"<li>3 columns</li>\n"
-"</ul>"
-msgstr ""
-"<h3 style=\"text-align: center;\"><span style=\"font-weight: 600;\">Vamos a terminar con una columna simple.</span></h3>\n"
-"<p style=\"line-height: 25.6px;\">En la barra lateral derecha vamos a añadir estos bloques de diseño en tu correo electrónico:</p>\n"
-"<p style=\"line-height: 25.6px;\"></p>\n"
-"<ul style=\"line-height: 25.6px;\">\n"
-"<li>1 columna</li>\n"
-"<li>2 columnas</li>\n"
-"<li>3 columnas</li>\n"
-"</ul>"
-
-#: lib/Config/PopulatorData/Templates/NewsletterBlank121Column.php:189
-msgid "<p>You can change a layout's background color by clicking on the settings icon on the right edge of the Designer. Simply hover over this area to see the Settings (gear) icon.</p>"
-msgstr "<p> Puede cambiar el color de fondo de un diseño haciendo clic en el icono de ajustes en el borde derecho del diseñador. Simplemente coloque el cursor sobre esta área para ver el icono de Ajustes (engranaje). </p>"
-
-#: lib/Config/PopulatorData/Templates/NewsletterBlank12Column.php:185
-#: lib/Config/PopulatorData/Templates/NewsletterBlank121Column.php:185
-msgid "<h2>... a 2-column layout.</h2>"
-msgstr "<h2> ... un diseño a 2 columnas. </h2>"
-
-#: lib/Config/PopulatorData/Templates/NewsletterBlank121Column.php:170
-msgid ""
-"<p>In the right sidebar, you can add layout blocks to your email:</p>\n"
-"<ul>\n"
-"<li>1 column</li>\n"
-"<li>2 columns</li>\n"
-"<li>3 columns</li>\n"
-"</ul>"
-msgstr ""
-"<p>Puedes añadir a tu correo electrónico bloques de diseño en la barra lateral derecha:</p>\n"
-"<ul>\n"
-"<li>1 columna</li>\n"
-"<li>2 columnas</li>\n"
-"<li> 3 columnas </li>\n"
-"</ul>"
-
-#: lib/Config/PopulatorData/Templates/NewsletterBlank12Column.php:166
-#: lib/Config/PopulatorData/Templates/NewsletterBlank121Column.php:166
-msgid "<h2>This template has...</h2>"
-msgstr "<h2>Esta plantilla tiene...</h2>"
-
-#: lib/Config/PopulatorData/Templates/NewsletterBlank121Column.php:128
-msgid ""
-"<h1 style=\"text-align: center;\"><strong>Let's Get Started!</strong></h1>\n"
-"<p>It's time to design your newsletter! In the right sidebar, you'll find four menu items that will help you customize your newsletter:</p>\n"
-"<ol>\n"
-"<li>Content</li>\n"
-"<li>Columns</li>\n"
-"<li>Styles</li>\n"
-"<li>Preview</li>\n"
-"</ol>"
-msgstr ""
-"<h1 style=\"text-align: center;\"><strong>¡Empecemos!</strong></h1>\n"
-"<p>Es hora de diseñar tu boletín de noticias. En la barra lateral derecha tienes cuatro elementos de menú que te ayudarán a personalizar tu boletín de noticias:</p>\n"
-"<ol>\n"
-"<li>Contenido</li>\n"
-"<li>Columnas</li>\n"
-"<li>Estilos</li>\n"
-"<li>Vista previa</li>\n"
-"</ol>"
-
-#: lib/Config/PopulatorData/Templates/WelcomeBlank1Column.php:116
-#: lib/Config/PopulatorData/Templates/WelcomeBlank12Column.php:116
-#: lib/Config/PopulatorData/Templates/SimpleText.php:75
-#: lib/Config/PopulatorData/Templates/NewsletterBlank1Column.php:116
-#: lib/Config/PopulatorData/Templates/NewsletterBlank121Column.php:116
-#: lib/Config/PopulatorData/Templates/NewsletterBlank13Column.php:116
-msgid "Fake logo"
-msgstr "Logo falso"
-
-#: lib/Config/PopulatorData/Templates/WelcomeBlank1Column.php:64
-#: lib/Config/PopulatorData/Templates/WelcomeBlank12Column.php:64
-#: lib/Config/PopulatorData/Templates/NewsletterBlank12Column.php:64
-#: lib/Config/PopulatorData/Templates/NewsletterBlank1Column.php:64
-#: lib/Config/PopulatorData/Templates/NewsletterBlank121Column.php:64
-#: lib/Config/PopulatorData/Templates/PostNotificationsBlank1Column.php:64
-#: lib/Config/PopulatorData/Templates/NewsletterBlank13Column.php:64
-msgid "Display problems? <a href=\"[link:newsletter_view_in_browser_url]\">Open this email in your web browser.</a>"
-msgstr "¿Problemas de visualización? <a href=\"[link:newsletter_view_in_browser_url]\">Abre este correo electrónico en tu navegador web.</a>"
-
-#: lib/Config/PopulatorData/Templates/NewsletterBlank121Column.php:25
-msgid "Newsletter: Blank 1:2:1 Column"
-msgstr "Boletín: En blanco. Columnas 1:2:1"
-
-#: lib/Config/Populator.php:273
-msgid "This list is automatically created when you install MailPoet."
-msgstr "Esta lista se crea automáticamente al instalar MailPoet."
-
-#: lib/Config/Populator.php:271
-msgid "My First List"
-msgstr "Mi primera lista"
-
-#. Author of the plugin
-#: lib/Config/Menu.php:771 lib/Config/PrivacyPolicy.php:12
-#: lib/Config/Capabilities.php:75
-msgid "MailPoet"
-msgstr "MailPoet"
-
-#: lib/Config/Menu.php:618
-msgid "In any WordPress role"
-msgstr "En cualquier rol de WordPress"
-
-#: lib/Config/Menu.php:165
-msgid "Newsletter Editor"
-msgstr "Editor de boletín"
-
-#: lib/Config/Menu.php:164 lib/Newsletter/Shortcodes/ShortcodesHelper.php:34
-msgid "Newsletter"
-msgstr "Boletín"
-
-#: lib/Config/Menu.php:202 lib/Config/Menu.php:203
-msgid "Form Editor"
-msgstr "Editor de formulario"
-
-#: lib/Config/Menu.php:346 lib/Config/Menu.php:347
-msgid "Update"
-msgstr "Actualizar"
-
-#: lib/Config/Menu.php:253 lib/Config/Menu.php:254
-msgid "Export"
-msgstr "Exportar"
-
-#: lib/Config/Menu.php:240 lib/Config/Menu.php:241
-msgid "Import"
-msgstr "Importar"
-
-#: lib/Config/Menu.php:293 lib/Config/Menu.php:294
-msgid "Settings"
-msgstr "Ajustes"
-
-#: lib/Config/Menu.php:266 lib/Config/Menu.php:267
-msgid "Lists"
-msgstr "Listas"
-
-#: lib/Config/Menu.php:215 lib/Config/Menu.php:216
-msgid "Subscribers"
-msgstr "Suscriptores"
-
-#: lib/Config/Menu.php:177 lib/Config/Menu.php:178
-msgid "Forms"
-msgstr "Formularios"
-
-#: lib/Config/Menu.php:139 lib/Config/Menu.php:140
-msgid "Emails"
-msgstr "Correos electrónicos"
-
-#: lib/Config/Hooks.php:219
-msgid "MailPoet Newsletter"
-msgstr "Boletín de MailPoet"
-
-#: lib/Form/Block/Base.php:24
-msgid "Please select a list"
-msgstr "Por favor, selecciona una lista"
-
-#: lib/API/MP/v1/API.php:80 lib/API/MP/v1/API.php:134 lib/API/MP/v1/API.php:279
-#: lib/API/JSON/v1/Subscribers.php:77 lib/API/JSON/v1/Subscribers.php:258
-#: lib/API/JSON/v1/Subscribers.php:274 lib/API/JSON/v1/Subscribers.php:290
-msgid "This subscriber does not exist."
-msgstr "Este suscriptor no existe."
-
-#: lib/API/JSON/v1/Settings.php:36
-msgid "You have not specified any settings to be saved."
-msgstr "No has especificado ningún ajuste para ser guardado."
-
-#: lib/API/JSON/v1/SendingQueue.php:120 lib/API/JSON/v1/SendingQueue.php:146
-msgid "This newsletter has not been sent yet."
-msgstr "Este boletín no se ha enviado todavía."
-
-#: lib/API/JSON/v1/SendingQueue.php:82
-msgid "There are no subscribers in that list!"
-msgstr "¡No hay suscriptores en esa lista!"
-
-#: lib/API/JSON/v1/SendingQueue.php:54
-msgid "This newsletter is already being sent."
-msgstr "Este boletín ya se ha enviado."
-
-#: lib/API/JSON/v1/Segments.php:45 lib/API/JSON/v1/Segments.php:91
-#: lib/API/JSON/v1/Segments.php:107 lib/API/JSON/v1/Segments.php:123
-#: lib/API/JSON/v1/Segments.php:137
-msgid "This list does not exist."
-msgstr "Esta lista no existe."
-
-#: lib/API/JSON/v1/Newsletters.php:343
-msgid "Please specify receiver information."
-msgstr "Por favor, especifica la información del receptor."
-
-#: lib/API/JSON/v1/Newsletters.php:310
-msgid "Newsletter data is missing."
-msgstr "Se perdieron los datos del boletín."
-
-#: lib/API/JSON/v1/Newsletters.php:194
-msgid "You need to specify a status."
-msgstr "Necesitas un estado específico."
-
-#: lib/API/JSON/v1/SendingQueue.php:33 lib/API/JSON/v1/SendingQueue.php:113
-#: lib/API/JSON/v1/SendingQueue.php:139 lib/API/JSON/v1/Newsletters.php:63
-#: lib/API/JSON/v1/Newsletters.php:203 lib/API/JSON/v1/Newsletters.php:240
-#: lib/API/JSON/v1/Newsletters.php:256 lib/API/JSON/v1/Newsletters.php:272
-#: lib/API/JSON/v1/Newsletters.php:286 lib/API/JSON/v1/Newsletters.php:319
-#: lib/API/JSON/v1/Newsletters.php:352
-msgid "This newsletter does not exist."
-msgstr "Ese boletín no existe."
-
-#: lib/API/JSON/v1/NewsletterTemplates.php:23
-#: lib/API/JSON/v1/NewsletterTemplates.php:74
-msgid "This template does not exist."
-msgstr "Esta plantilla no existe"
-
-#: lib/API/JSON/v1/Newsletters.php:290 lib/API/JSON/v1/Segments.php:141
-#: lib/API/JSON/v1/Forms.php:277
-msgid "Copy of %s"
-msgstr "Copia de %s"
-
-#: lib/Config/PopulatorData/DefaultForm.php:63 lib/API/JSON/v1/Forms.php:101
-msgid "Check your inbox or spam folder to confirm your subscription."
-msgstr "Revisa tu bandeja de entrada o la carpeta de spam para confirmar tu suscripción."
-
-#: lib/API/JSON/v1/Forms.php:95
-msgid "Subscribe!"
-msgstr "¡Suscríbete!"
-
-#: lib/API/JSON/v1/Forms.php:91
-msgid "Submit"
-msgstr "Enviar"
-
-#: lib/Subscribers/ImportExport/PersonalDataExporters/SubscriberExporter.php:40
-#: lib/Subscribers/ImportExport/ImportExportFactory.php:46
-#: lib/API/MP/v1/API.php:43 lib/API/JSON/v1/Forms.php:81
-#: lib/API/JSON/v1/Forms.php:85
-msgid "Email"
-msgstr "Correo Electrónico"
-
-#: lib/API/JSON/v1/Forms.php:77 lib/API/JSON/v1/Forms.php:156
-msgid "New form"
-msgstr "Nuevo formulario"
-
-#: lib/API/JSON/v1/Forms.php:42 lib/API/JSON/v1/Forms.php:144
-#: lib/API/JSON/v1/Forms.php:227 lib/API/JSON/v1/Forms.php:243
-#: lib/API/JSON/v1/Forms.php:259 lib/API/JSON/v1/Forms.php:273
-msgid "This form does not exist."
-msgstr "Este formulario no existe."
-
-#: lib/API/JSON/v1/CustomFields.php:32 lib/API/JSON/v1/CustomFields.php:59
-msgid "This custom field does not exist."
-msgstr "Este campo personalizado no existe."
-
-#: lib/API/JSON/Endpoint.php:36
-msgid "Invalid request parameters"
-msgstr "Parámetros solicitados no válidos"
-
-#: lib/API/JSON/ErrorResponse.php:24 lib/API/JSON/Endpoint.php:27
-msgid "An unknown error occurred."
-msgstr "Hubo un error desconocido"
-
-#: lib/API/JSON/API.php:169 lib/Router/Router.php:55
-msgid "You do not have the required permissions."
-msgstr "No tienes los permisos necesarios"

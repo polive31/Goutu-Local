@@ -32,6 +32,7 @@ function cpo_check_peepso_active() {
 function cpo_peepso_helpers_conditional_load() {
 	// Includes
 	require_once 'includes/class-custom-peepso-overrides.php';
+	require_once 'includes/class-cpo-assets.php';
 
 	// Public
 	require_once 'public/class-cpo-customizations.php';

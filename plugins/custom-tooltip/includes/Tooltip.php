@@ -38,8 +38,8 @@ class Tooltip {
 	// }
 
 	public function register_tooltip_assets() {
-		custom_register_style( 'tooltip', '/assets/css/tooltip.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );
-		custom_register_script( 'tooltip', '/assets/js/tooltip.js', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION, true );
+		foodiepro_register_style( 'tooltip', '/assets/css/tooltip.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );
+		foodiepro_register_script( 'tooltip', '/assets/js/tooltip.js', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION, true );
 	}
 
 	/* =================================================================*/
@@ -93,7 +93,8 @@ class Tooltip {
 		$valign = 'top';
 		$halign = 'center';
 		$content = 	'';
-		$img = 	'';
+		$img = false;
+		$imgdir = false;
 		$class = '';
 		$id = '';
 		$callout = false;
@@ -104,9 +105,20 @@ class Tooltip {
 		wp_enqueue_style('tooltip');
 
 		$display = ($action=='hover')?'':'display:none';
+
+		if ($img) {
+			$picture = foodiepro_get_picture( array(
+				'src'	=> $img,
+				'dir'	=> $imgdir,
+				'lazy'	=> false,
+			));
+		} else {
+			$picture='';
+		}
+
 		$html ='<div class="tooltip-content ' . $valign . ' ' . $halign . ' ' . $class . ' ' . $action . '" id="' . $id . '" style="' . $display . '">';
 		$html.='<div class="wrap">';
-		$html.=$img? '<div class="tooltip-img"><img data-skip-lazy src="' . $img . '"></div>':'';
+		$html.=$img? '<div class="tooltip-img">' . $picture . '</div>':'';
 		$html.=$title?'<h4 class="tooltip-title">' . $title . '</h4>':'';
 		$html.=$content;
 		if ($callout) {

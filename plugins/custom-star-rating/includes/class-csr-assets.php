@@ -28,15 +28,16 @@ class CSR_Assets {
 
 	/* Register stylesheet, will be enqueued in the shortcode itself  */
 	public static function register_csr_assets() {
+
 		$args = array(
-			'handle'	=> 'custom-star-rating',
-			'file' 		=> 'assets/css/custom-star-rating.css',
+			'handle'	=> 'custom-star-rating-form',
+			'file' 		=> 'assets/css/custom-star-rating-form.css',
 			'uri' 		=> self::Plugin_uri(),
 			'path' 		=> self::Plugin_path(),
 			'deps' 		=> array(),
 			'version' 	=> CHILD_THEME_VERSION,
 		);
-		custom_register_style( $args );
+		foodiepro_register_style( $args );
 	}
 
 	// public static function enqueue_comment_reply_script() {
@@ -138,15 +139,39 @@ class CSR_Assets {
 
 	/* Get Rating caption
 	------------------------------------------------------------*/
-	public static function get_rating_caption($val, $cat) {
+	public static function get_rating_caption($val, $cat='global') {
 		//$val = intval($rating_val);
 		if ($val==0) return __('Not rated','foodiepro');
-		$val=floor($val-1);
+		$index=floor($val-1);
 		if ( isset( self::$ratingCats[$cat]['caption'] ) ) {
-			$caption = self::$ratingCats[$cat]['caption'][$val];
+			$caption = $val . ' : ' . self::$ratingCats[$cat]['caption'][$index];
 			return $caption;
 		}
 
+	}
+
+
+
+	/* TEMPLATES
+	---------------------------------------------------------------------- */
+	public static function echo_template_part($slug, $name = false, $args = array())
+	{
+		extract($args);
+
+		$templates_path = trailingslashit( self::Plugin_path() ) . 'templates/';
+		$template = 'template-' . $slug;
+		$template .= $name ? '-' . $name : '';
+		$template .= '.php';
+		include($templates_path . $template);
+	}
+
+	public static function get_template_part($slug, $name = false, $args = array())
+	{
+		ob_start();
+		self::echo_template_part($slug, $name, $args);
+		$html = ob_get_contents();
+		ob_end_clean();
+		return $html;
 	}
 
 }

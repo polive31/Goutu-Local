@@ -1,3 +1,4 @@
+var xhrSuggestion = null;
 jQuery(document).ready(function() {
 
 /* Ingredient Suggestions
@@ -23,17 +24,12 @@ jQuery(document).ready(function() {
 
 });
 
-// function isPlural( amount, unit ) {
-//     var plural = (amount > 1) || (unit != '') || (amount=='' && unit=='');
-//     return plural;
-// }
-
 function autoSuggestIngredient( thisInput ) {
-    // console.log('In autoSuggestIngredient');
+    console.log('%c In autoSuggestIngredient', 'background:#D7EEC0;color:green');
+    console.log('%c ingredient_autocomplete.ajaxurl = ' + ingredient_autocomplete.ajaxurl, 'background:#D7EEC0;color:green' );
     term=thisInput.val();
     id=thisInput.attr('id');
     tax = 'ingredient';
-    // console.log(term);
 
     spinnerHTML = thisInput.closest("td").next().children('#ajax-indicator');
     console.log('spinnerHTML content', spinnerHTML.html() );
@@ -43,31 +39,22 @@ function autoSuggestIngredient( thisInput ) {
     jQuery( thisInput ).autoComplete({
         minChars: 3,
         delay : 200,
+        menuClass : 'ingredient',
         source: function(term, response) {
             spinnerHTML.css('visibility','visible');
-            try { xhr.abort(); } catch(e){}
-            xhr = jQuery.ajax({
-                dataType: 'json',
-                url: '/wp-admin/admin-ajax.php',
-                data: 'action=get_tax_terms&tax='+tax+'&keys='+term,
-                success:function(data) {
+            try { xhr.abort(); } catch (e) { }
+            xhr = jQuery.get(
+                ingredient_autocomplete.ajaxurl,
+                'action=get_tax_terms&tax=' + tax + '&keys=' + term,
+                function (data) {
                     response(data);
-                    spinnerHTML.css('visibility','hidden');
+                    spinnerHTML.css('visibility', 'hidden');
                 },
-                // error:function() {
-                //     spinnerHTML.css('visibility','hidden');
-                // },
-                // complete: function() {
-                // }
-            });
-        },
-        // renderItem: function(item, search) {
-        //     search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-        //     var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
-        //     return '<div class="autocomplete-suggestion" data-val="' + item + '">'+ item.replace(re, "<b>$1</b>") + '</div>';
-        // }
+                'json',
+            );
+        }
     });
-};
+}
 
 
 function autoSuggestUnit( thisInput ) {

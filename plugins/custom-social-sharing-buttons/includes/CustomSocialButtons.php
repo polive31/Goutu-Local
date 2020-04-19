@@ -17,9 +17,9 @@ class CustomSocialButtons {
 			'whatsapp',
 			'mailto',
 			'whatsapp',
-			'linkedin',
 			'pinterest',
-			'buffer'
+			// 'linkedin',
+			// 'buffer'
 		);
 
 	public static $PLUGIN_PATH;
@@ -35,15 +35,11 @@ class CustomSocialButtons {
 	}
 
     public function enqueue_social_buttons_scripts_styles() {
-		global $post;
-		custom_enqueue_script( 'social-buttons', '/assets/js/social_sharing_buttons.js', self::$PLUGIN_URI, self::$PLUGIN_PATH,  array( 'jquery' ), CHILD_THEME_VERSION, true );
-		custom_enqueue_style( 'social-buttons', '/assets/css/social_sharing_buttons.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );
-		// custom_register_script( 'social-buttons', '/assets/js/social_sharing_buttons.js', self::$PLUGIN_URI, self::$PLUGIN_PATH,  array( 'jquery' ), CHILD_THEME_VERSION, true );
-		// custom_register_style( 'social-buttons', '/assets/css/social_sharing_buttons.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );
+		foodiepro_enqueue_script( 'social-buttons', '/assets/js/social_sharing_buttons.js', self::$PLUGIN_URI, self::$PLUGIN_PATH,  array( 'jquery' ), CHILD_THEME_VERSION, true );
+		foodiepro_enqueue_style( 'social-buttons', '/assets/css/social_sharing_buttons.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );
 	}
 
 	public function get_sharing_buttons($target, $class, $networks) {
-		global $post;
 
 		$html = '<ul class="cssb share-icons">';
 
@@ -62,15 +58,15 @@ class CustomSocialButtons {
 		if ($networks['whatsapp'])
 			$html .= self::getWhatsappButton($target, $class);
 
-		if ($networks['linkedin']) {
-			$url = 'https://www.linkedin.com/shareArticle?mini=true&url='.$url.'&amp;title='.$title;
-			$html .= '<li class="cssb share-icons ' . $class . '" id="linkedin"><a ' . self::$onClick . ' class="cssb-link cssb-linkedin" href="'.$url.'" target="_blank" title="LinkedIn">&nbsp;</a></li>';
-		}
+		// if ($networks['linkedin']) {
+		// 	$url = 'https://www.linkedin.com/shareArticle?mini=true&url='.$url.'&amp;title='.$title;
+		// 	$html .= '<li class="cssb share-icons ' . $class . '" id="linkedin"><a ' . self::$onClick . ' class="cssb-link cssb-linkedin" href="'.$url.'" target="_blank" title="LinkedIn">&nbsp;</a></li>';
+		// }
 
-		if ($networks['buffer']) {
-			$url = 'https://bufferapp.com/add?url='.$url.'&amp;text='.$title;
-			$html .= '<li class="cssb share-icons ' . $class . '" id="buffer"><a ' . self::$onClick . ' class="cssb-link cssb-buffer" href="'.$url.'" target="_blank" title="Buffer">&nbsp;</a></li>';
-		}
+		// if ($networks['buffer']) {
+		// 	$url = 'https://bufferapp.com/add?url='.$url.'&amp;text='.$title;
+		// 	$html .= '<li class="cssb share-icons ' . $class . '" id="buffer"><a ' . self::$onClick . ' class="cssb-link cssb-buffer" href="'.$url.'" target="_blank" title="Buffer">&nbsp;</a></li>';
+		// }
 
 		$html .= '</ul>';
 

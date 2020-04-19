@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - GDPR Cookie Consent - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-11-15 21:33:41+0000\n"
+"PO-Revision-Date: 2020-03-30 20:23:15+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,10 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: de\n"
 "Project-Id-Version: Plugins - GDPR Cookie Consent - Stable (latest release)\n"
+
+#: public/views/cookie-law-info_bar.php:21
+msgid "Close"
+msgstr "Schließen"
 
 #: admin/views/admin_non_necessary_cookie.php:43
 msgid "Default state"
@@ -19,13 +23,13 @@ msgstr "Standardeinstellung"
 msgid "If you enable this option, the category toggle button will be in the active state for cookie consent."
 msgstr "Wenn du diese Option aktivierst, befindet sich der Kategorieumschalt-Button im aktiven Zustand für die Cookie-Einwilligung."
 
-#: public/views/cookie-law-info_popup_content.php:5
 #: admin/views/admin_non_necessary_cookie.php:44
+#: public/views/cookie-law-info_popup_content.php:5
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: public/views/cookie-law-info_popup_content.php:6
 #: admin/views/admin_non_necessary_cookie.php:45
+#: public/views/cookie-law-info_popup_content.php:6
 msgid "Disabled"
 msgstr "Deaktiviert"
 
@@ -151,9 +155,9 @@ msgstr "Header schließen"
 msgid "This will be shown in the settings visible for user on consent screen."
 msgstr "Dies wird in den Einstellungen angezeigt, die für den Benutzer auf dem Einwilligungsbildschirm sichtbar sind."
 
-#: admin/partials/cookie-law-info-privacy_overview.php:51
 #: admin/class-cookie-law-info-admin.php:168
 #: admin/class-cookie-law-info-admin.php:169
+#: admin/partials/cookie-law-info-privacy_overview.php:51
 msgid "Privacy Overview"
 msgstr "Datenschutzübersicht"
 
@@ -415,8 +419,8 @@ msgstr "http://cookielawinfo.com/"
 msgid "Delete Cookies"
 msgstr "Cookies löschen"
 
-#: admin/views/admin-settings-help.php:107
-#: admin/views/admin-settings-help.php:110 admin/views/goto-pro.php:103
+#: admin/views/goto-pro.php:103 admin/views/admin-settings-help.php:107
+#: admin/views/admin-settings-help.php:110
 msgid "Documentation"
 msgstr "Dokumentation"
 
@@ -453,12 +457,12 @@ msgstr "Andere"
 msgid "Size"
 msgstr "Größe"
 
+#: admin/views/admin_non_necessary_cookie.php:38
 #: admin/views/admin-settings-buttons.php:74
 #: admin/views/admin-settings-buttons.php:148
 #: admin/views/admin-settings-buttons.php:304
 #: admin/views/admin-settings-buttons.php:311
 #: admin/views/admin-settings-messagebar.php:52
-#: admin/views/admin_non_necessary_cookie.php:38
 #: admin/views/admin-settings-general.php:58
 #: admin/views/admin-settings-general.php:90
 #: admin/views/admin-settings-general.php:137
@@ -470,12 +474,12 @@ msgstr "Größe"
 msgid "No"
 msgstr "Nein"
 
+#: admin/views/admin_non_necessary_cookie.php:37
 #: admin/views/admin-settings-buttons.php:72
 #: admin/views/admin-settings-buttons.php:147
 #: admin/views/admin-settings-buttons.php:303
 #: admin/views/admin-settings-buttons.php:310
 #: admin/views/admin-settings-messagebar.php:51
-#: admin/views/admin_non_necessary_cookie.php:37
 #: admin/views/admin-settings-general.php:57
 #: admin/views/admin-settings-general.php:89
 #: admin/views/admin-settings-general.php:136
@@ -712,10 +716,10 @@ msgstr "Neu laden, nachdem der Button „Akzeptieren“ geklickt wurde"
 msgid "https://www.webtoffee.com/product/gdpr-cookie-consent/"
 msgstr "https://www.webtoffee.com/product/gdpr-cookie-consent/"
 
-#: public/modules/shortcode/shortcode.php:214
 #: admin/modules/cli-policy-generator/views/policy-generator.php:57
 #: admin/views/admin_necessary_cookie.php:30
 #: admin/views/admin_non_necessary_cookie.php:53
+#: public/modules/shortcode/shortcode.php:214
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -814,10 +818,10 @@ msgstr "Header"
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: admin/partials/cookie-law-info-privacy_overview.php:27
 #: admin/class-cookie-law-info-admin.php:253
 #: admin/class-cookie-law-info-admin.php:298
 #: admin/class-cookie-law-info-admin.php:343
+#: admin/partials/cookie-law-info-privacy_overview.php:27
 msgid "Settings Updated."
 msgstr "Einstellungen aktualisiert."
 
@@ -986,11 +990,11 @@ msgstr "Drucke Scripte im Head-Tag im Frontend, wenn die obigen Cookie-Einstellu
 msgid "Print scripts before the closing body tag on the front end if above cookie settings is enabled and user has given consent."
 msgstr "Scriptausgabe vor dem schließenden Body-Tag im Frontend, wenn die obigen Cookie-Einstellungen aktiviert sind und der Benutzer seine Zustimmung gegeben hat."
 
-#: admin/partials/cookie-law-info-privacy_overview.php:8
 #: admin/modules/cli-policy-generator/classes/class-policy-generator-ajax.php:22
 #: admin/class-cookie-law-info-admin.php:219
 #: admin/class-cookie-law-info-admin.php:278
 #: admin/class-cookie-law-info-admin.php:320
+#: admin/partials/cookie-law-info-privacy_overview.php:8
 msgid "You do not have sufficient permission to perform this operation"
 msgstr "Deine Berechtigungen reichen nicht aus, um diesen Vorgang durchzuführen."
 
@@ -1051,9 +1055,9 @@ msgstr "Beim Laden"
 msgid "If you select \"Header\" then you can optionally stick the cookie bar to the header. Will not have any effect if you select \"Footer\"."
 msgstr "Wenn du „Header“ wählst, kannst du optional die Cookie-Leiste am Header oben halten. Hat keinerlei Effekt, wenn du den  „Footer“ ausgewählst. "
 
-#: admin/partials/cookie-law-info-admin_settings.php:31
 #: admin/class-cookie-law-info-admin.php:144
 #: admin/class-cookie-law-info-admin.php:145
+#: admin/partials/cookie-law-info-admin_settings.php:31
 msgid "Cookie Law Settings"
 msgstr "Einstellungen zum Cookie-Recht"
 

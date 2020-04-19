@@ -40,8 +40,8 @@ class CNH_Archive_Entries {
 				// $title = do_shortcode('[display-star-rating category="global" display="minimal"]') . $title;
 				// Rating AFTER entry title
 				$title .= '<span class="entry-rating">';
-				$title .= do_shortcode('[display-star-rating category="global" display="minimal" markup="span"]');
-				$title .= do_shortcode('[like-count]');
+				$title .= (class_exists('CSR_Rating')) ? CSR_Rating::render( 'entry', false, 'span' ) : '';
+				$title .= (class_exists('CPM_Like')) ? CPM_Like::get_like_count() : '';
 				$title .= '</span>';
 				//echo 'User rating global = ' . get_post_meta( get_the_ID(), 'user_rating_global', true );
 		};

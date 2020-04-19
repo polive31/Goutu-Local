@@ -15,13 +15,14 @@ class CCM_Assets {
 		self::$Plugin_path = plugin_dir_path(dirname(__FILE__));
 	}
 
-	public static function remove_comment_reply_script() {
-		wp_deregister_script('comment-reply');
-	}
+	// public static function remove_comment_reply_script() {
+	// 	wp_deregister_script('comment-reply');
+	// }
 
 	/* Register stylesheet, will be enqueued in the shortcode itself  */
 	public static function enqueue_ccm_assets() {
 		if (!is_single()) return;
+
 		wp_enqueue_script('grecaptcha-invisible', 'https://www.google.com/recaptcha/api.js');
 
 		/* Script for JS-based comment form validation and recaptcha result processing */
@@ -39,22 +40,22 @@ class CCM_Assets {
 				'invalidEmail' 	=> __('Please provide a valid email adress before submitting your comment.', 'foodiepro'),
 			)
 		);
-		custom_enqueue_script($args);
+		foodiepro_enqueue_script($args);
 
-		if ( get_option( 'thread_comments' ) && is_singular() ) {
-			// Remove built-in WP script
-			remove_script( 'comment_reply' );
-			// Register custom commment replies processing script
-			$args = array(
-				'handle'	=> 'ccm-reply',
-					'file' 		=> 'assets/js/ccm-reply.js',
-					'uri' 		=> self::$Plugin_uri,
-					'path' 		=> self::$Plugin_path,
-					'footer' 	=> true,
-					'deps' 		=> array(),
-			);
-			custom_enqueue_script($args);
-		}
+		// if ( get_option( 'thread_comments' ) ) {
+		// 	// Remove built-in WP script
+		// 	foodiepro_remove_script( 'comment_reply' );
+		// 	// Register custom commment replies processing script
+		// 	$args = array(
+		// 		'handle'	=> 'ccm-reply',
+		// 			'file' 		=> 'assets/js/ccm-reply.js',
+		// 			'uri' 		=> self::$Plugin_uri,
+		// 			'path' 		=> self::$Plugin_path,
+		// 			'footer' 	=> true,
+		// 			'deps' 		=> array(),
+		// 	);
+		// 	foodiepro_enqueue_script($args);
+		// }
 	}
 
 

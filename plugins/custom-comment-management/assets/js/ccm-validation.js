@@ -5,12 +5,12 @@ jQuery(document).ready(function () {
     console.log('In ccm-validation.js');
     // jQuery(document).on('submit', '.comment-form', function (e) {
 
-    jQuery(document).on('click', 'form.comment-form .submit', function (e) {
+    jQuery(document).on('click', 'form.comment-form .submit, form.rating-form .submit', function (e) {
         e.preventDefault();
         // e.stopPropagation();
-        console.log('Click on comment form submit !!!');
+        console.log('In ccm-validation.js, click on comment form submit');
 
-        commentForm = jQuery(this).closest('form.comment-form');
+        commentForm = jQuery(this).closest('form');
         commentText = commentForm.find('textarea');
         commentAuthor = commentForm.find('input.author');
         commentEmail = commentForm.find('input.email');

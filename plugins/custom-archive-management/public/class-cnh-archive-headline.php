@@ -85,9 +85,9 @@ class CNH_Archive_Headline {
 		);
 	}
 
-	public function get_seo_friendly_page_title($title_parts ) {
+	public function get_seo_friendly_page_title( $title_parts ) {
 		if (is_archive())
-			$title = $this->get_archive_title(false);
+			$title = $this->custom_archive_title(false);
 		elseif (is_search())
 			$title = $this->custom_search_title_text();
 		elseif (is_singular())
@@ -122,7 +122,7 @@ class CNH_Archive_Headline {
 		return $output;
 	}
 
-	public function get_archive_title($display_img=true) {
+	public function custom_archive_title($display_img=true) {
 
 		if (is_tag()) {
 			$term_id = get_queried_object_id();
@@ -171,7 +171,7 @@ class CNH_Archive_Headline {
 				$term = get_term_by('slug', $origin_slug, 'cuisine');
 				$origin_headline = get_term_meta($term->term_id, 'headline', true);
 				if ($origin_headline) {
-					$title=sprintf('%s %s', $title, $origin_headline);
+					$title=sprintf($origin_headline, $title );
 				}
 				else {
 					$origin= $this->get_term_name($origin_slug,'cuisine');
@@ -277,7 +277,6 @@ class CNH_Archive_Headline {
 
 	/*  GETTERS
 	---------------------------------------------------------- */
-
 	public function get_gender( $word ) {
 		$feminine = array(
 			'soupe',

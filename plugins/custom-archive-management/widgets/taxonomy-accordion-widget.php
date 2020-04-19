@@ -147,7 +147,7 @@ class Recipe_Taxonomy_Accordion extends WP_Widget {
 		$type = $atts['post_type'];
 		$tags = get_tags(array(
 			// New clause "tags_post_type" added to the WP_Query function
-			// see req_clauses filter
+			// see term_clauses filter in functions.php
 			'tags_post_type' => $type,
 			'hide_empty' => true,
 			'orderby' => 'name',

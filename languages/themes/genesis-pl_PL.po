@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Genesis Framework - Genesis 3.3 package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-03-06 12:28:05+0000\n"
+"PO-Revision-Date: 2020-03-18 09:27:32+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,6 +35,10 @@ msgstr "Open Graph"
 msgid "Skip to main content"
 msgstr "Przejdź do treści"
 
+#: lib/classes/class-genesis-admin-onboarding.php:33
+msgid "Child Theme Setup"
+msgstr "Ustawienia motywu potomnego"
+
 #: config/customizer-theme-settings.php:324
 msgid "Footer"
 msgstr "Stopka"
@@ -52,20 +56,94 @@ msgstr "Podmenu"
 msgid "new window"
 msgstr "nowe okno"
 
+#: lib/classes/class-genesis-cli-settings-command.php:91
+msgid "Setting saved."
+msgstr "Ustawienia zostały zapisane."
+
+#: lib/classes/class-genesis-admin-plugins.php:32
+#: lib/classes/class-genesis-admin-plugins.php:33
+msgid "Genesis Plugins"
+msgstr "Wtyczki Genesis"
+
+#: lib/views/pages/genesis-admin-onboarding.php:43
+msgid "Set up your website"
+msgstr "Skonfiguruj swoją witrynę"
+
+#: lib/structure/sidebar.php:75
+msgid "Widgets Panel"
+msgstr "Panel widgetów"
+
+#: lib/structure/post.php:815
+msgid "Use `genesis_get_author_box()` instead."
+msgstr "Zamiast tego użyj `genesis_get_author_box()`."
+
+#: lib/views/pages/genesis-admin-onboarding.php:133
+msgid "Atomic Blocks"
+msgstr "Atomic Blocks"
+
+#: lib/views/pages/genesis-admin-onboarding.php:132
+msgid "Gutenberg News"
+msgstr "Aktualności o Gutenbergu"
+
+#: lib/views/pages/genesis-admin-onboarding.php:131
+msgid "StudioPress Blog"
+msgstr "Blog StudioPress"
+
+#: lib/views/pages/genesis-admin-onboarding.php:130
+msgid "Gutenberg Intro"
+msgstr "Wstęp do Gutenberga"
+
 #: lib/views/pages/genesis-admin-onboarding.php:127
 msgid "Helpful Links"
 msgstr "Przydatne linki"
+
+#: lib/views/pages/genesis-admin-onboarding-packs.php:112
+#: lib/views/pages/genesis-admin-onboarding.php:120
+msgid "Edit your homepage"
+msgstr "Edytuj swoją stronę główną"
 
 #: lib/views/pages/genesis-admin-onboarding-packs.php:108
 #: lib/views/pages/genesis-admin-onboarding.php:116
 msgid "All done!"
 msgstr "Wszystko gotowe!"
 
+#: lib/functions/onboarding.php:185
+#: lib/views/pages/genesis-admin-onboarding-packs.php:84
+#: lib/views/pages/genesis-admin-onboarding.php:87
+msgid "Demo content"
+msgstr "Treść demo"
+
 #: lib/functions/onboarding.php:142
 #: lib/views/pages/genesis-admin-onboarding-packs.php:64
 #: lib/views/pages/genesis-admin-onboarding.php:64
 msgid "Recommended plugins"
 msgstr "Zalecane wtyczki"
+
+#: lib/views/pages/genesis-admin-onboarding.php:44
+msgid "Or go to Theme Settings"
+msgstr "Albo przejdź do ustawień motywu"
+
+#: lib/functions/upgrade.php:332
+msgid "update now"
+msgstr "zaktualizuj teraz"
+
+#: lib/functions/upgrade.php:284 lib/functions/upgrade.php:325
+msgid "Check out what's new"
+msgstr "Zobacz, co nowego"
+
+#. translators: 1: Genesis version, 2: URL for change log, 3: URL for updating
+#. Genesis.
+#: lib/functions/upgrade.php:318
+msgid "Genesis %1$s is available. %2$s or %3$s."
+msgstr "Genesis %1$s jest dostępny. %2$s lub %3$s."
+
+#: lib/functions/layout.php:583
+msgid "Use `genesis_get_structural_wrap()` instead."
+msgstr "Zamiast tego użyj `genesis_get_structural_wrap()`."
+
+#: lib/classes/class-genesis-admin-onboarding.php:32
+msgid "Genesis - Getting Started"
+msgstr "Genesis - Pierwsze kroki"
 
 #: lib/structure/post.php:1096
 msgid "Next Post:"
@@ -82,6 +160,14 @@ msgstr "Szukaj na stronie"
 #: tests/fixtures/config-array-for-customizer-tests.php:46
 msgid "Can Genesis be better? "
 msgstr "Czy Genesis może być lepszym motywem?"
+
+#: tests/fixtures/config-array-for-customizer-tests.php:22
+msgid "Genesis is the best."
+msgstr "Genesis jest najlepszym motywem."
+
+#: tests/fixtures/config-array-for-customizer-tests.php:21
+msgid "Genesis is the best"
+msgstr "Genesis jest najlepszym motywem"
 
 #: lib/widgets/featured-post-widget.php:466
 msgid "Date Modified"
@@ -129,9 +215,74 @@ msgstr "Archiwa tagów"
 msgid "Category Archives"
 msgstr "Archiwa kategorii"
 
+#: config/customizer-seo-settings.php:145
+msgid "Document Head"
+msgstr "Nagłówek (head) dokumentu"
+
+#: config/customizer-seo-settings.php:135
+msgid "Apply noarchive to the homepage"
+msgstr "Zastosuj noarchive do strony głównej"
+
+#: config/customizer-seo-settings.php:127
+msgid "Apply nofollow to the homepage"
+msgstr "Zastosuj nofollow do strony głównej"
+
+#: config/customizer-seo-settings.php:119
+msgid "Apply noindex to the homepage"
+msgstr "Zastosuj noindex do strony głównej"
+
+#: config/customizer-seo-settings.php:93
+msgid "Add site description (tagline) to document title on home page? "
+msgstr "Czy dodać opis witryny (slogan) do tytułu na stronie głównej? "
+
+#: config/customizer-seo-settings.php:85
+msgid "If you leave the document title field blank, your site’s title will be used instead."
+msgstr "Jeśli pozostawisz pole tytułu puste, zamiast niego zostanie użyty tytuł witryny."
+
+#: config/customizer-seo-settings.php:84
+msgid "Homepage Document Title"
+msgstr "Tytuł strony głównej"
+
+#: config/customizer-seo-settings.php:76
+msgid "Site Description (tagline)"
+msgstr "Opis witryny (slogan)"
+
+#: config/customizer-seo-settings.php:71
+msgid "Primary Title H1"
+msgstr "Nagłówek H1"
+
+#: config/customizer-seo-settings.php:35
+msgid "Add site name to document title on inner pages? "
+msgstr "Czy dodać nazwę witryny do tytułu na innych podstronach? "
+
+#: config/customizer-seo-settings.php:25
+msgid "Customize the various theme SEO settings."
+msgstr "Dostosuj ustawienia SEO motywu."
+
+#. translators: %s: URL to studiopress.com.
+#: lib/views/misc/use-child-theme-notice.php:21
+msgid "For more information, see our article at %s"
+msgstr "Aby uzyskać więcej informacji, zobacz nasz artykuł: %s"
+
 #: lib/views/meta-boxes/genesis-inpost-seo-box.php:62
 msgid "301 Redirect."
 msgstr "Przekierowanie 301."
+
+#: lib/views/meta-boxes/genesis-inpost-scripts-box.php:54
+msgid "Top: after opening body tag"
+msgstr "Na górze: po otwarciu tagu body"
+
+#: lib/views/meta-boxes/genesis-inpost-scripts-box.php:53
+msgid "Bottom: before closing body tag"
+msgstr "Na dole: przed zamknięciem tagu body"
+
+#: lib/views/meta-boxes/genesis-inpost-scripts-box.php:49
+msgid "Body Scripts Position"
+msgstr "Pozycja skryptów body"
+
+#: lib/views/meta-boxes/genesis-inpost-scripts-box.php:38
+msgid "Body Scripts"
+msgstr "Skrypty body"
 
 #. translators: %s: Theme settings admin screen link.
 #: lib/views/meta-boxes/genesis-inpost-layout-box.php:32
@@ -140,11 +291,62 @@ msgstr "Przekierowanie 301."
 msgid "Default Layout set in %s"
 msgstr "Domyślny układ ustawiony w %s"
 
+#. translators: 1: Open post type archive link, 2: Close post type archive
+#. link, 3: Post type name.
+#: lib/views/meta-boxes/genesis-cpt-archives-settings.php:19
+msgid "View the %1$s%3$s archive%2$s."
+msgstr "Zobacz archiwum: %1$s%3$s%2$s."
+
 #. translators: 1: Open anchor tag to theme settings, 2: Close anchor tag to
 #. theme settings.
 #: lib/views/meta-boxes/genesis-cpt-archives-layout-settings.php:29
 msgid "Default Layout set in %1$sTheme Settings%2$s"
 msgstr "Domyślny układ ustawiony w %1$sUstawieniach motywu%2$s"
+
+#. translators: %s: Reference link.
+#: lib/views/help/genesis-inpost-seo.php:59
+msgid " &mdash; Output in the document <meta name=\"robots\" />. %s."
+msgstr " &mdash; Wyświetl w <meta name=\"robots\" />. %s."
+
+#: lib/views/help/genesis-inpost-seo.php:56
+msgid "Apply noarchive to this post/page"
+msgstr "Zastosuj noarchive do tego wpisu/strony"
+
+#: lib/views/help/genesis-inpost-seo.php:49
+msgid "Apply nofollow to this post/page"
+msgstr "Zastosuj nofollow do tego wpisu/strony"
+
+#. translators: %s: Reference link.
+#: lib/views/help/genesis-inpost-seo.php:45
+#: lib/views/help/genesis-inpost-seo.php:52
+msgid " &mdash; Output in the document <meta name=\"robots\" />. %s"
+msgstr " &mdash; Wyświetl w <meta name=\"robots\" />. %s"
+
+#: lib/views/help/genesis-inpost-seo.php:42
+msgid "Apply noindex to this post/page"
+msgstr "Zastosuj noindex do tego wpisu/strony"
+
+#. translators: %s: Reference link.
+#: lib/views/help/genesis-inpost-seo.php:38
+msgid " &mdash; Redirect this post/page to this URL. %s."
+msgstr " &mdash; Przekieruj ten wpis/stronę na ten adres URL. %s."
+
+#. translators: %s: Reference link.
+#: lib/views/help/genesis-inpost-seo.php:31
+msgid " &mdash; Output in the document <link rel=\"canonical\" />. %s"
+msgstr " &mdash; Wyświetl w <link rel=\"canonical\" />. %s"
+
+#: lib/views/help/genesis-inpost-seo.php:25
+msgid " &mdash; Output in the document <meta name=\"keywords\" /> Tag."
+msgstr " &mdash; Wyświetl w tagu <meta name=\"keywords\" />."
+
+#: lib/views/help/genesis-inpost-seo.php:21
+msgid " &mdash; Output in the document <meta name=\"description\" /> Tag."
+msgstr " &mdash; Wyświetl w tagu <meta name=\"description\" />."
+
+#: lib/views/help/genesis-inpost-seo.php:17
+msgid " &mdash; Output in the document <title> Tag."
+msgstr " &mdash; Wyświetl w tagu <title>."
 
 #: lib/functions/toolbar.php:41
 msgid "Edit Archive Settings"
@@ -169,6 +371,35 @@ msgstr "Jeśli podasz adres e-mail, Twoja strona powiadomi Cię mailowo gdy będ
 #: lib/classes/class-genesis-admin.php:147
 msgid "Save Changes"
 msgstr "Zapisz zmiany"
+
+#. translators: %s: Reference link.
+#: lib/views/help/genesis-inpost-seo.php:59
+msgid "Read more about noarchive"
+msgstr "Przeczytaj więcej o noarchive"
+
+#. translators: %s: Reference link.
+#: lib/views/help/genesis-inpost-seo.php:52
+msgid "Read more about nofollow"
+msgstr "Przeczytaj więcej o nofollow"
+
+#. translators: %s: Reference link.
+#: lib/views/help/genesis-inpost-seo.php:45
+msgid "Read more about noindex"
+msgstr "Przeczytaj więcej o noindex"
+
+#. translators: %s: Reference link.
+#: lib/views/help/genesis-inpost-seo.php:38
+msgid "Read more about 301 Redirects"
+msgstr "Przeczytaj więcej o przekierowaniach 301"
+
+#. translators: %s: Reference link.
+#: lib/views/help/genesis-inpost-seo.php:31
+msgid "Read more about Custom Canonical URL"
+msgstr "Przeczytaj więcej o kanonicznych linkach"
+
+#: config/customizer-theme-settings.php:307
+msgid "Entry Pagination Type"
+msgstr "Typ stronicowania"
 
 #: lib/widgets/featured-post-widget.php:485
 msgid "Exclude Previously Displayed Posts?"
@@ -1256,6 +1487,14 @@ msgstr "Zawartość panelu bocznego"
 msgid "Doctitle Settings"
 msgstr "Ustawienia Doctitle"
 
+#: lib/classes/class-genesis-admin.php:495
+msgid "Genesis Tutorials"
+msgstr "Tutoriale Genesis"
+
+#: lib/classes/class-genesis-admin.php:494
+msgid "Genesis Snippets"
+msgstr "Fragmenty kodu Genesis"
+
 #: lib/classes/class-genesis-admin.php:493
 msgid "Get Support"
 msgstr "Uzyskaj pomoc"
@@ -1294,6 +1533,11 @@ msgstr "Archiwizacja"
 #: config/customizer-seo-settings.php:176
 msgid "Indexing"
 msgstr "Indeksowanie"
+
+#: lib/views/help/genesis-inpost-seo.php:28
+#: lib/views/meta-boxes/genesis-inpost-seo-box.php:57
+msgid "Canonical URL"
+msgstr "Kanoniczny URL"
 
 #: config/customizer-seo-settings.php:31
 #: lib/views/help/genesis-inpost-seo.php:16
@@ -1369,6 +1613,10 @@ msgstr "Wybierz styl kolorystki"
 #: config/customizer-theme-settings.php:81
 msgid "Color Scheme"
 msgstr "Schemat kolorystyczny"
+
+#: config/customizer-theme-settings.php:69
+msgid "Dynamic Text"
+msgstr "Tekst dynamiczny"
 
 #: lib/views/meta-boxes/genesis-cpt-archives-layout-settings.php:20
 #: lib/views/meta-boxes/genesis-inpost-layout-box.php:24

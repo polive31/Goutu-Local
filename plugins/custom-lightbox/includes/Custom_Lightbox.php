@@ -37,12 +37,12 @@ class CustomLightbox {
 		// Enqueue scripts
 		$args['handle']= 'image-lightbox-plugin';
 		$args['file']= '/vendor/imagelightbox.js';
-		custom_enqueue_script( $args );
+		foodiepro_enqueue_script( $args );
 
 		$args['handle']= 'custom-lightbox';
 		$args['file']= '/assets/js/lightbox.js';
-		custom_enqueue_script( $args );
-		// custom_enqueue_script( 'custom-lightbox', '', self::$PLUGIN_URI, self::$PLUGIN_PATH, array( 'jquery' ), CHILD_THEME_VERSION, true );
+		foodiepro_enqueue_script( $args );
+		// foodiepro_enqueue_script( 'custom-lightbox', '', self::$PLUGIN_URI, self::$PLUGIN_PATH, array( 'jquery' ), CHILD_THEME_VERSION, true );
 
 		wp_enqueue_script( 'jquery-touch-punch', true );
 
@@ -50,8 +50,8 @@ class CustomLightbox {
 		$args['handle']= 'custom-lightbox';
 		$args['file']= '/assets/css/lightbox.css';
 		$args['deps']= array();
-		custom_enqueue_style( $args );
-		// custom_enqueue_style( 'custom-lightbox', '/assets/css/lightbox.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );
+		foodiepro_enqueue_style( $args );
+		// foodiepro_enqueue_style( 'custom-lightbox', '/assets/css/lightbox.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );
 	}
 
 }

@@ -124,6 +124,7 @@ function rpwe_get_recent_posts($args = array())
 
 	// Get the posts query.
 	$posts = rpwe_get_posts($args);
+	if (!$posts) return;
 
 	// echo '<pre>' . print_r( $posts ) . '</pre>';
 
@@ -145,13 +146,9 @@ function rpwe_get_recent_posts($args = array())
 		do_action('rpwe_after_loop');
 
 		// Return the  posts markup.
-		// return wp_kses_post( $args['before'] ) . apply_filters( 'rpwe_markup', $html, $args ) . wp_kses_post( do_shortcode($args['after']) );
-		if ($args['shortcode']) {
-			// $args['before']= do_shortcode(shortcode_unautop( $args['before'] ));
-			// $args['after'] = do_shortcode(shortcode_unautop( $args['after'] ));
-			$args['before'] = do_shortcode($args['before']);
-			$args['after'] = do_shortcode($args['after']);
-		}
+		$args['before'] = do_shortcode($args['before']);
+		$args['after'] = do_shortcode($args['after']);
+
 		return wp_kses($args['before'], ALLOWED_TAGS) . apply_filters('rpwe_markup', $html, $args) . wp_kses($args['after'], ALLOWED_TAGS);
 
 	endif;
@@ -200,7 +197,6 @@ function rpwe_get_posts($args = array())
 	}
 
 
-
 	/**
 	 * Taxonomy query.
 	 * Prop Miniloop plugin by Kailey Lampert.
@@ -233,6 +229,7 @@ function rpwe_get_posts($args = array())
 	// Allow plugins/themes developer to filter the default query.
 	$query = apply_filters('rpwe_default_query_arguments', $query);
 
+	if (!$query) return false;
 	// Perform the query.
 	$posts = new WP_Query($query);
 

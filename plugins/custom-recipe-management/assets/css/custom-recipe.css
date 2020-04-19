@@ -110,12 +110,32 @@ li.ingredient-group,
 }
 
 
+/* Recipe rating
+-------------------------------------------------*/
+.recipe-container .ratings-table {
+    font-size: 1.8rem;
+    margin: 0 5px;
+}
 
-/* Recipe info : rating, tags
+.recipe-container .ratings-table .fa-stack {
+    width: 20px;
+}
+
+.recipe-container .ratings-table .null i.far.fa-star {
+    color: #6f6f6f;
+}
+
+.rating-details {
+    font-size: 1.6rem;
+    margin-left: 10px;
+}
+
+
+/* Recipe tags
 -------------------------------------------------*/
 .info-container {
     /* float:left; */
-    z-index: 9999;
+    z-index: 999;
     position: absolute;
     right: 0;
     /* bottom: 0; */
@@ -125,12 +145,11 @@ li.ingredient-group,
     padding: 10px;
     margin: 10px;
     border-radius: 5px;
-
     /* background: linear-gradient(90deg, #ffffff85, white); */
     background: rgba(255, 255, 255, 0.64);
     /* border: 1px solid #d0d0d0; */
     color: #484848;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: bold;
     /* padding-left:30px; */
     user-select: none;
@@ -161,13 +180,17 @@ li.ingredient-group,
     margin: 0 2px;
 }
 
+.data-container {
+    display: inline-block;
+    vertical-align: top;
+}
+
 .recipe-label {
     display: inline-block;
     /* vertical-align:bottom; */
     width: 120px;
     /* font-weight:bold; */
     font-family: Oswald;
-    font-size: 1.6rem;
     font-weight: normal;
 }
 
@@ -298,7 +321,11 @@ span.recipe-ingredient-quantity::after {
 .recipe-instruction-group {
     font-size: 26px;
     line-height: 30px;
-    margin-bottom: 10px;
+    margin: 20px 0 10px 0;
+}
+
+.recipe-instruction-group:first-of-type {
+    margin: 0 0 10px 0;
 }
 
 ol.wpurp-recipe-instructions {
@@ -309,7 +336,11 @@ ol.wpurp-recipe-instructions {
 li.wpurp-recipe-instruction.li-first.li-last,
 .entry-content ul li.wpurp-recipe-instruction {
     list-style-type: none;
-    text-align: left;
+    text-align: center;
+    display: flex;
+    align-items:center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 li.wpurp-recipe-instruction {
@@ -318,13 +349,28 @@ li.wpurp-recipe-instruction {
     text-align: justify;
 }
 
-.instruction-step-image {
-    text-align: center;
+.entry-content .recipe ol li,
+.entry-content .recipe ul li {
+    margin-left: 0;
 }
 
+.recipe-instruction-text {
+    flex: 1 1 200px; /* or 1 0 100px, and no more need in min-width at all */
+    /* max-width: 300px; */
+    min-width: 200px;
+    text-align: justify;
+}
+
+.instruction-step-image {
+    margin-left: 10px;
+}
+
+
 .instruction-step-image img {
-    border: 1px solid #b5b5b5;
-    padding: 5px;
+    box-shadow: 2px 2px 7px 0px #858585;
+    margin: 5px;
+    /* border: 1px solid #b5b5b5;
+    padding: 5px; */
 }
 
 
@@ -334,11 +380,10 @@ li.wpurp-recipe-instruction {
 .recipe-instruction-bullet {
     display: inline-block;
     background: #f8f8f8;
-    margin-right: 10px;
+    /* margin-right: 10px; */
     color: #939393;
     text-align: center;
     border: none;
-
     width: 35px;
     height: 35px;
     font-size: 24px;
@@ -357,6 +402,7 @@ li.wpurp-recipe-instruction {
     cursor: pointer;
     transition: border-width 50ms ease-in-out;
     transition: background-color 50ms ease-in-out;
+    vertical-align: bottom;
 }
 
 .recipe-instruction-bullet:hover {
@@ -571,6 +617,15 @@ span#wpurp-timer-remaining {
 
 @media only screen and (max-width:570px) {
 
+    ol, ul {
+        padding: 0;
+    }
+
+    .comment-rating {
+        float: right;
+        position: initial;
+    }
+
     .tooltip:hover .tooltip-content.hover,
     .tooltip-content.hover:hover {
         display: none;
@@ -608,5 +663,6 @@ span#wpurp-timer-remaining {
         font-size: 22px;
         padding-bottom: 3px;
     }
+
 
 }

@@ -38,7 +38,7 @@ class PeepsoProfileCompletionWidget extends WP_Widget {
 
 
 	public function register_custom_stylesheet() {
-		custom_register_style( 'circular-progress-bar', '/assets/css/circular-progress-bar.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );
+		foodiepro_register_style( 'circular-progress-bar', '/assets/css/circular-progress-bar.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );
 	}
 
 	// display widget
@@ -83,7 +83,7 @@ class PeepsoProfileCompletionWidget extends WP_Widget {
 		$title = empty($instance['title'])?sprintf(__('Keep it up, %s', 'foodiepro'), PeepsoHelpers::get_field($user, 'firstname') ):$instance['title'];
 
 		// add a textarea for long messages
-		$profile_url=PeepsoHelpers::get_url( $user, 'profile', 'about');
+		$profile_url= foodiepro_get_permalink(array('user' => 'current', 'display' => 'profile', 'type' => 'about'));
 		$textarea = sprintf(__('<a href="%s">Fill-in your profile</a> to make yourself visible from other users.','foodiepro'), $profile_url);
 
 		echo $args['before_widget'];

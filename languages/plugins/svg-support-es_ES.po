@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - SVG Support - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-01-19 10:19:04+0000\n"
+"PO-Revision-Date: 2020-04-05 05:38:59+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,26 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: es\n"
 "Project-Id-Version: Plugins - SVG Support - Stable (latest release)\n"
+
+#: admin/svgs-settings-page.php:261
+msgid "Support is handled exlusively through WordPress.org by my one man team - me."
+msgstr "El soporte es gestionado exclusivamente a través de WordPress.org por mi equipo de un solo hombre - yo."
+
+#: admin/svgs-settings-page.php:260
+msgid "I'm always happy to help out!"
+msgstr "¡Siempre estoy encantado de ayudar!"
+
+#: admin/svgs-settings-page.php:258
+msgid "Having Issues?"
+msgstr "¿Tienes problemas?"
+
+#: admin/svgs-settings-page.php:39
+msgid "You can also"
+msgstr "También puedes"
+
+#: admin/plugin-action-meta-links.php:37
+msgid "Leave a Review"
+msgstr "Deja una reseña"
 
 #: admin/svgs-settings-page.php:85
 msgid "A very small piece of code that helps with displaying SVGs on the frontend in some cases."
@@ -23,15 +43,15 @@ msgstr "¿Cargar el CSS de la portada?"
 msgid "Upload SVG files to the Media Library and render SVG files inline for direct styling/animation of an SVG's internal elements using CSS/JS."
 msgstr "Sube archivos SVG a la librería de medios y los muestra en línea para el estilo/animación directa de los elementos internos utilizando CSS/JS."
 
-#: admin/svgs-settings-page.php:282
+#: admin/svgs-settings-page.php:291
 msgid "Thanks for your support, please consider donating."
 msgstr "Gracias por tu apoyo. Por favor, considera donar."
 
-#: admin/svgs-settings-page.php:280
+#: admin/svgs-settings-page.php:289
 msgid "Visit The Support Forum"
 msgstr "Visita el Foro de soporte"
 
-#: admin/svgs-settings-page.php:279
+#: admin/svgs-settings-page.php:288
 msgid "Learn more about SVG Support on:"
 msgstr "Aprende más sobre la compatibilidad con SVG en:"
 
@@ -47,13 +67,9 @@ msgstr "Avanzado"
 msgid "Donate using PayPal"
 msgstr "Donar con PayPal"
 
-#: admin/svgs-settings-page.php:39
-msgid "Or if you're old school, you can"
-msgstr "O si eres de la vieja escuela, puedes"
-
 #: admin/svgs-settings-page.php:33
-msgid "SVG Support has grown to be installed on over 100,000 active websites. That's insane! It's developed and maintained by one person alone. If you find it useful, please consider donating to help keep it going. I truly appreciate any contribution."
-msgstr "SVG Support ha crecido hasta instalarse en más de 100.000 sitios web activos. ¡Eso es una locura! Lo desarrolla y mantiene una sola persona. Si lo encuentras útil, por favor considera donar para ayudar a mantenerlo en marcha. Realmente aprecio cualquier contribución."
+msgid "SVG Support has grown to be installed on 300,000+ active websites. That's insane! It's developed and maintained by one person alone. If you find it useful, please consider donating to help keep it going. I truly appreciate any contribution."
+msgstr "SVG Support ha crecido hasta instalarse en más de 300.000 webs activas. ¡Eso es una locura! Está desarrollado y mantenido por una sola persona. Si lo encuentras útil, por favor, considera donar para ayudar a mantenerlo en marcha. Realmente aprecio cualquier contribución."
 
 #: admin/svgs-settings-page.php:30
 msgid "Send Some Love"
@@ -76,7 +92,7 @@ msgid "DONATIONS"
 msgstr "DONACIONES"
 
 #: admin/svgs-settings-page-help.php:140
-msgid "(You don't need to send me that much to me, anything is appreciated!)"
+msgid "(You don't need to send me that much though, anything is appreciated!)"
 msgstr "(¡No hace falta que me envíes tanto, se aprecia cualquier cosa!)"
 
 #: admin/svgs-settings-page-help.php:140
@@ -275,7 +291,7 @@ msgstr "En su núcleo, el SVG Support te permite subir archivos SVG y utilizarlo
 msgid "Overview"
 msgstr "Resumen"
 
-#: admin/svgs-settings-page.php:271
+#: admin/svgs-settings-page.php:280
 msgid "Force all SVG files to be rendered inline"
 msgstr "Forzar que todos los archivos SVG se rendericen en línea"
 
@@ -307,7 +323,7 @@ msgstr " Marcando esto se usará el archivo JS expandido en lugar del archivo JS
 msgid "Use Expanded JS?"
 msgstr "¿Usar JS expandido?"
 
-#: admin/svgs-settings-page.php:258
+#: admin/svgs-settings-page.php:267
 msgid "SVG Support Features"
 msgstr "Características de SVG Support"
 
@@ -355,31 +371,31 @@ msgstr " Mancando esto te aseguras de que la clase por defecto o la personalizad
 msgid "Render this SVG inline (advanced)"
 msgstr "Renderizar este SVG en línea (avanzado)"
 
-#: admin/svgs-settings-page.php:270
+#: admin/svgs-settings-page.php:279
 msgid "Inline SVG featured image support"
 msgstr "Compatibilidad con imágenes SVG en línea"
 
-#: admin/svgs-settings-page.php:269
+#: admin/svgs-settings-page.php:278
 msgid "Use odd shapes as links"
 msgstr "Usar formas extrañas como enlaces"
 
-#: admin/svgs-settings-page.php:268
+#: admin/svgs-settings-page.php:277
 msgid "Include multiple URL's inside single SVG"
 msgstr "Incluir múltiples URLs dentro de un único SVG"
 
-#: admin/svgs-settings-page.php:267
+#: admin/svgs-settings-page.php:276
 msgid "Animate SVG using CSS or JS"
 msgstr "Animar SVG usando CSS o JS"
 
-#: admin/svgs-settings-page.php:266
+#: admin/svgs-settings-page.php:275
 msgid "Style SVG elements using CSS"
 msgstr "Darle estilo a los elementos SVG usando CSS"
 
-#: admin/svgs-settings-page.php:265
+#: admin/svgs-settings-page.php:274
 msgid "Advanced Mode"
 msgstr "Modo avanzado"
 
-#: admin/svgs-settings-page.php:261
+#: admin/svgs-settings-page.php:270
 msgid "Basic Use"
 msgstr "Uso básico"
 
@@ -412,11 +428,11 @@ msgid "If you like <strong>SVG Support</strong> please leave a %s&#9733;&#9733;&
 msgstr "Si te gusta <strong>SVG Support</strong>, por favor, deja una valoración de %s&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;%s. ¡Muchas gracias de antemano!"
 
 #. Author URI of the plugin
-msgid "http://benbodhi.com"
-msgstr "http://benbodhi.com"
+msgid "https://benbodhi.com"
+msgstr "https://benbodhi.com"
 
 #. Author of the plugin
-#: admin/svgs-settings-page.php:281
+#: admin/svgs-settings-page.php:290
 msgid "Benbodhi"
 msgstr "Benbodhi"
 
@@ -424,23 +440,23 @@ msgstr "Benbodhi"
 msgid "http://wordpress.org/plugins/svg-support/"
 msgstr "http://es.wordpress.org/plugins/svg-support/"
 
-#: admin/svgs-settings-page.php:280
+#: admin/svgs-settings-page.php:289
 msgid "Need help?"
 msgstr "¿Necesitas ayuda?"
 
-#: admin/svgs-settings-page.php:279
+#: admin/svgs-settings-page.php:288
 msgid "The WordPress Plugin Repository"
 msgstr "El repositorio de plugins de WordPress"
 
-#: admin/svgs-settings-page.php:277
+#: admin/svgs-settings-page.php:286
 msgid "About The Plugin"
 msgstr "Acerca del plugin"
 
-#: admin/svgs-settings-page.php:263
+#: admin/svgs-settings-page.php:272
 msgid "Restrict to Administrators only"
 msgstr "Restringido a los administradores"
 
-#: admin/svgs-settings-page.php:262
+#: admin/svgs-settings-page.php:271
 msgid "SVG Support for your media library"
 msgstr "Compatibilidad SVG para la biblioteca de medios"
 
@@ -544,10 +560,6 @@ msgid "SVG Support Settings and Usage"
 msgstr "Ajustes y uso de SVG Support"
 
 #: admin/plugin-action-meta-links.php:38
-msgid "$25 Free Credit from GoWebben"
-msgstr "25$ de crédito gratis de GoWebben"
-
-#: admin/plugin-action-meta-links.php:37
 msgid "Donate to author"
 msgstr "Donar al autor"
 

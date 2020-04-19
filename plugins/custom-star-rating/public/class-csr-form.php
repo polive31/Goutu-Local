@@ -35,8 +35,7 @@ class CSR_Form
 			'rating_cats' 			=> 'all',  //Default: "id1 id2..."
 		);
 
-		wp_enqueue_style('custom-star-rating');
-		wp_enqueue_script('custom-star-rating');
+		wp_enqueue_style('custom-star-rating-form');
 
 		/* The customized comment form (to be used in a popup or separate from the post content) is stripped out of any "reply" features,
 			in order not to conflict with the comment form in the  main section of the post */

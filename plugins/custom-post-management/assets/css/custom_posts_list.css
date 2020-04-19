@@ -13,6 +13,7 @@ table.custom-post-list a {
 .post-list-actions a {
   margin-left: 10px;
   font-size: 2.2rem;
+  color: #717171;
 }
 
 .post-list-actions .fa {
@@ -47,17 +48,37 @@ tr.post-list-row:hover {
 
 td.post-list-title {
     font-family: Oswald, sans-serif;
-     font-size: 2rem;
+    font-size: 2rem;
+    width:50%;
+}
+
+td.post-list-date span {
+    font-family: monospace;
+    font-size: 1.5rem;
+    /* border: 1px solid black; */
+    box-shadow: 4px 4px 5px #9c9c9c;
+    padding: 5px 10px;
+    border-radius: 20px;
 }
 
 td.post-list-thumbnail {
     padding: 10px;
-    width: 80px;
+    width: 10%;
     height: 80px;
+    min-width: 80px;
 }
 
 td.post-list-thumbnail img {
     margin: 0;
     display: inline-block;
     vertical-align: middle;
+}
+
+
+@media only screen and (max-width:420px) {
+
+  .post-list-actions a {
+    font-size: 1.9rem;
+  }
+
 }

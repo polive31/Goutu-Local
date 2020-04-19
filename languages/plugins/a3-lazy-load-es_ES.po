@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - a3 Lazy Load - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-02-25 10:41:17+0000\n"
+"PO-Revision-Date: 2020-03-17 10:36:08+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -52,8 +52,8 @@ msgid "Jetpack Compatibility"
 msgstr "Compatibilidad con Jetpack"
 
 #: admin/settings/template-settings/global-settings.php:565
-msgid "Jetpack Site Accelerator (Proton) Compatibility"
-msgstr "Compatibilidad con Site Accelerator (Proton) de Jetpack"
+msgid "Jetpack Site Accelerator (Photon) Compatibility"
+msgstr "Compatibilidad con Jetpack Site Accelerator (Proton)"
 
 #: admin/settings/template-settings/global-settings.php:556
 msgid "Threshold (px)"

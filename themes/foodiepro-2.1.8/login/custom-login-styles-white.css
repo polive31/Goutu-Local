@@ -18,6 +18,10 @@ body.login {
   background-size:contain;
   width:150px;
   height:150px;
-  border-radius : 50%; 
+  border-radius : 50%;
   box-shadow : 5px 5px 5px #444;
+}
+
+.login p.message {
+    font-size: 1.1rem;
 }

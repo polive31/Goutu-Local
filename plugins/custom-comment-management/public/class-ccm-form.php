@@ -39,12 +39,12 @@ class CCM_Form
 
 		$defaults['logged_in_as'] = '';
 		if ( is_singular('recipe') )
-			// $defaults['title_reply'] = _x('Leave a comment', 'recipe', 'foodiepro');
+		// 	// $defaults['title_reply'] = _x('Leave a comment', 'recipe', 'foodiepro');
 			$title_new = __('Leave a comment on this recipe', 'foodiepro');
 		else
-			// $defaults['title_reply'] = _x('Leave a comment', 'post', 'foodiepro');
+		// 	// $defaults['title_reply'] = _x('Leave a comment', 'post', 'foodiepro');
 			$title_new = __('Leave a comment on this post', 'foodiepro');
-		$title_reply = __('Leave a reply to %s', 'foodiepro');
+		// $title_reply = __('Leave a reply to ', 'foodiepro');
 
 		/* Since a known WP issue prevents the title_reply_to to work, a workaround is setup in order to allow
 		for 2 different comment form headlines depending on the situation (new comment or answer)
@@ -52,9 +52,10 @@ class CCM_Form
 		Since the cancel button is added to the main title_reply section, this section will be considered as the "reply"one, and therefore hidden by default, whereas the
 		second section will be the "new form" one therefore shown by default.
 		*/
-		$defaults['title_reply'] = '';
-		$defaults['title_reply_before'] = '<h3 id="reply-title" class="comment-reply-title" data-text="' . $title_reply . '" style="display:none">';
-		$defaults['title_reply_after'] = '</h3><h3 id="new-title" class="comment-new-title">' . $title_new . '</h3>';
+		// $defaults['title'] = $title_new;
+		// $defaults['title_reply'] = __('Leave a reply to %s', 'foodiepro');
+		// $defaults['title_reply_before'] = '<h3 id="reply-title" class="comment-reply-title" data-text="' . $title_reply . '" style="display:none">';
+		// $defaults['title_reply_after'] = '</h3><h3 id="new-title" class="comment-new-title">' . $title_new . '</h3>';
 
 		$defaults['id_form'] = 'foodiepro_comment' . $instance;
 		$defaults['comment_field'] = '<p class="comment-form-comment"><textarea id="comment_' . $instance . '" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>';

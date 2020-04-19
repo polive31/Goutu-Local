@@ -24,7 +24,7 @@ class Custom_Recent_Posts_Widget {
 		/* Modify WP Recent Posts extended output, depending on the css ID field value */
 		add_filter('rpwe_after_thumbnail', 				array($RPWE, 'wprpe_add_avatar'), 20, 2);
 		/* Modify WPRPE output, displaying posts from current logged-in user */
-		add_filter('rpwe_default_query_arguments', 		array($RPWE, 'wprpe_query_displayed_user_posts'));
+		add_filter('rpwe_default_query_arguments', 		array($RPWE, 'wprpe_query_user_posts'));
 		/* Workaround for shortcodes in rpwe "after" html not executing */
 		// add_filter( 'rpwe_markup', 					array($this, 'add_more_from_author_link'),15, 2 );
 		/* Prevent redundant posts when several rpwe instances are called on the same page */

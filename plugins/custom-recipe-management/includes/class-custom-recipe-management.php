@@ -19,7 +19,21 @@ class Custom_Recipe_Management {
     }
 
 	public function __construct() {
-
+        /* Hooks for CRM_Assets
+        ------------------------------------------------------------- */
+        $Assets = new CRM_Assets();
+        /* Disable WPURP scripts & style enqueue */
+        add_filter ( 'wpurp_assets_js',     array( $Assets,'enqueue_wpurp_js'), 20, 1 );
+        add_filter ( 'wpurp_assets_css',    array( $Assets,'enqueue_wpurp_css'), 20, 1 );
+        /* recipe setup filters for CPM  */
+        add_filter( 'cpm_page_slugs',       array( $Assets, 'setup_CPM_recipe_page_slugs') );
+        add_filter( 'cpm_labels',           array( $Assets, 'setup_CPM_recipe_labels'    ) );
+        add_filter( 'cpm_enqueued_styles',  array( $Assets, 'setup_CPM_recipe_styles'    ) );
+        add_filter( 'cpm_enqueued_scripts', array( $Assets, 'setup_CPM_recipe_scripts'   ) );
+        add_filter( 'cpm_taxonomies',       array( $Assets, 'setup_CPM_taxonomies'       ) );
+        add_filter( 'cpm_required',         array( $Assets, 'setup_CPM_required'         ) );
+        add_filter( 'cpm_post_status',      array( $Assets, 'setup_CPM_post_status'      ) );
+        add_filter( 'cpm_fallback_image',    array( $Assets, 'setup_CPM_recipe_fallback_image'  ) );
 
         /* Hooks for CRM_Recipe_Post_Type
         ------------------------------------------------------------- */
@@ -53,33 +67,28 @@ class Custom_Recipe_Management {
         add_action('edited_ingredient',            array($Ingredient_Meta, 'callback_admin_save_meta'), 10, 2);
         add_action('create_ingredient',            array($Ingredient_Meta, 'callback_admin_save_meta'), 10, 2);
 
-
-
-        /* Hooks for CRM_Assets
-        ------------------------------------------------------------- */
-        $Assets = new CRM_Assets();
-        /* Disable WPURP scripts & style enqueue */
-        add_filter ( 'wpurp_assets_js',     array( $Assets,'enqueue_wpurp_js'), 20, 1 );
-        add_filter ( 'wpurp_assets_css',    array( $Assets,'enqueue_wpurp_css'), 20, 1 );
-        /* recipe setup filters for CPM  */
-        add_filter( 'cpm_page_slugs',       array( $Assets, 'setup_CPM_recipe_page_slugs') );
-        add_filter( 'cpm_labels',           array( $Assets, 'setup_CPM_recipe_labels'    ) );
-        add_filter( 'cpm_enqueued_styles',  array( $Assets, 'setup_CPM_recipe_styles'    ) );
-        add_filter( 'cpm_enqueued_scripts', array( $Assets, 'setup_CPM_recipe_scripts'   ) );
-        add_filter( 'cpm_taxonomies',       array( $Assets, 'setup_CPM_taxonomies'       ) );
-        add_filter( 'cpm_required',         array( $Assets, 'setup_CPM_required'         ) );
-
-
         /* Hooks for Recipe output
         ------------------------------------------------------------- */
         $Output = new CRM_Output();
-        add_filter( 'wpurp_output_recipe_print',array($Output, 'print_recipe'), 10, 2 );
 
-        // add_filter( 'wpurp_recipe_content_loop_check',  array($Recipe_Display, 'disable_wpurp_rendering'));
-        add_filter( 'the_content',              array($Output, 'display_recipe_from_scratch'), 10, 2 );
+        add_action('wp',                            array($Output, 'do_recipe_content'), 10, 3);
+
         /* Filter gallery shortcode to remove instructions images */
-        add_action('fu_after_upload',           array($Output, 'tag_uploaded_images'), 10, 3);
-        add_filter('cgs_media',                 array($Output, 'fetch_gallery_images'), 10, 2);
+        add_action('fu_after_upload',               array($Output, 'tag_uploaded_images'), 10, 3);
+        add_filter('cgs_media',                     array($Output, 'fetch_gallery_images'), 10, 2);
+
+        /* Print hooks */
+        add_action('init',                          array($Output, 'endpoint'));
+        add_action('template_redirect',             array($Output, 'redirect'));
+        // add_action('init',                                      array($Print, 'print_page'));
+
+
+        /* Hooks for Recipe Metadata output
+        ------------------------------------------------------------- */
+        $Provide_Meta = new CRM_Recipe_Meta();
+        add_filter('csd_enqueue_recipe_meta',       array($Provide_Meta,    'enqueue_recipe_meta'));
+        $Recipe_Meta = CSD_Meta::get_instance('recipe');
+        add_action('wp_footer',                     array($Recipe_Meta,     'render'));
 
 
         /* Hooks for CRM_Favorite
@@ -87,52 +96,47 @@ class Custom_Recipe_Management {
         $Favorite = new CRM_Favorite();
         add_action( 'wp_ajax_custom_favorite_recipe',           array( $Favorite, 'ajax_favorite_recipe' ) );
         add_action( 'wp_ajax_nopriv_custom_favorite_recipe',    array( $Favorite, 'ajax_favorite_recipe' ) );
-        add_filter( 'query_vars',                               array( $Favorite, 'add_query_vars_filter') );
+        add_filter( 'query_vars',                               array( $Favorite, 'add_list_query_var') );
         add_shortcode( 'crm-favorites-list',                    array( $Favorite, 'favorite_recipes_shortcode' ) );
+        add_filter('cpm_list_dropdown_widget_args',             array( $Favorite, 'cpm_list_dropdown_widget_args_cb'), 10, 2 );
 
-        /* Hooks for CRM_Print
-        ------------------------------------------------------------- */
-        $Print = new CRM_Print();
-        add_action('init',                                      array($Print, 'endpoint'));
-        add_action('init',                                      array($Print, 'print_page'));
-        add_action('template_redirect',                         array($Print, 'redirect'));
+
 
         /* Hooks for CRM_Submission
         ------------------------------------------------------------- */
         // Create specific hooks for recipe submission
-        $Recipe_Submission_Hooks = new CPM_Submission( 'recipe' );
-        $Recipe_Submission = new CRM_Submission();
+        $CPM_Submission_Instance = new CPM_Submission( 'recipe' );
+        // Ajax callbacks for recipe autosave
+        // TODO MAYBE OPTIMIZE => set action to "post_autosave" in JS
+        add_action('wp_ajax_recipe_autosave',                   array($CPM_Submission_Instance, 'ajax_post_autosave_cb'));
 
         // Specific recipe section in Custom Submission Form
+        $CRM_Submission_Instance = new CRM_Submission();
+        // Add recipe form fields
+		add_filter( 'cpm_recipe_section', 				        array($CRM_Submission_Instance, 'cpm_recipe_section_cb'), 15, 2 );
+
         // Specific recipe submission actions
-		add_filter( 'cpm_recipe_section', 				    array( $Recipe_Submission, 'add_recipe_specific_section'), 15, 3 );
-        add_action( 'cpm_recipe_submission_main', 	        array( $Recipe_Submission, 'recipe_submission_main'     ), 15, 3 );
+        add_action( 'cpm_recipe_submission_main', 	            array($CRM_Submission_Instance, 'save_recipe_meta'     ), 15, 3 );
 
         // Ajax callbacks for thumbnails removal
-        add_action( 'wp_ajax_crm_remove_recipe_image',      array( $Recipe_Submission, 'ajax_remove_instruction_image' ));
-        add_action( 'wp_ajax_crm_remove_recipe_image',      array( $Recipe_Submission, 'ajax_remove_instruction_image' ));
-
-        // Ajax callbacks for ingredient preview
-        add_action( 'wp_ajax_ingredient_preview',           array( $Recipe_Submission, 'ajax_ingredient_preview'    ));
-        add_action( 'wp_ajax_nopriv_ingredient_preview',    array( $Recipe_Submission, 'ajax_ingredient_preview'    ));
+        add_action( 'wp_ajax_cpm_remove_recipe_image',          array($CRM_Submission_Instance, 'ajax_remove_instruction_image' ));
 
         // Ajax Callbacks for Autocomplete jquery plugin
-        add_action('wp_ajax_nopriv_get_tax_terms',          array( $Recipe_Submission, 'ajax_custom_get_tax_terms'  ));
-        add_action('wp_ajax_get_tax_terms',                 array( $Recipe_Submission, 'ajax_custom_get_tax_terms'  ));
+        add_action('wp_ajax_get_tax_terms',                     array($CRM_Submission_Instance, 'ajax_custom_get_tax_terms'  ));
 
-        /* Hooks for CRM_Recipe_Save
-        ------------------------------------------------------------- */
-        $Save = new CRM_Recipe_Save();
-        add_filter('wp_insert_post_empty_content',          array($Save, 'check_empty'), 10, 2);
-        add_action('save_post',                             array($Save, 'save'), 10, 2);
+        // Ajax callbacks for recipe image upload
+        add_action('wp_ajax_cpm_upload_recipe_image',           array($CRM_Submission_Instance, 'ajax_upload_recipe_image'));
+
 
         /* Hooks for CRM_Ingredient
         ------------------------------------------------------------- */
         $Ingredient = new CRM_Ingredient();
-        add_shortcode( 'ingredient',                array( $Ingredient, 'display_ingredient_shortcode'         ), 10, 2 );
-        add_shortcode( 'ingredient-months',         array( $Ingredient, 'display_ingredient_months_shortcode'  ), 10, 2 );
-		add_filter('ctlw_meta_query_args',          array( $Ingredient, 'query_current_month_ingredients'), 15, 3 );
+        add_shortcode( 'ingredient',                        array( $Ingredient, 'display_ingredient_shortcode'         ), 10, 2 );
+        add_shortcode( 'ingredient-months',                 array( $Ingredient, 'display_ingredient_months_shortcode'  ), 10, 2 );
+        add_filter( 'ctlw_meta_query_args',                 array( $Ingredient, 'query_current_month_ingredients'), 15, 3 );
 
+        // Ajax callbacks for ingredient preview
+        add_action( 'wp_ajax_ingredient_preview',           array( $Ingredient, 'ajax_ingredient_preview'));
 
 
         /* Hooks for CRM Shortcodes
@@ -140,11 +144,11 @@ class Custom_Recipe_Management {
         $Shortcodes = new CRM_Recipe_Shortcodes();
         add_shortcode('recipe',                     array($Shortcodes, 'recipe_shortcode'));
         add_shortcode('recipe-timer',               array($Shortcodes, 'timer_shortcode'));
+        add_shortcode('timer',                      array($Shortcodes, 'timer_shortcode'));
 
         /* Hooks for CRM Widgets
         ------------------------------------------------------------- */
-        add_action( 'widgets_init', 'crm_lists_dropdown_widget_init' );
-        add_action( 'widgets_init', 'crm_nutrition_label_widget_init' );
+        add_action( 'widgets_init',                 'crm_nutrition_label_widget_init' );
 
 
     }

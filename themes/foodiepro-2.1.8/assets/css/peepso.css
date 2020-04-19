@@ -770,7 +770,7 @@ body {
   padding: 2px;
 }
 
-.ps-widget__members-item source,
+.ps-widget__members-item picture source[type="image/webp"],
 .ps-widget__members-item img {
   vertical-align: middle;
   display: inline-block;

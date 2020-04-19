@@ -85,11 +85,12 @@ class Custom_Recipe_Management {
 
         /* Hooks for Recipe Metadata output
         ------------------------------------------------------------- */
-        $Provide_Meta = new CRM_Recipe_Meta();
-        add_filter('csd_enqueue_recipe_meta',       array($Provide_Meta,    'enqueue_recipe_meta'));
-        $Recipe_Meta = CSD_Meta::get_instance('recipe');
-        add_action('wp_footer',                     array($Recipe_Meta,     'render'));
-
+        if (class_exists('CSD_Meta')) {
+            $Provide_Meta = new CRM_Recipe_Meta();
+            add_filter('csd_enqueue_recipe_meta',       array($Provide_Meta,    'enqueue_recipe_meta'));
+            $Recipe_Meta = CSD_Meta::get_instance('recipe');
+            add_action('wp_footer',                     array($Recipe_Meta,     'render'));
+        }
 
         /* Hooks for CRM_Favorite
         ------------------------------------------------------------- */

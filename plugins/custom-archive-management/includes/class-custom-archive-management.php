@@ -20,9 +20,12 @@ class Custom_Archive_Management {
 		/* Archive Metadata rendering */
 		$Provide_Meta = new CNH_Archive_Meta();
 		add_action('genesis_entry_header', 				array($Provide_Meta, 	'add_entry_to_items'));
-		add_filter('csd_enqueue_archive_meta',       	array($Provide_Meta,	'enqueue_archive_meta'));
-		$Archive_Meta = CSD_Meta::get_instance('archive');
-		add_action('wp_footer',   						array($Archive_Meta, 	'render'));
+
+		if (class_exists('CSD_Meta')) {
+			add_filter('csd_enqueue_archive_meta',       	array($Provide_Meta,	'enqueue_archive_meta'));
+			$Archive_Meta = CSD_Meta::get_instance('archive');
+			add_action('wp_footer',   						array($Archive_Meta, 	'render'));
+		}
 
 
 		$Entries = new CNH_Archive_Entries();

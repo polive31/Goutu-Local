@@ -76,11 +76,13 @@ class Custom_Post_Management {
 		add_filter( 'the_content_more_link', 					array($Post_Template, 'foodie_pro_read_more_link' ) );
 
 		/* Post Metadata rendering */
-		$Post_Meta = CSD_Meta::get_instance('post');
-		/* We want this information to be populated first, in order to be superseded by others (e.g. recipe)
-			therefore priority is set to 1 for posts */
-		add_filter('csd_enqueue_post_meta',       				array($Post_Template, 	'enqueue_post_meta'), 1);
-		add_action('wp_footer',   								array($Post_Meta, 		'render'));
+		if (class_exists('CSD_Meta')) {
+			$Post_Meta = CSD_Meta::get_instance('post');
+			/* We want this information to be populated first, in order to be superseded by others (e.g. recipe)
+				therefore priority is set to 1 for posts */
+			add_filter('csd_enqueue_post_meta',       				array($Post_Template, 	'enqueue_post_meta'), 1);
+			add_action('wp_footer',   								array($Post_Meta, 		'render'));
+		}
 
 
 		/* Hooks for Submission Shortcodes

@@ -773,7 +773,6 @@ body {
 .ps-widget__members-item picture source[type="image/webp"],
 .ps-widget__members-item img {
   vertical-align: middle;
-  display: inline-block;
 }
 
 .ps-widget__members-item > a {

@@ -631,6 +631,11 @@ span#wpurp-timer-remaining {
         display: none;
     }
 
+    .tooltip-img picture source,
+    .tooltip-img img {
+        max-width:80px;
+    }
+
     .image-container,
     .info-container,
     .wpurp-recipe-instruction-container,

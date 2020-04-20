@@ -36,7 +36,8 @@
 				// 'class'		=> 'rating-form modal fancy',
 				'class'		=> 'rating-form modal big-font uppercase',
 				'title'		=> __('Rate this recipe', 'crm'),
-				'img'		=> CHILD_THEME_URL . '/images/popup-icons/goutumetre.png'
+				'img'		=> CHILD_THEME_URL . '/images/popup-icons/goutumetre.png',
+				'imgdir'	=> CHILD_THEME_PATH . '/images/popup-icons'
 			);
 			Tooltip::display($args);
 			// }

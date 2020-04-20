@@ -74,7 +74,8 @@ class Tooltip {
 		'id'		=> used to trigger the content visibility in case the content is not a sibling of the trigger
 		'class'		=> 'class1 class2 ...'
 		'title'		=> tooltip title
-		'img'		=> tooltip image
+		'img'		=> (optional) tooltip image complete url
+		'imgdir'	=> (optional) tooltip image dir path
 		)
 
 		The tooltip trigger is build using the following HTML markup  :
@@ -85,6 +86,12 @@ class Tooltip {
 
 	*/
 	/* =================================================================*/
+	/**
+	 * GET TOOLTIP CONTENT
+	 *
+	 * @param  mixed $args
+	 * @return void
+	 */
 	public static function getContent( $args ) {
 
 		// Default values
@@ -132,9 +139,24 @@ class Tooltip {
 	}
 
 
-	/* 	=================================================================
-	   		Displays Tooltip Content Function
-		=================================================================*/
+
+	/**
+	 * Display Tooltip Content Function
+	 *
+	 * * 'content' 	=> tooltip content
+	 * * 'valign' 	=> 'above', 'below'
+	 * * 'halign'	=> 'left', 'right'
+	 * * 'action'	=> 'click', 'hover'
+	 * * 'callout'	=> false, 'yellow', ... any other valid color theme
+	 * * 'id'		=> used to trigger the content visibility in case the content is not a sibling of the trigger
+	 * * 'class'		=> 'class1 class2 ...'
+	 * * 'title'		=> tooltip title
+	 * * 'img'		=> (optional) tooltip image complete url
+	 * * 'imgdir'	=> (optional) tooltip image dir path
+	 *
+	 * @param  mixed $args
+	 * @return void
+	 */
 	public static function display( $args) {
 		echo self::getContent( $args );
 	}

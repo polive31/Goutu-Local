@@ -67,8 +67,9 @@ class Custom_Post_Management {
 		add_filter( 'the_content', 								array($Post_Template, 'add_lightbox_link'), 15 );
 
 		/* Remove private/protected title mention */
-		add_filter( 'private_title_format', 					array($Post_Template, 'title_format') );
-		add_filter( 'protected_title_format',					array($Post_Template, 'title_format') );
+		add_filter( 'genesis_post_title_text', 					array($Post_Template, 'escape_and_cleanup_title') );
+		add_filter( 'private_title_format', 					array($Post_Template, 'remove_status_prefix_from_title') );
+		add_filter( 'protected_title_format',					array($Post_Template, 'remove_status_prefix_from_title') );
 
 		/* Modified read more link */
 		add_filter( 'excerpt_more', 							array($Post_Template, 'foodie_pro_read_more_link' ) );

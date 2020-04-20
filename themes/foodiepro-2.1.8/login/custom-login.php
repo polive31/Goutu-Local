@@ -17,6 +17,17 @@ $classes[] = 'login_color-theme-' . LOGIN_COLOR_THEME;
 return $classes;
 }
 
+add_filter('login_errors', 'foodiepro_login_error_message');
+function foodiepro_login_error_message($error){
+    //check if that's the error you are looking for
+    $pos = strpos($error, 'incorrect');
+    if (is_int($pos)) {
+        //its the right error so you can overwrite it
+        $error = __('<strong>ERROR :</strong> Incorrect email address or password.','foodiepro');
+    }
+    return $error;
+}
+
 /* Sets login page color theme */
 add_action('login_enqueue_scripts', 'custom_login_style');
 function custom_login_style()

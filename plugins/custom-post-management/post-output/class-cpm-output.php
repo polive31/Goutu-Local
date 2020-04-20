@@ -41,7 +41,12 @@ class CPM_Output {
 	}
 
 
-	public function title_format($content) {
+	public function escape_and_cleanup_title($text) {
+		$text=esc_html(stripslashes($text));
+		return $text;
+	}
+
+	public function remove_status_prefix_from_title($content) {
 		return '%s';
 	}
 

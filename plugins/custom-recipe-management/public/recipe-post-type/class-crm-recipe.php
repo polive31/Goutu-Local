@@ -595,13 +595,7 @@ class CRM_Recipe {
         $description = '';
         $post = get_post($this->ID());
         $content = $post ? $post->post_content : '';
-        // $content = trim(preg_replace("/\[wpurp-searchable-recipe\][^\[]*\[\/wpurp-searchable-recipe\]/", "", $content));
-        // if (empty($content))
-        //     $description = $this->description();
-        // elseif ($target == 'form')
-        $description = $content;
-
-        $description = wp_kses_post($description);
+        $description = wp_kses_post($content);
         return $description;
     }
 

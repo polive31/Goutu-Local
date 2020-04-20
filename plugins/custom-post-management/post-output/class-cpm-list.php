@@ -51,7 +51,7 @@ class CPM_List {
 
             $item = '<tr class="post-list-row ' . $post->post_status . '">';
             $item .= '<td class="post-list-thumbnail"><a ' . $view_url . $view_title . '><img src="' . $image . '"></a></td>';
-            $item .= '<td class="post-list-title"><a ' . $view_url . $view_title . '>' . $post->post_title . '</a></td>';
+            $item .= '<td class="post-list-title"><a ' . $view_url . $view_title . '>' . get_the_title($post) . '</a></td>';
 
             if ($edit) {
                 $item .= '<td class="post-list-date"><span>' . $date_modified . '</span></td>';

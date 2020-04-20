@@ -3,7 +3,7 @@
 
 	<!-- Recipe description -->
 	<div class="recipe-container" id="intro">
-		<?= $recipe->output_description(); ?>
+		<?= wpautop($recipe->output_description()); ?>
 	</div>
 
 

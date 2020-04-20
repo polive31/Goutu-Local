@@ -2,7 +2,7 @@
 var xhr_autosave = null;
 var formUpdated = 0;
 
-const _longInterval=20000;
+const _longInterval=30000;
 
 jQuery(document).ready(function () {
 

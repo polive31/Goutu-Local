@@ -72,7 +72,9 @@ class CPM_Save
         if ($new) {
             $post['post_author'] = get_current_user_id();
         }
-
+        else {
+            $post['post_author'] = $updated_post->post_author;
+        }
 
         /* Set post status */
         $status='restored';
@@ -95,7 +97,7 @@ class CPM_Save
 
         /* Get post title */
         $title = empty($_POST['post_title']) ? __('Untitled', 'foodiepro') : $_POST['post_title'];
-        $title = sanitize_text_field( $title );
+        $title = sanitize_text_field($title);
         $post['post_title']=$title;
 
         /* Get post content */

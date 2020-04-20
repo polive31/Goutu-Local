@@ -104,7 +104,7 @@ class CRM_Recipe_Save extends CRM_Recipe {
                 $term = term_exists($ingredient['ingredient'], 'ingredient');
 
                 if ( empty($term) ) {
-                    $term = wp_insert_term( sanitize_title($ingredient['ingredient']) , 'ingredient');
+                    $term = wp_insert_term( sanitize_text_field($ingredient['ingredient']) , 'ingredient');
                 }
 
                 if (is_wp_error($term)) {

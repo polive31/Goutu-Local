@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2020-04-13 01:49+0200\n"
-"PO-Revision-Date: 2020-04-17 16:47+0200\n"
+"PO-Revision-Date: 2020-04-21 13:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -488,8 +488,7 @@ msgctxt "recipe"
 msgid ""
 "It is visible on the website, and appears on <a href=\"%s\">your blog</a>."
 msgstr ""
-"Elle est visible sur le site, et apparaît sur ton <a href=\"%s\">votre blog</"
-"a>."
+"Elle est visible sur le site, et apparaît sur <a href=\"%s\">votre blog</a>."
 
 #: includes/class-crm-assets.php:187
 #, php-format

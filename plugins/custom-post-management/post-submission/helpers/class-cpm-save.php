@@ -100,6 +100,10 @@ class CPM_Save
         $title = sanitize_text_field($title);
         $post['post_title']=$title;
 
+        /* Update post slug after title */
+        $post['post_name']= sanitize_title($title);
+
+
         /* Get post content */
         $content = isset($_POST['post_content']) ? $_POST['post_content'] : '';
         $post['post_content']= sanitize_textarea_field($content);

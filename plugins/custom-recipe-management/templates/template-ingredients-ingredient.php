@@ -20,10 +20,9 @@ $plural_data = $parts['plural'] ? ' data-singular="' . esc_attr($ingredient['ing
 $out .= '<span class="recipe-ingredient-name"' . $plural_data . '>';
 
 $closing_tag = '';
-$hide_link_meta = WPURP_Taxonomy_MetaData::get('ingredient', $parts['tax'], 'hide_link') == '1';
-$hide_link = $parts['tax'] ? $hide_link_meta : true;
-if (!empty($taxonomy) && !$hide_link && $target != 'print') {
-$out .= '<a href="' . get_term_link($parts['tax'], 'ingredient') . '">';
+$hide_link = WPURP_Taxonomy_MetaData::get('ingredient', $parts['tax'], 'hide_link') == '1';
+if ( !empty($parts['tax']) && empty($hide_link) && $target != 'print') {
+    $out .= '<a href="' . get_term_link($parts['tax'], 'ingredient') . '">';
     $closing_tag = '</a>';
 }
 
@@ -35,7 +34,7 @@ $out .= '</span>';
 
 // INGREDIENT "NOTES"
 if (!empty($ingredient['notes'])) {
-    $out .= ' <span class="recipe-ingredient-notes">' . $ingredient['notes'] . '</span>';
+    $out .= ' <span class="recipe-ingredient-notes">' . do_shortcode($ingredient['notes']) . '</span>';
 }
 
 echo $out;

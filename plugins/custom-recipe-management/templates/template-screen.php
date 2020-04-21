@@ -3,7 +3,7 @@
 
 	<!-- Recipe description -->
 	<div class="recipe-container" id="intro">
-		<?= wpautop($recipe->output_description()); ?>
+		<?= wpautop(do_shortcode($recipe->output_description())); ?>
 	</div>
 
 
@@ -161,7 +161,7 @@
 	?>
 		<div class="recipe-container" id="general">
 			<h3> <?= __('Notes', 'crm'); ?> </h3>
-			<div class="label-container"><?= $recipe->notes() ?></div>
+			<div class="label-container"><?= wpautop(do_shortcode($recipe->notes())); ?></div>
 		</div>
 	<?php }
 	?>

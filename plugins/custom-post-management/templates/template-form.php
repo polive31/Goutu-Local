@@ -45,7 +45,6 @@
     <div class="taxonomy-select-spinner"><?= foodiepro_get_icon('spinner-dots'); ?></div>
     <div class="taxonomy-select-boxes nodisplay">
         <?php
-        $post_id = $post->ID;
         $args = compact('post_id', 'required_fields', 'post_type');
         CPM_Assets::echo_template_part('form', 'taxonomies', $args);
         ?>

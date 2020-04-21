@@ -3,12 +3,11 @@
 
 	<!-- Recipe description -->
 	<div class="recipe-container" id="intro">
-		<?= wpautop(do_shortcode($recipe->output_description())); ?>
+		<?= do_shortcode( $recipe->post_content() ); ?>
 	</div>
 
 
 	<?php
-
 	$args = array('recipe' => $recipe);
 	CRM_Assets::echo_template_part('toolbar', false, $args);
 	?>
@@ -161,7 +160,7 @@
 	?>
 		<div class="recipe-container" id="general">
 			<h3> <?= __('Notes', 'crm'); ?> </h3>
-			<div class="label-container"><?= wpautop(do_shortcode($recipe->notes())); ?></div>
+			<div class="label-container"><?= do_shortcode( $recipe->notes() ); ?></div>
 		</div>
 	<?php }
 	?>

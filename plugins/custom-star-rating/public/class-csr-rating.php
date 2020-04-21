@@ -215,7 +215,7 @@ class CSR_Rating
 			$count += $stats[$cat]['votes'] * $values['weight'];
 		}
 		$global_stats = array(
-			'rating'	=> round($rating / $count, 1),
+			'rating'	=> $count?round($rating / $count, 1):0,
 			'votes'		=> $votes
 		);
 		return $global_stats;

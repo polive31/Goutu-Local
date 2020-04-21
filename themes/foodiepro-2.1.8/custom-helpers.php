@@ -12,6 +12,8 @@ define(
 	array(
 		'a' => array(
 			'href' => true,
+			'class' => true,
+			'id' => true,
 			'title' => true,
 		),
 		'abbr' => array(
@@ -32,6 +34,12 @@ define(
 		),
 		'em' => array(),
 		'i' => array(),
+		'img' => array(
+			'src' => true,
+			'class' => true,
+			'id' => true,
+			'title' => true,
+		),
 		'p' => array(
 			'class' => true,
 		),
@@ -501,19 +509,21 @@ function foodiepro_register_script($handle, $file = '', $uri = CHILD_THEME_URL, 
 /**
  * foodiepro_enqueue_script
  *
- * @param  mixed $handle
- * @param  mixed $file
- * @param  mixed $uri
- * @param  mixed $dir
- * @param  mixed $deps
- * @param  mixed $version
- * @param  mixed $footer
+ * @param  string $handle
+ * @param  string $uri (child theme url)
+ * this must contain the path towards external scripts
+ * @param  string $dir (child theme path)
+ * @param  string $file ('')
+ * @param  array $deps ( array() )
+ * @param  string $version ( child theme version)
+ * @param  boolean $footer ( false)
  * @return void
  */
 function foodiepro_enqueue_script($handle, $file = '', $uri = CHILD_THEME_URL, $dir = CHILD_THEME_PATH, $deps = array(), $version = CHILD_THEME_VERSION, $footer = false)
 {
 	if (is_array($handle)) {
 		$uri = CHILD_THEME_URL;
+		$file = '';
 		$dir = CHILD_THEME_PATH;
 		$deps = array();
 		$version = CHILD_THEME_VERSION;
@@ -521,12 +531,13 @@ function foodiepro_enqueue_script($handle, $file = '', $uri = CHILD_THEME_URL, $
 		extract($handle);
 	}
 
-	if (!strpos($file, '.min.js')) {
+	if ( !empty($file) && !foodiepro_contains($file, '.min.js') ) {
 		$minfile = str_replace('.js', '.min.js', $file);
 		if (file_exists($dir . $minfile) && WP_MINIFY) {
 			$file = $minfile;
 		}
 	}
+
 	wp_enqueue_script($handle, $uri . $file, $deps, $version, $footer);
 
 	if (!empty($data)) {
@@ -673,9 +684,9 @@ function output_picture_markup($url, $path, $name, $ext = null)
 /**
  * foodiepro_contains
  *
- * @param  mixed $haystack
- * @param  mixed $needles
- * @return void
+ * @param  string $haystack
+ * @param  string $needles (one or more, separated by "|" )
+ * @return boolean
  */
 function foodiepro_contains( $haystack, $needles ) {
 	if ( strpos($needles, '|') ) {

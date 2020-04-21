@@ -3,9 +3,14 @@
 	<link href="<?= $stylesheet_uri; ?>" rel="stylesheet" type="text/css">
 	<link href="<?= $js_uri; ?>" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans">
+	<script>
+		window.onload = function() {
+			window.print();
+		}
+	</script>
 </head>
 
-<body onload="window.print()">
+<body>
 	<div class="recipe wpurp-container">
 		<!-- Class .wpurp-container important for adjustable servings javascript -->
 		<span class="wpurp-recipe-title"><?= $recipe->title(); ?></span>

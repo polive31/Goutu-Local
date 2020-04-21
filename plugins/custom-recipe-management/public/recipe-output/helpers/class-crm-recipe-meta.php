@@ -58,6 +58,8 @@ class CRM_Recipe_Meta {
     public function get_description() {
         $description = get_post_meta($this->post_id, '_yoast_wpseo_metadesc', true);
         if (empty($description))
+            $description = $this->recipe->post_content();
+        if (empty($description))
             $description = $this->recipe->description();
         if (empty($description))
             $description='';

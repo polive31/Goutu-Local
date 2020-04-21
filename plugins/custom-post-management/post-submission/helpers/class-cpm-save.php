@@ -69,12 +69,10 @@ class CPM_Save
         $post['post_type'] = $_POST['submit_post_type'];
 
         /* Set post author (don't change on existing posts) */
-        if ($new) {
+        if ($new)
             $post['post_author'] = get_current_user_id();
-        }
-        else {
+        else
             $post['post_author'] = $updated_post->post_author;
-        }
 
         /* Set post status */
         $status='restored';
@@ -103,14 +101,17 @@ class CPM_Save
         /* Update post slug after title */
         $post['post_name']= sanitize_title($title);
 
-
         /* Get post content */
         $content = isset($_POST['post_content']) ? $_POST['post_content'] : '';
-        $post['post_content']= sanitize_textarea_field($content);
+        $post['post_content']=foodiepro_esc($content);
 
-        // Save post
-        $post_id = wp_insert_post($post, true);
-        // clean_post_cache($post_id);
+        /* Save post : although insert_post can update an existing post, it will also modify
+            the creation date, which is not wanted */
+        if ($new)
+            $post_id = wp_insert_post($post, true);
+        else
+            $post_id = wp_update_post($post, true);
+
 
         return $post_id;
     }

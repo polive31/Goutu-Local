@@ -124,7 +124,7 @@ class CRM_Recipe_Save extends CRM_Recipe {
 
                 $ingredient['group']= sanitize_text_field($ingredient['group']);
                 $ingredient['unit']=sanitize_text_field($ingredient['unit']);
-                $ingredient['notes']=sanitize_textarea_field($ingredient['notes']);
+                $ingredient['notes']=foodiepro_esc($ingredient['notes']);
                 $non_empty_ingredients[] = $ingredient;
             }
         }

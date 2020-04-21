@@ -167,8 +167,6 @@ class CRM_Recipe {
 
     /* TIME
     -----------------------------------------------------------------------*/
-
-
     private function minutes2dhm($minutes)
     {
         $days = floor($minutes / 1440);
@@ -228,36 +226,6 @@ class CRM_Recipe {
             $meta = 'PT' . $amount . 'H';
         }
         return $meta;
-    }
-
-    /* OTHER GETTERS
-    ----------------------------------------------------------------------------*/
-    public function author()
-    {
-        $author_id = $this->post->post_author;
-
-        if( $author_id == 0 ) {
-            return $this->meta( 'recipe-author' );
-        } else {
-            $author = get_userdata( $this->post->post_author );
-
-            return $author->data->display_name;
-        }
-    }
-
-    public function date()
-    {
-        return $this->post->post_date;
-    }
-
-    public function description()
-    {
-        return $this->meta( 'recipe_description' );
-    }
-
-    public function excerpt()
-    {
-        return $this->post->post_excerpt;
     }
 
 
@@ -401,7 +369,7 @@ class CRM_Recipe {
 
 
 
-    /* OTHER
+    /* MISC GETTERS
     ----------------------------------------------------------------------- */
 
     public function regex_replace_serialize( $match )
@@ -437,9 +405,19 @@ class CRM_Recipe {
         return $nutritional;
     }
 
+    public function legacy()
+    {
+        return empty($this->post->post_content);
+    }
+
     public function post_content()
     {
         return $this->post->post_content;
+    }
+
+    public function description()
+    {
+        return $this->meta('recipe_description');
     }
 
     public function post_status()
@@ -447,6 +425,29 @@ class CRM_Recipe {
         return $this->post->post_status;
     }
 
+    public function author()
+    {
+        $author_id = $this->post->post_author;
+
+        if ($author_id == 0) {
+            return $this->meta('recipe-author');
+        } else {
+            $author = get_userdata($this->post->post_author);
+
+            return $author->data->display_name;
+        }
+    }
+
+    public function date()
+    {
+        return $this->post->post_date;
+    }
+
+
+    public function excerpt()
+    {
+        return $this->post->post_excerpt;
+    }
 
 
     public function servings()
@@ -580,25 +581,6 @@ class CRM_Recipe {
 
     /* PUBLIC Functions
     -------------------------------------------------------------*/
-
-    /**
-     * Description output in recipe display
-     * In this case, we don't output the description whenever it is already saved
-     * within the post's content (new scheme)
-     * however if the target is the submission form, then the content is output
-     *
-     * @param  mixed $target
-     * @return void
-     */
-    public function output_description()
-    {
-        $description = '';
-        $post = get_post($this->ID());
-        $content = $post ? $post->post_content : '';
-        $description = wp_kses_post($content);
-        return $description;
-    }
-
     public function days($type)
     {
         $meta = "recipe_{$type}_time";

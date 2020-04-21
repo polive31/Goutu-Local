@@ -167,6 +167,7 @@ class CPM_Assets {
 				'footer'			=> true,
 				'location'			=> array('post_form'),
 			),
+			/* LOCAL VERSION OF TINYMCE */
 			'cpm-tinymce'		=> array(
 				'file'				=> 'vendor/tinymce/tinymce.min.js',
 				'uri'				=> self::$PLUGIN_URI,
@@ -175,6 +176,14 @@ class CPM_Assets {
 				'footer'			=> true,
 				'location'			=> array('post_form'),
 			),
+			/* CLOUD-BASED VERSION OF TINYMCE */
+			// 'cpm-tinymce'		=> array(
+			// 	'file'				=> 'https://cdn.tiny.cloud/1/b5likm29r9k8p1nipizqykdpy6qpiw6li1wc3tqmog5bx9it/tinymce/5/tinymce.min.js',
+			// 	'uri'				=> '',
+			// 	'deps'				=> array(),
+			// 	'footer'			=> true,
+			// 	'location'			=> array('post_form'),
+			// ),
 		);
 		self::$enqueued_scripts = apply_filters( 'cpm_enqueued_scripts', $default_enqueued_scripts );
 

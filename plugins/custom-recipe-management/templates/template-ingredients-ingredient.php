@@ -7,7 +7,7 @@ $parts = CRM_Ingredient::get_ingredient_parts($ingredient, $ratio);
 $out = '<span class="recipe-ingredient-quantity-unit">';
     $out .= '<span class="recipe-ingredient-quantity" data-normalized="' . $parts['amount_normalized'] . '" data-fraction="' . $parts['fraction'] . '" data-original="' . $ingredient['amount'] . '">';
         if ( $target == 'print' )
-            $out .= $parts['amount'];// Takes actual servings into account ($ratio)
+            $out .= $parts['amount']?$parts['amount']:'';// Takes actual servings into account ($ratio)
         else
             $out .= $ingredient['amount'];
         $out .= '</span>';

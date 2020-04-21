@@ -47,8 +47,9 @@ jQuery(document).ready(function() {
         }
     }
 
+    /* LOCAL VERSION OF TINYMCE */
     tinymce.init({
-        selector: '#recipe_description, #recipe_notes',
+        selector: '#post_content, #recipe_notes',
         theme: 'modern',
         language: 'fr_FR',
         statusbar: false,
@@ -56,7 +57,7 @@ jQuery(document).ready(function() {
         toolbar: 'undo redo | styleselect | bold italic underline | link image | alignleft aligncenter alignright | bullist | searchreplace',
         plugins: 'autoresize link spellchecker searchreplace placeholder lists',
         autoresize_bottom_margin : 20,
-        remove_linebreaks: false,
+        remove_linebreaks: true,
         placeholder_attrs : {style: {
                 position: 'absolute',
                 top:'5px',
@@ -70,6 +71,17 @@ jQuery(document).ready(function() {
             }
         }
     });
+
+    /* CLOUD-BASED VERSION OF TINYMCE */
+    // tinymce.init({
+    //     selector: '#post_content, #recipe_notes',
+    //     plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+    //     toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
+    //     toolbar_mode: 'floating',
+    //     tinycomments_mode: 'embedded',
+    //     tinycomments_author: 'Author name',
+    // });
+
 
     // jQuery('#wpurp-insert-recipe').on('click', function () {
     //     var shortcode = '[ultimate-recipe id=';

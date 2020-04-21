@@ -263,62 +263,6 @@ class CPM_Submission
     }
 
 
-
-    //Can be called either from AJAX or during form submission
-    /**
-     * save_post
-     *
-     * @param  mixed $type
-     * @param  mixed $_POST
-     * Array('post_id', '$type_title', '$type_content')
-     * @return void
-     */
-    public static function save_post()
-    {
-        // Check if updating
-        $updating = false;
-        $type = $_POST['submit_post_type'];
-        $post_status = 'auto-draft';
-        $updating_id = isset($_POST['submit_post_id']) ? intval($_POST['submit_post_id']) : false;
-        if ($updating_id) {
-            $updating_post = get_post($updating_id);
-            if ($updating_post->post_type == $type && $updating_post->post_status == 'auto-draft') {
-                $post_status = 'restored';
-                $updating = true;
-            } elseif ($updating_post->post_type == $type && ($updating_post->post_author == get_current_user_id() || current_user_can('administrator'))) {
-                $post_status = $updating_post->post_status;
-                $updating = true;
-            }
-        }
-
-        $title = isset($_POST['post_title']) ? $_POST['post_title'] : '';
-        if (!$title) {
-            $title = __('Untitled', 'foodiepro');
-        } else {
-            $title = sanitize_text_field($title);
-        }
-        $content = isset($_POST['post_content']) ? $_POST['post_content'] : '';
-
-        $post = array(
-            'post_title' => $title,
-            'post_type' => $type,
-            'post_status' => $post_status,
-            'post_content' => $content,
-        );
-
-        // Save post
-        if ($updating) {
-            $post['ID'] = $updating_id;
-            $post_id = $updating_id;
-            wp_update_post($post);
-        } else {
-            $post['post_author'] = get_current_user_id();
-            $post_id = wp_insert_post($post, true);
-        }
-        clean_post_cache($post_id);
-        return $post_id;
-    }
-
     public function js_alert_disable()
     {
     ?>
@@ -328,7 +272,7 @@ class CPM_Submission
                 formSubmitting = true;
             });
         </script>
-<?php
+    <?php
     }
 
 

@@ -54,7 +54,7 @@ class CustomPeepsoMembers extends WP_Widget
 		$mutual = $mutual && is_user_logged_in();
 
 		// $size = (!empty($instance['thumbnail']))? $instance['thumbnail']:'full';
-		$size = 'full';
+		$size = 'small';
 		$link = false;
 
 		if ($query == 'latest') {
@@ -79,8 +79,6 @@ class CustomPeepsoMembers extends WP_Widget
 			// Don't display widget if some conditions aren't met
 			if ( !is_user_logged_in() && foodiepro_contains($query, 'current') )
 				return;
-
-
 
 			$display_params = $this->get_friends_display_params($query, $instance, $mutual);
 
@@ -121,16 +119,14 @@ class CustomPeepsoMembers extends WP_Widget
 
 			?>
 				<div class="ps-widget__members-item">
-					<a class="ps-avatar ps-avatar--<?= $size; ?>" href="<?= $peepsoUser->get_profileurl(); ?>" title="<?= ucfirst($peepsoUser->get_nicename()); ?>">
-						<?= PeepsoHelpers::get_avatar(array(
-							'user'		=> $peepsoUser,
-							'imgclass'	=> 'ps-name-tips',
-							'imgid'		=> 'square',
-							'link'		=> 'profile',
-							'size'		=> 'small',
-							'title'		=> ucfirst($peepsoUser->get_nicename()),
-						)); ?>
-					</a>
+					<?= PeepsoHelpers::get_avatar(array(
+						'user'		=> $peepsoUser,
+						'imgclass'	=> 'ps-name-tips',
+						'imgid'		=> 'square',
+						'link'		=> 'profile',
+						'size'		=> $size,
+						'title'		=> ucfirst($peepsoUser->get_nicename()),
+					)); ?>
 				</div>
 			<?php } ?>
 		</div>

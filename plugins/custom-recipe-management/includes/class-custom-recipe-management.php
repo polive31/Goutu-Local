@@ -102,7 +102,6 @@ class Custom_Recipe_Management {
         add_filter('cpm_list_dropdown_widget_args',             array( $Favorite, 'cpm_list_dropdown_widget_args_cb'), 10, 2 );
 
 
-
         /* Hooks for CRM_Submission
         ------------------------------------------------------------- */
         // Create specific hooks for recipe submission

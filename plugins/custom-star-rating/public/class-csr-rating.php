@@ -249,7 +249,7 @@ class CSR_Rating
 	 * @param  mixed $cat_id
 	 * @return void
 	 */
-	static function get_comment_rating($comment_id, $cat_id = 'rating')
+	public static function get_comment_rating($comment_id, $cat_id = 'rating')
 	{
 		$rating = get_comment_meta($comment_id, self::COMMENT_RATING_META . $cat_id, true);
 		return $rating;
@@ -262,7 +262,7 @@ class CSR_Rating
 	 *
 	 * @return void
 	 */
-	static function get_user_ip()
+	private static function get_user_ip()
 	{
 		if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
 			//check ip from share internet

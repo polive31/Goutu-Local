@@ -92,21 +92,36 @@ class CRM_Recipe_Meta {
     }
 
     private function get_reviews() {
-        $rating='';
-        $body='';
-        $name='';
-        $review = array(
+        $reviews=array();
+        $comments = get_comments( array(
+            'post_id'   => $this->recipe->ID(),
+            'status'    => 'approve',
+        ));
+        foreach ($comments as $comment) {
+            $name=$comment->comment_author;
+            $body=$comment->comment_content;
+            $rating=class_exists('CSR_Rating')?CSR_Rating::get_comment_rating($comment->comment_ID):0;
+            $reviews[]=$this->get_review( $name, $body, $rating );
+        }
+        return $reviews;
+    }
+
+    private function get_review( $name, $body, $rating) {
+        $template = array(
             '@type'             => 'Review',
-            'reviewRating'      => array(
-                '@type'         => 'Rating',
-                'ratingValue'   => $rating,
-            ),
             'author'            => array(
                 '@type'         => 'Person',
                 'name'          => $name,
             ),
             'reviewBody'        => $body,
         );
+        if ($rating) {
+            $template['reviewRating']=array(
+                '@type'         => 'Rating',
+                'ratingValue'   => $rating,
+            );
+        }
+        return $template;
     }
 
     private function get_ingredients() {

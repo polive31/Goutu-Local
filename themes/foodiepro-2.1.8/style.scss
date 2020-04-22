@@ -975,6 +975,8 @@ cite {
 
 img {
     height: auto;
+    //IMPORTANT : max-width to prevent overflow or container width increase
+    max-width: 100%;
 }
 
 .featured-content img,
@@ -3018,14 +3020,14 @@ ul.text-image-list img.alignleft {
 /* Ingredient archive : months display */
 
 table.ingredient-months {
-    /* width: 100%; */
+    width: 100%; //Important
     border-spacing: 10px;
     border-collapse: separate;
 }
 
 .ingredient-months td {
+    /* Do not set any min-width here otherwise it'll create issues on smartphone */
     font-family: monospace;
-    min-width: 50px;
     text-align: center;
     padding: 10px 0;
     background-color: #dcd6ca;

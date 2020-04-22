@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 define('CHILD_THEME_NAME', 'Foodie Pro Theme');
 define('CHILD_THEME_DEVELOPER', 'Shay Bocks/Pascal Olive');
 define('CHILD_THEME_OPTIONS', get_option('foodiepro'));
-define('CHILD_THEME_VERSION', ((bool)CHILD_THEME_OPTIONS['reload'])?time():'2.4.01');
+define('CHILD_THEME_VERSION', ((bool)CHILD_THEME_OPTIONS['reload'])?time():'2.4.02');
 define('CHILD_THEME_URL', get_stylesheet_directory_uri());
 define('CHILD_THEME_PATH', get_stylesheet_directory());
 define('DEFAULT_CHILD_COLOR_THEME', 'spring');
@@ -354,25 +354,38 @@ remove_action('wp_head', 'genesis_load_favicon');
 /** Adding custom Favicon */
 add_action('genesis_meta', 'custom_favicon_links');
 
-function custom_favicon_links()
-{
+// function custom_favicon_links_bak()
+// {
+// 	$path = CHILD_THEME_URL . '/images/favicon';
+// 	echo sprintf('<link rel="apple-touch-icon" sizes="57x57" href="%s/apple-icon-57x57.png">', $path);
+// 	echo sprintf('<link rel="apple-touch-icon" sizes="60x60" href="%s/apple-icon-60x60.png">', $path);
+// 	echo sprintf('<link rel="apple-touch-icon" sizes="72x72" href="%s/apple-icon-72x72.png">', $path);
+// 	echo sprintf('<link rel="apple-touch-icon" sizes="76x76" href="%s/apple-icon-76x76.png">', $path);
+// 	echo sprintf('<link rel="apple-touch-icon" sizes="114x114" href="%s/apple-icon-114x114.png">', $path);
+// 	echo sprintf('<link rel="apple-touch-icon" sizes="120x120" href="%s/apple-icon-120x120.png">', $path);
+// 	echo sprintf('<link rel="apple-touch-icon" sizes="144x144" href="%s/apple-icon-144x144.png">', $path);
+// 	echo sprintf('<link rel="apple-touch-icon" sizes="152x152" href="%s/apple-icon-152x152.png">', $path);
+// 	echo sprintf('<link rel="apple-touch-icon" sizes="180x180" href="%s/apple-icon-180x180.png">', $path);
+// 	echo sprintf('<link rel="icon" type="image/png" sizes="192x192" href="%s/android-icon-192x192.png">', $path);
+// 	echo sprintf('<link rel="icon" type="image/png" sizes="32x32" href="%s/favicon-32x32.png">', $path);
+// 	echo sprintf('<link rel="icon" type="image/png" sizes="96x96" href="%s/favicon-96x96.png">', $path);
+// 	echo sprintf('<link rel="icon" type="image/png" sizes="16x16" href="%s/favicon-16x16.png">', $path);
+// 	echo sprintf('<link rel="manifest" href="%s/manifest.json">', $path);
+// 	echo sprintf('<meta name="msapplication-TileColor" content="#ffffff">', $path);
+// 	echo sprintf('<meta name="msapplication-TileImage" content="%s/ms-icon-144x144.png">', $path);
+// 	echo sprintf('<meta name="theme-color" content="#ffffff">', $path);
+// }
+
+function custom_favicon_links() {
 	$path = CHILD_THEME_URL . '/images/favicon';
-	echo sprintf('<link rel="apple-touch-icon" sizes="57x57" href="%s/apple-icon-57x57.png">', $path);
-	echo sprintf('<link rel="apple-touch-icon" sizes="60x60" href="%s/apple-icon-60x60.png">', $path);
-	echo sprintf('<link rel="apple-touch-icon" sizes="72x72" href="%s/apple-icon-72x72.png">', $path);
-	echo sprintf('<link rel="apple-touch-icon" sizes="76x76" href="%s/apple-icon-76x76.png">', $path);
-	echo sprintf('<link rel="apple-touch-icon" sizes="114x114" href="%s/apple-icon-114x114.png">', $path);
-	echo sprintf('<link rel="apple-touch-icon" sizes="120x120" href="%s/apple-icon-120x120.png">', $path);
-	echo sprintf('<link rel="apple-touch-icon" sizes="144x144" href="%s/apple-icon-144x144.png">', $path);
-	echo sprintf('<link rel="apple-touch-icon" sizes="152x152" href="%s/apple-icon-152x152.png">', $path);
-	echo sprintf('<link rel="apple-touch-icon" sizes="180x180" href="%s/apple-icon-180x180.png">', $path);
-	echo sprintf('<link rel="icon" type="image/png" sizes="192x192" href="%s/android-icon-192x192.png">', $path);
+	echo sprintf('<link rel="apple-touch-icon" sizes="180x180" href="%s/apple-touch-icon.png">', $path);
 	echo sprintf('<link rel="icon" type="image/png" sizes="32x32" href="%s/favicon-32x32.png">', $path);
-	echo sprintf('<link rel="icon" type="image/png" sizes="96x96" href="%s/favicon-96x96.png">', $path);
 	echo sprintf('<link rel="icon" type="image/png" sizes="16x16" href="%s/favicon-16x16.png">', $path);
-	echo sprintf('<link rel="manifest" href="%s/manifest.json">', $path);
-	echo sprintf('<meta name="msapplication-TileColor" content="#ffffff">', $path);
-	echo sprintf('<meta name="msapplication-TileImage" content="%s/ms-icon-144x144.png">', $path);
+	echo sprintf('<link rel="manifest" href="%s/site.webmanifest">', $path);
+	echo sprintf('<link rel="mask-icon" href="%s/safari-pinned-tab.svg" color="#5bbad5">', $path);
+	echo sprintf('<link rel="shortcut icon" href="%s/favicon.ico">', $path);
+	echo sprintf('<meta name="msapplication-TileColor" content="#ffc40d">', $path);
+	echo sprintf('<meta name="msapplication-config" content="%s/browserconfig.xml">', $path);
 	echo sprintf('<meta name="theme-color" content="#ffffff">', $path);
 }
 

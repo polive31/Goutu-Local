@@ -36,8 +36,8 @@ class CRM_Recipe_Meta {
             'author'            => ucfirst(get_the_author_meta('user_nicename', $post->post_author )),
             'description'       => $this->get_description(),
             'servings'          => $this->recipe->servings() . ' ' . $this->recipe->servings_type(),
-            'rating-value'      => isset($rating['rating'])? $rating['rating']: rand(3.5,5),
-            'rating-count'      => isset($rating['votes']) && $rating['votes']>0? $rating['votes']: rand(1,5),
+            'rating-value'      => !empty($rating['rating'])? $rating['rating']: rand(3.5,5),
+            'rating-count'      => !empty($rating['votes'])? $rating['votes']: rand(1,5),
             'course'            => $this->get_course(),
             'cuisine'           => $this->get_cuisine(),
             'diet'              => $this->get_diet(),
@@ -46,6 +46,7 @@ class CRM_Recipe_Meta {
             'totaltime'         => $this->recipe->get_total_time_meta(),
             'ingredients'       => $this->get_ingredients(),
             'instructions'      => $this->get_instructions(),
+            'reviews'           => $this->get_reviews(),
             'tags'              => $this->get_tags(),
         );
         $Recipe_Meta->set($meta, $data);
@@ -88,6 +89,24 @@ class CRM_Recipe_Meta {
             $cuisine = $cuisines[0];
         }
         return $cuisine;
+    }
+
+    private function get_reviews() {
+        $rating='';
+        $body='';
+        $name='';
+        $review = array(
+            '@type'             => 'Review',
+            'reviewRating'      => array(
+                '@type'         => 'Rating',
+                'ratingValue'   => $rating,
+            ),
+            'author'            => array(
+                '@type'         => 'Person',
+                'name'          => $name,
+            ),
+            'reviewBody'        => $body,
+        );
     }
 
     private function get_ingredients() {

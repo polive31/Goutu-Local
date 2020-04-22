@@ -46,7 +46,6 @@ class PeepsoHelpers  {
 		$title = '%s';
 		extract($args);
 
-
 		$suffix = CPO_Assets::get_avatar_suffix( $size );
 
 		if (!is_object($user))

@@ -107,6 +107,7 @@ class CSD_Assets
                 'recipeCategory'    => '%course%',
                 'recipeCuisine'     => '%cuisine%',
                 'suitableForDiet'   => '%diet%',
+                'review'            => '%reviews%',
                 'aggregateRating'   => array(
                     '@type'         => 'AggregateRating',
                     'ratingValue'   => '%rating-value%',

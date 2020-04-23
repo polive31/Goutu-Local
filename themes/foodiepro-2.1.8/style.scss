@@ -302,8 +302,7 @@ a.button,
 a.black-button,
 ul.wpuf-form li .wpuf-fields a.file-selector,
 a.comment-reply-link,
-a#cancel-comment-reply-link,
-.frontier-list-item-content#frontier-post-actions a {
+a#cancel-comment-reply-link {
     border-radius: 3px;
     /* P.O. custom */
     margin: 2px;
@@ -324,10 +323,6 @@ input[type="submit"].social-button,
 .social-button.unfav {
     display: inline-block;
 }
-
-/*.social-button.unfav .fa-thumbs-up {
-	color: #ffffff;
-}*/
 
 .social-button.unfav {
     /*color: #e56602;*/
@@ -2508,10 +2503,6 @@ span.ui-icon.ui-icon-triangle-1-s:before {
 
 /* TOOLBAR BUTTONS  */
 
-.share-buttons {
-    float: right;
-    padding: 10px 0;
-}
 
 .share-buttons span {
     display: inline-block;
@@ -2523,11 +2514,6 @@ span.ui-icon.ui-icon-triangle-1-s:before {
     text-transform: initial;
     padding-right: 10px;
     color: #555555;
-}
-
-.share-buttons li {
-    display: inline-block;
-    vertical-align: middle;
 }
 
 .button-caption {
@@ -4223,6 +4209,15 @@ p.comment-notes {
     max-width: 95%;
 }
 
+/* Custom Login Widget
+--------------------------------------------------------------*/
+.footer-widgets .share-icons-widget {
+    display: table;
+}
+
+.footer-widgets li.share-icons {
+    display: table-cell;
+}
 
 /* Custom Login Widget
 --------------------------------------------------------------*/

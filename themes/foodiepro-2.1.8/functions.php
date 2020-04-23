@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 define('CHILD_THEME_NAME', 'Foodie Pro Theme');
 define('CHILD_THEME_DEVELOPER', 'Shay Bocks/Pascal Olive');
 define('CHILD_THEME_OPTIONS', get_option('foodiepro'));
-define('CHILD_THEME_VERSION', ((bool)CHILD_THEME_OPTIONS['reload'])?time():'2.4.02');
+define('CHILD_THEME_VERSION', ((bool)CHILD_THEME_OPTIONS['reload'])?time():'2.4.03');
 define('CHILD_THEME_URL', get_stylesheet_directory_uri());
 define('CHILD_THEME_PATH', get_stylesheet_directory());
 define('DEFAULT_CHILD_COLOR_THEME', 'spring');
@@ -378,12 +378,14 @@ add_action('genesis_meta', 'custom_favicon_links');
 
 function custom_favicon_links() {
 	$path = CHILD_THEME_URL . '/images/favicon';
-	echo sprintf('<link rel="apple-touch-icon" sizes="180x180" href="%s/apple-touch-icon.png?v=2">', $path);
-	echo sprintf('<link rel="icon" type="image/png" sizes="32x32" href="%s/favicon-32x32.png?v=2">', $path);
-	echo sprintf('<link rel="icon" type="image/png" sizes="16x16" href="%s/favicon-16x16.png?v=2">', $path);
-	echo sprintf('<link rel="manifest" href="%s/site.webmanifest?v=2">', $path);
-	echo sprintf('<link rel="mask-icon" href="%s/safari-pinned-tab.svg?v=2" color="#5bbad5">', $path);
-	echo sprintf('<link rel="shortcut icon" href="%s/favicon.ico?v=2">', $path);
+	$favicon_version='2';
+
+	echo sprintf('<link rel="apple-touch-icon" sizes="180x180" href="%s/apple-touch-icon.png?v=' . $favicon_version . '">', $path);
+	echo sprintf('<link rel="icon" type="image/png" sizes="32x32" href="%s/favicon-32x32.png?v=' . $favicon_version . '">', $path);
+	echo sprintf('<link rel="icon" type="image/png" sizes="16x16" href="%s/favicon-16x16.png?v=' . $favicon_version . '">', $path);
+	echo sprintf('<link rel="manifest" href="%s/site.webmanifest">', $path);
+	echo sprintf('<link rel="mask-icon" href="%s/safari-pinned-tab.svg?v=' . $favicon_version . '" color="#5bbad5">', $path);
+	echo sprintf('<link rel="shortcut icon" href="%s/favicon.ico?v=' . $favicon_version . '">', $path);
 	echo sprintf('<meta name="msapplication-TileColor" content="#ffc40d">', $path);
 	echo sprintf('<meta name="msapplication-config" content="%s/browserconfig.xml">', $path);
 	echo sprintf('<meta name="theme-color" content="#ffffff">', $path);

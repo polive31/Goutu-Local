@@ -1,22 +1,16 @@
-
-/* Custom Social Sharing Buttons
-----------------------------------------------*/
+.share-icons-widget {
+    width: 100%;
+    display: inline-block;
+    text-align: right;
+}
 
 .share-icons {
 	display: inline-block;
-	margin: 10px 4px;
+	margin: 0 10px;
 }
 
 .share-icons {
-	-webkit-filter: grayscale(80%);
-	filter: grayscale(80%);
-	opacity:1;
-}
-
-.share-icons.bubble {
-	-webkit-filter: grayscale(60%);
-	filter: grayscale(60%);
-	opacity:1;
+	filter: grayscale(60%) brightness(95%);
 }
 
 .share-icons:hover {
@@ -26,9 +20,7 @@
 }
 
 .share-icons a {
-	display: block;
-	background-size: contain;
-	background-repeat: no-repeat;
+	display: inline-block;
 }
 
 .share-icons.big a {
@@ -42,13 +34,8 @@
 }
 
 .share-icons.small a {
-	width: 30px;
-	height: 30px;
-}
-
-.share-icons.bubble {
-	border-radius:50%;
-	padding:6px;
+	width: 40px;
+	height: 40px;
 }
 
 /* Social login plugin
@@ -59,58 +46,38 @@
 }
 
 .cssb.share-icons a {
-	background-image:url('../img/icons.png');
-	background-size: cover;
-}
-
-.cssb.share-icons#facebook {
-	background-color: #3c5b9b;
+	background-size: contain;
 }
 
 .cssb.share-icons#facebook a {
-	background-position-x: 0;
+	background: url("../img/facebook.svg") no-repeat center;
 }
 
-.cssb.share-icons#twitter {
-	background-color:#2daae1;
+.cssb.share-icons#twitter a {
+	background: url("../img/twitter.svg") no-repeat center;
 }
 
-.cssb.share-icons.small#twitter a {
-	background-position-x: -30px;
-}
-.cssb.share-icons.medium#twitter a {
-	background-position-x: -48px;
+.cssb.share-icons#mailto a {
+	background: url("../img/mail.svg") no-repeat center;
 }
 
-.cssb.share-icons#mailto {
-	background-color:#c0c0c0;
+.cssb.share-icons#pinterest a{
+	background: url("../img/pinterest.svg") no-repeat center;
 }
 
-.cssb.share-icons.small#mailto a {
-	background-position-x: -60px;
-}
-.cssb.share-icons.medium#mailto a {
-	background-position-x: -96px;
+.cssb.share-icons#whatsapp a {
+	background: url("../img/whatsapp.svg") no-repeat center;
 }
 
-.cssb.share-icons#pinterest {
-	background-color:#cb2027;
-}
+@media only screen and (max-width:420px) {
 
-.cssb.share-icons.small#pinterest a {
-	background-position-x: -90px;
-}
-.cssb.share-icons.medium#pinterest a {
-	background-position-x: -144px;
-}
+	.share-icons-widget {
+		display:table;
+	}
 
-.cssb.share-icons#whatsapp {
-	background-color:#2fb741;
-}
+	.share-icons {
+		display:table-cell;
+		text-align:center;
+	}
 
-.cssb.share-icons.small#whatsapp a {
-	background-position-x: -120px;
-}
-.cssb.share-icons.medium#whatsapp a {
-	background-position-x: -192px;
 }

@@ -8,8 +8,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class CustomSocialButtons {
 
-	protected static $onClick = 'onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=250,width=600\');return false;"';
-
 	protected static $networks = array(
 			'facebook',
 			'twitter',
@@ -41,10 +39,10 @@ class CustomSocialButtons {
 
 	public function get_sharing_buttons($target, $class, $networks) {
 
-		$html = '<ul class="cssb share-icons">';
+		$html = '<ul class="cssb share-icons-widget">';
 
 		if ($networks['facebook'])
-			$html = self::getFacebookButton($target, $class);
+			$html .= self::getFacebookButton($target, $class);
 
 		if ($networks['twitter'])
 			$html .= self::getTwitterButton($target, $class);
@@ -57,16 +55,6 @@ class CustomSocialButtons {
 
 		if ($networks['whatsapp'])
 			$html .= self::getWhatsappButton($target, $class);
-
-		// if ($networks['linkedin']) {
-		// 	$url = 'https://www.linkedin.com/shareArticle?mini=true&url='.$url.'&amp;title='.$title;
-		// 	$html .= '<li class="cssb share-icons ' . $class . '" id="linkedin"><a ' . self::$onClick . ' class="cssb-link cssb-linkedin" href="'.$url.'" target="_blank" title="LinkedIn">&nbsp;</a></li>';
-		// }
-
-		// if ($networks['buffer']) {
-		// 	$url = 'https://bufferapp.com/add?url='.$url.'&amp;text='.$title;
-		// 	$html .= '<li class="cssb share-icons ' . $class . '" id="buffer"><a ' . self::$onClick . ' class="cssb-link cssb-buffer" href="'.$url.'" target="_blank" title="Buffer">&nbsp;</a></li>';
-		// }
 
 		$html .= '</ul>';
 
@@ -85,18 +73,32 @@ class CustomSocialButtons {
 		else
 			$url=get_permalink();
 
-		return '<li class="cssb share-icons ' . $class . '" id="facebook"><a ' . self::$onClick . ' class="cssb-link cssb-facebook" href="'. self::getFacebookURL($url) . '" target="_blank" title="' . __('Share on Facebook','foodiepro') . '"> </a></li>';
+		return '<li class="cssb share-icons ' . $class . '" id="facebook"><a ' . self::onclick() . ' class="cssb-link cssb-facebook" href="'. self::getFacebookURL($url) . '" target="_blank" title="' . __('Share on Facebook','foodiepro') . '"> </a></li>';
 	}
 
 	public static function getFacebookURL( $url ) {
 		return 'https://www.facebook.com/sharer/sharer.php?u='.$url;
 	}
 
-	// Twitter Functions
+/* TWITTER
+--------------------------------------------------------*/
+	/**
+	 * twitterURL
+	 *
+	 * @param  mixed $post
+	 * @return void
+	 */
 	public static function twitterURL( $post ) {
 		return self::getTwitterURL( get_permalink($post), $post->post_title );
 	}
 
+	/**
+	 * getTwitterButton
+	 *
+	 * @param  mixed $target
+	 * @param  mixed $class
+	 * @return void
+	 */
 	public static function getTwitterButton( $target, $class ) {
 		if ($target=='site') {
 			$url=get_site_url(null,'','https');
@@ -111,22 +113,32 @@ class CustomSocialButtons {
 		// SEO Friendly current page title
 		// $title = do_shortcode('[seo-friendly-title]');
 
-		$html = '<li class="cssb share-icons ' . $class . '" id="twitter"><a ' . self::$onClick . ' class="cssb-link cssb-twitter" href="'. self::getTwitterURL($url,$title) .'" target="_blank" title="' . __('Share on Twitter','foodiepro') . '"></a></li>';
+		$html = '<li class="cssb share-icons ' . $class . '" id="twitter"><a ' . self::onclick() . ' class="cssb-link cssb-twitter" href="'. self::getTwitterURL($url,$title) .'" target="_blank" title="' . __('Share on Twitter','foodiepro') . '"></a></li>';
 		return $html;
 
 	}
 
+	/**
+	 * getTwitterURL
+	 *
+	 * @param  mixed $url
+	 * @param  mixed $title
+	 * @return void
+	 */
 	public static function getTwitterURL( $url, $title ) {
 		return 'https://twitter.com/intent/tweet/?text='.$title.'&amp;url='.$url; //.'&amp;via=';
 	}
 
+/* PINTEREST
+--------------------------------------------------------*/
 
-	// Pinterest URL
-	public static function pinterestURL( $post ) {
-		$thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'square-thumbnail' );
-		return self::getPinterestURL( get_permalink($post), $post->post_title, $thumb );
-	}
-
+	/**
+	 * getPinterestButton
+	 *
+	 * @param  mixed $target
+	 * @param  mixed $class
+	 * @return void
+	 */
 	public static function getPinterestButton($target, $class ) {
 		$thumb = array( foodiepro_get_site_logo_path() );
 		if ($target=='site') {
@@ -139,18 +151,38 @@ class CustomSocialButtons {
 			$title = get_the_title();
 			$thumb_id = get_post_thumbnail_id( $post->ID );
 			if ( $thumb_id )
-				$thumb = wp_get_attachment_image_src( $thumb_id, array(1000,1500) );
+			$thumb = wp_get_attachment_image_src( $thumb_id, array(1000,1500) );
 		}
-		$href = 'https://pinterest.com/pin/create/button/?url=' . $url . '&amp;media=' . $thumb[0] . '&amp;description=' . $title;
-		// SEO Friendly current page title
-		// $title = do_shortcode('[seo-friendly-title]');
 
-		return '<li class="cssb share-icons ' . $class . '" id="pinterest"><a ' . self::$onClick . ' class="cssb-link cssb-pinterest" href="' . $href . '" data-pin-custom="true" target="_blank" title="' . __('Pin It','foodiepro') . '"> </a></li>';
+		return '<li class="cssb share-icons ' . $class . '" id="pinterest"><a ' . self::onclick(500) . ' class="cssb-link cssb-pinterest" href="' . self::getPinterestURL($url,$title,$thumb) . '" data-pin-custom="true" target="_blank" title="' . __('Pin It','foodiepro') . '"> </a></li>';
 	}
 
 
-	// Mail functions
+	/**
+	 * Function used by csn mails
+	 *
+	 * @param  mixed $post
+	 * @return void
+	 */
+	public static function pinterestURL( $post ) {
+		$thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'square-thumbnail' );
+		return self::getPinterestURL( get_permalink($post), $post->post_title, $thumb );
+	}
 
+	/**
+	 * getPinterestURL
+	 *
+	 * @param  mixed $url
+	 * @param  mixed $title
+	 * @param  mixed $thumb
+	 * @return void
+	 */
+	public static function getPinterestURL( $url, $title, $thumb ) {
+		return 'https://pinterest.com/pin/create/button/?url='.$url.'&amp;media='. $thumb[0] .'&amp;description='. $title;
+	}
+
+/* MAIL
+--------------------------------------------------------*/
 	public static function mailURL( $post, $target ) {
 		$fields = self::getPostFields( $post, $target );
 		return rawurlencode( htmlspecialchars_decode( self::getMailURL( $fields ) ) );
@@ -166,7 +198,7 @@ class CustomSocialButtons {
 
 		$url = self::getMailURL( $fields );
 
-		$button = '<li class="cssb share-icons ' . $class . '" id="mailto"><a ' . self::$onClick . ' class="cssb-link cssb-mailto" href="' . $url . '" data-pin-custom="true" target="_blank" title="' . __('Share by email','foodiepro') . '"> </a></li>';
+		$button = '<li class="cssb share-icons ' . $class . '" id="mailto"><a ' . self::onclick(400) . ' class="cssb-link cssb-mailto" href="' . $url . '" data-pin-custom="true" target="_blank" title="' . __('Share by email','foodiepro') . '"> </a></li>';
 
 		return $button;
 	}
@@ -253,5 +285,12 @@ class CustomSocialButtons {
 				J\'ai' . $myaction . $thispost . ', et voudrais ' . $it . ' partager avec toi.';
 
 		return array('subject' => $subject, 'body' => $body, 'post-url' => $url);
+	}
+
+
+/* HELPERS
+-------------------------------------------------------------------------------------*/
+	private static function onclick( $height=250 ) {
+		return 'onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=' . strval($height) . ',width=600\');return false;"';
 	}
 }

@@ -129,8 +129,7 @@ class CustomSocialButtons {
 
 	public static function getPinterestButton($target, $class ) {
 
-		$thumb = array( do_shortcode('[site-logo]') );
-		// $thumb = array( get_custom_logo() );
+		$thumb = array( foodiepro_get_site_logo_path() );
 		if ($target=='site') {
 			$url=get_site_url(null,'','https');
 			$title = get_bloginfo('name') . ' - ' . get_bloginfo('description');

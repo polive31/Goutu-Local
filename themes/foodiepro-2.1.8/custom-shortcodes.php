@@ -9,9 +9,9 @@ if (!defined('ABSPATH')) {
 /* = SITE LOGO
 /* =================================================================*/
 add_shortcode('site-logo', 'foodiepro_get_site_logo_path');
-function foodiepro_get_site_logo_path( $atts ) {
-	$url = get_stylesheet_directory_uri();
-	$url = $url . '\images\fb-app-icon-512x512.png';
+function foodiepro_get_site_logo_path( $atts=array() ) {
+	$url = CHILD_THEME_URL;
+	$url = $url . '\images\favicon\fb-app-icon-512x512.png';
 	return $url;
 }
 

@@ -24,7 +24,6 @@ class Custom_Comment_Management {
 		-----------------------------------------------------------------*/
 		$CommentList = new CCM_Comments_List();
 
-
 		add_filter('edit_comment_link',                   		array( $CommentList, 'remove_comment_link') );
 
 		/* Add anchor to comments section title	*/
@@ -36,14 +35,14 @@ class Custom_Comment_Management {
 		add_filter( 'get_comment_author', 						array( $CommentList, 'add_comment_author_link'), 10, 3);
 
 		/* Move comment form on top of the comments list */
-		add_action( 'genesis_before_comments',                 	array( $CommentList,'move_comments_form'), 0 );
+		add_action( 'genesis_before_comments',                 	array( $CommentList, 'move_comments_form'), 0 );
 
 		/* Customize comment section title */
 		// add_filter( 'genesis_title_comments',                   array( $CommentList,'custom_comment_text') );
 
 		/* Customize navigation links */
-		add_filter( 'genesis_prev_comments_link_text',          array( $CommentList,'custom_comments_prev_link_text') );
-		add_filter( 'genesis_next_comments_link_text',          array( $CommentList,'custom_comments_next_link_text') );
+		add_filter( 'genesis_prev_comments_link_text',          array( $CommentList, 'custom_comments_prev_link_text') );
+		add_filter( 'genesis_next_comments_link_text',          array( $CommentList, 'custom_comments_next_link_text') );
 
 
 		/* Hooks for CSR_Form class

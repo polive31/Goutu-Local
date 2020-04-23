@@ -91,19 +91,21 @@ class CCM_Form
 
 	public function verify_comment_recaptcha($commentdata)
 	{
-		$captchaResult = CGR_Public::verify() || is_user_logged_in();
+		if (is_user_logged_in()) return;
+
+		$captchaResult = CGR_Public::verify();
 		if ($captchaResult == 'success')
 			return $commentdata;
 		else {
-			// wp_die( __( '<strong>ERROR</strong>: please complete the CAPTCHA verification.', 'foodiepro' ) );
-			$url = get_permalink($commentdata['comment_post_ID']);
-			$args = array(
-				'comment-id' 	=> $commentdata['comment_ID'],
-				'captcha'		=> $captchaResult
-			);
-			$url = add_query_arg($args, $url) . '#respond';
-			wp_redirect($url);
-			exit;
+			wp_die( __( '<strong>ERROR</strong>: please complete the CAPTCHA verification.', 'foodiepro' ) );
+			// $url = get_permalink($commentdata['comment_post_ID']);
+			// $args = array(
+			// 	'comment-id' 	=> $commentdata['comment_ID'],
+			// 	'captcha'		=> $captchaResult
+			// );
+			// $url = add_query_arg($args, $url) . '#respond';
+			// wp_redirect($url);
+			// exit;
 		}
 	}
 

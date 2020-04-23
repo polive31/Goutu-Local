@@ -128,7 +128,6 @@ class CustomSocialButtons {
 	}
 
 	public static function getPinterestButton($target, $class ) {
-
 		$thumb = array( foodiepro_get_site_logo_path() );
 		if ($target=='site') {
 			$url=get_site_url(null,'','https');
@@ -142,14 +141,11 @@ class CustomSocialButtons {
 			if ( $thumb_id )
 				$thumb = wp_get_attachment_image_src( $thumb_id, array(1000,1500) );
 		}
+		$href = 'https://pinterest.com/pin/create/button/?url=' . $url . '&amp;media=' . $thumb[0] . '&amp;description=' . $title;
 		// SEO Friendly current page title
 		// $title = do_shortcode('[seo-friendly-title]');
 
-		return '<li class="cssb share-icons ' . $class . '" id="pinterest"><a ' . self::$onClick . ' class="cssb-link cssb-pinterest" href="' . self::getPinterestURL($url,$title,$thumb) . '" data-pin-custom="true" target="_blank" title="' . __('Pin It','foodiepro') . '"> </a></li>';
-	}
-
-	public static function getPinterestURL( $url, $title, $thumb ) {
-		return 'https://pinterest.com/pin/create/button/?url='.$url.'&amp;media='. $thumb[0] .'&amp;description='. $title;
+		return '<li class="cssb share-icons ' . $class . '" id="pinterest"><a ' . self::$onClick . ' class="cssb-link cssb-pinterest" href="' . $href . '" data-pin-custom="true" target="_blank" title="' . __('Pin It','foodiepro') . '"> </a></li>';
 	}
 
 

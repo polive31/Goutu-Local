@@ -15,7 +15,7 @@ class CCM_Comments_List
 
 	public function move_comments_form()
 	{
-		if (is_singular('')) {
+		if (is_singular()) {
 			remove_action('genesis_comment_form', 'genesis_do_comment_form');
 			add_action('genesis_before_comments', 'genesis_do_comment_form');
 		}

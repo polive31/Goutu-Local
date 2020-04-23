@@ -130,6 +130,7 @@ class CustomSocialButtons {
 	public static function getPinterestButton($target, $class ) {
 
 		$thumb = array( do_shortcode('[site-logo]') );
+		// $thumb = array( get_custom_logo() );
 		if ($target=='site') {
 			$url=get_site_url(null,'','https');
 			$title = get_bloginfo('name') . ' - ' . get_bloginfo('description');
@@ -138,9 +139,9 @@ class CustomSocialButtons {
 			global $post;
 			$url=get_permalink();
 			$title = get_the_title();
-			$thumb_id = get_post_thumbnail_id( $post->ID, 'full' );
+			$thumb_id = get_post_thumbnail_id( $post->ID );
 			if ( $thumb_id )
-				$thumb = wp_get_attachment_image_src( $thumb_id );
+				$thumb = wp_get_attachment_image_src( $thumb_id, array(1000,1500) );
 		}
 		// SEO Friendly current page title
 		// $title = do_shortcode('[seo-friendly-title]');

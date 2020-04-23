@@ -66,7 +66,7 @@
 			<?php
 			$target = 'print';
 			$ingredients = $recipe->ingredients();
-			$ratio = $servings / $recipe->servings_normalized();
+			$ratio = $recipe->servings_normalized()?$servings / $recipe->servings_normalized():1;
 			$args = compact('ingredients', 'target', 'ratio');
 			CRM_Assets::echo_template_part('ingredients', false, $args);
 			?>

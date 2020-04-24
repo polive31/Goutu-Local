@@ -53,6 +53,13 @@ class CCF_Public
 		$hasError = false;
 		$captchaError = false;
 
+		$nameMissing = '';
+		$captchaMissing = '';
+		$emailMissing='';
+		$commentMissing='';
+		$subjectMissing='';
+		$privacyMissing='';
+
 		// FORM SUBMISSION
 		//If the form is submitted
 		if (isset($_POST['submitted'])) {
@@ -95,6 +102,7 @@ class CCF_Public
 			};
 
 			// Check Captcha
+			$captchaError=false;
 			if (self::get_captcha() ) {
 				if ( self::get_captcha()=='gcaptcha' ) {
 					$captchaError = (CGR_Public::verify() != 'success');
@@ -135,7 +143,7 @@ class CCF_Public
 							$headers .= 'Bcc:' . $email . "\r\n";
 
 						// $message .= "\r\n\r\n";
-						$message .= self::LINEBREAK;
+						$message = self::LINEBREAK;
 						$message .= 'Here is the message content : ';
 						$message .= $comments;
 						// $message .= "\r\n\r\n";
@@ -152,7 +160,11 @@ class CCF_Public
 
 		// FORM DISPLAY
 		if (isset($emailSent) && $emailSent == true) {
-			$homelink = do_shortcode('[permalink wp="home" text="' . __('Home page', 'foodiepro') . '"]');
+			// $homelink = do_shortcode('[permalink wp="home" text="' . __('Home page', 'foodiepro') . '"]');
+			$homelink=foodiepro_get_permalink( array(
+				'wp'	=> 'home',
+				'text'	=> __('Home page', 'foodiepro'),
+			));
 			?>
 			<p class="successbox">
 				<?php echo sprintf(__('Thanks %s,', 'foodiepro'), $name); ?><br>

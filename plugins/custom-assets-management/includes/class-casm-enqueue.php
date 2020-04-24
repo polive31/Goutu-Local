@@ -165,6 +165,10 @@ class CASM_Enqueue {
 				case 'home':
 					$thismet = is_front_page();
 					break;
+				case 'contact':
+					$template = get_page_template();
+					$thismet = $thismet || (strpos($template, 'contact') !== false);
+					break;
 				case 'social':
 					$url = $_SERVER["REQUEST_URI"];
 					$thismet = strpos($url, 'communaute') !== false;

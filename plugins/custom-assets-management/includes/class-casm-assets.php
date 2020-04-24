@@ -94,20 +94,27 @@ class CASM_Assets {
 				'peepso-comment'				=> array('logged-in' => true),
 		'peepso-bundle'							=> array('logged-in' => true),
 			'peepso'							=> array('logged-in' => true),
+				'peepso-elements'					=> array('logged-in' => true),
+				'peepso-sections'					=> array('logged-in' => true),
+				'peepso-modules'					=> array('logged-in' => true),
 			'peepso-window'						=> array('logged-in' => true),
-			'peepso-elements'					=> array('logged-in' => true),
-			'peepso-modules'					=> array('logged-in' => true),
 			'peepso-notification'				=> array('logged-in' => true),
-			'peepso-sections'					=> array('logged-in' => true),
 			'peepso-datepicker'					=> array('logged-in' => true),
 			'peepso-avatar'						=> array('logged-in' => true),
-				'peepso-fileupload'				=> array('logged-in' => true),
+			'peepso-fileupload'				=> array('logged-in' => true),
 			'peepso-avatar-dialog'				=> array('logged-in' => true),
-				'peepso-crop'					=> array('logged-in' => true),
-					'peepso-hammer'				=> array('logged-in' => true),
+			'peepso-crop'					=> array('logged-in' => true),
+			'peepso-hammer'				=> array('logged-in' => true),
 
 		// OTHER PEEPSO SCRIPTS
 		'peepso*'								=> array('logged-in' => true, 'page' => 'social'),
+		// PEEPSO ACCESS TO LOGGED-OUT USERS
+		'peepso-recaptcha'						=> array('page' => 'contact'),
+			'peepso'							=> array('page' => 'contact'),
+				'peepso-elements'				=> array('page' => 'contact'),
+				'peepso-sections'				=> array('page' => 'contact'),
+				'peepso-modules'				=> array('page' => 'contact'),
+
 
 		'peepso-markdown'						=> array('false' => ''),
 		'peepso-modal-comments'					=> array('false' => ''),

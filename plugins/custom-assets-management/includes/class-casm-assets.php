@@ -84,41 +84,37 @@ class CASM_Assets {
 		'hoverintent-js'						=> array('mobile' => false),
 		// jQuery
 		// 'jquery-ui-datepicker'				=> CRITICAL FOR PEEPSO NOTIFICATIONS & MENUS,
-		//Peepso
 
-		// PEEPSO CRITICAL SCRIPTS
+		// PEEPSO RECAPTCHA & DEPENDENCIES
+		'peepso-recaptcha'						=> array('or'=>array('logged-in' => true, 'page' => 'contact')),
+			'peepso'							=> array('or'=>array('logged-in' => true, 'page' => 'contact')),
+				'peepso-elements'				=> array('or'=>array('logged-in' => true, 'page' => 'contact')),
+				'peepso-sections'				=> array('or'=>array('logged-in' => true, 'page' => 'contact')),
+				'peepso-modules'				=> array('or'=>array('logged-in' => true, 'page' => 'contact')),
+
+		// PEEPSO WIDGETS SCRIPTS
 		'peepso-friends'						=> array('logged-in' => true),
 		'msgso'									=> array('logged-in' => true),
 			'peepso-activity'					=> array('logged-in' => true),
 				'peepso-activitystream'			=> array('logged-in' => true),
 				'peepso-comment'				=> array('logged-in' => true),
 		'peepso-bundle'							=> array('logged-in' => true),
-			'peepso'							=> array('logged-in' => true),
-				'peepso-elements'					=> array('logged-in' => true),
-				'peepso-sections'					=> array('logged-in' => true),
-				'peepso-modules'					=> array('logged-in' => true),
 			'peepso-window'						=> array('logged-in' => true),
 			'peepso-notification'				=> array('logged-in' => true),
 			'peepso-datepicker'					=> array('logged-in' => true),
 			'peepso-avatar'						=> array('logged-in' => true),
-			'peepso-fileupload'				=> array('logged-in' => true),
+			'peepso-fileupload'					=> array('logged-in' => true),
 			'peepso-avatar-dialog'				=> array('logged-in' => true),
-			'peepso-crop'					=> array('logged-in' => true),
-			'peepso-hammer'				=> array('logged-in' => true),
+			'peepso-crop'						=> array('logged-in' => true),
+			'peepso-hammer'						=> array('logged-in' => true),
 
 		// OTHER PEEPSO SCRIPTS
 		'peepso*'								=> array('logged-in' => true, 'page' => 'social'),
-		// PEEPSO ACCESS TO LOGGED-OUT USERS
-		// 'peepso-recaptcha'						=> array('page' => 'contact'),
-		// 	'peepso'							=> array('page' => 'contact'),
-		// 		'peepso-elements'				=> array('page' => 'contact'),
-		// 		'peepso-sections'				=> array('page' => 'contact'),
-		// 		'peepso-modules'				=> array('page' => 'contact'),
-
-
 		'peepso-markdown'						=> array('false' => ''),
 		'peepso-modal-comments'					=> array('false' => ''),
 		'peepso-friends-shortcode'				=> array('false' => ''),
+
+		// RESPONSIVE MENU PRO
 		// 'responsive-menu-pro-jquery-touchswipe'	=> array('mobile' => true), // Smart Slider lost
 		'responsive-menu-pro-noscroll'			=> array('mobile' => true), //
 

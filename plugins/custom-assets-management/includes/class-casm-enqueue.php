@@ -25,11 +25,11 @@ class CASM_Enqueue {
 
 	/*  LOAD CONDITIONALLY
 	/* ----------------------------------------------------------------*/
-	public function build_styles_lists()
+	public function build_styles_lists( )
 	{
 		$inspected_styles = CASM_Assets::css_if();
 		foreach ($inspected_styles as $style => $conditions) {
-			if ($this->match_all($conditions)) {
+			if ($this->match($conditions)) {
 				if ( isset($conditions['replace']) ) {
 					foodiepro_remove_style($style);
 					$args=$conditions['replace'];
@@ -51,7 +51,7 @@ class CASM_Enqueue {
 	{
 		$inspected_scripts = CASM_Assets::js_if();
 		foreach ($inspected_scripts as $script => $conditions) {
-			if ($this->match_all($conditions)) {
+			if ($this->match($conditions)) {
 				// All conditions are fulfilled, therefore script(s) will be enqueued, and won't be examined in footer again
 				CASM_Assets::js_if_remove($script);
 				if (strpos($script,'*')===false)
@@ -106,12 +106,21 @@ class CASM_Enqueue {
 		}
 	}
 
-	public function match_all($conditions)
+	/**
+	 * Parse conditions and determine result
+	 *
+	 * @param  mixed $conditions
+	 * @return void
+	 */
+	public function match($conditions, $or=false )
 	{
-		$met = true;
+		$met = $or?false:true;
 		foreach ($conditions as $type => $value) {
 			$thismet = true;
 			switch ($type) {
+				case 'or':
+					$thismet = $this->match($value, true);
+					break;
 				case 'true':
 					$thismet = true;
 					break;
@@ -151,7 +160,7 @@ class CASM_Enqueue {
 					$thismet = (bool) $value ? wp_is_mobile() : !wp_is_mobile();
 					break;
 			}
-			$met = $met && $thismet;
+			$met = $or?$met||$thismet:$met&&$thismet;
 		}
 		return $met;
 	}

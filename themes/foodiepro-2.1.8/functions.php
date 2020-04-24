@@ -255,16 +255,21 @@ function foodie_pro_includes()
 /* =================================================================*/
 /* =                  SCRIPTS & STYLES ENQUEUE
 /* =================================================================*/
-add_action('wp_enqueue_scripts', 	'enqueue_high_priority_assets', 10);
-add_action('wp_enqueue_scripts', 	'enqueue_low_priority_assets', 20);
 // add_action( 'wp_head', 				'typekit_inline');
-// Remove Google fonts loading
-// add_filter( 'foodie_pro_disable_google_fonts', '__return_true' );
+// function typekit_inline()
+// {
+	// 	if (wp_script_is('typekit', 'enqueued')) {
+		// 		echo '<script type="text/javascript">try{Typekit.load();}catch(e){}</script>';
+		// 	}
+		// }
+		// Remove Google fonts loading
+		// add_filter( 'foodie_pro_disable_google_fonts', '__return_true' );
 
+add_action('wp_enqueue_scripts', 	'enqueue_high_priority_assets', 10);
 function enqueue_high_priority_assets()
 {
 	/* Scripts enqueue
-		--------------------------------------------------- */
+	--------------------------------------------------- */
 	// .webp detection
 	foodiepro_enqueue_script('custom-modernizr', '/assets/js/modernizr-custom.js', CHILD_THEME_URL, CHILD_THEME_PATH, array(), CHILD_THEME_VERSION);
 	// Add general purpose scripts.
@@ -275,32 +280,35 @@ function enqueue_high_priority_assets()
 	// foodiepro_enqueue_script( 'one-signal', $js_uri, $js_path, 'one_signal.js', array(), CHILD_THEME_VERSION, true);
 
 	/* Styles enqueue
-		--------------------------------------------------- */
+	--------------------------------------------------- */
 	wp_enqueue_style('google-fonts', '//fonts.googleapis.com/css?family=Cabin|Amatic+SC:400,700|Oswald|Vollkorn:300,400', array(), CHILD_THEME_VERSION);
 	// wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Oswald|Vollkorn:300,400', array(), CHILD_THEME_VERSION );
 	// wp_enqueue_script( 'typekit', '//use.typekit.net/hen2swu.js', array(), '1.0.0' );
 	foodiepro_enqueue_style('child-theme-fonts', '/assets/css/fonts.css', CHILD_THEME_URL, CHILD_THEME_PATH, array('foodie-pro-theme'), CHILD_THEME_VERSION);
 }
 
-function typekit_inline()
-{
-	if (wp_script_is('typekit', 'enqueued')) {
-		echo '<script type="text/javascript">try{Typekit.load();}catch(e){}</script>';
-	}
-}
-
+add_action('wp_enqueue_scripts', 	'enqueue_low_priority_assets', 20);
 function enqueue_low_priority_assets()
 {
-
-	// wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-	// wp_enqueue_script('font-awesome-5', 'https://kit.fontawesome.com/e61ef10a3b.js');
+	wp_enqueue_script('font-awesome-5', 'https://kit.fontawesome.com/e61ef10a3b.js', array(), false, true);
+	// wp_enqueue_script('font-awesome-5', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js', array(), false, true);
 
 	/* Theme stylesheet with varying name & version, forces cache busting at browser level
-		--------------------------------------------------- */
+	--------------------------------------------------- */
 	$color_theme_handler = 'color-theme-' . CHILD_COLOR_THEME;
 	foodiepro_enqueue_style('foodiepro-color-theme', '/assets/css/color/' . $color_theme_handler . '.css', CHILD_THEME_URL, CHILD_THEME_PATH,  array(), CHILD_COLOR_THEME . CHILD_THEME_VERSION);
-
 }
+
+// Add fontawesome 5 CDN attributes
+add_filter('style_loader_tag', 'add_font_awesome_5_cdn_attributes', 10, 2);
+function add_font_awesome_5_cdn_attributes($html, $handle)
+{
+	if ('font-awesome-5' === $handle) {
+		return str_replace("media='all'", "media='all' crossorigin='anonymous'", $html);
+	}
+	return $html;
+}
+
 
 /* =================================================================*/
 /* =                       LOAD GENESIS

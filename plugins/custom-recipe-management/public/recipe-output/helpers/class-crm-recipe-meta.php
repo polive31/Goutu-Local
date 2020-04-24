@@ -132,7 +132,7 @@ class CRM_Recipe_Meta {
                 unset($ingredient['notes']);
                 $parts = CRM_Ingredient::get_ingredient_parts( $ingredient );
                 $notes=empty(trim($notes))?'':' ('.trim($notes).')';
-                $amount=empty($parts['amount'])?'': $parts['amount']. ' ';
+                $amount=empty($ingredient['amount'])?'': $ingredient['amount']. ' ';
                 $unit_of=empty($parts['unit'])?'': $parts['unit']  . ' ' . $parts['of'];
                 $ingredients[] = $amount . $unit_of . $parts['ingredient'] . $notes;
             }

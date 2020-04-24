@@ -109,11 +109,11 @@ class CASM_Assets {
 		// OTHER PEEPSO SCRIPTS
 		'peepso*'								=> array('logged-in' => true, 'page' => 'social'),
 		// PEEPSO ACCESS TO LOGGED-OUT USERS
-		'peepso-recaptcha'						=> array('page' => 'contact'),
-			'peepso'							=> array('page' => 'contact'),
-				'peepso-elements'				=> array('page' => 'contact'),
-				'peepso-sections'				=> array('page' => 'contact'),
-				'peepso-modules'				=> array('page' => 'contact'),
+		// 'peepso-recaptcha'						=> array('page' => 'contact'),
+		// 	'peepso'							=> array('page' => 'contact'),
+		// 		'peepso-elements'				=> array('page' => 'contact'),
+		// 		'peepso-sections'				=> array('page' => 'contact'),
+		// 		'peepso-modules'				=> array('page' => 'contact'),
 
 
 		'peepso-markdown'						=> array('false' => ''),

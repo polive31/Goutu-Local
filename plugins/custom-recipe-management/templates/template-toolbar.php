@@ -2,51 +2,45 @@
 <div class="recipe-top">
 	<div class="toolbar-buttons">
 
-		<!-- Recipe Rate Button -->
-		<!-- <div class="toolbar-button alignleft <?php //echo is_user_logged_in()?'tooltip-onhover':'disabled';
-													?>" id="rate"> -->
-		<div class="toolbar-button alignleft tooltip-onhover " id="rate">
-			<?php
-			// $ga = WP_MINIFY?is_user_logged_in()?'':"ga('send','event','join-us','click','recipe-rate', 0)":'';
-			// echo $ga;
-			?>
-			<!-- <a href="<?php //echo is_user_logged_in()?'#': foodiepro_get_permalink(array('slug' => 'connexion'));
-							?>" class="recipe-review-button tooltip-onclick" data-tooltip-id="<?php //echo is_user_logged_in()?'':'join_us';
-																								?>" onClick="<?php //echo $ga
-																												?>"> -->
+		<?php if (class_exists('CSR_Form')) { ?>
+
+			<div class="toolbar-button alignleft tooltip-onhover " id="rate">
+
 			<a href="#" data-tooltip-id="" class="recipe-review-button tooltip-onclick" onClick="">
-				<?= foodiepro_get_icon('edit');?>
-				<div class="button-caption"><?php echo __('Rate', 'crm'); ?></div>
+			<?= foodiepro_get_icon('edit');?>
+			<div class="button-caption"><?php echo __('Rate', 'crm'); ?></div>
 			</a>
 			<?php
 			// if( is_user_logged_in() ) {
-			$args = array(
-				'content' => __('Comment and rate this recipe', 'crm'),
-				'valign' 	=> 'above',
-				'halign'	=> 'left',
-			);
-			Tooltip::display($args);
-			$args = array(
-				'content' => do_shortcode('[comment-rating-form]'),
-				'id'		=> 'recipe_rating_form',
-				'valign' 	=> 'above',
-				'halign'	=> 'left',
-				'action'	=> 'click',
-				'callout'	=> false,
-				// 'class'		=> 'rating-form modal fancy',
-				'class'		=> 'rating-form modal big-font uppercase',
-				'title'		=> __('Rate this recipe', 'crm'),
-				'img'		=> CHILD_THEME_URL . '/images/popup-icons/goutumetre.png',
-				'imgdir'	=> CHILD_THEME_PATH . '/images/popup-icons'
-			);
-			Tooltip::display($args);
-			// }
-			?>
-		</div>
+				$args = array(
+					'content' => __('Comment and rate this recipe', 'crm'),
+					'valign' 	=> 'above',
+					'halign'	=> 'left',
+				);
+				Tooltip::display($args);
+				$args = array(
+					'content' 	=> CSR_Form::get_comment_form_with_rating(),
+					'id'		=> 'recipe_rating_form',
+					'valign' 	=> 'above',
+					'halign'	=> 'left',
+					'action'	=> 'click',
+					'callout'	=> false,
+					// 'class'		=> 'rating-form modal fancy',
+					'class'		=> 'rating-form modal big-font uppercase',
+					'title'		=> __('Rate this recipe', 'crm'),
+					'img'		=> CHILD_THEME_URL . '/images/popup-icons/goutumetre.png',
+					'imgdir'	=> CHILD_THEME_PATH . '/images/popup-icons'
+				);
+				Tooltip::display($args);
+				// }
+				?>
+				</div>
 
-		<!-- Recipe Add to Cart Button -->
-		<!-- 				<div class="toolbar-button alignleft tooltip tooltip-above tooltip-left" id="shopping">
-			<?php
+			<?php } ?>
+
+				<!-- Recipe Add to Cart Button -->
+				<!-- 				<div class="toolbar-button alignleft tooltip tooltip-above tooltip-left" id="shopping">
+				<?php
 		// $shopping_list = new Custom_Recipe_Add_To_Shopping_List( is_user_logged_in() );
 		// echo $shopping_list->output( $recipe );
 		?>

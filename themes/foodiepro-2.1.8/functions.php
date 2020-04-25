@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 define('CHILD_THEME_NAME', 'Foodie Pro Theme');
 define('CHILD_THEME_DEVELOPER', 'Shay Bocks/Pascal Olive');
 define('CHILD_THEME_OPTIONS', get_option('foodiepro'));
-define('CHILD_THEME_VERSION', ((bool)CHILD_THEME_OPTIONS['reload'])?time():'2.4.03');
+define('CHILD_THEME_VERSION', ((bool) CHILD_THEME_OPTIONS['reload']) ? time() : '2.4.03');
 define('CHILD_THEME_URL', get_stylesheet_directory_uri());
 define('CHILD_THEME_PATH', get_stylesheet_directory());
 define('DEFAULT_CHILD_COLOR_THEME', 'spring');
@@ -37,12 +37,12 @@ function foodiepro_get_showlog()
 	return $showlog;
 }
 
-function foodiepro_get_color_theme() {
-	if (CHILD_THEME_OPTIONS ) {
-		$color=!empty(CHILD_THEME_OPTIONS['color'])? CHILD_THEME_OPTIONS['color']: DEFAULT_CHILD_COLOR_THEME;
-	}
-	else {
-		$color=DEFAULT_CHILD_COLOR_THEME;
+function foodiepro_get_color_theme()
+{
+	if (CHILD_THEME_OPTIONS) {
+		$color = !empty(CHILD_THEME_OPTIONS['color']) ? CHILD_THEME_OPTIONS['color'] : DEFAULT_CHILD_COLOR_THEME;
+	} else {
+		$color = DEFAULT_CHILD_COLOR_THEME;
 	}
 	return $color;
 }
@@ -255,15 +255,13 @@ function foodie_pro_includes()
 /* =================================================================*/
 /* =                  SCRIPTS & STYLES ENQUEUE
 /* =================================================================*/
-// add_action( 'wp_head', 				'typekit_inline');
-// function typekit_inline()
+// Remove Google fonts loading
+// add_filter( 'foodie_pro_disable_google_fonts', '__return_true' );
+
+// add_action('wp_head', 'inline_script');
+// function inline_script()
 // {
-	// 	if (wp_script_is('typekit', 'enqueued')) {
-		// 		echo '<script type="text/javascript">try{Typekit.load();}catch(e){}</script>';
-		// 	}
-		// }
-		// Remove Google fonts loading
-		// add_filter( 'foodie_pro_disable_google_fonts', '__return_true' );
+// }
 
 add_action('wp_enqueue_scripts', 	'enqueue_high_priority_assets', 10);
 function enqueue_high_priority_assets()
@@ -276,7 +274,7 @@ function enqueue_high_priority_assets()
 	foodiepro_enqueue_script('foodie-pro-general', '/assets/js/general.js', CHILD_THEME_URL, CHILD_THEME_PATH, array('jquery'), CHILD_THEME_VERSION, true);
 	foodiepro_enqueue_script('custom-js-helpers', '/assets/js/custom_helpers.js', CHILD_THEME_URL, CHILD_THEME_PATH, array('jquery'), CHILD_THEME_VERSION, true);
 	$showlog = foodiepro_get_showlog();
-	wp_localize_script('custom-js-helpers', 'foodiepro_options', array('showlogs'=> $showlog));
+	wp_localize_script('custom-js-helpers', 'foodiepro_options', array('showlogs' => $showlog));
 	// foodiepro_enqueue_script( 'one-signal', $js_uri, $js_path, 'one_signal.js', array(), CHILD_THEME_VERSION, true);
 
 	/* Styles enqueue
@@ -340,7 +338,7 @@ function foodie_pro_add_body_class($classes)
 	$classes[] = 'foodie-pro';
 	$classes[] = 'no-js';
 	$classes[] = 'color-theme-' . CHILD_COLOR_THEME;
-	if ( is_single() ) {
+	if (is_single()) {
 		$classes[] = 'status-' . get_post_status();
 	}
 	return $classes;
@@ -384,9 +382,10 @@ add_action('genesis_meta', 'custom_favicon_links');
 // 	echo sprintf('<meta name="theme-color" content="#ffffff">', $path);
 // }
 
-function custom_favicon_links() {
+function custom_favicon_links()
+{
 	$path = CHILD_THEME_URL . '/images/favicon';
-	$favicon_version='2';
+	$favicon_version = '2';
 
 	echo sprintf('<link rel="apple-touch-icon" sizes="180x180" href="%s/apple-touch-icon.png?v=' . $favicon_version . '">', $path);
 	echo sprintf('<link rel="icon" type="image/png" sizes="32x32" href="%s/favicon-32x32.png?v=' . $favicon_version . '">', $path);
@@ -563,8 +562,9 @@ function themed_wp_die_handler($message, $title = '', $args = array())
 /* =              REMOVE ADMIN FROM USER SEARCH RESULTS
 /* =================================================================*/
 add_action('pre_get_users', 'foodiepro_hide_admin');
-function foodiepro_hide_admin($query) {
-	if ( isset($query->query_vars) && !is_admin() ) {
+function foodiepro_hide_admin($query)
+{
+	if (isset($query->query_vars) && !is_admin()) {
 		$role_not_in = $query->query_vars['role__not_in'];
 		if (!in_array('admin', $role_not_in)) {
 			array_push($query->query_vars['role__not_in'], 'administrator');
@@ -684,133 +684,133 @@ function apply_content_alt_sidebar_layout()
 // add_action('wp_head','custom_inline_js');
 function custom_inline_js()
 {
-	?>
+?>
 	<script>
 	</script>
-	<?php
+<?php
 }
 
-	//* Reposition the primary navigation menu within header
-	remove_action('genesis_after_header', 'genesis_do_subnav');
-	add_action('before_header_close', 'genesis_do_subnav');
+//* Reposition the primary navigation menu within header
+remove_action('genesis_after_header', 'genesis_do_subnav');
+add_action('before_header_close', 'genesis_do_subnav');
 
-	//* Reposition the primary navigation menu within header
-	remove_action('genesis_after_header', 'genesis_do_nav');
-	//add_action( 'genesis_header', 'genesis_do_nav');
+//* Reposition the primary navigation menu within header
+remove_action('genesis_after_header', 'genesis_do_nav');
+//add_action( 'genesis_header', 'genesis_do_nav');
 
-	// Move pagination on all archive pages
-	remove_action('genesis_after_endwhile', 'genesis_posts_nav');
-	add_action('genesis_after_content', 'genesis_posts_nav');
+// Move pagination on all archive pages
+remove_action('genesis_after_endwhile', 'genesis_posts_nav');
+add_action('genesis_after_content', 'genesis_posts_nav');
 
-	// Move footer widget area (avoid "out of content" issue on buddypress pages)
-	remove_action('genesis_before_footer', 'genesis_footer_widget_areas');
-	add_action('genesis_after_content_sidebar_wrap', 'genesis_footer_widget_areas', 999);
+// Move footer widget area (avoid "out of content" issue on buddypress pages)
+remove_action('genesis_before_footer', 'genesis_footer_widget_areas');
+add_action('genesis_after_content_sidebar_wrap', 'genesis_footer_widget_areas', 999);
 
-	// Remove the post meta display from footer
-	remove_action('genesis_entry_footer', 'genesis_entry_footer_markup_open', 5);
-	remove_action('genesis_entry_footer', 'genesis_post_meta');
-	remove_action('genesis_entry_footer', 'genesis_entry_footer_markup_close', 15);
+// Remove the post meta display from footer
+remove_action('genesis_entry_footer', 'genesis_entry_footer_markup_open', 5);
+remove_action('genesis_entry_footer', 'genesis_post_meta');
+remove_action('genesis_entry_footer', 'genesis_entry_footer_markup_close', 15);
 
 
-	/* Hook widget areas
+/* Hook widget areas
 -----------------------------------------------------------------------------*/
 
-	add_shortcode('widget-area', 'add_widget_area');
-	function add_widget_area($a)
-	{
-		$a = shortcode_atts(array(
-			'hook' => '',
-			'id' => '',
-			'class' => '',
-		), $a);
+add_shortcode('widget-area', 'add_widget_area');
+function add_widget_area($a)
+{
+	$a = shortcode_atts(array(
+		'hook' => '',
+		'id' => '',
+		'class' => '',
+	), $a);
 
-		if (empty($a['id'])) return '';
+	if (empty($a['id'])) return '';
 
-		ob_start();
+	ob_start();
 
-		genesis_widget_area($a['id'], array(
-			'before' => '<div class="' . $a['id'] . ' ' . $a['class'] . '">',
-			'after'  => '</div>',
-		));
+	genesis_widget_area($a['id'], array(
+		'before' => '<div class="' . $a['id'] . ' ' . $a['class'] . '">',
+		'after'  => '</div>',
+	));
 
-		$html = ob_get_contents();
-		ob_end_clean();
-		return $html;
-	}
+	$html = ob_get_contents();
+	ob_end_clean();
+	return $html;
+}
 
-	add_action('genesis_after_content', 'add_after_content_area');
-	function add_after_content_area()
-	{
-		$template = get_page_template();
-		if (strpos($template, 'social')) return;
-		genesis_widget_area('after-content', array(
-			'before' => '<div class="bottom after-content widget-area">',
-			'after'  => '</div>',
-		));
-	}
+add_action('genesis_after_content', 'add_after_content_area');
+function add_after_content_area()
+{
+	$template = get_page_template();
+	if (strpos($template, 'social')) return;
+	genesis_widget_area('after-content', array(
+		'before' => '<div class="bottom after-content widget-area">',
+		'after'  => '</div>',
+	));
+}
 
 
-	/* Nav Menus Customization :
+/* Nav Menus Customization :
  - Main nav gets a widgeted area "main-nav" on its last item
  - Mobile nav gets an additional item containing a shortcode : [mobile-nav-bottom] => can be used to display a login/logout link for instance
  */
 
-	add_filter('wp_nav_menu_items', 'custom_nav_menu_items', 10, 2);
+add_filter('wp_nav_menu_items', 'custom_nav_menu_items', 10, 2);
 
-	function custom_nav_menu_items($html, $args)
-	{
-		if (isset($args->name) && is_string($args->name))
-			$name = $args->name;
-		elseif (is_string($args->menu))
-			$name = $args->menu;
-		elseif (is_string($args->menu->name))
-			$name = $args->menu->name;
-		else return $html;
+function custom_nav_menu_items($html, $args)
+{
+	if (isset($args->name) && is_string($args->name))
+		$name = $args->name;
+	elseif (is_string($args->menu))
+		$name = $args->menu;
+	elseif (is_string($args->menu->name))
+		$name = $args->menu->name;
+	else return $html;
 
-		if ($name == 'main_nav_fr') {
-			ob_start();
-			genesis_widget_area('main-nav', array(
-				'before' => '<li class="mega-menu-item main-nav-widget-area">',
-				'after'  => '</li>',
-			));
-			$html .= ob_get_contents();
-			ob_end_clean();
-		} elseif ($name == 'mobile_nav_fr') {
-			$html .= '<li class="menu-item menu-item-type-custom menu-item-object-custom responsive-menu-pro-item responsive-menu-pro-desktop-menu-col-auto">';
-			if (is_user_logged_in()) {
-				$html .= '<a href="' . wp_logout_url() . '" class="responsive-menu-pro-item-link">';
-				$html .= '<i class="fa ps-icon-off" aria-hidden="true"></i>';
-				$html .= __('Log Out', 'foodiepro');
-			} else {
-				$html .= '<a href="' . wp_login_url() . '" class="responsive-menu-pro-item-link">';
-				$html .= '<i class="fa fa-user" aria-hidden="true"></i>';
-				$html .= __('Log In', 'foodiepro');
-			}
-			$html .= '</a>';
-			$html .= '</li>';
+	if ($name == 'main_nav_fr') {
+		ob_start();
+		genesis_widget_area('main-nav', array(
+			'before' => '<li class="mega-menu-item main-nav-widget-area">',
+			'after'  => '</li>',
+		));
+		$html .= ob_get_contents();
+		ob_end_clean();
+	} elseif ($name == 'mobile_nav_fr') {
+		$html .= '<li class="menu-item menu-item-type-custom menu-item-object-custom responsive-menu-pro-item responsive-menu-pro-desktop-menu-col-auto">';
+		if (is_user_logged_in()) {
+			$html .= '<a href="' . wp_logout_url() . '" class="responsive-menu-pro-item-link">';
+			$html .= '<i class="fa ps-icon-off" aria-hidden="true"></i>';
+			$html .= __('Log Out', 'foodiepro');
+		} else {
+			$html .= '<a href="' . wp_login_url() . '" class="responsive-menu-pro-item-link">';
+			$html .= '<i class="fa fa-user" aria-hidden="true"></i>';
+			$html .= __('Log In', 'foodiepro');
 		}
-
-		return $html;
+		$html .= '</a>';
+		$html .= '</li>';
 	}
 
+	return $html;
+}
 
-	/* =================================================================*/
-	/* =              EMBEDDED POSTS
+
+/* =================================================================*/
+/* =              EMBEDDED POSTS
 /* =================================================================*/
 
 
-	add_filter('embed_thumbnail_image_size', 'foodiepro_embed_thumbnail_size');
-	add_filter('embed_thumbnail_image_shape', 'foodiepro_embed_thumbnail_shape');
+add_filter('embed_thumbnail_image_size', 'foodiepro_embed_thumbnail_size');
+add_filter('embed_thumbnail_image_shape', 'foodiepro_embed_thumbnail_shape');
 
-	function foodiepro_embed_thumbnail_size()
-	{
-		return 'square-thumbnail';
-	}
+function foodiepro_embed_thumbnail_size()
+{
+	return 'square-thumbnail';
+}
 
-	function foodiepro_embed_thumbnail_shape()
-	{
-		return 'square';
-	}
+function foodiepro_embed_thumbnail_shape()
+{
+	return 'square';
+}
 
 
 /* =================================================================*/
@@ -828,107 +828,107 @@ function foodiepro_override_mofile_path($mofile, $domain)
 }
 
 
-	//* Adds Mailchimp newsletter subscribe form
-	//add_action('wp_head','mailchimp_subscribe_form');
-	function mailchimp_subscribe_form()
-	{
-		?>
-		<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
-		<script type="text/javascript">
-			require(["mojo/signup-forms/Loader"], function(L) {
-				L.start({
-					"baseUrl": "mc.us17.list-manage.com",
-					"uuid": "86ca729ff9d0eb5dc6a0d0ff1",
-					"lid": "f2167601d1"
-				})
+//* Adds Mailchimp newsletter subscribe form
+//add_action('wp_head','mailchimp_subscribe_form');
+function mailchimp_subscribe_form()
+{
+?>
+	<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
+	<script type="text/javascript">
+		require(["mojo/signup-forms/Loader"], function(L) {
+			L.start({
+				"baseUrl": "mc.us17.list-manage.com",
+				"uuid": "86ca729ff9d0eb5dc6a0d0ff1",
+				"lid": "f2167601d1"
 			})
-		</script>
-	<?php
-	}
+		})
+	</script>
+<?php
+}
 
-	// Allow Text widgets to execute shortcodes
-	add_filter('widget_text', 'shortcode_unautop');
-	add_filter('widget_text', 'do_shortcode');
+// Allow Text widgets to execute shortcodes
+add_filter('widget_text', 'shortcode_unautop');
+add_filter('widget_text', 'do_shortcode');
 
-	// Enable PHP in widgets
-	add_filter('widget_text', 'execute_php', 100);
-	function execute_php($html)
-	{
-		if (strpos($html, "<" . "?php") !== false) {
-			ob_start();
-			eval("?" . ">" . $html);
-			$html = ob_get_contents();
-			ob_end_clean();
-		}
-		return $html;
-	}
-
-	/* Search Widget
--------------------------------------------------------------------*/
-	add_filter('genesis_search_text', 'custom_search_text');
-	function custom_search_text($text)
-	{
-		$text = __('Recipe, Ingredient, Keyword, Author...', 'foodiepro');
-		return $text;
-	}
-
-	/* WP Fastest Cache
--------------------------------------------------------------------*/
-	// add_action('csn_after_post_like', 'foodiepro_clear_cache', 15, 2);
-	// function foodiepro_clear_cache($user_id, $post_id)
-	// {
-	// 	// Flushes the cache in the case of WP Faster Cache installed
-	// 	if (function_exists('wpfc_clear_post_cache_by_id')) {
-	// 		wpfc_clear_post_cache_by_id($post_id);
-	// 	}
-	// }
-
-	/* =================================================================*/
-	/* =               PAGES
-/* =================================================================*/
-
-	//* Add icon before page title
-	add_action('genesis_entry_header', 'add_page_icon', 7);
-	function add_page_icon()
-	{
-		if (is_page()) {
-			$icon_url = trailingslashit(CHILD_THEME_URL) . 'images/page-icons/';
-			$icon_path = trailingslashit(CHILD_THEME_PATH) . 'images/page-icons/';
-			$key_val = get_post_meta(get_the_ID(), 'entry_header_image', true);
-			if (!empty($key_val)) {
-				$ext = substr(strrchr($key_val, "."), 1);
-				$filename = substr($key_val, 0, (strrpos($key_val, ".")));
-				echo '<div class="entry-header-image">';
-				output_picture_markup($icon_url, $icon_path, $filename, $ext);
-				echo '</div>';
-			}
-		}
-	}
-
-
-	/* =================================================================*/
-	/* =      FOOTER
-/* =================================================================*/
-
-
-	//* Change the credits text
-	add_filter('genesis_pre_get_option_footer_text', 'sp_footer_creds_filter');
-	function sp_footer_creds_filter($credits)
-	{
-
+// Enable PHP in widgets
+add_filter('widget_text', 'execute_php', 100);
+function execute_php($html)
+{
+	if (strpos($html, "<" . "?php") !== false) {
 		ob_start();
-		?>
-
-		[footer_copyright before="<?= __('All rights reserved', 'foodiepro'); ?>" first="2015"] &middot; <a href="\">Goutu.org</a> &middot; [permalink slug="contact"]<?= __('Contact us', 'foodiepro') ?>[/permalink] &middot; [permalink slug="mentions-legales"]<?= __('Legal notice', 'foodiepro') ?>[/permalink] &middot; [footer_loginout]
-
-		<a target="_blank" href="https://seal.beyondsecurity.com/vulnerability-scanner-verification/goutu.org">
-			<img src="https://seal.beyondsecurity.com/verification-images/goutu.org/vulnerability-scanner-8.gif" alt="Vulnerability Scanner" border="0" />
-		</a>
-
-	<?php
-
-		$credits = ob_get_contents();
-		ob_clean();
-
-		return $credits;
+		eval("?" . ">" . $html);
+		$html = ob_get_contents();
+		ob_end_clean();
 	}
+	return $html;
+}
+
+/* Search Widget
+-------------------------------------------------------------------*/
+add_filter('genesis_search_text', 'custom_search_text');
+function custom_search_text($text)
+{
+	$text = __('Recipe, Ingredient, Keyword, Author...', 'foodiepro');
+	return $text;
+}
+
+/* WP Fastest Cache
+-------------------------------------------------------------------*/
+// add_action('csn_after_post_like', 'foodiepro_clear_cache', 15, 2);
+// function foodiepro_clear_cache($user_id, $post_id)
+// {
+// 	// Flushes the cache in the case of WP Faster Cache installed
+// 	if (function_exists('wpfc_clear_post_cache_by_id')) {
+// 		wpfc_clear_post_cache_by_id($post_id);
+// 	}
+// }
+
+/* =================================================================*/
+/* =               PAGES
+/* =================================================================*/
+
+//* Add icon before page title
+add_action('genesis_entry_header', 'add_page_icon', 7);
+function add_page_icon()
+{
+	if (is_page()) {
+		$icon_url = trailingslashit(CHILD_THEME_URL) . 'images/page-icons/';
+		$icon_path = trailingslashit(CHILD_THEME_PATH) . 'images/page-icons/';
+		$key_val = get_post_meta(get_the_ID(), 'entry_header_image', true);
+		if (!empty($key_val)) {
+			$ext = substr(strrchr($key_val, "."), 1);
+			$filename = substr($key_val, 0, (strrpos($key_val, ".")));
+			echo '<div class="entry-header-image">';
+			output_picture_markup($icon_url, $icon_path, $filename, $ext);
+			echo '</div>';
+		}
+	}
+}
+
+
+/* =================================================================*/
+/* =      FOOTER
+/* =================================================================*/
+
+
+//* Change the credits text
+add_filter('genesis_pre_get_option_footer_text', 'sp_footer_creds_filter');
+function sp_footer_creds_filter($credits)
+{
+
+	ob_start();
+?>
+
+	[footer_copyright before="<?= __('All rights reserved', 'foodiepro'); ?>" first="2015"] &middot; <a href="\">Goutu.org</a> &middot; [permalink slug="contact"]<?= __('Contact us', 'foodiepro') ?>[/permalink] &middot; [permalink slug="mentions-legales"]<?= __('Legal notice', 'foodiepro') ?>[/permalink] &middot; [footer_loginout]
+
+	<a target="_blank" href="https://seal.beyondsecurity.com/vulnerability-scanner-verification/goutu.org">
+		<img src="https://seal.beyondsecurity.com/verification-images/goutu.org/vulnerability-scanner-8.gif" alt="Vulnerability Scanner" border="0" />
+	</a>
+
+<?php
+
+	$credits = ob_get_contents();
+	ob_clean();
+
+	return $credits;
+}

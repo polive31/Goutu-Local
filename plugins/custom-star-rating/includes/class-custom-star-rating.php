@@ -43,12 +43,6 @@ class Custom_Star_Rating {
 		add_shortcode( 'display-star-rating',                  	array( $Rating, 'display_star_rating_shortcode') );
 
 
-		/* Hooks for CSR_Form class
-		-----------------------------------------------------------------*/
-        $CommentForm = new CSR_Form();
-		add_shortcode('comment-rating-form',                 	array( $CommentForm, 'get_comment_form_with_rating_shortcode') );
-
-
 	}
 
 

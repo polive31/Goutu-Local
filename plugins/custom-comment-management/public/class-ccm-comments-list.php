@@ -9,6 +9,22 @@ if (!defined('ABSPATH')) {
 class CCM_Comments_List
 {
 
+	public function add_reply_to( $link, $args, $comment, $post ) {
+		$author_name = empty($comment->comment_author)?false: $comment->comment_author;
+
+		if ($author_name)
+			$reply_to_text = empty($args['reply_to_text'])?__('Reply to %s','foodiepro'):$args['reply_to_text'];
+		else
+			$reply_to_text = __('Reply to this comment', 'foodiepro');
+
+		$data = 'data-replyto="' . sprintf( $reply_to_text, $author_name) . '" ';
+		$root = '<a ';
+
+		$link = str_replace( $root, $root . $data, $link);
+
+		return $link;
+	}
+
 	public function remove_comment_link() {
 		return '';
 	}

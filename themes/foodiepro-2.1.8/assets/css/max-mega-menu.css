@@ -328,7 +328,7 @@
 #mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item a.mega-menu-link:before {
   display: inline-block;
   font: inherit;
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free", sans-serif;
   font-weight: 900;
   position: static;
   margin: 0 6px 0 0px;
@@ -1276,7 +1276,7 @@
 
 #mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item-has-children>a.mega-menu-link>span.mega-indicator:after {
   content: '';
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free", sans-serif;
   font-weight: 900;
   display: inline-block;
   margin: 0 0 0 6px;
@@ -1557,7 +1557,7 @@
 
 #mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-block-1:after {
   content: '\f333';
-  font-family: '"Font Awesome 5 Free"';
+  font-family: "Font Awesome 5 Free", sans-serif;
   font-weight: 900;
   font-size: 24px;
   color: #616161;
@@ -1939,7 +1939,7 @@
 #mega-menu-wrap-primary #mega-menu-primary>li.mega-menu-tabbed>ul.mega-sub-menu>li.mega-menu-item.mega-menu-item-has-children>a.mega-menu-link:after {
   content: '';
   display: inline-block;
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free", sans-serif;
   font-weight: 900;
   margin: 0 0 0 6px;
   vertical-align: top;
@@ -2575,7 +2575,7 @@
 #mega-menu-wrap-secondary #mega-menu-secondary li.mega-menu-item a.mega-menu-link:before {
   display: inline-block;
   font: inherit;
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free", sans-serif;
   font-weight: 900;
   position: static;
   margin: 0 6px 0 0px;
@@ -3526,7 +3526,7 @@
 
 #mega-menu-wrap-secondary #mega-menu-secondary li.mega-menu-item-has-children>a.mega-menu-link>span.mega-indicator:after {
   content: '\f078';
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free", sans-serif;
   font-weight: 900;
   display: inline-block;
   margin: 0 0 0 6px;
@@ -4081,7 +4081,7 @@
 }
 
 #mega-menu-wrap-secondary #mega-menu-secondary.mega-menu-accordion li.mega-menu-item li.mega-menu-item-has-children>a.mega-menu-link:after {
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free", sans-serif;
   font-weight: 900;
   content: '\f078';
 }
@@ -4103,7 +4103,7 @@
 }
 
 #mega-menu-wrap-secondary #mega-menu-secondary.mega-menu-accordion li.mega-menu-item-has-children>a.mega-menu-link:after {
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free", sans-serif;
   font-weight: 900;
   content: '\f078';
   float: right;
@@ -4191,7 +4191,7 @@
 #mega-menu-wrap-secondary #mega-menu-secondary>li.mega-menu-tabbed>ul.mega-sub-menu>li.mega-menu-item.mega-menu-item-has-children>a.mega-menu-link:after {
   content: '';
   display: inline-block;
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free", sans-serif;
   font-weight: 900;
   margin: 0 0 0 6px;
   vertical-align: top;
@@ -4368,7 +4368,7 @@
   }
 
   #mega-menu-wrap-secondary #mega-menu-secondary>li.mega-menu-tabbed>ul.mega-sub-menu>li.mega-menu-item.mega-menu-item-has-children>a.mega-menu-link:after {
-    font-family: "Font Awesome 5 Free";
+    font-family: "Font Awesome 5 Free", sans-serif;
     font-weight: 900;
     content: '\f078';
     /* Tab Content */

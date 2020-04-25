@@ -2090,7 +2090,7 @@ form[role="search"] {
 
 .sidebar .widget.themes ul li:before {
     /* .sidebar important */
-    font-family: $icon-font;
+    font-family: $icon-font, sans-serif;
     font-weight:900;
     // content: "\f054";
     content: "\f101";
@@ -2349,7 +2349,7 @@ a#swipebox-close:hover {
 }
 
 #swipebox-close::before {
-    font-family: $icon-font;
+    font-family: $icon-font, sans-serif;
     font-weight:900;
     content: "\f00d";
     font-size: 40px;

@@ -8,19 +8,9 @@ if (!defined('ABSPATH')) {
 class CSR_Form
 {
 
-	protected static $_PluginPath;
-	protected static $_PluginUri;
-
-	public function __construct()
-	{
-		self::$_PluginUri = plugin_dir_url(dirname(__FILE__));
-		self::$_PluginPath = plugin_dir_path(dirname(__FILE__));
-	}
-
-
 	/* SHORTCODES
 	-----------------------------------------------*/
-	public function get_comment_form_with_rating_shortcode()
+	public static function get_comment_form_with_rating()
 	{
 		$comment_notes = is_user_logged_in() ? '' : '<p class="comment-notes">' . __('Your name and mail address are required for authentification of your comment.<br>Your mail address will not be published.', 'foodiepro') . '</p>';
 
@@ -30,7 +20,7 @@ class CSR_Form
 			'class_form'           => 'rating-form',
 			'title_reply' 			=> '',
 			'label_submit' 			=> __('Send', 'foodiepro'), //default=�Post Comment�
-			'comment_field' 		=> $this->output_eval_form_input_fields(),
+			'comment_field' 		=> self::output_eval_form_input_fields(),
 			'logged_in_as' 			=> '', //Default: __( 'Leave a Reply to %s� )
 			'rating_cats' 			=> 'all',  //Default: "id1 id2..."
 		);
@@ -41,7 +31,7 @@ class CSR_Form
 			in order not to conflict with the comment form in the  main section of the post */
 
 		ob_start();
-		$this->custom_eval_comment_form($args);
+		self::custom_eval_comment_form($args);
 		$rating_form = ob_get_contents();
 		ob_end_clean();
 
@@ -50,7 +40,7 @@ class CSR_Form
 
 	/* Rating Form
 	------------------------------------------------------------ */
-	public function output_eval_form_input_fields()
+	public static function output_eval_form_input_fields()
 	{
 
 		ob_start(); ?>
@@ -66,7 +56,7 @@ class CSR_Form
 								<?= $cat['question']; ?>
 							</label>
 							<div class="rating-stars">
-								<?= $this->get_category_rating($id); ?>
+								<?= self::get_category_rating($id); ?>
 							</div>
 						</td>
 					</tr>
@@ -88,7 +78,7 @@ class CSR_Form
 		return $fields;
 	}
 
-	public function get_category_rating($id)
+	public static function get_category_rating($id)
 	{
 		$html = '<div class="rating-wrapper" id="star-rating-form">';
 		$html .= '<input type="radio" class="rating-input" id="rating-input-' . $id . '-5" name="rating-' . $id . '" value="5"/>';
@@ -106,7 +96,7 @@ class CSR_Form
 		return $html;
 	}
 
-	public function custom_eval_comment_form($args)
+	public static function custom_eval_comment_form($args)
 	{
 		/* comment_form() function modified with :
 			- <div> wrapper id is changed to "custom_respond" instead of "respond" in order to be "invisible" to comment-reply.js script

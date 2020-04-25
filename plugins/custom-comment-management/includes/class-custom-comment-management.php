@@ -24,10 +24,15 @@ class Custom_Comment_Management {
 		-----------------------------------------------------------------*/
 		$CommentList = new CCM_Comments_List();
 
-		add_filter('edit_comment_link',                   		array( $CommentList, 'remove_comment_link') );
+		/* Comments structure is handled in \themes\genesis\lib\structure\comments.php */
+
+		add_filter( 'edit_comment_link',                   		array( $CommentList, 'remove_comment_link') );
 
 		/* Add anchor to comments section title	*/
 		add_filter( 'genesis_title_comments',                   array( $CommentList, 'add_comments_title_markup'), 15, 1 );
+
+		/* Add custom "reply to" text to each comment's reply link, to be displayed when "reply to" button is pressed */
+		add_action( 'comment_reply_link',                 		array( $CommentList, 'add_reply_to'), 10, 4 );
 
 		/* Customize comment item */
 		add_filter( 'comment_author_says_text', 				array( $CommentList, 'custom_comment_author_says'));
@@ -47,7 +52,10 @@ class Custom_Comment_Management {
 
 		/* Hooks for CSR_Form class
 		-----------------------------------------------------------------*/
-        $CommentForm = new CCM_Form();
+		$CommentForm = new CCM_Form();
+		/* Force comment form display on all posts types */
+		add_filter('comments_open', 							array($CommentForm, 'force_comment_form_display'), 20, 2);
+
 		/* Remove url input box from comment box, add author and email */
 		add_filter( 'comment_form_default_fields',				array( $CommentForm, 'customize_comment_form') );
 

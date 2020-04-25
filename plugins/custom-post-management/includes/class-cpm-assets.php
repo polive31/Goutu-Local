@@ -214,6 +214,7 @@ class CPM_Assets {
 		    	'not_like'					=> _x( 'liked your post %s', 'post', 'foodiepro'),
 		    	'not_comment'				=> _x( 'commented your post %s', 'post', 'foodiepro'),
 		    	'not_comment_respond'		=> _x( 'answered your comment on post %s', 'post', 'foodiepro'),
+		    	'comment_form_headline'		=> _x( 'Leave a comment on this post', 'post', 'foodiepro'),
 			),
 		);
 		self::$labels = apply_filters( 'cpm_labels', $default_labels );

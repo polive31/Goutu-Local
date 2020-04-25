@@ -20,6 +20,14 @@ class CCM_Form
 		self::$captchaInstance = 0;
 	}
 
+	public function force_comment_form_display( $open, $post_id ) {
+		$post_type=get_post_type($post_id);
+		if ( in_array( $post_type, CCM_ASSETS::post_types() ) ) {
+			$open=true;
+		}
+		return $open;
+	}
+
 	/* COMMENT FORM FILTERS (COMMON TO ALL COMMENT FORMS ON THE POST)
 	-----------------------------------------------*/
 	public function customize_comment_form($fields)
@@ -38,24 +46,12 @@ class CCM_Form
 		static $instance = 0;
 
 		$defaults['logged_in_as'] = '';
-		if ( is_singular('recipe') )
-		// 	// $defaults['title_reply'] = _x('Leave a comment', 'recipe', 'foodiepro');
-			$title_new = __('Leave a comment on this recipe', 'foodiepro');
-		else
-		// 	// $defaults['title_reply'] = _x('Leave a comment', 'post', 'foodiepro');
-			$title_new = __('Leave a comment on this post', 'foodiepro');
-		// $title_reply = __('Leave a reply to ', 'foodiepro');
+		$post_type=get_post_type();
 
-		/* Since a known WP issue prevents the title_reply_to to work, a workaround is setup in order to allow
-		for 2 different comment form headlines depending on the situation (new comment or answer)
-		The goal is to add a new h3 title after the main one. The main one is reserved for the answer, whereas the new one is reserved for the new comment.
-		Since the cancel button is added to the main title_reply section, this section will be considered as the "reply"one, and therefore hidden by default, whereas the
-		second section will be the "new form" one therefore shown by default.
-		*/
-		// $defaults['title'] = $title_new;
-		// $defaults['title_reply'] = __('Leave a reply to %s', 'foodiepro');
-		// $defaults['title_reply_before'] = '<h3 id="reply-title" class="comment-reply-title" data-text="' . $title_reply . '" style="display:none">';
-		// $defaults['title_reply_after'] = '</h3><h3 id="new-title" class="comment-new-title">' . $title_new . '</h3>';
+		if (class_exists( 'CPM_Assets') ) {
+			$defaults['title_reply'] = CPM_Assets::get_label( $post_type, 'comment_form_headline' );
+			$defaults['title_reply_to'] = 'Leave a reply to %s';
+		}
 
 		$defaults['id_form'] = 'foodiepro_comment' . $instance;
 		$defaults['comment_field'] = '<p class="comment-form-comment"><textarea id="comment_' . $instance . '" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>';
@@ -66,47 +62,64 @@ class CCM_Form
 	}
 
 
-	/* RECAPTCHA
-	-----------------------------------------------*/
+	/**
+	 * Adds recaptcha to submit button markup
+	 *
+	 * @param  mixed $submit_button
+	 * @param  mixed $args
+	 * @return void
+	 */
 	public function comment_form_add_recaptcha($submit_button, $args)
 	{
 		$recaptcha = '';
-		if (!is_user_logged_in() && class_exists('Custom_Google_Recaptcha')) {
+		if (!is_user_logged_in() && class_exists('CGR_Public')) {
 			if (isset($_GET['captcha']) && ($_GET['captcha'] != 'success')) {
 				$recaptcha .= '<p class="error">' . __('<strong>ERROR</strong>: please complete the CAPTCHA verification.', 'foodiepro') . '</p>';
 			}
 			$recaptcha .= CGR_Public::display('', 'recaptcha' . self::$captchaInstance, 'normal', '');
 			self::$captchaInstance++;
 		}
-		return $this->get_submit_button_html($recaptcha);
+		$html= $recaptcha . $this->get_submit_button_instance();
+		return $html;
 	}
 
-	public function get_submit_button_html($recaptcha)
+	/**
+	 * Generates multiple comment submit button instances
+	 * since there can be at least 2 with the rating form.
+	 *
+	 * @param  mixed $recaptcha
+	 * @return void
+	 */
+	public function get_submit_button_instance()
 	{
 		static $instance = 0;
 		$submit_button = '<input name="submit' . $instance . '" type="submit" id="submit' . $instance . '" data-instance="' . $instance . '" class="submit" value="' . __('Submit', 'foodiepro') . '">';
 		$instance++;
-		return $recaptcha . $submit_button;
+		return $submit_button;
 	}
 
+	/**
+	 * * Logged-in users : populate invisible inputs (user name & email)
+	 * * Logged-out users : check recaptcha
+	 *
+	 * @param  mixed $commentdata
+	 * @return void
+	 */
 	public function verify_comment_recaptcha($commentdata)
 	{
-		if (is_user_logged_in()) return;
+		$captchaResult = 'success';
+		if (!is_user_logged_in() ) {
+			if (class_exists('CGR_Public')) {
+				$captchaResult = CGR_Public::verify();
+			}
+		}
 
-		$captchaResult = CGR_Public::verify();
 		if ($captchaResult == 'success')
 			return $commentdata;
 		else {
 			wp_die( __( '<strong>ERROR</strong>: please complete the CAPTCHA verification.', 'foodiepro' ) );
-			// $url = get_permalink($commentdata['comment_post_ID']);
-			// $args = array(
-			// 	'comment-id' 	=> $commentdata['comment_ID'],
-			// 	'captcha'		=> $captchaResult
-			// );
-			// $url = add_query_arg($args, $url) . '#respond';
-			// wp_redirect($url);
-			// exit;
 		}
+
 	}
 
 }

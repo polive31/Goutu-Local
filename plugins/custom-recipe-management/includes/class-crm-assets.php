@@ -199,6 +199,7 @@ class CRM_Assets {
 			'not_like'					=> _x('liked your post %s', 'recipe', 'crm'),
 			'not_comment'				=> _x('commented your post %s', 'recipe', 'crm'),
 			'not_comment_respond'		=> _x('answered your comment on post %s', 'recipe', 'crm'),
+			'comment_form_headline'		=> _x('Leave a comment on this post', 'recipe', 'crm'),
 		);
 		return $labels;
 	}

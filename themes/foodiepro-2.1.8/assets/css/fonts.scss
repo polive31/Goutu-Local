@@ -146,7 +146,7 @@ span.bp_counter,
 [class^='fa']:after,
 [class^="ps-icon-"]:before,
 [class*=" ps-icon-"]:before {
-    font-family: $icon-font;
+    font-family: $icon-font, sans-serif;
     font-style: normal;
     // speak: none;
     display: inline-block;
@@ -223,7 +223,7 @@ h2.user-nicename {
 }
 
 .entry-header-overlay .tag-overlay#veg {
-    font-family: $icon-font;
+    font-family: $icon-font, sans-serif;
     font-size: 2.2rem;
     line-height: 3rem;
     font-weight: bold;

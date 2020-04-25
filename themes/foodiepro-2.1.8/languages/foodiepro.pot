@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2020-04-20 20:02+0200\n"
+"POT-Creation-Date: 2020-04-25 09:59+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -334,7 +334,7 @@ msgstr ""
 #: plugins/custom-archive-management/widgets/taxonomy-accordion-widget.php:239
 #: plugins/custom-archive-management/widgets/taxonomy-dropdown-widget.php:235
 #: plugins/custom-archive-management/widgets/taxonomy-search-widget.php:113
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:285
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:281
 #: plugins/custom-post-management/widgets/cpm_list_dropdown_widget.php:93
 #: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:47
 msgid "New title"
@@ -348,7 +348,7 @@ msgstr ""
 #: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:86
 #: plugins/custom-peepso-overrides/widgets/PeepsoCoverImageHeader.php:86
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:199
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:324
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:320
 #: plugins/custom-post-management/widgets/cpm_list_dropdown_widget.php:97
 #: plugins/custom-recipe-management/widgets/crm_nutrition_label_widget.php:60
 #: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:51
@@ -465,30 +465,30 @@ msgstr ""
 msgid "Displays taxonomy terms corresponding to the current search terms"
 msgstr ""
 
-#: plugins/custom-comment-management/includes/class-ccm-assets.php:38
+#: plugins/custom-comment-management/includes/class-ccm-assets.php:43
 msgid "Please enter a text before submitting your comment."
 msgstr ""
 
-#: plugins/custom-comment-management/includes/class-ccm-assets.php:39
+#: plugins/custom-comment-management/includes/class-ccm-assets.php:44
 msgid "Please provide your name before submitting your comment."
 msgstr ""
 
-#: plugins/custom-comment-management/includes/class-ccm-assets.php:40
+#: plugins/custom-comment-management/includes/class-ccm-assets.php:45
 msgid "Please provide a valid email adress before submitting your comment."
 msgstr ""
 
 #: plugins/custom-comment-management/public/bak/OLD_DEPRECATED_comments-list.php:23
-#: plugins/custom-comment-management/public/class-ccm-comments-list.php:60
+#: plugins/custom-comment-management/public/class-ccm-comments-list.php:59
 msgid "Comments"
 msgstr ""
 
 #: plugins/custom-comment-management/public/bak/OLD_DEPRECATED_comments-list.php:29
-#: plugins/custom-comment-management/public/class-ccm-comments-list.php:66
+#: plugins/custom-comment-management/public/class-ccm-comments-list.php:65
 msgid "Previous comments"
 msgstr ""
 
 #: plugins/custom-comment-management/public/bak/OLD_DEPRECATED_comments-list.php:35
-#: plugins/custom-comment-management/public/class-ccm-comments-list.php:72
+#: plugins/custom-comment-management/public/class-ccm-comments-list.php:71
 msgid "Next comments"
 msgstr ""
 
@@ -516,19 +516,12 @@ msgstr ""
 msgid "(Edit)"
 msgstr ""
 
-#: plugins/custom-comment-management/public/class-ccm-form.php:43
-msgid "Leave a comment on this recipe"
-msgstr ""
-
-#: plugins/custom-comment-management/public/class-ccm-form.php:46
-msgid "Leave a comment on this post"
-msgstr ""
-
-#: plugins/custom-comment-management/public/class-ccm-form.php:76
+#: plugins/custom-comment-management/public/class-ccm-form.php:69
+#: plugins/custom-comment-management/public/class-ccm-form.php:93
 msgid "<strong>ERROR</strong>: please complete the CAPTCHA verification."
 msgstr ""
 
-#: plugins/custom-comment-management/public/class-ccm-form.php:87
+#: plugins/custom-comment-management/public/class-ccm-form.php:80
 #: themes/foodiepro-2.1.8/peepso/general/recover-password.php:37
 msgid "Submit"
 msgstr ""
@@ -756,65 +749,65 @@ msgid "<p><strong>Requester received on : </strong>%s</p>"
 msgstr ""
 
 #: plugins/custom-contact-form/public/class-ccf-public-wp.php:64
-#: plugins/custom-contact-form/public/class-ccf-public.php:62
+#: plugins/custom-contact-form/public/class-ccf-public.php:69
 msgid "You forgot to enter your name."
 msgstr ""
 
 #: plugins/custom-contact-form/public/class-ccf-public-wp.php:78
-#: plugins/custom-contact-form/public/class-ccf-public.php:76
+#: plugins/custom-contact-form/public/class-ccf-public.php:83
 msgid "You forgot to enter your email address."
 msgstr ""
 
 #: plugins/custom-contact-form/public/class-ccf-public-wp.php:81
-#: plugins/custom-contact-form/public/class-ccf-public.php:79
+#: plugins/custom-contact-form/public/class-ccf-public.php:86
 msgid "You entered an invalid email address."
 msgstr ""
 
 #: plugins/custom-contact-form/public/class-ccf-public-wp.php:88
-#: plugins/custom-contact-form/public/class-ccf-public.php:86
+#: plugins/custom-contact-form/public/class-ccf-public.php:93
 msgid "You forgot to enter your comments."
 msgstr ""
 
 #: plugins/custom-contact-form/public/class-ccf-public-wp.php:95
-#: plugins/custom-contact-form/public/class-ccf-public.php:93
+#: plugins/custom-contact-form/public/class-ccf-public.php:100
 msgid "You must accept the privacy notice for this form to be submitted."
 msgstr ""
 
 #: plugins/custom-contact-form/public/class-ccf-public-wp.php:108
-#: plugins/custom-contact-form/public/class-ccf-public.php:106
+#: plugins/custom-contact-form/public/class-ccf-public.php:114
 msgid "Please complete the captcha verification."
 msgstr ""
 
 #: plugins/custom-contact-form/public/class-ccf-public-wp.php:133
-#: plugins/custom-contact-form/public/class-ccf-public.php:131
+#: plugins/custom-contact-form/public/class-ccf-public.php:139
 #, php-format
 msgid "%s : Contact request from %s"
 msgstr ""
 
 #: plugins/custom-contact-form/public/class-ccf-public-wp.php:184
-#: plugins/custom-contact-form/public/class-ccf-public.php:155
+#: plugins/custom-contact-form/public/class-ccf-public.php:166
 msgid "Home page"
 msgstr ""
 
 #: plugins/custom-contact-form/public/class-ccf-public-wp.php:187
-#: plugins/custom-contact-form/public/class-ccf-public.php:158
+#: plugins/custom-contact-form/public/class-ccf-public.php:170
 #, php-format
 msgid "Thanks %s,"
 msgstr ""
 
 #: plugins/custom-contact-form/public/class-ccf-public-wp.php:190
-#: plugins/custom-contact-form/public/class-ccf-public.php:161
+#: plugins/custom-contact-form/public/class-ccf-public.php:173
 msgid "Your message was sent, we will answer you shortly."
 msgstr ""
 
 #: plugins/custom-contact-form/public/class-ccf-public-wp.php:193
-#: plugins/custom-contact-form/public/class-ccf-public.php:164
+#: plugins/custom-contact-form/public/class-ccf-public.php:176
 #, php-format
 msgid "Back to %s"
 msgstr ""
 
 #: plugins/custom-contact-form/public/class-ccf-public-wp.php:200
-#: plugins/custom-contact-form/public/class-ccf-public.php:171
+#: plugins/custom-contact-form/public/class-ccf-public.php:183
 msgid "Please provide the required information."
 msgstr ""
 
@@ -889,7 +882,7 @@ msgid "wrote a new recipe"
 msgstr ""
 
 #: plugins/custom-peepso-overrides/public/class-cpo-customizations.php:195
-#: themes/foodiepro-2.1.8/functions.php:899
+#: themes/foodiepro-2.1.8/functions.php:922
 msgid "Legal notice"
 msgstr ""
 
@@ -898,12 +891,12 @@ msgstr ""
 msgid "I agree to the %s."
 msgstr ""
 
-#: plugins/custom-peepso-overrides/public/class-peepso-helpers.php:58
+#: plugins/custom-peepso-overrides/public/class-peepso-helpers.php:57
 #, php-format
 msgid "Picture of %s"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/public/class-peepso-helpers.php:62
+#: plugins/custom-peepso-overrides/public/class-peepso-helpers.php:61
 msgid "User picture"
 msgstr ""
 
@@ -975,7 +968,7 @@ msgid "Edit my profile"
 msgstr ""
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:99
-#: themes/foodiepro-2.1.8/functions.php:760
+#: themes/foodiepro-2.1.8/functions.php:783
 #: themes/foodiepro-2.1.8/peepso/widgets/userbar.tpl.php:59
 #: themes/foodiepro-2.1.8/peepso/widgets/userbar.tpl.php:113
 msgid "Log Out"
@@ -995,7 +988,7 @@ msgid "Remember Me"
 msgstr ""
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:136
-#: themes/foodiepro-2.1.8/functions.php:764
+#: themes/foodiepro-2.1.8/functions.php:787
 msgid "Log In"
 msgstr ""
 
@@ -1028,90 +1021,90 @@ msgstr ""
 msgid "All the members"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:170
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:166
 msgid "All my friends"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:180
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:176
 msgid "Friends of mine"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:187
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:245
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:183
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:241
 msgid "make new connections"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:189
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:185
 #, php-format
 msgid "No friend yet, <u>%s</u>"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:225
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:221
 #, php-format
 msgid "Mutual Friends with %s"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:225
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:221
 #, php-format
 msgid "%s's Friends"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:230
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:226
 #, php-format
 msgid "All %s's friends"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:230
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:226
 msgid "All mutual friends"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:248
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:244
 #, php-format
 msgid "No mutual friends yet with %s, <u>%s</u>"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:250
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:246
 #, php-format
 msgid "%s doesn't have any friend yet"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:330
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:326
 msgid "Query"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:333
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:329
 msgid "Latest Registered"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:334
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:330
 msgid "Friends (automatic)"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:335
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:331
 msgid "Friends (from logged-in user)"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:336
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:332
 msgid "Friends (from viewed member profile)"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:337
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:333
 msgid "Friends (from post author)"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:342
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:338
 msgid "Display if no friends found ?"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:347
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:343
 msgid "Limit to mutual friends ?"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:353
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:349
 msgid "Thumbnail size"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:366
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:362
 msgid "Number of users to show"
 msgstr ""
 
@@ -1149,21 +1142,6 @@ msgstr ""
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoProfileCompletionWidget.php:168
 msgid "Message:"
-msgstr ""
-
-#: plugins/custom-post-management/deprecated/cpm_submission_deprecated.php:205
-#: plugins/custom-post-management/templates/template-form-buttons.php:5
-msgid "Preview"
-msgstr ""
-
-#: plugins/custom-post-management/deprecated/cpm_submission_deprecated.php:208
-#: plugins/custom-post-management/templates/template-form-buttons.php:8
-msgid "Draft"
-msgstr ""
-
-#: plugins/custom-post-management/deprecated/cpm_submission_deprecated.php:210
-#: plugins/custom-post-management/templates/template-form-buttons.php:10
-msgid "Publish"
 msgstr ""
 
 #: plugins/custom-post-management/deprecated/partials/custom_post_submission_form-wp.php:26
@@ -1226,215 +1204,220 @@ msgstr ""
 msgid "Do you really want to delete this image ?"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:183
+#: plugins/custom-post-management/includes/class-cpm-assets.php:192
 msgctxt "post"
 msgid "Post Title"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:184
+#: plugins/custom-post-management/includes/class-cpm-assets.php:193
 msgctxt "post"
 msgid "Edit Post"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:185
+#: plugins/custom-post-management/includes/class-cpm-assets.php:194
 msgctxt "post"
 msgid "Delete Post"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:186
+#: plugins/custom-post-management/includes/class-cpm-assets.php:195
 msgctxt "post"
 msgid "New Post"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:187
+#: plugins/custom-post-management/includes/class-cpm-assets.php:196
 msgctxt "post"
 msgid "Add here your best picture for this post !"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:188
+#: plugins/custom-post-management/includes/class-cpm-assets.php:197
 msgctxt "post"
 msgid "Write your new post on this page."
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:189
+#: plugins/custom-post-management/includes/class-cpm-assets.php:198
 msgctxt "post"
 msgid ""
 "You can then choose to save it as draft, or to publish it. Once approved, it "
 "will be visible to others according to your visibility preferences."
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:190
+#: plugins/custom-post-management/includes/class-cpm-assets.php:199
 msgctxt "post"
 msgid "Edit your existing post on this page."
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:191
+#: plugins/custom-post-management/includes/class-cpm-assets.php:200
 msgctxt "post"
 msgid ""
 "You can then choose to save it as draft, or to publish it. Once approved, it "
 "wil be visible to others according to your visibility preferences."
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:192
+#: plugins/custom-post-management/includes/class-cpm-assets.php:201
 #, php-format
 msgctxt "post"
 msgid "Post saved as <a href=\"%s\">a draft</a>."
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:193
+#: plugins/custom-post-management/includes/class-cpm-assets.php:202
 msgctxt "post"
 msgid ""
 "It will not be visible on the site, but you can edit it at any time and submit "
 "it later."
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:194
+#: plugins/custom-post-management/includes/class-cpm-assets.php:203
 #, php-format
 msgctxt "post"
 msgid "Back to <a href=\"%s\">my posts</a>."
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:195
+#: plugins/custom-post-management/includes/class-cpm-assets.php:204
 #, php-format
 msgctxt "post"
 msgid "Dear administrator, this post is now <a href=\"%s\">published</a>."
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:196
+#: plugins/custom-post-management/includes/class-cpm-assets.php:205
 msgctxt "post"
 msgid "Post submitted! Thank you, your post is now awaiting moderation."
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:197
+#: plugins/custom-post-management/includes/class-cpm-assets.php:206
 msgctxt "post"
 msgid ""
 "In order for your post to be published, please fill-in those required fields:"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:198
+#: plugins/custom-post-management/includes/class-cpm-assets.php:207
 msgctxt "post"
 msgid "You have no posts yet."
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:199
+#: plugins/custom-post-management/includes/class-cpm-assets.php:208
 msgctxt "post"
 msgid "Your post just got published !"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:200
+#: plugins/custom-post-management/includes/class-cpm-assets.php:209
 #, php-format
 msgctxt "post"
 msgid "Greetings, your post <a href=\"%s\">%s</a> just got published !"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:201
+#: plugins/custom-post-management/includes/class-cpm-assets.php:210
 #, php-format
 msgctxt "post"
 msgid ""
 "It is visible on the website, and appears on <a href=\"%s\">your blog</a>."
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:202
+#: plugins/custom-post-management/includes/class-cpm-assets.php:211
 #, php-format
 msgctxt "post"
 msgid "%s commented one of your posts"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:203
-#: plugins/custom-post-management/includes/class-cpm-assets.php:204
+#: plugins/custom-post-management/includes/class-cpm-assets.php:212
+#: plugins/custom-post-management/includes/class-cpm-assets.php:213
 #, php-format
 msgctxt "post"
 msgid "%s added a comment to your post <a href=\"%s\">%s</a> :"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:205
+#: plugins/custom-post-management/includes/class-cpm-assets.php:214
 #, php-format
 msgctxt "post"
 msgid "liked your post %s"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:206
+#: plugins/custom-post-management/includes/class-cpm-assets.php:215
 #, php-format
 msgctxt "post"
 msgid "commented your post %s"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:207
+#: plugins/custom-post-management/includes/class-cpm-assets.php:216
 #, php-format
 msgctxt "post"
 msgid "answered your comment on post %s"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:221
+#: plugins/custom-post-management/includes/class-cpm-assets.php:217
+msgctxt "post"
+msgid "Leave a comment on this post"
+msgstr ""
+
+#: plugins/custom-post-management/includes/class-cpm-assets.php:231
 #: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:356
 msgid "Category"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:229
+#: plugins/custom-post-management/includes/class-cpm-assets.php:239
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:117
 msgid "Keywords"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:238
+#: plugins/custom-post-management/includes/class-cpm-assets.php:248
 msgid "Post Title"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:239
+#: plugins/custom-post-management/includes/class-cpm-assets.php:249
 msgid "Post Content"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:240
+#: plugins/custom-post-management/includes/class-cpm-assets.php:250
 msgid "Post Category"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:241
+#: plugins/custom-post-management/includes/class-cpm-assets.php:251
 msgid "Post Featured Image."
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:251
+#: plugins/custom-post-management/includes/class-cpm-assets.php:261
 msgctxt "post"
 msgid "All my posts"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:255
+#: plugins/custom-post-management/includes/class-cpm-assets.php:265
 #: plugins/custom-post-management/includes/class-cpm-post-status.php:14
 msgctxt "post"
 msgid "Restored"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:256
+#: plugins/custom-post-management/includes/class-cpm-assets.php:266
 msgctxt "post"
 msgid ""
 "Those posts have been automatically kept but not saved as drafts. You can "
 "delete them if you don't need them."
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:259
+#: plugins/custom-post-management/includes/class-cpm-assets.php:269
 msgctxt "post"
 msgid "Pending"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:260
+#: plugins/custom-post-management/includes/class-cpm-assets.php:270
 msgctxt "post"
 msgid "Those posts have been submitted and pending administrator's approval."
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:263
+#: plugins/custom-post-management/includes/class-cpm-assets.php:273
 msgctxt "post"
 msgid "Draft"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:264
+#: plugins/custom-post-management/includes/class-cpm-assets.php:274
 msgctxt "post"
 msgid "Those posts are in preparation, and not yet submitted."
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:267
+#: plugins/custom-post-management/includes/class-cpm-assets.php:277
 msgctxt "post"
 msgid "Public"
 msgstr ""
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:268
+#: plugins/custom-post-management/includes/class-cpm-assets.php:278
 msgctxt "post"
 msgid ""
 "Those posts have been approved by the administrator. They are visible on the "
@@ -1490,16 +1473,16 @@ msgstr ""
 msgid "Modified on %s at %s"
 msgstr ""
 
-#: plugins/custom-post-management/post-output/class-cpm-output.php:49
+#: plugins/custom-post-management/post-output/class-cpm-output.php:54
 msgid "Read More"
 msgstr ""
 
-#: plugins/custom-post-management/post-output/class-cpm-output.php:94
+#: plugins/custom-post-management/post-output/class-cpm-output.php:99
 #, php-format
 msgid "Published on %s by %s<span id=\"username\">%s</span>"
 msgstr ""
 
-#: plugins/custom-post-management/post-output/class-cpm-output.php:101
+#: plugins/custom-post-management/post-output/class-cpm-output.php:106
 msgid "Share on "
 msgstr ""
 
@@ -1516,18 +1499,29 @@ msgstr ""
 msgid "Unknown action."
 msgstr ""
 
-#: plugins/custom-post-management/post-submission/class-cpm-submission.php:296
-#: plugins/custom-post-management/post-submission/helpers/class-cpm-save.php:97
-msgid "Untitled"
-msgstr ""
-
-#: plugins/custom-post-management/post-submission/class-cpm-submission.php:363
+#: plugins/custom-post-management/post-submission/class-cpm-submission.php:307
 #, php-format
 msgid "Autosaved on %s at %s"
 msgstr ""
 
+#: plugins/custom-post-management/post-submission/helpers/class-cpm-save.php:97
+msgid "Untitled"
+msgstr ""
+
 #: plugins/custom-post-management/post-submission/helpers/class-cpm-submission-shortcode.php:18
 msgid "Sorry, only registered users may submit recipes."
+msgstr ""
+
+#: plugins/custom-post-management/templates/template-form-buttons.php:5
+msgid "Preview"
+msgstr ""
+
+#: plugins/custom-post-management/templates/template-form-buttons.php:8
+msgid "Draft"
+msgstr ""
+
+#: plugins/custom-post-management/templates/template-form-buttons.php:10
+msgid "Publish"
 msgstr ""
 
 #: plugins/custom-post-management/templates/template-form-post.php:2
@@ -1853,7 +1847,7 @@ msgstr ""
 #: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:56
 #: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:73
 #: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:90
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:224
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:222
 #: plugins/custom-recipe-management/templates/template-form-time.php:10
 msgid "hours"
 msgstr ""
@@ -1861,7 +1855,7 @@ msgstr ""
 #: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:60
 #: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:77
 #: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:94
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:217
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:215
 #: plugins/custom-recipe-management/templates/template-form-time.php:14
 msgid "minutes"
 msgstr ""
@@ -1888,7 +1882,7 @@ msgstr ""
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:39
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:103
 #: plugins/custom-recipe-management/templates/template-form.php:72
-#: plugins/custom-recipe-management/templates/template-print.php:58
+#: plugins/custom-recipe-management/templates/template-print.php:63
 msgid "Ingredients"
 msgstr ""
 
@@ -1936,8 +1930,8 @@ msgstr ""
 #: plugins/custom-recipe-management/deprecated/partials_recipe/screen-template.php:163
 #: plugins/custom-recipe-management/templates/template-form-ingredients-ingredient.php:50
 #: plugins/custom-recipe-management/templates/template-form-ingredients-ingredient.php:51
-#: plugins/custom-recipe-management/templates/template-print.php:84
-#: plugins/custom-recipe-management/templates/template-screen.php:163
+#: plugins/custom-recipe-management/templates/template-print.php:89
+#: plugins/custom-recipe-management/templates/template-screen.php:162
 msgid "Notes"
 msgstr ""
 
@@ -1968,7 +1962,7 @@ msgstr ""
 #: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:265
 #: plugins/custom-recipe-management/deprecated/partials_recipe/print-template.php:73
 #: plugins/custom-recipe-management/templates/template-form.php:94
-#: plugins/custom-recipe-management/templates/template-print.php:71
+#: plugins/custom-recipe-management/templates/template-print.php:76
 msgid "Instructions"
 msgstr ""
 
@@ -2035,25 +2029,25 @@ msgid "WHAT TO DRINK WITH THIS STRAWBERRY PIE : a sweet white wine"
 msgstr ""
 
 #: plugins/custom-recipe-management/deprecated/partials_recipe/print-template.php:20
-#: plugins/custom-recipe-management/templates/template-print.php:34
+#: plugins/custom-recipe-management/templates/template-print.php:39
 msgid "Serves"
 msgstr ""
 
 #: plugins/custom-recipe-management/deprecated/partials_recipe/print-template.php:24
-#: plugins/custom-recipe-management/templates/template-print.php:40
-#: plugins/custom-recipe-management/templates/template-screen.php:73
+#: plugins/custom-recipe-management/templates/template-print.php:45
+#: plugins/custom-recipe-management/templates/template-screen.php:72
 msgid "Preparation"
 msgstr ""
 
 #: plugins/custom-recipe-management/deprecated/partials_recipe/print-template.php:28
-#: plugins/custom-recipe-management/templates/template-print.php:45
-#: plugins/custom-recipe-management/templates/template-screen.php:83
+#: plugins/custom-recipe-management/templates/template-print.php:50
+#: plugins/custom-recipe-management/templates/template-screen.php:82
 msgid "Cooking"
 msgstr ""
 
 #: plugins/custom-recipe-management/deprecated/partials_recipe/print-template.php:32
-#: plugins/custom-recipe-management/templates/template-print.php:50
-#: plugins/custom-recipe-management/templates/template-screen.php:93
+#: plugins/custom-recipe-management/templates/template-print.php:55
+#: plugins/custom-recipe-management/templates/template-screen.php:92
 msgid "Wait"
 msgstr ""
 
@@ -2088,35 +2082,35 @@ msgid "Read this recipe out loud"
 msgstr ""
 
 #: plugins/custom-recipe-management/deprecated/partials_recipe/screen-template.php:53
-#: plugins/custom-recipe-management/templates/template-screen.php:49
+#: plugins/custom-recipe-management/templates/template-screen.php:48
 msgid "Origin"
 msgstr ""
 
 #: plugins/custom-recipe-management/deprecated/partials_recipe/screen-template.php:61
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:43
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:158
-#: plugins/custom-recipe-management/templates/template-screen.php:57
+#: plugins/custom-recipe-management/templates/template-screen.php:56
 msgid "Diet"
 msgstr ""
 
 #: plugins/custom-recipe-management/deprecated/partials_recipe/screen-template.php:68
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:45
-#: plugins/custom-recipe-management/templates/template-screen.php:64
+#: plugins/custom-recipe-management/templates/template-screen.php:63
 msgid "Level"
 msgstr ""
 
 #: plugins/custom-recipe-management/deprecated/partials_recipe/screen-template.php:127
-#: plugins/custom-recipe-management/templates/template-screen.php:122
+#: plugins/custom-recipe-management/templates/template-screen.php:121
 msgid "For "
 msgstr ""
 
 #: plugins/custom-recipe-management/deprecated/partials_recipe/screen-template.php:130
-#: plugins/custom-recipe-management/templates/template-screen.php:125
+#: plugins/custom-recipe-management/templates/template-screen.php:124
 msgid "Decrease servings"
 msgstr ""
 
 #: plugins/custom-recipe-management/deprecated/partials_recipe/screen-template.php:136
-#: plugins/custom-recipe-management/templates/template-screen.php:131
+#: plugins/custom-recipe-management/templates/template-screen.php:130
 msgid "Increase servings"
 msgstr ""
 
@@ -2372,56 +2366,61 @@ msgctxt "recipe"
 msgid "answered your comment on post %s"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:265
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:202
+msgctxt "recipe"
+msgid "Leave a comment on this post"
+msgstr ""
+
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:266
 msgctxt "recipe"
 msgid "Are you sure you want to delete this post :"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:311
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:312
 msgid "Read previous step"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:312
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:313
 msgid "Read next step"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:313
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:314
 msgid "Read this step again"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:314
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:315
 msgid "Pause reading"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:315
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:316
 msgid "Continue reading"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:316
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:317
 msgid "Stop reading and close player"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:440
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:441
 msgid "Do you really want to delete this ingredient ?"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:441
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:442
 msgid "Do you really want to delete this instruction ?"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:442
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:443
 msgid ""
 "Do you really want to delete this group ?\\n(Instructions below will be "
 "preserved)"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:443
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:444
 msgid ""
 "Do you really want to delete this group ?\\n(Ingredients below will be "
 "preserved)"
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:444
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:445
 msgid "Please remove the image prior to removing this instruction."
 msgstr ""
 
@@ -2522,29 +2521,29 @@ msgctxt "consonant"
 msgid "of "
 msgstr ""
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:216
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:214
 msgid "minute"
 msgstr ""
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:223
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:221
 msgid "hour"
 msgstr ""
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:705
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:681
 #, php-format
 msgid "%s day "
 msgid_plural "%s days "
 msgstr[0] ""
 msgstr[1] ""
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:708
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:684
 #, php-format
 msgid "%s hour "
 msgid_plural "%s hours "
 msgstr[0] ""
 msgstr[1] ""
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:711
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:687
 #, php-format
 msgid "%s minute"
 msgid_plural "%s minutes"
@@ -2648,7 +2647,7 @@ msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr ""
 
 #: plugins/custom-site-notifications/public/mails/class-csn-mails.php:308
-#: themes/foodiepro-2.1.8/functions.php:899
+#: themes/foodiepro-2.1.8/functions.php:922
 msgid "All rights reserved"
 msgstr ""
 
@@ -2693,23 +2692,23 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:88
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:76
 msgid "Share on Facebook"
 msgstr ""
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:114
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:116
 msgid "Share on Twitter"
 msgstr ""
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:148
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:157
 msgid "Pin It"
 msgstr ""
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:173
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:201
 msgid "Share by email"
 msgstr ""
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:203
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:231
 msgid "Share on Whatsapp"
 msgstr ""
 
@@ -2796,15 +2795,15 @@ msgid_plural "%s reviews"
 msgstr[0] ""
 msgstr[1] ""
 
-#: themes/foodiepro-2.1.8/functions.php:631
+#: themes/foodiepro-2.1.8/functions.php:654
 msgid "Content/Alt Sidebar"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:848
+#: themes/foodiepro-2.1.8/functions.php:871
 msgid "Recipe, Ingredient, Keyword, Author..."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:899
+#: themes/foodiepro-2.1.8/functions.php:922
 msgid "Contact us"
 msgstr ""
 

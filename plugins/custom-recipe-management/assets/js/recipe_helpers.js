@@ -140,6 +140,7 @@ wpurp_adjustable_servings.updateAmounts = function(amounts, servings_original, s
                 // This is the case when amount is a string, ex : "quelques"
                 jQuery(this).addClass('recipe-ingredient-nan');
             }
+            else {
                 var fraction = jQuery(this).data('fraction');
                 var new_amount = servings_new * amount/servings_original;
                 var new_amount_text = wpurp_adjustable_servings.toFixed(new_amount, fraction);

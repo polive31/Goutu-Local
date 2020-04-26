@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2020-04-25 09:57+0200\n"
+"POT-Creation-Date: 2020-04-26 12:29+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -322,7 +322,7 @@ msgstr ""
 #: deprecated/partials/submission_form_ingredients_instructions.php:56
 #: deprecated/partials/submission_form_ingredients_instructions.php:73
 #: deprecated/partials/submission_form_ingredients_instructions.php:90
-#: public/recipe-post-type/class-crm-recipe.php:222
+#: public/recipe-post-type/class-crm-recipe.php:223
 #: templates/template-form-time.php:10
 msgid "hours"
 msgstr ""
@@ -330,7 +330,7 @@ msgstr ""
 #: deprecated/partials/submission_form_ingredients_instructions.php:60
 #: deprecated/partials/submission_form_ingredients_instructions.php:77
 #: deprecated/partials/submission_form_ingredients_instructions.php:94
-#: public/recipe-post-type/class-crm-recipe.php:215
+#: public/recipe-post-type/class-crm-recipe.php:216
 #: templates/template-form-time.php:14
 msgid "minutes"
 msgstr ""
@@ -520,42 +520,42 @@ msgid "Wait"
 msgstr ""
 
 #: deprecated/partials_recipe/recipe-toolbar.php:19
-#: templates/template-toolbar.php:19
+#: templates/template-toolbar.php:11
 msgid "Rate"
 msgstr ""
 
 #: deprecated/partials_recipe/recipe-toolbar.php:24
-#: templates/template-toolbar.php:24
+#: templates/template-toolbar.php:16
 msgid "Comment and rate this recipe"
 msgstr ""
 
 #: deprecated/partials_recipe/recipe-toolbar.php:38
-#: templates/template-toolbar.php:38
+#: templates/template-toolbar.php:30
 msgid "Rate this recipe"
 msgstr ""
 
 #: deprecated/partials_recipe/recipe-toolbar.php:73
-#: templates/template-toolbar.php:74
+#: templates/template-toolbar.php:68
 msgid "Print"
 msgstr ""
 
 #: deprecated/partials_recipe/recipe-toolbar.php:77
-#: templates/template-toolbar.php:78
+#: templates/template-toolbar.php:72
 msgid "Print this Recipe"
 msgstr ""
 
 #: deprecated/partials_recipe/recipe-toolbar.php:88
-#: templates/template-toolbar.php:89
+#: templates/template-toolbar.php:83
 msgid "Share"
 msgstr ""
 
 #: deprecated/partials_recipe/recipe-toolbar.php:105
-#: templates/template-toolbar.php:106
+#: templates/template-toolbar.php:100
 msgid "Read"
 msgstr ""
 
 #: deprecated/partials_recipe/recipe-toolbar.php:109
-#: templates/template-toolbar.php:110
+#: templates/template-toolbar.php:104
 msgid "Read this recipe out loud"
 msgstr ""
 
@@ -862,56 +862,71 @@ msgctxt "recipe"
 msgid "Leave a comment on this post"
 msgstr ""
 
-#: includes/class-crm-assets.php:266
+#: includes/class-crm-assets.php:203 includes/class-crm-assets.php:204
+msgctxt "recipe"
+msgid "The post you are trying to read is not yet approved by administrators."
+msgstr ""
+
+#: includes/class-crm-assets.php:205
+msgctxt "recipe"
+msgid "The post you are trying to read is reserved to members."
+msgstr ""
+
+#: includes/class-crm-assets.php:206 includes/class-crm-assets.php:207
+msgctxt "recipe"
+msgid "The post you are trying to read is private."
+msgstr ""
+
+#: includes/class-crm-assets.php:271
 msgctxt "recipe"
 msgid "Are you sure you want to delete this post :"
 msgstr ""
 
-#: includes/class-crm-assets.php:312
+#: includes/class-crm-assets.php:317
 msgid "Read previous step"
 msgstr ""
 
-#: includes/class-crm-assets.php:313
+#: includes/class-crm-assets.php:318
 msgid "Read next step"
 msgstr ""
 
-#: includes/class-crm-assets.php:314
+#: includes/class-crm-assets.php:319
 msgid "Read this step again"
 msgstr ""
 
-#: includes/class-crm-assets.php:315
+#: includes/class-crm-assets.php:320
 msgid "Pause reading"
 msgstr ""
 
-#: includes/class-crm-assets.php:316
+#: includes/class-crm-assets.php:321
 msgid "Continue reading"
 msgstr ""
 
-#: includes/class-crm-assets.php:317
+#: includes/class-crm-assets.php:322
 msgid "Stop reading and close player"
 msgstr ""
 
-#: includes/class-crm-assets.php:441
+#: includes/class-crm-assets.php:446
 msgid "Do you really want to delete this ingredient ?"
 msgstr ""
 
-#: includes/class-crm-assets.php:442
+#: includes/class-crm-assets.php:447
 msgid "Do you really want to delete this instruction ?"
 msgstr ""
 
-#: includes/class-crm-assets.php:443
+#: includes/class-crm-assets.php:448
 msgid ""
 "Do you really want to delete this group ?\\n(Instructions below will be "
 "preserved)"
 msgstr ""
 
-#: includes/class-crm-assets.php:444
+#: includes/class-crm-assets.php:449
 msgid ""
 "Do you really want to delete this group ?\\n(Ingredients below will be "
 "preserved)"
 msgstr ""
 
-#: includes/class-crm-assets.php:445
+#: includes/class-crm-assets.php:450
 msgid "Please remove the image prior to removing this instruction."
 msgstr ""
 
@@ -998,43 +1013,43 @@ msgstr ""
 msgid "Click to Start Timer"
 msgstr ""
 
-#: public/recipe-post-type/class-crm-ingredient.php:86
+#: public/recipe-post-type/class-crm-ingredient.php:88
 msgid "Harvest Period"
 msgstr ""
 
-#: public/recipe-post-type/class-crm-ingredient.php:128
+#: public/recipe-post-type/class-crm-ingredient.php:129
 msgctxt "vowel"
 msgid "of "
 msgstr ""
 
-#: public/recipe-post-type/class-crm-ingredient.php:130
+#: public/recipe-post-type/class-crm-ingredient.php:131
 msgctxt "consonant"
 msgid "of "
 msgstr ""
 
-#: public/recipe-post-type/class-crm-recipe.php:214
+#: public/recipe-post-type/class-crm-recipe.php:215
 msgid "minute"
 msgstr ""
 
-#: public/recipe-post-type/class-crm-recipe.php:221
+#: public/recipe-post-type/class-crm-recipe.php:222
 msgid "hour"
 msgstr ""
 
-#: public/recipe-post-type/class-crm-recipe.php:681
+#: public/recipe-post-type/class-crm-recipe.php:682
 #, php-format
 msgid "%s day "
 msgid_plural "%s days "
 msgstr[0] ""
 msgstr[1] ""
 
-#: public/recipe-post-type/class-crm-recipe.php:684
+#: public/recipe-post-type/class-crm-recipe.php:685
 #, php-format
 msgid "%s hour "
 msgid_plural "%s hours "
 msgstr[0] ""
 msgstr[1] ""
 
-#: public/recipe-post-type/class-crm-recipe.php:687
+#: public/recipe-post-type/class-crm-recipe.php:688
 #, php-format
 msgid "%s minute"
 msgid_plural "%s minutes"

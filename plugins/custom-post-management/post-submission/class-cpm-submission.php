@@ -124,7 +124,7 @@ class CPM_Submission
                 $action = 'autosave';
 
 
-            if ( in_array($action, array('draft', 'publish')) ) {
+            if ( $action != 'autosave' ) {
                 /* Stop autosave calls to fire as soon the form is being submitted */
                 remove_action( 'wp_ajax_' . $post_type . '_autosave', array($this, 'ajax_post_autosave_cb') );
             }
@@ -152,7 +152,7 @@ class CPM_Submission
             }
 
             // Allow custom actions depending on post type
-            do_action('cpm_' . $post_type . '_submission_main', $post_id);
+            do_action('cpm_' . $post_type . '_submission_main', $post_id, $action);
 
 
             /* Display following post submission */

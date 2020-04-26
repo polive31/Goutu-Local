@@ -125,26 +125,7 @@ wp_redirect(home_url());
 exit;
 }
 
-/* Redirect towards register page on private page if not loggued-in */
-add_action('template_redirect', 'foodiepro_redirect_private_content', 9);
-function foodiepro_redirect_private_content()
-{
-global $wp_query, $wpdb;
-if (is_404()) {
-$current_query = $wpdb->get_row($wp_query->request);
-if ( isset($current_query->post_status) && ('private' == $current_query->post_status)) {
-wp_redirect(
-foodiepro_get_permalink(
-array(
-'slug' => 'connexion',
-// 'community' => 'register',
-)
-)
-);
-exit;
-}
-}
-}
+
 
 // add_filter('login_redirect', 'redirect_and_flush_cache_on_login', 10, 2);
 // function redirect_and_flush_cache_on_login($redirect_final, $redirect_initial)

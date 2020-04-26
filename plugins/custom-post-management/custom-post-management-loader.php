@@ -21,6 +21,7 @@ require_once 'like/class-cpm-like.php';
 
 require_once 'includes/class-custom-post-management.php';
 require_once 'includes/class-cpm-assets.php';
+require_once 'includes/class-cpm-private.php';
 require_once 'includes/class-cpm-post-status.php';
 
 require_once 'post-output/class-cpm-output.php';

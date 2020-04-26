@@ -336,13 +336,17 @@ function foodiepro_get_icon_class($slug)
 }
 
 /**
- * foodiepro_get_picture
+ * Generates a picture tag including .webp format,
+ * based on the url of the specified original image file
+ * (jpg, png, or other non-webp standard image format)
  *
  * @param  array $args
- * * src : url of original image
+ * * src (required) : url of original image
  * * dir (optional) : path of the image
  * * id
  * * class
+ * * filter_max_width : int|false displays all existing files within specified max width, as <source> tags
+ * * filter_ext : array|false displays all existing files matching with one of the extensions
  * * width
  * * height
  * * alt
@@ -352,66 +356,126 @@ function foodiepro_get_icon_class($slug)
  */
 function foodiepro_get_picture($args)
 {
+	do_action('qm/start', 'foodiepro_get_picture');
+
 	$src = false;
 	$dir = false;
 	$alt = '';
 	$id = '';
 	$class = '';
 	$lazy = true;
+	$filter_max_width = false;
+	$filter_ext = false;
 	$width = false;
 	$height = false;
 	$fallback = false;
 	extract($args);
 
-	if ( empty($src) ) {
-		if ( !empty($fallback) ) {
-			$src=$fallback;
-		}
-		else {
-			return '';
-		}
+	/* Initial setup */
+	$src=empty($src)?$fallback:$src;
+	if ( empty($src ) ) return '';
+
+	/* Main image url parts */
+	$img = pathinfo($src);
+	$img_filename = isset($img['filename'])? $img['filename']:'';
+	$img_ext = isset($img['extension'])?$img['extension']:'';
+	// $img_format = ($img_ext == 'jpg' || $img_ext == 'jpeg') ? 'jpeg' : $img_ext;
+	$img_dir_uri = isset($img['dirname'])? $img['dirname']:'';
+
+	if ( $filter_max_width && $dir ) {
+		$files = glob( trailingslashit($dir) . $img_filename . '-*', GLOB_NOSORT  );
+		usort($files, 'usort_source_files_cb');
 	}
+	else
+	$files=array();
 
-
-	/* Generates a picture tag including .webp format, based the specified original image file (jpg, png, or other non-webp standard format) url */
-	$image = pathinfo($src);
-	$filename = $image['filename'];
-	$extension = $image['extension'];
-	$srcext = ($extension == 'jpg' || $extension == 'jpeg') ? 'jpeg' : $extension;
-	$dirname = $image['dirname'];
+	/* <picture> tag markup */
 	$nolazy_markup = $lazy ? '' : 'data-skip-lazy';
 	$width_markup = is_int($width) ? sprintf('width="%s"', $width) : '';
 	$height_markup = is_int($height) ? sprintf('height="%s"', $height) : '';
+	$html = '<picture id="' .  $id . '" class="' .  $class . '" alt="'. $alt . '" ' . $nolazy_markup . ' ' . $width_markup . ' ' . $height_markup . '>';
 
-	$webp_markup ='';
-	if ( $dir ) {
-		$ewww_webp_path = trailingslashit($dir) . $filename . '.' . $extension . '.webp';
-		$ewww_webp_uri = trailingslashit($dirname) . $filename . '.' . $extension . '.webp';
-		if ( file_exists($ewww_webp_path) ) {
-			$webp_markup = '<source srcset="' . $ewww_webp_uri . '" type="image/webp">';
-		}
-		else {
-			$ewww_webp_path = trailingslashit($dir) . $filename . '.webp';
-			$ewww_webp_uri = trailingslashit($dirname) . $filename . '.webp';
-			if (file_exists($ewww_webp_path)) {
-				$webp_markup = '<source srcset="' . $ewww_webp_uri . '" type="image/webp">';
-			}
-		}
+	/* <source> tags markup */
+	foreach ($files as $file) {
+		$size_img = pathinfo($file);
+		$size_img_ext = isset($size_img['extension']) ? $size_img['extension'] : '';
+		// Check if extension is allowed
+		if ( is_array($filter_ext && !in_array($size_img_ext, $filter_ext) ) ) continue;
+		$size_img_filename = isset($size_img['filename']) ? $size_img['filename'] : '';
+		// Check if width  is allowed
+		$match = preg_match('/(\d+)x.*/', $size_img_filename, $size);
+		if ( $match!==1 || $size[1]>$filter_max_width ) continue;
+		// Add <source> tag for this file
+		$size_img_format = ($size_img_ext == 'jpg' || $size_img_ext == 'jpeg') ? 'jpeg' : $size_img_ext;
+		$html .= '<source media="(min-width: ' . $size[1] . 'px)" class="skip-lazy" srcset="' . trailingslashit($img_dir_uri) . $size_img_filename . '.' . $size_img_ext . '" type="image/' . $size_img_format . '">';
 	}
 
-	ob_start();
-	?>
+	/* <img> & closing </picture> tag markup */
+	$html .= foodiepro_get_webp_source_tag( $img_filename, $img_ext, $dir, $img_dir_uri );
+	$html .= '<img ' . $nolazy_markup . ' class="' . $class . '"  src="' . $src . '" ' . $width_markup . ' ' . $height_markup . ' alt="' . $alt . '">';
+	$html .= '</picture>';
 
-	<picture id="<?= $id; ?>" class="<?= $class; ?>" alt="<?= $alt; ?>" <?= $nolazy_markup; ?> <?= $width_markup; ?> <?= $height_markup; ?>>
-		<?= $webp_markup; ?>
-		<source srcset="<?= trailingslashit($dirname) . $filename . '.' . $extension; ?>" type="image/<?= $srcext ?>">
-		<img <?= $nolazy_markup; ?> class="<?= $class; ?>"  src="<?= trailingslashit($dirname) . $filename . '.' . $extension; ?>" alt="<?= $alt; ?>">
-	</picture>
-
-<?php
-	$html = ob_get_contents();
-	ob_end_clean();
+	do_action('qm/stop', 'foodiepro_get_picture');
 	return $html;
+}
+
+function usort_source_files_cb( $a, $b ) {
+	$size=array();
+	$match_a = preg_match('/(\d+)x(\d+)[.a-z]*\.(\w+)/', $a, $size);
+	if ($match_a!==1) return -1;
+	$width_a = $size[1];
+	// $webp_a = strpos($size[3],'.webp');
+	$webp_a = $size[3] == 'webp';
+	$match_b = preg_match('/(\d+)x.*/', $b, $size);
+	if ($match_b!==1) return 1;
+	$width_b = $size[1];
+
+	if ($width_a==$width_b)
+		$result=($webp_a)?-1:1;
+	else
+		$result=($width_a<$width_b)?1:-1;
+
+	return $result;
+}
+
+/**
+ * Returns <source> tag for the .webp version of the file if it exists
+ *
+ * @param  mixed $dir
+ * @param  mixed $filename
+ * @param  mixed $extension
+ * @param  mixed $dirname
+ * @return string
+ */
+function foodiepro_get_webp_source_tag($filename, $extension, $dir_path, $dir_uri ) {
+	$webp_markup = '';
+	$webp_uri = foodiepro_get_webp_uri($filename, $extension, $dir_path, $dir_uri );
+	$webp_markup = '<source srcset="' . $webp_uri . '" type="image/webp">';
+	return $webp_markup;
+}
+
+
+/**
+ * Returns <source> tag for the .webp version of the file if it exists
+ *
+ * @param  mixed $dir
+ * @param  mixed $filename
+ * @param  mixed $extension
+ * @param  mixed $dirname
+ * @return string
+ */
+function foodiepro_get_webp_uri($filename, $extension, $dir_path, $dir_uri)
+{
+	$uri = '';
+	$path = trailingslashit($dir_path) . $filename . '.' . $extension . '.webp';
+	if (is_file($path))
+		$uri = trailingslashit($dir_uri) . $filename . '.' . $extension . '.webp';
+	else {
+		$path = trailingslashit($dir_path) . $filename . '.webp';
+		if (is_file($path))
+			$uri = trailingslashit($dir_uri) . $filename . '.webp';
+	}
+	return $uri;
 }
 
 

@@ -86,7 +86,7 @@ class CRM_Submission {
 
     /**
      * cpm_recipe_submission_main_cb
-     *CPM standard post data are already saved in the main CPM Submission class :
+     * CPM standard post data are already saved in the main CPM Submission class :
      * * post title
      * * post content
      * * post thumbnail
@@ -95,11 +95,26 @@ class CRM_Submission {
      * @param  mixed $post_id
      * @return void
      */
-    public function save_recipe_meta($post_id)
+    public function save_recipe_meta($post_id, $action)
     {
         $post = get_post($post_id);
         $recipe = new CRM_Recipe_Save($post);
-        $recipe->save_recipe_meta();
+        $recipe->save_recipe_meta( $action );
+    }
+
+    /* WP CALLBACKS
+--------------------------------------------------------------------------------------*/
+    /**
+     * Saves ingredients as taxonomy terms and attaches them to the current recipe
+     *
+     * @param  mixed $post_id
+     * @param  mixed $post
+     * @return void
+     */
+    public function insert_ingredient_terms($post_id, $post)
+    {
+        $recipe = new CRM_Recipe_Save($post);
+        $recipe->save_ingredient_terms();
     }
 
 /* AJAX CALLBACKS

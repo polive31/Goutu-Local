@@ -25,6 +25,11 @@ class Custom_Post_Management {
 		add_action( 'init', 									'CPM_Assets::hydrate', 1 );
 		add_action( 'wp_enqueue_scripts', 						'CPM_Assets::scripts_styles_enqueue' );
 
+		// CPM Private
+		add_filter('query_vars', 								'CPM_Private::custom_404_error_queryvar');
+		add_action('template_redirect', 						'CPM_Private::redirect_private_content', 9);
+		add_shortcode('custom-404', 							'CPM_Private::custom_404_page');
+
 		$Status = new CPM_Post_Status();
 		add_action('init', 										array($Status, 'hydrate'), 1);
 		add_action('init', 										array($Status, 'register_restored_post_status'));
@@ -33,6 +38,7 @@ class Custom_Post_Management {
 		add_filter('display_post_states', 						array($Status, 'display_status_in_post_grid'));
 		add_filter('query_vars', 								array($Status, 'add_post_status_queryvar' ));
 		add_filter('pre_get_posts',             				'CPM_Post_Status::remove_restored_from_archives');
+
 
 		$Like = new CPM_Like();
 		// Default value on save post (allows for sorting by like count)
@@ -133,8 +139,6 @@ class Custom_Post_Management {
 		$CPM_Output_Shortcodes = new CPM_Output_Shortcodes();
         add_shortcode( 'cpm-list', 								array($CPM_Output_Shortcodes, 'custom_post_list_shortcode' ) );
 		add_shortcode( 'cpm-button', 							array($CPM_Output_Shortcodes, 'new_post_button' ) );
-
-
 
 	}
 

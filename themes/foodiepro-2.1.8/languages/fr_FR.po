@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2020-04-25 09:59+0200\n"
-"PO-Revision-Date: 2020-04-25 09:59+0200\n"
+"POT-Creation-Date: 2020-04-26 12:53+0200\n"
+"PO-Revision-Date: 2020-04-26 13:13+0200\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -456,6 +456,88 @@ msgstr ""
 msgid "Displays taxonomy terms corresponding to the current search terms"
 msgstr ""
 
+#: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:41
+#: plugins/custom-contact-form/templates/contact-form-wp.php:9
+#: plugins/custom-contact-form/templates/contact-form.php:9
+#: plugins/custom-recipe-management/admin/class-crm-taxonomies.php:64
+#: plugins/custom-star-rating/public/class-csr-form.php:136
+msgid "Name"
+msgstr "Nom"
+
+#: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:43
+#: plugins/custom-star-rating/public/class-csr-form.php:138
+#, fuzzy
+#| msgid "Email Address"
+msgid "Email"
+msgstr "Adresse mail"
+
+#: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:45
+#: plugins/custom-star-rating/public/class-csr-form.php:140
+msgid "Website"
+msgstr ""
+
+#: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:52
+#: plugins/custom-star-rating/public/class-csr-form.php:147
+msgid ""
+"Save my name, email, and website in this browser for the next time I comment."
+msgstr ""
+
+#: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:60
+#: plugins/custom-star-rating/public/class-csr-form.php:155
+#, fuzzy, php-format
+#| msgid "Required fields"
+msgid "Required fields are marked %s"
+msgstr "Informations requises"
+
+#: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:72
+#: plugins/custom-star-rating/public/class-csr-form.php:167
+#, fuzzy
+#| msgid "Comment"
+msgctxt "noun"
+msgid "Comment"
+msgstr "Ajouter un commentaire"
+
+#: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:76
+#: plugins/custom-star-rating/public/class-csr-form.php:171
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr ""
+
+#: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:82
+#: plugins/custom-star-rating/public/class-csr-form.php:177
+#, php-format
+msgid ""
+"<a href=\"%1$s\" aria-label=\"%2$s\">Logged in as %3$s</a>. <a href=\"%4$s"
+"\">Log out?</a>"
+msgstr ""
+
+#: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:85
+#: plugins/custom-star-rating/public/class-csr-form.php:180
+#, php-format
+msgid "Logged in as %s. Edit your profile."
+msgstr ""
+
+#: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:89
+#: plugins/custom-star-rating/public/class-csr-form.php:184
+#, fuzzy
+#| msgid "Your recipe just got published !"
+msgid "Your email address will not be published."
+msgstr "Ta recette est publiée !"
+
+#: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:97
+#: plugins/custom-star-rating/public/class-csr-form.php:192
+#, fuzzy
+#| msgid "Send a Reply"
+msgid "Leave a Reply"
+msgstr "Envoyer une répondre"
+
+#: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:100
+#: plugins/custom-star-rating/public/class-csr-form.php:195
+#, fuzzy
+#| msgid "Post content"
+msgid "Post Comment"
+msgstr "Corps de l'article"
+
 #: plugins/custom-comment-management/includes/class-ccm-assets.php:43
 msgid "Please enter a text before submitting your comment."
 msgstr "Veuillez entrer un texte avant de soumettre votre commentaire."
@@ -471,21 +553,21 @@ msgstr ""
 "commentaire."
 
 #: plugins/custom-comment-management/public/bak/OLD_DEPRECATED_comments-list.php:23
-#: plugins/custom-comment-management/public/class-ccm-comments-list.php:59
+#: plugins/custom-comment-management/public/class-ccm-comments-list.php:75
 #, fuzzy
 #| msgid "Comment"
 msgid "Comments"
 msgstr "Ajouter un commentaire"
 
 #: plugins/custom-comment-management/public/bak/OLD_DEPRECATED_comments-list.php:29
-#: plugins/custom-comment-management/public/class-ccm-comments-list.php:65
+#: plugins/custom-comment-management/public/class-ccm-comments-list.php:81
 #, fuzzy
 #| msgid "Previous Feeds"
 msgid "Previous comments"
 msgstr "Nouvelles précédentes"
 
 #: plugins/custom-comment-management/public/bak/OLD_DEPRECATED_comments-list.php:35
-#: plugins/custom-comment-management/public/class-ccm-comments-list.php:71
+#: plugins/custom-comment-management/public/class-ccm-comments-list.php:87
 #, fuzzy
 #| msgid "Comment"
 msgid "Next comments"
@@ -506,7 +588,7 @@ msgid "Your comment is awaiting moderation."
 msgstr ""
 
 #: plugins/custom-comment-management/public/bak/OLD_DEPRECATED_comments-list.php:113
-#: plugins/custom-comment-management/public/class-ccm-comments-list.php:41
+#: plugins/custom-comment-management/public/class-ccm-comments-list.php:57
 #, php-format
 msgid "%1$s at %2$s"
 msgstr ""
@@ -517,97 +599,27 @@ msgstr ""
 msgid "(Edit)"
 msgstr "Modifier"
 
-#: plugins/custom-comment-management/public/class-ccm-form.php:69
-#: plugins/custom-comment-management/public/class-ccm-form.php:93
+#: plugins/custom-comment-management/public/class-ccm-comments-list.php:16
+#, fuzzy, php-format
+#| msgid "Reply to Message"
+msgid "Reply to %s"
+msgstr "Répondre au message"
+
+#: plugins/custom-comment-management/public/class-ccm-comments-list.php:18
+#, fuzzy
+#| msgid "Remove from Favorites"
+msgid "Reply to this comment"
+msgstr "Favorite"
+
+#: plugins/custom-comment-management/public/class-ccm-form.php:77
+#: plugins/custom-comment-management/public/class-ccm-form.php:120
 msgid "<strong>ERROR</strong>: please complete the CAPTCHA verification."
 msgstr "<strong>ERREUR</strong> : Merci d'effectuer la vérification anti-spam."
 
-#: plugins/custom-comment-management/public/class-ccm-form.php:80
+#: plugins/custom-comment-management/public/class-ccm-form.php:96
 #: themes/foodiepro-2.1.8/peepso/general/recover-password.php:37
 msgid "Submit"
 msgstr "Publier"
-
-#: plugins/custom-comment-management/public/partials/comment-form-template.php:41
-#: plugins/custom-contact-form/templates/contact-form-wp.php:9
-#: plugins/custom-contact-form/templates/contact-form.php:9
-#: plugins/custom-recipe-management/admin/class-crm-taxonomies.php:64
-#: plugins/custom-star-rating/public/class-csr-form.php:146
-msgid "Name"
-msgstr "Nom"
-
-#: plugins/custom-comment-management/public/partials/comment-form-template.php:43
-#: plugins/custom-star-rating/public/class-csr-form.php:148
-#, fuzzy
-#| msgid "Email Address"
-msgid "Email"
-msgstr "Adresse mail"
-
-#: plugins/custom-comment-management/public/partials/comment-form-template.php:45
-#: plugins/custom-star-rating/public/class-csr-form.php:150
-msgid "Website"
-msgstr ""
-
-#: plugins/custom-comment-management/public/partials/comment-form-template.php:52
-#: plugins/custom-star-rating/public/class-csr-form.php:157
-msgid ""
-"Save my name, email, and website in this browser for the next time I comment."
-msgstr ""
-
-#: plugins/custom-comment-management/public/partials/comment-form-template.php:60
-#: plugins/custom-star-rating/public/class-csr-form.php:165
-#, fuzzy, php-format
-#| msgid "Required fields"
-msgid "Required fields are marked %s"
-msgstr "Informations requises"
-
-#: plugins/custom-comment-management/public/partials/comment-form-template.php:72
-#: plugins/custom-star-rating/public/class-csr-form.php:177
-#, fuzzy
-#| msgid "Comment"
-msgctxt "noun"
-msgid "Comment"
-msgstr "Ajouter un commentaire"
-
-#: plugins/custom-comment-management/public/partials/comment-form-template.php:76
-#: plugins/custom-star-rating/public/class-csr-form.php:181
-#, php-format
-msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
-msgstr ""
-
-#: plugins/custom-comment-management/public/partials/comment-form-template.php:82
-#: plugins/custom-star-rating/public/class-csr-form.php:187
-#, php-format
-msgid ""
-"<a href=\"%1$s\" aria-label=\"%2$s\">Logged in as %3$s</a>. <a href=\"%4$s"
-"\">Log out?</a>"
-msgstr ""
-
-#: plugins/custom-comment-management/public/partials/comment-form-template.php:85
-#: plugins/custom-star-rating/public/class-csr-form.php:190
-#, php-format
-msgid "Logged in as %s. Edit your profile."
-msgstr ""
-
-#: plugins/custom-comment-management/public/partials/comment-form-template.php:89
-#: plugins/custom-star-rating/public/class-csr-form.php:194
-#, fuzzy
-#| msgid "Your recipe just got published !"
-msgid "Your email address will not be published."
-msgstr "Ta recette est publiée !"
-
-#: plugins/custom-comment-management/public/partials/comment-form-template.php:97
-#: plugins/custom-star-rating/public/class-csr-form.php:202
-#, fuzzy
-#| msgid "Send a Reply"
-msgid "Leave a Reply"
-msgstr "Envoyer une répondre"
-
-#: plugins/custom-comment-management/public/partials/comment-form-template.php:100
-#: plugins/custom-star-rating/public/class-csr-form.php:205
-#, fuzzy
-#| msgid "Post content"
-msgid "Post Comment"
-msgstr "Corps de l'article"
 
 #: plugins/custom-contact-form/admin/class-ccf-admin.php:38
 #, fuzzy
@@ -1262,7 +1274,7 @@ msgstr "Etiquettes"
 #: plugins/custom-post-management/deprecated/post_toolbar.php:19
 #: plugins/custom-post-management/templates/template-screen-toolbar.php:19
 #: plugins/custom-recipe-management/deprecated/partials_recipe/recipe-toolbar.php:73
-#: plugins/custom-recipe-management/templates/template-toolbar.php:74
+#: plugins/custom-recipe-management/templates/template-toolbar.php:68
 msgid "Print"
 msgstr "Imprimer"
 
@@ -1274,60 +1286,60 @@ msgstr "Imprimer cet article"
 #: plugins/custom-post-management/deprecated/post_toolbar.php:34
 #: plugins/custom-post-management/templates/template-screen-toolbar.php:34
 #: plugins/custom-recipe-management/deprecated/partials_recipe/recipe-toolbar.php:88
-#: plugins/custom-recipe-management/templates/template-toolbar.php:89
+#: plugins/custom-recipe-management/templates/template-toolbar.php:83
 msgid "Share"
 msgstr "Partager"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:98
+#: plugins/custom-post-management/includes/class-cpm-assets.php:97
 msgctxt "post"
 msgid "Are you sure you want to delete this post :"
 msgstr "Etes vous sûr de vouloir supprimer cet article :"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:127
+#: plugins/custom-post-management/includes/class-cpm-assets.php:126
 #, php-format
 msgid "Authorized file formats are : %s"
 msgstr "Les formats de fichier autorisés sont : %s"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:129
+#: plugins/custom-post-management/includes/class-cpm-assets.php:128
 #, php-format
 msgid "The maximum file size is %s kB"
 msgstr "La taille du fichier doit être inférieure à %s Ko."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:130
+#: plugins/custom-post-management/includes/class-cpm-assets.php:129
 msgid "Do you really want to delete this image ?"
 msgstr "Etes-vous sûr de vouloir supprimer cette image ?"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:192
+#: plugins/custom-post-management/includes/class-cpm-assets.php:191
 msgctxt "post"
 msgid "Post Title"
 msgstr "Titre de l'article"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:193
+#: plugins/custom-post-management/includes/class-cpm-assets.php:192
 msgctxt "post"
 msgid "Edit Post"
 msgstr "Modifier cet article"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:194
+#: plugins/custom-post-management/includes/class-cpm-assets.php:193
 msgctxt "post"
 msgid "Delete Post"
 msgstr "Supprimer cet article"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:195
+#: plugins/custom-post-management/includes/class-cpm-assets.php:194
 msgctxt "post"
 msgid "New Post"
 msgstr "Nouvel article"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:196
+#: plugins/custom-post-management/includes/class-cpm-assets.php:195
 msgctxt "post"
 msgid "Add here your best picture for this post !"
 msgstr "Placez ici votre plus belle photo pour illustrer cet article !"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:197
+#: plugins/custom-post-management/includes/class-cpm-assets.php:196
 msgctxt "post"
 msgid "Write your new post on this page."
 msgstr "Ecrivez votre nouvel article sur cette page."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:198
+#: plugins/custom-post-management/includes/class-cpm-assets.php:197
 msgctxt "post"
 msgid ""
 "You can then choose to save it as draft, or to publish it. Once approved, it "
@@ -1337,12 +1349,12 @@ msgstr ""
 "bien le publier. Dans ce cas, une fois approuvé, il sera visible du reste "
 "des utilisateurs."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:199
+#: plugins/custom-post-management/includes/class-cpm-assets.php:198
 msgctxt "post"
 msgid "Edit your existing post on this page."
 msgstr "Mettez à jour votre article sur cette page."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:200
+#: plugins/custom-post-management/includes/class-cpm-assets.php:199
 msgctxt "post"
 msgid ""
 "You can then choose to save it as draft, or to publish it. Once approved, it "
@@ -1352,14 +1364,14 @@ msgstr ""
 "bien le publier. Dans ce cas, une fois approuvé, il sera visible des autres "
 "utilisateurs."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:201
+#: plugins/custom-post-management/includes/class-cpm-assets.php:200
 #, php-format
 msgctxt "post"
 msgid "Post saved as <a href=\"%s\">a draft</a>."
 msgstr ""
 "Votre article a été sauvegardé en tant que <a href=\"%s\">brouillon</a>."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:202
+#: plugins/custom-post-management/includes/class-cpm-assets.php:201
 msgctxt "post"
 msgid ""
 "It will not be visible on the site, but you can edit it at any time and "
@@ -1368,25 +1380,25 @@ msgstr ""
 "Il ne sera pas visible des autres utilisateurs, mais vous pouvez le modifier "
 "à tout moment, et le publier plus tard."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:203
+#: plugins/custom-post-management/includes/class-cpm-assets.php:202
 #, php-format
 msgctxt "post"
 msgid "Back to <a href=\"%s\">my posts</a>."
 msgstr "Retour à <a href=\"%s\">mes articles</a>"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:204
+#: plugins/custom-post-management/includes/class-cpm-assets.php:203
 #, php-format
 msgctxt "post"
 msgid "Dear administrator, this post is now <a href=\"%s\">published</a>."
 msgstr ""
 "Cher administrateur, cet article est désormais <a href=\"%s\">publié</a>."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:205
+#: plugins/custom-post-management/includes/class-cpm-assets.php:204
 msgctxt "post"
 msgid "Post submitted! Thank you, your post is now awaiting moderation."
 msgstr "Nous avons bien reçu votre article ! Il sera publié après modération."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:206
+#: plugins/custom-post-management/includes/class-cpm-assets.php:205
 msgctxt "post"
 msgid ""
 "In order for your post to be published, please fill-in those required fields:"
@@ -1394,23 +1406,23 @@ msgstr ""
 "Afin que votre article puisse être publié, merci de renseigner les "
 "informations suivantes :"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:207
+#: plugins/custom-post-management/includes/class-cpm-assets.php:206
 msgctxt "post"
 msgid "You have no posts yet."
 msgstr "Vous n'avez pas encore d'article ici."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:208
+#: plugins/custom-post-management/includes/class-cpm-assets.php:207
 msgctxt "post"
 msgid "Your post just got published !"
 msgstr "Ton article est publié !"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:209
+#: plugins/custom-post-management/includes/class-cpm-assets.php:208
 #, php-format
 msgctxt "post"
 msgid "Greetings, your post <a href=\"%s\">%s</a> just got published !"
 msgstr "Félicitations, ton article <a href=\"%s\">%s</a> vient d'être publié !"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:210
+#: plugins/custom-post-management/includes/class-cpm-assets.php:209
 #, php-format
 msgctxt "post"
 msgid ""
@@ -1418,80 +1430,99 @@ msgid ""
 msgstr ""
 "Il est visible sur le site, et apparaît sur <a href=\"%s\">ton blog</a>."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:211
+#: plugins/custom-post-management/includes/class-cpm-assets.php:210
 #, php-format
 msgctxt "post"
 msgid "%s commented one of your posts"
 msgstr "%s a commenté un de tes articles"
 
+#: plugins/custom-post-management/includes/class-cpm-assets.php:211
 #: plugins/custom-post-management/includes/class-cpm-assets.php:212
-#: plugins/custom-post-management/includes/class-cpm-assets.php:213
 #, php-format
 msgctxt "post"
 msgid "%s added a comment to your post <a href=\"%s\">%s</a> :"
 msgstr "%s a commenté ton article <a href=\"%s\">%s</a>."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:214
+#: plugins/custom-post-management/includes/class-cpm-assets.php:213
 #, php-format
 msgctxt "post"
 msgid "liked your post %s"
 msgstr "a aimé ton article %s"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:215
+#: plugins/custom-post-management/includes/class-cpm-assets.php:214
 #, php-format
 msgctxt "post"
 msgid "commented your post %s"
 msgstr "a commenté ton article %s"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:216
+#: plugins/custom-post-management/includes/class-cpm-assets.php:215
 #, php-format
 msgctxt "post"
 msgid "answered your comment on post %s"
 msgstr "a répondu à ton commentaire sur l'article %s"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:217
+#: plugins/custom-post-management/includes/class-cpm-assets.php:216
 msgctxt "post"
 msgid "Leave a comment on this post"
 msgstr "Que pensez vous de cet article ?"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:231
+#: plugins/custom-post-management/includes/class-cpm-assets.php:217
+#: plugins/custom-post-management/includes/class-cpm-assets.php:218
+msgctxt "post"
+msgid "The post you are trying to read is not yet approved by administrators."
+msgstr ""
+"L'article que vous essayez de lire n'est pas encore approuvé par les "
+"administrateurs."
+
+#: plugins/custom-post-management/includes/class-cpm-assets.php:219
+msgctxt "post"
+msgid "The post you are trying to read is reserved to members."
+msgstr "L'article que vous essayez de lire est réservé aux membres inscrits."
+
+#: plugins/custom-post-management/includes/class-cpm-assets.php:220
+#: plugins/custom-post-management/includes/class-cpm-assets.php:221
+msgctxt "post"
+msgid "The post you are trying to read is private."
+msgstr "L'article que vous essayez de lire est privé."
+
+#: plugins/custom-post-management/includes/class-cpm-assets.php:235
 #: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:356
 msgid "Category"
 msgstr "Catégorie"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:239
+#: plugins/custom-post-management/includes/class-cpm-assets.php:243
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:117
 msgid "Keywords"
 msgstr "Mots-clés"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:248
+#: plugins/custom-post-management/includes/class-cpm-assets.php:252
 msgid "Post Title"
 msgstr "Titre de l'article"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:249
+#: plugins/custom-post-management/includes/class-cpm-assets.php:253
 msgid "Post Content"
 msgstr "Corps de l'article"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:250
+#: plugins/custom-post-management/includes/class-cpm-assets.php:254
 msgid "Post Category"
 msgstr "Catégorie de l'article"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:251
+#: plugins/custom-post-management/includes/class-cpm-assets.php:255
 msgid "Post Featured Image."
 msgstr "Image à la une"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:261
+#: plugins/custom-post-management/includes/class-cpm-assets.php:265
 msgctxt "post"
 msgid "All my posts"
 msgstr "Tous mes articles"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:265
+#: plugins/custom-post-management/includes/class-cpm-assets.php:269
 #: plugins/custom-post-management/includes/class-cpm-post-status.php:14
 msgctxt "post"
 msgid "Restored"
 msgstr "Sauvegardes récupérées"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:266
+#: plugins/custom-post-management/includes/class-cpm-assets.php:270
 msgctxt "post"
 msgid ""
 "Those posts have been automatically kept but not saved as drafts. You can "
@@ -1500,35 +1531,36 @@ msgstr ""
 "Ces articles ont été récupérés automatiquement. Vous pouvez les supprimer si "
 "vous n'en avez pas besoin, ou bien les sauvegarder en tant que brouillons."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:269
+#: plugins/custom-post-management/includes/class-cpm-assets.php:273
 msgctxt "post"
 msgid "Pending"
 msgstr "Articles en attente de relecture"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:270
+#: plugins/custom-post-management/includes/class-cpm-assets.php:274
 msgctxt "post"
 msgid "Those posts have been submitted and pending administrator's approval."
 msgstr ""
 "Ces articles ont été soumis pour publication, et sont en attente "
 "d'approbation par les administrateurs."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:273
+#: plugins/custom-post-management/includes/class-cpm-assets.php:277
 msgctxt "post"
 msgid "Draft"
 msgstr "Articles en cours d'écriture"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:274
+#: plugins/custom-post-management/includes/class-cpm-assets.php:278
 msgctxt "post"
 msgid "Those posts are in preparation, and not yet submitted."
 msgstr ""
-"Ces articles sont en préparation, et pas encore soumis pour publication."
+"Ces articles sont des brouillons en cours de rédaction, et non encore soumis "
+"pour publication."
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:277
+#: plugins/custom-post-management/includes/class-cpm-assets.php:281
 msgctxt "post"
 msgid "Public"
 msgstr "Articles publiés"
 
-#: plugins/custom-post-management/includes/class-cpm-assets.php:278
+#: plugins/custom-post-management/includes/class-cpm-assets.php:282
 msgctxt "post"
 msgid ""
 "Those posts have been approved by the administrator. They are visible on the "
@@ -1536,6 +1568,44 @@ msgid ""
 msgstr ""
 "Ces articles ont été approuvés par les administrateurs. Ils sont visibles "
 "sur le site, selon vos préférences (amis, groupes, membres, public)."
+
+#: plugins/custom-post-management/includes/class-cpm-private.php:87
+#, php-format
+msgid ""
+"<a href=\"%s\">Log-in</a> to access private posts. Not a member ? <a href="
+"\"%s\">Check out</a> all what you can do on Goûtu.org !"
+msgstr ""
+"<a href=\"%s\">Connectez-vous</a> pour accéder aux articles privés.<br> Pas "
+"encore inscrit ? <a href=\"%s\">Jetez un oeil</a> sur tout ce que vous "
+"pouvez faire en tant que membre de Goûtu.org !"
+
+#: plugins/custom-post-management/includes/class-cpm-private.php:92
+#, php-format
+msgid ""
+"<a href=\"%s\">Make new friends</a> to get access to their private posts."
+msgstr ""
+"<a href=\"%s\">Faites-vous de nouveaux amis</a> afin de pouvoir accéder à "
+"leurs articles privés."
+
+#: plugins/custom-post-management/includes/class-cpm-private.php:97
+#, php-format
+msgid ""
+"<a href=\"%s\">Apply to this group</a> in order to get access to their "
+"private posts."
+msgstr ""
+"<a href=\"%s\">Rejoignez ce groupe</a> afin d'accéder à ses articles privés."
+
+#: plugins/custom-post-management/includes/class-cpm-private.php:102
+#: plugins/custom-post-management/includes/class-cpm-private.php:110
+#, php-format
+msgid ""
+"Go to the <a href=\"%s\">home page</a> and discover Goûtu.org from here !"
+msgstr ""
+"Rendez vous sur <a href=\"%s\">Goûtu.org</a> et découvrez tout le site !"
+
+#: plugins/custom-post-management/includes/class-cpm-private.php:108
+msgid "The page you are trying to open does not exist, sorry"
+msgstr "La page à laquelle vous essayez d'accéder n'existe pas."
 
 #: plugins/custom-post-management/like/class-cpm-like.php:54
 msgid "I cooked and liked this recipe"
@@ -1986,7 +2056,7 @@ msgstr "jours"
 #: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:56
 #: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:73
 #: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:90
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:222
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:223
 #: plugins/custom-recipe-management/templates/template-form-time.php:10
 msgid "hours"
 msgstr "heures"
@@ -1994,7 +2064,7 @@ msgstr "heures"
 #: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:60
 #: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:77
 #: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:94
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:215
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:216
 #: plugins/custom-recipe-management/templates/template-form-time.php:14
 #, fuzzy
 #| msgid "%s minute"
@@ -2207,32 +2277,32 @@ msgid "Wait"
 msgstr "Attente"
 
 #: plugins/custom-recipe-management/deprecated/partials_recipe/recipe-toolbar.php:19
-#: plugins/custom-recipe-management/templates/template-toolbar.php:19
+#: plugins/custom-recipe-management/templates/template-toolbar.php:11
 msgid "Rate"
 msgstr "Evaluer"
 
 #: plugins/custom-recipe-management/deprecated/partials_recipe/recipe-toolbar.php:24
-#: plugins/custom-recipe-management/templates/template-toolbar.php:24
+#: plugins/custom-recipe-management/templates/template-toolbar.php:16
 msgid "Comment and rate this recipe"
 msgstr "Commenter et noter cette recette"
 
 #: plugins/custom-recipe-management/deprecated/partials_recipe/recipe-toolbar.php:38
-#: plugins/custom-recipe-management/templates/template-toolbar.php:38
+#: plugins/custom-recipe-management/templates/template-toolbar.php:30
 msgid "Rate this recipe"
 msgstr "Le Goûtumètre"
 
 #: plugins/custom-recipe-management/deprecated/partials_recipe/recipe-toolbar.php:77
-#: plugins/custom-recipe-management/templates/template-toolbar.php:78
+#: plugins/custom-recipe-management/templates/template-toolbar.php:72
 msgid "Print this Recipe"
 msgstr "Imprimer cette recette"
 
 #: plugins/custom-recipe-management/deprecated/partials_recipe/recipe-toolbar.php:105
-#: plugins/custom-recipe-management/templates/template-toolbar.php:106
+#: plugins/custom-recipe-management/templates/template-toolbar.php:100
 msgid "Read"
 msgstr "Lire"
 
 #: plugins/custom-recipe-management/deprecated/partials_recipe/recipe-toolbar.php:109
-#: plugins/custom-recipe-management/templates/template-toolbar.php:110
+#: plugins/custom-recipe-management/templates/template-toolbar.php:104
 msgid "Read this recipe out loud"
 msgstr "Lire cette recette à haute voix"
 
@@ -2562,44 +2632,63 @@ msgctxt "recipe"
 msgid "Leave a comment on this post"
 msgstr "Que pensez vous de cet article ?"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:266
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:203
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:204
+msgctxt "recipe"
+msgid "The post you are trying to read is not yet approved by administrators."
+msgstr ""
+"L'article que vous essayez de lire n'est pas encore approuvé par les "
+"administrateurs."
+
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:205
+msgctxt "recipe"
+msgid "The post you are trying to read is reserved to members."
+msgstr ""
+
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:206
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:207
+msgctxt "recipe"
+msgid "The post you are trying to read is private."
+msgstr ""
+
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:271
 msgctxt "recipe"
 msgid "Are you sure you want to delete this post :"
 msgstr "Etes vous sûr de vouloir supprimer cette recette :"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:312
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:317
 msgid "Read previous step"
 msgstr "Lire l'instruction précédente"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:313
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:318
 msgid "Read next step"
 msgstr "Lire l'instruction suivante"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:314
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:319
 msgid "Read this step again"
 msgstr "Lire à nouveau cette instruction"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:315
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:320
 msgid "Pause reading"
 msgstr "Mettre la lecture en pause"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:316
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:321
 msgid "Continue reading"
 msgstr "Continuer la lecture"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:317
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:322
 msgid "Stop reading and close player"
 msgstr "Arrêter la lecture et fermer le lecteur"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:441
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:446
 msgid "Do you really want to delete this ingredient ?"
 msgstr "Etes-vous sûr de vouloir supprimer cet ingrédient ?"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:442
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:447
 msgid "Do you really want to delete this instruction ?"
 msgstr "Etes-vous sûr de vouloir supprimer cette instruction ?"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:443
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:448
 msgid ""
 "Do you really want to delete this group ?\\n(Instructions below will be "
 "preserved)"
@@ -2607,7 +2696,7 @@ msgstr ""
 "Etes-vous sûr de vouloir supprimer ce groupe ?\n"
 "(Les instructions en dessous seront préservées)"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:444
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:449
 #, fuzzy
 #| msgid "Do you really want to delete this ingredient ?"
 msgid ""
@@ -2615,7 +2704,7 @@ msgid ""
 "preserved)"
 msgstr "Etes-vous sûr de vouloir supprimer cet ingrédient ?"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:445
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:450
 msgid "Please remove the image prior to removing this instruction."
 msgstr ""
 
@@ -2706,46 +2795,46 @@ msgstr "Lire à haute voix"
 msgid "Click to Start Timer"
 msgstr "Cliquez pour lancer le minuteur"
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-ingredient.php:86
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-ingredient.php:88
 msgid "Harvest Period"
 msgstr "Période de consommation idéale"
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-ingredient.php:128
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-ingredient.php:129
 msgctxt "vowel"
 msgid "of "
 msgstr "d'"
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-ingredient.php:130
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-ingredient.php:131
 msgctxt "consonant"
 msgid "of "
 msgstr "de "
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:214
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:215
 #, fuzzy
 #| msgid "%s minute"
 #| msgid_plural "%s minutes"
 msgid "minute"
 msgstr "%s minute"
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:221
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:222
 msgid "hour"
 msgstr "heure"
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:681
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:682
 #, php-format
 msgid "%s day "
 msgid_plural "%s days "
 msgstr[0] "%s jour "
 msgstr[1] "%s jours "
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:684
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:685
 #, php-format
 msgid "%s hour "
 msgid_plural "%s hours "
 msgstr[0] "%s h "
 msgstr[1] "%s h "
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:687
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:688
 #, php-format
 msgid "%s minute"
 msgid_plural "%s minutes"
@@ -3003,7 +3092,7 @@ msgstr "ex : Préparation de la pâte"
 msgid "Not rated"
 msgstr "Pas d'évaluation"
 
-#: plugins/custom-star-rating/public/class-csr-form.php:25
+#: plugins/custom-star-rating/public/class-csr-form.php:15
 msgid ""
 "Your name and mail address are required for authentification of your comment."
 "<br>Your mail address will not be published."
@@ -3011,11 +3100,11 @@ msgstr ""
 "Vos nom et adresse mail sont nécessaires pour authentifier votre commentaire."
 "<br>Votre adresse mail ne sera pas publiée."
 
-#: plugins/custom-star-rating/public/class-csr-form.php:32
+#: plugins/custom-star-rating/public/class-csr-form.php:22
 msgid "Send"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-form.php:80
+#: plugins/custom-star-rating/public/class-csr-form.php:70
 msgid "Provide details"
 msgstr "Partagez quelques détails"
 
@@ -6717,11 +6806,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 
 #, fuzzy
 #~| msgid "Remove from Favorites"
-#~ msgid "Remove this member"
-#~ msgstr "Favorite"
-
-#, fuzzy
-#~| msgid "Remove from Favorites"
 #~ msgid "Remove from group"
 #~ msgstr "Favorite"
 
@@ -6861,9 +6945,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 #~| msgid "All occasions"
 #~ msgid "Delete Conversation"
 #~ msgstr "Toutes les occasions"
-
-#~ msgid "Reply to Message"
-#~ msgstr "Répondre au message"
 
 #, fuzzy
 #~| msgid "Send a Reply"

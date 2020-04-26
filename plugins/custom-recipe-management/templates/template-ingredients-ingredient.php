@@ -11,7 +11,7 @@ $out = '<span class="recipe-ingredient-quantity-unit">';
         else
             $out .= $ingredient['amount'];
         $out .= '</span>';
-    $out .= '<span class="recipe-ingredient-unit" data-original="' . $parts['unit'] . '">';
+    $out .= '<span class="recipe-ingredient-unit" data-original="' . $parts['unit_singular'] . '" data-plural="' . $parts['unit_plural'] . '">';
         $out .= ' ' . $parts['unit'];
         $out .= '</span>';
     $out .= '</span>';

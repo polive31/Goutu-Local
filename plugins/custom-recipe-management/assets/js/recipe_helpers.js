@@ -1,7 +1,6 @@
 var wpurp_adjustable_servings = {};
 
 jQuery(document).ready(function() {
-    // console.log("In custom adjustable servings script");
 
     /* Ingredient checkboxes
     ---------------------------------------------------------------- */
@@ -39,8 +38,6 @@ jQuery(document).ready(function() {
         $input.trigger("change");
     });
 
-    // console.log("In custom adjustable servings !");
-
     jQuery(document).on('keyup change', '.adjust-recipe-servings', function(e) {
         var servings_input = jQuery(this);
 
@@ -61,59 +58,26 @@ jQuery(document).ready(function() {
         $printButton.attr('href', url);
 
         wpurp_adjustable_servings.updateAmounts(amounts, servings_original, servings_new);
-        wpurp_adjustable_servings.updateShortcode(servings_input.parents('.wpurp-container'), servings_new);
-
-        // RecipePrintButton.update(servings_input.parents('.wpurp-container'));
     });
 
 
-    jQuery(document).on('blur', '.adjust-recipe-servings', function(e) {
-        var servings_input = jQuery(this);
-        var servings_new = servings_input.val();
+    // jQuery(document).on('blur', '.adjust-recipe-servings', function(e) {
+    //     var servings_input = jQuery(this);
+    //     var servings_new = servings_input.val();
 
-        if( isNaN(servings_new) || servings_new <= 0){
-            servings_new = 1;
-        }
+    //     if( isNaN(servings_new) || servings_new <= 0){
+    //         servings_new = 1;
+    //     }
 
-        servings_input.parents('.wpurp-container').find('.adjust-recipe-servings').each(function() {
-            jQuery(this).val(servings_new);
-        });
-
-        // RecipePrintButton.update(servings_input.parents('.wpurp-container'));
-    });
-
+    //     servings_input.parents('.wpurp-container').find('.adjust-recipe-servings').each(function() {
+    //         jQuery(this).val(servings_new);
+    //     });
+    // });
 
 });
 
-wpurp_adjustable_servings.updateShortcode = function(recipe, servings_new) {
-    var servings_original = parseFloat(recipe.data('servings-original'));
-
-    recipe.find('.wpurp-adjustable-quantity').each(function() {
-        var quantity_element = jQuery(this);
-
-        // Only do this once.
-        if('undefined' == typeof quantity_element.data('original_quantity')) {
-            var quantity = wpurp_adjustable_servings.parse_quantity(quantity_element.text());
-            quantity /= servings_original;
-
-            quantity_element
-                .data('original_quantity', quantity_element.text())
-                .data('unit_quantity', quantity);
-        }
-
-        // Adjust quantity.
-        if(servings_new == servings_original) {
-            quantity_element.text(quantity_element.data('original_quantity'));
-        } else {
-            var quantity = parseFloat(quantity_element.data('unit_quantity')) * servings_new;
-
-            if(!isNaN(quantity)) {
-                quantity_element.text(wpurp_adjustable_servings.toFixed(quantity, false));
-            }
-        }
-    });
-};
-
+/* HELPERS
+----------------------------------------------------------------------*/
 wpurp_adjustable_servings.parse_quantity = function(sQuantity) {
     // Use . for decimals
     sQuantity = sQuantity.replace(',', '.');
@@ -134,7 +98,6 @@ wpurp_adjustable_servings.parse_quantity = function(sQuantity) {
     // Split by spaces
     sQuantity = sQuantity.trim();
     var parts = sQuantity.split(' ');
-
     var quantity = false;
 
     if(sQuantity !== '') {
@@ -164,45 +127,44 @@ wpurp_adjustable_servings.parse_quantity = function(sQuantity) {
 
 wpurp_adjustable_servings.updateAmounts = function(amounts, servings_original, servings_new)
 {
-    // console.log( "In updateAmounts" );
     amounts.each(function() {
-        var amount = parseFloat(jQuery(this).data('normalized'));
-        var fraction = jQuery(this).data('fraction');
 
+        var amount = parseFloat(jQuery(this).data('normalized'));
         if(servings_original == servings_new)
         {
             jQuery(this).text(jQuery(this).data('original'));
         }
         else
         {
-            if(!isFinite(amount)) {
+            if (!isFinite(amount) || amount==0 ) {
+                // This is the case when amount is a string, ex : "quelques"
                 jQuery(this).addClass('recipe-ingredient-nan');
-            } else {
+            }
+                var fraction = jQuery(this).data('fraction');
                 var new_amount = servings_new * amount/servings_original;
                 var new_amount_text = wpurp_adjustable_servings.toFixed(new_amount, fraction);
+                var $ingredientNameContainer = jQuery(this).parents('.wpurp-recipe-ingredient').find('.recipe-ingredient-name');
+                var $ingredientNameRoot = jQuery(this).parents('.wpurp-recipe-ingredient').find('#ingredient_name_root');
+                var $ingredientUnitContainer = jQuery(this).next();
+                var unitSingular = $ingredientUnitContainer.data('original');
+                var unitPlural = $ingredientUnitContainer.data('plural');
+
                 jQuery(this).text(new_amount_text + ' ');
 
-                // console.log( "Current object ", jQuery(this).html() );
-                // console.log( "new_amount = ", new_amount );
-                ingredientUnit = jQuery(this).next().text();
-                // console.log("unit = ", ingredientUnit );
-                // console.log("unit length = ", ingredientUnit.length );
+                // Change ingredient name to singular or plural if needed
+                if (new_amount >= 2) {
+                    if ( $ingredientNameContainer.data('plural') )
+                        $ingredientNameRoot.html( $ingredientNameContainer.data('plural') );
+                    if ( unitPlural.length!=0 )
+                        $ingredientUnitContainer.text( unitPlural );
+                    }
+                else {
+                    if ( $ingredientNameContainer.data('singular') && unitSingular.length == 0 )
+                        $ingredientNameRoot.html( $ingredientNameContainer.data('singular') );
+                    $ingredientUnitContainer.text( unitSingular );
 
-                if ( !ingredientUnit.length ) {
-                    // console.log( "Ingredient name needs to be updated ! " );
-                    ingredientNameContainer = jQuery(this).parents('.wpurp-recipe-ingredient').find('.recipe-ingredient-name');
-                    ingredientNameRoot = jQuery(this).parents('.wpurp-recipe-ingredient').find('#ingredient_name_root');
-                    // console.log("Plural = ", ingredientNameContainer.data('plural') );
-                    // console.log("Root name = ", ingredientNameRoot.html() );
-                    if (new_amount >= 2) {
-                        if ( ingredientNameContainer.data('plural') )
-                        ingredientNameRoot.html( ingredientNameContainer.data('plural') );
-                    }
-                    else {
-                        if ( ingredientNameContainer.data('singular') )
-                        ingredientNameRoot.html( ingredientNameContainer.data('singular') );
-                    }
                 }
+
 
             }
         }

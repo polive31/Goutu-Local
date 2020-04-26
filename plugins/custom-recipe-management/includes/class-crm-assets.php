@@ -200,6 +200,11 @@ class CRM_Assets {
 			'not_comment'				=> _x('commented your post %s', 'recipe', 'crm'),
 			'not_comment_respond'		=> _x('answered your comment on post %s', 'recipe', 'crm'),
 			'comment_form_headline'		=> _x('Leave a comment on this post', 'recipe', 'crm'),
+			'error404_draft' 			=> _x('The post you are trying to read is not yet approved by administrators.', 'recipe', 'crm'),
+			'error404_pending' 			=> _x('The post you are trying to read is not yet approved by administrators.', 'recipe', 'crm'),
+			'error404_private' 			=> _x('The post you are trying to read is reserved to members.', 				'recipe', 'crm'),
+			'error404_friends' 			=> _x('The post you are trying to read is private.', 							'recipe', 'crm'),
+			'error404_groups' 			=> _x('The post you are trying to read is private.', 							'recipe', 'crm'),
 		);
 		return $labels;
 	}

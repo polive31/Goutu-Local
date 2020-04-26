@@ -1,9 +1,5 @@
 <?php
 
-/* CustomPostTemplates class
---------------------------------------------*/
-
-
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -26,6 +22,7 @@ class CPM_Assets {
 	private static $enqueued_scripts;
 	private static $statuses;
 	private static $fallback;
+	private static $img_sizes;
 
 	public function __construct() {
 		// __construct is empty due to this class being used in a static way
@@ -46,6 +43,8 @@ class CPM_Assets {
 			)
         );
 		self::$slugs = apply_filters( 'cpm_page_slugs', $default_slugs );
+
+
 
 		/* Location can be either a key of the self::$slugs array, or a post type */
 		$default_enqueued_styles = array(
@@ -214,7 +213,12 @@ class CPM_Assets {
 		    	'not_like'					=> _x( 'liked your post %s', 'post', 'foodiepro'),
 		    	'not_comment'				=> _x( 'commented your post %s', 'post', 'foodiepro'),
 		    	'not_comment_respond'		=> _x( 'answered your comment on post %s', 'post', 'foodiepro'),
-		    	'comment_form_headline'		=> _x( 'Leave a comment on this post', 'post', 'foodiepro'),
+				'comment_form_headline'		=> _x( 'Leave a comment on this post', 'post', 'foodiepro'),
+				'error404_draft' 			=> _x('The post you are trying to read is not yet approved by administrators.', 'post', 'foodiepro'),
+				'error404_pending' 			=> _x('The post you are trying to read is not yet approved by administrators.', 'post', 'foodiepro'),
+				'error404_private' 			=> _x('The post you are trying to read is reserved to members.', 				'post', 'foodiepro'),
+				'error404_friends' 			=> _x('The post you are trying to read is private.', 							'post', 'foodiepro'),
+				'error404_groups' 			=> _x('The post you are trying to read is private.', 							'post', 'foodiepro'),
 			),
 		);
 		self::$labels = apply_filters( 'cpm_labels', $default_labels );
@@ -285,9 +289,34 @@ class CPM_Assets {
 			'post'	=> trailingslashit( self::$PLUGIN_URI ) . 'assets/img/fallback.jpg',
 		);
 		self::$fallback = apply_filters('cpm_fallback_image', $default_fallback);
+
+		self::$img_sizes = self::populate_image_sizes();
 	}
 
-	public static function get_fallback_img_url($post_type, $size = '')
+	private static function populate_image_sizes()
+	{
+		$sizes = array();
+		$wp_additional_image_sizes = wp_get_additional_image_sizes();
+		$get_intermediate_image_sizes = get_intermediate_image_sizes();
+
+		// Create the full array with sizes and crop info
+		foreach ($get_intermediate_image_sizes as $_size) {
+			if (in_array($_size, array('thumbnail', 'medium', 'large'))) {
+				$sizes[$_size]['width'] = get_option($_size . '_size_w');
+				$sizes[$_size]['height'] = get_option($_size . '_size_h');
+				$sizes[$_size]['crop'] = (bool) get_option($_size . '_crop');
+			} elseif (isset($wp_additional_image_sizes[$_size])) {
+				$sizes[$_size] = array(
+					'width' => $wp_additional_image_sizes[$_size]['width'],
+					'height' => $wp_additional_image_sizes[$_size]['height'],
+					'crop' =>  $wp_additional_image_sizes[$_size]['crop']
+				);
+			}
+		}
+		return $sizes;
+	}
+
+	private static function get_fallback_img_url($post_type, $size = '')
 	{
 		if (!isset(self::$fallback[$post_type])) return false;
 		$url = self::$fallback[$post_type];
@@ -298,12 +327,9 @@ class CPM_Assets {
 		return $url ;
 	}
 
-	public static function get_fallback_img( $post_type, $size='' ) {
-		$url = self::get_fallback_img_url($post_type, $size);
-		$html = '<img src="' . $url . '"/>';
-		return $html;
-	}
 
+/* PUBLIC FUNCTIONS
+----------------------------------------------------------------*/
 
 	public static function scripts_styles_enqueue() {
 		foreach (self::$enqueued_styles as $handle => $style) {
@@ -344,9 +370,66 @@ class CPM_Assets {
 	}
 
 
-	/********************************************************************************
-	*********************         GETTERS / SETTERS       ***************************
-	********************************************************************************/
+	/* PUBLIC GETTERS / SETTERS
+----------------------------------------------------------------*/
+
+	/**
+	 * get_fallback_img
+	 *
+	 * @param  mixed $post_type
+	 * @param  mixed $size
+	 * @return void
+	 */
+	public static function get_fallback_img($post_type, $size = '')
+	{
+		$url = self::get_fallback_img_url($post_type, $size);
+		$html = '<img src="' . $url . '"/>';
+		return $html;
+	}
+
+	/**
+	 * Return plugin dir path
+	 *
+	 * @return void
+	 */
+	public static function plugin_path() {
+		return self::$PLUGIN_PATH;
+	}
+
+	/**
+	 * Return plugin dir url
+	 *
+	 * @return void
+	 */
+	public static function plugin_uri() {
+		return self::$PLUGIN_URI;
+	}
+
+	/**
+	 * returns an array of available image sizes
+	 *  within the width specified as a parameter
+	 *
+	 * @param  mixed $size
+	 * @return void
+	 */
+	public static function get_img_sizes($width = 1024)
+	{
+		$sizes = array();
+		foreach (self::$img_sizes as $size) {
+			if ($size['width'] <= $width + 1) {
+				$sizes[] = $size;
+			}
+		}
+		return $sizes;
+	}
+
+    /**
+     * get_slug
+     *
+     * @param  mixed $post_type
+     * @param  mixed $action
+     * @return void
+     */
     public static function get_slug( $post_type, $action ) {
 		if ($post_type) {
 			if (isset(self::$slugs[$post_type][$action] ))
@@ -362,6 +445,12 @@ class CPM_Assets {
 		return false;
 	}
 
+	/**
+	 * get_type_from_slug
+	 *
+	 * @param  mixed $slug
+	 * @return void
+	 */
 	public static function get_type_from_slug($slug)
 	{
 		foreach (self::$slugs as $post_type => $actions) {
@@ -371,11 +460,24 @@ class CPM_Assets {
 		return false;
 	}
 
+    /**
+     * get_label
+     *
+     * @param  mixed $post_type
+     * @param  mixed $label_slug
+     * @return void
+     */
     public static function get_label( $post_type, $label_slug ) {
 		if ( !isset(self::$labels[$post_type][$label_slug]) ) return false;
         return self::$labels[$post_type][$label_slug];
 	}
 
+    /**
+     * get_required
+     *
+     * @param  mixed $post_type
+     * @return void
+     */
     public static function get_required( $post_type ) {
 		if ( !isset(self::$required[$post_type]) ) return false;
         return self::$required[$post_type];

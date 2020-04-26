@@ -60,7 +60,6 @@ class CRM_Recipe_Save extends CRM_Recipe {
                 $this->delete( $field, $old);
 
         }
-
     }
 
 
@@ -96,40 +95,49 @@ class CRM_Recipe_Save extends CRM_Recipe {
      */
     public function process_ingredients($new)
     {
-        $ingredients = array();
         $non_empty_ingredients = array();
-
         foreach ($new as $ingredient) {
             if (trim($ingredient['ingredient']) != '') {
                 $term = term_exists($ingredient['ingredient'], 'ingredient');
-
-                if ( empty($term) ) {
-                    $term = wp_insert_term( sanitize_text_field($ingredient['ingredient']) , 'ingredient');
-                }
-
-                if (is_wp_error($term)) {
-                    if (isset($term->error_data['term_exists'])) {
-                        $term_id = intval($term->error_data['term_exists']);
-                    } else {
-                        var_dump($term);
-                    }
-                } else {
-                    $term_id = intval($term['term_id']);
-                }
-
+                $term_id = empty($term)?false:intval($term['term_id']);
                 $ingredient['ingredient_id'] = $term_id;
-                $ingredients[] = $term_id;
-
                 $ingredient['amount_normalized'] = CRM_Ingredient::normalize_amount($ingredient['amount']);
-
                 $ingredient['group']= sanitize_text_field($ingredient['group']);
                 $ingredient['unit']=sanitize_text_field($ingredient['unit']);
                 $ingredient['notes']=foodiepro_esc($ingredient['notes']);
                 $non_empty_ingredients[] = $ingredient;
             }
         }
-        wp_set_post_terms($this->ID(), $ingredients, 'ingredient');
         return $non_empty_ingredients;
+    }
+
+
+    /**
+     * Add ingredients as terms in the "ingredient" taxonomy
+     * Attaches those terms to the current recipe post being saved
+     *
+     * @return void
+     */
+    public function save_ingredient_terms() {
+        $terms=array();
+        $ingredients = $this->get( 'recipe_ingredients' );
+        foreach ($ingredients as $ingredient) {
+            $term = term_exists($ingredient['ingredient'], 'ingredient');
+            if ( empty($term) ) {
+                $term = wp_insert_term(sanitize_text_field($ingredient['ingredient']), 'ingredient');
+            }
+            if (is_wp_error($term)) {
+                if (isset($term->error_data['term_exists'])) {
+                    $term_id = intval($term->error_data['term_exists']);
+                } else {
+                    var_dump($term);
+                }
+            } else {
+                $term_id = intval($term['term_id']);
+            }
+            $terms[] = $term_id;
+        }
+        wp_set_post_terms($this->ID(), $terms, 'ingredient');
     }
 
     /**

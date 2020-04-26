@@ -86,7 +86,7 @@ class CPM_Save
             elseif ($updated_post->post_status == 'draft' && current_user_can('edit_posts') )
                 $status='draft';
         }
-        elseif ( ( $action=='draft'|| $action == 'publish') && current_user_can('edit_posts')) {
+        elseif ( ( $action=='draft'|| $action=='publish') && current_user_can('edit_posts')) {
             // Post cannot be set to pending yet because required fields verification must happen later
             $status='draft';
         }
@@ -111,7 +111,6 @@ class CPM_Save
             $post_id = wp_insert_post($post, true);
         else
             $post_id = wp_update_post($post, true);
-
 
         return $post_id;
     }

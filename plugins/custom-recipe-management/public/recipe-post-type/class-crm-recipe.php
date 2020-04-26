@@ -136,13 +136,6 @@ class CRM_Recipe {
         return false;
     }
 
-    public function meta( $field )
-    {
-        if( isset( $this->meta[$field] ) ) {
-            return $this->meta[$field][0];
-        }
-        return null;
-    }
 
     public function get( $field ) {
         if ( $this->format($field)=='scalar' )
@@ -150,6 +143,14 @@ class CRM_Recipe {
         elseif ($this->format($field) == 'array' )
             return @unserialize( $this->meta($field) );
         return false;
+    }
+
+    public function meta( $field )
+    {
+        if( isset( $this->meta[$field] ) ) {
+            return $this->meta[$field][0];
+        }
+        return null;
     }
 
     public function set( $field, $value )

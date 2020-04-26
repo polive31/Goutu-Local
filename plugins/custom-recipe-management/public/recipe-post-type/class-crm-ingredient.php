@@ -7,14 +7,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CRM_Ingredient {
 
     const UNITS_LIST = array(
+        // Metric units
         array('g'               , 'g'),
         array('kg'              , 'kg'),
         array('ml'              , 'ml'),
         array('cl'              , 'cl'),
         array('dl'              , 'dl'),
         array('litre'           , 'litres'),
-        array('cuillère à café' , 'cuillères à café'),
-        array('cuillère à soupe', 'cuillères à soupe'),
+        // Misc units
         array('bol'   		    , 'bols'),
         array('boîte'   	    , 'boîtes'),
         array('botte'   	    , 'bottes'),
@@ -22,9 +22,11 @@ class CRM_Ingredient {
         array('branche'   	    , 'branches'),
         array('brin'   		    , 'brins'),
         array('bulbe'   	    , 'bulbes'),
-        array('cube' 		    , 'cubes'),
         array('capsule' 	    , 'capsules'),
         array('cerneau' 	    , 'cerneaux'),
+        array('cube' 		    , 'cubes'),
+        array('cuillère à café' , 'cuillères à café'),
+        array('cuillère à soupe', 'cuillères à soupe'),
         array('doigt'		    , 'doigts'),
         array('étoile'		    , 'étoiles'),
         array('feuille' 	    , 'feuilles'),
@@ -107,19 +109,18 @@ class CRM_Ingredient {
         $parts['fraction'] = (strpos($args['amount'], '/') === false) ? false : true;
 
         // Normalized amount
-        if ( $parts['fraction'] ) {
-            // Let's not take risks and recompute amount_normalized
-            $parts['amount_normalized'] = self::normalize_amount($args['amount']);
-        }
-        elseif ( empty($parts['amount_normalized']) ) {
-            $parts['amount_normalized'] = floatval($args['amount']);
-        }
+        // Let's not take risks and recompute amount_normalized
+        $parts['amount_normalized'] = self::normalize_amount($args['amount']);
 
         // Amount
         $parts['amount'] = round(floatval($ratio) * floatval($parts['amount_normalized']), 1);
 
         // Unit
-        $parts['unit'] = self::output_unit($args['unit'], $parts['amount']);
+        $is_plural = self::is_plural($parts['amount'], $parts['amount_normalized'], $args['unit']);
+
+        $parts['unit']          = self::output_unit($args['unit'], $is_plural );
+        $parts['unit_singular'] = self::output_unit($args['unit'], false);
+        $parts['unit_plural']   = self::output_unit($args['unit'], true);
 
         // Of
         $parts['of'] = '';
@@ -139,7 +140,7 @@ class CRM_Ingredient {
         $parts['plural'] = is_array($plural) ? false : $plural;
 
         // Ingredient Name (singular or plural depending on the unit & amount)
-        $parts['ingredient']=($parts['plural'] && self::is_plural($parts['amount'], $parts['unit'])) ? $parts['plural'] : $args['ingredient'];
+        $parts['ingredient']=($parts['plural'] && $is_plural) ? $parts['plural'] : $args['ingredient'];
 
         return $parts;
     }
@@ -167,17 +168,18 @@ class CRM_Ingredient {
      * @param  mixed $amount
      * @return void
      */
-    public static function output_unit( $name, $amount ) {
-        if ( floatval($amount) <= 1 ) return $name;
-
-        $index = array_search( $name, self::get_units( false ), true );
-
-        $plural = ($index!==false)?self::UNITS_LIST[$index][1]:$name;
-        return $plural;
+    public static function output_unit( $name, $plural ) {
+        $unit = $name;
+        if ( $plural ) {
+            // Check if unit name exists in list
+            $index = array_search( $name, self::get_units( false ), true );
+            $unit = ($index!==false)?self::UNITS_LIST[$index][1]:$name;
+        }
+        return $unit;
     }
 
-    public static function is_plural( $amount, $unit ) {
-    	$plural = $amount > 1 || $unit != '' || (empty($amount) && empty($unit));
+    public static function is_plural( $amount, $amount_normalized, $unit ) {
+    	$plural = !is_numeric($amount) || $amount_normalized >= 2 || $unit != '' || (empty($amount) && empty($unit));
     	return $plural;
     }
 

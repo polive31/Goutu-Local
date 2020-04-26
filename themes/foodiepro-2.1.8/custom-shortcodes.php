@@ -175,30 +175,3 @@ add_shortcode('debug', 'foodiepro_show_debug_html');
 function foodiepro_show_debug_html( $atts, $content ) {
 	return WP_DEBUG?$content:'';
 }
-
-
-/* =================================================================*/
-/* = POST COUNT SHORTCODE
-/* =================================================================*/
-add_shortcode('post-count', 'foodiepro_get_post_count');
-function foodiepro_get_post_count( $atts ) {
-	//Let's not loose time if user doesn't have the rights
-	if( !current_user_can('editor') && !current_user_can('administrator') ) return;
-
-	$atts = shortcode_atts( array(
-		'status' => 'pending', //draft, publish, auto-draft, private, separated by " "
-		'type' => 'post', //recipe
-	), $atts );
-
-	$post_type=$atts['type'];
-	$status=$atts['status'];
-
-	if ( !in_array($status, get_post_statuses() )) return;
-
-	$count = wp_count_posts($post_type );
-	if (isset($count->$status)) {
-		$html = ($count->$status>0)?'<span class="post-count-indicator">('.$count->$status.')</span>':'';
-	}
-
-	return $html;
-}

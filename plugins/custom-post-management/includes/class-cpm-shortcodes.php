@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 exit;
 }
 
-class CPM_Output_Shortcodes {
+class CPM_Shortcodes {
 
     public function new_post_button($atts)
     {
@@ -77,5 +77,79 @@ class CPM_Output_Shortcodes {
         }
         return $output;
     }
+
+
+
+
+    /**
+     * get_post_count
+     *
+     * @param  mixed $atts
+     * @return void
+     */
+    public static function get_post_count( $atts ) {
+        //Let's not loose time if user doesn't have the rights
+        if( !current_user_can('editor') && !current_user_can('administrator') ) return;
+
+        $atts = shortcode_atts( array(
+            'status' => 'pending', //draft, publish, auto-draft, private, separated by " "
+            'type' => 'post', //recipe
+        ), $atts );
+
+        $post_type=$atts['type'];
+        $status=$atts['status'];
+
+        $count = wp_count_posts($post_type );
+        if (isset($count->$status)) {
+            $html = ($count->$status>0)?'<span class="post-count-indicator">('.$count->$status.')</span>':'';
+        }
+
+        return $html;
+    }
+
+
+    /**
+     * custom_submission_form_shortcode
+     *
+     * @param  mixed $atts
+     * @return void
+     */
+    public function custom_submission_form_shortcode($atts)
+    {
+        $atts = shortcode_atts(array(
+            'post_type' => 'post', // 'post', 'recipe'
+        ), $atts);
+        extract($atts);
+
+        if (!is_user_logged_in()) {
+            return '<p class="errorbox">' . __('Sorry, only registered users may submit recipes.', 'foodiepro') . '</p>';
+        }
+
+        $output = '';
+        $user_id = get_current_user_id();
+
+        $Form = new CPM_Submission($post_type);
+
+        // Check that the nonce input field is set
+        if (isset($_POST['submit' . $post_type])) {
+            /* Submit post */
+            $output .= $Form->submit();
+        } elseif (isset($_GET['edit-' . $post_type])) {
+            /* Edit post */
+            $post_id = $_GET['edit-' . $post_type];
+            $post = get_post($post_id);
+            $user = get_userdata($user_id);
+
+            if ($post->post_author == $user_id || current_user_can('administrator')) {
+                $output .= $Form->display($post_id, 'edit');
+            }
+        } else {
+            /* New post */
+            $output = $Form->display();
+        }
+
+        return $output;
+    }
+
 
 }

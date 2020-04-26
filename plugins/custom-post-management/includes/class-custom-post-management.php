@@ -91,13 +91,6 @@ class Custom_Post_Management {
 			add_action('wp_footer',   								array($Post_Meta, 		'render'));
 		}
 
-
-		/* Hooks for Submission Shortcodes
-		IMPORTANT : must remain as separate static class
-		-----------------------------------------------------------------*/
-		$Shortcode = new CPM_Submission_Shortcode();
-		add_shortcode( 'cpm-form', 								array($Shortcode, 'custom_submission_form_shortcode' ) );
-
 		/* Hooks for CPM_Submission class
 		-----------------------------------------------------------------*/
 		$Post_Submission = new CPM_Submission('post');
@@ -136,9 +129,11 @@ class Custom_Post_Management {
 		IMPORTANT : Always treat shortcodes as a separate class, independent from post type
 		SO DO NOT MERGE WITH CPM_List or other post_type-dependant class !!!
 		---------------------------------------------------------------------------------------*/
-		$CPM_Output_Shortcodes = new CPM_Output_Shortcodes();
-        add_shortcode( 'cpm-list', 								array($CPM_Output_Shortcodes, 'custom_post_list_shortcode' ) );
-		add_shortcode( 'cpm-button', 							array($CPM_Output_Shortcodes, 'new_post_button' ) );
+		$CPM_Shortcodes = new CPM_Shortcodes();
+        add_shortcode( 'cpm-list', 								array($CPM_Shortcodes, 'custom_post_list_shortcode' ) );
+		add_shortcode( 'cpm-button', 							array($CPM_Shortcodes, 'new_post_button' ) );
+		add_shortcode( 'post-count', 							array($CPM_Shortcodes, 'get_post_count') );
+		add_shortcode( 'cpm-form', 								array($CPM_Shortcodes, 'custom_submission_form_shortcode' ) );
 
 	}
 

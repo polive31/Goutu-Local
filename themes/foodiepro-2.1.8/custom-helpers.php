@@ -346,7 +346,7 @@ function foodiepro_get_icon_class($slug)
  * * id
  * * class
  * * filter_max_width : int|false displays all existing files within specified max width, as <source> tags
- * * filter_ext : array|false displays all existing files matching with one of the extensions
+ * * filter_ext : false|array('jpg', 'jpeg', 'png',...) displays all existing files matching with one of the extensions
  * * width
  * * height
  * * alt
@@ -400,7 +400,7 @@ function foodiepro_get_picture($args)
 		$size_img = pathinfo($file);
 		$size_img_ext = isset($size_img['extension']) ? $size_img['extension'] : '';
 		// Check if extension is allowed
-		if ( is_array($filter_ext && !in_array($size_img_ext, $filter_ext) ) ) continue;
+		if ( $filter_ext && !in_array($size_img_ext, $filter_ext) ) continue;
 		$size_img_filename = isset($size_img['filename']) ? $size_img['filename'] : '';
 		// Check if width  is allowed
 		$match = preg_match('/(\d+)x.*/', $size_img_filename, $size);
@@ -411,7 +411,9 @@ function foodiepro_get_picture($args)
 	}
 
 	/* <img> & closing </picture> tag markup */
-	$html .= foodiepro_get_webp_source_tag( $img_filename, $img_ext, $dir, $img_dir_uri );
+	if ( $filter_ext && in_array('webp', $filter_ext) ) {
+		$html .= foodiepro_get_webp_source_tag( $img_filename, $img_ext, $dir, $img_dir_uri );
+	}
 	$html .= '<img ' . $nolazy_markup . ' class="' . $class . '"  src="' . $src . '" ' . $width_markup . ' ' . $height_markup . ' alt="' . $alt . '">';
 	$html .= '</picture>';
 

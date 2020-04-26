@@ -2,10 +2,6 @@ table.wpurp-table {
     width: 100%;
 }
 
-span {
-    display: inline-block;
-}
-
 a {
     color: black;
     font-weight: bold;

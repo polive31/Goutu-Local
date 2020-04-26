@@ -116,7 +116,7 @@ class CRM_Ingredient {
         $parts['amount'] = round(floatval($ratio) * floatval($parts['amount_normalized']), 1);
 
         // Unit
-        $is_plural = self::is_plural($parts['amount'], $parts['amount_normalized'], $args['unit']);
+        $is_plural = self::is_plural($parts['amount'], $parts['amount_normalized']);
 
         $parts['unit']          = self::output_unit($args['unit'], $is_plural );
         $parts['unit_singular'] = self::output_unit($args['unit'], false);
@@ -140,7 +140,7 @@ class CRM_Ingredient {
         $parts['plural'] = is_array($plural) ? false : $plural;
 
         // Ingredient Name (singular or plural depending on the unit & amount)
-        $parts['ingredient']=($parts['plural'] && $is_plural) ? $parts['plural'] : $args['ingredient'];
+        $parts['ingredient']=($parts['plural'] && $is_plural && $args['unit']) ? $parts['plural'] : $args['ingredient'];
 
         return $parts;
     }
@@ -170,16 +170,16 @@ class CRM_Ingredient {
      */
     public static function output_unit( $name, $plural ) {
         $unit = $name;
-        if ( $plural ) {
-            // Check if unit name exists in list
-            $index = array_search( $name, self::get_units( false ), true );
-            $unit = ($index!==false)?self::UNITS_LIST[$index][1]:$name;
+        // Check if unit name exists in list
+        $index = array_search( $name, self::get_units( false ), true );
+        if ( $index !== false ) {
+            $unit = self::UNITS_LIST[$index][$plural];
         }
         return $unit;
     }
 
-    public static function is_plural( $amount, $amount_normalized, $unit ) {
-    	$plural = !is_numeric($amount) || $amount_normalized >= 2 || $unit != '' || (empty($amount) && empty($unit));
+    public static function is_plural( $amount, $amount_normalized ) {
+    	$plural = !is_numeric($amount) || $amount_normalized >= 2 || empty($amount);
     	return $plural;
     }
 

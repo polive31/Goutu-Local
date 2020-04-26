@@ -10,10 +10,10 @@ $out = '<span class="recipe-ingredient-quantity-unit">';
             $out .= $parts['amount']?$parts['amount']:'';// Takes actual servings into account ($ratio)
         else
             $out .= $ingredient['amount'];
-        $out .= '</span>';
+    $out .= '</span>';
     $out .= '<span class="recipe-ingredient-unit" data-original="' . $parts['unit_singular'] . '" data-plural="' . $parts['unit_plural'] . '">';
         $out .= ' ' . $parts['unit'];
-        $out .= '</span>';
+    $out .= '</span>';
     $out .= '</span>';
 $out .= ' ' . $parts['of'];
 $plural_data = $parts['plural'] ? ' data-singular="' . esc_attr($ingredient['ingredient']) . '" data-plural="' . esc_attr($parts['plural']) . '"' : '';
@@ -28,7 +28,7 @@ if ( !empty($parts['tax']) && empty($hide_link) && $target != 'print') {
 
 $out .= '<span id="ingredient_name_root">';
     $out .= $parts['ingredient'];
-    $out .= '</span>';
+$out .= '</span>';
 $out .= $closing_tag;
 $out .= '</span>';
 

@@ -316,20 +316,9 @@ class CPM_Assets {
 		return $sizes;
 	}
 
-	private static function get_fallback_img_url($post_type, $size = '')
-	{
-		if (!isset(self::$fallback[$post_type])) return false;
-		$url = self::$fallback[$post_type];
-		if (!empty($size)) {
-			$filename = basename($url, '.jpg');
-			$url = str_replace($filename, $filename . '-' . $size, $url);
-		}
-		return $url ;
-	}
 
-
-/* PUBLIC FUNCTIONS
-----------------------------------------------------------------*/
+	/* PUBLIC FUNCTIONS
+	----------------------------------------------------------------*/
 
 	public static function scripts_styles_enqueue() {
 		foreach (self::$enqueued_styles as $handle => $style) {
@@ -340,7 +329,7 @@ class CPM_Assets {
 				$page = empty($slug)?false:is_page( $slug );
 				if ( $page || $singular ) {
 					$enqueue=true;
-					break;
+				break;
 				}
 			}
 			if ($enqueue) {
@@ -358,10 +347,10 @@ class CPM_Assets {
 				$page = empty($slug)?false:is_page( $slug );
 				if ( $page || $singular ) {
 					$enqueue=true;
-					break;
-				}
+				break;
 			}
-			if ($enqueue) {
+		}
+		if ($enqueue) {
 				$args=$script;
 				$args['handle']=$handle;
 				foodiepro_enqueue_script( $args );
@@ -371,7 +360,25 @@ class CPM_Assets {
 
 
 	/* PUBLIC GETTERS / SETTERS
-----------------------------------------------------------------*/
+	----------------------------------------------------------------*/
+
+	/**
+	 * get_fallback_img_url
+	 *
+	 * @param  mixed $post_type
+	 * @param  mixed $size
+	 * @return void
+	 */
+	public static function get_fallback_img_url($post_type, $size = '')
+	{
+		if (!isset(self::$fallback[$post_type])) return false;
+		$url = self::$fallback[$post_type];
+		if (!empty($size)) {
+			$filename = basename($url, '.jpg');
+			$url = str_replace($filename, $filename . '-' . $size, $url);
+		}
+		return $url ;
+	}
 
 	/**
 	 * get_fallback_img

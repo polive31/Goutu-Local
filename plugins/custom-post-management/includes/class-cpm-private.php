@@ -76,7 +76,7 @@ class CPM_Private
 
         if ( foodiepro_contains( $error, '-') ) {
             $match=preg_match('/(\w+)\-(\w+)/', $error, $matches);
-            $post_type = $match === 1 ? $matches[1] : 'post';
+            $post_type = ($match === 1 && in_array($matches[1], CPM_Assets::get_post_types() ) ) ? $matches[1] : 'post';
             $post_error = $match === 1 ? $matches[2] : false;
 
             $connexion_url=foodiepro_get_permalink( array('wp'=> 'login'));

@@ -124,7 +124,7 @@ class CRM_Ingredient {
 
         // Of
         $parts['of'] = '';
-        if ($parts['unit'] != '') {
+        if ( !empty($parts['unit']) ) {
             if (initial_is_vowel($args['ingredient']))
                 $parts['of'] = _x('of ', 'vowel', 'crm');
             else
@@ -140,7 +140,7 @@ class CRM_Ingredient {
         $parts['plural'] = is_array($plural) ? false : $plural;
 
         // Ingredient Name (singular or plural depending on the unit & amount)
-        $parts['ingredient']=($parts['plural'] && $is_plural && $args['unit']) ? $parts['plural'] : $args['ingredient'];
+        $parts['ingredient']=($parts['plural'] && ($is_plural || $args['unit'] ) ) ? $parts['plural'] : $args['ingredient'];
 
         return $parts;
     }

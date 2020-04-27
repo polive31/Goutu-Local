@@ -28,7 +28,8 @@ class CRM_ShoppingList extends WPURP_Template_Block {
         }
 		else {
 			$classes[] = 'logged-in';
-			$menu_link = do_shortcode('[permalink slug="liste-courses"]');
+			// $menu_link = do_shortcode('[permalink slug="liste-courses"]');
+			$menu_link = foodiepro_get_permalink(array('slug'=>'liste-courses'));
 		}
         $tooltip_in=sprintf(__('In my <a href="%s">shopping list</a>','crm'),$menu_link);
         $tooltip_add=sprintf(__('Add to my <a href="%s">shopping list</a>','crm'),$menu_link);

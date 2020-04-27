@@ -32,7 +32,6 @@ public function widget( $args, $instance ) {
 	echo $args['before_widget'];
 
 	// Start of widget code
-
 	echo do_shortcode('[social-sharing-buttons target="site" class="medium" pinterest="true" linkedin="false"]');
 
 	// Output end

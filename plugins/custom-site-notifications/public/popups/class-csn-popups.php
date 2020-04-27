@@ -78,7 +78,7 @@ class CSN_Popups {
 			$html.='</ul>';
 			$html.='</div>';
 			$html.='<div class="full">';
-			$html.='<div class="register-button">' . do_shortcode('[permalink peepso="register"]' . __('Register','foodiepro') . '[/permalink]') . '</div>';
+			$html.='<div class="register-button">' . foodiepro_get_permalink(array('community'=>'register', 'text' => __('Register', 'foodiepro'))) . '</div>';
 			// $html.='<p>' . __('Registration is simple and free !','foodiepro') . '</p>';
 			$html.='</div>';
 		$html.='</div>';

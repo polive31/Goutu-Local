@@ -177,7 +177,8 @@ class CSN_Mails {
 
 		$subject = sprintf( $subject, ucfirst($response_author));
 		$content = sprintf( $content, ucfirst($response_author), get_permalink($post), $post->post_title);
-		$login = sprintf($login, do_shortcode('[permalink wp="login"]') );
+		// $login = sprintf($login, do_shortcode('[permalink wp="login"]') );
+		$login = sprintf($login, foodiepro_get_permalink(array('wp'=>'login') ) );
 		$content = $content . '<br>' . $this->connect() . '</br>';
 
 		$parent = get_comment( $responsedata['parent_ID']);
@@ -289,6 +290,7 @@ class CSN_Mails {
 	public function connect() {
 		$out =  __( '<a href="%s">Log yourself in</a> to respond.', 'foodiepro');
 		$out = sprintf( $out, do_shortcode('[permalink wp="login"]') );
+		$out = sprintf( $out, foodiepro_get_permalink(array('wp'=>'login')) );
 		return $out;
 	}
 

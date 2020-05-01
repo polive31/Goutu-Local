@@ -427,22 +427,22 @@ button#responsive-menu-pro-button, #responsive-menu-pro-container {
     height: 40px;
     line-height: 40px;
     width: 40px;
-    color: #b8b8b8;
+    color: #5f5f5f;
     border-left: 0px solid rgba(255, 255, 255, 0);
     background-color: rgba(255, 255, 255, 0);
   }
   #responsive-menu-pro-container #responsive-menu-pro li.responsive-menu-pro-item a .responsive-menu-pro-subarrow.responsive-menu-pro-subarrow-active {
-    color: #ffffff;
+    color: #d7641d;
     border-color: rgba(255, 255, 255, 0);
     background-color: rgba(255, 255, 255, 0);
   }
   #responsive-menu-pro-container #responsive-menu-pro li.responsive-menu-pro-item a .responsive-menu-pro-subarrow.responsive-menu-pro-subarrow-active:hover {
-    color: #ffffff;
+    color: #d7641d;
     border-color: rgba(255, 255, 255, 0);
     background-color: rgba(255, 255, 255, 0);
   }
   #responsive-menu-pro-container #responsive-menu-pro li.responsive-menu-pro-item a .responsive-menu-pro-subarrow:hover {
-    color: #ffffff;
+    color: #d7641d;
     border-color: rgba(255, 255, 255, 0);
     background-color: rgba(255, 255, 255, 0);
   }

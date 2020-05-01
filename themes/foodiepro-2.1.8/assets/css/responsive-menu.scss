@@ -485,25 +485,25 @@ button#responsive-menu-pro-button,#responsive-menu-pro-container {
         height: 40px;
         line-height: 40px;
         width: 40px;
-        color: rgba(184, 184, 184, 1);
+        color: $menu-item-color;
         border-left: 0px solid rgba(255, 255, 255, 0);
         background-color: rgba(255, 255, 255, 0)
     }
 
     #responsive-menu-pro-container #responsive-menu-pro li.responsive-menu-pro-item a .responsive-menu-pro-subarrow.responsive-menu-pro-subarrow-active {
-        color: #ffffff;
+        color: $link-active;
         border-color: rgba(255, 255, 255, 0);
         background-color: rgba(255, 255, 255, 0)
     }
 
     #responsive-menu-pro-container #responsive-menu-pro li.responsive-menu-pro-item a .responsive-menu-pro-subarrow.responsive-menu-pro-subarrow-active:hover {
-        color: #ffffff;
+        color: $link-active;
         border-color: rgba(255, 255, 255, 0);
         background-color: rgba(255, 255, 255, 0)
     }
 
     #responsive-menu-pro-container #responsive-menu-pro li.responsive-menu-pro-item a .responsive-menu-pro-subarrow:hover {
-        color: #ffffff;
+        color: $link-active;
         border-color: rgba(255, 255, 255, 0);
         background-color: rgba(255, 255, 255, 0)
     }

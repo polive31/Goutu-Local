@@ -37,8 +37,6 @@ class CASM_Assets {
 															'file' 		=> '/assets/css/responsive-menu.css',
 														)
 													),
-		// 'foodiepro-color-theme'				=> array('mobile' => false),
-		// 'foodiepro-media-queries'			=> array('mobile' => true),
 		'news-style'						=> array('page' => 'home'),
 		'newsletter'						=> array('page' => 'home'),
 		'yarppRelatedCss' 					=> array('singular' => 'post recipe'),
@@ -59,22 +57,21 @@ class CASM_Assets {
 		'wpba_front_end_styles' 			=> array('false' => ''),
 		'frontend-uploader' 				=> array('false' => ''),
 		'wp-block-library'					=> array('false' => ''),
-		// Lazysizes
-		'lazysizes-fadein-style'			=> array('false' => ''),
-		'lazysizes-spinner-style'			=> array('false' => ''),
+
 		//Peepso
-		'peepso-custom'						=> array(	'true' => '',
-														'replace' => array(
+		'peepso'							=> array('page' => 'social'),
+		'peepso-custom'						=> array('true' => '',
+													'replace' => array(
 															'file' 		=> '/assets/css/peepso.css',
 													)),
-		'peepso-datepicker'					=> array(
-														'true' => '',
-														'replace' => array(
-															'file' 		=> '/assets/css/datepicker.css',
+		'peepso-datepicker'					=> array('page' => 'social',
+													'replace' => array(
+														'file' 		=> '/assets/css/datepicker.css',
 													)),
 		'peepso*'							=> array('page' => 'social'),
+		'msgso*'							=> array('page' => 'social'),
 		// Fonts & icons
-		// 'dashicons'							=> array('admin' => true),
+		'dashicons'							=> array('admin' => true),
 	);
 
 

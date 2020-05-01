@@ -38,6 +38,7 @@ class CASM_Assets {
 														)
 													),
 		'foodiepro-color-theme'				=> array('mobile' => false),
+		'foodiepro-media-queries'			=> array('mobile' => true),
 		'news-style'						=> array('page' => 'home'),
 		'newsletter'						=> array('page' => 'home'),
 		'yarppRelatedCss' 					=> array('singular' => 'post recipe'),

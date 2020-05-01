@@ -30,6 +30,7 @@ class PeepsoHelpers  {
 	 * * link => 'profile', ''
 	 * * size => 'small', 'medium', 'full' or integer size in pixels
 	 * * title => link title
+	 * * (bool) lazy
 	 * @return void
 	 */
 	static function get_avatar($args)
@@ -42,6 +43,7 @@ class PeepsoHelpers  {
 		$wrapclass = '';
 		$link = true;
 		$size = 'small';
+		$lazy = true;
 		// $title= __('by %s', 'foodiepro');
 		$title = '%s';
 		extract($args);
@@ -70,6 +72,7 @@ class PeepsoHelpers  {
 			'alt' 		=> $alt,
 			'width' 	=> $size,
 			'height'	=> $size,
+			'lazy'		=> $lazy,
 		));
 
 		if ($link) {

@@ -25,13 +25,18 @@ class CASM_Assets {
 	// Stylesheets to be preloaded
 	const PRELOAD_CSS = array(
 		'google-fonts',
-		'child-theme-fonts',
+		'foodiepro-fonts',
 	);
 
 
 	// Stylesheets to be loaded conditionnally & replaced if needed
 	const CSS_IF = array(
 		// 'custom-star-ratings' 				=> array('page' => 'blog-page'),
+		'responsive-menu-pro'				=> array(	'mobile' => true,
+														'replace' => array(
+															'file' 		=> '/assets/css/responsive-menu.css',
+														)
+													),
 		'foodiepro-color-theme'				=> array('mobile' => false),
 		'news-style'						=> array('page' => 'home'),
 		'newsletter'						=> array('page' => 'home'),
@@ -42,7 +47,7 @@ class CASM_Assets {
 															'file' 		=> '/assets/css/name_directory.css',
 														)),
 		'yarppWidgetCss' 					=> array('false' => ''),
-		'megamenu' 							=> array(	'true' => '',
+		'megamenu' 							=> array(	'mobile' => false,
 														'replace' => array(
 															'file' 		=> '/assets/css/max-mega-menu.css',
 														)),
@@ -115,7 +120,7 @@ class CASM_Assets {
 		'peepso-friends-shortcode'				=> array('false' => ''),
 
 		// RESPONSIVE MENU PRO
-		// 'responsive-menu-pro-jquery-touchswipe'	=> array('mobile' => true), // Smart Slider lost
+		// 'responsive-menu-pro-jquery-touchswipe'	=> array('mobile' => true), // Menu button doesn't work
 		'responsive-menu-pro-noscroll'			=> array('mobile' => true), //
 
 		// MASONRY

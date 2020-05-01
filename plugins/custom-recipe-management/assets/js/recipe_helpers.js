@@ -2,6 +2,24 @@ var wpurp_adjustable_servings = {};
 
 jQuery(document).ready(function() {
 
+    /* Ingredient / Instructions menu bar
+    ---------------------------------------------------------------- */
+    jQuery(document).on('click', '.menu-bar .menu-tab', function (e) {
+        jQuery(this).addClass('selected');
+        var target=jQuery(this).data('target');
+        jQuery('#'+target).show();
+
+        jQuery.each( jQuery(this).siblings(), function() {
+            jQuery(this).removeClass('selected');
+            var target=jQuery(this).data('target');
+            jQuery('#'+target).hide();
+        });
+    });
+
+
+
+
+
     /* Ingredient checkboxes
     ---------------------------------------------------------------- */
     jQuery(document).on('click', '.wpurp-recipe-ingredient  .ingredient-checkbox', function (e) {

@@ -102,6 +102,7 @@ $position = $instance['content_position'];
 						'alt'		=> $user->get_fullname(),
 						'title'		=> $user->get_profileurl(),
 						'size'		=> 'medium',
+						'lazy'		=> false,
 					);
 					echo PeepsoHelpers::get_avatar($params);
 					?>

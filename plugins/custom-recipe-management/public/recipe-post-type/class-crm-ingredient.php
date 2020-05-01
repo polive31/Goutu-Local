@@ -85,7 +85,7 @@ class CRM_Ingredient {
         $ingredient_months = get_term_meta($ingredient_id, 'month', true );
         if ( empty($ingredient_months) ) return '';
 
-        $html = '<h2>' . __('Harvest Period','crm') . '</h2>';
+        $html = '<h4>' . __('Harvest Period','crm') . '</h4>';
         $html .= '<table class="ingredient-months">';
         $html .= '<tr>';
         $i=1;

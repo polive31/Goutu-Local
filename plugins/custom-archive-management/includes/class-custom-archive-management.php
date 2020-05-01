@@ -42,13 +42,16 @@ class Custom_Archive_Management {
 
 		$Headline = new CNH_Archive_Headline();
 		add_filter( 'init', 							array($Headline, 'hydrate') );
-		// Headline text
+
+		// Headline text (filter hook defined in archive.php)
 		add_filter( 'genesis_archive_title_text', 		array($Headline, 'custom_archive_title') );
 		add_filter( 'genesis_search_title_text', 		array($Headline, 'custom_search_title_text') );
-		// Intro text
+
+		// Intro text (filter hook defined in archive.php)
 		add_filter( 'genesis_term_intro_text_output', 	'wpautop' );
 		add_filter( 'genesis_archive_description_text', array($Headline, 'custom_archive_description') );
 		// add_filter( 'genesis_term_intro_text_output', 'wpautop' );
+
 		//Customize explorer tab text
 		add_filter('document_title_parts', 				array($Headline, 'get_seo_friendly_page_title'), 99, 1);
 		add_shortcode('wpseo_title', 					array($Headline, 'get_seo_friendly_page_title'));

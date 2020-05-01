@@ -47,8 +47,8 @@ tr.post-list-row:hover {
 }
 
 td.post-list-title {
-    font-family: Oswald, sans-serif;
-    font-size: 2rem;
+    font-family: Courier, sans-serif;
+    font-size: 1.8rem;
     width:50%;
 }
 

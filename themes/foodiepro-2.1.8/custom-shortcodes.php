@@ -6,6 +6,27 @@ if (!defined('ABSPATH')) {
 }
 
 
+/* =================================================================*/
+/* = HINT POPUP
+/* =================================================================*/
+add_shortcode('hint-popup', 'foodiepro_get_hint_popup');
+function foodiepro_get_hint_popup( $atts=array() ) {
+	$atts = shortcode_atts(array(
+		'text' => '', //popup text
+	), $atts);
+	ob_start();
+	?>
+		<div class="nodisplay mobile-menu-hint-container">
+		<div class="arrow">
+		</div>
+		<div class="mobile-menu-hint">
+		<?= $atts['text']; ?>
+		</div>
+		</div>
+	<?php
+	$html=ob_get_clean();
+	return $html;
+}
 
 /* =================================================================*/
 /* = SITE LOGO

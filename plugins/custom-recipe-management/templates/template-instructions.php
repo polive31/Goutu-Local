@@ -3,7 +3,7 @@
 $out = '';
 $previous_group = '';
 
-$out .= '<ul class="wpurp-recipe-instruction-container">';
+$out .= '<ul class="wpurp-recipe-instruction-container" id="instructions_container">';
 $first_group = true;
 
 $instructions = empty($instructions)?array():$instructions;

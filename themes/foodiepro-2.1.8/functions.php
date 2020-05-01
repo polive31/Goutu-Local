@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 define('CHILD_THEME_NAME', 'Foodie Pro Theme');
 define('CHILD_THEME_DEVELOPER', 'Shay Bocks/Pascal Olive');
 define('CHILD_THEME_OPTIONS', get_option('foodiepro'));
-define('CHILD_THEME_VERSION', ((bool) CHILD_THEME_OPTIONS['reload']) ? time() : '2.4.03');
+define('CHILD_THEME_VERSION', ((bool) CHILD_THEME_OPTIONS['reload']) ? time() : '2.4.04');
 define('CHILD_THEME_URL', get_stylesheet_directory_uri());
 define('CHILD_THEME_PATH', get_stylesheet_directory());
 define('DEFAULT_CHILD_COLOR_THEME', 'spring');
@@ -279,10 +279,11 @@ function enqueue_high_priority_assets()
 
 	/* Styles enqueue
 	--------------------------------------------------- */
-	wp_enqueue_style('google-fonts', '//fonts.googleapis.com/css?family=Cabin|Amatic+SC:400,700|Oswald|Vollkorn:300,400', array(), CHILD_THEME_VERSION);
-	// wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Amatic+SC:400,700|Oswald|Vollkorn:300,400', array(), CHILD_THEME_VERSION );
+	wp_enqueue_style('google-fonts', '//fonts.googleapis.com/css?family=Cabin|Special+Elite:400|Amatic+SC:400,700|Oswald|Vollkorn:300,400', array(), CHILD_THEME_VERSION);
+	// wp_enqueue_style('google-fonts', '//fonts.googleapis.com/css?family=Cabin|Special+Elite:400,700|Oswald|Vollkorn:300,400', array(), CHILD_THEME_VERSION);
 	// wp_enqueue_script( 'typekit', '//use.typekit.net/hen2swu.js', array(), '1.0.0' );
-	foodiepro_enqueue_style('child-theme-fonts', '/assets/css/fonts.css', CHILD_THEME_URL, CHILD_THEME_PATH, array('foodie-pro-theme'), CHILD_THEME_VERSION);
+	foodiepro_enqueue_style('foodiepro-fonts', '/assets/css/fonts.css', CHILD_THEME_URL, CHILD_THEME_PATH, array('foodie-pro-theme'), CHILD_THEME_VERSION);
+	foodiepro_enqueue_style('foodiepro-media-queries', '/assets/css/media_queries.css', CHILD_THEME_URL, CHILD_THEME_PATH, array('foodie-pro-theme'), CHILD_THEME_VERSION);
 }
 
 add_action('wp_enqueue_scripts', 	'enqueue_low_priority_assets', 20);
@@ -690,26 +691,37 @@ function custom_inline_js()
 <?php
 }
 
-//* Reposition the primary navigation menu within header
-remove_action('genesis_after_header', 'genesis_do_subnav');
-add_action('before_header_close', 'genesis_do_subnav');
+add_action( 'wp', 'foodiepro_responsive_nav_layout');
 
-//* Reposition the primary navigation menu within header
-remove_action('genesis_after_header', 'genesis_do_nav');
-//add_action( 'genesis_header', 'genesis_do_nav');
+/**
+ * foodiepro_responsive_nav_layout
+ *
+ * @return void
+ */
+function foodiepro_responsive_nav_layout() {
+	remove_action('genesis_after_header', 'genesis_do_subnav');
+	remove_action('genesis_after_header', 'genesis_do_nav');
+	remove_action('genesis_after_endwhile', 'genesis_posts_nav');
+	remove_action('genesis_before_footer', 'genesis_footer_widget_areas');
 
-// Move pagination on all archive pages
-remove_action('genesis_after_endwhile', 'genesis_posts_nav');
-add_action('genesis_after_content', 'genesis_posts_nav');
+	if ( !wp_is_mobile() ) {
+		//* Reposition the primary navigation menu within header
+		add_action('before_header_close', 'genesis_do_subnav');
+		//* Reposition the primary navigation menu within header
+		add_action( 'genesis_header', 'genesis_do_nav');
+		// Move pagination on all archive pages
+		add_action('genesis_after_content', 'genesis_posts_nav');
+		// Move footer widget area (avoid "out of content" issue on buddypress pages)
+		add_action('genesis_after_content_sidebar_wrap', 'genesis_footer_widget_areas', 999);
+	}
 
-// Move footer widget area (avoid "out of content" issue on buddypress pages)
-remove_action('genesis_before_footer', 'genesis_footer_widget_areas');
-add_action('genesis_after_content_sidebar_wrap', 'genesis_footer_widget_areas', 999);
+	// Remove the post meta display from footer
+	remove_action('genesis_entry_footer', 'genesis_entry_footer_markup_open', 5);
+	remove_action('genesis_entry_footer', 'genesis_post_meta');
+	remove_action('genesis_entry_footer', 'genesis_entry_footer_markup_close', 15);
+}
 
-// Remove the post meta display from footer
-remove_action('genesis_entry_footer', 'genesis_entry_footer_markup_open', 5);
-remove_action('genesis_entry_footer', 'genesis_post_meta');
-remove_action('genesis_entry_footer', 'genesis_entry_footer_markup_close', 15);
+
 
 
 /* Hook widget areas

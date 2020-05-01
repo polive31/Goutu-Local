@@ -181,17 +181,18 @@ li.ingredient-group,
 }
 
 .data-container {
-    display: inline-block;
+    /* display: inline-block; */
     vertical-align: top;
+    display: table-cell;
 }
 
 .recipe-label {
-    display: inline-block;
+    font-family: Special Elite; /*Oswald; */
+    font-weight: bold; /*normal;*/
+    display: table-cell;
+    /* display: inline-block; */
     /* vertical-align:bottom; */
-    width: 120px;
-    /* font-weight:bold; */
-    font-family: Oswald;
-    font-weight: normal;
+    width: 140px;
 }
 
 .recipe-label:before {
@@ -273,9 +274,9 @@ input.adjust-recipe-servings {
     border-radius: 10px;
 }
 
-.ingredients-container .entry-content ul li {
-    list-style-type: decimal;
-    display: block;
+.entry-content ul li.wpurp-recipe-ingredient {
+    list-style-type: none;
+    margin-top: 12px;
 }
 
 li.ingredient-group {
@@ -296,9 +297,6 @@ li.wpurp-recipe-ingredient a:hover {
     border-bottom: 1px dashed #000;
 }
 
-.entry-content ul li.wpurp-recipe-ingredient {
-    list-style-type: none;
-}
 
 .fa.qty .servings-button,
 .ingredient-checkbox:hover {
@@ -615,7 +613,7 @@ span#wpurp-timer-remaining {
 /* MEDIA QUERIES
 ---------------------------------------------------*/
 
-@media only screen and (max-width:570px) {
+@media only screen and (max-width:768px) {
 
     ol, ul {
         padding: 0;
@@ -669,5 +667,42 @@ span#wpurp-timer-remaining {
         padding-bottom: 3px;
     }
 
+
+    /* TABBED INGREDIENT RECIPES MENUS
+    ---------------------------------------------------*/
+    ul.menu-bar {
+        border:1px solid #cccccc;
+        border-radius:20px;
+        position: sticky;
+        top: 70px;
+        background: #ffffff;
+        box-shadow: 3px 3px 9px 0px rgba(0, 0, 0, 0.45);
+        z-index: 1000;
+    }
+
+
+    .entry-content .menu-bar li {
+        list-style-type:none;
+        display:inline-block;
+        padding: 10px;
+        text-align:center;
+        width:50%;
+    }
+
+    .entry-content .menu-bar li.selected div {
+        border-bottom:1px solid black;
+    }
+
+    .menu-bar li#instructions_menu_tab {
+        float:right;
+    }
+
+    .menu-tab div {
+        display: inline-block;
+    }
+
+    .wpurp-recipe-instruction-container {
+        display:none;
+    }
 
 }

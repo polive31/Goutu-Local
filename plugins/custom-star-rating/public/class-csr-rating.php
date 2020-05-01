@@ -178,7 +178,7 @@ class CSR_Rating
 			$stats[$cat] = self::get_post_stats($post_id, $cat);
 			extract($stats[$cat]);
 
-			$rating = round(($rating * $votes + $comment_rating) / ($votes + 1), 1);
+			$rating = round(($rating * $votes + $comment_rating) / ($votes + 1), 2);
 			$votes++;
 
 			$stats[$cat]['rating'] = $rating;
@@ -215,7 +215,7 @@ class CSR_Rating
 			$count += $stats[$cat]['votes'] * $values['weight'];
 		}
 		$global_stats = array(
-			'rating'	=> $count?round($rating / $count, 1):0,
+			'rating'	=> $count?round($rating / $count, 2):0,
 			'votes'		=> $votes
 		);
 		return $global_stats;

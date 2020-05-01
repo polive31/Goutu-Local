@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2020-04-26 12:29+0200\n"
-"PO-Revision-Date: 2020-04-26 17:20+0200\n"
+"POT-Creation-Date: 2020-05-01 23:46+0200\n"
+"PO-Revision-Date: 2020-05-01 23:53+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -353,6 +353,7 @@ msgstr ""
 #: deprecated/partials_recipe/print-template.php:66
 #: includes/class-crm-assets.php:39 includes/class-crm-assets.php:103
 #: templates/template-form.php:72 templates/template-print.php:63
+#: templates/template-screen.php:27
 msgid "Ingredients"
 msgstr "Ingrédients"
 
@@ -400,7 +401,7 @@ msgstr "Ingrédient"
 #: deprecated/partials_recipe/screen-template.php:163
 #: templates/template-form-ingredients-ingredient.php:50
 #: templates/template-form-ingredients-ingredient.php:51
-#: templates/template-print.php:89 templates/template-screen.php:162
+#: templates/template-print.php:89 templates/template-screen.php:82
 msgid "Notes"
 msgstr "Notes"
 
@@ -434,6 +435,7 @@ msgstr ""
 #: deprecated/partials/submission_form_ingredients_instructions.php:265
 #: deprecated/partials_recipe/print-template.php:73
 #: templates/template-form.php:94 templates/template-print.php:76
+#: templates/template-screen.php:30
 msgid "Instructions"
 msgstr "Instructions"
 
@@ -510,88 +512,87 @@ msgid "Serves"
 msgstr "Portions"
 
 #: deprecated/partials_recipe/print-template.php:24
-#: templates/template-print.php:45 templates/template-screen.php:72
+#: templates/template-print.php:45 templates/template-screen-image.php:61
 msgid "Preparation"
 msgstr "Préparation"
 
 #: deprecated/partials_recipe/print-template.php:28
-#: templates/template-print.php:50 templates/template-screen.php:82
+#: templates/template-print.php:50 templates/template-screen-image.php:73
 msgid "Cooking"
 msgstr "Cuisson"
 
 #: deprecated/partials_recipe/print-template.php:32
-#: templates/template-print.php:55 templates/template-screen.php:92
+#: templates/template-print.php:55 templates/template-screen-image.php:85
 msgid "Wait"
 msgstr "Attente"
 
 #: deprecated/partials_recipe/recipe-toolbar.php:19
-#: templates/template-toolbar.php:11
+#: templates/template-toolbar-table.php:13 templates/template-toolbar.php:11
 msgid "Rate"
 msgstr "Evaluer"
 
 #: deprecated/partials_recipe/recipe-toolbar.php:24
-#: templates/template-toolbar.php:16
+#: templates/template-toolbar-table.php:18 templates/template-toolbar.php:16
 msgid "Comment and rate this recipe"
 msgstr "Noter cette recette"
 
 #: deprecated/partials_recipe/recipe-toolbar.php:38
-#: templates/template-toolbar.php:30
+#: templates/template-toolbar-table.php:32 templates/template-toolbar.php:30
 msgid "Rate this recipe"
 msgstr "Le Goûtumètre"
 
 #: deprecated/partials_recipe/recipe-toolbar.php:73
-#: templates/template-toolbar.php:68
+#: templates/template-toolbar-table.php:66 templates/template-toolbar.php:60
 msgid "Print"
 msgstr "Imprimer"
 
 #: deprecated/partials_recipe/recipe-toolbar.php:77
-#: templates/template-toolbar.php:72
+#: templates/template-toolbar-table.php:70 templates/template-toolbar.php:64
 msgid "Print this Recipe"
 msgstr "Imprimer cette recette"
 
 #: deprecated/partials_recipe/recipe-toolbar.php:88
-#: templates/template-toolbar.php:83
 msgid "Share"
 msgstr "Partager"
 
 #: deprecated/partials_recipe/recipe-toolbar.php:105
-#: templates/template-toolbar.php:100
+#: templates/template-toolbar-table.php:82 templates/template-toolbar.php:76
 msgid "Read"
 msgstr "Lire"
 
 #: deprecated/partials_recipe/recipe-toolbar.php:109
-#: templates/template-toolbar.php:104
+#: templates/template-toolbar-table.php:86 templates/template-toolbar.php:80
 msgid "Read this recipe out loud"
 msgstr "Lire cette recette à haute voix"
 
 #: deprecated/partials_recipe/screen-template.php:53
-#: templates/template-screen.php:48
+#: templates/template-screen-image.php:34
 msgid "Origin"
 msgstr "Origine"
 
 #: deprecated/partials_recipe/screen-template.php:61
 #: includes/class-crm-assets.php:43 includes/class-crm-assets.php:158
-#: templates/template-screen.php:56
+#: templates/template-screen-image.php:43
 msgid "Diet"
 msgstr "Régime"
 
 #: deprecated/partials_recipe/screen-template.php:68
-#: includes/class-crm-assets.php:45 templates/template-screen.php:63
+#: includes/class-crm-assets.php:45 templates/template-screen-image.php:51
 msgid "Level"
 msgstr "Niveau"
 
 #: deprecated/partials_recipe/screen-template.php:127
-#: templates/template-screen.php:121
+#: templates/template-screen.php:41
 msgid "For "
 msgstr "Pour "
 
 #: deprecated/partials_recipe/screen-template.php:130
-#: templates/template-screen.php:124
+#: templates/template-screen.php:44
 msgid "Decrease servings"
 msgstr "Diminuer les portions"
 
 #: deprecated/partials_recipe/screen-template.php:136
-#: templates/template-screen.php:130
+#: templates/template-screen.php:50
 msgid "Increase servings"
 msgstr "Augmenter les portions"
 
@@ -905,44 +906,63 @@ msgctxt "recipe"
 msgid "The post you are trying to read is private."
 msgstr "La recette que vous essayez de lire est privée."
 
-#: includes/class-crm-assets.php:271
+#: includes/class-crm-assets.php:208
+msgid "I cooked and liked this recipe"
+msgstr "J'ai cuisiné et apprécié cette recette"
+
+#: includes/class-crm-assets.php:209
+msgid "Do not like this recipe anymore"
+msgstr "Je n'aime plus cette recette"
+
+#: includes/class-crm-assets.php:210
+msgid "I cooked it"
+msgstr "Je l'ai cuisiné"
+
+#: includes/class-crm-assets.php:211 includes/class-crm-assets.php:212
+#, php-format
+msgid "%s cooked"
+msgid_plural "%s cooked"
+msgstr[0] "%s a cuisiné"
+msgstr[1] "%s ont cuisiné"
+
+#: includes/class-crm-assets.php:279
 msgctxt "recipe"
 msgid "Are you sure you want to delete this post :"
 msgstr "Etes-vous sûr de vouloir supprimer cette recette :"
 
-#: includes/class-crm-assets.php:317
+#: includes/class-crm-assets.php:325
 msgid "Read previous step"
 msgstr "Lire l'étape précédente"
 
-#: includes/class-crm-assets.php:318
+#: includes/class-crm-assets.php:326
 msgid "Read next step"
 msgstr "Lire l'étape suivante"
 
-#: includes/class-crm-assets.php:319
+#: includes/class-crm-assets.php:327
 msgid "Read this step again"
 msgstr "Répéter cette étape"
 
-#: includes/class-crm-assets.php:320
+#: includes/class-crm-assets.php:328
 msgid "Pause reading"
 msgstr "Mettre la lecture en pause"
 
-#: includes/class-crm-assets.php:321
+#: includes/class-crm-assets.php:329
 msgid "Continue reading"
 msgstr "Continuer la lecture"
 
-#: includes/class-crm-assets.php:322
+#: includes/class-crm-assets.php:330
 msgid "Stop reading and close player"
 msgstr "Arrêter la lecture"
 
-#: includes/class-crm-assets.php:446
+#: includes/class-crm-assets.php:454
 msgid "Do you really want to delete this ingredient ?"
 msgstr "Voulez vous vraiment effacer cet ingrédient ?"
 
-#: includes/class-crm-assets.php:447
+#: includes/class-crm-assets.php:455
 msgid "Do you really want to delete this instruction ?"
 msgstr "Voulez vous vraiment effacer cette instruction ?"
 
-#: includes/class-crm-assets.php:448
+#: includes/class-crm-assets.php:456
 msgid ""
 "Do you really want to delete this group ?\\n(Instructions below will be "
 "preserved)"
@@ -950,7 +970,7 @@ msgstr ""
 "Voulez vous vraiment effacer ce groupe ?\n"
 "(les instructions en dessous seront conservées)"
 
-#: includes/class-crm-assets.php:449
+#: includes/class-crm-assets.php:457
 msgid ""
 "Do you really want to delete this group ?\\n(Ingredients below will be "
 "preserved)"
@@ -958,84 +978,84 @@ msgstr ""
 "Voulez vous vraiment effacer ce groupe ?\n"
 "(les ingrédients en dessous seront conservés)"
 
-#: includes/class-crm-assets.php:450
+#: includes/class-crm-assets.php:458
 msgid "Please remove the image prior to removing this instruction."
 msgstr ""
 "Cette instruction comporte une image.\n"
 "Merci de la supprimer avant de supprimer l'instruction."
 
-#: public/recipe-output/helpers/class-crm-favorite.php:23
-#: public/recipe-output/helpers/class-crm-favorite.php:168
+#: public/recipe-output/helpers/class-crm-favorite.php:22
+#: public/recipe-output/helpers/class-crm-favorite.php:166
 msgid "My favorite recipes"
 msgstr "Mes recettes favorites"
 
-#: public/recipe-output/helpers/class-crm-favorite.php:27
-#: public/recipe-output/helpers/class-crm-favorite.php:172
+#: public/recipe-output/helpers/class-crm-favorite.php:26
+#: public/recipe-output/helpers/class-crm-favorite.php:170
 msgid "Recipes in my wishlist"
 msgstr "Mes recettes à essayer"
 
-#: public/recipe-output/helpers/class-crm-favorite.php:30
+#: public/recipe-output/helpers/class-crm-favorite.php:29
 msgid "Remove from favorites"
 msgstr "Retirer de mon carnet"
 
-#: public/recipe-output/helpers/class-crm-favorite.php:34
+#: public/recipe-output/helpers/class-crm-favorite.php:33
 #, php-format
 msgid "In my <a href=\"%s\">favorites</a>"
 msgstr "Dans mes <a href=\"%s\" target=\"_blank\">recettes favorites</a>"
 
-#: public/recipe-output/helpers/class-crm-favorite.php:35
+#: public/recipe-output/helpers/class-crm-favorite.php:34
 #, php-format
 msgid "In my <a href=\"%s\">wishlist</a>"
 msgstr "Dans mes <a href=\"%s\" target=\"_blank\">recettes à essayer</a>"
 
-#: public/recipe-output/helpers/class-crm-favorite.php:36
+#: public/recipe-output/helpers/class-crm-favorite.php:35
 #, php-format
 msgid "Add to my <a href=\"%s\">favorites</a>"
-msgstr "Ajouter à mon <a href=\"%s\" target=\"_blank\">carnet</a>"
+msgstr "Ajouter à <a href=\"%s\" target=\"_blank\">mon carnet</a>"
 
-#: public/recipe-output/helpers/class-crm-favorite.php:73
+#: public/recipe-output/helpers/class-crm-favorite.php:68
 msgid "Cookbook"
 msgstr "Carnet de recettes"
 
-#: public/recipe-output/helpers/class-crm-favorite.php:91
+#: public/recipe-output/helpers/class-crm-favorite.php:90
 msgid "Add to my cookbook"
 msgstr "Mon Carnet"
 
-#: public/recipe-output/helpers/class-crm-favorite.php:115
+#: public/recipe-output/helpers/class-crm-favorite.php:113
 msgid "Choose a list :"
 msgstr "Choisir une liste :"
 
-#: public/recipe-output/helpers/class-crm-favorite.php:160
+#: public/recipe-output/helpers/class-crm-favorite.php:158
 msgid "My lists"
 msgstr "Mes listes"
 
-#: public/recipe-output/helpers/class-crm-favorite.php:164
+#: public/recipe-output/helpers/class-crm-favorite.php:162
 msgid "All cookbook recipes"
 msgstr "Toutes mes listes"
 
-#: public/recipe-output/helpers/class-crm-favorite.php:169
+#: public/recipe-output/helpers/class-crm-favorite.php:167
 msgid "Recipes you have already cooked and appreciate."
 msgstr ""
 
-#: public/recipe-output/helpers/class-crm-favorite.php:173
+#: public/recipe-output/helpers/class-crm-favorite.php:171
 msgid "Recipes you are interested in, but didn't cook yet"
 msgstr ""
 
-#: public/recipe-output/helpers/class-crm-favorite.php:380
+#: public/recipe-output/helpers/class-crm-favorite.php:379
 msgid "No recipes found."
 msgstr "Aucune recette trouvée."
 
-#: public/recipe-output/helpers/class-crm-shopping-list.php:33
+#: public/recipe-output/helpers/class-crm-shopping-list.php:34
 #, php-format
 msgid "In my <a href=\"%s\">shopping list</a>"
 msgstr "Dans ma <a href=\"%s\">liste de courses</a>"
 
-#: public/recipe-output/helpers/class-crm-shopping-list.php:34
+#: public/recipe-output/helpers/class-crm-shopping-list.php:35
 #, php-format
 msgid "Add to my <a href=\"%s\">shopping list</a>"
 msgstr "Ajouter à ma <a href=\"%s\">liste de courses</a>"
 
-#: public/recipe-output/helpers/class-crm-shopping-list.php:61
+#: public/recipe-output/helpers/class-crm-shopping-list.php:62
 msgid "Add to Shopping List"
 msgstr "Ajouter à ma liste de courses"
 

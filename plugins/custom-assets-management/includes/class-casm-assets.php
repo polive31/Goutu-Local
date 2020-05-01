@@ -10,7 +10,7 @@ class CASM_Assets {
 	// Scripts to be loaded asynchronously
 	const DEFER_JS = array(
 		'skip-links',
-		'foodie-pro-general',
+		// 'foodie-pro-general',
 		'grecaptcha-invisible',
 		'newscript',
 	);
@@ -37,8 +37,8 @@ class CASM_Assets {
 															'file' 		=> '/assets/css/responsive-menu.css',
 														)
 													),
-		'foodiepro-color-theme'				=> array('mobile' => false),
-		'foodiepro-media-queries'			=> array('mobile' => true),
+		// 'foodiepro-color-theme'				=> array('mobile' => false),
+		// 'foodiepro-media-queries'			=> array('mobile' => true),
 		'news-style'						=> array('page' => 'home'),
 		'newsletter'						=> array('page' => 'home'),
 		'yarppRelatedCss' 					=> array('singular' => 'post recipe'),

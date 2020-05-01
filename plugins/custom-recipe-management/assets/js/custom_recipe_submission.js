@@ -1,6 +1,6 @@
 jQuery(document).ready(function() {
 
-    console.log('In custom recipe submission script');
+    console.log('%c In custom recipe submission script', "background:#CCC;color:blue");
 
 
     /* Autoselect "numeric" inputs on focus

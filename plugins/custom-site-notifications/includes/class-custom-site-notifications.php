@@ -11,9 +11,6 @@ class Custom_Site_Notifications {
 
 	public function __construct() {
 
-		$Enqueue = new CSN_Public();
-        add_action( 'wp_enqueue_scripts', 		array( $Enqueue, 'popups_styles_register' ) );
-
 		$Mails = new CSN_Mails();
 		/* Post publish hooks */
 		add_action( 'pending_to_publish',  			array( $Mails, 'published_post_notification_callback'), 10, 1 );

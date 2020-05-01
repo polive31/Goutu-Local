@@ -18,7 +18,6 @@ if ( !defined('ABSPATH') )
 require_once 'includes/class-custom-site-notifications.php';
 require_once 'includes/class-csn-assets.php';
 
-require_once 'public/class-csn-public.php';
 require_once 'public/mails/class-csn-mails.php';
 require_once 'public/popups/class-csn-popups.php';
 require_once 'public/notifications/class-csn-notifications.php';

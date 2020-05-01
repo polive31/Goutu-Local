@@ -16,7 +16,7 @@
         <div class="toolbar-button tooltip-onhover alignright" id="print">
             <a class="post-print-button" href="javascript:window.print()" target="_blank">
                 <?= foodiepro_get_icon('print'); ?>
-                <div class="button-caption"><?php echo __('Print', 'foodiepro'); ?></div>
+                <span class="button-caption"><?php echo __('Print', 'foodiepro'); ?></span>
             </a>
             <?php
             $args = array(
@@ -27,13 +27,6 @@
             Tooltip::display($args);
             ?>
         </div>
-
-        <!-- Post Share Button -->
-        <!-- <div class="toolbar-button tooltip-onhover alignright" id="share">
-			<a class="post-share-button" id="post-share" cursor-style="pointer">
-			<div class="button-caption"><?php echo __('Share', 'foodiepro'); ?></div>
-			</a>
-		</div>				 -->
 
     </div>
 

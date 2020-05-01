@@ -18,30 +18,29 @@ Tooltip class has the following methods :
 */
 
 jQuery(document).ready(function () {
-    //console.log('In tooltip.js');
+    console.log('%c In tooltip.js ', "background:#f18b14; color:white");
 
     Tooltip.initContainer();
 
     jQuery(Tooltip.containerObj).on('click', '.tooltip-onclick', function(e) {
-        //console.log('Click on tooltip .onclick');
-        // //console.log('Container Object is : ', containerObj );
+        console.log('%c Click on tooltip .onclick', "background:#f18b14; color:white");
+        console.log('%c Tooltip trigger object is : ', jQuery(this), "background:#f18b14; color:white" );
+
         e.preventDefault();
         e.stopPropagation();
-        // var tooltip = jQuery(this).siblings('.tooltip-content.click');
-        var tooltip = new Tooltip( this );
 
-        // //console.log( tooltip.html() );
-        // Tooltip.toggleVisibility(tooltip );
+        var tooltip = new Tooltip( this );
         tooltip.toggleVisibility();
+
     });
 
     jQuery(document).click( function(e) {
-        //console.log('click there : ', e.target );
-        //console.log('Closest tooltip-content', e.target.closest('.tooltip-content') );
-        //console.log('Closest tooltip-content visibility ?', jQuery(e.target).closest('.tooltip-content').length );
+        //console.log('%c click there : ', e.target );
+        //console.log('%c Closest tooltip-content', e.target.closest('.tooltip-content') );
+        //console.log('%c Closest tooltip-content visibility ?', jQuery(e.target).closest('.tooltip-content').length );
 
         if ( jQuery(e.target).closest('.tooltip-content').length == 0 ) {
-            //console.log('click outside of a tooltip  area');
+            //console.log('%c click outside of a tooltip  area');
             Tooltip.closeAll();
         }
     });
@@ -54,12 +53,11 @@ class Tooltip {
 
     constructor( trigger ) {
         // Pass the jquery object into the class, then all jQuery methods can be applied to it
-        // //console.log('In constructor, trigger is ', trigger);
         this.trigger = jQuery(trigger);
-        // //console.log('In constructor, this.trigger is ', this.trigger);
+        console.log('%c In constructor, trigger is ', "background:#f18b14; color:white", this.trigger);
 
         var contentId = this.trigger.data("tooltip-id");
-        // //console.log('In constructor, contentId is ', contentId);
+        console.log('%c In constructor, tooltip container ID is ', "background:#f18b14; color:white", contentId);
 
         if (contentId) {
             this.content = jQuery('#'+contentId);
@@ -67,31 +65,31 @@ class Tooltip {
         else {
             this.content = this.trigger.siblings('.tooltip-content.click');
         }
-        // //console.log('In constructor, this.content is ', this.content);
+        // //console.log('%c In constructor, this.content is ', this.content);
     }
 
     static initContainer() {
-        // //console.log('In initContainer function');
+        // //console.log('%c In initContainer function');
         // if (jQuery('.tooltips-container')) {
-        // //console.log('Initial Tooltips Container value ', Tooltip.containerObj );
+        // //console.log('%c Initial Tooltips Container value ', Tooltip.containerObj );
         // var containerMaybe = jQuery(Tooltip.containerClass);
         // if (containerMaybe) {
         //     Tooltip.containerObj = containerMaybe;
-        //     //console.log('Tooltips Container changed to ', Tooltip.containerObj );
+        //     //console.log('%c Tooltips Container changed to ', Tooltip.containerObj );
         // }
         Tooltip.containerObj.addClass('tooltips-closed');
     };
 
     toggleVisibility() {
-        //console.log('In toggle Visibility !, for jQuery object ', this.content );
-        // //console.log('In toggle Popup !, for object ', this);
-        // //console.log('The corresponding jQuery object is : ', this.content );
+        //console.log('%c In toggle Visibility !, for jQuery object ', this.content );
+        // //console.log('%c In toggle Popup !, for object ', this);
+        // //console.log('%c The corresponding jQuery object is : ', this.content );
         if (Tooltip.anyOpen() && !this.isOpen()) {
-            //console.log('Other open tooltip detected, closing');
+            //console.log('%c Other open tooltip detected, closing');
             Tooltip.closeAll();
         }
         else {
-            //console.log('OK for toggling the current tooltip');
+            //console.log('%c OK for toggling the current tooltip');
             this.content.toggle();
             if (this.content.hasClass('modal')) Tooltip.overlayToggle();
             Tooltip.containerObj.toggleClass('tooltip-open tooltips-closed');
@@ -99,7 +97,7 @@ class Tooltip {
     };
 
     isOpen() {
-        //console.log('This tooltip is open ?', this.content.is(":visible"));
+        //console.log('%c This tooltip is open ?', this.content.is(":visible"));
         return this.content.is(":visible");
     }
 
@@ -109,7 +107,7 @@ class Tooltip {
 
     static closeAll() {
         //console.log( 'In Close All Tooltips' );
-        //console.log('Following open popups are found : ', Tooltip.containerObj.find('.tooltip-content.click:visible') );
+        //console.log('%c Following open popups are found : ', Tooltip.containerObj.find('.tooltip-content.click:visible') );
         Tooltip.containerObj.find('.tooltip-content.click:visible').hide();
         Tooltip.containerObj.addClass('tooltips-closed');
         Tooltip.containerObj.removeClass('tooltip-open');
@@ -125,10 +123,10 @@ class Tooltip {
     }
 
     static overlayOpen() {
-        //console.log('overlay open');
+        //console.log('%c overlay open');
         Tooltip.overlayObj.removeClass('nodisplay');
         Tooltip.overlayObj.one('transitionend', function () {
-            //console.log('Entering in transitioned event in overlay Open !');
+            //console.log('%c Entering in transitioned event in overlay Open !');
         });
         setTimeout(function() {
             Tooltip.overlayObj.addClass('on');
@@ -136,13 +134,13 @@ class Tooltip {
     }
 
     static overlayClose() {
-        //console.log('overlay close');
+        //console.log('%c overlay close');
         Tooltip.overlayObj.removeClass('on');
         Tooltip.overlayObj.one('transitionend', function() {
-            //console.log('Entering in transitioned event, overlay Close !');
+            //console.log('%c Entering in transitioned event, overlay Close !');
             // Check if event is triggered on overlayClose -workaround unwanted trigger bug
             if (!Tooltip.overlayObj.hasClass('on')) {
-                //console.log('Add class nodisplay');
+                //console.log('%c Add class nodisplay');
                 Tooltip.overlayObj.addClass('nodisplay');
             }
         });
@@ -150,7 +148,7 @@ class Tooltip {
     }
 
     static anyOpen() {
-        //console.log('A tooltip is open ?', Tooltip.containerObj.hasClass('tooltip-open') );
+        //console.log('%c A tooltip is open ?', Tooltip.containerObj.hasClass('tooltip-open') );
         return Tooltip.containerObj.hasClass('tooltip-open');
     }
 
@@ -161,5 +159,5 @@ Tooltip.defaultContainer = "body";
 Tooltip.containerObj = jQuery(Tooltip.defaultContainer);
 // Class to search for in order to define the container for all tooltips on the page
 // Reverts to the one defined above by default
-Tooltip.containerClass = ".tooltips-container";
+// Tooltip.containerClass = ".tooltips-container";
 Tooltip.overlayObj = jQuery('.tooltip-overlay');

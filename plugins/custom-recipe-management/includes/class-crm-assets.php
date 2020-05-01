@@ -205,6 +205,11 @@ class CRM_Assets {
 			'error404_private' 			=> _x('The post you are trying to read is reserved to members.', 				'recipe', 'crm'),
 			'error404_friends' 			=> _x('The post you are trying to read is private.', 							'recipe', 'crm'),
 			'error404_groups' 			=> _x('The post you are trying to read is private.', 							'recipe', 'crm'),
+			'tooltip_like'				=> __('I cooked and liked this recipe', 'crm'),
+			'tooltip_dislike' 			=> __('Do not like this recipe anymore', 'crm'),
+            'like0'						=> __('I cooked it', 'crm'),
+            'like1'						=> _n('%s cooked', '%s cooked', 1, 'crm'),
+            'liken'						=> _n('%s cooked', '%s cooked', 2, 'crm'),
 		);
 		return $labels;
 	}
@@ -268,6 +273,9 @@ class CRM_Assets {
 
 
 		// Reuse some default post scripts
+		$scripts['cpm-like']['location'][]='recipe';
+		$scripts['cpm-like']['data']['post_type']='recipe';
+
 		$scripts['cpm-list']['data']['confirm_message'] = _x( 'Are you sure you want to delete this post :', 'recipe', 'crm' );
 		$scripts['cpm-list']['location'][]='recipe_list';
 

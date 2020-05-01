@@ -83,6 +83,20 @@ class CPM_Assets {
 			self::$enqueued_styles = apply_filters( 'cpm_enqueued_styles', $default_enqueued_styles );
 
 			$default_enqueued_scripts = array(
+			'cpm-like'		=> array(
+				'file'				=> 'assets/js/custom_post_like.js',
+				'uri'				=> self::$PLUGIN_URI,
+				'dir'				=> self::$PLUGIN_PATH,
+				'deps'				=> array( 'jquery' ),
+				'footer'			=> true,
+				'location'			=> array('post'),
+				'data' 				=> array(
+					'name'				=> 'custom_post_like',
+					'ajaxurl' 			=> admin_url( 'admin-ajax.php' ),
+					'nonce' 			=> wp_create_nonce( 'custom_post_like' ),
+					'post_type' 		=> 'post',
+					)
+				),
 			'cpm-list'		=> array(
 				'file'				=> 'assets/js/custom_posts_list.js',
 				'uri'				=> self::$PLUGIN_URI,
@@ -219,6 +233,11 @@ class CPM_Assets {
 				'error404_private' 			=> _x('The post you are trying to read is reserved to members.', 				'post', 'foodiepro'),
 				'error404_friends' 			=> _x('The post you are trying to read is private.', 							'post', 'foodiepro'),
 				'error404_groups' 			=> _x('The post you are trying to read is private.', 							'post', 'foodiepro'),
+				'tooltip_like'				=> __('Like this post', 'foodiepro'),
+				'tooltip_dislike'			=> __('Do not like this post anymore', 'foodiepro'),
+				'like0'						=> __('I like', 'foodiepro'),
+				'like1'						=> _n('%s like', '%s likes', 1, 'foodiepro'),
+				'liken'						=> _n('%s like', '%s likes', 2, 'foodiepro'),
 			),
 		);
 		self::$labels = apply_filters( 'cpm_labels', $default_labels );
@@ -483,7 +502,7 @@ class CPM_Assets {
      * get_required
      *
      * @param  mixed $post_type
-     * @return void
+     * @return array required fields
      */
     public static function get_required( $post_type ) {
 		if ( !isset(self::$required[$post_type]) ) return false;

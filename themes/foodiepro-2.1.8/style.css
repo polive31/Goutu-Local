@@ -2283,29 +2283,26 @@ span.ui-icon.ui-icon-triangle-1-s:before {
   font-variant: small-caps;
 }
 
-.toolbar-buttons,
-.recipe-buttons {
+.toolbar-buttons {
   float: left;
   width: 100%;
 }
 
-.toolbar-button,
-.recipe-button {
+.toolbar-button {
   display: inline-block;
   position: relative;
   font-size: 25px;
   margin: 0 20px 0 0;
   padding: 5px 0;
+  vertical-align: middle;
 }
 
-.toolbar-button a,
-.recipe-button a {
+.toolbar-button a {
   color: #555555;
   text-decoration: none;
 }
 
-.toolbar-button a:hover,
-.recipe-button a:hover {
+.toolbar-button a:hover {
   color: #222222;
   cursor: pointer;
 }
@@ -2339,15 +2336,11 @@ i.overlayed-icon:after {
   /* color: #746f6f; */
 }
 
-.button-caption {
-  display: inline-block;
-}
-
 .toolbar-button.disabled a,
 .recipe-button.disabled a,
 .disabled .button-caption,
 #mega-menu-wrap-secondary #mega-menu-secondary > li.mega-menu-item.mega-disabled > a.mega-menu-link {
-  color: #969696;
+  color: #868686;
 }
 
 /* Custom Contact Form

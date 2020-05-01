@@ -6,11 +6,10 @@ if (!defined('ABSPATH')) {
 }
 
 
-// class Custom_Recipe_Favorite extends WPURP_Template_Block {
 class CRM_Favorite
 {
 
-    private $class_id = 'custom-recipe-favorite tooltip-onclick';
+    private $class = 'custom-recipe-favorite tooltip-onclick';
     private static $FAVLISTS = array();
     private static $TOOLTIPS = array();
     private static $FAVSLUG = 'favoris-recettes';
@@ -47,16 +46,12 @@ class CRM_Favorite
     {
 
         if (!is_user_logged_in()) {
-            $link_id = 'id="join_us"';
             $link_url = foodiepro_get_permalink(array('slug' => 'connexion'));
-            $onclick = "ga('send','event','join-us','click','recipe-favorite', 0);";
             $favorites_link = foodiepro_get_permalink(array('slug' => 'connexion'));
         } else {
-            $link_id = '';
             $link_url = '#';
-            $this->class_id .= ' logged-in';
-            $onclick = "";
-            $favorites_link = do_shortcode('[permalink slug="' . self::$FAVSLUG . '" target="_blank"]');
+            $this->class .= ' logged-in';
+            $favorites_link = foodiepro_get_permalink(array('slug' => self::$FAVSLUG, 'target' => '_blank'));
         }
 
         $favlist = $this->getfav($recipe->ID());
@@ -64,23 +59,27 @@ class CRM_Favorite
             $favorites_link = add_query_arg('list', $favlist, $favorites_link);
         }
 
-        $tooltip = $this->get_tooltip($favlist, $favorites_link);
+        $tooltip_id = (!is_user_logged_in() && class_exists('CSN_Popups'))?CSN_Popups::get_join_us_id():'';
 
         ob_start();
-?>
-        <a href="<?= $link_url; ?>" class="<?= $this->class_id; ?>" id="<?= $favlist; ?>" data-recipe-id="<?= $recipe->ID(); ?>" data-tooltip-id="<?php echo is_user_logged_in() ? '' : 'join_us'; ?>" onClick="<?= $onclick; ?>">
-            <?= $this->get_icon($favlist, 'overlayed-icon'); ?>
-            <div class="button-caption"><?= __('Cookbook', 'crm'); ?></div>
-        </a>
-        <?php
+        ?>
+        <a href="<?= $link_url; ?>" class="<?= $this->class; ?>" id="<?= $favlist; ?>" data-recipe-id="<?= $recipe->ID(); ?>" data-tooltip-id="<?= $tooltip_id; ?>" ">
+        <?= $this->get_icon($favlist, 'overlayed-icon'); ?>
+        <span class=" button-caption"><?= __('Cookbook', 'crm'); ?></span>
+    </a>
+    <?php
 
+/* On hover tooltip container */
+        $hover_tooltip_markup = $this->get_tooltip($favlist, $favorites_link);
+        $args = array(
+            'content'   => $hover_tooltip_markup,
+            'valign'    => 'above',
+            'halign'    => 'center',
+        );
+        Tooltip::display($args);
+
+        /* On click tooltip container */
         if (is_user_logged_in()) {
-            $args = array(
-                'content'   => $tooltip,
-                'valign'    => 'above',
-                'halign'    => 'center',
-            );
-            Tooltip::display($args);
             $args = array(
                 'content'   => $this->output_form($recipe->ID()),
                 'valign'    => 'above',
@@ -98,7 +97,6 @@ class CRM_Favorite
         $output = ob_get_contents();
         ob_end_clean();
 
-        // return $this->after_output( $output, $recipe, $args );
         return $output;
     }
 
@@ -156,7 +154,7 @@ class CRM_Favorite
     public function cpm_list_dropdown_widget_args_cb($args, $page_slug)
     {
         if ($page_slug == CPM_Assets::get_slug('recipe', 'recipe_favorites')) {
-            $args=array(
+            $args = array(
                 'title' => __('My lists', 'crm'),
                 'queryvar' => 'list',
                 'options'   => array(
@@ -197,10 +195,10 @@ class CRM_Favorite
         return self::$FAVLISTS[$list]['label'];
     }
 
-    public static function get_tooltip($state, $link='')
+    public static function get_tooltip($state, $link = '')
     {
         if (!isset(self::$TOOLTIPS[$state])) return false;
-        return sprintf(self::$TOOLTIPS[$state],$link);
+        return sprintf(self::$TOOLTIPS[$state], $link);
     }
 
     public static function get_field($list, $field)
@@ -218,7 +216,7 @@ class CRM_Favorite
         return self::$FAVLISTS[$list]['meta'];
     }
 
-    public static function get_icon($type, $class='')
+    public static function get_icon($type, $class = '')
     {
         switch ($type) {
             case 'remove':
@@ -298,7 +296,8 @@ class CRM_Favorite
             $recipe_id = intval($_POST['recipe_id']);
             $user_id = get_current_user_id();
             $response_list = 'nofav';
-            $favorites_link = do_shortcode('[permalink slug="' . self::$FAVSLUG . '"]');
+            // $favorites_link = do_shortcode('[permalink slug="' . self::$FAVSLUG . '"]');
+            $favorites_link = foodiepro_get_permalink(array('slug' => self::$FAVSLUG));
 
             $choice = $_POST['choice'];
 
@@ -317,9 +316,9 @@ class CRM_Favorite
                 update_user_meta($user_id, $this->get_meta_name($list), $favorites);
             }
             $response = array(
-                            'list'=>$response_list,
-                            'tooltip'=> $this->get_tooltip($response_list, $favorites_link)
-                        );
+                'list' => $response_list,
+                'tooltip' => $this->get_tooltip($response_list, $favorites_link)
+            );
             echo json_encode($response);
         }
         die();

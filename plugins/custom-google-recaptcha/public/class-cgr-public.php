@@ -27,16 +27,19 @@ class CGR_Public
     /* =================================================================*/
     /* = DISPLAY GOOGLE RECAPTCHA
     /* =================================================================*/
-    public static function display($classes = '', $id='', $size = 'normal', $js_callback='', $version=2)
+    public static function display($classes = '', $id = '', $size = 'normal', $js_callback = '', $version = 2)
     {
-        if ($version==2)
+        if ($version == 2)
             $key = self::v2key('public');
-        elseif ($version==3)
+        elseif ($version == 3)
             $key = self::v3key('public');
 
-        ?>
-        <div id="<?= $id ?>" class="g-recaptcha <?= $classes; ?>" data-sitekey="<?= $key; ?>" data-callback="<?= $js_callback; ?>" data-size="<?= $size ?>" ></div>
-        <?php
+            $size = 'normal';
+            $style= '-moz-transform:scale(0.77); -ms-transform:scale(0.77); -o-transform:scale(0.77); -moz-transform-origin:0; -ms-transform-origin:0; -o-transform-origin:0; -webkit-transform:scale(0.77); transform:scale(0.77); -webkit-transform-origin:0 0; transform-origin:0; filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.77,M12=0,M21=0,M22=0.77,SizingMethod=\'auto expand\');';
+            $style= wp_is_mobile()?$style:'';
+?>
+        <div id="<?= $id ?>" class="g-recaptcha <?= $classes; ?>" style="<?= $style; ?>" data-sitekey="<?= $key; ?>" data-callback="<?= $js_callback; ?>" data-size="<?= $size ?>"></div>
+<?php
     }
 
     /* =================================================================*/
@@ -106,62 +109,62 @@ class CGR_Public
     /* =================================================================*/
     /* = Assets management
     /* =================================================================*/
-            /*pds_captcha.php - un captcha mathématique bidouillé par passeurs de savoirs<br>
+    /*pds_captcha.php - un captcha mathématique bidouillé par passeurs de savoirs<br>
 	plus d'infos sur http://passeurs-de-savoirs.fr/lab/lab2015/captcha-math.php
 	*/
-            public function pdscaptcha($step)
-            {
-                if ($step == "ask") {
-                    $msg = __('For security reasons, and to avoid spam, please solve the following operation : ', 'foodiepro');
-                    $tchiffres = array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
-                    $tlettres = array(
-                        __('zero', 'foodiepro'),
-                        __('one', 'foodiepro'),
-                        __('two', 'foodiepro'),
-                        __('three', 'foodiepro'),
-                        __('four', 'foodiepro'),
-                        __('five', 'foodiepro'),
-                        __('six', 'foodiepro'),
-                        __('seven', 'foodiepro'),
-                        __('eight', 'foodiepro'),
-                        __('nine', 'foodiepro'),
-                        __('ten', 'foodiepro'),
-                        __('eleven', 'foodiepro'),
-                        __('twelve', 'foodiepro')
-                    );
-                    $premier = rand(0, count($tchiffres) - 1);
-                    $second = rand(0, count($tchiffres) - 1);
+    public function pdscaptcha($step)
+    {
+        if ($step == "ask") {
+            $msg = __('For security reasons, and to avoid spam, please solve the following operation : ', 'foodiepro');
+            $tchiffres = array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
+            $tlettres = array(
+                __('zero', 'foodiepro'),
+                __('one', 'foodiepro'),
+                __('two', 'foodiepro'),
+                __('three', 'foodiepro'),
+                __('four', 'foodiepro'),
+                __('five', 'foodiepro'),
+                __('six', 'foodiepro'),
+                __('seven', 'foodiepro'),
+                __('eight', 'foodiepro'),
+                __('nine', 'foodiepro'),
+                __('ten', 'foodiepro'),
+                __('eleven', 'foodiepro'),
+                __('twelve', 'foodiepro')
+            );
+            $premier = rand(0, count($tchiffres) - 1);
+            $second = rand(0, count($tchiffres) - 1);
 
-                    if ($second <= $premier) {
-                        $resultat = $tchiffres[$premier] - $tchiffres[$second];
-                        $operation = "Combien font " . $tlettres[$premier] . " moins " . $tlettres[$second] . " (en chiffres) ?";
-                    } else if ($second > $premier) {
-                        $resultat = $tchiffres[$second] - $tchiffres[$premier];
-                        $operation = "Combien font " . $tlettres[$second] . " moins " . $tlettres[$premier] . " (en chiffres) ?";
-                    } else {
-                        $resultat = $tchiffres[$premier] + $tchiffres[$second];
-                        $operation = "Combien font " . $tlettres[$premier] . " plus " . $tlettres[$second] . " (en chiffres) ?";
-                    }
-                    // echo 'resultat de reference avant md5 : ' . $resultat . "<br>";
-                    $resultat = md5($resultat);
-                    // echo 'resultat de reference après md5 : ' . $resultat . "<br>";
-                    $o = "";
-                    foreach (str_split(utf8_decode($operation)) as $obj) {
-                        $o .= "&#" . ord($obj) . ";";
-                    }
-
-                    $html = '<p><label for="reponsecap">' . $msg . '<br>';
-                    $html .= '<span class="mathquestion">' . $o . '</span></label><br>';
-                    $html .= '<input type="text" name="reponsecap" value="" />';
-                    $html .= '<input name="reponsecapcode" type="hidden" value="' . $resultat . '" /></p>';
-                    return $html;
-                } else {
-                    // echo 'reponse utilisateur' . $step["reponsecap"] . "<br>";
-                    // echo 'MD5 de reference' . $step["reponsecapcode"] . "<br>";
-                    if (md5(htmlspecialchars($step["reponsecap"])) == htmlspecialchars($step["reponsecapcode"]))
-                        return true;
-                    else
-                        return false;
-                }
+            if ($second <= $premier) {
+                $resultat = $tchiffres[$premier] - $tchiffres[$second];
+                $operation = "Combien font " . $tlettres[$premier] . " moins " . $tlettres[$second] . " (en chiffres) ?";
+            } else if ($second > $premier) {
+                $resultat = $tchiffres[$second] - $tchiffres[$premier];
+                $operation = "Combien font " . $tlettres[$second] . " moins " . $tlettres[$premier] . " (en chiffres) ?";
+            } else {
+                $resultat = $tchiffres[$premier] + $tchiffres[$second];
+                $operation = "Combien font " . $tlettres[$premier] . " plus " . $tlettres[$second] . " (en chiffres) ?";
             }
+            // echo 'resultat de reference avant md5 : ' . $resultat . "<br>";
+            $resultat = md5($resultat);
+            // echo 'resultat de reference après md5 : ' . $resultat . "<br>";
+            $o = "";
+            foreach (str_split(utf8_decode($operation)) as $obj) {
+                $o .= "&#" . ord($obj) . ";";
+            }
+
+            $html = '<p><label for="reponsecap">' . $msg . '<br>';
+            $html .= '<span class="mathquestion">' . $o . '</span></label><br>';
+            $html .= '<input type="text" name="reponsecap" value="" />';
+            $html .= '<input name="reponsecapcode" type="hidden" value="' . $resultat . '" /></p>';
+            return $html;
+        } else {
+            // echo 'reponse utilisateur' . $step["reponsecap"] . "<br>";
+            // echo 'MD5 de reference' . $step["reponsecapcode"] . "<br>";
+            if (md5(htmlspecialchars($step["reponsecap"])) == htmlspecialchars($step["reponsecapcode"]))
+                return true;
+            else
+                return false;
         }
+    }
+}

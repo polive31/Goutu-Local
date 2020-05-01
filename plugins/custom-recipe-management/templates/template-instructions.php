@@ -32,7 +32,7 @@ for ($i = 0; $i < count($instructions); $i++) {
     }
     else
         $bullet='';
-    $out .= '<span class="recipe-instruction-text">' . $bullet . $instruction['description'] . '</span>';
+    $out .= '<span class="recipe-instruction-bulleted-text">' . $bullet . '<span class="recipe-instruction-text">' . $instruction['description'] . '</span></span>';
 
     if (!empty($instruction['image']) && ($target == "screen")) {
         $thumb = wp_get_attachment_image_src($instruction['image'], 'thumbnail');

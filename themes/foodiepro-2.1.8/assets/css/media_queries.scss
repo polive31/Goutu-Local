@@ -1,6 +1,22 @@
 @import "_foodiepro.scss";
 $images-path : '../../images';
 
+/* General settings
+---------------------------------------------------------------------------------------------------- */
+
+.desktop-nodisplay {
+    display:block!important;
+}
+
+.mobile-nodisplay {
+    display:none!important;
+}
+
+// #wpadminbar {
+//     display: none;
+// }
+
+
 /* Responsive menu
 ----------------------------------------------*/
 #responsive-menu-pro-noscroll-wrapper {
@@ -71,16 +87,6 @@ $images-path : '../../images';
         background-size: contain;
     }
 
-    /* General settings
-    ---------------------------------------------------------------------------------------------------- */
-
-    .desktop-nodisplay {
-        display:block!important;
-    }
-
-    .mobile-nodisplay {
-        display:none!important;
-    }
 
 
     /* Media Queries
@@ -286,6 +292,15 @@ $images-path : '../../images';
 
 /* Smartphone */
 @media only screen and (max-width:768px) {
+    .foodie-pro .site-header,
+    .home .site-header,
+    .site-header {
+        position:fixed;
+        height: auto;
+        padding: 0;
+        background: rgba(255, 255, 255, 0.93);
+        /* background: none !important; */
+    }
 
     .home .title-area,
     .home .site-title,
@@ -319,23 +334,12 @@ $images-path : '../../images';
         width: auto;
     }
 
-    #wpadminbar {
-        display: none;
-    }
-
     .before-header .widget {
         padding-bottom: 0;
         padding-top: 0;
     }
 
-    /*.site-header,*/
-    .home .site-header,
-    .site-header {
-        height: auto;
-        padding: 0;
-        background: rgba(255, 255, 255, 0.93);
-        /* background: none !important; */
-    }
+
 
     .home .elegant .widgettitle {
         padding: 20px 0 0px 0;
@@ -409,15 +413,24 @@ $images-path : '../../images';
     }
 
 
-
     /* TOOLBAR BUTTONS */
-    .toolbar-button,
-    .recipe-button {
+    .toolbar-button {
         margin-right:10px;
+        font-size: 2rem;
     }
 
-    .alignright {
+    // .alignright {
+    //     float:none;
+    // }
+
+    .toolbar-button#favorite,
+    .toolbar-button.alignright {
+        float: right;
+    }
+
+    .toolbar-button#read {
         float:none;
+        text-align: center;
     }
 
     /* OTHERS */

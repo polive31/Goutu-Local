@@ -43,15 +43,13 @@ class Custom_Post_Management {
 		$Like = new CPM_Like();
 		// Default value on save post (allows for sorting by like count)
 		add_action('save_post',                 				array('CPM_Like', 'add_default_like_count'));
-		// Assets
-		add_action('wp_enqueue_scripts', 						array($Like, 'enqueue_scripts'));
+
 		// Sorting by like count
 		add_action('pre_get_posts',             				array($Like, 'sort_entries_by_like_count'));
 		// Ajax
 		add_action('wp_ajax_like_post', 						array($Like, 'ajax_like_post'));
 		add_action('wp_ajax_nopriv_like_post', 					array($Like, 'ajax_like_post'));
-		// Shortcodes
-		add_shortcode('like-count', 							array($Like, 'like_count_shortcode'));
+
 
 		$Post_Template = new CPM_Output();
 		/* POST_TYPE-DEPENDENT HOOKS (to be instanciated for each new post type)

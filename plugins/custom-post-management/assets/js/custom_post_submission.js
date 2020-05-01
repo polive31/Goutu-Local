@@ -21,7 +21,7 @@ jQuery(document).ready(function() {
     console.log('%c In post submission script', 'background: #7ff; color: blue');
 
     jQuery("#new_post").submit(function () {
-        console.log('Form submission, set formSubmitting to true');
+        console.log('%c Form submission, set formSubmitting to true', 'background: #7ff; color: blue');
         formSubmitting = true;
     });
 

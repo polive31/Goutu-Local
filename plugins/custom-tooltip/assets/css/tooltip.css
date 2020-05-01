@@ -49,10 +49,12 @@
     font-family: 'Oswald', sans-serif;
     border-radius: 4px;
     box-shadow: 5px 5px 8px #CCC;
-    min-width: 200px;
-    min-height: 50px;
     white-space: nowrap;
     overflow: hidden;
+    min-width: 200px;
+    max-width: calc(100vw - 40px);
+    width: fit-content;
+    min-height: 50px;
 }
 
 .tooltip-content.hover .wrap {
@@ -88,7 +90,7 @@ h4.tooltip-title {
     vertical-align: middle;
     text-transform: uppercase;
     font-variant: initial;
-    margin-left: 15px;
+    margin: 0 0 0 15px;
 }
 
 .tooltip-callout {
@@ -214,11 +216,12 @@ h4.tooltip-title {
 /* MEDIA QUERIES
 ---------------------------------------------------*/
 
-@media only screen and (max-width:570px) {
+@media only screen and (max-width:768px) {
 
     .modal h4.tooltip-title,
     h4.tooltip-title {
-        font-size: 2rem;
+        font-size: 2.3rem;
+        font-weight: bold;
     }
 
     .tooltip-content.big-font .wrap {
@@ -240,13 +243,21 @@ h4.tooltip-title {
     .tooltip-content.click.above,
     .tooltip-content.modal {
         position: absolute;
-        z-index: 100000;
+        z-index: 2000;
         left: 0;
         top: 100px;
         bottom: initial;
         right: initial;
         width: 100%;
         height: auto;
+    }
+
+    .tooltip-content.center {
+        left: 0;
+    }
+
+    .tooltip-content.above {
+        bottom: 0;
     }
 
     p.comment-form-author,

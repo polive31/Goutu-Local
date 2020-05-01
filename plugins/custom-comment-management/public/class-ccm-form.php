@@ -76,7 +76,8 @@ class CCM_Form
 			if (isset($_GET['captcha']) && ($_GET['captcha'] != 'success')) {
 				$recaptcha .= '<p class="error">' . __('<strong>ERROR</strong>: please complete the CAPTCHA verification.', 'foodiepro') . '</p>';
 			}
-			$recaptcha .= CGR_Public::display('', 'recaptcha' . self::$captchaInstance, 'normal', '');
+			$size=wp_is_mobile()?'compact':'normal';
+			$recaptcha .= CGR_Public::display('', 'recaptcha' . self::$captchaInstance, $size, '');
 			self::$captchaInstance++;
 		}
 		$html= $recaptcha . $this->get_submit_button_instance();

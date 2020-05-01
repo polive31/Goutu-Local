@@ -152,17 +152,6 @@ textarea,
 
 /* Widget themes
 -------------------------------------------- */
-
-.sidebar-primary .widget.themes {
-    /*border: 1px dashed #ccc;*/
-}
-
-.widget_nav_menu.themes ul li,
-.widget.themes ul li,
-.single .widget.themes ul li {
-    /*background-color:#e0dfdf;	*/
-}
-
 .single .widget.themes ul li:hover,
 .widget.themes ul li:hover,
 .widget.back ul li:hover {
@@ -171,12 +160,6 @@ textarea,
 
 .widget.themes ul li a {
     color: #6b6b6b;
-}
-
-.widget.themes ul li.current-menu-item,
-.archive-pagination li.active {
-    /*background-color: #f7f7f7;
-  border-color:#000;*/
 }
 
 .widget.themes ul li.current-menu-item>a,
@@ -218,54 +201,4 @@ li.comment {
 
 .archive-pagination li {
     border: 1px solid #ccc;
-}
-
-
-/* MISC
---------------------------------------------*/
-
-.frontier-list-item {
-    border-color: #aaa;
-}
-
-
-/* MEDIA QUERIES
---------------------------------------------*
-
-/* Background */
-@media only screen and (max-width:1080px) {}
-
-
-/* Smartphone */
-
-@media only screen and (max-width:980px) {
-
-    body,
-    body.home,
-    .site-container {
-        /*background:url("../../../images/background/background-l-small.jpg") no-repeat top left;*/
-        background: none;
-    }
-
-    .site-title a {
-        background: url("../../../images/theme/logo-svg/logo-path.svg") no-repeat left;
-    }
-
-    .home .site-title a {
-        background: url("../../../images/theme/logo-svg/logo-text-compact-path.svg") no-repeat center;
-        background-position: center;
-    }
-
-}
-
-
-
-/* Small screens */
-@media only screen and (max-width:420px) {
-
-    .home .site-title a {
-        background-size: contain;
-    }
-
-
 }

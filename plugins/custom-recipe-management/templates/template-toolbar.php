@@ -6,12 +6,12 @@
 
 			<div class="toolbar-button alignleft tooltip-onhover " id="rate">
 
-			<a href="#" data-tooltip-id="" class="recipe-review-button tooltip-onclick" onClick="">
-			<?= foodiepro_get_icon('edit');?>
-			<div class="button-caption"><?php echo __('Rate', 'crm'); ?></div>
-			</a>
-			<?php
-			// if( is_user_logged_in() ) {
+				<a href="#" data-tooltip-id="" class="recipe-review-button tooltip-onclick" onClick="">
+					<?= foodiepro_get_icon('edit'); ?>
+					<span class="button-caption"><?php echo __('Rate', 'crm'); ?></span>
+				</a>
+				<?php
+				// if( is_user_logged_in() ) {
 				$args = array(
 					'content' => __('Comment and rate this recipe', 'crm'),
 					'valign' 	=> 'above',
@@ -34,20 +34,12 @@
 				Tooltip::display($args);
 				// }
 				?>
-				</div>
+			</div>
 
-			<?php } ?>
-
-				<!-- Recipe Add to Cart Button -->
-				<!-- 				<div class="toolbar-button alignleft tooltip tooltip-above tooltip-left" id="shopping">
-				<?php
-		// $shopping_list = new Custom_Recipe_Add_To_Shopping_List( is_user_logged_in() );
-		// echo $shopping_list->output( $recipe );
-		?>
-		</div>	 -->
+		<?php } ?>
 
 		<!-- Add To Favorites Button -->
-		<div class="toolbar-button alignleft <?php echo is_user_logged_in() ? 'tooltip-onhover' : 'disabled'; ?>" id="favorite">
+		<div class="toolbar-button alignleft tooltip-onhover <?php echo is_user_logged_in() ? '' : 'disabled'; ?>" id="favorite">
 			<?php
 			$favorite_recipe = new CRM_Favorite();
 			echo $favorite_recipe->output_button($recipe); ?>
@@ -64,8 +56,8 @@
 		<!-- Recipe Print Button -->
 		<div class="toolbar-button alignright tooltip-onhover" id="print">
 			<a class="wpurp-recipe-print" id="recipe_print_button" href="<?php echo $recipe->link_print(); ?>" target="_blank">
-				<?= foodiepro_get_icon('print');?>
-				<div class="button-caption"><?php echo __('Print', 'crm'); ?></div>
+				<?= foodiepro_get_icon('print'); ?>
+				<span class="button-caption"><?php echo __('Print', 'crm'); ?></span>
 			</a>
 			<?php
 			$args = array(
@@ -77,27 +69,11 @@
 			?>
 		</div>
 
-		<!-- Recipe Share Button -->
-		<!-- <div class="toolbar-button alignright tooltip" id="share">
-			<a class="recipe-share-button" id="recipe-share" cursor-style="pointer">
-				<div class="button-caption"><?php echo __('Share', 'crm'); ?></div>
-			</a>
-			<?php //echo Custom_WPURP_Templates::output_tooltip(__('Share this recipe','crm'),'above');
-			$args = array(
-				// 'content' 	=>  do_shortcode('[social-sharing-buttons target="recipe" class="small bubble"]'),
-				'valign' 	=> 'above',
-				'halign'	=> 'left',
-				'class'		=> 'transparent large'
-			);
-			Tooltip::display($args);
-			?>
-		</div>				 -->
-
 		<!-- Recipe Read Button -->
 		<div class="toolbar-button alignright tooltip-onhover" id="read">
 			<a class="recipe-read-button" onClick="<?= is_user_logged_in() ? '' : "ga('send','event','recipe-read','click','', 0)"; ?>" />
-				<?= foodiepro_get_icon('read');?>
-				<div class="button-caption"><?php echo __('Read', 'crm'); ?></div>
+			<?= foodiepro_get_icon('read'); ?>
+			<span class="button-caption"><?php echo __('Read', 'crm'); ?></span>
 			</a>
 			<?php
 			$args = array(

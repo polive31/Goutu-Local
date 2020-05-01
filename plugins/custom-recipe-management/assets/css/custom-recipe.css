@@ -352,7 +352,7 @@ li.wpurp-recipe-instruction {
     margin-left: 0;
 }
 
-.recipe-instruction-text {
+.recipe-instruction-bulleted-text {
     flex: 1 1 200px; /* or 1 0 100px, and no more need in min-width at all */
     /* max-width: 300px; */
     min-width: 200px;

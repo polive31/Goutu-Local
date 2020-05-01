@@ -1,15 +1,23 @@
 jQuery(document).ready(function(){
+  console.log('%c In custom favorite recipe ', "background:#489; color:white");
+
+  jQuery(document).on('click', '.toolbar-button#favorite', function (e) {
+    console.log('%c Click on favorites button', "background:#489; color:white");
+    if (typeof ga == 'function') {
+      console.log('%c Google Analytics installed, trigger event', "background:#489; color:white");
+      ga('send','event','join-us','click','recipe-favorite', 0);
+    }
+  });
 
   jQuery('#favorites_list_form').on('click', 'li', function (e) {
-    console.log('Click in favorites list');
+    console.log('%c Click in favorites list', "background:#489; color:white");
     e.preventDefault();
     e.stopPropagation();
-    // var choice = jQuery(e.target).closest('.fav-item');
+
     var choice = jQuery(this);
     console.log( 'Choice = ', choice.attr("class") );
 
     addToFavoritesUpdate( choice );
-
   });
 
 
@@ -48,6 +56,7 @@ function addToFavoritesUpdate( list_item ) {
 
       // Update button id & tooltip text
       tooltipButton.attr( 'id', response.list );
+
       tooltipButton.siblings('.tooltip-content.hover').children('.wrap').html( response.tooltip );
       tooltip = new Tooltip( tooltipButton.siblings('.tooltip-content.hover') );
 

@@ -1,0 +1,36 @@
+
+/* MEDIA QUERIES
+--------------------------------------------*
+
+/* Smartphone */
+
+@media only screen and (max-width:768px) {
+
+    body,
+    body.home,
+    .site-container {
+        /*background:url("../../../images/background/background-l-small.jpg") no-repeat top left;*/
+        background: none;
+    }
+
+    /* .site-title a {
+        background: url("../../../images/theme/logo-svg/logo-path.svg") no-repeat left;
+    }
+
+    .home .site-title a {
+        background: url("../../../images/theme/logo-svg/logo-text-compact-path.svg") no-repeat center;
+        background-position: center;
+    } */
+
+    #responsive-menu-pro-container {
+        background-color: white;
+        background-image: linear-gradient(90deg, rgba(217, 230, 206, 0.5) 50%, transparent 50%), linear-gradient(rgba(232, 243, 188, 0.5) 50%, transparent 50%);
+        background-size: 20px 20px;
+    }
+
+    .home .site-title a {
+        background-size: contain;
+    }
+
+
+}

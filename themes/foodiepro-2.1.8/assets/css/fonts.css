@@ -75,7 +75,8 @@ h1.archive-title {
 }
 
 .single h1.entry-title {
-  line-height: 5rem;
+  font-size: 6rem;
+  line-height: 6rem;
   font-variant: small-caps;
   text-transform: initial;
 }

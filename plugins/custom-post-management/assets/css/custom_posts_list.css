@@ -8,6 +8,7 @@ table.custom-post-list td {
 
 table.custom-post-list a {
     text-decoration: none;
+    vertical-align: middle;
 }
 
 .post-list-actions a {
@@ -47,12 +48,16 @@ tr.post-list-row:hover {
 }
 
 td.post-list-title {
-    font-family: Courier, sans-serif;
+    font-family: Oswald, sans-serif;
     font-size: 1.8rem;
     width:50%;
 }
 
-td.post-list-date span {
+.post-list-date {
+  float: right;
+}
+
+.post-list-date span {
     font-family: monospace;
     font-size: 1.5rem;
     /* border: 1px solid black; */
@@ -80,5 +85,15 @@ td.post-list-thumbnail img {
   .post-list-actions a {
     font-size: 1.9rem;
   }
+
+  td.post-list-title {
+    font-size: 1.7rem;
+  }
+
+  .post-list-date span {
+    font-size: 1rem;
+    padding: 5px;
+  }
+
 
 }

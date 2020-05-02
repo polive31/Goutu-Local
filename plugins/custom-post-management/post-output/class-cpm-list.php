@@ -51,10 +51,11 @@ class CPM_List {
 
             $item = '<tr class="post-list-row ' . $post->post_status . '">';
             $item .= '<td class="post-list-thumbnail"><a ' . $view_url . $view_title . '><img src="' . $image . '"></a></td>';
-            $item .= '<td class="post-list-title"><a ' . $view_url . $view_title . '>' . get_the_title($post) . '</a></td>';
+            $item .= '<td class="post-list-title"><a ' . $view_url . $view_title . '>' . get_the_title($post) . '</a>';
+            $item .= $edit?'<div class="post-list-date"><span>' . $date_modified . '</span></div>':'';
+            $item .= '</td>';
 
             if ($edit) {
-                $item .= '<td class="post-list-date"><span>' . $date_modified . '</span></td>';
                 $item .= '<td class="post-list-actions">';
                     $item .= CPM_Assets::get_edit_button( $post, $this->post_type, 'post-edit' );
                     $item .= CPM_Assets::get_delete_button( $post, $this->post_type, 'post-delete' );

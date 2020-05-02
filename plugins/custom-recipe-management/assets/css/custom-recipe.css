@@ -28,11 +28,11 @@
 
 .ingredient-group,
 .recipe-instruction-group {
-    font-family: "Oswald";
+    font-family: Oswald, sans-serif;
     display: block;
     color: #6d6d6d;
     font-size: 2rem;
-    font-weight: bold;
+    font-weight: normal;
 }
 
 .ingredients-container {
@@ -219,10 +219,10 @@
 
 .servings-input {
     /* font-weight: bold; */
+    font-family: Oswald, sans-serif;
     border-bottom: 1px solid #d0d0d0;
     padding: 5px;
     margin: 0px 5px;
-    font-family: Oswald;
     color: #585858;
     font-size: 1.9rem;
     user-select: none;
@@ -236,7 +236,7 @@ table.recipe-input {
 
 .fa.qty {
     width: 34px;
-    padding: 0 0 0 3px;
+    padding: 6px 0 0 3px;
     font-size: 2rem;
 }
 
@@ -664,6 +664,11 @@ span#wpurp-timer-remaining {
 
     ul.wpurp-recipe-ingredients {
         margin: 0 0 30px 0;
+    }
+
+    .ingredient-group,
+    .recipe-instruction-group {
+        font-weight: bold;
     }
 
     li.ingredient-group {

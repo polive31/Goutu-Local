@@ -38,9 +38,9 @@ $post-font-family : 'Cabin', sans-serif;
 
 $special-font-family: 'Special Elite', 'Vollkorn', sans-serif;
 
-$entry-font-family: 'Oswald', sans-serif;
-$entry-font-size : 1.7rem;
-$entry-font-weight : bold;
+$entry-font-family: 'Oswald', monospace;
+$entry-font-size : 1.8rem;
+$entry-font-weight : normal;
 
 
 /* FONTS
@@ -328,7 +328,7 @@ span.bp_counter,
 /* Post Meta  */
 
 #username a {
-    font-family: Oswald, sans-serif;
+    font-family: Oswald, serif;
     font-size: 19px;
     font-style: initial;
     vertical-align: middle;
@@ -338,7 +338,7 @@ span.bp_counter,
 
 /* Responsive menu fonts */
 #responsive-menu-pro-container .user_name {
-    font-family: "Oswald", sans-serif;
+    font-family: "Oswald", monospace;
     font-size: 3rem;
     color: #f3f3f3;
     padding: 20px;

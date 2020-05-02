@@ -1555,9 +1555,7 @@ img.alignright,
 
 /* Headings
 --------------------------------------------- */
-
 .entry-title {
-    line-height: 1.8rem;
     margin-bottom: 5px;
     margin-top: 20px;
 }
@@ -2433,7 +2431,7 @@ span.ui-icon.ui-icon-triangle-1-s:before {
 }
 
 .button-caption {
-    font-family: Oswald;
+    font-family: Oswald, monospace;
     font-size: 20px;
     color: #666;
     text-decoration: none;
@@ -2678,6 +2676,12 @@ span.edit-button {
 .single header.entry-header {
     display: inline-block;
     padding: 10px 0px 20px 0px;
+}
+
+.page .entry-title,
+.single .entry-title {
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .search-description {
@@ -3510,6 +3514,7 @@ h1.entry-title::first-letter {
     margin-top: 0;
     margin-top: 5px;
     text-align: center;
+    line-height: 2rem;
     /*text-transform:uppercase;*/
 }
 

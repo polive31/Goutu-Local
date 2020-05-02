@@ -26,12 +26,13 @@
     /* height: var(--recipe-image-heigth); */
 }
 
-li.ingredient-group,
+.ingredient-group,
 .recipe-instruction-group {
     font-family: "Oswald";
     display: block;
-    color: #656565;
-    font-size: 20px;
+    color: #6d6d6d;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 .ingredients-container {
@@ -182,17 +183,17 @@ li.ingredient-group,
 
 .data-container {
     /* display: inline-block; */
-    vertical-align: top;
+    vertical-align: middle;
     display: table-cell;
 }
 
 .recipe-label {
-    font-family: Special Elite; /*Oswald; */
+    font-family: Special Elite, Courier; /*Oswald; */
     font-weight: bold; /*normal;*/
     display: table-cell;
     /* display: inline-block; */
     /* vertical-align:bottom; */
-    width: 140px;
+    width: 160px;
 }
 
 .recipe-label:before {
@@ -326,11 +327,6 @@ span.recipe-ingredient-quantity::after {
     margin: 0 0 10px 0;
 }
 
-ol.wpurp-recipe-instructions {
-    list-style-position: inside;
-    padding: 10px 0;
-}
-
 li.wpurp-recipe-instruction.li-first.li-last,
 .entry-content ul li.wpurp-recipe-instruction {
     list-style-type: none;
@@ -347,7 +343,6 @@ li.wpurp-recipe-instruction {
     text-align: justify;
 }
 
-.entry-content .recipe ol li,
 .entry-content .recipe ul li {
     margin-left: 0;
 }
@@ -667,6 +662,13 @@ span#wpurp-timer-remaining {
         padding-bottom: 3px;
     }
 
+    ul.wpurp-recipe-ingredients {
+        margin: 0 0 30px 0;
+    }
+
+    li.ingredient-group {
+        margin-top: 10px;
+    }
 
     /* TABBED INGREDIENT RECIPES MENUS
     ---------------------------------------------------*/

@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 define('CHILD_THEME_NAME', 'Foodie Pro Theme');
 define('CHILD_THEME_DEVELOPER', 'Shay Bocks/Pascal Olive');
 define('CHILD_THEME_OPTIONS', get_option('foodiepro'));
-define('CHILD_THEME_VERSION', ((bool) CHILD_THEME_OPTIONS['reload']) ? time() : '2.4.06');
+define('CHILD_THEME_VERSION', ((bool) CHILD_THEME_OPTIONS['reload']) ? time() : '2.4.07');
 define('CHILD_THEME_URL', get_stylesheet_directory_uri());
 define('CHILD_THEME_PATH', get_stylesheet_directory());
 define('DEFAULT_CHILD_COLOR_THEME', 'spring');
@@ -282,7 +282,7 @@ function enqueue_high_priority_assets()
 	/* Mobile/Computer theme scripts enqueue
 	--------------------------------------------------- */
 	if ( wp_is_mobile() ) {
-		foodiepro_enqueue_script('foodiepro-show-hint', '/assets/js/show_hint.js', CHILD_THEME_URL, CHILD_THEME_PATH, array('jquery', 'foodiepro-js-helpers'), CHILD_THEME_VERSION, true);
+		foodiepro_enqueue_script('foodiepro-show-hints', '/assets/js/show_hints.js', CHILD_THEME_URL, CHILD_THEME_PATH, array('jquery', 'foodiepro-js-helpers'), CHILD_THEME_VERSION, true);
 	}
 	else {
 		foodiepro_enqueue_script('foodiepro-adjust-header-on-scroll', '/assets/js/adjust_header_on_scroll.js', CHILD_THEME_URL, CHILD_THEME_PATH, array('jquery', 'foodiepro-js-helpers'), CHILD_THEME_VERSION, true);
@@ -291,13 +291,16 @@ function enqueue_high_priority_assets()
 
 	/* Styles enqueue
 	--------------------------------------------------- */
-	wp_enqueue_style('google-fonts', '//fonts.googleapis.com/css?family=Cabin|Special+Elite:400|Amatic+SC:400,700|Oswald|Vollkorn:300,400', array(), CHILD_THEME_VERSION);
 	// wp_enqueue_style('google-fonts', '//fonts.googleapis.com/css?family=Cabin|Special+Elite:400,700|Oswald|Vollkorn:300,400', array(), CHILD_THEME_VERSION);
 	// wp_enqueue_script( 'typekit', '//use.typekit.net/hen2swu.js', array(), '1.0.0' );
-	foodiepro_enqueue_style('foodiepro-fonts', '/assets/css/fonts.css', CHILD_THEME_URL, CHILD_THEME_PATH, array('foodie-pro-theme'), CHILD_THEME_VERSION);
 
+	foodiepro_enqueue_style('foodiepro-fonts', '/assets/css/fonts.css', CHILD_THEME_URL, CHILD_THEME_PATH, array('foodie-pro-theme'), CHILD_THEME_VERSION);
 	if ( wp_is_mobile() ) {
+		// Not enqueuing Special Elite & Oswald on smartphone
+		wp_enqueue_style('google-fonts', '//fonts.googleapis.com/css?family=Vollkorn:300,400', array(), CHILD_THEME_VERSION);
 		foodiepro_enqueue_style('foodiepro-media-queries', '/assets/css/media_queries.css', CHILD_THEME_URL, CHILD_THEME_PATH, array('foodie-pro-theme'), CHILD_THEME_VERSION);
+	} else {
+		wp_enqueue_style('google-fonts', '//fonts.googleapis.com/css?family=Special+Elite:400|Oswald|Vollkorn:300,400', array(), CHILD_THEME_VERSION);
 	}
 }
 

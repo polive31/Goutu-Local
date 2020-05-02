@@ -4,7 +4,16 @@ $menu-item-color:#5f5f5f;
 $menu-item-hover:#ffffff;
 $link-active:#d7641d;
 
+@font-face {
+    font-family: 'menuFallback';
+    // src: local('sans-serif');
+    src: local('Helvetica');
+    font-size: 1.7rem;
+    font-weight: 400;
+}
 
+$menu-font-family:'Oswald', 'menuFallback';
+$menu-font-size:1.8rem;
 
 /* STYLES
 ----------------------------------------------------------------------*/
@@ -356,7 +365,7 @@ button#responsive-menu-pro-button,#responsive-menu-pro-container {
         left: 0;
         transition: transform 0.5s;
         text-align: left;
-        font-family: 'Oswald';
+        font-family: $menu-font-family;
         background: rgba(158, 158, 158, 1);
 
         // Custom Styling
@@ -448,7 +457,7 @@ button#responsive-menu-pro-button,#responsive-menu-pro-container {
     }
 
     #responsive-menu-pro-container #responsive-menu-pro li.responsive-menu-pro-item .responsive-menu-pro-item-link {
-        font-size: 18px
+        font-size: $menu-font-size
     }
 
     #responsive-menu-pro-container #responsive-menu-pro li.responsive-menu-pro-item a {
@@ -521,8 +530,8 @@ button#responsive-menu-pro-button,#responsive-menu-pro-container {
     }
 
     #responsive-menu-pro-container #responsive-menu-pro ul.responsive-menu-pro-submenu li.responsive-menu-pro-item .responsive-menu-pro-item-link {
-        font-family: 'Oswald';
-        font-size: 18px
+        font-family: $menu-font-family;
+        font-size: $menu-font-size
     }
 
     #responsive-menu-pro-container #responsive-menu-pro ul.responsive-menu-pro-submenu li.responsive-menu-pro-item a {

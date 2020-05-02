@@ -1,17 +1,9 @@
 jQuery(document).ready(function()   {
 
-    // jQuery(document).ajaxStop(function () {
-        // sidebarHeightAdjustToContent();
-    // });
-
-
-    /*  Minify header on scroll
-    -------------------------------------*/
     var hintAlreadyRead="false";
     var didScroll = "no";
     var count = 0;
 
-    setContainerTopMargin( true );
     hintAlreadyRead=foodieproGetCookie('menuHint');
     if (hintAlreadyRead=="" || hintAlreadyRead=="false") {
         foodieproSetCookie('menuHint','true',30);
@@ -37,7 +29,6 @@ jQuery(document).ready(function()   {
         }
         else if (didScroll == "last") {
             // Allows for the css transition to be completed before computing the margin again
-            setContainerTopMargin();
             didScroll = "stop";
         }
         else if (didScroll == "no" && count <= 4) {

@@ -27,77 +27,78 @@
 		</div>
 
 		<div class="info-container">
+			<table>
 
-			<div class="label-container">
-				<?php //$tooltip_id = is_user_logged_in() ? 'recipe_rating_form' : 'join_us';
-				?>
+			<tr class="label-container" colspan="2">
 				<?= (class_exists('CSR_Rating')) ? CSR_Rating::render('post') : ''; ?>
-			</div>
+			</tr>
 
 			<?php
 			// Origin
 			$terms = get_the_term_list($recipe->ID(), 'cuisine', '', ', ', '');
-			if ($terms != '') {
-				$html = '<div class="label-container tag"><div class="recipe-label">' . foodiepro_get_icon('tag') . __('Origin', 'crm') . '</div>';
-				$html .= '<div class="data-container">' . $terms . '</div></div>';
-				echo $html;
-			}
+			if ($terms != '') { ?>
+				<tr class="label-container tag">
+					<td class="recipe-label"><?= foodiepro_get_icon('tag') . __('Origin', 'crm'); ?></td>
+					<td class="data-container"><?= $terms; ?></td>
+				</tr>
+			<?php }
 
 			// Diet
 			// $terms = get_the_term_list($recipe->ID(), 'diet', '', ', ', '');
 			$terms = get_the_term_list($recipe->ID(), 'diet', '', '<br> ', '');
-			if ($terms != '') {
-				$html = '<div class="label-container tag"><div class="recipe-label">' . foodiepro_get_icon('tag') . __('Diet', 'crm') . '</div>';
-				$html .= '<div class="data-container">' . $terms . '</div></div>';
-				echo $html;
-			}
+			if ($terms != '') { ?>
+				<tr class="label-container tag">
+					<td class="recipe-label"><?= foodiepro_get_icon('tag') . __('Diet', 'crm'); ?></td>
+					<td class="data-container"><?= $terms; ?></td>
+				</tr>
+			<?php }
 
 			// Difficulty
 			$terms = get_the_term_list($recipe->ID(), 'difficult', '', '', '');
-			if ($terms != '') {
-				$html = '<div class="label-container tag"><div class="recipe-label">' . foodiepro_get_icon('tag') . __('Level', 'crm') . '</div>';
-				$html .= '<div class="data-container">' . $terms . '</div></div>';
-				echo $html;
-			}
+			if ($terms != '') { ?>
+			<tr class="label-container tag">
+				<td class="recipe-label"><?= foodiepro_get_icon('tag') . __('Level', 'crm'); ?></td>
+				<td class="data-container"><?= $terms; ?></td>
+			</tr>
+			<?php }
 
 			// Durations
 			$prep_time = $recipe->output_time('prep');
 			if ($prep_time) { ?>
-				<div class="label-container prep-time">
-					<div class="recipe-label">
-						<?= foodiepro_get_icon('hand') . __('Preparation', 'crm'); ?>
-					</div>
-					<div class="data-container">
-						<?= $prep_time; ?>
-					</div>
-				</div>
+			<tr class="label-container prep-time">
+				<td class="recipe-label">
+					<?= foodiepro_get_icon('hand') . __('Preparation', 'crm'); ?>
+				</td>
+				<td class="data-container">
+					<?= $prep_time; ?>
+				</td>
+			</tr>
 			<?php }
 
 			$cook_time = $recipe->output_time('cook');
 			if ($cook_time) { ?>
-				<div class="label-container cook-time">
-					<div class="recipe-label">
-						<?= foodiepro_get_icon('hourglass-half') . __('Cooking', 'crm'); ?>
-					</div>
-					<div class="data-container">
-						<?= $cook_time; ?>
-					</div>
-				</div>
+			<tr class="label-container cook-time">
+				<td class="recipe-label">
+					<?= foodiepro_get_icon('hourglass-half') . __('Cooking', 'crm'); ?>
+				</td>
+				<td class="data-container">
+					<?= $cook_time; ?>
+				</td>
+			</tr>
 			<?php }
 
 			$wait_time = $recipe->output_time('passive');
 			if ($wait_time) { ?>
-				<div class="label-container passive-time">
-					<div class="recipe-label">
-						<?= foodiepro_get_icon('pause') . __('Wait', 'crm'); ?>
-					</div>
-					<div class="data-container">
-						<?= $wait_time; ?>
-					</div>
-				</div>
-			<?php }
-
-			?>
+			<tr class="label-container passive-time">
+				<td class="recipe-label">
+					<?= foodiepro_get_icon('pause') . __('Wait', 'crm'); ?>
+				</td>
+				<td class="data-container">
+					<?= $wait_time; ?>
+				</td>
+			</tr>
+			<?php } ?>
+			</table>
 		</div>
 
 	</div>

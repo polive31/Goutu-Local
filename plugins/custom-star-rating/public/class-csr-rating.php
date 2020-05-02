@@ -330,8 +330,6 @@ class CSR_Rating
 			$args['rating_class'] = '';
 		}
 
-
-
 		// Output
 		$html = CSR_Assets::get_template_part( $markup, false, $args);
 

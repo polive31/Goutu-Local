@@ -54,13 +54,6 @@ class CPM_Assets {
 				'dir'				=> self::$PLUGIN_PATH,
 				'location'			=> array('post_list')
 			),
-			// 'cpm-post'	=> array(
-			// 	'file'				=> 'assets/css/custom-submission-form.css',
-			// 	'uri'				=> self::$PLUGIN_URI,
-			// 	'dir'				=> self::$PLUGIN_PATH,
-			// 	'deps'				=> array('post-font'),
-			// 	'location'			=> array('post')
-			// ),
 			'cpm-submission-form'	=> array(
 				'file'				=> 'assets/css/custom-submission-form.css',
 				'uri'				=> self::$PLUGIN_URI,

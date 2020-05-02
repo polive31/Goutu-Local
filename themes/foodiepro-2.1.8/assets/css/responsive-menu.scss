@@ -15,6 +15,7 @@ $link-active:#d7641d;
 $menu-font-family:'Oswald', sans-serif;
 // $menu-font-family:'Oswald', 'menuFallback';
 $menu-font-size:1.7rem;
+$menu-font-weight:bold;
 
 /* STYLES
 ----------------------------------------------------------------------*/
@@ -367,6 +368,7 @@ button#responsive-menu-pro-button,#responsive-menu-pro-container {
         transition: transform 0.5s;
         text-align: left;
         font-family: $menu-font-family;
+        font-weight: $menu-font-weight;
         background: rgba(158, 158, 158, 1);
 
         // Custom Styling
@@ -381,7 +383,10 @@ button#responsive-menu-pro-button,#responsive-menu-pro-container {
     }
 
     #responsive-menu-pro-container #responsive-menu-pro-additional-content {
-        color: #000000
+        color: #000000;
+        position: relative;
+        height: 90px;
+        margin-bottom: 30px;
     }
 
     #responsive-menu-pro-container .responsive-menu-pro-search-box {
@@ -532,7 +537,8 @@ button#responsive-menu-pro-button,#responsive-menu-pro-container {
 
     #responsive-menu-pro-container #responsive-menu-pro ul.responsive-menu-pro-submenu li.responsive-menu-pro-item .responsive-menu-pro-item-link {
         font-family: $menu-font-family;
-        font-size: $menu-font-size
+        font-size: $menu-font-size;
+        font-weight: $menu-font-weight
     }
 
     #responsive-menu-pro-container #responsive-menu-pro ul.responsive-menu-pro-submenu li.responsive-menu-pro-item a {
@@ -684,22 +690,24 @@ button#responsive-menu-pro-button,#responsive-menu-pro-container {
     }
 
     #responsive-menu-pro-container .ps-widget--userbar__notifications i {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
     #responsive-menu-pro-container .ps-popover.app-box {
-        width: 90%;
+        // width: 90%;
         white-space: normal;
         border: 1px dotted #848484;
         padding: 5px;
+        left: 0!important;
     }
+
 
     #responsive-menu-pro-container .ps-widget--userbar__container {
         width: 100%;
         flex: 1;
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: flex-end;
         align-items: center;
     }
 
@@ -722,7 +730,18 @@ button#responsive-menu-pro-button,#responsive-menu-pro-container {
     #responsive-menu-pro-container .mobile-nav-container a,
     #responsive-menu-pro-container .mobile-nav-container .ps-user-name {
         color: $menu-item-color;
+        font-family: sans-serif;
+        font-size: 1.5rem;
+        font-weight: normal;
+        text-decoration: none;
     }
+
+    #responsive-menu-pro-container .mobile-nav-container .ps-user-name {
+        font-family: monospace;
+        font-size: 2rem;
+    }
+
+
 
     #responsive-menu-pro-container .ps-popover-footer a {
         width: 100% !important;
@@ -736,8 +755,16 @@ button#responsive-menu-pro-button,#responsive-menu-pro-container {
     }
 
     #responsive-menu-pro-container .ps-widget--userbar__avatar {
-        width: 64px;
-        margin: 0 5px;
+        // width: 64px;
+        // margin: 0 5px;
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+        position: absolute;
+        bottom: -40px;
+        left: 0px;
+        padding: 0;
+        margin: 0;
     }
 
     #responsive-menu-pro-container img.avatar {

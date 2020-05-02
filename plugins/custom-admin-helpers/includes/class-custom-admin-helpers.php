@@ -44,6 +44,7 @@ class Custom_Admin_Helpers {
         $Adminbar = new CAH_Adminbar();
         // add_action( 'after_setup_theme',    array($Adminbar, 'admin_bar_visibility'));
         add_action( 'show_admin_bar',       array($Adminbar, 'filter_admin_bar_visibility'));
+        add_filter('casm_styles_blacklist', array($Adminbar, 'remove_dashicons'));
 
         add_action( 'init',                 array($Adminbar, 'blockusers_init' ));
         add_action( 'admin_bar_menu',       array($Adminbar, 'add_toolbar_items'), 999  );

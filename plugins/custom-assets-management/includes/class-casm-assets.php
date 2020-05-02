@@ -76,7 +76,7 @@ class CASM_Assets {
 		'peepso*'							=> array('page' => 'social'),
 		'msgso*'							=> array('page' => 'social'),
 		// Fonts & icons
-		'dashicons'							=> array('admin' => true),
+		// 'dashicons'							=> array('admin' => true),
 	);
 
 
@@ -102,10 +102,10 @@ class CASM_Assets {
 
 		// PEEPSO WIDGETS SCRIPTS
 		'peepso-friends'						=> array('logged-in' => true),
-		'msgso'									=> array('logged-in' => true),
+		'msgso*'								=> array('logged-in' => true),
 			'peepso-activity'					=> array('logged-in' => true),
-				'peepso-activitystream'			=> array('logged-in' => true),
-				'peepso-comment'				=> array('logged-in' => true),
+			'peepso-activitystream'				=> array('logged-in' => true),
+			'peepso-comment'					=> array('logged-in' => true),
 		'peepso-bundle'							=> array('logged-in' => true),
 			'peepso-window'						=> array('logged-in' => true),
 			'peepso-notification'				=> array('logged-in' => true),

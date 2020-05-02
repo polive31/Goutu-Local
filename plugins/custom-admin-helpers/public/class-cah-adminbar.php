@@ -9,22 +9,37 @@ if (!defined('ABSPATH')) {
 class CAH_Adminbar
 {
 
+    public function remove_dashicons( $blacklist )
+    {
+        $show = $this->is_show_adminbar();
+        if ( !$show )
+            $blacklist[]='dashicons';
+        return $blacklist;
+    }
+
     /* Disable admin bar for all users except admin */
     public function admin_bar_visibility() {
-        switch ( CAH_Assets::get_option('adminbar_visibility') ) {
-            case "admin":
-                if ( !current_user_can('administrator') && !is_admin() )
-                    show_admin_bar(false);
-                break;
-            case "loggedin":
-                if ( !is_user_logged_in() && !is_admin() )
-                    show_admin_bar(false);
-                break;
-            case "all":
-                show_admin_bar(true);
-                break;
-        }
+        $show = $this->is_show_adminbar();
+        show_admin_bar($show);
+    }
 
+    public function is_show_adminbar()
+    {
+        $show=true;
+        switch (CAH_Assets::get_option('adminbar_visibility')) {
+            case "admin":
+            if (!current_user_can('administrator') && !is_admin())
+                $show=false;
+            break;
+            case "loggedin":
+                if (!is_user_logged_in() && !is_admin())
+                $show=false;
+            break;
+            case "all":
+                $show=true;
+            break;
+        }
+        return $show;
     }
 
     public function filter_admin_bar_visibility($show) {

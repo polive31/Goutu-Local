@@ -44,6 +44,8 @@ class CASM_Enqueue {
 				$this->styles_blacklist[]=$style;
 			}
 		}
+		$this->styles_whitelist=apply_filters( 'casm_styles_whitelist', $this->styles_whitelist );
+		$this->styles_blacklist=apply_filters( 'casm_styles_blacklist', $this->styles_blacklist );
 		$this->dequeue_styles();
 	}
 
@@ -60,6 +62,8 @@ class CASM_Enqueue {
 				$this->scripts_blacklist[]=$script;
 			}
 		}
+		$this->scripts_whitelist = apply_filters('casm_scripts_whitelist', $this->scripts_whitelist);
+		$this->scripts_blacklist = apply_filters('casm_scripts_blacklist', $this->scripts_blacklist);
 		$this->dequeue_scripts();
 	}
 

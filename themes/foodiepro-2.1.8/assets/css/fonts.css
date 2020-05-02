@@ -438,5 +438,8 @@ span.bp_counter,
     font-size: 18px;
     line-height: 20px;
   }
+  .slider-headline div {
+    font-family: monospace !important;
+  }
 }
 /*# sourceMappingURL=fonts.css.map */

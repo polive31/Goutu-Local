@@ -15,13 +15,14 @@ if ( !defined('ABSPATH') )
 	die('-1');
 
 
-require_once 'includes/class-custom-google-recaptcha.php';
+require_once 'includes/class-custom-recaptcha.php';
 require_once 'public/class-cgr-public.php';
+require_once 'public/class-crca-math.php';
 require_once 'admin/class-cgr-admin.php';
 
 /* Start */
 add_action('wp_loaded', 'cgr_start_plugin');
 function cgr_start_plugin()
 {
-	new Custom_Google_Recaptcha();
+	new Custom_Recaptcha();
 }

@@ -85,6 +85,13 @@ class CASM_Assets {
 		'newscript'								=> array('page' => 'home'),
 		'newsletter-subscription'				=> array('page' => 'home'),
 		'wp-embed'								=> array('page' => 'social home'),
+
+		// WP Rest API
+		'underscore'							=> array('logged-in'=> true),
+		'backbone'								=> array('logged-in'=> true),
+		'wp-api-request'						=> array('logged-in'=> true),
+		'wp-api'								=> array('logged-in'=> true),
+
 		//Megamenu
 		'megamenu'								=> array('mobile' => false),
 		'megamenu-pro'							=> array('mobile' => false),

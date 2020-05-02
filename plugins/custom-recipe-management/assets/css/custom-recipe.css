@@ -694,6 +694,7 @@ span#wpurp-timer-remaining {
         padding: 10px;
         text-align:center;
         width:50%;
+        font-weight: bold;
     }
 
     .entry-content .menu-bar li.selected div {

@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 }
 
 
-class Custom_Google_Recaptcha {
+class Custom_Recaptcha {
 
     public function __construct() {
 

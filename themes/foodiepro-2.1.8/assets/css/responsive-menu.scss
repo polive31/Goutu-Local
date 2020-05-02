@@ -4,16 +4,17 @@ $menu-item-color:#5f5f5f;
 $menu-item-hover:#ffffff;
 $link-active:#d7641d;
 
-@font-face {
-    font-family: 'menuFallback';
-    // src: local('sans-serif');
-    src: local('Helvetica');
-    font-size: 1.7rem;
-    font-weight: 400;
-}
+// @font-face {
+//     font-family: 'menuFallback';
+//     // src: local('sans-serif');
+//     src: local('Helvetica');
+//     font-size: 1.7rem;
+//     font-weight: 400;
+// }
 
-$menu-font-family:'Oswald', 'menuFallback';
-$menu-font-size:1.8rem;
+$menu-font-family:'Oswald', sans-serif;
+// $menu-font-family:'Oswald', 'menuFallback';
+$menu-font-size:1.7rem;
 
 /* STYLES
 ----------------------------------------------------------------------*/

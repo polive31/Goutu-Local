@@ -37,9 +37,9 @@ class CASM_Assets {
 															'file' 		=> '/assets/css/responsive-menu.css',
 														)
 													),
-		'pwp-offline-style'					=> array( 'mobile'	=> true,
+		'pwaforwp-style'					=> array( 'mobile'	=> true,
 														'replace' => array(
-															'file' 		=> '/assets/css/offline.css',
+															'file' 		=> '/assets/css/pwa.css',
 														)
 													),
 		'news-style'						=> array('page' => 'home'),

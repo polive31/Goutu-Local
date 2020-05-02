@@ -97,7 +97,7 @@ class CPM_Output {
 		));
 		$date = '[post_date]';
 		$post_info = sprintf(__('Published on %s by %s<span id="username">%s</span>', 'foodiepro'), $date, $avatar, $profile);
-		$post_info .= '[post_comments hide_if_off=false]';
+		// $post_info .= '[post_comments hide_if_off=false]';
 
 		/* Edit Post Button */
 		$post_info .= CPM_Assets::get_edit_button( get_post(), $post_type );

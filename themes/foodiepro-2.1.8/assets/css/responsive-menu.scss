@@ -538,7 +538,7 @@ button#responsive-menu-pro-button,#responsive-menu-pro-container {
     #responsive-menu-pro-container #responsive-menu-pro ul.responsive-menu-pro-submenu li.responsive-menu-pro-item .responsive-menu-pro-item-link {
         font-family: $menu-font-family;
         font-size: $menu-font-size;
-        font-weight: $menu-font-weight
+        font-weight: normal;
     }
 
     #responsive-menu-pro-container #responsive-menu-pro ul.responsive-menu-pro-submenu li.responsive-menu-pro-item a {
@@ -739,6 +739,11 @@ button#responsive-menu-pro-button,#responsive-menu-pro-container {
     #responsive-menu-pro-container .mobile-nav-container .ps-user-name {
         font-family: monospace;
         font-size: 2rem;
+    }
+
+    #responsive-menu-pro-container .mobile-nav-container a.ps-avatar picture {
+        box-shadow: 3px 3px 5px #8b8b8b;
+        border-radius:100%;
     }
 
 

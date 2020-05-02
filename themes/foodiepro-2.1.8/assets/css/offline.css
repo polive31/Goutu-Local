@@ -1,7 +1,6 @@
 .offline-indicator {
     font-family:Oswald, sans-serif;
     background-color: #606060!important;
-    color: #c5c5c5!important;
     padding: 1.5rem;
     position: fixed;
     z-index: 9999;
@@ -15,7 +14,7 @@
 
 .offline-indicator p {
     margin: 0 0 0 0;
-    color: #fff;
+    color: #c5c5c5!important;
     font-size: 1.5rem;
     text-align: center;
     font-family: Oswald;

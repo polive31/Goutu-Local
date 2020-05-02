@@ -7,17 +7,19 @@ jQuery(document).ready(function() {
     jQuery(document).on('click', '.menu-bar .menu-tab', function (e) {
         jQuery(this).addClass('selected');
         var target=jQuery(this).data('target');
-        jQuery('#'+target).show();
+        var $container=jQuery('#'+target);
+        $container.show();
 
         jQuery.each( jQuery(this).siblings(), function() {
             jQuery(this).removeClass('selected');
             var target=jQuery(this).data('target');
             jQuery('#'+target).hide();
         });
+
+        jQuery('html, body').animate({
+            scrollTop: ($container.offset().top)
+        }, 200);
     });
-
-
-
 
 
     /* Ingredient checkboxes

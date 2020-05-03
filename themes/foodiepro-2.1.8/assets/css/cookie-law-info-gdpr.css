@@ -1176,6 +1176,7 @@ span.cli-necessary-caption {
 .cli_settings_button
 {
     cursor: pointer;
+    display: inline-block;
 }
 /* Accessibility Fix */
 .wt-cli-sr-only

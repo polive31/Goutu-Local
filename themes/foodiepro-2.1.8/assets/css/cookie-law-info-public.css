@@ -13,6 +13,7 @@
 	left:0px;
 	font-weight:300;
 }
+
 #cookie-law-info-again {
 	font-size: 10pt;
 	margin: 0;
@@ -111,3 +112,11 @@
 }
 .cli-powered_by_p{width:100% !important; display:block !important; color:#333; clear:both; font-style:italic !important; font-size:12px !important; margin-top:15px !important; }
 .cli-powered_by_a{color:#333; font-weight:600 !important; font-size:12px !important;}
+
+
+@media(max-width:768px){
+	#cookie-law-info-bar {
+		top: calc(50% - 60px)!important;
+		bottom: initial!important;
+	}
+}

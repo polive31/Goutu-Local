@@ -713,7 +713,6 @@ span#wpurp-timer-remaining {
         background: #ffffff;
         box-shadow: 3px 3px 9px 0px rgba(0, 0, 0, 0.45);
         z-index: 1000;
-        color: #d8691d;
     }
 
 
@@ -724,10 +723,12 @@ span#wpurp-timer-remaining {
         text-align:center;
         width:50%;
         font-weight: bold;
+        color: #818181;
     }
 
     .entry-content .menu-bar li.selected div {
-        border-bottom:1px solid black;
+        color: #d8691d;
+        /* border-bottom:1px solid black; */
     }
 
     .menu-bar li#instructions_menu_tab {

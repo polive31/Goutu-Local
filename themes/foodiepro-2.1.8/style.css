@@ -3075,7 +3075,8 @@ nav.nav-primary .wrap {
 }
 
 .entry-meta {
-  float: left;
+  display: inline-block;
+  width: 100%;
 }
 
 .entry-meta a {

@@ -205,7 +205,7 @@ h4.tooltip-title {
     /* Will not center vertically and won't work in IE6/7. */
     left: 0;
     right: 0;
-    top: 40px;
+    top: 100px;
 }
 
 .tooltip-content.modal .wrap {
@@ -226,7 +226,7 @@ h4.tooltip-title {
 
     .post,
     .recipe {
-        /* position: relative; */
+        position: relative;
     }
 
     .toolbar-button,
@@ -240,7 +240,7 @@ h4.tooltip-title {
     .tooltip-content.modal .wrap {
         position:absolute;
         z-index: 2000;
-        /* top:100px; */
+        top:0;
         left: 0;
         bottom: initial;
         right: initial;

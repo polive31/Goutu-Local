@@ -103,6 +103,27 @@
     color: #FFFFFF;
 }
 
+
+/* Overlayed icons */
+.overlayed-icon {
+    position: relative;
+}
+
+i.overlayed-icon:after {
+    color:red;
+    left: 10px;
+    top: -10px;
+    position:absolute;
+}
+
+#favorites i.overlayed-icon:after {
+    content: "\f004";
+}
+
+#wishlist i.overlayed-icon:after {
+    content: "\f08d";
+}
+
 /* Popup Forms
 -------------------------------------------------*/
 

@@ -2312,20 +2312,6 @@ span.ui-icon.ui-icon-triangle-1-s:before {
   cursor: pointer;
 }
 
-i.overlayed-icon:after {
-  color: red;
-  left: 10px;
-  top: 0px;
-}
-
-#favorites i.overlayed-icon:after {
-  content: "\f004";
-}
-
-#wishlist i.overlayed-icon:after {
-  content: "\f08d";
-}
-
 .like-count {
   font-family: Oswald, sans-serif;
   font-size: 1.8rem;

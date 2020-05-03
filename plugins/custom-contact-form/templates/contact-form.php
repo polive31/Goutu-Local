@@ -53,10 +53,8 @@
 					<span class="error"><?= $captchaMissing; ?></span>
 					<br>
 					<?php }
-				if (self::get_captcha() == 'gcaptcha') {
+				if ( class_exists('CGR_Public') ) {
 					CGR_Public::display('alignleft');
-				} elseif (self::get_captcha()) {
-					echo CGR_Public::pdscaptcha("ask");
 				}
 				?>
 			</div>

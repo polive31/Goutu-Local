@@ -9,8 +9,6 @@ class CCF_Public
 {
 
 	const LINEBREAK = '%0D%0A%0D%0A';
-	const CAPTCHA = "gcaptcha"; // pdscaptcha
-	// const CAPTCHA = "pdscaptcha"; // pdscaptcha
 
 	private static $CCF_PATH;
 	private static $CCF_URI;
@@ -20,26 +18,11 @@ class CCF_Public
 		self::$CCF_URI = plugin_dir_url(dirname(__FILE__));
 	}
 
-	public static function get_captcha()
-	{
-		$captcha = false;
-		if (!is_user_logged_in()) {
-			if (class_exists('Custom_Google_Recaptcha')) {
-				$captcha = self::CAPTCHA;
-			}
-		}
-		return $captcha;
-	}
-
 	public function ccf_shortcode($atts)
 	{
 		$atts = shortcode_atts(array(
 			// 'arg' => 'value',
 		), $atts);
-
-		if ( self::get_captcha()=='gcaptcha' ) {
-			CGR_Public::enqueue_scripts();
-		}
 
 		ob_start();
 		$this->ccf_output_form();
@@ -103,12 +86,8 @@ class CCF_Public
 
 			// Check Captcha
 			$captchaError=false;
-			if (self::get_captcha() ) {
-				if ( self::get_captcha()=='gcaptcha' ) {
-					$captchaError = (CGR_Public::verify() != 'success');
-				} else {
-					$captchaError = !(CGR_Public::pdscaptcha($_POST));
-				}
+			if ( class_exists('CGR_Public') ) {
+				$captchaError = CGR_Public::verify() != 'success';
 			}
 			if ($captchaError) {
 				$captchaMissing = __('Please complete the captcha verification.', 'foodiepro');;

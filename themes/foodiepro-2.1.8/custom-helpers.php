@@ -365,7 +365,7 @@ function foodiepro_get_picture($args)
 	$class = '';
 	$lazy = true;
 	$filter_max_width = false;
-	$filter_ext = false;
+	$filter_ext = array();
 	$width = false;
 	$height = false;
 	$fallback = false;
@@ -400,7 +400,7 @@ function foodiepro_get_picture($args)
 		$size_img = pathinfo($file);
 		$size_img_ext = isset($size_img['extension']) ? $size_img['extension'] : '';
 		// Check if extension is allowed
-		if ( $filter_ext && !in_array($size_img_ext, $filter_ext) ) continue;
+		if ( !in_array($size_img_ext, $filter_ext) ) continue;
 		$size_img_filename = isset($size_img['filename']) ? $size_img['filename'] : '';
 		// Check if width  is allowed
 		$match = preg_match('/(\d+)x.*/', $size_img_filename, $size);
@@ -411,7 +411,7 @@ function foodiepro_get_picture($args)
 	}
 
 	/* <img> & closing </picture> tag markup */
-	if ( $filter_ext && in_array('webp', $filter_ext) ) {
+	if ( in_array('webp', $filter_ext) ) {
 		$html .= foodiepro_get_webp_source_tag( $img_filename, $img_ext, $dir, $img_dir_uri );
 	}
 	$html .= '<img ' . $nolazy_markup . ' class="' . $class . '"  src="' . $src . '" ' . $width_markup . ' ' . $height_markup . ' alt="' . $alt . '">';

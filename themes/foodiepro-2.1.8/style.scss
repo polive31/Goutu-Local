@@ -155,6 +155,8 @@ audio:not([controls]) {
     height: 0;
 }
 
+/* Visibility management */
+
 [hidden],
 .nodisplay,
 template,
@@ -167,6 +169,10 @@ template,
 
 .transparent {
     opacity: 0;
+}
+
+.invisible {
+    visibility:hidden;
 }
 
 .seo-hidden {
@@ -2198,9 +2204,12 @@ form[role="search"] {
 /* Plugins
 -------------------------------------------------------- */
 
+/* PWA */
+.pwaforwp-footer-prompt{
+    display: none;
+}
+
 /* Custom Star Rating */
-
-
 span.entry-rating {
     text-align: center;
     display: inline-block;
@@ -2225,10 +2234,6 @@ span.entry-rating {
 
 .ratings-table .full i.far.fa-star {
     color: #f18b14;
-}
-
-.ratings-table {
-    font-size: 1.6rem;
 }
 
 .ratings-table .fa-stack {
@@ -3726,14 +3731,6 @@ time.comment-time {
     right: 0;
 }
 
-
-/* Rating Form */
-#comment_rating_form label {
-    font-size: 2rem;
-}
-
-
-
 .comment-respond {
     margin-top: 20px;
     float: left;
@@ -3843,14 +3840,10 @@ p.comment-form-email {
     display: table-cell;
 }
 
-p.comment-notes {
-    white-space: normal;
-    line-height: normal;
-    text-align: left;
-    font-family: sans-serif;
-    font-size: 1.6rem;
+strong.mathquestion {
+    padding-top: 10px;
+    display: inline-block;
 }
-
 
 /* Sidebars
 ---------------------------------------------------------------------------------------------------- */

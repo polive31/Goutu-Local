@@ -1,5 +1,4 @@
 .ratings-table {
-    font-size: 1.8rem;
     padding: 5px 0;
     margin-top:10px;
 }
@@ -43,27 +42,4 @@ label.rating-cat {
     width: 24px;
     height: 24px;
     background: url('../../images/rating-star.png') -24px 0/48px 24px no-repeat;
-}
-
-
-/* Rating Form */
-#comment_rating_form label {
-    font-size: 2rem;
-}
-
-#comment_rating_form .comment-reply {
-    margin-top:10px;
-}
-
-
-/* MEDIA QUERIES
----------------------------------------------------*/
-
-@media only screen and (max-width:570px) {
-
-    #comment_rating_form label {
-        font-size: 1.8rem;
-    }
-
-
 }

@@ -28,8 +28,6 @@ class CCM_Assets {
 	public static function enqueue_ccm_assets() {
 		if (!is_single()) return;
 
-		wp_enqueue_script('grecaptcha-invisible', 'https://www.google.com/recaptcha/api.js');
-
 		/* Script for JS-based comment form validation and recaptcha result processing */
 		$args = array(
 			'handle'	=> 'ccm-helpers',
@@ -39,28 +37,14 @@ class CCM_Assets {
 			'footer' 	=> true,
 			'deps' 		=> array(),
 			'data' 		=> array(
-				'name'			=> 'csr',
-				'emptyComment' 	=> __('Please enter a text before submitting your comment.', 'foodiepro'),
-				'emptyAuthor' 	=> __('Please provide your name before submitting your comment.', 'foodiepro'),
-				'invalidEmail' 	=> __('Please provide a valid email adress before submitting your comment.', 'foodiepro'),
+				'name'			 => 'csr',
+				'emptyComment' 	 => __('Please enter a text before submitting your comment.', 'foodiepro'),
+				'emptyAuthor' 	 => __('Please provide your name before submitting your comment.', 'foodiepro'),
+				'invalidEmail' 	 => __('Please provide a valid email adress before submitting your comment.', 'foodiepro'),
+				'emptyRecaptcha' => __('Please complete the antispam verification.', 'foodiepro'),
 			)
 		);
 		foodiepro_enqueue_script($args);
-
-		// if ( get_option( 'thread_comments' ) ) {
-		// 	// Remove built-in WP script
-		// 	foodiepro_remove_script( 'comment_reply' );
-		// 	// Register custom commment replies processing script
-		// 	$args = array(
-		// 		'handle'	=> 'ccm-reply',
-		// 			'file' 		=> 'assets/js/ccm-reply.js',
-		// 			'uri' 		=> self::$Plugin_uri,
-		// 			'path' 		=> self::$Plugin_path,
-		// 			'footer' 	=> true,
-		// 			'deps' 		=> array(),
-		// 	);
-		// 	foodiepro_enqueue_script($args);
-		// }
 	}
 
 

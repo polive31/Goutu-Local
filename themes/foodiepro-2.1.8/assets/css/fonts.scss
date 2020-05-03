@@ -226,6 +226,8 @@ h6 {
 }
 
 
+/* BUTTONS */
+
 .button,
 a.button,
 a.black-button,
@@ -259,6 +261,8 @@ a#cancel-comment-reply-link {
     font-size: 1.2rem;
 }
 
+/* COMMENTS */
+
 .comment-reply textarea,
 input#author,
 input#email,
@@ -266,6 +270,16 @@ input#url {
     font-size: 1.6rem;
 }
 
+.recaptcha-container label,
+.comment-form-author label,
+.comment-form-email label,
+.comment-notes {
+    font-family: sans-serif;
+    font-size: 1.6rem;
+}
+
+
+/* MISC */
 .entry-meta i.fa {
     font-size: 2rem;
 }
@@ -521,6 +535,7 @@ span.bp_counter,
 
     .slider-headline div {
         font-family: monospace!important;
+        font-weight: bold !important;
     }
 
 

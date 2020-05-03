@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class CGR_Public
+class CRCA_Google
 {
 
     private static $V2_PUBLIC_KEY;
@@ -27,19 +27,22 @@ class CGR_Public
     /* =================================================================*/
     /* = DISPLAY GOOGLE RECAPTCHA
     /* =================================================================*/
-    public static function display($classes = '', $id = '', $size = 'normal', $js_callback = '', $version = 2)
+    public static function display($version = 2)
     {
         if ($version == 2)
             $key = self::v2key('public');
         elseif ($version == 3)
             $key = self::v3key('public');
 
-            $size = 'normal';
-            $style= '-moz-transform:scale(0.77); -ms-transform:scale(0.77); -o-transform:scale(0.77); -moz-transform-origin:0; -ms-transform-origin:0; -o-transform-origin:0; -webkit-transform:scale(0.77); transform:scale(0.77); -webkit-transform-origin:0 0; transform-origin:0; filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.77,M12=0,M21=0,M22=0.77,SizingMethod=\'auto expand\');';
-            $style= wp_is_mobile()?$style:'';
-?>
-        <div id="<?= $id ?>" class="g-recaptcha <?= $classes; ?>" style="<?= $style; ?>" data-sitekey="<?= $key; ?>" data-callback="<?= $js_callback; ?>" data-size="<?= $size ?>"></div>
-<?php
+        self::enqueue_scripts();
+
+        $size = 'normal';
+        $style= '-moz-transform:scale(0.77); -ms-transform:scale(0.77); -o-transform:scale(0.77); -moz-transform-origin:0; -ms-transform-origin:0; -o-transform-origin:0; -webkit-transform:scale(0.77); transform:scale(0.77); -webkit-transform-origin:0 0; transform-origin:0; filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.77,M12=0,M21=0,M22=0.77,SizingMethod=\'auto expand\');';
+        $style= wp_is_mobile()?$style:'';
+
+        ?>
+            <div class="g-recaptcha" style="<?= $style; ?>" data-sitekey="<?= $key; ?>" data-callback="" data-size="<?= $size ?>"></div>
+        <?php
     }
 
     /* =================================================================*/
@@ -97,7 +100,7 @@ class CGR_Public
     /* =================================================================*/
     public function register_recaptcha_script()
     {
-        wp_register_script('g-recaptcha', 'https://www.google.com/recaptcha/api.js', array(), '1.0.0');
+        wp_register_script('g-recaptcha', 'https://www.google.com/recaptcha/api.js', array(), '1.0.0', true);
     }
 
     // This function is to be called by any form needing the ccf captcha

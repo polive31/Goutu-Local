@@ -17,8 +17,6 @@ class Custom_Comment_Management {
 		-----------------------------------------------------------------*/
         $Assets = new CCM_Assets();
 		add_action( 'wp_enqueue_scripts',                       'CCM_Assets::enqueue_ccm_assets' );
-		// add_action( 'wp_loaded', 								'CCM_Assets::remove_comment_reply_script');
-
 
 		/* Hooks for CCM_Comments_List class
 		-----------------------------------------------------------------*/
@@ -62,11 +60,8 @@ class Custom_Comment_Management {
 		/* Format the comment form for "new/reply to" title toggle in JS */
 		add_filter( 'comment_form_defaults',                    array( $CommentForm, 'change_comment_form_defaults') );
 
-		// adds the captcha to the WordPress form
-		add_filter( 'comment_form_submit_button',				array( $CommentForm, 'comment_form_add_recaptcha'), 15, 2 );
-
-		// Server side recaptcha verification
-		add_filter( 'preprocess_comment', 						array( $CommentForm, 'verify_comment_recaptcha'), 1, 1);
+		// Supports multiple submit button instances
+		add_filter('comment_form_submit_button', 				array($CommentForm, 'get_submit_button_instance'), 15, 2);
 
 	}
 

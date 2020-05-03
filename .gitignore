@@ -86,11 +86,11 @@ plugins/*
 !plugins/custom-comment-management/
 !plugins/custom-contact-form/
 !plugins/custom-gallery-shortcode/
-!plugins/custom-google-recaptcha/
 !plugins/custom-google-tag-manager/
 !plugins/custom-lightbox/
 !plugins/custom-peepso-overrides/
 !plugins/custom-post-management/
+!plugins/custom-recaptcha/
 !plugins/custom-recent-post-widget/
 !plugins/custom-recipe-management/
 !plugins/custom-site-notifications/

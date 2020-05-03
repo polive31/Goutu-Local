@@ -10,20 +10,20 @@ class CCM_Form
 
 	protected static $_PluginPath;
 	protected static $_PluginUri;
-	protected static $captchaInstance;
+
 	protected $captchaError;
 
 	public function __construct()
 	{
 		self::$_PluginUri = plugin_dir_url(dirname(__FILE__));
 		self::$_PluginPath = plugin_dir_path(dirname(__FILE__));
-		self::$captchaInstance = 0;
 	}
 
-	public function force_comment_form_display( $open, $post_id ) {
-		$post_type=get_post_type($post_id);
-		if ( in_array( $post_type, CCM_ASSETS::post_types() ) ) {
-			$open=true;
+	public function force_comment_form_display($open, $post_id)
+	{
+		$post_type = get_post_type($post_id);
+		if (in_array($post_type, CCM_ASSETS::post_types())) {
+			$open = true;
 		}
 		return $open;
 	}
@@ -46,10 +46,10 @@ class CCM_Form
 		static $instance = 0;
 
 		$defaults['logged_in_as'] = '';
-		$post_type=get_post_type();
+		$post_type = get_post_type();
 
-		if (class_exists( 'CPM_Assets') ) {
-			$defaults['title_reply'] = CPM_Assets::get_label( $post_type, 'comment_form_headline' );
+		if (class_exists('CPM_Assets')) {
+			$defaults['title_reply'] = CPM_Assets::get_label($post_type, 'comment_form_headline');
 			$defaults['title_reply_to'] = 'Leave a reply to %s';
 		}
 
@@ -61,28 +61,6 @@ class CCM_Form
 		return $defaults;
 	}
 
-
-	/**
-	 * Adds recaptcha to submit button markup
-	 *
-	 * @param  mixed $submit_button
-	 * @param  mixed $args
-	 * @return void
-	 */
-	public function comment_form_add_recaptcha($submit_button, $args)
-	{
-		$recaptcha = '';
-		if (!is_user_logged_in() && class_exists('CGR_Public')) {
-			if (isset($_GET['captcha']) && ($_GET['captcha'] != 'success')) {
-				$recaptcha .= '<p class="error">' . __('<strong>ERROR</strong>: please complete the CAPTCHA verification.', 'foodiepro') . '</p>';
-			}
-			$size=wp_is_mobile()?'compact':'normal';
-			$recaptcha .= CGR_Public::display('', 'recaptcha' . self::$captchaInstance, $size, '');
-			self::$captchaInstance++;
-		}
-		$html= $recaptcha . $this->get_submit_button_instance();
-		return $html;
-	}
 
 	/**
 	 * Generates multiple comment submit button instances
@@ -97,30 +75,6 @@ class CCM_Form
 		$submit_button = '<input name="submit' . $instance . '" type="submit" id="submit' . $instance . '" data-instance="' . $instance . '" class="submit" value="' . __('Submit', 'foodiepro') . '">';
 		$instance++;
 		return $submit_button;
-	}
-
-	/**
-	 * * Logged-in users : populate invisible inputs (user name & email)
-	 * * Logged-out users : check recaptcha
-	 *
-	 * @param  mixed $commentdata
-	 * @return void
-	 */
-	public function verify_comment_recaptcha($commentdata)
-	{
-		$captchaResult = 'success';
-		if (!is_user_logged_in() ) {
-			if (class_exists('CGR_Public')) {
-				$captchaResult = CGR_Public::verify();
-			}
-		}
-
-		if ($captchaResult == 'success')
-			return $commentdata;
-		else {
-			wp_die( __( '<strong>ERROR</strong>: please complete the CAPTCHA verification.', 'foodiepro' ) );
-		}
-
 	}
 
 }

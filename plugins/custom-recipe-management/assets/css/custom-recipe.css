@@ -188,7 +188,7 @@
 }
 
 .recipe-label {
-    font-family: Special Elite, Courier; /*Oswald; */
+    font-family: Special Elite, Cabin, courier, sans-serif; /*Oswald; */
     font-weight: bold; /*normal;*/
     display: table-cell;
     /* display: inline-block; */
@@ -677,6 +677,13 @@ span#wpurp-timer-remaining {
 
     /* TABBED INGREDIENT RECIPES MENUS
     ---------------------------------------------------*/
+
+    .recipe,
+    .recipe-container {
+        /* IMPORTANT FOR STICKY MENU TO WORK */
+        position: relative;
+    }
+
     ul.menu-bar {
         border:1px solid #cccccc;
         border-radius:20px;
@@ -685,6 +692,7 @@ span#wpurp-timer-remaining {
         background: #ffffff;
         box-shadow: 3px 3px 9px 0px rgba(0, 0, 0, 0.45);
         z-index: 1000;
+        color: #d8691d;
     }
 
 

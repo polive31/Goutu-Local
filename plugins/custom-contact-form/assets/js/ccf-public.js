@@ -1,4 +1,6 @@
 jQuery(document).ready(function() {
+	console.log('%c In custom comment form public.js', "background:#8F3B59; color:white")
+
 	jQuery('form#contactForm').submit(function() {
 		jQuery('form#contactForm .error').remove();
 		var hasError = false;

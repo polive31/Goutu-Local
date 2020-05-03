@@ -344,8 +344,8 @@ VARIABLES
     font-size: 2rem;
   }
   .button-caption {
-    font-family: monospace;
-    font-size: 2rem;
+    font-family: Cabin, monospace;
+    font-size: 1.6rem;
   }
   .toolbar-button#favorite,
   .toolbar-button.alignright {

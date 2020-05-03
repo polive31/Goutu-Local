@@ -563,13 +563,15 @@ function foodiepro_register_script($handle, $file = '', $uri = CHILD_THEME_URL, 
 			$file = $minfile;
 		}
 	}
-	wp_register_script($handle, $uri . $file, $deps, $version, $footer);
+	$result_register=wp_register_script($handle, $uri . $file, $deps, $version, $footer);
 
+	$result_localize=true;
 	if (!empty($data)) {
 		$name = $data['name'];
 		unset($data['name']);
-		wp_localize_script($handle, $name, $data);
+		$result_localize=wp_localize_script($handle, $name, $data);
 	}
+	return $result_register && $result_localize;
 }
 
 /**
@@ -604,13 +606,16 @@ function foodiepro_enqueue_script($handle, $file = '', $uri = CHILD_THEME_URL, $
 		}
 	}
 
-	wp_enqueue_script($handle, $uri . $file, $deps, $version, $footer);
+	$result_enqueue = wp_enqueue_script($handle, $uri . $file, $deps, $version, $footer);
 
+	$result_localize=true;
 	if (!empty($data)) {
 		$name = $data['name'];
 		unset($data['name']);
 		wp_localize_script($handle, $name, $data);
 	}
+
+	return $result_enqueue && $result_localize;
 }
 
 
@@ -622,8 +627,8 @@ function foodiepro_enqueue_script($handle, $file = '', $uri = CHILD_THEME_URL, $
  */
 function foodiepro_remove_script($script)
 {
-	wp_deregister_script($script);
-	wp_dequeue_script($script);
+	$result_deregister = wp_deregister_script($script);
+	$result_dequeue = wp_dequeue_script($script);
 }
 
 
@@ -660,7 +665,7 @@ function foodiepro_register_style($handle, $file = '', $uri = CHILD_THEME_URL, $
 			$file = $minfile;
 		}
 	}
-	wp_register_style($handle, $uri . $file, $deps, $version, $media);
+	return wp_register_style($handle, $uri . $file, $deps, $version, $media);
 }
 
 /**
@@ -692,7 +697,7 @@ function foodiepro_enqueue_style($handle, $file = '', $uri = CHILD_THEME_URL, $d
 			$file = $minfile;
 		}
 	}
-	wp_enqueue_style($handle, $uri . $file, $deps, $version, $media);
+	return wp_enqueue_style($handle, $uri . $file, $deps, $version, $media);
 }
 
 
@@ -706,9 +711,8 @@ function foodiepro_enqueue_style($handle, $file = '', $uri = CHILD_THEME_URL, $d
 function foodiepro_remove_style($style)
 {
 	// global $wp_scripts;
-
-	wp_dequeue_style($style);
-	wp_deregister_style($style);
+	$result_dequeue = wp_dequeue_style($style);
+	$result_deregister = wp_deregister_style($style);
 }
 
 /* =================================================================*/

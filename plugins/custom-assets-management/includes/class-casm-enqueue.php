@@ -10,6 +10,7 @@ class CASM_Enqueue {
 
 	private $enqueued_styles;
 	private $enqueued_scripts;
+	private $footer_styles;
 
 	private $styles_whitelist;
 	private $scripts_whitelist;
@@ -21,6 +22,7 @@ class CASM_Enqueue {
 		$this->scripts_whitelist=array();
 		$this->styles_blacklist=array();
 		$this->scripts_blacklist=array();
+		$this->footer_styles=array();
 	}
 
 	/*  LOAD CONDITIONALLY
@@ -30,12 +32,6 @@ class CASM_Enqueue {
 		$inspected_styles = CASM_Assets::css_if();
 		foreach ($inspected_styles as $style => $conditions) {
 			if ($this->match($conditions)) {
-				if ( isset($conditions['replace']) ) {
-					foodiepro_remove_style($style);
-					$args=$conditions['replace'];
-					$args['handle']=$style;
-					foodiepro_enqueue_style($args);
-				}
 				// All conditions are fulfilled, therefore style(s) will be enqueued, and won't be examined in footer again
 				CASM_Assets::css_if_remove($style);
 				if (strpos($style,'*')===false)
@@ -71,8 +67,48 @@ class CASM_Enqueue {
 		global $wp_styles;
 		$this->enqueued_styles= $wp_styles->queue;
 
-		foreach ($this->styles_blacklist as $style) {
+		// Replace whitelisted styles which have replacement data
+		foreach ( $this->styles_whitelist as $style) {
+			$replacement = CASM_Assets::get_style_replacement($style);
+			if ( $replacement ) {
+				$old= isset($wp_styles->registered[$style])? $wp_styles->registered[$style]:false;
 
+				$new=array('handle'=>$style);
+				if (isset($replacement['file'])) {
+					$new['file']=$replacement['file'];
+				}
+				elseif ($old) {
+					$new['file']=$old->src;
+				}
+				else
+					continue; // 'file' cannot be given a value, therefore this Style cannot be processed, let's go to next
+
+				foodiepro_remove_style($style);
+
+				// Force dir & uri to be empty, otherwise will be defaulted to CHILD_THEME_URI/PATH once in foodiepro_enqueue/register
+				if ( !isset($replacement['file']) ) {
+					$new['dir']='';
+					$new['uri']='';
+				}
+				else {
+					if ( isset($replacement['uri'] ) )
+						$new['uri']= $replacement['uri'];
+					if ( isset($replacement['dir'] ) )
+						$new['dir']= $replacement['dir'];
+				}
+
+				if ( empty($replacement['footer']) ) {
+					foodiepro_enqueue_style($new);
+				}
+				else {
+					$result = foodiepro_register_style($new);
+					$this->footer_styles[]=$style;
+				}
+			}
+		}
+
+		// Dequeue blacklisted styles
+		foreach ($this->styles_blacklist as $style) {
 			if (strpos($style,'*')===false) { // not a regexp, dequeue directly
 				foodiepro_remove_style($style);
 			}
@@ -92,6 +128,41 @@ class CASM_Enqueue {
 		global $wp_scripts;
 		$this->enqueued_scripts= $wp_scripts->queue;
 
+		// Replace whitelisted scripts which have replacement data
+		foreach ($this->scripts_whitelist as $script) {
+			$replacement = CASM_Assets::get_script_replacement($script);
+			if ($replacement) {
+				$old = isset($wp_scripts->registered[$script]) ? $wp_scripts->registered[$script] : false;
+
+				$new = array('handle' => $script);
+				if (isset($replacement['file'])) {
+					$new['file'] = $replacement['file'];
+				} elseif ($old) {
+					$new['file'] = $old->src;
+				} else
+					continue; // 'file' cannot be given a value, therefore this script cannot be processed, let's go to next
+
+				foodiepro_remove_script($script);
+
+				// Force dir & uri to be empty, otherwise will be defaulted to CHILD_THEME_URI/PATH once in foodiepro_enqueue/register
+				if (!isset($replacement['file'])) {
+					$new['dir'] = '';
+					$new['uri'] = '';
+				} else {
+					if (isset($replacement['uri']))
+						$new['uri'] = $replacement['uri'];
+					if (isset($replacement['dir']))
+						$new['dir'] = $replacement['dir'];
+				}
+				if ( !empty($replacement['footer']) )
+					$new['footer']=$replacement['footer'];
+
+				foodiepro_enqueue_script($new);
+
+			}
+		}
+
+		// Dequeue blacklisted scripts
 		foreach ($this->scripts_blacklist as $script) {
 
 			if (strpos($script,'*')===false) { // not a regexp, dequeue directly
@@ -106,7 +177,14 @@ class CASM_Enqueue {
 					}
 				}
 			}
+		}
+	}
 
+	public function enqueue_footer_styles()
+	{
+		global $wp_styles;
+		foreach ($this->footer_styles as $style) {
+			wp_enqueue_style( $style );
 		}
 	}
 
@@ -216,7 +294,8 @@ class CASM_Enqueue {
 	{
 		if (is_admin()) return $html;
 		if ( CASM_Assets::is_deferred('style', $handle) ) {
-			$html = '<link rel="stylesheet" href="' . $href . '" media="async" onload="if(media!=\'all\')media=\'all\'"><noscript><link rel="stylesheet" href="css.css"></noscript>' . "\n";
+			// $html = '<link rel="stylesheet" href="' . $href . '" media="async" onload="if(media!=\'all\')media=\'all\'"><noscript><link rel="stylesheet" href="css.css"></noscript>' . "\n";
+			$html = '<link rel="stylesheet" href="' . $href . '" media="none" onload="if(media!=\'all\')media=\'all\'"><noscript><link rel="stylesheet" href="css.css"></noscript>' . "\n";
 		}
 		return $html;
 	}
@@ -234,26 +313,12 @@ class CASM_Enqueue {
 	}
 
 
-	/*  Making jQuery Google API
-	--------------------------------------------------------*/
-	public function load_jquery_from_google()
-	{
-		if (!is_admin()) {
-			// comment out the next two lines to load the local copy of jQuery
-			wp_deregister_script('jquery');
-			wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js', false, '1.8.1');
-			wp_enqueue_script('jquery');
-		}
-	}
-
-	// Prevent Max Mega Menu to load all google fonts
-	public function megamenu_dequeue_google_fonts()
-	{
-		wp_dequeue_style('megamenu-google-fonts');
-	}
-
-
-	/* Gestion des feuilles de style minifiées */
+	/**
+	 * Allows using a minified version of the style.css main theme stylesheet
+	 *
+	 * @param  mixed $default_stylesheet_uri
+	 * @return void
+	 */
 	public function enqueue_minified_theme_stylesheet($default_stylesheet_uri)
 	{
 		$path_parts = pathinfo($default_stylesheet_uri);
@@ -268,6 +333,35 @@ class CASM_Enqueue {
 			$default_stylesheet_uri = CHILD_THEME_URL . '/' . $min_file;
 		}
 		return $default_stylesheet_uri;
+	}
+
+
+	/* UNUSED
+	--------------------------------------------------------*/
+	/**
+	 * Use Google-served version of jQuery
+	 *
+	 * @return void
+	 */
+	public function load_jquery_from_google()
+	{
+		if (!is_admin()) {
+			// comment out the next two lines to load the local copy of jQuery
+			wp_deregister_script('jquery');
+			wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js', false, '1.8.1');
+			wp_enqueue_script('jquery');
+		}
+	}
+
+
+	/**
+	 * Prevent Max Mega Menu to load all google fonts
+	 *
+	 * @return void
+	 */
+	public function megamenu_dequeue_google_fonts()
+	{
+		wp_dequeue_style('megamenu-google-fonts');
 	}
 
 

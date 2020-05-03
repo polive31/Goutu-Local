@@ -14,10 +14,17 @@ class Custom_Assets_Management {
 		$Enqueue = new CASM_Enqueue();
 		add_action( 'wp_enqueue_scripts', 		array($Enqueue, 'build_styles_lists'), PHP_INT_MAX);
 		add_action( 'wp_enqueue_scripts', 		array($Enqueue, 'build_scripts_lists'), PHP_INT_MAX);
+
+		// Header hooks
 		add_action( 'wp_print_styles', 			array($Enqueue, 'dequeue_styles'), 0);
 		add_action( 'wp_print_scripts', 		array($Enqueue, 'dequeue_scripts'), 0);
+
+		// Footer hooks
 		add_action( 'wp_print_footer_scripts',	array($Enqueue, 'dequeue_styles'), 0);
 		add_action( 'wp_print_footer_scripts',	array($Enqueue, 'dequeue_scripts'), 0);
+		add_action( 'get_footer', 				array($Enqueue, 'enqueue_footer_styles'), 10);
+		add_action( 'print_late_styles', 		'__return_true', 10);
+
 		add_filter( 'script_loader_tag', 		array($Enqueue, 'async_load_js'), PHP_INT_MAX, 3 );
 		add_filter( 'style_loader_tag', 		array($Enqueue, 'async_load_css'), PHP_INT_MAX, 4 );
 		add_filter( 'style_loader_tag', 		array($Enqueue, 'preload_css'), PHP_INT_MAX, 4 );

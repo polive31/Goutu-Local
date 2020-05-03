@@ -13,13 +13,13 @@ class CASM_Assets {
 		// 'foodie-pro-general',
 		'grecaptcha-invisible',
 		'newscript',
+		// 'cookie-law-info',
 	);
 
 	// Stylesheets to be loaded asynchronously
 	const DEFER_CSS = array(
-		'custom-gdpr',
-		'dashicons',
-		'bp-mentions-css',
+		'cookie-law-info',
+		'cookie-law-info-gdpr',
 	);
 
 	// Stylesheets to be preloaded
@@ -31,6 +31,18 @@ class CASM_Assets {
 
 	// Stylesheets to be loaded conditionnally & replaced if needed
 	const CSS_IF = array(
+		'cookie-law-info'					=> array( 'true'	=> '',
+														'replace' => array(
+															'file' 	=> '/assets/css/cookie-law-info-public.css',
+															// 'footer' 	=> true,// Doesn't work
+														),
+													),
+		'cookie-law-info-gdpr'				=> array( 'true'	=> '',
+													'replace' => array(
+														'file' 	=> '/assets/css/cookie-law-info-gdpr.css',
+														// 'footer' 	=> true,// Doesn't work
+														),
+													),
 		// 'custom-star-ratings' 				=> array('page' => 'blog-page'),
 		'responsive-menu-pro'				=> array(	'mobile' => true,
 														'replace' => array(
@@ -65,9 +77,10 @@ class CASM_Assets {
 
 		//Peepso
 		'peepso'							=> array('page' => 'social'),
+		// Allows using a minified peepso-custom
 		'peepso-custom'						=> array('true' => '',
 													'replace' => array(
-															'file' 		=> '/assets/css/peepso.css',
+														'file' 		=> '/assets/css/peepso.css',
 													)),
 		'peepso-datepicker'					=> array('page' => 'social',
 													'replace' => array(
@@ -82,6 +95,13 @@ class CASM_Assets {
 
 	// Scripts to be loaded conditionnally
 	const JS_IF = array(
+		'cookie-law-info'						=> array(
+														'true'	=> '',
+														'replace' => array(
+															'file' => '/assets/js/cookie-law-info-public.js',
+															'footer' => true,
+														),
+													),
 		'newscript'								=> array('page' => 'home'),
 		'newsletter-subscription'				=> array('page' => 'home'),
 		'wp-embed'								=> array('page' => 'social home'),
@@ -208,6 +228,24 @@ class CASM_Assets {
 		$preloaded = in_array($style, self::PRELOAD_CSS);
 		return $preloaded;
 	}
+
+
+	public static function get_style_replacement($handle)
+	{
+		$replacement = false;
+		if (!empty(self::CSS_IF[$handle]['replace']))
+			$replacement = self::CSS_IF[$handle]['replace'];
+		return $replacement;
+	}
+
+	public static function get_script_replacement($handle)
+	{
+		$replacement = false;
+		if (!empty(self::JS_IF[$handle]['replace']))
+			$replacement = self::JS_IF[$handle]['replace'];
+		return $replacement;
+	}
+
 
 
 }

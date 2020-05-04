@@ -67,7 +67,7 @@ class PeepsoHelpers  {
 		$html = foodiepro_get_picture(array(
 			'src' 		=> $src,
 			'dir' 		=> $dir,
-			'class'		=> $imgclass,
+			'class'		=> $imgclass . ' ' . $size,
 			'id'		=> $imgid,
 			'alt' 		=> $alt,
 			'width' 	=> $size,
@@ -76,7 +76,7 @@ class PeepsoHelpers  {
 		));
 
 		if ($link) {
-			$html = '<a class="' . $aclass . '" href="' . foodiepro_get_permalink(array('user' => $user->get_id(), 'display' => 'profile')) . '" title="' . sprintf($title, ucfirst($user->get_nicename())) . '">' . $html . '</a>';
+			$html = '<a class="' . $aclass . ' ' . $size . '" href="' . foodiepro_get_permalink(array('user' => $user->get_id(), 'display' => 'profile')) . '" title="' . sprintf($title, ucfirst($user->get_nicename())) . '">' . $html . '</a>';
 		}
 
 		if (!empty($wraptag)) {

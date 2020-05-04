@@ -256,6 +256,11 @@ class CRM_Recipe {
         return $ingredients;
     }
 
+    public function ingredient_count() {
+        $count=(is_array($this->ingredients()))?count($this->ingredients()):0;
+        return $count;
+    }
+
     /* INSTRUCTIONS
     ---------------------------------------------------------------------*/
     public static function get_instruction_item() {

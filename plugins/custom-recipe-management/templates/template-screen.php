@@ -24,7 +24,7 @@
 
 		<ul class="desktop-nodisplay menu-bar">
 			<li class="menu-tab selected" id="ingredients_menu_tab" data-target="ingredients_container">
-				<div><?= __('Ingredients', 'foodiepro') . sprintf( ' (%s)', count($recipe->ingredients()) ); ?></div>
+				<div><?= __('Ingredients', 'foodiepro') . sprintf( ' (%s)', $recipe->ingredient_count() ); ?></div>
 			</li>
 			<li class="menu-tab" id="instructions_menu_tab" data-target="instructions_container">
 				<div><?= __('Instructions', 'foodiepro'); ?></div>

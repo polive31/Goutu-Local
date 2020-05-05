@@ -67,11 +67,11 @@ class CPM_Assets {
 				'dir'				=> self::$PLUGIN_PATH,
 				'location'			=> array('post_form')
 			),
-			'post-font'		=> array(
-				'handle'			=> 'post-font',
-				'uri'				=> '//fonts.googleapis.com/css?family=Cabin',
-				'location'			=> array('post')
-				)
+			// 'post-font'		=> array(
+			// 	'handle'			=> 'post-font',
+			// 	'uri'				=> '//fonts.googleapis.com/css?family=Cabin',
+			// 	'location'			=> array('post')
+			// 	)
 			);
 			self::$enqueued_styles = apply_filters( 'cpm_enqueued_styles', $default_enqueued_styles );
 

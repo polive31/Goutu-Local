@@ -227,7 +227,7 @@ class CRM_Assets {
 		$styles['cpm-list']['location'][]				= 'recipe_favorites';
 		$styles['cpm-select2']['location'][]			= 'recipe_form';
 		$styles['cpm-submission-form']['location'][]	= 'recipe_form';
-		$styles['post-font']['location'][]				= 'recipe';
+		// $styles['post-font']['location'][]				= 'recipe';
 
 		// Enqueue specific recipe styles
 		$styles['crm-recipe-print'] = array(

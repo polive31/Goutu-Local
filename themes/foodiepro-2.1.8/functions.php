@@ -297,10 +297,12 @@ function enqueue_high_priority_assets()
 	foodiepro_enqueue_style('foodiepro-fonts', '/assets/css/fonts.css', CHILD_THEME_URL, CHILD_THEME_PATH, array('foodie-pro-theme'), CHILD_THEME_VERSION);
 	if ( wp_is_mobile() ) {
 		// Not enqueuing Special Elite & Oswald on smartphone
-		wp_enqueue_style('google-fonts', '//fonts.googleapis.com/css?family=Vollkorn:300,400', array(), CHILD_THEME_VERSION);
+		// Trying to load Cabin everywhere instead of only on recipes, in order to avoid a separate request to Google
+		// and process all at once
+		wp_enqueue_style('google-fonts', '//fonts.googleapis.com/css?family=Vollkorn:400|Cabin', array(), CHILD_THEME_VERSION);
 		foodiepro_enqueue_style('foodiepro-media-queries', '/assets/css/media_queries.css', CHILD_THEME_URL, CHILD_THEME_PATH, array('foodie-pro-theme'), CHILD_THEME_VERSION);
 	} else {
-		wp_enqueue_style('google-fonts', '//fonts.googleapis.com/css?family=Special+Elite:400|Oswald|Vollkorn:300,400', array(), CHILD_THEME_VERSION);
+		wp_enqueue_style('google-fonts', '//fonts.googleapis.com/css?family=Special+Elite:400|Cabin|Oswald|Vollkorn:400', array(), CHILD_THEME_VERSION);
 	}
 }
 
@@ -322,11 +324,15 @@ function enqueue_low_priority_assets()
 }
 
 // Add fontawesome 5 CDN attributes
-add_filter('style_loader_tag', 'add_font_awesome_5_cdn_attributes', 10, 2);
-function add_font_awesome_5_cdn_attributes($html, $handle)
+add_filter('style_loader_tag', 'add_font_attributes', 10, 2);
+function add_font_attributes($html, $handle)
 {
 	if ('font-awesome-5' === $handle) {
 		return str_replace("media='all'", "media='all' crossorigin='anonymous'", $html);
+	}
+	// Add preload rel to google fonts
+	if ('google-fonts' === $handle) {
+		return str_replace("rel='stylesheet'", "rel='preload'", $html);
 	}
 	return $html;
 }

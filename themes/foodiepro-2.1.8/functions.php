@@ -331,9 +331,9 @@ function add_font_attributes($html, $handle)
 		return str_replace("media='all'", "media='all' crossorigin='anonymous'", $html);
 	}
 	// Add preload rel to google fonts
-	if ('google-fonts' === $handle) {
-		return str_replace("rel='stylesheet'", "rel='preload'", $html);
-	}
+	// if ('google-fonts' === $handle) {
+	// 	return str_replace("rel='stylesheet'", "rel='preload'", $html);
+	// }
 	return $html;
 }
 

@@ -1,6 +1,9 @@
 /*
 VARIABLES
 ---------------------------------------------------------------------------------------------------- */
+/*
+VARIABLES
+---------------------------------------------------------------------------------------------------- */
 /* PEEPSO styles used in the main menu bar */
 /* They must be put here instead of foodiepro style.css in order to override peepso.css settings whenever it is loaded */
 body {
@@ -166,7 +169,7 @@ body {
 
 [class^="ps-icon-"]:before,
 [class*=" ps-icon-"]:before {
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Pro", sans-serif;
   font-weight: 900;
 }
 

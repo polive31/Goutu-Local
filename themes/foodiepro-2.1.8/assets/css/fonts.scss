@@ -1,7 +1,7 @@
 /*
 VARIABLES
 ---------------------------------------------------------------------------------------------------- */
-$icon-font: 'Font Awesome 5 Free';
+@import "../../../../_foodiepro.scss";
 
 // $h1-font: 'Special Elite';
 // $h3-font-size : 2.5rem;
@@ -304,12 +304,12 @@ span.bp_counter,
 }
 
 .ui-icon:before,
-.fa-before:before,
+// .fa-before:before,
 // .toolbar-button a:before,
-[class^='fa-']:before,
-[class^='fa']:before,
-[class^='fa-']:after,
-[class^='fa']:after,
+// [class^='fa-']:before,
+// [class^='fa']:before,
+// [class^='fa-']:after,
+// [class^='fa']:after,
 [class^="ps-icon-"]:before,
 [class*=" ps-icon-"]:before {
     font-family: $icon-font, sans-serif;

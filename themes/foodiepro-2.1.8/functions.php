@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 define('CHILD_THEME_NAME', 'Foodie Pro Theme');
 define('CHILD_THEME_DEVELOPER', 'Shay Bocks/Pascal Olive');
 define('CHILD_THEME_OPTIONS', get_option('foodiepro'));
-define('CHILD_THEME_VERSION', ((bool) CHILD_THEME_OPTIONS['reload']) ? time() : '2.4.16');
+define('CHILD_THEME_VERSION', ((bool) CHILD_THEME_OPTIONS['reload']) ? time() : '2.4.17');
 define('CHILD_THEME_URL', get_stylesheet_directory_uri());
 define('CHILD_THEME_PATH', get_stylesheet_directory());
 define('DEFAULT_CHILD_COLOR_THEME', 'spring');
@@ -307,8 +307,10 @@ function enqueue_high_priority_assets()
 add_action('wp_enqueue_scripts', 	'enqueue_low_priority_assets', 20);
 function enqueue_low_priority_assets()
 {
-	wp_enqueue_script('font-awesome-5', 'https://kit.fontawesome.com/e61ef10a3b.js', array(), false, true);
-	// wp_enqueue_script('font-awesome-5', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js', array(), false, true);
+	// Free Fontawesome Kit
+	// wp_enqueue_script('font-awesome-5', 'https://kit.fontawesome.com/e61ef10a3b.js', array(), false, true);
+	// Pro Fontawesome Kit
+	wp_enqueue_script('font-awesome-5', 'https://kit.fontawesome.com/e42c1747c7.js', array(), false, true);
 
 	/* Theme stylesheet with varying name & version, forces cache busting at browser level
 	--------------------------------------------------- */

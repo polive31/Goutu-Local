@@ -606,16 +606,15 @@ function foodiepro_enqueue_script($handle, $file = '', $uri = CHILD_THEME_URL, $
 		}
 	}
 
-	$result_enqueue = wp_enqueue_script($handle, $uri . $file, $deps, $version, $footer);
+	wp_enqueue_script($handle, $uri . $file, $deps, $version, $footer);
 
-	$result_localize=true;
 	if (!empty($data)) {
 		$name = $data['name'];
 		unset($data['name']);
 		wp_localize_script($handle, $name, $data);
 	}
 
-	return $result_enqueue && $result_localize;
+	return;
 }
 
 

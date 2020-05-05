@@ -1,6 +1,9 @@
 /*
 VARIABLES
 ---------------------------------------------------------------------------------------------------- */
+/*
+VARIABLES
+---------------------------------------------------------------------------------------------------- */
 /* FONTS
 --------------------------------------------- */
 /*@font-face {
@@ -110,7 +113,7 @@ h2.user-nicename {
 }
 
 .entry-header-overlay .tag-overlay#veg {
-  font-family: "Font Awesome 5 Free", sans-serif;
+  font-family: "Font Awesome 5 Pro", sans-serif, sans-serif;
   font-size: 2.2rem;
   line-height: 3rem;
   font-weight: bold;
@@ -240,14 +243,9 @@ span.bp_counter,
 }
 
 .ui-icon:before,
-.fa-before:before,
-[class^='fa-']:before,
-[class^='fa']:before,
-[class^='fa-']:after,
-[class^='fa']:after,
 [class^="ps-icon-"]:before,
 [class*=" ps-icon-"]:before {
-  font-family: "Font Awesome 5 Free", sans-serif;
+  font-family: "Font Awesome 5 Pro", sans-serif, sans-serif;
   font-style: normal;
   display: inline-block;
   position: relative;

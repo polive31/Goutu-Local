@@ -270,6 +270,12 @@ VARIABLES
     background: url("../../images/theme/logo-svg/logo-path.svg") no-repeat left;
     background-size: contain;
   }
+  .site-container {
+    margin-top: 60px;
+  }
+  .site-inner {
+    margin-top: 0;
+  }
   .site-header .widget-area,
   .header-widget-area,
   .home .header-widget-area,

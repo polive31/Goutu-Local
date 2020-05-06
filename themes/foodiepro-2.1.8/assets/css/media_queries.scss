@@ -1,4 +1,4 @@
-@import "_foodiepro.scss";
+@import "../../../../_foodiepro.scss";
 $images-path : '../../images';
 
 /* General settings
@@ -182,6 +182,7 @@ $images-path : '../../images';
         padding: 0;
     }
 
+
     .site-container,
     .before-header {
         padding-left: 10px;
@@ -306,7 +307,7 @@ $images-path : '../../images';
     .home .nav-up .title-area,
     .home .nav-up .site-title {
         width: 120px;
-        height: 60px;
+        height: $header-height-mobile;
         margin: 0;
         padding:0 0 0 5px;
     }
@@ -315,13 +316,21 @@ $images-path : '../../images';
     .site-title a,
     .home .nav-up .site-title a {
         width: 120px;
-        height: 60px;
+        height: $header-height-mobile;
         margin: 0;
         padding:0 0 0 5px;
         background: url('#{$images-path}/theme/logo-svg/logo-path.svg') no-repeat left;
         background-size: contain;
     }
 
+
+    .site-container {
+        margin-top:$header-height-mobile;
+    }
+
+    .site-inner {
+        margin-top:0;
+    }
 
     .site-header .widget-area,
     .header-widget-area,

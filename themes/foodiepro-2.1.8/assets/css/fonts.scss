@@ -38,9 +38,9 @@ $post-font-family : 'Cabin', sans-serif;
 
 $special-font-family: 'Special Elite', 'Vollkorn', sans-serif;
 
-$entry-font-family: 'Oswald', monospace;
+$entry-font-family: 'Oswald', Vollkorn, monospace;
 $entry-font-size : 1.8rem;
-$entry-font-weight : normal;
+$entry-font-weight : bold;
 
 
 /* FONTS
@@ -534,8 +534,9 @@ span.bp_counter,
     }
 
     .slider-headline div {
-        font-family: monospace!important;
-        font-weight: bold !important;
+        font-family: $entry-font-family!important;
+        font-weight: $entry-font-weight !important;
+        text-transform: capitalize !important;
     }
 
 

@@ -102,10 +102,10 @@ h2.user-nicename {
 
 /* Recipes & ingredients */
 .entry-header-overlay .tag-overlay {
-  font-family: "Oswald", monospace;
+  font-family: "Oswald", Vollkorn, monospace;
   text-transform: capitalize;
   font-size: 2rem;
-  font-weight: normal;
+  font-weight: bold;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -138,9 +138,9 @@ h3#reply-title a {
 .archive h2.entry-title a,
 .search h2.entry-title a,
 h3.rpwe-title a {
-  font-family: "Oswald", monospace;
+  font-family: "Oswald", Vollkorn, monospace;
   font-size: 1.8rem;
-  font-weight: normal;
+  font-weight: bold;
   text-decoration: none;
   text-transform: capitalize !important;
 }
@@ -449,8 +449,9 @@ span.bp_counter,
     line-height: 20px;
   }
   .slider-headline div {
-    font-family: monospace !important;
+    font-family: "Oswald", Vollkorn, monospace !important;
     font-weight: bold !important;
+    text-transform: capitalize !important;
   }
 }
 /*# sourceMappingURL=fonts.css.map */

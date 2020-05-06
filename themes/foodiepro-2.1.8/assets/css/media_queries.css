@@ -287,6 +287,9 @@ VARIABLES
     padding-bottom: 0;
     padding-top: 0;
   }
+  .widgettitle span {
+    display: initial;
+  }
   .home .elegant .widgettitle {
     padding: 20px 0 0px 0;
   }

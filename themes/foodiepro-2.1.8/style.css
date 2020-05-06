@@ -1121,6 +1121,10 @@ img.alignright,
   padding: 10px 0 20px 0;
 }
 
+.widgettitle span {
+  display: inline-block;
+}
+
 .content .widgettitle {
   padding: 20px 0 0px 0;
 }

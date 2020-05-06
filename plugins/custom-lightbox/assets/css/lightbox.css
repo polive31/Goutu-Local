@@ -1,6 +1,9 @@
+/* VARIABLES
+---------------------------------------------------------------------------------------------------- */
 /*
 VARIABLES
 ---------------------------------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------------------------- */
 html {
   /* killing 300ms touch delay in IE */
   -ms-touch-action: manipulation;
@@ -259,7 +262,7 @@ body
 
 .imagelightbox-arrow:before {
   display: inline-block;
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Pro", sans-serif;
   font-size: 3em;
   font-weight: 900;
   /*border: 1em solid transparent;*/

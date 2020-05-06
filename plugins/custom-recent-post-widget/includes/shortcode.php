@@ -20,6 +20,15 @@ function rpwe_shortcode( $atts, $content ) {
 		unset( $atts['cssid'] );
 	}
 	$args = shortcode_atts( rpwe_get_default_args(), $atts );
-	return rpwe_get_recent_posts( $args );
+	$html = '';
+	if (!empty($content)) {
+		// output widget markup with $content as title
+		$html = '<div class="widget rpwe_widget tilde"><div class="widget-wrap"><h3 class="widgettitle"><span>' . $content . '</span></h3>';
+	}
+	$html .= rpwe_get_recent_posts( $args );
+	if (!empty($content)) {
+		$html .= '</div></div>';
+	}
+	return $html;
 }
 add_shortcode( 'rpwe', 'rpwe_shortcode' );

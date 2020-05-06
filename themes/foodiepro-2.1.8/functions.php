@@ -753,6 +753,8 @@ function foodiepro_responsive_nav_layout() {
 
 
 
+
+
 /* Hook widget areas
 -----------------------------------------------------------------------------*/
 
@@ -857,6 +859,13 @@ function foodiepro_embed_thumbnail_shape()
 /* =================================================================*/
 /* =              WIDGETS / PLUGINS
 /* =================================================================*/
+
+
+// add_filter('widget_title', 'foodiepro_widget_title_tag', 10, 2);
+// function foodiepro_widget_title_tag($title, $id) {
+// 	$title=empty($title)?'':'<span>'.$title.'</span>';
+// 	return $title;
+// }
 
 // Force textdomain for wordfence
 // add_filter('load_textdomain_mofile', 'foodiepro_override_mofile_path', 10, 2);

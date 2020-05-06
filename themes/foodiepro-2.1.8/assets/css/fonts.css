@@ -4,6 +4,7 @@ VARIABLES
 /*
 VARIABLES
 ---------------------------------------------------------------------------------------------------- */
+/* On mobile */
 /* FONTS
 --------------------------------------------- */
 /*@font-face {
@@ -458,7 +459,7 @@ span.bp_counter,
   .slider-headline div {
     font-family: "Special Elite", "Vollkorn", serif !important;
     font-size: 2rem !important;
-    font-weight: normal !important;
+    font-weight: bold !important;
     text-transform: capitalize !important;
     font-style: italic !important;
   }

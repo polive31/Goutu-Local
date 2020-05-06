@@ -139,18 +139,11 @@ h3#reply-title a {
 .archive h2.entry-title a,
 .search h2.entry-title a,
 h3.rpwe-title a {
-  font-family: "Oswald", "Vollkorn", monospace;
+  font-family: "Oswald", "Cabin", monospace;
   font-size: 1.9rem;
   font-weight: normal;
   text-decoration: none;
   text-transform: capitalize !important;
-}
-
-.home .content h3.rpwe-title a,
-.home .bottom h3.rpwe-title a {
-  font-family: "Cabin", sans-serif;
-  font-weight: bold;
-  font-size: 1.8rem;
 }
 
 .search-top .widgettitle,
@@ -431,6 +424,15 @@ span.bp_counter,
     text-align: center;
     font-size: 3rem;
     line-height: 3.5rem;
+  }
+  .archive h2.entry-title a,
+  .search h2.entry-title a,
+  h3.rpwe-title a {
+    font-family: "Oswald", "Cabin", monospace;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: capitalize !important;
   }
   a img {
     margin-bottom: 10px;

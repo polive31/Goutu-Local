@@ -32,9 +32,11 @@ $h6-font-weight : normal;
 
 $post-font-family : 'Cabin', sans-serif;
 
-$entry-font-family: 'Oswald', 'Vollkorn', monospace;
+$entry-font-family: 'Oswald', 'Cabin', monospace;
 $entry-font-size : 1.9rem;
 $entry-font-weight : normal;
+$entry-font-size-mobile : 1.8rem;
+$entry-font-weight-mobile : bold;
 
 $overlay-font-family: 'Special Elite', monospace;
 $overlay-font-size: 2rem;
@@ -202,12 +204,6 @@ h3 {
         text-transform: capitalize !important;
     }
 
-    .home .content h3.rpwe-title a,
-    .home .bottom h3.rpwe-title a {
-        font-family: $post-font-family;
-        font-weight: bold;
-        font-size: $entry-font-size - 0.1rem;
-    }
 
     .search-top .widgettitle,
     .search .archives-top .textwidget h3 {
@@ -511,6 +507,16 @@ span.bp_counter,
         text-align: center;
         font-size: $h1-font-size - 2rem;
         line-height: $h1-font-size - 1.5rem;
+    }
+
+    .archive h2.entry-title a,
+    .search h2.entry-title a,
+    h3.rpwe-title a {
+        font-family: $entry-font-family;
+        font-size: $entry-font-size-mobile;
+        font-weight: $entry-font-weight-mobile;
+        text-decoration: none;
+        text-transform: capitalize !important;
     }
 
     a img {

@@ -102,10 +102,10 @@ h2.user-nicename {
 
 /* Recipes & ingredients */
 .entry-header-overlay .tag-overlay {
-  font-family: "Oswald", Vollkorn, monospace;
+  font-family: "Special Elite", monospace;
   text-transform: capitalize;
   font-size: 2rem;
-  font-weight: bold;
+  font-weight: normal;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -138,11 +138,18 @@ h3#reply-title a {
 .archive h2.entry-title a,
 .search h2.entry-title a,
 h3.rpwe-title a {
-  font-family: "Oswald", Vollkorn, monospace;
-  font-size: 1.8rem;
-  font-weight: bold;
+  font-family: "Oswald", "Vollkorn", monospace;
+  font-size: 1.9rem;
+  font-weight: normal;
   text-decoration: none;
   text-transform: capitalize !important;
+}
+
+.home .content h3.rpwe-title a,
+.home .bottom h3.rpwe-title a {
+  font-family: "Cabin", sans-serif;
+  font-weight: bold;
+  font-size: 1.8rem;
 }
 
 .search-top .widgettitle,
@@ -449,9 +456,11 @@ span.bp_counter,
     line-height: 20px;
   }
   .slider-headline div {
-    font-family: "Oswald", Vollkorn, monospace !important;
-    font-weight: bold !important;
+    font-family: "Special Elite", "Vollkorn", serif !important;
+    font-size: 2rem !important;
+    font-weight: normal !important;
     text-transform: capitalize !important;
+    font-style: italic !important;
   }
 }
 /*# sourceMappingURL=fonts.css.map */

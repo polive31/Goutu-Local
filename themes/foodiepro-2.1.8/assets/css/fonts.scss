@@ -32,16 +32,18 @@ $h6-font-weight : normal;
 
 $post-font-family : 'Cabin', sans-serif;
 
-// $entry-font-family: Courier;
-// $entry-font-family-size : 1.8rem;
-// $entry-font-family-weight : normal;
+$entry-font-family: 'Oswald', 'Vollkorn', monospace;
+$entry-font-size : 1.9rem;
+$entry-font-weight : normal;
 
-$special-font-family: 'Special Elite', 'Vollkorn', sans-serif;
+$overlay-font-family: 'Special Elite', monospace;
+$overlay-font-size: 2rem;
+$overlay-font-weight: normal;
 
-$entry-font-family: 'Oswald', Vollkorn, monospace;
-$entry-font-size : 1.8rem;
-$entry-font-weight : bold;
-
+$slider-font-family: 'Special Elite', 'Vollkorn', serif;
+$slider-font-size: 2rem;
+$slider-font-weight: normal;
+$slider-font-style: italic;
 
 /* FONTS
 --------------------------------------------- */
@@ -153,11 +155,11 @@ h2.user-nicename {
 // }
 
 .entry-header-overlay .tag-overlay {
-    font-family: $entry-font-family;
+    font-family: $overlay-font-family;
     text-transform: capitalize;
     font-size: $h4-font-size;
     // line-height: 3rem;
-    font-weight: $entry-font-weight;
+    font-weight: $overlay-font-weight;
     user-select:none;
 }
 
@@ -197,6 +199,13 @@ h3 {
         font-weight: $entry-font-weight;
         text-decoration: none;
         text-transform: capitalize !important;
+    }
+
+    .home .content h3.rpwe-title a,
+    .home .bottom h3.rpwe-title a {
+        font-family: $post-font-family;
+        font-weight: bold;
+        font-size: $entry-font-size - 0.1rem;
     }
 
     .search-top .widgettitle,
@@ -534,9 +543,11 @@ span.bp_counter,
     }
 
     .slider-headline div {
-        font-family: $entry-font-family!important;
-        font-weight: $entry-font-weight !important;
+        font-family: $slider-font-family!important;
+        font-size: $slider-font-size!important;
+        font-weight: $slider-font-weight !important;
         text-transform: capitalize !important;
+        font-style:$slider-font-style!important;
     }
 
 

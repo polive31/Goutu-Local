@@ -268,16 +268,7 @@ span.bp_counter,
 #username a {
   font-family: "Oswald", "Cabin", monospace;
   font-size: 1.9rem;
-  font-weight: bold;
-  text-transform: capitalize;
-  font-style: normal;
-  vertical-align: middle;
-  padding: 0 5px;
-}
-
-#username a {
-  font-family: "Oswald", "Cabin", monospace;
-  font-size: 1.9rem;
+  line-height: 1.9rem;
   font-weight: normal;
   text-transform: capitalize;
   font-style: normal;

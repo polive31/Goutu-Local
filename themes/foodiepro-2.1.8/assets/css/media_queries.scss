@@ -189,14 +189,6 @@ $images-path : '../../images';
         padding-right: 10px;
     }
 
-    /* .archive-description,
-    .author-box,
-    .entry-comments,
-    .entry-footer .entry-meta,
-    .site-header,
-    .comment-reply {
-        padding: 0;
-    } */
 
     .genesis-nav-menu li,
     .site-header ul.genesis-nav-menu,
@@ -387,6 +379,20 @@ $images-path : '../../images';
         width: calc(50% - 20px);
     }
 
+    /* Archive */
+
+    .archives-top {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        border:none;
+        position: sticky;
+        top: 60px;
+        background-color: white;
+        z-index: 2000;
+        box-shadow: 0px 6px 4px -4px grey;
+    }
+
     .sidebar .widget {
         width: 100%;
     }
@@ -411,7 +417,6 @@ $images-path : '../../images';
     .recipes-top .widget,
     .blogs-top .widget,
     .archives-top .widget {
-        /*float:left;*/
         margin: 0 0 10px 0;
         width: 49%;
     }
@@ -431,10 +436,6 @@ $images-path : '../../images';
         font-family: Cabin, monospace;
         font-size: 1.6rem;
     }
-
-    // .alignright {
-    //     float:none;
-    // }
 
     .toolbar-button#favorite,
     .toolbar-button.alignright {

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2020-05-03 14:58+0200\n"
-"PO-Revision-Date: 2020-05-03 17:30+0200\n"
+"PO-Revision-Date: 2020-05-07 20:56+0200\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -286,7 +286,7 @@ msgstr "Trier"
 
 #: plugins/custom-archive-management/widgets/dropdown-posts-sort-widget.php:50
 msgid "Select sort order..."
-msgstr "Trier les recettes par..."
+msgstr "Trier par..."
 
 #: plugins/custom-archive-management/widgets/dropdown-posts-sort-widget.php:53
 msgid "Comment count"
@@ -4058,10 +4058,8 @@ msgid "Random"
 msgstr ""
 
 #: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:392
-#, fuzzy
-#| msgid "Sort order"
 msgid "Sort Order"
-msgstr "Trier les recettes par..."
+msgstr "Trie par..."
 
 #: themes/foodiepro-2.1.8/includes/widgets/foodie-featured-posts.php:394
 #, fuzzy

@@ -2028,10 +2028,8 @@ span.entry-avatar {
 /* Top section commons */
 .top,
 .bottom {
-  float: left;
   padding: 10px;
   margin-top: 0;
-  /* P.O. Original none */
   width: 100%;
   margin-bottom: 40px;
 }

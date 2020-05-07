@@ -286,6 +286,7 @@ input#url {
     font-size: 2rem;
 }
 
+
 #signup_submit {
     font-size: 1.3rem;
 }
@@ -340,13 +341,22 @@ span.bp_counter,
 
 
 /* Post Meta  */
-
 #username a {
-    font-family: $h1-font-family;
-    // font-size: 19px;
+    font-family: $entry-font-family;
+    font-size: 1.9rem;
     font-weight: bold;
     text-transform: capitalize;
-    font-style: italic;
+    font-style: normal;
+    vertical-align: middle;
+    padding: 0 5px;
+}
+
+#username a {
+    font-family: $entry-font-family;
+    font-size: 1.9rem;
+    font-weight: normal;
+    text-transform: capitalize;
+    font-style: normal;
     vertical-align: middle;
     padding: 0 5px;
 }

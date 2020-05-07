@@ -231,7 +231,7 @@ class CNH_Archive_Headline {
 		}
 
 		if ($display_img!==false)
-			$title = '<span class="archive-image">' . $term_image . '</span>' . $title;
+			$title = '<span class="archive-image">' . $term_image . '</span><span class="archive-text">' . $title . "</span>";
 
 		return $title;
 	}

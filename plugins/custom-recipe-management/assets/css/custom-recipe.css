@@ -148,6 +148,12 @@ i.overlayed-icon:after {
   margin-left: 10px;
 }
 
+span.rating-caption {
+    display: inline-block;
+    font-style: italic;
+    font-family: monospace;
+}
+
 /* Recipe tags
 -------------------------------------------------*/
 .info-container {
@@ -182,6 +188,10 @@ i.overlayed-icon:after {
   margin-bottom: 12px;
   clear: both;
   float: left;
+}
+
+.label-container.rating {
+    margin-bottom: 30px;
 }
 
 .recipe-instruction-container {

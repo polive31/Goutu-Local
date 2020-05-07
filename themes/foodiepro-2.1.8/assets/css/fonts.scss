@@ -134,10 +134,6 @@ h1.archive-title {
     text-transform: initial;
 }
 
-.page h1.entry-title,
-h1.archive-title {
-    text-align: center;
-}
 
 /* H2
 --------------------------------------------------------------------------*/
@@ -496,6 +492,7 @@ span.bp_counter,
         font-size: $h1-font-size - 1.5rem;
         line-height: $h1-font-size - 1rem;
     }
+
 
     .single h1.entry-title {
         text-align: center;

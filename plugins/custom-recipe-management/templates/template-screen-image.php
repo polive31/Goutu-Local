@@ -28,7 +28,7 @@
 
 		<div class="info-container">
 
-			<div class="label-container">
+			<div class="label-container rating">
 				<?php //$tooltip_id = is_user_logged_in() ? 'recipe_rating_form' : 'join_us';
 				?>
 				<?= (class_exists('CSR_Rating')) ? CSR_Rating::render('post') : ''; ?>

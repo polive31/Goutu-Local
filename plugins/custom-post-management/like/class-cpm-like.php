@@ -112,7 +112,7 @@ class CPM_Like
         $count =self::like_count($post_id);
 
         if ($icon) {
-            $html = '<a title="' . sprintf(_n('%s like', '%s likes', $count, 'foodiepro'), $count) . '"><span class="like-count ' . $class . ' ' . ($count == 0 ? 'nolike' : '') . '"><i class="far fa-thumbs-up"></i>' . $count . '</span></a>';
+            $html = '<div class="likes"><a title="' . sprintf(_n('%s like', '%s likes', $count, 'foodiepro'), $count) . '"><span class="like-count ' . $class . ' ' . ($count == 0 ? 'nolike' : '') . '"><i class="far fa-thumbs-up"></i>' . $count . '</span></a></div>';
         } else {
             $html = sprintf(_n('%s like', '%s likes', $count, 'foodiepro'), $count);
             $html = '<' . $tag . ' class="like-count ' . $class . '">' . $html . '</' . $tag . '>';

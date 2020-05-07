@@ -43,3 +43,16 @@ label.rating-cat {
     height: 24px;
     background: url('../../images/rating-star.png') -24px 0/48px 24px no-repeat;
 }
+
+
+/* MEDIA QUERIES
+---------------------------------------------------*/
+
+@media only screen and (max-width:570px) {
+
+    .rating-stars {
+        float:left;
+        margin:5px 0;
+    }
+
+}

@@ -1289,9 +1289,13 @@ img.alignright,
     font-size: 150%;
 } */
 
-.archive-title .archive-image {
+span.archive-image,
+span.archive-text {
     display: inline-block;
     vertical-align: middle;
+}
+
+.archive-title .archive-image {
     margin-right: 10px;
 }
 
@@ -1932,6 +1936,10 @@ span.ui-icon.ui-icon-triangle-1-s:before {
     cursor: pointer;
 }
 
+.ratings-table,
+.likes {
+    display: inline-block;
+}
 
 .like-count {
     font-family: Oswald, sans-serif;

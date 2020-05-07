@@ -1230,6 +1230,12 @@ a.archive-avatar img {
   border-bottom: 1px dotted #8a8a8a;
 }
 
+ul.related-terms li {
+  display: inline-block;
+  width: 100px;
+  vertical-align: top;
+}
+
 /* ## Screen reader text
 --------------------------------------------- */
 .screen-reader-text,

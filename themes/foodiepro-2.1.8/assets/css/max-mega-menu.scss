@@ -1,8 +1,15 @@
 @import "../../../../_foodiepro.scss";
 $images-path : '../../images';
 
-/* -----------------------------------------------------*/
+/* CUSTOM STYLES
+-----------------------------------------------------*/
 
+.post-count-indicator {
+  color:red;
+}
+
+
+/* -----------------------------------------------------*/
 #mega-menu-secondary,
 #mega-menu-secondary ul.mega-sub-menu,
 #mega-menu-secondary li.mega-menu-item,

@@ -232,10 +232,10 @@ h6 {
 
 .button,
 a.button,
-a.black-button,
 .widget.back ul li a,
 .comment-respond {
-    font-family: Oswald;
+    text-align: center;
+    font-family: $entry-font-family;
     padding: 7px 10px;
 }
 

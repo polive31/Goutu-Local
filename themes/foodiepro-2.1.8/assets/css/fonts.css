@@ -168,10 +168,10 @@ h6 {
 /* BUTTONS */
 .button,
 a.button,
-a.black-button,
 .widget.back ul li a,
 .comment-respond {
-  font-family: Oswald;
+  text-align: center;
+  font-family: "Oswald", "Cabin", monospace;
   padding: 7px 10px;
 }
 

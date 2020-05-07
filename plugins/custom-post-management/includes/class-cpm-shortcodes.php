@@ -21,7 +21,7 @@ class CPM_Shortcodes {
         $out = '<div>';
         $out .= foodiepro_get_permalink(array(
             'slug' => CPM_Assets::get_slug($post_type, $post_type . '_form'),
-            'class' => "black-button",
+            'class' => "button",
             'text' => $text,
         ));
         $out .= '</div>';

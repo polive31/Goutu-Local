@@ -166,6 +166,8 @@ table.post-form {
 .post-general-container {
   margin-top: 50px;
   margin-bottom: 0px;
+  display: inline-block;
+  width: 100%;
 }
 
 td.post-general-form-label {
@@ -343,12 +345,11 @@ input.post_thumbnail_image:hover {
   background-color: #b2b2b2;
 }
 
-#custom_post_submission_form a.black-button {
+#custom_post_submission_form a.button {
   font-family: sans-serif;
   font-size: 13.3px;
-  /* display: inline-block; */
-  /* vertical-align: middle; */
   line-height: normal;
+  color:#FFF;
 }
 
 
@@ -669,6 +670,11 @@ ul[aria-multiselectable=true] .select2-results__option[aria-selected=true] {
 @media only screen and (max-width:420px) {
 
   #custom_post_submission_form input {
+    width: 100%;
+  }
+
+  #custom_post_submission_form .button {
+    margin: 10px auto;
     width: 100%;
   }
 

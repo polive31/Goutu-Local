@@ -25,6 +25,11 @@ label.add-image-button {
   font-family: sans-serif;
   font-size: 13px;
   color: #616161;
+  text-align: left;
+}
+
+.button.add-item-box i {
+  padding-right: 10px;
 }
 
 .button {
@@ -243,6 +248,7 @@ td.instruction-thumbnail {
   }
   span.time-input {
     float: left;
+    width: 33%;
   }
   .instruction-text {
     width: 100%;

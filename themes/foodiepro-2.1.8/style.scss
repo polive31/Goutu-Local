@@ -190,7 +190,7 @@ a:active,
 a:hover {
     outline: 0;
     /*text-decoration:underline;*/
-    color: #d7641d!important;
+    color: #d7641d;
     /* font-weight: bold!important; */
 }
 
@@ -1402,6 +1402,49 @@ ul.related-terms li {
 }
 
 
+
+/* Form Submission Messages
+--------------------------------------------------------------*/
+.submitbox {
+    background-color: #f5f5f5;
+    padding: 10px;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+}
+
+
+.successbox,
+#message.updated {
+    clear: both;
+    display: block;
+    padding: 10px;
+    margin: 0 0 30px 0;
+}
+
+.successbox,
+#message.updated p {
+    background-color: #efc;
+    color: #250;
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+
+.errorbox,
+.wpurp-errors,
+#message.error p {
+    background-color: #fdc;
+    clear: left;
+    color: #800;
+    padding: 10px;
+    margin: 0 0 30px 0;
+    font-family: Oswald, sans-serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+}
+
+.wpurp-errors li {
+    font-weight: 400;
+}
 
 #message.updated {
     clear: both;
@@ -3269,6 +3312,18 @@ strong.mathquestion {
     vertical-align: middle;
     text-align: center;
     padding: 0;
+}
+
+.login-widget-user-links {
+    padding: 30px 0;
+}
+
+.login-widget-user-avatar {
+    padding-right: 10px;
+}
+
+a.logout {
+    text-decoration: underline;
 }
 
 .footer-widgets .widget_custom_login_widget div#logged-in {

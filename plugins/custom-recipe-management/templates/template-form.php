@@ -3,7 +3,7 @@
     <h4 id="headline-general"><?php _e('General', 'crm'); ?></h4>
     <table class="recipe-form" id="recipe-general-form">
         <tr class="recipe-general-form-description">
-            <td class="recipe-general-form-label"><label for="recipe_description"><?php _e('Description', 'crm'); ?><?php if (in_array('recipe_content', $required_fields)) echo '<span class="required-field">*</span>'; ?></label></td>
+            <td class="recipe-general-form-label"><label for="recipe_description"><?php _e('Description', 'crm'); ?><?php if (in_array('post_content', $required_fields)) echo '<span class="required-field">*</span>'; ?></label></td>
             <td class="recipe-general-form-field">
                 <textarea class="recipe-description" name="post_content" id="post_content" rows="4" placeholder="<?php echo __('Provide general information about this recipe', 'crm'); ?>"><?= $recipe->legacy()?($recipe->description()):($recipe->post_content()); ?></textarea>
             </td>

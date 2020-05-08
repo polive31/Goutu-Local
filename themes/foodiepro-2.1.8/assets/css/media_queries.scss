@@ -357,6 +357,10 @@ $images-path : '../../images';
         width: 100%;
     }
 
+    span.entry-avatar {
+        width: 40px;
+    }
+
     .content {
         min-height: initial;
     }

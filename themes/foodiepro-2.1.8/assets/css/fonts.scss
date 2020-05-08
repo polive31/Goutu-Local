@@ -48,6 +48,7 @@ $slider-font-size: 2rem;
 $slider-font-weight: bold;
 $slider-font-style: italic;
 
+
 /* FONTS
 --------------------------------------------- */
 
@@ -515,6 +516,12 @@ span.bp_counter,
         font-weight: $entry-font-weight-mobile;
         text-decoration: none;
         text-transform: capitalize !important;
+    }
+
+    /* Post Meta  */
+    #username a {
+        font-family: monospace;
+        font-weight: bold;
     }
 
     a img {

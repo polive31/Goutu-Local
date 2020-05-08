@@ -431,6 +431,11 @@ span.bp_counter,
     text-decoration: none;
     text-transform: capitalize !important;
   }
+  /* Post Meta  */
+  #username a {
+    font-family: monospace;
+    font-weight: bold;
+  }
   a img {
     margin-bottom: 10px;
   }

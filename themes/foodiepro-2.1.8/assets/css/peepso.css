@@ -1258,7 +1258,7 @@ span.ps-tooltip.ps-tooltip--online.ps-user__status.ps-icon-circle {
           justify-content: center;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 768px) {
   /* PROFILE
     -------------------------------------------*/
   h1.blog-title {
@@ -1284,10 +1284,8 @@ span.ps-tooltip.ps-tooltip--online.ps-user__status.ps-icon-circle {
   .ps-focus__menu .ps-focus__menu-item,
   .ps-focus__menu .ps-focus__menu-item.current,
   .ps-focus__menu .ps-focus__menu-item:hover {
+    font-family: monospace;
     font-size: 20px;
-  }
-  .ps-focus__menu .ps-focus__menu-item:hover {
-    /* background:blue; */
   }
   .ps-focus__menu,
   .ps-focus__menu-inner {

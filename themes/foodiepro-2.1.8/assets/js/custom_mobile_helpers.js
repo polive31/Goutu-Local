@@ -48,7 +48,7 @@ jQuery(window).on("beforeunload", function () {
 });
 
 jQuery(window).load(function () {
-    jQuery(".preloader").fadeOut("slow");
+    jQuery(".preloader").fadeOut(100);
 });
 
 

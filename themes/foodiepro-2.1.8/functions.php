@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 define('CHILD_THEME_NAME', 'Foodie Pro Theme');
 define('CHILD_THEME_DEVELOPER', 'Shay Bocks/Pascal Olive');
 define('CHILD_THEME_OPTIONS', get_option('foodiepro'));
-define('CHILD_THEME_VERSION', ((bool) CHILD_THEME_OPTIONS['reload']) ? time() : '2.4.29');
+define('CHILD_THEME_VERSION', ((bool) CHILD_THEME_OPTIONS['reload']) ? time() : '2.4.30');
 define('CHILD_THEME_URL', get_stylesheet_directory_uri());
 define('CHILD_THEME_PATH', get_stylesheet_directory());
 define('DEFAULT_CHILD_COLOR_THEME', 'spring');
@@ -568,7 +568,10 @@ function foodiepro_add_preloader()
 {
 	if (wp_is_mobile()) {
 		$url = CHILD_THEME_URL . '/images/preloader.svg';
-		echo '<div class="preloader" style="position:fixed;left:0;top:0;width:100%;height:100%;z-index:9999;background:url(' . $url . ') 50% 50% no-repeat rgba(233, 233, 233, 0.3);"></div>';
+		// Spinner + overlay
+		// echo '<div class="preloader" style="position:fixed;left:0;top:0;width:100%;height:100%;z-index:9999;background:url(' . $url . ') 50% 50% no-repeat rgba(233, 233, 233, 0.3);"></div>';
+		// Without overlay, only spinner
+		echo '<div class="preloader" style="position:fixed;left:0;top:0;width:100%;height:100%;z-index:9999;background:url(' . $url . ') 50% 50% no-repeat;"></div>';
 	}
 }
 
@@ -639,6 +642,15 @@ function add_terms_clauses($clauses, $taxonomy, $args)
 /* =              SEO
 /* =================================================================*/
 
+/* Useful for WP2SocialPublish => publishes the yoast meta instead of the WP standard  post excerpt */
+add_filter('get_the_excerpt', 'replace_post_excerpt_filter');
+function replace_post_excerpt_filter($output)
+{
+	$output = get_post_meta(get_the_ID(), '_yoast_wpseo_metadesc', true);
+	return $output;
+}
+
+
 /* Exclude Multiple Taxonomies From Yoast SEO Sitemap */
 add_filter('wpseo_sitemap_exclude_taxonomy', 'sitemap_exclude_taxonomy', 10, 2);
 function sitemap_exclude_taxonomy($value, $taxonomy)
@@ -666,10 +678,8 @@ function foodiepro_populate_metadesc($text)
 	return $text;
 }
 
-
 // Add pinterest meta
 // add_action ('genesis_meta','add_pinterest_meta'); /* Already done in YOAST SEO */
-
 function add_pinterest_meta()
 {
 	echo '<meta name="p:domain_verify" content="c4a191084b3f5ef29b9df4a1a9f05aab"/>';

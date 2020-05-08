@@ -23,6 +23,10 @@ class Custom_Admin_Helpers {
         add_filter( 'manage_edit-cuisine_columns',              array($Columns, 'add_archive_headline_column'));
         add_action( 'manage_cuisine_custom_column',             array($Columns, 'populate_archive_headline_column'), 10, 3);
 
+        $Metabox = new CAH_Post_Metabox();
+        add_filter('add_meta_boxes_recipe',                     array($Metabox, 'post_excerpt_meta_box'));
+        add_filter('add_meta_boxes_post',                       array($Metabox, 'post_excerpt_meta_box'));
+
         $Assets = new CAH_Assets();
         // add_filter( 'page_attributes_dropdown_pages_args',      array($Assets, 'my_slug_show_all_parents' ));
         // add_filter( 'quick_edit_dropdown_pages_args',           array($Assets, 'my_slug_show_all_parents' ));

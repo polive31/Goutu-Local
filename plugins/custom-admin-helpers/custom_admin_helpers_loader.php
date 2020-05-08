@@ -21,6 +21,7 @@ require_once 'admin/class-cah-assets.php';
 require_once 'admin/class-cah-foodiepro-settings.php';
 require_once 'admin/class-cah-tax-columns.php';
 require_once 'admin/class-cah-post-filter.php';
+require_once 'admin/class-cah-post-metabox.php';
 
 require_once 'public/class-cah-adminbar.php';
 

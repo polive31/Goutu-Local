@@ -21,4 +21,5 @@ class CAH_Tax_Columns
         }
     }
 
+
 }

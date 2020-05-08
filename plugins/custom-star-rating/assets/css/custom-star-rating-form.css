@@ -1,42 +1,42 @@
-.ratings-table {
+.rating-form .ratings-table {
     padding: 5px 0;
     margin-top:10px;
 }
 
-.form-submit {
+.rating-form .form-submit {
     display: block;
     float: left;
     clear: left;
 }
 
-label.rating-cat {
+.rating-form label.rating-cat {
     margin-right: 10px;
     display: inline-block;
     vertical-align: middle;
 }
 
-.rating-stars {
+.rating-form .rating-stars {
     display:inline-block;
     vertical-align: middle;
 }
 
-.rating-input {
+.rating-form .rating-input {
     display: none;
 }
 
-.rating-star:hover,
-.rating-star:hover~.rating-star {
+.rating-form .rating-star:hover,
+.rating-form .rating-star:hover~.rating-star {
     background-position: 0 0;
 }
 
-.rating-label:hover .rating-star:hover,
-.rating-label:hover .rating-star:hover~.rating-star,
-.rating-input:checked~.rating-star {
+.rating-form .rating-label:hover .rating-star:hover,
+.rating-form .rating-label:hover .rating-star:hover~.rating-star,
+.rating-form .rating-input:checked~.rating-star {
     background-position: 0 0;
 }
 
-.rating-star,
-.rating-label:hover .rating-star {
+.rating-form .rating-star,
+.rating-form .rating-label:hover .rating-star {
     float: right;
     display: block;
     width: 24px;
@@ -50,7 +50,7 @@ label.rating-cat {
 
 @media only screen and (max-width:570px) {
 
-    .rating-stars {
+    .rating-form .rating-stars {
         float:left;
         margin:5px 0;
     }

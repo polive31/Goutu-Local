@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 define('CHILD_THEME_NAME', 'Foodie Pro Theme');
 define('CHILD_THEME_DEVELOPER', 'Shay Bocks/Pascal Olive');
 define('CHILD_THEME_OPTIONS', get_option('foodiepro'));
-define('CHILD_THEME_VERSION', ((bool) CHILD_THEME_OPTIONS['reload']) ? time() : '2.4.31');
+define('CHILD_THEME_VERSION', ((bool) CHILD_THEME_OPTIONS['reload']) ? time() : '2.4.32');
 define('CHILD_THEME_URL', get_stylesheet_directory_uri());
 define('CHILD_THEME_PATH', get_stylesheet_directory());
 define('DEFAULT_CHILD_COLOR_THEME', 'spring');
@@ -241,8 +241,8 @@ function foodie_pro_includes()
 	require_once $includes_dir . 'widgets.php';
 
 	// P.O. Load the custom helpers
-	require_once trailingslashit(CHILD_THEME_PATH) . 'custom-helpers.php';
-	require_once trailingslashit(CHILD_THEME_PATH) . 'custom-shortcodes.php';
+	require_once trailingslashit(CHILD_THEME_PATH) . '/includes/custom-helpers.php';
+	require_once trailingslashit(CHILD_THEME_PATH) . '/includes/custom-shortcodes.php';
 	require_once trailingslashit(CHILD_THEME_PATH) . '/login/custom-login.php';
 
 	// End here if we're not in the admin panel.
@@ -750,21 +750,23 @@ add_action( 'wp', 'foodiepro_responsive_nav_layout');
  * @return void
  */
 function foodiepro_responsive_nav_layout() {
+
+
+	// Reposition the navigation menus within header, and do not display on mobile
 	remove_action('genesis_after_header', 'genesis_do_subnav');
 	remove_action('genesis_after_header', 'genesis_do_nav');
-	remove_action('genesis_after_endwhile', 'genesis_posts_nav');
-	remove_action('genesis_before_footer', 'genesis_footer_widget_areas');
-
 	if ( !wp_is_mobile() ) {
-		//* Reposition the primary navigation menu within header
 		add_action('before_header_close', 'genesis_do_subnav');
-		//* Reposition the primary navigation menu within header
-		add_action( 'genesis_header', 'genesis_do_nav');
-		// Move pagination on all archive pages
-		add_action('genesis_after_content', 'genesis_posts_nav');
-		// Move footer widget area (avoid "out of content" issue on buddypress pages)
-		add_action('genesis_after_content_sidebar_wrap', 'genesis_footer_widget_areas', 999);
+		add_action('genesis_header', 'genesis_do_nav');
 	}
+
+	// Move pagination on all archive pages
+	remove_action('genesis_after_endwhile', 'genesis_posts_nav');
+	add_action('genesis_after_content', 'genesis_posts_nav');
+
+	// Move footer widget area (avoid "out of content" issue on buddypress pages)
+	// remove_action('genesis_before_footer', 'genesis_footer_widget_areas');
+	// add_action('genesis_after_content_sidebar_wrap', 'genesis_footer_widget_areas', 999);
 
 	// Remove the post meta display from footer
 	remove_action('genesis_entry_footer', 'genesis_entry_footer_markup_open', 5);

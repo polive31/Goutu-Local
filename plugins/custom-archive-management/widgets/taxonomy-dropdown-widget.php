@@ -26,6 +26,7 @@ class Taxonomy_Dropdown_Widget extends WP_Widget
 			'course' 	=> __('Filter by course', 'foodiepro'),
 			'ingredient'=> __('Filter by ingredient', 'foodiepro'),
 			'cuisine' 	=> __('Filter by country', 'foodiepro'),
+			'region' 	=> __('Filter by region', 'foodiepro'),
 			'diet' 		=> __('Filter by diet', 'foodiepro'),
 			'season' 	=> __('Filter by season', 'foodiepro'),
 			'occasion' 	=> __('Filter by occasion', 'foodiepro'),

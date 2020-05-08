@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2020-05-03 14:58+0200\n"
-"PO-Revision-Date: 2020-05-08 13:30+0200\n"
+"PO-Revision-Date: 2020-05-08 23:13+0200\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -3150,27 +3150,27 @@ msgstr "Avez vous aimé ce plat ? "
 #: plugins/custom-star-rating/includes/class-csr-assets.php:59
 #: plugins/custom-star-rating/includes/class-csr-assets.php:70
 msgid "Disappointing"
-msgstr "Pas Goûtu"
+msgstr "Décevant"
 
 #: plugins/custom-star-rating/includes/class-csr-assets.php:60
 #: plugins/custom-star-rating/includes/class-csr-assets.php:71
 msgid "Average"
-msgstr "Assez Goûtu"
+msgstr "Se laisse manger"
 
 #: plugins/custom-star-rating/includes/class-csr-assets.php:61
 #: plugins/custom-star-rating/includes/class-csr-assets.php:72
 msgid "Good"
-msgstr "Plutôt Goûtu"
+msgstr "Pas mal"
 
 #: plugins/custom-star-rating/includes/class-csr-assets.php:62
 #: plugins/custom-star-rating/includes/class-csr-assets.php:73
 msgid "Very good"
-msgstr "Carrément Goûtu"
+msgstr "Très bon"
 
 #: plugins/custom-star-rating/includes/class-csr-assets.php:63
 #: plugins/custom-star-rating/includes/class-csr-assets.php:74
 msgid "Delicious"
-msgstr "Absolument Goûtu"
+msgstr "Mémorable"
 
 #: plugins/custom-star-rating/includes/class-csr-assets.php:67
 msgid "Overall"

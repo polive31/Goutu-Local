@@ -1,11 +1,13 @@
 <?php
-$PeepSoProfile=PeepSoProfile::get_instance();
+$PeepSoProfile = PeepSoProfile::get_instance();
 ?>
 <div class="peepso ps-page-profile">
     <section id="mainbody" class="ps-wrapper ps-clearfix">
         <section id="component" role="article" class="ps-clearfix">
 
             <div id="cProfileWrapper" class="ps-clearfix">
+
+                <div class="ps-body">
 
                     <div class="ps-main ps-main-full'; ?>">
                         <!-- js_profile_feed_top -->
@@ -30,14 +32,19 @@ $PeepSoProfile=PeepSoProfile::get_instance();
                             </div>
                         </div><!-- end activity-stream-front -->
 
-                        <?php PeepSoTemplate::exec_template('activity','dialogs'); ?>
+                        <?php PeepSoTemplate::exec_template('activity', 'dialogs'); ?>
                         <div id="apps-sortable" class="connectedSortable"></div>
                     </div><!-- cMain -->
                 </div><!-- end row -->
-            </div><!-- end cProfileWrapper --><!-- js_bottom -->
+            </div><!-- end cProfileWrapper -->
+            <!-- js_bottom -->
             <div id="ps-dialogs" style="display:none">
-                <?php do_action('peepso_profile_dialogs'); // give add-ons a chance to output some HTML ?>
+                <?php do_action('peepso_profile_dialogs'); // give add-ons a chance to output some HTML
+                ?>
             </div>
-        </section><!--end component-->
-    </section><!--end mainbody-->
-</div><!--end row-->
+        </section>
+        <!--end component-->
+    </section>
+    <!--end mainbody-->
+</div>
+<!--end row-->

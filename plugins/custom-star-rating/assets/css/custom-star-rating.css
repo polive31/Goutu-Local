@@ -97,3 +97,17 @@ span.rating-caption {
 .recipe-container .ratings-table .null i.far.fa-star {
     color: #6f6f6f;
 }
+
+/* MEDIA QUERIES
+---------------------------------------------------*/
+
+@media only screen and (max-width:768px) {
+
+span.rating-caption {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+
+}

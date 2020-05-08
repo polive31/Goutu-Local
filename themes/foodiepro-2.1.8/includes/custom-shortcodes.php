@@ -75,15 +75,22 @@ add_shortcode('if', 'foodiepro_display_if');
 function foodiepro_display_if( $atts, $content ) {
 	$atts = shortcode_atts( array(
 		'user' => '', //logged-in, logged-out
+		'mobile' => '', //true, false
 	), $atts );
 
 	$display=true;
 	$user=$atts['user'];
+	$mobile=$atts['mobile'];
 
 	if ( $user=='logged-out' )
-	$display=$display && !is_user_logged_in();
+		$display=$display && !is_user_logged_in();
 	elseif ( $user=='logged-in' )
-	$display=$display && is_user_logged_in();
+		$display=$display && is_user_logged_in();
+
+	if ($mobile == 'true')
+		$display = $display && wp_is_mobile();
+	elseif ($user == 'false')
+		$display = $display && !wp_is_mobile();
 
 	return $display?do_shortcode($content):'';
 }

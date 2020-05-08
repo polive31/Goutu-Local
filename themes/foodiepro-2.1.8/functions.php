@@ -282,7 +282,7 @@ function enqueue_high_priority_assets()
 	/* Mobile/Computer theme scripts enqueue
 	--------------------------------------------------- */
 	if ( wp_is_mobile() ) {
-		foodiepro_enqueue_script('foodiepro-show-hints', '/assets/js/show_hints.js', CHILD_THEME_URL, CHILD_THEME_PATH, array('jquery', 'foodiepro-js-helpers'), CHILD_THEME_VERSION, true);
+		foodiepro_enqueue_script('foodiepro-js-mobile', '/assets/js/custom_mobile_helpers.js', CHILD_THEME_URL, CHILD_THEME_PATH, array('jquery', 'foodiepro-js-helpers'), CHILD_THEME_VERSION, true);
 	}
 	else {
 		foodiepro_enqueue_script('foodiepro-adjust-header-on-scroll', '/assets/js/adjust_header_on_scroll.js', CHILD_THEME_URL, CHILD_THEME_PATH, array('jquery', 'foodiepro-js-helpers'), CHILD_THEME_VERSION, true);
@@ -559,6 +559,18 @@ function themed_wp_die_handler($message, $title = '', $args = array())
 	die();
 }
 
+
+/* =================================================================*/
+/* =              PRELOADER
+/* =================================================================*/
+add_action('wp_head', 'foodiepro_add_preloader', 1);
+function foodiepro_add_preloader()
+{
+	if (wp_is_mobile()) {
+		$url = CHILD_THEME_URL . '/images/preloader.svg';
+		echo '<div class="preloader" style="position:fixed;left:0;top:0;width:100%;height:100%;z-index:9999;background:url(' . $url . ') 50% 50% no-repeat rgba(233, 233, 233, 0.3);"></div>';
+	}
+}
 
 /* =================================================================*/
 /* =              MAIL

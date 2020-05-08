@@ -49,9 +49,9 @@ class CASM_Assets {
 															'file' 		=> '/assets/css/responsive-menu.css',
 														)
 													),
-		'pwaforwp-style'					=> array( 'mobile'	=> true ),
+		// 'pwaforwp-style'					=> array( 'mobile'	=> true ),
 		'news-style'						=> array('page' => 'home'),
-		'newsletter'						=> array('page' => 'home'),
+		// 'newsletter'						=> array('page' => 'home'),
 		'yarppRelatedCss' 					=> array('singular' => 'post recipe'),
 		'custom-lightbox'					=> array('singular' => 'post recipe'),
 		'name-directory-style' 				=> array(	'shortcode' => 'namedirectory',
@@ -99,9 +99,9 @@ class CASM_Assets {
 														),
 													),
 
-		'pwa-main-script'						=> array('mobile' => true),
+		// 'pwa-main-script'						=> array('mobile' => true),
 		'newscript'								=> array('page' => 'home'),
-		'newsletter-subscription'				=> array('page' => 'home'),
+		// 'newsletter-subscription'				=> array('page' => 'home'),
 		'wp-embed'								=> array('page' => 'social home'),
 
 		// WP Rest API

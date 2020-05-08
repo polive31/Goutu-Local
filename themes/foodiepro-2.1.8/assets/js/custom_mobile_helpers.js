@@ -37,8 +37,19 @@ jQuery(document).ready(function()   {
         }
     }, 250);
 
+
+
+
 });
 
+jQuery(window).on("beforeunload", function () {
+    console.log( 'window unload detected ! Showing preloader ');
+    jQuery(".preloader").show();
+});
+
+jQuery(window).load(function () {
+    jQuery(".preloader").fadeOut("slow");
+});
 
 
 function actionsOnScroll() {

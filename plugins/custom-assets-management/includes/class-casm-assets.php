@@ -33,35 +33,38 @@ class CASM_Assets {
 	const CSS_IF = array(
 		'cookie-law-info'					=> array( 'true'	=> '',
 														'replace' => array(
-															'file' 	=> '/assets/css/cookie-law-info-public.css',
+															'file' 	=> '/assets/css/cookie-law-info-public.min.css',
 															// 'footer' 	=> true,// Doesn't work
 														),
 													),
 		'cookie-law-info-gdpr'				=> array( 'true'	=> '',
 													'replace' => array(
-														'file' 	=> '/assets/css/cookie-law-info-gdpr.css',
+														'file' 	=> '/assets/css/cookie-law-info-gdpr.min.css',
 														// 'footer' 	=> true,// Doesn't work
 														),
 													),
 		// 'custom-star-ratings' 				=> array('page' => 'blog-page'),
 		'responsive-menu-pro'				=> array(	'mobile' => true,
 														'replace' => array(
-															'file' 		=> '/assets/css/responsive-menu.css',
+															'file' 		=> '/assets/css/responsive-menu.min.css',
 														)
 													),
-		'pwaforwp-style'					=> array( 'mobile'	=> true ),
+		'pwaforwp-style'					=> array( 	'mobile'	=> true,
+														'replace' => array(
+															'file' 		=> '/assets/css/pwa.min.css',
+													)),
 		'news-style'						=> array('page' => 'home'),
 		// 'newsletter'						=> array('page' => 'home'),
 		'yarppRelatedCss' 					=> array('singular' => 'post recipe'),
 		'custom-lightbox'					=> array('singular' => 'post recipe'),
 		'name-directory-style' 				=> array(	'shortcode' => 'namedirectory',
 														'replace' => array(
-															'file' 		=> '/assets/css/name_directory.css',
+															'file' 		=> '/assets/css/name_directory.min.css',
 														)),
 		'yarppWidgetCss' 					=> array('false' => ''),
 		'megamenu' 							=> array(	'mobile' => false,
 														'replace' => array(
-															'file' 		=> '/assets/css/max-mega-menu.css',
+															'file' 		=> '/assets/css/max-mega-menu.min.css',
 														)),
 		'megamenu-fontawesome' 				=> array('false' => ''),
 		'megamenu-google-fonts' 			=> array('false' => ''),
@@ -76,7 +79,7 @@ class CASM_Assets {
 		// Allows using a minified peepso-custom
 		'peepso-custom'						=> array('true' => '',
 													'replace' => array(
-														'file' 		=> '/assets/css/peepso.css',
+														'file' 		=> '/assets/css/peepso.min.css',
 													)),
 		'peepso-datepicker'					=> array('page' => 'social',
 													'replace' => array(
@@ -94,7 +97,7 @@ class CASM_Assets {
 		'cookie-law-info'						=> array(
 														'true'	=> '',
 														'replace' => array(
-															'file' => '/assets/js/cookie-law-info-public.js',
+															'file' => '/assets/js/cookie-law-info-public.min.js',
 															'footer' => true,
 														),
 													),

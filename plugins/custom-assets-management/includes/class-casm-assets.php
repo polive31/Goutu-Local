@@ -49,7 +49,7 @@ class CASM_Assets {
 															'file' 		=> '/assets/css/responsive-menu.css',
 														)
 													),
-		// 'pwaforwp-style'					=> array( 'mobile'	=> true ),
+		'pwaforwp-style'					=> array( 'mobile'	=> true ),
 		'news-style'						=> array('page' => 'home'),
 		// 'newsletter'						=> array('page' => 'home'),
 		'yarppRelatedCss' 					=> array('singular' => 'post recipe'),
@@ -99,16 +99,16 @@ class CASM_Assets {
 														),
 													),
 
-		// 'pwa-main-script'						=> array('mobile' => true),
+		'pwa-main-script'						=> array('mobile' => true),
 		'newscript'								=> array('page' => 'home'),
 		// 'newsletter-subscription'				=> array('page' => 'home'),
 		'wp-embed'								=> array('page' => 'social home'),
 
 		// WP Rest API
-		'underscore'							=> array('logged-in'=> true),
-		'backbone'								=> array('logged-in'=> true),
-		'wp-api-request'						=> array('logged-in'=> true),
-		'wp-api'								=> array('logged-in'=> true),
+		// 'underscore'							=> array('logged-in'=> true),
+		// 'backbone'								=> array('logged-in'=> true),
+		// 'wp-api-request'						=> array('logged-in'=> true),
+		// 'wp-api'								=> array('logged-in'=> true),
 
 		//Megamenu
 		'megamenu'								=> array('mobile' => false),

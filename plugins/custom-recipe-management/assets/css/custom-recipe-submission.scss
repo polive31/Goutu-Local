@@ -22,10 +22,17 @@ span.header {
 input.recipe_instructions_image,
 input.recipe_thumbnail_image,
 label.add-image-button {
+  display: inline-block;
   font-family: sans-serif;
   font-size: 13px;
+  text-transform: uppercase;
   color: #616161;
   text-align: left;
+  background-color: #d0d0d0;
+  border-radius: 2px;
+  border: 1px solid #c4c4c4;
+  margin: 20px 10px 10px 0;
+  transition: background-color ease-in-out 0.5s;
 }
 
 .button.add-item-box i {

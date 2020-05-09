@@ -55,8 +55,9 @@ jQuery(document).ready(function() {
         statusbar: false,
         menubar:false,
         toolbar: 'undo redo | styleselect | bold italic underline | link image | alignleft aligncenter alignright | bullist | searchreplace',
-        plugins: 'autoresize link spellchecker searchreplace placeholder lists',
-        autoresize_bottom_margin : 20,
+        plugins: 'link spellchecker searchreplace placeholder lists',
+        //IMPORTANT DO NOT USE AUTORIZE PLUGIN SINCE IT WILL MAKE THE PLACEHOLDER OVERFLOW ON MOBILE !!!
+        height:'200',
         remove_linebreaks: true,
         placeholder_attrs : {style: {
                 position: 'absolute',
@@ -175,7 +176,7 @@ jQuery(document).ready(function() {
     jQuery('#recipe-ingredients').on('keydown','.ingredients_notes',function(e) {
         console.log("%c Found keypress on " + jQuery(this).attr('class') + jQuery(this).attr('id'),"background:#CCC;color:blue");
         var keyCode = e.keyCode || e.which;
-        if (keyCode == 9 && e.shiftKey == false) {
+        if (keyCode == 9 && e.shiftKey === false) {
             // var last_id = jQuery('#recipe-ingredients tr:last').attr('id');
             // console.log("Last ID = " + last_id);
             var currentRow = jQuery(this).closest('tr');
@@ -219,7 +220,7 @@ jQuery(document).ready(function() {
         var current_id = current_ingredient.attr('id');
         console.log ("Current ingredient : " + current_id);
 
-        if (keyCode == 9 && e.shiftKey == true) {
+        if (keyCode == 9 && e.shiftKey === true) {
             e.preventDefault()
             // console.log("Keypress shift !");
             var previous_ingredient = current_ingredient.prev();
@@ -270,7 +271,7 @@ jQuery(document).ready(function() {
         // console.log("Found keypress on .ingredient_notes !!!");
         var keyCode = e.keyCode || e.which;
 
-        if (keyCode == 9 && e.shiftKey == false) {
+        if (keyCode == 9 && e.shiftKey === false) {
             e.preventDefault();
             addRecipeInstruction();
         }

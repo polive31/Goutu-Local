@@ -63,12 +63,6 @@ label.add-image-button {
 
 /* Common
 -------------------------------------------*/
-#custom_post_submission_form a,
-#custom_post_submission_form a:hover {
-  text-decoration: none;
-  color: #616161;
-}
-
 #custom_post_submission_form span.required-field {
   color: #dc1d1d;
 }
@@ -205,42 +199,6 @@ td.post-general-form-label {
   opacity: 1;
   font-size: 1.4rem;
 }
-#custom_post_submission_form .mce-tinymce label,
-#custom_post_submission_form .option-none,
-#custom_post_submission_form .post-guidelines,
-#custom_post_submission_form select:-ms-input-placeholder,
-#custom_post_submission_form textarea:-ms-input-placeholder,
-#custom_post_submission_form input:-ms-input-placeholder {
-  font-family: sans-serif;
-  color: #616161;
-  font-style: italic;
-  opacity: 1;
-  font-size: 1.4rem;
-}
-#custom_post_submission_form .mce-tinymce label,
-#custom_post_submission_form .option-none,
-#custom_post_submission_form .post-guidelines,
-#custom_post_submission_form select::-ms-input-placeholder,
-#custom_post_submission_form textarea::-ms-input-placeholder,
-#custom_post_submission_form input::-ms-input-placeholder {
-  font-family: sans-serif;
-  color: #616161;
-  font-style: italic;
-  opacity: 1;
-  font-size: 1.4rem;
-}
-#custom_post_submission_form .mce-tinymce label,
-#custom_post_submission_form .option-none,
-#custom_post_submission_form .post-guidelines,
-#custom_post_submission_form select::placeholder,
-#custom_post_submission_form textarea::placeholder,
-#custom_post_submission_form input::placeholder {
-  font-family: sans-serif;
-  color: #616161;
-  font-style: italic;
-  opacity: 1;
-  font-size: 1.4rem;
-}
 
 #custom_post_submission_form .post-guidelines {
   font-size: 1.5rem;
@@ -349,17 +307,6 @@ td.post-general-form-label {
 
 .buttons-box {
   float: left;
-}
-
-.button {
-  display: inline-block;
-  /* padding: 8px 10px; */
-  margin: 20px 10px 10px 0;
-  border-radius: 2px;
-  border: 1px solid #c4c4c4;
-  background-color: #d0d0d0;
-  -webkit-transition: background-color ease-in-out 0.5s;
-  transition: background-color ease-in-out 0.5s;
 }
 
 input.post_thumbnail_image:hover {

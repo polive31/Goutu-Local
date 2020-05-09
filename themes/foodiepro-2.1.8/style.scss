@@ -285,62 +285,63 @@ samp {
 
 /* Forms
 --------------------------------------------- */
-
-button,
-input,
-optgroup,
-select,
-textarea,
-.button,
-a.button,
-a.comment-reply-link,
-a#cancel-comment-reply-link {
-    border-radius: 3px;
-    /* P.O. custom */
-    margin: 2px;
-    /* P.O. Origine 0 */
-    text-decoration: none;
-    background-image: none;
-    padding: 5px;
+/* IMPORTANT prevent blue border */
+select:focus,
+input:focus,
+textarea:focus {
+    outline:none;
 }
 
-/* Prevents vertical shift on hover */
 
-/* Text area and select specific formatting */
+/* Inputs select specific formatting */
 input[type="email"],
 input[type="text"],
+input[type="file"],
 input[type="number"],
 input[type="password"],
 input[type="search"],
+// input,
 optgroup,
 select,
-textarea
-
-/*ul.wpuf-form li .wpuf-fields a.file-selector, */
-    {
+textarea {
     color: inherit;
-    /* P.O. Origin  inherit */
     width: 100%;
     padding: 10px;
     text-decoration: none;
 }
 
 
-/* Button specific formatting */
+/* Button CONTAINER formatting - IMPORTANT : keep both sections separated */
 button,
 input[type="submit"],
 .button,
 a.button,
-h2 a.button,
+a.comment-reply-link,
+a#cancel-comment-reply-link {
+    display: inline-block;
+    width: auto;
+    background-color: #000;
+    background-image: none;
+    border-radius: 3px;
+    border-width: 0;
+    padding: 7px;
+    margin: 2px;
+    text-align: center;
+}
+
+/* Button CONTENT formatting - IMPORTANT : keep both sections separated  */
+button,
+input[type="submit"],
+.button a,
+a.button,
 a.comment-reply-link,
 a#cancel-comment-reply-link {
     color: #fff;
-    /* P.O. Origin  inherit */
     text-transform: uppercase;
-    background-color: #000;
-    border-width: 0;
     text-decoration: none;
+    text-align: center;
 }
+
 
 input[type="checkbox"],
 input[type="radio"] {
@@ -2190,6 +2191,7 @@ span.entry-avatar {
 --------------------------------------------- */
 
 .after-content.widget-area {
+    float: left;
     padding: 0;
     margin: 0;
 }
@@ -2883,8 +2885,8 @@ After Entry
 
 .comment-reply {
     float: left;
-    /*margin-top:10px;*/
     clear: both;
+    margin-bottom: 10px;
 }
 
 

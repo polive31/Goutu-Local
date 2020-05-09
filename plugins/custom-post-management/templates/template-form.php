@@ -36,7 +36,7 @@
         </div>
         <input type="hidden" class="" id="<?= $post_type; ?>_image_attachment" value="<?= get_post_thumbnail_id($post->ID); ?>" name="<?= $post_type; ?>_image_attachment">
         <div class="post-image input">
-            <input class="post_image_thumbnail button" type="file" id="post_thumbnail_input_featured" value="" size="50" name="<?= $post_type; ?>_thumbnail_featured" />
+            <input class="post_image_thumbnail" type="file" id="post_thumbnail_input_featured" value="" size="50" name="<?= $post_type; ?>_thumbnail_featured" />
         </div>
 </div>
 

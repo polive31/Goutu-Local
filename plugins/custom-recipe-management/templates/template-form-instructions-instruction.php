@@ -45,7 +45,7 @@ if (!isset($instruction['group'])) {
         </div>
         <div class="instruction-buttons">
             <!-- This input stores the file to be uploaded for the given instruction step -->
-            <input class="post_image_thumbnail button" type="file" id="post_thumbnail_input_<?php echo $i; ?>" value="" size="50" name="<?= CRM_Assets::RECIPE_THUMB_INPUT . '_' . $i; ?>" />
+            <input class="post_image_thumbnail" type="file" id="post_thumbnail_input_<?php echo $i; ?>" value="" size="50" name="<?= CRM_Assets::RECIPE_THUMB_INPUT . '_' . $i; ?>" />
         </div>
     </td>
     <td class="instruction-thumbnail">

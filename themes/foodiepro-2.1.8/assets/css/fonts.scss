@@ -230,18 +230,15 @@ h6 {
 
 
 /* BUTTONS */
-
-.button,
-a.button,
 .widget.back ul li a,
 .comment-respond {
-    text-align: center;
     font-family: $entry-font-family;
-    padding: 7px 10px;
 }
 
 
 button,
+.button,
+a.button,
 input,
 optgroup,
 select,
@@ -256,6 +253,8 @@ a#cancel-comment-reply-link,
 .post-meta {
     font-family: sans-serif;
     font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 1.3rem;
     padding: 7px 10px;
 }
 

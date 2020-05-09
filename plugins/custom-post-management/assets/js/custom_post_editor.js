@@ -13,13 +13,11 @@ jQuery(document).ready(function() {
         statusbar: false,
         menubar:false,
         toolbar: 'undo redo | styleselect | bold italic underline | link image | alignleft aligncenter alignright | bullist | searchreplace',
-        plugins: 'autoresize link spellchecker searchreplace placeholder lists image',
-        autoresize_bottom_margin : 20,
+        plugins: 'link spellchecker searchreplace placeholder lists image',
+        //IMPORTANT DO NOT USE AUTORIZE PLUGIN SINCE IT WILL MAKE THE PLACEHOLDER OVERFLOW ON MOBILE !!!
+        height:'200',
         remove_linebreaks : false,
         placeholder_attrs : {style: {
-                position: 'absolute',
-                top:'5px',
-                left:0,
                 color: '#888',
                 'font-style': 'italic',
                 padding: '1%',

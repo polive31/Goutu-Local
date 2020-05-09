@@ -1761,7 +1761,10 @@ form[role="search"] {
 
 /* Plugins
 -------------------------------------------------------- */
-
+/* PWA */
+.pwaforwp-footer-prompt {
+    display: none;
+}
 
 /* Custom Star Rating */
 @import "../../plugins/custom-star-rating/assets/css/_custom-star-rating.scss";

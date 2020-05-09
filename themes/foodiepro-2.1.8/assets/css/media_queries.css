@@ -449,6 +449,7 @@ VARIABLES
   .content .rpwe-block.grid-2col li {
     width: calc(100% - 20px);
   }
+  /* Plugins */
   /* Footer */
   .after-entry .widget {
     width: 100%;

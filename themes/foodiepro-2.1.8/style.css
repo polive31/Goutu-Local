@@ -1618,6 +1618,11 @@ form[role="search"] {
 --------------------------------------------- */
 /* Plugins
 -------------------------------------------------------- */
+/* PWA */
+.pwaforwp-footer-prompt {
+  display: none;
+}
+
 /* Custom Star Rating */
 /* Star rating output
 --------------------------------------------- */

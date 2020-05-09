@@ -31,7 +31,7 @@ class PeepsoHelpers  {
 	 * * size => 'small', 'medium', 'full' or integer size in pixels
 	 * * title => link title
 	 * * (bool) lazy
-	 * @return void
+	 * @return string formatted html avatar
 	 */
 	static function get_avatar($args)
 	{

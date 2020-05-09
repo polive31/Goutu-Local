@@ -87,12 +87,16 @@ class PeepsoCustomLoginWidget extends WP_Widget
 			 */
 			do_action('before_login_widget_loggedin'); ?>
 
-			<div class="login-widget-user-avatar">
-				<a href="<?php echo $url; ?>">
-					<?php $field = $user->get_avatar('full'); ?>
-					<img class="avatar" title="<?= __('Edit my profile', 'foodiepro'); ?>" src="<?= $field; ?>">
-				</a>
-			</div>
+			<?= PeepsoHelpers::get_avatar(
+				array(
+					'wraptag'	=> 'div',
+					'wrapclass'	=> 'login-widget-user-avatar',
+					'user'		=>'current',
+					'imgclass'	=>'avatar',
+					'size'		=>150,
+					'title'		=> __('Edit my profile', 'foodiepro'),
+				)
+			); ?>
 
 			<div class="login-widget-user-links">
 				<div class="login-widget-user-link"><a class="" href="<?= Peepso::get_page($url); ?>"><?= $user->get_firstname(); ?></a></div>

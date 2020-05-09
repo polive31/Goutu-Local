@@ -412,7 +412,6 @@ button#responsive-menu-pro-button, #responsive-menu-pro-container {
     text-align: left;
   }
   #responsive-menu-pro-container #responsive-menu-pro li.responsive-menu-pro-item a:hover {
-    color: white;
     background-color: #ffffff;
     border-color: rgba(255, 255, 255, 0);
   }

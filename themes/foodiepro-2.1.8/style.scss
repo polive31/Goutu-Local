@@ -1763,51 +1763,7 @@ form[role="search"] {
 
 
 /* Custom Star Rating */
-span.entry-rating {
-    text-align: center;
-    display: inline-block;
-    width: 100%;
-}
-
-.rating a {
-    text-decoration: none;
-}
-
-/* Rating stars formatting
------------------------------------------*/
-.ratings-table i.fas.fa-star,
-.ratings-table i.fas.fa-star-half {
-    color: #f5a241;
-}
-
-.ratings-table .null i.far.fa-star {
-    /* color:#6f6f6f; */
-    color: #d3d3d3;
-}
-
-.ratings-table .full i.far.fa-star {
-    color: #f18b14;
-}
-
-.ratings-table .fa-stack {
-    width: 17px;
-}
-
-/* Comments */
-.comment .ratings-table .fa-stack {
-    width: 15px;
-}
-
-.comment .ratings-table {
-    font-size: 1.4rem;
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-}
-
-
+@import "../../plugins/custom-star-rating/assets/css/_custom-star-rating.scss";
 
 
 /* Name Directory */

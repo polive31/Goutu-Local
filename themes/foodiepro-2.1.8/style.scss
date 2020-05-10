@@ -492,6 +492,28 @@ input[type="search"] {
     width: 100%;
 }
 
+/* Text image list */
+.entry-content ul.text-image-list {
+    width: 70%;
+    font-family: Oswald, sans-serif;
+    font-size: 22px;
+    display: block;
+    margin: 0 0 0 40px;
+    border-left: 2px solid rgb(177, 177, 177);
+}
+
+.entry-content ul.text-image-list li {
+    list-style-type: none;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.entry-content .text-image-list img {
+    vertical-align: middle;
+    margin: 0 10px;
+    max-width: 30px;
+}
+
 /* Tables
 --------------------------------------------- */
 

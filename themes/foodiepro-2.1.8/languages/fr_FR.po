@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2020-05-03 14:58+0200\n"
-"PO-Revision-Date: 2020-05-08 23:13+0200\n"
+"POT-Creation-Date: 2020-05-10 21:38+0200\n"
+"PO-Revision-Date: 2020-05-10 21:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -77,165 +77,177 @@ msgstr "%s pour un %s"
 #: plugins/custom-archive-management/public/class-cnh-archive-headline.php:38
 #, php-format
 msgctxt "masculine"
+msgid "All detox %s"
+msgstr "Tous les %s détox"
+
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:39
+#, php-format
+msgctxt "feminine"
+msgid "All detox %s"
+msgstr "Toutes les %s détox"
+
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:42
+#, php-format
+msgctxt "masculine"
 msgid "All vegetarian %s"
 msgstr "Tous les %s végétariens"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:39
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:43
 #, php-format
 msgctxt "feminine"
 msgid "All vegetarian %s"
 msgstr "Toutes les %s végétariennes"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:42
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:46
 #, php-format
 msgctxt "masculine"
 msgid "All light %s"
 msgstr "Tous les %s légers"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:43
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:47
 #, php-format
 msgctxt "feminine"
 msgid "All light %s"
 msgstr "Toutes les %s légères"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:46
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:50
 #, php-format
 msgctxt "masculine"
 msgid "All gluten-free %s"
 msgstr "Tous les %s sans gluten"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:47
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:51
 #, php-format
 msgctxt "feminine"
 msgid "All gluten-free %s"
 msgstr "Toutes les %s sans gluten"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:50
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:54
 #, php-format
 msgctxt "masculine"
 msgid "All %s for weight gain"
 msgstr "Tous les %s pour la prise de masse"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:51
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:55
 #, php-format
 msgctxt "feminine"
 msgid "All %s for weight gain"
 msgstr "Toutes les %s pour la prise de masse"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:54
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:58
 #, php-format
 msgctxt "masculine"
 msgid "All spring %s"
 msgstr "Tous les %s de printemps"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:55
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:59
 #, php-format
 msgctxt "feminine"
 msgid "All spring %s"
 msgstr "Toutes les %s de printemps"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:58
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:62
 #, php-format
 msgctxt "masculine"
 msgid "All summer %s"
 msgstr "Tous les %s d'été"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:59
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:63
 #, php-format
 msgctxt "feminine"
 msgid "All summer %s"
 msgstr "Toutes les %s d'été"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:62
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:66
 #, php-format
 msgctxt "masculine"
 msgid "All autumn %s"
 msgstr "Tous les %s d'automne"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:63
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:67
 #, php-format
 msgctxt "feminine"
 msgid "All autumn %s"
 msgstr "Toutes les %s d'automne"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:66
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:70
 #, php-format
 msgctxt "masculine"
 msgid "All winter %s"
 msgstr "Tous les %s d'hiver"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:67
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:71
 #, php-format
 msgctxt "feminine"
 msgid "All winter %s"
 msgstr "Toutes les %s d'hiver"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:70
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:74
 #, php-format
 msgctxt "masculine"
 msgid "All evident %s"
 msgstr "Tous les %s élémentaires"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:71
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:75
 #, php-format
 msgctxt "feminine"
 msgid "All evident %s"
 msgstr "Toutes les %s élémentaires"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:74
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:78
 #, php-format
 msgctxt "masculine"
 msgid "All simple %s"
 msgstr "Tous les %s faciles"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:75
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:79
 #, php-format
 msgctxt "feminine"
 msgid "All simple %s"
 msgstr "Toutes les %s faciles"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:78
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:82
 #, php-format
 msgctxt "masculine"
 msgid "All complicated %s"
 msgstr "Tous les %s compliqués"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:79
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:83
 #, php-format
 msgctxt "feminine"
 msgid "All complicated %s"
 msgstr "Toutes les %s compliquées"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:82
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:86
 #, php-format
 msgctxt "masculine"
 msgid "All difficult %s"
 msgstr "Tous les %s difficiles"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:83
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:87
 #, php-format
 msgctxt "feminine"
 msgid "All difficult %s"
 msgstr "Toutes les %s difficiles"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:96
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:100
 msgid "Visit Goutu.org"
 msgstr ""
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:151
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:155
 msgid "recipes"
 msgstr "recettes"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:155
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:159
 msgid "posts"
 msgstr "articles"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:222
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:226
 #, php-format
 msgid "%s"
 msgstr ""
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:265
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:269
 msgid ""
 "You will find here all the recipes, which you can further sort by date or "
 "evaluation."
@@ -243,17 +255,17 @@ msgstr ""
 "Vous trouverez ici toutes les recettes publiées dans cette catégorie, que "
 "vous pouvez trier par date, ordre alphabétique et évaluation."
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:268
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:272
 msgid "You will find here all the posts, which you can further sort by date."
 msgstr ""
 "Vous trouverez ici tous les articles du site. <br>Vous pouvez les trier par "
 "date et ordre alphabétique."
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:313
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:317
 msgid "Detailed Search Results"
 msgstr "Résultats de recherche détaillée"
 
-#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:315
+#: plugins/custom-archive-management/public/class-cnh-archive-headline.php:319
 #: themes/foodiepro-2.1.8/search.php:28
 #, php-format
 msgid "Search Results for %s"
@@ -317,7 +329,7 @@ msgstr "Les plus récentes"
 
 #: plugins/custom-archive-management/widgets/dropdown-posts-sort-widget.php:114
 #: plugins/custom-archive-management/widgets/taxonomy-accordion-widget.php:239
-#: plugins/custom-archive-management/widgets/taxonomy-dropdown-widget.php:235
+#: plugins/custom-archive-management/widgets/taxonomy-dropdown-widget.php:236
 #: plugins/custom-archive-management/widgets/taxonomy-search-widget.php:113
 #: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:281
 #: plugins/custom-post-management/widgets/cpm_list_dropdown_widget.php:93
@@ -327,12 +339,12 @@ msgstr ""
 
 #: plugins/custom-archive-management/widgets/dropdown-posts-sort-widget.php:118
 #: plugins/custom-archive-management/widgets/taxonomy-accordion-widget.php:252
-#: plugins/custom-archive-management/widgets/taxonomy-dropdown-widget.php:244
+#: plugins/custom-archive-management/widgets/taxonomy-dropdown-widget.php:245
 #: plugins/custom-archive-management/widgets/taxonomy-search-widget.php:117
 #: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:122
 #: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:86
 #: plugins/custom-peepso-overrides/widgets/PeepsoCoverImageHeader.php:86
-#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:199
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:203
 #: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:320
 #: plugins/custom-post-management/widgets/cpm_list_dropdown_widget.php:97
 #: plugins/custom-recipe-management/widgets/crm_nutrition_label_widget.php:60
@@ -415,36 +427,42 @@ msgid "Filter by country"
 msgstr "Filtrer par pays"
 
 #: plugins/custom-archive-management/widgets/taxonomy-dropdown-widget.php:29
+#, fuzzy
+#| msgid "Filter by season"
+msgid "Filter by region"
+msgstr "Filtrer par saison"
+
+#: plugins/custom-archive-management/widgets/taxonomy-dropdown-widget.php:30
 msgid "Filter by diet"
 msgstr "Filtrer par régime"
 
-#: plugins/custom-archive-management/widgets/taxonomy-dropdown-widget.php:30
+#: plugins/custom-archive-management/widgets/taxonomy-dropdown-widget.php:31
 msgid "Filter by season"
 msgstr "Filtrer par saison"
 
-#: plugins/custom-archive-management/widgets/taxonomy-dropdown-widget.php:31
+#: plugins/custom-archive-management/widgets/taxonomy-dropdown-widget.php:32
 msgid "Filter by occasion"
 msgstr "Filtrer par occasion"
 
-#: plugins/custom-archive-management/widgets/taxonomy-dropdown-widget.php:32
+#: plugins/custom-archive-management/widgets/taxonomy-dropdown-widget.php:33
 msgid "Filter by category"
 msgstr "Filtrer par catégorie"
 
-#: plugins/custom-archive-management/widgets/taxonomy-dropdown-widget.php:33
+#: plugins/custom-archive-management/widgets/taxonomy-dropdown-widget.php:34
 msgid "Filter by level"
 msgstr "Filtrer par difficulté"
 
-#: plugins/custom-archive-management/widgets/taxonomy-dropdown-widget.php:80
+#: plugins/custom-archive-management/widgets/taxonomy-dropdown-widget.php:81
 msgid "Choose..."
 msgstr "Choisir..."
 
-#: plugins/custom-archive-management/widgets/taxonomy-dropdown-widget.php:250
+#: plugins/custom-archive-management/widgets/taxonomy-dropdown-widget.php:251
 #, fuzzy
 #| msgid "Filter recipes"
 msgid "Dropdown taxonomy"
 msgstr "Filtrer les recettes"
 
-#: plugins/custom-archive-management/widgets/taxonomy-dropdown-widget.php:254
+#: plugins/custom-archive-management/widgets/taxonomy-dropdown-widget.php:255
 msgid "Automatic"
 msgstr ""
 
@@ -614,18 +632,10 @@ msgstr "Répondre au message"
 msgid "Reply to this comment"
 msgstr "Favorite"
 
-#: plugins/custom-comment-management/public/class-ccm-form.php:94
+#: plugins/custom-comment-management/public/class-ccm-form.php:75
 #: themes/foodiepro-2.1.8/peepso/general/recover-password.php:37
 msgid "Submit"
 msgstr "Publier"
-
-#: plugins/custom-comment-management/public/class-ccm-form.php:127
-msgid ""
-"<strong>ERROR</strong>: CAPTCHA verification failed, please go back and try "
-"again..."
-msgstr ""
-"<strong>ERREUR</strong> : La vérification anti-spam a échoué, merci de "
-"revenir en arrière et d'essayer à nouveau…"
 
 #: plugins/custom-contact-form/admin/class-ccf-admin.php:38
 #: plugins/custom-recaptcha/admin/class-cgr-admin.php:128
@@ -947,7 +957,7 @@ msgid "wrote a new recipe"
 msgstr "a publié une nouvelle recette"
 
 #: plugins/custom-peepso-overrides/public/class-cpo-customizations.php:195
-#: themes/foodiepro-2.1.8/functions.php:955
+#: themes/foodiepro-2.1.8/functions.php:997
 msgid "Legal notice"
 msgstr "Mentions légales"
 
@@ -998,8 +1008,8 @@ msgstr ""
 #: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:59
 #: themes/foodiepro-2.1.8/peepso/activity/activity.php:51
 #: themes/foodiepro-2.1.8/peepso/activity/activity.php:52
-#: themes/foodiepro-2.1.8/peepso/profile/profile.php:27
-#: themes/foodiepro-2.1.8/peepso/profile/profile.php:28
+#: themes/foodiepro-2.1.8/peepso/profile/profile.php:29
+#: themes/foodiepro-2.1.8/peepso/profile/profile.php:30
 #, fuzzy
 #| msgid "No recipes found."
 msgid "No posts found."
@@ -1007,7 +1017,7 @@ msgstr "Aucune recette trouvée."
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:60
 #: themes/foodiepro-2.1.8/peepso/activity/activity.php:53
-#: themes/foodiepro-2.1.8/peepso/profile/profile.php:29
+#: themes/foodiepro-2.1.8/peepso/profile/profile.php:31
 msgid "Nothing more to show."
 msgstr ""
 
@@ -1036,51 +1046,51 @@ msgid ""
 "are logged in, with full resolution avatar."
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:93
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:97
 #, fuzzy
 #| msgid "Edit Profile"
 msgid "Edit my profile"
 msgstr "Modifier mon profil"
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:99
-#: themes/foodiepro-2.1.8/functions.php:816
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:103
+#: themes/foodiepro-2.1.8/functions.php:851
 #: themes/foodiepro-2.1.8/peepso/widgets/userbar.tpl.php:33
 #: themes/foodiepro-2.1.8/peepso/widgets/userbar.tpl.php:90
 msgid "Log Out"
 msgstr "Déconnexion"
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:127
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:131
 #: themes/foodiepro-2.1.8/login/custom-login.php:97
 msgid "Email Address"
 msgstr "Adresse mail"
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:130
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:134
 msgid "Password"
 msgstr "Mot de passe"
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:133
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:137
 msgid "Remember Me"
 msgstr "Se souvenir de moi"
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:136
-#: themes/foodiepro-2.1.8/functions.php:820
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:140
+#: themes/foodiepro-2.1.8/functions.php:855
 msgid "Log In"
 msgstr "Connexion"
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:140
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:144
 msgid "Register for a new account"
 msgstr "Aller sur la page d'inscription"
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:140
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:144
 #: themes/foodiepro-2.1.8/login/custom-login.php:99
 msgid "Not yet a member ?"
 msgstr "Pas encore membre ?"
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:142
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:146
 msgid "Reset your password"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:142
+#: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:146
 msgid "Forgot Password ?"
 msgstr "Mot de passe oublié ?"
 
@@ -1748,6 +1758,14 @@ msgstr ""
 #: plugins/custom-recaptcha/admin/class-cgr-admin.php:79
 msgid "Those are the public & private keys for the Google recaptcha V3 API."
 msgstr ""
+
+#: plugins/custom-recaptcha/public/class-cgr-public.php:82
+msgid ""
+"<strong>ERROR</strong>: CAPTCHA verification failed, please go back and try "
+"again..."
+msgstr ""
+"<strong>ERREUR</strong> : La vérification anti-spam a échoué, merci de "
+"revenir en arrière et d'essayer à nouveau…"
 
 #: plugins/custom-recaptcha/public/class-crca-math.php:14
 msgid ""
@@ -2914,21 +2932,21 @@ msgstr "%s minute"
 msgid "hour"
 msgstr "heure"
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:682
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:689
 #, php-format
 msgid "%s day "
 msgid_plural "%s days "
 msgstr[0] "%s jour "
 msgstr[1] "%s jours "
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:685
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:692
 #, php-format
 msgid "%s hour "
 msgid_plural "%s hours "
 msgstr[0] "%s h "
 msgstr[1] "%s h "
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:688
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:695
 #, php-format
 msgid "%s minute"
 msgid_plural "%s minutes"
@@ -3053,7 +3071,7 @@ msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr "Un problème ? Une question ? Contacte nous <a href=\"%s\">ici</a>"
 
 #: plugins/custom-site-notifications/public/mails/class-csn-mails.php:310
-#: themes/foodiepro-2.1.8/functions.php:955
+#: themes/foodiepro-2.1.8/functions.php:997
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
@@ -3209,15 +3227,15 @@ msgid_plural "%s reviews"
 msgstr[0] "%s avis"
 msgstr[1] "%s avis"
 
-#: themes/foodiepro-2.1.8/functions.php:676
+#: themes/foodiepro-2.1.8/functions.php:707
 msgid "Content/Alt Sidebar"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:904
+#: themes/foodiepro-2.1.8/functions.php:946
 msgid "Recipe, Ingredient, Keyword, Author..."
 msgstr "Recette, ingrédient, mot-clé, auteur..."
 
-#: themes/foodiepro-2.1.8/functions.php:955
+#: themes/foodiepro-2.1.8/functions.php:997
 msgid "Contact us"
 msgstr "Contactez-nous"
 

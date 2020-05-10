@@ -34,6 +34,10 @@ class CNH_Archive_Headline {
 				'vowel'		=> _x('%s for %s', 'vowel', 'foodiepro'),
 				'consonant'	=> _x('%s for %s', 'consonant', 'foodiepro'),
 			),
+			'detox' =>  array(
+				'masculine' => _x('All detox %s', 'masculine', 'foodiepro'),
+				'feminine' => _x('All detox %s', 'feminine', 'foodiepro'),
+			),
 			'vegetarien' =>  array(
 				'masculine' => _x('All vegetarian %s', 'masculine', 'foodiepro'),
 				'feminine' => _x('All vegetarian %s', 'feminine', 'foodiepro'),

@@ -28,24 +28,22 @@
         </tr>
         <?php
 
-        // Add one visible instruction field if there are none
-        if (empty($instructions)) {
-            $instructions[]=CRM_Recipe::get_instruction_item();
-        }
-        // Add one more hidden instruction at the end of the section, to be used as a hidden stub
+        // Add one visible instruction field at the end
         $instructions[]=CRM_Recipe::get_instruction_item();
+        // Add one more hidden instruction at the end of the section, to be used as a hidden stub
+        $instructions[]=CRM_Recipe::get_instruction_item(false);
         $i = 0;
         foreach ($instructions as $instruction) {
 
             $instruction['group']= isset($instruction['group'])?$instruction['group']:'';
+            $instruction['visible']= isset($instruction['visible'])?$instruction['visible']:true;
             if ($instruction['group'] != $previous_group) {
                 $previous_group = $instruction['group'];
                 $newgroup = true;
             } else
                 $newgroup = false;
 
-            $display=$i<count($instructions)-1;
-            $args=compact('i','instruction','display','newgroup');
+            $args=compact('i','instruction','newgroup');
             CRM_Assets::echo_template_part( 'form-instructions', 'instruction', $args );
             $i++;
         }

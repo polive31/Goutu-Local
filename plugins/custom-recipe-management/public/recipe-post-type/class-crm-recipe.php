@@ -263,8 +263,10 @@ class CRM_Recipe {
 
     /* INSTRUCTIONS
     ---------------------------------------------------------------------*/
-    public static function get_instruction_item() {
-        return self::TEMPLATE['instruction'];
+    public static function get_instruction_item($visible=true) {
+        $instruction=self::TEMPLATE['instruction'];
+        $instruction['visible']=$visible;
+        return $instruction;
     }
 
     public function has_instructions()

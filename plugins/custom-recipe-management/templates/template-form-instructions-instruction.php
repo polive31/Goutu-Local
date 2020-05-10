@@ -32,7 +32,7 @@ if (!isset($instruction['group'])) {
 
 ?>
 
-<tr class="instruction ui-sortable <?php if (!$display) { ?>nodisplay<?php }; ?>" id="recipe_instruction_<?php echo $i; ?>">
+<tr class="instruction ui-sortable <?php if (!($instruction['visible'])) { ?>nodisplay<?php }; ?>" id="recipe_instruction_<?php echo $i; ?>">
     <td class="sort-handle ui-sortable-handle" title="<?php echo __('Move this instruction', 'crm'); ?>">
         <span class='icon-drag-updown'>
             <?= foodiepro_get_icon('drag-updown'); ?>

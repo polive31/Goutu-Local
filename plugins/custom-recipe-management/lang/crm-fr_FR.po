@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
 "POT-Creation-Date: 2020-05-01 23:46+0200\n"
-"PO-Revision-Date: 2020-05-01 23:53+0200\n"
+"PO-Revision-Date: 2020-05-10 16:04+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -217,7 +217,9 @@ msgstr "Déplacer cette instruction"
 #: deprecated/partials/submission_form_ingredients_instructions.php:317
 #: templates/template-form-instructions-instruction.php:43
 msgid "Enter the instructions for this recipe step"
-msgstr "Entrez les instructions pour cette étape"
+msgstr ""
+"Entrez les instructions pour cette étape. Les instructions vides seront "
+"ignorées."
 
 #: deprecated/partials/instruction_form_item.php:35
 #: deprecated/partials/submission_form_ingredients_instructions.php:329

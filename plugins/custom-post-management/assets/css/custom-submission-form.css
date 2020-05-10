@@ -374,6 +374,17 @@ div#qt_post_notes_toolbar {
 
 /* SELECT2 & TAGS
 -------------------------------------------*/
+/* Remove blue outline */
+.select2-selection {
+    outline: none;
+}
+
+.select2-selection__rendered {
+  border: none;
+  outline: none;
+}
+
+
 /*Select2 fonts*/
 li.select2-selection__choice,
 .select2-results li,
@@ -434,11 +445,6 @@ li.select2-selection__choice,
   transition: all .3s;
   margin-left: 10px;
   margin-top: 3px;
-}
-
-.select2-selection__rendered {
-  border: none;
-  outline: none;
 }
 
 .select2-selection__choice {

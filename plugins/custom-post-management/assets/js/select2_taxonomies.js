@@ -14,7 +14,7 @@ jQuery(document).ready(function() {
 
     // Read-only boxes : only mouse / touch interaction allowed
     var readonlyBoxes = jQuery(".taxonomy-select-boxes select").not(".multiselect");
-    console.log( 'Here are the selected readonly boxes : ', readonlyBoxes );
+    // console.log( 'Here are the selected readonly boxes : ', readonlyBoxes );
     readonlyBoxes.select2({
         width: 'style',
         dropdownAutoWidth: false,
@@ -31,7 +31,7 @@ jQuery(document).ready(function() {
         // width: 'style',
         width: 'resolve',
         dropdownAutoWidth: false,
-        selectOnClose: true,
+        selectOnClose: false,
         // minimumInputLength: 3,
         allowClear: false,
         templateSelection: formatItem,
@@ -39,7 +39,7 @@ jQuery(document).ready(function() {
 
     function formatItem(data, container) {
         var elClass='';
-        if (data.element.value == -1 || data.element.value == "") {
+        if (data.element.value == "-1" || data.element.value == "") {
            elClass='class="option-none"';
         }
         var $state = jQuery('<span ' + elClass + '>' + data.text + '</span>');

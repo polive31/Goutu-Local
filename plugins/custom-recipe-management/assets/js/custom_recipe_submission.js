@@ -54,10 +54,12 @@ jQuery(document).ready(function() {
         language: 'fr_FR',
         statusbar: false,
         menubar:false,
-        toolbar: 'undo redo | styleselect | bold italic underline | link image | alignleft aligncenter alignright | bullist | searchreplace',
+        toolbar: 'autoresize | undo redo | styleselect | bold italic underline | link image | alignleft aligncenter alignright | bullist | searchreplace',
         plugins: 'link spellchecker searchreplace placeholder lists',
-        //IMPORTANT DO NOT USE AUTORIZE PLUGIN SINCE IT WILL MAKE THE PLACEHOLDER OVERFLOW ON MOBILE !!!
-        height:'200',
+        // //IMPORTANT DO NOT USE AUTORIZE PLUGIN SINCE IT WILL MAKE THE PLACEHOLDER OVERFLOW ON MOBILE !!!
+        // height:'200',
+        autoresize_bottom_margin: 20,
+        min_height: 200,
         remove_linebreaks: true,
         placeholder_attrs : {style: {
                 position: 'absolute',

@@ -12,11 +12,10 @@ jQuery(document).ready(function() {
         language: 'fr_FR',
         statusbar: false,
         menubar:false,
-        toolbar: 'undo redo | styleselect | bold italic underline | link image | alignleft aligncenter alignright | bullist | searchreplace',
+        toolbar: 'autoresize | undo redo | styleselect | bold italic underline | link image | alignleft aligncenter alignright | bullist | searchreplace',
         plugins: 'link spellchecker searchreplace placeholder lists image',
-        //IMPORTANT DO NOT USE AUTORIZE PLUGIN SINCE IT WILL MAKE THE PLACEHOLDER OVERFLOW ON MOBILE !!!
-        height:'200',
-        remove_linebreaks : false,
+        autoresize_bottom_margin: 20,
+        min_height: 200,
         placeholder_attrs : {style: {
                 color: '#888',
                 'font-style': 'italic',

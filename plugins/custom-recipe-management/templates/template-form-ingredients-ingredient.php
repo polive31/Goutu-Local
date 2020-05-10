@@ -30,7 +30,7 @@ if ($newgroup) { ?>
     <td class="ingredient-preview" colspan="5">
         <?php
         // echo CRM_Ingredient::display($ingredient);
-        $target='screen';
+        $target='form';
         $args = compact('ingredient', 'target');
         CRM_Assets::echo_template_part('ingredients', 'ingredient', $args);
         ?>

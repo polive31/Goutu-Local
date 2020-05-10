@@ -1,4 +1,5 @@
 <?php
+// $target : 'screen', 'print', 'form'
 
 $ratio=isset($ratio)?$ratio:1;
 $parts = CRM_Ingredient::get_ingredient_parts($ingredient, $ratio);
@@ -21,7 +22,7 @@ $out .= '<span class="recipe-ingredient-name"' . $plural_data . '>';
 
 $closing_tag = '';
 $hide_link = WPURP_Taxonomy_MetaData::get('ingredient', $parts['tax'], 'hide_link') == '1';
-if ( !empty($parts['tax']) && empty($hide_link) && $target != 'print') {
+if ( !empty($parts['tax']) && empty($hide_link) && !in_array($target, array('print','form') ) ) {
     $out .= '<a href="' . get_term_link($parts['tax'], 'ingredient') . '">';
     $closing_tag = '</a>';
 }

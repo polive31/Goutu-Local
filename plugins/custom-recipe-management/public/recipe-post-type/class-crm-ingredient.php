@@ -246,7 +246,7 @@ class CRM_Ingredient {
         $ingredient['links'] = 'no';
         // $ingredient_save = self::save($args);
 
-        $target='screen';
+        $target='form';
         $args=compact('ingredient','target');
         $ingredient_preview = CRM_Assets::get_template_part('ingredients', 'ingredient', $args );
         if (!$ingredient_preview) {

@@ -149,9 +149,9 @@ class Custom_Gallery_Shortcode
 		?>
 
 		<div class="add-picture-button">
-			<button class="tooltip-onclick" id="<?= $button_id; ?>" data-tooltip-id="<?php echo is_user_logged_in() ? '' : 'join_us'; ?>" title="<?= __('You cooked this recipe ? Upload your own picture here', 'foodiepro'); ?>"><?= __('Add a picture', 'foodiepro'); ?></button>
+			<button class="tooltip-onclick" id="<?= $button_id; ?>" data-tooltip-id="<?php //echo is_user_logged_in() ? '' : 'join_us'; ?>" title="<?= __('You cooked this recipe ? Upload your own picture here', 'foodiepro'); ?>"><?= __('Add a picture', 'foodiepro'); ?></button>
 			<?php
-					if (is_user_logged_in()) {
+					// if (is_user_logged_in()) {
 						$args = array(
 							'content' 	=> $this->get_file_upload_form(),
 							'valign' 	=> 'above',
@@ -163,7 +163,7 @@ class Custom_Gallery_Shortcode
 							'imgdir'	=> CHILD_THEME_PATH . '/images/popup-icons/'
 						);
 						Tooltip::display($args);
-					}
+					// }
 					?>
 		</div>
 

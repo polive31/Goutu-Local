@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-class Custom_Site_Notifications {
+class Custom_Site_Interactions {
 
 	public function __construct() {
 
@@ -31,7 +31,7 @@ class Custom_Site_Notifications {
 
 		$Notifications = new CSN_Notifications();
 		// add_action('wp_loaded',						array( $Notifications, 'setup_notifications'));
-		add_action('foodiepro_send_notification',	array( $Notifications, 'send_notification_on_event'), 10, 4);
+		add_action( 'csi_send_notification',		array( $Notifications, 'send_notification_on_event'), 10, 4);
 	}
 
 

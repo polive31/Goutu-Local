@@ -45,7 +45,11 @@ class CSN_Mails {
 	}
 
 	public function insert_comment_callback( $comment_ID, $comment_approved, $commentdata) {
-		if ($comment_approved) {
+		$comment_author = $commentdata['user_id'];
+		$post_author =  get_post_field('post_author',  $commentdata['comment_post_ID']);
+		if ($comment_author == $post_author ) return;
+
+		if ($comment_approved ) {
 			$this->send_mail_publish_comment( $commentdata );
 		}
 	}
@@ -59,13 +63,10 @@ class CSN_Mails {
 	}
 
 
-
-
 	/* *****************************************************************
 						MAIL PUBLISHERS
 	********************************************************************/
 	public function send_mail_publish_post( $post ) {
-		$Assets = new CPM_Assets();
 		$subject = CPM_Assets::get_label( $post->post_type, 'post_publish_title');
 		$content = CPM_Assets::get_label( $post->post_type, 'post_publish_content');
 		$content1 = CPM_Assets::get_label( $post->post_type, 'post_publish_content1');
@@ -121,13 +122,11 @@ class CSN_Mails {
 		else
 			$comment_author = $commentdata['comment_author'];
 
-		$Assets = new CPM_Assets();
 		$subject = CPM_Assets::get_label( $post->post_type, 'comment_publish_title');
-		$content_original = CPM_Assets::get_label( $post->post_type, 'comment_publish_content');
-
 		$subject = sprintf( $subject, ucfirst($comment_author));
+
+		$content_original = CPM_Assets::get_label( $post->post_type, 'comment_publish_content');
 		$content = sprintf( $content_original, ucfirst($comment_author), get_permalink($post), $post->post_title);
-		$content = $content . '<br>' . $this->connect() . '</br>';
 
 		$to = get_the_author_meta('user_email', $post->post_author);
 
@@ -140,7 +139,7 @@ class CSN_Mails {
 
 		$content = sprintf( $content, get_permalink($post), $post->post_title);
 		$content = wpautop( $content );
-		// $content .= wpautop( '<div style="padding:5px;background:#f1f1f1;font-family:serif;font-style:italic;">' . $commentdata['comment_content'] . '</div>');
+		$content .= '<p>' . __('See you soon !', 'foodiepro') . '<p>';
 
 		$data = array(
 			'title' 		=> $post->post_title,
@@ -156,7 +155,7 @@ class CSN_Mails {
 		if ( !$to_id ) return;
 
 		$commenter_id = $commentdata['user_ID'];
-		do_action('foodiepro_send_notification', 'comment', $commenter_id, $to_id, $post_id);
+		do_action('csi_send_notification', 'comment', $commenter_id, $to_id, $post_id);
 
 	}
 
@@ -172,14 +171,11 @@ class CSN_Mails {
 			$response_author = $responsedata['responder_name'];
 
 		$subject = __( '%s answered one of your comments', 'foodiepro');
-		$content = __( '%s answered your comment on post <a href="%s">%s</a>.', 'foodiepro');
-		$login = __( 'You must <a href="%s">log-in</a>.', 'foodiepro');
-
 		$subject = sprintf( $subject, ucfirst($response_author));
+
+		$content = __( '%s answered your comment on post <a href="%s">%s</a>.', 'foodiepro');
 		$content = sprintf( $content, ucfirst($response_author), get_permalink($post), $post->post_title);
-		// $login = sprintf($login, do_shortcode('[permalink wp="login"]') );
-		$login = sprintf($login, foodiepro_get_permalink(array('wp'=>'login') ) );
-		$content = $content . '<br>' . $this->connect() . '</br>';
+		$content .= '<p>' . __( 'See you soon !' , 'foodiepro') . '<p>';
 
 		$parent = get_comment( $responsedata['parent_ID']);
 		$to = $parent->comment_author_email;
@@ -204,7 +200,7 @@ class CSN_Mails {
 
 		/* Send notification */
 		$responder_id = $responsedata['responder_ID'];
-		do_action('foodiepro_send_notification', 'comment_respond', $responder_id, $to_id, $post_id);
+		do_action('csi_send_notification', 'comment_respond', $responder_id, $to_id, $post_id);
 
 	}
 
@@ -289,7 +285,7 @@ class CSN_Mails {
 
 	public function connect() {
 		$out =  __( '<a href="%s">Log yourself in</a> to respond.', 'foodiepro');
-		$out = sprintf( $out, do_shortcode('[permalink wp="login"]') );
+		// $out = sprintf( $out, do_shortcode('[permalink wp="login"]') );
 		$out = sprintf( $out, foodiepro_get_permalink(array('wp'=>'login')) );
 		return $out;
 	}

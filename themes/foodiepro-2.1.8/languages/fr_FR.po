@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2020-05-10 21:38+0200\n"
-"PO-Revision-Date: 2020-05-10 21:40+0200\n"
+"POT-Creation-Date: 2020-05-11 21:21+0200\n"
+"PO-Revision-Date: 2020-05-11 21:25+0200\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -1588,14 +1588,14 @@ msgstr ""
 "Ces articles ont été approuvés par les administrateurs. Ils sont visibles "
 "sur le site, selon vos préférences (amis, groupes, membres, public)."
 
-#: plugins/custom-post-management/includes/class-cpm-private.php:64
+#: plugins/custom-post-management/includes/class-cpm-private.php:66
 #, php-format
 msgid ""
 "Go to the <a href=\"%s\">home page</a> and discover Goûtu.org from here !"
 msgstr ""
 "Rendez vous sur <a href=\"%s\">Goûtu.org</a> et découvrez tout le site !"
 
-#: plugins/custom-post-management/includes/class-cpm-private.php:88
+#: plugins/custom-post-management/includes/class-cpm-private.php:90
 #, php-format
 msgid ""
 "<a href=\"%s\">Log-in</a> to access private posts. Not a member ? <a href="
@@ -1605,7 +1605,7 @@ msgstr ""
 "encore inscrit ? <a href=\"%s\">Jetez un oeil</a> sur tout ce que vous "
 "pouvez faire en tant que membre de Goûtu.org !"
 
-#: plugins/custom-post-management/includes/class-cpm-private.php:93
+#: plugins/custom-post-management/includes/class-cpm-private.php:95
 #, php-format
 msgid ""
 "<a href=\"%s\">Make new friends</a> to get access to their private posts."
@@ -1613,7 +1613,7 @@ msgstr ""
 "<a href=\"%s\">Faites-vous de nouveaux amis</a> afin de pouvoir accéder à "
 "leurs articles privés."
 
-#: plugins/custom-post-management/includes/class-cpm-private.php:98
+#: plugins/custom-post-management/includes/class-cpm-private.php:100
 #, php-format
 msgid ""
 "<a href=\"%s\">Apply to this group</a> in order to get access to their "
@@ -1621,7 +1621,7 @@ msgid ""
 msgstr ""
 "<a href=\"%s\">Rejoignez ce groupe</a> afin d'accéder à ses articles privés."
 
-#: plugins/custom-post-management/includes/class-cpm-private.php:105
+#: plugins/custom-post-management/includes/class-cpm-private.php:107
 msgid "The page you are trying to open does not exist, sorry"
 msgstr "La page à laquelle vous essayez d'accéder n'existe pas."
 
@@ -3010,76 +3010,74 @@ msgstr "Portions"
 msgid "New user submission:%s"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:174
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:178
 #, php-format
 msgid "%s answered one of your comments"
 msgstr "%s a répondu à l'un de tes commentaires"
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:175
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:181
 #, php-format
 msgid "%s answered your comment on post <a href=\"%s\">%s</a>."
 msgstr "%s a répondu à ton commentaire sur l'article <a href=\"%s\">%s</a>."
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:176
-#, fuzzy, php-format
-#| msgid "In my <a href=\"%s\">wishlist</a>"
-msgid "You must <a href=\"%s\">log-in</a>."
-msgstr "Disponible dans <a href=\"%s\">mes recettes à essayer</a>"
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:183
+msgid "See you soon !"
+msgstr "A bientôt !"
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:243
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:244
 msgid "Share this recipe on Facebook"
 msgstr "Partager cette recette sur Facebook"
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:244
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:245
 msgid "Share this recipe on Twitter"
 msgstr "Partager cette recette sur Twitter"
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:245
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:246
 msgid "Share this recipe on Pinterest"
 msgstr "Partager cette recette sur Pinterest"
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:246
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:247
 #, fuzzy
 #| msgid "Share this recipe"
 msgid "Share this recipe by email"
 msgstr "Partager sur les réseaux sociaux"
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:247
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:248
 #, fuzzy
 #| msgid "Share this recipe on Pinterest"
 msgid "Share this recipe on Whatsapp"
 msgstr "Partager cette recette sur Pinterest"
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:285
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:286
 #, php-format
 msgid "Hello %s,"
 msgstr "Bonjour %s,"
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:291
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:292
 #, php-format
 msgid "<a href=\"%s\">Log yourself in</a> to respond."
 msgstr "<a href=\"%s\">Connecte-toi </a> pour lui répondre."
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:298
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:299
 #, php-format
 msgid "The <a href=\"%s\">Goûtu.org</a> Team."
 msgstr "L'équipe <a href=\"%s\">Goûtu.org</a>."
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:304
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:305
 #, php-format
 msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr "Un problème ? Une question ? Contacte nous <a href=\"%s\">ici</a>"
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:310
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:311
 #: themes/foodiepro-2.1.8/functions.php:997
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:316
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:317
 msgid "Want to change how you receive these emails?"
 msgstr "Tu ne souhaites plus recevoir ces courriels ?"
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:317
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:318
 #, php-format
 msgid "You can <a href=\"%s\">update your preferences</a> on %s."
 msgstr "Tu peux <a href=\"%s\">mettre à jour tes préférences</a> sur %s."
@@ -4451,6 +4449,11 @@ msgstr "Ces recettes pourraient également vous intéresser..."
 #: themes/foodiepro-2.1.8/yarpp-template-goutu.php:20
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
+
+#, fuzzy, php-format
+#~| msgid "In my <a href=\"%s\">wishlist</a>"
+#~ msgid "You must <a href=\"%s\">log-in</a>."
+#~ msgstr "Disponible dans <a href=\"%s\">mes recettes à essayer</a>"
 
 #, php-format
 #~ msgid ""

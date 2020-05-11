@@ -168,7 +168,7 @@ class CPM_Like
             do_action('cpm_post_like', $from_id, $post_id);
             $post = get_post($post_id);
             if (is_user_logged_in()) {
-                do_action('foodiepro_send_notification', 'like', $from_id, $post->post_author, $post_id);
+                do_action('csi_send_notification', 'like', $from_id, $post->post_author, $post_id);
             }
         }
 

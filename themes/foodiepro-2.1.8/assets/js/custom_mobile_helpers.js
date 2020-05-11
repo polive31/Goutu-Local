@@ -55,4 +55,5 @@ jQuery(window).load(function () {
 function actionsOnScroll() {
     // Hide hint
     jQuery('.mobile-menu-hint-container').addClass('transparent');
+    jQuery(".preloader").fadeOut(100);
 }

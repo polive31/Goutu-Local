@@ -36,8 +36,10 @@ class CPM_Private
             if (isset($current_query->post_status)) {
                 $type = isset($current_query->post_type)? $current_query->post_type:'post';
                 $url = add_query_arg('error404', $type . '-' . $current_query->post_status, $url);
+                wp_redirect($url);
             }
-            wp_redirect($url);
+            else
+                wp_redirect( get_home_url() );
             exit;
         }
     }

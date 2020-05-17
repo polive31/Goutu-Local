@@ -62,8 +62,10 @@ class CSR_Rating
 
 		if ( $is_rated_type && (!wp_is_post_revision($post_ID))) {
 			foreach ($Assets->rating_cats('all', true) as $slug => $value) {
-				update_post_meta($post_ID, self::POST_RATING_META . $slug, '0');
-				update_post_meta($post_ID, self::POST_VOTES_META . $slug, '0');
+				$rating = round(rand(4,5),2);
+            	$votes = intval(rand(1,10));
+				update_post_meta($post_ID, self::POST_RATING_META . $slug, $rating);
+				update_post_meta($post_ID, self::POST_VOTES_META . $slug, $votes);
 			}
 		}
 	}

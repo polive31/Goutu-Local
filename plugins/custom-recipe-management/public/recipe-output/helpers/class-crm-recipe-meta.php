@@ -36,7 +36,7 @@ class CRM_Recipe_Meta {
             'author'            => ucfirst(get_the_author_meta('user_nicename', $post->post_author )),
             'description'       => $this->get_description(),
             'servings'          => $this->recipe->servings() . ' ' . $this->recipe->servings_type(),
-            'rating-value'      => !empty($rating['rating'])? $rating['rating']: round(rand(4,5),1),
+            'rating-value'      => !empty($rating['rating'])? $rating['rating']: round(rand(4,5),2),
             'rating-count'      => !empty($rating['votes'])? $rating['votes']: intval(rand(1,10)),
             'course'            => $this->get_course(),
             'cuisine'           => $this->get_cuisine(),

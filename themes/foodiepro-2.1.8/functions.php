@@ -209,6 +209,7 @@ function foodie_pro_theme_setup()
 	add_theme_support('genesis-footer-widgets', 4);
 }
 
+
 /* =================================================================*/
 /* =        LOAD OF FOODIE INCLUDES                                =*/
 /* =================================================================*/

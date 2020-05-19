@@ -209,6 +209,13 @@ function foodie_pro_theme_setup()
 	add_theme_support('genesis-footer-widgets', 4);
 }
 
+add_action( 'genesis_after_header', 'foodiepro_do_breadcrumbs' );
+function foodiepro_do_breadcrumbs() {
+	if ( is_home() || is_front_page() ) return;
+	if (function_exists('yoast_breadcrumb')) {
+		yoast_breadcrumb('<div class="breadcrumb"><span>', '</span></div>');
+	}
+}
 
 /* =================================================================*/
 /* =        LOAD OF FOODIE INCLUDES                                =*/

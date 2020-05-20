@@ -293,7 +293,7 @@ class CRM_Ingredient {
         // Treat " to " as a dash for ranges
         $amount = str_ireplace(' to ', '-', $amount);
 
-        $amount = preg_replace("/[^\d\.\/\,\s-–—]/", "", $amount); // Only keep digits, comma, point, forward slash, space and dashes
+        $amount = preg_replace("/[^\d\.\/\,\s\-–—]/", "", $amount); // Only keep digits, comma, point, forward slash, space and dashes
 
         // Replace en and em dash with a normal dash
         $amount = str_replace('–', '-', $amount);

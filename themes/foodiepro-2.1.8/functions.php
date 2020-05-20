@@ -209,13 +209,6 @@ function foodie_pro_theme_setup()
 	add_theme_support('genesis-footer-widgets', 4);
 }
 
-add_action( 'genesis_after_header', 'foodiepro_do_breadcrumbs' );
-function foodiepro_do_breadcrumbs() {
-	if ( is_home() || is_front_page() ) return;
-	if (function_exists('yoast_breadcrumb')) {
-		yoast_breadcrumb('<div class="breadcrumb"><span>', '</span></div>');
-	}
-}
 
 /* =================================================================*/
 /* =        LOAD OF FOODIE INCLUDES                                =*/
@@ -647,52 +640,6 @@ function add_terms_clauses($clauses, $taxonomy, $args)
 }
 
 
-/* =================================================================*/
-/* =              SEO
-/* =================================================================*/
-
-/* Useful for WP2SocialPublish => publishes the yoast meta instead of the WP standard  post excerpt */
-add_filter('get_the_excerpt', 'replace_post_excerpt_filter');
-function replace_post_excerpt_filter($output)
-{
-	$output = get_post_meta(get_the_ID(), '_yoast_wpseo_metadesc', true);
-	return $output;
-}
-
-
-/* Exclude Multiple Taxonomies From Yoast SEO Sitemap */
-add_filter('wpseo_sitemap_exclude_taxonomy', 'sitemap_exclude_taxonomy', 10, 2);
-function sitemap_exclude_taxonomy($value, $taxonomy)
-{
-	$taxonomy_to_exclude = array('slider');
-	if (in_array($taxonomy, $taxonomy_to_exclude)) return true;
-}
-
-// Capitalize SEO title
-add_filter('wpseo_title', 'wpseo_uppercase_title');
-function wpseo_uppercase_title($title)
-{
-	return ucfirst($title);
-}
-
-// Populate SEO meta if empty
-// add_filter('wpseo_metadesc', 'foodiepro_populate_metadesc', 100, 1);
-function foodiepro_populate_metadesc($text)
-{
-	if (empty($text)) {
-		if (is_single()) {
-			$text = get_the_excerpt();
-		}
-	}
-	return $text;
-}
-
-// Add pinterest meta
-// add_action ('genesis_meta','add_pinterest_meta'); /* Already done in YOAST SEO */
-function add_pinterest_meta()
-{
-	echo '<meta name="p:domain_verify" content="c4a191084b3f5ef29b9df4a1a9f05aab"/>';
-}
 
 
 /* =================================================================*/

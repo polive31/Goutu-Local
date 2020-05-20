@@ -95,6 +95,7 @@ plugins/*
 !plugins/custom-recaptcha/
 !plugins/custom-recent-post-widget/
 !plugins/custom-recipe-management/
+!plugins/custom-seo/
 !plugins/custom-site-notifications/
 !plugins/custom-social-interactions/
 !plugins/custom-social-sharing-buttons/

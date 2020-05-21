@@ -339,6 +339,12 @@ class CRM_Assets {
 			'location' 	=> array('recipe'),
 		);
 
+		$scripts['crm-responsive-voice-apikey'] = array(
+			'uri'		=> 'https://code.responsivevoice.org/responsivevoice.js?key=6uuS1yl4',
+			'footer' 	=> true,
+			'location' 	=> array('recipe'),
+		);
+
 		$scripts['crm-timer'] = array (
 			'file' 		=> 'timer.js',
 			'uri' 		=> self::$PLUGIN_URI . '/assets/js/',

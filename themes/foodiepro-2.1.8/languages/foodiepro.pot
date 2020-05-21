@@ -5,14 +5,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foodie Pro Theme 2.1.7\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2020-05-11 21:21+0200\n"
+"POT-Creation-Date: 2020-05-21 02:16+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Shay Bocks (http://shaybocks.com)\n"
 "Language-Team: Shay Bocks (http://shaybocks.com)\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.3.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -32,6 +32,7 @@ msgstr ""
 "X-Poedit-SearchPath-10: plugins/custom-recipe-management\n"
 "X-Poedit-SearchPath-11: plugins/custom-archive-management\n"
 "X-Poedit-SearchPath-12: plugins/custom-recaptcha\n"
+"X-Poedit-SearchPath-13: plugins/custom-seo\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
 #: plugins/custom-archive-management/public/class-cnh-archive-headline.php:18
@@ -889,7 +890,7 @@ msgid "wrote a new recipe"
 msgstr ""
 
 #: plugins/custom-peepso-overrides/public/class-cpo-customizations.php:195
-#: themes/foodiepro-2.1.8/functions.php:997
+#: themes/foodiepro-2.1.8/functions.php:952
 msgid "Legal notice"
 msgstr ""
 
@@ -975,7 +976,7 @@ msgid "Edit my profile"
 msgstr ""
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:103
-#: themes/foodiepro-2.1.8/functions.php:851
+#: themes/foodiepro-2.1.8/functions.php:806
 #: themes/foodiepro-2.1.8/peepso/widgets/userbar.tpl.php:33
 #: themes/foodiepro-2.1.8/peepso/widgets/userbar.tpl.php:90
 msgid "Log Out"
@@ -995,7 +996,7 @@ msgid "Remember Me"
 msgstr ""
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:140
-#: themes/foodiepro-2.1.8/functions.php:855
+#: themes/foodiepro-2.1.8/functions.php:810
 msgid "Log In"
 msgstr ""
 
@@ -2680,16 +2681,16 @@ msgstr ""
 msgid "Click to Start Timer"
 msgstr ""
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-ingredient.php:88
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-ingredient.php:90
 msgid "Harvest Period"
 msgstr ""
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-ingredient.php:129
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-ingredient.php:131
 msgctxt "vowel"
 msgid "of "
 msgstr ""
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-ingredient.php:131
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-ingredient.php:133
 msgctxt "consonant"
 msgid "of "
 msgstr ""
@@ -2759,75 +2760,80 @@ msgstr ""
 msgid "Serving Size"
 msgstr ""
 
+#: plugins/custom-seo/public/class-cseo-public.php:27
+msgid "More ideas"
+msgstr ""
+
 #: plugins/custom-site-notifications/public/mails/class-csn-mails.php:38
 #, php-format
 msgid "New user submission:%s"
 msgstr ""
 
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:142
 #: plugins/custom-site-notifications/public/mails/class-csn-mails.php:178
+msgid "See you soon !"
+msgstr ""
+
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:173
 #, php-format
 msgid "%s answered one of your comments"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:181
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:176
 #, php-format
 msgid "%s answered your comment on post <a href=\"%s\">%s</a>."
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:183
-msgid "See you soon !"
-msgstr ""
-
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:244
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:239
 msgid "Share this recipe on Facebook"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:245
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:240
 msgid "Share this recipe on Twitter"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:246
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:241
 msgid "Share this recipe on Pinterest"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:247
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:242
 msgid "Share this recipe by email"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:248
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:243
 msgid "Share this recipe on Whatsapp"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:286
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:281
 #, php-format
 msgid "Hello %s,"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:292
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:287
 #, php-format
 msgid "<a href=\"%s\">Log yourself in</a> to respond."
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:299
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:294
 #, php-format
 msgid "The <a href=\"%s\">Goûtu.org</a> Team."
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:305
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:300
 #, php-format
 msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:311
-#: themes/foodiepro-2.1.8/functions.php:997
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:306
+#: themes/foodiepro-2.1.8/functions.php:952
 msgid "All rights reserved"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:317
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:312
 msgid "Want to change how you receive these emails?"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:318
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:313
 #, php-format
 msgid "You can <a href=\"%s\">update your preferences</a> on %s."
 msgstr ""
@@ -2893,7 +2899,7 @@ msgid "Displays share buttons of selected social networks"
 msgstr ""
 
 #: plugins/custom-star-rating/deprecated/deprecated.php:72
-#: plugins/custom-star-rating/public/class-csr-rating.php:318
+#: plugins/custom-star-rating/public/class-csr-rating.php:320
 msgid "Evaluate me !"
 msgstr ""
 
@@ -2960,22 +2966,22 @@ msgstr ""
 msgid "Provide details"
 msgstr ""
 
-#: plugins/custom-star-rating/public/class-csr-rating.php:322
+#: plugins/custom-star-rating/public/class-csr-rating.php:324
 #, php-format
 msgid "%s review"
 msgid_plural "%s reviews"
 msgstr[0] ""
 msgstr[1] ""
 
-#: themes/foodiepro-2.1.8/functions.php:707
+#: themes/foodiepro-2.1.8/functions.php:662
 msgid "Content/Alt Sidebar"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:946
+#: themes/foodiepro-2.1.8/functions.php:901
 msgid "Recipe, Ingredient, Keyword, Author..."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:997
+#: themes/foodiepro-2.1.8/functions.php:952
 msgid "Contact us"
 msgstr ""
 

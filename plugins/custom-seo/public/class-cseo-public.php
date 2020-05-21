@@ -16,6 +16,21 @@ class CSEO_Public {
         }
     }
 
+    public function yarpp_add_link_to_cornerstone_posts($params) {
+        if ( is_single() && foodiepro_startsWith($params[0]['widget_id'],'yarpp_widget') ) {
+            $post=get_post();
+
+            $slug = CSEO_Assets::get_cornerstone_url( $post );
+
+            if ($slug) {
+                $url = foodiepro_get_permalink( array('slug' => $slug) );
+                $params[0]['after_widget'] = '<p class="more-from-category"><a class="" id="" href="' . $url . '">' . __('More ideas', 'foodiepro') . '</a></p>';
+            }
+
+        }
+        return $params;
+    }
+
     // public function foodiepro_edit_breadcrumbs($link_output, $link)
     // {
     //     if ( $link['ptarchive']=='recipe') {

@@ -2,6 +2,7 @@
 VARIABLES
 ---------------------------------------------------------------------------------------------------- */
 @import "../../../../_foodiepro.scss";
+@import "_icons_fontawesome.scss";
 
 // $h1-font: 'Special Elite';
 // $h3-font-size : 2.5rem;
@@ -300,43 +301,6 @@ span.bp_counter,
 .search-form input,
 .author-box-title {
     font-family: "Vollkorn", "Helvetica Neue", sans-serif;
-}
-
-[class^='dashicons']:before {
-    font-family: dashicons;
-}
-
-.ui-icon:before,
-// .fa-before:before,
-// .toolbar-button a:before,
-// [class^='fa-']:before,
-// [class^='fa']:before,
-// [class^='fa-']:after,
-// [class^='fa']:after,
-[class^="ps-icon-"]:before,
-[class*=" ps-icon-"]:before {
-    font-family: $icon-font, sans-serif;
-    font-style: normal;
-    // speak: none;
-    display: inline-block;
-    position:relative;//allows for overlay positioning on icons
-    text-decoration: inherit;
-    width: 1em;
-    margin-right: .2em;
-    text-align: center;
-    font-variant: normal;
-    text-transform: none;
-    vertical-align: middle;
-    /* line-height:1em; */
-    margin-left: .2em;
-    margin-bottom: .2em;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-[class^='fa-']:after,
-[class^='fa']:after {
-    position:absolute;
 }
 
 

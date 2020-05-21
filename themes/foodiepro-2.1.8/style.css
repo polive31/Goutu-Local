@@ -1815,23 +1815,6 @@ h3.ui-accordion-header:focus {
   margin: 0;
 }
 
-.ui-icon {
-  font-family: "Font Awesome 5 Pro", sans-serif;
-  font-weight: 900;
-  display: inline-block;
-  width: 30px;
-  height: 16px;
-  cursor: pointer;
-}
-
-span.ui-icon.ui-icon-triangle-1-e:before {
-  content: "\f054";
-}
-
-span.ui-icon.ui-icon-triangle-1-s:before {
-  content: "\f078";
-}
-
 /* Max Mega Menu
 ----------------------------------------------*/
 /* YARPP

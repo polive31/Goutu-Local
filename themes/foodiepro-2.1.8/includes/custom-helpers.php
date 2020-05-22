@@ -103,6 +103,24 @@ function foodiepro_replace_token($html, $token, $data)
 	return $html;
 }
 
+/* =================================================================*/
+/* =              RANDOM FLOAT NUMBER
+/* =================================================================*/
+/**
+ * Generates a random number between $min & $max, rounded to $res digits after the comma
+ *
+ * @param  mixed $min
+ * @param  mixed $max
+ * @param  mixed $res
+ * @return float $value rounded according to $res
+ */
+function foodiepro_rand( $min, $max, $res=2) {
+	if ($min > $max ) return false;
+	$mult=10**$res;
+	$value=round( mt_rand( $min*$mult, $max*$mult)/$mult, $res);
+	return $value;
+}
+
 
 /* =================================================================*/
 /* =              PERMALINKS

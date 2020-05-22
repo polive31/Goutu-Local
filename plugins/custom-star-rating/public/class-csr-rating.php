@@ -58,16 +58,27 @@ class CSR_Rating
 		$Assets = new CSR_Assets();
 
 		$ratedTypes = $Assets->post_types();
-		$is_rated_type = in_array(get_post_type(), $ratedTypes);
+		$is_rated_type = in_array(get_post_type($post_ID), $ratedTypes);
+
+		$stats=array();
 
 		if ( $is_rated_type && (!wp_is_post_revision($post_ID))) {
-			foreach ($Assets->rating_cats('all', true) as $slug => $value) {
-				$rating = round(rand(4,5),2);
-            	$votes = intval(rand(1,10));
-				update_post_meta($post_ID, self::POST_RATING_META . $slug, $rating);
-				update_post_meta($post_ID, self::POST_VOTES_META . $slug, $votes);
+			foreach ($Assets->rating_cats() as $cat => $value) {
+				$rating = foodiepro_rand(4,5,1);
+				$votes = foodiepro_rand(5, 20, 0);
+
+				$stats[$cat]['rating']=$rating;
+				$stats[$cat]['votes']=$votes;
+
+				update_post_meta($post_ID, self::POST_RATING_META . $cat, $rating);
+				update_post_meta($post_ID, self::POST_VOTES_META . $cat, $votes);
 			}
+
+			$global=self::compute_global_stats( $stats );
+			update_post_meta($post_ID, self::POST_RATING_META . 'global', $global['rating']);
+			update_post_meta($post_ID, self::POST_VOTES_META . 'global', $global['votes']);
 		}
+
 	}
 
 	/**
@@ -201,20 +212,26 @@ class CSR_Rating
 -------------------------------------------------------------------------*/
 
 	/**
-	 * compute_global_stats
+	 * Comptute global stats based on array of ratings & votes
+	 * For robustness purposes, we don't take into account the CSR Rating cats, only the content of $stats
 	 *
 	 * @param  mixed $stats
-	 * @return void
+	 * @return array $global_stats :
+	 * * 'rating'=>float
+	 * * 'votes'=>int
 	 */
 	public static function compute_global_stats($stats)
 	{
 		$rating = 0;
 		$votes = 0;
 		$count = 0;
-		foreach (CSR_Assets::rating_cats() as $cat => $values) {
-			$rating += $stats[$cat]['rating'] * $stats[$cat]['votes'] * $values['weight'];
+		foreach ($stats as $cat => $values) {
+			$params = CSR_Assets::rating_cats($cat);
+			$weight= $params?$params['weight']:1;
+
+			$rating += $stats[$cat]['rating'] * $stats[$cat]['votes'] * $params['weight'];
 			$votes += $stats[$cat]['votes'];
-			$count += $stats[$cat]['votes'] * $values['weight'];
+			$count += $stats[$cat]['votes'] * $params['weight'];
 		}
 		$global_stats = array(
 			'rating'	=> $count?round($rating / $count, 2):0,

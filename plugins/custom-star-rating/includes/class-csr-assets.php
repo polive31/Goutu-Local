@@ -112,10 +112,16 @@ class CSR_Assets {
 		return self::RATED_POST_TYPES;
 	}
 
-	/* Get Rating Categories
-		- $cat_ids = 'all', 'global', <catN>, array(<cat2>, <cat5>, ...)
-		- $global = false, true => only valid with 'all'
-	------------------------------------------------------------*/
+
+	/**
+	 * Get Rating Categories
+	 * * $cat_ids = 'all', 'global', <catN>, array(<cat2>, <cat5>, ...)
+	 * * $global = false, true => only valid with 'all'
+	 *
+	 * @param  mixed $cat_ids
+	 * @param  mixed $global
+	 * @return array $cats array of different categories or single category array
+	 */
 	public static function rating_cats( $cat_ids='all', $global=false ) {
 		$cats=array();
 		if ($cat_ids=='all') {
@@ -126,12 +132,16 @@ class CSR_Assets {
 		elseif ( is_array($cat_ids) ) {
 			// Return a selection of rating categories
 			foreach ( $cat_ids as $id ) {
-				$cats[$id]=self::$ratingCats[$id];
+				if (isset(self::$ratingCats[$id])) {
+					$cats[$id]=self::$ratingCats[$id];
+				}
 			}
 		}
-		else
+		elseif (isset(self::$ratingCats[$cat_ids]))
 			// Return one rating category
-			$cats[$cat_ids]=self::$ratingCats[$cat_ids];
+			$cats=self::$ratingCats[$cat_ids];
+		else
+			$cats=false;
 
 		return $cats;
 	}

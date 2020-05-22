@@ -17,23 +17,28 @@
 .no-webp .site-header,
 .no-js .home .site-header,
 .no-webp .home .site-header {
-    background-image: url("../../../images/theme/header-spring.jpg");
+    background-image: url("../../../images/theme/header-summer.jpg");
     background-size: cover;
 }
 
 
 .webp .site-header,
 .webp .home .site-header {
-    background-image: url("../../../images/theme/header-spring.webp");
+    background-image: url("../../../images/theme/header-summer.webp");
     background-size: cover;
 }
 
+.foodie-pro .header-inner {
+    background-color: rgba(255, 255, 255, 0.6);
+}
 
 .home body,
 body {
     background-color: white;
-    /* background-image: linear-gradient(90deg, rgba(217, 230, 206, 0.5) 50%, transparent 50%), linear-gradient(rgba(232, 238, 210, 0.5) 50%, transparent 50%); */
-    background-image: linear-gradient(90deg, rgba(217, 230, 206, 0.5) 50%, transparent 50%), linear-gradient(rgba(232, 243, 188, 0.5) 50%, transparent 50%);
+    /* Blue */
+    /* background-image: linear-gradient(90deg, rgba(206, 229, 230, 0.5) 50%, transparent 50%), linear-gradient(rgba(188, 228, 243, 0.5) 50%, transparent 50%); */
+    /* Summer */
+    background-image:linear-gradient(90deg, rgba(237, 218, 204, 0.5) 50%, transparent 50%), linear-gradient(rgba(231, 243, 188, 0.5) 50%, transparent 50%);
     background-size: 30px 30px;
 }
 
@@ -72,7 +77,6 @@ optgroup,
 textarea,
 .search-form input {
     background-color: #fefefe;
-    /* background-color important, pas background car conflit avec autre setting plus loin*/
 }
 
 /* STAR RATING

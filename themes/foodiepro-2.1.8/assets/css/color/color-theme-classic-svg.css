@@ -17,17 +17,31 @@
 .no-webp .site-header,
 .no-js .home .site-header,
 .no-webp .home .site-header {
-    background-image: url("../../../images/theme/header-spring.jpg");
+    /*background-image:url("../../../images/theme/background-spring/background-l.jpg"),url("../../../images/theme/background-spring/background-r.jpg");*/
+    background-image: url("../../../images/theme/header-classic.jpg");
     background-size: cover;
 }
 
 
 .webp .site-header,
 .webp .home .site-header {
-    background-image: url("../../../images/theme/header-spring.webp");
+    /*background-image:url("../../../images/theme/background-spring/background-l.webp"),url("../../../images/theme/background-spring/background-r.webp");*/
+    background-image: url("../../../images/theme/header-classic.webp");
     background-size: cover;
 }
 
+/*.no-js .site-header,
+.no-webp .site-header {
+	background-image:url("../../../images/theme/background-spring/background-l-small.jpg"),url("../../../images/theme/background-spring/background-r-small.jpg");
+}
+*/
+/*.webp .site-header {
+	background-image:url("../../../images/theme/background-spring/background-l-small.webp"),url("../../../images/theme/background-spring/background-r-small.webp");
+}
+*/
+.foodie-pro .header-inner {
+    background-color: rgba(255, 255, 255, 0.6);
+}
 
 .home body,
 body {
@@ -39,9 +53,12 @@ body {
 
 .site-container {
     background-color: #FFF;
+    /*  background-color: rgba(255, 255, 255, 0.7);
+  background-image: url("../../../images/container/bedge-grunge-beige.png");*/
 }
 
 .home .site-title a {
+    /*background:url("../../../images/theme/logo-white/logo_530_230.png") no-repeat center;*/
     background: url("../../../images/theme/logo-svg/logo-text-compact-path.svg") no-repeat center;
 }
 
@@ -114,6 +131,9 @@ textarea,
     background-color: transparent;
 }
 
+.progress-circle:after {
+    /*background-color: #ffffff!important;*/
+}
 
 /* Widgets with background
 -------------------------------------------- */

@@ -848,7 +848,7 @@ Structure and Layout
 IMPORTANT : DO NOT REMOVE SINCE COLOR THEMES ARE NOT LOADED ON SMARTPHONE !!!
 ------------------------------------------------------------------------------- */
 .header-inner {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .site-title a {
@@ -2326,6 +2326,8 @@ Site Header
     margin: 0;
     padding: 0;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-position: top;
+    background-size: cover;
 }
 
 .foodie-pro .header-inner {

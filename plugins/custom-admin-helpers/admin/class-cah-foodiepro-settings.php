@@ -209,7 +209,7 @@ class CAH_Options
             $stylesheets = list_files(CAH_Assets::get_option('path'), 1, array());
             foreach ($stylesheets as $stylesheet) {
                 $info = pathinfo($stylesheet);
-                if (isset($info['extension']) && $info['extension'] == 'css' && !strpos($info['basename'], '.min.css')) {
+                if (isset($info['extension']) && $info['extension'] == 'css' && !strpos($info['basename'], '.min.css') && !strpos($info['basename'], '-mobile') ) {
                     $color = str_replace(self::PREFIX, '', $info['filename']);
             ?>
                     <option value="<?= $color; ?>" <?php selected(CAH_Assets::get_option('color'), $color); ?>><?= $color; ?></option>

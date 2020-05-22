@@ -1,6 +1,3 @@
-/* Color theme :  White (default)
---------------------------------------------- */
-
 .site-header {
     background-position: top left, top right;
     background-repeat: no-repeat;
@@ -17,31 +14,41 @@
 .no-webp .site-header,
 .no-js .home .site-header,
 .no-webp .home .site-header {
-    background-image: url("../../../images/theme/header-spring.jpg");
-    background-size: cover;
+    /*background-image:url("../../../images/theme/background-spring/background-l.jpg"),url("../../../images/theme/background-spring/background-r.jpg");*/
+    background-image: url("../../../images/theme/header-christmas1.jpg");
+    /* background-size: cover; */
 }
 
 
 .webp .site-header,
 .webp .home .site-header {
-    background-image: url("../../../images/theme/header-spring.webp");
-    background-size: cover;
+    /*background-image:url("../../../images/theme/background-spring/background-l.webp"),url("../../../images/theme/background-spring/background-r.webp");*/
+    background-image: url("../../../images/theme/header-christmas1.webp");
+    /* background-size: cover; */
 }
 
-
-.home body,
-body {
-    background-color: white;
-    /* background-image: linear-gradient(90deg, rgba(217, 230, 206, 0.5) 50%, transparent 50%), linear-gradient(rgba(232, 238, 210, 0.5) 50%, transparent 50%); */
-    background-image: linear-gradient(90deg, rgba(217, 230, 206, 0.5) 50%, transparent 50%), linear-gradient(rgba(232, 243, 188, 0.5) 50%, transparent 50%);
-    background-size: 30px 30px;
+.no-js .home body,
+.no-js body,
+.no-webp .home body,
+.no-webp body {
+    background: url("../../../images/theme/background-winter/background-snow.jpg");
 }
+
+.webp .home body,
+.webp body {
+    background: url("../../../images/theme/background-winter/background-snow.webp");
+}
+
 
 .site-container {
     background-color: #FFF;
+    /*  background-color: rgba(255, 255, 255, 0.7);
+  background-image: url("../../../images/container/bedge-grunge-beige.png");*/
 }
 
 .home .site-title a {
+    /*background:url("../../../images/theme/logo-white/logo_530_230.png") no-repeat center;*/
+    /* background: url("../../../images/theme/logo-svg/logo-text-spaced-path.svg") no-repeat center; */
     background: url("../../../images/theme/logo-svg/logo-text-compact-path.svg") no-repeat center;
 }
 
@@ -50,9 +57,21 @@ body {
     background: url("../../../images/theme/logo-svg/logo-path.svg") no-repeat center;
 }
 
+h1.entry-title,
+.entry-title a,
+.sidebar .widgettitle a {
+    /*color:#5d5d5d;*/
+    color: #444;
+}
 
 .home-bottom .widgettitle {
     border-bottom: 1px solid #ccc;
+}
+
+.img-menu a .menu-title span,
+a.more-link,
+.more-from-category a {
+    background: #f5f5f5;
 }
 
 .img-menu:hover a .menu-title span,
@@ -75,22 +94,7 @@ textarea,
     /* background-color important, pas background car conflit avec autre setting plus loin*/
 }
 
-/* STAR RATING
--------------------------------------------------------*/
-/* Icons colors */
 
-i.fa.fa-star,
-i.fa.fa-star-half-o {
-    color: #f5a241;
-}
-
-i.fa.fa-star-o {
-    color: #d3d3d3;
-}
-
-.full i.fa.fa-star-o {
-    color: #f18b14;
-}
 
 
 /* WIDGETS
@@ -132,6 +136,7 @@ textarea,
 
 /* Widget themes
 -------------------------------------------- */
+
 .single .widget.themes ul li:hover,
 .widget.themes ul li:hover,
 .widget.back ul li:hover {
@@ -181,4 +186,55 @@ li.comment {
 
 .archive-pagination li {
     border: 1px solid #ccc;
+}
+
+
+/* MISC
+--------------------------------------------*/
+
+.frontier-list-item {
+    border-color: #aaa;
+}
+
+
+/* MEDIA QUERIES
+--------------------------------------------*
+
+/* Smartphone */
+
+@media only screen and (max-width:980px) {
+
+    body,
+    .no-webp body,
+    .no-js body,
+    .webp body,
+    body.home,
+    .no-webp .home body,
+    .no-js .home body,
+    .webp .home body,
+    .site-container {
+        /*background:url("../../../images/background/background-l-small.jpg") no-repeat top left;*/
+        background: none;
+    }
+
+    .site-title a {
+        background: url("../../../images/theme/logo-svg/logo-path.svg") no-repeat left;
+    }
+
+    .home .site-title a {
+        background: url("../../../images/theme/logo-svg/logo-text-compact-path.svg") no-repeat center;
+        background-position: center;
+    }
+}
+
+
+
+/* Small screens */
+@media only screen and (max-width:420px) {
+
+    .home .site-title a {
+        background-size: contain;
+    }
+
+
 }

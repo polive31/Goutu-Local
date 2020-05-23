@@ -7,7 +7,7 @@ $dropdowns = array();
 // -----------------------------------------------------------
 foreach ($taxonomies as $taxonomy => $options) {
     $dropdown_args['taxonomy'] = $taxonomy;
-    // $dropdown_args['hide_empty'] = false;
+    $dropdown_args['hide_empty'] = false;
     $dropdown_args['class'] = "postform $taxonomy";
     $dropdown_args['class'] .= $options['multiselect'] ? ' multiselect' : '';
     $dropdown_args['show_option_none'] = $options['multiselect'] ? '' : $options['labels']['singular_name'];

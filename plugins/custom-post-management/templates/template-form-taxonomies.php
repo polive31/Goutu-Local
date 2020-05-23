@@ -2,17 +2,12 @@
 
 $taxonomies = CPM_Assets::get_taxonomies($post_type);
 $dropdowns = array();
-// General dropdown arguments
-$args = array(
-    'echo' => 0,
-    'orderby' => 'description',
-    'hide_empty' => 0,
-);
 
 // Generate dropdown markup for each taxonomy (course, cuisine, difficulty, diet...)
 // -----------------------------------------------------------
 foreach ($taxonomies as $taxonomy => $options) {
     $dropdown_args['taxonomy'] = $taxonomy;
+    // $dropdown_args['hide_empty'] = false;
     $dropdown_args['class'] = "postform $taxonomy";
     $dropdown_args['class'] .= $options['multiselect'] ? ' multiselect' : '';
     $dropdown_args['show_option_none'] = $options['multiselect'] ? '' : $options['labels']['singular_name'];

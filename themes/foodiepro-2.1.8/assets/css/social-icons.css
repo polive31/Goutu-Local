@@ -1,0 +1,118 @@
+.simple-social-icons svg[class^="social-"],
+.simple-social-icons svg[class*=" social-"] {
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	stroke-width: 0;
+}
+
+/* Facebook icon */
+.simple-social-icons svg[class="social-facebook"] {
+    fill: #fff;
+}
+
+#simple-social-icons-2 ul li.ssi-facebook a,
+#simple-social-icons-2 ul li.ssi-facebook a:hover,
+#simple-social-icons-2 ul li.ssi-facebook a:focus {
+    background-color:#3B5998!important;
+}
+
+/* Twitter icon */
+.simple-social-icons svg[class="social-twitter"] {
+    fill: #fff;
+}
+
+#simple-social-icons-2 ul li.ssi-twitter a,
+#simple-social-icons-2 ul li.ssi-twitter a:hover,
+#simple-social-icons-2 ul li.ssi-twitter a:focus {
+    background-color:#55ACEE!important;
+}
+
+
+/* Instagram icon */
+.simple-social-icons svg[class="social-instagram"] {
+    fill: #fff;
+    width: 2em;
+	height: 2em;
+    stroke-width: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#simple-social-icons-2 ul li.ssi-instagram a,
+#simple-social-icons-2 ul li.ssi-instagram a:hover,
+#simple-social-icons-2 ul li.ssi-instagram a:focus {
+    background: #d6249f;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+}
+
+/* Pinterest Icon */
+.simple-social-icons svg[class="social-pinterest"] {
+    fill: #fff;
+}
+
+#simple-social-icons-2 ul li.ssi-pinterest a,
+#simple-social-icons-2 ul li.ssi-pinterest a:hover,
+#simple-social-icons-2 ul li.ssi-pinterest a:focus {
+    background-color:#cb2027!important;
+}
+
+
+
+.simple-social-icons {
+	overflow: hidden;
+}
+
+.simple-social-icons ul {
+	margin: 0;
+	padding: 40px 0 0 0;
+}
+
+.simple-social-icons ul li {
+	background: none !important;
+	border: none !important;
+	float: left;
+	list-style-type: none !important;
+	margin: 0 6px 12px !important;
+    padding: 0 !important;
+    position: relative;
+    vertical-align: top;
+}
+
+.simple-social-icons ul li a {
+	border: none !important;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+	display: inline-block;
+	font-style: normal !important;
+	font-variant: normal !important;
+	font-weight: normal !important;
+	height: 1em;
+	line-height: 1em;
+	text-align: center;
+	text-decoration: none !important;
+	text-transform: none !important;
+	width: 1em;
+}
+
+.simple-social-icons ul.aligncenter {
+	text-align: center;
+}
+
+.simple-social-icons ul.aligncenter li {
+	display: inline-block;
+    float: none;
+}
+
+.simple-social-icons .screen-reader-text {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}

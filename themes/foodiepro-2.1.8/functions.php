@@ -315,9 +315,6 @@ function enqueue_low_priority_assets()
 	// Pro Fontawesome Kit
 	wp_enqueue_script('font-awesome-5', 'https://kit.fontawesome.com/e42c1747c7.js', array(), false, true);
 
-	/* Simple social icons */
-	foodiepro_enqueue_style('foodiepro-social-icons', '/assets/css/social-icons.css', CHILD_THEME_URL, CHILD_THEME_PATH,  array(), CHILD_THEME_VERSION);
-
 	/* Theme stylesheet with varying name & version, forces cache busting at browser level
 	--------------------------------------------------- */
 	$color_theme_handler = 'color-theme-' . CHILD_COLOR_THEME;
@@ -844,9 +841,13 @@ function foodiepro_embed_thumbnail_shape()
 /* =              WIDGETS / PLUGINS
 /* =================================================================*/
 
-
 /* SIMPLE SOCIAL ICONS */
 add_filter( 'simple_social_disable_custom_css', '__return_false' );
+add_filter( 'simple_social_default_stylesheet', 'foodiepro_get_social_icons_stylesheet' );
+function foodiepro_get_social_icons_stylesheet() {
+	$url = CHILD_THEME_URL . '/assets/css/social-icons.min.css';
+	return $url;
+}
 
 
 // add_filter('widget_title', 'foodiepro_widget_title_tag', 10, 2);

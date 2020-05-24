@@ -33,11 +33,14 @@ class CustomSocialButtons {
 	}
 
     public function enqueue_social_buttons_scripts_styles() {
-		foodiepro_enqueue_script( 'social-buttons', '/assets/js/social_sharing_buttons.js', self::$PLUGIN_URI, self::$PLUGIN_PATH,  array( 'jquery' ), CHILD_THEME_VERSION, true );
-		foodiepro_enqueue_style( 'social-buttons', '/assets/css/social_sharing_buttons.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );
+		foodiepro_register_script( 'social-buttons', '/assets/js/social_sharing_buttons.js', self::$PLUGIN_URI, self::$PLUGIN_PATH,  array( 'jquery' ), CHILD_THEME_VERSION, true );
+		foodiepro_register_style( 'social-buttons', '/assets/css/social_sharing_buttons.css', self::$PLUGIN_URI, self::$PLUGIN_PATH, array(), CHILD_THEME_VERSION );
 	}
 
 	public function get_sharing_buttons($target, $class, $networks) {
+
+		wp_enqueue_script( 'social-buttons' );
+		wp_enqueue_style( 'social-buttons' );
 
 		$html = '<ul class="cssb share-icons-widget">';
 

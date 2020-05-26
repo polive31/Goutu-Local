@@ -25,7 +25,7 @@ class Custom_Star_Rating {
         -----------------------------------------------------------------*/
         $Rating = new CSR_Rating();
 		// Adds default rating for proper post sorting by rating
-		add_action( 'save_post',                                array( $Rating, 'add_default_rating' ) );
+		add_action( 'save_post',                                array( $Rating, 'add_default_rating' ));
 
 		// Triggers rating meta update whenever new comment is added
 		add_action( 'comment_post',								array( $Rating, 'comment_post_cb'), 10, 3);

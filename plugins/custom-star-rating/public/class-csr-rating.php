@@ -57,15 +57,17 @@ class CSR_Rating
 	{
 		$Assets = new CSR_Assets();
 
+		$has_rating = !empty( get_post_meta( $post_ID, self::POST_RATING_META . 'global', true) );
+
 		$ratedTypes = $Assets->post_types();
 		$is_rated_type = in_array(get_post_type($post_ID), $ratedTypes);
 
 		$stats=array();
 
-		if ( $is_rated_type && (!wp_is_post_revision($post_ID))) {
+		if ( $is_rated_type && !$has_rating) {
 			foreach ($Assets->rating_cats() as $cat => $value) {
-				$rating = foodiepro_rand(4,5,1);
-				$votes = foodiepro_rand(5, 20, 0);
+				$rating = foodiepro_rand(4, 5, 1);
+				$votes = foodiepro_rand(5, 10, 0);
 
 				$stats[$cat]['rating']=$rating;
 				$stats[$cat]['votes']=$votes;

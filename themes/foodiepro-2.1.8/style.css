@@ -2374,8 +2374,9 @@ Site Header
 
 .search-form input {
   font-size: 1.3rem;
-  border-radius: 10px;
   height: 50px;
+  border: 1px inset #c5c5c5;
+  border-radius: 10px;
 }
 
 /* Last registered widget */

@@ -1343,9 +1343,7 @@ a.archive-avatar img {
 
 .search .archives-top .widget {
     padding-left: 0px;
-
 }
-
 
 .search .archives-top .widget_text {
     padding-top: 15px;
@@ -1357,7 +1355,6 @@ a.archive-avatar img {
     padding: 0;
     margin: 0;
 }
-
 
 .search-top .widgettitle {
     text-align: left;
@@ -2470,8 +2467,9 @@ Site Header
 
 .search-form input {
     font-size: 1.3rem;
-    border-radius: 10px;
     height: 50px;
+    border: 1px inset #c5c5c5;
+    border-radius: 10px;
 }
 
 /* Last registered widget */

@@ -535,8 +535,8 @@ span.bp_counter,
 }
 
 /*Text sizes */
-.text-big-font {
-  font-size: 1.8rem;
+.text-big-font p {
+  font-size: 2rem;
 }
 
 /* PLUGIN Fonts */

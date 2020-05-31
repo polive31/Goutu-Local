@@ -222,7 +222,7 @@ class Recipe_Taxonomy_Accordion extends WP_Widget {
 				$post_count += (int) $term->count;
 				$post_count = ' (' . $post_count . ')';
 			}
-			$html .= '<li><a href="' . get_term_link($term, $tax) . '">' . $term->name . $post_count . '</a></li>';
+			$html .= '<li><a rel="nofollow" href="' . get_term_link($term, $tax) . '">' . $term->name . $post_count . '</a></li>';
 		}
 
 		$html .= '</div></div>';

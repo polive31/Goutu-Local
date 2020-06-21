@@ -1842,24 +1842,14 @@ h3.ui-accordion-header:focus {
 }
 
 /* TOOLBAR BUTTONS  */
+.share-buttons {
+  float: right;
+}
+
 .share-buttons span {
   display: inline-block;
   vertical-align: middle;
-  font-family: Oswald, sans-serif;
-  font-size: 2rem;
-  font-weight: normal;
-  font-variant: small-caps;
-  text-transform: initial;
   padding-right: 10px;
-  color: #555555;
-}
-
-.button-caption {
-  font-family: Oswald, monospace;
-  font-size: 20px;
-  color: #666;
-  text-decoration: none;
-  font-variant: small-caps;
 }
 
 .toolbar-buttons {
@@ -2467,19 +2457,8 @@ Site Header
 }
 
 .entry-meta {
-  color: #999;
-  font-size: 1.3rem;
-  font-style: italic;
-  margin-top: 20px;
-}
-
-.entry-meta {
   display: inline-block;
-  width: 100%;
-}
-
-.entry-meta a {
-  text-decoration: none;
+  margin-top: 20px;
 }
 
 #username {

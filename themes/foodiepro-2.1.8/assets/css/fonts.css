@@ -494,7 +494,35 @@ input#url {
   font-size: 1.6rem;
 }
 
+/* TOOLBAR BUTTONS  */
+.share-buttons span {
+  font-family: Oswald, sans-serif;
+  font-size: 2rem;
+  font-weight: normal;
+  font-variant: small-caps;
+  text-transform: initial;
+  color: #555555;
+}
+
+.button-caption {
+  font-family: Oswald, monospace;
+  font-size: 20px;
+  color: #666;
+  text-decoration: none;
+  font-variant: small-caps;
+}
+
 /* MISC */
+.entry-meta {
+  color: #999;
+  font-size: 1.3rem;
+  font-style: italic;
+}
+
+.entry-meta a {
+  text-decoration: none;
+}
+
 .entry-meta i.fa {
   font-size: 2rem;
 }

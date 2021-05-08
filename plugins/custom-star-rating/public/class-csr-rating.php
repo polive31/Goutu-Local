@@ -334,8 +334,8 @@ class CSR_Rating
 		$args['rating_id'] = 'recipe-review';
 
 		if (empty($args['votes'])) {
-			$args['details_url']   = '#';
-			$args['details_class'] = 'tooltip-onclick';
+			$args['details_url']   = '#respond';
+			$args['details_class'] = '';
 			$args['details_label'] = __('Evaluate me !', 'foodiepro');
 		} else {
 			$args['details_url']   = '#comments';

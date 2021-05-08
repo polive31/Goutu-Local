@@ -26,9 +26,8 @@ class CSR_Assets {
 		return  plugin_dir_url( dirname( __FILE__ ) );
 	}
 
-	/* Register stylesheet, will be enqueued in the shortcode itself  */
+	/* Enqueue Stylesheet whenever post type matches  */
 	public static function register_csr_assets() {
-
 		$args = array(
 			'handle'	=> 'custom-star-rating-form',
 			'file' 		=> 'assets/css/custom-star-rating-form.css',

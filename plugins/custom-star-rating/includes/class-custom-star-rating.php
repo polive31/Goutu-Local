@@ -19,7 +19,7 @@ class Custom_Star_Rating {
 		/* Hooks for CSR_Assets class (static)
 		-----------------------------------------------------------------*/
         $Assets = new CSR_Assets();
-        add_action( 'wp_enqueue_scripts',                       array( $Assets, 'register_csr_assets' ) );
+        add_action( 'wp_enqueue_scripts',                       'CSR_Assets::register_csr_assets' );
 
         /* Hooks for CSR_Rating class
         -----------------------------------------------------------------*/
@@ -41,6 +41,12 @@ class Custom_Star_Rating {
 
 		// Display rating shortcode
 		add_shortcode( 'display-star-rating',                  	array( $Rating, 'display_star_rating_shortcode') );
+
+        /* Hooks for CSR_Form class
+        -----------------------------------------------------------------*/
+		// $Form = new CSR_Form();
+		/* Display rating form in comment form  of matching post types */
+		add_filter( 'comment_form_defaults',             		'CSR_Form::add_rating_form_before_comment' );
 
 
 	}

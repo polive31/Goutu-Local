@@ -56,8 +56,7 @@ Temporary Items
 # =========================
 
 /*
-
-!_*.scss
+!.gitignore
 
 !extensions/
 
@@ -66,43 +65,42 @@ peepso/*
 !peepso/overrides/
 peepso/plugins/*
 
-!languages/
-languages/*
+# unignore languages folder
+!/languages/
+/languages/*
+!/languages/plugins
+/languages/plugins/*
+!languages/plugins/friendso*
+!languages/plugins/peepso*
 
-!themes/
-themes/*
-!themes/foodiepro-2.1.8/
-themes/foodiepro-2.1.8/backups/*
-themes/foodiepro-2.1.8/images/Backup/*
+!/themes/
+/themes/*
+!/themes/foodiepro-2.1.8/
+/themes/foodiepro-2.1.8/backups/*
+/themes/foodiepro-2.1.8/images/Backup/*
 
-mu-plugins/
-
-!plugins
-plugins/*
-!plugins/custom-admin-helpers/
-!plugins/custom-admin-page-navigation/
-!plugins/custom-archive-management/
-!plugins/custom-assets-management/
-!plugins/custom-batch-manage-posts/
-!plugins/custom-category-image/
-!plugins/custom-comment-management/
-!plugins/custom-contact-form/
-!plugins/custom-gallery-shortcode/
-!plugins/custom-google-tag-manager/
-!plugins/custom-lightbox/
-!plugins/custom-peepso-overrides/
-!plugins/custom-post-management/
-!plugins/custom-recaptcha/
-!plugins/custom-recent-post-widget/
-!plugins/custom-recipe-management/
-!plugins/custom-seo/
-!plugins/custom-site-notifications/
-!plugins/custom-social-interactions/
-!plugins/custom-social-sharing-buttons/
-!plugins/custom-star-rating/
-!plugins/custom-structured-data/
-!plugins/custom-tooltip/
-!plugins/random-user-ids/
-!plugins/search-everything/
-plugins/search-everything/*
-!plugins/search-everything/search-everything.php
+!/plugins/
+/plugins/*
+!/plugins/custom-admin-helpers/
+!/plugins/custom-admin-page-navigation/
+!/plugins/custom-archive-management/
+!/plugins/custom-assets-management/
+!/plugins/custom-batch-manage-posts/
+!/plugins/custom-category-image/
+!/plugins/custom-comment-management/
+!/plugins/custom-contact-form/
+!/plugins/custom-gallery-shortcode/
+!/plugins/custom-google-tag-manager/
+!/plugins/custom-lightbox/
+!/plugins/custom-peepso-overrides/
+!/plugins/custom-post-management/
+!/plugins/custom-recaptcha/
+!/plugins/custom-recent-post-widget/
+!/plugins/custom-recipe-management/
+!/plugins/custom-seo/
+!/plugins/custom-site-notifications/
+!/plugins/custom-social-interactions/
+!/plugins/custom-social-sharing-buttons/
+!/plugins/custom-star-rating/
+!/plugins/custom-structured-data/
+!/plugins/custom-tooltip/

@@ -376,7 +376,6 @@ VARIABLES
     float: right;
   }
   .toolbar-button#read {
-    float: none;
     text-align: center;
   }
   /* OTHERS */

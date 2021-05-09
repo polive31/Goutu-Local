@@ -52,6 +52,7 @@ class CSN_Mails {
 		if ($comment_approved ) {
 			$this->send_mail_publish_comment( $commentdata );
 		}
+		// No need for custom admin moderate mail, already available as Wordress admin setting
 	}
 
 	public function transition_comment_callback( $new_status, $old_status, $comment ) {

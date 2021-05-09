@@ -51,7 +51,7 @@
 @media only screen and (max-width:570px) {
 
     .comment-form .rating-stars {
-        float:left;
+        /* float:left; */
         margin:5px 0;
     }
 

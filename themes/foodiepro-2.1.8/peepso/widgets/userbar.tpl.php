@@ -7,6 +7,8 @@ $PeepSoUser = $PeepSoProfile->user;
 $position = $instance['content_position'];
 
 function userbar_display_avatar( $instance, $size ) {
+	if (!class_exists('PeepsoHelpers')) return '';
+
 	if ($instance['user_id'] > 0) {
 		$user  = $instance['user'];
 		if (isset($instance['show_avatar']) && 1 == intval($instance['show_avatar'])) { ?>
@@ -107,7 +109,9 @@ function userbar_display_avatar( $instance, $size ) {
 								$class = isset($link['class']) ? $link['class'] : '';
 
 								// PO 29/03/2020
-								$href = PeepsoHelpers::get_nav_url($user, $id, $link['href']);
+								$href = '';
+								if (class_exists('PeepsoHelpers'))
+									$href = PeepsoHelpers::get_nav_url($user, $id, $link['href']);
 								echo '<a href="' . $href . '" class="' . $class . '"><span class="' . $link['icon'] . '"></span> ' . $link['label'] . '</a>';
 							}
 							?>

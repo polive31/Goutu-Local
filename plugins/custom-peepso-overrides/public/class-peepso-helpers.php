@@ -96,7 +96,7 @@ class PeepsoHelpers  {
 		$current = 'stream';
 		// foreach (self::TABS as $tab) {
 		foreach ($links as $tab => $params) {
-			$slug=isset($params['href'])? $params['href']:$tab;
+			$slug=!empty($params['href'])? $params['href']:$tab;
 			$match = foodiepro_contains($_SERVER['REQUEST_URI'], '/' . $slug);
 			if ($match) {
 				$current = $tab;

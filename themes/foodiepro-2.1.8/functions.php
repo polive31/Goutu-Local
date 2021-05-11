@@ -960,10 +960,6 @@ function sp_footer_creds_filter($credits)
 
 	[footer_copyright before="<?= __('All rights reserved', 'foodiepro'); ?>" first="2015"] &middot; <a href="\">Goutu.org</a> &middot; [permalink slug="contact"]<?= __('Contact us', 'foodiepro') ?>[/permalink] &middot; [permalink slug="mentions-legales"]<?= __('Legal notice', 'foodiepro') ?>[/permalink] &middot; [footer_loginout]
 
-	<a target="_blank" href="https://seal.beyondsecurity.com/vulnerability-scanner-verification/goutu.org">
-		<img src="https://seal.beyondsecurity.com/verification-images/goutu.org/vulnerability-scanner-8.gif" alt="Vulnerability Scanner" border="0" />
-	</a>
-
 <?php
 
 	$credits = ob_get_contents();

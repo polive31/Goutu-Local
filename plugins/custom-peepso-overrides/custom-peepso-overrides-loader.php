@@ -17,9 +17,9 @@ if ( !defined('ABSPATH') )
 
 /* Main
 ------------------------------------------------------------*/
-add_action('init','cpo_check_peepso_active');
+add_action('plugins_loaded','cpo_check_peepso_active');
 function cpo_check_peepso_active() {
-  	if ( class_exists( 'PeepSo' ) && class_exists( 'PeepSoFriends' ) ) {
+  	if ( class_exists( 'PeepSo' ) ) {
 		cpo_peepso_helpers_conditional_load();
 	} else {
 		add_action( 'admin_notices', 'cpo_peepso_helpers_install_notice' );

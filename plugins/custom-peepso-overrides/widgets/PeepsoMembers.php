@@ -150,6 +150,7 @@ class CustomPeepsoMembers extends WP_Widget
 			'nofriends'	=> false,
 			'count'	=> 0,
 		);
+		if (!class_exists('PeepSoFriends')) return $params;
 
 		$PeepSoFriends = PeepSoFriends::get_instance();
 

@@ -33,6 +33,7 @@ if (!isset($instruction['group'])) {
 ?>
 
 <tr class="instruction ui-sortable <?php if (!($instruction['visible'])) { ?>nodisplay<?php }; ?>" id="recipe_instruction_<?php echo $i; ?>">
+
     <td class="sort-handle ui-sortable-handle" title="<?php echo __('Move this instruction', 'crm'); ?>">
         <span class='icon-drag-updown'>
             <?= foodiepro_get_icon('drag-updown'); ?>
@@ -69,6 +70,8 @@ if (!isset($instruction['group'])) {
     <td class="delete-button" colspan="1">
         <?= foodiepro_get_icon('delete', 'instructions-delete', '', __('Remove this instruction', 'crm')); ?>
     </td>
+
+
 </tr>
 
 <?php

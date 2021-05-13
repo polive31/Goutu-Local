@@ -78,7 +78,8 @@ table.recipe-form {
   margin-top: 20px;
   width: 100%;
   border-collapse: separate;
-  border-spacing: 0 40px;
+  /* Border spacing requires border-collapse to be set to separate */
+  border-spacing: 0 20px;
 }
 
 .ingredient-group-stub,
@@ -95,22 +96,6 @@ input.ingredients_group.debug {
 
 /* Buttons
 ------------------------------------------------------- */
-/* Sortable handle */
-tr td.sort-handle.ui-sortable-handle {
-  cursor: -webkit-grab;
-  cursor: grab;
-  text-align: center;
-}
-
-td.sort-handle.ui-sortable-handle {
-  width: 40px;
-  -webkit-transition: background-color 1s ease-in-out;
-  transition: background-color 1s ease-in-out;
-}
-
-td.sort-handle.ui-sortable-handle:hover {
-  background-color: #d2d2d2;
-}
 
 /* Remove image button */
 .recipe_remove_image_button {
@@ -151,6 +136,16 @@ td.sort-handle.ui-sortable-handle:hover {
 
 td.recipe-general-form-label {
   padding-top: 10px;
+}
+
+/* Ingredients & instructions boxes */
+tr.ingredient,
+tr.instruction {
+  display: block;
+  border: 1px solid rgb(192, 192, 192);
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 2px 2px 3px 0px #bbbbbb;
 }
 
 /* Ingredient Section
@@ -216,8 +211,34 @@ td.ingredient-input.notes {
 /* Instruction Section
 ------------------------------------------------------- */
 
+
+/* Sortable handle */
+tr td.sort-handle.ui-sortable-handle {
+  cursor: -webkit-grab;
+  cursor: grab;
+  text-align: center;
+}
+
+td.sort-handle.ui-sortable-handle {
+  width: 100px;
+  -webkit-transition: background-color 1s ease-in-out;
+  transition: background-color 1s ease-in-out;
+}
+
+td.sort-handle.ui-sortable-handle:hover {
+  background-color: #d2d2d2;
+}
+
 td.instruction-thumbnail {
   width: 150px;
+}
+
+td.instruction-content {
+  width: 75%;
+}
+
+td.delete-button {
+  width: 100px;
 }
 
 #custom_post_submission_form .instruction-image {

@@ -36,9 +36,7 @@ for ($i = 0; $i < count($instructions); $i++) {
 
     if (!empty($instruction['video']) && ($target == "screen")) {
         $out .= '<div class="instruction-step-image">';
-        // $video = '[embed width="400" height="200"]' . $instruction['video'] . '[/embed]';
-        $video = foodiepro_embed($instruction['video'], 400, 200);
-        $out .= $video;
+        $out .= wp_oembed_get($instruction['video'], array( "width" => 400, "height" => 200));
         $out .= '</div>';
     }
     elseif (!empty($instruction['image']) && ($target == "screen")) {

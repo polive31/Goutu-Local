@@ -40,12 +40,20 @@ if (!isset($instruction['group'])) {
     </td>
     <td class="instruction-content">
         <div class="instruction-text">
-            <textarea class="recipe-instruction" name="recipe_instructions[<?php echo $i; ?>][description]" rows="2" id="recipe_instruction_<?php echo $i; ?>" placeholder="<?php echo __('Enter the instructions for this recipe step', 'crm'); ?>"><?= $instruction['description']; ?></textarea>
-            <input type="hidden" name="recipe_instructions[<?php echo $i; ?>][group]" class="instructions_group" id="instruction_group_<?php echo $i; ?>" value="<?php echo esc_attr($instruction['group']); ?>" />
+            <textarea class="recipe-instruction" name="recipe_instructions[<?= $i; ?>][description]" rows="2" id="recipe_instruction_<?= $i; ?>" placeholder="<?= __('Enter the instructions for this recipe step', 'crm'); ?>"><?= $instruction['description']; ?></textarea>
+            <input type="hidden" name="recipe_instructions[<?php echo $i; ?>][group]" class="instructions_group" id="instruction_group_<?php echo $i; ?>" value="<?= esc_attr($instruction['group']); ?>" />
         </div>
         <div class="instruction-buttons">
             <!-- This input stores the file to be uploaded for the given instruction step -->
-            <input class="post_image_thumbnail" type="file" id="post_thumbnail_input_<?php echo $i; ?>" value="" size="50" name="<?= CRM_Assets::RECIPE_THUMB_INPUT . '_' . $i; ?>" />
+            <div class="instruction-button">
+                <label>Image</label>
+                <input class="post_image_thumbnail" type="file" id="post_thumbnail_input_<?= $i; ?>" value="" size="50" name="<?= CRM_Assets::RECIPE_THUMB_INPUT . '_' . $i; ?>" />
+            </div>
+            <div class="instruction-button">
+                <label>Vidéo</label>
+
+                <input class="recipe-instruction-video" type="text" id="recipe_instruction_video_<?= $i; ?>" placeholder="Lien vers la vidéo Youtube" size="50" name="recipe_instructions[<?= $i; ?>][video]" value="<?= $instruction['video']; ?>" />
+            </div>
         </div>
     </td>
     <td class="instruction-thumbnail">

@@ -15,6 +15,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Helper function to embed youtube video from URL.
+ *
+ * @since   2.0.0
+ *
+ * @param   $url url of the embedded video
+ * @param   $width width of the embedded video
+ * @param   $height height of the embedded video
+ * @param   $class css class of the embedded video section
+ * @return  bool True if we're on any section of the blog.
+ */
+function foodiepro_embed( $url, $width=560, $height=315, $class='' ) {
+	ob_start();
+	?>
+		<div class="embedded-video <?= $class ?>">
+			<iframe width="<?= $width ?>" height="<?= $height ?>" src="<?= $url ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
+	<?php
+	$embed = ob_get_clean();
+	return $embed;
+}
+
+/**
  * Helper function to determine if we're on a blog section of a Genesis site.
  *
  * @since   2.0.0

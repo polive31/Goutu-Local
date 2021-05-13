@@ -73,7 +73,7 @@ function CRM_init() {
 		------------------------------------*/
 		require_once 'public/recipe-output/class-crm-output.php';
 		require_once 'public/recipe-output/helpers/class-crm-recipe-meta.php';
-		require_once 'public/recipe-output/helpers/class-crm-shortcodes.php';
+		//require_once 'public/recipe-output/helpers/class-crm-shortcodes.php';
 		require_once 'public/recipe-output/helpers/class-crm-favorite.php';
 
 		/* Custom Recipe Submission

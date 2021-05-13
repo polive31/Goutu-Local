@@ -34,7 +34,14 @@ for ($i = 0; $i < count($instructions); $i++) {
         $bullet='';
     $out .= '<span class="recipe-instruction-bulleted-text">' . $bullet . '<span class="recipe-instruction-text">' . $instruction['description'] . '</span></span>';
 
-    if (!empty($instruction['image']) && ($target == "screen")) {
+    if (!empty($instruction['video']) && ($target == "screen")) {
+        $out .= '<div class="instruction-step-image">';
+        // $video = '[embed width="400" height="200"]' . $instruction['video'] . '[/embed]';
+        $video = foodiepro_embed($instruction['video'], 400, 200);
+        $out .= $video;
+        $out .= '</div>';
+    }
+    elseif (!empty($instruction['image']) && ($target == "screen")) {
         $thumb = wp_get_attachment_image_src($instruction['image'], 'thumbnail');
         $thumb_url = $thumb['0'];
 

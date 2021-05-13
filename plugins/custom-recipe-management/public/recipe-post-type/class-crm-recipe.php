@@ -61,14 +61,17 @@ class CRM_Recipe {
             'description'   => '',
             'group'         => '',
             'image'         => '',
+            'video'         => '',
         )
     );
 
     private $post;
     private $meta;
+    private static $instanceID;
 
     public function __construct($post=null)
     {
+
         // Get associated post
         if ( empty($post) || is_numeric($post) )  {
             $this->post=get_post( $post );

@@ -13,6 +13,7 @@ class CRM_Assets {
 	// Used both on recipe display and also to output the step URL as metadata
 	const RECIPE_STEP_ID_ROOT = 'wpurp_recipe_instruction';
 	const RECIPE_THUMB_INPUT = 'recipe_thumbnail';
+	const RECIPE_VIDEO_INPUT = 'recipe_video_thumbnail';
 
 	private static $PLUGIN_URI;
 	private static $PLUGIN_PATH;

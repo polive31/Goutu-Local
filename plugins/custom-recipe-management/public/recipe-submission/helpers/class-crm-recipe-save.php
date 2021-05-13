@@ -77,9 +77,15 @@ class CRM_Recipe_Save extends CRM_Recipe {
     {
         $non_empty_instructions = array();
         foreach ($new as $instruction) {
-            if ( !empty( trim($instruction['description']) ) || !empty( trim($instruction['image']) ) ) {
+
+            $description = isset($instruction['description'])?trim($instruction['description']):'';
+            $image = isset($instruction['image'])?trim($instruction['image']):'';
+            $video = isset($instruction['video'])?trim($instruction['video']):'';
+
+            if ( !empty( $description ) || !empty( $image ) || !empty( $video ) ) {
                 $instruction['group']= sanitize_text_field($instruction['group']);
                 $instruction['description']=sanitize_textarea_field($instruction['description']);
+                $instruction['video']=sanitize_textarea_field($instruction['video']);
                 $non_empty_instructions[] = $instruction;
             }
         }

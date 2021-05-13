@@ -82,6 +82,10 @@ class Custom_Recipe_Management {
         add_action('template_redirect',             array($Output, 'redirect'));
         // add_action('init',                                      array($Print, 'print_page'));
 
+        /* Shortcodes */
+        add_shortcode('recipe',                     array($Output, 'recipe_shortcode'));
+        add_shortcode('recipe-timer',               array($Output, 'timer_shortcode'));
+        add_shortcode('timer',                      array($Output, 'timer_shortcode'));
 
         /* Hooks for Recipe Metadata output
         ------------------------------------------------------------- */
@@ -98,8 +102,8 @@ class Custom_Recipe_Management {
         add_action( 'wp_ajax_custom_favorite_recipe',           array( $Favorite, 'ajax_favorite_recipe' ) );
         add_action( 'wp_ajax_nopriv_custom_favorite_recipe',    array( $Favorite, 'ajax_favorite_recipe' ) );
         add_filter( 'query_vars',                               array( $Favorite, 'add_list_query_var') );
-        add_shortcode( 'crm-favorites-list',                    array( $Favorite, 'favorite_recipes_shortcode' ) );
         add_filter('cpm_list_dropdown_widget_args',             array( $Favorite, 'cpm_list_dropdown_widget_args_cb'), 10, 2 );
+        add_shortcode( 'crm-favorites-list',                    array( $Favorite, 'favorite_recipes_shortcode' ) );
 
 
         /* Hooks for CRM_Submission
@@ -144,10 +148,7 @@ class Custom_Recipe_Management {
 
         /* Hooks for CRM Shortcodes
         ------------------------------------------------------------- */
-        $Shortcodes = new CRM_Recipe_Shortcodes();
-        add_shortcode('recipe',                     array($Shortcodes, 'recipe_shortcode'));
-        add_shortcode('recipe-timer',               array($Shortcodes, 'timer_shortcode'));
-        add_shortcode('timer',                      array($Shortcodes, 'timer_shortcode'));
+        // $Shortcodes = new CRM_Recipe_Shortcodes();
 
         /* Hooks for CRM Widgets
         ------------------------------------------------------------- */

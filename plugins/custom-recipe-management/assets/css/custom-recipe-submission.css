@@ -78,7 +78,7 @@ table.recipe-form {
   margin-top: 20px;
   width: 100%;
   border-collapse: separate;
-  border-spacing: 0 10px;
+  border-spacing: 0 40px;
 }
 
 .ingredient-group-stub,
@@ -215,6 +215,7 @@ td.ingredient-input.notes {
 
 /* Instruction Section
 ------------------------------------------------------- */
+
 td.instruction-thumbnail {
   width: 150px;
 }
@@ -227,6 +228,10 @@ td.instruction-thumbnail {
 
 #custom_post_submission_form textarea.recipe-instruction {
   min-height: 40px;
+}
+
+.instruction-button input {
+  width: 70%;
 }
 
 /* MEDIA QUERIES

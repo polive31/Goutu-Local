@@ -99,13 +99,13 @@ class CASM_Assets {
 
 	// Scripts to be loaded conditionnally
 	const JS_IF = array(
-		'cookie-law-info'						=> array(
-														'true'	=> '',
-														'replace' => array(
-															'file' => '/assets/js/cookie-law-info-public.min.js',
-															'footer' => true,
-														),
-													),
+		// 'cookie-law-info'						=> array(
+		// 												'true'	=> '',
+		// 												'replace' => array(
+		// 													'file' => '/assets/js/cookie-law-info-public.min.js',
+		// 													'footer' => true,
+		// 												),
+		// 											),
 
 		'pwa-main-script'						=> array('mobile' => true),
 		'newscript'								=> array('page' => 'home'),

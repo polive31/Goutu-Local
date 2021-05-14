@@ -62,7 +62,7 @@ Temporary Items
 
 !peepso/
 peepso/*
-!peepso/overrides/
+!peepso/custom/
 peepso/plugins/*
 
 # unignore languages folder

@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Plugins - PeepSo &#8211; User Profile and Community "
 "Plugin - Stable (latest release)\n"
 "POT-Creation-Date: 2021-05-06 05:04+0700\n"
-"PO-Revision-Date: 2021-05-15 00:43+0200\n"
+"PO-Revision-Date: 2021-05-15 01:56+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -404,7 +404,7 @@ msgstr ""
 
 #: 3/classes/users/utils.php:21 classes/register.php:52
 msgid "Username"
-msgstr "Identifiant"
+msgstr "Pseudo"
 
 #: activity/activitystream.php:102
 msgctxt "PeepSo Posts"
@@ -6903,7 +6903,7 @@ msgstr "Votre compte"
 #: classes/profile.php:1546 classes/profile.php:1555 classes/profile.php:1707
 #: classes/profile.php:1786 classes/profile.php:1865
 msgid "User Name"
-msgstr "Identifiant"
+msgstr "Pseudonyme"
 
 #: classes/profile.php:1547
 msgid "If you change your username, you will be signed out"
@@ -6911,7 +6911,7 @@ msgstr ""
 
 #: classes/profile.php:1570
 msgid "That username is already in use by someone else."
-msgstr "Cet identifiant est déjà utilisé par quelqu’un d’autre."
+msgstr "Cet pseudonyme est déjà utilisé par quelqu’un d’autre."
 
 #: classes/profile.php:1601
 msgid "This email is already in use by someone else."
@@ -7295,7 +7295,10 @@ msgstr "[%s] Réinisialisation du mot de passe"
 
 #: classes/register.php:53
 msgid "Enter your desired username"
-msgstr "Saisir l’identifiant souhaité"
+msgstr ""
+"Votre pseudonyme apparaîtra sur vos publications (recettes, articles…). "
+"C'est un moyen facile pour vous faire connaître par les autres membres de la "
+"communauté. Il doit être composé d'un seul mot."
 
 #: classes/register.php:65
 msgid "Username must not be the same as your password."

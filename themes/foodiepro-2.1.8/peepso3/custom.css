@@ -2,6 +2,7 @@
 body {
     --c-ps-profile-cover-height : 200px;
     --PS-COLOR--TEXT--LIGHT: #616161;
+    --c-ps-landing-image-height-mobile : 400px;
 }
 
 .ps-focus {
@@ -15,8 +16,10 @@ body {
 .ps-notif__box,
 .ps-focus__options,
 .ps-focus__details,
+.ps-landing__form,
+.ps-landing__actions,
 .ps-focus__cover-actions {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: sans-serif;
 }
 
 .ps-profile__about-field-title {
@@ -37,6 +40,12 @@ body {
 
 .ps-tabs__item a {
     text-decoration: none;
+}
+
+/* LANDING */
+.ps-landing__cover-inner {
+    top: 0;
+    bottom:initial;
 }
 
 /* PROFILE */
@@ -118,7 +127,6 @@ h1.blog-title {
 .main-nav-widget-area .psw-userbar__name,
 .main-nav-widget-area .ps-js-widget-userbar-notifications {
     font-size: inherit;
-    display: inline-block;
 }
 
 .ps-avatar {
@@ -139,4 +147,39 @@ h1.blog-title {
     width: 100px;
     position: relative;
     margin-left: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .ps-focus__cover-image>img {
+        height: 100%!important;
+        object-fit: cover;
+    }
+
+    .mobile-nav-container .psw-userbar {
+        bottom: -10px;
+    }
+
+    .mobile-nav-container .psw-userbar__user {
+        justify-content: flex-end;
+        width: 100%;
+    }
+
+    .mobile-nav-container .ps-notifs {
+        width: 100%;
+        justify-content: space-evenly;
+    }
+
+    .mobile-nav-container .psw-userbar__name {
+        width: 40%;
+    }
+
+    .mobile-nav-container .psw-userbar .ps-dropdown {
+        width: 20%;
+    }
+
+    .ps-focus__menu {
+        font-size: 14px;
+    }
+
 }

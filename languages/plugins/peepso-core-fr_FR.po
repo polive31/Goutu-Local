@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Plugins - PeepSo &#8211; User Profile and Community "
 "Plugin - Stable (latest release)\n"
 "POT-Creation-Date: 2021-05-06 05:04+0700\n"
-"PO-Revision-Date: 2021-05-14 09:43+0200\n"
+"PO-Revision-Date: 2021-05-15 00:19+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -8968,10 +8968,9 @@ msgid ""
 "sent to you. Once you have received the verification code, you will be able "
 "to choose a new password for your account."
 msgstr ""
-"S’il vous plaît entrez l’adresse e-mail de votre compte ci-dessous. Un code "
-"de vérification vous sera envoyé. Une fois que vous aurez reçu le code de "
-"vérification, vous serez en mesure de choisir un nouveau mot de passe pour "
-"votre compte."
+"Vous n'arrivez pas à retrouver votre mot de passe ?\n"
+"Entrez ci-dessous l’adresse e-mail de votre compte. Vous recevrez dans un "
+"moment un lien qui vous permettra de choisir un nouveau mot de passe."
 
 #: templates/general/recover-password.php:16
 msgid "Email Address:"
@@ -8989,10 +8988,8 @@ msgstr "Adresse e-mail"
 #: templates/register/register-resend.php:25
 #: templates/register/register-resent.php:12
 #: templates/register/register-verified.php:6
-#, fuzzy
-#| msgid "Community"
 msgid "Back to Community"
-msgstr "Communauté"
+msgstr "Retour au site"
 
 #: templates/general/recover-password.php:28
 #: templates/general/reset-password.php:50

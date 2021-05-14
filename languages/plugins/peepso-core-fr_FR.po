@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Plugins - PeepSo &#8211; User Profile and Community "
 "Plugin - Stable (latest release)\n"
 "POT-Creation-Date: 2021-05-06 05:04+0700\n"
-"PO-Revision-Date: 2021-05-15 00:19+0200\n"
+"PO-Revision-Date: 2021-05-15 00:43+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -467,7 +467,7 @@ msgstr "Publié"
 #: templates/background-post/admin_background_post.php:119
 #: templates/reactions/admin_reaction.php:119
 msgid "post"
-msgstr "poster"
+msgstr "publication"
 
 #: activity/activitystream.php:149 activity/activitystream.php:151
 #: activity/activitystream.php:172 activity/activitystream.php:173
@@ -7352,6 +7352,8 @@ msgid ""
 "Fields marked with an asterisk (<span class=\"ps-form__required\">*</span>) "
 "are required."
 msgstr ""
+"Les champs comportant une étoile (<span class=\"ps-form__required\">*</"
+"span>) sont requis."
 
 #: classes/register.php:185
 msgctxt "Submit Button on PeepSo registration form"

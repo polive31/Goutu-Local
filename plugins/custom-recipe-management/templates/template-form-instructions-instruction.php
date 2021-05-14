@@ -47,13 +47,13 @@ if (!isset($instruction['group'])) {
         <div class="instruction-buttons">
             <!-- This input stores the file to be uploaded for the given instruction step -->
             <div class="instruction-button">
-                <label>Image</label>
+                <label><?= __('Picture', 'crm'); ?></label>
                 <input class="post_image_thumbnail" type="file" id="post_thumbnail_input_<?= $i; ?>" value="" size="50" name="<?= CRM_Assets::RECIPE_THUMB_INPUT . '_' . $i; ?>" />
             </div>
             <div class="instruction-button">
-                <label>Vidéo</label>
+                <label><?= __('Video', 'crm'); ?></label>
 
-                <input class="recipe-instruction-video" type="text" id="recipe_instruction_video_<?= $i; ?>" placeholder="Lien vers la vidéo Youtube" size="50" name="recipe_instructions[<?= $i; ?>][video]" value="<?= $instruction['video']; ?>" />
+                <input class="recipe-instruction-video" type="text" id="recipe_instruction_video_<?= $i; ?>" placeholder="<?= __('Link to the online video (Youtube, ...). Must begin with https://...', 'crm'); ?>" size="50" name="recipe_instructions[<?= $i; ?>][video]" value="<?= $instruction['video']; ?>" />
             </div>
         </div>
     </td>

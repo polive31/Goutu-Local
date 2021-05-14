@@ -29,9 +29,9 @@ class Custom_Site_Interactions {
 		// The following action allows to instantiate the popups selectively depending on the post type & page
 		add_action( 'wp', 							array( $Popups, 'create_popup_actions') );
 
-		$Notifications = new CSN_Notifications();
+		// $Notifications = new CSN_Notifications();
 		// add_action('wp_loaded',						array( $Notifications, 'setup_notifications'));
-		add_action( 'csi_send_notification',		array( $Notifications, 'send_notification_on_event'), 10, 4);
+		// add_action( 'csi_send_notification',		array( $Notifications, 'send_notification_on_event'), 10, 4);
 	}
 
 

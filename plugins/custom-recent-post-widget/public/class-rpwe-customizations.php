@@ -112,7 +112,7 @@ class RPWE_Customizations {
 
 
 	public function wprpe_orderby_rating( $args ) {
-		if ( $args['orderby'] == 'meta_value_num')
+		if ( isset($args['orderby']) &&  ($args['orderby'] == 'meta_value_num'))
 			$args['meta_key'] = 'user_rating_global';
 		return $args;
 	}

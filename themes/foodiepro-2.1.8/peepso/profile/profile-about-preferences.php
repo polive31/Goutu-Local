@@ -13,24 +13,26 @@ if(!$can_edit) {
     $PeepSoProfile = PeepSoProfile::get_instance();
     ?>
 
-    <div class="peepso ps-page-profile ps-page--preferences">
+    <div class="peepso">
+      <div class="ps-page ps-page--profile ps-page--profile-preferences ps-js-page-about-preferences">
+        <?php //PeepSoTemplate::exec_template('general', 'navbar'); ?>
 
+        <div class="ps-profile ps-profile--edit ps-profile--preferences">
+          <?php //PeepSoTemplate::exec_template('profile', 'focus', array('current'=>'about')); ?>
 
-        <section id="mainbody" class="ps-page-unstyled">
-            <section id="component" role="article" class="ps-clearfix">
+          <div class="ps-profile__edit">
+            <?php if($can_edit) { PeepSoTemplate::exec_template('profile', 'profile-about-tabs', array('tabs' => $tabs, 'current_tab'=>'preferences')); } ?>
 
+            <div class="ps-js-profile-list">
+              <?php $PeepSoProfile->preferences_form_fields(TRUE, FALSE); ?>
+            </div>
+          </div>
+        </div>
+      </div>
 
-                <?php if($can_edit) { PeepSoTemplate::exec_template('profile', 'profile-about-tabs', array('tabs' => $tabs, 'current_tab'=>'preferences'));} ?>
-
-
-                <div class="ps-list--column cfield-list creset-list ps-js-profile-list">
-
-                    <div class="cfield-list creset-list">
-                        <?php $PeepSoProfile->preferences_form_fields(TRUE, FALSE); ?>
-                    </div>
-
-                </div>
-            </section><!--end component-->
-        </section><!--end mainbody-->
-    </div><!--end row-->
+      <div id="ps-dialogs" style="display:none">
+        <?php PeepSoActivity::get_instance()->dialogs(); // give add-ons a chance to output some HTML ?>
+        <?php PeepSoTemplate::exec_template('activity', 'dialogs'); ?>
+      </div>
+    </div>
 <?php }

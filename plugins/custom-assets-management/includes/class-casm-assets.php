@@ -75,18 +75,23 @@ class CASM_Assets {
 		'wp-block-library'					=> array('false' => ''),
 
 		//Peepso
-		'peepso'							=> array('page' => 'social'),
+		// 'peepso'							=> array( 	'page'	=> 'social',
+		// 												'replace' => array(
+		// 													'file' 	=> '/peepso3/template.css',
+		// 												),
+		// 											),
+
 		// Allows using a minified peepso-custom
-		'peepso-custom'						=> array('true' => '',
-													'replace' => array(
-														'file' 		=> '/assets/css/peepso.min.css',
-													)),
-		'peepso-datepicker'					=> array('page' => 'social',
-													'replace' => array(
-														'file' 		=> '/assets/css/datepicker.css',
-													)),
-		'peepso*'							=> array('page' => 'social'),
-		'msgso*'							=> array('page' => 'social'),
+		// 'peepso-custom'						=> array('true' => '',
+		// 											'replace' => array(
+		// 												'file' 		=> '/assets/css/peepso.min.css',
+		// 											)),
+		// 'peepso-datepicker'					=> array('page' => 'social',
+		// 											'replace' => array(
+		// 												'file' 		=> '/assets/css/datepicker.css',
+		// 											)),
+		// 'peepso*'							=> array('page' => 'social'),
+		// 'msgso*'							=> array('page' => 'social'),
 		// Fonts & icons
 		// 'dashicons'							=> array('admin' => true),
 	);
@@ -122,33 +127,33 @@ class CASM_Assets {
 		// 'jquery-ui-datepicker'				=> CRITICAL FOR PEEPSO NOTIFICATIONS & MENUS,
 
 		// PEEPSO RECAPTCHA & DEPENDENCIES
-		'peepso-recaptcha'						=> array('or'=>array('logged-in' => true, 'page' => 'contact')),
-			'peepso'							=> array('or'=>array('logged-in' => true, 'page' => 'contact')),
-				'peepso-elements'				=> array('or'=>array('logged-in' => true, 'page' => 'contact')),
-				'peepso-sections'				=> array('or'=>array('logged-in' => true, 'page' => 'contact')),
-				'peepso-modules'				=> array('or'=>array('logged-in' => true, 'page' => 'contact')),
+		// 'peepso-recaptcha'						=> array('or'=>array('logged-in' => true, 'page' => 'contact')),
+		// 	'peepso'							=> array('or'=>array('logged-in' => true, 'page' => 'contact')),
+		// 		'peepso-elements'				=> array('or'=>array('logged-in' => true, 'page' => 'contact')),
+		// 		'peepso-sections'				=> array('or'=>array('logged-in' => true, 'page' => 'contact')),
+		// 		'peepso-modules'				=> array('or'=>array('logged-in' => true, 'page' => 'contact')),
 
 		// PEEPSO WIDGETS SCRIPTS
-		'peepso-friends'						=> array('logged-in' => true),
-		'msgso*'								=> array('logged-in' => true),
-			'peepso-activity'					=> array('logged-in' => true),
-			'peepso-activitystream'				=> array('logged-in' => true),
-			'peepso-comment'					=> array('logged-in' => true),
-		'peepso-bundle'							=> array('logged-in' => true),
-			'peepso-window'						=> array('logged-in' => true),
-			'peepso-notification'				=> array('logged-in' => true),
-			'peepso-datepicker'					=> array('logged-in' => true),
-			'peepso-avatar'						=> array('logged-in' => true),
-			'peepso-fileupload'					=> array('logged-in' => true),
-			'peepso-avatar-dialog'				=> array('logged-in' => true),
-			'peepso-crop'						=> array('logged-in' => true),
-			'peepso-hammer'						=> array('logged-in' => true),
+		// 'peepso-friends'						=> array('logged-in' => true),
+		// 'msgso*'								=> array('logged-in' => true),
+		// 	'peepso-activity'					=> array('logged-in' => true),
+		// 	'peepso-activitystream'				=> array('logged-in' => true),
+		// 	'peepso-comment'					=> array('logged-in' => true),
+		// 'peepso-bundle'							=> array('logged-in' => true),
+		// 	'peepso-window'						=> array('logged-in' => true),
+		// 	'peepso-notification'				=> array('logged-in' => true),
+		// 	'peepso-datepicker'					=> array('logged-in' => true),
+		// 	'peepso-avatar'						=> array('logged-in' => true),
+		// 	'peepso-fileupload'					=> array('logged-in' => true),
+		// 	'peepso-avatar-dialog'				=> array('logged-in' => true),
+		// 	'peepso-crop'						=> array('logged-in' => true),
+		// 	'peepso-hammer'						=> array('logged-in' => true),
 
 		// OTHER PEEPSO SCRIPTS
-		'peepso*'								=> array('logged-in' => true, 'page' => 'social'),
-		'peepso-markdown'						=> array('false' => ''),
-		'peepso-modal-comments'					=> array('false' => ''),
-		'peepso-friends-shortcode'				=> array('false' => ''),
+		// 'peepso*'								=> array('logged-in' => true, 'page' => 'social'),
+		// 'peepso-markdown'						=> array('false' => ''),
+		// 'peepso-modal-comments'					=> array('false' => ''),
+		// 'peepso-friends-shortcode'				=> array('false' => ''),
 
 		// RESPONSIVE MENU PRO
 		// 'responsive-menu-pro-jquery-touchswipe'	=> array('mobile' => true), // Menu button doesn't work

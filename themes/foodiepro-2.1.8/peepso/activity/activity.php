@@ -5,57 +5,107 @@ global $post;
 
 $user_stream_filters = PeepSoUser::get_stream_filters();
 $stream_id_list = apply_filters('peepso_stream_id_list', array());
+$small_thumbnail = PeepSo::get_option('small_url_preview_thumbnail', 0);
 
 ?>
-<div class="peepso ps-page--activity-post">
-    <section id="mainbody" class="ps-wrapper ps-clearfix">
-        <section id="component" role="article" class="ps-clearfix">
-            <!-- <?php //PeepSoTemplate::exec_template('general', 'navbar'); ?> -->
-            <?php PeepSoTemplate::exec_template('general', 'register-panel'); ?>
 
-            <?php /*override header*/ do_action('peepso_activity_single_override_header'); ?>
+<div class="peepso">
+  <div class="ps-page ps-page--activity">
 
-            <div class="ps-body">
-                <!--<div class="ps-sidebar"></div>-->
-                <div class="ps-main ps-main-full">
-                    <?php PeepSoTemplate::exec_template('general', 'postbox-legacy'); ?>
+    <?php //PeepSoTemplate::exec_template('general', 'navbar'); ?>
 
-                    <?php if(get_current_user_id() && FALSE === $PeepSoActivityShortcode->is_permalink_page()) { ?>
+    <?php //if (FALSE === $PeepSoActivityShortcode->is_permalink_page()) { PeepSoTemplate::exec_template('general', 'register-panel'); } ?>
 
-                        <input type="hidden" id="peepso_context" value="stream" />
+    <?php /*override header*/ do_action('peepso_activity_single_override_header'); ?>
 
-                        <?php if(NULL != $user_stream_filters ) { ?>
+    <?php if (! get_current_user_id() && $PeepSoActivityShortcode->is_permalink_page()) { PeepSoTemplate::exec_template('general','login-profile-tab'); } ?>
 
-                        <?php PeepSoTemplate::exec_template('activity', 'activity-stream-filters', array('user_stream_filters'=>$user_stream_filters,'stream_id_list'=>$stream_id_list )); ?>
+    <!-- PeepSo Activity -->
+    <div class="ps-activity">
+      <!-- PeepSo Postbox -->
+      <?php PeepSoTemplate::exec_template('general', 'postbox-legacy'); ?>
+      <!-- end: PeepSo Postbox -->
 
-                        <?php } ?>
+      <!-- PeepSo Activity Filters -->
+      <?php if(get_current_user_id() && FALSE === $PeepSoActivityShortcode->is_permalink_page()) { ?>
 
-                    <?php } elseif($post->post_type == 'peepso-post') { ?>
+          <input type="hidden" id="peepso_context" value="stream" />
 
-                        <input type="hidden" id="peepso_post_id" value="<?php global $post; echo $post->ID; ?>" />
-                        <input type="hidden" id="peepso_context" value="single" />
+          <?php if(NULL != $user_stream_filters ) { ?>
 
-                    <?php } ?>
+          <?php PeepSoTemplate::exec_template('activity', 'activity-stream-filters', array('user_stream_filters'=>$user_stream_filters,'stream_id_list'=>$stream_id_list )); ?>
 
+          <?php } ?>
 
+      <?php } elseif($post->post_type == 'peepso-post') { ?>
 
-                    <!-- stream activity -->
-                    <div class="ps-stream-wrapper">
-                        <div id="ps-activitystream-recent" class="ps-stream-container" style="display:none"></div>
-                        <div id="ps-activitystream" class="ps-stream-container" style="display:none"></div>
+          <input type="hidden" id="peepso_post_id" value="<?php global $post; echo $post->ID; ?>" />
+          <input type="hidden" id="peepso_context" value="single" />
 
-                        <div id="ps-activitystream-loading">
-                            <?php PeepSoTemplate::exec_template('activity', 'activity-placeholder'); ?>
-                        </div>
+      <?php } ?>
+      <!-- end: PeepSo Activity Filters -->
 
-                        <div id="ps-no-posts" class="ps-alert" style="display:none"><?php _e('No posts found.', 'peepso-core'); ?></div>
-                        <div id="ps-no-posts-match" class="ps-alert" style="display:none"><?php _e('No posts found.', 'peepso-core'); ?></div>
-                        <div id="ps-no-more-posts" class="ps-alert" style="display:none"><?php _e('Nothing more to show.', 'peepso-core'); ?></div>
+      <!-- PeepSo Activity Posts -->
+      <div class="ps-activity__container">
+        <div id="ps-activitystream-recent" class="ps-posts <?php echo $small_thumbnail ? '' : 'ps-posts--narrow' ?>" style="display:none"></div>
+        <div id="ps-activitystream" class="ps-posts <?php echo $small_thumbnail ? '' : 'ps-posts--narrow' ?>" style="display:none"></div>
+        <?php
 
-                        <?php PeepSoTemplate::exec_template('activity', 'dialogs'); ?>
-                    </div>
-                </div>
-            </div>
-        </section><!--end component-->
-    </section><!--end mainbody-->
-</div><!--end row-->
+          // Add noscript content for single post view.
+          $as = PeepSoActivityShortcode::get_instance();
+          if ($as->is_permalink_page())
+          {
+            $url = PeepSoUrlSegments::get_instance();
+            $post_slug = $url->get(2);
+            if (!empty($post_slug))
+            {
+              $peepso_activity = new PeepSoActivity();
+              $activity = $peepso_activity->get_activity_by_permalink(sanitize_key($post_slug));
+              if (is_object($activity))
+              {
+                $activity = apply_filters('peepso_filter_check_opengraph', $activity);
+              }
+              if (is_object($activity) && $activity->act_access == PeepSo::ACCESS_PUBLIC)
+              {
+                $user = PeepSoUser::get_instance($activity->post_author);
+                $description = strlen($human_friendly = get_post_meta($activity->ID, 'peepso_human_friendly', TRUE)) ? $human_friendly : strip_tags(apply_filters('peepso_remove_shortcodes', $activity->post_content, $activity->ID));
+                $description = (!empty($description)) ? $description : PeepSo::get_option('opengraph_description');
+
+              ?>
+              <!-- post content summary with semantic markup. -->
+              <noscript>
+                <article class="peepso_post">
+                  <h2><?php
+                    echo sprintf(
+                      __('Post by %s on %s', 'peepso-core'),
+                      '<a href="' . $user->get_profileurl() . '">' . trim(strip_tags($user->get_fullname())) . '</a>',
+                      '<time datetime="' . $activity->post_date_gmt . '">' .
+                        date_i18n(get_option('date_format') . ' ' . get_option('time_format'), strtotime($activity->post_date_gmt), true) .
+                      '</time>'
+                    );
+                  ?></h2>
+                  <p><?php echo nl2br($description); ?></p>
+                </article>
+              </noscript>
+              <?php
+
+              }
+            }
+          }
+
+        ?>
+        <div id="ps-activitystream-loading" class="ps-posts__loading">
+            <?php PeepSoTemplate::exec_template('activity', 'activity-placeholder'); ?>
+        </div>
+
+        <div id="ps-no-posts" class="ps-posts__empty"><?php echo __('No posts found.', 'peepso-core'); ?></div>
+        <div id="ps-no-posts-match" class="ps-posts__empty"><?php echo __('No posts found.', 'peepso-core'); ?></div>
+        <div id="ps-no-more-posts" class="ps-posts__empty"><?php echo __('Nothing more to show.', 'peepso-core'); ?></div>
+
+        <?php PeepSoTemplate::exec_template('activity', 'dialogs'); ?>
+      </div>
+      <!-- end: PeepSo Activity Posts -->
+    </div>
+    <!-- end: PeepSo Activity -->
+  </div>
+</div>

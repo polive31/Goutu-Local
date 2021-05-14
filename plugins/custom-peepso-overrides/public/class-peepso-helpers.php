@@ -17,6 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class PeepsoHelpers  {
 
+	const MODULE_ID = 1;// Blogposts module ID in Peepso
+
 
 	/**
 	 * get_avatar
@@ -87,6 +89,11 @@ class PeepsoHelpers  {
 	}
 
 
+	/**
+	 * current_nav_tab
+	 *
+	 * @return void
+	 */
 	public static function current_nav_tab()
 	{
 		$user_id = get_current_user_id();
@@ -127,14 +134,24 @@ class PeepsoHelpers  {
 		return $is_profile;
 	}
 
-	public static function get_nav_url($user, $link_id, $slug) {
+	/**
+	 * get_nav_url
+	 *
+	 * Provides the Peepso page url corresponding to a specific user and nav tab
+	 *
+	 * @param  WP_User $user
+	 * @param  string $nav_id identifier of the expected nav tab
+	 * @param  string $nav_slug link of the corresponding nav tab
+	 * @return void
+	 */
+	public static function get_nav_url($user, $nav_id, $nav_slug) {
 		if (!is_user_logged_in()) return get_home_url();
 		if (!is_object($user)) return get_home_url();
 
-		if ($link_id == 'messages')
+		if ($nav_id == 'messages')
 			$url = Peepso::get_page('messages');
 		else
-			$url = $user->get_profileurl() . $slug;
+			$url = $user->get_profileurl() . $nav_slug;
 
 		if ('http' != substr($url, 0, 4)) {
 			$url = $user->get_profileurl();
@@ -146,13 +163,15 @@ class PeepsoHelpers  {
 	/**
 	 * get_user
 	 *
+	 * Returns the PeepsoUser corresponding to the specified user type (current, viewed, author) or id
+	 *
 	 * @param  mixed $user_type_or_id
 	 * *
 	 * * 'current'
 	 * * 'view'
 	 * * 'author'
 	 * * <user_id>
-	 * @return void
+	 * @return PeepsoUser
 	 */
 	static function get_user( $user_type_or_id ) {
 		$user_id=false;
@@ -224,10 +243,20 @@ class PeepsoHelpers  {
 	}
 
 
-	public static function send_notification($from_id, $to_id, $msg, $action, $post_id) {
-		if (!is_user_logged_in()) return;
+	public static function send_notification($action, $from_id, $to_id, $post_id) {
+        $note = new PeepSoNotifications();
+        $post = get_post($post_id);
 
-	}
+        $msg = CPM_Assets::get_label($post->post_type, 'not_' . $action);
+        $msg = sprintf( $msg, $post->post_title);
+
+		$peepso_action = 'foodiepro_' . $action . '_' . $post->post_type;
+		$peepso_module_id = self::MODULE_ID;
+
+		// IMPORTANT : do not give value any  to $post_id & $act_id,they must remain to 0 in order for the notification to be shown
+		// Otherwise it'll be filtered-out
+        $note->add_notification($from_id, $to_id, $msg, $peepso_action, $peepso_module_id);
+    }
 
 
 

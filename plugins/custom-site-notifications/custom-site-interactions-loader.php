@@ -20,8 +20,6 @@ require_once 'includes/class-csn-assets.php';
 
 require_once 'public/mails/class-csn-mails.php';
 require_once 'public/popups/class-csn-popups.php';
-require_once 'public/notifications/class-csn-notifications.php';
-
 
 
 /* Start plugin */

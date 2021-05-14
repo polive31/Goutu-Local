@@ -34,29 +34,29 @@ class Peepso_Cover_Image_Header extends WP_Widget {
 
      	echo $args['before_widget'];
 
-		// if ( ! empty( $instance['title'] ) ) {
-		// 	echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
-		// }
-
-
 		// Widget content starts
-		// $edit_my_profile_slug = Peepso::get_option('page_profile');
-		// $view_member_profile_slug = Peepso::get_option('page_profile');
 
 		?>
 
-
 		<div id="cProfileWrapper" class="ps-clearfix">
 			<?php
+			global $post;
 
-				$shortcode = PeepSoProfileShortcode::get_instance();
-	            $shortcode->set_page('profile');
-				$current_view_user = $shortcode->get_view_user_id();
-
+			$view_user = PeepsoHelpers::get_user('view');
+			if ( $view_user )  {
 				$PeepSoProfile = PeepSoProfile::get_instance();
-				$PeepSoProfile->init( $current_view_user );
+				$PeepSoProfile->init( $view_user->get_id() );
+				$nav = PeepsoHelpers::current_nav_tab();
+				PeepSoTemplate::exec_template('profile', 'focus', array('current'=>$nav));
+			}
+			elseif ( is_user_logged_in() ) {
+				$nav = PeepsoHelpers::current_nav_tab();
+				PeepSoTemplate::exec_template('profile', 'focus', array('current'=>$nav));
+			}
+			else {
+				PeepSoTemplate::exec_template('general', 'register-panel');
+			}
 
-				PeepSoTemplate::exec_template('profile', 'focus');
 			?>
         </div>
 

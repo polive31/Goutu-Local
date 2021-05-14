@@ -61,11 +61,12 @@ class Peepso_About_Widget extends WP_Widget {
 			if( count($fields) ) {
 				foreach ($fields as $key => $field) {
 					if ( !empty($visible[$field->id]) && !empty($field->value) ) {
+						$render = $field->render(false);
 					?>
 
 						<div class="profile-field-container">
 							<strong class="profile-field-title" id="profile-field-title-<?php echo $field->id; ?>"><?php _e($field->title, 'peepso-core');?> : </strong>
-							<span class="profile-field-content"><?php echo $field->render(false); ?></span>
+							<span class="profile-field-content"><?= $render ?></span>
 						</div>
 
 					<?php

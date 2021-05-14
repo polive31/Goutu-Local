@@ -1,166 +1,197 @@
 <?php
-	$PeepSoProfile=PeepSoProfile::get_instance();
-    $PeepSoUser = $PeepSoProfile->user;
 
-    // echo 'IN FOCUS OVERRIDE for user : ' . $PeepSoProfile->user->get_fullname();
+$PeepSoProfile=PeepSoProfile::get_instance();
+$PeepSoUser = $PeepSoProfile->user;
 
-	// if (FALSE === $PeepSoUser->has_cover()) {
-	// 	$reposition_style = 'display:none;';
-	// 	$cover_class = 'default';
-	// } else {
-		$reposition_style = '';
-		$cover_class = 'has-cover';
-	// }
+$is_profile_segment = isset($current) ? TRUE : FALSE;
+$use_small_cover = $is_profile_segment && 0 == PeepSo::get_option('always_full_cover', 0);
 
-	/* Added PO 19/01/2019 */
-	$current = PeepsoHelpers::current_nav_tab();
+$show_focus = "";
+$focus_class = "";
 
-	/* Added PO 20/01/2019 to prevent small display on cover*/
-	// $is_profile_segment = isset($current) ? TRUE : FALSE;
-	$is_profile_segment = FALSE;
+if (class_exists('Gecko_Customizer')) {
+  $settings = GeckoConfigSettings::get_instance();
+
+	if (1 < $settings->get_option( 'opt_ps_profile_page_cover', 1 ) ) {
+		$show_focus = 1;
+	}
+
+  if (1 == $settings->get_option( 'opt_ps_profile_page_cover_centered', 0 ) ) {
+  	$focus_class = "ps-focus--gecko ps-focus--centered";
+  }
+}
+
+if (!$show_focus) {
 ?>
-<div class="ps-focus js-focus  <?php if($is_profile_segment && 0 == PeepSo::get_option('always_full_cover', 0)) { echo 'ps-focus-mini'; } ?> ps-js-focus ps-js-focus--<?php echo $PeepSoUser->get_id() ?>">
-	<div class="ps-focus-cover js-focus-cover ">
-		<div class="ps-focus-image">
-			<img id="<?php echo $PeepSoUser->get_id(); ?>"
-				data-cover-context="profile"
-				class="focusbox-image cover-image <?php echo $cover_class; ?>"
-				src="<?php echo $PeepSoUser->get_cover(); ?>"
-				alt="<?php echo $PeepSoUser->get_fullname(); ?> cover photo"
-				style="<?php //echo $PeepSoUser->get_cover_position(); ?>"
-			/>
-		</div>
+<div class="ps-focus <?php echo $use_small_cover ? 'ps-focus--small' : ''; ?> <?php echo $focus_class; ?> ps-js-focus ps-js-focus--profile ps-js-focus--<?php echo $PeepSoUser->get_id() ?>">
+	<div class="ps-focus__cover ps-js-cover">
 
-		<div class="ps-focus-image-mobile" style="background:url(<?php echo $PeepSoUser->get_cover(); ?>) no-repeat center center;">
-		</div>
-
-		<div class="js-focus-gradient" data-cover-context="profile" data-cover-type="cover"></div>
-		<!-- Blog Title -->
 		<?php
-
 		$blog_title = PeepsoHelpers::get_profile_field( $PeepSoUser, 'blog_title');
-		if ($blog_title) {?>
+		if ($blog_title) {
+		?>
 			<h1 class="blog-title"><?= $blog_title; ?></h1>
 		<?php } ?>
 
-		<?php if ($PeepSoProfile->can_edit() && (!$is_profile_segment || 1 == PeepSo::get_option('always_full_cover', 0))) { ?>
+		<div class="ps-focus__cover-image ps-js-cover-wrapper">
+			<img class="ps-js-cover-image" src="<?php echo $PeepSoUser->get_cover(); ?>"
+				alt="<?php printf( __('%s cover photo', 'peepso-core'), $PeepSoUser->get_nicename()); ?>"
+				style="<?php echo $PeepSoUser->get_cover_position(); ?>; opacity: 0; transition: opacity 0.5s" />
+		</div>
 
-		<?php wp_nonce_field('profile-photo', '_photononce'); ?>
 
+		<?php
+			$cover_box_attrs = '';
+			if ($PeepSoUser->has_cover()) {
+				$cover_box_attrs = ' style="cursor:pointer" data-cover-url="' . $PeepSoUser->get_cover() . '"';
+			}
+		?>
+
+		<?php if ($PeepSoProfile->can_edit()) { ?>
 
 		<!-- Cover options dropdown -->
-		<div title="<?php _e('Cover Image Utilities', 'foodiepro'); ?>" class="ps-focus-options ps-dropdown ps-dropdown-focus ps-js-dropdown">
-			<a href="#" class="ps-dropdown__toggle ps-js-dropdown-toggle">
-				<span class="ps-icon-camera"></span>
-			</a>
-			<div class="ps-dropdown__menu ps-js-dropdown-menu">
-				<a href="#" class="ps-reposition-cover" id="profile-reposition-cover" style="<?php echo $reposition_style; ?>"
-						data-cover-context="profile" onclick="profile.reposition_cover(); return false;">
-					<i class="ps-icon-move"></i>
-					<?php _e('Reposition', 'peepso-core'); ?>
-				</a>
-				<a href="#" data-cover-context="profile" onclick="profile.show_cover_dialog(); return false;">
-					<i class="ps-icon-cog"></i>
-					<?php _e('Modify', 'peepso-core'); ?>
-				</a>
-			</div>
-		</div>
+		<div class="ps-focus__cover-inner ps-js-cover-button-popup"<?php echo $cover_box_attrs ?>>
+      <div class="ps-avatar ps-avatar--focus ps-focus__avatar ps-js-avatar">
+  			<img class="ps-js-avatar-image" src="<?php echo $PeepSoUser->get_avatar('full'); ?>"
+  				alt="<?php printf( __('%s avatar', 'peepso-core'), $PeepSoUser->get_nicename()); ?>" />
 
-		<!-- Reposition cover - buttons -->
-		<div class="ps-focus-change js-focus-change-cover" data-cover-type="cover">
-			<div class="reposition-cover-actions" style="display: none;">
-				<a href="#" class="ps-btn" onclick="profile.cancel_reposition_cover(); return false;"><?php _e('Cancel', 'peepso-core'); ?></a>
-				<a href="#" class="ps-btn ps-btn-primary" onclick="profile.save_reposition_cover(); return false;"><?php _e('Save', 'peepso-core'); ?></a>
-			</div>
-			<div class="ps-reposition-loading" style="display: none;">
-				<img src="<?php echo PeepSo::get_asset('images/ajax-loader.gif'); ?>">
-				<div> </div>
-			</div>
-		</div>
-		<?php } ?>
+  			<?php
+  				$avatar_box_attrs = ' style="cursor:default"';
+  				if ($PeepSoUser->has_avatar()) {
+  					$avatar_box_attrs = ' onclick="peepso.simple_lightbox(\'' . $PeepSoUser->get_avatar('orig') . '\'); return false"';
+  				}
+  			?>
 
-		<!-- Focus Title , Avatar, Add as friend button -->
-		<div class="ps-focus-header js-focus-content">
-			<div class="ps-avatar-focus js-focus-avatar ps-js-focus-avatar">
-				<img src="<?php echo $PeepSoUser->get_avatar('full'); ?>" alt="<?php echo $PeepSoUser->get_fullname(); ?> avatar">
-				<?php if ((1 != PeepSo::get_option('avatars_wordpress_only', 0)) && $PeepSoProfile->can_edit()) { ?>
-					<?php wp_nonce_field('profile-photo', '_photononce'); ?>
+  			<div class="ps-focus__avatar-change-wrapper ps-js-avatar-button-wrapper"<?php echo $avatar_box_attrs ?>>
+  				<?php if ((1 != PeepSo::get_option('avatars_wordpress_only', 0)) && $PeepSoProfile->can_edit()) { ?>
+  				<a href="#" class="ps-focus__avatar-change ps-js-avatar-button">
+  					<i class="gcis gci-camera"></i><span><?php echo __('Change avatar', 'peepso-core'); ?></span>
+  				</a>
+  				<?php } ?>
+  			</div>
 
-					<div class="ps-avatar-change js-focus-avatar-option">
-						<a href="#" class="ps-js-focus-avatar-button">
-							<div class="avatar-overlay">
-								<div class="avatar-overlay-text"><i class="fa fa-camera"></i> <?= __('Update cover picture', 'foodiepro'); ?></div>
-							</div>
-						</a>
-					</div>
-				<?php } ?>
-				<!-- Online status -->
-				<?php if($PeepSoUser->get_online_status()) { ?><?php PeepSoTemplate::exec_template('profile', 'online', array('PeepSoUser'=>$PeepSoUser, 'class'=>'ps-user__status--focus')); ?><?php } ?>
-			</div>
-
-
-			<!-- User Name  -->
-			<div class="ps-focus-title">
-				<?php
-					if(!$is_profile_segment || 1 == PeepSo::get_option('always_full_cover', 0)) {
-						echo '<div class="ps-focus__before-title">', do_action('peepso_profile_cover_full_before_name', $PeepSoUser->get_id()), '</div>';
-					}
-				?>
-				<!-- <span data-hover-card="<?php //echo $PeepSoUser->get_id() ?>"> -->
-				<!-- Online status -->
-				<?php if($PeepSoUser->get_online_status()) { ?><?php PeepSoTemplate::exec_template('profile', 'online', array('PeepSoUser'=>$PeepSoUser)); ?><?php } ?>
-					<?php
-
-					//[peepso]_[action]_[WHICH_PLUGIN]_[WHERE]_[WHAT]_[BEFORE/AFTER]
-						do_action('peepso_action_render_user_name_before', $PeepSoUser->get_id());
-
-						if ($blog_title)
-							echo sprintf( __("%s's Blog",'foodiepro'), ucfirst($PeepSoUser->get_nicename()) );
-						else
-							echo ucfirst( $PeepSoUser->get_nicename() );
-
-						//[peepso]_[action]_[WHICH_PLUGIN]_[WHERE]_[WHAT]_[BEFORE/AFTER]
-						do_action('peepso_action_render_user_name_after', $PeepSoUser->get_id());
-					?>
-				</span>
-				<?php
-					if(!$is_profile_segment || 1 == PeepSo::get_option('always_full_cover', 0)) {
-						echo '<div class="ps-focus__after-title">', do_action('peepso_profile_cover_full_after_name', $PeepSoUser->get_id()), '</div>';
-					}
-				?>
-			</div>
-			<div class="ps-focus-actions">
+  			<?php if($PeepSoUser->get_online_status()) { ?>
+  			<div class="ps-online ps-online--focus ps-tip ps-tip--inline"
+  				aria-label="<?php echo sprintf(__('%s is currently online','peepso-core'), $PeepSoUser->get_nicename()); ?>"><div class="ps-online__inner"></div></div>
+  			<?php } ?>
+  		</div>
+			<div class="ps-focus__cover-actions ps-js-focus-actions">
 				<?php $PeepSoProfile->profile_actions(); ?>
 			</div>
 		</div>
-	</div><!-- .js-focus-cover -->
+		<div class="ps-focus__options ps-js-dropdown ps-js-cover-dropdown">
+			<a href="#" class="ps-focus__options-toggle ps-js-dropdown-toggle"><span><?php echo __('Change cover', 'peepso-core'); ?></span><i class="gcis gci-image"></i></a>
+			<div class="ps-focus__options-menu ps-js-dropdown-menu">
+				<a href="#" class="ps-js-cover-upload">
+					<i class="gcis gci-paint-brush"></i>
+					<?php echo __('Upload new', 'peepso-core'); ?>
+				</a>
+				<a href="#" class="ps-js-cover-reposition">
+					<i class="gcis gci-arrows-alt"></i>
+					<?php echo __('Reposition', 'peepso-core'); ?>
+				</a>
+				<a href="#" class="ps-js-cover-remove">
+					<i class="gcis gci-trash"></i>
+					<?php echo __('Delete', 'peepso-core'); ?>
+				</a>
+			</div>
+		</div>
+		<!-- Reposition cover - buttons -->
+		<div class="ps-focus__reposition ps-js-cover-reposition-actions" style="display:none">
+			<div class="ps-focus__reposition-actions reposition-cover-actions">
+				<a href="#" class="ps-focus__reposition-action ps-js-cover-reposition-cancel"><?php echo __('Cancel', 'peepso-core'); ?></a>
+				<a href="#" class="ps-focus__reposition-action ps-js-cover-reposition-confirm"><i class="gcis gci-check"></i> <?php echo __('Save', 'peepso-core'); ?></a>
+			</div>
+		</div>
 
-	<?php
-	if(!$is_profile_segment)
-	{
-		// $current='stream';
-	}
-	?>
+		<?php } else { ?>
 
-	<!-- Profile actions - mobile -->
-	<div class="ps-focus__interactions profile-interactions profile-social ps-js-focus-interactions">
-		<?php $PeepSoProfile->interactions(); ?>
+		<div class="ps-focus__cover-inner ps-js-cover-button-popup"<?php echo $cover_box_attrs ?>>
+      <div class="ps-avatar ps-avatar--focus ps-focus__avatar ps-js-avatar">
+  			<img class="ps-js-avatar-image" src="<?php echo $PeepSoUser->get_avatar('full'); ?>"
+  				alt="<?php printf( __('%s avatar', 'peepso-core'), $PeepSoUser->get_nicename()); ?>" />
+
+  			<?php
+  				$avatar_box_attrs = ' style="cursor:default"';
+  				if ($PeepSoUser->has_avatar()) {
+  					$avatar_box_attrs = ' onclick="peepso.simple_lightbox(\'' . $PeepSoUser->get_avatar('orig') . '\'); return false"';
+  				}
+  			?>
+
+  			<div class="ps-focus__avatar-change-wrapper ps-js-avatar-button-wrapper"<?php echo $avatar_box_attrs ?>>
+  				<?php if ((1 != PeepSo::get_option('avatars_wordpress_only', 0)) && $PeepSoProfile->can_edit()) { ?>
+  				<a href="#" class="ps-focus__avatar-change ps-js-avatar-button">
+  					<i class="gcis gci-camera"></i><span><?php echo __('Change avatar', 'peepso-core'); ?></span>
+  				</a>
+  				<?php } ?>
+  			</div>
+
+  			<?php if($PeepSoUser->get_online_status()) { ?>
+  			<div class="ps-online ps-online--focus ps-tip ps-tip--inline"
+  				aria-label="<?php echo sprintf(__('%s is currently online','peepso-core'), $PeepSoUser->get_nicename()); ?>"><div class="ps-online__inner"></div></div>
+  			<?php } ?>
+  		</div>
+			<div class="ps-focus__cover-actions ps-js-focus-actions">
+				<?php $PeepSoProfile->profile_actions(); ?>
+			</div>
+		</div>
+
+		<?php }?>
 	</div>
 
 	<div class="ps-focus__footer">
+		<div class="ps-focus__info">
+			<div class="ps-focus__title">
+				<?php
+					if (!$is_profile_segment || 1 == PeepSo::get_option('always_full_cover', 0)) {
+						echo '<div class="ps-focus__title-before">', do_action('peepso_profile_cover_full_before_name', $PeepSoUser->get_id()), '</div>';
+					}
+				?>
+				<div class="ps-focus__name" data-hover-card="<?php echo $PeepSoUser->get_id() ?>">
+				<?php
+					//[peepso]_[action]_[WHICH_PLUGIN]_[WHERE]_[WHAT]_[BEFORE/AFTER]
+					do_action('peepso_action_render_user_name_before', $PeepSoUser->get_id());
 
-		<!-- <div class="ps-focus-actions-mobile"><?php //$PeepSoProfile->profile_actions(); ?></div> -->
+					if ($blog_title) {
+						echo 'Le blog de ';
+					}
+					echo '<span>' . $PeepSoUser->get_nicename() . '</span>';
 
-		<div class="ps-focus__menu profile-interactions ps-js-focus-links">
-			<div class="ps-focus__menu-inner">
+					//[peepso]_[action]_[WHICH_PLUGIN]_[WHERE]_[WHAT]_[BEFORE/AFTER]
+					do_action('peepso_action_render_user_name_after', $PeepSoUser->get_id());
+				?>
+				</div>
+				<?php
+					if (!$is_profile_segment || 1 == PeepSo::get_option('always_full_cover', 0)) {
+						echo '<div class="ps-focus__title-after">', do_action('peepso_profile_cover_full_after_name', $PeepSoUser->get_id()), '</div>';
+					}
+				?>
+			</div>
+			<div class="ps-focus__details ps-js-focus-interactions">
+				<?php $PeepSoProfile->interactions(); ?>
+			</div>
+			<div class="ps-focus__mobile-actions ps-js-focus-actions"><?php $PeepSoProfile->profile_actions(); ?></div>
+			<div class="ps-focus__actions ps-js-profile-actions-extra"><?php $PeepSoProfile->profile_actions_extra(); ?></div>
+		</div>
+
+		<?php
+			do_action('peepso_action_render_user_menu_before', $PeepSoUser->get_id());
+		?>
+
+		<?php
+
+			if (!$is_profile_segment) {
+				$current = 'stream';
+			}
+
+		?>
+		<div class="ps-focus__menu ps-js-focus__menu">
+			<div class="ps-focus__menu-inner ps-js-focus__menu-inner">
 				<?php echo $PeepSoProfile->profile_navigation(array('current'=>$current)); ?>
 			</div>
 			<div class="ps-focus__menu-shadow ps-focus__menu-shadow--left ps-js-aid-left"></div>
 			<div class="ps-focus__menu-shadow ps-focus__menu-shadow--right ps-js-aid-right"></div>
 		</div>
-
 	</div>
-
-	<div class="js-focus-actions">
-	</div><!-- .js-focus-actions -->
-</div><!-- .js-focus -->
+</div>
+<?php } ?>

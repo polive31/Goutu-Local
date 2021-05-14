@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Goutu\n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2020-05-21 02:16+0200\n"
-"PO-Revision-Date: 2021-05-09 00:55+0200\n"
+"POT-Creation-Date: 2021-05-15 01:05+0200\n"
+"PO-Revision-Date: 2021-05-15 01:06+0200\n"
 "Last-Translator: \n"
 "Language-Team: Goutu team <psc.olv@gmail.com>\n"
 "Language: fr\n"
@@ -321,9 +321,10 @@ msgid "Title : descending"
 msgstr "Titre : de Z à A"
 
 #: plugins/custom-archive-management/widgets/dropdown-posts-sort-widget.php:63
-#: themes/foodiepro-2.1.8/peepso/blogposts/blogposts.php:19
-#: themes/foodiepro-2.1.8/peepso/photos/photos.php:47
-#: themes/foodiepro-2.1.8/peepso/videos/videos.php:7
+#: themes/foodiepro-2.1.8/peepso/blogposts/blogposts.php:21
+#: themes/foodiepro-2.1.8/peepso2/blogposts/blogposts.php:19
+#: themes/foodiepro-2.1.8/peepso2/photos/photos.php:47
+#: themes/foodiepro-2.1.8/peepso2/videos/videos.php:7
 msgid "Newest first"
 msgstr "Les plus récentes"
 
@@ -331,7 +332,7 @@ msgstr "Les plus récentes"
 #: plugins/custom-archive-management/widgets/taxonomy-accordion-widget.php:239
 #: plugins/custom-archive-management/widgets/taxonomy-dropdown-widget.php:236
 #: plugins/custom-archive-management/widgets/taxonomy-search-widget.php:113
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:281
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:282
 #: plugins/custom-post-management/widgets/cpm_list_dropdown_widget.php:93
 #: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:46
 msgid "New title"
@@ -341,11 +342,11 @@ msgstr ""
 #: plugins/custom-archive-management/widgets/taxonomy-accordion-widget.php:252
 #: plugins/custom-archive-management/widgets/taxonomy-dropdown-widget.php:245
 #: plugins/custom-archive-management/widgets/taxonomy-search-widget.php:117
-#: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:122
+#: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:123
 #: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:86
 #: plugins/custom-peepso-overrides/widgets/PeepsoCoverImageHeader.php:86
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:203
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:320
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:321
 #: plugins/custom-post-management/widgets/cpm_list_dropdown_widget.php:97
 #: plugins/custom-recipe-management/widgets/crm_nutrition_label_widget.php:60
 #: plugins/custom-social-sharing-buttons/widgets/social-share-buttons-widget.php:50
@@ -363,17 +364,17 @@ msgid ""
 msgstr ""
 
 #: plugins/custom-archive-management/widgets/taxonomy-accordion-widget.php:84
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:40
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:41
 msgid "Courses"
 msgstr "De l'apéritif au dessert"
 
 #: plugins/custom-archive-management/widgets/taxonomy-accordion-widget.php:90
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:44
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:45
 msgid "Seasons"
 msgstr "Cuisine de saisons"
 
 #: plugins/custom-archive-management/widgets/taxonomy-accordion-widget.php:96
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:41
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:42
 msgid "Occasions"
 msgstr "En toutes occasions"
 
@@ -386,7 +387,7 @@ msgid "France"
 msgstr "Cuisines de régions"
 
 #: plugins/custom-archive-management/widgets/taxonomy-accordion-widget.php:117
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:43
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:44
 msgid "Diets"
 msgstr "Régimes et diététique"
 
@@ -477,37 +478,31 @@ msgstr ""
 #: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:41
 #: plugins/custom-contact-form/templates/contact-form.php:9
 #: plugins/custom-recipe-management/admin/class-crm-taxonomies.php:64
-#: plugins/custom-star-rating/public/class-csr-form.php:136
 msgid "Name"
 msgstr "Nom"
 
 #: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:43
-#: plugins/custom-star-rating/public/class-csr-form.php:138
 #, fuzzy
 #| msgid "Email Address"
 msgid "Email"
 msgstr "Adresse mail"
 
 #: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:45
-#: plugins/custom-star-rating/public/class-csr-form.php:140
 msgid "Website"
 msgstr ""
 
 #: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:52
-#: plugins/custom-star-rating/public/class-csr-form.php:147
 msgid ""
 "Save my name, email, and website in this browser for the next time I comment."
 msgstr ""
 
 #: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:60
-#: plugins/custom-star-rating/public/class-csr-form.php:155
 #, fuzzy, php-format
 #| msgid "Required fields"
 msgid "Required fields are marked %s"
 msgstr "Informations requises"
 
 #: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:72
-#: plugins/custom-star-rating/public/class-csr-form.php:167
 #, fuzzy
 #| msgid "Comment"
 msgctxt "noun"
@@ -515,13 +510,11 @@ msgid "Comment"
 msgstr "Ajouter un commentaire"
 
 #: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:76
-#: plugins/custom-star-rating/public/class-csr-form.php:171
 #, php-format
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
 msgstr ""
 
 #: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:82
-#: plugins/custom-star-rating/public/class-csr-form.php:177
 #, php-format
 msgid ""
 "<a href=\"%1$s\" aria-label=\"%2$s\">Logged in as %3$s</a>. <a href=\"%4$s"
@@ -529,27 +522,23 @@ msgid ""
 msgstr ""
 
 #: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:85
-#: plugins/custom-star-rating/public/class-csr-form.php:180
 #, php-format
 msgid "Logged in as %s. Edit your profile."
 msgstr ""
 
 #: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:89
-#: plugins/custom-star-rating/public/class-csr-form.php:184
 #, fuzzy
 #| msgid "Your recipe just got published !"
 msgid "Your email address will not be published."
 msgstr "Ta recette est publiée !"
 
 #: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:97
-#: plugins/custom-star-rating/public/class-csr-form.php:192
 #, fuzzy
 #| msgid "Send a Reply"
 msgid "Leave a Reply"
 msgstr "Envoyer une répondre"
 
 #: plugins/custom-comment-management/deprecated/partials/comment-form-template.php:100
-#: plugins/custom-star-rating/public/class-csr-form.php:195
 #, fuzzy
 #| msgid "Post content"
 msgid "Post Comment"
@@ -633,7 +622,8 @@ msgid "Reply to this comment"
 msgstr "Favorite"
 
 #: plugins/custom-comment-management/public/class-ccm-form.php:75
-#: themes/foodiepro-2.1.8/peepso/general/recover-password.php:37
+#: themes/foodiepro-2.1.8/peepso/general/recover-password.php:28
+#: themes/foodiepro-2.1.8/peepso2/general/recover-password.php:37
 msgid "Submit"
 msgstr "Publier"
 
@@ -957,7 +947,7 @@ msgid "wrote a new recipe"
 msgstr "a publié une nouvelle recette"
 
 #: plugins/custom-peepso-overrides/public/class-cpo-customizations.php:195
-#: themes/foodiepro-2.1.8/functions.php:952
+#: themes/foodiepro-2.1.8/functions.php:961
 msgid "Legal notice"
 msgstr "Mentions légales"
 
@@ -966,12 +956,12 @@ msgstr "Mentions légales"
 msgid "I agree to the %s."
 msgstr ""
 
-#: plugins/custom-peepso-overrides/public/class-peepso-helpers.php:59
+#: plugins/custom-peepso-overrides/public/class-peepso-helpers.php:61
 #, php-format
 msgid "Picture of %s"
 msgstr "Photo de %s"
 
-#: plugins/custom-peepso-overrides/public/class-peepso-helpers.php:63
+#: plugins/custom-peepso-overrides/public/class-peepso-helpers.php:65
 #, fuzzy
 #| msgid "Update cover picture"
 msgid "User picture"
@@ -987,12 +977,13 @@ msgstr "Profil rempli !"
 msgid "Displays chosen details about a given user"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:76
-#: themes/foodiepro-2.1.8/peepso/profile/profile-about.php:168
+#: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:77
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about.php:138
+#: themes/foodiepro-2.1.8/peepso2/profile/profile-about.php:168
 msgid "Sorry, no data to show"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:128
+#: plugins/custom-peepso-overrides/widgets/PeepsoAboutWidget.php:129
 msgid "Fields visibility :"
 msgstr ""
 
@@ -1006,18 +997,24 @@ msgstr ""
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:58
 #: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:59
-#: themes/foodiepro-2.1.8/peepso/activity/activity.php:51
-#: themes/foodiepro-2.1.8/peepso/activity/activity.php:52
-#: themes/foodiepro-2.1.8/peepso/profile/profile.php:29
-#: themes/foodiepro-2.1.8/peepso/profile/profile.php:30
+#: themes/foodiepro-2.1.8/peepso/activity/activity.php:101
+#: themes/foodiepro-2.1.8/peepso/activity/activity.php:102
+#: themes/foodiepro-2.1.8/peepso/profile/profile.php:47
+#: themes/foodiepro-2.1.8/peepso/profile/profile.php:48
+#: themes/foodiepro-2.1.8/peepso2/activity/activity.php:51
+#: themes/foodiepro-2.1.8/peepso2/activity/activity.php:52
+#: themes/foodiepro-2.1.8/peepso2/profile/profile.php:29
+#: themes/foodiepro-2.1.8/peepso2/profile/profile.php:30
 #, fuzzy
 #| msgid "No recipes found."
 msgid "No posts found."
 msgstr "Aucune recette trouvée."
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoActivityStreamWidget.php:60
-#: themes/foodiepro-2.1.8/peepso/activity/activity.php:53
-#: themes/foodiepro-2.1.8/peepso/profile/profile.php:31
+#: themes/foodiepro-2.1.8/peepso/activity/activity.php:103
+#: themes/foodiepro-2.1.8/peepso/profile/profile.php:49
+#: themes/foodiepro-2.1.8/peepso2/activity/activity.php:53
+#: themes/foodiepro-2.1.8/peepso2/profile/profile.php:31
 msgid "Nothing more to show."
 msgstr ""
 
@@ -1053,9 +1050,11 @@ msgid "Edit my profile"
 msgstr "Modifier mon profil"
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:103
-#: themes/foodiepro-2.1.8/functions.php:806
-#: themes/foodiepro-2.1.8/peepso/widgets/userbar.tpl.php:33
-#: themes/foodiepro-2.1.8/peepso/widgets/userbar.tpl.php:90
+#: themes/foodiepro-2.1.8/functions.php:807
+#: themes/foodiepro-2.1.8/peepso/widgets/userbar.tpl.php:62
+#: themes/foodiepro-2.1.8/peepso/widgets/userbar.tpl.php:105
+#: themes/foodiepro-2.1.8/peepso2/widgets/userbar.tpl.php:35
+#: themes/foodiepro-2.1.8/peepso2/widgets/userbar.tpl.php:92
 msgid "Log Out"
 msgstr "Déconnexion"
 
@@ -1073,7 +1072,7 @@ msgid "Remember Me"
 msgstr "Se souvenir de moi"
 
 #: plugins/custom-peepso-overrides/widgets/PeepsoCustomLoginWidget.php:140
-#: themes/foodiepro-2.1.8/functions.php:810
+#: themes/foodiepro-2.1.8/functions.php:811
 msgid "Log In"
 msgstr "Connexion"
 
@@ -1106,100 +1105,100 @@ msgstr ""
 msgid "All the members"
 msgstr "Tous les gourmets"
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:166
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:167
 msgid "All my friends"
 msgstr "Tous mes amis"
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:176
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:177
 msgid "Friends of mine"
 msgstr "Mes amis"
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:183
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:241
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:184
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:242
 msgid "make new connections"
 msgstr "fais-toi de nouvelles connaissances"
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:185
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:186
 #, php-format
 msgid "No friend yet, <u>%s</u>"
 msgstr "Pas encore d'amis, <u>%s</u>"
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:221
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:222
 #, php-format
 msgid "Mutual Friends with %s"
 msgstr "Amis communs avec %s"
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:221
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:222
 #, php-format
 msgid "%s's Friends"
 msgstr "Les amis de %s"
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:226
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:227
 #, fuzzy, php-format
 #| msgctxt "masculine-consonant"
 #| msgid "All %s from %s"
 msgid "All %s's friends"
 msgstr "Tous les %s de %s"
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:226
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:227
 #, fuzzy
 #| msgid "All my friends"
 msgid "All mutual friends"
 msgstr "Tous mes amis"
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:244
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:245
 #, php-format
 msgid "No mutual friends yet with %s, <u>%s</u>"
 msgstr "Pas encore d'amis communs avec %s, <u>%s</u>"
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:246
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:247
 #, php-format
 msgid "%s doesn't have any friend yet"
 msgstr "%s n'a pas encore d'ami."
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:326
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:327
 msgid "Query"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:329
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:330
 #, fuzzy
 #| msgid "Newest first"
 msgid "Latest Registered"
 msgstr "Les plus récentes"
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:330
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:331
 #, fuzzy
 #| msgid "Friends of mine"
 msgid "Friends (automatic)"
 msgstr "Mes amis"
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:331
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:332
 msgid "Friends (from logged-in user)"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:332
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:333
 msgid "Friends (from viewed member profile)"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:333
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:334
 msgid "Friends (from post author)"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:338
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:339
 #, fuzzy
 #| msgid "Display Profile"
 msgid "Display if no friends found ?"
 msgstr "Afficher mon profil"
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:343
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:344
 msgid "Limit to mutual friends ?"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:349
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:350
 msgid "Thumbnail size"
 msgstr ""
 
-#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:362
+#: plugins/custom-peepso-overrides/widgets/PeepsoMembers.php:363
 msgid "Number of users to show"
 msgstr ""
 
@@ -1246,46 +1245,6 @@ msgstr ""
 #| msgid "Reply to Message"
 msgid "Message:"
 msgstr "Répondre au message"
-
-#: plugins/custom-post-management/deprecated/partials/custom_post_submission_form-wp.php:26
-#: plugins/custom-post-management/templates/template-form.php:29
-msgid "Featured image"
-msgstr "Image à la une"
-
-#: plugins/custom-post-management/deprecated/partials/custom_post_submission_form-wp.php:27
-msgid ""
-"Add here your best picture for this post, in order to attract visitors !"
-msgstr "Placez ici votre plus belle photo pour illustrer cet article  !"
-
-#: plugins/custom-post-management/deprecated/partials/custom_post_submission_form-wp.php:30
-#: plugins/custom-post-management/templates/template-form.php:34
-#: plugins/custom-recipe-management/deprecated/partials/instruction_form_item.php:35
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:329
-#: plugins/custom-recipe-management/templates/template-form-instructions-instruction.php:55
-msgid "Remove Image"
-msgstr "Retirer cette image"
-
-#: plugins/custom-post-management/deprecated/partials/custom_post_submission_form-wp.php:38
-#: plugins/custom-post-management/templates/template-form.php:44
-msgid "Post Tags"
-msgstr "Etiquettes"
-
-#: plugins/custom-post-management/deprecated/post_toolbar.php:19
-#: plugins/custom-post-management/templates/template-screen-toolbar.php:19
-#: plugins/custom-recipe-management/deprecated/partials_recipe/recipe-toolbar.php:73
-#: plugins/custom-recipe-management/templates/template-toolbar.php:60
-msgid "Print"
-msgstr "Imprimer"
-
-#: plugins/custom-post-management/deprecated/post_toolbar.php:23
-#: plugins/custom-post-management/templates/template-screen-toolbar.php:23
-msgid "Print this post"
-msgstr "Imprimer cet article"
-
-#: plugins/custom-post-management/deprecated/post_toolbar.php:34
-#: plugins/custom-recipe-management/deprecated/partials_recipe/recipe-toolbar.php:88
-msgid "Share"
-msgstr "Partager"
 
 #: plugins/custom-post-management/includes/class-cpm-assets.php:104
 msgctxt "post"
@@ -1496,8 +1455,8 @@ msgstr "J'aime"
 
 #: plugins/custom-post-management/includes/class-cpm-assets.php:232
 #: plugins/custom-post-management/includes/class-cpm-assets.php:233
-#: plugins/custom-post-management/like/class-cpm-like.php:115
-#: plugins/custom-post-management/like/class-cpm-like.php:117
+#: plugins/custom-post-management/like/class-cpm-like.php:114
+#: plugins/custom-post-management/like/class-cpm-like.php:116
 #, php-format
 msgid "%s like"
 msgid_plural "%s likes"
@@ -1510,7 +1469,7 @@ msgid "Category"
 msgstr "Catégorie"
 
 #: plugins/custom-post-management/includes/class-cpm-assets.php:255
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:117
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:118
 msgid "Keywords"
 msgstr "Mots-clés"
 
@@ -1692,7 +1651,6 @@ msgid "Post content"
 msgstr "Corps de l'article"
 
 #: plugins/custom-post-management/templates/template-form-post.php:5
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:6
 #: plugins/custom-recipe-management/templates/template-form.php:6
 msgid "Description"
 msgstr ""
@@ -1703,9 +1661,41 @@ msgstr ""
 "Ecrivez votre article ici. Vous pouvez joindre des liens et des images au "
 "fil du texte grâce aux boutons correspondants sur la barre d'outils."
 
+#: plugins/custom-post-management/templates/template-form-post.php:15
+msgid "Post video"
+msgstr "Vidéo de l'article"
+
+#: plugins/custom-post-management/templates/template-form-post.php:16
+#: plugins/custom-recipe-management/templates/template-form-instructions-instruction.php:56
+msgid "Link to the online video (Youtube, ...). Must begin with https://..."
+msgstr ""
+"Lien vers une vidéo en ligne (YouTube, …). Doit commencer par https://..."
+
 #: plugins/custom-post-management/templates/template-form-taxonomies-dropdown.php:29
 msgid "none"
 msgstr "aucun(e)"
+
+#: plugins/custom-post-management/templates/template-form.php:29
+msgid "Featured image"
+msgstr "Image à la une"
+
+#: plugins/custom-post-management/templates/template-form.php:34
+#: plugins/custom-recipe-management/templates/template-form-instructions-instruction.php:64
+msgid "Remove Image"
+msgstr "Retirer cette image"
+
+#: plugins/custom-post-management/templates/template-form.php:44
+msgid "Post Tags"
+msgstr "Etiquettes"
+
+#: plugins/custom-post-management/templates/template-screen-toolbar.php:19
+#: plugins/custom-recipe-management/templates/template-toolbar.php:19
+msgid "Print"
+msgstr "Imprimer"
+
+#: plugins/custom-post-management/templates/template-screen-toolbar.php:23
+msgid "Print this post"
+msgstr "Imprimer cet article"
 
 #: plugins/custom-post-management/widgets/cpm_list_dropdown_widget.php:15
 msgid "Dropdown Post Lists Widget"
@@ -1950,7 +1940,8 @@ msgstr "Recette"
 #: plugins/custom-recipe-management/admin/class-crm-recipe-post-type.php:31
 #: plugins/custom-recipe-management/admin/class-crm-recipe-post-type.php:32
 #: plugins/custom-recipe-management/admin/class-crm-taxonomies.php:61
-#: themes/foodiepro-2.1.8/peepso/profile/profile-about.php:121
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about.php:90
+#: themes/foodiepro-2.1.8/peepso2/profile/profile-about.php:121
 msgid "Edit"
 msgstr "Modifier"
 
@@ -2035,148 +2026,15 @@ msgstr ""
 msgid "other notices ignored"
 msgstr ""
 
-#: plugins/custom-recipe-management/deprecated/partials/instruction_form_item.php:20
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:314
-#: plugins/custom-recipe-management/templates/template-form-instructions-instruction.php:36
-msgid "Move this instruction"
-msgstr "Déplacer cette instruction"
-
-#: plugins/custom-recipe-management/deprecated/partials/instruction_form_item.php:23
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:317
-#: plugins/custom-recipe-management/templates/template-form-instructions-instruction.php:43
-msgid "Enter the instructions for this recipe step"
-msgstr "Décrivez les instructions correspondant à cette étape de la recette..."
-
-#: plugins/custom-recipe-management/deprecated/partials/instruction_form_item.php:42
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:334
-#: plugins/custom-recipe-management/templates/template-form-instructions-instruction.php:62
-msgid "Remove this instruction"
-msgstr "Retirer cette instruction"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:3
-#: plugins/custom-recipe-management/templates/template-form.php:3
-msgid "General"
-msgstr "Informations générales"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:8
-#: plugins/custom-recipe-management/templates/template-form.php:8
-msgid "Provide general information about this recipe"
-msgstr ""
-"Vous pouvez apporter ici des informations générales sur votre recette, son "
-"origine, ses particularités… Donnez aux lecteurs l'envie de la cuisiner !"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:12
-#: plugins/custom-recipe-management/templates/template-form.php:12
-msgid "Servings"
-msgstr "Portions"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:14
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:188
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:223
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:224
-#: plugins/custom-recipe-management/templates/template-form-ingredients-ingredient.php:39
-#: plugins/custom-recipe-management/templates/template-form.php:14
-msgid "Quantity"
-msgstr "Quantité"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:15
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:24
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:34
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:43
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:191
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:228
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:229
-#: plugins/custom-recipe-management/templates/template-form-ingredients-ingredient.php:42
-#: plugins/custom-recipe-management/templates/template-form.php:15
-#: plugins/custom-recipe-management/templates/template-form.php:28
-#: plugins/custom-recipe-management/templates/template-form.php:38
-#: plugins/custom-recipe-management/templates/template-form.php:47
-msgid "Unit"
-msgstr "Unité"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:16
-#: plugins/custom-recipe-management/templates/template-form.php:16
-msgid "(e.g. 2 people, 3 loafs, ...)"
-msgstr "(ex : 2 personnes, 3 pains, ...)"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:21
-#: plugins/custom-recipe-management/templates/template-form.php:25
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:30
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:66
 #, fuzzy
-#| msgid "Prep Time"
-msgid "Prep Time (legacy)"
-msgstr "Temps de préparation"
+#| msgid "Print"
+msgid "print"
+msgstr "Imprimer"
 
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:25
-#: plugins/custom-recipe-management/templates/template-form.php:29
-msgid "(e.g. 20 minutes, 1-2 hours, ...)"
-msgstr "(ex : 20 minutes, 1-2 heures, ...)"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:31
-#: plugins/custom-recipe-management/templates/template-form.php:35
-#, fuzzy
-#| msgid "Cook Time"
-msgid "Cook Time (legacy)"
-msgstr "Temps de cuisson"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:40
-#: plugins/custom-recipe-management/templates/template-form.php:44
-#, fuzzy
-#| msgid "Passive Time"
-msgid "Passive Time (legacy)"
-msgstr "Temps d'attente"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:48
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:177
-msgid "Prep Time"
-msgstr "Temps de préparation"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:52
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:69
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:86
-#: plugins/custom-recipe-management/templates/template-form-time.php:6
-msgid "days"
-msgstr "jours"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:56
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:73
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:90
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:223
-#: plugins/custom-recipe-management/templates/template-form-time.php:10
-msgid "hours"
-msgstr "heures"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:60
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:77
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:94
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:216
-#: plugins/custom-recipe-management/templates/template-form-time.php:14
-#, fuzzy
-#| msgid "%s minute"
-#| msgid_plural "%s minutes"
-msgid "minutes"
-msgstr "%s minute"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:65
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:176
-msgid "Cook Time"
-msgstr "Temps de cuisson"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:82
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:178
-msgid "Passive Time"
-msgstr "Temps d'attente"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:102
-msgid ""
-"Don't forget that you can tag your recipe with <strong>Courses</strong> and "
-"<strong>Cuisines</strong> by using the boxes on the right. Use the "
-"<strong>featured image</strong> if you want a photo of the finished dish."
-msgstr ""
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:110
-#: plugins/custom-recipe-management/deprecated/partials_recipe/print-template.php:66
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:39
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:103
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:40
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:104
 #: plugins/custom-recipe-management/templates/template-form.php:72
 #: plugins/custom-recipe-management/templates/template-print.php:63
 #: plugins/custom-recipe-management/templates/template-screen.php:27
@@ -2185,335 +2043,100 @@ msgstr ""
 msgid "Ingredients"
 msgstr "Ingrédient"
 
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:116
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:135
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:163
-#: plugins/custom-recipe-management/templates/template-form-ingredients-ingredient.php:11
-#: plugins/custom-recipe-management/templates/template-form-ingredients.php:5
-#: plugins/custom-recipe-management/templates/template-form-ingredients.php:24
-msgid "Ingredients Group"
-msgstr "Groupe d'ingrédients"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:123
-#: plugins/custom-recipe-management/templates/template-form-ingredients.php:12
-msgid "eg. For the dough"
-msgstr "ex : Pour la pâte"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:131
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:159
-#: plugins/custom-recipe-management/templates/template-form-ingredients-ingredient.php:7
-#: plugins/custom-recipe-management/templates/template-form-ingredients.php:20
-msgid "Remove this ingredient group headline"
-msgstr "Supprimer ce nom de groupe (les ingrédients resteront)"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:177
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:214
-#: plugins/custom-recipe-management/templates/template-form-ingredients-ingredient.php:25
-msgid "Move this ingredient"
-msgstr "Déplacer cet ingrédient"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:195
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:233
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:234
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:39
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:40
 #: plugins/custom-recipe-management/templates/template-form-ingredients-ingredient.php:46
 msgid "Ingredient"
 msgstr "Ingrédient"
 
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:199
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:200
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:238
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:239
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:240
-#: plugins/custom-recipe-management/deprecated/partials_recipe/print-template.php:81
-#: plugins/custom-recipe-management/deprecated/partials_recipe/screen-template.php:163
-#: plugins/custom-recipe-management/templates/template-form-ingredients-ingredient.php:50
-#: plugins/custom-recipe-management/templates/template-form-ingredients-ingredient.php:51
-#: plugins/custom-recipe-management/templates/template-print.php:89
-#: plugins/custom-recipe-management/templates/template-screen.php:82
-msgid "Notes"
-msgstr "Notes"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:203
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:244
-#: plugins/custom-recipe-management/templates/template-form-ingredients-ingredient.php:54
-msgid "Remove this ingredient"
-msgstr "Retirer cet ingrédient"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:251
-#: plugins/custom-recipe-management/templates/template-form.php:80
-msgid "Add an ingredient"
-msgstr "Nouvel ingrédient"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:254
-#: plugins/custom-recipe-management/templates/template-form.php:83
-msgid "Add an ingredient group"
-msgstr "Nouveau groupe d'ingrédients"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:258
-#: plugins/custom-recipe-management/templates/template-form.php:87
-msgid ""
-"<strong>Use the TAB key</strong> while adding ingredients, it will "
-"automatically create new fields. <strong>Don't worry about empty lines</"
-"strong>, these will be ignored."
-msgstr ""
-"Vous pouvez aussi utiliser la touche <strong>TAB</strong> afin de faire "
-"apparaître une nouvelle ligne d'ingrédient. Ne vous souciez pas des lignes "
-"vides, elles seront ignorées."
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:265
-#: plugins/custom-recipe-management/deprecated/partials_recipe/print-template.php:73
-#: plugins/custom-recipe-management/templates/template-form.php:94
-#: plugins/custom-recipe-management/templates/template-print.php:76
-#: plugins/custom-recipe-management/templates/template-screen.php:30
-#, fuzzy
-#| msgid "Main Instructions"
-msgid "Instructions"
-msgstr "Instructions principales"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:271
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:290
-#: plugins/custom-recipe-management/templates/template-form-instructions-instruction.php:11
-#: plugins/custom-recipe-management/templates/template-form-instructions.php:5
-#: plugins/custom-recipe-management/templates/template-form-instructions.php:24
-msgid "Instructions Group"
-msgstr "Groupe d'instructions"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:272
-#: plugins/custom-recipe-management/templates/template-form-instructions.php:6
-msgid "Main Instructions"
-msgstr "Instructions principales"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:272
-#: plugins/custom-recipe-management/templates/template-form-instructions.php:6
-msgid "(this label is not shown)"
-msgstr "(ce titre n'apparaît pas dans la recette) "
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:279
-#: plugins/custom-recipe-management/templates/template-form-instructions.php:13
-msgid "eg. Preparation of the dough"
-msgstr "ex : Préparation de la pâte"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:286
-#: plugins/custom-recipe-management/templates/template-form-instructions-instruction.php:7
-#: plugins/custom-recipe-management/templates/template-form-instructions.php:20
-msgid "Remove this instruction group headline"
-msgstr "Supprimer ce nom de groupe (les instructions resteront)"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:344
-#: plugins/custom-recipe-management/templates/template-form.php:102
-msgid "Add an instruction"
-msgstr "Nouvelle instruction"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:347
-#: plugins/custom-recipe-management/templates/template-form.php:105
-msgid "Add an instruction group"
-msgstr "Nouveau groupe d'instructions"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:351
-#: plugins/custom-recipe-management/templates/template-form.php:109
-msgid ""
-"<strong>Use the TAB key</strong> while adding instructions, it will "
-"automatically create new fields. <strong>Don't worry about empty lines</"
-"strong>, these will be ignored."
-msgstr ""
-"Uilisez la touche <strong>TAB</strong>afin de faire apparaître une nouvelle "
-"ligne d'instruction. Ne vous souciez pas des lignes vides, elles seront "
-"ignorées."
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:356
-#: plugins/custom-recipe-management/templates/template-form.php:114
-msgid "Recipe Notes"
-msgstr "Notes"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:357
-#: plugins/custom-recipe-management/templates/template-form.php:115
-msgid "Provide any additional notes here, for instance side dishes, wine..."
-msgstr ""
-"Entrez ici toutes les compléments d'information que vous souhaitez ajouter à "
-"cette recette, par exemple des suggestions d'accompagnements, un vin qui "
-"s'accordera avec ce plat…"
-
-#: plugins/custom-recipe-management/deprecated/partials/submission_form_ingredients_instructions.php:358
-#: plugins/custom-recipe-management/templates/template-form.php:116
-msgid "WHAT TO DRINK WITH THIS STRAWBERRY PIE : a sweet white wine"
-msgstr "QUE BOIRE AVEC CETTE TARTE AUX FRAISES ? Un Monbazillac bien frais."
-
-#: plugins/custom-recipe-management/deprecated/partials_recipe/print-template.php:20
-#: plugins/custom-recipe-management/templates/template-print.php:39
-msgid "Serves"
-msgstr "Portions"
-
-#: plugins/custom-recipe-management/deprecated/partials_recipe/print-template.php:24
-#: plugins/custom-recipe-management/templates/template-print.php:45
-#: plugins/custom-recipe-management/templates/template-screen-image-table.php:70
-#: plugins/custom-recipe-management/templates/template-screen-image.php:68
-msgid "Preparation"
-msgstr "Préparation"
-
-#: plugins/custom-recipe-management/deprecated/partials_recipe/print-template.php:28
-#: plugins/custom-recipe-management/templates/template-print.php:50
-#: plugins/custom-recipe-management/templates/template-screen-image-table.php:82
-#: plugins/custom-recipe-management/templates/template-screen-image.php:80
-msgid "Cooking"
-msgstr "Cuisson"
-
-#: plugins/custom-recipe-management/deprecated/partials_recipe/print-template.php:32
-#: plugins/custom-recipe-management/templates/template-print.php:55
-#: plugins/custom-recipe-management/templates/template-screen-image-table.php:94
-#: plugins/custom-recipe-management/templates/template-screen-image.php:92
-msgid "Wait"
-msgstr "Attente"
-
-#: plugins/custom-recipe-management/deprecated/partials_recipe/recipe-toolbar.php:19
-#: plugins/custom-recipe-management/templates/template-toolbar.php:11
-msgid "Rate"
-msgstr "Evaluer"
-
-#: plugins/custom-recipe-management/deprecated/partials_recipe/recipe-toolbar.php:24
-#: plugins/custom-recipe-management/templates/template-toolbar.php:16
-msgid "Comment and rate this recipe"
-msgstr "Commenter et noter cette recette"
-
-#: plugins/custom-recipe-management/deprecated/partials_recipe/recipe-toolbar.php:38
-#: plugins/custom-recipe-management/templates/template-toolbar.php:30
-msgid "Rate this recipe"
-msgstr "Le Goûtumètre"
-
-#: plugins/custom-recipe-management/deprecated/partials_recipe/recipe-toolbar.php:77
-#: plugins/custom-recipe-management/templates/template-toolbar.php:64
-msgid "Print this Recipe"
-msgstr "Imprimer cette recette"
-
-#: plugins/custom-recipe-management/deprecated/partials_recipe/recipe-toolbar.php:105
-#: plugins/custom-recipe-management/templates/template-toolbar.php:76
-msgid "Read"
-msgstr "Lire"
-
-#: plugins/custom-recipe-management/deprecated/partials_recipe/recipe-toolbar.php:109
-#: plugins/custom-recipe-management/templates/template-toolbar.php:80
-msgid "Read this recipe out loud"
-msgstr "Lire cette recette à haute voix"
-
-#: plugins/custom-recipe-management/deprecated/partials_recipe/screen-template.php:53
-#: plugins/custom-recipe-management/templates/template-screen-image-table.php:41
-#: plugins/custom-recipe-management/templates/template-screen-image.php:41
-msgid "Origin"
-msgstr "Origine"
-
-#: plugins/custom-recipe-management/deprecated/partials_recipe/screen-template.php:61
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:43
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:158
-#: plugins/custom-recipe-management/templates/template-screen-image-table.php:51
-#: plugins/custom-recipe-management/templates/template-screen-image.php:50
-msgid "Diet"
-msgstr "Régime"
-
-#: plugins/custom-recipe-management/deprecated/partials_recipe/screen-template.php:68
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:45
-#: plugins/custom-recipe-management/templates/template-screen-image-table.php:60
-#: plugins/custom-recipe-management/templates/template-screen-image.php:58
-msgid "Level"
-msgstr "Niveau"
-
-#: plugins/custom-recipe-management/deprecated/partials_recipe/screen-template.php:127
-#: plugins/custom-recipe-management/templates/template-screen.php:41
-msgid "For "
-msgstr "Pour "
-
-#: plugins/custom-recipe-management/deprecated/partials_recipe/screen-template.php:130
-#: plugins/custom-recipe-management/templates/template-screen.php:44
-msgid "Decrease servings"
-msgstr "Réduire les quantités"
-
-#: plugins/custom-recipe-management/deprecated/partials_recipe/screen-template.php:136
-#: plugins/custom-recipe-management/templates/template-screen.php:50
-msgid "Increase servings"
-msgstr "Augmenter les quantités"
-
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:29
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:65
-#, fuzzy
-#| msgid "Print"
-msgid "print"
-msgstr "Imprimer"
-
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:40
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:125
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:41
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:126
 msgid "Course"
 msgstr "Plat"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:41
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:150
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:42
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:151
 msgid "Occasion"
 msgstr "Occasion"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:42
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:43
 #, fuzzy
 #| msgctxt "plural"
 #| msgid "Cuisine from %s"
 msgid "Cuisines"
 msgstr "Cuisine des %s"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:42
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:134
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:43
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:135
 msgid "Cuisine"
 msgstr "Origine"
 
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:44
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:142
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:159
+#: plugins/custom-recipe-management/templates/template-screen-image-table.php:51
+#: plugins/custom-recipe-management/templates/template-screen-image.php:50
+msgid "Diet"
+msgstr "Régime"
+
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:45
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:143
 msgid "Season"
 msgstr "Saison"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:45
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:46
 #, fuzzy
 #| msgid "Level"
 msgid "Levels"
 msgstr "Niveau"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:73
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:46
+#: plugins/custom-recipe-management/templates/template-screen-image-table.php:60
+#: plugins/custom-recipe-management/templates/template-screen-image.php:58
+msgid "Level"
+msgstr "Niveau"
+
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:74
 msgctxt "recipe"
 msgid "All my posts"
 msgstr "Toutes mes recettes"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:77
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:78
 msgctxt "recipe"
 msgid "Restored"
 msgstr "Sauvegardes récupérées"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:78
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:79
 msgctxt "recipe"
 msgid ""
 "Those posts have been automatically kept but not saved as drafts. You can "
 "delete them if you don't need them."
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:81
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:82
 msgctxt "recipe"
 msgid "Pending"
 msgstr "Recettes en attente de relecture"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:82
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:83
 msgctxt "recipe"
 msgid "Those posts have been submitted and pending administrator's approval."
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:85
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:86
 msgctxt "recipe"
 msgid "Draft"
 msgstr "Recettes en cours d'écriture"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:86
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:87
 msgctxt "recipe"
 msgid "Those posts are in preparation, and not yet submitted."
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:89
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:90
 msgctxt "recipe"
 msgid "Public"
 msgstr "Recettes publiées"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:90
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:91
 msgctxt "recipe"
 msgid ""
 "Those posts have been approved by the administrator. They are visible on the "
@@ -2522,63 +2145,75 @@ msgstr ""
 "Ces recettes ont été approuvées par les administrateurs. Elles sont visibles "
 "sur le site, selon vos préférences (amis, groupes, membres, public)."
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:98
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:99
 msgid "Recipe Title"
 msgstr "Titre de la recette"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:99
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:100
 #, fuzzy
 #| msgid "Recipe Tags"
 msgid "Recipe Description"
 msgstr "Etiquettes"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:100
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:101
 #, fuzzy
 #| msgid "Remove from Favorites"
 msgid "Recipe Featured Image"
 msgstr "Favorite"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:101
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:102
 msgid "Recipe Course"
 msgstr "Type de plat"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:102
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:103
 msgid "Recipe Difficulty"
 msgstr "Niveau de difficulté"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:104
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:105
 msgid "Number of Servings"
 msgstr "Nombre de portions"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:105
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:106
 msgid "Preparation Time"
 msgstr "Durée de préparation"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:166
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:167
 msgid "Difficulty"
 msgstr "Difficulté"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:175
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:176
 msgctxt "recipe"
 msgid "Post Title"
 msgstr "Titre de la recette"
 
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:177
+msgid "Cook Time"
+msgstr "Temps de cuisson"
+
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:178
+msgid "Prep Time"
+msgstr "Temps de préparation"
+
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:179
+msgid "Passive Time"
+msgstr "Temps d'attente"
+
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:180
 msgctxt "recipe"
 msgid "Edit Post"
 msgstr "Modifier cette recette"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:180
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:181
 msgctxt "recipe"
 msgid "Delete Post"
 msgstr "Supprimer cette recette"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:181
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:182
 msgctxt "recipe"
 msgid "New Post"
 msgstr "Nouvelle Recette"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:182
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:183
 #, fuzzy
 #| msgctxt "post"
 #| msgid "Add here your best picture for this post !"
@@ -2586,12 +2221,12 @@ msgctxt "recipe"
 msgid "Add here your best picture for this post !"
 msgstr "Placez ici votre plus belle photo pour illustrer cet article !"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:183
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:184
 msgctxt "recipe"
 msgid "Write your new post on this page."
 msgstr "Ecrivez votre nouvelle recette sur cette page."
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:184
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:185
 msgctxt "recipe"
 msgid ""
 "You can then choose to save it as draft, or to publish it. Once approved, it "
@@ -2601,12 +2236,12 @@ msgstr ""
 "bien la publier. Dans ce cas, une fois approuvée, elle sera visible du reste "
 "des utilisateurs."
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:185
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:186
 msgctxt "recipe"
 msgid "Edit your existing post on this page."
 msgstr "Mettez à jour votre recette sur cette page."
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:186
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:187
 msgctxt "recipe"
 msgid ""
 "You can then choose to save it as draft, or to publish it. Once approved, it "
@@ -2616,14 +2251,14 @@ msgstr ""
 "bien de la publier. Dans ce cas, une fois approuvée, elle sera visible des "
 "autres utilisateurs."
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:187
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:188
 #, php-format
 msgctxt "recipe"
 msgid "Post saved as <a href=\"%s\">a draft</a>."
 msgstr ""
 "Votre recette a été sauvegardée en tant que <a href=\"%s\">brouillon</a>."
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:188
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:189
 msgctxt "recipe"
 msgid ""
 "It will not be visible on the site, but you can edit it at any time and "
@@ -2632,26 +2267,26 @@ msgstr ""
 "Elle ne sera pas visible sur le site, mais vous pouvez la modifier à tout "
 "moment, et la publier plus tard."
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:189
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:190
 #, php-format
 msgctxt "recipe"
 msgid "Back to <a href=\"%s\">my posts</a>."
 msgstr "Retour à <a href=\"%s\">mes recettes</a>"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:190
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:191
 #, php-format
 msgctxt "recipe"
 msgid "Dear administrator, this post is now <a href=\"%s\">published</a>."
 msgstr ""
 "Cher administrateur, cette recette est désormais <a href=\"%s\">publiée</a>."
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:191
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:192
 msgctxt "recipe"
 msgid "Post submitted! Thank you, your post is now awaiting moderation."
 msgstr ""
 "Nous avons bien reçu votre recette ! Elle sera publiée après modération."
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:192
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:193
 msgctxt "recipe"
 msgid ""
 "In order for your post to be published, please fill-in those required fields:"
@@ -2659,23 +2294,23 @@ msgstr ""
 "Afin que votre recette puisse être publiée, merci de renseigner les "
 "informations suivantes :"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:193
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:194
 msgctxt "recipe"
 msgid "You have no posts yet."
 msgstr "Vous n'avez pas encore de recette ici."
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:194
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:195
 msgctxt "recipe"
 msgid "Your post just got published !"
 msgstr "Ta recette est publiée !"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:195
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:196
 #, php-format
 msgctxt "recipe"
 msgid "Greetings, your post <a href=\"%s\">%s</a> just got published !"
 msgstr "Félicitations, ta recette <a href=\"%s\">%s</a> vient d'être publiée !"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:196
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:197
 #, php-format
 msgctxt "recipe"
 msgid ""
@@ -2683,25 +2318,25 @@ msgid ""
 msgstr ""
 "Elle est visible sur le site, et apparaît sur <a href=\"%s\">ton blog</a>."
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:197
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:198
 #, php-format
 msgctxt "recipe"
 msgid "%s commented one of your posts"
 msgstr "%s a commenté une de tes recettes"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:198
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:199
 #, php-format
 msgctxt "recipe"
 msgid "%s added a comment to your post <a href=\"%s\">%s</a> :"
 msgstr "%s a commenté ta recette <a href=\"%s\">%s</a>."
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:199
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:200
 #, php-format
 msgctxt "recipe"
 msgid "liked your post %s"
 msgstr "a aimé ton article %s"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:200
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:201
 #, fuzzy, php-format
 #| msgctxt "post"
 #| msgid "commented your post %s."
@@ -2709,7 +2344,7 @@ msgctxt "recipe"
 msgid "commented your post %s"
 msgstr "a commenté ton article %s."
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:201
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:202
 #, fuzzy, php-format
 #| msgctxt "post"
 #| msgid "answered your comment on post %s."
@@ -2717,90 +2352,90 @@ msgctxt "recipe"
 msgid "answered your comment on post %s"
 msgstr "a répondu à ton commentaire sur l'article %s."
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:202
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:203
 #, fuzzy
 #| msgid "Leave a comment on this post"
 msgctxt "recipe"
 msgid "Leave a comment on this post"
 msgstr "Que pensez vous de cet article ?"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:203
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:204
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:205
 msgctxt "recipe"
 msgid "The post you are trying to read is not yet approved by administrators."
 msgstr ""
 "L'article que vous essayez de lire n'est pas encore approuvé par les "
 "administrateurs."
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:205
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:206
 msgctxt "recipe"
 msgid "The post you are trying to read is reserved to members."
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:206
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:207
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:208
 msgctxt "recipe"
 msgid "The post you are trying to read is private."
 msgstr ""
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:208
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:209
 msgid "I cooked and liked this recipe"
 msgstr "J'ai cuisiné et apprécié cette recette"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:209
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:210
 msgid "Do not like this recipe anymore"
 msgstr "Je n'aime plus cette recette"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:210
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:211
 msgid "I cooked it"
 msgstr "Je l'ai cuisiné"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:211
 #: plugins/custom-recipe-management/includes/class-crm-assets.php:212
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:213
 #, php-format
 msgid "%s cooked"
 msgid_plural "%s cooked"
 msgstr[0] "%s a cuisiné"
 msgstr[1] "%s ont cuisiné"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:279
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:280
 msgctxt "recipe"
 msgid "Are you sure you want to delete this post :"
 msgstr "Etes vous sûr de vouloir supprimer cette recette :"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:325
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:326
 msgid "Read previous step"
 msgstr "Lire l'instruction précédente"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:326
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:327
 msgid "Read next step"
 msgstr "Lire l'instruction suivante"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:327
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:328
 msgid "Read this step again"
 msgstr "Lire à nouveau cette instruction"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:328
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:329
 msgid "Pause reading"
 msgstr "Mettre la lecture en pause"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:329
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:330
 msgid "Continue reading"
 msgstr "Continuer la lecture"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:330
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:331
 msgid "Stop reading and close player"
 msgstr "Arrêter la lecture et fermer le lecteur"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:454
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:461
 msgid "Do you really want to delete this ingredient ?"
 msgstr "Etes-vous sûr de vouloir supprimer cet ingrédient ?"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:455
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:462
 msgid "Do you really want to delete this instruction ?"
 msgstr "Etes-vous sûr de vouloir supprimer cette instruction ?"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:456
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:463
 msgid ""
 "Do you really want to delete this group ?\\n(Instructions below will be "
 "preserved)"
@@ -2808,7 +2443,7 @@ msgstr ""
 "Etes-vous sûr de vouloir supprimer ce groupe ?\n"
 "(Les instructions en dessous seront préservées)"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:457
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:464
 #, fuzzy
 #| msgid "Do you really want to delete this ingredient ?"
 msgid ""
@@ -2816,9 +2451,17 @@ msgid ""
 "preserved)"
 msgstr "Etes-vous sûr de vouloir supprimer cet ingrédient ?"
 
-#: plugins/custom-recipe-management/includes/class-crm-assets.php:458
+#: plugins/custom-recipe-management/includes/class-crm-assets.php:465
 msgid "Please remove the image prior to removing this instruction."
 msgstr ""
+
+#: plugins/custom-recipe-management/public/recipe-output/class-crm-output.php:214
+msgid "Read out loud"
+msgstr "Lire à haute voix"
+
+#: plugins/custom-recipe-management/public/recipe-output/class-crm-output.php:305
+msgid "Click to Start Timer"
+msgstr "Cliquez pour lancer le minuteur"
 
 #: plugins/custom-recipe-management/public/recipe-output/helpers/class-crm-favorite.php:22
 #: plugins/custom-recipe-management/public/recipe-output/helpers/class-crm-favorite.php:166
@@ -2899,14 +2542,6 @@ msgstr "Ajouter à ma <a href=\"%s\">liste de courses</a>"
 msgid "Add to Shopping List"
 msgstr "Courses"
 
-#: plugins/custom-recipe-management/public/recipe-output/helpers/class-crm-shortcodes.php:26
-msgid "Read out loud"
-msgstr "Lire à haute voix"
-
-#: plugins/custom-recipe-management/public/recipe-output/helpers/class-crm-shortcodes.php:118
-msgid "Click to Start Timer"
-msgstr "Cliquez pour lancer le minuteur"
-
 #: plugins/custom-recipe-management/public/recipe-post-type/class-crm-ingredient.php:90
 msgid "Harvest Period"
 msgstr "Période de consommation idéale"
@@ -2921,32 +2556,45 @@ msgctxt "consonant"
 msgid "of "
 msgstr "de "
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:215
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:218
 #, fuzzy
 #| msgid "%s minute"
 #| msgid_plural "%s minutes"
 msgid "minute"
 msgstr "%s minute"
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:222
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:219
+#: plugins/custom-recipe-management/templates/template-form-time.php:14
+#, fuzzy
+#| msgid "%s minute"
+#| msgid_plural "%s minutes"
+msgid "minutes"
+msgstr "%s minute"
+
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:225
 msgid "hour"
 msgstr "heure"
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:689
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:226
+#: plugins/custom-recipe-management/templates/template-form-time.php:10
+msgid "hours"
+msgstr "heures"
+
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:692
 #, php-format
 msgid "%s day "
 msgid_plural "%s days "
 msgstr[0] "%s jour "
 msgstr[1] "%s jours "
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:692
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:695
 #, php-format
 msgid "%s hour "
 msgid_plural "%s hours "
 msgstr[0] "%s h "
 msgstr[1] "%s h "
 
-#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:695
+#: plugins/custom-recipe-management/public/recipe-post-type/class-crm-recipe.php:698
 #, php-format
 msgid "%s minute"
 msgid_plural "%s minutes"
@@ -2971,9 +2619,251 @@ msgstr "Ingrédients principaux"
 msgid "Update the Nutritional Information"
 msgstr "Données personnelles"
 
+#: plugins/custom-recipe-management/templates/template-form-ingredients-ingredient.php:7
+#: plugins/custom-recipe-management/templates/template-form-ingredients.php:20
+msgid "Remove this ingredient group headline"
+msgstr "Supprimer ce nom de groupe (les ingrédients resteront)"
+
+#: plugins/custom-recipe-management/templates/template-form-ingredients-ingredient.php:11
+#: plugins/custom-recipe-management/templates/template-form-ingredients.php:5
+#: plugins/custom-recipe-management/templates/template-form-ingredients.php:24
+msgid "Ingredients Group"
+msgstr "Groupe d'ingrédients"
+
+#: plugins/custom-recipe-management/templates/template-form-ingredients-ingredient.php:25
+msgid "Move this ingredient"
+msgstr "Déplacer cet ingrédient"
+
+#: plugins/custom-recipe-management/templates/template-form-ingredients-ingredient.php:39
+#: plugins/custom-recipe-management/templates/template-form.php:14
+msgid "Quantity"
+msgstr "Quantité"
+
+#: plugins/custom-recipe-management/templates/template-form-ingredients-ingredient.php:42
+#: plugins/custom-recipe-management/templates/template-form.php:15
+#: plugins/custom-recipe-management/templates/template-form.php:28
+#: plugins/custom-recipe-management/templates/template-form.php:38
+#: plugins/custom-recipe-management/templates/template-form.php:47
+msgid "Unit"
+msgstr "Unité"
+
+#: plugins/custom-recipe-management/templates/template-form-ingredients-ingredient.php:50
+#: plugins/custom-recipe-management/templates/template-form-ingredients-ingredient.php:51
+#: plugins/custom-recipe-management/templates/template-print.php:89
+#: plugins/custom-recipe-management/templates/template-screen.php:82
+msgid "Notes"
+msgstr "Notes"
+
+#: plugins/custom-recipe-management/templates/template-form-ingredients-ingredient.php:54
+msgid "Remove this ingredient"
+msgstr "Retirer cet ingrédient"
+
+#: plugins/custom-recipe-management/templates/template-form-ingredients.php:12
+msgid "eg. For the dough"
+msgstr "ex : Pour la pâte"
+
+#: plugins/custom-recipe-management/templates/template-form-instructions-instruction.php:7
+#: plugins/custom-recipe-management/templates/template-form-instructions.php:20
+msgid "Remove this instruction group headline"
+msgstr "Supprimer ce nom de groupe (les instructions resteront)"
+
+#: plugins/custom-recipe-management/templates/template-form-instructions-instruction.php:11
+#: plugins/custom-recipe-management/templates/template-form-instructions.php:5
+#: plugins/custom-recipe-management/templates/template-form-instructions.php:24
+msgid "Instructions Group"
+msgstr "Groupe d'instructions"
+
+#: plugins/custom-recipe-management/templates/template-form-instructions-instruction.php:37
+msgid "Move this instruction"
+msgstr "Déplacer cette instruction"
+
+#: plugins/custom-recipe-management/templates/template-form-instructions-instruction.php:44
+msgid "Enter the instructions for this recipe step"
+msgstr "Décrivez les instructions correspondant à cette étape de la recette..."
+
+#: plugins/custom-recipe-management/templates/template-form-instructions-instruction.php:50
+#, fuzzy
+#| msgid "Picture title"
+msgid "Picture"
+msgstr "Titre"
+
+#: plugins/custom-recipe-management/templates/template-form-instructions-instruction.php:54
+msgid "Video"
+msgstr ""
+
+#: plugins/custom-recipe-management/templates/template-form-instructions-instruction.php:71
+msgid "Remove this instruction"
+msgstr "Retirer cette instruction"
+
+#: plugins/custom-recipe-management/templates/template-form-instructions.php:6
+msgid "Main Instructions"
+msgstr "Instructions principales"
+
+#: plugins/custom-recipe-management/templates/template-form-instructions.php:6
+msgid "(this label is not shown)"
+msgstr "(ce titre n'apparaît pas dans la recette) "
+
+#: plugins/custom-recipe-management/templates/template-form-instructions.php:13
+msgid "eg. Preparation of the dough"
+msgstr "ex : Préparation de la pâte"
+
+#: plugins/custom-recipe-management/templates/template-form-time.php:6
+msgid "days"
+msgstr "jours"
+
+#: plugins/custom-recipe-management/templates/template-form.php:3
+msgid "General"
+msgstr "Informations générales"
+
+#: plugins/custom-recipe-management/templates/template-form.php:8
+msgid "Provide general information about this recipe"
+msgstr ""
+"Vous pouvez apporter ici des informations générales sur votre recette, son "
+"origine, ses particularités… Donnez aux lecteurs l'envie de la cuisiner !"
+
+#: plugins/custom-recipe-management/templates/template-form.php:12
+msgid "Servings"
+msgstr "Portions"
+
+#: plugins/custom-recipe-management/templates/template-form.php:16
+msgid "(e.g. 2 people, 3 loafs, ...)"
+msgstr "(ex : 2 personnes, 3 pains, ...)"
+
+#: plugins/custom-recipe-management/templates/template-form.php:25
+#, fuzzy
+#| msgid "Prep Time"
+msgid "Prep Time (legacy)"
+msgstr "Temps de préparation"
+
+#: plugins/custom-recipe-management/templates/template-form.php:29
+msgid "(e.g. 20 minutes, 1-2 hours, ...)"
+msgstr "(ex : 20 minutes, 1-2 heures, ...)"
+
+#: plugins/custom-recipe-management/templates/template-form.php:35
+#, fuzzy
+#| msgid "Cook Time"
+msgid "Cook Time (legacy)"
+msgstr "Temps de cuisson"
+
+#: plugins/custom-recipe-management/templates/template-form.php:44
+#, fuzzy
+#| msgid "Passive Time"
+msgid "Passive Time (legacy)"
+msgstr "Temps d'attente"
+
+#: plugins/custom-recipe-management/templates/template-form.php:80
+msgid "Add an ingredient"
+msgstr "Nouvel ingrédient"
+
+#: plugins/custom-recipe-management/templates/template-form.php:83
+msgid "Add an ingredient group"
+msgstr "Nouveau groupe d'ingrédients"
+
+#: plugins/custom-recipe-management/templates/template-form.php:87
+msgid ""
+"<strong>Use the TAB key</strong> while adding ingredients, it will "
+"automatically create new fields. <strong>Don't worry about empty lines</"
+"strong>, these will be ignored."
+msgstr ""
+"Vous pouvez aussi utiliser la touche <strong>TAB</strong> afin de faire "
+"apparaître une nouvelle ligne d'ingrédient. Ne vous souciez pas des lignes "
+"vides, elles seront ignorées."
+
+#: plugins/custom-recipe-management/templates/template-form.php:94
+#: plugins/custom-recipe-management/templates/template-print.php:76
+#: plugins/custom-recipe-management/templates/template-screen.php:30
+#, fuzzy
+#| msgid "Main Instructions"
+msgid "Instructions"
+msgstr "Instructions principales"
+
+#: plugins/custom-recipe-management/templates/template-form.php:102
+msgid "Add an instruction"
+msgstr "Nouvelle instruction"
+
+#: plugins/custom-recipe-management/templates/template-form.php:105
+msgid "Add an instruction group"
+msgstr "Nouveau groupe d'instructions"
+
+#: plugins/custom-recipe-management/templates/template-form.php:109
+msgid ""
+"<strong>Use the TAB key</strong> while adding instructions, it will "
+"automatically create new fields. <strong>Don't worry about empty lines</"
+"strong>, these will be ignored."
+msgstr ""
+"Uilisez la touche <strong>TAB</strong>afin de faire apparaître une nouvelle "
+"ligne d'instruction. Ne vous souciez pas des lignes vides, elles seront "
+"ignorées."
+
+#: plugins/custom-recipe-management/templates/template-form.php:114
+msgid "Recipe Notes"
+msgstr "Notes"
+
+#: plugins/custom-recipe-management/templates/template-form.php:115
+msgid "Provide any additional notes here, for instance side dishes, wine..."
+msgstr ""
+"Entrez ici toutes les compléments d'information que vous souhaitez ajouter à "
+"cette recette, par exemple des suggestions d'accompagnements, un vin qui "
+"s'accordera avec ce plat…"
+
+#: plugins/custom-recipe-management/templates/template-form.php:116
+msgid "WHAT TO DRINK WITH THIS STRAWBERRY PIE : a sweet white wine"
+msgstr "QUE BOIRE AVEC CETTE TARTE AUX FRAISES ? Un Monbazillac bien frais."
+
 #: plugins/custom-recipe-management/templates/template-instructions-bullet.php:1
 msgid "Read this step aloud"
 msgstr "Lire cette instruction à haute voix"
+
+#: plugins/custom-recipe-management/templates/template-print.php:39
+msgid "Serves"
+msgstr "Portions"
+
+#: plugins/custom-recipe-management/templates/template-print.php:45
+#: plugins/custom-recipe-management/templates/template-screen-image-table.php:70
+#: plugins/custom-recipe-management/templates/template-screen-image.php:68
+msgid "Preparation"
+msgstr "Préparation"
+
+#: plugins/custom-recipe-management/templates/template-print.php:50
+#: plugins/custom-recipe-management/templates/template-screen-image-table.php:82
+#: plugins/custom-recipe-management/templates/template-screen-image.php:80
+msgid "Cooking"
+msgstr "Cuisson"
+
+#: plugins/custom-recipe-management/templates/template-print.php:55
+#: plugins/custom-recipe-management/templates/template-screen-image-table.php:94
+#: plugins/custom-recipe-management/templates/template-screen-image.php:92
+msgid "Wait"
+msgstr "Attente"
+
+#: plugins/custom-recipe-management/templates/template-screen-image-table.php:41
+#: plugins/custom-recipe-management/templates/template-screen-image.php:41
+msgid "Origin"
+msgstr "Origine"
+
+#: plugins/custom-recipe-management/templates/template-screen.php:41
+msgid "For "
+msgstr "Pour "
+
+#: plugins/custom-recipe-management/templates/template-screen.php:44
+msgid "Decrease servings"
+msgstr "Réduire les quantités"
+
+#: plugins/custom-recipe-management/templates/template-screen.php:50
+msgid "Increase servings"
+msgstr "Augmenter les quantités"
+
+#: plugins/custom-recipe-management/templates/template-toolbar.php:23
+msgid "Print this Recipe"
+msgstr "Imprimer cette recette"
+
+#: plugins/custom-recipe-management/templates/template-toolbar.php:35
+msgid "Read"
+msgstr "Lire"
+
+#: plugins/custom-recipe-management/templates/template-toolbar.php:39
+msgid "Read this recipe out loud"
+msgstr "Lire cette recette à haute voix"
 
 #: plugins/custom-recipe-management/widgets/crm_nutrition_label_widget.php:14
 #, fuzzy
@@ -3014,75 +2904,75 @@ msgstr "Plus d'idées"
 msgid "New user submission:%s"
 msgstr ""
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:142
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:178
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:143
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:179
 msgid "See you soon !"
 msgstr "A bientôt !"
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:173
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:174
 #, php-format
 msgid "%s answered one of your comments"
 msgstr "%s a répondu à l'un de tes commentaires"
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:176
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:177
 #, php-format
 msgid "%s answered your comment on post <a href=\"%s\">%s</a>."
 msgstr "%s a répondu à ton commentaire sur l'article <a href=\"%s\">%s</a>."
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:239
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:240
 msgid "Share this recipe on Facebook"
 msgstr "Partager cette recette sur Facebook"
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:240
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:241
 msgid "Share this recipe on Twitter"
 msgstr "Partager cette recette sur Twitter"
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:241
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:242
 msgid "Share this recipe on Pinterest"
 msgstr "Partager cette recette sur Pinterest"
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:242
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:243
 #, fuzzy
 #| msgid "Share this recipe"
 msgid "Share this recipe by email"
 msgstr "Partager sur les réseaux sociaux"
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:243
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:244
 #, fuzzy
 #| msgid "Share this recipe on Pinterest"
 msgid "Share this recipe on Whatsapp"
 msgstr "Partager cette recette sur Pinterest"
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:281
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:282
 #, php-format
 msgid "Hello %s,"
 msgstr "Bonjour %s,"
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:287
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:288
 #, php-format
 msgid "<a href=\"%s\">Log yourself in</a> to respond."
 msgstr "<a href=\"%s\">Connecte-toi </a> pour lui répondre."
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:294
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:295
 #, php-format
 msgid "The <a href=\"%s\">Goûtu.org</a> Team."
 msgstr "L'équipe <a href=\"%s\">Goûtu.org</a>."
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:300
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:301
 #, php-format
 msgid "Any problem or question ? Contact us <a href=\"%s\">here</a>"
 msgstr "Un problème ? Une question ? Contacte nous <a href=\"%s\">ici</a>"
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:306
-#: themes/foodiepro-2.1.8/functions.php:952
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:307
+#: themes/foodiepro-2.1.8/functions.php:961
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:312
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:313
 msgid "Want to change how you receive these emails?"
 msgstr "Tu ne souhaites plus recevoir ces courriels ?"
 
-#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:313
+#: plugins/custom-site-notifications/public/mails/class-csn-mails.php:314
 #, php-format
 msgid "You can <a href=\"%s\">update your preferences</a> on %s."
 msgstr "Tu peux <a href=\"%s\">mettre à jour tes préférences</a> sur %s."
@@ -3119,23 +3009,23 @@ msgstr "… et bien plus à venir !"
 msgid "Register"
 msgstr "Je m'inscris"
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:76
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:79
 msgid "Share on Facebook"
 msgstr "Partager sur Facebook"
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:116
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:119
 msgid "Share on Twitter"
 msgstr "Partager sur Twitter"
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:157
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:160
 msgid "Pin It"
 msgstr "Epingler sur Pinterest"
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:201
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:204
 msgid "Share by email"
 msgstr "Partager par courriel"
 
-#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:231
+#: plugins/custom-social-sharing-buttons/includes/CustomSocialButtons.php:234
 msgid "Share on Whatsapp"
 msgstr "Partager sur Whatsapp"
 
@@ -3150,95 +3040,83 @@ msgid "Displays share buttons of selected social networks"
 msgstr ""
 
 #: plugins/custom-star-rating/deprecated/deprecated.php:72
-#: plugins/custom-star-rating/public/class-csr-rating.php:320
+#: plugins/custom-star-rating/public/class-csr-rating.php:339
 msgid "Evaluate me !"
 msgstr "Evaluez moi !"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:55
+#: plugins/custom-star-rating/includes/class-csr-assets.php:54
 msgid "Dish"
 msgstr "Plat"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:56
+#: plugins/custom-star-rating/includes/class-csr-assets.php:55
 #, fuzzy
 #| msgid "eg. Preparation of the dough"
 msgid "Appreciation of the dish"
 msgstr "ex : Préparation de la pâte"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:57
+#: plugins/custom-star-rating/includes/class-csr-assets.php:56
 msgid "How did you like this dish ?"
 msgstr "Note globale"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:59
-#: plugins/custom-star-rating/includes/class-csr-assets.php:70
+#: plugins/custom-star-rating/includes/class-csr-assets.php:58
+#: plugins/custom-star-rating/includes/class-csr-assets.php:69
 msgid "Disappointing"
 msgstr "Décevant"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:60
-#: plugins/custom-star-rating/includes/class-csr-assets.php:71
+#: plugins/custom-star-rating/includes/class-csr-assets.php:59
+#: plugins/custom-star-rating/includes/class-csr-assets.php:70
 msgid "Average"
 msgstr "Se laisse manger"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:61
-#: plugins/custom-star-rating/includes/class-csr-assets.php:72
+#: plugins/custom-star-rating/includes/class-csr-assets.php:60
+#: plugins/custom-star-rating/includes/class-csr-assets.php:71
 msgid "Good"
 msgstr "Pas mal"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:62
-#: plugins/custom-star-rating/includes/class-csr-assets.php:73
+#: plugins/custom-star-rating/includes/class-csr-assets.php:61
+#: plugins/custom-star-rating/includes/class-csr-assets.php:72
 msgid "Very good"
 msgstr "Très bon"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:63
-#: plugins/custom-star-rating/includes/class-csr-assets.php:74
+#: plugins/custom-star-rating/includes/class-csr-assets.php:62
+#: plugins/custom-star-rating/includes/class-csr-assets.php:73
 msgid "Delicious"
 msgstr "Délicieux"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:67
+#: plugins/custom-star-rating/includes/class-csr-assets.php:66
 msgid "Overall"
 msgstr "Global"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:68
+#: plugins/custom-star-rating/includes/class-csr-assets.php:67
 #, fuzzy
 #| msgid "eg. Preparation of the dough"
 msgid "Global appreciation of the dish"
 msgstr "ex : Préparation de la pâte"
 
-#: plugins/custom-star-rating/includes/class-csr-assets.php:144
+#: plugins/custom-star-rating/includes/class-csr-assets.php:153
 msgid "Not rated"
 msgstr "Pas encore d'évaluation"
 
-#: plugins/custom-star-rating/public/class-csr-form.php:15
-msgid ""
-"Your name and mail address are required for authentification of your comment."
-"<br>Your mail address will not be published."
-msgstr ""
-"Vos nom et adresse mail sont nécessaires pour authentifier votre commentaire."
-"<br>Votre adresse mail ne sera pas publiée."
-
-#: plugins/custom-star-rating/public/class-csr-form.php:22
-msgid "Send"
-msgstr ""
-
-#: plugins/custom-star-rating/public/class-csr-form.php:70
+#: plugins/custom-star-rating/public/class-csr-form.php:55
 msgid "Provide details"
 msgstr "Partagez quelques détails"
 
-#: plugins/custom-star-rating/public/class-csr-rating.php:324
+#: plugins/custom-star-rating/public/class-csr-rating.php:343
 #, php-format
 msgid "%s review"
 msgid_plural "%s reviews"
 msgstr[0] "%s avis"
 msgstr[1] "%s avis"
 
-#: themes/foodiepro-2.1.8/functions.php:662
+#: themes/foodiepro-2.1.8/functions.php:663
 msgid "Content/Alt Sidebar"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/functions.php:901
+#: themes/foodiepro-2.1.8/functions.php:910
 msgid "Recipe, Ingredient, Keyword, Author..."
 msgstr "Recette, ingrédient, mot-clé, auteur..."
 
-#: themes/foodiepro-2.1.8/functions.php:952
+#: themes/foodiepro-2.1.8/functions.php:961
 msgid "Contact us"
 msgstr "Contactez-nous"
 
@@ -4255,106 +4133,317 @@ msgstr ""
 "<strong>ERREUR</strong> : Identifiant invalide.<br>Merci de vérifier que "
 "vous utilisez bien votre <strong>adresse mail</strong> pour vous connecter."
 
-#: themes/foodiepro-2.1.8/peepso/blogposts/blogposts.php:20
-#: themes/foodiepro-2.1.8/peepso/photos/photos.php:48
-#: themes/foodiepro-2.1.8/peepso/videos/videos.php:8
+#: themes/foodiepro-2.1.8/peepso/activity/activity.php:80
+#, php-format
+msgid "Post by %s on %s"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/blogposts/blogposts.php:22
+#: themes/foodiepro-2.1.8/peepso2/blogposts/blogposts.php:20
+#: themes/foodiepro-2.1.8/peepso2/photos/photos.php:48
+#: themes/foodiepro-2.1.8/peepso2/videos/videos.php:8
 #, fuzzy
 #| msgid "Newest first"
 msgid "Oldest first"
 msgstr "Les plus récentes"
 
-#: themes/foodiepro-2.1.8/peepso/general/recover-password.php:10
-msgid "Confirm Password Recovery"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/peepso/general/recover-password.php:14
+#: themes/foodiepro-2.1.8/peepso/general/recover-password.php:4
+#: themes/foodiepro-2.1.8/peepso2/general/recover-password.php:14
 msgid ""
 "Please enter the email address for your account. A verification code will be "
 "sent to you. Once you have received the verification code, you will be able "
 "to choose a new password for your account."
 msgstr ""
 
-#: themes/foodiepro-2.1.8/peepso/general/recover-password.php:27
+#: themes/foodiepro-2.1.8/peepso/general/recover-password.php:16
+#: themes/foodiepro-2.1.8/peepso2/general/recover-password.php:27
 #, fuzzy
 #| msgid "Email Address"
 msgid "Email Address:"
 msgstr "Adresse mail"
 
-#: themes/foodiepro-2.1.8/peepso/general/recover-password.php:31
+#: themes/foodiepro-2.1.8/peepso/general/recover-password.php:20
+#: themes/foodiepro-2.1.8/peepso2/general/recover-password.php:31
 #, fuzzy
 #| msgid "Email Address"
 msgid "Email address"
 msgstr "Adresse mail"
 
-#: themes/foodiepro-2.1.8/peepso/general/recover-password.php:42
+#: themes/foodiepro-2.1.8/peepso/general/recover-password.php:24
 #, fuzzy
 #| msgid "Back to %s"
-msgid "Back to Home"
+msgid "Back to Community"
 msgstr "Retour à %s"
 
-#: themes/foodiepro-2.1.8/peepso/photos/photos.php:12
-#: themes/foodiepro-2.1.8/peepso/photos/photos.php:37
-msgid "Create Album"
+#: themes/foodiepro-2.1.8/peepso/profile/focus.php:38
+#, php-format
+msgid "%s cover photo"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/peepso/photos/photos.php:21
-msgid "Photos"
+#: themes/foodiepro-2.1.8/peepso/profile/focus.php:56
+#: themes/foodiepro-2.1.8/peepso/profile/focus.php:112
+#, php-format
+msgid "%s avatar"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/peepso/photos/photos.php:22
-msgid "Albums"
+#: themes/foodiepro-2.1.8/peepso/profile/focus.php:68
+#: themes/foodiepro-2.1.8/peepso/profile/focus.php:124
+#, fuzzy
+#| msgid "Change Avatar"
+msgid "Change avatar"
+msgstr "Photo de profil"
+
+#: themes/foodiepro-2.1.8/peepso/profile/focus.php:75
+#: themes/foodiepro-2.1.8/peepso/profile/focus.php:131
+#, php-format
+msgid "%s is currently online"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/peepso/photos/photos.php:29
-msgid "Recently added photos"
-msgstr ""
+#: themes/foodiepro-2.1.8/peepso/profile/focus.php:83
+#, fuzzy
+#| msgid "Change Cover"
+msgid "Change cover"
+msgstr "Image d'en-tête"
 
-#: themes/foodiepro-2.1.8/peepso/photos/photos.php:31
-msgid "Photo Albums"
-msgstr ""
+#: themes/foodiepro-2.1.8/peepso/profile/focus.php:87
+#, fuzzy
+#| msgid "Remove from Favorites"
+msgid "Upload new"
+msgstr "Favorite"
 
-#: themes/foodiepro-2.1.8/peepso/profile/focus.php:52
-msgid "Cover Image Utilities"
-msgstr "Modifier ma photo de couverture"
-
-#: themes/foodiepro-2.1.8/peepso/profile/focus.php:60
+#: themes/foodiepro-2.1.8/peepso/profile/focus.php:91
+#: themes/foodiepro-2.1.8/peepso2/profile/focus.php:60
 #, fuzzy
 #| msgid "Duration"
 msgid "Reposition"
 msgstr "Durée"
 
-#: themes/foodiepro-2.1.8/peepso/profile/focus.php:64
-msgid "Modify"
-msgstr ""
+#: themes/foodiepro-2.1.8/peepso/profile/focus.php:95
+msgid "Delete"
+msgstr "Supprimer"
 
-#: themes/foodiepro-2.1.8/peepso/profile/focus.php:72
-#: themes/foodiepro-2.1.8/peepso/profile/profile-about.php:150
+#: themes/foodiepro-2.1.8/peepso/profile/focus.php:102
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about.php:98
+#: themes/foodiepro-2.1.8/peepso2/profile/focus.php:72
+#: themes/foodiepro-2.1.8/peepso2/profile/profile-about.php:150
 msgid "Cancel"
 msgstr "Annuler"
 
-#: themes/foodiepro-2.1.8/peepso/profile/focus.php:73
-#: themes/foodiepro-2.1.8/peepso/profile/profile-about.php:156
+#: themes/foodiepro-2.1.8/peepso/profile/focus.php:103
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about.php:102
+#: themes/foodiepro-2.1.8/peepso2/profile/focus.php:73
+#: themes/foodiepro-2.1.8/peepso2/profile/profile-about.php:156
 #, fuzzy
 #| msgid "Submit a name"
 msgid "Save"
 msgstr "Ajoutez un terme"
 
-#: themes/foodiepro-2.1.8/peepso/profile/focus.php:92
-msgid "Update cover picture"
-msgstr "Changer mon image d'en-tête"
-
-#: themes/foodiepro-2.1.8/peepso/profile/focus.php:118
-#, php-format
-msgid "%s's Blog"
-msgstr "Le blog de %s"
-
-#: themes/foodiepro-2.1.8/peepso/profile/profile-about-account.php:32
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-account.php:35
+#: themes/foodiepro-2.1.8/peepso2/profile/profile-about-account.php:32
 #, fuzzy
 #| msgid "All occasions"
 msgid "Your Account"
 msgstr "Toutes les occasions"
 
-#: themes/foodiepro-2.1.8/peepso/profile/profile-about-account.php:38
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-account.php:43
+#, fuzzy
+#| msgid ""
+#| "Fields marked with an asterisk (<span class=\"error\">*</span>) are "
+#| "mandatory."
+msgid ""
+"Fields marked with an asterisk (<span class=\"ps-form__required\">*</span>) "
+"are required."
+msgstr ""
+"Les champs marqués d'une astérisque (<span class=\"error\">*</span>) sont "
+"requis."
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-account.php:50
+#: themes/foodiepro-2.1.8/peepso2/profile/profile-about-account.php:43
+#, fuzzy
+#| msgid "Profile empty !"
+msgid "Profile Deletion"
+msgstr "Profil vide !"
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-account.php:53
+#: themes/foodiepro-2.1.8/peepso2/profile/profile-about-account.php:46
+msgid ""
+"Deleting your account will disable your profile and remove your name and "
+"photo from most things you've shared. Some information may still be visible "
+"to others, such as your name in their friends list and messages you sent."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-account.php:65
+#: themes/foodiepro-2.1.8/peepso2/profile/profile-about-account.php:53
+msgid "Export Your Community Data"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:35
+#, fuzzy
+#| msgid "Remove this instruction"
+msgid "E-mail notification intensity"
+msgstr "Retirer cette instruction"
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:64
+msgid "This setting does not affect Email Digest."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:77
+#, fuzzy
+#| msgid "Notifications"
+msgid "Notification preferences"
+msgstr "Notifications"
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:83
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:159
+msgid "E-mail notifications require an on-site notification enabled."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:84
+#, php-format
+msgid "You can also use %s to quickly manage all notifications."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:84
+msgid "shortcuts"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:104
+#: themes/foodiepro-2.1.8/peepso2/profile/profile-about-notifications.php:24
+msgid "Shortcuts"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:109
+msgid "Quickly manage all your preferences at once."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:126
+#, fuzzy
+#| msgid "Reply to Message"
+msgid "Enable all"
+msgstr "Répondre au message"
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:133
+msgid "Disable all"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:141
+#, fuzzy
+#| msgid "Remove this instruction"
+msgid "Disable e-mails"
+msgstr "Retirer cette instruction"
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:147
+#, fuzzy
+#| msgid "Registration completed"
+msgid "Reset to default"
+msgstr "Inscription terminée"
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:154
+#, fuzzy
+#| msgid "Notifications"
+msgid "All notifications"
+msgstr "Notifications"
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:181
+#, fuzzy
+#| msgid "Notifications"
+msgid "Web Push Notifications"
+msgstr "Notifications"
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:192
+msgid ""
+"Receive Web Push Notifications in your browser for all enabled on-site "
+"notifications."
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about.php:59
+#, fuzzy
+#| msgid "Profile empty !"
+msgid "Profile fields"
+msgstr "Profil vide !"
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about.php:63
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about.php:145
+#, fuzzy
+#| msgid "Edit"
+msgid "Edit All"
+msgstr "Modifier"
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about.php:64
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about.php:146
+#, fuzzy
+#| msgid "Submit a name"
+msgid "Save All"
+msgstr "Ajoutez un terme"
+
+#: themes/foodiepro-2.1.8/peepso/profile/profile-about.php:89
+#: themes/foodiepro-2.1.8/peepso2/profile/profile-about.php:120
+#, fuzzy
+#| msgid "Edit"
+msgid "Edit "
+msgstr "Modifier"
+
+#: themes/foodiepro-2.1.8/peepso/widgets/userbar.tpl.php:56
+#: themes/foodiepro-2.1.8/peepso2/widgets/userbar.tpl.php:86
+msgid "Preferences"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso/widgets/userbar.tpl.php:113
+#: themes/foodiepro-2.1.8/peepso2/widgets/userbar.tpl.php:131
+#, fuzzy
+#| msgid "Log In"
+msgid "Log in"
+msgstr "Connexion"
+
+#: themes/foodiepro-2.1.8/peepso2/general/recover-password.php:10
+msgid "Confirm Password Recovery"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso2/general/recover-password.php:42
+#, fuzzy
+#| msgid "Back to %s"
+msgid "Back to Home"
+msgstr "Retour à %s"
+
+#: themes/foodiepro-2.1.8/peepso2/photos/photos.php:12
+#: themes/foodiepro-2.1.8/peepso2/photos/photos.php:37
+msgid "Create Album"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso2/photos/photos.php:21
+msgid "Photos"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso2/photos/photos.php:22
+msgid "Albums"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso2/photos/photos.php:29
+msgid "Recently added photos"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso2/photos/photos.php:31
+msgid "Photo Albums"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso2/profile/focus.php:52
+msgid "Cover Image Utilities"
+msgstr "Modifier ma photo de couverture"
+
+#: themes/foodiepro-2.1.8/peepso2/profile/focus.php:64
+msgid "Modify"
+msgstr ""
+
+#: themes/foodiepro-2.1.8/peepso2/profile/focus.php:92
+msgid "Update cover picture"
+msgstr "Changer mon image d'en-tête"
+
+#: themes/foodiepro-2.1.8/peepso2/profile/focus.php:118
+#, php-format
+msgid "%s's Blog"
+msgstr "Le blog de %s"
+
+#: themes/foodiepro-2.1.8/peepso2/profile/profile-about-account.php:38
 #, fuzzy
 #| msgid ""
 #| "Fields marked with an asterisk (<span class=\"error\">*</span>) are "
@@ -4366,86 +4455,49 @@ msgstr ""
 "Les champs marqués d'une astérisque (<span class=\"error\">*</span>) sont "
 "requis."
 
-#: themes/foodiepro-2.1.8/peepso/profile/profile-about-account.php:43
-#, fuzzy
-#| msgid "Profile empty !"
-msgid "Profile Deletion"
-msgstr "Profil vide !"
-
-#: themes/foodiepro-2.1.8/peepso/profile/profile-about-account.php:46
-msgid ""
-"Deleting your account will disable your profile and remove your name and "
-"photo from most things you've shared. Some information may still be visible "
-"to others, such as your name in their friends list and messages you sent."
-msgstr ""
-
-#: themes/foodiepro-2.1.8/peepso/profile/profile-about-account.php:53
-msgid "Export Your Community Data"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:24
-msgid "Shortcuts"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:25
+#: themes/foodiepro-2.1.8/peepso2/profile/profile-about-notifications.php:25
 msgid "Quickly manage all your preferences at once"
 msgstr ""
 
-#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:29
+#: themes/foodiepro-2.1.8/peepso2/profile/profile-about-notifications.php:29
 #, fuzzy
 #| msgid "Remove this instruction"
 msgid "Disable all e-mail notifications"
 msgstr "Retirer cette instruction"
 
-#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:32
+#: themes/foodiepro-2.1.8/peepso2/profile/profile-about-notifications.php:32
 #, fuzzy
 #| msgid "Remove this instruction"
 msgid "Enable all e-mail notifications"
 msgstr "Retirer cette instruction"
 
-#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:35
+#: themes/foodiepro-2.1.8/peepso2/profile/profile-about-notifications.php:35
 #, fuzzy
 #| msgid "Notifications"
 msgid "Disable all on-site notifications"
 msgstr "Notifications"
 
-#: themes/foodiepro-2.1.8/peepso/profile/profile-about-notifications.php:38
+#: themes/foodiepro-2.1.8/peepso2/profile/profile-about-notifications.php:38
 #, fuzzy
 #| msgid "Notifications"
 msgid "Enable all on-site notifications"
 msgstr "Notifications"
 
-#: themes/foodiepro-2.1.8/peepso/profile/profile-about.php:120
-#, fuzzy
-#| msgid "Edit"
-msgid "Edit "
-msgstr "Modifier"
-
-#: themes/foodiepro-2.1.8/peepso/profile/profile-menu.php:23
+#: themes/foodiepro-2.1.8/peepso2/profile/profile-menu.php:23
 #, fuzzy
 #| msgid "Course"
 msgid "More"
 msgstr "Plat"
 
-#: themes/foodiepro-2.1.8/peepso/widgets/friends.tpl.php:78
+#: themes/foodiepro-2.1.8/peepso2/widgets/friends.tpl.php:78
 #, fuzzy
 #| msgid "View recipe"
 msgid "View All"
 msgstr "Voir la recette"
 
-#: themes/foodiepro-2.1.8/peepso/widgets/friends.tpl.php:86
+#: themes/foodiepro-2.1.8/peepso2/widgets/friends.tpl.php:86
 msgid "No friends"
 msgstr "Pas d'amis"
-
-#: themes/foodiepro-2.1.8/peepso/widgets/userbar.tpl.php:84
-msgid "Preferences"
-msgstr ""
-
-#: themes/foodiepro-2.1.8/peepso/widgets/userbar.tpl.php:127
-#, fuzzy
-#| msgid "Log In"
-msgid "Log in"
-msgstr "Connexion"
 
 #: themes/foodiepro-2.1.8/yarpp-template-goutu.php:18
 msgid "Related Recipes"
@@ -4454,6 +4506,29 @@ msgstr "Ces recettes pourraient également vous intéresser..."
 #: themes/foodiepro-2.1.8/yarpp-template-goutu.php:20
 msgid "Related Posts"
 msgstr "Ces articles pourraient également vous intéresser..."
+
+#~ msgid ""
+#~ "Add here your best picture for this post, in order to attract visitors !"
+#~ msgstr "Placez ici votre plus belle photo pour illustrer cet article  !"
+
+#~ msgid "Share"
+#~ msgstr "Partager"
+
+#~ msgid "Rate"
+#~ msgstr "Evaluer"
+
+#~ msgid "Comment and rate this recipe"
+#~ msgstr "Commenter et noter cette recette"
+
+#~ msgid "Rate this recipe"
+#~ msgstr "Le Goûtumètre"
+
+#~ msgid ""
+#~ "Your name and mail address are required for authentification of your "
+#~ "comment.<br>Your mail address will not be published."
+#~ msgstr ""
+#~ "Vos nom et adresse mail sont nécessaires pour authentifier votre "
+#~ "commentaire.<br>Votre adresse mail ne sera pas publiée."
 
 #, fuzzy, php-format
 #~| msgid "In my <a href=\"%s\">wishlist</a>"
@@ -4860,11 +4935,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 
 #, fuzzy
 #~| msgid "Remove from Favorites"
-#~ msgid "Upload Video"
-#~ msgstr "Favorite"
-
-#, fuzzy
-#~| msgid "Remove from Favorites"
 #~ msgid "Remove Video"
 #~ msgstr "Favorite"
 
@@ -5188,11 +5258,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 #~| msgid "Accept"
 #~ msgid "Access"
 #~ msgstr "Accepter"
-
-#, fuzzy
-#~| msgid "Reply to Message"
-#~ msgid "Enable Meal Planner for"
-#~ msgstr "Répondre au message"
 
 #, fuzzy
 #~| msgid "Reply to Message"
@@ -5692,11 +5757,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 
 #, fuzzy
 #~| msgid "Registration completed"
-#~ msgid "Restore Default"
-#~ msgstr "Inscription terminée"
-
-#, fuzzy
-#~| msgid "Registration completed"
 #~ msgid "Saving failed"
 #~ msgstr "Inscription terminée"
 
@@ -5749,9 +5809,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 #~| msgid "Are you sure you want to delete this recipe:"
 #~ msgid "Do you really want to delete this custom field?"
 #~ msgstr "Etes vous sûr de vouloir supprimer cette recette :"
-
-#~ msgid "Delete"
-#~ msgstr "Supprimer"
 
 #, fuzzy
 #~| msgid "Sort recipes"
@@ -6631,12 +6688,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 #~ msgid "Edit Profile"
 #~ msgstr "Modifier mon profil"
 
-#~ msgid "Change Avatar"
-#~ msgstr "Photo de profil"
-
-#~ msgid "Change Cover"
-#~ msgstr "Image d'en-tête"
-
 #~ msgid "Published a new recipe"
 #~ msgstr "Publié une nouvelle recette"
 
@@ -6668,9 +6719,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 
 #~ msgid "Friendship Requests"
 #~ msgstr "Demandes d'amitié"
-
-#~ msgid "Notifications"
-#~ msgstr "Notifications"
 
 #~ msgid "My Profile"
 #~ msgstr "Mon Profil"
@@ -6729,11 +6777,6 @@ msgstr "Ces articles pourraient également vous intéresser..."
 #~| msgid "What's new, %s?"
 #~ msgid "Post Update"
 #~ msgstr "Exprimez vous, %s !"
-
-#, fuzzy
-#~| msgid "Comment count"
-#~ msgid "Post in"
-#~ msgstr "Commentaires"
 
 #~ msgid "Show conversation"
 #~ msgstr "Voir la conversation"

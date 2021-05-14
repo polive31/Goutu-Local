@@ -112,7 +112,7 @@ class Custom_Recipe_Management {
         $CPM_Submission_Instance = new CPM_Submission( 'recipe' );
         // Ajax callbacks for recipe autosave
         // TODO MAYBE OPTIMIZE => set action to "post_autosave" in JS
-        add_action('wp_ajax_recipe_autosave',                   array($CPM_Submission_Instance, 'ajax_post_autosave_cb'));
+        add_action( 'wp_ajax_recipe_autosave',                   array($CPM_Submission_Instance, 'ajax_post_autosave_cb'));
 
         // Specific recipe section in Custom Submission Form
         $CRM_Submission_Instance = new CRM_Submission();
@@ -120,7 +120,7 @@ class Custom_Recipe_Management {
         add_filter( 'cpm_recipe_section', 				        array($CRM_Submission_Instance, 'cpm_recipe_section_cb'), 15, 2 );
 
         // Save ingredient terms if recipe gets published
-        add_action('publish_recipe', 	                        array($CRM_Submission_Instance, 'insert_ingredient_terms'), 15, 3 );
+        add_action( 'publish_recipe', 	                        array($CRM_Submission_Instance, 'insert_ingredient_terms'), 15, 3 );
 
         // Specific recipe submission actions
         add_action( 'cpm_recipe_submission_main', 	            array($CRM_Submission_Instance, 'save_recipe_meta'     ), 15, 2 );

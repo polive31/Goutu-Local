@@ -105,12 +105,20 @@ class CPM_Save
         $content = isset($_POST['post_content']) ? $_POST['post_content'] : '';
         $post['post_content']=foodiepro_esc($content);
 
+        /* Get post video link */
+        $video_url = isset($_POST['post_video']) ? $_POST['post_video'] : '';
+        $video_url = esc_url($video_url, array('https'));
+
         /* Save post : although insert_post can update an existing post, it will also modify
             the creation date, which is not wanted */
-        if ($new)
+        if ($new) {
             $post_id = wp_insert_post($post, true);
-        else
+            $post_meta_id = add_post_meta( $post_id, 'post_video', $video_url, true );
+        }
+        else {
             $post_id = wp_update_post($post, true);
+            $post_meta_id = update_post_meta( $post_id, 'post_video', $video_url );
+        }
 
         return $post_id;
     }

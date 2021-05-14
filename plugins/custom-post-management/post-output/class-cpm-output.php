@@ -12,10 +12,14 @@ class CPM_Output {
 	private static $PLUGIN_PATH;
 	private static $PLUGIN_URI;
 
+	private $post_type;
+	private $post_ID;
+
 	public function __construct( $type='post' ) {
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
 		$this->post_type = $type;
+		$this->post_ID = get_the_ID();
 	}
 
 	public function enqueue_post_meta( $meta )
@@ -114,6 +118,14 @@ class CPM_Output {
 		do_action( 'cpm_' . $this->post_type . '_toolbar', null);
 	}
 
+	public function add_post_video() {
+		if ( !is_singular( $this->post_type) ) return;
+		$post_id = get_the_ID();
+		$video_url = get_post_meta( $post_id, 'post_video', true);
+		if ($video_url) {
+			echo wp_oembed_get( $video_url);
+		}
+	}
 
 
 	/* Default callbacks for 'post' type

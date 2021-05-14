@@ -52,7 +52,6 @@ if (!isset($instruction['group'])) {
             </div>
             <div class="instruction-button">
                 <label><?= __('Video', 'crm'); ?></label>
-
                 <input class="recipe-instruction-video" type="text" id="recipe_instruction_video_<?= $i; ?>" placeholder="<?= __('Link to the online video (Youtube, ...). Must begin with https://...', 'crm'); ?>" size="50" name="recipe_instructions[<?= $i; ?>][video]" value="<?= $instruction['video']; ?>" />
             </div>
         </div>

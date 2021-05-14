@@ -70,6 +70,9 @@ class Custom_Post_Management {
 		// Filters post thumbnail output in order to let lightbox plugin format them accordingly
 		add_filter( 'the_content', 								array($Post_Template, 'add_lightbox_link'), 15 );
 
+		// Add post video if exists
+		add_action( 'genesis_after_entry_content', 				array($Post_Template, 'add_post_video') );
+
 		/* Remove private/protected title mention */
 		add_filter( 'genesis_post_title_text', 					array($Post_Template, 'escape_and_cleanup_title') );
 		add_filter( 'private_title_format', 					array($Post_Template, 'remove_status_prefix_from_title') );

@@ -157,11 +157,17 @@ td.recipe-general-form-label {
 /* Ingredients & Instructions */
 tr.instruction, tr.ingredient {
   display: block;
+  width: 100%;
   border: 1px solid #e8e8e8;
   margin: 20px 0;
   border-radius: 10px;
   -webkit-box-shadow: 3px 3px 3px #d8d8d8;
           box-shadow: 3px 3px 3px #d8d8d8;
+}
+
+tr.instruction-group,
+tr.ingredient-group {
+  display: block;
 }
 
 /* Ingredient Section

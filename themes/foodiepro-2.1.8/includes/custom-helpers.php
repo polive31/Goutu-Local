@@ -347,6 +347,9 @@ function foodiepro_get_icon_class($slug)
 		case 'read':
 			$class = "fas fa-volume-up";
 			break;
+		case 'in-cart':
+			$class = "fas fa-cart-arrow-down";
+			break;
 		default:
 			$class = 'fas fa-' . $slug; //heart, book, thumbtack, edit, print, chevron-right, chevron-left, tag
 	}

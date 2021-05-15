@@ -235,6 +235,8 @@ i.overlayed-icon:after {
 
 .servings-input {
   /* font-weight: bold; */
+  display: inline-block;
+  width: 100%;
   font-family: Oswald, sans-serif;
   border-bottom: 1px solid #d0d0d0;
   padding: 5px;
@@ -281,6 +283,19 @@ input.adjust-recipe-servings {
   font-size: 16px;
 }
 
+.button.incart {
+  float: right;
+  background-color:#e8e8e8;
+  transition: background-color 0.5s, color 0.5s;
+  font-size: 3.4rem;
+}
+
+.button.incart:hover {
+  background-color:#c8c8c8;
+  color:#000;
+}
+
+
 /* Ingredients */
 .ingredients-container {
   float: left;
@@ -320,7 +335,8 @@ li.wpurp-recipe-ingredient a:hover {
 }
 
 .fa.qty .servings-button,
-.ingredient-checkbox:hover {
+.button.incart,
+.ingredient-checkbox {
   cursor: pointer;
 }
 

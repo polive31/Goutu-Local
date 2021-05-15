@@ -21,6 +21,33 @@ jQuery(document).ready(function() {
         }, 0);
     });
 
+    /* Ingredients share button */
+    if ( !navigator.share ) {
+        console.log('Share API is NOT supported !');
+        jQuery('#ingredient_share_button').hide();
+    }
+
+    jQuery(document).on('click', '#ingredient_share_button', function (e) {
+        console.log('Click on cart button !');
+        var ingredientsList = 'Ingredients list text';
+        if ( navigator.share ) {
+            // Web Share API is supported
+            console.log('Share API is supported !');
+            navigator.share({
+                title: 'Ingrédients pour ' . recipeTitle,
+                text: ingredientsList,
+                url: jQuery(location).attr("href")
+              }).then(() => {
+                console.log('Thanks for sharing!');
+              })
+              .catch(console.error);
+        } else {
+            console.log('Share API is NOT supported !');
+            // Fallback
+        }
+    });
+
+
 
     /* Ingredient checkboxes
     ---------------------------------------------------------------- */

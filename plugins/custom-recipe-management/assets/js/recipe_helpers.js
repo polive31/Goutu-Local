@@ -1,5 +1,24 @@
 var wpurp_adjustable_servings = {};
 
+// const shareButton = document.querySelector('#ingredient_share_button');
+// const docTitle = document.title;
+// const docUrl = document.querySelector('link[rel=canonical]') ? document.querySelector('link[rel=canonical]').href : document.location.href;
+
+// shareButton.addEventListener('click', event => {
+//     if (navigator.share) {
+//       navigator.share({
+//         title: docTitle,
+//         url: docURL
+//       }).then(() => {
+//         console.log('Thanks for sharing!');
+//       })
+//       .catch(console.error);
+//     } else {
+//       shareDialog.classList.add('is-open');
+//     }
+//   });
+
+
 jQuery(document).ready(function() {
 
     /* Ingredient / Instructions menu bar
@@ -37,7 +56,7 @@ jQuery(document).ready(function() {
             console.log('Share API is supported !');
             navigator.share({
                 title: 'Ingrédients pour ' + recipeTitle,
-                text: ingredientsList,
+                // text: ingredientsList,
                 url: jQuery(location).attr("href")
               }).then(() => {
                 console.log('Thanks for sharing!');

@@ -30,17 +30,21 @@ jQuery(document).ready(function() {
     jQuery(document).on('click', '#ingredient_share_button', function (e) {
         console.log('Click on cart button !');
         var ingredientsList = 'Ingredients list text';
+        var recipeTitle = 'recipe Title';
+
         if ( navigator.share ) {
             // Web Share API is supported
             console.log('Share API is supported !');
             navigator.share({
-                title: 'Ingrédients pour ' . recipeTitle,
+                title: 'Ingrédients pour ' + recipeTitle,
                 text: ingredientsList,
                 url: jQuery(location).attr("href")
               }).then(() => {
                 console.log('Thanks for sharing!');
               })
-              .catch(console.error);
+              .catch(err => {
+                console.log(`Couldn't share because of`, err.message);
+              });
         } else {
             console.log('Share API is NOT supported !');
             // Fallback

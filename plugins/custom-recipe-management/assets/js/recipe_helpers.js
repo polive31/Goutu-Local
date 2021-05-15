@@ -41,10 +41,10 @@ jQuery(document).ready(function() {
     });
 
     /* Ingredients share button */
-    if ( !navigator.share ) {
-        console.log('Share API is NOT supported !');
-        jQuery('#ingredient_share_button').hide();
-    }
+    // if ( !navigator.share ) {
+    //     console.log('Share API is NOT supported !');
+    //     jQuery('#ingredient_share_button').hide();
+    // }
 
     jQuery(document).on('click', '#ingredient_share_button', function (e) {
         console.log('Click on cart button !');

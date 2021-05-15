@@ -55,7 +55,7 @@
 					<span><?php echo $recipe->servings_type(); ?></span>
 					<?php
 					$author = get_the_author();
-					if ('Admin'==$author) {
+					if (('ratatouille'==$author) && (get_post_status()=='draft')) {
 						?>
 						<div class="button incart" id="ingredient_share_button" ><?= foodiepro_get_icon('in-cart','', '', $author . __('Save to shopping list','crm')); ?></div>
 						<?php

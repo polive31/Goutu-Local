@@ -9,14 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 class CPO_Customizations {
 
 	public function custom_profile_navigation( $links ) {
-		// if ( !is_user_logged_in() ) {
-		// 	unset( $links['about'] );
-		// 	$reordered=array();
-		// 	foreach ( Peepso::$TABS as $tab ) {
-		// 		$reordered[$tab] = $links[$tab];
-		// 	}
-		// 	$links = $reordered;
-        // }
         $currentprofile = PeepsoHelpers::is_current_user_profile();
         if (is_user_logged_in() && $currentprofile ) {
             $links['messages']=array(
@@ -26,7 +18,6 @@ class CPO_Customizations {
             );
             $links['stream']['label'] = __('My activities','foodiepro');
         }
-
 		return $links;
     }
 

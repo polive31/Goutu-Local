@@ -74,29 +74,45 @@ class CustomPeepsoMembers extends WP_Widget
 				'community'	=> 'members',
 				'text'	=>  __('All the members', 'foodiepro'),
 			));
-		} elseif ( foodiepro_contains($query, 'friends') ) {
+
+		}
+		elseif ( foodiepro_contains($query, 'friends') ) {
 
 			// Don't display widget if some conditions aren't met
-			if ( !is_user_logged_in() && foodiepro_contains($query, 'current') )
+			if ( !is_user_logged_in() && foodiepro_contains($query, 'current') ) {
+				echo $args['after_widget'];
 				return;
+			}
 
 			$display_params = $this->get_friends_display_params($query, $instance, $mutual);
+
+			if (!$display_params) {
+				echo $args['after_widget'];
+				return;
+			}
 
 			if ($display_params['count'] == 0) {
 				if ($allow_empty ) {
 					echo $args['before_title'] . apply_filters('widget_title', sprintf($instance['title'], $display_params['username'])) . $args['after_title'];
 					echo '<p class="aligncenter">' . $display_params['nofriends'] . '</p>';
+					echo $args['after_widget'];
 					return;
 				}
-				else
+				else {
+					echo $args['after_widget'];
 					return;
+				}
 			}
+
 			echo $args['before_title'] . apply_filters('widget_title', sprintf($instance['title'], $display_params['username'])) . $args['after_title'];
 
 			$users = $display_params['users'];
 
-		} else
+		}
+		else {
+			echo $args['after_widget'];
 			return;
+		}
 
 
 ?>
@@ -150,7 +166,7 @@ class CustomPeepsoMembers extends WP_Widget
 			'nofriends'	=> false,
 			'count'	=> 0,
 		);
-		if (!class_exists('PeepSoFriends')) return $params;
+		if (!class_exists('PeepSoFriends')) return false;
 
 		$PeepSoFriends = PeepSoFriends::get_instance();
 

@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Plugins - PeepSo &#8211; User Profile and Community "
 "Plugin - Stable (latest release)\n"
 "POT-Creation-Date: 2021-05-06 05:04+0700\n"
-"PO-Revision-Date: 2021-05-15 01:56+0200\n"
+"PO-Revision-Date: 2021-05-15 12:11+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -9128,7 +9128,7 @@ msgstr "Bloqué"
 
 #: templates/members/search-popover-input.php:3
 msgid "Start typing to search"
-msgstr "Ecrivez ici pour effectuer une recherche"
+msgstr "Rechercher..."
 
 #: templates/members/search-popover-input.php:7
 msgid "No results found."
@@ -9136,7 +9136,7 @@ msgstr "Aucun résultat trouvé."
 
 #: templates/members/search.php:27
 msgid "Start typing to search..."
-msgstr "Ecrivez ici pour effectuer une recherche…"
+msgstr "Rechercher..."
 
 #: templates/members/search.php:37
 msgid "Any"

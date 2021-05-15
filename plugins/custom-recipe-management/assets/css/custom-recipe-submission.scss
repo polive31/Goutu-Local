@@ -106,6 +106,7 @@ tr td.sort-handle.ui-sortable-handle {
   cursor: -moz-grab;
   cursor: grab;
   text-align: center;
+  padding: 10px;  
 }
 
 td.sort-handle.ui-sortable-handle {
@@ -156,6 +157,16 @@ td.sort-handle.ui-sortable-handle:hover {
 
 td.recipe-general-form-label {
   padding-top: 10px;
+}
+
+
+/* Ingredients & Instructions */
+tr.instruction, tr.ingredient {
+  display: block;
+  border: 1px solid #e8e8e8;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px #d8d8d8;
 }
 
 
@@ -222,8 +233,12 @@ td.ingredient-input.notes {
 /* Instruction Section
 ------------------------------------------------------- */
 
+td.instruction-content {
+  width: 80%;
+}
+
 td.instruction-thumbnail {
-  width: 150px;
+  width: 20%;
 }
 
 #custom_post_submission_form .instruction-image {

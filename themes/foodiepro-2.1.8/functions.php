@@ -733,9 +733,6 @@ function foodiepro_responsive_nav_layout() {
 
 
 
-
-
-
 /* Hook widget areas
 -----------------------------------------------------------------------------*/
 

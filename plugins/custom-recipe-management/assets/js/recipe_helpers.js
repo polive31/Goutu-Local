@@ -5,6 +5,7 @@ const docTitle = document.title;
 const docUrl = document.querySelector('link[rel=canonical]') ? document.querySelector('link[rel=canonical]').href : document.location.href;
 
 shareButton.addEventListener('click', event => {
+    console.log('Click detected');
     if (navigator.share) {
       navigator.share({
         title: docTitle,
@@ -14,7 +15,7 @@ shareButton.addEventListener('click', event => {
       })
       .catch(console.error);
     } else {
-      shareDialog.classList.add('is-open');
+    //   shareDialog.classList.add('is-open');
     }
   });
 

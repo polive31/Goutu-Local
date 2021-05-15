@@ -1,22 +1,22 @@
 var wpurp_adjustable_servings = {};
 
-// const shareButton = document.querySelector('#ingredient_share_button');
-// const docTitle = document.title;
-// const docUrl = document.querySelector('link[rel=canonical]') ? document.querySelector('link[rel=canonical]').href : document.location.href;
+const shareButton = document.querySelector('#ingredient_share_button');
+const docTitle = document.title;
+const docUrl = document.querySelector('link[rel=canonical]') ? document.querySelector('link[rel=canonical]').href : document.location.href;
 
-// shareButton.addEventListener('click', event => {
-//     if (navigator.share) {
-//       navigator.share({
-//         title: docTitle,
-//         url: docURL
-//       }).then(() => {
-//         console.log('Thanks for sharing!');
-//       })
-//       .catch(console.error);
-//     } else {
-//       shareDialog.classList.add('is-open');
-//     }
-//   });
+shareButton.addEventListener('click', event => {
+    if (navigator.share) {
+      navigator.share({
+        title: docTitle,
+        url: docURL
+      }).then(() => {
+        console.log('Thanks for sharing!');
+      })
+      .catch(console.error);
+    } else {
+      shareDialog.classList.add('is-open');
+    }
+  });
 
 
 jQuery(document).ready(function() {
@@ -46,29 +46,29 @@ jQuery(document).ready(function() {
     //     jQuery('#ingredient_share_button').hide();
     // }
 
-    jQuery(document).on('click', '#ingredient_share_button', function (e) {
-        console.log('Click on cart button !');
-        var ingredientsList = 'Ingredients list text';
-        var recipeTitle = 'recipe Title';
+    // jQuery(document).on('click', '#ingredient_share_button', function (e) {
+    //     console.log('Click on cart button !');
+    //     var ingredientsList = 'Ingredients list text';
+    //     var recipeTitle = 'recipe Title';
 
-        if ( navigator.share ) {
-            // Web Share API is supported
-            console.log('Share API is supported !');
-            navigator.share({
-                title: 'Ingrédients pour ' + recipeTitle,
-                // text: ingredientsList,
-                url: jQuery(location).attr("href")
-              }).then(() => {
-                console.log('Thanks for sharing!');
-              })
-              .catch(err => {
-                console.log(`Couldn't share because of`, err.message);
-              });
-        } else {
-            console.log('Share API is NOT supported !');
-            // Fallback
-        }
-    });
+    //     if ( navigator.share ) {
+    //         // Web Share API is supported
+    //         console.log('Share API is supported !');
+    //         navigator.share({
+    //             title: 'Ingrédients pour ' + recipeTitle,
+    //             // text: ingredientsList,
+    //             url: jQuery(location).attr("href")
+    //           }).then(() => {
+    //             console.log('Thanks for sharing!');
+    //           })
+    //           .catch(err => {
+    //             console.log(`Couldn't share because of`, err.message);
+    //           });
+    //     } else {
+    //         console.log('Share API is NOT supported !');
+    //         // Fallback
+    //     }
+    // });
 
 
 

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://shaybocks.com/\n"
-"POT-Creation-Date: 2021-05-13 19:14+0200\n"
-"PO-Revision-Date: 2021-05-13 19:15+0200\n"
+"POT-Creation-Date: 2021-05-16 03:15+0200\n"
+"PO-Revision-Date: 2021-05-16 03:16+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -806,7 +806,7 @@ msgstr "Unité"
 
 #: templates/template-form-ingredients-ingredient.php:50
 #: templates/template-form-ingredients-ingredient.php:51
-#: templates/template-print.php:89 templates/template-screen.php:82
+#: templates/template-print.php:89 templates/template-screen.php:90
 msgid "Notes"
 msgstr "Notes"
 
@@ -847,16 +847,16 @@ msgstr "Image"
 msgid "Video"
 msgstr "Vidéo"
 
-#: templates/template-form-instructions-instruction.php:56
+#: templates/template-form-instructions-instruction.php:55
 msgid "Link to the online video (Youtube, ...). Must begin with https://..."
 msgstr ""
 "Lien vers la vidéo en ligne (YouTube, …). Doit commencer par https://..."
 
-#: templates/template-form-instructions-instruction.php:64
+#: templates/template-form-instructions-instruction.php:63
 msgid "Remove Image"
 msgstr "Retirer l'image"
 
-#: templates/template-form-instructions-instruction.php:71
+#: templates/template-form-instructions-instruction.php:70
 msgid "Remove this instruction"
 msgstr "Retirer cette instruction"
 
@@ -1013,6 +1013,10 @@ msgstr "Diminuer les portions"
 msgid "Increase servings"
 msgstr "Augmenter les portions"
 
+#: templates/template-screen.php:60
+msgid "Add to shopping list"
+msgstr "Ajouter à ma liste de courses"
+
 #: templates/template-toolbar.php:19
 msgid "Print"
 msgstr "Imprimer"
@@ -1052,6 +1056,9 @@ msgstr ""
 #: widgets/crm_nutrition_label_widget.php:76
 msgid "Serving Size"
 msgstr ""
+
+#~ msgid "Save to shopping list"
+#~ msgstr "Ajouter à ma liste de courses"
 
 #~ msgid "Rate"
 #~ msgstr "Evaluer"

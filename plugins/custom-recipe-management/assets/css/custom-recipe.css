@@ -235,7 +235,9 @@ i.overlayed-icon:after {
 
 .servings-input {
   /* font-weight: bold; */
-  display: inline-block;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   width: 100%;
   font-family: Oswald, sans-serif;
   border-bottom: 1px solid #d0d0d0;
@@ -284,7 +286,7 @@ input.adjust-recipe-servings {
 }
 
 .button.incart {
-  float: right;
+  margin-left: 20px;
   background-color:#e8e8e8;
   transition: background-color 0.5s, color 0.5s;
   font-size: 3.4rem;

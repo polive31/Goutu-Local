@@ -57,7 +57,7 @@
 					// $author = get_the_author();
 					// if (('ratatouille'==$author) && (get_post_status()=='draft')) {
 						?>
-						<div class="button incart" id="ingredient_share_button" ><?= foodiepro_get_icon('in-cart','', '', __('Save to shopping list','crm')); ?></div>
+						<div class="button incart" id="ingredient_share_button" ><?= foodiepro_get_icon('in-cart','', '', __('Add to shopping list','crm')); ?></div>
 						<?php
 					// }
 					?>

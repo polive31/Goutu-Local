@@ -350,6 +350,9 @@ function foodiepro_get_icon_class($slug)
 		case 'in-cart':
 			$class = "fas fa-cart-arrow-down";
 			break;
+		case 'copy':
+			$class = "far fa-copy";
+			break;
 		default:
 			$class = 'fas fa-' . $slug; //heart, book, thumbtack, edit, print, chevron-right, chevron-left, tag
 	}

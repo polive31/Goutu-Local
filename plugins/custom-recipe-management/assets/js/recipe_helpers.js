@@ -22,12 +22,8 @@ jQuery(document).ready(function() {
         }, 0);
     });
 
- /* Ingredients share button */
-    if ( !navigator.share ) {
-        console.log('Share API is NOT supported !');
-        jQuery('#ingredient_share_button').hide();
-    }
 
+ /* Ingredients share button */
     jQuery(document).on('click', '#ingredient_share_button', function (e) {
         console.log('Click on cart button !');
         var ingredientsList = '';
@@ -51,6 +47,29 @@ jQuery(document).ready(function() {
                 });
         } else {
             console.log('Share API is NOT supported');
+            var $target = jQuery('#shopping_list_copy_buffer');
+            $target.val(ingredientsList).select();
+
+            // var currentFocus = document.activeElement;
+            // var target = document.getElementById('shopping_list_copy_buffer');
+            // target.focus();
+            // target.select();
+            // target.setSelectionRange(0, target.value.length);
+
+            var succeed;
+            try {
+                  succeed = document.execCommand("copy");
+            } catch(e) {
+                succeed = false;
+            }
+            if (succeed) {
+                alert("La liste d'ingrédients est copiée dans votre presse-papiers.");
+                console.log("Copy succeeded");
+            }
+            else {
+                console.log("Copy failed");
+            }
+            currentFocus.focus(); /* Restore focus */
         }
     });
 

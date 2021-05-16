@@ -23,34 +23,36 @@ jQuery(document).ready(function() {
     });
 
  /* Ingredients share button */
-//   if ( !navigator.share ) {
-//       console.log('Share API is NOT supported !');
-//       jQuery('#ingredient_share_button').hide();
-//   }
+    if ( !navigator.share ) {
+        console.log('Share API is NOT supported !');
+        jQuery('#ingredient_share_button').hide();
+    }
 
-  jQuery(document).on('click', '#ingredient_share_button', function (e) {
-      console.log('Click on cart button !');
-      var ingredientsList = 'Ingredients list text';
-      var recipeTitle = 'recipe Title';
+    jQuery(document).on('click', '#ingredient_share_button', function (e) {
+        console.log('Click on cart button !');
+        var ingredientsList = '';
+        jQuery('.wpurp-recipe-ingredients li').each(function(index) {
+            ingredientsList = ingredientsList + jQuery(this).text() + '\n';
+        });
+        var recipeTitle = jQuery(location).attr('href');
 
-      if ( navigator.share ) {
-          // Web Share API is supported
-          console.log('Share API is supported !');
-          navigator.share({
-              title: 'Ingrédients pour ' + recipeTitle,
-              text: ingredientsList,
-              url: jQuery(location).attr("href")
-            }).then(() => {
-              console.log('Thanks for sharing!');
-            })
-            .catch(err => {
-              console.log(`Couldn't share because of`, err.message);
-            });
-      } else {
-          console.log('Share API is NOT supported !');
-          // Fallback
-      }
-  });
+        console.log(ingredientsList);
+        if ( navigator.share ) {
+            console.log('Share API is supported !');
+            navigator.share({
+                title: recipeTitle,
+                text: ingredientsList,
+                url: jQuery(location).attr("href")
+                }).then(() => {
+                console.log('Sharing done');
+                })
+                .catch(err => {
+                console.log(`Couldn't share because of`, err.message);
+                });
+        } else {
+            console.log('Share API is NOT supported');
+        }
+    });
 
 
 

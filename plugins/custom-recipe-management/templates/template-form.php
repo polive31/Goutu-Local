@@ -8,6 +8,12 @@
                 <textarea class="recipe-description" name="post_content" id="post_content" rows="4" placeholder="<?php echo __('Provide general information about this recipe', 'crm'); ?>"><?= $recipe->legacy()?($recipe->description()):($recipe->post_content()); ?></textarea>
             </td>
         </tr>
+        <tr class="recipe-general-form-description">
+            <td class="recipe-general-form-label"><label for="recipe_video"><?php _e('Video', 'crm'); ?><?php if (in_array('post_video', $required_fields)) echo '<span class="required-field">*</span>'; ?></label></td>
+            <td class="recipe-general-form-field">
+                <input class="recipe-video" type="text" id="recipe_video" placeholder="<?= __('Link to the online video (Youtube, ...). Must begin with https://...', 'crm'); ?>" size="50" name="recipe_video" value="<?= $recipe->video(); ?>" />
+            </td>
+        </tr>
         <tr class="recipe-general-form-servings">
             <td class="recipe-general-form-label"><label for="recipe_servings"><?php _e('Servings', 'crm'); ?><?php if (in_array('recipe_servings', $required_fields)) echo '<span class="required-field">*</span>'; ?></label></td>
             <td class="recipe-general-form-field">

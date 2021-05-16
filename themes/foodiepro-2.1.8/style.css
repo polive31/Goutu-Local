@@ -1759,23 +1759,16 @@ span.rating-caption {
 /* Google Recaptcha */
 /* News widget (Slide Anything)  */
 .news-title {
-  font-family: Oswald, sans-serif;
   font-size: 25px;
-  color: #4e4e4e;
+  font-weight: bold;
   text-align: center;
-  margin-bottom: 10px;
-  /* font-weight: bold; */
-  /* padding: 0 10px; */
-  /* font-variant: small-caps; */
-  /* text-transform: capitalize; */
-  /* text-shadow: 2px 2px 1px #cecece; */
-  /* font-style: italic; */
+  padding-bottom: 10px;
 }
 
 .news-container {
   font-family: courier;
   text-align: center;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
 }
 

@@ -233,12 +233,26 @@ i.overlayed-icon:after {
   color: #484848;
 }
 
+/* Recipe video iFrame formatting */
+.recipe-container#video {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+}
+
+#video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Recipe Servings  */
+
 .servings-input {
   /* font-weight: bold; */
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
   font-family: Oswald, sans-serif;
   border-bottom: 1px solid #d0d0d0;
   padding: 5px;
@@ -285,19 +299,6 @@ input.adjust-recipe-servings {
   font-size: 16px;
 }
 
-.button.incart {
-  margin-left: 20px;
-  background-color:#e8e8e8;
-  transition: background-color 0.5s, color 0.5s;
-  font-size: 3.4rem;
-}
-
-.button.incart:hover {
-  background-color:#c8c8c8;
-  color:#000;
-}
-
-
 /* Ingredients */
 .ingredients-container {
   float: left;
@@ -337,8 +338,7 @@ li.wpurp-recipe-ingredient a:hover {
 }
 
 .fa.qty .servings-button,
-.button.incart,
-.ingredient-checkbox {
+.ingredient-checkbox:hover {
   cursor: pointer;
 }
 

@@ -18,6 +18,18 @@
 		<?= do_shortcode($recipe->post_content()); ?>
 	</div>
 
+	<!-- Recipe description -->
+	<?php
+	$video = $recipe->video();
+	if ($video) {
+	?>
+		<div class="recipe-container" id="video">
+			<?= wp_oembed_get($video, 560, 315); ?>
+		</div>
+	<?php
+	}
+	?>
+
 
 	<!-- Ingredients + Instructions -->
 	<div class="recipe-container" id="main">

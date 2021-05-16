@@ -30,6 +30,8 @@ class CRM_Recipe_Save extends CRM_Recipe {
                 if ( $this->format($field) == 'scalar' ) {
                     if ( $this->input_type($field) == 'text' )
                         $new = sanitize_text_field( $_POST[$field] );
+                    elseif ( $this->input_type($field) == 'url' )
+                        $new = esc_url( $_POST[$field], array('https') );
                     else
                         $new = wp_kses_post( $_POST[$field] );
                 }
@@ -50,6 +52,7 @@ class CRM_Recipe_Save extends CRM_Recipe {
             // Update or delete meta data if changed
             if ( isset( $new ) && $new != $old )
             {
+                // Generic save instruction for "standard" fields
                 $this->set( $field, $new );
                 if( $field == 'recipe_ingredients' ) {
                     $notice = '<strong>' . $this->post->post_title . ':</strong> <a href="'.admin_url( 'edit.php?post_type=recipe&page=wpurp_nutritional_information&limit_by_recipe=' . $this->ID() ).'">'. __( 'Update the Nutritional Information', 'wp-ultimate-recipe') .'</a>';
@@ -85,7 +88,7 @@ class CRM_Recipe_Save extends CRM_Recipe {
             if ( !empty( $description ) || !empty( $image ) || !empty( $video ) ) {
                 $instruction['group']= sanitize_text_field($instruction['group']);
                 $instruction['description']=sanitize_textarea_field($instruction['description']);
-                $instruction['video']=sanitize_textarea_field($instruction['video']);
+                $instruction['video']=esc_url($instruction['video'], array('https'));
                 $non_empty_instructions[] = $instruction;
             }
         }

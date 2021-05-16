@@ -35,6 +35,10 @@ class CRM_Recipe {
             'storage'  => 'scalar',
             'input'  => 'text',
         ),
+        'recipe_video'   => array(
+            'storage'  => 'scalar',
+            'input'  => 'url',
+        ),
         'recipe_ingredients'   => array(
             'storage'  => 'array',
             'input'  => 'text',
@@ -476,6 +480,11 @@ class CRM_Recipe {
         return $this->meta( 'recipe_servings_type' );
     }
 
+    public function video()
+    {
+        return $this->meta( 'recipe_video' );
+    }
+
     // public function template()
     // {
     //     $template = $this->meta( 'recipe_custom_template' );
@@ -501,94 +510,94 @@ class CRM_Recipe {
         }
     }
 
-    public function has_video()
-    {
-        return $this->video_id() ? true : false;
-    }
+    // public function has_video()
+    // {
+    //     return $this->video_id() ? true : false;
+    // }
 
-    public function video_id()
-    {
-        $video_id = $this->meta( 'recipe_video_id' );
-        return $video_id ? $video_id : '';
-    }
+    // public function video_id()
+    // {
+    //     $video_id = $this->meta( 'recipe_video_id' );
+    //     return $video_id ? $video_id : '';
+    // }
 
-    public function video_thumb( $show_image = false )
-    {
-        $video_thumb = $this->meta( 'recipe_video_thumb' );
+    // public function video_thumb( $show_image = false )
+    // {
+    //     $video_thumb = $this->meta( 'recipe_video_thumb' );
 
-        if ( $show_image ) {
-            return $video_thumb ? '<img src="' . $video_thumb . '">' : '';
-        } else {
-            return $video_thumb ? $video_thumb : '';
-        }
-    }
+    //     if ( $show_image ) {
+    //         return $video_thumb ? '<img src="' . $video_thumb . '">' : '';
+    //     } else {
+    //         return $video_thumb ? $video_thumb : '';
+    //     }
+    // }
 
-    public function video_data() {
-		return wp_get_attachment_metadata( $this->video_id() );
-    }
+    // public function video_data() {
+	// 	return wp_get_attachment_metadata( $this->video_id() );
+    // }
 
-    public function video_url() {
-		return wp_get_attachment_url( $this->video_id() );
-    }
+    // public function video_url() {
+	// 	return wp_get_attachment_url( $this->video_id() );
+    // }
 
-    public function video_thumb_url( $size = 'thumbnail' ) {
-		$image_id = get_post_thumbnail_id( $this->video_id() );
-		$thumb = wp_get_attachment_image_src( $image_id, $size );
-        $image_url = $thumb && isset( $thumb[0] ) ? $thumb[0] : '';
+    // public function video_thumb_url( $size = 'thumbnail' ) {
+	// 	$image_id = get_post_thumbnail_id( $this->video_id() );
+	// 	$thumb = wp_get_attachment_image_src( $image_id, $size );
+    //     $image_url = $thumb && isset( $thumb[0] ) ? $thumb[0] : '';
 
-		return $image_url;
-	}
+	// 	return $image_url;
+	// }
 
-    public function video()
-    {
-        if ( ! $this->has_video() ) {
-            return '';
-        }
+    // public function video()
+    // {
+    //     if ( ! $this->has_video() ) {
+    //         return '';
+    //     }
 
-        $video_data = $this->video_data();
-        $output = '[video';
-        $output .= ' width="' . $video_data['width'] . '"';
-        $output .= ' height="' . $video_data['height'] . '"';
+    //     $video_data = $this->video_data();
+    //     $output = '[video';
+    //     $output .= ' width="' . $video_data['width'] . '"';
+    //     $output .= ' height="' . $video_data['height'] . '"';
 
-        $format = isset( $video_data['fileformat'] ) && $video_data['fileformat'] ? $video_data['fileformat'] : 'mp4';
-        $output .= ' ' . $format . '="' . $this->video_url() . '"';
+    //     $format = isset( $video_data['fileformat'] ) && $video_data['fileformat'] ? $video_data['fileformat'] : 'mp4';
+    //     $output .= ' ' . $format . '="' . $this->video_url() . '"';
 
-        $thumb_size = array( $video_data['width'], $video_data['height'] );
-        $thumb_url = $this->video_thumb_url( $thumb_size );
+    //     $thumb_size = array( $video_data['width'], $video_data['height'] );
+    //     $thumb_url = $this->video_thumb_url( $thumb_size );
 
-        if ( $thumb_url ) {
-            $output .= ' poster="' . $thumb_url . '"';
-        }
+    //     if ( $thumb_url ) {
+    //         $output .= ' poster="' . $thumb_url . '"';
+    //     }
 
-        $output .= '][/video]';
+    //     $output .= '][/video]';
 
-        return do_shortcode( $output );
-    }
+    //     return do_shortcode( $output );
+    // }
 
-    public function video_metadata() {
-		$metadata = false;
+    // public function video_metadata() {
+	// 	$metadata = false;
 
-		if ( $this->video_id() ) {
-			$attachment = get_post( $this->video_id() );
-			$video_data = $this->video_data();
+	// 	if ( $this->video_id() ) {
+	// 		$attachment = get_post( $this->video_id() );
+	// 		$video_data = $this->video_data();
 
-			$image_sizes = array(
-				$this->video_thumb_url( 'full' ),
-			);
-			$image_sizes = array_values( array_unique( $image_sizes ) );
+	// 		$image_sizes = array(
+	// 			$this->video_thumb_url( 'full' ),
+	// 		);
+	// 		$image_sizes = array_values( array_unique( $image_sizes ) );
 
-			$metadata = array(
-				'name' => $attachment->post_title,
-				'description' => $attachment->post_content,
-				'thumbnailUrl' => $image_sizes,
-				'contentUrl' => $this->video_url(),
-				'uploadDate' => date( 'c', strtotime( $attachment->post_date ) ),
-				'duration' => 'PT' . $video_data['length'] . 'S',
-			);
-		}
+	// 		$metadata = array(
+	// 			'name' => $attachment->post_title,
+	// 			'description' => $attachment->post_content,
+	// 			'thumbnailUrl' => $image_sizes,
+	// 			'contentUrl' => $this->video_url(),
+	// 			'uploadDate' => date( 'c', strtotime( $attachment->post_date ) ),
+	// 			'duration' => 'PT' . $video_data['length'] . 'S',
+	// 		);
+	// 	}
 
-		return $metadata;
-	}
+	// 	return $metadata;
+	// }
 
     /* PUBLIC Functions
     -------------------------------------------------------------*/

@@ -3,6 +3,7 @@ var wpurp_adjustable_servings = {};
 
 jQuery(document).ready(function() {
 
+
     /* Ingredient / Instructions menu bar
     ---------------------------------------------------------------- */
     jQuery(document).on('click', '.menu-bar .menu-tab', function (e) {

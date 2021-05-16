@@ -81,18 +81,6 @@ table.recipe-form {
   border-spacing: 0 10px;
 }
 
-.ingredient-group-stub,
-.instruction-group-stub {
-  display: none;
-}
-
-input.ingredients_group.debug {
-  pointer-events: none;
-  width: 100px;
-  height: 30px;
-  background-color: yellow !important;
-}
-
 /* Buttons
 ------------------------------------------------------- */
 /* Sortable handle */
@@ -150,11 +138,16 @@ td.sort-handle.ui-sortable-handle:hover {
   width: auto;
 }
 
+.recipe-general-form-field input.recipe-video {
+  width: 100%;
+}
+
 td.recipe-general-form-label {
   padding-top: 10px;
 }
 
-/* Ingredients & Instructions */
+/* Ingredients & Instructions common settings
+------------------------------------------------------- */
 tr.instruction, tr.ingredient {
   display: block;
   width: 100%;
@@ -168,6 +161,11 @@ tr.instruction, tr.ingredient {
 tr.instruction-group,
 tr.ingredient-group {
   display: block;
+}
+
+.ingredient-group-stub,
+.instruction-group-stub {
+  display: none;
 }
 
 /* Ingredient Section

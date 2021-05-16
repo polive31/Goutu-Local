@@ -606,16 +606,28 @@ function foodiepro_add_preloader()
 // 	$phpmailer->FromName   = SMTP_NAME;
 // }
 
+
 /* =================================================================*/
-/* =              REMOVE ADMIN FROM USER SEARCH RESULTS
+/* =              REMOVE ADMIN & TESTUSER FROM USER SEARCH RESULTS
 /* =================================================================*/
-add_action('pre_get_users', 'foodiepro_hide_admin');
-function foodiepro_hide_admin($query)
+add_action('pre_get_users', 'foodiepro_restrict_user_query_roles');
+/**
+ * foodiepro_restrict_user_query_roles
+ *
+ * Allow only author, contributor and editor roles in case of front-end user query
+ *
+ * @param  mixed $query
+ * @return void
+ */
+function foodiepro_restrict_user_query_roles($query)
 {
+	$allowed_roles = array( 'author', 'contributor', 'editor');
 	if (isset($query->query_vars) && !is_admin()) {
-		$role_not_in = $query->query_vars['role__not_in'];
-		if (!in_array('admin', $role_not_in)) {
-			array_push($query->query_vars['role__not_in'], 'administrator');
+		$role_in = $query->query_vars['role__in'];
+		foreach ($allowed_roles as $role ) {
+			if ( !in_array($role, $role_in)) {
+				array_push($query->query_vars['role__in'], $role);
+			}
 		}
 	};
 }

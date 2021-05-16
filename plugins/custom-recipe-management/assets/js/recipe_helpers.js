@@ -28,7 +28,7 @@ jQuery(document).ready(function() {
         console.log('Click on cart button !');
         var ingredientsList = '';
         jQuery('.wpurp-recipe-ingredients li').each(function(index) {
-            ingredientsList = ingredientsList + jQuery(this).text() + '\n';
+            ingredientsList = ingredientsList + jQuery(this).text() + '\r\n';
         });
         var recipeTitle = jQuery(location).attr('href');
 

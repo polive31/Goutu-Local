@@ -23,4 +23,22 @@
     }
 
 
+    /* Custom Widget Styles */
+    .widget.candystripe {
+        background-color: #fffdf8;
+    }
+
+    .widget.candystripe:before,
+    .widget.candystripe:after {
+        background: repeating-linear-gradient(
+            -45deg,
+        #ffb485,
+        #ffb485 12px,
+        #f0f0f0 10px,
+        #f0f0f0 23px
+        );
+    }
+
+
+
 }

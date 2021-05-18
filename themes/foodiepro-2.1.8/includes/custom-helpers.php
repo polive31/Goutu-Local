@@ -317,6 +317,9 @@ function foodiepro_get_icon($main, $class = '', $id = '', $title = '')
 function foodiepro_get_icon_class($slug)
 {
 	switch ($slug) {
+		case 'veggie':
+			$class= 'far fa-seedling';
+			break;
 		case 'drag-updown':
 			$class= 'fas fa-exchange-alt fa-rotate-90';
 			break;

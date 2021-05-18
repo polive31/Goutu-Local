@@ -1,7 +1,7 @@
 /*
 VARIABLES
 ---------------------------------------------------------------------------------------------------- */
-@import "../../../../_foodiepro.scss";
+@import "_foodiepro.scss";
 @import "_icons_fontawesome.scss";
 
 // $h1-font: 'Special Elite';
@@ -391,6 +391,10 @@ span.bp_counter,
     color: #222;
     font-weight: bold;
     text-transform: none;
+}
+
+.title-medium-font .widgettitle {
+    font-size: 3.5rem;
 }
 
 .title-big-font .widgettitle {

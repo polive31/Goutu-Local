@@ -17,11 +17,27 @@ class CRM_Assets {
 
 	private static $PLUGIN_URI;
 	private static $PLUGIN_PATH;
+	private static $MONTHS;
 
 
 	public function __construct() {
 		self::$PLUGIN_URI = plugin_dir_url( dirname( __FILE__ ) );
 		self::$PLUGIN_PATH = plugin_dir_path( dirname( __FILE__ ) );
+
+		self::$MONTHS = array(
+			__('January', 'crm'),
+			__('February', 'crm'),
+			__('March', 'crm'),
+			__('April', 'crm'),
+			__('May', 'crm'),
+			__('June', 'crm'),
+			__('July', 'crm'),
+			__('August', 'crm'),
+			__('September', 'crm'),
+			__('October', 'crm'),
+			__('November', 'crm'),
+			__('December', 'crm')
+		);
 	}
 
 	/* PRINT URL KEYWORD
@@ -491,5 +507,12 @@ class CRM_Assets {
 		ob_end_clean();
 		return $html;
 	}
+
+	/* GETTERS
+	---------------------------------------------------------------------- */
+	public static function months() {
+		return self::$MONTHS;
+	}
+
 
 }

@@ -599,6 +599,10 @@ span.bp_counter,
   text-transform: none;
 }
 
+.title-medium-font .widgettitle {
+  font-size: 3.5rem;
+}
+
 .title-big-font .widgettitle {
   font-size: 5rem;
 }

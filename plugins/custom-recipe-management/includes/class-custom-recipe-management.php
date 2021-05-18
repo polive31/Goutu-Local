@@ -57,15 +57,14 @@ class Custom_Recipe_Management {
 
         /* Hooks for recipe taxonomies Metadata
         ------------------------------------------------------------- */
-        $Ingredient_MetaData = new CRM_Ingredient_Metadata();
+        $Ingredient_Meta_Admin = new CRM_Ingredient_Metadata();
+        add_action('edited_ingredient',            array($Ingredient_Meta_Admin, 'callback_admin_save_meta'), 10, 2);
+        add_action('create_ingredient',            array($Ingredient_Meta_Admin, 'callback_admin_save_meta'), 10, 2);
 
-        $Ingredient_Meta = new CRM_Ingredient_Month();
-        add_action('admin_init',                   array($Ingredient_Meta, 'hydrate'));
-        add_action('wp',                           array($Ingredient_Meta, 'hydrate'));
-        add_action('ingredient_add_form_fields',   array($Ingredient_Meta, 'callback_admin_add_months_field'), 10, 2);
-        add_action('ingredient_edit_form_fields',  array($Ingredient_Meta, 'callback_ingredient_edit_fields'), 10, 2);
-        add_action('edited_ingredient',            array($Ingredient_Meta, 'callback_admin_save_meta'), 10, 2);
-        add_action('create_ingredient',            array($Ingredient_Meta, 'callback_admin_save_meta'), 10, 2);
+        $Ingredient_Meta_Public = new CRM_Ingredient_Month();
+        add_action('ingredient_add_form_fields',   array($Ingredient_Meta_Public, 'callback_admin_add_months_field'), 10, 2);
+        add_action('ingredient_edit_form_fields',  array($Ingredient_Meta_Public, 'callback_ingredient_edit_fields'), 10, 2);
+
 
         /* Hooks for Recipe output
         ------------------------------------------------------------- */
@@ -140,7 +139,8 @@ class Custom_Recipe_Management {
         $Ingredient = new CRM_Ingredient();
         add_shortcode( 'ingredient',                        array( $Ingredient, 'display_ingredient_shortcode'         ), 10, 2 );
         add_shortcode( 'ingredient-months',                 array( $Ingredient, 'display_ingredient_months_shortcode'  ), 10, 2 );
-        add_filter( 'ctlw_meta_query_args',                 array( $Ingredient, 'query_current_month_ingredients'), 15, 3 );
+        add_shortcode( 'month-ingredients',                 array( $Ingredient, 'display_month_ingredients_shortcode'  ), 10, 2 );
+        //add_filter( 'ctlw_meta_query_args',                 array( $Ingredient, 'query_current_month_ingredients'), 15, 3 );
 
         // Ajax callbacks for ingredient preview
         add_action( 'wp_ajax_ingredient_preview',           array( $Ingredient, 'ajax_ingredient_preview'));

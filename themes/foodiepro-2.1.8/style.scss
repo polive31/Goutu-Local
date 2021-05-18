@@ -75,7 +75,7 @@
 */
 
 
-@import "../../_foodiepro.scss";
+@import "assets/css/_foodiepro.scss";
 $images-path : 'images';
 
 
@@ -1506,6 +1506,96 @@ ul.related-terms li {
 /* Widgets
 ---------------------------------------------------------------------------------------------------- */
 
+/* Custom widget styling */
+
+.widget.candystripe {
+    position: relative;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: #e5f6f9;
+    padding: 10px;
+
+    &:before,
+    &:after {
+        box-sizing: border-box;
+        content: '';
+        position: absolute;
+        display: block;
+        height: 6px;
+        width: 100%;
+        background: #ebb9bb;
+        background: repeating-linear-gradient(
+            -45deg,
+        #ebb9bb,
+        #ebb9bb 12px,
+        #f0f0f0 10px,
+        #f0f0f0 23px
+        );
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-bottom: 0;
+    }
+
+    &:before {
+        box-sizing: border-box;
+        top: 0;
+        left: 0;
+    }
+
+    &:after {
+        box-sizing: border-box;
+        bottom: 0;
+        left: 0;
+    }
+}
+
+.widget.plainshadow {
+    border: 2px solid #8a8a8a;
+    padding: 10px;
+    box-shadow: 10px 10px #efefef;
+    border-radius: 5px;
+}
+
+.widget.handdrawn {
+    display:inline-block;
+    width:20%;
+    margin:5% auto;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    padding:1em;
+    line-height:1.5em;
+    border: solid 5px #8c8c8c;
+    box-shadow: 7px 7px 8px #c1c1c1;
+}
+
+.widget.sketchy {
+    padding: 4rem 8rem;
+    display: inline-block;
+    border: 3px solid #333333;
+    // font-size: 2.5rem;
+    border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+    // text-transform: uppercase;
+    // letter-spacing: 0.3ch;
+    background: #ffffff;
+    position: relative;
+
+    &::before {
+        content: '';
+        border: 2px solid #353535;
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
+        border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
+    }
+}
+
+
+
+
+
 /* General Widget formatting
 --------------------------------------------- */
 .widget-wrap a,
@@ -2324,7 +2414,7 @@ Site Header
     float: left;
     width: 300px;
     height: 100px;
-    padding: 0 15px;
+    // padding: 0 15px;
     text-indent: -9999px;
     background-size: contain !important;
     -webkit-transition: height 0.2s ease-in-out;
@@ -2337,7 +2427,7 @@ Site Header
 .home .site-title a {
     width: 450px;
     height: $header-height-max;
-    padding: 0 20px;
+    // padding: 0 20px;
 }
 
 .home .nav-up .title-area,

@@ -62,4 +62,40 @@ class CRM_Ingredient_Metadata {
         }
 
     }
+
+	// DEPRECATED Save extra taxonomy fields callback function.
+	// public function callback_admin_save_meta_bak( $term_id ) {
+	// 	if ( isset( $_POST['wpurp_taxonomy_metadata_ingredient'] ) ) {
+	// 		$this->ingredient_meta = get_option( "taxonomy_$term_id" );
+	// 		$this->update_month();
+
+	// 		// Save the option array.
+	// 		update_option( "taxonomy_$term_id", $this->ingredient_meta );
+	// 	}
+	// }
+
+	/* New version using term meta as introduced in Wordpress 4.4 */
+	public function callback_admin_save_meta($term_id)
+	{
+		if (isset($_POST['wpurp_taxonomy_metadata_ingredient'])) {
+
+			$months = get_term_meta($term_id, 'month', true);
+			if (!is_array($months)) $months = array();
+
+			$i = 1;
+			foreach (CRM_Assets::months() as $month) {
+				if (isset($_POST['wpurp_taxonomy_metadata_ingredient']['month'][$i]))
+					$months[] = $i;
+				elseif (($key = array_search($i, $months)) !== false) {
+					unset($months[$key]);
+				}
+				$i++;
+			}
+
+			$this->ingredient_meta['month'] = $months;
+			// Save the option array.
+			update_term_meta($term_id, 'month', $this->ingredient_meta['month']);
+		}
+	}
+
 }

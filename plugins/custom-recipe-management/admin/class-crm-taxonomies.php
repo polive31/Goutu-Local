@@ -26,7 +26,7 @@ class CRM_Taxonomies {
             );
             // register_taxonomy_for_object_type( $name, 'recipe' );
 
-            /* Create a metadata instance except for ingredients who have already their instatiation in the top-level class */
+            /* Create a metadata instance except for ingredients who have already their instatiation in the CRM_Ingredient_Metadata class */
             if ('ingredient' != $name) {
                 new WPURP_Taxonomy_MetaData($name, array(
                     'wpurp_link' => array(

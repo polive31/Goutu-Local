@@ -7,25 +7,12 @@ if (!defined('ABSPATH')) {
 class CRM_Ingredient_Month
 {
 
-	public static $MONTHS;
+	// public static $MONTHS;
 
-	public function hydrate()
-	{
-		self::$MONTHS = array(
-			__('January', 'crm'),
-			__('February', 'crm'),
-			__('March', 'crm'),
-			__('April', 'crm'),
-			__('May', 'crm'),
-			__('June', 'crm'),
-			__('July', 'crm'),
-			__('August', 'crm'),
-			__('September', 'crm'),
-			__('October', 'crm'),
-			__('November', 'crm'),
-			__('December', 'crm')
-		);
-	}
+	// public function hydrate()
+	// {
+
+	// }
 
 	public function callback_ingredient_edit_fields($term)
 	{
@@ -47,7 +34,7 @@ class CRM_Ingredient_Month
 					<tr>
 						<?php
 						$i = 1;
-						foreach (self::$MONTHS as $month) {
+						foreach (CRM_Assets::months() as $month) {
 							// $checked = isset($ingredient_months[$i]);
 							$checked = in_array($i, $ingredient_months);
 						?>
@@ -81,7 +68,7 @@ class CRM_Ingredient_Month
 		<!-- <tr> -->
 		<?php
 		$i = 1;
-		foreach (self::$MONTHS as $month) {
+		foreach (CRM_Assets::months() as $month) {
 			// echo '<pre>' . print_r(self::$MONTHS) . '</pre>';
 			// echo '<pre>' . print_r($month) . '<br></pre>';
 		?>
@@ -101,38 +88,5 @@ class CRM_Ingredient_Month
 	}
 
 
-	// DEPRECATED Save extra taxonomy fields callback function.
-	// public function callback_admin_save_meta_bak( $term_id ) {
-	// 	if ( isset( $_POST['wpurp_taxonomy_metadata_ingredient'] ) ) {
-	// 		$this->ingredient_meta = get_option( "taxonomy_$term_id" );
-	// 		$this->update_month();
 
-	// 		// Save the option array.
-	// 		update_option( "taxonomy_$term_id", $this->ingredient_meta );
-	// 	}
-	// }
-
-	/* New version using term meta as introduced in Wordpress 4.4 */
-	public function callback_admin_save_meta($term_id)
-	{
-		if (isset($_POST['wpurp_taxonomy_metadata_ingredient'])) {
-
-			$months = get_term_meta($term_id, 'month', true);
-			if (!is_array($months)) $months = array();
-
-			$i = 1;
-			foreach (self::$MONTHS as $month) {
-				if (isset($_POST['wpurp_taxonomy_metadata_ingredient']['month'][$i]))
-					$months[] = $i;
-				elseif (($key = array_search($i, $months)) !== false) {
-					unset($months[$key]);
-				}
-				$i++;
-			}
-
-			$this->ingredient_meta['month'] = $months;
-			// Save the option array.
-			update_term_meta($term_id, 'month', $this->ingredient_meta['month']);
-		}
-	}
 }

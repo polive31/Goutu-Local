@@ -174,3 +174,12 @@ genesis_register_sidebar( array(
     'name'        => __( 'Mobile Nav Container', 'foodiepro' ),
     'description' => __( 'This is the container on top of the slider mobile menu.', 'foodiepro' ),
 ) );
+
+
+/* Showroom Widget Areas
+----------------------------------------------------*/
+genesis_register_sidebar( array(
+    'id'          => 'widget-showroom',
+    'name'        => __( 'Widget Showroom', 'foodiepro' ),
+    'description' => __( 'This is the sidebar allowing to test custom widgets formatting.', 'foodiepro' ),
+) );

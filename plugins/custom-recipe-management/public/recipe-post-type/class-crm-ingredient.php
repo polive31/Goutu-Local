@@ -51,58 +51,8 @@ class CRM_Ingredient {
 
 
 	/* =================================================================*/
-	/* = SHORTCODES
+	/* = GETTERS
 	/* =================================================================*/
-
-    public function display_ingredient_shortcode( $options ) {
-        $options = shortcode_atts( array(
-            'amount'            => '',
-            'amount_normalized' => '',
-            'unit'              => '',
-            'ingredient'        => '',
-            'notes'             => '',
-            'links'             => 'no',
-            'target'            => 'screen',
-        ), $options );
-        $html = CRM_Assets::get_template_part('ingredients', 'ingredient', array('args' => $options) );
-
-        return $html;
-    }
-
-    public function display_ingredient_months_shortcode( $atts ) {
-        $atts = shortcode_atts( array(
-            'id' => false,
-            'currentmonth' => false, // displays an arrow showing the current month
-        ), $atts );
-
-        if ($atts['id']) {
-            $ingredient_id = $atts['id'];
-        }
-        elseif (is_tax('ingredient')) {
-            $ingredient_id = get_queried_object()->slug;
-        }
-        else
-            return false;
-
-        $ingredient_months = get_term_meta($ingredient_id, 'month', true );
-        if ( empty($ingredient_months) ) return '';
-
-        $html = '<h4>' . __('Harvest Period','crm') . '</h4>';
-        $html .= '<table class="ingredient-months">';
-        $html .= '<tr>';
-        $i=1;
-
-        $months = CRM_Ingredient_Month::$MONTHS;
-        foreach (  $months as $month ) {
-            $available = in_array( $i, $ingredient_months )?'available':'';
-            $html .= '<td class="' . $available . '" title="' . $month . '">' . $month[0] . '</td>';
-            $i++;
-        }
-        $html .= '</tr>';
-        $html .= '</table>';
-        return $html;
-    }
-
 
     public static function get_ingredient_parts( $args, $ratio=1 ) {
         $parts = array();
@@ -147,6 +97,95 @@ class CRM_Ingredient {
         return $parts;
     }
 
+
+
+	/* =================================================================*/
+	/* = SHORTCODES
+	/* =================================================================*/
+
+    public function display_ingredient_shortcode( $options ) {
+        $options = shortcode_atts( array(
+            'amount'            => '',
+            'amount_normalized' => '',
+            'unit'              => '',
+            'ingredient'        => '',
+            'notes'             => '',
+            'links'             => 'no',
+            'target'            => 'screen',
+        ), $options );
+        $html = CRM_Assets::get_template_part('ingredients', 'ingredient', array('args' => $options) );
+
+        return $html;
+    }
+
+    public function display_ingredient_months_shortcode( $atts ) {
+        $atts = shortcode_atts( array(
+            'id' => false,
+            'currentmonth' => false, // displays an arrow showing the current month
+        ), $atts );
+
+        if ($atts['id']) {
+            $ingredient_id = $atts['id'];
+        }
+        elseif (is_tax('ingredient')) {
+            $ingredient_id = get_queried_object()->slug;
+        }
+        else
+            return false;
+
+
+        $ingredient_months = get_term_meta($ingredient_id, 'month', true );
+        if ( empty($ingredient_months) ) return '';
+        $ingredient = get_term_by('id', $ingredient_id, 'ingredient');
+        update_term_meta( $ingredient_id, 'month', array(1, 2,3, 4, 5, 6, 7), true);
+        $ingredient_months = get_term_meta($ingredient_id, 'month', true );
+
+        $html = '<h4>' . __('Harvest Period','crm') . '</h4>';
+        $html .= '<table class="ingredient-months">';
+        $html .= '<tr>';
+        $i=1;
+
+        $months = CRM_Assets::months();
+        foreach (  $months as $month ) {
+            $available = in_array( $i, $ingredient_months )?'available':'';
+            $html .= '<td class="' . $available . '" title="' . $month . '">' . $month[0] . '</td>';
+            $i++;
+        }
+        $html .= '</tr>';
+        $html .= '</table>';
+        return $html;
+    }
+
+    public function display_month_ingredients_shortcode( $atts ) {
+        $atts = shortcode_atts( array(
+            'month' => 1, // 1 to 12
+            'show_limit' => 10, // maximum number of ingredients to show, 0 = no limit
+        ), $atts );
+
+        $args = array(
+            'hide_empty' => false, // also retrieve terms which are not used yet
+            'meta_query' => array(
+                array(
+                   'key'       => 'month',
+                   'value'     => '7',
+                   'compare'   => 'IN'
+                )
+            ),
+            'taxonomy'  => 'ingredient',
+            );
+        $terms = get_terms( $args );
+
+        $count = 0;
+        $html = '';
+        foreach ($terms as $term) {
+            $html .= '<p>' . $term->name . '</p>';
+            $count++;
+            if ($count == $atts['show_limit']) break;
+        }
+
+        return $html;
+    }
+
     /* =================================================================*/
     /* = HELPERS
     /* =================================================================*/
@@ -189,13 +228,13 @@ class CRM_Ingredient {
 	/* =================================================================*/
 	/* = CALLBACKS
 	/* =================================================================*/
-    public function query_current_month_ingredients( $args, $instance) {
-        $args['meta_query'] = array(
-                'key'     => 'mykey',     // Adjust to your needs!
-                'value'   => 'myvalue',   // Adjust to your needs!
-                'compare' => '=',         // Default
-        );
-    }
+    // public function query_current_month_ingredients( $args, $instance) {
+    //     $args['meta_query'] = array(
+    //             'key'     => 'mykey',     // Adjust to your needs!
+    //             'value'   => 'myvalue',   // Adjust to your needs!
+    //             'compare' => '=',         // Default
+    //     );
+    // }
 
 	/* =================================================================*/
 	/* = AJAX CALLBACKS

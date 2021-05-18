@@ -1,6 +1,6 @@
 /* Custom Recipe Template
 -------------------------------------------*/
-@import "../../../../_foodiepro.scss";
+@import "../../../../themes/foodiepro-2.1.8/assets/css/_foodiepro.scss";
 
 /* Variables */
 :root {
@@ -238,6 +238,19 @@ i.overlayed-icon:after {
     color:#484848;
 }
 
+/* Servings & shopping list button */
+
+.button.incart {
+    margin-left: 20px;
+    background-color:#e8e8e8;
+    transition: background-color 0.5s, color 0.5s;
+    font-size: 3.4rem;
+  }
+
+  .button.incart:hover {
+    background-color:#c8c8c8;
+    color:#000;
+  }
 
 .servings-input {
     /* font-weight: bold; */

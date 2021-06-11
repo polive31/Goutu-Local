@@ -182,6 +182,16 @@ class CPM_Assets {
 				'footer'			=> true,
 				'location'			=> array('post_form'),
 			),
+			/* WORDPRESS VERSION OF TINYMCE */
+			//wp_enqueue_script( 'tinymce_js', includes_url( 'js/tinymce/' ) . 'wp-tinymce.php', array( 'jquery' ), false, true );
+			// 'cpm-tinymce'		=> array(
+			// 	'file'				=> 'vendor/tinymce/tinymce.min.js',
+			// 	'uri'				=> self::$PLUGIN_URI,
+			// 	'dir'				=> self::$PLUGIN_PATH,
+			// 	'deps'				=> array( 'jquery' ),
+			// 	'footer'			=> true,
+			// 	'location'			=> array('post_form'),
+			// ),
 			/* CLOUD-BASED VERSION OF TINYMCE */
 			// 'cpm-tinymce'		=> array(
 			// 	'file'				=> 'https://cdn.tiny.cloud/1/b5likm29r9k8p1nipizqykdpy6qpiw6li1wc3tqmog5bx9it/tinymce/5/tinymce.min.js',

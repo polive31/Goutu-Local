@@ -69,7 +69,7 @@
 					// $author = get_the_author();
 					// if (('ratatouille'==$author) && (get_post_status()=='draft')) {
 						?>
-						<div class="button incart">
+						<div class="button incart" id="ingredient_share_button">
 							<?= foodiepro_get_icon('in-cart','icon', '', ''); ?>
 							<span><?= __('Add to shopping list', 'crm') ?></span>
 						</div>

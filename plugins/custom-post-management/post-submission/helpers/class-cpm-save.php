@@ -92,7 +92,6 @@ class CPM_Save
         }
         $post['post_status']=$status;
 
-
         /* Get post title */
         $title = empty($_POST['post_title']) ? __('Untitled', 'foodiepro') : $_POST['post_title'];
         $title = sanitize_text_field($title);
@@ -103,7 +102,9 @@ class CPM_Save
 
         /* Get post content */
         $content = isset($_POST['post_content']) ? $_POST['post_content'] : '';
-        $post['post_content']=foodiepro_esc($content);
+        $post['post_content']=wp_kses_post($content);
+        // NOTA : foodiepro_esc prevents proper table formatting.... missing some attributes probably
+        // $post['post_content']=foodiepro_esc($content);
 
         /* Get post video link */
         $video_url = isset($_POST['post_video']) ? $_POST['post_video'] : '';

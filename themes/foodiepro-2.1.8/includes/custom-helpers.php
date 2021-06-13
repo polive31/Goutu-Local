@@ -48,6 +48,16 @@ define(
 		),
 		'strike' => array(),
 		'strong' => array(),
+		'table' => array(
+			'style'	=> true,
+		),
+		'tbody' => array(),
+		'tr' => array(
+			'style'	=> true,
+		),
+		'td' => array(
+			'style'	=> true,
+		),
 	)
 );
 

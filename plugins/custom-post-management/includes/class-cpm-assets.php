@@ -175,7 +175,7 @@ class CPM_Assets {
 			),
 			/* LOCAL VERSION OF TINYMCE */
 			'cpm-tinymce'		=> array(
-				'file'				=> 'vendor/tinymce/tinymce.min.js',
+				'file'				=> 'vendor/tinymce5/tinymce.min.js',
 				'uri'				=> self::$PLUGIN_URI,
 				'dir'				=> self::$PLUGIN_PATH,
 				'deps'				=> array( 'jquery' ),

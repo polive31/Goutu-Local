@@ -8,14 +8,16 @@ jQuery(document).ready(function() {
     // Editor setup
     tinymce.init({
         selector: '#post_content',
-        theme: 'modern',
+        theme: 'silver',
         language: 'fr_FR',
+        //IMPORTANT DO NOT USE AUTORESIZE PLUGIN SINCE IT WILL MAKE THE PLACEHOLDER OVERFLOW ON MOBILE !!!
+        plugins: 'autoresize link spellchecker searchreplace table lists image',
         statusbar: false,
-        menubar:false,
-        toolbar: 'autoresize | undo redo | styleselect | bold italic underline | link image | alignleft aligncenter alignright | bullist | searchreplace',
-        plugins: 'link spellchecker searchreplace placeholder lists image',
+        menubar: false,
+        toolbar: 'undo redo | styleselect | bold italic underline | link image | table | alignleft aligncenter alignright | bullist | searchreplace',
+        // toolbar: 'table tabledelete | tableprops tablerowprops tablecellprops | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol',
         autoresize_bottom_margin: 20,
-        min_height: 200,
+        min_height: 400,
         placeholder_attrs : {style: {
                 color: '#888',
                 'font-style': 'italic',

@@ -3,6 +3,48 @@ jQuery(document).ready(function() {
     console.log('%c In custom recipe submission script', "background:#CCC;color:blue");
 
 
+   /* TINYMCE
+    ---------------------------------------------------------------- */
+    tinymce.init({
+        selector: '#post_content, #recipe_notes',
+        theme: 'silver',
+        language: 'fr_FR',
+        // plugins: 'link spellchecker searchreplace placeholder lists',
+        //IMPORTANT DO NOT USE AUTORESIZE PLUGIN SINCE IT WILL MAKE THE PLACEHOLDER OVERFLOW ON MOBILE !!!
+        plugins: 'autoresize link spellchecker searchreplace lists',
+        statusbar: false,
+        menubar:false,
+        toolbar: 'autoresize | undo redo | styleselect | bold italic underline | link image | alignleft aligncenter alignright | bullist | searchreplace',
+        // height:'200',
+        autoresize_bottom_margin: 20,
+        min_height: 200,
+        remove_linebreaks: true,
+        placeholder_attrs : {style: {
+                position: 'absolute',
+                top:'5px',
+                left:0,
+                color: '#888',
+                'font-style': 'italic',
+                padding: '1%',
+                width:'98%',
+                overflow: 'hidden',
+                'white-space': 'pre-wrap'
+            }
+        }
+    });
+
+    // jQuery('#wpurp-insert-recipe').on('click', function () {
+    //     var shortcode = '[ultimate-recipe id=';
+
+    //     shortcode += jQuery('#wpurp-recipe').find('option:selected').val();
+    //     shortcode += ']';
+
+    //     tinyMCE.activeEditor.execCommand('mceInsertContent', 0, shortcode);
+    //     tinyMCE.activeEditor.windowManager.close();
+    // });
+
+
+
     /* Autoselect "numeric" inputs on focus
     ---------------------------------------------------------------- */
     jQuery('input.selectonfocus').focus(function () {
@@ -47,54 +89,6 @@ jQuery(document).ready(function() {
         }
     }
 
-    /* LOCAL VERSION OF TINYMCE */
-    tinymce.init({
-        selector: '#post_content, #recipe_notes',
-        theme: 'modern',
-        language: 'fr_FR',
-        statusbar: false,
-        menubar:false,
-        toolbar: 'autoresize | undo redo | styleselect | bold italic underline | link image | alignleft aligncenter alignright | bullist | searchreplace',
-        plugins: 'link spellchecker searchreplace placeholder lists',
-        // //IMPORTANT DO NOT USE AUTORIZE PLUGIN SINCE IT WILL MAKE THE PLACEHOLDER OVERFLOW ON MOBILE !!!
-        // height:'200',
-        autoresize_bottom_margin: 20,
-        min_height: 200,
-        remove_linebreaks: true,
-        placeholder_attrs : {style: {
-                position: 'absolute',
-                top:'5px',
-                left:0,
-                color: '#888',
-                'font-style': 'italic',
-                padding: '1%',
-                width:'98%',
-                overflow: 'hidden',
-                'white-space': 'pre-wrap'
-            }
-        }
-    });
-
-    /* CLOUD-BASED VERSION OF TINYMCE */
-    // tinymce.init({
-    //     selector: '#post_content, #recipe_notes',
-    //     plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
-    //     toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
-    //     toolbar_mode: 'floating',
-    //     tinycomments_mode: 'embedded',
-    //     tinycomments_author: 'Author name',
-    // });
-
-
-    // jQuery('#wpurp-insert-recipe').on('click', function () {
-    //     var shortcode = '[ultimate-recipe id=';
-
-    //     shortcode += jQuery('#wpurp-recipe').find('option:selected').val();
-    //     shortcode += ']';
-
-    //     tinyMCE.activeEditor.execCommand('mceInsertContent', 0, shortcode);
-    //     tinyMCE.activeEditor.windowManager.close();
-    // });
 
 
  /* Ingredient and Instruction Submission (from WPURP)

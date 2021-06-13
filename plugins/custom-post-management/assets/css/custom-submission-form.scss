@@ -1,4 +1,4 @@
-@import "../../../../_foodiepro.scss";
+@import "../../../../themes/foodiepro-2.1.8/assets/css/_foodiepro.scss";
 
 /* Fonts
 -------------------------------------------------------- */
@@ -430,17 +430,12 @@ li.select2-selection__choice,
   box-shadow: none;
 }
 
-.taxonomy-select-boxes select,
 /*.select2-container--default,*/
-.select2-container--default .select2-selection--single,
-.select2-container--default .select2-selection--multiple {
+#custom_post_submission_form .taxonomy-select-boxes select,
+#custom_post_submission_form .select2-container--default .select2-selection--single,
+#custom_post_submission_form .select2-container--default .select2-selection--multiple {
   border: none;
   border-radius: 0px;
-}
-
-.select2-container--default.select2-container--focus .select2-selection--single,
-.select2-container--default.select2-container--focus .select2-selection--multiple {
-  border: none;
 }
 
 .select2-focusser {

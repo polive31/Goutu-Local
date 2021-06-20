@@ -144,6 +144,7 @@ function foodiepro_get_permalink_shortcode($atts, $content='') {
 		'user' 		=> false, // current, view, author, any user ID
 		'community' => '', // members, register
 		'google' 	=> '', // search query
+		'url' 		=> '', // external url
 
 		/* Display parameters */
 		'class'	 	=> '',
@@ -156,7 +157,7 @@ function foodiepro_get_permalink_shortcode($atts, $content='') {
 		'data' 		=> false, // "attr1 val1 attr2 val2  ..." separate with spaces
 		'ga' 		=> false, // ga('send', 'event', [eventCategory], [eventAction], [eventLabel], [eventValue] ); separate by spaces
 	), $atts);
-	$atts['text']= $atts['text']. $content;
+	$atts['text']= $atts['text'] . $content;
 
 	return foodiepro_get_permalink($atts);
 }

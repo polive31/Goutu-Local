@@ -192,18 +192,20 @@ function foodiepro_get_permalink($atts)
 	$data = empty($data) ? false : explode(' ', $data);
 	$ga = empty($ga) ? false : explode(' ', $ga);
 
-	$url = '#';
-	if (!empty($id)) {
-		$url = get_permalink($id);
+	$target_url = '#';
+	if (!empty($url)) {
+		$target_url = esc_url($url, array('https'));
+	} elseif (!empty($id)) {
+		$target_url = get_permalink($id);
 	} elseif (!empty($tax)) {
 		if (!empty($slug))
-			$url = get_term_link((string) $slug, (string) $tax);
+			$target_url = get_term_link((string) $slug, (string) $tax);
 	} elseif (!empty($slug)) {
 		// $url=get_permalink(get_page_by_path($slug));
-		$url = foodiepro_get_page_by_slug($slug);
+		$target_url = foodiepro_get_page_by_slug($slug);
 	} elseif (!empty($google)) {
 		// $url=get_permalink(get_page_by_path($slug));
-		$url = 'https://www.google.com/search?q=' . urlencode(remove_accents($google));
+		$target_url = 'https://www.google.com/search?q=' . urlencode(remove_accents($google));
 	} elseif (!empty($user)) {
 		// Define user
 		if ($user == 'current') {
@@ -222,38 +224,38 @@ function foodiepro_get_permalink($atts)
 			if (!$user) return;
 			$token = $user->data->user_nicename;
 			// $url = get_site_url( null, foodiepro_get_author_base() . '/' . $token);
-			$url = get_author_posts_url($user_id, $token);
-			$url = esc_url(add_query_arg('post_type', $type, $url));
+			$target_url = get_author_posts_url($user_id, $token);
+			$target_url = esc_url(add_query_arg('post_type', $type, $target_url));
 			$rel = 'author';
 		} elseif ($display == 'profile' && class_exists('Peepso')) {
 			$peepso_user = PeepsoUser::get_instance($user_id);
-			$url = $peepso_user->get_profileurl();
-			$url .= $type;
+			$target_url = $peepso_user->get_profileurl();
+			$target_url .= $type;
 			$token = $peepso_user->get_nicename();
 		}
 
 	} elseif (!empty($wp)) {
 		if ($wp == 'home')
-			$url = get_home_url();
+			$target_url = get_home_url();
 		elseif ($wp == 'login')
-			$url = wp_login_url();
+			$target_url = wp_login_url();
 		elseif ($wp == 'register')
-			$url = wp_registration_url();
+			$target_url = wp_registration_url();
 
 	}
 	elseif (!empty($community)) {
 		if (!class_exists('Peepso')) return;
-		$url = PeepSo::get_page($community);
+		$target_url = PeepSo::get_page($community);
 	}
 	else {
 		// Current URL is supplied by default
-		$url = $_SERVER['REQUEST_URI'];
+		$target_url = $_SERVER['REQUEST_URI'];
 	}
 
 	if ($text)
-		return '<a class="' . $class . '" rel="' . $rel . '" id="' . $id . '" ' . foodiepro_get_data($data) . ' href="' . $url . '" target="' . $target . '" onclik="' . foodiepro_get_ga($ga) . '">' . sprintf($text, $token) . '</a>';
+		return '<a class="' . $class . '" rel="' . $rel . '" id="' . $id . '" ' . foodiepro_get_data($data) . ' href="' . $target_url . '" target="' . $target . '" onclik="' . foodiepro_get_ga($ga) . '">' . sprintf($text, $token) . '</a>';
 	else
-		return $url;
+		return $target_url;
 }
 
 /* =================================================================*/

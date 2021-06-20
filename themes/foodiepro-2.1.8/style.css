@@ -1973,6 +1973,10 @@ article.type-post th {
   padding: 10px 0;
 }
 
+article.type-post td {
+  padding: 5px;
+}
+
 /* Custom Contact Form
 --------------------------------------------- */
 #contactForm {

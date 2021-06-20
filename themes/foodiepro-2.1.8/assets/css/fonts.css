@@ -568,6 +568,11 @@ span.bp_counter,
   font-size: 2rem;
 }
 
+/* Article post content */
+article.type-post td, th {
+  font-family: 'Oswald', 'Cabin', sans-serif;
+}
+
 /* PLUGIN Fonts */
 /* GDPR COOKIE CONSENT
 ----------------------------------------------*/

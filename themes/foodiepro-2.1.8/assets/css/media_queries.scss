@@ -531,6 +531,16 @@ $images-path : '../../images';
         display: inline-block;
     }
 
+    /* Article content */
+    article.type-post td, th {
+        font-size: 1.4rem;
+    }
+
+    article.type-post th {
+        top: $header-height-mobile;
+    }
+
+
     /* Grid widgets */
 
     .page-bottom .rpwe-block.grid-3col li,

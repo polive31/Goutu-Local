@@ -2019,6 +2019,19 @@ h3.ui-accordion-header:focus {
     color: #868686;
 }
 
+/* Tables formatting in published post articles */
+
+article.type-post table {
+    position: relative;
+}
+
+article.type-post th {
+    position: sticky;
+    top: $header-height-min+50;
+    background:#d8d8d8;
+    padding: 10px 0;
+}
+
 
 /* Custom Contact Form
 --------------------------------------------- */

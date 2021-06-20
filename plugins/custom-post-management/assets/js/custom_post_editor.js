@@ -16,6 +16,9 @@ jQuery(document).ready(function() {
         menubar: false,
         toolbar: 'undo redo | styleselect | bold italic underline | link image | table | alignleft aligncenter alignright | bullist | searchreplace',
         // toolbar: 'table tabledelete | tableprops tablerowprops tablecellprops | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol',
+        // table plugin params
+        table_header_type: 'cells',
+        // general params
         autoresize_bottom_margin: 20,
         min_height: 400,
         placeholder_attrs : {style: {

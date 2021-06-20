@@ -1960,6 +1960,19 @@ h3.ui-accordion-header:focus {
   color: #868686;
 }
 
+/* Tables formatting in published post articles */
+article.type-post table {
+  position: relative;
+}
+
+article.type-post th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 150px;
+  background: #d8d8d8;
+  padding: 10px 0;
+}
+
 /* Custom Contact Form
 --------------------------------------------- */
 #contactForm {

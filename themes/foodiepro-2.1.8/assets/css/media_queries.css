@@ -440,6 +440,13 @@ VARIABLES
   .page-header-wrap p {
     display: inline-block;
   }
+  /* Article content */
+  article.type-post td, th {
+    font-size: 1.4rem;
+  }
+  article.type-post th {
+    top: 60px;
+  }
   /* Grid widgets */
   .page-bottom .rpwe-block.grid-3col li,
   .simple-grid.one-third,

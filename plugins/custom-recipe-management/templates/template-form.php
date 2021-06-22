@@ -76,6 +76,9 @@
 
 <div class="post-container recipe-ingredients-container" data-units='<?php echo json_encode(CRM_Ingredient::get_units(false)); ?>' data-units-plural='<?php echo json_encode(CRM_Ingredient::get_units(true)); ?>'>
     <h4 id="headline-ingredients"><?php _e('Ingredients', 'crm'); ?><?php if (in_array('recipe_ingredients', $required_fields)) echo '<span class="required-field">*</span>'; ?></h4>
+    <p class="post-guidelines">
+        <?php _e("<strong>Use the TAB key</strong> while adding ingredients, it will automatically create new fields. <strong>Don't worry about empty lines</strong>, these will be ignored.", 'crm'); ?>
+    </p>
     <?php $ingredients = $recipe->ingredients(); ?>
     <?php
     $args = compact('ingredients', 'group_input_class', 'group_input_type');
@@ -89,15 +92,15 @@
             <?= foodiepro_get_icon('plus-circle') . __('Add an ingredient group', 'crm'); ?>
         </div>
     </div>
-    <p class="post-guidelines">
-        <?php _e("<strong>Use the TAB key</strong> while adding ingredients, it will automatically create new fields. <strong>Don't worry about empty lines</strong>, these will be ignored.", 'crm'); ?>
-    </p>
 </div>
 
 
 
 <div class="post-container recipe-instructions-container">
     <h4 id="headline-instructions"><?php _e('Instructions', 'crm'); ?><?php if (in_array('recipe_instructions', $required_fields)) echo '<span class="required-field">*</span>'; ?></h4>
+    <p class="post-guidelines">
+        <?php _e("<strong>Use the TAB key</strong> while adding instructions, it will automatically create new fields. <strong>Don't worry about empty lines</strong>, these will be ignored.", 'crm'); ?>
+    </p>
     <?php $instructions = $recipe->instructions(); ?>
     <?php
     $args = compact('instructions');
@@ -111,9 +114,6 @@
             <?= foodiepro_get_icon('plus-circle') . __('Add an instruction group', 'crm'); ?>
         </div>
     </div>
-    <p class="post-guidelines">
-        <?php _e("<strong>Use the TAB key</strong> while adding instructions, it will automatically create new fields. <strong>Don't worry about empty lines</strong>, these will be ignored.", 'crm'); ?>
-    </p>
 </div>
 
 <div class="post-container recipe-notes-container-nojs">
